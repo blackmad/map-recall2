@@ -149,8 +149,38 @@ export interface FacadeSpecInput { d?: Record<string, unknown>; x?: Record<strin
 export interface SpecLookInput { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean }
 
 /** What the packer reads about a pand: the mesher's own building (post-chain colours, heights) and its resolved spec. */
+/** The generic path's layout of a pand's street run (threeBuildingMesh layoutRun), the record's priors (S6b). */
+export type FacadeGenericLayout = { storeys: number; groundM: number; storeyM: number; windows: number; doorWindow: number | null; variant: number; /** The bay look's window (photo look, bayLook.ts), when the pand draws one. */ bay?: GenericBayWindow };
+/** The bay look's window, as the record says it (genericBayWindow). */
+export type GenericBayWindow = { head: (typeof WINDOW_HEADS)[number]; surround: (typeof WINDOW_SURROUNDS)[number]; sills: boolean; kind: (typeof WINDOWS)[number] | null; dark: boolean; /** Window width over its pitch and height over its storey (facadeOpenings.ts bayVariantOpenings), when known. */ share?: number; height?: number };
+/** The bay preset fields the record reads (bayTextures.ts BayVariant). */
+export type BayWindowPreset = { archetype: string; shape: string; lintel?: string; sash?: string; paleAccents?: boolean; frameTone?: string; family?: string };
+/**
+ * The record's reading of a bay-look preset (bayTextures.ts windowAt): the head shape, a stone lintel and sill unless the
+ * preset has none (punched and modern fronts never do), pale jamb blocks as a full stone frame, the sash's bars, dark frames.
+ */
+export function genericBayWindow(v: BayWindowPreset, upper?: { axes: readonly number[]; width: number; sill: number; head: number }): GenericBayWindow {
+  const dressed = v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern';
+  const kind = v.sash === 'transom' ? 'casement-toplight' : v.sash === 'paired-transom' ? 'casement-transom' : v.sash === 'plain' ? 'plain' : null;
+  return { head: v.shape === 'segmental' ? 'segmental' : v.shape === 'arch' ? 'round' : 'flat', surround: !dressed ? 'none' : v.paleAccents ? 'full-frame' : 'stone-lintel', sills: dressed, kind, dark: v.frameTone === 'dark',
+    ...(upper && upper.axes.length ? { share: Math.min(0.9, upper.width * upper.axes.length), height: Math.min(0.9, upper.head - upper.sill) } : {}) };
+}
+/** Window axes per generic cell (facadeCells.ts paintCell): the canal cell paints two sashes a bay, the others one. */
+export const GENERIC_WINDOWS_PER_BAY: Partial<Record<FacadeStyle, number>> = { canal: 2 };
+/**
+ * The generic cell's window as a share of its window pitch and of its storey (facadeCells.ts paintCell: canal 1.1 x 2.05 m
+ * on a 2.5 m axis and 3.1 m storey, c19 1.35 x 1.85 on 4.4 / 3.0, school 3.52 x 1.35 on 4.8 / 3.0), its head and stone.
+ */
+export const GENERIC_WINDOW_CELL: Partial<Record<FacadeStyle, { share: number; height: number; heads: readonly [string, string]; surround: readonly [string, string]; sills: boolean; band?: { hex: string; cm: number } }>> = {
+  canal: { share: 0.44, height: 0.66, heads: ['flat', 'flat'], surround: ['stone-lintel', 'stone-lintel'], sills: true },
+  c19: { share: 0.31, height: 0.62, heads: ['flat', 'segmental'], surround: ['stone-lintel', 'none'], sills: true, band: { hex: '#e2d9c2', cm: 16 } },
+  school: { share: 0.73, height: 0.45, heads: ['flat', 'flat'], surround: ['none', 'none'], sills: false },
+};
+
 export interface FacadeRecordInput {
   id: string;
+  /** S6b: the generic layout the legacy path draws for this pand; unstated record fields copy it. */
+  generic?: FacadeGenericLayout;
   style: FacadeStyle;
   /** The wall colour after the whole chain (`facadeWallHex`): the colour the mesher tints the wall with. */
   wallHex: string;
@@ -243,7 +273,7 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   r.wallSrc = palette.wallMaterial !== undefined ? pal('wallMaterial') : input.wallMaterialSrc ?? 0;
   r.lifted = input.wallLifted ? 1 : 0;
   const frameHex = hexRgb(palette.frame);
-  r.frame = frameHex ?? hexRgb(look.dark ? FRAME_DARK : look.pale ? FRAME_PALE : input.accentHex ?? FRAME_PALE)!;
+  r.frame = frameHex ?? hexRgb(look.dark ? FRAME_DARK : look.pale ? FRAME_PALE : look.dark === undefined && input.generic?.bay?.dark ? FRAME_DARK : input.accentHex ?? FRAME_PALE)!;
   r.frameSrc = frameHex ? pal('frame') : 0;
   r.glassTone = palette.glassBlock ? 3 : look.dark ? 2 : 0;
   r.style = Math.max(0, FACADE_STYLES.indexOf(style));
@@ -276,6 +306,13 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
     upper = (mid.reduce((a, b) => a + b, 0) / mid.length) * k;
     if (ups.length > 1 && Math.abs(last - mid[mid.length - 1]) / mid[mid.length - 1] > 0.04) attic = last * k;
     if (!attic) upper = (usable - ground) / ups.length;
+  } else if (input.generic && !storeys && !Array.isArray(front.storeyHeights)) {
+    // S6b: unstated storeys copy the generic layout (its ground and storey pitch, scaled onto this wall).
+    const g = input.generic;
+    storeys = g.storeys + 1;
+    const k = usable / Math.max(0.5, g.groundM + g.storeys * g.storeyM);
+    ground = g.groundM * k; upper = g.storeys ? g.storeyM * k : 0;
+    if (storeys === 1) ground = usable;
   } else {
     const groundStated = num(front.storeyHeights?.[0]);
     ground = Math.min(groundStated ?? dims.ground * (0.92 + hash01(`${input.id}:ground`) * 0.2), usable * (storeys === 1 ? 1 : 0.5));
@@ -292,21 +329,22 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
     : baysList ? Math.max(0, ...(baysList.length > 1 ? baysList.slice(1) : baysList).filter(Number.isInteger))
     : Number.isInteger(front.bays) ? front.bays as number : 0;
   const pitch = FACADE_WINDOW_PITCH_M[style];
-  r.baysUpper = upperBays > 0 ? upperBays : input.frontLengthM ? Math.max(1, Math.round(input.frontLengthM / pitch + (seed - 0.5) * 0.4)) : BAYS_FIT;
+  r.baysUpper = upperBays > 0 ? upperBays : input.generic?.windows ? input.generic.windows : input.frontLengthM ? Math.max(1, Math.round(input.frontLengthM / pitch + (seed - 0.5) * 0.4)) : BAYS_FIT;
   const shopfront = front.shopfront as Record<string, any> | undefined;
   r.baysGround = baysList && baysList.length > 1 && Number.isInteger(baysList[0]) ? baysList[0] : r.baysUpper;
   r.baysAttic = Number.isInteger(front.atticWindows) ? front.atticWindows : 0;
-  r.doorBay = front.doorBay === null ? DOOR_BAY_NONE : Number.isInteger(front.doorBay) ? front.doorBay : input.shop && r.baysUpper && r.baysUpper < 3 ? DOOR_BAY_NONE : DOOR_BAY_AUTO;
-  r.windowKind = idx(WINDOWS, front.windows ?? STYLE_WINDOW[style], WINDOWS.indexOf(STYLE_WINDOW[style]));
+  r.doorBay = front.doorBay === null ? DOOR_BAY_NONE : Number.isInteger(front.doorBay) ? front.doorBay : input.generic && upperBays <= 0 ? input.generic.doorWindow ?? DOOR_BAY_NONE : input.shop && r.baysUpper && r.baysUpper < 3 ? DOOR_BAY_NONE : DOOR_BAY_AUTO;
+  r.windowKind = idx(WINDOWS, front.windows ?? input.generic?.bay?.kind ?? STYLE_WINDOW[style], WINDOWS.indexOf(STYLE_WINDOW[style]));
   const head = front.windowHead as Record<string, any> | undefined;
-  r.windowHead = idx(WINDOW_HEADS, head?.kind ?? (style === 'c19' && look.arch !== false ? 'segmental' : look.arch ? 'segmental' : 'flat'));
+  const cell = GENERIC_WINDOW_CELL[style], variant = input.generic?.variant === 1 ? 1 : 0, bayW = input.generic?.bay;
+  r.windowHead = idx(WINDOW_HEADS, head?.kind ?? (look.arch !== undefined ? (look.arch ? 'segmental' : 'flat') : bayW ? bayW.head : cell ? cell.heads[variant] : style === 'c19' ? 'segmental' : 'flat'));
   const ring = head?.archRing as Record<string, any> | undefined;
   r.archRing = idx(ARCH_RING_STYLES, ring?.style ?? (ring ? 'solid' : front.archRings && front.archRings !== 'none' ? 'solid' : 'none'));
   r.keystone = ring?.keystone || front.windowSurround === 'keystone' || front.windowSurround === 'eared-keystone' ? 1 : 0;
   r.tympanum = head?.tympanum ? 1 + idx(TYMPANUM_FILLS, head.tympanum) : 0;
-  r.windowShare = Math.round((num(front.windowShare) ?? FACADE_DEFAULTS.windowShare) * 255);
+  r.windowShare = Math.round((num(front.windowShare) ?? bayW?.share ?? cell?.share ?? FACADE_DEFAULTS.windowShare) * 255);
   const wh = front.windowHeights;
-  const winH = Array.isArray(wh) ? median((wh as number[]).slice(wh.length > 1 ? 1 : 0).filter(v => Number.isFinite(v))) : wh === 'diminishing' ? DIMINISHING_WINDOW_HEIGHTS[1] : look.tall ? 0.7 : FACADE_DEFAULTS.windowHeight;
+  const winH = Array.isArray(wh) ? median((wh as number[]).slice(wh.length > 1 ? 1 : 0).filter(v => Number.isFinite(v))) : wh === 'diminishing' ? DIMINISHING_WINDOW_HEIGHTS[1] : look.tall ? 0.7 : bayW?.height ?? cell?.height ?? FACADE_DEFAULTS.windowHeight;
   r.windowHeightQ = Math.round((Number.isFinite(winH) ? winH : FACADE_DEFAULTS.windowHeight) * 255);
   const cornice = (front.cornice ?? STYLE_CORNICE[style]) as (typeof CORNICES)[number];
   r.cornice = idx(CORNICES, cornice);
@@ -331,12 +369,14 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   const stone = hexRgb(palette.stone);
   r.accent = stone ?? hexRgb(input.accentHex) ?? hexRgb(FACADE_DEFAULTS.accent)!;
   const bandsSrc = at('bands'), bands = bandsSrc >= 2 ? front.bands : undefined;
-  r.bands = idx(FACADE_BANDS, bands ?? 'none');
+  // S6b: unstated bands copy the procedural cell's (c19: a cream string course at every upper floor), marked prior; the bay looks paint none.
+  const bandPrior = front.bands === undefined && !bayW && cell?.band ? cell.band : undefined;
+  r.bands = idx(FACADE_BANDS, bands ?? (bandPrior ? 'storey' : 'none'));
   r.bandsSrc = bands ? bandsSrc : 0;
   const lines = Array.isArray(front.bandLines) ? front.bandLines as string[] : [];
   r.bandLines = lines.reduce((m, l) => m | (FACADE_BAND_LINES.indexOf(l as any) >= 0 ? 1 << FACADE_BAND_LINES.indexOf(l as any) : 0), 0);
   const surroundSrc = at('windowSurround'), surround = surroundSrc >= 2 ? front.windowSurround : undefined;
-  r.sills = front.windowSills === 'consoles' || surround === 'sill' ? 1 : 0;
+  r.sills = front.windowSills === 'consoles' || surround === 'sill' || (front.windowSurround === undefined && front.windowSills === undefined && (bayW ? bayW.sills : cell?.sills)) ? 1 : 0;
   const quoinsSrc = at('quoins'), quoins = quoinsSrc >= 2 ? front.quoins : undefined;
   r.quoins = quoins === 'stone' ? 1 : 0;
   r.quoinsKind = idx(QUOINS, quoins ?? 'none');
@@ -344,17 +384,17 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   const spek = front.speklagen as Record<string, any> | undefined;
   r.spekSpacing = spek ? num(spek.spacing) ?? FACADE_DEFAULTS.spekSpacing : bands === 'speklagen' ? FACADE_DEFAULTS.spekSpacing : 0;
   r.spekCourses = spek ? num(spek.courses) ?? FACADE_DEFAULTS.spekCourses : bands === 'speklagen' ? FACADE_DEFAULTS.spekCourses : 0;
-  r.surround = idx(WINDOW_SURROUNDS, surround ?? (look.pale ? 'stone-lintel' : 'none'));
+  r.surround = idx(WINDOW_SURROUNDS, surround ?? (look.pale ? 'stone-lintel' : front.windowSurround === undefined && bayW ? bayW.surround : cell && front.windowSurround === undefined ? cell.surround[variant] : 'none'));
   r.surroundSrc = surround ? surroundSrc : look.pale ? 1 : 0;
   r.keystoneSrc = ring?.keystone ? at('windowHead') : surround === 'keystone' || surround === 'eared-keystone' ? surroundSrc : 0;
   r.archRingColour = idx(ARCH_RING_COLOURS, ring?.colour ?? (front.archRings === 'band' ? 'band' : 'stone'));
   const bh = front.bandHeights as Record<string, any> | undefined;
-  r.bandSillCm = Math.round((num(bh?.sill) ?? FACADE_DEFAULTS.bandSillCm / 100) * 100);
+  r.bandSillCm = Math.round((num(bh?.sill) ?? (bandPrior ? bandPrior.cm / 100 : FACADE_DEFAULTS.bandSillCm / 100)) * 100);
   r.bandHeadCm = Math.round((num(bh?.head) ?? FACADE_DEFAULTS.bandHeadCm / 100) * 100);
   r.bandTransomAt = Math.round((num(front.bandTransomAt) ?? FACADE_DEFAULTS.bandTransomAt) * 255);
   const bandHex = hexRgb(palette.band);
   // Speklagen and storey bands are stone (the accent); Amsterdam School raised `courses` are the wall brick in shadow.
-  r.band = bandHex ?? (bands === 'courses' ? r.wall.map(c => Math.round(c * 0.85)) as [number, number, number] : r.accent);
+  r.band = bandHex ?? (bandPrior ? hexRgb(bandPrior.hex)! : null) ?? (bands === 'courses' ? r.wall.map(c => Math.round(c * 0.85)) as [number, number, number] : r.accent);
   const stucco = material === 'stucco';
   const reveal = front.doorReveal as Record<string, any> | undefined;
   r.windowRevealCm = stucco ? FACADE_DEFAULTS.revealStuccoCm : FACADE_DEFAULTS.revealBrickCm;

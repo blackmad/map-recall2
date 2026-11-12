@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { facadePixel, frBrick, frCover, frOpening } from './facadeTwin.ts';
-import { FACADE_WALL_MEAN } from './facadeShader.ts';
+import { ATLAS_WALL_MEAN, FACADE_WALL_MEAN } from './facadeShader.ts';
 import { DOOR_BAY_AUTO, DOOR_BAY_NONE, emptyFacadeRecord, type FacadeRecord } from './facadeRecord.ts';
 
 const rec = (patch: Partial<FacadeRecord> = {}): FacadeRecord => ({
@@ -62,12 +62,13 @@ test('S6 coursing: mean 1 over the wall near, flat far; painted brick fainter; s
   assert.equal(spread(1), 0, 'stucco: smooth');
 });
 
-test('S6 lookParity: the record wall mean is the atlas wall mean for one wallHex (<= 2 luma)', () => {
+test('S6 lookParity (reported, not a gate): the record wall mean is wallHex itself; the atlas reads ATLAS_WALL_MEAN of it', () => {
   const r = rec({ windowShare: 0, baysUpper: 1, baysGround: 1, storeys: 1, wallHcm: 2000 });
   let s = 0, n = 0;
   for (let y = 0.02; y < 3; y += 0.0037) for (let x = 0.01; x < 3; x += 0.0131) { const c = px(r, x, y, 3, 6, 0.004).rgb; s += 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; n++; }
-  const atlas = (0.299 * 120 + 0.587 * 70 + 0.114 * 50) / 255 * FACADE_WALL_MEAN;
-  assert.ok(Math.abs(s / n - atlas) * 255 <= 2, `record ${(s / n * 255).toFixed(1)} vs atlas ${(atlas * 255).toFixed(1)}`);
+  const hex = (0.299 * 120 + 0.587 * 70 + 0.114 * 50) / 255, atlas = hex * ATLAS_WALL_MEAN;
+  console.log(`lookParity: record wall luma ${(s / n * 255).toFixed(1)}, atlas ${(atlas * 255).toFixed(1)} (${((s / n - atlas) * 255).toFixed(1)} luma)`);
+  assert.ok(Math.abs(s / n - hex * FACADE_WALL_MEAN) * 255 <= 2, 'the coursing keeps the record wall at its own mean');
 });
 
 test('S6 accents move pixels: speklagen, storey bands, lintel, frame, sill, keystone, quoins', () => {
@@ -76,4 +77,15 @@ test('S6 accents move pixels: speklagen, storey bands, lintel, frame, sill, keys
   const differs = (r: FacadeRecord) => sample(r).some((x, i) => Math.abs(x - base[i]) > 1 / 255);
   for (const [name, patch] of Object.entries({ speklagen: { spekSpacing: 7, spekCourses: 2 }, storey: { bands: 1, bandSillCm: 14 }, lintel: { bands: 2, bandHeadCm: 17 }, stoneLintel: { surround: 1 }, frame: { surround: 2 }, sill: { sills: 1 }, keystone: { keystone: 1 }, quoins: { quoins: 1 } }))
     assert.ok(differs(rec({ accent: [240, 236, 226], band: [240, 236, 226], ...patch } as Partial<FacadeRecord>)), name);
+});
+
+test('S6b: window kinds draw their glazing, a shop ground storey, the eaves cornice, the reveal shadow', () => {
+  const sample = (r: FacadeRecord, v0 = 0.1, v1 = 13) => { const out: number[] = []; for (let v = v0; v < v1; v += 0.03) for (let u = 0.05; u < 6; u += 0.03) out.push(...px(r, u, v).rgb); return out; };
+  const differs = (a: FacadeRecord, b: FacadeRecord, v0?: number, v1?: number) => { const x = sample(a, v0, v1), y = sample(b, v0, v1); return x.some((q, i) => Math.abs(q - y[i]) > 1 / 255); };
+  assert.ok(differs(rec({ windowKind: 3 }), rec({ windowKind: 8 })), 'plain vs sash-6-over-6');
+  assert.ok(differs(rec({ windowKind: 8 }), rec({ windowKind: 12 })), 'sash-6-over-6 vs t-window');
+  assert.ok(differs(rec(), rec({ groundKind: 1, stallriserDm: 7, fasciaHeightDm: 6, fascia: [30, 40, 60], shopPaint: [90, 30, 30] }), 0.1, 3.4), 'shop ground');
+  assert.ok(differs(rec(), rec({ cornice: 2, accent: [240, 236, 226] }), 12, 13), 'cornice band');
+  assert.ok(differs(rec({ windowRevealCm: 0 }), rec({ windowRevealCm: 11 })), 'reveal shadow');
+  assert.ok(differs(rec({ bands: 0 }), rec({ bands: 1, bandSillCm: 16, band: [226, 217, 194] })), 'storey string course');
 });

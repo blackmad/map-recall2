@@ -1,7 +1,7 @@
 // The facade record (F1 S1, #380): byte layout pinned, every field round-trips, provenance classes on three real pands.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import {
+import { genericBayWindow,
   BAYS_FIT, DOOR_BAY_AUTO, DOOR_BAY_NONE, FACADE_BANDS, FACADE_FIELDS, FACADE_GROUND_KINDS, FACADE_RECORD_BYTES, FACADE_RECORD_VERSION,
   FACADE_WALL_MATERIALS, emptyFacadeRecord, facadeField, facadeLayoutMetres, facadeRecordFor, facadeRecordsFor, facadeWallRGB,
   packFacadeRecord, packFacadeRecordFor, srcClass, unpackFacadeRecord, type FacadeRecord,
@@ -200,4 +200,24 @@ test('multi-front pands get one record per front; packing is deterministic', () 
   assert.equal(rs[0].storeys, 3); assert.equal(rs[1].storeys, 4);
   const input = { id: 'm', style: 'c19' as const, wallHex: '#6a4a36', heightM: 13, spec };
   assert.deepEqual(packFacadeRecordFor(input), packFacadeRecordFor(input));
+});
+
+test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, sash bars, frame, opening size); stated fields win', () => {
+  // bayLook.ts c19 preset 82: a stone arch over a rect transom window, pale jamb blocks; bayVariantOpenings: 2 x 0.275 of the bay, 0.70 tall.
+  const bay = genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'arch', sash: 'transom', paleAccents: true }, { axes: [0.25, 0.75], width: 0.275, sill: 0.147, head: 0.847 });
+  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 'casement-toplight', dark: false, share: 0.55, height: 0.7 });
+  assert.equal(genericBayWindow({ archetype: 'modern', shape: 'rect', lintel: 'none', sash: 'plain', frameTone: 'dark' }).surround, 'none');
+  assert.equal(genericBayWindow({ archetype: 'canal', shape: 'segmental', lintel: 'none', sash: 'paired-transom' }).head, 'segmental');
+  const generic = { storeys: 3, groundM: 3.5, storeyM: 3.1, windows: 3, doorWindow: 2, variant: 1, bay };
+  const base = { id: 'bay-prior', style: 'c19' as const, wallHex: '#8a6145', heightM: 14, minHeightM: 0, frontLengthM: 6, generic };
+  const r = facadeRecordFor(base);
+  assert.equal(WINDOW_HEADS[r.windowHead], 'flat');
+  assert.equal(WINDOW_SURROUNDS[r.surround], 'full-frame');
+  assert.equal(WINDOWS[r.windowKind], 'casement-toplight');
+  assert.equal(r.windowShare, Math.round(0.55 * 255));
+  assert.equal(r.bands, 0, 'the bay looks paint no storey band');
+  assert.equal(r.doorBay, 2);
+  const stated = facadeRecordFor({ ...base, spec: { d: { fronts: [{ windowHead: { kind: 'segmental' }, windows: 'sash' }] } } });
+  assert.equal(WINDOW_HEADS[stated.windowHead], 'segmental');
+  assert.equal(WINDOWS[stated.windowKind], 'sash');
 });

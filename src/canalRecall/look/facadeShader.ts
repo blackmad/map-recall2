@@ -51,9 +51,14 @@ function fieldAccessors(): string {
 /** Window pitch per FACADE_STYLES index (the record's `style`), for walls no source counts (baysUpper 0). */
 const PITCH_GLSL = `float frPitch(float style) { ${FACADE_STYLES.map((s, i) => `if (style < ${f1(i + 0.5)}) return ${f1(FACADE_WINDOW_PITCH_M[s])};`).join(' ')} return 2.0; }`;
 
-/** The wall's mean against its colour: the atlas brick cell's mean (palette.ts BRICK_CELL_MEAN), so the record wall and
- *  the atlas wall of one wallHex read the same at a distance (design §6.5, lookParity). */
-export const FACADE_WALL_MEAN = BRICK_CELL_MEAN;
+/**
+ * The wall's mean against its colour. Integrator ruling (#380, 2026-11-12, the user's correctness-first rule): the record
+ * wall is the measured colour itself (1.0 x wallHex), not the atlas brick cell's mean (BRICK_CELL_MEAN, 0.88), even where
+ * the city then reads lighter than the atlas path; the atlas parity is a reported number (facadeTwin.test.ts), not a gate.
+ */
+export const FACADE_WALL_MEAN = 1;
+/** The atlas wall's mean against its colour, for the parity report. */
+export const ATLAS_WALL_MEAN = BRICK_CELL_MEAN;
 /** Brick coursing (S6): a Dutch waalformaat course (50 mm brick + 12.5 mm joint) and a 220 mm stretcher. */
 export const FR_COURSE = 0.0625, FR_BRICK = 0.22, FR_JOINT = 0.012, FR_MORTAR = 1.35, FR_TONE = 0.14;
 const JOINT_SHARE = FR_JOINT / FR_COURSE + FR_JOINT / FR_BRICK - (FR_JOINT / FR_COURSE) * (FR_JOINT / FR_BRICK);
@@ -62,7 +67,45 @@ export const FR_PATTERN_MEAN = JOINT_SHARE * FR_MORTAR + (1 - JOINT_SHARE);
 /** Coursing amplitude by FACADE_WALL_MATERIALS index: brick full, painted brick faint, the rest smooth. */
 export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
 
+/**
+ * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the
+ * opening's height (0: no transom). S6b's reading of each kind's name; a kind the table draws wrongly is a one-row fix.
+ */
+export const FACADE_PANES: readonly (readonly [number, number, number, number, number])[] = [
+  [1, 2, 0, 0, 0], [3, 4, 0, 0, 0], [2, 2, 0, 0, 0], [1, 1, 0, 0, 0], [2, 1, 0, 0, 0], [1, 1, 0, 0, 0], [2, 1, 0, 0, 0], [1, 5, 0, 0, 0],
+  [3, 4, 0, 0, 0], [4, 4, 0, 0, 0], [3, 6, 0, 0, 0], [2, 3, 0, 0, 0], [2, 1, 1, 1, 0.3], [1, 1, 4, 1, 0.3], [2, 1, 2, 1, 0.3], [2, 1, 1, 1, 0.25],
+  [2, 1, 2, 1, 0.25], [2, 1, 4, 2, 0.3], [3, 1, 3, 1, 0.25], [2, 1, 2, 1, 0.25], [2, 1, 6, 2, 0.3], [2, 1, 0, 0, 0], [2, 4, 0, 0, 0], [3, 1, 1, 1, 0.25],
+];
+/** Glazing bar width (m), the reveal's shadow share of its depth, the eaves cornice band height (m) by CORNICES index. */
+export const FR_BAR = 0.04, FR_REVEAL_SHADE = 0.45, FR_CORNICE_M = [0, 0.25, 0.4, 0.55, 0.5] as const;
+const vec4s = (rows: readonly (readonly number[])[]) => rows.map(r => `vec4(${r.map(f1).join(', ')})`).join(', ');
+
 const SURFACE_GLSL = /* glsl */ `
+const vec4 FR_PANES[${FACADE_PANES.length}] = vec4[${FACADE_PANES.length}](${vec4s(FACADE_PANES.map(r => r.slice(0, 4)))});
+const float FR_PANE_TOP[${FACADE_PANES.length}] = float[${FACADE_PANES.length}](${FACADE_PANES.map(r => f1(r[4])).join(', ')});
+// Bars dividing [a, b] into n parts (n - 1 bars of FR_BAR), box-filtered; their area share once a part is under a pixel.
+float frBars(float x, float a, float b, float n, float fw) {
+  if (n < 1.5) return 0.0;
+  float part = (b - a) / n, t = (x - a) / part, d = abs(t - floor(t + 0.5)) * part;
+  if (t < 0.5 || t > n - 0.5) return 0.0;
+  float c = clamp(0.5 + (${f1(FR_BAR / 2)} - d) / fw, 0.0, 1.0);
+  return mix(c, ${f1(FR_BAR)} / part, smoothstep(0.5 * part, part, fw));
+}
+// Glazing bars of a window kind over the pane [x0, x1] x [y0, y1]; a transom bar under the toplight.
+float frGlazing(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float kind) {
+  int k = int(clamp(kind, 0.0, ${f1(FACADE_PANES.length - 1)}) + 0.5);
+  vec4 g = FR_PANES[k]; float top = FR_PANE_TOP[k];
+  float split = top > 0.0 ? y1 - (y1 - y0) * top : y1;
+  float c;
+  if (p.y < split) c = max(frBars(p.x, x0, x1, g.x, fw.x), frBars(p.y, y0, split, g.y, fw.y));
+  else c = max(frBars(p.x, x0, x1, g.z, fw.x), frBars(p.y, split, y1, g.w, fw.y));
+  if (top > 0.0) c = max(c, frCover(p.y, split - ${f1(FR_BAR / 2)}, split + ${f1(FR_BAR / 2)}, fw.y));
+  return c;
+}
+// The reveal's shadow on the glass: a strip along the head and the left jamb as deep as the reveal (sun from the upper left).
+float frReveal(vec2 p, vec2 fw, float x0, float y1, float depth) {
+  return max(frCover(p.x, x0, x0 + depth, fw.x), frCover(p.y, y1 - depth, y1, fw.y)) * ${f1(FR_REVEAL_SHADE)};
+}
 float frHash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
 // Brick coursing, mean 1 over the wall; it fades to its mean as a course falls under about two pixels.
 float frBrick(vec2 w, vec2 fw, float material, float contrast) {
@@ -87,11 +130,14 @@ float frBandLines(float sv, float sh, float y0, float y1, float storey, vec2 fw)
   float b = fr_bands();
   if (b < 0.5 || (b > 4.5 && b < 5.5)) return 0.0;
   float l = fr_bandLines();
-  bool sill = l > 0.5 ? mod(l, 2.0) > 0.5 : (b < 1.5 || (b > 2.5 && b < 4.5) || b > 5.5);
+  // Unstated lines: a storey band (storey, both, courses, painted) is the string course at each upper floor.
+  bool floorLine = l < 0.5 && (b < 1.5 || (b > 2.5 && b < 4.5) || b > 5.5);
+  bool sill = l > 0.5 && mod(l, 2.0) > 0.5;
   bool transom = l > 0.5 && mod(floor(l / 2.0), 2.0) > 0.5;
   bool head = l > 0.5 ? l > 3.5 : (b > 1.5 && b < 4.5);
   float hs = fr_bandSillCm() * 0.01, hh = fr_bandHeadCm() * 0.01, c = 0.0;
   if (sill && storey > 0.5) c = max(c, frCover(sv, y0 - hs, y0, fw.y));
+  if (floorLine && storey > 0.5) c = max(c, frCover(sv, 0.0, hs, fw.y));
   if (head) c = max(c, frCover(sv, y1, y1 + hh, fw.y));
   if (transom) { float t = y0 + (y1 - y0) * fr_bandTransomAt() / 255.0; c = max(c, frCover(sv, t - 0.04, t + 0.04, fw.y)); }
   return c;
@@ -104,6 +150,14 @@ float frSurround(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float 
   if (fr_sills() > 0.5 || (s > 3.5 && s < 4.5)) c = max(c, frCover(p.x, x0 - 0.06, x1 + 0.06, fw.x) * frCover(p.y, y0 - 0.08, y0, fw.y));
   if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || s > 4.5) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
   return c;
+}
+// The eaves cornice band: CORNICES height under the wall top, a shadow line under it.
+float frCornice(float y, vec2 fw) {
+  int k = int(fr_cornice() + 0.5);
+  float h = k == 1 ? ${f1(FR_CORNICE_M[1])} : k == 2 ? ${f1(FR_CORNICE_M[2])} : k == 3 ? ${f1(FR_CORNICE_M[3])} : k == 4 ? ${f1(FR_CORNICE_M[4])} : 0.0;
+  if (h <= 0.0) return 0.0;
+  float top = fr_wallHcm() * 0.01;
+  return frCover(y, top - h, top, fw.y);
 }
 // Quoins: stones 0.25 m high at both ends of a front, alternately 0.45 and 0.3 m deep into the wall.
 float frQuoin(vec2 w, float len, vec2 fw) {
@@ -173,6 +227,7 @@ vec3 facadeRecordColour(out vec2 m) {
   vec2 w = vWall.xy;
   vec2 fw = max(fwidth(w), vec2(1e-4));
   float kind = vWallKind - 8.0 * step(7.5, vWallKind);
+  bool front = kind < 0.5;
   m = vec2(1.0, 0.0);
   if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
   // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
@@ -185,6 +240,9 @@ vec3 facadeRecordColour(out vec2 m) {
   float atticH = fr_atticDm() * 0.1, storeys = max(fr_storeys(), 1.0);
   float v = w.y - plinth;
   if (v < 0.0 || w.y > fr_wallHcm() * 0.01) return wallC;          // plinth band; the crown above the eaves
+  // The eaves cornice as a band under the wall top (S6b; the projecting ledge is S7's crown instance).
+  float corn = front ? frCornice(w.y, fw) : 0.0;
+  if (corn > 0.0) { wallC = mix(wallC, fr_accent(), corn); m.r *= 1.0 - corn; if (corn > 0.999) return wallC; }
   float storey, sv, sh;
   if (v < groundH) { storey = 0.0; sh = groundH; sv = v; }
   else {
@@ -192,7 +250,6 @@ vec3 facadeRecordColour(out vec2 m) {
     if (atticH > 0.0 && storey >= storeys - 1.0) { storey = storeys - 1.0; sh = atticH; sv = v - groundH - (storeys - 2.0) * upperH; }
   }
   if (storey > storeys - 0.5) return wallC;
-  bool front = kind < 0.5;
   float len = max(vWall.z, 1e-3), pitch = frPitch(fr_style());
   float bays = front ? (storey < 0.5 ? fr_baysGround() : (atticH > 0.0 && storey > storeys - 1.5 && fr_baysAttic() > 0.0 ? fr_baysAttic() : fr_baysUpper())) : 0.0;
   if (bays < 0.5) bays = max(1.0, floor(len / pitch + 0.5));
@@ -203,6 +260,19 @@ vec3 facadeRecordColour(out vec2 m) {
   // The door: a front's ground storey, in doorBay (254: the bay nearest the centre; 255 none).
   float doorBay = fr_doorBay(), door = doorBay > 253.5 && doorBay < 254.5 ? floor((bays - 1.0) * 0.5) : doorBay;
   vec2 p = vec2(bx, sv);
+  // A shop ground storey (groundKind shop / pui-glazed): stallriser, display glass and fascia across the front (S6b
+  // generic; F2 replaces this with the measured pui).
+  float gk = fr_groundKind();
+  if (front && storey < 0.5 && (abs(gk - 1.0) < 0.5 || abs(gk - 6.0) < 0.5) && !(abs(bay - door) < 0.5 && doorBay < 254.5)) {
+    float riser = fr_stallriserOn() > 0.5 || gk < 1.5 ? fr_stallriserDm() * 0.1 : 0.0, fascia = fr_fasciaOn() > 0.5 || gk < 1.5 ? max(fr_fasciaHeightDm() * 0.1, 0.3) : 0.0;
+    float top = sh - fascia;
+    float fasc = frCover(sv, top, sh, fw.y), glass = frOpening(p, fw, 0.08, bw - 0.08, riser, top - 0.08, 0.0, 0.0);
+    vec3 c = mix(wallC, fr_shopPaint(), max(fasc, frCover(sv, 0.0, riser, fw.y)));
+    c = mix(c, fr_fascia(), fasc);
+    c = mix(c, frGlass(clamp((top - sv) / max(top - riser, 0.1), 0.0, 1.0)), glass);
+    m = vec2(m.r * (1.0 - max(glass, max(fasc, frCover(sv, 0.0, riser, fw.y)))), 0.0);
+    return c;
+  }
   float share = fr_windowShare() / 255.0, winH = fr_windowHeightQ() / 255.0;
   vec3 frame = fr_frame();
   if (front && storey < 0.5 && abs(bay - door) < 0.5 && doorBay < 254.5) {
@@ -228,7 +298,9 @@ vec3 facadeRecordColour(out vec2 m) {
   float pane = frOpening(p, fw, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, hd, rise);
   float g = clamp((y1 - p.y) / max(y1 - y0, 1e-3), 0.0, 1.0);
   vec3 c = mix(wallC, frame, outer);
-  c = mix(c, frGlass(g), pane);
+  vec3 glassC = frGlass(g) * (1.0 - frReveal(p, fw, x0 + fr, y1 - fr, fr_windowRevealCm() * 0.01 * facadeKnobs.y));
+  glassC = mix(glassC, frame, frGlazing(p, fw, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, fr_windowKind()));
+  c = mix(c, glassC, pane);
   m = vec2(m.r * (1.0 - outer), 0.0);
   return c;
 }

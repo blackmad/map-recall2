@@ -7,7 +7,7 @@
 import { FACADE_WINDOW_PITCH_M, type FacadeRecord } from './facadeRecord.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { GLASS_STOPS } from './windowSdf.js';
-import { FACADE_WALL_MEAN, FR_BRICK, FR_COURSE, FR_COURSING, FR_JOINT, FR_MORTAR, FR_PATTERN_MEAN, FR_TONE } from './facadeShader.js';
+import { FACADE_PANES, FR_BAR, FR_CORNICE_M, FR_REVEAL_SHADE, FACADE_WALL_MEAN, FR_BRICK, FR_COURSE, FR_COURSING, FR_JOINT, FR_MORTAR, FR_PATTERN_MEAN, FR_TONE } from './facadeShader.js';
 
 const clamp = (x: number, a: number, b: number) => Math.min(b, Math.max(a, x));
 const hexRgb = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255) as [number, number, number];
@@ -59,12 +59,14 @@ export function frBandLines(r: FacadeRecord, sv: number, sh: number, y0: number,
   const b = r.bands;
   if (b < 0.5 || (b > 4.5 && b < 5.5)) return 0;
   const l = r.bandLines;
-  const sill = l > 0.5 ? mod(l, 2) > 0.5 : b < 1.5 || (b > 2.5 && b < 4.5) || b > 5.5;
+  const floorLine = l < 0.5 && (b < 1.5 || (b > 2.5 && b < 4.5) || b > 5.5);
+  const sill = l > 0.5 && mod(l, 2) > 0.5;
   const transom = l > 0.5 && mod(Math.floor(l / 2), 2) > 0.5;
   const head = l > 0.5 ? l > 3.5 : b > 1.5 && b < 4.5;
   const hs = r.bandSillCm * 0.01, hh = r.bandHeadCm * 0.01;
   let c = 0;
   if (sill && storey > 0.5) c = Math.max(c, frCover(sv, y0 - hs, y0, fw[1]));
+  if (floorLine && storey > 0.5) c = Math.max(c, frCover(sv, 0, hs, fw[1]));
   if (head) c = Math.max(c, frCover(sv, y1, y1 + hh, fw[1]));
   if (transom) { const t = y0 + (y1 - y0) * r.bandTransomAt / 255; c = Math.max(c, frCover(sv, t - 0.04, t + 0.04, fw[1])); }
   return c;
@@ -78,6 +80,27 @@ export function frSurround(r: FacadeRecord, p: [number, number], fw: [number, nu
   if (r.keystone > 0.5 || (s > 2.5 && s < 3.5) || s > 4.5) { const xc = 0.5 * (x0 + x1); c = Math.max(c, frCover(p[0], xc - 0.09, xc + 0.09, fw[0]) * frCover(p[1], y1 - 0.02, y1 + 0.2, fw[1])); }
   return c;
 }
+export function frBars(x: number, a: number, b: number, n: number, fw: number): number {
+  if (n < 1.5) return 0;
+  const part = (b - a) / n, t = (x - a) / part, d = Math.abs(t - Math.floor(t + 0.5)) * part;
+  if (t < 0.5 || t > n - 0.5) return 0;
+  const c = clamp(0.5 + (FR_BAR / 2 - d) / fw, 0, 1), k = smooth(0.5 * part, part, fw);
+  return c * (1 - k) + (FR_BAR / part) * k;
+}
+export function frGlazing(p: [number, number], fw: [number, number], x0: number, x1: number, y0: number, y1: number, kind: number): number {
+  const g = FACADE_PANES[Math.round(clamp(kind, 0, FACADE_PANES.length - 1))], top = g[4];
+  const split = top > 0 ? y1 - (y1 - y0) * top : y1;
+  let c = p[1] < split ? Math.max(frBars(p[0], x0, x1, g[0], fw[0]), frBars(p[1], y0, split, g[1], fw[1])) : Math.max(frBars(p[0], x0, x1, g[2], fw[0]), frBars(p[1], split, y1, g[3], fw[1]));
+  if (top > 0) c = Math.max(c, frCover(p[1], split - FR_BAR / 2, split + FR_BAR / 2, fw[1]));
+  return c;
+}
+export const frReveal = (p: [number, number], fw: [number, number], x0: number, y1: number, depth: number) => Math.max(frCover(p[0], x0, x0 + depth, fw[0]), frCover(p[1], y1 - depth, y1, fw[1])) * FR_REVEAL_SHADE;
+export function frCornice(r: FacadeRecord, y: number, fw: readonly [number, number]): number {
+  const h = FR_CORNICE_M[Math.round(r.cornice)] ?? 0;
+  if (h <= 0) return 0;
+  const top = r.wallHcm * 0.01;
+  return frCover(y, top - h, top, fw[1]);
+}
 export function frQuoin(w: readonly [number, number], len: number, fw: readonly [number, number]): number {
   const k = Math.floor(w[1] / 0.25), d = mod(k, 2) < 0.5 ? 0.45 : 0.3;
   const joint = frCover(w[1] - k * 0.25, 0.015, 0.25, fw[1]);
@@ -88,7 +111,7 @@ export function frQuoin(w: readonly [number, number], len: number, fw: readonly 
 export function facadePixel(r: FacadeRecord, wall: readonly [number, number, number], kindIn: number, fw: readonly [number, number], knobs: readonly number[] = [1, 1, 1, 0]): { rgb: [number, number, number]; m: [number, number] } {
   const w: [number, number] = [wall[0], wall[1]];
   const f: [number, number] = [Math.max(fw[0], 1e-4), Math.max(fw[1], 1e-4)];
-  const kind = kindIn - 8 * (kindIn >= 7.5 ? 1 : 0);
+  const kind = kindIn - 8 * (kindIn >= 7.5 ? 1 : 0), front = kind < 0.5;
   if (kind > 6.5) return { rgb: rgb(r.roof), m: [0, 0] };
   const tone = FACADE_WALL_MEAN * frBrick(w, f, r.wallMaterial, knobs[0]);
   let wallC = rgb(r.wall).map(x => x * tone) as [number, number, number];
@@ -100,6 +123,8 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
   const atticH = r.atticDm * 0.1, storeys = Math.max(r.storeys, 1);
   const v = w[1] - plinth;
   if (v < 0 || w[1] > r.wallHcm * 0.01) return { rgb: wallC, m: [mr, 0] };
+  const corn = front ? frCornice(r, w[1], f) : 0;
+  if (corn > 0) { wallC = mix3(wallC, rgb(r.accent), corn); mr *= 1 - corn; if (corn > 0.999) return { rgb: wallC, m: [mr, 0] }; }
   let storey: number, sv: number, sh: number;
   if (v < groundH) { storey = 0; sh = groundH; sv = v; }
   else {
@@ -107,7 +132,6 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
     if (atticH > 0 && storey >= storeys - 1) { storey = storeys - 1; sh = atticH; sv = v - groundH - (storeys - 2) * upperH; }
   }
   if (storey > storeys - 0.5) return { rgb: wallC, m: [mr, 0] };
-  const front = kind < 0.5;
   const len = Math.max(wall[2], 1e-3), pitch = frPitch(r.style);
   let bays = front ? (storey < 0.5 ? r.baysGround : (atticH > 0 && storey > storeys - 1.5 && r.baysAttic > 0 ? r.baysAttic : r.baysUpper)) : 0;
   if (bays < 0.5) bays = Math.max(1, Math.floor(len / pitch + 0.5));
@@ -116,6 +140,16 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
   if (front && r.quoins > 0.5) { const q = frQuoin(w, len, f); wallC = mix3(wallC, accentC, q); mr *= 1 - q; }
   const doorBay = r.doorBay, door = doorBay > 253.5 && doorBay < 254.5 ? Math.floor((bays - 1) * 0.5) : doorBay;
   const p: [number, number] = [bx, sv];
+  const gk = r.groundKind;
+  if (front && storey < 0.5 && (Math.abs(gk - 1) < 0.5 || Math.abs(gk - 6) < 0.5) && !(Math.abs(bay - door) < 0.5 && doorBay < 254.5)) {
+    const riser = r.stallriserOn > 0.5 || gk < 1.5 ? r.stallriserDm * 0.1 : 0, fascia = r.fasciaOn > 0.5 || gk < 1.5 ? Math.max(r.fasciaHeightDm * 0.1, 0.3) : 0;
+    const top = sh - fascia;
+    const fasc = frCover(sv, top, sh, f[1]), glass = frOpening(p, f, 0.08, bw - 0.08, riser, top - 0.08, 0, 0), rs = frCover(sv, 0, riser, f[1]);
+    let c = mix3(wallC, rgb(r.shopPaint), Math.max(fasc, rs));
+    c = mix3(c, rgb(r.fascia), fasc);
+    c = mix3(c, frGlass(clamp((top - sv) / Math.max(top - riser, 0.1), 0, 1)), glass);
+    return { rgb: c, m: [mr * (1 - Math.max(glass, Math.max(fasc, rs))), 0] };
+  }
   const share = r.windowShare / 255, winH = r.windowHeightQ / 255;
   const frame = rgb(r.frame);
   if (front && storey < 0.5 && Math.abs(bay - door) < 0.5 && doorBay < 254.5) {
@@ -137,5 +171,7 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
   const fr = Math.min(0.07, 0.12 * ww);
   const pane = frOpening(p, f, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, hd, rise);
   const g = clamp((y1 - p[1]) / Math.max(y1 - y0, 1e-3), 0, 1);
-  return { rgb: mix3(mix3(wallC, frame, outer), frGlass(g), pane), m: [mr * (1 - outer), 0] };
+  const shade = 1 - frReveal(p, f, x0 + fr, y1 - fr, r.windowRevealCm * 0.01 * (knobs[1] ?? 1));
+  const glassC = mix3(frGlass(g).map(x => x * shade), frame, frGlazing(p, f, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, r.windowKind));
+  return { rgb: mix3(mix3(wallC, frame, outer), glassC, pane), m: [mr * (1 - outer), 0] };
 }

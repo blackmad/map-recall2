@@ -1,5 +1,6 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
+import { GENERIC_WINDOWS_PER_BAY, genericBayWindow, type FacadeGenericLayout } from './look/facadeRecord.js';
 import { GENERIC_STOOP } from './stoopExtra.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
@@ -23,7 +24,7 @@ import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOp
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
-import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
@@ -574,6 +575,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const fallbackBuilding = b.streetAppearance ? { ...b, streetAppearance: { ...b.streetAppearance, streetCorner } } : b;
     const crownFronts: StreetCrownFront[] = [];
     let recFrontM = 0;
+    /** F1: the generic layout of the longest street run (the record's priors copy it: storeys, heights, windows, door). */
+    let recGeneric: FacadeGenericLayout | undefined;
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
@@ -617,6 +620,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (recordMode) {
         // F1: one quad per wall plane, base to top, u in metres along the run (bays carry on round a kink), v from the base.
         const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));
+        if (street && runLen > recFrontM) {
+          const g = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+          const per = GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
+          recGeneric = g ? { storeys: g.storeys, groundM: g.groundM, storeyM: g.storeyM, windows: g.bays * per, doorWindow: g.doorBays.length && !(b.shopfront && g.bays < 3) && !b.plainWalls ? g.doorBays[0] * per : null, variant,
+            // The photo look's bay preset (bayLook.ts) is what the legacy path paints: its head, stone, sash bars and frame.
+            ...(b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? { bay: genericBayWindow(bayVariant(BAY_ENTRIES[b.layers.upper]), b.openings?.upper) } : {}) } : undefined;
+        }
         if (street) recFrontM = Math.max(recFrontM, runLen);
         let s = 0;
         for (const { e } of run) {
@@ -850,7 +860,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       recInput = { id: b.id, style: b.style, wallHex: b.wallHex, ...(b.specRecipe?.wallHex ? { wallLifted: true } : {}), ...(b.accentHex ? { accentHex: b.accentHex } : {}),
         ...(b.groundHex ? { groundHex: b.groundHex } : {}), ...(b.shop || b.shopfront ? { shop: true } : {}), ...(b.roof?.roofHex ?? b.lid?.hex ? { roofHex: b.roof?.roofHex ?? b.lid?.hex } : {}),
         ...(b.lid ? { lid: true } : {}), heightM: buildingTop, minHeightM: base, ...(b.specRecipe?.look ? { look: b.specRecipe.look } : {}),
-        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
+        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
     }
     signTotal += sign.length;
     extrasTotal += extraTris;
