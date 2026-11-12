@@ -15,6 +15,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Browser queue fixes (P0, approved 2026-11-12, lane Q1 #378)
+
+The queue stalled twice on 2026-11-12 (13:59 nesting deadlock; 14:02 three ownerless slots); 19 jobs waited at 14:26. Brief `docs/handoffs/lane-browser-queue-20261112.md`. Runs ahead of the facade programme's F4 critic, which would add to the queue.
+- Crash-safe slots in `/tmp/canal-pw.sh`: reclaim a dead holder's slot, expire after a measured maximum hold, first-come-first-served order (the "FIFO queue" item below), tracked copy plus installer in the repo.
+- Pre-push hook runs the e2e smoke only for pushes to `main`; lane-branch pushes take no browser slot.
+- `house:frames` runs several lanes' lists in one browser session, with cached photo cuts.
+
 ## Own-look buurten in the canal belt (P0, user 2026-11-10)
 
 The user: "we need to focus on buurts in the canal belt and just outside". Belt and inner-ring lanes run in parallel, and Opus reviews every sheet before merge.
