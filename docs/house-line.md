@@ -2348,8 +2348,8 @@ Read:
   stands.
 - **Period palette** (`brickLift.ts periodWallList` → `measuredPeriodList`): the city-wide L deciles of each archetype's
   measured walls replace `PERIOD_WALLS.photo` (and brickLift v2's c19 list) for pands with no profile and no neighbours,
-  and for `heldBrickWall`'s brick fallback. canal (n 58) #363839 .. #f0d5ac, c19 (n 541) #3c3731 .. #8b8e8c, school
-  (n 421) #383838 .. #897b76; no #b05a40/#bd6a45 terracotta, no #3e4a40/#5d605a slate.
+  and for `heldBrickWall`'s brick fallback. canal (n 58) #3a3735 .. #f0d5ac, c19 (n 559) #3f362d .. #96958f, school
+  (n 434) #383838 .. #988a87; no #b05a40/#bd6a45 terracotta, no #3e4a40/#5d605a slate.
 - **Chroma at the decoration stage** (`houseSpec/wallColour.ts specWallDisplay`, flag `?wallChroma=0`, `WALL_CHROMA=0`,
   default on). With the pool on and the round-3 decoration, the 96 changed pairs drew pixel C 0.043 at hue 48 against
   the photos' 0.016 at hue 62: orange-red where the photo is brown. The readings sit near the photo's chroma (reading vs
@@ -2360,3 +2360,38 @@ Read:
 - **Reach:** both the live path and the baked world-v1 path (the worker forwards `wallPool`, `engine/workerPool.ts`);
   the integrator rebuilds world-v1. F1's `?shaderFacades=1` draws record walls at 1.0 x wallHex, so it gets the change.
 - **Off is byte-identical** (`measuredWallPool.test.ts`: bayLookFor with and without a location under `WALL_POOL=0`).
+
+### Result on the W1 pairs (`scripts/house-frames/wall-colour-w1.json`, 114 pairs)
+
+The 114 pairs are F4's 87 wall-colour and 11 brick-vs-render pairs plus the 16 wall-colour-truth pands (with 157926 and
+154359). The run used `house:frames --before`, `?world=live`, and before = the committed bundles. After = scratch
+bundles served via `BUNDLES_DIR`.
+
+| | before | after |
+|---|---|---|
+| mean wall dE (pixel vs photo) | 0.151 | **0.097** |
+| changed pairs (98) mean dE | 0.155 | 0.092 |
+| pixel L (photo 0.427) | 0.506 | 0.463 |
+| pixel C (photo 0.016) | 0.031 | 0.025 |
+| better / worse > 0.02 / same | | 61 / **15 (13 %)** / 16 |
+
+- **Gate:** the mean dE went down. The rule "no more than 1 in 10 pairs worse by more than 0.02" **fails** at 15 of 114.
+  - Most of the 15 are pands where the before swatch happened to land near a dark photo, or where the pool's median is
+    lighter than a near-black painted front.
+  - One is a 1986 pand that BAG dates post-war and that still draws a pre-war list.
+- **Unchanged (intended):**
+  - the installed chunks (nassau-145-152, kinker-206-242);
+  - the spec pands whose dark readings gain little chroma either way (154359, 157926, 161457).
+- **Critic round 101** (opus, blind, `artifacts/critic/round-101`): wall colour/tone was the gap on **36 of 114**
+  pairs. On these same pairs it was 87 in round 0. Of round 0's 87, 32 still name wall colour.
+  - The remaining complaints: near-black painted fronts drawn brown, purple-red brick drawn olive-brown, and orange
+    reds that are still too bright.
+  - The critic was fooled once.
+
+Still wrong:
+- A row of unmeasured pands now draws a uniform grey-brown. The reds and the odd pale stucco front of a canal row are lost.
+- Painted black or white fronts with no reading draw brown.
+- The pool covers only areas with spec readings. Elsewhere the profile swatches remain.
+- A held reading still draws heldBrickWall.
+- The reading stage is one photo per pand: 154359 reads 0.24 L darker than its frame.
+
