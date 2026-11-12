@@ -8,7 +8,7 @@ import { REPO_ROOT } from './nodeDom.ts';
 test('docs/house-line.md §2 carries the HELP text and documents every flag', () => {
   const doc = fs.readFileSync(path.join(REPO_ROOT, 'docs/house-line.md'), 'utf8');
   assert.ok(doc.includes(HELP), 'docs/house-line.md must contain the HELP text of scripts/house-preview/preview.ts verbatim');
-  for (const flag of HELP.match(/^ {2}--[a-z-]+/gm)!.map(f => f.trim())) assert.doesNotThrow(() => parseArgs(['0363100012164843', flag, ...(flag === '--route' ? ['generic'] : ['--spec', '--intent', '--look', '--ppm', '--out'].includes(flag) ? ['x'] : [])]), flag);
+  for (const flag of HELP.match(/^ {2}--[a-z-]+/gm)!.map(f => f.trim())) assert.doesNotThrow(() => parseArgs(['0363100012164843', flag, ...(flag === '--route' ? ['generic'] : ['--spec', '--intent', '--look', '--ppm', '--out', '--set'].includes(flag) ? ['x'] : [])]), flag);
 });
 
 test('parseArgs: a .json target is a spec; --recipe takes an optional house id', () => {

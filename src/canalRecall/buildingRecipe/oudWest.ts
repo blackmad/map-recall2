@@ -25,6 +25,7 @@ import type {CanalHouseRecipe} from '../canalhouseRecipes.ts';
 import type {FitReport} from './fit.ts';
 import type {CanalHouseIntent} from './intent.ts';
 import {prism} from './amsterdamSchool.ts';
+import {BALUSTER, guardRun, type BoxFn, type LevelRun} from './ironRailing.ts';
 
 type Balcony = NonNullable<FitReport['fronts'][number]['timberBalconies']>[number];
 const material = (colour: string) => new T.MeshStandardMaterial({color: colour, roughness: 1});
@@ -34,8 +35,8 @@ const meshOf = (values: number[], mat: T.Material, name: string, component: stri
   return m;
 };
 
-/** Baluster and guard proportions of a timber balcony (metres). */
-export const BALUSTER = {shaftM: 0.045, bulbM: 0.08, bulbHM: 0.26, bulbAtK: 0.42, railHM: 0.06, railDM: 0.08, baseHM: 0.07, insetM: 0.04, ironBarM: 0.018, ironPitchM: 0.14, turnedPitchM: 0.16};
+/** Baluster and guard proportions of a timber balcony (metres): the shared iron railing's (ironRailing.ts). */
+export {BALUSTER};
 /** Carved bracket profile in (outward z, y below the platform underside), metres: a deep top arm curving down to the wall. */
 export const BRACKET_PROFILE: [number, number][] = [[0, 0], [0.6, 0], [0.5, -0.16], [0.18, -0.42], [0, -0.58]];
 
@@ -78,31 +79,15 @@ export function timberBalconyGeometry(b: Balcony): {platform: number[]; guard: n
     }
   }
   // Guard on the front (just inside the platform edge) and both returns back to the wall.
-  const zf = z1 - B.insetM, top = y + b.guardM, runs: {along: 'x' | 'z'; a: number; c: number; at: number}[] = [
+  const zf = z1 - B.insetM, top = y + b.guardM, runs: LevelRun[] = [
     {along: 'x', a: x0 + B.insetM, c: x1 - B.insetM, at: zf},
     {along: 'z', a: 0.02, c: zf, at: x0 + B.insetM},
     {along: 'z', a: 0.02, c: zf, at: x1 - B.insetM},
   ];
   let balusters = 0;
-  for (const r of runs) {
-    const rail = (ya: number, yb: number, w: number) => r.along === 'x' ? box(guard, r.a - w / 2, r.c + w / 2, ya, yb, r.at - w / 2, r.at + w / 2, ['back']) : box(guard, r.at - w / 2, r.at + w / 2, ya, yb, r.a, r.c, ['back']);
-    rail(top - B.railHM, top, B.railDM);
-    rail(y, y + B.baseHM, B.railDM * 0.8);
-    const pitch = b.rail === 'iron' ? B.ironPitchM : B.turnedPitchM, count = Math.max(1, Math.floor((r.c - r.a) / pitch));
-    for (let k = 1; k < count; k++) {
-      const t = r.a + (r.c - r.a) * k / count;
-      const post = (w: number, ya: number, yb: number, skip: string[]) => r.along === 'x' ? box(guard, t - w / 2, t + w / 2, ya, yb, r.at - w / 2, r.at + w / 2, skip) : box(guard, r.at - w / 2, r.at + w / 2, ya, yb, t - w / 2, t + w / 2, skip);
-      // Faces against the rails, and the inner (back) faces nobody sees from the street, are left out: 6 triangles a bar.
-      if (b.rail === 'iron') post(B.ironBarM, y + B.baseHM, top - B.railHM, ['top', 'bottom', 'back']);
-      else {
-        // Turned baluster: a slim shaft and a bulb, both square in plan (12 triangles).
-        const span = b.guardM - B.railHM - B.baseHM, mid = y + B.baseHM + span * B.bulbAtK;
-        post(B.shaftM, y + B.baseHM, top - B.railHM, ['top', 'bottom', 'back']);
-        post(B.bulbM, mid - B.bulbHM / 2, mid + B.bulbHM / 2, ['top', 'bottom', 'back']);
-      }
-      balusters++;
-    }
-  }
+  // The kit's shared iron railing (ironRailing.ts guardRun): the same members the stoop guards use.
+  const into: BoxFn = (xa, xb, ya, yb, za, zb, skip = []) => box(guard, xa, xb, ya, yb, za, zb, skip);
+  for (const r of runs) balusters += guardRun(into, r, y, top, b.rail === 'iron' ? 'iron' : 'turned', b.guardM);
   return {platform, guard, balusters};
 }
 
@@ -116,8 +101,11 @@ export function addTimberBalconies(group: T.Group, intent: CanalHouseIntent, rec
     const trim = material(palette.trim), iron = material(palette.door);
     for (const b of f.timberBalconies) {
       const g = timberBalconyGeometry(b);
-      facade.add(meshOf(g.platform, trim, `timber-balcony/${b.id}/platform`, 'balcony', 'trim', intent.pandId));
-      facade.add(meshOf(g.guard, b.rail === 'iron' ? iron : trim, `timber-balcony/${b.id}/guard`, 'balcony', b.rail === 'iron' ? 'door' : 'trim', intent.pandId));
+      // Surface `paint` (slot paint: painted timber and iron, the frame texture cell, its own colour), not trim/door: those
+      // export as opening slots, and the glb audit judged the brackets and the 0.6 m guard returns as windows outside their
+      // wall (nassau-145-152, 18 parts; lane H7 r3, #354), as it did timber dormers (#81, dormerBody).
+      facade.add(meshOf(g.platform, trim, `timber-balcony/${b.id}/platform`, 'balcony', 'paint', intent.pandId));
+      facade.add(meshOf(g.guard, b.rail === 'iron' ? iron : trim, `timber-balcony/${b.id}/guard`, 'balcony', 'paint', intent.pandId));
       added++;
     }
   }

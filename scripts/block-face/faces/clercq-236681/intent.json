@@ -538,7 +538,8 @@
        "fascia": true,
        "entrance": "left",
        "evidence": "strip.jpg 2021-03-24: dark corner shopfront with transom lights, no legible sign (BAG Nassaukade 152 bijeenkomstfunctie)"
-      }
+      },
+      "dormerBody": "timber"
      },
      {
       "id": "nassaukade",
@@ -554,14 +555,26 @@
       "windowSurround": "keystone",
       "shopfront": {
        "colour": "#1c1d1f",
-       "fascia": false,
+       "fascia": true,
        "bays": [
         0,
         2
        ],
        "stallriser": "low",
        "glazing": "transom",
-       "evidence": "strip.jpg 2024-11-21: black-framed bar front over the three left axes, a chalk board, no legible sign; BAG bijeenkomstfunctie, no OSM node"
+       "evidence": "strip.jpg 2024-11-21 + pano 2021-03-24 TMX7316010203-002059 pano_0000_001051 (house:frames pair): black-framed cafe front 'The Kiwi' over the three left axes: three tall glazed bays with a small-pane transom row, the glazed door at the right end of the span, a dark dutch awning over the two left bays, a pale painted fascia band over the glass; no stallriser beyond a low plinth. BAG bijeenkomstfunctie",
+       "fasciaColour": "#d9d1c5",
+       "displayWindows": 3,
+       "entrance": "right",
+       "stallriserColour": "#1c1d1f",
+       "awning": {
+        "style": "fabric-dutch",
+        "colour": "#1f1f22",
+        "extent": {
+         "from": 0.0,
+         "to": 0.3
+        }
+       }
       },
       "hoist": false,
       "rosettes": [
@@ -577,9 +590,6 @@
         "diameter": 1.0
        }
       ],
-      "palette": {
-       "brick": "#564543"
-      },
       "towers": [
        {
         "bays": {
@@ -610,7 +620,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#715850",
+     "brick": "#564543",
      "frame": "white",
      "door": "black",
      "stone": "white",
@@ -620,7 +630,8 @@
      "type clercq-nassaukade-corner: crown two-dormers, palette red-brown-brick",
      "lane H7 (#354, 2026-11-10): multi-front corner pand. front0 is the resolved type clercq-nassaukade-corner (crown two-dormers) on De Clercqstraat; front 'nassaukade' is the Nassaukade face read on face nassau-145-152 (strip 2024-11-21: 6 axes in two halves, 5 storeys with a tall ground storey, bracketed white cornice, two pediment dormers, bar front over the left three axes), copied unchanged from that face's design so the chunk draws it instead of the bare slab the #341 audit found.",
      "palette: one palette per pand; the De Clercqstraat type's (#715850) is kept on both fronts, the Nassaukade read was #6b5947 (dE small).",
-     "H7 round 2 (#354): the Nassaukade front is ground + 3 storeys (STOREYS_DEFINITION; it was 5, copied from nassau-145-152) over 7 axes, axis 1 blind with three wreath roundels (rosettes), two stone towers on the cornice over axes 2 and 5 (`towers`, finish stone, flat caps; roof dormers set behind the facade were buried in the attic's vertical Nassaukade end), its own wall colour #564543 = blockFace/wallFit.ts over the 2019-01-09 strip and the 2019-01-09 / 2021-03-24 / 2022-04-26 crops (scripts/block-face/wall-fit.ts); the De Clercqstraat palette #715850 stays on front0."
+     "H7 round 2 (#354): the Nassaukade front is ground + 3 storeys (STOREYS_DEFINITION; it was 5, copied from nassau-145-152) over 7 axes, axis 1 blind with three wreath roundels (rosettes), two stone towers on the cornice over axes 2 and 5 (`towers`, finish stone, flat caps; roof dormers set behind the facade were buried in the attic's vertical Nassaukade end), its own wall colour #564543 = blockFace/wallFit.ts over the 2019-01-09 strip and the 2019-01-09 / 2021-03-24 / 2022-04-26 crops (scripts/block-face/wall-fit.ts); the De Clercqstraat palette #715850 stays on front0.",
+     "H7 r3 (#354): one house palette, brick #564543 (blockFace/wallFit over six leaf-off votes 2019-2022, the Nassaukade side; the De Clercqstraat #715850 was a 2024-11-21 per-channel strip median, the method the r2 ruling replaced). A front-level palette.brick drew a second wall 5 cm over the shell: 118.8 m2 near z-fight, 25 m2 tight at the far tier (lod2)."
     ]
    }
   }

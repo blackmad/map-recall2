@@ -26,40 +26,6 @@
  "coverage": 1,
  "spans": [
   {
-   "pandId": "0363100012116526",
-   "x0M": -27.71,
-   "x1M": -15.04,
-   "px": [
-    0,
-    507
-   ],
-   "date": "2024-11-21",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "b_20241121_0951_Track22_Sphere_00480",
-     "timestamp": "2024-11-21T10:06:40Z",
-     "distanceM": 7.5,
-     "obliquityDeg": 14.2,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241121_0951_Track22_Sphere_00481",
-     "timestamp": "2024-11-21T10:06:41Z",
-     "distanceM": 8.1,
-     "obliquityDeg": 21.8,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241121_0951_Track22_Sphere_00479",
-     "timestamp": "2024-11-21T10:06:39Z",
-     "distanceM": 9.9,
-     "obliquityDeg": 42,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
    "pandId": "0363100012164843",
    "x0M": -15.04,
    "x1M": -9.11,
@@ -288,5 +254,6 @@
   "2023-01-12": 0
  },
  "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
- "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "note": "lane H7 r3 (#354): the span of the corner 116526 was dropped (the pand belongs to chunk-face-clercq-236681); the image keeps its full width, so the other spans are unchanged"
 }

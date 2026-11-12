@@ -151,6 +151,13 @@ export interface RecipeRoofInput {
    */
   forms?: Record<string, FrontRoofSpec>;
   frontId?: string;
+  /**
+   * The pand's fronts on other streets (a corner pand, lane H7 r3 #354: Nassaukade 151-152 / De Clercqstraat): the roof
+   * also falls to each of them, the lower of its own plane and a steep face (`frontPitchDeg`) rising from that front's
+   * eaves along its chord, split where the two meet (a hip at the corner). Without it the attic, extruded behind the
+   * first street only, ended in a vertical face over the other front. Absent = byte-identical.
+   */
+  sideFronts?: {id: string; eavesM: number; endpointsRD: number[][]; outwardNormalRD: number[]}[];
 }
 
 export interface SaddleFit { ridgeM: number; pitchDeg: number; sideEavesM: number; centreM: number }
@@ -626,7 +633,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     return Math.abs(sum(triangles([ring])) - whole) > 1e-7 && Math.abs(sum(ring.slice(2).map((p, i) => [ring[0], ring[i + 1], p])) - whole) > 1e-7;
   };
   const foldSnaps: [number[], number[]][] = [];
-  const push = (raw: number[][], h: (p: number[]) => number, key: string) => {
+  let push = (raw: number[][], h: (p: number[]) => number, key: string) => {
     if (raw.length < 3) return;
     // surveyRecipe moves a point within 0.5 mm of the outline onto it; doing it here, before pieces merge and shed
     // collinear vertices, keeps neighbours consistent (a T-junction moved on one side only overlaps by mm2).
@@ -642,6 +649,22 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     planes.get(key)!.pieces.push(r);
   };
 
+  // A corner pand: every piece also falls to its other street fronts (`RecipeRoofInput.sideFronts`), the lower of the
+  // piece's plane and that front's steep face; the split runs where the two planes meet, so each part stays planar.
+  if (input.sideFronts?.length) {
+    const own = push, sides = input.sideFronts.map(sf => {
+      const nl2 = Math.hypot(sf.outwardNormalRD[0], sf.outwardNormalRD[1]), inS = [-sf.outwardNormalRD[0] / nl2, -sf.outwardNormalRD[1] / nl2], a = sf.endpointsRD[0];
+      return {id: sf.id, h: (p: number[]) => sf.eavesM + t * dot([p[0] - a[0], p[1] - a[1]], inS)};
+    });
+    const fall = (raw: number[][], h: (p: number[]) => number, key: string, k: number): void => {
+      if (k === sides.length) { own(raw, h, key); return; }
+      const sh = sides[k].h;
+      fall(clipBand(raw, p => h(p) - sh(p), -Infinity, 0), h, key, k + 1);
+      fall(clipBand(raw, p => h(p) - sh(p), 0, Infinity), sh, `side-${sides[k].id}`, k + 1);
+    };
+    push = (raw, h, key) => fall(raw, h, key, 0);
+    notes.push(`falls to ${input.sideFronts.map(sf => `${sf.id} (eaves ${r3(sf.eavesM)} m)`).join(', ')} too: a hip at the corner`);
+  }
   const footTris = polys.flatMap(poly => footprintTriangles(poly));
   // Main body: footprint triangles cut at the profile knots; a footprint corner in front of the frontage stays at the eaves.
   const wingCut = mainDepth < plotDepth ? mainDepth : Infinity;
