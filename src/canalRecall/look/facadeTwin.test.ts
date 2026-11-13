@@ -132,3 +132,11 @@ test('S7a: the record wall pattern does not depend on the wall colour (W1 pool w
   assert.ok(dark > 0.08, `dark wall pattern ${dark}`);
   assert.ok(Math.abs(dark - pool) < 0.01, `dark ${dark} vs pool ${pool}`);
 });
+
+test('P2 archTop (archedStoreys): only the top full storey turns round-arched', () => {
+  // Storeys 4: ground 0-3.5, uppers 3.5-6.5, 6.5-9.5, 9.5-12.5 m. Rows sampled per storey band.
+  const band = (r: FacadeRecord, v0: number, v1: number) => { const out: number[] = []; for (let v = v0; v < v1; v += 0.1) for (let u = 0.05; u < 6; u += 0.1) out.push(...px(r, u, v).rgb); return out; };
+  const moved = (v0: number, v1: number) => band(rec({ archTop: 1 }), v0, v1).some((x, i) => Math.abs(x - band(rec(), v0, v1)[i]) > 1 / 255);
+  assert.ok(moved(9.5, 12.5), 'the top storey changes');
+  assert.ok(!moved(0, 9.5), 'the lower storeys do not');
+});

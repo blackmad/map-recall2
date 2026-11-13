@@ -39,6 +39,7 @@ Input (one of)
                          of bearing; key: the output folder, for several walls of one pand;
                          notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
                          maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
+                         minDistM: this entry's --min-dist;
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
                          that the exposed-wall rule drops: Nassaukade 146, 0363100012160704)
 
@@ -50,6 +51,8 @@ Flags
                          and more only as a second view); default off
   --max-dist <m>         panoramas up to <m> from the wall (default 35); 60 reaches across a canal, with --prefer-obliquity
                          a capture that fits the whole wall wins over a nearer clipped one
+  --min-dist <m>         panoramas at least <m> from the wall (default 5): a mid-distance frame (F1 far/mid tier, 40 m+;
+                         use with --max-dist)
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
                          vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
                          changes nothing), or a staged world through WORLD_DIR / BUNDLES_DIR (tests/e2e/helpers.ts)
@@ -113,8 +116,8 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
+type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; minDistM?: number };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; minDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -138,11 +141,11 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = (await pandsInBuurt(b)).map(f => ({ id: bare(f.id) })); inputName = `buurt ${b.code} ${b.name}`;
   } else if (arg(argv, 'list')) {
     const list = JSON.parse(fs.readFileSync(arg(argv, 'list')!, 'utf8'));
-    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
+    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, minDistM: e.minDistM }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), ...(arg(argv, 'min-dist') !== undefined ? { minDistM: Number(arg(argv, 'min-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -294,7 +297,10 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
   // --max-dist widens the 35 m window (the far quay of a canal: Keizersgracht fronts fit there, not from the 5 m near quay).
   const maxD = entry.maxDistM ?? args.maxDistM ?? FACADE_WINDOW.maxD;
-  let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
+  // --min-dist: a mid-distance frame; the strict range then starts there, so the nearest allowed capture is not demoted.
+  const minD = entry.minDistM ?? args.minDistM ?? FACADE_WINDOW.minD;
+  const strict: [number, number] = minD > FACADE_WINDOW.strict[0] ? [minD, maxD] : FACADE_WINDOW.strict;
+  let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, minD, maxD, strict }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
   if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
   // --prefer-obliquity / --max-dist reach squarer, farther captures, and in a narrow street those stand on the next street
@@ -388,7 +394,7 @@ function codeHash(): string {
   return codeHashMemo;
 }
 // notPanos, --prefer-obliquity and --max-dist change the pick, so they key the cache too (absent = undefined, dropped by JSON: the same keys as before).
-const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash() });
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, minDistM: e.minDistM }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, minDistM: args.minDistM, code: codeHash() });
 /** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
 function cachedPrep(e: Entry, args: Args): Prepared | null {
   const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);

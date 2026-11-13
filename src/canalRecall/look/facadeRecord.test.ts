@@ -27,7 +27,7 @@ test('the layout fits 64 bytes and no two fields share a bit', () => {
   // Byte 63 is F2's reserve; every other reserved bit is listed here so a new field has to be placed on purpose.
   assert.equal(used[63], 0);
   // Reserved: byte 3 bit 7, byte 15 bit 7, byte 38 bit 7, byte 59 bit 7.
-  assert.deepEqual([...used.slice(0, 63)].map((v, i) => [i, v]).filter(([, v]) => v !== 0xff), [[3, 0x7f], [15, 0x7f], [38, 0x7f], [59, 0x7f]]);
+  assert.deepEqual([...used.slice(0, 63)].map((v, i) => [i, v]).filter(([, v]) => v !== 0xff), [[3, 0x7f], [15, 0x7f], [38, 0x7f]]);
 });
 
 test('byte offsets are pinned (the GLSL unpack and the design doc §1.2 read these)', () => {
@@ -276,4 +276,11 @@ test('Realism pass 2: the bay atlas door, plinth, sill band, jamb blocks, arch a
   assert.equal(shop.doorStyle, 0); assert.equal(shop.plinthBand, 0);
   const stated = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect' })), spec: { d: { fronts: [{ windows: 't-window' }] } } });
   assert.equal(WINDOWS[stated.windowKind], 't-window', 'a measured T-window wins');
+});
+
+test('P2 archedStoreys: the top full storey listed sets archTop; other storeys or none leave it 0', () => {
+  const base = { id: 'x', style: 'c19' as const, wallHex: '#3c3732', heightM: 14, minHeightM: 0 };
+  assert.equal(facadeRecordFor({ ...base, spec: { d: { fronts: [{ storeys: 4, archedStoreys: [3] }] } } }).archTop, 1);
+  assert.equal(facadeRecordFor({ ...base, spec: { d: { fronts: [{ storeys: 4, archedStoreys: [1] }] } } }).archTop, 0);
+  assert.equal(facadeRecordFor({ ...base, spec: { d: { fronts: [{ storeys: 4 }] } } }).archTop, 0);
 });

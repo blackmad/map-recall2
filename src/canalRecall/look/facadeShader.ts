@@ -396,7 +396,7 @@ vec3 facadeRecordColour(out vec2 m) {
   // One window per bay, centred: width share x bay, height winH x storey, its top under the storey's head line.
   float ww = clamp(share, 0.15, 0.9) * bw, wh = clamp(winH, 0.2, 0.92) * sh;
   float x0 = 0.5 * (bw - ww), y0 = max(0.25, (sh - wh) * 0.55), y1 = min(sh - 0.1, y0 + wh);
-  float head = fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.1 * ww, 0.15) : 0.0;
+  float head = fr_archTop() > 0.5 && storey > 0.5 && storey > storeys - 1.5 ? 2.0 : fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.1 * ww, 0.15) : 0.0;
   if (head > 1.5 && head < 2.5) y1 = max(y1, y0 + 0.5 * ww + 0.2);
   float hd = head > 2.5 ? 0.0 : head;
   // Storey bands at the sill / head lines, then the window's own stone: lintel, frame, sill, keystone.

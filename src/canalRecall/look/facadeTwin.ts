@@ -207,7 +207,7 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
   const ww = clamp(share, 0.15, 0.9) * bw, wh = clamp(winH, 0.2, 0.92) * sh;
   const x0 = 0.5 * (bw - ww), y0 = Math.max(0.25, (sh - wh) * 0.55);
   let y1 = Math.min(sh - 0.1, y0 + wh);
-  const head = r.windowHead, rise = head > 0.5 && head < 1.5 ? Math.min(0.1 * ww, 0.15) : 0;
+  const head = r.archTop > 0.5 && storey > 0.5 && storey > storeys - 1.5 ? 2 : r.windowHead, rise = head > 0.5 && head < 1.5 ? Math.min(0.1 * ww, 0.15) : 0;
   if (head > 1.5 && head < 2.5) y1 = Math.max(y1, y0 + 0.5 * ww + 0.2);
   const hd = head > 2.5 ? 0 : head;
   let bnd = frBandLines(r, sv, sh, y0, y1, storey, f);

@@ -7,8 +7,10 @@ import { openRoute, settleWorld } from './helpers';
 // Needs a world compiled with `--facade-records` served as world-v1 (the published world has no records: the spec then
 // reports `no-records` and skips).
 //   PW_PORT=4460 /tmp/canal-pw.sh npx playwright test shader-facades --project=desktop --workers=1
-const OUT = 'artifacts/shader-facades';
-const POSES = [
+// SF_POSES='[{"name":..,"center":[lng,lat],"zoom":..,"bearing":..,"pitch":..}]' and SF_OUT=<dir> frame other poses (the
+// far/mid tier read of plan P5: aerial and mid-distance pairs at the eyeball-set sites); the Dam chase assertions then skip.
+const OUT = process.env.SF_OUT ?? 'artifacts/shader-facades';
+const POSES: { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number }[] = process.env.SF_POSES ? JSON.parse(process.env.SF_POSES) : [
   { name: 'dam-aerial', center: [4.8926, 52.3731] as [number, number], zoom: 16.2, bearing: 250, pitch: 60 },
   { name: 'dam-chase', center: [4.8926, 52.3731] as [number, number], zoom: 17.8, bearing: 250, pitch: 72 },
 ];
@@ -60,7 +62,8 @@ test('shader facades: the record cells draw at the Dam with no GL error', async 
     expect(s.baked.drawn, 'every resident cell drawn').toBe(s.baked.cells);
   }
   for (const s of Object.values(off.out) as { baked: { records: number } }[]) expect(s.baked.records, 'flag off draws no record cell').toBe(0);
-  const chase = on.out['dam-chase'] as { nearChunks: number; nearRecords: number };
+  const chase = on.out['dam-chase'] as { nearChunks: number; nearRecords: number } | undefined;
+  if (!chase) return;
   expect(chase.nearChunks, 'near chunks at the chase pose').toBeGreaterThan(0);
   expect(chase.nearRecords, 'every near chunk built in record mode').toBe(chase.nearChunks);
   expect((off.out['dam-chase'] as { nearRecords: number }).nearRecords, 'flag off: no record chunk').toBe(0);

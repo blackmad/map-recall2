@@ -87,6 +87,8 @@ export const FACADE_FIELDS = [
   // Parity with the default atlas (realism pass 2, #380), in byte 59's reserve (byte 63 stays F2's). Zero is the earlier
   // behaviour, so a record packed before reads as it did.
   f('doorStyle', 'bits', 59, 3, 2), f('plinthBand', 'bits', 59, 5, 1), f('sillBand', 'bits', 59, 6, 1),
+  // archedStoreys (P2 head shape per storey): the top full storey's windows are round-arched over the front's own head.
+  f('archTop', 'bits', 59, 7, 1),
   f('door', 'rgb', 60),
 ] as const satisfies readonly FacadeField[];
 
@@ -371,6 +373,8 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   r.windowHead = idx(WINDOW_HEADS, head?.kind ?? (look.arch !== undefined ? (look.arch ? 'segmental' : 'flat') : bayW ? bayW.head : cell ? cell.heads[variant] : style === 'c19' ? 'segmental' : 'flat'));
   const ring = head?.archRing as Record<string, any> | undefined;
   r.archRing = idx(ARCH_RING_STYLES, ring?.style ?? (ring ? 'solid' : front.archRings && front.archRings !== 'none' ? 'solid' : front.archRings === undefined && !head?.kind && bayW?.ring ? 'solid' : 'none'));
+  const arched = Array.isArray(front.archedStoreys) ? (front.archedStoreys as unknown[]).map(Number) : [];
+  r.archTop = arched.includes(storeys - 1) && storeys > 1 ? 1 : 0;
   r.keystone = ring?.keystone || front.windowSurround === 'keystone' || front.windowSurround === 'eared-keystone' ? 1 : 0;
   r.tympanum = head?.tympanum ? 1 + idx(TYMPANUM_FILLS, head.tympanum) : 0;
   r.windowShare = Math.round((num(front.windowShare) ?? bayW?.share ?? cell?.share ?? FACADE_DEFAULTS.windowShare) * 255);
