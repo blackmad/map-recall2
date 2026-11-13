@@ -272,17 +272,20 @@
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1600-1766", "frontTop": 10.2, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 11.75}, "groundTop": 4.7, "rows": [[5.2, 7.0], [7.7, 9.05]], "storeys": 3, "bays": 3, "wallWord": "brown brick", "trimWord": "white frames"}
   ]},
   {"pandId": "0363100012253819", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip, 80 px/m trace crop with a 1 m grid (spans 7-9)", "frontTop": 12.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white frieze and cornice 11.0-12.3 m on the 1 m grid; sky directly over it"}, "groundTop": 4.1, "rows": [[4.75, 6.5], [7.0, 8.5], [9.06, 10.31]], "storeys": 4, "bays": 3},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 33", "frontTop": 13.1, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "a tall white frieze and cornice 11.7-13.1 m with sky directly over it"}, "rows": [[4.6, 6.6], [7.3, 8.9], [9.6, 11.0]], "storeys": 4, "bays": 3},
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1767-1932 (the front leans on this strip)", "frontTop": 12.2, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "wallWord": "dark painted brick", "trimWord": "white frieze and frames"}
   ]},
   {"pandId": "0363100012167805", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip, 80 px/m trace crop with a 1 m grid (spans 7-9)", "frontTop": 10.2, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white frieze 9.0-10.2 m on the 1 m grid, a glazed pyramid roof behind"}, "groundTop": 4.0, "rows": [[4.5, 6.38], [6.75, 8.56]], "storeys": 3, "bays": 2, "wallWord": "red brick", "trimWord": "white frieze"},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 35A", "frontTop": 11.25, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.8, "dormer": {"kind": "crowned", "topM": 11.8}, "note": "a deep white cornice 10.0-11.25 m with a small crowned piece"}, "rows": [[4.5, 6.5], [7.0, 9.0]], "storeys": 3, "bays": 2, "wallWord": "red brick", "trimWord": "white cornice"}
   ]},
   {"pandId": "0363100012253818", "reads": [
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 37", "note": "modern balconied front to about 15 m"},
-   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 2093-2258 (step 2 gridded crop)", "frontTop": 14.0, "frontTopKind": "parapet-top", "crown": {"family": "other", "ornamentTopM": 15.5, "note": "white balconied front with a pinnacle; the strip is ghosted above 13 m"}, "wallWord": "white render", "note": "photo front stands 0.9 m left of the span (face registration)"}
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 2093-2258 (step 2 gridded crop)", "frontTop": 14.0, "frontTopKind": "parapet-top", "crown": {"family": "other", "ornamentTopM": 15.5, "note": "white balconied front with a pinnacle; the strip is ghosted above 13 m"}, "wallWord": "white render", "note": "photo front stands 0.9 m left of the span (face registration)", "storeys": 5, "groundTop": 4.0, "rows": [[4.19, 6.06], [6.5, 8.6], [9.5, 11.25], [12.25, 13.4]]}
   ]},
   {"pandId": "0363100012167804", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip, 80 px/m trace crop with a 1 m grid (spans 10-13)", "frontTop": 10.75, "frontTopKind": "parapet-top", "crown": {"family": "other", "topM": 13.6, "note": "a stepped white parapet with a central tower under a pagoda roof to about 13.6 m"}, "groundTop": 4.6, "rows": [[4.75, 6.6], [7.2, 9.1], [9.9, 11.6]], "storeys": 4, "bays": 1, "wallWord": "white render", "trimWord": "red frames"},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 39", "crown": {"family": "other", "note": "white Jugendstil front with a tower dormer"}}
   ]},
   {"pandId": "0363100012177663", "reads": [
