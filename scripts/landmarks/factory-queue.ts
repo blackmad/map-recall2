@@ -9,6 +9,10 @@
  * `rideVisibility.score` > 0, best first; the top 250 hold 92 % of all route visibility). Pands a model already draws
  * are left out: covers.json, the ordinary catalogue, manualCatalogue suppress ids, building-type instances.
  * A refresh keeps every existing row's status, owner, house, report and verdict; new rows start `queued`.
+ * Discovery rows (`source: 'discovery-front'`, discovery-front.ts nominations accepted on the photo review) come in with
+ *   --discovery=artifacts/landmarks/discovery-<date>.json --verdicts=scripts/landmarks/discovery-front-verdicts.json
+ * (only nominations whose verdict is `landmark`; `--accept=<pand,...>` names them instead), appended after the backlog
+ * rows, and a later refresh keeps them.
  * Statuses: queued -> crops -> facts -> drafted -> measured -> compiled -> reviewed-pass | reviewed-fix | held |
  * no-evidence | error -> installed. The review turn writes `verdict` and the status; nothing else edits verdicts.
  */
@@ -20,7 +24,9 @@ const read = (f: string) => JSON.parse(fs.readFileSync(f, 'utf8'));
 
 export type QueueStatus = 'queued' | 'needs-pand' | 'crops' | 'facts' | 'drafted' | 'measured' | 'compiled' | 'reviewed-pass' | 'reviewed-fix' | 'held' | 'no-evidence' | 'error' | 'installed';
 export interface QueueItem {
-  id: string; pand: string; name: string | null; source: 'poi' | 'dominant'; poiId?: string; type?: string;
+  id: string; pand: string; name: string | null; source: 'poi' | 'dominant' | 'discovery-front'; poiId?: string; type?: string;
+  /** discovery-front rows: every BAG pand of the monument group (the row's `pand` is the one with the most street front) and why it was nominated */
+  pands?: string[]; discovery?: {file: string; key: string; reasons: string[]; score: number; rank: number; measures: Record<string, unknown>; verdict?: string; note?: string};
   rideVisibility: {score: number; rank: number} | null; footprintM2?: number; heightM?: number; center: [number, number] | null;
   status: QueueStatus; house?: string; owner?: string; model?: string; turns?: number; ms?: Partial<Record<'crops' | 'facts' | 'draft' | 'measure' | 'compile' | 'strip' | 'install', number>>; claimedAt?: string; updatedAt?: string;
   report?: Record<string, unknown>; sheets?: string[]; verdict?: {outcome: 'pass' | 'fix' | 'hold' | 'no-evidence'; note?: string; fix?: Record<string, unknown>; reviewer?: string; date?: string; strip?: string};
@@ -85,14 +91,49 @@ export function buildQueue(existing: Queue | null, limit: number): {queue: Queue
     push({id: pand, pand, name: c.name ?? null, source: 'dominant', rideVisibility: {score: c.rideVisibility.score, rank: c.rideVisibility.rank}, footprintM2: c.footprintSquareMetres, heightM: c.heightMetres, center: c.center ?? null, status: 'queued'});
     if (items.length >= limit) break;
   }
+  // 3. discovery rows already in the queue stay (they come from no backlog), unless a model now draws them
+  for (const old of existing?.items ?? []) if (old.source === 'discovery-front' && !seen.has(old.id)) {
+    if (covered.has(old.pand)) { skippedCovered++; continue; }
+    seen.add(old.id); items.push(old);
+  }
   const added = items.filter(i => !prev.has(i.id)).length;
   return {queue: {version: 1, generatedAt: new Date().toISOString(), method: 'factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house', items}, added, kept: items.length - added, skippedCovered, authored: authoredCount};
+}
+
+export interface DiscoveryNomination { id: string; pand: string; pands: string[]; key: string; name: string | null; reasons: string[]; score: number; rank: number; measures: Record<string, unknown>; center: [number, number] | null; rideVisibility?: {score: number; routes: number} | null }
+/**
+ * Append accepted discovery nominations as `discovery-front` rows (status `queued`), after every existing row. Skips a
+ * nomination whose pand (or any member pand) is already a row or drawn by a model. Pure apart from its inputs.
+ */
+export function ingestDiscovery(queue: Queue, nominations: DiscoveryNomination[], accept: (n: DiscoveryNomination) => {verdict?: string; note?: string} | null, covered: Set<string>, file: string): {added: QueueItem[]; skipped: {pand: string; why: string}[]} {
+  const have = new Set(queue.items.flatMap(i => [i.pand, ...(i.pands ?? [])]).filter(Boolean));
+  const added: QueueItem[] = [], skipped: {pand: string; why: string}[] = [];
+  for (const n of [...nominations].sort((a, b) => a.rank - b.rank)) {
+    const ok = accept(n);
+    if (!ok) continue;
+    const members = n.pands?.length ? n.pands : [n.pand];
+    if (members.some(p => have.has(p))) { skipped.push({pand: n.pand, why: 'already a queue row'}); continue; }
+    if (members.some(p => covered.has(p))) { skipped.push({pand: n.pand, why: 'drawn by a model'}); continue; }
+    const item: QueueItem = {id: n.pand, pand: n.pand, pands: members, name: n.name, source: 'discovery-front',
+      rideVisibility: n.rideVisibility ? {score: n.rideVisibility.score, rank: n.rank} : null, center: n.center, status: 'queued',
+      discovery: {file, key: n.key, reasons: n.reasons, score: n.score, rank: n.rank, measures: n.measures, ...(ok.verdict ? {verdict: ok.verdict} : {}), ...(ok.note ? {note: ok.note} : {})}};
+    queue.items.push(item); added.push(item); for (const p of members) have.add(p);
+  }
+  return {added, skipped};
 }
 
 if (process.argv[1]?.endsWith('landmarks/factory-queue.ts')) {
   const file = arg('queue', QUEUE_FILE), limit = Number(arg('limit', '600'));
   const existing: Queue | null = fs.existsSync(file) ? read(file) : null;
   const {queue, added, kept, skippedCovered, authored} = buildQueue(existing, limit);
+  if (arg('discovery')) {
+    const disc = read(arg('discovery')), accepted = arg('accept') ? new Set(arg('accept').split(',')) : null;
+    const verdicts: Record<string, {verdict: string; note?: string}> = arg('verdicts') ? read(arg('verdicts')).verdicts ?? {} : {};
+    if (!accepted && !arg('verdicts')) throw Error('--discovery needs --verdicts=<file> (rows with verdict landmark) or --accept=<pand,...>');
+    const r = ingestDiscovery(queue, disc.nominations, n => accepted ? (accepted.has(n.pand) ? {} : null) : verdicts[n.pand]?.verdict === 'landmark' ? verdicts[n.pand] : null, coveredPands(), arg('discovery'));
+    console.log(`discovery: ${r.added.length} discovery-front rows added from ${arg('discovery')}; skipped ${JSON.stringify(r.skipped)}`);
+    for (const i of r.added) console.log(`  + ${i.pand} ${(i.name ?? '-').slice(0, 50)} ${i.discovery?.reasons.join('+')}`);
+  }
   const byStatus: Record<string, number> = {}, bySource: Record<string, number> = {};
   for (const i of queue.items) { byStatus[i.status] = (byStatus[i.status] ?? 0) + 1; bySource[i.source] = (bySource[i.source] ?? 0) + 1; }
   console.log(`queue: ${queue.items.length} items (${added} new, ${kept} kept; ${skippedCovered} already-covered pands left out; ${authored} with an authored recipe)`);

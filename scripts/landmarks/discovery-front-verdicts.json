@@ -1,0 +1,586 @@
+{
+ "date": "2026-11-13",
+ "reviewer": "landmark discovery lane (Claude Opus 5.5), from the panorama contact sheets",
+ "rubric": "landmark: one design whose street front a rider notices and the generic/kit row cannot say (curve, tower, centre pavilion, rich stone or brick ornament, an unusual building); false-positive: ordinary repeated housing, plain institutional fronts, or no front visible in the crops (counted against the rule)",
+ "precision": {
+  "v1": {
+   "landmark": 8,
+   "of": 40,
+   "precision": 0.2
+  },
+  "v2": {
+   "landmark": 13,
+   "of": 40,
+   "precision": 0.325
+  }
+ },
+ "lookAlikes": {
+  "0363100012177484": "Herengracht 184 / Raadhuisstraat 32 (rce:1768): curved stone corner on the opposite side of the Raadhuisstraat bend; v2 rank 52, curved-front 21.7 deg",
+  "0363100012157657": "Van Eeghenstraat 59-63 (gm:222058): turreted eclectic corner, curved 63.9 deg, 4 ornament classes; v2 rank 224",
+  "0363100012168268": "Nieuwezijds Voorburgwal 65-67 (rce:5922, 5923, 518330 merged): ornate red-brick corner, curved 41.4 deg; v2 rank 275"
+ },
+ "verdicts": {
+  "0363100012152541": {
+   "rank": 1,
+   "name": "Tweede Hugo de Grootstraat 2-18",
+   "verdict": "landmark",
+   "note": "eclectic corner building, one design: white stucco cornice and dormers over a shop arcade",
+   "run": "v2"
+  },
+  "0363100012180965": {
+   "rank": 2,
+   "name": "Sarphatistraat 163-213, Valckenierstraat 66",
+   "verdict": "false-positive",
+   "note": "Berlage block, plain in the photo",
+   "run": "v2"
+  },
+  "0363100012081149": {
+   "rank": 3,
+   "name": "Sloestraat 1-15, Churchill-laan 140-260, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v2"
+  },
+  "0363100012170497": {
+   "rank": 4,
+   "name": "Plantage Middenlaan 2",
+   "verdict": "false-positive",
+   "note": "photo is trees; no front evidence",
+   "run": "v2"
+  },
+  "0363100012062355": {
+   "rank": 5,
+   "name": "Krommertstraat 1-5, Jan Evertsenstraat 9-44, e.o.",
+   "verdict": "false-positive",
+   "note": "plain Amsterdam School block with shops",
+   "run": "v2"
+  },
+  "0363100012165110": {
+   "rank": 6,
+   "name": "Rokin 174, Muntplein 2-4, Kalverstraat 223",
+   "verdict": "false-positive",
+   "note": "modern glass corner; the register point fell in this pand",
+   "run": "v2"
+  },
+  "0363100012128152": {
+   "rank": 7,
+   "name": "Sloterkade 1-9, Surinamestraat 1-11, Surinameplein 1-27",
+   "verdict": "landmark",
+   "note": "curved Amsterdam School corner block with a raised stair tower (Surinameplein)",
+   "run": "v2"
+  },
+  "0363100012181563": {
+   "rank": 8,
+   "name": "Prins Hendrikkade 190-194, Schippersgracht 2-3",
+   "verdict": "landmark",
+   "note": "ornate eclectic stone corner on the Prins Hendrikkade",
+   "run": "v2"
+  },
+  "0363100012149357": {
+   "rank": 9,
+   "name": "Harmoniehof 25-31, Joh.M. Coenenstraat 13-19, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing round the hof",
+   "run": "v2"
+  },
+  "0363100012169740": {
+   "rank": 10,
+   "name": "Weesperstraat 3-57",
+   "verdict": "landmark",
+   "note": "Weesperstraat student flats: long gallery slab, one design on a main road",
+   "run": "v2"
+  },
+  "0363100012169501": {
+   "rank": 11,
+   "name": "Keizersgracht 363-367",
+   "verdict": "false-positive",
+   "note": "1930s brick office on the Keizersgracht, plain",
+   "run": "v2"
+  },
+  "0363100012170658": {
+   "rank": 12,
+   "name": "Alexanderkade 1-6, Alexanderplein 2-6, e.o.",
+   "verdict": "false-positive",
+   "note": "striped eclectic housing row",
+   "run": "v2"
+  },
+  "0363100012119156": {
+   "rank": 13,
+   "name": "Speerstraat 1-10, Olympiakade 14-51, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012120252": {
+   "rank": 14,
+   "name": "Reijnier Vinkeleskade 1-5, Hobbemakade 94-119, e.o.",
+   "verdict": "false-positive",
+   "note": "scaffolded curved block; no evidence",
+   "run": "v2"
+  },
+  "0363100012143846": {
+   "rank": 15,
+   "name": "Joh.M. Coenenstraat 21-35, Harmoniehof 32-39, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012237392": {
+   "rank": 16,
+   "name": "Zeeburgerdijk 59-109",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012171628": {
+   "rank": 17,
+   "name": "Pentagon 1-87, e.o.",
+   "verdict": "landmark",
+   "note": "Pentagon (Theo Bosch): postmodern balconies and canopies",
+   "run": "v2"
+  },
+  "0363100012164985": {
+   "rank": 18,
+   "name": "Kadijksplein 17-18, Nieuwevaart 3",
+   "verdict": "false-positive",
+   "note": "plain brick institutional block",
+   "run": "v2"
+  },
+  "0363100012126637": {
+   "rank": 19,
+   "name": "Bartholomeus Ruloffsstraat 15-19, e.o.",
+   "verdict": "landmark",
+   "note": "long curved yellow-brick institutional front",
+   "run": "v2"
+  },
+  "0363100012103471": {
+   "rank": 20,
+   "name": "Parnassusweg 1-38, Olympiaplein 107-176, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012095170": {
+   "rank": 21,
+   "name": "Hobbemakade 89-93, Roelof Hartstraat 36-84, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012169331": {
+   "rank": 22,
+   "name": "Kloveniersburgwal 114-166, Nieuwe Doelenstraat 15, e.o.",
+   "verdict": "false-positive",
+   "note": "photo is a sunlit side street; no front evidence",
+   "run": "v2"
+  },
+  "0363100012253740": {
+   "rank": 23,
+   "name": "Oostenburgergracht 73",
+   "verdict": "landmark",
+   "note": "stepped-gable brick institutional front on the Oostenburgergracht",
+   "run": "v2"
+  },
+  "0363100012087546": {
+   "rank": 24,
+   "name": "Van Hilligaertstraat 144-294, Pienemanstraat 1-63, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012178268": {
+   "rank": 25,
+   "name": "Weteringschans 138-140, Westeinde 2-26",
+   "verdict": "landmark",
+   "note": "eclectic corner with a tall ornate white gable on the Weteringschans",
+   "run": "v2"
+  },
+  "0363100012167627": {
+   "rank": 26,
+   "name": "Singel 258",
+   "verdict": "landmark",
+   "note": "monumental stone bank front on the Singel with a rounded corner",
+   "run": "v2"
+  },
+  "0363100012164817": {
+   "rank": 27,
+   "name": "Zeeburgerdijk 21-23",
+   "verdict": "landmark",
+   "note": "neo-Gothic school with stepped gables and turret (Zeeburgerdijk)",
+   "run": "v2"
+  },
+  "0363100012170797": {
+   "rank": 28,
+   "name": "Marnixstraat 200-240",
+   "verdict": "false-positive",
+   "note": "plain brick block",
+   "run": "v2"
+  },
+  "0363100012164973": {
+   "rank": 29,
+   "name": "Plantage Muidergracht 14",
+   "verdict": "false-positive",
+   "note": "brick school with a rounded corner, plain",
+   "run": "v2"
+  },
+  "0363100012092601": {
+   "rank": 30,
+   "name": "Beethovenstraat 84-96, Minervaplein 9-15, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v2"
+  },
+  "0363100012253947": {
+   "rank": 31,
+   "name": "Keizersgracht 369-371",
+   "verdict": "false-positive",
+   "note": "same 1930s office as #11 (adjacent monument), plain",
+   "run": "v2"
+  },
+  "0363100012165080": {
+   "rank": 32,
+   "name": "Singel 466",
+   "verdict": "landmark",
+   "note": "ornate eclectic corner with a glazed gallery at the Singel",
+   "run": "v2"
+  },
+  "0363100012107966": {
+   "rank": 33,
+   "name": "Victorieplein 37-52, Merwedeplein 1-52, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v2"
+  },
+  "0363100012112581": {
+   "rank": 34,
+   "name": "Hoofdweg 321 t/m 403, 308 t/m 386, Jan van Galenstraat 283-293",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v2"
+  },
+  "0363100012178217": {
+   "rank": 35,
+   "name": "Raamgracht 6-8",
+   "verdict": "false-positive",
+   "note": "large building behind trees across the canal; front not seen",
+   "run": "v2"
+  },
+  "0363100012077850": {
+   "rank": 36,
+   "name": "Adriaan van Bergenstraat 1-8, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v2"
+  },
+  "0363100012076340": {
+   "rank": 37,
+   "name": "Andreas Bonnstraat 1, Mauritskade 11",
+   "verdict": "landmark",
+   "note": "modernist front with a band of awnings, one design",
+   "run": "v2"
+  },
+  "0363100012181859": {
+   "rank": 38,
+   "name": "Hortusplantsoen 1-3",
+   "verdict": "false-positive",
+   "note": "plain brick school",
+   "run": "v2"
+  },
+  "0363100012125556": {
+   "rank": 39,
+   "name": "Admiraal De Ruijterweg 28-36, Korte Geuzenstraat 5-11, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v2"
+  },
+  "0363100012175847": {
+   "rank": 40,
+   "name": "Spuistraat 172-174, Singel 213, Paleisstraat 14",
+   "verdict": "landmark",
+   "note": "monumental stone office front, Spuistraat/Paleisstraat",
+   "run": "v2"
+  }
+ },
+ "v1": {
+  "0363100012150772": {
+   "rank": 1,
+   "name": "Albert Luthulistraat 1-41, Schalk Burgerstraat 2-140",
+   "verdict": "false-positive",
+   "note": "plain Transvaalbuurt housing; the 117 deg is the street bend",
+   "run": "v1"
+  },
+  "0363100012128152": {
+   "rank": 2,
+   "name": "Sloterkade 1-9, Surinamestraat 1-11, Surinameplein 1-27",
+   "verdict": "landmark",
+   "note": "curved Amsterdam School corner block with a raised stair tower on Surinameplein",
+   "run": "v1"
+  },
+  "0363100012131129": {
+   "rank": 3,
+   "name": "Apollolaan 25-63, Gerrit van der Veenstraat 2, Bachstraat 1",
+   "verdict": "landmark",
+   "note": "curved Amsterdam School block on the Apollolaan corner",
+   "run": "v1"
+  },
+  "0363100012092601": {
+   "rank": 4,
+   "name": "Beethovenstraat 84-96, Minervaplein 9-15, e.o.",
+   "verdict": "false-positive",
+   "note": "plain Plan Zuid housing; one stair tower",
+   "run": "v1"
+  },
+  "0363100012087970": {
+   "rank": 5,
+   "name": "Rooseveltlaan 69-213, Uiterwaardenstraat 282-284, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v1"
+  },
+  "0363100012148413": {
+   "rank": 6,
+   "name": "Pienemanstraat 2-86, Vincent van Goghstraat 1-36, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v1"
+  },
+  "0363100012078723": {
+   "rank": 7,
+   "name": "Hoofdweg 54-241, Davisstraat 54-171, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate (scaffolded)",
+   "run": "v1"
+  },
+  "0363100012081149": {
+   "rank": 8,
+   "name": "Sloestraat 1-15, Churchill-laan 140-260, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v1"
+  },
+  "0363100012158833": {
+   "rank": 9,
+   "name": "Hugo de Grootkade 76-86, e.o.",
+   "verdict": "landmark",
+   "note": "eclectic block with an ornate gabled centre pavilion on the kade",
+   "run": "v1"
+  },
+  "0363100012076665": {
+   "rank": 10,
+   "name": "Le Mairestraat 1-56, Aert van Nesstraat 1-55, e.o.",
+   "verdict": "landmark",
+   "note": "Spaarndammerbuurt block with bay towers and white gables",
+   "run": "v1"
+  },
+  "0363100012233646": {
+   "rank": 11,
+   "name": "Vlietstraat 2-168, Vaartstraat 101-259, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing row",
+   "run": "v1"
+  },
+  "0363100012103471": {
+   "rank": 12,
+   "name": "Parnassusweg 1-38, Olympiaplein 107-176, e.o.",
+   "verdict": "false-positive",
+   "note": "plain Plan Zuid housing",
+   "run": "v1"
+  },
+  "0363100012100080": {
+   "rank": 13,
+   "name": "Polanenhof 1-25, Zaandammerplein 2-176, e.o.",
+   "verdict": "false-positive",
+   "note": "curved but plain housing round the square",
+   "run": "v1"
+  },
+  "0363100012155262": {
+   "rank": 14,
+   "name": "Pastelstraat 1-50, Jozef Israëlskade 50-53, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012236517": {
+   "rank": 15,
+   "name": "Tweede Jan van der Heijdenstraat 42-68, e.o.",
+   "verdict": "false-positive",
+   "note": "repeated housing row with stucco bands",
+   "run": "v1"
+  },
+  "0363100012077850": {
+   "rank": 16,
+   "name": "Adriaan van Bergenstraat 1-8, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v1"
+  },
+  "0363100012124366": {
+   "rank": 17,
+   "name": "Olympiakade 52-60, Stadionweg 322-334, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012141111": {
+   "rank": 18,
+   "name": "Thérèse Schwartzestraat 1-17, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing (Amsterdam School, flat)",
+   "run": "v1"
+  },
+  "0363100012125028": {
+   "rank": 19,
+   "name": "Willem Schoutenstraat 20-32, Hoofdweg 43-302, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012130191": {
+   "rank": 20,
+   "name": "Theophile de Bockstraat 17-33, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012119156": {
+   "rank": 21,
+   "name": "Speerstraat 1-10, Olympiakade 14-51, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012087546": {
+   "rank": 22,
+   "name": "Van Hilligaertstraat 144-294, Pienemanstraat 1-63, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012107966": {
+   "rank": 23,
+   "name": "Victorieplein 37-52, Merwedeplein 1-52, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012139963": {
+   "rank": 24,
+   "name": "President Kennedylaan 681-779, 783-921, Veluwelaan 2-18 e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012145822": {
+   "rank": 25,
+   "name": "Theophile de Bockstraat 5-15, Weissenbruchstraat 8-14, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing row with balconies",
+   "run": "v1"
+  },
+  "0363100012169331": {
+   "rank": 26,
+   "name": "Kloveniersburgwal 114-166, Nieuwe Doelenstraat 15, e.o.",
+   "verdict": "false-positive",
+   "note": "photo is a sunlit side street; no front evidence",
+   "run": "v1"
+  },
+  "0363100012094482": {
+   "rank": 27,
+   "name": "Zaanstraat 291-391, Oostzaanstraat 303-319, e.o.",
+   "verdict": "landmark",
+   "note": "Het Schip block (De Klerk): arched gateway and tower",
+   "run": "v1"
+  },
+  "0363100012126637": {
+   "rank": 28,
+   "name": "Bartholomeus Ruloffsstraat 15-19, e.o.",
+   "verdict": "landmark",
+   "note": "long curved yellow-brick institutional front on a tram street",
+   "run": "v1"
+  },
+  "0363100012233464": {
+   "rank": 29,
+   "name": "Van Bossestraat 8-54",
+   "verdict": "landmark",
+   "note": "yellow-brick block with a corner cupola",
+   "run": "v1"
+  },
+  "0363100012127592": {
+   "rank": 30,
+   "name": "Zaanhof 1-82",
+   "verdict": "landmark",
+   "note": "Zaanhof: white-trimmed gables and arcades, one design",
+   "run": "v1"
+  },
+  "0363100012110571": {
+   "rank": 31,
+   "name": "Gerrit van der Veenstraat 102-106, Minervalaan 7-25, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012180965": {
+   "rank": 32,
+   "name": "Sarphatistraat 163-213, Valckenierstraat 66",
+   "verdict": "false-positive",
+   "note": "Berlage block, plain in the photo",
+   "run": "v1"
+  },
+  "0363100012237305": {
+   "rank": 33,
+   "name": "Vossiusstraat 3-15, Hobbemastraat 2",
+   "verdict": "false-positive",
+   "note": "ornate eclectic row, but a row of houses for the house line",
+   "run": "v1"
+  },
+  "0363100012111965": {
+   "rank": 34,
+   "name": "Daniël de Langestraat 11-19, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012146724": {
+   "rank": 35,
+   "name": "Daniël de Langestraat 1-9, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012168679": {
+   "rank": 36,
+   "name": "Marnixstraat 14-72",
+   "verdict": "false-positive",
+   "note": "plain row",
+   "run": "v1"
+  },
+  "0363100012064340": {
+   "rank": 37,
+   "name": "Kromme-Mijdrechtstraat 11-15, Vrijheidslaan 9-43",
+   "verdict": "false-positive",
+   "note": "plain housing behind trees",
+   "run": "v1"
+  },
+  "0363100012144370": {
+   "rank": 38,
+   "name": "Vespuccistraat 2-134, Jan Maijenstraat 2-9, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  },
+  "0363100012112581": {
+   "rank": 39,
+   "name": "Hoofdweg 321 t/m 403, 308 t/m 386, Jan van Galenstraat 283-293",
+   "verdict": "false-positive",
+   "note": "plain housing estate",
+   "run": "v1"
+  },
+  "0363100012064743": {
+   "rank": 40,
+   "name": "Watteaustraat 9-17, Michelangelostraat 102-110, e.o.",
+   "verdict": "false-positive",
+   "note": "plain housing",
+   "run": "v1"
+  }
+ }
+}
