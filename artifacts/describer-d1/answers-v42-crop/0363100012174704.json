@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012174704",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174704/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a fanlight with curved tracery over the street door"
+  },
+  {
+   "component": "relief",
+   "what": "a small carved stone tablet between the ground and first storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "an ornament piece crowning the neck"
+  }
+ ],
+ "notes": "Bare branches cross the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved scroll claw pieces at the neck foot and a hoist beam at the top"
+  },
+  {
+   "component": "shutters",
+   "what": "the neck window is closed by a pair of dark green shutters"
+  },
+  {
+   "component": "door",
+   "what": "street door at the right with a round leaded transom light"
+  }
+ ],
+ "notes": "Top of the neck is cut off at the image edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

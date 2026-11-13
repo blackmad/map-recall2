@@ -1,5 +1,6 @@
 {
  "v": 1,
+ "twinGuard": "mutual",
  "answers": 194,
  "readable": 185,
  "staged": 194,
@@ -23,14 +24,16 @@
   "pale": 0.984
  },
  "specFieldCoverage": {
+  "facts/groundKind": 0.854,
   "facts/pui": 0.87,
+  "fronts/*/archedStoreys": 0.043,
   "fronts/*/bands": 0.497,
   "fronts/*/bays": 0.951,
   "fronts/*/cornice": 0.108,
-  "fronts/*/gable": 0.443,
-  "fronts/*/souterrain": 0.168,
+  "fronts/*/gable": 0.449,
+  "fronts/*/souterrain": 0.849,
   "fronts/*/storeys": 0.914,
-  "fronts/*/windowHead": 0.676,
+  "fronts/*/windowHead": 0.843,
   "palette/brick": 1,
   "palette/wallMaterial": 0.984
  },

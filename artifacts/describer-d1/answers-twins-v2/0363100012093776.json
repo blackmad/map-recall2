@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012093776",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012093776.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Left neighbour shares eaves and balcony band but carries a stair tower; marked front has paired doors."
+}

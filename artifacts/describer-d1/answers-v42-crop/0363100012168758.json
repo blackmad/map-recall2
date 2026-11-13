@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012168758",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168758/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "bands",
+  "heads",
+  "finish",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a central hoist dormer with curved tiled flanks behind the plain white cornice band"
+  }
+ ],
+ "notes": "A car hides the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182379",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182379/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved pieces at both top corners where a gable begins, cut off by the image edge"
+  },
+  {
+   "component": "door",
+   "what": "a street door with a decorated fanlight and a lantern beside it"
+  }
+ ],
+ "notes": "The top is cut just above the third upper storey and a van hides most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

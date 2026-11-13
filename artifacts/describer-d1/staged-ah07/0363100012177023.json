@@ -6,7 +6,14 @@
    {
     "storeys": 4,
     "bays": 6,
-    "gable": "cornice"
+    "souterrain": false,
+    "gable": "cornice",
+    "windowHead": {
+     "kind": "segmental",
+     "storeys": [
+      3
+     ]
+    }
    }
   ],
   "palette": {
@@ -17,13 +24,19 @@
  "provenance": {
   "fronts/0/storeys": {
    "source": "vision-judge",
-   "confidence": 0.7,
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
    "at": "2026-11-13"
   },
   "fronts/0/bays": {
    "source": "vision-judge",
    "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
    "at": "2026-11-13"
   },
@@ -45,6 +58,18 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
    "at": "2026-11-13"
   },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
   "palette/brick": {
    "source": "streetlevel-measured",
    "confidence": 0.6,
@@ -53,7 +78,8 @@
   }
  },
  "facts": {
-  "pui": "shop"
+  "pui": "shop",
+  "groundKind": "shop"
  },
  "schemaLimits": [
   {

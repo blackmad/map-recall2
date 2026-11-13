@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012162289",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012162289.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "notes": "Doors pair up at the right seam; left neighbour door side partly hidden by a tree."
+}

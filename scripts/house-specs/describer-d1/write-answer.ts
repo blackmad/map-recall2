@@ -11,7 +11,7 @@
 // --out and an --image-kind/--image-ref pair instead of the sample's image.
 import fs from 'node:fs';
 import path from 'node:path';
-import { ANSWERS_DIR, twinProblems, writeAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
+import { ANSWERS_DIR, rowProblems, twinProblems, writeAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
 import { WINDOWS } from '../../../src/canalRecall/buildingRecipe/intent.ts';
 
 /** labels.md storey count from the v4 parts: the full storeys below the eaves or cornice (ground included); not-visible stays. */
@@ -47,6 +47,8 @@ if (v4) {
   ].filter(Boolean);
   if (bad.length) { console.error(bad.join('\n')); process.exit(1); }
   body.storeys = storeysFromParts(sp);
+  const rows = rowProblems(body);
+  if (rows.length) { console.error(rows.join('\n')); process.exit(1); }
   if (sp.souterrain === true) body.souterrain = true;
   body.wallFamily ??= 'not-visible';
   if (body.pale === 'not-visible') delete body.pale;

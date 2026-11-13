@@ -6,7 +6,8 @@
    {
     "storeys": 3,
     "bays": 2,
-    "bands": "speklagen"
+    "bands": "speklagen",
+    "souterrain": false
    }
   ],
   "palette": {
@@ -17,7 +18,7 @@
  "provenance": {
   "fronts/0/storeys": {
    "source": "vision-judge",
-   "confidence": 0.7,
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012180403.jpg",
    "at": "2026-11-13"
   },
@@ -33,6 +34,12 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012180403.jpg",
    "at": "2026-11-13"
   },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180403.jpg",
+   "at": "2026-11-13"
+  },
   "palette/wallMaterial": {
    "source": "vision-judge",
    "confidence": 0.7,
@@ -40,6 +47,12 @@
    "at": "2026-11-13"
   },
   "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180403.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
    "source": "vision-judge",
    "confidence": 0.7,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012180403.jpg",
@@ -53,7 +66,8 @@
   }
  },
  "facts": {
-  "pui": "residential"
+  "pui": "residential",
+  "groundKind": "dwelling"
  },
  "schemaLimits": [
   {

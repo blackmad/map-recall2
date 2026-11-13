@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "whiteFrames",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a tall plastered timber ground storey with two tiers of small-paned windows between pilasters"
+  },
+  {
+   "component": "window",
+   "what": "a small square gable window with a diamond-set inner frame at the top"
+  }
+ ],
+ "notes": "Dull light; the gable steps are hard to read against the sky.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

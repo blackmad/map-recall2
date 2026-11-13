@@ -8,7 +8,8 @@
     "bays": 3,
     "windowHead": {
      "kind": "segmental"
-    }
+    },
+    "souterrain": false
    }
   ],
   "palette": {
@@ -31,6 +32,12 @@
   },
   "fronts/0/windowHead": {
    "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
    "confidence": 0.7,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
    "at": "2026-11-13"
@@ -47,6 +54,12 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
    "at": "2026-11-13"
   },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
   "palette/brick": {
    "source": "streetlevel-measured",
    "confidence": 0.6,
@@ -55,7 +68,8 @@
   }
  },
  "facts": {
-  "pui": "shop"
+  "pui": "shop",
+  "groundKind": "shop"
  },
  "schemaLimits": [
   {

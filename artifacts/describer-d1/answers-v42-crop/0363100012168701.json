@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168701",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168701/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "not-visible",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "bands",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "heads",
+  "basement",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall narrow central dormer with a hoist hood rising over the top"
+  },
+  {
+   "component": "window",
+   "what": "window frames and doors are painted red"
+  }
+ ],
+ "notes": "A bare tree stands in front of the whole front.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

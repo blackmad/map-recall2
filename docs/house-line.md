@@ -2892,3 +2892,33 @@ within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) a
 Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
 194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
 `artifacts/describer-d1/staged-ah07/` (never published).
+
+**D1-fix (2026-11-13, after the route bake-off).** Row convention: `fronts/0/storeys` is the rows below the crown with the ground
+row included whatever it holds; `facts/groundKind` (`shop`, `door-only`, `dwelling`, `warehouse`, `describer.ts groundKindOf`)
+says what that row is and `fronts/0/souterrain` is staged as read, true or false. Nothing in the prompt, the writer or the
+staging step drops a ground row: every v4 read lists `columns` per counted row (crop 87/87, cut 79/79; one AH07 read, 175477,
+skips the shop's ground count in `columns` only), shop grounds score as well as house grounds (`rows.ts`), and the
+under-counts are the roof-storey, gable-attic and souterrain conventions of the author hand specs. Weteringschans 168043 is
+three rows (door row and two upper) between cellar windows and a dormer: the staged 3 was right; the cellar row is the
+basement, which a cut does not stage. `rowProblems` refuses a new read whose `columns` rows differ from its count; prompt
+v4.2 starts the count at the ground row explicitly (not read at scale yet). A low `storeyParts.full` now halves the storeys
+receipt. Twin guard: `stage.ts twinGuard`, default `mutual` = each house's `sameAs` names the other, street-run width within
+0.3 m, build year within 3 (no 3DBAG height: it split the mirrored pair 168043 / 168096 at 13.9 vs 16.6 m); `--twin-guard pr1`
+keeps the step-1c guard. On the twin-v2 truth with every neighbour read (`twins-v2.ts neighbours`, 53 blind opus twin reads):
+mutual precision 0.96 [0.81-0.99], recall 0.76 [0.59-0.87] against pr1 0.94 [0.74-0.99] / 0.52 [0.35-0.68]
+(`twin-guard.ts`, `artifacts/describer-d1/twin-guard.json`).
+
+**D1-fix 2: per-row heads, prompt v4.2 read, AH07 re-staged with the mutual guard (2026-11-13).** `stage.ts rowHeads` stages
+the answer's `heads` per row (upper rows; only when `heads` has one entry per counted row) instead of flattening a front with
+different rows to `mixed` and dropping it: rows all flat or all segmental keep `windowHead {kind}` as before; segmental rows
+among others become `windowHead {kind: segmental, storeys}`; round rows become `archedStoreys` (171218: flat, flat, round ->
+`archedStoreys [2]`). `archedStoreys` is `ROUTE_C_ONLY`: the recipe route draws it (fit.ts, a semicircle), the generic view
+and the F1 record never read it (tested), until round has a precision figure. The intent now accepts `windowHead` beside
+`archedStoreys` when `windowHead.storeys` names none of the arched storeys (before: never together). A low `heads` halves the
+head receipts. Per-row scores (`heads.ts`, 203 truth pands, `heads-per-row.md`): flat rows precision 0.93-0.96, segmental rows
+0.61-0.85 by read set (below the whole-front 0.83), round 1 of 3 rows right on v4.2, on 2 truth pands with a round row in all:
+no figure. Prompt v4.2 on the 147 gate-pass crops (opus) against v4 on the same pands (`versions.ts`,
+`versions-v4-v42.md`): no shipped field drops beyond its interval (storeys 0.816 vs 0.819, shop 0.787 vs 0.805, bays 0.902 vs
+0.915; bands, finish, cornice none, crown cornice/step up). House-ground rows (0.74 on v4 crop, 0.78 on v4.2): of the 14 v4
+misses 4 are a souterrain the author spec counts as the ground storey, 3 a gable attic or attic in the crown, 7 other; on cut
+reads the souterrain confusion is 7 of 13. AH07 re-staged into `staged-ah07` with `--twin-guard mutual`.

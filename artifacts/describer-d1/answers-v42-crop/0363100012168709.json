@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "bands",
+  "storeyParts.roof",
+  "doorBay",
+  "ground",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies at the middle-bay French windows of the upper storeys"
+  },
+  {
+   "component": "shopfront",
+   "what": "wide ground-storey glazing under a segmental arch with a small-paned top light"
+  }
+ ],
+ "notes": "A large tree covers the right half and the top of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

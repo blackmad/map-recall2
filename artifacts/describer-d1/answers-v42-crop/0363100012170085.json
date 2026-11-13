@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012170085",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170085/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white pilastered ground-storey frame with an entablature; the door has a barred top light"
+  },
+  {
+   "component": "roof",
+   "what": "a red pantiled hipped roof is visible behind the cornice"
+  }
+ ],
+ "notes": "Small, low-resolution crop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

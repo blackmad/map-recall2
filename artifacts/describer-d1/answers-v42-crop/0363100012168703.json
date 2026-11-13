@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168703/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white timber pilastered ground storey; the door has a tall top light with oval crossing tracery bars"
+  },
+  {
+   "component": "window",
+   "what": "wide ground-storey window with a small-paned upper part over a large lower light"
+  }
+ ],
+ "notes": "The top of the front is cut off above the second upper storey; a car hides the pavement line.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}
