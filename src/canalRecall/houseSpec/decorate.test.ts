@@ -5,7 +5,7 @@ import test from 'node:test';
 // These pins are the round-3 chroma rule; lane W1's measured-chroma default (`?wallChroma`) is off here and tested below.
 process.env.WALL_CHROMA = '0';
 import assert from 'node:assert/strict';
-import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';
+import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specCellCount, specStoreyScale } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
@@ -299,4 +299,14 @@ test('fixture: the register-brick branch of the trim rule (no spec material, no 
   // The same reading on a front the register calls light (stucco) keeps its pixel.
   const light = withHouseSpec({ ...feature, properties: { ...feature.properties, registerFinish: 'light' } } as any).properties as any;
   assert.equal(light.specRecipe.wallHex, specWallDisplay('#e3d9cc'));
+});
+
+test('178293: a reviewed wall skips the pale-warm guard; the same colour measured is still held', () => {
+  // The extract's view of Pand 0363100012178293 (reviewed #9a5a40; photo wall L 0.58; the game drew period brick at 0.38).
+  const p = { id: 'NL.IMBAG.Pand.0363100012178293' };
+  const reviewed: HouseSpecView = { gable: 'neck', wallHex: '#9a5a40', bays: 2, storeys: 4, src: { gable: 'author', wallHex: 'author', bays: 'author', storeys: 'author' } };
+  const drawn = specWallColour(reviewed, p);
+  assert.ok(drawn, 'the reviewed wall draws');
+  assert.equal(houseSpecPatch(reviewed, p).specRecipe && (houseSpecPatch(reviewed, p).specRecipe as { heldBrick?: boolean }).heldBrick, undefined);
+  assert.equal(specWallColour({ ...reviewed, src: { ...reviewed.src, wallHex: 'streetlevel-measured' } }, p), null, 'measured: the guard holds');
 });

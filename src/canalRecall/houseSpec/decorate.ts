@@ -178,6 +178,8 @@ export function specWallIsBrick(view: Pick<HouseSpecView, 'wallMaterial'>, p: Pr
   if (p.registerFinish === 'brick') return true;
   return brickLiftOn() && (p.registerFinish === undefined || p.registerFinish === null || p.registerFinish === '');
 }
+/** A wall colour a person reviewed: the pale-warm guard does not apply to it (specWallColour). */
+export const reviewedWallSource = (src: string | undefined): boolean => src === 'author' || src === 'reviewed';
 export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
@@ -186,6 +188,9 @@ export function specWallColour(view: HouseSpecView, p: Props): string | null {
   // tone), only for a staged photo-measured wall (one carrying wallExposure) under ?wallExposure=floor|normfloor.
   const mode = view.wallExposure ? wallExposureMode() : 'off';
   const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel, ...(mode === 'floor' || mode === 'normfloor' ? { minL: EXPOSURE.displayMinL } : {}) });
+  // A hand-reviewed wall (source `author` / `reviewed`) skips the guard: the guard was written for noisy measurements, and a
+  // reviewed colour outranks it (peer ruling 2026-11-13: 178293's reviewed #9a5a40, photo L 0.58, drew period brick at 0.38).
+  if (reviewedWallSource(view.src?.wallHex)) return drawn;
   const held = paleWarmHeld(drawn, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light', readingL: hexToOklab(reading)[0] });
   return held ? null : drawn;
 }
