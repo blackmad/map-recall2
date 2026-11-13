@@ -64,6 +64,13 @@ test('classify: feedback 2026-11-13, the grey slabs that are not industrial (pin
   assert.equal(classifyIndustrial({ ...base, heightM: 18, areaM2: 3000, industrialLand: true, uses: { industriefunctie: 3000 } }).kind, null, 'taller than 15 m with only the register');
 });
 
+test('published table: the 2026-11-13 feedback pands are not in it', async () => {
+  const { readFileSync } = await import('node:fs');
+  const table = JSON.parse(readFileSync(new URL('../../../public/data/extracts/amsterdam/industrial-buildings.json', import.meta.url), 'utf8')) as IndustrialTable;
+  for (const pand of ['0363100012080615', '0363100012075898', '0363100012077120']) assert.equal(table.ids[`NL.IMBAG.Pand.${pand}`], undefined, pand);
+  assert.ok(Object.keys(table.ids).length > 5000, 'still a real table');
+});
+
 test('table and enricher: stamps only named ids; a missing table changes nothing', async () => {
   const table: IndustrialTable = { version: 1, source: 't', ids: { a: 'tank', b: 'shed' } };
   assert.ok(isIndustrialTable(table));
