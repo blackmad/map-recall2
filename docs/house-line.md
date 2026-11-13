@@ -1028,6 +1028,47 @@ the compile and the verify as above. The first real batch is the integrator's an
 4. Recipe batches: rebuild covers-dependent bundles and stamps, `npm run test:canal-game-structure`, re-publish landmark cards if an extract regenerated.
 5. Commit specs, the published extract, world-v1 (and houses, GLBs, catalogue, covers, goldens for a recipe batch); push the archive worktree; paste the HISTORY and What's New drafts.
 
+### Install audit and holds (lane BA, 2026-11-13)
+
+The belt batch `belt-20261113` (175 recipe GLBs) passed every compile gate and was rejected in the street. No compile gate
+looks at the shipped mesh on its plot: `footprint-vs-bag` (`buildingRecipe/gates.ts`) compares the recipe's *declared* plan
+with BAG, and the catalogue's `recipe.footprintIoU` was the **mesh-sharing** IoU (this house's BAG footprint against that of
+the house whose mesh it reuses; a constant 1 for a house that is its own master, so 165073, a 9-corner L, read `1`). It is
+now written as `shareFootprintIoU` / `shareFrontZoneIoU` (`install.ts`; `catalogue-recipe-fields.ts` renames the old keys
+and repairs the scopes that a `--street` default of `Bilderdijkstraat` wrote on every belt house).
+
+**Audit** (`node --import tsx scripts/building-recipes/install-audit.ts [--ids=...] [--out=] [--md=] [--fails=] [--overlays=<dir>]`, ~3 s
+for 175; module `buildingRecipe/installAudit.ts`, tests beside it). Decoded GLB, placed by the catalogue (anchor, north
+offset, mirror) into RD, against BAG polygons (house facts for the pand, `bag-tiles/14` for neighbours). Hard gates:
+
+| Gate | Measures | Fails |
+|---|---|---|
+| outside | plan area more than 0.2 m outside the pand polygon, forward parts a stated part explains left out | > 0.5 m2 |
+| intrusion | deepest plan point inside a neighbouring pand, measured past the pand's own outline (BAG neighbours overlap a pand by up to 0.4 m: measured against the neighbour's edge, 148 of 175 "failed") | > 0.2 m |
+| frontage | each street front's length not covered laterally by the upper-storey wall band (exact, from the triangles) | > 0.2 m |
+| protrusion | deepest point in front of a street front that no stated part explains: stoop, awning, shopfront, hoist, cornice, eaves, bay, balcony (height band + depth from the intent); trim slots (frame, stone, glass, door) get 0.17 m on top | > 0.2 m |
+| crown | spec `fronts[0].gable` -> intent gable -> the front wall's drawn silhouette (roof slots left out; a level held over 0.6 m, so chimneys and finials are not crowns): flat vs raised, stepped vs not; a stated crest, crown cap or dormer lets a flat front rise to its stated height | any change |
+
+Placement error against the facts' own front frame and `meshIoU` (mesh plan vs the polygon) are printed, not gated.
+`--overlays` writes a top-down PNG per pand (mesh plan cells grey inside / red outside / orange in a neighbour, the pand
+blue, neighbours black, fronts green, frontage gaps magenta).
+
+Measured on `belt-20261113` (175): placement exact for all (anchor 0 m, rotation 0 deg); 24 fail a hard gate: protrusion 16,
+outside 6, intrusion 6, crown 5 (`scripts/building-recipes/holds/belt-20261113-gates.json` names gate and metres per pand).
+The 1.1 m "in front of the footprint" of 167818 and 171144 is the stated hoist beam: of 58 houses with anything over 0.5 m
+forward, 39 are hoists, 9 awnings, 5 cornices, 2 stoops, 1 a bay; 9 are unstated. The six of the rejected sheet pass every
+plan gate: what the user saw is not the mesh on its plot (in-game diagnosis follows).
+
+**Hold** (`landmarks/ordinaryHolds.ts`, data `public/canal-drive/ordinary-buildings-data/held.json`): a held install keeps
+its catalogue entry and GLB, `ORDINARY_BUILDINGS` leaves it out, so the game does not draw it and `build-covers` no longer
+hides its pand; the pand draws through the generic mesher with its published spec. Its own file so a re-install (which
+rewrites the catalogue entry) cannot drop a hold. `scripts/building-recipes/hold-installs.ts` writes it (`--from=<list>`,
+`--hold=... --reason=`, `--release=`, `--list`, `--from-audit=` to turn an audit into a list) and prints the commands that
+make it real: build-covers + copy, `check:covers`, `world:compile --changed --shell` + copy + `world:verify`,
+`build:canal-signature-landmarks` (the only bundle embedding the catalogue), `test:building-taxonomy` (fails while
+covers.json still hides a held install), `test:canal-game-structure`, `check:content-stats`. Rehearsed on the 30 holds:
+covers.json lost exactly the 30 held entries and nothing else.
+
 
 ## §4 Describe at scale
 

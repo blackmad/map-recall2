@@ -1,0 +1,4 @@
+{
+  "_doc": "Installed ordinary GLBs held out of the game (src/canalRecall/landmarks/ordinaryHolds.ts). The catalogue entry and its GLB stay; the game neither draws the model nor hides the pand, so the pand draws through the generic mesher with its published house spec. Written by scripts/building-recipes/hold-installs.ts; after a change rebuild covers.json, the touched world cells and the signature-placement bundle (the script prints the commands). Release = remove the id.",
+  "held": {}
+}
