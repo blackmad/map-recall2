@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012176214",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012176214.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "souterrain": false,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bands",
+  "cornice",
+  "storeyParts.roof",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental brick arches over each window are trimmed with a dentilled (toothed) brick course that runs across the front at head height"
+  },
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors between the windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark fascia with gilt lettering over a wide shop window and a narrow glazed door at right"
+  }
+ ],
+ "notes": "Deep plain white cornice band; roof behind only glimpsed.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

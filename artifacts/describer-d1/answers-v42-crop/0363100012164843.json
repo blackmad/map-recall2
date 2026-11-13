@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "storeyParts.souterrain",
+  "sills",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "three small white balconies on console brackets in the left bay of storeys 1 to 3"
+  },
+  {
+   "component": "window",
+   "what": "white blocks at both head corners plus a central keystone block over each window"
+  }
+ ],
+ "notes": "The street door is not in view; the top of the gable is near the crop edge.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

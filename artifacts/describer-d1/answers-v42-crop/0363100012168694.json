@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012168694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "finish",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "glazed mansard roof face with a central dormer over a white bracketed cornice and frieze"
+  }
+ ],
+ "notes": "A van hides the ground storey, so the storey count cannot be made.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -205,6 +205,51 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
 const PROFILE_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map(archetype => [archetype, BAY_STYLES[archetype].flatMap((v, i) =>
   !v.openingGroup && !v.groundAssembly && !v.entranceAssembly && !v.facadeAssembly && (archetype === 'modern' ? v.family === 'punched' : !v.family || v.family === 'masonry') ? [i] : [])])) as Record<Archetype, number[]>;
 const traitStyles = new Map<string, number[]>();
+/** The four window traits a preset shows (bayStyleForTraits scores against these). */
+export function styleTraits(v: { paleAccents?: boolean; frameTone?: string; shape?: string; lintel?: string; proportions?: string }): { pale: boolean; dark: boolean; arch: boolean; tall: boolean } {
+  return { pale: !!v.paleAccents, dark: v.frameTone === 'dark', arch: v.shape === 'segmental' || v.lintel === 'arch', tall: (v.proportions ?? 'tall') === 'tall' };
+}
+/**
+ * The preset that shows `traits` and is otherwise closest to the ladder's preset `from` (lane WG step 3, field
+ * independence): the traits score as bayStyleForTraits weighs them, then every other look key the two share (sash,
+ * painted frames, shutters, windows per bay, trim, proportions, materials) breaks the tie, so a stated head trades
+ * nothing else it does not have to. Deterministic: the lowest index wins a full tie.
+ */
+export function nearestStyle(archetype: Archetype, traits: { pale: boolean | null; dark: boolean | null; arch: boolean | null; tall: boolean | null }, from: number, bays?: number): number {
+  const styles = BAY_STYLES[archetype], base = styles[from] as Record<string, unknown>;
+  const all = [...new Set([...PROFILE_STYLE_INDICES[archetype], ...DEFAULT_STYLE_INDICES[archetype], from])];
+  // A stated bay count keeps to the presets whose window cell divides it (as bayStyleForTraits does).
+  const fitting = bays ? all.filter(i => bays % (styles[i].windows || 1) === 0) : [];
+  const pool = fitting.length ? fitting : all;
+  const keys = [...new Set(Object.keys(base).concat(...pool.map(i => Object.keys(styles[i]))))].filter(k => !['paleAccents', 'frameTone', 'shape', 'lintel', 'proportions'].includes(k));
+  let best = pool[0], bestScore = -Infinity;
+  for (const i of pool.sort((a, b) => a - b)) {
+    const v = styles[i] as Record<string, unknown>, t = styleTraits(v);
+    const traitScore = (traits.pale === null ? 0 : t.pale === traits.pale ? 12 : 0) + (traits.dark === null ? 0 : t.dark === traits.dark ? 10 : 0)
+      + (traits.tall === null ? 0 : t.tall === traits.tall ? 8 : 0) + (traits.arch === null ? 0 : t.arch === traits.arch ? 6 : 0);
+    const same = keys.filter(k => v[k] === base[k]).length;
+    const score = traitScore * 100 + same;
+    if (score > bestScore) { best = i; bestScore = score; }
+  }
+  return best;
+}
+/**
+ * Lane 1 step d (rowFront flag): the preset whose window is closest to a front record's measured window, among the
+ * dressed masonry presets (sized openings, no assembly, no pale blocks): its height share of the storey first, then
+ * the widest opening (the photo's sashes fill 60-70 % of a bay; the legacy cells' 44 % read small), the dark-frame trait,
+ * and a window count that divides the measured bays. Until lane 2's traced boxes, the atlas has no free layers for a
+ * sized-to-measure cell, so this is the nearest drawn window.
+ */
+export function rowFrontStyle(archetype: Archetype, windowH: number, dark: boolean, bays?: number): number | null {
+  const styles = BAY_STYLES[archetype];
+  const pool = styles.flatMap((v, i) => v.openingOccupancy !== undefined && v.openingHeight !== undefined && !v.paleAccents && !v.facadeAssembly && !v.entranceAssembly && !v.openingGroup && !v.groundAssembly
+    && (!v.family || v.family === 'masonry') && (!bays || bays % (v.windows || 1) === 0) ? [i] : []);
+  if (!pool.length) return null;
+  const score = (i: number) => { const v = styles[i]; return Math.abs(v.openingHeight! - windowH) * 10 - v.openingOccupancy! * 2 + ((v.frameTone === 'dark') === dark ? 0 : 1) + (v.sash === 'transom' ? -0.05 : 0); };
+  return pool.reduce((best, i) => score(i) < score(best) ? i : best, pool[0]);
+}
+const hasTrait = (t: ProfileTraits) => t.pale !== null || t.dark !== null || t.arch !== null || t.tall !== null;
+
 /** The presets that best match a profiled building's drawn traits (white accents, dark frames, arched heads, tall sashes). */
 /** `bays` (a HouseSpec's stated window columns, lane H11): only presets whose window count divides it, when any does, so the
  *  look never forces a 3-window cell on a 2-bay front (or 2-window cells on 3 bays). Absent = every plain preset, as before. */
@@ -250,7 +295,7 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
  * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number }, at?: readonly [number, number]) {
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number }, at?: readonly [number, number]) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -259,12 +304,20 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
   const era = vocab || contemporary ? undefined : buurt?.eras[archetype], drawn = era ? profileTraits(id, era) : null;
   const stated = !recipe && !vocab && !contemporary && spec && (spec.pale !== undefined || spec.dark !== undefined || spec.arch !== undefined || spec.tall !== undefined);
-  const traits = stated ? { wall: drawn?.wall ?? null, pale: spec!.pale ?? drawn?.pale ?? null, dark: spec!.dark ?? drawn?.dark ?? null, arch: spec!.arch ?? drawn?.arch ?? null, tall: spec!.tall ?? drawn?.tall ?? null } : drawn;
+  // A stated trait replaces only itself (lane WG step 3, field independence): every trait the spec leaves unstated keeps
+  // what the ladder's own preset (the pick without a spec) shows, so a stated flat head no longer drops that preset's
+  // white frames or dark sashes. When the ladder's preset already shows every stated trait, it stays.
+  const ladderStyle = stated ? (drawn && hasTrait(drawn) ? bayStyleForTraits(id, archetype, drawn) : bayStyleForRecipe(id, archetype, recipe)) : -1;
+  const ladder = stated ? styleTraits(BAY_STYLES[archetype][ladderStyle]) : null;
+  const keepLadder = !!ladder && (['pale', 'dark', 'arch', 'tall'] as const).every(k => spec![k] === undefined || spec![k] === ladder[k])
+    && (!spec!.bays || spec!.bays % (BAY_STYLES[archetype][ladderStyle].windows || 1) === 0);
+  const traits = stated ? { wall: drawn?.wall ?? null, pale: spec!.pale ?? ladder!.pale, dark: spec!.dark ?? ladder!.dark, arch: spec!.arch ?? ladder!.arch, tall: spec!.tall ?? ladder!.tall } : drawn;
   // The measured wall pool (lane W1) and its variety draw (lane W2): a painted draw takes the painted preset's smooth cells.
   const h = hashSeed(id);
   const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolDraw(at[0], at[1], archetype, h >>> 7) : null;
   const painted = draw?.painted ? paintedLayers(archetype) : null;
-  const style = painted ? PAINTED_BASE_STYLE[archetype]! : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
+  const measuredStyle = spec?.windowH !== undefined && !recipe && !vocab && !contemporary ? rowFrontStyle(archetype, spec.windowH, !!spec.dark, spec.bays) : null;
+  const style = measuredStyle !== null ? measuredStyle : painted ? PAINTED_BASE_STYLE[archetype]! : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : keepLadder ? ladderStyle : ladder ? nearestStyle(archetype, traits!, ladderStyle, spec!.bays) : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;

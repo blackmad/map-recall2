@@ -11,6 +11,7 @@
  * A feature without `houseSpec` is returned as the same object, so `?houseSpecs=0` (or HOUSE_SPECS=0 in Node, or no
  * extract) is byte-identical to the chain before.
  */
+import { specFieldsOn, type RouteAFields } from './routeAFields.ts';
 import type { GableShape } from '../roofMesh.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 import type { ArchitecturalRecipe } from '../streetAppearance.js';
@@ -49,6 +50,8 @@ export interface HouseSpecView {
   eavesM?: number;
   /** Lane WG: the front's crown is a cornice (fronts/0/gable, from a front-reading source); only with `storeys`. */
   corniceCrown?: true;
+  /** Lane WG step 2 (routeAFields.ts): the passing dressing and crown classes, the street template's fill. */
+  fields?: RouteAFields;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
   /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
@@ -79,11 +82,20 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   storeysFit?: true;
   /** H11: the stated ground storey's height (m), with `storeysFit`. */
   groundM?: number;
+  /** Lane 1 step d (rowFront flag): measured window boxes on the street front. a0/a1 are fractions of the front's
+   *  length, sill/head metres above the pand's ground (houseLine/boxPlacement.ts). */
+  windowBoxes?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
+  /** Lane 1 (rowFront flag): the photo's fascia colour from lane 2's trace, already muted. */
+  fasciaHex?: string;
+  /** Lane 1 (rowFront flag): one pand's sub-fronts, fractions of the front left to right as seen, with wall colours. */
+  subFronts?: Array<{ a0: number; a1: number; wallHex?: string }>;
   /** Lane WG (houseSpec/storeyPlan.ts): a souterrain under the stated storeys, a roof storey above the eaves, 3DBAG's eaves. */
   souterrain?: true;
   roofStorey?: 'mansard' | 'attic';
   eavesM?: number;
   corniceCrown?: true;
+  /** Lane WG step 2: route A's fields (routeAFields.ts fieldsDraw), drawn unless `?specFields=0`. */
+  fields?: RouteAFields;
   /** Lane WG step 1b: the source of `storeys` (view src.storeys); only a describer read is planned (storeyPlanDraws). */
   storeysSrc?: string;
   /** H11: the window look (bayLook.ts bayLookFor `spec`). */
@@ -186,11 +198,16 @@ export function specWallIsBrick(view: Pick<HouseSpecView, 'wallMaterial'>, p: Pr
   if (p.registerFinish === 'brick') return true;
   return brickLiftOn() && (p.registerFinish === undefined || p.registerFinish === null || p.registerFinish === '');
 }
+/** A wall colour a person reviewed: the pale-warm guard does not apply to it (specWallColour). */
+export const reviewedWallSource = (src: string | undefined): boolean => src === 'author' || src === 'reviewed';
 export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
   const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  // A hand-reviewed wall (source `author` / `reviewed`) skips the guard: the guard was written for noisy measurements, and a
+  // reviewed colour outranks it (peer ruling 2026-11-13: 178293's reviewed #9a5a40, photo L 0.58, drew period brick at 0.38).
+  if (reviewedWallSource(view.src?.wallHex)) return drawn;
   const held = paleWarmHeld(drawn, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light', readingL: hexToOklab(reading)[0] });
   return held ? null : drawn;
 }
@@ -250,7 +267,8 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.shop && view.shopHex && /^#[0-9a-f]{6}$/i.test(view.shopHex)) recipe.shopHex = view.shopHex.toLowerCase();
   }
   // A spec recipe only when it carries something the mesher reads; crown and period ride along.
-  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex) {
+  if (view.fields) recipe.fields = view.fields;
+  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex || recipe.fields) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];
@@ -295,6 +313,14 @@ let modeNow: RegisterGableMode = registerGableMode(G.location?.search ?? null, G
 export function setRegisterGableMode(mode: RegisterGableMode): void { modeNow = mode; }
 export const currentRegisterGableMode = (): RegisterGableMode => modeNow;
 export const PHOTO_GABLE_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
+/** Lane WG step 2 (routeAFields.ts): a passing crown reading (cornice, step, curved register-then-neck) is the view's
+ *  gable for the roof planner, unless `?specFields=0`. Without fields the view is returned as is. */
+function withFieldCrown(view: HouseSpecView | null | undefined): HouseSpecView | null | undefined {
+  const crown = view?.fields?.crown;
+  if (!crown || !specFieldsOn()) return view;
+  const src = (view!.fields!.src.crown ?? '').split('+')[0];
+  return { ...view!, gable: crown, src: { ...view!.src, gable: src } };
+}
 export const CROWN_RISE_M = 2;
 /** 3DBAG's crown above the eaves: true (ridge - eaves >= 2 m), false (a flat top), null (no eaves or ridge in the tile). */
 export function crownInGeometry(p: Props): boolean | null {
@@ -313,7 +339,7 @@ const plannedKind = (feature: { properties: Props }): string | null => {
 /** Decorator step after withMonumentGable: the crown in trust order (photo, then register, then weaker spec sources),
  *  then the register gable gate. Same object back when nothing changes. */
 export function withHouseSpecCrown<T extends { properties: Props }>(feature: T, mode: RegisterGableMode = modeNow): T {
-  const p = feature.properties, view = viewOf(p);
+  const p = feature.properties, view = withFieldCrown(viewOf(p));
   const photo = !!view?.gable && PHOTO_GABLE_SOURCES.has(view.src.gable ?? '') && !excluded(p);
   if (photo) {
     // An author's flat front over a register gable takes the cornice crown (lane H9, the Raadhuisstraat arcade

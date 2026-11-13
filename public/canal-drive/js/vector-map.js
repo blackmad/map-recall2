@@ -1291,7 +1291,13 @@ class VectorBasemap {
     // HouseSpecs (houseSpec/decorate.ts): facts after the register, crown after the monument gable; no-ops without `p.houseSpec`.
     const spec = api && api.withHouseSpec ? api.withHouseSpec : (feature) => feature;
     const crown = api && api.withHouseSpecCrown ? api.withHouseSpecCrown : (feature) => feature;
-    const decorate = withRoofs ? (feature) => api.decorateRoof(crown(named(Facades.decorateFacade(spec(registered(feature)))))) : (feature) => Facades.decorateFacade(spec(registered(feature)));
+    // Lane 1 row fronts (`?rowFront=1`, houseLine/rowFront.ts): after the crown, before the roof; records load once, then re-decorate.
+    const rowFront = api && api.rowFrontOn && api.rowFrontOn() && api.withRowFront ? api.withRowFront : (feature) => feature;
+    if (api && api.loadRowFrontRecords && !this._rowFrontRequested) {
+      this._rowFrontRequested = true;
+      Promise.resolve(api.loadRowFrontRecords(this._extractFile('').replace(/data\/extracts\/.*$/, ''))).then((ok) => { if (ok) this._applyFeatureDecorator(); });
+    }
+    const decorate = withRoofs ? (feature) => api.decorateRoof(rowFront(crown(named(Facades.decorateFacade(spec(registered(feature))))))) : (feature) => Facades.decorateFacade(spec(registered(feature)));
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;

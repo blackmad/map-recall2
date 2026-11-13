@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012173044",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173044/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.roof",
+  "bands",
+  "windowSurround",
+  "doorBay",
+  "ground",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall central dormer with an arched window and a small pediment cap rising over the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balconies at the middle-bay French windows of storeys 1 and 2"
+  }
+ ],
+ "notes": "Bare tree branches cross the whole upper front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

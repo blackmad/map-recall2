@@ -6,12 +6,19 @@
    {
     "storeys": 4,
     "bays": 3,
-    "bands": "speklagen"
+    "bands": "speklagen",
+    "souterrain": false,
+    "rowHeads": [
+     "flat",
+     "flat",
+     "mixed",
+     "flat"
+    ]
    }
   ],
   "palette": {
    "wallMaterial": "brick",
-   "brick": "#45403a"
+   "brick": "#37332f"
   }
  },
  "provenance": {
@@ -33,6 +40,12 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
    "at": "2026-11-13"
   },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
+   "at": "2026-11-13"
+  },
   "palette/wallMaterial": {
    "source": "vision-judge",
    "confidence": 0.7,
@@ -40,6 +53,18 @@
    "at": "2026-11-13"
   },
   "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
    "source": "vision-judge",
    "confidence": 0.7,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
@@ -53,7 +78,8 @@
   }
  },
  "facts": {
-  "pui": "shop"
+  "pui": "shop",
+  "groundKind": "shop"
  },
  "schemaLimits": [
   {

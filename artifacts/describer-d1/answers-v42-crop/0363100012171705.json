@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012171705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows"
+ ],
+ "gaps": [],
+ "notes": "Construction hoarding hides the ground storey, the top is cut off and tree shadows cross the front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

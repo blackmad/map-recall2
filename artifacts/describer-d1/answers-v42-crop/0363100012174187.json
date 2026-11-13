@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174187",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 7,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "ground",
+  "sills",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "two white timber bay windows two storeys tall, one over each side bay, carrying balconies with railings on the top storey"
+  },
+  {
+   "component": "door",
+   "what": "an open central stair entrance (portiek) with steps rising straight from the pavement"
+  },
+  {
+   "component": "balcony",
+   "what": "small railed balconies at the first-storey side windows"
+  }
+ ],
+ "notes": "Bay count read on the first storey (three openings per side group plus the centre); the bay-window storeys have only two axes.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

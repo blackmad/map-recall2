@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012174828",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174828/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "wide ground-storey window split into two tall lights with transoms"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the upper windows"
+  }
+ ],
+ "notes": "A bare tree stands in front of the left bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

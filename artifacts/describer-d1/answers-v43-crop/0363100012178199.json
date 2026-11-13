@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012178199",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178199/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "dormers",
+  "storeyParts.roof"
+ ],
+ "gaps": [],
+ "notes": "Construction hoarding and a site container hide the whole ground storey; two upper storeys of four windows are visible.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

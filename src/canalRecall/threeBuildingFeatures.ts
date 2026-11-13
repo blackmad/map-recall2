@@ -11,9 +11,11 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
+import { ROW_FRONT_EXTRAS, rowFrontShopHex } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
+import { fieldsDraw, ownFields, specFieldsOn, type RouteAFields } from './houseSpec/routeAFields.js';
 import { PERIOD_WALLS, BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
 import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
@@ -48,7 +50,12 @@ export type { BuildingLook };
  * The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. Undefined
  * draws NO shop: the old random third (hashShop, bayLook's hash draw) put shops on warehouses (shopGate.ts, 2026-11-10).
  */
-const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
+const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined => {
+  const kind = shopfrontKindOf(p);
+  // Lane 1 step e (rowFront flag): a front record's shop is the plain shop window, no awning, terrace or produce.
+  return typeof p.rowFront === 'string' && kind && kind !== 'quiet' ? 'shopWindow' : kind;
+};
+const shopfrontKindOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
   // A HouseSpec's stated ground storey (houseSpec/decorate.ts `specShop`, lane H11) outranks the OSM-based extract: a quiet
   // front drops the extract's shop, a shop keeps the extract's kind or draws the plain shop window. Absent = as before.
   p.specShop === false ? 'quiet' : typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.specShop === true ? SPEC_SHOP_KIND : p.shopQuiet ? 'quiet' : undefined;
@@ -131,6 +138,23 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
   building.parapetM = system.parapetM;
 }
 
+/** Lane WG step 2: route A's fields (houseSpec/routeAFields.ts), unless `?specFields=0`. */
+const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
+/** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
+ *  template's pale surround; absent fields leave it as before. */
+function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number } | undefined {
+  const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
+  const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
+  // Lane 1 step e (rowFront flag, houseLine/rowFront.ts): a front record's house takes no block surrounds (the pale
+  // presets' alternating masonry blocks) unless a record states them; it states none yet.
+  if (typeof p.rowFront === 'string') {
+    const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
+    return { ...r?.look, ...extra, pale: false, ...(r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+  }
+  if (!r?.look && !Object.keys(extra).length) return undefined;
+  // The spec's bay count narrows the preset pool only under H11's stated look: a route A field changes its own trait, not the pool.
+  return { ...r?.look, ...extra, ...(r?.look ? { bays: r?.bays } : {}) };
+}
 /** A HouseSpec's reads (houseSpec/decorate.ts `specRecipe`), when the decorator wrote one. */
 const specRecipeOf = (p: Record<string, unknown>): NonNullable<MeshBuilding['specRecipe']> | undefined =>
   p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
@@ -164,7 +188,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined, poolPointOf(polygons, at));
+      specLookOf(p), poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
@@ -294,6 +318,28 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).
   if (p.specStoop && typeof p.specStoop === 'object' && building.extras) building.stoop = p.specStoop as StoopIntent;
+  // Lane WG step 2 (houseSpec/routeAFields.ts): stated bands force the band-line components at the stated height.
+  if (fieldsOf(p) && building.extras) {
+    const draw = fieldsDraw(fieldsOf(p));
+    const force = draw.force.filter(id => !building.registerForce?.includes(id));
+    if (force.length) building.registerForce = [...(building.registerForce ?? []), ...force];
+    if (draw.bandM && draw.force.length) building.specBandM = draw.bandM;
+    if (draw.force.length) building.specFieldsForce = draw.force;
+  }
+  // Lane 1 step e (rowFront flag): subtract before adding. A front record's house draws only the plain extras
+  // (ROW_FRONT_EXTRAS) and what a register or spec states; its shopfront takes the photo's colour muted, never a guessed brand colour.
+  if (typeof p.rowFront === 'string') {
+    // Window boxes (step d): the placed cell crops carry their own frame and sill; the grid's sill and frame extras would
+    // cross the glass of a window that is not on the grid.
+    const boxed = !!specRecipeOf(p)?.windowBoxes?.length;
+    if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    if (building.shopfront || building.shop) {
+      // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.
+      const traced = (specRecipeOf(p) as { fasciaHex?: unknown } | undefined)?.fasciaHex;
+      const hex = typeof traced === 'string' && /^#[0-9a-f]{6}$/i.test(traced) ? traced : rowFrontShopHex(specRecipeOf(p)?.shopHex ?? (p.houseSpec as { shopHex?: unknown } | undefined)?.shopHex);
+      building.accentHex = hex; building.signature = undefined; building.chain = undefined; if (building.layers) building.groundHex = hex;
+    }
+  }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;

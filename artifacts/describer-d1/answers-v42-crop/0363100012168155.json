@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168155",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168155/years/2020.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "tall small-paned ground-storey window with a lower panel section beside the door"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

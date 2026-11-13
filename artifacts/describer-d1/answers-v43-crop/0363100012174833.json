@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174833",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "ground",
+  "columns",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "iron wall anchors between the window axes"
+  }
+ ],
+ "notes": "A tree trunk hides the right edge and a hanging sign and lens flare cover the right windows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

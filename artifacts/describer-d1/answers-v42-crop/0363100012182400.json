@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182400",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182400/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground-storey windows with decorative lattice top lights behind a wall"
+  }
+ ],
+ "notes": "Top cut off at a light frieze band; the ground storey is mostly hidden behind a quay wall.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

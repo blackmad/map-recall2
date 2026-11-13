@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012236188",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012236188.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "notes": "Left crop covers several fronts of the same series (step dormer over a balcony axis)."
+}

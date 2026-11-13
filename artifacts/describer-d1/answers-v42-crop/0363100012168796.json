@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012168796",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168796/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a railing on the flat roof behind the cornice"
+  }
+ ],
+ "notes": "Building site: a site cabin, fencing and a ladder hide the ground storey, and a bare tree crosses the front; the lowest readable row may be a bel-etage over a souterrain.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

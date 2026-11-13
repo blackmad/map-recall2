@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012236055",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012236055.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "notes": "Unsure: marked front is double width (8 axes, two dormers) matching left 4-axis neighbour per half; right 3-axis neighbour similar but narrower."
+}

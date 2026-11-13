@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012174775",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174775/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "cornice",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a small pediment cap above the cornice"
+  }
+ ],
+ "notes": "A bare tree covers much of the front.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

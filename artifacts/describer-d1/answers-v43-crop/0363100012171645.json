@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012171645",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171645/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "off-centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "plain brick step gable with five steps a side and a single attic window"
+  }
+ ],
+ "notes": "Probably a 20th-century step-gable front; a hoist pole crosses the gable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

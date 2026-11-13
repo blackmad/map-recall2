@@ -80,13 +80,30 @@ export function doorPosition(index: number | null | undefined, n: number | undef
   return Math.abs(index - mid) < 0.5 ? 'centre' : index < mid ? 'left' : 'right';
 }
 
+/**
+ * Author convention (integrator ruling D1-fix 3): an author hand spec whose storey count includes a bel-etage row with no
+ * souterrain: no `souterrain: true`, not a shop ground, and a raised or tall ground storey (a stoop basement, `tallGround`, or a
+ * first `storeyHeights` entry >= 1.5 x the median of the upper ones). The readers' convention counts a half-sunk souterrain
+ * under such a bel-etage apart, so these storey counts are excluded from the rows score the way undecidable labels are.
+ */
+export function authorConvention(s: HouseSpec): boolean {
+  const f0: any = s.design.fronts?.[0] ?? {};
+  if (f0.souterrain === true || f0.shopfront || s.facts?.pui === 'shop') return false;
+  const h = Array.isArray(f0.storeyHeights) ? (f0.storeyHeights as number[]) : null;
+  const up = h && h.length > 1 ? [...h.slice(1)].sort((a, b) => a - b) : null;
+  const median = up ? (up.length % 2 ? up[(up.length - 1) / 2] : (up[up.length / 2 - 1] + up[up.length / 2]) / 2) : null;
+  return /stoop/.test(f0.basement ?? '') || f0.tallGround === true || (!!h && median !== null && h[0] >= 1.5 * median);
+}
+
+export type TruthOptions = { /** `exclude`: drop the storey count of authorConvention hand specs (rows scores). Default keep. */ authorConvention?: 'keep' | 'exclude' };
+
 /** An author HouseSpec as a Reading (fields with an author/reviewed receipt only). */
-export function handSpecReading(s: HouseSpec): Reading {
+export function handSpecReading(s: HouseSpec, opts: TruthOptions = {}): Reading {
   const fronts = s.design.fronts ?? [], f0: any = fronts[0] ?? {};
   const r: Reading = { pandId: s.pandId, scorable: fronts.length === 1 };
   const own = (p: string) => { const src = provenanceOf(s, p)?.source; return src === 'author' || src === 'reviewed'; };
   const F = (k: string) => (own(`fronts/0/${k}`) ? f0[k] : undefined);
-  if (F('storeys') !== undefined) r.storeys = F('storeys');
+  if (F('storeys') !== undefined && !(opts.authorConvention === 'exclude' && authorConvention(s))) r.storeys = F('storeys');
   if (own('fronts/0/bays') || own('fronts/0/axisGrid')) { const b = frontBays(f0); if (b) r.bays = b; }
   if (F('windows')) { r.windows = F('windows'); r.windowFamily = windowFamily(F('windows')); r.windowGroup = windowGroup(r.windowFamily as string); }
   if (F('windowHead')?.kind) r.head = F('windowHead').kind === 'relieving' ? 'flat' : F('windowHead').kind;
@@ -112,11 +129,11 @@ export function handSpecReading(s: HouseSpec): Reading {
 }
 
 /** Every truth Reading by pand and set (a pand may have several sets). */
-export function loadTruth(root: string, benchmarkPands?: any[]): Map<string, Map<string, Reading>> {
+export function loadTruth(root: string, benchmarkPands?: any[], opts: TruthOptions = {}): Map<string, Map<string, Reading>> {
   const out = new Map<string, Map<string, Reading>>();
   const put = (set: string, r: Reading) => { const m = out.get(r.pandId) ?? out.set(r.pandId, new Map()).get(r.pandId)!; if (!m.has(set)) m.set(set, r); };
   for (const p of benchmarkPands ?? json(path.join(root, 'scripts/house-line/benchmark/benchmark-v1.json')).pands) put('benchmark', benchmarkReading(p));
   for (const p of json(path.join(root, 'data/house-line/hand-set-v1.json')).pands) put('hand-set', handSetReading(p));
-  for (const { spec } of handSpecFiles(root)) put('hand-spec', handSpecReading(spec));
+  for (const { spec } of handSpecFiles(root)) put('hand-spec', handSpecReading(spec, opts));
   return out;
 }

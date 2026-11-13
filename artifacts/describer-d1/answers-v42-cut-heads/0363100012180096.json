@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012180096",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "both",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "storeyParts.souterrain",
+  "basement",
+  "cornice",
+  "windowSurround",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "pedimented dormer with scroll sides in a slate mansard, one per house, with smaller dormers between"
+  },
+  {
+   "component": "relief",
+   "what": "frieze of white blocks under the cornice"
+  }
+ ],
+ "notes": "Outline holds two identical 3-bay house fronts, each with its door at the left and a central dormer; described one. Distant, low-resolution image with lamp posts and signs in front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

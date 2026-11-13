@@ -79,6 +79,12 @@ function storeysThatFit(c: ExtraContext, s: ExtraSink, perWindow: number, max: n
   return Math.max(1, Math.min(max, c.layout.storeys, Math.floor(s.room() / per)));
 }
 
+/** A speklaag course (m): 14 cm of stone every 30 cm of plain wall at most, at most 3 between two rows; the block faces'
+ *  stripe projection. */
+export const SPEKLAAG = { h: 0.14, pitch: 0.3, max: 3, out: 0.045 } as const;
+/** The block faces' eared surround (blockBuilding/dressings.ts DRESS.surround; pinned equal in routeAFields.test.ts). */
+export const EARED_SURROUND = { t: 0.13, out: 0.05, ear: 0.12, earH: 0.14, earOut: 0.07 } as const;
+
 // --- Components ------------------------------------------------------------------------
 const CANAL: readonly FacadeStyle[] = ['canal', 'c19'];
 
@@ -315,6 +321,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'white-window-frames', styles: CANAL, p: { canal: 0.3, c19: 0.35 }, wide: true, build: (c, s) => {
     // Painted frames standing proud of the brick: jambs and head round every window.
     if (openingsOf(c).ribbon || c.recipe?.windowHead === 'segmental') return;
+    // A stated eared surround (routeAFields.ts) is the frame; a thin frame inside it would only thicken its edge.
+    if (c.registerForce?.includes('eared-surrounds')) return;
     const groundCost = windowSpans(c, -1).length * 12;
     const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
     for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {
@@ -323,6 +331,22 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), w.x - w.hw + 0.01, out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, w.x + w.hw - 0.01, Math.min(c.f.len, w.x + w.hw + frame), out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), Math.min(c.f.len, w.x + w.hw + frame), out, w.z1 - 0.02, Math.min(c.top, w.z1 + 0.05), colour);
+    }
+  } },
+  { id: 'eared-surrounds', styles: CANAL, p: 0, wide: true, group: 'window-head', build: (c, s) => {
+    // Lane WG step 2 (houseSpec/routeAFields.ts `surround`): a stated stone surround at the block faces' weight
+    // (blockBuilding/dressings.ts DRESS.surround, the eared surround of the Nassaukade benchmark): 13 cm jambs, a head
+    // that runs past them with ears. Forced only (p 0): never a dice pick, so a wall without the field is unchanged.
+    const o = openingsOf(c); if (o.ribbon || o.upper.arch || c.recipe?.windowHead === 'segmental') return;
+    const S = EARED_SURROUND, colour = c.recipe?.frameHex ?? WHITE, n = storeysThatFit(c, s, 20, 5);
+    for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
+      const l = w.x - w.hw, r = w.x + w.hw, head = Math.min(c.top, w.z1 + S.t);
+      if (l - S.t - S.ear < 0 || r + S.t + S.ear > c.f.len || head <= w.z1) continue;
+      s.strip(c.f, l - S.t, l + 0.01, S.out, w.z0, w.z1 + 0.02, colour);
+      s.strip(c.f, r - 0.01, r + S.t, S.out, w.z0, w.z1 + 0.02, colour);
+      s.strip(c.f, l - S.t - S.ear, r + S.t + S.ear, S.out + 0.01, w.z1, head, colour);
+      s.strip(c.f, l - S.t - S.ear, l - S.t + 0.02, S.earOut, w.z1 - S.earH, w.z1 + 0.02, colour);
+      s.strip(c.f, r + S.t - 0.02, r + S.t + S.ear, S.earOut, w.z1 - S.earH, w.z1 + 0.02, colour);
     }
   } },
   { id: 'school-window-bars', styles: ['school'], p: 0.4, wide: true, build: (c, s, r) => {
@@ -338,13 +362,29 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'floor-cornices', styles: CANAL, p: { canal: 0.3, c19: 0.2 }, wide: true, build: (c, s, r) => {
     // A white band course at every floor line.
     const hex = r < 0.7 ? WHITE : STONE;
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, z - 0.03, z + 0.04, hex); }
+    // A stated band (c.bandM, houseSpec/routeAFields.ts) is centred on the floor line at its height.
+    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, c.bandM ? z - c.bandM / 2 : z - 0.03, c.bandM ? z + c.bandM / 2 : z + 0.04, hex); }
+  } },
+  { id: 'speklagen', styles: CANAL, p: 0, wide: true, build: (c, s) => {
+    // Lane WG step 3 (houseSpec/routeAFields.ts bands `speklagen`): bacon courses, stone courses across the plain wall
+    // between one row's heads and the next row's sills (and over the ground row), full width so no strip crosses glass. One
+    // floor-line band read as nothing at row distance (Weteringschans 171218). Course height and projection are the block
+    // faces' stripe (blockBuilding/dressings.ts DRESS.stripe out; SPEKLAAG_M); forced only (p 0).
+    const o = openingsOf(c), l = c.layout, n = Math.min(6, l.storeys);
+    const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * l.storeyM]];
+    for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * l.storeyM, storeyZ(c, k + 1) + o.upper.sill * l.storeyM]);
+    for (const [z0, z1] of zones) {
+      const room = Math.min(z1, c.top) - z0 - 0.06, count = Math.max(0, Math.min(SPEKLAAG.max, Math.floor(room / SPEKLAAG.pitch)));
+      if (!count) continue;
+      const gap = (Math.min(z1, c.top) - z0 - count * SPEKLAAG.h) / (count + 1);
+      for (let i = 0; i < count; i++) { const a = z0 + gap * (i + 1) + SPEKLAAG.h * i; s.strip(c.f, 0, c.f.len, SPEKLAAG.out, a, a + SPEKLAAG.h, CREAM); }
+    }
   } },
   { id: 'string-courses', styles: CANAL, p: { c19: 0.45, canal: 0.1 }, wide: true, build: (c, s) => {
     // 19th century: a thin proud stone ledge running through the sills of each storey (the bay
     // drawing paints the flat band; this only adds its drip edge).
     const o = openingsOf(c);
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, z - 0.1, z - 0.04, CREAM); }
+    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, c.bandM ? z - 0.04 - c.bandM : z - 0.1, z - 0.04, CREAM); }
   } },
   { id: 'ribbon-bands', styles: ['school'], p: 0.35, wide: true, build: (c, s, r) => {
     // The School's horizontal emphasis: pale bands above and below every window row.

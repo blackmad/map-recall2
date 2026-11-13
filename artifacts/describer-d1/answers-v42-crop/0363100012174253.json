@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174253",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174253/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "sills",
+  "sameAs",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is painted dark green or black with small white-framed windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

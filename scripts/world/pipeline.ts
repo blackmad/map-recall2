@@ -23,6 +23,7 @@ import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
+import { rowFrontOn, rowFrontsFromFile, setRowFrontRecords } from '../../src/canalRecall/houseLine/rowFront.js';
 import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -88,6 +89,13 @@ function publishedRegisterFacts(): RegisterFactsMap | undefined {
   return registerFactsEnabled(null, process.env.REGISTER_FACTS) && fs.existsSync(file) ? registerFactsFromExtract(readJson(file)) : undefined;
 }
 export function gameChain(options: { registerFacts?: RegisterFactsMap | null } = {}) {
+  // Lane 1 (houseLine/rowFront.ts): the block's front records, only with ROW_FRONT=1 and a records file.
+  // Lane 2's table (data/front-records/haarlemmerdijk-block.json) through the adapter; ROW_FRONT_INTERIM (lane 1's
+  // skyline records) only fills a house the table has no height for.
+  if (rowFrontOn() && process.env.ROW_FRONT_RECORDS) {
+    const interim = process.env.ROW_FRONT_INTERIM ? readJson(path.resolve(process.env.ROW_FRONT_INTERIM)).records ?? [] : [];
+    setRowFrontRecords(rowFrontsFromFile(readJson(path.resolve(process.env.ROW_FRONT_RECORDS)), interim));
+  }
   const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));
   const gables = new Map(Object.entries(gablesJson.buildings ?? {})) as any;

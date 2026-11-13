@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windowSurround",
+  "bands",
+  "cornice",
+  "doorBay",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes at the centre French windows on each upper storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall brick centre dormer with one window rising from the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a shop entrance under a large round fanlight with radiating bars"
+  },
+  {
+   "component": "window",
+   "what": "white triangular corner pieces over the side windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

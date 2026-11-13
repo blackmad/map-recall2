@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012237396",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012237396.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "notes": "Marked front narrower than the right neighbour; balcony stacks sit at the outer ends."
+}
