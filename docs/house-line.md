@@ -476,6 +476,10 @@ passed D1's precision bar (v4.2) with presets and existing quads, plus one force
   across the plain wall between one row's heads and the next row's sills. A single 10 cm floor band read as nothing at row
   distance (Weteringschans 171218, step 3). They dress first, inside the wall's
   unchanged extras budget, so the per-house triangle count barely moves.
+- **stated parts dress first**: field-forced parts (`MeshBuilding.specFieldsForce` -> `ExtraContext.statedFirst`) dress on every
+  wall in their own pass, after the defining assemblies and before any wall's dice trim (facadeExtras.ts
+  `buildingWallExtras`). Without it, a building with several door-allowed walls spent its budget on the short ones first and
+  the stated bands never reached the front (Weteringschans 171192, step 3).
 - **head**: a whole-front `flat` or `segmental` reading is the bay preset's `arch` trait. Per-row heads are held.
 - **surround** (`full-frame`, `eared-keystone`, `block-dressings`, read at the bar or from the street template): forces
   `eared-surrounds` (facadeOrnaments.ts), the block faces' eared surround at `DRESS.surround` weight (13 cm jambs, a head with
