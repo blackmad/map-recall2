@@ -72,3 +72,23 @@ test('walls: measured on the strip, reviewed where a read agrees (reviewer pins 
   assert.ok(r > g && r > b && r < 0x70, 'Haarlemmerdijk 16 is dark red brick');
   assert.ok(table.records.filter(x => x.wall.hex).length >= 100);
 });
+
+test('multi-front pands: Haarlemmerdijk 22/24 is two fronts (David, four-way strip 2026-11-13)', () => {
+  const h22 = rec('0363100012167819');
+  assert.equal(h22.fronts?.length, 2);
+  const [left, right] = h22.fronts!;
+  // Party wall 3.95 m along the span from its left end. 24 (left): cornice, ornate raised top, shop in a grey render
+  // surround. 22 (right): crowned dormer over a white cornice, white arched shopfront.
+  assert.equal(left.to, 3.95); assert.equal(right.from, 3.95);
+  assert.equal(left.crown.family, 'other'); assert.equal(left.frontTopM, 12.3); assert.ok(left.crown.topM! >= 14);
+  assert.equal(right.crown.family, 'straight-cornice'); assert.equal(right.crown.dormer?.kind, 'crowned'); assert.equal(right.frontTopM, 13.25);
+  assert.deepEqual(left.addresses, ['Haarlemmerdijk 24']); assert.deepEqual(right.addresses, ['Haarlemmerdijk 22']);
+  for (const f of h22.fronts!) assert.ok(f.wall.hex, 'each front has its own measured wall');
+  // Every split pand: sub-fronts tile the span, each with its own confidence.
+  const split = table.records.filter(r => r.fronts);
+  assert.ok(split.length >= 15);
+  for (const r of split) assert.ok(r.fronts!.every(f => ['high', 'medium', 'low'].includes(f.confidence)));
+  // The validator catches a gap between sub-fronts.
+  const bad = structuredClone(h22); bad.fronts![1].from = 4.5;
+  assert.ok(frontRecordProblems(bad).some(p => p.includes('does not meet')));
+});
