@@ -354,7 +354,7 @@
     "build:canal-city-overview": "esbuild src/canalRecall/game/cityOverview.ts --bundle --format=iife --global-name=CanalRecallOverview --outfile=public/canal-drive/js/city-overview.bundle.js --sourcemap=external --minify",
     "build:canal-route-selection": "node scripts/esbuild-ride-bundle.mjs src/canalRecall/game/routeSelection.ts public/canal-drive/js/route-selection.bundle.js --minify --global-name=CanalRecallRoute",
     "test:route-selection": "tsx scripts/check-route-selection.ts",
-    "test:poi-notability": "node --import tsx --test src/canalRecall/game/poiNotability.test.ts && tsx scripts/check-poi-notability.ts",
+    "test:poi-notability": "node --import tsx --test src/canalRecall/game/poiNotability.test.ts src/canalRecall/game/destinationPool.test.ts src/canalRecall/game/routeSelection.test.ts && tsx scripts/check-poi-notability.ts",
     "test:poi-collection": "node --import tsx --test src/canalRecall/collection/poiCollection.test.ts",
     "build:canal-collection": "esbuild src/canalRecall/collection/browser.ts --bundle --format=iife --outfile=public/canal-drive/js/collection.bundle.js --sourcemap=external --minify",
     "test:collection:rules": "npx --yes firebase-tools@15.28.2 emulators:exec --only firestore --project demo-canal-feedback --config firebase.feedback.json 'node scripts/collection/rules.test.mjs'",
