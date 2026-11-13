@@ -37,11 +37,15 @@ export type WorldTile = { features: WorldFeature[]; styled: Map<WorldFeature, Wo
  * The compiled cells are the default world since 2026-11-01 (P2 gate: the styled building set is structurally
  * equal and the frame pixel-identical to the live tile path at the five A/B spots). `?world=live` (also `0`,
  * `off`, `tiles`) asks for the live GeoJSON tile path, the P5 dev fallback; `?world=v1` still spells the default.
+ * `?rowFront=1` also asks for the live path (its records decorate live tiles only).
  * A city without published cells falls back to its tiles whatever the flag says (buildingTilesBrowser probeWorld).
  */
 export function worldV1Enabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
   try {
-    const asked = new URLSearchParams(search).get('world');
+    const params = new URLSearchParams(search), asked = params.get('world');
+    // Lane 1 row fronts (`?rowFront=1`): the compiled cells were decorated without them, so the flag draws from the live
+    // tiles, which the main thread decorates with the records (houseLine/rowFront.ts); `?world=v1` still forces the cells.
+    if (params.get('rowFront') === '1' && asked !== 'v1') return false;
     return !(asked === 'live' || asked === '0' || asked === 'off' || asked === 'tiles');
   } catch { return true; }
 }
