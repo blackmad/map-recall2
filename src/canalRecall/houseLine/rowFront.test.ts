@@ -53,10 +53,10 @@ import { rowFrontFromRecord, rowFrontsFromTable, toPandDatum } from './rowFront.
 import type { FrontRecord } from './frontRecord.ts';
 const lane2 = (pandId: string, extra: Partial<FrontRecord> = {}): FrontRecord => ({
   pandId, address: null, street: 'Haarlemmerdijk', face: 'haarlemmerdijk-117-143', side: 'odd', builtYear: 1700, bagWidthM: 5,
-  streetGroundNAP: 1.042, groundNAP: 0.84, frontTopM: null, frontTopKind: null,
+  datum: 'street', streetGroundNAP: 1.042, groundNAP: 0.84, frontTopM: null, frontTopKind: null,
   threeDBag: { frontEavesM: null, roofMinM: null, dak50pM: null, dak70pM: null, roofMaxM: null },
   crown: { family: null, widthM: null, neckWidthM: null, shoulderM: null, topM: null, ornamentTopM: null, dormer: null, atticWindows: null, hoist: null, note: null },
-  storeys: null, groundStoreyTopM: null, rows: [], bays: null, wall: { hex: null, word: null, ref: null }, trim: { hex: null, word: null, ref: null },
+  storeys: null, groundStoreyTopM: null, rows: [], bays: null, wall: { hex: null, word: null, ref: null, rawHex: null, gain: null, finish: null, finishFrom: null, source: null, confidence: 'low' }, trim: { hex: null, word: null, ref: null },
   sources: [], confidence: 'low', fallback: 'row-line', nothingLocal: false, conflicts: [], notes: [], ...extra,
 });
 

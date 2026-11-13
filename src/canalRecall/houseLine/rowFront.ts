@@ -11,7 +11,8 @@
  * `rowFrontFromRecord` is the one adapter. Flag off, or no record: the same feature object back (byte-identical).
  */
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
-import type { FrontRecord, FrontRecordTable } from './frontRecord.js';
+import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
+import { hexToOklab, paleWarmHeld, specWallDisplay } from '../houseSpec/wallColour.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -28,6 +29,8 @@ export interface RowFrontRecord {
   /** Measured upper window rows (sill, head) and the ground storey's top, above the pand's own ground (m). */
   rows?: Array<{ sillM: number; headM: number }>;
   groundTopM?: number;
+  /** Lane 2's wall colour (exposure taken out), its source and finish; absent = no hex (blocked or unread). */
+  wall?: { hex: string; source: 'reviewed' | 'strip-measured'; finish?: string };
   storeys?: number;
   confidence: number;
   /** Low confidence: the row line from measured neighbours and a plain cornice. */
@@ -70,9 +73,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
  * Lane 2's datum: every height is above the face's street ground (`streetGroundNAP`); the renderer's is the pand's own
  * 3DBAG ground. On the dijk the two differ by up to 1.9 m between neighbours. Pand height = value + street - ground.
  */
-export function toPandDatum(r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'>, value: number): number {
-  return r2(value + r.streetGroundNAP - (r.groundNAP ?? r.streetGroundNAP));
-}
+export const toPandDatum = (r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'>, value: number): number => heightAbovePandGround(r, value);
 
 /**
  * The one adapter from lane 2's front record to this renderer's record. A record without a measured front top
@@ -104,6 +105,7 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
   if (fr.storeys !== null && !fr.fallback) out.storeys = fr.storeys;
   if (fr.rows.length && !fr.fallback) out.rows = fr.rows.map(r => ({ sillM: at(r.sillM)!, headM: at(r.headM)! }));
   if (fr.groundStoreyTopM !== null && !fr.fallback) out.groundTopM = at(fr.groundStoreyTopM)!;
+  if (fr.wall?.hex && fr.wall.source) out.wall = { hex: fr.wall.hex, source: fr.wall.source, ...(fr.wall.finish ? { finish: fr.wall.finish } : {}) };
   if (fr.fallback) out.fallback = 'row-line';
   return out;
 }
@@ -138,15 +140,30 @@ const MIN_PLANNED_M = 6.5;
 type Feature = { type?: string; properties: Record<string, unknown>; geometry: unknown };
 
 /**
+ * The record's wall in the spec wall's display (the same lift as a HouseSpec wall). A `reviewed` wall (a strip
+ * measurement a read checked against the photo) skips the pale-warm guard, as `reviewedWallSource` does; a
+ * `strip-measured` one goes through it and is held (null: today's wall) when it trips. Plaster and stucco are renders.
+ */
+export function recordWall(rec: RowFrontRecord): string | null {
+  const w = rec.wall;
+  if (!w || !/^#[0-9a-f]{6}$/i.test(w.hex)) return null;
+  const drawn = specWallDisplay(w.hex.toLowerCase(), { fromPixel: true });
+  if (w.source === 'reviewed') return drawn;
+  const render = w.finish === 'plaster';
+  return paleWarmHeld(drawn, { render, readingL: hexToOklab(w.hex)[0] }) ? null : drawn;
+}
+
+/**
  * Step d, levels: a measured record's storey count is drawn exactly (`storeysFit`), its ground storey at the measured
  * shop or fascia top, and its rows up to the wall top: the cornice's, or a gable's foot, so the roof storey is the gable's
  * light and never a full row (`roofStorey` dropped). A type preset's count (haarlemmer-shop-cornice-*) gives way, and so
  * does the structure prior (it only runs without a stated count). A row-line record keeps today's count.
  */
 export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, eavesM: number, corniceCrown: boolean): { specRecipe?: Record<string, unknown> } {
-  const measured = !rec.fallback && rec.storeys !== undefined && rec.storeys >= 1;
-  if (!sr && !measured) return {};
+  const measured = !rec.fallback && rec.storeys !== undefined && rec.storeys >= 1, wallHex = recordWall(rec);
+  if (!sr && !measured && !wallHex) return {};
   const out: Record<string, unknown> = { ...(sr ?? {}), eavesM, ...(corniceCrown ? { corniceCrown: true } : {}) };
+  if (wallHex) { out.wallHex = wallHex; delete out.heldBrick; }
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
