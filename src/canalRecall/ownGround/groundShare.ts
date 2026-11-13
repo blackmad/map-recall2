@@ -13,9 +13,7 @@
 // The bytes are the same bytes, so the built meshes are unchanged. Re-measured interleaved (3+3+3, load 4–8): requests
 // per start fell 50 % and the host's real gunzip was 155–251 ms a start, but the LOD 0 cells' data-in and the block
 // did not move (the owner is per-worker parse and planning). Off by default (integrator 2026-11-09: an extra worker and
-// up to 64 MB of heap for no gate gain). On by default since lane LS (2026-11-13): cold on the deploy it cut a start's
-// transfer from 135.7 to 113.5 MB and full start ground from 35 to 27.5 s; `?groundShare=0` (or
-// `window.__canalRecallGroundShare = false`) is the old path, one fetch per worker.
+// up to 64 MB of heap for no gate gain): `?groundShare=1` (or `window.__canalRecallGroundShare = true`) opts in.
 
 /** Gunzipped bytes of one extract file (`path` relative to the extract root); throws on a failed fetch. */
 export type RawFetch = (path: string) => Promise<Uint8Array>;
@@ -34,7 +32,7 @@ export const SHARE_CACHE_MB = 64;
 export function groundShareFlag(search?: string): boolean {
   const g = globalThis as { __canalRecallGroundShare?: boolean; location?: { search?: string } };
   if (typeof g.__canalRecallGroundShare === 'boolean') return g.__canalRecallGroundShare;
-  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShare') !== '0';
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShare') === '1';
 }
 
 /**
