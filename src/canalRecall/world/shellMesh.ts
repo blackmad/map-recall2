@@ -434,7 +434,17 @@ export type RecordShellMesh = {
   wallKinds: Uint8Array;
   bids: Uint16Array;
   indices: Uint32Array;
+  /**
+   * P5 (#380): the default look's attributes, per vertex (zero on every non-roof vertex), so roof and lid triangles draw
+   * with the default material exactly as the legacy shell does (uv quantised to 1/UV_UNITS as level 1 is). Carried in
+   * the record shell file's RATT stream for the roof-kind vertices only; absent, no RATT (an older record shell).
+   */
+  look?: RecordRoofLook;
 };
+/** The default-look attributes of a record mesh (full length; only roof-kind vertices carry values). */
+export type RecordRoofLook = { uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; thin: Uint8Array };
+/** True for a roof or lid vertex of a record mesh (WALL_KINDS.roof, either mirroring). */
+export const isRoofKind = (k: number) => (k & 7) === WALL_KINDS.roof;
 
 const SHEL3_STREAMS = ['kind', 'index', 'dup', 'xyCode', 'dx', 'dy', 'quadZ', 'quadH', 'quadU', 'quadDu', 'quadV', 'quadDv', 'z', 'u', 'v', 'recSame', 'rec', 'wallKind', 'wallLen', 'bids'] as const;
 type Shel3Stream = (typeof SHEL3_STREAMS)[number];
@@ -591,7 +601,7 @@ export function decodeShel3(r: Reader): RecordShellMesh {
 export const shelLevel = (payload: Uint8Array): number => payload[0];
 
 /** A record-mode chunk (threeBuildingMesh `facadeRecord: true`): the fields a level 3 shell is baked from. */
-export type RecordShellChunk = { positions: Float32Array; walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint32Array; ranges: readonly { id: string; start: number; count: number }[] };
+export type RecordShellChunk = { positions: Float32Array; walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint32Array; ranges: readonly { id: string; start: number; count: number }[]; /** The chunk's default-look arrays (full length), for the roofs (P5). */ look?: RecordRoofLook };
 
 /**
  * A record-mode chunk as a level 3 mesh: positions moved to the cell origin, vertices in first-use order, every value
@@ -603,8 +613,14 @@ export function recordShellFromChunk(chunk: RecordShellChunk, origin: readonly [
   for (const r of chunk.ranges) { const b = bidOf(r.id); vertexBid.fill(b >= 0 && b < NO_BID ? b : NO_BID, r.start, r.start + r.count); }
   const { order, indices } = firstUseOrder(chunk.indices, chunk.recs.length), n = order.length;
   const positions = new Float32Array(n * 3), walls = new Float32Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n), bids = new Uint16Array(n);
+  const src = chunk.look, look: RecordRoofLook | undefined = src ? { uvs: new Float32Array(n * 2), layers: new Uint8Array(n), tints: new Uint8Array(n * 4), accents: new Uint8Array(n * 4), thin: new Uint8Array(n * 2) } : undefined;
   for (let k = 0; k < n; k++) {
     const o = order[k];
+    if (src && look && isRoofKind(chunk.wallKinds[o])) {
+      look.uvs[k * 2] = q(src.uvs[o * 2], 1 / UV_UNITS) / UV_UNITS; look.uvs[k * 2 + 1] = q(src.uvs[o * 2 + 1], 1 / UV_UNITS) / UV_UNITS;
+      look.layers[k] = src.layers[o]; look.tints.set(src.tints.subarray(o * 4, o * 4 + 4), k * 4); look.accents.set(src.accents.subarray(o * 4, o * 4 + 4), k * 4);
+      look.thin.set(src.thin.subarray(o * 2, o * 2 + 2), k * 2);
+    }
     positions[k * 3] = q(chunk.positions[o * 3] - origin[0], SHEL_UNIT_M) * SHEL_UNIT_M;
     positions[k * 3 + 1] = q(chunk.positions[o * 3 + 1] - origin[1], SHEL_UNIT_M) * SHEL_UNIT_M;
     positions[k * 3 + 2] = q(chunk.positions[o * 3 + 2], SHEL_UNIT_M) * SHEL_UNIT_M;
@@ -613,7 +629,37 @@ export function recordShellFromChunk(chunk: RecordShellChunk, origin: readonly [
     if (vertexBid[o] < 0) throw Error(`shell vertex ${o} belongs to no building range`);
     bids[k] = vertexBid[o];
   }
-  return { positions, walls, recs, wallKinds, bids, indices };
+  return { positions, walls, recs, wallKinds, bids, indices, ...(look ? { look } : {}) };
+}
+
+/** RATT (P5): the roof-kind vertices' default look, as byte planes (uv as zigzag varints in 1/UV_UNITS). */
+export function encodeRatt(m: RecordShellMesh): Uint8Array {
+  const look = m.look!, roof: number[] = [];
+  for (let k = 0; k < m.wallKinds.length; k++) if (isRoofKind(m.wallKinds[k])) roof.push(k);
+  const w = new Writer(); w.uvar(roof.length);
+  for (const c of [0, 1]) { let prev = 0; for (const k of roof) { const u = Math.round(look.uvs[k * 2 + c] * UV_UNITS); w.zvar(u - prev); prev = u; } }
+  const plane = (get: (k: number) => number) => { const b = new Uint8Array(roof.length); roof.forEach((k, i) => { b[i] = get(k); }); w.bytes(b); };
+  plane(k => look.layers[k]);
+  for (let c = 0; c < 4; c++) plane(k => look.tints[k * 4 + c]);
+  for (let c = 0; c < 4; c++) plane(k => look.accents[k * 4 + c]);
+  for (let c = 0; c < 2; c++) plane(k => look.thin[k * 2 + c]);
+  return w.done();
+}
+/** Decode RATT onto a decoded level 3 mesh (its roof-kind vertices, in order); throws when the counts disagree. */
+export function decodeRatt(r: Reader, m: RecordShellMesh): RecordRoofLook {
+  const n = m.wallKinds.length, roof: number[] = [];
+  for (let k = 0; k < n; k++) if (isRoofKind(m.wallKinds[k])) roof.push(k);
+  const count = r.count(n, 'roof vertices');
+  if (count !== roof.length) r.fail(`RATT has ${count} roof vertices, the mesh ${roof.length}`);
+  const look: RecordRoofLook = { uvs: new Float32Array(n * 2), layers: new Uint8Array(n), tints: new Uint8Array(n * 4), accents: new Uint8Array(n * 4), thin: new Uint8Array(n * 2) };
+  for (const c of [0, 1]) { let prev = 0; for (const k of roof) { prev += r.zvar(); look.uvs[k * 2 + c] = prev / UV_UNITS; } }
+  const plane = (set: (k: number, v: number) => void) => { const b = r.take(count); roof.forEach((k, i) => set(k, b[i])); };
+  plane((k, v) => { look.layers[k] = v; });
+  for (let c = 0; c < 4; c++) plane((k, v) => { look.tints[k * 4 + c] = v; });
+  for (let c = 0; c < 4; c++) plane((k, v) => { look.accents[k * 4 + c] = v; });
+  for (let c = 0; c < 2; c++) plane((k, v) => { look.thin[k * 2 + c] = v; });
+  r.end();
+  return look;
 }
 
 // --- SHL1: far prisms ------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@
 //   - GC and the hottest functions from a CDP CPU profile started before the warm-up (its ~1.7 s
 //     start stall falls outside the measured window).
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local build (measure a source change before the integrator
-// rebuilds bundles). NO_WRAP=1 keeps only the frame/map timers (overhead control).
+// rebuilds bundles); WORLD_DIR=<dir> a staged world-v1. NO_WRAP=1 keeps only the frame/map timers (overhead control).
 // Appends to artifacts/perf-owners/ride.jsonl and writes artifacts/perf-owners/<label>.json.
 import {chromium, devices} from 'playwright';
 import fs from 'node:fs';
@@ -29,6 +29,12 @@ const page = await browser.newPage(device === 'touch' ? devices['iPhone 13'] : {
 fs.mkdirSync('artifacts/perf-owners', {recursive: true});
 const errors = [];
 page.on('pageerror', e => errors.push(`${e.message} @ ${(e.stack || '').split('\n').slice(1, 4).join(' | ')}`));
+// WORLD_DIR=<dir> serves staged world-v1 cells (as motion-stutter.mjs; the F1 record shells' draws). On the context, so a
+// worker's cell fetches are routed too.
+if (process.env.WORLD_DIR) await page.context().route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
+  const dir = path.resolve(process.env.WORLD_DIR), file = path.join(dir, /world-v1\/([^?]+)/.exec(route.request().url())[1]);
+  return file.startsWith(dir) && fs.existsSync(file) ? route.fulfill({path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream'}) : route.fulfill({status: 404, body: ''});
+});
 if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({path: file, contentType: 'application/javascript'}) : route.continue();

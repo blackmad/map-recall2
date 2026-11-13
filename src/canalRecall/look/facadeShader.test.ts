@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { FACADE_FIELDS, FACADE_RECORD_BYTES, emptyFacadeRecord, packFacadeRecord, unpackFacadeRecord, type FacadeRecord } from './facadeRecord.ts';
-import { FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_BODY, FACADE_RECORD_VERTEX_DECLS, shaderFacadesEnabled } from './facadeShader.ts';
+import { FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_BODY, FACADE_RECORD_VERTEX_DECLS, shaderFacadesEnabled, shaderFacadesMode } from './facadeShader.ts';
 import { FACADE_TEXTURE_WIDTH, FacadeRecordTexture, firstFitRows } from './facadeRecordTexture.ts';
 import { cityProgramKey, createCityLookMaterial, createCityUniforms, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 
@@ -44,6 +44,17 @@ test('the flag: query wins, then the global, then the device default (off)', () 
   assert.equal(shaderFacadesEnabled(false, '?shaderFacades=0', { __canalRecallShaderFacades: true }), false);
   assert.equal(shaderFacadesEnabled(false, '', { __canalRecallShaderFacades: true }), true);
   assert.equal(shaderFacadesEnabled(false, '?shaderFacades=10', {}), false, 'a longer value is not the flag');
+});
+
+test('P5 the far-only mode: ?shaderFacades=far, or the global "far"; 1 is every tier', () => {
+  assert.equal(shaderFacadesMode(false, '?shaderFacades=far', {}), 'far');
+  assert.equal(shaderFacadesMode(true, '?x=1&shaderFacades=far&y=2', {}), 'far');
+  assert.equal(shaderFacadesMode(false, '?shaderFacades=1', {}), 'all');
+  assert.equal(shaderFacadesMode(false, '?shaderFacades=0', { __canalRecallShaderFacades: 'far' }), 'off');
+  assert.equal(shaderFacadesMode(false, '', { __canalRecallShaderFacades: 'far' }), 'far');
+  assert.equal(shaderFacadesMode(false, '?shaderFacades=farther', {}), 'off', 'a longer value is not the flag');
+  assert.equal(shaderFacadesEnabled(false, '?shaderFacades=far', {}), true, 'far draws the baked tier from records');
+  assert.equal(shaderFacadesMode(false, '', {}), 'off');
 });
 
 test('row allocator: first fit, frees, refuses when full, uploads only its rows', () => {

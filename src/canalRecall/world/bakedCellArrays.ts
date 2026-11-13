@@ -75,6 +75,8 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
 export type BakedRecordArrays = {
   positions: Float32Array | Int16Array; positionUnit: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array;
   indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
+  /** P5: the roofs' default-look attributes (full length, zero on walls) from the RATT stream; absent on older shells. */
+  look?: { uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; thin: Uint8Array };
 };
 export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[], quantised = false): BakedRecordArrays {
   const n = shel.recs.length;
@@ -91,8 +93,14 @@ export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[],
   const next = starts.slice(), remap = new Uint32Array(n);
   for (let k = 0; k < n; k++) remap[k] = next[rank.get(shel.bids[k])!]++;
   const positions = new Float32Array(n * 3), walls = new Int16Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n);
+  const src = shel.look, look = src ? { uvs: new Float32Array(n * 2), layers: new Uint8Array(n), tints: new Uint8Array(n * 4), accents: new Uint8Array(n * 4), thin: new Uint8Array(n * 2) } : undefined;
   for (let k = 0; k < n; k++) {
     const v = remap[k];
+    if (src && look) {
+      look.uvs[v * 2] = src.uvs[k * 2]; look.uvs[v * 2 + 1] = src.uvs[k * 2 + 1]; look.layers[v] = src.layers[k];
+      for (let c = 0; c < 4; c++) { look.tints[v * 4 + c] = src.tints[k * 4 + c]; look.accents[v * 4 + c] = src.accents[k * 4 + c]; }
+      look.thin[v * 2] = src.thin[k * 2]; look.thin[v * 2 + 1] = src.thin[k * 2 + 1];
+    }
     for (let c = 0; c < 3; c++) {
       positions[v * 3 + c] = shel.positions[k * 3 + c];
       const w = Math.round(shel.walls[k * 3 + c] / WALL_UV_UNIT_M);
@@ -104,7 +112,7 @@ export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[],
   for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
   const q = quantised ? toGrid(positions) : null;
-  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, walls, wallUnit: WALL_UV_UNIT_M, recs, wallKinds, indices, ranges, triangles: shel.indices.length / 3 };
+  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, walls, wallUnit: WALL_UV_UNIT_M, recs, wallKinds, indices, ranges, triangles: shel.indices.length / 3, ...(look ? { look } : {}) };
 }
 
 /** Metres on the SHEL grid as Int16 grid steps; null when a coordinate does not fit (it then stays Float32). */

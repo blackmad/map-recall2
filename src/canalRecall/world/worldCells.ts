@@ -217,7 +217,7 @@ export type WorldReply = Batch | Done | Failed | FarDone | ShellDone;
 const REQUEST_KINDS = new Set(['world-cell', 'world-abort', 'world-evict', 'world-far', 'world-shell']);
 /** The buffers a shell reply transfers. */
 export const shellTransfer = (s: ShellCellData | RecordShellCellData): ArrayBuffer[] => ('walls' in s
-  ? [s.positions.buffer, s.walls.buffer, s.recs.buffer, s.wallKinds.buffer, s.indices.buffer, s.records.bytes.buffer]
+  ? [s.positions.buffer, s.walls.buffer, s.recs.buffer, s.wallKinds.buffer, s.indices.buffer, s.records.bytes.buffer, ...(s.look ? [s.look.uvs.buffer, s.look.layers.buffer, s.look.tints.buffer, s.look.accents.buffer, s.look.thin.buffer] : [])]
   : [s.positions.buffer, s.uvs.buffer, s.layers.buffer, s.tints.buffer, s.accents.buffer, s.indices.buffer, ...(s.thin ? [s.thin.buffer] : [])]) as ArrayBuffer[];
 export const isRecordShell = (s: ShellCellData | RecordShellCellData): s is RecordShellCellData => 'walls' in s;
 export const isWorldRequest = (data: unknown): data is WorldRequest => !!data && typeof data === 'object' && REQUEST_KINDS.has(String((data as { kind?: unknown }).kind));

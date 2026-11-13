@@ -55,7 +55,7 @@ test('a wider pixel footprint blends the frame edge (no aliasing step)', () => {
 
 test('S6 coursing: mean 1 over the wall near, flat far; painted brick fainter; stucco smooth', () => {
   const mean = (material: number, fw: number) => { let s = 0, n = 0; for (let y = 0; y < 30; y += 0.0071) for (let x = 0; x < 30; x += 0.0731) { s += frBrick([x, y], [fw, fw], material); n++; } return s / n; };
-  // Brick patches (S6c) are 0.22 x 0.125 m at FR_MOTTLE: a 30 m square holds about 33k of them, so the mean is 1 within 0.01.
+  // Brick patches (S6c) are 0.22 x 0.125 m at FR_MOTTLE: a 30 m square holds about 33k of them, so the mean is 1 within 0.02.
   assert.ok(Math.abs(mean(0, 0.004) - 1) < 0.02, `brick mean ${mean(0, 0.004)}`);
   assert.equal(frBrick([0.3, 0.3], [0.5, 0.5], 0), 1, 'far: the mean');
   const spread = (material: number) => { let lo = 9, hi = 0; for (let y = 0; y < 0.5; y += 0.003) { const b = frBrick([0.1, y], [0.004, 0.004], material); lo = Math.min(lo, b); hi = Math.max(hi, b); } return hi - lo; };
@@ -91,8 +91,8 @@ test('S6b: window kinds draw their glazing, a shop ground storey, the eaves corn
   assert.ok(differs(rec({ bands: 0 }), rec({ bands: 1, bandSillCm: 16, band: [226, 217, 194] })), 'storey string course');
 });
 
-test('S6c brick patches: the wall keeps a brick texture at the benchmark distance (photo medians 0.066 / 0.131 / 0.147)', () => {
-  // brick-texture.ts's measure on the twin: detail (0.25 m running mean removed) std over the mean, pixel-centre samples down columns.
+test('Realism pass: the brick mottle is one tone per brick, never wall-sized blocks (Weteringschans 0363100012171218)', () => {
+  // The user's frame read the S6c/S7a patches (two bricks x two courses, FR_MOTTLE 0.6-0.9) as coarse pixel noise.
   const texture = (ppm: number) => {
     const step = 1 / ppm, half = Math.max(1, Math.round(0.125 / step));
     let s = 0, s2 = 0, n = 0, m = 0;
@@ -103,19 +103,40 @@ test('S6c brick patches: the wall keeps a brick texture at the benchmark distanc
     }
     return Math.sqrt(s2 / n - (s / n) ** 2) / (m / n);
   };
-  assert.ok(texture(20) > 0.04 && texture(20) < 0.09, `20 px/m: ${texture(20)}`);
-  assert.ok(texture(27) > 0.09 && texture(27) < 0.14, `27 px/m (the median pose; the coursing alone gives 0): ${texture(27)}`);
-  assert.ok(texture(50) > 0.12 && texture(50) < 0.17, `50 px/m: ${texture(50)}`);
+  const t = [12, 20, 27, 50, 70].map(texture);
+  console.log('twin texture at 12/20/27/50/70 px/m', t.map(v => v.toFixed(3)).join(' / '));
+  assert.ok(t[0] < 0.01, `12 px/m (bricks under a pixel): ${t[0]}`);
+  assert.ok(t[3] < 0.16 && t[4] < 0.18, `near: ${t[3]} ${t[4]}`);
+  // Brick centres a course apart differ: the mottle is per brick, not per two courses.
+  const at = (x: number, y: number) => frBrick([x, y], [0.002, 0.002], 0);
+  let same = 0, ratio = 1;
+  for (let k = 0; k < 200; k++) {
+    const x = 0.05 + (k % 20) * 0.44, y = 0.0375 + Math.floor(k / 20) * 0.125, a = at(x, y), b = at(x, y + 0.0625);
+    if (Math.abs(a - b) < 1e-6) same++;
+    ratio = Math.max(ratio, a / b, b / a);
+  }
+  assert.ok(same < 10, `${same} of 200 course pairs share a tone`);
+  assert.ok(ratio < 1.6, `brightest / darkest neighbouring brick ${ratio}`);
 });
 
-test('S6d pale walls: brick contrast falls to FR_PALE_K on a white wall, unchanged on mid brick', () => {
-  const spread = (wall: [number, number, number]) => {
+test('S7a: the record wall pattern does not depend on the wall colour (W1 pool walls lose no brick in the record)', () => {
+  // 172590 drew #4c1f0f before W1 and #925441 from the measured pool; the record differs only in `wall`. The pattern the
+  // record multiplies onto the wall must be the same at both: a darker frame's larger detail is the render's, not the record's.
+  const tex = (wall: [number, number, number]) => {
     const r = rec({ windowShare: 0, baysUpper: 1, baysGround: 1, storeys: 1, wallHcm: 2000, wall });
-    let lo = 9, hi = 0;
-    for (let y = 3; y < 5; y += 0.013) { const c = px(r, 1.1, y, 3, 30, 0.03).rgb; const l = (c[0] + c[1] + c[2]) / 3 / ((wall[0] + wall[1] + wall[2]) / 765); lo = Math.min(lo, l); hi = Math.max(hi, l); }
-    return hi - lo;
+    let s = 0, s2 = 0, n = 0;
+    for (let y = 3; y < 9; y += 0.02) for (let x = 0.3; x < 5; x += 0.037) { const c = px(r, x, y, 3, 30, 0.02).rgb, l = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; s += l; s2 += l * l; n++; }
+    return Math.sqrt(s2 / n - (s / n) ** 2) / (s / n);
   };
-  const mid = spread([120, 70, 50]), white = spread([235, 232, 222]);
-  assert.ok(mid > 0.1, `mid brick keeps its patches: ${mid}`);
-  assert.ok(white < mid * 0.6 && white > 0, `white brick is calmer: ${white} vs ${mid}`);
+  const dark = tex([76, 31, 15]), pool = tex([146, 84, 65]);
+  assert.ok(dark > 0.08, `dark wall pattern ${dark}`);
+  assert.ok(Math.abs(dark - pool) < 0.01, `dark ${dark} vs pool ${pool}`);
+});
+
+test('P2 archTop (archedStoreys): only the top full storey turns round-arched', () => {
+  // Storeys 4: ground 0-3.5, uppers 3.5-6.5, 6.5-9.5, 9.5-12.5 m. Rows sampled per storey band.
+  const band = (r: FacadeRecord, v0: number, v1: number) => { const out: number[] = []; for (let v = v0; v < v1; v += 0.1) for (let u = 0.05; u < 6; u += 0.1) out.push(...px(r, u, v).rgb); return out; };
+  const moved = (v0: number, v1: number) => band(rec({ archTop: 1 }), v0, v1).some((x, i) => Math.abs(x - band(rec(), v0, v1)[i]) > 1 / 255);
+  assert.ok(moved(9.5, 12.5), 'the top storey changes');
+  assert.ok(!moved(0, 9.5), 'the lower storeys do not');
 });

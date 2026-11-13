@@ -20,19 +20,30 @@ import { GLASS_STOPS } from './windowSdf.ts';
 import { BRICK_CELL_MEAN } from './palette.ts';
 
 export const SHADER_FACADES_PARAM = 'shaderFacades';
-export const SHADER_FACADES_DESKTOP_DEFAULT = false;
-export const SHADER_FACADES_TOUCH_DEFAULT = false;
+/**
+ * Where the record path draws: `off`; `far`, the baked coarse/far tier only (the near detail and runtime chunks keep the
+ * default look; P5, #380); `all`, every tier. The device defaults are the switch the integrator flips.
+ */
+export type ShaderFacadesMode = 'off' | 'far' | 'all';
+export const SHADER_FACADES_DESKTOP_DEFAULT: ShaderFacadesMode = 'off';
+export const SHADER_FACADES_TOUCH_DEFAULT: ShaderFacadesMode = 'off';
 
-/** The record path is drawn: `?shaderFacades=1|0` wins, then `window.__canalRecallShaderFacades`, then the device default. */
-export function shaderFacadesEnabled(touch = false, search?: string | null, global?: Record<string, unknown> | null): boolean {
+/**
+ * `?shaderFacades=0|1|far` wins (1 = all), then `window.__canalRecallShaderFacades` (a boolean, or 'far'), then the
+ * device default.
+ */
+export function shaderFacadesMode(touch = false, search?: string | null, global?: Record<string, unknown> | null): ShaderFacadesMode {
   const g = global ?? (globalThis as Record<string, unknown>);
   const s = search ?? ((g.location as { search?: string } | undefined)?.search ?? '');
-  const q = new RegExp(`[?&]${SHADER_FACADES_PARAM}=([01])\\b`).exec(s)?.[1];
-  if (q) return q === '1';
+  const q = new RegExp(`[?&]${SHADER_FACADES_PARAM}=(0|1|far)(?![\\w-])`).exec(s)?.[1];
+  if (q) return q === '1' ? 'all' : q === 'far' ? 'far' : 'off';
   const w = g.__canalRecallShaderFacades;
-  if (typeof w === 'boolean') return w;
+  if (typeof w === 'boolean') return w ? 'all' : 'off';
+  if (w === 'far') return 'far';
   return touch ? SHADER_FACADES_TOUCH_DEFAULT : SHADER_FACADES_DESKTOP_DEFAULT;
 }
+/** The record path draws in some tier (the baked far tier at least). */
+export const shaderFacadesEnabled = (touch = false, search?: string | null, global?: Record<string, unknown> | null): boolean => shaderFacadesMode(touch, search, global) !== 'off';
 
 const f1 = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
 const hexV3 = (hex: string) => `vec3(${[1, 3, 5].map(i => (parseInt(hex.slice(i, i + 2), 16) / 255).toFixed(5)).join(', ')})`;
@@ -52,11 +63,14 @@ function fieldAccessors(): string {
 const PITCH_GLSL = `float frPitch(float style) { ${FACADE_STYLES.map((s, i) => `if (style < ${f1(i + 0.5)}) return ${f1(FACADE_WINDOW_PITCH_M[s])};`).join(' ')} return 2.0; }`;
 
 /**
- * The wall's mean against its colour. Integrator ruling (#380, 2026-11-12, the user's correctness-first rule): the record
- * wall is the measured colour itself (1.0 x wallHex), not the atlas brick cell's mean (BRICK_CELL_MEAN, 0.88), even where
- * the city then reads lighter than the atlas path; the atlas parity is a reported number (facadeTwin.test.ts), not a gate.
+ * The wall's mean against its colour, before the lit path's wall gain. Integrator ruling (#380, 2026-11-12, the user's
+ * correctness-first rule): the record wall lands at the measured colour itself (1.0 x wallHex). The lit tail
+ * (cityLook.ts, softRaster.ts) multiplies every wall-masked colour by `litWallGain` = 1 / BRICK_CELL_MEAN, which is there
+ * to lift the atlas brick cell's mean back to its tint; the record wall shares that tail, so it stores BRICK_CELL_MEAN x
+ * wallHex and lands at 1.0 x wallHex like the atlas. Before P5 (2026-11-13) this was 1, which drew every record wall
+ * 1 / 0.88 = 1.13x its measured colour: mid-distance frames read 0.03-0.09 OKLab L lighter than the default and the photo.
  */
-export const FACADE_WALL_MEAN = 1;
+export const FACADE_WALL_MEAN = BRICK_CELL_MEAN;
 /** The atlas wall's mean against its colour, for the parity report. */
 export const ATLAS_WALL_MEAN = BRICK_CELL_MEAN;
 /** Brick coursing (S6): a Dutch waalformaat course (50 mm brick + 12.5 mm joint) and a 220 mm stretcher. */
@@ -76,14 +90,25 @@ export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
  * 0.10 at 30 px/m and 0.13 at 50. The twin with FR_MOTTLE 0.6 gives 0.066 / 0.112 / 0.116 / 0.146 / 0.161 at
  * 20 / 27 / 35 / 50 / 70 px/m.
  */
-export const FR_MOTTLE = 0.6, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
+export const FR_MOTTLE = 0.35, FR_MOTTLE_V = FR_COURSE, FR_MOTTLE_U = FR_BRICK;
+// F1 realism pass (#380, 2026-11-13, the user's Weteringschans 0363100012171218 frame): patches of two bricks x two courses at
+// FR_MOTTLE 0.9 (0.6 on main) made the wall a field of hard-edged blocks 1.5-2.6x apart in brightness, read as coarse pixel
+// noise, not courses. The texture number matched the photos' while the look did not: a photo's wall detail is joints,
+// ornament and dirt, not wall-sized blocks. The mottle is now one tone per brick (the coursing's own bricks), +-17 %,
+// and fades as a course falls under one pixel instead of being carried out to 16 px/m.
 /**
- * Pale walls carry less brick texture (S6d). In round 2's photos (pairs at 25+ px/m) the detail measure was 0.140 at wall
- * OKLab L under 0.45, 0.132 at 0.45-0.6 and 0.066 at 0.6-0.75 (n = 3; none paler). White and cream brick is mostly painted,
- * with joints filled. The coursing and patch contrast therefore fall to FR_PALE_K between L FR_PALE_L[0] and [1]. The
- * OKLab L is approximated as the cube root of the wall's luminance.
+ * The patch fade, in patch rows per pixel. S7a (#380) raised FR_MOTTLE from 0.6 to 0.9 after round 3 measured the GPU
+ * frames against the photos at W1's wall colours. The texture by px/m was:
+ *  - photos 0.071 / 0.123 / 0.147 / 0.157 (under 25 / 25-40 / 40-60 / over 60 px/m);
+ *  - round 3 0.040 / 0.075 / 0.108 / 0.129.
+ * Round 2 read 0.094 / 0.119 / 0.146 / 0.153, but only because the period walls it drew were near-black (#4c1f0f). In
+ * every render path, the atlas included, the frame's detail over its mean is two to three times larger on such a wall
+ * (172590 with the flag off: 0.44 at #4c1f0f, 0.17 at #925441). The S6c calibration had banked on that dark-wall detail,
+ * and W1's measured walls took it away. It was not a W1 code path: the record differs only in `wall`.
+ * The frames read about 0.6-0.85 of the twin's number (more at higher px/m). The twin at 0.9 gives 0.098 / 0.169 / 0.172 /
+ * 0.195 / 0.209 at 20 / 27 / 35 / 50 / 70 px/m. A wider fade overshot the photos under 25 px/m in the twin.
  */
-export const FR_PALE_L = [0.55, 0.7] as const, FR_PALE_K = 0.5;
+export const FR_MOTTLE_FADE = [0.5, 1] as const;
 
 /**
  * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the
@@ -95,6 +120,23 @@ export const FACADE_PANES: readonly (readonly [number, number, number, number, n
   [2, 1, 2, 1, 0.25], [2, 1, 4, 2, 0.3], [3, 1, 3, 1, 0.25], [2, 1, 2, 1, 0.25], [2, 1, 6, 2, 0.3], [2, 1, 0, 0, 0], [2, 4, 0, 0, 0], [3, 1, 1, 1, 0.25],
 ];
 /** Glazing bar width (m), the reveal's shadow share of its depth, the eaves cornice band height (m) by CORNICES index. */
+/**
+ * Realism pass 2 (#380): the bay atlas's own pieces, in metres or as shares of the record's bay and storey (bayTextures.ts,
+ * a 520 px atlas bay holding two record bays, a 310 px upper and a 340 px ground storey, about 115 px a metre).
+ *  - FR_ARCH: windowAt's stone arch over the head: a half ellipse 12 px wider each side and 30 px high (0.10 m, 0.26 m);
+ *    over a round or segmental head a ring FR_ARCH[2] wide.
+ *  - FR_JAMB: paleAccents' jamb blocks: 18 px square every 42 px from 8 px under the head (0.16, 0.37, 0.07 m).
+ *  - FR_DOOR: doorAt, by bay and storey share: width, height, bottom, surround side, surround top, fanlight radius and
+ *    centre under the door top, step height and overhang; FR_DOOR_QUIET quietDoorAt's width, height, surround, top light.
+ *  - FR_PLINTH: the dark plinth (24 px of the ground storey) and its paint; FR_SILL_BAND c19's band 4-11 px under a window.
+ */
+export const FR_ARCH = [0.1, 0.26, 0.12] as const, FR_JAMB = [0.16, 0.37, 0.07] as const;
+export const FR_DOOR = { w: 0.454, h: 0.665, bottom: 0.0706, side: 0.054, top: 0.118, fanR: 0.146, fanY: 0.153, fanBottom: 0.194, step: 0.047, stepOver: 0.1 } as const;
+export const FR_DOOR_QUIET = { w: 0.377, h: 0.629, side: 0.019, top: 0.0147, lightTop: 0.026, lightH: 0.106, inset: 0.031 } as const;
+export const FR_DOOR_STONE = ['#d9d4c7', '#c9c7be'] as const, FR_DOOR_FAN = '#1d2a33', FR_DOOR_STEP = '#bdb8ab';
+export const FR_PLINTH = [0.0706, 0.78] as const, FR_PLINTH_RGB = '#282422', FR_SILL_BAND = [0.0129, 0.0355] as const;
+/** Plan P2: brick coursing and mottle fade out between these camera distances (m); further out the wall is flat. */
+export const FR_FLAT_M = [12, 15] as const;
 export const FR_BAR = 0.04, FR_REVEAL_SHADE = 0.45, FR_CORNICE_M = [0, 0.25, 0.4, 0.55, 0.5] as const;
 const vec4s = (rows: readonly (readonly number[])[]) => rows.map(r => `vec4(${r.map(f1).join(', ')})`).join(', ');
 
@@ -132,7 +174,7 @@ float frBrick(vec2 w, vec2 fw, float material, float contrast) {
   if (amp <= 0.0) return 1.0;
   float prow = floor(w.y / ${f1(FR_MOTTLE_V)}), pcol = floor((w.x + mod(prow, 2.0) * ${f1(0.5 * FR_MOTTLE_U)}) / ${f1(FR_MOTTLE_U)});
   float brickPatch = 1.0 + amp * contrast * ${f1(FR_MOTTLE)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
-    * (1.0 - smoothstep(${f1(0.3 * FR_MOTTLE_V)}, ${f1(0.5 * FR_MOTTLE_V)}, max(fw.x, fw.y)));
+    * (1.0 - smoothstep(${f1(FR_MOTTLE_FADE[0] * FR_MOTTLE_V)}, ${f1(FR_MOTTLE_FADE[1] * FR_MOTTLE_V)}, max(fw.x, fw.y)));
   amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
   if (amp <= 0.0) return brickPatch;
   float row = floor(w.y / ${f1(FR_COURSE)}), yy = w.y - row * ${f1(FR_COURSE)};
@@ -169,9 +211,59 @@ float frBandLines(float sv, float sh, float y0, float y1, float storey, vec2 fw)
 float frSurround(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float head, float rise) {
   float s = fr_surround(), c = 0.0;
   if (s > 0.5 && s < 1.5) c = max(c, frCover(p.x, x0 - 0.08, x1 + 0.08, fw.x) * frCover(p.y, y1, y1 + 0.16, fw.y));
-  if ((s > 1.5 && s < 2.5) || s > 4.5) c = max(c, frOpening(p, fw, x0 - 0.09, x1 + 0.09, y0 - 0.09, y1 + 0.09, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise));
+  if ((s > 1.5 && s < 2.5) || (s > 4.5 && s < 5.5)) c = max(c, frOpening(p, fw, x0 - 0.09, x1 + 0.09, y0 - 0.09, y1 + 0.09, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise));
   if (fr_sills() > 0.5 || (s > 3.5 && s < 4.5)) c = max(c, frCover(p.x, x0 - 0.06, x1 + 0.06, fw.x) * frCover(p.y, y0 - 0.08, y0, fw.y));
-  if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || s > 4.5) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
+  if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || (s > 4.5 && s < 5.5)) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
+  // 6, 7: the atlas's pale jamb blocks (FR_JAMB), 6 with its flat lintel; under far pixels they average to their share.
+  if (s > 5.5) {
+    if (s < 6.5) c = max(c, frCover(p.x, x0 - 0.08, x1 + 0.08, fw.x) * frCover(p.y, y1, y1 + 0.16, fw.y));
+    float side = max(frCover(p.x, x0 - ${f1(FR_JAMB[0])}, x0, fw.x), frCover(p.x, x1, x1 + ${f1(FR_JAMB[0])}, fw.x));
+    float dy = y1 - ${f1(FR_JAMB[2])} - p.y, r = dy - floor(dy / ${f1(FR_JAMB[1])}) * ${f1(FR_JAMB[1])};
+    float blk = mix(1.0 - frCover(r, ${f1(FR_JAMB[0])}, ${f1(FR_JAMB[1])}, fw.y), ${f1(FR_JAMB[0] / FR_JAMB[1])}, smoothstep(0.5 * ${f1(FR_JAMB[1])}, ${f1(FR_JAMB[1])}, fw.y));
+    c = max(c, side * blk * frCover(p.y, y0, y1 - ${f1(FR_JAMB[2])}, fw.y));
+  }
+  return c;
+}
+// The stone arch over a head (archRing set: ARCH_RING_STYLES 2 is none): on a flat head the atlas's half ellipse, on a round
+// or segmental head a ring round the arch.
+float frArchStone(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float head, float rise) {
+  float ring = fr_archRing();
+  if (ring > 1.5 && ring < 2.5) return 0.0;
+  if (head < 0.5) {
+    float a = 0.5 * (x1 - x0) + ${f1(FR_ARCH[0])}, b = min(${f1(FR_ARCH[1])}, 0.6 * a);
+    vec2 q = vec2((p.x - 0.5 * (x0 + x1)) / a, (p.y - y1) / b);
+    float d = (1.0 - length(q)) * min(a, b);
+    return clamp(0.5 + d / max(fw.x, fw.y), 0.0, 1.0) * frCover(p.y, y1, y1 + b, fw.y);
+  }
+  float t = ${f1(FR_ARCH[2])}, spring = y1 - (head > 1.5 ? 0.5 * (x1 - x0) : rise);
+  return max(0.0, frOpening(p, fw, x0 - t, x1 + t, y0, y1 + t, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise)) * frCover(p.y, spring, y1 + t, fw.y);
+}
+// The atlas's door on its record bay (FR_DOOR / FR_DOOR_QUIET): stone surround, leaf, fanlight or top light, step. Returns
+// the colour; o is the covered share (the reveal mask).
+vec3 frAtlasDoor(vec2 p, vec2 fw, float bw, float sh, vec3 wallC, vec3 frame, out float o) {
+  bool quiet = fr_doorStyle() > 1.5;
+  float dw = min(bw * (quiet ? ${f1(FR_DOOR_QUIET.w)} : ${f1(FR_DOOR.w)}), 1.4), x0 = 0.5 * (bw - dw), y0 = sh * ${f1(FR_DOOR.bottom)};
+  float dh = sh * (quiet ? ${f1(FR_DOOR_QUIET.h)} : ${f1(FR_DOOR.h)}), top = y0 + dh;
+  float sd = bw * (quiet ? ${f1(FR_DOOR_QUIET.side)} : ${f1(FR_DOOR.side)}), st = sh * (quiet ? ${f1(FR_DOOR_QUIET.top)} : ${f1(FR_DOOR.top)});
+  float stone = frCover(p.x, x0 - sd, x0 + dw + sd, fw.x) * frCover(p.y, y0, top + st, fw.y);
+  float leaf = frCover(p.x, x0, x0 + dw, fw.x) * frCover(p.y, y0, top, fw.y);
+  vec3 c = mix(wallC, quiet ? ${hexV3(FR_DOOR_STONE[1])} : ${hexV3(FR_DOOR_STONE[0])}, stone);
+  c = mix(c, fr_door(), leaf);
+  float glass;
+  if (quiet) {
+    float i = bw * ${f1(FR_DOOR_QUIET.inset)};
+    glass = frCover(p.x, x0 + i, x0 + dw - i, fw.x) * frCover(p.y, top - sh * ${f1(FR_DOOR_QUIET.lightTop + FR_DOOR_QUIET.lightH)}, top - sh * ${f1(FR_DOOR_QUIET.lightTop)}, fw.y);
+    c = mix(c, frGlass(0.3), glass);
+  } else {
+    float r = bw * ${f1(FR_DOOR.fanR)}, cy = top - sh * ${f1(FR_DOOR.fanY)}, fb = top - sh * ${f1(FR_DOOR.fanBottom)}, xc = x0 + 0.5 * dw;
+    float disc = clamp(0.5 + (r - length(p - vec2(xc, cy))) / max(fw.x, fw.y), 0.0, 1.0) * frCover(p.y, cy, top, fw.y);
+    glass = max(disc, frCover(p.x, xc - r, xc + r, fw.x) * frCover(p.y, fb, cy, fw.y));
+    c = mix(c, ${hexV3(FR_DOOR_FAN)}, glass);
+    float stp = frCover(p.x, x0 - bw * ${f1(FR_DOOR.stepOver)}, x0 + dw + bw * ${f1(FR_DOOR.stepOver)}, fw.x) * frCover(p.y, y0, y0 + sh * ${f1(FR_DOOR.step)}, fw.y);
+    c = mix(c, ${hexV3(FR_DOOR_STEP)}, stp);
+    stone = max(stone, stp);
+  }
+  o = max(stone, leaf);
   return c;
 }
 // The eaves cornice band: CORNICES height under the wall top, a shadow line under it.
@@ -199,9 +291,10 @@ uniform float wallUnit;
 varying vec3 vWall;
 flat varying float vRec;
 flat varying float vWallKind;
+varying float vRecDist;
 `;
 export const FACADE_RECORD_VERTEX_BODY = /* glsl */ `
-vWall = wall * wallUnit; vRec = rec; vWallKind = wallKind;
+vWall = wall * wallUnit; vRec = rec; vWallKind = wallKind; vRecDist = length((modelViewMatrix * vec4(position, 1.0)).xyz);
 `;
 
 /**
@@ -216,6 +309,7 @@ uniform vec4 facadeKnobs;
 varying vec3 vWall;
 flat varying float vRec;
 flat varying float vWallKind;
+varying float vRecDist;
 uvec4 frT0, frT1, frT2, frT3;
 void frFetch(float rec) {
   int r = int(rec + 0.5);
@@ -254,9 +348,8 @@ vec3 facadeRecordColour(out vec2 m) {
   m = vec2(1.0, 0.0);
   if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
   // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
-  vec3 wl = pow(fr_wall(), vec3(2.2));
-  float paleK = mix(1.0, ${f1(FR_PALE_K)}, smoothstep(${f1(FR_PALE_L[0])}, ${f1(FR_PALE_L[1])}, pow(dot(wl, vec3(0.2126, 0.7152, 0.0722)), 1.0 / 3.0)));
-  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x * paleK);
+  // Plan P2 (house review 2026-11-13): beyond about 15 m the wall is its flat measured tone (FR_FLAT_M); no brick there.
+  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x * (1.0 - smoothstep(${f1(FR_FLAT_M[0])}, ${f1(FR_FLAT_M[1])}, vRecDist)));
   float spek = frSpek(w.y, fw);
   vec3 bandC = fr_band();
   wallC = mix(wallC, bandC, spek); m.r = 1.0 - spek;
@@ -285,6 +378,8 @@ vec3 facadeRecordColour(out vec2 m) {
   // The door: a front's ground storey, in doorBay (254: the bay nearest the centre; 255 none).
   float doorBay = fr_doorBay(), door = doorBay > 253.5 && doorBay < 254.5 ? floor((bays - 1.0) * 0.5) : doorBay;
   vec2 p = vec2(bx, sv);
+  // The atlas's dark plinth under a residential ground storey (FR_PLINTH, bayTextures.ts drawBay).
+  if (front && storey < 0.5 && fr_plinthBand() > 0.5) wallC = mix(wallC, ${hexV3(FR_PLINTH_RGB)}, ${f1(FR_PLINTH[1])} * frCover(sv, 0.0, sh * ${f1(FR_PLINTH[0])}, fw.y));
   // A shop ground storey (groundKind shop / pui-glazed): stallriser, display glass and fascia across the front (S6b
   // generic; F2 replaces this with the measured pui).
   float gk = fr_groundKind();
@@ -300,6 +395,11 @@ vec3 facadeRecordColour(out vec2 m) {
   }
   float share = fr_windowShare() / 255.0, winH = fr_windowHeightQ() / 255.0;
   vec3 frame = fr_frame();
+  if (front && storey < 0.5 && abs(bay - door) < 0.5 && doorBay < 254.5 && fr_doorStyle() > 0.5) {
+    float o; vec3 c = frAtlasDoor(p, fw, bw, sh, wallC, frame, o);
+    m = vec2(m.r * (1.0 - o), 0.0);
+    return c;
+  }
   if (front && storey < 0.5 && abs(bay - door) < 0.5 && doorBay < 254.5) {
     float dw = min(1.2, bw * 0.7), x0 = 0.5 * (bw - dw), dh = min(sh * 0.85, 2.6);
     float o = frOpening(p, fw, x0, x0 + dw, 0.0, dh, 0.0, 0.0), leaf = frOpening(p, fw, x0 + 0.06, x0 + dw - 0.06, 0.0, dh - 0.06, 0.0, 0.0);
@@ -310,12 +410,13 @@ vec3 facadeRecordColour(out vec2 m) {
   // One window per bay, centred: width share x bay, height winH x storey, its top under the storey's head line.
   float ww = clamp(share, 0.15, 0.9) * bw, wh = clamp(winH, 0.2, 0.92) * sh;
   float x0 = 0.5 * (bw - ww), y0 = max(0.25, (sh - wh) * 0.55), y1 = min(sh - 0.1, y0 + wh);
-  float head = fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.1 * ww, 0.15) : 0.0;
+  float head = fr_archTop() > 0.5 && storey > 0.5 && storey > storeys - 1.5 ? 2.0 : fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.1 * ww, 0.15) : 0.0;
   if (head > 1.5 && head < 2.5) y1 = max(y1, y0 + 0.5 * ww + 0.2);
   float hd = head > 2.5 ? 0.0 : head;
   // Storey bands at the sill / head lines, then the window's own stone: lintel, frame, sill, keystone.
   float bnd = frBandLines(sv, sh, y0, y1, storey, fw);
-  float acc = max(bnd, frSurround(p, fw, x0, x0 + ww, y0, y1, hd, rise));
+  if (fr_sillBand() > 0.5 && storey > 0.5) bnd = max(bnd, frCover(sv, y0 - sh * ${f1(FR_SILL_BAND[1])}, y0 - sh * ${f1(FR_SILL_BAND[0])}, fw.y));
+  float acc = max(bnd, max(frSurround(p, fw, x0, x0 + ww, y0, y1, hd, rise), frArchStone(p, fw, x0, x0 + ww, y0, y1, hd, rise)));
   wallC = mix(wallC, bnd > 0.0 ? bandC : accentC, acc); m.r *= 1.0 - acc;
   float outer = frOpening(p, fw, x0, x0 + ww, y0, y1, hd, rise);
   if (outer <= 0.0) return wallC;

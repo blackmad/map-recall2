@@ -1,6 +1,7 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
 import { GENERIC_WINDOWS_PER_BAY, genericBayWindow, type FacadeGenericLayout } from './look/facadeRecord.js';
+import type { FinishHint } from './look/finishHint.js';
 import { GENERIC_STOOP } from './stoopExtra.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
@@ -177,16 +178,18 @@ export type Chunk = {
  * kept as kind 7, gable plates and dormer faces as the crown field (kind 6). `specFor` hands the packer a pand's resolved
  * spec (the extract's d/x/s). Absent, buildChunk is byte-identical to before F1.
  */
-export type ChunkOptions = { facadeRecord?: boolean; specFor?: (id: string) => FacadeSpecInput | undefined };
+export type ChunkOptions = { facadeRecord?: boolean; specFor?: (id: string) => FacadeSpecInput | undefined; /** `?finishHint=1` (look/finishHint.ts): Jev's render hint per pand; absent, byte-identical. */ finishHintFor?: (id: string) => FinishHint | undefined };
 /**
  * F1 S6d: the record's wall finish when the spec states none (the spec's palette.wallMaterial still wins in the packer):
  * the register's finish (registerRecipe.ts: plaster/stone/painted read 'light', brick 'brick') at Src 1, else unset (brick).
  * The period family was measured and left out: on F4's photo-labelled pands the bay preset's smooth modern wall said
  * render on 7, right on 1, while 6 were brick. The register said render or brick on 3 and was right on 3.
+ * Below the register: Jev's render hint (look/finishHint.ts, `?finishHint=1`), a hint and never a fact, at Src 1.
  */
-export function recordWallMaterial(b: Pick<MeshBuilding, 'registerFinish'>): { wallMaterial?: string; wallMaterialSrc?: 1 } {
+export function recordWallMaterial(b: Pick<MeshBuilding, 'registerFinish'>, hint?: FinishHint): { wallMaterial?: string; wallMaterialSrc?: 1 } {
   if (b.registerFinish === 'light') return { wallMaterial: 'stucco', wallMaterialSrc: 1 };
   if (b.registerFinish === 'brick') return { wallMaterial: 'brick', wallMaterialSrc: 1 };
+  if (hint?.value === 'render') return { wallMaterial: 'stucco', wallMaterialSrc: 1 };
   return {};
 }
 const REC_KIND = { front: 0, side: 1, rear: 2, party: 3, strip: 4, chamfer: 5, crown: 6, roof: 7 } as const;
@@ -879,7 +882,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       recInput = { id: b.id, style: b.style, wallHex: b.wallHex, ...(b.specRecipe?.wallHex ? { wallLifted: true } : {}), ...(b.accentHex ? { accentHex: b.accentHex } : {}),
         ...(b.groundHex ? { groundHex: b.groundHex } : {}), ...(b.shop || b.shopfront ? { shop: true } : {}), ...(b.roof?.roofHex ?? b.lid?.hex ? { roofHex: b.roof?.roofHex ?? b.lid?.hex } : {}),
         ...(b.lid ? { lid: true } : {}), heightM: buildingTop, minHeightM: base, ...(b.specRecipe?.look ? { look: b.specRecipe.look } : {}),
-        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...recordWallMaterial(b), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
+        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...recordWallMaterial(b, options.finishHintFor?.(b.id)), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
     }
     signTotal += sign.length;
     extrasTotal += extraTris;

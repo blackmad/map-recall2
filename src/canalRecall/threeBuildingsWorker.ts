@@ -16,8 +16,9 @@ import { planTiles, plannedTransferables } from './ownGround/cellTiles.js';
 import { answerOverview, isOverviewRequest, type OverviewRequest } from './ownMap/overviewPool.js';
 import { SpecTileTable, packChunkRecords } from './look/facadeSpecTiles.js';
 import type { FacadeRecordInput, FacadeSpecInput } from './look/facadeRecord.js';
+import { FinishHintTable, type FinishHint } from './look/finishHint.js';
 
-type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string; shellRoofs?: boolean; /** Facade tiles per side and the smallest chunk worth cutting: the tiles' x/y partition is cut here (cellTiles.ts planTiles). */ tiles?: number; tileMin?: number; /** F1 (#380, `?shaderFacades=1`): a record-mode chunk; `specBase` the house-specs extract (absolute URL). */ facadeRecord?: { specBase: string } };
+type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string; shellRoofs?: boolean; /** Facade tiles per side and the smallest chunk worth cutting: the tiles' x/y partition is cut here (cellTiles.ts planTiles). */ tiles?: number; tileMin?: number; /** F1 (#380, `?shaderFacades=1`): a record-mode chunk; `specBase` the house-specs extract (absolute URL). */ facadeRecord?: { specBase: string; /** `?finishHint=1`: the hint file (absolute URL, look/finishHint.ts). */ hintUrl?: string } };
 
 // world-v1 (`?world=v1`): the streamer's cell reads (fetch, inflate, decode, decoded-cell cache) run here, off the
 // main thread, and come back as batches of styled features (world/worldCells.ts).
@@ -37,16 +38,18 @@ self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | Stand
     const t0 = performance.now(), base = job.facadeRecord.specBase;
     const table = specTables.get(base) ?? new SpecTileTable(base);
     specTables.set(base, table);
-    void table.specFor(job.features).then(specFor => answer(job, t0, specFor));
+    const hints = job.facadeRecord.hintUrl ? (hintTables.get(job.facadeRecord.hintUrl) ?? new FinishHintTable(job.facadeRecord.hintUrl)) : null;
+    if (hints) hintTables.set(job.facadeRecord.hintUrl!, hints);
+    void Promise.all([table.specFor(job.features), hints?.hintFor()]).then(([specFor, finishHintFor]) => answer(job, t0, specFor, finishHintFor));
     return;
   }
   answer(job, performance.now());
 };
 
-const specTables = new Map<string, SpecTileTable>();
-function answer(job: Job, t0: number, specFor?: (id: string) => FacadeSpecInput | undefined): void {
+const specTables = new Map<string, SpecTileTable>(), hintTables = new Map<string, FinishHintTable>();
+function answer(job: Job, t0: number, specFor?: (id: string) => FacadeSpecInput | undefined, finishHintFor?: (id: string) => FinishHint | undefined): void {
   const { key, gen, look, features, appearanceRevision, hostOpeningRevision, surveyedEnvelopeRevision } = job;
-  const event = { data: specFor ? { ...job, facadeRecord: true, specFor } : { ...job, facadeRecord: undefined } };
+  const event = { data: specFor ? { ...job, facadeRecord: true, specFor, ...(finishHintFor ? { finishHintFor } : {}) } : { ...job, facadeRecord: undefined } };
   const {chunk,boundParentIds} = event.data.special === 'kits' ? {chunk:buildSpecialKits(features, look, event.data.layers),boundParentIds:[]}
     : event.data.special === 'boats' ? {chunk:buildSpecialBoats(event.data.boats ?? [], look, event.data.layers),boundParentIds:[]}
     : buildTransportedEnvelopeChunk(features,event.data);

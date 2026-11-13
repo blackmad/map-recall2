@@ -43,6 +43,7 @@ import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
 import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, BUILDING_FORMAT_VERSION, encodeShellCell, decodeShellCell, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
+import { parseFinishHints } from '../../src/canalRecall/look/finishHint.js';
 import { bakeCellShell, bakeGroupChunk, subsetShellChunk, SHELL_LOOK, bakeCellRecordShell, bakeGroupRecordChunk, loadHouseSpecTable, subsetRecordChunk, type RecordPart } from './shellBake.js';
 import { FACADE_RECORD_VERSION } from '../../src/canalRecall/look/facadeRecord.js';
 import { FACADE_SHELL_DIR } from '../../src/canalRecall/world/worldCells.js';
@@ -72,6 +73,9 @@ const SHELL = flag('shell') ? (value('shell') === 'far' ? 'far' : 'all') : null;
 /** F1 (#380): also bake record shells (SHEL level 3 + FREC) into world-v1/facade/; needs --shell. Absent, every output is unchanged. */
 const FACADE_RECORDS = !!flag('facade-records');
 if (FACADE_RECORDS && SHELL !== 'all') throw Error('--facade-records needs --shell');
+/** F1 finish hint (look/finishHint.ts): `--finish-hints=<file>` bakes Jev's render hints into the records (round-4 staging only). */
+const FINISH_HINTS = value('finish-hints') ? path.resolve(value('finish-hints')!) : null;
+if (FINISH_HINTS && !FACADE_RECORDS) throw Error('--finish-hints needs --facade-records');
 // --shell-reach-km (lane R4-A #243, default 5): no SHEL for a cell farther than this from every roads-v1 cell. The
 // baked coarse tier holds the ~96 cells nearest the camera (desktop; ~5.5 km in the outskirts), and the camera stays
 // over the ridable city, so those cells never draw baked; the far ring (SHL1) still covers them. 0 keeps every cell.
@@ -272,7 +276,7 @@ async function main() {
     for (const c of decoded.values()) for (const b of c.buildings) byId.set(b.id, styledFeature(b, rawFeature(b)));
     for (const sub of SHELL === 'all' ? ['shells', 'far'] : ['far']) fs.mkdirSync(path.join(OUT, sub), { recursive: true });
     if (FACADE_RECORDS) fs.mkdirSync(path.join(OUT, FACADE_SHELL_DIR), { recursive: true });
-    const specTable = FACADE_RECORDS ? loadHouseSpecTable(EXTRACT, houseSpecsDir()) : null, recordChunks = new Map<string, RecordPart>();
+    const specTable = FACADE_RECORDS ? loadHouseSpecTable(EXTRACT, houseSpecsDir()) : null, hintTable = FINISH_HINTS ? parseFinishHints(JSON.parse(fs.readFileSync(FINISH_HINTS, 'utf8'))) : null, recordChunks = new Map<string, RecordPart>();
     const roadKeys = Object.entries<any>(cellsOut).filter(([, c]) => c.inRoadsV1).map(([k]) => k.split('_').map(Number));
     // Lane R4-A (#243): the runtime's coarse chunk is a z14 group tile, and its composition sets window layers, so the
     // bake builds each group tile's chunk as the runtime does (shellBake.ts bakeGroupChunk) and gives every cell its
@@ -298,7 +302,7 @@ async function main() {
         const ids = new Set(source.map(f => String(f.properties.id)));
         const context = shellCtx.neighbors(source, f => ids.has(String(f.properties.id)) || kitHide.has(String(f.properties.id)));
         groupChunks.set(g, chunk = bakeGroupChunk(source, context, ROOT));
-        if (specTable) recordChunks.set(g, bakeGroupRecordChunk(source, context, ROOT, id => specTable.get(id)));
+        if (specTable) recordChunks.set(g, bakeGroupRecordChunk(source, context, ROOT, id => specTable.get(id), hintTable ? id => hintTable.get(id) : undefined));
       }
       return chunk;
     };

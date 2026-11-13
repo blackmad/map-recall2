@@ -84,6 +84,11 @@ export const FACADE_FIELDS = [
   f('entrance', 'bits', 49, 0, 3), f('glazing', 'bits', 49, 3, 2), f('stallriser', 'bits', 49, 5, 2), f('fasciaOn', 'bits', 49, 7, 1),
   f('fascia', 'rgb', 50), f('shopPaint', 'rgb', 53), f('displayWindows', 'u8', 56), f('fasciaHeightDm', 'u8', 57), f('stallriserDm', 'u8', 58),
   f('shopStoreys2', 'bits', 59, 0, 1), f('souterrainUnderStoop', 'bits', 59, 1, 1), f('ribbonStorey1', 'bits', 59, 2, 1),
+  // Parity with the default atlas (realism pass 2, #380), in byte 59's reserve (byte 63 stays F2's). Zero is the earlier
+  // behaviour, so a record packed before reads as it did.
+  f('doorStyle', 'bits', 59, 3, 2), f('plinthBand', 'bits', 59, 5, 1), f('sillBand', 'bits', 59, 6, 1),
+  // archedStoreys (P2 head shape per storey): the top full storey's windows are round-arched over the front's own head.
+  f('archTop', 'bits', 59, 7, 1),
   f('door', 'rgb', 60),
 ] as const satisfies readonly FacadeField[];
 
@@ -152,19 +157,41 @@ export interface SpecLookInput { pale?: boolean; dark?: boolean; arch?: boolean;
 /** The generic path's layout of a pand's street run (threeBuildingMesh layoutRun), the record's priors (S6b). */
 export type FacadeGenericLayout = { storeys: number; groundM: number; storeyM: number; windows: number; doorWindow: number | null; variant: number; /** The bay look's window (photo look, bayLook.ts), when the pand draws one. */ bay?: GenericBayWindow };
 /** The bay look's window, as the record says it (genericBayWindow). */
-export type GenericBayWindow = { head: (typeof WINDOW_HEADS)[number]; surround: (typeof WINDOW_SURROUNDS)[number]; sills: boolean; kind: (typeof WINDOWS)[number] | null; dark: boolean; /** Window width over its pitch and height over its storey (facadeOpenings.ts bayVariantOpenings), when known. */ share?: number; height?: number };
+/**
+ * The record's surround codes: intent.ts WINDOW_SURROUNDS, then two the bay atlas paints and the intent vocabulary has no word
+ * for (bayTextures.ts windowAt `paleAccents`): pale jamb blocks beside the window with its flat stone lintel (6), and the same
+ * blocks under an arched stone head (7, the head is the arch ring).
+ */
+export const FACADE_SURROUNDS = [...WINDOW_SURROUNDS, 'block-jambs', 'block-jambs-arch'] as const;
+/** Door styles (`doorStyle`): 0 the S4 plain leaf, 1 the atlas's door (stone surround, fanlight, step; bayTextures.ts doorAt), 2 its quiet door (quietDoorAt). */
+export const FACADE_DOOR_STYLES = ['plain', 'fanlight', 'quiet'] as const;
+export type GenericBayWindow = { head: (typeof WINDOW_HEADS)[number]; surround: (typeof FACADE_SURROUNDS)[number]; sills: boolean; kind: (typeof WINDOWS)[number] | null; dark: boolean; /** The preset paints its frames in the look's accent (bayTextures.ts paintedFrames); else they are pale. */ painted?: boolean; /** The pale floor-line course the preset paints (bayTextures.ts drawBay: c19 12 px, canal 7 px of a 310 px storey). */ band?: { hex: string; cm: number }; /** A stone arch over the head (bayTextures.ts lintel 'arch'). */ ring?: boolean; /** The atlas's door (FACADE_DOOR_STYLES index). */ door?: 1 | 2; /** The dark plinth under the ground storey. */ plinth?: boolean; /** c19's band under each upper window row. */ sillBand?: boolean; /** Window width over its pitch and height over its storey (facadeOpenings.ts bayVariantOpenings), when known. */ share?: number; height?: number };
 /** The bay preset fields the record reads (bayTextures.ts BayVariant). */
-export type BayWindowPreset = { archetype: string; shape: string; lintel?: string; sash?: string; paleAccents?: boolean; frameTone?: string; family?: string };
+export type BayWindowPreset = { archetype: string; shape: string; lintel?: string; sash?: string; paleAccents?: boolean; frameTone?: string; family?: string; paintedFrames?: boolean; trimDensity?: string; openingGroup?: string; entranceAssembly?: string; groundAssembly?: string };
 /**
  * The record's reading of a bay-look preset (bayTextures.ts windowAt): the head shape, a stone lintel and sill unless the
  * preset has none (punched and modern fronts never do), pale jamb blocks as a full stone frame, the sash's bars, dark frames.
  */
 export function genericBayWindow(v: BayWindowPreset, upper?: { axes: readonly number[]; width: number; sill: number; head: number }): GenericBayWindow {
   const dressed = v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern';
+  // windowAt draws its stone arch for lintel 'arch', and for an unstated lintel over an arched window.
+  const arch = dressed && (v.lintel === 'arch' || (v.lintel === undefined && v.shape === 'arch'));
+  const blocks = !!v.paleAccents && !v.entranceAssembly;
   // bayTextures.ts windowAt: 'transom' is one bar at 0.29 of the height over two lights, the Amsterdam T-window that the benchmark
   // photos label on 11 of round 1's 25 window-kind pairs; 'paired-transom' adds the mullion through the top-light (a cross).
-  const kind = v.sash === 'transom' ? 't-window' : v.sash === 'paired-transom' ? 'cross-transom' : v.sash === 'plain' ? 'plain' : null;
-  return { head: v.shape === 'segmental' ? 'segmental' : v.shape === 'arch' ? 'round' : 'flat', surround: !dressed ? 'none' : v.paleAccents ? 'full-frame' : 'stone-lintel', sills: dressed, kind, dark: v.frameTone === 'dark',
+  // An unstated sash is the atlas's muntins: a cross on a punched front, else a centre bar, two mullions and two quarter
+  // bars (3 x 4 panes, sash-6-over-6). Parity with the default first (realism pass 2); a measured kind still wins.
+  const kind = v.sash === 'transom' ? 't-window' : v.sash === 'paired-transom' ? 'cross-transom' : v.sash === 'plain' ? 'plain' : v.family === 'punched' ? 'cross' : 'sash-6-over-6';
+  const quietDoor = v.trimDensity === 'restrained' || !!v.entranceAssembly;
+  return { head: v.shape === 'segmental' ? 'segmental' : v.shape === 'arch' ? 'round' : 'flat',
+    surround: blocks ? (arch ? 'block-jambs-arch' : dressed ? 'block-jambs' : 'none') : !dressed || arch ? 'none' : 'stone-lintel',
+    sills: dressed, kind, dark: v.frameTone === 'dark', ...(v.paintedFrames && v.frameTone !== 'dark' ? { painted: true } : {}),
+    // The string course the atlas paints at each floor line ('#e6dbc3', Painter.stone): the record had none, so the realism
+    // pass (#380, Weteringschans 0363100012171218) lost the default's white horizontal lines.
+    ...(v.archetype === 'c19' && v.trimDensity !== 'restrained' ? { band: { hex: '#e6dbc3', cm: 10 }, sillBand: true } : v.archetype === 'canal' && !v.openingGroup ? { band: { hex: '#e6dbc3', cm: 6 } } : {}),
+    ...(arch ? { ring: true } : {}),
+    ...(v.groundAssembly || v.archetype === 'modern' ? {} : { door: quietDoor ? 2 as const : 1 as const }),
+    ...(v.entranceAssembly === 'raised-plain' ? {} : { plinth: true }),
     ...(upper && upper.axes.length ? { share: Math.min(0.9, upper.width * upper.axes.length), height: Math.min(0.9, upper.head - upper.sill) } : {}) };
 }
 /** Window axes per generic cell (facadeCells.ts paintCell): the canal cell paints two sashes a bay, the others one. */
@@ -191,7 +218,7 @@ export interface FacadeRecordInput {
   /** palette/registerFinish wall material when the spec states none. */
   wallMaterial?: string;
   wallMaterialSrc?: SrcClass;
-  /** The look's accent (`MeshBuilding.accentHex`): trim, frames of a pale look. */
+  /** The look's accent paint (`MeshBuilding.accentHex`): a preset's painted frames only; never the stone or a default frame. */
   accentHex?: string;
   /** Shop paint (`MeshBuilding.groundHex`) and the shop flags. */
   groundHex?: string;
@@ -239,7 +266,7 @@ const CORNICE_DEPTH_DM: Readonly<Record<(typeof CORNICES)[number], number>> = { 
 const STALLRISER_DM: Readonly<Record<(typeof STALLRISERS)[number], number>> = { none: 0, low: 4, medium: 7, high: 10 };
 export const FACADE_DEFAULTS = { windowShare: 0.58, windowHeight: 0.6, accent: '#f1ede2', door: '#35413d', bandSillCm: 14, bandHeadCm: 17, bandTransomAt: 0.78, spekSpacing: 7, spekCourses: 2, revealBrickCm: 11, revealStuccoCm: 4, doorRevealCm: 12, fasciaDm: 6, stallriserDm: 7 } as const;
 /** Frame tones of the window looks (windowTable.ts windowOf): dark, painted white, the pale default. */
-const FRAME_DARK = '#2c302f', FRAME_PALE = '#f1ede2';
+const FRAME_DARK = '#2c302f', FRAME_PALE = '#f1ede2', FACADE_PRIOR_STONE = '#cfc8b8';
 
 const idx = <T extends readonly string[]>(list: T, v: unknown, fallback = 0): number => { const i = list.indexOf(v as T[number]); return i < 0 ? fallback : i; };
 const num = (v: unknown): number | undefined => (typeof v === 'number' && Number.isFinite(v) ? v : undefined);
@@ -275,7 +302,11 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   r.wallSrc = palette.wallMaterial !== undefined ? pal('wallMaterial') : input.wallMaterialSrc ?? 0;
   r.lifted = input.wallLifted ? 1 : 0;
   const frameHex = hexRgb(palette.frame);
-  r.frame = frameHex ?? hexRgb(look.dark ? FRAME_DARK : look.pale ? FRAME_PALE : look.dark === undefined && input.generic?.bay?.dark ? FRAME_DARK : input.accentHex ?? FRAME_PALE)!;
+  // The legacy paths paint frames pale (bayTextures.ts windowAt '#f1ede2', facadeCells.ts '#ece8dd') unless the preset is dark or
+  // paints its frames in the accent. `accentHex` is that paint (and doors, shutters), not a frame colour: the realism pass
+  // (#380, Weteringschans 0363100012171218) found every generic pand's frames drawn in it, '#2c3e50' on a dark wall.
+  const bayFrame = input.generic?.bay;
+  r.frame = frameHex ?? hexRgb(look.dark ? FRAME_DARK : look.pale ? FRAME_PALE : look.dark === undefined && bayFrame?.dark ? FRAME_DARK : bayFrame?.painted && input.accentHex ? input.accentHex : FRAME_PALE)!;
   r.frameSrc = frameHex ? pal('frame') : 0;
   r.glassTone = palette.glassBlock ? 3 : look.dark ? 2 : 0;
   r.style = Math.max(0, FACADE_STYLES.indexOf(style));
@@ -341,7 +372,9 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   const cell = GENERIC_WINDOW_CELL[style], variant = input.generic?.variant === 1 ? 1 : 0, bayW = input.generic?.bay;
   r.windowHead = idx(WINDOW_HEADS, head?.kind ?? (look.arch !== undefined ? (look.arch ? 'segmental' : 'flat') : bayW ? bayW.head : cell ? cell.heads[variant] : style === 'c19' ? 'segmental' : 'flat'));
   const ring = head?.archRing as Record<string, any> | undefined;
-  r.archRing = idx(ARCH_RING_STYLES, ring?.style ?? (ring ? 'solid' : front.archRings && front.archRings !== 'none' ? 'solid' : 'none'));
+  r.archRing = idx(ARCH_RING_STYLES, ring?.style ?? (ring ? 'solid' : front.archRings && front.archRings !== 'none' ? 'solid' : front.archRings === undefined && !head?.kind && bayW?.ring ? 'solid' : 'none'));
+  const arched = Array.isArray(front.archedStoreys) ? (front.archedStoreys as unknown[]).map(Number) : [];
+  r.archTop = arched.includes(storeys - 1) && storeys > 1 ? 1 : 0;
   r.keystone = ring?.keystone || front.windowSurround === 'keystone' || front.windowSurround === 'eared-keystone' ? 1 : 0;
   r.tympanum = head?.tympanum ? 1 + idx(TYMPANUM_FILLS, head.tympanum) : 0;
   r.windowShare = Math.round((num(front.windowShare) ?? bayW?.share ?? cell?.share ?? FACADE_DEFAULTS.windowShare) * 255);
@@ -369,10 +402,12 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
 
   // Row 2: accents, drawn from Src 2-3; below that the style prior (none, or the look's pale trim) and the bit says so.
   const stone = hexRgb(palette.stone);
-  r.accent = stone ?? hexRgb(input.accentHex) ?? hexRgb(FACADE_DEFAULTS.accent)!;
+  // Unstated stone is the legacy paths' dressed stone (bayTextures.ts '#cfc8b8', facadeCells.ts STONE_LIGHT '#cfc6b4'), not
+  // the look's accent paint: sills, lintels and string courses were drawn in it, dark on dark (realism pass, #380).
+  r.accent = stone ?? hexRgb(FACADE_PRIOR_STONE)!;
   const bandsSrc = at('bands'), bands = bandsSrc >= 2 ? front.bands : undefined;
-  // S6b: unstated bands copy the procedural cell's (c19: a cream string course at every upper floor), marked prior; the bay looks paint none.
-  const bandPrior = front.bands === undefined && !bayW && cell?.band ? cell.band : undefined;
+  // S6b: unstated bands copy the procedural cell's (c19: a cream string course at every upper floor), marked prior, and the bay look's (genericBayWindow band).
+  const bandPrior = front.bands === undefined ? (bayW ? bayW.band : cell?.band) : undefined;
   r.bands = idx(FACADE_BANDS, bands ?? (bandPrior ? 'storey' : 'none'));
   r.bandsSrc = bands ? bandsSrc : 0;
   const lines = Array.isArray(front.bandLines) ? front.bandLines as string[] : [];
@@ -386,7 +421,7 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   const spek = front.speklagen as Record<string, any> | undefined;
   r.spekSpacing = spek ? num(spek.spacing) ?? FACADE_DEFAULTS.spekSpacing : bands === 'speklagen' ? FACADE_DEFAULTS.spekSpacing : 0;
   r.spekCourses = spek ? num(spek.courses) ?? FACADE_DEFAULTS.spekCourses : bands === 'speklagen' ? FACADE_DEFAULTS.spekCourses : 0;
-  r.surround = idx(WINDOW_SURROUNDS, surround ?? (look.pale ? 'stone-lintel' : front.windowSurround === undefined && bayW ? bayW.surround : cell && front.windowSurround === undefined ? cell.surround[variant] : 'none'));
+  r.surround = idx(FACADE_SURROUNDS, surround ?? (look.pale ? 'stone-lintel' : front.windowSurround === undefined && bayW ? bayW.surround : cell && front.windowSurround === undefined ? cell.surround[variant] : 'none'));
   r.surroundSrc = surround ? surroundSrc : look.pale ? 1 : 0;
   r.keystoneSrc = ring?.keystone ? at('windowHead') : surround === 'keystone' || surround === 'eared-keystone' ? surroundSrc : 0;
   r.archRingColour = idx(ARCH_RING_COLOURS, ring?.colour ?? (front.archRings === 'band' ? 'band' : 'stone'));
@@ -418,14 +453,21 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   r.fasciaOn = shopfront ? (shopfront.fascia ? 1 : 0) : kind === 'shop' ? 1 : 0;
   const paint = hexRgb(shopfront?.colour) ?? hexRgb(input.groundHex) ?? r.wall;
   r.shopPaint = paint;
-  r.fascia = hexRgb(shopfront?.fasciaColour) ?? paint;
+  // P5: an unstated generic shop's sign board in the look's accent, as the atlas fascia paints it (bayTextures.ts fascia).
+  r.fascia = hexRgb(shopfront?.fasciaColour) ?? (!shopfront && kind === 'shop' ? hexRgb(input.accentHex) : undefined) ?? paint;
   r.displayWindows = num(shopfront?.displayWindows) ?? r.baysGround;
   r.fasciaHeightDm = FACADE_DEFAULTS.fasciaDm;
   r.stallriserDm = STALLRISER_DM[riser] ?? FACADE_DEFAULTS.stallriserDm;
   r.shopStoreys2 = shopfront?.storeys === 2 ? 1 : 0;
   r.souterrainUnderStoop = front.souterrain && r.stoop ? 1 : 0;
   r.ribbonStorey1 = front.storeyRibbons && (front.storeyRibbons as Record<string, unknown>)['1'] ? 1 : 0;
-  r.door = hexRgb(palette.door) ?? hexRgb(FACADE_DEFAULTS.door)!;
+  // Realism pass 2 (#380): an unstated residential ground copies the bay atlas's door (doorAt / quietDoorAt), its leaf in the
+  // look's accent paint as the atlas tints it, the dark plinth under the ground storey and c19's band under each window row.
+  const atlasDoor = kind === 'residential' && !stated('doorBay') && palette.door === undefined ? bayW?.door ?? 0 : 0;
+  r.door = hexRgb(palette.door) ?? (atlasDoor ? hexRgb(input.accentHex) : undefined) ?? hexRgb(FACADE_DEFAULTS.door)!;
+  r.doorStyle = atlasDoor;
+  r.plinthBand = kind === 'residential' && bayW?.plinth ? 1 : 0;
+  r.sillBand = front.bands === undefined && bayW?.sillBand ? 1 : 0;
   return r;
 }
 
