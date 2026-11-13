@@ -3661,6 +3661,11 @@
       "version": "05b294bf9128f832",
       "dateSource": "asset-update"
     },
+    "lofi": {
+      "updatedAt": "2026-11-13T19:11:16.069Z",
+      "version": "ff46443e3093b3e3",
+      "dateSource": "asset-update"
+    },
     "loods-6": {
       "updatedAt": "2026-11-02T00:28:35.310Z",
       "version": "aac8e27524281277",
@@ -4289,6 +4294,16 @@
     "nieuw-engeland": {
       "updatedAt": "2026-11-13T12:45:10.386Z",
       "version": "99f4007b7bd0d0f5",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod1": {
+      "updatedAt": "2026-11-13T18:42:16.948Z",
+      "version": "0d8a07bc30427c5e",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod2": {
+      "updatedAt": "2026-11-13T18:42:16.949Z",
+      "version": "1f76f66b23c3c729",
       "dateSource": "asset-update"
     },
     "nieuwe-kerk": {

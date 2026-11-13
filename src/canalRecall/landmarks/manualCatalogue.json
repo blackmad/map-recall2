@@ -75378,5 +75378,124 @@
     ]
    ]
   }
- }
+ },
+{
+  "id": "lofi",
+  "name": "Lofi",
+  "landmarkId": "lofi",
+  "modelUrl": "./models/lofi.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012092649",
+    "w57864627"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.82408922,
+      52.39118012
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 36.7,
+    "widthMetres": 36.3
+  },
+  "surveyed": {
+    "anchor": [
+      4.82408922,
+      52.39118012
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Vertex average of the BAG 0363100012092649 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.86 m NAP (scripts/landmarks/lofi-footprints.json, bag-shell-prepare.ts); shell on the BAG ring to the 3DBAG flat roof (6.05-6.31 m). Garage doors, cladding, the black office wing with its mural and ribbon windows measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0, 50 px/m): recording_2025-07-01_09-03-48_04058 (north), TMX7316010203-002493_pano_0005_001310 (2022-03-30, east) and its 2025 alternate, TMX7316010203-000321_pano_0000_004070 (2017-05-31, north-west)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 7,
+  "bagYear": 1967,
+  "materialOverrides": {
+    "stone": "#aab8ba",
+    "red": "#b05656",
+    "dark": "#2c363f",
+    "bronze": "#272d33",
+    "glass": "#4a5258",
+    "gold": "#a89a34",
+    "pink": "#8a5a8c",
+    "blue": "#3f6f9a",
+    "ochre": "#c9a64a",
+    "slate": "#6c7072",
+    "brick": "#8a5a46",
+    "concrete": "#8a8f8c",
+    "greyBrick": "#30363e",
+    "frame": "#c9cdcd"
+  },
+  "attribution": {
+    "title": "Lofi, Basisweg 63, Amsterdam (former GVB bus garage, BAG 1967; club since 2019)",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.amsterdamnow.com/en/going-out-entertainment/lofi-club-sloterdijk/",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0); facades, doors, signs and paintwork measured from Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/lofi-inventory.json. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.824401804448247,
+          52.391193631266376
+        ],
+        [
+          4.824402655628172,
+          52.391281643048195
+        ],
+        [
+          4.824042514091115,
+          52.39128161183161
+        ],
+        [
+          4.824042510818458,
+          52.39128071304419
+        ],
+        [
+          4.823892254865797,
+          52.39128069053832
+        ],
+        [
+          4.8238922434456155,
+          52.39128158925585
+        ],
+        [
+          4.823865110034968,
+          52.39128156805199
+        ],
+        [
+          4.8238651441829505,
+          52.391278880886546
+        ],
+        [
+          4.823865733162487,
+          52.39107531185901
+        ],
+        [
+          4.824044661954742,
+          52.391075533657244
+        ],
+        [
+          4.824045030660461,
+          52.39095862316305
+        ],
+        [
+          4.824399462246146,
+          52.390958078996405
+        ],
+        [
+          4.82440104154931,
+          52.3911137088491
+        ],
+        [
+          4.824401804448247,
+          52.391193631266376
+        ]
+      ]
+    ]
+  }
+}
 ]
