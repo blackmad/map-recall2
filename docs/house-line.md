@@ -2365,6 +2365,15 @@ How the likeness frame is posed (`scripts/house-frames/rule10.ts`):
 - **Captions** name camera, FOV, pixel ratio (measured from the canvas), engine and world (`baked world-v1`, `live
   tiles`, staged `WORLD_DIR`), plus "trees hidden".
 
+- **Pixel ratio.** Likeness pages add `dpr=<n>`: the own engine caps the ratio by its quality tier, whose frame-time
+  probe reads the machine's load (one run measured 2, the next 1.5). As-played keeps the game's own choice; both
+  captions print the ratio measured from the canvas.
+
+Example (`map-recall2-screenshots` `ui/2026-11-13-thin-focal/rule10-weteringschans-{1,2,3}.jpg`, today = committed
+bundles, candidate = the thin-fade focal fix): the candidate column shows the gable trim, cornices, balconies, door
+surrounds and 171218's speklagen that the today column dissolved. The wide pairs' `sameAsBefore` warning fired on 5 of
+8 there: that rule measures the wall colour, and trim is a small share of the wall's pixels.
+
 Weteringschans (WG's row of eight, `--rule10 --prep-only`): seven of eight step back 2-7 m to a 16-20 m capture and
 raise the window 290-390 px; 171218 has no capture within 70 m that holds its 16.65 m front at 72 deg (crown held, base
 clipped). No canal there, so no far-bank pick.
@@ -2377,7 +2386,11 @@ carries a homogeneous factor, which `projectionFocal11` took as focal. Both fixe
 (`passHeightPx`: three's current viewport; `projectionFocal11`: row 1 off its forward part over |row 3|). Regression:
 `tests/e2e/thin-focal.spec.ts` (the uniform read off the GPU during main-pass facade draws, first person and chase,
 dpr 1 and 2, within 1 %; 171218's window heads at 20 m in the 72 deg frame, thin fade on == off) and
-`thinFade.test.ts`. Frames taken before the fix (all house:frames runs to 2026-11-13) dissolved trim at 1/6 of the
+`thinFade.test.ts`. Wall luma with the fade (same page, fade suppressed per draw vs on, an off/off pair for noise;
+default chase on Weteringschans, the eight fronts at 15-90 m): with the fix, desktop dpr 1 darkens the far fronts by
+0-0.019 OKLab L (168095, ~80 m), the phone by up to 0.038 (168094, ~90 m), dpr 2 by under 0.002 beyond noise. Before it
+the MapLibre chase faded nothing (dL 0 everywhere): the fix makes far rows read slightly darker on phones and dpr 1, the
+thin white parts going below 1 px there. Frames taken before the fix (all house:frames runs to 2026-11-13) dissolved trim at 1/6 of the
 distance a player's game did.
 
 ### Quay rows: row views and the distance window (belt Burgwallen-OZ, #364)

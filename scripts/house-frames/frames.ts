@@ -673,7 +673,10 @@ export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.ou
 /** Rule 10's job fields: pixel ratio, the likeness pages' extra query, and the list's as-played rider. */
 function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
   const r10 = args.rule10!, rider = r10.asPlayed && prepared.length ? asPlayedFor(prepared, r10.asPlayedBackM) : null;
-  return { dpr: r10.dpr, likenessQuery: r10.likenessTrees === 'hide' ? 'trees3d=0' : '', asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
+  // `dpr=`: the own engine caps the pixel ratio by its quality tier (ownWorldView dprCap, from a frame-time probe that
+  // reads the machine's load): measured 2 in one run and 1.5 in the next. The likeness frame asks for it explicitly; the
+  // as-played frame keeps what the game picks, and its caption says what was measured.
+  return { dpr: r10.dpr, likenessQuery: [r10.likenessTrees === 'hide' ? 'trees3d=0' : '', `dpr=${r10.dpr}`].filter(Boolean).join('&'), asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
 }
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
@@ -753,7 +756,7 @@ async function rule10SheetsFor(args: Args, ok: any[], job: any): Promise<string[
   if (r10.likeness) for (const r of ok) {
     const l: LikenessPrep | undefined = r.rule10?.likeness;
     if (!l) continue;
-    const g = (dir: string) => likenessCaption(args.query, r10.dpr, dprOf(path.join(dir, r.key, 'likeness.json')), r10.likenessTrees === 'hide' ? 'trees3d=0' : '');
+    const g = (dir: string) => likenessCaption(args.query, r10.dpr, dprOf(path.join(dir, r.key, 'likeness.json')), job.rule10?.likenessQuery ?? '');
     rows.push({ title: `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  ${l.note}`,
       captions: [`panorama ${l.pano.timestamp.slice(0, 10)} ${l.pano.distM} m obl ${l.pano.obliquityDeg}°${l.farBank ? ' (far bank)' : ''}, cut to the window: 72° lens${l.lp.shiftPx ? `, raised ${l.lp.shiftPx} px` : ''}${l.lp.clipped.length ? `, clipped ${l.lp.clipped.join('+')}` : ''}`,
         `${beforeLabel}: ${g(before ?? args.out)}`, before ? `${candLabel}: ${g(args.out)}` : candLabel],
