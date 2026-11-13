@@ -1,4 +1,5 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import { structurePriorOn, STRUCTURE_PRIOR_TABLE } from './houseSpec/structurePrior.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
 import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 // Streamed building features -> mesh buildings -> a chunk, for the three.js building layer.
@@ -183,6 +184,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
   const specRecipe = specRecipeOf(p);
   if (specRecipe) building.specRecipe = specRecipe;
+  // Lane PR1: a pre-war photo-look pand with no stated storeys or bays guesses its street runs' grid from the read houses
+  // around it (houseSpec/structurePrior.ts; the mesher applies it per run). `?structurePrior=0`: nothing set.
+  if (structurePriorOn() && cellSetOf(look) !== 'procedural' && !specRecipe?.storeys && !specRecipe?.bays && !p.kitWall && !p.largeTier && !p.frontCarrier && !p.gardenShed) {
+    const year = Number(p.constructionYear), at = polygons[0]?.[0];
+    if (p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year) && year < STRUCTURE_PRIOR_TABLE.maxYear && at?.length && (building.style === 'canal' || building.style === 'c19' || building.style === 'school')) {
+      building.structurePrior = { year, lng: at.reduce((s, q) => s + q[0], 0) / at.length, lat: at.reduce((s, q) => s + q[1], 0) / at.length };
+    }
+  }
   if (p.registerFinish === 'light' || p.registerFinish === 'brick') building.registerFinish = p.registerFinish;
   // A spec'd shopfront's measured paint (H11) on the shop's ground storey, in the look's palette.
   if (specRecipe?.shopHex && building.groundHex && shopfrontOf(p) !== 'quiet' && cellSetOf(look) !== 'procedural') building.groundHex = lookHex(specRecipe.shopHex, look as Look);
