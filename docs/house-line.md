@@ -2327,6 +2327,59 @@ Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBui
   front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
   facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
 
+### Rule 10: accept at the detail a player sees (lane TF, 2026-11-13)
+
+The pairs above shoot at the panorama's lens (100-120 deg vertical, 900 px, dpr 1: about 290 px per metre at 1 m).
+Players see far more: the default chase camera is 36.87 deg (1,350 px/m at 900 px), first person 72 deg (619 px/m),
+and the user's Mac renders at dpr 2. The thin fade (`look/thinFade.ts`) dissolves parts under 2 px, so a 14 cm
+speklaag or a window head is gone in a pano-lens frame where a player sees it. **Accept builders on the rule-10
+frames; the wide pairs stay for the advisory flags only** (their caption says "flags only, not for acceptance" on a
+rule-10 run). Without a rule-10 flag a run writes exactly what it wrote before (job, captions, cache keys, sheets).
+
+```sh
+npm run house:frames -- --list row.json --rule10 --label today --out <today>
+BUNDLES_DIR=<scratch> npm run house:frames -- --list row.json --rule10 --label candidate --out <cand> --before <today> --reuse-photos
+```
+
+| Frame | Camera | Size | Output |
+|---|---|---|---|
+| likeness (`--likeness`) | first person, 72 deg (`FPS_FOV_DEG`, never widened), own engine | 1440 x 900 css at `--dpr` (2) | `<key>/likeness.png`, `<key>/likeness-photo.jpg`, `<key>/likeness.json` |
+| as-played (`--as-played`) | the default engine (MapLibre unless `--query` names one), default chase camera | 1440 x 900 at `--dpr` | `<out>/as-played.png`, `as-played.json` |
+| sheet | photo / today / candidate, panels 720 x 450 | 2192 px wide, 4 rows a sheet | `<out>/rule10-N.jpg` |
+
+How the likeness frame is posed (`scripts/house-frames/rule10.ts`):
+
+- **Lens held, window raised.** The game camera cannot look up (`MAX_PITCH_DEG` 85). A front too tall for 72 deg at
+  the lowest look-down is held by raising the window: the game renders a taller viewport (`1440 x (900 + 2s)`) at the
+  same focal and the top 900 rows are kept; the panorama is cut from the same tall frame. This is a shift lens: the
+  same pixel density as a pitched camera, and the front's verticals stay vertical. `s` is at most one window.
+- **Capture.** Across the water first (`--no-far-bank` off): a capture whose sight line to the wall's middle crosses a
+  `water.json` centreline (a canal house from the far bank: square, whole front, crown and row). Else the pair's own
+  capture, else step back: the nearest capture farther from the wall (up to `--likeness-max-dist`, 70 m, sight lines
+  through other footprints dropped) that holds the front and crown. Else the one that clips least (crown held, base
+  listed as clipped). The pose note says which.
+- **Trees.** `--likeness-trees hide` (default) adds `?trees3d=0` to likeness pages only: game trees stand in front of
+  fronts the winter photo shows bare. As-played frames always keep them.
+- **As-played rider.** On the line through the row's captures, `--as-played-back` (15 m) before the row's near end,
+  riding along it with the fronts on the right.
+- **Captions** name camera, FOV, pixel ratio (measured from the canvas), engine and world (`baked world-v1`, `live
+  tiles`, staged `WORLD_DIR`), plus "trees hidden".
+
+Weteringschans (WG's row of eight, `--rule10 --prep-only`): seven of eight step back 2-7 m to a 16-20 m capture and
+raise the window 290-390 px; 171218 has no capture within 70 m that holds its 16.65 m front at 72 deg (crown held, base
+clipped). No canal there, so no far-bank pick.
+
+**The thin-fade focal (fixed with rule 10).** The fade's `thinFocalPx` read 48.9 in WG's 114 deg pose where the camera
+gives 293: three's `getDrawingBufferSize` answers its own `_width/_height`, which only `setSize` updates, and
+`engine/frameHost.ts` sizes the canvas itself, so the own engine's renderer kept the fresh canvas' 300 x 150 for life
+(1/6 of the focal at 900 px, 1/12 at dpr 2). The default (MapLibre) engine read 5.4x too long instead: its clip matrix
+carries a homogeneous factor, which `projectionFocal11` took as focal. Both fixed in `look/thinFade.ts`
+(`passHeightPx`: three's current viewport; `projectionFocal11`: row 1 off its forward part over |row 3|). Regression:
+`tests/e2e/thin-focal.spec.ts` (the uniform read off the GPU during main-pass facade draws, first person and chase,
+dpr 1 and 2, within 1 %; 171218's window heads at 20 m in the 72 deg frame, thin fade on == off) and
+`thinFade.test.ts`. Frames taken before the fix (all house:frames runs to 2026-11-13) dissolved trim at 1/6 of the
+distance a player's game did.
+
 ### Quay rows: row views and the distance window (belt Burgwallen-OZ, #364)
 
 On a quay with a canal in front (Kloveniersburgwal) every panorama on the house's own side stands 5-9 m off the front:
