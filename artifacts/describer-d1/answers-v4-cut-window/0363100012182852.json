@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182852.jpg + artifacts/describer-d1/windows/0363100012182852.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "extent",
+  "storeyParts",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white-edged bell gable with a round window over a small attic window and white scroll feet"
+  },
+  {
+   "component": "relief",
+   "what": "a row of small white stone blocks over the windows of each storey"
+  }
+ ],
+ "notes": "The outline covers two fronts about equally: a neck-gable front at the left and a bell-gable front at the right; described the slightly larger bell-gable front. A lamp post covers its right bay and fences the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible",
+ "paneLayout": "top-light"
+}
