@@ -44,29 +44,58 @@ export const resetStructurePriorFlag = () => { cached = undefined; };
 
 /** A field gets no guess when no read house's height (storeys) or width (columns) lies within this many metres. */
 export const SIZE_GAP_M = 1.5;
+type Index = { bySize: Record<5 | 6, PriorRow[]>; memo: Map<string, number | null> };
+const indexes = new WeakMap<StructurePriorTable, Index>();
+function indexOf(t: StructurePriorTable): Index {
+  let ix = indexes.get(t);
+  if (ix) return ix;
+  // The rows that read each field, sorted by the size that field is matched on (storeys: height, columns: width).
+  const sorted = (field: 5 | 6, i: 3 | 4) => t.rows.filter(r => r[field]).slice().sort((a, b) => a[i] - b[i]);
+  ix = { bySize: { 5: sorted(5, 3), 6: sorted(6, 4) }, memo: new Map() };
+  indexes.set(t, ix);
+  return ix;
+}
 
-function knn(rows: readonly PriorRow[], field: 5 | 6, size: 3 | 4, q: { lng: number; lat: number; year: number; size: number }, p: KnnParams): number | null {
+/**
+ * The k nearest read houses' most common count (a tie to the nearer house's). Exact: the same k a full scan finds, read
+ * outward from the query's size in the size-sorted rows while an unread row could still be nearer (its size gap over
+ * sizeScale is a lower bound on its distance). A query is memoised (a building's walls, extras and shell passes ask the same).
+ */
+function knn(t: StructurePriorTable, field: 5 | 6, size: 3 | 4, q: { lng: number; lat: number; year: number; size: number }, p: KnnParams): number | null {
+  const ix = indexOf(t), rows = ix.bySize[field];
+  const key = `${field}|${q.lng.toFixed(6)}|${q.lat.toFixed(6)}|${q.year}|${q.size.toFixed(3)}`;
+  if (ix.memo.has(key)) return ix.memo.get(key)!;
+  let lo = 0, hi = rows.length;
+  while (lo < hi) { const m = (lo + hi) >> 1; if (rows[m][size] < q.size) lo = m + 1; else hi = m; }
+  // Outside the read houses' range (a 60 m block front, a tower): no guess.
+  const gap = Math.min(lo < rows.length ? rows[lo][size] - q.size : Infinity, lo > 0 ? q.size - rows[lo - 1][size] : Infinity);
+  if (!(gap <= SIZE_GAP_M)) { remember(ix, key, null); return null; }
   const best: { d: number; v: number }[] = [];
-  // Outside the read houses' range (a 60 m block front, a tower): no guess. The nearest read size must lie within SIZE_GAP_M.
-  let nearestSize = Infinity;
-  for (const r of rows) if (r[field]) nearestSize = Math.min(nearestSize, Math.abs(r[size] - q.size));
-  if (!(nearestSize <= SIZE_GAP_M)) return null;
-  for (const r of rows) {
-    const v = r[field];
-    if (!v) continue;
+  const consider = (r: PriorRow) => {
     const d = Math.hypot((r[2] - q.year) / p.yearScale, (r[size] - q.size) / p.sizeScale) + (p.distanceScale > 0 ? Math.hypot((r[0] - q.lng) * KX, (r[1] - q.lat) * KY) / p.distanceScale : 0);
-    if (best.length < p.k) { best.push({ d, v }); best.sort((a, b) => a.d - b.d); continue; }
-    if (d >= best[best.length - 1].d) continue;
-    best[best.length - 1] = { d, v };
-    best.sort((a, b) => a.d - b.d);
+    if (best.length === p.k && d >= best[p.k - 1].d) return;
+    let i = best.length === p.k ? p.k - 1 : best.length;
+    if (best.length < p.k) best.push({ d, v: r[field] });
+    while (i > 0 && best[i - 1].d > d) { best[i] = best[i - 1]; i--; }
+    best[i] = { d, v: r[field] };
+  };
+  let a = lo - 1, b = lo;
+  while (a >= 0 || b < rows.length) {
+    const ga = a >= 0 ? q.size - rows[a][size] : Infinity, gb = b < rows.length ? rows[b][size] - q.size : Infinity;
+    const g = Math.min(ga, gb);
+    if (best.length === p.k && g / p.sizeScale >= best[p.k - 1].d) break;
+    if (ga <= gb) consider(rows[a--]); else consider(rows[b++]);
   }
-  if (!best.length) return null;
-  // The most common count; nearest first, so a tie goes to the count of the nearer house.
-  const count = new Map<number, number>();
-  let mode = best[0].v, n = 0;
-  for (const { v } of best) { const c = (count.get(v) ?? 0) + 1; count.set(v, c); if (c > n) { n = c; mode = v; } }
+  let mode: number | null = null;
+  if (best.length) {
+    const count = new Map<number, number>();
+    let n = 0; mode = best[0].v;
+    for (const { v } of best) { const c = (count.get(v) ?? 0) + 1; count.set(v, c); if (c > n) { n = c; mode = v; } }
+  }
+  remember(ix, key, mode);
   return mode;
 }
+const remember = (ix: Index, key: string, v: number | null) => { if (ix.memo.size > 200_000) ix.memo.clear(); ix.memo.set(key, v); };
 
 export type StructureGuess = { storeys: number | null; columns: number | null };
 /**
@@ -76,8 +105,8 @@ export type StructureGuess = { storeys: number | null; columns: number | null };
 export function structureGuess(q: { lng: number; lat: number; year: number | null | undefined; exposedM: number; widthM: number }, t: StructurePriorTable = table): StructureGuess | null {
   if (q.year === null || q.year === undefined || !Number.isFinite(q.year) || q.year >= t.maxYear || !t.rows?.length) return null;
   if (!(q.exposedM > 0) || !(q.widthM > 0)) return null;
-  const storeys = knn(t.rows, 5, 3, { lng: q.lng, lat: q.lat, year: q.year, size: q.exposedM }, t.storeys);
-  const columns = knn(t.rows, 6, 4, { lng: q.lng, lat: q.lat, year: q.year, size: q.widthM }, t.columns);
+  const storeys = knn(t, 5, 3, { lng: q.lng, lat: q.lat, year: q.year, size: q.exposedM }, t.storeys);
+  const columns = knn(t, 6, 4, { lng: q.lng, lat: q.lat, year: q.year, size: q.widthM }, t.columns);
   return { storeys, columns };
 }
 

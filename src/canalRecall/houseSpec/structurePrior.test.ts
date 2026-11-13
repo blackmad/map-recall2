@@ -65,3 +65,24 @@ test('a stated count outranks the prior', () => {
   const spec = { ...house(), properties: { ...house().properties, specRecipe: { storeys: 6 } } };
   assert.equal(withFlag('1', () => meshBuildingFor(spec as never, 'photo'))?.structurePrior, undefined);
 });
+
+test('the indexed search finds what a full scan finds (published table, 400 random queries)', () => {
+  const t = STRUCTURE_PRIOR_TABLE, KX = 111_320 * Math.cos(52.37 * Math.PI / 180), KY = 110_540;
+  const brute = (field: 5 | 6, size: 3 | 4, q: { lng: number; lat: number; year: number; size: number }, p: typeof t.storeys) => {
+    const rows = t.rows.filter(r => r[field]);
+    if (!rows.some(r => Math.abs(r[size] - q.size) <= 1.5)) return null;
+    const best = rows.map(r => ({ v: r[field], d: Math.hypot((r[2] - q.year) / p.yearScale, (r[size] - q.size) / p.sizeScale) + (p.distanceScale > 0 ? Math.hypot((r[0] - q.lng) * KX, (r[1] - q.lat) * KY) / p.distanceScale : 0) }))
+      .sort((a, b) => a.d - b.d).slice(0, p.k);
+    const c = new Map<number, number>(); let mode = best[0].v, n = 0;
+    for (const { v } of best) { const m = (c.get(v) ?? 0) + 1; c.set(v, m); if (m > n) { n = m; mode = v; } }
+    return mode;
+  };
+  let s = 7;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 400; i++) {
+    const q = { lng: 4.84 + rnd() * 0.1, lat: 52.34 + rnd() * 0.05, year: Math.floor(1600 + rnd() * 340), exposedM: 4 + rnd() * 20, widthM: 3 + rnd() * 25 };
+    const g = structureGuess(q)!;
+    assert.equal(g.storeys, brute(5, 3, { ...q, size: q.exposedM }, t.storeys), `storeys ${JSON.stringify(q)}`);
+    assert.equal(g.columns, brute(6, 4, { ...q, size: q.widthM }, t.columns), `columns ${JSON.stringify(q)}`);
+  }
+});
