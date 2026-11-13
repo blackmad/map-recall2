@@ -1,0 +1,363 @@
+{
+ "schemaVersion": 1,
+ "id": "hotel-boat-and-co",
+ "pand": "0363100012250188",
+ "brief": "scripts/landmarks/hotel-boat-and-co-brief.md",
+ "signature": [
+  "n-pavilion-dormer",
+  "n-boatco-sign",
+  "e-hotel-sign",
+  "nw-oriels",
+  "ij-spine-dormers",
+  "atrium-glass"
+ ],
+ "walls": [
+  {
+   "tag": "w01-50",
+   "bearing": 50,
+   "lengthM": 39.4,
+   "centre": [
+    4.8822425,
+    52.394615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001972_pano_0000_001083",
+   "capturedAt": "2021-01-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "ij-ground-storey",
+     "kind": "colonnade",
+     "where": "stone ground storey across the courtyard front with tall windows and a central door; terrace on top",
+     "approxSizeM": [
+      39,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001972_pano_0000_001083",
+     "how": "courtyard(): holed stone wall, bronze mullions, stone cornice, parapet with glass balustrade"
+    },
+    {
+     "id": "ij-spine-dormers",
+     "kind": "window-shape",
+     "where": "nine pointed-arch dormers in the zinc mansard of the spine front between the pavilions",
+     "approxSizeM": [
+      1.7,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001083",
+     "how": "lancetDormer (src/canalRecall/landmarks/pointedDormer.ts) x9, fronts 0.35 m back in the slope (SET_BACK) so the frames do not merge into the facade plane; they read about 0.7 m shorter than the panorama's"
+    }
+   ],
+   "note": "The courtyard front on the IJ, seen from the water 108-121 m out (panoramas TMX7316010203-001972_pano_0000_001078/1083/1085, 2021-01-21); the brief found none within 35 m."
+  },
+  {
+   "tag": "w02-230",
+   "bearing": 230,
+   "lengthM": 30.5,
+   "centre": [
+    4.881865,
+    52.3944195
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000463_pano_0002_000179",
+   "capturedAt": "2019-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "atrium-glass",
+     "kind": "window-shape",
+     "where": "glazed atrium front between the arms: bronze mullions, transoms, stone sill, glass roof",
+     "approxSizeM": [
+      30.5,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "2025_09_29_07_20_07_01002",
+     "how": "atrium(): flat curtain wall on the BAG line with 15 bays; the panorama shows the front bowing outward a little, drawn flat"
+    }
+   ]
+  },
+  {
+   "tag": "w03-230",
+   "bearing": 230,
+   "lengthM": 14.1,
+   "centre": [
+    4.88165,
+    52.3945705
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_06-25-31_02834",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-end-bow",
+     "kind": "tower",
+     "where": "the arms' SW ends are bowed brick fronts with dormers in a rounded mansard over a stone plinth (parking entrance \"P\")",
+     "approxSizeM": [
+      14,
+      18
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-16_06-25-31_02834",
+     "how": "flat brick front on the BAG line, four window columns, four close-set pointed dormers; the bow and rounded roof are not drawn"
+    },
+    {
+     "id": "sw-p-sign",
+     "kind": "sign",
+     "where": "P parking sign over the garage door",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-16_06-25-31_02834",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.5 m letter"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-50",
+   "bearing": 50,
+   "lengthM": 5.1,
+   "centre": [
+    4.88202,
+    52.3947885
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001972_pano_0000_001080",
+   "capturedAt": "2021-01-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-pavilion-dormer",
+     "kind": "window-shape",
+     "where": "one wide pointed-arch dormer with three lights in the bell-shaped pavilion roof",
+     "approxSizeM": [
+      4.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001080",
+     "how": "lancetDormer width 4.4, apex 18.7, two mullions"
+    },
+    {
+     "id": "n-boatco-sign",
+     "kind": "lettering",
+     "where": "BOAT&CO in dark green capitals on a frame on top of the north pavilion roof",
+     "approxSizeM": [
+      6,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001080",
+     "how": "raisedLettering 0.85 m on a dark frame with two posts"
+    },
+    {
+     "id": "n-window-pairs",
+     "kind": "window-shape",
+     "where": "three pairs of tall narrow windows per storey on the risalit, single windows on the flanks",
+     "approxSizeM": [
+      4.6,
+      1.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001080",
+     "how": "front(): six 0.52 m cuts per storey"
+    },
+    {
+     "id": "n-door",
+     "kind": "other",
+     "where": "wide segmental-headed doorway in the stone plinth under the risalit",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001972_pano_0000_001080",
+     "how": "rectangular cut 2.6 x 3.2 m with a stone lintel; the arch head is not drawn"
+    },
+    {
+     "id": "n-flag",
+     "kind": "other",
+     "where": "flagpole with a flag on the pavilion roof",
+     "approxSizeM": [
+      0.1,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001972_pano_0000_001083",
+     "how": "white pole, no flag"
+    }
+   ],
+   "note": "North pavilion risalit, rectified from the water (93 m, artifacts/houthavens/boat-walls/ne-w-0-2021.jpg)."
+  },
+  {
+   "tag": "w05-51",
+   "bearing": 51,
+   "lengthM": 5,
+   "centre": [
+    4.8824865,
+    52.3944525
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001972_pano_0000_001083",
+   "capturedAt": "2021-01-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-pavilion-dormer",
+     "kind": "window-shape",
+     "where": "wide pointed-arch dormer in the east pavilion roof",
+     "approxSizeM": [
+      4.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001083",
+     "how": "lancetDormer width 4.4"
+    },
+    {
+     "id": "e-hotel-sign",
+     "kind": "lettering",
+     "where": "HOTEL in dark green capitals on a frame on the east pavilion roof (a small \"the\" before it is unreadable)",
+     "approxSizeM": [
+      4,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001083",
+     "how": "raisedLettering 0.85 m on a dark frame"
+    }
+   ]
+  },
+  {
+   "tag": "w06-230",
+   "bearing": 230,
+   "lengthM": 4.4,
+   "centre": [
+    4.88212,
+    52.394232
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002051_pano_0000_000588",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-230",
+   "bearing": 230,
+   "lengthM": 4.4,
+   "centre": [
+    4.882028,
+    52.394298
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_06-25-31_02842",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "nw-front",
+   "bearing": 320,
+   "lengthM": 34.4,
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_20_07_00988",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "NW front, oblique views only (2025 recording 00988, 47 m; artifacts/houthavens/boat-views).",
+   "items": [
+    {
+     "id": "nw-oriels",
+     "kind": "window-shape",
+     "where": "six oriel bays 0.6 m proud on the brick front, each under a pointed-arch dormer",
+     "approxSizeM": [
+      2.5,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_20_07_00988",
+     "how": "BAG ring oriels extruded with window pairs; lancetDormer over each"
+    }
+   ]
+  },
+  {
+   "tag": "se-front",
+   "bearing": 140,
+   "lengthM": 34.4,
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_20_07_01002",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "SE front (Revaleiland plaza), 2025 recording 01002 at 43 m and TMX7316010203-001596_pano_0000_000071 (2020).",
+   "items": [
+    {
+     "id": "se-oriels",
+     "kind": "window-shape",
+     "where": "six oriel bays each under a pointed-arch dormer, stone plinth with tall windows",
+     "approxSizeM": [
+      2.5,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_20_07_01002",
+     "how": "as nw-oriels"
+    },
+    {
+     "id": "se-entrance-canopy",
+     "kind": "canopy",
+     "where": "arched glass-and-steel canopy over the corner entrance of THE JULY",
+     "approxSizeM": [
+      3,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_29_07_20_07_01002",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 3 m canopy at the corner; the door opening is drawn"
+     }
+    },
+    {
+     "id": "se-wall-lamps",
+     "kind": "lamp",
+     "where": "wall lamps on the stone plinth",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_29_07_20_07_01002",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm fittings"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BauNetz, \"Ode an die Amsterdamer Schule\" (Kollhoff, Hotel Boot & Co, Houthavens)",
+   "url": "https://www.baunetz.de/meldungen/Meldungen-Hans_Kollhoff_plant_im_Houthavens_4825603.html",
+   "licence": "fact citation"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

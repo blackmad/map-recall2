@@ -396,6 +396,8 @@ import {buildSarphatiPlaza} from './sarphati-plaza-builder';
 import {buildApolloHotel} from './apollo-hotel-builder';
 import {buildGraansiloKorthalsAltes} from './graansilo-korthals-altes-builder';
 import {buildBetonnenSiloSilodam} from './betonnen-silo-silodam-builder';
+import {buildDeBonteZwaan} from './de-bonte-zwaan-builder';
+import {buildHotelBoatAndCo} from './hotel-boat-and-co-builder';
 import {buildEffectenbeurs} from './effectenbeurs-builder';
 import {buildHetSieraad} from './het-sieraad-builder';
 import {buildKpnTeleport} from './kpn-teleport-builder';
@@ -1021,6 +1023,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='apollo-hotel')buildApolloHotel(w,d,helpers);
     else if(id==='graansilo-korthals-altes')buildGraansiloKorthalsAltes(w,d,helpers);
     else if(id==='betonnen-silo-silodam')buildBetonnenSiloSilodam(w,d,helpers);
+    else if(id==='de-bonte-zwaan')buildDeBonteZwaan(w,d,helpers);
+    else if(id==='hotel-boat-and-co')buildHotelBoatAndCo(w,d,helpers);
     else if(id==='effectenbeurs')buildEffectenbeurs(w,d,helpers);
     else if(id==='het-sieraad')buildHetSieraad(w,d,helpers);
     else if(id==='kpn-teleport')buildKpnTeleport(w,d,helpers);
