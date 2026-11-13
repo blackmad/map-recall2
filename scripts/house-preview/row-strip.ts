@@ -51,7 +51,11 @@ for (const s of spans) {
   console.log(`${id} storeys ${m.layout?.storeys ?? '?'} eaves ${m.heights?.eavesM?.toFixed(2)} top ${topM.toFixed(2)}`);
 }
 const grid = (h: number) => Array.from({ length: Math.floor(strip.heightM / 3) }, (_, i) => `<line x1="0" x2="${W}" y1="${h - (i + 1) * 3 * ppm}" y2="${h - (i + 1) * 3 * ppm}" stroke="#ff3355" stroke-opacity="0.45" stroke-width="1"/><text x="2" y="${h - (i + 1) * 3 * ppm - 2}" font-size="11" fill="#ff3355" font-family="Helvetica">${(i + 1) * 3} m</text>`).join('');
-const photo = await sharp(stripJpg).extract({ left, top: 0, width: W, height: H }).png().toBuffer();
+// A strip jpg can be narrower or shorter than strip.json says (cropped exports): extract what exists, pad the rest.
+const meta = await sharp(stripJpg).metadata();
+const pw = Math.max(1, Math.min(W, (meta.width ?? W) - left)), ph = Math.min(H, meta.height ?? H);
+const photo = await sharp({ create: { width: W, height: H, channels: 3, background: '#333' } })
+  .composite([{ input: await sharp(stripJpg).extract({ left, top: 0, width: pw, height: ph }).png().toBuffer(), left: 0, top: H - ph }]).png().toBuffer();
 const sky = { r: 160, g: 180, b: 200 };
 const rendered = await sharp({ create: { width: W, height: H, channels: 3, background: sky } }).composite(renders).png().toBuffer();
 const head = 30, foot = 24;

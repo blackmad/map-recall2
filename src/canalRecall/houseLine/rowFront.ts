@@ -12,6 +12,7 @@
  */
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
 import type { FrontRecord, FrontRecordTable } from './frontRecord.js';
+import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
@@ -148,9 +149,26 @@ export function withRowFront<T extends Feature>(feature: T): T {
     return { ...feature, properties: { ...rest, ...held, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowFront: family,
       ...(sr ? { specRecipe: { ...sr, eavesM: top, corniceCrown: true } } : {}) } };
   }
+  const trial = (h: number) => roofPlanForFeature({ ...feature, properties: { ...rest, height: h, monumentGable: gable, roofPlanned: true } } as never);
+  // Step c: a crown the record sizes (neck, bell, point, step) is drawn from its own measured profile, the saddle
+  // lowered inside it (houseLine/crownProfile.ts); the chimney stub and the dice dormers go.
+  const shape = (family === 'point' ? 'point' : family) as RowCrownShape;
+  if ((ROW_CROWN_SHAPES as readonly string[]).includes(shape) && rec.topM !== null && rec.topM - rec.eavesM > 0.5) {
+    const crown: RowCrown = { shape, riseM: +(rec.topM - rec.eavesM).toFixed(2) };
+    if (rec.crown.widthM) crown.footW = rec.crown.widthM;
+    if (rec.crown.neckWidthM) crown.neckW = rec.crown.neckWidthM;
+    if (rec.crown.atticWindows !== undefined) crown.attic = rec.crown.atticWindows;
+    if (rec.crown.hoist) crown.hoist = true;
+    const probe = trial(rec.eavesM + 3), W = probe?.pieces?.[0]?.rect.wid;
+    if (probe && W) {
+      const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);
+      const plan = trial(h);
+      if (plan?.kind === 'gable') return { ...feature, properties: { ...rest, ...held, height: h, monumentGable: gable, roofPlanned: true, roofShape: 'gable', roofEavesHeightM: rec.eavesM,
+        rowFront: family, rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...(sr ? { specRecipe: { ...sr, eavesM: rec.eavesM } } : {}) } };
+    }
+  }
   // A gabled front: the planner's saddle behind the record's gable, its eaves on the measured foot.
   let height = rec.topM ?? rec.eavesM + 3;
-  const trial = (h: number) => roofPlanForFeature({ ...feature, properties: { ...rest, height: h, monumentGable: gable, roofPlanned: true } } as never);
   let plan = trial(height);
   for (let i = 0; i < 3 && plan; i++) { const next = rec.eavesM + plan.riseM; if (Math.abs(next - height) < 0.01) break; height = next; plan = trial(height); }
   if (!plan || !(GABLE_SHAPES as readonly string[]).includes(gable)) return feature;

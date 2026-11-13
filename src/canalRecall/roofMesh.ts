@@ -31,6 +31,7 @@ import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeat
 import { streetGableEnds, type StreetFacing } from './streetGableEnds.js';
 import { turnRidgeToStreet } from './streetRidge.js';
 import { zeroArea } from './roofOverhang.js';
+import { isRowCrown, rowCrownAccents, rowCrownProfile, type RowCrown } from './houseLine/crownProfile.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -76,6 +77,8 @@ export type RoofPlan = {
   keepLid?: boolean;
   /** The roof box is larger than the footprint (a cut corner, a notch, a skewed row): cut the slopes at the walls and close them. */
   clipToOutline?: boolean;
+  /** Lane 1 (houseLine/crownProfile.ts, rowFront flag): a front record's measured crown, drawn in place of `gable`'s profile. */
+  rowCrown?: RowCrown;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -733,6 +736,12 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
       if (accents && exterior && !rear) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
       continue;
     }
+    if (plan.rowCrown) {
+      const prof = rowCrownProfile(plan.rowCrown, W, R);
+      gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
+      if (accents) rowCrownAccents(s, plan.rowCrown, prof, f, e, W, R, trim);
+      continue;
+    }
     const prof = gableProfile(plan.gable, W, R);
     gableSlab(s, prof, e, L, accents && plan.gable !== 'plain' ? 'trim' : 'plate', trim);
     if (accents) gableAccents(s, { shape: plan.gable, prof, f, e, W, R, trimHex: trim, shutterHex: plan.shutterHex ?? '#2f4a3a', shutters: !!plan.shutters, claws: plan.gable === 'raisedNeck' ? clawArcs(W, R) : undefined, crownBase: crownBaseOf(plan.gable, W, R) });
@@ -1135,7 +1144,14 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const g = feature.geometry as { type: string; coordinates: number[][][] | number[][][][] };
   const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
   // A perimeter deck must not cover an open courtyard.
-  return plan?.perimeterInsetM !== undefined && polygon.length > 1 ? null : plan;
+  if (plan?.perimeterInsetM !== undefined && polygon.length > 1) return null;
+  // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
+  // no chimney stub or dice dormers through it.
+  if (plan && plan.kind === 'gable' && isRowCrown(p.rowCrown) && Number(p.rowCrownRoofRiseM) > 0) {
+    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false });
+    return { ...crowned(plan), ...(plan.pieces ? { pieces: plan.pieces.map(pc => ({ rect: pc.rect, plan: crowned(pc.plan) })) } : {}) };
+  }
+  return plan;
 }
 
 /**
