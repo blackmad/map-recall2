@@ -1,0 +1,596 @@
+{
+ "label": "a-staged",
+ "env": {
+  "HOUSE_SPECS_DIR": "staging/house-specs",
+  "records": false
+ },
+ "rows": [
+  {
+   "pandId": "0363100012168094",
+   "label": "a-staged",
+   "tris": {
+    "walls": 112,
+    "extras": 228
+   },
+   "trisTotal": 340,
+   "buildMs": 10.16,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#ba9070",
+    "bays": 2,
+    "storeys": 4,
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 2,
+     "heldBrick": true,
+     "storeys": 4,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 4.78,
+    "groundM": 3.8,
+    "runM": 6.82
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 82,
+     "ground": 83,
+     "door": 84
+    },
+    "wallHex": "#615444",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168095",
+   "label": "a-staged",
+   "tris": {
+    "walls": 90,
+    "extras": 226
+   },
+   "trisTotal": 316,
+   "buildMs": 3.85,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#362c27",
+    "bays": 2,
+    "storeys": 4,
+    "look": {
+     "arch": true
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 2,
+     "wallHex": "#403530",
+     "storeys": 4,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 4.77,
+    "groundM": 3.56,
+    "runM": 4.51
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 65,
+     "ground": 66,
+     "door": 67
+    },
+    "wallHex": "#403530",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168043",
+   "label": "a-staged",
+   "tris": {
+    "walls": 145,
+    "extras": 228
+   },
+   "trisTotal": 373,
+   "buildMs": 3.88,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#41352f",
+    "bays": 3,
+    "storeys": 3,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#483c36",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 3,
+    "columns": 3,
+    "storeyM": 5.15,
+    "groundM": 3.62,
+    "runM": 6.35
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 85,
+     "ground": 86,
+     "door": 87
+    },
+    "wallHex": "#483c36",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168096",
+   "label": "a-staged",
+   "tris": {
+    "walls": 40,
+    "extras": 230
+   },
+   "trisTotal": 270,
+   "buildMs": 2.55,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#3b302b",
+    "bays": 3,
+    "storeys": 3,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#403530",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 3,
+    "storeyM": 4.22,
+    "groundM": 3.93,
+    "runM": 6.35
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 97,
+     "ground": 98,
+     "door": 99
+    },
+    "wallHex": "#403530",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168042",
+   "label": "a-staged",
+   "tris": {
+    "walls": 48,
+    "extras": 230
+   },
+   "trisTotal": 278,
+   "buildMs": 2.22,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#463f39",
+    "bays": 3,
+    "storeys": 3,
+    "look": {
+     "arch": false
+    },
+    "shop": true
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#4c453f",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 3,
+    "columns": 3,
+    "storeyM": 5.19,
+    "groundM": 3.79,
+    "runM": 6.29
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 76,
+     "ground": 77,
+     "door": 78
+    },
+    "wallHex": "#4c453f",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012169016",
+   "label": "a-staged",
+   "tris": {
+    "walls": 48,
+    "extras": 226
+   },
+   "trisTotal": 274,
+   "buildMs": 6.32,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#534b47",
+    "bays": 3,
+    "storeys": 3,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#59514d",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 3,
+    "columns": 3,
+    "storeyM": 5.37,
+    "groundM": 3.97,
+    "runM": 6.49
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 85,
+     "ground": 86,
+     "door": 87
+    },
+    "wallHex": "#59514d",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171218",
+   "label": "a-staged",
+   "tris": {
+    "walls": 84,
+    "extras": 228
+   },
+   "trisTotal": 312,
+   "buildMs": 2.15,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#3e3a35",
+    "bays": 3,
+    "storeys": 3,
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#3e3a35",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 3,
+    "columns": 3,
+    "storeyM": 5.31,
+    "groundM": 3.7,
+    "runM": 6.49
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 91,
+     "ground": 92,
+     "door": 93
+    },
+    "wallHex": "#3e3a35",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171198",
+   "label": "a-staged",
+   "tris": {
+    "walls": 108,
+    "extras": 68
+   },
+   "trisTotal": 176,
+   "buildMs": 2.34,
+   "view": {
+    "wallMaterial": "painted-brick",
+    "wallHex": "#747770",
+    "bays": 1,
+    "storeys": 4,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 1,
+     "wallHex": "#8a8b88",
+     "storeys": 4,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 1,
+    "storeyM": 3.19,
+    "groundM": 3.97,
+    "runM": 2.46
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 88,
+     "ground": 89,
+     "door": 90
+    },
+    "wallHex": "#8a8b88",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012185507",
+   "label": "a-staged",
+   "tris": {
+    "walls": 74,
+    "extras": 106
+   },
+   "trisTotal": 180,
+   "buildMs": 2.84,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#5e6260",
+    "bays": 1,
+    "storeys": 5,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 1,
+     "wallHex": "#686968",
+     "storeys": 5,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 2,
+    "storeyM": 2.62,
+    "groundM": 3.8,
+    "runM": 4.17
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 94,
+     "ground": 95,
+     "door": 96
+    },
+    "wallHex": "#686968",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012185997",
+   "label": "a-staged",
+   "tris": {
+    "walls": 62,
+    "extras": 212
+   },
+   "trisTotal": 274,
+   "buildMs": 2.55,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#484540",
+    "bays": 1,
+    "storeys": 5,
+    "look": {
+     "arch": false
+    },
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 1,
+     "wallHex": "#484540",
+     "storeys": 5,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 1,
+    "storeyM": 3.32,
+    "groundM": 3.43,
+    "runM": 3.07
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 100,
+     "ground": 101,
+     "door": 102
+    },
+    "wallHex": "#484540",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171217",
+   "label": "a-staged",
+   "tris": {
+    "walls": 78,
+    "extras": 228
+   },
+   "trisTotal": 306,
+   "buildMs": 2.38,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#565650",
+    "bays": 1,
+    "look": {
+     "arch": false
+    }
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 1,
+     "wallHex": "#565654",
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 4,
+    "storeyM": 2.71,
+    "groundM": 3.44,
+    "runM": 13.54
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 97,
+     "ground": 98,
+     "door": 99
+    },
+    "wallHex": "#565654",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171192",
+   "label": "a-staged",
+   "tris": {
+    "walls": 129,
+    "extras": 230
+   },
+   "trisTotal": 359,
+   "buildMs": 3.58,
+   "view": {
+    "wallMaterial": "brick",
+    "wallHex": "#50453f",
+    "bays": 3,
+    "storeys": 3,
+    "shop": false
+   },
+   "props": {
+    "specRecipe": {
+     "bays": 3,
+     "wallHex": "#61554f",
+     "storeys": 3,
+     "storeysFit": true,
+     "period": "c19"
+    },
+    "specShop": null,
+    "registerFinish": "brick",
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 3,
+    "columns": 3,
+    "storeyM": 5.43,
+    "groundM": 3.71,
+    "runM": 6.29
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 100,
+     "ground": 101,
+     "door": 102
+    },
+    "wallHex": "#61554f",
+    "shopfront": false
+   },
+   "record": null
+  }
+ ]
+}

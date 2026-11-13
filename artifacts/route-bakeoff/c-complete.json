@@ -1,0 +1,348 @@
+[
+ {
+  "pandId": "0363100012168094",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/bands",
+   "fronts/0/souterrain",
+   "fronts/0/cornice",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "palette/band",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012168095",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/souterrain",
+   "fronts/0/cornice",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012168043",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/gable",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012168096",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/bands",
+   "fronts/0/gable",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012168042",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/gable",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012169016",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/bands",
+   "fronts/0/souterrain",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012171218",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/bands",
+   "fronts/0/souterrain",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "fronts/0/speklagen",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012171198",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012185507",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/bands",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012185997",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/bands",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ },
+ {
+  "pandId": "0363100012171217",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/bays",
+   "fronts/0/windowHead",
+   "fronts/0/bands",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/gable",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/storeys",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": []
+ },
+ {
+  "pandId": "0363100012171192",
+  "ok": true,
+  "error": null,
+  "stated": [
+   "fronts/0/storeys",
+   "fronts/0/bays",
+   "fronts/0/bands",
+   "fronts/0/souterrain",
+   "fronts/0/gable",
+   "palette/wallMaterial",
+   "palette/brick"
+  ],
+  "filled": [
+   "fronts/0/id",
+   "fronts/0/street",
+   "fronts/0/cornice",
+   "fronts/0/windows",
+   "fronts/0/hoist",
+   "fronts/0/doorBay",
+   "fronts/0/basement",
+   "palette/frame",
+   "palette/door",
+   "roof/material"
+  ],
+  "ignoredFacts": [
+   "facts/pui"
+  ]
+ }
+]

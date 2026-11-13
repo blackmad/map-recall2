@@ -48,6 +48,14 @@ export function completeSpec(spec: HouseSpec, opts: { street: string; storeys?: 
   if (palette.frame === undefined) { palette.frame = C19_DEFAULTS.frame; filled.push('palette/frame'); }
   if (palette.door === undefined) { palette.door = C19_DEFAULTS.door; filled.push('palette/door'); }
   if (palette.brick === undefined) { palette.brick = 'red-brown'; filled.push('palette/brick'); }
+  // The describer's band words need parameters the intent requires: speklagen a spacing (F1's default 7 courses), courses a
+  // band brick (F1's prior: the wall at 0.85).
+  if (f0.bands === 'speklagen' && !f0.speklagen) { f0.speklagen = { spacing: 7 }; filled.push('fronts/0/speklagen'); }
+  if (f0.bands === 'courses' && palette.band === undefined) {
+    const hex = /^#[0-9a-f]{6}$/i.test(palette.brick) ? palette.brick : '#7a3e2c';
+    palette.band = '#' + [1, 3, 5].map(i => Math.round(parseInt(hex.slice(i, i + 2), 16) * 0.85).toString(16).padStart(2, '0')).join('');
+    filled.push('palette/band');
+  }
   const roof = spec.design.roof ?? (filled.push('roof/material'), { ...C19_DEFAULTS.roof });
   const candidate = {
     schemaVersion: 1, kind: 'canal-house', id: `bk-${spec.pandId}`, pandId: spec.pandId, address: spec.address ?? spec.pandId,
