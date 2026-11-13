@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182857/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 2,
+ "bays": 5,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windowSurround",
+  "bands",
+  "ground",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "alternating light stone blocks in the arches, quoins and pilaster edges all over the brick"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two stepped gables side by side, each with block-dressed steps and a small window"
+  },
+  {
+   "component": "window",
+   "what": "ground storey is a tall timber front with gridded top lights and arched doors"
+  }
+ ],
+ "notes": "One wall with two step gables; first floor runs five axes across both. Gable windows not counted."
+}

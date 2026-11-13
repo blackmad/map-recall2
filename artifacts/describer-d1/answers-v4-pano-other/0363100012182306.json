@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182306",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002963_pano_0000_000016.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "step gable with small white balustrades on the shoulders at the gable foot"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

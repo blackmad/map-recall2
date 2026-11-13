@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012182854",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182854/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top lights filled with leaded stained glass"
+  },
+  {
+   "component": "balcony",
+   "what": "white french-balcony railings in the top-storey windows"
+  },
+  {
+   "component": "window",
+   "what": "first-floor windows have dark steel lintels"
+  }
+ ],
+ "notes": "Ground storey blurred out."
+}

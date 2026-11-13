@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012168692",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "finish",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white-framed shopfront with fascia sign and side door"
+  }
+ ],
+ "notes": "Tree hides the top and the crown; centre sits at the seam of two dark fronts, described the right one."
+}

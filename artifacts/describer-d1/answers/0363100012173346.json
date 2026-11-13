@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012173346",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173346/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a roof terrace with a railing and a set-back structure behind the cornice"
+  }
+ ]
+}

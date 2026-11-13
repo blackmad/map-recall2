@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012172885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172885/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "painted",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands"
+ ],
+ "gaps": [],
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

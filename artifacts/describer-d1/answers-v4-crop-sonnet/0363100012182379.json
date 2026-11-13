@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182379",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182379/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "columns",
+  "doorIndex"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "ornamental gable stones visible at the very top"
+  }
+ ],
+ "notes": "A van hides the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174416",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174416/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "a pink-red pair of shutters on an attic window above the top storey"
+  },
+  {
+   "component": "door",
+   "what": "two black doors side by side at the right up a stoop with a curled iron railing"
+  }
+ ],
+ "notes": "Top cut off above an attic window; office glazing on the ground storey over a souterrain door."
+}

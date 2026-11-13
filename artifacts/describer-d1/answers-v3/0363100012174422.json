@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  5,
+  2,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "crown",
+  "columns",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber pui with pilasters and an upper row of small-paned windows over the ground openings"
+  }
+ ],
+ "notes": "Blurred; dark green window frames in cream surrounds."
+}

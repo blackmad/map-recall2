@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012165000",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012165000/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "pilasters between the ground-storey openings faced in green and yellow tiles"
+  },
+  {
+   "component": "roof",
+   "what": "a roof terrace with a railing and a set-back structure behind the parapet"
+  }
+ ],
+ "notes": "Blurred; a car hides the ground storey."
+}

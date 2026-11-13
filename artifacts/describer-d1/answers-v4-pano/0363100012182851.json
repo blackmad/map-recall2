@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182851",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001660_pano_0000_002074.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white-painted ground storey with a row of small windows over the lower openings"
+  },
+  {
+   "component": "gable ornament",
+   "what": "scrolled crown with a carved cap on the neck"
+  }
+ ],
+ "notes": "Far and small; window glazing hard to resolve.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

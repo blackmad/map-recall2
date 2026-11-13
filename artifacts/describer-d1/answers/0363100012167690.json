@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012167690",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167690/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "storeys",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white classical doorcase with a fanlight round the street door"
+  }
+ ],
+ "notes": "A tree covers the left side and the gable; the gable outline is hard to read."
+}

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012156969",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012156969/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "bands",
+  "windowSurround",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "tall dormers with hoist beams behind the cornice, one per two window axes"
+  }
+ ],
+ "notes": "Long uniform row; house boundaries unclear, a dormer every two axes suggests two-bay fronts but the shop spans more."
+}

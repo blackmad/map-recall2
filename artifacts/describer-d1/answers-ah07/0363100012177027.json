@@ -1,0 +1,36 @@
+{
+ "v": 1,
+ "pandId": "0363100012177027",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012177027.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "The outline spans the end of a distant modern apartment block and the corner of a nearby black shop building; no single house front sits in it.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

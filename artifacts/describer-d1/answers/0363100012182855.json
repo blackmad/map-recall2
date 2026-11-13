@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182855",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182855/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "two-light"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a single centred window over the two axes below"
+  }
+ ],
+ "notes": "Ground storey hidden by a large red awning; tree shadow over the front."
+}

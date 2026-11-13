@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182304",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002963_pano_0000_000016.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "columns",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a steep pointed roof face rising behind a tall pale frieze, with one large dormer with a white surround and pediment"
+  }
+ ],
+ "notes": "Far and low resolution; a van and a quay railing hide the base.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182303",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182303/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber frame with a row of large windows forming the first floor over the shop"
+  },
+  {
+   "component": "window",
+   "what": "low railings across the lower lights of the upper windows"
+  }
+ ],
+ "notes": "Strong lens glare and a lamp post hide the top; a lorry and parasol hide the shop door."
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171198",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a black iron balcony across the front at the second-storey floor and a white balustraded balcony at the first-storey floor"
+  },
+  {
+   "component": "window",
+   "what": "each storey has one wide window of a centre pair with narrow side lights under a row of top lights"
+  },
+  {
+   "component": "roof",
+   "what": "a dark roof face with one white-framed dormer behind the cornice"
+  }
+ ],
+ "notes": "Low resolution; wall is light grey, painted or rendered; the ground storey is partly hidden by plants.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

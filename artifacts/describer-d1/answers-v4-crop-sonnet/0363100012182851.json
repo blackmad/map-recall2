@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012182851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182851/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "columns",
+  "crown"
+ ],
+ "storeyWindows": {
+  "3": "casement-triple"
+ },
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "scrolled stone claw pieces at the neck gable"
+  },
+  {
+   "component": "balcony",
+   "what": "low railings across the lower part of the upper windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

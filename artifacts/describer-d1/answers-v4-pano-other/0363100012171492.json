@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012171492",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002954_pano_0002_000050.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "A bare tree covers most of the front.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

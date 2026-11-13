@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012182855",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182855/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a red awning and parasol hides the entire ground storey"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

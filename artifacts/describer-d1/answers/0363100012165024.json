@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012165024",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165024/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 5,
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "ground",
+  "heads",
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "ground storey is a white rendered base with arched entrance"
+  },
+  {
+   "component": "roof",
+   "what": "balustrade or attic above the cornice"
+  }
+ ],
+ "notes": "Wide neo-Renaissance front; a tree trunk and a lamp post cover the left part and the ground storey."
+}

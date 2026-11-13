@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012177931",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one pedimented dormer in a tiled roof slope"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012174187",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "two projecting two-storey white bay windows with gridded toplights, at left and right"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balustrade balconies at the top storey and the first-floor side axes"
+  },
+  {
+   "component": "door",
+   "what": "central open recessed stair entrance flanked by wide garage-like glazed openings"
+  },
+  {
+   "component": "window",
+   "what": "first-floor centre window with a small-paned stone frame"
+  }
+ ]
+}

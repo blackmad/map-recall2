@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012236189",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012236189.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "notes": "Unsure: target panel spans several fronts of a block; the right front repeats its neck-gable balcony unit."
+}

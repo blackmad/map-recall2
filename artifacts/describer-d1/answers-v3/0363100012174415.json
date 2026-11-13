@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012174415",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174415/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "two black doors side by side at the left under oval-ornamented fanlights"
+  },
+  {
+   "component": "window",
+   "what": "brick flat arches of radiating headers over each window"
+  },
+  {
+   "component": "shutters",
+   "what": "louvred shutter in a single centred window above the third storey"
+  }
+ ],
+ "notes": "Top of the front is cut off; three window rows sit over the ground storey and a single centred window above may be in the gable, so the storey count is not given."
+}

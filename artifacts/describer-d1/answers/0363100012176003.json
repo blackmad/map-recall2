@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012176003",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176003/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "wallFamily",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark shopfront with a sign band and outdoor seating at the corner"
+  }
+ ],
+ "notes": "Strongly oblique view of a modern corner block; plants and people cover the ground storey."
+}

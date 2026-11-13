@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182375/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "bands",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "stone balustrade with vases above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a doorway with an ornamental fanlight and a pair of panelled doors under a gridded toplight"
+  }
+ ],
+ "notes": "A car and a covered boat hide the base of the ground storey."
+}

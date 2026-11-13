@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174422.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "ground front",
+   "what": "cream timber ground front in two tiers (small-paned upper lights over panels, tall windows and door below)"
+  }
+ ],
+ "notes": "Re-read of the regenerated cut. Narrow brick front, two upper rows under a stepped/claw top; steep oblique.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

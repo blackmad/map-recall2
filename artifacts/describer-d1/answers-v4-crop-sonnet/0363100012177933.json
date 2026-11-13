@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [],
+ "notes": "A folded parasol covers the right of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

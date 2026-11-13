@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223_2.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "1": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber pilaster frame round a three-light storey directly above the shop"
+  },
+  {
+   "component": "gable ornament",
+   "what": "scrolled shoulders and a crowning cap on the gable"
+  }
+ ],
+ "notes": "Ground storey under an awning and café seating.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

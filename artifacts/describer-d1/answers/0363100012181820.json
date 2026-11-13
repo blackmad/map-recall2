@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012181820",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181820/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "red-painted shopfront with gold lettered fascia and gridded red-framed glazing"
+  }
+ ],
+ "notes": "Very small image, top cut off; the left axis is cut by the frame edge."
+}

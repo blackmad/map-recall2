@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "round",
+  "round",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "pale",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "White pilasters with red brick infill stripes and decorative brick patterns between the windows."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

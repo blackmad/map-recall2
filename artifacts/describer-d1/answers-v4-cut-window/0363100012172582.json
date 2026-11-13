@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012172582",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172582.jpg + artifacts/describer-d1/windows/0363100012172582.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground",
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a centre window flanked by two small round oculi"
+  },
+  {
+   "component": "door",
+   "what": "a wide panelled double door with a fanlight in the centre of the ground storey between two narrow doors"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist beam projects above the cornice"
+  }
+ ],
+ "notes": "Fish-eye view from below; cars hide the base. Unsure whether the oculus storey counts as a full storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible",
+ "paneLayout": "multi-pane"
+}

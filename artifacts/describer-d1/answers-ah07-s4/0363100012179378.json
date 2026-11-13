@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012179378",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012179378.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "low": [
+  "pale",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window appears on a lower upper storey at the right edge"
+  }
+ ],
+ "notes": "A tree trunk stands across nearly the whole outline, the lens is rain-smeared and the view is very oblique.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

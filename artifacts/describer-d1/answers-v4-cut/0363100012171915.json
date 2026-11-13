@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171915.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "souterrain",
+  "basement",
+  "windows",
+  "columns",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the street door at the left has a round-headed fanlight while the ground windows are flat-headed"
+  },
+  {
+   "component": "window",
+   "what": "small attic windows in the tall frieze band under the cornice"
+  }
+ ],
+ "notes": "A bare tree trunk and branches cross the middle of the front; low light.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a church front: a big pointed gable with brick corbel tables along the rakes, stone pilasters ending in pinnacles"
+  },
+  {
+   "component": "window",
+   "what": "tall round-arched tracery windows with a rose in the head, the middle one much larger"
+  },
+  {
+   "component": "door",
+   "what": "three arched doors, the middle one under a stone gabled porch with columns"
+  }
+ ],
+ "notes": "This is a church, not a house; storey parts are read as the door level and the window level.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

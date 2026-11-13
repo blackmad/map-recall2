@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012179051",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179051/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white pedimented dormer above the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey has a light rendered surround"
+  }
+ ],
+ "notes": "A crane arm crosses the second storey."
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012174704",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174704/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small stone tablet over the ground-storey window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved stone crowning piece on top of the neck"
+  },
+  {
+   "component": "door",
+   "what": "door under a fanlight with radiating curved tracery"
+  }
+ ],
+ "notes": "Tree branches cross the front."
+}

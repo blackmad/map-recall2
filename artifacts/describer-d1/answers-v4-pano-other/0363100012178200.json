@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012178200",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002973_pano_0000_000108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small pointed front gable with one window standing on the cornice."
+  }
+ ],
+ "notes": "Ground storey partly behind a lamp post and road signs.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

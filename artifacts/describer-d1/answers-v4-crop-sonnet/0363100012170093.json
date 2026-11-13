@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012170093",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170093/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

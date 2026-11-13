@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012182580",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002973_pano_0000_000124.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "A tree trunk and its branches cover the middle and the top; a van covers the ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

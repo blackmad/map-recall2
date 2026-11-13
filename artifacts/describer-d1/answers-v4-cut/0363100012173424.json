@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012173424",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173424.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "souterrain",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a single bell-topped dormer in the tiled pitched roof behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "a small dark name tablet in the centre of the frieze"
+  }
+ ],
+ "notes": "A lamp post stands left of the front and a parked car hides the plinth.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

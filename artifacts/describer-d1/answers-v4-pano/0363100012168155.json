@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168155",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002613.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "finish",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "very tall ground-storey windows with small panes in white frames"
+  }
+ ],
+ "notes": "Tree leaves and a street lamp partly cover the front; a car hides the base.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182473/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": "not-visible",
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one top-storey window is a painted trompe-l'oeil or artwork panel"
+  },
+  {
+   "component": "roof",
+   "what": "long tiled roof slope with chimneys and roof hatches"
+  }
+ ],
+ "notes": "Wide front cropped at both sides, so axes cannot be counted; a truck hides the ground storey base."
+}

@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174833",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "ground",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "A projecting hoist or sign box hangs over the second storey."
+  }
+ ],
+ "notes": "A large tree trunk covers the right side.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

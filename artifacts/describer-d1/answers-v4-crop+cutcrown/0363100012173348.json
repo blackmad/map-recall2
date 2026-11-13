@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012173348",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173348/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white pilaster strips and bands form a grid round each window"
+  },
+  {
+   "component": "window",
+   "what": "flower boxes under the upper windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white scroll claw pieces at the neck"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

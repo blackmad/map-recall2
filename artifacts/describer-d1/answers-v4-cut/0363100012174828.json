@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174828",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174828.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "columns",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a steep pitched roof with its gable end facing the street rises behind the cornice, with one dormer in it"
+  }
+ ],
+ "notes": "A tree trunk crosses the left axis and reflections hide the glazing bars.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

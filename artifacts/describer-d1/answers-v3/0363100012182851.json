@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182851/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "3": "sash-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "wallFamily",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved scroll claw pieces flanking the neck"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber pui with an upper row of windows over the doors"
+  }
+ ],
+ "notes": "Strong sun; ground storey pui counted as one storey with its upper glazed row."
+}

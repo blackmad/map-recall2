@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012165000",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012165000.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts.roof",
+  "storeyParts",
+  "windows",
+  "cornice",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a roof terrace with plants and a light set-back roof structure behind the parapet"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey has a row of windows between narrow decorated pilasters, partly hidden by a parked car"
+  }
+ ],
+ "notes": "Dusk light and a parked car hide most of the ground storey.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

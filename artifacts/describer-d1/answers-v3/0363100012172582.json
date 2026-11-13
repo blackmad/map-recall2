@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012172582",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172582/years/2025.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two oval oculus windows in white surrounds flanking the top-storey centre window"
+  },
+  {
+   "component": "balcony",
+   "what": "an iron balconette across the top-storey centre window"
+  },
+  {
+   "component": "door",
+   "what": "tall black double doors with round grilled lights between two side doors"
+  }
+ ],
+ "notes": "Top of the front cut off at the cornice."
+}

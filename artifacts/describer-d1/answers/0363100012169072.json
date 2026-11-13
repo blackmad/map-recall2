@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012169072",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169072/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "windowSurround",
+  "ground",
+  "columns",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "stepped gable with white stone blocks in the brick and an attic window"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey with a white roller door and gridded glazing over a dark fascia"
+  }
+ ],
+ "notes": "A large tree trunk covers the right half of the image, including the right edge of the front."
+}

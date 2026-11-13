@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a deep white entablature with dentils and a tall frieze carrying a plain panel"
+  },
+  {
+   "component": "shopfront",
+   "what": "a stone-framed shop storey with gridded upper glazing and a dark fascia"
+  }
+ ],
+ "notes": "A closed parasol and people hide the ground storey's right half."
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174179",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002961_pano_0003_000098.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "cross-transom",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "windowSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red and blue painted shutters beside the windows"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched door at the lower level under the tall windows"
+  }
+ ],
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

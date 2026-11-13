@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182849",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182849/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white entablature with corner volutes and a dated stone, crowned by a central raised dormer with a pediment and a hoist beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "a glazed transom band with lettering over the shop, under a white beam"
+  }
+ ],
+ "notes": "A big orange parasol hides most of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

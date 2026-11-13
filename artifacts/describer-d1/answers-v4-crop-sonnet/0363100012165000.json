@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012165000",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012165000/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "crown",
+  "finish",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "green decorative tile pilasters flank the ground storey openings"
+  }
+ ],
+ "notes": "Low two-storey front, partly blurred, car hides the pavement.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

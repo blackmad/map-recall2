@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012167538",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167538/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balconies with iron railings on the centre axis of each upper storey, on a projecting slab"
+  },
+  {
+   "component": "window",
+   "what": "brick relieving arches with light keystone over the first-floor windows"
+  }
+ ],
+ "notes": "Top cut off; image dark."
+}

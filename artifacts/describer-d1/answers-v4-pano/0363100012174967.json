@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012174967",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002923_pano_0001_000014.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "relieving",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round relieving arches with decorated brick tympana over the second-storey windows"
+  },
+  {
+   "component": "door",
+   "what": "a pair of red doors under a round arch with a fanlight"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a tall stepped gable with stone dressings and a pinnacle"
+  }
+ ],
+ "notes": "A large bare tree stands in front of the left half.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

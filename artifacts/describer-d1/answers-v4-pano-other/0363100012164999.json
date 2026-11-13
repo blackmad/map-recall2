@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012164999",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_002233.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a large red-tiled roof with pedimented dormers over a wide five-axis front"
+  }
+ ],
+ "notes": "The outline covers only the right part of a wide front under one roof.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

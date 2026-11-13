@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012170934",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000003_2.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [],
+ "notes": "A crane jib crosses the front; low resolution.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

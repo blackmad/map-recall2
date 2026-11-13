@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171696/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 1,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide window band of four lights with small-paned top lights"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white barge boards and a small hoist beam at the gable apex"
+  }
+ ],
+ "notes": "Ground storey is white-painted with a black door at left and wide white doors at right."
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "scrolled stone claw piece at the neck gable"
+  }
+ ],
+ "notes": "The middle of the image is the boundary of two houses; the left, wider one is described.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

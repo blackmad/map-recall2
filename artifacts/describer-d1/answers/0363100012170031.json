@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012170031",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "finish",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber pui with pilasters taking ground and an entresol row of four windows"
+  },
+  {
+   "component": "window",
+   "what": "moulded hood cornices over the top-storey windows"
+  }
+ ],
+ "notes": "Front is overexposed; upper details washed out."
+}

@@ -1,0 +1,2350 @@
+{
+ "v": 1,
+ "mode": "a-vs-b",
+ "fields": [
+  {
+   "field": "storeys",
+   "k": 17,
+   "n": 17,
+   "acc": 1,
+   "lo": 0.816,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "storeys±1",
+   "k": 17,
+   "n": 17,
+   "acc": 1,
+   "lo": 0.816,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "bays",
+   "k": 15,
+   "n": 17,
+   "acc": 0.882,
+   "lo": 0.657,
+   "hi": 0.967,
+   "pass": true
+  },
+  {
+   "field": "bays±1",
+   "k": 17,
+   "n": 17,
+   "acc": 1,
+   "lo": 0.816,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "windowFamily",
+   "k": 11,
+   "n": 18,
+   "acc": 0.611,
+   "lo": 0.386,
+   "hi": 0.797,
+   "pass": false
+  },
+  {
+   "field": "windows",
+   "k": 5,
+   "n": 18,
+   "acc": 0.278,
+   "lo": 0.125,
+   "hi": 0.509,
+   "pass": false
+  },
+  {
+   "field": "head",
+   "k": 15,
+   "n": 17,
+   "acc": 0.882,
+   "lo": 0.657,
+   "hi": 0.967,
+   "pass": true
+  },
+  {
+   "field": "storeyHeads",
+   "k": 7,
+   "n": 13,
+   "acc": 0.538,
+   "lo": 0.291,
+   "hi": 0.768,
+   "pass": false
+  },
+  {
+   "field": "bands",
+   "k": 17,
+   "n": 19,
+   "acc": 0.895,
+   "lo": 0.686,
+   "hi": 0.971,
+   "pass": true
+  },
+  {
+   "field": "bandKind",
+   "k": 13,
+   "n": 19,
+   "acc": 0.684,
+   "lo": 0.46,
+   "hi": 0.846,
+   "pass": false
+  },
+  {
+   "field": "surrounds",
+   "k": 14,
+   "n": 19,
+   "acc": 0.737,
+   "lo": 0.512,
+   "hi": 0.882,
+   "pass": false
+  },
+  {
+   "field": "windowSurround",
+   "k": 8,
+   "n": 19,
+   "acc": 0.421,
+   "lo": 0.231,
+   "hi": 0.637,
+   "pass": false
+  },
+  {
+   "field": "sills",
+   "k": 11,
+   "n": 15,
+   "acc": 0.733,
+   "lo": 0.48,
+   "hi": 0.891,
+   "pass": false
+  },
+  {
+   "field": "doorBay",
+   "k": 9,
+   "n": 10,
+   "acc": 0.9,
+   "lo": 0.596,
+   "hi": 0.982,
+   "pass": true
+  },
+  {
+   "field": "shop",
+   "k": 17,
+   "n": 18,
+   "acc": 0.944,
+   "lo": 0.742,
+   "hi": 0.99,
+   "pass": true
+  },
+  {
+   "field": "basement",
+   "k": 14,
+   "n": 14,
+   "acc": 1,
+   "lo": 0.785,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "crown",
+   "k": 13,
+   "n": 15,
+   "acc": 0.867,
+   "lo": 0.621,
+   "hi": 0.963,
+   "pass": true
+  },
+  {
+   "field": "cornice",
+   "k": 13,
+   "n": 15,
+   "acc": 0.867,
+   "lo": 0.621,
+   "hi": 0.963,
+   "pass": true
+  },
+  {
+   "field": "wallFamily",
+   "k": 13,
+   "n": 19,
+   "acc": 0.684,
+   "lo": 0.46,
+   "hi": 0.846,
+   "pass": false
+  },
+  {
+   "field": "finish",
+   "k": 19,
+   "n": 19,
+   "acc": 1,
+   "lo": 0.832,
+   "hi": 1,
+   "pass": true
+  }
+ ],
+ "confusions": {
+  "crown": {
+   "cornice": {
+    "cornice": 11,
+    "mansard": 1
+   },
+   "flat": {
+    "cornice": 1
+   },
+   "bell": {
+    "bell": 1
+   },
+   "neck": {
+    "neck": 1
+   }
+  },
+  "windowFamily": {
+   "T-window": {
+    "sash": 5,
+    "casement": 2,
+    "T-window": 5
+   },
+   "sash": {
+    "sash": 6
+   }
+  },
+  "head": {
+   "segmental": {
+    "mixed": 1,
+    "round": 1,
+    "segmental": 1
+   },
+   "mixed": {
+    "mixed": 2
+   },
+   "flat": {
+    "flat": 12
+   }
+  },
+  "wallFamily": {
+   "red-brown": {
+    "red-brown": 7,
+    "dark": 2
+   },
+   "red": {
+    "red-brown": 2,
+    "red": 2
+   },
+   "dark": {
+    "dark": 1
+   },
+   "brown": {
+    "dark": 2,
+    "brown": 2
+   },
+   "white": {
+    "white": 1
+   }
+  },
+  "finish": {
+   "brick": {
+    "brick": 17
+   },
+   "painted-brick": {
+    "painted-brick": 1
+   },
+   "stucco": {
+    "stucco": 1
+   }
+  },
+  "doorBay": {
+   "right": {
+    "right": 2
+   },
+   "left": {
+    "left": 3
+   },
+   "several": {
+    "centre": 1,
+    "several": 2
+   },
+   "centre": {
+    "centre": 2
+   }
+  },
+  "shop": {
+   "true": {
+    "true": 12,
+    "false": 1
+   },
+   "false": {
+    "false": 5
+   }
+  },
+  "bands": {
+   "true": {
+    "true": 4
+   },
+   "false": {
+    "false": 13,
+    "true": 2
+   }
+  },
+  "surrounds": {
+   "true": {
+    "true": 3
+   },
+   "false": {
+    "true": 5,
+    "false": 11
+   }
+  }
+ },
+ "perHouse": {
+  "0363100012160298": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "sash-4-over-4",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "mixed",
+    "b": "segmental",
+    "ok": false
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,segmental,flat",
+    "b": "flat,segmental,segmental,segmental",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "both",
+    "b": "lintel",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "full-frame",
+    "b": "jack-blocks",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012165024": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 4,
+    "b": 5,
+    "ok": false
+   },
+   {
+    "field": "bays±1",
+    "a": 4,
+    "b": 5,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "mixed",
+    "b": "mixed",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,round,segmental,flat",
+    "b": "mixed,round,flat,flat",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "both",
+    "b": "speklagen",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "full-frame",
+    "b": "full-frame",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "heavy",
+    "b": "heavy",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012165141": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "sash-1-over-1",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat,flat",
+    "b": "flat,flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "jack-blocks",
+    "b": "jack-blocks",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "right",
+    "b": "right",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012167817": [
+   {
+    "field": "storeys",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 1,
+    "b": 2,
+    "ok": false
+   },
+   {
+    "field": "bays±1",
+    "a": 1,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash-6-over-6",
+    "b": "sash-small-panes",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat",
+    "b": "flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "windowSurround",
+    "a": "full-frame",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "dark",
+    "b": "red-brown",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012168692": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash-6-over-6",
+    "b": "sash",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "right",
+    "b": "right",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "dark",
+    "b": "dark",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "painted-brick",
+    "b": "painted-brick",
+    "ok": true
+   }
+  ],
+  "0363100012171915": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "sash",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "mixed",
+    "b": "mixed",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "mixed,flat,segmental,flat",
+    "b": "mixed,segmental,flat,flat",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "sill",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "left",
+    "b": "left",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "dark",
+    "b": "brown",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012172590": [
+   {
+    "field": "bays",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "casement",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "casement-small-panes",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "none",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "none",
+    "b": "stone",
+    "ok": false
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "dark",
+    "b": "red-brown",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012172673": [
+   {
+    "field": "storeys",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "T-window",
+    "b": "T-window",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "casement-gridded-toplight",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat",
+    "b": "flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "none",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "none",
+    "b": "stone",
+    "ok": false
+   },
+   {
+    "field": "doorBay",
+    "a": "centre",
+    "b": "several",
+    "ok": false
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012173424": [
+   {
+    "field": "storeys",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 2,
+    "b": 2,
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat",
+    "b": "flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "none",
+    "ok": false
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012174187": [
+   {
+    "field": "storeys",
+    "a": 5,
+    "b": 5,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 5,
+    "b": 5,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "T-window",
+    "b": "T-window",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "casement-gridded-toplight",
+    "b": "small-over-one",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat,flat,flat",
+    "b": "flat,flat,flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "sill",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "centre",
+    "b": "centre",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": true,
+    "ok": false
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "flat",
+    "ok": false
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "brown",
+    "b": "brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012174564": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "casement",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "casement-pair",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "round",
+    "b": "segmental",
+    "ok": false
+   },
+   {
+    "field": "storeyHeads",
+    "a": "round,round,round,round",
+    "b": "round,segmental,segmental,segmental",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "storey",
+    "b": "speklagen",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "windowSurround",
+    "a": "jack-blocks",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "several",
+    "b": "several",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "bell",
+    "b": "bell",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red",
+    "b": "red",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012174965": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "T-window",
+    "b": "T-window",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "casement-toplight",
+    "b": "casement-toplight",
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "windowSurround",
+    "a": "full-frame",
+    "b": "none",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "none",
+    "ok": false
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "frieze",
+    "b": "frieze",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "dark",
+    "b": "brown",
+    "ok": false
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012174971": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash-6-over-6",
+    "b": "sash-small-panes",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "segmental",
+    "b": "segmental",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,segmental,segmental,segmental",
+    "b": "flat,segmental,segmental,segmental",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "sill",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "several",
+    "b": "several",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "mansard",
+    "b": "cornice",
+    "ok": false
+   },
+   {
+    "field": "cornice",
+    "a": "frieze",
+    "b": "frieze",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "brown",
+    "b": "brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012175037": [
+   {
+    "field": "storeys",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 7,
+    "b": 7,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 7,
+    "b": 7,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash-6-over-6",
+    "b": "sash",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat",
+    "b": "flat,flat,flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "none",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "none",
+    "b": "stone",
+    "ok": false
+   },
+   {
+    "field": "doorBay",
+    "a": "centre",
+    "b": "centre",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "simple",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "white",
+    "b": "white",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "stucco",
+    "b": "stucco",
+    "ok": true
+   }
+  ],
+  "0363100012175141": [
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "sash",
+    "b": "casement-toplight",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "courses",
+    "b": "speklagen",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "none",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012176545": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "sash",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "sash-6-over-6",
+    "b": "sash-6-over-6",
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat,flat",
+    "b": "mixed,flat,flat,flat",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "sill",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "left",
+    "b": "left",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "simple",
+    "b": "frieze",
+    "ok": false
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012178198": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "sash",
+    "b": "T-window",
+    "ok": false
+   },
+   {
+    "field": "windows",
+    "a": "sash",
+    "b": "casement-gridded-toplight",
+    "ok": false
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "storeyHeads",
+    "a": "flat,flat,flat,flat",
+    "b": "segmental,flat,flat,flat",
+    "ok": false
+   },
+   {
+    "field": "bands",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "bandKind",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "surrounds",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "windowSurround",
+    "a": "sill",
+    "b": "sill",
+    "ok": true
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "doorBay",
+    "a": "left",
+    "b": "left",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "heavy",
+    "b": "heavy",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012182581": [],
+  "0363100012182847": [
+   {
+    "field": "storeys",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "T-window",
+    "b": "T-window",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "casement-toplight",
+    "b": "casement-toplight",
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "bandKind",
+    "a": "both",
+    "b": "none",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "windowSurround",
+    "a": "stone-lintel",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "basement",
+    "a": false,
+    "b": false,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "neck",
+    "b": "neck",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "none",
+    "b": "none",
+    "ok": true
+   },
+   {
+    "field": "wallFamily",
+    "a": "red",
+    "b": "red",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ],
+  "0363100012182856": [
+   {
+    "field": "storeys",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "storeys±1",
+    "a": 4,
+    "b": 4,
+    "ok": true
+   },
+   {
+    "field": "bays",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "bays±1",
+    "a": 3,
+    "b": 3,
+    "ok": true
+   },
+   {
+    "field": "windowFamily",
+    "a": "T-window",
+    "b": "T-window",
+    "ok": true
+   },
+   {
+    "field": "windows",
+    "a": "casement-toplight",
+    "b": "casement-toplight",
+    "ok": true
+   },
+   {
+    "field": "head",
+    "a": "flat",
+    "b": "flat",
+    "ok": true
+   },
+   {
+    "field": "bands",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "bandKind",
+    "a": "storey",
+    "b": "none",
+    "ok": false
+   },
+   {
+    "field": "surrounds",
+    "a": true,
+    "b": false,
+    "ok": false
+   },
+   {
+    "field": "windowSurround",
+    "a": "full-frame",
+    "b": "sill",
+    "ok": false
+   },
+   {
+    "field": "sills",
+    "a": "stone",
+    "b": "stone",
+    "ok": true
+   },
+   {
+    "field": "shop",
+    "a": true,
+    "b": true,
+    "ok": true
+   },
+   {
+    "field": "crown",
+    "a": "cornice",
+    "b": "cornice",
+    "ok": true
+   },
+   {
+    "field": "cornice",
+    "a": "heavy",
+    "b": "bracketed",
+    "ok": false
+   },
+   {
+    "field": "wallFamily",
+    "a": "red-brown",
+    "b": "red-brown",
+    "ok": true
+   },
+   {
+    "field": "finish",
+    "a": "brick",
+    "b": "brick",
+    "ok": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012159816",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012159816/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small white triangular pediments over the second-floor windows"
+  },
+  {
+   "component": "relief",
+   "what": "a row of white corbel blocks under the cornice"
+  }
+ ],
+ "notes": "Narrow, low-resolution image; boundary with the right neighbour (with round-arched attic windows) unclear."
+}

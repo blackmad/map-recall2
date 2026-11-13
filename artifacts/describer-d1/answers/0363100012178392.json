@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178392/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "wallFamily",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces with scrolls flank the neck"
+  },
+  {
+   "component": "shopfront",
+   "what": "the lower two levels are a white timber or stone pilastered front with gridded windows"
+  }
+ ],
+ "notes": "Very narrow image; the neck top is cut off and the lower white two-level front may be one tall shop storey with an entresol."
+}

@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012176103",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176103/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window stacked over two storeys on one side of the front"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist beam at the gable top"
+  }
+ ],
+ "notes": "Extremely oblique view."
+}

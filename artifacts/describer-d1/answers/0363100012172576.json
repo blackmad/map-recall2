@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012172576",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172576/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved stone claw pieces on both shoulders of the neck gable"
+  },
+  {
+   "component": "door",
+   "what": "two black side street doors and a central glazed double door under a long gridded transom"
+  }
+ ]
+}

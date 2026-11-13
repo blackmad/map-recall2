@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012159351",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012159351/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "mixed",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "bands",
+  "windowSurround",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small triangular pediments over some second-floor windows and white keystones in segmental arches above"
+  },
+  {
+   "component": "dormer",
+   "what": "brick dormers and raised chimney stacks breaking the cornice line"
+  }
+ ],
+ "notes": "One McDonald's shopfront spans several fronts of a uniform 1880s row; house boundaries in the middle are unclear and a pole stands in front."
+}

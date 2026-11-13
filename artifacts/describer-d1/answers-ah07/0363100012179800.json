@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012179800",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "heads",
+  "windowSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "two recessed door portals side by side under fanlight arches, each reached by its own stone stoop"
+  },
+  {
+   "component": "dormer",
+   "what": "ornate white stone dormer with a pediment over the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "light stone blocks scattered in the brick like broken speklagen and keystones over each arch"
+  }
+ ],
+ "notes": "The outlined front is a narrow middle slice of a larger block; the perspective makes the upper storey lines hard to count.",
+ "storeys": 5,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

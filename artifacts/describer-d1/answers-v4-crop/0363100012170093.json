@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012170093",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170093/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "pale",
+  "bands",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "post-war window frames with a top-hung hopper over one large pane"
+  }
+ ],
+ "notes": "A tree covers the right bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

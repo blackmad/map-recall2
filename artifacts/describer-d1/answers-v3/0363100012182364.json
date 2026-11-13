@@ -1,0 +1,37 @@
+{
+ "v": 1,
+ "pandId": "0363100012182364",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182364/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2021,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "ground",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [],
+ "notes": "Very small, blurred image with the top cut off; boat and railing in front."
+}

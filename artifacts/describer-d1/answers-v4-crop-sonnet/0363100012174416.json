@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012174416",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174416/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "A top window with pink-red folding shutters sits above the third storey."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "projecting brick piers between the window axes ending in corbels under an overhanging flat roof edge"
+  },
+  {
+   "component": "door",
+   "what": "ground storey in a cream stone frame with a central glazed double door and a door at each side"
+  }
+ ]
+}

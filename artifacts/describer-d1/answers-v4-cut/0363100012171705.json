@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012171705",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171705.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "crown",
+  "cornice",
+  "storeyParts",
+  "sills"
+ ],
+ "gaps": [],
+ "notes": "Very grainy image, ground storey hidden behind parked cars and shrubs; the outline straddles the flat-topped two-bay front and its mansard neighbour, I described the flat-topped front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

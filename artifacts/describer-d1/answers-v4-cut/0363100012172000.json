@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012172000",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172000.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "spout",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "finish",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the upper windows are filled with horizontal louvre blinds"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark restaurant shopfront with red-framed display window and an awning"
+  }
+ ],
+ "notes": "Steep upward fish-eye view; the outline sits on the right half of the white front, so the gable shape and storey lines are hard to read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,27 @@
+{
+ "v": 1, "reader": "D1 lead (Claude Opus), 2026-11-13", "how": "20 describer/truth disagreements re-read on the same image the describer saw (downscaled to 700 px)",
+ "rows": [
+  {"pandId": "0363100012168694", "field": "storeys", "describer": 4, "truth": 3, "set": "hand-spec", "right": "truth", "why": "3 window rows over the van plus a mansard; the describer counted the mansard"},
+  {"pandId": "0363100012168796", "field": "storeys", "describer": 4, "truth": 3, "set": "hand-spec", "right": "truth", "why": "3 storeys over a basement; the describer counted the basement"},
+  {"pandId": "0363100012170087", "field": "storeys", "describer": 3, "truth": 4, "set": "hand-spec", "right": "truth", "why": "the white plastered storey over the restaurant is a full storey, not part of the shop"},
+  {"pandId": "0363100012169252", "field": "storeys", "describer": 3, "truth": 5, "set": "hand-spec", "right": "undecidable", "why": "narrow washed-out gate-fail crop; the describer should have said not-visible"},
+  {"pandId": "0363100012168640", "field": "storeys", "describer": 4, "truth": 3, "set": "hand-spec", "right": "undecidable", "why": "steep oblique; shop + 3 window rows reads 4, but the top row may sit in the neck"},
+  {"pandId": "0363100012174967", "field": "windowFamily", "describer": "casement", "truth": "sash", "set": "hand-spec", "right": "describer", "why": "mullioned casements under arched top lights, no meeting rail: the spec's sash is a default"},
+  {"pandId": "0363100012174977", "field": "windowFamily", "describer": "T-window", "truth": "sash", "set": "hand-spec", "right": "truth", "why": "single-pane sashes with a meeting rail at half height"},
+  {"pandId": "0363100012172671", "field": "windowFamily", "describer": "sash", "truth": "casement", "set": "benchmark", "right": "undecidable", "why": "oblique, small"},
+  {"pandId": "0363100012182856", "field": "windowFamily", "describer": "T-window", "truth": "sash", "set": "benchmark", "right": "describer", "why": "a transom light over one large pane on every upper window: a T-window/top-light window"},
+  {"pandId": "0363100012173342", "field": "crown", "describer": "flat", "truth": "cornice", "set": "hand-spec", "right": "truth", "why": "the top is out of frame (lamp, crop): the describer should have said not-visible"},
+  {"pandId": "0363100012174646", "field": "crown", "describer": "flat", "truth": "cornice", "set": "hand-set", "right": "truth (lean)", "why": "a projecting slab on corbel blocks: closer to a bracketed cornice than a plain parapet"},
+  {"pandId": "0363100012181808", "field": "crown", "describer": "neck", "truth": "cornice", "set": "benchmark", "right": "describer", "why": "a neck gable with claw pieces fills the crop; the benchmark pose photo label read cornice"},
+  {"pandId": "0363100012174499", "field": "finish", "describer": "brick", "truth": "painted-brick", "set": "hand-spec", "right": "describer", "why": "bare red brick with visible joints"},
+  {"pandId": "0363100012165025", "field": "finish", "describer": "brick", "truth": "painted-brick", "set": "benchmark", "right": "truth (lean)", "why": "tiny far front, near-black: painted black brick is the likelier reading"},
+  {"pandId": "0363100012168692", "field": "finish", "describer": "painted-brick", "truth": "brick", "set": "hand-spec", "right": "describer (lean)", "why": "near-black even wall behind a tree: painted black brick"},
+  {"pandId": "0363100012182858", "field": "shop", "describer": true, "truth": false, "set": "benchmark", "right": "describer", "why": "an Albert Heijn shopfront fills the ground storey"},
+  {"pandId": "0363100012174776", "field": "shop", "describer": true, "truth": false, "set": "hand-spec", "right": "describer", "why": "a glazed ground storey with a fascia sign under a neck gable"},
+  {"pandId": "0363100012173044", "field": "shop", "describer": true, "truth": false, "set": "hand-spec", "right": "undecidable", "why": "a glazed panelled pui: shop form, use unknown"},
+  {"pandId": "0363100012168157", "field": "bays", "describer": 3, "truth": 2, "set": "hand-set", "right": "truth", "why": "the top storey's three lights sit in one opening (one axis by the convention); storey 1 has 2"},
+  {"pandId": "0363100012176005", "field": "bays", "describer": 3, "truth": 2, "set": "benchmark", "right": "undecidable", "why": "far pose photo, target unclear"}
+ ],
+ "tally": {"describer": 6, "describer (lean)": 1, "truth": 6, "truth (lean)": 2, "undecidable": 5},
+ "twins": "3 of 3 re-read twin false negatives (168760, 182303, 174976) are not twins: the hand-spec design key (gable, storeys, bays, windows) matches by defaults, so twin recall against it is not measurable"
+}

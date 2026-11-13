@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171195",
+ "design": {
+  "fronts": [
+   {
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3a3333"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171195.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171195.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171195.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171195.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a steep roof face with one dormer window rises behind a thin white cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "a low railing in front of the lowest visible window, a French door"
+  }
+ ]
+}

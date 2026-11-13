@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012172779",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172779/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 1,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a round oval window beside the upper window"
+  }
+ ],
+ "notes": "Dark, blurred and screened by a tree and a car; the ground storey is hidden.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

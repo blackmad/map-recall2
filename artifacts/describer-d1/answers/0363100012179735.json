@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012179735",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179735/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "grey",
+ "finish": "stone",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "finish",
+  "doorIndex"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balconies with plain iron railings in front of glazed doors on two axes per storey"
+  },
+  {
+   "component": "window",
+   "what": "modern grid facade: exposed concrete frame of floor slabs and piers with brown-framed windows set in"
+  }
+ ],
+ "notes": "Modern infill building; top cut off; image dark."
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012159694",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012159694.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "bays",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window on the first storey in the right axis, with a balcony-like top"
+  }
+ ],
+ "notes": "A large bare tree covers the upper storeys and the top of the front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

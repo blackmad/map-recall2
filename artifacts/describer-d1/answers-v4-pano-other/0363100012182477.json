@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182477",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002949_pano_0001_000033.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "richly ornamented Renaissance gable with scrolls, white stone dressings, red shutters and a finial on a pedimented top"
+  }
+ ],
+ "notes": "A bare tree is in front of the right half; low resolution.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

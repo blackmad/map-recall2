@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "windows",
+  "windowSurround",
+  "bands",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the gable has a small window and a moulded cornice line at its foot"
+  },
+  {
+   "component": "relief",
+   "what": "white blocks with dark anchors set along each head line"
+  }
+ ],
+ "notes": "The image centre falls on the party wall between two fronts; described the right-hand two-bay front, which is fully in frame. The left front is a neck gable."
+}

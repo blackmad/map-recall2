@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012100052",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012100052.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "notes": "Narrow target panel; same bands, top window band and balconies as the right; mirroring not readable."
+}

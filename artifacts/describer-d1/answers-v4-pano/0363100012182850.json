@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012182850",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002953_pano_0000_000441.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red tiled triangular roof end rises behind the middle of the cornice"
+  },
+  {
+   "component": "door",
+   "what": "tall timber ground storey with a row of small entresol lights over the door and windows"
+  }
+ ],
+ "notes": "Dusk light; a lamp post stands in front of the right axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012174828",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-003006_pano_0002_000251.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "crown",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "The front is heavily blurred (privacy or stitching smear) and a car covers the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

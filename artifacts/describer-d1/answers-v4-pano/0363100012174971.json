@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174971",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_002356.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "heads",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof rises behind the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a row of small-paned entresol lights in the upper part of the ground storey"
+  }
+ ],
+ "notes": "The lower ground storey is under an awning and blurred panels.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

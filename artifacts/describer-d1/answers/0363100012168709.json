@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconettes at the centre French doors on the first, second and third floors"
+  },
+  {
+   "component": "window",
+   "what": "a segmental arch over the ground storey filled with a row of small fanlights, with a white stone arch ring"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall glazed roof storey or dormer set behind the cornice"
+  }
+ ],
+ "notes": "A large tree covers the right bay."
+}

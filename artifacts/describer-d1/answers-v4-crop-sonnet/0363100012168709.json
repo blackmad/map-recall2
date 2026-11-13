@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "heads",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "two small iron balconies on the centre axis"
+  },
+  {
+   "component": "window",
+   "what": "white arched fanlight band over the ground floor"
+  }
+ ],
+ "notes": "Tree trunk hides the right side.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

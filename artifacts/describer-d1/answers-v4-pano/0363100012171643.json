@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012171643",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002356_pano_0003_000120.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "scrolled volute shoulders and a moulded cap on the neck."
+  },
+  {
+   "component": "door",
+   "what": "the house door sits up two steps between white timber pilasters."
+  }
+ ],
+ "notes": "Strong oblique view down the street; the outline covers mainly the right axis of the neck-gabled house and is cut by the tall neighbour.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

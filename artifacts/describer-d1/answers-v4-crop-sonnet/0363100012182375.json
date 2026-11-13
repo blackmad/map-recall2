@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182375/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "stone balustrade above a classical entablature with scroll consoles"
+  },
+  {
+   "component": "door",
+   "what": "transom with ornamental fanlight over the central door"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

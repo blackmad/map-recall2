@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012162836",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012162836.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "notes": "Unsure: each of target and left panels spans a 2-axis balcony front plus a corner tower bay, in opposite order."
+}

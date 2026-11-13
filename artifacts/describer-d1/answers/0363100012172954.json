@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012172954",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172954/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "two-light",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "modern block: brick ground storey with ribbon windows, cream rendered upper storeys with plain tall windows and French-balcony rails"
+  }
+ ],
+ "notes": "Steep oblique; the image centre falls on the boundary between a modern rendered block and a brick house on the right, read as the rendered block. Top cut off."
+}

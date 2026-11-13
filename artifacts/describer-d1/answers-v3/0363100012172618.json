@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012172618",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172618/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "cornice",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "ground storey framed by white pilasters with tall dark doors at both outer bays"
+  }
+ ],
+ "notes": "A bare tree covers the centre of the front; the top outline is hard to read through the branches."
+}

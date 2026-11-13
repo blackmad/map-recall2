@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012116526.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 7,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "ground",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round oculus windows with a white ring frame in one axis on storeys 1 and 3, a pointed-head window between them"
+  },
+  {
+   "component": "relief",
+   "what": "small white blocks over each window head"
+  },
+  {
+   "component": "roof",
+   "what": "corner building, the front turns the corner on the left; roof terrace railings on top"
+  }
+ ],
+ "notes": "Corner building; traffic lights and poles cover parts of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

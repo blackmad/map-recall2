@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white triangular pediment-like hoods with ears over the upper windows"
+  },
+  {
+   "component": "balcony",
+   "what": "French balcony railings on the centre axis of each upper storey"
+  },
+  {
+   "component": "door",
+   "what": "central shop entrance under a large white fanlight with radiating bars"
+  },
+  {
+   "component": "dormer",
+   "what": "one dormer window in the roof above the cornice beside a chimney"
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "bands",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes on consoles before the middle bay on every upper storey"
+  },
+  {
+   "component": "window",
+   "what": "white triangular and pointed stone ornaments over the windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick dormer with a window and a chimney-like brick top over the middle bay"
+  },
+  {
+   "component": "door",
+   "what": "a round fanlight with radiating bars over the shop entrance"
+  }
+ ],
+ "notes": "Low-resolution crop with street furniture in front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

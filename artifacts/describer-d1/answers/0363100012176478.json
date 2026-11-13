@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012176478",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176478/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [],
+ "notes": "A tree covers the gable top."
+}

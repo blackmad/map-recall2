@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012172953",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172953/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round oculus windows beside the sash windows on the upper storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "two dormers with pediment-like tops in the pitched roof above a white eaves cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront wrapping round the corner"
+  }
+ ],
+ "notes": "Corner building seen obliquely in rain; the near face is read, the long side face continues to the right."
+}

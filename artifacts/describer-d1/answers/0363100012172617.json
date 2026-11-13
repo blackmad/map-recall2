@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172617",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172617/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white-rendered entresol with a row of windows over a shop with a red-and-white striped awning shared with the left neighbour"
+  }
+ ],
+ "notes": "The image centre is near the joint between a bell/neck gable house on the left and this flat-cornice front; the cornice front is described. Dusk light."
+}

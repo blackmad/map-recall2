@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182299",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182299.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "sills",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "timber shopfront between grey stone piers with carved capitals, red-and-white diagonal shutter panels above the door"
+  },
+  {
+   "component": "relief",
+   "what": "carved stone capital blocks on the piers framing the ground storey"
+  }
+ ],
+ "notes": "Extreme upward fisheye view with no cyan outline visible; took the middle corner building. The top is too foreshortened to count storeys or read the crown.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012131498",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012131498.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Target is the taller stair-window section; right is the lower block."
+}

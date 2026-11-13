@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012172584",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172584/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French-balcony rails across the lower part of the first-floor windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark blue restaurant front with lit fascia sign and a white base"
+  }
+ ],
+ "notes": "Oblique, top cut off; ground and two upper storeys visible."
+}

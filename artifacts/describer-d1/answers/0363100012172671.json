@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012172671",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172671/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white-framed sandwich shop window with a red fascia over a black plinth, a dark door at the right"
+  }
+ ],
+ "notes": "Steep oblique, top cut off; a Christmas garland and a shop flag hang over the front."
+}

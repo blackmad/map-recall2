@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012172862",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172862/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "arched"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "columns",
+  "ground",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-storey windows in white stone frames with triangular and segmental pediments on consoles"
+  },
+  {
+   "component": "window",
+   "what": "white stone pilaster strips with alternating blocks between the bays"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall central dormer with an arched window, a pediment and a finial in a slate mansard"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white pilastered ground storey with a row of entresol windows and two doors at the left"
+  }
+ ],
+ "notes": "Bare tree branches cross the whole front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

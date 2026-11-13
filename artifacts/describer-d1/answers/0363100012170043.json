@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012170043",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground windows with diamond lattice glazing in the upper lights"
+  },
+  {
+   "component": "relief",
+   "what": "flat brick pilaster strips between the window axes running up the front"
+  }
+ ],
+ "notes": "Top of the front is blurred and cut off, crown not readable."
+}

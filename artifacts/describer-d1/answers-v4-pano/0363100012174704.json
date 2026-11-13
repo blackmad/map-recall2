@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174704",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002923_pano_0001_000014.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces at the neck foot and a curved white cap with an ornament"
+  },
+  {
+   "component": "door",
+   "what": "lattice fanlights with crossed tracery over the bel-etage openings"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

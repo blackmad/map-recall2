@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012170148",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170148/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  1
+ ],
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door under a fanlight with a star-shaped tracery"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small carved console or ornament set in the cornice above the top window"
+  }
+ ],
+ "notes": "Single centred top-storey window."
+}

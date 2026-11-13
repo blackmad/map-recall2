@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012170093",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170093/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "short hoist beam projecting from the parapet"
+  },
+  {
+   "component": "shopfront",
+   "what": "wide shop with a dark fascia sign and a separate red street door at the left"
+  }
+ ],
+ "notes": "Post-war front; tree covers the right bay, car the base."
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182847/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "heads",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small planted balcony with a railing at the middle window of the second floor"
+  },
+  {
+   "component": "gable ornament",
+   "what": "stepped gable with scrolled side pieces and a hoist beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "a green awning hides the ground storey of the cafe"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

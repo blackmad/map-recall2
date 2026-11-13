@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182545",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182545/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors between the window arches"
+  },
+  {
+   "component": "shopfront",
+   "what": "a timber shopfront with a segmental-headed display window"
+  }
+ ],
+ "notes": "The top is cut off at the cornice.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012172882",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002043_pano_0000_002135.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "A tree trunk and branches cover the middle of the front; the top is hazy behind branches.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

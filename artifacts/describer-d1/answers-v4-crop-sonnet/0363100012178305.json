@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012178305",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178305/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "A white clipped gable with scroll ears frames the attic window."
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

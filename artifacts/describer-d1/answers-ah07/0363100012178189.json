@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012178189",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012178189.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first storey is a continuous band of five windows in light brick, the two storeys above have three windows each in dark red brick"
+  },
+  {
+   "component": "balcony",
+   "what": "a continuous iron balcony on brackets across the second storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark shopfront with a diagonal striped canopy"
+  }
+ ],
+ "notes": "The outline covers two fronts: a modern brick front at the left (described) and a dark painted gabled front at the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

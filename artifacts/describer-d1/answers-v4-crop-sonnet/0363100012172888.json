@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172888",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172888/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "ground",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on the centre window of the first and second floors"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a low triangular pediment on a tapering wall top"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

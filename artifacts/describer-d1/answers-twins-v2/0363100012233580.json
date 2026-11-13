@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012233580",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012233580.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "notes": "Unsure: same cornice, dormers, heads and anchors; right panel is wider (6 axes, two dormers) vs 4 axes."
+}

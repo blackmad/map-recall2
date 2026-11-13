@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012172889",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002968_pano_0000_000179.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white carved panels under the top-storey windows"
+  },
+  {
+   "component": "window",
+   "what": "tall ground storey with white panelled frames and transoms round the door and windows"
+  }
+ ],
+ "notes": "A car hides the base; tree branches cross the neck.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

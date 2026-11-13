@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012176104",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176104/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 1,
+ "windows": "plain",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a wide three-sided bay window rising through two storeys with panelled aprons, covering almost the whole width"
+  }
+ ],
+ "notes": "Top of the front cut off; dusk."
+}

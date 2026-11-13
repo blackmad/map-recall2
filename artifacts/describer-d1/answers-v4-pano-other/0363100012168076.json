@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168076",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002950_pano_0002_000381.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a round-arched attic light raised over the middle of the cornice, three small lights in the frieze"
+  },
+  {
+   "component": "door",
+   "what": "an iron-railed stoop up to the door"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

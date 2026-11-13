@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012170043",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012170043.jpg + artifacts/describer-d1/windows/0363100012170043.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces at the neck shoulders and a small pediment with a hoist beam on top"
+  },
+  {
+   "component": "door",
+   "what": "a tall white-framed bel-etage: a double door under top lights with diamond glazing bars, beside a tall window, up a wide stone stoop"
+  }
+ ],
+ "notes": "Low fisheye view from close by; the upper storeys are foreshortened.",
+ "storeys": 3,
+ "wallFamily": "not-visible",
+ "paneLayout": "single"
+}

@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012170086",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001271.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "raised-neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "bands",
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "light-grey brick arch bands over the first and second storey windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer beside the raised top storey on the left"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

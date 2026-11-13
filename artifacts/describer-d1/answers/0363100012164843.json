@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "ground",
+  "finish",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small balconies with white turned balusters on white console brackets on the left axis of the first three upper storeys"
+  },
+  {
+   "component": "window",
+   "what": "white keystone and springer blocks on every head; top storey has brick relieving arches with patterned tympana"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a gable above the top storey with a round-arched attic window in a white surround"
+  }
+ ],
+ "notes": "Top of the gable is cut off; street door not visible on this front."
+}

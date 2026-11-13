@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177023",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 6,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#423c32"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white corner oriel on the first storey at the left corner"
+  },
+  {
+   "component": "window",
+   "what": "the two centre axes have ornate white pedimented and corniced window heads on the lower two upper storeys"
+  },
+  {
+   "component": "balcony",
+   "what": "two ornamental iron balconettes on the first storey centre windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a large brick dormer with two arched windows and a white pediment over the frieze"
+  },
+  {
+   "component": "shopfront",
+   "what": "three shop bays with white frames and a fascia; the sign is also painted on the white frieze"
+  }
+ ]
+}

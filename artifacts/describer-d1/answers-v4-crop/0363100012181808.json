@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012181808",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181808/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "large white sandstone claw pieces with scrolls and vases flank the neck, with a moulded top and a hoist window"
+  },
+  {
+   "component": "relief",
+   "what": "a small carved gable stone with lettering under the first-floor middle window"
+  }
+ ],
+ "notes": "The ground storey is hidden by a café awning; the right bay is partly cut off.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

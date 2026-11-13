@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "A pale concrete portal frames the ground storey with a deep band over the doors."
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

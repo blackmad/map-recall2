@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012179733",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179733/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "grey",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "doorIndex"
+ ],
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "modern glazed shopfront with a plain rendered fascia storey above carrying the sign"
+  }
+ ],
+ "notes": "Top cut off; first floor is grey render, the storey above has dark piers between wide windows."
+}

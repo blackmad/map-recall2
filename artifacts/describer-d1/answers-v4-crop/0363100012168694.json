@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a central dormer with a small pediment in a glazed mansard roof face"
+  }
+ ],
+ "notes": "A van hides the ground storey; heads list the three visible upper rows.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012173341",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173341.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  4,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber ground-storey frontage with Corinthian pilasters, a row of upper lights and large lower panes"
+  },
+  {
+   "component": "gable ornament",
+   "what": "carved claw pieces at the neck shoulders and a projecting hoist beam at the top"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

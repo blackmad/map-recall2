@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001660_pano_0000_002074.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone tympana with blocked arches over each window in Dutch Renaissance style"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two stepped gables side by side with white scroll ornaments on the steps"
+  },
+  {
+   "component": "shopfront",
+   "what": "a row of small-paned entresol lights across the shop storey"
+  }
+ ],
+ "notes": "Two step-gabled fronts in one wall; described as one, with five axes across both.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

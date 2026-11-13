@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012176272",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176272/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "broad pitched tiled roof behind the cornice"
+  }
+ ],
+ "notes": "A van covers the lower ground storey; lens flare on the cornice."
+}

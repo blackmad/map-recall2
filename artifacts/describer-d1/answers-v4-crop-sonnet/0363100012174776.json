@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174776",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "Carved scrolls and a pediment cap the bell gable, with scroll ears at the shoulders."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

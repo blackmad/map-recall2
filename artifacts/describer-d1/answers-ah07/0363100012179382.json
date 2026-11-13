@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012179382",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "heads",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a round brick arch with a filled tympanum over a first-storey window"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks set in chains up the window reveals and piers"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer in the mansard face above the cornice"
+  }
+ ],
+ "notes": "Steep oblique view; the outline is narrow and the left neighbour's balconette sits at its edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

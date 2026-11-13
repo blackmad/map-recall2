@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174971",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174971/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "3": "sash-6-over-6"
+ },
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "heads",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped slate roof behind the cornice with a central hoist bracket"
+  },
+  {
+   "component": "window",
+   "what": "a row of small attic windows inside the white frieze under the cornice"
+  }
+ ]
+}

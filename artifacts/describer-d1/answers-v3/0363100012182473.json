@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182473/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash-8-over-8",
+ "storeyWindows": {},
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "ground",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "tall small-paned ground storey windows in a dark painted lower wall"
+  },
+  {
+   "component": "relief",
+   "what": "top-right window is filled with a painted tree/figure panel instead of glazing"
+  },
+  {
+   "component": "roof",
+   "what": "long red pantile roof with chimney and small roof hatches"
+  }
+ ],
+ "notes": "Part of a wide front with no visible party walls; a truck hides the base."
+}

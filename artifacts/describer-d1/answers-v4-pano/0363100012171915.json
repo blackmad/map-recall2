@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0006_000039.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "cornice",
+  "sills",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "arched door head with a fanlight on the bel-etage, up a stoop."
+  }
+ ],
+ "notes": "A tree trunk stands in front of the middle axis; top is a raised plain parapet.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012167817",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167817/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 1,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [],
+ "notes": "Very oblique and small; one axis visible, crown unreadable."
+}

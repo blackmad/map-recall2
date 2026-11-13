@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012181820",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181820/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeys",
+  "finish",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "Narrow, blurred crop; top of the front cut off and right edge of the front unclear."
+}

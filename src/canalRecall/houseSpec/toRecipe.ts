@@ -6,7 +6,7 @@
  * maps to an intent source kind and that carries an evidence date. Anything less is the generic route.
  */
 import { validateIntent, type CanalHouseIntent, type IntentSource, SOURCE_KINDS } from '../buildingRecipe/intent.ts';
-import type { HouseSpec, Prov, SpecSource } from './spec.ts';
+import { drawableDesign, type HouseSpec, type Prov, type SpecIgnored, type SpecSource } from './spec.ts';
 
 /** Spec source -> the intent's source kind (sources with no photo or record behind them map to none). */
 export const INTENT_SOURCE_KIND: Partial<Record<SpecSource, typeof SOURCE_KINDS[number]>> = {
@@ -32,16 +32,21 @@ export function intentSources(spec: HouseSpec): IntentSource[] {
   return out;
 }
 
-/** The canal-house intent a complete spec describes, or null when the spec is incomplete or invalid as an intent. */
-export function toRecipe(spec: HouseSpec): CanalHouseIntent | null {
-  const d = spec.design;
-  if (!d?.fronts?.length || !d.roof || !d.palette) return null;
+/** The canal-house intent a complete spec describes (null when incomplete or invalid as an intent), with the spec-only
+ *  values it drew as their nearest intent value (spec.ts drawableDesign: stone -> stucco, pitched-eaves -> cornice with
+ *  cornice none unless stated, pointed -> round, mixed -> no head). `ignored` is empty when the spec states none. */
+export function toRecipeReport(spec: HouseSpec): { intent: CanalHouseIntent | null; ignored: SpecIgnored[] } {
+  const { design: d, ignored } = drawableDesign(spec.design);
+  if (!d?.fronts?.length || !d.roof || !d.palette) return { intent: null, ignored };
   const candidate = {
     schemaVersion: 1, kind: 'canal-house', id: `spec-${spec.pandId}`, pandId: spec.pandId,
     address: spec.address ?? spec.pandId, sources: intentSources(spec), ...structuredClone(d),
   };
-  try { return validateIntent(candidate); } catch { return null; }
+  try { return { intent: validateIntent(candidate), ignored }; } catch { return { intent: null, ignored }; }
 }
+
+/** The canal-house intent a complete spec describes, or null when the spec is incomplete or invalid as an intent. */
+export const toRecipe = (spec: HouseSpec): CanalHouseIntent | null => toRecipeReport(spec).intent;
 
 /** The spec with its derived route (`recipe` iff toRecipe succeeds). */
 export const withRoute = (spec: HouseSpec): HouseSpec => ({ ...spec, route: toRecipe(spec) ? 'recipe' : 'generic' });

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012181773",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0006_000040.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a continuous ribbon of glazing across the upper storey and a clerestory band under the roof"
+  },
+  {
+   "component": "roof",
+   "what": "a long low-pitched grey roof over a modern wide building"
+  }
+ ],
+ "notes": "A modern wide building; the outline covers one section of it.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

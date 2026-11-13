@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176836",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#483b2a"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window with a balustrade on the second storey at the right, carried on brackets"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony under the erker on the first storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a timber-framed point gable with white bargeboards, a finial and decorative struts"
+  },
+  {
+   "component": "window",
+   "what": "yellow brick arch bands outline the round- and segment-headed openings"
+  },
+  {
+   "component": "roof",
+   "what": "a separate roof with a dormer sits beside the gable at the left"
+  }
+ ]
+}

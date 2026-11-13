@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182401/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "ground",
+  "doorBay",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "corner shop entrance under a white stucco arched surround with pilasters"
+  },
+  {
+   "component": "relief",
+   "what": "small white carved keystone masks above each window"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron guard rails across the lower part of the upper windows"
+  }
+ ],
+ "notes": "A leafy tree hides the right two bays."
+}

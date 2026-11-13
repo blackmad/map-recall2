@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012168657",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012168657.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "notes": "Upper storeys partly behind a tree branch."
+}

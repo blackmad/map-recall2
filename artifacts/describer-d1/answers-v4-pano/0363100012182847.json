@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223_3.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "round",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "heads",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a round-arched timber shop window with small panes in the arch, framed by dark tiled pilasters"
+  },
+  {
+   "component": "window",
+   "what": "upper wall shows only two faint bricked-up or blind window recesses"
+  },
+  {
+   "component": "roof",
+   "what": "a steep red tiled roof slope over a white eaves board"
+  }
+ ],
+ "notes": "Low building seen at an angle, mostly blank upper wall; ground storey partly hidden by blurred figures.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

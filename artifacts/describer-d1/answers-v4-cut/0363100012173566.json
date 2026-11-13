@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012173566",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173566.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a narrow blank stair section at the left end with small staggered square windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a wide shop window under a white moulded fascia beside a street door with a transom"
+  }
+ ],
+ "notes": "Corner block seen obliquely from below through a fish-eye; the outline covers the corner and part of the side, so the front's extent is unclear.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

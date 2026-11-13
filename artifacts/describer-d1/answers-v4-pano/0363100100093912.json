@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100100093912",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001551_pano_0000_001029.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "columns": [
+  1
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "one wide opening closed by black panels covered in white graffiti drawings"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white painted sign band with gothic lettering across the wall over the opening"
+  },
+  {
+   "component": "roof",
+   "what": "a plain brick parapet wall with plants growing on top, no upper storey"
+  }
+ ],
+ "notes": "A one-storey walled frontage with no upper storey, so bays and windows have nothing to read.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

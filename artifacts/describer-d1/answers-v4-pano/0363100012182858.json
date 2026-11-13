@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182858",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002356_pano_0005_000167.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "doorBay",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "ground storey of three tall dark timber doors between cream pilasters under a beam"
+  },
+  {
+   "component": "window",
+   "what": "iron wall anchors flank every window"
+  }
+ ],
+ "notes": "Steep upward view; the cornice is foreshortened.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

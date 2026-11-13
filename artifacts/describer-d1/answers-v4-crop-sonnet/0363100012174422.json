@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "Pale ground storey with pilasters and panels under the brick upper floors."
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

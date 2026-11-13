@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174653",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174653/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a wide segmental-arched ground window split into several lights with a row of arched top lights"
+  },
+  {
+   "component": "roof",
+   "what": "a corbelled brick frieze under a white cornice, with a large glazed roof dormer or skylight"
+  },
+  {
+   "component": "window",
+   "what": "low iron railings across the base of the upper windows"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

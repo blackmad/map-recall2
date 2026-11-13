@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012168657",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002445_pano_0011_000115.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stack of small iron balconies on the centre axis, one per upper storey, in front of French doors"
+  },
+  {
+   "component": "roof",
+   "what": "the top storey rises with a curved parapet over the centre while a mansard with dormers continues to the left"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

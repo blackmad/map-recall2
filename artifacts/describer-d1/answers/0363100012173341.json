@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012173341",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173341/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber pui with pilasters and carved capitals, an upper tier of lights and two black doors"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white claw pieces at the neck shoulders and a carved crowning piece"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171324",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171324/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the door sits in a deep recessed stone portal up a stoop with iron railings"
+  },
+  {
+   "component": "window",
+   "what": "brick soldier-course heads over each window"
+  }
+ ],
+ "notes": "Cut off at the top and the left; the front is wider than the frame.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012169902",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/b_20241216_0911_Track06_Sphere_00058.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "storeyWindows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam near the top of a narrow pointed gable with a chimney-like cap"
+  }
+ ],
+ "notes": "Steep angle with overexposed sky; the gable foot sits close to the top storey's window heads.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

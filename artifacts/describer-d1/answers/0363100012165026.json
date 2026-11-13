@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012165026",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165026/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with a single attic window and small top piece"
+  }
+ ],
+ "notes": "Strong low sun washes the colour; wall may be a warmer brick than it reads."
+}

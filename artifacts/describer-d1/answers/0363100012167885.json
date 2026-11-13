@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012167885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167885/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 6,
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "crown",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "upper windows grouped three and three with a wider pier between the groups"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey is a white rendered plinth with doors under gridded transoms and gridded windows"
+  }
+ ],
+ "notes": "A white van hides the right half of the ground storey; the six-bay wall may be two mirrored fronts."
+}

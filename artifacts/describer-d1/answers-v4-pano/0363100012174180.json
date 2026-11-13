@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012174180",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002961_pano_0003_000098.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "cross-transom",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "windowSurround",
+  "ground",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone arch tympana with blocks over the first-floor windows, Dutch Renaissance"
+  },
+  {
+   "component": "shutters",
+   "what": "red painted shutters beside the first-floor windows"
+  },
+  {
+   "component": "window",
+   "what": "very tall leaded ground-storey windows in a long row of narrow lights"
+  },
+  {
+   "component": "relief",
+   "what": "small inset stone tablets in a band between ground and first floor"
+  }
+ ],
+ "notes": "A car and a post hide the lowest storey; one of a pair of identical step gables.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

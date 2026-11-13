@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012090327",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012090327.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Same block and bands as the right, but target is the corner unit with a rounded glazed bay."
+}

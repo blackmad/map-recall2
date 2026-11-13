@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012571534",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012571534/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "heads",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top-floor openings look boarded or closed with only recessed panels"
+  }
+ ],
+ "notes": "Very low-resolution image with a washed-out top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

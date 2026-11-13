@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178392/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved scrolled stone ornaments flank the gable top"
+  }
+ ],
+ "notes": "Very narrow crop, the house is partly cut off at the top and bottom.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

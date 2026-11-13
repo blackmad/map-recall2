@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168758",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168758/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a tiled roof face with a small central dormer behind a tall cream frieze"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

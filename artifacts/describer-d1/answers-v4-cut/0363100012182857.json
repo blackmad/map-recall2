@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182857.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "sash-small-panes",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "stoop",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "windowSurround",
+  "heads",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "two matching step gables side by side, the steps edged with white stone blocks and capped by small pinnacles"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks set in the brick round the window arches and along the floor lines (Renaissance block work)"
+  },
+  {
+   "component": "relief",
+   "what": "a blank stone panel between the second-floor windows of the two halves"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber bank front with small-paned top lights, two doors and a round-arched door"
+  }
+ ],
+ "notes": "One wall carries two identical step gables; described the whole double front because the halves are the same size. The outline also takes in part of the supermarket front to the right.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

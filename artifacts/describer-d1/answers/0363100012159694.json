@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012159694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012159694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "two stacked timber-railed balconies on brackets on the right axis"
+  },
+  {
+   "component": "window",
+   "what": "right axis has a wide paired window in one opening, left axis a single window"
+  },
+  {
+   "component": "dormer",
+   "what": "small gabled dormer with timber ornament above the cornice"
+  }
+ ]
+}

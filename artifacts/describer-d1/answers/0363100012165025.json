@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012165025",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165025/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windowSurround",
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground-storey windows and door have arched heads with fanlights"
+  }
+ ],
+ "notes": "Top of the front cut off by the frame; there may be more storeys and the crown is not shown."
+}

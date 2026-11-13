@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012169252",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169252/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustrade or roof structure with a chimney stands above the cornice"
+  }
+ ],
+ "notes": "Narrow, washed-out crop; only one window axis is fully visible and tree branches cover the top."
+}

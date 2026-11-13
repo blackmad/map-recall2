@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012173051",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002642.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "very tall first-storey windows with Gothic tracery in the top lights"
+  }
+ ],
+ "notes": "Tree leaves and glare hide the top; a young tree stands in front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

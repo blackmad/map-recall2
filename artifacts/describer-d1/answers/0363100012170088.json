@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012170088",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170088/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "blue leaded-glass top lights on the first-floor windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved scroll piece at the gable shoulder"
+  }
+ ],
+ "notes": "Bare tree branches cover the upper front."
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012172886",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white-painted ground storey with a row of three entresol windows above the door and a wide window"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182304",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182304/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "yellow fascia sign with Chinese characters over a glazed shopfront"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with a pitched roof rises behind the cornice"
+  }
+ ],
+ "notes": "Fence, car and a pole hide the ground storey."
+}

@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012172891",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative brick lozenge frieze under the cornice"
+  },
+  {
+   "component": "window",
+   "what": "narrow small window bay at the left of every storey beside three wider windows"
+  },
+  {
+   "component": "dormer",
+   "what": "brick dormer with a segmental small-paned window rising behind the cornice"
+  }
+ ],
+ "notes": "Corner building; the side wall at right is out of frame."
+}

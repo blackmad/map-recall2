@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012168705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "souterrain",
+  "basement",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a single wide paired window in the middle"
+  },
+  {
+   "component": "door",
+   "what": "a door with a tracery fanlight at the right, beside a wide basement opening framed in stone"
+  }
+ ],
+ "notes": "Washed-out, soft crop; a car hides the lower storey; the top is overexposed. [crown from describe cut]",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

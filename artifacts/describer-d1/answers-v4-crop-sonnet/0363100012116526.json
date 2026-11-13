@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground",
+  "doorBay",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "round ring-shaped stone ornaments between windows on the left axis"
+  },
+  {
+   "component": "dormer",
+   "what": "two large boxed dormers with hoist beams above the cornice"
+  }
+ ],
+ "notes": "Wide corner-like front with a shop at left and a raised ground floor with half-sunk windows at right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

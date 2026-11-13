@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012173043",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002990_pano_0012_000106.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "columns",
+  "finish",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small white curved gable top stands behind, perhaps on this house"
+  }
+ ],
+ "notes": "A tree trunk covers the middle of the front; the top is unclear behind branches.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172583.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two carved stone cartouches flank the single centre window of the top storey"
+  },
+  {
+   "component": "shutters",
+   "what": "a small attic window with red-and-white painted shutters sits in the frieze under the cornice"
+  },
+  {
+   "component": "window",
+   "what": "the centre axis windows are wider than the narrow side windows"
+  }
+ ],
+ "notes": "Fish-eye view from below.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

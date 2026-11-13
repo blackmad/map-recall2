@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168703/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a white timber ground storey with an oval-tracery transom over the left door and a wide small-paned window at the right"
+  }
+ ],
+ "notes": "The crop stops above the second upper storey; the top is not in view.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

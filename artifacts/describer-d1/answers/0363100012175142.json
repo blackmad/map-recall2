@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012175142",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175142/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "one grey stone-faced shopfront with a lettered fascia runs under two different upper fronts"
+  }
+ ],
+ "notes": "Two upper fronts over one shared shopfront: a plain brown brick three-axis front (left, described, holds the image centre) and a three-axis front with white stone stripes and arched heads (right). Top cut off."
+}

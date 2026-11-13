@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012171324",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002954_pano_0002_000108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the centre axis carries tall loading doors on the upper storeys, as on a warehouse"
+  },
+  {
+   "component": "roof",
+   "what": "a slate roof behind a white moulded cornice"
+  }
+ ],
+ "notes": "Far and low resolution; a railing crosses the ground storey.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

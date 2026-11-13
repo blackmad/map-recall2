@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012172862",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172862/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "ground",
+  "bands",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "triangular pediments over the first-floor windows and round-arched stucco surrounds on the second floor"
+  },
+  {
+   "component": "relief",
+   "what": "white stucco blocks banding the brick piers between windows, like rustication"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall ornate stucco dormer with pilasters and a finial in the centre of the slate roof"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balconette at the centre first-floor window"
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012172582",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172582/years/2025.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "3": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "columns",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two white-framed round oculus windows flank the single middle window of the top storey, which has an iron balconette"
+  },
+  {
+   "component": "door",
+   "what": "a wide dark double carriage door with oval grilles in the middle and a small house door at each side, under small grilled transom windows"
+  },
+  {
+   "component": "window",
+   "what": "the middle bay windows are wider than the side bay windows"
+  }
+ ],
+ "notes": "The cornice is cut off at the top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

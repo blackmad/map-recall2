@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002356_pano_0003_000083.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice",
+  "sills",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "rusticated stucco quoin blocks down the corner and the party-wall edge"
+  },
+  {
+   "component": "shopfront",
+   "what": "café front with a row of small-paned top lights over large display windows"
+  },
+  {
+   "component": "roof",
+   "what": "a raised parapet with small turrets at the corner top"
+  }
+ ],
+ "notes": "Steep upward view of a corner building, so the top storeys are foreshortened and a hanging street sign crosses the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

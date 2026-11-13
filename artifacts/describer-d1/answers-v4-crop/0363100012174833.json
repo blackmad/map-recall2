@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012174833",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "six-pane"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a hanging sign board projects in front of storeys 1 and 2"
+  }
+ ],
+ "notes": "A tree trunk covers the right side and lens flare sits on the top storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

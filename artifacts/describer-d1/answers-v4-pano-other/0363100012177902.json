@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002863_pano_0002_000029.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "heads",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a rounded corner bay rising through the upper storeys on the left corner."
+  },
+  {
+   "component": "window",
+   "what": "white stone arch bands over the first-floor windows."
+  }
+ ],
+ "notes": "Corner building seen at a slant; a traffic-light pole covers part of the front and blur covers the ground.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

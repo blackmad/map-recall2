@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182401/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "ground",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the right-hand axes have blind or panelled window openings"
+  },
+  {
+   "component": "shopfront",
+   "what": "a stone-framed shop entrance with an arched window at the right of the ground storey"
+  }
+ ],
+ "notes": "A tree hides the right half; wide front, possibly a corner building."
+}

@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012174971",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174971/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "tall plastered frieze band under the cornice with small attic windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "gridded glazed café front with two doors and white pilasters"
+  }
+ ]
+}

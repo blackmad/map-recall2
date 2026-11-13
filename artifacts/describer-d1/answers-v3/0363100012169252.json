@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012169252",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169252/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "cornice",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a balustrade or roof structure stands behind the cornice"
+  }
+ ],
+ "notes": "Very narrow, blurred crop with a tree and string lights across the front; the right side is cut off."
+}

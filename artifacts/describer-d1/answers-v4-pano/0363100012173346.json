@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012173346",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002648.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "finish",
+  "heads",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "small neck top with a hoist window and a carved claw piece on the right"
+  }
+ ],
+ "notes": "Strong backlight and a tree on the right edge.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

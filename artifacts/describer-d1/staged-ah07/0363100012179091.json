@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179091",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#60534b"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179091.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "white stone blocks set into the brick over each window head and at the arch springings"
+  },
+  {
+   "component": "dormer",
+   "what": "a white pedimented dormer with a hoist beam on the roof"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012174970",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174970/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "grey",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "wallFamily",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "red-painted cafe front with horizontal louvred fascia panels"
+  }
+ ],
+ "notes": "Terrace railing and furniture obscure the ground storey."
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012172862",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172862/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "heads",
+  "windowSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a round-headed window on the mansard roof"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony in front of the middle bel-etage window"
+  },
+  {
+   "component": "relief",
+   "what": "pilasters with carved capitals and pedimented window hoods on the first floor"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

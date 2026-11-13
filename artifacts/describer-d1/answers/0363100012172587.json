@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012172587",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172587/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with a pointed pediment over the cornice"
+  }
+ ],
+ "notes": "Very narrow, small image; details read at low resolution."
+}

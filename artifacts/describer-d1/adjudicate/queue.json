@@ -1,0 +1,812 @@
+{
+ "v": 1,
+ "answers": "artifacts/describer-d1/answers",
+ "n": 75,
+ "cells": 102,
+ "rows": [
+  {
+   "pandId": "0363100012167695",
+   "fields": [
+    "bays",
+    "head",
+    "bands"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "flat",
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167695.jpg"
+  },
+  {
+   "pandId": "0363100012167689",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "cornice"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167689.jpg"
+  },
+  {
+   "pandId": "0363100012176493",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176493.jpg"
+  },
+  {
+   "pandId": "0363100012176480",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 5
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176480.jpg"
+  },
+  {
+   "pandId": "0363100012176487",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "neck"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176487.jpg"
+  },
+  {
+   "pandId": "0363100012176478",
+   "fields": [
+    "finish"
+   ],
+   "describer": {
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176478.jpg"
+  },
+  {
+   "pandId": "0363100012176482",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "neck"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176482.jpg"
+  },
+  {
+   "pandId": "0363100012165025",
+   "fields": [
+    "finish"
+   ],
+   "describer": {
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012165025.jpg"
+  },
+  {
+   "pandId": "0363100012165024",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 5
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012165024.jpg"
+  },
+  {
+   "pandId": "0363100012169073",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "cornice"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012169073.jpg"
+  },
+  {
+   "pandId": "0363100012169072",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012169072.jpg"
+  },
+  {
+   "pandId": "0363100012172425",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 7
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172425.jpg"
+  },
+  {
+   "pandId": "0363100012179048",
+   "fields": [
+    "crown",
+    "finish"
+   ],
+   "describer": {
+    "crown": "cornice",
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012179048.jpg"
+  },
+  {
+   "pandId": "0363100012167496",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 6
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167496.jpg"
+  },
+  {
+   "pandId": "0363100012176272",
+   "fields": [
+    "finish"
+   ],
+   "describer": {
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176272.jpg"
+  },
+  {
+   "pandId": "0363100012176273",
+   "fields": [
+    "storeys",
+    "finish"
+   ],
+   "describer": {
+    "storeys": 4,
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176273.jpg"
+  },
+  {
+   "pandId": "0363100012169011",
+   "fields": [
+    "storeys",
+    "crown"
+   ],
+   "describer": {
+    "storeys": 3,
+    "crown": "mansard"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012169011.jpg"
+  },
+  {
+   "pandId": "0363100012176276",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "cornice"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176276.jpg"
+  },
+  {
+   "pandId": "0363100012176275",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176275.jpg"
+  },
+  {
+   "pandId": "0363100012175038",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 1
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175038.jpg"
+  },
+  {
+   "pandId": "0363100012175039",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175039.jpg"
+  },
+  {
+   "pandId": "0363100012176003",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "pitched-eaves"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176003.jpg"
+  },
+  {
+   "pandId": "0363100012176013",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 6
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176013.jpg"
+  },
+  {
+   "pandId": "0363100012176005",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176005.jpg"
+  },
+  {
+   "pandId": "0363100012168815",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012168815.jpg"
+  },
+  {
+   "pandId": "0363100012172953",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172953.jpg"
+  },
+  {
+   "pandId": "0363100012172588",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "pitched-eaves"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172588.jpg"
+  },
+  {
+   "pandId": "0363100012172874",
+   "fields": [
+    "bands"
+   ],
+   "describer": {
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172874.jpg"
+  },
+  {
+   "pandId": "0363100012172617",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172617.jpg"
+  },
+  {
+   "pandId": "0363100012172865",
+   "fields": [
+    "bands"
+   ],
+   "describer": {
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172865.jpg"
+  },
+  {
+   "pandId": "0363100012172672",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172672.jpg"
+  },
+  {
+   "pandId": "0363100012172878",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012172878.jpg"
+  },
+  {
+   "pandId": "0363100012177902",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "mansard"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012177902.jpg"
+  },
+  {
+   "pandId": "0363100012181817",
+   "fields": [
+    "bands"
+   ],
+   "describer": {
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012181817.jpg"
+  },
+  {
+   "pandId": "0363100012182303",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 4
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182303.jpg"
+  },
+  {
+   "pandId": "0363100012182302",
+   "fields": [
+    "head",
+    "bands"
+   ],
+   "describer": {
+    "head": "mixed",
+    "bands": true
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182302.jpg"
+  },
+  {
+   "pandId": "0363100012181808",
+   "fields": [
+    "storeys",
+    "bays",
+    "crown"
+   ],
+   "describer": {
+    "storeys": 5,
+    "bays": 3,
+    "crown": "neck"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012181808.jpg"
+  },
+  {
+   "pandId": "0363100012182858",
+   "fields": [
+    "storeys",
+    "bays"
+   ],
+   "describer": {
+    "storeys": 3,
+    "bays": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182858.jpg"
+  },
+  {
+   "pandId": "0363100012182855",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182855.jpg"
+  },
+  {
+   "pandId": "0363100012182587",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 4
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182587.jpg"
+  },
+  {
+   "pandId": "0363100012182853",
+   "fields": [
+    "crown",
+    "head"
+   ],
+   "describer": {
+    "crown": "point",
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182853.jpg"
+  },
+  {
+   "pandId": "0363100012182852",
+   "fields": [
+    "bays",
+    "crown",
+    "bands"
+   ],
+   "describer": {
+    "bays": 2,
+    "crown": "point",
+    "bands": true
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012182852.jpg"
+  },
+  {
+   "pandId": "0363100012176103",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012176103.jpg"
+  },
+  {
+   "pandId": "0363100012167816",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167816.jpg"
+  },
+  {
+   "pandId": "0363100012167819",
+   "fields": [
+    "bays",
+    "bands"
+   ],
+   "describer": {
+    "bays": 2,
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167819.jpg"
+  },
+  {
+   "pandId": "0363100012167820",
+   "fields": [
+    "storeys"
+   ],
+   "describer": {
+    "storeys": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167820.jpg"
+  },
+  {
+   "pandId": "0363100012167821",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167821.jpg"
+  },
+  {
+   "pandId": "0363100012177657",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012177657.jpg"
+  },
+  {
+   "pandId": "0363100012177674",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "round"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012177674.jpg"
+  },
+  {
+   "pandId": "0363100012177584",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012177584.jpg"
+  },
+  {
+   "pandId": "0363100012175206",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175206.jpg"
+  },
+  {
+   "pandId": "0363100012175141",
+   "fields": [
+    "bands"
+   ],
+   "describer": {
+    "bands": true
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175141.jpg"
+  },
+  {
+   "pandId": "0363100012175142",
+   "fields": [
+    "bays",
+    "bands"
+   ],
+   "describer": {
+    "bays": 3,
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175142.jpg"
+  },
+  {
+   "pandId": "0363100012175143",
+   "fields": [
+    "finish"
+   ],
+   "describer": {
+    "finish": "painted-brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175143.jpg"
+  },
+  {
+   "pandId": "0363100012175144",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012175144.jpg"
+  },
+  {
+   "pandId": "0363100012167538",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012167538.jpg"
+  },
+  {
+   "pandId": "0363100012168428",
+   "fields": [
+    "storeys",
+    "crown"
+   ],
+   "describer": {
+    "storeys": 4,
+    "crown": "neck"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012168428.jpg"
+  },
+  {
+   "pandId": "0363100012179735",
+   "fields": [
+    "bands"
+   ],
+   "describer": {
+    "bands": true
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012179735.jpg"
+  },
+  {
+   "pandId": "0363100012236491",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 3
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012236491.jpg"
+  },
+  {
+   "pandId": "0363100012160768",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 3,
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012160768.jpg"
+  },
+  {
+   "pandId": "0363100012156969",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012156969.jpg"
+  },
+  {
+   "pandId": "0363100012159351",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012159351.jpg"
+  },
+  {
+   "pandId": "0363100012160871",
+   "fields": [
+    "bays"
+   ],
+   "describer": {
+    "bays": 2
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012160871.jpg"
+  },
+  {
+   "pandId": "0363100012233589",
+   "fields": [
+    "bays",
+    "bands"
+   ],
+   "describer": {
+    "bays": 4,
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012233589.jpg"
+  },
+  {
+   "pandId": "0363100012236886",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012236886.jpg"
+  },
+  {
+   "pandId": "0363100012237261",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012237261.jpg"
+  },
+  {
+   "pandId": "0363100012236982",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012236982.jpg"
+  },
+  {
+   "pandId": "0363100012166034",
+   "fields": [
+    "crown"
+   ],
+   "describer": {
+    "crown": "cornice"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012166034.jpg"
+  },
+  {
+   "pandId": "0363100012165141",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012165141.jpg"
+  },
+  {
+   "pandId": "0363100012160838",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012160838.jpg"
+  },
+  {
+   "pandId": "0363100012237297",
+   "fields": [
+    "head"
+   ],
+   "describer": {
+    "head": "flat"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012237297.jpg"
+  },
+  {
+   "pandId": "0363100012236953",
+   "fields": [
+    "head",
+    "finish"
+   ],
+   "describer": {
+    "head": "flat",
+    "finish": "brick"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012236953.jpg"
+  },
+  {
+   "pandId": "0363100012156816",
+   "fields": [
+    "bays",
+    "head",
+    "bands"
+   ],
+   "describer": {
+    "bays": 4,
+    "head": "segmental",
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012156816.jpg"
+  },
+  {
+   "pandId": "0363100012164843",
+   "fields": [
+    "bays",
+    "head"
+   ],
+   "describer": {
+    "bays": 2,
+    "head": "mixed"
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012164843.jpg"
+  },
+  {
+   "pandId": "0363100012116526",
+   "fields": [
+    "bays",
+    "head",
+    "bands"
+   ],
+   "describer": {
+    "bays": 4,
+    "head": "flat",
+    "bands": false
+   },
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/adjudicate/images/0363100012116526.jpg"
+  }
+ ]
+}

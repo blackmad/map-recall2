@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174187",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  3,
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "Two projecting white bay windows run over two storeys on the left and right."
+  },
+  {
+   "component": "balcony",
+   "what": "Small iron-railed balconies in front of the top-storey windows."
+  }
+ ],
+ "notes": "Looks like two matching halves of one wide front; described the whole.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

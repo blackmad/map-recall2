@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174781/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters close the middle opening of storey 2 and the attic window"
+  },
+  {
+   "component": "window",
+   "what": "red-painted sashes inside white frames"
+  }
+ ],
+ "notes": "The top of the gable is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

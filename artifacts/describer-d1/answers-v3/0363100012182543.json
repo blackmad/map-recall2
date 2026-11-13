@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182543/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "2": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "ground",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a stone date tablet lettered ANNO set in the wall beside the first-floor window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a stone scroll on the left shoulder where the gable rises"
+  }
+ ],
+ "notes": "The top of the gable and the right edge of the front are cut off."
+}

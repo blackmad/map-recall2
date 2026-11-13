@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012167885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167885/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 6,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a white plastered band with doors under small-paned transom lights"
+  }
+ ],
+ "notes": "A van hides the right of the ground storey; the front may continue to the right beyond the crop, windows grouped three and three."
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012172576",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002445_pano_0008_000186.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "1": "sash-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved claw pieces at both gable shoulders and a scrolled cap"
+  },
+  {
+   "component": "door",
+   "what": "tall ground storey with gridded top lights over a central pair of glazed doors, flanked by two street doors, between cream pilasters"
+  }
+ ],
+ "notes": "A parked car hides the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

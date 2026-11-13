@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012174778",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174778/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [
+  "segmental"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "low": [
+  "crown",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "window heads under arches of alternating white and red voussoirs"
+  }
+ ],
+ "notes": "The front is wrapped in scaffolding with workers on it; storeys and windows cannot be read."
+}

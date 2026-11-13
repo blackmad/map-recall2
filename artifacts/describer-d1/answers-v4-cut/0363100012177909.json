@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012177909",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012177909.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "heads",
+  "windowSurround",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks alternate with brick along the window jambs and white keystones and springers dress segmental brick arches over each window"
+  },
+  {
+   "component": "shopfront",
+   "what": "an ochre-painted carved timber shopfront with scrolled pilasters, a glazed transom row and a panelled street door at the left"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a raised attic over the cornice with a central round-arched window and a hoist beam"
+  }
+ ],
+ "notes": "Very wide-angle oblique view from below; the top storeys are foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

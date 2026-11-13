@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012160768",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160768/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "bands",
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall dormer with hoist beam behind the cornice"
+  }
+ ],
+ "notes": "Front cut at the left edge; low resolution; arches over the windows with light blocks are hard to read."
+}

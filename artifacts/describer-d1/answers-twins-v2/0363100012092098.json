@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012092098",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012092098.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "notes": "Continuous uniform shop-and-flats block; panel boundaries cut window pairs, mirroring unclear."
+}

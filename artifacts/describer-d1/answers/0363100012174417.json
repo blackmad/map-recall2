@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2017,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "doorBay",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door under an ornamental fanlight with open circle tracery"
+  }
+ ],
+ "notes": "Sun glare washes out the middle storeys; a houseboat hides the base."
+}

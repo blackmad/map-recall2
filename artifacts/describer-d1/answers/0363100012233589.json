@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012233589",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012233589/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windowSurround",
+  "cornice",
+  "windows",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks at the corners and centre of each flat window head, like a broken lintel"
+  },
+  {
+   "component": "dormer",
+   "what": "two dormers with small pointed pediments rising behind the cornice"
+  },
+  {
+   "component": "roof",
+   "what": "grey metal mansard-like roof face behind the cornice between the dormers"
+  }
+ ],
+ "notes": "Middle front has four window axes and two dormers; it may be two matching two-bay houses."
+}

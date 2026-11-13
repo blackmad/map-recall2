@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012167682",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167682/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "coffee-shop front with a gold-lettered fascia under a projecting brick canopy and wall lanterns"
+  }
+ ],
+ "notes": "Oblique close view; the image middle falls on the corner between a modern brick block (right, top cut off) and an older gabled brick house with a tiled roof (left). Described the modern block; the older house may be the intended front."
+}

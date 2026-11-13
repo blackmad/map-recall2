@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012178199",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012178199.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a shop fascia with lettering and a striped awning over the ground storey"
+  },
+  {
+   "component": "dormer",
+   "what": "one wide dormer in a steep roof behind the cornice"
+  }
+ ],
+ "notes": "A site cabin and fencing hide the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012181817",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181817/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "tall ground storey with a row of small-paned entresol windows over wide double doors with ATMs, framed by white timber posts and a white fascia beam"
+  },
+  {
+   "component": "window",
+   "what": "white outer frames with dark-painted small-paned sashes and low iron railings at the sills"
+  }
+ ],
+ "notes": "Top of the front cut off just above the top windows. [crown from describe cut]",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

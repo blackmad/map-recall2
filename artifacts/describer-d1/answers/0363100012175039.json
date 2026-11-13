@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012175039",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175039/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer in the tiled roof behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "stoop with an iron railing up to the left-hand door"
+  }
+ ]
+}

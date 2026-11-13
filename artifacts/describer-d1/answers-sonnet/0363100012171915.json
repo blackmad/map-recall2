@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171915/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "arched doorway with shell fanlight at the head of a side stoop"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron balustrade at the middle window of the top storey"
+  }
+ ],
+ "notes": "Top of the crown is cut off; shrub hides part of the ground right."
+}

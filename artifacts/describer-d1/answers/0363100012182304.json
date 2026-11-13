@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182304",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182304/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer in the roof behind the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a yellow lettered sign board over the shopfront"
+  }
+ ],
+ "notes": "Ground storey behind a fence and a car."
+}

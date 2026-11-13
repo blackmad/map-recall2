@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012172676",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172676/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "columns",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with pilasters, two display windows and two doors, a plain fascia and a dark plinth"
+  }
+ ],
+ "notes": "Oblique dusk view; the cornice line is foreshortened."
+}

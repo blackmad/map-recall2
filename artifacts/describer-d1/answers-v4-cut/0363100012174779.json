@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174779",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174779.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a narrow fascia with lettering runs over the ground storey and the ground windows carry decorative white iron grilles"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small cornice cap on the narrow gable top with a hoist beam below"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

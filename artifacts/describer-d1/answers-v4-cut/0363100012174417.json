@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174417.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [],
+ "notes": "A café umbrella and its pole cover most of the front; the top is cut by glare and the ground storey is hidden.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

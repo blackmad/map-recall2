@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012177934",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177934/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround"
+ ],
+ "gaps": [],
+ "notes": "The top of the front is cut off.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

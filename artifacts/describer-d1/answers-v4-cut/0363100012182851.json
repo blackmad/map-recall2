@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182851",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182851.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with a white round-arched pediment cap and vases on the shoulders, one window in the neck"
+  },
+  {
+   "component": "window",
+   "what": "the top storey has three small windows over two wide windows on the storeys below"
+  }
+ ],
+ "notes": "Soft image; a box hides the lower right of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

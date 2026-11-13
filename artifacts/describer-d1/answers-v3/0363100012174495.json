@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174495",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174495/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "ground",
+  "wallFamily",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "sculpted crest on top of the gable and scroll pieces at the shoulders"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey is a light rendered or stone frontage with tall windows"
+  }
+ ],
+ "notes": "Very narrow, low-resolution crop; crown shape between bell and neck."
+}

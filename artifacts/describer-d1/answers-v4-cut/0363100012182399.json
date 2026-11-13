@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182399.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "storeyWindows",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white-edged bell gable outline with one small window high in the bell"
+  }
+ ],
+ "notes": "The outline straddles the bell-gable front and the brick front to its right; a road sign hides the left of the gable and a van the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

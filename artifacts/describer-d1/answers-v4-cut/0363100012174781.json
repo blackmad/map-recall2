@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174781.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a taller centre hoist window dropping below its two neighbours, the storey below has only two wide windows"
+  },
+  {
+   "component": "door",
+   "what": "a red double door under a toplight with a diamond glazing pattern"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces and a scrolled crowning cap on the neck gable"
+  }
+ ],
+ "notes": "Low sun glare and tree shadows across the upper front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182580",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182580/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "finish",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "dark green sashes inside white frames"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with tracery fanlights over the side door and window and a lettered fascia"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

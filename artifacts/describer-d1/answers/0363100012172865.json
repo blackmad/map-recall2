@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012172865",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172865/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "crown",
+  "wallFamily",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a hoisting dormer with a small gable over the cornice"
+  }
+ ],
+ "notes": "Very narrow, low-resolution image seen obliquely; a clothes rack and a sign partly hide the ground storey."
+}

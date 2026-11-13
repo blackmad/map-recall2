@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012171919",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171919/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "three oval attic windows in the white frieze under the cornice"
+  },
+  {
+   "component": "cornice",
+   "what": "the cornice is carried on small modillion blocks"
+  },
+  {
+   "component": "door",
+   "what": "a varnished wooden door with a carved fanlight in a white stucco ground storey"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "v": 1,
+ "answers": 194,
+ "readable": 185,
+ "staged": 194,
+ "inheritedFronts": 0,
+ "inheritedFields": {},
+ "notVisibleRate": 0.106,
+ "answerCoverage": {
+  "storeys": 0.914,
+  "bays": 0.951,
+  "windows": 0.93,
+  "heads": 0.941,
+  "bands": 0.935,
+  "windowSurround": 0.946,
+  "sills": 0.935,
+  "doorBay": 0.697,
+  "ground": 0.87,
+  "basement": 0.735,
+  "crown": 0.854,
+  "cornice": 0.838,
+  "finish": 0.984,
+  "pale": 0.984
+ },
+ "specFieldCoverage": {
+  "facts/pui": 0.87,
+  "fronts/*/bands": 0.497,
+  "fronts/*/bays": 0.951,
+  "fronts/*/cornice": 0.108,
+  "fronts/*/gable": 0.443,
+  "fronts/*/souterrain": 0.168,
+  "fronts/*/storeys": 0.914,
+  "fronts/*/windowHead": 0.676,
+  "palette/brick": 1,
+  "palette/wallMaterial": 0.984
+ },
+ "problems": {}
+}

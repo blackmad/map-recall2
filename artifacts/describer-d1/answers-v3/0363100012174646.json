@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "thin projecting flat roof edge carried on dark brick corbel brackets between the bays"
+  },
+  {
+   "component": "door",
+   "what": "wide white-rendered ground-storey frame with a central pair of glazed doors and a door in each side bay"
+  }
+ ],
+ "notes": "Modern dark-brick infill; the top-storey windows are set in recessed panels between brick piers."
+}

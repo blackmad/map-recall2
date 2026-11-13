@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012171710",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171710/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "consoles",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "sills",
+  "doorBay",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small dormer on the roof above a deep plain frieze cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

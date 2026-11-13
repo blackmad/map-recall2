@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182580",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182580/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "wallFamily",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a fascia, large central display window and fanlights with radiating glazing bars over the side openings"
+  },
+  {
+   "component": "dormer",
+   "what": "a white dormer above the cornice, cut off at the top"
+  }
+ ],
+ "notes": "Window frames are dark green with white surrounds; the cornice is a deep white entablature."
+}

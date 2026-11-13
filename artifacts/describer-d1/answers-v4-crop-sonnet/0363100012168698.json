@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012168698",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168698/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round window with cross-bar tracery in the door transom area"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

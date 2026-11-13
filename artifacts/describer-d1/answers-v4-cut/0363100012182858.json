@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012182858",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182858.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "ground",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber posts framing dark panelled doors and a boarded opening under small top lights"
+  },
+  {
+   "component": "roof",
+   "what": "small white cornice with a hoist beam"
+  }
+ ],
+ "notes": "Extreme upward oblique view; the top storeys are strongly foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182850",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182850/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small tiled hip roof is visible behind the cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

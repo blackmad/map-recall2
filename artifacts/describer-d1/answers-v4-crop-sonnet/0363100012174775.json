@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012174775",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174775/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "bays",
+  "finish",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "A pedimented dormer sits above a pale cornice."
+  }
+ ],
+ "notes": "A tree hides most of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

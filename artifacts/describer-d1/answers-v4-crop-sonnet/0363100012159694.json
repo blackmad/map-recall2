@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012159694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012159694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "two white timber balconies with balustrades on brackets on the right axis"
+  },
+  {
+   "component": "dormer",
+   "what": "a gabled dormer with decorative timberwork above the cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

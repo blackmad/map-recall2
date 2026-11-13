@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012168613",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168613/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "3": "sash-9-over-9"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balcony railings at the middle-axis doors of the top storey and the gable attic"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white curved claw pieces at the foot of a neck whose top is cut off"
+  }
+ ],
+ "notes": "The top of the neck is cut off by the frame.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

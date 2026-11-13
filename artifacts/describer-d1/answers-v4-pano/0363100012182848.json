@@ -1,0 +1,38 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002031_pano_0000_000034.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "The outlined area shows lamp and signal poles in front of a brick side wall with one window and a tiled roof slope; no street front of this building can be read from this angle.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

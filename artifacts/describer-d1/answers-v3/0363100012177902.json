@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 5,
+ "columns": [
+  4,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white plastered pilaster strips with rusticated banding between the window axes"
+  },
+  {
+   "component": "dormer",
+   "what": "two small dormers in the slate mansard"
+  }
+ ],
+ "notes": "Neo-renaissance front with white stucco bands; first and second floor windows have arched heads with white keystones."
+}

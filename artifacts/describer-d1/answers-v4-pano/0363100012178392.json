@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002973_pano_0000_000108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "1": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "storeyWindows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey and the first floor are clad in a pale plaster or timber frame with wide multi-paned windows, joined with the right neighbour's."
+  }
+ ],
+ "notes": "A large tree covers the left side and the gable top; building-site fencing in front of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

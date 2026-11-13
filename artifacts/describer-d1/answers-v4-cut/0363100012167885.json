@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012167885",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012167885.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  5,
+  6,
+  6,
+  6
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the six axes are grouped three and three with a wider pier in the middle"
+  },
+  {
+   "component": "shopfront",
+   "what": "white-painted ground storey frame with three red doors with top lights and wide multi-pane windows"
+  }
+ ],
+ "notes": "A parking sign covers part of the right axes.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

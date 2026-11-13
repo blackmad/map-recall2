@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001540_pano_0000_001137.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "finish",
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small white balustraded balconies stacked on the middle axis of each upper storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a stepped dark gable with a central pinnacle-like crown"
+  }
+ ],
+ "notes": "Very dark front against the sky; window details lost.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

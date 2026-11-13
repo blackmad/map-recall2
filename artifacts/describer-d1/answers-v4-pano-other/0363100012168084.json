@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012168084",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002950_pano_0002_000381.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white timber ground storey with a row of small entresol lights and a gridded transom over the door"
+  }
+ ],
+ "notes": "A car hides the lower ground storey; bare branches cross the top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

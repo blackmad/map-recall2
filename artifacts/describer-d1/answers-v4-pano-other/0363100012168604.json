@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012168604",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001271.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bands",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "step gable with light stone blocks at the steps and a small hatch window near the top"
+  },
+  {
+   "component": "relief",
+   "what": "small carved stone panels between the first and second storey windows"
+  }
+ ],
+ "notes": "The numbered outlines sit about half a front left of the houses; I took front 1 as the step-gable house.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

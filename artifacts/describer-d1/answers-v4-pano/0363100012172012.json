@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012172012",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001547_pano_0000_000571.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "finish",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "green-painted steel or timber windows set between plain pilasters, with recessed spandrel panels between the storeys."
+  },
+  {
+   "component": "roof",
+   "what": "a red-tiled gable edge is visible at the top but cut off by the image."
+  }
+ ],
+ "notes": "The outline covers only the right part of a wide sand-coloured 20th-century front; the top is cut off and the view is steep and oblique.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

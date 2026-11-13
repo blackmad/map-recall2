@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012171705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "Heavy tree shadow, scaffold and hoarding hide the ground storey and the top.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,498 @@
+{
+ "v": 1,
+ "positives": 21,
+ "rows": [
+  {
+   "pandId": "0363100012157426",
+   "left": null,
+   "right": {
+    "id": "0363100012160273",
+    "twin": true
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012157426.jpg"
+  },
+  {
+   "pandId": "0363100012160273",
+   "left": {
+    "id": "0363100012157426",
+    "twin": true
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012160273.jpg"
+  },
+  {
+   "pandId": "0363100012167951",
+   "left": {
+    "id": "0363100012167952",
+    "twin": true
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012167951.jpg"
+  },
+  {
+   "pandId": "0363100012167952",
+   "left": null,
+   "right": {
+    "id": "0363100012167951",
+    "twin": true
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012167952.jpg"
+  },
+  {
+   "pandId": "0363100012168657",
+   "left": {
+    "id": "0363100012168761",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012168694",
+    "twin": false
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168657.jpg"
+  },
+  {
+   "pandId": "0363100012168760",
+   "left": {
+    "id": "0363100012172886",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012168761",
+    "twin": false
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168760.jpg"
+  },
+  {
+   "pandId": "0363100012168761",
+   "left": {
+    "id": "0363100012168760",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012168657",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168761.jpg"
+  },
+  {
+   "pandId": "0363100012172610",
+   "left": null,
+   "right": {
+    "id": "0363100012172620",
+    "twin": true
+   },
+   "mirrored": false,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172610.jpg"
+  },
+  {
+   "pandId": "0363100012172620",
+   "left": {
+    "id": "0363100012172610",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012172618",
+    "twin": false
+   },
+   "mirrored": false,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172620.jpg"
+  },
+  {
+   "pandId": "0363100012172884",
+   "left": {
+    "id": "0363100012172885",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012172883",
+    "twin": false
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172884.jpg"
+  },
+  {
+   "pandId": "0363100012172885",
+   "left": {
+    "id": "0363100012172693",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012172884",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172885.jpg"
+  },
+  {
+   "pandId": "0363100012172886",
+   "left": {
+    "id": "0363100012172887",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012168760",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172886.jpg"
+  },
+  {
+   "pandId": "0363100012174974",
+   "left": {
+    "id": "0363100012174975",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012174972",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174974.jpg"
+  },
+  {
+   "pandId": "0363100012174975",
+   "left": {
+    "id": "0363100012174976",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012174974",
+    "twin": true
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174975.jpg"
+  },
+  {
+   "pandId": "0363100012174976",
+   "left": {
+    "id": "0363100012174977",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012174975",
+    "twin": false
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174976.jpg"
+  },
+  {
+   "pandId": "0363100012174977",
+   "left": {
+    "id": "0363100012174968",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012174976",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174977.jpg"
+  },
+  {
+   "pandId": "0363100012181817",
+   "left": null,
+   "right": {
+    "id": "0363100012182303",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012181817.jpg"
+  },
+  {
+   "pandId": "0363100012181818",
+   "left": {
+    "id": "0363100012182303",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012182302",
+    "twin": false
+   },
+   "mirrored": false,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012181818.jpg"
+  },
+  {
+   "pandId": "0363100012182303",
+   "left": {
+    "id": "0363100012181817",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012181818",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182303.jpg"
+  },
+  {
+   "pandId": "0363100012182371",
+   "left": {
+    "id": "0363100012182372",
+    "twin": true
+   },
+   "right": {
+    "id": "0363100012165690",
+    "twin": false
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182371.jpg"
+  },
+  {
+   "pandId": "0363100012182372",
+   "left": {
+    "id": "0363100012182370",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012182371",
+    "twin": true
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182372.jpg"
+  },
+  {
+   "pandId": "0363100012165000",
+   "left": {
+    "id": "0363100012174978",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012165000.jpg"
+  },
+  {
+   "pandId": "0363100012168613",
+   "left": {
+    "id": "0363100012168605",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168613.jpg"
+  },
+  {
+   "pandId": "0363100012168694",
+   "left": {
+    "id": "0363100012168657",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012168693",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168694.jpg"
+  },
+  {
+   "pandId": "0363100012168749",
+   "left": {
+    "id": "0363100012173045",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012168758",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012168749.jpg"
+  },
+  {
+   "pandId": "0363100012170088",
+   "left": {
+    "id": "0363100012170093",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012170089",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012170088.jpg"
+  },
+  {
+   "pandId": "0363100012170932",
+   "left": null,
+   "right": {
+    "id": "0363100012170933",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012170932.jpg"
+  },
+  {
+   "pandId": "0363100012171643",
+   "left": {
+    "id": "0363100012182638",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012171643.jpg"
+  },
+  {
+   "pandId": "0363100012171761",
+   "left": {
+    "id": "0363100012171491",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012171761.jpg"
+  },
+  {
+   "pandId": "0363100012172618",
+   "left": {
+    "id": "0363100012172620",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012173424",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172618.jpg"
+  },
+  {
+   "pandId": "0363100012172882",
+   "left": {
+    "id": "0363100012172883",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012172882.jpg"
+  },
+  {
+   "pandId": "0363100012173044",
+   "left": {
+    "id": "0363100012172862",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012168709",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012173044.jpg"
+  },
+  {
+   "pandId": "0363100012173348",
+   "left": {
+    "id": "0363100012173346",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012173349",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012173348.jpg"
+  },
+  {
+   "pandId": "0363100012174415",
+   "left": null,
+   "right": {
+    "id": "0363100012174416",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174415.jpg"
+  },
+  {
+   "pandId": "0363100012174704",
+   "left": {
+    "id": "0363100012174775",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012174967",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174704.jpg"
+  },
+  {
+   "pandId": "0363100012174780",
+   "left": null,
+   "right": {
+    "id": "0363100012174779",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174780.jpg"
+  },
+  {
+   "pandId": "0363100012174967",
+   "left": {
+    "id": "0363100012174704",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012174965",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174967.jpg"
+  },
+  {
+   "pandId": "0363100012174979",
+   "left": {
+    "id": "0363100012174972",
+    "twin": false
+   },
+   "right": {
+    "id": "0363100012174978",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012174979.jpg"
+  },
+  {
+   "pandId": "0363100012177935",
+   "left": {
+    "id": "0363100012177909",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012177935.jpg"
+  },
+  {
+   "pandId": "0363100012182248",
+   "left": {
+    "id": "0363100012171915",
+    "twin": false
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182248.jpg"
+  },
+  {
+   "pandId": "0363100012182375",
+   "left": null,
+   "right": {
+    "id": "0363100012182379",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182375.jpg"
+  },
+  {
+   "pandId": "0363100012182707",
+   "left": null,
+   "right": {
+    "id": "0363100012182708",
+    "twin": false
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images/0363100012182707.jpg"
+  }
+ ]
+}

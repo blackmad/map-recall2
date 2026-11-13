@@ -1,0 +1,942 @@
+{
+ "v": 2,
+ "about": "twin truth v2: designed block-face modules + PR1 similar party pairs (twins-v2.ts header)",
+ "positives": 30,
+ "negatives": 30,
+ "summary": {
+  "block-face": {
+   "rows": 48,
+   "positive": 28,
+   "negative": 20
+  },
+  "party-pair": {
+   "rows": 12,
+   "positive": 2,
+   "negative": 10
+  },
+  "mirroredKnown": 12,
+  "mirroredTrue": 12
+ },
+ "rows": [
+  {
+   "pandId": "0363100012168657",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012168761",
+    "twin": true,
+    "why": "similar, spec labels agree"
+   },
+   "right": {
+    "id": "0363100012168694",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012168657.jpg"
+  },
+  {
+   "pandId": "0363100012168761",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012168760",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "right": {
+    "id": "0363100012168657",
+    "twin": true,
+    "why": "similar, spec labels agree"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012168761.jpg"
+  },
+  {
+   "pandId": "0363100012138669",
+   "source": "block-face",
+   "face": "evertsen-145-155",
+   "left": {
+    "id": "0363100012082977",
+    "twin": false,
+    "why": "differ: storeys, gable, bays"
+   },
+   "right": {
+    "id": "0363100012092062",
+    "twin": true,
+    "why": "module type:evertsen-1927-white-attic-tile-roof|crown:tile-roof|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012138669.jpg"
+  },
+  {
+   "pandId": "0363100012092062",
+   "source": "block-face",
+   "face": "evertsen-145-155",
+   "left": {
+    "id": "0363100012138669",
+    "twin": true,
+    "why": "module type:evertsen-1927-white-attic-tile-roof|crown:tile-roof|storeys:"
+   },
+   "right": {
+    "id": "0363100012138602",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012092062.jpg"
+  },
+  {
+   "pandId": "0363100012112195",
+   "source": "block-face",
+   "face": "evertsen-152-160",
+   "left": {
+    "id": "0363100012144634",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012130972",
+    "twin": true,
+    "why": "module type:evertsen-1927-white-attic-tile-roof|crown:tile-roof|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012112195.jpg"
+  },
+  {
+   "pandId": "0363100012130972",
+   "source": "block-face",
+   "face": "evertsen-152-160",
+   "left": {
+    "id": "0363100012112195",
+    "twin": true,
+    "why": "module type:evertsen-1927-white-attic-tile-roof|crown:tile-roof|storeys:"
+   },
+   "right": {
+    "id": "0363100012113386",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012130972.jpg"
+  },
+  {
+   "pandId": "0363100012165898",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": null,
+   "right": {
+    "id": "0363100012154241",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012165898.jpg"
+  },
+  {
+   "pandId": "0363100012154241",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012165898",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "right": {
+    "id": "0363100012162368",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012154241.jpg"
+  },
+  {
+   "pandId": "0363100012162368",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012154241",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "right": {
+    "id": "0363100012164663",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012162368.jpg"
+  },
+  {
+   "pandId": "0363100012164663",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012162368",
+    "twin": true,
+    "why": "module type:nassau-b-stucco-cornice|crown:pair-dormer|storeys:"
+   },
+   "right": {
+    "id": "0363100012156130",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012164663.jpg"
+  },
+  {
+   "pandId": "0363100012162089",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012156555",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "right": {
+    "id": "0363100012162090",
+    "twin": true,
+    "why": "module type:nassau-a-banded-mirrored|crown:spire-dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012162089.jpg"
+  },
+  {
+   "pandId": "0363100012162090",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012162089",
+    "twin": true,
+    "why": "module type:nassau-a-banded-mirrored|crown:spire-dormer|storeys:"
+   },
+   "right": {
+    "id": "0363100012166290",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012162090.jpg"
+  },
+  {
+   "pandId": "0363100012166694",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012157131",
+    "twin": false,
+    "why": "differ: storeys, gable"
+   },
+   "right": {
+    "id": "0363100012157568",
+    "twin": true,
+    "why": "module type:nassau-d-stucco-attic|crown:dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012166694.jpg"
+  },
+  {
+   "pandId": "0363100012157568",
+   "source": "block-face",
+   "face": "nassau-162289",
+   "left": {
+    "id": "0363100012166694",
+    "twin": true,
+    "why": "module type:nassau-d-stucco-attic|crown:dormer|storeys:"
+   },
+   "right": {
+    "id": "0363100012162289",
+    "twin": true,
+    "why": "module type:nassau-d-stucco-attic|crown:dormer|storeys:"
+   },
+   "mirrored": true,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157568.jpg"
+  },
+  {
+   "pandId": "0363100012157618",
+   "source": "block-face",
+   "face": "clercq-236681",
+   "left": {
+    "id": "0363100012236681",
+    "twin": false,
+    "why": "differ: gable, windows"
+   },
+   "right": {
+    "id": "0363100012156454",
+    "twin": true,
+    "why": "module type:clercq-f-stucco-mansard|crown:mansard-dormers|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157618.jpg"
+  },
+  {
+   "pandId": "0363100012061604",
+   "source": "block-face",
+   "face": "evertsen-43-57",
+   "left": {
+    "id": "0363100012091079",
+    "twin": false,
+    "why": "differ: windows"
+   },
+   "right": {
+    "id": "0363100012094327",
+    "twin": true,
+    "why": "module type:evertsen-1926-ladder-plain|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012061604.jpg"
+  },
+  {
+   "pandId": "0363100012115017",
+   "source": "block-face",
+   "face": "evertsen-52-66",
+   "left": {
+    "id": "0363100012131498",
+    "twin": false,
+    "why": "differ: storeys, bays"
+   },
+   "right": {
+    "id": "0363100012128896",
+    "twin": true,
+    "why": "module type:evertsen-1926-ladder-plain|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012115017.jpg"
+  },
+  {
+   "pandId": "0363100012107408",
+   "source": "block-face",
+   "face": "evertsen-59-89",
+   "left": {
+    "id": "0363100012093459",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012107315",
+    "twin": true,
+    "why": "module type:evertsen-1926-balcony-slot|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012107408.jpg"
+  },
+  {
+   "pandId": "0363100012092098",
+   "source": "block-face",
+   "face": "evertsen-68-92",
+   "left": {
+    "id": "0363100012144630",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012130169",
+    "twin": true,
+    "why": "module type:evertsen-1926-ladder-plain|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012092098.jpg"
+  },
+  {
+   "pandId": "0363100012090327",
+   "source": "block-face",
+   "face": "evertsen-7-41",
+   "left": null,
+   "right": {
+    "id": "0363100012071876",
+    "twin": true,
+    "why": "module type:evertsen-1926-lintel-band|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012090327.jpg"
+  },
+  {
+   "pandId": "0363100012114417",
+   "source": "block-face",
+   "face": "evertsen-91-135",
+   "left": {
+    "id": "0363100012070651",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012062057",
+    "twin": true,
+    "why": "module type:evertsen-1926-hood-lisene|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012114417.jpg"
+  },
+  {
+   "pandId": "0363100012140699",
+   "source": "block-face",
+   "face": "evertsen-94-142",
+   "left": null,
+   "right": {
+    "id": "0363100012080990",
+    "twin": true,
+    "why": "module type:evertsen-1926-hood-lisene|crown:parapet|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012140699.jpg"
+  },
+  {
+   "pandId": "0363100012158478",
+   "source": "block-face",
+   "face": "kinker-1-29",
+   "left": {
+    "id": "0363100012166843",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012166689",
+    "twin": true,
+    "why": "module type:kinker-1890-plain-brick|crown:pediment-dormer|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012158478.jpg"
+  },
+  {
+   "pandId": "0363100012095974",
+   "source": "block-face",
+   "face": "kinker-109-161",
+   "left": {
+    "id": "0363100012141903",
+    "twin": null,
+    "why": "same module, widths differ > 0.5 m"
+   },
+   "right": {
+    "id": "0363100012141675",
+    "twin": true,
+    "why": "module type:kinker-1985-infill|crown:roof-boxes|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012095974.jpg"
+  },
+  {
+   "pandId": "0363100012236198",
+   "source": "block-face",
+   "face": "kinker-120-138",
+   "left": {
+    "id": "0363100012233461",
+    "twin": null,
+    "why": "multi-front pand"
+   },
+   "right": {
+    "id": "0363100012153271",
+    "twin": true,
+    "why": "module type:kinker-1890-plain-brick|crown:pediment-dormer|storeys:4"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012236198.jpg"
+  },
+  {
+   "pandId": "0363100012233413",
+   "source": "block-face",
+   "face": "kinker-142-178",
+   "left": {
+    "id": "0363100012237396",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "right": {
+    "id": "0363100012237004",
+    "twin": true,
+    "why": "module type:kinker-1985-infill|crown:flat|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012233413.jpg"
+  },
+  {
+   "pandId": "0363100012157310",
+   "source": "block-face",
+   "face": "kinker-186-202",
+   "left": null,
+   "right": {
+    "id": "0363100012161134",
+    "twin": true,
+    "why": "module type:kinker-1890-brick-arched|crown:pediment-dormer|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157310.jpg"
+  },
+  {
+   "pandId": "0363100012236379",
+   "source": "block-face",
+   "face": "kinker-2-30",
+   "left": {
+    "id": "0363100012236360",
+    "twin": null,
+    "why": "same module, widths differ > 0.5 m"
+   },
+   "right": {
+    "id": "0363100012163174",
+    "twin": true,
+    "why": "module type:kinker-1890-brick-arched|crown:pediment-dormer|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012236379.jpg"
+  },
+  {
+   "pandId": "0363100012160838",
+   "source": "block-face",
+   "face": "kinker-206-242",
+   "left": {
+    "id": "0363100012237297",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "right": {
+    "id": "0363100012165141",
+    "twin": true,
+    "why": "module type:kinker-1895-painted-band|crown:pediment-dormer|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012160838.jpg"
+  },
+  {
+   "pandId": "0363100012157584",
+   "source": "block-face",
+   "face": "kinker-244-332",
+   "left": {
+    "id": "0363100012236512",
+    "twin": null,
+    "why": "multi-front pand"
+   },
+   "right": {
+    "id": "0363100012235902",
+    "twin": true,
+    "why": "module type:kinker-1890-plain-brick|crown:pediment-dormer|storeys:"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157584.jpg"
+  },
+  {
+   "pandId": "0363100012157426",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012161422",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "right": {
+    "id": "0363100012160273",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157426.jpg"
+  },
+  {
+   "pandId": "0363100012159694",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012160704",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "right": null,
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012159694.jpg"
+  },
+  {
+   "pandId": "0363100012160273",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012157426",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "right": {
+    "id": "0363100012160704",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012160273.jpg"
+  },
+  {
+   "pandId": "0363100012160704",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012159694",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "right": {
+    "id": "0363100012160273",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012160704.jpg"
+  },
+  {
+   "pandId": "0363100012161422",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012164843",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "right": {
+    "id": "0363100012157426",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012161422.jpg"
+  },
+  {
+   "pandId": "0363100012164843",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012116526",
+    "twin": null,
+    "why": "no labelled verdict"
+   },
+   "right": {
+    "id": "0363100012161422",
+    "twin": false,
+    "why": "hand-set labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012164843.jpg"
+  },
+  {
+   "pandId": "0363100012165000",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012174978",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "right": {
+    "id": "0363100012172892",
+    "twin": null,
+    "why": "no labelled verdict"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012165000.jpg"
+  },
+  {
+   "pandId": "0363100012165690",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012182371",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "right": {
+    "id": "0363100012182638",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012165690.jpg"
+  },
+  {
+   "pandId": "0363100012168603",
+   "source": "party-pair",
+   "left": {
+    "id": "0363100012170086",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "right": {
+    "id": "0363100012168605",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012168603.jpg"
+  },
+  {
+   "pandId": "0363100012168604",
+   "source": "party-pair",
+   "left": null,
+   "right": {
+    "id": "0363100012170087",
+    "twin": false,
+    "why": "spec labels differ"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012168604.jpg"
+  },
+  {
+   "pandId": "0363100012080336",
+   "source": "block-face",
+   "face": "bilder-080336-090492",
+   "left": null,
+   "right": {
+    "id": "0363100012092394",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012080336.jpg"
+  },
+  {
+   "pandId": "0363100012087959",
+   "source": "block-face",
+   "face": "bilder-081118-155417",
+   "left": {
+    "id": "0363100012081118",
+    "twin": null,
+    "why": "different modules, same core"
+   },
+   "right": {
+    "id": "0363100012157650",
+    "twin": false,
+    "why": "differ: gable, windows, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012087959.jpg"
+  },
+  {
+   "pandId": "0363100012133467",
+   "source": "block-face",
+   "face": "bilder-133467-159649",
+   "left": null,
+   "right": {
+    "id": "0363100012153782",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012133467.jpg"
+  },
+  {
+   "pandId": "0363100012153622",
+   "source": "block-face",
+   "face": "bilder-153622-156732",
+   "left": null,
+   "right": {
+    "id": "0363100012161613",
+    "twin": false,
+    "why": "differ: storeys"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012153622.jpg"
+  },
+  {
+   "pandId": "0363100012157757",
+   "source": "block-face",
+   "face": "bilder-157757-164549",
+   "left": null,
+   "right": {
+    "id": "0363100012164549",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012157757.jpg"
+  },
+  {
+   "pandId": "0363100012159426",
+   "source": "block-face",
+   "face": "bilder-159426-165632",
+   "left": null,
+   "right": {
+    "id": "0363100012154127",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012159426.jpg"
+  },
+  {
+   "pandId": "0363100012161259",
+   "source": "block-face",
+   "face": "bilder-161259-236206",
+   "left": null,
+   "right": {
+    "id": "0363100012161260",
+    "twin": false,
+    "why": "differ: gable, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012161259.jpg"
+  },
+  {
+   "pandId": "0363100012161281",
+   "source": "block-face",
+   "face": "bilder-161281-157756",
+   "left": null,
+   "right": {
+    "id": "0363100012157756",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012161281.jpg"
+  },
+  {
+   "pandId": "0363100012164451",
+   "source": "block-face",
+   "face": "bilder-164451-156126",
+   "left": null,
+   "right": {
+    "id": "0363100012165444",
+    "twin": false,
+    "why": "differ: gable, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012164451.jpg"
+  },
+  {
+   "pandId": "0363100012162836",
+   "source": "block-face",
+   "face": "bilder-166802-235892",
+   "left": {
+    "id": "0363100012166801",
+    "twin": null,
+    "why": "different modules, same core"
+   },
+   "right": {
+    "id": "0363100012235892",
+    "twin": false,
+    "why": "differ: windows, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012162836.jpg"
+  },
+  {
+   "pandId": "0363100012233580",
+   "source": "block-face",
+   "face": "bilder-233580-162444",
+   "left": null,
+   "right": {
+    "id": "0363100012236055",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012233580.jpg"
+  },
+  {
+   "pandId": "0363100012236022",
+   "source": "block-face",
+   "face": "bilder-236022-167243",
+   "left": null,
+   "right": {
+    "id": "0363100012159868",
+    "twin": false,
+    "why": "differ: gable, windows"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012236022.jpg"
+  },
+  {
+   "pandId": "0363100012236189",
+   "source": "block-face",
+   "face": "bilder-236189-166159",
+   "left": null,
+   "right": {
+    "id": "0363100012236188",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012236189.jpg"
+  },
+  {
+   "pandId": "0363100012159182",
+   "source": "block-face",
+   "face": "clercq-236681",
+   "left": {
+    "id": "0363100012158603",
+    "twin": null,
+    "why": "different modules, same core"
+   },
+   "right": {
+    "id": "0363100012236681",
+    "twin": false,
+    "why": "differ: gable"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012159182.jpg"
+  },
+  {
+   "pandId": "0363100012100052",
+   "source": "block-face",
+   "face": "evertsen-139-143",
+   "left": null,
+   "right": {
+    "id": "0363100012151275",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012100052.jpg"
+  },
+  {
+   "pandId": "0363100012082977",
+   "source": "block-face",
+   "face": "evertsen-145-155",
+   "left": null,
+   "right": {
+    "id": "0363100012138669",
+    "twin": false,
+    "why": "differ: storeys, gable, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012082977.jpg"
+  },
+  {
+   "pandId": "0363100012148979",
+   "source": "block-face",
+   "face": "evertsen-146-150",
+   "left": null,
+   "right": {
+    "id": "0363100012093776",
+    "twin": false,
+    "why": "differ: storeys, gable"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012148979.jpg"
+  },
+  {
+   "pandId": "0363100012144634",
+   "source": "block-face",
+   "face": "evertsen-152-160",
+   "left": {
+    "id": "0363100012065375",
+    "twin": null,
+    "why": "different modules, same core"
+   },
+   "right": {
+    "id": "0363100012112195",
+    "twin": false,
+    "why": "differ: bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012144634.jpg"
+  },
+  {
+   "pandId": "0363100012091079",
+   "source": "block-face",
+   "face": "evertsen-43-57",
+   "left": null,
+   "right": {
+    "id": "0363100012061604",
+    "twin": false,
+    "why": "differ: windows"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012091079.jpg"
+  },
+  {
+   "pandId": "0363100012131498",
+   "source": "block-face",
+   "face": "evertsen-52-66",
+   "left": null,
+   "right": {
+    "id": "0363100012115017",
+    "twin": false,
+    "why": "differ: storeys, bays"
+   },
+   "mirrored": null,
+   "image": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/twin-images-v2/0363100012131498.jpg"
+  }
+ ]
+}

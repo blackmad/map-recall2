@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182304",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182304/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "columns",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a yellow shop sign over a glazed ground storey"
+  }
+ ],
+ "notes": "A fence and a pole cross the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

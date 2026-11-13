@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174184",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002961_pano_0003_000098.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small bell-shaped hoist dormer in a red tiled roof behind the cornice"
+  }
+ ],
+ "notes": "A street lamp stands in front of the middle.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

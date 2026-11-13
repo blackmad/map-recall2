@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171710",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171710/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "consoles",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeys",
+  "windows",
+  "columns",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a shop awning over a row of glazed transom lights and a lettered fascia, the shopfront plastered with stickers"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist-beam housing stands above the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors beside each window head"
+  }
+ ],
+ "notes": "The short glazed row above the shop sign was read as the shop's upper lights, not a storey."
+}

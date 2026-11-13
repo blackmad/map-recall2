@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012176275",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176275/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 4,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a white band with a balustrade-like pattern between the first and second storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "a central dormer with a pediment in the hipped tiled roof"
+  }
+ ],
+ "notes": "A bush and a tree hide the left part of the ground storey."
+}

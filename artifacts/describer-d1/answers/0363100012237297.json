@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012237297",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012237297/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "finish",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks at both corners and the centre of each flat window head on the dark wall"
+  },
+  {
+   "component": "gable ornament",
+   "what": "dark gable top with small stepped shoulders, one window and a hoist beam"
+  }
+ ],
+ "notes": "Ground storey hidden behind a bus-shelter advertising panel."
+}

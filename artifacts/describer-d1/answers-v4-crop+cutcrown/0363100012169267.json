@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012169267",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169267/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental arches of alternating white and brick voussoirs over each window, with small dark rosettes between them"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall hoist dormer with a long hoist beam above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "leaded small-paned top lights on the first storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

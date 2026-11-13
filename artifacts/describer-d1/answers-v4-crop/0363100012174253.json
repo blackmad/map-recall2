@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174253",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174253/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "coloured patterned glass in the top lights of the first-storey windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a black-painted ground storey with small white-framed windows"
+  }
+ ],
+ "notes": "Low-resolution crop; a car hides the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

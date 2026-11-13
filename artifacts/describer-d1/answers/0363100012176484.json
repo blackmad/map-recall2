@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012176484",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176484/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "storeys"
+ ],
+ "gaps": [],
+ "notes": "A large tree stands in front of the middle axis and the gable; only the side bays and a chimney read."
+}

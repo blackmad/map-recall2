@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012176482",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176482/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white stone gable top with scrolls round an attic window"
+  },
+  {
+   "component": "door",
+   "what": "white classical doorcase with pilasters and a fanlight"
+  }
+ ]
+}

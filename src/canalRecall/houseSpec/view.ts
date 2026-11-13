@@ -13,7 +13,7 @@
 import { SWATCHES } from '../buildingRecipe/intent.ts';
 import type { HouseSpecView, SpecLook } from './decorate.ts';
 import { fieldSources } from './resolve.ts';
-import { frontBays, type HouseSpec } from './spec.ts';
+import { drawableDesign, frontBays, type HouseSpec, type SpecIgnored } from './spec.ts';
 
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
 const luma = (h: string) => { const n = parseInt(h.slice(1), 16); return (0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255; };
@@ -64,8 +64,15 @@ export function specLook(spec: HouseSpec, src: Record<string, string>): { look: 
 /** Sources that read the street front itself: their silence about a shopfront means a quiet ground storey. */
 const PHOTO_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
 
-/** The runtime view of a resolved spec (the extract's `v`). */
-export function specView(spec: HouseSpec): HouseSpecView {
+/** The spec values the runtime view draws as something else (spec.ts drawableDesign: stone -> stucco, pitched-eaves ->
+ *  cornice, pointed -> round, mixed -> no head); empty when the spec states none. */
+export const specViewIgnored = (spec: HouseSpec): SpecIgnored[] => drawableDesign(spec.design).ignored;
+
+/** The runtime view of a resolved spec (the extract's `v`). Spec-only values are drawn as their nearest intent value
+ *  (spec.ts drawableDesign; listed by specViewIgnored); without them the spec is read as is. */
+export function specView(read: HouseSpec): HouseSpecView {
+  const drawable = drawableDesign(read.design);
+  const spec: HouseSpec = drawable.ignored.length ? { ...read, design: drawable.design } : read;
   const src = fieldSources(spec), front = spec.design.fronts?.[0];
   const v: HouseSpecView = { src: {} };
   // The roof planner (roofMesh planRoof) draws a monument gable as the whole roof's crown: a canal house's gabled or
@@ -76,7 +83,7 @@ export function specView(spec: HouseSpec): HouseSpecView {
   // A flat crown stated by a street source or an author (lane H9) clears a register gable (decorate.ts withHouseSpecCrown).
   else if (front?.gable === 'flat' && ['streetlevel-measured', 'reviewed', 'author'].includes(src['fronts/0/gable'] ?? '')) { v.gable = 'flat'; v.src.gable = src['fronts/0/gable']; }
   if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
-  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
+  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial as NonNullable<HouseSpecView['wallMaterial']>; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
   if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }

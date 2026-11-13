@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012173636",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001543_pano_0000_000961.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "bays",
+  "crown"
+ ],
+ "gaps": [],
+ "notes": "Far away; the ground storey is hidden by a houseboat and a statue.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

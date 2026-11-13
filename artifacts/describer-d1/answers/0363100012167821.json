@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012167821",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167821/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on the centre axis of each upper storey, the upper one on a corbelled slab"
+  },
+  {
+   "component": "window",
+   "what": "round-headed brick arches over the top visible storey"
+  }
+ ],
+ "notes": "The image centre falls on the party wall between an orange-brick two-axis front (left) and a red-brick three-axis front (right); described the right one. Tops cut off."
+}

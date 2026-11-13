@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012172897",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172897/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "arched",
+ "heads": [
+  "round",
+  "segmental",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeys",
+  "bays",
+  "heads",
+  "crown",
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "curved wrought-iron French balconies on the first and second floor windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "tall gable with a round-arched window and stone arch bands at the top"
+  },
+  {
+   "component": "window",
+   "what": "large round-arched ground-storey opening with a brick and stone voussoir arch"
+  }
+ ],
+ "notes": "A van parked in front hides the whole ground storey; gable top cut off."
+}

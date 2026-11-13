@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182248",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182248.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "windows",
+  "souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "two oval oculi in white frames at the shoulders of the neck and a round window high in the neck"
+  },
+  {
+   "component": "door",
+   "what": "white pilastered door surround at the top of the stoop"
+  }
+ ],
+ "notes": "Blurry, dull light and tree branches over the left half and the neck top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

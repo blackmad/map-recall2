@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182399/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "storey 2 has one wide window of three lights under a single frame"
+  }
+ ],
+ "notes": "Gable cut off at the top; ground storey behind a construction hoarding."
+}

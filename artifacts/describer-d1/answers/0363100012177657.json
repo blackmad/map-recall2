@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012177657",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177657/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "windows",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the left part has one wide three-light window per storey under a segmental brick arch with an iron railing"
+  },
+  {
+   "component": "shopfront",
+   "what": "one cream rendered shopfront runs under both parts with two doors and two display windows"
+  }
+ ],
+ "notes": "One brick wall with two window rhythms: a lower left part with a wide window per storey and a white cornice, and a taller right part with three axes (described). Top cut off."
+}

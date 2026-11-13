@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182401/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white carved head blocks over each window"
+  },
+  {
+   "component": "shopfront",
+   "what": "a stone-framed shop portal with an arched glazed opening at the right of the ground storey"
+  }
+ ],
+ "notes": "A tree covers the right half; the front may continue beyond the frame.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

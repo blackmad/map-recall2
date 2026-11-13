@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012169267",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012169267.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "doorBay",
+  "columns",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "every window jamb is dressed with alternating white stone blocks (block quoins) and a row of white blocks over the heads"
+  },
+  {
+   "component": "dormer",
+   "what": "one central dormer with a small pediment in a dark mansard"
+  },
+  {
+   "component": "roof",
+   "what": "the front returns round a corner on the right with the same dressing"
+  }
+ ],
+ "notes": "A pole and a passing van cover the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

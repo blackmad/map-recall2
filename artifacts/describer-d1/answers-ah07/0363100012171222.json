@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171222",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012171222.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "mixed",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a shallow stone oriel on a console in the centre of the second storey, flanked by two round-arched windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a full-width glazed shopfront with a pale fascia band carrying a sign across the front"
+  },
+  {
+   "component": "dormer",
+   "what": "two small dormers in the slate mansard"
+  }
+ ],
+ "notes": "Part of a long symmetrical block; the top storey windows are partly lit and low resolution.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

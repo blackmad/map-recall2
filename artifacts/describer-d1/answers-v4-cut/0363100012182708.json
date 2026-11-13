@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182708.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white timber ground-storey front with carved Louis-style ornaments, cartouches and pendants on the posts"
+  },
+  {
+   "component": "dormer",
+   "what": "a small white dormer with a hoist beam behind the cornice"
+  }
+ ],
+ "notes": "Steep upward oblique view; the right ground-storey door may belong to the neighbour.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

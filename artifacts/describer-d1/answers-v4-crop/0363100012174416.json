@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012174416",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174416/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "a hoist door with open pink shutters high in the middle of the front"
+  },
+  {
+   "component": "door",
+   "what": "two house doors side by side at the right, up a short stoop with an iron rail, over a souterrain"
+  }
+ ],
+ "notes": "Top cut off; smudges on the lens.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

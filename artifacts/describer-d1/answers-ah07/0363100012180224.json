@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012180224",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180224.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windowSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "wide triple-light dormer in a slate mansard with curved white ribs between houses"
+  }
+ ],
+ "notes": "Dusk light, bare branches over the right bays and a hedge over the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

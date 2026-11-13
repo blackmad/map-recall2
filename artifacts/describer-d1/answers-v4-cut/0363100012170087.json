@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012170087",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012170087.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "1": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "doorBay",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a dark restaurant front with a lettered fascia, and above it a white-plastered storey with three small-paned windows between pilasters"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small blind panel with a round hole in the bell gable"
+  }
+ ],
+ "notes": "The plastered band over the shop has its own floor line, so it is counted as a storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

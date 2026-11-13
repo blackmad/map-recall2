@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012176273",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176273/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "doorBay",
+  "basement",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber two-storey bay window on the first and second storeys"
+  },
+  {
+   "component": "window",
+   "what": "round-arched windows on the ground storey and top storey"
+  }
+ ],
+ "notes": "Late nineteenth-century front with an asymmetric layout; storey count above the bay is uncertain."
+}

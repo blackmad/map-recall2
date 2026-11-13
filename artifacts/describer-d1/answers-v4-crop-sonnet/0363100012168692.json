@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012168692",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "extent",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "A tree covers the upper part; the middle shows two houses side by side.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

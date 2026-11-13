@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012154341",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012154341/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small white triangular pediments over the second-floor windows"
+  },
+  {
+   "component": "relief",
+   "what": "a row of white corbel blocks under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "small dormers behind the cornice"
+  }
+ ],
+ "notes": "Narrow, low-resolution image; the boundary with the left neighbour is unclear."
+}

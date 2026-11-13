@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182309",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000193.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "finish",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white pointed gable with a row of four small windows and two small windows near the apex"
+  }
+ ],
+ "notes": "Far; a quay railing and a van hide the ground storey. The white wall may be painted timber.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012174778",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174778/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "low": [
+  "crown",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental arches of alternating white and brick voussoirs over the windows, visible through the scaffold"
+  }
+ ],
+ "notes": "Covered by scaffolding with workers and crossed by branches; only the gable top is clear.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

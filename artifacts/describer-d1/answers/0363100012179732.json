@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012179732",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179732/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with pilasters, fascia and a row of transom lights over doors and display window"
+  }
+ ],
+ "notes": "Top cut off."
+}

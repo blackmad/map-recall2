@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012170933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "plain",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a projecting brick bay with angled sides runs up the front"
+  }
+ ],
+ "notes": "Only a slice of two upper storeys is visible; top cut off and ground behind a fence."
+}

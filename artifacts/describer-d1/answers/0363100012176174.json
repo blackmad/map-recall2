@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012176174",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176174/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "curved shoulders and a small scroll at the foot of the gable, neck with one window"
+  }
+ ],
+ "notes": "Oblique dusk view, front lit by street light."
+}

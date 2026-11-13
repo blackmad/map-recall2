@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012167885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167885/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  5,
+  6,
+  6,
+  6
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "columns",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "red-brown doors under small-paned fanlights in a white rendered ground storey"
+  }
+ ],
+ "notes": "A wide front with two groups of three windows; a van hides the right of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

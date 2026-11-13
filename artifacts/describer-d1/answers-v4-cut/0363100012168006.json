@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168006.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-pair",
+ "storeyWindows": {
+  "3": "cross"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "doorBay",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a tiled pitched roof with a chimney rises behind the white frieze cornice"
+  },
+  {
+   "component": "door",
+   "what": "low ground storey between white pilasters with lanterns between the openings"
+  }
+ ],
+ "notes": "A parked car covers the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

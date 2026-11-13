@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012182296",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182296/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small dark diamond-shaped brick ornaments between the window heads"
+  }
+ ],
+ "notes": "Top of the front is lost in glare; a parasol hides the shop door."
+}

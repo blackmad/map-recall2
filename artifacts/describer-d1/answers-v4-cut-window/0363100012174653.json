@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012174653",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174653.jpg + artifacts/describer-d1/windows/0363100012174653.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "segmental",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes across the lower part of every upper window"
+  },
+  {
+   "component": "relief",
+   "what": "a brick corbel table frieze runs under the cornice and as a band over the ground storey"
+  },
+  {
+   "component": "window",
+   "what": "the ground storey has one wide segmental-arched window with a fan of small lights over large panes"
+  },
+  {
+   "component": "dormer",
+   "what": "a single dormer with a hoist beam stands behind the cornice"
+  }
+ ],
+ "notes": "Wide-angle oblique view; a parked car hides the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible",
+ "paneLayout": "two-pane"
+}

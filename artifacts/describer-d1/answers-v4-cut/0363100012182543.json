@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182543.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved scroll claw pieces at the gable shoulders and a hoist beam with a small hood at the neck top"
+  },
+  {
+   "component": "window",
+   "what": "window frames painted beige/sand against the black-painted brick"
+  },
+  {
+   "component": "shopfront",
+   "what": "tall gridded shop window and glazed shop door between sand-coloured pilasters, separate house door at the right"
+  }
+ ],
+ "notes": "Steep upward, oblique view; the gable attic holds a row of three windows and one more in the neck.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

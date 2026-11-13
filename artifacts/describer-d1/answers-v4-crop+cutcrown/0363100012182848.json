@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182848/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small carved gable stone over the shop in the middle"
+  },
+  {
+   "component": "shopfront",
+   "what": "a glazed entresol band with a white fascia over the caf\u00e9, under a dark awning"
+  }
+ ],
+ "notes": "Ground storey hidden by an awning and caf\u00e9 seating.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

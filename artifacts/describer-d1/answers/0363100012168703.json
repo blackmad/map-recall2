@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168703/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a door under a tall fanlight with interlaced oval tracery"
+  },
+  {
+   "component": "shopfront",
+   "what": "a wide small-paned upper light over a large ground-storey opening with a glazed door"
+  }
+ ],
+ "notes": "Top of the front cut off after two upper storeys; heads listed only for the visible storeys."
+}

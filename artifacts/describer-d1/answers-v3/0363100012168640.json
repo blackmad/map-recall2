@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168640",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168640/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2020,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "spout",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "hoist beam projecting from the top of the gable"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey shop with a striped awning and hanging signs"
+  }
+ ],
+ "notes": "Very oblique view of a corner building with two faces in view; the street face is foreshortened and parts of the base are blanked out."
+}

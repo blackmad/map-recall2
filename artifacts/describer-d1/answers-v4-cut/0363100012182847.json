@@ -1,0 +1,36 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182847.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "The outline covers a blank brick side wall under a tiled roof slope, leaning over the bell-gable front to its right; no single house front is in it.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

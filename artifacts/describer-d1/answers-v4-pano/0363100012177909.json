@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012177909",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001547_pano_0000_000584.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "bands",
+  "windowSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental brick relieving arches over each upper window with white stone springer blocks and keystones, white stone blocks banding the piers."
+  },
+  {
+   "component": "dormer",
+   "what": "an ornamented stone dormer with an arched window and scroll sides above the cornice."
+  },
+  {
+   "component": "shopfront",
+   "what": "an ochre-painted timber shopfront with pilasters and a moulded cornice, a separate house door at the left."
+  }
+ ],
+ "notes": "Steep upward view; the top storey and the dormer are foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

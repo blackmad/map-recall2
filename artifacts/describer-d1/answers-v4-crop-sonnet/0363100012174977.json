@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174977",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174977/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "finish",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "A small iron balcony rail sits at the middle window of the second storey."
+  }
+ ],
+ "notes": "A van hides the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174564",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174564/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "windowSurround",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balconies with wrought-iron railings on the centre bay of each upper storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "curved ogee-like gable with a white framed attic window and a finial rod"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark carved shopfront with an arched centre window, scrolled pilaster tops and doors at both sides"
+  },
+  {
+   "component": "window",
+   "what": "segmental heads with a striped tile or brick infill tympanum and white springer blocks"
+  }
+ ],
+ "notes": "Upper windows are covered by white blinds, so the glazing pattern is a guess."
+}

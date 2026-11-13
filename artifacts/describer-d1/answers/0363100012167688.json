@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012167688",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167688/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-arched dark doorway at the left of the ground storey beside a white-framed glazed door"
+  }
+ ],
+ "notes": "Top of the front washed out by sky; a tree trunk covers the left edge."
+}

@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012174974",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images/0363100012174974.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "target image distorted; right panel is a water reflection"
+}

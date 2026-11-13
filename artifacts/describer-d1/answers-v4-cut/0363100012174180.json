@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012174180",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174180.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "cross",
+ "storeyWindows": {
+  "1": "ladder"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "columns",
+  "storeyWindows",
+  "heads",
+  "windowSurround",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a tall first storey of leaded ladder lights between white timber posts runs the whole width as a glazed screen"
+  },
+  {
+   "component": "relief",
+   "what": "small inscribed stone tablets set in the brick band under the glazed storey"
+  },
+  {
+   "component": "shutters",
+   "what": "red shutters on the lower windows and beside the upper cross windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "stone keystones and blocks in the relieving arches over the second storey windows, white stone bands across the front"
+  }
+ ],
+ "notes": "One of a row of three identical step gables; a trailer hides the ground storey and the storey lines inside the tall lower part are hard to read.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

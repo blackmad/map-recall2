@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "an ornate stucco cornice with scrolled consoles and garlands, cut off at the top"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tiled shop storey with a segmental row of red-framed transom lights over the display window"
+  }
+ ],
+ "notes": "Image is dark; glazing patterns hard to read."
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2017,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "A houseboat hides the lower ground storey and the glare hides one window.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

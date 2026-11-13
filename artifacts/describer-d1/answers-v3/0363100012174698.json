@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174698",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174698/years/2018.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "three white dormers with pointed pediment roofs, one over each bay, behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "small square vents set in the brick between the top-storey windows and the cornice"
+  }
+ ]
+}

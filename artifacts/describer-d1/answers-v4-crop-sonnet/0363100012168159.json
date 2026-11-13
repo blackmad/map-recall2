@@ -1,0 +1,36 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "A church front with a large traceried window, not a house.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

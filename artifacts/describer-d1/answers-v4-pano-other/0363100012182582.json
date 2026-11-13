@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012182582",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002930_pano_0002_000002.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red-tiled steep roof face with a dormer rises behind the cornice."
+  }
+ ],
+ "notes": "Tree in front; the outline straddles two fronts.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174644",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002924_pano_0000_000002.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "low": [
+  "sameAs",
+  "mirrored",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small French balconies at the middle axis"
+  },
+  {
+   "component": "window",
+   "what": "a quarter-round window in the raised part at the left of the top"
+  }
+ ],
+ "notes": "A delivery van hides the ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

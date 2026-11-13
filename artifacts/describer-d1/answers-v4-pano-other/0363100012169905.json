@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012169905",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002967_pano_0003_000130.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sculpted claw pieces at the neck foot and a carved crest with a scroll top on the neck"
+  }
+ ],
+ "notes": "The numbered outline covers only the two left axes; the house with the neck gable reads as three axes with the stoop door at the right.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

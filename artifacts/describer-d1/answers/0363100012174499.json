@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174499",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174499/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustraded attic over the cornice with round openings and urn-topped posts, a chimney ornament above"
+  },
+  {
+   "component": "door",
+   "what": "green double door under a fanlight with star tracery, lantern beside it"
+  }
+ ]
+}

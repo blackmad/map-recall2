@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182303",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182303/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "finish",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a glazed band of white-framed windows with its own white beam sits over the shop as a storey of its own"
+  },
+  {
+   "component": "window",
+   "what": "low iron railings across the lower part of the upper windows"
+  }
+ ],
+ "notes": "The top is washed out by lens glare and the ground storey is blocked by a pole, a parasol and a truck. [crown from describe cut]",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

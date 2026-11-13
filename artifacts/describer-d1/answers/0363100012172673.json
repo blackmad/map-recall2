@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012172673",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172673/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "columns",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a toplight band, a display window, a glazed shop door and a white house door"
+  },
+  {
+   "component": "relief",
+   "what": "carved console blocks at the ends of the ground-storey fascia"
+  }
+ ],
+ "notes": "Steep oblique; the cornice is only seen foreshortened at the top right."
+}

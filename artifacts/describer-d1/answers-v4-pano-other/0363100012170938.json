@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012170938",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002954_pano_0002_000108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "extent",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a round-arched stone doorway in the centre"
+  },
+  {
+   "component": "dormer",
+   "what": "pointed dormers along the shared cornice"
+  }
+ ],
+ "notes": "The outline covers two fronts under one cornice; described the right, larger one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

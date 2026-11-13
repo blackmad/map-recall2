@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182856",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182856.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "whiteFrames",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "white wooden cornice with a tall frieze and scrolled consoles over each pier"
+  }
+ ],
+ "notes": "A fenced structure and a tall street sculpture hide the ground storey and the left bay; window frames look cream rather than white.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

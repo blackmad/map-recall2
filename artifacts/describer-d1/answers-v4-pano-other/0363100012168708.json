@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012168708",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001054_pano_0000_005074.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a pair of black doors under a top light at the right of the ground storey"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

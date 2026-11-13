@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "columns",
+  "windows",
+  "doorIndex"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a round oculus with four white keystones on the second axis of each upper storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall dormer with its own bracketed cornice and hoist beam over each front"
+  },
+  {
+   "component": "shopfront",
+   "what": "timber shopfront with a white classical entablature, rows of small transom lights and a central door"
+  }
+ ],
+ "notes": "Image centre falls on the left of two fronts split by a drainpipe; described the left front (shopfront, oculi). The right front is a dwelling with a round-arched fanlight door."
+}

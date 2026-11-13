@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178186",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#534f4e"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "a black timber shopfront with a double door at the left, a row of top lights and one wide window"
+  },
+  {
+   "component": "window",
+   "what": "thin iron guard bars across the lower part of the upper windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a white dormer with a hoist beam on the roof"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012168758",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168758/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with curved tiled shoulders and a hoist beam above the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012168077",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168077/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "black double door with carved panels under a divided transom"
+  }
+ ],
+ "notes": "Top is overexposed; the white crown reads as a plain frieze with a small vent window."
+}

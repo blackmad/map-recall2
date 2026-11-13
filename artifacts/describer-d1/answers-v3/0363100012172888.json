@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012172888",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172888/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "straight-sided neck without claw pieces topped by a triangular pediment"
+  },
+  {
+   "component": "balcony",
+   "what": "centre axis has balcony doors with low iron railings on storeys 1 and 2"
+  }
+ ],
+ "notes": "A car hides the lower ground storey."
+}

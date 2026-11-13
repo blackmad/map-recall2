@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012177674",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177674/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white rendered bay window stacked up the centre axis over the café"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes across the lower part of each upper window"
+  }
+ ],
+ "notes": "Top cut off; side windows sit under round brick arches with tympana."
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168155",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168155.jpg + artifacts/describer-d1/windows/0363100012168155.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved mask or head ornament at the top of the gable"
+  },
+  {
+   "component": "door",
+   "what": "tall white-framed ground storey with a small-paned upper window band over a double door and a small-paned window"
+  }
+ ],
+ "notes": "The outline cuts off the gable top but the gable is visible above it.",
+ "storeys": 3,
+ "wallFamily": "not-visible",
+ "paneLayout": "multi-pane"
+}

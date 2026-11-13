@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012236953",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236953/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks at both corners and the centre of each flat window head on the dark wall"
+  },
+  {
+   "component": "dormer",
+   "what": "a white dormer with a pointed pediment and hoist beam"
+  }
+ ],
+ "notes": "Corner building; the side return with narrow windows shows at the left."
+}

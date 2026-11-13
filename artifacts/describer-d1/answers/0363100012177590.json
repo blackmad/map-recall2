@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012177590",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177590/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on stone slabs in front of a balcony door on the centre axis of each upper storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "red-painted shopfront with pilasters under a striped awning"
+  }
+ ],
+ "notes": "Top cut off; dusk."
+}

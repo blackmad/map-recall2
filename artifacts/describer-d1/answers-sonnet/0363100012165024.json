@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012165024",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165024/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "round",
+  "segmental",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "bays",
+  "heads",
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "stucco ground storey and white stone dressings contrast with brick upper storeys"
+  }
+ ],
+ "notes": "Tree trunk hides left axis; light stucco ground with banded brick above."
+}

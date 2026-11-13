@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012172425",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172425/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 7,
+ "bays": 8,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "grey",
+ "finish": "stone",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "heads",
+  "crown",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "tower with a clock and pinnacles at the corner, steep slate roof behind"
+  },
+  {
+   "component": "erker",
+   "what": "projecting bay towers running up the front"
+  }
+ ],
+ "notes": "Large stone office building, not a canal house; strong sun flare and a tree cross the front, so counts are rough."
+}

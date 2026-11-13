@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182248",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182248/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with carved white scroll claw pieces"
+  },
+  {
+   "component": "window",
+   "what": "two round oculi flank the neck window at the gable foot"
+  },
+  {
+   "component": "door",
+   "what": "stoop door in a white stucco pilaster surround with a fanlight; shop entrance in the souterrain below"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012114417",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012114417.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "notes": "Uniform block; left is a stair-tower section. Mirroring not readable from cut panels."
+}

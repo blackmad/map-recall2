@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174641",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174641/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "finish",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "The upper windows are set in white frames with a larger window beside a smaller one at the gable."
+  }
+ ],
+ "notes": "A lamp post covers the right part of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168657",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168657/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stack of small balconies on the third axis, one per upper storey"
+  }
+ ],
+ "notes": "A tree limb hides the top; the top row may be a roof storey. [crown from describe cut]",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

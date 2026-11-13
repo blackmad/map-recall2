@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012176017",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176017/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "flat",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "crown",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [],
+ "notes": "Tree branches over the top storey; low street-level row read as a souterrain."
+}

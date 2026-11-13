@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012182581",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002953_pano_0000_000436.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "low": [
+  "finish",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white claw pieces at the neck foot and a round-topped moulded cap on the neck."
+  },
+  {
+   "component": "window",
+   "what": "a wide centre window between narrow side windows on each storey."
+  },
+  {
+   "component": "shopfront",
+   "what": "a pale timber frame with a row of top lights over the shop, shared with the twin to the right."
+  }
+ ],
+ "notes": "Ground storey behind terrace planters and bicycles.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

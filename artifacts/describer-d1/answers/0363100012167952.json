@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012167952",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167952/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 6,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "storeys"
+ ],
+ "gaps": [],
+ "notes": "Top cut off; a gable top window is visible at the upper edge. Ground storey has a white surround with dark doors."
+}

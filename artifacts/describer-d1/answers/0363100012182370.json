@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012182370",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182370/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2022,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "six-pane",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "basement",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a cream-painted timber ground-storey front with a fascia and large windows"
+  }
+ ],
+ "notes": "Close crop showing only the ground storey and the bottom of one upper storey."
+}

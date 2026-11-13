@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012172872",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172872/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "ground-storey pilasters in alternating dark green glazed and white brick"
+  },
+  {
+   "component": "window",
+   "what": "segmental window heads under projecting dark brick hood arches"
+  },
+  {
+   "component": "balcony",
+   "what": "small wrought-iron balconies on the left windows of the first and second floors"
+  },
+  {
+   "component": "relief",
+   "what": "a decorated brick frieze with green bands over the shopfront"
+  }
+ ],
+ "notes": "Oblique, top cut off; ground plus three upper storeys visible."
+}

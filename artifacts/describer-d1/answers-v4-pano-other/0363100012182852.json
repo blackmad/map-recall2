@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002953_pano_0000_000441.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "A blue parking sign covers much of the upper front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

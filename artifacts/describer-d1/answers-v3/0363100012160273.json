@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012160273",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "relieving"
+ ],
+ "bands": "both",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "heads",
+  "windowSurround",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "full-width iron-railed balcony on brackets across storey 1, a concrete-floored centre balcony on storey 2 and a small iron balcony on storey 3"
+  },
+  {
+   "component": "gable ornament",
+   "what": "broad curved-shouldered brick gable holding a triple window, with a finial rod"
+  },
+  {
+   "component": "window",
+   "what": "white keystone and springer blocks at the heads; top-storey windows under round brick relieving arches"
+  }
+ ]
+}

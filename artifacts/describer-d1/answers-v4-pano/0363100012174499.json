@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174499",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001666_pano_0000_000925.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red tiled pitched roof seen behind the white bracketed cornice"
+  }
+ ],
+ "notes": "A van and bridge railings cover the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

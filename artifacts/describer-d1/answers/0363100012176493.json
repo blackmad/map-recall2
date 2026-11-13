@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012176493",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176493/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door in a light doorcase with a fanlight"
+  }
+ ],
+ "notes": "Tree trunk covers the left edge; image dark."
+}

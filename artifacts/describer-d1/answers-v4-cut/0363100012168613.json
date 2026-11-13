@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012168613",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168613.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces at the neck shoulders, a carved crowning piece on top and a stone ornament under the top"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron railings in the centre-axis windows of the top storey and the neck window (hoist doors)"
+  }
+ ],
+ "notes": "The outline sits slightly right of the neck house; the neck-gable front is the one described.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

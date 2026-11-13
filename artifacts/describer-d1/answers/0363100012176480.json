@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012176480",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176480/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "grey",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "red-painted street door with a red panel above it"
+  },
+  {
+   "component": "window",
+   "what": "top storey windows are low and square under the roofline"
+  }
+ ],
+ "notes": "A pole crosses the right bay; top storey could be an attic band."
+}

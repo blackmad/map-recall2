@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012171218",
+ "image": {
+  "ref": "source-data://datasets/wall-colour-benchmark-v2-20261112/photos/0363100012171218.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "cornice",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small stone balcony with balustrade on the centre axis of the first floor"
+  },
+  {
+   "component": "window",
+   "what": "white ornamental pediment hoods over the first-floor windows and over the street door"
+  },
+  {
+   "component": "dormer",
+   "what": "a central stone dormer gable with pilasters, pediment and finial over the cornice"
+  },
+  {
+   "component": "window",
+   "what": "top-storey round-arched windows under brick arches with white keystones and imposts"
+  }
+ ],
+ "notes": "Neo-Renaissance front, ornament small at this resolution."
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012185997",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bands",
+  "crown",
+  "doorBay",
+  "souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window group per storey: a central pair between narrow side lights under a gridded top light"
+  },
+  {
+   "component": "shopfront",
+   "what": "the two lower storeys are rendered pale with a wide framed window and garden doors at the foot"
+  },
+  {
+   "component": "relief",
+   "what": "small white corbel blocks in a row under each lintel band"
+  }
+ ],
+ "notes": "Branches cross the top; this may be a garden-side front, and the lowest storey may be a souterrain.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

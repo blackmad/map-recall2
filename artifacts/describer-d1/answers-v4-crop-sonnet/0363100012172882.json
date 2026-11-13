@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012172882",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172882/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": "not-visible",
+ "low": [
+  "bays",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "A leafy tree covers the upper storeys.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

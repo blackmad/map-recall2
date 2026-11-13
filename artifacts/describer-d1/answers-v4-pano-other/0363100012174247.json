@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012174247",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002968_pano_0000_000217.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bands",
+  "columns",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pointed dormer above a white cornice band"
+  }
+ ],
+ "notes": "A bare tree covers the left half of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

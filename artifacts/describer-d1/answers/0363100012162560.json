@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012162560",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012162560/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a pointed pediment and hoist beam over the front"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark-framed shopfront with a row of transom lights above the display windows"
+  }
+ ],
+ "notes": "Narrow, low-resolution image."
+}

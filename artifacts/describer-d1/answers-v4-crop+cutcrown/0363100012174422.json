@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  4,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first-storey windows sit in light stone frames, the second-storey pair share one frame"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall white timber ground storey with a row of small-paned entresol windows over the lower openings"
+  }
+ ],
+ "notes": "The gable top is narrow and partly cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

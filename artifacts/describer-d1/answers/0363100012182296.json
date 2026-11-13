@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012182296",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182296/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "dark patterned brick ornament (small diamond motifs) in the spandrels beside each window head"
+  },
+  {
+   "component": "shopfront",
+   "what": "café front with a dark fascia lettered sign, red awning band and green-framed doors"
+  }
+ ],
+ "notes": "Top cornice cut off by the frame edge; a closed parasol hides the middle of the ground storey."
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012168797",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002045_pano_0001_000547.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white entablature with a central plaque over a wide row of ground-storey windows"
+  }
+ ],
+ "notes": "A houseboat covers the foot of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

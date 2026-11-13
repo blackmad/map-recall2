@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168155",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168155/years/2020.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "finish",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "tall ground storey with gridded windows and a double door under a gridded transom"
+  }
+ ],
+ "notes": "Narrow, slightly blurred crop; gable top partly cut."
+}

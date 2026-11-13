@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172012",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172012.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "crown",
+  "ground",
+  "bays",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a curved stepped gable outline capped with red pantile coping"
+  },
+  {
+   "component": "window",
+   "what": "a round oculus high in the gable; window joinery painted green"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground openings closed by roller shutters behind green frames"
+  }
+ ],
+ "notes": "Fish-eye upward view; the outline sits on the right half of a wider stuccoed front with recessed panels between the windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

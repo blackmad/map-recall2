@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168155",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168155/years/2020.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "finish",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white timber ground storey with a large small-paned window and a double door under small-paned transoms"
+  }
+ ],
+ "notes": "Narrow, low-resolution crop; the gable top is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

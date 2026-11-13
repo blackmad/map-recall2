@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012180096",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "extent",
+  "heads",
+  "windowSurround",
+  "doorBay",
+  "souterrain",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "stone dormer with a curved scrolled surround and a small pediment in the slate mansard, one per house"
+  },
+  {
+   "component": "relief",
+   "what": "a row of small light blocks like a dentil frieze under the cornice"
+  }
+ ],
+ "notes": "The outline covers about two three-bay houses of a uniform long block, each with its own door and dormer; posts and signs cross it. Described one house.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

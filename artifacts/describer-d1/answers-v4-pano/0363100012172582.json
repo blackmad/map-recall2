@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172582",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002445_pano_0008_000181.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two round oculus windows flank the single top-storey window"
+  },
+  {
+   "component": "door",
+   "what": "large panelled double cart doors in the middle, a street door with a fanlight on each side, between cream pilasters"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist beam projects from the cornice"
+  }
+ ],
+ "notes": "Parked cars hide the base of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

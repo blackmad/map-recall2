@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172863",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172863/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "cornice",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "small hoist dormer standing on the white cornice"
+  }
+ ],
+ "notes": "Tiny, washed-out image; the ground storey fades into glare."
+}

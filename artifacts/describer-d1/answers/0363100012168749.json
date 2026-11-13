@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168749",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168749/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small round stone medallion between the first-floor and ground windows"
+  },
+  {
+   "component": "door",
+   "what": "a lantern bracket beside the door"
+  }
+ ],
+ "notes": "A tree trunk and branches cross the right side of the front."
+}

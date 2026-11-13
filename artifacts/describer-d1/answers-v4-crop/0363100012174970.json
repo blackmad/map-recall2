@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012174970",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174970/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a dark red timber café front with louvred transom panels"
+  }
+ ],
+ "notes": "Seen across a canal; the quay wall and railing cover the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

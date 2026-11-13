@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174415",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174415/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "windows",
+  "storeyParts",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a louvred attic hatch with a white frame high in the middle of the front"
+  },
+  {
+   "component": "door",
+   "what": "two dark doors under oval-motif transoms at the left of a white timber ground storey with two wide windows"
+  }
+ ],
+ "notes": "Top cut off; image has a smeared artefact in the lower left bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174965",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174965/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "columns",
+  "basement",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "ivy covers the whole ground storey around the door and window"
+  },
+  {
+   "component": "roof",
+   "what": "small ornamental chimney or finial on top of the cornice"
+  }
+ ],
+ "notes": "Tree branches across the left; ground storey mostly hidden by ivy and bicycles."
+}

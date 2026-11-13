@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick pilasters between the window bays ending in corbels under a thin projecting flat roof slab"
+  },
+  {
+   "component": "door",
+   "what": "a pale stone ground-storey frame with a lintel beam around three doors, the middle a glazed double door"
+  }
+ ],
+ "notes": "A 20th-century infill front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "storeyWindows": {
+  "1": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a stucco shopfront frame with pilasters spanning the shop and a glazed storey above it, crowned by a moulded entablature"
+  },
+  {
+   "component": "relief",
+   "what": "dentil course in the cornice and a plain tablet in the frieze"
+  }
+ ],
+ "notes": "The glazed band over the shop sits under its own entablature line, counted as a storey; a parasol and people hide the ground storey door."
+}

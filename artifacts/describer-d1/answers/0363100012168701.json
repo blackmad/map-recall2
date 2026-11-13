@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012168701",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168701/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall central dormer with a red hoist beam above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "two red panelled doors side by side on the ground storey"
+  }
+ ],
+ "notes": "A bare tree covers the left axis; red joinery."
+}

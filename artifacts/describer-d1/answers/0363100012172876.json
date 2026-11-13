@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012172876",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172876/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "bands",
+  "windowSurround",
+  "cornice",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "white stone balustrades under the first- and second-floor windows across the front"
+  },
+  {
+   "component": "window",
+   "what": "first-floor windows have red-painted joinery"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with a pedimented top in a slate mansard, white stone quoins at the corners"
+  }
+ ],
+ "notes": "Corner building seen at an angle; the front face and part of the side face visible."
+}

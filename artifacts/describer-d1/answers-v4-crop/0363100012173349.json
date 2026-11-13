@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012173349",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173349/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "crown",
+  "heads",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small brick gable with one window rising behind a balustraded parapet"
+  }
+ ],
+ "notes": "A tree and a car obscure the lower storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

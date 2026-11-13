@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012182849",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182849.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "casement-sidelights-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a white timber glazed first-floor band of two wide windows between pilaster strips over the shop"
+  },
+  {
+   "component": "dormer",
+   "what": "a white dormer with a pointed hood and hoist beam rising from the cornice centre"
+  },
+  {
+   "component": "relief",
+   "what": "a small date stone in the cornice frieze under the dormer"
+  }
+ ],
+ "notes": "The outline straddles the brown two-bay front and the left bay of the black-painted neighbour; described the brown front, which fills most of it. A blurred person covers the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

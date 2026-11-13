@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012175139",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175139/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "doorBay",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "Dark, low-resolution image with a tree across the top; a gable window shows above the two upper storeys."
+}

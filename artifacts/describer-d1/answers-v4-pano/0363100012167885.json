@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012167885",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-003006_pano_0002_000251.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "bands",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a light plastered ground storey with three red street doors between multi-paned windows."
+  },
+  {
+   "component": "roof",
+   "what": "a plastered attic band with lamps above the top cornice."
+  }
+ ],
+ "notes": "Parking signs cover part of the right half; six axes in two groups of three.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012168606",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168606/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick relieving arches over the flat window heads with a white keystone block in each"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white coping on the bell gable with a hoist beam at the top"
+  }
+ ]
+}

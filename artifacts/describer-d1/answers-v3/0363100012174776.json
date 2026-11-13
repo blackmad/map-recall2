@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012174776",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "large white carved claw pieces at the neck foot and a scrolled white crowning piece with a hoist beam"
+  },
+  {
+   "component": "balcony",
+   "what": "French balcony railing in the centre window of the top storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark shopfront under a white fascia band with the shop windows at left and doors at right"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012173421",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002968_pano_0000_000179.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "doorBay",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door with a fanlight over a stoop with railings and a basement door below"
+  }
+ ],
+ "notes": "The outline covers only the door bay and one window axis of a wider dark front; a tree trunk is in front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

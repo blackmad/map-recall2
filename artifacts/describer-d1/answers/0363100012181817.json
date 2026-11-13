@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012181817",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181817/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "columns",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber ground frame with an entresol row of four large windows over black double doors fitted with ATMs and a black house door at the right"
+  },
+  {
+   "component": "balcony",
+   "what": "low French-balcony rails across the first- and third-floor windows"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the window axes"
+  }
+ ],
+ "notes": "Crown cut off by the top edge of the frame."
+}

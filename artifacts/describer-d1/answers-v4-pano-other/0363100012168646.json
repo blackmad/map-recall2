@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012168646",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001275.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "4": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a single four-light ribbon window centred under the parapet"
+  },
+  {
+   "component": "roof",
+   "what": "plain brick parapet with rounded upper corners"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

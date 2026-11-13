@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012175141",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175141/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "windows",
+  "bands",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small round anchor plates or rosettes at the band ends"
+  }
+ ],
+ "notes": "Extremely oblique; the image centre falls between a brick front with white stone stripes (left, described) and a gabled red-brown front with a white ground storey (right)."
+}

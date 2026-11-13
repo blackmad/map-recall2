@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174969",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_002356.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "cornice",
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white rococo crest with scrolls, vases and an oval window raised over the middle of the cornice"
+  }
+ ],
+ "notes": "The outline covers only the right axis; the front is read whole.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

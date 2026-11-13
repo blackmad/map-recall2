@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172000",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172000/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "bays",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a gridded transom band, a wide display window and a door at the right"
+  }
+ ],
+ "notes": "The outer window axes are cut by the image edges."
+}

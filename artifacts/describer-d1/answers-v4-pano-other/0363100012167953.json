@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012167953",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002299.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "finish",
+  "pale",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "A lamp post and a tree in leaf cover most of the front; the top is hidden.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

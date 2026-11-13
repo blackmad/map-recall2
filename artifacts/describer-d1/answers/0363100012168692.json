@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012168692",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "storeys",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white-painted shopfront with a lettered fascia and a lantern"
+  }
+ ],
+ "notes": "Two two-bay fronts side by side in one dark wall; described the right one with the shop. A tree hides the top."
+}

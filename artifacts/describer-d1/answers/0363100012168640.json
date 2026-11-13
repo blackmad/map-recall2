@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012168640",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168640/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2020,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "spout",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam projecting from the top of the gable"
+  }
+ ],
+ "notes": "Steep oblique view of a narrow brick gable front between a rendered corner building and a white banded building; counts are uncertain."
+}

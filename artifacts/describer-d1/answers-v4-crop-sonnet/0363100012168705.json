@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "garage opening under a plain lintel at ground left"
+  }
+ ],
+ "notes": "Top cut off at the cornice.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

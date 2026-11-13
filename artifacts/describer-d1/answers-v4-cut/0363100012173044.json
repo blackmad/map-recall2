@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012173044",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173044.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bands",
+  "windowSurround",
+  "columns",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes at the centre windows of the first and second floors"
+  },
+  {
+   "component": "dormer",
+   "what": "a single white dormer with a round-arched window and pediment in the mansard"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is a two-tier white pilastered frontage with an upper row of windows over the doors"
+  }
+ ],
+ "notes": "Tree branches cross the whole front and a houseboat hides the base; unsure whether the upper tier of the ground frontage is a separate storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-003006_pano_0002_000251.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "columns",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof rises behind the white frieze and cornice."
+  }
+ ],
+ "notes": "A tree stands in front of the right axis; the ground storey is partly behind a parked car.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

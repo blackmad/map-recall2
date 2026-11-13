@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012170088",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170088/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "blue-and-white stained glass in the first-storey top lights"
+  }
+ ],
+ "notes": "Bare tree branches cross the whole front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

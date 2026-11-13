@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002923_pano_0001_000014.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "red double doors with a diamond-pattern top light at the right of the ground storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white scroll claw pieces and a carved cap on the bell gable"
+  }
+ ],
+ "notes": "Sun glare on the second upper storey hides its middle.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

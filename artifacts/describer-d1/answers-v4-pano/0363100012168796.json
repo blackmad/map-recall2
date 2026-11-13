@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012168796",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002990_pano_0012_000106.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "crown",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a tiled pitched roof slope visible behind the cornice"
+  }
+ ],
+ "notes": "A lamp post and branches cross the left edge; the leftmost axis is cut by the outline.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

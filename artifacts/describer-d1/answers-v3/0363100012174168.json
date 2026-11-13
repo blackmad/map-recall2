@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174168",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174168/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "grey",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark fascia with gilt lettering over a white-framed restaurant front with a separate dark door at the left"
+  },
+  {
+   "component": "relief",
+   "what": "small decorative brick panels beside the window heads"
+  }
+ ],
+ "notes": "A tree covers the upper left bay; the parapet top is plain."
+}

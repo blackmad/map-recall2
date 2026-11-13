@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182849",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182849/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windowSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "tall white pedimented dormer with a hoist beam rising from the cornice centre, flanked by white attic blocks"
+  },
+  {
+   "component": "relief",
+   "what": "date or name stone set in the frieze under the dormer"
+  },
+  {
+   "component": "shopfront",
+   "what": "white pilastered glazed band with signage over the shop, read as its own storey"
+  }
+ ],
+ "notes": "A large orange parasol hides most of the ground storey, so the shop and the band above it are hard to separate."
+}

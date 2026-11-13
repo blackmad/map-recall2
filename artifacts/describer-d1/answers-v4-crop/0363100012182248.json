@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012182248",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182248/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "storeyWindows": {
+  "1": "sash-6-over-6"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sculpted claw pieces and two round oculi flank the attic window"
+  },
+  {
+   "component": "door",
+   "what": "a white stone door frame with a cornice cap on the left axis"
+  },
+  {
+   "component": "shopfront",
+   "what": "a small shop in the souterrain under the stoop"
+  }
+ ],
+ "notes": "The top of the neck is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

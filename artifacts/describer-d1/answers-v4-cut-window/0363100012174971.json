@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012174971",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174971.jpg + artifacts/describer-d1/windows/0363100012174971.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped roof face without windows rises behind the cornice"
+  }
+ ],
+ "notes": "The ground storey is hidden by a blurred hoarding; the image is low resolution.",
+ "storeys": 4,
+ "wallFamily": "not-visible",
+ "paneLayout": "multi-pane"
+}

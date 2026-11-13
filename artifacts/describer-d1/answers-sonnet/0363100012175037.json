@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012175037",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175037/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 7,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "pedimented dormers at the roof ends over a steep hipped roof"
+  },
+  {
+   "component": "door",
+   "what": "stoop with iron railings leading to a central door"
+  }
+ ]
+}

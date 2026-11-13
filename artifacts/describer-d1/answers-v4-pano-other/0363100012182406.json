@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182406",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000003.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "doorBay",
+  "storeyParts",
+  "souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "tall ground-storey windows with many small panes between white pilaster strips"
+  }
+ ],
+ "notes": "A street lamp and a tree stand in front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

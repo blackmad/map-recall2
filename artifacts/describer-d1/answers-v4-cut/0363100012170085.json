@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012170085",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012170085.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "souterrain",
+  "basement",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a tall white-painted ground storey between pilasters: a door with a carved fanlight up a short stoop, and one very tall window"
+  },
+  {
+   "component": "roof",
+   "what": "a red-tiled pitched roof behind the cornice with a hoist beam"
+  }
+ ],
+ "notes": "The outline sits across the narrow dark front and the left edge of the brown front to its right; the dark front, which fills most of it, is described.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

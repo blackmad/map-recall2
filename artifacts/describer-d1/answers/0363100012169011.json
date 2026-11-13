@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012169011",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169011/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "bays",
+  "cornice",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white classical stone portal round the street door at the right"
+  },
+  {
+   "component": "dormer",
+   "what": "three gabled dormers in the mansard roof"
+  },
+  {
+   "component": "window",
+   "what": "first-storey right axis has a triple window"
+  }
+ ],
+ "notes": "A hoarding covers the ground storey; lens flares on the upper right."
+}

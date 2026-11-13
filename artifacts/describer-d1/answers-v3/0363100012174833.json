@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012174833",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "ground",
+  "basement"
+ ],
+ "gaps": [],
+ "notes": "A tree covers the right edge of the front; lens flare on the top storey."
+}

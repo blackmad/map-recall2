@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000003.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "low": [
+  "columns",
+  "storeyParts",
+  "souterrain",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "very tall ground-storey sash windows with many small panes in white frames with a white sill band"
+  },
+  {
+   "component": "roof",
+   "what": "long red pantile roof with small hatch dormers above a white eaves board"
+  }
+ ],
+ "notes": "One long painted corner building split into pands; a bare tree stands in front of the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

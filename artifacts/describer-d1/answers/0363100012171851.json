@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012171851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171851/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 2,
+ "columns": [
+  3,
+  2
+ ],
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "light stone copings on each step of the gable"
+  },
+  {
+   "component": "shopfront",
+   "what": "a full-width red awning and fascia over a modern shopfront"
+  }
+ ],
+ "notes": "Two-window storey sits low in the stepped gable, counted as gable not as a full storey."
+}

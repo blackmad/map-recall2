@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012174495",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001666_pano_0000_000925.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "finish",
+  "pale",
+  "crown",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "A street lamp crosses the left axis; strong sun washes the wall.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

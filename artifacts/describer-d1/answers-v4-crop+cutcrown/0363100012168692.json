@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168692",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "extent",
+  "ground",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white-rendered shopfront with a painted name fascia on the right half of the ground storey"
+  }
+ ],
+ "notes": "A tree hides the left half and the top; the wide front may be two houses painted as one. [crown from describe cut]",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

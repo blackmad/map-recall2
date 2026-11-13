@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012172618",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172618/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "storeyParts",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a white timber ground storey with a door at each side and a window in the middle"
+  }
+ ],
+ "notes": "A bare tree stands right in front of the middle of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012176172",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176172/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "windowSurround",
+  "wallFamily",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "Extremely oblique view; the front is foreshortened and the crown cannot be read. Described the brown two-bay front right of the grey building."
+}

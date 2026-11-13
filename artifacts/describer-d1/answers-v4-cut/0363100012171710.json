@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012171710",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171710.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small brick point gable with a single framed window sits back above a light frieze cornice spanning the front"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark awning with a planted ledge covers the top of the shop storey"
+  }
+ ],
+ "notes": "Bare tree branches and a lamp post cross the upper windows; the awning may hide a mezzanine.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168157",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168157/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "storeyWindows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white-framed hoist window in the plain pointed gable"
+  }
+ ],
+ "notes": "Faint, grainy image; parked cars cover the base."
+}

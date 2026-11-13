@@ -1,0 +1,38 @@
+{
+ "v": 1,
+ "pandId": "0363100012182581",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182581/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "low": [
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark green pub front with a hanging round sign and a flag pole"
+  }
+ ],
+ "notes": "Very narrow crop showing only one window axis of a brick wall; the flag hides the second-storey window, the top is cut off."
+}

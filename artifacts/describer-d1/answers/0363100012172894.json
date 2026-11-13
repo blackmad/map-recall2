@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012172894",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172894/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": "not-visible",
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "heads",
+  "doorBay",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a round-arched doorway on the right"
+  }
+ ],
+ "notes": "Unsure of the target: the centre falls past a near corner building onto a distant brick building seen at an angle, whose two window columns sit at different heights."
+}

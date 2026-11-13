@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012168604",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168604/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2022,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "cross",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "crown",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small inscribed stone tablet between the first-floor windows"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks at the window head corners and a stone cornerpiece at the gable foot"
+  }
+ ],
+ "notes": "Narrow, low-resolution crop; door position cannot be seen."
+}

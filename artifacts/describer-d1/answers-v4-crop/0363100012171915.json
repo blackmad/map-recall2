@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171915/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "low iron railings across the lower part of every upper window and a French balcony on the top middle axis"
+  },
+  {
+   "component": "door",
+   "what": "a round-headed doorway with a shell fanlight at the top of a long stoop"
+  }
+ ],
+ "notes": "The top is cut off just above the top storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

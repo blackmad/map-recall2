@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171915/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "wallFamily",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-arched recessed porch with a shell fanlight above a long stoop"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron guard rails across the upper windows"
+  }
+ ],
+ "notes": "Top cut off at the cornice; a shrub hides the right basement."
+}

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012170933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a projecting bay window with angled sides at the upper floor"
+  }
+ ],
+ "notes": "Fence hides the ground; top cut off.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

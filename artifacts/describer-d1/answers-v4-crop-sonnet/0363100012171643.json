@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171643",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171643/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "crown",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "scroll finial at the top of the curved gable"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

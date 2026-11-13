@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 5,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "round",
+  "segmental",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "rusticated pilasters of alternating white stone blocks and brick between the window axes"
+  },
+  {
+   "component": "window",
+   "what": "first-floor round-arched windows under brick arches with white keystones; second-floor heads with white arched hoods"
+  },
+  {
+   "component": "dormer",
+   "what": "two dormers in a slate mansard over a white bracketed cornice"
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171823",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 6,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#5d5147"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "stacked full-height glazed bay windows with metal fronts and glass balconies on top, three such columns on the front"
+  },
+  {
+   "component": "roof",
+   "what": "a curved glass-roofed rooftop pavilion on the corner stair tower"
+  },
+  {
+   "component": "shopfront",
+   "what": "a recessed arcade ground storey on round columns with an office entrance canopy and a jeweller's shop"
+  }
+ ]
+}

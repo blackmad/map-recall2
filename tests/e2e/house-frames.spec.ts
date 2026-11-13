@@ -84,6 +84,20 @@ test('house frames', async ({ page }) => {
     const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
+  // HOUSE_FRAMES_SPECS_DIR=<dir> (lane D1 pixel-check): the house-specs extract tiles are served from a staged extract
+  // (build-house-specs' public/data/extracts/amsterdam/staging/house-specs) instead of the published one, so a
+  // `?world=live` frame draws staged specs without a publish (the live tile streamer decorates in the page). Only for
+  // the lists whose out dir contains HOUSE_FRAMES_SPECS_FOR (default: every list), so one --lists batch takes today and
+  // the staged spec side by side. A tile missing from the staged dir falls through to the published one.
+  const specsDir = process.env.HOUSE_FRAMES_SPECS_DIR ? resolve(process.env.HOUSE_FRAMES_SPECS_DIR) : '';
+  const specsFor = process.env.HOUSE_FRAMES_SPECS_FOR ?? '';
+  let specsOn = false, specsServed = 0;
+  if (specsDir) await page.context().route(/\/data\/extracts\/amsterdam\/house-specs\/14\/\d+\/\d+\.json\.gz(\?.*)?$/, route => {
+    const file = join(specsDir, /\/house-specs\/(14\/\d+\/\d+\.json\.gz)/.exec(route.request().url())![1]);
+    if (!specsOn || !existsSync(file)) return route.continue();
+    specsServed++;
+    return route.fulfill({ path: file, contentType: 'application/octet-stream' });
+  });
   let opened = 0, sinceOpen = Infinity, lastOut = '';
   const timings: Array<Record<string, number | string>> = [];
   const t0 = Date.now();
@@ -97,6 +111,7 @@ test('house frames', async ({ page }) => {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const ts = Date.now();
+        specsOn = !!specsDir && (!specsFor || (pose.out ?? job.out).includes(specsFor));
         if (sinceOpen >= job.reopenEvery) {
           if (opened) { await page.goto('about:blank'); }
           await openPage(page, job); opened++; sinceOpen = 0;
@@ -135,10 +150,10 @@ test('house frames', async ({ page }) => {
           if (!f) return { ...out, found: false };
           const p = f.properties ?? {};
           return { ...out, found: true, constructionYear: p.constructionYear ?? null, facadeStyle: p.facadeStyle ?? null, registerFinish: p.registerFinish ?? null,
-            specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, heldBrick: !!p.specRecipe?.heldBrick,
+            specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, specRecipe: p.specRecipe ?? null, specShop: p.specShop ?? null, heldBrick: !!p.specRecipe?.heldBrick,
             facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
         }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
-        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
+        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });
         sinceOpen++;
         break;

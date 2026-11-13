@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012571534",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012571534/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "on the top storey the two outer axes are blind recessed niches and the middle window is glazed only in its lower part"
+  },
+  {
+   "component": "window",
+   "what": "lower casements are in small panes under a plain top light"
+  }
+ ],
+ "notes": "Top overexposed; ground storey hidden by a parasol and terrace."
+}

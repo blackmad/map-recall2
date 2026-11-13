@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012172888",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002968_pano_0000_000179.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French doors with iron balconettes on the centre axis of both upper storeys"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the gable ends in a small moulded triangular pediment with a hoist hook"
+  }
+ ],
+ "notes": "A parked car hides the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

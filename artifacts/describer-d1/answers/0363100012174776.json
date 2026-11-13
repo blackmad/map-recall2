@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012174776",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "large white carved scroll claw pieces at the neck shoulders and a carved crowning cap"
+  },
+  {
+   "component": "balcony",
+   "what": "French balcony railing in the centre window of the top storey"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012168277",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "not-visible",
+ "low": [
+  "crown",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a single-storey café pavilion under a tall pyramid roof with a green-edged flat canopy all round"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched glazed entrance in the centre of the pavilion front"
+  }
+ ],
+ "notes": "Not a row house: a park café pavilion in dark shade behind trees.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

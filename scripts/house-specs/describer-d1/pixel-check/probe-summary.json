@@ -1,0 +1,607 @@
+[
+ {
+  "pandId": "0363100012171218",
+  "staged": {
+   "storeys": 3,
+   "bays": 3,
+   "bands": "speklagen",
+   "souterrain": true,
+   "gable": null,
+   "windowHead": null,
+   "cornice": null,
+   "pui": "residential",
+   "wallMaterial": "brick",
+   "brick": "#3e3a35"
+  },
+  "today-default": {
+   "grid": "5x2",
+   "storeyM": 2.66,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#3c3732",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "5x2",
+   "storeyM": 2.66,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#3c3732",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "3x3",
+   "storeyM": 5.31,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#3e3a35",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "3x3",
+   "storeyM": 5.31,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#3e3a35",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012168127",
+  "staged": {
+   "storeys": 3,
+   "bays": 3,
+   "bands": "both",
+   "souterrain": true,
+   "gable": null,
+   "windowHead": "segmental",
+   "cornice": null,
+   "pui": "residential",
+   "wallMaterial": "brick",
+   "brick": "#584e43"
+  },
+  "today-default": {
+   "grid": "4x4",
+   "storeyM": 3.46,
+   "preset": 85,
+   "groundLayer": 86,
+   "wall": "#535758",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "4x4",
+   "storeyM": 3.46,
+   "preset": 85,
+   "groundLayer": 86,
+   "wall": "#535758",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "3x3",
+   "storeyM": 5.19,
+   "preset": 85,
+   "groundLayer": 86,
+   "wall": "#6d6357",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "3x3",
+   "storeyM": 5.19,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#6d6357",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012168176",
+  "staged": {
+   "storeys": 4,
+   "bays": 3,
+   "bands": "both",
+   "souterrain": null,
+   "gable": "step",
+   "windowHead": null,
+   "cornice": null,
+   "pui": "shop",
+   "wallMaterial": "brick",
+   "brick": "#46433e"
+  },
+  "today-default": {
+   "grid": "5x2",
+   "storeyM": 2.97,
+   "preset": 76,
+   "groundLayer": 77,
+   "wall": "#54473a",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "5x2",
+   "storeyM": 2.97,
+   "preset": 76,
+   "groundLayer": 77,
+   "wall": "#54473a",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x3",
+   "storeyM": 3.96,
+   "preset": 76,
+   "groundLayer": 77,
+   "wall": "#46433e",
+   "shop": false,
+   "finish": "brick",
+   "gable": "step"
+  },
+  "staged-design1": {
+   "grid": "4x3",
+   "storeyM": 3.96,
+   "preset": 76,
+   "groundLayer": 70,
+   "wall": "#46433e",
+   "shop": true,
+   "finish": "brick",
+   "gable": "step"
+  }
+ },
+ {
+  "pandId": "0363100012171889",
+  "staged": {
+   "storeys": 3,
+   "bays": 3,
+   "bands": "speklagen",
+   "souterrain": null,
+   "gable": "step",
+   "windowHead": "segmental",
+   "cornice": "none",
+   "pui": "residential",
+   "wallMaterial": "brick",
+   "brick": "#59534c"
+  },
+  "today-default": {
+   "grid": "4x4",
+   "storeyM": 3.15,
+   "preset": 100,
+   "groundLayer": 69,
+   "wall": "#6a554e",
+   "shop": true,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "4x4",
+   "storeyM": 3.15,
+   "preset": 100,
+   "groundLayer": 69,
+   "wall": "#6a554e",
+   "shop": true,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "3x3",
+   "storeyM": 5.04,
+   "preset": 100,
+   "groundLayer": 69,
+   "wall": "#635d56",
+   "shop": true,
+   "finish": "brick",
+   "gable": "step"
+  },
+  "staged-design1": {
+   "grid": "3x3",
+   "storeyM": 5.04,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#635d56",
+   "shop": false,
+   "finish": "brick",
+   "gable": "step"
+  }
+ },
+ {
+  "pandId": "0363100012171222",
+  "staged": {
+   "storeys": 4,
+   "bays": 3,
+   "bands": "speklagen",
+   "souterrain": null,
+   "gable": null,
+   "windowHead": null,
+   "cornice": null,
+   "pui": "shop",
+   "wallMaterial": "brick",
+   "brick": "#45403a"
+  },
+  "today-default": {
+   "grid": "5x4",
+   "storeyM": 2.96,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "5x4",
+   "storeyM": 2.96,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x3",
+   "storeyM": 3.95,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#48433d",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "4x3",
+   "storeyM": 3.95,
+   "preset": 97,
+   "groundLayer": 70,
+   "wall": "#48433d",
+   "shop": true,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012171198",
+  "staged": {
+   "storeys": 4,
+   "bays": 1,
+   "bands": null,
+   "souterrain": null,
+   "gable": null,
+   "windowHead": "flat",
+   "cornice": null,
+   "pui": "residential",
+   "wallMaterial": "painted-brick",
+   "brick": "#747770"
+  },
+  "today-default": {
+   "grid": "4x2",
+   "storeyM": 3.19,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#615444",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "4x2",
+   "storeyM": 3.19,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#615444",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x1",
+   "storeyM": 3.19,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#8a8b88",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "4x1",
+   "storeyM": 3.19,
+   "preset": 65,
+   "groundLayer": 66,
+   "wall": "#8a8b88",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012171824",
+  "staged": {
+   "storeys": 4,
+   "bays": 2,
+   "bands": "storey",
+   "souterrain": null,
+   "gable": "cornice",
+   "windowHead": "segmental",
+   "cornice": null,
+   "pui": "shop",
+   "wallMaterial": "brick",
+   "brick": "#51433b"
+  },
+  "today-default": {
+   "grid": "5x2",
+   "storeyM": 3.05,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#6a554e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "5x2",
+   "storeyM": 3.05,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#6a554e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x2",
+   "storeyM": 4.06,
+   "preset": 91,
+   "groundLayer": 92,
+   "wall": "#61534a",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "4x2",
+   "storeyM": 4.06,
+   "preset": 88,
+   "groundLayer": 70,
+   "wall": "#61534a",
+   "shop": true,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012175059",
+  "staged": {
+   "storeys": 4,
+   "bays": 3,
+   "bands": null,
+   "souterrain": null,
+   "gable": "cornice",
+   "windowHead": "segmental",
+   "cornice": null,
+   "pui": "warehouse",
+   "wallMaterial": "brick",
+   "brick": "#504640"
+  },
+  "today-default": {
+   "grid": "5x4",
+   "storeyM": 2.95,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#8b7366",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "5x4",
+   "storeyM": 2.95,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#8b7366",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x3",
+   "storeyM": 3.93,
+   "preset": 97,
+   "groundLayer": 98,
+   "wall": "#5f544e",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "4x3",
+   "storeyM": 3.93,
+   "preset": 94,
+   "groundLayer": 95,
+   "wall": "#5f544e",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012168095",
+  "staged": {
+   "storeys": 4,
+   "bays": 2,
+   "bands": null,
+   "souterrain": true,
+   "gable": null,
+   "windowHead": "segmental",
+   "cornice": "none",
+   "pui": "residential",
+   "wallMaterial": "brick",
+   "brick": "#362c27"
+  },
+  "today-default": {
+   "grid": "6x2",
+   "storeyM": 2.86,
+   "preset": 65,
+   "groundLayer": 66,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "6x2",
+   "storeyM": 2.86,
+   "preset": 65,
+   "groundLayer": 66,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "4x2",
+   "storeyM": 4.77,
+   "preset": 65,
+   "groundLayer": 66,
+   "wall": "#403530",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "4x2",
+   "storeyM": 4.77,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#403530",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012176214",
+  "staged": {
+   "storeys": 3,
+   "bays": 3,
+   "bands": "lintel",
+   "souterrain": null,
+   "gable": "cornice",
+   "windowHead": "segmental",
+   "cornice": null,
+   "pui": "shop",
+   "wallMaterial": "brick",
+   "brick": "#433a33"
+  },
+  "today-default": {
+   "grid": "3x2",
+   "storeyM": 3.21,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#6a554e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "3x2",
+   "storeyM": 3.21,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#6a554e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "3x3",
+   "storeyM": 3.21,
+   "preset": 88,
+   "groundLayer": 89,
+   "wall": "#4c433b",
+   "shop": false,
+   "finish": "brick",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "3x3",
+   "storeyM": 3.21,
+   "preset": 88,
+   "groundLayer": 70,
+   "wall": "#4c433b",
+   "shop": true,
+   "finish": "brick",
+   "gable": null
+  }
+ },
+ {
+  "pandId": "0363100012178187",
+  "staged": {
+   "storeys": 3,
+   "bays": 4,
+   "bands": null,
+   "souterrain": null,
+   "gable": null,
+   "windowHead": "segmental",
+   "cornice": null,
+   "pui": "shop",
+   "wallMaterial": "stucco",
+   "brick": "#4a4844"
+  },
+  "today-default": {
+   "grid": "4x4",
+   "storeyM": 2.73,
+   "preset": 100,
+   "groundLayer": 101,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "today-design1": {
+   "grid": "4x4",
+   "storeyM": 2.73,
+   "preset": 100,
+   "groundLayer": 101,
+   "wall": "#5c4c3e",
+   "shop": false,
+   "finish": null,
+   "gable": null
+  },
+  "staged-default": {
+   "grid": "3x4",
+   "storeyM": 4.09,
+   "preset": 100,
+   "groundLayer": 101,
+   "wall": "#4a4844",
+   "shop": false,
+   "finish": "light",
+   "gable": null
+  },
+  "staged-design1": {
+   "grid": "3x4",
+   "storeyM": 4.09,
+   "preset": 88,
+   "groundLayer": 70,
+   "wall": "#4a4844",
+   "shop": true,
+   "finish": "light",
+   "gable": null
+  }
+ }
+]

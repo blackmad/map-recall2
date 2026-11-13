@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012176278",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176278/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream rendered shopfront with pilasters, a moulded entablature and a curved bow display window between two doors"
+  },
+  {
+   "component": "balcony",
+   "what": "thin iron rails across the lower part of the first-floor windows"
+  }
+ ],
+ "notes": "Only the first upper storey is fully in view; top cut off."
+}

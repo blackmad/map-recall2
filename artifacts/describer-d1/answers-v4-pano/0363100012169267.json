@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012169267",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001543_pano_0000_000961.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks alternate with brick around every upper window and run across as a toothed band at the heads"
+  },
+  {
+   "component": "dormer",
+   "what": "one dormer with a pointed pediment in the slate mansard"
+  }
+ ],
+ "notes": "Ground storey partly hidden by a pole and a red van.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

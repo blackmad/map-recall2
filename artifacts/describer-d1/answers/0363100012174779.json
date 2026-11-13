@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012174779",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174779/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a dark shopfront with a lettered fascia and decorative window grilles"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small hoist beam or ornament near the gable top"
+  }
+ ],
+ "notes": "Bare branches cross the middle storeys."
+}

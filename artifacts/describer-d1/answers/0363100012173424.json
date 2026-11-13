@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012173424",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173424/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "ground",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground-storey windows with leaded lower panes"
+  }
+ ],
+ "notes": "An ornate street lamp stands in front of the middle of the front and hides most detail."
+}

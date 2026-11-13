@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012571534",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012571534.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber café front with pilasters and a cornice, wrapping round the corner"
+  },
+  {
+   "component": "relief",
+   "what": "a hanging iron sign bracket and lanterns at the first-floor corner, a gilded figure at the cornice corner"
+  },
+  {
+   "component": "basement",
+   "what": "an iron railing beside the front guards a stair down to a basement"
+  }
+ ],
+ "notes": "Corner building seen from below at the corner; the outlined side front is foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

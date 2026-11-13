@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconettes at the middle balcony doors on the upper storeys"
+  },
+  {
+   "component": "window",
+   "what": "ground storey under one wide segmental arch with a white band and a gridded fanlight across the door and windows"
+  }
+ ],
+ "notes": "A large tree covers the right bay and branches cross the top."
+}

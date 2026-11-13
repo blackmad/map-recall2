@@ -1,0 +1,36 @@
+{
+ "v": 1,
+ "pandId": "0363100100093912",
+ "image": {
+  "ref": "source-data://pand-crops/0363100100093912/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "The middle shows a low brick gate wall with a lettered fascia and a graffiti-covered door, not a house front. [crown from describe cut]",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

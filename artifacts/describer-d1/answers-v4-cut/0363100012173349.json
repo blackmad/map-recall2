@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012173349",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173349.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "heads",
+  "bands",
+  "columns",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a low balustrade on the cornice with a small pedimented dormer gable rising behind it"
+  },
+  {
+   "component": "relief",
+   "what": "small carved mascaron heads flank the top-storey windows and a stone tablet sits between the second-floor windows"
+  },
+  {
+   "component": "window",
+   "what": "projecting ledges on small consoles run under the first- and second-floor windows"
+  }
+ ],
+ "notes": "A parked car hides the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

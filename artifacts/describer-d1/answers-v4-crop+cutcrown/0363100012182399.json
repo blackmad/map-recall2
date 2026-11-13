@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182399/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-sidelights-toplight"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "storeyWindows"
+ ],
+ "gaps": [],
+ "notes": "The gable is cut off at the top and a site fence hides the ground storey. [crown from describe cut]",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

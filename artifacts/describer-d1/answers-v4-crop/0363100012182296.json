@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182296",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182296/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone keystone blocks with a carved face over each upper window, set in a shallow brick arch"
+  },
+  {
+   "component": "shopfront",
+   "what": "café ground storey with a fascia sign and green-painted pilasters, largely hidden by a parasol"
+  }
+ ],
+ "notes": "Top of the front cut off; the ground storey is hidden by a red parasol.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

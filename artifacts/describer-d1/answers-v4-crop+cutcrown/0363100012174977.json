@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174977",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174977/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "basement",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small iron balconette before the middle first-storey window"
+  }
+ ],
+ "notes": "A parked van covers the lower ground storey; branches cross the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

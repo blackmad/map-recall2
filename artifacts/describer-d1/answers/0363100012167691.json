@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012167691",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167691/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "basement",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door with a white frame and a fanlight above it"
+  }
+ ],
+ "notes": "Very narrow, small image across a canal; the neck gable at the left is the middle front."
+}

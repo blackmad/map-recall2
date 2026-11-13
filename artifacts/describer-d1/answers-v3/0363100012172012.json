@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012172012",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172012/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "columns",
+  "storeyWindows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small red iron balcony rail in front of red doors in the single centre window of the top storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "stone scroll claw pieces at the foot of a neck gable"
+  },
+  {
+   "component": "door",
+   "what": "two red panelled doors side by side at the right of the ground storey"
+  }
+ ],
+ "notes": "The neck gable's top is cut off; the single centre window under the gable foot was counted as a storey."
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012177023",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012177023.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white corner oriel on the first storey at the left corner"
+  },
+  {
+   "component": "window",
+   "what": "the two centre axes have ornate white pedimented and corniced window heads on the lower two upper storeys"
+  },
+  {
+   "component": "balcony",
+   "what": "two ornamental iron balconettes on the first storey centre windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a large brick dormer with two arched windows and a white pediment over the frieze"
+  },
+  {
+   "component": "shopfront",
+   "what": "three shop bays with white frames and a fascia; the sign is also painted on the white frieze"
+  }
+ ],
+ "notes": "A corner building; door positions hidden by blurred objects and parked cars.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

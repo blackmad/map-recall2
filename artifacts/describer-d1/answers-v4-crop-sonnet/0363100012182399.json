@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182399/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "crown",
+  "columns"
+ ],
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "gaps": [
+  {
+   "component": "window",
+   "what": "wide gable window with three lights in a white frame"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

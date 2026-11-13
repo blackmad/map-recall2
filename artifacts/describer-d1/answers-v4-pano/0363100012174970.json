@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012174970",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_002356.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "t-window",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one pedimented dormer centred on the roof behind the cornice"
+  }
+ ],
+ "notes": "Blurred panels hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

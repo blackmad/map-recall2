@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012175206",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175206/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "coloured glazed tile panels in the spandrels above the first- and second-floor windows"
+  },
+  {
+   "component": "relief",
+   "what": "red brick round arches, piers and corner strips set into the yellow brick"
+  },
+  {
+   "component": "dormer",
+   "what": "a central raised dormer-tower with a projecting hood and hoist rising above the parapet"
+  }
+ ]
+}

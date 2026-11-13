@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012168701",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168701.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "crown",
+  "windowSurround",
+  "windows",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a neo-renaissance gable in white stone with scrolled side pieces, a pedimented top and a window in it"
+  },
+  {
+   "component": "window",
+   "what": "window frames and the double front door are painted red"
+  },
+  {
+   "component": "door",
+   "what": "a red souterrain door under the stoop"
+  }
+ ],
+ "notes": "A young tree in front crosses the left axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

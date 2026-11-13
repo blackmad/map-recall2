@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012172875",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172875/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": "not-visible",
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "wallFamily",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront wrapping the corner on the ground storey"
+  }
+ ],
+ "notes": "Unsure of the target: the image centre falls on the edge between a near corner building (left, only its side and a shop window visible) and a distant four-storey corner building, which is the one described."
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172891",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 1,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "cornice",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "patterned brick frieze below a plain white cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "brick dormer with an arched window and a second small dormer on the roof"
+  },
+  {
+   "component": "window",
+   "what": "a narrow small window on the left axis of each storey beside three wider windows"
+  }
+ ],
+ "notes": "Corner building; only the street front facing the camera described."
+}

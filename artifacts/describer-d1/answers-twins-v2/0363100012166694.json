@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012166694",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012166694.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "notes": "Ground storey partly behind a climbing plant."
+}

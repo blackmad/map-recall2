@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182708/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "windows",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "ground storey pilasters carry small round medallions and scroll ornaments"
+  },
+  {
+   "component": "roof",
+   "what": "a deep white entablature cornice across the top"
+  }
+ ],
+ "notes": "The right edge cuts a fourth window axis; the front may continue beyond the image."
+}

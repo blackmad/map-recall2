@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012175140",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175140/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 5,
+ "columns": [
+  3,
+  5,
+  5
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a timber shopfront with carved arched brackets under the fascia and fluted pilasters with round medallions, flanking a recessed centre door"
+  }
+ ],
+ "notes": "Top edge clips the cornice."
+}

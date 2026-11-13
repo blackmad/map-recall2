@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012170043",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "columns",
+  "basement",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "diamond (lozenge) lead glazing in the ground storey top lights and side lights"
+  },
+  {
+   "component": "door",
+   "what": "a white timber ground storey with a stoop of stone steps and iron rails up to the door"
+  }
+ ],
+ "notes": "Top washed out by glare; the right bay is cut by the crop edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

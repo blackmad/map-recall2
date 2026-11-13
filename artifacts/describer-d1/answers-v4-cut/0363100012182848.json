@@ -1,0 +1,36 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182848.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "The outline holds lamp and sign poles in front of a mostly blank brick side wall of a corner building; no house front can be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}
