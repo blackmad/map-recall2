@@ -52,12 +52,15 @@ export interface RowFrontRecord {
   shopTopM?: number;
   fasciaHex?: string;
   /** Sub-fronts of one pand (left to right as seen, fractions of the span) and their wall colours. */
-  subFronts?: Array<{ a0: number; a1: number; wallHex?: string }>;
+  subFronts?: SubFrontRecord[];
   /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
   sources: Record<string, string>;
 }
+
+/** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
+export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
 
 export const ROW_FRONT_DEFAULT = false;
 /**
@@ -169,7 +172,13 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
     if (t.shopBandTopM !== null) out.shopTopM = at(t.shopBandTopM)!;
     if (t.fascia?.hex) out.fasciaHex = t.fascia.hex;
   }
-  if (fr !== whole && span) out.subFronts = whole.fronts!.map(f => ({ a0: Math.round(f.from / span * 1000) / 1000, a1: Math.round(Math.min(span, f.to) / span * 1000) / 1000, ...(f.wall?.hex ? { wallHex: f.wall.hex } : {}) }));
+  // Each sub-front through this adapter on its own (its width, the pand's datum): its own top and crown for the stepped
+  // wall top (stepCrown, the mesher's stepped run).
+  if (fr !== whole && span) out.subFronts = whole.fronts!.map(f => {
+    const own = rowFrontFromRecord({ ...whole, ...f, fronts: undefined, bagWidthM: f.to - f.from, trace: undefined } as FrontRecord);
+    return { a0: Math.round(f.from / span * 1000) / 1000, a1: Math.round(Math.min(span, f.to) / span * 1000) / 1000, ...(f.wall?.hex ? { wallHex: f.wall.hex } : {}),
+      eavesM: own.eavesM, topM: own.topM, crown: own.crown, ...(own.fallback ? { fallback: own.fallback } : {}) };
+  });
   if (fr.fallback) out.fallback = 'row-line';
   // A fallback keeps lane 1's skyline read: a gable standing over the row line still draws (skylineGable).
   if (fr.fallback && interim?.skyline) out.skyline = interim.skyline;
@@ -321,6 +330,42 @@ export function skylineGable(rec: RowFrontRecord): RowFrontRecord | null {
   return { ...rec, eavesM: foot, topM: peak, crown: { family: 'neck' }, crownFromSkyline: true };
 }
 
+/** A sub-front's own wall top and crown on a stepped run (the mesher draws the crown on its span, `widthM` wide). */
+export interface StepCrown { wallTopM: number; crown?: RowCrown; gable?: GableShape; riseM?: number }
+/**
+ * What one sub-front stands to and wears: a cornice with a raised piece (the wall a band under the measured top, the
+ * piece on it), a measured gable crown (neck, bell, point, step: the wall to its foot), else a plain top. The same
+ * shapes withRowFront gives a whole pand, sized to the sub-front's width.
+ */
+export function stepCrown(f: SubFrontRecord, widthM: number): StepCrown | null {
+  if (f.eavesM == null || !(f.eavesM > 2) || f.fallback || !f.crown) return null;
+  const family = f.crown.family, piece = (family === 'cornice' || family === 'raised-cornice-dormer') ? f.crown.piece : undefined;
+  if (piece && f.eavesM >= MIN_PLANNED_M + 0.5) {
+    const band = 0.5, wallTopM = +(f.eavesM - band).toFixed(2);
+    const crown: RowCrown = { shape: 'raised', riseM: +(piece.topM - wallTopM).toFixed(2), bandM: band, cap: piece.kind === 'pediment' ? 'pediment' : piece.kind === 'box' ? 'flat' : 'segmental' };
+    if (piece.widthM) crown.neckW = Math.min(piece.widthM, widthM - 0.1);
+    return { wallTopM, crown, gable: 'cornice', riseM: rowCrownRoofRise(crown, widthM) };
+  }
+  const shape = (family === 'point' ? 'point' : family) as RowCrownShape, gable = FAMILY_GABLE[family];
+  if (gable && (ROW_CROWN_SHAPES as readonly string[]).includes(shape) && f.topM != null && f.topM - f.eavesM > 0.5) {
+    const crown: RowCrown = { shape, riseM: +(f.topM - f.eavesM).toFixed(2) };
+    if (f.crown.widthM) crown.footW = Math.min(f.crown.widthM, widthM);
+    if (f.crown.neckWidthM) crown.neckW = f.crown.neckWidthM;
+    if (f.crown.atticWindows !== undefined) crown.attic = f.crown.atticWindows;
+    return { wallTopM: f.eavesM, crown, gable, riseM: rowCrownRoofRise(crown, widthM) };
+  }
+  return { wallTopM: f.topM ?? f.eavesM };
+}
+
+/** `ROW_FRONT_STEPS=0` / `?rowFrontSteps=0`: a pand with sub-fronts keeps one top and one crown (the tallest front's). */
+export function rowFrontStepsOn(search?: string): boolean {
+  try {
+    if (search === undefined && typeof process !== 'undefined' && process.env?.ROW_FRONT_STEPS === '0') return false;
+    const q = search ?? (typeof location !== 'undefined' ? location.search : '');
+    return new URLSearchParams(q).get('rowFrontSteps') !== '0';
+  } catch { return true; }
+}
+
 /**
  * Decorator step after withHouseSpecCrown, before decorateRoof (galleryPipeline.ts). Applies steps a and b to a pand
  * with a record when the flag is on; otherwise returns the same object.
@@ -336,6 +381,16 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const { monumentGable, roofShapeTag: _tag, ...rest } = p;
   const held = typeof monumentGable === 'string' ? { historicGable: monumentGable } : {};
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
+  // Sub-fronts with their own tops (HD22/24): a flat lid at the tallest wall top; the mesher steps each front's wall
+  // down to its own top and stands its crown on it (stepCrown, threeBuildingMesh stepped run).
+  const span = rec.spanM;
+  const steps = rowFrontStepsOn() && span && rec.subFronts && rec.subFronts.length > 1 ? rec.subFronts.map(f => ({ ...f, step: stepCrown(f, (f.a1 - f.a0) * span) })) : null;
+  if (steps && steps.every(f => f.step)) {
+    const top = Math.max(...steps.map(f => f.step!.wallTopM));
+    const out = levels(sr, rec, top, true);
+    if (out.specRecipe) out.specRecipe.subFronts = steps;
+    return { ...feature, properties: { ...rest, ...held, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowFront: family, rowFrontSteps: true, ...out } };
+  }
   const piece = !rec.fallback && (family === 'cornice' || family === 'raised-cornice-dormer') ? rec.crown.piece : undefined;
   if (piece && rec.topM !== null && rec.eavesM >= MIN_PLANNED_M + 0.5) {
     // Step c, cornice with a raised centre (HD22, HD12, HD6): a gable plate that is a full-width cornice band with the

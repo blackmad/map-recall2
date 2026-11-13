@@ -187,3 +187,24 @@ test('row front ground: HD2 traced door and shop windows become the ground boxes
   const sr = levels(null, { ...r, storeys: r.storeys ?? 4 }, r.eavesM ?? 15.9, false).specRecipe as { groundBoxes?: unknown[] };
   assert.equal(sr.groundBoxes?.length, 3);
 });
+
+// Stepped wall top, named regression HD22/24 (167819): each sub-front keeps its own top and crown. HD24 (left as seen,
+// 3.95 m): a raised white attic 3.6 m wide on a cornice at 12.3 m; HD22 (3.77 m): a crowned dormer on 13.25 m.
+import { stepCrown } from './rowFront.ts';
+test('row front steps: HD22/24 sub-fronts stand to their own tops with their own crowns', () => {
+  const table = JSON.parse(readFileSync(new URL('../../../data/front-records/haarlemmerdijk-block.json', import.meta.url), 'utf8'));
+  const r = rowFrontsFromTable(table).find(x => x.pandId.endsWith('167819'))!;
+  const [left, right] = r.subFronts!.map(f => stepCrown(f, (f.a1 - f.a0) * r.spanM!)!);
+  assert.ok(left.wallTopM < right.wallTopM - 0.5, `${left.wallTopM} ${right.wallTopM}`);
+  assert.equal(left.crown?.shape, 'raised'); assert.equal(left.crown?.neckW, 3.6);
+  assert.equal(right.crown?.shape, 'raised'); assert.ok(right.crown!.neckW === undefined);
+  const prev = process.env.ROW_FRONT;
+  process.env.ROW_FRONT = '1';
+  try {
+    setRowFrontRecords([r]);
+    const f = withRowFront({ properties: { id: `NL.IMBAG.Pand.${r.pandId}`, height: 14 } as Record<string, unknown>, geometry: null });
+    assert.equal(f.properties.rowFrontSteps, true);
+    assert.equal(f.properties.height, right.wallTopM);
+    assert.equal((f.properties.specRecipe as { subFronts: Array<{ step: unknown }> }).subFronts.length, 2);
+  } finally { if (prev === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = prev; setRowFrontRecords([]); }
+});
