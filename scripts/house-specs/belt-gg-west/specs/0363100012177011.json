@@ -1,0 +1,258 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177011",
+ "address": "Leliegracht 14",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Leliegracht",
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     4.6,
+     3,
+     2.8
+    ],
+    "windows": "sash",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.62,
+     0.72,
+     0.72
+    ],
+    "headLines": [
+     0.86,
+     0.86,
+     0.88
+    ],
+    "windowShare": 0.6,
+    "cornice": "none",
+    "gable": "bell",
+    "crownRise": 1.5,
+    "atticWindows": 1,
+    "doorBay": 0,
+    "basement": "none",
+    "hoist": false
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front",
+   "rakeClear": true
+  },
+  "palette": {
+   "brick": "#a68a6a",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type ggw-1700-neck-bell-gable: crown bell, palette dark-brick-canal + measured brick #a68a6a",
+   "type deviations: storeys 3 (type: 4); storeyHeights [4.6,3,2.8] (type: [5.6,3.2,2.9,2.4]); windowHeights [0.62,0.72,0.72] (type: [0.5,0.72,0.73,0.7]); headLines [0.86,0.86,0.88] (type: [0.86,0.86,0.88,0.83])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/squareSaddle": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/leliegracht-4-34-ggw/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip leliegracht-4-34-ggw 2023-02-13 (40 px/m, gridded crop): a saddle under the gable crown outline, not 3DBAG's roof",
+   "at": "2023-02-13"
+  },
+  "roof/rakeClear": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip leliegracht-4-34-ggw 2023-02-13 (40 px/m, gridded crop): the saddle stays under the crown's rakes",
+   "at": "2023-02-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the claw pieces are drawn as the kit's flat wing pieces with scroll tips; their carving and the cap's crest ornament are not drawn"
+  },
+  {
+   "component": "facade",
+   "what": "the white timber shop pui of Herengracht 261 is the auto-placed shopfront"
+  },
+  {
+   "component": "ground",
+   "what": "a shopfront across the ground storey (Leliegracht 14, 2023-02-13)"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

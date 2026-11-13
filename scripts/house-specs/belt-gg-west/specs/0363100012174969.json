@@ -1,0 +1,294 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174969",
+ "address": "Prinsengracht 126",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Prinsengracht",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4,
+     2.9,
+     2.8,
+     2.7
+    ],
+    "windows": "sash-small-panes",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.56,
+     0.75,
+     0.79,
+     0.75
+    ],
+    "headLines": [
+     0.89,
+     0.93,
+     0.875,
+     0.88
+    ],
+    "windowShare": 0.58,
+    "cornice": "frieze",
+    "entablature": {
+     "rise": 2.8,
+     "cap": 0.5,
+     "frieze": "trim",
+     "capDepth": 0.45,
+     "architrave": 0.12
+    },
+    "friezeVents": {
+     "span": 0.95,
+     "rise": 0.8,
+     "sill": 0.85,
+     "light": true
+    },
+    "gable": "cornice",
+    "gableOrnament": {
+     "gablet": "louis",
+     "gabletSize": {
+      "span": 5.2,
+      "rise": 2.1
+     }
+    },
+    "doorBay": 0,
+    "basement": "none",
+    "hoist": false,
+    "windowFrames": {
+     "frame": 0.1
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front",
+   "form": "flat"
+  },
+  "palette": {
+   "brick": "#5b4235",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type ggw-1740-crest-attic: crown louis, palette ochre-brick + measured brick #5b4235",
+   "type deviations: windows \"sash-small-panes\" (type: \"six-pane\"); storeyHeights [4,2.9,2.8,2.7] (type: [5.4,3.45,2.8,2.55])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/entablature": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/friezeVents": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/gableOrnament": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/squareSaddle": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): the roof the front implies, not 3DBAG",
+   "at": "2023-03-20"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): sky over the cornice from the quay, no roof face",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowFrames": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): white frames round the small-pane sashes",
+   "at": "2023-03-20"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the crest is drawn as the small kit crest: the real one is a carved Louis XIV attic spanning the front with an oculus"
+  },
+  {
+   "component": "facade",
+   "what": "the white pilaster door surround is drawn as a plain door with a transom"
+  },
+  {
+   "component": "crown",
+   "what": "the Louis XIV crest carries an oval light in a carved surround and vases at both ends (Prinsengracht 126)"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

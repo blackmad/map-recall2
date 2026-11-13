@@ -1,0 +1,82 @@
+{
+ "0363100012169008": {
+  "ref": "block-face strip herengracht-84-148 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat",
+   "fronts/0/windowFrames": {
+    "frame": 0.12
+   },
+   "fronts/0/doorSurround": {
+    "pilaster": 0.24,
+    "cap": 0.35
+   },
+   "fronts/0/windows": "sash-small-panes"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the entablature from the quay, no roof face",
+   "fronts/0/windowFrames": "thick white frames on the small-paned sashes",
+   "fronts/0/doorSurround": "white pilastered door surround with a carved cap on the left axis",
+   "fronts/0/windows": "small-paned sashes (about 4 x 4 panes per sash) on every storey"
+  }
+ },
+ "0363100012169006": {
+  "ref": "block-face strip herengracht-84-148 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/rakeClear": true
+  },
+  "why": {
+   "roof/source": "a saddle under the neck, not 3DBAG",
+   "roof/rakeClear": "the saddle stays under the crown"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "a white balustrade across the shoulders either side of the neck (Herengracht 112, 2021-01-25 strip)"
+   }
+  ]
+ },
+ "0363100012167709": {
+  "ref": "block-face strip herengracht-84-148 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the entablature from the quay, no roof face"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "a balustraded attic frieze (balusters between the attic lights) under the heavy white cornice"
+   }
+  ]
+ },
+ "0363100012167711": {
+  "ref": "block-face strip herengracht-84-148 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat"
+  },
+  "why": {
+   "roof/source": "the roof the front implies (an attic band behind the entablature), not 3DBAG",
+   "roof/form": "sky over the entablature from the quay, no roof face"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "oval attic lights (oeils-de-boeuf) with carved surrounds in the frieze, drawn as rectangular frieze lights"
+   }
+  ],
+  "drop": [
+   "fronts/0/partyClip"
+  ]
+ }
+}

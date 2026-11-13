@@ -25,6 +25,7 @@ import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
 import {pierBlockProblems} from './pierBlocks.ts';
+import {beltFrontProblems, type DoorSurroundIntent, type WindowFramesIntent} from './beltFront.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -86,8 +87,10 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * `casement-small-panes` two casements glazed in small panes all over (bars at thirds across, a transom row under a top
  * light: Jan Evertsenstraat 45-53). `casement-sidelights-toplight` a wide fixed light between two narrow side lights under a
  * top light across all three (bars at 0.14 and 0.86, a transom at 0.86: Polanenstraat 229-311, 1935).
+ * `sash-4-over-4` (Grachtengordel-Zuid, Keizersgracht 606-618, 2023-03-27 strip): the 19th-c. reglazed sliding sash, two panes
+ * across and two up in each sash, thin bars and a heavier meeting rail at half height.
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight', 'sash-4-over-4', 'sash-1-over-1'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -202,7 +205,10 @@ export const DORMER_CAP = {rise: 1.2, flare: 0.25, depthM: 0.9, colour: '#adad9d
 /** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
 export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
 export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
-export const ROOF_GABLETS = ['crest', 'pediment'] as const;
+/** `louis` (Keizersgracht 244-246): a Louis XIV attic crest, C-scrolls at both feet sweeping in to a raised central arch, a crab on top. */
+export const ROOF_GABLETS = ['crest', 'pediment', 'louis'] as const;
+/** A dark light in a crest/louis gablet's face: a round `oculus` or an `arched` lucarne (round head). */
+export const GABLET_LIGHTS = ['oculus', 'arched'] as const;
 export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
 /** `blank`: a bay of plain wall with no opening (Jan Evertsenstraat 143: brick between the house door and the cafe window). */
 export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel', 'blank'] as const;
@@ -416,6 +422,12 @@ export interface FrontIntent {
    * over the crown foot (-0.5..2 m). Single-crown side-by-side lights only (not round, stacked or grouped). Absent = byte-identical.
    */
   atticLight?: {light: number; sill: number};
+  /**
+   * Measured size of the rectangular attic lights in metres (lane belt-gg-west 2026-11-10, Keizersgracht 256: one light
+   * 1.3 x 1.6 m just over the shoulders of a neck gable): `span` across, `rise` up, and `sill` over the eaves (default
+   * 0.25). Stacked neck lights keep this rise instead of sharing the neck. Absent = the fitted size, byte-identical.
+   */
+  atticSize?: {span: number; rise: number; sill?: number};
   /** Roof dormers standing on the eaves line behind a cornice/flat front. */
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
@@ -527,6 +539,16 @@ export interface FrontIntent {
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
   surroundStoreys?: number[];
+  /** Thick painted window frames, with an eared surround on the top storeys (Keizersgracht 616A; buildingRecipe/beltFront.ts). Absent = byte-identical. */
+  windowFrames?: WindowFramesIntent;
+  /** A street-level door in the souterrain's base on this ground bay, under an all-window bel-etage (Keizersgracht 616A, 614; beltFront.ts). Absent = byte-identical. */
+  basementDoor?: number;
+  /** Painted pilasters and a cap round the main door and its fanlight (Keizersgracht 610, 608; beltFront.ts). Absent = byte-identical. */
+  doorSurround?: DoorSurroundIntent;
+  /** Iron rails on both sides of the stoop flight, `rail` m (beltFront.ts). Absent = byte-identical. */
+  stoopRails?: {rail: number};
+  /** Width (m) of each gable/attic light instead of the 0.5-0.9 m rule (Keizersgracht 608's 1.5 m neck window). Absent = byte-identical. */
+  atticWindowWidth?: number;
   /** Alternating long/short stone corner blocks up both edges of the front. Default none. */
   quoins?: typeof QUOINS[number];
   /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
@@ -690,8 +712,11 @@ export interface FrontIntent {
    * cast panel over each top-storey window axis in the frieze under the cornice, `span` x `rise` metres, its top `drop`
    * metres under the cornice foot (measured), in the stone colour; `slot` = a dark grille slot across its middle third;
    * `axes` = only those axes. Needs a cornice. Absent = byte-identical.
+   * Canal-belt attic lights (Herengracht 92-108, 18th-c. cornice fronts; buildingRecipe/friezeVents.ts): `sill` in place of
+   * `drop` stands the panel's foot `sill` metres over the entablature's foot, inside its white frieze (needs `entablature`),
+   * and `light: true` draws it as a dark glazed attic light in a thin frame of the stone colour instead of a solid panel.
    */
-  friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
+  friezeVents?: {span: number; rise: number; drop?: number; sill?: number; light?: boolean; slot?: boolean; axes?: number[]};
   /**
    * Corbel table (Duivelseiland 1899-1900 rows, Cornelis Anthoniszstraat 50-72; buildingRecipe/corbelTable.ts): a band-brick
    * course on the cornice foot (an entablature's cap foot) with `rows` rows of corbelled blocks hanging from it, half a
@@ -706,7 +731,9 @@ export interface FrontIntent {
    * (`wall`), an `architrave` fillet at its foot, and `consoles` console brackets end to end. Needs a cornice.
    * Absent = the style's cornice, byte-identical.
    */
-  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number};
+  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number;
+    /** A row of dentil/modillion blocks under the cap: `block` m wide at `pitch`, `rise` m tall (Keizersgracht 616A, 610). Absent = byte-identical. */
+    dentils?: {pitch: number; block: number; rise: number}};
   /**
    * Jamb blocks (Eerste Helmersstraat 116-122, 1893; buildingRecipe/jambBlocks.ts): `count` white stone blocks on each
    * jamb of every window of the listed `storeys` (default all), evenly spaced up the opening, `rise` m high, reaching
@@ -888,6 +915,16 @@ export interface GableOrnamentIntent {
   cartouche?: boolean;
   ears?: boolean;
   gablet?: typeof ROOF_GABLETS[number];
+  /** Wing piece depth under the shoulder (m, 0.2..2.5) and its scroll in proportion, instead of the 0.18-0.42 m rule (Keizersgracht 608's 2 m claw pieces). Absent = byte-identical. */
+  wingDepth?: number;
+  /**
+   * Measured gablet size in metres (lane belt-gg-west 2026-11-10): `span` across its foot on the cornice, `rise` from the
+   * cornice to its top (a `louis` crest's crab stands above). Herengracht 96: a pediment 4.5 m over the centre two bays;
+   * Keizersgracht 254: a semicircular crest 3.5 x 1.5 m. Absent = the small default gablet, byte-identical.
+   */
+  gabletSize?: {span: number; rise: number};
+  /** A dark light in the gablet face (`crest` or `louis`), drawn in the palette's shop/door colour. */
+  gabletLight?: typeof GABLET_LIGHTS[number];
 }
 export interface GroundFrontIntent {
   kind: typeof GROUND_FRONT_KINDS[number];
@@ -1760,6 +1797,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
     if (f.pierBlocks !== undefined) problems.push(...pierBlockProblems(f, at));
+    if (f.windowFrames !== undefined || f.basementDoor !== undefined || f.doorSurround !== undefined || f.stoopRails !== undefined || f.atticWindowWidth !== undefined) problems.push(...beltFrontProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
@@ -1850,6 +1888,13 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       const l = f.atticLight as {light?: unknown; sill?: unknown};
       if (!l || typeof l !== 'object' || Object.keys(l).some(k => k !== 'light' && k !== 'sill') || !(typeof l.light === 'number' && l.light >= 0.4 && l.light <= 1.6) || !(typeof l.sill === 'number' && l.sill >= -0.5 && l.sill <= 2)) problems.push(`${at}.atticLight: {light 0.4..1.6 m, sill -0.5..2 m over the crown foot}`);
       if (!f.atticWindows || f.atticShape === 'round') problems.push(`${at}.atticLight: needs rectangular atticWindows >= 1`);
+    }
+    if (f.atticSize !== undefined) {
+      const z = f.atticSize as any;
+      if (!f.atticWindows) problems.push(`${at}.atticSize: needs atticWindows >= 1`);
+      if (f.atticWindowWidth !== undefined) problems.push(`${at}.atticSize: not with atticWindowWidth (atticSize gives the span)`);
+      if (f.atticShape === 'round') problems.push(`${at}.atticSize: rectangular lights only (atticShape round sizes itself)`);
+      if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['span', 'rise', 'sill'].includes(k)) || !(z.span >= 0.3 && z.span <= 3) || !(z.rise >= 0.3 && z.rise <= 3) || (z.sill !== undefined && !(z.sill >= 0 && z.sill <= 4))) problems.push(`${at}.atticSize: {span 0.3..3, rise 0.3..3, sill? 0..4} m`);
     }
     if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);
     if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
@@ -2208,7 +2253,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   return p;
 }
 
-const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
+const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet', 'wingDepth', 'gabletSize', 'gabletLight'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'bayWeights', 'transom', 'lights', 'colour', 'shutterColour', 'evidence'];
 /** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
 function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
@@ -2220,12 +2265,19 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else {
       for (const k of Object.keys(o)) if (!GABLE_ORNAMENT_KEYS.includes(k)) problems.push(`${at}.gableOrnament.${k}: unknown field (one of ${GABLE_ORNAMENT_KEYS.join(', ')})`);
       if (o.wings !== undefined) { oneOf(o.wings, GABLE_WINGS, `${at}.gableOrnament.wings`); if (!shoulders) problems.push(`${at}.gableOrnament.wings: wing pieces fill the shoulders of a neck or bell gable (gable ${f.gable})`); }
+      if (o.wingDepth !== undefined && (!(typeof o.wingDepth === 'number' && o.wingDepth >= 0.2 && o.wingDepth <= 2.5) || !o.wings)) problems.push(`${at}.gableOrnament.wingDepth: 0.2..2.5 m, with wings`);
       if (o.ears !== undefined && typeof o.ears !== 'boolean') problems.push(`${at}.gableOrnament.ears must be boolean`);
       if (o.ears && !shoulders) problems.push(`${at}.gableOrnament.ears: ears sit where a neck/bell meets its cap (gable ${f.gable})`);
       if (o.cartouche !== undefined && typeof o.cartouche !== 'boolean') problems.push(`${at}.gableOrnament.cartouche must be boolean`);
       if (o.cartouche && !shoulders) problems.push(`${at}.gableOrnament.cartouche: a cartouche sits on the cap of a neck or bell gable (gable ${f.gable})`);
       if (o.finial !== undefined) { oneOf(o.finial, GABLE_FINIALS, `${at}.gableOrnament.finial`); if (!shoulders && f.gable !== 'step' && f.gable !== 'point' && f.gable !== 'spout') problems.push(`${at}.gableOrnament.finial: needs a gable top to stand on (gable ${f.gable})`); }
       if (o.gablet !== undefined) { oneOf(o.gablet, ROOF_GABLETS, `${at}.gableOrnament.gablet`); if (f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.gableOrnament.gablet: a rooftop gablet stands on a cornice/flat front (gable ${f.gable})`); }
+      if (o.gabletSize !== undefined) {
+        const z = o.gabletSize as any;
+        if (!o.gablet) problems.push(`${at}.gableOrnament.gabletSize: needs a gablet`);
+        if (!z || typeof z !== 'object' || Object.keys(z).some(k => k !== 'span' && k !== 'rise') || !(z.span >= 0.6 && z.span <= 12) || !(z.rise >= 0.3 && z.rise <= 4) || z.rise > z.span) problems.push(`${at}.gableOrnament.gabletSize: {span 0.6..12, rise 0.3..4 and <= span} m`);
+      }
+      if (o.gabletLight !== undefined) { oneOf(o.gabletLight, GABLET_LIGHTS, `${at}.gableOrnament.gabletLight`); if (o.gablet !== 'crest' && o.gablet !== 'louis') problems.push(`${at}.gableOrnament.gabletLight: a light in a crest or louis gablet (gablet ${o.gablet})`); }
     }
   }
   if (f.leanDegrees !== undefined && !(typeof f.leanDegrees === 'number' && f.leanDegrees >= 0 && f.leanDegrees <= MAX_LEAN_DEGREES)) problems.push(`${at}.leanDegrees: 0..${MAX_LEAN_DEGREES} degrees forward`);

@@ -16,8 +16,16 @@ import type {CanalHouseRecipe} from '../canalhouseRecipes.ts';
 import type {CanalHouseIntent, FrontIntent} from './intent.ts';
 import type {FitReport} from './fit.ts';
 import {frontEnds} from './historicPasses.ts';
+import {ENTABLATURE} from './entablature.ts';
 
-export const FRIEZE_VENTS = {proudM: 0.042, slotDepthM: 0.02, minWidthM: 0.2, maxWidthM: 2.5, minHeightM: 0.06, maxHeightM: 0.8, maxDropM: 1.5} as const;
+/**
+ * Attic lights (`sill` + `light`, the canal belt's 18th-c. cornice fronts: Herengracht 92 and 94, 2021-01-25 strip at
+ * 40 px/m): a 1.1 x 0.45 m dark light in each axis of the 2.0 m white frieze, its foot 0.65 m over the frieze foot. The
+ * light is a frame of four 0.06 m bars 7 cm proud of the frieze face (an entablature `trim` frieze is 4 cm proud of the
+ * wall) round a dark pane 3.5 cm proud of it, 1 cm inside the bars: no two faces within the GLB audit's 3 cm z-fight bands
+ * (a pane 3 mm over a solid panel failed `zfight` on Herengracht 92-96, 2.9 m2).
+ */
+export const FRIEZE_VENTS = {proudM: 0.042, slotDepthM: 0.02, minWidthM: 0.2, maxWidthM: 2.5, minHeightM: 0.06, maxHeightM: 0.8, maxDropM: 1.5, lightFrameM: 0.06, lightFrameProudM: 0.07, paneProudM: 0.035, paneGapM: 0.01} as const;
 
 type V3 = [number, number, number];
 
@@ -42,11 +50,20 @@ export function topStoreyAxes(openings: {id: string; kind: string; leftM: number
 
 export function friezeVentProblems(f: FrontIntent, at: string): string[] {
   const v = f.friezeVents as Record<string, unknown> | undefined, p: string[] = [];
-  if (!v || typeof v !== 'object' || Object.keys(v).some(k => !['span', 'rise', 'drop', 'slot', 'axes'].includes(k))) return [`${at}.friezeVents: {span, rise, drop, slot?, axes?}`];
+  if (!v || typeof v !== 'object' || Object.keys(v).some(k => !['span', 'rise', 'drop', 'sill', 'light', 'slot', 'axes'].includes(k))) return [`${at}.friezeVents: {span, rise, drop | sill, light?, slot?, axes?}`];
   const num = (k: string, lo: number, hi: number) => { if (!(typeof v[k] === 'number' && (v[k] as number) >= lo && (v[k] as number) <= hi)) p.push(`${at}.friezeVents.${k}: ${lo}..${hi} m`); };
   num('span', FRIEZE_VENTS.minWidthM, FRIEZE_VENTS.maxWidthM);
   num('rise', FRIEZE_VENTS.minHeightM, FRIEZE_VENTS.maxHeightM);
-  num('drop', 0, FRIEZE_VENTS.maxDropM);
+  if ((v.drop === undefined) === (v.sill === undefined)) p.push(`${at}.friezeVents: one of drop (under the cornice foot) or sill (over the entablature foot)`);
+  if (v.drop !== undefined) num('drop', 0, FRIEZE_VENTS.maxDropM);
+  if (v.sill !== undefined) {
+    const e = f.entablature;
+    if (!e) p.push(`${at}.friezeVents.sill: needs an entablature (the lights stand in its frieze)`);
+    else num('sill', e.architrave ?? 0, Math.max(0, e.rise - e.cap - (v.rise as number)));
+  }
+  if (v.light !== undefined && v.light !== true) p.push(`${at}.friezeVents.light: true (or leave it out)`);
+  if (v.light && v.slot) p.push(`${at}.friezeVents: light or slot, not both`);
+  if (v.light && typeof v.span === 'number' && typeof v.rise === 'number' && (v.span <= 3 * FRIEZE_VENTS.lightFrameM || v.rise <= 3 * FRIEZE_VENTS.lightFrameM)) p.push(`${at}.friezeVents.light: span and rise over ${3 * FRIEZE_VENTS.lightFrameM} m (a frame each side)`);
   if (v.slot !== undefined && v.slot !== true) p.push(`${at}.friezeVents.slot: true (or leave it out)`);
   if (v.axes !== undefined && (!Array.isArray(v.axes) || !v.axes.length || v.axes.some(a => !Number.isInteger(a) || a < 0 || a > 15))) p.push(`${at}.friezeVents.axes: window axis indices`);
   if (f.cornice === 'none' || f.cornice === undefined) p.push(`${at}.friezeVents: needs a cornice (the panels hang under its foot)`);
@@ -64,10 +81,22 @@ export function addFriezeVents(group: T.Group, intent: CanalHouseIntent, recipe:
     if (!elevation || !f || !cornice) continue;
     const {facade} = frontEnds(group, recipe, f);
     const axes = topStoreyAxes(elevation.openings.value), panels: number[] = [], slots: number[] = [];
-    const top = cornice.bottomM - fv.drop, bottom = top - fv.rise;
+    // `sill`: the panel stands in the entablature's frieze, whose face is ENTABLATURE.friezeDepthM proud of the wall.
+    const base = fv.sill !== undefined ? ENTABLATURE.friezeDepthM : 0;
+    const top = fv.sill !== undefined ? cornice.bottomM + fv.sill + fv.rise : cornice.bottomM - fv.drop!, bottom = top - fv.rise;
     for (const [i, x] of axes.entries()) {
       if (fv.axes && !fv.axes.includes(i)) continue;
-      box(panels, x - fv.span / 2, x + fv.span / 2, bottom, top, -0.005, FRIEZE_VENTS.proudM);
+      const k = FRIEZE_VENTS.lightFrameM, x0 = x - fv.span / 2, x1 = x + fv.span / 2;
+      if (fv.light) {
+        // A frame of four bars `lightFrameM` wide standing `lightFrameProudM` off the frieze, the dark pane between them
+        // `paneProudM` off it: every face 3.5 cm or more from its neighbour (geometryAudit's 2-3 cm z-fight bands).
+        const zf = base + FRIEZE_VENTS.lightFrameProudM;
+        box(panels, x0, x1, bottom, bottom + k, base - 0.005, zf);
+        box(panels, x0, x1, top - k, top, base - 0.005, zf);
+        box(panels, x0, x0 + k, bottom + k, top - k, base - 0.005, zf);
+        box(panels, x1 - k, x1, bottom + k, top - k, base - 0.005, zf);
+        box(slots, x0 + k + FRIEZE_VENTS.paneGapM, x1 - k - FRIEZE_VENTS.paneGapM, bottom + k + FRIEZE_VENTS.paneGapM, top - k - FRIEZE_VENTS.paneGapM, base - 0.005, base + FRIEZE_VENTS.paneProudM);
+      } else box(panels, x0, x1, bottom, top, base - 0.005, base + FRIEZE_VENTS.proudM);
       if (fv.slot) box(slots, x - fv.span / 3, x + fv.span / 3, bottom + fv.rise / 3, top - fv.rise / 3, FRIEZE_VENTS.proudM - FRIEZE_VENTS.slotDepthM, FRIEZE_VENTS.proudM + 0.003);
       added++;
     }
@@ -79,7 +108,7 @@ export function addFriezeVents(group: T.Group, intent: CanalHouseIntent, recipe:
       facade.add(m);
     };
     mesh(panels, palette.stone ?? palette.trim, `frieze-vents/${front.id}/panels`, 'stone');
-    if (slots.length) mesh(slots, palette.door, `frieze-vents/${front.id}/slots`, 'door');
+    if (slots.length) mesh(slots, palette.door, `frieze-vents/${front.id}/${fv.light ? 'lights' : 'slots'}`, 'door');
   }
   return added;
 }

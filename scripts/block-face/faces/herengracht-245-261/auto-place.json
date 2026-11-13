@@ -1,0 +1,754 @@
+{
+ "face": "herengracht-245-261",
+ "street": "Herengracht",
+ "library": "grachtengordel-west",
+ "stripDate": "2021-01-22",
+ "seconds": 4.62,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012177515",
+   "address": "Herengracht 245A",
+   "builtYear": 1639,
+   "widthM": 4.89,
+   "eavesM": 11.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4240",
+    "wallRaw": "#42423f",
+    "skyline": {
+     "eavesM": 22.9,
+     "eavesRow": 159,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 3.78,
+      "topWidthM": 0.47,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.8,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177362",
+   "address": "Herengracht 247",
+   "builtYear": 1991,
+   "widthM": 3.21,
+   "eavesM": 16.23,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534b42",
+    "wallRaw": "#514e4a",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 367,
+     "confidence": 0.72,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1991, type 1600-1880; frontage 3.21 m, type 4.2-6.8 m; skyline no crown fits no crown of the type)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1600-1880",
+     "frontage 3.21 m, type 4.2-6.8 m",
+     "skyline no crown fits no crown of the type"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.23 m = 5 storeys of 3.25 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.42 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171305",
+   "address": "Herengracht 249",
+   "builtYear": 1648,
+   "widthM": 5.17,
+   "eavesM": 15.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#575550",
+    "wallRaw": "#59554d",
+    "skyline": {
+     "eavesM": 23.98,
+     "eavesRow": 116,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 0.9,
+      "topWidthM": 0.8,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.58 < 0.7 (3DBAG eaves 15.05 m = 5 storeys of 3.01 m vs the type's 2.75 m; skyline crown rise 0.9 m, top 0.8 m fits no crown of the type)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.58,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.05 m = 5 storeys of 3.01 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 0.9 m, top 0.8 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171304",
+   "address": "Herengracht 251A",
+   "builtYear": 1648,
+   "widthM": 5.01,
+   "eavesM": 14.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#483d37",
+    "wallRaw": "#4e4843",
+    "skyline": {
+     "eavesM": 22.6,
+     "eavesRow": 171,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 4.13,
+      "topWidthM": 0.1,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1.18,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.5 < 0.7 (3DBAG eaves 14.99 m = 5 storeys of 3 m vs the type's 2.75 m; skyline crown rise 4.13 m, top 0.1 m fits no crown of the type)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.99 m = 5 storeys of 3 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.31 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 4.13 m, top 0.1 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177243",
+   "address": "Herengracht 253",
+   "builtYear": 1648,
+   "widthM": 2.35,
+   "eavesM": 1.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 24.82,
+     "eavesRow": 82,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.98,
+      "topWidthM": 0.25,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 2.35 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 2.35 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 1.38 m = 4 storeys of 0.34 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 17.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.98 m, top 0.25 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177176",
+   "address": "Herengracht 255",
+   "builtYear": 1894,
+   "widthM": 23.87,
+   "eavesM": 17.8,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 11.98,
+    "depthM": 0.72,
+    "centre": 0.251,
+    "lineRD": [
+     [
+      120958.39175,
+      487229.78599999996
+     ],
+     [
+      120957.27475,
+      487217.95599999995
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#565557",
+    "wallRaw": "#594c47",
+    "skyline": {
+     "eavesM": 17.73,
+     "eavesRow": 366,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 6.7,
+      "riseM": 9.15,
+      "topWidthM": 1,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 15.4 m (1.68 m wide), 10.75 m (1.6 m wide), 6.92 m (2.23 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.4,
+       "widthM": 1.68,
+       "centre": 0.29
+      },
+      {
+       "atM": 10.75,
+       "widthM": 1.6,
+       "centre": 0.32
+      },
+      {
+       "atM": 10.45,
+       "widthM": 1,
+       "centre": 0.57
+      },
+      {
+       "atM": 8.05,
+       "widthM": 0.9,
+       "centre": 0.19
+      },
+      {
+       "atM": 7.3,
+       "widthM": 0.8,
+       "centre": 0.31
+      },
+      {
+       "atM": 6.92,
+       "widthM": 2.23,
+       "centre": 0.31
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.13,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1894, type 1600-1880; frontage 23.87 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1600-1880",
+     "frontage 23.87 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.8 m = 5 storeys of 3.56 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 7.08 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 9.15 m, top 1 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177244",
+   "address": "Herengracht 257",
+   "builtYear": 1990,
+   "widthM": 2.48,
+   "eavesM": 1.94,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#373533",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 310,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 6.43,
+      "topWidthM": 0.3,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1990, type 1600-1880; frontage 2.48 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1990, type 1600-1880",
+     "frontage 2.48 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 1.94 m = 4 storeys of 0.48 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 18.86 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 6.43 m, top 0.3 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177179",
+   "address": "Herengracht 259",
+   "builtYear": 1905,
+   "widthM": 6.27,
+   "eavesM": 19.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#949b9a",
+    "wallRaw": "#727373",
+    "skyline": {
+     "eavesM": 20,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.63,
+       "widthM": 0.85,
+       "centre": 0.84
+      },
+      {
+       "atM": 13.22,
+       "widthM": 0.97,
+       "centre": 0.84
+      },
+      {
+       "atM": 12.32,
+       "widthM": 1.05,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.52,
+       "widthM": 1.27,
+       "centre": 0.2
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.1,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1905, type 1600-1880; skyline no crown fits no crown of the type)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1880",
+     "skyline no crown fits no crown of the type"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 19.45 m = 5 storeys of 3.89 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.79 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.161 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177169",
+   "address": "Herengracht 261",
+   "builtYear": 1741,
+   "widthM": 5.24,
+   "eavesM": 12.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70605c",
+    "wallRaw": "#514b47",
+    "skyline": {
+     "eavesM": 16.9,
+     "eavesRow": 399,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 9.98,
+      "topWidthM": 0.17,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.85,
+       "widthM": 2.1,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

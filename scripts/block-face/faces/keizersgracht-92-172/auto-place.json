@@ -1,0 +1,1136 @@
+{
+ "face": "keizersgracht-92-172",
+ "street": "Keizersgracht",
+ "library": "grachtengordel-west",
+ "stripDate": "2023-02-13",
+ "seconds": 16.86,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012176494",
+   "address": "Keizersgracht 132",
+   "builtYear": 1780,
+   "widthM": 5.44,
+   "eavesM": 16.01,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b39c87",
+    "wallRaw": "#9c8876",
+    "skyline": {
+     "eavesM": 21.9,
+     "eavesRow": 89,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.285,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012250513",
+   "address": "Keizersgracht 130A",
+   "builtYear": 1755,
+   "widthM": 5.74,
+   "eavesM": 17.07,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ab8d7a",
+    "wallRaw": "#aa8f7b",
+    "skyline": {
+     "eavesM": 22.82,
+     "eavesRow": 52,
+     "confidence": 0.98,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.318,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176541",
+   "address": "Keizersgracht 124",
+   "builtYear": 1755,
+   "widthM": 23.26,
+   "eavesM": 13.92,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3d48",
+    "wallRaw": "#888780",
+    "skyline": {
+     "eavesM": 19.63,
+     "eavesRow": 180,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 4.47,
+      "riseM": 1.13,
+      "topWidthM": 3.23,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.425,
+    "structure": {
+     "bayWidthM": 4.75,
+     "bayCentre": 0.11,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.8 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.02,
+       "centre": 0.05,
+       "light": 0.94
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.2,
+       "light": 0.94
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.8,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.45,
+       "widthM": 2.27,
+       "centre": 0.71
+      },
+      {
+       "atM": 11,
+       "widthM": 3.27,
+       "centre": 0.92
+      },
+      {
+       "atM": 7.17,
+       "widthM": 1.77,
+       "centre": 0.71
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.15,
+       "centre": 0.97
+      }
+     ]
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 23.26 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 23.26 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.92 m = 5 storeys of 2.78 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 8.2 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.258 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.13 m, top 3.23 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176493",
+   "address": "Keizersgracht 122A",
+   "builtYear": 1720,
+   "widthM": 4.97,
+   "eavesM": 11.17,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3c3e",
+    "wallRaw": "#8a8075",
+    "skyline": {
+     "eavesM": 18.32,
+     "eavesRow": 232,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 5.7,
+      "topWidthM": 0.05,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.126,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.53 < 0.7 (skyline crown rise 5.7 m, top 0.05 m fits no crown of the type; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.17 m = 4 storeys of 2.79 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.54 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.126 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.7 m, top 0.05 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176490",
+   "address": "Keizersgracht 118",
+   "builtYear": 1625,
+   "widthM": 11.07,
+   "eavesM": 15.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c5b60",
+    "wallRaw": "#747370",
+    "skyline": {
+     "eavesM": 21.35,
+     "eavesRow": 111,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.283,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.02,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.27,
+       "widthM": 2.3,
+       "centre": 0.73
+      },
+      {
+       "atM": 11.97,
+       "widthM": 2.3,
+       "centre": 0.73
+      },
+      {
+       "atM": 7.77,
+       "widthM": 3.9,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 11.07 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 11.07 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.79 m = 5 storeys of 3.16 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.3 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.246 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176488",
+   "address": "Keizersgracht 116A",
+   "builtYear": 1992,
+   "widthM": 5.93,
+   "eavesM": 15.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9aa1a4",
+    "wallRaw": "#7d7a76",
+    "skyline": {
+     "eavesM": 19.5,
+     "eavesRow": 185,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 4.63,
+      "topWidthM": 0.33,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.55,
+       "widthM": 1.52,
+       "centre": 0.26
+      },
+      {
+       "atM": 11.25,
+       "widthM": 0.82,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 73 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176545",
+   "address": "Keizersgracht 114",
+   "builtYear": 1800,
+   "widthM": 5.78,
+   "eavesM": 15.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907d6f",
+    "wallRaw": "#99897c",
+    "skyline": {
+     "eavesM": 19.32,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.68,
+      "topWidthM": 0.47,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 40 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012176545",
+    "ncc": 0.124,
+    "nccRaw": 0.124,
+    "shiftM": [
+     0,
+     -0.2
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 40 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#947e6e",
+     "model": "#a08f83",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.39
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167689",
+   "address": "Keizersgracht 112",
+   "builtYear": 1745,
+   "widthM": 5.45,
+   "eavesM": 15.66,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#615a59",
+    "wallRaw": "#827e78",
+    "skyline": {
+     "eavesM": 20.05,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 3.35,
+      "topWidthM": 0.13,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 13,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.337,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.3,
+       "widthM": 1.4,
+       "centre": 0.47
+      },
+      {
+       "atM": 13.85,
+       "widthM": 1.52,
+       "centre": 0.26
+      },
+      {
+       "atM": 13.55,
+       "widthM": 0.8,
+       "centre": 0.92
+      },
+      {
+       "atM": 10.47,
+       "widthM": 3.35,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 46 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012167689",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     0.1,
+     -0.25
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 46 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#949a98",
+     "model": "#776f6d",
+     "dL": -0.145
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.152
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167690",
+   "address": "Keizersgracht 110",
+   "builtYear": 1759,
+   "widthM": 5.74,
+   "eavesM": 10.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907a6d",
+    "wallRaw": "#958d81",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 2.6,
+      "topWidthM": 0.05,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.367,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.1,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.53 < 0.7 (skyline crown rise 2.6 m, top 0.05 m fits no crown of the type; strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.51 m = 4 storeys of 2.63 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.66 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.267 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.6 m, top 0.05 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167688",
+   "address": "Keizersgracht 108A",
+   "builtYear": 1740,
+   "widthM": 5.79,
+   "eavesM": 16.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736a60",
+    "wallRaw": "#6e685f",
+    "skyline": {
+     "eavesM": 23.32,
+     "eavesRow": 32,
+     "confidence": 0.64,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 0.88,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167691",
+   "address": "Keizersgracht 106",
+   "builtYear": 1760,
+   "widthM": 4.48,
+   "eavesM": 13.76,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a08d77",
+    "wallRaw": "#9f8f7d",
+    "skyline": {
+     "eavesM": 22.63,
+     "eavesRow": 60,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.5,
+      "topWidthM": 0.33,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.324,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.42,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 1.27,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.59 < 0.7 (skyline crown rise 1.5 m, top 0.33 m fits no crown of the type; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.59,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.76 m = 5 storeys of 2.75 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.61 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.306 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.5 m, top 0.33 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167695",
+   "address": "Keizersgracht 100B",
+   "builtYear": 1630,
+   "widthM": 18.19,
+   "eavesM": 9.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a826f",
+    "wallRaw": "#9d8974",
+    "skyline": {
+     "eavesM": 18.9,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.13,
+      "riseM": 2.63,
+      "topWidthM": 0.13,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.218,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.9,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 18.19 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 18.19 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 9.89 m = 4 storeys of 2.47 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.82 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.168 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.63 m, top 0.13 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167707",
+   "address": "Keizersgracht 96A",
+   "builtYear": 1730,
+   "widthM": 11.86,
+   "eavesM": 13.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78756f",
+    "wallRaw": "#756e64",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 965,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.076,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.6,
+       "widthM": 2,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 11.86 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 11.86 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.68 m = 5 storeys of 2.74 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.49 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177543",
+   "address": "Keizersgracht 94A",
+   "builtYear": 1650,
+   "widthM": 5.43,
+   "eavesM": 12.87,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c6c3b2",
+    "wallRaw": "#faf6dd",
+    "skyline": {
+     "eavesM": 20.9,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.131,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.55,
+       "widthM": 0.9,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1740-frieze-cornice scores 0.64 < 0.7 (3DBAG eaves 12.87 m = 4 storeys of 3.22 m vs the type's 4.13 m)",
+   "best": {
+    "type": "ggw-1740-frieze-cornice",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.87 m = 4 storeys of 3.22 m vs the type's 4.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.222 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177535",
+   "address": "Keizersgracht 92",
+   "builtYear": 1645,
+   "widthM": 5.38,
+   "eavesM": 12.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e8073",
+    "wallRaw": "#8e8172",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 291,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 4.25,
+      "topWidthM": 0.25,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

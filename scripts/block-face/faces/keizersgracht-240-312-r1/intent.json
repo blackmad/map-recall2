@@ -1,0 +1,126 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "keizersgracht-240-312-r1",
+ "street": "Keizersgracht",
+ "sources": [
+  {
+   "id": "strip-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/block-face/keizersgracht-240-312-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the grachtengordel-west library (buurt Felix Meritisbuurt); scores and holds in scripts/block-face/faces/keizersgracht-240-312/auto-place.json"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1740-crest-cornice",
+  "ggw-1760-plain-cornice"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169386",
+   "slug": "keizersgracht-169386",
+   "address": "Keizersgracht 258A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "measuredPalette": {
+     "brick": "#615445",
+     "evidence": "strip 2021-01-22 span 1550-1824: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie",
+     "overige gebruiksfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1760-plain-cornice scored 1 on eaves 1, stucco 1, columns 1; strip 2021-01-22 span 1550-1824"
+   }
+  },
+  {
+   "pandId": "0363100012169390",
+   "slug": "keizersgracht-169390",
+   "address": "Keizersgracht 256",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "measuredPalette": {
+     "brick": "#9b8769",
+     "evidence": "strip 2021-01-22 span 1823-2050: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo; reviewer pin: the strip shows a house ground (listed shop)"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1700-neck-bell-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-01-22 span 1823-2050"
+   }
+  },
+  {
+   "pandId": "0363100012169444",
+   "slug": "keizersgracht-169444",
+   "address": "Keizersgracht 254A",
+   "type": {
+    "type": "ggw-1740-crest-cornice",
+    "measuredPalette": {
+     "brick": "#efddac",
+     "evidence": "strip 2021-01-22 span 2051-2276: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1740-crest-cornice scored 0.64 on eaves 1, stucco 0, columns 1; strip 2021-01-22 span 2051-2276"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012169390",
+    "stripRow": 489,
+    "frontRoof": {},
+    "evidence": "review pin: Keizersgracht 256: the shoulders and the side cornices of the neck gable at 14.1 m; 3DBAG's 15.9 m is inside the gable, so the model's gable and upper storeys stood 1.6 m high (Opus verdict)"
+   },
+   {
+    "pand": "0363100012169444",
+    "stripRow": 509,
+    "evidence": "review pin: Keizersgracht 254: the straight white cornice 13.4-14.0 m with the crest standing on it; the pin is the wall top under the 0.35 m cornice (13.6 m: the first sheet at 14.0 drew the cornice top 0.4 m high); 3DBAG reads 13.38 m"
+   }
+  ]
+ }
+}

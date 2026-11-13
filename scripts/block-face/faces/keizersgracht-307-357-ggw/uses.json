@@ -1,0 +1,417 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via local extract amsterdam-pois-20260828.json.gz, fetched 2026-08-28T23:00:00Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168587",
+   "addresses": [
+    "Keizersgracht 307",
+    "Keizersgracht 311",
+    "Keizersgracht 313"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 313",
+     "use": "kantoorfunctie",
+     "areaM2": 2743,
+     "bagId": "0363010000943737"
+    },
+    {
+     "address": "Keizersgracht 311",
+     "use": "kantoorfunctie",
+     "areaM2": 858,
+     "bagId": "0363010011259450"
+    },
+    {
+     "address": "Wolvenstraat 35",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012068813"
+    },
+    {
+     "address": "Wolvenstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012068814"
+    },
+    {
+     "address": "Keizersgracht 307",
+     "use": "kantoorfunctie",
+     "areaM2": 1174,
+     "bagId": "0363010012072965"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6488383761,
+     "lngLat": [
+      4.8852534,
+      52.3702795
+     ],
+     "tags": {
+      "name": "De Snuifduif",
+      "shop": "perfumery"
+     },
+     "fetchedAt": "2026-08-28T23:00:00Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9710408772,
+     "lngLat": [
+      4.8849215,
+      52.370237
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "40",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-08-28T23:00:00Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172167",
+   "addresses": [
+    "Keizersgracht 315"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 315",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000700962"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172166",
+   "addresses": [
+    "Keizersgracht 317A",
+    "Keizersgracht 317B",
+    "Keizersgracht 317C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 317A",
+     "use": "kantoorfunctie",
+     "areaM2": 443,
+     "bagId": "0363010003720882"
+    },
+    {
+     "address": "Keizersgracht 317B",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010003720883"
+    },
+    {
+     "address": "Keizersgracht 317C",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010003720884"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172173",
+   "addresses": [
+    "Keizersgracht 319"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 319",
+     "use": "woonfunctie",
+     "areaM2": 851,
+     "bagId": "0363010000700966"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172172",
+   "addresses": [
+    "Keizersgracht 321"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 321",
+     "use": "kantoorfunctie",
+     "areaM2": 923,
+     "bagId": "0363010000700968"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172171",
+   "addresses": [
+    "Keizersgracht 323"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 323",
+     "use": "winkelfunctie",
+     "areaM2": 381,
+     "bagId": "0363010000946679"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11026092293,
+     "lngLat": [
+      4.8850051,
+      52.3696658
+     ],
+     "tags": {
+      "amenity": "fraternity",
+      "name": "Litterarisch Dispuutgezelschap B.E.E.T.S."
+     },
+     "fetchedAt": "2026-08-28T23:00:00Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172164",
+   "addresses": [
+    "Keizersgracht 325C",
+    "Keizersgracht 325A",
+    "Keizersgracht 325B",
+    "Keizersgracht 325D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 325A",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000700978"
+    },
+    {
+     "address": "Keizersgracht 325B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000700979"
+    },
+    {
+     "address": "Keizersgracht 325D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000700981"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172165",
+   "addresses": [
+    "Keizersgracht 327A",
+    "Keizersgracht 327B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 327A",
+     "use": "woonfunctie",
+     "areaM2": 360,
+     "bagId": "0363010001027611"
+    },
+    {
+     "address": "Keizersgracht 327B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000700984"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172177",
+   "addresses": [
+    "Keizersgracht 329"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 329",
+     "use": "woonfunctie",
+     "areaM2": 273,
+     "bagId": "0363010000700987"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12160371421,
+     "lngLat": [
+      4.8848637,
+      52.3695174
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "ref": "10319",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-08-28T23:00:00Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172176",
+   "addresses": [
+    "Keizersgracht 331"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 331",
+     "use": "woonfunctie",
+     "areaM2": 297,
+     "bagId": "0363010000700988"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12160371421,
+     "lngLat": [
+      4.8848637,
+      52.3695174
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "ref": "10319",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-08-28T23:00:00Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169193",
+   "addresses": [
+    "Keizersgracht 333H",
+    "Keizersgracht 333A",
+    "Keizersgracht 333B",
+    "Keizersgracht 333D",
+    "Keizersgracht 333E",
+    "Keizersgracht 333F",
+    "Keizersgracht 333G",
+    "Keizersgracht 333C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 333H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001014294"
+    },
+    {
+     "address": "Keizersgracht 333A",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000700990"
+    },
+    {
+     "address": "Keizersgracht 333B",
+     "use": "industriefunctie",
+     "areaM2": 288,
+     "bagId": "0363010000700991"
+    },
+    {
+     "address": "Keizersgracht 333D",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000700993"
+    },
+    {
+     "address": "Keizersgracht 333E",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000700994"
+    },
+    {
+     "address": "Keizersgracht 333F",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000700995"
+    },
+    {
+     "address": "Keizersgracht 333G",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000700996"
+    },
+    {
+     "address": "Keizersgracht 333C",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000700992"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169194",
+   "addresses": [
+    "Keizersgracht 335"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 335-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 144,
+     "bagId": "0363010003684887"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172411",
+   "addresses": [
+    "Keizersgracht 337"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 337-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000701011"
+    },
+    {
+     "address": "Keizersgracht 337-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000701012"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

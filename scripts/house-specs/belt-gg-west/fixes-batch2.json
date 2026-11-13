@@ -1,0 +1,88 @@
+{
+ "0363100012185919": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "fronts/0/atticSize": {
+    "span": 0.9,
+    "rise": 1.0,
+    "sill": 0.35
+   },
+   "roof/source": "front",
+   "roof/rakeClear": true
+  },
+  "why": {
+   "fronts/0/atticSize": "one light about 0.9 x 1.0 m in the raised centre, 14.4-15.4 m",
+   "roof/source": "a saddle under the gable crown outline, not 3DBAG's roof (no roof face beside the crown from the quay)",
+   "roof/rakeClear": "the saddle stays under the crown's rakes"
+  }
+ },
+ "0363100012169115": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face"
+  },
+  "limits": [
+   {
+    "component": "crown",
+    "what": "a raised centre in the front plane over the middle axis, about 1.3 m over the cornice with one white-framed light (Keizersgracht 252A, 2021-01-22 strip); towers[] on a standalone recipe house leave 10-15 m of open edge (gate 2 m), so it is not drawn"
+   }
+  ]
+ },
+ "0363100012169112": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "roof/source": "front",
+   "roof/rakeClear": true
+  },
+  "why": {
+   "roof/source": "a saddle under the gable crown outline, not 3DBAG's roof (no roof face beside the crown from the quay)",
+   "roof/rakeClear": "the saddle stays under the crown's rakes"
+  }
+ },
+ "0363100012169114": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "roof/source": "front",
+   "roof/rakeClear": true
+  },
+  "why": {
+   "roof/source": "a saddle under the gable crown outline, not 3DBAG's roof (no roof face beside the crown from the quay)",
+   "roof/rakeClear": "the saddle stays under the crown's rakes"
+  }
+ },
+ "0363100012169118": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "roof/source": "front",
+   "roof/rakeClear": true
+  },
+  "why": {
+   "roof/source": "a saddle under the gable crown outline, not 3DBAG's roof (no roof face beside the crown from the quay)",
+   "roof/rakeClear": "the saddle stays under the crown's rakes"
+  }
+ },
+ "0363100012169387": {
+  "ref": "block-face strip keizersgracht-240-312 2021-01-22 (40 px/m, gridded crop)",
+  "at": "2021-01-22",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat",
+   "palette/wallMaterial": "stucco"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face",
+   "palette/wallMaterial": "smooth white render over the whole front"
+  }
+ }
+}

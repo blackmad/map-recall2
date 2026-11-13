@@ -1,0 +1,404 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "leliegracht-4-34-b10",
+ "street": "Leliegracht",
+ "sources": [
+  {
+   "id": "strip-2023-02-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-02-13",
+   "image": "staging/block-face/leliegracht-4-34-ggw/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2023-02-13 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1760-plain-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012176417",
+   "slug": "leliegracht-176417",
+   "address": "Leliegracht 34",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeys": 3,
+     "storeyHeights": [
+      4.6,
+      3.0,
+      2.8
+     ],
+     "windowHeights": [
+      0.62,
+      0.72,
+      0.72
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#94634f",
+     "evidence": "strip 2023-02-13 span 427-632 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012176421",
+   "slug": "leliegracht-176421",
+   "address": "Leliegracht 30A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#8e604b",
+     "evidence": "strip 2023-02-13 span 816-1062 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012176420",
+   "slug": "leliegracht-176420",
+   "address": "Leliegracht 24",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#8f6450",
+     "evidence": "strip 2023-02-13 span 1511-1726 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167650",
+   "slug": "leliegracht-167650",
+   "address": "Leliegracht 22",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#98745a",
+     "evidence": "strip 2023-02-13 span 1727-1951 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167664",
+   "slug": "leliegracht-167664",
+   "address": "Leliegracht 20A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "mirror": true,
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#4a3a33",
+     "evidence": "strip 2023-02-13 span 1951-2185 (very dark brown brick) read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167665",
+   "slug": "leliegracht-167665",
+   "address": "Leliegracht 18",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeys": 3,
+     "storeyHeights": [
+      4.6,
+      3.2,
+      3.0
+     ],
+     "windowHeights": [
+      0.62,
+      0.72,
+      0.72
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#a68a6a",
+     "evidence": "strip 2023-02-13 span 2185-2412 (buff brick) read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167667",
+   "slug": "leliegracht-167667",
+   "address": "Leliegracht 16",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "bell",
+    "overrides": {
+     "storeys": 3,
+     "storeyHeights": [
+      4.6,
+      3.0,
+      2.8
+     ],
+     "windowHeights": [
+      0.62,
+      0.72,
+      0.72
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#a68a6a",
+     "evidence": "strip 2023-02-13 span 2411-2639 (buff brick) read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177011",
+   "slug": "leliegracht-177011",
+   "address": "Leliegracht 14",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "bell",
+    "overrides": {
+     "storeys": 3,
+     "storeyHeights": [
+      4.6,
+      3.0,
+      2.8
+     ],
+     "windowHeights": [
+      0.62,
+      0.72,
+      0.72
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#a68a6a",
+     "evidence": "strip 2023-02-13 span 2640-2873 (buff brick) read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177014",
+   "slug": "leliegracht-177014",
+   "address": "Leliegracht 8",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.8,
+      2.6
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#9a7e60",
+     "evidence": "strip 2023-02-13 span 3329-3499 (buff brick) read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177015",
+   "slug": "leliegracht-177015",
+   "address": "Leliegracht 6",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 2,
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#584337",
+     "evidence": "strip 2023-02-13 span 3499-3670 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177016",
+   "slug": "leliegracht-177016",
+   "address": "Leliegracht 4",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.8,
+      2.6
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#4f3d33",
+     "evidence": "strip 2023-02-13 span 3671-3841 read by eye (fresh strip leliegracht-4-34-ggw, low sun, overexposed)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  }
+ ]
+}

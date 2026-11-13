@@ -1,0 +1,173 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "ggw-1740-crest-attic",
+ "district": "grachtengordel-west",
+ "description": "Canal-belt cornice house under a Louis XIV attic (Keizersgracht 244-246, twin fronts): a 6-7 m front of ochre brick, a tall ground storey at street level (door in a white pilaster surround and tall windows) and three upper storeys of three axes of white-framed six-pane windows with white sills, under a white attic band over the cornice with one dark light per axis and a carved crest",
+ "fit": {
+  "widthM": [
+   5.6,
+   9.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1880
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.0,
+   18.5
+  ],
+  "stucco": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 7.6,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 9.8,
+    "bays": 4
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 5
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   },
+   "crest": {
+    "riseM": [
+     0.5,
+     2.2
+    ],
+    "topWidthM": [
+     0.6,
+     4.0
+    ]
+   }
+  },
+  "note": "Keizersgracht 244 (169108) and 246 (169380), 2021-01-22 strip at 40 px/m, gridded: ground openings 1.8-5.0 m, rows 6.0-8.6, 9.0-11.4, 12.0-13.8 m, cornice foot 14.9 m, attic lights 15.5-16.2 m, attic top 17.3 m, crest to 18.3 m. Placed only by a reviewer's pand pin",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   5.4,
+   3.45,
+   2.8,
+   2.55
+  ],
+  "windows": "six-pane",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.56,
+   0.75,
+   0.79,
+   0.75
+  ],
+  "headLines": [
+   0.89,
+   0.93,
+   0.875,
+   0.88
+  ],
+  "windowShare": 0.58,
+  "cornice": "frieze",
+  "entablature": {
+   "rise": 2.8,
+   "cap": 0.5,
+   "frieze": "trim",
+   "capDepth": 0.45,
+   "architrave": 0.12
+  },
+  "friezeVents": {
+   "span": 0.95,
+   "rise": 0.8,
+   "sill": 0.85,
+   "light": true
+  }
+ },
+ "crowns": {
+  "louis": {
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "louis",
+    "gabletSize": {
+     "span": 5.2,
+     "rise": 2.1
+    }
+   },
+   "note": "Keizersgracht 246 (169380), 2021-01-22 strip gridded at 2x (grid-crop 2950-3190): a white attic 14.2-17.0 m with three lights 15.0-15.9 m, then a Louis XIV crest across the front, C-scrolls and short balustrades at both ends about 1 m high, a raised central arch to 19.2 m and a carved top to 19.6 m"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "the house door at street level on the outer axis (246 left, 244 right: a mirrored pair)"
+  }
+ },
+ "palettes": {
+  "ochre-brick": {
+   "brick": "#9b845d",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "3 axes (4 over 7.6 m, 5 over 9.8 m: the double-wide Herengracht fronts)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + 2 tall windows | upper: 3",
+  "symmetry": "symmetric above the bel-etage",
+  "groundFloor": "door in a white pilaster surround and tall windows at street level",
+  "signage": "none",
+  "roofline": "a white attic band with a light per axis under a carved crest",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the crest is drawn as the small kit crest: the real one is a carved Louis XIV attic spanning the front with an oculus",
+   "the white pilaster door surround is drawn as a plain door with a transom"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "keizersgracht-240-312",
+   "pands": [
+    "169108",
+    "169380"
+   ],
+   "citation": "strip.jpg 2021-01-22 gridded at 2x (grid-crop.ts 2958-3408): ground openings 1.8-5.0 m, rows 6.0-8.6, 9.0-11.4, 12.0-13.8 m, cornice foot 14.9 m, attic lights 15.5-16.2 m, attic top 17.3 m, crest to 18.3 m; six-pane windows 1.0 m wide"
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "pands": [
+    "169380",
+    "169108"
+   ],
+   "citation": "strip.jpg 2021-01-22 gridded at 2x (grid-crop.ts 2950-3190): 246 ground windows 1.8-4.8 m under a pilastered door surround to 5.0 m; rows 6.0-8.6, 9.1-11.3, 12.0-13.9 m; attic 14.2-17.0 m with lights 15.0-15.9 m; crest to 19.2 m (carving to 19.6 m)"
+  }
+ ]
+}

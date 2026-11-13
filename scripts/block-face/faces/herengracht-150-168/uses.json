@@ -1,0 +1,275 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:10:54.864Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176410",
+   "addresses": [
+    "Herengracht 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 168",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000664678"
+    },
+    {
+     "address": "Herengracht 168",
+     "use": "kantoorfunctie",
+     "areaM2": 87,
+     "bagId": "0363010011909459"
+    },
+    {
+     "address": "Herengracht 168",
+     "use": "kantoorfunctie",
+     "areaM2": 1230,
+     "bagId": "0363010012122767"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176357",
+   "addresses": [
+    "Herengracht 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 166",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 2717,
+     "bagId": "0363010000664673"
+    },
+    {
+     "address": "Herengracht 166",
+     "use": "kantoorfunctie",
+     "areaM2": 963,
+     "bagId": "0363010011909458"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176358",
+   "addresses": [
+    "Herengracht 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 164-HV",
+     "use": "kantoorfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000995672"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167646",
+   "addresses": [
+    "Herengracht 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 162",
+     "use": "kantoorfunctie",
+     "areaM2": 738,
+     "bagId": "0363010000664658"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167644",
+   "addresses": [
+    "Herengracht 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 160",
+     "use": "woonfunctie",
+     "areaM2": 983,
+     "bagId": "0363010000716712"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11211150786,
+     "lngLat": [
+      4.8872345,
+      52.3744581
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "160-162",
+      "addr:postcode": "1016BN",
+      "addr:street": "Herengracht",
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "healthcare:speciality": "general",
+      "name": "Huisartsenpraktijk Herengracht",
+      "phone": "+31 20 623 7996",
+      "website": "https://praktijkherengracht.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:54.864Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167645",
+   "addresses": [
+    "Herengracht 158A",
+    "Herengracht 158B",
+    "Herengracht 158C",
+    "Herengracht 158D",
+    "Herengracht 158F",
+    "Herengracht 158E",
+    "Herengracht 158G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 158A",
+     "use": "kantoorfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001007814"
+    },
+    {
+     "address": "Herengracht 158B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001007816"
+    },
+    {
+     "address": "Herengracht 158C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001007818"
+    },
+    {
+     "address": "Herengracht 158D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001007821"
+    },
+    {
+     "address": "Herengracht 158F",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010001007823"
+    },
+    {
+     "address": "Herengracht 158E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001007891"
+    },
+    {
+     "address": "Herengracht 158G",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001007893"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167659",
+   "addresses": [
+    "Herengracht 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 156-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000664647"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176313",
+   "addresses": [
+    "Herengracht 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 154",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000664645"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176314",
+   "addresses": [
+    "Herengracht 150",
+    "Herengracht 150A",
+    "Herengracht 150B",
+    "Herengracht 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 152",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000942112"
+    },
+    {
+     "address": "Herengracht 150",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000664643"
+    },
+    {
+     "address": "Herengracht 150A",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012565644"
+    },
+    {
+     "address": "Herengracht 150B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012565643"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5666257240,
+     "lngLat": [
+      4.8875259,
+      52.3747794
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2024-08-15"
+     },
+     "fetchedAt": "2026-11-10T08:10:54.864Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,446 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:15:00.534Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176671",
+   "addresses": [
+    "Herengracht 332A",
+    "Herengracht 332B",
+    "Herengracht 332C",
+    "Herengracht 332D",
+    "Herengracht 332E",
+    "Herengracht 334A",
+    "Herengracht 334B",
+    "Herengracht 334C",
+    "Herengracht 336A",
+    "Herengracht 336B",
+    "Herengracht 336C",
+    "Herengracht 336D",
+    "Herengracht 336E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 332A",
+     "use": "woonfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000960301"
+    },
+    {
+     "address": "Herengracht 332B",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000960302"
+    },
+    {
+     "address": "Herengracht 332C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000960303"
+    },
+    {
+     "address": "Herengracht 332D",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000960304"
+    },
+    {
+     "address": "Herengracht 332E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000960306"
+    },
+    {
+     "address": "Herengracht 334A",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010000960309"
+    },
+    {
+     "address": "Herengracht 334C",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000960311"
+    },
+    {
+     "address": "Herengracht 336A",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000960312"
+    },
+    {
+     "address": "Herengracht 336B",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000960313"
+    },
+    {
+     "address": "Herengracht 336C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000960314"
+    },
+    {
+     "address": "Herengracht 336E",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012109266"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "relation",
+     "id": 3581119,
+     "lngLat": [
+      4.8862319,
+      52.3694957
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "340",
+      "addr:postcode": "1016GC",
+      "addr:street": "Herengracht",
+      "building": "yes",
+      "name": "Mokum Events",
+      "office": "company",
+      "ref:bag": "0363100012176671",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "start_date": "1005",
+      "type": "multipolygon",
+      "website": "https://amsterdam.mokumevents.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:15:00.534Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176669",
+   "addresses": [
+    "Herengracht 328"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 328",
+     "use": "kantoorfunctie",
+     "areaM2": 345,
+     "bagId": "0363010000664910"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176670",
+   "addresses": [
+    "Herengracht 326"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 326-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000664906"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176673",
+   "addresses": [
+    "Herengracht 320",
+    "Herengracht 324"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 320",
+     "use": "kantoorfunctie",
+     "areaM2": 1030,
+     "bagId": "0363010000965341"
+    },
+    {
+     "address": "Herengracht 324",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000974988"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176668",
+   "addresses": [
+    "Herengracht 318"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 318",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000714387"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176667",
+   "addresses": [
+    "Herengracht 316B",
+    "Herengracht 316A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 316B",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010001041846"
+    },
+    {
+     "address": "Herengracht 316A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001039579"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721942773,
+     "lngLat": [
+      4.8864726,
+      52.3698648
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "316A",
+      "addr:postcode": "1016CD",
+      "addr:street": "Herengracht",
+      "consulate": "honorary_consul",
+      "country": "JM",
+      "diplomatic": "consulate",
+      "name": "Honorair Consulaat van Jamaica",
+      "name:en": "Honorary Consulate of Jamaica",
+      "name:nl": "Honorair Consulaat van Jamaica",
+      "office": "diplomatic",
+      "phone": "+31 20 626 7762",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "target": "NL"
+     },
+     "fetchedAt": "2026-11-10T08:15:00.534Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176666",
+   "addresses": [
+    "Herengracht 314"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 314-HV",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 137,
+     "bagId": "0363010003701489"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176672",
+   "addresses": [
+    "Herengracht 312"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012185772",
+   "addresses": [
+    "Herengracht 310A",
+    "Herengracht 310B",
+    "Herengracht 310C",
+    "Herengracht 310D",
+    "Herengracht 310E",
+    "Herengracht 310F",
+    "Herengracht 310G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 310A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000664865"
+    },
+    {
+     "address": "Herengracht 310B",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000664866"
+    },
+    {
+     "address": "Herengracht 310C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000664867"
+    },
+    {
+     "address": "Herengracht 310D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000664868"
+    },
+    {
+     "address": "Herengracht 310E",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000664869"
+    },
+    {
+     "address": "Herengracht 310F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000664870"
+    },
+    {
+     "address": "Herengracht 310G",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000664871"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176664",
+   "addresses": [
+    "Herengracht 308"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 308",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010000664863"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176663",
+   "addresses": [
+    "Herengracht 306"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 306-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000664861"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176660",
+   "addresses": [
+    "Herengracht 304"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 304",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000664859"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176661",
+   "addresses": [
+    "Herengracht 302"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 302",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000664858"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169024",
+   "addresses": [
+    "Herengracht 300"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 300",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000664853"
+    },
+    {
+     "address": "Wolvenstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000876350"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721941980,
+     "lngLat": [
+      4.8865271,
+      52.3702425
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "300",
+      "addr:postcode": "1016CD",
+      "addr:street": "Herengracht",
+      "branch": "Amsterdam - Herengracht",
+      "brand": "Kaldi",
+      "brand:website": "https://www.kaldi.nl",
+      "brand:wikidata": "Q136352595",
+      "check_date": "2024-05-09",
+      "email": "amsterdam@kaldi.nl",
+      "name": "Kaldi",
+      "phone": "+31 6 13679737",
+      "shop": "coffee",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.kaldi.nl/pages/kaldi-amsterdam-herengracht"
+     },
+     "fetchedAt": "2026-11-10T08:15:00.534Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

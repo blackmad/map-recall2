@@ -1,0 +1,299 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "keizersgracht-307-357-b11",
+ "street": "Keizersgracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-27",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-27",
+   "image": "staging/block-face/keizersgracht-307-357-ggw/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2023-03-27 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1760-plain-cornice",
+  "ggw-1740-crest-attic"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012172172",
+   "slug": "keizersgracht-172172",
+   "address": "Keizersgracht 321",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeys": 5,
+     "storeyHeights": [
+      4.4,
+      3.4,
+      3.2,
+      3.0,
+      2.8
+     ],
+     "windowHeights": [
+      0.72,
+      0.74,
+      0.74,
+      0.72,
+      0.7
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88,
+      0.86,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#93503d",
+     "evidence": "strip 2023-03-27 span 2403-2743 (red brick) read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012172164",
+   "slug": "keizersgracht-172164",
+   "address": "Keizersgracht 325C",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeys": 5,
+     "cornice": "heavy",
+     "storeyHeights": [
+      4.4,
+      3.2,
+      3.0,
+      2.9,
+      2.7
+     ],
+     "windowHeights": [
+      0.7,
+      0.74,
+      0.74,
+      0.72,
+      0.7
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88,
+      0.86,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#66503f",
+     "evidence": "strip 2023-03-27 span 2913-3141 read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012172165",
+   "slug": "keizersgracht-172165",
+   "address": "Keizersgracht 327A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeys": 5,
+     "cornice": "heavy",
+     "windowShare": 0.42,
+     "storeyHeights": [
+      4.4,
+      3.2,
+      3.0,
+      2.9,
+      2.7
+     ],
+     "windowHeights": [
+      0.7,
+      0.74,
+      0.74,
+      0.72,
+      0.7
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88,
+      0.86,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#d6cdb9",
+     "evidence": "strip 2023-03-27 span 3141-3368 (cream render) read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012172177",
+   "slug": "keizersgracht-172177",
+   "address": "Keizersgracht 329",
+   "type": {
+    "type": "ggw-1740-crest-attic",
+    "crown": "louis",
+    "overrides": {
+     "storeyHeights": [
+      4.4,
+      3.2,
+      3.0,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#66503f",
+     "evidence": "strip 2023-03-27 span 3368-3540 read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012169193",
+   "slug": "keizersgracht-169193",
+   "address": "Keizersgracht 333",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 2,
+     "cornice": "heavy",
+     "windowShare": 0.7,
+     "storeyHeights": [
+      4.6,
+      3.4,
+      3.2,
+      3.0
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#574639",
+     "evidence": "strip 2023-03-27 span 3708-4042 read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012169194",
+   "slug": "keizersgracht-169194",
+   "address": "Keizersgracht 335",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 2,
+     "storeyHeights": [
+      2.9,
+      2.7,
+      2.7,
+      2.6
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#6a4f41",
+     "evidence": "strip 2023-03-27 span 4042-4238 read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012172411",
+   "slug": "keizersgracht-172411",
+   "address": "Keizersgracht 337",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 2,
+     "cornice": "heavy",
+     "windowShare": 0.68,
+     "storeyHeights": [
+      4.4,
+      3.2,
+      3.0,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#2f2d30",
+     "evidence": "strip 2023-03-27 span 4238-4445 (black-painted brick) read by eye (fresh strip keizersgracht-307-357-ggw, low sun, some ghosting)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-27",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-27 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-27 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  }
+ ]
+}

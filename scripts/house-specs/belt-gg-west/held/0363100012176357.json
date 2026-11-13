@@ -1,0 +1,5 @@
+{
+ "pandId": "0363100012176357",
+ "held": "2026-11-10",
+ "why": "3DBAG front eaves 12.76 m (the low side of a roof behind the cornice: roofMax 20.4 m) while the herengracht-150-168 strip (2021-03-17) shows four window rows over a basement and the cornice well above that; the recipe route has no photo-measured eaves (facts.measuredEavesM is set only by a block face's continuity.measuredEaves), so the house draws metres too low and fails storey-height (2.2 m upper storeys). Needs a measured-eaves field on the spec route, and a strip whose vertical scale is checked (this strip reads about 1.3x tall: 3.5 m cornice bands)."
+}

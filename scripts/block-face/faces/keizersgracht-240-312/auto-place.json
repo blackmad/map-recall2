@@ -1,0 +1,1276 @@
+{
+ "face": "keizersgracht-240-312",
+ "street": "Keizersgracht",
+ "library": "grachtengordel-west",
+ "stripDate": "2021-01-22",
+ "seconds": 36.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "keizersgracht-240-312-r1",
+   "pands": [
+    "0363100012169386",
+    "0363100012169390",
+    "0363100012169444"
+   ],
+   "passed": true,
+   "triangles": 6118
+  },
+  {
+   "face": "keizersgracht-240-312-r2",
+   "pands": [
+    "0363100012169380",
+    "0363100012169108",
+    "0363100012169118"
+   ],
+   "passed": true,
+   "triangles": 5716
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012185919",
+   "address": "Keizersgracht 272",
+   "builtYear": 1641,
+   "widthM": 5.2,
+   "eavesM": 13.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#988369",
+    "wallRaw": "#847b68",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 464,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 2.42,
+      "topWidthM": 0.03,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.45,
+       "widthM": 1.23,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169382",
+   "address": "Keizersgracht 268",
+   "builtYear": 1620,
+   "widthM": 2.01,
+   "eavesM": 13.33,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f8a6c",
+    "wallRaw": "#9b886d",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 421,
+     "confidence": 0.69,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 2.01 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 2.01 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.33 m = 4 storeys of 3.33 m vs the type's 3.44 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.96 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.099 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169381",
+   "address": "Keizersgracht 264",
+   "builtYear": 1876,
+   "widthM": 10.88,
+   "eavesM": 15.61,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aca184",
+    "wallRaw": "#888779",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 355,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.509,
+    "structure": {
+     "bayWidthM": 2.7,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.82 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.82,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.94,
+       "light": 0.92
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.88,
+       "widthM": 1.5,
+       "centre": 0.32
+      },
+      {
+       "atM": 12.1,
+       "widthM": 1.27,
+       "centre": 0.48
+      },
+      {
+       "atM": 10.3,
+       "widthM": 1.3,
+       "centre": 0.18
+      },
+      {
+       "atM": 5.88,
+       "widthM": 0.93,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.31,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169110",
+   "address": "Keizersgracht 262A",
+   "builtYear": 1795,
+   "widthM": 1.7,
+   "eavesM": 15.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f3d8a0",
+    "wallRaw": "#988e78",
+    "skyline": {
+     "eavesM": 20.35,
+     "eavesRow": 239,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 4.77,
+      "topWidthM": 0.23,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 1.7 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 1.7 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.62 m = 5 storeys of 3.12 m vs the type's 3.44 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.54 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.068 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169112",
+   "address": "Keizersgracht 260",
+   "builtYear": 1750,
+   "widthM": 4.61,
+   "eavesM": 12.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b39c7b",
+    "wallRaw": "#8f856e",
+    "skyline": {
+     "eavesM": 16.4,
+     "eavesRow": 397,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 8.9,
+      "topWidthM": 0.13,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.201,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Keizersgracht 260: a tall bell gable with a carved cap over four upper rows; not pinned and not read (placed only as a run fill)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169386",
+   "address": "Keizersgracht 258A",
+   "builtYear": 1624,
+   "widthM": 6.84,
+   "eavesM": 15.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#615445",
+    "wallRaw": "#6b6251",
+    "skyline": {
+     "eavesM": 23.3,
+     "eavesRow": 121,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 2.72,
+      "topWidthM": 0.07,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.141,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.97,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9,
+       "widthM": 1.1,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.07,
+       "centre": 0.51
+      },
+      {
+       "atM": 5.32,
+       "widthM": 1.82,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.24
+   },
+   "status": "placed",
+   "type": "ggw-1760-plain-cornice",
+   "score": 1,
+   "placement": {
+    "type": "ggw-1760-plain-cornice",
+    "measuredPalette": {
+     "brick": "#615445",
+     "evidence": "strip 2021-01-22 span 1550-1824: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "door unread",
+    "crown none: skyline rise 2.72 m, width 1.25 m, top 0.07 m matches no variant"
+   ],
+   "likeness": {
+    "pandId": "0363100012169386",
+    "ncc": 0.156,
+    "nccRaw": 0.156,
+    "shiftM": [
+     0.15,
+     0.1
+    ],
+    "usable": 0.53,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#584b3f",
+     "model": "#7b6b58",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.657
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169390",
+   "address": "Keizersgracht 256",
+   "builtYear": 1750,
+   "widthM": 5.69,
+   "eavesM": 15.9,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b8769",
+    "wallRaw": "#887c64",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 372,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 1.2,
+      "topWidthM": 1.18,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.15,
+       "widthM": 1.1,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "ggw-1700-neck-bell-gable",
+   "score": 1,
+   "placement": {
+    "type": "ggw-1700-neck-bell-gable",
+    "measuredPalette": {
+     "brick": "#9b8769",
+     "evidence": "strip 2021-01-22 span 1823-2050: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "crown neck: reviewer pin (Keizersgracht 256: neck gable with white claw pieces; shoulders 14.1 m, one light 14.25-15.9 m, neck to 16.9 m)",
+    "door reviewer pin: mirrored (Keizersgracht 256: the door in its white surround on the right axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012169390",
+    "ncc": 0.281,
+    "nccRaw": 0.281,
+    "shiftM": [
+     0.15,
+     0.2
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.43 vs photo 0.57"
+    ],
+    "wall": {
+     "photo": "#a99573",
+     "model": "#a9987e",
+     "dL": 0.022
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.652
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169444",
+   "address": "Keizersgracht 254A",
+   "builtYear": 1740,
+   "widthM": 5.63,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#efddac",
+    "wallRaw": "#dfd0a2",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 468,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 0.75,
+      "topWidthM": 1.35,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.191,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.35,
+       "widthM": 1.13,
+       "centre": 0.15
+      },
+      {
+       "atM": 9.02,
+       "widthM": 1.1,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.65,
+       "widthM": 1.02,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "ggw-1740-crest-cornice",
+   "score": 0.64,
+   "placement": {
+    "type": "ggw-1740-crest-cornice",
+    "measuredPalette": {
+     "brick": "#efddac",
+     "evidence": "strip 2021-01-22 span 2051-2276: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "reviewer accept pin (score 0.64)",
+    "storeys 4: reviewer pin",
+    "door unread",
+    "crown crest: reviewer pin (Keizersgracht 254: a raised semicircular crest on the cornice, 14.0-15.3 m and about 3.5 m wide)"
+   ],
+   "likeness": {
+    "pandId": "0363100012169444",
+    "ncc": 0.248,
+    "nccRaw": 0.248,
+    "shiftM": [
+     -0.05,
+     0.05
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#f3e1b2",
+     "model": "#f2e9d1",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.591
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169115",
+   "address": "Keizersgracht 252A",
+   "builtYear": 1698,
+   "widthM": 5.65,
+   "eavesM": 11.22,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716049",
+    "wallRaw": "#756952",
+    "skyline": {
+     "eavesM": 12.63,
+     "eavesRow": 548,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 12.9,
+      "topWidthM": 0.03,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.09,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 0.85,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Keizersgracht 252: a low cornice front with a dormer and a shop pui; no type in the library draws it",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169114",
+   "address": "Keizersgracht 250B",
+   "builtYear": 1700,
+   "widthM": 5.6,
+   "eavesM": 11.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#726555",
+    "wallRaw": "#6b6657",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 454,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 8.22,
+      "topWidthM": 0.07,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.12,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.63,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.92,
+       "widthM": 1.48,
+       "centre": 0.85
+      },
+      {
+       "atM": 4.77,
+       "widthM": 1.43,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012169114",
+    "ncc": 0.442,
+    "nccRaw": 0.442,
+    "shiftM": [
+     0.1,
+     -0.2
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.42 vs photo 0.74"
+    ],
+    "wall": {
+     "photo": "#6c5f51",
+     "model": "#8a7a67",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.74,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.621
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169387",
+   "address": "Keizersgracht 248K",
+   "builtYear": 1710,
+   "widthM": 5.81,
+   "eavesM": 16.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a49379",
+    "wallRaw": "#9d9a86",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 419,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.316,
+    "structure": {
+     "bayWidthM": 1.6,
+     "bayCentre": 0.79,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.14 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.14,
+       "light": 0.28
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.84,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.57,
+       "widthM": 0.82,
+       "centre": 0.83
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.05,
+       "centre": 0.17
+      },
+      {
+       "atM": 8.88,
+       "widthM": 0.97,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.23,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.37
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 30 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012169387",
+    "ncc": null,
+    "nccRaw": 0.2,
+    "shiftM": [
+     -0.4,
+     0.3
+    ],
+    "usable": 0.3,
+    "abstain": "usable photo 30 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 38 % > 25 %",
+     "washed out 34 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#887557",
+     "model": "#684d43",
+     "dL": -0.102
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.463
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169380",
+   "address": "Keizersgracht 246B",
+   "builtYear": 1730,
+   "widthM": 5.61,
+   "eavesM": 17.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#967d55",
+    "wallRaw": "#8c8262",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 346,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 2.05,
+      "topWidthM": 0.65,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.94 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.94,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.05,
+       "widthM": 0.8,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.42,
+       "widthM": 0.8,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "ggw-1740-crest-attic",
+   "score": 0.82,
+   "placement": {
+    "type": "ggw-1740-crest-attic",
+    "measuredPalette": {
+     "brick": "#967d55",
+     "evidence": "strip 2021-01-22 span 2958-3182: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "door unread: as drawn, the opposite of 169108",
+    "crown louis: reviewer pin (Keizersgracht 246: a Louis XIV crest across the front over the white attic, C-scrolls at both ends and a raised central arch to 19.2 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012169380",
+    "ncc": 0.237,
+    "nccRaw": 0.237,
+    "shiftM": [
+     0.2,
+     -0.3
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.43 mean 0.52 vs photo 0.71"
+    ],
+    "wall": {
+     "photo": "#8a7350",
+     "model": "#a99068",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.71,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.584
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169108",
+   "address": "Keizersgracht 244A",
+   "builtYear": 1730,
+   "widthM": 5.61,
+   "eavesM": 16.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#947b52",
+    "wallRaw": "#928562",
+    "skyline": {
+     "eavesM": 17.65,
+     "eavesRow": 347,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.98,
+      "topWidthM": 0.6,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.63 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.63,
+       "light": 0.27
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.38,
+       "widthM": 1.35,
+       "centre": 0.81
+      },
+      {
+       "atM": 4.92,
+       "widthM": 0.9,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "ggw-1740-crest-attic",
+   "score": 1,
+   "placement": {
+    "type": "ggw-1740-crest-attic",
+    "measuredPalette": {
+     "brick": "#947b52",
+     "evidence": "strip 2021-01-22 span 3183-3408: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "crown louis: reviewer pin (Keizersgracht 244: a Louis XIV crest across the front over the white attic, C-scrolls at both ends and a raised central arch to 19.2 m)",
+    "door reviewer pin: mirrored (Keizersgracht 244: the door in its white pilaster surround on the right axis, mirroring 246)"
+   ],
+   "likeness": {
+    "pandId": "0363100012169108",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     0.25,
+     -0.35
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.54 vs photo 0.64"
+    ],
+    "wall": {
+     "photo": "#967c53",
+     "model": "#a98f63",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.648
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169118",
+   "address": "Keizersgracht 242A",
+   "builtYear": 1715,
+   "widthM": 5.62,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625c4e",
+    "wallRaw": "#696658",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 405,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3,
+      "riseM": 3.6,
+      "topWidthM": 0.05,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "ggw-1700-neck-bell-gable",
+   "score": 1,
+   "placement": {
+    "type": "ggw-1700-neck-bell-gable",
+    "overrides": {
+     "storeyHeights": [
+      5.4,
+      3,
+      2.4,
+      2.3
+     ],
+     "windowHeights": [
+      0.52,
+      0.72,
+      0.69,
+      0.72
+     ],
+     "headLines": [
+      0.91,
+      0.87,
+      0.83,
+      0.85
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#625c4e",
+     "evidence": "strip 2021-01-22 span 3407-3632: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "tall-neck-small-light"
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "body storeyHeights, windowHeights, headLines: reviewer pin",
+    "crown tall-neck-small-light: reviewer pin (Keizersgracht 242: claw pieces 13.05-13.8 m, a light 13.3-14.5 m, the neck and round cap to 17.3 m)",
+    "door reviewer pin: as drawn (Keizersgracht 242: 2021-01-22 strip, the house door on the left axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012169118",
+    "ncc": 0.309,
+    "nccRaw": 0.309,
+    "shiftM": [
+     0.15,
+     0.05
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#635d4f",
+     "model": "#7a7361",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.565
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169117",
+   "address": "Keizersgracht 240A",
+   "builtYear": 1750,
+   "widthM": 1.75,
+   "eavesM": 12.8,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655e50",
+    "wallRaw": "#656154",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 380,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.52,
+       "widthM": 1.18,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 1.75 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 1.75 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.8 m = 4 storeys of 3.2 m vs the type's 3.44 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.55 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

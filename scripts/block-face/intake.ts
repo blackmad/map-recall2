@@ -30,6 +30,8 @@ import {sharedTerrain} from '../lib/terrainField.ts';
 import {medianFuse, planStrip, withoutDays, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
 import {cachedJson} from '../pand-reference/core.ts';
+import {businessesFrom, cutExtract, poiQuery} from '../../src/canalRecall/blockFace/osmPoiExtract.ts';
+import {loadExtract, localExtractPath} from './osm-pois.ts';
 import {threeDBagBbox, threeDBagDataset, threeDBagItem} from './three-d-bag-source.ts';
 import {listPanos} from '../pand-reference/select.ts';
 import {loadPano} from '../pand-reference/rectify.ts';
@@ -40,21 +42,20 @@ export const FACES = 'scripts/block-face/faces', STAGING = 'staging/block-face';
 const toRD = (p: [number, number]): RD => { const r = lngLatToRd(p); return [r.x, r.y]; };
 const round = (v: number, d = 2) => +v.toFixed(d);
 
-async function overpass(face: string, bboxLatLng: number[]): Promise<OsmBusiness[]> {
+/** OSM businesses in the face's bbox. Order: the face's own cache; BLOCK_FACE_OVERPASS_AREA (a buurt-wide response);
+ *  the local city extract (scripts/block-face/osm-pois.ts, osmPoiExtract.ts); live Overpass only when none covers it. */
+async function overpass(face: string, bboxLatLng: number[]): Promise<{businesses: OsmBusiness[]; via: string}> {
   const file = path.join('.cache/block-face', face, 'overpass.json');
   let json: any = await fs.readFile(file, 'utf8').then(JSON.parse).catch(() => null);
-  // A buurt-wide Overpass response (BLOCK_FACE_OVERPASS_AREA=<file> with {bbox: [s, w, n, e], elements, fetchedAt}) serves
-  // every face inside it, cut to the face's bbox, instead of one rate-limited query per face.
+  let via = json ? (json.cutFrom ? `local extract ${path.basename(json.cutFrom)}` : 'Overpass (face cache)') : '';
+  const save = async () => { await fs.mkdir(path.dirname(file), {recursive: true}); await fs.writeFile(file, JSON.stringify(json)); };
+  // A buurt-wide Overpass response (BLOCK_FACE_OVERPASS_AREA=<file> with {bbox: [s, w, n, e], elements, fetchedAt}).
   const area = !json && process.env.BLOCK_FACE_OVERPASS_AREA ? JSON.parse(await fs.readFile(process.env.BLOCK_FACE_OVERPASS_AREA, 'utf8')) : null;
-  if (area && area.bbox[0] <= bboxLatLng[0] && area.bbox[1] <= bboxLatLng[1] && area.bbox[2] >= bboxLatLng[2] && area.bbox[3] >= bboxLatLng[3]) {
-    const [s, w, n, e] = bboxLatLng, inside = (x: any) => { const lat = x.lat ?? x.center?.lat, lon = x.lon ?? x.center?.lon; return lat >= s && lat <= n && lon >= w && lon <= e; };
-    json = {...area, elements: area.elements.filter(inside), bbox: bboxLatLng, cutFrom: area.query};
-    await fs.mkdir(path.dirname(file), {recursive: true});
-    await fs.writeFile(file, JSON.stringify(json));
-  }
+  if (area && (json = cutExtract(area, bboxLatLng, process.env.BLOCK_FACE_OVERPASS_AREA!))) { via = 'Overpass (buurt area file)'; await save(); }
+  const local = !json && !process.env.BLOCK_FACE_LIVE_OVERPASS ? localExtractPath() : null;
+  if (local && (json = cutExtract(await loadExtract(local), bboxLatLng, local))) { via = `local extract ${path.basename(local)}`; await save(); }
   if (!json) {
-    const b = bboxLatLng.join(',');
-    const q = `[out:json][timeout:60];(nwr["shop"](${b});nwr["amenity"](${b});nwr["craft"](${b});nwr["office"](${b});nwr["healthcare"](${b});nwr["tourism"](${b}););out center tags;`;
+    const q = poiQuery(bboxLatLng);
     // Three endpoints per round; between rounds back off (30 s, 90 s) instead of hammering a rate-limited server.
     for (let round = 0; round < 3 && !json; round++) {
       if (round) await new Promise(r => setTimeout(r, round === 1 ? 30_000 : 90_000));
@@ -68,10 +69,10 @@ async function overpass(face: string, bboxLatLng: number[]): Promise<OsmBusiness
       }
     }
     if (!json) throw Error('Overpass unavailable');
-    await fs.mkdir(path.dirname(file), {recursive: true});
-    await fs.writeFile(file, JSON.stringify(json));
+    via = 'Overpass (live)';
+    await save();
   }
-  return (json.elements ?? []).filter((e: any) => e.tags && (e.lat ?? e.center?.lat)).map((e: any) => ({type: e.type, id: e.id, lngLat: [e.lon ?? e.center.lon, e.lat ?? e.center.lat], tags: e.tags, fetchedAt: json.fetchedAt}));
+  return {businesses: businessesFrom(json), via};
 }
 
 async function bagUnits(min: RD, max: RD): Promise<BagUnit[]> {
@@ -154,14 +155,17 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   const all = found.whole.flatMap(p => p.facts.bagFootprintRD.flat());
   const min: RD = [Math.min(...all.map(p => p[0])) - 12, Math.min(...all.map(p => p[1])) - 12], max: RD = [Math.max(...all.map(p => p[0])) + 12, Math.max(...all.map(p => p[1])) + 12];
   const [w, s] = rdToLngLat({x: min[0], y: min[1]}), [e, n] = rdToLngLat({x: max[0], y: max[1]});
-  const units = await bagUnits(min, max), osm = await overpass(o.face, [s, w, n, e]);
+  const tUses = t, units = await bagUnits(min, max);
+  t = lap('bagS', t);
+  const {businesses: osm, via: osmVia} = await overpass(o.face, [s, w, n, e]);
+  t = lap('osmS', t);
   const members = new Set(found.pands.map(p => p.pandId));
   // Assign over the whole face (a business near a party wall goes to the nearer pand), then keep the members.
   const uses = assignUses(found.whole.map(p => ({pandId: p.pandId, rings: p.facts.bagFootprintRD, front: p.facts.fronts[0]})), units, osm.map(b => ({...b, rd: toRD(b.lngLat)})), o.street).filter(u => members.has(u.pandId));
-  await fs.writeFile(path.join(dir, 'uses.json'), JSON.stringify({street: o.street, sources: {bag: 'PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)', osm: `OpenStreetMap via Overpass, fetched ${osm[0]?.fetchedAt ?? 'n/a'} (ODbL)`}, pands: uses}, null, 1) + '\n');
+  await fs.writeFile(path.join(dir, 'uses.json'), JSON.stringify({street: o.street, sources: {bag: 'PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)', osm: `OpenStreetMap via ${osmVia}, fetched ${osm[0]?.fetchedAt ?? 'n/a'} (ODbL)`}, pands: uses}, null, 1) + '\n');
   for (const u of uses) console.log(`  ${u.pandId.slice(-6)} ${u.addresses.join(', ')} | ground: ${u.groundUnits.map(g => g.use).join('+') || '-'} | osm: ${u.osm.map(b => `${b.tags.name ?? '?'} (${b.tags.shop ?? b.tags.amenity ?? b.tags.craft ?? b.tags.office ?? ''})`).join('; ') || '-'}`);
-  t = lap('usesS', t);
-  if (o.strip === false) return {found, timings};
+  t = lap('usesS', tUses);
+  if (o.strip === false) { timings.totalS = round((performance.now() - t0) / 1000, 1); console.log(JSON.stringify({face: o.face, timings, osm: osmVia})); return {found, timings}; }
 
   // Facade strip in the chunk frame: x along the face (left→right from the street), one ground line.
   const frame = chunkFrame(found.pands.map(p => ({id: p.pandId, intent: {} as any, facts: p.facts})));
@@ -226,7 +230,7 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   await labelledStrip(strip, path.join(stage, 'strip-labelled.png'), uses);
   lap('stripS', t);
   timings.totalS = round((performance.now() - t0) / 1000, 1);
-  console.log(JSON.stringify({face: o.face, timings, strip: `${W}x${H}`, date: plan.date, coverage: plan.coverage}));
+  console.log(JSON.stringify({face: o.face, timings, osm: osmVia, strip: `${W}x${H}`, date: plan.date, coverage: plan.coverage}));
   return {found, timings};
 }
 

@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "prinsengracht-114-128-b9",
+ "street": "Prinsengracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-20",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-20",
+   "image": "staging/block-face/prinsengracht-114-128-ggw/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2023-03-20 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1760-plain-cornice",
+  "ggw-1740-crest-attic",
+  "ggw-1740-frieze-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012174970",
+   "slug": "prinsengracht-174970",
+   "address": "Prinsengracht 128A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 4,
+     "storeyHeights": [
+      4.2,
+      3.0,
+      2.9,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#2f2e31",
+     "evidence": "strip 2023-03-20 span 0-284 (black-painted brick) read by eye (fresh strip prinsengracht-114-128-ggw, overcast)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-20",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-20 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-20 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 4 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012174969",
+   "slug": "prinsengracht-174969",
+   "address": "Prinsengracht 126",
+   "type": {
+    "type": "ggw-1740-crest-attic",
+    "crown": "louis",
+    "overrides": {
+     "windows": "sash-small-panes",
+     "storeyHeights": [
+      4.0,
+      2.9,
+      2.8,
+      2.7
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#5b4235",
+     "evidence": "strip 2023-03-20 span 284-512 read by eye (fresh strip prinsengracht-114-128-ggw, overcast)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-20",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-20 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-20 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012174971",
+   "slug": "prinsengracht-174971",
+   "address": "Prinsengracht 124",
+   "type": {
+    "type": "ggw-1740-frieze-cornice",
+    "crown": "none",
+    "overrides": {
+     "storeys": 4,
+     "windows": "sash-small-panes",
+     "storeyHeights": [
+      4.0,
+      3.0,
+      2.9,
+      2.8
+     ],
+     "windowHeights": [
+      0.7,
+      0.75,
+      0.75,
+      0.72
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#5d4337",
+     "evidence": "strip 2023-03-20 span 512-750 read by eye (fresh strip prinsengracht-114-128-ggw, overcast)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-20",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-20 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-20 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012174776",
+   "slug": "prinsengracht-174776",
+   "address": "Prinsengracht 122",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeyHeights": [
+      3.0,
+      2.8,
+      2.8,
+      2.7
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#5a4136",
+     "evidence": "strip 2023-03-20 span 751-982 read by eye (fresh strip prinsengracht-114-128-ggw, overcast)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-03-20",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-03-20 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-03-20 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  }
+ ]
+}

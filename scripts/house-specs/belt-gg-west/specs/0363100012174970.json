@@ -1,0 +1,253 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174970",
+ "address": "Prinsengracht 128A",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Prinsengracht",
+    "storeys": 4,
+    "bays": 4,
+    "storeyHeights": [
+     4.2,
+     3,
+     2.9,
+     2.8
+    ],
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "windowHeights": [
+     0.74,
+     0.83,
+     0.83,
+     0.62
+    ],
+    "headLines": [
+     0.82,
+     0.9,
+     0.9,
+     0.75
+    ],
+    "windowShare": 0.55,
+    "cornice": "simple",
+    "gable": "cornice",
+    "doorBay": 0,
+    "basement": "none",
+    "hoist": false,
+    "windowFrames": {
+     "frame": 0.1
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "Keizersgracht 258 (2021-01-22 strip): sky over the plain cornice from the quay; no roof face shows, so the front gives a flat top at the cornice"
+  },
+  "palette": {
+   "brick": "#2f2e31",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type ggw-1760-plain-cornice: crown none, palette dark-brown-brick + measured brick #2f2e31",
+   "type deviations: bays 4 (type: 3); storeyHeights [4.2,3,2.9,2.8] (type: [4.6,3.1,2.4,2.4])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/source": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowFrames": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): white frames round the sashes on the black front",
+   "at": "2023-03-20"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the iron balconettes of the first floor are not drawn"
+  },
+  {
+   "component": "facade",
+   "what": "the broad eared white frames are drawn as plain full frames"
+  },
+  {
+   "component": "ground",
+   "what": "a white-painted shop pui across the ground storey (Prinsengracht 128A, 2023-03-20)"
+  },
+  {
+   "component": "roof",
+   "what": "a dormer with a pediment over the cornice (kept as the 3DBAG roof)"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

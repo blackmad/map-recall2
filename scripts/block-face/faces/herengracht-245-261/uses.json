@@ -1,0 +1,385 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:21:33.889Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177515",
+   "addresses": [
+    "Herengracht 245A",
+    "Herengracht 245B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 245A",
+     "use": "winkelfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000664747"
+    },
+    {
+     "address": "Herengracht 245B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001041808"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3840705549,
+     "lngLat": [
+      4.8874104,
+      52.3721955
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "245",
+      "addr:postcode": "1018BH",
+      "addr:street": "Herengracht",
+      "diet:kosher": "no",
+      "name": "Juicebrothers",
+      "shop": "convenience",
+      "website": "https://www.juicebro.com"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177362",
+   "addresses": [
+    "Herengracht 247"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 247-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000969415"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171305",
+   "addresses": [
+    "Herengracht 249"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 249-H",
+     "use": "kantoorfunctie",
+     "areaM2": 142,
+     "bagId": "0363010011872245"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2722191572,
+     "lngLat": [
+      4.8874024,
+      52.3721067
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "249-H",
+      "addr:postcode": "1016BH",
+      "addr:street": "Herengracht",
+      "name": "Blumstone Advocaten",
+      "office": "lawyer",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11895893471,
+     "lngLat": [
+      4.8872704,
+      52.3721145
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "24",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171304",
+   "addresses": [
+    "Herengracht 251A",
+    "Herengracht 251B",
+    "Herengracht 251C",
+    "Herengracht 251D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 251A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001022981"
+    },
+    {
+     "address": "Herengracht 251B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001022982"
+    },
+    {
+     "address": "Herengracht 251C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001022983"
+    },
+    {
+     "address": "Herengracht 251D",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001022984"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177243",
+   "addresses": [
+    "Herengracht 253",
+    "Herengracht 253A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 253-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001038793"
+    },
+    {
+     "address": "Herengracht 253-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010012092428"
+    },
+    {
+     "address": "Herengracht 253A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012092429"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177176",
+   "addresses": [
+    "Herengracht 255"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 255",
+     "use": "logiesfunctie",
+     "areaM2": 5420,
+     "bagId": "0363010003684869"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 603367748,
+     "lngLat": [
+      4.8873904,
+      52.37181
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "255",
+      "addr:postcode": "1016BJ",
+      "addr:street": "Herengracht",
+      "brand": "The Hoxton",
+      "brand:wikidata": "Q24039229",
+      "name": "The Hoxton",
+      "phone": "+31 20 888 5555",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://thehoxton.com/amsterdam/herengracht/",
+      "wikidata": "Q111410297"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 6488569530,
+     "lngLat": [
+      4.8873969,
+      52.3719726
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "diet:kosher": "no",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Lotti's Dinner",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11609947769,
+     "lngLat": [
+      4.8873645,
+      52.3718701
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "name": "The Hoxton"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11895884298,
+     "lngLat": [
+      4.8872547,
+      52.3719231
+     ],
+     "tags": {
+      "amenity": "bench",
+      "armrest": "no",
+      "backrest": "yes",
+      "material": "wood",
+      "seats": "3"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    },
+    {
+     "type": "node",
+     "id": 11895901364,
+     "lngLat": [
+      4.8872569,
+      52.3719456
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177244",
+   "addresses": [
+    "Herengracht 257"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 257",
+     "use": "kantoorfunctie",
+     "areaM2": 686,
+     "bagId": "0363010001041763"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11895872752,
+     "lngLat": [
+      4.8872415,
+      52.3717606
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "26",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "frontage",
+     "distanceM": 4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177179",
+   "addresses": [
+    "Herengracht 259"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 259-O",
+     "use": "industriefunctie",
+     "areaM2": 138,
+     "bagId": "0363010001011441"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177169",
+   "addresses": [
+    "Herengracht 261"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 261-H",
+     "use": "kantoorfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000664788"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11895905978,
+     "lngLat": [
+      4.8872285,
+      52.3716281
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:21:33.889Z",
+     "match": "frontage",
+     "distanceM": 5.1
+    }
+   ]
+  }
+ ]
+}

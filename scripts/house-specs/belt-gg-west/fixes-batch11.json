@@ -1,0 +1,110 @@
+{
+ "0363100012172172": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "fronts/0/windowFrames": {
+    "frame": 0.12
+   }
+  },
+  "why": {
+   "fronts/0/windowFrames": "broad white frames on the red front"
+  },
+  "limits": [
+   {
+    "component": "wall",
+    "what": "white stone bands and window hoods on a red brick 19th-century front (Keizersgracht 321)"
+   }
+  ]
+ },
+ "0363100012172164": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face"
+  }
+ },
+ "0363100012172165": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "palette/wallMaterial": "stucco"
+  },
+  "why": {
+   "palette/wallMaterial": "cream rendered front"
+  },
+  "limits": [
+   {
+    "component": "wall",
+    "what": "giant pilasters between the bays over the full height (Keizersgracht 327A)"
+   },
+   {
+    "component": "cornice",
+    "what": "a deep console cornice"
+   }
+  ]
+ },
+ "0363100012172177": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {},
+  "why": {},
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "an iron balcony on the first storey over a white canopy (Keizersgracht 329)"
+   }
+  ]
+ },
+ "0363100012169193": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "fronts/0/windowFrames": {
+    "frame": 0.1
+   }
+  },
+  "why": {
+   "fronts/0/windowFrames": "white frames round paired windows"
+  },
+  "limits": [
+   {
+    "component": "windows",
+    "what": "each axis is a pair of windows under one head (Keizersgracht 333)"
+   }
+  ]
+ },
+ "0363100012169194": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face"
+  }
+ },
+ "0363100012172411": {
+  "ref": "block-face strip keizersgracht-307-357-ggw 2023-03-27 (40 px/m, gridded crop)",
+  "at": "2023-03-27",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat",
+   "fronts/0/windowFrames": {
+    "frame": 0.12
+   }
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face",
+   "fronts/0/windowFrames": "broad white frames on the black front"
+  }
+ }
+}

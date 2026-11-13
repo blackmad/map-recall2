@@ -1,0 +1,41 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:29:57.061Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167896",
+   "addresses": [
+    "Keizersgracht 610"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 610",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 832,
+     "bagId": "0363010000701125"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176066",
+   "addresses": [
+    "Keizersgracht 608"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 608",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000701363"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

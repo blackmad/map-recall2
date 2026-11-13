@@ -1,0 +1,378 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "keizersgracht-92-172-b3",
+ "street": "Keizersgracht",
+ "sources": [
+  {
+   "id": "strip-2023-02-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-02-13",
+   "image": "staging/block-face/keizersgracht-92-172/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2023-02-13 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1760-plain-cornice",
+  "ggw-1740-crest-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012176494",
+   "slug": "keizersgracht-176494",
+   "address": "Keizersgracht 132",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "mirror": true,
+    "overrides": {
+     "bays": 4,
+     "cornice": "heavy",
+     "storeyHeights": [
+      4.4,
+      3.3,
+      3.2,
+      3.1
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#b39c87",
+     "evidence": "strip 2023-02-13 span 0-217: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 4 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012250513",
+   "slug": "keizersgracht-250513",
+   "address": "Keizersgracht 130",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "cornice": "heavy",
+     "storeyHeights": [
+      4.4,
+      3.3,
+      3.2,
+      3.1
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#ab8d7a",
+     "evidence": "strip 2023-02-13 span 217-447: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012176490",
+   "slug": "keizersgracht-176490",
+   "address": "Keizersgracht 118-120",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "doorBay": 2,
+    "overrides": {
+     "storeys": 3,
+     "bays": 5,
+     "cornice": "heavy",
+     "windows": "sash-small-panes",
+     "windowShare": 0.7,
+     "storeyHeights": [
+      5.6,
+      3.9,
+      3.4
+     ],
+     "windowHeights": [
+      0.62,
+      0.78,
+      0.78
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#5c5b60",
+     "evidence": "strip 2023-02-13 span 1577-2020: trim-normalised wall; grey painted brick in full sun (raw #747370)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 5 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012176488",
+   "slug": "keizersgracht-176488",
+   "address": "Keizersgracht 116",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "bays": 2,
+     "windowShare": 0.7,
+     "storeyHeights": [
+      5.0,
+      3.6,
+      3.4,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#66625e",
+     "evidence": "strip 2023-02-13 span 2019-2256 read by eye: grey painted brick (wallRaw #7d7a76 in sun; the trim-normalised #9aa1a4 is too light)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012176545",
+   "slug": "keizersgracht-176545",
+   "address": "Keizersgracht 114",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "mirror": true,
+    "overrides": {
+     "cornice": "heavy",
+     "windows": "sash-small-panes",
+     "windowShare": 0.65,
+     "storeyHeights": [
+      4.4,
+      3.0,
+      2.8,
+      2.6
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#907d6f",
+     "evidence": "strip 2023-02-13 span 2257-2488: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167689",
+   "slug": "keizersgracht-167689",
+   "address": "Keizersgracht 112",
+   "type": {
+    "type": "ggw-1740-crest-cornice",
+    "crown": "crest",
+    "overrides": {
+     "bays": 2,
+     "windowShare": 0.75,
+     "storeyHeights": [
+      4.6,
+      3.3,
+      3.1,
+      2.8
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#6c6461",
+     "evidence": "strip 2023-02-13 span 2488-2706 read by eye: dark brown-grey brick (between the trim-normalised #615a59 and raw #827e78)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167690",
+   "slug": "keizersgracht-167690",
+   "address": "Keizersgracht 110",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "bell",
+    "mirror": true,
+    "overrides": {
+     "storeys": 3,
+     "storeyHeights": [
+      5.4,
+      3.6,
+      3.0
+     ],
+     "windowHeights": [
+      0.62,
+      0.74,
+      0.73
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#907a6d",
+     "evidence": "strip 2023-02-13 span 2706-2936: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167688",
+   "slug": "keizersgracht-167688",
+   "address": "Keizersgracht 108",
+   "type": {
+    "type": "ggw-1740-crest-cornice",
+    "crown": "crest",
+    "overrides": {
+     "windows": "sash"
+    },
+    "measuredPalette": {
+     "brick": "#736a60",
+     "evidence": "strip 2023-02-13 span 2935-3167: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177543",
+   "slug": "keizersgracht-177543",
+   "address": "Keizersgracht 94",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "mirror": true,
+    "overrides": {
+     "cornice": "heavy",
+     "storeyHeights": [
+      4.4,
+      3.4,
+      3.3,
+      3.0
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#e6e1d2",
+     "evidence": "strip 2023-02-13 span 4548-4765 read by eye: white-painted stucco (raw #faf6dd in full sun)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177535",
+   "slug": "keizersgracht-177535",
+   "address": "Keizersgracht 92",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeys": 3,
+     "cornice": "heavy",
+     "storeyHeights": [
+      5.6,
+      3.9,
+      3.6
+     ],
+     "windowHeights": [
+      0.7,
+      0.78,
+      0.78
+     ],
+     "headLines": [
+      0.9,
+      0.88,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#8e8073",
+     "evidence": "strip 2023-02-13 span 4766-4981: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-02-13",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2023-02-13 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2023-02-13 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  }
+ ]
+}

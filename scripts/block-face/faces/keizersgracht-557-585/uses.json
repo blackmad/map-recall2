@@ -1,0 +1,247 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:41:38.446Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167898",
+   "addresses": [
+    "Keizersgracht 557"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 557",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010001006833"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167900",
+   "addresses": [
+    "Keizersgracht 559"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 559",
+     "use": "kantoorfunctie",
+     "areaM2": 216,
+     "bagId": "0363010001006834"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176756",
+   "addresses": [
+    "Keizersgracht 561",
+    "Keizersgracht 563"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 561",
+     "use": "woonfunctie",
+     "areaM2": 296,
+     "bagId": "0363010000701291"
+    },
+    {
+     "address": "Keizersgracht 563",
+     "use": "woonfunctie",
+     "areaM2": 323,
+     "bagId": "0363010001006835"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176757",
+   "addresses": [
+    "Keizersgracht 565"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 565",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 737,
+     "bagId": "0363010001006837"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176752",
+   "addresses": [
+    "Keizersgracht 575"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 575",
+     "use": "kantoorfunctie",
+     "areaM2": 4707,
+     "bagId": "0363010001164225"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12154040173,
+     "lngLat": [
+      4.8908158,
+      52.3642202
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:41:38.446Z",
+     "match": "frontage",
+     "distanceM": 7.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176758",
+   "addresses": [
+    "Keizersgracht 579C",
+    "Keizersgracht 579A",
+    "Keizersgracht 579D",
+    "Keizersgracht 579E",
+    "Keizersgracht 579F",
+    "Keizersgracht 579G",
+    "Keizersgracht 579H",
+    "Keizersgracht 579K",
+    "Keizersgracht 579L",
+    "Keizersgracht 579M",
+    "Keizersgracht 579N",
+    "Keizersgracht 579P",
+    "Keizersgracht 581A",
+    "Keizersgracht 581B",
+    "Keizersgracht 581C",
+    "Keizersgracht 581D",
+    "Keizersgracht 581E",
+    "Keizersgracht 581F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 579C",
+     "use": "woonfunctie",
+     "areaM2": 292,
+     "bagId": "0363010000563609"
+    },
+    {
+     "address": "Keizersgracht 579A",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000701320"
+    },
+    {
+     "address": "Keizersgracht 579D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000701321"
+    },
+    {
+     "address": "Keizersgracht 579E",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000701322"
+    },
+    {
+     "address": "Keizersgracht 579F",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000701323"
+    },
+    {
+     "address": "Keizersgracht 579G",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000701324"
+    },
+    {
+     "address": "Keizersgracht 579H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000701325"
+    },
+    {
+     "address": "Keizersgracht 579K",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000701326"
+    },
+    {
+     "address": "Keizersgracht 579L",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000701327"
+    },
+    {
+     "address": "Keizersgracht 579M",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000701328"
+    },
+    {
+     "address": "Keizersgracht 579N",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000701329"
+    },
+    {
+     "address": "Keizersgracht 581A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000701332"
+    },
+    {
+     "address": "Keizersgracht 581B",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000701333"
+    },
+    {
+     "address": "Keizersgracht 581C",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000701334"
+    },
+    {
+     "address": "Keizersgracht 581D",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000701335"
+    },
+    {
+     "address": "Keizersgracht 581E",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000701336"
+    },
+    {
+     "address": "Keizersgracht 581F",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000701337"
+    },
+    {
+     "address": "Keizersgracht 579P",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000701330"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  }
+ ]
+}

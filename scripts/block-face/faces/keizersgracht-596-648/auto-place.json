@@ -1,0 +1,1164 @@
+{
+ "face": "keizersgracht-596-648",
+ "street": "Keizersgracht",
+ "library": "grachtengordel-zuid",
+ "stripDate": "2023-03-27",
+ "seconds": 24.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "keizersgracht-596-648-r1",
+   "pands": [
+    "0363100012175655",
+    "0363100012175654"
+   ],
+   "passed": true,
+   "triangles": 3862
+  },
+  {
+   "face": "keizersgracht-596-648-r2",
+   "pands": [
+    "0363100012167896",
+    "0363100012176066"
+   ],
+   "passed": true,
+   "triangles": 4769
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012176745",
+   "address": "Keizersgracht 620",
+   "builtYear": 1680,
+   "widthM": 11.01,
+   "eavesM": 15.71,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6c6b",
+    "wallRaw": "#7b6d69",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 223,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 3.52,
+      "riseM": 5.57,
+      "topWidthM": 0.42,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.246,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.25,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-double-house scores 0.42 < 0.7 (3DBAG eaves 15.71 m = 4 storeys of 3.93 m vs the type's 4.38 m; skyline crown rise 5.57 m, top 0.42 m fits no crown of the type; strip columns 6 vs 5 bays)",
+   "best": {
+    "type": "belt-1700-double-house",
+    "score": 0.42,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.71 m = 4 storeys of 3.93 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.259 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.57 m, top 0.42 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 6 vs 5 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175645",
+   "address": "Keizersgracht 618",
+   "builtYear": 1672,
+   "widthM": 7.5,
+   "eavesM": 19.3,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716563",
+    "wallRaw": "#6d615f",
+    "skyline": {
+     "eavesM": 20.9,
+     "eavesRow": 95,
+     "confidence": 0.9,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.158,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.05,
+       "widthM": 1.43,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.92,
+       "widthM": 1.1,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Sheet keizersgracht-596-648-r1 (2023-03-27): the front reads right (door left, three axes, four rows, frieze cornice), but as the run end next to the held double-neck Keizersgracht 620 its full-height 28.9 m party wall fails the GLB audit (blank wall 707 m2 > 600 m2); install once 620 has a type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175655",
+   "address": "Keizersgracht 616A",
+   "builtYear": 1800,
+   "widthM": 7.59,
+   "eavesM": 19.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665852",
+    "wallRaw": "#6d5f59",
+    "skyline": {
+     "eavesM": 20.63,
+     "eavesRow": 106,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.073,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "belt-1700-canal-house",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "belt-1700-double-house",
+    "score": 0
+   },
+   "placement": {
+    "type": "belt-1700-canal-house",
+    "measuredPalette": {
+     "brick": "#665852",
+     "evidence": "strip 2023-03-27 span 740-1043: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#878279",
+     "cornice": "#c7bda6"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 2
+      }
+     }
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
+    }
+   },
+   "notes": [
+    "crown cornice: skyline no crown over the eaves",
+    "door left: reviewer pin (Keizersgracht 616A (2023-03-27 strip): the souterrain door and the bel-etage axis above it are on the left)",
+    "palette pinned: Keizersgracht 616A: dark grey stone base (strip median #524e4b) and a sandstone frieze (#b1a384); the model drew both near-white",
+    "overrides pinned: Keizersgracht 616A: no stoop door; three bel-etage windows and a street-level door in the left bay of the stone base (0.15-2.85 m). Sashes three lights wide, six-over-six; eared white surrounds on the top two storeys (11.7-16.9 m); sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
+   ],
+   "likeness": {
+    "pandId": "0363100012175655",
+    "ncc": 0.415,
+    "nccRaw": 0.415,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.44 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#695a55",
+     "model": "#7e6c65",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.515
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175654",
+   "address": "Keizersgracht 614",
+   "builtYear": 1680,
+   "widthM": 5.36,
+   "eavesM": 19.2,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80726a",
+    "wallRaw": "#726862",
+    "skyline": {
+     "eavesM": 21.88,
+     "eavesRow": 56,
+     "confidence": 0.9,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.3,
+       "widthM": 0.82,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "belt-1700-canal-house",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "belt-1700-double-house",
+    "score": 0
+   },
+   "placement": {
+    "type": "belt-1700-canal-house",
+    "overrides": {
+     "bays": 2,
+     "storeyWindows": {
+      "0": "sash-1-over-1"
+     },
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 3
+      }
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#80726a",
+     "evidence": "strip 2023-03-27 span 1043-1258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#a5a69e"
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown cornice: skyline no crown over the eaves",
+    "palette pinned: Keizersgracht 614: a light grey rendered base (strip median #858988)",
+    "overrides pinned: Keizersgracht 614: no stoop door; two bel-etage windows, the base window on the left and the street door on the right (mirrored with the house). Bel-etage sashes one-over-one (4.1-7.1 m); eared surrounds over the three upper storeys; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
+   ],
+   "likeness": {
+    "pandId": "0363100012175654",
+    "ncc": 0.168,
+    "nccRaw": 0.168,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.46 vs photo 0.19"
+    ],
+    "wall": {
+     "photo": "#7e6e65",
+     "model": "#93857d",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.355
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167899",
+   "address": "Keizersgracht 612",
+   "builtYear": 1675,
+   "widthM": 9.37,
+   "eavesM": 12.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474444",
+    "wallRaw": "#534f4f",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 368,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 3.63,
+      "topWidthM": 0.88,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.402,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 1.07,
+       "centre": 0.41
+      },
+      {
+       "atM": 5.47,
+       "widthM": 0.9,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Keizersgracht 596-648 strip 2023-03-27: a painted-black four-axis front of three even storeys (2.3 m souterrain, then 3.7, 3.4, 3.2 m) under a 1.3 m cornice; the type's diminishing storey grid draws a 2.1 m top storey (storey-height gate) and the type's 2.4 m frieze",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167896",
+   "address": "Keizersgracht 610",
+   "builtYear": 1730,
+   "widthM": 7.57,
+   "eavesM": 19.3,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6b69",
+    "wallRaw": "#776962",
+    "skyline": {
+     "eavesM": 20.38,
+     "eavesRow": 116,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.7,
+      "topWidthM": 0.4,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.4,
+       "widthM": 1.02,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "belt-1700-canal-house",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "belt-1700-double-house",
+    "score": 0
+   },
+   "placement": {
+    "type": "belt-1700-canal-house",
+    "measuredPalette": {
+     "brick": "#7f6b69",
+     "evidence": "strip 2023-03-27 span 1633-1936: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "cross",
+     "storeyWindows": {
+      "last": "casement-transom"
+     },
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    },
+    "roof": {
+     "form": "flat"
+    }
+   },
+   "notes": [
+    "crown cornice: reviewer pin (Keizersgracht 610 (2023-03-27 strip): a frieze cornice with consoles and sky over it, no dormer; the skyline read the cornice cap as a dormer)",
+    "door right: mirrored: reviewer pin (Keizersgracht 610 (2023-03-27 strip): the stoop door with its white surround and fanlight stands on the right axis)",
+    "palette pinned: Keizersgracht 610: a grey stone base (strip median #716d64)",
+    "overrides pinned: Keizersgracht 610: cross windows (a mullion and one transom, two by two); on the top storey one wide light under a top light; the upper heads stand about 0.6 m higher than the type's line and the glass is taller; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167896",
+    "ncc": 0.206,
+    "nccRaw": 0.206,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.45 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#806b6a",
+     "model": "#927e7c",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.285
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176066",
+   "address": "Keizersgracht 608",
+   "builtYear": 1730,
+   "widthM": 7.44,
+   "eavesM": 17.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706360",
+    "wallRaw": "#71645d",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 180,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 3.9,
+      "topWidthM": 0.35,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.189,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.92,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.38,
+       "widthM": 0.95,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "belt-1700-canal-house",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "belt-1700-double-house",
+    "score": 0
+   },
+   "placement": {
+    "type": "belt-1700-canal-house",
+    "measuredPalette": {
+     "brick": "#706360",
+     "evidence": "strip 2023-03-27 span 1935-2232: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "neck",
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    }
+   },
+   "notes": [
+    "crown neck: reviewer pin (Keizersgracht 608 (2023-03-27 strip): a neck gable with sandstone wing pieces and a cartouche over the 17.8 m gable foot)",
+    "door left: reviewer pin (Keizersgracht 608 (2023-03-27 strip): the stoop door with a white pilaster surround stands on the left axis)",
+    "palette pinned: Keizersgracht 608: a grey stone base, as on 610",
+    "overrides pinned: Keizersgracht 608: sashes three lights wide, six-over-six; the upper heads stand about 0.6 m higher than the type's line, as on 610"
+   ],
+   "likeness": {
+    "pandId": "0363100012176066",
+    "ncc": 0.193,
+    "nccRaw": 0.193,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.37 vs photo 0.47"
+    ],
+    "wall": {
+     "photo": "#6d5f5e",
+     "model": "#867673",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.609
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176067",
+   "address": "Keizersgracht 606",
+   "builtYear": 1730,
+   "widthM": 7.43,
+   "eavesM": 15.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#86746e",
+    "wallRaw": "#70655f",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 166,
+     "confidence": 0.4,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 70 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176068",
+   "address": "Keizersgracht 604",
+   "builtYear": 1670,
+   "widthM": 14.93,
+   "eavesM": 16.12,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6a60",
+    "wallRaw": "#726359",
+    "skyline": {
+     "eavesM": 17.27,
+     "eavesRow": 240,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 2.83,
+      "topWidthM": 0.28,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.127,
+    "structure": {
+     "bayWidthM": 1.68,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.07 m (1.7 m wide), 11.77 m (1.77 m wide), 8.32 m (1.88 m wide), 8.02 m (1.52 m wide), 7.5 m (1.7 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.07,
+       "widthM": 1.7,
+       "centre": 0.17
+      },
+      {
+       "atM": 11.77,
+       "widthM": 1.77,
+       "centre": 0.83
+      },
+      {
+       "atM": 8.32,
+       "widthM": 1.88,
+       "centre": 0.18
+      },
+      {
+       "atM": 8.02,
+       "widthM": 1.52,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.5,
+       "widthM": 1.7,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.054 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21 mean 0.47 vs photo 0.19; window shape tall vs photo square; columns 5 vs photo 3)",
+   "likeness": {
+    "pandId": "0363100012176068",
+    "ncc": 0.054,
+    "nccRaw": 0.054,
+    "shiftM": [
+     -0.35,
+     0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.19",
+     "window shape tall vs photo square",
+     "columns 5 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#7b6c63",
+     "model": "#917d72",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 5
+    },
+    "iou": 0.135
+   },
+   "challengers": {
+    "belt-1700-canal-house": 0.066
+   }
+  },
+  {
+   "pandId": "0363100012167895",
+   "address": "Keizersgracht 602",
+   "builtYear": 1669,
+   "widthM": 5.18,
+   "eavesM": 16.37,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#494950",
+    "wallRaw": "#5d5859",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.379,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.17,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.3 m (1.68 m wide), 10.75 m (1.82 m wide), 8.35 m (1.8 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.57,
+       "widthM": 1.02,
+       "centre": 0.72
+      },
+      {
+       "atM": 13.3,
+       "widthM": 1.68,
+       "centre": 0.69
+      },
+      {
+       "atM": 10.75,
+       "widthM": 1.82,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.88,
+       "widthM": 0.8,
+       "centre": 0.67
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.8,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17 mean 0.51 vs photo 0.34; window shape tall vs photo square; wall family unresolved (#545158 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012167895",
+    "ncc": 0.127,
+    "nccRaw": 0.127,
+    "shiftM": [
+     0.1,
+     -0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17 mean 0.51 vs photo 0.34",
+     "window shape tall vs photo square",
+     "wall family unresolved (#545158 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#545158",
+     "model": "#5f5f68",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.399
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165043",
+   "address": "Keizersgracht 600",
+   "builtYear": 1670,
+   "widthM": 5.19,
+   "eavesM": 12.9,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#60606c",
+    "wallRaw": "#5c575c",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.22,
+      "topWidthM": 1.23,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.32,
+       "widthM": 0.82,
+       "centre": 0.49
+      },
+      {
+       "atM": 10.65,
+       "widthM": 0.85,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.083 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12; glazing storey band off by 0.47; wall family unresolved (#5a5660 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 2 vs photo 3)",
+   "likeness": {
+    "pandId": "0363100012165043",
+    "ncc": 0.083,
+    "nccRaw": 0.083,
+    "shiftM": [
+     0.15,
+     0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.47",
+     "wall family unresolved (#5a5660 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 2 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#5a5660",
+     "model": "#737382",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.337
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165044",
+   "address": "Keizersgracht 598",
+   "builtYear": 1670,
+   "widthM": 5.18,
+   "eavesM": 12.63,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4b4f",
+    "wallRaw": "#534d50",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.6,
+      "topWidthM": 0.8,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012165044",
+    "ncc": 0.172,
+    "nccRaw": 0.172,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.62 mean 0.53 vs photo 0.70",
+     "wall family unresolved (#7f7e7a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#7f7e7a",
+     "model": "#656166",
+     "dL": -0.098
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 4,
+     "model": 2
+    },
+    "iou": 0.506
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165045",
+   "address": "Keizersgracht 596",
+   "builtYear": 1740,
+   "widthM": 14.33,
+   "eavesM": 12.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#525662",
+    "wallRaw": "#47474b",
+    "skyline": {
+     "eavesM": 20.02,
+     "eavesRow": 130,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 3.25,
+      "topWidthM": 0.23,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 1.68,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.85 m @ 0.57), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.46,
+       "light": 0.57
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.082 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.51 vs photo 0.20; window shape square vs photo tall; columns 5 vs photo 3)",
+   "likeness": {
+    "pandId": "0363100012165045",
+    "ncc": 0.082,
+    "nccRaw": 0.082,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.51 vs photo 0.20",
+     "window shape square vs photo tall",
+     "columns 5 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#585b69",
+     "model": "#666b7a",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 5
+    },
+    "iou": 0.146
+   },
+   "challengers": {}
+  }
+ ]
+}

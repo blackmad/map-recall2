@@ -1,0 +1,18 @@
+{
+ "note": "Crowns pinned from the strips: canal trees reach over the cornices, so the skyline cannot read the crown.",
+ "reviewed": "2026-11-10 (lane belt-gg-west, from the strips)",
+ "pins": [
+  {
+   "pandId": "0363100012175700",
+   "type": "ggw-1740-frieze-cornice",
+   "crown": "crest",
+   "reason": "Herengracht 92: 2021-01-25 strip, a carved crest over the middle of the cornice from 16.6 to 18.0 m"
+  },
+  {
+   "pandId": "0363100012167714",
+   "type": "ggw-1740-frieze-cornice",
+   "crown": "pediment-dormers",
+   "reason": "Herengracht 96: 2021-01-25 strip, a triangular pediment about 4.2 m wide over the centre two bays, 1.1 m over the cornice, and a flat-topped dormer each side"
+  }
+ ]
+}

@@ -1,0 +1,208 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:15:37.698Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177514",
+   "addresses": [
+    "Herengracht 229",
+    "Herengracht 231"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 231-O",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000664726"
+    },
+    {
+     "address": "Herengracht 229",
+     "use": "kantoorfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012136188"
+    },
+    {
+     "address": "Herengracht 231",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 293,
+     "bagId": "0363010012136189"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177430",
+   "addresses": [
+    "Herengracht 233"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 233",
+     "use": "woonfunctie",
+     "areaM2": 451,
+     "bagId": "0363010000716711"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177364",
+   "addresses": [
+    "Herengracht 235"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 235",
+     "use": "woonfunctie",
+     "areaM2": 208,
+     "bagId": "0363010000664738"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177191",
+   "addresses": [
+    "Herengracht 237A",
+    "Herengracht 237B",
+    "Herengracht 237C",
+    "Herengracht 237D",
+    "Herengracht 237E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 237A",
+     "use": "woonfunctie",
+     "areaM2": 262,
+     "bagId": "0363010000775129"
+    },
+    {
+     "address": "Herengracht 237C",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000775131"
+    },
+    {
+     "address": "Herengracht 237D",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000775159"
+    },
+    {
+     "address": "Herengracht 237E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012149263"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177190",
+   "addresses": [
+    "Herengracht 239"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 239",
+     "use": "woonfunctie",
+     "areaM2": 309,
+     "bagId": "0363010000942497"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177189",
+   "addresses": [
+    "Herengracht 241"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 241",
+     "use": "woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000664743"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177361",
+   "addresses": [
+    "Herengracht 243"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 243",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000664745"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177517",
+   "addresses": [
+    "Herengracht 243B",
+    "Herengracht 243A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 243B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000641994"
+    },
+    {
+     "address": "Herengracht 243A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001007203"
+    },
+    {
+     "address": "Gasthuismolensteeg 20",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010001014694"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6066735187,
+     "lngLat": [
+      4.8874126,
+      52.372303
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1016AN",
+      "addr:street": "Gasthuismolensteeg",
+      "check_date": "2025-03-17",
+      "name": "Prjct Ams",
+      "phone": "+31 20 330 7311",
+      "shop": "clothes",
+      "website": "https://www.prjctams.com"
+     },
+     "fetchedAt": "2026-11-10T08:15:37.698Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

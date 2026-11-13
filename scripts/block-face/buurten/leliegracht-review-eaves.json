@@ -1,0 +1,10 @@
+{
+ "note": "Reviewer eaves pins (src/canalRecall/blockFace/reviewEaves.ts) from the 2021-01-25 strip gridded at 2x, lane belt-gg-west round 2.",
+ "pins": [
+  {
+   "pandId": "0363100012167714",
+   "eavesM": 14.9,
+   "reason": "Herengracht 96: the top of the white entablature 14.9 m over the strip foot (grid-crop 3070-3430), the pediment and dormers standing over it; 3DBAG's 16.39 m reads the dormers"
+  }
+ ]
+}

@@ -34,13 +34,14 @@ import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, pandTypePin, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {eavesPinProblems as faceEavesPinProblems, pinnedEaves, type EavesPin as FaceEavesPin} from '../../src/canalRecall/blockFace/reviewFaceEaves.ts';
 import {applyRoofPins, roofPinProblems, type RoofPin} from '../../src/canalRecall/blockFace/reviewRoofs.ts';
+import {applyOverridePins, overridePinProblems, type OverridePin} from '../../src/canalRecall/blockFace/reviewOverrides.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyBaysPins, baysPinProblems, type BaysPin} from '../../src/canalRecall/blockFace/reviewBays.ts';
 import {applyShopfrontPins, shopfrontPinProblems, type ShopfrontPin} from '../../src/canalRecall/blockFace/reviewShopfront.ts';
-import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
+import {applyEavesPins, eavesPinProblems, storeyEaves, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {applyFrontPins, frontPinProblems, type FrontPin} from '../../src/canalRecall/blockFace/reviewFronts.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -135,9 +136,9 @@ async function loadTypes(district: string): Promise<MatchableType[]> {
 /** The strip evidence gate (#120) runs by default; --no-evidence-gate reproduces the pre-gate placements. */
 const EVIDENCE_GATE = !process.argv.includes('--no-evidence-gate');
 const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
-/** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
 /** Reviewer roof pins of the buurt (`<buurt>-review-roofs.json`, blockFace/reviewRoofs.ts); empty = byte-identical. */
 let roofPins: RoofPin[] = [];
+/** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
 /** Reviewer eaves pins (`<buurt>-review-eaves.json`), read once in main. */
 let eavesPins: EavesPin[] = [];
@@ -209,6 +210,8 @@ async function faceEvidence(faceId: string, buurt?: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
+      // A reviewer eaves pin with `countStoreys` sets the line the storeys are counted from (blockFace/reviewEaves.ts).
+      ev.eavesM = storeyEaves(eavesPins, id, ev.eavesM);
       const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: pinnedEavesM ?? f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas, leaf}) : null;
       const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
       ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM, leaf), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
@@ -363,6 +366,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const eavesPinErrors = eavesPinProblems(eavesPins);
   if (eavesPinErrors.length) throw Error(`${eavesFile}: ${eavesPinErrors.join('; ')}`);
 
+  // Per-pand body, ground and crown fields a reviewer measured on the strip (blockFace/reviewOverrides.ts).
+  const overridesFile = path.join('scripts/block-face/buurten', `${buurt}-review-overrides.json`);
+  const overridePins: OverridePin[] = existsSync(overridesFile) ? (await readJson(overridesFile)).pins : [];
+  const overridePinErrors = overridePinProblems(overridePins, types);
+  if (overridePinErrors.length) throw Error(`${overridesFile}: ${overridePinErrors.join('; ')}`);
   const acceptsFile = path.join('scripts/block-face/buurten', `${buurt}-review-accepts.json`);
   const acceptPins: AcceptPin[] = existsSync(acceptsFile) ? (await readJson(acceptsFile)).pins : [];
   const acceptPinErrors = acceptPinProblems(acceptPins, types);
@@ -414,7 +422,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const decisions: Decision[] = evs.map(ev => {
       const hold = reviewHolds.get(ev.pandId);
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
-      return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
+      return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date, pandTypePin(f.id, ev.pandId, typePins));
     });
     // Pands of a kept installed run: held here, recorded below as placed in that run.
     for (const [k, d] of decisions.entries()) { const r = frozen.find(x => x.pands.includes(d.pandId)); if (r) decisions[k] = {kind: 'held', pandId: d.pandId, address: evs[k].address, stage: 'installed', reason: `installed in chunk-face-${r.id}`}; }
@@ -422,6 +430,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
     if (frontPins.length) { const pinned = applyFrontPins(decisions, frontPins); if (pinned.length) console.log(`${f.id}: front pinned on ${pinned.length} pand(s)`); }
+    if (overridePins.length) { const pinned = applyOverridePins(decisions, overridePins); if (pinned.length) console.log(`${f.id}: overrides pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     if (shopfrontPins.length) { const pinned = applyShopfrontPins(decisions, shopfrontPins); if (pinned.length) console.log(`${f.id}: shopfront pinned on ${pinned.length} pand(s)`); }

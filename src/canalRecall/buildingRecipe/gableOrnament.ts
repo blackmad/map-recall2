@@ -72,13 +72,14 @@ export function gableOrnaments({ornament: o, profile, eavesM, widthM, idPrefix}:
     const rise = lm.shoulderY - eavesM, neckW = lm.neckLeft - x0;
     if (o.wings && neckW > 0.3 && rise > 0.3) {
       // Band under the shoulder silhouette, a little proud of it, ending at the neck; a volute curls at the outer foot.
-      const thick = Math.min(0.42, Math.max(0.18, rise * 0.3)), lift = 0.04;
+      // `wingDepth` (Keizersgracht 608): a measured wing depth; else the 0.18-0.42 m rule.
+      const thick = o.wingDepth !== undefined ? Math.min(o.wingDepth, rise) : Math.min(0.42, Math.max(0.18, rise * 0.3)), lift = 0.04;
       const top = lm.shoulder.map(([x, y]) => pt(x, y + lift));
       const bottom = lm.shoulder.map(([x, y], k) => pt(Math.min(lm.neckLeft, x + (k === 0 ? 0.0 : 0)), Math.max(eavesM, y - thick))).reverse();
       const left = [...top, pt(lm.neckLeft, lm.shoulderY + lift), pt(lm.neckLeft, Math.max(eavesM, lm.shoulderY - thick)), ...bottom.slice(1)];
       add('wing-l', left, 0.06);
       add('wing-r', mirror(left), 0.06);
-      const r = Math.min(0.32, Math.max(0.16, neckW * 0.18, rise * 0.2));
+      const r = o.wingDepth !== undefined ? Math.min(neckW * 0.4, Math.max(0.16, o.wingDepth * 0.3)) : Math.min(0.32, Math.max(0.16, neckW * 0.18, rise * 0.2));
       if (o.wings === 'volutes') {
         add('volute-l', volute(x0 + r + 0.02, eavesM + r + 0.02, r, -1), 0.1);
         add('volute-r', volute(x1 - r - 0.02, eavesM + r + 0.02, r, 1), 0.1);
@@ -108,14 +109,41 @@ export function gableOrnaments({ornament: o, profile, eavesM, widthM, idPrefix}:
     add('finial', finial(o.finial, cx, topY - 0.03, size), 0.12);
   }
   if (o.gablet) {
-    // A crowning piece on the cornice line, centred: a carved crest (cartouche on a plinth) or a small pointed gablet.
-    const cx = (x0 + x1) / 2, w = Math.min(1.6, widthM * 0.28), base = eavesM - 0.02;
-    if (o.gablet === 'pediment') add('gablet', [pt(cx - w / 2, base), pt(cx + w / 2, base), pt(cx + w / 2, base + 0.22), pt(cx, base + 0.22 + w * 0.42), pt(cx - w / 2, base + 0.22)], 0.14);
-    else {
-      const h = w * 0.62, arch = Array.from({length: 9}, (_, k) => { const a = Math.PI * k / 8; return pt(cx + w * 0.36 * Math.cos(a), base + h * 0.55 + h * 0.45 * Math.sin(a)); });
+    // A crowning piece on the cornice line, centred: a carved crest (cartouche on a plinth), a small pointed gablet, or a
+    // Louis XIV crest. `gabletSize` gives the measured span and rise; absent, the small default piece (byte-identical).
+    const cx = (x0 + x1) / 2, size = o.gabletSize, w = size ? Math.min(size.span, widthM) : Math.min(1.6, widthM * 0.28), base = eavesM - 0.02;
+    if (o.gablet === 'pediment') {
+      const peak = size ? Math.max(0.3, size.rise - 0.22) : w * 0.42;
+      add('gablet', [pt(cx - w / 2, base), pt(cx + w / 2, base), pt(cx + w / 2, base + 0.22), pt(cx, base + 0.22 + peak), pt(cx - w / 2, base + 0.22)], 0.14);
+    } else if (o.gablet === 'louis') {
+      // Half outline from the left foot to the top, as fractions of (w/2 inward, h up): a plinth end, the outer C-scroll,
+      // a hollow sweep in and up, then the raised central arch; mirrored. A crab finial stands on the top.
+      const h = size ? size.rise : w * 0.5, r = Math.min(0.4, w * 0.075);
+      const half: [number, number][] = [[1, 0], [1, 0.14], [0.94, 0.3], [0.82, 0.42], [0.68, 0.46], [0.56, 0.54], [0.47, 0.66], [0.42, 0.78]];
+      // The central arch from its left spring (the last `half` point) to the top, then mirrored down the right.
+      const arch = Array.from({length: 7}, (_, k) => { const a = Math.PI - (Math.PI / 2) * (k + 1) / 7; return pt(cx + 0.42 * (w / 2) * Math.cos(a), base + h * (0.78 + 0.22 * Math.sin(a))); });
+      const left = half.map(([u, v]) => pt(cx - u * (w / 2), base + v * h));
+      const right = [...half].reverse().map(([u, v]) => pt(cx + u * (w / 2), base + v * h));
+      const archR = arch.slice(0, -1).map(([x, y]) => pt(2 * cx - x, y)).reverse();
+      add('gablet', [...left, ...arch, ...archR, ...right], 0.14);
+      add('gablet-volute-l', volute(cx - w / 2 + r + 0.03, base + 0.24 * h, r, -1), 0.18);
+      add('gablet-volute-r', volute(cx + w / 2 - r - 0.03, base + 0.24 * h, r, 1), 0.18);
+      add('gablet-finial', finial('crab', cx, base + h - 0.03, Math.min(0.8, Math.max(0.4, h * 0.3))), 0.18);
+    } else {
+      const h = size ? size.rise : w * 0.62, arch = Array.from({length: 9}, (_, k) => { const a = Math.PI * k / 8; return pt(cx + w * 0.36 * Math.cos(a), base + h * 0.55 + h * 0.45 * Math.sin(a)); });
       add('gablet', [pt(cx - w / 2, base), pt(cx + w / 2, base), pt(cx + w / 2, base + h * 0.22), pt(cx + w * 0.36, base + h * 0.36), ...arch, pt(cx - w * 0.36, base + h * 0.36), pt(cx - w / 2, base + h * 0.22)], 0.14);
       add('gablet-volute-l', volute(cx - w * 0.5 + w * 0.08, base + h * 0.36, w * 0.09, -1), 0.16);
       add('gablet-volute-r', volute(cx + w * 0.5 - w * 0.08, base + h * 0.36, w * 0.09, 1), 0.16);
+    }
+    if (o.gabletLight && o.gablet !== 'pediment') {
+      // A dark light standing 4 cm proud of the gablet face (no coplanar faces), in the palette's shop/door colour.
+      const h = size ? size.rise : o.gablet === 'louis' ? w * 0.5 : w * 0.62, lw = Math.min(w * 0.2, 1.1);
+      if (o.gabletLight === 'oculus') add('gablet-light', oval(cx, base + h * 0.52, lw, lw, 16), 0.18, 'shop');
+      else {
+        const foot = base + h * 0.2, lh = Math.min(h * 0.5, lw * 1.6), spring = foot + lh - lw / 2;
+        const head = Array.from({length: 9}, (_, k) => { const a = Math.PI * k / 8; return pt(cx + (lw / 2) * Math.cos(a), spring + (lw / 2) * Math.sin(a)); });
+        add('gablet-light', [pt(cx - lw / 2, foot), pt(cx + lw / 2, foot), ...head], 0.18, 'shop');
+      }
     }
   }
   return {ornaments: out, warnings};

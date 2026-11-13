@@ -1,0 +1,72 @@
+{
+ "note": "Front eaves read off the gridded 40 px/m strips where 3DBAG reads a lower line: the TOP of a frieze cornice (the type's entablature hangs under it) or a gable foot; countStoreys pins also count the storeys from it. Lane belt-gg-zuid, 2026-11-10.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012175645",
+   "eavesM": 19.3,
+   "countStoreys": true,
+   "reason": "Keizersgracht 618, 2023-03-27 strip, 1 m grid: the lettered frieze cornice starts at 16.9 m over the top window row (15.1-16.4 m); its top is taken 2.4 m higher (the kit entablature), the strip reads 20.7 m with the cap projection stretched"
+  },
+  {
+   "pandId": "0363100012175655",
+   "eavesM": 19.3,
+   "countStoreys": true,
+   "reason": "Keizersgracht 616A, 2023-03-27 strip, 1 m grid: the dentilled frieze cornice starts at 16.9 m over the top row (14.9-16.2 m); top at 19.3 m (strip 20.2 m with the cap projection)"
+  },
+  {
+   "pandId": "0363100012175654",
+   "eavesM": 19.2,
+   "countStoreys": true,
+   "reason": "Keizersgracht 614, 2023-03-27 strip, 1 m grid: frieze cornice from 16.8 m over the top row (15.2-16.3 m); top at 19.2 m"
+  },
+  {
+   "pandId": "0363100012167896",
+   "eavesM": 19.3,
+   "countStoreys": true,
+   "reason": "Keizersgracht 610, 2023-03-27 strip, 1 m grid: frieze cornice with consoles from 16.9 m over the top row (15.1-16.3 m), its top at 19.9 m on the strip; 19.3 m with the 2.4 m kit entablature"
+  },
+  {
+   "pandId": "0363100012176066",
+   "eavesM": 17.1,
+   "countStoreys": true,
+   "reason": "Keizersgracht 608, 2023-03-27 strip, 1 m grid: neck gable foot (wing pieces start) at 17.1 m over the top row (15.3-16.6 m)"
+  },
+  {
+   "pandId": "0363100012180308",
+   "eavesM": 19.1,
+   "countStoreys": true,
+   "reason": "Herengracht 530, 2023-03-27 strip, 1 m grid: brick to 16.4 m, a dentilled frieze cornice to 19.1 m with a small crest over it"
+  },
+  {
+   "pandId": "0363100012180311",
+   "eavesM": 18.4,
+   "countStoreys": true,
+   "reason": "Herengracht 524, 2023-03-27 strip, 1 m grid: neck gable foot (wing pieces start) at 18.4 m over the top row (16.9-18.2 m)"
+  },
+  {
+   "pandId": "0363100012180310",
+   "eavesM": 19.3,
+   "countStoreys": true,
+   "reason": "Herengracht 522, 2023-03-27 strip, 1 m grid: brick to 17.7 m under a deep frieze cornice (its cap projection stretched to 22.9 m on the strip); bel-etage and three rows over the souterrain, so the line is taken at 19.3 m (four storeys of the type pitch)"
+  },
+  {
+   "pandId": "0363100012168044",
+   "eavesM": 19.0,
+   "countStoreys": true,
+   "reason": "Herengracht 520, 2023-03-27 strip, 1 m grid: the console frieze starts at 16.6 m over the top row (13.4-15.5 m); top taken 2.4 m higher, the crest above it"
+  },
+  {
+   "pandId": "0363100012167981",
+   "eavesM": 18.8,
+   "countStoreys": true,
+   "reason": "Herengracht 518, 2023-03-27 strip, 1 m grid: frieze with carved consoles from 16.4 m; top taken 2.4 m higher (the strip reads 20.0 m with the cap projection)"
+  },
+  {
+   "pandId": "0363100012180299",
+   "eavesM": 14.2,
+   "countStoreys": true,
+   "reason": "Herengracht 532, 2023-03-27 strip, 1 m grid: painted-black front, white cornice 13.1-14.2 m over three window rows"
+  }
+ ]
+}

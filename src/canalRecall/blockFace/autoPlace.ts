@@ -120,6 +120,13 @@ export interface TypeMatchRule {
    * over a type without `blackPaint: true`. Absent = byte-identical (`stucco` stays a weighted criterion).
    */
   materialVeto?: true;
+  /**
+   * The type's own ground is drawn whatever the BAG/OSM use says: no automatic shopfront for a trading use. Canal-belt
+   * houses keep their stoop and souterrain under offices, galleries and institutions (Herengracht 520, BAG
+   * bijeenkomstfunctie: a carved centre door over a double stoop, drawn as a shop before this). A real shop ground is a
+   * reviewer hold. Absent = byte-identical.
+   */
+  typeGround?: true;
   /** The type is drawn painted black (the black-paint wall material does not veto it). */
   blackPaint?: true;
   /**
@@ -447,44 +454,61 @@ export function autoShopfront(ev: PandEvidence, use: GroundFloorUse): ShopfrontI
 }
 
 /** Decide one pand: the best type over the threshold, or a hold with the reason. */
-export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string): Decision {
+export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string, pin?: {accept?: true; storeys?: number; houseGround?: true; ground?: string; doorBay?: number; overrides?: HousePlacement['overrides']}): Decision {
   const s = ev.strip;
   if (!s) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: 'no strip span (no panorama covers the front)'};
   if (s.voidShare > AUTO_PLACE.maxVoid) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `strip ${Math.round(s.voidShare * 100)} % without panorama data`};
   if (s.frontEvidence && !s.frontEvidence.pass) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `no front on the strip: ${s.frontEvidence.reasons.join('; ')}`};
   const ranked = types.map(t => scoreType(t, ev)).sort((a, b) => b.score - a.score);
   const best = ranked[0], second = ranked[1];
-  if (!best || best.score < AUTO_PLACE.minScore) {
+  // A reviewer's accept pin (reviewCrowns.ts TypePin.accept) places its one type under the threshold; a veto still holds.
+  const accepted = !!pin?.accept && !!best && !best.veto.length;
+  if (!best || (best.score < AUTO_PLACE.minScore && !accepted)) {
     const why = !best ? 'no types' : best.veto.length ? `every type vetoed (best ${best.typeId}: ${best.veto.join('; ')})` : `best ${best.typeId} scores ${best.score} < ${AUTO_PLACE.minScore} (${best.criteria.filter(c => c.score !== null && c.score < 1).map(c => c.note).join('; ')})`;
     return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'match', reason: why, best};
   }
   const t = types.find(x => x.id === best.typeId)!;
   const notes: string[] = [];
   if (second && second.score > 0 && best.score - second.score < AUTO_PLACE.margin) notes.push(`near tie with ${second.typeId} (${second.score})`);
-  const use = groundUse(ev, photoDate);
+  if (accepted && best.score < AUTO_PLACE.minScore) notes.push(`reviewer accept pin (score ${best.score})`);
+  if (pin?.storeys !== undefined) notes.push(`storeys ${pin.storeys}: reviewer pin`);
+  const listed = groundUse(ev, photoDate);
+  const use: GroundFloorUse = pin?.houseGround && !['residential', 'office', 'vacant'].includes(listed.use)
+    ? {...listed, use: 'residential', note: `${listed.note}; reviewer pin: the strip shows a house ground (listed ${listed.use})`} : listed;
   const trading = !['residential', 'office', 'vacant'].includes(use.use);
   const bays = baysFor(t, ev.widthM), bodyBays = typeof t.body.bays === 'number' ? t.body.bays : undefined;
   const placement: HousePlacement = {type: t.id};
   if (bodyBays !== undefined && bays !== bodyBays) placement.overrides = {bays};
   // Storeys from the eaves, not 3DBAG bouwlagen (it counts the attic: 5 on the 4-storey Hasebroekstraat 4-36).
-  const storeys = t.match?.frontEavesM !== undefined ? t.body.storeys : storeysFor(t, ev.eavesM);
+  const storeys = pin?.storeys ?? (t.match?.frontEavesM !== undefined ? t.body.storeys : storeysFor(t, ev.eavesM));
   if (storeys !== t.body.storeys) { placement.storeys = storeys; notes.push(`storeys ${storeys}: eaves ${ev.eavesM} m at the type's ${storeyPitch(t).toFixed(2)} m pitch`); }
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});
-  if (trading) placement.ground = {shopfront: autoShopfront(ev, use)};
+  if (trading && !t.match?.typeGround) placement.ground = {shopfront: autoShopfront(ev, use)};
   // A bay in the BAG outline gives the accent side outright (it does not depend on the strip's exposure).
   const bagSide = ev.bagBay && Math.abs(ev.bagBay.centre - 0.5) >= 0.1 ? (ev.bagBay.centre < 0.5 ? 'left' : 'right') : null;
   const aSide = bagSide ?? accentSideOf(s);
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
+  // Reviewer ground / door pins (reviewCrowns.ts TypePin): the strip's ground variant and door bay, over the door-side pick.
+  if (pin?.ground && !trading) { placement.ground = pin.ground; notes.push(`ground ${pin.ground}: reviewer pin`); }
+  if (pin?.doorBay !== undefined) { placement.doorBay = pin.doorBay; notes.push(`door bay ${pin.doorBay}: reviewer pin`); }
+  if (pin?.overrides) { placement.overrides = {...placement.overrides, ...pin.overrides}; notes.push(`body ${Object.keys(pin.overrides).join(', ')}: reviewer pin`); }
   if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage && t.match?.measuredWall !== false) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
   const crown = crownFor(t, s.skyline, {roofMaxM: ev.roofMaxM, skyBound: s.skyBound});
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;
   notes.push(crown.why);
   const rhythm: Partial<RhythmSpec> = {citation: `auto-place: ${t.id} scored ${best.score} on ${best.criteria.map(c => `${c.key} ${c.score ?? '-'}`).join(', ')}; strip ${s.date} span ${s.px.join('-')}`};
   return {kind: 'placed', pandId: ev.pandId, typeId: t.id, score: best.score, ...(second ? {runnerUp: {typeId: second.typeId, score: second.score}} : {}), notes,
-    house: {pandId: ev.pandId, slug, address: ev.address, type: placement, groundFloor: use, rhythm: rhythm as RhythmSpec}};
+    house: {pandId: ev.pandId, slug, address: ev.address, type: placement, groundFloor: typeGroundUse(t, use, trading), rhythm: rhythm as RhythmSpec}};
+}
+
+/** A type that draws its own ground (`match.typeGround`, Herengracht 520's stoop under a BAG 'winkel' use) records what the
+ *  photo shows: a residential ground, in conflict with the registers, which the note keeps. Other types keep the register use. */
+export function typeGroundUse(t: MatchableType, use: GroundFloorUse, trading: boolean): GroundFloorUse {
+  if (!trading || !t.match?.typeGround) return use;
+  return {...use, use: 'residential', agreement: 'conflict', note: `auto-place: the type's ground drawn (match.typeGround); registers say ${use.use} (${[...use.bag ?? [], use.category].filter(Boolean).join(', ')}), not a shop front on the photo`};
 }
 
 export const SKYLINE_MIN_CONFIDENCE = 0.6;
