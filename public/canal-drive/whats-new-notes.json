@@ -2,6 +2,27 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-13",
+      "title": "Rows of houses vary like the real street",
+      "text": "Unmeasured houses used to take one middle colour from their measured neighbours, so whole rows came out the same grey-brown. Each house now draws its own colour from the middle half of what was measured nearby, so a row gets the dark, red and brown mix of the real street. On 146 photo comparisons along the most-ridden streets, picked at random, the wall colour error dropped a little further (0.097 to 0.091). Pale painted fronts are still drawn too dark; they need a photo of each house.",
+      "where": [
+        4.8853,
+        52.3765
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-13-wall-variety/0363100012175043.jpg",
+          "alt": "Herenstraat: photo, before (pale grey wall), after (dark brown, like the photo)",
+          "caption": "Herenstraat: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-13-wall-variety/0363100012171218.jpg",
+          "alt": "Canal-belt house: photo, before (light brown), after (darker, closer to the photo)",
+          "caption": "Photo, before, after"
+        }
+      ]
+    },
+    {
       "date": "2026-11-12",
       "title": "Tunnels, underpasses and rail bridges from a checked list",
       "text": "Where roads dip under the ring, the A10 and the railways, the ground used to be shaped by guesswork from map data, which sometimes left a ramp in the wrong place or a deck over a tram that runs at street level. A hand-checked list of crossings, each compared with the aerial photo and a street panorama, now decides where the road goes under, where a deck spans it and where the tunnel mouth opens. It covers the IJtunnel, Piet Heintunnel, the ring roads and the railway underpasses.",

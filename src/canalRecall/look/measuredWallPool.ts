@@ -90,11 +90,12 @@ export function tunePoolDraw(over: Partial<typeof POOL_DRAW>) { Object.assign(PO
 /** A measured wall this light is painted render or stucco (the brick readings top out at L 0.58). */
 export const PAINTED_L = 0.62;
 /**
- * Off by default: neither band met lane W2's gate on the 114 pairs (mean dE no worse than W1's 0.097, under 1 in 10 pairs
- * worse by 0.02). The pairs were picked where the game drew pale over dark brick, so a draw true to the neighbourhood's
- * spread scores worse on them by construction; the integrator decides (docs/house-line.md §12).
+ * On by default since round 124 (integrator, 2026-11-13), band 0.5 (POOL_DRAW.band). W2's 114 pairs were picked where
+ * the game drew pale over dark brick, so they penalised any spread by construction. W3's unbiased, ride-weighted
+ * benchmark-v2 (146 pairs, docs/house-line.md §13) gives mean dE: W1 0.097, band 0.5 0.091 (vs W1 -0.006,
+ * 95 % CI [-0.014, -0.0002]), band 1 0.102; the blind critic is flat. `?wallVariety=0` is W1's draw.
  */
-export const WALL_VARIETY_DEFAULT_ON = false;
+export const WALL_VARIETY_DEFAULT_ON = true;
 /** `?wallVariety=` value: '0' off; a band in (0, 1] on with that POOL_DRAW.band (1 = the whole distribution); absent: the default. */
 const varietyValue = (search?: string | null, env?: string | null) => (search ? /[?&]wallVariety=([\d.]+)/.exec(search)?.[1] : undefined) ?? env ?? undefined;
 export function wallVarietyEnabled(search?: string | null, env?: string | null): boolean {

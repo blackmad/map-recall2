@@ -77,6 +77,13 @@ export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
  * 20 / 27 / 35 / 50 / 70 px/m.
  */
 export const FR_MOTTLE = 0.6, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
+/**
+ * Pale walls carry less brick texture (S6d). In round 2's photos (pairs at 25+ px/m) the detail measure was 0.140 at wall
+ * OKLab L under 0.45, 0.132 at 0.45-0.6 and 0.066 at 0.6-0.75 (n = 3; none paler). White and cream brick is mostly painted,
+ * with joints filled. The coursing and patch contrast therefore fall to FR_PALE_K between L FR_PALE_L[0] and [1]. The
+ * OKLab L is approximated as the cube root of the wall's luminance.
+ */
+export const FR_PALE_L = [0.55, 0.7] as const, FR_PALE_K = 0.5;
 
 /**
  * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the
@@ -247,7 +254,9 @@ vec3 facadeRecordColour(out vec2 m) {
   m = vec2(1.0, 0.0);
   if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
   // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
-  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x);
+  vec3 wl = pow(fr_wall(), vec3(2.2));
+  float paleK = mix(1.0, ${f1(FR_PALE_K)}, smoothstep(${f1(FR_PALE_L[0])}, ${f1(FR_PALE_L[1])}, pow(dot(wl, vec3(0.2126, 0.7152, 0.0722)), 1.0 / 3.0)));
+  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x * paleK);
   float spek = frSpek(w.y, fw);
   vec3 bandC = fr_band();
   wallC = mix(wallC, bandC, spek); m.r = 1.0 - spek;

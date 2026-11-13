@@ -109,8 +109,8 @@ const block = () => {
   return { points: hexes.map((h, i) => [486000 + (i % 4) * 15, 5236600 + Math.floor(i / 4) * 9, h, 1, h.startsWith('#e') ? 1 : 0] as const) };
 };
 
-test('the variety flag: off by default; ?wallVariety=0.5 (a band) or 1 turns it on, 0 off', () => {
-  assert.equal(wallVarietyEnabled(null, null), false);
+test('the variety flag: on by default since round 124 (W3); ?wallVariety=0.5 (a band) or 1 turns it on, 0 off', () => {
+  assert.equal(wallVarietyEnabled(null, null), true);
   assert.equal(wallVarietyEnabled('?wallVariety=0.5', null), true);
   assert.equal(wallVarietyEnabled('?wallVariety=1', null), true);
   assert.equal(wallVarietyEnabled('?wallVariety=0', null), false);
