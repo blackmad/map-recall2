@@ -1,0 +1,25 @@
+{
+  "name": "The Other Side",
+  "landmarkId": "n12269195215",
+  "sourceUrl": "https://www.iamsterdam.com/uit/agenda/nachtleven/clubbing/the-other-side",
+  "suppressOsmIds": ["w57860087", "NL.IMBAG.Pand.0363100012133795"],
+  "pandId": "0363100012133795",
+  "anchor": [4.87491785, 52.39543795],
+  "materialOverrides": {
+    "brick": "#8f9693",
+    "dark": "#2d3c44",
+    "concrete": "#a3b0b6",
+    "stone": "#9ca2a0",
+    "white": "#e6ebeb",
+    "glass": "#4a5862",
+    "blue": "#1f9cc4",
+    "greyBrick": "#4b5359",
+    "bronze": "#4a5550",
+    "frame": "#d5dbdb",
+    "slate": "#858a8c",
+    "sandstone": "#5b5f62",
+    "green": "#3f6f72"
+  },
+  "surveySource": "Current BAG 0363100012133795 footprint (OSM w57860087) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; profiled hall cladding, ribbon windows, doors, office windows, rooftop letter frame and rooflights measured from the 2021-2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+}

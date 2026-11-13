@@ -2877,5 +2877,20 @@
     "https://www.openstreetmap.org/node/2738399729"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "the-other-side",
+  "landmarkId": "n12269195215",
+  "name": "The Other Side",
+  "description": "The Other Side is a club for electronic music at Rigakade 10 in the Houthavens, set up in a former bicycle workshop: the long steel-clad hall of a 1991 business unit, with a two-storey brick office at its west end. Its main room holds about a thousand dancers, and it also hosts performances and workshops as a place where music, art and community meet.",
+  "funFact": "It was the first club with an L-Acoustics L-ISA immersive sound system, which lets sound move around the room; after years of applications it received a full club licence and a 24-hour permit in November 2023.",
+  "sourceUrl": "https://www.iamsterdam.com/uit/agenda/nachtleven/clubbing/the-other-side",
+  "additionalSources": [
+    "https://djlifemag.com/2025/04/amsterdams-the-other-side-goes-360-club-spotlight/",
+    "https://www.ticketfairy.com/events-in-amsterdam/the-other-side",
+    "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012133795",
+    "https://www.openstreetmap.org/node/12269195215"
+  ],
+  "preferDescription": true
 }
 ]
