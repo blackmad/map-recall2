@@ -11,12 +11,13 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import {frontTableProblems, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source} from '../../src/canalRecall/houseLine/frontRecord.ts';
+import {frontTableProblems, type WallColour, type WallFinish, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source} from '../../src/canalRecall/houseLine/frontRecord.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const FACES = path.join(ROOT, 'scripts/block-face/faces');
 const READS = 'data/front-records/haarlemmerdijk-block.reads.json';
 const OUT = 'data/front-records/haarlemmerdijk-block.json';
+const WALLS = 'data/front-records/haarlemmerdijk-walls.json'; // scripts/front-records/measure-walls.ts
 const FACE_IDS = ['haarlemmerdijk-2-58', 'haarlemmerdijk-13-45', 'haarlemmerdijk-66-120', 'haarlemmerdijk-67-91', 'haarlemmerdijk-93-113',
   'haarlemmerdijk-117-143', 'haarlemmerdijk-126-188', 'haarlemmerdijk-149-175', 'haarlemmer-46-96'];
 const TOL = 0.5; // metres: two height reads within this agree
@@ -34,6 +35,7 @@ const GABLE_FAMILY: Record<string, CrownFamily> = {cornice: 'straight-cornice', 
   point: 'point', step: 'step', spout: 'spout', 'pitched-eaves': 'other', flat: 'flat-parapet'};
 
 function build(): FrontRecordTable {
+  const walls = new Map<string, WallMeasure>(exists(WALLS) ? (json(WALLS).walls as WallMeasure[]).map(w => [w.pandId, w]) : []);
   const readsFile = json(READS) as {refs: Record<string, string>; pands: PandReads[]};
   const reads = new Map(readsFile.pands.map(p => [p.pandId, p]));
   const refOf = (r: Read) => r.by === 'lane2-strip-read' ? `lane2 strip read 2026-11-13: ${r.ref}` : `${expandRef(r.ref, readsFile.refs)}`;
@@ -110,9 +112,8 @@ function build(): FrontRecordTable {
       }
       const wordOf = (k: 'wallWord' | 'trimWord') => { const r = rs.find(x => x[k]); return r ? {word: r[k]!, ref: refOf(r)} : null; };
       const wallW = wordOf('wallWord'), trimW = wordOf('trimWord');
-      const wallHex: string | null = apP?.strip?.wallRaw ?? null;
-      const wall: Colour = {hex: wallHex, word: wallW?.word ?? null, ref: wallHex ? `${dir}/auto-place.json strip.wallRaw (raw strip median, ${ap.stripDate})` : wallW?.ref ?? null};
-      if (wallHex) sources.push({field: 'wall.hex', ref: wall.ref!, kind: 'strip-measure'});
+      const wall = wallOf(walls.get(pandId), wallW, rs, apP?.strip?.wallRaw ?? null, `${dir}/auto-place.json`);
+      if (wall.hex) sources.push({field: 'wall.hex', ref: wall.ref!, kind: wall.source === 'reviewed' ? 'lane2-strip-read' : 'strip-measure'});
       const trim: Colour = {hex: null, word: trimW?.word ?? null, ref: trimW?.ref ?? null};
       for (const r of rs) if (r.note) notes.push(`${r.by === 'lane2-strip-read' ? 'lane2' : 'reviewer'}: ${r.note}`);
       if (facts) sources.push({field: 'threeDBag', ref: `${factsPath} (3DBAG ${facts.source?.fetchedAt ?? ''})`.trim(), kind: '3dbag'});
@@ -135,7 +136,7 @@ function build(): FrontRecordTable {
         pandId, address, street, face, side: Number.isFinite(num) ? (num % 2 ? 'odd' : 'even') : null,
         builtYear: apP?.builtYear ?? facts?.heights?.builtYear ?? null,
         bagWidthM: front ? r2(front.widthM) : apP?.widthM ?? null,
-        streetGroundNAP: strip.groundNAP, groundNAP: groundNAP === null ? null : r2(groundNAP),
+        datum: 'street', streetGroundNAP: strip.groundNAP, groundNAP: groundNAP === null ? null : r2(groundNAP),
         frontTopM, frontTopKind: frontTopM === null ? null : topKind,
         threeDBag,
         crown: {family: fam.v, widthM: width.v, neckWidthM: neck.v, shoulderM: topKind === 'gable-foot' ? frontTopM : null,
@@ -159,10 +160,41 @@ function build(): FrontRecordTable {
       'Ground: the pands\' 3DBAG ground swings from 0.6 to 2.5 m NAP between neighbours on the dijk (13-45: 23E-27 at 2.5 against 1.0-1.2 around them), so heights are given above the street, not above each pand\'s ground.',
       'Registration: on the 2022-12-15 strips the fronts stand up to 1.5 m off their BAG splits (117-143 about 1.2 m left, 2-58 about 0.6 m right); a read names the front it read, not the BAG span. Widths are BAG widths.',
       'Confidence: high = the front top read twice (this lane and the earlier reviewer) within 0.5 m and one crown family; medium = one numeric read; low = no measured front top (fallback: row-line).',
+      'Walls: data/front-records/haarlemmerdijk-walls.json (scripts/front-records/measure-walls.ts), the spandrel median with the capture exposure taken out (lane WC option (c)); wall.source reviewed = a Claude strip read named the wall and its lightness agrees, the label the pale-warm guard skips (reviewedWallSource).',
       'Trim colours are words only: no trim colour has been measured on the strips (the hand specs\' #e8e4d8 stone is the type default).',
     ],
     records,
   };
+}
+
+interface WallMeasure {pandId: string; rawHex: string | null; hex: string | null; gain: number | null; L: number | null; finishGuess: 'brick' | 'plaster' | null; sample: string | null; note: string | null}
+const PALE = /white|cream|beige|pale|light|yellow|render|plaster|stucco|buff/i, DARK = /dark|black/i;
+/** The finish a read's word names, if any. */
+function finishWord(w: string): WallFinish | null {
+  if (/painted brick/i.test(w)) return 'painted-brick';
+  if (/plaster|stucco|render/i.test(w)) return 'plaster';
+  if (/stone/i.test(w)) return 'stone';
+  if (/brick/i.test(w)) return 'brick';
+  return null;
+}
+/**
+ * The wall of one record. Measured hex from measure-walls.ts; `reviewed` when a Claude strip read named the wall and its
+ * lightness agrees with the measurement (pale word: L >= 0.5; dark word: L < 0.55; otherwise any), then high confidence.
+ * No word: strip-measured, medium. A disagreeing word, a scaffolded or multi-front pand, or no measurement: low.
+ */
+function wallOf(m: WallMeasure | undefined, word: {word: string; ref: string} | null, rs: Read[], oldRaw: string | null, apRef: string): WallColour {
+  const blocked = rs.some(r => /scaffold|wrapped|netted|several fronts|two fronts|pand of|seam/i.test(r.note ?? ''));
+  const w = word?.word ?? null;
+  const fw = w ? finishWord(w) : null;
+  const base: WallColour = {hex: null, rawHex: null, gain: null, word: w, ref: word?.ref ?? null, finish: fw, finishFrom: fw ? 'read' : null, source: null, confidence: 'low'};
+  if (!m?.hex || blocked) return {...base, ref: blocked ? `${base.ref ?? 'reads'}: not measured (scaffolded, seam or several fronts)` : base.ref};
+  const L = m.L ?? 0;
+  const head = w?.split(',')[0] ?? null; // the wall itself; later clauses name trims
+  const agrees = head === null ? null : PALE.test(head) ? L >= 0.5 : DARK.test(head) ? L < 0.55 : true;
+  const finish = fw ?? m.finishGuess;
+  const ref = `${WALLS} (lane WC exposure (c) on the strip, raw ${m.rawHex}, gain ${m.gain}${oldRaw ? `; auto-place raw ${oldRaw} in ${apRef}` : ''})`;
+  return {hex: m.hex, rawHex: m.rawHex, gain: m.gain, word: w, ref, finish, finishFrom: fw ? 'read' : finish ? 'lightness' : null,
+    source: agrees === true ? 'reviewed' : 'strip-measured', confidence: agrees === true ? 'high' : agrees === null ? 'medium' : 'low'};
 }
 
 function expandRef(ref: string, refs: Record<string, string>) {

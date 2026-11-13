@@ -10,6 +10,7 @@
   "Ground: the pands' 3DBAG ground swings from 0.6 to 2.5 m NAP between neighbours on the dijk (13-45: 23E-27 at 2.5 against 1.0-1.2 around them), so heights are given above the street, not above each pand's ground.",
   "Registration: on the 2022-12-15 strips the fronts stand up to 1.5 m off their BAG splits (117-143 about 1.2 m left, 2-58 about 0.6 m right); a read names the front it read, not the BAG span. Widths are BAG widths.",
   "Confidence: high = the front top read twice (this lane and the earlier reviewer) within 0.5 m and one crown family; medium = one numeric read; low = no measured front top (fallback: row-line).",
+  "Walls: data/front-records/haarlemmerdijk-walls.json (scripts/front-records/measure-walls.ts), the spandrel median with the capture exposure taken out (lane WC option (c)); wall.source reviewed = a Claude strip read named the wall and its lightness agrees, the label the pale-warm guard skips (reviewedWallSource).",
   "Trim colours are words only: no trim colour has been measured on the strips (the hand specs' #e8e4d8 stone is the type default)."
  ],
  "records": [
@@ -21,6 +22,7 @@
    "side": "even",
    "builtYear": 1775,
    "bagWidthM": 9.57,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.25,
    "frontTopM": 12.9,
@@ -58,9 +60,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#3e3b35",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 0-383: not measured (scaffolded, seam or several fronts)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -94,11 +102,6 @@
      "kind": "lane2-strip-read"
     },
     {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
-    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/pands/0363100012177585/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -120,6 +123,7 @@
    "side": "even",
    "builtYear": 1750,
    "bagWidthM": 5.58,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 1.92,
    "frontTopM": 12.1,
@@ -157,9 +161,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#4c4849",
+    "hex": "#705b4b",
+    "rawHex": "#574639",
+    "gain": 1.708,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #574639, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -199,8 +209,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #574639, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -223,6 +233,7 @@
    "side": "even",
    "builtYear": 1907,
    "bagWidthM": 5.81,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 1.92,
    "frontTopM": 13,
@@ -251,9 +262,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#3f3734",
+    "hex": "#4f4745",
+    "rawHex": "#393331",
+    "gain": 1.921,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #393331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -273,8 +290,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #393331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -298,6 +315,7 @@
    "side": "even",
    "builtYear": 1765,
    "bagWidthM": 5.64,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2,
    "frontTopM": 12.4,
@@ -335,9 +353,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#444242",
+    "hex": "#534c4c",
+    "rawHex": "#3a3535",
+    "gain": 2.052,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3535, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -382,8 +406,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3535, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -491,6 +515,7 @@
    "side": "even",
    "builtYear": 1785,
    "bagWidthM": 5.6,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 1.47,
    "frontTopM": null,
@@ -519,9 +544,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#494543",
+    "hex": "#686866",
+    "rawHex": "#494947",
+    "gain": 2.097,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #494947, gain 2.097; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -536,7 +567,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #494947, gain 2.097; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -563,6 +594,7 @@
    "side": "even",
    "builtYear": 1865,
    "bagWidthM": 5.76,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2,
    "frontTopM": null,
@@ -591,9 +623,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#494744",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -601,11 +639,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/pands/0363100012176279/facts.json (3DBAG 2026-11-10)",
@@ -628,6 +661,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 5.76,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.26,
    "frontTopM": null,
@@ -656,9 +690,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#504848",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -666,11 +706,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/pands/0363100012177674/facts.json (3DBAG 2026-11-10)",
@@ -693,6 +728,7 @@
    "side": "even",
    "builtYear": 1997,
    "bagWidthM": 2.85,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.3,
    "frontTopM": null,
@@ -721,9 +757,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#47403b",
+    "hex": "#696059",
+    "rawHex": "#4b443f",
+    "gain": 2.005,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b443f, gain 2.005; auto-place raw #47403b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -733,7 +775,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b443f, gain 2.005; auto-place raw #47403b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -756,6 +798,7 @@
    "side": "even",
    "builtYear": 1984,
    "bagWidthM": 15.21,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.32,
    "frontTopM": null,
@@ -784,9 +827,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#505155",
+    "hex": "#5f6369",
+    "rawHex": "#4b4e53",
+    "gain": 1.63,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b4e53, gain 1.63; auto-place raw #505155 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -796,7 +845,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b4e53, gain 1.63; auto-place raw #505155 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -819,6 +868,7 @@
    "side": "even",
    "builtYear": 1865,
    "bagWidthM": 4.33,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.01,
    "frontTopM": null,
@@ -847,9 +897,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#524c44",
+    "hex": "#6b6159",
+    "rawHex": "#4d4640",
+    "gain": 1.962,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4d4640, gain 1.962; auto-place raw #524c44 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -864,7 +920,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4d4640, gain 1.962; auto-place raw #524c44 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -889,6 +945,7 @@
    "side": "even",
    "builtYear": 1837,
    "bagWidthM": 3.56,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.01,
    "frontTopM": null,
@@ -917,9 +974,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#474342",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -927,11 +990,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/pands/0363100012167820/facts.json (3DBAG 2026-11-10)",
@@ -954,6 +1012,7 @@
    "side": "even",
    "builtYear": 1805,
    "bagWidthM": 7.74,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.28,
    "frontTopM": 12.4,
@@ -982,9 +1041,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#4f4c4a",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": "brown brick, stucco ground storey",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3128-3437: not measured (scaffolded, seam or several fronts)",
+    "finish": "plaster",
+    "finishFrom": "read",
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -1008,11 +1073,6 @@
      "kind": "lane2-strip-read"
     },
     {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
-    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/pands/0363100012167819/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -1033,6 +1093,7 @@
    "side": "even",
    "builtYear": 1750,
    "bagWidthM": 3.77,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.28,
    "frontTopM": 10.2,
@@ -1070,9 +1131,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#3b3735",
+    "hex": "#4d4543",
+    "rawHex": "#383230",
+    "gain": 1.877,
     "word": "dark red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #383230, gain 1.877; auto-place raw #3b3735 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1132,8 +1199,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #383230, gain 1.877; auto-place raw #3b3735 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1170,6 +1237,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 3.88,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.03,
    "frontTopM": 11.4,
@@ -1210,9 +1278,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#45403e",
+    "hex": "#544b46",
+    "rawHex": "#3a3330",
+    "gain": 2.099,
     "word": "dark grey-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3330, gain 2.099; auto-place raw #45403e in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1262,8 +1336,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3330, gain 2.099; auto-place raw #45403e in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1317,6 +1391,7 @@
    "side": "even",
    "builtYear": 1840,
    "bagWidthM": 3.9,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.02,
    "frontTopM": 11.6,
@@ -1354,9 +1429,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#483e3b",
+    "hex": "#4a3936",
+    "rawHex": "#342725",
+    "gain": 1.989,
     "word": "dark red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #342725, gain 1.989; auto-place raw #483e3b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1396,8 +1477,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #342725, gain 1.989; auto-place raw #483e3b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1420,6 +1501,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 4.02,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.09,
    "frontTopM": 14.8,
@@ -1448,9 +1530,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#464643",
+    "hex": "#676969",
+    "rawHex": "#4c4e4e",
+    "gain": 1.861,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4e4e, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1470,8 +1558,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4e4e, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1494,6 +1582,7 @@
    "side": "even",
    "builtYear": 1831,
    "bagWidthM": 4.31,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.36,
    "frontTopM": 11.2,
@@ -1522,9 +1611,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#47423b",
+    "hex": "#6c6a5f",
+    "rawHex": "#535149",
+    "gain": 1.735,
     "word": "red brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #535149, gain 1.735; auto-place raw #47423b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1549,8 +1644,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #535149, gain 1.735; auto-place raw #47423b in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1573,6 +1668,7 @@
    "side": "even",
    "builtYear": 1828,
    "bagWidthM": 4.16,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.37,
    "frontTopM": 10.7,
@@ -1610,9 +1706,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#786d5c",
+    "hex": "#a3957c",
+    "rawHex": "#8a7e68",
+    "gain": 1.45,
     "word": "painted plaster, pale grey",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8a7e68, gain 1.45; auto-place raw #786d5c in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1652,8 +1754,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8a7e68, gain 1.45; auto-place raw #786d5c in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1676,6 +1778,7 @@
    "side": "even",
    "builtYear": 1824,
    "bagWidthM": 4.39,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.33,
    "frontTopM": 12,
@@ -1717,9 +1820,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#645e53",
+    "hex": "#756a5d",
+    "rawHex": "#645a4f",
+    "gain": 1.408,
     "word": "grey painted plaster",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #645a4f, gain 1.408; auto-place raw #645e53 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1769,8 +1878,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #645a4f, gain 1.408; auto-place raw #645e53 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1825,6 +1934,7 @@
    "side": "even",
    "builtYear": 1850,
    "bagWidthM": 4.23,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.34,
    "frontTopM": 11,
@@ -1865,9 +1975,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#48453f",
+    "hex": "#473e36",
+    "rawHex": "#373029",
+    "gain": 1.652,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373029, gain 1.652; auto-place raw #48453f in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -1912,8 +2028,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373029, gain 1.652; auto-place raw #48453f in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -1967,6 +2083,7 @@
    "side": "even",
    "builtYear": 1841,
    "bagWidthM": 4.33,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.34,
    "frontTopM": 9.8,
@@ -2004,9 +2121,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#544a41",
+    "hex": "#6d5b4d",
+    "rawHex": "#524439",
+    "gain": 1.805,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #524439, gain 1.805; auto-place raw #544a41 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2066,8 +2189,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #524439, gain 1.805; auto-place raw #544a41 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2134,6 +2257,7 @@
    "side": "even",
    "builtYear": 1729,
    "bagWidthM": 4.94,
+   "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.26,
    "frontTopM": null,
@@ -2162,9 +2286,15 @@
    "rows": [],
    "bays": 3,
    "wall": {
-    "hex": "#383432",
+    "hex": "#4e4a49",
+    "rawHex": "#3a3736",
+    "gain": 1.788,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3736, gain 1.788; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -2189,7 +2319,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3736, gain 1.788; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -2214,6 +2344,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 17.16,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.09,
    "frontTopM": null,
@@ -2242,9 +2373,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#4a4745",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -2252,11 +2389,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/pands/0363100012167796/facts.json (3DBAG 2026-11-10)",
@@ -2279,6 +2411,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 5.83,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.17,
    "frontTopM": 12.4,
@@ -2323,9 +2456,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#46403c",
+    "hex": "#5f544c",
+    "rawHex": "#463d37",
+    "gain": 1.879,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #463d37, gain 1.879; auto-place raw #46403c in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2370,8 +2509,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #463d37, gain 1.879; auto-place raw #46403c in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2392,6 +2531,7 @@
    "side": "odd",
    "builtYear": 1725,
    "bagWidthM": 5.51,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 2.5,
    "frontTopM": 9.9,
@@ -2429,9 +2569,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#423d39",
+    "hex": "#584e49",
+    "rawHex": "#413935",
+    "gain": 1.847,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #413935, gain 1.847; auto-place raw #423d39 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2476,8 +2622,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #413935, gain 1.847; auto-place raw #423d39 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2501,6 +2647,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 3.89,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 2.52,
    "frontTopM": 6.3,
@@ -2529,9 +2676,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#383636",
+    "hex": "#57534e",
+    "rawHex": "#373431",
+    "gain": 2.495,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373431, gain 2.495; auto-place raw #383636 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -2561,7 +2714,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373431, gain 2.495; auto-place raw #383636 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -2585,6 +2738,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 3.79,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 2.51,
    "frontTopM": 10.3,
@@ -2625,9 +2779,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#484643",
+    "hex": "#434344",
+    "rawHex": "#353536",
+    "gain": 1.588,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #353536, gain 1.588; auto-place raw #484643 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2677,8 +2837,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #353536, gain 1.588; auto-place raw #484643 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2761,6 +2921,7 @@
    "side": "odd",
    "builtYear": 1874,
    "bagWidthM": 3.85,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.11,
    "frontTopM": 8.2,
@@ -2797,9 +2958,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#4e4d49",
+    "hex": "#58514a",
+    "rawHex": "#48423c",
+    "gain": 1.511,
     "word": "brick, white balustrade",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #48423c, gain 1.511; auto-place raw #4e4d49 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2834,8 +3001,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #48423c, gain 1.511; auto-place raw #4e4d49 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2858,6 +3025,7 @@
    "side": "odd",
    "builtYear": 1880,
    "bagWidthM": 4.16,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.02,
    "frontTopM": 10,
@@ -2895,9 +3063,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#473f3e",
+    "hex": "#5b504b",
+    "rawHex": "#443c38",
+    "gain": 1.794,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443c38, gain 1.794; auto-place raw #473f3e in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2942,8 +3116,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443c38, gain 1.794; auto-place raw #473f3e in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -3037,6 +3211,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 4.12,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.02,
    "frontTopM": 13.1,
@@ -3078,9 +3253,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#4e4c4a",
+    "hex": "#474a49",
+    "rawHex": "#4f5352",
+    "gain": 0.8,
     "word": "dark painted brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4f5352, gain 0.8; auto-place raw #4e4c4a in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -3115,8 +3296,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4f5352, gain 0.8; auto-place raw #4e4c4a in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -3188,6 +3369,7 @@
    "side": "odd",
    "builtYear": 1750,
    "bagWidthM": 4.02,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.03,
    "frontTopM": 11.25,
@@ -3228,9 +3410,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#473937",
+    "hex": "#4f3e3c",
+    "rawHex": "#473836",
+    "gain": 1.236,
     "word": "red brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #473836, gain 1.236; auto-place raw #473937 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -3270,8 +3458,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #473836, gain 1.236; auto-place raw #473937 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -3294,6 +3482,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 4.12,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.13,
    "frontTopM": null,
@@ -3322,9 +3511,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#6b6a63",
+    "hex": "#676661",
+    "rawHex": "#5a5955",
+    "gain": 1.319,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5a5955, gain 1.319; auto-place raw #6b6a63 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3334,7 +3529,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5a5955, gain 1.319; auto-place raw #6b6a63 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3359,6 +3554,7 @@
    "side": "odd",
    "builtYear": 1896,
    "bagWidthM": 4.07,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.1,
    "frontTopM": null,
@@ -3387,9 +3583,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#615b54",
+    "hex": "#5e5852",
+    "rawHex": "#666059",
+    "gain": 0.844,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #666059, gain 0.844; auto-place raw #615b54 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3404,7 +3606,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #666059, gain 0.844; auto-place raw #615b54 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3427,6 +3629,7 @@
    "side": "odd",
    "builtYear": 1867,
    "bagWidthM": 3.97,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 2.41,
    "frontTopM": null,
@@ -3458,9 +3661,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#55504b",
+    "hex": "#4e4f4d",
+    "rawHex": "#50514f",
+    "gain": 0.944,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #50514f, gain 0.944; auto-place raw #55504b in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3475,7 +3684,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #50514f, gain 0.944; auto-place raw #55504b in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3500,6 +3709,7 @@
    "side": "odd",
    "builtYear": 1827,
    "bagWidthM": 4.05,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.36,
    "frontTopM": null,
@@ -3528,9 +3738,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#584f49",
+    "hex": "#6a5f56",
+    "rawHex": "#584e47",
+    "gain": 1.491,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #584e47, gain 1.491; auto-place raw #584f49 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3545,7 +3761,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #584e47, gain 1.491; auto-place raw #584f49 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3568,6 +3784,7 @@
    "side": "odd",
    "builtYear": 1750,
    "bagWidthM": 5.66,
+   "datum": "street",
    "streetGroundNAP": 1.167,
    "groundNAP": 1.35,
    "frontTopM": null,
@@ -3596,9 +3813,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#393735",
+    "hex": "#3d3c3a",
+    "rawHex": "#333231",
+    "gain": 1.398,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #333231, gain 1.398; auto-place raw #393735 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3613,7 +3836,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #333231, gain 1.398; auto-place raw #393735 in scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3649,6 +3872,7 @@
    "side": "even",
    "builtYear": 2000,
    "bagWidthM": 3.99,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.35,
    "frontTopM": null,
@@ -3677,9 +3901,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5d5149",
+    "hex": "#635347",
+    "rawHex": "#5c4d42",
+    "gain": 1.169,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4d42, gain 1.169; auto-place raw #5d5149 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3689,7 +3919,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4d42, gain 1.169; auto-place raw #5d5149 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3714,6 +3944,7 @@
    "side": "even",
    "builtYear": 1814,
    "bagWidthM": 3.96,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 1.72,
    "frontTopM": null,
@@ -3742,9 +3973,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#594f4b",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -3752,11 +3989,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/pands/0363100012176570/facts.json (3DBAG 2026-11-10)",
@@ -3779,6 +4011,7 @@
    "side": "even",
    "builtYear": 1997,
    "bagWidthM": 4.31,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 1.73,
    "frontTopM": null,
@@ -3807,9 +4040,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#65584f",
+    "hex": "#5a504c",
+    "rawHex": "#645955",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #645955, gain 0.8; auto-place raw #65584f in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3819,7 +4058,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #645955, gain 0.8; auto-place raw #65584f in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3844,6 +4083,7 @@
    "side": "even",
    "builtYear": 1996,
    "bagWidthM": 13.75,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 1.8,
    "frontTopM": null,
@@ -3872,9 +4112,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#4e4642",
+    "hex": "#5a4f47",
+    "rawHex": "#4c433c",
+    "gain": 1.4,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c433c, gain 1.4; auto-place raw #4e4642 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -3884,7 +4130,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c433c, gain 1.4; auto-place raw #4e4642 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -3909,6 +4155,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 2.15,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.29,
    "frontTopM": null,
@@ -3937,9 +4184,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#544b41",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -3947,11 +4200,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/pands/0363100012176698/facts.json (3DBAG 2026-11-10)",
@@ -3974,6 +4222,7 @@
    "side": "even",
    "builtYear": 1996,
    "bagWidthM": 10.04,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.32,
    "frontTopM": null,
@@ -4002,9 +4251,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#534946",
+    "hex": "#554e4c",
+    "rawHex": "#4e4846",
+    "gain": 1.184,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4e4846, gain 1.184; auto-place raw #534946 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4014,7 +4269,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4e4846, gain 1.184; auto-place raw #534946 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4039,6 +4294,7 @@
    "side": "even",
    "builtYear": 1900,
    "bagWidthM": 11.41,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 1.96,
    "frontTopM": null,
@@ -4067,9 +4323,15 @@
    "rows": [],
    "bays": 6,
    "wall": {
-    "hex": "#5a4d42",
+    "hex": "#5f5147",
+    "rawHex": "#5c4f45",
+    "gain": 1.062,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4f45, gain 1.062; auto-place raw #5a4d42 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4084,7 +4346,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4f45, gain 1.062; auto-place raw #5a4d42 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4109,6 +4371,7 @@
    "side": "even",
    "builtYear": 1806,
    "bagWidthM": 5.61,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.12,
    "frontTopM": null,
@@ -4137,9 +4400,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#685c50",
+    "hex": "#635d58",
+    "rawHex": "#68615c",
+    "gain": 0.906,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #68615c, gain 0.906; auto-place raw #685c50 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4149,7 +4418,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #68615c, gain 0.906; auto-place raw #685c50 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4174,6 +4443,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 4.44,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.33,
    "frontTopM": null,
@@ -4202,9 +4472,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#65564d",
+    "hex": "#5d5551",
+    "rawHex": "#5c5450",
+    "gain": 1.03,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5450, gain 1.03; auto-place raw #65564d in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4214,7 +4490,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5450, gain 1.03; auto-place raw #65564d in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4239,6 +4515,7 @@
    "side": "even",
    "builtYear": 1997,
    "bagWidthM": 8.75,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.38,
    "frontTopM": null,
@@ -4267,9 +4544,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5f4b43",
+    "hex": "#574a45",
+    "rawHex": "#554944",
+    "gain": 1.038,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #554944, gain 1.038; auto-place raw #5f4b43 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4279,7 +4562,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #554944, gain 1.038; auto-place raw #5f4b43 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4304,6 +4587,7 @@
    "side": "even",
    "builtYear": 1900,
    "bagWidthM": 10.11,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.33,
    "frontTopM": null,
@@ -4332,9 +4616,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#898171",
+    "hex": "#7e776a",
+    "rawHex": "#8c8476",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8c8476, gain 0.8; auto-place raw #898171 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4349,7 +4639,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8c8476, gain 0.8; auto-place raw #898171 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4372,6 +4662,7 @@
    "side": "even",
    "builtYear": 1900,
    "bagWidthM": 8.47,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.18,
    "frontTopM": null,
@@ -4400,9 +4691,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#6b6860",
+    "hex": "#65615c",
+    "rawHex": "#66625d",
+    "gain": 0.976,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #66625d, gain 0.976; auto-place raw #6b6860 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4412,7 +4709,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #66625d, gain 0.976; auto-place raw #6b6860 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4437,6 +4734,7 @@
    "side": "even",
    "builtYear": 1882,
    "bagWidthM": 4.32,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.25,
    "frontTopM": 10,
@@ -4474,9 +4772,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#3d3431",
+    "hex": "#4c3d34",
+    "rawHex": "#392d26",
+    "gain": 1.767,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #392d26, gain 1.767; auto-place raw #3d3431 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4506,7 +4810,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #392d26, gain 1.767; auto-place raw #3d3431 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4530,6 +4834,7 @@
    "side": "even",
    "builtYear": 1828,
    "bagWidthM": 4.47,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.13,
    "frontTopM": 10,
@@ -4567,9 +4872,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#433c34",
+    "hex": "#5e4f43",
+    "rawHex": "#483c32",
+    "gain": 1.741,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483c32, gain 1.741; auto-place raw #433c34 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4609,7 +4920,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483c32, gain 1.741; auto-place raw #433c34 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4633,6 +4944,7 @@
    "side": "even",
    "builtYear": 1780,
    "bagWidthM": 4.51,
+   "datum": "street",
    "streetGroundNAP": 2.206,
    "groundNAP": 2.21,
    "frontTopM": 13.3,
@@ -4661,9 +4973,15 @@
    "rows": [],
    "bays": 2,
    "wall": {
-    "hex": "#5a5049",
+    "hex": "#504943",
+    "rawHex": "#59514b",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #59514b, gain 0.8; auto-place raw #5a5049 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -4693,7 +5011,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #59514b, gain 0.8; auto-place raw #5a5049 in scripts/block-face/faces/haarlemmerdijk-66-120/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -4718,6 +5036,7 @@
    "side": "odd",
    "builtYear": 1750,
    "bagWidthM": 8.25,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 1.49,
    "frontTopM": null,
@@ -4746,9 +5065,15 @@
    "rows": [],
    "bays": 3,
    "wall": {
-    "hex": null,
+    "hex": "#644a38",
+    "rawHex": "#6f533f",
+    "gain": 0.8,
     "word": "red brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 0-330 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f533f, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -4769,6 +5094,11 @@
     {
      "field": "storeys",
      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 0-330 (2024-12-11, 0.75x)",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f533f, gain 0.8)",
      "kind": "lane2-strip-read"
     },
     {
@@ -4793,6 +5123,7 @@
    "side": "odd",
    "builtYear": 1846,
    "bagWidthM": 3.79,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 1.44,
    "frontTopM": 11.3,
@@ -4830,9 +5161,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#6b5d4d",
+    "rawHex": "#776756",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 330-482 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #776756, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -4866,6 +5203,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #776756, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-67-91/pands/0363100012167787/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -4886,6 +5228,7 @@
    "side": "odd",
    "builtYear": 1914,
    "bagWidthM": 5.39,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 0.86,
    "frontTopM": 12.3,
@@ -4923,9 +5266,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": null,
+    "hex": "#8c8574",
+    "rawHex": "#9b9381",
+    "gain": 0.8,
     "word": "white render",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 482-697 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9b9381, gain 0.8)",
+    "finish": "plaster",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -4964,6 +5313,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9b9381, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-67-91/pands/0363100012167786/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -4985,6 +5339,7 @@
    "side": "odd",
    "builtYear": 1736,
    "bagWidthM": 28.4,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 0.95,
    "frontTopM": null,
@@ -5014,8 +5369,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -5045,6 +5406,7 @@
    "side": "odd",
    "builtYear": 1934,
    "bagWidthM": 8.18,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 2.42,
    "frontTopM": 14.8,
@@ -5073,9 +5435,15 @@
    "rows": [],
    "bays": 5,
    "wall": {
-    "hex": null,
+    "hex": "#9b9385",
+    "rawHex": "#aba393",
+    "gain": 0.8,
     "word": "red-brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 1833-2160 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #aba393, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5104,6 +5472,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #aba393, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-67-91/pands/0363100012167785/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -5126,6 +5499,7 @@
    "side": "odd",
    "builtYear": 1865,
    "bagWidthM": 4.6,
+   "datum": "street",
    "streetGroundNAP": 1.444,
    "groundNAP": 0.69,
    "frontTopM": 12,
@@ -5163,9 +5537,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#a6b0ac",
+    "rawHex": "#b8c2be",
+    "gain": 0.8,
     "word": "dark painted brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip px 2160-2344 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b8c2be, gain 0.8)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "strip-measured",
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -5199,6 +5579,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b8c2be, gain 0.8)",
+     "kind": "strip-measure"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-67-91/pands/0363100012167792/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -5219,6 +5604,7 @@
    "side": "odd",
    "builtYear": 1825,
    "bagWidthM": 3.07,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 0.64,
    "frontTopM": null,
@@ -5247,9 +5633,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": null,
+    "hex": "#646d66",
+    "rawHex": "#6f7971",
+    "gain": 0.8,
     "word": null,
-    "ref": null
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f7971, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -5257,6 +5649,11 @@
     "ref": null
    },
    "sources": [
+    {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f7971, gain 0.8)",
+     "kind": "strip-measure"
+    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-93-113/pands/0363100012165105/facts.json (3DBAG 2026-11-10)",
@@ -5280,6 +5677,7 @@
    "side": "odd",
    "builtYear": 1905,
    "bagWidthM": 5.93,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 0.67,
    "frontTopM": 13.8,
@@ -5308,9 +5706,15 @@
    "rows": [],
    "bays": 3,
    "wall": {
-    "hex": null,
+    "hex": "#686355",
+    "rawHex": "#746e5f",
+    "gain": 0.8,
     "word": "dark brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip px 269-506 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #746e5f, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5339,6 +5743,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #746e5f, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-93-113/pands/0363100012176699/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -5360,6 +5769,7 @@
    "side": "odd",
    "builtYear": 1997,
    "bagWidthM": 22.93,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 0.57,
    "frontTopM": null,
@@ -5389,8 +5799,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -5421,6 +5837,7 @@
    "side": "odd",
    "builtYear": 1665,
    "bagWidthM": 8.87,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 1.63,
    "frontTopM": null,
@@ -5450,8 +5867,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -5481,6 +5904,7 @@
    "side": "odd",
    "builtYear": 1940,
    "bagWidthM": 4.22,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 1.87,
    "frontTopM": 10.1,
@@ -5518,9 +5942,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": null,
+    "hex": "#483e2e",
+    "rawHex": "#504533",
+    "gain": 0.818,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip px 1778-1947 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #504533, gain 0.818)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5554,6 +5984,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #504533, gain 0.818)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-93-113/pands/0363100012176578/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -5574,6 +6009,7 @@
    "side": "odd",
    "builtYear": 1981,
    "bagWidthM": 4.1,
+   "datum": "street",
    "streetGroundNAP": 1.443,
    "groundNAP": 1.44,
    "frontTopM": 9.8,
@@ -5614,9 +6050,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#3d3325",
+    "rawHex": "#433829",
+    "gain": 0.827,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip px 1947-2111 (2024-12-11, 0.75x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #433829, gain 0.827)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5655,6 +6097,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #433829, gain 0.827)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-93-113/pands/0363100012176702/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -5673,6 +6120,7 @@
    "side": "odd",
    "builtYear": 1986,
    "bagWidthM": 4.55,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.08,
    "frontTopM": 10.3,
@@ -5710,9 +6158,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#443e3b",
+    "hex": "#574d4a",
+    "rawHex": "#473f3c",
+    "gain": 1.504,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #473f3c, gain 1.504; auto-place raw #443e3b in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5747,8 +6201,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #473f3c, gain 1.504; auto-place raw #443e3b in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -5769,6 +6223,7 @@
    "side": "odd",
    "builtYear": 1899,
    "bagWidthM": 4.67,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.01,
    "frontTopM": 6.6,
@@ -5802,9 +6257,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#39322f",
+    "hex": "#453934",
+    "rawHex": "#372d29",
+    "gain": 1.549,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #372d29, gain 1.549; auto-place raw #39322f in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5854,8 +6315,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #372d29, gain 1.549; auto-place raw #39322f in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -5876,6 +6337,7 @@
    "side": "odd",
    "builtYear": 1899,
    "bagWidthM": 3.77,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.01,
    "frontTopM": 6.5,
@@ -5909,9 +6371,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#383432",
+    "hex": "#443d39",
+    "rawHex": "#352f2c",
+    "gain": 1.631,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #352f2c, gain 1.631; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -5961,8 +6429,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #352f2c, gain 1.631; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -5983,6 +6451,7 @@
    "side": "odd",
    "builtYear": 1750,
    "bagWidthM": 5.5,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.01,
    "frontTopM": 10.35,
@@ -6023,9 +6492,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#4c4c4a",
+    "hex": "#424347",
+    "rawHex": "#37383b",
+    "gain": 1.433,
     "word": "dark grey painted brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #37383b, gain 1.433; auto-place raw #4c4c4a in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6075,8 +6550,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #37383b, gain 1.433; auto-place raw #4c4c4a in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6171,6 +6646,7 @@
    "side": "odd",
    "builtYear": 1750,
    "bagWidthM": 5.02,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.55,
    "frontTopM": 14.3,
@@ -6215,9 +6691,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#4f4f4d",
+    "hex": "#2d282b",
+    "rawHex": "#262224",
+    "gain": 1.348,
     "word": "dark brick with chequered bands",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #262224, gain 1.348; auto-place raw #4f4f4d in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6262,8 +6744,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #262224, gain 1.348; auto-place raw #4f4f4d in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6286,6 +6768,7 @@
    "side": "odd",
    "builtYear": 1942,
    "bagWidthM": 4.36,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.51,
    "frontTopM": 10,
@@ -6323,9 +6806,15 @@
    ],
    "bays": null,
    "wall": {
-    "hex": "#535449",
+    "hex": "#615a4d",
+    "rawHex": "#4e483d",
+    "gain": 1.57,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4e483d, gain 1.57; auto-place raw #535449 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6360,8 +6849,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4e483d, gain 1.57; auto-place raw #535449 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6384,6 +6873,7 @@
    "side": "odd",
    "builtYear": 1897,
    "bagWidthM": 3.36,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.04,
    "frontTopM": 10,
@@ -6421,9 +6911,15 @@
    ],
    "bays": 1,
    "wall": {
-    "hex": "#515047",
+    "hex": "#837b63",
+    "rawHex": "#69634f",
+    "gain": 1.6,
     "word": "beige band",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #69634f, gain 1.6; auto-place raw #515047 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6463,8 +6959,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #69634f, gain 1.6; auto-place raw #515047 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6489,6 +6985,7 @@
    "side": "odd",
    "builtYear": 1848,
    "bagWidthM": 5.36,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.57,
    "frontTopM": 9.9,
@@ -6529,9 +7026,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#3f3b3a",
+    "hex": "#51504b",
+    "rawHex": "#454440",
+    "gain": 1.385,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #454440, gain 1.385; auto-place raw #3f3b3a in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6581,8 +7084,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #454440, gain 1.385; auto-place raw #3f3b3a in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6662,6 +7165,7 @@
    "side": "odd",
    "builtYear": 1858,
    "bagWidthM": 4.42,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.04,
    "frontTopM": 9,
@@ -6699,9 +7203,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#3f3835",
+    "hex": "#4a403a",
+    "rawHex": "#3e3530",
+    "gain": 1.429,
     "word": "red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3e3530, gain 1.429; auto-place raw #3f3835 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6766,8 +7276,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3e3530, gain 1.429; auto-place raw #3f3835 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6885,6 +7395,7 @@
    "side": "odd",
    "builtYear": 1918,
    "bagWidthM": 6.18,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1,
    "frontTopM": 13.8,
@@ -6913,9 +7424,15 @@
    "rows": [],
    "bays": 3,
    "wall": {
-    "hex": "#50504d",
+    "hex": "#575654",
+    "rawHex": "#4c4b49",
+    "gain": 1.322,
     "word": "dark brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4b49, gain 1.322; auto-place raw #50504d in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -6950,8 +7467,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4b49, gain 1.322; auto-place raw #50504d in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -6974,6 +7491,7 @@
    "side": "odd",
    "builtYear": 1955,
    "bagWidthM": 5.74,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1,
    "frontTopM": 13.3,
@@ -7015,9 +7533,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#464645",
+    "hex": "#414047",
+    "rawHex": "#343339",
+    "gain": 1.529,
     "word": "dark painted brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #343339, gain 1.529; auto-place raw #464645 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7072,8 +7596,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #343339, gain 1.529; auto-place raw #464645 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7145,6 +7669,7 @@
    "side": "odd",
    "builtYear": 1997,
    "bagWidthM": 5.67,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 1.1,
    "frontTopM": 13.2,
@@ -7173,9 +7698,15 @@
    "rows": [],
    "bays": 3,
    "wall": {
-    "hex": "#444445",
+    "hex": "#494848",
+    "rawHex": "#403f3f",
+    "gain": 1.307,
     "word": "grey-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #403f3f, gain 1.307; auto-place raw #444445 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7200,8 +7731,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #403f3f, gain 1.307; auto-place raw #444445 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7222,6 +7753,7 @@
    "side": "odd",
    "builtYear": 1846,
    "bagWidthM": 5.78,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 0.95,
    "frontTopM": 10.7,
@@ -7262,9 +7794,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#3c3635",
+    "hex": "#373433",
+    "rawHex": "#2c2928",
+    "gain": 1.532,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #2c2928, gain 1.532; auto-place raw #3c3635 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7314,8 +7852,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #2c2928, gain 1.532; auto-place raw #3c3635 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7379,6 +7917,7 @@
    "side": "odd",
    "builtYear": 1930,
    "bagWidthM": 5.8,
+   "datum": "street",
    "streetGroundNAP": 1.042,
    "groundNAP": 0.84,
    "frontTopM": 8.7,
@@ -7412,9 +7951,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#463a36",
+    "hex": "#50413b",
+    "rawHex": "#443731",
+    "gain": 1.404,
     "word": "red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443731, gain 1.404; auto-place raw #463a36 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7479,8 +8024,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json strip.wallRaw (raw strip median, 2022-12-15)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443731, gain 1.404; auto-place raw #463a36 in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7567,6 +8112,7 @@
    "side": "even",
    "builtYear": 1893,
    "bagWidthM": 3.89,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.85,
    "frontTopM": 15.2,
@@ -7612,9 +8158,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#685f4e",
+    "hex": "#53483a",
+    "rawHex": "#5c5041",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5041, gain 0.8; auto-place raw #685f4e in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7654,8 +8206,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5041, gain 0.8; auto-place raw #685f4e in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7678,6 +8230,7 @@
    "side": "even",
    "builtYear": 1886,
    "bagWidthM": 4.15,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.28,
    "frontTopM": 14.4,
@@ -7722,9 +8275,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#664e3f",
+    "hex": "#5d4737",
+    "rawHex": "#674f3e",
+    "gain": 0.8,
     "word": "red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #674f3e, gain 0.8; auto-place raw #664e3f in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7769,8 +8328,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #674f3e, gain 0.8; auto-place raw #664e3f in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -7842,6 +8401,7 @@
    "side": "even",
    "builtYear": 1910,
    "bagWidthM": 4.31,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.53,
    "frontTopM": 12.1,
@@ -7883,9 +8443,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#5a5144",
+    "hex": "#4b4236",
+    "rawHex": "#544a3d",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #544a3d, gain 0.8; auto-place raw #5a5144 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -7950,8 +8516,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #544a3d, gain 0.8; auto-place raw #5a5144 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -8034,6 +8600,7 @@
    "side": "even",
    "builtYear": 1936,
    "bagWidthM": 4.16,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.53,
    "frontTopM": null,
@@ -8062,9 +8629,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#4d463c",
+    "hex": "#66685d",
+    "rawHex": "#717367",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #717367, gain 0.8; auto-place raw #4d463c in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8084,7 +8657,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #717367, gain 0.8; auto-place raw #4d463c in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8110,6 +8683,7 @@
    "side": "even",
    "builtYear": 1808,
    "bagWidthM": 4.26,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.54,
    "frontTopM": 13,
@@ -8141,9 +8715,15 @@
    "rows": [],
    "bays": 2,
    "wall": {
-    "hex": "#6d6153",
+    "hex": "#7d8179",
+    "rawHex": "#8b8f86",
+    "gain": 0.8,
     "word": "red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8b8f86, gain 0.8; auto-place raw #6d6153 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -8173,8 +8753,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #8b8f86, gain 0.8; auto-place raw #6d6153 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -8199,6 +8779,7 @@
    "side": "even",
    "builtYear": 1942,
    "bagWidthM": 5.59,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.27,
    "frontTopM": null,
@@ -8227,9 +8808,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#796251",
+    "hex": "#725e4f",
+    "rawHex": "#7e6858",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7e6858, gain 0.8; auto-place raw #796251 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8244,7 +8831,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7e6858, gain 0.8; auto-place raw #796251 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8269,6 +8856,7 @@
    "side": "even",
    "builtYear": 1889,
    "bagWidthM": 3.88,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.91,
    "frontTopM": null,
@@ -8297,9 +8885,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5d5244",
+    "hex": "#585143",
+    "rawHex": "#625a4b",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #625a4b, gain 0.8; auto-place raw #5d5244 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8309,7 +8903,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #625a4b, gain 0.8; auto-place raw #5d5244 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8334,6 +8928,7 @@
    "side": "even",
    "builtYear": 1861,
    "bagWidthM": 3.96,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.91,
    "frontTopM": null,
@@ -8362,9 +8957,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#726253",
+    "hex": "#6d6659",
+    "rawHex": "#797163",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797163, gain 0.8; auto-place raw #726253 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8379,7 +8980,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797163, gain 0.8; auto-place raw #726253 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8402,6 +9003,7 @@
    "side": "even",
    "builtYear": 1983,
    "bagWidthM": 28.52,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 1.99,
    "frontTopM": null,
@@ -8430,9 +9032,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#635d4d",
+    "hex": "#959384",
+    "rawHex": "#a5a392",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a5a392, gain 0.8; auto-place raw #635d4d in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8442,7 +9050,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a5a392, gain 0.8; auto-place raw #635d4d in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8467,6 +9075,7 @@
    "side": "even",
    "builtYear": 2010,
    "bagWidthM": 3.92,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.31,
    "frontTopM": null,
@@ -8498,9 +9107,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#584e40",
+    "hex": "#727574",
+    "rawHex": "#7e8281",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7e8281, gain 0.8; auto-place raw #584e40 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8515,7 +9130,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7e8281, gain 0.8; auto-place raw #584e40 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8538,6 +9153,7 @@
    "side": "even",
    "builtYear": 1918,
    "bagWidthM": 4.4,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.32,
    "frontTopM": null,
@@ -8566,9 +9182,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#4e4336",
+    "hex": "#494035",
+    "rawHex": "#52483b",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #52483b, gain 0.8; auto-place raw #4e4336 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8588,7 +9210,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #52483b, gain 0.8; auto-place raw #4e4336 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8611,6 +9233,7 @@
    "side": "even",
    "builtYear": 1881,
    "bagWidthM": 8.14,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.32,
    "frontTopM": null,
@@ -8639,9 +9262,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#675e47",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -8649,11 +9278,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/pands/0363100012171354/facts.json (3DBAG 2026-11-10)",
@@ -8676,6 +9300,7 @@
    "side": "even",
    "builtYear": 1997,
    "bagWidthM": 7.61,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.19,
    "frontTopM": null,
@@ -8704,9 +9329,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#846658",
+    "hex": "#876557",
+    "rawHex": "#967061",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #967061, gain 0.8; auto-place raw #846658 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8716,7 +9347,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #967061, gain 0.8; auto-place raw #846658 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8741,6 +9372,7 @@
    "side": "even",
    "builtYear": 1839,
    "bagWidthM": 4.22,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.16,
    "frontTopM": null,
@@ -8769,9 +9401,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#7d6e55",
+    "hex": "#888176",
+    "rawHex": "#978f83",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #978f83, gain 0.8; auto-place raw #7d6e55 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8781,7 +9419,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #978f83, gain 0.8; auto-place raw #7d6e55 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8806,6 +9444,7 @@
    "side": "even",
    "builtYear": 1910,
    "bagWidthM": 4.34,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.18,
    "frontTopM": 11.2,
@@ -8843,9 +9482,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": "#79675a",
+    "hex": "#746256",
+    "rawHex": "#816d60",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #816d60, gain 0.8; auto-place raw #79675a in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -8895,7 +9540,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #816d60, gain 0.8; auto-place raw #79675a in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -8920,6 +9565,7 @@
    "side": "even",
    "builtYear": 1799,
    "bagWidthM": 4.15,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.31,
    "frontTopM": 12.3,
@@ -8964,9 +9610,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#927e6e",
+    "hex": "#8e7262",
+    "rawHex": "#9d7f6d",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9d7f6d, gain 0.8; auto-place raw #927e6e in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9011,7 +9663,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9d7f6d, gain 0.8; auto-place raw #927e6e in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9035,6 +9687,7 @@
    "side": "even",
    "builtYear": 1963,
    "bagWidthM": 4.58,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.32,
    "frontTopM": null,
@@ -9063,9 +9716,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#906d53",
+    "hex": "#af927c",
+    "rawHex": "#c1a289",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #c1a289, gain 0.8; auto-place raw #906d53 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9075,7 +9734,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #c1a289, gain 0.8; auto-place raw #906d53 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9100,6 +9759,7 @@
    "side": "even",
    "builtYear": 1750,
    "bagWidthM": 4.26,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.31,
    "frontTopM": null,
@@ -9128,9 +9788,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#c0bab0",
+    "hex": "#acaaa4",
+    "rawHex": "#bebcb5",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #bebcb5, gain 0.8; auto-place raw #c0bab0 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9140,7 +9806,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #bebcb5, gain 0.8; auto-place raw #c0bab0 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9165,6 +9831,7 @@
    "side": "even",
    "builtYear": 1831,
    "bagWidthM": 4.25,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.3,
    "frontTopM": null,
@@ -9193,9 +9860,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#8c7362",
+    "hex": "#9ea69c",
+    "rawHex": "#afb7ad",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #afb7ad, gain 0.8; auto-place raw #8c7362 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9205,7 +9878,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #afb7ad, gain 0.8; auto-place raw #8c7362 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9230,6 +9903,7 @@
    "side": "even",
    "builtYear": 1893,
    "bagWidthM": 8.68,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.05,
    "frontTopM": null,
@@ -9258,9 +9932,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#826f63",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -9268,11 +9948,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/pands/0363100012176633/facts.json (3DBAG 2026-11-10)",
@@ -9295,6 +9970,7 @@
    "side": "even",
    "builtYear": 1829,
    "bagWidthM": 3.45,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.28,
    "frontTopM": 9.8,
@@ -9323,9 +9999,15 @@
    "rows": [],
    "bays": 2,
    "wall": {
-    "hex": "#5f625f",
+    "hex": "#a5a8a5",
+    "rawHex": "#b6bab6",
+    "gain": 0.8,
     "word": "dark painted brick",
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b6bab6, gain 0.8; auto-place raw #5f625f in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "strip-measured",
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -9350,7 +10032,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b6bab6, gain 0.8; auto-place raw #5f625f in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9388,6 +10070,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 3.88,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.05,
    "frontTopM": null,
@@ -9416,9 +10099,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#978c76",
+    "hex": "#989288",
+    "rawHex": "#a8a297",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a8a297, gain 0.8; auto-place raw #978c76 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9433,7 +10122,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a8a297, gain 0.8; auto-place raw #978c76 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9456,6 +10145,7 @@
    "side": "even",
    "builtYear": 1905,
    "bagWidthM": 3.73,
+   "datum": "street",
    "streetGroundNAP": 2.18,
    "groundNAP": 2.05,
    "frontTopM": null,
@@ -9484,9 +10174,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#716456",
+    "hex": "#999f9b",
+    "rawHex": "#a9b0ac",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a9b0ac, gain 0.8; auto-place raw #716456 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
+    "finish": "plaster",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -9501,7 +10197,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median, 2024-12-11)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a9b0ac, gain 0.8; auto-place raw #716456 in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -9524,6 +10220,7 @@
    "side": "odd",
    "builtYear": 1944,
    "bagWidthM": 5.65,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 0.76,
    "frontTopM": 12.1,
@@ -9565,9 +10262,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": null,
+    "hex": "#4d4537",
+    "rawHex": "#564d3e",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 0-226 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #564d3e, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -9621,6 +10324,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #564d3e, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-149-175/pands/0363100012171352/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -9641,6 +10349,7 @@
    "side": "odd",
    "builtYear": 1886,
    "bagWidthM": 11.09,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 1.11,
    "frontTopM": 10.9,
@@ -9672,9 +10381,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": null,
+    "hex": "#494d49",
+    "rawHex": "#515652",
+    "gain": 0.8,
     "word": "dark grey brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 226-669 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #515652, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -9703,6 +10418,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #515652, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-149-175/pands/0363100012173015/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -9723,6 +10443,7 @@
    "side": "odd",
    "builtYear": 1005,
    "bagWidthM": 4.3,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 2.04,
    "frontTopM": 10.85,
@@ -9760,9 +10481,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#4c4134",
+    "rawHex": "#55493a",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 669-841 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #55493a, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -9796,6 +10523,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #55493a, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-149-175/pands/0363100012172950/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -9816,6 +10548,7 @@
    "side": "odd",
    "builtYear": 1005,
    "bagWidthM": 3.99,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 2.05,
    "frontTopM": 9.4,
@@ -9853,9 +10586,15 @@
    ],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#585142",
+    "rawHex": "#625a4a",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 841-1001 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #625a4a, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -9899,6 +10638,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #625a4a, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-149-175/pands/0363100012172951/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -9917,6 +10661,7 @@
    "side": "odd",
    "builtYear": 1956,
    "bagWidthM": 9.31,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 0.97,
    "frontTopM": null,
@@ -9946,8 +10691,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -9978,6 +10729,7 @@
    "side": "odd",
    "builtYear": 1005,
    "bagWidthM": 5.54,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 1.76,
    "frontTopM": 4.25,
@@ -10007,8 +10759,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": null,
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -10052,6 +10810,7 @@
    "side": "odd",
    "builtYear": 1825,
    "bagWidthM": 4.04,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 1.75,
    "frontTopM": null,
@@ -10080,9 +10839,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": null,
+    "hex": "#424235",
+    "rawHex": "#4a4a3b",
+    "gain": 0.8,
     "word": "yellow brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 1594-1756 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a4a3b, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "strip-measured",
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -10099,6 +10864,11 @@
      "field": "crown.topM",
      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 1594-1756 (2024-12-11, 0.7x)",
      "kind": "lane2-strip-read"
+    },
+    {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a4a3b, gain 0.8)",
+     "kind": "strip-measure"
     },
     {
      "field": "threeDBag",
@@ -10120,6 +10890,7 @@
    "side": "odd",
    "builtYear": 1934,
    "bagWidthM": 3.81,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 1.74,
    "frontTopM": 15,
@@ -10148,9 +10919,15 @@
    "rows": [],
    "bays": 2,
    "wall": {
-    "hex": null,
+    "hex": "#5b473a",
+    "rawHex": "#654f41",
+    "gain": 0.8,
     "word": "red-brown brick",
-    "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip px 1756-1909 (2024-12-11, 0.7x)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #654f41, gain 0.8)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -10179,6 +10956,11 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "wall.hex",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #654f41, gain 0.8)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmerdijk-149-175/pands/0363100012172949/facts.json (3DBAG 2026-11-10)",
      "kind": "3dbag"
@@ -10197,6 +10979,7 @@
    "side": "odd",
    "builtYear": 2003,
    "bagWidthM": 9.8,
+   "datum": "street",
    "streetGroundNAP": 1.749,
    "groundNAP": 1.87,
    "frontTopM": null,
@@ -10226,8 +11009,14 @@
    "bays": null,
    "wall": {
     "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": null
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -10257,6 +11046,7 @@
    "side": "even",
    "builtYear": 1779,
    "bagWidthM": 5.57,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.24,
    "frontTopM": null,
@@ -10285,9 +11075,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#6b5e4a",
+    "hex": "#6d6150",
+    "rawHex": "#796c59",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #796c59, gain 0.8; auto-place raw #6b5e4a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10307,7 +11103,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #796c59, gain 0.8; auto-place raw #6b5e4a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10330,6 +11126,7 @@
    "side": "even",
    "builtYear": 1933,
    "bagWidthM": 5.82,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.33,
    "frontTopM": null,
@@ -10358,9 +11155,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#454537",
+    "hex": "#6c7265",
+    "rawHex": "#787f70",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #787f70, gain 0.8; auto-place raw #454537 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10375,7 +11178,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #787f70, gain 0.8; auto-place raw #454537 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10398,6 +11201,7 @@
    "side": "even",
    "builtYear": 1774,
    "bagWidthM": 5.91,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.27,
    "frontTopM": null,
@@ -10426,9 +11230,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#7f6b52",
+    "hex": "#756a59",
+    "rawHex": "#827663",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #827663, gain 0.8; auto-place raw #7f6b52 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10438,7 +11248,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #827663, gain 0.8; auto-place raw #7f6b52 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10463,6 +11273,7 @@
    "side": "even",
    "builtYear": 1862,
    "bagWidthM": 5.94,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.46,
    "frontTopM": null,
@@ -10491,9 +11302,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#434a42",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -10501,11 +11318,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmer-46-96/pands/0363100012175144/facts.json (3DBAG 2026-11-10)",
@@ -10528,6 +11340,7 @@
    "side": "even",
    "builtYear": 1897,
    "bagWidthM": 5.55,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.25,
    "frontTopM": null,
@@ -10556,9 +11369,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#747660",
+    "hex": "#727666",
+    "rawHex": "#7f8371",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7f8371, gain 0.8; auto-place raw #747660 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10568,7 +11387,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7f8371, gain 0.8; auto-place raw #747660 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10593,6 +11412,7 @@
    "side": "even",
    "builtYear": 1991,
    "bagWidthM": 11.48,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.45,
    "frontTopM": null,
@@ -10621,9 +11441,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#8a7c61",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -10631,11 +11457,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmer-46-96/pands/0363100012175142/facts.json (3DBAG 2026-11-10)",
@@ -10658,6 +11479,7 @@
    "side": "even",
    "builtYear": 1847,
    "bagWidthM": 4.13,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.45,
    "frontTopM": null,
@@ -10686,9 +11508,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#675f4a",
+    "hex": "#767364",
+    "rawHex": "#83806f",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #83806f, gain 0.8; auto-place raw #675f4a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10698,7 +11526,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #83806f, gain 0.8; auto-place raw #675f4a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10723,6 +11551,7 @@
    "side": "even",
    "builtYear": 1828,
    "bagWidthM": 7.45,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.25,
    "frontTopM": null,
@@ -10751,9 +11580,15 @@
    "rows": [],
    "bays": 5,
    "wall": {
-    "hex": "#474f47",
+    "hex": "#707565",
+    "rawHex": "#7c8270",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7c8270, gain 0.8; auto-place raw #474f47 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10768,7 +11603,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7c8270, gain 0.8; auto-place raw #474f47 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10793,6 +11628,7 @@
    "side": "even",
    "builtYear": 1750,
    "bagWidthM": 4.21,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.25,
    "frontTopM": null,
@@ -10821,9 +11657,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5a4d3a",
+    "hex": "#5f5746",
+    "rawHex": "#6a614e",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6a614e, gain 0.8; auto-place raw #5a4d3a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10838,7 +11680,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6a614e, gain 0.8; auto-place raw #5a4d3a in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10861,6 +11703,7 @@
    "side": "even",
    "builtYear": 1760,
    "bagWidthM": 6.92,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.34,
    "frontTopM": null,
@@ -10889,9 +11732,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#6d6956",
+    "hex": "#6f6b59",
+    "rawHex": "#7b7763",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7b7763, gain 0.8; auto-place raw #6d6956 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10911,7 +11760,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7b7763, gain 0.8; auto-place raw #6d6956 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -10934,6 +11783,7 @@
    "side": "even",
    "builtYear": 1745,
    "bagWidthM": 5.71,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.51,
    "frontTopM": null,
@@ -10962,9 +11812,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5c5d4f",
+    "hex": "#899182",
+    "rawHex": "#98a190",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #98a190, gain 0.8; auto-place raw #5c5d4f in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -10979,7 +11835,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #98a190, gain 0.8; auto-place raw #5c5d4f in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -11004,6 +11860,7 @@
    "side": "even",
    "builtYear": 1788,
    "bagWidthM": 6.07,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.43,
    "frontTopM": null,
@@ -11032,9 +11889,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#927e5b",
+    "hex": "#8d8364",
+    "rawHex": "#9c916f",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9c916f, gain 0.8; auto-place raw #927e5b in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -11044,7 +11907,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9c916f, gain 0.8; auto-place raw #927e5b in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
@@ -11069,6 +11932,7 @@
    "side": "even",
    "builtYear": 1788,
    "bagWidthM": 5.69,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.41,
    "frontTopM": 12.3,
@@ -11110,9 +11974,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#817055",
+    "hex": "#79684f",
+    "rawHex": "#867358",
+    "gain": 0.8,
     "word": "red-brown brick",
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #867358, gain 0.8; auto-place raw #817055 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -11157,8 +12027,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #867358, gain 0.8; auto-place raw #817055 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -11179,6 +12049,7 @@
    "side": "even",
    "builtYear": 1795,
    "bagWidthM": 5.59,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.41,
    "frontTopM": null,
@@ -11207,9 +12078,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#535950",
+    "hex": null,
+    "rawHex": null,
+    "gain": null,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "reads: not measured (scaffolded, seam or several fronts)",
+    "finish": null,
+    "finishFrom": null,
+    "source": null,
+    "confidence": "low"
    },
    "trim": {
     "hex": null,
@@ -11217,11 +12094,6 @@
     "ref": null
    },
    "sources": [
-    {
-     "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
-    },
     {
      "field": "threeDBag",
      "ref": "scripts/block-face/faces/haarlemmer-46-96/pands/0363100012175208/facts.json (3DBAG 2026-11-10)",
@@ -11244,6 +12116,7 @@
    "side": "even",
    "builtYear": 1789,
    "bagWidthM": 4.79,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.45,
    "frontTopM": 12.85,
@@ -11285,9 +12158,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#666554",
+    "hex": "#575647",
+    "rawHex": "#61604f",
+    "gain": 0.8,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #61604f, gain 0.8; auto-place raw #666554 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -11357,8 +12236,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #61604f, gain 0.8; auto-place raw #666554 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -11420,6 +12299,7 @@
    "side": "even",
    "builtYear": 1765,
    "bagWidthM": 4.6,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 2.36,
    "frontTopM": 14.5,
@@ -11461,9 +12341,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#696755",
+    "hex": "#6e6853",
+    "rawHex": "#7a735d",
+    "gain": 0.8,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7a735d, gain 0.8; auto-place raw #696755 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -11503,8 +12389,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7a735d, gain 0.8; auto-place raw #696755 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -11566,6 +12452,7 @@
    "side": "even",
    "builtYear": 1763,
    "bagWidthM": 4.6,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 1.97,
    "frontTopM": 9.95,
@@ -11603,9 +12490,15 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#524c3b",
+    "hex": "#494333",
+    "rawHex": "#524b39",
+    "gain": 0.8,
     "word": "dark brown brick",
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #524b39, gain 0.8; auto-place raw #524c3b in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -11640,8 +12533,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #524b39, gain 0.8; auto-place raw #524c3b in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -11662,6 +12555,7 @@
    "side": "even",
    "builtYear": 1984,
    "bagWidthM": 4.6,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 1.96,
    "frontTopM": 8.6,
@@ -11690,9 +12584,15 @@
    "rows": [],
    "bays": 2,
    "wall": {
-    "hex": "#504938",
+    "hex": "#575343",
+    "rawHex": "#615c4b",
+    "gain": 0.8,
     "word": "brown brick",
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #615c4b, gain 0.8; auto-place raw #504938 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -11732,8 +12632,8 @@
     },
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #615c4b, gain 0.8; auto-place raw #504938 in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -11754,6 +12654,7 @@
    "side": "even",
    "builtYear": 1735,
    "bagWidthM": 4.72,
+   "datum": "street",
    "streetGroundNAP": 2.337,
    "groundNAP": 1.75,
    "frontTopM": null,
@@ -11782,9 +12683,15 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#5b523f",
+    "hex": "#57503e",
+    "rawHex": "#615945",
+    "gain": 0.8,
     "word": null,
-    "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)"
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #615945, gain 0.8; auto-place raw #5b523f in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
+    "finish": "brick",
+    "finishFrom": "lightness",
+    "source": "strip-measured",
+    "confidence": "medium"
    },
    "trim": {
     "hex": null,
@@ -11794,7 +12701,7 @@
    "sources": [
     {
      "field": "wall.hex",
-     "ref": "scripts/block-face/faces/haarlemmer-46-96/auto-place.json strip.wallRaw (raw strip median, 2024-11-21)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #615945, gain 0.8; auto-place raw #5b523f in scripts/block-face/faces/haarlemmer-46-96/auto-place.json)",
      "kind": "strip-measure"
     },
     {
