@@ -6,6 +6,7 @@
 // The facts library is passed in: the browser reads it from the facades bundle's global, the compiler imports it.
 import { composeTileEnrichers, railInfraEnricher } from './railInfraBuildings.js';
 import { industrialEnricher } from './industrial/industrialTable.js';
+import { ridgeAxesEnabled, ridgeAxesEnricher } from './roofs/ridgeFacts.js';
 import { houseSpecEnricher, houseSpecsEnabled } from './houseSpec/decorate.js';
 
 type Tile = { z: number; x: number; y: number };
@@ -28,6 +29,8 @@ export interface GameTileEnricherOptions {
   houseSpecs?: boolean;
   /** Extract directory of the spec tiles (default `house-specs`; the lane's verification reads `staging/house-specs`). */
   houseSpecsDir?: string;
+  /** Extract directory of the ridge-axes tiles (default `ridge-axes`; a staged compile reads `staging/ridge-axes`). */
+  ridgeAxesDir?: string;
 }
 
 /** Years, then roof facts, then the rail infrastructure table, then the industrial table (industrial/industrialTable.ts),
@@ -38,7 +41,9 @@ export function gameTileEnricher(lib: TileFactsLib, extractPath: string, options
   const roofs = lib.composeEnrichers && lib.roofFactsEnricher && (lib.roofFactsEnabled ? lib.roofFactsEnabled(options.search) : true);
   const facts = roofs ? lib.composeEnrichers!(years, lib.roofFactsEnricher!(extractPath, fetchImpl)) as Enricher : years;
   const json = fetchImpl ? (url: string) => fetchImpl(url).then(r => (r.ok ? r.json() : null)) : undefined;
-  const tables = composeTileEnrichers(composeTileEnrichers(facts as any, railInfraEnricher(extractPath, json)), industrialEnricher(extractPath, json) as any) as Enricher;
+  const tables0 = composeTileEnrichers(composeTileEnrichers(facts as any, railInfraEnricher(extractPath, json)), industrialEnricher(extractPath, json) as any) as Enricher;
+  // 3DBAG's measured ridge direction (roofs/ridgeFacts.ts; `?ridgeAxes=0` off): the roof planner draws the saddle along it.
+  const tables = (options.search === undefined ? ridgeAxesEnabled() : ridgeAxesEnabled(options.search)) ? composeTileEnrichers(tables0 as any, ridgeAxesEnricher(extractPath, fetchImpl, options.ridgeAxesDir) as any) as Enricher : tables0;
   // HouseSpecs last: they stamp `p.houseSpec` on the pands that survive the rail table (house line H1).
   const page = options.search ?? (typeof location !== 'undefined' ? location.search : '');
   const specs = options.houseSpecs ?? houseSpecsEnabled(page);

@@ -50,14 +50,14 @@ import { compileWithinBudget, precompileBudget, precompileStepDue } from '../ren
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
-import { footprintBase } from './placement.js';
+import { footprintBase, frontBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
-import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
+import { riderPose as surfaceRiderPose, type HeightFn, type Vec2 } from './surface.js';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, isRoadLookId, roadLookTones, type GroundLook, type RoadLookId } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { paintNoise } from './groundNoise.js';
@@ -423,6 +423,13 @@ function releaseArray(this: { array: unknown }): void { this.array = null; }
 
 /** A cell's level as one value: the LOD and the detail it was (or should be) built at. */
 const levelOf = (lod: 0 | 1, detail: CellDetail): string => `${lod}:${detail}`;
+
+/** Lane F4: building bases on the street wall with draped wall feet (default on); `?groundFronts=0` is the lowest-relief before. */
+export function groundFrontsOn(): boolean {
+  const g = globalThis as { __canalRecallGroundFronts?: unknown; location?: { search?: string } };
+  const asked = g.__canalRecallGroundFronts ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundFronts') : null);
+  return !(asked === false || asked === 0 || asked === '0' || asked === 'false');
+}
 
 export class OwnGround {
   readonly root: any;
@@ -1478,8 +1485,10 @@ export class OwnGround {
   }
 
   /**
-   * A footprint's base (the prototype's rule: the lowest relief along it, so
-   * nothing floats), or undefined while the relief there is not resident.
+   * A footprint's base, or undefined while the relief there is not resident. Lane F4 (feedback 2026-11-13, the
+   * Kinkerbrug approach): the street wall's level (placement.ts frontBase), the wall feet draped to the relief by the
+   * lifts (`footHeight`); `?groundFronts=0` keeps the prototype's rule, the lowest relief along it (nothing floats, but
+   * a street over its yards buried the ground floor).
    */
   footprintBase(ring: readonly LngLat[]): number | null | undefined {
     if (!this.ready || ring.length < 3) return undefined;
@@ -1487,8 +1496,18 @@ export class OwnGround {
     // Outside the relief extract: street level for good (null), not "later".
     if (!this.store.reliefCovered(local[0][0], local[0][1])) return null;
     if (!local.every(p => this.store.hasRelief(p[0], p[1]))) return undefined;
-    return footprintBase(local, this.store.surface.ground).base;
+    return groundFrontsOn() ? frontBase(local, this.store.surface.ground).base : footprintBase(local, this.store.surface.ground).base;
   }
+
+  /**
+   * The relief a building's wall foot drapes to (placement.ts drapeRange), in the own ground's local metres (the
+   * building chunks' frame); null with `?groundFronts=0` (no drape). Unresident relief reads NaN (the foot stays at its base).
+   */
+  get footHeight(): HeightFn | null {
+    if (!groundFrontsOn()) return null;
+    return this.footHeightFn ??= (x: number, y: number) => (this.store.hasRelief(x, y) ? this.store.surface.ground(x, y) : NaN);
+  }
+  private footHeightFn: HeightFn | null = null;
 
   /** A point model's base: the lowest relief in a square of `halfM` around it (landmarks: 3 m). */
   pointBase(lngLat: LngLat, halfM = 0): number | undefined {

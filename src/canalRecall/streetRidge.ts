@@ -22,6 +22,7 @@
 
 import type { GableShape, Rect, RoofPlan } from './roofMesh.js';
 import { gableEndWalls, type StreetFacing } from './streetGableEnds.js';
+import { axisGapDeg } from './roofs/ridgeAxis.js';
 
 /** A front up to this wide (about two house widths) turns as one saddle; wider fronts split. */
 export const TURN_MAX_FRONT_M = 14;
@@ -62,6 +63,25 @@ export function turnRidgeToStreet(rect: Rect, plan: RoofPlan, facing: StreetFaci
       seed: i === 0 ? plan.seed : `${plan.seed}:bay${i}`,
       shutters: gable === 'spout' && i === 0 ? plan.shutters : undefined, shutterHex: gable === 'spout' && i === 0 ? plan.shutterHex : undefined,
     } });
+  }
+  return out;
+}
+
+/**
+ * The saddles of a piece whose ridge must run along the axis 3DBAG measured (`ridgeDeg`, degrees ccw from east, mesh frame)
+ * when the fitted box runs it more than 45 degrees away: the box turned, a front wider than TURN_MAX_FRONT_M split into
+ * saddles of about BAY_TARGET_M, each keeping the plan's kind and rise (the walls were lowered to it). Null when the ridge
+ * already runs along the axis. Unlike `turnRidgeToStreet` no street is consulted: the roof was measured, not guessed.
+ */
+export function turnRidgeToAxis(rect: Rect, plan: RoofPlan, ridgeDeg: number): Array<{ rect: Rect; plan: RoofPlan }> | null {
+  if (axisGapDeg(((Math.atan2(rect.uy, rect.ux) * 180 / Math.PI) % 180 + 180) % 180, ridgeDeg) <= 45) return null;
+  const n = bayCount(rect.len), bay = rect.len / n, gables = plan.streetRidge?.gables ?? [];
+  const out: Array<{ rect: Rect; plan: RoofPlan }> = [];
+  for (let i = 0; i < n; i++) {
+    const offset = -rect.len / 2 + (i + 0.5) * bay;
+    const gable: GableShape = i === 0 || !gables.length ? plan.gable : gables[(i - 1) % gables.length];
+    out.push({ rect: { ...turnRect(rect), cx: rect.cx + rect.ux * offset, cy: rect.cy + rect.uy * offset, wid: bay },
+      plan: { ...plan, gable, dormers: n > 1 ? false : plan.dormers, seed: i === 0 ? plan.seed : `${plan.seed}:bay${i}`, shutters: i === 0 ? plan.shutters : undefined, shutterHex: i === 0 ? plan.shutterHex : undefined } });
   }
   return out;
 }
