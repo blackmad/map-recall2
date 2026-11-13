@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+**Landmark question only beside the building (2026-11-13).**
+- **Why.** The user was asked "Which building is this?" on Vijzelstraat with FOAM, Museum Van Loon, the Thorbecke statue and the Amstelkerk as choices: none of them could be told apart from there. The question opened within 150 m and a ±55° cone of the landmark's road-snapped point.
+- **Now** (`besideLandmark` in `landmarkQuestion.ts`): within 35 m of the street point (`x`/`y`) and 80 m of the building's own point (`ownX`/`ownY`, wider for big plots; it rules out a snap onto a street the building does not face), the building ahead or alongside (±110°), not behind. The 300 m approach band still withholds labels beforehand; the held candidate is kept while alongside, and a building that is already alongside after a turn can become the candidate. Left/right is measured to the building, not its street point.
+- Unit cases in `landmarkQuestion.test.ts` (110 m ahead no; round-the-corner own point no; alongside yes; deep plot yes; passed no). E2E poses moved from 110 m to 20 m.
+
 **Belt batch audited, 24 models held, house rules rewritten (2026-11-13, round 128).**
 - **Why.** The user rejected the 175-house belt batch from its What's New sheet (offsets, gaps, a lost dormer, a bad gable). It had been accepted on counts and front strips; nobody read plan, position, gaps or crowns in the street.
 - **Install audit** (`buildingRecipe/installAudit.ts`, `install-audit.ts`): hard gates on the shipped mesh against BAG and neighbours. 24 of 175 fail and are held through the new `ordinary-buildings-data/held.json` (`ordinaryHolds.ts`; reversible, survives re-install, covers follow). The six sheet houses pass every gate on paper.

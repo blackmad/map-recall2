@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "\"Which building is this?\" waits until you are beside it",
+      "text": "The building question used to open as far as 150 m away, sometimes about a building round the corner you could not see. Now it opens only when you are right beside the building (about 35 m from its frontage), including when you turn a corner and find it alongside you. \"On the left\" or \"on the right\" now points at the building itself."
+    },
+    {
+      "date": "2026-11-13",
       "title": "Nieuw Engeland, the domed corner of Koningsplein and Singel",
       "text": "Nieuw Engeland is now individually modelled: its round corner, arched windows with green ironwork, slate mansard with dormers, and the tower with its open lantern, plus the neck-gabled Singel 466 next door. The round corner is built from five flat facets for now, and the dome is a little fuller than the real one.",
       "where": [

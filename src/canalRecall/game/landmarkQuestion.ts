@@ -11,8 +11,19 @@
 import type { WorldPoint } from './worldTypes';
 import { freeRideLandmarkQuizEnabled } from '../featureFlags';
 
-/** Metres: how close a landmark must be to be asked about. */
-export const LANDMARK_QUESTION_RADIUS_M = 150;
+/** Metres: how close the rider must be to the landmark's street point (its
+ *  snap onto the network, `x`/`y`) to be asked about it. "Which building is
+ *  this?" only makes sense right beside the building: at 150 m the user was
+ *  asked about FOAM from Vijzelstraat with the building round the corner
+ *  (2026-11-13). */
+export const LANDMARK_QUESTION_RADIUS_M = 35;
+/** Metres: and how close to the building's own point (`ownX`/`ownY`). Wider
+ *  than the street radius because a large building's point sits deep in its
+ *  plot; it still rules out a snap onto a street the building does not face. */
+export const LANDMARK_QUESTION_OWN_RADIUS_M = 80;
+/** Radians either side of the heading in which a building beside the rider
+ *  still counts: ahead and alongside, not once it is behind. */
+export const LANDMARK_BESIDE_HALF_CONE = (110 * Math.PI) / 180;
 /** Radians either side of the direction of travel that count as "in view". */
 export const LANDMARK_QUESTION_HALF_CONE = (55 * Math.PI) / 180;
 /** Metres: a name standing this close to the answer is the same complex
@@ -31,6 +42,9 @@ export interface QuestionRider extends WorldPoint {
 export interface QuestionLandmark extends WorldPoint {
   id: string;
   name: string;
+  /** The building's own point, before the snap of `x`/`y` onto the network. */
+  ownX?: number;
+  ownY?: number;
   /** The buurt the landmark stands in, when known. */
   hood?: string | null;
 }
@@ -50,6 +64,35 @@ export function inViewCone(rider: QuestionRider, point: WorldPoint, radiusPx: nu
   let off = Math.atan2(dy, dx) - heading;
   off = Math.atan2(Math.sin(off), Math.cos(off));
   return Math.abs(off) <= halfCone;
+}
+
+/** Off the heading, in radians (0 ahead, π behind); reversing looks back. */
+function offHeading(rider: QuestionRider, point: WorldPoint): number {
+  const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+  const off = Math.atan2(point.y - rider.y, point.x - rider.x) - heading;
+  return Math.abs(Math.atan2(Math.sin(off), Math.cos(off)));
+}
+
+/** The building's own point, or its street point when the extract has none. */
+export function ownPoint(landmark: WorldPoint & { ownX?: number; ownY?: number }): WorldPoint {
+  return Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)
+    ? { x: landmark.ownX!, y: landmark.ownY! } : landmark;
+}
+
+/** Whether the rider is right beside the landmark: within
+ *  LANDMARK_QUESTION_RADIUS_M of its street point and
+ *  LANDMARK_QUESTION_OWN_RADIUS_M of the building, which is ahead or
+ *  alongside, not behind. Only then can "this" be told apart on screen. */
+export function besideLandmark(
+  rider: QuestionRider,
+  landmark: WorldPoint & { ownX?: number; ownY?: number },
+  pxPerMetre: number,
+): boolean {
+  if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
+  const own = ownPoint(landmark);
+  const distance = Math.hypot(own.x - rider.x, own.y - rider.y);
+  if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+  return distance < pxPerMetre || offHeading(rider, own) <= LANDMARK_BESIDE_HALF_CONE;
 }
 
 /** The nearest candidate in view, or null. `skip` holds ids already asked,

@@ -8647,6 +8647,7 @@
   }
 
   // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_BESIDE_HALF_CONE = 110 * Math.PI / 180;
   var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
   var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
   function readSightings(store) {

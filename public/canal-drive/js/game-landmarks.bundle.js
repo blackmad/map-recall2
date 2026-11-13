@@ -15,7 +15,9 @@
   }
 
   // src/canalRecall/game/landmarkQuestion.ts
-  var LANDMARK_QUESTION_RADIUS_M = 150;
+  var LANDMARK_QUESTION_RADIUS_M = 35;
+  var LANDMARK_QUESTION_OWN_RADIUS_M = 80;
+  var LANDMARK_BESIDE_HALF_CONE = 110 * Math.PI / 180;
   var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
   var SAME_COMPLEX_M = 40;
   var LANDMARK_CHOICE_COUNT = 4;
@@ -32,6 +34,21 @@
     let off = Math.atan2(dy, dx) - heading;
     off = Math.atan2(Math.sin(off), Math.cos(off));
     return Math.abs(off) <= halfCone;
+  }
+  function offHeading(rider, point) {
+    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    const off = Math.atan2(point.y - rider.y, point.x - rider.x) - heading;
+    return Math.abs(Math.atan2(Math.sin(off), Math.cos(off)));
+  }
+  function ownPoint(landmark) {
+    return Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY) ? { x: landmark.ownX, y: landmark.ownY } : landmark;
+  }
+  function besideLandmark(rider, landmark, pxPerMetre) {
+    if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
+    const own = ownPoint(landmark);
+    const distance = Math.hypot(own.x - rider.x, own.y - rider.y);
+    if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+    return distance < pxPerMetre || offHeading(rider, own) <= LANDMARK_BESIDE_HALF_CONE;
   }
   function landmarkChoices(answer, pool, options) {
     const count = options.count ?? LANDMARK_CHOICE_COUNT;
@@ -7219,7 +7236,8 @@ ${register}` : detail,
      *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
      *    own fade before the question can open. Kept, with hysteresis, while the
      *    rider still approaches it; released (the labels fade back) when not.
-     * 2. The question. Within 150 m and the cone, the slot free and the budget
+     * 2. The question. Right beside the building (besideLandmark: 35 m from
+     *    its street point, 80 m from the building, not behind), the slot free and the budget
      *    with a slot: the question opens with the dealt choices. True when one
      *    opened (the drive-by pick then stands down this frame).
      */
@@ -7239,7 +7257,7 @@ ${register}` : detail,
         utilityOpen: gate.utilityOpen
       })) return false;
       const chosen = approach.landmark;
-      if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
+      if (!besideLandmark(player, chosen, PIXELS_PER_METER)) return false;
       const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
         maxAsksPerMinute: this._askBudgetPerMinute()
       });
@@ -7253,7 +7271,8 @@ ${register}` : detail,
       this._landmarkApproach = null;
       this.landmarkApproachWithheld = [];
       const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
-      const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+      const own = ownPoint(chosen);
+      const off = Math.atan2(own.y - player.y, own.x - player.x) - heading;
       const bearing = Math.atan2(Math.sin(off), Math.cos(off));
       const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
       this._openQuizPrompt({
@@ -7284,7 +7303,7 @@ ${register}` : detail,
       const held = this._landmarkApproach;
       if (held) {
         const live = this.landmarks.find((landmark) => landmark.id === held.landmark.id);
-        if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+        if (live && !this._seenLandmarks.has(live.id) && (approachKept(player, live, bandPx) || besideLandmark(player, live, PIXELS_PER_METER))) return held;
         this._releaseLandmarkApproach();
       }
       const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
@@ -7302,7 +7321,7 @@ ${register}` : detail,
         if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
         if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
         if (landmark.name === this.routeTo?.name) return false;
-        if (!inViewCone(player, landmark, bandPx)) return false;
+        if (!inViewCone(player, landmark, bandPx) && !besideLandmark(player, landmark, PIXELS_PER_METER)) return false;
         const shown = landmarkDisplayName2(landmark.name, language());
         const reason = landmarkSkipReason(ledger, landmark.name, now) ?? (shown !== landmark.name ? landmarkSkipReason(ledger, shown, now) : null);
         if (reason) {
