@@ -43,6 +43,65 @@ export function diffTiles(published: ReadonlyMap<string, TileFile>, staged: Read
 export const extraPands = (diff: readonly PandDiff[], batch: ReadonlySet<string>, allowExtra: ReadonlySet<string>): PandDiff[] =>
   diff.filter(d => !batch.has(d.pand) && !allowExtra.has(d.pand));
 
+/** Record keys that carry only a build stamp or timing, never what the pand looks like. */
+export const VOLATILE_RECORD_KEYS: ReadonlySet<string> = new Set(['stamp', 'stampedAt', 'generatedAt', 'builtAt', 'builtBy', 'ts', 'at', 'mtime']);
+
+/** A record with volatile stamp keys dropped and object keys sorted at every depth, so equal content compares equal as JSON. */
+export function normaliseRecord(v: unknown): unknown {
+  if (Array.isArray(v)) return v.map(normaliseRecord);
+  if (v && typeof v === 'object') {
+    const o = v as Record<string, unknown>, out: Record<string, unknown> = {};
+    for (const k of Object.keys(o).sort()) if (!VOLATILE_RECORD_KEYS.has(k)) out[k] = normaliseRecord(o[k]);
+    return out;
+  }
+  return v;
+}
+
+export const sameRecord = (a: unknown, b: unknown): boolean => JSON.stringify(normaliseRecord(a)) === JSON.stringify(normaliseRecord(b));
+
+export type ExtraClass = 'face-drawn' | 'same-as-main' | 'unexplained';
+export type ClassifiedExtra = { diff: PandDiff; cls: ExtraClass; why: string };
+
+export interface ExtraContext {
+  /** Pand ids (16 digits) named by a block-face intent (scripts/block-face/faces/*\/intent.json): their record follows the face compile. */
+  faceDrawn: ReadonlySet<string>;
+  /** The merged (staged-extract) record by feature id. */
+  merged: (feature: string, tile: string) => unknown;
+  /** main's record by feature id; omit when main cannot be read (then same-as-main never applies). */
+  main?: (feature: string, tile: string) => unknown;
+}
+
+/**
+ * Why an unstaged changed record is (or is not) harmless. same-as-main: after normalisation the merged record equals
+ * main's, so the difference from this checkout's published extract is only that this checkout lags main. face-drawn: a
+ * block-face intent draws the pand, so its record changes whenever the face recompiles. Anything else is unexplained.
+ */
+export function classifyExtra(d: PandDiff, ctx: ExtraContext): ClassifiedExtra {
+  if (ctx.main && sameRecord(ctx.merged(d.feature, d.tile), ctx.main(d.feature, d.tile))) return { diff: d, cls: 'same-as-main', why: 'merged record equals main after normalisation' };
+  if (ctx.faceDrawn.has(d.pand)) return { diff: d, cls: 'face-drawn', why: 'drawn by a block-face intent' };
+  return { diff: d, cls: 'unexplained', why: 'no staged spec, no face intent, differs from main' };
+}
+
+/** Classify every unstaged change that --allow-extra did not name. `allowed` are those the override waved through. */
+export function classifyExtras(diff: readonly PandDiff[], batch: ReadonlySet<string>, allowExtra: ReadonlySet<string>, ctx: ExtraContext): { classified: ClassifiedExtra[]; allowed: PandDiff[]; blocking: ClassifiedExtra[] } {
+  const unstaged = diff.filter(d => !batch.has(d.pand));
+  const allowed = unstaged.filter(d => allowExtra.has(d.pand));
+  const classified = unstaged.filter(d => !allowExtra.has(d.pand)).map(d => classifyExtra(d, ctx));
+  return { classified, allowed, blocking: classified.filter(c => c.cls === 'unexplained') };
+}
+
+/** The table printed when classification runs: one row per unstaged change, with its class and the first field moved. */
+export function formatExtraTable(classified: readonly ClassifiedExtra[], allowed: readonly PandDiff[] = []): string {
+  const rows = [
+    ...classified.map(c => [c.diff.pand, c.diff.change, c.diff.tile, c.cls === 'unexplained' ? 'UNEXPLAINED' : c.cls, c.diff.fields[0] ?? '']),
+    ...allowed.map(d => [d.pand, d.change, d.tile, 'allow-extra', d.fields[0] ?? '']),
+  ];
+  const head = ['pand', 'change', 'tile', 'class', 'first field'];
+  const w = head.map((h, i) => Math.max(h.length, ...rows.map(r => Math.min(r[i].length, 60))));
+  const line = (r: string[]) => '  ' + r.map((c, i) => (c.length > 60 ? c.slice(0, 57) + '...' : c).padEnd(w[i])).join('  ').trimEnd();
+  return [line(head), ...rows.map(line)].join('\n');
+}
+
 /** The cell keys that list any of the tiles (index.json tileCells), sorted. */
 export const cellsOfTiles = (tileCells: Record<string, string[]>, tiles: readonly string[]): string[] =>
   [...new Set(tiles.flatMap(t => tileCells[t] ?? []))].sort();

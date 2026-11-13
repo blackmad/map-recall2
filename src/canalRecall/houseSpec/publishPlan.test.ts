@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { allowIdsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, diffRecord, diffTiles, extraPands, suppressionViolations, type AuditWall, type TileFile } from './publishPlan.ts';
+import { allowIdsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, diffRecord, diffTiles, extraPands, classifyExtras, formatExtraTable, normaliseRecord, suppressionViolations, type AuditWall, type TileFile } from './publishPlan.ts';
 
 const tile = (b: Record<string, Record<string, unknown>>): TileFile => ({ version: 1, buildings: b });
 const F = (p: string) => `NL.IMBAG.Pand.${p}`;
@@ -65,4 +65,33 @@ test('mergeRecipeIntent keeps the house id and its earlier sources', () => {
   assert.equal(merged.id, 'bloemgracht-80');
   assert.deepEqual(merged.sources, [{ id: 'pano-1' }, { id: 'rce' }]);
   assert.deepEqual(mergeRecipeIntent(null, { id: 'spec-1', sources: [{ id: 'a' }] }, 'spec-1').sources, [{ id: 'a' }]);
+});
+
+test('classifyExtras: face-drawn and same-as-main are allowed, unexplained blocks, --allow-extra overrides', () => {
+  const published = new Map([['t', tile({ [F('1')]: { a: 1 }, [F('2')]: { a: 1 }, [F('3')]: { a: 1 }, [F('4')]: { a: 1 }, [F('5')]: { a: 1 } })]]);
+  const mergedTiles = new Map([['t', tile({
+    [F('1')]: { a: 2 },                                    // staged
+    [F('2')]: { a: 2, b: { y: 1, x: 2 } },                 // face-drawn (intent names it), main differs
+    [F('3')]: { b: { x: 2, y: 1 }, a: 2, stamp: 'n2' },    // same as main apart from key order and stamp
+    [F('4')]: { a: 9 },                                    // nobody explains it
+    [F('5')]: { a: 7 },                                    // allow-extra
+  })]]);
+  const diff = diffTiles(published, mergedTiles).pands;
+  const mainRecs: Record<string, unknown> = { [F('3')]: { a: 2, b: { y: 1, x: 2 }, stamp: 'n1' }, [F('2')]: { a: 5 } };
+  const ctx = { faceDrawn: new Set(['2']), merged: (f: string, t: string) => mergedTiles.get(t)?.buildings[f], main: (f: string) => mainRecs[f] };
+  const r = classifyExtras(diff, new Set(['1']), new Set(['5']), ctx);
+  assert.deepEqual(r.classified.map(c => [c.diff.pand, c.cls]), [['2', 'face-drawn'], ['3', 'same-as-main'], ['4', 'unexplained']]);
+  assert.deepEqual(r.allowed.map(d => d.pand), ['5']);
+  assert.deepEqual(r.blocking.map(c => c.diff.pand), ['4']);
+  // without a readable main, same-as-main never applies
+  assert.equal(classifyExtras(diff, new Set(['1']), new Set(['5']), { ...ctx, main: undefined }).classified[1].cls, 'unexplained');
+  // a face-drawn pand that is also equal to main reports the stronger same-as-main
+  assert.equal(classifyExtras(diff, new Set(), new Set(), { ...ctx, faceDrawn: new Set(['3']) }).classified.find(c => c.diff.pand === '3')!.cls, 'same-as-main');
+  const table = formatExtraTable(r.classified, r.allowed);
+  assert.match(table, /face-drawn/); assert.match(table, /same-as-main/); assert.match(table, /UNEXPLAINED/); assert.match(table, /allow-extra/);
+  console.log(table);
+});
+
+test('normaliseRecord sorts keys and drops stamps', () => {
+  assert.equal(JSON.stringify(normaliseRecord({ b: [{ z: 1, a: 2 }], a: 1, stamp: 'x' })), '{"a":1,"b":[{"a":2,"z":1}]}');
 });
