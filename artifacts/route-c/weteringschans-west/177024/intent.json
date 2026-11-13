@@ -37,6 +37,9 @@
   "wallMaterial": "brick",
   "brick": "#4d3e36",
   "frame": "white-painted",
+  "band": "#4e3128",
+  "stone": "#ebe8df",
+  "cornice": "#ebe8df",
   "door": "#2a2a2a"
  }
 }

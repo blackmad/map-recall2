@@ -7,22 +7,22 @@
  "eligible": 3,
  "minutesPerHouse": {
   "machine": 0.01,
-  "withPreview": 0.1
+  "withPreview": 0.2
  },
  "triangles": {
-  "mean": 1239,
-  "max": 1776
+  "mean": 1281,
+  "max": 1802
  },
  "meshoptKB": {
-  "mean": 40.5,
-  "total": 324.2
+  "mean": 41.5,
+  "total": 331.8
  },
  "fillsBySource": {
   "stated": 53,
   "reading+geometry": 2,
-  "template": 38,
-  "family": 54,
-  "derived": 16
+  "family": 66,
+  "derived": 16,
+  "template": 30
  },
  "drops": [
   {

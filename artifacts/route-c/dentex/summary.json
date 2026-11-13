@@ -7,7 +7,7 @@
  "eligible": 0,
  "minutesPerHouse": {
   "machine": 0.01,
-  "withPreview": 0.09
+  "withPreview": 0.13
  },
  "triangles": {
   "mean": 796,
@@ -20,7 +20,7 @@
  "fillsBySource": {
   "stated": 42,
   "template": 40,
-  "family": 50,
+  "family": 58,
   "derived": 16
  },
  "drops": [],

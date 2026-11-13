@@ -51,31 +51,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, tier street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179440)"
    },
    {
     "path": "fronts/0/windows",
@@ -142,11 +148,11 @@
    }
   ],
   "ms": {
-   "facts": 1466.5436250000002,
-   "complete": 6.485290999999961,
-   "compile": 106.59470799999963,
-   "meshopt": 13.274916999999732,
-   "preview": 4857.273417
+   "facts": 1689.659,
+   "complete": 19.578457999999955,
+   "compile": 89.68554099999983,
+   "meshopt": 11.847834000000148,
+   "preview": 9547.056375
   },
   "geometry": {
    "year": 1885,
@@ -155,7 +161,12 @@
    "eavesM": 14.56165844167268,
    "widthM": 6.000088416011133,
    "crownRiseM": 0.04,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.6,
+    "widthM": 6.024357489484828
+   },
+   "group": "0363100012179440"
   },
   "gates": [
    {
@@ -303,31 +314,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, tier street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179439)"
    },
    {
     "path": "fronts/0/windows",
@@ -390,11 +407,11 @@
    }
   ],
   "ms": {
-   "facts": 254.393959,
-   "complete": 1.0103340000000571,
-   "compile": 31.63754199999994,
-   "meshopt": 4.060874999999669,
-   "preview": 5487.939833
+   "facts": 524.7249580000002,
+   "complete": 1.46612499999992,
+   "compile": 27.19629199999963,
+   "meshopt": 3.852374999999938,
+   "preview": 13030.1105
   },
   "geometry": {
    "year": 1881,
@@ -403,7 +420,12 @@
    "eavesM": 14.223970540649079,
    "widthM": 5.999975083281499,
    "crownRiseM": 0,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.2,
+    "widthM": 6.008089627430309
+   },
+   "group": "0363100012179439"
   },
   "gates": [
    {
@@ -547,31 +569,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, tier street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179439)"
    },
    {
     "path": "fronts/0/windows",
@@ -638,11 +666,11 @@
    }
   ],
   "ms": {
-   "facts": 166.22812499999964,
-   "complete": 1.0444170000000668,
-   "compile": 52.955375000000004,
-   "meshopt": 4.410750000000007,
-   "preview": 4874.941708
+   "facts": 333.84395900000027,
+   "complete": 2.5293750000000728,
+   "compile": 35.50362499999983,
+   "meshopt": 4.068542000000434,
+   "preview": 6395.270958000005
   },
   "geometry": {
    "year": 1882,
@@ -651,7 +679,12 @@
    "eavesM": 14.273794515132769,
    "widthM": 6.105009418504348,
    "crownRiseM": 1.76,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 16.8,
+    "widthM": 6.075775695673656
+   },
+   "group": "0363100012179439"
   },
   "gates": [
    {
@@ -799,31 +832,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, tier street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, tier street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179437)"
    },
    {
     "path": "fronts/0/windows",
@@ -882,11 +921,11 @@
    }
   ],
   "ms": {
-   "facts": 156.73466599999983,
-   "complete": 0.8263329999999769,
-   "compile": 21.849040999999943,
-   "meshopt": 3.160584000000199,
-   "preview": 4996.367084000001
+   "facts": 373.64366599999994,
+   "complete": 1.2595830000000205,
+   "compile": 20.716625000000022,
+   "meshopt": 3.1017910000000484,
+   "preview": 6503.518582999997
   },
   "geometry": {
    "year": 1880,
@@ -895,7 +934,12 @@
    "eavesM": 14.181161484680091,
    "widthM": 6.23853676754669,
    "crownRiseM": 0,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.1,
+    "widthM": 6.2538685471517965
+   },
+   "group": "0363100012179437"
   },
   "gates": [
    {
@@ -1031,31 +1075,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, tier street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179437)"
    },
    {
     "path": "fronts/0/windows",
@@ -1122,11 +1172,11 @@
    }
   ],
   "ms": {
-   "facts": 235.58233399999972,
-   "complete": 0.9002089999999043,
-   "compile": 23.7173329999996,
-   "meshopt": 3.0811670000002778,
-   "preview": 4736.620499999997
+   "facts": 300.25099999999975,
+   "complete": 1.245708000000377,
+   "compile": 21.15416600000026,
+   "meshopt": 2.894125000000713,
+   "preview": 5733.367167000004
   },
   "geometry": {
    "year": 1883,
@@ -1135,7 +1185,12 @@
    "eavesM": 11.163075022984664,
    "widthM": 6.102165189507442,
    "crownRiseM": 3,
-   "crownPeaked": true
+   "crownPeaked": true,
+   "scale": {
+    "heightM": 14.1,
+    "widthM": 6.075777603662573
+   },
+   "group": "0363100012179437"
   },
   "gates": [
    {
@@ -1272,31 +1327,37 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, tier street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179435)"
    },
    {
     "path": "fronts/0/windows",
@@ -1363,11 +1424,11 @@
    }
   ],
   "ms": {
-   "facts": 232.2534999999998,
-   "complete": 0.7461669999997866,
-   "compile": 16.29408400000011,
-   "meshopt": 2.279417000000194,
-   "preview": 4982.675124999998
+   "facts": 194.59404199999972,
+   "complete": 1.297125000000051,
+   "compile": 19.550583000000188,
+   "meshopt": 2.9204170000002705,
+   "preview": 5367.805708
   },
   "geometry": {
    "year": 1881,
@@ -1376,7 +1437,12 @@
    "eavesM": 14.154188015167078,
    "widthM": 6.103160246960837,
    "crownRiseM": 0.05,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.2,
+    "widthM": 6.1067537409835495
+   },
+   "group": "0363100012179435"
   },
   "gates": [
    {
@@ -1507,37 +1573,43 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/gable",
     "value": "cornice",
     "source": "family",
     "ref": "family 1880-1919 (n 549, share 0.962); 3DBAG crown 0.0 m, level profile"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179430)"
    },
    {
     "path": "fronts/0/windows",
@@ -1600,11 +1672,11 @@
    }
   ],
   "ms": {
-   "facts": 135.96054200000026,
-   "complete": 0.7415829999999914,
-   "compile": 14.820166999999856,
-   "meshopt": 2.474916000000121,
-   "preview": 4969.907459000002
+   "facts": 303.1922909999994,
+   "complete": 1.1835829999999987,
+   "compile": 44.283041999999114,
+   "meshopt": 3.0792920000003505,
+   "preview": 7145.326249999998
   },
   "geometry": {
    "year": 1883,
@@ -1613,7 +1685,12 @@
    "eavesM": 14.364178871808253,
    "widthM": 6.099578755948734,
    "crownRiseM": 0,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.3,
+    "widthM": 6.0964292727876455
+   },
+   "group": "0363100012179430"
   },
   "gates": [
    {
@@ -1740,37 +1817,43 @@
     "path": "fronts/0/windowSurround",
     "value": "keystone",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/frame",
     "value": "white-painted",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/stone",
     "value": "#f0efe6",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "palette/cornice",
     "value": "#9e9a84",
     "source": "template",
-    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, tier street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/gable",
     "value": "cornice",
     "source": "family",
     "ref": "family 1880-1919 (n 549, share 0.962); 3DBAG crown 0.0 m, level profile"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1880-1919|side|h13-17 (n 297, 1 values; group 179430)"
    },
    {
     "path": "fronts/0/windows",
@@ -1829,11 +1912,11 @@
    }
   ],
   "ms": {
-   "facts": 154.5629160000003,
-   "complete": 0.6921250000000327,
-   "compile": 13.733332999999675,
-   "meshopt": 2.4750840000001517,
-   "preview": 4097.439792000005
+   "facts": 332.06216700000004,
+   "complete": 1.1149160000004485,
+   "compile": 16.106958999999733,
+   "meshopt": 2.7793750000000728,
+   "preview": 5237.371833999998
   },
   "geometry": {
    "year": 1883,
@@ -1842,7 +1925,12 @@
    "eavesM": 14.293888897602018,
    "widthM": 6.094704750851951,
    "crownRiseM": 0.01,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 14.3,
+    "widthM": 6.1070039086043835
+   },
+   "group": "0363100012179430"
   },
   "gates": [
    {

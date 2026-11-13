@@ -20,8 +20,8 @@
    },
    "bands": "storey",
    "gable": "cornice",
-   "cornice": "simple",
    "windowSurround": "sill",
+   "cornice": "simple",
    "windows": "t-window",
    "hoist": false,
    "basement": "none",
@@ -41,6 +41,8 @@
   "wallMaterial": "brick",
   "brick": "#51433b",
   "frame": "white-painted",
+  "stone": "#ebe8df",
+  "cornice": "#ebe8df",
   "door": "#2a2a2a"
  }
 }

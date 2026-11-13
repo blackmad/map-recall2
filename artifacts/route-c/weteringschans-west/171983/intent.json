@@ -19,8 +19,8 @@
     "kind": "segmental"
    },
    "gable": "cornice",
-   "cornice": "simple",
    "windowSurround": "sill",
+   "cornice": "simple",
    "windows": "t-window",
    "hoist": false,
    "basement": "none",
@@ -40,6 +40,9 @@
   "wallMaterial": "brick",
   "brick": "#4c4132",
   "frame": "white-painted",
+  "band": "#4e3128",
+  "stone": "#ebe8df",
+  "cornice": "#ebe8df",
   "door": "#2a2a2a"
  }
 }

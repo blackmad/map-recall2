@@ -1,0 +1,2732 @@
+{
+ "v": 2,
+ "ranking": "round 3: street | class+scale | scale, same band, 300 m, scale = tile height +-2 m and narrow side +-1 m; bands before 1920 only",
+ "ah07": {
+  "fronts": 190,
+  "withTemplate": 130,
+  "share": 0.684,
+  "byTier": {
+   "street": 59,
+   "scale": 46,
+   "class+scale": 25
+  },
+  "byBand": {
+   "after-1944": {
+    "withTemplate": 0,
+    "fronts": 8,
+    "share": 0
+   },
+   "1920-1944": {
+    "withTemplate": 0,
+    "fronts": 7,
+    "share": 0
+   },
+   "1880-1919": {
+    "withTemplate": 60,
+    "fronts": 81,
+    "share": 0.741
+   },
+   "1800-1879": {
+    "withTemplate": 70,
+    "fronts": 94,
+    "share": 0.745
+   }
+  },
+  "byClass": {
+   "side": {
+    "withTemplate": 83,
+    "fronts": 94,
+    "share": 0.883
+   },
+   "main": {
+    "withTemplate": 47,
+    "fronts": 96,
+    "share": 0.49
+   }
+  }
+ },
+ "top5000": {
+  "fronts": 5000,
+  "withTemplate": 1708,
+  "share": 0.342,
+  "byTier": {
+   "street": 868,
+   "scale": 352,
+   "class+scale": 488
+  },
+  "byBand": {
+   "1920-1944": {
+    "withTemplate": 0,
+    "fronts": 948,
+    "share": 0
+   },
+   "1880-1919": {
+    "withTemplate": 840,
+    "fronts": 2053,
+    "share": 0.409
+   },
+   "before-1800": {
+    "withTemplate": 592,
+    "fronts": 1258,
+    "share": 0.471
+   },
+   "1800-1879": {
+    "withTemplate": 276,
+    "fronts": 741,
+    "share": 0.372
+   }
+  },
+  "byClass": {
+   "side": {
+    "withTemplate": 813,
+    "fronts": 2261,
+    "share": 0.36
+   },
+   "main": {
+    "withTemplate": 895,
+    "fronts": 2727,
+    "share": 0.328
+   },
+   "unknown": {
+    "withTemplate": 0,
+    "fronts": 12,
+    "share": 0
+   }
+  }
+ },
+ "topByGebied": {
+  "Centrum-Oost": {
+   "fronts": 1370,
+   "withTemplate": 354,
+   "share": 0.258,
+   "byTier": {
+    "street": 194,
+    "scale": 87,
+    "class+scale": 73
+   },
+   "byBand": {
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 67,
+     "share": 0
+    },
+    "1880-1919": {
+     "withTemplate": 53,
+     "fronts": 367,
+     "share": 0.144
+    },
+    "1800-1879": {
+     "withTemplate": 55,
+     "fronts": 341,
+     "share": 0.161
+    },
+    "before-1800": {
+     "withTemplate": 246,
+     "fronts": 595,
+     "share": 0.413
+    }
+   },
+   "byClass": {
+    "side": {
+     "withTemplate": 211,
+     "fronts": 754,
+     "share": 0.28
+    },
+    "main": {
+     "withTemplate": 143,
+     "fronts": 612,
+     "share": 0.234
+    },
+    "unknown": {
+     "withTemplate": 0,
+     "fronts": 4,
+     "share": 0
+    }
+   }
+  },
+  "Centrum-West": {
+   "fronts": 1621,
+   "withTemplate": 734,
+   "share": 0.453,
+   "byTier": {
+    "street": 392,
+    "scale": 114,
+    "class+scale": 228
+   },
+   "byBand": {
+    "1880-1919": {
+     "withTemplate": 227,
+     "fronts": 519,
+     "share": 0.437
+    },
+    "before-1800": {
+     "withTemplate": 346,
+     "fronts": 663,
+     "share": 0.522
+    },
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 147,
+     "share": 0
+    },
+    "1800-1879": {
+     "withTemplate": 161,
+     "fronts": 292,
+     "share": 0.551
+    }
+   },
+   "byClass": {
+    "main": {
+     "withTemplate": 356,
+     "fronts": 794,
+     "share": 0.448
+    },
+    "side": {
+     "withTemplate": 378,
+     "fronts": 827,
+     "share": 0.457
+    }
+   }
+  },
+  "De Pijp, Rivierenbuurt": {
+   "fronts": 346,
+   "withTemplate": 152,
+   "share": 0.439,
+   "byTier": {
+    "street": 103,
+    "scale": 29,
+    "class+scale": 20
+   },
+   "byBand": {
+    "1880-1919": {
+     "withTemplate": 102,
+     "fronts": 176,
+     "share": 0.58
+    },
+    "1800-1879": {
+     "withTemplate": 50,
+     "fronts": 67,
+     "share": 0.746
+    },
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 103,
+     "share": 0
+    }
+   },
+   "byClass": {
+    "main": {
+     "withTemplate": 61,
+     "fronts": 206,
+     "share": 0.296
+    },
+    "side": {
+     "withTemplate": 91,
+     "fronts": 140,
+     "share": 0.65
+    }
+   }
+  },
+  "Westerpark": {
+   "fronts": 182,
+   "withTemplate": 72,
+   "share": 0.396,
+   "byTier": {
+    "street": 34,
+    "class+scale": 30,
+    "scale": 8
+   },
+   "byBand": {
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 16,
+     "share": 0
+    },
+    "1880-1919": {
+     "withTemplate": 72,
+     "fronts": 164,
+     "share": 0.439
+    },
+    "1800-1879": {
+     "withTemplate": 0,
+     "fronts": 2,
+     "share": 0
+    }
+   },
+   "byClass": {
+    "main": {
+     "withTemplate": 56,
+     "fronts": 111,
+     "share": 0.505
+    },
+    "unknown": {
+     "withTemplate": 0,
+     "fronts": 6,
+     "share": 0
+    },
+    "side": {
+     "withTemplate": 16,
+     "fronts": 65,
+     "share": 0.246
+    }
+   }
+  },
+  "Oud-Oost": {
+   "fronts": 165,
+   "withTemplate": 31,
+   "share": 0.188,
+   "byTier": {
+    "street": 10,
+    "scale": 11,
+    "class+scale": 10
+   },
+   "byBand": {
+    "1880-1919": {
+     "withTemplate": 31,
+     "fronts": 127,
+     "share": 0.244
+    },
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 38,
+     "share": 0
+    }
+   },
+   "byClass": {
+    "main": {
+     "withTemplate": 17,
+     "fronts": 95,
+     "share": 0.179
+    },
+    "side": {
+     "withTemplate": 14,
+     "fronts": 69,
+     "share": 0.203
+    },
+    "unknown": {
+     "withTemplate": 0,
+     "fronts": 1,
+     "share": 0
+    }
+   }
+  },
+  "Oud-West, De Baarsjes": {
+   "fronts": 765,
+   "withTemplate": 287,
+   "share": 0.375,
+   "byTier": {
+    "street": 89,
+    "scale": 78,
+    "class+scale": 120
+   },
+   "byBand": {
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 314,
+     "share": 0
+    },
+    "1880-1919": {
+     "withTemplate": 277,
+     "fronts": 421,
+     "share": 0.658
+    },
+    "1800-1879": {
+     "withTemplate": 10,
+     "fronts": 30,
+     "share": 0.333
+    }
+   },
+   "byClass": {
+    "main": {
+     "withTemplate": 237,
+     "fronts": 589,
+     "share": 0.402
+    },
+    "side": {
+     "withTemplate": 50,
+     "fronts": 176,
+     "share": 0.284
+    }
+   }
+  },
+  "Oud-Zuid": {
+   "fronts": 551,
+   "withTemplate": 78,
+   "share": 0.142,
+   "byTier": {
+    "street": 46,
+    "class+scale": 7,
+    "scale": 25
+   },
+   "byBand": {
+    "1920-1944": {
+     "withTemplate": 0,
+     "fronts": 263,
+     "share": 0
+    },
+    "1880-1919": {
+     "withTemplate": 78,
+     "fronts": 279,
+     "share": 0.28
+    },
+    "1800-1879": {
+     "withTemplate": 0,
+     "fronts": 9,
+     "share": 0
+    }
+   },
+   "byClass": {
+    "side": {
+     "withTemplate": 53,
+     "fronts": 230,
+     "share": 0.23
+    },
+    "main": {
+     "withTemplate": 25,
+     "fronts": 320,
+     "share": 0.078
+    },
+    "unknown": {
+     "withTemplate": 0,
+     "fronts": 1,
+     "share": 0
+    }
+   }
+  }
+ },
+ "mainStreetsWithoutTemplate": [
+  {
+   "street": "Sarphatistraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 99,
+   "ride": 1583762,
+   "buurten": [
+    "AH08",
+    "AJ02",
+    "AJ03",
+    "AJ04"
+   ],
+   "bands": {
+    "1800-1879": 48,
+    "before-1800": 15,
+    "1880-1919": 36
+   }
+  },
+  {
+   "street": "Rokin",
+   "gebied": "Centrum-West",
+   "fronts": 60,
+   "ride": 1338460,
+   "buurten": [
+    "AD07",
+    "AD08",
+    "AE04"
+   ],
+   "bands": {
+    "before-1800": 43,
+    "1880-1919": 14,
+    "1800-1879": 3
+   }
+  },
+  {
+   "street": "Overtoom",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 46,
+   "ride": 478406,
+   "buurten": [
+    "EU02",
+    "EU03",
+    "EV01",
+    "EV02"
+   ],
+   "bands": {
+    "1880-1919": 40,
+    "1800-1879": 6
+   }
+  },
+  {
+   "street": "Plantage Middenlaan",
+   "gebied": "Centrum-Oost",
+   "fronts": 44,
+   "ride": 845197,
+   "buurten": [
+    "AJ02"
+   ],
+   "bands": {
+    "1800-1879": 31,
+    "before-1800": 3,
+    "1880-1919": 10
+   }
+  },
+  {
+   "street": "Weteringschans",
+   "gebied": "Centrum-Oost",
+   "fronts": 36,
+   "ride": 502200,
+   "buurten": [
+    "AH06",
+    "AH07",
+    "AH08"
+   ],
+   "bands": {
+    "1880-1919": 22,
+    "1800-1879": 14
+   }
+  },
+  {
+   "street": "Marnixstraat",
+   "gebied": "Centrum-West",
+   "fronts": 30,
+   "ride": 649692,
+   "buurten": [
+    "AB01",
+    "AB06",
+    "AB08",
+    "AB09"
+   ],
+   "bands": {
+    "1880-1919": 25,
+    "1800-1879": 5
+   }
+  },
+  {
+   "street": "Singel",
+   "gebied": "Centrum-West",
+   "fronts": 29,
+   "ride": 575682,
+   "buurten": [
+    "AA06",
+    "AC01",
+    "AC02",
+    "AC03",
+    "AC04",
+    "AD02",
+    "AD04",
+    "AD06",
+    "AD08"
+   ],
+   "bands": {
+    "1880-1919": 7,
+    "before-1800": 19,
+    "1800-1879": 3
+   }
+  },
+  {
+   "street": "Admiraal De Ruijterweg",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 28,
+   "ride": 359988,
+   "buurten": [
+    "EL01",
+    "EL02",
+    "EN02"
+   ],
+   "bands": {
+    "1880-1919": 28
+   }
+  },
+  {
+   "street": "Prins Hendrikkade",
+   "gebied": "Centrum-Oost",
+   "fronts": 28,
+   "ride": 354483,
+   "buurten": [
+    "AF03",
+    "AF04"
+   ],
+   "bands": {
+    "1880-1919": 2,
+    "before-1800": 15,
+    "1800-1879": 11
+   }
+  },
+  {
+   "street": "Stadhouderskade",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 25,
+   "ride": 450938,
+   "buurten": [
+    "KE01",
+    "KE02",
+    "KE04",
+    "KE05"
+   ],
+   "bands": {
+    "1880-1919": 22,
+    "1800-1879": 3
+   }
+  },
+  {
+   "street": "Zeeburgerdijk",
+   "gebied": "Oud-Oost",
+   "fronts": 23,
+   "ride": 477749,
+   "buurten": [
+    "ME01"
+   ],
+   "bands": {
+    "1880-1919": 23
+   }
+  },
+  {
+   "street": "Heiligeweg",
+   "gebied": "Centrum-West",
+   "fronts": 21,
+   "ride": 261051,
+   "buurten": [
+    "AD08"
+   ],
+   "bands": {
+    "1800-1879": 4,
+    "1880-1919": 3,
+    "before-1800": 14
+   }
+  },
+  {
+   "street": "Mauritskade",
+   "gebied": "Oud-Oost",
+   "fronts": 20,
+   "ride": 338133,
+   "buurten": [
+    "MC01",
+    "MC02",
+    "ME01"
+   ],
+   "bands": {
+    "1880-1919": 20
+   }
+  },
+  {
+   "street": "Johannes Vermeerstraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 20,
+   "ride": 268045,
+   "buurten": [
+    "KD08"
+   ],
+   "bands": {
+    "1880-1919": 20
+   }
+  },
+  {
+   "street": "Roemer Visscherstraat",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 18,
+   "ride": 272363,
+   "buurten": [
+    "EV02"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "1880-1919": 16
+   }
+  },
+  {
+   "street": "Lange Leidsedwarsstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 16,
+   "ride": 471695,
+   "buurten": [
+    "AH01",
+    "AH02"
+   ],
+   "bands": {
+    "1880-1919": 6,
+    "1800-1879": 5,
+    "before-1800": 5
+   }
+  },
+  {
+   "street": "Ferdinand Bolstraat",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 15,
+   "ride": 285501,
+   "buurten": [
+    "KE01",
+    "KE03",
+    "KE04",
+    "KF01"
+   ],
+   "bands": {
+    "1880-1919": 15
+   }
+  },
+  {
+   "street": "Damrak",
+   "gebied": "Centrum-West",
+   "fronts": 15,
+   "ride": 240926,
+   "buurten": [
+    "AD03",
+    "AD05"
+   ],
+   "bands": {
+    "1880-1919": 7,
+    "before-1800": 7,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Amstel",
+   "gebied": "Centrum-Oost",
+   "fronts": 15,
+   "ride": 210252,
+   "buurten": [
+    "AF09",
+    "AG03",
+    "AJ01"
+   ],
+   "bands": {
+    "before-1800": 9,
+    "1800-1879": 4,
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Reguliersbreestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 14,
+   "ride": 200227,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "1880-1919": 2,
+    "before-1800": 11,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Kalverstraat",
+   "gebied": "Centrum-West",
+   "fronts": 14,
+   "ride": 153274,
+   "buurten": [
+    "AD07",
+    "AD08"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "before-1800": 11,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Plantage Kerklaan",
+   "gebied": "Centrum-Oost",
+   "fronts": 13,
+   "ride": 201352,
+   "buurten": [
+    "AJ02"
+   ],
+   "bands": {
+    "1800-1879": 10,
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Singel",
+   "gebied": "Centrum-Oost",
+   "fronts": 12,
+   "ride": 226770,
+   "buurten": [
+    "AG01",
+    "AG02"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "before-1800": 7,
+    "1800-1879": 2
+   }
+  },
+  {
+   "street": "Haarlemmerweg",
+   "gebied": "Westerpark",
+   "fronts": 12,
+   "ride": 160185,
+   "buurten": [
+    "EB09",
+    "EH01",
+    "EH02",
+    "EH03"
+   ],
+   "bands": {
+    "1880-1919": 12
+   }
+  },
+  {
+   "street": "Koninginneweg",
+   "gebied": "Oud-Zuid",
+   "fronts": 12,
+   "ride": 122351,
+   "buurten": [
+    "KC02",
+    "KC03",
+    "KC04",
+    "KD02"
+   ],
+   "bands": {
+    "1880-1919": 12
+   }
+  },
+  {
+   "street": "Wittenburgergracht",
+   "gebied": "Centrum-Oost",
+   "fronts": 11,
+   "ride": 282709,
+   "buurten": [
+    "AK03"
+   ],
+   "bands": {
+    "1880-1919": 10,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Haarlemmerstraat",
+   "gebied": "Centrum-West",
+   "fronts": 11,
+   "ride": 166623,
+   "buurten": [
+    "AA06"
+   ],
+   "bands": {
+    "1800-1879": 6,
+    "1880-1919": 5
+   }
+  },
+  {
+   "street": "Raadhuisstraat",
+   "gebied": "Centrum-West",
+   "fronts": 10,
+   "ride": 609019,
+   "buurten": [
+    "AC02",
+    "AC03",
+    "AD04"
+   ],
+   "bands": {
+    "1880-1919": 8,
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Nieuwezijds Voorburgwal",
+   "gebied": "Centrum-West",
+   "fronts": 10,
+   "ride": 152961,
+   "buurten": [
+    "AD04",
+    "AD05",
+    "AD06",
+    "AD07"
+   ],
+   "bands": {
+    "1880-1919": 4,
+    "before-1800": 6
+   }
+  },
+  {
+   "street": "Amstelstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 10,
+   "ride": 106220,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "before-1800": 6,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "De Lairessestraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 10,
+   "ride": 99563,
+   "buurten": [
+    "KC04",
+    "KD02",
+    "KD06"
+   ],
+   "bands": {
+    "1880-1919": 10
+   }
+  },
+  {
+   "street": "Leidseplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 9,
+   "ride": 233423,
+   "buurten": [
+    "AH01",
+    "AH02",
+    "AH06"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "1800-1879": 4,
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Paleisstraat",
+   "gebied": "Centrum-West",
+   "fronts": 9,
+   "ride": 233407,
+   "buurten": [
+    "AD06",
+    "AD07"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "before-1800": 5,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Voetboogstraat",
+   "gebied": "Centrum-West",
+   "fronts": 9,
+   "ride": 107524,
+   "buurten": [
+    "AD08"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "before-1800": 7,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Ruysdaelstraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 9,
+   "ride": 104096,
+   "buurten": [
+    "KD07",
+    "KD08",
+    "KD09"
+   ],
+   "bands": {
+    "1880-1919": 9
+   }
+  },
+  {
+   "street": "Van Baerlestraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 9,
+   "ride": 84577,
+   "buurten": [
+    "KD03",
+    "KD04",
+    "KD07",
+    "KD08"
+   ],
+   "bands": {
+    "1880-1919": 8,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Ceintuurbaan",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 9,
+   "ride": 59456,
+   "buurten": [
+    "KE03",
+    "KE04",
+    "KE05",
+    "KF02",
+    "KF03",
+    "KF04"
+   ],
+   "bands": {
+    "1880-1919": 9
+   }
+  },
+  {
+   "street": "Spuistraat",
+   "gebied": "Centrum-West",
+   "fronts": 8,
+   "ride": 332533,
+   "buurten": [
+    "AD04",
+    "AD06"
+   ],
+   "bands": {
+    "1880-1919": 4,
+    "before-1800": 4
+   }
+  },
+  {
+   "street": "Engelsesteeg",
+   "gebied": "Centrum-West",
+   "fronts": 8,
+   "ride": 138086,
+   "buurten": [
+    "AD02"
+   ],
+   "bands": {
+    "1880-1919": 5,
+    "before-1800": 2,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Rozengracht",
+   "gebied": "Centrum-West",
+   "fronts": 8,
+   "ride": 128571,
+   "buurten": [
+    "AB06",
+    "AB07",
+    "AB10"
+   ],
+   "bands": {
+    "1880-1919": 8
+   }
+  },
+  {
+   "street": "Utrechtsestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 8,
+   "ride": 72671,
+   "buurten": [
+    "AG06",
+    "AH04"
+   ],
+   "bands": {
+    "1800-1879": 8
+   }
+  },
+  {
+   "street": "Openhartsteeg",
+   "gebied": "Centrum-Oost",
+   "fronts": 8,
+   "ride": 68026,
+   "buurten": [
+    "AG02"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1800-1879": 5,
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Paulus Potterstraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 8,
+   "ride": 67079,
+   "buurten": [
+    "KD04",
+    "KD05"
+   ],
+   "bands": {
+    "1880-1919": 8
+   }
+  },
+  {
+   "street": "Tweede Hugo de Grootstraat",
+   "gebied": "Westerpark",
+   "fronts": 7,
+   "ride": 206327,
+   "buurten": [
+    "EJ02",
+    "EJ03"
+   ],
+   "bands": {
+    "1880-1919": 7
+   }
+  },
+  {
+   "street": "Handboogstraat",
+   "gebied": "Centrum-West",
+   "fronts": 7,
+   "ride": 162551,
+   "buurten": [
+    "AD07",
+    "AD08"
+   ],
+   "bands": {
+    "before-1800": 4,
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Prins Hendrikkade",
+   "gebied": "Centrum-West",
+   "fronts": 7,
+   "ride": 137482,
+   "buurten": [
+    "AD02",
+    "AE01"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "1800-1879": 3,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Polonceau-kade",
+   "gebied": "Westerpark",
+   "fronts": 7,
+   "ride": 94006,
+   "buurten": [
+    "EB09"
+   ],
+   "bands": {
+    "1880-1919": 7
+   }
+  },
+  {
+   "street": "De Ruijterkade",
+   "gebied": "Centrum-Oost",
+   "fronts": 7,
+   "ride": 84776,
+   "buurten": [
+    "AF01"
+   ],
+   "bands": {
+    "1880-1919": 7
+   }
+  },
+  {
+   "street": "Tweede Nassaustraat",
+   "gebied": "Westerpark",
+   "fronts": 7,
+   "ride": 81599,
+   "buurten": [
+    "EH04",
+    "EH05"
+   ],
+   "bands": {
+    "1880-1919": 7
+   }
+  },
+  {
+   "street": "Sint Jorisstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 7,
+   "ride": 66844,
+   "buurten": [
+    "AG02"
+   ],
+   "bands": {
+    "1800-1879": 1,
+    "before-1800": 4,
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Amstelveenseweg",
+   "gebied": "Oud-Zuid",
+   "fronts": 7,
+   "ride": 52774,
+   "buurten": [
+    "KB01",
+    "KB02",
+    "KC02",
+    "KC03"
+   ],
+   "bands": {
+    "1880-1919": 7
+   }
+  },
+  {
+   "street": "Oostenburgergracht",
+   "gebied": "Centrum-Oost",
+   "fronts": 6,
+   "ride": 257600,
+   "buurten": [
+    "AK04"
+   ],
+   "bands": {
+    "1800-1879": 3,
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "'s-Gravesandeplein",
+   "gebied": "Oud-Oost",
+   "fronts": 6,
+   "ride": 189283,
+   "buurten": [
+    "MC01"
+   ],
+   "bands": {
+    "1880-1919": 6
+   }
+  },
+  {
+   "street": "Eerste Constantijn Huygensstraat",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 6,
+   "ride": 152999,
+   "buurten": [
+    "EU02",
+    "EV02"
+   ],
+   "bands": {
+    "1880-1919": 6
+   }
+  },
+  {
+   "street": "Martelaarsgracht",
+   "gebied": "Centrum-West",
+   "fronts": 6,
+   "ride": 138065,
+   "buurten": [
+    "AD02"
+   ],
+   "bands": {
+    "before-1800": 2,
+    "1880-1919": 4
+   }
+  },
+  {
+   "street": "Spui",
+   "gebied": "Centrum-West",
+   "fronts": 6,
+   "ride": 119040,
+   "buurten": [
+    "AD06",
+    "AD07"
+   ],
+   "bands": {
+    "before-1800": 6
+   }
+  },
+  {
+   "street": "Rembrandtplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 6,
+   "ride": 102222,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "1880-1919": 4,
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Jan van Galenstraat",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 6,
+   "ride": 97748,
+   "buurten": [
+    "EL01",
+    "EL02"
+   ],
+   "bands": {
+    "1880-1919": 6
+   }
+  },
+  {
+   "street": "Korte Leidsedwarsstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 6,
+   "ride": 96375,
+   "buurten": [
+    "AH01",
+    "AH02"
+   ],
+   "bands": {
+    "1800-1879": 4,
+    "before-1800": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Gabriël Metsustraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 6,
+   "ride": 92781,
+   "buurten": [
+    "KD08"
+   ],
+   "bands": {
+    "1880-1919": 6
+   }
+  },
+  {
+   "street": "Hobbemakade",
+   "gebied": "Oud-Zuid",
+   "fronts": 6,
+   "ride": 89820,
+   "buurten": [
+    "KD08",
+    "KD09"
+   ],
+   "bands": {
+    "1880-1919": 6
+   }
+  },
+  {
+   "street": "Hekelveld",
+   "gebied": "Centrum-West",
+   "fronts": 6,
+   "ride": 88011,
+   "buurten": [
+    "AD02"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 5
+   }
+  },
+  {
+   "street": "Vondelpark",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 6,
+   "ride": 83386,
+   "buurten": [
+    "EV01",
+    "EV02"
+   ],
+   "bands": {
+    "1880-1919": 4,
+    "1800-1879": 2
+   }
+  },
+  {
+   "street": "Kalkmarkt",
+   "gebied": "Centrum-Oost",
+   "fronts": 6,
+   "ride": 55365,
+   "buurten": [
+    "AF03"
+   ],
+   "bands": {
+    "before-1800": 5,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Sint Antoniesbreestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 5,
+   "ride": 213117,
+   "buurten": [
+    "AF05",
+    "AF08"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 3,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Koningsplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 5,
+   "ride": 147476,
+   "buurten": [
+    "AG01",
+    "AG02"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Westermarkt",
+   "gebied": "Centrum-West",
+   "fronts": 5,
+   "ride": 143808,
+   "buurten": [
+    "AC02",
+    "AC03"
+   ],
+   "bands": {
+    "1880-1919": 2,
+    "before-1800": 3
+   }
+  },
+  {
+   "street": "Haarlemmerplein",
+   "gebied": "Centrum-West",
+   "fronts": 5,
+   "ride": 105373,
+   "buurten": [
+    "AA04",
+    "AA05"
+   ],
+   "bands": {
+    "1800-1879": 1,
+    "1880-1919": 4
+   }
+  },
+  {
+   "street": "Schippersstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 5,
+   "ride": 88556,
+   "buurten": [
+    "AF03"
+   ],
+   "bands": {
+    "before-1800": 4,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Korte Marnixstraat",
+   "gebied": "Centrum-West",
+   "fronts": 5,
+   "ride": 67779,
+   "buurten": [
+    "AA04",
+    "AA05"
+   ],
+   "bands": {
+    "1880-1919": 4,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Van Hallstraat",
+   "gebied": "Westerpark",
+   "fronts": 5,
+   "ride": 42004,
+   "buurten": [
+    "EH01"
+   ],
+   "bands": {
+    "1880-1919": 5
+   }
+  },
+  {
+   "street": "Onkelboerensteeg",
+   "gebied": "Centrum-Oost",
+   "fronts": 4,
+   "ride": 227173,
+   "buurten": [
+    "AF08"
+   ],
+   "bands": {
+    "1800-1879": 3,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Plantage Parklaan",
+   "gebied": "Centrum-Oost",
+   "fronts": 4,
+   "ride": 155780,
+   "buurten": [
+    "AJ02"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 2,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Herenmarkt",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 111721,
+   "buurten": [
+    "AA06"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1800-1879": 2,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Ramskooi",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 68493,
+   "buurten": [
+    "AD03"
+   ],
+   "bands": {
+    "1880-1919": 3,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Zanddwarsstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 4,
+   "ride": 65257,
+   "buurten": [
+    "AF08"
+   ],
+   "bands": {
+    "1800-1879": 3,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Alexanderplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 4,
+   "ride": 62125,
+   "buurten": [
+    "AJ04"
+   ],
+   "bands": {
+    "1880-1919": 2,
+    "before-1800": 1,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Rotganssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 54419,
+   "buurten": [
+    "AA06"
+   ],
+   "bands": {
+    "before-1800": 2,
+    "1800-1879": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Gouwenaarssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 54095,
+   "buurten": [
+    "AD02"
+   ],
+   "bands": {
+    "before-1800": 2,
+    "1800-1879": 2
+   }
+  },
+  {
+   "street": "Korte Reguliersdwarsstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 4,
+   "ride": 44672,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "before-1800": 4
+   }
+  },
+  {
+   "street": "Elandsgracht",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 38737,
+   "buurten": [
+    "AB10"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Wijde Kapelsteeg",
+   "gebied": "Centrum-West",
+   "fronts": 4,
+   "ride": 35202,
+   "buurten": [
+    "AD07"
+   ],
+   "bands": {
+    "before-1800": 3,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Nicolaas Berchemstraat",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 4,
+   "ride": 35086,
+   "buurten": [
+    "KE04"
+   ],
+   "bands": {
+    "1800-1879": 1,
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Amsteldijk",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 4,
+   "ride": 34517,
+   "buurten": [
+    "KE05"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "1800-1879": 3
+   }
+  },
+  {
+   "street": "Kleine-Gartmanplantsoen",
+   "gebied": "Centrum-Oost",
+   "fronts": 3,
+   "ride": 228846,
+   "buurten": [
+    "AH06"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Kattenburgergracht",
+   "gebied": "Centrum-Oost",
+   "fronts": 3,
+   "ride": 94454,
+   "buurten": [
+    "AK02"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Steenhouwerssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 3,
+   "ride": 46026,
+   "buurten": [
+    "AE04"
+   ],
+   "bands": {
+    "before-1800": 3
+   }
+  },
+  {
+   "street": "Smaksteeg",
+   "gebied": "Centrum-West",
+   "fronts": 3,
+   "ride": 44941,
+   "buurten": [
+    "AD02"
+   ],
+   "bands": {
+    "before-1800": 3
+   }
+  },
+  {
+   "street": "Elandsstraat",
+   "gebied": "Centrum-West",
+   "fronts": 3,
+   "ride": 33313,
+   "buurten": [
+    "AB10"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Jan Pieter Heijestraat",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 3,
+   "ride": 32814,
+   "buurten": [
+    "ET01",
+    "EU01"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Willemsparkweg",
+   "gebied": "Oud-Zuid",
+   "fronts": 3,
+   "ride": 32466,
+   "buurten": [
+    "KD02"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Pieter Jacobszstraat",
+   "gebied": "Centrum-West",
+   "fronts": 3,
+   "ride": 31625,
+   "buurten": [
+    "AE04"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Cornelis Troostplein",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 3,
+   "ride": 28263,
+   "buurten": [
+    "KF01",
+    "KF02"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Dapperplein",
+   "gebied": "Oud-Oost",
+   "fronts": 3,
+   "ride": 27379,
+   "buurten": [
+    "ME02"
+   ],
+   "bands": {
+    "1880-1919": 3
+   }
+  },
+  {
+   "street": "Frederiksplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 3,
+   "ride": 21910,
+   "buurten": [
+    "AH04",
+    "AH08"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Jonas Daniël Meijerplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 3,
+   "ride": 21295,
+   "buurten": [
+    "AF09"
+   ],
+   "bands": {
+    "1800-1879": 2,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Begijnensteeg",
+   "gebied": "Centrum-West",
+   "fronts": 3,
+   "ride": 19165,
+   "buurten": [
+    "AD07"
+   ],
+   "bands": {
+    "before-1800": 2,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Marnixstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 276470,
+   "buurten": [
+    "AH05"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Waterlooplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 145002,
+   "buurten": [
+    "AF09"
+   ],
+   "bands": {
+    "1800-1879": 2
+   }
+  },
+  {
+   "street": "Turfdraagsterpad",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 140026,
+   "buurten": [
+    "AE05"
+   ],
+   "bands": {
+    "1800-1879": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Foeliestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 91498,
+   "buurten": [
+    "AF04"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Pieter Jacobszdwarsstraat",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 71945,
+   "buurten": [
+    "AE04"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Jodenbreestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 58627,
+   "buurten": [
+    "AF09"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Sint Antoniesluis",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 54109,
+   "buurten": [
+    "AF06",
+    "AF09"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Sint Luciënsteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 47382,
+   "buurten": [
+    "AD07"
+   ],
+   "bands": {
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Roggeveenstraat",
+   "gebied": "Westerpark",
+   "fronts": 2,
+   "ride": 46727,
+   "buurten": [
+    "EB08"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Servetsteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 44757,
+   "buurten": [
+    "AE02"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Funenkade",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 43919,
+   "buurten": [
+    "AK08"
+   ],
+   "bands": {
+    "1880-1919": 1,
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Dam",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 43079,
+   "buurten": [
+    "AD05",
+    "AE02"
+   ],
+   "bands": {
+    "1800-1879": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "De Clercqstraat",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 2,
+   "ride": 34877,
+   "buurten": [
+    "EP01"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Buiten Bantammerstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 32885,
+   "buurten": [
+    "AF03"
+   ],
+   "bands": {
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Prinsenhofssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 28917,
+   "buurten": [
+    "AE05"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Geelvinckssteeg",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 21837,
+   "buurten": [
+    "AG02"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Bethaniëndwarsstraat",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 20855,
+   "buurten": [
+    "AE03",
+    "AE05"
+   ],
+   "bands": {
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Vondelpark",
+   "gebied": "Oud-Zuid",
+   "fronts": 2,
+   "ride": 19842,
+   "buurten": [
+    "KC02",
+    "KD01"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Kuiperssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 19032,
+   "buurten": [
+    "AE04"
+   ],
+   "bands": {
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Dapperstraat",
+   "gebied": "Oud-Oost",
+   "fronts": 2,
+   "ride": 15869,
+   "buurten": [
+    "ME01"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Amstelveld",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 15504,
+   "buurten": [
+    "AG06"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Cornelis Schuytstraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 2,
+   "ride": 14566,
+   "buurten": [
+    "KD02"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Eerste Egelantiersdwarsstraat",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 14072,
+   "buurten": [
+    "AB05"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Spaarndammerstraat",
+   "gebied": "Westerpark",
+   "fronts": 2,
+   "ride": 12685,
+   "buurten": [
+    "EB06"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Schoutensteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 12390,
+   "buurten": [
+    "AE02"
+   ],
+   "bands": {
+    "before-1800": 2
+   }
+  },
+  {
+   "street": "Westeinde",
+   "gebied": "Centrum-Oost",
+   "fronts": 2,
+   "ride": 12088,
+   "buurten": [
+    "AH08"
+   ],
+   "bands": {
+    "1800-1879": 2
+   }
+  },
+  {
+   "street": "Leidekkerssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 2,
+   "ride": 11934,
+   "buurten": [
+    "AE02"
+   ],
+   "bands": {
+    "before-1800": 1,
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Ruyschstraat",
+   "gebied": "Oud-Oost",
+   "fronts": 2,
+   "ride": 11391,
+   "buurten": [
+    "MB01"
+   ],
+   "bands": {
+    "1880-1919": 2
+   }
+  },
+  {
+   "street": "Oude Turfmarkt",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 173697,
+   "buurten": [
+    "AE05"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Meester Visserplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 133858,
+   "buurten": [
+    "AF09"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Kattenburgerstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 86550,
+   "buurten": [
+    "AK01"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Walenpleintje",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 50252,
+   "buurten": [
+    "AE05"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Nieuwendijk",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 47545,
+   "buurten": [
+    "AD03"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Weesperstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 45089,
+   "buurten": [
+    "AJ01"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Melkwegbrug",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 42725,
+   "buurten": [
+    "AH05"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Sint Nicolaasstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 38026,
+   "buurten": [
+    "AD05"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "A.S. Onderwijzerhof",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 34383,
+   "buurten": [
+    "AF09"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Eikenplein",
+   "gebied": "Oud-Oost",
+   "fronts": 1,
+   "ride": 34238,
+   "buurten": [
+    "MC04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Bakkersstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 32712,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Wapen van Delftsteeg",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 30042,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Kattenburgerplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 26439,
+   "buurten": [
+    "AK02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Van Limburg Stirumstraat",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 23703,
+   "buurten": [
+    "EH03"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "J.W. Siebbeleshof",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 22310,
+   "buurten": [
+    "AF05"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Sarphatipark",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 1,
+   "ride": 19557,
+   "buurten": [
+    "KE04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Nassaukade",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 19419,
+   "buurten": [
+    "EH04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Krugerplein",
+   "gebied": "Oud-Oost",
+   "fronts": 1,
+   "ride": 18710,
+   "buurten": [
+    "MD02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Nadorststeeg",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 17862,
+   "buurten": [
+    "AE04"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Muntplein",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 17665,
+   "buurten": [
+    "AD08"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Van Diemenstraat",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 17162,
+   "buurten": [
+    "EB08"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Klokkengang",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 14813,
+   "buurten": [
+    "AE03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Droogbak",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 13626,
+   "buurten": [
+    "AA06"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Bethaniënstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 12708,
+   "buurten": [
+    "AE03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Gooijersteeg",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 12152,
+   "buurten": [
+    "AE02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Concordiahofje-Zuid",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 12125,
+   "buurten": [
+    "AB10"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Cullinanplein",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "fronts": 1,
+   "ride": 12059,
+   "buurten": [
+    "KF04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Valeriusplein",
+   "gebied": "Oud-Zuid",
+   "fronts": 1,
+   "ride": 11645,
+   "buurten": [
+    "KC04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Hasselaerssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 10961,
+   "buurten": [
+    "AD03"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Weesperplein",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 10514,
+   "buurten": [
+    "AJ03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Schalk Burgerstraat",
+   "gebied": "Oud-Oost",
+   "fronts": 1,
+   "ride": 10457,
+   "buurten": [
+    "MD02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Gravenstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 10406,
+   "buurten": [
+    "AD05"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Jacob Catskade",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 9408,
+   "buurten": [
+    "EJ01"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Staringplein",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 1,
+   "ride": 8473,
+   "buurten": [
+    "ET01"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Houtmankade",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 8457,
+   "buurten": [
+    "EB09"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Korte 's-Gravesandestraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 7495,
+   "buurten": [
+    "AJ03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Salamandersteeg",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 7366,
+   "buurten": [
+    "AF08"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Spaarndammerdijk",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 7060,
+   "buurten": [
+    "EA03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Wijttenbachstraat",
+   "gebied": "Oud-Oost",
+   "fronts": 1,
+   "ride": 6788,
+   "buurten": [
+    "ME02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Velserweg",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 6414,
+   "buurten": [
+    "EA03"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Marnixplein",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 6282,
+   "buurten": [
+    "AB01"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Planciusstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 5960,
+   "buurten": [
+    "AA01"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Fannius Scholtenstraat",
+   "gebied": "Westerpark",
+   "fronts": 1,
+   "ride": 5467,
+   "buurten": [
+    "EH02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Hannie Dankbaarpassage",
+   "gebied": "Oud-West, De Baarsjes",
+   "fronts": 1,
+   "ride": 5424,
+   "buurten": [
+    "EP02"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Zeedijk",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 5423,
+   "buurten": [
+    "AE03"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Beukenweg",
+   "gebied": "Oud-Oost",
+   "fronts": 1,
+   "ride": 5415,
+   "buurten": [
+    "MC04"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Leidsekruisstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 5401,
+   "buurten": [
+    "AH02"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Kleine Houtstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 5336,
+   "buurten": [
+    "AA05"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Sint Olofssteeg",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 5093,
+   "buurten": [
+    "AE01"
+   ],
+   "bands": {
+    "1800-1879": 1
+   }
+  },
+  {
+   "street": "Tweede Passeerdersdwarsstraat",
+   "gebied": "Centrum-West",
+   "fronts": 1,
+   "ride": 5091,
+   "buurten": [
+    "AB11"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Cornelis Krusemanstraat",
+   "gebied": "Oud-Zuid",
+   "fronts": 1,
+   "ride": 4978,
+   "buurten": [
+    "KC03"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  },
+  {
+   "street": "Paardenstraat",
+   "gebied": "Centrum-Oost",
+   "fronts": 1,
+   "ride": 4858,
+   "buurten": [
+    "AG03"
+   ],
+   "bands": {
+    "before-1800": 1
+   }
+  },
+  {
+   "street": "Concertgebouwplein",
+   "gebied": "Oud-Zuid",
+   "fronts": 1,
+   "ride": 4844,
+   "buurten": [
+    "KD07"
+   ],
+   "bands": {
+    "1880-1919": 1
+   }
+  }
+ ],
+ "population": 42389,
+ "rideRoutes": 300
+}

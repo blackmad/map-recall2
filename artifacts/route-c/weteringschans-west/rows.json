@@ -64,8 +64,38 @@
    {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 278.6 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 278.6 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/band",
+    "value": "#4e3128",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 278.6 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 278.6 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 278.6 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 177024)"
    },
    {
     "path": "fronts/0/windows",
@@ -110,12 +140,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -138,11 +162,11 @@
    }
   ],
   "ms": {
-   "facts": 2287.9553750000005,
-   "complete": 5.051500000000033,
-   "compile": 110.781833,
-   "meshopt": 11.77587500000027,
-   "preview": 4244.105334
+   "facts": 4441.872584000001,
+   "complete": 174.55575000000044,
+   "compile": 1740.3350830000009,
+   "meshopt": 173.06816600000093,
+   "preview": 17387.553667
   },
   "geometry": {
    "year": 1867,
@@ -151,7 +175,12 @@
    "eavesM": 16.453058302749508,
    "widthM": 6.866183364861345,
    "crownRiseM": 3.53,
-   "crownPeaked": true
+   "crownPeaked": true,
+   "scale": {
+    "heightM": 18.8,
+    "widthM": 6.819805330131203
+   },
+   "group": "0363100012177024"
   },
   "gates": [
    {
@@ -238,6 +267,9 @@
     "wallMaterial": "brick",
     "brick": "#4d3e36",
     "frame": "white-painted",
+    "band": "#4e3128",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -297,16 +329,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171971.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 278.8 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 278.8 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 278.8 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 278.8 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 278.8 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 177024)"
    },
    {
     "path": "fronts/0/windows",
@@ -351,12 +407,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -379,11 +429,11 @@
    }
   ],
   "ms": {
-   "facts": 621.6088749999999,
-   "complete": 0.9217079999998532,
-   "compile": 30.867041999999856,
-   "meshopt": 4.263249999999971,
-   "preview": 4203.8935409999995
+   "facts": 738.3122909999984,
+   "complete": 16.16283399999884,
+   "compile": 251.16120799999953,
+   "meshopt": 8.434957999999824,
+   "preview": 18253.852625
   },
   "geometry": {
    "year": 1867,
@@ -392,7 +442,12 @@
    "eavesM": 15.801439097546105,
    "widthM": 6.514325214497328,
    "crownRiseM": 2.74,
-   "crownPeaked": true
+   "crownPeaked": true,
+   "scale": {
+    "heightM": 19,
+    "widthM": 6.788593091536313
+   },
+   "group": "0363100012177024"
   },
   "gates": [
    {
@@ -442,8 +497,8 @@
    }
   ],
   "triangles": 859,
-  "bytes": 63036,
-  "meshoptBytes": 31184,
+  "bytes": 63384,
+  "meshoptBytes": 32228,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -466,8 +521,8 @@
      },
      "bands": "storey",
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -483,6 +538,8 @@
     "wallMaterial": "brick",
     "brick": "#453a34",
     "frame": "white-painted",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -545,16 +602,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171824.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 267.9 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 267.9 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 267.9 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 267.9 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 267.9 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171824)"
    },
    {
     "path": "fronts/0/windows",
@@ -599,12 +680,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -636,11 +711,11 @@
    }
   ],
   "ms": {
-   "facts": 690.5422079999998,
-   "complete": 0.8548330000003261,
-   "compile": 49.50854199999958,
-   "meshopt": 3.50787500000024,
-   "preview": 4212.605
+   "facts": 364.5540830000009,
+   "complete": 2.114459000000352,
+   "compile": 569.181958000001,
+   "meshopt": 9.598332999999911,
+   "preview": 14000.957917
   },
   "geometry": {
    "year": 1867,
@@ -649,7 +724,12 @@
    "eavesM": 15.656040334635591,
    "widthM": 6.8830471449861665,
    "crownRiseM": 0.08,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 18.7,
+    "widthM": 6.939959667623043
+   },
+   "group": "0363100012171824"
   },
   "gates": [
    {
@@ -695,8 +775,8 @@
    }
   ],
   "triangles": 1329,
-  "bytes": 90992,
-  "meshoptBytes": 41528,
+  "bytes": 91336,
+  "meshoptBytes": 42640,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -719,8 +799,8 @@
      },
      "bands": "storey",
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -740,6 +820,8 @@
     "wallMaterial": "brick",
     "brick": "#51433b",
     "frame": "white-painted",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -803,16 +885,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171982.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 269.5 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 269.5 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 269.5 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 269.5 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 269.5 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171824)"
    },
    {
     "path": "fronts/0/windows",
@@ -857,12 +963,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -894,11 +994,11 @@
    }
   ],
   "ms": {
-   "facts": 625.7362920000005,
-   "complete": 0.6210829999999987,
-   "compile": 34.942833000000064,
-   "meshopt": 2.996165999999903,
-   "preview": 4380.532124999998
+   "facts": 400.7094580000012,
+   "complete": 1.5818340000005264,
+   "compile": 223.19045899999946,
+   "meshopt": 27.9614160000001,
+   "preview": 14451.645625000005
   },
   "geometry": {
    "year": 1867,
@@ -907,7 +1007,12 @@
    "eavesM": 15.541426316084635,
    "widthM": 6.972571548575791,
    "crownRiseM": 0.03,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 18.6,
+    "widthM": 6.925217485055327
+   },
+   "group": "0363100012171824"
   },
   "gates": [
    {
@@ -953,8 +1058,8 @@
    }
   ],
   "triangles": 1301,
-  "bytes": 88160,
-  "meshoptBytes": 40756,
+  "bytes": 88504,
+  "meshoptBytes": 41856,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -977,8 +1082,8 @@
      },
      "bands": "storey",
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -998,6 +1103,8 @@
     "wallMaterial": "brick",
     "brick": "#67503a",
     "frame": "white-painted",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -1060,16 +1167,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012175058.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 266.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 266.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 266.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 266.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 266.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175058)"
    },
    {
     "path": "fronts/0/windows",
@@ -1114,12 +1245,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -1142,11 +1267,11 @@
    }
   ],
   "ms": {
-   "facts": 630.4854999999998,
-   "complete": 0.6036250000006476,
-   "compile": 29.38299999999981,
-   "meshopt": 2.7344160000002375,
-   "preview": 4777.267792000002
+   "facts": 363.5802500000009,
+   "complete": 1.455500000000029,
+   "compile": 586.0058750000007,
+   "meshopt": 5.141666000001351,
+   "preview": 6066.849625000003
   },
   "geometry": {
    "year": 1867,
@@ -1155,7 +1280,12 @@
    "eavesM": 15.510892871961914,
    "widthM": 6.587010019719436,
    "crownRiseM": 0.1,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 18.8,
+    "widthM": 6.753074375446886
+   },
+   "group": "0363100012175058"
   },
   "gates": [
    {
@@ -1201,8 +1331,8 @@
    }
   ],
   "triangles": 1246,
-  "bytes": 85476,
-  "meshoptBytes": 39836,
+  "bytes": 85816,
+  "meshoptBytes": 40956,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1225,8 +1355,8 @@
      },
      "bands": "storey",
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1242,6 +1372,8 @@
     "wallMaterial": "brick",
     "brick": "#4a3a33",
     "frame": "white-painted",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -1298,16 +1430,46 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171983.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "palette/band",
+    "value": "#4e3128",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012163052 (Frans Halsstraat, 264.6 m, tier scale, pick 1 of 1, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171983)"
    },
    {
     "path": "fronts/0/windows",
@@ -1352,12 +1514,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -1393,11 +1549,11 @@
    }
   ],
   "ms": {
-   "facts": 437.1836250000006,
-   "complete": 0.5952499999993961,
-   "compile": 36.81566599999951,
-   "meshopt": 2.947541999999885,
-   "preview": 4944.630708000001
+   "facts": 279.5217499999999,
+   "complete": 2.6736670000009326,
+   "compile": 305.74804199999926,
+   "meshopt": 13.548375000000306,
+   "preview": 5949.609000000011
   },
   "geometry": {
    "year": 1867,
@@ -1406,7 +1562,12 @@
    "eavesM": 16.999810546587717,
    "widthM": 6.13805001605557,
    "crownRiseM": 4.13,
-   "crownPeaked": true
+   "crownPeaked": true,
+   "scale": {
+    "heightM": 18.8,
+    "widthM": 6.153323935344815
+   },
+   "group": "0363100012171983"
   },
   "gates": [
    {
@@ -1456,8 +1617,8 @@
    }
   ],
   "triangles": 1788,
-  "bytes": 121172,
-  "meshoptBytes": 52904,
+  "bytes": 121504,
+  "meshoptBytes": 53964,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1479,8 +1640,8 @@
       "kind": "segmental"
      },
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1500,6 +1661,9 @@
     "wallMaterial": "brick",
     "brick": "#4c4132",
     "frame": "white-painted",
+    "band": "#4e3128",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -1555,16 +1719,46 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012175059.jpg"
    },
    {
-    "path": "fronts/0/cornice",
-    "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
-   },
-   {
     "path": "fronts/0/windowSurround",
     "value": "sill",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/band",
+    "value": "#4e3128",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#ebe8df",
+    "source": "template",
+    "ref": "template:0363100012159558 (Frans Halsstraat, 251.7 m, tier scale, pick 1 of 2, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175059)"
    },
    {
     "path": "fronts/0/windows",
@@ -1609,12 +1803,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -1641,11 +1829,11 @@
    }
   ],
   "ms": {
-   "facts": 541.7615409999999,
-   "complete": 0.5684579999997368,
-   "compile": 28.92462499999965,
-   "meshopt": 3.021791000000121,
-   "preview": 4150.0974170000045
+   "facts": 362.8755000000001,
+   "complete": 1.7854999999999563,
+   "compile": 186.4390000000003,
+   "meshopt": 12.293333999999959,
+   "preview": 8060.687124999997
   },
   "geometry": {
    "year": 1867,
@@ -1654,7 +1842,12 @@
    "eavesM": 16.1530569363233,
    "widthM": 6.394688499066966,
    "crownRiseM": 4.08,
-   "crownPeaked": true
+   "crownPeaked": true,
+   "scale": {
+    "heightM": 18.5,
+    "widthM": 6.414348547812551
+   },
+   "group": "0363100012175059"
   },
   "gates": [
    {
@@ -1704,8 +1897,8 @@
    }
   ],
   "triangles": 1730,
-  "bytes": 114684,
-  "meshoptBytes": 49116,
+  "bytes": 115032,
+  "meshoptBytes": 50180,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1727,8 +1920,8 @@
       "kind": "segmental"
      },
      "gable": "cornice",
-     "cornice": "simple",
      "windowSurround": "sill",
+     "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1744,6 +1937,9 @@
     "wallMaterial": "brick",
     "brick": "#504640",
     "frame": "white-painted",
+    "band": "#4e3128",
+    "stone": "#ebe8df",
+    "cornice": "#ebe8df",
     "door": "#2a2a2a"
    }
   }
@@ -1800,13 +1996,19 @@
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "ref": "family draw 1800-1879|main (n 40, 4 values; group 175060)"
    },
    {
     "path": "fronts/0/windowSurround",
     "value": "sill",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.721)"
+    "ref": "family draw 1800-1879|main (n 40, 4 values; group 175060)"
+   },
+   {
+    "path": "fronts/0/windowSills",
+    "value": "none",
+    "source": "family",
+    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175060)"
    },
    {
     "path": "fronts/0/windows",
@@ -1854,7 +2056,7 @@
     "path": "palette/frame",
     "value": "white-painted",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
+    "ref": "family draw 1800-1879|main (n 40, 2 values; group 175060)"
    },
    {
     "path": "palette/door",
@@ -1875,11 +2077,11 @@
    }
   ],
   "ms": {
-   "facts": 318.98504199999934,
-   "complete": 0.47566699999970297,
-   "compile": 20.068041999999878,
-   "meshopt": 2.0987089999998716,
-   "preview": 4805.973417000001
+   "facts": 371.5674589999999,
+   "complete": 2.1127919999998994,
+   "compile": 137.08895800000028,
+   "meshopt": 9.31445800000074,
+   "preview": 14919.791208999988
   },
   "geometry": {
    "year": 1870,
@@ -1888,7 +2090,12 @@
    "eavesM": 15.902951558634161,
    "widthM": 5.328280210355783,
    "crownRiseM": 0.03,
-   "crownPeaked": false
+   "crownPeaked": false,
+   "scale": {
+    "heightM": 17.9,
+    "widthM": 5.363079418428242
+   },
+   "group": "0363100012175060"
   },
   "gates": [
    {

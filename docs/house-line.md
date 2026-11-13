@@ -3075,16 +3075,28 @@ quality tier on top of A (reviewer ruling 2026-11-13). C never installs or publi
 **Fill ladder** (the same order for route A and route C). The part's stated fields are kept. An unstated field is filled from, in order:
 1. A twin: both reads name each other (`sameAs`), PR1 `similar` holds and the walls touch. Only the twin's stated fields are copied, and the door is mirrored.
 2. The reading, when geometry corroborates it. D1 stages only crown classes with precision >= 0.8. A raised-gable answer (point, neck, bell and so on) is used when 3DBAG shows >= 2 m of crown over the eaves. 168094's point gable comes from this rung; the prototype's fixed cornice lost it.
-3. The street template (`streetTemplate.ts`). The template is the nearest reviewed house (hand spec or block face) of the same build-year band within 150 m: one on the same street first, else one on any street in reach (the adjoining blocks).
+3. The street template (`streetTemplate.ts`, round 3 ranking). A template must match the house, not only be near it. Within 300 m and the same build-year band, the tiers are:
+   1. `street`: the same street;
+   2. `class+scale`: the same street class (`streetClass.ts`: OSM main or side, from the routing extract) and a similar scale;
+   3. `scale`: a similar scale on another class (an adjoining side street). Scale outranks class.
+   - Similar scale means the building tile's 3DBAG height within 2 m and the footprint's narrow side within 1 m. Both sides use the same instrument. bag-facts eaves were rejected: they disagree with the recipe facts' front eaves by 4–10 m on 4 of the 8 Weteringschans fronts.
+   - When no tier has a candidate there is no template. The ladder never falls through to a poor one.
+   - Interwar and post-war bands never lend or receive a template (`TEMPLATE_BANDS`).
    - It fills DRESSINGS only: surround and its storeys, sills, hoods (lintels), band kind and its parameters, cornice, and the frame, band, stone and cornice colours.
    - Structure (storeys, bays, crown, souterrain, basement, roof storey, roof) never comes from a template; `STRUCTURE_FIELDS` and a test guard this.
    - A band the reader read as `none` stays `none`. Band parameters are copied only together with the template's own band kind.
-   - Variety guard: the pick is the in-reach pool, sorted by pand id, at an FNV-1a hash of the query's pand id. One house is not stamped down a street.
-   - The ref names the template: `template:<pand id> (street, distance, same street or adjoining block, pick 1 of n, source)`.
+   - Variety guard: the pick is the tier's pool, sorted by pand id, at an FNV-1a hash of the query's pand id.
+   - The ref names the template: `template:<pand id> (street, distance, tier, pick 1 of n, source)`.
 4. PR1's structure prior, for storeys and window columns.
 5. The family default. A raised family gable needs all three of: no level crown read (cornice, flat, mansard, pitched-eaves), >= 2 m of crown, and a peaked 3DBAG top profile. Without this rule, 171218's mansard drew a step gable.
 
-**Family defaults are per band** (round 2). Each band's value is measured only from houses of that band; school blocks before 1920 are excluded. An absent dressing counts as `none`, so a plain band says plain. All years stand in only for a field the intent requires (gable, cornice and so on) and the band has too few observations; an optional dressing never falls back.
+**Family defaults are per band** (round 2). Each band's value is measured only from houses of that band; school blocks before 1920 are excluded. An absent dressing counts as `none`. All years stand in only for a field the intent requires and the band has too few observations; an optional dressing never falls back.
+
+**Dressings are drawn, never the mode** (round 3). Surround, sills, cornice and frame colour come from the measured distribution in `family-defaults.json` `draws`:
+- One draw per group of similar adjoining fronts (PR1 `similar` along the row list), keyed by hash(group, field). A row stays coherent and streets differ.
+- The cell is band x street class x scale (tile height under 13 m, 13–17 m, 17 m and over), else band x class, once it holds n >= 20.
+- Until then, a main-street front with no template keeps today's look: a fill with source `today` and no field. A side-street front draws from the band. The required cornice always draws.
+- Most main cells are already full: 1800–1879 main n 40, 1880–1919 main n 312. `today` fires only in thin cells.
 
 | Band | Houses | Surround (mode, share) | Bands (mode, share) | Raised gable (mode, n) |
 |---|---|---|---|---|
@@ -3145,13 +3157,17 @@ A front qualifies for C with two or more. On AH07, 42 of 194 staged fronts quali
 
 These reach the spec only as `gaps` text, so C cannot draw them. A describer field for each is the cheapest next lift.
 
-**Template coverage (round 2, `template-coverage.json`).** A front has a template when a reviewed house of its band lies within 150 m.
-- AH07 (190 described fronts): 137 have one (72 %); the median front has 7 in reach. By band: 1880–1919 86 %, 1800–1879 71 %, 1920–1944 0 of 7, after 1944 0 of 8.
-- The ride-ranked top 5,000 pre-1945 fronts of the Centrum and first-ring gebieden (population 42,389, 300 routes, seed 7): 1,909 have one (38 %).
-  - By band: before 1800 49 %, 1800–1879 40 %, 1880–1919 41 %, 1920–1944 17 %.
-  - By gebied: Centrum-West 48 %, De Pijp 49 %, Oud-West 46 %, Westerpark 37 %, Centrum-Oost 29 %, Oud-Oost 24 %, Oud-Zuid 19 % (its 263 interwar fronts have none).
-- The 8 Weteringschans fronts: none has a same-street template. All draw from the adjoining blocks: 6 different houses picked from pools of 7–8 (Nicolaas Witsenstraat 177760, 177761, 177762; Den Texstraat 179509, 179511, 179377), at 75–146 m.
-- Row 2 (Weteringschans west, 1867): no template within 150 m. The nearest of its band is Frans Halsstraat at 279 m, so the family fills.
-- Den Texstraat control: every front has a same-street template (pools of 8–9, 12–53 m), with 6 distinct picks for 8 fronts.
+**Template coverage (round 3 ranking, `template-coverage.json`).** Each front's street is the nearest named street way to its centroid (an approximation for corner and deep pands).
+- AH07 (190 fronts): 130 have a qualifying template (68 %): 59 street, 25 class+scale, 46 scale. Side streets 88 %, main streets 49 %. Interwar and post-war: none, by rule.
+- The ride-ranked top 5,000 pre-1945 Centrum/first-ring fronts: 1,708 (34 %). 1880–1919 41 %, before 1800 47 %, 1800–1879 37 %, 1920–1944 0 % by rule. Main streets 33 %, side streets 36 %.
+- By gebied: Centrum-West 45 %, De Pijp 44 %, Oud-West 38 %, Westerpark 40 %, Centrum-Oost 26 %, Oud-Oost 19 %, Oud-Zuid 14 %.
+- 178 main-street segments (street x gebied) have fronts with no template, 1,198 fronts in all, in `mainStreetsWithoutTemplate`, ranked by fronts served: Sarphatistraat (99), Rokin (60), Overtoom (46), Plantage Middenlaan (44), Weteringschans (36), Marnixstraat (30), Singel (29), Admiraal De Ruijterweg (28), Prins Hendrikkade (28), Stadhouderskade in De Pijp (25). This is the input for a seed lane.
+- The 8 Weteringschans fronts (scale on the tile instrument): 168094 and 168095 (20.6–20.9 m) have none. The other six (16.4–17.0 m) qualify on scale with Nicolaas Witsenstraat houses of 17.5–17.9 m (and, at the 2.0 m edge, one 14.5 m Den Texstraat house). The low Den Texstraat houses (14.1–14.3 m) never qualify. The expectation that all eight get none does not hold on measured heights.
+- Row 2 (Weteringschans west): seven fronts take a Frans Halsstraat template on scale at 250–280 m; 175060 (5.4 m wide) has none.
+- Den Texstraat: every front takes a same-street template.
 
-Re-run with the template and band defaults: 24 of 24 compile, no holds; the one drop is still 168094's courses. Weteringschans gets 4–5 template fills per front.
+Re-run with the round 3 ladder (Node only): 24 of 24 compile, no holds; the one drop is still 168094's courses.
+- Weteringschans: 168094 and 168095 have no template and draw from the 1800–1879 main x 17 m+ cell (stone-lintel and full-frame surrounds, white frames). They land in different groups because PR1 `similar` does not join them, so the pair does not share a draw. The other six take Nicolaas Witsenstraat templates on scale.
+- Row 2: seven Frans Halsstraat templates; 175060 draws (sill surround, simple cornice).
+- Den Texstraat: all same-street templates.
+- PR1 groups along the rows are mostly pairs (169016 with 168042, 171971 with 177024, and so on).
