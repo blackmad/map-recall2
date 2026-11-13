@@ -50,7 +50,7 @@ import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
-import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { buildingMercatorFromLocal } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
@@ -2336,9 +2336,9 @@ export class ThreeBuildings {
       this.scheduleStage();
       this.map.triggerRepaint();
     });
-    const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
-    const scale = c.meterInMercatorCoordinateUnits();
-    this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+    // The equatorial metre, not the map's (MapLibre's mean-radius metre drew every generic building 0.112 % of its
+    // distance from ORIGIN too far out: buildingProjectionScale.ts). Identical to the own ground's transform.
+    this.transform = new THREE.Matrix4().fromArray(buildingMercatorFromLocal(ORIGIN));
   }
 
   /** The canvas pixel ratio MapLibre renders at (the facade tier's rates are per CSS pixel). */
