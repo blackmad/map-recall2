@@ -3,8 +3,10 @@
 // Thin adapter: the models (src/canalRecall/streetFurniture/models.ts) and the record → instance rules (placement.ts)
 // are typed; this file streams z15 tiles by view (ViewResidency), fills one InstancedMesh per kind with one shared
 // vertex-colour material, and culls each with rendererShared/instanceCull.ts. Draws from zoom 16 within 220 m of the
-// view centre. `?furniture=0` turns it off. No shadows (the budget is six instanced draws, not twelve).
+// rider (`options.rider`, the own engine's camera subject; the view centre when there is none: feedback 4d7706de,
+// rendererShared/riderViewBox.ts). `?furniture=0` turns it off. No shadows (the budget is six instanced draws, not twelve).
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
+import {radiusCentre,riderViewBox} from '../../../src/canalRecall/rendererShared/riderViewBox.ts';
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
@@ -20,10 +22,10 @@ export function furnitureFlag() {
   try { return new URLSearchParams(location.search).get('furniture') !== '0'; } catch { return true; }
 }
 
-/** The view box clipped to RADIUS_M round the view centre. */
-function viewBox(camera) {
-  const b=camera.bounds(),c=camera.center(),dy=RADIUS_M/110540,dx=RADIUS_M/(111320*Math.cos(c.lat*Math.PI/180));
-  return {west:Math.max(b.getWest(),c.lng-dx),east:Math.min(b.getEast(),c.lng+dx),south:Math.max(b.getSouth(),c.lat-dy),north:Math.min(b.getNorth(),c.lat+dy)};
+/** The view box clipped to RADIUS_M round the rider (the view centre without one); null when they do not meet. */
+function viewBox(camera, rider) {
+  const b=camera.bounds(),centre=radiusCentre(rider?.(),camera.center());
+  return riderViewBox(b?{west:b.getWest?.()??b.west,east:b.getEast?.()??b.east,south:b.getSouth?.()??b.south,north:b.getNorth?.()??b.north}:null,centre,RADIUS_M);
 }
 
 /**
@@ -53,7 +55,7 @@ export function furnitureGeometry(id) {
 
 export class StreetFurniture {
   constructor(map, maplibregl, options = {}) {
-    this.map=map;this.camera=options.camera||worldCameraOf(map);this.maplibregl=maplibregl;
+    this.map=map;this.camera=options.camera||worldCameraOf(map);this.maplibregl=maplibregl;this.rider=typeof options.rider==='function'?options.rider:null;
     this.enabled=furnitureFlag();this.ready=false;this.generation=0;
     this.tiles=new Map();this.pending=new Map();this.meshes=[];this.culls=[];this.queue=[];
     this.residency=new ViewResidency(.25,60);
@@ -118,16 +120,18 @@ export class StreetFurniture {
   update(){
     if(!this.enabled||!this.ready||this.suspended)return;
     if(this.camera.zoom()<MIN_ZOOM){if(this.meshes.length||this.tiles.size)this.clear();return;}
-    const b=viewBox(this.camera),c=this.camera.center();
+    const b=viewBox(this.camera,this.rider),c=radiusCentre(this.rider?.(),this.camera.center());
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];
-    const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
-    for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
+    if(b){
+      const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c[0],c[1]);
+      for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
+    }
     wanted.sort((a,b)=>a.d-b.d);const keys=new Set(wanted.slice(0,BUDGET).map(t=>t.key));
     for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
     for(const [key,ctl] of this.pending)if(!keys.has(key)){ctl.abort();this.pending.delete(key);}
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
-    if(this.residency.needsRebuild(b,'f'))this.rebuilds.request();
+    if(b&&this.residency.needsRebuild(b,'f'))this.rebuilds.request();
     this.pump();
   }
   pump(){while(this.pending.size<2&&this.queue.length){const key=this.queue.shift();void this.fetchTile(key);}}
@@ -150,7 +154,9 @@ export class StreetFurniture {
   }
   rebuild(){
     this.disposeMeshes();
-    const b=this.residency.built(viewBox(this.camera),'f'),groups=new Map();
+    const view=viewBox(this.camera,this.rider);
+    if(!view){this.debug.instances=0;this.debug.byModel={};return;}
+    const b=this.residency.built(view,'f'),groups=new Map();
     for(const list of this.tiles.values())for(const i of list){
       if(i.lng<b.west||i.lng>b.east||i.lat<b.south||i.lat>b.north)continue;
       (groups.get(i.model)??groups.set(i.model,[]).get(i.model)).push(i);
