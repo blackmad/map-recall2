@@ -1,0 +1,250 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182857",
+ "address": "Nieuwmarkt 20-22",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "step",
+    "crownSteps": 4,
+    "storeys": 2,
+    "bays": 5,
+    "atticWindows": 2,
+    "doorBay": 1,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "none",
+    "hoist": false,
+    "windows": "sash-small-panes",
+    "bands": "speklagen",
+    "speklagen": {
+     "spacing": 12,
+     "courses": 2
+    },
+    "windowHead": {
+     "kind": "relieving",
+     "archRing": {
+      "colour": "stone",
+      "style": "blocks",
+      "widthCourses": 4
+     }
+    },
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": false,
+     "glazing": "transom",
+     "entrance": "left",
+     "stallriser": "medium",
+     "displayWindows": 4,
+     "evidence": "tall white pui with small-paned transom lights and two doors, 2025-01-08"
+    },
+    "windowShare": 0.6,
+    "windowHeights": "diminishing",
+    "crownGroups": [
+     {
+      "from": 0,
+      "to": 1
+     },
+     {
+      "from": 3,
+      "to": 4
+     }
+    ]
+   }
+  ],
+  "roof": {
+   "material": "black-tile",
+   "source": "front",
+   "evidence": "gable front: the roof follows the crown (house:crops crop)"
+  },
+  "palette": {
+   "brick": "#463830",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#ece6cf",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): two step gables side by side (register 3856: tweeling, 1605)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/crownSteps": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): five axes on the first storey",
+   "at": "2021-12-27"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): white speklagen through the whole front and gables",
+   "at": "2021-12-27"
+  },
+  "fronts/0/speklagen": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): white block arches (five blocks) over every window",
+   "at": "2021-12-27"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "fronts/0/crownGroups": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): two step gables over axes 0-1 and 3-4 (gable feet at 0-0.39 and 0.53-0.98 of the front on the crop); the valley between them over axis 2",
+   "at": "2021-12-27"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08): leaf-off wall vote over 2021-12-27, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
+   "at": "2021-12-27"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-12-27"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable",
+   "what": "the light in the valley between the two gables (over axis 2) and the stacked top lights of each gable"
+  },
+  {
+   "component": "palette",
+   "what": "the speklagen are closer (about every 8 courses) than drawn (12): the triangle budget"
+  }
+ ]
+}

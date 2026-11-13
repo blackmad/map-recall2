@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171696",
+ "address": "Geldersekade 85",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "point",
+    "cornice": "none",
+    "storeys": 3,
+    "bays": 3,
+    "doorBay": 0,
+    "tallGround": true,
+    "windows": "casement-gridded-toplight",
+    "atticWindows": 1,
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": false,
+     "glazing": "transom",
+     "entrance": "left",
+     "stallriser": "medium",
+     "displayWindows": 2,
+     "evidence": "white gridded warehouse ground storey with a black door, 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile",
+   "source": "front",
+   "evidence": "point gable"
+  },
+  "palette": {
+   "brick": "#424244",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08): plain point (warehouse) gable with white verges",
+   "at": "2022-12-15"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08): wide gridded windows over the two upper storeys",
+   "at": "2022-12-15"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08): one small hoist hatch in the gable",
+   "at": "2022-12-15"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08): leaf-off wall vote over 2022-12-15, 2021-03-08, 2019-01-15 (wallFit, 3 captures)",
+   "at": "2022-12-15"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171696/front.jpg (2025-01-08)",
+   "at": "2022-12-15"
+  }
+ }
+}

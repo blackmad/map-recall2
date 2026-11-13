@@ -70,6 +70,8 @@ for (const pand of pands) {
     // A house directory this script creates is removed after the render (house:publish step 3 writes it for real); an
     // existing one is restored, so the working tree is as it was.
     if (!fs.existsSync(path.dirname(file))) cleanups.push(() => fs.rmSync(path.dirname(file), { recursive: true, force: true }));
+    // A directory that holds only a hand facts.json (an eaves pin, belt-nieuwmarkt #363) loses the written intent again.
+    else if (!fs.existsSync(file)) cleanups.push(() => fs.rmSync(file, { force: true }));
     else { const before = fs.readFileSync(file); cleanups.push(() => fs.writeFileSync(file, before)); }
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, JSON.stringify(mergeRecipeIntent(fs.existsSync(file) ? readJson(file) : null, generated, id), null, 1) + '\n');

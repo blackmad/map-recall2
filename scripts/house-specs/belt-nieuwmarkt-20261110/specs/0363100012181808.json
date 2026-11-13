@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012181808",
+ "address": "Nieuwmarkt 17-23",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "storeys": 5,
+    "bays": 3,
+    "doorBay": 1,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "none",
+    "hoist": false,
+    "windows": "cross",
+    "shopfront": {
+     "colour": "#2a2a2a",
+     "fascia": false,
+     "entrance": "centre",
+     "stallriser": "low",
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#a4532c"
+     },
+     "evidence": "cafe terrace under an orange awning, 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing",
+    "storeyHeights": [
+     1.3,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "roof": {
+   "material": "black-tile",
+   "source": "front",
+   "evidence": "gable front: the roof follows the crown (house:crops crop)"
+  },
+  "palette": {
+   "brick": "#4f3a30",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08): neck gable with large white sculpted scrolls and a rounded cap",
+   "at": "2025-01-08"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08): cafe storey and four window storeys",
+   "at": "2025-01-08"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08): cafe storey about 3.2 m, four upper storeys about 2.5 m",
+   "at": "2025-01-08"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08): dark brown brick (the crop is in shade)",
+   "at": "2025-01-08"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "large white sculpted scrolls and vases beside the neck; a gable stone under the first-storey windows"
+  }
+ ]
+}

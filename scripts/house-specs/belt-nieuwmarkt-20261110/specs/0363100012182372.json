@@ -1,0 +1,183 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182372",
+ "address": "Geldersekade 66",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 2,
+    "doorBay": 1,
+    "tallGround": true,
+    "windows": "casement-toplight",
+    "balconies": {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      0
+     ]
+    },
+    "shopfront": {
+     "colour": "#8a1f1f",
+     "fascia": true,
+     "entrance": "right",
+     "stallriser": "low",
+     "displayWindows": 1,
+     "evidence": "red painted pui with red curtains and a red door, 2023-03-27"
+    },
+    "windowShare": 0.62,
+    "storeyHeights": [
+     1.3,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#e8e4da",
+   "frame": "#9a2a22",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27): red-framed windows in a white painted front",
+   "at": "2023-03-27"
+  },
+  "fronts/0/balconies": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27): a small white balcony on the first storey left",
+   "at": "2023-03-27"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27): uniform upper storeys under the 3DBAG eaves",
+   "at": "2023-03-27"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27)",
+   "at": "2023-03-27"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182372/front.jpg (2023-03-27): white painted front",
+   "at": "2023-03-27"
+  }
+ }
+}

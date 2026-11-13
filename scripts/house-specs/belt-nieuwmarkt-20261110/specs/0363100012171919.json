@@ -1,0 +1,193 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171919",
+ "address": "Geldersekade 57",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "frieze",
+    "storeys": 3,
+    "bays": 3,
+    "doorBay": 0,
+    "tallGround": true,
+    "windows": "cross",
+    "atticWindows": 3,
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": false,
+     "glazing": "transom",
+     "entrance": "left",
+     "stallriser": "medium",
+     "displayWindows": 2,
+     "evidence": "white ground storey with an oak door up two steps, 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "storeyHeights": [
+     1.3,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#3d3b37",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick",
+   "cornice": "#e6e2d8"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08): white frieze cornice with three oval attic lights",
+   "at": "2023-02-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08): 3 storeys under the 3DBAG eaves",
+   "at": "2023-02-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08): tall cross windows in white frames",
+   "at": "2023-02-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08): leaf-off wall vote over 2023-02-13, 2021-01-25, 2019-01-15, 2017-03-27 (wallFit, 4 captures)",
+   "at": "2023-02-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171919/front.jpg (2025-01-08)",
+   "at": "2023-02-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "frieze",
+   "what": "the three oculi in the frieze are oval with white surrounds"
+  },
+  {
+   "component": "storeys",
+   "what": "4 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+  }
+ ]
+}

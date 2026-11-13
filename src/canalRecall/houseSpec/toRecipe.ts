@@ -22,10 +22,12 @@ export function intentSources(spec: HouseSpec): IntentSource[] {
   for (const prov of Object.values(spec.provenance) as Prov[]) {
     const kind = INTENT_SOURCE_KIND[prov.source];
     if (!kind || !prov.at) continue;
-    const key = `${kind}|${prov.ref}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push({ id: slug(prov.ref) || kind, kind, capturedAt: prov.at, ...(/^https?:/.test(prov.ref) ? { url: prov.ref } : {}) });
+    const key = `${kind}|${prov.ref}`, id = slug(prov.ref) || kind;
+    // The slug keeps 60 characters, so receipts of one photo that differ only in their note collapse to one id: one
+    // source (the compiler refuses duplicate observation ids; belt-nieuwmarkt #363, every author receipt per field).
+    if (seen.has(key) || seen.has(`id|${id}`)) continue;
+    seen.add(key); seen.add(`id|${id}`);
+    out.push({ id, kind, capturedAt: prov.at, ...(/^https?:/.test(prov.ref) ? { url: prov.ref } : {}) });
   }
   return out;
 }

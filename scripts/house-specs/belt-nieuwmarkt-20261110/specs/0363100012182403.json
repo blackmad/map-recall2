@@ -1,0 +1,208 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182403",
+ "address": "Geldersekade 111",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "bracketed",
+    "storeys": 5,
+    "bays": 3,
+    "doorBay": 0,
+    "tallGround": true,
+    "windows": "casement-toplight",
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "stone",
+      "style": "none",
+      "keystone": true
+     }
+    },
+    "bands": "painted",
+    "bandLines": [
+     "sill",
+     "head"
+    ],
+    "shopfront": {
+     "colour": "#2b2b2b",
+     "fascia": true,
+     "entrance": "left",
+     "stallriser": "low",
+     "displayWindows": 2,
+     "evidence": "dark shop with a red sign, 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#6b5b54",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick",
+   "cornice": "#e6e2d8"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08): white bracketed cornice with a dormer",
+   "at": "2023-01-30"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08): segmental heads with white keystones",
+   "at": "2023-01-30"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08): white stone bands at sill and head",
+   "at": "2023-01-30"
+  },
+  "fronts/0/bandLines": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08): leaf-off wall vote over 2023-01-30, 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 4 captures)",
+   "at": "2023-01-30"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182403/front.jpg (2025-01-08)",
+   "at": "2023-01-30"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+  }
+ ]
+}

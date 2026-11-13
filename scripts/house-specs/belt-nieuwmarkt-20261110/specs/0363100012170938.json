@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012170938",
+ "address": "Geldersekade 90",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 5,
+    "bays": 6,
+    "doorBay": 2,
+    "tallGround": false,
+    "windows": "casement-toplight",
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#463e3a",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20): six axes across the double front",
+   "at": "2023-03-20"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20): crop reading #403835, lift 10 %",
+   "at": "2023-03-20"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012170938/front.jpg (2023-03-20)",
+   "at": "2023-03-20"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "stoop",
+   "what": "a stone stoop with iron rails to the raised door, and a round-arched door in the right half"
+  },
+  {
+   "component": "window head",
+   "what": "brick relieving arches over the windows (dropped: 3049 triangles > 3000 with them)"
+  }
+ ]
+}
