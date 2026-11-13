@@ -8,15 +8,17 @@
  *   souterrain   SOUTERRAIN_FACTOR of the storey pitch (blockBuilding/systems.ts SOUTERRAIN.factor, the block-face kit's own)
  *   rows         `storeys` (spec.ts STOREYS_DEFINITION: full storeys below the crown, the ground once) at one pitch,
  *                up to the eaves line
- *   roof storey  (`roofStorey` mansard|attic) above the eaves line: roof, not wall. It is drawn as one more window row only
- *                where the mesher's wall reaches over the eaves line by at least ROOF_ROW_MIN of a storey.
+ *   roof storey  above the eaves line: roof, not wall. It is drawn as one more window row only where the mesher's wall
+ *                reaches over 3DBAG's eaves line by at least ROOF_ROW_MIN of a storey (read or not), or, without eaves,
+ *                where a stated `roofStorey` (mansard|attic) fits over the rows at the period pitch.
  * The eaves line is 3DBAG's (bag-facts eaves, the source of the register gable gate's crown rise) where the view carries it
  * and it lies within one period storey under the mesher's wall top;
  * otherwise the mesher's wall top, and for a stated roof storey the rows at the period pitch decide whether the wall holds it.
  *
  * The guard: a fitted pitch outside the period's range (STOREY_PITCH_RANGE) rejects the read count for that pand. The
  * mesher then draws the style's own count (the prior) and the pand is listed for a second read (storey-guard report).
- * `?storeyGuard=0` (STOREY_GUARD=0 in Node) turns the guard off; the souterrain and roof rows stay.
+ * `?storeyGuard=0` (STOREY_GUARD=0 in Node) turns the whole plan off (guard, souterrain, roof row, tall ground, eaves band):
+ * the mesher then draws H9/H11's fit, byte-identical to main.
  */
 
 /** blockBuilding/systems.ts SOUTERRAIN.factor: a souterrain is 0.58 of an upper storey (not imported: that module is heavy). */
@@ -65,7 +67,8 @@ export interface StoreyPlan {
   pitchM: number;
   /** Souterrain height (m), 0 without one. */
   souterrainM: number;
-  /** The wall reaches over the eaves line far enough to draw the stated roof storey as one more window row. */
+  /** The wall reaches over the eaves line far enough to draw a roof storey as one more window row: over 3DBAG's eaves
+   *  whether or not a roof storey was read; without eaves only a stated one. */
   roofRow: boolean;
   /** Where the eaves line came from, and its height over the run's base (m). */
   lineFrom: 'eaves' | 'wall';
@@ -106,7 +109,9 @@ export function storeyPlan(input: StoreyPlanInput): StoreyPlan | null {
   if (useEaves) {
     line = Math.min(eaves!, wall);
     pitch = line / (rows + s);
-    roofRow = roofStated && wall - line >= ROOF_ROW_MIN * pitch;
+    // 3DBAG's roof starts at the eaves line: a wall reaching 0.6 storey over it holds a roof storey (a mansard or attic face
+    // the mesher draws upright), read or not; AH07 drew 3 rows at 4.5-5.2 m on five such fronts before this.
+    roofRow = wall - line >= ROOF_ROW_MIN * pitch;
   } else {
     // No eaves: the rows at the period pitch say whether the wall holds a stated roof storey above them.
     roofRow = roofStated && wall - (rows + s) * range.median >= ROOF_ROW_MIN * range.median;
@@ -122,7 +127,7 @@ export function storeyPlan(input: StoreyPlanInput): StoreyPlan | null {
   return { pitchM: pitch, souterrainM: s * pitch, roofRow, lineFrom: useEaves ? 'eaves' : 'wall', lineM: line, range, ok: inRange(pitch), eavesIgnored };
 }
 
-/** Default on; `?storeyGuard=0` in the page or STOREY_GUARD=0 in Node draws a rejected count as before the guard. */
+/** Default on; `?storeyGuard=0` in the page or STOREY_GUARD=0 in Node turns the storey plan off (the fit before lane WG). */
 export const STOREY_GUARD_DEFAULT = true;
 export function storeyGuardEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]storeyGuard=([01])\b/.exec(search)?.[1] : undefined;
@@ -157,15 +162,15 @@ export const EAVES_BAND_MIN_M = 0.3;
  *    the bel-etage included, is an upper row at one pitch;
  *  - a roof row adds one upper row;
  *  - a tall-ground rescue draws the stated count with its ground row at `tallGround.groundM`;
- *  - `bandM`: with 3DBAG's eaves under the wall top and no roof row, the rows stop at the eaves line and the wall over it
- *    (the frieze and cornice zone) is plain wall, the mesher's parapet band. Only when the plan changes the draw.
+ *  - `bandM`: with 3DBAG's eaves 0.3 m or more under the wall top and no roof row, the rows stop at the eaves line and the
+ *    wall over it (the frieze and cornice zone) is plain wall, the mesher's parapet band.
  */
 export function storeyDraw(plan: StoreyPlan, storeys: number, guard: boolean = storeyGuardOn(), wallM?: number): 'reject' | { storeys: number; groundM?: number; souterrain?: true; bandM?: number } | null {
   if (guard && !plan.ok) return 'reject';
   const rows = Math.floor(storeys);
-  if (!plan.souterrainM && !plan.roofRow && !plan.tallGround) return null;
-  const upper = (plan.souterrainM ? rows : rows - 1) + (plan.roofRow ? 1 : 0);
   const band = plan.lineFrom === 'eaves' && !plan.roofRow && wallM !== undefined ? wallM - plan.lineM : 0;
+  if (!plan.souterrainM && !plan.roofRow && !plan.tallGround && band < EAVES_BAND_MIN_M) return null;
+  const upper = (plan.souterrainM ? rows : rows - 1) + (plan.roofRow ? 1 : 0);
   const groundM = plan.souterrainM ? plan.souterrainM : plan.tallGround?.groundM;
   return { storeys: upper + 1, ...(groundM ? { groundM: +groundM.toFixed(2) } : {}), ...(plan.souterrainM ? { souterrain: true } : {}), ...(band >= EAVES_BAND_MIN_M ? { bandM: +band.toFixed(3) } : {}) };
 }

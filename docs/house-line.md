@@ -450,7 +450,7 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
   wrong). Before rejecting a too-tall pitch the fit retries with a tall ground row, 1.29 upper pitches (the p25 of the
   ground / upper ratio over 180 hand fronts with storeyHeights; median 1.48), and draws that ground when it passes.
   A rejected count is meant to take PR1's prior (`storeyRejectPrior`, set once its storeys ship); until then the style's
-  own. `?storeyGuard=0` / `STOREY_GUARD=0` draws the count as before (forwarded to the building worker).
+  own. `?storeyGuard=0` / `STOREY_GUARD=0` turns the whole storey plan off, the fit before lane WG (forwarded to the building worker).
 - **souterrain cell**: drawn at its fitted height down to 0.5 of the style's ground (`SPEC_SOUTERRAIN_GROUND_MIN`;
   `SPEC_GROUND_SCALE.min` drew 171218's 2.17 m souterrain at 2.52 m). The 0.58 ratio against the five hand fronts that
   state a souterrain height (souterrain / mean storey 0.62, 0.62, 0.63, 0.67, 0.85; canal belt only, no family split

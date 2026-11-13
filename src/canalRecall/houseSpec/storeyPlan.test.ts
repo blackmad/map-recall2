@@ -139,3 +139,16 @@ test('the souterrain floor applies only when asked: no groundMin is the H11 clam
   assert.deepEqual(specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 1.9 }), specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 3.6 * SPEC_GROUND_SCALE.min }));
   assert.ok(Math.abs(specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 1.9, groundMin: SPEC_SOUTERRAIN_GROUND_MIN })!.ground * 3.6 - 1.9) < 1e-9);
 });
+
+test('a wall well over 3DBAG eaves holds a roof storey row even unread; a small gap is the plain band (AH07 0363100012168043)', () => {
+  // 3 rows, eaves 10.0 m, wall 13.92 m: 3.33 m rows and a 3.9 m roof face the mesher draws upright -> one more row
+  const plan = storeyPlan({ storeys: 3, eavesM: 10, wallM: 13.92, period: 'c19' })!;
+  assert.equal(plan.roofRow, true); assert.ok(plan.ok);
+  assert.deepEqual(storeyDraw(plan, 3, true, 13.92), { storeys: 4 });
+  // 3 rows, eaves 11.4 m, wall 12.54 m: 1.14 m over the eaves, under 0.6 storey -> rows to the eaves, a plain band
+  const small = storeyPlan({ storeys: 3, eavesM: 11.4, wallM: 12.54, period: 'c19' })!;
+  assert.equal(small.roofRow, false);
+  assert.deepEqual(storeyDraw(small, 3, true, 12.54), { storeys: 3, bandM: 1.14 });
+  // eaves at the wall top: nothing changes
+  assert.equal(storeyDraw(storeyPlan({ storeys: 4, eavesM: 13.1, wallM: 13.2, period: 'c19' })!, 4, true, 13.2), null);
+});
