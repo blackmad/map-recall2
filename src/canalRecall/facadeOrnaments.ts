@@ -338,13 +338,14 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'floor-cornices', styles: CANAL, p: { canal: 0.3, c19: 0.2 }, wide: true, build: (c, s, r) => {
     // A white band course at every floor line.
     const hex = r < 0.7 ? WHITE : STONE;
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, z - 0.03, z + 0.04, hex); }
+    // A stated band (c.bandM, houseSpec/routeAFields.ts) is centred on the floor line at its height.
+    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, c.bandM ? z - c.bandM / 2 : z - 0.03, c.bandM ? z + c.bandM / 2 : z + 0.04, hex); }
   } },
   { id: 'string-courses', styles: CANAL, p: { c19: 0.45, canal: 0.1 }, wide: true, build: (c, s) => {
     // 19th century: a thin proud stone ledge running through the sills of each storey (the bay
     // drawing paints the flat band; this only adds its drip edge).
     const o = openingsOf(c);
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, z - 0.1, z - 0.04, CREAM); }
+    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, c.bandM ? z - 0.04 - c.bandM : z - 0.1, z - 0.04, CREAM); }
   } },
   { id: 'ribbon-bands', styles: ['school'], p: 0.35, wide: true, build: (c, s, r) => {
     // The School's horizontal emphasis: pale bands above and below every window row.

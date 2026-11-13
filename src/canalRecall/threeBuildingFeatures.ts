@@ -13,6 +13,7 @@ import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor 
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
+import { fieldsDraw, specFieldsOn, type RouteAFields } from './houseSpec/routeAFields.js';
 import { PERIOD_WALLS, BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
 import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
@@ -130,6 +131,16 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
   building.parapetM = system.parapetM;
 }
 
+/** Lane WG step 2: route A's fields (houseSpec/routeAFields.ts), unless `?specFields=0`. */
+const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? specRecipeOf(p)?.fields : undefined);
+/** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
+ *  template's pale surround; absent fields leave it as before. */
+function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number } | undefined {
+  const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
+  const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
+  if (!r?.look && !Object.keys(extra).length) return undefined;
+  return { ...r?.look, ...extra, bays: r?.bays };
+}
 /** A HouseSpec's reads (houseSpec/decorate.ts `specRecipe`), when the decorator wrote one. */
 const specRecipeOf = (p: Record<string, unknown>): NonNullable<MeshBuilding['specRecipe']> | undefined =>
   p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
@@ -163,7 +174,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined, poolPointOf(polygons, at));
+      specLookOf(p), poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
@@ -285,6 +296,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).
   if (p.specStoop && typeof p.specStoop === 'object' && building.extras) building.stoop = p.specStoop as StoopIntent;
+  // Lane WG step 2 (houseSpec/routeAFields.ts): stated bands force the band-line components at the stated height.
+  if (fieldsOf(p) && building.extras) {
+    const draw = fieldsDraw(fieldsOf(p));
+    const force = draw.force.filter(id => !building.registerForce?.includes(id));
+    if (force.length) building.registerForce = [...(building.registerForce ?? []), ...force];
+    if (draw.bandM && draw.force.length) building.specBandM = draw.bandM;
+  }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;

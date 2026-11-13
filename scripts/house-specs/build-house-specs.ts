@@ -15,6 +15,8 @@ import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../sr
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
 import { frontEavesM } from '../../src/canalRecall/houseSpec/storeyPlan.ts';
+import { readFields, withTemplate } from '../../src/canalRecall/houseSpec/routeAFields.ts';
+import { streetTemplateFor } from '../../src/canalRecall/houseSpec/streetTemplate.ts';
 
 export const HELP = `build-house-specs: resolve every pand's HouseSpec from its sources and write the tiled extract.
 
@@ -68,7 +70,7 @@ if (args.includes('--publish')) {
 // --- 1. every source, as partial specs per pand ------------------------------------------------------------------
 const parts = new Map<string, HouseSpec[]>();
 const add = (s: HouseSpec | null) => { if (s) { const list = parts.get(s.pandId) ?? []; list.push(s); parts.set(s.pandId, list); } };
-const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[], eavesNotFront: 0 };
+const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[], eavesNotFront: 0, fields: 0, fieldsTemplate: 0 };
 
 const facts = registerFactsFromExtract(json(path.join(EXTRACT, 'monument-facts.json')));
 for (const [id, f] of facts) { add(fromRegisterFacts(f, f.nr, id)); counts.register++; }
@@ -136,6 +138,8 @@ const centroid = (g: any) => { const r = polys(g)[0][0]; return [r.reduce((s, p)
 const where = new Map<string, { tile: string; buurt?: Record<string, any> }>();
 /** Lane WG: the building tile's `height` (3DBAG's roof 70th percentile above ground), the front-eaves check (frontEavesM). */
 const tileHeight = new Map<string, number>();
+/** Lane WG step 2: the footprint centroid, for the street template (routeAFields.ts withTemplate). */
+const centroidOf = new Map<string, number[]>();
 for (const tile of tileKeys) {
   const file = path.join(EXTRACT, `building-tiles/14/${tile}.geojson.gz`);
   if (!existsSync(file)) continue;
@@ -145,6 +149,7 @@ for (const tile of tileKeys) {
     if (!digits || !resolved.has(digits) || where.has(digits)) continue;
     const c = centroid(f.geometry);
     if (typeof f.properties?.height === 'number') tileHeight.set(digits, f.properties.height);
+    centroidOf.set(digits, c);
     where.set(digits, { tile, buurt: buurten.find(b => polys(b.geometry).some(p => inside(c, p[0])))?.properties });
   }
 }
@@ -155,9 +160,10 @@ const bagRise = new Map<string, number>();
 /** Lane WG: 3DBAG's eaves (bag-facts), for the storey plan of pands with a stated count (houseSpec/storeyPlan.ts). */
 const bagEaves = new Map<string, number>();
 const bagRidge = new Map<string, number>();
+const bagYear = new Map<string, number>();
 if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y of readdirSync(path.join(BAG_FACTS, x))) {
   const t = JSON.parse(gunzipSync(readFileSync(path.join(BAG_FACTS, x, y))).toString('utf8'));
-  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null) bagEaves.set(k.slice(-16), d.eavesM); if (d.ridgeM !== null) bagRidge.set(k.slice(-16), d.ridgeM); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
+  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null) bagEaves.set(k.slice(-16), d.eavesM); if (d.ridgeM !== null) bagRidge.set(k.slice(-16), d.ridgeM); if (d.year !== null) bagYear.set(k.slice(-16), d.year); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
 
@@ -176,6 +182,15 @@ for (const [pand, spec] of resolved) {
   if (record.v.storeys && bagEaves.has(pand)) {
     const eavesM = frontEavesM({ eavesM: bagEaves.get(pand)!, ridgeM: bagRidge.get(pand) ?? null, heightM: tileHeight.get(pand) ?? null });
     if (eavesM !== null) record.v.eavesM = eavesM; else counts.eavesNotFront++;
+  }
+  // Lane WG step 2 (routeAFields.ts): the passing classes, then the street template's dressings (built here so the
+  // template table never ships to the browser; only the filled fields ride in the view). The template fills described
+  // fronts only (a reading or a stated count).
+  {
+    const c = centroidOf.get(pand), year = record.v.year ?? bagYear.get(pand) ?? null;
+    const read = readFields(spec), pick = c && (read || record.v.storeys) ? streetTemplateFor({ pandId: pand, lng: c[0], lat: c[1], year }) : null;
+    const fields = withTemplate(read, pick);
+    if (fields) { record.v.fields = fields; counts.fields++; if (pick && Object.values(fields.src).some(s => s?.startsWith('template:'))) counts.fieldsTemplate++; }
   }
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;

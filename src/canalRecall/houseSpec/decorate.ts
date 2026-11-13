@@ -11,6 +11,7 @@
  * A feature without `houseSpec` is returned as the same object, so `?houseSpecs=0` (or HOUSE_SPECS=0 in Node, or no
  * extract) is byte-identical to the chain before.
  */
+import { specFieldsOn, type RouteAFields } from './routeAFields.ts';
 import type { GableShape } from '../roofMesh.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 import type { ArchitecturalRecipe } from '../streetAppearance.js';
@@ -49,6 +50,8 @@ export interface HouseSpecView {
   eavesM?: number;
   /** Lane WG: the front's crown is a cornice (fronts/0/gable, from a front-reading source); only with `storeys`. */
   corniceCrown?: true;
+  /** Lane WG step 2 (routeAFields.ts): the passing dressing and crown classes, the street template's fill. */
+  fields?: RouteAFields;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
   /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
@@ -84,6 +87,8 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   roofStorey?: 'mansard' | 'attic';
   eavesM?: number;
   corniceCrown?: true;
+  /** Lane WG step 2: route A's fields (routeAFields.ts fieldsDraw), drawn unless `?specFields=0`. */
+  fields?: RouteAFields;
   /** H11: the window look (bayLook.ts bayLookFor `spec`). */
   look?: SpecLook;
   /** H11: the shop's ground-storey paint. */
@@ -247,7 +252,8 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.shop && view.shopHex && /^#[0-9a-f]{6}$/i.test(view.shopHex)) recipe.shopHex = view.shopHex.toLowerCase();
   }
   // A spec recipe only when it carries something the mesher reads; crown and period ride along.
-  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex) {
+  if (view.fields) recipe.fields = view.fields;
+  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex || recipe.fields) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];
@@ -292,6 +298,14 @@ let modeNow: RegisterGableMode = registerGableMode(G.location?.search ?? null, G
 export function setRegisterGableMode(mode: RegisterGableMode): void { modeNow = mode; }
 export const currentRegisterGableMode = (): RegisterGableMode => modeNow;
 export const PHOTO_GABLE_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
+/** Lane WG step 2 (routeAFields.ts): a passing crown reading (cornice, step, curved register-then-neck) is the view's
+ *  gable for the roof planner, unless `?specFields=0`. Without fields the view is returned as is. */
+function withFieldCrown(view: HouseSpecView | null | undefined): HouseSpecView | null | undefined {
+  const crown = view?.fields?.crown;
+  if (!crown || !specFieldsOn()) return view;
+  const src = (view!.fields!.src.crown ?? '').split('+')[0];
+  return { ...view!, gable: crown, src: { ...view!.src, gable: src } };
+}
 export const CROWN_RISE_M = 2;
 /** 3DBAG's crown above the eaves: true (ridge - eaves >= 2 m), false (a flat top), null (no eaves or ridge in the tile). */
 export function crownInGeometry(p: Props): boolean | null {
@@ -310,7 +324,7 @@ const plannedKind = (feature: { properties: Props }): string | null => {
 /** Decorator step after withMonumentGable: the crown in trust order (photo, then register, then weaker spec sources),
  *  then the register gable gate. Same object back when nothing changes. */
 export function withHouseSpecCrown<T extends { properties: Props }>(feature: T, mode: RegisterGableMode = modeNow): T {
-  const p = feature.properties, view = viewOf(p);
+  const p = feature.properties, view = withFieldCrown(viewOf(p));
   const photo = !!view?.gable && PHOTO_GABLE_SOURCES.has(view.src.gable ?? '') && !excluded(p);
   if (photo) {
     // An author's flat front over a register gable takes the cornice crown (lane H9, the Raadhuisstraat arcade
