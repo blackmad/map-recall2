@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012171970",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  2,
+  2,
+  4
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "arched"
+ },
+ "heads": [
+  "round",
+  "flat",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "finish",
+  "pale",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "an arcade of four small round-arched windows on colonnettes on the top storey"
+  },
+  {
+   "component": "balcony",
+   "what": "a stone balustrade across the front at the foot of the tall first-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "an ornate stone attic with small pediments, a gilded crest and finials in front of the slate roof"
+  },
+  {
+   "component": "relief",
+   "what": "carved stone roundels and panels between the paired round-arched ground-storey windows"
+  }
+ ],
+ "notes": "A bus shelter hides the lower ground storey; the outline covers the right two axes of a richly ornamented stone-and-brick front whose door and erker lie just left of it.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012174180",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174180/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "storeys",
+  "bays",
+  "heads",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "tall glazed shopfront with many green-painted mullions taking the ground and mezzanine"
+  }
+ ],
+ "notes": "Very narrow, blurred image behind tree branches; storey lines hard to separate from the white stone bands."
+}

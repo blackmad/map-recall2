@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168157",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168157/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first storey has two tall windows and the storey above three small-paned windows in one white frame band"
+  }
+ ],
+ "notes": "Narrow, blurry crop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

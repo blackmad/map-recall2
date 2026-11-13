@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012178199",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178199/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer stands on the roof behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "dark iron wall anchors between the windows"
+  }
+ ],
+ "notes": "A site container and hoarding hide the ground storey; two upper window rows are visible under the cornice."
+}

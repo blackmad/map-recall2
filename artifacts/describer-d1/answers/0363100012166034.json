@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012166034",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012166034/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "extent",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white rendered attic storey set behind the cornice with two wide dormer windows and hoist beams"
+  },
+  {
+   "component": "shopfront",
+   "what": "brown timber-clad ground storey with a row of small transom windows over grey glazed doors"
+  }
+ ],
+ "notes": "Four-axis front with two dormers, may be a pair of two-bay houses; ground hidden partly by construction bags."
+}

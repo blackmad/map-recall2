@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012159694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012159694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "bands",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "two stacked white timber balconies with balusters on consoles before the wide right bay"
+  },
+  {
+   "component": "window",
+   "what": "the right bay holds paired windows; white stone blocks at both head corners and a keystone over every window"
+  },
+  {
+   "component": "dormer",
+   "what": "a small gabled dormer with timber bargeboards above the cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012182545",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182545.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "heads",
+  "doorBay",
+  "storeyParts",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber shopfront with pilasters, two dark red doors at the left and a large shop window with a segmental top light"
+  },
+  {
+   "component": "relief",
+   "what": "dark iron wall anchors between the upper windows"
+  },
+  {
+   "component": "roof",
+   "what": "cream cornice with a tall frieze and a hoist beam projecting above it"
+  }
+ ],
+ "notes": "Steep upward, oblique view; the left bay is narrower than the other two.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

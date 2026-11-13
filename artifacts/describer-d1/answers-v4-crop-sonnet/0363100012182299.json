@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012182299",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182299/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "round",
+  "flat",
+  "round"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "heads",
+  "windows",
+  "columns"
+ ],
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "wrought iron balcony railings across the French windows on the lower two upper floors"
+  },
+  {
+   "component": "window",
+   "what": "arched French-window doors with fanlight panes"
+  }
+ ],
+ "notes": "Eclectic brick and light-stone banded front.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

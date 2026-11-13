@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178392/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "ground",
+  "finish",
+  "wallFamily",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the lower two window rows sit in a cream stucco front with pilasters, the brick only above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "carved stone scrolls at the gable foot"
+  }
+ ],
+ "notes": "Narrow, blurred crop with the gable top cut off; the two cream lower rows were read as ground plus first storey."
+}

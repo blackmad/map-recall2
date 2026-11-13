@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012177939",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012177939.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "casement-pair",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a cream stone-faced ground storey with pilasters framing large shop windows and a lettered window"
+  }
+ ],
+ "notes": "Extreme fisheye view looking straight up the street; no cyan outline is visible, so the brick front with the shop in the middle of the image is described, and its party walls and storey lines cannot be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

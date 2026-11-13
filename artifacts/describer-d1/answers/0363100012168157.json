@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012168157",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168157/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "casement-pair",
+ "storeyWindows": {
+  "2": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "storeys",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "Blurred narrow crop; the three-window row may sit at the foot of the gable rather than as a full storey."
+}

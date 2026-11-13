@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012177932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream stucco shopfront with pilasters and an upper row of glazed lights under an entablature"
+  },
+  {
+   "component": "window",
+   "what": "low railings across the lower part of the first- and second-floor windows"
+  }
+ ],
+ "notes": "A red parasol hides the shop; the glazed row above it could be the shop's upper lights or a storey of its own, counted as part of the ground storey."
+}

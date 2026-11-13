@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012168606",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168606/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick arches with a white keystone over every upper window, with decorative iron wall anchors between"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a broad bell gable with white coping and a hoist beam at the top"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

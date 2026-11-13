@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182378",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182378.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "cornice",
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "thin iron guard bars across the lower part of the upper windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "one wide lit shop window under a continuous dark fascia shared with the left neighbour"
+  }
+ ],
+ "notes": "Upward oblique, dim light; the top edge is a plain brick parapet with no visible moulding.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

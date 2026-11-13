@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012172779",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002990_pano_0012_000106.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "two oval oeil-de-boeuf windows flank the gable window, white scroll claw pieces at the sides and a round cartouche at the top"
+  },
+  {
+   "component": "door",
+   "what": "a lattice-glazed fanlight over the street door"
+  }
+ ],
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

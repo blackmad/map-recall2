@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182473/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a long red pantile roof with chimney seen in full above the eaves"
+  },
+  {
+   "component": "relief",
+   "what": "many iron wall anchors across the wall"
+  }
+ ],
+ "notes": "A wide front cut off at the left; a truck hides the ground-storey base.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

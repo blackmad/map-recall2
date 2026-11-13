@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012182853",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182853/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam projects from the gable top"
+  }
+ ],
+ "notes": "Image heavily distorted and the ground storey is reflections."
+}

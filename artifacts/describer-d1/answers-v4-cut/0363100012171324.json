@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012171324",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171324.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "windowSurround",
+  "sills",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis of the top two storeys is a column of dark hoist doors instead of windows"
+  }
+ ],
+ "notes": "Ground storey behind a canal railing and blurred; the outline is offset downward from the front.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

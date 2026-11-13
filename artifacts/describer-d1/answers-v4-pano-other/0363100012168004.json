@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168004",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002299.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "bands",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a round-arched stone entrance in a stone-faced ground storey"
+  },
+  {
+   "component": "window",
+   "what": "white stone blocks alternating with brick around the upper windows"
+  }
+ ],
+ "notes": "The outline covers only the ground storey and first upper storey of a taller front; the top is outside the outline.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

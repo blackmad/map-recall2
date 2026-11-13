@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012178198.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "whiteFrames",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "three small attic windows in a light frieze under the cornice"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved white sandstone ornamental attic with scrolls stands on top of the cornice, its centre blurred"
+  },
+  {
+   "component": "shopfront",
+   "what": "a shopfront with a row of small upper lights over large glazing"
+  }
+ ],
+ "notes": "Low resolution; railings, bicycles and a lamp in front of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

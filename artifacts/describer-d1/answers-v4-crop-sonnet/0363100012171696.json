@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171696/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  3,
+  1,
+  1
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window per storey with three lights and a gridded top band, white frame"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

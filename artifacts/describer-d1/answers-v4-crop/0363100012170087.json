@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012170087",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170087/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "1": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white plastered band with two small-paned windows over the restaurant front, a storey of its own"
+  }
+ ],
+ "notes": "The front is cut off on the left; the gable top is partly out of frame.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168703/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "tall top light over the left door with an oval-and-cross tracery pattern"
+  },
+  {
+   "component": "window",
+   "what": "wide small-paned ground-storey window in a white pilastered frame"
+  }
+ ],
+ "notes": "Top of the front is cut off after two upper window rows; a car hides the lower ground storey."
+}

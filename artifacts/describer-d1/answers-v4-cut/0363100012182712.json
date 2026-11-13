@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182712",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182712.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "shop window under a row of small top lights with the house door at the right, framed in grey timber"
+  }
+ ],
+ "notes": "Extreme upward oblique view; the outline leans over the black-painted neighbour at the right, and the gable top is small and foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

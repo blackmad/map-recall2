@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012176207",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window over two storeys' height on the right axes of the first storey, with a balustraded balcony on top in front of the second storey"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched recessed door bay with a fanlight and side lights"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small stone tablets with dates or inscriptions flank the attic window in the point gable"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

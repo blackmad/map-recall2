@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012182299",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182299/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  2,
+  2,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "heads",
+  "columns",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "full-width iron balconies on storeys 1 and 2"
+  },
+  {
+   "component": "relief",
+   "what": "stone pilasters with capitals flank the ground storey"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

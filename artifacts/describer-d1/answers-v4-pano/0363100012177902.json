@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "round",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "windows",
+  "heads",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white plaster arch rings with keystone heads over the second and third storey windows"
+  },
+  {
+   "component": "relief",
+   "what": "white rusticated stone blocks alternate with brick at every window jamb and corner"
+  },
+  {
+   "component": "erker",
+   "what": "chamfered corner bay rising the full height to a turret-like cap"
+  }
+ ],
+ "notes": "Lamp posts and a signal mast stand in front of two axes; corner building.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

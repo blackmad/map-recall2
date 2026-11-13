@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012168694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "wide glazed roof dormer with a small pediment over the centre, set behind the cornice"
+  }
+ ],
+ "notes": "A van hides the ground storey, so the storey count cannot be closed; three window rows are visible above it."
+}

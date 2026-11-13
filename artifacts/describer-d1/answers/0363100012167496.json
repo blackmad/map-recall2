@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012167496",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167496/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 3,
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "three wide dormers with pediments and small balustrades in the mansard"
+  },
+  {
+   "component": "roof",
+   "what": "the right-hand front rises a storey higher with a glazed rooftop pavilion and railing"
+  }
+ ],
+ "notes": "Two fronts in one wall: the left six-bay block with a mansard and the right four-bay block a storey higher; described the left one."
+}

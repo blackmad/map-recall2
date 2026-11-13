@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168157",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168157.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "spout",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "finish",
+  "storeyWindows",
+  "columns",
+  "storeyParts",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a wide band of windows with a projecting centre frame, hoist-door like"
+  }
+ ],
+ "notes": "Strong low sun and glare on the top storey; a parked car hides the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

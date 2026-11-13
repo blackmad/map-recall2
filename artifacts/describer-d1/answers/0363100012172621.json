@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172621",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172621/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "sash-1-over-1",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark shop window with a striped awning, a white-framed green street door to its left"
+  },
+  {
+   "component": "window",
+   "what": "the left axis windows sit in a tall white-painted panel"
+  }
+ ],
+ "notes": "Oblique, top cut off; unsure whether the white-framed left axis belongs to this front or to a neighbour."
+}

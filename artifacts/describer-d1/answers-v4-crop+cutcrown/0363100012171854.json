@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171854",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171854/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": null,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a restaurant front with a dark fascia and a separate black house door at the right"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012182303",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182303.jpg + artifacts/describer-d1/windows/0363100012182303.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "1": "casement-sidelights-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "doorIndex": 4,
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "columns",
+  "doorIndex"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first floor is a white timber band of three wide windows directly above the shop"
+  },
+  {
+   "component": "balcony",
+   "what": "low white bars across the bottom of the top-floor and first-floor windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "red scalloped awning over the shopfront"
+  },
+  {
+   "component": "roof",
+   "what": "white cornice with a tall frieze and a hoist beam projecting above it"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible",
+ "paneLayout": "mixed"
+}

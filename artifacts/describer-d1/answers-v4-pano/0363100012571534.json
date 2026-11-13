@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012571534",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_000900.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "basement",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a blind window recess in place of one top-storey window."
+  },
+  {
+   "component": "shopfront",
+   "what": "cream pilastered café front wrapping the corner, with a railed cellar opening at the corner."
+  },
+  {
+   "component": "roof",
+   "what": "a gilded figure on the roof at the corner."
+  }
+ ],
+ "notes": "Corner building seen from below; the outlined face is the right-hand street face.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

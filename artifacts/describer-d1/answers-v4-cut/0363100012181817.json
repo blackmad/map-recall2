@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012181817",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012181817.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "storeyWindows": {
+  "1": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground",
+  "bands",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first floor is a white timber glazed band of four windows between white posts, over the ground storey"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron guard rails across the lower part of the upper windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "plain brick point gable with a projecting hoist beam at the apex"
+  },
+  {
+   "component": "shopfront",
+   "what": "black panelled double doors with two cash machines set in them and a small-paned top light"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -55,6 +55,15 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
 - **Field paths** (the unit of provenance and of the merge): one key of one front (`fronts/0/gable`), one key of the
   roof or palette (`roof/material`, `palette/brick`), `notes`, one key of `facts` (`facts/facadeYear`). Values below
   that level (a `windowHead` object, a per-storey `bays` list) are atomic: two sources never splice one window head.
+- **Spec-level values** (lane D1, 2026-11-13; spec.ts `SPEC_WALL_MATERIALS`, `SPEC_GABLES`, `SPEC_WINDOW_HEADS`): a spec stores
+  these readings as read though the intent has no value for them; every compiler draws them through `drawableDesign` and
+  reports each as `ignored: [{path, value, drawnAs}]` (`toRecipeReport`, `specViewIgnored`). Absent = byte-identical.
+  - `palette/wallMaterial: "stone"`: a stone-faced front; drawn `stucco` (a pale render wall, colour kept).
+  - `fronts/N/gable: "pitched-eaves"`: an eaves line with the roof slope in view; drawn `cornice` (with `cornice: none` unless stated).
+  - `fronts/N/windowHead.kind: "pointed"`: drawn `round`.
+  - `fronts/N/windowHead.kind: "mixed"` (two head shapes on one storey): drawn with no head (the intent default, flat).
+  - `fronts/N/windowSurround: "block-dressings"` (alternating stone blocks down the jambs and round the head): drawn `jack-blocks`.
+  - `fronts/N/cornice: "attic-frieze"` (a frieze with attic windows under the cornice): drawn `frieze`.
 - **Provenance** is keyed by field path; an ancestor key covers every field under it (`fronts/0`, or `` for the whole
   record, which is what an adapter for a single-source record writes). `resolveSpecs` writes one key per field.
 - **`schemaLimits`**: what the photo shows that the kit cannot say, one `{component, what}` per kit part (the shape of
@@ -2812,3 +2821,30 @@ Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were
 tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
 reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
 photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.
+
+**Step 1c and the step-2 pilot (2026-11-13).** Image modes scored on the same 146 gate-pass pands against the adjudicated labels
+(`scripts/house-line/benchmark/benchmark-v1-adjudicated.json`): the square crop, a describe cut (`describe-cut.ts`: an
+unrectified perspective cut from the panorama cache, wall outlined, neighbours and crown in frame) and a per-panorama read
+(3-5 numbered fronts in one image). No mode lifts storeys or crown to 0.9 (`artifacts/describer-d1/scores-same147-compare.md`),
+so step 2 reads the gate-pass crop where one exists and the describe cut otherwise; the crown is read from the cut when the
+crop says not-visible. A zoomed window as a second image did not lift window family or pane layout over 0.8 (parked).
+What ships (`stage.ts STAGED`, integrator ruling): storeys (as rows below the crown, plus the souterrain flag), bays, bands,
+shop/ground, basement (crop only), finish and the cut's sampled wall hex; for crown, head and cornice only the answered classes
+with precision >= 0.8 (`per-class.md`: crown cornice 0.95 and step 0.88, head flat 0.80 and segmental 0.83, cornice none
+0.88). Everything else stays with the twin, then the prior. A hidden front copies storeys, crown and bands from a twin only
+when its `sameAs` names that side and PR1's `similar` holds (`twin-guard.ts`: precision 0.94, recall 0.52). Every storey miss
+is off by one, mostly the roof-storey, gable-attic and entresol conventions (`storey-misses.md`). Sonnet on the same crops is
+within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) and painted finish, so opus reads.
+Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
+194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
+`artifacts/describer-d1/staged-ah07/` (never published).

@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012172618",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172618/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": "not-visible",
+ "low": [
+  "storeyParts",
+  "bays",
+  "crown",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "A large bare tree covers most of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

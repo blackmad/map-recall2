@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012173352",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173352/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "cross",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "Bare trees and a car cover much of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

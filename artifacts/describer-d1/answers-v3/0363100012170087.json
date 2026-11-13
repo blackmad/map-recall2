@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012170087",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170087/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "1": "six-pane"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "crown",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white plastered band storey with two windows directly over the restaurant shopfront"
+  }
+ ],
+ "notes": "The front is cut at the left edge of the image; the gable outline is only partly visible."
+}

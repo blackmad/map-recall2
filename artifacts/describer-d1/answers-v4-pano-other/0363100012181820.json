@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012181820",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001660_pano_0000_002060.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "finish",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top storey has one wide three-light window instead of two axes"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

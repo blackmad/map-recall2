@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182378",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182378/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a deep plain white projecting roof overhang caps the front instead of a cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "bakery with a dark red illuminated fascia and a dark door at the left"
+  }
+ ],
+ "notes": "Third storey windows have blinds down, hiding their panes."
+}

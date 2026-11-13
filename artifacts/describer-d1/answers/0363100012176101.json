@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012176101",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176101/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "grey",
+ "finish": "not-visible",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "crown",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam at the gable top"
+  }
+ ],
+ "notes": "Extremely oblique view; window rows hard to separate from the gable."
+}

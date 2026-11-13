@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012172610",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172610/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces with scrolls and a curved scrolled pediment on the neck"
+  },
+  {
+   "component": "shutters",
+   "what": "a hoist door in the neck with open shutters"
+  }
+ ]
+}

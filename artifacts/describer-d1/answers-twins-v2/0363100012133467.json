@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012133467",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012133467.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Same ornament vocabulary as the right, but target is wider (4 axes plus a blind section) vs 3."
+}

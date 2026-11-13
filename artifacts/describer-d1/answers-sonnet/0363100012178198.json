@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "ornate cornice with brackets and sculpted consoles at the top"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront covered with sheeting, small arched transom lights above"
+  }
+ ],
+ "notes": "Image is dark and underexposed."
+}

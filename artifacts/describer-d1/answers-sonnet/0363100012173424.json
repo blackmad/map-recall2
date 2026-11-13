@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012173424",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173424/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "crown"
+ ],
+ "gaps": [],
+ "notes": "A lamp post covers the centre; only two axes seen, ground-storey identity uncertain."
+}

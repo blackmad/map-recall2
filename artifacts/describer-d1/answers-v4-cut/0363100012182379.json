@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012182379",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182379.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "doorIndex",
+  "storeyParts",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white stone claw pieces at the neck sides and a curved white cap with a small crest finial on top"
+  },
+  {
+   "component": "window",
+   "what": "the centre upper window is wider than the two side windows on each storey"
+  }
+ ],
+ "notes": "Hazy and soft; a banner covers the left ground-storey window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

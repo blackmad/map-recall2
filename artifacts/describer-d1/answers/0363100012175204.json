@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012175204",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175204/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "finish",
+  "crown",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "Image blurred and taken through a dirty window; ground storey hidden by a van."
+}

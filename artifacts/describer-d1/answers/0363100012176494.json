@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012176494",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176494/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "ground",
+  "cornice",
+  "whiteFrames"
+ ],
+ "gaps": [],
+ "notes": "A lamp post covers the left part of the front; the ground storey is hard to read."
+}

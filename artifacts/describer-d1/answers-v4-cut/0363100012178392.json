@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012178392.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windows",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the lower two storeys are a white rendered base shared with the right-hand neighbour, brick above"
+  }
+ ],
+ "notes": "A tree trunk and branches cover most of the outlined front and its crown; overexposed sky.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

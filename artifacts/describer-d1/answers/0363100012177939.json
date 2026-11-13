@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012177939",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177939/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "columns",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stucco pier blocks between the low top-storey windows under the bracketed cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "stone-pilastered shop storey with two display windows and two doors"
+  }
+ ],
+ "notes": "Window frames are cream with dark sashes."
+}

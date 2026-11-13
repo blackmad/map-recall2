@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012173342",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173342/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "finish",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "A large ornate lamp post fills the left and centre of the image.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

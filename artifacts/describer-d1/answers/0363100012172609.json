@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172609",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172609/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small stone plaque or keystone block in the brick over the ground-storey cornice beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "ground storey in a white timber frame: one wide window, two dark doors with toplights"
+  }
+ ],
+ "notes": "Steep oblique, top cut off; ground plus two upper storeys visible."
+}

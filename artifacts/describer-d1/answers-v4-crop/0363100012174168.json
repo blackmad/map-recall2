@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174168",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174168/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "crown",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "restaurant front with a dark fascia sign, a glazed transom row and doors at both ends"
+  }
+ ],
+ "notes": "A tree covers the top-left; the top of the front is partly hidden.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

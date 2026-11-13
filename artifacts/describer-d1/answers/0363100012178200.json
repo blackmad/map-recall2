@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012178200",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178200/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2021,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 1,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small carved shell or cartouche over the shop fascia"
+  }
+ ],
+ "notes": "Very narrow image; the middle front is hard to separate from the neighbours, and the top is cut off."
+}

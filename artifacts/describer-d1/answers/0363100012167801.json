@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012167801",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167801/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "plain",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "grey",
+ "finish": "stucco",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "recessed loggias and a projecting concrete balcony with a railing"
+  },
+  {
+   "component": "erker",
+   "what": "a projecting boxed window bay over a recessed ground-floor loggia"
+  },
+  {
+   "component": "shopfront",
+   "what": "a covered pedestrian passage through the ground storey between shop units"
+  }
+ ],
+ "notes": "Modern grey rendered block; top cut off and the openings do not form regular axes."
+}

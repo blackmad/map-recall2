@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012176479",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176479/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "basement",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "dark fabric awnings over the ground-storey windows and door"
+  },
+  {
+   "component": "relief",
+   "what": "lettering in the frieze under the cornice"
+  },
+  {
+   "component": "roof",
+   "what": "pitched roof visible behind the cornice"
+  }
+ ],
+ "notes": "Dark, overcast image."
+}

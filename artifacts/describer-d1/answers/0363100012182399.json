@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182399/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "crown",
+  "finish",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a single wide window: a central light between two narrow lights"
+  }
+ ],
+ "notes": "Gable top cut off by the frame; ground storey behind a construction fence."
+}

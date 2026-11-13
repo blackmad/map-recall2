@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174564",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174564/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "round",
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small wrought-iron balconies on the middle axis of the lower two upper storeys"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white stone dormer window with ornamental frame in the bell gable"
+  },
+  {
+   "component": "shopfront",
+   "what": "round-arched shop window flanked by dark carved pilaster ornaments and two side doors"
+  }
+ ]
+}

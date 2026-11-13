@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012571486",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002045_pano_0001_000547.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red painted shutter leaves beside every round-headed loading door on the central hoist axis"
+  },
+  {
+   "component": "door",
+   "what": "a column of round-headed loading doors up the middle axis with small windows either side"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white timber ground-storey frame with a central door"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

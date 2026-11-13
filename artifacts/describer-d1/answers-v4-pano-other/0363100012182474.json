@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182474",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002949_pano_0001_000033.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pale dormer with a curved top in the slate mansard"
+  },
+  {
+   "component": "window",
+   "what": "rows of small white ornament blocks under the window rows"
+  }
+ ],
+ "notes": "Part of a wider corner building; blurred construction screens hide the base.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

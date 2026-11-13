@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "pandId": "0363100012171704",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171704/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": false,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "not-visible",
+ "finish": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "Dark close-up of a corner cornice and a pole; no house front is visible."
+}

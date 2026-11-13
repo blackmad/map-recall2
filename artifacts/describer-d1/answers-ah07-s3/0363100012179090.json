@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012179090",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012179090.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "low": [
+  "windowSurround",
+  "bands",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "rows of small white stone blocks over each window head, set like the blocks of a flat arch"
+  },
+  {
+   "component": "door",
+   "what": "a double door with a tall top light in the right axis"
+  }
+ ],
+ "notes": "A dark, wet, grainy image; the frame colour cannot be read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
