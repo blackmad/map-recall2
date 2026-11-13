@@ -141,11 +141,16 @@ export function loft(m: Mesh, lower: V2[], upper: V2[], y0: number, y1: number, 
   }
 }
 
-/** Raised letters seen from both sides: the stroke solids plus their mirror, so the backs read from behind (a roof sign). */
-export function twoSidedLetters(g: T.BufferGeometry): T.BufferGeometry {
+/**
+ * A sign readable from both sides: the letters on the board's front (+z, `gap` out) and a copy turned half round about
+ * y on its back (-z), so the back reads left to right too (a z-mirror would read backwards; integrator review
+ * 2026-11-13). The caller draws the board between z = -gap and +gap.
+ */
+export function twoSidedLetters(g: T.BufferGeometry, gap = 0.04): T.BufferGeometry {
   const pos = g.getAttribute('position'), out: number[] = [];
-  for (let i = 0; i < pos.count; i++) out.push(pos.getX(i), pos.getY(i), pos.getZ(i));
-  for (let i = 0; i < pos.count; i += 3) for (const k of [0, 2, 1]) out.push(pos.getX(i + k), pos.getY(i + k), -pos.getZ(i + k));
+  for (let i = 0; i < pos.count; i++) out.push(pos.getX(i), pos.getY(i), pos.getZ(i) + gap);
+  // a rotation keeps the winding, so the triangles stay outward
+  for (let i = 0; i < pos.count; i++) out.push(-pos.getX(i), pos.getY(i), -pos.getZ(i) - gap);
   const r = new T.BufferGeometry();
   r.setAttribute('position', new T.Float32BufferAttribute(out, 3));
   r.computeVertexNormals();

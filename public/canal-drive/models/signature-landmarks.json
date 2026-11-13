@@ -95624,8 +95624,8 @@
         "depthMetres": 44.87002182006836,
         "depthCoverage": 1.0038036201357574
       },
-      "triangles": 6809,
-      "bytes": 102668,
+      "triangles": 6805,
+      "bytes": 102608,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "hotel-boat-and-co": {
@@ -96030,8 +96030,8 @@
         "depthMetres": 64.56949424743652,
         "depthCoverage": 0.9622875446711853
       },
-      "triangles": 17886,
-      "bytes": 258916,
+      "triangles": 17862,
+      "bytes": 258660,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
