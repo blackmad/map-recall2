@@ -2336,6 +2336,25 @@ installed models, 13 spec recipes. Four fresh Opus critics, about 50 pairs each.
 Archive: source-data `experiments/facade-benchmark/round-0/` (frames, critic pairs and key, labels, queue). Sheets:
 map-recall2-screenshots `ui/2026-11-12-facade-benchmark/round-0/`.
 
+### Open finding: near-black walls render with 2-3x the brick detail (F1 S7a, #380, 2026-11-13)
+
+On every render path (the atlas with `?shaderFacades=0` and the record shader) a wall drawn near-black carries two to
+three times the frame detail of the same wall drawn mid-brown. The measure is brick-texture.ts's std over the mean,
+with the 0.25 m running mean removed. For pand 172590 at its benchmark pose:
+
+| path | `#4c1f0f` | `#925441` |
+|---|---|---|
+| flag off (atlas) | 0.44 | 0.17 |
+| flag on (record) | 0.21 | 0.07 |
+
+The record is identical apart from `wall`, and the CPU twin's pattern is the same at both colours. Decoding with
+pow 2.2 and encoding with sRGB explains only about 0.18 against 0.22. Tone mapping is off in the engine, the red channel
+does not clip, and the baked shell plays no part (`bakedCoarse=0` frames are identical). Unexplained.
+
+Consequence: before W1, the near-black period walls inflated the game's texture. Round 2's 0.114 against the photos'
+0.110 was that inflation, not likeness. S7a raised FR_MOTTLE 0.6 -> 0.9. The 170 flag-reached pairs on round 124 now
+read 0.085 against the photos' 0.113 (0.046 against 0.071 under 25 px/m). Texture below 40 px/m is left as it is.
+
 ## §11 Wall colour per stage, and the measured wall pool (lane W1, 2026-11-12)
 
 The user (2026-11-12): "every house is the wrong color". Ruling: correctness first, measured dark brick ships even if the
