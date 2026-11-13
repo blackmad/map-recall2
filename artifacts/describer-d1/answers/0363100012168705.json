@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "two-light"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window centred on the top storey"
+  },
+  {
+   "component": "door",
+   "what": "a wide souterrain opening with a white surround under the ground-storey window"
+  }
+ ],
+ "notes": "A car hides the base."
+}

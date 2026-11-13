@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177934",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002863_pano_0002_000029.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "red ZEEDIJK lettering on the wall over the ground storey."
+  }
+ ],
+ "notes": "Narrow front seen at a slant; the outline of front 5 and umbrellas cover parts of it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

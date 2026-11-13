@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182857/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 2,
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "stoop",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "windowSurround",
+  "basement",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "alternating white stone blocks set into the brick round every arch and along the gable edges (blokken)"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two step gables, each with white stone coping blocks and a small dormer between them"
+  },
+  {
+   "component": "shopfront",
+   "what": "tall white timber pui with a small-paned upper glazed row and several arched doors"
+  }
+ ],
+ "notes": "Double front under two step gables; described the right half, both halves alike. Windows inside the gables not counted as storeys."
+}

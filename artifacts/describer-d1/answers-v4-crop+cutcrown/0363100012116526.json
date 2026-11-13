@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "souterrain",
+  "basement",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "tall white dormers with hoist beams and a small cornice rising from the main cornice"
+  },
+  {
+   "component": "window",
+   "what": "white keystones and springing blocks over each window; the left front has round oculus windows with white cross keys"
+  },
+  {
+   "component": "door",
+   "what": "a tall door with a round fanlight and tracery in an arched head at the right"
+  },
+  {
+   "component": "shopfront",
+   "what": "the left front has a caf\u00e9 ground storey with its own white cornice"
+  }
+ ],
+ "notes": "A long front split by a downpipe into two house fronts under one cornice; described the right one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

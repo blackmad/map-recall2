@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012182587",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012182587/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 4,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "heads",
+  "doorBay",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "ground storey has a recessed gated passage between two glazed bays with gridded top lights under a stone fascia"
+  }
+ ],
+ "notes": "Top of the front is cut off; only two upper storeys visible. Wide-angle view."
+}

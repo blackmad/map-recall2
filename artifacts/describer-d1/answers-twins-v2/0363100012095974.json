@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012095974",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012095974.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "notes": "Left panel matches target window pattern plus an extra cut-in axis at its left edge; right has a stair-tower glazing strip."
+}

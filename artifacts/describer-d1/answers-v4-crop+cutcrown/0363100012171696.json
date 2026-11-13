@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171696/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1,
+  1
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "ground",
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide white frame of four lights with small-paned top lights"
+  },
+  {
+   "component": "door",
+   "what": "a white panelled loading door with small windows beside the house door"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

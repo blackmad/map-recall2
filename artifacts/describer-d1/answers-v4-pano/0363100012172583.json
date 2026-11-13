@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002445_pano_0008_000183.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "sills",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two oval carved stone cartouches flank the single top-storey window"
+  },
+  {
+   "component": "shutters",
+   "what": "a small hoist window with red-and-white shutters in the frieze under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "two doors flank a tall central pair of gridded windows between cream pilasters"
+  }
+ ],
+ "notes": "The top storey has only one central window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

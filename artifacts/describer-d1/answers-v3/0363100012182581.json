@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012182581",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182581/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark green painted pub front with a projecting round sign and a flag"
+  }
+ ],
+ "notes": "Very narrow crop showing one window column; the top is cut off and a flag covers the first-floor window."
+}

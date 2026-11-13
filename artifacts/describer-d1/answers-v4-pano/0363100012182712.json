@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182712",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001547_pano_0000_000543.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a row of small top lights across the whole ground storey over the shop window and the house door."
+  }
+ ],
+ "notes": "The outline straddles two fronts: the brick bell-gabled house (no. 54, described) and the left axis of the dark painted-brick house to its right. Steep upward view with glare at the gable top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

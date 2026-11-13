@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002863_pano_0002_000029.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small ornament or vase on top of the parapet."
+  }
+ ],
+ "notes": "Red terrace umbrellas hide the ground storey; a festive street decoration hangs over the top.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

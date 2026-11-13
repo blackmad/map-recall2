@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012173566",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173566/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a row of gabled white dormers with louvred vents behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a louvred vent panel over the side door"
+  }
+ ],
+ "notes": "The image centre falls on the joint between a taller plain brick tower block (left) and a three-bay shop building; described the shop building."
+}

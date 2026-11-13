@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012174186",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002950_pano_0002_000381.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a round-arched attic light rising through the middle of the pale frieze"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

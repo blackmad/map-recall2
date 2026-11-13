@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174646.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "crown",
+  "cornice",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "Re-read of the regenerated cut. Scaffold tower over the left half, ground boarded up; dark painted brick, plain top cornice line.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

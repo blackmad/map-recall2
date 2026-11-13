@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172888",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172888.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "groundBays",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "the centre axis of both upper storeys is a pair of French doors with an iron balconette"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a wide neck crowned by a triangular pediment with a carved ornament at its base"
+  }
+ ],
+ "notes": "A parked car and branches cover the ground storey and the gable.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

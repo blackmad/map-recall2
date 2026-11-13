@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012168747",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001054_pano_0000_005074.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "bell",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white raised curved top with a round-headed window standing on the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

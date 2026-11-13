@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012182854",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182854/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-pair"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "stained or leaded glass in the top lights of the first and second storey windows"
+  },
+  {
+   "component": "window",
+   "what": "dark projecting hood caps over the first-storey windows"
+  },
+  {
+   "component": "balcony",
+   "what": "white railings across the lower part of the top-storey windows"
+  },
+  {
+   "component": "roof",
+   "what": "a tall white timber frieze under a dentilled cornice"
+  }
+ ],
+ "notes": "The ground storey is blurred out.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

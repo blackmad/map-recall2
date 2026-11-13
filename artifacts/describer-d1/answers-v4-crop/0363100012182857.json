@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182857/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "bays",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "relieving arches of alternating sandstone and brick blocks over every upper window, with sandstone block quoins along the window sides"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two stepped gables with sandstone blocks in every step and a top window, joined by a small middle dormer window"
+  },
+  {
+   "component": "relief",
+   "what": "rows of stone blocks set in the brick at the floor lines (block-band decoration)"
+  }
+ ],
+ "notes": "Two step-gabled house fronts built as one double front; described the right one. The ground storey is one tall glazed storey with an entresol.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

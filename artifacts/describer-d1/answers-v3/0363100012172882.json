@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012172882",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172882/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "bays",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white fascia sign 'Wever Amsterdam' over a glazed shopfront"
+  }
+ ],
+ "notes": "A leafy tree covers nearly all the upper front and the top."
+}

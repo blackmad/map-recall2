@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pandId": "0363100012172668",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172668/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber shopfront with a toplight band and a dark fascia sign"
+  }
+ ],
+ "notes": "Steep oblique, top cut off; the left window axis is foreshortened, so the bay count is uncertain."
+}

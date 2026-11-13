@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012174970",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174970/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "A red timber ground storey with louvred bands and glazing opens onto a quayside terrace."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

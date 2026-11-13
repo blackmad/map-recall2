@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171858.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windowSurround",
+  "doorBay",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "corner café shopfront with a row of small-paned upper lights over large lower panes under a dark fascia"
+  },
+  {
+   "component": "relief",
+   "what": "a small ornamental finial or crest on the top of the corner"
+  }
+ ],
+ "notes": "Corner building seen from below through a strong fish-eye; a neon street sign crosses the upper storeys and the storey lines are hard to separate.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

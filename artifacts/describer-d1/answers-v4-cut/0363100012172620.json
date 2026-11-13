@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012172620",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172620.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces at the neck foot and a curved segmental pediment crowning the neck"
+  },
+  {
+   "component": "shutters",
+   "what": "dark shutters on both sides of the gable window"
+  }
+ ],
+ "notes": "A lamp post crosses the left bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

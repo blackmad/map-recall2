@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002356_pano_0002_000052.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustrade on the cornice with a dormer behind it"
+  },
+  {
+   "component": "window",
+   "what": "tall small-paned ground-storey windows with doors between them in white frames"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

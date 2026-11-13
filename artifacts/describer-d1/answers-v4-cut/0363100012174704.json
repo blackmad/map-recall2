@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012174704",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174704.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "souterrain": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ornate white fanlights with curved tracery over the doors either side of the central window on the bel-etage"
+  },
+  {
+   "component": "relief",
+   "what": "a small stone gable stone over the central bel-etage window and a carved stone mask in the neck"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white sandstone scroll edging on a rounded neck gable"
+  }
+ ],
+ "notes": "Tree branches cross the whole front; a door at each end of the bel-etage leaves the street door ambiguous.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000189.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "columns",
+  "souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the two right-hand axes of the upper storeys are blind, filled with pale panels"
+  },
+  {
+   "component": "door",
+   "what": "a stone-framed entrance portal with pilasters and an entablature at the right corner"
+  },
+  {
+   "component": "relief",
+   "what": "a small carved ornament block over the centre of each window"
+  },
+  {
+   "component": "roof",
+   "what": "a raised chimney-like corner pier with a cap at the right end of the mansard"
+  }
+ ],
+ "notes": "Corner building; a tree stands in front of the right half.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

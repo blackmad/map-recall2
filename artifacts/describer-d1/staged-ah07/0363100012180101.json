@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180101",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 2,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#42403d"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180101.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "one gabled dormer with a tiled roof standing in a short slate mansard skirt behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "small white ornamental blocks over each window head and iron wall anchors in each pier"
+  },
+  {
+   "component": "shopfront",
+   "what": "shop window under a striped awning with a door to the right"
+  }
+ ]
+}

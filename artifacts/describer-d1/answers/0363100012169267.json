@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012169267",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169267/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental arches made of alternating white and brick voussoir blocks over every upper window"
+  },
+  {
+   "component": "relief",
+   "what": "white storey bands with small dark rosettes at each floor line"
+  },
+  {
+   "component": "dormer",
+   "what": "tall hoist dormer with a projecting hoist beam above the cornice"
+  }
+ ]
+}

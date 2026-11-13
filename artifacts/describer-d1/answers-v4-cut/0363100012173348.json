@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012173348",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173348.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "bands",
+  "windowSurround",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks are set into the piers and above every window head, alternating with the brick, a blocked frame rather than a full surround"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the gable has white roundels at its foot and small steps with a carved stone crest at the top"
+  }
+ ],
+ "notes": "A houseboat and parked vans hide the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

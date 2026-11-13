@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012172882",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172882.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the ground storey is framed in white timber pilasters with a row of upper lights over the door and window, an entresol-like band"
+  },
+  {
+   "component": "dormer",
+   "what": "a small white ornamented gable or dormer rises above the cornice, mostly hidden by branches"
+  }
+ ],
+ "notes": "A tree trunk stands in front of the left bay and its branches cover the top; the wall may be dark painted brick.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

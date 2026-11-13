@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012178305",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178305/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with scrolled side pieces and a small pediment, like a miniature bell gable, on a tiled roof behind the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "souvenir shop with a red awning edge and goods displayed in front"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168006/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "cross",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "hipped tile roof visible behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "wide garage door at left of the ground storey"
+  }
+ ],
+ "notes": "A parked car hides most of the ground storey."
+}

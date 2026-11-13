@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012171629",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001277.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [],
+ "notes": "Bare branches across the whole front and over the cornice; low resolution.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

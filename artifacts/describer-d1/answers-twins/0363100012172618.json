@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012172618",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images/0363100012172618.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "target behind tree, right neighbour behind lamp; low confidence"
+}

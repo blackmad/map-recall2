@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012169914",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone keystones over every upper window and iron wall anchors between them"
+  },
+  {
+   "component": "relief",
+   "what": "sandstone block quoins up the left edge of the front"
+  },
+  {
+   "component": "roof",
+   "what": "a frieze with yellow sunk panels under the cornice and a red pantile roof with a tall hoist dormer"
+  }
+ ],
+ "notes": "A car blocks the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

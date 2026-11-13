@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012172884",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 1,
+ "columns": [
+  3,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window on the first storey and a large small-paned window filling most of the ground storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white stone blocks at the gable foot corners and a crowning piece on the neck"
+  }
+ ],
+ "notes": "Small, blurry image; the curtained first-storey window hides its glazing bars."
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012174978",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174978/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "finish",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "A dormer with a small pediment sits in a hipped roof behind the cornice."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

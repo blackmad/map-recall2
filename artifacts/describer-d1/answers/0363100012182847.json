@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182847/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white scrolled claw pieces with volutes on both shoulders of the neck"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony with planters at the centre window of the first storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "a green café awning across the ground storey"
+  }
+ ],
+ "notes": "Ground storey hidden by a café awning and terrace."
+}

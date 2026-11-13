@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002864_pano_0000_000056.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a cream timber ground-storey front with pilasters carrying carved consoles and medallions, top lights over doors and windows, under a moulded cornice."
+  },
+  {
+   "component": "dormer",
+   "what": "an ornamented dormer with a scrolled top and a hoist beam above the cornice."
+  }
+ ],
+ "notes": "Steep upward view; scooters and a blurred figure in front of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

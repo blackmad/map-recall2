@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012170093",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012170093.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "windows",
+  "columns",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "plain stone corbel blocks at both ends of the second storey and pier ends rising above the parapet at the corners"
+  }
+ ],
+ "notes": "A container hides the left of the shopfront; plain 20th-century brick front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

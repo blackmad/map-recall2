@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012172863",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172863/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-4-over-4",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small dormer standing above the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

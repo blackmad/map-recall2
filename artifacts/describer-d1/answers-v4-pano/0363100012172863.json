@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012172863",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002990_pano_0012_000106.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  4,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "columns",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a curved bell-like top behind the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

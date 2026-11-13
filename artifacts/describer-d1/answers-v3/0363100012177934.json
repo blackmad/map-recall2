@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177934",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177934/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre bay windows are wider than the narrow outer ones"
+  }
+ ],
+ "notes": "A gable with one window rises at the top but its top is cut off."
+}

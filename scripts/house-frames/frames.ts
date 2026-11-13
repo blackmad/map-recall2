@@ -116,7 +116,7 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; pano?: string };
+export type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; pano?: string };
 
 /** The eyeball set's pinned captures (lane PR1): one good panorama per pand, and the captures judged bad. */
 export const PINNED_POSES = 'scripts/house-line/benchmark/eyeball-poses.json';
@@ -130,7 +130,7 @@ export function withPinnedPoses(pands: Entry[], file = PINNED_POSES): Entry[] {
     return { ...e, pano: e.pano ?? pin.pano, ...(notPanos.length ? { notPanos } : {}) };
   });
 }
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
+export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -195,7 +195,7 @@ type Prepared = {
   pandId: string; key: string; street: string; wall: WallQuad; wallLenM: number; pick: Omit<PanoPick, 'record'> & { url: string }; pose: FramePose; hfovDeg: number;
   samples: PickSample[]; foliage: number | null; candidates: number; route: string; why: string[];
 };
-type Skipped = { pandId: string; key?: string; skip: string };
+export type Skipped = { pandId: string; key?: string; skip: string };
 
 /** The wall nearest `at` whose outward normal faces within 40 deg of `bearing` (exposed walls first, then any ring edge). */
 function wallAt(fp: Footprint, others: Footprint[], at: [number, number], bearing?: number): { wall: Wall | null; note: string } {
@@ -298,7 +298,9 @@ async function streetName(wall: Wall): Promise<string> {
   return best.name;
 }
 
-async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Promise<Prepared | Skipped> {
+/** The F4 pick's candidate list for an entry: the street wall, the ranked captures (sight-line filtered) and their order (season, clip, obliquity, rank). */
+export type Candidates = { wall: Wall; quad: WallQuad; note: string; ranked: PanoPick[]; order: Array<{ c: PanoPick; i: number }>; seasonKey: (c: PanoPick) => number; clipKey: (c: PanoPick) => number; oblKey: (c: PanoPick) => number };
+export async function rankCandidates(entry: Entry, fp: Footprint | undefined, args: Args): Promise<Candidates | Skipped> {
   const pandId = entry.id, key = entry.key ?? entry.id;
   if (!fp) return { pandId, skip: 'pand not in the building tiles' };
   const { options } = await import('../pand-reference/select.ts');
@@ -323,7 +325,9 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   // with houses between them and the wall (lane F4, #379: 36 of 37 Jordaan poses). With either flag, a capture whose
   // sight line to the wall (to its middle and both quarter points, 1 m up) crosses another footprint is dropped.
   if (!pinned && (args.preferObliquityDeg !== undefined || maxD !== FACADE_WINDOW.maxD)) {
-    const before = ranked.length, boxes = near.filter(o => o.id !== fp.id).map(o => ({ o, x0: Math.min(...o.ring.map(q => q.x)), x1: Math.max(...o.ring.map(q => q.x)), y0: Math.min(...o.ring.map(q => q.y)), y1: Math.max(...o.ring.map(q => q.y)) }));
+    const before = ranked.length, reach = Math.max(maxD, wall.len / 2 + 1) + 5, boxes = near.filter(o => o.id !== fp.id).map(o => ({ o, x0: Math.min(...o.ring.map(q => q.x)), x1: Math.max(...o.ring.map(q => q.x)), y0: Math.min(...o.ring.map(q => q.y)), y1: Math.max(...o.ring.map(q => q.y)) }))
+      // Only footprints within reach of the wall can stand on a sight line (every capture is within maxD of the wall's middle).
+      .filter(b => b.x1 > wall.mid.x - reach && b.x0 < wall.mid.x + reach && b.y1 > wall.mid.y - reach && b.y0 < wall.mid.y + reach);
     const blocked = (c: PanoPick) => {
       const cam = lngLatToRd([c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]]);
       let hits = 0;
@@ -340,8 +344,7 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
     ranked = ranked.filter(c => !blocked(c));
     if (ranked.length < before) note += `; ${before - ranked.length} capture(s) without a line of sight dropped`;
   }
-  if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
-  const why: string[] = [note];
+  if (!ranked.length) return { pandId, key, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
   // then lowest foliage on the wall, then rank.
   const seasonKey = (c: PanoPick) => args.season === 'winter' && !WINTER.has(monthOf(c.timestamp)) ? 1 : 0;
@@ -356,6 +359,17 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
     return clipMemo.get(c)!;
   };
   const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
+  return { wall, quad, note, ranked, order, seasonKey, clipKey, oblKey };
+}
+
+/** The F4 pick (pose.ts aimPose on the chosen capture): rankCandidates, then the 2000 px glare/washed/foliage pre-pass. */
+export type Picked = { pandId: string; key: string; wall: Wall; quad: WallQuad; pick: PanoPick; foliage: number | null; candidates: number; pose: FramePose; why: string[] };
+export async function pickPose(entry: Entry, fp: Footprint | undefined, args: Args, ranked0?: Candidates | Skipped): Promise<Picked | Skipped> {
+  const pandId = entry.id, key = entry.key ?? entry.id;
+  const cand = ranked0 ?? await rankCandidates(entry, fp, args);
+  if ('skip' in cand) return cand;
+  const { wall, quad, ranked, order, seasonKey, clipKey, oblKey } = cand, lim = args.preferObliquityDeg;
+  const why: string[] = [cand.note];
   const pool: { c: PanoPick; i: number; q: PanoQuality; reject?: string }[] = [];
   const judge = () => {
     const minWash = Math.min(...pool.map(p => p.q.washed ?? 1));
@@ -375,6 +389,14 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
   const published = Number(pick.record.geometry.coordinates[2]);
   const pose = aimPose({ lngLat: ll, cameraNap: published > 0 ? published - 43.5 : null }, quad);
+  return { pandId, key, wall, quad, pick, foliage, candidates: ranked.length, pose, why };
+}
+
+async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Promise<Prepared | Skipped> {
+  const picked = await pickPose(entry, fp, args);
+  if ('skip' in picked) return picked;
+  const { pandId, key, wall, quad, pick, foliage, pose, why } = picked;
+  const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
   const frame = frameFor(pose);
   const dir = path.join(args.out, key);
   fs.mkdirSync(dir, { recursive: true });
@@ -390,7 +412,7 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const { record, ...rest } = pick;
   return {
     pandId, key, street: await streetName(wall), wall: quad, wallLenM: +wall.len.toFixed(2), pick: { ...rest, url: record._links?.equirectangular_medium?.href ?? '' }, pose, hfovDeg: +hfovDeg(pose).toFixed(1),
-    samples: pickSamples(frame, pose, quad), foliage, candidates: ranked.length, route: routeOf(pandId, ll, args.query), why,
+    samples: pickSamples(frame, pose, quad), foliage, candidates: picked.candidates, route: routeOf(pandId, ll, args.query), why,
   };
 }
 

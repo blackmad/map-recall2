@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012174833",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "a dark board or hoist structure projects from the right bay on the second storey"
+  }
+ ],
+ "notes": "A large tree trunk hides the right edge and a lens flare covers the top right window."
+}

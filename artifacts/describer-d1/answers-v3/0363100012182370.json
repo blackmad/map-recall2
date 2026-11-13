@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012182370",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182370/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2022,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "six-pane",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "ground storey is cream stucco with large windows under top lights"
+  }
+ ],
+ "notes": "Close crop: only the ground storey and one upper storey are visible."
+}

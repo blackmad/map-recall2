@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172610",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172610/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white scrolled claw pieces and a curved scrolled cap on the neck"
+  },
+  {
+   "component": "window",
+   "what": "attic window in the neck flanked by open shutters"
+  }
+ ],
+ "notes": "Ground storey only partly in frame.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182308",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002927_pano_0002_000156.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "bell gable with white edge mouldings and a finial on top"
+  }
+ ],
+ "notes": "Painted red; a round traffic sign hides the right half.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

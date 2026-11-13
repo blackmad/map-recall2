@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174978",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174978/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a small pointed pediment over a twin window"
+  },
+  {
+   "component": "door",
+   "what": "stucco ground storey with paired round-headed lights over the door"
+  }
+ ],
+ "notes": "Tree branches and greenery cover the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

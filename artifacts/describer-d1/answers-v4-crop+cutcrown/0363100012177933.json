@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a rendered two-level base: a shop with a window row above it"
+  }
+ ],
+ "notes": "A parasol hides the right of the base; the window row over the shop was counted as its own storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

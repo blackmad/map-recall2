@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174778",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002968_pano_0000_000146.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "crown",
+  "heads",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "radiating white stone voussoir blocks alternating with brick over every window, a fan of blocks rather than a single keystone"
+  },
+  {
+   "component": "window",
+   "what": "white block quoins down both sides of every window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small pinnacles on the gable shoulders"
+  }
+ ],
+ "notes": "A street lamp hides the right bay and much of the gable.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

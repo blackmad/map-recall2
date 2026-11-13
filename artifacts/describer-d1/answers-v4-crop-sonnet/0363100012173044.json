@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012173044",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173044/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "heads",
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies under the centre windows of two storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with an arched window on the mansard roof"
+  },
+  {
+   "component": "relief",
+   "what": "pilasters with carved capitals flank the ground storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

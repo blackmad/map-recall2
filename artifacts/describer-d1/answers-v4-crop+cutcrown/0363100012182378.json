@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012182378",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182378/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "storeyWindows": {
+  "2": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a deep projecting flat roof slab overhangs the top of the front"
+  },
+  {
+   "component": "window",
+   "what": "horizontal louvred lights in some upper windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

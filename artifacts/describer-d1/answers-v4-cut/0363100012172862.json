@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012172862",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172862.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  6,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "columns",
+  "windowSurround",
+  "ground",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first-floor windows carry small triangular stone pediments and the top-floor windows round-arched stone hoods joined by a continuous arcade moulding"
+  },
+  {
+   "component": "relief",
+   "what": "white stone pilaster strips with banded rustication run between the window axes"
+  },
+  {
+   "component": "dormer",
+   "what": "one tall central dormer with a decorated pediment and finial rises from the mansard"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balconette at the centre first-floor window"
+  }
+ ],
+ "notes": "A large bare tree crosses the left bay and a houseboat hides the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

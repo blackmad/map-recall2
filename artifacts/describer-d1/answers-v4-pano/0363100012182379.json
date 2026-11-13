@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182379",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002356_pano_0002_000052.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "doorBay",
+  "columns",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with white scrolled claw pieces and a curved white pediment carrying a cross-shaped finial"
+  }
+ ],
+ "notes": "Low resolution and haze.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

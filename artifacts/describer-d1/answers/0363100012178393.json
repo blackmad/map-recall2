@@ -1,0 +1,34 @@
+{
+ "v": 1,
+ "pandId": "0363100012178393",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178393/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "wallFamily",
+  "extent"
+ ],
+ "gaps": [],
+ "notes": "Very oblique view; the middle of the image falls on the joint between a narrow front with a SOUVENIRS sign and a wider front to its right, both with shop ground storeys."
+}

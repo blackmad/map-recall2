@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002613.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a neo-Gothic church front: pinnacled buttresses, a corbel table along the gable rakes and a bell turret on top"
+  },
+  {
+   "component": "window",
+   "what": "one huge round-arched traceried window in the centre and tall arched side windows"
+  },
+  {
+   "component": "door",
+   "what": "three arched doorways with stone surrounds, the middle one under its own small gable"
+  }
+ ],
+ "notes": "A church, not a house; the storey count reads the window tiers.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

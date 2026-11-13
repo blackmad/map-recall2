@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012173044",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173044/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windowSurround",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on the middle axis of storeys 2 and 3"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall stucco dormer with a round-headed window and a scrolled top"
+  },
+  {
+   "component": "shopfront",
+   "what": "two-level white stucco base: shop doors below and a row of windows over them"
+  }
+ ],
+ "notes": "Tree branches cross the whole front; the two-level white base was counted as two storeys.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

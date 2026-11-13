@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182708/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "doorBay",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the white ground storey has pilasters with small carved ornaments and rosettes"
+  }
+ ],
+ "notes": "Bicycles and scooters hide the foot of the ground storey; the right edge may cut an axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

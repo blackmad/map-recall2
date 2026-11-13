@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "three small white balconies on brackets on the left axis"
+  },
+  {
+   "component": "window",
+   "what": "arched attic window at the top left of the wall"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

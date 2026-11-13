@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171218",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "speklagen",
+    "souterrain": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3e3a35"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171218.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ },
+ "schemaLimits": [
+  {
+   "component": "door",
+   "what": "a white stone aedicule with small arched lights and a crest stands over the street door at the top of the stoop"
+  },
+  {
+   "component": "balcony",
+   "what": "a small stone balustraded balcony with urns on consoles in front of the centre first-storey window"
+  },
+  {
+   "component": "window",
+   "what": "the top storey's round-arched windows sit under raised white arch rings with keystones; the first storey has corniced stone lintels"
+  },
+  {
+   "component": "dormer",
+   "what": "one ornate stone dormer with scrolls and a pointed pediment in the slate mansard"
+  },
+  {
+   "component": "basement",
+   "what": "the souterrain is faced in rough stone with two barred arched windows"
+  }
+ ]
+}

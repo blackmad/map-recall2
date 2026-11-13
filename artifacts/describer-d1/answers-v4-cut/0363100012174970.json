@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012174970",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174970.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "columns",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a dark red painted timber shopfront with a deep fascia and two narrow doors among the glazing"
+  },
+  {
+   "component": "dormer",
+   "what": "a single central dormer with a small pediment stands behind the cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

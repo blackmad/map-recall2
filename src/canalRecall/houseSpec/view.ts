@@ -13,7 +13,7 @@
 import { SWATCHES } from '../buildingRecipe/intent.ts';
 import type { HouseSpecView, SpecLook } from './decorate.ts';
 import { fieldSources } from './resolve.ts';
-import { frontBays, type HouseSpec } from './spec.ts';
+import { drawableDesign, frontBays, provenanceOf, type HouseSpec, type SpecIgnored } from './spec.ts';
 
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
 const luma = (h: string) => { const n = parseInt(h.slice(1), 16); return (0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255; };
@@ -61,11 +61,26 @@ export function specLook(spec: HouseSpec, src: Record<string, string>): { look: 
   return { look, src: used.sort((a, b) => order.indexOf(a) - order.indexOf(b))[0] };
 }
 
+/** The sources a souterrain or roof storey is taken from (lane WG): the street front itself, or the register's text. */
+export const STOREY_PLAN_SOURCES: ReadonlySet<string> = new Set(['monument-text', 'vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
+export const STOREY_PLAN_MIN_CONFIDENCE = 0.5;
+const storeyPlanSource = (spec: HouseSpec, path: string): boolean => {
+  const prov = provenanceOf(spec, path);
+  return !!prov && STOREY_PLAN_SOURCES.has(prov.source) && prov.confidence >= STOREY_PLAN_MIN_CONFIDENCE;
+};
+
 /** Sources that read the street front itself: their silence about a shopfront means a quiet ground storey. */
 const PHOTO_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
 
-/** The runtime view of a resolved spec (the extract's `v`). */
-export function specView(spec: HouseSpec): HouseSpecView {
+/** The spec values the runtime view draws as something else (spec.ts drawableDesign: stone -> stucco, pitched-eaves ->
+ *  cornice, pointed -> round, mixed -> no head); empty when the spec states none. */
+export const specViewIgnored = (spec: HouseSpec): SpecIgnored[] => drawableDesign(spec.design).ignored;
+
+/** The runtime view of a resolved spec (the extract's `v`). Spec-only values are drawn as their nearest intent value
+ *  (spec.ts drawableDesign; listed by specViewIgnored); without them the spec is read as is. */
+export function specView(read: HouseSpec): HouseSpecView {
+  const drawable = drawableDesign(read.design);
+  const spec: HouseSpec = drawable.ignored.length ? { ...read, design: drawable.design } : read;
   const src = fieldSources(spec), front = spec.design.fronts?.[0];
   const v: HouseSpecView = { src: {} };
   // The roof planner (roofMesh planRoof) draws a monument gable as the whole roof's crown: a canal house's gabled or
@@ -76,7 +91,7 @@ export function specView(spec: HouseSpec): HouseSpecView {
   // A flat crown stated by a street source or an author (lane H9) clears a register gable (decorate.ts withHouseSpecCrown).
   else if (front?.gable === 'flat' && ['streetlevel-measured', 'reviewed', 'author'].includes(src['fronts/0/gable'] ?? '')) { v.gable = 'flat'; v.src.gable = src['fronts/0/gable']; }
   if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
-  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
+  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial as NonNullable<HouseSpecView['wallMaterial']>; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
   if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
@@ -90,6 +105,13 @@ export function specView(spec: HouseSpec): HouseSpecView {
     v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys'];
     const heights = front?.storeyHeights as number[] | undefined, ground = Array.isArray(heights) ? Number(heights[0]) : NaN;
     if (Number.isFinite(ground) && ground >= 2 && ground <= 7 && src['fronts/0/storeyHeights'] !== 'default') v.groundM = +ground.toFixed(2);
+    // Lane WG (storeyPlan.ts): a souterrain and a roof storey change what the count means against 3DBAG's wall, so only a
+    // source that saw the front (or the register's text) at confidence >= STOREY_PLAN_MIN_CONFIDENCE states them.
+    if (front?.souterrain === true && storeyPlanSource(spec, 'fronts/0/souterrain')) { v.souterrain = true; v.src.souterrain = src['fronts/0/souterrain']; }
+    const roofStorey = read.design.fronts?.[0]?.roofStorey; // drawableDesign drops it for the recipe route
+    if ((roofStorey === 'mansard' || roofStorey === 'attic') && storeyPlanSource(spec, 'fronts/0/roofStorey')) { v.roofStorey = roofStorey; v.src.roofStorey = src['fronts/0/roofStorey']; }
+    // A cornice crown read from the front: no window row above the read rows (BK's bake-off, 2026-11-13).
+    if (front?.gable === 'cornice' && storeyPlanSource(spec, 'fronts/0/gable')) v.corniceCrown = true;
   }
   // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
   if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {

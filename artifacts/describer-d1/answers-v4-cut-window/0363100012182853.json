@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182853",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182853.jpg + artifacts/describer-d1/windows/0363100012182853.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a brick chimney-like top on the step gable carrying an iron weather vane"
+  },
+  {
+   "component": "window",
+   "what": "segmental brick arches of radiating headers over the first- and second-floor windows"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron guard bars across the upper windows"
+  }
+ ],
+ "notes": "The steps of the gable are shallow and partly in shadow.",
+ "storeys": 3,
+ "wallFamily": "not-visible",
+ "paneLayout": "top-light"
+}

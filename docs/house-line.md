@@ -55,6 +55,15 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
 - **Field paths** (the unit of provenance and of the merge): one key of one front (`fronts/0/gable`), one key of the
   roof or palette (`roof/material`, `palette/brick`), `notes`, one key of `facts` (`facts/facadeYear`). Values below
   that level (a `windowHead` object, a per-storey `bays` list) are atomic: two sources never splice one window head.
+- **Spec-level values** (lane D1, 2026-11-13; spec.ts `SPEC_WALL_MATERIALS`, `SPEC_GABLES`, `SPEC_WINDOW_HEADS`): a spec stores
+  these readings as read though the intent has no value for them; every compiler draws them through `drawableDesign` and
+  reports each as `ignored: [{path, value, drawnAs}]` (`toRecipeReport`, `specViewIgnored`). Absent = byte-identical.
+  - `palette/wallMaterial: "stone"`: a stone-faced front; drawn `stucco` (a pale render wall, colour kept).
+  - `fronts/N/gable: "pitched-eaves"`: an eaves line with the roof slope in view; drawn `cornice` (with `cornice: none` unless stated).
+  - `fronts/N/windowHead.kind: "pointed"`: drawn `round`.
+  - `fronts/N/windowHead.kind: "mixed"` (two head shapes on one storey): drawn with no head (the intent default, flat).
+  - `fronts/N/windowSurround: "block-dressings"` (alternating stone blocks down the jambs and round the head): drawn `jack-blocks`.
+  - `fronts/N/cornice: "attic-frieze"` (a frieze with attic windows under the cornice): drawn `frieze`.
 - **Provenance** is keyed by field path; an ancestor key covers every field under it (`fronts/0`, or `` for the whole
   record, which is what an adapter for a single-source record writes). `resolveSpecs` writes one key per field.
 - **`schemaLimits`**: what the photo shows that the kit cannot say, one `{component, what}` per kit part (the shape of
@@ -153,9 +162,9 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   photo look, drawn through the wall-colour rule below (H1 held it; lane H9 released it). `streetFacadeRendering.ts
   frontageLayoutScale` fits a street run to the stated bays: cells = round(bays / window axes per cell), clamped to
   0.7–1.5 of the style's bay. The generic cells carry two or three window axes, so an odd bay count on a two-axis cell
-  rounds (a limit of the generic path, not of the spec). **Held** (`SPEC_BAYS_HELD`, 2026-11-10, #348: H1's bay
-  counts doubled on canal houses near the Dam, photo 3 drawn 6; lane H1b owns the cause): no spec bay count reaches
-  the mesher. Storeys, wall, gable, year and finish are unaffected.
+  rounds (a limit of the generic path, not of the spec). Held 2026-11-10 (#348: H1's bay counts doubled on canal
+  houses near the Dam, photo 3 drawn 6); **released** by H1c (#350, `SPEC_BAYS_HELD = false`): odd counts on two-axis
+  cells draw as half-cell axis units (§1 "Odd bays").
 - **Storeys** (lane H9): `fronts/0/storeys` (storeys below the crown, ground included) reaches the view as `storeys`
   and `specRecipe.storeys`; `specStoreyFit` (exact mode; `specStoreyScale` is its storey) sets the storey pitch so
   `layoutWall` draws that count on the street run's wall (pitch 0.75–1.45 of the style's storey; outside it the style's
@@ -408,10 +417,54 @@ buildings; fewer pale-trim extras), shell unchanged. No per-cell triangle budget
    from its own outline; a neck or bell reads as a square neck box (176066, 171144).
 3. `roof.form`/`hip`/`pitchDeg`/`material`: the roof planner's plan is 3DBAG's.
 4. `cornice` depth and `crownCap` pieces: no cornice-depth or cap component in the generic cells.
-5. `doorBay`, `basement`/`souterrain`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
-   control in the bay cells (one door position rule, one opening box per preset).
-6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset), `palette.brick` (held,
-   `SPEC_WALLS_HELD`).
+5. `doorBay`, `basement`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
+   control in the bay cells (one door position rule, one opening box per preset). `souterrain` reaches the storey fit
+   only (lane WG, below): no souterrain cell, its rough stone and knee-height windows are the ground cell's.
+6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset). (`palette.brick` is
+   drawn: `SPEC_WALLS_HELD = false` since H9, through the wall-colour rule.)
+7. `bands`/`speklagen` as lines, `cornice: none`, a vision-judge `cornice` crown, `windowHead` and `shop` (held,
+   `SPEC_DESIGN_HELD.look`/`.shop`): D1's pixel check (scripts/house-specs/describer-d1/pixel-check) measured them
+   ignored or held on the generic route. Wiring bands and the crown waits on the integrator's three-route bake-off.
+
+### Storey fit with a souterrain and a roof storey (lane WG, 2026-11-13)
+
+D1 found the stated count stretched over 3DBAG's whole wall: Weteringschans 0363100012171218 (souterrain, three storeys,
+slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 generic pands drew an upper pitch over 4.5 m
+(19 of them with a souterrain read). `houseSpec/storeyPlan.ts` reads the count against the eaves line:
+
+- **souterrain** (`fronts/0/souterrain`): 0.58 of the storey pitch (`blockBuilding/systems.ts SOUTERRAIN.factor`, the
+  block-face kit's), from the street up; then `storeys` rows at one pitch up to the eaves line.
+- **roof storey** (`fronts/0/roofStorey: mansard | attic | none`, new spec field, spec-level: `drawableDesign` drops it for
+  the recipe route): above the eaves line, roof not wall. A mansard is roof and a cornice crown (`fronts/0/gable:
+  cornice` from a front-reading source, view `corniceCrown`) has no window row above the rows: the wall over the line is a
+  plain band (the mesher's parapet band). Only a stated `attic` draws one more window row, where the wall reaches over
+  the line by 0.6 of a storey. (BK's bake-off, 2026-11-13: an implied roof row drew 168043 as 4 rows, and the prior drew
+  168042, 171192 and 168096 as 5, for 3 storeys read under a cornice or mansard.)
+- **capped**: a cornice or mansard front whose rows overfill the wall even with a tall ground draws them at the period's top
+  pitch over a tall ground, the rest a plain band, when that band is at most one period storey; more stays a reject.
+- **eaves line**: 3DBAG's eaves (bag-facts, the register gable gate's source), carried as view `eavesM` for every pand
+  with a stated count (`build-house-specs.ts`), but only where it can be the front's (`frontEavesM`): bag-facts eaves is
+  `b3_h_dak_min`, the pand's lowest roof point, often a rear lean-to (168042, 171192, 185507: 6.3 m against street roof
+  planes from 14.1 to 16.9 m in LoD2.2; 168043, 168096: a flat rear roof at 10 m). It is kept when the building tile's
+  `height` (3DBAG 70p) lies at most 4.5 m over it, or, under a ridge, within 0.75 of the eaves-to-ridge rise. Without it
+  the mesher's wall top, and the rows at the period pitch decide whether a stated attic is inside the wall.
+- **drawn**: with a souterrain the ground cell is the souterrain (the door and windows at the street, `SPEC_GROUND_SCALE`
+  clamps it) and every stated storey, the bel-etage included, is an upper row. No new cell or component.
+- **guard** (every stated count, souterrain or not): the fitted pitch must lie in the period's range
+  (`STOREY_PITCH_RANGE`, PR1's 1,432 read houses, 5th to 95th percentile, capped at 4.5 m: canal 2.50-4.26, c19 2.65-4.09,
+  school 2.32-4.50, other 2.6-4.5). Outside it the count is dropped: the run draws the style's own count (the prior) and
+  `storeyPlanProbe` lists the pand for a second read and the publish veto list (`scripts/house-specs/storey-guard.ts`,
+  which splits rejects into (a) roof in the wall, no roof storey read; (c) eaves outside the window; (d) count plausibly
+  wrong). Before rejecting a too-tall pitch the fit retries with a tall ground row, 1.29 upper pitches (the p25 of the
+  ground / upper ratio over 180 hand fronts with storeyHeights; median 1.48), and draws that ground when it passes.
+  A rejected count is meant to take PR1's prior (`storeyRejectPrior`, set once its storeys ship); until then the style's
+  own. `?storeyGuard=0` / `STOREY_GUARD=0` turns the whole storey plan off, the fit before lane WG (forwarded to the building worker).
+- **souterrain cell**: drawn at its fitted height down to 0.5 of the style's ground (`SPEC_SOUTERRAIN_GROUND_MIN`;
+  `SPEC_GROUND_SCALE.min` drew 171218's 2.17 m souterrain at 2.52 m). The 0.58 ratio against the five hand fronts that
+  state a souterrain height (souterrain / mean storey 0.62, 0.62, 0.63, 0.67, 0.85; canal belt only, no family split
+  possible) is kept: the measured median 0.63 is 0.2 m more on a 3.7 m pitch, and 171218's photo reads about 0.54.
+- **provenance**: souterrain and roof storey reach the view only from `monument-text`, `vision-judge` or stronger at
+  confidence >= 0.5, and only with a stated count. Absent, the fit is H9/H11's, byte-identical.
 
 ### Which specs a world carries
 
@@ -3020,3 +3073,30 @@ as `notPanos`. The picks were made by eye from every capture earlier frames runs
 0363100012165023's automatic pick, from 2023 on the far quay, sits behind a tree trunk and a portable toilet. The pin is
 F1's clear 2019-01-10 capture at 5.1 m. house:frames applies the file under `--list` and `--pands`, adds the pin's
 `notPanos` to the entry's own, and skips its sight-line filter for a pinned capture. `--no-pinned-poses` ignores the file.
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.
+
+**Step 1c and the step-2 pilot (2026-11-13).** Image modes scored on the same 146 gate-pass pands against the adjudicated labels
+(`scripts/house-line/benchmark/benchmark-v1-adjudicated.json`): the square crop, a describe cut (`describe-cut.ts`: an
+unrectified perspective cut from the panorama cache, wall outlined, neighbours and crown in frame) and a per-panorama read
+(3-5 numbered fronts in one image). No mode lifts storeys or crown to 0.9 (`artifacts/describer-d1/scores-same147-compare.md`),
+so step 2 reads the gate-pass crop where one exists and the describe cut otherwise; the crown is read from the cut when the
+crop says not-visible. A zoomed window as a second image did not lift window family or pane layout over 0.8 (parked).
+What ships (`stage.ts STAGED`, integrator ruling): storeys (as rows below the crown, plus the souterrain flag), bays, bands,
+shop/ground, basement (crop only), finish and the cut's sampled wall hex; for crown, head and cornice only the answered classes
+with precision >= 0.8 (`per-class.md`: crown cornice 0.95 and step 0.88, head flat 0.80 and segmental 0.83, cornice none
+0.88). Everything else stays with the twin, then the prior. A hidden front copies storeys, crown and bands from a twin only
+when its `sameAs` names that side and PR1's `similar` holds (`twin-guard.ts`: precision 0.94, recall 0.52). Every storey miss
+is off by one, mostly the roof-storey, gable-attic and entresol conventions (`storey-misses.md`). Sonnet on the same crops is
+within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) and painted finish, so opus reads.
+Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
+194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
+`artifacts/describer-d1/staged-ah07/` (never published).

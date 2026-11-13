@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012177909",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177909/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "Broad segmental brick arches with pale stone blocks between the windows and small carved brackets."
+  },
+  {
+   "component": "shopfront",
+   "what": "A wide ochre timber shopfront with a deep fascia and pilasters."
+  }
+ ],
+ "notes": "The top of the front is cut off.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

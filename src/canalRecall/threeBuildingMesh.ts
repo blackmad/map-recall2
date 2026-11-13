@@ -23,7 +23,8 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
-import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext, type FrontageBays } from './streetFacadeRendering.js';
+import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
@@ -635,8 +636,32 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // The storey count fits street runs (H9); with H11's fit released (`storeysFit`) every ground-level run, to the nearest
       // count the clamp allows, with the stated ground height (streetFacadeRendering.ts specStoreyFit).
       const streetRun = run.some(({ e }) => doorAllowed.has(e)), fitAll = !!b.specRecipe?.storeysFit && base < 0.5;
-      const specBays = !b.recipe && ((streetRun && (b.specRecipe?.bays || b.specRecipe?.storeys)) || (fitAll && b.specRecipe?.storeys))
+      const specBays: FrontageBays | undefined = !b.recipe && ((streetRun && (b.specRecipe?.bays || b.specRecipe?.storeys)) || (fitAll && b.specRecipe?.storeys))
         ? { ...(streetRun && b.specRecipe!.bays ? { bays: b.specRecipe!.bays } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(b.specRecipe!.storeys ? { storeys: b.specRecipe!.storeys, exposedM: top - parapetSpec - base, ...(b.specRecipe!.storeysFit ? { fit: 'nearest' as const, ...(b.specRecipe!.groundM ? { groundM: b.specRecipe!.groundM } : {}) } : {}) } : {}) } : priorBays(b, streetRun, streetCorner, base, top - parapetSpec - base, run.reduce((sum, r) => sum + r.e.len, 0));
+      // Lane WG (houseSpec/storeyPlan.ts): the stated count against 3DBAG's eaves, with a souterrain and a roof storey; a
+      // pitch outside the period range drops the count (the style's own draws) and is logged for a second read.
+      let eavesBand = 0;
+      // `?storeyGuard=0` / STOREY_GUARD=0 turns the whole plan off: H9/H11's fit, byte-identical to main.
+      if (storeyGuardOn() && b.specRecipe?.storeys && specBays?.storeys && specBays.exposedM) {
+        const sr = b.specRecipe!, input = { wallM: specBays.exposedM, storeys: specBays.storeys, ...(sr.souterrain ? { souterrain: true } : {}), ...(sr.roofStorey ? { roofStorey: sr.roofStorey } : {}), ...(sr.eavesM ? { eavesM: sr.eavesM - base } : {}), ...(sr.corniceCrown ? { crown: 'cornice' as const } : {}), period: sr.period };
+        const plan = storeyPlan(input);
+        if (plan) {
+          if (storeyPlanProbe.sink) storeyPlanProbe.sink(b.id, plan, input);
+          const draw = storeyDraw(plan, specBays.storeys, undefined, specBays.exposedM);
+          if (draw === 'reject') {
+            const exposedM = specBays.exposedM;
+            delete specBays.storeys; delete specBays.exposedM; delete specBays.fit; delete specBays.groundM;
+            // The prior's count when it ships (storeyRejectPrior, PR1); unset: the style's own count.
+            const prior = storeyRejectPrior.storeys?.(b as { id: string }, { exposedM, widthM: run.reduce((sum, r) => sum + r.e.len, 0), base, streetRun });
+            if (prior && prior >= 2) Object.assign(specBays, { storeys: prior, exposedM, fit: 'nearest' as const });
+          }
+          else if (draw) {
+            // The wall over 3DBAG's eaves draws as the plain parapet band, so the rows stop at the eaves line (needs a plain cell).
+            if (draw.bandM && b.plainLayer !== undefined && !b.bare) eavesBand = draw.bandM;
+            Object.assign(specBays, { storeys: draw.storeys, fit: 'nearest' as const, exposedM: specBays.exposedM - eavesBand }, draw.groundM ? { groundM: draw.groundM } : {}, draw.souterrain ? { groundMin: SPEC_SOUTERRAIN_GROUND_MIN } : {});
+          }
+        }
+      }
       // An odd stated count on a two-window cell: half-cell axis units (streetFacadeRendering.ts axisUnitPlan, H1c #350).
       const units = specBays?.bays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
       const fitted = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
@@ -654,7 +679,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       }
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
       // A parapet band (large tier) only where the wall is tall enough to keep a storey under it.
-      const parapet = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0, facadeTop = top - parapet;
+      const parapet = (b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0) + eavesBand, facadeTop = top - parapet;
       if (recordMode) {
         // F1: one quad per wall plane, base to top, u in metres along the run (bays carry on round a kink), v from the base.
         const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));

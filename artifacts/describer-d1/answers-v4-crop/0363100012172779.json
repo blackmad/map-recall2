@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012172779",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172779/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small oval window beside the attic window in the gable"
+  }
+ ],
+ "notes": "A tree covers the left half and the ground storey; storeys cannot be counted.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012168178",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012168178.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-triple",
+ "storeyWindows": {
+  "4": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "shallow projecting box windows with white frames and splayed side lights on the first to third storeys of each axis, each on a projecting brick sill block"
+  },
+  {
+   "component": "balcony",
+   "what": "french balconies with low iron railings at the top-storey windows, set on a projecting ledge"
+  },
+  {
+   "component": "dormer",
+   "what": "two small white dormers and two chimneys in a pitched roof behind the eaves"
+  }
+ ],
+ "notes": "1920s-30s block; the ground storey is a café shopfront with an awning and a separate dark entrance on the left.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

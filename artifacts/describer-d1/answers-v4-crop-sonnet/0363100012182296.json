@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182296",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182296/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "storeyParts",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white keystone or plaque blocks above each window and lunettes of lighter brick"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
