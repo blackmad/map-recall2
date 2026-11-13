@@ -2450,3 +2450,150 @@ Still wrong:
 - A held reading still draws heldBrickWall.
 - The reading stage is one photo per pand: 154359 reads 0.24 L darker than its frame.
 
+
+## §12 Wall variety and painted fronts (lane W2, 2026-11-12, flag `?wallVariety=`, default off)
+
+The integrator's reading of the W1 triples: W1 fixed the mean but drew rows in one colour. 176005's Herengracht row (red
+brick, dark target, white stucco, red-brown) drew four grey-browns, and W1's row lightness spread was 0.70 of the photos'.
+
+### The draw (`look/measuredWallPool.ts drawFor`, `POOL_DRAW`)
+
+- **Candidates:** the 24 nearest measured walls, same archetype as in W1.
+  - A colour repeated within 40 m counts once, because a split building carries one reading on each pand.
+  - City-wide repeats stay: the readings are quantised (#6d5743 is 22 pands).
+  - The candidates are sorted by OKLab L, then hue.
+  - Each is weighted exp(-(d - d0) / (15 m + d0)), where d0 is the nearest candidate's distance.
+- **Quantile:** a rank-1 lattice over 7 m cells (golden and plastic ratios) plus a 5 % id-hash jitter. Consecutive pands
+  along a row of any direction take well-spread quantiles. The band keeps the central share of the CDF: 0 is the weighted
+  median, 1 is the whole distribution.
+- **Query point:** with variety on, the pool is queried at the ring's vertex mean, which is where the table's points
+  are. With variety off it uses the first vertex, as W1 shipped. **Off is identical to W1:** `wall-predict.ts` gives 0
+  changed walls on the 114 pairs.
+
+**Why a kernel:** leave-one-out on the 1,051 measured walls.
+
+| pick | LOO wall dE | LOO without same-colour neighbours |
+|---|---|---|
+| W1 (3 nearest the median) | 0.058 | 0.076 |
+| nearest within 25 m | 0.041 | |
+| kernel 15 m (k 24) | 0.048 | 0.079 |
+| uniform of 24 | 0.095 | 0.095 |
+
+Most of the nearest-neighbour gain is split buildings. The frames' pands sit a median **160 m** from a reading, so
+for them the draw is close to the neighbourhood's distribution and carries no per-pand evidence. No other signal I
+tested predicts the wall:
+- the identity-palette `sideColour`: r 0.12 against the drawn wall L;
+- the `canal-prior*` facade class: ±0.02 L;
+- the register finish: present on 36 of the 1,051 readings.
+
+### Painted fronts (kit addition)
+
+- **The table** (v2) marks a measured wall painted when its reading is stucco, its register finish is light, or its
+  drawn L is 0.62 or more. No brick reading reaches 0.58. 78 walls are marked: canal 10 of 58, c19 42 of 559, school 26
+  of 434.
+- **The kit could not say it.** Every pre-1945 bay cell was brick, so a white front could only be a pale tint on brick
+  courses.
+- **The new cells:** `bayLook.ts paintedLayers` adds 8 smooth cells (upper, ground, door and plain) for canal and c19.
+  They use one preset per archetype: style 1, transom sashes, no trim.
+  - They are appended after the masonry cell, so no earlier layer moves.
+  - They exist only with the shared restrained shop cells (newbuildFamily, default on). `?newbuildFamily=0` keeps 191
+    bay cells and exactly 256 procedural layers.
+- **Still missing:** school has no painted cell (the byte layers are full), and a painted pand loses its own window
+  preset.
+
+### Result on the 114 W1 pairs (`house:frames --before artifacts/w1/after2`, all four scratch bundles)
+
+| | W1 | band 0.5 | band 1 |
+|---|---|---|---|
+| mean wall dE | 0.097 | 0.104 | 0.128 |
+| worse than W1 by > 0.02 / better | | 36 / 23 | 49 / 18 |
+| worse than pre-W1 by > 0.02 / better | 15 / 61 | 26 / 61 | 31 / 47 |
+| row L std / photo's (11 rows of 3+ pairs; photo 0.071) | 0.70 | 0.83 | 1.16 |
+| pixel L (photo 0.426) / C (photo 0.016) | 0.466 / 0.025 | 0.453 / 0.021 | 0.454 / 0.024 |
+| critic: wall colour / brick vs render / fooled | 36 / 12 / 1 | 37 / 10 / 0 | |
+
+- **Gate: not met at any band.** Band 0 (the weighted median) predicts 0.096 but 16 pairs worse than W1, with no added
+  spread.
+- **The pair set is biased toward dark photos.** The 87 F4 pairs were picked where the game drew pale over dark brick,
+  and only 1 of 114 photos is pale. A draw true to the neighbourhood's spread (7.5 % painted) therefore scores worse on
+  them by construction. Painted draws went to dark photos: band 1, 19 painted at dE 0.169.
+- **Render compression:** pixel L is about 0.43 x mesher L + 0.24, so mesher spread reaches the pixel at under half its
+  size. A painted white draws mid grey; see 176005's band-1 neighbour.
+- `scripts/house-frames/wall-predict.ts` screens a pick-rule change in Node from a reference wall-stages run. It was
+  optimistic by about 0.016 dE against the browser.
+- **Trap:** the committed `own-ground-game` and `building-tiles` bundles forward worker flags. A scratch run must rebuild
+  them, or the worker never sees a new flag; the first band 0.5 run was really band 1.
+
+**Default off.** `?wallVariety=0.5` turns it on at band 0.5, `?wallVariety=1` gives the whole distribution, and
+`WALL_VARIETY` does the same in Node.
+
+## §13 Wall-colour benchmark v2 and the default (lane W3, 2026-11-12)
+
+W2's pairs were biased: the F4 wall-colour pairs were picked where the game drew pale over dark brick. Benchmark v2 makes
+no selection on what the game draws.
+
+### The metric first: is the shopfront band in the wall sample?
+
+- `analyse.ts wallLab` (house:frames, and through it wall-stages.ts) reads OKLab over COLOUR_BAND_M = 3-12 m on the wall
+  plane, capped at 30-85 % of the wall height, on the inner 80 % of its length. It drops leaves and sky and keeps the
+  30-70 % lightness quantiles.
+- **Shopfront band:** moving the floor to 4 m shifts the photo L of the 114 W1 pairs by +0.005 on average, and only 3 of
+  them by more than 0.05. **The shopfront band is not the error**, so the metric is unchanged.
+- **The error is obliquity.** 172671's photo reads L 0.70 because the pose is 55 deg oblique (pose.json `pick.obliquityDeg`).
+  On that view the white window frames, the cornice and the white neighbour's edge fill the trimmed quantiles
+  (`scripts/house-frames/wall-sample-overlay.ts` draws the sample points). 50 of the 114 W1 pairs sit above 30 deg and
+  29 above 45 deg: `--prefer-obliquity 30` only ranks captures, it does not reject them.
+- **v2 therefore keeps only captures within 30 deg.** For F4 v1 and any other benchmark, read a pair above 30 deg as
+  suspect.
+
+### The set (`scripts/house-line/benchmark/select-v2.ts`, `benchmark-v2.json`, `benchmark-v2.frames.json`)
+
+- **Population** (41,511 pands): every generic-path pand in the ride-priority gebieden with a pre-1945 archetype, no
+  photo reading (the settings only differ there), no installed model or kit over it, 6 m or taller.
+- **Draw:** 360 by seeded weighted sampling without replacement (seed 20261112); Centrum-West and Centrum-Oost weigh 2,
+  the inner ring 1.
+- **Posing:** `house:frames --prep-only --season winter --prefer-obliquity 30`. 316 posed, 229 within 30 deg (all
+  winter). The first 170 in draw order were run; the 26 otherBuilding poses were re-picked once with notPanos and 5
+  recovered.
+- **Result:** 146 pairs. Centrum-West 44, Centrum-Oost 38, Oud-West 26, De Pijp 23, Oud-Zuid 23, Oud-Oost 8,
+  Westerpark 8; c19 68, canal 52, school 50.
+- **Pale photos** (wall L 0.62 or more): 6, 4.1 %, at their population share because the draw is random. The
+  population's colour is unknown before posing, so I did not force a stratum.
+- **Archive:** source-data `datasets/wall-colour-benchmark-v2-20261112` holds the photos, the W1 poses and the scores.
+
+### Scores (`score-v2.py`, base W1; every run used the same poses)
+
+| setting | mean dE | median | worse / better than W1 (> 0.02) | pixel L (photo 0.412) | pixel C (photo 0.019) | pale-photo dE (n 6) | L spread, all | L spread, per buurt (15 buurten, 3+ pairs) |
+|---|---|---|---|---|---|---|---|---|
+| pre-W1 (`?wallPool=0&wallChroma=0`) | 0.132 | 0.097 | 66 / 31 | 0.464 | 0.037 | 0.238 | 1.27 | 1.47 |
+| **W1** (default) | 0.097 | 0.079 | - | 0.443 | 0.026 | 0.221 | 0.87 | 0.51 |
+| **band 0.5** (`?wallVariety=0.5`) | **0.091** | **0.071** | 21 / 30 | 0.435 | 0.025 | 0.228 | 0.80 | 0.58 |
+| band 1 (`?wallVariety=1`) | 0.102 | 0.078 | 36 / 32 | 0.443 | 0.024 | 0.219 | 1.02 | 0.88 |
+
+- **Paired bootstrap of the dE difference against W1** (4,000 resamples):
+
+  | setting | mean difference | 95 % CI |
+  |---|---|---|
+  | band 0.5 | -0.0063 | [-0.0137, -0.0002] |
+  | band 1 | +0.0045 | [-0.0061, +0.0157] |
+  | pre-W1 | +0.035 | [+0.019, +0.051] |
+
+- **Critic** (blind, opus, Claude only), W1 against band 0.5:
+
+  | round | setting | wall colour/tone | severity sum | brick vs render | fooled |
+  |---|---|---|---|---|---|
+  | 103 | W1 | 35 of 146 | 62 | 6 | 0 |
+  | 104 | band 0.5 | 38 of 146 | 73 | 5 | 0 |
+
+  The pairs the two rounds disagree on split 12 (W1 only) to 15 (band 0.5 only): no difference the critic can see.
+- **Spread** is a share of the photos' (1 = as varied as the street). Per buurt, W1 draws half the variety (0.51), band
+  0.5 slightly more (0.58), band 1 most (0.88), and pre-W1 too much, from its random swatches (1.47).
+
+### Reading
+
+- On an unbiased set, band 0.5 is at least as correct as W1 on the pixel metric, with a small, just-significant gain,
+  and a little more varied.
+- The critic cannot separate the two settings.
+- Band 1 buys variety (0.88) at +0.005 dE, not significant either way.
+- Pre-W1 is clearly worse, which confirms W1.
+- Pale photos stay wrong in every setting (dE about 0.22): nothing nearby says pale, and 6 pairs are too few to tune on.

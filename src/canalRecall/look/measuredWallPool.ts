@@ -54,8 +54,65 @@ export function wallPoolOn(): boolean {
 /** Tests only: forget the cached flag. */
 export const resetWallPoolFlag = () => { cached = undefined; };
 
-type Point = { x: number; y: number; hex: string; arch: number };
-type Table = { points: readonly (readonly [number, number, string, number])[] };
+type Point = { x: number; y: number; hex: string; arch: number; painted: boolean; L: number };
+type Table = { points: readonly (readonly [number, number, string, number, number?])[] };
+
+/**
+ * The draw (lane W2, 2026-11-12, flag `?wallVariety=0`, `WALL_VARIETY=0`): instead of one of the walls nearest the pool's
+ * median, an unmeasured pand draws from its measured neighbours' distribution. The neighbours (POOL_DRAW.k nearest, the
+ * same archetype as the pool) are sorted by lightness then hue and weighted by distance (exp(-d / kernelM)); a quantile
+ * picks one through the weighted CDF. The quantile comes from where the pand stands: a rank-1 lattice over cellM cells
+ * (golden and plastic ratios), so consecutive pands along a row take well-spread quantiles and a row keeps its darks,
+ * reds and pales in about the proportions measured around it. A small id-hash jitter separates two pands in one cell.
+ * Why the kernel: leave-one-out on the 1,051 measured walls, the nearest measured wall within 25 m predicts a wall at dE
+ * 0.041 against the median pick's 0.058, and the kernel draw at 5-15 m at 0.048-0.051; a uniform draw from the 12 nearest
+ * scores 0.080. Rows and split buildings share their colour; the kernel keeps that and still spreads.
+ * A drawn wall the table marks painted (a stucco or light register finish, or a drawn L of PAINTED_L or more: no brick
+ * reading reaches 0.58) gives the pand a painted finish: smooth render cells (bayLook.ts paintedLayers), not brick.
+ */
+export const POOL_DRAW = {
+  /** Distance weight scale, m, added to the nearest candidate's distance (the frames' pands sit ~160 m from a reading). */
+  kernelM: 15,
+  /** The nearest this many candidates (a split building's repeated reading counts once) are drawn from. */
+  k: 24,
+  /** The lattice cell (about one canal-house width), m. */
+  cellM: 7,
+  /**
+   * The central share of the weighted distribution drawn from: 0 = the weighted median, 1 = the whole distribution. On the
+   * 114 W1 pairs, 0.5: mean dE 0.104 (W1 0.097), row lightness spread 0.83 of the photos' (W1 0.70); 1: 0.128 and 1.16.
+   */
+  band: 0.5,
+  /** Two readings of one colour this close are one building's split pands, m. */
+  sameBuildingM: 40,
+};
+/** Tests and tuning only (scripts/house-frames/wall-predict.ts): override POOL_DRAW. */
+export function tunePoolDraw(over: Partial<typeof POOL_DRAW>) { Object.assign(POOL_DRAW, over); }
+/** A measured wall this light is painted render or stucco (the brick readings top out at L 0.58). */
+export const PAINTED_L = 0.62;
+/**
+ * Off by default: neither band met lane W2's gate on the 114 pairs (mean dE no worse than W1's 0.097, under 1 in 10 pairs
+ * worse by 0.02). The pairs were picked where the game drew pale over dark brick, so a draw true to the neighbourhood's
+ * spread scores worse on them by construction; the integrator decides (docs/house-line.md §12).
+ */
+export const WALL_VARIETY_DEFAULT_ON = false;
+/** `?wallVariety=` value: '0' off; a band in (0, 1] on with that POOL_DRAW.band (1 = the whole distribution); absent: the default. */
+const varietyValue = (search?: string | null, env?: string | null) => (search ? /[?&]wallVariety=([\d.]+)/.exec(search)?.[1] : undefined) ?? env ?? undefined;
+export function wallVarietyEnabled(search?: string | null, env?: string | null): boolean {
+  const v = varietyValue(search, env);
+  return v === '0' ? false : v !== undefined && Number(v) > 0 ? true : WALL_VARIETY_DEFAULT_ON;
+}
+let varietyCached: boolean | undefined;
+export function wallVarietyOn(): boolean {
+  if (varietyCached !== undefined) return varietyCached;
+  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  const v = varietyValue(g.location?.search ?? null, g.process?.env?.WALL_VARIETY ?? null), n = Number(v);
+  if (v !== undefined && n > 0 && n <= 1) POOL_DRAW.band = n;
+  return (varietyCached = wallVarietyEnabled(g.location?.search ?? null, g.process?.env?.WALL_VARIETY ?? null));
+}
+/** Tests only: forget the cached variety flag. */
+export const resetWallVarietyFlag = () => { varietyCached = undefined; };
+export type PoolDraw = { hex: string; painted: boolean };
+const frac = (v: number) => v - Math.floor(v);
 const M_PER_DEG_LAT = 111_320;
 const CELL_M = 300;
 
@@ -65,8 +122,8 @@ export class MeasuredWallPool {
   private readonly kx: number;
   constructor(table: Table, lat0 = 52.37) {
     this.kx = M_PER_DEG_LAT * Math.cos((lat0 * Math.PI) / 180);
-    for (const [lngE5, latE5, hex, arch] of table.points) {
-      const p: Point = { x: (lngE5 / 1e5) * this.kx, y: (latE5 / 1e5) * M_PER_DEG_LAT, hex, arch };
+    for (const [lngE5, latE5, hex, arch, painted] of table.points) {
+      const p: Point = { x: (lngE5 / 1e5) * this.kx, y: (latE5 / 1e5) * M_PER_DEG_LAT, hex, arch, painted: painted === 1, L: hexToOklab(hex)[0] };
       const key = `${Math.floor(p.x / CELL_M)},${Math.floor(p.y / CELL_M)}`;
       const c = this.cells.get(key);
       if (c) c.push(p); else this.cells.set(key, [p]);
@@ -98,9 +155,42 @@ export class MeasuredWallPool {
     const central = [...labs].sort((a, b) => dist(a.v) - dist(b.v) || a.hex.localeCompare(b.hex)).slice(0, POOL.central);
     return central[(seed >>> 0) % central.length].hex;
   }
+  /** The variety draw (POOL_DRAW) for an unmeasured pand at (lng, lat), or null (too few measured neighbours). */
+  drawFor(lng: number, lat: number, archetype: string, seed: number): PoolDraw | null {
+    const all = this.near(lng, lat), arch = POOL_ARCHETYPES.indexOf(archetype as PoolArchetype);
+    if (arch < 0) return null;
+    const same = all.filter(p => p.arch === arch);
+    const cands = (same.length >= POOL.minN ? same : all).slice(0, POOL_DRAW.k);
+    if (cands.length < POOL.minN) return null;
+    const hue = (hex: string) => { const [, a, b] = hexToOklab(hex); return Math.atan2(b, a); };
+    // One building split into pands carries one reading on each: a repeat of a kept wall's colour within POOL_DRAW.sameBuildingM
+    // counts once. Farther repeats are other buildings (the readings are quantised; #6d5743 is 22 pands across the city).
+    const distinct: typeof cands = [];
+    for (const p of cands) if (!distinct.some(q => q.hex === p.hex && Math.hypot(q.x - p.x, q.y - p.y) <= POOL_DRAW.sameBuildingM)) distinct.push(p);
+    const d0 = distinct[0].d, scale = POOL_DRAW.kernelM + d0;
+    const sorted = distinct.map(p => ({ p, w: Math.exp(-(p.d - d0) / scale), h: hue(p.hex) })).sort((a, b) => a.p.L - b.p.L || a.h - b.h || a.p.hex.localeCompare(b.p.hex));
+    const total = sorted.reduce((s, c) => s + c.w, 0);
+    const x = lng * this.kx, y = lat * M_PER_DEG_LAT;
+    const u0 = frac(Math.floor(x / POOL_DRAW.cellM) * 0.6180339887 + Math.floor(y / POOL_DRAW.cellM) * 0.7548776662 + ((seed >>> 0) % 1024) / 1024 * 0.05);
+    wallVarietyOn(); // a `?wallVariety=0.5` band is applied on the first read
+    const u = 0.5 + (u0 - 0.5) * POOL_DRAW.band;
+    let acc = 0, pick = sorted[sorted.length - 1].p;
+    for (const c of sorted) { acc += c.w / total; if (u < acc) { pick = c.p; break; } }
+    return { hex: pick.hex, painted: pick.painted };
+  }
 }
 
 let shared: MeasuredWallPool | undefined;
+/**
+ * The pool's draw for an unmeasured pand (flag `?wallVariety=0` falls back to the median pick, painted false), or null
+ * (pool off, not a pre-1945 archetype, too few neighbours). `at` should be the footprint's centroid, as the table's are.
+ */
+export function measuredPoolDraw(lng: number, lat: number, archetype: string, seed: number): PoolDraw | null {
+  if (!wallPoolOn() || !(POOL_ARCHETYPES as readonly string[]).includes(archetype)) return null;
+  shared ??= new MeasuredWallPool(TABLE as unknown as Table);
+  if (!wallVarietyOn()) { const hex = shared.wallFor(lng, lat, archetype, seed); return hex ? { hex, painted: false } : null; }
+  return shared.drawFor(lng, lat, archetype, seed);
+}
 /** The published pool's wall for an unmeasured pand, or null (flag off, not a pre-1945 archetype, too few neighbours). */
 export function measuredPoolWall(lng: number, lat: number, archetype: string, seed: number): string | null {
   if (!wallPoolOn() || !(POOL_ARCHETYPES as readonly string[]).includes(archetype)) return null;

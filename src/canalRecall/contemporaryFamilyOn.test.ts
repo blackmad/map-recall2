@@ -27,7 +27,7 @@ test('on: the tall French-balcony and balcony-band presets are in the array', ()
 test('on: the bay cells fit byte layer indices in every array (procedural: cells, roofs, bays, glass block)', () => {
   assert.ok(PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT + 1 <= 256, `procedural ${PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT + 1}`);
   for (const look of ['procedural', 'photo', 'storybook', 'cartoon'] as const) assert.ok(lookAtlasLayers(look, false).layers <= 256, look);
-  assert.equal(BAY_LAYER_COUNT, 181, '191 off, + 6 preset cells, - 16 shared restrained shop cells');
+  assert.equal(BAY_LAYER_COUNT, 189, '191 off, + 6 preset cells, - 16 shared restrained shop cells, + 8 painted cells (lane W2)');
 });
 
 test('on: restrained shop kinds sharing a cell paint the same pixels, colour and mask, in every look', () => {
