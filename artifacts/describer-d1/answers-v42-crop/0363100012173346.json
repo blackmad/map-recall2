@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012173346",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173346/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "small-over-one",
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "heads",
+  "storeyParts.roof",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with a hoist beam above the cornice, washed out against the sky"
+  }
+ ],
+ "notes": "The image is pale and soft; the top dormer is hard to read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

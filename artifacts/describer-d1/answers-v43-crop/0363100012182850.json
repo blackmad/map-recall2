@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012182850",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182850/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": null,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white painted timber shopfront with pilasters, a centre shop door and a separate house door at the right"
+  },
+  {
+   "component": "roof",
+   "what": "red pantile roof with a hipped end and chimney rising behind the cornice"
+  }
+ ],
+ "notes": "Upper window joinery is dark with a cross of bars; whether the top light is a transom or a meeting rail is unclear.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

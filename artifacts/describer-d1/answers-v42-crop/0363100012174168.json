@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174168",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174168/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "restaurant front with a dark fascia and lettered sign, a separate grey street door at the left"
+  }
+ ],
+ "notes": "Very dark grey brick; coursing visible, read as bare brick.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

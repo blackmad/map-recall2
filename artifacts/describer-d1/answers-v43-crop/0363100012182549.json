@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012182549",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182549/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white pilastered ground storey with small-paned transom lights over the shop and both doors"
+  },
+  {
+   "component": "roof",
+   "what": "a small pediment-like ornament stands on the centre of the cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

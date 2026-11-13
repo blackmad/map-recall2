@@ -14,6 +14,10 @@
  *                                                      and wall of a `cut` run and the describer answer's storeys/bays
  *                                                      (--ground-ratio: ground floor / upper storey height, default 1.25)
  *
+ *   w1     --ids <file> --out <dir> [--cuts cuts.json] lane W1's wall sample on the game-lens photo of each cut's pinned
+ *                                                      capture (cached panoramas), stored as `w1` in cuts.json; stage.ts
+ *                                                      takes the wall colour from it (D1-fix 3)
+ *
  * Shared flags: --max-new-gb <n> (default 2): the run estimates new panorama bytes first (captures not in the shared
  * cache x the mean cached size of that kind) and stops above it; --estimate-only prints the estimate and exits.
  *
@@ -31,7 +35,7 @@ import sharp from 'sharp';
 import { CACHE_DIR, findPands, http, lngLatToRd, loadRoads, neighbourhood, normId, pointInRing, type Footprint } from '../../pand-reference/core.ts';
 import { exposedWalls } from '../../pand-reference/select.ts';
 import { pickPose, rankCandidates, type Args, type Candidates, type Entry, type Skipped } from '../../house-frames/frames.ts';
-import { bearingTo, gridConvergenceDeg, rdToLocal, PANO_EYE_HEIGHT_M, type FramePose, type Rd, type WallQuad } from '../../house-frames/pose.ts';
+import { aimPose, bearingTo, frameFor, gridConvergenceDeg, rdToLocal, PANO_EYE_HEIGHT_M, type FramePose, type Rd, type WallQuad } from '../../house-frames/pose.ts';
 import { cutPerspective, loadEquirect, type Rgb8 } from '../../house-frames/photo.ts';
 import { wallLab } from '../../house-frames/analyse.ts';
 import type { CameraFrame } from '../../../src/canalRecall/ownMap/mapCamera.ts';
@@ -251,6 +255,8 @@ async function budget(ids: string[], fps: Map<string, Footprint>, kind: 'medium'
 export type CutRow = {
   pandId: string; panoId: string; captured: string; distM: number; obliquityDeg: number; pose: FramePose; wall: WallQuad; wallLenM: number;
   wallHex: string | null; wallLab: { L: number; C: number; h: number; n: number } | null; panoHref: string; fullHref: string | null;
+  /** `w1` mode: lane W1's wall sample on the house:frames photo of the same pinned capture (game lens, aimPose/frameFor). */
+  w1?: { hex: string; L: number; C: number; h: number; n: number } | null;
   fallback: { notWinter: boolean; oblique: boolean; clipped: string[]; gameLensClipped: string[] }; candidates: number; file: string;
 };
 
@@ -308,6 +314,32 @@ function outlineSvg(frame: CameraFrame, pose: FramePose, walls: WallQuad[], labe
   const fs_ = Math.round(Math.max(40, Math.min(pose.width, pose.height) / 14));
   const texts = labels.map(l => `<text x="${l.x.toFixed(0)}" y="${l.y.toFixed(0)}" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="${fs_}" fill="#ffe600" stroke="#000" stroke-width="${(fs_ / 12).toFixed(1)}" paint-order="stroke">${esc(String(l.n))}</text>`).join('');
   return `<svg width="${pose.width}" height="${pose.height}" xmlns="http://www.w3.org/2000/svg">${polys}${texts}</svg>`;
+}
+
+// ---- mode 1b: w1 -----------------------------------------------------------------------------------------------------
+/**
+ * The wall colour source for staging (D1-fix 3, item B): lane W1's wall sample on the house:frames photo of the pinned
+ * capture, i.e. the game lens (aimPose + frameFor on the cut's capture and wall), not the describer cut, whose wider
+ * looking-up frame puts the band on different pixels. Reads the cached medium panorama; writes `w1` into cuts.json.
+ */
+async function modeW1(ids: string[], cutsFile: string) {
+  const done = JSON.parse(fs.readFileSync(cutsFile, 'utf8')) as { rows: CutRow[] };
+  const want = new Set(ids.map(normId));
+  let n = 0, miss = 0;
+  for (const r of done.rows) {
+    if (!want.has(normId(r.pandId))) continue;
+    const ll = r.pose.lngLat as [number, number];
+    const record = { pano_id: r.panoId, timestamp: r.captured, geometry: { coordinates: [ll[0], ll[1], r.pose.cameraNap == null ? 0 : r.pose.cameraNap + 43.5] }, _links: { equirectangular_medium: { href: r.panoHref } } };
+    const pose = aimPose({ lngLat: ll, cameraNap: r.pose.cameraNap ?? null }, r.wall), frame = frameFor(pose);
+    const img = await loadEquirect(record, 'medium');
+    if (!img) { r.w1 = null; miss++; continue; }
+    const lab = wallLab(cutPerspective(img, frame, gridConvergenceDeg(ll)), frame, pose, r.wall);
+    r.w1 = lab ? { hex: lab.hex, L: lab.L, C: lab.C, h: lab.h, n: lab.n } : null;
+    if (!lab) miss++;
+    n++;
+  }
+  fs.writeFileSync(cutsFile, JSON.stringify(done, null, 1));
+  console.log(`w1: ${n} sampled, ${miss} without a wall sample; ${(http.bytes / 1e9).toFixed(3)} GB fetched in ${http.requests} requests`);
 }
 
 // ---- mode 2: pano ----------------------------------------------------------------------------------------------------
@@ -475,11 +507,12 @@ async function modeWindow(ids: string[], answers: string, out: string, cutsFile:
 export async function main(argv = process.argv.slice(2)) {
   const mode = argv[0], idsFile = argOf(argv, 'ids'), out = argOf(argv, 'out');
   const maxGb = Number(argOf(argv, 'max-new-gb') ?? 2), estimateOnly = argv.includes('--estimate-only');
-  if (!mode || !idsFile || !out || !['cut', 'pano', 'window'].includes(mode)) { console.log('describe-cut.ts cut|pano|window --ids <file> --out <dir> [--answers <dir>] [--cuts <cuts.json>] [--ground-ratio 1.25] [--max-new-gb 2] [--estimate-only] [--max n]'); process.exit(2); }
+  if (!mode || !idsFile || !out || !['cut', 'pano', 'window', 'w1'].includes(mode)) { console.log('describe-cut.ts cut|pano|window|w1 --ids <file> --out <dir> [--answers <dir>] [--cuts <cuts.json>] [--ground-ratio 1.25] [--max-new-gb 2] [--estimate-only] [--max n]'); process.exit(2); }
   const ids = readIds(idsFile).slice(0, Number(argOf(argv, 'max') ?? Infinity));
   console.log(`${mode}: ${ids.length} pands; panorama cache ${CACHE_DIR}`);
   try {
     if (mode === 'cut') await modeCut(ids, path.resolve(out), maxGb, estimateOnly);
+    else if (mode === 'w1') await modeW1(ids, argOf(argv, 'cuts') ?? path.join(path.resolve(out), 'cuts.json'));
     else if (mode === 'pano') await modePano(ids, path.resolve(out), argOf(argv, 'cuts'), maxGb, estimateOnly);
     else {
       const answers = argOf(argv, 'answers');

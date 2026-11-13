@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012175057",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "souterrain": false,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white rendered ground storey with segmental-arched openings: a double house door at left and a café door with sidelights"
+  },
+  {
+   "component": "window",
+   "what": "stained-glass top lights on the top storey windows"
+  },
+  {
+   "component": "dormer",
+   "what": "one central dormer with a curved pediment and hoist beam"
+  },
+  {
+   "component": "door",
+   "what": "storey 1 middle axis is a tall door-height window (French window) over the shop fascia"
+  }
+ ],
+ "notes": "Joinery is dark grey/black.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

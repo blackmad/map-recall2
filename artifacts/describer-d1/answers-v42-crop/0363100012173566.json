@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012173566",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173566/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "2": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "mirrored",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "three white pointed dormers with louvred vents above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "brick soldier-course heads over each upper window"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

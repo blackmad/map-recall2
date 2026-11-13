@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012174776",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "large white carved scroll claw pieces at the neck foot and a curved white crowning cap at the top"
+  },
+  {
+   "component": "balcony",
+   "what": "French window with a low railing in the middle bay of the top storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a hoist beam with a small carved block above the attic window"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

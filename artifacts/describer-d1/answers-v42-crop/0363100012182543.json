@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182543/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windowSurround",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a carved stone date tablet reading ANNO between the first and second storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved scroll piece at the top left corner where the gable begins"
+  }
+ ],
+ "notes": "The top is cut off and the right bay of the first storey is cut by the image edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

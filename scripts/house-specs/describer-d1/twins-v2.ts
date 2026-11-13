@@ -1,6 +1,7 @@
 // Describer D1 twin truth v2 (prompt v2 `sameAs` / `mirrored`): twins known from design, not from hand specs agreeing.
 //
 //   node --import tsx scripts/house-specs/describer-d1/twins-v2.ts sample [--per-face 3] [--probe-cache <file>]
+//   node --import tsx scripts/house-specs/describer-d1/twins-v2.ts neighbours   row images for the truth sides' unread neighbours
 //   node --import tsx scripts/house-specs/describer-d1/twins.ts score --truth artifacts/describer-d1/twins-v2.json --answers <dir>
 //
 // Source 1, designed block faces (scripts/block-face/faces/<id>/intent.json, author not auto-place/review, no auto-place.json,
@@ -233,10 +234,51 @@ async function sample(perFace: number, probeCache: string) {
   console.log(`twins-v2: ${rows.length} rows, ${pos.length} positive, ${neg.length} negative; ${JSON.stringify(summary)}`);
 }
 
+/** The truth sides whose neighbour has no twin read in `answersDir`: neighbour id -> the row it neighbours (D1-fix mutual guard). */
+export function unreadNeighbours(rows: TwinRowV2[], read: ReadonlySet<string>): Map<string, TwinRowV2> {
+  const out = new Map<string, TwinRowV2>();
+  for (const r of rows) for (const s of [r.left, r.right]) if (s && typeof s.twin === 'boolean' && !read.has(s.id) && !out.has(s.id)) out.set(s.id, r);
+  return out;
+}
+
+/** Row images centred on every unread neighbour (its own left and right as the strip or the crop walls show them), so the
+ *  mutual `sameAs` guard can be scored: twin-images-v2/<neighbourId>.jpg and twins-v2-neighbour-ids.txt. */
+async function neighbours(answersDir: string) {
+  const truth = JSON.parse(fs.readFileSync(path.join(OUT, 'twins-v2.json'), 'utf8')).rows as TwinRowV2[];
+  const read = new Set(fs.readdirSync(answersDir).filter(f => /^\d{16}\.json$/.test(f)).map(f => f.slice(0, 16)));
+  const todo = unreadNeighbours(truth, read);
+  const { strips } = faceRows();
+  const walls = new Map<string, Wall>();
+  for (const id of cropIds()) { const w = JSON.parse(fs.readFileSync(path.join(cropDir(id)!, 'front.json'), 'utf8')).wall; if (w?.normal) walls.set(id, w); }
+  const done: string[] = [];
+  for (const [nid, r] of todo) {
+    const image = path.join(OUT, 'twin-images-v2', `${nid}.jpg`);
+    if (r.source === 'block-face') {
+      const strip = strips.get(r.face!); if (!strip) continue;
+      const spans = [...strip.houses.values()].sort((a, b) => a.px[0] - b.px[0]);
+      const i = spans.findIndex(h => h.pandId === nid); if (i < 0) continue;
+      const near = (j: number) => (spans[j] && Math.min(Math.abs(spans[j].px[0] - spans[i].px[1]), Math.abs(spans[i].px[0] - spans[j].px[1])) < 40 ? spans[j].pandId : undefined);
+      const left = near(i - 1), right = near(i + 1);
+      await stripRowImage({ pandId: nid, source: 'block-face', face: r.face, left: left ? { id: left, twin: null, why: '' } : null, right: right ? { id: right, twin: null, why: '' } : null, mirrored: null, image }, strip);
+    } else {
+      const me = walls.get(nid); if (!me) continue;
+      const nb: { left?: string; right?: string } = {};
+      for (const [j, w] of walls) if (j !== nid && adjacent(me, w)) nb[sideOf(me, w)] ??= j;
+      // the row's pand wins its side
+      if (walls.has(r.pandId)) nb[sideOf(me, walls.get(r.pandId)!)] = r.pandId;
+      await cropRowImage({ pandId: nid, source: 'party-pair', left: nb.left ? { id: nb.left, twin: null, why: '' } : null, right: nb.right ? { id: nb.right, twin: null, why: '' } : null, mirrored: null, image });
+    }
+    done.push(nid);
+  }
+  fs.writeFileSync(path.join(OUT, 'twins-v2-neighbour-ids.txt'), `${done.sort().join('\n')}\n`);
+  console.log(`neighbour images: ${done.length} of ${todo.size} unread neighbours`);
+}
+
 async function main() {
   const [cmd] = process.argv.slice(2);
   const opt = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
   if (cmd === 'sample') return sample(Number(opt('per-face') ?? 3), opt('probe-cache') ?? PROBE_CACHE);
-  console.log('twins-v2.ts sample [--per-face 3] [--probe-cache <file>]');
+  if (cmd === 'neighbours') return neighbours(opt('answers') ?? path.join(OUT, 'answers-twins-v2'));
+  console.log('twins-v2.ts sample [--per-face 3] [--probe-cache <file>] | neighbours [--answers <dir>]');
 }
 if (import.meta.url === `file://${process.argv[1]}`) await main();

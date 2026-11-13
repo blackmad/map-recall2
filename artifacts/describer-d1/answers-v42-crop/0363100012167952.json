@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012167952",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167952/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "windows",
+  "doorBay",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "Top of the gable is cut off; only the foot of the gable with one window shows. Ground storey is low and painted white.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

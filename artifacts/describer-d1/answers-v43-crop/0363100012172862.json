@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012172862",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172862/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "ground",
+  "doorSurround",
+  "windows",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-storey windows have stucco frames with triangular pediments; second-storey windows have arched stucco hoods on brackets"
+  },
+  {
+   "component": "relief",
+   "what": "brick piers banded with white stucco blocks and stucco pilasters with capitals on the ground storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a central stucco wall dormer with an arched window, side scrolls, a pediment and a finial rising through the slate mansard"
+  }
+ ],
+ "notes": "Bare tree branches in front of the upper storeys; the ground storey is partly hidden by a wall in the foreground.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

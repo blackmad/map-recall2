@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171643",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171643/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved scroll claw piece at the right shoulder of the gable"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the windows"
+  }
+ ],
+ "notes": "A delivery truck hides the left of the ground storey and the gable top is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

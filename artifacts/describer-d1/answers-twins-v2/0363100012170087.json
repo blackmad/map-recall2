@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012170087",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012170087.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Marked crop seems to include a slice of the next narrow front at its right; crown cropped."
+}

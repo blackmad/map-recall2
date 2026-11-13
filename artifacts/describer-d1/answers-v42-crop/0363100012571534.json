@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012571534",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012571534/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has blind window recesses, two fully blank and one with a small window"
+  }
+ ],
+ "notes": "The top of the front is washed out by glare; parasols hide the café ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

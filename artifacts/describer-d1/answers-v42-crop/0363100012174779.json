@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012174779",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174779/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "storeyWindows": {
+  "4": "sash-1-over-1"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "storeyParts.full",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small finial ornament on the bell gable apex and an attic window in the gable"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the windows"
+  }
+ ],
+ "notes": "Bare branches cross the upper storeys; the crop is noisy.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

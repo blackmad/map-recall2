@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012171324",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171324/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "ground",
+  "sameAs",
+  "balconies",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each window sits in a recessed brick panel under a deep recessed soldier-course lintel, between continuous brick piers"
+  },
+  {
+   "component": "door",
+   "what": "the street door is set back in a recessed porch with light rendered reveals, reached by a few steps with an iron railing"
+  },
+  {
+   "component": "balcony",
+   "what": "a light projecting slab over the left window of the fourth upper row, possibly a small balcony or a canopy"
+  }
+ ],
+ "notes": "The top of the front is cut off, so storeys, crown and cornice are not read; the left neighbour bay continues the same window system.",
+ "storeys": "not-visible",
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100100093912",
+ "image": {
+  "ref": "source-data://pand-crops/0363100100093912/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 0,
+ "columns": [
+  1
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "doorBay",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "wide graffiti-covered metal gate under a light stone lintel band with carved lettering"
+  }
+ ],
+ "notes": "A one-storey brick wall with a single wide gate, likely a garage or workshop entrance; a house at the left edge is a neighbour. Unsure this is the intended front.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

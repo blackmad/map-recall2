@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "ground",
+  "crown",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "four tall stone pilaster buttresses rising to pinnacles divide the front into three parts"
+  },
+  {
+   "component": "gable ornament",
+   "what": "corbelled arched brick frieze along the gable rakes and a raised central gable section with blind lancet panels"
+  },
+  {
+   "component": "window",
+   "what": "large central lancet window with stone tracery and a rose in the head, flanked by two smaller tracery windows"
+  },
+  {
+   "component": "door",
+   "what": "central double door under a stone gabled portal on columns with a fanlight; two side doors under round arches with fanlights"
+  }
+ ],
+ "notes": "A church front, not a house: three doors, all equal; the ground enum does not fit.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

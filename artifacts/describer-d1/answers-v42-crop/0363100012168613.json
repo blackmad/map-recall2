@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012168613",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168613/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "4": "sash-6-over-6"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French doors with a low iron railing in the middle bay of the top storey and in the neck"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white curved claw pieces flanking the neck"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}
