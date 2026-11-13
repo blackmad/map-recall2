@@ -2974,6 +2974,22 @@ Agreement per street group spreads widely. Storeys:
 - Masses 3DBAG gets wrong. Overtoom 0363100012079011 (1930) is one: a low gabled mass stands against a five-storey front,
   so the run the mesher lays is not the front in the photo. That is a 3DBAG/mass case, not a prior failure.
 
+### Cost (columns on against off, desktop, `?world=live`, scratch bundles)
+
+| run | triangles drawn | building vertices resident | building geometry MB |
+|---|---|---|---|
+| ride-perf-owners chase (fixed-ride start, 12 s) | 1,686,123 → 1,691,675 (+0.33 %) | 5,389,208 → 5,417,020 (+0.52 %) | 177.5 → 178.4 |
+| ride-perf-owners aerial (~300 m up) | 3,445,094 → 3,443,371 (−0.05 %) | 5,390,203 → 5,418,015 (+0.52 %) | 177.5 → 178.4 |
+
+Over the city (odd-cells-hash), wall vertices rise 0.20 % and extras vertices fall 0.07 %.
+
+Neither the Dam poses (`dam-cost.mjs`) nor `aerialGlMaxMB` gave a comparable figure:
+- The Dam poses never settled under `world=live` in 120 s; the two runs held 26 against 16 chunks.
+- The `world=live` aerial pan reached t80 of 180 s after 87 minutes and was stopped.
+
+The real `aerialGlMaxMB` comes from a recompiled baked world (`perf-gate.mjs --aerial`). At +0.5 % of the building
+buffers, expect about +1 MB.
+
 ### Eyeball poses
 
 `scripts/house-line/benchmark/eyeball-poses.json` pins one good capture per eyeball-set pand, and lists the bad captures
