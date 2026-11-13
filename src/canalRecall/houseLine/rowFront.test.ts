@@ -208,3 +208,18 @@ test('row front steps: HD22/24 sub-fronts stand to their own tops with their own
     assert.equal((f.properties.specRecipe as { subFronts: Array<{ step: unknown }> }).subFronts.length, 2);
   } finally { if (prev === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = prev; setRowFrontRecords([]); }
 });
+
+// Crowns, named regressions HD26 (167820: a chimney on the neck to about 14.0 m, an attic light 1.4-2.9 m across at
+// 11.5-12.5 m) and HD8 (176101: the traced attic light in the point gable, not a counted centred one).
+test('row front crowns: HD26 chimney and attic light, HD8 traced light', () => {
+  const table = JSON.parse(readFileSync(new URL('../../../data/front-records/haarlemmerdijk-block.json', import.meta.url), 'utf8'));
+  const recs = rowFrontsFromTable(table);
+  const hd26 = recs.find(x => x.pandId.endsWith('167820'))!, fr = table.records.find((x: FrontRecord) => x.pandId.endsWith('167820'));
+  assert.equal(hd26.crown.chimney?.topM, toPandDatum(fr, 14.0));
+  assert.ok(hd26.crown.chimney!.topM > hd26.topM! + 1);
+  const [x0, x1, z0, z1] = hd26.crown.lights![0];
+  assert.ok(Math.abs(x0 - (1.4 - fr.bagWidthM / 2)) < 0.01 && Math.abs(x1 - (2.9 - fr.bagWidthM / 2)) < 0.01 && z0 > 0 && z1 > z0);
+  const hd8 = recs.find(x => x.pandId.endsWith('176101'))!;
+  assert.equal(hd8.crown.lights?.length, 1);
+  assert.equal(hd8.crown.chimney, undefined);
+});

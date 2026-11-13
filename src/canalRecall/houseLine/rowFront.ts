@@ -25,6 +25,10 @@ export interface RowFrontRecord {
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
   crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
+    /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
+    lights?: Array<[number, number, number, number]>;
+    /** A chimney stack on the crown: its top (pand datum) and width. */
+    chimney?: { topM: number; widthM: number };
     /** A raised centre piece on a cornice front (lane 2's dormer or raised attic): its top (pand datum), kind and width. */
     piece?: { topM: number; kind: string; widthM?: number } };
   /** Storey lines above the ground (m), from measured window heights or stated storey heights. */
@@ -90,6 +94,8 @@ const LANE2_FAMILY: Readonly<Record<string, RowCrownFamily>> = {
   neck: 'neck', bell: 'bell', step: 'step', spout: 'spout', point: 'point', 'straight-cornice': 'cornice', 'flat-parapet': 'cornice',
   'raised-dormer-hoist': 'raised-cornice-dormer', other: 'cornice',
 };
+/** Interim: lane 2 writes a crown's chimney in its note ("a chimney stands on the neck to about 14.0 m"). */
+const CHIMNEY_NOTE = /chimney[^.;]*?(?:to|at) (?:about )?(\d+(?:\.\d+)?) m/i;
 const CONFIDENCE = { high: 0.9, medium: 0.7, low: 0.3 } as const;
 const r2 = (v: number) => Math.round(v * 100) / 100;
 /**
@@ -154,6 +160,15 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
   }
   if (fr.crown.atticWindows !== null) crown.atticWindows = fr.crown.atticWindows;
   if (fr.crown.hoist !== null) crown.hoist = fr.crown.hoist;
+  // The crown's own openings and stack (gabled crowns): the trace's attic lights above the gable foot, and a chimney
+  // standing on the crown (lane 2's note until the record carries a field: CHIMNEY_NOTE).
+  const tr = fr.trace, sp = fr.bagWidthM;
+  if (gabled && eavesM !== null && tr && tr.confidence !== 'low' && sp && sp > 1) {
+    const lights = tr.storeys.flat().filter(o => o.kind === 'attic' && at(o.y)! >= eavesM - 0.3 && o.w > 0.1 && o.h > 0.1);
+    if (lights.length) crown.lights = lights.map(o => [r2(o.x - sp / 2), r2(o.x + o.w - sp / 2), r2(at(o.y)! - eavesM), r2(at(o.y + o.h)! - eavesM)]);
+  }
+  const chim = gabled && eavesM !== null ? CHIMNEY_NOTE.exec(fr.crown.note ?? '') : null;
+  if (chim && topM !== null && at(+chim[1])! > topM + 0.3) { crown.chimney = { topM: at(+chim[1])!, widthM: 0.6 }; sources.chimney = 'lane 2 crown note'; }
   const out: RowFrontRecord = { pandId: fr.pandId, face: fr.face, topM, eavesM, crown, confidence: CONFIDENCE[fr.confidence], sources };
   if (fr.storeys !== null && !fr.fallback) out.storeys = fr.storeys;
   if (fr.rows.length && !fr.fallback) out.rows = fr.rows.map(r => ({ sillM: at(r.sillM)!, headM: at(r.headM)! }));
@@ -352,6 +367,7 @@ export function stepCrown(f: SubFrontRecord, widthM: number): StepCrown | null {
     if (f.crown.widthM) crown.footW = Math.min(f.crown.widthM, widthM);
     if (f.crown.neckWidthM) crown.neckW = f.crown.neckWidthM;
     if (f.crown.atticWindows !== undefined) crown.attic = f.crown.atticWindows;
+    if (f.crown.chimney) crown.chimney = { topM: +(f.crown.chimney.topM - f.eavesM).toFixed(2), widthM: f.crown.chimney.widthM };
     return { wallTopM: f.eavesM, crown, gable, riseM: rowCrownRoofRise(crown, widthM) };
   }
   return { wallTopM: f.topM ?? f.eavesM };
@@ -425,6 +441,8 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (rec.crown.neckWidthM) crown.neckW = rec.crown.neckWidthM;
     if (rec.crown.atticWindows !== undefined) crown.attic = rec.crown.atticWindows;
     if (rec.crown.hoist) crown.hoist = true;
+    if (rec.crown.lights) crown.lights = rec.crown.lights;
+    if (rec.crown.chimney) crown.chimney = { topM: +(rec.crown.chimney.topM - rec.eavesM).toFixed(2), widthM: rec.crown.chimney.widthM };
     const probe = trial(rec.eavesM + 3), W = probe?.pieces?.[0]?.rect.wid;
     if (probe && W) {
       const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);

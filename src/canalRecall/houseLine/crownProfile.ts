@@ -22,6 +22,40 @@ import type { FrontIntent } from '../buildingRecipe/intent.js';
 
 export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised';
 export const ROW_CROWN_SHAPES: readonly RowCrownShape[] = ['neck', 'bell', 'point', 'step', 'raised'];
+/** Brick of a chimney stack on a crown, and its stone cap. */
+const CHIMNEY_HEX = '#6a4034', CHIMNEY_CAP_HEX = '#d9d3c7';
+/** A stack on the crown's top, just behind the front plane: four brick sides, a stone cap. */
+function chimneyStack(s: RoofSink, ch: { topM: number; widthM: number }, f: number, e: number, T: number, cap: number): void {
+  const hw = Math.max(0.2, ch.widthM / 2), uf = f - e * 0.12, ub = f - e * (0.12 + Math.max(0.45, ch.widthM * 0.8)), z0 = Math.max(0, T - cap - 0.4), z1 = ch.topM;
+  const box = (zb: number, zt: number, grow: number, hex: string) => {
+    const a = uf + e * grow, b = ub - e * grow, w = hw + grow;
+    s.quad([a, -w, zb], [a, w, zb], [a, w, zt], [a, -w, zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [e, 0, 0], hex);
+    s.quad([b, w, zb], [b, -w, zb], [b, -w, zt], [b, w, zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [-e, 0, 0], hex);
+    s.quad([b, -w, zb], [a, -w, zb], [a, -w, zt], [b, -w, zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, -1, 0], hex);
+    s.quad([a, w, zb], [b, w, zb], [b, w, zt], [a, w, zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 1, 0], hex);
+    s.quad([a, -w, zt], [a, w, zt], [b, w, zt], [b, -w, zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], hex);
+  };
+  box(z0, z1 - 0.12, 0, CHIMNEY_HEX);
+  box(z1 - 0.12, z1, 0.06, CHIMNEY_CAP_HEX);
+}
+/** Traced attic lights on the crown's face (seen x mirrored onto the end's v axis), each kept inside the profile. */
+function tracedLights(s: RoofSink, lights: ReadonlyArray<readonly [number, number, number, number]>, prof: readonly V2[], f: number, e: number, trimHex: string): void {
+  const fr = 0.07;
+  for (const [x0, x1, z0, top] of lights) {
+    // A light reaching into the cap stops where the profile still holds it with its frame.
+    let z1 = top, sp = spanAt(prof, z1 + fr);
+    while (z1 - z0 >= 0.25 && (!sp || sp[1] - sp[0] < 0.6)) { z1 -= 0.05; sp = spanAt(prof, z1 + fr); }
+    if (!sp || z1 - z0 < 0.25 || x1 - x0 < 0.2) continue;
+    // Viewed from outside the end (normal e along u), the viewer's right is +v when e > 0.
+    const [v0, v1] = e > 0 ? [x0, x1] : [-x1, -x0];
+    const a = Math.max(v0, sp[0] + 0.12), b = Math.min(v1, sp[1] - 0.12);
+    if (b - a < 0.2) continue;
+    rect(s, f, e, a - fr, b + fr, z0 - fr, z1 + fr, trimHex);
+    rect(s, f, e, a, b, z0, z1, GLASS, PROUD_HI);
+    rect(s, f, e, a - fr - 0.05, b + fr + 0.05, z0 - fr - 0.07, z0 - fr, trimHex, PROUD_HI);
+    rect(s, f, e, a, b, (z0 + z1) / 2 - 0.025, (z0 + z1) / 2 + 0.025, trimHex, PROUD_HI + 0.004);
+  }
+}
 export interface RowCrown {
   shape: RowCrownShape;
   /** Crown top above its foot (the wall's eaves), metres. */
@@ -32,6 +66,11 @@ export interface RowCrown {
   neckW?: number;
   /** Attic lights read in the crown (0 = none, absent = unread: one light where it fits). */
   attic?: number;
+  /** Traced attic lights, [x0, x1, z0, z1]: x across the crown as seen from the street (0 = its centre, left negative),
+   *  z above its foot. Drawn instead of the counted centred light. */
+  lights?: Array<[number, number, number, number]>;
+  /** A chimney stack standing on the crown: its top above the crown's foot and its width (m). */
+  chimney?: { topM: number; widthM: number };
   hoist?: boolean;
   /** Raised centre: the cornice band's height over the wall's eaves (the band covers the low saddle behind it). */
   bandM?: number;
@@ -176,6 +215,8 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
     else rect(s, f, e, -neck, neck, tN, T, trimHex, PROUD_HI);
   }
   if (c.shape === 'bell') for (const side of [-1, 1]) rect(s, f, e, side < 0 ? -foot : foot - 0.4, side < 0 ? -foot + 0.4 : foot, y0, y0 + 0.32, trimHex, PROUD_HI);
+  if (c.chimney && c.chimney.topM > T + 0.2) chimneyStack(s, c.chimney, f, e, T, d.cap);
+  if (c.lights?.length) { tracedLights(s, c.lights, prof, f, e, trimHex); return; }
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
