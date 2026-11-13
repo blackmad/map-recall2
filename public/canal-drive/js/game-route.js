@@ -602,7 +602,7 @@ class GameRouteRuntime {
     }
     const from = this.routePattern === 'home' ? this.homeBase
       : this.routePattern === 'here' ? this.gpsOrigin
-        : choices[Math.floor(Math.random() * choices.length)];
+        : CanalRecallRoute.pickSurpriseStart(choices, this._masterySamples());
     const dest = this.routePattern === 'home'
       ? this._pickHomeDestination(from)
       : this._pickDestinationNear(from);
@@ -682,7 +682,7 @@ class GameRouteRuntime {
         && (from === this.homeBase || Route.kmBetween(poi, from) >= Route.HOME_NEXT_MIN_KM));
       recentIds = this._recentHomeDestinationIds();
     }
-    return Route.pickReviewRoute({ pois, due, from, maxKm, recentIds });
+    return Route.pickReviewRoute({ pois, due, from, maxKm, recentIds, samples: this._masterySamples() });
   }
 
   /** Stretches of a review via's street for the planner to ride along,
@@ -754,8 +754,15 @@ class GameRouteRuntime {
     });
   }
 
+  /** Practised places in this city: the fame tier opens the tail where the rider knows the streets. */
+  _masterySamples() {
+    return this.recall && typeof this.recall.homeMasterySamples === 'function'
+      ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
+      : [];
+  }
+
   _pickDestinationNear(from, alsoExcludeId = null) {
-    return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
+    return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId, this._masterySamples());
   }
 
   /** Where recent rides from this home ended, most recent first. */
@@ -862,19 +869,6 @@ class GameRouteRuntime {
   // prominence-ranked landmark extract. Non-blocking: the curated list stays
   // usable if this fetch fails or is slow.
 
-  // Copy the enrichment fields the notability-weighted picker reads, so a
-  // curated POI and an extract POI are scored on the same footing. The names
-  // here match game/poiNotability.ts, not the extract's verbose field names.
-  _attachNotability(poi, feature) {
-    if (feature.wikidata) poi.wikidata = feature.wikidata;
-    if (feature.wikidataSitelinks) poi.sitelinks = feature.wikidataSitelinks;
-    if (feature.wikipediaPageviews60d != null) poi.pageviews60d = feature.wikipediaPageviews60d;
-    if (feature.heritage) poi.heritage = feature.heritage;
-    if (feature.wikidataInstanceOf) poi.wikidataInstanceOf = feature.wikidataInstanceOf;
-    if (feature.type) poi.type = feature.type;
-    if (feature.manualPoi) poi.manualPoi = feature.manualPoi;
-  }
-
   /** Loads the destination pool; `_routePoiCatalogReady` lets a share-link boot wait for it to name its ends. */
   _routePoiCatalogKey() {
     return `${this._activeCity().id}:${this.travelMode === 'transit' ? 'transit' : 'landmarks'}`;
@@ -918,41 +912,12 @@ class GameRouteRuntime {
       const features = CanalRecallRoute.mergeManualPoiFeatures(await response.json(), city.id);
       // Stamps count the same hand-modelled destinations the picker offers (collection/browser.ts).
       if (window.CanalCollection && city.id === 'amsterdam') window.CanalCollection.setPool(features);
-      for (const poi of curated) {
-        const modelId = CanalRecallRoute.manualPoiForCuratedId(poi.id);
-        // Resolve the installed model first: an earlier raw name alias must
-        // not steal its arrival card and signature highlight.
-        const model = modelId && features.find(feature => feature.modelId === modelId);
-        const match = model || features.find(feature =>
-          this._normaliseCanalName(feature.name) === this._normaliseCanalName(poi.name));
-        if (match) {
-          poi.landmarkId = match.id;
-          const centre = model && (model.routeCenter || model.center);
-          if (centre) [poi.lat, poi.lng] = centre;
-          this._attachNotability(poi, match);
-        }
-      }
-      const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
-      const curatedModels = new Set(curated.map(poi => CanalRecallRoute.manualPoiForCuratedId(poi.id)).filter(Boolean));
-      const extras = [];
-      for (const feature of features) {
-        const centre = feature.routeCenter || feature.center;
-        if (!centre || !feature.name) continue;
-        if (feature.modelId && curatedModels.has(feature.modelId)) continue;
-        // Completing a route must reveal something worth learning. The raw
-        // extract also contains named OSM features with no article, fact or
-        // image; those remain map geometry rather than empty arrival rewards.
-        if (!CanalRecallRoute.isTeachableRouteDestination(feature)) continue;
-        const key = this._normaliseCanalName(feature.name);
-        if (seen.has(key)) continue;
-        const poi = { id: `lm-${feature.id}`, landmarkId: feature.id, name: feature.name, lat: centre[0], lng: centre[1],
-                      prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
-        this._attachNotability(poi, feature);
-        if (!feature.manualPoi && Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
-        seen.add(key);
-        extras.push(poi);
-      }
-      extras.sort((a, b) => b.prominence - a.prominence);
+      // Pool rules (teachable, deduplicated, in range, most notable first)
+      // live in game/routeDestinationPool.ts, shared with the audit scripts.
+      const pool = CanalRecallRoute.buildRouteDestinationPool(features, curated,
+        { center: city.center, maxKmFromCentre: ROUTE_POI_MAX_KM_FROM_CENTRE, cityId: city.id });
+      const extras = pool.pois.slice(curated.length);
+      if (pool.removed.length) console.info(`Route destinations: ${pool.removed.length} duplicates folded`, pool.removed);
       this.routePois = [...curated, ...extras];
       this._overlay.store.setRoutePois(this.routePois);
       // Rebuild destination selects from the active city's pool.

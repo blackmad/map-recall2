@@ -6569,6 +6569,9 @@ ${register}` : detail,
     }
   ];
 
+  // src/canalRecall/game/manual-poi-wikidata.json
+  var manual_poi_wikidata_default = {};
+
   // src/canalRecall/game/manualPoiCatalog.ts
   var supplemental = new Map(manual_poi_data_default.map((fact) => [fact.modelId, fact]));
   var additiveHostsByPoi = /* @__PURE__ */ new Map();
@@ -6626,6 +6629,19 @@ ${register}` : detail,
       if (model.id !== "muziekgebouw-bimhuis") {
         for (const alias of ids.slice(1)) if (!destinations.includes(alias)) merged.delete(alias);
       }
+    }
+    const wikidataById = manual_poi_wikidata_default;
+    for (const [id, feature] of merged) {
+      const extra = wikidataById[id];
+      if (!extra || feature.wikidata) continue;
+      merged.set(id, {
+        ...feature,
+        wikidata: extra.wikidata,
+        wikidataSitelinks: feature.wikidataSitelinks ?? extra.wikidataSitelinks,
+        wikipediaPageviews60d: feature.wikipediaPageviews60d ?? extra.wikipediaPageviews60d,
+        heritage: feature.heritage ?? extra.heritage,
+        wikidataInstanceOf: feature.wikidataInstanceOf ?? extra.wikidataInstanceOf
+      });
     }
     return [...merged.values()];
   }
@@ -6820,20 +6836,21 @@ ${register}` : detail,
     { name: "Westergasfabriek", wikidata: ["Q4848627"] },
     { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
     { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
-    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774", "Q1350009"] },
     { name: "Amstel Hotel", wikidata: ["Q1780741"] },
-    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Stopera", aliases: ["Muziektheater", "Dutch National Opera & Ballet", "Opera & Ballet", "Nationale Opera & Ballet"], wikidata: ["Q1587736", "Q1138851", "Q1325514"] },
     { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
     { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
     { name: "Zuiderkerk", wikidata: ["Q228629"] },
     { name: "Noorderkerk", wikidata: ["Q613854"] },
     { name: "Vondelpark", wikidata: ["Q2279698"] },
     { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
-    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Leidseplein", wikidata: ["Q501445", "Q1409805"] },
     { name: "Rembrandtplein", wikidata: ["Q613678"] },
-    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Museumplein", wikidata: ["Q2172631", "Q639321"] },
     { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
-    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum", "Bible Museum"], wikidata: ["Q2111026", "Q2919762"] },
+    { name: "Wereldmuseum Amsterdam", aliases: ["Tropenmuseum", "Wereldmuseum"], wikidata: ["Q1131589"] },
     { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
     { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
     { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
@@ -6854,6 +6871,10 @@ ${register}` : detail,
     }
     for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
   }
+
+  // src/canalRecall/game/destinationDedupe.ts
+  var A_LIST_GROUP = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) for (const name of [entry.name, ...entry.aliases ?? []]) A_LIST_GROUP.set(normaliseAnswer(name), entry.name);
 
   // src/canalRecall/game/routeSelection.ts
   function nearestRouteIndex(route, player) {

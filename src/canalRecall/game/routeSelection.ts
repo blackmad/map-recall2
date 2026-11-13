@@ -7,12 +7,16 @@
 // setup screen is built out of, so they live here rather than in the form.
 
 import type { WorldPoint } from './worldTypes';
-import { notabilityFameFactor } from './poiNotability';
+import { isAList, notabilityFameFactor } from './poiNotability';
 import {
   HOME_MIN_TRIP_KM,
   ROUTE_POI_MAX_PAIR_KM,
+  destinationWeight,
+  fameTierFactor,
   kmBetween,
   pickDestinationNear,
+  tailFloorFor,
+  tailOpenness,
   pickWeighted,
   randomIndex,
   randomUnit,
@@ -21,11 +25,19 @@ import {
   type RoutePoi,
 } from './surprisePick';
 export {
+  FAMOUS_ENOUGH,
+  FAMOUS_TIER_SCORE,
+  TAIL_FLOOR,
+  tailFloorFor,
+  destinationWeight,
+  fameTierFactor,
+  tailOpenness,
   HOME_MIN_TRIP_KM,
   ROUTE_POI_MAX_PAIR_KM,
   SURPRISE_MIN_PAIR_KM,
   kmBetween,
   pickDestinationNear,
+  pickSurpriseStart,
   randomIndex,
   randomUnit,
   type ChooseIndex,
@@ -35,9 +47,12 @@ export {
 export { mergeManualPoiFeatures, manualPoiForCuratedId } from './manualPoiCatalog';
 
 import { HOME_RECENT_WINDOW } from './recentDestinations';
+import { TAIL_FLOOR as TAIL_FLOOR_DEFAULT } from './surprisePick';
 export * from './recentDestinations';
 
 export { isTeachableRouteDestination, type RouteDestinationFeature } from './routeDestinationContent';
+export { buildRouteDestinationPool, attachNotability, ROUTE_POI_MAX_KM_FROM_CENTRE } from './routeDestinationPool';
+export { dedupeDestinations, nearDuplicates, namesAlike } from './destinationDedupe';
 
 /** How many nearby stand-ins to snap-test before giving up on routing. */
 export const RETARGET_ATTEMPTS = 25;
@@ -108,6 +123,8 @@ export function scoreHomeDestination(
   home: { lat: number; lng: number },
   radiusKm: number,
   samples: readonly MasterySample[],
+  /** The draw's tail floor (tailFloorFor over the ring's candidates). */
+  floor = TAIL_FLOOR_DEFAULT,
 ): number {
   const km = kmBetween(poi, home);
   if (km < HOME_MIN_TRIP_KM) return 0;
@@ -119,7 +136,9 @@ export function scoreHomeDestination(
   const novelty = 1 - localFamiliarity(poi, samples);
   // Notability nudges the pick toward the landmarks worth learning, bounded
   // so a favourite cannot dominate the ring the way the old 220 floor did.
-  const fame = notabilityFameFactor(poi);
+  // The tier gate keeps a new rider's home rides on places worth knowing; the
+  // tail opens round home as its streets are learned (surprisePick.fameTierFactor).
+  const fame = notabilityFameFactor(poi) * fameTierFactor(poi, tailOpenness(home, samples), floor);
   return closeness * (0.35 + 0.65 * novelty) * fame;
 }
 
@@ -144,6 +163,8 @@ export function recentRankNear(
 
 /** No single landmark may take more than this share of a home pick. */
 export const HOME_MAX_SHARE = 0.12;
+/** A-list places are exempt from HOME_MAX_SHARE, up to this looser share. */
+export const A_LIST_MAX_SHARE = 0.3;
 
 /**
  * Weight of a destination that was ridden `rank` rides ago (0 = the ride
@@ -158,8 +179,15 @@ export function recentDestinationFactor(rank: number, window = HOME_RECENT_WINDO
 }
 
 /** Clamp heavy weights so none exceeds `maxShare` of the total (when enough
- *  candidates exist for that to be satisfiable). */
-export function capWeightShares(weights: readonly number[], maxShare = HOME_MAX_SHARE): number[] {
+ *  candidates exist for that to be satisfiable). `exempt[i]` entries (A-list
+ *  places) are held only to `exemptShare`: the Rijksmuseum should not be
+ *  flattened to the share of a neighbourhood church. */
+export function capWeightShares(
+  weights: readonly number[],
+  maxShare = HOME_MAX_SHARE,
+  exempt: readonly boolean[] = [],
+  exemptShare = A_LIST_MAX_SHARE,
+): number[] {
   const out = weights.slice();
   const positive = out.filter(weight => weight > 0).length;
   if (positive === 0 || positive * maxShare < 1) return out;
@@ -168,7 +196,8 @@ export function capWeightShares(weights: readonly number[], maxShare = HOME_MAX_
     const limit = total * maxShare;
     let clamped = false;
     for (let i = 0; i < out.length; i += 1) {
-      if (out[i] > limit * 1.0001) { out[i] = limit; clamped = true; }
+      const cap = exempt[i] ? total * exemptShare : limit;
+      if (out[i] > cap * 1.0001) { out[i] = cap; clamped = true; }
     }
     if (!clamped) break;
   }
@@ -203,9 +232,11 @@ export function pickHomeDestination(
   if (candidates.length === 0) return null;
 
   const recent = resolveRecentPois(pois, recentIds);
+  const ring = candidates.filter(poi => kmBetween(poi, home) <= radiusKm * HOME_RADIUS_OVERSHOOT);
+  const floor = tailFloorFor(ring);
   const raw = candidates.map(poi =>
-    scoreHomeDestination(poi, home, radiusKm, samples) * recentDestinationFactor(recentRankNear(poi, recent)));
-  const capped = capWeightShares(raw);
+    scoreHomeDestination(poi, home, radiusKm, samples, floor) * recentDestinationFactor(recentRankNear(poi, recent)));
+  const capped = capWeightShares(raw, HOME_MAX_SHARE, candidates.map(poi => isAList(poi)));
   const scored = candidates.map((poi, i) => ({ item: poi, weight: capped[i] }));
   const picked = pickWeighted(scored, chooseUnit);
   if (picked) return { poi: picked, radiusKm };
@@ -320,6 +351,8 @@ export interface ReviewRouteInput {
   excludeId?: string | null;
   /** Destinations ridden lately; skipped unless nothing else qualifies. */
   recentIds?: readonly string[];
+  /** The rider's practised places, for the fame tier (none = a new rider). */
+  samples?: readonly MasterySample[];
 }
 
 export interface ReviewRoutePick {
@@ -379,9 +412,20 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
   let froms: RoutePoi[];
   if (input.from) froms = [input.from];
   else {
+    // Starts are shown in the briefing, so they are drawn by fame like a
+    // surprise start (pickSurpriseStart), without replacement.
     const pool = pois.slice();
+    const floor = tailFloorFor(pool);
+    const weights = pool.map(poi => destinationWeight(poi, tailOpenness(poi, input.samples ?? []), floor));
     froms = [];
-    while (pool.length && froms.length < REVIEW_FROM_SAMPLES) froms.push(pool.splice(chooseIndex(pool.length), 1)[0]);
+    while (pool.length && froms.length < REVIEW_FROM_SAMPLES) {
+      const total = weights.reduce((sum, weight) => sum + weight, 0);
+      let target = (chooseIndex(1_000_000) / 1_000_000) * total;
+      let index = 0;
+      while (index < pool.length - 1 && target >= weights[index]) target -= weights[index++];
+      froms.push(pool.splice(index, 1)[0]);
+      weights.splice(index, 1);
+    }
   }
   type Pair = Omit<ReviewRoutePick, 'alternatives'> & { km: number };
   let best = 0;
@@ -456,10 +500,19 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
     const byDestination = new Map<string, Pair[]>();
     for (const pair of strong) byDestination.set(pair.to.id, [...(byDestination.get(pair.to.id) ?? []), pair]);
     const groups = [...byDestination.values()];
-    // Weighted by 1 / landmarks in the same corner, so four landmarks round
-    // one bridge together weigh about as much as one landmark on its own.
+    // Due names steer the via; the end is a place worth riding to. Weighted
+    // by fame (the tier gate included), and by 1 / landmarks in the same
+    // corner, so four landmarks round one bridge together weigh about as much
+    // as one landmark on its own. Fame was missing here: review rides ended at
+    // whatever neighbourhood mosque lay on the due names' line (2026-11-13).
+    const openness = tailOpenness(input.from, input.samples ?? []);
+    const tailFloor = tailFloorFor(groups.map(group => group[0].to));
     const weights = capWeightShares(groups.map(group =>
-      1 / groups.filter(other => kmBetween(other[0].to, group[0].to) <= RECENT_NEAR_KM).length));
+      destinationWeight(group[0].to, openness, tailFloor)
+        / groups.filter(other => kmBetween(other[0].to, group[0].to) <= RECENT_NEAR_KM).length));
+    // No A-list exemption here: the due set is fixed for days, and an exempt
+    // favourite took 32 % of Da Costakade's review rides (the 2026-10-10
+    // "always De Dolphijn" regression wants under 20 %).
     const total = weights.reduce((sum, weight) => sum + weight, 0);
     let target = (chooseIndex(1_000_000) / 1_000_000) * total;
     let index = 0;
@@ -469,7 +522,13 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
   } else {
     const shortest = Math.min(...pairs.map(pair => pair.km));
     const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
-    chosen = close[chooseIndex(close.length)];
+    const floor = tailFloorFor(close.map(pair => pair.to));
+    const weights = close.map(pair => destinationWeight(pair.to, tailOpenness(pair.from, input.samples ?? []), floor));
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    let target = (chooseIndex(1_000_000) / 1_000_000) * total;
+    let index = 0;
+    while (index < close.length - 1 && target >= weights[index]) target -= weights[index++];
+    chosen = close[index];
   }
   // Runners-up by count, then length, one per destination, from any start.
   const seen = new Set([`${chosen.from.id}>${chosen.to.id}`]);
