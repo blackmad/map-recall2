@@ -29,6 +29,7 @@ import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrio
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { boxPlacementFor, groundOpeningRect } from './houseLine/boxCells.js';
 import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
+import { runTakesTrace } from './houseLine/rowFront.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
@@ -790,7 +791,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if(terrace&&mode==='walls')frontageTriangles.push(...regularCanalTriangles(terrace,first,b));
       // Lane 1 step d (rowFront flag, houseLine/boxCells.ts): a record's measured window boxes on the street run. Each box
       // takes a crop of the upper cell sized so the cell's window lands on it, the rest is plain wall; null keeps the grid.
-      const placed = !shell && mode === 'walls' && streetRun && b.specRecipe?.windowBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
+      const traceRun = runTakesTrace(layout.lengthM, b.specRecipe?.frontSpanM);
+      const placed = !shell && mode === 'walls' && streetRun && traceRun && b.specRecipe?.windowBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
         ? boxPlacementFor(seenLeftToRight(first) ? b.specRecipe.windowBoxes : b.specRecipe.windowBoxes.map(w => ({ ...w, a0: 1 - w.a1, a1: 1 - w.a0 })), b.layers.upper, layout.lengthM, base, groundTop, facadeTop) : null;
       // Sub-fronts (lane 1, rowFront): each front's span on the run (metres, the run's direction) with its own wall tint;
       // a party-wall break, PARTY_BREAK_M wide and darker, where two fronts meet. Placed fronts only.
@@ -798,7 +800,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Lane 1 (rowFront): the ground storey cut at the record's traced doors and shop windows (houseLine/boxPlacement
       // groundSpans); a front that keeps a door has it moved to the traced one, so the extras hang on the drawn door.
       const groundBoxes = b.specRecipe?.groundBoxes;
-      const groundCut = !shell && mode === 'walls' && streetRun && groundBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
+      const groundCut = !shell && mode === 'walls' && streetRun && traceRun && groundBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
         ? groundSpans((seenLeftToRight(first) ? groundBoxes : groundBoxes.map(o => ({ ...o, a0: 1 - o.a1, a1: 1 - o.a0 }))).map(o => ({ a0: o.a0 * layout.lengthM, a1: o.a1 * layout.lengthM, kind: o.kind, sillM: o.sillM + base, headM: o.headM + base })), layout.lengthM) : null;
       if (groundCut && layout.doorBays.length) {
         const doors = groundCut.filter(p => p.kind === 'door').map(p => Math.max(0, Math.min(layout.bays - 1, Math.floor((p.a0 + p.a1) / 2 / bw))));
@@ -871,7 +873,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           for (const w of placed.windows) {
             const [a0, a1] = clip(w.a0, w.a1); if (a1 - a0 < 1e-4) continue;
             const u = (a: number) => w.u0 + (w.u1 - w.u0) * (a - w.a0) / (w.a1 - w.a0);
-            quads.push({ kind: 'upper', e, u0: u(a0), u1: u(a1), v0: w.v0, v1: w.v1, layer: b.layers!.upper, accent, z0: w.z0, z1: w.z1, tint: tintAt((a0 + a1) / 2), along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
+            quads.push({ kind: 'upper', e, u0: u(a0), u1: u(a1), v0: w.v0, v1: w.v1, layer: w.unit.layer ?? b.layers!.upper, accent, z0: w.z0, z1: w.z1, tint: tintAt((a0 + a1) / 2), along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
           for (const w of placed.walls) for (const [p0, p1, party] of splitAtBreaks(w.a0, w.a1, subFronts)) {
             const [a0, a1] = clip(p0, p1); if (a1 - a0 < 1e-4) continue;

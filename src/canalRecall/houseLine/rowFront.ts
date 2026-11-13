@@ -46,6 +46,8 @@ export interface RowFrontRecord {
   /** Lane 2's traced ground-storey openings (doors, shop windows, ground windows): a0/a1 fractions of the front as
    *  `windows`, sill/head above the pand's ground. */
   ground?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind: 'door' | 'shop' | 'window' }>;
+  /** The front's width the trace's fractions are of (lane 2 `bagWidthM`, m). */
+  spanM?: number;
   /** The traced shop band's top (pand datum) and the photo's fascia colour (muted by lane 2). */
   shopTopM?: number;
   fasciaHex?: string;
@@ -159,6 +161,7 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
   if (t && t.confidence !== 'low' && span && span > 1) {
     const top = fr.frontTopM ?? Infinity;
     const wins = t.storeys.slice(1).flat().filter(o => o.kind !== 'attic' && o.kind !== 'door' && o.kind !== 'shop' && o.y + o.h <= top + 0.05 && o.w > 0.1 && o.h > 0.1);
+    out.spanM = span;
     if (wins.length) out.windows = wins.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!, kind: o.kind }));
     const doors = (t.storeys[0] ?? []).filter(o => o.w > 0.1 && o.h > 0.1 && o.x < span && o.x + o.w > 0);
     if (doors.length) out.ground = doors.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!,
@@ -251,6 +254,12 @@ export function windowShare(rec: RowFrontRecord, eavesM: number): number | null 
  * light and never a full row (`roofStorey` dropped). A type preset's count (haarlemmer-shop-cornice-*) gives way, and so
  * does the structure prior (it only runs without a stated count). A row-line record keeps today's count.
  */
+/** How far a street run's length may differ from the traced span (m, or this share of it) for the run to take the
+ *  traced boxes: a longer run is a corner or a front the strip only partly covers (167821), not this front. */
+export const ROW_FRONT_SPAN_TOLERANCE = { m: 0.5, share: 0.12 } as const;
+export const runTakesTrace = (runM: number, spanM: number | undefined): boolean =>
+  !spanM || Math.abs(runM - spanM) <= Math.max(ROW_FRONT_SPAN_TOLERANCE.m, ROW_FRONT_SPAN_TOLERANCE.share * spanM);
+
 /** Interim window width as a share of the bay (coordinator: about 60-70 %). */
 export const ROW_FRONT_WINDOW_SHARE = 0.64;
 
@@ -264,6 +273,7 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   if (rec.subFronts) out.subFronts = rec.subFronts;
   // The traced ground openings (doors and shop windows) the mesher cuts the ground storey at.
   if (rec.ground?.length) out.groundBoxes = rec.ground;
+  if (rec.spanM && (rec.ground?.length || rec.windows?.length)) out.frontSpanM = rec.spanM;
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
