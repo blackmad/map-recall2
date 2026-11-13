@@ -4,9 +4,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { SOURCE_STRENGTH, isStrongerSource } from '../facade/evidence.ts';
 import { validateIntent, type CanalHouseIntent } from '../buildingRecipe/intent.ts';
-import { emptySpec, frontBays, provenanceOf, specFields, specProblems, specStrength, validateSpec, type HouseSpec, type Prov } from './spec.ts';
+import { drawableDesign, emptySpec, frontBays, provenanceOf, specFields, specProblems, specStrength, validateSpec, type HouseSpec, type Prov } from './spec.ts';
 import { fieldSources, resolveSpecs } from './resolve.ts';
-import { toRecipe, withRoute } from './toRecipe.ts';
+import { toRecipe, toRecipeReport, withRoute } from './toRecipe.ts';
+import { specView, specViewIgnored } from './view.ts';
 import { fromRecipeIntent } from './adapters.ts';
 
 const P = '0363100012182857';
@@ -105,6 +106,48 @@ test('toRecipe round-trips a complete spec to an intent validateIntent accepts',
   assert.equal(withRoute(spec).route, 'recipe');
   // Incomplete: a register-only spec is the generic route.
   assert.equal(withRoute(part({ 'fronts/0/gable': 'step' }, prov('monument-text', 0.8, null, 'rce:3856'))).route, 'generic');
+});
+
+test('spec-level readings (stone, pitched-eaves, pointed/mixed heads): stored as read, drawn as the nearest intent value, absent = byte-identical', () => {
+  const intent = validateIntent(JSON.parse(readFileSync('scripts/building-recipes/houses/bilder-079721/intent.json', 'utf8'))) as CanalHouseIntent;
+  const base = fromRecipeIntent(intent)!;
+  // Absent: the same design object, nothing ignored, the same intent and view bytes as before.
+  assert.equal(drawableDesign(base.design).design, base.design);
+  const plain = toRecipeReport(base);
+  assert.deepEqual(plain.ignored, []);
+  assert.equal(JSON.stringify(plain.intent), JSON.stringify(toRecipe(base)));
+  assert.deepEqual(specViewIgnored(base), []);
+  const before = JSON.stringify(specView(base));
+  // Present: valid as a spec, compiled to an intent validateIntent accepts, each mapping reported.
+  const read = structuredClone(base);
+  read.design.palette!.wallMaterial = 'stone';
+  read.design.fronts![0].gable = 'pitched-eaves';
+  delete read.design.fronts![0].cornice;
+  read.design.fronts![0].windows = 'sash-6-over-6'; // the fixture's `arched` windows already set a head
+  read.design.fronts![0].windowHead = { kind: 'pointed' };
+  assert.deepEqual(specProblems(read), []);
+  const r = toRecipeReport(read);
+  assert.ok(r.intent, 'still recipe route');
+  assert.equal(r.intent!.palette.wallMaterial, 'stucco');
+  assert.equal(r.intent!.fronts[0].gable, 'cornice');
+  assert.equal(r.intent!.fronts[0].cornice, 'none');
+  assert.equal(r.intent!.fronts[0].windowHead!.kind, 'round');
+  assert.deepEqual(r.ignored, [
+    { path: 'palette/wallMaterial', value: 'stone', drawnAs: 'stucco' },
+    { path: 'fronts/0/gable', value: 'pitched-eaves', drawnAs: 'cornice' },
+    { path: 'fronts/0/windowHead', value: 'pointed', drawnAs: 'round' },
+  ]);
+  assert.equal(read.design.palette!.wallMaterial, 'stone', 'the spec itself keeps the reading');
+  assert.equal(specView(read).wallMaterial, 'stucco');
+  assert.equal(specViewIgnored(read).length, 3);
+  read.design.fronts![0].windowHead = { kind: 'mixed' };
+  assert.equal(toRecipeReport(read).intent!.fronts[0].windowHead, undefined, 'mixed draws the intent default (flat)');
+  assert.equal(JSON.stringify(specView(base)), before);
+  // Values outside the spec vocabulary are still refused.
+  const bad = structuredClone(base) as any;
+  bad.design.palette.wallMaterial = 'granite'; bad.design.fronts[0].gable = 'eaves'; bad.design.fronts[0].windowHead = { kind: 'gothic' };
+  const p = specProblems(bad);
+  assert.ok(['palette/wallMaterial', 'fronts/0/gable', 'fronts/0/windowHead'].every(k => p.some(x => x.startsWith(k))), p.join('\n'));
 });
 
 test('intentSources: receipts whose refs share the first 60 characters become one source (belt-nieuwmarkt #363)', () => {

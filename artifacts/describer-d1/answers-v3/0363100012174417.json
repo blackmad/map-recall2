@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2017,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "finish",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "door with a top light in a circle-and-cross tracery pattern in a white rendered ground storey with small-paned windows"
+  }
+ ],
+ "notes": "A houseboat hides the lower ground storey and strong sun glare washes out the middle storeys; the cornice sits at the very top edge."
+}

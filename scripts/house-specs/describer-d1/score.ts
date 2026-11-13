@@ -1,7 +1,8 @@
 // Describer D1 scorer: per-field accuracy of a describer answer set against the truth sets, or per-field agreement of two answer sets
 // (the P3a photo-vs-game comparison, or opus vs sonnet).
 //
-//   node --import tsx scripts/house-specs/describer-d1/score.ts [--answers <dir>] [--out <file>]           answers vs truth
+//   node --import tsx scripts/house-specs/describer-d1/score.ts [--answers <dir>] [--out <file>] [--adjudicated]   answers vs truth
+//     (--adjudicated: benchmark-v1-adjudicated.json labels, undecidable fields excluded)
 //   node --import tsx scripts/house-specs/describer-d1/score.ts --answers <dirA> --b <dirB> [--out <file>] answers A vs answers B
 //
 // Truth (truth.ts): benchmark-v1 labels, hand set v1 reader A, author hand specs; a pand-field is pooled once, by the first truth
@@ -14,10 +15,11 @@ import path from 'node:path';
 import { UNKNOWN, validateAnswer, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
 import { SCORE_FIELDS, compare, confusion, readingOf, tabulate, type Cell, type Reading, type ScoreField } from '../../../src/canalRecall/houseSpec/describerScore.ts';
 import { loadTruth } from './truth.ts';
+import { adjudicatedPands } from './adjudicate.ts';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../..');
 const TRUTH_ORDER = ['benchmark', 'hand-set', 'hand-spec'] as const;
-const CONFUSE: ScoreField[] = ['crown', 'windowFamily', 'head', 'wallFamily', 'finish', 'doorBay', 'shop', 'bands', 'surrounds'];
+const CONFUSE: ScoreField[] = ['crown', 'windowGroup', 'windowFamily', 'storeys', 'head', 'wallFamily', 'finish', 'doorBay', 'shop', 'bands', 'surrounds'];
 const PALE = new Set(['white', 'buff', 'grey']);
 
 export function loadAnswers(dir: string): Map<string, DescriberAnswer> {
@@ -72,7 +74,7 @@ function main() {
     console.log(md.join('\n'));
     return;
   }
-  const truth = loadTruth(ROOT);
+  const truth = loadTruth(ROOT, argv.includes('--adjudicated') ? adjudicatedPands() : undefined);
   const perHouse: Record<string, { column: string; sets: string[]; cells: Cell[] }> = {};
   const bySet: Record<string, Cell[]> = {}, byColumn: Record<string, Cell[]> = {}, pooled: Cell[] = [];
   const pairs: { a: DescriberAnswer; t: Reading; column: string }[] = [];

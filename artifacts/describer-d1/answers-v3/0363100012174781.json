@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174781/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "bays",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "central hoist door with red shutters on the top storey and another in the neck"
+  },
+  {
+   "component": "window",
+   "what": "window sashes painted red inside white outer frames"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces at the gable shoulders"
+  }
+ ],
+ "notes": "The top of the gable is cut off by the image; a lamp and bicycles in front of the ground storey."
+}

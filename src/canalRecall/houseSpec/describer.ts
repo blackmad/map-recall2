@@ -9,8 +9,8 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { BASEMENTS, CORNICES, GABLES, WINDOWS, WINDOW_SURROUNDS, type GableIntent, type WindowKind } from '../buildingRecipe/intent.ts';
-import { emptySpec, setSpecField, toSpecLimit, type HouseSpec, type SpecLimit } from './spec.ts';
+import { BASEMENTS, CORNICES, GABLES, WINDOWS, WINDOW_SURROUNDS, type WindowKind } from '../buildingRecipe/intent.ts';
+import { emptySpec, setSpecField, toSpecLimit, type HouseSpec, type SpecGable, type SpecLimit } from './spec.ts';
 
 /** Any field the image cannot show (hidden by a tree or van, cut off, too dark): never guessed. */
 export const UNKNOWN = 'not-visible' as const;
@@ -39,6 +39,9 @@ export const FINISHES = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
 
 export const SAME_AS = ['left', 'right', 'both', 'none'] as const;
 
+/** prompt v3: a tall upper-storey window whose horizontal bar (sash meeting rail or T-window transom) is not resolvable. */
+export const TALL_UPPER = 'tall-upper' as const;
+
 export interface DescriberAnswer {
   v: 1;
   pandId: string;
@@ -56,7 +59,7 @@ export interface DescriberAnswer {
   /** Openings per storey, ground first (optional detail). */
   columns?: number[];
   /** Dominant upper-storey window kind (intent WINDOWS). */
-  windows: WindowKind | U;
+  windows: WindowKind | typeof TALL_UPPER | U;
   /** Per storey (index from the ground) where it differs from `windows`. */
   storeyWindows?: Record<string, WindowKind>;
   /** Window head per storey, ground first (length = storeys when known). */
@@ -104,7 +107,7 @@ export function answerProblems(a: any): string[] {
   if (!countOk(a.storeys, 1, 30)) p.push(`storeys: 1..30 or ${UNKNOWN}`);
   if (!countOk(a.bays, 1, 30)) p.push(`bays: 1..30 or ${UNKNOWN}`);
   if (a.columns !== undefined && !(Array.isArray(a.columns) && a.columns.every((c: unknown) => Number.isInteger(c) && (c as number) >= 0 && (c as number) <= 40))) p.push('columns: counts');
-  if (!isIn(WINDOWS, a.windows)) p.push(`windows: ${JSON.stringify(a.windows)} not in WINDOWS`);
+  if (!isIn(WINDOWS, a.windows) && a.windows !== TALL_UPPER) p.push(`windows: ${JSON.stringify(a.windows)} not in WINDOWS`);
   for (const [k, w] of Object.entries(a.storeyWindows ?? {})) if (!isIn(WINDOWS, w) || w === UNKNOWN) p.push(`storeyWindows.${k}: ${JSON.stringify(w)} not in WINDOWS`);
   if (!Array.isArray(a.heads) || !a.heads.every((h: unknown) => isIn(HEADS, h))) p.push(`heads: a list of ${HEADS.join('|')}|${UNKNOWN}`);
   else if (Number.isInteger(a.storeys) && a.heads.length && a.heads.length !== a.storeys) p.push(`heads: ${a.heads.length} entries for ${a.storeys} storeys`);
@@ -149,7 +152,8 @@ export function upperHead(heads: readonly (Head | U)[]): Head | U {
   return new Set(up).size === 1 ? up[0] : 'mixed';
 }
 
-/** An answer as a partial HouseSpec at source `vision-judge` (the fields the spec can say; the rest stays in schemaLimits). */
+/** An answer as a partial HouseSpec at source `vision-judge`. Stone, pitched-eaves and pointed/mixed heads are stored as read (spec.ts
+ *  SPEC_*; compilers draw the nearest form and report it); schemaLimits holds only the reader's own gaps. */
 export function toSpecPart(a: DescriberAnswer, at: string | null = null, confidence = 0.7): HouseSpec {
   const spec = emptySpec(a.pandId);
   if (!a.readable) return spec;
@@ -160,10 +164,10 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
   };
   set('fronts/0/storeys', a.storeys);
   set('fronts/0/bays', a.bays);
-  set('fronts/0/windows', a.windows);
+  if (a.windows !== TALL_UPPER) set('fronts/0/windows', a.windows);
   if (a.storeyWindows && Object.keys(a.storeyWindows).length) set('fronts/0/storeyWindows', a.storeyWindows);
   const head = upperHead(a.heads);
-  if (head === 'flat' || head === 'segmental' || head === 'round' || head === 'relieving') set('fronts/0/windowHead', { kind: head });
+  if (head !== UNKNOWN) set('fronts/0/windowHead', { kind: head });
   if (a.bands !== 'none') set('fronts/0/bands', a.bands);
   if (a.sills === 'consoles') set('fronts/0/windowSills', 'consoles');
   set('fronts/0/windowSurround', a.windowSurround === 'none' && a.sills === 'stone' ? 'sill' : a.windowSurround);
@@ -171,15 +175,12 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
   set('fronts/0/basement', a.basement);
   if (a.souterrain) set('fronts/0/souterrain', true);
   if (a.crown === 'mansard') { set('fronts/0/gable', 'cornice'); set('fronts/0/roofFront', 'mansard'); }
-  else if (a.crown !== 'pitched-eaves') set('fronts/0/gable', a.crown as GableIntent | U);
+  else set('fronts/0/gable', a.crown as SpecGable | U);
   set('fronts/0/cornice', a.cornice);
-  if (a.finish !== 'stone') set('palette/wallMaterial', a.finish);
+  set('palette/wallMaterial', a.finish);
   set('facts/wallFamily', a.wallFamily);
   set('facts/pui', a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'residential' : a.ground);
   const limits = [...a.gaps];
-  if (a.crown === 'pitched-eaves') limits.push({ component: 'gable', what: 'an eaves line with the roof slope in view (no gable kind says it)' });
-  if (a.finish === 'stone') limits.push({ component: 'wallMaterial', what: 'a stone-faced front' });
-  if (head === 'pointed' || head === 'mixed') limits.push({ component: 'windowHead', what: `${head} window heads on the upper storeys` });
   if (limits.length) spec.schemaLimits = limits;
   return spec;
 }

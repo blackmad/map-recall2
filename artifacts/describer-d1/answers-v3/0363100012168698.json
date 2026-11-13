@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168698",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168698/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "2": "sash-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "front door with a square top light holding a round ornamental tracery panel"
+  },
+  {
+   "component": "window",
+   "what": "tall ground-storey windows with small-paned top sashes over plain lower panes"
+  }
+ ]
+}

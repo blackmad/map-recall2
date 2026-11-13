@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168693",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168693/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "t-window",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "wide green double doors under a row of gridded top lights in the ground storey"
+  }
+ ],
+ "notes": "Cars cover the bottom of the ground storey."
+}

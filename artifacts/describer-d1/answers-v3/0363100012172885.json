@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012172885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172885/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground storey has one large window in many small panes beside the door"
+  },
+  {
+   "component": "door",
+   "what": "door has a small top light"
+  }
+ ],
+ "notes": "Low resolution; white painted bands at the floor lines and the gable foot."
+}

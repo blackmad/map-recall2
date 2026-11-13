@@ -55,6 +55,13 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
 - **Field paths** (the unit of provenance and of the merge): one key of one front (`fronts/0/gable`), one key of the
   roof or palette (`roof/material`, `palette/brick`), `notes`, one key of `facts` (`facts/facadeYear`). Values below
   that level (a `windowHead` object, a per-storey `bays` list) are atomic: two sources never splice one window head.
+- **Spec-level values** (lane D1, 2026-11-13; spec.ts `SPEC_WALL_MATERIALS`, `SPEC_GABLES`, `SPEC_WINDOW_HEADS`): a spec stores
+  these readings as read though the intent has no value for them; every compiler draws them through `drawableDesign` and
+  reports each as `ignored: [{path, value, drawnAs}]` (`toRecipeReport`, `specViewIgnored`). Absent = byte-identical.
+  - `palette/wallMaterial: "stone"`: a stone-faced front; drawn `stucco` (a pale render wall, colour kept).
+  - `fronts/N/gable: "pitched-eaves"`: an eaves line with the roof slope in view; drawn `cornice` (with `cornice: none` unless stated).
+  - `fronts/N/windowHead.kind: "pointed"`: drawn `round`.
+  - `fronts/N/windowHead.kind: "mixed"` (two head shapes on one storey): drawn with no head (the intent default, flat).
 - **Provenance** is keyed by field path; an ancestor key covers every field under it (`fronts/0`, or `` for the whole
   record, which is what an adapter for a single-source record writes). `resolveSpecs` writes one key per field.
 - **`schemaLimits`**: what the photo shows that the kit cannot say, one `{component, what}` per kit part (the shape of

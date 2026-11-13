@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { frontBays, provenanceOf, type HouseSpec } from '../../../src/canalRecall/houseSpec/spec.ts';
-import { hasSurround, windowFamily, type Reading } from '../../../src/canalRecall/houseSpec/describerScore.ts';
+import { hasSurround, windowFamily, windowGroup, type Reading } from '../../../src/canalRecall/houseSpec/describerScore.ts';
 
 const json = <T = any>(p: string): T => JSON.parse(fs.readFileSync(p, 'utf8'));
 
@@ -41,15 +41,16 @@ export function benchmarkReading(p: any): Reading {
   const known = (v: unknown) => v !== undefined && v !== null && v !== 'unknown';
   if (known(L.storeys)) r.storeys = L.storeys;
   if (Array.isArray(L.columns) && L.columns.length > 1) r.bays = Math.max(...L.columns.slice(1));
-  if (['sash', 'T-window', 'casement', 'large-pane'].includes(L.windowKind)) r.windowFamily = L.windowKind;
+  if (['sash', 'T-window', 'casement', 'large-pane'].includes(L.windowKind)) { r.windowFamily = L.windowKind; r.windowGroup = windowGroup(L.windowKind); }
   if (known(L.windowHead)) r.head = L.windowHead;
-  if (L.whiteAccents) { r.bands = !!L.whiteAccents.bands; r.surrounds = !!(L.whiteAccents.surrounds || L.whiteAccents.keystones); }
+  if (known(L.paneLayout)) r.paneLayout = L.paneLayout;
+  if (L.whiteAccents) { if (typeof L.whiteAccents.bands === 'boolean') r.bands = L.whiteAccents.bands; r.surrounds = !!(L.whiteAccents.surrounds || L.whiteAccents.keystones); }
   if (known(L.doorBay)) r.doorBay = L.doorBay;
   if (typeof L.shopfront === 'boolean') r.shop = L.shopfront;
   if (known(L.crown) && L.crown !== 'other') r.crown = L.crown;
   if (L.cornice === 'timber' || L.cornice === 'stone') r.cornice = ['simple', 'bracketed', 'heavy', 'frieze'];
   else if (L.cornice === 'parapet' || L.cornice === 'none') r.cornice = ['none'];
-  if (L.wallTone?.family && WALL_BENCH[L.wallTone.family]) r.wallFamily = WALL_BENCH[L.wallTone.family];
+  if (L.wallTone?.family && WALL_BENCH[L.wallTone.family]) { r.wallFamily = WALL_BENCH[L.wallTone.family]; r.pale = ['white-cream', 'yellow-buff'].includes(L.wallTone.family); }
   if (L.finish === 'render') r.finish = 'stucco'; else if (['brick', 'painted-brick', 'stone'].includes(L.finish)) r.finish = L.finish;
   return r;
 }
@@ -62,7 +63,7 @@ export function handSetReading(p: any): Reading {
   if (v('storeys') !== undefined) r.storeys = v('storeys');
   if (v('gable') !== undefined) r.crown = v('gable');
   if (v('finish') !== undefined) r.finish = v('finish');
-  if (v('wall') !== undefined) r.wallFamily = v('wall');
+  if (v('wall') !== undefined) { r.wallFamily = v('wall'); r.pale = ['white', 'buff'].includes(v('wall')); }
   if (v('pui') !== undefined) r.shop = v('pui') === 'shop';
   return r;
 }
@@ -87,7 +88,7 @@ export function handSpecReading(s: HouseSpec): Reading {
   const F = (k: string) => (own(`fronts/0/${k}`) ? f0[k] : undefined);
   if (F('storeys') !== undefined) r.storeys = F('storeys');
   if (own('fronts/0/bays') || own('fronts/0/axisGrid')) { const b = frontBays(f0); if (b) r.bays = b; }
-  if (F('windows')) { r.windows = F('windows'); r.windowFamily = windowFamily(F('windows')); }
+  if (F('windows')) { r.windows = F('windows'); r.windowFamily = windowFamily(F('windows')); r.windowGroup = windowGroup(r.windowFamily as string); }
   if (F('windowHead')?.kind) r.head = F('windowHead').kind === 'relieving' ? 'flat' : F('windowHead').kind;
   if (own('fronts/0/gable')) {
     const bands = f0.bands && f0.bands !== 'none' ? f0.bands : f0.speklagen ? 'speklagen' : 'none';
@@ -105,16 +106,16 @@ export function handSpecReading(s: HouseSpec): Reading {
   if (F('basement')) r.basement = F('basement') !== 'none' || !!f0.souterrain;
   if (F('gable')) r.crown = f0.roofFront === 'mansard' ? 'mansard' : F('gable');
   if (F('cornice')) r.cornice = F('cornice');
-  if (s.facts?.wallFamily && own('facts/wallFamily')) r.wallFamily = s.facts.wallFamily;
+  if (s.facts?.wallFamily && own('facts/wallFamily')) { r.wallFamily = s.facts.wallFamily; r.pale = ['white', 'buff'].includes(s.facts.wallFamily); }
   if (s.design.palette?.wallMaterial && own('palette/wallMaterial')) r.finish = s.design.palette.wallMaterial;
   return r;
 }
 
 /** Every truth Reading by pand and set (a pand may have several sets). */
-export function loadTruth(root: string): Map<string, Map<string, Reading>> {
+export function loadTruth(root: string, benchmarkPands?: any[]): Map<string, Map<string, Reading>> {
   const out = new Map<string, Map<string, Reading>>();
   const put = (set: string, r: Reading) => { const m = out.get(r.pandId) ?? out.set(r.pandId, new Map()).get(r.pandId)!; if (!m.has(set)) m.set(set, r); };
-  for (const p of json(path.join(root, 'scripts/house-line/benchmark/benchmark-v1.json')).pands) put('benchmark', benchmarkReading(p));
+  for (const p of benchmarkPands ?? json(path.join(root, 'scripts/house-line/benchmark/benchmark-v1.json')).pands) put('benchmark', benchmarkReading(p));
   for (const p of json(path.join(root, 'data/house-line/hand-set-v1.json')).pands) put('hand-set', handSetReading(p));
   for (const { spec } of handSpecFiles(root)) put('hand-spec', handSpecReading(spec));
   return out;

@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012172886",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "tall white ground storey with a row of three entresol windows over the door and shop window"
+  }
+ ],
+ "notes": "Small, dark image; the white row over the ground is read as an entresol inside the ground storey."
+}

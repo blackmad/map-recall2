@@ -90,13 +90,19 @@ test('pooledTruth takes each field from the first set that states it; columnOf s
   assert.equal(columnOf(answer({ image: { ref: 'r', kind: 'render' } })), 'render');
 });
 
-test('toSpecPart: a valid partial HouseSpec at vision-judge; stone and pitched-eaves go to schemaLimits', () => {
+test('toSpecPart: a valid partial HouseSpec at vision-judge; stone, pitched-eaves and pointed/mixed heads are stored as read', () => {
   const s = toSpecPart(answer({ crown: 'mansard', finish: 'stone' }));
   assert.deepEqual(specProblems(s), []);
   assert.equal((s.design.fronts![0] as any).roofFront, 'mansard');
-  assert.ok(s.schemaLimits!.some(l => l.component === 'wallMaterial'));
+  assert.equal(s.design.palette!.wallMaterial, 'stone');
+  assert.equal(s.schemaLimits, undefined);
   assert.equal(s.provenance['fronts/0/storeys'].source, 'vision-judge');
-  assert.deepEqual(specProblems(toSpecPart(answer({ crown: 'pitched-eaves', readable: true }))), []);
+  const e = toSpecPart(answer({ crown: 'pitched-eaves', heads: ['flat', 'pointed', 'pointed', 'pointed'], gaps: [{ component: 'crown', what: 'a dormer' }] }));
+  assert.deepEqual(specProblems(e), []);
+  assert.equal(e.design.fronts![0].gable, 'pitched-eaves');
+  assert.deepEqual(e.design.fronts![0].windowHead, { kind: 'pointed' });
+  assert.deepEqual(e.schemaLimits, [{ component: 'crown', what: 'a dormer' }]);
+  assert.deepEqual(toSpecPart(answer({ heads: ['flat', 'round', 'segmental', 'segmental'] })).design.fronts![0].windowHead, { kind: 'mixed' });
 });
 
 test('twins: side from the wall normal, mirrored door indices, per-side precision/recall', async () => {

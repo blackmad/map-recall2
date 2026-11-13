@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "point",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "windowSurround",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "three stacked white balconies with balustrades on brackets on the left axis"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks at the springing and keystone of each window head set into the dark brick"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small gabled top with a round-arched window in a white surround over the left axis"
+  }
+ ],
+ "notes": "Rusticated stone souterrain with windows at pavement level; bikes hide the door. Top is a dormer-like gable over one axis."
+}

@@ -7,15 +7,15 @@
  * A Reading field is a value or a list of acceptable values (a truth vocabulary coarser than the describer's, e.g. the benchmark's
  * `orange-red` accepts `orange` and `red`). Absent or `unknown` on either side = not scored for that pand.
  */
-import { UNKNOWN, upperHead, type DescriberAnswer } from './describer.ts';
+import { TALL_UPPER, UNKNOWN, upperHead, type DescriberAnswer } from './describer.ts';
 import type { WindowKind } from '../buildingRecipe/intent.ts';
 
 /** Every scored field. Counts are scored exact and within one (`bays±1`, `storeys±1`). */
 export const SCORE_FIELDS = [
   'storeys', 'storeys±1', 'bays', 'bays±1',
-  'windowFamily', 'windows', 'head', 'storeyHeads',
+  'windowGroup', 'windowFamily', 'windows', 'paneLayout', 'head', 'storeyHeads',
   'bands', 'bandKind', 'surrounds', 'windowSurround', 'sills',
-  'doorBay', 'shop', 'basement', 'crown', 'cornice', 'wallFamily', 'finish',
+  'doorBay', 'shop', 'basement', 'crown', 'cornice', 'wallFamily', 'pale', 'finish',
 ] as const;
 export type ScoreField = (typeof SCORE_FIELDS)[number];
 type Val = string | number | boolean;
@@ -30,6 +30,8 @@ export function windowFamily(w: WindowKind | string): string {
   if (w.startsWith('casement') || w === 'two-light' || w === 'cross' || w === 'cross-transom' || w === 'ladder') return 'casement';
   return 'other';
 }
+/** Window group (prompt v3): sash and T-window merged into `tall`; casement and large-pane as in windowFamily. */
+export const windowGroup = (family: string): string => (family === 'sash' || family === 'T-window' || family === TALL_UPPER ? 'tall' : family);
 /** Surround present: a dressing round the opening (frame, lintel, keystone), not a bare sill. */
 export const hasSurround = (s: string): boolean => !['none', 'sill', UNKNOWN].includes(s);
 
@@ -39,17 +41,24 @@ export function readingOf(a: DescriberAnswer): Reading {
   if (!a.readable) return r;
   const set = (k: keyof Reading, v: Val | undefined) => { if (v !== undefined && v !== UNKNOWN) (r as any)[k] = v; };
   set('storeys', a.storeys); set('bays', a.bays);
-  if (a.windows !== UNKNOWN) { set('windows', a.windows); set('windowFamily', windowFamily(a.windows)); }
+  if (a.windows === TALL_UPPER) set('windowGroup', 'tall');
+  else if (a.windows !== UNKNOWN) { set('windows', a.windows); set('windowFamily', windowFamily(a.windows)); set('windowGroup', windowGroup(windowFamily(a.windows))); }
   const head = upperHead(a.heads);
   set('head', head === 'relieving' ? 'flat' : head);
   if (a.heads.length && !a.heads.includes(UNKNOWN)) set('storeyHeads', a.heads.join(','));
   if (a.bands !== UNKNOWN) { set('bands', a.bands !== 'none'); set('bandKind', a.bands); }
   if (a.windowSurround !== UNKNOWN) { set('surrounds', hasSurround(a.windowSurround)); set('windowSurround', a.windowSurround === 'none' && a.sills === 'stone' ? 'sill' : a.windowSurround); }
   set('sills', a.sills);
+  const pane = (a as { paneLayout?: unknown }).paneLayout; // the zoomed window read (window-v1.md)
+  if (typeof pane === 'string') set('paneLayout', pane);
   set('doorBay', a.doorBay);
   if (a.ground !== UNKNOWN) set('shop', a.ground === 'shopfront');
   if (a.basement !== UNKNOWN) set('basement', a.basement !== 'none' || !!a.souterrain);
   set('crown', a.crown); set('cornice', a.cornice); set('wallFamily', a.wallFamily); set('finish', a.finish);
+  // prompt v4: pale yes/no in words (the hex comes from a wall sample); before v4, pale = a white or buff family
+  const pale = (a as { pale?: unknown }).pale;
+  if (typeof pale === 'boolean') set('pale', pale);
+  else if (a.wallFamily !== UNKNOWN) set('pale', a.wallFamily === 'white' || a.wallFamily === 'buff');
   return r;
 }
 
