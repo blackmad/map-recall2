@@ -109,3 +109,38 @@ test('row front step d: HD20 window share and preset', () => {
   const i = rowFrontStyle('canal', h, false, 2)!, v = BAY_STYLES.canal[i];
   assert.ok(v.openingOccupancy! >= 0.55 && !v.paleAccents && 2 % v.windows === 0, JSON.stringify(v));
 });
+
+// Strip review 2026-11-13: the fascia keeps the photo's shopfront colour, muted (not one dark band for every shop);
+// none read keeps the dark band.
+import { rowFrontShopHex, skylineGable, levels } from './rowFront.ts';
+import { hexToOklab } from '../houseSpec/wallColour.ts';
+test('row front shop band: the photo colour muted, the dark band without one', () => {
+  assert.equal(rowFrontShopHex(undefined), ROW_FRONT_SHOP_HEX);
+  const red = hexToOklab('#c0392b'), muted = hexToOklab(rowFrontShopHex('#c0392b'));
+  assert.ok(Math.hypot(muted[1], muted[2]) < 0.6 * Math.hypot(red[1], red[2]));
+  const cream = hexToOklab(rowFrontShopHex('#e3dccb'));
+  assert.ok(cream[0] <= 0.821 && cream[0] > 0.75);
+  const base = { ...feature('0363100012167816', 11.84), properties: { ...feature('0363100012167816', 11.84).properties, shopKind: 'shopCafe', rowFront: 'cornice', houseSpec: { shopHex: '#242122' } } };
+  assert.equal(meshBuildingFor(base as never, 'photo')!.accentHex, rowFrontShopHex('#242122'));
+});
+
+// Named regression 167820 (Haarlemmerdijk 26): a seam-cut front (no strip read) whose skyline shows a gable 2.2 m over
+// the row line across 60 % of its width draws a neck gable from the skyline, not a flat cornice.
+test('row front skyline gable: 167820 neck from its skyline, a flat skyline stays a cornice', () => {
+  const rec: RowFrontRecord = { pandId: '0363100012167820', topM: 12.65, eavesM: 12.65, crown: { family: 'cornice' }, confidence: 0.4, fallback: 'row-line', sources: {},
+    skyline: { frontTopM: 12.43, footM: 12.3, peakM: 14.65, crownShare: 0.6, readShare: 0.99 } };
+  const g = skylineGable(rec)!;
+  assert.equal(g.crown.family, 'neck'); assert.equal(g.eavesM, 12.3); assert.equal(g.topM, 14.65); assert.ok(g.crownFromSkyline);
+  assert.equal(skylineGable({ ...rec, skyline: { ...rec.skyline, peakM: 12.8, crownShare: 0 } }), null);
+  assert.equal(skylineGable({ ...rec, fallback: undefined }), null);
+});
+
+// Step d option c: a measured record hands the mesher its boxes, one per bay on each row (HD20 167818: 2 bays, 2 rows).
+test('row front levels: window boxes per bay on each measured row', () => {
+  const rec: RowFrontRecord = { pandId: '0363100012167818', topM: 12.88, eavesM: 10.18, crown: { family: 'neck' }, confidence: 1, sources: {}, storeys: 3, bays: 2,
+    rows: [{ sillM: 5.58, headM: 7.48 }, { sillM: 8.13, headM: 9.68 }], groundTopM: 5.08 };
+  const boxes = (levels(null, rec, 10.18, false).specRecipe as { windowBoxes: Array<{ a0: number; a1: number; sillM: number; headM: number }> }).windowBoxes;
+  assert.equal(boxes.length, 4);
+  assert.ok(Math.abs((boxes[0].a0 + boxes[0].a1) / 2 - 0.25) < 1e-9 && Math.abs(boxes[0].a1 - boxes[0].a0 - 0.32) < 1e-9);
+  assert.equal(boxes[2].sillM, 8.13);
+});

@@ -11,7 +11,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
-import { ROW_FRONT_EXTRAS, ROW_FRONT_SHOP_HEX } from './houseLine/rowFront.js';
+import { ROW_FRONT_EXTRAS, rowFrontShopHex } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
@@ -327,10 +327,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (draw.force.length) building.specFieldsForce = draw.force;
   }
   // Lane 1 step e (rowFront flag): subtract before adding. A front record's house draws only the plain extras
-  // (ROW_FRONT_EXTRAS) and what a register or spec states; its shopfront is a plain dark band, not a guessed brand colour.
+  // (ROW_FRONT_EXTRAS) and what a register or spec states; its shopfront takes the photo's colour muted, never a guessed brand colour.
   if (typeof p.rowFront === 'string') {
     if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS, ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
-    if (building.shopfront || building.shop) { building.accentHex = ROW_FRONT_SHOP_HEX; building.signature = undefined; building.chain = undefined; if (building.layers) building.groundHex = ROW_FRONT_SHOP_HEX; }
+    if (building.shopfront || building.shop) {
+      // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.
+      const hex = rowFrontShopHex(specRecipeOf(p)?.shopHex ?? (p.houseSpec as { shopHex?: unknown } | undefined)?.shopHex);
+      building.accentHex = hex; building.signature = undefined; building.chain = undefined; if (building.layers) building.groundHex = hex;
+    }
   }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.

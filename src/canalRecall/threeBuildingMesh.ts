@@ -27,6 +27,7 @@ import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PRO
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
+import { boxPlacementFor } from './houseLine/boxCells.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
@@ -758,6 +759,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
         ?planRepeatedTerraceFrontage({lengthM:layout.lengthM,baseM:base,topM:top,recipe:b.recipe.repeatedTerraceFrontage,direction:compoundDirection(b,first,origin)}):undefined;
       if(terrace&&mode==='walls')frontageTriangles.push(...regularCanalTriangles(terrace,first,b));
+      // Lane 1 step d (rowFront flag, houseLine/boxCells.ts): a record's measured window boxes on the street run. Each box
+      // takes a crop of the upper cell sized so the cell's window lands on it, the rest is plain wall; null keeps the grid.
+      const placed = !shell && mode === 'walls' && streetRun && b.specRecipe?.windowBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
+        ? boxPlacementFor(b.specRecipe.windowBoxes, b.layers.upper, layout.lengthM, base, groundTop, facadeTop) : null;
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.
@@ -806,7 +811,18 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           const pu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, pu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
           quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: pu0, u1: pu1, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (placed) {
+          const clip = (a0: number, a1: number) => [Math.max(s, a0), Math.min(s + e.len, a1)] as const;
+          for (const w of placed.windows) {
+            const [a0, a1] = clip(w.a0, w.a1); if (a1 - a0 < 1e-4) continue;
+            const u = (a: number) => w.u0 + (w.u1 - w.u0) * (a - w.a0) / (w.a1 - w.a0);
+            quads.push({ kind: 'upper', e, u0: u(a0), u1: u(a1), v0: w.v0, v1: w.v1, layer: b.layers!.upper, accent, z0: w.z0, z1: w.z1, tint, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
+          }
+          for (const w of placed.walls) {
+            const [a0, a1] = clip(w.a0, w.a1); if (a1 - a0 < 1e-4) continue;
+            quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
+          }
+        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }

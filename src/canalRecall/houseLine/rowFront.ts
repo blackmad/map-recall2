@@ -10,9 +10,10 @@
  * The record type meets lane 2's front records (`src/canalRecall/houseLine/frontRecord.ts`, `data/front-records/`):
  * `rowFrontFromRecord` is the one adapter. Flag off, or no record: the same feature object back (byte-identical).
  */
+import { interimBoxes } from './boxPlacement.js';
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
 import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
-import { hexToOklab, paleWarmHeld } from '../houseSpec/wallColour.js';
+import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -39,6 +40,8 @@ export interface RowFrontRecord {
   confidence: number;
   /** Low confidence: the row line from measured neighbours and a plain cornice. */
   fallback?: 'row-line';
+  /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
+  crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
   sources: Record<string, string>;
 }
@@ -119,6 +122,8 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
   if (fr.groundStoreyTopM !== null && !fr.fallback) out.groundTopM = at(fr.groundStoreyTopM)!;
   if (fr.wall?.hex && fr.wall.source) out.wall = { hex: fr.wall.hex, source: fr.wall.source, ...(fr.wall.finish ? { finish: fr.wall.finish } : {}) };
   if (fr.fallback) out.fallback = 'row-line';
+  // A fallback keeps lane 1's skyline read: a gable standing over the row line still draws (skylineGable).
+  if (fr.fallback && interim?.skyline) out.skyline = interim.skyline;
   return out;
 }
 
@@ -182,6 +187,9 @@ export function windowShare(rec: RowFrontRecord, eavesM: number): number | null 
  * light and never a full row (`roofStorey` dropped). A type preset's count (haarlemmer-shop-cornice-*) gives way, and so
  * does the structure prior (it only runs without a stated count). A row-line record keeps today's count.
  */
+/** Interim window width as a share of the bay (coordinator: about 60-70 %). */
+export const ROW_FRONT_WINDOW_SHARE = 0.64;
+
 export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, eavesM: number, corniceCrown: boolean): { specRecipe?: Record<string, unknown> } {
   const measured = !rec.fallback && rec.storeys !== undefined && rec.storeys >= 1, wallHex = recordWall(rec);
   if (!sr && !measured && !wallHex) return {};
@@ -193,9 +201,41 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
     if (rec.bays) out.bays = rec.bays;
     const h = windowShare(rec, eavesM);
     if (h !== null) out.windowH = h;
+    // Step d (option c): the boxes the mesher places cells on. Interim: each measured row x the bay count, centred in
+    // its bay at ROW_FRONT_WINDOW_SHARE of it (fractions of the front); lane 2's traced boxes replace these.
+    if (rec.rows?.length && rec.bays) out.windowBoxes = interimBoxes(rec.rows, rec.bays, 1, ROW_FRONT_WINDOW_SHARE);
     if (rec.groundTopM !== undefined && rec.groundTopM > 2.4 && rec.groundTopM < eavesM - 2) out.groundM = rec.groundTopM; else delete out.groundM;
   }
   return { specRecipe: out };
+}
+
+/** How far a photo's shopfront colour is muted for the fascia: chroma kept, lightness cap. */
+export const ROW_FRONT_SHOP_MUTE = { chroma: 0.55, maxL: 0.82 } as const;
+
+/**
+ * The shopfront band's colour on a record's front: the photo's own shopfront colour (the HouseSpec's `shopHex`, read
+ * from the ground-floor band) muted, so the row keeps its variety without the saturated brand paint; without one, the
+ * plain dark band.
+ */
+export function rowFrontShopHex(photoHex: unknown): string {
+  if (typeof photoHex !== 'string' || !/^#[0-9a-f]{6}$/i.test(photoHex)) return ROW_FRONT_SHOP_HEX;
+  const [L, a, b] = hexToOklab(photoHex);
+  return oklabToHex([Math.min(L, ROW_FRONT_SHOP_MUTE.maxL), a * ROW_FRONT_SHOP_MUTE.chroma, b * ROW_FRONT_SHOP_MUTE.chroma]);
+}
+
+/** Skyline gable thresholds: a peak this far over the front top, over this share of the front's width. */
+export const SKYLINE_GABLE = { riseM: 1.5, share: 0.4 } as const;
+
+/**
+ * A low-confidence front (no strip read: seam, scaffold) whose skyline still shows a gable standing over the row line
+ * (167820, Haarlemmerdijk 26: peak 2.2 m over the front top across 60 % of it) draws a neck gable from the skyline's
+ * foot to its peak instead of a flat cornice. Its levels stay on the grid (it is still a fallback).
+ */
+export function skylineGable(rec: RowFrontRecord): RowFrontRecord | null {
+  const sk = rec.skyline, peak = sk?.peakM, foot = sk?.footM ?? sk?.frontTopM, top = sk?.frontTopM, share = sk?.crownShare;
+  if (!rec.fallback || peak == null || foot == null || top == null || share == null) return null;
+  if (!(peak - top >= SKYLINE_GABLE.riseM && share >= SKYLINE_GABLE.share)) return null;
+  return { ...rec, eavesM: foot, topM: peak, crown: { family: 'neck' }, crownFromSkyline: true };
 }
 
 /**
@@ -204,10 +244,11 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
  */
 export function withRowFront<T extends Feature>(feature: T): T {
   if (!rowFrontOn()) return feature;
-  const rec = rowFrontFor(feature.properties.id);
+  const found = rowFrontFor(feature.properties.id);
+  const rec = found && skylineGable(found) || found;
   if (!rec || rec.eavesM === null || !(rec.eavesM > 2)) return feature;
   const p = feature.properties;
-  const family: RowCrownFamily = rec.fallback ? 'cornice' : rec.crown.family;
+  const family: RowCrownFamily = rec.fallback && !rec.crownFromSkyline ? 'cornice' : rec.crown.family;
   const gable = FAMILY_GABLE[family];
   const { monumentGable, roofShapeTag: _tag, ...rest } = p;
   const held = typeof monumentGable === 'string' ? { historicGable: monumentGable } : {};

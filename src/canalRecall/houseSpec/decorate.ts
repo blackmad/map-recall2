@@ -82,6 +82,9 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   storeysFit?: true;
   /** H11: the stated ground storey's height (m), with `storeysFit`. */
   groundM?: number;
+  /** Lane 1 step d (rowFront flag): measured window boxes on the street front. a0/a1 are fractions of the front's
+   *  length, sill/head metres above the pand's ground (houseLine/boxPlacement.ts). */
+  windowBoxes?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
   /** Lane WG (houseSpec/storeyPlan.ts): a souterrain under the stated storeys, a roof storey above the eaves, 3DBAG's eaves. */
   souterrain?: true;
   roofStorey?: 'mansard' | 'attic';
