@@ -5,7 +5,7 @@
 // and records the second load.
 //
 //   node scripts/perf/load-timeline.mjs <outDir> [--origin https://rideamsterdam.nl] [--device desktop|iphone]
-//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir] [--no-route] [--cache]
+//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir] [--no-route] [--cache] [--spki hash]
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,7 +30,8 @@ const qs = `?travel=car${extraQs ? `&${extraQs}` : ''}`;
 const browser = await chromium.launch({
   headless: !has('headed'),
   executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  args: ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu', '--enable-precise-memory-info'],
+  // --spki <hash>: trust deploy-proxy.mjs's self-signed certificate (an --origin https://127.0.0.1:<port> run).
+  args: ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu', '--enable-precise-memory-info', ...(opt('spki', '') ? [`--ignore-certificate-errors-spki-list=${opt('spki', '')}`] : [])],
 });
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1512, height: 862 }, deviceScaleFactor: 2 };
 const context = await browser.newContext(ctxOpts);
