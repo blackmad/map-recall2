@@ -67,6 +67,9 @@ log.loadAtRideStart = la();
 // --ride-only (heap mode): sample allocations from the ride's start, not the boot. --promoted leaves out objects a
 // minor GC collects: what is left survives into the old generation and drives the major-GC sawtooth.
 if (mode === 'heap' && has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
+// --mode gc: a devtools.timeline + v8.gc trace over the ride (every minor and major GC with heap before and after), to
+// see what feeds the old generation: the creep of the after-minor-GC heap is promotion plus direct old-space allocation.
+if (mode === 'gc') await cdp.send('Tracing.start', { transferMode: 'ReturnAsStream', traceConfig: { includedCategories: ['devtools.timeline', 'v8', 'disabled-by-default-v8.gc'] } });
 await page.evaluate((fin) => {
   const g = window.canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
   g._quizFreezesRide = () => false; p.handleInput = () => {};
@@ -91,6 +94,17 @@ const extra = [];
 for (let i = 1; i < tabs; i++) { await page.waitForTimeout(5000); const p2 = await context.newPage(); await p2.goto(url, { waitUntil: 'commit' }); extra.push(p2); }
 await page.waitForTimeout(ride * 1000);
 log.loadAtEnd = la();
+if (mode === 'gc') {
+  const done = new Promise(r => cdp.once('Tracing.tracingComplete', r));
+  await cdp.send('Tracing.end'); const { stream } = await done;
+  let text = ''; for (;;) { const c = await cdp.send('IO.read', { handle: stream }); text += c.base64Encoded ? Buffer.from(c.data, 'base64').toString() : c.data; if (c.eof) break; }
+  const ev = JSON.parse(text).traceEvents ?? JSON.parse(text);
+  fs.writeFileSync(path.join(outDir, 'gc-trace.json'), JSON.stringify(ev.filter(e => /GC|gc/.test(e.name) || /gc/.test(e.cat))));
+  const gcs = ev.filter(e => (e.name === 'MinorGC' || e.name === 'MajorGC') && e.ph === 'X' && e.args?.usedHeapSizeBefore != null).sort((a, b) => a.ts - b.ts);
+  const t0 = gcs[0]?.ts ?? 0;
+  log.gcs = gcs.map(e => ({ t: +((e.ts - t0) / 1e6).toFixed(2), kind: e.name === 'MajorGC' ? 'major' : 'minor', ms: +(e.dur / 1000).toFixed(1), beforeMB: +(e.args.usedHeapSizeBefore / 1048576).toFixed(1), afterMB: +(e.args.usedHeapSizeAfter / 1048576).toFixed(1), type: e.args.type ?? null }));
+}
+
 // Heap now, then after a forced GC (garbage vs live), and the same for each extra tab.
 const heapOf = p => p.evaluate(() => Math.round(performance.memory.usedJSHeapSize / 1048576)).catch(() => null);
 log.heapBeforeGcMB = await heapOf(page);
