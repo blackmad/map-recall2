@@ -49,6 +49,7 @@
     .cols { display: none; }
     .grid, .grid.two { grid-template-columns: 1fr; }
     figcaption::before { content: attr(data-col) ": "; color: var(--text); }
+    figure.nophoto { display: none; }
   }
 </style>
 </head>
@@ -94,7 +95,7 @@
   for (const g of m.groups) {
     html.push(`<h2>${esc(g.street)} <small>face ${esc(g.face)} · ${g.rows.length} fronts</small></h2>`);
     const ap = g.asPlayed || {};
-    if (ap.morning || ap.now) html.push(`<div class="row played"><h3>as played <span class="note">default engine, chase camera, the rider before the row riding along it</span></h3><div class="grid two">${fig(null, 'photo', 'no photo for the chase view')}${fig(ap.morning, 'this morning', 'not shot')}${fig(ap.now, 'now', 'not shot yet')}</div></div>`);
+    if (ap.morning || ap.now) html.push(`<div class="row played"><h3>as played <span class="note">default engine, chase camera, the rider before the row riding along it</span></h3><div class="grid two">${fig(null, 'photo', 'no photo for the chase view').replace('<figure>', '<figure class="nophoto">')}${fig(ap.morning, 'this morning', 'not shot')}${fig(ap.now, 'now', 'not shot yet')}</div></div>`);
     for (const r of g.rows) {
       const n = r.numbers || {};
       const ft = num('front top', n.frontTopM, ' m', (a, b) => Math.abs(a - b) > 0.5);

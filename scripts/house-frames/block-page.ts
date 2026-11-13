@@ -20,7 +20,14 @@
  *
  * Common flags: --rows <file> (default scripts/house-frames/block-page/haarlemmerdijk-block.rows.json),
  *   --shots <dir> (the screenshots-repo worktree; default $BLOCK_PAGE_SHOTS, else ~/Code/map-recall2-worktrees/screenshots-block-page-20261113),
- *   --branch <name> (that worktree's branch, used in the raw URLs; default its current branch).
+ *   --branch <name> (that worktree's branch, used in the raw URLs; default its current branch),
+ *   --faces a,b (shoot/publish only those faces; the page keeps the others' frames).
+ *
+ * Time (2026-11-13, load average 20-46, photo cache warm, dpr pinned at 2): the whole block 1,528 s (browser 1,064 s
+ * for 68 poses, the rest prep and the queue wait); one face, haarlemmerdijk-2-58 (21 poses), 386 s end to end
+ * including the publish. The ten-minute regeneration on a loaded machine is one or two faces: --faces a,b.
+ * Same-build control (now-control-20261113 vs morning-20261113, face 2-58): every frame pixel-identical, ground band
+ * 0 % changed, so a difference between the columns is the build's.
  *
  * Numbers above each row (front top, storey count, crown family, game vs photo) come from, in order:
  *   data/front-records/haarlemmerdijk-block.json (lane 2) and --numbers <file> (lane 1), either of the shape
@@ -59,6 +66,12 @@ export type Rows = { title: string; notPanos?: string[]; groups: RowGroup[] };
  * the 2020-01-10, 2021 and 2025 captures fit.
  */
 export const BAD_MISSIONS = ['TMX7316010203-001900_*'];
+/**
+ * The game as David's Mac draws it, whatever this machine's load: the render governor (renderGovernor.ts) stepped 66 of
+ * 68 likeness frames down to pixel ratio 0.75 on a loaded machine (2026-11-13), so the pixel ratio is pinned at 2, the
+ * governor is off and the quality tier forced high. Every caption carries the measured ratio (likeness.json).
+ */
+export const FRAME_QUERY = '?dpr=2&governor=0&tier=high';
 export type Pair = { game: number | string | null; photo: number | string | null; source: string };
 export type Numbers = { frontTopM?: Pair; storeys?: Pair; crown?: Pair };
 export type Frame = { src: string; caption: string };
@@ -110,7 +123,7 @@ export function shoot(rows: Rows, run: string, before?: string): number {
     lists.push(`${list}:${path.join(root, g.face)}`);
   }
   const argv = ['--import', 'tsx', 'scripts/house-frames/frames.ts', '--lists', lists.join(','), '--rule10', '--reuse-photos',
-    '--prefer-obliquity', '30', '--season', 'winter', '--label', run, ...(before ? ['--before', path.join(FRAMES_ROOT, before)] : [])];
+    '--prefer-obliquity', '30', '--season', 'winter', '--label', run, '--query', FRAME_QUERY, ...(before ? ['--before', path.join(FRAMES_ROOT, before)] : [])];
   console.log(`block-page shoot: node ${argv.join(' ')}  (PW_PORT ${PW_PORT})`);
   const t0 = Date.now(), build = buildOf();
   const r = spawnSync('node', argv, { stdio: 'inherit', env: { ...process.env, PW_PORT } });
@@ -122,7 +135,7 @@ export function shoot(rows: Rows, run: string, before?: string): number {
 /** The build the dev server served: the last commit touching public/ (this page's own files excluded), plus dirt. */
 function buildOf(): string {
   const sha = git(['log', '-1', '--format=%h', '--abbrev=9', '--', 'public', ':!public/canal-drive/haarlemmerdijk-block.*']).stdout.trim();
-  const dirty = git(['status', '--porcelain', '--', 'public']).stdout.trim() ? '+dirty public/' : '';
+  const dirty = git(['status', '--porcelain', '--', 'public', ':!public/canal-drive/haarlemmerdijk-block.*']).stdout.trim() ? '+dirty public/' : '';
   return `${sha}${dirty}`;
 }
 
@@ -214,12 +227,14 @@ export async function publish(rows: Rows, run: string, column: 'morning' | 'now'
         const pRel = `${SHOTS_PREFIX}/${run}/${row.pandId}-photo.jpg`;
         if (!row.photo || column === 'morning') {
           if (await toJpeg(path.join(kdir, 'likeness-photo.jpg'), path.join(shots, pRel), 80))
-            row.photo = { src: pRel, caption: `panorama ${l.pano.panoId}, cut to the game window (${camera}, 1440×900 css ×${lk?.dpr ?? 2})` };
+            row.photo = { src: pRel, caption: `panorama ${l.pano.panoId}, cut to the game window (${camera}, 1440×900 css ×2)` };
         }
       } else if (pose) row.problems.push('no likeness capture holds the front at 72°');
+      if (l?.lp?.clipped?.length) row.problems.push(`no capture holds the whole front at 72°: clipped ${l.lp.clipped.join('+')}`);
       const gRel = `${SHOTS_PREFIX}/${run}/${row.pandId}-game.jpg`;
       if (await toJpeg(path.join(kdir, 'likeness.png'), path.join(shots, gRel), 80)) {
-        row[column] = { src: gRel, caption: `${camera} | 1440×900 css | dpr ${lk?.dpr ?? '?'} | engine own | world baked world-v1 | trees hidden | build ${meta.build} | ${run}` };
+        row[column] = { src: gRel, caption: `${camera} | 1440×900 css | dpr ${lk?.dpr ?? '?'} (measured) | engine own | world baked world-v1 | ${query.replace(/^\?/, '')} | trees hidden | build ${meta.build} | ${run}` };
+        if (lk?.dpr != null && Math.abs(lk.dpr - 2) > 0.01) row.problems.push(`${column} frame drew at pixel ratio ${lk.dpr}, not 2`);
       } else row.problems.push(`no ${column} frame`);
       if (column === 'now' && morningRun && morningRun !== run) {
         // The morning PNG when it is still on disk, else the published morning JPEG (intermediates are deleted after a push).
@@ -267,6 +282,13 @@ export async function main(argv = process.argv.slice(2)) {
   }
   const rows = readJson<Rows>(rowsFile);
   if (!rows) throw new Error(`no rows file ${rowsFile}: run the rows step first`);
+  // --faces a,b: shoot and publish only those faces (the others keep their frames on the page).
+  const only = flag(argv, 'faces')?.split(',').filter(Boolean);
+  if (only) {
+    const unknown = only.filter(f => !rows.groups.some(g => g.face === f));
+    if (unknown.length) throw new Error(`--faces ${unknown.join(',')}: not in ${rowsFile}`);
+    rows.groups = rows.groups.filter(g => only.includes(g.face));
+  }
   const shots = path.resolve(flag(argv, 'shots') ?? process.env.BLOCK_PAGE_SHOTS ?? DEFAULT_SHOTS);
   const branch = flag(argv, 'branch') ?? (git(['branch', '--show-current'], shots).stdout.trim() || 'main');
   const column = (flag(argv, 'column') ?? 'now') as 'morning' | 'now';
