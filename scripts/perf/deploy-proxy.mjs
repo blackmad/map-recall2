@@ -9,14 +9,18 @@ import http2 from 'node:http2';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import https from 'node:https';
 
 const argv = process.argv.slice(2);
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
 const port = Number(opt('port', '4870')), certDir = opt('cert', '.'), bundles = opt('bundles', ''), origin = opt('origin', 'https://rideamsterdam.nl');
-const HOP = new Set(['content-encoding', 'content-length', 'transfer-encoding', 'connection', 'keep-alive', 'alt-svc', 'report-to', 'nel', 'strict-transport-security']);
+// The upstream body is passed through as it arrives, still compressed (content-encoding kept), so the bytes and the
+// timing on the wire stay close to the deploy's.
+const HOP = new Set(['transfer-encoding', 'connection', 'keep-alive', 'alt-svc', 'report-to', 'nel', 'strict-transport-security']);
+const agent = new https.Agent({ keepAlive: true, maxSockets: 64 });
 const served = {};
 
-const server = http2.createSecureServer({ cert: fs.readFileSync(path.join(certDir, 'cert.pem')), key: fs.readFileSync(path.join(certDir, 'key.pem')), allowHTTP1: true }, async (req, res) => {
+const server = http2.createSecureServer({ cert: fs.readFileSync(path.join(certDir, 'cert.pem')), key: fs.readFileSync(path.join(certDir, 'key.pem')), allowHTTP1: true }, (req, res) => {
   try {
     const url = req.url;
     const m = /^\/js\/([\w.-]+\.js)(\?.*)?$/.exec(url);
@@ -30,13 +34,15 @@ const server = http2.createSecureServer({ cert: fs.readFileSync(path.join(certDi
       return;
     }
     const headers = {};
-    for (const [k, v] of Object.entries(req.headers)) if (!k.startsWith(':') && !['host', 'accept-encoding', 'connection'].includes(k)) headers[k] = v;
-    const r = await fetch(origin + url, { method: req.method, headers, redirect: 'manual' });
-    const out = {};
-    r.headers.forEach((v, k) => { if (!HOP.has(k)) out[k] = v; });
-    const body = Buffer.from(await r.arrayBuffer());
-    res.writeHead(r.status, out);
-    res.end(body);
+    for (const [k, v] of Object.entries(req.headers)) if (!k.startsWith(':') && !['host', 'connection'].includes(k)) headers[k] = v;
+    const up = https.request(origin + url, { method: req.method, headers, agent }, r => {
+      const out = {};
+      for (const [k, v] of Object.entries(r.headers)) if (!HOP.has(k)) out[k] = v;
+      res.writeHead(r.statusCode, out);
+      r.pipe(res);
+    });
+    up.on('error', e => { try { res.writeHead(502); res.end(String(e)); } catch (_) { /* sent */ } });
+    req.pipe(up);
   } catch (e) {
     res.writeHead(502); res.end(String(e));
   }
