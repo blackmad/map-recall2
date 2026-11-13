@@ -97,7 +97,9 @@ test('multi-front pands: Haarlemmerdijk 22/24 is two fronts (David, four-way str
 test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 storeys, every trace has an outline', () => {
   const traced = tracedFronts(table, 'haarlemmerdijk-2-58');
   assert.ok(traced.length >= 14, `${traced.length} traced fronts`);
-  for (const t of traced) {
+  const traced117 = tracedFronts(table, 'haarlemmerdijk-117-143');
+  assert.ok(traced117.length >= 13, `${traced117.length} traced fronts on 117-143`);
+  for (const t of [...traced, ...traced117]) {
     assert.equal(t.front.trace!.storeys.length, t.front.storeys, t.key);
     assert.ok(t.front.trace!.outline.length >= 3, t.key);
     assert.ok(t.openings.every(o => o.w > 0 && o.h > 0 && o.x >= -0.2 && o.x + o.w <= t.box.x1 + 0.2), t.key);

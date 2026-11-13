@@ -127,7 +127,7 @@
    {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 133A", "frontTop": 9.2, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 11.6, "atticWindows": 1}, "rows": [[5.0, 6.6], [6.9, 8.2]], "storeys": 3, "bays": 2}
   ]},
   {"pandId": "0363100012173482", "reads": [
-   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1640-1887", "frontTop": 13.8, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white cornice band about 12.0-13.8 m"}, "groundTop": 4.1, "bays": 3, "wallWord": "dark brick", "trimWord": "white", "note": "upper rows not separated reliably at this scale"},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1640-1887", "frontTop": 13.8, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white cornice band about 12.0-13.8 m"}, "groundTop": 4.3, "bays": 3, "wallWord": "dark brick", "trimWord": "white", "note": "upper rows not separated reliably at this scale", "storeys": 4, "rows": [[4.6, 6.7], [7.25, 9.25], [9.75, 11.3]]},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 135A", "frontTop": 13.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "storeys": 5}
   ]},
   {"pandId": "0363100012173481", "reads": [
@@ -135,7 +135,7 @@
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 137", "crown": {"family": "point", "note": "tall point gable"}}
   ]},
   {"pandId": "0363100012173484", "reads": [
-   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2117-2344", "frontTop": 13.2, "frontTopKind": "cornice-top", "crown": {"family": "flat-parapet", "note": "modern (BAG 1997) flat front with a white cornice board"}, "bays": 3, "wallWord": "grey-brown brick", "trimWord": "white"}
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2117-2344", "frontTop": 13.2, "frontTopKind": "cornice-top", "crown": {"family": "flat-parapet", "note": "modern (BAG 1997) flat front with a white cornice board"}, "bays": 3, "wallWord": "grey-brown brick", "trimWord": "white", "storeys": 4, "groundTop": 4.4, "rows": [[4.6, 6.5], [7.55, 9.15], [10.05, 11.5]]}
   ]},
   {"pandId": "0363100012173483", "reads": [
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2343-2574", "frontTop": 10.7, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.6, "ornamentTopM": 12.3, "dormer": {"kind": "lantern", "topM": 11.6}, "note": "cornice band 9.6-10.7 m"}, "groundTop": 3.9, "rows": [[4.15, 6.0], [6.75, 8.8]], "storeys": 3, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames, dark cornice"},

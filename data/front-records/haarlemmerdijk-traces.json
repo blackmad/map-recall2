@@ -161,6 +161,98 @@
     [{"x": 12.1, "w": 2.4, "y": 5.3, "h": 1.7, "kind": "other", "panes": "loggia", "frame": "dark"}],
     [{"x": 12.1, "w": 2.4, "y": 8.2, "h": 1.7, "kind": "other", "panes": "loggia", "frame": "dark"}],
     [{"x": 12.15, "w": 2.35, "y": 11.0, "h": 1.65, "kind": "other", "panes": "4 lights", "frame": "dark"}]
+   ]},
+  "0363100012165102": {"confidence": "medium", "shopBandTopM": 3.95, "fasciaWord": "pale grey", "corniceM": null, "bands": [["fascia", 3.6, 3.95, "pale grey"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 0-2, crop 80 px/m; x from the photo party walls (display px 245-642) mapped onto 0-4.67 m, the BAG span",
+   "notes": ["bell gable twin of 121A; narrow dark doors either side of a small shop window"],
+   "storeys": [
+    [{"x": 0.74, "w": 0.35, "y": 1.1, "h": 2.09, "kind": "door", "frame": "dark"}, {"x": 2.12, "w": 1.18, "y": 1.44, "h": 1.69, "kind": "shop", "panes": "1"}, {"x": 3.8, "w": 0.34, "y": 1.1, "h": 2.09, "kind": "door", "frame": "dark"}],
+    [{"x": 0.53, "w": 1.91, "y": 4.0, "h": 1.75, "kind": "two-light", "panes": "transom+2, small panes"}, {"x": 2.06, "w": 1.04, "y": 6.31, "h": 1.09, "kind": "attic", "panes": "2"}, {"x": 2.72, "w": 1.52, "y": 4.0, "h": 1.75, "kind": "two-light", "panes": "transom+2, small panes"}]
+   ]},
+  "0363100012165074": {"confidence": "medium", "shopBandTopM": 3.95, "fasciaWord": "pale grey", "corniceM": null, "bands": [["fascia", 3.6, 3.95, "pale grey"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 0-2, crop 80 px/m; x from the photo party walls (display px 642-1000) mapped onto 0-3.77 m, the BAG span",
+   "notes": ["the photo front is 4.5 m wide against BAG 3.77 m (HD123 next door is 0.75 m narrower than BAG): mapped onto the span"],
+   "storeys": [
+    [{"x": 0.35, "w": 0.32, "y": 1.1, "h": 2.09, "kind": "door", "frame": "dark"}, {"x": 1.66, "w": 0.84, "y": 1.5, "h": 1.59, "kind": "shop", "panes": "1"}, {"x": 2.98, "w": 0.37, "y": 1.1, "h": 2.09, "kind": "door", "frame": "dark"}],
+    [{"x": 0.19, "w": 1.71, "y": 4.03, "h": 1.66, "kind": "two-light", "panes": "transom+2, small panes"}, {"x": 1.51, "w": 0.97, "y": 6.4, "h": 1.1, "kind": "attic", "panes": "2"}, {"x": 2.11, "w": 1.37, "y": 4.03, "h": 1.66, "kind": "two-light", "panes": "transom+2, small panes"}]
+   ]},
+  "0363100012165073": {"confidence": "medium", "shopBandTopM": 3.9, "fasciaWord": "pale grey", "corniceM": 10.35, "bands": [["fascia", 3.5, 3.9, "pale grey"], ["frieze", 9.0, 10.2, "white"], ["cornice", 10.2, 10.35, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 3-4, crop 80 px/m; x from the photo party walls (display px 120-500) mapped onto 0-5.5 m, the BAG span",
+   "notes": ["dark painted brick between white pilasters, a white entablature 9.0-10.35 m and a small dormer; the door is hidden by a parked bicycle"],
+   "storeys": [
+    [{"x": 1.88, "w": 3.04, "y": 1.5, "h": 1.94, "kind": "shop", "panes": "1"}],
+    [{"x": 0.91, "w": 1.95, "y": 4.38, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 2.97, "w": 1.95, "y": 4.38, "h": 1.75, "kind": "two-light", "panes": "transom+2"}],
+    [{"x": 0.91, "w": 1.95, "y": 6.94, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 2.92, "w": 2.0, "y": 6.94, "h": 1.75, "kind": "two-light", "panes": "transom+2"}]
+   ]},
+  "0363100012171347": {"confidence": "high", "shopBandTopM": 4.45, "fasciaWord": "dark grey", "corniceM": 14.3, "bands": [["fascia", 3.5, 4.45, "dark grey"], ["cornice", 13.0, 14.3, "white"]], "surroundColour": "white", "ref": "haarlemmerdijk-117-143 spans 3-4, crop 80 px/m; x from the photo party walls (display px 505-885) mapped onto 0-5.03 m, the BAG span",
+   "notes": ["three storeys of three casement windows with chequered brick heads under a bracketed cornice"],
+   "storeys": [
+    [{"x": 0.46, "w": 1.06, "y": 0.5, "h": 2.9, "kind": "door", "frame": "dark"}, {"x": 1.65, "w": 2.98, "y": 1.62, "h": 1.75, "kind": "shop", "panes": "1", "frame": "dark"}],
+    [{"x": 0.23, "w": 1.76, "y": 4.94, "h": 1.88, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 2.05, "w": 1.39, "y": 4.94, "h": 1.88, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 3.48, "w": 1.42, "y": 4.94, "h": 1.88, "kind": "two-light", "panes": "transom+2, small upper panes"}],
+    [{"x": 0.23, "w": 1.76, "y": 7.75, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 2.08, "w": 1.36, "y": 7.75, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 3.51, "w": 1.39, "y": 7.75, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}],
+    [{"x": 0.2, "w": 1.79, "y": 10.5, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 2.05, "w": 1.39, "y": 10.5, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}, {"x": 3.48, "w": 1.42, "y": 10.5, "h": 1.94, "kind": "two-light", "panes": "transom+2, small upper panes"}]
+   ]},
+  "0363100012171346": {"confidence": "medium", "shopBandTopM": 4.2, "fasciaWord": "brown timber", "corniceM": 10.0, "bands": [["fascia", 3.75, 4.2, "brown timber"], ["cornice", 8.4, 10.0, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 5-7, crop 80 px/m; x from the photo party walls (display px 60-400) mapped onto 0-4.35 m, the BAG span",
+   "notes": ["a continuous window band per storey (four lights each); the mullions are not legible as separate windows"],
+   "storeys": [
+    [{"x": 0.13, "w": 4.16, "y": 1.12, "h": 2.62, "kind": "shop", "panes": "timber shopfront", "frame": "timber"}],
+    [{"x": 0.06, "w": 4.03, "y": 4.31, "h": 1.62, "kind": "other", "panes": "ribbon, 4 lights"}],
+    [{"x": 0.06, "w": 4.03, "y": 6.44, "h": 1.62, "kind": "other", "panes": "ribbon, 4 lights"}]
+   ]},
+  "0363100012173469": {"confidence": "medium", "shopBandTopM": 4.2, "fasciaWord": "pale grey", "corniceM": 10.0, "bands": [["fascia", 3.5, 4.2, "pale grey"], ["cornice", 9.3, 10.0, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 5-7, crop 80 px/m; x from the photo party walls (display px 400-775) mapped onto 0-3.35 m, the BAG span",
+   "notes": ["the beige front is 4.7 m wide on the photo against BAG 3.35 m and HD131 next door 3.75 m against 5.35 m: the photo split does not fall on the BAG split; mapped onto the span", "small attic lights under the cornice"],
+   "storeys": [
+    [{"x": 0.31, "w": 0.85, "y": 1.12, "h": 2.31, "kind": "door", "panes": "double", "frame": "dark"}, {"x": 1.52, "w": 1.34, "y": 1.62, "h": 1.81, "kind": "shop", "panes": "1"}],
+    [{"x": 0.49, "w": 1.19, "y": 4.31, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 1.72, "w": 0.86, "y": 4.31, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 2.61, "w": 0.7, "y": 4.31, "h": 1.75, "kind": "single-sash", "panes": "transom+1"}],
+    [{"x": 0.27, "w": 0.63, "y": 8.81, "h": 0.5, "kind": "attic", "panes": "1"}, {"x": 0.45, "w": 1.21, "y": 6.5, "h": 1.62, "kind": "two-light", "panes": "transom+2"}, {"x": 1.07, "w": 0.54, "y": 8.81, "h": 0.5, "kind": "attic", "panes": "1"}, {"x": 1.7, "w": 0.89, "y": 6.5, "h": 1.62, "kind": "two-light", "panes": "transom+2"}, {"x": 1.79, "w": 0.54, "y": 8.81, "h": 0.5, "kind": "attic", "panes": "1"}, {"x": 2.59, "w": 0.49, "y": 8.81, "h": 0.5, "kind": "attic", "panes": "1"}, {"x": 2.61, "w": 0.47, "y": 6.5, "h": 1.62, "kind": "single-sash", "panes": "1"}]
+   ]},
+  "0363100012173479": {"confidence": "medium", "shopBandTopM": 4.2, "fasciaWord": "white", "corniceM": 10.0, "bands": [["fascia", 3.8, 4.2, "white"], ["cornice", 9.0, 10.0, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 5-7, crop 80 px/m; x from the photo party walls (display px 775-1075) mapped onto 0-5.35 m, the BAG span",
+   "notes": ["see HD129 on the photo split; a pointed-arched dormer window over the entablature; the door is behind a van"],
+   "storeys": [
+    [{"x": 0.71, "w": 2.41, "y": 1.44, "h": 1.69, "kind": "shop", "panes": "1"}, {"x": 3.3, "w": 0.71, "y": 1.12, "h": 2.0, "kind": "door", "frame": "dark"}],
+    [{"x": 0.09, "w": 2.23, "y": 4.31, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 2.32, "w": 1.69, "y": 4.31, "h": 1.75, "kind": "two-light", "panes": "transom+2"}, {"x": 4.01, "w": 1.34, "y": 4.31, "h": 1.75, "kind": "single-sash", "panes": "transom+1"}],
+    [{"x": 0.09, "w": 2.23, "y": 6.56, "h": 1.5, "kind": "two-light", "panes": "transom+2"}, {"x": 2.23, "w": 0.62, "y": 8.88, "h": 0.62, "kind": "attic", "head": "pointed", "panes": "1"}, {"x": 2.32, "w": 1.69, "y": 6.56, "h": 1.5, "kind": "two-light", "panes": "transom+2"}, {"x": 4.01, "w": 1.34, "y": 6.56, "h": 1.5, "kind": "single-sash", "panes": "transom+1"}]
+   ]},
+  "0363100012173480": {"confidence": "medium", "shopBandTopM": 4.1, "fasciaWord": "pale, lettered", "corniceM": null, "bands": [["fascia", 3.6, 4.1, "pale"]], "surroundColour": "white", "ref": "haarlemmerdijk-117-143 spans 8-10, crop 80 px/m; x from the photo party walls (display px 35-410) mapped onto 0-4.42 m, the BAG span",
+   "notes": ["neck gable; a van hides the shop below 2.7 m, the shop sill is not seen"],
+   "storeys": [
+    [{"x": 0.29, "w": 4.13, "y": 1.0, "h": 2.62, "kind": "shop", "panes": "chequered tiles, 1"}],
+    [{"x": 0.24, "w": 1.97, "y": 4.31, "h": 1.69, "kind": "two-light", "panes": "transom+2"}, {"x": 2.45, "w": 1.59, "y": 4.31, "h": 1.69, "kind": "two-light", "panes": "transom+2"}],
+    [{"x": 0.15, "w": 3.85, "y": 6.81, "h": 1.5, "kind": "other", "panes": "ribbon, 6 lights"}, {"x": 1.89, "w": 0.83, "y": 8.88, "h": 1.06, "kind": "attic", "head": "round", "panes": "2"}]
+   ]},
+  "0363100012173482": {"confidence": "medium", "shopBandTopM": 4.3, "fasciaWord": "dark", "corniceM": 13.85, "bands": [["fascia", 3.9, 4.3, "dark"], ["frieze", 11.9, 13.0, "white"], ["cornice", 13.4, 13.85, "white"]], "surroundColour": "white", "ref": "haarlemmerdijk-117-143 spans 8-10, crop 80 px/m; x from the photo party walls (display px 405-900) mapped onto 0-6.17 m, the BAG span",
+   "notes": ["four storeys (ground and three) under a white entablature with a balustrade 13.0-13.4 m; the reviewer counted 5"],
+   "storeys": [
+    [{"x": 1.0, "w": 3.55, "y": 1.75, "h": 2.06, "kind": "shop", "panes": "1", "frame": "dark"}],
+    [{"x": 0.16, "w": 2.02, "y": 4.62, "h": 2.06, "kind": "two-light", "panes": "transom+2"}, {"x": 2.31, "w": 1.62, "y": 4.62, "h": 2.06, "kind": "two-light", "panes": "transom+2"}, {"x": 4.03, "w": 1.58, "y": 4.62, "h": 2.06, "kind": "two-light", "panes": "transom+2"}],
+    [{"x": 0.16, "w": 2.02, "y": 7.25, "h": 2.0, "kind": "two-light", "panes": "transom+2"}, {"x": 2.31, "w": 1.62, "y": 7.25, "h": 2.0, "kind": "two-light", "panes": "transom+2"}, {"x": 4.03, "w": 1.58, "y": 7.25, "h": 2.0, "kind": "two-light", "panes": "transom+2"}],
+    [{"x": 0.12, "w": 1.99, "y": 9.75, "h": 1.56, "kind": "two-light", "panes": "transom+2"}, {"x": 2.24, "w": 1.62, "y": 9.75, "h": 1.56, "kind": "two-light", "panes": "transom+2"}, {"x": 3.95, "w": 1.62, "y": 9.75, "h": 1.56, "kind": "two-light", "panes": "transom+2"}]
+   ]},
+  "0363100012173481": {"confidence": "high", "shopBandTopM": 5.1, "fasciaWord": "white, red lettering", "corniceM": null, "bands": [["fascia", 4.2, 5.1, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 8-10, crop 80 px/m; x from the photo party walls (display px 900-1360) mapped onto 0-5.75 m, the BAG span",
+   "notes": ["point gable; three storeys of three windows between dark piers, an attic window in the gable"],
+   "storeys": [
+    [{"x": 0.44, "w": 2.06, "y": 1.12, "h": 2.0, "kind": "shop", "panes": "1"}, {"x": 0.5, "w": 4.81, "y": 3.19, "h": 1.0, "kind": "shop", "panes": "transom"}, {"x": 2.56, "w": 1.06, "y": 1.12, "h": 2.0, "kind": "door", "frame": "dark"}, {"x": 3.69, "w": 1.62, "y": 1.12, "h": 2.0, "kind": "shop", "panes": "1"}],
+    [{"x": 0.06, "w": 1.94, "y": 5.38, "h": 2.12, "kind": "two-light", "panes": "transom+2"}, {"x": 2.44, "w": 1.25, "y": 5.38, "h": 2.12, "kind": "single-sash", "panes": "transom+1"}, {"x": 4.12, "w": 1.19, "y": 5.38, "h": 2.12, "kind": "single-sash", "panes": "transom+1"}],
+    [{"x": 0.06, "w": 1.94, "y": 8.0, "h": 1.88, "kind": "two-light", "panes": "transom+2"}, {"x": 2.44, "w": 1.25, "y": 8.0, "h": 1.88, "kind": "single-sash", "panes": "transom+1"}, {"x": 4.12, "w": 1.19, "y": 8.0, "h": 1.88, "kind": "single-sash", "panes": "transom+1"}],
+    [{"x": 0.06, "w": 1.94, "y": 10.44, "h": 1.62, "kind": "two-light", "panes": "transom+2"}, {"x": 2.44, "w": 1.25, "y": 10.44, "h": 1.62, "kind": "single-sash", "panes": "transom+1"}, {"x": 2.5, "w": 1.19, "y": 13.12, "h": 1.12, "kind": "attic", "panes": "2"}, {"x": 4.12, "w": 1.19, "y": 10.44, "h": 1.62, "kind": "single-sash", "panes": "transom+1"}]
+   ]},
+  "0363100012173484": {"confidence": "medium", "shopBandTopM": 4.4, "fasciaWord": "grey-brown brick", "corniceM": 13.2, "bands": [["cornice", 12.0, 13.2, "white"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 11-13, crop 80 px/m; x from the photo party walls (display px 55-520) mapped onto 0-5.67 m, the BAG span",
+   "notes": ["modern front (BAG 1997): loggias with railings on the first storey, three windows per storey above"],
+   "storeys": [
+    [{"x": 0.79, "w": 1.28, "y": 1.38, "h": 1.75, "kind": "door", "frame": "dark"}, {"x": 2.68, "w": 1.28, "y": 1.38, "h": 1.75, "kind": "shop", "panes": "grille"}, {"x": 4.33, "w": 1.16, "y": 1.38, "h": 1.62, "kind": "door", "frame": "dark"}],
+    [{"x": 0.61, "w": 1.65, "y": 4.62, "h": 1.88, "kind": "french-door", "panes": "loggia, railing", "frame": "dark"}, {"x": 2.56, "w": 1.46, "y": 4.62, "h": 1.88, "kind": "french-door", "panes": "loggia, railing", "frame": "dark"}, {"x": 4.08, "w": 1.44, "y": 4.62, "h": 1.88, "kind": "french-door", "panes": "loggia, railing", "frame": "dark"}],
+    [{"x": 0.61, "w": 1.77, "y": 7.56, "h": 1.56, "kind": "other", "panes": "1", "frame": "dark"}, {"x": 2.5, "w": 1.46, "y": 7.56, "h": 1.56, "kind": "other", "panes": "1", "frame": "dark"}, {"x": 4.08, "w": 1.44, "y": 7.56, "h": 1.56, "kind": "other", "panes": "1", "frame": "dark"}],
+    [{"x": 0.49, "w": 1.89, "y": 10.06, "h": 1.44, "kind": "other", "panes": "1", "frame": "dark"}, {"x": 2.5, "w": 1.46, "y": 10.06, "h": 1.44, "kind": "other", "panes": "1", "frame": "dark"}, {"x": 4.08, "w": 1.44, "y": 10.06, "h": 1.44, "kind": "other", "panes": "1", "frame": "dark"}]
+   ]},
+  "0363100012173483": {"confidence": "medium", "shopBandTopM": 4.0, "fasciaWord": "dark green awning", "corniceM": 10.7, "bands": [["fascia", 3.25, 4.0, "dark green"], ["cornice", 9.6, 10.7, "dark"]], "surroundColour": null, "ref": "haarlemmerdijk-117-143 spans 11-13, crop 80 px/m; x from the photo party walls (display px 515-978) mapped onto 0-5.78 m, the BAG span",
+   "notes": ["segmental brick arches over each window, a dormer over the cornice; the shop is a postcard stall under an awning"],
+   "storeys": [
+    [{"x": 0.69, "w": 0.5, "y": 1.0, "h": 1.94, "kind": "door", "frame": "dark"}, {"x": 1.19, "w": 4.56, "y": 1.12, "h": 2.12, "kind": "shop", "panes": "1"}],
+    [{"x": 0.5, "w": 1.81, "y": 4.19, "h": 1.75, "kind": "two-light", "head": "segmental", "panes": "transom+2"}, {"x": 2.37, "w": 1.5, "y": 4.19, "h": 1.75, "kind": "two-light", "head": "segmental", "panes": "transom+2"}, {"x": 3.96, "w": 1.5, "y": 4.19, "h": 1.75, "kind": "two-light", "head": "segmental", "panes": "transom+2"}],
+    [{"x": 0.52, "w": 1.79, "y": 6.75, "h": 2.0, "kind": "two-light", "head": "segmental", "panes": "transom+2"}, {"x": 2.37, "w": 1.5, "y": 6.75, "h": 2.0, "kind": "two-light", "head": "segmental", "panes": "transom+2"}, {"x": 3.96, "w": 1.5, "y": 6.75, "h": 2.0, "kind": "two-light", "head": "segmental", "panes": "transom+2"}]
+   ]},
+  "0363100012169539": {"confidence": "medium", "shopBandTopM": 4.5, "fasciaWord": "white", "corniceM": null, "bands": [["fascia", 4.2, 4.5, "white"]], "surroundColour": "white", "ref": "haarlemmerdijk-117-143 spans 11-13, crop 80 px/m; x from the photo party walls (display px 978-1440) mapped onto 0-5.8 m, the BAG span",
+   "notes": ["bell gable with a three-light arched gable window; white crenellated string courses; a French balcony on the middle first-storey window"],
+   "storeys": [
+    [{"x": 0.21, "w": 2.07, "y": 1.25, "h": 2.94, "kind": "shop", "panes": "3 lights"}, {"x": 2.66, "w": 2.95, "y": 1.25, "h": 2.94, "kind": "shop", "panes": "3 lights"}],
+    [{"x": 0.28, "w": 1.88, "y": 5.12, "h": 2.06, "kind": "two-light", "panes": "transom+2"}, {"x": 2.03, "w": 2.13, "y": 8.25, "h": 1.75, "kind": "attic", "head": "round", "panes": "3 lights"}, {"x": 2.35, "w": 1.51, "y": 5.12, "h": 2.06, "kind": "french-door", "panes": "transom+2, French balcony"}, {"x": 3.98, "w": 1.51, "y": 5.12, "h": 2.06, "kind": "two-light", "panes": "transom+2"}]
    ]}
  }
 }
