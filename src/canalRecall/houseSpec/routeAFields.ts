@@ -9,9 +9,9 @@
  * Classes and the bar (D1 v4.2, artifacts/describer-d1/versions-v4-v42.md; D1 writes confidence >= 0.5 only for a class
  * over its bar):
  *   bands   storey | lintel | both | speklagen (bands 0.93, kind 0.88). Drawn with the existing band-line components:
- *           `floor-cornices` (a band at every floor line) for storey, both and speklagen, `string-courses` (the sill
- *           ledge) for lintel and both, at the stated storeys' count. Stone bands are drawn wider than speklagen
- *           (BAND_M). `courses` (brick courses) and `painted` (stucco bands) have no generic quad: kit gap.
+ *           `floor-cornices` (a band at every floor line) for storey and both, `speklagen` (stone courses across the plain wall
+ *           between rows; step 3: one floor band read as nothing at row distance) for speklagen, `string-courses` (the sill
+ *           ledge) for lintel and both, at the stated storeys' count. Stone bands are drawn at BAND_M.stone. `courses` (brick courses) and `painted` (stucco bands) have no generic quad: kit gap.
  *   head    flat | segmental, whole front only (per-row heads are HELD): a window-preset pick (bayLook `arch`).
  *   crown   cornice (0.98) | step (1.0, n 4) | curved (neck or bell, 0.89): the roof planner's own forms (GABLE_TO_ROOF).
  *           A curved reading takes the register's curved kind where the register names one, else `neck`.
@@ -102,10 +102,12 @@ export function fieldsDraw(fields: RouteAFields | undefined | null): { force: st
   if (!fields) return { force: [] };
   const force: string[] = [];
   let bandM: number | undefined;
-  if (fields.bands === 'storey' || fields.bands === 'both' || fields.bands === 'speklagen') force.push('floor-cornices');
+  if (fields.bands === 'storey' || fields.bands === 'both') force.push('floor-cornices');
+  // speklagen: stone courses across the plain wall between rows (facadeOrnaments.ts `speklagen`), not one floor band
+  if (fields.bands === 'speklagen') force.push('speklagen');
   if (fields.bands === 'lintel' || fields.bands === 'both') force.push('string-courses');
   if (fields.surround && fields.head !== 'segmental') force.push('eared-surrounds');
-  if (fields.bands) bandM = fields.bands === 'speklagen' ? BAND_M.speklagen : BAND_M.stone;
+  if (fields.bands && fields.bands !== 'speklagen') bandM = BAND_M.stone;
   // An eared surround is square-headed: without a head reading it picks a flat-headed preset (a pale-only pick could land
   // on an arched bay, which the surround skips; Herengracht 176312).
   const arch = fields.head ? fields.head === 'segmental' : fields.surround ? false : undefined;

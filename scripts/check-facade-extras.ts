@@ -22,7 +22,7 @@ const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['reci
   'historic-balcony-stack': { family: 'masonry', period: 'c19', confidence: .8, facadeAssembly: 'stacked-iron-balcony', sash: 'paired-transom', frameHex: '#ece7db', trimDensity: 'restrained' },
 };
 /** Components drawn only when a spec states them (registerForce; houseSpec/routeAFields.ts), never by the dice. */
-const FORCED_ONLY = new Set(['eared-surrounds']);
+const FORCED_ONLY = new Set(['eared-surrounds', 'speklagen']);
 const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];
   return wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});

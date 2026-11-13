@@ -35,8 +35,7 @@ test('the template fills dressings the reading left open, never structure, and n
 
 test('draw: band-line components at the band height, stone wider than speklagen; heads as the arch trait', () => {
   assert.deepEqual(fieldsDraw({ bands: 'both', src: {} }), { force: ['floor-cornices', 'string-courses'], bandM: BAND_M.stone });
-  assert.deepEqual(fieldsDraw({ bands: 'speklagen', src: {} }), { force: ['floor-cornices'], bandM: BAND_M.speklagen });
-  assert.ok(BAND_M.stone > BAND_M.speklagen);
+  assert.deepEqual(fieldsDraw({ bands: 'speklagen', src: {} }), { force: ['speklagen'] }, 'courses between rows, not a floor band');
   assert.deepEqual(fieldsDraw({ head: 'flat', src: {} }), { force: [], arch: false });
   assert.deepEqual(fieldsDraw(undefined), { force: [] });
 });

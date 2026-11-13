@@ -79,6 +79,9 @@ function storeysThatFit(c: ExtraContext, s: ExtraSink, perWindow: number, max: n
   return Math.max(1, Math.min(max, c.layout.storeys, Math.floor(s.room() / per)));
 }
 
+/** A speklaag course (m): 14 cm of stone every 30 cm of plain wall at most, at most 3 between two rows; the block faces'
+ *  stripe projection. */
+export const SPEKLAAG = { h: 0.14, pitch: 0.3, max: 3, out: 0.045 } as const;
 /** The block faces' eared surround (blockBuilding/dressings.ts DRESS.surround; pinned equal in routeAFields.test.ts). */
 export const EARED_SURROUND = { t: 0.13, out: 0.05, ear: 0.12, earH: 0.14, earOut: 0.07 } as const;
 
@@ -361,6 +364,21 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     const hex = r < 0.7 ? WHITE : STONE;
     // A stated band (c.bandM, houseSpec/routeAFields.ts) is centred on the floor line at its height.
     for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, c.bandM ? z - c.bandM / 2 : z - 0.03, c.bandM ? z + c.bandM / 2 : z + 0.04, hex); }
+  } },
+  { id: 'speklagen', styles: CANAL, p: 0, wide: true, build: (c, s) => {
+    // Lane WG step 3 (houseSpec/routeAFields.ts bands `speklagen`): bacon courses, stone courses across the plain wall
+    // between one row's heads and the next row's sills (and over the ground row), full width so no strip crosses glass. One
+    // floor-line band read as nothing at row distance (Weteringschans 171218). Course height and projection are the block
+    // faces' stripe (blockBuilding/dressings.ts DRESS.stripe out; SPEKLAAG_M); forced only (p 0).
+    const o = openingsOf(c), l = c.layout, n = Math.min(6, l.storeys);
+    const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * l.storeyM]];
+    for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * l.storeyM, storeyZ(c, k + 1) + o.upper.sill * l.storeyM]);
+    for (const [z0, z1] of zones) {
+      const room = Math.min(z1, c.top) - z0 - 0.06, count = Math.max(0, Math.min(SPEKLAAG.max, Math.floor(room / SPEKLAAG.pitch)));
+      if (!count) continue;
+      const gap = (Math.min(z1, c.top) - z0 - count * SPEKLAAG.h) / (count + 1);
+      for (let i = 0; i < count; i++) { const a = z0 + gap * (i + 1) + SPEKLAAG.h * i; s.strip(c.f, 0, c.f.len, SPEKLAAG.out, a, a + SPEKLAAG.h, CREAM); }
+    }
   } },
   { id: 'string-courses', styles: CANAL, p: { c19: 0.45, canal: 0.1 }, wide: true, build: (c, s) => {
     // 19th century: a thin proud stone ledge running through the sills of each storey (the bay
