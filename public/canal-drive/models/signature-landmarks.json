@@ -5365,7 +5365,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -69.04818725585938,
+          -69.10665130615234,
           0,
           -51.43000030517578
         ],
@@ -5386,25 +5386,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 138.12540435791016,
+        "widthMetres": 138.18386840820312,
         "heightMetres": 11.742252349853516,
         "depthMetres": 102.86999893188477,
         "depthCoverage": 1.0046406097335432
       },
-      "triangles": 10037,
-      "bytes": 133692,
+      "triangles": 9215,
+      "bytes": 123316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "00dccd677959bdce",
         "buildVersion": 2,
         "bytes": 36728,
         "triangles": 1661
-      },
-      "lod2": {
-        "sourceHash": "00dccd677959bdce",
-        "buildVersion": 6,
-        "bytes": 8328,
-        "triangles": 280
       }
     },
     "huis-bartolotti": {
@@ -5484,12 +5478,6 @@
         "buildVersion": 2,
         "bytes": 28200,
         "triangles": 1112
-      },
-      "lod2": {
-        "sourceHash": "22e4977c97d55677",
-        "buildVersion": 6,
-        "bytes": 5552,
-        "triangles": 167
       }
     },
     "hart-museum": {

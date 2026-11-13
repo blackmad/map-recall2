@@ -1,0 +1,919 @@
+{
+ "generated": "2026-11-13",
+ "note": "Allow-list for scripts/landmarks/check-glb-openings.ts (lane R2-C, 2026-11-13). Per model: float = opening assemblies more than 10 cm clear of every other surface, poke = assemblies sunk behind the wall surface or hanging past its edge, outside = opening parts past their wall's silhouette or through a roof plane. Seeded from the first full sweep of the catalogue GLBs (463 models). It may only shrink: a count above its entry fails, a count below it is stale until `check-glb-openings.ts --write` lowers it (--write never raises; only --seed adds models, and only the first recording used it). A model with no entry must be at 0. Never add or raise an entry to pass: fix the builder.",
+ "models": {
+  "academie-theater-dans": {
+   "poke": 5,
+   "outside": 75
+  },
+  "afrikahuis": {
+   "poke": 17,
+   "outside": 13
+  },
+  "agnietenkapel": {
+   "poke": 1,
+   "outside": 2
+  },
+  "allard-pierson": {
+   "outside": 1
+  },
+  "american-hotel": {
+   "poke": 3,
+   "outside": 11
+  },
+  "amsta-de-poort": {
+   "float": 34,
+   "poke": 2,
+   "outside": 1
+  },
+  "amstel-hotel": {
+   "poke": 14,
+   "outside": 59
+  },
+  "amstelkerk": {
+   "float": 2
+  },
+  "amsterdam-dungeon": {
+   "poke": 4,
+   "outside": 1
+  },
+  "amsterdam-in-motion": {
+   "poke": 2
+  },
+  "amsterdam-museum": {
+   "float": 6,
+   "poke": 1,
+   "outside": 1
+  },
+  "amsterdam-pipe-museum": {
+   "poke": 1
+  },
+  "amsterdam-tulip-museum": {
+   "float": 1,
+   "outside": 3
+  },
+  "anne-frank-house": {
+   "poke": 4,
+   "outside": 1
+  },
+  "aron-schuster-synagoge": {
+   "poke": 5,
+   "outside": 36
+  },
+  "artis-aquarium": {
+   "outside": 2
+  },
+  "artis-entrance": {
+   "poke": 3
+  },
+  "artis-library": {
+   "poke": 13
+  },
+  "athenaeum": {
+   "float": 9,
+   "poke": 1,
+   "outside": 17
+  },
+  "beest-boulders": {
+   "float": 14,
+   "poke": 5,
+   "outside": 25
+  },
+  "beest-het-lab": {
+   "outside": 4
+  },
+  "begijnhofkapel": {
+   "poke": 15,
+   "outside": 1
+  },
+  "beta-boulders": {
+   "outside": 3
+  },
+  "booking-hq": {
+   "poke": 3
+  },
+  "boomkerk": {
+   "poke": 1,
+   "outside": 9
+  },
+  "brakke-grond": {
+   "poke": 2,
+   "outside": 18
+  },
+  "breitner-tower": {
+   "poke": 14,
+   "outside": 1
+  },
+  "brouwerij-het-ij": {
+   "outside": 18
+  },
+  "cafe-kobalt": {
+   "poke": 2
+  },
+  "canals-museum": {
+   "poke": 4
+  },
+  "centrale-markthal": {
+   "float": 2
+  },
+  "ceramiquelaan-437": {
+   "outside": 13
+  },
+  "chassekerk": {
+   "poke": 5,
+   "outside": 4
+  },
+  "christ-church-groenburgwal": {
+   "outside": 1
+  },
+  "cinecenter": {
+   "poke": 4,
+   "outside": 10
+  },
+  "club-panama": {
+   "poke": 2
+  },
+  "collectie-six": {
+   "poke": 21,
+   "outside": 8
+  },
+  "compagnietheater": {
+   "poke": 4,
+   "outside": 19
+  },
+  "concertgebouw": {
+   "poke": 11,
+   "outside": 4
+  },
+  "conservatorium": {
+   "poke": 6,
+   "outside": 32
+  },
+  "coymanshuis": {
+   "poke": 1,
+   "outside": 3
+  },
+  "dageraad": {
+   "float": 2,
+   "outside": 27
+  },
+  "de-bazel": {
+   "poke": 85
+  },
+  "de-bijenkorf": {
+   "poke": 10,
+   "outside": 42
+  },
+  "de-gooyer": {
+   "float": 6
+  },
+  "de-hallen": {
+   "poke": 1
+  },
+  "de-krakeling": {
+   "outside": 1
+  },
+  "de-nederlandsche-bank": {
+   "poke": 1,
+   "outside": 8
+  },
+  "de-piramides": {
+   "poke": 8,
+   "outside": 15
+  },
+  "de-wester": {
+   "float": 9,
+   "poke": 3,
+   "outside": 2
+  },
+  "delamar": {
+   "outside": 55
+  },
+  "dominicuskerk": {
+   "outside": 1
+  },
+  "dutch-resistance-museum": {
+   "outside": 3
+  },
+  "electric-ladyland": {
+   "float": 4,
+   "outside": 2
+  },
+  "english-reformed-church": {
+   "float": 4,
+   "poke": 8,
+   "outside": 5
+  },
+  "faralda-crane-hotel": {
+   "poke": 5,
+   "outside": 44
+  },
+  "fatih-moskee": {
+   "outside": 8
+  },
+  "fire-station-anton": {
+   "poke": 1,
+   "outside": 13
+  },
+  "fire-station-dirk": {
+   "poke": 5,
+   "outside": 16
+  },
+  "fire-station-driemond": {
+   "outside": 3
+  },
+  "fire-station-hendrik": {
+   "outside": 39
+  },
+  "fire-station-ijsbrand": {
+   "float": 3,
+   "poke": 1,
+   "outside": 2
+  },
+  "fire-station-nico": {
+   "float": 11,
+   "poke": 2,
+   "outside": 32
+  },
+  "fire-station-osdorp": {
+   "outside": 45
+  },
+  "fire-station-pieter": {
+   "float": 9,
+   "poke": 5
+  },
+  "fire-station-teunis": {
+   "float": 8,
+   "poke": 3
+  },
+  "fire-station-victor": {
+   "poke": 2,
+   "outside": 9
+  },
+  "fire-station-weesp": {
+   "poke": 2,
+   "outside": 1
+  },
+  "fire-station-willem": {
+   "outside": 15
+  },
+  "fire-station-zebra": {
+   "float": 1,
+   "poke": 1,
+   "outside": 3
+  },
+  "foam": {
+   "float": 8,
+   "outside": 38
+  },
+  "frascati": {
+   "poke": 1,
+   "outside": 9
+  },
+  "gashouder": {
+   "float": 9,
+   "poke": 2,
+   "outside": 3
+  },
+  "gerard-dou-synagogue": {
+   "poke": 1,
+   "outside": 2
+  },
+  "grasweg-116": {
+   "poke": 12,
+   "outside": 3
+  },
+  "groot-melkhuis": {
+   "poke": 1,
+   "outside": 10
+  },
+  "groote-museum": {
+   "float": 5,
+   "poke": 2
+  },
+  "haarlemmermeerstation": {
+   "float": 4,
+   "poke": 1,
+   "outside": 17
+  },
+  "haarlemmerpoort": {
+   "outside": 1
+  },
+  "haarlemmerweg-333": {
+   "poke": 3
+  },
+  "hannekes-boom": {
+   "poke": 6,
+   "outside": 7
+  },
+  "haparandaweg-2-4": {
+   "poke": 35,
+   "outside": 16
+  },
+  "haparandaweg-57": {
+   "poke": 1
+  },
+  "haparandaweg-788-868": {
+   "outside": 2
+  },
+  "haparandaweg-8-338": {
+   "outside": 81
+  },
+  "haparandaweg-870-900": {
+   "poke": 13,
+   "outside": 3
+  },
+  "haparandaweg-902-950": {
+   "outside": 2
+  },
+  "hart-museum": {
+   "poke": 3
+  },
+  "heineken-experience-amsterdam": {
+   "float": 5,
+   "poke": 2,
+   "outside": 2
+  },
+  "hemp-gallery": {
+   "poke": 2,
+   "outside": 6
+  },
+  "herepoort-bergpoort": {
+   "outside": 2
+  },
+  "het-schip": {
+   "poke": 3,
+   "outside": 43
+  },
+  "het-veem": {
+   "float": 1,
+   "poke": 20
+  },
+  "hilton-amsterdam": {
+   "poke": 1,
+   "outside": 11
+  },
+  "hnk-sloterdijk": {
+   "outside": 24
+  },
+  "hollandsche-schouwburg": {
+   "float": 3
+  },
+  "hoofdbureau-elandsgracht": {
+   "outside": 1
+  },
+  "hortus-greenhouses": {
+   "poke": 1,
+   "outside": 10
+  },
+  "hotel-de-l-europe": {
+   "poke": 2,
+   "outside": 57
+  },
+  "hotel-jakarta": {
+   "poke": 14,
+   "outside": 15
+  },
+  "houseboat-museum": {
+   "poke": 4
+  },
+  "huis-bartolotti": {
+   "outside": 2
+  },
+  "huis-de-pinto": {
+   "poke": 3,
+   "outside": 5
+  },
+  "huis-marseille": {
+   "poke": 1
+  },
+  "huize-frankendael": {
+   "outside": 4
+  },
+  "huize-lydia": {
+   "poke": 20,
+   "outside": 5
+  },
+  "hva-rhijnspoorplein-2": {
+   "poke": 11
+  },
+  "idfa-pavilion": {
+   "outside": 12
+  },
+  "ij-toren": {
+   "poke": 5,
+   "outside": 19
+  },
+  "ing-house": {
+   "outside": 14
+  },
+  "jeruzalemkerk": {
+   "poke": 1,
+   "outside": 3
+  },
+  "jewish-museum": {
+   "poke": 8,
+   "outside": 10
+  },
+  "jodenbreestraat-11": {
+   "poke": 27
+  },
+  "kattenkabinet": {
+   "outside": 14
+  },
+  "keizersgrachtkerk": {
+   "float": 3,
+   "poke": 7
+  },
+  "kesbeke": {
+   "poke": 1
+  },
+  "kesbeke-shop": {
+   "poke": 4
+  },
+  "ketelhuis": {
+   "float": 4
+  },
+  "kinderkookkafe": {
+   "float": 2
+  },
+  "klimhal": {
+   "poke": 1
+  },
+  "krasnapolsky": {
+   "outside": 7
+  },
+  "lab111": {
+   "outside": 4
+  },
+  "lekstraat-synagoge": {
+   "poke": 8,
+   "outside": 15
+  },
+  "ljg-synagoge": {
+   "poke": 4
+  },
+  "lloyd-hotel": {
+   "poke": 9,
+   "outside": 6
+  },
+  "luther-museum": {
+   "float": 4,
+   "poke": 6,
+   "outside": 2
+  },
+  "machinegebouw": {
+   "outside": 8
+  },
+  "madame-tussauds": {
+   "outside": 5
+  },
+  "magna-plaza": {
+   "outside": 5
+  },
+  "max-euwe-centrum": {
+   "outside": 20
+  },
+  "mediamatic": {
+   "float": 2,
+   "poke": 16,
+   "outside": 11
+  },
+  "meerpadkerk": {
+   "outside": 1
+  },
+  "melkweg": {
+   "float": 2,
+   "poke": 9,
+   "outside": 1
+  },
+  "mercatorplein-noordtoren": {
+   "outside": 3
+  },
+  "mercatorplein-zuidtoren": {
+   "outside": 2
+  },
+  "micropia-ledenlokalen": {
+   "float": 2,
+   "poke": 12
+  },
+  "midwest": {
+   "float": 12,
+   "poke": 2
+  },
+  "moco-museum": {
+   "float": 6,
+   "poke": 14,
+   "outside": 9
+  },
+  "mondriaan-tower": {
+   "poke": 6
+  },
+  "monk-amsterdam": {
+   "float": 13
+  },
+  "montelbaanstoren-amsterdam": {
+   "poke": 7,
+   "outside": 3
+  },
+  "motorkade-1": {
+   "outside": 1
+  },
+  "mountain-network": {
+   "outside": 32
+  },
+  "muiderkerk": {
+   "poke": 5
+  },
+  "muiderpoort": {
+   "poke": 7
+  },
+  "multatuli": {
+   "float": 1
+  },
+  "munttoren-amsterdam": {
+   "poke": 9,
+   "outside": 1
+  },
+  "museum-amsterdam-noord": {
+   "poke": 5,
+   "outside": 10
+  },
+  "museum-van-loon": {
+   "poke": 1
+  },
+  "naco-house": {
+   "outside": 33
+  },
+  "nassaukerk": {
+   "poke": 1
+  },
+  "national-holocaust-museum": {
+   "float": 20,
+   "poke": 4
+  },
+  "national-monument-on-the-dam": {
+   "poke": 1
+  },
+  "ndsm-container-arch": {
+   "poke": 1,
+   "outside": 102
+  },
+  "ndsm-warehouse-complex": {
+   "outside": 3
+  },
+  "nemo": {
+   "float": 8,
+   "poke": 10,
+   "outside": 1
+  },
+  "nieuw-dakota": {
+   "outside": 1
+  },
+  "nieuwe-kerk": {
+   "poke": 6
+  },
+  "nieuwendammerkerk": {
+   "poke": 3
+  },
+  "nikolaas-myrakerk": {
+   "float": 2,
+   "poke": 1
+  },
+  "niod": {
+   "poke": 2,
+   "outside": 2
+  },
+  "oba-oosterdok": {
+   "poke": 4,
+   "outside": 17
+  },
+  "obrechtkerk": {
+   "outside": 10
+  },
+  "occii": {
+   "float": 3,
+   "poke": 3
+  },
+  "odessa": {
+   "outside": 14
+  },
+  "olvg-west": {
+   "poke": 2
+  },
+  "ons-lieve-heer-op-solder": {
+   "poke": 1,
+   "outside": 3
+  },
+  "oost-indisch-huis": {
+   "outside": 3
+  },
+  "oostenburgermiddenstraat-228": {
+   "poke": 13,
+   "outside": 3
+  },
+  "oosterkerk": {
+   "poke": 5
+  },
+  "oosterparkkerk": {
+   "poke": 1,
+   "outside": 1
+  },
+  "orgelpark": {
+   "float": 2,
+   "outside": 18
+  },
+  "ot301": {
+   "poke": 1,
+   "outside": 5
+  },
+  "oude-kerk": {
+   "poke": 3,
+   "outside": 9
+  },
+  "oude-lutherse-kerk": {
+   "float": 2,
+   "outside": 4
+  },
+  "oudemanhuispoort": {
+   "outside": 1
+  },
+  "overtoom-197": {
+   "poke": 45,
+   "outside": 6
+  },
+  "palace-on-the-dam": {
+   "poke": 12
+  },
+  "paradiso": {
+   "float": 2,
+   "poke": 7,
+   "outside": 1
+  },
+  "pathe-city": {
+   "float": 5
+  },
+  "pathe-de-munt": {
+   "poke": 5
+  },
+  "petrus-en-paulus-kerk": {
+   "outside": 4
+  },
+  "petruskerk": {
+   "poke": 2
+  },
+  "pianola-museum": {
+   "outside": 2
+  },
+  "plein-theater": {
+   "poke": 1,
+   "outside": 16
+  },
+  "podium-mozaiek": {
+   "outside": 78
+  },
+  "pontsteiger": {
+   "poke": 54
+  },
+  "portuguese-synagogue": {
+   "poke": 1,
+   "outside": 3
+  },
+  "posthoornkerk": {
+   "poke": 1,
+   "outside": 14
+  },
+  "pulitzer-amsterdam": {
+   "poke": 10,
+   "outside": 28
+  },
+  "rem-eiland": {
+   "float": 1,
+   "poke": 2,
+   "outside": 1
+  },
+  "rembrandt-house": {
+   "poke": 2,
+   "outside": 4
+  },
+  "rembrandt-tower": {
+   "float": 2
+  },
+  "rijksmuseum": {
+   "poke": 39,
+   "outside": 33
+  },
+  "rode-hoed": {
+   "outside": 1
+  },
+  "roeterseiland-rec-a": {
+   "poke": 41,
+   "outside": 16
+  },
+  "ronde-lutherse-kerk": {
+   "poke": 4,
+   "outside": 2
+  },
+  "royal-theater-carre": {
+   "float": 7,
+   "poke": 1,
+   "outside": 8
+  },
+  "scheepvaarthuis": {
+   "poke": 1,
+   "outside": 87
+  },
+  "scheepvaartmuseum": {
+   "outside": 11
+  },
+  "scheltema": {
+   "poke": 1,
+   "outside": 2
+  },
+  "schreierstoren": {
+   "float": 12,
+   "poke": 2,
+   "outside": 7
+  },
+  "sea-palace": {
+   "outside": 16
+  },
+  "sexmuseum-venustempel": {
+   "outside": 1
+  },
+  "shell-technology-centre": {
+   "poke": 8,
+   "outside": 5
+  },
+  "singelkerk": {
+   "float": 7,
+   "poke": 1,
+   "outside": 9
+  },
+  "sint-agneskerk": {
+   "poke": 16,
+   "outside": 2
+  },
+  "sint-jorishof": {
+   "poke": 220,
+   "outside": 55
+  },
+  "sint-nicolaas": {
+   "float": 8,
+   "poke": 3,
+   "outside": 8
+  },
+  "sint-olofskapel": {
+   "poke": 1,
+   "outside": 1
+  },
+  "social-history": {
+   "float": 30,
+   "poke": 4,
+   "outside": 13
+  },
+  "stadhuis": {
+   "poke": 1,
+   "outside": 180
+  },
+  "stadsschouwburg": {
+   "float": 2
+  },
+  "straat-museum": {
+   "poke": 2,
+   "outside": 1
+  },
+  "studiok": {
+   "float": 5,
+   "poke": 5,
+   "outside": 4
+  },
+  "symphony": {
+   "poke": 31,
+   "outside": 18
+  },
+  "the-rock": {
+   "poke": 2,
+   "outside": 8
+  },
+  "this-is-holland": {
+   "poke": 1,
+   "outside": 42
+  },
+  "thomaskerk": {
+   "poke": 1,
+   "outside": 1
+  },
+  "tobacco-theater": {
+   "poke": 3
+  },
+  "torture-museum": {
+   "outside": 5
+  },
+  "treehouse-ndsm": {
+   "float": 5,
+   "poke": 2
+  },
+  "trippenhuis": {
+   "poke": 1
+  },
+  "tropenmuseum": {
+   "outside": 21
+  },
+  "tuschinski": {
+   "poke": 12,
+   "outside": 1
+  },
+  "uilenburger-synagoge": {
+   "float": 1
+  },
+  "valley": {
+   "poke": 23,
+   "outside": 63
+  },
+  "van-gendt-hallen": {
+   "outside": 1
+  },
+  "van-gogh-museum": {
+   "float": 7
+  },
+  "victoria-hotel": {
+   "poke": 8,
+   "outside": 12
+  },
+  "vinoly": {
+   "outside": 46
+  },
+  "voc-kade-600": {
+   "poke": 21
+  },
+  "vondelkerk": {
+   "outside": 4
+  },
+  "vondelpark-open-air-theater": {
+   "poke": 1
+  },
+  "voormalige-schouwburgpoort": {
+   "outside": 4
+  },
+  "vredeskerk": {
+   "outside": 12
+  },
+  "vriesseveem-9": {
+   "poke": 20
+  },
+  "vrijburg": {
+   "poke": 1,
+   "outside": 2
+  },
+  "w139": {
+   "outside": 2
+  },
+  "waag": {
+   "outside": 3
+  },
+  "walloon-church": {
+   "float": 1,
+   "outside": 19
+  },
+  "wereldmuseum-amsterdam": {
+   "poke": 21,
+   "outside": 129
+  },
+  "west-india-house": {
+   "outside": 2
+  },
+  "west-indisch-pakhuis": {
+   "poke": 2
+  },
+  "willem-de-zwijgerlaan-350": {
+   "outside": 1
+  },
+  "willet-holthuysen": {
+   "poke": 4,
+   "outside": 10
+  },
+  "wine-guildhall": {
+   "outside": 2
+  },
+  "woongebouw-wladiwostok": {
+   "poke": 2,
+   "outside": 2
+  },
+  "wtc-amsterdam": {
+   "poke": 36,
+   "outside": 2
+  },
+  "zevenlandenhuizen": {
+   "poke": 12,
+   "outside": 23
+  },
+  "zuiderkerk": {
+   "poke": 4,
+   "outside": 6
+  },
+  "zuiveringshal-west": {
+   "poke": 2
+  }
+ }
+}
