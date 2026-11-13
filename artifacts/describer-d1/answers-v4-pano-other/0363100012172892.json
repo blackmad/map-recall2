@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012172892",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002938_pano_0003_000062.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "bays",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "red pantile pitched roof with a small dormer"
+  }
+ ],
+ "notes": "A large tree stands in front of the left half.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

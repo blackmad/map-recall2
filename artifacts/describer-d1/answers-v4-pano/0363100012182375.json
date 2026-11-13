@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002949_pano_0001_000033.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "finish",
+  "roof",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustrade along the top of the cornice with a set-back roof structure behind it"
+  },
+  {
+   "component": "window",
+   "what": "tall ground-storey sash windows in small panes, as tall as a full storey"
+  }
+ ],
+ "notes": "A van hides the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

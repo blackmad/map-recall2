@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012173341",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002043_pano_0000_002840.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "2": "six-pane"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a tall white timber ground-storey frame with fluted Corinthian pilasters, an entresol row of lights and two street doors at the right"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white scroll claw pieces at the gable foot and a hoist beam at the top"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

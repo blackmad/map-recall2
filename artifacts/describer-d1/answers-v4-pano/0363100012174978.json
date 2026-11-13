@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174978",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002938_pano_0003_000062.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "heads",
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "steep slate roof face with a central dormer and hoist beam rising straight above the cornice like a small neck"
+  },
+  {
+   "component": "door",
+   "what": "door with twin round-headed fanlights over it"
+  }
+ ],
+ "notes": "Bare tree branches in front of the upper storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

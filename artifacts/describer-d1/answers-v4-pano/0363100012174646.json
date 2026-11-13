@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002971.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "full",
+  "bays",
+  "crown",
+  "cornice",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "stone door surrounds with pilasters on the ground storey, one opening boarded up"
+  }
+ ],
+ "notes": "Steep oblique view of a front under renovation: windows are out, a scaffold tower covers the left part, and the ground storey is boarded.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

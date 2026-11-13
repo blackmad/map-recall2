@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174187",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002299.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "full",
+  "crown",
+  "cornice",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "white projecting bay windows on the second and third storeys"
+  }
+ ],
+ "notes": "A large tree in leaf covers most of the front and lens flare washes out the left part.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

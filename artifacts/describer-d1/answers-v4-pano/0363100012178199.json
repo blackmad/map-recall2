@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012178199",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002973_pano_0000_000108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "t-window",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [],
+ "notes": "A parked lorry covers the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

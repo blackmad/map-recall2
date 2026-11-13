@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182296",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001660_pano_0000_002060.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "roof",
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white keystone blocks over each segmental head on a dark wall"
+  }
+ ],
+ "notes": "Ground storey hidden partly by a shop canopy and sign.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

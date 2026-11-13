@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012171710",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002953_pano_0000_000436.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "bays",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small pointed gable with one window and a finial stands on a pale cornice band."
+  }
+ ],
+ "notes": "A tree and a lamp post stand in front; the upper windows are dark and hard to read.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

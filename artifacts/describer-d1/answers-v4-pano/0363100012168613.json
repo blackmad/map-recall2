@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012168613",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001275.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white scroll claw pieces at the neck foot and a curved scrolled pediment with a carved plaque on top"
+  },
+  {
+   "component": "balcony",
+   "what": "French doors with an iron balconette in the neck"
+  },
+  {
+   "component": "shopfront",
+   "what": "white pilastered shopfront with a side street door"
+  }
+ ],
+ "notes": "The outlines sit about one bay right of the fronts; matched by overlap.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002031_pano_0000_000034.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream timber café front with a green awning and leaded top lights"
+  }
+ ],
+ "notes": "Poles, a sign box and a bin stand in front; the front is seen at a steep angle.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

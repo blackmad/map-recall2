@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002950_pano_0002_000275.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "cornice",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks alternate with brick at the window sides and bands run across at floor and head lines"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall central dormer with a window in a slate mansard"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched entrance at the left over a stone plinth"
+  }
+ ],
+ "notes": "Branches and boarded windows on two storeys (renovation).",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

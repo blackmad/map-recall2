@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012182399",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000193.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "crown"
+ ],
+ "gaps": [],
+ "notes": "Two road signs cover almost the whole front; only the bell gable outline shows.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

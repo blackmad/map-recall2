@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012174977",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002923_pano_0001_000014.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "finish",
+  "full",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "In shade behind a tree; details are hard to read.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}
