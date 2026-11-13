@@ -2848,3 +2848,18 @@ within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) a
 Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
 194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
 `artifacts/describer-d1/staged-ah07/` (never published).
+
+**D1-fix (2026-11-13, after the route bake-off).** Row convention: `fronts/0/storeys` is the rows below the crown with the ground
+row included whatever it holds; `facts/groundKind` (`shop`, `door-only`, `dwelling`, `warehouse`, `describer.ts groundKindOf`)
+says what that row is and `fronts/0/souterrain` is staged as read, true or false. Nothing in the prompt, the writer or the
+staging step drops a ground row: every v4 read lists `columns` per counted row (crop 87/87, cut 79/79; one AH07 read, 175477,
+skips the shop's ground count in `columns` only), shop grounds score as well as house grounds (`rows.ts`), and the
+under-counts are the roof-storey, gable-attic and souterrain conventions of the author hand specs. Weteringschans 168043 is
+three rows (door row and two upper) between cellar windows and a dormer: the staged 3 was right; the cellar row is the
+basement, which a cut does not stage. `rowProblems` refuses a new read whose `columns` rows differ from its count; prompt
+v4.2 starts the count at the ground row explicitly (not read at scale yet). A low `storeyParts.full` now halves the storeys
+receipt. Twin guard: `stage.ts twinGuard`, default `mutual` = each house's `sameAs` names the other, street-run width within
+0.3 m, build year within 3 (no 3DBAG height: it split the mirrored pair 168043 / 168096 at 13.9 vs 16.6 m); `--twin-guard pr1`
+keeps the step-1c guard. On the twin-v2 truth with every neighbour read (`twins-v2.ts neighbours`, 53 blind opus twin reads):
+mutual precision 0.96 [0.81-0.99], recall 0.76 [0.59-0.87] against pr1 0.94 [0.74-0.99] / 0.52 [0.35-0.68]
+(`twin-guard.ts`, `artifacts/describer-d1/twin-guard.json`).

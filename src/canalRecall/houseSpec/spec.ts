@@ -111,6 +111,10 @@ export interface SpecFacts {
   elements?: string[];
   /** Ground floor kind as judged on a crop: a shop pui, a residential ground floor, a warehouse door. */
   pui?: 'shop' | 'residential' | 'warehouse';
+  /** What the ground row of `fronts/0/storeys` is (describer row convention, lane D1-fix): `shop`, `door-only` (the street door is
+   *  the ground storey's one opening), `dwelling`, `warehouse`. The storeys count includes that row; a souterrain and a roof storey
+   *  never do. A reading, not drawn. */
+  groundKind?: 'shop' | 'door-only' | 'dwelling' | 'warehouse';
   /** The gable the monuments register names (intent vocabulary), kept as a historic fact for cards and trivia ("this house once
    *  had a bell gable"); provenance `rce:<register number>`. It is not the drawn crown: that is `fronts/0/gable`, where a photo
    *  reading outranks the register and the register type is drawn only over a 3DBAG crown (houseSpec/decorate.ts, H5h round 4). */
@@ -260,6 +264,7 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
+    else if (path === 'facts/groundKind' && !['shop', 'door-only', 'dwelling', 'warehouse'].includes(value as string)) p.push(`${path}: shop|door-only|dwelling|warehouse`);
     else if (path === 'facts/historicGable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);
   }
   // Several fronts on one facade (one street, or no street stated): each states its `share` of the wall, left to right, and the
