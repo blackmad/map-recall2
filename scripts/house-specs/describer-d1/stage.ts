@@ -1,7 +1,10 @@
 // Stage D1 describer answers as partial HouseSpecs (house plan P1 step 2): one spec per pand from toSpecPart (source
 // `vision-judge`), filtered to what the integrator ruled ships (STAGED below: step-1c fields that cleared the bar, and for
 // crown, head and cornice only the answered classes with precision >= 0.8 on the adjudicated labels; per-class.md), plus
-// the wall colour sampled from the same describe cut (cuts.json `wallHex`, source `streetlevel-measured`, as W1 does).
+// the wall colour: finish from the reader (palette/wallMaterial), colour from the wall-sample pixels, i.e. lane W1's wall
+// sample on the game-lens photo of the pinned capture (cuts.json `w1`, describe-cut.ts w1 mode), fitted through fitWallBrick
+// so the brick renders onto the photo (pins render about PIN_RENDER_GAIN x the city tint); the describe cut's own `wallHex`
+// is no colour source (D1-fix 3, item B).
 // Storeys follow the row convention: rows below the crown, the ground row included, with `facts/groundKind` saying what that
 // row is (shop, door-only, dwelling, warehouse) and `fronts/0/souterrain` stated true or false as read (D1-fix).
 // A front whose storeys, crown or bands are not visible inherits them from a twin under the twin guard (twinGuard below,
@@ -17,6 +20,9 @@ import path from 'node:path';
 import { toSpecPart, UNKNOWN, upperHead, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
 import { emptySpec, provenanceOf, setSpecField, specField, specFields, specProblems, type HouseSpec } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { sideOf } from './twins.ts';
+import { fitWallBrick } from '../../block-face/fit-wall-palette.ts';
+import { CITY_BRICK_LIGHTNESS, cityWallTint, hexToRgb, hslToRgb, rgbToHex } from '../../../src/canalRecall/look/palette.ts';
+import { rgbToHsl } from '../../../src/canalRecall/blockFace/wallColour.ts';
 import { similar, similarWidthYear, type Probe } from './partyPairs.ts';
 import { loadAnswers } from './score.ts';
 
@@ -41,34 +47,36 @@ export const STAGED: Record<string, ((v: unknown, a: DescriberAnswer) => boolean
   'fronts/0/gable': (_v, a) => a.crown === 'cornice' || a.crown === 'step' || CURVED.has(String(a.crown)),
   'fronts/0/windowHead': v => ['flat', 'segmental'].includes((v as { kind?: string })?.kind ?? ''),
   'fronts/0/cornice': v => v === 'none',
+  // prompt v4.3 reads, stored with their receipt and held for every route (HELD_FOR_ALL_ROUTES) until scored (extras.ts)
+  'fronts/0/readBalconies': () => true,
+  'fronts/0/readDormers': () => true,
+  'fronts/0/readBayWindow': () => true,
+  'fronts/0/readDoorSurround': () => true,
 };
 
 /**
- * Per-row heads (D1-fix 2): the answer's `heads` (one per row, ground first) staged into the intent's per-storey slots, so a
- * front whose rows differ (171218: flat, flat, round) is not flattened to `mixed` and dropped. Upper rows only (the head
- * precision was measured there). A row stages when its class is flat or segmental (per-class precision >= 0.8) or round.
- *   - every known upper row one of flat / segmental: `windowHead {kind}` exactly as before (byte-identical);
- *   - segmental rows among others: `windowHead {kind: segmental, storeys: [those rows]}`; flat rows are the default;
- *   - round rows: `archedStoreys` (ROUTE_C_ONLY: only the recipe compiler reads it; the generic view and the F1 record do not,
- *     until round has a precision figure: heads.ts scores it);
- *   - relieving, pointed, mixed and not-visible rows stage nothing (a front with only those and flat rows stages no head).
- * Returns the fields to set (none when the rows say nothing stageable).
+ * Per-row heads (D1-fix 2, ruled on D1-fix 3): the answer's `heads` (one per row, ground first) kept per row, so a front whose
+ * rows differ (171218: flat, flat, round) is not flattened to `mixed` and dropped. A class ships only at precision >= 0.8 and
+ * better than its fallback; per row, flat and segmental have not shown that (heads.ts, head-truth.ts), so:
+ *   - every known upper row one of flat / segmental: the whole-front `windowHead {kind}` exactly as before (byte-identical);
+ *   - otherwise the reading is kept as `rowHeads` (the list as read) with its receipt and staged for no route
+ *     (spec.ts drawableDesign drops it for every compiler; the generic view and the F1 record never read it);
+ *   - round rows also become `archedStoreys`, drawn by the recipe route only (ROUTE_C_ONLY) until round has a figure.
+ * Per row only when `heads` has one entry per counted row. Returns the fields to set.
  */
-export function rowHeads(heads: readonly string[] | undefined, storeys: unknown): { windowHead?: { kind: 'flat' | 'segmental'; storeys?: number[] }; archedStoreys?: number[] } {
+export function rowHeads(heads: readonly string[] | undefined, storeys: unknown): { windowHead?: { kind: 'flat' | 'segmental' }; rowHeads?: string[]; archedStoreys?: number[] } {
   if (!heads?.length) return {};
   const whole = upperHead(heads as DescriberAnswer['heads']);
   if (whole === 'flat' || whole === 'segmental') return { windowHead: { kind: whole } };
   // per row only when the list is one entry per row (a count that does not match cannot say which storey is which)
-  if (!Number.isInteger(storeys) || heads.length !== storeys) return {};
-  const rows = heads.map((h, s) => [h, s] as const).filter(([, s]) => heads.length === 1 || s > 0);
-  const seg = rows.filter(([h]) => h === 'segmental').map(([, s]) => s), round = rows.filter(([h]) => h === 'round').map(([, s]) => s);
-  const out: ReturnType<typeof rowHeads> = {};
-  if (seg.length) out.windowHead = { kind: 'segmental', storeys: seg };
-  if (round.length) out.archedStoreys = round;
-  return out;
+  if (!Number.isInteger(storeys) || heads.length !== storeys || heads.every(h => h === UNKNOWN)) return {};
+  const round = heads.map((h, s) => [h, s] as const).filter(([h, s]) => h === 'round' && (heads.length === 1 || s > 0)).map(([, s]) => s);
+  return { rowHeads: [...heads], ...(round.length ? { archedStoreys: round } : {}) };
 }
 /** Staged paths only the recipe route (route C, toRecipe -> compile) draws: the generic view and the F1 record never read them. */
 export const ROUTE_C_ONLY: ReadonlySet<string> = new Set(['fronts/0/archedStoreys']);
+/** Staged paths no route draws (kept as read, with a receipt, for scoring and a later ruling). */
+export const HELD_FOR_ALL_ROUTES: ReadonlySet<string> = new Set(['fronts/0/rowHeads', 'fronts/0/readBalconies', 'fronts/0/readDormers', 'fronts/0/readBayWindow', 'fronts/0/readDoorSurround']);
 
 /** Neck and bell read as one class (a curved gable): precision 0.91 merged against 0.65 / 0.50 apart (per-class.md). */
 export const CURVED: ReadonlySet<string> = new Set(['neck', 'bell']);
@@ -85,6 +93,21 @@ export function shipOnly(spec: HouseSpec, a: DescriberAnswer): { spec: HouseSpec
   return { spec: out, dropped };
 }
 
+/** A pinned pose renders a wall about this much lighter than cityWallTint(brick) (per channel; the reviewer's figure, D1-fix 3). */
+export const PIN_RENDER_GAIN = 1.14;
+/** The brick whose pinned render lands on the W1 photo sample: fitWallBrick(sample, PIN_RENDER_GAIN x tint(sample), sample). */
+export function wallBrickFromSample(sample: string): { brick: string; predicted: string; floor: boolean } {
+  const model = rgbToHex(hexToRgb(cityWallTint(sample)).map(v => Math.min(255, Math.round(v * PIN_RENDER_GAIN))) as [number, number, number]);
+  const fit = fitWallBrick(sample, model, sample);
+  // Below the city brick floor (CITY_BRICK_LIGHTNESS: tint L' = 0.12 + 0.9 L >= 0.3) every darker brick renders the same
+  // tint and the grid search runs to near black; stage the lightest brick at the floor instead, in the sample's hue and
+  // saturation (for a painted-black front about the sample itself). The render cannot go darker: `floor` says so.
+  const lFloor = (CITY_BRICK_LIGHTNESS[0] - 0.12) / 0.9, [, , l] = rgbToHsl(hexToRgb(fit.brick));
+  if (l >= lFloor - 0.005) return { ...fit, floor: false };
+  const [h, sat] = rgbToHsl(hexToRgb(sample));
+  return { brick: rgbToHex(hslToRgb([h, sat, lFloor])), predicted: fit.predicted, floor: true };
+}
+
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
 export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null) {
   const part = toSpecPart(a, at);
@@ -94,7 +117,7 @@ export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string 
   if (prov) for (const [k, v] of Object.entries(rowHeads(a.heads, a.storeys))) { setSpecField(spec, `fronts/0/${k}`, v); spec.provenance[`fronts/0/${k}`] = { ...prov }; }
   if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
   if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
-    setSpecField(spec, 'palette/brick', wallHex.toLowerCase());
+    setSpecField(spec, 'palette/brick', wallBrickFromSample(wallHex.toLowerCase()).brick);
     spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
   }
   return spec;
@@ -163,7 +186,7 @@ function main() {
   if (!TWIN_GUARDS.includes(guard)) { console.error(`--twin-guard ${TWIN_GUARDS.join('|')}`); process.exit(2); }
   const hex = new Map<string, string>(), walls = new Map<string, Wall>();
   if (opt('cuts')) for (const r of JSON.parse(fs.readFileSync(opt('cuts')!, 'utf8')).rows ?? []) {
-    if (r.wallHex) hex.set(r.pandId, r.wallHex);
+    if (r.w1?.hex) hex.set(r.pandId, r.w1.hex);
     const w = wallOf(r); if (w) walls.set(r.pandId, w);
   }
   const probes: Record<string, Probe> = opt('probes') ? JSON.parse(fs.readFileSync(opt('probes')!, 'utf8')) : {};

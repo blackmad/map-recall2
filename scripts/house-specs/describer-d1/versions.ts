@@ -4,7 +4,7 @@
 // house-ground rows breakdown: every dwelling-ground storey miss by what the read and the truth say about the souterrain, the
 // roof storey and the gable attic, to test the souterrain / bel-etage confusion.
 //
-//   node --import tsx scripts/house-specs/describer-d1/versions.ts --a answers-v4-crop --b answers-v42-crop [--ids cut-ids.txt] [--out <json>]
+//   node --import tsx scripts/house-specs/describer-d1/versions.ts --a answers-v4-crop --b answers-v42-crop [--ids cut-ids.txt] [--author-convention exclude|keep] [--out <json>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { groundKindOf, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
@@ -104,10 +104,12 @@ function main() {
   const A = loadAnswers(dir(a)), B = loadAnswers(dir(b));
   const keep = new Set(opt('ids') === 'none' ? [...A.keys()] : fs.readFileSync(dir(opt('ids') ?? 'cut-ids.txt'), 'utf8').split(/\s+/).filter(Boolean));
   for (const M of [A, B]) for (const id of [...M.keys()]) if (!keep.has(id) || !(A.has(id) && B.has(id))) M.delete(id);
-  const sets = loadTruth(ROOT, adjudicatedPands());
+  // author-convention storey counts (truth.ts authorConvention) are excluded by default (ruling D1-fix 3); --author-convention keep
+  const conv = (opt('author-convention') ?? 'exclude') as 'keep' | 'exclude';
+  const sets = loadTruth(ROOT, adjudicatedPands(), { authorConvention: conv });
   const pooled = new Map<string, Reading>(); for (const [id, s] of sets) { const t = pooledTruth(s); if (t) pooled.set(id, t); }
   const ta = fieldTable(A, pooled), tb = fieldTable(B, pooled);
-  const md = [`### ${a} vs ${b} on the same ${A.size} pands (pooled adjudicated truth)`, '', `| field | ${a} | ${b} | change | ${a} right, ${b} wrong | reverse |`, '|---|---|---|---|---|---|'];
+  const md = [`### ${a} vs ${b} on the same ${A.size} pands (pooled adjudicated truth; author-convention storeys: ${conv})`, '', `| field | ${a} | ${b} | change | ${a} right, ${b} wrong | reverse |`, '|---|---|---|---|---|---|'];
   const fields: Record<string, unknown> = {};
   for (const k of [...SHIPPED_FIELDS, ...STAGED_CLASSES.map(s => s.label)]) {
     const x = ta.rows[k], y = tb.rows[k]; if (!x && !y) continue;
@@ -124,7 +126,7 @@ function main() {
     ground[name] = g;
     md.push('', `#### ${name}: house-ground (dwelling) rows exact ${g.exact.acc} (${g.ok}/${g.n}) [${g.exact.ci.join('-')}]`, '', '| miss | pands |', '|---|---|', ...g.misses.map(([k, v]) => `| ${k} | ${v} |`));
   }
-  fs.writeFileSync(opt('out') ?? path.join(D, 'versions-v4-v42.json'), `${JSON.stringify({ v: 1, a, b, pands: A.size, fields, ground }, null, 1)}\n`);
+  fs.writeFileSync(opt('out') ?? path.join(D, 'versions-v4-v42.json'), `${JSON.stringify({ v: 1, a, b, authorConvention: conv, pands: A.size, fields, ground }, null, 1)}\n`);
   console.log(md.join('\n'));
 }
 if (import.meta.url === `file://${process.argv[1]}`) main();

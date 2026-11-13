@@ -42,6 +42,18 @@ export type WallFamily = (typeof WALL_FAMILIES)[number];
 /** palette.wallMaterial plus `stone` (stone-faced; the generic wall has no stone material). */
 export const FINISHES = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
 
+/** The describer prompts (repo paths) and the default a reader is given (integrator ruling D1-fix 3: v4.2 for the volume tranche; v4.3 since item A, no shipped field dropped beyond its interval on the 147 crops). */
+export const DESCRIBER_PROMPTS = {
+  'v4': 'scripts/house-line/describer/prompt-v4.md',
+  'v4.1': 'scripts/house-line/describer/prompt-v4.1.md',
+  'v4.2': 'scripts/house-line/describer/prompt-v4.2.md',
+  'v4.3': 'scripts/house-line/describer/prompt-v4.3.md',
+} as const;
+export type DescriberPromptVersion = keyof typeof DESCRIBER_PROMPTS;
+export const DESCRIBER_PROMPT: DescriberPromptVersion = 'v4.3';
+/** The prompt file of a version (default DESCRIBER_PROMPT) under the repo root. */
+export const describerPromptPath = (root: string, v: DescriberPromptVersion = DESCRIBER_PROMPT): string => path.join(root, DESCRIBER_PROMPTS[v]);
+
 export const SAME_AS = ['left', 'right', 'both', 'none'] as const;
 
 /** What the ground row of `storeys` is (D1-fix row convention): a shop pui, a ground storey whose one opening is the street door
@@ -60,6 +72,8 @@ export interface DescriberAnswer {
   image: { ref: string; kind: 'crop' | 'pose-photo' | 'render'; tier?: 'good' | 'fallback' | 'none' | null; year?: number | null; gate?: 'pass' | 'fail' | null };
   /** Who read it, e.g. `D1 opus` or `D1 sonnet`. */
   reader: string;
+  /** The prompt version the reader was given (DESCRIBER_PROMPTS); stamped by write-answer.ts since D1-fix 3. */
+  prompt?: string;
   readable: boolean;
   /** `multi`: the pand's wall carries more than one house front (read the dominant/target one, say so in notes). */
   extent: 'single' | 'multi';
@@ -100,6 +114,14 @@ export interface DescriberAnswer {
   sameAs?: (typeof SAME_AS)[number] | U;
   /** With `sameAs`: the twin is mirrored (door and asymmetric parts on the other side). */
   mirrored?: boolean | U;
+  /** Prompt v4.3 (held, scored before any route draws them): rows (ground = 0, as `heads`) with a balcony or balconette. */
+  balconies?: number[] | U;
+  /** Prompt v4.3: roof dormers and wall dormers / part-front gables over the cornice line, `gabled` when any has a gable or pediment top. */
+  dormers?: { count: number; kind: (typeof DORMER_KINDS)[number] } | U;
+  /** Prompt v4.3: rows (ground = 0) with a projecting bay window (erker, oriel). */
+  bayWindow?: number[] | U;
+  /** Prompt v4.3: the street door has a dressed doorcase (pilasters, a frame, a hood or cornice over it). */
+  doorSurround?: boolean | U;
   /** Fields read at low confidence (named by key). */
   low?: string[];
   gaps: SpecLimit[];
@@ -113,7 +135,10 @@ const countOk = (v: unknown, lo: number, hi: number) => v === UNKNOWN || (Number
 export const LOW_KEYS: ReadonlySet<string> = new Set(['extent', 'storeys', 'bays', 'columns', 'windows', 'storeyWindows', 'heads', 'bands',
   'windowSurround', 'sills', 'doorBay', 'doorIndex', 'groundBays', 'ground', 'basement', 'souterrain', 'crown', 'cornice', 'wallFamily',
   'finish', 'whiteFrames', 'sameAs', 'mirrored', 'pale', 'paneLayout', 'storeyParts', 'storeyParts.full', 'storeyParts.roof',
-  'storeyParts.souterrain']);
+  'storeyParts.souterrain', 'balconies', 'dormers', 'bayWindow', 'doorSurround']);
+/** Prompt v4.3 dormer kinds: `none` with count 0. */
+export const DORMER_KINDS = ['plain', 'gabled', 'none'] as const;
+const rowList = (v: unknown) => v === UNKNOWN || (Array.isArray(v) && v.every(r => Number.isInteger(r) && r >= 0 && r <= 30) && new Set(v).size === v.length);
 
 /** Problems with an answer (empty = valid). */
 export function answerProblems(a: any): string[] {
@@ -147,6 +172,11 @@ export function answerProblems(a: any): string[] {
   if (a.mirrored !== undefined && !(typeof a.mirrored === 'boolean' || a.mirrored === UNKNOWN)) p.push(`mirrored: boolean or ${UNKNOWN}`);
   if (a.low !== undefined && !(Array.isArray(a.low) && a.low.every((k: unknown) => typeof k === 'string' && LOW_KEYS.has(k)))) p.push(`low: answer keys only (${[...LOW_KEYS].join('|')})`);
   if (!Array.isArray(a.gaps) || a.gaps.some((g: unknown) => typeof g !== 'object' || !toSpecLimit(g))) p.push('gaps: a list of {component, what}');
+  if (a.balconies !== undefined && !rowList(a.balconies)) p.push(`balconies: a list of rows (ground = 0) or ${UNKNOWN}`);
+  if (a.bayWindow !== undefined && !rowList(a.bayWindow)) p.push(`bayWindow: a list of rows (ground = 0) or ${UNKNOWN}`);
+  if (a.dormers !== undefined && a.dormers !== UNKNOWN && !(a.dormers && typeof a.dormers === 'object' && Number.isInteger(a.dormers.count) && a.dormers.count >= 0 && a.dormers.count <= 12
+    && (DORMER_KINDS as readonly string[]).includes(a.dormers.kind) && (a.dormers.count === 0) === (a.dormers.kind === 'none'))) p.push(`dormers: {count 0..12, kind ${DORMER_KINDS.join('|')}} (none exactly when count 0) or ${UNKNOWN}`);
+  if (a.doorSurround !== undefined && !(typeof a.doorSurround === 'boolean' || a.doorSurround === UNKNOWN)) p.push(`doorSurround: boolean or ${UNKNOWN}`);
   return p;
 }
 
@@ -194,7 +224,8 @@ export function groundKindOf(a: Pick<DescriberAnswer, 'ground' | 'groundBays' | 
 }
 
 /** The answer key a spec path's `low` flag is read from: prompt v4 names the storey parts, not `storeys`. */
-const lowKeys = (key: string): string[] => (key === 'storeys' ? ['storeys', 'storeyParts', 'storeyParts.full'] : key === 'souterrain' ? ['souterrain', 'storeyParts', 'storeyParts.souterrain']
+const READ_KEYS: Record<string, string> = { readBalconies: 'balconies', readDormers: 'dormers', readBayWindow: 'bayWindow', readDoorSurround: 'doorSurround' };
+const lowKeys = (key: string): string[] => (key in READ_KEYS ? [READ_KEYS[key]] : key === 'storeys' ? ['storeys', 'storeyParts', 'storeyParts.full'] : key === 'souterrain' ? ['souterrain', 'storeyParts', 'storeyParts.souterrain']
   : key === 'windowHead' || key === 'archedStoreys' ? [key, 'heads'] : [key]);
 
 /** An answer as a partial HouseSpec at source `vision-judge`. Stone, pitched-eaves and pointed/mixed heads are stored as read (spec.ts
@@ -228,6 +259,11 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
   set('facts/wallFamily', a.wallFamily);
   set('facts/pui', a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'residential' : a.ground);
   if (Number.isInteger(a.storeys)) set('facts/groundKind', groundKindOf(a));
+  // prompt v4.3 reads, held for every route (spec.ts SPEC_HELD_READS) until scored
+  if (a.balconies !== undefined) set('fronts/0/readBalconies', a.balconies);
+  if (a.dormers !== undefined) set('fronts/0/readDormers', a.dormers);
+  if (a.bayWindow !== undefined) set('fronts/0/readBayWindow', a.bayWindow);
+  if (a.doorSurround !== undefined) set('fronts/0/readDoorSurround', a.doorSurround);
   const limits = [...a.gaps];
   if (limits.length) spec.schemaLimits = limits;
   return spec;

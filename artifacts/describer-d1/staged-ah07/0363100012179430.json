@@ -7,17 +7,16 @@
     "storeys": 3,
     "bays": 2,
     "souterrain": false,
-    "windowHead": {
-     "kind": "segmental",
-     "storeys": [
-      1
-     ]
-    }
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "flat"
+    ]
    }
   ],
   "palette": {
    "wallMaterial": "brick",
-   "brick": "#322d2b"
+   "brick": "#37312f"
   }
  },
  "provenance": {
@@ -57,7 +56,7 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179430.jpg",
    "at": "2026-11-13"
   },
-  "fronts/0/windowHead": {
+  "fronts/0/rowHeads": {
    "source": "vision-judge",
    "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179430.jpg",

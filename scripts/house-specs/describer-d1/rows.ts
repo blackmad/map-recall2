@@ -4,7 +4,7 @@
 // (describer.ts groundKindOf), before (stage 69b0c49: the answer's storeys) and after (stage.ts stageOne now), and counts the
 // row-consistency problems (columns rows vs storeys) that a ground left out of the count would raise.
 //
-//   node --import tsx scripts/house-specs/describer-d1/rows.ts [--answers <dir>,<dir>...] [--out <json>]
+//   node --import tsx scripts/house-specs/describer-d1/rows.ts [--answers <dir>,<dir>...] [--author-convention exclude|keep] [--out <json>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { GROUND_KINDS, groundKindOf, rowProblems, UNKNOWN, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
@@ -42,7 +42,9 @@ function main() {
   const D = path.join(ROOT, 'artifacts/describer-d1');
   const args = process.argv.slice(2), opt = (k: string) => (args.includes(`--${k}`) ? args[args.indexOf(`--${k}`) + 1] : undefined);
   const dirs = (opt('answers') ?? 'answers-v4-crop,answers-v4-cut,answers-v4-crop-sonnet').split(',');
-  const truth = loadTruth(ROOT, adjudicatedPands());
+  // author-convention storey counts (truth.ts authorConvention) are excluded by default (ruling D1-fix 3); --author-convention keep
+  const conv = (opt('author-convention') ?? 'exclude') as 'keep' | 'exclude';
+  const truth = loadTruth(ROOT, adjudicatedPands(), { authorConvention: conv });
   const report: Record<string, unknown> = {};
   const md: string[] = [];
   for (const d of dirs) {
@@ -57,7 +59,7 @@ function main() {
       '| subset | n | exact before | exact after | 95 % CI after | within 1 after | under / over after |', '|---|---|---|---|---|---|---|',
       ...Object.entries(groups).filter(([, g]) => g.after.n).map(([k, g]) => `| ${k} | ${g.after.n} | ${g.before.exact} | ${g.after.exact} | ${g.after.exactCI.join('-')} | ${g.after.within1} | ${g.after.under} / ${g.after.over} |`), '');
   }
-  fs.writeFileSync(opt('out') ?? path.join(D, 'rows-convention.json'), `${JSON.stringify({ v: 1, report }, null, 1)}\n`);
+  fs.writeFileSync(opt('out') ?? path.join(D, 'rows-convention.json'), `${JSON.stringify({ v: 1, authorConvention: conv, report }, null, 1)}\n`);
   console.log(md.join('\n'));
 }
 if (import.meta.url === `file://${process.argv[1]}`) main();

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with carved white claw pieces up both flanks, a white cap and a hoist beam; a shuttered attic window in the neck"
+  },
+  {
+   "component": "shopfront",
+   "what": "a café ground storey, hidden behind large parasols and their frames"
+  }
+ ],
+ "notes": "The image centre falls on the party wall between two fronts: a neck-gabled front at the left (described here, its left edge at the image edge) and a two-bay front with a bell or neck gable, white keystone blocks and a cornice band at the right. Parasols hide the ground storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

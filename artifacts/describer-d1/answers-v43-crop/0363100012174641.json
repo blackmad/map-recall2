@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174641",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174641/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "ground",
+  "storeyParts.full",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the two upper storeys under the gable have a wide centre loading opening with a window and a lower panel, like hoist doors"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a white carved stone ornament sits at the left foot of the gable"
+  }
+ ],
+ "notes": "A cast-iron lamp post covers the right bay and bicycles hide the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

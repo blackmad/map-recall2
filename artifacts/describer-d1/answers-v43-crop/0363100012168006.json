@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168006/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "cross",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "ground",
+  "doorBay",
+  "doorSurround",
+  "sills",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "hipped tiled roof visible behind the cornice with a chimney, no dormers"
+  },
+  {
+   "component": "door",
+   "what": "ground storey is rendered white with pilasters and coach lamps between dark garage-like doors and two glazed openings with slatted blinds"
+  }
+ ],
+ "notes": "A parked car hides the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

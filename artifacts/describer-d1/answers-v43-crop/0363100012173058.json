@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012173058",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173058/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "round",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved vase or scroll ornaments stand on the gable foot at both sides"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a painted pilaster front with three round-arched openings and ornamented pilaster capitals, like a former shopfront"
+  }
+ ],
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "storeyParts.roof",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the cornice carries carved white consoles with foliage and a scrolled cartouche-like ornament across the centre"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront under renovation with a trapezoidal row of four top lights in a red frame above the window, glazed-brick piers at the right"
+  },
+  {
+   "component": "window",
+   "what": "window kinds vary per bay: small-paned side windows and two-light centre windows on the top storey"
+  }
+ ],
+ "notes": "The front is in shadow; glazing-bar counts differ between bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

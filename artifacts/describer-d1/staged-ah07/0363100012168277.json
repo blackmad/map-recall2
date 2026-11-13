@@ -7,13 +7,16 @@
     "storeys": 1,
     "souterrain": false,
     "cornice": "none",
+    "rowHeads": [
+     "round"
+    ],
     "archedStoreys": [
      0
     ]
    }
   ],
   "palette": {
-   "brick": "#130907"
+   "brick": "#4b231b"
   }
  },
  "provenance": {
@@ -44,6 +47,12 @@
   "facts/groundKind": {
    "source": "vision-judge",
    "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
    "at": "2026-11-13"
   },
