@@ -10,6 +10,7 @@
 import { decorateBuildingFeature } from './buildingTilesBrowser.js';
 import { constructionYearEnricher, decorateFacade } from './genericFacades.js';
 import { decorateRoof, exceptLandmarks } from './roofMesh.js';
+import { withRowFront } from './houseLine/rowFront.js';
 import { withMonumentGable, type MonumentGables } from './monumentGables.js';
 import { withRegisterFacts, type RegisterFactsMap } from './facade/registerRecipe.js';
 import { withHouseSpec, withHouseSpecCrown } from './houseSpec/decorate.js';
@@ -45,7 +46,7 @@ export function gameFeatureDecorator(options: DecoratorOptions = {}): (feature: 
   const registered = registerFacts && registerFacts.size ? (f: Feature) => withRegisterFacts(f, registerFacts) : (f: Feature) => f;
   // HouseSpecs (houseSpec/decorate.ts) outrank the register: their facts step runs right after it, their crown step
   // after withMonumentGable (which would otherwise restore the register's gable). Both are no-ops without `p.houseSpec`.
-  const decorate = (f: Feature) => decorateRoof(withHouseSpecCrown(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(withHouseSpec(registered(f)))))));
+  const decorate = (f: Feature) => decorateRoof(withRowFront(withHouseSpecCrown(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(withHouseSpec(registered(f))))))));
   const base = exceptLandmarks(decorate, landmarkIds, KIT_MODELLED_IDS, listed);
   return (f: Feature) => decorateShopfront(decorateFront(decorateKitRoof(base(f))));
 }
