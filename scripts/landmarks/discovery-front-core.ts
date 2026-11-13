@@ -229,12 +229,15 @@ export function ornamentClasses(text: string): {classes: string[]; terms: Record
 // ---- the rule -------------------------------------------------------------------------------------------------------
 export interface Thresholds { longFrontM: number; curveDeg: number; ornamentClasses: number; ornamentMinFrontM: number; outsideRideWeight: number }
 /**
- * Defaults (set from the 2026-11-13 distribution over every monument group with a street front, see the hand-back):
- *   longFrontM 40      the 98th percentile of corner-free front runs; a canal-house monument is 5-12 m, a double
- *                      house up to 20 m; 40 m is three to six houses' worth of one design.
- *   curveDeg 20        straight rows measure < 8 deg of accumulated heading (BAG jitter); the Raadhuisstraat arc ~45 deg.
- *   ornamentClasses 3  of sculpture, relief, tower, gables, ornament; and the front at least 15 m (ornamentMinFrontM),
- *                      so a single decorated canal house (the house line's work) is not a landmark nomination.
+ * Defaults, set from the 2026-11-13 distribution over the 8,254 monument groups with a street front on a ride route:
+ *   longFrontM 40      front run p50 6.5 m, p75 12.6, p90 28.2, p95 45.9, p98 76.4, p99 104.3; 40 m sits at ~p94, past
+ *                      the canal-house monuments (5-12 m) and double houses (to ~20 m): three to six houses of one design.
+ *   curveDeg 20        accumulated heading range over corner-free runs >= 20 m: p50 1.3 deg, p75 2.4 (BAG jitter on
+ *                      straight rows), p90 12.1 (mostly single kinks, which the distributed-turn test rejects); the
+ *                      Raadhuisstraat arc measures 34 deg. 17 groups pass.
+ *   ornamentClasses 3  of sculpture, relief, tower, gables, ornament (0: 4,058 groups, 1: 2,795, 2: 964, 3: 336, 4: 89,
+ *                      5: 12), with a front of at least 15 m (ornamentMinFrontM) so a single decorated canal house
+ *                      (the house line's work) is not a landmark nomination.
  *   outsideRideWeight  score weight outside the ride-priority gebieden (src/canalRecall/ridePriority.ts).
  */
 export const DEFAULT_THRESHOLDS: Thresholds = {longFrontM: 40, curveDeg: 20, ornamentClasses: 3, ornamentMinFrontM: 15, outsideRideWeight: 0.35};
