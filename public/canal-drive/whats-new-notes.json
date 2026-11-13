@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "No more random drainpipes or ladder stripes",
+      "text": "We removed the drainpipes that were scattered over 40 % of all walls, and the pale ladder-like strips on some modern blocks. Those were decorative fins placed every 1.5 m regardless of the windows; they now appear only where a building record calls for them. Street furniture such as bins now loads around you rather than around the point the camera looks at."
+    },
+    {
+      "date": "2026-11-13",
       "title": "Buildings stand on the pavement again on raised streets",
       "text": "Buildings along raised streets now stand on the pavement instead of sinking into it. At the Kinkerbrug, Postjesweg's shopfronts and front doors are back above the street, and the lower yard sides show a plinth instead. City-wide, about 37,500 buildings had more than 2 m of front wall buried; 852 remain, mostly in odd pits.",
       "where": [
