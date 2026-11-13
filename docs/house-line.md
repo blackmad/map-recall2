@@ -2863,3 +2863,53 @@ With the flag off, `meshBuildingFor` sets no field. `structurePrior.test.ts` bui
 and with `=0`. `odd-cells-hash.ts` over the 55 house-spec tiles (411,398 buildings): the all-hash off on this branch is `ce6c2ebacf13e95e`, the same as main at 04843f800.
 
 With the flag on over the same tiles, 115,489 buildings differ: walls +0.19 % vertices, extras −0.16 %, shell unchanged.
+
+### Result (held out, benchmark-v1 labels, the 127 generic pands with no spec count and no recipe)
+
+Drawn through the mesher (`baseline.ts`, `STRUCTURE_PRIOR=1` against off). The baselines are the scoreboard's first row:
+
+| field | off (today) | on | errors off → on |
+|---|---|---|---|
+| storeys | 44.9 % [36.5, 53.6] | 51.2 % [42.6, 59.7] (±1 91 → 95 %) | over 36 / under 34 → over 29 / under 29 |
+| columns | 32.3 % [24.8, 40.8] | **59.1 % [50.4, 67.2]** | over 18 / under 68 → over 30 / under 28 |
+| crown | 37.5 % (not touched) | 37.5 % | |
+
+**Columns:** today's error is one constant. The drawn window pitch has a median of 2.72 m against the photos' 1.99 m (the
+style cells' bay widths, `STYLE_DIMS`), so the game under-counts columns, mostly by one.
+
+**Storeys:** the errors are balanced; no single constant explains them.
+- The c19 cell's 3.0 m storey under-reads the read 1880–1919 upper storeys (median 3.49 m over a 3.3 m ground storey).
+  That is Weteringschans 171218, drawn 5 where the house has 4.
+- The 1800–1879 houses under-count (8 over, 13 under), so one constant per family would not lift storeys by 10 points.
+
+**Model selection:** the CV over the 162-setting grid picked the reported setting. Over all 162 settings, the held-out
+storeys ranged 52.8–64.6 % and columns 52.0–60.6 % (the prior alone, before the mesher's clamps).
+
+### Neighbours (integrator refinements; `neighbours.ts`, `rules.ts`, provisional: the pairs cluster by street)
+
+The neighbour rules are not wired.
+
+Leave-one-out on the read party-wall pairs:
+
+| pairs | storeys copy | storeys floor-to-floor transfer | storeys prior (row held out) | columns copy | columns prior |
+|---|---|---|---|---|---|
+| similar (yr ±3, w ±0.3, h ±0.8), 62 directed | 100 % | 100 % | 82 % | 81 % | 77 % |
+| heights differ > 0.8 m, 470 directed | 55 % | **34 %** | **62 %** | 55 % | 64 % |
+| of those, 19th-c ring (56) | 96 % | 39 % | 89 % | 57 % | 66 % |
+
+- Transferring the floor-to-floor height to an unequal neighbour loses to the prior alone, and loses to copying the count.
+- Copying from a similar neighbour beats the prior.
+
+Agreement per street group spreads widely. Storeys:
+- Kinkerstraat and Marnix: 100 %.
+- Belt Jordaan specs: 45 %.
+- Belt Nieuwmarkt specs: 30 %.
+
+### What the prior cannot say
+
+- Crown: the roof planner draws it from 3DBAG and the register. A crown kNN would score 46–62 % exact against 38 % today
+  (`crown.ts`, held out, not CV-selected), but it is not wired.
+- Window heads, bands, surrounds, window kind: neighbours agree near chance (bands 88 % against a 64 % base rate). These need
+  a description of the front (D1), not a prior.
+- Storey heights and the ground storey: the fit keeps the style's ground storey.
+- Shopfronts, door bay.
