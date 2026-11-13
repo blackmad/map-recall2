@@ -60,6 +60,12 @@ export interface DeckProfile {
    * (sideWidths, decks.ts deckWidths) all read it, so the deck, its parapets and the road on it share one width.
    */
   edges?: { left: Float64Array; right: Float64Array };
+  /**
+   * Drawn half-widths no deck body or deck top may pass, left and right per station (Infinity: no cap), where the road
+   * survey's deck-level polygons stop well inside `halfWidth` with nothing surveyed beyond (ownGround/bridgeGaps.ts
+   * surveyDeckCaps). Only decks.ts deckWidths reads it; the riding surface keeps `halfWidth`.
+   */
+  caps?: { left: Float64Array; right: Float64Array };
   /** Way decks only (ownGround/wayDecks.ts HOLE_M): station ranges past the water over a hole in the relief (an underpass, its ramps). */
   under?: [number, number][];
 }

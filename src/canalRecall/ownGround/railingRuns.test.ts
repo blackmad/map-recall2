@@ -84,3 +84,18 @@ test('railRuns: no parapet on a street crossing its line (a deck measured along 
   assert.deepEqual(railRuns(culvert, 0, 30, -1, wide), []);
   assert.deepEqual(railRuns(culvert, 0, 30, -1), [[12 - RAIL_PAST_WATER_M, 18 + RAIL_PAST_WATER_M]], 'no street: the dry side follows the water');
 });
+
+test('waterOutside plein / railRuns: no railing where the survey draws a surface just outside a water-side edge (the Muntplein, c7a55085)', () => {
+  // Water under the whole deck and beside it (the mask runs on under the plein); the survey draws the plein on the left
+  // from s 12 to 18 only.
+  const surveyed = (x: number, y: number) => y > 0 && x >= 12 && x <= 18;
+  const rows: KitRow[] = deck(4, 4, () => true).map(r => ({ ...r, ...waterOutside(r.L, r.R, r.n, () => true, surveyed) }));
+  assert.equal(rows.find(r => r.s === 15)!.pL, true);
+  assert.equal(rows.find(r => r.s === 15)!.pR, undefined, 'the right edge is open water');
+  const left = railRuns(rows, 0, 30, 1);
+  assert.ok(left.length === 2 && left[0][1] < 12 && left[1][0] > 18, `the left railing breaks over the plein: ${JSON.stringify(left)}`);
+  assert.deepEqual(railRuns(rows, 0, 30, -1), [[0, 30]], 'the right railing is unchanged');
+  // No plein test: byte-identical rows.
+  const plain = deck(4, 4, () => true).map(r => ({ ...r, ...waterOutside(r.L, r.R, r.n, () => true) }));
+  assert.ok(plain.every(r => !('pL' in r) && !('pR' in r)));
+});

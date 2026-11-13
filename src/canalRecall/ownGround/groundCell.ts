@@ -27,7 +27,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, floatBoundGrid, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets.js';
-import { bandCorridor, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
+import { bandCorridor, capWidths, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo, type WaterTest } from './decks.js';
 import { crossingWays } from './railingRuns.js';
 import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
@@ -119,6 +119,8 @@ export interface CellInput {
   deckRingsAround: readonly Vec2[][];
   /** The cell's BGT ground polygons standing over water as a deck (wetGround.ts; also in deckRingsAround). */
   wetGround?: readonly Vec2[][];
+  /** No railing beside a surveyed surface over mapped water (lane fb-bridges 2026-11-13, the Muntplein); default on, off: `?pleinRails=0`. */
+  pleinRails?: boolean;
   flatDecks: readonly Vec2[][];
   /** The flat footprints of the cell and its neighbours (bridgeGaps: deck polygons are drawn on them). */
   flatDecksAround?: readonly Vec2[][];
@@ -696,6 +698,11 @@ export function buildCell(input: CellInput): BuiltCell {
   // inside the 60 m Muntplein, drew its parapets as a green wireframe triangle on the plein (user 2026-10-30).
   const wetRings = (input.wetGround ?? []).map(r => ({ r, box: r.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [Infinity, Infinity, -Infinity, -Infinity]) }));
   const openWater = wetRings.length ? (x: number, y: number) => overWater(x, y) && !wetRings.some(({ r, box }) => x >= box[0] && x <= box[2] && y >= box[1] && y <= box[3] && pointInRing(r, x, y)) : overWater;
+  // No railing where the edge reads as water-side but the survey draws a surface just outside it (user 2026-11-10 at the Muntplein, "what are these gates
+  // about?": the Muntsluis and the way decks inside the 60 m plein over the Singel drew railing stubs across the tram
+  // tracks and the cycle path; the water mask runs on under the plein, and the BGT polygons there stand at ground or deck
+  // level beside them). railingRuns.ts waterOutside `plein`, railRuns breaks the run there.
+  const plein: WaterTest | undefined = roadIndex && input.pleinRails !== false ? (x, y) => roadIndex.findAll(x, y).length > 0 : undefined;
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
@@ -703,12 +710,12 @@ export function buildCell(input: CellInput): BuiltCell {
     const bespoke = !!bespokeBridge(deck.profile.id);
     if (bespoke) (bridges.bespoke ??= []).push(deck.profile.id);
     // A dry way deck (bridgeGaps step 3) has no kit: the survey draws its surface, the structure under it is not modelled.
-    else if (deck.profile.family !== 'dry-way-deck') add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    else if (deck.profile.family !== 'dry-way-deck') add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing, plein), 'deck');
     // A bespoke model (bespokeBridges.ts) carries its own deck slab to its parapets: the top keeps to the road's half-width,
     // so the register outline's sides (BRU0236: 4 m north of the OSM/BGT bridge) never overhang the model's face.
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : { left: deck.profile.halfWidth, right: deck.profile.halfWidth }) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : capWidths(deck, { left: deck.profile.halfWidth, right: deck.profile.halfWidth })) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
     if (top.indices.length) { add('deckTop', top, 'deck'); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
@@ -719,7 +726,7 @@ export function buildCell(input: CellInput): BuiltCell {
   input.flatDecks.forEach((ring, k) => {
     const through = bridgeLines.filter(l => l.some(q => pointInRing(ring, q[0], q[1])) || l.some((q, i) => i > 0 && pointInRing(ring, (q[0] + l[i - 1][0]) / 2, (q[1] + l[i - 1][1]) / 2)));
     const axis = footprintAxis(ring, through).u, movingThrough = movableLines.filter(l => through.includes(l));
-    const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough, crossing });
+    const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough, crossing, ...(plein ? { plein } : {}) });
     if (floating) bridges.floating.push(`${input.flatDeckMeta?.[k]?.id ?? 'flat'}:${floating} end(s) over water past ${DECK_REACH_MAX_M} m`);
     const bespoke = bespokeBridge(input.flatDeckMeta?.[k]?.id);
     if (bespoke) (bridges.bespoke ??= []).push(input.flatDeckMeta![k].id);

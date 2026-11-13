@@ -152,7 +152,19 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
       last = i;
     }
   }
-  return { left: out[0], right: out[1] };
+  return capWidths(deck, { left: out[0], right: out[1] });
+}
+
+/**
+ * Widths held under the survey's caps (DeckProfile.caps, bridgeGaps.ts surveyDeckCaps): the deck body and top stop where
+ * the survey's deck polygons end over open water (the Rijckerbrug BRU0167's 6 m slab beside its railing). Unchanged
+ * (the same arrays) without caps.
+ */
+export function capWidths(deck: DeckSurface, w: { left: Float64Array; right: Float64Array }): { left: Float64Array; right: Float64Array } {
+  const c = deck.profile.caps;
+  if (!c) return w;
+  const left = Float64Array.from(w.left, (v, i) => Math.min(v, c.left[i])), right = Float64Array.from(w.right, (v, i) => Math.min(v, c.right[i]));
+  return { left, right };
 }
 
 /** Is (x, y) within `half` (+ BAND_MARGIN_M) of one of the polylines? (the street bands of the bridge ways, deckWidths) */
@@ -253,7 +265,7 @@ export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number
  * deck top and the tops of the side faces follow it exactly). `detail` false
  * is the far ring (LOD 1): the kit's far budget, no railings.
  */
-export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }, crossing?: CrossingTest): MeshArrays {
+export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }, crossing?: CrossingTest, plein?: WaterTest): MeshArrays {
   const p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const idx: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) idx.push(i);
@@ -272,7 +284,7 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
       // edge beside another deck at its level (a dual carriageway's other half) does not.
       ...(p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) && height
         ? { oL: height(L[0] + n[0] * HOLE_DROP_PROBE_M, L[1] + n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M, oR: height(R[0] - n[0] * HOLE_DROP_PROBE_M, R[1] - n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M }
-        : waterOutside(L, R, n, overWater)) };
+        : waterOutside(L, R, n, overWater, plein)) };
   });
   // Water spans: the profile's measured water (the pipeline's AHN water) where it has one, else the mask's runs along the centre.
   const runs: [number, number][] = [];
@@ -537,7 +549,7 @@ function frameTriangles(along: readonly [number, number], detail: boolean, style
 }
 
 /** Width across a footprint at each station along `u` (ring ∩ the cross line), as the kit's rows. */
-function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: WaterTest, topLift: number, step: number): KitRow[] {
+function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: WaterTest, topLift: number, step: number, plein?: WaterTest): KitRow[] {
   const f = ringFrame(ring, u), { centre, v } = f, rows: KitRow[] = [];
   const n = ring.length, len = f.along[1] - f.along[0], count = Math.max(2, Math.ceil(len / step));
   for (let i = 0; i <= count; i++) {
@@ -554,7 +566,7 @@ function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: W
     if (!(t1 - t0 > 0.5)) continue;
     const L: Vec2 = [O[0] + v[0] * t1, O[1] + v[1] * t1], R: Vec2 = [O[0] + v[0] * t0, O[1] + v[1] * t0], c: Vec2 = [(L[0] + R[0]) / 2, (L[1] + R[1]) / 2];
     rows.push({ s, c, n: v, L, R, z: height(c[0], c[1]) + topLift, zL: height(L[0], L[1]) + topLift, zR: height(R[0], R[1]) + topLift,
-      water: overWater(c[0], c[1]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: height(L[0], L[1]), gR: height(R[0], R[1]), ...waterOutside(L, R, v, overWater) });
+      water: overWater(c[0], c[1]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: height(L[0], L[1]), gR: height(R[0], R[1]), ...waterOutside(L, R, v, overWater, plein) });
   }
   return rows;
 }
@@ -566,13 +578,13 @@ function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: W
  * axis). Masonry footprints (the Torensluis) get arches, movable ones the
  * bascule leaf, narrow ones the footbridge, the rest a girder.
  */
-export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2; movableWays?: readonly (readonly Vec2[])[]; crossing?: CrossingTest } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
+export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2; movableWays?: readonly (readonly Vec2[])[]; crossing?: CrossingTest; /** Mapped water under a surveyed surface (a plein over a canal): no railing beside it (railingRuns.ts waterOutside `plein`). */ plein?: WaterTest } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
   const top = emptyMesh(true);
   const flat = ring.flatMap(p => [p[0], p[1]]);
   drapeTriangles(top, flat, earcut(flat), height, topLift, 3, DECK_TOP);
   const u = opts.axis ?? footprintAxis(ring).u, lod = opts.railings === false ? 1 : 0;
   // A station a metre apart, at most ~40 along a long footprint (a lock complex: BRU0246 is 85 m with 127 ring vertices).
-  const all = flatRows(ring, u, height, overWater, topLift, Math.max(1, (ringFrame(ring, u).along[1] - ringFrame(ring, u).along[0]) / 40));
+  const all = flatRows(ring, u, height, overWater, topLift, Math.max(1, (ringFrame(ring, u).along[1] - ringFrame(ring, u).along[0]) / 40), opts.plein);
   // A footprint end still over water reaches on to the bank (ABUTMENT_DEPTH_M past the first land, at most DECK_REACH_MAX_M).
   let floating = 0;
   if (all.length >= 2) for (const end of [0, 1] as const) {
@@ -582,7 +594,7 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
     const at = (d: number): KitRow => {
       const c: Vec2 = [r.c[0] + u[0] * dir * d, r.c[1] + u[1] * dir * d], L: Vec2 = [c[0] + hw[0], c[1] + hw[1]], R: Vec2 = [c[0] - hw[0], c[1] - hw[1]];
       const z = Math.max(r.z, height(c[0], c[1]) + topLift), zL = Math.max(r.zL, height(L[0], L[1]) + topLift), zR = Math.max(r.zR, height(R[0], R[1]) + topLift);
-      return { s: r.s + dir * d, c, n: r.n, L, R, z, zL, zR, water: overWater(c[0], c[1]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: height(L[0], L[1]), gR: height(R[0], R[1]), ...waterOutside(L, R, r.n, overWater) };
+      return { s: r.s + dir * d, c, n: r.n, L, R, z, zL, zR, water: overWater(c[0], c[1]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: height(L[0], L[1]), gR: height(R[0], R[1]), ...waterOutside(L, R, r.n, overWater, opts.plein) };
     };
     let land = -1;
     for (let d = 0.5; d <= DECK_REACH_MAX_M; d += 0.5) { const q = at(d); if (!q.water && !q.wL && !q.wR) { land = d; break; } }

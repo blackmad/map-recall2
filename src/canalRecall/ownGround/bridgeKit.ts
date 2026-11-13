@@ -235,7 +235,7 @@ export function beam(m: MeshArrays, a: V3, b: V3, half: number, col: RGB, open =
 
 /** One station across the bridge: centre, left unit normal, edges, riding-surface z there, water under the centre/edges, relief at the edges. */
 /** `oL`/`oR`: water just outside the edge (RAIL_WATER_PROBE_M; the water polygon stops at the bridge faces): the railing's water side (railingRuns.ts railRuns). */
-export interface KitRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; z: number; zL: number; zR: number; water: boolean; wL: boolean; wR: boolean; gL: number; gR: number; oL?: boolean; oR?: boolean }
+export interface KitRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; z: number; zL: number; zR: number; water: boolean; wL: boolean; wR: boolean; gL: number; gR: number; oL?: boolean; oR?: boolean; pL?: boolean; pR?: boolean }
 
 export interface KitInput {
   id: string;
