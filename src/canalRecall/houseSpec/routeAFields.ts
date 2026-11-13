@@ -106,7 +106,10 @@ export function fieldsDraw(fields: RouteAFields | undefined | null): { force: st
   if (fields.bands === 'lintel' || fields.bands === 'both') force.push('string-courses');
   if (fields.surround && fields.head !== 'segmental') force.push('eared-surrounds');
   if (fields.bands) bandM = fields.bands === 'speklagen' ? BAND_M.speklagen : BAND_M.stone;
-  return { force, ...(bandM ? { bandM } : {}), ...(fields.head ? { arch: fields.head === 'segmental' } : {}), ...(fields.pale !== undefined ? { pale: fields.pale } : {}) };
+  // An eared surround is square-headed: without a head reading it picks a flat-headed preset (a pale-only pick could land
+  // on an arched bay, which the surround skips; Herengracht 176312).
+  const arch = fields.head ? fields.head === 'segmental' : fields.surround ? false : undefined;
+  return { force, ...(bandM ? { bandM } : {}), ...(arch !== undefined ? { arch } : {}), ...(fields.pale !== undefined ? { pale: fields.pale } : {}) };
 }
 
 /** Default on; `?specFields=0` in the page or SPEC_FIELDS=0 in Node draws none of the fields (byte-identical). */

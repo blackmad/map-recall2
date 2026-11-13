@@ -53,7 +53,7 @@ test('a stated surround (read or template) is the block faces\' eared surround, 
   assert.deepEqual({ ...EARED_SURROUND }, { ...DRESS.surround }, 'the generic surround is the block-face weight');
   const read = readFields(spec({ windowSurround: 'full-frame' }, { 'fronts/0/windowSurround': vj() }))!;
   assert.equal(read.surround, true); assert.equal(read.src.surround, 'vision-judge');
-  assert.deepEqual(fieldsDraw(read), { force: ['eared-surrounds'] });
+  assert.deepEqual(fieldsDraw(read), { force: ['eared-surrounds'], arch: false }, 'square-headed preset');
   assert.equal(readFields(spec({ windowSurround: 'stone-lintel' }, { 'fronts/0/windowSurround': vj() })), null, 'a head-only kind is no surround');
   assert.equal(readFields(spec({ windowSurround: 'full-frame' }, { 'fronts/0/windowSurround': vj(0.4) })), null, 'under the bar');
   const t = withTemplate(null, pick({ 'fronts/0/windowSurround': 'eared-keystone' }))!;
