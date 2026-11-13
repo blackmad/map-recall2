@@ -469,21 +469,28 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
 ### Spec fields on route A (lane WG step 2, 2026-11-13)
 
 `houseSpec/routeAFields.ts`. The bake-off made route A the consumer for every described house. It draws the classes that
-passed D1's precision bar (v4.2) with presets and existing quads only, and adds no new components:
+passed D1's precision bar (v4.2) with presets and existing quads, plus one forced-only component (the eared surround):
 - **bands** (`storey`, `lintel`, `both`, `speklagen`): forced through the existing band-line components. `floor-cornices` draws
   a band at every floor line (storey, both, speklagen) and `string-courses` draws the sill ledge (lintel, both), each at the
   stated height (`BAND_M`: 0.16 m for stone, 0.10 m for speklagen; `ExtraContext.bandM`). They dress first, inside the wall's
   unchanged extras budget, so the per-house triangle count barely moves.
 - **head**: a whole-front `flat` or `segmental` reading is the bay preset's `arch` trait. Per-row heads are held.
+- **surround** (`full-frame`, `eared-keystone`, `block-dressings`, read at the bar or from the street template): forces
+  `eared-surrounds` (facadeOrnaments.ts), the block faces' eared surround at `DRESS.surround` weight (13 cm jambs, a head with
+  ears), never the thin white frame, which vanishes at ride distance (reviewer, after the route-C ride sheet). It has p 0 and is
+  never a dice pick. Head-only kinds (stone-lintel, keystone) stay the pale preset. A segmental head wins over it.
 - **crown**: `cornice`, `step` and curved readings become the view's gable for the roof planner (`withHouseSpecCrown`, through
   GABLE_TO_ROOF). A curved reading takes the register's curved kind where the register names one, else `neck`.
 - **sources**: photo sources only (`vision-judge`, `streetlevel-measured`, `reviewed`, `author`) at confidence >= 0.5, the
   level at which D1 writes a class that is over its bar.
 - **street template** (`streetTemplate.ts`, from the route-C completer): a hook. `build-house-specs.ts --street-template`
-  fills the dressings a reading left open (bands, the pale surround) at build time, so the 414 kB table never ships to the
-  browser; only the filled fields ride in the view. It is off until the completer lane lands its re-ranked module (scale and
-  street-class match, no template when nothing qualifies).
+  fills the dressings a reading left open (bands, the surround, the pale preset) at build time, so the 414 kB table never
+  ships to the browser; only the filled fields ride in the view. On by default (`--no-street-template`); the build writes
+  which house each template came from to `staging/house-specs.templates.json`.
 - **flag**: `?specFields=0` / `SPEC_FIELDS=0` draws none of it, byte-identical (forwarded to the worker).
+- **crowns not drawn**: `point` waits for its class to have a figure.
+- **acceptance** is on the row: frame each Weteringschans row with every front in it on the route under test; a uniform fill
+  is a cost even when each house is defensible.
 - **kit gaps**: brick `courses`, `painted` (stucco) bands, per-row heads, school-period bands (the band-line components are
   canal/c19 only), and a mansard face as roof (it is drawn as a plain band).
 
