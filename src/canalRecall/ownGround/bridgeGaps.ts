@@ -346,6 +346,11 @@ export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth
       // No deck polygon near the road line (an end station on the quay survey): short, any neighbour's cap holds.
       if (last < 0) { short[side][i] = 0; continue; }
       if (hw - last <= CAP_MIN_M) continue;
+      // Deck-level survey farther out within the half-width (a second carriageway's bridge across a gap of water, BRU0420):
+      // the profile spans both; no cap.
+      let farther = false;
+      for (let t = last + EDGE_GAP_M + EDGE_STEP_M; t <= hw + 1e-9 && !farther; t += EDGE_STEP_M) farther = onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t);
+      if (farther) continue;
       short[side][i] = last + EDGE_STEP_M;
       let open = true;
       for (let t = last + EDGE_STEP_M; t <= last + CAP_OPEN_M + 1e-9 && open; t += EDGE_STEP_M) open = !surveyed(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t);

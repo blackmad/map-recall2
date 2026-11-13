@@ -138,3 +138,11 @@ test('survey caps: a half-width far past the deck polygons over open water is ca
   assert.equal(surveyDeckCaps(wide, (x, y) => Math.abs(y) <= 8, (x, y) => Math.abs(y) <= 8), null, 'a survey within CAP_MIN_M of the half-width: no caps');
   assert.equal(surveyDeckCaps(wide, onDeck, () => true), null, 'surveyed beyond everywhere (no open water): no caps');
 });
+
+test('survey caps: no cap where deck-level survey lies farther out within the half-width (two bridges on one profile, BRU0420)', () => {
+  const p = { ...deck(), halfWidth: new Float64Array(41).fill(12) };
+  const onDeck = (x: number, y: number) => (y >= -3 && y <= 3) || (y <= -8 && y >= -11.5);
+  const caps = surveyDeckCaps(p, onDeck, onDeck)!;
+  assert.equal(caps.right[20], Infinity, 'the second bridge 5 m beyond the water gap: the right side keeps its half-width');
+  assert.equal(caps.left[20], 3.5, 'nothing farther out on the left: capped');
+});
