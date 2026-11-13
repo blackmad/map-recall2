@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012160298",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160298/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "bays",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "red neon fascia sign over a glazed shopfront"
+  }
+ ],
+ "notes": "Tree and tram wire clutter; right side cut off."
+}

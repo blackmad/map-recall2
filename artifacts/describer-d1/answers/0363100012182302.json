@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182302",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182302/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "storeyWindows",
+  "bands",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a small pointed gable top over the cornice"
+  },
+  {
+   "component": "window",
+   "what": "first floor has a wide modern band of four windows unlike the three axes above"
+  }
+ ],
+ "notes": "Upper two storeys have three axes; the first floor has four openings."
+}

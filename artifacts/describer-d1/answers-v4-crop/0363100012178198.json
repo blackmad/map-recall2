@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-small-panes",
+ "storeyWindows": {
+  "3": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a glazed shopfront under a row of red-framed top lights in a tiled surround"
+  }
+ ],
+ "notes": "Dim, shadowed image; the cornice is only partly in frame.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

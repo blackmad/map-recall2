@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012175141",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175141/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 1,
+ "windows": "sash",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "heads",
+  "bands",
+  "wallFamily"
+ ],
+ "gaps": [],
+ "notes": "Image centre sits on the seam of two fronts seen very obliquely; described the left banded one at low confidence."
+}

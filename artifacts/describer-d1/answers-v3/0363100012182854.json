@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182854",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182854/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "stained-glass top lights over the casements on the lower two upper storeys"
+  },
+  {
+   "component": "balcony",
+   "what": "white French balconette railings across the top-storey windows"
+  }
+ ],
+ "notes": "The ground storey is hidden behind a blurred block and plants."
+}

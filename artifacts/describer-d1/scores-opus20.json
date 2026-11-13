@@ -1,0 +1,3220 @@
+{
+ "v": 1,
+ "mode": "vs-truth",
+ "pands": 20,
+ "fields": [
+  {
+   "field": "storeys",
+   "k": 15,
+   "n": 17,
+   "acc": 0.882,
+   "lo": 0.657,
+   "hi": 0.967,
+   "pass": true
+  },
+  {
+   "field": "storeys±1",
+   "k": 17,
+   "n": 17,
+   "acc": 1,
+   "lo": 0.816,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "bays",
+   "k": 15,
+   "n": 17,
+   "acc": 0.882,
+   "lo": 0.657,
+   "hi": 0.967,
+   "pass": true
+  },
+  {
+   "field": "bays±1",
+   "k": 16,
+   "n": 17,
+   "acc": 0.941,
+   "lo": 0.73,
+   "hi": 0.99,
+   "pass": true
+  },
+  {
+   "field": "windowFamily",
+   "k": 8,
+   "n": 15,
+   "acc": 0.533,
+   "lo": 0.301,
+   "hi": 0.752,
+   "pass": false
+  },
+  {
+   "field": "windows",
+   "k": 2,
+   "n": 6,
+   "acc": 0.333,
+   "lo": 0.097,
+   "hi": 0.7,
+   "pass": false
+  },
+  {
+   "field": "head",
+   "k": 7,
+   "n": 8,
+   "acc": 0.875,
+   "lo": 0.529,
+   "hi": 0.978,
+   "pass": true
+  },
+  {
+   "field": "storeyHeads",
+   "k": 0,
+   "n": 0,
+   "acc": null,
+   "lo": 0,
+   "hi": 1,
+   "pass": false
+  },
+  {
+   "field": "bands",
+   "k": 15,
+   "n": 16,
+   "acc": 0.938,
+   "lo": 0.717,
+   "hi": 0.989,
+   "pass": true
+  },
+  {
+   "field": "bandKind",
+   "k": 7,
+   "n": 7,
+   "acc": 1,
+   "lo": 0.646,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "surrounds",
+   "k": 14,
+   "n": 15,
+   "acc": 0.933,
+   "lo": 0.702,
+   "hi": 0.988,
+   "pass": true
+  },
+  {
+   "field": "windowSurround",
+   "k": 2,
+   "n": 6,
+   "acc": 0.333,
+   "lo": 0.097,
+   "hi": 0.7,
+   "pass": false
+  },
+  {
+   "field": "sills",
+   "k": 2,
+   "n": 3,
+   "acc": 0.667,
+   "lo": 0.208,
+   "hi": 0.939,
+   "pass": false
+  },
+  {
+   "field": "doorBay",
+   "k": 7,
+   "n": 8,
+   "acc": 0.875,
+   "lo": 0.529,
+   "hi": 0.978,
+   "pass": true
+  },
+  {
+   "field": "shop",
+   "k": 19,
+   "n": 20,
+   "acc": 0.95,
+   "lo": 0.764,
+   "hi": 0.991,
+   "pass": true
+  },
+  {
+   "field": "basement",
+   "k": 4,
+   "n": 5,
+   "acc": 0.8,
+   "lo": 0.376,
+   "hi": 0.964,
+   "pass": true
+  },
+  {
+   "field": "crown",
+   "k": 14,
+   "n": 15,
+   "acc": 0.933,
+   "lo": 0.702,
+   "hi": 0.988,
+   "pass": true
+  },
+  {
+   "field": "cornice",
+   "k": 12,
+   "n": 12,
+   "acc": 1,
+   "lo": 0.757,
+   "hi": 1,
+   "pass": true
+  },
+  {
+   "field": "wallFamily",
+   "k": 8,
+   "n": 13,
+   "acc": 0.615,
+   "lo": 0.355,
+   "hi": 0.823,
+   "pass": false
+  },
+  {
+   "field": "finish",
+   "k": 16,
+   "n": 18,
+   "acc": 0.889,
+   "lo": 0.672,
+   "hi": 0.969,
+   "pass": true
+  }
+ ],
+ "coverage": {
+  "storeys": {
+   "stated": 20,
+   "answered": 17,
+   "share": 0.85
+  },
+  "storeys±1": {
+   "stated": 20,
+   "answered": 17,
+   "share": 0.85
+  },
+  "bays": {
+   "stated": 20,
+   "answered": 17,
+   "share": 0.85
+  },
+  "bays±1": {
+   "stated": 20,
+   "answered": 17,
+   "share": 0.85
+  },
+  "windowFamily": {
+   "stated": 17,
+   "answered": 15,
+   "share": 0.882
+  },
+  "windows": {
+   "stated": 8,
+   "answered": 6,
+   "share": 0.75
+  },
+  "head": {
+   "stated": 10,
+   "answered": 8,
+   "share": 0.8
+  },
+  "storeyHeads": {
+   "stated": 0,
+   "answered": 0,
+   "share": null
+  },
+  "bands": {
+   "stated": 17,
+   "answered": 16,
+   "share": 0.941
+  },
+  "bandKind": {
+   "stated": 8,
+   "answered": 7,
+   "share": 0.875
+  },
+  "surrounds": {
+   "stated": 16,
+   "answered": 15,
+   "share": 0.938
+  },
+  "windowSurround": {
+   "stated": 7,
+   "answered": 6,
+   "share": 0.857
+  },
+  "sills": {
+   "stated": 4,
+   "answered": 3,
+   "share": 0.75
+  },
+  "doorBay": {
+   "stated": 13,
+   "answered": 8,
+   "share": 0.615
+  },
+  "shop": {
+   "stated": 20,
+   "answered": 20,
+   "share": 1
+  },
+  "basement": {
+   "stated": 8,
+   "answered": 5,
+   "share": 0.625
+  },
+  "crown": {
+   "stated": 17,
+   "answered": 15,
+   "share": 0.882
+  },
+  "cornice": {
+   "stated": 14,
+   "answered": 12,
+   "share": 0.857
+  },
+  "wallFamily": {
+   "stated": 13,
+   "answered": 13,
+   "share": 1
+  },
+  "finish": {
+   "stated": 18,
+   "answered": 18,
+   "share": 1
+  }
+ },
+ "byColumn": {
+  "pose-photo": [
+   {
+    "field": "storeys",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "storeys±1",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 6,
+    "n": 7,
+    "acc": 0.857,
+    "lo": 0.487,
+    "hi": 0.974,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 6,
+    "n": 9,
+    "acc": 0.667,
+    "lo": 0.354,
+    "hi": 0.879,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 6,
+    "n": 7,
+    "acc": 0.857,
+    "lo": 0.487,
+    "hi": 0.974,
+    "pass": true
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 8,
+    "n": 9,
+    "acc": 0.889,
+    "lo": 0.565,
+    "hi": 0.98,
+    "pass": true
+   },
+   {
+    "field": "bandKind",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "surrounds",
+    "k": 9,
+    "n": 9,
+    "acc": 1,
+    "lo": 0.701,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowSurround",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 3,
+    "n": 4,
+    "acc": 0.75,
+    "lo": 0.301,
+    "hi": 0.954,
+    "pass": false
+   },
+   {
+    "field": "shop",
+    "k": 9,
+    "n": 9,
+    "acc": 1,
+    "lo": 0.701,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "basement",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "crown",
+    "k": 6,
+    "n": 6,
+    "acc": 1,
+    "lo": 0.61,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "cornice",
+    "k": 6,
+    "n": 6,
+    "acc": 1,
+    "lo": 0.61,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "wallFamily",
+    "k": 5,
+    "n": 9,
+    "acc": 0.556,
+    "lo": 0.267,
+    "hi": 0.811,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 8,
+    "n": 8,
+    "acc": 1,
+    "lo": 0.676,
+    "hi": 1,
+    "pass": true
+   }
+  ],
+  "crop-gate-pass": [
+   {
+    "field": "storeys",
+    "k": 7,
+    "n": 9,
+    "acc": 0.778,
+    "lo": 0.453,
+    "hi": 0.937,
+    "pass": false
+   },
+   {
+    "field": "storeys±1",
+    "k": 9,
+    "n": 9,
+    "acc": 1,
+    "lo": 0.701,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 8,
+    "n": 9,
+    "acc": 0.889,
+    "lo": 0.565,
+    "hi": 0.98,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 8,
+    "n": 9,
+    "acc": 0.889,
+    "lo": 0.565,
+    "hi": 0.98,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 2,
+    "n": 6,
+    "acc": 0.333,
+    "lo": 0.097,
+    "hi": 0.7,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 2,
+    "n": 6,
+    "acc": 0.333,
+    "lo": 0.097,
+    "hi": 0.7,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bandKind",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "surrounds",
+    "k": 5,
+    "n": 6,
+    "acc": 0.833,
+    "lo": 0.436,
+    "hi": 0.97,
+    "pass": true
+   },
+   {
+    "field": "windowSurround",
+    "k": 2,
+    "n": 6,
+    "acc": 0.333,
+    "lo": 0.097,
+    "hi": 0.7,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 2,
+    "n": 3,
+    "acc": 0.667,
+    "lo": 0.208,
+    "hi": 0.939,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 4,
+    "n": 4,
+    "acc": 1,
+    "lo": 0.51,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "shop",
+    "k": 8,
+    "n": 9,
+    "acc": 0.889,
+    "lo": 0.565,
+    "hi": 0.98,
+    "pass": true
+   },
+   {
+    "field": "basement",
+    "k": 4,
+    "n": 5,
+    "acc": 0.8,
+    "lo": 0.376,
+    "hi": 0.964,
+    "pass": true
+   },
+   {
+    "field": "crown",
+    "k": 7,
+    "n": 8,
+    "acc": 0.875,
+    "lo": 0.529,
+    "hi": 0.978,
+    "pass": true
+   },
+   {
+    "field": "cornice",
+    "k": 6,
+    "n": 6,
+    "acc": 1,
+    "lo": 0.61,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "wallFamily",
+    "k": 2,
+    "n": 3,
+    "acc": 0.667,
+    "lo": 0.208,
+    "hi": 0.939,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 7,
+    "n": 9,
+    "acc": 0.778,
+    "lo": 0.453,
+    "hi": 0.937,
+    "pass": false
+   }
+  ],
+  "crop-gate-fail": [
+   {
+    "field": "storeys",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "storeys±1",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bandKind",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "surrounds",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "windowSurround",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "shop",
+    "k": 2,
+    "n": 2,
+    "acc": 1,
+    "lo": 0.342,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "basement",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "crown",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "cornice",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "wallFamily",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "finish",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   }
+  ]
+ },
+ "bySet": {
+  "benchmark": [
+   {
+    "field": "storeys",
+    "k": 8,
+    "n": 8,
+    "acc": 1,
+    "lo": 0.676,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "storeys±1",
+    "k": 8,
+    "n": 8,
+    "acc": 1,
+    "lo": 0.676,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 7,
+    "n": 8,
+    "acc": 0.875,
+    "lo": 0.529,
+    "hi": 0.978,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 8,
+    "n": 8,
+    "acc": 1,
+    "lo": 0.676,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 6,
+    "n": 10,
+    "acc": 0.6,
+    "lo": 0.313,
+    "hi": 0.832,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 7,
+    "n": 8,
+    "acc": 0.875,
+    "lo": 0.529,
+    "hi": 0.978,
+    "pass": true
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 9,
+    "n": 10,
+    "acc": 0.9,
+    "lo": 0.596,
+    "hi": 0.982,
+    "pass": true
+   },
+   {
+    "field": "bandKind",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "surrounds",
+    "k": 10,
+    "n": 10,
+    "acc": 1,
+    "lo": 0.722,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowSurround",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 3,
+    "n": 4,
+    "acc": 0.75,
+    "lo": 0.301,
+    "hi": 0.954,
+    "pass": false
+   },
+   {
+    "field": "shop",
+    "k": 10,
+    "n": 10,
+    "acc": 1,
+    "lo": 0.722,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "basement",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "crown",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "cornice",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "wallFamily",
+    "k": 5,
+    "n": 10,
+    "acc": 0.5,
+    "lo": 0.237,
+    "hi": 0.763,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 9,
+    "n": 9,
+    "acc": 1,
+    "lo": 0.701,
+    "hi": 1,
+    "pass": true
+   }
+  ],
+  "hand-spec": [
+   {
+    "field": "storeys",
+    "k": 5,
+    "n": 7,
+    "acc": 0.714,
+    "lo": 0.359,
+    "hi": 0.918,
+    "pass": false
+   },
+   {
+    "field": "storeys±1",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 6,
+    "n": 7,
+    "acc": 0.857,
+    "lo": 0.487,
+    "hi": 0.974,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 6,
+    "n": 7,
+    "acc": 0.857,
+    "lo": 0.487,
+    "hi": 0.974,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 3,
+    "n": 6,
+    "acc": 0.5,
+    "lo": 0.188,
+    "hi": 0.812,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 2,
+    "n": 6,
+    "acc": 0.333,
+    "lo": 0.097,
+    "hi": 0.7,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bandKind",
+    "k": 7,
+    "n": 7,
+    "acc": 1,
+    "lo": 0.646,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "surrounds",
+    "k": 5,
+    "n": 6,
+    "acc": 0.833,
+    "lo": 0.436,
+    "hi": 0.97,
+    "pass": true
+   },
+   {
+    "field": "windowSurround",
+    "k": 2,
+    "n": 6,
+    "acc": 0.333,
+    "lo": 0.097,
+    "hi": 0.7,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 2,
+    "n": 3,
+    "acc": 0.667,
+    "lo": 0.208,
+    "hi": 0.939,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 4,
+    "n": 4,
+    "acc": 1,
+    "lo": 0.51,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "shop",
+    "k": 10,
+    "n": 11,
+    "acc": 0.909,
+    "lo": 0.623,
+    "hi": 0.984,
+    "pass": true
+   },
+   {
+    "field": "basement",
+    "k": 4,
+    "n": 5,
+    "acc": 0.8,
+    "lo": 0.376,
+    "hi": 0.964,
+    "pass": true
+   },
+   {
+    "field": "crown",
+    "k": 6,
+    "n": 6,
+    "acc": 1,
+    "lo": 0.61,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "cornice",
+    "k": 5,
+    "n": 6,
+    "acc": 0.833,
+    "lo": 0.436,
+    "hi": 0.97,
+    "pass": true
+   },
+   {
+    "field": "wallFamily",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 5,
+    "n": 7,
+    "acc": 0.714,
+    "lo": 0.359,
+    "hi": 0.918,
+    "pass": false
+   }
+  ],
+  "hand-set": [
+   {
+    "field": "storeys",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "storeys±1",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "bays±1",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "windowFamily",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "windows",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "head",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "storeyHeads",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bands",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "bandKind",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "surrounds",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "windowSurround",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "sills",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "doorBay",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "shop",
+    "k": 2,
+    "n": 3,
+    "acc": 0.667,
+    "lo": 0.208,
+    "hi": 0.939,
+    "pass": false
+   },
+   {
+    "field": "basement",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "crown",
+    "k": 2,
+    "n": 3,
+    "acc": 0.667,
+    "lo": 0.208,
+    "hi": 0.939,
+    "pass": false
+   },
+   {
+    "field": "cornice",
+    "k": 0,
+    "n": 0,
+    "acc": null,
+    "lo": 0,
+    "hi": 1,
+    "pass": false
+   },
+   {
+    "field": "wallFamily",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "finish",
+    "k": 3,
+    "n": 3,
+    "acc": 1,
+    "lo": 0.438,
+    "hi": 1,
+    "pass": true
+   }
+  ]
+ },
+ "subsets": {
+  "pale": [
+   {
+    "field": "wallFamily",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "finish",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   }
+  ],
+  "notPale": [
+   {
+    "field": "wallFamily",
+    "k": 7,
+    "n": 12,
+    "acc": 0.583,
+    "lo": 0.32,
+    "hi": 0.807,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 11,
+    "n": 11,
+    "acc": 1,
+    "lo": 0.741,
+    "hi": 1,
+    "pass": true
+   }
+  ],
+  "painted": [
+   {
+    "field": "wallFamily",
+    "k": 1,
+    "n": 1,
+    "acc": 1,
+    "lo": 0.207,
+    "hi": 1,
+    "pass": true
+   },
+   {
+    "field": "finish",
+    "k": 1,
+    "n": 2,
+    "acc": 0.5,
+    "lo": 0.095,
+    "hi": 0.905,
+    "pass": false
+   }
+  ],
+  "bareBrick": [
+   {
+    "field": "wallFamily",
+    "k": 7,
+    "n": 11,
+    "acc": 0.636,
+    "lo": 0.354,
+    "hi": 0.848,
+    "pass": false
+   },
+   {
+    "field": "finish",
+    "k": 15,
+    "n": 16,
+    "acc": 0.938,
+    "lo": 0.717,
+    "hi": 0.989,
+    "pass": true
+   }
+  ]
+ },
+ "confusions": {
+  "crown": {
+   "cornice": {
+    "cornice": 12,
+    "flat": 1
+   },
+   "bell": {
+    "bell": 1
+   },
+   "neck": {
+    "neck": 1
+   }
+  },
+  "windowFamily": {
+   "T-window": {
+    "T-window": 4,
+    "sash": 1
+   },
+   "sash": {
+    "sash": 4,
+    "T-window": 4
+   },
+   "casement": {
+    "T-window": 2
+   }
+  },
+  "head": {
+   "segmental": {
+    "segmental": 1,
+    "flat": 1
+   },
+   "mixed": {
+    "mixed": 1
+   },
+   "flat": {
+    "flat": 5
+   }
+  },
+  "wallFamily": {
+   "red-brown": {
+    "red-brown": 4,
+    "red": 1
+   },
+   "brown|dark": {
+    "red-brown": 4
+   },
+   "brown": {
+    "brown": 2
+   },
+   "red": {
+    "red": 1
+   },
+   "white": {
+    "white": 1
+   }
+  },
+  "finish": {
+   "brick": {
+    "brick": 15,
+    "painted-brick": 1
+   },
+   "stucco": {
+    "stucco": 1
+   },
+   "painted-brick": {
+    "brick": 1
+   }
+  },
+  "doorBay": {
+   "right": {
+    "right": 2
+   },
+   "left": {
+    "left": 4
+   },
+   "centre": {
+    "several": 1,
+    "centre": 1
+   }
+  },
+  "shop": {
+   "true": {
+    "true": 13
+   },
+   "false": {
+    "false": 6,
+    "true": 1
+   }
+  },
+  "bands": {
+   "true": {
+    "true": 2
+   },
+   "false": {
+    "false": 13,
+    "true": 1
+   }
+  },
+  "surrounds": {
+   "true": {
+    "true": 3,
+    "false": 1
+   },
+   "false": {
+    "false": 11
+   }
+  }
+ },
+ "perHouse": {
+  "0363100012160298": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "T-window",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "segmental",
+     "b": "segmental",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "red-brown"
+     ],
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012165024": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 5,
+     "b": 4,
+     "ok": false
+    },
+    {
+     "field": "bays±1",
+     "a": 5,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "sash",
+     "b": "T-window",
+     "ok": false
+    },
+    {
+     "field": "head",
+     "a": "mixed",
+     "b": "mixed",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "heavy",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red",
+     "b": [
+      "red-brown"
+     ],
+     "ok": false
+    }
+   ]
+  },
+  "0363100012165141": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "T-window",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "segmental",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "doorBay",
+     "a": "right",
+     "b": "right",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "red-brown"
+     ],
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012167817": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark",
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "sash",
+     "b": "sash",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "flat",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "red-brown"
+     ],
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012168692": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 2,
+     "b": 4,
+     "ok": false
+    },
+    {
+     "field": "bays±1",
+     "a": 2,
+     "b": 4,
+     "ok": false
+    },
+    {
+     "field": "windowFamily",
+     "a": "sash",
+     "b": "sash",
+     "ok": true
+    },
+    {
+     "field": "windows",
+     "a": "sash",
+     "b": "sash",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": true,
+     "ok": false
+    },
+    {
+     "field": "windowSurround",
+     "a": "none",
+     "b": "full-frame",
+     "ok": false
+    },
+    {
+     "field": "doorBay",
+     "a": "right",
+     "b": "right",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "basement",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "painted-brick",
+     "b": "brick",
+     "ok": false
+    }
+   ]
+  },
+  "0363100012171915": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 3,
+     "ok": false
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "T-window",
+     "ok": true
+    },
+    {
+     "field": "windows",
+     "a": "casement-toplight",
+     "b": "casement-toplight",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "doorBay",
+     "a": "left",
+     "b": "left",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "basement",
+     "a": true,
+     "b": false,
+     "ok": false
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": "simple",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012172590": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "bays",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "casement",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "brown",
+      "dark"
+     ],
+     "ok": false
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012172673": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "T-window",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "flat",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "doorBay",
+     "a": "several",
+     "b": "centre",
+     "ok": false
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "red-brown"
+     ],
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012173424": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 3,
+     "b": 4,
+     "ok": false
+    },
+    {
+     "field": "storeys±1",
+     "a": 3,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 2,
+     "b": 2,
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "windowSurround",
+     "a": "none",
+     "b": "sill",
+     "ok": false
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": "simple",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012174187": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-set"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 5,
+     "b": 5,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 5,
+     "b": 5,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": false,
+     "ok": false
+    },
+    {
+     "field": "crown",
+     "a": "flat",
+     "b": "cornice",
+     "ok": false
+    },
+    {
+     "field": "wallFamily",
+     "a": "brown",
+     "b": "brown",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012174564": {
+   "column": "crop-gate-fail",
+   "sets": [
+    "hand-set"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "bell",
+     "b": "bell",
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red",
+     "b": "red",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012174965": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "sash",
+     "ok": false
+    },
+    {
+     "field": "windows",
+     "a": "casement-toplight",
+     "b": "sash",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "windowSurround",
+     "a": "none",
+     "b": "sill",
+     "ok": false
+    },
+    {
+     "field": "sills",
+     "a": "none",
+     "b": [
+      "stone",
+      "consoles"
+     ],
+     "ok": false
+    },
+    {
+     "field": "doorBay",
+     "a": "left",
+     "b": "left",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "basement",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "frieze",
+     "b": "frieze",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012174971": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-set",
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "brown",
+     "b": "brown",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012175037": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 7,
+     "b": 7,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 7,
+     "b": 7,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "sash",
+     "b": "sash",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "flat",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "doorBay",
+     "a": "centre",
+     "b": "centre",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "simple",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "white",
+     "b": [
+      "white"
+     ],
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "stucco",
+     "b": "stucco",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012175141": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark"
+   ],
+   "cells": [
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "sash",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": true,
+     "b": false,
+     "ok": false
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "brown",
+      "dark"
+     ],
+     "ok": false
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012176545": {
+   "column": "pose-photo",
+   "sets": [
+    "benchmark",
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "sash",
+     "b": "sash",
+     "ok": true
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "flat",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "doorBay",
+     "a": "left",
+     "b": "left",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "frieze",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "brown",
+      "dark"
+     ],
+     "ok": false
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012178198": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "sash",
+     "ok": false
+    },
+    {
+     "field": "windows",
+     "a": "casement-gridded-toplight",
+     "b": "sash-small-panes",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "windowSurround",
+     "a": "sill",
+     "b": "none",
+     "ok": false
+    },
+    {
+     "field": "doorBay",
+     "a": "left",
+     "b": "left",
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "basement",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "heavy",
+     "b": "heavy",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "painted-brick",
+     "ok": false
+    }
+   ]
+  },
+  "0363100012182581": {
+   "column": "crop-gate-fail",
+   "sets": [
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    }
+   ]
+  },
+  "0363100012182847": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "benchmark",
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "casement",
+     "ok": false
+    },
+    {
+     "field": "windows",
+     "a": "casement-toplight",
+     "b": "cross",
+     "ok": false
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "windowSurround",
+     "a": "sill",
+     "b": "sill",
+     "ok": true
+    },
+    {
+     "field": "sills",
+     "a": "stone",
+     "b": [
+      "stone",
+      "consoles"
+     ],
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "basement",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "neck",
+     "b": "neck",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  },
+  "0363100012182856": {
+   "column": "crop-gate-pass",
+   "sets": [
+    "benchmark",
+    "hand-spec"
+   ],
+   "cells": [
+    {
+     "field": "storeys",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "storeys±1",
+     "a": 4,
+     "b": 4,
+     "ok": true
+    },
+    {
+     "field": "bays",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "bays±1",
+     "a": 3,
+     "b": 3,
+     "ok": true
+    },
+    {
+     "field": "windowFamily",
+     "a": "T-window",
+     "b": "sash",
+     "ok": false
+    },
+    {
+     "field": "windows",
+     "a": "casement-toplight",
+     "b": "t-window",
+     "ok": false
+    },
+    {
+     "field": "head",
+     "a": "flat",
+     "b": "flat",
+     "ok": true
+    },
+    {
+     "field": "bands",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "bandKind",
+     "a": "none",
+     "b": "none",
+     "ok": true
+    },
+    {
+     "field": "surrounds",
+     "a": false,
+     "b": false,
+     "ok": true
+    },
+    {
+     "field": "windowSurround",
+     "a": "sill",
+     "b": "sill",
+     "ok": true
+    },
+    {
+     "field": "sills",
+     "a": "stone",
+     "b": [
+      "stone",
+      "consoles"
+     ],
+     "ok": true
+    },
+    {
+     "field": "shop",
+     "a": true,
+     "b": true,
+     "ok": true
+    },
+    {
+     "field": "crown",
+     "a": "cornice",
+     "b": "cornice",
+     "ok": true
+    },
+    {
+     "field": "cornice",
+     "a": "bracketed",
+     "b": [
+      "simple",
+      "bracketed",
+      "heavy",
+      "frieze"
+     ],
+     "ok": true
+    },
+    {
+     "field": "wallFamily",
+     "a": "red-brown",
+     "b": [
+      "brown",
+      "dark"
+     ],
+     "ok": false
+    },
+    {
+     "field": "finish",
+     "a": "brick",
+     "b": "brick",
+     "ok": true
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182375/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a stone balustrade stands on the cornice"
+  },
+  {
+   "component": "door",
+   "what": "the third ground opening has an ornate carved fanlight, possibly a second door"
+  }
+ ],
+ "notes": "A parked car hides the lower ground storey."
+}

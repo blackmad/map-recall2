@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012160226",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160226/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "sash-1-over-1",
+ "heads": [],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round relieving arches with patterned brick tympana over the top-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "curved gable with white stone coping, two round medallions flanking a central window"
+  }
+ ],
+ "notes": "Lower storeys hidden behind a tram-shelter advertising panel; only the top two storeys and the gable are visible."
+}

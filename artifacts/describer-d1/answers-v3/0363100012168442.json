@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "arched"
+ },
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "crown",
+  "wallFamily",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balconies with iron railings on the centre bay of each upper storey"
+  },
+  {
+   "component": "window",
+   "what": "white keystones and springer blocks on brick segmental heads; top-storey centre window round-arched"
+  },
+  {
+   "component": "shopfront",
+   "what": "white shopfront with a fanlight-arched centre window and doors at both sides"
+  }
+ ]
+}

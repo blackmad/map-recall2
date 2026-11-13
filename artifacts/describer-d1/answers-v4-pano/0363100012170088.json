@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012170088",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001054_pano_0000_005532.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a tall neck with a round-arched cap standing on stepped shoulders"
+  },
+  {
+   "component": "window",
+   "what": "leaded small-pane top lights in the first upper storey"
+  }
+ ],
+ "notes": "A bare tree stands in front of the middle of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

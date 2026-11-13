@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "French balconies with iron railings at the middle-axis doors of storeys 1 and 2"
+  },
+  {
+   "component": "shopfront",
+   "what": "a wide ground-storey opening under a segmental white arch with a small-paned fan light"
+  }
+ ],
+ "notes": "A large tree covers the right half and the top; the roof storey is hard to read. [crown from describe cut]",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

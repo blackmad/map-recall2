@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012153622",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012153622.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "notes": "Same ornament family as the right, but target has four upper storeys vs three."
+}

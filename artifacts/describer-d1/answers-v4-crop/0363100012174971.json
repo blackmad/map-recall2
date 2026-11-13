@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174971",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174971/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white attic frieze with small windows under the cornice and a hipped slate roof behind"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber café front with small-paned windows, a central door with a sign panel and a house door at the right"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

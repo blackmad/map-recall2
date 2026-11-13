@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012168758",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168758.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands",
+  "basement",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall hoist dormer with a small pediment in a red-tiled pitched roof behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "a light painted band over the ground storey and a small plaque over the ground-storey centre window"
+  }
+ ],
+ "notes": "A red skip covers most of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

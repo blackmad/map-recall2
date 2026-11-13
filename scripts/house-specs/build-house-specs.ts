@@ -14,6 +14,7 @@ import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
+import { frontEavesM } from '../../src/canalRecall/houseSpec/storeyPlan.ts';
 
 export const HELP = `build-house-specs: resolve every pand's HouseSpec from its sources and write the tiled extract.
 
@@ -67,7 +68,7 @@ if (args.includes('--publish')) {
 // --- 1. every source, as partial specs per pand ------------------------------------------------------------------
 const parts = new Map<string, HouseSpec[]>();
 const add = (s: HouseSpec | null) => { if (s) { const list = parts.get(s.pandId) ?? []; list.push(s); parts.set(s.pandId, list); } };
-const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[] };
+const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[], eavesNotFront: 0 };
 
 const facts = registerFactsFromExtract(json(path.join(EXTRACT, 'monument-facts.json')));
 for (const [id, f] of facts) { add(fromRegisterFacts(f, f.nr, id)); counts.register++; }
@@ -133,6 +134,8 @@ const polys = (g: any): Ring[][] => (g.type === 'Polygon' ? [g.coordinates] : g.
 const inside = ([x, y]: number[], ring: Ring) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
 const centroid = (g: any) => { const r = polys(g)[0][0]; return [r.reduce((s, p) => s + p[0], 0) / r.length, r.reduce((s, p) => s + p[1], 0) / r.length]; };
 const where = new Map<string, { tile: string; buurt?: Record<string, any> }>();
+/** Lane WG: the building tile's `height` (3DBAG's roof 70th percentile above ground), the front-eaves check (frontEavesM). */
+const tileHeight = new Map<string, number>();
 for (const tile of tileKeys) {
   const file = path.join(EXTRACT, `building-tiles/14/${tile}.geojson.gz`);
   if (!existsSync(file)) continue;
@@ -141,6 +144,7 @@ for (const tile of tileKeys) {
     const digits = /(\d{16})$/.exec(id)?.[1];
     if (!digits || !resolved.has(digits) || where.has(digits)) continue;
     const c = centroid(f.geometry);
+    if (typeof f.properties?.height === 'number') tileHeight.set(digits, f.properties.height);
     where.set(digits, { tile, buurt: buurten.find(b => polys(b.geometry).some(p => inside(c, p[0])))?.properties });
   }
 }
@@ -148,9 +152,12 @@ for (const tile of tileKeys) {
 // --- 3b. 3DBAG crown rise for the register gable gate -------------------------------------------------------------
 const BAG_FACTS = path.join(ROOT, 'public/data/extracts/amsterdam/bag-facts/14');
 const bagRise = new Map<string, number>();
+/** Lane WG: 3DBAG's eaves (bag-facts), for the storey plan of pands with a stated count (houseSpec/storeyPlan.ts). */
+const bagEaves = new Map<string, number>();
+const bagRidge = new Map<string, number>();
 if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y of readdirSync(path.join(BAG_FACTS, x))) {
   const t = JSON.parse(gunzipSync(readFileSync(path.join(BAG_FACTS, x, y))).toString('utf8'));
-  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
+  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null) bagEaves.set(k.slice(-16), d.eavesM); if (d.ridgeM !== null) bagRidge.set(k.slice(-16), d.ridgeM); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
 
@@ -164,6 +171,12 @@ for (const [pand, spec] of resolved) {
   // The register gable gate (houseSpec/decorate.ts, H5h round 4) needs 3DBAG's crown above the eaves, which the live building
   // tiles do not carry: the view carries ridge - eaves (bag-facts) for every pand with a gable or a historic gable.
   if (record.v.gable || spec.facts?.historicGable) { const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise; }
+  // Lane WG: the storey plan reads the stated count against 3DBAG's eaves (houseSpec/storeyPlan.ts).
+  // bag-facts eaves is the pand's lowest roof point (often a rear annex): frontEavesM keeps it only where it can be the front's.
+  if (record.v.storeys && bagEaves.has(pand)) {
+    const eavesM = frontEavesM({ eavesM: bagEaves.get(pand)!, ridgeM: bagRidge.get(pand) ?? null, heightM: tileHeight.get(pand) ?? null });
+    if (eavesM !== null) record.v.eavesM = eavesM; else counts.eavesNotFront++;
+  }
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;
   const tile = byTile.get(at.tile) ?? { version: 1 as const, buildings: {} };

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012171851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171851/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two windows inside the stepped gable above storey 1 plus one higher attic window"
+  },
+  {
+   "component": "shopfront",
+   "what": "a red awning and fascia across the ground storey"
+  }
+ ],
+ "notes": "Blinds hide the window glazing.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

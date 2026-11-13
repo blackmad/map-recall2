@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012159694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012159694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "white timber balconies with turned balusters on brackets in front of the wide right bay on storeys 1 and 2"
+  },
+  {
+   "component": "window",
+   "what": "segmental brick heads with white keystone and springer blocks linked by a thin white band"
+  },
+  {
+   "component": "dormer",
+   "what": "small pedimented hoist dormer with timber cross bracing above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "double doors under a shared top light at the left of the ground storey"
+  }
+ ]
+}

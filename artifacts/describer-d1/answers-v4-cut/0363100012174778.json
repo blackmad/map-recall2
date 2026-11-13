@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174778",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174778.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "relieving",
+  "relieving",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "shouldered",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "crown",
+  "heads",
+  "windowSurround",
+  "whiteFrames",
+  "storeyParts",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "every window has fanned relieving arches of alternating white stone and brick voussoirs over it"
+  },
+  {
+   "component": "window",
+   "what": "the window jambs are dressed with alternating white stone blocks set in the brick (block-and-start quoining)"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small carved white stone fan ornaments over the arches between storeys"
+  }
+ ],
+ "notes": "A tree, a street lamp and a parking sign cover much of the front; the plain brick top above the dressed storeys is read as the crown.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

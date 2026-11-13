@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two white oval cartouches flank the single middle window of the third storey"
+  },
+  {
+   "component": "shutters",
+   "what": "a hoist door with open white shutters high in the middle of the front"
+  },
+  {
+   "component": "window",
+   "what": "the middle bay has a wide window and the side bays narrow windows on the lower storeys"
+  },
+  {
+   "component": "door",
+   "what": "ground storey with a house door at each side and a glazed double door in the middle under transom windows"
+  }
+ ],
+ "notes": "The top of the front is cut off just above the hoist door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

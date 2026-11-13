@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012178185",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "small-over-one",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "two shallow white-framed bay windows on each of the first and second storeys, with a small window or grille between them"
+  },
+  {
+   "component": "window",
+   "what": "the top storey is one continuous band of six small-paned windows in a white frame"
+  },
+  {
+   "component": "roof",
+   "what": "a set-back glazed roof storey with railings behind the parapet"
+  },
+  {
+   "component": "shopfront",
+   "what": "a red shopfront with a fascia and a row of small top lights"
+  }
+ ],
+ "notes": "Parked cars and a blurred object hide the ground storey doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

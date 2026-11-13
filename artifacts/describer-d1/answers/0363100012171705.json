@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012171705",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171705/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "buff",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "wallFamily",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "lowest visible upper storey has arched-top windows with small-paned glazing"
+  }
+ ],
+ "notes": "Ground storey hidden by a construction fence and scaffold, top cut off, heavy tree shadows."
+}

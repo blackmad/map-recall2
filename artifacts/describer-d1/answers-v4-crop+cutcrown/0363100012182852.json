@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks at both springings and a white keystone over each upper window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a narrow gable top with a small window and a white pinnacle"
+  }
+ ],
+ "notes": "The crop straddles two fronts (a neck gable with claw pieces on the left, a two-bay front on the right); described the right one. Ground storey hidden by a parasol.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

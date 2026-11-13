@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002863_pano_0002_000029.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bands",
+  "sills",
+  "cornice",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "moulded stucco window surrounds with pediments and garlands over the windows."
+  },
+  {
+   "component": "shopfront",
+   "what": "a glazed café terrace extension in front of the ground storey."
+  }
+ ],
+ "notes": "Corner building seen at a strong slant; a street-light mast covers the left part.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

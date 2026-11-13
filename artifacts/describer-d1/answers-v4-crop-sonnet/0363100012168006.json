@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168006/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof behind a tall cream frieze"
+  }
+ ],
+ "notes": "Car hides the ground storey partly.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

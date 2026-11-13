@@ -41,6 +41,14 @@ export interface HouseSpecView {
   storeys?: number;
   /** H11: the ground storey's height (m, storeyHeights[0]); only with `storeys`. */
   groundM?: number;
+  /** Lane WG: the front stands on a souterrain (fronts/0/souterrain), from a photo or register source; only with `storeys`. */
+  souterrain?: true;
+  /** Lane WG: a roof storey above the eaves (fronts/0/roofStorey mansard|attic); only with `storeys`. */
+  roofStorey?: 'mansard' | 'attic';
+  /** Lane WG: 3DBAG's eaves above the ground (m, bag-facts), for pands with `storeys` (houseSpec/storeyPlan.ts). */
+  eavesM?: number;
+  /** Lane WG: the front's crown is a cornice (fronts/0/gable, from a front-reading source); only with `storeys`. */
+  corniceCrown?: true;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
   /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
@@ -53,7 +61,7 @@ export interface HouseSpecView {
   /** H11: the shopfront's paint (#rrggbb), with `shop`. */
   shopHex?: string;
   /** Winning source per key above. */
-  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop' | 'look' | 'shop', string>>;
+  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop' | 'look' | 'shop' | 'souterrain' | 'roofStorey', string>>;
 }
 
 /**
@@ -71,6 +79,13 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   storeysFit?: true;
   /** H11: the stated ground storey's height (m), with `storeysFit`. */
   groundM?: number;
+  /** Lane WG (houseSpec/storeyPlan.ts): a souterrain under the stated storeys, a roof storey above the eaves, 3DBAG's eaves. */
+  souterrain?: true;
+  roofStorey?: 'mansard' | 'attic';
+  eavesM?: number;
+  corniceCrown?: true;
+  /** Lane WG step 1b: the source of `storeys` (view src.storeys); only a describer read is planned (storeyPlanDraws). */
+  storeysSrc?: string;
   /** H11: the window look (bayLook.ts bayLookFor `spec`). */
   look?: SpecLook;
   /** H11: the shop's ground-storey paint. */
@@ -216,6 +231,12 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
   if (view.storeys && view.storeys >= 2) {
     recipe.storeys = view.storeys;
+    // Lane WG: the storey plan's inputs (storeyPlan.ts); absent keys leave the fit as before.
+    if (view.souterrain === true) recipe.souterrain = true;
+    if (view.roofStorey === 'mansard' || view.roofStorey === 'attic') recipe.roofStorey = view.roofStorey;
+    if (typeof view.eavesM === 'number' && Number.isFinite(view.eavesM) && view.eavesM > 0) recipe.eavesM = view.eavesM;
+    if (view.corniceCrown === true) recipe.corniceCrown = true;
+    if (view.src.storeys) recipe.storeysSrc = view.src.storeys;
     if (specDesignOn('storeys')) {
       recipe.storeysFit = true;
       if (typeof view.groundM === 'number' && Number.isFinite(view.groundM)) recipe.groundM = view.groundM;

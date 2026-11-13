@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  1,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two white oval cartouches flanking the third-storey centre window"
+  },
+  {
+   "component": "shutters",
+   "what": "white open shutters on the top-storey hoist window"
+  },
+  {
+   "component": "window",
+   "what": "the centre axis windows are much wider than the narrow side windows"
+  }
+ ],
+ "notes": "Top of the front cut off at a white band."
+}

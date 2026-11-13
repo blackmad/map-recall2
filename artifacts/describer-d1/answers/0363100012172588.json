@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012172588",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172588/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "finish",
+  "crown",
+  "doorBay",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "two gabled dormers in a tiled roof slope"
+  },
+  {
+   "component": "shopfront",
+   "what": "café window with dark fascia and pilasters on a white corner"
+  }
+ ],
+ "notes": "Low two-storey corner house seen obliquely; upper windows differ in size (one small, one larger)."
+}

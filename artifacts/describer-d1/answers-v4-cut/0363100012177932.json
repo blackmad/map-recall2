@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012177932",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012177932.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "storeyWindows": {
+  "3": "sash-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "columns",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small attic window sits in the cream frieze under the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a cream timber ground-storey front with pilasters and an upper row of lights, red-framed doors either side of a shop window"
+  }
+ ],
+ "notes": "Red café umbrellas hide most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012172874",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172874/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 1,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "cornice",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white rendered ground storey wrapping the corner with a row of small toplights and a round oculus"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer and a tall chimney in the pitched roof behind a white frieze band"
+  }
+ ],
+ "notes": "Corner building in the distance; the near face shows one window axis, the side face several more."
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168159.jpg + artifacts/describer-d1/windows/0363100012168159.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground",
+  "doorBay",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "neo-gothic church windows: a tall arched tracery window with a rose head in the centre axis and a narrower arched window to the left"
+  },
+  {
+   "component": "door",
+   "what": "a pointed stone portal with columns and a fanlight round the main door, a second arched door on the left"
+  },
+  {
+   "component": "gable ornament",
+   "what": "stone pinnacles and buttress strips at the gable corners, a brick corbel frieze along the gable slopes"
+  }
+ ],
+ "notes": "A church front, not a house; a tree trunk covers the right third, so the axes cannot all be counted.",
+ "storeys": 2,
+ "wallFamily": "not-visible",
+ "paneLayout": "multi-pane"
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012173348",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173348/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "flower boxes at the sills of the upper windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012172901",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172901/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 1,
+ "windows": "arched",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "bays",
+  "doorBay",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "large grey-blue timber shutters flank each upper window"
+  },
+  {
+   "component": "balcony",
+   "what": "a French-balcony iron railing across the lower half of the round-headed window"
+  },
+  {
+   "component": "door",
+   "what": "dark grey double door with round-arched glazed panels in a white glazed surround with toplights"
+  }
+ ],
+ "notes": "Close oblique crop; only the ground and first upper storey visible, top cut off."
+}

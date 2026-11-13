@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012175063",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012175063.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white moulded arch hoods over the first-storey windows, which stand on white panelled aprons"
+  },
+  {
+   "component": "balcony",
+   "what": "a small white ornamented balcony on consoles at the centre second-storey window"
+  },
+  {
+   "component": "dormer",
+   "what": "one round-pedimented white dormer behind a dentilled cornice"
+  }
+ ],
+ "notes": "A lamp post crosses the centre axis; a car hides the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

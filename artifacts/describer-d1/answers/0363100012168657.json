@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012168657",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168657/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "wallFamily",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small balconies on the wide centre-right axis at the first, second and third storeys"
+  },
+  {
+   "component": "window",
+   "what": "the right part groups a wide balcony door between two narrow windows on each storey"
+  }
+ ],
+ "notes": "A tree trunk covers the top-left; crown not readable."
+}

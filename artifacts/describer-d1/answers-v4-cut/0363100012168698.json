@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012168698",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168698.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "windowSurround"
+ ],
+ "gaps": [],
+ "notes": "A thick tree trunk covers the left half and branches the rest; only the right axis of three storeys is readable.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

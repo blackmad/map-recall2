@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178185",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 6,
+    "windowHead": {
+     "kind": "flat"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3b302c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012178185.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "two shallow white-framed bay windows on each of the first and second storeys, with a small window or grille between them"
+  },
+  {
+   "component": "window",
+   "what": "the top storey is one continuous band of six small-paned windows in a white frame"
+  },
+  {
+   "component": "roof",
+   "what": "a set-back glazed roof storey with railings behind the parapet"
+  },
+  {
+   "component": "shopfront",
+   "what": "a red shopfront with a fascia and a row of small top lights"
+  }
+ ]
+}

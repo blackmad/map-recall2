@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "ground",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "tall grey stone pilasters with pinnacles dividing the front into three bays"
+  },
+  {
+   "component": "window",
+   "what": "a tall central church window with stone tracery and a rose in the arch, leaded glazing"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a corbelled arcade frieze of small brick arches under the raking gable edges"
+  },
+  {
+   "component": "door",
+   "what": "a central portal with a stone gabled porch on columns and two side doors with fanlights"
+  }
+ ],
+ "notes": "A neo-Gothic church front, not a house; ground enum does not fit."
+}

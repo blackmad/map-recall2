@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012172576",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172576.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the ground storey has a wide four-leaf glazed double door in the centre between two narrow street doors, all under a row of small-paned transom lights"
+  },
+  {
+   "component": "gable ornament",
+   "what": "claw pieces at the neck shoulders and a carved crest with a hoist hook on top"
+  }
+ ],
+ "notes": "Parked cars hide the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

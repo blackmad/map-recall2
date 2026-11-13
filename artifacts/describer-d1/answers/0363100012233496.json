@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012233496",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012233496/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 6,
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "doorBay",
+  "wallFamily"
+ ],
+ "storeyWindows": {
+  "1": "casement-toplight"
+ },
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "modern block with stepped roof heights: two tall end sections and a lower centre with a set-back top storey"
+  },
+  {
+   "component": "window",
+   "what": "two axes have tall paired windows with transoms stacked as vertical strips, others are wide white-framed windows"
+  }
+ ],
+ "notes": "Late-20th-century infill block spanning several plots; window kinds are mixed."
+}

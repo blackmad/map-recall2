@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012177934",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177934/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis windows are wider than the narrow side axes"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a narrower brick top with one window rises above the third upper storey, cut off at the top"
+  }
+ ],
+ "notes": "Top cut off; the shape of the top is unclear."
+}

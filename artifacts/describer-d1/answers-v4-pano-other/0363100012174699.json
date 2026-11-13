@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174699",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001543_pano_0000_000961.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a museum shopfront with a fascia name board across the ground storey"
+  }
+ ],
+ "notes": "The outline covers only part of a wide four-axis brick block.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

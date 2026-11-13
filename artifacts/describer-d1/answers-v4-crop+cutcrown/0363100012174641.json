@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174641",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174641/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the two top storeys have a pair of windows set close together, the lower storeys two windows far apart"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small white sculpted claw piece at the gable foot"
+  }
+ ],
+ "notes": "A street lamp covers the right bay and bicycles the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

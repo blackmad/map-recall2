@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168006",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168006/years/2019.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "windows",
+  "cornice",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof is visible behind the white cornice frieze"
+  }
+ ],
+ "notes": "Ground storey partly hidden by a parked car; it has dark doors and slatted openings."
+}
