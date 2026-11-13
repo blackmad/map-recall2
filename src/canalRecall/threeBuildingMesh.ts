@@ -24,7 +24,7 @@ import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOp
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
-import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
+import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -623,8 +623,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const sr = b.specRecipe!, input = { wallM: specBays.exposedM, storeys: specBays.storeys, ...(sr.souterrain ? { souterrain: true } : {}), ...(sr.roofStorey ? { roofStorey: sr.roofStorey } : {}), ...(sr.eavesM ? { eavesM: sr.eavesM - base } : {}), ...(sr.corniceCrown ? { crown: 'cornice' as const } : {}), period: sr.period };
         const plan = storeyPlan(input);
         if (plan) {
-          if (storeyPlanProbe.sink) storeyPlanProbe.sink(b.id, plan, input);
-          const draw = storeyDraw(plan, specBays.storeys, undefined, specBays.exposedM);
+          // Step 1b: only a describer's count is planned; a person's count is drawn as stated, its plan advisory.
+          const advisory = !storeyPlanDraws(sr.storeysSrc);
+          if (storeyPlanProbe.sink) storeyPlanProbe.sink(b.id, plan, input, advisory);
+          const draw = advisory ? null : storeyDraw(plan, specBays.storeys, undefined, specBays.exposedM);
           if (draw === 'reject') {
             const exposedM = specBays.exposedM;
             delete specBays.storeys; delete specBays.exposedM; delete specBays.fit; delete specBays.groundM;

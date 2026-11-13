@@ -84,6 +84,8 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   roofStorey?: 'mansard' | 'attic';
   eavesM?: number;
   corniceCrown?: true;
+  /** Lane WG step 1b: the source of `storeys` (view src.storeys); only a describer read is planned (storeyPlanDraws). */
+  storeysSrc?: string;
   /** H11: the window look (bayLook.ts bayLookFor `spec`). */
   look?: SpecLook;
   /** H11: the shop's ground-storey paint. */
@@ -234,6 +236,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.roofStorey === 'mansard' || view.roofStorey === 'attic') recipe.roofStorey = view.roofStorey;
     if (typeof view.eavesM === 'number' && Number.isFinite(view.eavesM) && view.eavesM > 0) recipe.eavesM = view.eavesM;
     if (view.corniceCrown === true) recipe.corniceCrown = true;
+    if (view.src.storeys) recipe.storeysSrc = view.src.storeys;
     if (specDesignOn('storeys')) {
       recipe.storeysFit = true;
       if (typeof view.groundM === 'number' && Number.isFinite(view.groundM)) recipe.groundM = view.groundM;

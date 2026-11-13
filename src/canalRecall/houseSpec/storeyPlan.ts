@@ -161,6 +161,16 @@ export function frontEavesM(facts: { eavesM: number | null; ridgeM: number | nul
   return ridgeM !== null && ridgeM > eavesM && over <= FRONT_EAVES_PITCHED_SHARE * (ridgeM - eavesM) ? eavesM : null;
 }
 
+/**
+ * Whose count the plan may change (the integrator's step-1b ruling, 2026-11-13): the guard exists to catch describer
+ * misreads, never to veto a person's count. Only a count read by the describer (`vision-judge`) is planned: refit
+ * (souterrain, tall ground, eaves band, capping) or rejected. A count from an author, a reviewer, a block face or any other
+ * source is drawn as stated; its plan is computed for the report only (`advisory`). Published 182309 (author 3 -> 2),
+ * 171854 (4 -> 3), 176346 (3 -> 5) and 175318 (4 -> 3) were overridden before this.
+ */
+export const STOREY_PLAN_READ_SOURCES: ReadonlySet<string> = new Set(['vision-judge']);
+export const storeyPlanDraws = (storeysSrc: string | null | undefined): boolean => !!storeysSrc && STOREY_PLAN_READ_SOURCES.has(storeysSrc);
+
 /** Default on; `?storeyGuard=0` in the page or STOREY_GUARD=0 in Node turns the storey plan off (the fit before lane WG). */
 export const STOREY_GUARD_DEFAULT = true;
 export function storeyGuardEnabled(search?: string | null, env?: string | null): boolean {
@@ -185,7 +195,7 @@ export const resetStoreyGuard = () => { guardNow = undefined; };
 export const storeyRejectPrior: { storeys?: (building: { id: string; structurePrior?: { year: number; lng: number; lat: number } }, run: { exposedM: number; widthM: number; base: number; streetRun: boolean }) => number | null | undefined } = {};
 
 /** A rejected or fitted plan per pand, for the storey-guard report (the publish veto list and the second-read queue). */
-export const storeyPlanProbe: { sink?: (id: string, plan: StoreyPlan, input: StoreyPlanInput) => void } = {};
+export const storeyPlanProbe: { sink?: (id: string, plan: StoreyPlan, input: StoreyPlanInput, advisory?: boolean) => void } = {};
 
 /** A wall band over 3DBAG's eaves line shorter than this is left to the rows (no plain band). */
 export const EAVES_BAND_MIN_M = 0.3;
