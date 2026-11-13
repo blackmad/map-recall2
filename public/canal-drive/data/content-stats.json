@@ -7,7 +7,7 @@
     "landmarkModels": "420+",
     "kitBuildings": "13,000+",
     "buildings3d": "350,000+",
-    "placesToVisit": "390+",
+    "placesToVisit": "410",
     "factsToDiscover": "8,100+",
     "triviaFacts": "2,300+",
     "nameOrigins": "5,400+",
@@ -50,7 +50,7 @@
       ]
     },
     "placesToVisit": {
-      "count": 393,
+      "count": 410,
       "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).",
       "sources": [
         "public/data/extracts/amsterdam/landmarks.json",
