@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012169828",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002961_pano_0003_000098.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [],
+ "notes": "A tree trunk and branches stand in front of the left axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

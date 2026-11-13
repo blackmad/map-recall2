@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168693",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168693.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a hoist hook and small chimney-like finial at the gable top"
+  },
+  {
+   "component": "shopfront",
+   "what": "a ground storey with a sign band and a row of top lights over a lower part hidden by a van"
+  }
+ ],
+ "notes": "A parked van covers the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

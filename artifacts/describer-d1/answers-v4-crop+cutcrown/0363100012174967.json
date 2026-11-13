@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174967",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174967/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "bands",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neo-Gothic gable with pinnacles and a crocketed finial on top"
+  },
+  {
+   "component": "relief",
+   "what": "decorated tympana under relieving arches and iron wall anchors between windows"
+  }
+ ],
+ "notes": "A tree crosses the right axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

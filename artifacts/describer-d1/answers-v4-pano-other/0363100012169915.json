@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012169915",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002967_pano_0003_000130.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "crown",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall pointed gable dormer with a lancet window rises behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "small light ornaments above the upper windows"
+  }
+ ],
+ "notes": "A tree trunk crosses the middle of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

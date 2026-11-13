@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012176005",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176005/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "wallFamily",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-headed red-brown panelled door at the top of a stoop with iron railings"
+  }
+ ],
+ "notes": "Narrow crop, tree on the left edge and a van in front; top cut close above the top storey."
+}

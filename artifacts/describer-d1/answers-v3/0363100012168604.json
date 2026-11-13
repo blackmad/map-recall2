@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012168604",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168604/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2022,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "ground",
+  "finish",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small light date or name stone between the first-storey windows and light blocks at the floor line above the ground storey"
+  }
+ ],
+ "notes": "Narrow, oblique crop cut off at the left; the gable is sunlit and only partly in frame."
+}

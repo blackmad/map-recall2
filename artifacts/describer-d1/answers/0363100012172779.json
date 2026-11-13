@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012172779",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172779/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "casement-pair",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small round oculus in the gable"
+  }
+ ],
+ "notes": "Most of the front is hidden by a tree; only the right-hand windows and gable edge show."
+}

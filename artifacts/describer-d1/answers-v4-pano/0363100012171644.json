@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171644",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002031_pano_0000_000262.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "storeyParts",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam projecting from the gable top."
+  },
+  {
+   "component": "shopfront",
+   "what": "a cream timber shop frame with a row of small-paned top lights over the door and the shop window."
+  }
+ ],
+ "notes": "Steep upward view; the gable is foreshortened and the outline also cuts across the left neighbour's door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168613",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168613/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balcony railings at the upper floors on the left axis"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

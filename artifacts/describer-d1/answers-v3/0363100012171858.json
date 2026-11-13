@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 1,
+ "windows": "cross-transom",
+ "heads": [],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "finish",
+  "sills",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental and triangular pediments over the upper windows, with carved panels"
+  },
+  {
+   "component": "relief",
+   "what": "rusticated pilasters with carved capitals frame the bay"
+  },
+  {
+   "component": "shopfront",
+   "what": "café shopfront with small-paned transom lights and a painted red sign panel"
+  }
+ ],
+ "notes": "Top of the front cut off; a narrow single-axis ornate front."
+}

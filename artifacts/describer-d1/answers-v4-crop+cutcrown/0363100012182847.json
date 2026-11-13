@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182847",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182847/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white scrolled and stepped ornament pieces climb both sides of the neck, with a hoist beam at the top"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony with planters on the middle axis of storey 1"
+  },
+  {
+   "component": "shopfront",
+   "what": "a deep green caf\u00e9 awning covers the ground storey"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

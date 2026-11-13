@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012236886",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236886/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first floor has one wide window under a broad segmental arch spanning both axes, with a small balcony box"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with a pointed pediment and hoist beam over the front"
+  }
+ ],
+ "notes": "Narrow image; ground storey blurred behind people and cars."
+}

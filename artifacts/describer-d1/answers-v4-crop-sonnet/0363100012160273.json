@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012160273",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "round"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "finish",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balustrade balconies and a long continuous balcony with a concrete slab"
+  },
+  {
+   "component": "dormer",
+   "what": "a wide dormer window group in the mansard"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

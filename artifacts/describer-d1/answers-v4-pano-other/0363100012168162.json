@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012168162",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000076_pano_0000_002613.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "finish",
+  "doorBay",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a steep stoop with a railing up to the door"
+  }
+ ],
+ "notes": "Tree crown hides the upper storeys.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

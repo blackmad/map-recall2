@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012174180",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174180/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "low": [
+  "ground",
+  "wallFamily",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone bands and blocks across the front"
+  }
+ ],
+ "notes": "Very blurred and seen through reflections and branches; only the step gable outline and brick colour are readable."
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012173566",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173566/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a row of white gabled dormers with louvred vents along the roof"
+  }
+ ],
+ "notes": "The image centre falls on the junction of a tall blank brick block with small windows (left) and a three-bay front (right); described the three-bay front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012174184",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174184.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "basement",
+  "bands",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a single dormer with a white bell-shaped surround stands in the tiled roof behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey door has a tall small-paned top light and side glazing under a white frame"
+  }
+ ],
+ "notes": "A street lamp and bicycles cover the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

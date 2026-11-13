@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012177932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white entablature with dentils over a tall frieze holding a small vent window"
+  },
+  {
+   "component": "shopfront",
+   "what": "pilastered shop storey with stained-glass transoms, mostly hidden by a red parasol"
+  }
+ ]
+}

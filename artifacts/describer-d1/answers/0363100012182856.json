@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012182856",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182856/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "low iron balustrades (french balconies) across the lower part of each window"
+  }
+ ],
+ "notes": "Ground storey hidden by a large parasol."
+}

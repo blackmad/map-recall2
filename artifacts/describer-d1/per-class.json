@@ -1,0 +1,516 @@
+{
+ "opus crop v4 (+cut crown)": {
+  "crown": {
+   "cornice": {
+    "k": 57,
+    "n": 60,
+    "precision": 0.95,
+    "share": 0.465,
+    "fallback": {
+     "today": [
+      22,
+      52
+     ],
+     "kNN": [
+      42,
+      51
+     ]
+    }
+   },
+   "neck": {
+    "k": 11,
+    "n": 17,
+    "precision": 0.647,
+    "share": 0.132,
+    "fallback": {
+     "today": [
+      7,
+      16
+     ],
+     "kNN": [
+      3,
+      15
+     ]
+    }
+   },
+   "bell": {
+    "k": 8,
+    "n": 16,
+    "precision": 0.5,
+    "share": 0.124,
+    "fallback": {
+     "today": [
+      5,
+      11
+     ],
+     "kNN": [
+      0,
+      11
+     ]
+    }
+   },
+   "flat": {
+    "k": 2,
+    "n": 10,
+    "precision": 0.2,
+    "share": 0.078,
+    "fallback": {
+     "today": [
+      1,
+      6
+     ],
+     "kNN": [
+      4,
+      6
+     ]
+    }
+   },
+   "point": {
+    "k": 6,
+    "n": 10,
+    "precision": 0.6,
+    "share": 0.078,
+    "fallback": {
+     "today": [
+      0,
+      6
+     ],
+     "kNN": [
+      0,
+      6
+     ]
+    }
+   },
+   "step": {
+    "k": 7,
+    "n": 8,
+    "precision": 0.875,
+    "share": 0.062,
+    "fallback": {
+     "today": [
+      3,
+      6
+     ],
+     "kNN": [
+      2,
+      6
+     ]
+    }
+   },
+   "mansard": {
+    "k": 2,
+    "n": 6,
+    "precision": 0.333,
+    "share": 0.047,
+    "fallback": {
+     "today": [
+      0,
+      6
+     ],
+     "kNN": [
+      3,
+      6
+     ]
+    }
+   },
+   "shouldered": {
+    "k": 0,
+    "n": 1,
+    "precision": 0.0,
+    "share": 0.008,
+    "fallback": {
+     "today": [
+      0,
+      1
+     ],
+     "kNN": [
+      1,
+      1
+     ]
+    }
+   },
+   "pitched-eaves": {
+    "k": 0,
+    "n": 1,
+    "precision": 0.0,
+    "share": 0.008,
+    "fallback": {
+     "today": [
+      1,
+      1
+     ],
+     "kNN": [
+      1,
+      1
+     ]
+    }
+   }
+  },
+  "head": {
+   "flat": {
+    "k": 12,
+    "n": 15,
+    "precision": 0.8,
+    "share": 0.6,
+    "fallback": {
+     "kNN": [
+      12,
+      15
+     ]
+    }
+   },
+   "segmental": {
+    "k": 5,
+    "n": 6,
+    "precision": 0.833,
+    "share": 0.24,
+    "fallback": {
+     "kNN": [
+      1,
+      6
+     ]
+    }
+   },
+   "mixed": {
+    "k": 1,
+    "n": 4,
+    "precision": 0.25,
+    "share": 0.16,
+    "fallback": {
+     "kNN": [
+      1,
+      4
+     ]
+    }
+   }
+  },
+  "surrounds": {
+   "False": {
+    "k": 53,
+    "n": 70,
+    "precision": 0.757,
+    "share": 0.805,
+    "fallback": {
+     "kNN": [
+      42,
+      69
+     ]
+    }
+   },
+   "True": {
+    "k": 10,
+    "n": 17,
+    "precision": 0.588,
+    "share": 0.195,
+    "fallback": {
+     "kNN": [
+      7,
+      17
+     ]
+    }
+   }
+  },
+  "cornice": {
+   "none": {
+    "k": 28,
+    "n": 32,
+    "precision": 0.875,
+    "share": 0.451,
+    "fallback": {}
+   },
+   "frieze": {
+    "k": 7,
+    "n": 16,
+    "precision": 0.438,
+    "share": 0.225,
+    "fallback": {}
+   },
+   "simple": {
+    "k": 10,
+    "n": 14,
+    "precision": 0.714,
+    "share": 0.197,
+    "fallback": {}
+   },
+   "bracketed": {
+    "k": 3,
+    "n": 7,
+    "precision": 0.429,
+    "share": 0.099,
+    "fallback": {}
+   },
+   "heavy": {
+    "k": 1,
+    "n": 2,
+    "precision": 0.5,
+    "share": 0.028,
+    "fallback": {}
+   }
+  }
+ },
+ "opus cut v4": {
+  "crown": {
+   "cornice": {
+    "k": 51,
+    "n": 54,
+    "precision": 0.944,
+    "share": 0.446,
+    "fallback": {
+     "today": [
+      17,
+      45
+     ],
+     "kNN": [
+      35,
+      44
+     ]
+    }
+   },
+   "neck": {
+    "k": 13,
+    "n": 21,
+    "precision": 0.619,
+    "share": 0.174,
+    "fallback": {
+     "today": [
+      7,
+      17
+     ],
+     "kNN": [
+      3,
+      16
+     ]
+    }
+   },
+   "mansard": {
+    "k": 3,
+    "n": 9,
+    "precision": 0.333,
+    "share": 0.074,
+    "fallback": {
+     "today": [
+      1,
+      8
+     ],
+     "kNN": [
+      5,
+      8
+     ]
+    }
+   },
+   "step": {
+    "k": 7,
+    "n": 9,
+    "precision": 0.778,
+    "share": 0.074,
+    "fallback": {
+     "today": [
+      2,
+      7
+     ],
+     "kNN": [
+      1,
+      7
+     ]
+    }
+   },
+   "bell": {
+    "k": 4,
+    "n": 9,
+    "precision": 0.444,
+    "share": 0.074,
+    "fallback": {
+     "today": [
+      3,
+      7
+     ],
+     "kNN": [
+      0,
+      7
+     ]
+    }
+   },
+   "point": {
+    "k": 5,
+    "n": 8,
+    "precision": 0.625,
+    "share": 0.066,
+    "fallback": {
+     "today": [
+      0,
+      5
+     ],
+     "kNN": [
+      1,
+      5
+     ]
+    }
+   },
+   "flat": {
+    "k": 3,
+    "n": 7,
+    "precision": 0.429,
+    "share": 0.058,
+    "fallback": {
+     "today": [
+      1,
+      5
+     ],
+     "kNN": [
+      3,
+      5
+     ]
+    }
+   },
+   "spout": {
+    "k": 0,
+    "n": 2,
+    "precision": 0.0,
+    "share": 0.017,
+    "fallback": {
+     "today": [
+      1,
+      1
+     ],
+     "kNN": [
+      1,
+      1
+     ]
+    }
+   },
+   "shouldered": {
+    "k": 0,
+    "n": 1,
+    "precision": 0.0,
+    "share": 0.008,
+    "fallback": {
+     "today": [
+      0,
+      1
+     ],
+     "kNN": [
+      0,
+      1
+     ]
+    }
+   },
+   "pitched-eaves": {
+    "k": 0,
+    "n": 1,
+    "precision": 0.0,
+    "share": 0.008,
+    "fallback": {
+     "today": [
+      1,
+      1
+     ],
+     "kNN": [
+      1,
+      1
+     ]
+    }
+   }
+  },
+  "head": {
+   "flat": {
+    "k": 12,
+    "n": 16,
+    "precision": 0.75,
+    "share": 0.64,
+    "fallback": {
+     "kNN": [
+      12,
+      16
+     ]
+    }
+   },
+   "segmental": {
+    "k": 4,
+    "n": 5,
+    "precision": 0.8,
+    "share": 0.2,
+    "fallback": {
+     "kNN": [
+      1,
+      5
+     ]
+    }
+   },
+   "mixed": {
+    "k": 1,
+    "n": 4,
+    "precision": 0.25,
+    "share": 0.16,
+    "fallback": {
+     "kNN": [
+      1,
+      4
+     ]
+    }
+   }
+  },
+  "surrounds": {
+   "False": {
+    "k": 54,
+    "n": 75,
+    "precision": 0.72,
+    "share": 0.872,
+    "fallback": {
+     "kNN": [
+      40,
+      74
+     ]
+    }
+   },
+   "True": {
+    "k": 7,
+    "n": 11,
+    "precision": 0.636,
+    "share": 0.128,
+    "fallback": {
+     "kNN": [
+      7,
+      11
+     ]
+    }
+   }
+  },
+  "cornice": {
+   "none": {
+    "k": 34,
+    "n": 39,
+    "precision": 0.872,
+    "share": 0.419,
+    "fallback": {}
+   },
+   "simple": {
+    "k": 18,
+    "n": 28,
+    "precision": 0.643,
+    "share": 0.301,
+    "fallback": {}
+   },
+   "frieze": {
+    "k": 7,
+    "n": 19,
+    "precision": 0.368,
+    "share": 0.204,
+    "fallback": {}
+   },
+   "bracketed": {
+    "k": 4,
+    "n": 5,
+    "precision": 0.8,
+    "share": 0.054,
+    "fallback": {}
+   },
+   "heavy": {
+    "k": 1,
+    "n": 2,
+    "precision": 0.5,
+    "share": 0.022,
+    "fallback": {}
+   }
+  }
+ }
+}

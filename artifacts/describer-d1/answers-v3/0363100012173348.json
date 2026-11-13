@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012173348",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173348/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "ground",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks alternate up the window jambs like quoins"
+  },
+  {
+   "component": "gable ornament",
+   "what": "neck gable with white scroll claw pieces and a small crest"
+  }
+ ],
+ "notes": "Low resolution; a parked boat/car hides the bottom of the ground storey."
+}

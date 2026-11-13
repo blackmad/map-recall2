@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012182849",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223_2.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "t-window",
+ "storeyWindows": {
+  "1": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pedimented hoist dormer rising from the middle of the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "the storey over the shop is framed by white pilasters and a moulded entablature"
+  }
+ ],
+ "notes": "Shop signs and an awning cover the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

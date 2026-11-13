@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012172592",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172592/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a row of small toplights over the display window and a dark panelled street door"
+  }
+ ],
+ "notes": "Steep oblique, top cut off; only the ground and two upper storeys visible."
+}

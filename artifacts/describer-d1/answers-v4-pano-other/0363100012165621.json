@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012165621",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000492_pano_0000_000146.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "modern punched square windows and a projecting clad bay at the corner"
+  }
+ ],
+ "notes": "Modern block partly behind a tree.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012175144",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175144/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "bands",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "relieving arches over the first-floor windows have patterned brick tympana with white keystone and springer blocks"
+  }
+ ],
+ "notes": "Top of the front is cut off; at least three storeys visible."
+}

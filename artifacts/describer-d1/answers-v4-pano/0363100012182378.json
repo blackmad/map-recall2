@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012182378",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001547_pano_0000_000550.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  1,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "sameAs",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a vertical strip of projecting toothed brickwork rising up the wall at the left, and small vertical slit patterns in the brick."
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark full-width modern shopfront with a deep fascia."
+  }
+ ],
+ "notes": "Interwar brick front that continues to the left as one block; steep upward view.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

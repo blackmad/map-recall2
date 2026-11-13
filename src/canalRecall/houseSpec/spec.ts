@@ -15,13 +15,77 @@
  * sources never splice one window head together.
  */
 import {
-  GABLES, ROOF_MATERIALS, SWATCHES, WALL_MATERIALS,
+  CORNICES, GABLES, ROOF_MATERIALS, SWATCHES, WALL_MATERIALS, WINDOW_HEADS, WINDOW_SURROUNDS,
   type FrontIntent, type GableIntent, type IntentSource,
 } from '../buildingRecipe/intent.ts';
 import type { HouseDesign } from '../blockFace/intent.ts';
 import { SOURCE_STRENGTH, type FacadeSource } from '../facade/evidence.ts';
 
 export type { HouseDesign };
+
+/**
+ * Spec-level readings the intent vocabulary has no value for (lane D1, 2026-11-13). A spec stores them as read; every compiler
+ * draws them through `drawableDesign` (the nearest form the kit draws) and reports each as `ignored`. Absent = byte-identical.
+ *   palette/wallMaterial  `stone`          a stone-faced front -> drawn `stucco` (a pale render wall), colour kept
+ *   fronts/N/gable        `pitched-eaves`  an eaves line with the roof slope in view -> drawn `cornice` (cornice `none` unless stated)
+ *   fronts/N/windowHead   `pointed`        -> drawn `round`;  `mixed` (two shapes on one storey) -> no head (the intent default, flat)
+ *   fronts/N/windowSurround `block-dressings` alternating stone blocks down the jambs and round the head (block quoins at the
+ *                         openings, blocked voussoirs) -> drawn `jack-blocks`
+ *   fronts/N/cornice      `attic-frieze`   a frieze with attic windows (and consoles) under the cornice -> drawn `frieze`
+ */
+export const SPEC_WALL_MATERIALS = [...WALL_MATERIALS, 'stone'] as const;
+export const SPEC_GABLES = [...GABLES, 'pitched-eaves'] as const;
+export const SPEC_WINDOW_HEADS = [...WINDOW_HEADS, 'pointed', 'mixed'] as const;
+export const SPEC_WINDOW_SURROUNDS = [...WINDOW_SURROUNDS, 'block-dressings'] as const;
+export const SPEC_CORNICES = [...CORNICES, 'attic-frieze'] as const;
+export type SpecWallMaterial = typeof SPEC_WALL_MATERIALS[number];
+export type SpecGable = typeof SPEC_GABLES[number];
+export type SpecWindowHead = typeof SPEC_WINDOW_HEADS[number];
+export type SpecWindowSurround = typeof SPEC_WINDOW_SURROUNDS[number];
+export type SpecCornice = typeof SPEC_CORNICES[number];
+/** A front as a spec stores it: the intent front with the spec-level gable and window-head values. */
+export type SpecFront = Omit<DeepPartial<FrontIntent>, 'gable' | 'windowHead' | 'windowSurround' | 'cornice'> & {
+  gable?: SpecGable;
+  windowSurround?: SpecWindowSurround;
+  cornice?: SpecCornice;
+  windowHead?: Omit<DeepPartial<NonNullable<FrontIntent['windowHead']>>, 'kind'> & { kind?: SpecWindowHead };
+};
+/** The design as a spec stores it: `HouseDesign`, every field optional, plus the spec-level values above. */
+export type SpecDesign = Omit<DeepPartial<HouseDesign>, 'fronts' | 'palette'> & {
+  fronts?: SpecFront[];
+  palette?: Omit<DeepPartial<HouseDesign['palette']>, 'wallMaterial'> & { wallMaterial?: SpecWallMaterial };
+};
+/** A spec value a compiler could not draw as read: what it drew instead (null = dropped, the compiler's default). */
+export interface SpecIgnored { path: string; value: unknown; drawnAs: unknown }
+
+/**
+ * The design a compiler draws: spec-only values mapped to the nearest intent value, each listed in `ignored`. When no spec-only
+ * value is present the design is returned as the same object and `ignored` is empty.
+ */
+export function drawableDesign<D extends Record<string, any> | undefined>(design: D): { design: D; ignored: SpecIgnored[] } {
+  const ignored: SpecIgnored[] = [];
+  const fronts = (design?.fronts ?? []) as Array<Record<string, any> | undefined>;
+  const stone = design?.palette?.wallMaterial === 'stone';
+  const touched = fronts.some(f => f?.gable === 'pitched-eaves' || f?.windowHead?.kind === 'pointed' || f?.windowHead?.kind === 'mixed'
+    || f?.windowSurround === 'block-dressings' || f?.cornice === 'attic-frieze');
+  if (!stone && !touched) return { design, ignored };
+  const out = structuredClone(design) as Record<string, any>;
+  if (stone) { out.palette.wallMaterial = 'stucco'; ignored.push({ path: 'palette/wallMaterial', value: 'stone', drawnAs: 'stucco' }); }
+  (out.fronts ?? []).forEach((f: Record<string, any> | undefined, i: number) => {
+    if (!f) return;
+    if (f.gable === 'pitched-eaves') {
+      f.gable = 'cornice';
+      ignored.push({ path: `fronts/${i}/gable`, value: 'pitched-eaves', drawnAs: 'cornice' });
+      if (f.cornice === undefined) f.cornice = 'none';
+    }
+    if (f.windowSurround === 'block-dressings') { f.windowSurround = 'jack-blocks'; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'block-dressings', drawnAs: 'jack-blocks' }); }
+    if (f.cornice === 'attic-frieze') { f.cornice = 'frieze'; ignored.push({ path: `fronts/${i}/cornice`, value: 'attic-frieze', drawnAs: 'frieze' }); }
+    const kind = f.windowHead?.kind;
+    if (kind === 'pointed') { f.windowHead.kind = 'round'; ignored.push({ path: `fronts/${i}/windowHead`, value: 'pointed', drawnAs: 'round' }); }
+    else if (kind === 'mixed') { delete f.windowHead; ignored.push({ path: `fronts/${i}/windowHead`, value: 'mixed', drawnAs: null }); }
+  });
+  return { design: out as D, ignored };
+}
 /** Every source a spec field may name: the facade evidence ladder plus `author` (a hand-written spec, ranks as `reviewed`). */
 export type SpecSource = FacadeSource | 'vision-judge' | 'author';
 export const SPEC_SOURCES: readonly SpecSource[] = [...SOURCE_STRENGTH, 'author'];
@@ -61,8 +125,8 @@ export interface HouseSpec {
   /** BAG pand identificatie, 16 digits (no `NL.IMBAG.Pand.` prefix, as in the intents). */
   pandId: string;
   address?: string;
-  /** The vocabulary recipes and block faces already speak, every field optional. */
-  design: DeepPartial<HouseDesign>;
+  /** The vocabulary recipes and block faces already speak, every field optional, plus the spec-level values (SPEC_*). */
+  design: SpecDesign;
   facts?: SpecFacts;
   /** Keyed by field path (`fronts/0/gable`, `palette/brick`, `facts/facadeYear`); an ancestor key (`fronts/0`, or `` for
    *  the whole record) covers every field below it. resolve.ts writes one key per field. */
@@ -180,14 +244,17 @@ export function specProblems(input: unknown): string[] {
     if (!provenanceOf(spec, path)) p.push(`${path}: no provenance covers this field`);
     const key = path.split('/').pop();
     if (path.startsWith('fronts/')) {
-      if (key === 'gable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);
+      if (key === 'gable' && !SPEC_GABLES.includes(value as SpecGable)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_GABLES.join('|')}`);
+      if (key === 'windowHead' && !(value && typeof value === 'object' && !Array.isArray(value) && SPEC_WINDOW_HEADS.includes((value as { kind?: SpecWindowHead }).kind!))) p.push(`${path}: {kind: ${SPEC_WINDOW_HEADS.join('|')}, ...}`);
+      if (key === 'windowSurround' && !SPEC_WINDOW_SURROUNDS.includes(value as SpecWindowSurround)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_WINDOW_SURROUNDS.join('|')}`);
+      if (key === 'cornice' && !SPEC_CORNICES.includes(value as SpecCornice)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_CORNICES.join('|')}`);
       if (key === 'storeys' && !countOk(value, 1, 30)) p.push(`${path}: expected integer 1..30`);
       if (key === 'bays' && !(countOk(value, 1, 30) || (Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 30))))) p.push(`${path}: an integer 1..30 or one per storey`);
       if (key === 'hoist' && typeof value !== 'boolean') p.push(`${path}: boolean`);
       if (key === 'share' && !(typeof value === 'number' && value > 0 && value <= 1)) p.push(`${path}: a share of the wall 0..1`);
       if (key === 'street' && !(typeof value === 'string' && value.length > 0)) p.push(`${path}: a street name`);
     } else if (path.startsWith('palette/')) {
-      if (key === 'wallMaterial' ? !WALL_MATERIALS.includes(value as typeof WALL_MATERIALS[number]) : ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'sash', 'glass'].includes(key!) && !colourOk(value)) p.push(`${path}: ${JSON.stringify(value)} is not a ${key === 'wallMaterial' ? WALL_MATERIALS.join('|') : 'colour (#rrggbb or a swatch)'}`);
+      if (key === 'wallMaterial' ? !SPEC_WALL_MATERIALS.includes(value as SpecWallMaterial) : ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'sash', 'glass'].includes(key!) && !colourOk(value)) p.push(`${path}: ${JSON.stringify(value)} is not a ${key === 'wallMaterial' ? SPEC_WALL_MATERIALS.join('|') : 'colour (#rrggbb or a swatch)'}`);
     } else if (path === 'roof/material' && !ROOF_MATERIALS.includes(value as typeof ROOF_MATERIALS[number])) p.push(`${path}: ${JSON.stringify(value)} not in ${ROOF_MATERIALS.join('|')}`);
     else if (path === 'facts/facadeYear' && !countOk(value, 1200, 2100)) p.push(`${path}: a year 1200..2100`);
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
@@ -225,7 +292,7 @@ export const emptySpec = (pandId: string, address?: string): HouseSpec => ({ sch
 export const pandDigits = (id: string): string => /(\d{16})$/.exec(String(id))?.[1] ?? String(id);
 
 /** A front's window bay count above the ground storey (the axis grid when stated), or undefined. */
-export function frontBays(front: DeepPartial<FrontIntent> | undefined): number | undefined {
+export function frontBays(front: DeepPartial<FrontIntent> | SpecFront | undefined): number | undefined {
   if (!front) return undefined;
   if (Number.isInteger(front.axisGrid)) return front.axisGrid;
   const b = front.bays as number | number[] | undefined;

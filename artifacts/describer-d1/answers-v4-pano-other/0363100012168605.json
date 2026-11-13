@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012168605",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001275.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "not-visible",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "doorBay",
+  "pale",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a narrow white-framed street door bay squeezed between two shopfronts"
+  }
+ ],
+ "notes": "The outline covers only a ground-storey door bay, offset from the house fronts above it.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

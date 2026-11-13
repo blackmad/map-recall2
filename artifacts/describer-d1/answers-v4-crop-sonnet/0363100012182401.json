@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182401/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "ground",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small carved stone head plaques above each window"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron railings across the windows"
+  }
+ ],
+ "notes": "A tree covers the right half of the front.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

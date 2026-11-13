@@ -1,0 +1,429 @@
+{
+ "label": "a-today",
+ "env": {
+  "HOUSE_SPECS_DIR": null,
+  "records": false
+ },
+ "rows": [
+  {
+   "pandId": "0363100012168094",
+   "label": "a-today",
+   "tris": {
+    "walls": 112,
+    "extras": 228
+   },
+   "trisTotal": 340,
+   "buildMs": 5.53,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 6,
+    "columns": 2,
+    "storeyM": 2.87,
+    "groundM": 3.8,
+    "runM": 6.82
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 82,
+     "ground": 83,
+     "door": 84
+    },
+    "wallHex": "#615444",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168095",
+   "label": "a-today",
+   "tris": {
+    "walls": 90,
+    "extras": 230
+   },
+   "trisTotal": 320,
+   "buildMs": 10.32,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 6,
+    "columns": 2,
+    "storeyM": 2.86,
+    "groundM": 3.56,
+    "runM": 4.51
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 65,
+     "ground": 66,
+     "door": 67
+    },
+    "wallHex": "#5c4c3e",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168043",
+   "label": "a-today",
+   "tris": {
+    "walls": 143,
+    "extras": 230
+   },
+   "trisTotal": 373,
+   "buildMs": 6,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 3.43,
+    "groundM": 3.62,
+    "runM": 6.35
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 85,
+     "ground": 86,
+     "door": 87
+    },
+    "wallHex": "#464748",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168096",
+   "label": "a-today",
+   "tris": {
+    "walls": 36,
+    "extras": 228
+   },
+   "trisTotal": 264,
+   "buildMs": 4.1,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 2,
+    "storeyM": 3.16,
+    "groundM": 3.93,
+    "runM": 6.35
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 97,
+     "ground": 98,
+     "door": 99
+    },
+    "wallHex": "#464748",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012168042",
+   "label": "a-today",
+   "tris": {
+    "walls": 46,
+    "extras": 230
+   },
+   "trisTotal": 276,
+   "buildMs": 4.55,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 3.46,
+    "groundM": 3.79,
+    "runM": 6.29
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 76,
+     "ground": 77,
+     "door": 78
+    },
+    "wallHex": "#535758",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012169016",
+   "label": "a-today",
+   "tris": {
+    "walls": 46,
+    "extras": 226
+   },
+   "trisTotal": 272,
+   "buildMs": 4.5,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 4,
+    "storeyM": 2.68,
+    "groundM": 3.97,
+    "runM": 6.49
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 85,
+     "ground": 86,
+     "door": 87
+    },
+    "wallHex": "#54473a",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171218",
+   "label": "a-today",
+   "tris": {
+    "walls": 82,
+    "extras": 228
+   },
+   "trisTotal": 310,
+   "buildMs": 12.22,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 2,
+    "storeyM": 2.66,
+    "groundM": 3.7,
+    "runM": 6.49
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 91,
+     "ground": 92,
+     "door": 93
+    },
+    "wallHex": "#3c3732",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171198",
+   "label": "a-today",
+   "tris": {
+    "walls": 108,
+    "extras": 68
+   },
+   "trisTotal": 176,
+   "buildMs": 3.39,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 3.19,
+    "groundM": 3.97,
+    "runM": 2.46
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 88,
+     "ground": 89,
+     "door": 90
+    },
+    "wallHex": "#615444",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012185507",
+   "label": "a-today",
+   "tris": {
+    "walls": 74,
+    "extras": 106
+   },
+   "trisTotal": 180,
+   "buildMs": 3.3,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 2,
+    "storeyM": 2.62,
+    "groundM": 3.8,
+    "runM": 4.17
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 94,
+     "ground": 95,
+     "door": 96
+    },
+    "wallHex": "#584c40",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012185997",
+   "label": "a-today",
+   "tris": {
+    "walls": 62,
+    "extras": 220
+   },
+   "trisTotal": 282,
+   "buildMs": 3.58,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 2,
+    "storeyM": 3.32,
+    "groundM": 3.43,
+    "runM": 3.07
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 100,
+     "ground": 101,
+     "door": 102
+    },
+    "wallHex": "#3d3a39",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171217",
+   "label": "a-today",
+   "tris": {
+    "walls": 80,
+    "extras": 230
+   },
+   "trisTotal": 310,
+   "buildMs": 3.62,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 5,
+    "columns": 6,
+    "storeyM": 2.71,
+    "groundM": 3.44,
+    "runM": 13.54
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 97,
+     "ground": 98,
+     "door": 99
+    },
+    "wallHex": "#5c4c3e",
+    "shopfront": false
+   },
+   "record": null
+  },
+  {
+   "pandId": "0363100012171192",
+   "label": "a-today",
+   "tris": {
+    "walls": 125,
+    "extras": 230
+   },
+   "trisTotal": 355,
+   "buildMs": 3.6,
+   "view": null,
+   "props": {
+    "specRecipe": null,
+    "specShop": null,
+    "registerFinish": null,
+    "monumentGable": null
+   },
+   "drawn": {
+    "storeys": 4,
+    "columns": 2,
+    "storeyM": 3.62,
+    "groundM": 3.71,
+    "runM": 6.29
+   },
+   "mesh": {
+    "style": "c19",
+    "layers": {
+     "upper": 100,
+     "ground": 101,
+     "door": 102
+    },
+    "wallHex": "#3c3732",
+    "shopfront": false
+   },
+   "record": null
+  }
+ ]
+}

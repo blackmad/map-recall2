@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012167951",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167951/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer in a tiled roof behind the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a red fascia sign reading GARAGE BAKKER over a dark garage front"
+  },
+  {
+   "component": "window",
+   "what": "the middle top-storey window has a decorative grille in its lower half"
+  }
+ ],
+ "notes": "Ground storey partly hidden by a parked car."
+}

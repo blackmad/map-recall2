@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182543/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "crown",
+  "bays",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "gable stone with the date lettering and a raised pale pediment frame round the attic windows"
+  },
+  {
+   "component": "window",
+   "name": "x",
+   "what": "the attic has a wide three-light window in a pale frame with mullions"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

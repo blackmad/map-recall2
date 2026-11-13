@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182855",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182855/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has only one window in the middle, over two windows in the storeys below"
+  },
+  {
+   "component": "roof",
+   "what": "a white timber cornice with a projecting middle piece that may carry a hoist beam"
+  }
+ ],
+ "notes": "The ground storey and part of the first storey are hidden by a red awning.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012174653",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174653/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "A glazed skylight structure rises above the cornice."
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012174698",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174698/years/2018.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2018,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "three gabled dormers with casement windows behind the cornice"
+  },
+  {
+   "component": "window",
+   "what": "a small metal grille on each window sill"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012174775",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174775/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a triangular pediment behind the cornice"
+  }
+ ],
+ "notes": "A bare tree covers much of the front."
+}

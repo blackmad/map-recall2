@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "low": [
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "grey stone pilasters running full height ending in pinnacles, a church front not a house"
+  },
+  {
+   "component": "window",
+   "what": "tall round-arched leaded windows with tracery rose heads"
+  },
+  {
+   "component": "door",
+   "what": "three round-arched timber doors with fanlights, the centre one under a stone gabled porch"
+  },
+  {
+   "component": "gable ornament",
+   "what": "corbelled brick arch frieze along the gable rakes"
+  }
+ ],
+ "notes": "This is a church front; ground storey type does not fit the enum."
+}

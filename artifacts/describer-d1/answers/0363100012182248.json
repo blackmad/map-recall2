@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182248",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182248/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved white claw pieces on the neck shoulders"
+  },
+  {
+   "component": "window",
+   "what": "two round oeil-de-boeuf windows flank the neck window"
+  },
+  {
+   "component": "door",
+   "what": "the front door has a white stone pilastered surround with a fanlight"
+  }
+ ]
+}

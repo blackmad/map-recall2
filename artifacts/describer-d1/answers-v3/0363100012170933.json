@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012170933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "plain",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "the upper windows sit in a shallow angled brick bay"
+  }
+ ],
+ "notes": "Only two upper storeys visible; top cut off and ground storey behind a hoarding."
+}

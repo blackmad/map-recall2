@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012175143",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175143/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "grey",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron french-balcony rails across each upper window, the centre one taller"
+  },
+  {
+   "component": "shopfront",
+   "what": "a wide band of white panels covers the top of the shopfront"
+  }
+ ],
+ "notes": "Top cut off; ground storey partly hidden by a van."
+}

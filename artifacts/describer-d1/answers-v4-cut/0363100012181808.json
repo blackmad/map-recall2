@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012181808",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012181808.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one first-floor window has a white ornamental eared frame with scrolls, unlike its plain neighbours"
+  }
+ ],
+ "notes": "A tree in full leaf hides everything above the first floor, and a van covers the ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

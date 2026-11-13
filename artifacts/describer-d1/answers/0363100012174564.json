@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174564",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174564/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron-railed balconies on the centre axis of each upper storey"
+  },
+  {
+   "component": "window",
+   "what": "segmental arches with alternating white and brick voussoirs"
+  },
+  {
+   "component": "gable ornament",
+   "what": "curved top gable with a large white-framed attic window"
+  },
+  {
+   "component": "shopfront",
+   "what": "shop with a large arched centre window, side doors and carved dark pilaster tops"
+  }
+ ],
+ "notes": "Upper windows are overexposed; glazing pattern hard to read."
+}

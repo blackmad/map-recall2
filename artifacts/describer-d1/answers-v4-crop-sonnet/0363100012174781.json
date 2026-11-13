@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174781/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "Red shutters fill the central window and the gable window."
+  },
+  {
+   "component": "door",
+   "what": "Red-painted door and red window joinery on the ground storey."
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

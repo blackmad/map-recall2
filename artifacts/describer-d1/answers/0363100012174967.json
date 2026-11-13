@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012174967",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174967/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "cross",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "round relieving arches over each window with decorated tympana and anchor irons between"
+  },
+  {
+   "component": "gable ornament",
+   "what": "neo-Gothic gable with corner pinnacles, a central tall finial and corbelled steps"
+  }
+ ],
+ "notes": "A tree covers the right edge."
+}

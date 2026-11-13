@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012172884",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "large ground window in many small panes with red-painted bars"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small carved crowning piece on top of the gable"
+  }
+ ],
+ "notes": "Blurred narrow crop; the white stone blocks at the window corners are hard to classify."
+}

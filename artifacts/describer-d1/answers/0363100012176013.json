@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012176013",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176013/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 5,
+ "bays": 6,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "crown",
+  "bands",
+  "sills",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a balcony over the entrance on the right at first-floor level"
+  },
+  {
+   "component": "window",
+   "what": "left part has windows grouped in threes, right part single windows"
+  }
+ ],
+ "notes": "A large tree in front hides much of the right half."
+}

@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012172882",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172882/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "bays",
+  "finish",
+  "pale"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white shop sign band over the ground storey"
+  }
+ ],
+ "notes": "A leafy tree covers the whole upper front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

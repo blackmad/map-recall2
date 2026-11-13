@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012237017",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012237017/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "extent",
+  "bays",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "two dormers with pointed pediments and hoist beams behind the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "red-painted timber shopfront running across the whole front"
+  }
+ ],
+ "notes": "Four axes with two dormers; may be two matching two-bay houses with one shop."
+}

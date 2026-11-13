@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012171227",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012171227.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "flat brick arches with alternating white stone blocks over each upper window"
+  },
+  {
+   "component": "roof",
+   "what": "a slate mansard with small dormers, and a corner dormer on the left end, behind a white moulded cornice"
+  }
+ ],
+ "notes": "A tram hides the ground storey; two upper storeys are visible. Corner building.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012164843.jpg + artifacts/describer-d1/windows/0363100012164843.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "windowSurround",
+  "heads",
+  "finish",
+  "doorBay",
+  "ground",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small white balustraded balconies on consoles in the centre axis of storeys 1, 2 and 3"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks dotted at the window heads and springing points against the dark wall"
+  }
+ ],
+ "notes": "Very dark front with low contrast; ground storey behind a railing and a pole.",
+ "storeys": 4,
+ "wallFamily": "not-visible",
+ "paneLayout": "not-visible"
+}
