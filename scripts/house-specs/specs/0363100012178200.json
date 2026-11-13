@@ -1,0 +1,70 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178200",
+ "address": "Kloveniersburgwal 34",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "frieze",
+    "doorBay": 1,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#ebe8e1",
+     "fascia": false,
+     "entrance": "right",
+     "displayWindows": 1,
+     "stallriser": "medium"
+    },
+    "storeyHeights": [
+     1.15,
+     1,
+     1,
+     1
+    ]
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#84463a"
+  }
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice",
+   "what": "a small arched light sits in the white attic frieze; the frieze cornice draws no light"
+  }
+ ]
+}

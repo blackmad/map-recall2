@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182778",
+ "address": "Kloveniersburgwal 11-13",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "none",
+    "doorBay": 0,
+    "windows": "cross",
+    "hoist": false,
+    "gable": "step",
+    "crownSteps": 5,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "stone-lintel",
+    "bands": "speklagen",
+    "shopfront": {
+     "colour": "#2a2a2c",
+     "fascia": true,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#2d2f33"
+     },
+     "stallriser": "low"
+    },
+    "speklagen": {
+     "spacing": 12,
+     "courses": 2
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#2e2b2c",
+   "wallMaterial": "painted-brick",
+   "band": "#ece9e0"
+  },
+  "notes": [
+   "1881 black-painted step gable with white speklagen and white blocks over the windows"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00118 (42 m across, row view of 11-17)",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00118 (42 m across, row view of 11-17)",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00118 (42 m across, row view of 11-17)",
+   "at": "2025-01-08"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250108_1041_Track23_Sphere_00118 (42 m across, row view of 11-17)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "white block lintels with blocks between the windows (a block-and-band pattern); drawn as stone lintels"
+  }
+ ]
+}

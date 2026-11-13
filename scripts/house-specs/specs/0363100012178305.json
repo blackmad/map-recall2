@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178305",
+ "address": "Kloveniersburgwal 46",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": true,
+     "fasciaColour": "#7a3a2a",
+     "displayWindows": 2,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#4a3a33"
+  }
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00028 (39 m across, row view of 42-46)",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00028 (39 m across, row view of 42-46)",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00028 (39 m across, row view of 42-46)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "the centre dormer has a bell-shaped stone frame with scrolls (a dormer gable); drawn as an arched dormer"
+  },
+  {
+   "component": "dormer",
+   "what": "the photo dormer is arched; arched dormers on this 3DBAG roof open 4-16 edges per dormer (open-edges gate), drawn flat"
+  }
+ ]
+}

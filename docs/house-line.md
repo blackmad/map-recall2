@@ -2257,6 +2257,45 @@ Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBui
   front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
   facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
 
+### Quay rows: row views and the distance window (belt Burgwallen-OZ, #364)
+
+On a quay with a canal in front (Kloveniersburgwal) every panorama on the house's own side stands 5-9 m off the front:
+`rankPanos`' default window (5-35 m) picks those, and the cut is a 110-120 deg lens on the lower storeys with the crown
+clipped. Two tools read the row from across the water instead.
+
+- **`--min-dist` / `--max-dist`** on `house:frames` (defaults 5 and 35, `FACADE_WINDOW`): a custom window replaces both the
+  soft and the strict distance band of the ranking, so `--min-dist 25 --max-dist 50` takes only panoramas across the canal.
+  With `--season winter --year 2024` (the 2025-01-08 Kloveniersburgwal captures are mission year 2024) the 15 batch-1
+  fronts all posed at 38-39 m, 47-51 deg vertical lens, nothing clipped.
+- **`scripts/house-frames/row-view.ts`** (`node --import tsx scripts/house-frames/row-view.ts --help`): one panorama cut that
+  shows a run of fronts head on, each pand's BAG wall outlined and labelled with its house number. Panoramas 14-60 m from
+  the run's middle, standing off its line by `--min-standoff`, within 40 deg of its normal, winter first. Writes the JPEG
+  and a JSON with the pose and the outlines. This is the spec writer's reading sheet for a row: crowns, storeys, axes and
+  the neighbours' tone in one frame, where `house:crops`' rectified crops cut the crown off on a narrow quay pand.
+
+```sh
+node --import tsx scripts/house-frames/row-view.ts --pands 0363100012171710,0363100012171704,0363100012182581 \
+  --labels 4,6,8 --bearing 120 --out artifacts/rows/klov-4-8.jpg
+npm run house:frames -- --pands $(cat ids.txt) --bearing 120 --min-dist 25 --max-dist 50 --year 2024 --season winter \
+  --query '?world=live' --label before
+```
+
+What the Kloveniersburgwal batches met (kit gaps, `schemaLimits` on the specs):
+
+- **Dormers.** `plain`, `pediment`, `pointed` and `arched` dormers fail the recipe's open-edges gate (3.7 m of open edge per
+  dormer on these 3DBAG roofs); only `dormerStyle: flat` passes. The specs carry flat timber dormers and a `schemaLimits`
+  entry naming the real kind.
+- **Eaves.** A HouseSpec has no eaves height; 3DBAG's 5.5 m eaves on Kloveniersburgwal 44 (171629) squash four storeys
+  and it is held. `measuredEavesM` lives only in a recipe house dir's `facts.json`.
+- **Through and corner pands** (12, 28 to another street; 30's corner tower) are skipped: a recipe front on one street
+  leaves the other street's wall to the suppression guard.
+- **After frames on `?world=live` need the placement bundle.** `src/canalRecall/landmarks/ordinaryModels.ts` imports
+  `ordinary-buildings-data/catalogue.json` at build time, so a local `install.ts` + covers rebuild is not drawn until
+  `npm run build:canal-signature-landmarks` rebuilds `js/signature-placement.bundle.js` (do not commit it). Without it the
+  caption reads `installed ordinary-<pand> (picked generic)` and the after half equals the before half (measured on
+  Kloveniersburgwal batch 1: 15 of 15 pairs identical).
+- **56 (171173)**: `pickWall` finds no street wall, so neither the row view nor `house:preview` frames it; held.
+
 ## §8 Browser-free GLB passes (lane H12, #362)
 
 **First passes are Node; browsers are for in-game frames (`house:frames`), rides and timing.** A first look at a GLB

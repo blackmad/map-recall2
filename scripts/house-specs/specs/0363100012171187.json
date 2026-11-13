@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171187",
+ "address": "Kloveniersburgwal 93",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "none"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#4a3530"
+  },
+  "notes": [
+   "Dark brick, plain parapet cornice"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track21_Sphere_00050 (42 m across the Kloveniersburgwal, row view of 79-93)",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track21_Sphere_00050 (42 m across the Kloveniersburgwal, row view of 79-93)",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track21_Sphere_00050 (42 m across the Kloveniersburgwal, row view of 79-93)",
+   "at": "2025-01-08"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250108_1041_Track21_Sphere_00050 (42 m across the Kloveniersburgwal, row view of 79-93)",
+   "at": "2025-01-08"
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171452",
+ "address": "Kloveniersburgwal 51",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "none",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": true,
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "none",
+    "tallGround": true
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#6e4436"
+  },
+  "notes": [
+   "Red-brown neck gable; white-framed ground windows (1951 rebuild per BAG)"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama TMX7316010203-002987_pano_0001_000109 (38 m across the Kloveniersburgwal, row view of 49-61)",
+   "at": "2023-03-06"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama TMX7316010203-002987_pano_0001_000109 (38 m across the Kloveniersburgwal, row view of 49-61)",
+   "at": "2023-03-06"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama TMX7316010203-002987_pano_0001_000109 (38 m across the Kloveniersburgwal, row view of 49-61)",
+   "at": "2023-03-06"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama TMX7316010203-002987_pano_0001_000109 (38 m across the Kloveniersburgwal, row view of 49-61)",
+   "at": "2023-03-06"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "neck",
+   "what": "the neck holds two stacked attic windows; drawn with one"
+  }
+ ]
+}

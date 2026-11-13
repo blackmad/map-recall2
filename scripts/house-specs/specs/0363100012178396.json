@@ -1,0 +1,75 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178396",
+ "address": "Oudezijds Achterburgwal 76",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Oudezijds Achterburgwal",
+    "basement": "none",
+    "cornice": "none",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": true,
+    "gable": "bell",
+    "crownCap": "segmental",
+    "atticWindows": 1,
+    "windowSurround": "full-frame",
+    "storeys": 3,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#2a2626",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#a12a24"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#6e5040"
+  },
+  "notes": [
+   "Bell gable with a carved crown and a cartouche over the attic window"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250114_1026_Track06_Sphere_00136 (21 m across the Oudezijds Achterburgwal, row view of 66-76)",
+   "at": "2025-01-14"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250114_1026_Track06_Sphere_00136 (21 m across the Oudezijds Achterburgwal, row view of 66-76)",
+   "at": "2025-01-14"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250114_1026_Track06_Sphere_00136 (21 m across the Oudezijds Achterburgwal, row view of 66-76)",
+   "at": "2025-01-14"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250114_1026_Track06_Sphere_00136 (21 m across the Oudezijds Achterburgwal, row view of 66-76)",
+   "at": "2025-01-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "crown",
+   "what": "a carved cartouche and segmental cap; drawn as a segmental cap"
+  }
+ ]
+}

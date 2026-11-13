@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182582",
+ "address": "Kloveniersburgwal 18",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 2,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "tallGround": true,
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece9e2",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   }
+  ],
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#3f342f"
+  }
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00042 (39 m across, row view of 18-22) and pand-crops/0363100012171707 (2023-02-13)",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00042 (39 m across, row view of 18-22) and pand-crops/0363100012171707 (2023-02-13)",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00042 (39 m across, row view of 18-22) and pand-crops/0363100012171707 (2023-02-13)",
+   "at": "2025-01-08"
+  }
+ }
+}

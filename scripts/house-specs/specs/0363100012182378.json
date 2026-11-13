@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182378",
+ "address": "Zeedijk 66",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Zeedijk",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 2,
+    "shopfront": {
+     "colour": "#2e2a28",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#a12a24"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#8a5a40",
+   "cornice": "#e6e1d6"
+  },
+  "notes": [
+   "Orange-buff brick under a white cornice (1928)"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of house:crops crop pand-crops/0363100012182378 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of house:crops crop pand-crops/0363100012182378 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of house:crops crop pand-crops/0363100012182378 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of house:crops crop pand-crops/0363100012182378 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  }
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182374",
+ "address": "Zeedijk 77",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Zeedijk",
+    "basement": "none",
+    "cornice": "heavy",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "windowSurround": "full-frame",
+    "dormers": 3,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 3,
+    "bays": 4,
+    "shopfront": {
+     "colour": "#3a3430",
+     "fascia": true,
+     "displayWindows": 3,
+     "stallriser": "low"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#7a3e32",
+   "cornice": "#e6e1d6"
+  },
+  "notes": [
+   "1937 red brick front with a deep white cornice and three white dormers"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of house:crops crop pand-crops/0363100012182374 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of house:crops crop pand-crops/0363100012182374 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of house:crops crop pand-crops/0363100012182374 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of house:crops crop pand-crops/0363100012182374 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "the white dormers carry stone pediments; drawn flat timber"
+  }
+ ]
+}

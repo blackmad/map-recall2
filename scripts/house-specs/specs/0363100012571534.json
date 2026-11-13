@@ -1,0 +1,70 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012571534",
+ "address": "Zeedijk 21",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Zeedijk",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e6e1d6",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#3a5a3a"
+     }
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#4a4040"
+  },
+  "notes": [
+   "Plain cornice (register: cornice); the 2025-01-14 crop is washed out at the top"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of house:crops crop pand-crops/0363100012571534 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of house:crops crop pand-crops/0363100012571534 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of house:crops crop pand-crops/0363100012571534 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of house:crops crop pand-crops/0363100012571534 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  }
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177909",
+ "address": "Zeedijk 130",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Zeedijk",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "none",
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "band",
+      "style": "solid"
+     }
+    },
+    "bands": "speklagen",
+    "speklagen": {
+     "spacing": 12,
+     "courses": 2
+    },
+    "shopfront": {
+     "colour": "#a8822e",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#a8822e"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#5a3a30",
+   "band": "#e8e4da"
+  },
+  "notes": [
+   "Segmental window heads in alternating white blocks with white band blocks between storeys; ochre timber shopfront"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of house:crops crop pand-crops/0363100012177909 (map-recall2-source-data, wall route, captured 2021-09-15)",
+   "at": "2021-09-15"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of house:crops crop pand-crops/0363100012177909 (map-recall2-source-data, wall route, captured 2021-09-15)",
+   "at": "2021-09-15"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of house:crops crop pand-crops/0363100012177909 (map-recall2-source-data, wall route, captured 2021-09-15)",
+   "at": "2021-09-15"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of house:crops crop pand-crops/0363100012177909 (map-recall2-source-data, wall route, captured 2021-09-15)",
+   "at": "2021-09-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "alternating white and brick voussoirs (block arch); the block ring breaks the triangle budget on this front, drawn as a solid white ring"
+  }
+ ]
+}
