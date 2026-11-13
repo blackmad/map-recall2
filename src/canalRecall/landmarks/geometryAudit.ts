@@ -26,7 +26,7 @@
  * Pure geometry, no I/O: `scripts/audit-glb-quality.ts` loads GLBs, ranks models and gates against a baseline.
  */
 import {clusterWalls, type WallSegment} from './wallPlanes';
-import {measureFacade, type FacadeInventory, type MaterialSoup, type Opening} from './facadeCompare';
+import {measureFacade, type FacadeInventory, type MaterialSoup, type MixedRow, type Opening} from './facadeCompare';
 import {closestPointOnTriangle, pointTriangleDistSq, rayTriangle, type TriSoup} from './glbQuality';
 
 type V3 = [number, number, number];
@@ -1362,7 +1362,24 @@ export function dominantFacades(s: MaterialSoup, minArea = 60): FacadeInventory[
  * bel-etage door: Academie van Bouwkunst risalit) and neither its size nor its level is an error; its column alignment
  * is still checked, and every other opening is judged as usual.
  */
-export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean; alternating?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+/**
+ * `mixedRows`: rows the photo inventory declares as deliberately mixed (`rowSizes: 'mixed'`, with evidence and the openings'
+ * kinds and widths in order, Morgan & Mees east face). In a declared row each opening's width is judged against its listed
+ * width, and its height and levels against the openings of the same listed kind (a balcony door against the other doors,
+ * not against the windows); no missing-window check runs there. A declared row whose opening count differs from its list
+ * has every opening mismatched: the declaration describes a different row.
+ */
+export function checkMixedRows(rows: MixedRow[] | undefined): MixedRow[] {
+  for (const m of rows ?? []) {
+    if (m.rowSizes !== 'mixed') throw Error(`mixedRows[${m.row}]: rowSizes must be 'mixed'`);
+    if (!m.evidence?.trim()) throw Error(`mixedRows[${m.row}]: evidence (photo or capture id) is required`);
+    if (!m.openings?.length || m.openings.some(o => !o.kind || !(o.w > 0))) throw Error(`mixedRows[${m.row}]: openings need a kind and a width`);
+  }
+  return rows ?? [];
+}
+
+export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean; alternating?: boolean; mixedRows?: MixedRow[]} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+  const mixed = checkMixedRows(opts.mixedRows);
   // Rows: cluster by vertical centre (half the median opening height, ≥ 0.9 m), as facadeCompare does.
   const medH = median(openings.map(o => o.y1 - o.y0)) || 1;
   const sorted = [...openings].sort((a, b) => (a.y0 + a.y1) - (b.y0 + b.y1));
@@ -1374,15 +1391,19 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
   const mismatched: Opening[] = [], missing: {t: number; y0: number; y1: number}[] = [];
   const rowOut: RhythmFacade['rows'] = [];
   const rowCentres: number[][] = [];
-  for (const r of rows) {
+  for (const [ri, r] of rows.entries()) {
     r.sort((a, b) => a.t0 - b.t0);
+    const decl = mixed.find(m => m.row === ri);
     const mw = median(r.map(o => o.t1 - o.t0)), mh = median(r.map(o => o.y1 - o.y0)), ms = median(r.map(o => o.y0)), mt = median(r.map(o => o.y1));
     let odd = 0;
-    const axis = opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
+    const axis = !decl && opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
     // Reference size and level per opening: the whole row, or under `alternating` the openings of the same parity.
-    const cls = (i: number) => opts.alternating ? r.filter((_, j) => j % 2 === i % 2) : r;
-    const ref = r.map((_, i) => { const c = cls(i); return {w: median(c.map(o => o.t1 - o.t0)), h: median(c.map(o => o.y1 - o.y0)), s: median(c.map(o => o.y0)), t: median(c.map(o => o.y1))}; });
-    if (r.length >= 3) r.forEach((o, i) => {
+    // Under a `mixedRows` declaration, the openings of the same listed kind; the width comes from the list.
+    const cls = (i: number) => decl ? r.filter((_, j) => decl.openings[j].kind === decl.openings[i].kind) : opts.alternating ? r.filter((_, j) => j % 2 === i % 2) : r;
+    const declMatches = !decl || decl.openings.length === r.length;
+    const ref = r.map((_, i) => { if (!declMatches) return {w: 0, h: 0, s: 0, t: 0}; const c = cls(i); return {w: decl ? decl.openings[i].w : median(c.map(o => o.t1 - o.t0)), h: median(c.map(o => o.y1 - o.y0)), s: median(c.map(o => o.y0)), t: median(c.map(o => o.y1))}; });
+    if (!declMatches) r.forEach(o => { odd++; mismatched.push(o); });
+    else if (r.length >= 3 || decl) r.forEach((o, i) => {
       const {w: cw, h: ch, s: cs0, t: ct} = ref[i];
       const dw = Math.abs(o.t1 - o.t0 - cw), dh = Math.abs(o.y1 - o.y0 - ch);
       const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * cw) || (dh > 0.4 && dh > 0.25 * ch) || (!opts.staggered && (Math.abs(o.y0 - cs0) > 0.35 || Math.abs(o.y1 - ct) > 0.35)));
@@ -1391,7 +1412,7 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
     // Missing: a gap that is a whole multiple of the regular spacing, between two regular windows of the same size.
     const cs = r.map(o => (o.t0 + o.t1) / 2);
     rowCentres.push(cs);
-    if (r.length >= 3 && !opts.staggered && !opts.alternating) {
+    if (r.length >= 3 && !opts.staggered && !opts.alternating && !decl) {
       const gaps = cs.slice(1).map((c, i) => c - cs[i]);
       const sp = median(gaps);
       gaps.forEach((g, i) => {
@@ -1425,7 +1446,7 @@ export function auditRhythm(s: MaterialSoup, facades: FacadeInventory[], fromSpe
   const out: RhythmFacade[] = [];
   for (const f of facades) {
     const m = measureFacade(s, f, 0.1);
-    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric, alternating: f.alternating});
+    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric, alternating: f.alternating, mixedRows: f.mixedRows});
     out.push({name: f.name, bearing: f.bearing, fromSpec, openings: m.openings.length, ...r, specRows: f.rows});
   }
   return out;

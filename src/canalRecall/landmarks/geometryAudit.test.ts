@@ -160,6 +160,24 @@ test('a plate resting on a plinth: the opposite-facing tie cannot show; the near
   assert.ok(report.findings.some(f => f.kind === 'zfight'), 'a small model warns under the 0.25 m2 absolute threshold');
 });
 
+test('rhythm: a declared mixed row (rowSizes: mixed) judges each opening against its listed size (morgan-mees east)', () => {
+  // First floor of Morgan & Mees' east face as the model draws it: balcony door, window, double window, balcony door; the
+  // doors start 0.6 m lower than the windows. Ground row of three regular windows underneath.
+  const o = (t0: number, w: number, y0: number, y1: number): Opening => ({t0, t1: t0 + w, y0, y1, area: w * (y1 - y0)});
+  const ground = [o(1.6, 1, 1.2, 3), o(5.1, 1, 1.2, 3), o(10.9, 1, 1.2, 3)];
+  const first = [o(1.6, 1.0, 6.1, 8.3), o(5.1, 1.0, 6.75, 8.3), o(7.5, 2.1, 6.75, 8.3), o(10.9, 1.1, 6.1, 8.3)];
+  const declared = {row: 1, rowSizes: 'mixed' as const, evidence: 'recording_2025-06-17_11-17-15_01485 (w03-111)',
+    openings: [{kind: 'door', w: 1.1}, {kind: 'window', w: 1.1}, {kind: 'window', w: 2.2}, {kind: 'door', w: 1.2}]};
+  assert.deepEqual(analyseRhythm([...ground, ...first], {mixedRows: [declared]}).mismatched, [], 'declared and matching: passes');
+  assert.ok(analyseRhythm([...ground, ...first]).mismatched.length >= 2, 'the same row undeclared still fails (double window, door sills)');
+  // A declaration that does not describe the row fails: wrong width order, or a different count.
+  const swapped = {...declared, openings: [{kind: 'door', w: 1.1}, {kind: 'window', w: 2.2}, {kind: 'window', w: 1.1}, {kind: 'door', w: 1.2}]};
+  assert.equal(analyseRhythm([...ground, ...first], {mixedRows: [swapped]}).mismatched.length, 2, 'listed widths out of order');
+  const short = {...declared, openings: declared.openings.slice(0, 3)};
+  assert.equal(analyseRhythm([...ground, ...first], {mixedRows: [short]}).mismatched.length, 4, 'count differs from the list');
+  assert.throws(() => analyseRhythm(first, {mixedRows: [{...declared, evidence: ' '}]}), /evidence/);
+});
+
 test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   const row = (y: number, ts: number[], w = 1.2): Opening[] => ts.map(t => ({t0: t, t1: t + w, y0: y, y1: y + 2, area: w * 2}));
   const regular = [...row(1, [1, 4, 7, 10, 13]), ...row(5, [1, 4, 7, 10, 13])];
