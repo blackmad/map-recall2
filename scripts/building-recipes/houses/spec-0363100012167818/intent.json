@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012167818",
+ "pandId": "0363100012167818",
+ "address": "Haarlemmerdijk 20",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-2-58-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-buurten-haarlemmerbuurt-review-eaves-json",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "docs-reports-haarlemmer-strip-verdict-20261110-md-winter-re-",
+   "kind": "human-review",
+   "capturedAt": "2020-01-10"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": [
+    2,
+    2,
+    3
+   ],
+   "cornice": "none",
+   "crownRise": 1.2,
+   "doorBay": null,
+   "eavesHeight": 10.2,
+   "gable": "neck",
+   "headLines": [
+    0.8,
+    0.91,
+    0.82
+   ],
+   "hoist": true,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#242122",
+    "fascia": true,
+    "name": "Studio Onrust",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 3437-3588"
+   },
+   "storeyHeights": [
+    4.5,
+    2.9,
+    2.6
+   ],
+   "storeys": 3,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.6,
+    0.66
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#4e4641",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-gable: crown neck, palette haarlemmer-red-brown + measured brick #342d2c",
+  "type deviations: bays [2,2,3] (type: 2)"
+ ]
+}

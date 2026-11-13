@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177934",
+ "pandId": "0363100012177934",
+ "address": "Zeedijk 132",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2019-05-10"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2019-05-10"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2019-05-10"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2019-05-10"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "pediment",
+   "doorBay": 0,
+   "gable": "neck",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#2e2a28",
+    "fascia": true,
+    "displayWindows": 1,
+    "stallriser": "low",
+    "entrance": "left"
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#4e3a33",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Dark brick neck gable, centre windows wider"
+ ]
+}

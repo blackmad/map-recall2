@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171452",
+ "pandId": "0363100012171452",
+ "address": "Kloveniersburgwal 51",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "pediment",
+   "doorBay": 0,
+   "gable": "neck",
+   "hoist": true,
+   "id": "front0",
+   "storeys": 4,
+   "street": "Kloveniersburgwal",
+   "tallGround": true,
+   "windowSurround": "none",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6e4436",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Red-brown neck gable; white-framed ground windows (1951 rebuild per BAG)"
+ ]
+}

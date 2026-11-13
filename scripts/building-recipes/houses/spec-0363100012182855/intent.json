@@ -1,0 +1,57 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182855",
+ "pandId": "0363100012182855",
+ "address": "Nieuwmarkt 26",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182855-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "frieze",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#5a1a1a",
+    "fascia": false,
+    "entrance": "left",
+    "stallriser": "low",
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "#9a2222"
+    },
+    "evidence": "red awning over the restaurant, 2025-01-08"
+   },
+   "storeys": 3,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windowSurround": "sill",
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it",
+  "form": "flat",
+  "material": "bitumen",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#5c4b43",
+  "cornice": "#e6e2d8",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171645",
+ "pandId": "0363100012171645",
+ "address": "Zeedijk 56",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "flat",
+   "crownSteps": 3,
+   "doorBay": 0,
+   "gable": "step",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e1d6",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "fasciaColour": "#a12a24"
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6a4a3e",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Step gable with a hoist beam"
+ ]
+}

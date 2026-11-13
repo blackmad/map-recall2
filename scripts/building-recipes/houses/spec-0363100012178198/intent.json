@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012178198",
+ "pandId": "0363100012178198",
+ "address": "Kloveniersburgwal 36",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "heavy",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e8e5de",
+    "fascia": false,
+    "displayWindows": 2,
+    "stallriser": "low"
+   },
+   "storeys": 4,
+   "street": "Kloveniersburgwal",
+   "windowSurround": "none",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#d6c8a8",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd",
+  "wallMaterial": "painted-brick"
+ },
+ "notes": [
+  "Painted cream since the 2023 renovation: the 2023-02-20 crop shows dark brown brick under sheeting, the 2025-01-08 row view a cream front; the later photo wins"
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012174417",
+ "pandId": "0363100012174417",
+ "address": "Prinsengracht 146",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-prinsengracht-130-150-ggw-strip-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "block-face-strip-prinsengracht-130-150-ggw-2021-01-25-40-px-",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 2,
+   "gable": "cornice",
+   "headLines": [
+    0.86,
+    0.86,
+    0.86,
+    0.86,
+    0.86
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    3.4,
+    2.9,
+    2.8,
+    2.6,
+    2.4
+   ],
+   "storeys": 5,
+   "street": "Prinsengracht",
+   "windowFrames": {
+    "frame": 0.1
+   },
+   "windowHeights": [
+    0.62,
+    0.72,
+    0.72,
+    0.7,
+    0.68
+   ],
+   "windowShare": 0.55,
+   "windowSurround": "full-frame",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "evidence": "Keizersgracht 258 (2021-01-22 strip): sky over the plain cornice from the quay; no roof face shows, so the front gives a flat top at the cornice",
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#5a453b",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1760-plain-cornice: crown none, mirrored, palette dark-brown-brick + measured brick #5a453b",
+  "type deviations: storeys 5 (type: 4); windows \"sash-small-panes\" (type: \"sash\"); storeyHeights [3.4,2.9,2.8,2.6,2.4] (type: [4.6,3.1,2.4,2.4]); windowHeights [0.62,0.72,0.72,0.7,0.68] (type: [0.74,0.83,0.83,0.62]); headLines [0.86,0.86,0.86,0.86,0.86] (type: [0.82,0.9,0.9,0.75])"
+ ]
+}

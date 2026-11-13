@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012167689",
+ "pandId": "0363100012167689",
+ "address": "Keizersgracht 112",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-keizersgracht-92-172-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2023-02-13"
+  },
+  {
+   "id": "block-face-strip-keizersgracht-92-172-2023-02-13-40-px-m-gri",
+   "kind": "human-review",
+   "capturedAt": "2023-02-13"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "doorBay": 0,
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "crest",
+    "gabletSize": {
+     "span": 3.5,
+     "rise": 1.3
+    }
+   },
+   "headLines": [
+    0.89,
+    0.875,
+    0.81,
+    0.64
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    4.6,
+    3.3,
+    3.1,
+    2.8
+   ],
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowHeights": [
+    0.51,
+    0.78,
+    0.67,
+    0.52
+   ],
+   "windowShare": 0.75,
+   "windowSurround": "full-frame",
+   "windows": "sash-9-over-9"
+  }
+ ],
+ "roof": {
+  "evidence": "Keizersgracht 254 (2021-01-22 strip): sky over the cornice and crest from the quay; no roof face shows",
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#6c6461",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "type ggw-1740-crest-cornice: crown crest, palette cream-render + measured brick #6c6461",
+  "type deviations: bays 2 (type: 3); windowShare 0.75 (type: 0.5); storeyHeights [4.6,3.3,3.1,2.8] (type: [5.3,3.2,2.4,2.5])"
+ ]
+}

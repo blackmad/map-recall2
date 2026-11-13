@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177935",
+ "pandId": "0363100012177935",
+ "address": "Zeedijk 128",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "rounded",
+   "doorBay": 0,
+   "gable": "neck",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#7a4a2e",
+    "fascia": true,
+    "displayWindows": 1,
+    "stallriser": "low",
+    "entrance": "left"
+   },
+   "storeyHeights": [
+    1.18,
+    1,
+    1,
+    1,
+    1
+   ],
+   "storeys": 5,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#4c3b34",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Tall dark neck gable with white claws, 1749"
+ ]
+}

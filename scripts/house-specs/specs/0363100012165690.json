@@ -1,0 +1,172 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012165690",
+ "address": "Geldersekade 60-62",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "bracketed",
+    "storeys": 4,
+    "bays": 6,
+    "doorBay": 2,
+    "tallGround": false,
+    "windows": "casement-toplight",
+    "storeyHeights": [
+     1.1,
+     1,
+     1,
+     1
+    ],
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#674332",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08): deep overhanging eaves on brackets over a flat brick front (c. 1920)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08): six lights a storey in two groups of three",
+   "at": "2023-03-27"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08): white casements with a toplight",
+   "at": "2023-03-27"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08): leaf-off wall vote over 2021-01-25, 2023-03-27 (wallFit, 2 captures)",
+   "at": "2023-03-27"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012165690/front.jpg (2025-01-08)",
+   "at": "2023-03-27"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "ground storey",
+   "what": "two dark timber double doors with toplights at either end and a single door in the middle"
+  },
+  {
+   "component": "dormer",
+   "what": "2 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177932",
+ "pandId": "0363100012177932",
+ "address": "Zeedijk 136",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#cfc49e",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "fasciaColour": "#cfc49e",
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "#a3262a"
+    }
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6a4434",
+  "cornice": "#cfc49e",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Cream-ochre frieze cornice and pilastered ground storey with a red parasol"
+ ]
+}

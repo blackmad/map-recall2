@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182549",
+ "pandId": "0363100012182549",
+ "address": "Zeedijk 51",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e8e4da",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "entrance": "left"
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#e2ddd2",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd",
+  "wallMaterial": "painted-brick"
+ },
+ "notes": [
+  "White-painted front with a white cornice"
+ ]
+}

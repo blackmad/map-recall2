@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012165073",
+ "pandId": "0363100012165073",
+ "address": "Haarlemmerdijk 123",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-117-143-r1-strip-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-117-143-auto-place-j",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": null,
+   "gable": "cornice",
+   "headLines": [
+    0.8,
+    0.88,
+    0.86,
+    0.84
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#353436",
+    "fascia": true,
+    "name": "Typique",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "right",
+     "colour": "#2a2a2a"
+    },
+    "evidence": "auto-place: osm-only (winkelfunctie, shop=copyshop); fascia colour measured on the strip 2022-12-15 span 520-740"
+   },
+   "storeyHeights": [
+    4,
+    2.8,
+    2.7,
+    2.6
+   ],
+   "storeys": 4,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.68,
+    0.66,
+    0.6
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "Haarlemmerdijk 6, 33, 35A (2022-12-15 strips): sky stands directly over the cornice and the dormer, no roof face over the cornice; the 3DBAG front attic at 30 deg drew a red band the strips never show. Canal-house saddles run front to back (hip front); pitch 35 deg keeps the hipped face over the cornice to about 1.4 m on a 4-5 m front (50 deg drew a 2.7 m red triangle the strips never show)",
+  "form": "saddle",
+  "hip": "front",
+  "material": "red-tile",
+  "pitchDeg": 35
+ },
+ "palette": {
+  "brick": "#4c4c4a",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-cornice-four: crown none, mirrored, palette haarlemmer-red-brown + measured brick #4a4844",
+  "type deviations: bays 3 (type: 2)"
+ ]
+}

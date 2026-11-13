@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182858",
+ "pandId": "0363100012182858",
+ "address": "Nieuwmarkt 18",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182858-fro",
+   "kind": "human-review",
+   "capturedAt": "2023-03-13"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "rounded",
+   "crownShoulder": "convex",
+   "doorBay": 2,
+   "gable": "bell",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": true,
+    "entrance": "right",
+    "stallriser": "low",
+    "displayWindows": 1,
+    "sign": {
+     "text": "ALBERT HEIJN",
+     "textColour": "#2aa7c9"
+    },
+    "evidence": "white supermarket front with the sign in teal, door at the right, 2025-01-08"
+   },
+   "storeys": 3,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windowSurround": "sill",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "evidence": "gable front: the roof follows the crown (house:crops crop)",
+  "material": "black-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#443a33",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

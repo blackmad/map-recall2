@@ -601,6 +601,17 @@
      ]
     },
     {
+     "label": "Van Houweningenstraat 20",
+     "lat": 52.37440021039639,
+     "lng": 4.871590041178221,
+     "view": "chase",
+     "at": [
+      4.871046,
+      52.374523,
+      110
+     ]
+    },
+    {
      "label": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West",
      "lat": 52.3753951,
      "lng": 4.8737771,
@@ -609,17 +620,6 @@
       4.872544,
       52.374759,
       50
-     ]
-    },
-    {
-     "label": "Zaagpoort",
-     "lat": 52.378351,
-     "lng": 4.878287,
-     "view": "chase",
-     "at": [
-      4.878871,
-      52.378391,
-      264
      ]
     },
     {

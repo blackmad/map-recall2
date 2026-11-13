@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182403",
+ "pandId": "0363100012182403",
+ "address": "Geldersekade 111",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182403-fro",
+   "kind": "human-review",
+   "capturedAt": "2023-01-30"
+  }
+ ],
+ "fronts": [
+  {
+   "bandLines": [
+    "sill",
+    "head"
+   ],
+   "bands": "painted",
+   "basement": "none",
+   "bays": 3,
+   "cornice": "bracketed",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#2b2b2b",
+    "fascia": true,
+    "entrance": "left",
+    "stallriser": "low",
+    "displayWindows": 2,
+    "evidence": "dark shop with a red sign, 2025-01-08"
+   },
+   "storeys": 5,
+   "street": "Geldersekade",
+   "tallGround": true,
+   "windowHead": {
+    "kind": "segmental",
+    "archRing": {
+     "colour": "stone",
+     "style": "none",
+     "keystone": true
+    }
+   },
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "casement-toplight"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6b5b54",
+  "cornice": "#e6e2d8",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

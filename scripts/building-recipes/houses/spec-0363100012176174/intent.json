@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012176174",
+ "pandId": "0363100012176174",
+ "address": "Haarlemmerdijk 4",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-2-58-r2-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-buurten-haarlemmerbuurt-review-eaves-json",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "docs-reports-haarlemmer-strip-verdict-20261110-md-strip-shee",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 2,
+   "cornice": "none",
+   "crownRise": 0.85,
+   "doorBay": null,
+   "eavesHeight": 9.8,
+   "gable": "neck",
+   "headLines": [
+    0.8,
+    0.91,
+    0.82
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#e3dccb",
+    "fascia": true,
+    "name": "Vishandel 't Centrum",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "evidence": "auto-place: osm-only (winkelfunctie, shop=seafood); fascia colour measured on the strip 2022-12-15 span 4743-4916; reviewer pin: Haarlemmerdijk 4 (fish shop): cream shopfront with a central door (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+   },
+   "storeyHeights": [
+    4.5,
+    2.9,
+    2.6
+   ],
+   "storeys": 3,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.6,
+    0.66
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#5b5550",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-gable: crown bell-low, palette haarlemmer-red-brown + measured brick #4a3e34",
+  "type deviations: palette {\"brick\":\"#5b5550\"} (type palette haarlemmer-red-brown)"
+ ]
+}

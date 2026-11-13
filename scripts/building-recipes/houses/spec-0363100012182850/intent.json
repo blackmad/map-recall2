@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182850",
+ "pandId": "0363100012182850",
+ "address": "Nieuwmarkt 38",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182850-fro",
+   "kind": "human-review",
+   "capturedAt": "2023-02-20"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": false,
+    "glazing": "transom",
+    "entrance": "centre",
+    "stallriser": "low",
+    "displayWindows": 2,
+    "evidence": "white painted timber pui with pilasters and a transom row, glazed door in the centre bay, 2025-01-08"
+   },
+   "storeyHeights": [
+    1.75,
+    1,
+    1,
+    1
+   ],
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": [
+    0.6,
+    0.72,
+    0.72,
+    0.72
+   ],
+   "windowShare": 0.56,
+   "windowSurround": "sill",
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "evidence": "red pantile roof behind the cornice on the crop; 3DBAG LoD2.2 form kept",
+  "material": "red-tile"
+ },
+ "palette": {
+  "brick": "#54453b",
+  "cornice": "white",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "white",
+  "wallMaterial": "brick"
+ }
+}

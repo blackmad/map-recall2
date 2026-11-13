@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177939",
+ "pandId": "0363100012177939",
+ "address": "Zeedijk 137",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2016-06-09"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2016-06-09"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2016-06-09"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2016-06-09"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 4,
+   "cornice": "bracketed",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#ddd5c0",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "entrance": "centre"
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#5c3e33",
+  "cornice": "#ddd5c0",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Cream bracketed cornice and cream pilastered ground storey under dark brown brick"
+ ]
+}

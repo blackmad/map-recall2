@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012159954",
+ "address": "Van Houweningenstraat 31",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Van Houweningenstraat",
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "none",
+    "windows": "t-window",
+    "storeyHeights": [
+     3.34,
+     2.95,
+     2.95,
+     2.9
+    ],
+    "windowHeights": [
+     0.62,
+     0.66,
+     0.66,
+     0.64
+    ],
+    "bands": "painted",
+    "bandLines": [
+     "head"
+    ],
+    "bandHeights": {
+     "head": 0.08
+    },
+    "windowHead": {
+     "kind": "relieving",
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "archRing": {
+      "colour": "stone",
+      "style": "blocks",
+      "keystone": true
+     }
+    },
+    "wallAnchors": {
+     "over": 0.35,
+     "colour": "#1e1e1e"
+    },
+    "gable": "point",
+    "crownRise": 1.15,
+    "atticWindows": 1,
+    "doorBay": 2,
+    "doorPairs": true,
+    "pairTransom": true,
+    "wideGround": {
+     "from": 0,
+     "to": 1
+    },
+    "basement": "none",
+    "hoist": false
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "rise": 0.25,
+   "pitchDeg": 45,
+   "evidence": "strips 2021-03/2022-04: over the cornice only the dormers and gables stand against the sky; dark slate band behind (hendrik-134-154)"
+  },
+  "palette": {
+   "brick": "#766057",
+   "frame": "#e8e6dc",
+   "door": "#a52a22",
+   "stone": "#e6e2d4",
+   "cornice": "#e0dccd"
+  },
+  "notes": [
+   "type fh-1887-arched-gable: crown point-gable, mirrored, palette red-brown + measured brick #766057"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/houweningen-1-31-r1/strip.json",
+   "at": "2021-02-22"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ }
+}

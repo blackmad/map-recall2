@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182848",
+ "pandId": "0363100012182848",
+ "address": "Nieuwmarkt 14",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182848-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 2,
+   "cornice": "none",
+   "crownCap": "rounded",
+   "crownShoulder": "ogee",
+   "doorBay": 0,
+   "gable": "bell",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": true,
+    "entrance": "left",
+    "stallriser": "low",
+    "displayWindows": 3,
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "#222222"
+    },
+    "evidence": "white pui with pilasters, entresol lights, black awning (coffeeshop), 2025-01-08"
+   },
+   "storeyHeights": [
+    2,
+    1,
+    1
+   ],
+   "storeys": 3,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windowSurround": "sill",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "evidence": "gable front: the roof follows the crown (house:crops crop)",
+  "material": "black-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#675a47",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

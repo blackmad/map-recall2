@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012178218",
+ "pandId": "0363100012178218",
+ "address": "Kloveniersburgwal 75",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 0,
+   "dormerBody": "timber",
+   "dormerStyle": "flat",
+   "dormers": 2,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "storeys": 4,
+   "street": "Kloveniersburgwal",
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#7a4536",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Red brick, white cornice, two roof dormers (1895)"
+ ]
+}

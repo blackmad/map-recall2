@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182707",
+ "pandId": "0363100012182707",
+ "address": "Zeedijk 40",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 6,
+   "cornice": "bracketed",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#3a3330",
+    "fascia": true,
+    "displayWindows": 3,
+    "stallriser": "low"
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6a4636",
+  "cornice": "#e6e1d6",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "1939 six-bay front, dentilled cream cornice and chimneys"
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012181818",
+ "pandId": "0363100012181818",
+ "address": "Nieuwmarkt 11",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012181818-fro",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#7a1c1c",
+    "fascia": true,
+    "entrance": "centre",
+    "stallriser": "medium",
+    "displayWindows": 2,
+    "evidence": "red painted shop front with a gold sign, 2020-04-21"
+   },
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHead": {
+    "kind": "relieving",
+    "archRing": {
+     "colour": "wall",
+     "style": "solid"
+    }
+   },
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#5a5044",
+  "cornice": "#e4dcc4",
+  "door": "#2c3a33",
+  "frame": "#e4dcc4",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

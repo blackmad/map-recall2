@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012174415",
+ "pandId": "0363100012174415",
+ "address": "Prinsengracht 150",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-prinsengracht-130-150-ggw-strip-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "scripts-block-face-faces-prinsengracht-130-150-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "block-face-strip-prinsengracht-130-150-ggw-2021-01-25-40-px-",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.5,
+   "doorBay": 0,
+   "gable": "bell",
+   "headLines": [
+    0.86,
+    0.86,
+    0.88
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#beab88",
+    "fascia": true,
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "#2a2a2a"
+    },
+    "evidence": "auto-place: osm-only (woonfunctie, amenity=cafe); fascia colour measured on the strip 2021-01-25 span 0-234"
+   },
+   "storeyHeights": [
+    4.6,
+    3.4,
+    2.8
+   ],
+   "storeys": 3,
+   "street": "Prinsengracht",
+   "windowFrames": {
+    "frame": 0.1
+   },
+   "windowHeights": [
+    0.66,
+    0.74,
+    0.74
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "rakeClear": true,
+  "source": "front",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#9c7a67",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1700-neck-bell-gable: crown bell, palette dark-brick-canal + measured brick #9c7a67",
+  "type deviations: storeys 3 (type: 4); storeyHeights [4.6,3.4,2.8] (type: [5.6,3.2,2.9,2.4]); windowHeights [0.66,0.74,0.74] (type: [0.5,0.72,0.73,0.7]); headLines [0.86,0.86,0.88] (type: [0.86,0.86,0.88,0.83])"
+ ]
+}

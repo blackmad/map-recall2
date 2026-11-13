@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012176280",
+ "pandId": "0363100012176280",
+ "address": "Haarlemmerdijk 50",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-2-58-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-buurten-haarlemmerbuurt-west-review-holds",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "crownCap": "pediment",
+   "crownCapSpan": "narrow",
+   "crownRise": 0.55,
+   "doorBay": null,
+   "gable": "neck",
+   "headLines": [
+    0.8,
+    0.92,
+    0.84
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#55524f",
+    "fascia": true,
+    "name": "SLA",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "#2a2a2a"
+    },
+    "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 838-1064"
+   },
+   "storeyHeights": [
+    4.3,
+    2.7,
+    2.6
+   ],
+   "storeys": 3,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.66,
+    0.66
+   ],
+   "windowShare": 0.74,
+   "windowSurround": "sill",
+   "windows": "casement-sidelights-toplight"
+  }
+ ],
+ "roof": {
+  "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)",
+  "form": "flat",
+  "material": "bitumen",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#5f5c57",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-cornice-wide: crown crowned, mirrored, palette haarlemmer-red-brown + measured brick #5f5c57"
+ ]
+}

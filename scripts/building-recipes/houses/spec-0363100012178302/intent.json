@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012178302",
+ "pandId": "0363100012178302",
+ "address": "Oudezijds Achterburgwal 82",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 0,
+   "dormerBody": "timber",
+   "dormerStyle": "flat",
+   "dormers": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e8e4da",
+    "fascia": false,
+    "displayWindows": 2,
+    "stallriser": "low"
+   },
+   "storeys": 5,
+   "street": "Oudezijds Achterburgwal",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#5a3a30",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Dark brick, plain cornice with a raised pedimented attic"
+ ]
+}

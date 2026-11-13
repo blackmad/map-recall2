@@ -1,0 +1,121 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012167714",
+ "pandId": "0363100012167714",
+ "address": "Herengracht 96B",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-herengracht-84-148-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "block-face-strip-herengracht-84-148-2021-01-25-40-px-m-house",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 4,
+   "cornice": "frieze",
+   "doorBay": 2,
+   "doorSurround": {
+    "pilaster": 0.24,
+    "cap": 0.3
+   },
+   "dormerAt": [
+    {
+     "from": 0.03,
+     "to": 0.24
+    },
+    {
+     "from": 0.76,
+     "to": 0.97
+    }
+   ],
+   "dormerLights": 2,
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.2,
+    "setback": 0.35
+   },
+   "dormerStyle": "flat",
+   "dormers": 2,
+   "entablature": {
+    "rise": 1.4,
+    "cap": 0.5,
+    "frieze": "trim",
+    "capDepth": 0.45,
+    "architrave": 0.12
+   },
+   "friezeVents": {
+    "span": 1,
+    "rise": 0.4,
+    "sill": 0.35,
+    "light": true
+   },
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "pediment",
+    "gabletSize": {
+     "span": 4.2,
+     "rise": 1.1
+    }
+   },
+   "headLines": [
+    0.875,
+    0.885,
+    0.81,
+    0.81
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    2.1,
+    1.6,
+    1.39,
+    1.37
+   ],
+   "storeys": 4,
+   "street": "Herengracht",
+   "windowFrames": {
+    "frame": 0.12,
+    "eared": {
+     "upper": 3,
+     "band": 0.12
+    }
+   },
+   "windowHeights": [
+    0.82,
+    0.79,
+    0.68,
+    0.65
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#b5a785",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1740-frieze-cornice: crown pediment-dormers, palette dark-painted-brick + measured brick #b5a785",
+  "type deviations: bays 4 (type: 3); entablature {\"rise\":1.4,\"cap\":0.5,\"frieze\":\"trim\",\"capDepth\":0.45,\"architrave\":0.12} (type: {\"rise\":2.3,\"cap\":0.6,\"frieze\":\"trim\",\"capDepth\":0.45,\"architrave\":0.12}); friezeVents {\"span\":1,\"rise\":0.4,\"sill\":0.35,\"light\":true} (type: {\"span\":1.1,\"rise\":0.45,\"sill\":0.65,\"light\":true})"
+ ]
+}

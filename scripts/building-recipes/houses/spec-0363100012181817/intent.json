@@ -1,0 +1,56 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012181817",
+ "pandId": "0363100012181817",
+ "address": "Nieuwmarkt 7",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012181817-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 2,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#1e1e1e",
+    "fascia": false,
+    "glazing": "transom",
+    "entrance": "right",
+    "stallriser": "none",
+    "displayWindows": 2,
+    "evidence": "black lower front (ATMs) under a white-framed entresol of four lights, door at the right, 2021-03-08"
+   },
+   "storeyHeights": [
+    1.8,
+    1,
+    1,
+    0.95
+   ],
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#725a4d",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012169008",
+ "pandId": "0363100012169008",
+ "address": "Herengracht 116C",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-herengracht-84-148-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "block-face-strip-herengracht-84-148-2021-01-25-40-px-m-gridd",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 0,
+   "doorSurround": {
+    "pilaster": 0.24,
+    "cap": 0.35
+   },
+   "entablature": {
+    "rise": 2.3,
+    "cap": 0.6,
+    "frieze": "trim",
+    "capDepth": 0.45,
+    "architrave": 0.12
+   },
+   "friezeVents": {
+    "span": 1.1,
+    "rise": 0.45,
+    "sill": 0.65,
+    "light": true
+   },
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "crest"
+   },
+   "headLines": [
+    0.86,
+    0.9,
+    0.9
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    2.4,
+    1.9,
+    1.6
+   ],
+   "storeys": 3,
+   "street": "Herengracht",
+   "windowFrames": {
+    "frame": 0.12
+   },
+   "windowHeights": [
+    0.72,
+    0.82,
+    0.8
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#be9f7a",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1740-frieze-cornice: crown crest, palette dark-painted-brick + measured brick #be9f7a",
+  "type deviations: storeys 3 (type: 4); storeyHeights [2.4,1.9,1.6] (type: [2.1,1.6,1.39,1.37]); windowHeights [0.72,0.82,0.8] (type: [0.82,0.79,0.68,0.65]); headLines [0.86,0.9,0.9] (type: [0.875,0.885,0.81,0.81])"
+ ]
+}

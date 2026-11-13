@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171702",
+ "pandId": "0363100012171702",
+ "address": "Kloveniersburgwal 14",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 1,
+   "dormerBody": "timber",
+   "dormerStyle": "flat",
+   "dormers": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#5a2a24",
+    "fascia": true,
+    "fasciaColour": "#b8302a",
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "#c0362c"
+    },
+    "stallriser": "low"
+   },
+   "storeys": 4,
+   "street": "Kloveniersburgwal",
+   "windowSurround": "sill",
+   "windows": "sash-6-over-6"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#7a4b3a",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ }
+}

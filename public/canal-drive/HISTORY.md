@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**Belt batch published, house plan revised, Scan Hunt (2026-11-13, round 125).**
+- **Belt batch `belt-20261113`.** 178 specs from the canal-belt lanes (Burgwallen-Oude Zijde 73, Nieuwmarkt 43, Grachtengordel-West 40, Haarlemmer 19, Frederik Hendrik 3): 175 recipe GLBs installed, 0 blank street walls, 9 world cells changed. Held: 31 recipe houses failing gates, 7 blank-wall pands, 171703, 152966. The publish check failed only on stale content-stats; the integrator regenerated it and wrote the batch record by hand, and the full check:canal ran at commit.
+- **Why the house plan changed.** A Fable review measured ~30 lane-hours of facade work: only wall colour (W1) was visible to a rider; F1 had polished brick while bays, storeys and heads were wrong; fooled-rate stayed 0 and could never rise. Plan P1–P8 plus A–F (TODO) moves effort to describing houses (D1) and structure priors (PR1). Landmark factory lane C was stopped under P7.
+- **Scan Hunt (`/scan.html`).** A field page listing nearby public art to LiDAR-scan (1,285 not in the game, 38 hand-made statue models as upgrades), with points, levels and badges in localStorage, and the Scaniverse GLB method; data from `scripts/scan-finder/build-scan-targets.ts`.
+- **Krul note.** 38 urinals at 37 map points: Westermarkt is a pair.
+
 **Wall variety on (band 0.5), F1 S6d (2026-11-13, round 124).**
 - **W2/W3 (dd6c4b14b).** Unmeasured pands draw from the middle half (band 0.5) of the measured pool near them, not its median.
   - **Why W2 held it.** W2's 114 pairs were chosen where the game drew pale over dark brick, so they punished any spread.

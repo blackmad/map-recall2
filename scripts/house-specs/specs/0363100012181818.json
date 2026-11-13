@@ -1,0 +1,198 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012181818",
+ "address": "Nieuwmarkt 11",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "cornice": "frieze",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 1,
+    "tallGround": true,
+    "basement": "none",
+    "hoist": false,
+    "windows": "cross",
+    "windowHead": {
+     "kind": "relieving",
+     "archRing": {
+      "colour": "wall",
+      "style": "solid"
+     }
+    },
+    "shopfront": {
+     "colour": "#7a1c1c",
+     "fascia": true,
+     "entrance": "centre",
+     "stallriser": "medium",
+     "displayWindows": 2,
+     "evidence": "red painted shop front with a gold sign, 2020-04-21"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#5a5044",
+   "frame": "#e4dcc4",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick",
+   "cornice": "#e4dcc4"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21): deep cream frieze cornice",
+   "at": "2020-04-21"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21): brick relieving arches over every window",
+   "at": "2020-04-21"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21): brown brick, crop reading #52493e lifted 10 %",
+   "at": "2020-04-21"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21): cream window frames and cornice",
+   "at": "2020-04-21"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "basement",
+   "what": "two stone steps up to each shop door"
+  },
+  {
+   "component": "dormer",
+   "what": "the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)"
+  },
+  {
+   "component": "shopfront sign",
+   "what": "the gold MASSAGE lettering: a shopfront sign on this front leaves 21 open edges (3.3 m) in the install gate"
+  }
+ ]
+}

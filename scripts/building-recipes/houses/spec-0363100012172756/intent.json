@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012172756",
+ "pandId": "0363100012172756",
+ "address": "Haarlemmerdijk 184",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-126-188-r1-strip-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "doorBay": null,
+   "gable": "cornice",
+   "headLines": [
+    0.8,
+    0.91,
+    0.91,
+    0.82
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#a7a69b",
+    "fascia": true,
+    "name": "Bakkerij Mediterrane",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2024-12-11 span 155-321"
+   },
+   "storeyHeights": [
+    4.5,
+    2.9,
+    2.9,
+    2.6
+   ],
+   "storeys": 4,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.6,
+    0.6,
+    0.66
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "Haarlemmerdijk 6, 33, 35A (2022-12-15 strips): sky stands directly over the cornice and the dormer, no roof face over the cornice; the 3DBAG front attic at 30 deg drew a red band the strips never show. Canal-house saddles run front to back (hip front); pitch 35 deg keeps the hipped face over the cornice to about 1.4 m on a 4-5 m front (50 deg drew a 2.7 m red triangle the strips never show)",
+  "form": "saddle",
+  "hip": "front",
+  "material": "red-tile",
+  "pitchDeg": 35
+ },
+ "palette": {
+  "brick": "#634739",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-cornice: crown none, palette haarlemmer-red-brown + measured brick #634739",
+  "type deviations: storeys 4 (type: 3)"
+ ]
+}

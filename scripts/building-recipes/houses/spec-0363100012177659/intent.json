@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177659",
+ "pandId": "0363100012177659",
+ "address": "Haarlemmerdijk 45",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-13-45-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-buurten-haarlemmerbuurt-review-eaves-json",
+   "kind": "human-review",
+   "capturedAt": "2022-12-15"
+  },
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-13-45-auto-place-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.2,
+   "doorBay": null,
+   "eavesHeight": 9.75,
+   "gable": "neck",
+   "headLines": [
+    0.8,
+    0.91,
+    0.82
+   ],
+   "hoist": true,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#2b2725",
+    "fascia": true,
+    "name": "'t Zonnetje",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "#2a2a2a"
+    },
+    "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, woonfunctie, shop=tea); fascia colour measured on the strip 2022-12-15 span 2741-2967"
+   },
+   "storeyHeights": [
+    4.5,
+    2.9,
+    2.6
+   ],
+   "storeys": 3,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.6,
+    0.66
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "sash-6-over-6"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#393735",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmerstraat-sash-gable: crown neck, palette haarlemmer-red-brown + measured brick #272423"
+ ]
+}

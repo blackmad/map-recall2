@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177909",
+ "pandId": "0363100012177909",
+ "address": "Zeedijk 130",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2021-09-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2021-09-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2021-09-15"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-ho",
+   "kind": "human-review",
+   "capturedAt": "2021-09-15"
+  }
+ ],
+ "fronts": [
+  {
+   "bands": "speklagen",
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#a8822e",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "fasciaColour": "#a8822e"
+   },
+   "speklagen": {
+    "spacing": 12,
+    "courses": 2
+   },
+   "storeys": 4,
+   "street": "Zeedijk",
+   "windowHead": {
+    "kind": "segmental",
+    "archRing": {
+     "colour": "band",
+     "style": "solid"
+    }
+   },
+   "windowSurround": "none",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "band": "#e8e4da",
+  "brick": "#5a3a30",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Segmental window heads in alternating white blocks with white band blocks between storeys; ochre timber shopfront"
+ ]
+}

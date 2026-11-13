@@ -1,0 +1,49 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012170932",
+ "pandId": "0363100012170932",
+ "address": "Geldersekade 120",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012170932-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "doorBay": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": true,
+    "entrance": "centre",
+    "stallriser": "low",
+    "displayWindows": 2,
+    "evidence": "white snack-bar front with red lettering (Grill House), 2021-01-25"
+   },
+   "storeys": 4,
+   "street": "Geldersekade",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "casement-toplight"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#43362f",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

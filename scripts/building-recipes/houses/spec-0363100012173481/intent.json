@@ -1,0 +1,79 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012173481",
+ "pandId": "0363100012173481",
+ "address": "Haarlemmerdijk 137",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-117-143-r1-strip-jso",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 2,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.6,
+   "doorBay": null,
+   "gable": "point",
+   "headLines": [
+    0.8,
+    0.88,
+    0.86,
+    0.84
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#272424",
+    "fascia": true,
+    "name": "gimme gimme vintage",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "right",
+     "colour": "#2a2a2a"
+    },
+    "evidence": "auto-place: osm-only (woonfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1887-2117"
+   },
+   "storeyHeights": [
+    4.4,
+    2.8,
+    2.7,
+    2.5
+   ],
+   "storeys": 4,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.66,
+    0.66,
+    0.6
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "sash-6-over-6"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#262423",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmerstraat-sash-gable-four: crown point, mirrored, palette haarlemmer-red-brown + measured brick #262423"
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182857",
+ "pandId": "0363100012182857",
+ "address": "Nieuwmarkt 20-22",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182857-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-12-27"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 2,
+   "bands": "speklagen",
+   "basement": "none",
+   "bays": 5,
+   "cornice": "none",
+   "crownGroups": [
+    {
+     "from": 0,
+     "to": 1
+    },
+    {
+     "from": 3,
+     "to": 4
+    }
+   ],
+   "crownSteps": 4,
+   "doorBay": 1,
+   "gable": "step",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": false,
+    "glazing": "transom",
+    "entrance": "left",
+    "stallriser": "medium",
+    "displayWindows": 4,
+    "evidence": "tall white pui with small-paned transom lights and two doors, 2025-01-08"
+   },
+   "speklagen": {
+    "spacing": 12,
+    "courses": 2
+   },
+   "storeys": 2,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHead": {
+    "kind": "relieving",
+    "archRing": {
+     "colour": "stone",
+     "style": "blocks",
+     "widthCourses": 4
+    }
+   },
+   "windowHeights": "diminishing",
+   "windowShare": 0.6,
+   "windows": "sash-small-panes"
+  }
+ ],
+ "roof": {
+  "evidence": "gable front: the roof follows the crown (house:crops crop)",
+  "material": "black-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#463830",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#ece6cf",
+  "wallMaterial": "brick"
+ }
+}

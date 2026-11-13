@@ -3,8 +3,24 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "175 more canal-belt houses built from their photos",
+      "text": "Houses in Burgwallen-Oude Zijde, the Nieuwmarkt, the western canal belt and along Haarlemmerdijk now have their own models, built from measured specs: storeys, window columns, gables, white bands and colours read from street photos. The picture shows six on Haarlemmerdijk and Haarlemmerstraat, photo on the left and game on the right. Some are close; others still miss shopfront detail or draw the wall a shade too light. 40 more houses were held back because their models failed checks, and go back for another pass.",
+      "where": [
+        4.8905,
+        52.3815
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-13-belt-batch/contact-haarlemmer.jpg",
+          "alt": "Six Haarlemmerdijk houses, panorama photo beside the game frame",
+          "caption": "Photo | game, Haarlemmerdijk"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Rows of houses vary like the real street",
-      "text": "Unmeasured houses used to take one middle colour from their measured neighbours, so whole rows came out the same grey-brown. Each house now draws its own colour from the middle half of what was measured nearby, so a row gets the dark, red and brown mix of the real street. On 146 photo comparisons along the most-ridden streets, picked at random, the wall colour error dropped a little further (0.097 to 0.091). Pale painted fronts are still drawn too dark; they need a photo of each house.",
+      "text": "Unmeasured houses used to take one middle colour from their measured neighbours, so whole rows came out the same grey-brown. Each house now picks its own colour from the middle of what was measured nearby. The change per house is small: on 146 photo comparisons the average wall colour error went from 0.097 to 0.091. It shows most where a pale house sat in a dark row (Herenstraat, first picture); elsewhere it is hard to see. Pale painted fronts are still drawn too dark; they need a photo of each house.",
       "where": [
         4.8853,
         52.3765
@@ -109,7 +125,7 @@
     {
       "date": "2026-11-12",
       "title": "Amsterdam's green krul urinals",
-      "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at the 37 spots on the city's public-toilet map, mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
+      "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at 37 spots on the city's public-toilet map (Westermarkt has a pair), mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
       "images": [
         {
           "src": "ui/2026-11-12-krul-urinals/photo-vs-model-amstelveld.jpg",

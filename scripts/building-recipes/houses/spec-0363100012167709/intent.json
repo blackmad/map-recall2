@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012167709",
+ "pandId": "0363100012167709",
+ "address": "Herengracht 106",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-herengracht-84-148-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25"
+  },
+  {
+   "id": "block-face-strip-herengracht-84-148-2021-01-25-40-px-m-gridd",
+   "kind": "human-review",
+   "capturedAt": "2021-01-25"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "frieze",
+   "doorBay": 1,
+   "entablature": {
+    "rise": 2.3,
+    "cap": 0.6,
+    "frieze": "trim",
+    "capDepth": 0.45,
+    "architrave": 0.12
+   },
+   "friezeVents": {
+    "span": 1.1,
+    "rise": 0.45,
+    "sill": 0.65,
+    "light": true
+   },
+   "gable": "cornice",
+   "headLines": [
+    0.875,
+    0.885,
+    0.81,
+    0.81
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    2.1,
+    1.6,
+    1.39,
+    1.37
+   ],
+   "storeys": 4,
+   "street": "Herengracht",
+   "windowHeights": [
+    0.82,
+    0.79,
+    0.68,
+    0.65
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#5f5850",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1740-frieze-cornice: crown none, palette dark-painted-brick + measured brick #5f5850",
+  "type deviations: bays 2 (type: 3)"
+ ]
+}

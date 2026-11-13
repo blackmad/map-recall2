@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171144",
+ "pandId": "0363100012171144",
+ "address": "Haarlemmerstraat 54",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmer-46-96-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21"
+  },
+  {
+   "id": "scripts-block-face-buurten-haarlemmerbuurt-review-eaves-json",
+   "kind": "human-review",
+   "capturedAt": "2024-11-21"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.2,
+   "doorBay": null,
+   "eavesHeight": 13,
+   "gable": "neck",
+   "headLines": [
+    0.8,
+    0.88,
+    0.86,
+    0.84
+   ],
+   "hoist": true,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#585b4d",
+    "fascia": true,
+    "name": "The Lebanese Sajeria",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-11-21 span 3442-3634"
+   },
+   "storeyHeights": [
+    4.4,
+    2.8,
+    2.7,
+    2.5
+   ],
+   "storeys": 4,
+   "street": "Haarlemmerstraat",
+   "windowHeights": [
+    0.55,
+    0.66,
+    0.66,
+    0.6
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "sash-6-over-6"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#675b4a",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmerstraat-sash-gable-four: crown neck, mirrored, palette haarlemmer-red-brown + measured brick #675b4a"
+ ]
+}

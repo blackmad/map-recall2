@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182856",
+ "pandId": "0363100012182856",
+ "address": "Nieuwmarkt 24",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182856-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#2a2a2a",
+    "fascia": true,
+    "entrance": "left",
+    "stallriser": "low",
+    "sign": {
+     "text": "POCO LOCO",
+     "textColour": "#d9b24a"
+    },
+    "evidence": "dark cafe front with gold lettering (Poco Loco), 2025-01-08"
+   },
+   "storeyHeights": [
+    1.45,
+    1.2,
+    1,
+    0.75
+   ],
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": [
+    0.7,
+    0.8,
+    0.8,
+    0.7
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it",
+  "form": "flat",
+  "material": "bitumen",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#554943",
+  "cornice": "#e6e2d8",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

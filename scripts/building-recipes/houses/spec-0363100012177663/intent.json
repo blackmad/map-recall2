@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177663",
+ "pandId": "0363100012177663",
+ "address": "Haarlemmerdijk 41",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-haarlemmerdijk-13-45-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 2,
+   "cornice": "frieze",
+   "crownCap": "pediment",
+   "crownCapRise": "low",
+   "crownCapSpan": "narrow",
+   "crownRise": 0.4,
+   "doorBay": null,
+   "gable": "cornice",
+   "headLines": [
+    0.8,
+    0.91,
+    0.82
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "shopfront": {
+    "colour": "#28282b",
+    "fascia": true,
+    "name": "Sabbatical",
+    "entrance": "centre",
+    "glazing": "split",
+    "stallriser": "low",
+    "evidence": "auto-place: osm-only (woonfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 2420-2579"
+   },
+   "storeyHeights": [
+    4.5,
+    2.9,
+    2.6
+   ],
+   "storeys": 3,
+   "street": "Haarlemmerdijk",
+   "windowHeights": [
+    0.55,
+    0.6,
+    0.66
+   ],
+   "windowShare": 0.52,
+   "windowSurround": "sill",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "Haarlemmerdijk 6 (176172) and 18 (167817), 2022-12-15 strips and the strip-sheet review 2026-11-10: sky directly over the frieze and its crown, no roof face; 3DBAG p95 11.21 m over a 10.9 m cornice on 6 and 9.69 m under an 11.4 m cornice on 18, so the roof behind is near flat. The front-hipped red saddle of haarlemmer-shop-cornice drew a red face over the frieze that the review rejected",
+  "form": "flat",
+  "material": "bitumen",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#2d2d2f",
+  "cornice": "#e8e4d8",
+  "door": "#2a2a28",
+  "frame": "white-painted",
+  "stone": "#e8e4d8",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type haarlemmer-shop-cornice-frieze: crown frieze-crowned, mirrored, palette haarlemmer-red-brown + measured brick #2d2d2f"
+ ]
+}

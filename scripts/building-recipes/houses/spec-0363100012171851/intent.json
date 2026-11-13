@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171851",
+ "pandId": "0363100012171851",
+ "address": "Nieuwmarkt 6",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012171851-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 2,
+   "basement": "none",
+   "bays": 2,
+   "cornice": "none",
+   "crownFinial": true,
+   "crownRise": 1,
+   "crownSteps": 5,
+   "doorBay": 0,
+   "gable": "step",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#3a3a3a",
+    "fascia": false,
+    "entrance": "centre",
+    "stallriser": "low",
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "#b8312f"
+    },
+    "evidence": "red fabric awning (dammie) over the shop, 2025-01-08"
+   },
+   "storeys": 2,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHead": {
+    "kind": "relieving",
+    "archRing": {
+     "colour": "band",
+     "style": "solid",
+     "widthCourses": 3
+    }
+   },
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "evidence": "gable front: the roof follows the crown (house:crops crop)",
+  "material": "black-tile",
+  "source": "front"
+ },
+ "palette": {
+  "band": "#6e4231",
+  "brick": "#574c41",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

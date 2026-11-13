@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012171451",
+ "pandId": "0363100012171451",
+ "address": "Kloveniersburgwal 53",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2023-03-06"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 4,
+   "cornice": "heavy",
+   "doorBay": 0,
+   "gable": "flat",
+   "hoist": false,
+   "id": "front0",
+   "storeys": 4,
+   "street": "Kloveniersburgwal",
+   "windowHead": {
+    "kind": "round",
+    "storeys": [
+     2
+    ]
+   },
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#e6e4dd",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd",
+  "wallMaterial": "painted-brick"
+ },
+ "notes": [
+  "White stuccoed front, round-headed windows on the second floor and at the ground storey, a crowning pediment with an oculus"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182302",
+ "pandId": "0363100012182302",
+ "address": "Nieuwmarkt 13",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182302-fro",
+   "kind": "human-review",
+   "capturedAt": "2020-04-21"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "simple",
+   "doorBay": 0,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e6e2d8",
+    "fascia": false,
+    "glazing": "transom",
+    "entrance": "left",
+    "stallriser": "low",
+    "displayWindows": 2,
+    "evidence": "white timber pui with an entresol of five lights, 2020-04-21"
+   },
+   "storeyHeights": [
+    1.7,
+    1,
+    1
+   ],
+   "storeys": 3,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHead": {
+    "kind": "relieving",
+    "archRing": {
+     "colour": "wall",
+     "style": "solid"
+    }
+   },
+   "windowHeights": "diminishing",
+   "windowShare": 0.62,
+   "windows": "casement-toplight"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#483f38",
+  "cornice": "#e4dcc4",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

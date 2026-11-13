@@ -1,0 +1,73 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012169387",
+ "pandId": "0363100012169387",
+ "address": "Keizersgracht 248K",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-keizersgracht-240-312-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22"
+  },
+  {
+   "id": "block-face-strip-keizersgracht-240-312-2021-01-22-40-px-m-gr",
+   "kind": "human-review",
+   "capturedAt": "2021-01-22"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "heavy",
+   "doorBay": 0,
+   "gable": "cornice",
+   "headLines": [
+    0.82,
+    0.9,
+    0.9,
+    0.75
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    4.6,
+    3.1,
+    2.4,
+    2.4
+   ],
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowHeights": [
+    0.74,
+    0.83,
+    0.83,
+    0.62
+   ],
+   "windowShare": 0.55,
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "evidence": "Keizersgracht 258 (2021-01-22 strip): sky over the plain cornice from the quay; no roof face shows, so the front gives a flat top at the cornice",
+  "form": "flat",
+  "material": "red-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#e4e0d6",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "type ggw-1760-plain-cornice: crown none, palette dark-brown-brick + measured brick #e4e0d6",
+  "type deviations: cornice \"heavy\" (type: \"simple\")"
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177979",
+ "pandId": "0363100012177979",
+ "address": "Oudezijds Achterburgwal 38",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "rounded",
+   "doorBay": 0,
+   "gable": "neck",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#e8e4da",
+    "fascia": false,
+    "displayWindows": 3,
+    "stallriser": "low"
+   },
+   "storeyHeights": [
+    1.1,
+    1,
+    1,
+    1
+   ],
+   "storeys": 4,
+   "street": "Oudezijds Achterburgwal",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#2e2a2a",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd",
+  "wallMaterial": "painted-brick"
+ },
+ "notes": [
+  "Black-painted neck gable with white claws; red-light windows on the ground storey"
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182852",
+ "pandId": "0363100012182852",
+ "address": "Nieuwmarkt 32-34",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182852-fro",
+   "kind": "human-review",
+   "capturedAt": "2021-03-08"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": [
+    2,
+    2,
+    2,
+    3
+   ],
+   "cornice": "none",
+   "crownCap": "rounded",
+   "doorBay": 0,
+   "gable": "neck",
+   "hoist": false,
+   "id": "front0",
+   "share": 0.5,
+   "shopfront": {
+    "colour": "#3a2f28",
+    "fascia": false,
+    "entrance": "left",
+    "stallriser": "low",
+    "evidence": "cafe front behind a terrace, 2025-01-08"
+   },
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.66,
+   "windowSurround": "sill",
+   "windows": "cross"
+  },
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 2,
+   "cornice": "none",
+   "crownCap": "pediment",
+   "doorBay": 1,
+   "gable": "neck",
+   "hoist": false,
+   "id": "front1",
+   "share": 0.5,
+   "shopfront": {
+    "colour": "#3a2f28",
+    "fascia": false,
+    "entrance": "right",
+    "stallriser": "low",
+    "evidence": "cafe front behind a terrace, 2025-01-08"
+   },
+   "storeys": 4,
+   "street": "Nieuwmarkt",
+   "tallGround": true,
+   "windowHeights": "diminishing",
+   "windowShare": 0.66,
+   "windowSurround": "sill",
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "evidence": "gable front: the roof follows the crown (house:crops crop)",
+  "material": "black-tile",
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#564940",
+  "door": "#2c3a33",
+  "frame": "white",
+  "stone": "#e6e2d8",
+  "wallMaterial": "brick"
+ }
+}

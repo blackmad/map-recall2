@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012178396",
+ "pandId": "0363100012178396",
+ "address": "Oudezijds Achterburgwal 76",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2025-01-14"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "segmental",
+   "doorBay": 0,
+   "gable": "bell",
+   "hoist": true,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#2a2626",
+    "fascia": true,
+    "displayWindows": 2,
+    "stallriser": "low",
+    "fasciaColour": "#a12a24"
+   },
+   "storeys": 3,
+   "street": "Oudezijds Achterburgwal",
+   "windowSurround": "full-frame",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#6e5040",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Bell gable with a carved crown and a cartouche over the attic window"
+ ]
+}

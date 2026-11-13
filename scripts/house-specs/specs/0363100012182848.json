@@ -1,45 +1,231 @@
 {
  "schemaVersion": 1,
  "pandId": "0363100012182848",
- "address": "Nieuwmarkt row",
+ "address": "Nieuwmarkt 14",
  "design": {
   "fronts": [
    {
-    "storeys": 4
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "bell",
+    "crownCap": "rounded",
+    "crownShoulder": "ogee",
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": 0,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "none",
+    "hoist": true,
+    "windows": "sash-small-panes",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": true,
+     "entrance": "left",
+     "stallriser": "low",
+     "displayWindows": 3,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#222222"
+     },
+     "evidence": "white pui with pilasters, entresol lights, black awning (coffeeshop), 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing",
+    "storeyHeights": [
+     2,
+     1,
+     1
+    ]
    }
   ],
+  "roof": {
+   "material": "black-tile",
+   "source": "front",
+   "evidence": "gable front: the roof follows the crown (house:crops crop)"
+  },
   "palette": {
-   "brick": "#2d2a26",
+   "brick": "#675a47",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
    "wallMaterial": "brick"
   }
  },
  "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08): bell gable with white scroll pieces (confirms register 3853, 1662)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/crownShoulder": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
   "fronts/0/storeys": {
    "source": "author",
-   "confidence": 0.9,
-   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
-   "at": "2026-11-10"
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08): hoist beam over the gable light",
+   "at": "2021-03-08"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08): small-paned sashes, white frames",
+   "at": "2021-03-08"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08): ground storey 5.5 m with its entresol, uppers 2.6 m",
+   "at": "2021-03-08"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
   },
   "palette/brick": {
-   "source": "streetlevel-measured",
-   "confidence": 0.8,
-   "ref": "panorama TMX7316010203-002992_pano_0005_000143 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 3, 4, 11]",
-   "at": "2023-03-13"
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08): leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 3 captures)",
+   "at": "2021-03-08"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
   },
   "palette/wallMaterial": {
    "source": "author",
-   "confidence": 0.9,
-   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
-   "at": "2026-11-10"
-  },
-  "facts/wallFamily": {
-   "source": "reviewed",
-   "confidence": 0.75,
-   "ref": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A, convention docs/house-line.md §4c) wall",
-   "at": "2026-11-10"
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
+   "at": "2021-03-08"
   }
  },
- "facts": {
-  "wallFamily": "brown"
- }
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone scroll pieces (klauwstukken) beside the bell"
+  },
+  {
+   "component": "ground storey",
+   "what": "an entresol row of three lights over the shop glass"
+  }
+ ]
 }

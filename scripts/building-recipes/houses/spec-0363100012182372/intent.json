@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012182372",
+ "pandId": "0363100012182372",
+ "address": "Geldersekade 66",
+ "sources": [
+  {
+   "id": "belt-nieuwmarkt-hand-read-of-pand-crops-0363100012182372-fro",
+   "kind": "human-review",
+   "capturedAt": "2023-03-27"
+  }
+ ],
+ "fronts": [
+  {
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     0
+    ]
+   },
+   "basement": "none",
+   "bays": 2,
+   "cornice": "simple",
+   "doorBay": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "shopfront": {
+    "colour": "#8a1f1f",
+    "fascia": true,
+    "entrance": "right",
+    "stallriser": "low",
+    "displayWindows": 1,
+    "evidence": "red painted pui with red curtains and a red door, 2023-03-27"
+   },
+   "storeyHeights": [
+    1.3,
+    1,
+    1,
+    1
+   ],
+   "storeys": 4,
+   "street": "Geldersekade",
+   "tallGround": true,
+   "windowShare": 0.62,
+   "windows": "casement-toplight"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#e8e4da",
+  "door": "#2c3a33",
+  "frame": "#9a2a22",
+  "stone": "#e6e2d8",
+  "wallMaterial": "painted-brick"
+ }
+}

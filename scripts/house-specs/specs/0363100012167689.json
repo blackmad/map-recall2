@@ -1,0 +1,267 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167689",
+ "address": "Keizersgracht 112",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Keizersgracht",
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.6,
+     3.3,
+     3.1,
+     2.8
+    ],
+    "windows": "sash-9-over-9",
+    "windowSurround": "full-frame",
+    "windowHeights": [
+     0.51,
+     0.78,
+     0.67,
+     0.52
+    ],
+    "headLines": [
+     0.89,
+     0.875,
+     0.81,
+     0.64
+    ],
+    "windowShare": 0.75,
+    "cornice": "simple",
+    "gable": "cornice",
+    "gableOrnament": {
+     "gablet": "crest",
+     "gabletSize": {
+      "span": 3.5,
+      "rise": 1.3
+     }
+    },
+    "doorBay": 0,
+    "basement": "none",
+    "hoist": false
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "Keizersgracht 254 (2021-01-22 strip): sky over the cornice and crest from the quay; no roof face shows",
+   "form": "flat"
+  },
+  "palette": {
+   "brick": "#6c6461",
+   "wallMaterial": "stucco",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type ggw-1740-crest-cornice: crown crest, palette cream-render + measured brick #6c6461",
+   "type deviations: bays 2 (type: 3); windowShare 0.75 (type: 0.5); storeyHeights [4.6,3.3,3.1,2.8] (type: [5.3,3.2,2.4,2.5])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/gableOrnament": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip keizersgracht-92-172 2023-02-13 (40 px/m, gridded crop): the roof the front implies, not 3DBAG",
+   "at": "2023-02-13"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/wallMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/keizersgracht-92-172/strip.json",
+   "at": "2023-02-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip keizersgracht-92-172 2023-02-13 (40 px/m, gridded crop): sky over the cornice from the quay, no roof face",
+   "at": "2023-02-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the cartouche carving in the crest is not drawn (a plain crest face)"
+  },
+  {
+   "component": "facade",
+   "what": "the top storey's twelve-light casements are drawn as the type's small-paned sashes"
+  },
+  {
+   "component": "crown",
+   "what": "a carved crest over the cornice, smeared in the 2023-02-13 strip; read as the type crest"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

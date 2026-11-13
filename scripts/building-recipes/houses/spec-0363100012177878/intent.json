@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012177878",
+ "pandId": "0363100012177878",
+ "address": "Kloveniersburgwal 58",
+ "sources": [
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-front-crown",
+   "kind": "human-review",
+   "capturedAt": "2023-02-20"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-roof-from-t",
+   "kind": "human-review",
+   "capturedAt": "2023-02-20"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-wall-and-tr",
+   "kind": "human-review",
+   "capturedAt": "2023-02-20"
+  },
+  {
+   "id": "lane-belt-burgwallen-oz-build-20261110-hand-read-notes-of-pa",
+   "kind": "human-review",
+   "capturedAt": "2023-02-20"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 0,
+   "basement": "none",
+   "bayWidths": [
+    0.75,
+    1.1,
+    0.75
+   ],
+   "bays": 3,
+   "cornice": "none",
+   "crownCap": "rounded",
+   "doorBay": 2,
+   "gable": "neck",
+   "hoist": true,
+   "id": "front0",
+   "storeys": 5,
+   "street": "Kloveniersburgwal",
+   "windowSurround": "none",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#4b3b33",
+  "door": "#2a2624",
+  "frame": "white",
+  "stone": "#e9e6dd"
+ },
+ "notes": [
+  "Twin of 56: neck gables with white claw-pieces, a round cap and a carved cartouche in the neck"
+ ]
+}

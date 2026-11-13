@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012159242",
+ "pandId": "0363100012159242",
+ "address": "Van Houweningenstraat 20",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-houweningen-2-38-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-22"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindows": 1,
+   "bandHeights": {
+    "head": 0.08
+   },
+   "bandLines": [
+    "head"
+   ],
+   "bands": "painted",
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.15,
+   "doorBay": 0,
+   "doorPairs": true,
+   "gable": "point",
+   "hoist": false,
+   "id": "front0",
+   "pairTransom": true,
+   "partyClip": true,
+   "storeyHeights": [
+    3.34,
+    2.95,
+    2.95,
+    2.9
+   ],
+   "storeys": 4,
+   "street": "Van Houweningenstraat",
+   "wallAnchors": {
+    "over": 0.35,
+    "colour": "#1e1e1e"
+   },
+   "wideGround": {
+    "from": 1,
+    "to": 2
+   },
+   "windowHead": {
+    "kind": "relieving",
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "blocks",
+     "keystone": true
+    }
+   },
+   "windowHeights": [
+    0.62,
+    0.66,
+    0.66,
+    0.64
+   ],
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "strips 2021-03/2022-04: over the cornice only the dormers and gables stand against the sky; dark slate band behind (hendrik-134-154)",
+  "material": "slate",
+  "pitchDeg": 45,
+  "rise": 0.25,
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#756459",
+  "cornice": "#e0dccd",
+  "door": "#a52a22",
+  "frame": "#e8e6dc",
+  "stone": "#e6e2d4"
+ },
+ "notes": [
+  "type fh-1887-arched-gable: crown point-gable, palette red-brown + measured brick #756459"
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012185919",
+ "pandId": "0363100012185919",
+ "address": "Keizersgracht 272",
+ "sources": [
+  {
+   "id": "block-face-strip-keizersgracht-240-312-2021-01-22-40-px-m-gr",
+   "kind": "human-review",
+   "capturedAt": "2021-01-22"
+  },
+  {
+   "id": "scripts-block-face-faces-keizersgracht-240-312-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22"
+  }
+ ],
+ "fronts": [
+  {
+   "atticSize": {
+    "span": 0.9,
+    "rise": 1,
+    "sill": 0.35
+   },
+   "atticWindows": 1,
+   "basement": "none",
+   "bays": 3,
+   "cornice": "none",
+   "crownRise": 1.2,
+   "doorBay": 0,
+   "gable": "neck",
+   "gableOrnament": {
+    "wings": "scrolls"
+   },
+   "headLines": [
+    0.86,
+    0.86,
+    0.88,
+    0.83
+   ],
+   "hoist": true,
+   "id": "front0",
+   "partyClip": true,
+   "storeyHeights": [
+    5.6,
+    3.2,
+    2.9,
+    2.4
+   ],
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowHeights": [
+    0.5,
+    0.72,
+    0.73,
+    0.7
+   ],
+   "windowShare": 0.6,
+   "windowSurround": "sill",
+   "windows": "sash"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "rakeClear": true,
+  "source": "front",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#988369",
+  "cornice": "#ebe8df",
+  "door": "#26302a",
+  "frame": "white-painted",
+  "stone": "#ebe8df",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type ggw-1700-neck-bell-gable: crown neck, palette dark-brick-canal + measured brick #988369"
+ ]
+}
