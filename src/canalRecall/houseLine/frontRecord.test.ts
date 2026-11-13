@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
+import {frontIoU, rowScore, tracedFronts} from './windowCorrespondence.ts';
 import {frontRecordProblems, frontTableProblems, heightAbovePandGround, heightAboveStreet, type FrontRecord, type FrontRecordTable} from './frontRecord.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
@@ -91,4 +92,33 @@ test('multi-front pands: Haarlemmerdijk 22/24 is two fronts (David, four-way str
   // The validator catches a gap between sub-fronts.
   const bad = structuredClone(h22); bad.fronts![1].from = 4.5;
   assert.ok(frontRecordProblems(bad).some(p => p.includes('does not meet')));
+});
+
+test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 storeys, every trace has an outline', () => {
+  const traced = tracedFronts(table, 'haarlemmerdijk-2-58');
+  assert.ok(traced.length >= 14, `${traced.length} traced fronts`);
+  for (const t of traced) {
+    assert.equal(t.front.trace!.storeys.length, t.front.storeys, t.key);
+    assert.ok(t.front.trace!.outline.length >= 3, t.key);
+    assert.ok(t.openings.every(o => o.w > 0 && o.h > 0 && o.x >= -0.2 && o.x + o.w <= t.box.x1 + 0.2), t.key);
+  }
+  const hd14 = rec('0363100012176104');
+  assert.equal(hd14.storeys, 4);
+  assert.ok(hd14.trace!.storeys.slice(1).flat().some(o => o.kind === 'oriel'));
+  assert.ok(hd14.trace!.fascia?.hex?.startsWith('#'));
+  // a broken trace is caught: wrong storey count and a negative width
+  const bad = structuredClone(hd14); bad.trace!.storeys.pop(); bad.trace!.storeys[0][0].w = -1;
+  const p = frontRecordProblems(bad);
+  assert.ok(p.some(x => x.includes('trace')), p.join('; '));
+});
+
+test('window IoU: identical boxes score 1, disjoint 0, half-shifted 1/3; the row aggregate is sum of intersections over sum of unions', () => {
+  const box = {x0: 0, x1: 4, y0: 0, y1: 4}, a = [{x: 1, w: 1, y: 1, h: 2}];
+  assert.equal(frontIoU(a, a, box).iou, 1);
+  assert.equal(frontIoU(a, [{x: 3, w: 1, y: 1, h: 2}], box).iou, 0);
+  assert.ok(Math.abs(frontIoU(a, [{x: 1.5, w: 1, y: 1, h: 2}], box).iou - 1 / 3) < 0.01);
+  const fronts = tracedFronts(table, 'haarlemmerdijk-2-58');
+  const exact = rowScore(table, 'haarlemmerdijk-2-58', key => fronts.find(t => t.key === key)!.openings);
+  assert.ok(exact.frontsScored >= 14 && Math.abs(exact.aggregate - 1) < 1e-9, `${exact.aggregate}`);
+  assert.equal(rowScore(table, 'haarlemmerdijk-2-58', () => []).aggregate, 0);
 });

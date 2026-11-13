@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import type {FrontFields, FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
-import {hexToOklab} from '../../src/canalRecall/houseSpec/wallColour.ts';
+import {hexToOklab, oklabToHex} from '../../src/canalRecall/houseSpec/wallColour.ts';
 import {STRIP_SHIFT_M} from './strip-shift.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -30,7 +30,7 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 const q = (a: number[], p: number) => { const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(p * s.length))]; };
 
 export interface WallMeasure {pandId: string; face: string; rawHex: string | null; hex: string | null; gain: number | null; white: number | null; scene: number;
-  sample: 'spandrels' | 'band-5-9.5' | null; pixels: number; L: number | null; chroma: number | null; finishGuess: 'brick' | 'plaster' | null; note: string | null}
+  sample: 'spandrels' | 'band-5-9.5' | 'traced-wall' | null; fasciaHex?: string | null; pixels: number; L: number | null; chroma: number | null; finishGuess: 'brick' | 'plaster' | null; note: string | null}
 
 const table: FrontRecordTable = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/front-records/haarlemmerdijk-block.json'), 'utf8'));
 const out: WallMeasure[] = [];
@@ -47,13 +47,13 @@ for (const face of faces) {
   const shift = Math.round((STRIP_SHIFT_M[face] ?? 0) * ppm);
   const rowOf = (m: number) => Math.round(H - m * ppm);
   // Each record, and each sub-front of a multi-front pand as `<pandId>#<i>` over its own metres of the span.
-  const targets: {key: string; rec: FrontFields; span: {px: [number, number]} | undefined}[] = [];
+  const targets: {key: string; rec: FrontFields; span: {px: [number, number]} | undefined; pandX0: number}[] = [];
   for (const rec of table.records.filter(r => r.face === face)) {
     const span = strip.spans.find((s: {pandId: string}) => s.pandId === rec.pandId);
-    targets.push({key: rec.pandId, rec, span});
-    rec.fronts?.forEach((f, i) => targets.push({key: `${rec.pandId}#${i}`, rec: f, span: span && {px: [Math.round(span.px[0] + f.from * ppm), Math.round(span.px[0] + f.to * ppm)]}}));
+    targets.push({key: rec.pandId, rec, span, pandX0: span?.px[0] ?? 0});
+    rec.fronts?.forEach((f, i) => targets.push({key: `${rec.pandId}#${i}`, rec: f, span: span && {px: [Math.round(span.px[0] + f.from * ppm), Math.round(span.px[0] + f.to * ppm)]}, pandX0: span?.px[0] ?? 0}));
   }
-  for (const {key, rec, span} of targets) {
+  for (const {key, rec, span, pandX0} of targets) {
     const base: WallMeasure = {pandId: key, face, rawHex: null, hex: null, gain: null, white: null, scene: r3(scene), sample: null, pixels: 0, L: null, chroma: null, finishGuess: null, note: null};
     if (!span) { out.push({...base, note: 'no span on the strip'}); continue; }
     const [a, b] = span.px, w = b - a;
@@ -61,10 +61,23 @@ for (const face of faces) {
     const bands: [number, number][] = [];
     for (let i = 0; i + 1 < rec.rows.length; i++) { const lo = rec.rows[i].headM + 0.15, hi = rec.rows[i + 1].sillM - 0.15; if (hi - lo >= 0.2) bands.push([lo, hi]); }
     if (rec.rows.length && rec.frontTopM !== null) { const lo = rec.rows.at(-1)!.headM + 0.15, hi = Math.min(rec.frontTopM - 0.3, lo + 0.8); if (hi - lo >= 0.2 && rec.crown.family === 'straight-cornice') {/* cornice band: trim, skip */} else if (hi - lo >= 0.2) bands.push([lo, hi]); }
-    const sample: 'spandrels' | 'band-5-9.5' = bands.length ? 'spandrels' : 'band-5-9.5';
+    let sample: WallMeasure['sample'] = bands.length ? 'spandrels' : 'band-5-9.5';
     if (!bands.length) bands.push([5, Math.min(9.5, (rec.frontTopM ?? 9.8) - 0.3)]);
     const px: [number, number, number, number][] = [];
-    for (const [lo, hi] of bands) for (let y = rowOf(hi); y < rowOf(lo); y++) for (let x = x0; x < x1; x++) {
+    const tr = rec.trace && rec.trace.confidence !== 'low' && rec.frontTopM !== null ? rec.trace : null;
+    if (tr) {
+      // Traced front: every wall pixel between the shop band and the cornice (or front top), openings (grown 0.15 m) and
+      // bands left out, over the front's full width less 0.15 m a side. Piers beside an oriel count; glass never does.
+      sample = 'traced-wall';
+      const holes = [...tr.storeys.flat().map(o => [o.x - 0.15, o.x + o.w + 0.15, o.y - 0.15, o.y + o.h + 0.15]), ...tr.bands.map(bd => [-1e9, 1e9, bd.bottomM - 0.05, bd.topM + 0.05])];
+      const yLo = Math.max(3, (tr.shopBandTopM ?? rec.groundStoreyTopM ?? 4) + 0.3), yHi = Math.min(tr.corniceM ?? rec.frontTopM!, rec.frontTopM!) - 0.3;
+      const fx0 = Math.round(a + shift + 0.15 * ppm), fx1 = Math.round(b + shift - 0.15 * ppm);
+      for (let y = Math.max(0, rowOf(yHi)); y < Math.min(H, rowOf(yLo)); y++) for (let x = Math.max(0, fx0); x < Math.min(W, fx1); x++) {
+        const mx = (x - shift - pandX0) / ppm, my = (H - y) / ppm;
+        if (holes.some(([hx0, hx1, hy0, hy1]) => mx >= hx0 && mx < hx1 && my >= hy0 && my < hy1)) continue;
+        const i = (y * W + x) * 3; px.push([data[i], data[i + 1], data[i + 2], Y(x, y)]);
+      }
+    } else for (const [lo, hi] of bands) for (let y = rowOf(hi); y < rowOf(lo); y++) for (let x = x0; x < x1; x++) {
       if (y < 0 || y >= H) continue; const i = (y * W + x) * 3; px.push([data[i], data[i + 1], data[i + 2], Y(x, y)]);
     }
     const front: number[] = []; const ftop = rowOf(Math.min(rec.frontTopM ?? 12, strip.heightM - 0.5)), fbot = rowOf(3);
@@ -78,7 +91,18 @@ for (const face of faces) {
     const exposed = med.map(c => unlin(Math.min(1, lin(c) * gain)));
     const h = hex(exposed), [L, A, B] = hexToOklab(h), chroma = Math.hypot(A, B);
     const finishGuess = L >= 0.66 && chroma < 0.06 ? 'plaster' : 'brick';
-    out.push({...base, rawHex: hex(med), hex: h, gain: r3(gain), white: r3(white), sample, pixels: kept.length, L: r3(L), chroma: r3(chroma), finishGuess});
+    // The shop fascia: the band just under the traced shop-band top, exposed like the wall, its chroma muted to 60 %.
+    let fasciaHex: string | null = null;
+    if (tr?.shopBandTopM) {
+      const fp: number[][] = [];
+      for (let y = Math.max(0, rowOf(tr.shopBandTopM - 0.05)); y < Math.min(H, rowOf(tr.shopBandTopM - 0.5)); y++) for (let x = Math.max(0, Math.round(a + shift + 0.1 * w)); x < Math.min(W, Math.round(b + shift - 0.1 * w)); x++) { const i = (y * W + x) * 3; fp.push([data[i], data[i + 1], data[i + 2]]); }
+      if (fp.length > 50) {
+        const fm = [0, 1, 2].map(c => q(fp.map(p => p[c]), 0.5)).map(c => unlin(Math.min(1, lin(c) * gain)));
+        const [fl, fa, fb] = hexToOklab(hex(fm));
+        fasciaHex = oklabToHex([fl, fa * 0.6, fb * 0.6]);
+      }
+    }
+    out.push({...base, rawHex: hex(med), hex: h, gain: r3(gain), white: r3(white), sample, pixels: kept.length, L: r3(L), chroma: r3(chroma), finishGuess, fasciaHex});
     if (opt('sheet')) {
       const top = Math.max(0, rowOf(Math.min((rec.crown.topM ?? rec.frontTopM ?? 14) + 1, strip.heightM))), cx0 = Math.max(0, a + shift), cw = Math.min(W - cx0, w);
       const tile = await sharp(img).extract({left: cx0, top, width: cw, height: H - top}).resize(160, 300, {fit: 'contain', background: '#222'}).png().toBuffer();

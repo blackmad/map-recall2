@@ -157,11 +157,54 @@ export interface FrontRecord {
    * fallback) and a renderer draws each sub-front instead.
    */
   fronts?: SubFront[];
+  /** The traced openings, bands and outline of the front (single-front pands; sub-fronts carry their own). */
+  trace?: FrontTrace;
 }
 
 /** The measured fields of one street front, shared by a record and its sub-fronts. */
 export type FrontFields = Pick<FrontRecord, 'frontTopM' | 'frontTopKind' | 'crown' | 'storeys' | 'groundStoreyTopM' | 'rows' | 'bays' | 'wall'
-  | 'trim' | 'sources' | 'confidence' | 'fallback' | 'conflicts' | 'notes'>;
+  | 'trim' | 'sources' | 'confidence' | 'fallback' | 'conflicts' | 'notes' | 'trace'>;
+
+export const OPENING_KINDS = ['single-sash', 'two-light', 'paired', 'french-door', 'oriel', 'door', 'shop', 'attic', 'other'] as const;
+export type OpeningKind = typeof OPENING_KINDS[number];
+/**
+ * One traced opening, a rectangle on the front. `x`/`w` are metres along the pand's strip span (the same frame as
+ * SubFront.from/to: 0 = the span's left end, photo registration removed); `y` is the sill (or threshold) height above the
+ * street and `h` the opening height to the head (to the top of an arch).
+ */
+export interface Opening {
+  x: number; w: number; y: number; h: number;
+  kind: OpeningKind;
+  head: 'flat' | 'segmental' | 'round' | 'pointed' | null;
+  /** Pane layout as read, e.g. '2-over-2', '6-over-6', '1' (single pane), 'transom+2'; null = not readable. */
+  panes: string | null;
+  frame: 'white' | 'dark' | 'timber' | null;
+  surround: 'none' | 'plain' | 'eared' | 'arched' | null;
+  shutters: boolean | null;
+}
+export interface Band { kind: 'cornice' | 'frieze' | 'string' | 'fascia' | 'plinth'; bottomM: number; topM: number; colour: string | null }
+/**
+ * The traced front: every opening as a rectangle, grouped per storey (index 0 = the ground storey: shop openings and the
+ * door), the band heights, the shop band and its fascia colour, and the outline. A low-confidence trace is not drawn:
+ * the renderer keeps its regular grid from the counts.
+ */
+export interface FrontTrace {
+  storeys: Opening[][];
+  /** Top of the shop band (the fascia over the shop windows), above the street. */
+  shopBandTopM: number | null;
+  /** The ground-floor fascia colour from the photo's shop band, muted toward the wall (hex), with its word. */
+  fascia: { hex: string | null; word: string | null } | null;
+  /** The cornice line (top of the main cornice) above the street; null where the front has none. */
+  corniceM: number | null;
+  bands: Band[];
+  /** Window surround colour as a word ('white', 'cream', 'stone'), where the read is reliable. */
+  surroundColour: string | null;
+  /** The front's outline from the bottom-left corner, clockwise, ending at the bottom-right: [x along span, height] metres. */
+  outline: [number, number][];
+  source: Source;
+  confidence: Confidence;
+  notes: string[];
+}
 
 /**
  * One front of a multi-front pand. `from`/`to` are metres along the pand's street edge in the strip's frame: 0 = the left
@@ -236,6 +279,7 @@ export function frontRecordProblems(r: FrontRecord): string[] {
   if (r.nothingLocal && (r.frontTopM !== null || r.rows.length || r.confidence !== 'low')) p.push(`${at}: nothingLocal with measured values`);
   if (r.frontTopM !== null && !r.sources.some(s => s.field === 'frontTopM')) p.push(`${at}: frontTopM has no source`);
   if (r.crown.family !== null && !r.sources.some(s => s.field === 'crown.family')) p.push(`${at}: crown.family has no source`);
+  if (r.trace) p.push(...traceProblems(r.trace, r.storeys).map(x => `${at}: trace ${x}`));
   if (r.fronts) {
     if (r.fronts.length < 2) p.push(`${at}: fronts needs two or more sub-fronts`);
     r.fronts.forEach((f, i) => {
@@ -247,6 +291,21 @@ export function frontRecordProblems(r: FrontRecord): string[] {
       p.push(...frontRecordProblems({...r, fallback: undefined, ...f, nothingLocal: false, fronts: undefined}).map(x => x.replace(at, fa)));
     });
   }
+  return p;
+}
+
+function traceProblems(t: FrontTrace, storeys: number | null): string[] {
+  const p: string[] = [];
+  if (!['high', 'medium', 'low'].includes(t.confidence)) p.push(`confidence ${t.confidence}`);
+  if (storeys !== null && t.storeys.length !== storeys) p.push(`${t.storeys.length} traced storeys for ${storeys} storeys`);
+  t.storeys.forEach((row, i) => row.forEach((o, j) => {
+    const at = `storeys[${i}][${j}]`;
+    if (!OPENING_KINDS.includes(o.kind)) p.push(`${at} kind ${o.kind}`);
+    if (![o.x, o.w, o.y, o.h].every(finite) || o.w <= 0 || o.h <= 0 || o.y < -0.1 || o.y + o.h > 40) p.push(`${at} rectangle out of range`);
+  }));
+  if (t.outline.length < 3 || !t.outline.every(q => q.length === 2 && q.every(finite))) p.push('outline needs three or more [x, y] points');
+  if (t.fascia?.hex && !HEX.test(t.fascia.hex)) p.push(`fascia.hex ${t.fascia.hex}`);
+  for (const b of t.bands) if (!(b.topM > b.bottomM)) p.push(`band ${b.kind} top must be above bottom`);
   return p;
 }
 

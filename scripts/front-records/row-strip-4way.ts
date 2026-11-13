@@ -21,6 +21,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {FrontFields, FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
 import {STRIP_SHIFT_M} from './strip-shift.ts';
+import {outlineOf} from '../../src/canalRecall/houseLine/frontOutline.ts';
 
 type Span = {pandId: string; px: [number, number]};
 type Strip = {pixelsPerMetre: number; width: number; height: number; heightM: number; spans: Span[]};
@@ -42,26 +43,11 @@ const shift = Math.round((STRIP_SHIFT_M[face] ?? 0) * ppm);
 const recOf = (id: string) => table.records.find(r => r.face === face && r.pandId === id);
 const Y = (m: number) => H - m * ppm;
 
-/** Skyline polygon of one front in row pixels (x relative to the row's left edge). */
-function skyline(f: FrontFields, x0: number, x1: number): [number, number][] | null {
-  if (f.frontTopM === null) return null;
-  const top = f.frontTopM, c = f.crown, mid = (x0 + x1) / 2, w = x1 - x0;
-  const pts: [number, number][] = [[x0, H], [x0, Y(top)]];
-  const gable = c.family !== null && ['neck', 'bell', 'point', 'step', 'spout'].includes(c.family) && c.topM !== null && c.topM > top;
-  if (gable && c.family === 'point') pts.push([mid, Y(c.topM!)]);
-  else if (gable) {
-    const capW = Math.min(w, (c.neckWidthM ?? c.widthM ?? 0.4 * w / ppm) * ppm);
-    const sh = Math.max(top, Math.min(c.shoulderM ?? top, c.topM! - 0.3));
-    pts.push([mid - capW / 2, Y(sh)], [mid - capW / 2, Y(c.topM!)], [mid + capW / 2, Y(c.topM!)], [mid + capW / 2, Y(sh)]);
-  } else {
-    const d = c.dormer;
-    const band = d && d.topM !== null && d.topM > top ? {t: d.topM, w: 0.35 * w}
-      : c.topM !== null && c.topM > top + 0.2 ? {t: c.topM, w: Math.min(w, (c.widthM ?? 0.35 * w / ppm) * ppm)}
-      : c.ornamentTopM !== null && c.ornamentTopM > top ? {t: c.ornamentTopM, w: 0.25 * w} : null;
-    if (band) pts.push([mid - band.w / 2, Y(top)], [mid - band.w / 2, Y(band.t)], [mid + band.w / 2, Y(band.t)], [mid + band.w / 2, Y(top)]);
-  }
-  pts.push([x1, Y(top)], [x1, H]);
-  return pts;
+/** Skyline polygon of one front in row pixels (x relative to the row's left edge): the traced outline when there is one,
+ * else the record's (frontOutline.ts). `spanX0` is the pand span's left edge in row pixels. */
+function skyline(f: FrontFields, spanX0: number, a: number, b: number): [number, number][] | null {
+  const o = f.trace?.outline ?? outlineOf(f, (a - spanX0) / ppm, (b - spanX0) / ppm);
+  return o ? o.map(([x, y]) => [spanX0 + x * ppm, Y(y)]) : null;
 }
 
 const sky = {r: 160, g: 180, b: 200};
@@ -81,7 +67,7 @@ for (const s of spans) {
   if (!parts.length) labels.push(`<text x="${x0 + 4}" y="${ly()}" font-size="12" fill="#f88" font-family="Helvetica">${id.slice(-6)} · no record</text>`);
   const polys: [number, number][][] = [];
   for (const {f, a, b, tag} of parts) {
-    const sk = skyline(f, a, b);
+    const sk = skyline(f, x0, a, b);
     if (!sk) { labels.push(`<text x="${a + 4}" y="${ly()}" font-size="12" fill="#f88" font-family="Helvetica">${id.slice(-6)} ${tag} · no front top</text>`); continue; }
     polys.push(sk);
     const pl = (dx: number) => `<polyline points="${sk.map(([x, y]) => `${(x + dx).toFixed(1)},${y.toFixed(1)}`).join(' ')}" fill="none" stroke="#ff00ff" stroke-width="2"/>`;
