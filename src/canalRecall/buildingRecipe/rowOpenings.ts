@@ -32,7 +32,9 @@
 import {MASK, type FacadeBox} from './measureFacade.ts';
 
 export type OpeningShape = 'tall' | 'square' | 'wide';
-export interface RowOpening { u0: number; u1: number; w: number; h: number; shape: OpeningShape; partial: boolean }
+export interface RowOpening { u0: number; u1: number; w: number; h: number; shape: OpeningShape; partial: boolean;
+  /** the bottom and top (m, facade v) of the rows counted in `h`: where a ribbon sits in its storey (bandFronts `ribbonStoreysProposal`) */
+  v0?: number; v1?: number }
 export interface OpeningRow { storey: number; lo: number; hi: number; share: number; openings: RowOpening[];
   /** summed opening width over the seen width of the storey: a punched row ~0.2-0.5, a ribbon or a row broken only by thin piers ~0.8+ */
   cover: number }
@@ -115,10 +117,11 @@ export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; ce
       const w = (k - i) * cell;
       if (w >= R.minWidthM - 1e-9) {
         const partial = i === 0 || k === cols || !Number.isFinite(prof[i - 1]) || !Number.isFinite(prof[k]);
-        let hRows = 0;
-        for (const j of js) { let o = 0, n = 0; for (let x = i; x < k; x++) { const m = mask[j * cols + x]; if (m === MASK.unusable) continue; n++; if (isOpening(m)) o++; } if (n && o / n >= 0.5) hRows++; }
+        let hRows = 0, vLo = Infinity, vHi = -Infinity;
+        for (const j of js) { let o = 0, n = 0; for (let x = i; x < k; x++) { const m = mask[j * cols + x]; if (m === MASK.unusable) continue; n++; if (isOpening(m)) o++; } if (n && o / n >= 0.5) { hRows++; vLo = Math.min(vLo, vOf(j)); vHi = Math.max(vHi, vOf(j)); } }
         const h = hRows * cell;
-        openings.push({u0: +(box.u0 + i * cell).toFixed(2), u1: +(box.u0 + k * cell).toFixed(2), w: +w.toFixed(2), h: +h.toFixed(2), shape: shapeOf(h / w), partial});
+        openings.push({u0: +(box.u0 + i * cell).toFixed(2), u1: +(box.u0 + k * cell).toFixed(2), w: +w.toFixed(2), h: +h.toFixed(2), shape: shapeOf(h / w), partial,
+          ...(hRows ? {v0: +(vLo - cell / 2).toFixed(2), v1: +(vHi + cell / 2).toFixed(2)} : {})});
       }
       i = k;
     }

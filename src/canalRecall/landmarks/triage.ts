@@ -74,6 +74,8 @@ export interface WallCrop {
   wallFamily?: 'paint' | 'metal' | null;
   /** measureWriteback `curtainEvidence` on a curtain reading: why the curtain class is not trusted (empty = trusted) */
   curtainDoubt?: string[];
+  /** what the kit draws for this crop's ribbons (bandFronts.ts): a ribbon front (`ribbon-windows`) or measured `ribbonStoreys`, on these storeys; null when neither */
+  bandKit?: {kind: 'ribbon-windows' | 'ribbonStoreys'; storeys: number[]} | null;
 }
 export interface WallInput { wall: string; lengthM: number; street: string | null; crops: WallCrop[] }
 export interface WallEvidence {
@@ -82,6 +84,8 @@ export interface WallEvidence {
   crop: string | null; reasons: string[]; frontClass: FrontClass | null; family: string | null;
   basis?: string | null; glazing?: number | null; bandStoreys?: WallCrop['bandStoreys']; ribbonStoreys?: number[] | null; floorBands?: boolean | null; wallHeightM?: number | null;
   wallFamily?: 'paint' | 'metal' | null;
+  /** a ribbon-storey or ribbon-front proposal covers the crop's ribbons (WallCrop `bandKit`) */
+  bandKit?: WallCrop['bandKit'];
 }
 
 /** Why the judge would abstain on this crop (empty = judgeable), the likeness judge's thresholds verbatim. */
@@ -112,7 +116,7 @@ export function judgeWall(w: WallInput, builtYear: number | null): WallEvidence 
   const doubt = best.c.frontClass === 'curtain' && best.c.curtainDoubt?.length ? best.c.curtainDoubt : null;
   return {wall: w.wall, lengthM: w.lengthM, street: w.street, judgeable: !best.why.length, crop: best.c.tag, reasons: doubt ? [`curtain reading untrusted: ${doubt.join('; ')}`] : best.why,
     frontClass: best.why.length || doubt ? null : best.c.frontClass ?? null, family: best.why.length ? null : best.c.family ?? null,
-    ...(best.why.length ? {} : {basis: best.c.basis ?? null, glazing: best.c.glazing ?? null, bandStoreys: best.c.bandStoreys ?? null, ribbonStoreys: best.c.ribbonStoreys ?? null, floorBands: best.c.floorBands ?? null, ...(best.c.wallFamily !== undefined ? {wallFamily: best.c.wallFamily} : {})}), wallHeightM: best.c.wallHeightM ?? null};
+    ...(best.why.length ? {} : {basis: best.c.basis ?? null, glazing: best.c.glazing ?? null, bandStoreys: best.c.bandStoreys ?? null, ribbonStoreys: best.c.ribbonStoreys ?? null, floorBands: best.c.floorBands ?? null, ...(best.c.bandKit ? {bandKit: best.c.bandKit} : {}), ...(best.c.wallFamily !== undefined ? {wallFamily: best.c.wallFamily} : {})}), wallHeightM: best.c.wallHeightM ?? null};
 }
 
 export interface TriageInput {
@@ -126,6 +130,19 @@ export interface TriageInput {
   walls: WallInput[];
 }
 export interface TriageResult { verdict: TriageVerdict; reasons: string[]; gaps: string[]; walls: WallEvidence[] }
+
+/**
+ * A band wall the kit draws (kit band fronts, 2026-11-13): the crop's own band proposal (bandFronts.ts, the one measure.ts
+ * writes) covers every ribbon storey triage found: a ribbon front drawn as `ribbon-windows`, or ribbon storeys over
+ * punched rows drawn as measured `ribbonStoreys` bands. A ribbon the proposal leaves out (a balcony slab's shadow line
+ * over thin glazing, a band without a measured height) stays a gap.
+ */
+export function bandDrawn(w: Pick<WallEvidence, 'bandKit' | 'bandStoreys' | 'ribbonStoreys' | 'frontClass'>): boolean {
+  const k = w.bandKit;
+  if (!k || !k.storeys.length) return false;
+  const need = new Set([...(w.bandStoreys ?? []).map(b => b.storey), ...(w.frontClass && GRID_CLASSES.has(w.frontClass) ? w.ribbonStoreys ?? [] : [])]);
+  return [...need].every(s => k.storeys.includes(s));
+}
 
 /** Gap name for a front class the kit cannot pass. */
 const classGap = (c: FrontClass) => c === 'curtain' ? 'curtain' : c === 'blank' ? 'blank-front' : c;
@@ -163,7 +180,9 @@ export function triageCandidate(t: TriageInput): TriageResult {
     if (b || rib.length) {
       const why = b ? `${at} storey ${b.storey} has a ${b.ribbonM.toFixed(1)} m ribbon over punched windows on storey ${b.againstStorey}: bands (balconies, ribbons, a shopfront strip)`
         : `${at} reads ${w.frontClass} with a ribbon on storey ${rib.join(', ')}: the kit draws windows under it (bands, balconies, a shopfront strip)`;
-      if (w.lengthM < LIKENESS.wideWallM) reasons.push(`${why}; short wall: noted, not a gap`); else gap('band', why);
+      if (w.lengthM < LIKENESS.wideWallM) reasons.push(`${why}; short wall: noted, not a gap`);
+      else if (bandDrawn(w)) reasons.push(`${why}; the kit draws it (${w.bandKit!.kind} on storey ${w.bandKit!.storeys.join(', ')}, bandFronts.ts)`);
+      else gap('band', why);
     }
   }
   // painted or clad: unresolved on the main front, or on PAINTED_SHARE of the judgeable street-wall length. An unresolved

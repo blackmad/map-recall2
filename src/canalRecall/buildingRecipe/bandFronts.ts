@@ -22,9 +22,13 @@ import {ROW_OPENINGS, punchedUnder, type RowOpeningSummary} from './rowOpenings.
 import {LIKENESS} from './likeness.ts';
 import type {LightBand} from './lightBands.ts';
 import type {BalconyBandsIntent, BalconyBandSpan} from '../blockBuilding/balconyBands.ts';
+import type {RibbonStoreyIntent} from './intent.ts';
+import {RIBBON_STOREYS_RANGE} from './ribbonStoreysIntent.ts';
 
 /** The photo's band evidence per wall: the upper window storeys judged, and each storey's widest ribbon (if any) with the storey whose punched row lies under it. */
-export interface RowBands {judged: number[]; ribbons: {storey: number; ribbonM: number; against: number | null}[]}
+export interface RowBands {judged: number[]; ribbons: {storey: number; ribbonM: number; against: number | null;
+  /** where the ribbon sits in its storey band (rowOpenings `v0`/`v1` over the row's lo..hi), fractions; absent in older reports */
+  sill?: number; h?: number}[]}
 
 export const RIBBON_FRONT = {minStoreys: 2, share: 0.6, minFloorBands: 2} as const;
 /** A ribbon storey is proposed as `glazedStoreys` only where the photo glazes that storey at least this much: the glazed row
@@ -39,7 +43,9 @@ export function photoRowBands(s: RowOpeningSummary): RowBands {
     const wide = r.openings.filter(o => o.w >= ROW_OPENINGS.ribbonM).sort((a, b) => b.w - a.w);
     if (!wide.length) continue;
     const other = uppers.find(x => x.storey !== r.storey && wide.some(o => punchedUnder(o, x)));
-    ribbons.push({storey: r.storey, ribbonM: +wide[0].w.toFixed(2), against: other ? other.storey : null});
+    const o = wide[0], span = r.hi - r.lo;
+    const at = o.v0 !== undefined && o.v1 !== undefined && span > 0 ? {sill: +Math.max(0, (o.v0 - r.lo) / span).toFixed(3), h: +Math.min(1, (o.v1 - o.v0) / span).toFixed(3)} : {};
+    ribbons.push({storey: r.storey, ribbonM: +o.w.toFixed(2), against: other ? other.storey : null, ...at});
   }
   return {judged: uppers.map(r => r.storey), ribbons};
 }
@@ -132,4 +138,40 @@ export function balconySpansProposal(m: BalconySpansInput): {balconyBands: Balco
   }
   if (spans.length < BALCONY_SPANS.minStoreys) return {balconyBands: null, why: [...why, `${spans.length} part-width storey(s) < ${BALCONY_SPANS.minStoreys}`]};
   return {balconyBands: {storeys: [], spans, kind: 'glass'}, why: [`balcony spans on storeys ${spans.map(x => `${x.storey} (bays ${x.bays.map(b => b.join('-')).join(', ')})`).join('; ')} from light parapet runs on the floor lines`, ...why]};
+}
+
+/**
+ * Ribbon storeys from the photo (the C3 `ribbonStoreys` component, blockBuilding/ribbonStoreys.ts, which until now was
+ * written by hand only): a ribbon storey over a punched row of another storey (the `ribbon-storeys` kind of
+ * `bandFrontProposal`, the shopfront strips, glazed first floors and classroom ribbons of the band rows) is drawn as one
+ * continuous band at the photo's own sill and height in that storey, instead of `glazedStoreys` (a shop window per bay
+ * down to a stall riser, 0.1..0.96 of the storey, whatever the photo shows). Sill and height come from the rows the
+ * ribbon opening covers (rowOpenings `v0`/`v1`), clamped into `RIBBON_STOREYS_RANGE`; storeys whose bands agree within
+ * `RIBBON_STOREY_PROPOSAL.mergeTol` share one entry. Lights per bay from the measured bay pitch (a mullion about every
+ * `lightM`), the frame in the measured light trim (else the kit frame). Only where `bandFrontProposal` proposes
+ * glazed ribbon storeys; never on a storey without a measured band. Pure.
+ */
+export const RIBBON_STOREY_PROPOSAL = {minH: 0.25, mergeTol: 0.06, lightM: 1.6, maxLights: 4} as const;
+
+export interface RibbonStoreysProposalInput extends BandFrontInput {
+  /** the measured bay pitch (m), for lights per bay */
+  pitchM?: number | null;
+}
+
+export function ribbonStoreysProposal(m: RibbonStoreysProposalInput): {ribbonStoreys: RibbonStoreyIntent[] | null; why: string[]} {
+  const band = bandFrontProposal(m);
+  if (band.kind !== 'ribbon-storeys' || !band.glazedStoreys?.length) return {ribbonStoreys: null, why: band.why};
+  const R = RIBBON_STOREYS_RANGE, P = RIBBON_STOREY_PROPOSAL, why: string[] = [];
+  const lights = m.pitchM && m.pitchM > 0 ? Math.max(1, Math.min(P.maxLights, Math.round(m.pitchM / P.lightM))) : 1;
+  const out: RibbonStoreyIntent[] = [];
+  for (const s of band.glazedStoreys) {
+    const r = m.rowBands!.ribbons.find(x => x.storey === s);
+    if (!r || r.sill === undefined || r.h === undefined || r.h < P.minH) { why.push(`storey ${s}: ribbon height not measured${r?.h !== undefined ? ` (${r.h} < ${P.minH})` : ''}`); continue; }
+    const sill = +Math.min(R.sill[1], Math.max(R.sill[0], r.sill)).toFixed(2), h = +Math.min(R.top - sill, R.h[1], Math.max(R.h[0], r.h)).toFixed(2);
+    const same = out.find(e => Math.abs(e.sill - sill) <= P.mergeTol && Math.abs(e.h - h) <= P.mergeTol);
+    if (same) same.storeys.push(s);
+    else out.push({storeys: [s], sill, h, lights, ...(m.trim ? {frame: m.trim} : {})});
+  }
+  if (!out.length) return {ribbonStoreys: null, why: [...why, ...band.why]};
+  return {ribbonStoreys: out, why: [`ribbon storeys ${out.map(e => `${e.storeys.join(',')} (sill ${e.sill}, h ${e.h})`).join('; ')}: ${band.why[0]}`, ...why]};
 }

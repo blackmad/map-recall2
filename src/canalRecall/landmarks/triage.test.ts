@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {LIKENESS} from '../buildingRecipe/likeness.ts';
-import {cropAbstains, judgeWall, OPEN_DECK_GLAZING, PAINTED_WALL_M, TOWER_COVER, triageCandidate, wallFacesStreet, type TriageInput, type WallCrop, type WallInput} from './triage.ts';
+import {bandDrawn, cropAbstains, judgeWall, OPEN_DECK_GLAZING, PAINTED_WALL_M, TOWER_COVER, triageCandidate, wallFacesStreet, type TriageInput, type WallCrop, type WallInput} from './triage.ts';
 
 const crop = (o: Partial<WallCrop> = {}): WallCrop => ({tag: 'w01-0', lengthM: 30, crop: true, capturedAt: '2022-05-01', cameraDistM: 15, obliquityDeg: 5, foliage: 0.05, washedOut: 0.05, missingFraction: 0, usable: 0.9, frontClass: 'punched', basis: 'courses', glazing: 0.25, wallHeightM: 21.5, ...o});
 const wall = (name: string, o: Partial<WallCrop> = {}, street: string | null = 'Teststraat', lengthM = 30): WallInput => ({wall: name, lengthM, street, crops: [crop({tag: `${name}-0`, lengthM, ...o})]});
@@ -92,6 +92,20 @@ test('#119 band: a ribbon over punched windows on another storey of the same cro
   assert.deepEqual(triageCandidate(base([wall('w01'), wall('w02', {ribbonStoreys: [2]})])).gaps, ['band']);
   assert.equal(triageCandidate(base([wall('w01'), wall('w02', {frontClass: 'ribbon', ribbonStoreys: [1, 2]})])).verdict, 'buildable');
   assert.equal(triageCandidate(base([wall('w01'), wall('w02'), wall('w03', {bandStoreys: band}, 'T', LIKENESS.wideWallM - 1)])).verdict, 'buildable');
+});
+
+test('kit band fronts: a band wall whose ribbons the kit proposal covers is drawn, not a gap', () => {
+  const band = [{storey: 2, againstStorey: 1, ribbonM: 14}];
+  // measured ribbon storeys over the band storey: buildable, with the reason kept
+  const drawn = triageCandidate(base([wall('w01'), wall('w02', {bandStoreys: band, bandKit: {kind: 'ribbonStoreys', storeys: [2]}})]));
+  assert.equal(drawn.verdict, 'buildable');
+  assert.ok(drawn.reasons.some(r => /the kit draws it \(ribbonStoreys on storey 2/.test(r)), drawn.reasons.join(' | '));
+  // a ribbon front drawn as ribbon-windows covers the grid wall's ribbon storeys
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {ribbonStoreys: [1, 2], bandKit: {kind: 'ribbon-windows', storeys: [1, 2]}})])).verdict, 'buildable');
+  // a proposal that misses a ribbon storey (a slab shadow line it refuses) stays a gap
+  assert.deepEqual(triageCandidate(base([wall('w01'), wall('w02', {bandStoreys: band, ribbonStoreys: [2, 3], bandKit: {kind: 'ribbonStoreys', storeys: [2]}})])).gaps, ['band']);
+  assert.deepEqual(triageCandidate(base([wall('w01'), wall('w02', {bandStoreys: band, bandKit: null})])).gaps, ['band']);
+  assert.equal(bandDrawn({bandKit: {kind: 'ribbonStoreys', storeys: []}, bandStoreys: band, ribbonStoreys: null, frontClass: 'punched'}), false);
 });
 
 test('#119 open-deck: no glazing and no courses on a parking pand', () => {

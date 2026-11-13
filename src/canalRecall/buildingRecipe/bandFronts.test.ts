@@ -13,7 +13,8 @@ import fs from 'node:fs';
 import sharp from 'sharp';
 import type {FacadeBox} from './measureFacade.ts';
 import {rowOpenings} from './rowOpenings.ts';
-import {BALCONY_SPANS, balconySpansProposal, bandFrontProposal, GLAZED_STOREY_MIN, photoRowBands, RIBBON_FRONT, type RowBands} from './bandFronts.ts';
+import {BALCONY_SPANS, balconySpansProposal, bandFrontProposal, GLAZED_STOREY_MIN, photoRowBands, RIBBON_FRONT, RIBBON_STOREY_PROPOSAL, ribbonStoreysProposal, type RowBands} from './bandFronts.ts';
+import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 import {LIGHT_RUN, lightRuns} from './lightBands.ts';
 import type {LightBand} from './lightBands.ts';
 import {validateLargeIntent} from './largeIntent.ts';
@@ -168,4 +169,35 @@ test('balconySpansProposal: bay ranges of the part-width storeys; full-width sto
   assert.equal(balconySpansProposal({...base, runs: [{storey: 1, from: 0.1, to: 0.13}, {storey: 2, from: 0.5, to: 0.53}]}).balconyBands, null, 'lone light bays');
   assert.equal(balconySpansProposal({...base, washedOut: 0.5, runs}).balconyBands, null, 'washed out');
   assert.equal(balconySpansProposal({...base, runs, taken: [1]}).balconyBands, null, 'storey 1 claimed by another field');
+});
+
+test('ribbon storeys from the photo (p242968 walls[0]): the glazed first-floor ribbon becomes a measured ribbonStoreys band, not a shop-window row', async () => {
+  const b = await bandFixture('band-p242968-walls0');
+  const r = b.rowBands.ribbons.find(x => x.storey === 1)!;
+  assert.ok(r.sill !== undefined && r.h !== undefined, `sill/h measured: ${JSON.stringify(r)}`);
+  const p = ribbonStoreysProposal({...base(b), pitchM: 3.2, trim: '#dcdcd6'});
+  assert.ok(p.ribbonStoreys, p.why.join('; '));
+  assert.deepEqual(p.ribbonStoreys!.map(e => e.storeys), [[1]]);
+  const e = p.ribbonStoreys![0];
+  // the photo's first floor is glazed from the floor line up: a low sill and nearly the whole storey
+  assert.ok(e.sill <= 0.1 && e.h >= 0.8, JSON.stringify(e));
+  assert.equal(e.lights, 2); assert.equal(e.frame, '#dcdcd6');
+  // a valid intent entry on the group's grid system
+  assert.deepEqual(ribbonStoreysProblems({system: 'brick-bay-grid', wallSurfaces: [0], ribbonStoreys: p.ribbonStoreys!} as any, 'walls[0]'), []);
+});
+
+test('ribbon storeys: never on a ribbon front, a balcony shadow line, or a ribbon without a measured band', async () => {
+  // p145366 walls[4]: every storey a ribbon, the system rule's (ribbon-windows), not ribbon storeys
+  assert.equal(ribbonStoreysProposal(base(await bandFixture('band-p145366-walls4'))).ribbonStoreys, null);
+  // p247342 walls[1]: slab shadow lines over thin glazing (GLAZED_STOREY_MIN)
+  assert.equal(ribbonStoreysProposal(base(await bandFixture('band-p247342-walls1'))).ribbonStoreys, null);
+  // an older report without sill/h, and a band thinner than minH
+  const rb: RowBands = {judged: [1, 2, 3], ribbons: [{storey: 1, ribbonM: 12, against: 2}]};
+  const inp = {rowBands: rb, system: 'brick-bay-grid', storeys: 4, usable: 0.9, foliage: 0, washedOut: 0, storeyGlazing: [null, 0.8, 0.3, 0.3]};
+  assert.equal(ribbonStoreysProposal(inp).ribbonStoreys, null);
+  assert.equal(ribbonStoreysProposal({...inp, rowBands: {...rb, ribbons: [{...rb.ribbons[0], sill: 0.4, h: RIBBON_STOREY_PROPOSAL.minH - 0.05}]}}).ribbonStoreys, null);
+  // two storeys with the same band share one entry; lights from the bay pitch, clamped
+  const two: RowBands = {judged: [1, 2, 3, 4, 5], ribbons: [{storey: 1, ribbonM: 12, against: 3, sill: 0.3, h: 0.5}, {storey: 2, ribbonM: 12, against: 3, sill: 0.32, h: 0.52}]};
+  const p = ribbonStoreysProposal({...inp, storeys: 6, rowBands: two, storeyGlazing: [null, 0.6, 0.6, 0.3, 0.3, 0.3], pitchM: 9});
+  assert.deepEqual(p.ribbonStoreys, [{storeys: [1, 2], sill: 0.3, h: 0.5, lights: RIBBON_STOREY_PROPOSAL.maxLights}]);
 });

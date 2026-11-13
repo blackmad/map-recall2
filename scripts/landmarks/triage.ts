@@ -28,6 +28,7 @@ import {measureFacade, type FrontClass} from '../../src/canalRecall/buildingReci
 import {curtainEvidence} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {ribbonAgainstPunched, ROW_OPENINGS, rowOpenings} from '../../src/canalRecall/buildingRecipe/rowOpenings.ts';
 import {measureFloorBands} from '../../src/canalRecall/buildingRecipe/floorBands.ts';
+import {bandFrontProposal, photoRowBands, ribbonStoreysProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 import {cropOrder, triageCandidate, TRIAGE_VERDICTS, wallFacesStreet, type TriageResult, type WallCrop, type WallInput} from '../../src/canalRecall/landmarks/triage.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -128,15 +129,17 @@ for (const dir of houseDirs) { if (!fs.existsSync(dir)) continue; for (const h o
 const CACHE = 'artifacts/landmark-triage/measure-cache.json';
 /** v3 (#119): + wall basis, the in-photo ribbon-over-punched storeys, the ribbon storeys, and a curtain crop's floor-band proposal; older rows re-measure */
 /** v4 (#146): + an unresolved wall's painted or metal proposal (wallFamily.ts); v3 rows with a resolved basis stay valid */
-const CACHE_V = 4;
+/** v5 (kit band fronts): + `bandKit`, what the kit's band proposal draws for the crop's ribbons (bandFronts.ts); v4 rows without a ribbon stay valid */
+const CACHE_V = 5;
 type Cached = {v?: number; usable: number; foliage: number; washedOut: number; frontClass: FrontClass; family: string | null; glazing: number; curtainDoubt?: string[];
-  basis: string | null; bandStoreys: {storey: number; againstStorey: number; ribbonM: number}[]; ribbonStoreys: number[]; floorBands: boolean | null; wallFamily?: 'paint' | 'metal' | null};
+  basis: string | null; bandStoreys: {storey: number; againstStorey: number; ribbonM: number}[]; ribbonStoreys: number[]; floorBands: boolean | null; wallFamily?: 'paint' | 'metal' | null; bandKit?: WallCrop['bandKit']};
 const cache: Record<string, Cached> = fs.existsSync(CACHE) ? read(CACHE) : {};
 let measuredNow = 0;
 const saveCache = () => { fs.mkdirSync(path.dirname(CACHE), {recursive: true}); fs.writeFileSync(CACHE, JSON.stringify(cache)); };
 async function measureCrop(dir: string, row: any, heightM: number, storeys: number | null) {
   const key = row.sha256 ?? `${dir}/${row.tag}`;
-  if (cache[key]?.v === CACHE_V || (cache[key]?.v === 3 && cache[key].basis !== 'unresolved')) return cache[key];
+  const old = cache[key], ribbonless = (c: Cached) => !c.bandStoreys?.length && !c.ribbonStoreys?.length;
+  if (old?.v === CACHE_V || (old?.v === 4 && ribbonless(old)) || (old?.v === 3 && old.basis !== 'unresolved' && ribbonless(old))) return old;
   const jpg = path.join(dir, `${row.tag}.jpg`), maskF = path.join(dir, `${row.tag}.mask.png`);
   if (!fs.existsSync(jpg)) return null;
   const {data, info} = await sharp(jpg).removeAlpha().raw().toBuffer({resolveWithObject: true});
@@ -153,7 +156,12 @@ async function measureCrop(dir: string, row: any, heightM: number, storeys: numb
   const rowSummary = rowOpenings({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, box: m.box, lines, wallLike}), bandStoreys = ribbonAgainstPunched(rowSummary);
   const ribbonStoreys = rowSummary.rows.filter(r => r.openings.some(o => o.w >= ROW_OPENINGS.ribbonM)).map(r => r.storey);
   const floorBands = m.frontClass === 'curtain' ? measureFloorBands(m, lines).proposal !== null : null;
-  return cache[key] = {v: CACHE_V, basis: m.material?.basis ?? null, ...(m.wallFamily ? {wallFamily: m.wallFamily.proposal?.kind ?? null} : {}), bandStoreys, ribbonStoreys, floorBands, usable: +m.usableFraction.toFixed(3), foliage: +m.foliageFraction.toFixed(3), washedOut: +m.washedOutFraction.toFixed(3), frontClass: m.frontClass, family: m.material?.family ?? null, glazing: m.glazing,
+  // what the kit draws for the ribbons (bandFronts.ts): a ribbon front (system ribbon-windows) or measured ribbon storeys
+  const bandIn = {rowBands: photoRowBands(rowSummary), system: 'brick-bay-grid', storeys: n, usable: m.usableFraction, foliage: m.foliageFraction, washedOut: m.washedOutFraction, storeyGlazing: m.storeyGlazing, pitchM: m.pitchM};
+  const front = bandFrontProposal(bandIn), rs = front.kind === 'ribbon-storeys' ? ribbonStoreysProposal(bandIn).ribbonStoreys : null;
+  const bandKit: WallCrop['bandKit'] = front.kind === 'ribbon-front' ? {kind: 'ribbon-windows', storeys: photoRowBands(rowSummary).ribbons.map(r => r.storey)}
+    : rs ? {kind: 'ribbonStoreys', storeys: rs.flatMap(e => e.storeys).sort((a, b) => a - b)} : null;
+  return cache[key] = {v: CACHE_V, bandKit, basis: m.material?.basis ?? null, ...(m.wallFamily ? {wallFamily: m.wallFamily.proposal?.kind ?? null} : {}), bandStoreys, ribbonStoreys, floorBands, usable: +m.usableFraction.toFixed(3), foliage: +m.foliageFraction.toFixed(3), washedOut: +m.washedOutFraction.toFixed(3), frontClass: m.frontClass, family: m.material?.family ?? null, glazing: m.glazing,
     ...(m.frontClass === 'curtain' ? {curtainDoubt: curtainEvidence({glass: m.glass?.hex ?? null, wall: m.wall.hex, usable: m.usableFraction, likenessUsable: m.usableFraction, foliage: m.foliageFraction, washedOut: m.washedOutFraction})} : {})};
 }
 
@@ -223,11 +231,11 @@ for (const c of work) {
         if (!pre.walls[0]?.judgeable && pre.walls[0]?.reasons.length) continue;
         if (!crop.frontClass || crop.usable == null) {
           const m = await measureCrop(dir, ws.find((w: any) => w.tag === crop.tag), heightM ?? 10, storeys);
-          if (m) { crop.usable ??= m.usable; crop.frontClass ??= m.frontClass; crop.family = m.family; crop.foliage = m.foliage; crop.washedOut = m.washedOut; crop.glazing = m.glazing; crop.curtainDoubt = m.curtainDoubt; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = m.floorBands; crop.wallFamily = m.wallFamily; }
+          if (m) { crop.usable ??= m.usable; crop.frontClass ??= m.frontClass; crop.family = m.family; crop.foliage = m.foliage; crop.washedOut = m.washedOut; crop.glazing = m.glazing; crop.curtainDoubt = m.curtainDoubt; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = m.floorBands; crop.wallFamily = m.wallFamily; crop.bandKit = m.bandKit ?? null; }
         } else {
           // a measured.json prior gave the class: the #119 rules still need the crop's own measurement
           const m = await measureCrop(dir, ws.find((w: any) => w.tag === crop.tag), heightM ?? 10, storeys);
-          if (m) { crop.family = m.family; crop.glazing = m.glazing; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = crop.frontClass === 'curtain' ? m.floorBands : null; crop.wallFamily = m.wallFamily; }
+          if (m) { crop.family = m.family; crop.glazing = m.glazing; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = crop.frontClass === 'curtain' ? m.floorBands : null; crop.wallFamily = m.wallFamily; crop.bandKit = m.bandKit ?? null; }
         }
         const post = triageCandidate({inTiles: true, covered: null, builtYear: year, heightM, cropCapped: false, walls: [{wall: k, lengthM: crop.lengthM, street, crops: [crop]}]});
         if (post.walls[0]?.judgeable) break;
@@ -285,7 +293,7 @@ if (arg('selftest-out')) {
 }
 if (arg('report')) fs.writeFileSync(arg('report'), JSON.stringify({date: today, counts: count(rows), gaps: Object.fromEntries(gapCounts), validation,
   rows: rows.map(r => ({id: r.id, pand: r.pand, name: r.name, source: r.source, rank: r.rank, heightM: r.heightM, builtYear: r.builtYear, verdict: r.triage.verdict, gaps: r.triage.gaps, reasons: r.triage.reasons,
-    walls: r.triage.walls.filter(w => w.street).map(w => ({wall: w.wall, lengthM: w.lengthM, judgeable: w.judgeable, crop: w.crop, frontClass: w.frontClass, family: w.family, basis: w.basis, glazing: w.glazing, band: w.bandStoreys?.length ?? null, ribbons: w.ribbonStoreys ?? null, floorBands: w.floorBands, ...(w.wallFamily !== undefined ? {wallFamily: w.wallFamily} : {}), wallHeightM: w.wallHeightM}))}))}, null, 1) + '\n');
+    walls: r.triage.walls.filter(w => w.street).map(w => ({wall: w.wall, lengthM: w.lengthM, judgeable: w.judgeable, crop: w.crop, frontClass: w.frontClass, family: w.family, basis: w.basis, glazing: w.glazing, band: w.bandStoreys?.length ?? null, ribbons: w.ribbonStoreys ?? null, floorBands: w.floorBands, bandKit: w.bandKit ?? null, ...(w.wallFamily !== undefined ? {wallFamily: w.wallFamily} : {}), wallHeightM: w.wallHeightM}))}))}, null, 1) + '\n');
 
 if (has('--write')) {
   const byId = new Map(rows.filter(r => r.queueRow).map(r => [r.id, r]));

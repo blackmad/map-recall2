@@ -45,7 +45,8 @@ import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {budgetBlankedGroups, withoutBudgetBlanked, cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
-import {balconySpansProposal, bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
+import {balconySpansProposal, bandFrontProposal, ribbonStoreysProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
+import {RIBBON_STOREYS_SYSTEMS} from '../../src/canalRecall/buildingRecipe/ribbonStoreysIntent.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
@@ -121,8 +122,11 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
   if (band?.system && opts.system && !hand.has('system') && w.system !== 'plinth-shopfronts' && !w.screen) {
     system = band.system; patch.system = system; notes.push(`system ${w.system} -> ${system} (${band.why[0]})`);
     if (band.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies) { patch.balconyBands = band.balconyBands; notes.push(band.why[1]); }
-  } else if (band?.glazedStoreys && w.glazedStoreys === undefined && !hand.has('glazedStoreys') && ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(system)) {
-    patch.glazedStoreys = band.glazedStoreys; notes.push(`glazedStoreys ${band.glazedStoreys.join(',')}: ${band.why[0]}`);
+  } else if (band?.glazedStoreys && w.glazedStoreys === undefined && w.ribbonStoreys === undefined && !hand.has('glazedStoreys') && !hand.has('ribbonStoreys') && ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(system)) {
+    // a measured ribbon band (its own sill and height in the storey, bandFronts `ribbonStoreysProposal`) over the shop-window row
+    const rs = (RIBBON_STOREYS_SYSTEMS as readonly string[]).includes(system) ? ribbonStoreysProposal({rowBands: m.rowBands, system, storeys: storeyCount, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut, lightBands: m.lightBands, trim: m.trim, storeyGlazing: m.storeyGlazing, taken, pitchM: m.pitchM}) : null;
+    if (rs?.ribbonStoreys) { patch.ribbonStoreys = rs.ribbonStoreys; notes.push(`ribbonStoreys ${rs.why[0]}`); }
+    else { patch.glazedStoreys = band.glazedStoreys; notes.push(`glazedStoreys ${band.glazedStoreys.join(',')}: ${band.why[0]}`); }
   }
   // part-width (staggered) balcony bands from light parapet runs on the floor lines (bandFronts `balconySpansProposal`, #127)
   if (opts.balconySpans && !patch.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies && !maskDistrusted && system === 'ribbon-windows') {
