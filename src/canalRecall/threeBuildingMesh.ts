@@ -27,7 +27,8 @@ import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PRO
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
-import { boxPlacementFor } from './houseLine/boxCells.js';
+import { boxPlacementFor, groundOpeningRect } from './houseLine/boxCells.js';
+import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
@@ -794,6 +795,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Sub-fronts (lane 1, rowFront): each front's span on the run (metres, the run's direction) with its own wall tint;
       // a party-wall break, PARTY_BREAK_M wide and darker, where two fronts meet. Placed fronts only.
       const subFronts = placed && b.specRecipe?.subFronts?.length ? subFrontSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, jitter, parseHex(b.wallHex)) : null;
+      // Lane 1 (rowFront): the ground storey cut at the record's traced doors and shop windows (houseLine/boxPlacement
+      // groundSpans); a front that keeps a door has it moved to the traced one, so the extras hang on the drawn door.
+      const groundBoxes = b.specRecipe?.groundBoxes;
+      const groundCut = !shell && mode === 'walls' && streetRun && groundBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
+        ? groundSpans((seenLeftToRight(first) ? groundBoxes : groundBoxes.map(o => ({ ...o, a0: 1 - o.a1, a1: 1 - o.a0 }))).map(o => ({ a0: o.a0 * layout.lengthM, a1: o.a1 * layout.lengthM, kind: o.kind, sillM: o.sillM + base, headM: o.headM + base })), layout.lengthM) : null;
+      if (groundCut && layout.doorBays.length) {
+        const doors = groundCut.filter(p => p.kind === 'door').map(p => Math.max(0, Math.min(layout.bays - 1, Math.floor((p.a0 + p.a1) / 2 / bw))));
+        if (doors.length) layout.doorBays = [...new Set(doors)];
+      }
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.
@@ -837,6 +847,19 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const a=Math.max(s,piece.left),end=Math.min(s+e.len,piece.left+piece.width);if(end<=a)continue;
             quads.push({ kind: 'frontage-wall', e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
           }
+        }else if (groundCut) for (const piece of groundCut) {
+          const a0 = Math.max(s, piece.a0), a1 = Math.min(s + e.len, piece.a1); if (a1 - a0 < 1e-4) continue;
+          const along0 = (a0 - s) / e.len, along1 = (a1 - s) / e.len;
+          if (piece.kind === 'wall') { quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: base / 3, v1: groundTop / 3, layer: b.plainLayer!, accent, z0: base, z1: groundTop, tint: paint, along0, along1 }); continue; }
+          // A traced opening: the cell's own opening (its door, a shop's glass, a ground window: boxCells
+          // groundOpeningRect) lands on the traced box across and up; the storey's rest above and below is wall.
+          const door = piece.kind === 'door', layer = door ? b.layers!.door : b.layers!.ground;
+          const rect = groundOpeningRect(layer, piece.kind, b.openings);
+          const fit = rect && piece.sillM !== undefined && piece.headM !== undefined ? cellOnBox(rect, { sillM: piece.sillM, headM: piece.headM }, base, groundTop) : null;
+          const [c0, c1] = rect && fit ? [rect.u0, rect.u1] : [0, (piece.a1 - piece.a0) / bw];
+          const u = (a: number) => c0 + (c1 - c0) * (a - piece.a0) / (piece.a1 - piece.a0);
+          quads.push({ kind: door ? 'door' : 'ground', e, u0: u(a0), u1: u(a1), v0: fit?.v0, v1: fit ? fit.v1 : 1, tint: door && !b.recipe?.groundWallHex ? tint : paint, layer, accent, z0: fit ? fit.z0 : base, z1: fit ? fit.z1 : groundTop, along0, along1 });
+          for (const [w0, w1] of fit?.walls ?? []) quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w0 / 3, v1: w1 / 3, layer: b.plainLayer!, accent, z0: w0, z1: w1, tint: paint, along0, along1 });
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           // An axis-unit door samples the half of the door cell around the door, clear of its side window (units.doorU).
           const pu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, pu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;

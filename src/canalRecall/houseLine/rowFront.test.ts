@@ -176,3 +176,14 @@ test('row front sub-fronts: HD22/24 merged for the mesh, spans and colours per f
   assert.ok(Math.abs(r.subFronts![0].a1 - 3.95 / fr.bagWidthM) < 0.002 && r.subFronts![0].wallHex !== r.subFronts![1].wallHex);
   assert.ok(r.windows!.some(w => w.a1 <= r.subFronts![0].a1) && r.windows!.some(w => w.a0 >= r.subFronts![1].a0));
 });
+
+// Ground floors from the trace, named regression HD2 (167821: shop 0.2-0.85, door 0.85-2.3, shop 2.3-3.7 on 4.33 m):
+// the ground openings keep their order and kinds as fractions of the front, and levels() hands them to the mesher.
+test('row front ground: HD2 traced door and shop windows become the ground boxes', () => {
+  const table = JSON.parse(readFileSync(new URL('../../../data/front-records/haarlemmerdijk-block.json', import.meta.url), 'utf8'));
+  const r = rowFrontsFromTable(table).find(x => x.pandId.endsWith('167821'))!;
+  assert.deepEqual(r.ground!.map(g => g.kind), ['shop', 'door', 'shop']);
+  assert.ok(Math.abs(r.ground![1].a0 - 0.85 / 4.33) < 0.002 && Math.abs(r.ground![1].a1 - 2.3 / 4.33) < 0.002);
+  const sr = levels(null, { ...r, storeys: r.storeys ?? 4 }, r.eavesM ?? 15.9, false).specRecipe as { groundBoxes?: unknown[] };
+  assert.equal(sr.groundBoxes?.length, 3);
+});

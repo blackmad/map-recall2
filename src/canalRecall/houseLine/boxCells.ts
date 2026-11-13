@@ -4,7 +4,8 @@
  * on a record's boxes (houseLine/boxPlacement.ts). A later window-unit library replaces only `cellUnit`.
  */
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayVariant } from '../bayLook.js';
-import { BAY_PX } from '../bayTextures.js';
+import { BAY_PX, GROUND_PX, SHOP_KINDS } from '../bayTextures.js';
+import type { Openings } from '../facadeOpenings.js';
 import { canvasWindows } from '../look/windowTable.js';
 import { placeOnBoxes, type Placement, type WindowBox, type WindowUnit } from './boxPlacement.js';
 
@@ -47,4 +48,24 @@ export function boxPlacementFor(boxes: readonly WindowBox[], upperLayer: number,
   if (!unit) return null;
   const boxesM = boxes.map(b => ({ ...b, a0: b.a0 * lengthM, a1: b.a1 * lengthM, sillM: b.sillM + base, headM: b.headM + base }));
   return placeOnBoxes(boxesM, unit, { lengthM, z0, z1 });
+}
+
+/** The glass of a shop cell (bayTextures shopAt / quietShopAt: x 31-48 px in from each side, y 86-321 of GROUND_PX). */
+export const SHOP_GLASS_UV = { u0: 0.08, u1: 0.92, v0: 1 - 321 / GROUND_PX, v1: 1 - 86 / GROUND_PX } as const;
+
+/**
+ * The opening a ground-storey cell paints (uv, v up), for a traced door, shop window or ground window: a door cell's
+ * door (the building's openings), a shop cell's glass, a ground cell's first window. Null: draw the cell as is.
+ */
+export function groundOpeningRect(layer: number, kind: 'door' | 'shop' | 'window', openings?: Pick<Openings, 'door'>): { u0: number; u1: number; v0: number; v1: number } | null {
+  if (kind === 'door') {
+    const d = openings?.door;
+    return d && d.width > 0.05 && d.top > d.bottom ? { u0: d.axis - d.width / 2, u1: d.axis + d.width / 2, v0: d.bottom, v1: d.top } : null;
+  }
+  const entry = layer < BAY_LAYER_COUNT ? BAY_ENTRIES[layer] : undefined;
+  if (!entry) return null;
+  if ((SHOP_KINDS as readonly string[]).includes(entry.kind)) return { ...SHOP_GLASS_UV };
+  if (entry.kind !== 'ground') return null;
+  const { cellH, windows } = canvasWindows(bayVariant(entry)), w = windows[0];
+  return w && w.w > 0 && w.h > 0 ? { u0: w.x / BAY_PX, u1: (w.x + w.w) / BAY_PX, v0: 1 - (w.y + w.h) / cellH, v1: 1 - w.y / cellH } : null;
 }

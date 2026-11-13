@@ -115,3 +115,47 @@ export function interimBoxes(rows: readonly { sillM: number; headM: number }[], 
   const bay = lengthM / bays;
   return rows.flatMap(r => Array.from({ length: bays }, (_, i) => ({ a0: (i + 0.5) * bay - share * bay / 2, a1: (i + 0.5) * bay + share * bay / 2, sillM: r.sillM + base, headM: r.headM + base })));
 }
+
+/** A ground-storey opening along the run (m): a door, a shop window or a plain ground window. */
+export type GroundKind = 'door' | 'shop' | 'window';
+export interface GroundSpan { a0: number; a1: number; kind: GroundKind | 'wall'; sillM?: number; headM?: number }
+
+/**
+ * The ground storey of a run cut at its traced openings: every opening is one span (overlapping neighbours meet at the
+ * middle of their overlap), the rest is plain wall. Spans cover [0, lengthM] left to right without gaps; openings
+ * narrower than `minM` after clipping are dropped into the wall.
+ */
+export function groundSpans(openings: readonly { a0: number; a1: number; kind: GroundKind; sillM?: number; headM?: number }[], lengthM: number, minM = 0.1): GroundSpan[] {
+  if (!(lengthM > 0)) return [];
+  const sorted = openings.map(o => ({ ...o, a0: Math.max(0, o.a0), a1: Math.min(lengthM, o.a1) })).filter(o => o.a1 > o.a0).sort((p, q) => p.a0 - q.a0);
+  for (let i = 1; i < sorted.length; i++) {
+    const p = sorted[i - 1], q = sorted[i];
+    if (q.a0 < p.a1) { const m = (Math.max(p.a0, q.a0) + Math.min(p.a1, q.a1)) / 2; p.a1 = Math.min(p.a1, m); q.a0 = Math.max(q.a0, m); }
+  }
+  const out: GroundSpan[] = [];
+  let a = 0;
+  for (const o of sorted) {
+    if (o.a1 - o.a0 < minM) continue;
+    if (o.a0 > a + 1e-6) out.push({ a0: a, a1: o.a0, kind: 'wall' });
+    out.push({ ...o, a0: Math.max(a, o.a0) });
+    a = o.a1;
+  }
+  if (a < lengthM - 1e-6) out.push({ a0: a, a1: lengthM, kind: 'wall' });
+  return out;
+}
+
+/**
+ * One cell's opening (its rect in the cell's uv, v up) put on a box: the cell runs vertically so the opening's bottom
+ * and top land on the box's sill and head, cut to the region [z0, z1]; `walls` are the region's rest above and below.
+ */
+export function cellOnBox(rect: { v0: number; v1: number }, box: { sillM: number; headM: number }, z0: number, z1: number): { z0: number; z1: number; v0: number; v1: number; walls: Array<[number, number]> } | null {
+  const k = (rect.v1 - rect.v0) / (box.headM - box.sillM);
+  if (!(k > 0) || !(z1 > z0)) return null;
+  const v = (z: number) => rect.v0 + (z - box.sillM) * k, zAt = (vv: number) => box.sillM + (vv - rect.v0) / k;
+  const q0 = Math.max(z0, zAt(0)), q1 = Math.min(z1, zAt(1));
+  if (!(q1 - q0 > 0.05)) return null;
+  const walls: Array<[number, number]> = [];
+  if (q0 > z0 + 1e-3) walls.push([z0, q0]);
+  if (q1 < z1 - 1e-3) walls.push([q1, z1]);
+  return { z0: q0, z1: q1, v0: v(q0), v1: v(q1), walls };
+}

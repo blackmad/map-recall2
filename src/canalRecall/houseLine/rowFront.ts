@@ -43,6 +43,9 @@ export interface RowFrontRecord {
   /** Lane 2's traced upper-storey openings (step d): a0/a1 fractions of the front left to right as seen from the street,
    *  sill/head above the pand's ground. Crown openings (attic lights over the front's top) are left to the crown. */
   windows?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
+  /** Lane 2's traced ground-storey openings (doors, shop windows, ground windows): a0/a1 fractions of the front as
+   *  `windows`, sill/head above the pand's ground. */
+  ground?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind: 'door' | 'shop' | 'window' }>;
   /** The traced shop band's top (pand datum) and the photo's fascia colour (muted by lane 2). */
   shopTopM?: number;
   fasciaHex?: string;
@@ -157,6 +160,9 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
     const top = fr.frontTopM ?? Infinity;
     const wins = t.storeys.slice(1).flat().filter(o => o.kind !== 'attic' && o.kind !== 'door' && o.kind !== 'shop' && o.y + o.h <= top + 0.05 && o.w > 0.1 && o.h > 0.1);
     if (wins.length) out.windows = wins.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!, kind: o.kind }));
+    const doors = (t.storeys[0] ?? []).filter(o => o.w > 0.1 && o.h > 0.1 && o.x < span && o.x + o.w > 0);
+    if (doors.length) out.ground = doors.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!,
+      kind: o.kind === 'door' ? 'door' as const : o.kind === 'shop' ? 'shop' as const : 'window' as const }));
     if (t.shopBandTopM !== null) out.shopTopM = at(t.shopBandTopM)!;
     if (t.fascia?.hex) out.fasciaHex = t.fascia.hex;
   }
@@ -256,6 +262,8 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   // The photo's fascia colour per front, muted by lane 2's trace (drawn as is: threeBuildingFeatures).
   if (rec.fasciaHex) out.fasciaHex = rec.fasciaHex;
   if (rec.subFronts) out.subFronts = rec.subFronts;
+  // The traced ground openings (doors and shop windows) the mesher cuts the ground storey at.
+  if (rec.ground?.length) out.groundBoxes = rec.ground;
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
