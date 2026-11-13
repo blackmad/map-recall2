@@ -104,7 +104,7 @@ export async function measureSpot(store: GroundStore, spot: RailStreetSpot): Pro
 
 async function main(): Promise<void> {
   const print = process.argv.includes('--print');
-  const before = new GroundStore(readExtract, { roads: true, railOnStreet: false, railSpans: false, railDecks: false, railRamps: false }), after = new GroundStore(readExtract, { roads: true });
+  const before = new GroundStore(readExtract, { roads: true, railOnStreet: false, railSpans: false, railDecks: false, railRamps: false }), after = new GroundStore(readExtract, { roads: true, crossings: true }); // the crossing register on (crossings.ts, lane G3): every pin holds with it, kimpoweg-rails' 0 spans included (round 2)
   await Promise.all([before.init(), after.init()]);
   const only = process.argv.find(a => a.startsWith('--only='))?.slice(7).split(',');
   let failed = 0;

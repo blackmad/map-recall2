@@ -797,17 +797,25 @@ This is the seed of lane H11 (apply the design fields in the spec route, or reti
 
 **Kit components added (belt-haarlemmer).**
 - `FrontIntent.eavesHeight` (metres above the pand's ground; named without the `M` suffix like `crownRise`, the intent contract scan
-  rejects `*M` keys): a photo-measured eaves line, applied by `blockFace/houseFrontRoof.ts` `withMeasuredEaves` as
+  rejects `*M` keys): a photo-measured eaves line, applied by `buildingRecipe/houseFrontRoof.ts` `withMeasuredEaves` as
   `facts.measuredEavesM[front.id]` when the facts carry none. Absent = the same facts object. Without it a cornice or gable front
   reads 3DBAG's 10th-percentile roof edge, the rear roof (Haarlemmerdijk 6: 8.9 m against an 11.0 m cornice). Block faces already
   carried this as `continuity.measuredEaves`; a lone house had no way to say it.
 - `roof.form` and `roof.source: 'front'` on a canal-house intent compiled alone: `withFrontRoof` runs the block faces' front roof
   (`frontRoofSpecs` -> `recipeRoofFacts`) for the house, so 3DBAG keeps the footprint and an upper bound only. Typed, tested in
-  `blockFace/houseFrontRoof.test.ts` (Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
+  `blockFace/houseFrontRoof.test.ts` (module now `buildingRecipe/houseFrontRoof.ts`; Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
   byte-identical when absent: `test:fit-golden` "all 207 house recipes identical" (no committed house carries either field).
 - `buildingRecipe/gates.ts`: with `facts.measuredEavesM` the `eaves-vs-3dbag` gate compares the model to the measured line, and `ridge-vs-3dbag`
   lets the roof reach it (a cornice top over a parapet stands above 3DBAG's roof edge: Haarlemmerdijk 16, 11.6 m against a 10.4 m roof max), and a
   front-derived roof (`roofSource`) may stand under 3DBAG's. Absent = the same gate (`fit-golden` unchanged for all 207 committed houses).
+- **One lone-house front roof (merged 2026-11-12, lane recipe-front-roof).** belt-jordaan (#366) wrote the same thing in parallel
+  (`roof.source: front`, `roof.hip`; Bloemgracht 7). Both now live in `buildingRecipe/houseFrontRoof.ts`: `wantsFrontRoof` = `source:
+  front`, a front `hip` or a forced `form` (never `3dbag`); `houseFrontRoofFacts`/`withFrontRoof` apply `withMeasuredEaves`, then
+  `pandRoofFacts`, the block face's own per-pand roof builder (moved out of `blockFace/compile.ts`), so a lone house also gets cross
+  gables and the roof falling to a corner's side fronts. `ridge-vs-3dbag` is one gate: measured eaves lift the upper bound; a
+  `roofSource.kind: front` roof stays under the crown line (or measured eaves) + 0.3 m and under 3DBAG / the measured line + 0.3 m,
+  never under the front eaves; a `recipe` roof under LoD2.2 max + 0.5 m. FH pin: Frederik Hendrikstraat 142 (0363100012152966, rise
+  0.25, pitch 45) tops out at 14.27 m, 3DBAG 17.16 m (`houseFrontRoofFH.test.ts`).
 
 **Frames and the staged world (lane belt-haarlemmer, batch 1, 2026-11-10).** `house:publish` in the lane worktree installed 8 of 9 recipe
 GLBs (131, 0363100012173479, is held: `open-edges` 3 edges / 5.2 m, independent of eaves, roof form, crown cap, windows and door) and a full
@@ -1598,6 +1606,41 @@ triangles.
 
 On the generic path the painted door is not raised, so the landing covers its lower part.
 
+### Front roofs on the recipe route (belt-jordaan, #366, 2026-11-10)
+
+`roof.source: front` and `roof.hip` used to work only in the block-face compile (`blockFace/compile.ts`
+`roofSourceFor`). A HouseSpec on the recipe route compiles as a single house (`compileBuilding`), so it kept the 3DBAG
+roof. On Bloemgracht 7 (0363100012173342) that drew a 3DBAG saddle triangle over the frieze, where the photo shows
+only a dormer and a low slate slope behind the cornice.
+
+`buildingRecipe/houseFrontRoof.ts` now gives a single house the same front forms as the face, before the fit. The
+form logic is `frontRoofSpecs`, moved to `blockFace/frontRoofSpecs.ts` and re-exported from `compile.ts`; the roof
+pieces come from `recipeRoofFacts`:
+
+- a saddle under a gable's crown;
+- an attic face behind a dormered or plain cornice (`roof.rise` × the top storey);
+- flat with `roof.form: 'flat'`.
+
+**When it runs:**
+
+- Opt-in: a house without `source: front` or `hip` gets back the same facts object.
+- It skips facts that a face already roofed (`facts.roofSource`), so a face pand is not roofed twice.
+- `test:fit-golden` reported all 207 house recipes identical, `block-face/roof-golden.ts` 0 violations, and
+  `houseFrontRoof.test.ts` passes.
+
+**Gate (2026-11-12).** The single-house `ridge-vs-3dbag` gate (`buildingRecipe/gates.ts`) now bounds a roofed house
+(`facts.roofSource`) the way the face's `height-vs-3dbag` does: under the crown line + 0.3 m (dormers +1.9 m) and not
+under the front eaves. Before this, 16 of the 24 Bloemgracht batch-1 houses failed because their front roofs stood
+0.4–3.5 m under the 3DBAG ridge, which is what the front roof is for. Houses without `roofSource` are unchanged
+(fit-golden: all identical).
+
+**Open: dormer top.** A pediment or plain dormer in front of an attic face leaves a ~1 m square open at its top
+(4 edges, 3.6–4.5 m): `open-edges` on 12 of 24 Bloemgracht houses. It also happens without the front roof (3DBAG roof),
+and disappears without the dormer.
+
+**What a lone house cannot know:** the cornice group's shared attic line, the row ridge, photo `frontRoof` hints, and
+the roof falling to a corner pand's side fronts. For those, type the pand on a block face.
+
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
@@ -1909,6 +1952,16 @@ worker, whose `location.search` is its own script URL: a flag it reads must be i
 withWorkerFlags`; `brickLift` was not, so `?brickLift=v1` changed nothing on the generic houses), and the pand's guard
 (`game.json drawn.heldBrick`). `scripts/house-frames/trace-wall.ts <ids>` prints the Node side of the same path
 (spec reading, decorated wall, mesher wall) under `SPEC_WALLS` / `BRICK_LIFT`.
+
+**Belt pose rule (2026-11-10).** Take winter captures first, then the squarest view under 30°. Use 45° or more only as a
+second view. Two options support this, and neither changes the default pick:
+
+- `--prefer-obliquity 30`: within a season, captures that see the wall within that many degrees of square come first,
+  squarest first. This happens before the foliage order.
+- `notPanos`: a `--list` entry can carry `"notPanos": ["<panoId>"]`, which skips those captures. Use it to re-pick a
+  pose flagged `otherBuilding`.
+
+Example: `--season winter --prefer-obliquity 30`.
 
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
@@ -2282,3 +2335,118 @@ installed models, 13 spec recipes. Four fresh Opus critics, about 50 pairs each.
 
 Archive: source-data `experiments/facade-benchmark/round-0/` (frames, critic pairs and key, labels, queue). Sheets:
 map-recall2-screenshots `ui/2026-11-12-facade-benchmark/round-0/`.
+
+## §11 Wall colour per stage, and the measured wall pool (lane W1, 2026-11-12)
+
+The user (2026-11-12): "every house is the wrong color". Ruling: correctness first, measured dark brick ships even if the
+city reads darker.
+
+### Where the error arises: `scripts/house-frames/wall-stages.ts`
+
+```sh
+node --import tsx scripts/house-frames/wall-stages.ts <house:frames out> [--keys a,b] [--json f] [--md f]
+```
+
+Per pand of a frames run, OKLab at every stage of the generic path against the photo half of the same pose
+(`analyse.ts wallLab`): photo; the spec reading (`houseSpec.wallHex`); the source the period path draws without one (the
+buurt profile's era wall, or `PERIOD_WALLS`' hash pick); decorated (`specRecipe.wallHex`, else the source); mesher
+(`meshBuildingFor` wallHex); pixel (wallLab on `game.png`). Classes: `spec` (a drawn reading), `held` (the pale-warm
+guard), `profile`, `period`, `model` (an installed chunk/landmark: no Node-side stage).
+
+F4 round 0 (193 pands, default world, main 659f8fc72), stage table with the pool off (`WALL_POOL=0`), means:
+
+| class | stage | n | dL | dC | dh (median) | dE |
+|---|---|---|---|---|---|---|
+| spec | reading vs photo | 12 | -0.010 | +0.010 | +14 | 0.112 |
+| spec | decorated vs reading | 12 | +0.040 | +0.028 | -4 | 0.080 |
+| spec | mesher vs decorated | 12 | 0 | 0 | 0 | 0 |
+| spec | pixel vs mesher | 12 | -0.006 | -0.010 | +3 | 0.043 |
+| spec | **pixel vs photo** | 12 | +0.024 | +0.027 | +11 | **0.067** |
+| profile | source vs photo | 152 | **+0.137** | +0.027 | -26 | **0.210** |
+| profile | mesher vs decorated | 153 | +0.004 | 0 | 0 | 0.012 |
+| profile | pixel vs mesher | 153 | -0.080 | -0.015 | +1 | 0.116 |
+| profile | **pixel vs photo** | 152 | +0.061 | +0.012 | -11 | **0.134** |
+| held | reading vs photo | 4 | +0.174 | +0.018 | +9 | 0.176 |
+| held | mesher vs decorated (heldBrickWall) | 4 | -0.100 | +0.022 | 0 | 0.102 |
+| held | pixel vs photo | 4 | -0.068 | +0.026 | -9 | 0.144 |
+| model | pixel vs photo | 23 | +0.030 | +0.016 | +18 | 0.077 |
+
+Read:
+- **The error is the source, on pands without a reading.** 152 of the 193 drew a buurt-profile swatch, none the bare
+  period palette. Their drawn wall is uncorrelated with the photo (Pearson r on OKLab L: photo vs mesher 0.000, photo vs
+  pixel 0.07); photo walls sit at L 0.42 ± 0.09, C 0.016, the profile swatches at L 0.55 ± 0.20 (whites #e1dbd3,
+  #e3e0e1, slate greys #7c7c7d, #696a6d, terracotta #bc7f5e). All 87 critic wall-colour pairs are profile or installed
+  pands; the critic named wall colour on **0 of the 13** spec-wall pairs.
+- **The spec walls are not 0.10 L darker than the photo**: pixel vs photo dL +0.024 (n 12). The 0.10 figure was pixel
+  vs mesher on the wall-colour-truth set, whose 11 non-spec walls were pale profile swatches: the render compresses
+  lightness (pixel L = 0.43 x mesher L + 0.24 over 169 walls; +0.03 at mesher L 0.3-0.4, -0.06 at 0.5-0.6, -0.34 at
+  0.9+), so a white swatch draws mid grey and a dark brick draws as itself. **No lift change**: on a dark measured wall
+  the lift is near identity; a lighter lift would only hide the source error.
+- **Brick drawn as render** (wall-colour-truth's three, 165826, 157089, 233628; also 167816): not a material flag. The
+  wall cell is brick; the profile picked a painted swatch (#e1dad4, #dfd9d7, #ece8e1, #e2e9ec), and a near-white tint on
+  the brick cell reads as render. Fixed at the source below (#896558, #7c502d, #a35a30, #575351).
+- The profile pools cannot be re-derived here: `derive.ts` reads 558 archived panorama walls but the panorama thumbnails
+  it was published from are not archived (`panorama thumbnails used 0`; 104 of 466 profiles would survive). §9's
+  `paintClass` fix is still unpublished for that reason.
+
+### The measured wall pool (`look/measuredWallPool.ts`, flag `?wallPool=0`, `WALL_POOL=0`, default on)
+
+- **Table:** `scripts/house-specs/measured-wall-pool.ts --publish` writes `look/measured-wall-pool.json`: 1,051 spec'd
+  pre-1945 pands whose reading draws (the decorated colour, `decorate.ts specWallColour`, under the default flags), with
+  centroid and archetype. Excluded: 268 held readings, 2 readings drawn as their family tone (trim misread) and 43
+  post-1945 pands. A pand an installed model hides enters (945): its reading is of the real front.
+- **Unmeasured pand** (`bayLook.ts bayLookFor`, `at`): photo look, no recipe/modern vocabulary, archetype canal, c19 or
+  school. Candidates are the measured walls within 600 m of the same archetype (any pre-1945 archetype when fewer than
+  6). It takes the 12 nearest, keeps the 3 nearest their median colour (per OKLab axis), and picks by id hash. (A 35-65 %
+  lightness band, the first try, drew orange-red outliers such as #783721 beside low-chroma brown photos.) The pick replaces the profile
+  swatch and outranks a material prior as a profile wall does (`profileWall`). With fewer than 6 candidates the profile
+  stands.
+- **Period palette** (`brickLift.ts periodWallList` → `measuredPeriodList`): the city-wide L deciles of each archetype's
+  measured walls replace `PERIOD_WALLS.photo` (and brickLift v2's c19 list) for pands with no profile and no neighbours,
+  and for `heldBrickWall`'s brick fallback. canal (n 58) #3a3735 .. #f0d5ac, c19 (n 559) #3f362d .. #96958f, school
+  (n 434) #383838 .. #988a87; no #b05a40/#bd6a45 terracotta, no #3e4a40/#5d605a slate.
+- **Chroma at the decoration stage** (`houseSpec/wallColour.ts specWallDisplay`, flag `?wallChroma=0`, `WALL_CHROMA=0`,
+  default on). With the pool on and the round-3 decoration, the 96 changed pairs drew pixel C 0.043 at hue 48 against
+  the photos' 0.016 at hue 62: orange-red where the photo is brown. The readings sit near the photo's chroma (reading vs
+  photo dC +0.01). The round-3 gain (up to x2.4, hue pulled toward 40) matched the old period palette's chroma, not the
+  photo; it added +0.028 C. Now a warm pixel reading keeps its chroma and hue, and only the lightness lift stays. A
+  reading of #6e4b44 drew #a35042 and now draws a muted red-brown. It reaches every spec wall (1,364 readings), and it
+  moves the pale-warm guard: 268 held instead of 301.
+- **Reach:** both the live path and the baked world-v1 path (the worker forwards `wallPool`, `engine/workerPool.ts`);
+  the integrator rebuilds world-v1. F1's `?shaderFacades=1` draws record walls at 1.0 x wallHex, so it gets the change.
+- **Off is byte-identical** (`measuredWallPool.test.ts`: bayLookFor with and without a location under `WALL_POOL=0`).
+
+### Result on the W1 pairs (`scripts/house-frames/wall-colour-w1.json`, 114 pairs)
+
+The 114 pairs are F4's 87 wall-colour and 11 brick-vs-render pairs plus the 16 wall-colour-truth pands (with 157926 and
+154359). The run used `house:frames --before`, `?world=live`, and before = the committed bundles. After = scratch
+bundles served via `BUNDLES_DIR`.
+
+| | before | after |
+|---|---|---|
+| mean wall dE (pixel vs photo) | 0.151 | **0.097** |
+| changed pairs (98) mean dE | 0.155 | 0.092 |
+| pixel L (photo 0.427) | 0.506 | 0.463 |
+| pixel C (photo 0.016) | 0.031 | 0.025 |
+| better / worse > 0.02 / same | | 61 / **15 (13 %)** / 16 |
+
+- **Gate:** the mean dE went down. The rule "no more than 1 in 10 pairs worse by more than 0.02" **fails** at 15 of 114.
+  - Most of the 15 are pands where the before swatch happened to land near a dark photo, or where the pool's median is
+    lighter than a near-black painted front.
+  - One is a 1986 pand that BAG dates post-war and that still draws a pre-war list.
+- **Unchanged (intended):**
+  - the installed chunks (nassau-145-152, kinker-206-242);
+  - the spec pands whose dark readings gain little chroma either way (154359, 157926, 161457).
+- **Critic round 101** (opus, blind, `artifacts/critic/round-101`): wall colour/tone was the gap on **36 of 114**
+  pairs. On these same pairs it was 87 in round 0. Of round 0's 87, 32 still name wall colour.
+  - The remaining complaints: near-black painted fronts drawn brown, purple-red brick drawn olive-brown, and orange
+    reds that are still too bright.
+  - The critic was fooled once.
+
+Still wrong:
+- A row of unmeasured pands now draws a uniform grey-brown. The reds and the odd pale stucco front of a canal row are lost.
+- Painted black or white fronts with no reading draw brown.
+- The pool covers only areas with spec readings. Elsewhere the profile swatches remain.
+- A held reading still draws heldBrickWall.
+- The reading stage is one photo per pand: 154359 reads 0.24 L darker than its frame.
+

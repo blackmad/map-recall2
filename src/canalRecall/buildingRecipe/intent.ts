@@ -834,7 +834,7 @@ export interface FrontIntent {
    * The front's eaves (cornice top, or the foot of a gable) in metres above the pand's ground, read off a photo: a
    * measured eaves line replaces 3DBAG's 10th-percentile roof edge, which on a cornice or gable front reads the rear roof
    * (Haarlemmerdijk 6: 8.9 m against a 11.0 m cornice; metres, named without the M suffix like `crownRise` so the intent contract scan passes). Applied as `facts.measuredEavesM[front.id]` by
-   * blockFace/houseFrontRoof.ts `withMeasuredEaves` when the facts carry none (block faces carry theirs in
+   * buildingRecipe/houseFrontRoof.ts `withMeasuredEaves` when the facts carry none (block faces carry theirs in
    * `continuity.measuredEaves`). Absent = byte-identical.
    */
   eavesHeight?: number;

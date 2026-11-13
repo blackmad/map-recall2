@@ -22,6 +22,10 @@ export default defineConfig(({ mode }) => {
     build: quiz
       ? { outDir: 'dist-quiz', emptyOutDir: true, copyPublicDir: false, sourcemap: 'hidden' }
       : { sourcemap: 'hidden' },
+    // Only the app's own page is a Vite entry. public/ is served as-is, but the dependency scan crawled its 150 lab
+    // pages too and failed on importmap-only bare imports (`@sparkjsdev/spark` in sculpture-splat-demo.html), which
+    // logged an error at every dev-server start, CI and the nightly driving sweeps included (2026-11-12).
+    optimizeDeps: { entries: ['index.html'] },
     server: {
       port: 3000,
       host: '0.0.0.0',

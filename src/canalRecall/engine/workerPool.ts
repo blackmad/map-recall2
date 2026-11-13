@@ -68,13 +68,13 @@ export class WorkerPool {
   dispose(): void { for (const w of this.workers) w?.terminate(); this.workers = []; }
 }
 
-/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts, look/paletteLevel.ts, industrial/industrialKit.ts). `look`, `toonFronts`, `roofFamily` and `treeCalm` (#161) are read by look/palette.ts and look/calmTones.ts at module load; without them in the URL a worker-built chunk ignored the flag (toon fronts and roof families measured 0.00 change, 2026-11-10). `brickLift` (look/brickLift.ts: bayLook's profile wall and the c19 period list, read in meshBuildingFor) and `specWalls` likewise: `?brickLift=v1` changed 0 % of the generic walls before it was forwarded (lane wall-colour-truth, 2026-11-12). */
+/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts, look/paletteLevel.ts, industrial/industrialKit.ts). `look`, `toonFronts`, `roofFamily` and `treeCalm` (#161) are read by look/palette.ts and look/calmTones.ts at module load; without them in the URL a worker-built chunk ignored the flag (toon fronts and roof families measured 0.00 change, 2026-11-10). `brickLift` (look/brickLift.ts: bayLook's profile wall and the c19 period list, read in meshBuildingFor) and `specWalls` likewise: `?brickLift=v1` changed 0 % of the generic walls before it was forwarded (lane wall-colour-truth, 2026-11-12); `wallPool` (look/measuredWallPool.ts, bayLook's pool wall and the period list, lane W1). */
 export function withWorkerFlags(url: string, search: string = typeof location !== 'undefined' ? location.search : ''): string {
   if (!url) return url;
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'shopGrammar', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'shopGrammar', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls', 'wallPool', 'wallChroma'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }

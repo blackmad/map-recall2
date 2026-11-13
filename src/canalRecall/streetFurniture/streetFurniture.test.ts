@@ -2,7 +2,8 @@
 //   node --import tsx --test src/canalRecall/streetFurniture/streetFurniture.test.ts
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { DIMENSIONS, FURNITURE_MODELS, FURNITURE_MODEL_IDS, FURNITURE_TRI_CAP, isSlot, lampHeight, linearOf, SLOT } from './models.ts';
+import { DIMENSIONS, FURNITURE_MODELS, FURNITURE_MODEL_IDS, KRUL_PLAN, isSlot, lampHeight, linearOf, SLOT, triCapOf } from './models.ts';
+import { STREET_FURNITURE_TONES } from '../look/palette.ts';
 import { CONTAINER_DRUM_SHARE, HOOPS_PER_RACK, URINAL_PAIR_M, containerModelId, containerYaw, instancesOf } from './placement.ts';
 import { BGT_KIND, URINAL_SUBTYPE, containerSubtype, lampStyle, polygonTest, tileKeyOf, urinalCount } from './extract.ts';
 import { StreetIndex } from './streetIndex.ts';
@@ -11,12 +12,14 @@ import type { FurnitureRecord } from './extract.ts';
 /** Triangle counts per model: a change here is a deliberate geometry change (update with the reason). */
 // container 114 -> 150 (2026-11-07: full width, corner strips, door, pictogram, crosses); 52 -> 114 (#212): the hexagonal hood, the recess between cheeks with the rest drum (glass: round hole 104,
 // paper: slot and flap 102), lip, top sticker, two-disc mushroom.
-const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-bg': 154, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90, 'urinal-krul': 152 };
+// urinal-krul 152 -> 1386 (2026-11-12, user "model this as curves"): 48-segment smooth sheet in three bands with the rib
+// and top edge, round posts and knobs, the round pedestal, the dakje with its finial, the kerbed pad.
+const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-bg': 154, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90, 'urinal-krul': 1386 };
 
 test('every model stays within the per-kind triangle cap and its recorded count', () => {
   for (const id of FURNITURE_MODEL_IDS) {
     const m = FURNITURE_MODELS[id]();
-    assert.ok(m.triangles <= FURNITURE_TRI_CAP, `${id}: ${m.triangles}`);
+    assert.ok(m.triangles <= triCapOf(id), `${id}: ${m.triangles}`);
     assert.equal(m.triangles, TRIANGLES[id], `${id} triangles`);
     assert.equal(m.positions.length, m.triangles * 9);
     assert.equal(m.colours.length, m.positions.length);
@@ -157,8 +160,40 @@ test('krul urinal: sheet half a metre off the floor to 2.03 m, end posts 0.22 m 
   for (let i = 0; i < m.positions.length; i += 3) {
     assert.ok(Math.abs(m.positions[i]) <= D.padX + 1e-6 && Math.abs(m.positions[i + 1]) <= D.padY + 1e-6, `vertex ${i / 3} outside the pad`);
   }
+  // Smooth normals for the curved sheet, unit length, one per vertex; the flat kinds carry none (byte-identical GLBs).
+  assert.ok(m.normals && m.normals.length === m.positions.length);
+  for (let i = 0; i < m.normals!.length; i += 3) assert.ok(Math.abs(Math.hypot(m.normals![i], m.normals![i + 1], m.normals![i + 2]) - 1) < 1e-5, `normal ${i / 3}`);
+  for (const id of FURNITURE_MODEL_IDS) if (id !== 'urinal-krul') assert.equal(FURNITURE_MODELS[id]().normals, undefined, id);
   // Only the krul has a model; the Urilift and the other urinals stay skipped types.
   assert.deepEqual(Object.keys(URINAL_SUBTYPE), ['KRUL']);
+});
+
+test('krul urinal: the drain pedestal stands inside the loop and never pokes through the sheet (user 2026-11-12: "a block sticking through the wall")', () => {
+  const m = FURNITURE_MODELS['urinal-krul'](), D = DIMENSIONS.krul, [lx, ly] = KRUL_PLAN.loop, stone = linearOf(STREET_FURNITURE_TONES.krulStone);
+  // The loop's sheet is a circle of D.loopR round KRUL_PLAN.loop: every plan point of the loop lies on it.
+  for (let i = 0; i <= D.loopSegments; i++) assert.ok(Math.abs(Math.hypot(KRUL_PLAN.plan[i][0] - lx, KRUL_PLAN.plan[i][1] - ly) - D.loopR) < 1e-9, `loop point ${i}`);
+  let n = 0, above = 0;
+  for (let i = 0; i < m.positions.length; i += 3) {
+    const c = m.colours.slice(i, i + 3);
+    if (Math.abs(c[0] - stone[0]) > 1e-6 || Math.abs(c[1] - stone[1]) > 1e-6 || Math.abs(c[2] - stone[2]) > 1e-6) continue;
+    n++;
+    const d = Math.hypot(m.positions[i] - lx, m.positions[i + 1] - ly), z = m.positions[i + 2];
+    // Inside the sheet's inner face with a 5 cm margin at every height, and so inside the shell's footprint.
+    assert.ok(d <= D.loopR - 0.05, `pedestal vertex ${i / 3} at ${d.toFixed(3)} m from the loop centre (sheet at ${D.loopR})`);
+    if (z >= D.sheetBottom) above++;
+  }
+  assert.ok(n > 40, `pedestal vertices ${n}`);
+  assert.ok(above > 0, 'the pedestal reaches above the sheet bottom, so the check is about the sheet, not just the floor');
+});
+
+test('krul urinal: the sheet reads round, not faceted (at most 8 deg per segment on the loop), with the rib and lattice band at the photo\'s heights', () => {
+  const D = DIMENSIONS.krul;
+  assert.ok(211.5 / D.loopSegments <= 8, `${211.5 / D.loopSegments} deg`);
+  assert.ok(D.sheetBottom < D.seam && D.seam < D.latticeBottom && D.latticeBottom < D.latticeTop && D.latticeTop < D.sheetTop);
+  const m = FURNITURE_MODELS['urinal-krul'](), lattice = linearOf(STREET_FURNITURE_TONES.krulLattice);
+  let zs: number[] = [];
+  for (let i = 0; i < m.positions.length; i += 3) if (Math.abs(m.colours[i] - lattice[0]) < 1e-6 && Math.abs(m.colours[i + 1] - lattice[1]) < 1e-6) zs.push(m.positions[i + 2]);
+  assert.deepEqual([Math.min(...zs), Math.max(...zs)].map(z => +z.toFixed(2)), [D.latticeBottom, D.latticeTop]);
 });
 
 test('krul urinal placement: entry away from the street; "twee krullen" places two along the kerb', () => {

@@ -85,6 +85,12 @@ export const RED_CYCLE_TOL = { sag: ROAD_LIFT.cycle - 0.008, float: 0.02 } as co
 /** On coarse relief a triangle under this many square data steps is not split (drapeAdaptive `minArea`). */
 export const DRAPE_MIN_AREA_STEPS = 0.5;
 /**
+ * Lane G1 item B (`roadStrips`): the min-area gate holds only for a compact triangle, its longest edge within this many
+ * data steps. A long strip under the area (a verge or a footway 0.5 m wide and 20 m long is 5 m2) is tested like any
+ * other triangle: unsplit, its plane cut through the relief between its ends.
+ */
+export const ROAD_STRIP_GATE_STEPS = 2;
+/**
  * The kerb wall's top and the granite line over SIDEWALK_TOP: the pavement plane may float DRAPE_TOL.foot.float over
  * the land, so the wall reaches above it (a kerb stone's lip where it does not) and the line lies over both.
  */
@@ -153,8 +159,8 @@ let kerbShadowWidth = KERB_SHADOW_M;
  * left the Kinkerstraat asphalt 2.3 cm under the land at a quay mouth. A triangle under `minArea` m² splits by
  * `maxEdge` alone. Winding CCW from above, as drapeBisect.
  */
-export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol, minArea = 0): void {
-  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge, area2 = 2 * minArea;
+export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol, minArea = 0, gateEdge = Infinity): void {
+  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge, area2 = 2 * minArea, gate2 = gateEdge * gateEdge;
   // Each corner carries its height and its emitted vertex (-1: not yet): the earcut corners are drawn once and shared
   // by every triangle on them, and every height is asked once per corner (the tested midpoint becomes the split's).
   const nv = coords.length >> 1, zs = new Float64Array(nv), ids = new Int32Array(nv).fill(-1);
@@ -178,7 +184,7 @@ export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: Ar
       // The longest edge's midpoint first: its height is the split vertex's if the triangle splits.
       const mx = edge === 1 ? (x1 + x2) / 2 : edge === 2 ? (x2 + x3) / 2 : (x3 + x1) / 2, my = edge === 1 ? (y1 + y2) / 2 : edge === 2 ? (y2 + y3) / 2 : (y3 + y1) / 2;
       let mz = NaN, split = longest > max2;
-      if (!split && longest > min2 && (!area2 || Math.abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) > area2)) {
+      if (!split && longest > min2 && (!area2 || longest > gate2 || Math.abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) > area2)) {
         mz = height(mx, my);
         split = bad(mz - (edge === 1 ? (z1 + z2) : edge === 2 ? (z2 + z3) : (z3 + z1)) / 2)
           || (edge !== 1 && bad(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2))
@@ -506,6 +512,8 @@ export interface RoadBuildInput {
   /** Ground drape sag / float tolerance overrides for the road classes (measurement scripts); the defaults are DRAPE_TOL. */
   drapeTol?: number;
   drapeFloatTol?: number;
+  /** Lane G1 item B: the min-area gate only for compact triangles (ROAD_STRIP_GATE_STEPS); default off here, buildCell passes it on (`?roadStrips=0` off). */
+  roadStrips?: boolean;
   /**
    * 'touch': a cell far from the rider on a touch device (gameGround.ts, CANAL-RECALL-7). The polygons, kerbs and lines
    * are all still drawn (the footprint is unchanged); the drape and the kerb stations are coarser, as the relief's
@@ -714,7 +722,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
         const f = flatten(piece);
         if (f.flat.length < 6) continue;
         const step = input.dataStep?.(f.flat[0], f.flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
-        drapeAdaptive(layer, f.flat, earcut(f.flat, f.holes), height, lift, DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
+        drapeAdaptive(layer, f.flat, earcut(f.flat, f.holes), height, lift, DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity);
       }
     } else {
       const tol = redPlane ? RED_CYCLE_TOL : DRAPE_TOL[cls], low = isLow(cls);
@@ -723,7 +731,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       const step = input.dataStep?.(flat[0], flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
       const sagTol = ((low && input.drapeTol) || tol.sag) * tolScale;
       const floatTol = ((low && input.drapeFloatTol) || tol.float) * tolScale;
-      drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
+      drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity);
     }
     stats.drawn[cls]++;
   }

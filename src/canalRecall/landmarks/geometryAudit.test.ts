@@ -364,12 +364,14 @@ test('coplanarOverlap metric: 200k-triangle models finish in seconds', () => {
   for (let i = 0; i < 300; i++) for (let j = 0; j < 100; j++) qs.push(flat(i * 0.5, j, i * 0.5 + 0.5, j + 1, 20, 'slate'));
   for (let i = 0; i < 2000; i++) qs.push(flat((i % 100) * 1.5, Math.floor(i / 100) * 5, (i % 100) * 1.5 + 0.2, Math.floor(i / 100) * 5 + 4, 20.03, 'glass'));
   for (let i = 0; i < 300; i++) for (let j = 0; j < 200; j++) qs.push({p: [[i * 0.5, j * 0.1, 0], [i * 0.5 + 0.5, j * 0.1, 0], [i * 0.5 + 0.5, j * 0.1 + 0.1, 0], [i * 0.5, j * 0.1 + 0.1, 0]] as V3[], mat: 'brick'});
-  const soup = quads(...qs), t0 = Date.now();
+  // CPU time of this process, not wall time: the gate runs beside other lanes (load 70-110 on 2026-11-12 took the wall
+  // clock to 340 s for a 7 s run). A real slowdown still shows: the metric is single-threaded and synchronous.
+  const soup = quads(...qs), c0 = process.cpuUsage();
   const z = auditZFight(soup);
-  const ms = Date.now() - t0;
+  const cpu = process.cpuUsage(c0), ms = (cpu.user + cpu.system) / 1000;
   assert.ok(soup.indices.length / 3 > 180000);
   assert.ok(z.nearArea > 1300, `near ${z.nearArea}`);
-  assert.ok(ms < 30000, `${ms} ms`);
+  assert.ok(ms < 30000, `${Math.round(ms)} ms CPU`);
 });
 
 // ---------------------------------------------------------------------------------------------------------------

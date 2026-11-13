@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168604",
+ "address": "Rozengracht 48",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "stone-lintel",
+    "hoist": false,
+    "street": "Rozengracht",
+    "gable": "point",
+    "crownRise": 1.6,
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     5.2,
+     2.9,
+     2.8
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4e4744",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window surround",
+   "what": "white stone blocks at the window corners (block lintels and sills) drawn as stone lintels"
+  }
+ ]
+}

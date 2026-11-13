@@ -1,7 +1,9 @@
 // The wall-colour rule (lane H9): measured hue (pulled half way from a yellow cast), lifted lightness and warm chroma, the trim-misread family tone.
 import test from 'node:test';
+// These pins are the round-3 chroma rule; lane W1's measured-chroma default (`?wallChroma`) is off here and tested below.
+process.env.WALL_CHROMA = '0';
 import assert from 'node:assert/strict';
-import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading, heldBrickWall, heldTakesBrick } from './wallColour.ts';
+import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, wallChromaTruthEnabled, resetWallChromaFlag, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading, heldBrickWall, heldTakesBrick } from './wallColour.ts';
 import { houseSpecPatch, specWallGuarded, type HouseSpecView } from './decorate.ts';
 
 const L = (h: string) => hexToOklab(h)[0];
@@ -169,4 +171,27 @@ test('houseSpecPatch: a guarded brick wall marks heldBrick, a drawn wall and a l
   assert.ok(dark?.wallHex);
   const light = houseSpecPatch({ wallHex: '#c9a080', src: {} }, { registerFinish: 'light' }).specRecipe as { heldBrick?: boolean } | undefined;
   assert.equal(light?.heldBrick, undefined);
+});
+
+test('wallChroma (lane W1, default on): a warm pixel reading keeps its chroma and hue, the lightness lift and the cool damping stay', () => {
+  assert.equal(wallChromaTruthEnabled(null, null), true);
+  assert.equal(wallChromaTruthEnabled('?wallChroma=0', null), false);
+  assert.equal(wallChromaTruthEnabled(null, '0'), false);
+  const prev = process.env.WALL_CHROMA;
+  try {
+    const old = ['#6e4b44', '#4e4336', '#5b4532', '#a57a5c', '#7a3e2c'].map(h => specWallDisplay(h));
+    process.env.WALL_CHROMA = '1'; resetWallChromaFlag();
+    for (const [i, h] of ['#6e4b44', '#4e4336', '#5b4532', '#a57a5c', '#7a3e2c'].entries()) {
+      const [L, a, b] = hexToOklab(h), [L2, a2, b2] = hexToOklab(specWallDisplay(h)), [L0] = hexToOklab(old[i]);
+      assert.ok(Math.abs(L2 - L0) < 0.006, `${h}: the lift is unchanged`);
+      assert.ok(Math.abs(Math.hypot(a2, b2) - Math.hypot(a, b)) < 0.006, `${h}: chroma kept`);
+      assert.ok(Math.abs(Math.atan2(b2, a2) - Math.atan2(b, a)) < 0.12, `${h}: hue kept`);
+      assert.ok(L2 >= L - 1e-3);
+    }
+    // #6e4b44 drew #a35042 (orange-red) under the round-3 gain; now a muted red-brown.
+    assert.ok(Math.hypot(...hexToOklab(specWallDisplay('#6e4b44')).slice(1) as [number, number]) < 0.06);
+    // A cool cast is still damped, a family tone still takes lightness only.
+    const [, ca, cb] = hexToOklab(specWallDisplay('#5a6470')), [, oa, ob] = hexToOklab('#5a6470');
+    assert.ok(Math.hypot(ca, cb) < Math.hypot(oa, ob));
+  } finally { if (prev === undefined) delete process.env.WALL_CHROMA; else process.env.WALL_CHROMA = prev; resetWallChromaFlag(); }
 });

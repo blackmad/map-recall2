@@ -25,7 +25,7 @@
 
 import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
-import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
+import { drapeTriangles, emptyMesh, floatBoundGrid, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets.js';
 import { bandCorridor, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
 import { crossingWays } from './railingRuns.js';
@@ -46,6 +46,7 @@ import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMesh
 import { levelAt as railLevelAt, PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels, railWayKey } from './railProfile.js';
 import { streetHalfWidth, underTest } from './railBridge.js';
 import { underpassSpans, type RailSpan } from './railSpans.js';
+import { CROSSINGS, crossingIndex } from './crossings.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -143,6 +144,10 @@ export interface CellInput {
   bridgeCarry?: boolean;
   /** One red owner per junction mouth and the red on its own plane (lane R5-C1 issue #262); default on, false: before (`?redDedupe=0`). */
   redDedupe?: boolean;
+  /** Lane G1 item B: the roads-v1 drape's min-area gate only for compact triangles (roadSurfaces.ts ROAD_STRIP_GATE_STEPS); default on, false: `?roadStrips=0`. */
+  roadStrips?: boolean;
+  /** Lane G1 item D: the land grid split to half steps where it floats over the relief (drape.ts floatBoundGrid); default on, false: `?floatBound=0`. */
+  floatBound?: boolean;
   /** Ground triangles across a tunnel wall line clipped there, each piece at its side's level (tunnels.ts clipMeshAtCuts, R5-C2 #263); default on, false: `?portalClip=0`. */
   portalClip?: boolean;
   /** The portal clip also across a tunnel mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269); default on, false: `?portalEnds=0`. */
@@ -175,6 +180,8 @@ export interface CellInput {
   /** The deck spans' headroom, metres (railSpans.ts SPAN_HEADROOM_M; measuring only: 1.0 is lane rails-classb's rule). */
   railSpanHeadroom?: number;
   railSpans?: boolean;
+  /** The crossing register applies (crossings.ts, lane G3; the store sets it when on and non-empty): rail spans in a record's zone come from the record. */
+  crossings?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -205,6 +212,10 @@ const ROAD_FAST_PAD_M = 60;
  * shore; 16 m stations still follow a canal's curve at chase distance, while the near ring's is 4 m and LOD 1's 8.
  */
 export const TOUCH_QUAY_STEP_M = 16;
+/** Lane G1 item D: a land quad whose surface floats more than this over the relief at a half-step node is split, metres (the audit's float is 0.10 m; the fills ride 15-22 mm over the land). */
+export const FLOAT_BOUND_TOL_M = 0.05;
+/** Lane G1 item D: a fill's plane may stand this far over the land (its lift aside) before drapeBisect splits it, metres. */
+export const FLOAT_BOUND_FILL_M = 0.06;
 /** Canal-belt water surface, scene z (−0.40 m NAP under the +1.37 m NAP datum): the default where no polder level is known. */
 export const CANAL_WATER_Z = -1.77;
 /** Signed-distance range of the water mask (texels saturate at ±this), metres. */
@@ -325,7 +336,12 @@ export function buildCell(input: CellInput): BuiltCell {
   const step = fine ? 5 : 10;
   // Everything flat on the land (areas, street bands) drapes on the land grid's own surface plus
   // the decks' lift, so the grid never pokes through between their vertices.
-  const landZ = gridHeight(surface.ground, step);
+  // Lane G1 item D (`?floatBound=0` off): the land grid split to half steps where it floats over the relief (drape.ts
+  // floatBoundGrid), full detail only; everything draped on the land follows the refined surface.
+  const bound = fine && input.floatBound !== false ? floatBoundGrid(surface.ground, step, FLOAT_BOUND_TOL_M) : null;
+  const landZ = bound ? bound.height : gridHeight(surface.ground, step);
+  /** The fills' float bound on the refined land (parks.ts DrapeBound): their planes split where they bridge a hollow. */
+  const drapeBound = bound ? { floatM: FLOAT_BOUND_FILL_M, nodeStep: step / 2 } : undefined;
   // On a deck the measured surface wins (blended over the deck's lateral blend).
   const onLand = (x: number, y: number) => {
     const w = surface.deckWeight(x, y);
@@ -377,7 +393,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set(), lowDeck: ((k: number) => boolean) | undefined;
   const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeGaps !== false && input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeGaps !== false && input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(input.roadStrips !== false ? { roadStrips: true } : {}), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped; lowDeck = built.lowDeck;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
@@ -438,7 +454,7 @@ export function buildCell(input: CellInput): BuiltCell {
     return false;
   };
   const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y) && !underGreen(x, y);
-  add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand), 'land');
+  add('land', bound ? bound.mesh(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, keepLand) : reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand), 'land');
   phase('land');
 
   // Areas.
@@ -517,7 +533,7 @@ export function buildCell(input: CellInput): BuiltCell {
       const flat = pts.concat(...holes).flatMap(p => [p[0], p[1]]);
       greenCut += holes.length;
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
-      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), fine ? 8 : 16, clearance, fine ? 1 : 2, step);
+      drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), fine ? 8 : 16, clearance, fine ? 1 : 2, step, drapeBound);
     }
     if (cover && (layer === 'park' || layer === 'garden')) { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     m = cullUnderRoads(m);
@@ -529,7 +545,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let parkStats: BuiltCell['stats']['parks'] = null;
   if (input.parks) {
     const tp = Date.now();
-    const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater, touch) : { layers: {}, stats: null };
+    const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater, touch, drapeBound) : { layers: {}, stats: null };
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'park');
     if (built.stats) parkStats = { ...built.stats, ms: Date.now() - tp };
   }
@@ -542,7 +558,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const { flat, holes } = flatten(a.r.map(decodeLine));
     if (flat.length < 6) continue;
     const m = emptyMesh();
-    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
+    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step, drapeBound);
     // Their grass is courtyard green too (lane road-look-continuity 2026-10-29): the muted garden, not the park's lawn.
     add(SURFACE_LAYER[a.k] === 'lawn' ? 'garden' : SURFACE_LAYER[a.k], m, 'park');
     courtyards++;
@@ -557,7 +573,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const { flat, holes } = flatten(a.r.map(decodeLine));
     if (flat.length < 6) continue;
     const m = emptyMesh();
-    drapeBisect(m, flat, earcut(flat, holes), onLand, OPEN_GROUND_LIFT[a.k], fine ? OPEN_GROUND_DRAPE.near.edge : OPEN_GROUND_DRAPE.far.edge, fine ? OPEN_GROUND_DRAPE.near.clearance : OPEN_GROUND_DRAPE.far.clearance, fine ? OPEN_GROUND_DRAPE.near.minEdge : OPEN_GROUND_DRAPE.far.minEdge, step);
+    drapeBisect(m, flat, earcut(flat, holes), onLand, OPEN_GROUND_LIFT[a.k], fine ? OPEN_GROUND_DRAPE.near.edge : OPEN_GROUND_DRAPE.far.edge, fine ? OPEN_GROUND_DRAPE.near.clearance : OPEN_GROUND_DRAPE.far.clearance, fine ? OPEN_GROUND_DRAPE.near.minEdge : OPEN_GROUND_DRAPE.far.minEdge, step, drapeBound);
     add(OPEN_GROUND_LAYER[a.k], m, 'park');
     openGround++;
   }
@@ -605,10 +621,13 @@ export function buildCell(input: CellInput): BuiltCell {
     // Untagged viaducts (railSpans.ts): a track off the bridges is a deck where a street passes under its bed.
     const spans = new Map<RailWay, RailSpan[]>();
     const spanStreets = profile && input.railSpans !== false ? ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands), ...(w.tags.embedded_rails ? { embedded: true } : {}) })) : [];
+    // The crossing register (crossings.ts): a record's zone takes its spans from the record, not the inference.
+    const register = input.crossings ? crossingIndex(CROSSINGS, input.project) : null;
     if (profile && input.railSpans !== false) for (const w of input.rails) {
       const level = profile.levels.get(w);
       if (w.bridge || !level) continue;
-      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
+      const inferred = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
+      const found = register ? register.spans(w.points, inferred, w.bridge, s => railLevelAt(level, s)) : inferred;
       if (found.length) spans.set(w, found);
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));

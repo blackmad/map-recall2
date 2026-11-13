@@ -1,0 +1,243 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168761",
+ "address": "Egelantiersgracht 83",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 5,
+    "bays": 4,
+    "storeyHeights": [
+     4.3,
+     3,
+     3,
+     2.9,
+     2.5
+    ],
+    "doorBay": 3,
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ]
+    },
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerAt": [
+     {
+      "from": 0.15,
+      "to": 0.4
+     }
+    ]
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "attic",
+   "rise": 0.5
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#63564d",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/balconies": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): the left half of a mirrored c.1900 pair, 6.6 m and four axes (narrow, wide, narrow, wide): ground 0-4.3 m with a black arched portiek on the right; storeys at 4.6-6.6, 7.6-9.5, 10.6-12.5 and 14.1-15.2 m; iron French balconies on the second axis on storeys 1-3; a timber ledge at ~13.3 m; a slate roof with a white bargeboarded dormer gable over the second axis to ~16.3 m; red-brown brick #63564d",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "portiek",
+   "what": "the black arched portiek shared with 85 is drawn as a door"
+  },
+  {
+   "component": "dormer",
+   "what": "the white bargeboarded gable dormer is drawn as a pediment dormer"
+  }
+ ]
+}

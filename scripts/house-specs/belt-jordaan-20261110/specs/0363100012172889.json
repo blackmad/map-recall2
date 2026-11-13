@@ -1,0 +1,228 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172889",
+ "address": "Egelantiersgracht 71",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "neck",
+    "crownRise": 0.9,
+    "crownCap": "segmental",
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     1
+    ],
+    "storeyHeights": [
+     6,
+     3.2,
+     2.2
+    ],
+    "doorBay": 0,
+    "storeyWindows": {
+     "2": "casement-triple"
+    },
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window"
+     ],
+     "bayWeights": [
+      1,
+      2
+     ],
+     "colour": "#26302a",
+     "evidence": "strip 2023-03-13: a tall glazed shop ground with a white transom band"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+   "at": "2023-03-13"
+  }
+ }
+}

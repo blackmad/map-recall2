@@ -3,6 +3,90 @@
   "notes": [
     {
       "date": "2026-11-12",
+      "title": "Tunnels, underpasses and rail bridges from a checked list",
+      "text": "Where roads dip under the ring, the A10 and the railways, the ground used to be shaped by guesswork from map data, which sometimes left a ramp in the wrong place or a deck over a tram that runs at street level. A hand-checked list of crossings, each compared with the aerial photo and a street panorama, now decides where the road goes under, where a deck spans it and where the tunnel mouth opens. It covers the IJtunnel, Piet Heintunnel, the ring roads and the railway underpasses.",
+      "where": [
+        4.9045,
+        52.3825
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-crossings/ijtunnel-north-approach.jpg",
+          "alt": "Review sheet for the IJtunnel north approach: aerial photo with the drawn crossing, beside a street panorama",
+          "caption": "How each crossing was checked: IJtunnel north approach"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "House walls take their colour from measured neighbours",
+      "text": "Houses we haven't measured from a photo used to draw a guessed colour: white, slate grey or orange terracotta, which had nothing to do with the real street. They now borrow the measured wall colour of nearby houses from the same period, and measured walls keep their real, muted colour instead of being pushed toward orange-red. The city reads darker and browner, closer to the photos: on 114 photo comparisons the wall colour error fell by a third. Rows can look too uniform where nothing nearby has been measured; more variety is being tested next.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-wall-colour/triples/0363100012182856.jpg",
+          "alt": "Nieuwmarkt: photo, before (pale) and after (dark brown)",
+          "caption": "Nieuwmarkt: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-12-wall-colour/triples/0363100012233628.jpg",
+          "alt": "A brick front drawn as pale render before and as brick after, next to its photo",
+          "caption": "Photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "The curved Winkelgalerij on the Raadhuisstraat",
+      "text": "The long curved building on the Raadhuisstraat is now individually modelled: A.L. van Gendt's 1898 shopping gallery for the insurer Utrecht, its glass-roofed arcade bending with the street, the centre gate, the turret over the Keizersgracht corner and UTRECHT on the Herengracht corner.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-raadhuisstraat/photo-vs-model.jpg",
+          "alt": "Photos of the Winkelgalerij beside the model",
+          "caption": "Photos and model"
+        },
+        {
+          "src": "ui/2026-11-12-raadhuisstraat/ingame-street-desktop.jpg",
+          "alt": "The gallery in the ride",
+          "caption": "In the ride"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "The krul urinal is round now",
+      "text": "The green Amsterdamse krul urinals were blocky, and their stone drain stuck out through the iron wall. They're now a smooth curved sheet on round posts, with the raised rib, the darker lattice band at the top, a shallow round cap with a finial, and the round drain pedestal tucked inside the curl under the raised edge.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-krul-curves/gallery-before-after.jpg",
+          "alt": "Krul urinal from four sides, before (faceted, square stone through the sheet) and after (curved, pedestal inside)",
+          "caption": "Before and after, four sides"
+        },
+        {
+          "src": "ui/2026-11-12-krul-curves/amstelveld-krul-photo-vs-ride.jpg",
+          "alt": "Amstelveld krul: panorama, old model and new model in the ride",
+          "caption": "Amstelveld: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "Smoother ground around the ring roads and tunnels",
+      "text": "Out by the A10 ring the ground holds together better. It no longer floats over ditches and hollows, the Overschiestraat underpass is one clean cutting instead of three overlapping ones, and stray tunnel mouths on garage ramps are gone.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-ground-g1/overschiestraat.jpg",
+          "alt": "Overschiestraat underpass: aerial photo, before and after",
+          "caption": "Overschiestraat: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-12-ground-g1/schinkel-jachthavenweg.jpg",
+          "alt": "Schinkel bank at the Jachthavenweg: aerial photo, before and after",
+          "caption": "Schinkel bank: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
       "title": "Amsterdam's green krul urinals",
       "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at the 37 spots on the city's public-toilet map, mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
       "images": [

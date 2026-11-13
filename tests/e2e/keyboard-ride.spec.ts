@@ -18,6 +18,10 @@ import { openRoute } from './helpers';
 //                 lat,lng,lat,lng rides from one point to the other
 //   KEYBOARD_RIDE_GREP=regex          only the named rides that match
 //   KEYBOARD_RIDE_ALL=1               every named spot, not only the core set
+//   KEYBOARD_RIDE_QUERY=?…            page query
+//   KEYBOARD_RIDE_BASEMAP=0           no MapLibre basemap (the nightly: hosted runners render GL in software)
+//   KEYBOARD_RIDE_VIEWPORT=WxH        window size (default 1440x900)
+//   KEYBOARD_RIDE_MIN_FPS=15          fail fast below this game frame rate
 
 type Point = { x: number; y: number };
 type LatLng = [number, number];
@@ -75,9 +79,39 @@ const legs = rides.filter(r => (everySpot || r.core) && (!filter || filter.test(
   ]
   : [{ ...r, reverse: false }]);
 
+// KEYBOARD_RIDE_BASEMAP=0: the game's own no-basemap path (VectorBasemap without maplibregl, as when the CDN or
+// WebGL is missing), in Playwright's Chromium with the software compositor. The bike, road guard, quiz cards and keys
+// are all there; the GL world is not. Measured 2026-11-12 (game frames/s): a hosted runner with the basemap 0.15–1.8
+// in every setup tried (buildings off, 640x400, ?engine=own); locally under SwiftShader 1.4–3, without the basemap
+// 23, and without it plus --disable-gpu 119.
+const NO_BASEMAP = process.env.KEYBOARD_RIDE_BASEMAP === '0';
+if (NO_BASEMAP) test.use({ launchOptions: { args: ['--disable-gpu'] } });
+
 const TICK_MS = 80;
 const RIDE_SECONDS = 60;
 const STUCK_SECONDS = 4;
+// The game clamps a frame's dt at 50 ms (game.js `_frame`), so below 20 fps game
+// time runs slower than the wall clock: at the ~0.7 fps of a hosted runner's
+// software GL every ride ran out of its 60 s after one wrong answer's hold
+// (nightly 2026-10-14 … 11-12, all 25 rides "arrived=false, answered=1").
+// Under this rate a ride measures the machine, not the game, so it fails as such.
+const MIN_FPS = Number(process.env.KEYBOARD_RIDE_MIN_FPS || 15);
+
+/** Game frames per second over `ms` of wall time (both loops call `game._frame`). */
+async function frameRate(page: Page, ms = 2000): Promise<number> {
+  return page.evaluate(async (ms) => {
+    const game = (window as any).canalRecallGame;
+    const w = window as any;
+    if (!w.__keyboardRideFrames) {
+      w.__keyboardRideFrames = { n: 0 };
+      const original = game._frame;
+      game._frame = function (this: unknown, dt: number) { w.__keyboardRideFrames.n++; return original.call(this, dt); };
+    }
+    const start = w.__keyboardRideFrames.n, t0 = performance.now();
+    await new Promise(resolve => setTimeout(resolve, ms));
+    return (w.__keyboardRideFrames.n - start) / ((performance.now() - t0) / 1000);
+  }, ms);
+}
 
 async function placeBefore(page: Page, ride: Ride & { reverse: boolean }) {
   return page.evaluate((ride) => {
@@ -144,7 +178,14 @@ for (const bridge of legs) {
   test(`rides ${bridge.name} on the keyboard, quiz on`, async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'keyboard input; desktop only');
     test.setTimeout(240_000);
-    await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+    if (process.env.KEYBOARD_RIDE_VIEWPORT) {
+      const [width, height] = process.env.KEYBOARD_RIDE_VIEWPORT.split('x').map(Number);
+      await page.setViewportSize({ width, height });
+    }
+    if (NO_BASEMAP) await page.route(/unpkg\.com\/maplibre-gl/, route => route.abort());
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: process.env.KEYBOARD_RIDE_QUERY || '' });
+    const fps = await frameRate(page);
+    expect(fps, `the game runs at ${fps.toFixed(1)} fps here; under ${MIN_FPS} its clamped dt makes a ride measure the machine (KEYBOARD_RIDE_MIN_FPS)`).toBeGreaterThanOrEqual(MIN_FPS);
     const plan = await placeBefore(page, bridge);
     expect(plan, 'a route over the bridge').toBeTruthy();
     const { path, to } = plan!;
@@ -295,9 +336,9 @@ for (const bridge of legs) {
     });
     if (process.env.KEYBOARD_RIDE_TRACE) console.log(JSON.stringify(guard.where));
     const seconds = (Date.now() - started) / 1000;
-    console.log(`${bridge.name}: route ${Math.round(routePx / 3)} m, arrived=${arrived} in ${seconds.toFixed(1)} s, answered=${answered} (wrong ${answeredWrong}), `
+    console.log(`${bridge.name}: route ${Math.round(routePx / 3)} m, arrived=${arrived} in ${seconds.toFixed(1)} s at ${fps.toFixed(0)} fps, answered=${answered} (wrong ${answeredWrong}), `
       + `guard edge frames ${guard.edge}/${guard.frames} (rolled back ${guard.rolledBack}, unwedged ${guard.unwedged})${failure ? ' FAIL ' + failure : ''}`);
-    testInfo.annotations.push({ type: 'keyboard-ride', description: JSON.stringify({ name: bridge.name, arrived, seconds, answered, guard: { frames: guard.frames, edge: guard.edge, rolledBack: guard.rolledBack, unwedged: guard.unwedged, hotspots: guard.where }, failure }) });
+    testInfo.annotations.push({ type: 'keyboard-ride', description: JSON.stringify({ name: bridge.name, arrived, seconds, fps: Math.round(fps), answered, guard: { frames: guard.frames, edge: guard.edge, rolledBack: guard.rolledBack, unwedged: guard.unwedged, hotspots: guard.where }, failure }) });
     expect(failure, failure).toBe('');
     expect(arrived, 'reached the far side of the bridge').toBe(true);
   });

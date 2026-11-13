@@ -5693,5 +5693,17 @@
    "bytes": 10848,
    "triangles": 398
   }
+ },
+ "raadhuisstraat-galerij": {
+  "sourceHash": "a15d9642bdab352f",
+  "buildVersion": 2,
+  "bytes": 102548,
+  "triangles": 5191,
+  "lod2": {
+   "sourceHash": "a15d9642bdab352f",
+   "buildVersion": 6,
+   "bytes": 18212,
+   "triangles": 689
+  }
  }
 }

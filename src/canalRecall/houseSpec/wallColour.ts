@@ -37,6 +37,27 @@ export function liftShare(L: number, C: number): number {
   return 1 - (1 - clamp((C - c0) / (c1 - c0))) * (1 - clamp((L - l0) / (l1 - l0)));
 }
 
+/**
+ * `?wallChroma=0` (WALL_CHROMA=0 in Node) restores the round-3 chroma gain and hue pull of `specWallDisplay`; default on
+ * (lane W1, 2026-11-12): a pixel reading keeps its own chroma and hue, the lightness lift stays. Measured per stage on the
+ * house:frames pairs (docs/house-line.md §11): the readings sit at the photo's chroma (reading vs photo dC +0.01), the
+ * decoration added +0.028 and a hue pull of -4 degrees, and the drawn walls ended at pixel C 0.043 against the photos'
+ * 0.016, hue 48 against 62: brown brick drawn orange-red. The gain matched the old period palette's chroma, not the photo;
+ * the user's ruling of 2026-11-12 is correctness first.
+ */
+export const WALL_CHROMA_TRUTH_DEFAULT = true;
+export function wallChromaTruthEnabled(search?: string | null, env?: string | null): boolean {
+  const q = search ? /[?&]wallChroma=([01])\b/.exec(search)?.[1] : undefined, v = q ?? (env === '0' || env === '1' ? env : undefined);
+  return v === undefined ? WALL_CHROMA_TRUTH_DEFAULT : v === '1';
+}
+let chromaCached: boolean | undefined;
+export function wallChromaTruthOn(): boolean {
+  if (chromaCached !== undefined) return chromaCached;
+  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  return (chromaCached = wallChromaTruthEnabled(g.location?.search ?? null, g.process?.env?.WALL_CHROMA ?? null));
+}
+/** Tests only: forget the cached flag. */
+export const resetWallChromaFlag = () => { chromaCached = undefined; };
 /** Default on; `?specWalls=0` in the page or SPEC_WALLS=0 in Node keeps the period colour (the H1 hold). */
 export const SPEC_WALLS_DEFAULT = true;
 export function specWallsEnabled(search?: string | null, env?: string | null): boolean {
@@ -117,6 +138,8 @@ export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean
   // Only warm readings gain chroma. A cool tint (blue, green) on a wall reading is camera cast, not paint, and keeps only
   // `coolKeep` of it (0363100012167431, a grey front read blue-grey, drew lilac).
   if (h < lift.hue.warm[0] || h > lift.hue.warm[1]) return oklabToHex([L2, a * lift.coolKeep, b * lift.coolKeep]);
+  // Lane W1 (`?wallChroma`, default on): a warm reading keeps its measured chroma and hue.
+  if (wallChromaTruthOn()) return oklabToHex([L2, a, b]);
   // Overcast readings sit yellower than brick (readings hue 52-72 vs the brown tone 46 and red-brown 33; J2: the pixel
   // turns red-brown into dull brown). Half of the shift past `toward` (40, the brick edge of the orange band) comes back,
   // so a lifted brown stays brown rather than orange-tan; a pale front keeps its hue.

@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174781",
+ "address": "Egelantiersgracht 21",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "bell",
+    "crownRise": 1.1,
+    "crownFinial": true,
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     4.3,
+     2.7,
+     2.3
+    ],
+    "doorBay": 2,
+    "doorPairs": true
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#8a2a26",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5c524e",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorPairs": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shutters",
+   "what": "red shutters on the attic light and the top centre window only"
+  }
+ ]
+}

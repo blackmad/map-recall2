@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172883",
+ "address": "Egelantiersgracht 65",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "neck",
+    "crownRise": 1.1,
+    "crownCap": "segmental",
+    "atticWindows": 1,
+    "storeys": 2,
+    "bays": 2,
+    "storeyHeights": [
+     5.2,
+     2.6
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#453b34",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  }
+ }
+}

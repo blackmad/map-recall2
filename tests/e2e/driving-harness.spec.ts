@@ -74,7 +74,11 @@ async function openCarRoute(page: Page): Promise<void> {
   // The route the game picks decides where the world origin lands, which
   // changes how geometry rounds into routing-graph cells. Seed the generator
   // so every run of the harness drives the same city.
-  await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 60_000 });
+  // The autopilot sets throttle and steer directly, the relative scheme's levers. Phones default to 'street'
+  // (follow the street), whose update overrides heading and never reverses, so on the iPhone project 11 of 12
+  // drives ran the full 200 simulated seconds and the 120 never finished inside any timeout (nightly 2026-10-14 …
+  // 11-12; measured 2026-11-12).
+  await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 60_000, controlMode: 'relative' });
 }
 
 // Installed in the page so drives run at simulation speed rather than in real
@@ -147,12 +151,41 @@ function installHarness(): void {
     let wedges = 0;
     const player = game.player;
     player.handleInput = () => {};
+    // handleInput clears the touch schemes' levers every frame; stubbed, whatever the last real frame left stays.
+    // A hosted runner draws ~1 frame/s, so the iPhone page's last frame could still be street following (the
+    // default before openRoute's patch lands): its heading target overrode the autopilot for every drive.
+    Object.assign(player, {
+      controlMode: 'relative', _streetButtons: null, _streetCommand: null, _headingTarget: null, _cruiseFraction: null,
+      _stickBraking: false, _stickHardSteer: false, _pivot: 0, _turnAroundArmed: false,
+    });
     // Recall questions stop the vehicle dead by design; this harness is about
     // whether the network can be driven, so they are silenced for the run.
     game._updateCanalQuiz = () => {};
     game._updateBridgeQuiz = () => {};
+    // So are the landmark questions (G3, 2026-11-08), and an open question no longer holds the bike: one asked
+    // by the real loop before the drives began ("Which building is this?" at the start, near the Portuguese
+    // Synagogue) froze `_updateRacing` for every drive. Locally the full sweep read 58 of 2,912 arrived and
+    // 19,978 wedges (2026-11-12); on the hosted runner none had opened yet.
+    const quiet = game as unknown as { _tryLandmarkQuestion: () => boolean; _quizFreezesRide: () => boolean };
+    quiet._tryLandmarkQuestion = () => false;
+    quiet._quizFreezesRide = () => false;
+    // Ferry boarding asks MapLibre whether the ground ahead is water (vector-map.js isWater, queryRenderedFeatures),
+    // and near a pier it asks many times a frame. With the camera parked away from the drive each query took
+    // ~100 ms (locally drives 20–30 took 350 s, 84 % of it here), and the answer depended on which tiles happened to
+    // be drawn. The harness drives the road network, so there is no water: no boarding, same answer every run.
+    (game as unknown as { vectorMap: { isWater: () => boolean } }).vectorMap.isWater = () => false;
 
+    // A heartbeat every 10 drives (the spec prints it): a run that hits its timeout says how far it got and where
+    // the time went, instead of nothing (nightly 2026-11-12: the iPhone project timed out silently at 25 min on a
+    // hosted runner while the same 120 drives took 6.5 min there in a probe).
+    const started = performance.now();
+    let draws = 0, steps = 0, beat = 0;
     for (let run = 0; run < runs; run++) {
+      draws++;
+      if (run >= beat + 10 || draws % 5000 === 0) {
+        beat = Math.max(beat, run);
+        console.log(`harness: ${run}/${runs} drives, ${draws} pairs drawn, ${steps} steps, ${((performance.now() - started) / 1000).toFixed(0)} s`);
+      }
       const tracing = !!pairs;
       const from = pairs ? toXY(pairs[run][0]) : largest[Math.floor(random() * largest.length)];
       const to = pairs ? toXY(pairs[run][1]) : largest[Math.floor(random() * largest.length)];
@@ -294,6 +327,7 @@ function installHarness(): void {
         game.track.clearFrameCache();
         const before = { x: player.x, y: player.y };
         game._updateRacing(STEP);
+        steps++;
         elapsed += STEP;
         if (tracing && Math.round(elapsed / STEP) % 8 === 0) {
           const road = game.track.getNearestRoad(player.x, player.y);
@@ -372,7 +406,11 @@ function installHarness(): void {
 
 test('driving harness: planned routes can actually be driven', async ({ page }) => {
   // HARNESS_TIMEOUT_MS: a loaded machine (other worktrees running) needs longer.
-  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 300_000));
+  // 120 drives take ~3 min a project locally (2026-11-12) once the ferry water test is out of the loop (below); most
+  // of the rest is the autopilot's own line-of-sight probes (getNearestRoad every 10 px). With it, a drive past a
+  // pier could take minutes, and the old 300 s timed out on every nightly run from 2026-10-14 to 11-12.
+  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 600_000));
+  page.on('console', message => { if (message.text().startsWith('harness: ')) console.log(message.text()); });
   await openCarRoute(page);
   await page.evaluate(installHarness);
   // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an

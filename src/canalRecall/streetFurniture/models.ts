@@ -34,10 +34,19 @@ export type FurnitureModelId = 'container' | 'container-rest' | 'container-bg' |
 export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-rest', 'container-bg', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column', 'urinal-krul'];
 /** Per-model triangle cap (the brief's budget). */
 export const FURNITURE_TRI_CAP = 160;
+/**
+ * Raised caps, with the measured reason. The krul (2026-11-12, user: "can you model this as curves?"): its shell is one
+ * bent sheet and at 160 triangles it read as a faceted box at gallery size. 48 segments along the spiral (7 deg on the
+ * loop) keep the silhouette round from 2 m; 38 instances city-wide, so ~1,450 triangles cost ~55 k in the whole city
+ * and a few thousand in any one view, under the street-furniture-shots 40 k on-screen budget.
+ */
+export const FURNITURE_TRI_CAPS: Partial<Readonly<Record<FurnitureModelId, number>>> = { 'urinal-krul': 1500 };
+export const triCapOf = (id: FurnitureModelId): number => FURNITURE_TRI_CAPS[id] ?? FURNITURE_TRI_CAP;
 /** Faces in this colour take the instance colour. */
 export const SLOT = '#ff00ff';
 
-export type FurnitureMesh = { id: FurnitureModelId; positions: Float32Array; colours: Float32Array; triangles: number; heightM: number };
+/** `normals` only on models with curved (smooth-shaded) surfaces; the rest stay flat-shaded from their positions. */
+export type FurnitureMesh = { id: FurnitureModelId; positions: Float32Array; colours: Float32Array; triangles: number; heightM: number; normals?: Float32Array };
 
 export const DIMENSIONS = {
   /** Above-ground box, register containertype "3,5m3 KHC … BG 2100*1470*1778 (Engels)": width × depth × height. */
@@ -55,7 +64,12 @@ export const DIMENSIONS = {
   bin: { height: 1.05, width: 0.50, depth: 0.42, corner: 0.13, hoodH: 0.24, rimH: 0.05, mouthSet: 0.11, dome: 0.03 },
   hoop: { height: 0.75, width: 0.70, tube: 0.05 },
   column: { radius: 0.92, baseR: 0.98, baseH: 0.30, bodyH: 3.40, corniceR: 1.0, corniceH: 0.22, roofH: 0.72, finialH: 0.16 },
-  krul: { sheetBottom: 0.50, seam: 1.27, sheetTop: 2.03, loopR: 0.43, arcR: 0.74, arcFlare: 0.115, post: 0.05, knob: 0.22, padH: 0.10, padX: 1.05, padY: 0.80, stone: 0.36, stoneH: 0.60 },
+  krul: {
+    sheetBottom: 0.50, seam: 1.27, latticeBottom: 1.42, latticeTop: 1.98, sheetTop: 2.03, loopR: 0.43, arcR: 0.74, arcFlare: 0.115,
+    loopSegments: 28, arcSegments: 20, ribProud: 0.018, ribH: 0.05, lip: 0.015,
+    post: 0.05, knob: 0.22, padH: 0.10, padX: 1.05, padY: 0.80, kerb: 0.08,
+    stoneR: 0.23, stoneOffset: 0.13, stoneH: 0.60, capOver: 0.04, capGap: 0.01, capRim: 0.025, capRise: 0.05, finialR: 0.03,
+  },
 } as const;
 
 /** Lamp-pole height by the road it lights (prior; the hooked pole measured 7.6 m on a residential Pijp street). */
@@ -71,9 +85,38 @@ export const linearOf = (hex: string): [number, number, number] => hexToRgb(hex)
 export const isSlot = (r: number, g: number, b: number): boolean => r > 0.98 && g < 0.02 && b > 0.98;
 
 type V = [number, number, number];
+const sub = (a: V, b: V): V => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+const cross = (u: V, v: V): V => [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
+const unit = (v: V): V => { const l = Math.hypot(...v) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
 class Builder {
-  readonly p: number[] = []; readonly c: number[] = [];
-  tri(a: V, b: V, d: V, hex: string): void { const col = linearOf(hex); for (const v of [a, b, d]) { this.p.push(...v); this.c.push(...col); } }
+  readonly p: number[] = []; readonly c: number[] = []; readonly n: number[] = [];
+  /** Set once a smooth face is added: `done` then returns per-vertex normals for the whole mesh. */
+  smooth = false;
+  tri(a: V, b: V, d: V, hex: string): void { const f = unit(cross(sub(b, a), sub(d, a))); this.triN(a, b, d, f, f, f, hex, false); }
+  /** A triangle with its own vertex normals (smooth shading); turned to face the normals when its winding disagrees. */
+  triN(a: V, b: V, d: V, na: V, nb: V, nd: V, hex: string, smooth = true): void {
+    const col = linearOf(hex), f = cross(sub(b, a), sub(d, a));
+    if (smooth) { this.smooth = true; if (f[0] * (na[0] + nb[0] + nd[0]) + f[1] * (na[1] + nb[1] + nd[1]) + f[2] * (na[2] + nb[2] + nd[2]) < 0) { [b, d] = [d, b]; [nb, nd] = [nd, nb]; } }
+    for (const v of [a, b, d]) { this.p.push(...v); this.c.push(...col); }
+    for (const v of [na, nb, nd]) this.n.push(...v);
+  }
+  quadN(a: V, b: V, d: V, e: V, na: V, nb: V, nd: V, ne: V, hex: string): void { this.triN(a, b, d, na, nb, nd, hex); this.triN(a, d, e, na, nd, ne, hex); }
+  /**
+   * A body of revolution about a vertical axis at (cx, cy): `profile` is [radius, z] from bottom to top, `n` sides,
+   * smooth round the axis and creased at every profile point. A profile point at radius 0 closes the body there.
+   */
+  lathe(cx: number, cy: number, profile: readonly (readonly [number, number])[], n: number, hex: string): void {
+    const at = (r: number, z: number, k: number): V => [cx + r * Math.cos(k * 2 * Math.PI / n), cy + r * Math.sin(k * 2 * Math.PI / n), z];
+    for (let j = 0; j + 1 < profile.length; j++) {
+      const [r0, z0] = profile[j], [r1, z1] = profile[j + 1], l = Math.hypot(r1 - r0, z1 - z0) || 1, nr = (z1 - z0) / l, nz = -(r1 - r0) / l;
+      const nrm = (k: number): V => [nr * Math.cos(k * 2 * Math.PI / n), nr * Math.sin(k * 2 * Math.PI / n), nz];
+      for (let k = 0; k < n; k++) {
+        if (r0 < 1e-6) this.triN(at(0, z0, k), at(r1, z1, k + 1), at(r1, z1, k), nrm(k + 0.5), nrm(k + 1), nrm(k), hex);
+        else if (r1 < 1e-6) this.triN(at(r0, z0, k), at(r0, z0, k + 1), at(0, z1, k), nrm(k), nrm(k + 1), nrm(k + 0.5), hex);
+        else this.quadN(at(r0, z0, k), at(r0, z0, k + 1), at(r1, z1, k + 1), at(r1, z1, k), nrm(k), nrm(k + 1), nrm(k + 1), nrm(k), hex);
+      }
+    }
+  }
   quad(a: V, b: V, d: V, e: V, hex: string): void { this.tri(a, b, d, hex); this.tri(a, d, e, hex); }
   /** Both windings (thin panels seen from either side). */
   quad2(a: V, b: V, d: V, e: V, hex: string): void { this.quad(a, b, d, e, hex); this.quad(a, e, d, b, hex); }
@@ -107,7 +150,7 @@ class Builder {
   }
   done(id: FurnitureModelId): FurnitureMesh {
     let h = 0; for (let i = 2; i < this.p.length; i += 3) h = Math.max(h, this.p[i]);
-    return { id, positions: Float32Array.from(this.p), colours: Float32Array.from(this.c), triangles: this.p.length / 9, heightM: h };
+    return { id, positions: Float32Array.from(this.p), colours: Float32Array.from(this.c), triangles: this.p.length / 9, heightM: h, ...(this.smooth ? { normals: Float32Array.from(this.n) } : {}) };
   }
 }
 
@@ -412,53 +455,101 @@ export function columnModel(): FurnitureMesh {
 
 /**
  * The Amsterdamse krul (plaskrul, 2026-11-12): one iron sheet bent into a spiral on four posts, its bottom half a metre
- * off the floor, the upper half perforated, painted dark green; a tiled floor on a brick-edged pad and a natural-stone
- * plate with the gutter inside (nlwiki Plaskrul). Plan from the city's drawing "Plattegrond van een ijzeren urinoir
+ * off the floor, the upper half perforated, painted dark green; a tiled floor on a kerbed pad and a natural-stone
+ * drain pedestal inside (nlwiki Plaskrul). Plan from the city's drawing "Plattegrond van een ijzeren urinoir
  * boven bestaande riolen" (Commons, public domain, scale 1:10): a small loop r 0.42 m round the stand, then a wide arc
  * (r 0.74 m at the end, flaring to 0.85 m where it leaves the loop) that screens the entry; posts at both ends and two
  * on the arc. Heights measured on panoramas (scripts/street-furniture/measure.ts): Amstelveld
  * recording_2025-06-19_03-28-47_02005 at 7.3 m (camera 2.51 m, normalised to 2.20 m): sheet 0.45-1.94 m, 1.02 m
  * across; Singel by the Bloemenmarkt recording_2025-06-19_03-28-47_01544 at 6.48 m: sheet 0.57-2.22 m over its pad,
  * 1.13 m across, pad 0.19 m. The end posts stand 0.22 m proud with a knob (Commons 2022 Corsgenbrug photo).
- * The dakje (roof cap) that some krullen carry is left off: 1 of 13 panoramas shows one and no register field says which.
  * Front (+y) is the entry, between the two end posts.
+ *
+ * Curves (2026-11-12, user: "can you model this as curves?" and "the urinal part is a block sticking through the
+ * wall"): the sheet follows the drawing's two circles in 28 + 20 segments with smooth normals, the posts, pedestal and
+ * roof cap are bodies of revolution. Proportions read off the user's photo of a krul on a canal quay, scaled to the
+ * measured 0.50-2.03 m sheet: the raised rib at 1.27 m (where the panoramas put the plain/perforated change), a plain
+ * strip above it, the lattice 1.42-1.98 m, a plain top band; a shallow round cap (dakje) over the loop with a finial.
+ * The lattice is drawn as a darker, greyer band (the shared vertex-colour material has no texture or alpha); its inner
+ * face darker still. The drain pedestal is round (r 0.23 m, the photo's 0.45 m across) and set 0.13 m from the loop
+ * centre toward the drawing's stand, so it stays 0.07 m inside the sheet: the old square stone reached 0.46 m from the
+ * centre of a 0.43 m loop and poked through the sheet. Pinned in streetFurniture.test.ts.
+ * The dakje is on every krul here, as in the user's photo; 1 of 13 panoramas showed one and no register field says which.
  */
-export function krulModel(): FurnitureMesh {
-  const D = DIMENSIONS.krul, b = new Builder(), RAD = Math.PI / 180;
+export const KRUL_PLAN = (() => {
+  const D = DIMENSIONS.krul, RAD = Math.PI / 180;
   // Drawing coordinates (u right, v up, metres, origin the inner end post) → model: rotated half a turn about the
   // footprint centre, so the entry (the drawing's -v side) faces +y.
   const cu = -0.04, cv = 0.16, M = (u: number, v: number): [number, number] => [-(u - cu), -(v - cv)];
   const plan: [number, number][] = [];
-  // The small loop round the stand (centre (-0.43, 0.05)), clockwise from the inner end post, 5 facets of 42 deg.
+  // The small loop round the stand (centre (-0.43, 0.05)), clockwise from the inner end post.
   const a0 = Math.atan2(-0.05, 0.43) / RAD, sweep = 211.5;
-  for (let k = 0; k <= 5; k++) { const a = (a0 - sweep * k / 5) * RAD; plan.push(M(-0.43 + D.loopR * Math.cos(a), 0.05 + D.loopR * Math.sin(a))); }
-  // The wide arc (centre (0, -0.05)) from where it leaves the loop over the top to the outer end post, 5 facets.
+  for (let k = 0; k <= D.loopSegments; k++) { const a = (a0 - sweep * k / D.loopSegments) * RAD; plan.push(M(-0.43 + D.loopR * Math.cos(a), 0.05 + D.loopR * Math.sin(a))); }
+  // The wide arc (centre (0, -0.05)) from where it leaves the loop over the top to the outer end post. Its start
+  // (k = 0) is the loop's end, already in `plan`.
   const b0 = 154.3, b1 = 3.9;
-  for (let k = 1; k <= 5; k++) {
-    const t = b0 + (b1 - b0) * k / 5, r = D.arcR + D.arcFlare * Math.max(0, (t - 90) / (b0 - 90));
+  for (let k = 1; k <= D.arcSegments; k++) {
+    const t = b0 + (b1 - b0) * k / D.arcSegments, r = D.arcR + D.arcFlare * Math.max(0, (t - 90) / (b0 - 90));
     plan.push(M(r * Math.cos(t * RAD), -0.05 + r * Math.sin(t * RAD)));
   }
-  // The join at the end of the loop is shared: replace the arc's start (k = 0) by the loop's end, already in `plan`.
-  // Sheet: lower half plain, upper half perforated, both faces (thin plate).
+  // Outward normals: the spiral turns one way throughout, so one side of the tangent is out (checked on the loop).
+  const loop = M(-0.43, 0.05), normals = plan.map((_, i) => {
+    const [x0, y0] = plan[Math.max(0, i - 1)], [x1, y1] = plan[Math.min(plan.length - 1, i + 1)], l = Math.hypot(x1 - x0, y1 - y0);
+    return [(y1 - y0) / l, -(x1 - x0) / l] as [number, number];
+  });
+  const [px, py] = plan[1], [nx, ny] = normals[1];
+  if (nx * (px - loop[0]) + ny * (py - loop[1]) < 0) for (const n of normals) { n[0] = -n[0]; n[1] = -n[1]; }
+  const [su, sv] = [-0.55 - -0.43, -0.12 - 0.05], sl = Math.hypot(su, sv);
+  const stone = M(-0.43 + D.stoneOffset * su / sl, 0.05 + D.stoneOffset * sv / sl);
+  return { plan, normals, loop, stone, mids: [M(-0.6, 0.49), M(0.22, 0.67)] };
+})();
+
+export function krulModel(): FurnitureMesh {
+  const D = DIMENSIONS.krul, b = new Builder(), { plan, normals, loop, stone, mids } = KRUL_PLAN;
+  const P = (i: number, z: number, out = 0): V => [plan[i][0] + out * normals[i][0], plan[i][1] + out * normals[i][1], z];
+  const N = (i: number, s = 1, up = 0): V => unit([s * normals[i][0], s * normals[i][1], up]);
+  // The sheet in bands, both faces: plain to the lattice, the lattice (darker outside, darkest inside), the top band.
+  const bands: [number, number, string, string][] = [[D.sheetBottom, D.latticeBottom, T.krulSheet, T.krulSheet], [D.latticeBottom, D.latticeTop, T.krulLattice, T.krulLatticeInner], [D.latticeTop, D.sheetTop, T.krulSheet, T.krulSheet]];
   for (let i = 0; i + 1 < plan.length; i++) {
-    const [x0, y0] = plan[i], [x1, y1] = plan[i + 1];
-    b.quad2([x0, y0, D.sheetBottom], [x1, y1, D.sheetBottom], [x1, y1, D.seam], [x0, y0, D.seam], T.krulSheet);
-    b.quad2([x0, y0, D.seam], [x1, y1, D.seam], [x1, y1, D.sheetTop], [x0, y0, D.sheetTop], T.krulLattice);
+    for (const [z0, z1, out, inn] of bands) {
+      b.quadN(P(i, z0), P(i + 1, z0), P(i + 1, z1), P(i, z1), N(i), N(i + 1), N(i + 1), N(i), out);
+      b.quadN(P(i, z0), P(i + 1, z0), P(i + 1, z1), P(i, z1), N(i, -1), N(i + 1, -1), N(i + 1, -1), N(i, -1), inn);
+    }
+    // The raised rib round the outside, a low ridge (two slopes).
+    const r0 = D.seam - D.ribH / 2, r1 = D.seam + D.ribH / 2, k = D.ribProud / (D.ribH / 2);
+    b.quadN(P(i, r0), P(i + 1, r0), P(i + 1, D.seam, D.ribProud), P(i, D.seam, D.ribProud), N(i, 1, -k), N(i + 1, 1, -k), N(i + 1, 1, -k), N(i, 1, -k), T.krulSheet);
+    b.quadN(P(i, D.seam, D.ribProud), P(i + 1, D.seam, D.ribProud), P(i + 1, r1), P(i, r1), N(i, 1, k), N(i + 1, 1, k), N(i + 1, 1, k), N(i, 1, k), T.krulSheet);
+    // The rolled top edge, so the sheet has a thickness seen from above.
+    b.quadN(P(i, D.sheetTop, -D.lip / 2), P(i + 1, D.sheetTop, -D.lip / 2), P(i + 1, D.sheetTop, D.lip), P(i, D.sheetTop, D.lip), [0, 0, 1], [0, 0, 1], [0, 0, 1], [0, 0, 1], T.krulSheet);
   }
-  // Four posts: both sheet ends (standing proud with a knob) and two on the arc (drawing (-0.6, 0.49), (0.22, 0.67)).
-  const ends = [plan[0], plan[plan.length - 1]], mids = [M(-0.6, 0.49), M(0.22, 0.67)];
-  for (const [x, y] of ends) {
-    b.tube([x, y, D.padH], [x, y, D.sheetTop + D.knob - 0.06], D.post, T.krulSheet);
-    b.prism(x, y, D.sheetTop + D.knob - 0.06, D.sheetTop + D.knob, 0.045, 0, 4, T.krulSheet, false);
+  // Round posts: both sheet ends (standing proud with a knob) and two on the arc, just outside the sheet.
+  const r = D.post / 2, knob = D.sheetTop + D.knob;
+  const post = (x: number, y: number, top: number) => b.lathe(x, y, [[r, D.padH], [r, top]], 8, T.krulSheet);
+  for (const i of [0, plan.length - 1]) {
+    const [x, y] = plan[i];
+    post(x, y, knob - 0.08);
+    b.lathe(x, y, [[r, knob - 0.08], [0.04, knob - 0.06], [0.04, knob - 0.03], [0.02, knob - 0.005], [0, knob]], 8, T.krulSheet);
   }
-  for (const [x, y] of mids) b.tube([x, y, D.padH], [x, y, D.sheetTop], D.post, T.krulSheet);
-  // The natural-stone plate inside the loop, where the stand is (drawing (-0.55, -0.12)).
-  const [sx, sy] = M(-0.55, -0.12), h = D.stone / 2;
-  b.box(sx - h, sy - h, D.padH, sx + h, sy + h, D.stoneH, T.krulStone);
-  // Pad: an octagon round the footprint, tiled top, brick sides.
-  const oct = Array.from({ length: 8 }, (_, k): [number, number] => { const a = (k + 0.5) * Math.PI / 4; return [D.padX * Math.cos(a) / Math.cos(Math.PI / 8), D.padY * Math.sin(a) / Math.cos(Math.PI / 8)]; });
-  for (let k = 0; k < 8; k++) { const [x0, y0] = oct[k], [x1, y1] = oct[(k + 1) % 8]; b.quad([x0, y0, 0], [x1, y1, 0], [x1, y1, D.padH], [x0, y0, D.padH], T.krulBrick); }
-  for (let k = 1; k < 7; k++) b.tri([...oct[0], D.padH], [...oct[k], D.padH], [...oct[k + 1], D.padH], T.krulTile);
+  for (const [mx, my] of mids) {
+    let best = 0; for (let i = 0; i < plan.length; i++) if (Math.hypot(plan[i][0] - mx, plan[i][1] - my) < Math.hypot(plan[best][0] - mx, plan[best][1] - my)) best = i;
+    const [x, y] = P(best, 0, r + 0.005); post(x, y, D.sheetTop);
+  }
+  // The dakje: a shallow round cap over the loop, its rim just proud of the sheet, and a finial.
+  const cz = D.sheetTop + D.capGap, cr = D.loopR + D.capOver;
+  b.lathe(loop[0], loop[1], [[0, cz], [cr, cz], [cr, cz + D.capRim], [0.08, cz + D.capRim + D.capRise], [0, cz + D.capRim + D.capRise]], 32, T.krulSheet);
+  const fz = cz + D.capRim + D.capRise;
+  b.lathe(loop[0], loop[1], [[0.012, fz], [0.012, knob - 2 * D.finialR], [D.finialR, knob - D.finialR * 1.3], [D.finialR * 0.8, knob - D.finialR * 0.4], [0, knob]], 8, T.krulSheet);
+  // The drain pedestal: a round natural-stone drum inside the loop, under the raised edge of the sheet.
+  b.lathe(stone[0], stone[1], [[D.stoneR, D.padH], [D.stoneR, D.stoneH], [0, D.stoneH]], 20, T.krulStone);
+  // Pad: an octagon round the footprint, a kerb ring of stone round a tiled floor.
+  const oct = (s: number) => Array.from({ length: 8 }, (_, k): [number, number] => { const a = (k + 0.5) * Math.PI / 4; return [s * D.padX * Math.cos(a) / Math.cos(Math.PI / 8), s * D.padY * Math.sin(a) / Math.cos(Math.PI / 8)]; });
+  const o = oct(1), inner = oct(1 - D.kerb / D.padY);
+  for (let k = 0; k < 8; k++) {
+    const [x0, y0] = o[k], [x1, y1] = o[(k + 1) % 8], [u0, v0] = inner[k], [u1, v1] = inner[(k + 1) % 8];
+    b.quad([x0, y0, 0], [x1, y1, 0], [x1, y1, D.padH], [x0, y0, D.padH], T.krulKerb);
+    b.quad([x0, y0, D.padH], [x1, y1, D.padH], [u1, v1, D.padH], [u0, v0, D.padH], T.krulKerb);
+  }
+  for (let k = 1; k < 7; k++) b.tri([...inner[0], D.padH], [...inner[k], D.padH], [...inner[k + 1], D.padH], T.krulTile);
   return b.done('urinal-krul');
 }
 
@@ -481,7 +572,8 @@ export function rideModel(id: FurnitureModelId): FurnitureMesh {
   b.box(-hx, -hy, -RIDE_PLATE_SKIRT_M, hx, hy, 0, T.containerPlateEdge, false, false);
   const positions = new Float32Array(m.positions.length + b.p.length), colours = new Float32Array(m.colours.length + b.c.length);
   positions.set(m.positions); positions.set(b.p, m.positions.length); colours.set(m.colours); colours.set(b.c, m.colours.length);
-  return { ...m, positions, colours, triangles: positions.length / 9 };
+  const normals = m.normals ? Float32Array.from([...m.normals, ...b.n]) : undefined;
+  return { ...m, positions, colours, triangles: positions.length / 9, ...(normals ? { normals } : {}) };
 }
 
 export const FURNITURE_MODELS: Readonly<Record<FurnitureModelId, () => FurnitureMesh>> = {

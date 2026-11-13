@@ -5,6 +5,7 @@
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
 //   npx tsx scripts/own-ground/check-ground-cells.ts --road-regressions  # only the roads-v1 named regressions
+//   npx tsx scripts/own-ground/check-ground-cells.ts --crossings # only the crossing-register pins (crossings.ts, lane G3)
 //   npx tsx scripts/own-ground/check-ground-cells.ts --relief   # only the relief regressions (reliefRegressions.ts)
 //   npx tsx scripts/own-ground/check-ground-cells.ts --parapets # the canal-mouth parapet regressions alone
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
@@ -29,6 +30,8 @@ import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, 
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
+import { insideRing as inCrossingRing, type CrossingRecord } from '../../src/canalRecall/ownGround/crossings.ts';
+import { AUTHORED as CROSSINGS } from '../../src/canalRecall/ownGround/crossingFiles.ts';
 import { buriedShare, deckBreaks, RAIL_BRIDGE_SPOTS, RAIL_LEVEL_SPOTS, RAIL_SPOTS, stationLevels } from '../../src/canalRecall/ownGround/railRegressions.ts';
 import type { RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
 import { applyRailInfra, isRailInfraTable, pieceShare, RAIL_INFRA_FILE, RAIL_INFRA_SPOTS, type Vec2 as InfraVec2 } from '../../src/canalRecall/railInfraBuildings.ts';
@@ -109,6 +112,62 @@ async function reliefRegressions(): Promise<void> {
     check(drop >= step.minDropM, `relief ${step.id}: ${drop.toFixed(2)} m down from the high side (≥ ${step.minDropM}) — ${step.label}`);
   }
   await viaductRegressions();
+  await crossingRegressions();
+}
+
+/**
+ * The crossing register (crossings.ts, lane G3): at every reviewed record (named places, ring railway, ...), the game draws what the record
+ * says and the inference before the register (`crossings: false`) did not. Per kind:
+ *   rail-over-road  no rail span in the zone off the record's rail decks, no cut station, no dark mouth (a track on a
+ *                   deck is an OSM bridge way or gets the deck as its span; the ring tracks are bridges, so none is required)
+ *   level, none     no rail span and no cut station in the zone, no dark mouth
+ *   road-under      every dark mouth in the zone lies within 15 m of a listed portal (none listed: none)
+ *   road-over-*     no cut station and no dark mouth in the zone (the street runs on at grade under the deck)
+ * Each pin also reports the before (`crossings: false`), so a pin that the before already passes is visible.
+ */
+const noCrossings = new GroundStore(readExtract, { crossings: false }), withCrossings = new GroundStore(readExtract, { crossings: true });
+async function crossingRegressions(): Promise<void> {
+  await noCrossings.init();
+  await withCrossings.init();
+  const named = CROSSINGS.filter(r => r.area === 'named');
+  check(named.length >= 8 && named.every(r => r.reviewed), `crossings: ${named.length} named-place records, ${named.filter(r => r.reviewed).length} reviewed (≥ 8, all reviewed)`);
+  for (const r of CROSSINGS.filter(x => x.reviewed)) {
+    const after = await crossingState(withCrossings, r), before = await crossingState(noCrossings, r);
+    const say = (s: CrossingState) => `spans on deck ${s.spansOnDeck}, spans off deck ${s.spansOffDeck}, cut stations ${s.cutStations}, dark mouths ${s.mouths} (unlisted ${s.unlistedMouths})`;
+    console.log(`     ${r.id} before: ${say(before)}`);
+    // A record's `game` override (cuts / portals 'keep') lets the inferred cuts or mouths stand; the rest still holds.
+    const cutsOk = r.game?.cuts === 'keep' || after.cutStations === 0, mouthsOk = r.game?.portals === 'keep' || after.mouths === 0;
+    let ok: boolean;
+    if (r.kind === 'rail-over-road') ok = after.spansOffDeck === 0 && cutsOk && mouthsOk;
+    else if (r.kind === 'level' || r.kind === 'none') ok = after.spansOnDeck + after.spansOffDeck === 0 && cutsOk && mouthsOk;
+    else if (r.kind === 'road-under') ok = r.game?.portals === 'keep' || after.unlistedMouths === 0;
+    else ok = cutsOk && mouthsOk;
+    check(ok, `crossing ${r.id} (${r.kind}): ${say(after)} — ${r.label}`);
+  }
+}
+interface CrossingState { spansOnDeck: number; spansOffDeck: number; cutStations: number; mouths: number; unlistedMouths: number }
+async function crossingState(s: GroundStore, r: CrossingRecord): Promise<CrossingState> {
+  const [x, y] = toLocal(r.at[0], r.at[1]), key = s.cellAt(x, y);
+  await s.ensureRelief(s.cellRect(key));
+  await s.prepareCell(key);
+  const cell = buildCell(await s.cellInput(key, 0));
+  const zone = r.zone.map(p => toLocal(p[0], p[1])), decks = r.plan.decks.filter(d => ['rail', 'metro', 'tram'].includes(d.carries)).map(d => d.ring.map(p => toLocal(p[0], p[1])));
+  const inZone = (px: number, py: number) => inCrossingRing(zone, px, py);
+  const st: CrossingState = { spansOnDeck: 0, spansOffDeck: 0, cutStations: 0, mouths: 0, unlistedMouths: 0 };
+  for (const sp of cell.stats.rails?.spanList ?? []) {
+    if (!inZone(sp.at[0], sp.at[1])) continue;
+    if (decks.some(d => inCrossingRing(d, sp.at[0], sp.at[1]))) st.spansOnDeck++; else st.spansOffDeck++;
+  }
+  const listed = (r.plan.portals ?? []).map(p => toLocal(p.at[0], p.at[1]));
+  for (const c of s.surface.cuts) {
+    for (let i = 0; i < c.x.length; i++) if (inZone(c.x[i], c.y[i])) st.cutStations++;
+    for (const p of c.portals) {
+      if (p.open || !inZone(c.x[p.at], c.y[p.at])) continue;
+      st.mouths++;
+      if (!listed.some(q => Math.hypot(q[0] - c.x[p.at], q[1] - c.y[p.at]) <= 15)) st.unlistedMouths++;
+    }
+  }
+  return st;
 }
 
 /**
@@ -240,6 +299,7 @@ async function main(): Promise<void> {
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
   if (process.argv.includes('--bare-land')) { await bareLandCity(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
+  if (process.argv.includes('--crossings')) { await crossingRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--relief')) { await reliefRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--rails')) { await railRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }

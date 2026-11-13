@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168605",
+ "address": "Rozengracht 38",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Rozengracht",
+    "gable": "bell",
+    "crownRise": 1.4,
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     3.8,
+     2.4,
+     2.3
+    ],
+    "doorBay": 1,
+    "groundFront": {
+     "kind": "arcade",
+     "bays": [
+      "window",
+      "door",
+      "window"
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2019-01-15: white pilasters and beam over a glazed shop ground"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4b3f3a",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  }
+ }
+}

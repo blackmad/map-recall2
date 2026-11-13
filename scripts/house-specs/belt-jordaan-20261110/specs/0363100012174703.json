@@ -1,0 +1,239 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174703",
+ "address": "Egelantiersgracht 11",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     5.8,
+     2.8,
+     2.6
+    ],
+    "doorBay": 1,
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.3,
+      "to": 0.7
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.2,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#342c2e",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): two axes: a tall ground 0-5.6 m with a wide window left and the door right; storeys at 6.0-8.0 and 8.7-10.6 m; a white ornate frieze and cornice 11.4-12.0 m; a white pedimented dormer 12.3-13.5 m; painted dark brown brick #342c2e (eland review: two bays, door right, two storeys over a tall ground)",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice",
+   "what": "the ornate frieze (Louis XIV scrollwork) is drawn as a plain frieze"
+  }
+ ]
+}

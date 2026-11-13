@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172779",
+ "address": "Bloemgracht 13",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "six-pane",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "neck",
+    "crownRise": 1.1,
+    "crownCap": "segmental",
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     1
+    ],
+    "storeyHeights": [
+     4.4,
+     2.6,
+     2.4
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#584b46",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window kind",
+   "what": "two round oculi flank the top storey's window; the kit has no wall oculus"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved medallion in the neck and the claw pieces are not drawn"
+  }
+ ]
+}
