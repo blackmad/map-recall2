@@ -143,11 +143,24 @@ test('spec-level readings (stone, pitched-eaves, pointed/mixed heads): stored as
   read.design.fronts![0].windowHead = { kind: 'mixed' };
   assert.equal(toRecipeReport(read).intent!.fronts[0].windowHead, undefined, 'mixed draws the intent default (flat)');
   assert.equal(JSON.stringify(specView(base)), before);
+  // Block dressings and the attic frieze (D1 enum gaps): stored as read, drawn as jack-blocks and frieze.
+  const blocks = structuredClone(base);
+  blocks.design.fronts![0].windowSurround = 'block-dressings';
+  blocks.design.fronts![0].cornice = 'attic-frieze';
+  assert.deepEqual(specProblems(blocks), []);
+  const rb = toRecipeReport(blocks);
+  assert.equal(rb.intent!.fronts[0].windowSurround, 'jack-blocks');
+  assert.equal(rb.intent!.fronts[0].cornice, 'frieze');
+  assert.deepEqual(rb.ignored, [
+    { path: 'fronts/0/windowSurround', value: 'block-dressings', drawnAs: 'jack-blocks' },
+    { path: 'fronts/0/cornice', value: 'attic-frieze', drawnAs: 'frieze' },
+  ]);
+  assert.equal(blocks.design.fronts![0].windowSurround, 'block-dressings', 'the spec keeps the reading');
   // Values outside the spec vocabulary are still refused.
   const bad = structuredClone(base) as any;
-  bad.design.palette.wallMaterial = 'granite'; bad.design.fronts[0].gable = 'eaves'; bad.design.fronts[0].windowHead = { kind: 'gothic' };
+  bad.design.palette.wallMaterial = 'granite'; bad.design.fronts[0].gable = 'eaves'; bad.design.fronts[0].windowHead = { kind: 'gothic' }; bad.design.fronts[0].windowSurround = 'blocky'; bad.design.fronts[0].cornice = 'attic';
   const p = specProblems(bad);
-  assert.ok(['palette/wallMaterial', 'fronts/0/gable', 'fronts/0/windowHead'].every(k => p.some(x => x.startsWith(k))), p.join('\n'));
+  assert.ok(['palette/wallMaterial', 'fronts/0/gable', 'fronts/0/windowHead', 'fronts/0/windowSurround', 'fronts/0/cornice'].every(k => p.some(x => x.startsWith(k))), p.join('\n'));
 });
 
 test('intentSources: receipts whose refs share the first 60 characters become one source (belt-nieuwmarkt #363)', () => {

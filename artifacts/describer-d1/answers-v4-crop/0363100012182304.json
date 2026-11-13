@@ -43,7 +43,7 @@
  "whiteFrames": false,
  "low": [
   "columns",
-  "roof"
+  "storeyParts.roof"
  ],
  "gaps": [
   {

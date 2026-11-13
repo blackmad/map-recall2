@@ -44,7 +44,7 @@
  "sameAs": "none",
  "mirrored": false,
  "low": [
-  "roof",
+  "storeyParts.roof",
   "cornice",
   "basement",
   "doorBay"

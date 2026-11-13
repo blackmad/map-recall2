@@ -44,7 +44,7 @@
  "whiteFrames": true,
  "low": [
   "windows",
-  "roof",
+  "storeyParts.roof",
   "doorBay"
  ],
  "gaps": [

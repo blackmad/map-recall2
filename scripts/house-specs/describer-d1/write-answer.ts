@@ -59,7 +59,7 @@ if (argv.includes('--window')) {
   // zoomed window read (scripts/house-line/describer/window-v1.md): <out default artifacts/describer-d1/answers-window>/<pandId>.json
   const W: Record<string, string[]> = {
     paneLayout: ['single', 'two-pane', 'multi-pane', 'top-light', 'mixed'], head: ['flat', 'segmental', 'round', 'relieving', 'pointed'],
-    sills: ['none', 'stone', 'consoles'], windowSurround: ['none', 'stone-lintel', 'full-frame', 'keystone', 'eared-keystone', 'dentil-lintel', 'jack-blocks', 'sill'],
+    sills: ['none', 'stone', 'consoles'], windowSurround: ['none', 'stone-lintel', 'full-frame', 'keystone', 'eared-keystone', 'dentil-lintel', 'jack-blocks', 'block-dressings', 'sill'],
   };
   const bad: string[] = [];
   for (const [k, vs] of Object.entries(W)) if (!(body[k] === 'not-visible' || vs.includes(body[k]))) bad.push(`${k}: ${vs.join('|')}|not-visible`);

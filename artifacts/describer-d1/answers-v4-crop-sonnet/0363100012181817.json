@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012181817",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012181817/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 4,
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "bank with two ATMs in the ground storey and a wide white cornice band over it"
+  },
+  {
+   "component": "balcony",
+   "what": "low railings across the lower part of the upper windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -34,7 +34,7 @@
  "finish": "painted-brick",
  "whiteFrames": false,
  "low": [
-  "roof",
+  "storeyParts.roof",
   "storeyParts",
   "windows",
   "cornice",

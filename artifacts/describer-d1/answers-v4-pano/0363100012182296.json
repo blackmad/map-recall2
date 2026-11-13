@@ -45,7 +45,7 @@
  "mirrored": false,
  "low": [
   "windows",
-  "roof",
+  "storeyParts.roof",
   "finish",
   "cornice"
  ],

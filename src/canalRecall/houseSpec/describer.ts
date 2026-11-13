@@ -9,8 +9,8 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { BASEMENTS, CORNICES, GABLES, WINDOWS, WINDOW_SURROUNDS, type WindowKind } from '../buildingRecipe/intent.ts';
-import { emptySpec, setSpecField, toSpecLimit, type HouseSpec, type SpecGable, type SpecLimit } from './spec.ts';
+import { BASEMENTS, GABLES, WINDOWS, type WindowKind } from '../buildingRecipe/intent.ts';
+import { emptySpec, setSpecField, SPEC_CORNICES, SPEC_WINDOW_SURROUNDS, toSpecLimit, type HouseSpec, type SpecGable, type SpecLimit } from './spec.ts';
 
 /** Any field the image cannot show (hidden by a tree or van, cut off, too dark): never guessed. */
 export const UNKNOWN = 'not-visible' as const;
@@ -25,7 +25,12 @@ export const BANDS = ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen'
 /** Sills: `stone` a plain stone/painted sill under each window (intent: windowSurround `sill`), `consoles` a sill slab on consoles
  *  (intent windowSills `consoles`), `none` brick or no visible sill. */
 export const SILLS = ['none', 'stone', 'consoles'] as const;
-export const DOOR_BAYS = ['left', 'centre', 'right', 'several', 'none'] as const;
+/** `off-centre`: one street door that is neither the outer bay nor the middle one (the third of four axes). */
+export const DOOR_BAYS = ['left', 'centre', 'right', 'off-centre', 'several', 'none'] as const;
+/** The window dressing: the intent surrounds plus the spec-level `block-dressings` (spec.ts SPEC_WINDOW_SURROUNDS). */
+export const SURROUNDS = SPEC_WINDOW_SURROUNDS;
+/** The cornice: the intent cornices plus the spec-level `attic-frieze` (spec.ts SPEC_CORNICES). */
+export const ANSWER_CORNICES = SPEC_CORNICES;
 export const GROUNDS = ['shopfront', 'dwelling', 'warehouse'] as const;
 /** The crown: the intent gables plus `mansard` (intent: gable cornice + roofFront mansard) and `pitched-eaves` (an eaves line
  *  with the roof slope in view: no intent gable says it). */
@@ -54,7 +59,8 @@ export interface DescriberAnswer {
   extent: 'single' | 'multi';
   /** Full street storeys (ground once, no souterrain, no attic in the crown). */
   storeys: number | U;
-  /** Window axes of the upper storeys (the storey with the most); an erker is one axis, a mullioned pair one. */
+  /** Window axes of the upper storeys (the storey with the most); an erker is one axis, a mullioned pair one. 0: a front with
+   *  no upper storey (a one-storey wall), never staged as bays. */
   bays: number | U;
   /** Openings per storey, ground first (optional detail). */
   columns?: number[];
@@ -65,7 +71,7 @@ export interface DescriberAnswer {
   /** Window head per storey, ground first (length = storeys when known). */
   heads: (Head | U)[];
   bands: (typeof BANDS)[number] | U;
-  windowSurround: (typeof WINDOW_SURROUNDS)[number] | U;
+  windowSurround: (typeof SURROUNDS)[number] | U;
   sills: (typeof SILLS)[number] | U;
   /** Where the street door to the upper house(s) is, seen from the street. */
   doorBay: (typeof DOOR_BAYS)[number] | U;
@@ -76,7 +82,7 @@ export interface DescriberAnswer {
   basement: (typeof BASEMENTS)[number] | U;
   souterrain?: boolean;
   crown: Crown | U;
-  cornice: (typeof CORNICES)[number] | U;
+  cornice: (typeof ANSWER_CORNICES)[number] | U;
   wallFamily: WallFamily | U;
   finish: (typeof FINISHES)[number] | U;
   /** White-painted window joinery. */
@@ -94,6 +100,12 @@ export interface DescriberAnswer {
 const isIn = <T extends readonly unknown[]>(list: T, v: unknown): boolean => v === UNKNOWN || (list as readonly unknown[]).includes(v);
 const countOk = (v: unknown, lo: number, hi: number) => v === UNKNOWN || (Number.isInteger(v) && (v as number) >= lo && (v as number) <= hi);
 
+/** The keys `low` may name: the answer's fields, and the v4 storey components as `storeyParts.<part>`. */
+export const LOW_KEYS: ReadonlySet<string> = new Set(['extent', 'storeys', 'bays', 'columns', 'windows', 'storeyWindows', 'heads', 'bands',
+  'windowSurround', 'sills', 'doorBay', 'doorIndex', 'groundBays', 'ground', 'basement', 'souterrain', 'crown', 'cornice', 'wallFamily',
+  'finish', 'whiteFrames', 'sameAs', 'mirrored', 'pale', 'paneLayout', 'storeyParts', 'storeyParts.full', 'storeyParts.roof',
+  'storeyParts.souterrain']);
+
 /** Problems with an answer (empty = valid). */
 export function answerProblems(a: any): string[] {
   const p: string[] = [];
@@ -105,25 +117,26 @@ export function answerProblems(a: any): string[] {
   if (typeof a.readable !== 'boolean') p.push('readable: boolean');
   if (!['single', 'multi'].includes(a.extent)) p.push('extent: single|multi');
   if (!countOk(a.storeys, 1, 30)) p.push(`storeys: 1..30 or ${UNKNOWN}`);
-  if (!countOk(a.bays, 1, 30)) p.push(`bays: 1..30 or ${UNKNOWN}`);
+  if (!countOk(a.bays, 0, 30)) p.push(`bays: 0..30 or ${UNKNOWN}`);
   if (a.columns !== undefined && !(Array.isArray(a.columns) && a.columns.every((c: unknown) => Number.isInteger(c) && (c as number) >= 0 && (c as number) <= 40))) p.push('columns: counts');
   if (!isIn(WINDOWS, a.windows) && a.windows !== TALL_UPPER) p.push(`windows: ${JSON.stringify(a.windows)} not in WINDOWS`);
   for (const [k, w] of Object.entries(a.storeyWindows ?? {})) if (!isIn(WINDOWS, w) || w === UNKNOWN) p.push(`storeyWindows.${k}: ${JSON.stringify(w)} not in WINDOWS`);
   if (!Array.isArray(a.heads) || !a.heads.every((h: unknown) => isIn(HEADS, h))) p.push(`heads: a list of ${HEADS.join('|')}|${UNKNOWN}`);
   else if (Number.isInteger(a.storeys) && a.heads.length && a.heads.length !== a.storeys) p.push(`heads: ${a.heads.length} entries for ${a.storeys} storeys`);
   if (!isIn(BANDS, a.bands)) p.push(`bands: ${BANDS.join('|')}|${UNKNOWN}`);
-  if (!isIn(WINDOW_SURROUNDS, a.windowSurround)) p.push(`windowSurround: ${WINDOW_SURROUNDS.join('|')}|${UNKNOWN}`);
+  if (!isIn(SURROUNDS, a.windowSurround)) p.push(`windowSurround: ${SURROUNDS.join('|')}|${UNKNOWN}`);
   if (!isIn(SILLS, a.sills)) p.push(`sills: ${SILLS.join('|')}|${UNKNOWN}`);
   if (!isIn(DOOR_BAYS, a.doorBay)) p.push(`doorBay: ${DOOR_BAYS.join('|')}|${UNKNOWN}`);
   if (a.doorIndex !== undefined && a.doorIndex !== null && !countOk(a.doorIndex, 0, 40)) p.push('doorIndex: index or null');
   if (!isIn(GROUNDS, a.ground)) p.push(`ground: ${GROUNDS.join('|')}|${UNKNOWN}`);
   if (!isIn(BASEMENTS, a.basement)) p.push(`basement: ${BASEMENTS.join('|')}|${UNKNOWN}`);
   if (!isIn(CROWNS, a.crown)) p.push(`crown: ${CROWNS.join('|')}|${UNKNOWN}`);
-  if (!isIn(CORNICES, a.cornice)) p.push(`cornice: ${CORNICES.join('|')}|${UNKNOWN}`);
+  if (!isIn(ANSWER_CORNICES, a.cornice)) p.push(`cornice: ${ANSWER_CORNICES.join('|')}|${UNKNOWN}`);
   if (!isIn(WALL_FAMILIES, a.wallFamily)) p.push(`wallFamily: ${WALL_FAMILIES.join('|')}|${UNKNOWN}`);
   if (!isIn(FINISHES, a.finish)) p.push(`finish: ${FINISHES.join('|')}|${UNKNOWN}`);
   if (a.sameAs !== undefined && !isIn(SAME_AS, a.sameAs)) p.push(`sameAs: ${SAME_AS.join('|')}|${UNKNOWN}`);
   if (a.mirrored !== undefined && !(typeof a.mirrored === 'boolean' || a.mirrored === UNKNOWN)) p.push(`mirrored: boolean or ${UNKNOWN}`);
+  if (a.low !== undefined && !(Array.isArray(a.low) && a.low.every((k: unknown) => typeof k === 'string' && LOW_KEYS.has(k)))) p.push(`low: answer keys only (${[...LOW_KEYS].join('|')})`);
   if (!Array.isArray(a.gaps) || a.gaps.some((g: unknown) => typeof g !== 'object' || !toSpecLimit(g))) p.push('gaps: a list of {component, what}');
   return p;
 }
@@ -163,7 +176,7 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
     spec.provenance[p] = { source: 'vision-judge', confidence: a.low?.includes(p.split('/').pop()!) ? confidence / 2 : confidence, ref: a.image.ref, at };
   };
   set('fronts/0/storeys', a.storeys);
-  set('fronts/0/bays', a.bays);
+  if (a.bays !== 0) set('fronts/0/bays', a.bays);
   if (a.windows !== TALL_UPPER) set('fronts/0/windows', a.windows);
   if (a.storeyWindows && Object.keys(a.storeyWindows).length) set('fronts/0/storeyWindows', a.storeyWindows);
   const head = upperHead(a.heads);

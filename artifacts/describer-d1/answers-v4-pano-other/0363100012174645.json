@@ -44,7 +44,7 @@
  "sameAs": "right",
  "mirrored": true,
  "low": [
-  "roof",
+  "storeyParts.roof",
   "columns",
   "heads",
   "sameAs",

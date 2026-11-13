@@ -41,7 +41,7 @@
  "whiteFrames": true,
  "low": [
   "windows",
-  "roof",
+  "storeyParts.roof",
   "finish",
   "columns",
   "ground"

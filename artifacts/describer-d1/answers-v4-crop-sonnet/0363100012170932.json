@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012170932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "A fence hides the ground storey base; top cut off.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

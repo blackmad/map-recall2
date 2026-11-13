@@ -37,7 +37,7 @@
  "whiteFrames": true,
  "low": [
   "heads",
-  "roof",
+  "storeyParts.roof",
   "crown",
   "cornice",
   "bays"

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182473/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-9-over-9",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "columns",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a clay-tile pitched roof is visible directly above the eaves"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

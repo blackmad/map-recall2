@@ -45,7 +45,7 @@
  "whiteFrames": true,
  "low": [
   "finish",
-  "roof",
+  "storeyParts.roof",
   "heads"
  ],
  "gaps": [

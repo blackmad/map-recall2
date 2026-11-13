@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron-railed balconies on the centre axis"
+  },
+  {
+   "component": "erker",
+   "what": "centre axis is a tall arched recess with stacked balconies"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

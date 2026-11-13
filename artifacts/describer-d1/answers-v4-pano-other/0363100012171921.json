@@ -37,7 +37,7 @@
  "sameAs": "none",
  "mirrored": false,
  "low": [
-  "roof",
+  "storeyParts.roof",
   "crown"
  ],
  "gaps": [],

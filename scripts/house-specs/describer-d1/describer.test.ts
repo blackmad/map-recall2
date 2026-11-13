@@ -181,3 +181,14 @@ test('stageOne: vision-judge fields plus the measured wall colour; an unreadable
   const empty = stageOne(answer({ readable: false }), '#7a4a3a', null);
   assert.deepEqual(empty.provenance, {});
 });
+
+test('enum gaps: block dressings, attic frieze, an off-centre door and bays 0 are valid; low names answer keys only', () => {
+  assert.deepEqual(answerProblems(answer({ windowSurround: 'block-dressings', cornice: 'attic-frieze', doorBay: 'off-centre', low: ['storeyParts.roof', 'crown'] })), []);
+  assert.deepEqual(answerProblems(answer({ bays: 0 })), []);
+  assert.equal(toSpecPart(answer({ bays: 0 })).design.fronts?.[0]?.bays, undefined, 'bays 0 is never staged');
+  const s = toSpecPart(answer({ windowSurround: 'block-dressings', cornice: 'attic-frieze' }));
+  assert.deepEqual(specProblems(s), []);
+  assert.equal(s.design.fronts![0].windowSurround, 'block-dressings');
+  assert.ok(answerProblems(answer({ low: ['roof'] })).some(p => p.startsWith('low')));
+  assert.ok(answerProblems(answer({ bays: -1 })).some(p => p.startsWith('bays')));
+});
