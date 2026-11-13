@@ -9,7 +9,9 @@ import { openRoute, settleWorld } from './helpers';
 //   PW_PORT=4460 /tmp/canal-pw.sh npx playwright test shader-facades --project=desktop --workers=1
 // SF_POSES='[{"name":..,"center":[lng,lat],"zoom":..,"bearing":..,"pitch":..}]' and SF_OUT=<dir> frame other poses (the
 // far/mid tier read of plan P5: aerial and mid-distance pairs at the eyeball-set sites); the Dam chase assertions then skip.
+// SF_MODE=far frames the far-tier-only switch (`?shaderFacades=far`): records on the baked tier, near chunks on today's look.
 const OUT = process.env.SF_OUT ?? 'artifacts/shader-facades';
+const MODE = process.env.SF_MODE === 'far' ? 'far' : '1';
 const POSES: { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number }[] = process.env.SF_POSES ? JSON.parse(process.env.SF_POSES) : [
   { name: 'dam-aerial', center: [4.8926, 52.3731] as [number, number], zoom: 16.2, bearing: 250, pitch: 60 },
   { name: 'dam-chase', center: [4.8926, 52.3731] as [number, number], zoom: 17.8, bearing: 250, pitch: 72 },
@@ -19,7 +21,7 @@ test.use({ viewport: { width: 1280, height: 800 } });
 async function frames(page: Page, on: boolean) {
   const glErrors: string[] = [];
   page.on('console', m => { const t = m.text(); if (/GL_INVALID|GL ERROR|WebGLProgram|Shader Error|ERROR: 0:|INVALID_OPERATION/i.test(t)) glErrors.push(t.slice(0, 400)); });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?engine=own&tier=high&governor=0&bakedCoarse=1&shaderFacades=${on ? 1 : 0}` });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?engine=own&tier=high&governor=0&bakedCoarse=1&shaderFacades=${on ? MODE : 0}` });
   const out: Record<string, unknown> = {};
   for (const pose of POSES) {
     const jump = () => page.evaluate((p) => {
@@ -37,8 +39,14 @@ async function frames(page: Page, on: boolean) {
       const near = chunks.filter(([k, c]: any) => String(k).startsWith('near:') && c.mesh);
       return { nearChunks: near.length, nearRecords: near.filter(([, c]: any) => c.mesh.userData?.recordKey).length, baked: vm._bakedCoarse?.stats?.() ?? null, shaderFacades: vm.shaderFacades ?? null, bakedOff: vm.bakedCoarseOff ?? null, programs: r?.info?.programs?.length ?? null };
     });
+    // SF_PICKS='{"<pose>": [[x, y], ...]}': the pands under those frame px (the click card's pick), for a read of what a region draws.
+    const picks = (JSON.parse(process.env.SF_PICKS ?? '{}') as Record<string, [number, number][]>)[pose.name];
+    if (picks) (state as Record<string, unknown>).picks = await page.evaluate((pts) => {
+      const vm = (window as any).canalRecallGame.vectorMap, rect = document.querySelector('#gameCanvas')!.getBoundingClientRect();
+      return pts.map(([x, y]) => { const h = vm.inspectBuilding(x, y, rect); return h ? { at: [x, y], id: String(h.id ?? h.properties?.id ?? '') } : null; });
+    }, picks);
     const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
-    writeFileSync(`${OUT}/${pose.name}-${on ? 'on' : 'off'}.png`, Buffer.from(url.split(',')[1], 'base64'));
+    writeFileSync(`${OUT}/${pose.name}-${on ? (MODE === 'far' ? 'far' : 'on') : 'off'}.png`, Buffer.from(url.split(',')[1], 'base64'));
     out[pose.name] = state;
   }
   return { out, glErrors };
@@ -65,6 +73,6 @@ test('shader facades: the record cells draw at the Dam with no GL error', async 
   const chase = on.out['dam-chase'] as { nearChunks: number; nearRecords: number } | undefined;
   if (!chase) return;
   expect(chase.nearChunks, 'near chunks at the chase pose').toBeGreaterThan(0);
-  expect(chase.nearRecords, 'every near chunk built in record mode').toBe(chase.nearChunks);
+  expect(chase.nearRecords, MODE === 'far' ? 'far only: no near record chunk' : 'every near chunk built in record mode').toBe(MODE === 'far' ? 0 : chase.nearChunks);
   expect((off.out['dam-chase'] as { nearRecords: number }).nearRecords, 'flag off: no record chunk').toBe(0);
 });
