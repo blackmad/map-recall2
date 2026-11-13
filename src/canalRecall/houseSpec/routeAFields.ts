@@ -25,7 +25,8 @@ import type { HouseSpec } from './spec.ts';
 import { provenanceOf } from './spec.ts';
 import type { TemplatePick } from './streetTemplate.ts';
 
-export const FIELD_SOURCES: ReadonlySet<string> = new Set(['monument-text', 'vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
+/** Photo sources only: the precision bar is D1's (the register's words are not a reading of today's front). */
+export const FIELD_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
 export const FIELD_MIN_CONFIDENCE = 0.5;
 
 export const DRAWN_BANDS = ['storey', 'lintel', 'both', 'speklagen'] as const;
