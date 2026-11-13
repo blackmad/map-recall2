@@ -5,7 +5,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { completeSpec, cOnlyFields, cEligible, familyOf, type CompleteInput, type Geometry } from './complete.ts';
+import { completeSpec, cOnlyFields, cEligible, familyOf, drawFrom, scaleBucket, type CompleteInput, type Geometry, type FamilyTable } from './complete.ts';
+import FAMILY_TABLE from './family-defaults.json' with { type: 'json' };
 import type { HouseSpec } from './spec.ts';
 
 const STAGED = path.resolve(import.meta.dirname, '../../../artifacts/describer-d1/staged-ah07');
@@ -138,7 +139,7 @@ test('a level crown read (mansard) or a level 3DBAG profile never gets a family 
 });
 
 test('street template: dressings fill with the template house id, structure never, a read `none` band is kept', () => {
-  const T = { v: 1, rows: [{ p: '0000000000000007', x: G168094.lng, y: G168094.lat + 0.0003, yr: 1872, st: 'Weteringschans', src: 'author',
+  const T = { v: 2, rows: [{ p: '0000000000000007', x: G168094.lng, y: G168094.lat + 0.0003, yr: 1872, st: 'Weteringschans', src: 'author',
     f: { 'fronts/0/windowSurround': 'stone-lintel', 'fronts/0/bands': 'storey', 'fronts/0/cornice': 'bracketed', 'palette/frame': 'white' } }] };
   const s = spec('68043');
   const c = run({ spec: s, templates: T, answer: { crown: 'cornice' } });
@@ -150,4 +151,48 @@ test('street template: dressings fill with the template house id, structure neve
   const none = run({ spec: s, templates: T, answer: { crown: 'cornice', bands: 'none' } });
   assert.equal(none.intent!.fronts[0].bands, undefined);
   assert.equal(run({ spec: s, templates: null }).fills.filter(f => f.source === 'template').length, 0);
+});
+
+// Round 3 ruling, rule 2: the family dressing is a DRAW per group of similar adjoining fronts, never the mode; a split cell
+// (band x class x scale, band x class) once it holds n >= 20; a main-street front with no template keeps today's look until then.
+const draws = (over: Record<string, Record<string, { n: number; dist: [unknown, number][] }>>) =>
+  ({ table: (FAMILY_TABLE as unknown as FamilyTable).table, draws: over }) as FamilyTable;
+const SURR = { n: 100, dist: [['sill', 50], ['keystone', 30], ['stone-lintel', 20]] as [unknown, number][] };
+
+test('rule 2: one draw per group (a row stays coherent), different groups differ, never only the mode', () => {
+  const fam = draws({ '1800-1879': { windowSurround: SURR }, '1800-1879|side': { windowSurround: SURR } });
+  const s = spec('68043');
+  const a = run({ spec: s, families: fam, templates: null, street: 'Den Texstraat', group: 'row-A' });
+  const b = run({ spec: { ...s, pandId: '0363100012999998' }, families: fam, templates: null, street: 'Den Texstraat', group: 'row-A' });
+  assert.equal(a.intent!.fronts[0].windowSurround, b.intent!.fronts[0].windowSurround);
+  assert.match(fillOf(a, 'fronts/0/windowSurround')!.ref, /^family draw 1800-1879\|side \(n 100/);
+  const seen = new Set<unknown>();
+  for (let i = 0; i < 40; i++) seen.add(run({ spec: s, families: fam, templates: null, street: 'Den Texstraat', group: `g${i}` }).intent!.fronts[0].windowSurround);
+  assert.ok(seen.size >= 3, [...seen].join());
+  assert.equal(drawFrom([['x', 1]], 'anything'), 'x');
+});
+
+test('rule 2: a main-street front with no template keeps today\'s look while its cell holds n < 20; a full cell draws', () => {
+  const s = spec('68043');
+  const small = draws({ '1800-1879': { windowSurround: SURR }, '1800-1879|main': { windowSurround: { n: 12, dist: [['keystone', 12]] } } });
+  const kept = run({ spec: s, families: small, templates: null, streetClass: 'main', scale: { heightM: 16.6, widthM: 6.8 } });
+  assert.equal(kept.intent!.fronts[0].windowSurround, undefined);
+  assert.equal(fillOf(kept, 'fronts/0/windowSurround')!.source, 'today');
+  // The required cornice is never left to today: it draws from the band.
+  assert.equal(fillOf(kept, 'fronts/0/cornice')!.source, 'family');
+  const full = draws({ '1800-1879|main|h13-17': { windowSurround: { n: 25, dist: [['stone-lintel', 25]] } } });
+  const drawn = run({ spec: s, families: full, templates: null, streetClass: 'main', scale: { heightM: 16.6, widthM: 6.8 } });
+  assert.equal(drawn.intent!.fronts[0].windowSurround, 'stone-lintel');
+  assert.match(fillOf(drawn, 'fronts/0/windowSurround')!.ref, /1800-1879\|main\|h13-17/);
+  assert.equal(scaleBucket(16.6), 'h13-17');
+  assert.equal(scaleBucket(null), null);
+  // A side-street front with a small cell draws from the band.
+  const side = run({ spec: s, families: small, templates: null, streetClass: 'side' });
+  assert.equal(fillOf(side, 'fronts/0/windowSurround')!.ref.startsWith('family draw 1800-1879 '), true);
+});
+
+test('rule 1 in the completer: the pinned Weteringschans front takes no template from the low Den Texstraat houses', () => {
+  const T = { v: 2, rows: [{ p: '0000000000000011', x: G168094.lng + 0.001, y: G168094.lat, yr: 1876, st: 'Den Texstraat', c: 'side' as const, h: 11, w: 6.1, src: 'streetlevel-measured', f: { 'fronts/0/windowSurround': 'sill' } }] };
+  const c = run({ spec: spec('68043'), templates: T, streetClass: 'main', scale: { heightM: 16.6, widthM: 6.8 } });
+  assert.ok(!c.fills.some(f => f.source === 'template'));
 });

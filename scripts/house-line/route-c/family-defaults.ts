@@ -10,11 +10,18 @@
  *   node --import tsx scripts/house-line/route-c/family-defaults.ts [--write]
  *
  * --write: src/canalRecall/houseSpec/family-defaults.json (else prints the table).
+ *
+ * `draws` (round 3 ruling): for the dressings a front without a street template draws (DRAW_FIELDS), the measured
+ * distribution per cell: the band, the band split by street class (streetClass.ts), and by class and scale (the building tile's
+ * 3DBAG height: under 13 m, 13–17 m, 17 m and over). complete.ts draws one value per group of similar adjoining fronts and uses a
+ * split cell only once it holds n >= 20.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { FAMILIES, familyOf, RAISED_GABLES } from '../../../src/canalRecall/houseSpec/families.ts';
+import { streetClassOf } from '../../../src/canalRecall/houseSpec/streetClass.ts';
+import { DRAW_FIELDS, scaleBucket } from '../../../src/canalRecall/houseSpec/complete.ts';
 
 const EXTRACT = 'public/data/extracts/amsterdam';
 const PHOTO = new Set(['author', 'reviewed', 'streetlevel-measured']);
@@ -40,6 +47,22 @@ const push = (fam: string, field: string, v: unknown) => {
   m.get(field)!.push(v);
 };
 
+/** Per draw cell, per dressing field: the observed values. */
+const drawObs = new Map<string, Map<string, unknown[]>>();
+const pushDraw = (cell: string, field: string, v: unknown) => {
+  if (!drawObs.has(cell)) drawObs.set(cell, new Map());
+  const m = drawObs.get(cell)!; if (!m.has(field)) m.set(field, []); m.get(field)!.push(v);
+};
+const heightCache = new Map<string, Map<string, number>>();
+const heightsOf = (tile: string) => {
+  if (!heightCache.has(tile)) {
+    const f = path.join(EXTRACT, 'building-tiles/14', `${tile}.geojson.gz`), m = new Map<string, number>();
+    if (fs.existsSync(f)) for (const ft of readGz(f).features) if (typeof ft.properties.height === 'number' && ft.properties.height > 0) m.set(String(ft.properties.id), ft.properties.height);
+    heightCache.set(tile, m);
+  }
+  return heightCache.get(tile)!;
+};
+
 let houses = 0;
 const ARCHETYPES = ['unknown', 'canal-house', 'c19-terrace', 'c19-house', 'school-block', 'modern-block', 'modern-house', 'tower', 'large-flat', 'outbuilding'];
 const bandHouses: Record<string, number> = {}, bandArchetypes: Record<string, Record<string, number>> = {};
@@ -59,6 +82,12 @@ for (const x of fs.readdirSync(path.join(EXTRACT, 'house-specs/14'))) {
       const fams = domestic ? ['all', band] : ['all'];
       houses++;
       if (domestic) { bandHouses[band] = (bandHouses[band] ?? 0) + 1; bandArchetypes[band] ??= {}; bandArchetypes[band][archetype] = (bandArchetypes[band][archetype] ?? 0) + 1; }
+      if (domestic && photo('fronts/0/gable')) {
+        const cls = streetClassOf(f0.street), hb = scaleBucket(heightsOf(tile).get(id) ?? null);
+        const cells = [band, ...(cls ? [`${band}|${cls}`] : []), ...(cls && hb ? [`${band}|${cls}|${hb}`] : [])];
+        const vals: Record<string, unknown> = { windowSurround: f0.windowSurround ?? 'none', windowSills: f0.windowSills ?? 'none', cornice: photo('fronts/0/cornice') ? f0.cornice : undefined, frame: photo('palette/frame') ? d.palette?.frame : undefined };
+        for (const c of cells) for (const field of DRAW_FIELDS) if (vals[field] !== undefined && vals[field] !== null) pushDraw(c, field, vals[field]);
+      }
       for (const fam of fams) {
         if (photo('fronts/0/gable')) {
           push(fam, 'gable', f0.gable);
@@ -127,7 +156,17 @@ for (const fam of ['all', ...FAMILIES.map(f => f.id)]) {
     table[fam][field] = NUMERIC.has(field) ? median(vs as number[]) : HEX.has(field) ? medoidHex(vs as string[]) : mode(vs);
   }
 }
-const out = { v: 2, bandHouses, bandArchetypes, generated: 'scripts/house-line/route-c/family-defaults.ts', from: `${EXTRACT}/house-specs/14 (photo sources) x bag-facts years`, houses, families: FAMILIES.map(f => ({ id: f.id, from: f.from, to: f.to })), table };
+const DIST_TOP = 12;
+const draws: Record<string, Record<string, { n: number; dist: [unknown, number][] }>> = {};
+for (const [cell, m] of [...drawObs].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
+  draws[cell] = {};
+  for (const [field, vs] of m) {
+    const c = new Map<string, number>();
+    for (const v of vs) c.set(JSON.stringify(v), (c.get(JSON.stringify(v)) ?? 0) + 1);
+    draws[cell][field] = { n: vs.length, dist: [...c].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, DIST_TOP).map(([k, n]) => [JSON.parse(k), n]) };
+  }
+}
+const out = { v: 3, draws, bandHouses, bandArchetypes, generated: 'scripts/house-line/route-c/family-defaults.ts', from: `${EXTRACT}/house-specs/14 (photo sources) x bag-facts years`, houses, families: FAMILIES.map(f => ({ id: f.id, from: f.from, to: f.to })), table };
 if (process.argv.includes('--write')) {
   fs.writeFileSync('src/canalRecall/houseSpec/family-defaults.json', JSON.stringify(out, null, 1) + '\n');
   console.log(`wrote src/canalRecall/houseSpec/family-defaults.json (${houses} houses)`);

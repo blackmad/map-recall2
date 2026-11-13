@@ -1,5 +1,3305 @@
 {
- "v": 2,
+ "v": 3,
+ "draws": {
+  "1800-1879": {
+   "windowSurround": {
+    "n": 136,
+    "dist": [
+     [
+      "sill",
+      98
+     ],
+     [
+      "stone-lintel",
+      16
+     ],
+     [
+      "none",
+      11
+     ],
+     [
+      "keystone",
+      7
+     ],
+     [
+      "full-frame",
+      4
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 136,
+    "dist": [
+     [
+      "none",
+      136
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 136,
+    "dist": [
+     [
+      "simple",
+      112
+     ],
+     [
+      "none",
+      11
+     ],
+     [
+      "frieze",
+      8
+     ],
+     [
+      "bracketed",
+      4
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 136,
+    "dist": [
+     [
+      "white-painted",
+      100
+     ],
+     [
+      "white",
+      36
+     ]
+    ]
+   }
+  },
+  "1800-1879|main": {
+   "windowSurround": {
+    "n": 40,
+    "dist": [
+     [
+      "sill",
+      19
+     ],
+     [
+      "stone-lintel",
+      16
+     ],
+     [
+      "full-frame",
+      3
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 40,
+    "dist": [
+     [
+      "none",
+      40
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 40,
+    "dist": [
+     [
+      "simple",
+      30
+     ],
+     [
+      "frieze",
+      5
+     ],
+     [
+      "none",
+      3
+     ],
+     [
+      "bracketed",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 40,
+    "dist": [
+     [
+      "white-painted",
+      21
+     ],
+     [
+      "white",
+      19
+     ]
+    ]
+   }
+  },
+  "1800-1879|main|h13-17": {
+   "windowSurround": {
+    "n": 30,
+    "dist": [
+     [
+      "stone-lintel",
+      16
+     ],
+     [
+      "sill",
+      11
+     ],
+     [
+      "none",
+      2
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 30,
+    "dist": [
+     [
+      "none",
+      30
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 30,
+    "dist": [
+     [
+      "simple",
+      26
+     ],
+     [
+      "bracketed",
+      2
+     ],
+     [
+      "frieze",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 30,
+    "dist": [
+     [
+      "white",
+      17
+     ],
+     [
+      "white-painted",
+      13
+     ]
+    ]
+   }
+  },
+  "1800-1879|main|h<13": {
+   "windowSurround": {
+    "n": 10,
+    "dist": [
+     [
+      "sill",
+      8
+     ],
+     [
+      "full-frame",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 10,
+    "dist": [
+     [
+      "none",
+      10
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 10,
+    "dist": [
+     [
+      "frieze",
+      4
+     ],
+     [
+      "simple",
+      4
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 10,
+    "dist": [
+     [
+      "white-painted",
+      8
+     ],
+     [
+      "white",
+      2
+     ]
+    ]
+   }
+  },
+  "1800-1879|side": {
+   "windowSurround": {
+    "n": 96,
+    "dist": [
+     [
+      "sill",
+      79
+     ],
+     [
+      "none",
+      9
+     ],
+     [
+      "keystone",
+      7
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 96,
+    "dist": [
+     [
+      "none",
+      96
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 96,
+    "dist": [
+     [
+      "simple",
+      82
+     ],
+     [
+      "none",
+      8
+     ],
+     [
+      "frieze",
+      3
+     ],
+     [
+      "bracketed",
+      2
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 96,
+    "dist": [
+     [
+      "white-painted",
+      79
+     ],
+     [
+      "white",
+      17
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h13-17": {
+   "windowSurround": {
+    "n": 72,
+    "dist": [
+     [
+      "sill",
+      61
+     ],
+     [
+      "none",
+      7
+     ],
+     [
+      "keystone",
+      4
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 72,
+    "dist": [
+     [
+      "none",
+      72
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 72,
+    "dist": [
+     [
+      "simple",
+      65
+     ],
+     [
+      "none",
+      5
+     ],
+     [
+      "bracketed",
+      1
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 72,
+    "dist": [
+     [
+      "white-painted",
+      60
+     ],
+     [
+      "white",
+      12
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h17+": {
+   "windowSurround": {
+    "n": 9,
+    "dist": [
+     [
+      "sill",
+      6
+     ],
+     [
+      "keystone",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 9,
+    "dist": [
+     [
+      "none",
+      9
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 9,
+    "dist": [
+     [
+      "simple",
+      8
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 9,
+    "dist": [
+     [
+      "white-painted",
+      8
+     ],
+     [
+      "white",
+      1
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h<13": {
+   "windowSurround": {
+    "n": 15,
+    "dist": [
+     [
+      "sill",
+      12
+     ],
+     [
+      "none",
+      2
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 15,
+    "dist": [
+     [
+      "none",
+      15
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 15,
+    "dist": [
+     [
+      "simple",
+      9
+     ],
+     [
+      "none",
+      3
+     ],
+     [
+      "bracketed",
+      1
+     ],
+     [
+      "frieze",
+      1
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 15,
+    "dist": [
+     [
+      "white-painted",
+      11
+     ],
+     [
+      "white",
+      4
+     ]
+    ]
+   }
+  },
+  "1880-1919": {
+   "windowSurround": {
+    "n": 660,
+    "dist": [
+     [
+      "none",
+      315
+     ],
+     [
+      "sill",
+      185
+     ],
+     [
+      "keystone",
+      86
+     ],
+     [
+      "stone-lintel",
+      37
+     ],
+     [
+      "jack-blocks",
+      18
+     ],
+     [
+      "full-frame",
+      14
+     ],
+     [
+      "eared-keystone",
+      5
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 660,
+    "dist": [
+     [
+      "none",
+      654
+     ],
+     [
+      "consoles",
+      6
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 659,
+    "dist": [
+     [
+      "simple",
+      371
+     ],
+     [
+      "heavy",
+      142
+     ],
+     [
+      "bracketed",
+      70
+     ],
+     [
+      "none",
+      55
+     ],
+     [
+      "frieze",
+      21
+     ]
+    ]
+   },
+   "frame": {
+    "n": 659,
+    "dist": [
+     [
+      "white-painted",
+      252
+     ],
+     [
+      "white",
+      97
+     ],
+     [
+      "#b8b6a4",
+      71
+     ],
+     [
+      "#e8e6dc",
+      40
+     ],
+     [
+      "#e4e6e2",
+      35
+     ],
+     [
+      "#a6aa9a",
+      31
+     ],
+     [
+      "#a7a89d",
+      27
+     ],
+     [
+      "#dfdad0",
+      16
+     ],
+     [
+      "#dedbd3",
+      14
+     ],
+     [
+      "#b3b5a3",
+      10
+     ],
+     [
+      "#d8d3c6",
+      9
+     ],
+     [
+      "cream",
+      9
+     ]
+    ]
+   }
+  },
+  "1880-1919|main": {
+   "windowSurround": {
+    "n": 312,
+    "dist": [
+     [
+      "none",
+      209
+     ],
+     [
+      "keystone",
+      51
+     ],
+     [
+      "sill",
+      30
+     ],
+     [
+      "stone-lintel",
+      8
+     ],
+     [
+      "eared-keystone",
+      5
+     ],
+     [
+      "full-frame",
+      5
+     ],
+     [
+      "jack-blocks",
+      4
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 312,
+    "dist": [
+     [
+      "none",
+      306
+     ],
+     [
+      "consoles",
+      6
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 312,
+    "dist": [
+     [
+      "simple",
+      125
+     ],
+     [
+      "heavy",
+      91
+     ],
+     [
+      "bracketed",
+      64
+     ],
+     [
+      "frieze",
+      20
+     ],
+     [
+      "none",
+      12
+     ]
+    ]
+   },
+   "frame": {
+    "n": 312,
+    "dist": [
+     [
+      "white",
+      77
+     ],
+     [
+      "#b8b6a4",
+      71
+     ],
+     [
+      "#a6aa9a",
+      31
+     ],
+     [
+      "white-painted",
+      31
+     ],
+     [
+      "#a7a89d",
+      27
+     ],
+     [
+      "#b3b5a3",
+      10
+     ],
+     [
+      "#d8d3c6",
+      9
+     ],
+     [
+      "cream",
+      9
+     ],
+     [
+      "#e8e6dc",
+      8
+     ],
+     [
+      "#dedbd3",
+      7
+     ],
+     [
+      "#b5bcad",
+      5
+     ],
+     [
+      "#b6b8a5",
+      4
+     ]
+    ]
+   }
+  },
+  "1880-1919|main|h13-17": {
+   "windowSurround": {
+    "n": 227,
+    "dist": [
+     [
+      "none",
+      170
+     ],
+     [
+      "keystone",
+      24
+     ],
+     [
+      "sill",
+      23
+     ],
+     [
+      "stone-lintel",
+      6
+     ],
+     [
+      "jack-blocks",
+      4
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 227,
+    "dist": [
+     [
+      "none",
+      227
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 227,
+    "dist": [
+     [
+      "simple",
+      95
+     ],
+     [
+      "heavy",
+      61
+     ],
+     [
+      "bracketed",
+      46
+     ],
+     [
+      "frieze",
+      17
+     ],
+     [
+      "none",
+      8
+     ]
+    ]
+   },
+   "frame": {
+    "n": 227,
+    "dist": [
+     [
+      "#b8b6a4",
+      53
+     ],
+     [
+      "white",
+      46
+     ],
+     [
+      "#a6aa9a",
+      27
+     ],
+     [
+      "#a7a89d",
+      25
+     ],
+     [
+      "white-painted",
+      17
+     ],
+     [
+      "#d8d3c6",
+      8
+     ],
+     [
+      "#e8e6dc",
+      8
+     ],
+     [
+      "#b3b5a3",
+      7
+     ],
+     [
+      "#dedbd3",
+      7
+     ],
+     [
+      "#b5bcad",
+      5
+     ],
+     [
+      "cream",
+      5
+     ],
+     [
+      "#b6b8a5",
+      4
+     ]
+    ]
+   }
+  },
+  "1880-1919|main|h17+": {
+   "windowSurround": {
+    "n": 81,
+    "dist": [
+     [
+      "none",
+      39
+     ],
+     [
+      "keystone",
+      27
+     ],
+     [
+      "eared-keystone",
+      5
+     ],
+     [
+      "full-frame",
+      4
+     ],
+     [
+      "sill",
+      4
+     ],
+     [
+      "stone-lintel",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 81,
+    "dist": [
+     [
+      "none",
+      75
+     ],
+     [
+      "consoles",
+      6
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 81,
+    "dist": [
+     [
+      "heavy",
+      30
+     ],
+     [
+      "simple",
+      28
+     ],
+     [
+      "bracketed",
+      18
+     ],
+     [
+      "none",
+      3
+     ],
+     [
+      "frieze",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 81,
+    "dist": [
+     [
+      "white",
+      30
+     ],
+     [
+      "#b8b6a4",
+      18
+     ],
+     [
+      "white-painted",
+      11
+     ],
+     [
+      "#a6aa9a",
+      4
+     ],
+     [
+      "cream",
+      4
+     ],
+     [
+      "#a8ada0",
+      3
+     ],
+     [
+      "#b3b5a3",
+      3
+     ],
+     [
+      "#a7a89d",
+      2
+     ],
+     [
+      "#bcc4b2",
+      2
+     ],
+     [
+      "#b7beac",
+      1
+     ],
+     [
+      "#b8bfa4",
+      1
+     ],
+     [
+      "#d8d3c6",
+      1
+     ]
+    ]
+   }
+  },
+  "1880-1919|main|h<13": {
+   "windowSurround": {
+    "n": 4,
+    "dist": [
+     [
+      "sill",
+      3
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 4,
+    "dist": [
+     [
+      "none",
+      4
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 4,
+    "dist": [
+     [
+      "simple",
+      2
+     ],
+     [
+      "frieze",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 4,
+    "dist": [
+     [
+      "white-painted",
+      3
+     ],
+     [
+      "white",
+      1
+     ]
+    ]
+   }
+  },
+  "1880-1919|side": {
+   "windowSurround": {
+    "n": 347,
+    "dist": [
+     [
+      "sill",
+      155
+     ],
+     [
+      "none",
+      105
+     ],
+     [
+      "keystone",
+      35
+     ],
+     [
+      "stone-lintel",
+      29
+     ],
+     [
+      "jack-blocks",
+      14
+     ],
+     [
+      "full-frame",
+      9
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 347,
+    "dist": [
+     [
+      "none",
+      347
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 347,
+    "dist": [
+     [
+      "simple",
+      246
+     ],
+     [
+      "heavy",
+      51
+     ],
+     [
+      "none",
+      43
+     ],
+     [
+      "bracketed",
+      6
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 347,
+    "dist": [
+     [
+      "white-painted",
+      221
+     ],
+     [
+      "#e4e6e2",
+      35
+     ],
+     [
+      "#e8e6dc",
+      32
+     ],
+     [
+      "white",
+      20
+     ],
+     [
+      "#dfdad0",
+      16
+     ],
+     [
+      "#e9e6dc",
+      8
+     ],
+     [
+      "#dedbd3",
+      7
+     ],
+     [
+      "#d9d4c0",
+      6
+     ],
+     [
+      "#9a2a22",
+      1
+     ],
+     [
+      "cream-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "1880-1919|side|h13-17": {
+   "windowSurround": {
+    "n": 297,
+    "dist": [
+     [
+      "sill",
+      126
+     ],
+     [
+      "none",
+      95
+     ],
+     [
+      "keystone",
+      30
+     ],
+     [
+      "stone-lintel",
+      26
+     ],
+     [
+      "jack-blocks",
+      14
+     ],
+     [
+      "full-frame",
+      6
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 297,
+    "dist": [
+     [
+      "none",
+      297
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 297,
+    "dist": [
+     [
+      "simple",
+      203
+     ],
+     [
+      "heavy",
+      47
+     ],
+     [
+      "none",
+      41
+     ],
+     [
+      "bracketed",
+      5
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 297,
+    "dist": [
+     [
+      "white-painted",
+      183
+     ],
+     [
+      "#e4e6e2",
+      33
+     ],
+     [
+      "#e8e6dc",
+      32
+     ],
+     [
+      "#dfdad0",
+      16
+     ],
+     [
+      "white",
+      14
+     ],
+     [
+      "#dedbd3",
+      7
+     ],
+     [
+      "#d9d4c0",
+      6
+     ],
+     [
+      "#e9e6dc",
+      6
+     ]
+    ]
+   }
+  },
+  "1880-1919|side|h17+": {
+   "windowSurround": {
+    "n": 30,
+    "dist": [
+     [
+      "sill",
+      17
+     ],
+     [
+      "keystone",
+      5
+     ],
+     [
+      "none",
+      3
+     ],
+     [
+      "stone-lintel",
+      3
+     ],
+     [
+      "full-frame",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 30,
+    "dist": [
+     [
+      "none",
+      30
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 30,
+    "dist": [
+     [
+      "simple",
+      25
+     ],
+     [
+      "heavy",
+      4
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 30,
+    "dist": [
+     [
+      "white-painted",
+      26
+     ],
+     [
+      "#e4e6e2",
+      2
+     ],
+     [
+      "white",
+      2
+     ]
+    ]
+   }
+  },
+  "1880-1919|side|h<13": {
+   "windowSurround": {
+    "n": 20,
+    "dist": [
+     [
+      "sill",
+      12
+     ],
+     [
+      "none",
+      7
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 20,
+    "dist": [
+     [
+      "none",
+      20
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 20,
+    "dist": [
+     [
+      "simple",
+      18
+     ],
+     [
+      "bracketed",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 20,
+    "dist": [
+     [
+      "white-painted",
+      12
+     ],
+     [
+      "white",
+      4
+     ],
+     [
+      "#e9e6dc",
+      2
+     ],
+     [
+      "#9a2a22",
+      1
+     ],
+     [
+      "cream-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "1920-1944": {
+   "windowSurround": {
+    "n": 495,
+    "dist": [
+     [
+      "none",
+      389
+     ],
+     [
+      "sill",
+      99
+     ],
+     [
+      "full-frame",
+      7
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 495,
+    "dist": [
+     [
+      "none",
+      495
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 495,
+    "dist": [
+     [
+      "none",
+      440
+     ],
+     [
+      "simple",
+      48
+     ],
+     [
+      "heavy",
+      5
+     ],
+     [
+      "bracketed",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 495,
+    "dist": [
+     [
+      "#efeee8",
+      103
+     ],
+     [
+      "#e8e6de",
+      48
+     ],
+     [
+      "#acab93",
+      42
+     ],
+     [
+      "white-painted",
+      36
+     ],
+     [
+      "#e6e2d6",
+      33
+     ],
+     [
+      "#6b6454",
+      26
+     ],
+     [
+      "#e4dfcd",
+      23
+     ],
+     [
+      "#acac99",
+      20
+     ],
+     [
+      "#ebe8df",
+      19
+     ],
+     [
+      "#eeeeea",
+      19
+     ],
+     [
+      "#ecebe4",
+      18
+     ],
+     [
+      "#a4a39d",
+      16
+     ]
+    ]
+   }
+  },
+  "1920-1944|main": {
+   "windowSurround": {
+    "n": 187,
+    "dist": [
+     [
+      "none",
+      163
+     ],
+     [
+      "sill",
+      17
+     ],
+     [
+      "full-frame",
+      7
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 187,
+    "dist": [
+     [
+      "none",
+      187
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 187,
+    "dist": [
+     [
+      "none",
+      164
+     ],
+     [
+      "simple",
+      17
+     ],
+     [
+      "heavy",
+      5
+     ],
+     [
+      "bracketed",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 187,
+    "dist": [
+     [
+      "#acab93",
+      42
+     ],
+     [
+      "#acac99",
+      20
+     ],
+     [
+      "#e6e2d6",
+      17
+     ],
+     [
+      "#a4a39d",
+      16
+     ],
+     [
+      "#aaaa91",
+      15
+     ],
+     [
+      "#abac96",
+      12
+     ],
+     [
+      "#e8e6de",
+      12
+     ],
+     [
+      "white",
+      11
+     ],
+     [
+      "white-painted",
+      9
+     ],
+     [
+      "#ebe8df",
+      8
+     ],
+     [
+      "#e6e4de",
+      6
+     ],
+     [
+      "#f0f0ec",
+      5
+     ]
+    ]
+   }
+  },
+  "1920-1944|main|h13-17": {
+   "windowSurround": {
+    "n": 141,
+    "dist": [
+     [
+      "none",
+      122
+     ],
+     [
+      "sill",
+      16
+     ],
+     [
+      "full-frame",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 141,
+    "dist": [
+     [
+      "none",
+      141
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 141,
+    "dist": [
+     [
+      "none",
+      123
+     ],
+     [
+      "simple",
+      16
+     ],
+     [
+      "heavy",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 141,
+    "dist": [
+     [
+      "#acab93",
+      34
+     ],
+     [
+      "#e6e2d6",
+      17
+     ],
+     [
+      "#a4a39d",
+      14
+     ],
+     [
+      "#abac96",
+      12
+     ],
+     [
+      "#acac99",
+      12
+     ],
+     [
+      "#e8e6de",
+      12
+     ],
+     [
+      "#ebe8df",
+      8
+     ],
+     [
+      "#aaaa91",
+      6
+     ],
+     [
+      "#e6e4de",
+      6
+     ],
+     [
+      "white",
+      5
+     ],
+     [
+      "#b4b3a2",
+      4
+     ],
+     [
+      "#f0f0ec",
+      4
+     ]
+    ]
+   }
+  },
+  "1920-1944|main|h17+": {
+   "windowSurround": {
+    "n": 35,
+    "dist": [
+     [
+      "none",
+      32
+     ],
+     [
+      "full-frame",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 35,
+    "dist": [
+     [
+      "none",
+      35
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 35,
+    "dist": [
+     [
+      "none",
+      32
+     ],
+     [
+      "heavy",
+      2
+     ],
+     [
+      "bracketed",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 35,
+    "dist": [
+     [
+      "#aaaa91",
+      9
+     ],
+     [
+      "#acab93",
+      8
+     ],
+     [
+      "#acac99",
+      8
+     ],
+     [
+      "white",
+      5
+     ],
+     [
+      "#a4a39d",
+      2
+     ],
+     [
+      "#a7a896",
+      1
+     ],
+     [
+      "#adad9a",
+      1
+     ],
+     [
+      "#aeac93",
+      1
+     ]
+    ]
+   }
+  },
+  "1920-1944|main|h<13": {
+   "windowSurround": {
+    "n": 11,
+    "dist": [
+     [
+      "none",
+      9
+     ],
+     [
+      "full-frame",
+      1
+     ],
+     [
+      "sill",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 11,
+    "dist": [
+     [
+      "none",
+      11
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 11,
+    "dist": [
+     [
+      "none",
+      9
+     ],
+     [
+      "heavy",
+      1
+     ],
+     [
+      "simple",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 11,
+    "dist": [
+     [
+      "white-painted",
+      9
+     ],
+     [
+      "#f0f0ec",
+      1
+     ],
+     [
+      "white",
+      1
+     ]
+    ]
+   }
+  },
+  "1920-1944|side": {
+   "windowSurround": {
+    "n": 308,
+    "dist": [
+     [
+      "none",
+      226
+     ],
+     [
+      "sill",
+      82
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 308,
+    "dist": [
+     [
+      "none",
+      308
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 308,
+    "dist": [
+     [
+      "none",
+      276
+     ],
+     [
+      "simple",
+      31
+     ],
+     [
+      "bracketed",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 308,
+    "dist": [
+     [
+      "#efeee8",
+      103
+     ],
+     [
+      "#e8e6de",
+      36
+     ],
+     [
+      "white-painted",
+      27
+     ],
+     [
+      "#6b6454",
+      23
+     ],
+     [
+      "#e4dfcd",
+      23
+     ],
+     [
+      "#eeeeea",
+      19
+     ],
+     [
+      "#ecebe4",
+      18
+     ],
+     [
+      "#e6e2d6",
+      16
+     ],
+     [
+      "#e8e4d6",
+      13
+     ],
+     [
+      "#e8e2d0",
+      11
+     ],
+     [
+      "#ebe8df",
+      11
+     ],
+     [
+      "#eeeee8",
+      5
+     ]
+    ]
+   }
+  },
+  "1920-1944|side|h13-17": {
+   "windowSurround": {
+    "n": 122,
+    "dist": [
+     [
+      "none",
+      82
+     ],
+     [
+      "sill",
+      40
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 122,
+    "dist": [
+     [
+      "none",
+      122
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 122,
+    "dist": [
+     [
+      "none",
+      115
+     ],
+     [
+      "simple",
+      6
+     ],
+     [
+      "bracketed",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 122,
+    "dist": [
+     [
+      "#eeeeea",
+      19
+     ],
+     [
+      "#ecebe4",
+      18
+     ],
+     [
+      "#e6e2d6",
+      16
+     ],
+     [
+      "#e8e4d6",
+      13
+     ],
+     [
+      "#e8e2d0",
+      11
+     ],
+     [
+      "#e8e6de",
+      11
+     ],
+     [
+      "#ebe8df",
+      11
+     ],
+     [
+      "white-painted",
+      10
+     ],
+     [
+      "#eeeee8",
+      5
+     ],
+     [
+      "#6b6454",
+      3
+     ],
+     [
+      "#e4dfcd",
+      2
+     ],
+     [
+      "white",
+      2
+     ]
+    ]
+   }
+  },
+  "1920-1944|side|h<13": {
+   "windowSurround": {
+    "n": 186,
+    "dist": [
+     [
+      "none",
+      144
+     ],
+     [
+      "sill",
+      42
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 186,
+    "dist": [
+     [
+      "none",
+      186
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 186,
+    "dist": [
+     [
+      "none",
+      161
+     ],
+     [
+      "simple",
+      25
+     ]
+    ]
+   },
+   "frame": {
+    "n": 186,
+    "dist": [
+     [
+      "#efeee8",
+      102
+     ],
+     [
+      "#e8e6de",
+      25
+     ],
+     [
+      "#e4dfcd",
+      21
+     ],
+     [
+      "#6b6454",
+      20
+     ],
+     [
+      "white-painted",
+      17
+     ],
+     [
+      "#f0f0ec",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944": {
+   "windowSurround": {
+    "n": 53,
+    "dist": [
+     [
+      "none",
+      47
+     ],
+     [
+      "full-frame",
+      5
+     ],
+     [
+      "sill",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 53,
+    "dist": [
+     [
+      "none",
+      53
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 53,
+    "dist": [
+     [
+      "simple",
+      40
+     ],
+     [
+      "none",
+      11
+     ],
+     [
+      "heavy",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 53,
+    "dist": [
+     [
+      "#a5aea1",
+      35
+     ],
+     [
+      "white",
+      5
+     ],
+     [
+      "#f0f0ec",
+      4
+     ],
+     [
+      "white-painted",
+      4
+     ],
+     [
+      "#e6e0d0",
+      2
+     ],
+     [
+      "#e8e6de",
+      1
+     ],
+     [
+      "cream-painted",
+      1
+     ],
+     [
+      "grey",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|main": {
+   "windowSurround": {
+    "n": 38,
+    "dist": [
+     [
+      "none",
+      35
+     ],
+     [
+      "full-frame",
+      2
+     ],
+     [
+      "sill",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 38,
+    "dist": [
+     [
+      "none",
+      38
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 38,
+    "dist": [
+     [
+      "simple",
+      36
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 38,
+    "dist": [
+     [
+      "#a5aea1",
+      35
+     ],
+     [
+      "white",
+      2
+     ],
+     [
+      "white-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|main|h13-17": {
+   "windowSurround": {
+    "n": 35,
+    "dist": [
+     [
+      "none",
+      33
+     ],
+     [
+      "full-frame",
+      1
+     ],
+     [
+      "sill",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 35,
+    "dist": [
+     [
+      "none",
+      35
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 35,
+    "dist": [
+     [
+      "simple",
+      33
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 35,
+    "dist": [
+     [
+      "#a5aea1",
+      33
+     ],
+     [
+      "white",
+      1
+     ],
+     [
+      "white-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|main|h17+": {
+   "windowSurround": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 1,
+    "dist": [
+     [
+      "simple",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 1,
+    "dist": [
+     [
+      "#a5aea1",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|main|h<13": {
+   "windowSurround": {
+    "n": 2,
+    "dist": [
+     [
+      "full-frame",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 2,
+    "dist": [
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 2,
+    "dist": [
+     [
+      "simple",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 2,
+    "dist": [
+     [
+      "#a5aea1",
+      1
+     ],
+     [
+      "white",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|side": {
+   "windowSurround": {
+    "n": 15,
+    "dist": [
+     [
+      "none",
+      12
+     ],
+     [
+      "full-frame",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 15,
+    "dist": [
+     [
+      "none",
+      15
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 15,
+    "dist": [
+     [
+      "none",
+      9
+     ],
+     [
+      "simple",
+      4
+     ],
+     [
+      "heavy",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 15,
+    "dist": [
+     [
+      "#f0f0ec",
+      4
+     ],
+     [
+      "white",
+      3
+     ],
+     [
+      "white-painted",
+      3
+     ],
+     [
+      "#e6e0d0",
+      2
+     ],
+     [
+      "#e8e6de",
+      1
+     ],
+     [
+      "cream-painted",
+      1
+     ],
+     [
+      "grey",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|side|h13-17": {
+   "windowSurround": {
+    "n": 7,
+    "dist": [
+     [
+      "none",
+      4
+     ],
+     [
+      "full-frame",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 7,
+    "dist": [
+     [
+      "none",
+      7
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 7,
+    "dist": [
+     [
+      "simple",
+      4
+     ],
+     [
+      "none",
+      3
+     ]
+    ]
+   },
+   "frame": {
+    "n": 7,
+    "dist": [
+     [
+      "white",
+      3
+     ],
+     [
+      "white-painted",
+      3
+     ],
+     [
+      "#e8e6de",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|side|h17+": {
+   "windowSurround": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 1,
+    "dist": [
+     [
+      "grey",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|side|h<13": {
+   "windowSurround": {
+    "n": 7,
+    "dist": [
+     [
+      "none",
+      7
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 7,
+    "dist": [
+     [
+      "none",
+      7
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 7,
+    "dist": [
+     [
+      "none",
+      5
+     ],
+     [
+      "heavy",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 7,
+    "dist": [
+     [
+      "#f0f0ec",
+      4
+     ],
+     [
+      "#e6e0d0",
+      2
+     ],
+     [
+      "cream-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800": {
+   "windowSurround": {
+    "n": 145,
+    "dist": [
+     [
+      "none",
+      55
+     ],
+     [
+      "sill",
+      50
+     ],
+     [
+      "full-frame",
+      37
+     ],
+     [
+      "keystone",
+      2
+     ],
+     [
+      "stone-lintel",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 145,
+    "dist": [
+     [
+      "none",
+      145
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 143,
+    "dist": [
+     [
+      "none",
+      54
+     ],
+     [
+      "simple",
+      45
+     ],
+     [
+      "frieze",
+      18
+     ],
+     [
+      "heavy",
+      14
+     ],
+     [
+      "bracketed",
+      12
+     ]
+    ]
+   },
+   "frame": {
+    "n": 143,
+    "dist": [
+     [
+      "white",
+      82
+     ],
+     [
+      "white-painted",
+      47
+     ],
+     [
+      "cream-painted",
+      5
+     ],
+     [
+      "#2b2420",
+      1
+     ],
+     [
+      "#2e2a26",
+      1
+     ],
+     [
+      "#4a3426",
+      1
+     ],
+     [
+      "#7a1f20",
+      1
+     ],
+     [
+      "#a8281e",
+      1
+     ],
+     [
+      "#e4dcc4",
+      1
+     ],
+     [
+      "#e6e2d8",
+      1
+     ],
+     [
+      "black-painted",
+      1
+     ],
+     [
+      "cream",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|main": {
+   "windowSurround": {
+    "n": 30,
+    "dist": [
+     [
+      "full-frame",
+      11
+     ],
+     [
+      "none",
+      9
+     ],
+     [
+      "sill",
+      8
+     ],
+     [
+      "keystone",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 30,
+    "dist": [
+     [
+      "none",
+      30
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 30,
+    "dist": [
+     [
+      "none",
+      15
+     ],
+     [
+      "simple",
+      10
+     ],
+     [
+      "bracketed",
+      3
+     ],
+     [
+      "frieze",
+      1
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 30,
+    "dist": [
+     [
+      "white",
+      21
+     ],
+     [
+      "white-painted",
+      7
+     ],
+     [
+      "black-painted",
+      1
+     ],
+     [
+      "cream-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|main|h13-17": {
+   "windowSurround": {
+    "n": 17,
+    "dist": [
+     [
+      "full-frame",
+      7
+     ],
+     [
+      "none",
+      6
+     ],
+     [
+      "sill",
+      3
+     ],
+     [
+      "keystone",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 17,
+    "dist": [
+     [
+      "none",
+      17
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 17,
+    "dist": [
+     [
+      "none",
+      7
+     ],
+     [
+      "simple",
+      5
+     ],
+     [
+      "bracketed",
+      3
+     ],
+     [
+      "frieze",
+      1
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 17,
+    "dist": [
+     [
+      "white",
+      14
+     ],
+     [
+      "white-painted",
+      2
+     ],
+     [
+      "black-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|main|h17+": {
+   "windowSurround": {
+    "n": 1,
+    "dist": [
+     [
+      "keystone",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 1,
+    "dist": [
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 1,
+    "dist": [
+     [
+      "simple",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 1,
+    "dist": [
+     [
+      "white",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|main|h<13": {
+   "windowSurround": {
+    "n": 12,
+    "dist": [
+     [
+      "sill",
+      5
+     ],
+     [
+      "full-frame",
+      4
+     ],
+     [
+      "none",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 12,
+    "dist": [
+     [
+      "none",
+      12
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 12,
+    "dist": [
+     [
+      "none",
+      8
+     ],
+     [
+      "simple",
+      4
+     ]
+    ]
+   },
+   "frame": {
+    "n": 12,
+    "dist": [
+     [
+      "white",
+      6
+     ],
+     [
+      "white-painted",
+      5
+     ],
+     [
+      "cream-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|side": {
+   "windowSurround": {
+    "n": 113,
+    "dist": [
+     [
+      "none",
+      44
+     ],
+     [
+      "sill",
+      42
+     ],
+     [
+      "full-frame",
+      26
+     ],
+     [
+      "stone-lintel",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 113,
+    "dist": [
+     [
+      "none",
+      113
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 113,
+    "dist": [
+     [
+      "none",
+      39
+     ],
+     [
+      "simple",
+      35
+     ],
+     [
+      "frieze",
+      17
+     ],
+     [
+      "heavy",
+      13
+     ],
+     [
+      "bracketed",
+      9
+     ]
+    ]
+   },
+   "frame": {
+    "n": 113,
+    "dist": [
+     [
+      "white",
+      61
+     ],
+     [
+      "white-painted",
+      40
+     ],
+     [
+      "cream-painted",
+      4
+     ],
+     [
+      "#2b2420",
+      1
+     ],
+     [
+      "#2e2a26",
+      1
+     ],
+     [
+      "#4a3426",
+      1
+     ],
+     [
+      "#7a1f20",
+      1
+     ],
+     [
+      "#a8281e",
+      1
+     ],
+     [
+      "#e4dcc4",
+      1
+     ],
+     [
+      "#e6e2d8",
+      1
+     ],
+     [
+      "cream",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|side|h13-17": {
+   "windowSurround": {
+    "n": 69,
+    "dist": [
+     [
+      "none",
+      30
+     ],
+     [
+      "sill",
+      25
+     ],
+     [
+      "full-frame",
+      14
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 69,
+    "dist": [
+     [
+      "none",
+      69
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 69,
+    "dist": [
+     [
+      "none",
+      23
+     ],
+     [
+      "simple",
+      22
+     ],
+     [
+      "frieze",
+      10
+     ],
+     [
+      "heavy",
+      8
+     ],
+     [
+      "bracketed",
+      6
+     ]
+    ]
+   },
+   "frame": {
+    "n": 69,
+    "dist": [
+     [
+      "white",
+      32
+     ],
+     [
+      "white-painted",
+      25
+     ],
+     [
+      "cream-painted",
+      4
+     ],
+     [
+      "#2b2420",
+      1
+     ],
+     [
+      "#2e2a26",
+      1
+     ],
+     [
+      "#4a3426",
+      1
+     ],
+     [
+      "#7a1f20",
+      1
+     ],
+     [
+      "#a8281e",
+      1
+     ],
+     [
+      "#e4dcc4",
+      1
+     ],
+     [
+      "#e6e2d8",
+      1
+     ],
+     [
+      "cream",
+      1
+     ]
+    ]
+   }
+  },
+  "before-1800|side|h17+": {
+   "windowSurround": {
+    "n": 15,
+    "dist": [
+     [
+      "sill",
+      7
+     ],
+     [
+      "full-frame",
+      6
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 15,
+    "dist": [
+     [
+      "none",
+      15
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 15,
+    "dist": [
+     [
+      "frieze",
+      4
+     ],
+     [
+      "heavy",
+      4
+     ],
+     [
+      "none",
+      4
+     ],
+     [
+      "simple",
+      3
+     ]
+    ]
+   },
+   "frame": {
+    "n": 15,
+    "dist": [
+     [
+      "white-painted",
+      10
+     ],
+     [
+      "white",
+      5
+     ]
+    ]
+   }
+  },
+  "before-1800|side|h<13": {
+   "windowSurround": {
+    "n": 29,
+    "dist": [
+     [
+      "none",
+      12
+     ],
+     [
+      "sill",
+      10
+     ],
+     [
+      "full-frame",
+      6
+     ],
+     [
+      "stone-lintel",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 29,
+    "dist": [
+     [
+      "none",
+      29
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 29,
+    "dist": [
+     [
+      "none",
+      12
+     ],
+     [
+      "simple",
+      10
+     ],
+     [
+      "bracketed",
+      3
+     ],
+     [
+      "frieze",
+      3
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 29,
+    "dist": [
+     [
+      "white",
+      24
+     ],
+     [
+      "white-painted",
+      5
+     ]
+    ]
+   }
+  }
+ },
  "bandHouses": {
   "1920-1944": 496,
   "1800-1879": 138,

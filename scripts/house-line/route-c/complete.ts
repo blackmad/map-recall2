@@ -28,6 +28,7 @@ import { compileHouse, shareMeshes, HOUSES } from '../../building-recipes/compil
 import { similar, type Probe } from '../../house-specs/describer-d1/partyPairs.ts';
 import { wallOf } from '../../house-specs/describer-d1/stage.ts';
 import { sideOf, adjacent } from '../../house-specs/describer-d1/twins.ts';
+import { pandScale } from './scale.ts';
 
 const argv = process.argv.slice(2);
 const opt = (n: string) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : undefined; };
@@ -92,6 +93,12 @@ const rows: Row[] = [];
 const specs = new Map<string, HouseSpec>();
 for (const r of row) { const f = path.join(STAGED, `${r.pandId}.json`); if (fs.existsSync(f)) specs.set(r.pandId, readJson(f)); }
 const compiled: Awaited<ReturnType<typeof compileHouse>>[] = [];
+// Family-draw groups (round 3 ruling): consecutive fronts of the row list joined while PR1 `similar` holds; one draw per group.
+const groupOf = new Map<string, string>();
+for (let i = 0; i < row.length; i++) {
+  const prev = row[i - 1], pa = prev && probes[prev.pandId], pb = probes[row[i].pandId];
+  groupOf.set(row[i].pandId, prev && pa && pb && similar(pa, pb) ? groupOf.get(prev.pandId)! : row[i].pandId);
+}
 const t00 = performance.now();
 for (const r of row) {
   const key = r.key ?? r.pandId.slice(-6), id = houseId(r.pandId), ms: Record<string, number> = {};
@@ -115,9 +122,10 @@ for (const r of row) {
     crownPeaked: prof.length ? Math.max(...prof) - ends >= 1.5 : null };
   const answer = answerOf(r.pandId);
   const twin = twinOf(r.pandId, specs);
-  const c = completeSpec({ spec, street: r.street, geometry, answer: answer && { crown: answer.crown, bands: answer.bands, low: answer.low, gaps: answer.gaps }, twin, id });
+  const scale = pandScale(r.pandId, lng, lat);
+  const c = completeSpec({ spec, street: r.street, geometry, scale, group: groupOf.get(r.pandId), answer: answer && { crown: answer.crown, bands: answer.bands, low: answer.low, gaps: answer.gaps }, twin, id });
   ms.complete = performance.now() - t; t = performance.now();
-  const base: Row = { key, pandId: r.pandId, street: r.street, ok: false, hold: null, family: c.family, cOnly: c.cOnly, eligible: c.cOnly.length >= 2, fills: c.fills, drops: [...c.drops], limits: c.limits, ms, geometry, ...(twin ? { twin: twin.pandId } : {}) };
+  const base: Row = { key, pandId: r.pandId, street: r.street, ok: false, hold: null, family: c.family, cOnly: c.cOnly, eligible: c.cOnly.length >= 2, fills: c.fills, drops: [...c.drops], limits: c.limits, ms, geometry: { ...geometry, scale, group: groupOf.get(r.pandId) }, ...(twin ? { twin: twin.pandId } : {}) };
   if (!c.intent) { rows.push({ ...base, hold: `intent: ${c.error?.split('\n').slice(0, 3).join(' | ')}` }); continue; }
   // Compile; a failing gate (or a throw) drops the part it names, else the next in DROP_ORDER, and the rest compiles.
   const intent: any = structuredClone(c.intent);

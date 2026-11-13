@@ -8,12 +8,16 @@
  *   1. a twin: the neighbour both answers name as the same design (mutual `sameAs`, PR1 `similar`), its stated fields only;
  *   2. a read class corroborated by geometry: the describer's crown when it is a raised gable and 3DBAG shows a crown over
  *      the eaves (D1 staged only crown classes with precision >= 0.8, which left 168094's point gable to a default);
- *   3. the street template (streetTemplate.ts): the dressings of the nearest reviewed house of the same band on the street
- *      or the adjoining block within 150 m, never structure, picked by a hash of the pand id when several are in reach;
+ *   3. the street template (streetTemplate.ts): the dressings of a reviewed house of the same band that MATCHES the house
+ *      (same street; else same street class and similar scale; else similar scale), within 300 m, never structure, picked by a
+ *      hash of the pand id; no template when none qualifies;
  *   4. PR1's structure prior (storeys, window columns: structurePrior.ts);
- *   5. the build-year family default: the measured mode/median of that field over the published photo-sourced specs of the
- *      family (family-defaults.json, scripts/house-line/route-c/family-defaults.ts); a crown is a raised gable only when
- *      3DBAG shows one.
+ *   5. the build-year family default (family-defaults.json, scripts/house-line/route-c/family-defaults.ts). Structure takes the
+ *      measured mode/median of the band; a crown is a raised gable only when 3DBAG shows one. Dressings (DRAW_FIELDS) are a
+ *      DRAW from the measured distribution, one per group of similar adjoining fronts (`group`), never the mode: from the
+ *      band x street class x scale cell, else the band x class cell, once it holds n >= DRAW_SPLIT_MIN_N; until then a
+ *      main-street front with no template keeps today's look (source `today`, no fill) and a side-street front draws from the
+ *      band.
  * Every fill is recorded with its source. Then the gates: a part the geometry cannot hold (a storey pitch or a bay outside the
  * kit's range, a raised gable with no crown in 3DBAG, a whole-wall band pattern read at low confidence) is clamped or dropped
  * and logged, and the rest compiles. `validateIntent` problems drop the optional part they name (or refill a required one
@@ -28,15 +32,34 @@ import { intentSources } from './toRecipe.ts';
 import { structureGuess, STRUCTURE_PRIOR_TABLE, type StructurePriorTable } from './structurePrior.ts';
 import { familyOf, RAISED_GABLES, type FamilyId } from './families.ts';
 import FAMILY_TABLE from './family-defaults.json' with { type: 'json' };
-import { streetTemplateFor, DRESSING_FIELDS, type TemplateTable } from './streetTemplate.ts';
+import { streetTemplateFor, pandHash, DRESSING_FIELDS, type TemplateTable, type TemplatePick } from './streetTemplate.ts';
+import { streetClassOf, type StreetClass } from './streetClass.ts';
 
 export { familyOf, RAISED_GABLES, FAMILIES } from './families.ts';
 
-export type FillSource = 'stated' | 'twin' | 'reading+geometry' | 'template' | 'prior' | 'family' | 'derived';
+export type FillSource = 'stated' | 'twin' | 'reading+geometry' | 'template' | 'prior' | 'family' | 'derived' | 'today';
+/** Dressings the family rung DRAWS (never the mode): field name in family-defaults.json `draws` -> intent path. */
+export const DRAW_FIELDS = ['windowSurround', 'windowSills', 'cornice', 'frame'] as const;
+const DRAW_PATH: Record<typeof DRAW_FIELDS[number], string> = { windowSurround: 'fronts/0/windowSurround', windowSills: 'fronts/0/windowSills', cornice: 'fronts/0/cornice', frame: 'palette/frame' };
+/** A split cell (band x class, band x class x scale) is used once it holds this many houses. */
+export const DRAW_SPLIT_MIN_N = 20;
+/** Scale bucket of a building-tile 3DBAG height (m) for the family draw cells. */
+export function scaleBucket(heightM: number | null | undefined): 'h<13' | 'h13-17' | 'h17+' | null {
+  if (heightM == null || !(heightM > 0)) return null;
+  return heightM < 13 ? 'h<13' : heightM < 17 ? 'h13-17' : 'h17+';
+}
+/** A deterministic draw from a measured distribution: the value at hash(key) along the cumulative counts. */
+export function drawFrom<T>(dist: readonly (readonly [T, number])[], key: string): T {
+  const total = dist.reduce((a, [, n]) => a + n, 0);
+  let u = (pandHash(key) / 2 ** 32) * total;
+  for (const [v, n] of dist) { if (u < n) return v; u -= n; }
+  return dist[dist.length - 1][0];
+}
 export interface Fill { path: string; value: unknown; source: FillSource; ref: string }
 export interface Drop { path: string; value: unknown; gate: string; why: string; to?: unknown }
 type FamilyEntry = { value: unknown; n: number; share: number | null };
-export type FamilyTable = { table: Record<string, Record<string, FamilyEntry>> };
+export type DrawEntry = { n: number; dist: [unknown, number][] };
+export type FamilyTable = { table: Record<string, Record<string, FamilyEntry>>; draws?: Record<string, Record<string, DrawEntry>> };
 
 /** The few answer fields the completer reads beside the staged part (a D1 answer, `describer.ts`). */
 export interface AnswerHints { crown?: string; bands?: string; low?: string[]; gaps?: SpecLimit[] }
@@ -63,6 +86,14 @@ export interface CompleteInput {
   /** Street-template table (default: street-templates.json); `null` turns the rung off. */
   templates?: TemplateTable | null;
   families?: FamilyTable;
+  /** The group of similar adjoining fronts this front belongs to (PR1 `similar` along the row): one family draw per group, so
+   *  a row stays coherent and streets differ. Default: the pand id. */
+  group?: string;
+  /** The front's street class (default streetClassOf(street)). */
+  streetClass?: StreetClass | null;
+  /** The house's scale on the template table's instrument (building-tile 3DBAG height, footprint narrow side). Unknown: only
+   *  same-street templates can match, and no scale cell for the draw. */
+  scale?: { heightM: number | null; widthM: number | null } | null;
   /** Intent id (default `rc-<pandId>`). */
   id?: string;
 }
@@ -153,6 +184,31 @@ export function completeSpec(input: CompleteInput): Completion {
     return all ? { value: all.value, ref: `family all years (n ${all.n}${all.share !== null ? `, share ${all.share}` : ''}; ${family} n ${own?.n ?? 0})` } : null;
   };
   const fillFamily = (path: string, field: string) => { if (has(path)) return; const v = fam(field); if (v) set(path, v.value, 'family', v.ref); };
+  const cls = input.streetClass !== undefined ? input.streetClass : streetClassOf(street);
+  const group = input.group ?? spec.pandId;
+  let template: TemplatePick | null = null;
+  // A dressing the band draws: the split cell once it holds DRAW_SPLIT_MIN_N; a main-street front with no template keeps today's
+  // look until then; otherwise the band's distribution (required fields fall back to the mode ladder).
+  const drawDressing = (field: typeof DRAW_FIELDS[number], required: boolean) => {
+    const path = DRAW_PATH[field];
+    if (has(path)) return;
+    const D = families.draws ?? {}, hb = scaleBucket(input.scale?.heightM);
+    const split = [cls && hb ? `${family}|${cls}|${hb}` : null, cls ? `${family}|${cls}` : null].filter((c): c is string => !!c)
+      .map(c => [c, D[c]?.[field]] as const).find(([, e]) => e && e.n >= DRAW_SPLIT_MIN_N);
+    let cell: string | null = null, e: DrawEntry | undefined;
+    if (split) [cell, e] = [split[0], split[1]];
+    else if (cls === 'main' && !template && !required) {
+      const n = D[`${family}|main`]?.[field]?.n ?? 0;
+      fills.push({ path, value: null, source: 'today', ref: `main street, no template; cell ${family}|main n ${n} < ${DRAW_SPLIT_MIN_N}: today's look kept` });
+      return;
+    } else if ((D[family]?.[field]?.n ?? 0) >= FAMILY_MIN_N) [cell, e] = [family, D[family][field]];
+    if (!e || !cell) { if (required) fillFamily(path, field); return; }
+    const v = drawFrom(e.dist, `${group}|${field}`);
+    const ref = `family draw ${cell} (n ${e.n}, ${e.dist.length} values; group ${group.slice(-6)})`;
+    // A drawn `none` surround or sill is the plain intent default (no field); a required field takes the value as drawn.
+    if (v === 'none' && !required) fills.push({ path, value: 'none', source: 'family', ref });
+    else set(path, structuredClone(v), 'family', ref);
+  };
 
   // 1. Twin: the neighbour's stated fields (never its own fills or its twin copies).
   if (input.twin) {
@@ -181,9 +237,9 @@ export function completeSpec(input: CompleteInput): Completion {
 
   // 3. The street template (streetTemplate.ts): dressings only, never structure, each fill naming the template house.
   if (input.templates !== null) {
-    const pick = streetTemplateFor({ pandId: spec.pandId, lng: g.lng, lat: g.lat, year: g.year, street }, input.templates ?? undefined);
+    const pick = template = streetTemplateFor({ pandId: spec.pandId, lng: g.lng, lat: g.lat, year: g.year, street, streetClass: cls, heightM: input.scale?.heightM, widthM: input.scale?.widthM }, input.templates ?? undefined);
     if (pick) {
-      const ref = `template:${pick.pandId} (${pick.street}, ${pick.distM} m, ${pick.sameStreet ? 'same street' : 'adjoining block'}, pick 1 of ${pick.pool}, ${pick.src})`;
+      const ref = `template:${pick.pandId} (${pick.street}, ${pick.distM} m, tier ${pick.tier}, pick 1 of ${pick.pool}, ${pick.src})`;
       // A band word the reader read as `none` is a reading: no band from the template.
       const bandsRead = input.answer?.bands === 'none';
       if (!has('fronts/0/bands') && !bandsRead && pick.fields['fronts/0/bands'] !== undefined) set('fronts/0/bands', structuredClone(pick.fields['fronts/0/bands']), 'template', ref);
@@ -218,13 +274,10 @@ export function completeSpec(input: CompleteInput): Completion {
     if (v) set('fronts/0/gable', v.value, 'family', `${v.ref}; ${why}`);
   }
   if (crown === 'mansard') limits.push({ component: 'roof', what: 'mansard crown read (class precision 0.33, not staged): drawn as the cornice crown over the 3DBAG roof' });
-  fillFamily('fronts/0/cornice', 'cornice');
-  // Dressings the band's measured mode states (a `none` mode is the plain intent default: no fill).
-  for (const [path, field] of [['fronts/0/windowSurround', 'windowSurround'], ['fronts/0/windowSills', 'windowSills']] as const) {
-    if (has(path)) continue;
-    const v = fam(field, false);
-    if (v && v.value !== 'none') set(path, v.value, 'family', v.ref);
-  }
+  // Dressings: a draw per group, never the mode (cornice is required by the intent).
+  drawDressing('cornice', true);
+  drawDressing('windowSurround', false);
+  drawDressing('windowSills', false);
   fillFamily('fronts/0/windows', 'windows');
   fillFamily('fronts/0/hoist', 'hoist');
   if (!has('fronts/0/basement')) {
@@ -239,7 +292,7 @@ export function completeSpec(input: CompleteInput): Completion {
   if (!has('fronts/0/id')) set('fronts/0/id', 'front0', 'derived', 'intent identity');
   if (!has('fronts/0/street')) set('fronts/0/street', street, 'derived', 'the street the front faces (row list)');
   fillFamily('roof/material', 'roofMaterial');
-  fillFamily('palette/frame', 'frame');
+  drawDressing('frame', true);
   fillFamily('palette/door', 'door');
   if (!isHex(palette.brick) && !(typeof palette.brick === 'string' && palette.brick)) fillFamily('palette/brick', 'brick');
   // Parameters the stated band words need (the describer reads the word, never the spacing or the band brick).
