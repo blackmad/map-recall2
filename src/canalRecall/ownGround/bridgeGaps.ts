@@ -318,6 +318,63 @@ export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidt
   return widened ? { left: out[0], right: out[1] } : null;
 }
 
+/**
+ * Survey caps (lane fb-bridges 2026-11-13, user notes 8b91c88c "is this extra extrusion real?" at the Rijckerbrug BRU0167
+ * and c5313f12 "weird protrusion?" at the Machineslootbrug BRU0358): the elevation profile's road half-width ran 11.9 m
+ * and 14.1 m each side of an off-centre road line, while the survey's deck-level polygons stop 6 m and 8.5 m out on the
+ * right; past them the survey has nothing (open water). The kit and the deck top drew the extra 5-6 m as a grey slab
+ * sloping with the deck over the canal, its brick face and parapet standing in the water beside the real railing.
+ *
+ * Per station over the deck span and per side: walk out from the road line (EDGE_STEP_M steps, gaps up to EDGE_GAP_M) to
+ * the last deck-level point; where that lies more than CAP_MIN_M inside `halfWidth` and the survey has no polygon at all
+ * (`surveyed` false) for CAP_OPEN_M past it, the side is capped at the last hit plus EDGE_STEP_M; a station as short
+ * whose outside meets the quay survey takes a capped station's cap within CAP_FILL_M. Stations take the widest cap
+ * within EDGE_SPREAD_M along the deck. Uncapped stations are Infinity. Null when nothing is capped (every
+ * other deck: byte-identical).
+ */
+export const CAP_MIN_M = 2, CAP_OPEN_M = 2, CAP_FILL_M = 2.5;
+export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck'>, onDeckPoly: (x: number, y: number) => boolean, surveyed: (x: number, y: number) => boolean): { left: Float64Array; right: Float64Array } | null {
+  const n = p.s.length, raw = [new Float64Array(n).fill(Infinity), new Float64Array(n).fill(Infinity)], short = [new Float64Array(n).fill(Infinity), new Float64Array(n).fill(Infinity)];
+  let any = false;
+  for (let i = 0; i < n; i++) {
+    if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+    const hw = p.halfWidth[i], a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    for (const side of [0, 1] as const) {
+      const sg = side === 0 ? 1 : -1;
+      let last = -1;
+      for (let t = 0; t <= hw + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) if (onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t)) last = t;
+      // No deck polygon near the road line (an end station on the quay survey): short, any neighbour's cap holds.
+      if (last < 0) { short[side][i] = 0; continue; }
+      if (hw - last <= CAP_MIN_M) continue;
+      short[side][i] = last + EDGE_STEP_M;
+      let open = true;
+      for (let t = last + EDGE_STEP_M; t <= last + CAP_OPEN_M + 1e-9 && open; t += EDGE_STEP_M) open = !surveyed(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t);
+      if (open) { raw[side][i] = last + EDGE_STEP_M; any = true; }
+    }
+  }
+  if (!any) return null;
+  // A station as short whose outside meets the quay's survey (the span's last metres) takes the cap of a capped station
+  // within CAP_FILL_M along the deck: the slab's corner over the quay goes with the slab.
+  for (const side of [0, 1] as const) {
+    const fill = Float64Array.from(raw[side]);
+    for (let i = 0; i < n; i++) {
+      if (raw[side][i] !== Infinity || short[side][i] === Infinity) continue;
+      for (let j = 0; j < n; j++) if (raw[side][j] !== Infinity && Math.abs(p.s[j] - p.s[i]) <= CAP_FILL_M) fill[i] = Math.min(fill[i], Math.max(short[side][i], raw[side][j]));
+    }
+    raw[side] = fill;
+  }
+  const out = [new Float64Array(n), new Float64Array(n)];
+  for (const side of [0, 1] as const) for (let i = 0; i < n; i++) {
+    let v = raw[side][i];
+    if (v !== Infinity) {
+      for (let j = i - 1; j >= 0 && p.s[i] - p.s[j] <= EDGE_SPREAD_M; j--) if (p.s[j] >= p.deck[0]) v = Math.max(v, raw[side][j]);
+      for (let j = i + 1; j < n && p.s[j] - p.s[i] <= EDGE_SPREAD_M; j++) if (p.s[j] <= p.deck[1]) v = Math.max(v, raw[side][j]);
+    }
+    out[side][i] = v;
+  }
+  return { left: out[0], right: out[1] };
+}
+
 /** A deck profile's box grown to its edges (DeckProfile.edges). */
 export function edgesBox(p: Pick<DeckProfile, 'bbox' | 'halfWidth'>, edges: { left: Float64Array; right: Float64Array }): [number, number, number, number] {
   let r = 0;

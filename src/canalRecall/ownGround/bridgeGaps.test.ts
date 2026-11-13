@@ -44,7 +44,7 @@ test('histogram bins are half-open with an open last bin', () => {
 });
 
 // ------------------------------------------------------------------ the fix (bridgeGaps)
-import { edgesBox, surveyDeckEdges, EDGE_NO_OUTLINE_M } from './bridgeGaps.js';
+import { edgesBox, surveyDeckCaps, surveyDeckEdges, EDGE_NO_OUTLINE_M } from './bridgeGaps.js';
 import { GroundSurface, type DeckSurface } from './surface.js';
 import { deckShare } from './roadSurfaces.js';
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
@@ -122,4 +122,19 @@ test('narrowDryDeck: a dry way deck keeps a core half-width so the survey polygo
   const narrow = dryWayDeckProfile({ id: 8, name: 'busway', points: [[0, 0], [60, 0]] as [number, number][], halfWidth: 1 }, () => true, () => false)!;
   narrowDryDeck(narrow);
   assert.ok(narrow.halfWidth.every(h => h === 1), 'a narrower way is left alone');
+});
+
+test('survey caps: a half-width far past the deck polygons over open water is capped there (Rijckerbrug BRU0167, 8b91c88c)', () => {
+  const p = deck(), wide = { ...p, halfWidth: new Float64Array(41).fill(9) };
+  // Deck polygons reach 3 m right of the line and 9 m left; nothing surveyed beyond on the right (water); a quay polygon
+  // beyond 3 m at the span's last metre (s 15.5..16).
+  const onDeck = (x: number, y: number) => y >= -3 && y <= 9;
+  const surveyed = (x: number, y: number) => onDeck(x, y) || (x >= 15.5 && y < -3);
+  const caps = surveyDeckCaps(wide, onDeck, surveyed)!;
+  assert.equal(caps.right[20], 3.5, 'the last deck-level point plus a step');
+  assert.equal(caps.left[20], Infinity, 'the left side reaches its half-width: no cap');
+  assert.equal(caps.right[32], 3.5, 'a span end whose outside meets the quay takes the neighbours\' cap');
+  assert.equal(caps.right[0], Infinity, 'off the span: no cap');
+  assert.equal(surveyDeckCaps(wide, (x, y) => Math.abs(y) <= 8, (x, y) => Math.abs(y) <= 8), null, 'a survey within CAP_MIN_M of the half-width: no caps');
+  assert.equal(surveyDeckCaps(wide, onDeck, () => true), null, 'surveyed beyond everywhere (no open water): no caps');
 });

@@ -37,7 +37,12 @@ export function parapetCrossings(line: readonly ParapetPoint[], traffic: (x: num
 }
 
 /** The row fields railRun reads (bridgeKit KitRow). */
-export interface RunRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; water: boolean; wL: boolean; wR: boolean; oL?: boolean; oR?: boolean }
+/**
+ * `pL`/`pR` (waterOutside `plein`): the edge reads as water-side (`oL`/`oR`) but RAIL_WATER_PROBE_M outside it the road
+ * survey draws a surface (a street, path or plein over a culverted canal: the Muntplein over the Singel, where the water
+ * mask runs on under the plein); the railing breaks there as on a crossing street.
+ */
+export interface RunRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; water: boolean; wL: boolean; wR: boolean; oL?: boolean; oR?: boolean; pL?: boolean; pR?: boolean }
 
 /** Water this far outside a deck edge makes it a water-side edge (the water polygon stops at the bridge faces). */
 export const RAIL_WATER_PROBE_M = 1.0;
@@ -45,9 +50,12 @@ export const RAIL_WATER_PROBE_M = 1.0;
  * The `oL`/`oR` flags of a row, before cleanWater fills the water spans across the deck: water at each edge or
  * RAIL_WATER_PROBE_M outside it (n points to L).
  */
-export function waterOutside(L: Vec2, R: Vec2, n: Vec2, overWater: (x: number, y: number) => boolean): { oL: boolean; oR: boolean } {
-  const d = RAIL_WATER_PROBE_M;
-  return { oL: overWater(L[0], L[1]) || overWater(L[0] + n[0] * d, L[1] + n[1] * d), oR: overWater(R[0], R[1]) || overWater(R[0] - n[0] * d, R[1] - n[1] * d) };
+export function waterOutside(L: Vec2, R: Vec2, n: Vec2, overWater: (x: number, y: number) => boolean, plein?: (x: number, y: number) => boolean): { oL: boolean; oR: boolean; pL?: boolean; pR?: boolean } {
+  const d = RAIL_WATER_PROBE_M, lx = L[0] + n[0] * d, ly = L[1] + n[1] * d, rx = R[0] - n[0] * d, ry = R[1] - n[1] * d;
+  const out = { oL: overWater(L[0], L[1]) || overWater(lx, ly), oR: overWater(R[0], R[1]) || overWater(rx, ry) };
+  if (!plein) return out;
+  const pL = out.oL && plein(lx, ly), pR = out.oR && plein(rx, ry);
+  return pL || pR ? { ...out, ...(pL ? { pL } : {}), ...(pR ? { pR } : {}) } : out;
 }
 
 /**
@@ -138,6 +146,7 @@ export function railRuns(rows: readonly RunRow[], p0: number, p1: number, side: 
   // The stations standing on a street that crosses the parapet line, by the line's own direction there (a footprint cut
   // at a slant sweeps its edge across the deck, BRU0173).
   const across = on.map((r, k) => {
+    if (side > 0 ? r.pL : r.pR) return true;
     if (!crossing) return false;
     const e = edge(r), a = edge(on[Math.max(0, k - 1)]), b = edge(on[Math.min(on.length - 1, k + 1)]);
     const d: Vec2 = Math.hypot(b[0] - a[0], b[1] - a[1]) > 1e-6 ? [b[0] - a[0], b[1] - a[1]] : [r.n[1], -r.n[0]];

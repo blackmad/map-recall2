@@ -8,6 +8,7 @@
 //   npx tsx scripts/own-ground/audit-bridge-railings.ts                 # citywide table + totals
 //   npx tsx scripts/own-ground/audit-bridge-railings.ts --ids=BRU0063   # these bridges, with their lines
 //   … --json=out.json
+//   … --opts='{"pleinRails":false}'   extra GroundStore options (a ground fix's before)
 //   … --max-inside=N                     fail above N metres inside traffic city-wide (default INSIDE_CAP_M)
 //   … --before                           the parapet over the whole deck span, as drawn before the clip (railingRuns RAIL_CLIP)
 //   … --ids=… --plot=dir [--tag=before]   per bridge, <dir>/<id>-<tag>.png: the PDOK orthophoto with the parapet lines
@@ -36,7 +37,7 @@ const store = new GroundStore(async path => {
   if (!existsSync(file)) throw new Error(`${path}: missing`);
   const bytes = readFileSync(file);
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
-}, { roads: true });
+}, { roads: true, ...JSON.parse(flag('opts') ?? '{}') });
 
 type Row = { id: string; cell: string; lng: number; lat: number; turns: number; turnM: number; insideM: number; parapetM: number };
 
@@ -86,6 +87,9 @@ async function main(): Promise<void> {
   console.log(JSON.stringify({ bridges: all.length, withTurn: all.filter(r => r.turns > 0).length, turnM: +all.reduce((s, r) => s + r.turnM, 0).toFixed(1), withInside1m: all.filter(r => r.insideM >= 1).length, insideM: +all.reduce((s, r) => s + r.insideM, 0).toFixed(1), parapetM: +all.reduce((s, r) => s + r.parapetM, 0).toFixed(0) }));
   // The gate (coordinator 2026-10-16): parapet metres inside traffic city-wide stay under INSIDE_CAP_M (main 4,512 m with
   // the way decks at the OSM way's half-width; 1,543 m with them at the road surfaces' edges, wayDecks.ts roadEdgeSides).
+  // Decks the survey caps narrowed (bridgeGaps.ts surveyDeckCaps): id and the widest metres taken off a side.
+  const capped = store.surface.decks.filter(d => d.profile.caps).map(d => { const p = d.profile, c = p.caps!; let cut = 0; for (let i = 0; i < p.s.length; i++) cut = Math.max(cut, p.halfWidth[i] - Math.min(c.left[i], p.halfWidth[i]), p.halfWidth[i] - Math.min(c.right[i], p.halfWidth[i])); return `${p.id}:${cut.toFixed(1)}`; });
+  console.log(JSON.stringify({ surveyCapped: capped.length, decks: capped }));
   const insideM = all.reduce((s, r) => s + r.insideM, 0), cap = Number(flag('max-inside') ?? INSIDE_CAP_M);
   if (!only && !process.argv.includes('--before') && insideM > cap) { console.log(`FAIL parapet inside traffic ${insideM.toFixed(0)} m > ${cap} m`); process.exitCode = 1; }
   const dir = flag('plot');
