@@ -38,6 +38,11 @@ export const TANK_MIN_M2 = 8;
 export const SHED_FROM_YEAR = 1950;
 /** Tallest shed (m): above it a building on an estate is an office or a plant, not a hall. */
 export const SHED_MAX_M = 30;
+/** Without a mapped hall (OSM/type warehouse|industrial) the register alone must describe a low, wide hall: at most this tall (m), at least this footprint (m2). */
+export const BAG_ONLY_MAX_M = 15;
+export const BAG_ONLY_MIN_M2 = 120;
+/** An unmapped building this tall (m) or more that is taller than its footprint is wide (sqrt(area) / height < 1) is a tower or a block, not a hall. */
+export const TOWER_FROM_M = 9;
 /** An unregistered hall in industrial landuse needs at least this footprint (m2) and at most this height (m). */
 export const LANDUSE_HALL_M2 = 400;
 export const LANDUSE_HALL_MAX_M = 20;
@@ -77,6 +82,10 @@ export interface IndustrialFacts {
   uses?: Record<string, number>;
   /** Live VBOs in the pand. */
   vbos?: number;
+  /** Live VBOs whose gebruiksdoel includes woonfunctie (needs the full-use register, scripts/industrial/fetch-bag-housing.ts). */
+  woonVbos?: number;
+  /** In the monument register (monument-facts.json): never a grey slab. */
+  monument?: boolean;
   /** A landmark, kit or hand-modelled pand: never reclassified. */
   landmark?: boolean;
 }
@@ -91,9 +100,11 @@ const share = (uses: Record<string, number> | undefined, keys: readonly string[]
 
 export function classifyIndustrial(f: IndustrialFacts): IndustrialVerdict {
   if (f.landmark) return { kind: null, why: 'landmark or kit' };
+  if (f.monument) return { kind: null, why: 'monument register' };
   if (f.minHeightM > 1) return { kind: null, why: 'raised part' };
   if (f.osmBuilding && HOME_BUILDING.has(f.osmBuilding)) return { kind: null, why: `building=${f.osmBuilding}` };
   if (!(f.areaM2 >= TANK_MIN_M2)) return { kind: null, why: `footprint ${Math.round(f.areaM2)} m2 < ${TANK_MIN_M2}` };
+  if ((f.woonVbos ?? 0) > 0) return { kind: null, why: `${f.woonVbos} dwelling unit(s)` };
   const housing = share(f.uses, ['woonfunctie']);
   if (housing >= HOUSING_SHARE) return { kind: null, why: `housing ${(housing * 100).toFixed(0)} %` };
   // A VBO registered for several uses counts its floor area to each in equal parts (scripts/industrial/fetch-bag-uses.ts),
@@ -113,13 +124,18 @@ export function classifyIndustrial(f: IndustrialFacts): IndustrialVerdict {
   if (onEstate && office > MAIN_SHARE && office > work) return { kind: 'office', why: `office ${(office * 100).toFixed(0)} % on an industrial estate` };
   if (f.year !== null && f.year < SHED_FROM_YEAR) return { kind: null, why: `built ${f.year}, before ${SHED_FROM_YEAR}` };
   if (people > work) return { kind: null, why: `people use ${(people * 100).toFixed(0)} % over work ${(work * 100).toFixed(0)} %` };
+  const mappedHall = f.osmBuilding !== undefined && SHED_BUILDING.has(f.osmBuilding);
+  if (!mappedHall && f.heightM >= TOWER_FROM_M && Math.sqrt(f.areaM2) / f.heightM < 1) return { kind: null, why: `tower proportions (${f.heightM.toFixed(1)} m on ${Math.round(f.areaM2)} m2)` };
+  if (!mappedHall && f.heightM > BAG_ONLY_MAX_M) return { kind: null, why: `${f.heightM.toFixed(1)} m tall with no mapped hall` };
+  if (!mappedHall && f.areaM2 < BAG_ONLY_MIN_M2) return { kind: null, why: `${Math.round(f.areaM2)} m2 with no mapped hall` };
   if (f.heightM > SHED_MAX_M) return { kind: null, why: `${f.heightM.toFixed(1)} m tall` };
   if (!f.industrialLand && f.areaM2 < OFF_ESTATE_SHED_M2) return { kind: null, why: `${Math.round(f.areaM2)} m2 off an industrial estate` };
   const works = office > 0 || (f.vbos ?? 0) >= WORKS_MIN_VBOS;
   const hall = (why: string): IndustrialVerdict => works ? { kind: 'works', why: `${why}; office front (office ${(office * 100).toFixed(0)} %, ${f.vbos ?? 0} units)` } : { kind: 'shed', why };
-  if (f.osmBuilding !== undefined && SHED_BUILDING.has(f.osmBuilding)) return hall(`building=${f.osmBuilding}`);
+  if (mappedHall) return hall(`building=${f.osmBuilding}`);
   if (industry >= MAIN_SHARE || (industry > 0 && work >= MAIN_SHARE)) return hall(`industriefunctie ${(industry * 100).toFixed(0)} %, work ${(work * 100).toFixed(0)} %`);
-  if (f.industrialLand && !f.uses && f.areaM2 >= LANDUSE_HALL_M2 && f.heightM <= LANDUSE_HALL_MAX_M) return { kind: 'shed', why: `unregistered ${Math.round(f.areaM2)} m2 hall in industrial landuse` };
+  // Storage registered only as 'overige gebruiksfunctie' counts like an unregistered hall: it needs the estate, the footprint and the height.
+  if (f.industrialLand && (!f.uses || (industry === 0 && work >= MAIN_SHARE)) && f.areaM2 >= LANDUSE_HALL_M2 && f.heightM <= LANDUSE_HALL_MAX_M) return { kind: 'shed', why: `unregistered ${Math.round(f.areaM2)} m2 hall in industrial landuse` };
   return { kind: null, why: 'no industrial evidence' };
 }
 
