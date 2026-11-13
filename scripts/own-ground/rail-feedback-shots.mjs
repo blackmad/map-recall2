@@ -12,6 +12,8 @@ const [outDir, tag] = process.argv.slice(2);
 const opt = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i >= 0 ? process.argv[i + 1] : d; };
 const mobile = process.argv.includes('--mobile'), only = opt('only', null), qs = opt('qs', ''), bundles = opt('bundles', null);
 const settle = Number(opt('settle', '4')) * 1000;
+// --zoom z: the chase camera's zoom (default 1.5; a feedback note's context.camera.zoom, e.g. 0.78, frames as the user saw it).
+const zoom = Number(opt('zoom', '1.5'));
 const POSES = {
   // 0664edc9 "weird uncovering effect on rails": Kimpoweg / Zaanstraat yard, heading 15.69.
   uncover: { at: [4.841442, 52.386195], angle: 15.69, steps: Number(opt('steps', '6')), stepM: Number(opt('step', '15')) },
@@ -46,21 +48,21 @@ const device = mobile ? 'phone' : 'desktop';
 for (const [name, p] of Object.entries(POSES)) {
   if (only && !only.split(',').includes(name)) continue;
   for (let k = 0; k < p.steps; k++) {
-    const info = await page.evaluate(({ at, angle, d }) => {
+    const info = await page.evaluate(({ at, angle, d, zoom }) => {
       const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera;
       const cx = l._lastOffsetX + (at[0] - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
       const cy = l._lastOffsetY - (at[1] - l._lastCenterLat) * 111320 * ppm;
       g.player.angle = angle; g.player.x = cx; g.player.y = cy;
       const lead = cam.followPosition(g.player);
       g.player.x = cx - (lead.x - cx) + Math.cos(angle) * d * ppm; g.player.y = cy - (lead.y - cy) + Math.sin(angle) * d * ppm;
-      cam.zoom = 1.5; cam.resetForRide(g.player);
+      cam.zoom = zoom; cam.resetForRide(g.player);
       const lng = l._lastCenterLng + (g.player.x - l._lastOffsetX) / (111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm), lat = l._lastCenterLat - (g.player.y - l._lastOffsetY) / (111320 * ppm);
       return { rider: [+lng.toFixed(6), +lat.toFixed(6)], leadM: +(Math.hypot(lead.x - cx, lead.y - cy) / ppm).toFixed(1) };
-    }, { at: p.at, angle: p.angle, d: k * p.stepM });
+    }, { at: p.at, angle: p.angle, d: k * p.stepM, zoom });
     await page.waitForFunction(() => !canalRecallGame.vectorMap._ownGround?.status().basemapHidden, null, { timeout: 1500, polling: 16 }).catch(() => {});
     await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && s.basemapHidden && !s.queued && !Object.keys(s.pending).length; }, null, { timeout: 90_000, polling: 100 }).catch(() => {});
     await page.waitForTimeout(k === 0 ? settle * 2 : settle);
-    await page.evaluate(() => { canalRecallGame.camera.zoom = 1.5; });
+    await page.evaluate(z => { canalRecallGame.camera.zoom = z; }, zoom);
     await page.waitForTimeout(500);
     // --hide layer,layer: hide the own-ground meshes of those layers (diagnostic: which layer draws a defect).
     if (opt('hide', null)) { await page.evaluate(names => { const set = new Set(names.split(',')); canalRecallGame.vectorMap._ownGround.root.traverse(o => { if (o.isMesh && set.has(o.name)) o.visible = false; }); }, opt('hide', null)); await page.waitForTimeout(500); }
