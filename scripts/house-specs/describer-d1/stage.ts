@@ -33,10 +33,15 @@ export const STAGED: Record<string, ((v: unknown, a: DescriberAnswer) => boolean
   'fronts/0/basement': (_v, a) => a.image.kind === 'crop',
   'palette/wallMaterial': () => true,
   // the answered crown class decides (a `mansard` answer compiles to gable cornice + roofFront mansard: precision 0.33, not staged)
-  'fronts/0/gable': (_v, a) => a.crown === 'cornice' || a.crown === 'step',
+  'fronts/0/gable': (_v, a) => a.crown === 'cornice' || a.crown === 'step' || CURVED.has(String(a.crown)),
   'fronts/0/windowHead': v => ['flat', 'segmental'].includes((v as { kind?: string })?.kind ?? ''),
   'fronts/0/cornice': v => v === 'none',
 };
+
+/** Neck and bell read as one class (a curved gable): precision 0.91 merged against 0.65 / 0.50 apart (per-class.md). */
+export const CURVED: ReadonlySet<string> = new Set(['neck', 'bell']);
+/** The gable a curved-gable reading stages: the register's neck or bell where it states one, otherwise neck. */
+export const curvedGable = (registerGable: string | null | undefined): 'neck' | 'bell' => (registerGable === 'bell' ? 'bell' : 'neck');
 
 /** Keep only the STAGED paths (and their provenance) of a spec; the dropped paths are listed. */
 export function shipOnly(spec: HouseSpec, a: DescriberAnswer): { spec: HouseSpec; dropped: string[] } {
@@ -49,8 +54,9 @@ export function shipOnly(spec: HouseSpec, a: DescriberAnswer): { spec: HouseSpec
 }
 
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
-export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null) {
+export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null) {
   const { spec } = shipOnly(toSpecPart(a, at), a);
+  if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
   if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
     setSpecField(spec, 'palette/brick', wallHex.toLowerCase());
     spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
@@ -118,7 +124,7 @@ function main() {
       const v = (a as any)[k];
       if (answered(v)) answerCount[k] = (answerCount[k] ?? 0) + 1; else nv++;
     }
-    staged.set(id, stageOne(a, hex.get(id) ?? null, at));
+    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null));
   }
   let inheritedFronts = 0; const inheritedFields: Record<string, number> = {};
   for (const [id, a] of A) {

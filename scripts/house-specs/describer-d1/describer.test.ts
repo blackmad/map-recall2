@@ -197,12 +197,15 @@ test('stageOne stages only the ruled fields and classes; inheritFromTwin copies 
   const s = stageOne(answer({ crown: 'neck', cornice: 'simple', windowSurround: 'keystone', heads: ['flat', 'round', 'round', 'round'] }), null, null);
   const f = s.design.fronts![0] as any;
   assert.equal(f.storeys, 4); assert.equal(f.bays, 3); assert.equal(f.bands, 'speklagen');
-  assert.equal(f.gable, undefined, 'neck crown is prior-only'); assert.equal(f.cornice, undefined); assert.equal(f.windowSurround, undefined);
+  assert.equal(f.gable, 'neck', 'a neck crown stages as a curved gable'); assert.equal(f.cornice, undefined); assert.equal(f.windowSurround, undefined);
   assert.equal(f.windowHead, undefined, 'round head is prior-only'); assert.equal(f.windows, undefined, 'window family is prior-only');
   assert.equal(f.basement, 'none', 'basement from a crop');
   assert.equal(stageOne(answer({ image: { ref: 'cut.jpg', kind: 'pose-photo' } }), null, null).design.fronts![0].basement, undefined, 'no basement from a cut');
   assert.equal(stageOne(answer({ crown: 'step' }), null, null).design.fronts![0].gable, 'step');
   assert.equal(stageOne(answer({ crown: 'mansard' }), null, null).design.fronts![0].gable, undefined, 'mansard (drawn as cornice) is prior-only');
+  assert.equal(stageOne(answer({ crown: 'bell' }), null, null).design.fronts![0].gable, 'neck', 'a curved gable without a register answer stages neck');
+  assert.equal(stageOne(answer({ crown: 'neck' }), null, null, 'bell').design.fronts![0].gable, 'bell', 'the register picks bell');
+  assert.equal(stageOne(answer({ crown: 'bell' }), null, null, 'cornice').design.fronts![0].gable, 'neck');
   const hidden = stageOne(answer({ storeys: 'not-visible', crown: 'not-visible', heads: [], sameAs: 'left' }), null, null);
   const twin = stageOne(answer({ pandId: '0363100012176273', crown: 'cornice' }), null, null);
   assert.deepEqual(inheritFromTwin(structuredClone(hidden), answer({ sameAs: 'left' }), [{ side: 'left', id: 'x', spec: twin, similar: false }]), []);
