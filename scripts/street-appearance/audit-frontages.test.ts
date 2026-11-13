@@ -11,6 +11,7 @@ import test from 'node:test';
 // Re-recorded 2026-11-10 with bake-frontages.ts after b712de6b5 (#123 Oosterdok walls: signature-landmarks.json suppressOsmIds feed the admission input hashes) went unrecorded for 11 days; test:street-appearance was not in check:canal. Frontages and profiles.json byte-identical, only the 20 survey hashes and the manifest's survey hash moved.
 // Re-recorded 2026-11-13 after F1 S6c (threeBuilding* sources, shader facades flag off) and the G3/W1 merges; frontages byte-identical, only the survey and manifest input hashes moved.
 // Re-recorded 2026-11-13 (round 124) after F1 S6d (register wall material in threeBuildingMesh/Features, flag off) and wall variety on; frontages byte-identical, only input hashes moved.
+// Re-recorded 2026-11-13 (round 129) after the equatorial-metre placement fix (buildingProjectionScale.ts in the building path); frontages byte-identical, only the survey and manifest input hashes moved.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';
