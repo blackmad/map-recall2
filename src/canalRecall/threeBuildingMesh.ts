@@ -23,7 +23,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
-import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { storeyDraw, storeyPlan, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
@@ -634,7 +634,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           else if (draw) {
             // The wall over 3DBAG's eaves draws as the plain parapet band, so the rows stop at the eaves line (needs a plain cell).
             if (draw.bandM && b.plainLayer !== undefined && !b.bare) eavesBand = draw.bandM;
-            Object.assign(specBays, { storeys: draw.storeys, fit: 'nearest' as const, exposedM: specBays.exposedM - eavesBand }, draw.groundM ? { groundM: draw.groundM } : {});
+            Object.assign(specBays, { storeys: draw.storeys, fit: 'nearest' as const, exposedM: specBays.exposedM - eavesBand }, draw.groundM ? { groundM: draw.groundM } : {}, draw.souterrain ? { groundMin: SPEC_SOUTERRAIN_GROUND_MIN } : {});
           }
         }
       }

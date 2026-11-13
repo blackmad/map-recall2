@@ -26,6 +26,19 @@ const pands = (idsFile ? fs.readFileSync(idsFile, 'utf8') : argv.find(a => /^\d{
 const out = flag('--out');
 if (!pands.length || !out) { console.error('storey-guard.ts <pandId,...> | --ids-file <file> --out <file.json>'); process.exit(2); }
 
+/**
+ * Why a count was rejected (the integrator's split, 2026-11-13): (c) 3DBAG's eaves lay outside the window, so the wall top
+ * was the line; (a) too tall, no roof storey read, and one more row (a roof storey in the wall) would be in range;
+ * (d) the rest: the row count is plausibly wrong (too short, or too tall even with a tall ground and a roof row).
+ * (b), a tall ground row, is not a reject: the retry draws it (`tallGround`).
+ */
+function causeOf(plan: StoreyPlan, input: StoreyPlanInput): 'a' | 'c' | 'd' | null {
+  if (plan.ok) return null;
+  if (plan.eavesIgnored) return 'c';
+  const s = input.souterrain ? 0.58 : 0, withRoof = input.wallM / (Math.floor(input.storeys) + s + 1);
+  if (!input.roofStorey && plan.pitchM > plan.range.max && withRoof >= plan.range.min && withRoof <= plan.range.max) return 'a';
+  return 'd';
+}
 const boxOf = (f: Feature): [number, number, number, number] => {
   const b: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
   for (const [x, y] of asPolygons(f.geometry).flat(2)) { b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); }
@@ -60,10 +73,13 @@ for (const id of pands) {
   rows.push({
     pandId: id, year: p.constructionYear ?? null,
     spec: sr ? { storeys: sr.storeys ?? null, souterrain: sr.souterrain ?? null, roofStorey: sr.roofStorey ?? null, eavesM: sr.eavesM ?? null, period: sr.period ?? null } : null,
-    plan: plan ? { wallM: +plan.input.wallM.toFixed(2), pitchM: +plan.plan.pitchM.toFixed(2), souterrainM: +plan.plan.souterrainM.toFixed(2), roofRow: plan.plan.roofRow, lineFrom: plan.plan.lineFrom, range: [plan.plan.range.min, plan.plan.range.max], ok: plan.plan.ok } : null,
+    plan: plan ? { wallM: +plan.input.wallM.toFixed(2), eavesM: plan.input.eavesM ?? null, pitchM: +plan.plan.pitchM.toFixed(2), souterrainM: +plan.plan.souterrainM.toFixed(2), roofRow: plan.plan.roofRow, lineFrom: plan.plan.lineFrom, range: [plan.plan.range.min, plan.plan.range.max], ok: plan.plan.ok, tallGround: plan.plan.tallGround ? +plan.plan.tallGround.groundM.toFixed(2) : null, cause: causeOf(plan.plan, plan.input) } : null,
     drawn: run ? { storeys: run.storeys + 1, columns: run.bays, groundM: +run.groundM.toFixed(2), storeyM: +run.storeyM.toFixed(2), wallM: +(run.groundM + run.storeys * run.storeyM).toFixed(2) } : null,
   });
 }
-const rejected = rows.filter(r => (r.plan as { ok?: boolean } | null)?.ok === false).map(r => r.pandId);
-fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, rows }, null, 1) + '\n');
-console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected -> ${out}`);
+const planOf = (r: Record<string, unknown>) => r.plan as { ok?: boolean; cause?: string | null; tallGround?: number | null } | null;
+const rejected = rows.filter(r => planOf(r)?.ok === false).map(r => r.pandId);
+const causes = Object.fromEntries(['a', 'c', 'd'].map(c => [c, rows.filter(r => planOf(r)?.cause === c).map(r => r.pandId)]));
+const tallGround = rows.filter(r => planOf(r)?.tallGround).map(r => r.pandId);
+fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, causes, tallGroundRescued: tallGround, rows }, null, 1) + '\n');
+console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected (a ${causes.a.length}, c ${causes.c.length}, d ${causes.d.length}), ${tallGround.length} rescued by a tall ground -> ${out}`);

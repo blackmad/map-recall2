@@ -71,9 +71,23 @@ export interface StoreyPlan {
   lineFrom: 'eaves' | 'wall';
   lineM: number;
   range: { min: number; median: number; max: number };
-  /** The pitch lies within the period range. */
+  /** The pitch lies within the period range (after the tall-ground retry). */
   ok: boolean;
+  /** The retry that brought a too-tall pitch into range: the ground row at TALL_GROUND_RATIO of the upper pitch; `groundM`
+   *  is that ground row (m). Absent when the plain pitch passed or failed. */
+  tallGround?: { groundM: number };
+  /** 3DBAG's eaves was stated but lay outside the window (reject cause c). */
+  eavesIgnored: boolean;
 }
+
+/**
+ * A tall ground storey (a shop or bel-etage) under diminishing upper storeys makes one shared pitch read too tall. Before a
+ * too-tall pitch is rejected the fit retries with the ground row this many upper pitches tall: the 25th percentile of the
+ * ground / mean-upper ratio of the 180 hand-measured fronts without a souterrain that state storeyHeights
+ * (scripts/house-specs/specs, building-recipes houses, block-face faces; median 1.48, p10 1.10, p25 1.29, p75 1.64),
+ * the low end so a rescue never draws a ground storey taller than most measured ones. The integrator's band was 1.2-1.4.
+ */
+export const TALL_GROUND_RATIO = 1.29;
 
 export const rangeFor = (period?: string) => STOREY_PITCH_RANGE[(period && period in STOREY_PITCH_RANGE ? period : 'any') as StoreyPeriod | 'any'];
 
@@ -98,7 +112,14 @@ export function storeyPlan(input: StoreyPlanInput): StoreyPlan | null {
     roofRow = roofStated && wall - (rows + s) * range.median >= ROOF_ROW_MIN * range.median;
     pitch = wall / (rows + s + (roofRow ? 1 : 0));
   }
-  return { pitchM: pitch, souterrainM: s * pitch, roofRow, lineFrom: useEaves ? 'eaves' : 'wall', lineM: line, range, ok: pitch >= range.min && pitch <= range.max };
+  const eavesIgnored = typeof eaves === 'number' && Number.isFinite(eaves) && eaves > 0 && !useEaves;
+  const inRange = (v: number) => v >= range.min && v <= range.max;
+  if (!inRange(pitch) && pitch > range.max && rows >= 2) {
+    // (b) a tall ground row: the stated rows over a ground TALL_GROUND_RATIO of the upper pitch.
+    const upper = (useEaves ? line : wall) / (rows - 1 + TALL_GROUND_RATIO + s + (!useEaves && roofRow ? 1 : 0));
+    if (inRange(upper)) return { pitchM: upper, souterrainM: s * upper, roofRow, lineFrom: useEaves ? 'eaves' : 'wall', lineM: line, range, ok: true, tallGround: { groundM: TALL_GROUND_RATIO * upper }, eavesIgnored };
+  }
+  return { pitchM: pitch, souterrainM: s * pitch, roofRow, lineFrom: useEaves ? 'eaves' : 'wall', lineM: line, range, ok: inRange(pitch), eavesIgnored };
 }
 
 /** Default on; `?storeyGuard=0` in the page or STOREY_GUARD=0 in Node draws a rejected count as before the guard. */
@@ -135,14 +156,16 @@ export const EAVES_BAND_MIN_M = 0.3;
  *  - with a souterrain the ground cell is the souterrain (its door and windows at the street) and every stated storey,
  *    the bel-etage included, is an upper row at one pitch;
  *  - a roof row adds one upper row;
+ *  - a tall-ground rescue draws the stated count with its ground row at `tallGround.groundM`;
  *  - `bandM`: with 3DBAG's eaves under the wall top and no roof row, the rows stop at the eaves line and the wall over it
  *    (the frieze and cornice zone) is plain wall, the mesher's parapet band. Only when the plan changes the draw.
  */
-export function storeyDraw(plan: StoreyPlan, storeys: number, guard: boolean = storeyGuardOn(), wallM?: number): 'reject' | { storeys: number; groundM?: number; bandM?: number } | null {
+export function storeyDraw(plan: StoreyPlan, storeys: number, guard: boolean = storeyGuardOn(), wallM?: number): 'reject' | { storeys: number; groundM?: number; souterrain?: true; bandM?: number } | null {
   if (guard && !plan.ok) return 'reject';
   const rows = Math.floor(storeys);
-  if (!plan.souterrainM && !plan.roofRow) return null;
+  if (!plan.souterrainM && !plan.roofRow && !plan.tallGround) return null;
   const upper = (plan.souterrainM ? rows : rows - 1) + (plan.roofRow ? 1 : 0);
   const band = plan.lineFrom === 'eaves' && !plan.roofRow && wallM !== undefined ? wallM - plan.lineM : 0;
-  return { storeys: upper + 1, ...(plan.souterrainM ? { groundM: +plan.souterrainM.toFixed(2) } : {}), ...(band >= EAVES_BAND_MIN_M ? { bandM: +band.toFixed(3) } : {}) };
+  const groundM = plan.souterrainM ? plan.souterrainM : plan.tallGround?.groundM;
+  return { storeys: upper + 1, ...(groundM ? { groundM: +groundM.toFixed(2) } : {}), ...(plan.souterrainM ? { souterrain: true } : {}), ...(band >= EAVES_BAND_MIN_M ? { bandM: +band.toFixed(3) } : {}) };
 }

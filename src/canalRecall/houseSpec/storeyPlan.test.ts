@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, storeyDraw, storeyGuardEnabled, storeyPlan } from './storeyPlan.ts';
+import { TALL_GROUND_RATIO, ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, storeyDraw, storeyGuardEnabled, storeyPlan } from './storeyPlan.ts';
 import { SOUTERRAIN } from '../blockBuilding/systems.ts';
-import { specStoreyFit } from '../streetFacadeRendering.ts';
+import { specStoreyFit, SPEC_GROUND_SCALE, SPEC_SOUTERRAIN_GROUND_MIN } from '../streetFacadeRendering.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
 import { specView } from './view.ts';
 import { drawableDesign, specProblems, type HouseSpec } from './spec.ts';
@@ -27,12 +27,14 @@ test('171218: storeys 3 + souterrain + roof storey fit at 3.3 m +-15 %, for the 
   }
 });
 
-test('171218 without the souterrain read: 3 rows under 13.4 m eaves are 4.47 m, outside c19 (<= 4.09): rejected', () => {
+test('171218 without the souterrain read: 3 rows under 13.4 m eaves are 4.47 m, over c19 (<= 4.09); the tall-ground retry takes it', () => {
   const plan = storeyPlan({ storeys: 3, eavesM: 13.4, period: 'c19', wallM: 13.9 })!;
-  assert.ok(Math.abs(plan.pitchM - 4.467) < 0.01);
-  assert.equal(plan.ok, false);
-  assert.equal(storeyDraw(plan, 3, true), 'reject');
-  assert.equal(storeyDraw(plan, 3, false), null, 'guard off: the count is drawn as before');
+  assert.ok(Math.abs(plan.pitchM - 13.4 / (2 + TALL_GROUND_RATIO)) < 0.01, 'upper rows 4.07 m');
+  assert.ok(plan.ok && plan.tallGround);
+  // without the retry window the plain pitch (4.47 m) is what the guard would reject
+  assert.ok(13.4 / 3 > STOREY_PITCH_RANGE.c19.max);
+  assert.equal(storeyDraw(storeyPlan({ storeys: 3, period: 'c19', wallM: 16.6 })!, 3, true), 'reject');
+  assert.equal(storeyDraw(storeyPlan({ storeys: 3, period: 'c19', wallM: 16.6 })!, 3, false), null, 'guard off: the count is drawn as before');
 });
 
 test('a roof storey inside the wall draws as one more window row', () => {
@@ -74,14 +76,15 @@ test('flag: default on, ?storeyGuard=0 / STOREY_GUARD=0 off, query wins', () => 
 test('171218 drawn through specStoreyFit: souterrain ground cell, three rows to the eaves, the wall over them a plain band', () => {
   // ah07-probe.json (D1): c19, the street run's exposed wall 14.32 m, today 5 x 2.66 m over a 3.70 m ground
   for (const style of ['canal', 'c19'] as const) for (const wallM of [13.4, 14.32]) {
-    const plan = storeyPlan({ ...W171218, wallM })!, draw = storeyDraw(plan, 3, true, wallM) as { storeys: number; groundM: number; bandM?: number };
+    const plan = storeyPlan({ ...W171218, wallM })!, draw = storeyDraw(plan, 3, true, wallM) as { storeys: number; groundM: number; souterrain?: true; bandM?: number };
     assert.equal(draw.bandM ?? 0, wallM === 13.4 ? 0 : +(wallM - 13.4).toFixed(3));
     const rowsWall = wallM - (draw.bandM ?? 0);
-    const fit = specStoreyFit(style, rowsWall, draw.storeys, 1, { fit: 'nearest', groundM: draw.groundM })!;
+    const fit = specStoreyFit(style, rowsWall, draw.storeys, 1, { fit: 'nearest', groundM: draw.groundM, groundMin: SPEC_SOUTERRAIN_GROUND_MIN })!;
     const groundM = STYLE_DIMS[style].ground * fit.ground, storeyM = STYLE_DIMS[style].storey * fit.storey;
     assert.ok(Math.abs((rowsWall - groundM) / storeyM - 3) < 1e-6, 'layoutWall rounds to three upper rows');
     assert.ok(Math.abs(storeyM / 3.3 - 1) <= 0.15, `${style} ${wallM}: drawn row ${storeyM.toFixed(2)} m`);
-    assert.ok(groundM < 2.6, `${style}: souterrain cell ${groundM.toFixed(2)} m`);
+    assert.ok(Math.abs(groundM - draw.groundM) < 0.01, `${style}: souterrain cell ${groundM.toFixed(2)} m drawn as fitted (not clamped to SPEC_GROUND_SCALE.min)`);
+    assert.equal(draw.souterrain, true);
   }
 });
 
@@ -110,4 +113,29 @@ test('spec: roofStorey validates, and the recipe route drops it (the intent has 
   assert.equal((d.design.fronts![0] as Record<string, unknown>).roofStorey, undefined);
   assert.deepEqual(d.ignored, [{ path: 'fronts/0/roofStorey', value: 'mansard', drawnAs: null }]);
   assert.equal(drawableDesign({ fronts: [{ storeys: 3 }] }).ignored.length, 0);
+});
+
+test('a too-tall pitch retries with a tall ground row before rejecting (cause b)', () => {
+  // 3 rows on 13.9 m eaves = 4.63 m; with the ground at 1.29 upper pitches: 13.9 / 3.29 = 4.22 m (canal max 4.26)
+  const plan = storeyPlan({ storeys: 3, eavesM: 13.9, wallM: 14.3, period: 'canal' })!;
+  assert.equal(plan.ok, true); assert.ok(plan.tallGround);
+  assert.ok(Math.abs(plan.pitchM - 13.9 / (2 + TALL_GROUND_RATIO)) < 1e-9);
+  const draw = storeyDraw(plan, 3, true, 14.3) as { storeys: number; groundM: number; bandM?: number };
+  assert.equal(draw.storeys, 3); assert.ok(Math.abs(draw.groundM - TALL_GROUND_RATIO * plan.pitchM) < 0.01); assert.equal(draw.bandM, 0.4);
+  // still too tall with the tall ground: rejected, no rescue
+  const far = storeyPlan({ storeys: 3, wallM: 16.6, period: 'c19' })!;
+  assert.equal(far.ok, false); assert.equal(far.tallGround, undefined);
+  // too short never retries
+  assert.equal(storeyPlan({ storeys: 6, wallM: 12, period: 'canal' })!.tallGround, undefined);
+});
+
+test('the eaves window records an ignored eaves (cause c)', () => {
+  assert.equal(storeyPlan({ storeys: 4, wallM: 18, eavesM: 3.1, period: 'c19' })!.eavesIgnored, true);
+  assert.equal(storeyPlan({ storeys: 4, wallM: 14, eavesM: 13.4, period: 'c19' })!.eavesIgnored, false);
+  assert.equal(storeyPlan({ storeys: 4, wallM: 14, period: 'c19' })!.eavesIgnored, false);
+});
+
+test('the souterrain floor applies only when asked: no groundMin is the H11 clamp', () => {
+  assert.deepEqual(specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 1.9 }), specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 3.6 * SPEC_GROUND_SCALE.min }));
+  assert.ok(Math.abs(specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 1.9, groundMin: SPEC_SOUTERRAIN_GROUND_MIN })!.ground * 3.6 - 1.9) < 1e-9);
 });
