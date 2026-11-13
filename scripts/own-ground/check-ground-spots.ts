@@ -17,6 +17,7 @@ import { GROUND_SPOTS, GROUND_SPOT_RADIUS_M } from '../../src/canalRecall/ownGro
 import { R2_GROUND_PROBES, R2_GROUND_SPOTS, R2_ROAD_PROBES, R2_ZFIGHT_M2 } from '../../src/canalRecall/ownGround/r2GroundRegressions.ts';
 import { OPEN_GROUND_LAYER } from '../../src/canalRecall/ownGround/groundSurface.ts';
 import { layersAt } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { bridgeFeedbackRegressions } from './bridge-feedback-pins.ts';
 
 const HELP = `check-ground-spots — G1 pins on the G0 named ground places (issue #376)
 
@@ -25,7 +26,8 @@ const HELP = `check-ground-spots — G1 pins on the G0 named ground places (issu
 Pins (ceilings are G1's measured values + 5 %, m2 within ${GROUND_SPOT_RADIUS_M} m of each place, 0.5 m raster):
   shard area per named place; Kranenbergpad float and > 5 cm poke; Overschiestraat one slot over its three tunnel ways;
   no closed mouth without a tunnel-tagged way within 25 m in cells 2_3 and -4_-4; the named building fronts (lane F4,
-  frontRegressions.ts) not buried by the street under the base rule. Exit 1 on a failure.`;
+  frontRegressions.ts) not buried by the street under the base rule; the bridge feedback pins of
+  bridge-feedback-pins.ts (Muntplein railings, survey caps, Lelylaan). Exit 1 on a failure.`;
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 
 const ROOT = 'public/data/extracts/amsterdam';
@@ -115,6 +117,8 @@ async function main(): Promise<void> {
   const fronts = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/own-ground/audit-building-fronts.ts', '--named', '--check', '--out', 'artifacts/ground-audit/fronts-named.json'], { encoding: 'utf8' });
   for (const line of (fronts.stdout ?? '').split('\n').filter(l => /^\s+(ok|FAIL) /.test(l))) console.log(line.trim().replace(/^(ok|FAIL)\s+/, (_, w) => `${w === 'ok' ? 'ok  ' : 'FAIL'} front `));
   check(fronts.status === 0, `named building fronts not buried by the street (audit-building-fronts --named)${fronts.status ? `: ${(fronts.stderr ?? '').slice(-400)}` : ''}`);
+  // Bridge feedback pins (2026-11-13: Muntplein rails, Rijckerbrug/Machineslootbrug slabs, Lelylaan), here so they gate check:canal.
+  await bridgeFeedbackRegressions(read, check);
   console.log(failed ? `${failed} ground spot pin(s) failed` : 'ground spot pins passed');
   if (failed) process.exitCode = 1;
 }
