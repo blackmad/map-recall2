@@ -539,6 +539,25 @@ test('way decks over a hole (Jan Evertsenstraat, OSM 323258135): the deck runs o
   assert.ok(!wayDeckProfile('OSM1', 'test', [[12, 0], [31, 0]], 6, wet, () => false, hole)!.under, 'the way ends at the quay');
 });
 
+test('way decks over a hole run on to the top of the bank (Lelylaan, OSM 7382983, 07ec0473): not half-way up its climb', () => {
+  // The canal x 20..30; the bridge way 12..45; the west bank 1, the underpass −1.5 to x 45, then the DTM climbs at 40 %
+  // to 3 at x 56.25 (an embankment the ground filter dropped), level beyond.
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[12, 0], [45, 0]];
+  const climb = (x: number) => (x <= 20 ? 1 : x < 45 ? -1.5 : Math.min(3, -1.5 + 0.4 * (x - 45)));
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, climb)!;
+  const end = p.x[0] + p.deck[1];
+  assert.ok(end > 56 && end < 59, `deck ends at x ${end.toFixed(1)} (the top of the climb at 56.25)`);
+  // HOLE_CLIMB_GRADE off: the first station within HOLE_M of the west bank, half-way up (x ~ 49).
+  const before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, climb, false, false)!;
+  const was = before.x[0] + before.deck[1];
+  assert.ok(was > 48 && was < 52, `without the climb rule the deck ends at x ${was.toFixed(1)}`);
+  // A bank that climbs at an approach grade (8 %) stops where it did.
+  const gentle = (x: number) => (x <= 20 ? 1 : x < 45 ? -1.5 : Math.min(3, -1.5 + 0.08 * (x - 45)));
+  const g = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle)!, gb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle, false, false)!;
+  assert.equal(g.deck[1], gb.deck[1], 'a gentle bank keeps its end');
+});
+
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
   // The footprint along +x (0–21.5 m, 6 m wide), the movable way 4.4–17.1 m, the fixed ways beyond it.
   const ring: Vec2[] = [[0, -3], [21.5, -3], [21.5, 3], [0, 3]];

@@ -24,6 +24,8 @@ export const GROUND_FIXES = [
   'surveyCaps',
   /** Lane fb-bridges 2026-11-13: no railing beside a surveyed surface over mapped water, the Muntplein (groundCell plein). */
   'pleinRails',
+  /** Lane fb-bridges 2026-11-13: a way deck over an end hole runs on to the top of the bank's climb (wayDecks.ts HOLE_CLIMB_GRADE), the Lelylaan. */
+  'holeClimb',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;
