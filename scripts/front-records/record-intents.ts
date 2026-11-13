@@ -31,6 +31,7 @@ export function intentFor(rec: FrontRecord, base: any): {intent: any; notes: str
   intent.id = `l2-${rec.pandId}`; intent.pandId = rec.pandId; intent.address = rec.address;
   intent.sources = [{id: 'lane2-front-record', kind: 'street-panorama', capturedAt: '2022-12-15'}];
   const f = intent.fronts[0];
+  if (rec.street) f.street = rec.street; // the base intent is a Haarlemmerdijk house: facts.ts picks the front wall by this street
   const lift = (rec.groundNAP ?? rec.streetGroundNAP) - rec.streetGroundNAP; // pand ground over the street
   const top = rec.frontTopM!;
   f.eavesHeight = r2(top - lift);
