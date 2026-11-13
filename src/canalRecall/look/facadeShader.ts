@@ -121,6 +121,8 @@ export const FR_DOOR = { w: 0.454, h: 0.665, bottom: 0.0706, side: 0.054, top: 0
 export const FR_DOOR_QUIET = { w: 0.377, h: 0.629, side: 0.019, top: 0.0147, lightTop: 0.026, lightH: 0.106, inset: 0.031 } as const;
 export const FR_DOOR_STONE = ['#d9d4c7', '#c9c7be'] as const, FR_DOOR_FAN = '#1d2a33', FR_DOOR_STEP = '#bdb8ab';
 export const FR_PLINTH = [0.0706, 0.78] as const, FR_PLINTH_RGB = '#282422', FR_SILL_BAND = [0.0129, 0.0355] as const;
+/** Plan P2: brick coursing and mottle fade out between these camera distances (m); further out the wall is flat. */
+export const FR_FLAT_M = [12, 15] as const;
 export const FR_BAR = 0.04, FR_REVEAL_SHADE = 0.45, FR_CORNICE_M = [0, 0.25, 0.4, 0.55, 0.5] as const;
 const vec4s = (rows: readonly (readonly number[])[]) => rows.map(r => `vec4(${r.map(f1).join(', ')})`).join(', ');
 
@@ -275,9 +277,10 @@ uniform float wallUnit;
 varying vec3 vWall;
 flat varying float vRec;
 flat varying float vWallKind;
+varying float vRecDist;
 `;
 export const FACADE_RECORD_VERTEX_BODY = /* glsl */ `
-vWall = wall * wallUnit; vRec = rec; vWallKind = wallKind;
+vWall = wall * wallUnit; vRec = rec; vWallKind = wallKind; vRecDist = length((modelViewMatrix * vec4(position, 1.0)).xyz);
 `;
 
 /**
@@ -292,6 +295,7 @@ uniform vec4 facadeKnobs;
 varying vec3 vWall;
 flat varying float vRec;
 flat varying float vWallKind;
+varying float vRecDist;
 uvec4 frT0, frT1, frT2, frT3;
 void frFetch(float rec) {
   int r = int(rec + 0.5);
@@ -330,7 +334,8 @@ vec3 facadeRecordColour(out vec2 m) {
   m = vec2(1.0, 0.0);
   if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
   // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
-  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x);
+  // Plan P2 (house review 2026-11-13): beyond about 15 m the wall is its flat measured tone (FR_FLAT_M); no brick there.
+  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x * (1.0 - smoothstep(${f1(FR_FLAT_M[0])}, ${f1(FR_FLAT_M[1])}, vRecDist)));
   float spek = frSpek(w.y, fw);
   vec3 bandC = fr_band();
   wallC = mix(wallC, bandC, spek); m.r = 1.0 - spek;
