@@ -136,3 +136,18 @@ test('a level crown read (mansard) or a level 3DBAG profile never gets a family 
   assert.ok(['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'shouldered'].includes(c.intent!.fronts[0].gable as string));
   assert.ok(completeSpec({ spec: s, street: 'Weteringschans', geometry: g, answer: { crown: 'mansard' } }).limits.some(l => l.component === 'roof'));
 });
+
+test('street template: dressings fill with the template house id, structure never, a read `none` band is kept', () => {
+  const T = { v: 1, rows: [{ p: '0000000000000007', x: G168094.lng, y: G168094.lat + 0.0003, yr: 1872, st: 'Weteringschans', src: 'author',
+    f: { 'fronts/0/windowSurround': 'stone-lintel', 'fronts/0/bands': 'storey', 'fronts/0/cornice': 'bracketed', 'palette/frame': 'white' } }] };
+  const s = spec('68043');
+  const c = run({ spec: s, templates: T, answer: { crown: 'cornice' } });
+  assert.equal(c.intent!.fronts[0].windowSurround, 'stone-lintel');
+  assert.match(fillOf(c, 'fronts/0/windowSurround')!.ref, /^template:0000000000000007/);
+  assert.equal(fillOf(c, 'fronts/0/cornice')!.source, 'template');
+  assert.equal(fillOf(c, 'fronts/0/storeys')!.source, 'stated');
+  assert.ok(!c.fills.some(f => f.source === 'template' && /storeys|bays|gable|souterrain|basement|roof\//.test(f.path)));
+  const none = run({ spec: s, templates: T, answer: { crown: 'cornice', bands: 'none' } });
+  assert.equal(none.intent!.fronts[0].bands, undefined);
+  assert.equal(run({ spec: s, templates: null }).fills.filter(f => f.source === 'template').length, 0);
+});

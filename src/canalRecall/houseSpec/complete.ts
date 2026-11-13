@@ -8,8 +8,10 @@
  *   1. a twin: the neighbour both answers name as the same design (mutual `sameAs`, PR1 `similar`), its stated fields only;
  *   2. a read class corroborated by geometry: the describer's crown when it is a raised gable and 3DBAG shows a crown over
  *      the eaves (D1 staged only crown classes with precision >= 0.8, which left 168094's point gable to a default);
- *   3. PR1's structure prior (storeys, window columns: structurePrior.ts);
- *   4. the build-year family default: the measured mode/median of that field over the published photo-sourced specs of the
+ *   3. the street template (streetTemplate.ts): the dressings of the nearest reviewed house of the same band on the street
+ *      or the adjoining block within 150 m, never structure, picked by a hash of the pand id when several are in reach;
+ *   4. PR1's structure prior (storeys, window columns: structurePrior.ts);
+ *   5. the build-year family default: the measured mode/median of that field over the published photo-sourced specs of the
  *      family (family-defaults.json, scripts/house-line/route-c/family-defaults.ts); a crown is a raised gable only when
  *      3DBAG shows one.
  * Every fill is recorded with its source. Then the gates: a part the geometry cannot hold (a storey pitch or a bay outside the
@@ -26,10 +28,11 @@ import { intentSources } from './toRecipe.ts';
 import { structureGuess, STRUCTURE_PRIOR_TABLE, type StructurePriorTable } from './structurePrior.ts';
 import { familyOf, RAISED_GABLES, type FamilyId } from './families.ts';
 import FAMILY_TABLE from './family-defaults.json' with { type: 'json' };
+import { streetTemplateFor, DRESSING_FIELDS, type TemplateTable } from './streetTemplate.ts';
 
 export { familyOf, RAISED_GABLES, FAMILIES } from './families.ts';
 
-export type FillSource = 'stated' | 'twin' | 'reading+geometry' | 'prior' | 'family' | 'derived';
+export type FillSource = 'stated' | 'twin' | 'reading+geometry' | 'template' | 'prior' | 'family' | 'derived';
 export interface Fill { path: string; value: unknown; source: FillSource; ref: string }
 export interface Drop { path: string; value: unknown; gate: string; why: string; to?: unknown }
 type FamilyEntry = { value: unknown; n: number; share: number | null };
@@ -57,6 +60,8 @@ export interface CompleteInput {
   answer?: AnswerHints | null;
   twin?: { pandId: string; spec: HouseSpec; mirrored: boolean } | null;
   prior?: StructurePriorTable;
+  /** Street-template table (default: street-templates.json); `null` turns the rung off. */
+  templates?: TemplateTable | null;
   families?: FamilyTable;
   /** Intent id (default `rc-<pandId>`). */
   id?: string;
@@ -171,7 +176,25 @@ export function completeSpec(input: CompleteInput): Completion {
     set('fronts/0/gable', crown, 'reading+geometry', `describer crown ${crown} (not staged: class precision < 0.8) + 3DBAG crown ${g.crownRiseM!.toFixed(1)} m over the eaves`);
   }
 
-  // 3. The structure prior: storeys and window columns.
+  // 3. The street template (streetTemplate.ts): dressings only, never structure, each fill naming the template house.
+  if (input.templates !== null) {
+    const pick = streetTemplateFor({ pandId: spec.pandId, lng: g.lng, lat: g.lat, year: g.year, street }, input.templates ?? undefined);
+    if (pick) {
+      const ref = `template:${pick.pandId} (${pick.street}, ${pick.distM} m, ${pick.sameStreet ? 'same street' : 'adjoining block'}, pick 1 of ${pick.pool}, ${pick.src})`;
+      // A band word the reader read as `none` is a reading: no band from the template.
+      const bandsRead = input.answer?.bands === 'none';
+      if (!has('fronts/0/bands') && !bandsRead && pick.fields['fronts/0/bands'] !== undefined) set('fronts/0/bands', structuredClone(pick.fields['fronts/0/bands']), 'template', ref);
+      // Band parameters only with the template's own band kind.
+      const bandParams = new Set(['fronts/0/speklagen', 'fronts/0/bandLines', 'fronts/0/bandStoreys', 'fronts/0/bandHeights', 'palette/band']);
+      for (const p of DRESSING_FIELDS) {
+        if (p === 'fronts/0/bands' || has(p) || pick.fields[p] === undefined) continue;
+        if (bandParams.has(p) && f0.bands !== pick.fields['fronts/0/bands']) continue;
+        set(p, structuredClone(pick.fields[p]), 'template', ref);
+      }
+    }
+  }
+
+  // 4. The structure prior: storeys and window columns.
   if (!has('fronts/0/storeys') || !has('fronts/0/bays')) {
     const guess = structureGuess({ lng: g.lng, lat: g.lat, year: g.year, exposedM: g.eavesM, widthM: g.widthM }, input.prior ?? STRUCTURE_PRIOR_TABLE);
     const ref = `structure prior (year ${g.year}, eaves ${g.eavesM.toFixed(1)} m, width ${g.widthM.toFixed(1)} m)`;
@@ -179,7 +202,7 @@ export function completeSpec(input: CompleteInput): Completion {
     if (!has('fronts/0/bays') && guess?.columns) set('fronts/0/bays', guess.columns, 'prior', ref);
   }
 
-  // 4. Family defaults for what the intent needs.
+  // 5. Family defaults for what the intent needs.
   if (!has('fronts/0/storeys')) set('fronts/0/storeys', Math.max(1, Math.round(g.eavesM / 3.2)), 'derived', `eaves ${g.eavesM.toFixed(1)} m / 3.2 m (no prior row within reach)`);
   if (!has('fronts/0/bays')) set('fronts/0/bays', Math.max(1, Math.min(8, Math.round(g.widthM / 2.2))), 'derived', `width ${g.widthM.toFixed(1)} m / 2.2 m (no prior row within reach)`);
   if (!has('fronts/0/gable')) {
