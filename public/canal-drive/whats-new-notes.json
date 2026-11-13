@@ -11,14 +11,9 @@
       ],
       "images": [
         {
-          "src": "ui/2026-11-13-belt-audit-plot-true/note-r129-167816.jpg",
-          "alt": "Haarlemmerdijk at street level before and after: an alley-wide gap between houses closes",
-          "caption": "Haarlemmerdijk 18-22, street-level camera (own engine, compiled world): before | after. The alley-wide gap closes; the house in the middle is now drawn from its measured spec while its model is held."
-        },
-        {
-          "src": "ui/2026-11-13-belt-audit-plot-true/note-r129-167794.jpg",
-          "alt": "Haarlemmerdijk 31 before and after: the neighbour no longer overlaps it",
-          "caption": "Haarlemmerdijk 31, same camera: before | after. Its neighbour no longer overlaps it."
+          "src": "ui/2026-11-13-belt-audit-plot-true/note-pair-167794.jpg",
+          "alt": "Haarlemmerdijk 31 before and after: the neighbour no longer overlaps it and the row closes up",
+          "caption": "Haarlemmerdijk 31, street-level camera (own engine, compiled world), same pose and light: before | after the fix. Its neighbour no longer overlaps it."
         }
       ]
     },
