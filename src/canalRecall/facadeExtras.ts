@@ -198,8 +198,7 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     const x = doorX(c); if (x == null) return; const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
     // A slim canopy over the door only (user 2026-10-03: "awful imposing extrusions on our canal house grammar"): 0.5 m out, not a 0.9 m black slab.
     s.box(c.f, x - 0.65, x + 0.65, 0, 0.5, z, z + 0.06, c.style === 'c19' ? '#3a3f45' : CONCRETE, true); } },
-  { id: 'downpipe', styles: ALL, p: 0.4, build: (c, s) => {
-    const x = hash01(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15; s.box(c.f, x - 0.05, x + 0.05, 0, 0.1, c.base, c.top - 0.2, '#4a4d50'); s.box(c.f, x - 0.15, x + 0.15, 0, 0.2, c.top - 0.45, c.top - 0.2, '#4a4d50'); } },
+  // No downpipe extra (removed 2026-11-13, feedback "what's with these vertical lines", user decision): a random 40 % of every wall drew a dark stripe street to eaves.
   { id: 'gutter', group: 'crown', styles: ['canal', 'c19', 'school'], p: 0.3, build: (c, s) => { s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, '#3a3d40', true); } },
   // --- Amsterdam School ------------------------------------------------------------
   { id: 'brick-balcony', styles: ['school'], p: 0.3, build: (c, s) => {
@@ -231,7 +230,9 @@ const STREET_FURNITURE: readonly WallComponent[] = [
   { id: 'glass-balconies', styles: ['modern', 'tower'], p: 0.45, street: true, group: 'balcony', build: (c, s) => {
     openBalconyStack(c, s, .85);
   } },
-  { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0.25, build: (c, s) => {
+  // Fins are never dice (p 0, feedback 2026-11-13 "what are these vertical lines", Tollensstraat: pale 0.1 m boxes every 1.5 m from the
+  // ground floor to the crown, regardless of the windows, read as dotted ladder rails beside the slab edges). Drawn only where a register states them.
+  { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0, build: (c, s) => {
     for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
   { id: 'plinth', group: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },

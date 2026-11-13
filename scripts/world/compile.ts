@@ -56,7 +56,8 @@ import { changedCoversTiles, coversHides } from '../../src/canalRecall/world/til
 // world-compiler-2 (2026-11-06, lane R2-B #229): --shell bakes the format-6 shell files; the cells are unchanged.
 export const COMPILER_VERSION = 'world-compiler-2';
 /** What a cell's shells are baked from beyond the cell itself (the mesher and its tables): a change rebakes every shell. */
-const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json', 'src/canalRecall/streetFronts.ts', 'src/canalRecall/routing/roadExtract.ts', 'src/canalRecall/routing/bikeAccess.ts', 'public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'].map(f => path.join(ROOT, f));
+// facadeExtras/facadeExtraCore are imported by threeBuildingMesh: listed so an extras-only change rebakes the shells (2026-11-13, downpipes/fins).
+const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/facadeExtras.ts', 'src/canalRecall/facadeExtraCore.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json', 'src/canalRecall/streetFronts.ts', 'src/canalRecall/routing/roadExtract.ts', 'src/canalRecall/routing/bikeAccess.ts', 'public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'].map(f => path.join(ROOT, f));
 const WORLD_FORMAT_VERSION = BUILDING_FORMAT_VERSION;
 const args = process.argv.slice(2);
 const flag = (name: string) => args.find(a => a === `--${name}` || a.startsWith(`--${name}=`));

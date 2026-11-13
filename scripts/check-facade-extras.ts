@@ -21,6 +21,8 @@ const wall = (style: ExtraContext['style'], id = 'h1', over: Partial<ExtraContex
 const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['recipe']>>> = {
   'historic-balcony-stack': { family: 'masonry', period: 'c19', confidence: .8, facadeAssembly: 'stacked-iron-balcony', sash: 'paired-transom', frameHex: '#ece7db', trimDensity: 'restrained' },
 };
+// Components the dice never pick (p 0): drawn only when a register forces them (registerForce), still built and checked here.
+const FORCED_ONLY = new Set(['vertical-fins']);
 const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];
   return wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});
@@ -76,9 +78,9 @@ const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'do
 for (const comp of WALL_COMPONENTS) {
   const generic = comp.styles.filter(st => chanceFor(comp.p, st) > 0);
   const explicit = EXPLICIT_COMPONENTS[comp.id];
-  assert.ok(generic.length > 0 || explicit, `${comp.id} has generic selection or an explicit recipe fixture`);
+  assert.ok(generic.length > 0 || explicit || FORCED_ONLY.has(comp.id), `${comp.id} has generic selection or an explicit recipe fixture`);
   if (explicit) assert.equal(generic.length, 0, `${comp.id} is never selected by generic probability`);
-  const live = explicit ? comp.styles : generic;
+  const live = explicit || FORCED_ONLY.has(comp.id) ? comp.styles : generic;
   for (const style of live) {
     const c = componentWall(comp.id, style), sink = new ExtraSink(9999);
     comp.build(c, sink, 0.4);
@@ -191,8 +193,9 @@ for (let i = 0; i < 3000; i++) {
 }
 assert.ok(maxStreet <= EXTRA_BUDGET.wall, `street wall budget holds (${maxStreet})`);
 assert.ok(maxSide <= EXTRA_BUDGET.sideWall, `side wall budget holds (${maxSide})`);
-const unseen = WALL_COMPONENTS.filter(c => !EXPLICIT_COMPONENTS[c.id]).map(c => c.id).filter(id => !seen.has(id));
+const unseen = WALL_COMPONENTS.filter(c => !EXPLICIT_COMPONENTS[c.id] && !FORCED_ONLY.has(c.id)).map(c => c.id).filter(id => !seen.has(id));
 assert.deepEqual(unseen, [], `every generic wall component appears in a 3000-wall sample`);
+for (const id of FORCED_ONLY) assert.ok(!seen.has(id), `${id} never appears in the generic 3000-wall sample (register-forced only)`);
 for (const id of Object.keys(EXPLICIT_COMPONENTS)) {
   assert.ok(WALL_COMPONENTS.some(c => c.id === id), `${id}: explicit fixture names an existing component`);
   assert.ok(!seen.has(id), `${id} never appears in the generic 3000-wall sample`);
