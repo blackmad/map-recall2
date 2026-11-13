@@ -10,7 +10,8 @@
  *                up to the eaves line
  *   roof storey  (`roofStorey` mansard|attic) above the eaves line: roof, not wall. It is drawn as one more window row only
  *                where the mesher's wall reaches over the eaves line by at least ROOF_ROW_MIN of a storey.
- * The eaves line is 3DBAG's (bag-facts eaves, the source of the register gable gate's crown rise) where the view carries it;
+ * The eaves line is 3DBAG's (bag-facts eaves, the source of the register gable gate's crown rise) where the view carries it
+ * and it lies within one period storey under the mesher's wall top;
  * otherwise the mesher's wall top, and for a stated roof storey the rows at the period pitch decide whether the wall holds it.
  *
  * The guard: a fitted pitch outside the period's range (STOREY_PITCH_RANGE) rejects the read count for that pand. The
@@ -83,7 +84,10 @@ export function storeyPlan(input: StoreyPlanInput): StoreyPlan | null {
   const range = rangeFor(input.period), s = input.souterrain ? SOUTERRAIN_FACTOR : 0;
   const roofStated = input.roofStorey === 'mansard' || input.roofStorey === 'attic';
   const eaves = input.eavesM;
-  const useEaves = typeof eaves === 'number' && Number.isFinite(eaves) && eaves > 2 && eaves <= wall + EAVES_OVER_WALL_M;
+  // 3DBAG's eaves is the pand's lowest roof edge: a rear annex or a dormer cheek puts it far below the front's. It counts
+  // only within one period storey (range.max) under the wall top (AH07: 71 of 155 stated counts read as 0.5-2.5 m
+  // pitches against such eaves before this window, 1 after).
+  const useEaves = typeof eaves === 'number' && Number.isFinite(eaves) && eaves >= wall - range.max && eaves <= wall + EAVES_OVER_WALL_M;
   let pitch: number, roofRow = false, line = wall;
   if (useEaves) {
     line = Math.min(eaves!, wall);

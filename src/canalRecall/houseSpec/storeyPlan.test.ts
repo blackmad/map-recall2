@@ -55,6 +55,8 @@ test('no souterrain and no roof row: the stated count is drawn as before (null),
   assert.equal(storeyDraw(storeyPlan({ storeys: 6, wallM: 12, period: 'canal' })!, 6, true), 'reject', '2.0 m: under canal p5');
   // an eaves line far over the wall is another mass: the wall top is the line
   assert.equal(storeyPlan({ storeys: 4, wallM: 13, eavesM: 20, period: 'c19' })!.lineFrom, 'wall');
+  // an eaves line far under the wall top is a rear annex's roof (AH07 0363100012165003: 3.1 m under an 18.2 m front)
+  assert.equal(storeyPlan({ storeys: 6, wallM: 18.18, eavesM: 3.1, period: 'school' })!.lineFrom, 'wall');
   assert.equal(storeyPlan({ storeys: 0, wallM: 13 }), null);
 });
 
