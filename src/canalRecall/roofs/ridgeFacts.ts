@@ -10,8 +10,13 @@ type Tile = { z: number; x: number; y: number };
 export const RIDGE_AXES_ZOOM = 14;
 const PAND_PREFIX = 'NL.IMBAG.Pand.';
 
-export const ridgeAxesEnabled = (search: string = typeof location !== 'undefined' ? location.search : ''): boolean =>
-  new URLSearchParams(search).get('ridgeAxes') !== '0';
+/** Off by default until the ridge-axes tiles are published and the world recompiled with them (2026-11-13):
+ *  without the tiles every building tile would 404 a sidecar. Flip to `!== '0'` in the publish commit. */
+export const RIDGE_AXES_DEFAULT_ON = false;
+export const ridgeAxesEnabled = (search: string = typeof location !== 'undefined' ? location.search : ''): boolean => {
+  const value = new URLSearchParams(search).get('ridgeAxes');
+  return value === null ? RIDGE_AXES_DEFAULT_ON : value !== '0';
+};
 
 async function readJson(response: Response): Promise<unknown> {
   const bytes = new Uint8Array(await response.arrayBuffer());
