@@ -2900,6 +2900,29 @@ Paired, 127 unspecified (`paired.ts`): columns 45 wrong→right, 11 right→wron
 storeys 14 against 6 (p 0.115; 1800–1879: 3 against 0, p 0.25). Errors off → all: storeys over 36 / under 34 → over 29 /
 under 29; columns over 18 / under 68 → over 30 / under 28.
 
+### Restated on D1's adjudicated labels (`benchmark-v1-adjudicated.json`, lane D1 6f8df6d61)
+
+D1 changed 54 labels and kept 36. It left 12 fields undecidable, and those are excluded: `labels.ts` drops a field listed
+in `adjudicated.undecidable`. The same pands and the same prior table, so the result is still held out. Drawn through the
+mesher (`baseline.ts --labels`, `score-adj-*.json`):
+
+| field | set | off | default (columns) | `=all` | prior alone (`fit.ts --labels`) |
+|---|---|---|---|---|---|
+| columns | 136 generic | 39.0 % [31.2, 47.4] | **62.5 % [54.1, 70.2]** | 62.5 % | 59.6 % |
+| columns | 123 unspecified | 35.0 % [27.1, 43.7] | **61.0 % [52.1, 69.1]** (+26.0) | 61.0 % | 58.5 % |
+| storeys | 140 generic | 51.4 % [43.2, 59.6] | 51.4 % | 56.4 % [48.2, 64.4] | 57.9 % |
+| storeys | 126 unspecified | 46.8 % [38.3, 55.5] | 46.8 % | 52.4 % [43.7, 60.9] (+5.6) | 55.6 % (+8.8) |
+
+Paired storeys, off against `=all`, 126 unspecified (`paired.ts --labels`):
+
+| family | n | off | all | wrong→right | right→wrong | McNemar p |
+|---|---|---|---|---|---|---|
+| all years | 126 | 46.8 % | 52.4 % | 14 | 7 | 0.189 |
+| 1800–1879 | 29 | 37.9 % | 48.3 % | 3 | 0 | 0.250 |
+
+Columns, paired: 45 wrong→right against 13 right→wrong (p < 0.001). On D1's labels, storeys still fall short of the
++10 gate. The 1800–1879 split is unchanged: 10 under-counts, all canal-style, at a median of 2.08 m per implied upper storey.
+
 **Columns:** today's error is one constant. The drawn window pitch has a median of 2.72 m against the photos' 1.99 m (the
 style cells' bay widths, `STYLE_DIMS`), so the game under-counts columns, mostly by one.
 

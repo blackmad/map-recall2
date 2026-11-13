@@ -27,8 +27,10 @@ export function benchmarkTruths(root: string, file: string = BENCHMARK): Structu
   const d = JSON.parse(fs.readFileSync(path.resolve(root, file), "utf8"));
   return (d.pands as any[]).filter(p => p.readable && p.labels).map(p => {
     const l = p.labels;
-    const crown = typeof l.crown === 'string' && l.crown !== 'unknown' && l.crown !== 'other' ? l.crown : null;
-    return { pandId: String(p.pandId), group: String(p.group ?? ''), storeys: Number.isInteger(l.storeys) && l.storeys > 0 ? l.storeys : null, columns: upperColumns(l.columns), crown, oneFront: l.oneFront !== false, confidence: String(l.confidence ?? '') };
+    // D1's adjudicated file (benchmark-v1-adjudicated.json): a field two of three reads could not settle is excluded.
+    const undecidable = new Set<string>(p.adjudicated?.undecidable ?? []);
+    const crown = !undecidable.has('crown') && typeof l.crown === 'string' && l.crown !== 'unknown' && l.crown !== 'other' ? l.crown : null;
+    return { pandId: String(p.pandId), group: String(p.group ?? ''), storeys: !undecidable.has('storeys') && Number.isInteger(l.storeys) && l.storeys > 0 ? l.storeys : null, columns: undecidable.has('bays') ? null : upperColumns(l.columns), crown, oneFront: l.oneFront !== false, confidence: String(l.confidence ?? '') };
   });
 }
 
