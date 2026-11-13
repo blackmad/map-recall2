@@ -30,6 +30,12 @@ const browser = await chromium.launch({
 });
 const context = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: DPR });
 await context.route(/ingest\.(us\.)?sentry\.io|google-analytics|googletagmanager/, r => r.fulfill({ status: 200, body: '{}' }));
+// --bundles <dir>: serve any /js/<file>.js found in <dir> instead of the deployed one (a before/after of a source change).
+const bundles = opt('bundles', '');
+if (bundles) await context.route(/\/js\/([\w.-]+\.js)(\?.*)?$/, r => {
+  const file = path.join(bundles, /\/js\/([\w.-]+\.js)/.exec(r.request().url())[1]);
+  return fs.existsSync(file) ? r.fulfill({ path: file, contentType: 'application/javascript' }) : r.continue();
+});
 await context.addInitScript(() => {
   const w = window; w.__ls = { loaf: [], heap: [], t0: performance.now() };
   try {
@@ -49,7 +55,7 @@ if (has('warm')) {
 }
 const page = await context.newPage();
 const cdp = await context.newCDPSession(page);
-const log = { warm: has('warm'), tabs, mode, engine, url, viewport: [W, H], dpr: DPR, loadAtStart: la() };
+const log = { bundles: bundles || null, warm: has('warm'), tabs, mode, engine, url, viewport: [W, H], dpr: DPR, loadAtStart: la() };
 if (mode === 'cpu') { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start'); }
 else { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: true }); }
 const wall0 = Date.now();
@@ -111,6 +117,10 @@ if (mode === 'cpu') {
   }
   if (cur) tasks.push(cur);
   const rideAt = log.rideStartS * 1000;
+  // The longest stretch of consecutive (garbage collector) samples after the ride starts (a GC pause on the main thread).
+  { let run = 0, best = 0; for (let i = 0; i < samples.length; i++) { const dt = i + 1 < samples.length ? samples[i + 1].t - samples[i].t : 1; if (samples[i].t >= rideAt && byId.get(samples[i].id).callFrame.functionName === '(garbage collector)') { run += dt; best = Math.max(best, run); } else run = 0; }
+    log.longestRideGcMs = Math.round(best);
+    log.rideGcMs = Math.round(samples.reduce((a, x, i) => a + (x.t >= rideAt && byId.get(x.id).callFrame.functionName === '(garbage collector)' ? (i + 1 < samples.length ? samples[i + 1].t - x.t : 1) : 0), 0)); }
   log.longTasks = tasks.filter(k => k.end - k.start >= longMs).map(k => {
     const self = new Map(), incl = new Map();
     for (const [id, dt] of k.idx) {
@@ -137,7 +147,25 @@ if (mode === 'cpu') {
   log.heapLiveMB = +([...self.values()].reduce((a, b) => a + b, 0) / 1048576).toFixed(1);
   log.heapBySelf = top(self, 30); log.heapByOurFrame = top(ours, 30);
 }
+// Churn while riding (heap every 500 ms): a drop of more than 100 MB between samples is a major GC; the slope is the
+// median MB/s of the rising runs between drops; the longest long-animation-frame while riding.
+{
+  const ride = log.heap.filter(h => h.t >= log.rideStartPageMs && h.mb != null);
+  const slopes = []; let runStart = ride[0], majorGCs = 0;
+  for (let i = 1; i < ride.length; i++) {
+    if (ride[i - 1].mb - ride[i].mb > 100) {
+      majorGCs++;
+      const a = runStart, b = ride[i - 1];
+      if (b.t - a.t >= 3000) slopes.push((b.mb - a.mb) / ((b.t - a.t) / 1000));
+      runStart = ride[i];
+    }
+  }
+  const last = ride.at(-1); if (runStart && last && last.t - runStart.t >= 3000) slopes.push((last.mb - runStart.mb) / ((last.t - runStart.t) / 1000));
+  slopes.sort((a, b) => a - b);
+  log.churn = { slopeMBps: slopes.length ? +slopes[slopes.length >> 1].toFixed(1) : null, slopes: slopes.map(v => +v.toFixed(1)), majorGCs,
+    longestRideLoafMs: Math.max(0, ...log.loaf.filter(l => l.start >= log.rideStartPageMs).map(l => l.dur)) };
+}
 fs.writeFileSync(path.join(outDir, `stall-${mode}.json`), JSON.stringify(log, null, 1));
 const peak = Math.max(0, ...log.heap.map(h => h.mb ?? 0));
-console.log(JSON.stringify({ warm: has('warm'), tabs, mode, rideStartS: log.rideStartS, loaf: log.loaf.filter(l => l.dur >= 500).map(l => [Math.round((l.start - log.rideStartPageMs) / 100) / 10, l.dur, l.state]), heapPeakMB: peak, heapEndMB: log.heap.at(-1)?.mb, heapBeforeGcMB: log.heapBeforeGcMB, heapAfterGcMB: log.heapAfterGcMB, extraTabsHeapMB: log.extraTabsHeapMB, longTasks: log.longTasks?.map(k => [k.sinceRideS, k.ms]), load: [log.loadAtStart[0], log.loadAtRideStart[0], log.loadAtEnd[0]] }));
+console.log(JSON.stringify({ warm: has('warm'), tabs, mode, rideStartS: log.rideStartS, loaf: log.loaf.filter(l => l.dur >= 500).map(l => [Math.round((l.start - log.rideStartPageMs) / 100) / 10, l.dur, l.state]), heapPeakMB: peak, churn: log.churn, longestRideGcMs: log.longestRideGcMs, rideGcMs: log.rideGcMs, heapEndMB: log.heap.at(-1)?.mb, heapBeforeGcMB: log.heapBeforeGcMB, heapAfterGcMB: log.heapAfterGcMB, extraTabsHeapMB: log.extraTabsHeapMB, longTasks: log.longTasks?.map(k => [k.sinceRideS, k.ms]), load: [log.loadAtStart[0], log.loadAtRideStart[0], log.loadAtEnd[0]] }));
 await browser.close();

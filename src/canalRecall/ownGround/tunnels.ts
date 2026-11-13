@@ -293,17 +293,16 @@ export interface SideScan { reach: number; wall: boolean; rim: number; depth: nu
  */
 export function scanSide(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise = MIN_RISE_M, wallReach = WALL_REACH_M, skipBumps = true, spanScale = 1): SideScan | null {
   let foot = 0, skipped = false;
-  const none = () => (skipped ? scanSide(g, floor, half, shared, minRise, wallReach, false, spanScale) : null);
   for (let t = SCAN_STEP_M; t <= SCAN_M; t += SCAN_STEP_M) {
     const z = g(t);
     if (z === z && z - floor <= (minRise >= MIN_RISE_M ? 0.25 : minRise * 0.5)) {
       foot = t;
       // Past the reach with no neighbouring road to meet: any rise from here has its foot too far off (exact exit).
-      if (!shared && foot > half + wallReach) return none();
+      if (!shared && foot > half + wallReach) return skipped ? rescanSide(g, floor, half, shared, minRise, wallReach, spanScale) : null;
     }
-    if (t > 1 && shared && shared(t) && Math.abs(z - floor) < 0.5) return skipped ? none() : { reach: t, wall: false, rim: z, depth: 0 };
+    if (t > 1 && shared && shared(t) && Math.abs(z - floor) < 0.5) return skipped ? rescanSide(g, floor, half, shared, minRise, wallReach, spanScale) : { reach: t, wall: false, rim: z, depth: 0 };
     if (!(z - floor >= minRise)) continue;
-    if (foot > half + wallReach) return none();
+    if (foot > half + wallReach) return skipped ? rescanSide(g, floor, half, shared, minRise, wallReach, spanScale) : null;
     // The plateau: keep climbing while the relief still rises.
     let top = t, zt = z;
     for (let u = t + SCAN_STEP_M; u <= Math.min(SCAN_M + 6, t + 8); u += SCAN_STEP_M) { const zu = g(u); if (!(zu > zt + 0.04)) break; top = u; zt = zu; }
@@ -312,12 +311,15 @@ export function scanSide(g: (t: number) => number, floor: number, half: number, 
     // carriageway and the wall) is no wall: the scan carries on past it (Piet Hein east: a 0.5 m island 4-8 m out hid
     // the 8 m wall at 14-18 m). With no wall behind it after all (a taper's end), or the neighbouring carriageway behind it
     // (a median kerb: the strips merge over it), the low rise is the side's wall.
-    if (skipBumps && depth < BUMP_MAX_M && Math.min(...[2, 3, 4, 5, 6].map(m => g(top + m))) - floor < depth * 0.8) {
+    // The least of the relief 2..6 m past the plateau (sampled in that order; a NaN carries, as Math.min of them did).
+    let after = Infinity;
+    if (skipBumps && depth < BUMP_MAX_M) for (let m = 2; m <= 6; m++) after = Math.min(after, g(top + m));
+    if (skipBumps && depth < BUMP_MAX_M && after - floor < depth * 0.8) {
       let back = top + 2;
       while (back < top + 6 && g(back) - floor >= depth * 0.8) back += SCAN_STEP_M;
       foot = back; t = foot - SCAN_STEP_M; skipped = true; continue;
     }
-    if (top - foot > (WALL_SPAN_M + WALL_SPAN_PER_M * depth) * spanScale) return none();
+    if (top - foot > (WALL_SPAN_M + WALL_SPAN_PER_M * depth) * spanScale) return skipped ? rescanSide(g, floor, half, shared, minRise, wallReach, spanScale) : null;
     // Half-height crossing between the foot and the plateau.
     const mid = floor + depth / 2;
     let at = foot;
@@ -326,7 +328,16 @@ export function scanSide(g: (t: number) => number, floor: number, half: number, 
     const rim = median([0, 1, 2, 3].map(k => g(top + k * SCAN_STEP_M)));
     return { reach: Math.max(Math.min(half, 1), at), wall: true, rim: Math.max(rim, mid), depth: Math.max(rim, mid) - floor };
   }
-  return none();
+  return skipped ? rescanSide(g, floor, half, shared, minRise, wallReach, spanScale) : null;
+}
+
+/**
+ * A side that skipped a low rise and then found no wall behind it: scanned again without skipping, so the low rise
+ * is the side's wall. A function, not a closure made per probe (lane LS 2026-11-13: scanSide's closure and its
+ * spread-map minimum were the second-largest source of ride garbage on the main thread).
+ */
+function rescanSide(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise: number, wallReach: number, spanScale: number): SideScan | null {
+  return scanSide(g, floor, half, shared, minRise, wallReach, false, spanScale);
 }
 
 export interface CutWay { id: number; tags: Record<string, string>; points: Vec2[]; half: number; tunnel: boolean }
