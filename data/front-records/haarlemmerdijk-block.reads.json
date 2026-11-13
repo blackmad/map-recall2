@@ -17,7 +17,7 @@
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 383-606", "frontTop": 12.1, "frontTopKind": "gable-foot", "crown": {"family": "neck", "note": "white scroll shoulders from 12.1 m; the neck top stands above the 17 m crop and was not read"}, "groundTop": 5.0, "rows": [[6.4, 8.5], [9.5, 11.3]], "storeys": 3, "bays": 3, "wallWord": "brown brick", "trimWord": "white scrolls and frames"}
   ]},
   {"pandId": "0363100012177590", "reads": [
-   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 606-838", "frontTop": 13.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "note": "flat crenellated parapet"}, "wallWord": "brown brick", "trimWord": "white balcony rails", "note": "modern ribbon windows with balconies; rows not read"},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 606-838", "frontTop": 13.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "note": "flat crenellated parapet"}, "wallWord": "brown brick", "trimWord": "white balcony rails", "note": "modern ribbon windows with French balconies, a narrow stair window at the left; rows read from the 80 px/m trace crop", "groundTop": 5.0, "rows": [[6.1, 8.4], [9.55, 11.8]], "storeys": 3, "bays": 1},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 52", "crown": {"family": "flat-parapet", "note": "flat crenellated parapet over modern ribbon windows"}}
   ]},
   {"pandId": "0363100012176280", "reads": [
