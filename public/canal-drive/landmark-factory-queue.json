@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-09T22:30:36.897Z",
+ "generatedAt": "2026-11-13T05:30:22.896Z",
  "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
  "items": [
   {
@@ -23,7 +23,7 @@
      "already drawn by a placed model or catalogue entry"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -46,7 +46,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -69,7 +69,7 @@
      "built 1665 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -92,7 +92,7 @@
      "built 1899 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -114,7 +114,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -195,7 +195,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 0.7,
@@ -228,7 +228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -256,7 +256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -356,7 +356,7 @@
      "3 judgeable street walls: w02 punched, w04 curtain, w05 ribbon"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -384,7 +384,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -509,7 +509,7 @@
      "w05 (Albardakade, 16 m): foliage 28 % > 25 %; washed out 39 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -616,7 +616,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -714,7 +714,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -736,7 +736,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -764,7 +764,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -869,7 +869,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -978,7 +978,7 @@
      "w04 (Johan Greivestraat, 12 m): washed out 46 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1099,7 +1099,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1200,7 +1200,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1228,7 +1228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1256,7 +1256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1382,7 +1382,7 @@
      "w12 (Osdorpplein, 11 m): washed out 50 % > 30 %; crop 2017 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1410,7 +1410,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1438,7 +1438,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1460,7 +1460,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1488,7 +1488,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1521,7 +1521,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1543,7 +1543,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1571,7 +1571,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1595,7 +1595,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1675,7 +1675,7 @@
      "w03 (Derde Oosterparkstraat, 22 m): obliquity 53 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1699,7 +1699,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1721,7 +1721,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1743,7 +1743,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1869,7 +1869,7 @@
      "w08 (Bijdorpstraat, 17 m): washed out 58 % > 30 %; obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1916,7 +1916,7 @@
      "w11 (Kramatweg, 9 m): washed out 33 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1957,7 +1957,7 @@
      "w12 (Plantage Lepellaan, 9 m): crop 2021 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2088,7 +2088,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2207,7 +2207,7 @@
      "w09 (Zeeburgerdijk, 19 m): foliage 25 % > 25 %; obliquity 49 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2335,7 +2335,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2367,7 +2367,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2401,7 +2401,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2435,7 +2435,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2470,7 +2470,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2502,7 +2502,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2538,7 +2538,7 @@
      "3 judgeable street walls: w01 columns, w02 punched, w03 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -2630,7 +2630,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2662,7 +2662,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2700,7 +2700,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2736,7 +2736,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2768,7 +2768,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2803,7 +2803,7 @@
      "w04 (Parnassusweg, 45 m): washed out 82 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2839,7 +2839,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2871,7 +2871,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2905,7 +2905,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2942,7 +2942,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2976,7 +2976,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3051,7 +3051,7 @@
      "built 1899 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3086,7 +3086,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3119,7 +3119,7 @@
      "w02 (Papaverweg, 39 m): foliage 27 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3204,7 +3204,7 @@
      "built 1872 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3236,7 +3236,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3271,7 +3271,7 @@
      "w04 (Meester Treublaan, 53 m): crop 2021 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3305,7 +3305,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3339,7 +3339,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.6,
@@ -3383,7 +3383,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3419,7 +3419,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3453,7 +3453,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3482,13 +3482,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Prinses Irenestraat, 68 m) reads columns with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w01 (Prinses Irenestraat, 68 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "wall family unresolved but a measured tint on w01 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3517,13 +3517,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Poeldijkstraat, 62 m) storey 6 has a 9.4 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "w01 (Poeldijkstraat, 62 m) storey 6 has a 13.5 m ribbon over punched windows on storey 5: bands (balconies, ribbons, a shopfront strip)",
      "w08 (Rijswijkstraat, 17 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3557,7 +3557,7 @@
      "w11 (Parnassusweg, 10 m): washed out 85 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3589,7 +3589,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3625,7 +3625,7 @@
      "w07 (Haarlemmerweg, 28 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3738,7 +3738,7 @@
      "built 1890 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3777,7 +3777,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -3881,7 +3881,7 @@
      "w03 (Jan van Galenstraat, 56 m): foliage 31 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3915,7 +3915,7 @@
      "w03 (Plesostraat, 38 m): washed out 31 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3944,14 +3944,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (Groningenstraat, 141 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w03 (De Boelelaan, 70 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w04 (De Boelelaan, 70 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3987,7 +3986,7 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4020,7 +4019,7 @@
      "w04 (Laan van Spartaan, 16 m): foliage 59 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4057,7 +4056,7 @@
      "4 judgeable street walls: w02 punched, w08 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -4149,7 +4148,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4184,7 +4183,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4221,7 +4220,7 @@
      "w08 (Revaleiland, 12 m): washed out 58 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4259,7 +4258,7 @@
      "w10 (Schoenerstraat, 18 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4292,7 +4291,7 @@
      "w01 (Jan van Galenstraat, 14 m): foliage 30 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4326,7 +4325,7 @@
      "w08 (Stettineiland, 12 m): washed out 33 % > 30 %; obliquity 47 deg > 45; crop 2020 predates the 2020 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4361,7 +4360,7 @@
      "w10 (Burgemeester Hogguerstraat, 21 m): foliage 47 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4396,7 +4395,7 @@
      "w04 (Westerdoksdijk, 49 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4429,7 +4428,7 @@
      "w04 (Fred. Roeskestraat, 38 m): obliquity 46 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4463,7 +4462,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4500,7 +4499,7 @@
      "w10 (Ottho Heldringstraat, 9 m): washed out 77 % > 30 %; crop 2022 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4538,7 +4537,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -4664,7 +4663,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4698,7 +4697,7 @@
      "w04 (Stellingweg, 10 m): crop 2018 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4735,7 +4734,7 @@
      "w05 (Gelrestraat, 25 m): washed out 95 % > 30 %; crop 2020 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4768,7 +4767,7 @@
      "w02 (Elckerlijcstraat, 88 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4802,7 +4801,7 @@
      "w06 (Rijswijkstraat, 24 m): washed out 52 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4835,7 +4834,7 @@
      "w07 (Nieuwe Purmerweg, 19 m): foliage 49 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4869,7 +4868,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4905,7 +4904,7 @@
      "w05 (Grasweg, 20 m): crop 2024 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4939,7 +4938,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4973,7 +4972,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5007,7 +5006,7 @@
      "w11 (Kimpoweg, 15 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5042,7 +5041,7 @@
      "w07 (Bartholomeus Ruloffsstraat, 22 m): washed out 54 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5074,7 +5073,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5109,7 +5108,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5141,7 +5140,7 @@
      "rijksmonument: ornament carries the likeness"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5175,7 +5174,7 @@
      "w04 (Distelkade, 42 m): foliage 49 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5214,7 +5213,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5342,7 +5341,7 @@
      "w06 (Buikslotermeerplein, 9 m): washed out 35 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5376,7 +5375,7 @@
      "w02 (Gillis van Ledenberchstraat, 48 m): washed out 39 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5410,7 +5409,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5446,7 +5445,7 @@
      "w07 (Heathrowstraat, 10 m): washed out 99 % > 30 %; crop 2019 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5480,7 +5479,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5518,7 +5517,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5644,7 +5643,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5677,7 +5676,7 @@
      "w06 (Transformatorweg, 18 m): washed out 46 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5709,7 +5708,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5744,7 +5743,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5780,7 +5779,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5816,7 +5815,7 @@
      "3 judgeable street walls: w02 ribbon, w03 ribbon, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5926,7 +5925,7 @@
      "w03 (Skûtsjespad, 40 m): foliage 27 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5958,7 +5957,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5994,7 +5993,7 @@
      "w06 (Delflandlaan, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6027,7 +6026,7 @@
      "w03 (Burgemeester Hogguerstraat, 24 m): obliquity 51 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6061,7 +6060,7 @@
      "w08 (Borneokade, 20 m): washed out 43 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6096,7 +6095,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6130,7 +6129,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6164,7 +6163,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6198,7 +6197,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6230,7 +6229,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6265,7 +6264,7 @@
      "w05 (Leonard Bernsteinstraat, 15 m): washed out 64 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6297,7 +6296,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6332,7 +6331,7 @@
      "w09 (Sibogastraat, 23 m): foliage 29 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6366,7 +6365,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6395,12 +6394,12 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
+     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6436,7 +6435,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6468,7 +6467,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6506,7 +6505,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -6590,7 +6589,7 @@
      "w05 (Rosy Wertheimstraat, 14 m): washed out 83 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6624,7 +6623,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6658,7 +6657,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6693,7 +6692,7 @@
      "w04 (Billitonstraat, 35 m): crop 2016 predates the 2020 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6733,7 +6732,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -6854,7 +6853,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6890,7 +6889,7 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6925,7 +6924,7 @@
      "w07 (Gustav Mahlerlaan, 9 m): washed out 96 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6958,7 +6957,7 @@
      "w01 (Hobbemakade, 18 m): foliage 46 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6991,7 +6990,7 @@
      "w05 (De Boelelaan, 21 m): obliquity 54 deg > 45; crop 2017 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7026,7 +7025,7 @@
      "w11 (Krelis Louwenstraat, 20 m): foliage 38 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7062,7 +7061,7 @@
      "2 judgeable street walls: w01 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -7142,7 +7141,7 @@
      "w01 (Haarlemmerweg, 16 m): obliquity 49 deg > 45; crop 2022 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7177,7 +7176,7 @@
      "w08 (Spaarndammerdijk, 23 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7211,7 +7210,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7244,7 +7243,7 @@
      "w02 (Fred. Roeskestraat, 28 m): washed out 45 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7279,7 +7278,7 @@
      "w05 (Noordzijde, 12 m): foliage 76 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7315,7 +7314,7 @@
      "2 judgeable street walls: w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -7433,7 +7432,7 @@
      "w03 (Zaventemweg, 27 m): washed out 42 % > 30 %; crop 2021 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7467,7 +7466,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7499,7 +7498,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7536,7 +7535,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7572,7 +7571,7 @@
      "6 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 3.65,
@@ -7694,7 +7693,7 @@
      "w05 (Distelweg, 10 m): crop 2022 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7728,7 +7727,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7766,7 +7765,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7799,7 +7798,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7834,7 +7833,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7872,7 +7871,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -7977,7 +7976,7 @@
      "w10 (Piri Reisplein, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8013,7 +8012,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8049,7 +8048,7 @@
      "2 judgeable street walls: w01 punched, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8164,7 +8163,7 @@
      "5 judgeable street walls: w01 ?, w02 punched, w03 punched, w04 punched, w07 blank"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8292,7 +8291,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8329,7 +8328,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8365,7 +8364,7 @@
      "blank-front",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8404,7 +8403,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -8520,7 +8519,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8552,7 +8551,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8590,7 +8589,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -8713,7 +8712,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8749,7 +8748,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8785,7 +8784,7 @@
      "5 judgeable street walls: w02 columns, w04 columns, w05 punched, w07 punched, w08 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8867,7 +8866,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8901,7 +8900,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8935,7 +8934,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8968,7 +8967,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9002,7 +9001,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9037,7 +9036,7 @@
      "w03 (Insulindeweg, 9 m): foliage 54 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9067,12 +9066,15 @@
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w02 (paint), w09 (paint): the kit draws it (walls[].wallFamily)",
-     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "3 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w05 (Jesse Owenshof, 23 m): obliquity 51 deg > 45",
      "w06 (Spyridon Louisweg, 23 m): washed out 70 % > 30 %",
-     "w07 (Spyridon Louisweg, 19 m): foliage 26 % > 25 %; washed out 62 % > 30 %"
+     "w07 (Spyridon Louisweg, 19 m): foliage 26 % > 25 %; washed out 62 % > 30 %",
+     "w08 (Jesse Owenshof, 19 m): obliquity 50 deg > 45",
+     "w11 (Jesse Owenshof, 11 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9106,7 +9108,7 @@
      "w08 (Statenjachtstraat, 12 m): foliage 46 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9149,7 +9151,7 @@
      "4 judgeable street walls: w02 punched, w04 punched, w06 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "opus",
    "turns": 4.98,
@@ -9267,7 +9269,7 @@
      "w05 (Wagenaarstraat, 24 m): foliage 33 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9374,7 +9376,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9408,7 +9410,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9442,7 +9444,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9475,7 +9477,7 @@
      "w04 (Geschutswerf, 15 m): foliage 39 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9509,7 +9511,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9548,7 +9550,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9583,7 +9585,7 @@
      "w07 (Skûtsjespad, 16 m): foliage 45 % > 25 %; obliquity 49 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9610,14 +9612,12 @@
    ],
    "updatedAt": "2026-10-23T22:16:32.160Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "buildable",
     "reasons": [
-     "w02 (Suze Robertsonstraat, 68 m) reads blank"
+     "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w05 punched"
     ],
-    "gaps": [
-     "blank-front"
-    ],
-    "date": "2026-11-06"
+    "gaps": [],
+    "date": "2026-11-13"
    }
   },
   {
@@ -9649,7 +9649,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9681,7 +9681,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9717,7 +9717,7 @@
      "3 judgeable street walls: w01 punched, w03 ribbon, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -9826,7 +9826,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9862,7 +9862,7 @@
      "w10 (Staalmeesterslaan, 26 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9896,7 +9896,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9929,7 +9929,7 @@
      "w01 (no street, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9958,7 +9958,7 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w03 (Maria Antonia Walpurgislaan, 33 m) reads columns with a ribbon on storey 2: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w03 (Maria Antonia Walpurgislaan, 33 m) storey 2 has a 16.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
      "w04 (Antonio Vivaldistraat, 32 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (Maria Antonia Walpurgislaan, 33 m), 42 % of 79 m of street wall (w03): painted or clad"
     ],
@@ -9966,7 +9966,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10000,7 +10000,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10037,7 +10037,7 @@
      "3 judgeable street walls: w02 punched, w03 curtain, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10152,7 +10152,7 @@
      "w02 (Oostenburgermiddenstraat, 21 m): washed out 100 % > 30 %; crop 2020 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10187,7 +10187,7 @@
      "w02 (Jan Voermanstraat, 68 m): foliage 29 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10223,7 +10223,7 @@
      "2 judgeable street walls: w01 columns, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -10317,7 +10317,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10351,7 +10351,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10433,7 +10433,7 @@
      "built 1840 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10471,7 +10471,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10505,7 +10505,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10541,7 +10541,7 @@
      "4 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10663,7 +10663,7 @@
      "w04 (Schakelstraat, 34 m): foliage 29 % > 25 %; washed out 43 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10704,7 +10704,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10842,7 +10842,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "opus",
    "turns": 4.98,
@@ -10947,7 +10947,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11052,7 +11052,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11087,7 +11087,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11121,7 +11121,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11155,7 +11155,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11189,7 +11189,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11223,7 +11223,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11256,7 +11256,7 @@
      "w07 (Dr. Jan van Breemenstraat, 17 m): foliage 26 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11292,7 +11292,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11328,7 +11328,7 @@
      "w04 (no street, 8 m): obliquity 53 deg > 45; crop 2022 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11358,13 +11358,13 @@
     "verdict": "kit-gap",
     "reasons": [
      "height 44.5 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Valckenierstraat, 17 m)100 % of 17 m of street wall (w01): painted or clad"
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Pancrasstraat, 17 m)100 % of 17 m of street wall (w01): painted or clad"
     ],
     "gaps": [
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11403,7 +11403,7 @@
      "w07 (Radioweg, 13 m): obliquity 52 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11438,7 +11438,7 @@
      "w06 (Johan Greivestraat, 19 m): foliage 28 % > 25 %; crop 2016 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11472,7 +11472,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11506,7 +11506,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11542,7 +11542,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11580,7 +11580,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -11681,7 +11681,7 @@
      "w12 (Nachtwachtlaan, 10 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11719,7 +11719,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -11842,14 +11842,12 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w09 (Jan Tooropstraat, 21 m) storey 2 has a 8.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (Jan Tooropstraat, 35 m), 42 % of 82 m of street wall (w03): painted or clad"
     ],
     "gaps": [
-     "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11883,7 +11881,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11920,7 +11918,7 @@
      "4 judgeable street walls: w02 punched, w03 punched, w05 punched, w06 curtain"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12038,7 +12036,7 @@
      "w08 (La Guardiaweg, 16 m): washed out 62 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12076,7 +12074,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12110,7 +12108,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12144,7 +12142,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12266,7 +12264,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12302,7 +12300,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12334,7 +12332,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12368,7 +12366,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12403,7 +12401,7 @@
      "w07 (Koivistokade, 10 m): washed out 45 % > 30 %; crop 2021 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12440,7 +12438,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12474,7 +12472,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12512,7 +12510,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 0.4,
@@ -12561,7 +12559,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12664,7 +12662,7 @@
      "w05 (Koningin Wilhelminaplein, 11 m): washed out 63 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12698,7 +12696,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12730,7 +12728,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12764,7 +12762,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12801,7 +12799,7 @@
      "3 judgeable street walls: w02 ?, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -12900,7 +12898,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12938,7 +12936,7 @@
      "3 judgeable street walls: w03 punched, w04 ?, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -13042,7 +13040,7 @@
      "2 judgeable street walls: w04 punched, w05 ?"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13158,7 +13156,7 @@
      "w04 (Reinier Engelmanstraat, 29 m): crop 2022 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13192,7 +13190,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13228,7 +13226,7 @@
      "2 judgeable street walls: w01 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13357,7 +13355,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13390,7 +13388,7 @@
      "w03 (Postjesweg, 19 m): foliage 47 % > 25 %; washed out 33 % > 30 %; crop 2019 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13427,7 +13425,7 @@
      "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13531,7 +13529,7 @@
      "w01 (Gerrie Knetemannlaan, 10 m): washed out 53 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13566,7 +13564,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13600,7 +13598,7 @@
      "w04 (Turbinestraat, 16 m): foliage 33 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13633,7 +13631,7 @@
      "w01 (no street, 12 m): obliquity 51 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   }
  ]
