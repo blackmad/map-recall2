@@ -14,7 +14,7 @@ import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor 
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
-import { fieldsDraw, specFieldsOn, type RouteAFields } from './houseSpec/routeAFields.js';
+import { fieldsDraw, ownFields, specFieldsOn, type RouteAFields } from './houseSpec/routeAFields.js';
 import { PERIOD_WALLS, BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
 import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
@@ -133,7 +133,7 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 }
 
 /** Lane WG step 2: route A's fields (houseSpec/routeAFields.ts), unless `?specFields=0`. */
-const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? specRecipeOf(p)?.fields : undefined);
+const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
 function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number } | undefined {

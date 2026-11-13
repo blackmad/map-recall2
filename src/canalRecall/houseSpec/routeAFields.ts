@@ -124,4 +124,37 @@ export function specFieldsOn(): boolean {
   const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
   return (fieldsNow = specFieldsEnabled(g.location?.search ?? null, g.process?.env?.SPEC_FIELDS ?? null));
 }
-export const resetSpecFields = () => { fieldsNow = undefined; };
+export const resetSpecFields = () => { fieldsNow = undefined; templateNow = undefined; };
+
+/**
+ * Street-template fill (the reviewer's step-3 ruling, 2026-11-13): HELD, default off. A neighbour street's template at scale
+ * tier (300 m, similar height and width) is not evidence enough to draw white: Herengracht 176312 took eared surrounds its
+ * photo lacks and the Weteringschans row read more uniform. Off, a front draws only its own readings (the fields whose
+ * source is not `template:`), byte-identical to an extract built with `--no-street-template`. `?specTemplateFill=1` /
+ * SPEC_TEMPLATE_FILL=1 draws the step-2 behaviour.
+ */
+export function specTemplateFillEnabled(search?: string | null, env?: string | null): boolean {
+  const q = search ? /[?&]specTemplateFill=([01])\b/.exec(search)?.[1] : undefined;
+  const v = q ?? (env === '0' || env === '1' ? env : undefined);
+  return v === '1';
+}
+let templateNow: boolean | undefined;
+export function specTemplateFillOn(): boolean {
+  if (templateNow !== undefined) return templateNow;
+  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  return (templateNow = specTemplateFillEnabled(g.location?.search ?? null, g.process?.env?.SPEC_TEMPLATE_FILL ?? null));
+}
+const FIELD_KEYS = ['bands', 'head', 'crown', 'pale', 'surround'] as const;
+/** The fields a front draws: all of them with template fill on, else only its own readings (null when none is left). */
+export function ownFields(fields: RouteAFields | undefined | null, templateFill: boolean = specTemplateFillOn()): RouteAFields | undefined {
+  if (!fields || templateFill) return fields ?? undefined;
+  if (!FIELD_KEYS.some(k => fields.src[k]?.startsWith('template:'))) return fields;
+  const out: RouteAFields = { src: {} };
+  for (const k of FIELD_KEYS) {
+    const src = fields.src[k];
+    if (fields[k] === undefined || src?.startsWith('template:')) continue;
+    (out as unknown as Record<string, unknown>)[k] = fields[k];
+    if (src) out.src[k] = src;
+  }
+  return out.bands || out.head || out.crown || out.surround || out.pale !== undefined ? out : undefined;
+}

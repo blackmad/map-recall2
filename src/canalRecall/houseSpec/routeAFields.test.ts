@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFields, withTemplate, fieldsDraw, specFieldsEnabled, BAND_M } from './routeAFields.ts';
+import { readFields, withTemplate, fieldsDraw, specFieldsEnabled, specTemplateFillEnabled, ownFields, BAND_M } from './routeAFields.ts';
 import { STRUCTURE_FIELDS, type TemplatePick } from './streetTemplate.ts';
 import type { HouseSpec } from './spec.ts';
 
@@ -59,4 +59,17 @@ test('a stated surround (read or template) is the block faces\' eared surround, 
   const t = withTemplate(null, pick({ 'fronts/0/windowSurround': 'eared-keystone' }))!;
   assert.equal(t.surround, true); assert.equal(t.src.surround, 'template:0363100012168000');
   assert.deepEqual(fieldsDraw({ surround: true, head: 'segmental', src: {} }), { force: [], arch: true }, 'a segmental head is not square-headed');
+});
+
+test('template fill is held: off by default, a front draws only its own readings', () => {
+  assert.equal(specTemplateFillEnabled(null, null), false);
+  assert.equal(specTemplateFillEnabled('?specTemplateFill=1', null), true);
+  assert.equal(specTemplateFillEnabled(null, '1'), true);
+  const mixed = withTemplate(readFields(spec({ gable: 'cornice' }, { 'fronts/0/gable': vj() })), pick({ 'fronts/0/bands': 'storey', 'fronts/0/windowSurround': 'full-frame' }))!;
+  assert.equal(mixed.surround, true);
+  assert.deepEqual(ownFields(mixed, false), { crown: 'cornice', src: { crown: 'vision-judge' } }, 'template pale, surround and bands dropped');
+  assert.equal(ownFields(mixed, true), mixed);
+  assert.equal(ownFields(withTemplate(null, pick({ 'fronts/0/windowSurround': 'eared-keystone' })), false), undefined, 'template-only: nothing drawn');
+  const own = readFields(spec({ bands: 'storey' }, { 'fronts/0/bands': vj() }))!;
+  assert.equal(ownFields(own, false), own, 'no template: the same object');
 });
