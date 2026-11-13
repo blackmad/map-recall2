@@ -233,6 +233,7 @@
     "test:look": "node --import tsx --test src/canalRecall/look/*.test.ts src/canalRecall/rendererShared/*.test.ts",
     "check:bridge-gaps": "tsx scripts/roads/check-bridge-gaps.ts",
     "check:rail-street": "tsx scripts/own-ground/check-rail-street.ts",
+    "check:rail-joins": "tsx scripts/own-ground/check-rail-joins.ts",
     "test:trees": "node --import tsx --test src/canalRecall/trees/treeShape.test.ts && node --import tsx scripts/check-palm-tree-allocation.mjs && node --import tsx scripts/check-tree-crown-orientation.mjs",
     "check:free-ride": "S2_GATE=1 S5_GATE=1 npx playwright test tests/e2e/free-ride-water-taps.spec.ts tests/e2e/free-ride-pin-snap.spec.ts --project=desktop --project=iphone --workers=1 --reporter=line",
     "check:building-projection-scale": "tsx scripts/check-building-projection-scale.ts",
