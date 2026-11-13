@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012172885",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172885.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white moulded edging follows the bell outline with a small curved cap"
+  },
+  {
+   "component": "window",
+   "what": "white stone blocks project at the sides of the first-floor window"
+  }
+ ],
+ "notes": "A parked car hides the base of the ground storey.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

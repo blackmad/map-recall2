@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012168709",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168709.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "roof",
+  "crown",
+  "cornice",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is one wide segmental arch with a small-paned fanlight over a door, a wide window and a narrow light"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron French balconies at the centre windows of storeys 1 and 2"
+  }
+ ],
+ "notes": "A tree trunk and branches cross the right axis and the roof.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

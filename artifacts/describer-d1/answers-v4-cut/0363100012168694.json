@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012168694",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168694.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "windows",
+  "ground",
+  "basement",
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a glazed roof storey with three windows set behind the white frieze cornice, a small pointed ornament on the roof"
+  },
+  {
+   "component": "relief",
+   "what": "small console blocks across the white frieze under the cornice"
+  }
+ ],
+ "notes": "A parked car hides the lowest storey; the low windows at pavement level are read as a souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

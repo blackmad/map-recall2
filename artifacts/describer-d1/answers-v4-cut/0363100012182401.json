@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012182401",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182401.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": true
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "ground",
+  "roof",
+  "souterrain",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "corner café entrance with white pilasters and an entablature at the right end of the ground storey"
+  },
+  {
+   "component": "roof",
+   "what": "a set-back brick attic storey with small windows and a corner chimney stack above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "two right-hand bays are blind or boarded on the upper storeys"
+  }
+ ],
+ "notes": "A bare tree crosses the middle bays; corner building with its side front at the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

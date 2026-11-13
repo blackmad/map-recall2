@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171696.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  5,
+  1,
+  1
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "columns",
+  "roof",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide window band of four lights under a row of small top lights, filling most of the front width"
+  },
+  {
+   "component": "door",
+   "what": "ground storey is a white-rendered panel with a door at the left, a row of small transom lights above and small square windows"
+  }
+ ],
+ "notes": "Blurry, low-light image; the point gable has only a small vent opening.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

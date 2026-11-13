@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182855",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182855.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-pair"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyWindows",
+  "sills",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has one small centred window over two windows on each storey below"
+  },
+  {
+   "component": "roof",
+   "what": "plain white cornice with a hoist beam projecting from it"
+  }
+ ],
+ "notes": "Parasols hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012174965",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174965.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "sills",
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is overgrown with ivy round a lit window"
+  }
+ ],
+ "notes": "Dim light and tree branches; ivy and parked cars hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -63,6 +63,8 @@ function main() {
   const argv = process.argv.slice(2);
   const opt = (n: string) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : undefined; };
   const A = loadAnswers(opt('answers') ?? path.join(ROOT, 'artifacts/describer-d1/answers'));
+  // --ids <file>: score only these pands (one id per line), so image kinds compare on the same houses
+  if (opt('ids')) { const keep = new Set(fs.readFileSync(opt('ids')!, 'utf8').split(/\s+/).filter(Boolean)); for (const id of [...A.keys()]) if (!keep.has(id)) A.delete(id); }
   const out = opt('out') ?? path.join(ROOT, 'artifacts/describer-d1', opt('b') ? 'agreement.json' : 'scores.json');
   const md: string[] = [];
   if (opt('b')) {

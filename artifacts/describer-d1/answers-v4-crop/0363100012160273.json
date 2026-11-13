@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012160273",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "lintel",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "bands",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a full-width iron balcony over the ground storey, a projecting concrete balcony with railing and an iron balconette on the middle bay above"
+  },
+  {
+   "component": "window",
+   "what": "blind round arches over the top-storey windows; white keystones and springing blocks over all windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a wide dormer with a row of windows in a curved, bell-shaped roof front"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

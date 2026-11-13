@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168703",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168703.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "finish",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a door under a fanlight with oval interlaced glazing bars, beside a wide small-paned window over double doors, white pilasters and a lantern"
+  }
+ ],
+ "notes": "The top of the gable is cut off by the image edge; only the gable's lowest window and scroll pieces show.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

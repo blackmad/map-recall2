@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012182473",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182473.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "ground",
+  "basement",
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a long red pantile hipped roof with a small dormer runs over the whole wide block"
+  },
+  {
+   "component": "window",
+   "what": "tall small-paned ground-storey windows between white pilaster strips"
+  }
+ ],
+ "notes": "Signs on a pole and two trees stand in front of the outlined part; the outline covers the middle of a long, wide block.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

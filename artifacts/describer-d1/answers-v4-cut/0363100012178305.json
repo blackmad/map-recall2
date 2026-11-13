@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012178305",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012178305.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "ground",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a single central dormer with a white scrolled bell-shaped surround in the mansard face"
+  }
+ ],
+ "notes": "Low resolution; a cycle-path sign covers the right axes and hoardings hide the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

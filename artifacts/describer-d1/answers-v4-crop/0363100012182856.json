@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182856",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182856/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "low iron balconettes across the base of every upper window"
+  },
+  {
+   "component": "roof",
+   "what": "a deep white wooden cornice on large scrolled consoles with a frieze between them"
+  }
+ ],
+ "notes": "The ground storey is hidden by a large parasol.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

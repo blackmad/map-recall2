@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174416",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174416.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters beside the gable window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white sandstone scroll edging and crowning cap on the bell gable with a small hoist window above"
+  }
+ ],
+ "notes": "A tree in front blurs the ground and lower storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

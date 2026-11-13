@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012168442",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168442.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bands",
+  "windowSurround",
+  "cornice",
+  "ground",
+  "heads",
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a brick dormer with a flat top rising in the centre axis over the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron French balcony at the centre window of the top storey"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks and brackets in the brick arches over the windows; yellow brick front with red brick dressings"
+  }
+ ],
+ "notes": "A tram covers the lower storeys; only two upper storeys and the roof can be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

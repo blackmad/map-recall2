@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174775",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174775.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "souterrain": true,
+ "low": [
+  "cornice",
+  "sills",
+  "roof"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the bel-etage door has a tall leaded top light in a diamond pattern"
+  }
+ ],
+ "notes": "A tree trunk and branches cover the middle of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}
