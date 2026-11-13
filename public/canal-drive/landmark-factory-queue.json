@@ -9603,14 +9603,19 @@
     4.8398635,
     52.360992
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-240481",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:16:12.222Z",
+   "owner": "lane-factory-a-20261113",
+   "claimedAt": "2026-11-13T06:06:58.327Z",
    "notes": [
-    "2026-10-23T22:16 crops: 8 usable walls in 20 s"
+    "2026-10-23T22:16 crops: 8 usable walls in 20 s",
+    "2026-11-13T06:07 facts: fronts on Theodoor van Hoytemastraat, Suze Robertsonstraat, Louise Marie Loeberplantsoen",
+    "2026-11-13T06:07 draft: 8 groups (4 on a street), 98 panels blank",
+    "2026-11-13T06:08 measured groups 0,1,4,5 in 56 s",
+    "2026-11-13T06:09 compiled: 17028 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g3:NO EVIDENCE g4:FAIL g5:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-240481/contact-walls-2.png |   artifacts/building-recipes/pand-240481/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-11-13 review (opus): hold - staggered slab balconies + irregular windows; triangle-budget 17028"
    ],
-   "updatedAt": "2026-10-23T22:16:32.160Z",
+   "updatedAt": "2026-11-13T06:09:04.172Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -9618,6 +9623,82 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 5,
+   "ms": {
+    "facts": 12682,
+    "draft": 23,
+    "measure": 56016,
+    "compile": 57107
+   },
+   "report": {
+    "triangles": 17028,
+    "bytes": 1263032,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.31",
+       "glazing storey band off by 0.19 mean 0.37 vs photo 0.19"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.33 mean 0.29 vs photo 0.00"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 0 % < 40 %"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape none vs photo wide"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.18",
+       "wall family unresolved (#060d05 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:09"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-240481/contact-walls-0.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-1.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-2.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-4.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-5.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-6.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-7.png",
+    "artifacts/building-recipes/pand-240481/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2010s brick housing block: cantilevered white slab balconies staggered across walls[0]/[5], irregular window placement, pale plinth; draft is a uniform 31-35 bay punched grid in yellow brick (photo grey-brown, dL +0.31), no balconies, a dark-green panel run on walls[5]. Kit gap: staggered cantilevered slab balconies + irregular window placement. Gate: triangle-budget 17028 > 12000.",
+    "gap": "slab-balconies-staggered",
+    "sheet": "artifacts/strips/factory-a-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-factory-a-20261113",
+    "round": 1
    }
   },
   {
