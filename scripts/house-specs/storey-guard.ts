@@ -14,7 +14,7 @@ import type { Feature } from '../world/pipeline.ts';
 import { shellProfiles, shellStreets } from '../world/shellBake.ts';
 import { buildFeatureChunk, asPolygons } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { layoutProbe } from '../../src/canalRecall/threeBuildingMesh.ts';
-import { storeyPlanProbe, storeyGuardOn, type StoreyPlan, type StoreyPlanInput } from '../../src/canalRecall/houseSpec/storeyPlan.ts';
+import { EAVES_OVER_WALL_M, storeyPlanProbe, storeyGuardOn, type StoreyPlan, type StoreyPlanInput } from '../../src/canalRecall/houseSpec/storeyPlan.ts';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.ts';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { REPO_ROOT } from '../house-preview/nodeDom.ts';
@@ -29,11 +29,14 @@ if (!pands.length || !out) { console.error('storey-guard.ts <pandId,...> | --ids
 /**
  * Why a count was rejected (the integrator's split, 2026-11-13): (c) 3DBAG's eaves lay outside the window, so the wall top
  * was the line; (a) too tall, no roof storey read, and one more row (a roof storey in the wall) would be in range;
+ * eavesAboveDrawnWall: (c) with 3DBAG's eaves over 1 m above the drawn wall (kept a reject, filed as a mesher height item);
  * (d) the rest: the row count is plausibly wrong (too short, or too tall even with a tall ground and a roof row).
  * (b), a tall ground row, is not a reject: the retry draws it (`tallGround`).
  */
-function causeOf(plan: StoreyPlan, input: StoreyPlanInput): 'a' | 'c' | 'd' | null {
+function causeOf(plan: StoreyPlan, input: StoreyPlanInput): 'a' | 'c' | 'd' | 'eavesAboveDrawnWall' | null {
   if (plan.ok) return null;
+  // 3DBAG's eaves over 1 m above the wall the mesher draws: a mesher-vs-3DBAG height item, not a second read (integrator).
+  if (plan.eavesIgnored && (input.eavesM ?? 0) > input.wallM + EAVES_OVER_WALL_M) return 'eavesAboveDrawnWall';
   if (plan.eavesIgnored) return 'c';
   const s = input.souterrain ? 0.58 : 0, withRoof = input.wallM / (Math.floor(input.storeys) + s + 1);
   if (!input.roofStorey && plan.pitchM > plan.range.max && withRoof >= plan.range.min && withRoof <= plan.range.max) return 'a';
@@ -79,7 +82,8 @@ for (const id of pands) {
 }
 const planOf = (r: Record<string, unknown>) => r.plan as { ok?: boolean; cause?: string | null; tallGround?: number | null } | null;
 const rejected = rows.filter(r => planOf(r)?.ok === false).map(r => r.pandId);
-const causes = Object.fromEntries(['a', 'c', 'd'].map(c => [c, rows.filter(r => planOf(r)?.cause === c).map(r => r.pandId)]));
+// second reads: every reject but the mesher-height items
+const causes = Object.fromEntries(['a', 'c', 'd', 'eavesAboveDrawnWall'].map(c => [c, rows.filter(r => planOf(r)?.cause === c).map(r => r.pandId)]));
 const tallGround = rows.filter(r => planOf(r)?.tallGround).map(r => r.pandId);
-fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, causes, tallGroundRescued: tallGround, rows }, null, 1) + '\n');
-console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected (a ${causes.a.length}, c ${causes.c.length}, d ${causes.d.length}), ${tallGround.length} rescued by a tall ground -> ${out}`);
+fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, secondRead: rows.filter(r => planOf(r)?.ok === false && planOf(r)?.cause !== 'eavesAboveDrawnWall').map(r => r.pandId), causes, tallGroundRescued: tallGround, rows }, null, 1) + '\n');
+console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected (a ${causes.a.length}, c ${causes.c.length}, d ${causes.d.length}, eavesAboveDrawnWall ${causes.eavesAboveDrawnWall.length}), ${tallGround.length} rescued by a tall ground -> ${out}`);
