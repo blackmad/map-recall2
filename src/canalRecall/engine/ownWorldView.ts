@@ -847,6 +847,7 @@ export class OwnWorldView implements WorldViewOracles {
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
+        baseToken: () => tb.bakedCoarseHost()?.baseToken(),
         repaint: () => this.host.triggerRepaint(),
       }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;

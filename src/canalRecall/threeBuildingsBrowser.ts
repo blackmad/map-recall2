@@ -329,7 +329,7 @@ export type FarShellHostView = { THREE: any; scene: any; material: any; look: st
  */
 export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** Covered, not drawn, release on (BakedCoarse.holdsFar, lane R4-K). */ holdsFar?(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
-export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number, source?: any): any | null; /** F1 (#380): a cell's record material (BakedCoarseHost.recordMaterial). */ recordMaterial(key: string, records: FacadeRecordSet, wallUnit: number): any | null; freeRecords(key: string): void; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
+export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number, source?: any): any | null; /** F1 (#380): a cell's record material (BakedCoarseHost.recordMaterial). */ recordMaterial(key: string, records: FacadeRecordSet, wallUnit: number): any | null; freeRecords(key: string): void; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; /** Changes when a groundBase that was undefined may become known: the feature list's identity. */ baseToken(): unknown; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
@@ -1165,6 +1165,8 @@ export class ThreeBuildings {
         const f = this.featureById(id);
         return f ? this.groundBase(f) : undefined;
       },
+      // groundBase is undefined only for an id missing from lastFeatures (featureById), so the list is the token.
+      baseToken: () => this.lastFeatures,
       regroup: () => this.setFeatures(this.lastFeatures),
       setGate: gate => { if (gate === this.bakedGate) return; this.bakedGate = gate; this.setFeatures(this.lastFeatures); },
       setFrame: fn => { this.bakedFrame = fn; },
