@@ -179,8 +179,9 @@ test('ribbon storeys from the photo (p242968 walls[0]): the glazed first-floor r
   assert.ok(p.ribbonStoreys, p.why.join('; '));
   assert.deepEqual(p.ribbonStoreys!.map(e => e.storeys), [[1]]);
   const e = p.ribbonStoreys![0];
-  // the photo's first floor is glazed from the floor line up: a low sill and nearly the whole storey
-  assert.ok(e.sill <= 0.1 && e.h >= 0.8, JSON.stringify(e));
+  // the photo's first-floor windows (w01-341, 2021) fill about 60 % of the storey over a thin sill, under a brick band:
+  // the longest run of opening rows, not the span of every opening row (which read 0.98 when the storey line straddled two bands)
+  assert.ok(e.sill <= 0.15 && e.h >= 0.45 && e.h <= 0.7, JSON.stringify(e));
   assert.equal(e.lights, 2); assert.equal(e.frame, '#dcdcd6');
   // a valid intent entry on the group's grid system
   assert.deepEqual(ribbonStoreysProblems({system: 'brick-bay-grid', wallSurfaces: [0], ribbonStoreys: p.ribbonStoreys!} as any, 'walls[0]'), []);

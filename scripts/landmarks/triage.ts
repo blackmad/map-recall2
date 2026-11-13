@@ -129,8 +129,9 @@ for (const dir of houseDirs) { if (!fs.existsSync(dir)) continue; for (const h o
 const CACHE = 'artifacts/landmark-triage/measure-cache.json';
 /** v3 (#119): + wall basis, the in-photo ribbon-over-punched storeys, the ribbon storeys, and a curtain crop's floor-band proposal; older rows re-measure */
 /** v4 (#146): + an unresolved wall's painted or metal proposal (wallFamily.ts); v3 rows with a resolved basis stay valid */
-/** v5 (kit band fronts): + `bandKit`, what the kit's band proposal draws for the crop's ribbons (bandFronts.ts); v4 rows without a ribbon stay valid */
-const CACHE_V = 5;
+/** v5 (kit band fronts): + `bandKit`, what the kit's band proposal draws for the crop's ribbons (bandFronts.ts); v4 rows without a ribbon stay valid.
+ *  v6: a ribbon's height is its longest contiguous run of opening rows (rowOpenings `v0`/`v1`) */
+const CACHE_V = 6;
 type Cached = {v?: number; usable: number; foliage: number; washedOut: number; frontClass: FrontClass; family: string | null; glazing: number; curtainDoubt?: string[];
   basis: string | null; bandStoreys: {storey: number; againstStorey: number; ribbonM: number}[]; ribbonStoreys: number[]; floorBands: boolean | null; wallFamily?: 'paint' | 'metal' | null; bandKit?: WallCrop['bandKit']};
 const cache: Record<string, Cached> = fs.existsSync(CACHE) ? read(CACHE) : {};
@@ -139,7 +140,7 @@ const saveCache = () => { fs.mkdirSync(path.dirname(CACHE), {recursive: true}); 
 async function measureCrop(dir: string, row: any, heightM: number, storeys: number | null) {
   const key = row.sha256 ?? `${dir}/${row.tag}`;
   const old = cache[key], ribbonless = (c: Cached) => !c.bandStoreys?.length && !c.ribbonStoreys?.length;
-  if (old?.v === CACHE_V || (old?.v === 4 && ribbonless(old)) || (old?.v === 3 && old.basis !== 'unresolved' && ribbonless(old))) return old;
+  if (old?.v === CACHE_V || ((old?.v === 4 || old?.v === 5) && ribbonless(old)) || (old?.v === 3 && old.basis !== 'unresolved' && ribbonless(old))) return old;
   const jpg = path.join(dir, `${row.tag}.jpg`), maskF = path.join(dir, `${row.tag}.mask.png`);
   if (!fs.existsSync(jpg)) return null;
   const {data, info} = await sharp(jpg).removeAlpha().raw().toBuffer({resolveWithObject: true});

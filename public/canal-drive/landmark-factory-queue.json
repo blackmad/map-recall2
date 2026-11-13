@@ -2081,7 +2081,7 @@
     "reasons": [
      "w01 (Mosveld, 95 m) reads columns with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w02 (Mosveld, 65 m) storey 1 has a 8.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
-     "w10 (Johan van Hasseltweg, 16 m) reads punched with a ribbon on storey 1, 2: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w10 (Johan van Hasseltweg, 16 m) reads punched with a ribbon on storey 1, 2: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, bandFronts.ts)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Mosveld, 95 m), 53 % of 211 m of street wall (w01, w10): painted or clad"
     ],
     "gaps": [
@@ -2385,23 +2385,131 @@
     4.907833500000001,
     52.395438
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-079326",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:01:11.235Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:32:14.592Z",
    "notes": [
-    "2026-10-23T21:01 crops: 17 usable walls in 37 s"
+    "2026-10-23T21:01 crops: 17 usable walls in 37 s",
+    "2026-11-13T06:32 facts: fronts on Papaverweg, Struisgrasstraat, Hulstweg",
+    "2026-11-13T06:32 draft: 8 groups (2 on a street), 19 panels blank",
+    "2026-11-13T06:32 measured groups 0,1,2,4,5,7 in 12 s",
+    "2026-11-13T06:32 compiled: 7118 tris, gates FAIL eaves-vs-3dbag/walls[0].houses[0],eaves-vs-3dbag/walls[2].houses[2],eaves-vs-3dbag/walls[6], likeness g0:FAIL g1:FAIL g2:FAIL g3:NO EVIDENCE g4:WARN g5:FAIL g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-079326/contact-walls-3.png |   artifacts/building-recipes/pand-079326/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:01:48.336Z",
+   "updatedAt": "2026-11-13T06:32:42.450Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w05 (Papaverweg, 25 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
+     "w05 (Papaverweg, 25 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w07 (Papaverweg, 17 m) reads curtain without floor bands"
     ],
     "gaps": [
-     "band"
+     "band",
+     "curtain"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 6747,
+    "draft": 6,
+    "measure": 12098,
+    "compile": 9001
+   },
+   "report": {
+    "triangles": 7118,
+    "bytes": 536056,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[0].houses[0]",
+     "eaves-vs-3dbag/walls[2].houses[2]",
+     "eaves-vs-3dbag/walls[6]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.23 vs photo 0.54"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.23 vs photo 0.48",
+       "wall family unresolved (#4c5458 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.26 mean 0.23 vs photo 0.48",
+       "storey 1: widest opening 1.4 m vs photo 10.2 m (a ribbon against windows)",
+       "wall family unresolved (#393939 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 35 % > 25 %"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.127 < 0.45"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape square vs photo tall",
+       "columns 6 vs photo 3"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 35 % > 25 %"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.24 vs photo 0.84"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:32"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-079326/contact-walls-0.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-1.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-2.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-3.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-4.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-5.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-6.png",
+    "artifacts/building-recipes/pand-079326/contact-walls-7.png",
+    "artifacts/building-recipes/pand-079326/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1990 low hall in horizontally striped grey brick with one glazed band and a long sloping roof; draft is punched-window boxes; eaves-vs-3dbag gate on walls[0]/[2]/[6]. Kit can stripe brick (brickStripes) but the measure does not propose it here.",
+    "gap": "band-ground-strip",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -2419,23 +2527,112 @@
     4.964149,
     52.3730145
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-247342",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:02:18.129Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:10:00.580Z",
    "notes": [
-    "2026-10-23T21:02 crops: 16 usable walls in 36 s"
+    "2026-10-23T21:02 crops: 16 usable walls in 36 s",
+    "2026-11-13T06:10 facts: fronts on Mary van der Sluisstraat, Nida Senffstraat, Eef Kamerbeekstraat",
+    "2026-11-13T06:10 draft: 8 groups (4 on a street), 33 panels blank",
+    "2026-11-13T06:12 measured groups 0,1,2,3,6 in 109 s",
+    "2026-11-13T06:12 compiled: 11366 tris, gates pass, likeness g0:WARN g1:FAIL g2:PASS g3:FAIL g5:NO PHOTO g6:FAIL g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:02:54.546Z",
+   "updatedAt": "2026-11-13T06:12:41.639Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w03 (Mary van der Sluisstraat, 46 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
+     "w03 (Mary van der Sluisstraat, 46 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w06 (Eef Kamerbeekstraat, 16 m) reads curtain without floor bands"
     ],
     "gaps": [
-     "band"
+     "band",
+     "curtain"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 11929,
+    "draft": 17,
+    "measure": 109477,
+    "compile": 39617
+   },
+   "report": {
+    "triangles": 11366,
+    "bytes": 836192,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.358 < 0.45"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.17",
+       "storey 2: widest opening 1.6 m vs photo 8.5 m (a ribbon against windows)",
+       "storey 3: widest opening 1.6 m vs photo 12.9 m (a ribbon against windows)"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.17"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:12"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-247342/contact-walls-0.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-1.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-2.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-3.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-4.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-5.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-6.png",
+    "artifacts/building-recipes/pand-247342/contact-walls-7.png",
+    "artifacts/building-recipes/pand-247342/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2017 brick block: three stacks of deep (~3 m) cantilevered balconies with splayed sides and glass parapets, alternating storey by storey, the top stack a roof terrace above the eaves; model is a plain punched grid. balconyBands.spans can place stacks on bay ranges but cannot splay a slab or put one over the top storey.",
+    "gap": "band-splayed-cantilever-stacks",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -2462,14 +2659,15 @@
    ],
    "updatedAt": "2026-10-23T21:04:17.929Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w01 (Prinses Irenestraat, 80 m) reads punched with a ribbon on storey 1, 2, 3, 4: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved but a measured tint on w06 (paint): the kit draws it (walls[].wallFamily)"
+     "w01 (Prinses Irenestraat, 80 m) reads punched with a ribbon on storey 1, 2, 3, 4: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, 3, 4, bandFronts.ts)",
+     "w06 (Prinses Irenestraat, 15 m) reads punched with a ribbon on storey 2: the kit draws windows under it (bands, balconies, a shopfront strip); short wall: noted, not a gap",
+     "wall family unresolved but a measured tint on w06 (paint): the kit draws it (walls[].wallFamily)",
+     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w04 (Strawinskypad, 34 m): obliquity 47 deg > 45"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -2613,24 +2811,87 @@
     4.95778,
     52.390988500000006
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-145366",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:05:26.065Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:12:41.641Z",
    "notes": [
-    "2026-10-23T21:05 crops: 5 usable walls in 14 s"
+    "2026-10-23T21:05 crops: 5 usable walls in 14 s",
+    "2026-11-13T06:12 facts: fronts on Spanderswoudstraat, IJdoornlaan, Hilversumstraat",
+    "2026-11-13T06:12 draft: 6 groups (4 on a street), 7 panels blank",
+    "2026-11-13T06:13 measured groups 3,4,5 in 64 s",
+    "2026-11-13T06:14 compiled: 7916 tris, gates pass, likeness g3:FAIL g4:WARN g5:FAIL"
    ],
-   "updatedAt": "2026-10-23T21:05:40.235Z",
+   "updatedAt": "2026-11-13T06:14:26.213Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (IJdoornlaan, 115 m) storey 1 has a 12.9 m ribbon over punched windows on storey 3: bands (balconies, ribbons, a shopfront strip)",
+     "w02 (IJdoornlaan, 115 m) storey 1 has a 12.9 m ribbon over punched windows on storey 3: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 3, 4, bandFronts.ts)",
      "w03 (IJdoornlaan, 115 m) storey 1 has a 9.2 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 12209,
+    "draft": 3,
+    "measure": 64423,
+    "compile": 27919
+   },
+   "report": {
+    "triangles": 7916,
+    "bytes": 580280,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.17 mean 0.33 vs photo 0.20"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#45473f is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.433 < 0.45"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22 mean 0.39 vs photo 0.25",
+       "wall family unresolved (#383d3b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:14"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-145366/contact-walls-0.png",
+    "artifacts/building-recipes/pand-145366/contact-walls-1.png",
+    "artifacts/building-recipes/pand-145366/contact-walls-2.png",
+    "artifacts/building-recipes/pand-145366/contact-walls-3.png",
+    "artifacts/building-recipes/pand-145366/contact-walls-4.png",
+    "artifacts/building-recipes/pand-145366/contact-walls-5.png",
+    "artifacts/building-recipes/pand-145366/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1968 galerijflat: white bar balustrades on grey slab edges over a brick ground storey; drawn as a dark ribbon-windows wall with no galleries: the light-band detector misses bar rails (no balconyBands proposal).",
+    "gap": "band-gallery-rails",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -2692,12 +2953,11 @@
     "verdict": "kit-gap",
     "reasons": [
      "height 54.2 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
-     "w05 (Parnassusweg, 44 m) storey 4 has a 24.6 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
+     "w05 (Parnassusweg, 44 m) storey 4 has a 24.6 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 4, bandFronts.ts)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w05 (Parnassusweg, 44 m)100 % of 44 m of street wall (w05): painted or clad"
     ],
     "gaps": [
      "tower",
-     "band",
      "painted-or-clad"
     ],
     "date": "2026-11-13"
@@ -2718,25 +2978,108 @@
     4.904248,
     52.397852
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-133211",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:06:42.628Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:32:42.451Z",
    "notes": [
-    "2026-10-23T21:06 crops: 4 usable walls in 3 s"
+    "2026-10-23T21:06 crops: 4 usable walls in 3 s",
+    "2026-11-13T06:32 facts with streets Papaverweg|Boterbloemstraat failed (/Users/blackmad/Code/map-recall2-worktrees/kit-band-fronts-20261113/src/canalRecall/buildingRecipe/facts.ts:231 |   if (!seed) throw Error(`No footprint edge faces ${street}`); |                    ^ ); kept the street-less facts",
+    "2026-11-13T06:32 draft: 8 groups (0 on a street), 21 panels blank",
+    "2026-11-13T06:32 measured groups 2 in 2 s",
+    "2026-11-13T06:32 compiled: 3557 tris, gates pass, likeness g0:NO PHOTO g1:NO PHOTO g2:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:06:46.016Z",
+   "updatedAt": "2026-11-13T06:32:52.431Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w03 (Papaverweg, 42 m) storey 1 has a 10.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "w03 (Papaverweg, 42 m) storey 1 has a 10.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, bandFronts.ts)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (Papaverweg, 42 m)100 % of 42 m of street wall (w03): painted or clad"
     ],
     "gaps": [
-     "band",
      "painted-or-clad"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 2469,
+    "draft": 1,
+    "measure": 2171,
+    "compile": 5332
+   },
+   "report": {
+    "triangles": 3557,
+    "bytes": 267848,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing  mean 0.20 vs photo 0.49"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:32"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-133211/contact-walls-0.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-1.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-2.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-3.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-4.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-5.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-6.png",
+    "artifacts/building-recipes/pand-133211/contact-walls-7.png",
+    "artifacts/building-recipes/pand-133211/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1929 brick school: one judgeable wall (low wing, classroom ribbon); model glazing 0.20 vs photo 0.49; every other wall NO PHOTO.",
+    "gap": "band-ribbon-storey",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -2889,23 +3232,106 @@
     4.9087879999999995,
     52.3961635
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-086968",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:08:03.442Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:32:52.432Z",
    "notes": [
-    "2026-10-23T21:08 crops: 6 usable walls in 7 s"
+    "2026-10-23T21:08 crops: 6 usable walls in 7 s",
+    "2026-11-13T06:33 facts: fronts on Papaverweg, Vlierweg, Struisgrasstraat",
+    "2026-11-13T06:33 draft: 7 groups (4 on a street), 61 panels blank",
+    "2026-11-13T06:33 measured groups 1,2 in 4 s",
+    "2026-11-13T06:33 compiled: 4054 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL g2:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:08:10.928Z",
+   "updatedAt": "2026-11-13T06:33:11.008Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w04 (Papaverweg, 17 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
+     "w04 (Papaverweg, 17 m) reads curtain without floor bands"
     ],
     "gaps": [
-     "band"
+     "curtain"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 8066,
+    "draft": 3,
+    "measure": 3844,
+    "compile": 6657
+   },
+   "report": {
+    "triangles": 4054,
+    "bytes": 313136,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "washed out 49 % > 30 %"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.17",
+       "glazing  mean 0.96 vs photo 0.79"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:33"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-086968/contact-walls-0.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-1.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-2.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-3.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-4.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-5.png",
+    "artifacts/building-recipes/pand-086968/contact-walls-6.png",
+    "artifacts/building-recipes/pand-086968/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1963 fire station: blue sectional garage doors measured as curtain glass (walls[2] curtain-wall), walls[1] a later glazed office front drawn as a punched grid; garage doors not proposed from the photo.",
+    "gap": "band-garage-front",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -2934,12 +3360,11 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w04 (Passeerdersstraat, 24 m) reads punched with a ribbon on storey 1, 3: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w04 (Passeerdersstraat, 24 m) reads punched with a ribbon on storey 1, 3: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 3, bandFronts.ts)",
      "wall family unresolved but a measured tint on w06 (paint): the kit draws it (walls[].wallFamily)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on 55 % of 120 m of street wall (w03, w04, w07): painted or clad"
     ],
     "gaps": [
-     "band",
      "painted-or-clad"
     ],
     "date": "2026-11-13"
@@ -2960,14 +3385,18 @@
     4.847092,
     52.377413000000004
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-111255",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:08:43.854Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:33:11.009Z",
    "notes": [
-    "2026-10-23T21:09 crops: 14 usable walls in 32 s"
+    "2026-10-23T21:09 crops: 14 usable walls in 32 s",
+    "2026-11-13T06:33 facts with streets Elckerlijcstraat|Hoofdweg|Buskenblaserstraat failed (/Users/blackmad/Code/map-recall2-worktrees/kit-band-fronts-20261113/src/canalRecall/buildingRecipe/facts.ts:231 |   if (!seed) throw Error(`No footprint edge faces ${street}`); |                    ^ ); kept the street-less facts",
+    "2026-11-13T06:33 draft: 8 groups (0 on a street), 73 panels blank",
+    "2026-11-13T06:33 measured groups 0,4,5 in 13 s",
+    "2026-11-13T06:33 compiled: 10314 tris, gates FAIL footprint-vs-bag, likeness g0:FAIL g1:NO PHOTO g2:NO PHOTO g4:WARN g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-111255/contact-walls-3.png |   artifacts/building-recipes/pand-111255/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:09:15.385Z",
+   "updatedAt": "2026-11-13T06:33:37.754Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
@@ -2977,6 +3406,89 @@
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 2729,
+    "draft": 3,
+    "measure": 13178,
+    "compile": 10830
+   },
+   "report": {
+    "triangles": 10314,
+    "bytes": 769112,
+    "gatesFailing": [
+     "footprint-vs-bag"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.20"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.196 < 0.45"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22",
+       "storey 2: widest opening 1.2 m vs photo 8.1 m (a ribbon against windows)",
+       "storey 4: widest opening 1.2 m vs photo 8.1 m (a ribbon against windows)"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:33"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-111255/contact-walls-0.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-1.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-2.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-3.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-4.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-5.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-6.png",
+    "artifacts/building-recipes/pand-111255/contact-walls-7.png",
+    "artifacts/building-recipes/pand-111255/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2008 brick: staggered slab balconies over punched windows not drawn (balconyBands.spans not proposed: --balcony-spans is opt-in); gate footprint-vs-bag.",
+    "gap": "band-staggered-slabs",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -3069,24 +3581,124 @@
     4.8697865,
     52.3412105
    ],
-   "status": "crops",
+   "status": "no-evidence",
    "house": "pand-084650",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:09:36.629Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:14:26.215Z",
    "notes": [
-    "2026-10-23T21:10 crops: 16 usable walls in 38 s"
+    "2026-10-23T21:10 crops: 16 usable walls in 38 s",
+    "2026-11-13T06:14 facts: fronts on Strawinskypad, Prinses Irenestraat, Willem Pijperstraat",
+    "2026-11-13T06:14 draft: 8 groups (6 on a street), 34 panels blank",
+    "2026-11-13T06:15 measured groups 1,2,4,5,7 in 59 s",
+    "2026-11-13T06:16 compiled: 8188 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL g2:FAIL g3:NO PHOTO g4:FAIL g5:WARN g6:NO PHOTO g7:WARN"
    ],
-   "updatedAt": "2026-10-23T21:10:14.523Z",
+   "updatedAt": "2026-11-13T06:16:23.568Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
      "w04 (Strawinskypad, 31 m) storey 2 has a 13.4 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
+     "w07 (Prinses Irenestraat, 20 m) reads curtain without floor bands",
      "wall family unresolved but a measured tint on w04 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
-     "band"
+     "band",
+     "curtain"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 17474,
+    "draft": 9,
+    "measure": 58835,
+    "compile": 41022
+   },
+   "report": {
+    "triangles": 8188,
+    "bytes": 606540,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "washed out 41 % > 30 %"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.39"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.24",
+       "wall family unresolved (#413f3e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.26",
+       "storey 1: widest opening 1.4 m vs photo 8.9 m (a ribbon against windows)",
+       "storey 2: widest opening 1.4 m vs photo 10.6 m (a ribbon against windows)"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "WARN",
+      "reasons": [
+       "wall family unresolved (#50504c is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "mask IoU 0.367 < 0.45"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.197 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:16"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-084650/contact-walls-0.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-1.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-2.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-3.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-4.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-5.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-6.png",
+    "artifacts/building-recipes/pand-084650/contact-walls-7.png",
+    "artifacts/building-recipes/pand-084650/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "no-evidence",
+    "note": "2022 crop: spandrel-panel office; 2023 crop: bare concrete skeleton with site fencing; 2025 crop: a new glass building. The pand was rebuilt; needs a fresh capture and facts.",
+    "gap": "rebuilt",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -3298,13 +3910,14 @@
    ],
    "updatedAt": "2026-10-23T21:12:46.209Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w03 (Weesperstraat, 21 m) storey 1 has a 8.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
+     "w03 (Weesperstraat, 21 m) storey 1 has a 8.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 1, bandFronts.ts)",
+     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Weesperstraat, 21 m): washed out 56 % > 30 %",
+     "w04 (Nieuwe Kerkstraat, 16 m): washed out 50 % > 30 %; camera 5.9 m < 8 m from a 16 m wall"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -3401,25 +4014,112 @@
     4.930776,
     52.39531100000001
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-247688",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:13:27.316Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:33:37.755Z",
    "notes": [
-    "2026-10-23T21:13 crops: 15 usable walls in 23 s"
+    "2026-10-23T21:13 crops: 15 usable walls in 23 s",
+    "2026-11-13T06:33 facts: fronts on Nieuwe Purmerweg",
+    "2026-11-13T06:33 draft: 8 groups (4 on a street), 35 panels blank",
+    "2026-11-13T06:33 measured groups 0,1,2 in 6 s",
+    "2026-11-13T06:33 compiled: 6436 tris, gates pass, likeness g0:FAIL g1:FAIL g2:WARN g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:13:50.697Z",
+   "updatedAt": "2026-11-13T06:33:54.977Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Nieuwe Purmerweg, 28 m) reads punched with a ribbon on storey 1, 2, 3: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w01 (Nieuwe Purmerweg, 28 m) reads punched with a ribbon on storey 1, 2, 3: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, 3, bandFronts.ts)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Nieuwe Purmerweg, 28 m), 41 % of 68 m of street wall (w01): painted or clad"
     ],
     "gaps": [
-     "band",
      "painted-or-clad"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 3762,
+    "draft": 2,
+    "measure": 5567,
+    "compile": 7887
+   },
+   "report": {
+    "triangles": 6436,
+    "bytes": 480528,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.24 mean 0.39 vs photo 0.16"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape wide vs photo tall"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.191 < 0.45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:33"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-247688/contact-walls-0.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-1.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-2.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-3.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-4.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-5.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-6.png",
+    "artifacts/building-recipes/pand-247688/contact-walls-7.png",
+    "artifacts/building-recipes/pand-247688/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2017 dark clad box with two thin full-width ribbon windows; model is a 3-storey punched grid in brick. Expressible as a blank painted wall (wallFamily paint) with ribbonStoreys on storeys 1-2: a candidate one-edit fix, not applied (painted-or-clad gap too).",
+    "gap": "band-ribbons-on-clad",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -3506,14 +4206,18 @@
     4.8432224999999995,
     52.349686
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-247952",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:15:54.953Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:33:54.978Z",
    "notes": [
-    "2026-10-23T21:16 crops: 10 usable walls in 16 s"
+    "2026-10-23T21:16 crops: 10 usable walls in 16 s",
+    "2026-11-13T06:33 facts: fronts on Poeldijkstraat, Rijswijkstraat",
+    "2026-11-13T06:33 draft: 8 groups (5 on a street), 46 panels blank",
+    "2026-11-13T06:34 measured groups 0 in 8 s",
+    "2026-11-13T06:34 compiled: 11781 tris, gates FAIL open-edges, likeness g0:FAIL g2:NO PHOTO g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-247952/contact-walls-3.png |   artifacts/building-recipes/pand-247952/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:16:10.817Z",
+   "updatedAt": "2026-11-13T06:34:15.172Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
@@ -3524,6 +4228,79 @@
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 4510,
+    "draft": 3,
+    "measure": 7783,
+    "compile": 7893
+   },
+   "report": {
+    "triangles": 11781,
+    "bytes": 864144,
+    "gatesFailing": [
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.40 mean 0.40 vs photo 0.60",
+       "wall family unresolved (#252720 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:34"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-247952/contact-walls-0.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-1.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-2.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-3.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-4.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-5.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-6.png",
+    "artifacts/building-recipes/pand-247952/contact-walls-7.png",
+    "artifacts/building-recipes/pand-247952/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2021 brown brick with pale floor bands at every storey line over punched windows; model dark punched grid without the bands; gate open-edges.",
+    "gap": "band-floor-bands-punched",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -3933,14 +4710,18 @@
     4.87306,
     52.3347385
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-077450",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:22:02.748Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:16:23.571Z",
    "notes": [
-    "2026-10-23T21:23 crops: 20 usable walls in 65 s"
+    "2026-10-23T21:23 crops: 20 usable walls in 65 s",
+    "2026-11-13T06:16 facts: fronts on De Boelelaan, Asingaborg, Groningenstraat",
+    "2026-11-13T06:16 draft: 8 groups (7 on a street), 69 panels blank",
+    "2026-11-13T06:17 measured groups 1,3,4,5,6 in 57 s",
+    "2026-11-13T06:18 compiled: 12805 tris, gates FAIL triangle-budget, likeness g1:FAIL g3:WARN g4:FAIL g5:FAIL g6:WARN (large.ts exited non-zero:   artifacts/building-recipes/pand-077450/contact-walls-3.png |   artifacts/building-recipes/pand-077450/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:23:07.556Z",
+   "updatedAt": "2026-11-13T06:18:15.315Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
@@ -3951,6 +4732,83 @@
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 13643,
+    "draft": 8,
+    "measure": 56609,
+    "compile": 41471
+   },
+   "report": {
+    "triangles": 12805,
+    "bytes": 949268,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.17 mean 0.36 vs photo 0.20"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "WARN",
+      "reasons": [
+       "columns 80 vs photo 105",
+       "mask IoU 0.281 < 0.45"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL -0.15",
+       "glazing storey band off by 0.18 mean 0.90 vs photo 0.76"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.127 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:18"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-077450/contact-walls-0.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-1.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-2.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-3.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-4.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-5.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-6.png",
+    "artifacts/building-recipes/pand-077450/contact-walls-7.png",
+    "artifacts/building-recipes/pand-077450/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1966 ten-storey slab with continuous balcony bands and a glazed plinth; upper storeys drawn blank (bar balustrades are not read as light bands); triangle budget 12805 > 12000.",
+    "gap": "band-gallery-rails",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -4647,23 +5505,96 @@
     4.9210095,
     52.3490885
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-092333",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:31:24.058Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:18:15.317Z",
    "notes": [
-    "2026-10-23T21:31 crops: 7 usable walls in 25 s"
+    "2026-10-23T21:31 crops: 7 usable walls in 25 s",
+    "2026-11-13T06:18 facts: fronts on James Wattstraat, Eerste Ringdijkstraat, Gooiseweg",
+    "2026-11-13T06:18 draft: 7 groups (4 on a street), 28 panels blank",
+    "2026-11-13T06:20 measured groups 0,1,3,5 in 100 s",
+    "2026-11-13T06:20 compiled: 30713 tris, gates FAIL triangle-budget,open-edges, likeness g0:FAIL g1:FAIL g3:FAIL g5:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-092333/contact-walls-1.png |   artifacts/building-recipes/pand-092333/contact-walls-2.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:31:49.049Z",
+   "updatedAt": "2026-11-13T06:20:45.318Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w02 (James Wattstraat, 80 m) storey 5 has a 8.4 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w02 (James Wattstraat, 80 m) storey 5 has a 8.4 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 5, 6, 7, bandFronts.ts)",
+     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (Kamerlingh Onneslaan, 80 m): usable 36 % < 40 %; foliage 55 % > 25 %",
+     "w04 (James Wattstraat, 9 m): obliquity 45 deg > 45"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 14079,
+    "draft": 6,
+    "measure": 100449,
+    "compile": 35455
+   },
+   "report": {
+    "triangles": 30713,
+    "bytes": 1479672,
+    "gatesFailing": [
+     "triangle-budget",
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.35"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.50 mean 0.50 vs photo 0.65"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.21 mean 0.29 vs photo 0.16",
+       "storey 1: widest opening 1.6 m vs photo 9.4 m (a ribbon against windows)"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:20"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-092333/contact-walls-0.png",
+    "artifacts/building-recipes/pand-092333/contact-walls-1.png",
+    "artifacts/building-recipes/pand-092333/contact-walls-2.png",
+    "artifacts/building-recipes/pand-092333/contact-walls-4.png",
+    "artifacts/building-recipes/pand-092333/contact-walls-5.png",
+    "artifacts/building-recipes/pand-092333/contact-walls-6.png",
+    "artifacts/building-recipes/pand-092333/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1964 Europahuis: gold spandrel bands and ribbon glazing read close on walls[1] (ribbon-windows), but 30713 triangles > 12000 and open-edges; walls[0] punched.",
+    "gap": "triangle-budget",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -5091,24 +6022,86 @@
     4.892125500000001,
     52.3874175
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-186002",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:38:53.121Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:34:15.173Z",
    "notes": [
-    "2026-10-23T21:39 crops: 4 usable walls in 14 s"
+    "2026-10-23T21:39 crops: 4 usable walls in 14 s",
+    "2026-11-13T06:34 facts: fronts on Westerdok, Westerdoksdijk",
+    "2026-11-13T06:34 draft: 3 groups (3 on a street), 19 panels blank",
+    "2026-11-13T06:34 measured groups 0,1,2 in 23 s",
+    "2026-11-13T06:34 compiled: 17320 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g2:FAIL (large.ts exited non-zero:     walls[1] FAIL: wall #7b5c56 vs #7b5f59 (dL 0.006), glazing 0.569 vs 0.57, columns 18 vs 18 (windows 18 vs 18), shape square vs tall, IoU 0.533 — glazing sto)"
    ],
-   "updatedAt": "2026-10-23T21:39:07.429Z",
+   "updatedAt": "2026-11-13T06:34:55.724Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
      "w01 (Westerdoksdijk, 74 m) storey 2 has a 12.2 m ribbon over punched windows on storey 8: bands (balconies, ribbons, a shopfront strip)",
-     "w02 (Westerdok, 70 m) storey 6 has a 10.6 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w02 (Westerdok, 70 m) storey 6 has a 10.6 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 6, 7, 8, 9, 10, 11, 12, bandFronts.ts)"
     ],
     "gaps": [
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 4719,
+    "draft": 1,
+    "measure": 22652,
+    "compile": 13173
+   },
+   "report": {
+    "triangles": 17320,
+    "bytes": 1250116,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.27 mean 0.29 vs photo 0.09",
+       "wall family unresolved (#504e4f is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.20",
+       "window shape tall vs photo square"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:34"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-186002/contact-walls-0.png",
+    "artifacts/building-recipes/pand-186002/contact-walls-1.png",
+    "artifacts/building-recipes/pand-186002/contact-walls-2.png",
+    "artifacts/building-recipes/pand-186002/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2009 brick grid with deep cantilevered balcony stacks (not drawn); triangle budget 17320 > 12000.",
+    "gap": "band-cantilever-stacks",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -5205,14 +6198,13 @@
    ],
    "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "buildable",
     "reasons": [
-     "w01 (Eerste Oosterparkstraat, 94 m) storey 1 has a 19.6 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip)",
-     "w04 (Eerste Oosterparkstraat, 29 m) storey 2 has a 9.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w01 (Eerste Oosterparkstraat, 94 m) storey 1 has a 19.6 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, 3, bandFronts.ts)",
+     "w04 (Eerste Oosterparkstraat, 29 m) storey 2 has a 9.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 2, bandFronts.ts)",
+     "2 judgeable street walls: w01 punched, w04 punched"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    },
    "model": "fable",
@@ -5737,7 +6729,7 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (Bos en Lommerweg, 17 m) reads punched with a ribbon on storey 2, 3: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w02 (Bos en Lommerweg, 17 m) reads punched with a ribbon on storey 2, 3: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 2, 3, bandFronts.ts)",
      "w04 (Leeuwendalersweg, 17 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
     "gaps": [
@@ -6087,14 +7079,15 @@
    ],
    "updatedAt": "2026-10-23T21:46:47.250Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w03 (James Wattstraat, 22 m) storey 3 has a 9.3 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
-     "w04 (Eerste Ringdijkstraat, 22 m) storey 11 has a 10.5 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w03 (James Wattstraat, 22 m) storey 3 has a 9.3 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 3, 5, 7, bandFronts.ts)",
+     "w04 (Eerste Ringdijkstraat, 22 m) storey 11 has a 10.5 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 11, bandFronts.ts)",
+     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (James Wattstraat, 33 m): foliage 28 % > 25 %; washed out 30 % > 30 %",
+     "w02 (Eerste Ringdijkstraat, 33 m): obliquity 52 deg > 45"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -6349,14 +7342,18 @@
     4.92354,
     52.356277
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-241221",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:50:19.427Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:34:55.725Z",
    "notes": [
-    "2026-10-23T21:50 crops: 6 usable walls in 16 s"
+    "2026-10-23T21:50 crops: 6 usable walls in 16 s",
+    "2026-11-13T06:35 facts: fronts on Tugelaweg, Hertzogstraat, Retiefstraat",
+    "2026-11-13T06:35 draft: 8 groups (3 on a street), 56 panels blank",
+    "2026-11-13T06:35 measured groups 1,2,3 in 9 s",
+    "2026-11-13T06:35 compiled: 10532 tris, gates FAIL open-edges, likeness g0:NO EVIDENCE g1:FAIL g2:WARN g3:FAIL g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-241221/contact-walls-3.png |   artifacts/building-recipes/pand-241221/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:50:35.636Z",
+   "updatedAt": "2026-11-13T06:35:22.125Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
@@ -6366,6 +7363,94 @@
      "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 6470,
+    "draft": 3,
+    "measure": 8851,
+    "compile": 11072
+   },
+   "report": {
+    "triangles": 10532,
+    "bytes": 784416,
+    "gatesFailing": [
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "camera 7.4 m < 8 m from a 54 m wall"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16 mean 0.28 vs photo 0.14"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.117 < 0.45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.30 mean 0.38 vs photo 0.12"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T06:35"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-241221/contact-walls-0.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-1.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-2.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-3.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-4.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-5.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-6.png",
+    "artifacts/building-recipes/pand-241221/contact-walls-7.png",
+    "artifacts/building-recipes/pand-241221/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2015 brick with box balconies over punched windows (boxBalconies not proposed); gate open-edges.",
+    "gap": "band-box-balconies",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -6383,23 +7468,32 @@
     4.8354859999999995,
     52.35716
    ],
-   "status": "crops",
+   "status": "error",
    "house": "pand-246893",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:50:35.636Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:35:22.126Z",
    "notes": [
-    "2026-10-23T21:51 crops: 11 usable walls in 30 s"
+    "2026-10-23T21:51 crops: 11 usable walls in 30 s",
+    "2026-11-13T06:35 facts: fronts on Schipluidenlaan, Cornelis Lelyplein, Willem Frogerstraat",
+    "2026-11-13T06:35 draft: 8 groups (5 on a street), 26 panels blank",
+    "2026-11-13T06:35 measure failed: prune: Removed types... Accessor (23) | /Users/blackmad/Code/map-recall2-worktrees/kit-band-fronts-20261113/src/canalRecall/buildingRecipe/gates.ts:82 |     return {root, count: ts.length, min: [0, 1, 2].map(i => Math.min(...pts.map(p => p[i]))), max: [0, 1, 2].map(i => Math.max(...pts.map(p => p[i])))}; |                                                                  ^ | RangeError: Maximum call stack size exceeded | Node.js v26.8.1"
    ],
-   "updatedAt": "2026-10-23T21:51:06.045Z",
+   "updatedAt": "2026-11-13T06:35:42.020Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "buildable",
     "reasons": [
-     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 8, bandFronts.ts)",
+     "7 judgeable street walls: w01 columns, w02 columns, w04 columns, w06 punched, w07 columns, w08 punched, w09 punched"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 5671,
+    "draft": 1,
+    "measure": 14220
    }
   },
   {
@@ -7528,7 +8622,7 @@
     "verdict": "kit-gap",
     "reasons": [
      "w02 (tt. Vasumweg, 26 m) reads punched with a ribbon on storey 5: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "w03 (tt. Vasumweg, 26 m) reads columns with a ribbon on storey 3, 4: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w03 (tt. Vasumweg, 26 m) reads columns with a ribbon on storey 3, 4: the kit draws windows under it (bands, balconies, a shopfront strip); the kit draws it (ribbon-windows on storey 3, 4, bandFronts.ts)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (tt. Vasumweg, 32 m), 24 % of 134 m of street wall (w01): painted or clad"
     ],
     "gaps": [
@@ -7745,14 +8839,18 @@
     4.862513099999999,
     52.334329499999996
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-080966",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:02:39.550Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:20:45.320Z",
    "notes": [
-    "2026-10-23T22:03 crops: 16 usable walls in 33 s"
+    "2026-10-23T22:03 crops: 16 usable walls in 33 s",
+    "2026-11-13T06:20 facts: fronts on Van der Boechorststraat, De Boelelaan",
+    "2026-11-13T06:20 draft: 8 groups (4 on a street), 233 panels blank",
+    "2026-11-13T06:21 measured groups 0,1,3,4,5,7 in 53 s",
+    "2026-11-13T06:22 compiled: 23760 tris, gates FAIL triangle-budget,eaves-vs-3dbag/walls[7],open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:FAIL g4:WARN g5:WARN g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-080966/contact-walls-3.png |   artifacts/building-recipes/pand-080966/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T22:03:12.809Z",
+   "updatedAt": "2026-11-13T06:22:26.958Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
@@ -7760,12 +8858,106 @@
      "w03 (Van der Boechorststraat, 41 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w04 (Van der Boechorststraat, 34 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w09 (Van der Boechorststraat, 21 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w10 (Van der Boechorststraat, 17 m) reads curtain without floor bands",
      "wall family unresolved but a measured tint on w10 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
-     "band"
+     "band",
+     "curtain"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 10675,
+    "draft": 48,
+    "measure": 53385,
+    "compile": 37490
+   },
+   "report": {
+    "triangles": 23760,
+    "bytes": 1805588,
+    "gatesFailing": [
+     "triangle-budget",
+     "eaves-vs-3dbag/walls[7]",
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape tall vs photo square",
+       "wall family unresolved (#222023 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+       "columns 57 vs photo 11"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL -0.25",
+       "glazing not judged (frames cannot be told from bands: 12 % of the front is a band run along openings (glazing 0.497..0.619))"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.41 mean 0.27 vs photo 0.70"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.433 < 0.45"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.445 < 0.45"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.36 mean 0.37 vs photo 0.18"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:22"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-080966/contact-walls-0.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-1.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-2.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-3.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-4.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-5.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-6.png",
+    "artifacts/building-recipes/pand-080966/contact-walls-7.png",
+    "artifacts/building-recipes/pand-080966/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1968 Energiecentrum: concrete floor ledges and ribbon glazing, louvred top; 23760 triangles > 12000, eaves-vs-3dbag, open-edges.",
+    "gap": "triangle-budget",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -7827,7 +9019,7 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (Von Zesenstraat, 53 m) storey 4 has a 11.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "w02 (Von Zesenstraat, 53 m) storey 4 has a 11.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 4, bandFronts.ts)",
      "w06 (Commelinstraat, 24 m) storey 1 has a 8.9 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
     ],
     "gaps": [
@@ -8395,14 +9587,13 @@
    ],
    "updatedAt": "2026-10-29T22:29:45.688Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "buildable",
     "reasons": [
-     "w02 (Victorieplein, 29 m) storey 3 has a 13.9 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip)",
-     "w03 (Victorieplein, 28 m) storey 3 has a 8.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
+     "w02 (Victorieplein, 29 m) storey 3 has a 13.9 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 3, 4, bandFronts.ts)",
+     "w03 (Victorieplein, 28 m) storey 3 has a 8.6 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 3, bandFronts.ts)",
+     "5 judgeable street walls: w01 punched, w02 columns, w03 punched, w04 punched, w07 columns"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    },
    "model": "fable",
@@ -9504,13 +10695,14 @@
    ],
    "updatedAt": "2026-10-23T22:15:05.897Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w05 (Witte de Withstraat, 18 m) storey 1 has a 14.3 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip)"
+     "w05 (Witte de Withstraat, 18 m) storey 1 has a 14.3 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 1, bandFronts.ts)",
+     "w06 (Admiralengracht, 11 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip); short wall: noted, not a gap",
+     "8 of 9 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Van Kinsbergenstraat, 55 m): no crop"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -9529,28 +10721,125 @@
     4.839648,
     52.3567865
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-141601",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:15:05.898Z",
+   "owner": "lane-kit-band-20261113",
+   "claimedAt": "2026-11-13T06:35:42.022Z",
    "notes": [
-    "2026-10-23T22:15 crops: 15 usable walls in 42 s"
+    "2026-10-23T22:15 crops: 15 usable walls in 42 s",
+    "2026-11-13T06:35 facts: fronts on Schielandplein, Schipluidenlaan, Delflandlaan",
+    "2026-11-13T06:35 draft: 8 groups (7 on a street), 91 panels blank",
+    "2026-11-13T06:35 measured groups 2,3,5,7 in 8 s",
+    "2026-11-13T06:36 compiled: 9860 tris, gates pass, likeness g0:NO EVIDENCE g2:FAIL g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:FAIL",
+    "2026-11-13T06:37 measured groups 2,3,5,7 in 8 s",
+    "2026-11-13T06:37 compiled: 9860 tris, gates pass, likeness g0:NO EVIDENCE g2:FAIL g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:FAIL",
+    "2026-11-13T06:37 measured groups 2,3,5,7 in 11 s",
+    "2026-11-13T06:37 compiled: 9860 tris, gates pass, likeness g0:NO EVIDENCE g2:FAIL g3:FAIL g4:NO EVIDENCE g5:FAIL g6:NO EVIDENCE g7:FAIL"
    ],
-   "updatedAt": "2026-10-23T22:15:47.420Z",
+   "updatedAt": "2026-11-13T06:37:57.513Z",
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Delflandlaan, 90 m) storey 2 has a 24.8 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
-     "w02 (Delflandlaan, 60 m) storey 1 has a 15.0 m ribbon over punched windows on storey 3: bands (balconies, ribbons, a shopfront strip)",
+     "w02 (Delflandlaan, 60 m) storey 1 has a 15.0 m ribbon over punched windows on storey 3: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 2, 3, bandFronts.ts)",
+     "w03 (Schipluidenlaan, 28 m) reads curtain without floor bands",
      "w07 (Schielandplein, 15 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Delflandlaan, 90 m), 46 % of 250 m of street wall (w01, w04): painted or clad"
+     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
-     "band",
-     "painted-or-clad"
+     "curtain",
+     "band"
     ],
     "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 0,
+   "ms": {
+    "facts": 5629,
+    "draft": 3,
+    "measure": 26215,
+    "compile": 30045
+   },
+   "report": {
+    "triangles": 9860,
+    "bytes": 738104,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 0 % < 40 %"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.57 mean 0.28 vs photo 0.81"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.26 mean 0.44 vs photo 0.29"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 27 % > 25 %",
+       "washed out 54 % > 30 %"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16 mean 0.00 vs photo 0.15",
+       "window shape none vs photo wide",
+       "columns none vs photo 10"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 10 % < 40 %"
+      ]
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:37"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-141601/contact-walls-0.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-1.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-2.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-3.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-4.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-5.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-6.png",
+    "artifacts/building-recipes/pand-141601/contact-walls-7.png",
+    "artifacts/building-recipes/pand-141601/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "1965 Koningshof: ribbon windows in every storey between dark brick spandrels; the crop reads punched (mullions cut the ribbons), so the ribbon-front rule does not fire; measured ribbonStoreys on storey 3 only (sill 0, h 0.55) moved walls[3] glazing 0.50 -> 0.26 off, still FAIL.",
+    "gap": "band-ribbon-front-reads-punched",
+    "sheet": "artifacts/strips/kit-band-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-kit-band-20261113",
+    "round": 1
    }
   },
   {
@@ -9617,9 +10906,10 @@
    ],
    "updatedAt": "2026-11-13T06:09:04.172Z",
    "triage": {
-    "verdict": "buildable",
+    "verdict": "no-evidence",
     "reasons": [
-     "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w05 punched"
+     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Suze Robertsonstraat, 68 m): usable 0 % < 40 %"
     ],
     "gaps": [],
     "date": "2026-11-13"
@@ -9900,13 +11190,14 @@
    ],
    "updatedAt": "2026-10-23T22:18:04.769Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w05 (Terheideweg, 22 m) storey 4 has a 9.7 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w05 (Terheideweg, 22 m) storey 4 has a 9.7 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 4, 5, bandFronts.ts)",
+     "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Terheideweg, 38 m): washed out 57 % > 30 %",
+     "w04 (Terheideweg, 35 m): foliage 25 % > 25 %; washed out 31 % > 30 %"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -10543,14 +11834,14 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (Maassluisstraat, 97 m) storey 2 has a 8.7 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
+     "w02 (Maassluisstraat, 97 m) storey 2 has a 8.7 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 2, 3, bandFronts.ts)",
      "w07 (Maassluisstraat, 16 m) reads blank",
      "w08 (Loosduinenstraat, 16 m) storey 3 has a 8.7 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
      "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
-     "band",
-     "blank-front"
+     "blank-front",
+     "band"
     ],
     "date": "2026-11-13"
    }
@@ -11163,7 +12454,7 @@
     "verdict": "kit-gap",
     "reasons": [
      "w01 (Delflandlaan, 97 m) storey 3 has a 8.6 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
-     "w05 (Rijswijkstraat, 66 m) storey 3 has a 8.7 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
+     "w05 (Rijswijkstraat, 66 m) storey 3 has a 8.7 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 3, bandFronts.ts)"
     ],
     "gaps": [
      "band"
@@ -11195,13 +12486,18 @@
    ],
    "updatedAt": "2026-10-23T22:26:46.210Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w05 (De Boelelaan, 37 m) storey 3 has a 10.0 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w05 (De Boelelaan, 37 m) storey 3 has a 10.0 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 1, 3, bandFronts.ts)",
+     "1 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (De Klencke, 40 m): washed out 51 % > 30 %",
+     "w02 (De Klencke, 39 m): washed out 63 % > 30 %; obliquity 48 deg > 45",
+     "w03 (De Klencke, 38 m): obliquity 49 deg > 45",
+     "w04 (De Klencke, 37 m): washed out 34 % > 30 %",
+     "w06 (De Boelelaan, 31 m): no crop",
+     "w07 (De Klencke, 26 m): obliquity 52 deg > 45"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -11955,13 +13251,15 @@
    ],
    "updatedAt": "2026-10-23T22:32:01.645Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "no-evidence",
     "reasons": [
-     "w04 (Basisweg, 17 m) storey 2 has a 16.5 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
+     "w04 (Basisweg, 17 m) storey 2 has a 16.5 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbon-windows on storey 2, 3, bandFronts.ts)",
+     "2 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (Piarcoplein, 31 m): washed out 45 % > 30 %",
+     "w03 (Piarcoplein, 18 m): no crop",
+     "w07 (Piarcoplein, 14 m): washed out 45 % > 30 %"
     ],
-    "gaps": [
-     "band"
-    ],
+    "gaps": [],
     "date": "2026-11-13"
    }
   },
@@ -13640,7 +14938,7 @@
     "verdict": "kit-gap",
     "reasons": [
      "w01 (Waterlandplein, 27 m) storey 7 has a 8.0 m ribbon over punched windows on storey 5: bands (balconies, ribbons, a shopfront strip)",
-     "w02 (Werengouw, 25 m) storey 2 has a 10.1 m ribbon over punched windows on storey 8: bands (balconies, ribbons, a shopfront strip)"
+     "w02 (Werengouw, 25 m) storey 2 has a 10.1 m ribbon over punched windows on storey 8: bands (balconies, ribbons, a shopfront strip); the kit draws it (ribbonStoreys on storey 2, bandFronts.ts)"
     ],
     "gaps": [
      "band"

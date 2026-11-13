@@ -206,3 +206,36 @@ The 188 other rows at `crops` stay blocked by triage (count, sum of `rideVisibil
 not-in-tiles 19 (4.23 M), band+painted-or-clad 13 (2.03 M), painted-or-clad 20 (1.32 M), curtain 5-9, tower 7, blank-front 5, bespoke 1.
 The band class remains the gap that blocks the most ride visibility; the next factory run needs a kit lane on storey-1 ribbons and balcony
 bands, or second panorama captures for the no-evidence rows, before it has anything to compile.
+
+## Band fronts (kit band lane, 2026-11-13): `band` 65 -> 49, strip 0 of 15
+
+Inventory of the 51 `crops`-stage band rows from their archived crops, by ride visibility (rows can carry other gaps too):
+
+| What the band actually is | Rows | Ride visibility | Examples |
+|---|---|---|---|
+| Not a band front (glass curtain, towers, sheds, a greenhouse, an underpass, a mural, a misread punched block) | 17 | 2.84 M | 092384, 252557, 104065, 119145 |
+| Ribbon windows between floor or spandrel bands (strokenfacade offices and schools, 1955-1975, plus ribbons on clad boxes) | 15 | 2.10 M | 092333 Europahuis, 141601 Koningshof, 115242, 080966, 247688 |
+| One ribbon storey or shopfront strip over/under punched storeys (low halls, a fire station, a school wing) | 4 | 1.87 M | 079326, 133211, 086968, 072084 |
+| Cantilevered balcony stacks and staggered slabs over punched brick | 5 | 1.38 M (+240481) | 247342, 111255, 186002, 241221, 240481 |
+| Gallery (galerij) and continuous balcony bands | 9 | 0.90 M | 145366, 077450, 237888 |
+
+Kit and measurement added: `rowOpenings` keeps each opening's vertical extent (`v0`/`v1`, the longest run of opening rows);
+`bandFronts.ribbonStoreysProposal` writes the C3 `ribbonStoreys` component at the photo's own sill and height for a glazed
+ribbon storey over punched rows (measure.ts, in place of the shop-window `glazedStoreys` row); triage caches `bandKit` and
+drops the band gap where that proposal (or the ribbon-front rule) covers every ribbon storey (`bandDrawn`). 15 rows lost the
+band gap; most then fall to `no-evidence` (a long street wall without a judgeable crop) or `painted-or-clad`, which the band
+gap had masked. New buildable: 246848, 246893, 130710 (all three terminal rows of earlier lanes).
+
+Strip of 15 band rows through the factory (`artifacts/strips/kit-band-20261113`): 0 pass, 14 hold, 1 no-evidence (084650 rebuilt).
+Still cannot say, by what blocked the strip:
+
+| Still cannot say | Rows | Example |
+|---|---|---|
+| Triangle budget on long or tall band slabs (12k) | 4 | 092333 (30.7k), 080966 (23.8k), 186002 (17.3k), 077450 (12.8k), 240481 (17.0k) |
+| Gallery bar balustrades: `lightBands` reads solid light bands only, so no `balconyBands` is proposed on a galerij | 2 | 145366, 077450 |
+| Balcony stacks, staggered slabs and box balconies are drawable (`balconyBands.spans`, `boxBalconies`) but not measured: no proposal places them from the photo (`--balcony-spans` stays opt-in) | 4 | 111255, 241221, 186002, 240481 |
+| Deep splayed cantilevers and a balcony slab above the top storey | 1 | 247342 |
+| A ribbon front whose mullions cut the ribbons reads punched, so the ribbon-front rule does not fire | 1 | 141601 Koningshof |
+| Pale floor bands at every storey line over punched brick (no proposal; `floorBands` is curtain-only) | 1 | 247952 |
+| Sectional garage doors measured as curtain glass | 1 | 086968 |
+| Horizontally striped brick on a low hall (brickStripes exists, not proposed) | 1 | 079326 |

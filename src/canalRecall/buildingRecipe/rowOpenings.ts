@@ -117,8 +117,17 @@ export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; ce
       const w = (k - i) * cell;
       if (w >= R.minWidthM - 1e-9) {
         const partial = i === 0 || k === cols || !Number.isFinite(prof[i - 1]) || !Number.isFinite(prof[k]);
-        let hRows = 0, vLo = Infinity, vHi = -Infinity;
-        for (const j of js) { let o = 0, n = 0; for (let x = i; x < k; x++) { const m = mask[j * cols + x]; if (m === MASK.unusable) continue; n++; if (isOpening(m)) o++; } if (n && o / n >= 0.5) { hRows++; vLo = Math.min(vLo, vOf(j)); vHi = Math.max(vHi, vOf(j)); } }
+        // v0/v1: the longest contiguous run of opening rows (two ribbons a misplaced storey line straddles are not one band)
+        let hRows = 0, run = 0, runStart = 0, best = 0, bestStart = 0, prev = -2;
+        for (const j of js) {
+          let o = 0, n = 0; for (let x = i; x < k; x++) { const m = mask[j * cols + x]; if (m === MASK.unusable) continue; n++; if (isOpening(m)) o++; }
+          if (!(n && o / n >= 0.5)) continue;
+          hRows++;
+          if (j === prev + 1) run++; else { run = 1; runStart = j; }
+          if (run > best) { best = run; bestStart = runStart; }
+          prev = j;
+        }
+        const vLo = vOf(bestStart + best - 1), vHi = vOf(bestStart);
         const h = hRows * cell;
         openings.push({u0: +(box.u0 + i * cell).toFixed(2), u1: +(box.u0 + k * cell).toFixed(2), w: +w.toFixed(2), h: +h.toFixed(2), shape: shapeOf(h / w), partial,
           ...(hRows ? {v0: +(vLo - cell / 2).toFixed(2), v1: +(vHi + cell / 2).toFixed(2)} : {})});
