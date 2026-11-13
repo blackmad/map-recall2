@@ -76,7 +76,12 @@ export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
  * 0.10 at 30 px/m and 0.13 at 50. The twin with FR_MOTTLE 0.6 gives 0.066 / 0.112 / 0.116 / 0.146 / 0.161 at
  * 20 / 27 / 35 / 50 / 70 px/m.
  */
-export const FR_MOTTLE = 0.9, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
+export const FR_MOTTLE = 0.35, FR_MOTTLE_V = FR_COURSE, FR_MOTTLE_U = FR_BRICK;
+// F1 realism pass (#380, 2026-11-13, the user's Weteringschans 0363100012171218 frame): patches of two bricks x two courses at
+// FR_MOTTLE 0.9 (0.6 on main) made the wall a field of hard-edged blocks 1.5-2.6x apart in brightness, read as coarse pixel
+// noise, not courses. The texture number matched the photos' while the look did not: a photo's wall detail is joints,
+// ornament and dirt, not wall-sized blocks. The mottle is now one tone per brick (the coursing's own bricks), +-17 %,
+// and fades as a course falls under one pixel instead of being carried out to 16 px/m.
 /**
  * The patch fade, in patch rows per pixel. S7a (#380) raised FR_MOTTLE from 0.6 to 0.9 after round 3 measured the GPU
  * frames against the photos at W1's wall colours. The texture by px/m was:
@@ -89,7 +94,7 @@ export const FR_MOTTLE = 0.9, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
  * The frames read about 0.6-0.85 of the twin's number (more at higher px/m). The twin at 0.9 gives 0.098 / 0.169 / 0.172 /
  * 0.195 / 0.209 at 20 / 27 / 35 / 50 / 70 px/m. A wider fade overshot the photos under 25 px/m in the twin.
  */
-export const FR_MOTTLE_FADE = [0.3, 0.5] as const;
+export const FR_MOTTLE_FADE = [0.5, 1] as const;
 
 /**
  * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the

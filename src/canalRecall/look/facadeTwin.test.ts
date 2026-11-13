@@ -91,8 +91,8 @@ test('S6b: window kinds draw their glazing, a shop ground storey, the eaves corn
   assert.ok(differs(rec({ bands: 0 }), rec({ bands: 1, bandSillCm: 16, band: [226, 217, 194] })), 'storey string course');
 });
 
-test('S7a brick patches: the twin carries FR_MOTTLE 0.9 (frames read 0.6-0.85 of it; photo medians 0.071 / 0.123 / 0.147)', () => {
-  // brick-texture.ts's measure on the twin: detail (0.25 m running mean removed) std over the mean, pixel-centre samples down columns.
+test('Realism pass: the brick mottle is one tone per brick, never wall-sized blocks (Weteringschans 0363100012171218)', () => {
+  // The user's frame read the S6c/S7a patches (two bricks x two courses, FR_MOTTLE 0.6-0.9) as coarse pixel noise.
   const texture = (ppm: number) => {
     const step = 1 / ppm, half = Math.max(1, Math.round(0.125 / step));
     let s = 0, s2 = 0, n = 0, m = 0;
@@ -103,11 +103,21 @@ test('S7a brick patches: the twin carries FR_MOTTLE 0.9 (frames read 0.6-0.85 of
     }
     return Math.sqrt(s2 / n - (s / n) ** 2) / (m / n);
   };
-  assert.ok(texture(20) > 0.07 && texture(20) < 0.13, `20 px/m: ${texture(20)}`);
-  assert.ok(texture(27) > 0.14 && texture(27) < 0.2, `27 px/m: ${texture(27)}`);
-  assert.ok(texture(50) > 0.17 && texture(50) < 0.23, `50 px/m: ${texture(50)}`);
+  const t = [12, 20, 27, 50, 70].map(texture);
+  console.log('twin texture at 12/20/27/50/70 px/m', t.map(v => v.toFixed(3)).join(' / '));
+  assert.ok(t[0] < 0.01, `12 px/m (bricks under a pixel): ${t[0]}`);
+  assert.ok(t[3] < 0.16 && t[4] < 0.18, `near: ${t[3]} ${t[4]}`);
+  // Brick centres a course apart differ: the mottle is per brick, not per two courses.
+  const at = (x: number, y: number) => frBrick([x, y], [0.002, 0.002], 0);
+  let same = 0, ratio = 1;
+  for (let k = 0; k < 200; k++) {
+    const x = 0.05 + (k % 20) * 0.44, y = 0.0375 + Math.floor(k / 20) * 0.125, a = at(x, y), b = at(x, y + 0.0625);
+    if (Math.abs(a - b) < 1e-6) same++;
+    ratio = Math.max(ratio, a / b, b / a);
+  }
+  assert.ok(same < 10, `${same} of 200 course pairs share a tone`);
+  assert.ok(ratio < 1.6, `brightest / darkest neighbouring brick ${ratio}`);
 });
-
 
 test('S7a: the record wall pattern does not depend on the wall colour (W1 pool walls lose no brick in the record)', () => {
   // 172590 drew #4c1f0f before W1 and #925441 from the measured pool; the record differs only in `wall`. The pattern the

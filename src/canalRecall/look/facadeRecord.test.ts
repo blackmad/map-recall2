@@ -205,7 +205,7 @@ test('multi-front pands get one record per front; packing is deterministic', () 
 test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, sash bars, frame, opening size); stated fields win', () => {
   // bayLook.ts c19 preset 82: a stone arch over a rect transom window, pale jamb blocks; bayVariantOpenings: 2 x 0.275 of the bay, 0.70 tall.
   const bay = genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'arch', sash: 'transom', paleAccents: true }, { axes: [0.25, 0.75], width: 0.275, sill: 0.147, head: 0.847 });
-  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 't-window', dark: false, share: 0.55, height: 0.7 });
+  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 't-window', dark: false, band: { hex: '#e6dbc3', cm: 10 }, share: 0.55, height: 0.7 });
   assert.equal(genericBayWindow({ archetype: 'modern', shape: 'rect', lintel: 'none', sash: 'plain', frameTone: 'dark' }).surround, 'none');
   assert.equal(genericBayWindow({ archetype: 'canal', shape: 'segmental', lintel: 'none', sash: 'paired-transom' }).head, 'segmental');
   const generic = { storeys: 3, groundM: 3.5, storeyM: 3.1, windows: 3, doorWindow: 2, variant: 1, bay };
@@ -215,7 +215,7 @@ test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, s
   assert.equal(WINDOW_SURROUNDS[r.surround], 'full-frame');
   assert.equal(WINDOWS[r.windowKind], 't-window');
   assert.equal(r.windowShare, Math.round(0.55 * 255));
-  assert.equal(r.bands, 0, 'the bay looks paint no storey band');
+  assert.equal(FACADE_BANDS[r.bands], 'storey', 'the c19 bay look paints a floor-line string course (realism pass)');
   assert.equal(r.doorBay, 2);
   const stated = facadeRecordFor({ ...base, spec: { d: { fronts: [{ windowHead: { kind: 'segmental' }, windows: 'sash' }] } } });
   assert.equal(WINDOW_HEADS[stated.windowHead], 'segmental');
@@ -230,4 +230,29 @@ test('S6d wall material prior: the register finish at Src 1, else unset; the spe
   const base = { id: 'mat', style: 'c19' as const, wallHex: '#8a6145', heightM: 12, minHeightM: 0 };
   assert.equal(FACADE_WALL_MATERIALS[facadeRecordFor({ ...base, wallMaterial: 'stucco', wallMaterialSrc: 1 }).wallMaterial], 'stucco');
   assert.equal(FACADE_WALL_MATERIALS[facadeRecordFor({ ...base, wallMaterial: 'stucco', spec: { d: { palette: { wallMaterial: 'brick' } } } }).wallMaterial], 'brick');
+});
+
+test('Realism pass: a generic pand draws pale frames and cream stone, not the look accent (Weteringschans 0363100012171218)', () => {
+  const bay = genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'flat' });
+  const generic = { storeys: 4, groundM: 3.7, storeyM: 2.66, windows: 6, doorWindow: 4, variant: 1, bay };
+  const base = { id: 'NL.IMBAG.Pand.0363100012171218', style: 'c19' as const, wallHex: '#3c3732', accentHex: '#2c3e50', heightM: 14.32, minHeightM: 0, generic };
+  const r = facadeRecordFor(base);
+  assert.deepEqual(r.frame, [241, 237, 226], 'pale frames, as bayTextures.ts paints them');
+  assert.deepEqual(r.accent, [207, 200, 184], 'dressed stone for sills and lintels');
+  assert.equal(r.sills, 1);
+  const painted = facadeRecordFor({ ...base, generic: { ...generic, bay: genericBayWindow({ archetype: 'c19', shape: 'rect', paintedFrames: true }) } });
+  assert.deepEqual(painted.frame, [44, 62, 80], 'a preset with painted frames keeps the accent paint');
+  const dark = facadeRecordFor({ ...base, generic: { ...generic, bay: genericBayWindow({ archetype: 'c19', shape: 'rect', frameTone: 'dark', paintedFrames: true }) } });
+  assert.deepEqual(dark.frame, [44, 48, 47], 'dark frames stay dark');
+});
+
+test("Realism pass: the bay look's floor-line string course reaches the record", () => {
+  const generic = (bay: ReturnType<typeof genericBayWindow>) => ({ storeys: 4, groundM: 3.7, storeyM: 2.66, windows: 6, doorWindow: 4, variant: 1, bay });
+  const base = { id: 'x', style: 'c19' as const, wallHex: '#3c3732', heightM: 14, minHeightM: 0 };
+  const c19 = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect' })) });
+  assert.equal(FACADE_BANDS[c19.bands], 'storey'); assert.equal(c19.bandsSrc, 0); assert.deepEqual(c19.band, [230, 219, 195]); assert.equal(c19.bandSillCm, 10);
+  const quiet = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect', trimDensity: 'restrained' })) });
+  assert.equal(FACADE_BANDS[quiet.bands], 'none');
+  const modern = facadeRecordFor({ ...base, style: 'modern', generic: generic(genericBayWindow({ archetype: 'modern', shape: 'rect' })) });
+  assert.equal(FACADE_BANDS[modern.bands], 'none');
 });
