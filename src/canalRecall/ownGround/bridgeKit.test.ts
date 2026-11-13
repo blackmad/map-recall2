@@ -394,3 +394,13 @@ test('round 2 trusses: Mariniersbrug arched over one span, the Oosterdoksdraaibr
   assert.ok(far.info.triangles <= KIT_BUDGET.far + TRUSS_FAR_TRIS, `${far.info.triangles}`);
   assert.ok(Math.max(...zOf(buildKit({ ...base, lod: 1, id: 'T' }).mesh)) < 1.3 + 1.2 + 1, 'no silhouette off the list');
 });
+
+test('bascule leaf kerbs run along the leaf edges, not across the road from a narrower station outside the leaf (Aluminiumbrug BRU0222, 6b239d90)', () => {
+  // A footprint 4 m each side over the leaf [12, 28], 1.5 m past it (the ragged corner stations of a flat deck).
+  const r = rows(16, 0, 4).map(q => (q.s > 11.6 && q.s < 28.4 ? q : { ...q, L: [q.s, 1.5] as [number, number], R: [q.s, -1.5] as [number, number] }));
+  const { mesh } = buildKit({ ...input('bascule', 0), rows: r, leaves: [[11.8, 28.2]] });
+  const k = mesh.colors!, p = mesh.positions, stoneY: number[] = [];
+  for (let i = 0; i < k.length; i += 3) if (Math.abs(k[i] - KIT_COLOURS.stone[0]) < 1e-6 && Math.abs(k[i + 1] - KIT_COLOURS.stone[1]) < 1e-6 && Math.abs(k[i + 2] - KIT_COLOURS.stone[2]) < 1e-6) stoneY.push(Math.abs(p[i + 1]));
+  assert.ok(stoneY.length > 0, 'the kerbs are drawn');
+  assert.ok(Math.min(...stoneY) > 3.6, `every kerb vertex stays at the leaf edge (nearest ${Math.min(...stoneY).toFixed(2)} m off the line)`);
+});

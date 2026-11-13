@@ -634,8 +634,18 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   }
 
   // A bascule leaf's kerbs: a stone strip along both edges of each leaf, so the leaf reads as a slab with its edge.
+  // Each end of a kerb stands at the edge width of the first (last) station inside the leaf: an end interpolated toward a
+  // narrower station outside it (a footprint's ragged corner) ran the stone strip diagonally across the road (user
+  // 2026-11-10, 6b239d90 "what's that white line across the bridge road surface?", the Aluminiumbrug BRU0222: 1.9 m
+  // off the line at one end, 4.5 m at the other).
   if (kind === 'bascule' && input.lod === 0) for (const [l0, l1] of input.leaves ?? []) for (const side of [1, -1] as const) {
-    const a = rowAt(rows, l0 + 0.06), b = rowAt(rows, l1 - 0.06), ea = side > 0 ? a.L : a.R, eb = side > 0 ? b.L : b.R, za = side > 0 ? a.zL : a.zR, zb = side > 0 ? b.zL : b.zR;
+    const inside = rows.filter(r => r.s > l0 + 0.06 && r.s < l1 - 0.06), width = (r: KitRow) => { const e = side > 0 ? r.L : r.R; return Math.hypot(e[0] - r.c[0], e[1] - r.c[1]); };
+    const at = (s: number, w: number | null): KitRow => {
+      const r = rowAt(rows, s);
+      return w === null ? r : { ...r, L: [r.c[0] + r.n[0] * w, r.c[1] + r.n[1] * w], R: [r.c[0] - r.n[0] * w, r.c[1] - r.n[1] * w] };
+    };
+    const a = at(l0 + 0.06, inside.length ? width(inside[0]) : null), b = at(l1 - 0.06, inside.length ? width(inside[inside.length - 1]) : null);
+    const ea = side > 0 ? a.L : a.R, eb = side > 0 ? b.L : b.R, za = side > 0 ? a.zL : a.zR, zb = side > 0 ? b.zL : b.zR;
     const ia: Vec2 = [ea[0] - a.n[0] * side * 0.12, ea[1] - a.n[1] * side * 0.12], ib: Vec2 = [eb[0] - b.n[0] * side * 0.12, eb[1] - b.n[1] * side * 0.12];
     beam(m, [ia[0], ia[1], za + 0.06], [ib[0], ib[1], zb + 0.06], 0.09, C.stone, true);
   }
