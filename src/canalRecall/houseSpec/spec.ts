@@ -32,12 +32,16 @@ export type { HouseDesign };
  *   fronts/N/windowSurround `block-dressings` alternating stone blocks down the jambs and round the head (block quoins at the
  *                         openings, blocked voussoirs) -> drawn `jack-blocks`
  *   fronts/N/cornice      `attic-frieze`   a frieze with attic windows (and consoles) under the cornice -> drawn `frieze`
+ *   fronts/N/roofStorey   mansard|attic|none  a storey above the eaves line (lane WG): the generic storey fit reads it
+ *                         (houseSpec/storeyPlan.ts); the recipe intent has no key, so the recipe route drops it (null)
  */
 export const SPEC_WALL_MATERIALS = [...WALL_MATERIALS, 'stone'] as const;
 export const SPEC_GABLES = [...GABLES, 'pitched-eaves'] as const;
 export const SPEC_WINDOW_HEADS = [...WINDOW_HEADS, 'pointed', 'mixed'] as const;
 export const SPEC_WINDOW_SURROUNDS = [...WINDOW_SURROUNDS, 'block-dressings'] as const;
 export const SPEC_CORNICES = [...CORNICES, 'attic-frieze'] as const;
+export const SPEC_ROOF_STOREYS = ['mansard', 'attic', 'none'] as const;
+export type SpecRoofStorey = typeof SPEC_ROOF_STOREYS[number];
 export type SpecWallMaterial = typeof SPEC_WALL_MATERIALS[number];
 export type SpecGable = typeof SPEC_GABLES[number];
 export type SpecWindowHead = typeof SPEC_WINDOW_HEADS[number];
@@ -46,6 +50,8 @@ export type SpecCornice = typeof SPEC_CORNICES[number];
 /** A front as a spec stores it: the intent front with the spec-level gable and window-head values. */
 export type SpecFront = Omit<DeepPartial<FrontIntent>, 'gable' | 'windowHead' | 'windowSurround' | 'cornice'> & {
   gable?: SpecGable;
+  /** Lane WG: a roof storey above the eaves line (a mansard or an attic storey), `none` when the read saw none. */
+  roofStorey?: SpecRoofStorey;
   windowSurround?: SpecWindowSurround;
   cornice?: SpecCornice;
   windowHead?: Omit<DeepPartial<NonNullable<FrontIntent['windowHead']>>, 'kind'> & { kind?: SpecWindowHead };
@@ -67,7 +73,7 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
   const fronts = (design?.fronts ?? []) as Array<Record<string, any> | undefined>;
   const stone = design?.palette?.wallMaterial === 'stone';
   const touched = fronts.some(f => f?.gable === 'pitched-eaves' || f?.windowHead?.kind === 'pointed' || f?.windowHead?.kind === 'mixed'
-    || f?.windowSurround === 'block-dressings' || f?.cornice === 'attic-frieze');
+    || f?.windowSurround === 'block-dressings' || f?.cornice === 'attic-frieze' || f?.roofStorey !== undefined);
   if (!stone && !touched) return { design, ignored };
   const out = structuredClone(design) as Record<string, any>;
   if (stone) { out.palette.wallMaterial = 'stucco'; ignored.push({ path: 'palette/wallMaterial', value: 'stone', drawnAs: 'stucco' }); }
@@ -79,6 +85,7 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
       if (f.cornice === undefined) f.cornice = 'none';
     }
     if (f.windowSurround === 'block-dressings') { f.windowSurround = 'jack-blocks'; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'block-dressings', drawnAs: 'jack-blocks' }); }
+    if (f.roofStorey !== undefined) { ignored.push({ path: `fronts/${i}/roofStorey`, value: f.roofStorey, drawnAs: null }); delete f.roofStorey; }
     if (f.cornice === 'attic-frieze') { f.cornice = 'frieze'; ignored.push({ path: `fronts/${i}/cornice`, value: 'attic-frieze', drawnAs: 'frieze' }); }
     const kind = f.windowHead?.kind;
     if (kind === 'pointed') { f.windowHead.kind = 'round'; ignored.push({ path: `fronts/${i}/windowHead`, value: 'pointed', drawnAs: 'round' }); }
@@ -248,6 +255,7 @@ export function specProblems(input: unknown): string[] {
       if (key === 'windowHead' && !(value && typeof value === 'object' && !Array.isArray(value) && SPEC_WINDOW_HEADS.includes((value as { kind?: SpecWindowHead }).kind!))) p.push(`${path}: {kind: ${SPEC_WINDOW_HEADS.join('|')}, ...}`);
       if (key === 'windowSurround' && !SPEC_WINDOW_SURROUNDS.includes(value as SpecWindowSurround)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_WINDOW_SURROUNDS.join('|')}`);
       if (key === 'cornice' && !SPEC_CORNICES.includes(value as SpecCornice)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_CORNICES.join('|')}`);
+      if (key === 'roofStorey' && !SPEC_ROOF_STOREYS.includes(value as SpecRoofStorey)) p.push(`${path}: ${JSON.stringify(value)} not in ${SPEC_ROOF_STOREYS.join('|')}`);
       if (key === 'storeys' && !countOk(value, 1, 30)) p.push(`${path}: expected integer 1..30`);
       if (key === 'bays' && !(countOk(value, 1, 30) || (Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 30))))) p.push(`${path}: an integer 1..30 or one per storey`);
       if (key === 'hoist' && typeof value !== 'boolean') p.push(`${path}: boolean`);

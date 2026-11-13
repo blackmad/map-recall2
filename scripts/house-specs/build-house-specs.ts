@@ -148,9 +148,11 @@ for (const tile of tileKeys) {
 // --- 3b. 3DBAG crown rise for the register gable gate -------------------------------------------------------------
 const BAG_FACTS = path.join(ROOT, 'public/data/extracts/amsterdam/bag-facts/14');
 const bagRise = new Map<string, number>();
+/** Lane WG: 3DBAG's eaves (bag-facts), for the storey plan of pands with a stated count (houseSpec/storeyPlan.ts). */
+const bagEaves = new Map<string, number>();
 if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y of readdirSync(path.join(BAG_FACTS, x))) {
   const t = JSON.parse(gunzipSync(readFileSync(path.join(BAG_FACTS, x, y))).toString('utf8'));
-  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
+  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null) bagEaves.set(k.slice(-16), d.eavesM); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
 
@@ -164,6 +166,8 @@ for (const [pand, spec] of resolved) {
   // The register gable gate (houseSpec/decorate.ts, H5h round 4) needs 3DBAG's crown above the eaves, which the live building
   // tiles do not carry: the view carries ridge - eaves (bag-facts) for every pand with a gable or a historic gable.
   if (record.v.gable || spec.facts?.historicGable) { const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise; }
+  // Lane WG: the storey plan reads the stated count against 3DBAG's eaves (houseSpec/storeyPlan.ts).
+  if (record.v.storeys && bagEaves.has(pand)) record.v.eavesM = bagEaves.get(pand)!;
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;
   const tile = byTile.get(at.tile) ?? { version: 1 as const, buildings: {} };

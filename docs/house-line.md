@@ -162,9 +162,9 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   photo look, drawn through the wall-colour rule below (H1 held it; lane H9 released it). `streetFacadeRendering.ts
   frontageLayoutScale` fits a street run to the stated bays: cells = round(bays / window axes per cell), clamped to
   0.7–1.5 of the style's bay. The generic cells carry two or three window axes, so an odd bay count on a two-axis cell
-  rounds (a limit of the generic path, not of the spec). **Held** (`SPEC_BAYS_HELD`, 2026-11-10, #348: H1's bay
-  counts doubled on canal houses near the Dam, photo 3 drawn 6; lane H1b owns the cause): no spec bay count reaches
-  the mesher. Storeys, wall, gable, year and finish are unaffected.
+  rounds (a limit of the generic path, not of the spec). Held 2026-11-10 (#348: H1's bay counts doubled on canal
+  houses near the Dam, photo 3 drawn 6); **released** by H1c (#350, `SPEC_BAYS_HELD = false`): odd counts on two-axis
+  cells draw as half-cell axis units (§1 "Odd bays").
 - **Storeys** (lane H9): `fronts/0/storeys` (storeys below the crown, ground included) reaches the view as `storeys`
   and `specRecipe.storeys`; `specStoreyFit` (exact mode; `specStoreyScale` is its storey) sets the storey pitch so
   `layoutWall` draws that count on the street run's wall (pitch 0.75–1.45 of the style's storey; outside it the style's
@@ -417,10 +417,38 @@ buildings; fewer pale-trim extras), shell unchanged. No per-cell triangle budget
    from its own outline; a neck or bell reads as a square neck box (176066, 171144).
 3. `roof.form`/`hip`/`pitchDeg`/`material`: the roof planner's plan is 3DBAG's.
 4. `cornice` depth and `crownCap` pieces: no cornice-depth or cap component in the generic cells.
-5. `doorBay`, `basement`/`souterrain`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
-   control in the bay cells (one door position rule, one opening box per preset).
-6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset), `palette.brick` (held,
-   `SPEC_WALLS_HELD`).
+5. `doorBay`, `basement`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
+   control in the bay cells (one door position rule, one opening box per preset). `souterrain` reaches the storey fit
+   only (lane WG, below): no souterrain cell, its rough stone and knee-height windows are the ground cell's.
+6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset). (`palette.brick` is
+   drawn: `SPEC_WALLS_HELD = false` since H9, through the wall-colour rule.)
+7. `bands`/`speklagen` as lines, `cornice: none`, a vision-judge `cornice` crown, `windowHead` and `shop` (held,
+   `SPEC_DESIGN_HELD.look`/`.shop`): D1's pixel check (scripts/house-specs/describer-d1/pixel-check) measured them
+   ignored or held on the generic route. Wiring bands and the crown waits on the integrator's three-route bake-off.
+
+### Storey fit with a souterrain and a roof storey (lane WG, 2026-11-13)
+
+D1 found the stated count stretched over 3DBAG's whole wall: Weteringschans 0363100012171218 (souterrain, three storeys,
+slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 generic pands drew an upper pitch over 4.5 m
+(19 of them with a souterrain read). `houseSpec/storeyPlan.ts` reads the count against the eaves line:
+
+- **souterrain** (`fronts/0/souterrain`): 0.58 of the storey pitch (`blockBuilding/systems.ts SOUTERRAIN.factor`, the
+  block-face kit's), from the street up; then `storeys` rows at one pitch up to the eaves line.
+- **roof storey** (`fronts/0/roofStorey: mansard | attic | none`, new spec field, spec-level: `drawableDesign` drops it for
+  the recipe route): above the eaves line, roof not wall. It draws one more window row only where the mesher's wall
+  reaches over the eaves line by 0.6 of a storey.
+- **eaves line**: 3DBAG's eaves (bag-facts, the register gable gate's source), carried as view `eavesM` for every pand
+  with a stated count (`build-house-specs.ts`); without it the mesher's wall top, and the rows at the period pitch decide
+  whether a stated roof storey is inside the wall.
+- **drawn**: with a souterrain the ground cell is the souterrain (the door and windows at the street, `SPEC_GROUND_SCALE`
+  clamps it) and every stated storey, the bel-etage included, is an upper row. No new cell or component.
+- **guard** (every stated count, souterrain or not): the fitted pitch must lie in the period's range
+  (`STOREY_PITCH_RANGE`, PR1's 1,432 read houses, 5th to 95th percentile, capped at 4.5 m: canal 2.50-4.26, c19 2.65-4.09,
+  school 2.32-4.50, other 2.6-4.5). Outside it the count is dropped: the run draws the style's own count (the prior) and
+  `storeyPlanProbe` lists the pand for a second read and the publish veto list (`scripts/house-specs/storey-guard.ts`).
+  `?storeyGuard=0` / `STOREY_GUARD=0` draws the count as before.
+- **provenance**: souterrain and roof storey reach the view only from `monument-text`, `vision-judge` or stronger at
+  confidence >= 0.5, and only with a stated count. Absent, the fit is H9/H11's, byte-identical.
 
 ### Which specs a world carries
 
