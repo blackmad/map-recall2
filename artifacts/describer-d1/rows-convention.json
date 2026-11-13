@@ -1,0 +1,696 @@
+{
+ "v": 1,
+ "authorConvention": "exclude",
+ "report": {
+  "answers-v4-crop": {
+   "pairs": 97,
+   "rowIssues": [],
+   "groups": {
+    "all": {
+     "before": {
+      "n": 97,
+      "exact": 0.856,
+      "exactCI": [
+       0.772,
+       0.912
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.962,
+       1
+      ],
+      "under": 8,
+      "over": 6
+     },
+     "after": {
+      "n": 97,
+      "exact": 0.856,
+      "exactCI": [
+       0.772,
+       0.912
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.962,
+       1
+      ],
+      "under": 8,
+      "over": 6
+     }
+    },
+    "benchmark": {
+     "before": {
+      "n": 12,
+      "exact": 0.833,
+      "exactCI": [
+       0.552,
+       0.953
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.757,
+       1
+      ],
+      "under": 0,
+      "over": 2
+     },
+     "after": {
+      "n": 12,
+      "exact": 0.833,
+      "exactCI": [
+       0.552,
+       0.953
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.757,
+       1
+      ],
+      "under": 0,
+      "over": 2
+     }
+    },
+    "ground shop": {
+     "before": {
+      "n": 55,
+      "exact": 0.927,
+      "exactCI": [
+       0.827,
+       0.971
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.935,
+       1
+      ],
+      "under": 4,
+      "over": 0
+     },
+     "after": {
+      "n": 55,
+      "exact": 0.927,
+      "exactCI": [
+       0.827,
+       0.971
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.935,
+       1
+      ],
+      "under": 4,
+      "over": 0
+     }
+    },
+    "ground door-only": {
+     "before": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground dwelling": {
+     "before": {
+      "n": 35,
+      "exact": 0.8,
+      "exactCI": [
+       0.641,
+       0.9
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.901,
+       1
+      ],
+      "under": 4,
+      "over": 3
+     },
+     "after": {
+      "n": 35,
+      "exact": 0.8,
+      "exactCI": [
+       0.641,
+       0.9
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.901,
+       1
+      ],
+      "under": 4,
+      "over": 3
+     }
+    },
+    "ground warehouse": {
+     "before": {
+      "n": 1,
+      "exact": 1,
+      "exactCI": [
+       0.207,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.207,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 1,
+      "exact": 1,
+      "exactCI": [
+       0.207,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.207,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground not-visible": {
+     "before": {
+      "n": 6,
+      "exact": 0.5,
+      "exactCI": [
+       0.188,
+       0.812
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 0,
+      "over": 3
+     },
+     "after": {
+      "n": 6,
+      "exact": 0.5,
+      "exactCI": [
+       0.188,
+       0.812
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 0,
+      "over": 3
+     }
+    }
+   }
+  },
+  "answers-v42-crop": {
+   "pairs": 94,
+   "rowIssues": [],
+   "groups": {
+    "all": {
+     "before": {
+      "n": 94,
+      "exact": 0.83,
+      "exactCI": [
+       0.741,
+       0.892
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.961,
+       1
+      ],
+      "under": 10,
+      "over": 6
+     },
+     "after": {
+      "n": 94,
+      "exact": 0.83,
+      "exactCI": [
+       0.741,
+       0.892
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.961,
+       1
+      ],
+      "under": 10,
+      "over": 6
+     }
+    },
+    "benchmark": {
+     "before": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     },
+     "after": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     }
+    },
+    "ground shop": {
+     "before": {
+      "n": 50,
+      "exact": 0.88,
+      "exactCI": [
+       0.762,
+       0.944
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.929,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     },
+     "after": {
+      "n": 50,
+      "exact": 0.88,
+      "exactCI": [
+       0.762,
+       0.944
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.929,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     }
+    },
+    "ground door-only": {
+     "before": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground dwelling": {
+     "before": {
+      "n": 34,
+      "exact": 0.824,
+      "exactCI": [
+       0.665,
+       0.917
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.898,
+       1
+      ],
+      "under": 5,
+      "over": 1
+     },
+     "after": {
+      "n": 34,
+      "exact": 0.824,
+      "exactCI": [
+       0.665,
+       0.917
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.898,
+       1
+      ],
+      "under": 5,
+      "over": 1
+     }
+    },
+    "ground warehouse": {
+     "before": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground not-visible": {
+     "before": {
+      "n": 6,
+      "exact": 0.333,
+      "exactCI": [
+       0.097,
+       0.7
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 1,
+      "over": 3
+     },
+     "after": {
+      "n": 6,
+      "exact": 0.333,
+      "exactCI": [
+       0.097,
+       0.7
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 1,
+      "over": 3
+     }
+    }
+   }
+  },
+  "answers-v4-cut": {
+   "pairs": 90,
+   "rowIssues": [],
+   "groups": {
+    "all": {
+     "before": {
+      "n": 90,
+      "exact": 0.789,
+      "exactCI": [
+       0.694,
+       0.86
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.959,
+       1
+      ],
+      "under": 12,
+      "over": 7
+     },
+     "after": {
+      "n": 90,
+      "exact": 0.789,
+      "exactCI": [
+       0.694,
+       0.86
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.959,
+       1
+      ],
+      "under": 12,
+      "over": 7
+     }
+    },
+    "benchmark": {
+     "before": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     },
+     "after": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     }
+    },
+    "ground shop": {
+     "before": {
+      "n": 46,
+      "exact": 0.739,
+      "exactCI": [
+       0.597,
+       0.844
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.923,
+       1
+      ],
+      "under": 8,
+      "over": 4
+     },
+     "after": {
+      "n": 46,
+      "exact": 0.739,
+      "exactCI": [
+       0.597,
+       0.844
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.923,
+       1
+      ],
+      "under": 8,
+      "over": 4
+     }
+    },
+    "ground door-only": {
+     "before": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground dwelling": {
+     "before": {
+      "n": 39,
+      "exact": 0.846,
+      "exactCI": [
+       0.703,
+       0.928
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.91,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     },
+     "after": {
+      "n": 39,
+      "exact": 0.846,
+      "exactCI": [
+       0.703,
+       0.928
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.91,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     }
+    },
+    "ground warehouse": {
+     "before": {
+      "n": 1,
+      "exact": 0,
+      "exactCI": [
+       0,
+       0.793
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.207,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     },
+     "after": {
+      "n": 1,
+      "exact": 0,
+      "exactCI": [
+       0,
+       0.793
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.207,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     }
+    },
+    "ground not-visible": {
+     "before": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012172582",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172582/years/2025.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "cornice",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two round oculi flanking the single top-storey window"
+  },
+  {
+   "component": "balcony",
+   "what": "French balcony railing across the top-storey window"
+  },
+  {
+   "component": "door",
+   "what": "wide black double coach door with round grilled vents, flanked by two side street doors"
+  }
+ ]
+}

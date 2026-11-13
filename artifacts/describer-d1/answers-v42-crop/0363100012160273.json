@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012160273",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "relieving"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "windowSurround",
+  "finish",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a full-width balcony with an iron railing on a deep slab over the ground storey"
+  },
+  {
+   "component": "balcony",
+   "what": "a projecting centre balcony on a slab with a railing on the second storey and a small iron balcony on the third"
+  },
+  {
+   "component": "dormer",
+   "what": "a wide three-light dormer with white frames in the centre of the mansard"
+  },
+  {
+   "component": "window",
+   "what": "white keystone and springing blocks over every upper window, round brick relieving arches with white blocks on the top storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

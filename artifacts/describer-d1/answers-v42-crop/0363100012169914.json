@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012169914",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone quoins in alternating blocks up the left corner of the front"
+  },
+  {
+   "component": "relief",
+   "what": "a frieze with three recessed light panels between two cornice mouldings"
+  },
+  {
+   "component": "window",
+   "what": "flat heads with a single white keystone block above each upper window, and iron anchors between the windows"
+  },
+  {
+   "component": "door",
+   "what": "round-arched door with a fanlight in a white rendered ground storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

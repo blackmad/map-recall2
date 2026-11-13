@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012177939",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177939/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "White pilaster blocks stand between the top-storey windows under a deep modillion cornice."
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

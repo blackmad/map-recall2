@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182580",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182580/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "finish",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with leaded fan-pattern transom lights over both doors and a lettered fascia"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with windows stands above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "dark green painted window bars in white frames"
+  }
+ ]
+}

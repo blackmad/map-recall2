@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012173342",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173342.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "basement",
+  "windows",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide double street door under a two-pane transom light"
+  },
+  {
+   "component": "dormer",
+   "what": "a small point-roofed dormer with closed shutters behind the cornice"
+  }
+ ],
+ "notes": "A pickup truck covers the lower ground storey; tree branches cross the top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

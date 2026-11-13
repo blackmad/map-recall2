@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012168606",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168606/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2025,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick flat arches of radiating headers with a white keystone over each window and wall anchors between"
+  },
+  {
+   "component": "gable ornament",
+   "what": "bell gable edged with a white moulded coping, a small attic window and a hoist beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "white pilastered ground storey with a central window between two doors"
+  }
+ ]
+}

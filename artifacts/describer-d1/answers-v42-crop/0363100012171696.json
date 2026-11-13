@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171696/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.roof",
+  "finish",
+  "ground",
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window per upper storey made of four lights under small-paned top lights, filling most of the front"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small hoist-beam hood or hatch near the gable apex"
+  },
+  {
+   "component": "door",
+   "what": "ground storey has a black street door at left and a wide white panelled infill (former loading doors) with small windows, under a row of gridded top lights"
+  }
+ ],
+ "notes": "Plain point-gabled warehouse-type front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

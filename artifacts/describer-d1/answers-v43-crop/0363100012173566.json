@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012173566",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173566/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "windows",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick soldier-course lintels over each window"
+  },
+  {
+   "component": "dormer",
+   "what": "white boarded dormers with low pointed tops and louvred vents in place of windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "white-framed shopfront with a large display window and a black door under a louvred vent panel at the left"
+  }
+ ],
+ "notes": "A taller blank brick block with small stair windows stands at the left; it is treated as the neighbour, the middle front being the three-bay part with the shopfront. The image is overexposed.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

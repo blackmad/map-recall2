@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012171644",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171644/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "windows",
+  "columns",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "timber shopfront with a row of small transom lights above the shop window and door, painted cream"
+  }
+ ],
+ "notes": "Top of the neck is cut off at the image edge; window joinery is cream rather than white.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

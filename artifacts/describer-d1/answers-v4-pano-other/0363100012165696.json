@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012165696",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002954_pano_0002_000050.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey is clad in white panels with three tall windows, unlike the brick below"
+  }
+ ],
+ "notes": "Low resolution; cyclists cross the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

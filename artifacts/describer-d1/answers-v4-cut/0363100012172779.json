@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012172779",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172779.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two white-framed oval oeil-de-boeuf windows flank the single window of the top storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the neck carries a round medallion window and ends in a curved segmental pediment with a small crest; claw pieces at the shoulders"
+  },
+  {
+   "component": "door",
+   "what": "the door transom has a white diamond-lattice glazing"
+  }
+ ],
+ "notes": "Unclear whether the storey with the oval windows is a full storey or the gable's attic; counted it as full since it spans the full width below the shoulders.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

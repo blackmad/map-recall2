@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012175037",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175037/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 7,
+ "columns": [
+  7,
+  7,
+  7
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 3,
+ "groundBays": 7,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "double stoop with iron railings to a central door"
+  },
+  {
+   "component": "dormer",
+   "what": "dormers with pediments at both ends of the tiled roof"
+  }
+ ],
+ "notes": "Lens flare on the upper right."
+}

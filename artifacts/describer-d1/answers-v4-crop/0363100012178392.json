@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012178392",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178392/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "ground",
+  "bays",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved stone claw pieces at the foot of a neck whose top is cut off"
+  },
+  {
+   "component": "shopfront",
+   "what": "the lower two storeys are a pale rendered base with pilasters"
+  }
+ ],
+ "notes": "Narrow crop with the neighbours pressing in; the pale lower part was counted as two storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

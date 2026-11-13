@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012176280",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176280/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "whiteFrames",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white rendered shopfront with a continuous band of transom lights over a door and one wide window"
+  }
+ ],
+ "notes": "Top cut off above the second upper storey; dusk."
+}

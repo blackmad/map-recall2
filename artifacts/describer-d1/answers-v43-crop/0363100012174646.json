@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012174646",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "projecting brick pier strips between the window axes rising to corbel blocks under the roof slab"
+  },
+  {
+   "component": "door",
+   "what": "ground storey framed in a pale concrete portal band with a central double door and two side doors"
+  }
+ ],
+ "notes": "Modern infill front of near-black brick under a thin projecting flat roof slab.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

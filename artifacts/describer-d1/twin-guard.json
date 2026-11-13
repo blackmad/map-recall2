@@ -1,0 +1,1139 @@
+{
+ "v": 2,
+ "sides": 88,
+ "bothRead": 88,
+ "all": {
+  "plain": {
+   "tp": 30,
+   "fp": 6,
+   "fn": 3,
+   "tn": 49,
+   "precision": 0.833,
+   "precisionCI": [
+    0.681,
+    0.921
+   ],
+   "recall": 0.909,
+   "recallCI": [
+    0.764,
+    0.969
+   ]
+  },
+  "pr1": {
+   "tp": 17,
+   "fp": 1,
+   "fn": 16,
+   "tn": 54,
+   "precision": 0.944,
+   "precisionCI": [
+    0.742,
+    0.99
+   ],
+   "recall": 0.515,
+   "recallCI": [
+    0.352,
+    0.675
+   ]
+  },
+  "mutual": {
+   "tp": 25,
+   "fp": 1,
+   "fn": 8,
+   "tn": 54,
+   "precision": 0.962,
+   "precisionCI": [
+    0.811,
+    0.993
+   ],
+   "recall": 0.758,
+   "recallCI": [
+    0.59,
+    0.872
+   ]
+  },
+  "mutual-sameAs": {
+   "tp": 29,
+   "fp": 5,
+   "fn": 4,
+   "tn": 50,
+   "precision": 0.853,
+   "precisionCI": [
+    0.699,
+    0.936
+   ],
+   "recall": 0.879,
+   "recallCI": [
+    0.727,
+    0.952
+   ]
+  },
+  "width+year": {
+   "tp": 25,
+   "fp": 1,
+   "fn": 8,
+   "tn": 54,
+   "precision": 0.962,
+   "precisionCI": [
+    0.811,
+    0.993
+   ],
+   "recall": 0.758,
+   "recallCI": [
+    0.59,
+    0.872
+   ]
+  }
+ },
+ "bothReadOnly": {
+  "plain": {
+   "tp": 30,
+   "fp": 6,
+   "fn": 3,
+   "tn": 49,
+   "precision": 0.833,
+   "precisionCI": [
+    0.681,
+    0.921
+   ],
+   "recall": 0.909,
+   "recallCI": [
+    0.764,
+    0.969
+   ]
+  },
+  "pr1": {
+   "tp": 17,
+   "fp": 1,
+   "fn": 16,
+   "tn": 54,
+   "precision": 0.944,
+   "precisionCI": [
+    0.742,
+    0.99
+   ],
+   "recall": 0.515,
+   "recallCI": [
+    0.352,
+    0.675
+   ]
+  },
+  "mutual": {
+   "tp": 25,
+   "fp": 1,
+   "fn": 8,
+   "tn": 54,
+   "precision": 0.962,
+   "precisionCI": [
+    0.811,
+    0.993
+   ],
+   "recall": 0.758,
+   "recallCI": [
+    0.59,
+    0.872
+   ]
+  },
+  "mutual-sameAs": {
+   "tp": 29,
+   "fp": 5,
+   "fn": 4,
+   "tn": 50,
+   "precision": 0.853,
+   "precisionCI": [
+    0.699,
+    0.936
+   ],
+   "recall": 0.879,
+   "recallCI": [
+    0.727,
+    0.952
+   ]
+  },
+  "width+year": {
+   "tp": 25,
+   "fp": 1,
+   "fn": 8,
+   "tn": 54,
+   "precision": 0.962,
+   "precisionCI": [
+    0.811,
+    0.993
+   ],
+   "recall": 0.758,
+   "recallCI": [
+    0.59,
+    0.872
+   ]
+  }
+ },
+ "rows": [
+  {
+   "pandId": "0363100012168657",
+   "side": "left",
+   "neighbour": "0363100012168761",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012168657",
+   "side": "right",
+   "neighbour": "0363100012168694",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012168761",
+   "side": "left",
+   "neighbour": "0363100012168760",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012168761",
+   "side": "right",
+   "neighbour": "0363100012168657",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012138669",
+   "side": "left",
+   "neighbour": "0363100012082977",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012138669",
+   "side": "right",
+   "neighbour": "0363100012092062",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012092062",
+   "side": "left",
+   "neighbour": "0363100012138669",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012092062",
+   "side": "right",
+   "neighbour": "0363100012138602",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012112195",
+   "side": "left",
+   "neighbour": "0363100012144634",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012112195",
+   "side": "right",
+   "neighbour": "0363100012130972",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012130972",
+   "side": "left",
+   "neighbour": "0363100012112195",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012130972",
+   "side": "right",
+   "neighbour": "0363100012113386",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012165898",
+   "side": "right",
+   "neighbour": "0363100012154241",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012154241",
+   "side": "left",
+   "neighbour": "0363100012165898",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012154241",
+   "side": "right",
+   "neighbour": "0363100012162368",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162368",
+   "side": "left",
+   "neighbour": "0363100012154241",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162368",
+   "side": "right",
+   "neighbour": "0363100012164663",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012164663",
+   "side": "left",
+   "neighbour": "0363100012162368",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012164663",
+   "side": "right",
+   "neighbour": "0363100012156130",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162089",
+   "side": "left",
+   "neighbour": "0363100012156555",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162089",
+   "side": "right",
+   "neighbour": "0363100012162090",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162090",
+   "side": "left",
+   "neighbour": "0363100012162089",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162090",
+   "side": "right",
+   "neighbour": "0363100012166290",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012166694",
+   "side": "left",
+   "neighbour": "0363100012157131",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012166694",
+   "side": "right",
+   "neighbour": "0363100012157568",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012157568",
+   "side": "left",
+   "neighbour": "0363100012166694",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012157568",
+   "side": "right",
+   "neighbour": "0363100012162289",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012157618",
+   "side": "left",
+   "neighbour": "0363100012236681",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012157618",
+   "side": "right",
+   "neighbour": "0363100012156454",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012061604",
+   "side": "left",
+   "neighbour": "0363100012091079",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012061604",
+   "side": "right",
+   "neighbour": "0363100012094327",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012115017",
+   "side": "left",
+   "neighbour": "0363100012131498",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012115017",
+   "side": "right",
+   "neighbour": "0363100012128896",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012107408",
+   "side": "left",
+   "neighbour": "0363100012093459",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012107408",
+   "side": "right",
+   "neighbour": "0363100012107315",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012092098",
+   "side": "left",
+   "neighbour": "0363100012144630",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012092098",
+   "side": "right",
+   "neighbour": "0363100012130169",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012090327",
+   "side": "right",
+   "neighbour": "0363100012071876",
+   "truth": true,
+   "sameAs": false,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012114417",
+   "side": "left",
+   "neighbour": "0363100012070651",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012114417",
+   "side": "right",
+   "neighbour": "0363100012062057",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012140699",
+   "side": "right",
+   "neighbour": "0363100012080990",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012158478",
+   "side": "left",
+   "neighbour": "0363100012166843",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012158478",
+   "side": "right",
+   "neighbour": "0363100012166689",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012095974",
+   "side": "right",
+   "neighbour": "0363100012141675",
+   "truth": true,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012236198",
+   "side": "right",
+   "neighbour": "0363100012153271",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012233413",
+   "side": "left",
+   "neighbour": "0363100012237396",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012233413",
+   "side": "right",
+   "neighbour": "0363100012237004",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012157310",
+   "side": "right",
+   "neighbour": "0363100012161134",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012236379",
+   "side": "right",
+   "neighbour": "0363100012163174",
+   "truth": true,
+   "sameAs": false,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012160838",
+   "side": "left",
+   "neighbour": "0363100012237297",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012160838",
+   "side": "right",
+   "neighbour": "0363100012165141",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012157584",
+   "side": "right",
+   "neighbour": "0363100012235902",
+   "truth": true,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012157426",
+   "side": "left",
+   "neighbour": "0363100012161422",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012157426",
+   "side": "right",
+   "neighbour": "0363100012160273",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012159694",
+   "side": "left",
+   "neighbour": "0363100012160704",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012160273",
+   "side": "left",
+   "neighbour": "0363100012157426",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012160273",
+   "side": "right",
+   "neighbour": "0363100012160704",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012160704",
+   "side": "left",
+   "neighbour": "0363100012159694",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012160704",
+   "side": "right",
+   "neighbour": "0363100012160273",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012161422",
+   "side": "left",
+   "neighbour": "0363100012164843",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012161422",
+   "side": "right",
+   "neighbour": "0363100012157426",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012164843",
+   "side": "right",
+   "neighbour": "0363100012161422",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012165000",
+   "side": "left",
+   "neighbour": "0363100012174978",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012165690",
+   "side": "left",
+   "neighbour": "0363100012182371",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012165690",
+   "side": "right",
+   "neighbour": "0363100012182638",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012168603",
+   "side": "left",
+   "neighbour": "0363100012170086",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012168603",
+   "side": "right",
+   "neighbour": "0363100012168605",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012168604",
+   "side": "right",
+   "neighbour": "0363100012170087",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012080336",
+   "side": "right",
+   "neighbour": "0363100012092394",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012087959",
+   "side": "right",
+   "neighbour": "0363100012157650",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012133467",
+   "side": "right",
+   "neighbour": "0363100012153782",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012153622",
+   "side": "right",
+   "neighbour": "0363100012161613",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012157757",
+   "side": "right",
+   "neighbour": "0363100012164549",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012159426",
+   "side": "right",
+   "neighbour": "0363100012154127",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012161259",
+   "side": "right",
+   "neighbour": "0363100012161260",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012161281",
+   "side": "right",
+   "neighbour": "0363100012157756",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012164451",
+   "side": "right",
+   "neighbour": "0363100012165444",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012162836",
+   "side": "right",
+   "neighbour": "0363100012235892",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012233580",
+   "side": "right",
+   "neighbour": "0363100012236055",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": true,
+   "widthYear": true
+  },
+  {
+   "pandId": "0363100012236022",
+   "side": "right",
+   "neighbour": "0363100012159868",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012236189",
+   "side": "right",
+   "neighbour": "0363100012236188",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": true,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012159182",
+   "side": "right",
+   "neighbour": "0363100012236681",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012100052",
+   "side": "right",
+   "neighbour": "0363100012151275",
+   "truth": false,
+   "sameAs": true,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012082977",
+   "side": "right",
+   "neighbour": "0363100012138669",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012148979",
+   "side": "right",
+   "neighbour": "0363100012093776",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012144634",
+   "side": "right",
+   "neighbour": "0363100012112195",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012091079",
+   "side": "right",
+   "neighbour": "0363100012061604",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  },
+  {
+   "pandId": "0363100012131498",
+   "side": "right",
+   "neighbour": "0363100012115017",
+   "truth": false,
+   "sameAs": false,
+   "backSameAs": false,
+   "probed": true,
+   "similar": false,
+   "widthYear": false
+  }
+ ]
+}

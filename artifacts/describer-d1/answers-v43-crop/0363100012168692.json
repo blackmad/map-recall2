@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012168692",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "extent",
+  "finish",
+  "windows",
+  "sameAs",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white painted timber shopfront with a lettered fascia (antiques shop) and a lamp beside the door"
+  }
+ ],
+ "notes": "A tree hides most of the front and the whole top; the middle seems to hold two dark fronts (left with narrow tall windows and a house door, right with wider windows over a shopfront); described the right one.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

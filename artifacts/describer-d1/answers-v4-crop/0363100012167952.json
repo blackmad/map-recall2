@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012167952",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167952/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "six-pane"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts",
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a white stucco ground storey with several doors"
+  }
+ ],
+ "notes": "The crown is cut off at the top; bicycles hide the ground storey.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

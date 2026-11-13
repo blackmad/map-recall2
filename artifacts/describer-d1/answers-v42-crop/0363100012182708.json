@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182708/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "heads",
+  "cornice",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the white ground storey has pilasters with small carved medallions and brackets"
+  },
+  {
+   "component": "window",
+   "what": "first-storey upper sashes have arched tracery bars in the head"
+  }
+ ],
+ "notes": "Wide front; the right edge cuts a fourth bay that may belong to the neighbour, and the top above the white frieze is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

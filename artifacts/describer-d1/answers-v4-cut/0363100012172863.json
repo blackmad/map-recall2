@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012172863",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012172863.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white bell-shaped dormer gable with a single window stands above the cornice"
+  }
+ ],
+ "notes": "A portable toilet cabin and railing hide the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

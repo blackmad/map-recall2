@@ -1,0 +1,27 @@
+{
+ "n": 180,
+ "counts": {
+  "storeys stated": 157,
+  "storeys drawn = staged, today": 40,
+  "storeys drawn = staged, staged default": 142,
+  "bays stated": 164,
+  "columns = staged, today": 46,
+  "columns = staged, staged default": 143,
+  "upper storey pitch > 4.5 m, today": 0,
+  "upper storey pitch > 4.5 m, staged": 42,
+  "upper storey pitch > 4.5 m, staged, souterrain stated": 19,
+  "souterrain stated": 31,
+  "wall hex changed today->staged": 169,
+  "preset changed today->staged default": 0,
+  "preset (upper layer) changed staged default->design=1": 81,
+  "windowHead stated": 117,
+  "bands stated": 92,
+  "bands stated, preset changed under design=1 without windowHead": 0,
+  "shop flag changed today->staged default": 0,
+  "shop flag changed staged default->design=1": 25,
+  "pui stated": 150,
+  "finish (registerFinish) set, staged": 169,
+  "monumentGable changed today->staged": 5,
+  "grid identical design=1 vs default (storeys, columns)": 180
+ }
+}

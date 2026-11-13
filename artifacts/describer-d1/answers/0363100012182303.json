@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012182303",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182303/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber ground frame with an entresol row of three gridded windows over a red-awninged café"
+  },
+  {
+   "component": "balcony",
+   "what": "low French-balcony rails across the upper windows"
+  }
+ ],
+ "notes": "Sun flare and a lamp post cross the upper storeys; a truck and a furled parasol hide the ground storey."
+}

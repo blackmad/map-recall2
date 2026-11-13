@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012182545",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182545/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "wallFamily",
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "dark red window frames with a cream outer frame; segmental brick arches with light keystones"
+  },
+  {
+   "component": "relief",
+   "what": "small dark iron wall anchors between every window head"
+  }
+ ],
+ "notes": "The ornate cornice is cut off at the top; the left bay is cut by the image edge."
+}

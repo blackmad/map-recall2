@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012167951",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012167951/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "ground",
+  "wallFamily",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "dark garage front with a red 'Garage Bakker' fascia sign"
+  },
+  {
+   "component": "dormer",
+   "what": "white dormer in a tiled roof behind the cornice"
+  },
+  {
+   "component": "window",
+   "what": "storey 1 has leaded small-pane top lights"
+  }
+ ],
+ "notes": "A car hides the ground storey."
+}

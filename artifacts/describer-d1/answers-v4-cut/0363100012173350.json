@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012173350",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173350.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "souterrain",
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a tall neck with a rounded top and a hoist hook, holding two windows one above the other"
+  }
+ ],
+ "notes": "Low sun and tree shadows wash out the wall; a tree and lamp post stand in front and the outline straddles the neighbour's window.",
+ "storeys": 2,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

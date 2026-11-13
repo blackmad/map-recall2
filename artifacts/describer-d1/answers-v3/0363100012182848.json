@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182848/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a scrolled top with a small crest on the bell gable"
+  },
+  {
+   "component": "shopfront",
+   "what": "a row of orange-panelled windows over the shop fascia under a white beam"
+  }
+ ],
+ "notes": "An awning and terrace hide the ground storey."
+}

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012171851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171851/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 2,
+ "bays": 2,
+ "columns": [
+  3,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "orange",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "step gable with stone-capped steps and a two-window storey and an attic window inside the gable"
+  },
+  {
+   "component": "shopfront",
+   "what": "red awning sign across the full shopfront"
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012167695",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167695/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash",
+ "storeyWindows": {
+  "3": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeys",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top storey has one wide three-light window centred under the cornice"
+  }
+ ],
+ "notes": "Far view across the canal with a pole covering the left third; chose the plain three-bay house in the middle of the visible row, the arched-gable house to its left may be the intended front."
+}

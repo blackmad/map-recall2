@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012176276",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176276/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 7,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "windowSurround",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first and second storeys share one tall white-framed panel per axis"
+  },
+  {
+   "component": "roof",
+   "what": "a railing on the flat roof above the cornice"
+  }
+ ],
+ "notes": "Tall narrow building; a car hides the ground storey door."
+}

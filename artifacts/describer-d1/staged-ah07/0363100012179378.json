@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179378",
+ "design": {
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#37342f"
+  }
+ },
+ "provenance": {
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179378.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179378.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window appears on a lower upper storey at the right edge"
+  }
+ ]
+}

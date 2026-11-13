@@ -1,0 +1,5034 @@
+{
+ "v": 1,
+ "date": "2026-11-13",
+ "n": 317,
+ "bySet": {
+  "benchmark": 158,
+  "extra": 1,
+  "hand-set": 40,
+  "hand-spec": 118
+ },
+ "byImage": {
+  "pose-photo/null/null": 140,
+  "crop/fallback/pass": 119,
+  "crop/fallback/fail": 5,
+  "crop/good/pass": 30,
+  "crop/good/fail": 7,
+  "crop/none/fail": 16
+ },
+ "byGroup": {
+  "keizersgracht": 26,
+  "herengracht": 20,
+  "jordaan-corner": 12,
+  "egelantiers-dw2": 5,
+  "tuindwars-2": 12,
+  "nieuwmarkt": 18,
+  "haarlemmerdijk": 20,
+  "haarlemmerstraat": 15,
+  "kinkerstraat": 28,
+  "nassaukade-506": 2,
+  "weteringschans": 1,
+  "hand-set": 40,
+  "belt-gg-west": 8,
+  "belt-jordaan-20261110": 52,
+  "belt-nieuwmarkt-20261110": 23,
+  "pilot-20261110": 6,
+  "specs": 29
+ },
+ "rows": [
+  {
+   "pandId": "0363100012167695",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1630,
+   "address": "Keizersgracht 102",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167695/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167695.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167691",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1760,
+   "address": "Keizersgracht 106",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167691/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167691.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167688",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1740,
+   "address": "Keizersgracht 108A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167688/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167688.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167690",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1759,
+   "address": "Keizersgracht 110",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167690/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167690.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167689",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1745,
+   "address": "Keizersgracht 112",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167689/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167689.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176545",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1800,
+   "address": "Keizersgracht 114",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176545/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176545.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176488",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1992,
+   "address": "Keizersgracht 116A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176488/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176488.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176493",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1720,
+   "address": "Keizersgracht 122A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176493/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176493.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012250513",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1755,
+   "address": "Keizersgracht 130A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012250513/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012250513.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176494",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1780,
+   "address": "Keizersgracht 132A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176494/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176494.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165027",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1755,
+   "address": "Keizersgracht 134A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165027/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165027.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165026",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1760,
+   "address": "Keizersgracht 136A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165026/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165026.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176480",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1622,
+   "address": "Keizersgracht 142",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176480/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176480.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176487",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1760,
+   "address": "Keizersgracht 144A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176487/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176487.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176479",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1780,
+   "address": "Keizersgracht 146",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176479/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176479.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176477",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1790,
+   "address": "Keizersgracht 148",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176477/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176477.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176478",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1725,
+   "address": "Keizersgracht 150",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176478/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176478.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176484",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1620,
+   "address": "Keizersgracht 154A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176484/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176484.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176483",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1770,
+   "address": "Keizersgracht 156A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176483/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176483.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176482",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1721,
+   "address": "Keizersgracht 158",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176482/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176482.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165025",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1618,
+   "address": "Keizersgracht 160A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165025/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165025.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165024",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1618,
+   "address": "Keizersgracht 162A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165024/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165024.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169251",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1616,
+   "address": "Keizersgracht 166A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169251/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169251.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169073",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1899,
+   "address": "Keizersgracht 168A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169073/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169073.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169072",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1620,
+   "address": "Keizersgracht 170",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169072/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169072.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172425",
+   "set": "benchmark",
+   "group": "keizersgracht",
+   "year": 1904,
+   "address": "Keizersgracht 174",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172425/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172425.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179048",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1870,
+   "address": "Herengracht 101",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179048/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179048.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179051",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1870,
+   "address": "Herengracht 103",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179051/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179051.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167496",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1952,
+   "address": "Herengracht 107",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167496/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167496.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168543",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1775,
+   "address": "Herengracht 109",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012168543/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168543.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176272",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1635,
+   "address": "Herengracht 111",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176272/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176272.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176273",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1902,
+   "address": "Herengracht 113",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176273/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176273.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169011",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1890,
+   "address": "Herengracht 115A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012169011/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169011.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176276",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1941,
+   "address": "Herengracht 117A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176276/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176276.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176275",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1870,
+   "address": "Herengracht 119",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176275/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176275.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175038",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1870,
+   "address": "Herengracht 121A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175038/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175038.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175039",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1635,
+   "address": "Herengracht 125A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175039/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175039.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175037",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1642,
+   "address": "Herengracht 127A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175037/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175037.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167682",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1760,
+   "address": "Herengracht 131",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167682/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167682.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176003",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1924,
+   "address": "Herengracht 133",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176003/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176003.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176094",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1648,
+   "address": "Herengracht 135",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176094/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176094.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176014",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1665,
+   "address": "Herengracht 139A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176014/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176014.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176013",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1906,
+   "address": "Herengracht 141",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176013/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176013.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176005",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1644,
+   "address": "Herengracht 147A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176005/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176005.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176004",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1652,
+   "address": "Herengracht 149",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176004/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176004.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176017",
+   "set": "benchmark",
+   "group": "herengracht",
+   "year": 1880,
+   "address": "Herengracht 151",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176017/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176017.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168815",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1930,
+   "address": "Egelantiersstraat 75",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012168815/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168815.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172954",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1983,
+   "address": "Egelantiersstraat 114A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172954/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172954.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172953",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1906,
+   "address": "Egelantiersstraat 122A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172953/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172953.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172901",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1914,
+   "address": "Egelantiersstraat 128B",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172901/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172901.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172588",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1987,
+   "address": "Tweede Egelantiersdwarsstraat 1",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172588/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172588.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172587",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1987,
+   "address": "Tweede Egelantiersdwarsstraat 3",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172587/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172587.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172592",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1987,
+   "address": "Tweede Egelantiersdwarsstraat 5A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172592/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172592.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172590",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1910,
+   "address": "Tweede Egelantiersdwarsstraat 6",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172590/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172590.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172584",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1900,
+   "address": "Tweede Egelantiersdwarsstraat 9",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172584/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172584.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172897",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1870,
+   "address": "Tweede Egelantiersdwarsstraat 10",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172897/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172897.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172872",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1901,
+   "address": "Tweede Egelantiersdwarsstraat 12",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172872/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172872.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172874",
+   "set": "benchmark",
+   "group": "jordaan-corner",
+   "year": 1928,
+   "address": "Egelantiersstraat 126",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172874/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172874.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172875",
+   "set": "benchmark",
+   "group": "egelantiers-dw2",
+   "year": 1906,
+   "address": "Tweede Egelantiersdwarsstraat 13",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172875/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172875.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172609",
+   "set": "benchmark",
+   "group": "egelantiers-dw2",
+   "year": 1918,
+   "address": "Tweede Egelantiersdwarsstraat 22A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172609/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172609.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172621",
+   "set": "benchmark",
+   "group": "egelantiers-dw2",
+   "year": 1996,
+   "address": "Tweede Egelantiersdwarsstraat 24A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172621/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172621.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172622",
+   "set": "benchmark",
+   "group": "egelantiers-dw2",
+   "year": 1916,
+   "address": "Tweede Egelantiersdwarsstraat 26",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172622/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172622.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172617",
+   "set": "benchmark",
+   "group": "egelantiers-dw2",
+   "year": 1975,
+   "address": "Tweede Egelantiersdwarsstraat 30",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172617/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172617.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172894",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1905,
+   "address": "Tweede Tuindwarsstraat 1",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172894/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172894.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172876",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1875,
+   "address": "Tweede Tuindwarsstraat 2",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172876/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172876.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172865",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1906,
+   "address": "Tweede Tuindwarsstraat 3A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172865/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172865.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172676",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1876,
+   "address": "Tweede Tuindwarsstraat 4",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172676/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172676.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172671",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1817,
+   "address": "Tweede Tuindwarsstraat 5",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172671/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172671.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172674",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1905,
+   "address": "Tweede Tuindwarsstraat 6A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172674/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172674.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172673",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1888,
+   "address": "Tweede Tuindwarsstraat 8A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172673/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172673.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172672",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1882,
+   "address": "Tweede Tuindwarsstraat 10A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172672/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172672.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172668",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1986,
+   "address": "Tweede Tuindwarsstraat 11",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172668/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172668.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172667",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1898,
+   "address": "Tweede Tuindwarsstraat 13",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172667/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172667.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172878",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1889,
+   "address": "Tweede Tuindwarsstraat 14",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172878/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172878.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172879",
+   "set": "benchmark",
+   "group": "tuindwars-2",
+   "year": 1900,
+   "address": "Tweede Tuindwarsstraat 47",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172879/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172879.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182296",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1742,
+   "address": "Nieuwmarkt 3",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182296/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182296.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177902",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1805,
+   "address": "Nieuwmarkt 4A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177902.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012181820",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1702,
+   "address": "Nieuwmarkt 5",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012181820/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2018,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012181820.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012181817",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1670,
+   "address": "Nieuwmarkt 7A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012181817/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012181817.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182303",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1686,
+   "address": "Nieuwmarkt 9A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182303/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182303.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012181818",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1745,
+   "address": "Nieuwmarkt 11",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012181818/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012181818.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182302",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1762,
+   "address": "Nieuwmarkt 13A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182302/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182302.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012181808",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1905,
+   "address": "Nieuwmarkt 17",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012181808/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012181808.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182858",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1692,
+   "address": "Nieuwmarkt 18",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182858/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182858.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182857",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1605,
+   "address": "Nieuwmarkt 20",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182857/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182857.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182856",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1656,
+   "address": "Nieuwmarkt 24",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182856/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182856.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182855",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1834,
+   "address": "Nieuwmarkt 26",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182855/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182855.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182587",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1876,
+   "address": "Nieuwmarkt 27",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012182587/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182587.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182854",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1755,
+   "address": "Nieuwmarkt 28",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182854/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182854.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182853",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1776,
+   "address": "Nieuwmarkt 30",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182853/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182853.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182852",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1715,
+   "address": "Nieuwmarkt 32",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182852.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182851",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1715,
+   "address": "Nieuwmarkt 36",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182851/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182851.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182850",
+   "set": "benchmark",
+   "group": "nieuwmarkt",
+   "year": 1905,
+   "address": "Nieuwmarkt 38A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182850/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182850.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176175",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1729,
+   "address": "Haarlemmerdijk 2",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176175/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176175.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176174",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1841,
+   "address": "Haarlemmerdijk 4",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176174/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176174.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176172",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1850,
+   "address": "Haarlemmerdijk 6",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176172/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176172.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176101",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1824,
+   "address": "Haarlemmerdijk 8",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176101/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176101.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176102",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1828,
+   "address": "Haarlemmerdijk 10",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176102/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176102.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176103",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1831,
+   "address": "Haarlemmerdijk 12",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176103/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176103.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176104",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1905,
+   "address": "Haarlemmerdijk 14",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176104/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176104.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167816",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1840,
+   "address": "Haarlemmerdijk 16",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167816/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167816.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167817",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1905,
+   "address": "Haarlemmerdijk 18",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167817/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167817.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167818",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1750,
+   "address": "Haarlemmerdijk 20",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167818/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167818.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167819",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1805,
+   "address": "Haarlemmerdijk 22",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167819/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167819.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167820",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1837,
+   "address": "Haarlemmerdijk 26",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167820/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167820.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167821",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1865,
+   "address": "Haarlemmerdijk 28",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167821/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167821.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167801",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1984,
+   "address": "Haarlemmerdijk 32",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167801/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167801.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177657",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1997,
+   "address": "Haarlemmerdijk 40",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177657/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177657.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177674",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1905,
+   "address": "Haarlemmerdijk 44",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177674/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177674.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176278",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1785,
+   "address": "Haarlemmerdijk 48",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176278/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176278.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012176280",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1765,
+   "address": "Haarlemmerdijk 50A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176280/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012176280.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177590",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1907,
+   "address": "Haarlemmerdijk 52",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177590/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177590.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177584",
+   "set": "benchmark",
+   "group": "haarlemmerdijk",
+   "year": 1750,
+   "address": "Haarlemmerdijk 54",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012177584/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177584.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175206",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1788,
+   "address": "Haarlemmerstraat 60",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175206/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175206.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175204",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1745,
+   "address": "Haarlemmerstraat 62",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175204/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175204.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175139",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1750,
+   "address": "Haarlemmerstraat 66A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175139/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175139.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175140",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1828,
+   "address": "Haarlemmerstraat 68",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175140/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175140.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175141",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1847,
+   "address": "Haarlemmerstraat 72",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175141/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175141.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175142",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1991,
+   "address": "Haarlemmerstraat 74A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175142/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175142.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175143",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1897,
+   "address": "Haarlemmerstraat 78A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175143/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175143.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012175144",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1862,
+   "address": "Haarlemmerstraat 80",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175144/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012175144.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167538",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1774,
+   "address": "Haarlemmerstraat 82",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167538/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167538.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168428",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1779,
+   "address": "Haarlemmerstraat 86",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012168428/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168428.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179726",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1786,
+   "address": "Haarlemmerstraat 98A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179726/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179726.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179725",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1834,
+   "address": "Haarlemmerstraat 100",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179725/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179725.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179733",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1767,
+   "address": "Haarlemmerstraat 104",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179733/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179733.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179735",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 2001,
+   "address": "Haarlemmerstraat 106A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179735/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179735.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012179732",
+   "set": "benchmark",
+   "group": "haarlemmerstraat",
+   "year": 1786,
+   "address": "Haarlemmerstraat 110",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179732/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012179732.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012236491",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 150",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236491/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012236491.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012155310",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1895,
+   "address": "Kinkerstraat 152",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012155310/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012155310.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012157726",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 154",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012157726/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012157726.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160768",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 160",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160768/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160768.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012156969",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1905,
+   "address": "Kinkerstraat 162",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012156969/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012156969.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160298",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1905,
+   "address": "Kinkerstraat 166",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160298/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160298.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160226",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 186",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160226/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160226.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012159351",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 192",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012159351/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012159351.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012161134",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1905,
+   "address": "Kinkerstraat 200",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012161134/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012161134.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012157310",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1905,
+   "address": "Kinkerstraat 202",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012157310/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012157310.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012154341",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 204A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012154341/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012154341.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012159816",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 206A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012159816/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012159816.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160871",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1904,
+   "address": "Kinkerstraat 208",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160871/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160871.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012233589",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 212",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012233589/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012233589.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012236886",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 218A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236886/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012236886.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012237261",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 220A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012237261/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012237261.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012236982",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 222A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236982/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012236982.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012166034",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 224",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012166034/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012166034.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012161056",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 228",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012161056/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012161056.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012162560",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 230",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012162560/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012162560.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012163768",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 232",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012163768/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012163768.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165141",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1896,
+   "address": "Kinkerstraat 236",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012165141/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165141.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160838",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1896,
+   "address": "Kinkerstraat 238",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160838/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160838.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012237297",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1896,
+   "address": "Kinkerstraat 240",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012237297/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012237297.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012236953",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1896,
+   "address": "Kinkerstraat 242A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236953/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012236953.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012233496",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 244",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012233496/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012233496.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012156816",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 252",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012156816/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012156816.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012237017",
+   "set": "benchmark",
+   "group": "kinkerstraat",
+   "year": 1897,
+   "address": "Kinkerstraat 260A",
+   "image": {
+    "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012237017/photo.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012237017.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012164843",
+   "set": "benchmark",
+   "group": "nassaukade-506",
+   "year": 1898,
+   "address": "Nassaukade 150",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012164843.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012116526",
+   "set": "benchmark",
+   "group": "nassaukade-506",
+   "year": 1898,
+   "address": "Nassaukade 151",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012116526.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171218",
+   "set": "extra",
+   "group": "weteringschans",
+   "year": 1877,
+   "address": "Weteringschans (AH07)",
+   "image": {
+    "ref": "source-data://datasets/wall-colour-benchmark-v2-20261112/photos/0363100012171218.jpg",
+    "kind": "pose-photo",
+    "tier": null,
+    "year": null,
+    "gate": null,
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171218.jpg"
+   }
+  },
+  {
+   "pandId": "0363100100093912",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": null,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100100093912/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100100093912.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174180",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1642,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174180/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174180.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182848",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1693,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182848/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182848.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172583",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1724,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172583.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172576",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1750,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172576/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172576.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173353",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1785,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173353/years/2019.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2019,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173353.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174971",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1790,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174971/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174971.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168155",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1816,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168155/years/2020.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168155.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170043",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1824,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170043.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168077",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1826,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168077/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168077.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174184",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1831,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174184/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174184.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172582",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1845,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172582/years/2025.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2025,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172582.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173058",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1850,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173058/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173058.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168157",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1851,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168157/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168157.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168159",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1860,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168159.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174422",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1862,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174422.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169902",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1865,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012169902/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169902.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173352",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1869,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173352/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173352.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174428",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1869,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174428/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "washed-out"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174428.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172884",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1874,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172884.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169914",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1879,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169914.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169267",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1889,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012169267/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169267.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174564",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1889,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174564/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "washed-out"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174564.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172779",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1890,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172779/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172779.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168442",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1893,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168442.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174641",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1894,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174641/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174641.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174653",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1897,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174653/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174653.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012159694",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1900,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012159694/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012159694.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160273",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1900,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160273.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012160704",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1900,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012160704/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2022,
+    "gate": "fail",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012160704.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168606",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168606/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2025,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168606.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168698",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168698/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168698.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170031",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "washed-out"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170031.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174168",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174168/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174168.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174646",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174646.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182849",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1905,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182849/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182849.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173341",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1907,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173341/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173341.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172891",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1912,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2019,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172891.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174187",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1914,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174187.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174253",
+   "set": "hand-set",
+   "group": "hand-set",
+   "year": 1933,
+   "address": null,
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174253/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174253.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174776",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1744,
+   "address": "Prinsengracht 122",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174776.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174969",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1755,
+   "address": "Prinsengracht 126",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174969/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "blocked"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174969.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174415",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1760,
+   "address": "Prinsengracht 150",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174415/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174415.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174416",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1760,
+   "address": "Prinsengracht 148",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174416/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174416.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174417",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1790,
+   "address": "Prinsengracht 146",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2017,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174417.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174970",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1855,
+   "address": "Prinsengracht 128A",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174970/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174970.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173566",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1954,
+   "address": "Prinsengracht 130",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173566/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173566.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174698",
+   "set": "hand-spec",
+   "group": "belt-gg-west",
+   "year": 1954,
+   "address": "Prinsengracht 134",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174698/years/2018.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2018,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174698.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172863",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1625,
+   "address": "Bloemgracht 11",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172863/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172863.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168604",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1636,
+   "address": "Rozengracht 48",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168604/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2022,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168604.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170088",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1675,
+   "address": "Rozengracht 60",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170088/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170088.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173350",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1700,
+   "address": "Bloemgracht 32",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173350/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173350.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168703",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1725,
+   "address": "Bloemgracht 45",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168703/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168703.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174704",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1725,
+   "address": "Egelantiersgracht 15",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174704/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174704.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173424",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1735,
+   "address": "Egelantiersgracht 53",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173424/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173424.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168749",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1775,
+   "address": "Bloemgracht 19",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168749/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168749.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174495",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1775,
+   "address": "Bloemgracht 8",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174495/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174495.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174499",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1790,
+   "address": "Bloemgracht 4",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174499/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174499.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170093",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1825,
+   "address": "Rozengracht 62",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170093/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170093.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170148",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1825,
+   "address": "Rozengracht 66",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170148/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170148.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012165000",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1841,
+   "address": "Egelantiersgracht 43",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012165000/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012165000.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170087",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1844,
+   "address": "Rozengracht 46",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170087/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170087.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174780",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1846,
+   "address": "Egelantiersgracht 5",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174780/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174780.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172862",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1849,
+   "address": "Bloemgracht 20",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172862/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172862.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168705",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1855,
+   "address": "Bloemgracht 41",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168705/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168705.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174778",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1855,
+   "address": "Egelantiersgracht 9",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174778/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174778.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174977",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1871,
+   "address": "Egelantiersgracht 25",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174977/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174977.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168640",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1872,
+   "address": "Rozengracht 30",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168640/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2020,
+    "gate": "fail",
+    "reasons": [
+     "blocked"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168640.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172618",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1875,
+   "address": "Egelantiersgracht 51",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172618/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172618.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173342",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1875,
+   "address": "Bloemgracht 7",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173342/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173342.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174965",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1875,
+   "address": "Egelantiersgracht 19",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174965/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174965.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168694",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1876,
+   "address": "Egelantiersgracht 87",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168694/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168694.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172610",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1881,
+   "address": "Egelantiersgracht 47",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172610/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172610.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173349",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1881,
+   "address": "Bloemgracht 24",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173349/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173349.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168709",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1884,
+   "address": "Bloemgracht 16",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168709/years/2019.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168709.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172885",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1886,
+   "address": "Egelantiersgracht 61",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172885/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172885.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173346",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1888,
+   "address": "Bloemgracht 28",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173346/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173346.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174967",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1890,
+   "address": "Egelantiersgracht 17",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174967/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174967.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168796",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1893,
+   "address": "Bloemgracht 3",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168796/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168796.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172886",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1894,
+   "address": "Egelantiersgracht 79",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2018,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172886.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174978",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1894,
+   "address": "Egelantiersgracht 41",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174978/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174978.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172620",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1897,
+   "address": "Egelantiersgracht 49",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172620/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172620.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174775",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1897,
+   "address": "Egelantiersgracht 13",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174775/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174775.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174781",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1897,
+   "address": "Egelantiersgracht 21",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174781/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174781.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173044",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1902,
+   "address": "Bloemgracht 18",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173044/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173044.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173423",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1903,
+   "address": "Egelantiersgracht 55",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173423/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173423.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168692",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1904,
+   "address": "Egelantiersgracht 93-95",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168692/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168692.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168693",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1904,
+   "address": "Egelantiersgracht 91",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168693/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168693.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168758",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1904,
+   "address": "Bloemgracht 21",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168758/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168758.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168613",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1905,
+   "address": "Rozengracht 36",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168613/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168613.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168701",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1905,
+   "address": "Bloemgracht 39",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168701/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168701.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012173348",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1905,
+   "address": "Bloemgracht 26",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012173348/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012173348.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172887",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1910,
+   "address": "Egelantiersgracht 77",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172887/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172887.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170085",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1911,
+   "address": "Rozengracht 44",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170085/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170085.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168657",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1912,
+   "address": "Egelantiersgracht 85",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168657/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168657.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172888",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1916,
+   "address": "Egelantiersgracht 75",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172888/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172888.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172882",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1923,
+   "address": "Egelantiersgracht 67",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172882/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172882.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174779",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1927,
+   "address": "Egelantiersgracht 7",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174779/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174779.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182473",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1634,
+   "address": "Geldersekade 107",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182473/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182473.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182375",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1643,
+   "address": "Geldersekade 80",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182375/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182375.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182309",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1650,
+   "address": "Geldersekade 112",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182309/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182309.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182399",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1650,
+   "address": "Geldersekade 110",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182399/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182399.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182847",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1692,
+   "address": "Nieuwmarkt 16",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182847/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182847.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171919",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1695,
+   "address": "Geldersekade 57",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171919/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171919.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171854",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1716,
+   "address": "Nieuwmarkt 8-10",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171854/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": null,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171854.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171858",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1724,
+   "address": "Geldersekade 132 / Nieuwmarkt 2",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171858/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2016,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171858.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171851",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1725,
+   "address": "Nieuwmarkt 6",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171851/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171851.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182299",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1727,
+   "address": "Nieuwmarkt 1",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182299/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182299.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171324",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1734,
+   "address": "Geldersekade 94",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171324/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171324.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171696",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1741,
+   "address": "Geldersekade 85",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171696/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171696.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182401",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1751,
+   "address": "Geldersekade 109",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182401/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182401.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182379",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1753,
+   "address": "Geldersekade 78",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182379/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182379.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182304",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1758,
+   "address": "Geldersekade 104",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182304/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182304.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182400",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1760,
+   "address": "Geldersekade 108",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182400/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182400.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171921",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1768,
+   "address": "Geldersekade 59",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171921/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171921.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182248",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1779,
+   "address": "Geldersekade 65",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182248/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182248.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170932",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1795,
+   "address": "Geldersekade 120",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170932/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170932.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012170933",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1800,
+   "address": "Geldersekade 118",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012170933/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012170933.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171915",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1898,
+   "address": "Geldersekade 61",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171915/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2018,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171915.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182364",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1905,
+   "address": "Geldersekade 74",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182364/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2021,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182364.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182370",
+   "set": "hand-spec",
+   "group": "belt-nieuwmarkt-20261110",
+   "year": 1905,
+   "address": "Geldersekade 68",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182370/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2022,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182370.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168006",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1809,
+   "address": "Bloemgracht",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168006/years/2019.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168006.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174828",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1870,
+   "address": "Bloemgracht",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174828/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174828.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167952",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1874,
+   "address": "Bloemgracht 121",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012167952/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167952.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167951",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1876,
+   "address": "Bloemgracht 123",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012167951/front.jpg",
+    "kind": "crop",
+    "tier": "good",
+    "year": 2019,
+    "gate": "fail",
+    "reasons": [
+     "occluder"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167951.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012174833",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1879,
+   "address": "Bloemgracht",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012174833/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012174833.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012167885",
+   "set": "hand-spec",
+   "group": "pilot-20261110",
+   "year": 1939,
+   "address": "Bloemgracht",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012167885/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012167885.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182580",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1500,
+   "address": "Kloveniersburgwal 10",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182580/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182580.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178393",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1647,
+   "address": "Kloveniersburgwal 38",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178393/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "blocked"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178393.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182543",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1686,
+   "address": "Zeedijk 31",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182543/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182543.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182549",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1687,
+   "address": "Zeedijk 51",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182549/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182549.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177909",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1691,
+   "address": "Zeedijk 130",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177909/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177909.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171644",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1708,
+   "address": "Zeedijk 58",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171644/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171644.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177933",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1713,
+   "address": "Zeedijk 134",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2020,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177933.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178198",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1725,
+   "address": "Kloveniersburgwal 36",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178198.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182708",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1732,
+   "address": "Zeedijk 38",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182708/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182708.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182545",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1741,
+   "address": "Zeedijk 28",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182545/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182545.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177934",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1746,
+   "address": "Zeedijk 132",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177934/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177934.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171705",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1748,
+   "address": "Kloveniersburgwal 20",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171705/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171705.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178200",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1750,
+   "address": "Kloveniersburgwal 34",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178200/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2021,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178200.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182712",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1755,
+   "address": "Zeedijk 52",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182712/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2019,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182712.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171643",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1757,
+   "address": "Zeedijk 61",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171643/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2022,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171643.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177939",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1780,
+   "address": "Zeedijk 137",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177939/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2016,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177939.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171702",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1800,
+   "address": "Kloveniersburgwal 14",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171702/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171702.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012571534",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1803,
+   "address": "Zeedijk 21",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012571534/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012571534.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178392",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1815,
+   "address": "Kloveniersburgwal 40",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178392/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178392.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012177932",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1818,
+   "address": "Zeedijk 136",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012177932/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012177932.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178305",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1844,
+   "address": "Kloveniersburgwal 46",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178305/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178305.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172000",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1851,
+   "address": "Zeedijk 119",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172000/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2016,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172000.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012178199",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1851,
+   "address": "Kloveniersburgwal 32",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012178199/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012178199.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182581",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1900,
+   "address": "Kloveniersburgwal 8",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182581/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2018,
+    "gate": "fail",
+    "reasons": [
+     "occluder",
+     "blocked",
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182581.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171710",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1905,
+   "address": "Kloveniersburgwal 4",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171710/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171710.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012172012",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1905,
+   "address": "Zeedijk 104",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012172012/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012172012.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012182378",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1928,
+   "address": "Zeedijk 66",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012182378/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2024,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012182378.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171645",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1931,
+   "address": "Zeedijk 56",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171645/front.jpg",
+    "kind": "crop",
+    "tier": "fallback",
+    "year": 2021,
+    "gate": "pass",
+    "reasons": [],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171645.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012169252",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1865,
+   "address": "Egelantiersgracht 3",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012169252/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2024,
+    "gate": "fail",
+    "reasons": [
+     "narrow"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012169252.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012168646",
+   "set": "hand-spec",
+   "group": "belt-jordaan-20261110",
+   "year": 1885,
+   "address": "Rozengracht 34",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012168646/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2020,
+    "gate": "fail",
+    "reasons": [
+     "blocked"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012168646.jpg"
+   }
+  },
+  {
+   "pandId": "0363100012171704",
+   "set": "hand-spec",
+   "group": "specs",
+   "year": 1900,
+   "address": "Kloveniersburgwal 6",
+   "image": {
+    "ref": "source-data://pand-crops/0363100012171704/front.jpg",
+    "kind": "crop",
+    "tier": "none",
+    "year": 2019,
+    "gate": "fail",
+    "reasons": [
+     "blocked",
+     "narrow",
+     "blank"
+    ],
+    "local": "/Users/blackmad/Code/map-recall2-worktrees/describer-d1-20261113/artifacts/describer-d1/images/0363100012171704.jpg"
+   }
+  }
+ ]
+}

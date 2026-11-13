@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012175038",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012175038/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 1,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide band of four or five lights under top lights"
+  },
+  {
+   "component": "balcony",
+   "what": "a shallow ledge on brackets under the first-storey window band"
+  }
+ ],
+ "notes": "A tree trunk covers the left edge and a parked car the ground storey."
+}

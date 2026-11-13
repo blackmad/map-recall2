@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171970",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 4,
+    "bands": "speklagen",
+    "souterrain": true,
+    "rowHeads": [
+     "round",
+     "flat",
+     "round"
+    ],
+    "archedStoreys": [
+     2
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "stone",
+   "brick": "#3f3e3c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/archedStoreys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171970.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling"
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "an arcade of four small round-arched windows on colonnettes on the top storey"
+  },
+  {
+   "component": "balcony",
+   "what": "a stone balustrade across the front at the foot of the tall first-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "an ornate stone attic with small pediments, a gilded crest and finials in front of the slate roof"
+  },
+  {
+   "component": "relief",
+   "what": "carved stone roundels and panels between the paired round-arched ground-storey windows"
+  }
+ ]
+}

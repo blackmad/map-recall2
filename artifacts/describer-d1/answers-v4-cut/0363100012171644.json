@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012171644",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171644.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream-painted timber shopfront with two street doors and a row of small-paned transom lights under a fascia"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a projecting hoist beam at the top of the gable"
+  }
+ ],
+ "notes": "Steep upward fish-eye view; the gable shape and the top storey lines are distorted, so the storey count is uncertain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

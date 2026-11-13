@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177909",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177909/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windowSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental heads in banded brick with light stone blocks at the springing and centre"
+  },
+  {
+   "component": "relief",
+   "what": "piers between windows carry alternating light stone blocks like quoins, with small dark corbels at sill level"
+  },
+  {
+   "component": "shopfront",
+   "what": "ochre-painted timber shopfront with a deep fascia and a door at the left"
+  }
+ ],
+ "notes": "Top cut off; at least three upper storeys visible plus a fourth at the upper edge, so storeys not counted."
+}

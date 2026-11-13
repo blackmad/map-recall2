@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012174653",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174653/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground",
+  "bands",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "wide segmental-headed ground window with arched gridded top lights"
+  },
+  {
+   "component": "balcony",
+   "what": "low French railings across the upper windows"
+  },
+  {
+   "component": "roof",
+   "what": "glazed rooftop extension set back above the cornice"
+  }
+ ]
+}

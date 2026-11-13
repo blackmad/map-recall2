@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "sills",
+  "doorBay",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a column of round white ring ornaments with block dressings beside the windows on the left axis"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey has a shopfront under a projecting white entablature"
+  }
+ ],
+ "notes": "One continuous cornice spans two fronts split by a downpipe; described the left (shop) front, the right one has a dwelling ground storey with an arched door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

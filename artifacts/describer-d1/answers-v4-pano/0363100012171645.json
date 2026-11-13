@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012171645",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002031_pano_0000_000263.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist beam projecting from the top step of the gable."
+  },
+  {
+   "component": "shopfront",
+   "what": "a white timber restaurant front with a row of top lights over a wide window and a recessed entrance at the right."
+  }
+ ],
+ "notes": "Steep upward view; the step gable is foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

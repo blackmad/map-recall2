@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "finish",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved pedimented and arched window hoods with frieze reliefs over each storey"
+  }
+ ],
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012177932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a cream pilastered shopfront with ornamented capitals, mostly hidden by a red terrace umbrella"
+  }
+ ],
+ "notes": "A red umbrella hides the shop door and lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

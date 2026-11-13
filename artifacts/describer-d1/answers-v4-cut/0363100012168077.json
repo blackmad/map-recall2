@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012168077",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168077.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a tall white attic frieze over the top storey with one small window in it"
+  },
+  {
+   "component": "door",
+   "what": "a double door with a transom light beside a wide window with a top light on the bel-etage"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

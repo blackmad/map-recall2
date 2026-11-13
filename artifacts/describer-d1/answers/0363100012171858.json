@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 1,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windowSurround",
+  "sills",
+  "bands",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "window pediments alternate: a segmental hood over the first storey and a triangular one over the second"
+  },
+  {
+   "component": "relief",
+   "what": "rusticated pilasters and a narrow blank pier bay at the right edge"
+  },
+  {
+   "component": "shopfront",
+   "what": "a café front with small-paned top lights and lettered red panels"
+  }
+ ],
+ "notes": "Top of the front is cut off; it may have more storeys or a crown above."
+}

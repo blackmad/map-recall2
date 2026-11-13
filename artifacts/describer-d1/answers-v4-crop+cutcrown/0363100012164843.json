@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "4": "arched"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeyParts",
+  "crown",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "three stacked white balconies with balusters on large white consoles in the left bay"
+  },
+  {
+   "component": "window",
+   "what": "white keystones and white springing blocks set in the dark painted brick round every window"
+  },
+  {
+   "component": "window",
+   "what": "the top storey has round-arched heads with blind tympana over the frames, and an arched window above in the crown"
+  }
+ ],
+ "notes": "The crown shape is unclear: a raised wall with an arched window, its outline blending into the neighbour. [crown from describe cut]",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

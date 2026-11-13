@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012174422",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001541_pano_0002_000198.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "tall white timber ground storey with an upper row of small-paned entresol lights over panelled infill and lower windows"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist beam projects near the top of the stepped gable"
+  }
+ ],
+ "notes": "Steep angle; the gable foot is hard to place against the window rows.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

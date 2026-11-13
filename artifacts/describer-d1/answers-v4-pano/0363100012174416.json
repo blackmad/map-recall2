@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012174416",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-000227_pano_0000_002233.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters beside the single window of the top storey under the neck"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces and a crowning ornament on the neck"
+  }
+ ],
+ "notes": "The top full-width storey has one central window, which makes the line between storeys and the neck foot hard to place; a houseboat covers the ground storey foot.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

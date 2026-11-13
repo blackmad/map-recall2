@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012172590",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172590/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white rendered entresol band with a row of small windows over a café with a long dark awning"
+  }
+ ],
+ "notes": "Oblique, top cut off and a passing van hides the ground storey."
+}

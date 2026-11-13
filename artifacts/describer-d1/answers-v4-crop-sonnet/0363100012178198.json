@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012178198",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178198/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "whiteFrames",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "Carved scroll brackets and ornament decorate the top cornice."
+  }
+ ],
+ "notes": "The photo is dark and low contrast.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

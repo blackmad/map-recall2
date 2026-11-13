@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012168543",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012168543/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 5,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "wallFamily",
+  "cornice",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a triangular pediment with a carved relief over the middle three bays above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "double flight stoop with iron railings leading to a central door"
+  },
+  {
+   "component": "roof",
+   "what": "hipped tiled roof behind the cornice"
+  }
+ ],
+ "notes": "A tree trunk in the foreground hides the fourth bay."
+}

@@ -55,6 +55,15 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
 - **Field paths** (the unit of provenance and of the merge): one key of one front (`fronts/0/gable`), one key of the
   roof or palette (`roof/material`, `palette/brick`), `notes`, one key of `facts` (`facts/facadeYear`). Values below
   that level (a `windowHead` object, a per-storey `bays` list) are atomic: two sources never splice one window head.
+- **Spec-level values** (lane D1, 2026-11-13; spec.ts `SPEC_WALL_MATERIALS`, `SPEC_GABLES`, `SPEC_WINDOW_HEADS`): a spec stores
+  these readings as read though the intent has no value for them; every compiler draws them through `drawableDesign` and
+  reports each as `ignored: [{path, value, drawnAs}]` (`toRecipeReport`, `specViewIgnored`). Absent = byte-identical.
+  - `palette/wallMaterial: "stone"`: a stone-faced front; drawn `stucco` (a pale render wall, colour kept).
+  - `fronts/N/gable: "pitched-eaves"`: an eaves line with the roof slope in view; drawn `cornice` (with `cornice: none` unless stated).
+  - `fronts/N/windowHead.kind: "pointed"`: drawn `round`.
+  - `fronts/N/windowHead.kind: "mixed"` (two head shapes on one storey): drawn with no head (the intent default, flat).
+  - `fronts/N/windowSurround: "block-dressings"` (alternating stone blocks down the jambs and round the head): drawn `jack-blocks`.
+  - `fronts/N/cornice: "attic-frieze"` (a frieze with attic windows under the cornice): drawn `frieze`.
 - **Provenance** is keyed by field path; an ancestor key covers every field under it (`fronts/0`, or `` for the whole
   record, which is what an adapter for a single-source record writes). `resolveSpecs` writes one key per field.
 - **`schemaLimits`**: what the photo shows that the kit cannot say, one `{component, what}` per kit part (the shape of
@@ -3020,3 +3029,88 @@ as `notPanos`. The picks were made by eye from every capture earlier frames runs
 0363100012165023's automatic pick, from 2023 on the far quay, sits behind a tree trunk and a portable toilet. The pin is
 F1's clear 2019-01-10 capture at 5.1 m. house:frames applies the file under `--list` and `--pands`, adds the pin's
 `notPanos` to the entry's own, and skips its sight-line filter for a pinned capture. `--no-pinned-poses` ignores the file.
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.
+
+**Step 1c and the step-2 pilot (2026-11-13).** Image modes scored on the same 146 gate-pass pands against the adjudicated labels
+(`scripts/house-line/benchmark/benchmark-v1-adjudicated.json`): the square crop, a describe cut (`describe-cut.ts`: an
+unrectified perspective cut from the panorama cache, wall outlined, neighbours and crown in frame) and a per-panorama read
+(3-5 numbered fronts in one image). No mode lifts storeys or crown to 0.9 (`artifacts/describer-d1/scores-same147-compare.md`),
+so step 2 reads the gate-pass crop where one exists and the describe cut otherwise; the crown is read from the cut when the
+crop says not-visible. A zoomed window as a second image did not lift window family or pane layout over 0.8 (parked).
+What ships (`stage.ts STAGED`, integrator ruling): storeys (as rows below the crown, plus the souterrain flag), bays, bands,
+shop/ground, basement (crop only), finish and the cut's sampled wall hex; for crown, head and cornice only the answered classes
+with precision >= 0.8 (`per-class.md`: crown cornice 0.95 and step 0.88, head flat 0.80 and segmental 0.83, cornice none
+0.88). Everything else stays with the twin, then the prior. A hidden front copies storeys, crown and bands from a twin only
+when its `sameAs` names that side and PR1's `similar` holds (`twin-guard.ts`: precision 0.94, recall 0.52). Every storey miss
+is off by one, mostly the roof-storey, gable-attic and entresol conventions (`storey-misses.md`). Sonnet on the same crops is
+within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) and painted finish, so opus reads.
+Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
+194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
+`artifacts/describer-d1/staged-ah07/` (never published).
+
+**D1-fix (2026-11-13, after the route bake-off).** Row convention: `fronts/0/storeys` is the rows below the crown with the ground
+row included whatever it holds; `facts/groundKind` (`shop`, `door-only`, `dwelling`, `warehouse`, `describer.ts groundKindOf`)
+says what that row is and `fronts/0/souterrain` is staged as read, true or false. Nothing in the prompt, the writer or the
+staging step drops a ground row: every v4 read lists `columns` per counted row (crop 87/87, cut 79/79; one AH07 read, 175477,
+skips the shop's ground count in `columns` only), shop grounds score as well as house grounds (`rows.ts`), and the
+under-counts are the roof-storey, gable-attic and souterrain conventions of the author hand specs. Weteringschans 168043 is
+three rows (door row and two upper) between cellar windows and a dormer: the staged 3 was right; the cellar row is the
+basement, which a cut does not stage. `rowProblems` refuses a new read whose `columns` rows differ from its count; prompt
+v4.2 starts the count at the ground row explicitly (not read at scale yet). A low `storeyParts.full` now halves the storeys
+receipt. Twin guard: `stage.ts twinGuard`, default `mutual` = each house's `sameAs` names the other, street-run width within
+0.3 m, build year within 3 (no 3DBAG height: it split the mirrored pair 168043 / 168096 at 13.9 vs 16.6 m); `--twin-guard pr1`
+keeps the step-1c guard. On the twin-v2 truth with every neighbour read (`twins-v2.ts neighbours`, 53 blind opus twin reads):
+mutual precision 0.96 [0.81-0.99], recall 0.76 [0.59-0.87] against pr1 0.94 [0.74-0.99] / 0.52 [0.35-0.68]
+(`twin-guard.ts`, `artifacts/describer-d1/twin-guard.json`).
+
+**D1-fix 2: per-row heads, prompt v4.2 read, AH07 re-staged with the mutual guard (2026-11-13).** `stage.ts rowHeads` stages
+the answer's `heads` per row (upper rows; only when `heads` has one entry per counted row) instead of flattening a front with
+different rows to `mixed` and dropping it: rows all flat or all segmental keep `windowHead {kind}` as before; segmental rows
+among others become `windowHead {kind: segmental, storeys}`; round rows become `archedStoreys` (171218: flat, flat, round ->
+`archedStoreys [2]`). `archedStoreys` is `ROUTE_C_ONLY`: the recipe route draws it (fit.ts, a semicircle), the generic view
+and the F1 record never read it (tested), until round has a precision figure. The intent now accepts `windowHead` beside
+`archedStoreys` when `windowHead.storeys` names none of the arched storeys (before: never together). A low `heads` halves the
+head receipts. Per-row scores (`heads.ts`, 203 truth pands, `heads-per-row.md`): flat rows precision 0.93-0.96, segmental rows
+0.61-0.85 by read set (below the whole-front 0.83), round 1 of 3 rows right on v4.2, on 2 truth pands with a round row in all:
+no figure. Prompt v4.2 on the 147 gate-pass crops (opus) against v4 on the same pands (`versions.ts`,
+`versions-v4-v42.md`): no shipped field drops beyond its interval (storeys 0.816 vs 0.819, shop 0.787 vs 0.805, bays 0.902 vs
+0.915; bands, finish, cornice none, crown cornice/step up). House-ground rows (0.74 on v4 crop, 0.78 on v4.2): of the 14 v4
+misses 4 are a souterrain the author spec counts as the ground storey, 3 a gable attic or attic in the crown, 7 other; on cut
+reads the souterrain confusion is 7 of 13. AH07 re-staged into `staged-ah07` with `--twin-guard mutual`.
+
+**D1-fix 3: rulings on D1-fix 2, head truth, v4.3, W1 wall colour (2026-11-13).** (1) Per-row segmental is held: a front
+whose rows differ stages `fronts/0/rowHeads` (the head of every row, ground first, with the head receipt) for no route
+(`HELD_FOR_ALL_ROUTES`; spec.ts drops it in `drawableDesign` and reports it as ignored); whole-front flat and segmental ship
+as before; round rows stay `archedStoreys`, route C only. (2) Head truth (`head-truth.ts`): 173 AH07 cuts built 1850-1914,
+shuffled into two pools; a fresh opus labeller, blind to the D1 reads, labelled rows on the cut until 40 fronts with a round
+or segmental upper row (`artifacts/describer-d1/head-truth/set.json`, labels in `labels/`, contact sheets from
+`head-truth.ts sheet`). Blind opus v4.2 reads of those 40 cuts (`answers-v42-cut-heads`) score per row: segmental 0.959
+(47/49) [0.863-0.989], recall 0.78; round 4/4 [0.51-1]; flat 0.636 (21/33) [0.466-0.778] (12 labelled-segmental rows read
+flat). The set is enriched for curved rows, so segmental precision is not a city figure. (3) Prompt v4.2 became the default
+(`DESCRIBER_PROMPTS` / `DESCRIBER_PROMPT` in describer.ts; write-answer.ts stamps `prompt`), then v4.3 (below). (4) Author
+specs that count a bel-etage row with no souterrain (`truth.ts authorConvention`, 78 of 310) are left out of the storey
+truth by default (`--author-convention keep` restores them): house-ground rows exact v4 crop 0.8 (28/35) [0.641-0.9], v4.2
+0.824 (28/34) [0.665-0.917] (`rows-convention.md`).
+Prompt v4.3 (`prompt-v4.3.md`) adds `balconies` (rows), `dormers` ({count, plain|gabled|none}; a part-front gable is
+gabled), `bayWindow` (rows) and `doorSurround`; they stage as `fronts/0/readBalconies|readDormers|readBayWindow|
+readDoorSurround` with a vision-judge receipt, held for every route (`SPEC_HELD_READS`). On the 147 crops v4.3 drops no
+shipped field beyond v4.2's interval (`versions-v42-v43.md`), so it is the tranche prompt. `extras.ts` scores the four
+against the author specs (`extras-v43.md`; 117 of 147 have one, 20-27 pairs per question): dormers yes 0.923 (12/13)
+[0.667-0.986], count exact 11/12; dormer kind 0.58 (fails); balconies yes 2/2, bay window yes 1/1 (no figure);
+door surround yes 0/2 (fails); the `no` classes are the absent default. All stay held; the dormer count is the one
+candidate for a route.
+Wall colour: the reader gives the finish, the pixels the colour. `describe-cut.ts w1` takes lane W1's `wallLab` on the
+game-lens photo of each cut's pinned capture (aimPose + frameFor, cached panoramas) into cuts.json `w1`; stage.ts stages
+`wallBrickFromSample(w1.hex)`: fitWallBrick with the pinned render at `PIN_RENDER_GAIN` 1.14 x cityWallTint, so the brick
+renders onto the photo. Below the city brick floor (`CITY_BRICK_LIGHTNESS` 0.3) no brick renders darker; the fit stages the
+floor brick in the sample's hue (`floor`), which is 153 of 194 AH07 samples: the render cannot reach those photos' L.
+

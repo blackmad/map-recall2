@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012173346",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173346/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "small-over-one",
+ "storeyWindows": {
+  "2": "t-window"
+ },
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyWindows",
+  "dormers",
+  "sills",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hoist-beam dormer behind the cornice, washed out against the sky"
+  },
+  {
+   "component": "relief",
+   "what": "small dark iron wall anchors at each floor line"
+  }
+ ],
+ "notes": "Small, low-resolution image; the roof top is overexposed.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

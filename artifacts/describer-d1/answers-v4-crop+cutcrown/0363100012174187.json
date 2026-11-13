@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012174187",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "two white timber bay windows spanning the second and third storeys in the outer bays, the top storey stepping back behind balconies on their roofs"
+  },
+  {
+   "component": "door",
+   "what": "an open central portal with a straight stair rising inside, between two wide glazed ground openings"
+  },
+  {
+   "component": "window",
+   "what": "the middle bay has only a small framed window on the first storey and blank wall above"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

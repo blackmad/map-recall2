@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012172576",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172576/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "columns",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved sandstone claw pieces at the gable foot on both sides"
+  },
+  {
+   "component": "door",
+   "what": "a white timber ground storey with a door at each side and a glazed double door in the middle, under a row of small-paned transom windows"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

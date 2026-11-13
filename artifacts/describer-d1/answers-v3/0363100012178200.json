@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012178200",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178200/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2021,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "windowSurround",
+  "bays",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a carved shell or cartouche ornament over the shop fascia"
+  }
+ ],
+ "notes": "Small, low-resolution crop; the left bay is cut by the edge and the top is cut off."
+}

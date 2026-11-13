@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012177909",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177909/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windowSurround",
+  "bands",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "brick piers banded with white stone blocks and white blocks at the arch springings and keys"
+  },
+  {
+   "component": "shopfront",
+   "what": "an ochre timber shopfront with a deep cornice and glazed upper band"
+  }
+ ],
+ "notes": "The top is cut off above the third upper row. [crown from describe cut]",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

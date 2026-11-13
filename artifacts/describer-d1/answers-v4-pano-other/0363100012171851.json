@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012171851",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001223.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "windows"
+ ],
+ "gaps": [],
+ "notes": "Seen at a steep angle; the ground storey is behind a red awning and site fencing.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

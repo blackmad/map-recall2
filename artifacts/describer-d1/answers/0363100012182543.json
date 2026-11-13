@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182543/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "storeyWindows": {
+  "1": "small-over-one"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "none",
+ "wallFamily": "grey",
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "low": [
+  "storeys",
+  "windows",
+  "wallFamily",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a stone date tablet reading ANNO with scrollwork between the first and second storeys"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a carved scroll piece at the top left suggests a neck or bell gable above the image"
+  },
+  {
+   "component": "window",
+   "what": "the second-storey windows sit in one continuous light frame with piers between"
+  }
+ ],
+ "notes": "Top cut off; the gable above the second storey is not visible. Ground storey is a framed shop with a large gridded window and two doors."
+}

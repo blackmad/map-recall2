@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012172618",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172618/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "basement",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "two street doors, one at each side of the ground storey, with white door cases"
+  }
+ ],
+ "notes": "A tree in front covers most of the front; the gable outline is faint."
+}

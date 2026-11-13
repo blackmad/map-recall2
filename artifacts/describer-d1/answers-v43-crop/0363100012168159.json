@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012168159",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "church front: stone pilaster buttresses ending in pinnacles, corbel-table arcading under the gable rakes and a blind arcade in the gable top"
+  },
+  {
+   "component": "window",
+   "what": "tall round-arched tracery windows with a rose (quatrefoil) head, leaded small panes"
+  },
+  {
+   "component": "door",
+   "what": "centre door in a stone portal with columns and a gable hood; side doors with round fanlights in white frames"
+  }
+ ],
+ "notes": "Chapel or church front, not a house; the tall centre window rises into the gable.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

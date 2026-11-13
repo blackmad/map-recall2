@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012156816",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012156816/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "several small dormers with hoist beams behind the cornice"
+  }
+ ],
+ "notes": "Image centre falls on the drainpipe between two matching four-bay fronts; described the left one with the toy shop."
+}

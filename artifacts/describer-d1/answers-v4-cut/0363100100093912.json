@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100100093912",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100100093912.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "columns": [
+  1
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "ground",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide door painted all over with black-and-white graffiti art under a lettered café sign board"
+  },
+  {
+   "component": "roof",
+   "what": "a plain brick parapet wall with plants growing on top; a one-storey building between taller neighbours"
+  }
+ ],
+ "notes": "The outlined front is a single low brick storey with one door and no upper storeys, so there are no upper window axes to count (bays has no 0).",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

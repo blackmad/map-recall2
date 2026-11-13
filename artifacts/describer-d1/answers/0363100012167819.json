@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012167819",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012167819/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-floor top lights are leaded stained glass"
+  },
+  {
+   "component": "shopfront",
+   "what": "cream-and-yellow shopfront with an arched mullioned window and a projecting moulded fascia"
+  }
+ ],
+ "notes": "Top of the front cut off above the second upper storey."
+}

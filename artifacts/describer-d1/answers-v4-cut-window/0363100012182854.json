@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012182854",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012182854.jpg + artifacts/describer-d1/windows/0363100012182854.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "stained-glass top lights over the casements of the first and second floors"
+  },
+  {
+   "component": "balcony",
+   "what": "low white guard bars across the bottom of the upper windows"
+  },
+  {
+   "component": "roof",
+   "what": "deep white cornice with a tall frieze, consoles and dentils"
+  }
+ ],
+ "notes": "A large parasol hides the ground storey; the wall is dark and could be painted brick.",
+ "storeys": 4,
+ "wallFamily": "not-visible",
+ "paneLayout": "top-light"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012176836",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012176836.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "heads",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window with a balustrade on the second storey at the right, carried on brackets"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony under the erker on the first storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a timber-framed point gable with white bargeboards, a finial and decorative struts"
+  },
+  {
+   "component": "window",
+   "what": "yellow brick arch bands outline the round- and segment-headed openings"
+  },
+  {
+   "component": "roof",
+   "what": "a separate roof with a dormer sits beside the gable at the left"
+  }
+ ],
+ "notes": "The ground storey and any basement are hidden behind a bus shelter.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

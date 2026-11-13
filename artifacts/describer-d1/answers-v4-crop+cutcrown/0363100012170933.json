@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "pandId": "0363100012170933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "plain",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "the windows sit in a shallow canted projecting bay"
+  }
+ ],
+ "notes": "Only two upper rows are visible; the top is cut off and a fence hides the ground storey. [crown from describe cut]",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}
