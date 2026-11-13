@@ -55,9 +55,7 @@ export async function useBundlesDir(page: Page): Promise<void> {
   });
   const dir = process.env.BUNDLES_DIR;
   if (!dir) return;
-  // On the context, not the page: page.route never sees a Web Worker's requests, so the chunk worker
-  // (three-buildings-worker.bundle.js) kept the committed build and meshed with main's code (lane WG step 3, 2026-11-13).
-  await page.context().route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+  await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = join(dir, new URL(route.request().url()).pathname.split('/').pop()!);
     return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'application/javascript' }) : route.continue();
   });
