@@ -5,7 +5,8 @@
 //
 //   PORT=4680 node scripts/own-ground/ground-start-probe.mjs <out.json> [--runs 3] [--every 500] [--max 60] [--qs 'a=1']
 //     [--chrome] [--headed] [--device desktop|iphone] [--throttle 4]
-// BUNDLES_DIR=<dir> serves *.bundle.js (and the ground worker) from a scratch build.
+// BUNDLES_DIR=<dir> serves *.bundle.js (and the ground worker) from a scratch build. The deploy:
+// ORIGIN=https://rideamsterdam.nl PAGE_PATH=/ride (lane LS).
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,7 +28,7 @@ const browser = await chromium.launch({
 const results = [];
 for (let run = 0; run < runs; run++) {
   const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: vw, height: vh }, deviceScaleFactor: Number(process.env.DPR || 2) });
-  if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+  if (process.env.BUNDLES_DIR) await context.route(/\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'application/javascript' }) : route.continue();
   });
@@ -57,7 +58,7 @@ for (let run = 0; run < runs; run++) {
     };
     setTimeout(tick, every);
   }, [every, maxS]);
-  await page.goto(`${origin}/canal-drive/${qs}`);
+  await page.goto(`${origin}${process.env.PAGE_PATH ?? '/canal-drive/'}${qs}`);
   // Until the ring is in (every wanted cell resident, nothing pending) for 2 s after state 4, or --max s.
   await page.waitForFunction(() => {
     const S = window.__groundStart, r = S.rows.at(-1);

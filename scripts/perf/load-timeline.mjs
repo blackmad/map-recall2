@@ -5,7 +5,7 @@
 // and records the second load.
 //
 //   node scripts/perf/load-timeline.mjs <outDir> [--origin https://rideamsterdam.nl] [--device desktop|iphone]
-//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir]
+//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir] [--no-route] [--cache]
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -34,10 +34,14 @@ const browser = await chromium.launch({
 });
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1512, height: 862 }, deviceScaleFactor: 2 };
 const context = await browser.newContext(ctxOpts);
-await context.route(/ingest\.(us\.)?sentry\.io|google-analytics|googletagmanager/, r => r.fulfill({ status: 200, body: '{}' }));
+// Playwright disables the HTTP cache for a context with any route (so every repeat of a file downloads again, which a
+// real browser would serve from its cache or coalesce). --no-route keeps the cache as a player has it: no Sentry stub
+// and no --bundles (the deployed build only).
+const noRoute = has('no-route');
+if (!noRoute) await context.route(/ingest\.(us\.)?sentry\.io|google-analytics|googletagmanager/, r => r.fulfill({ status: 200, body: '{}' }));
 // --bundles <dir>: serve any /js/<file>.js found in <dir> instead of the deployed one (a source change's before/after);
 // the files served from it are counted in the output (workers' bundles included) to show the route took.
-const bundles = opt('bundles', '');
+const bundles = noRoute ? '' : opt('bundles', '');
 const served = {};
 if (bundles) await context.route(/\/js\/([\w.-]+\.js)(\?.*)?$/, r => {
   const name = /\/js\/([\w.-]+\.js)/.exec(r.request().url())[1], file = path.join(bundles, name);
@@ -65,12 +69,20 @@ const layerOf = u => {
 
 async function run(page, label) {
   const net = [];
+  // --cache: with routes on, turn the page's HTTP cache back on (CDP Network.setCacheDisabled false) so repeats are
+  // served from the cache as a player's are; workers are separate targets and get the same on attach.
+  if (has('cache')) {
+    const on = async target => { try { const c = await context.newCDPSession(target); await c.send('Network.enable'); await c.send('Network.setCacheDisabled', { cacheDisabled: false }); } catch (_) { /* gone */ } };
+    await on(page); page.on('worker', w => { void on(w); });
+  }
   const t0 = Date.now();
   page.on('response', async res => {
     const u = res.url(); if (u.startsWith('data:')) return;
     let bytes = Number(res.headers()['content-length'] || 0);
     try { if (!bytes) bytes = (await res.body()).length; } catch (_) { /* aborted */ }
-    net.push({ t: Date.now() - t0, url: u.replace(origin, ''), status: res.status(), bytes, fromCache: res.fromServiceWorker() || (res.request().timing?.().responseStart === -1), layer: layerOf(u) });
+    // Bytes on the wire (CDP encodedDataLength: ~0 for a memory or disk cache hit), so duplicates count real downloads.
+    let wire = null; try { const z = await res.request().sizes(); wire = z.responseBodySize + z.responseHeadersSize; } catch (_) { /* aborted */ }
+    net.push({ t: Date.now() - t0, url: u.replace(origin, ''), status: res.status(), bytes, wire, fromCache: res.fromServiceWorker() || (res.request().timing?.().responseStart === -1), layer: layerOf(u) });
   });
   // Request times (when each fetch starts), for the load-order question: what waits on what.
   const reqs = [];
