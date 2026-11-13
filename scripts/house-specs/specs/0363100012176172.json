@@ -96,6 +96,10 @@
   {
    "component": "shopfront pilasters",
    "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 6: the recipe route draws the 3DBAG roof behind the cornice crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

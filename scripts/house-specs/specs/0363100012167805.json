@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167805",
+ "address": "Haarlemmerdijk 35A",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "frieze",
+    "gable": "cornice",
+    "crownCap": "pediment",
+    "crownCapSpan": "narrow",
+    "crownCapRise": "low",
+    "crownRise": 0.4,
+    "doorBay": 1,
+    "basement": "none",
+    "hoist": false,
+    "eavesHeight": 11.6
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "Haarlemmerdijk 6 (176172) and 18 (167817), 2022-12-15 strips and the strip-sheet review 2026-11-10: sky directly over the frieze and its crown, no roof face; 3DBAG p95 11.21 m over a 10.9 m cornice on 6 and 9.69 m under an 11.4 m cornice on 18, so the roof behind is near flat. The front-hipped red saddle of haarlemmer-shop-cornice drew a red face over the frieze that the review rejected"
+  },
+  "palette": {
+   "brick": "#443634",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice-frieze: crown frieze-crowned, mirrored, palette haarlemmer-red-brown + measured brick #443634"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-13-45-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-13-45-r1/strip.json#type:haarlemmer-shop-cornice-frieze",
+   "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice from 10.0 m (west review holds); the frieze cornice is 1.6 m, so the eaves line is 11.6 m",
+   "at": "2022-12-15"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 35A: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice 10.0-11.25 m with a small crowned piece to 11.8 m; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split"
+  }
+ ],
+ "route": "recipe"
+}

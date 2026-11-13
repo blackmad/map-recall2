@@ -2685,3 +2685,13 @@ no selection on what the game draws.
 - Band 1 buys variety (0.88) at +0.005 dE, not significant either way.
 - Pre-W1 is clearly worse, which confirms W1.
 - Pale photos stay wrong in every setting (dE about 0.22): nothing nearby says pale, and 6 pairs are too few to tune on.
+
+### Belt batch 2: Haarlemmerdijk shop-houses the reviewers held (#356)
+
+`scripts/house-specs/belt/haarlemmer-b2.ts` writes the specs. Base = `fromBlockFace` of auto-placed runs (`scripts/house-specs/belt/b2-runs/*-b2r<k>/intent.json`: copied out of `scripts/block-face/faces/`, because build-house-specs turns every face dir into spec records), made by
+`auto-place.ts --buurt=haarlemmerbuurt-west-b2 --district=haarlemmerbuurt --only=<faces> --no-compile --photo-decides` on a copy of the west review files whose
+`-review-holds.json` keeps only the hard holds (infill, scaffolds, strip seams, shadow; copies are not committed, `haarlemmerbuurt-west-b2-placement.json` is).
+Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were held after reading the `house:preview --recipe --photo` compare sheets (ornate,
+tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
+reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
+photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).

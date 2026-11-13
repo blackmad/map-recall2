@@ -1,0 +1,91 @@
+{
+ "note": "Pands held after the lane's read of the strips at full size.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012167820",
+   "address": "Haarlemmerdijk 26",
+   "reason": "front cut by the strip seam; crown unreadable"
+  },
+  {
+   "pandId": "0363100012176278",
+   "address": "Haarlemmerdijk 48",
+   "reason": "4-storey front with a modern shop and painted bands, not read at full size"
+  },
+  {
+   "pandId": "0363100012177674",
+   "address": "Haarlemmerdijk 44",
+   "reason": "scaffolded and wrapped on the 2022-12-15 strip"
+  },
+  {
+   "pandId": "0363100012176102",
+   "address": "Haarlemmerdijk 10",
+   "reason": "painted plaster front: edge NCC 0.056 even with the accept floor; the model rows sit 0.2 storey off the photo"
+  },
+  {
+   "pandId": "0363100012176101",
+   "address": "Haarlemmerdijk 8",
+   "reason": "four window rows (the top 10.1-11.6 m under the point gable) where the type draws three; edge NCC 0.052"
+  },
+  {
+   "pandId": "0363100012176569",
+   "address": "Haarlemmerdijk 120A",
+   "reason": "post-1990 infill (BAG 2000)"
+  },
+  {
+   "pandId": "0363100012176570",
+   "address": "Haarlemmerdijk 118A",
+   "reason": "Haarlemmerdijk 118: strip seam, not read"
+  },
+  {
+   "pandId": "0363100012176577",
+   "address": "Haarlemmerdijk 116B",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012176696",
+   "address": "Haarlemmerdijk 110A",
+   "reason": "post-1990 infill, 13.7 m wide"
+  },
+  {
+   "pandId": "0363100012176698",
+   "address": "Haarlemmerdijk 108A",
+   "reason": "Haarlemmerdijk 108: 2 m sliver beside the strip seam"
+  },
+  {
+   "pandId": "0363100012176655",
+   "address": "Haarlemmerdijk 104A",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012167793",
+   "address": "Haarlemmerdijk 90A",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012177675",
+   "address": "Haarlemmerdijk 70A",
+   "reason": "front in deep shadow on the 2022-12-15 strip: the wall reads #000000, edge NCC 0.038"
+  },
+  {
+   "pandId": "0363100012177670",
+   "address": "Haarlemmerdijk 66",
+   "reason": "two tall two-light windows per storey (photo 4 columns) under a bracketed cornice at 13.3 m; edge NCC 0.083 on the shadowed strip"
+  },
+  {
+   "pandId": "0363100012172848",
+   "address": "Haarlemmerdijk 174",
+   "reason": "Haarlemmerdijk 174: not read at full size"
+  },
+  {
+   "pandId": "0363100012173484",
+   "address": "Haarlemmerdijk 139A",
+   "reason": "Haarlemmerdijk 139A: built 1997"
+  },
+  {
+   "pandId": "0363100012167796",
+   "address": "Haarlemmerdijk 13",
+   "reason": "scaffolded and wrapped (2024-12-11)"
+  }
+ ]
+}

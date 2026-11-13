@@ -1,0 +1,163 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-2-58-r1",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-2-58-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-wide"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012177584",
+   "slug": "haarlemmerdijk-177584",
+   "address": "Haarlemmerdijk 54",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#211919",
+     "evidence": "strip 2022-12-15 span 383-606: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "name": "Hooffzaak",
+    "osm": {
+     "type": "node",
+     "id": 2721299387,
+     "name": "Hooffzaak"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 383-606"
+   }
+  },
+  {
+   "pandId": "0363100012177590",
+   "slug": "haarlemmerdijk-177590",
+   "address": "Haarlemmerdijk 52",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#30191e",
+      "fascia": true,
+      "name": "De Sleutelkoning",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, craft=key_cutter); fascia colour measured on the strip 2022-12-15 span 606-838"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#181215",
+     "evidence": "strip 2022-12-15 span 606-838: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "De Sleutelkoning",
+    "category": "craft=key_cutter",
+    "osm": {
+     "type": "node",
+     "id": 1222424119,
+     "name": "De Sleutelkoning"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-12-15 span 606-838"
+   }
+  },
+  {
+   "pandId": "0363100012176280",
+   "slug": "haarlemmerdijk-176280",
+   "address": "Haarlemmerdijk 50",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#55524f",
+      "fascia": true,
+      "name": "SLA",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 838-1064"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#5f5c57",
+     "evidence": "strip 2022-12-15 span 838-1064: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "SLA",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 9039983458,
+     "name": "SLA"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 838-1064"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

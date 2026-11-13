@@ -1,0 +1,106 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176280",
+ "address": "Haarlemmerdijk 50",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.3,
+     2.7,
+     2.6
+    ],
+    "windows": "casement-sidelights-toplight",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.66,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.92,
+     0.84
+    ],
+    "windowShare": 0.74,
+    "cornice": "simple",
+    "gable": "neck",
+    "crownCap": "pediment",
+    "crownCapSpan": "narrow",
+    "crownRise": 0.55,
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#55524f",
+     "fascia": true,
+     "name": "SLA",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "residentialDoor": {
+      "side": "left",
+      "colour": "#2a2a2a"
+     },
+     "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 838-1064"
+    }
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)"
+  },
+  "palette": {
+   "brick": "#5f5c57",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice-wide: crown crowned, mirrored, palette haarlemmer-red-brown + measured brick #5f5c57"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-cornice-wide",
+   "at": null
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.8,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: Haarlemmerdijk 50: east-end three axes under a neck gable (west review holds)",
+   "at": "2022-12-15"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 50: east-end gable house: shop ground to 5.5 m, rows 6.6-8.6 and 9.6-11.4 m, three axes under a neck gable from 12.4 m: taller than the shop-gable body; needs its own eaves/storey read"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 50: the recipe route draws the 3DBAG roof behind the neck crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
+  }
+ ],
+ "route": "recipe"
+}

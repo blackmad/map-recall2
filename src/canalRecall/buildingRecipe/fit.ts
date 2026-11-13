@@ -1410,7 +1410,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
   const recipe: CanalHouseRecipe = {
     schemaVersion: 1, id: intent.id, house, observations: [bagObservation, ...photoObservations],
     shellTopM: surveyed(survey.shellTopM), footprint: surveyed(polygons), palette: seen(paletteFor(intent)),
-    roof: surveyed(survey.roof), elevations,
+    roof: surveyed(survey.roof), elevations, ...(intent.roof.stepWeld ? {stepWeld: true} : {}),
     simplifications: ['Facade metres fitted from intent counts and 3DBAG heights by fixed proportion rules; not rectified from photos.', ...warnings],
   };
   return {recipe, anchorRD: anchor, facts, report: {fronts: reports, warnings, roofAllowanceM: intent.fronts.some(f => f.dormers) ? 1.9 : 0, ...(cleanup.report.actions.length ? {roofCleanup: cleanup.report} : {})}};

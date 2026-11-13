@@ -1,0 +1,170 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-2-58-r2",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-2-58-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-four",
+  "haarlemmer-shop-cornice-wide",
+  "haarlemmer-shop-cornice"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012167816",
+   "slug": "haarlemmerdijk-167816",
+   "address": "Haarlemmerdijk 16",
+   "type": {
+    "type": "haarlemmer-shop-cornice",
+    "ground": {
+     "shopfront": {
+      "colour": "#21171a",
+      "fascia": true,
+      "name": "La Brasa",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 3743-3899"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#503c32",
+     "evidence": "strip 2022-12-15 span 3743-3899: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "headLines": [
+      0.8,
+      0.76,
+      0.82
+     ]
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "La Brasa",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2721294910,
+     "name": "La Brasa"
+    },
+    "bag": [
+     "bijeenkomstfunctie,woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3743-3899"
+   }
+  },
+  {
+   "pandId": "0363100012176104",
+   "slug": "haarlemmerdijk-176104",
+   "address": "Haarlemmerdijk 14",
+   "type": {
+    "type": "haarlemmer-shop-cornice-four",
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#25201f",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-12-15 span 3899-4060"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#312929",
+     "evidence": "strip 2022-12-15 span 3899-4060: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-four scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3899-4060"
+   }
+  },
+  {
+   "pandId": "0363100012176103",
+   "slug": "haarlemmerdijk-176103",
+   "address": "Haarlemmerdijk 12",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#3b3733",
+      "fascia": true,
+      "name": "Star Hollywood Nails",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-12-15 span 4060-4232"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Star Hollywood Nails",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 2721294450,
+     "name": "Star Hollywood Nails"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 4060-4232"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012167816",
+    "stripRow": 329,
+    "evidence": "review pin: Haarlemmerdijk 16: cornice top 11.6 m"
+   }
+  ]
+ }
+}

@@ -29,8 +29,8 @@
     ],
     "windowShare": 0.74,
     "cornice": "none",
-    "gable": "neck",
-    "crownRise": 1.2,
+    "gable": "bell",
+    "crownRise": 0.9,
     "atticWindows": 1,
     "hoist": true,
     "doorBay": null,
@@ -44,7 +44,7 @@
      "stallriser": "low",
      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=books); fascia colour measured on the strip 2022-12-15 span 1463-1640"
     },
-    "eavesHeight": 9.2
+    "eavesHeight": 10
    }
   ],
   "roof": {
@@ -71,11 +71,23 @@
    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143-r1/strip.json",
    "at": "2022-12-15"
   },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; house:frames 2020-01-10 pose, photo skyline over the wall (belt-after/0363100012173480/pose.json): shoulders 10.0 m, crown 12.3 m; roofOffset flagged the game (skyline 8.75 m vs crown 10.57 m)",
+   "at": "2020-01-10"
+  },
   "fronts/0/eavesHeight": {
    "source": "author",
    "confidence": 0.85,
-   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 133A: front eaves/gable foot on the 1 m grid",
-   "at": "2022-12-15"
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; house:frames 2020-01-10 pose, photo skyline over the wall (belt-after/0363100012173480/pose.json): shoulders 10.0 m, crown 12.3 m; roofOffset flagged the game (skyline 8.75 m vs crown 10.57 m)",
+   "at": "2020-01-10"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; house:frames 2020-01-10 pose, photo skyline over the wall (belt-after/0363100012173480/pose.json): shoulders 10.0 m, crown 12.3 m; roofOffset flagged the game (skyline 8.75 m vs crown 10.57 m)",
+   "at": "2020-01-10"
   }
  },
  "schemaLimits": [
@@ -86,6 +98,10 @@
   {
    "component": "strip registration",
    "what": "the 2022-12-15 strip stands about 1.5 m right of the BAG split between 131 and 133A; a van covers the shop ground"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 133A: the recipe route draws the 3DBAG roof behind the bell crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

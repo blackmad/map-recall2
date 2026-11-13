@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172755",
+ "address": "Haarlemmerdijk 182",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "frieze",
+    "gable": "neck",
+    "crownCap": "pediment",
+    "crownCapSpan": "narrow",
+    "crownCapRise": "low",
+    "crownRise": 0.4,
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#3e362a",
+     "fascia": true,
+     "name": "Lova",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2024-12-11 span 321-493"
+    }
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "Haarlemmerdijk 6 (176172) and 18 (167817), 2022-12-15 strips and the strip-sheet review 2026-11-10: sky directly over the frieze and its crown, no roof face; 3DBAG p95 11.21 m over a 10.9 m cornice on 6 and 9.69 m under an 11.4 m cornice on 18, so the roof behind is near flat. The front-hipped red saddle of haarlemmer-shop-cornice drew a red face over the frieze that the review rejected"
+  },
+  "palette": {
+   "brick": "#5a5144",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice-frieze: crown frieze-crowned, palette haarlemmer-red-brown + measured brick #b6bfc6"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-126-188-r1/strip.json",
+   "at": "2024-12-11"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json strip.wallRaw (raw strip median; the white-balanced strip.wall overshoots on these: 182 reads #b6bfc6 against a #5a5144 raw and a #50473b photo)",
+   "at": "2024-12-11"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.8,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: Haarlemmerdijk 182: neck gable over three upper rows (west review holds)",
+   "at": "2024-12-11"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 182: Haarlemmerdijk 182: neck gable over three upper rows that fits the four-storey gable type, but a run of one beside held 184 and 180"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 182: the recipe route draws the 3DBAG roof behind the neck crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
+  }
+ ],
+ "route": "recipe"
+}

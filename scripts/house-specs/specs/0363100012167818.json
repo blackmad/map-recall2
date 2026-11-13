@@ -106,6 +106,10 @@
   {
    "component": "strip registration",
    "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 20: the recipe route draws the 3DBAG roof behind the neck crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

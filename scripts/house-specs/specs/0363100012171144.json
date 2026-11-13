@@ -90,6 +90,10 @@
   {
    "component": "gable ornament",
    "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerstraat 54: the recipe route draws the 3DBAG roof behind the neck crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

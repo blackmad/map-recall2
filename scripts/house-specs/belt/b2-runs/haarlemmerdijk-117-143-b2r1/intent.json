@@ -1,0 +1,432 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-117-143-r1",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-117-143-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-four",
+  "haarlemmer-shop-cornice-wide",
+  "haarlemmer-shop-gable-wide",
+  "haarlemmer-shop-gable",
+  "haarlemmerstraat-sash-gable-four",
+  "haarlemmerstraat-sash-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012165073",
+   "slug": "haarlemmerdijk-165073",
+   "address": "Haarlemmerdijk 123",
+   "type": {
+    "type": "haarlemmer-shop-cornice-four",
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#353436",
+      "fascia": true,
+      "name": "Typique",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=copyshop); fascia colour measured on the strip 2022-12-15 span 520-740"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4a4844",
+     "evidence": "strip 2022-12-15 span 520-740: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Typique",
+    "category": "shop=copyshop",
+    "osm": {
+     "type": "node",
+     "id": 11415110606,
+     "name": "Typique"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-four scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 520-740"
+   }
+  },
+  {
+   "pandId": "0363100012171347",
+   "slug": "haarlemmerdijk-171347",
+   "address": "Haarlemmerdijk 125",
+   "type": {
+    "type": "haarlemmer-shop-cornice-four",
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#353337",
+      "fascia": true,
+      "name": "Scarpetta - Pasta Takeaway & Delivery",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=pasta); fascia colour measured on the strip 2022-12-15 span 739-940"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#312d30",
+     "evidence": "strip 2022-12-15 span 739-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Scarpetta - Pasta Takeaway & Delivery",
+    "category": "shop=pasta",
+    "osm": {
+     "type": "node",
+     "id": 11415075555,
+     "name": "Scarpetta - Pasta Takeaway & Delivery"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-four scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 739-940"
+   }
+  },
+  {
+   "pandId": "0363100012171346",
+   "slug": "haarlemmerdijk-171346",
+   "address": "Haarlemmerdijk 127",
+   "type": {
+    "type": "haarlemmerstraat-sash-gable",
+    "ground": {
+     "shopfront": {
+      "colour": "#3f3229",
+      "fascia": true,
+      "name": "Sham Delights",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (woonfunctie, shop=pastry); fascia colour measured on the strip 2022-12-15 span 940-1114"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#453325",
+     "evidence": "strip 2022-12-15 span 940-1114: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Sham Delights",
+    "category": "shop=pastry",
+    "osm": {
+     "type": "node",
+     "id": 2721294501,
+     "name": "Sham Delights"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmerstraat-sash-gable scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 940-1114"
+   }
+  },
+  {
+   "pandId": "0363100012173469",
+   "slug": "haarlemmerdijk-173469",
+   "address": "Haarlemmerdijk 129",
+   "type": {
+    "type": "haarlemmer-shop-gable",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b5650",
+      "fascia": true,
+      "name": "Design & Wijn",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=wine); fascia colour measured on the strip 2022-12-15 span 1115-1249"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#3d3730",
+     "evidence": "strip 2022-12-15 span 1115-1249: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Design & Wijn",
+    "category": "shop=wine",
+    "osm": {
+     "type": "node",
+     "id": 11415060817,
+     "name": "Design & Wijn"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 1115-1249"
+   }
+  },
+  {
+   "pandId": "0363100012173479",
+   "slug": "haarlemmerdijk-173479",
+   "address": "Haarlemmerdijk 131",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#423d38",
+      "fascia": true,
+      "name": "Tutto Bene!",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1249-1463"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#58524a",
+     "evidence": "strip 2022-12-15 span 1249-1463: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c4743"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Tutto Bene!",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 1223057274,
+     "name": "Tutto Bene!"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 0.75 on eaves 0.5, stucco 1; strip 2022-12-15 span 1249-1463"
+   }
+  },
+  {
+   "pandId": "0363100012173480",
+   "slug": "haarlemmerdijk-173480",
+   "address": "Haarlemmerdijk 133A",
+   "type": {
+    "type": "haarlemmer-shop-gable-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2c29",
+      "fascia": true,
+      "name": "De Kookboekhandel",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=books); fascia colour measured on the strip 2022-12-15 span 1463-1640"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#574a45",
+     "evidence": "strip 2022-12-15 span 1463-1640: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4d3f3b"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "De Kookboekhandel",
+    "category": "shop=books",
+    "osm": {
+     "type": "node",
+     "id": 1223057271,
+     "name": "De Kookboekhandel"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable-wide scored 0.75 on eaves 0.5, stucco 1; strip 2022-12-15 span 1463-1640"
+   }
+  },
+  {
+   "pandId": "0363100012173482",
+   "slug": "haarlemmerdijk-173482",
+   "address": "Haarlemmerdijk 135A",
+   "type": {
+    "type": "haarlemmer-shop-cornice-four",
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#241f1e",
+      "fascia": true,
+      "name": "Toko Bayu",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, winkelfunctie,woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 1640-1887"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#373538",
+     "evidence": "strip 2022-12-15 span 1640-1887: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Toko Bayu",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11415062445,
+     "name": "Toko Bayu"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-four scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 1640-1887"
+   }
+  },
+  {
+   "pandId": "0363100012173481",
+   "slug": "haarlemmerdijk-173481",
+   "address": "Haarlemmerdijk 137",
+   "type": {
+    "type": "haarlemmerstraat-sash-gable-four",
+    "ground": {
+     "shopfront": {
+      "colour": "#272424",
+      "fascia": true,
+      "name": "gimme gimme vintage",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1887-2117"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#262423",
+     "evidence": "strip 2022-12-15 span 1887-2117: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "gimme gimme vintage",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11416864202,
+     "name": "gimme gimme vintage"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmerstraat-sash-gable-four scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 1887-2117"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012173479",
+    "stripRow": 412,
+    "frontRoof": {},
+    "evidence": "review pin: Haarlemmerdijk 131: front eaves/gable foot on the 1 m grid"
+   },
+   {
+    "pand": "0363100012173480",
+    "stripRow": 440,
+    "evidence": "review pin: Haarlemmerdijk 133A: front eaves/gable foot on the 1 m grid"
+   }
+  ]
+ }
+}
