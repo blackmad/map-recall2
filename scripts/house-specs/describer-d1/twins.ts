@@ -1,7 +1,8 @@
 // Describer D1 twin pass (prompt v2 `sameAs` / `mirrored`): rows where the hand specs show twins.
 //
 //   node --import tsx scripts/house-specs/describer-d1/twins.ts sample [--neg 1]     build the twin sample + row images
-//   node --import tsx scripts/house-specs/describer-d1/twins.ts score [--answers <dir>]
+//   node --import tsx scripts/house-specs/describer-d1/twins.ts score [--truth <twins.json>] [--answers <dir>]
+//     --truth defaults to artifacts/describer-d1/twins.json; the v2 truth (twins-v2.ts) marks unsure sides twin: null, never scored.
 //
 // Adjacency: two pands whose archived crop walls (pand-crops/<id>/front.json `wall`) share an end point within 1.5 m. Side: the
 // neighbour's wall midpoint against the viewer's right (`-n.y, n.x` for the outward wall normal n). Truth twin: both pands carry
@@ -43,7 +44,7 @@ export function mirroredOf(f1: any, f2: any): boolean | undefined {
   return f1.doorBay !== f2.doorBay && f1.doorBay === n - 1 - f2.doorBay;
 }
 
-export type TwinRow = { pandId: string; left: { id: string; twin: boolean } | null; right: { id: string; twin: boolean } | null; mirrored: boolean | null; image: string };
+export type TwinRow = { pandId: string; left: { id: string; twin: boolean | null } | null; right: { id: string; twin: boolean | null } | null; mirrored: boolean | null; image: string };
 
 function cropDir(id: string): string | null { for (const d of CROP_DIRS) { const p = path.join(d, 'pand-crops', id); if (fs.existsSync(path.join(p, 'front.json'))) return p; } return null; }
 
@@ -95,12 +96,12 @@ export function scoreTwins(rows: TwinRow[], answers: Map<string, Pick<TwinAnswer
     const a = answers.get(r.pandId);
     if (!a || !a.readable || a.sameAs === 'not-visible') continue;
     for (const s of ['left', 'right'] as const) {
-      const t = r[s]; if (!t) continue;
+      const t = r[s]; if (!t || typeof t.twin !== 'boolean') continue;
       sides++;
       const said = a.sameAs === s || a.sameAs === 'both';
       if (said && t.twin) tp++; else if (said) fp++; else if (t.twin) fn++;
     }
-    if (r.mirrored !== null && (r.left?.twin || r.right?.twin) && a.sameAs !== 'none' && typeof a.mirrored === 'boolean') { mn++; if (a.mirrored === r.mirrored) mk++; }
+    if (r.mirrored !== null && r.mirrored !== undefined && (r.left?.twin === true || r.right?.twin === true) && a.sameAs !== 'none' && typeof a.mirrored === 'boolean') { mn++; if (a.mirrored === r.mirrored) mk++; }
   }
   const pr = tp + fp ? +(tp / (tp + fp)).toFixed(3) : null, rc = tp + fn ? +(tp / (tp + fn)).toFixed(3) : null;
   return { sides, tp, fp, fn, precision: pr, recall: rc, precisionCI: wilson(tp, tp + fp), recallCI: wilson(tp, tp + fn), mirrored: { k: mk, n: mn, acc: mn ? +(mk / mn).toFixed(3) : null, ci: wilson(mk, mn) } };
@@ -111,7 +112,8 @@ async function main() {
   const opt = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
   if (cmd === 'sample') return sample(Number(opt('neg') ?? 1));
   if (cmd === 'score') {
-    const { rows } = JSON.parse(fs.readFileSync(path.join(OUT, 'twins.json'), 'utf8'));
+    const truth = path.resolve(opt('truth') ?? path.join(OUT, 'twins.json'));
+    const { rows } = JSON.parse(fs.readFileSync(truth, 'utf8'));
     const dir = opt('answers') ?? path.join(OUT, 'answers-twins');
     const answers = new Map<string, TwinAnswer>();
     for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json'))) {
@@ -120,10 +122,10 @@ async function main() {
       answers.set(a.pandId, a);
     }
     const s = scoreTwins(rows, answers);
-    fs.writeFileSync(path.join(OUT, 'twins-score.json'), `${JSON.stringify(s, null, 1)}\n`);
+    fs.writeFileSync(opt('truth') ? truth.replace(/\.json$/, '-score.json') : path.join(OUT, 'twins-score.json'), `${JSON.stringify(s, null, 1)}\n`);
     console.log(JSON.stringify(s, null, 1));
     return;
   }
-  console.log('twins.ts sample [--neg 1] | score [--answers <dir>]');
+  console.log('twins.ts sample [--neg 1] | score [--truth <twins.json>] [--answers <dir>]');
 }
 if (import.meta.url === `file://${process.argv[1]}`) await main();

@@ -122,3 +122,50 @@ test('twins: side from the wall normal, mirrored door indices, per-side precisio
   assert.deepEqual([s.sides, s.tp, s.fp, s.fn], [3, 1, 1, 0]);
   assert.equal(s.precision, 0.5); assert.equal(s.recall, 1); assert.equal(s.mirrored.acc, 1);
 });
+
+test('twins v2: face verdicts, door mirror, PR1 label verdicts and similarity, null sides unscored, spread pick', async () => {
+  const { faceVerdict, faceMirrored, spreadPick, isPositive, isNegative } = await import('./twins-v2.ts');
+  const { labelVerdict, similar, sharedM, upperColumns } = await import('./partyPairs.ts');
+  const { scoreTwins } = await import('./twins.ts');
+  const front = (o: Record<string, unknown> = {}) => ({ storeys: 4, bays: 3, gable: 'cornice', windows: 'cross', doorBay: 2, ...o });
+  const h = (o: Record<string, unknown> = {}, module: string | null = 'type:a', widthM = 6) => ({ module, multi: false, front: front(o), widthM });
+  assert.equal(faceVerdict(h(), h({ doorBay: 0 })).twin, true, 'one module, mirrored door: still twins');
+  assert.equal(faceVerdict(h(), h({ storeys: 5 })).twin, false, 'storeys differ: clearly different');
+  assert.equal(faceVerdict(h(), h({ bays: [2, 4, 4] })).twin, false, 'upper bays differ');
+  assert.equal(faceVerdict(h(), h({}, 'type:b')).twin, null, 'other module, same core: not scored');
+  assert.equal(faceVerdict(h(), h({}, 'type:a', 7)).twin, null, 'widths differ > 0.5 m: not scored');
+  assert.equal(faceVerdict(h(), { ...h(), multi: true }).twin, null);
+  assert.equal(faceVerdict(h(), h({ cornice: 'heavy' })).twin, null, 'same module, resolved fronts differ');
+  assert.equal(faceMirrored(front(), front({ doorBay: 0 })), true);
+  assert.equal(faceMirrored(front(), front()), false);
+  assert.equal(faceMirrored(front({ doorBay: 1 }), front({ doorBay: 1 })), null, 'centred door: copy and mirror look alike');
+  assert.equal(faceMirrored(front({ doorBay: undefined }), front()), null);
+
+  const r = (o = {}) => ({ pandId: 'x', source: 'benchmark' as const, storeys: 4, columns: 3, crown: 'neck', windowKind: 'sash', ...o });
+  assert.equal(labelVerdict(r(), r()), 'same');
+  assert.equal(labelVerdict(r(), r({ storeys: 5 })), 'different');
+  assert.equal(labelVerdict(r(), r({ windowKind: 'casement' })), null, 'a non-core field differs: not a twin, not clearly different');
+  assert.equal(labelVerdict(r(), r({ crown: undefined })), null, 'a core field unread');
+  assert.equal(labelVerdict(r(), { ...r(), source: 'spec' }), null, 'vocabularies differ across sources');
+  assert.equal(upperColumns([2, 3, 3, 4]), 3);
+  const p = (year: number, runM: number, exposedM: number) => ({ pandId: 'p', year, drawn: { runM, exposedM } });
+  assert.equal(similar(p(1890, 6, 15), p(1893, 6.25, 15.7)), true);
+  assert.equal(similar(p(1890, 6, 15), p(1894, 6, 15)), false);
+  assert.equal(similar(p(1890, 6, 15), p(1890, 6.4, 15)), false);
+  // two 5 m squares sharing one 5 m wall (lng/lat around Amsterdam)
+  const dx = 5 / (111_320 * Math.cos(52.37 * Math.PI / 180)), dy = 5 / 110_540, o: [number, number] = [4.89, 52.37];
+  const sq = (x: number) => [[o[0] + x, o[1]], [o[0] + x + dx, o[1]], [o[0] + x + dx, o[1] + dy], [o[0] + x, o[1] + dy], [o[0] + x, o[1]]];
+  const sh = sharedM(sq(0), sq(dx), o);
+  assert.ok(sh > 5 && sh < 5.8, `the shared wall plus 0.35 m of each meeting edge: ${sh}`);
+  assert.equal(sharedM(sq(0), sq(3 * dx), o), 0);
+
+  const rows = [
+    { pandId: 'a', left: { id: 'b', twin: true }, right: { id: 'c', twin: null }, mirrored: true, image: '' },
+    { pandId: 'd', left: { id: 'e', twin: false }, right: null, mirrored: null, image: '' },
+  ];
+  assert.ok(isPositive(rows[0]) && isNegative(rows[1]) && !isNegative(rows[0]));
+  const s = scoreTwins(rows, new Map([['a', { readable: true, sameAs: 'both' as const, mirrored: true }], ['d', { readable: true, sameAs: 'left' as const, mirrored: false }]]));
+  assert.deepEqual([s.sides, s.tp, s.fp, s.fn, s.mirrored.k, s.mirrored.n], [2, 1, 1, 0, 1, 1], 'the null side is not scored');
+  const picked = spreadPick([{ g: 'x', i: 1 }, { g: 'x', i: 2 }, { g: 'y', i: 3 }, { g: 'x', i: 4 }], r2 => r2.g, 3, 2);
+  assert.deepEqual(picked.map(x => x.i), [1, 3, 2]);
+});

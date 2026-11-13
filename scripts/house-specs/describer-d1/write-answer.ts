@@ -74,7 +74,7 @@ if (argv.includes('--window')) {
 }
 if (argv.includes('--twins')) {
   // twin pass (prompt v2 sameAs/mirrored only): <out default artifacts/describer-d1/answers-twins>/<pandId>.json
-  const a = { v: 1, pandId, image: { ref: `artifacts/describer-d1/twin-images/${pandId}.jpg`, kind: 'crop', gate: null }, reader: opt('reader') ?? 'D1', ...body };
+  const a = { v: 1, pandId, image: { ref: opt('image-ref') ?? `artifacts/describer-d1/twin-images/${pandId}.jpg`, kind: 'crop', gate: null }, reader: opt('reader') ?? 'D1', ...body };
   const p = twinProblems(a);
   if (p.length) { console.error(p.join('\n')); process.exit(1); }
   const dir = opt('out') ?? path.join(ROOT, 'artifacts/describer-d1/answers-twins');

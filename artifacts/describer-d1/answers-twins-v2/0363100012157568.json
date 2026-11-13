@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012157568",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012157568.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "notes": "Door on the target left; on the right side of the left neighbour and right of the right neighbour."
+}
