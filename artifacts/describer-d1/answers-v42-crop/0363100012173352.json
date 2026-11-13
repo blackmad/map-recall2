@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012173352",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173352/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "ground",
+  "cornice",
+  "crown",
+  "storeyParts.roof"
+ ],
+ "gaps": [],
+ "notes": "A bare tree and a parked car hide much of the ground storey; the very top above the white frieze is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -288,3 +288,55 @@ test('rows: rowStat exact / within one with Wilson intervals; unreadNeighbours l
   const m = unreadNeighbours([row('a', 'b', true, 'c', null), row('d', 'b', false, 'a', true)], new Set(['a', 'd']));
   assert.deepEqual([...m.keys()], ['b'], 'c has no verdict, a is read');
 });
+
+test('per-row heads: 171218 flat, flat, round stages the round top row as archedStoreys (route C only); uniform rows stay byte-identical', async () => {
+  const { rowHeads, ROUTE_C_ONLY } = await import('./stage.ts');
+  assert.deepEqual(rowHeads(['flat', 'flat', 'flat'], 3), { windowHead: { kind: 'flat' } });
+  assert.deepEqual(rowHeads(['flat', 'segmental', 'not-visible'], 3), { windowHead: { kind: 'segmental' } }, 'as upperHead: unknown rows ignored');
+  assert.deepEqual(rowHeads(['flat', 'flat', 'round'], 3), { archedStoreys: [2] });
+  assert.deepEqual(rowHeads(['flat', 'segmental', 'segmental', 'round'], 4), { windowHead: { kind: 'segmental', storeys: [1, 2] }, archedStoreys: [3] });
+  assert.deepEqual(rowHeads(['flat', 'round', 'round'], 3), { archedStoreys: [1, 2] });
+  assert.deepEqual(rowHeads(['flat', 'relieving', 'flat'], 3), {}, 'relieving rows stage nothing');
+  assert.deepEqual(rowHeads(['flat', 'round'], 3), {}, 'a list that is not one per row');
+  assert.deepEqual(rowHeads([], 3), {});
+  assert.deepEqual(rowHeads(['flat', 'flat', 'round'], 'not-visible'), {}, 'rows without a count cannot be placed');
+  const s171218 = stageOne(answer({ storeys: 3, heads: ['flat', 'flat', 'round'], storeyWindows: { 2: 'arched' } }), null, null);
+  const f = s171218.design.fronts![0] as any;
+  assert.deepEqual(f.archedStoreys, [2]); assert.equal(f.windowHead, undefined);
+  assert.equal(s171218.provenance['fronts/0/archedStoreys'].source, 'vision-judge');
+  assert.deepEqual(specProblems(s171218), []);
+  assert.ok(ROUTE_C_ONLY.has('fronts/0/archedStoreys'));
+  // uniform rows: the same windowHead and receipt as the one-word head (byte-identical to the step-1c staging)
+  const flat = stageOne(answer({ heads: ['flat', 'flat', 'flat', 'flat'] }), null, null);
+  assert.deepEqual(flat.design.fronts![0].windowHead, { kind: 'flat' });
+  assert.equal(flat.design.fronts![0].archedStoreys, undefined);
+  assert.equal(stageOne(answer({ heads: ['flat', 'segmental', 'segmental', 'segmental'], low: ['heads'] }), null, null).provenance['fronts/0/windowHead'].confidence, 0.35, 'a low heads read halves the head receipt');
+  assert.ok(specProblems({ ...flat, design: { fronts: [{ archedStoreys: [] }] } }).some(p => p.includes('archedStoreys')));
+});
+
+test('per-row heads reach the recipe route and nothing else: the intent accepts disjoint windowHead + archedStoreys, fit draws a semicircle there, the generic view and F1 record ignore them', async () => {
+  const fs = await import('node:fs');
+  const { validateIntent } = await import('../../../src/canalRecall/buildingRecipe/intent.ts');
+  const { fitIntent } = await import('../../../src/canalRecall/buildingRecipe/fit.ts');
+  const D = new URL('../../building-recipes/houses/bilder-080336/', import.meta.url).pathname;
+  const base = JSON.parse(fs.readFileSync(`${D}intent.json`, 'utf8')), facts = JSON.parse(fs.readFileSync(`${D}facts.json`, 'utf8'));
+  const n = base.fronts[0].storeys as number, top = n - 1;
+  const mk = (over: Record<string, unknown>) => { const i = structuredClone(base); Object.assign(i.fronts[0], over); return i; };
+  assert.doesNotThrow(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental', storeys: [1] } })));
+  assert.throws(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental' } })), /archedStoreys/);
+  assert.throws(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental', storeys: [top] } })), /archedStoreys/);
+  const ops = (i: any) => fitIntent(validateIntent(i), facts).recipe.elevations[0].openings!.value as any[];
+  const before = ops(base), after = ops(mk({ archedStoreys: [top] }));
+  const row = (o: any[], s: number) => o.filter(x => new RegExp(`^s${s}-`).test(x.id));
+  assert.ok(row(after, top).length && row(after, top).every(o => o.head === 'segmental' && Math.abs(o.headRiseM - o.widthM / 2) < 0.002), 'semicircle on the top row');
+  assert.deepEqual(row(after, 1), row(before, 1), 'the other rows unchanged');
+  // generic view and F1 record: identical with and without the round rows
+  const { specView } = await import('../../../src/canalRecall/houseSpec/view.ts');
+  const { facadeRecordFor } = await import('../../../src/canalRecall/look/facadeRecord.ts');
+  const plain = stageOne(answer({ storeys: 3, heads: ['flat', 'flat', 'flat'] }), '#6a4a36', null);
+  const arched = structuredClone(plain);
+  arched.design.fronts![0].archedStoreys = [2]; arched.provenance['fronts/0/archedStoreys'] = { source: 'vision-judge', confidence: 0.7, ref: 'x', at: null };
+  assert.deepEqual(specView(arched), specView(plain));
+  const rec = (spec: any) => facadeRecordFor({ id: spec.pandId, style: 'canal', wallHex: '#6a4a36', heightM: 14, eavesM: 12, spec });
+  assert.deepEqual(rec(arched), rec(plain));
+});

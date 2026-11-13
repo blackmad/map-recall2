@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012170043",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "finish",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a white timber frontage with leaded diamond top lights over the door and window"
+  },
+  {
+   "component": "relief",
+   "what": "flat dark pilasters divide the upper window axes"
+  }
+ ],
+ "notes": "The crown above the cornice line is smeared by the rectification; the right axis is partly cut by the image edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171915",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171915/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2018,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "heads",
+  "windows",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "recessed entrance portiek up a side stoop, under a round brick arch with a white shell-pattern fanlight"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron railings (french balconies) across the windows of the upper two storeys"
+  }
+ ],
+ "notes": "The top is cut just at the cornice; a shrub hides the souterrain windows.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

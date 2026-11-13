@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174415",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174415/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.roof",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "two black street doors side by side at the left, each under an oval fanlight"
+  },
+  {
+   "component": "window",
+   "what": "a louvred shutter window in the wall above the top storey"
+  }
+ ],
+ "notes": "Top of the front is cut off above the louvred attic window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

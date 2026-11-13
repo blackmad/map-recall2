@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012172620",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172620/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "ground",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "dark shutters beside the gable window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a crowning arched cap with a small ornament on the neck"
+  }
+ ],
+ "notes": "Blurry and low resolution.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

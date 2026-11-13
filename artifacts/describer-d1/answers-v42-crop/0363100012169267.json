@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012169267",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169267/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small dormer with a long projecting hoist beam above the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "small dark rosettes between the window heads on every storey"
+  },
+  {
+   "component": "roof",
+   "what": "moulded string courses at every floor line in addition to the light stripes"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

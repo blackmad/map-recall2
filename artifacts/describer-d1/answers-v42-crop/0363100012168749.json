@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012168749",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168749/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small cartouche or plaque above the middle ground-storey window"
+  }
+ ],
+ "notes": "A bare tree crosses the right half of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

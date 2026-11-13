@@ -14,7 +14,7 @@
 //     --out <dir> [--at 2026-11-13] [--twin-guard mutual|pr1]
 import fs from 'node:fs';
 import path from 'node:path';
-import { toSpecPart, UNKNOWN, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
+import { toSpecPart, UNKNOWN, upperHead, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
 import { emptySpec, provenanceOf, setSpecField, specField, specFields, specProblems, type HouseSpec } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { sideOf } from './twins.ts';
 import { similar, similarWidthYear, type Probe } from './partyPairs.ts';
@@ -43,6 +43,33 @@ export const STAGED: Record<string, ((v: unknown, a: DescriberAnswer) => boolean
   'fronts/0/cornice': v => v === 'none',
 };
 
+/**
+ * Per-row heads (D1-fix 2): the answer's `heads` (one per row, ground first) staged into the intent's per-storey slots, so a
+ * front whose rows differ (171218: flat, flat, round) is not flattened to `mixed` and dropped. Upper rows only (the head
+ * precision was measured there). A row stages when its class is flat or segmental (per-class precision >= 0.8) or round.
+ *   - every known upper row one of flat / segmental: `windowHead {kind}` exactly as before (byte-identical);
+ *   - segmental rows among others: `windowHead {kind: segmental, storeys: [those rows]}`; flat rows are the default;
+ *   - round rows: `archedStoreys` (ROUTE_C_ONLY: only the recipe compiler reads it; the generic view and the F1 record do not,
+ *     until round has a precision figure: heads.ts scores it);
+ *   - relieving, pointed, mixed and not-visible rows stage nothing (a front with only those and flat rows stages no head).
+ * Returns the fields to set (none when the rows say nothing stageable).
+ */
+export function rowHeads(heads: readonly string[] | undefined, storeys: unknown): { windowHead?: { kind: 'flat' | 'segmental'; storeys?: number[] }; archedStoreys?: number[] } {
+  if (!heads?.length) return {};
+  const whole = upperHead(heads as DescriberAnswer['heads']);
+  if (whole === 'flat' || whole === 'segmental') return { windowHead: { kind: whole } };
+  // per row only when the list is one entry per row (a count that does not match cannot say which storey is which)
+  if (!Number.isInteger(storeys) || heads.length !== storeys) return {};
+  const rows = heads.map((h, s) => [h, s] as const).filter(([, s]) => heads.length === 1 || s > 0);
+  const seg = rows.filter(([h]) => h === 'segmental').map(([, s]) => s), round = rows.filter(([h]) => h === 'round').map(([, s]) => s);
+  const out: ReturnType<typeof rowHeads> = {};
+  if (seg.length) out.windowHead = { kind: 'segmental', storeys: seg };
+  if (round.length) out.archedStoreys = round;
+  return out;
+}
+/** Staged paths only the recipe route (route C, toRecipe -> compile) draws: the generic view and the F1 record never read them. */
+export const ROUTE_C_ONLY: ReadonlySet<string> = new Set(['fronts/0/archedStoreys']);
+
 /** Neck and bell read as one class (a curved gable): precision 0.91 merged against 0.65 / 0.50 apart (per-class.md). */
 export const CURVED: ReadonlySet<string> = new Set(['neck', 'bell']);
 /** The gable a curved-gable reading stages: the register's neck or bell where it states one, otherwise neck. */
@@ -60,7 +87,11 @@ export function shipOnly(spec: HouseSpec, a: DescriberAnswer): { spec: HouseSpec
 
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
 export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null) {
-  const { spec } = shipOnly(toSpecPart(a, at), a);
+  const part = toSpecPart(a, at);
+  const { spec } = shipOnly(part, a);
+  // per-row heads: the receipt of the answer's head reading (toSpecPart, halved when `heads` is low) on each staged slot
+  const prov = provenanceOf(part, 'fronts/0/windowHead');
+  if (prov) for (const [k, v] of Object.entries(rowHeads(a.heads, a.storeys))) { setSpecField(spec, `fronts/0/${k}`, v); spec.provenance[`fronts/0/${k}`] = { ...prov }; }
   if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
   if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
     setSpecField(spec, 'palette/brick', wallHex.toLowerCase());

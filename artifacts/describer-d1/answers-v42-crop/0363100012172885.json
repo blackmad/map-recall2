@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012172885",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172885/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "painted",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bands",
+  "storeyParts.full",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "small ornament on the bell gable apex"
+  }
+ ],
+ "notes": "Small, blurred crop of a narrow dark painted front.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

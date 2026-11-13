@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174781",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174781/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  3
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters on the gable window and a red-shuttered middle opening on the second storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white carved scroll claw pieces at the gable foot"
+  }
+ ],
+ "notes": "The gable top is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

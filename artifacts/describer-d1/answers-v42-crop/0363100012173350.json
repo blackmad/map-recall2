@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012173350",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173350/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "crown",
+  "finish",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "Dark, blurry crop with tree branches across the gable.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

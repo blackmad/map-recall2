@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174499",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174499/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "storeyWindows": {
+  "1": "sash-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "cornice",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustrade parapet with oval openings and a central ornament stands on the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a fanlight with a star-pattern glazing bar over the green street door"
+  }
+ ],
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

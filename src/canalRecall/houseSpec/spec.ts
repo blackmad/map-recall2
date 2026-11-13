@@ -255,6 +255,7 @@ export function specProblems(input: unknown): string[] {
       if (key === 'storeys' && !countOk(value, 1, 30)) p.push(`${path}: expected integer 1..30`);
       if (key === 'bays' && !(countOk(value, 1, 30) || (Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 30))))) p.push(`${path}: an integer 1..30 or one per storey`);
       if (key === 'hoist' && typeof value !== 'boolean') p.push(`${path}: boolean`);
+      if (key === 'archedStoreys' && !(Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 29)))) p.push(`${path}: a list of storey indices`);
       if (key === 'share' && !(typeof value === 'number' && value > 0 && value <= 1)) p.push(`${path}: a share of the wall 0..1`);
       if (key === 'street' && !(typeof value === 'string' && value.length > 0)) p.push(`${path}: a street name`);
     } else if (path.startsWith('palette/')) {

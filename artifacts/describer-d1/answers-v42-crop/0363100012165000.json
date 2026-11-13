@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012165000",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012165000/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "finish",
+  "ground",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "ground storey framed by pilasters faced with patterned tiles"
+  },
+  {
+   "component": "roof",
+   "what": "a metal railing on the flat roof behind the parapet"
+  }
+ ],
+ "notes": "Image is blurred; ground openings and wall finish hard to read.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

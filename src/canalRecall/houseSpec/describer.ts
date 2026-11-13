@@ -194,7 +194,8 @@ export function groundKindOf(a: Pick<DescriberAnswer, 'ground' | 'groundBays' | 
 }
 
 /** The answer key a spec path's `low` flag is read from: prompt v4 names the storey parts, not `storeys`. */
-const lowKeys = (key: string): string[] => (key === 'storeys' ? ['storeys', 'storeyParts', 'storeyParts.full'] : key === 'souterrain' ? ['souterrain', 'storeyParts', 'storeyParts.souterrain'] : [key]);
+const lowKeys = (key: string): string[] => (key === 'storeys' ? ['storeys', 'storeyParts', 'storeyParts.full'] : key === 'souterrain' ? ['souterrain', 'storeyParts', 'storeyParts.souterrain']
+  : key === 'windowHead' || key === 'archedStoreys' ? [key, 'heads'] : [key]);
 
 /** An answer as a partial HouseSpec at source `vision-judge`. Stone, pitched-eaves and pointed/mixed heads are stored as read (spec.ts
  *  SPEC_*; compilers draw the nearest form and report it); schemaLimits holds only the reader's own gaps. */

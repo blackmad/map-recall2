@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012172012",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172012/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  1
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts.full",
+  "windowSurround",
+  "columns",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "red French doors with a low railing in the single centre window of the top storey"
+  },
+  {
+   "component": "door",
+   "what": "two red street doors side by side at the right of the shopfront"
+  }
+ ],
+ "notes": "Top of the neck is cut off; the one-window storey under the claw pieces was counted as a full storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

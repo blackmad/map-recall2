@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182545",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182545/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "cornice",
+  "heads",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors between and beside the window arches"
+  },
+  {
+   "component": "window",
+   "what": "red-painted window joinery in white-trimmed reveals"
+  }
+ ],
+ "notes": "The cornice touches the top edge of the crop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

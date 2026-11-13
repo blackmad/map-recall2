@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012177932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "tall shopfront between cream pilasters with a row of upper glazing, hidden lower down by a red terrace umbrella"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the upper windows"
+  }
+ ],
+ "notes": "A large red umbrella hides the street door and lower shopfront.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

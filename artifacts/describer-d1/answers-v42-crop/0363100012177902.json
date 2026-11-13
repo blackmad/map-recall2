@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  4,
+  6,
+  6,
+  6
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "round",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windowSurround",
+  "heads",
+  "doorBay",
+  "extent",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white keystones with small ornaments over the round-arched first-storey windows"
+  },
+  {
+   "component": "dormer",
+   "what": "two white dormers in the mansard, one over each half"
+  }
+ ],
+ "notes": "Six bays in one design with a wider pier in the middle; it may be two three-bay houses built as one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

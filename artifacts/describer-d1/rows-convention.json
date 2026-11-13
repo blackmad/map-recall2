@@ -231,6 +231,236 @@
     }
    }
   },
+  "answers-v42-crop": {
+   "pairs": 114,
+   "rowIssues": [],
+   "groups": {
+    "all": {
+     "before": {
+      "n": 114,
+      "exact": 0.816,
+      "exactCI": [
+       0.735,
+       0.876
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.967,
+       1
+      ],
+      "under": 15,
+      "over": 6
+     },
+     "after": {
+      "n": 114,
+      "exact": 0.816,
+      "exactCI": [
+       0.735,
+       0.876
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.967,
+       1
+      ],
+      "under": 15,
+      "over": 6
+     }
+    },
+    "benchmark": {
+     "before": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     },
+     "after": {
+      "n": 11,
+      "exact": 0.909,
+      "exactCI": [
+       0.623,
+       0.984
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.741,
+       1
+      ],
+      "under": 0,
+      "over": 1
+     }
+    },
+    "ground shop": {
+     "before": {
+      "n": 53,
+      "exact": 0.887,
+      "exactCI": [
+       0.774,
+       0.947
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.932,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     },
+     "after": {
+      "n": 53,
+      "exact": 0.887,
+      "exactCI": [
+       0.774,
+       0.947
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.932,
+       1
+      ],
+      "under": 4,
+      "over": 2
+     }
+    },
+    "ground door-only": {
+     "before": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 0,
+      "exact": 0,
+      "exactCI": [
+       0,
+       1
+      ],
+      "within1": 0,
+      "within1CI": [
+       0,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground dwelling": {
+     "before": {
+      "n": 51,
+      "exact": 0.784,
+      "exactCI": [
+       0.654,
+       0.875
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.93,
+       1
+      ],
+      "under": 10,
+      "over": 1
+     },
+     "after": {
+      "n": 51,
+      "exact": 0.784,
+      "exactCI": [
+       0.654,
+       0.875
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.93,
+       1
+      ],
+      "under": 10,
+      "over": 1
+     }
+    },
+    "ground warehouse": {
+     "before": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     },
+     "after": {
+      "n": 4,
+      "exact": 1,
+      "exactCI": [
+       0.51,
+       1
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.51,
+       1
+      ],
+      "under": 0,
+      "over": 0
+     }
+    },
+    "ground not-visible": {
+     "before": {
+      "n": 6,
+      "exact": 0.333,
+      "exactCI": [
+       0.097,
+       0.7
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 1,
+      "over": 3
+     },
+     "after": {
+      "n": 6,
+      "exact": 0.333,
+      "exactCI": [
+       0.097,
+       0.7
+      ],
+      "within1": 1,
+      "within1CI": [
+       0.61,
+       1
+      ],
+      "under": 1,
+      "over": 3
+     }
+    }
+   }
+  },
   "answers-v4-cut": {
    "pairs": 116,
    "rowIssues": [],
@@ -457,236 +687,6 @@
       ],
       "under": 0,
       "over": 0
-     }
-    }
-   }
-  },
-  "answers-v4-crop-sonnet": {
-   "pairs": 114,
-   "rowIssues": [],
-   "groups": {
-    "all": {
-     "before": {
-      "n": 114,
-      "exact": 0.789,
-      "exactCI": [
-       0.706,
-       0.854
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.967,
-       1
-      ],
-      "under": 21,
-      "over": 3
-     },
-     "after": {
-      "n": 114,
-      "exact": 0.789,
-      "exactCI": [
-       0.706,
-       0.854
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.967,
-       1
-      ],
-      "under": 21,
-      "over": 3
-     }
-    },
-    "benchmark": {
-     "before": {
-      "n": 12,
-      "exact": 0.75,
-      "exactCI": [
-       0.468,
-       0.911
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.757,
-       1
-      ],
-      "under": 2,
-      "over": 1
-     },
-     "after": {
-      "n": 12,
-      "exact": 0.75,
-      "exactCI": [
-       0.468,
-       0.911
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.757,
-       1
-      ],
-      "under": 2,
-      "over": 1
-     }
-    },
-    "ground shop": {
-     "before": {
-      "n": 48,
-      "exact": 0.833,
-      "exactCI": [
-       0.704,
-       0.913
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.926,
-       1
-      ],
-      "under": 7,
-      "over": 1
-     },
-     "after": {
-      "n": 48,
-      "exact": 0.833,
-      "exactCI": [
-       0.704,
-       0.913
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.926,
-       1
-      ],
-      "under": 7,
-      "over": 1
-     }
-    },
-    "ground door-only": {
-     "before": {
-      "n": 0,
-      "exact": 0,
-      "exactCI": [
-       0,
-       1
-      ],
-      "within1": 0,
-      "within1CI": [
-       0,
-       1
-      ],
-      "under": 0,
-      "over": 0
-     },
-     "after": {
-      "n": 0,
-      "exact": 0,
-      "exactCI": [
-       0,
-       1
-      ],
-      "within1": 0,
-      "within1CI": [
-       0,
-       1
-      ],
-      "under": 0,
-      "over": 0
-     }
-    },
-    "ground dwelling": {
-     "before": {
-      "n": 61,
-      "exact": 0.77,
-      "exactCI": [
-       0.651,
-       0.858
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.941,
-       1
-      ],
-      "under": 13,
-      "over": 1
-     },
-     "after": {
-      "n": 61,
-      "exact": 0.77,
-      "exactCI": [
-       0.651,
-       0.858
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.941,
-       1
-      ],
-      "under": 13,
-      "over": 1
-     }
-    },
-    "ground warehouse": {
-     "before": {
-      "n": 0,
-      "exact": 0,
-      "exactCI": [
-       0,
-       1
-      ],
-      "within1": 0,
-      "within1CI": [
-       0,
-       1
-      ],
-      "under": 0,
-      "over": 0
-     },
-     "after": {
-      "n": 0,
-      "exact": 0,
-      "exactCI": [
-       0,
-       1
-      ],
-      "within1": 0,
-      "within1CI": [
-       0,
-       1
-      ],
-      "under": 0,
-      "over": 0
-     }
-    },
-    "ground not-visible": {
-     "before": {
-      "n": 5,
-      "exact": 0.6,
-      "exactCI": [
-       0.231,
-       0.882
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.566,
-       1
-      ],
-      "under": 1,
-      "over": 1
-     },
-     "after": {
-      "n": 5,
-      "exact": 0.6,
-      "exactCI": [
-       0.231,
-       0.882
-      ],
-      "within1": 1,
-      "within1CI": [
-       0.566,
-       1
-      ],
-      "under": 1,
-      "over": 1
      }
     }
    }
