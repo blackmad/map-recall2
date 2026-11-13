@@ -17,12 +17,16 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ## Belt batch rejection (P0, user 2026-11-13) — rules in `docs/START-HERE-buildings.md` §3a / `docs/house-line.md` §0
 
-- **Placement in the frame.** On Haarlemmerdijk the generic neighbour 167795 is drawn ~1.2 m along the street from its plot in `?engine=own&world=live` frames (the belt sheet); Node mesher, building-tiles and baked shells all put it on the plot. Lane BA (lane/belt-audit-20261113) is framing the six sheet spots on the players' world (default cells), the pre-round-125 commit, and live-scene vertices; then a ~30-house sizing on whichever path is at fault. Rule 8: no acceptance frames on `world=live`.
-- **The five sheet houses** (165073, 169539, 167794, 167816, 167818) are live, pending the players'-world frames; hold or release on that result. 171144 re-frame.
-- **Install-audit fails, held in round 128 (24), fix by cause in the generator (step C):** straight mesh front across a kinked BAG front (16 protrusion), outside polygon >0.5 m² (6, incl. 181808 box over a rounded corner), neighbour intrusion >0.2 m (6), crown changed or dropped (5). `house:publish` must run install-audit and refuse/hold failures (not wired).
-- **Photo cross-check (lane BX, b16b16116):** 41 houses queued (13 crown, 1 rows, 31 bays); square in-game frames for the 13 crown + 1 rows first. 165073: the missing piece is the raised dormer with hoist beam, not a crown class.
-- **Per-house GLB policy for ordinary houses:** no new installs, pending David's confirmation (2026-11-10 decision still stands until he reverses it).
-- **Route A at volume** paused until the placement shift is explained; D1 may read.
+- **Placement fixed in round 129** (generic layer on the equatorial metre). Open: the north-south curvature residual away from ORIGIN's latitude (calculated ~1.3 m Zuidas, ~4 m Bijlmer, ~7 m Gein) — lane BA measures ring spots and proposes re-linearising at the rider's latitude; `test:plot-true` still fails on 1,711 of 19,719 centre houses (max 1.58 m) — classify by cause before it joins check:canal; allow-list regression for every shared-frame participant; landmarks/bespoke nudged against shifted neighbours since 2026-10-04 to re-frame.
+- **Held:** 29 belt models (24 install-audit fails + 165073, 169539, 167816, 167818, 171144). 167794 live provisionally. Held models stay held (David's GLB policy).
+- **Spec fault behind the gables:** the `haarlemmer-shop-cornice-*` type presets impose a cornice front and fill the eaves with flat rows, overriding the register's or the photo's gable (165073, 169539); fix by cause before route A volume. The held fallback draws the same wrong spec.
+- **Pale-warm wall guard overrides reviewed palettes** ("held brick", 178293 L 0.38 vs photo 0.58): proposal to skip it for hand-reviewed sources, count first.
+- **Model path lightens dark walls** (spec L 0.29–0.38 → model 0.44–0.47): lane WC.
+- **Frames harness:** rule 10 tooling (lane TF), thinFocalPx 48.9 trace (TF), ground/labels nondeterminism makes whole-frame diffs meaningless (41 % on identical scenes) — mask to building pixels.
+- **Re-shoot of David's contact-haarlemmer sheet** (photo | before | after) — lane BA.
+- **Photo cross-check (lane BX, b16b16116):** 41 queued; square frames for the 13 crown + 1 rows first.
+- **Route A at volume** waits for the plot-true check; the D1 1,000-front tranche may start (belt + AH07, curvature ≤ 0.4 m).
+- **Coverage map:** add a "described from photos" tier (needs-david with a legend mock-up when the first tranche is ready); regenerate coverage-v1 (stale since 2026-11-10).
 
 ## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
 

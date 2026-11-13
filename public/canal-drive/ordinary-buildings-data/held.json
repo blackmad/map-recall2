@@ -1,6 +1,14 @@
 {
   "_doc": "Installed ordinary GLBs held out of the game (src/canalRecall/landmarks/ordinaryHolds.ts). The catalogue entry and its GLB stay; the game neither draws the model nor hides the pand, so the pand draws through the generic mesher with its published house spec. Written by scripts/building-recipes/hold-installs.ts; after a change rebuild covers.json, the touched world cells and the signature-placement bundle (the script prints the commands). Release = remove the id.",
   "held": {
+    "ordinary-0363100012165073": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 123: rejected by the user (belt-20261113 sheet, 'misses the gable'); after the plot fix the model draws 3 bays and 3 full storeys with a flat cornice where the photo has 2 bays, 2 storeys and a raised dormer with hoist beam",
+      "gates": [
+        "review"
+      ],
+      "batch": "belt-20261113"
+    },
     "ordinary-0363100012167709": {
       "heldAt": "2026-11-13",
       "reason": "Herengracht 106: install audit 2026-11-13 failed outside 0.56 m2; protrusion 1.41 m (5f5850_brick,6a6664_roofTile)",
@@ -18,6 +26,23 @@
       ],
       "batch": "belt-20261113"
     },
+    "ordinary-0363100012167816": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 18: rejected by the user ('too small gap'); after the plot fix roofOffset flag on 7/7 columns and wall colour inverted (game lighter than neighbours, photo darker)",
+      "gates": [
+        "review",
+        "flags"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012167818": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 22: wall colour flag (game 1.49 vs photo 0.96 relative) and roofOffset on 5-6/7 columns after the plot fix; the drawn neck gable is unverified against the photo",
+      "gates": [
+        "flags"
+      ],
+      "batch": "belt-20261113"
+    },
     "ordinary-0363100012169006": {
       "heldAt": "2026-11-13",
       "reason": "Herengracht 112: install audit 2026-11-13 failed protrusion 0.44 m (55524d_brick,e6e2d8_frame,2a3a42_glass,ebe8df_stone_measured)",
@@ -31,6 +56,23 @@
       "reason": "Herengracht 116C: install audit 2026-11-13 failed intrusion 0.27 m (0363100012177280)",
       "gates": [
         "intrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012169539": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 143: rejected by the user ('gable looks bad'); square frame after the plot fix: low bell cap where the photo has a tall neck gable with arched window and hoist beam; 2 bays / 2 flat rows vs 3 bays and an arched balcony storey",
+      "gates": [
+        "review"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012171144": {
+      "heldAt": "2026-11-13",
+      "reason": "rejected sheet panel 6 ('can't see'); no square frame exists (best 45 deg), roofOffset on 2-4/7 columns; held until a square review",
+      "gates": [
+        "review",
+        "flags"
       ],
       "batch": "belt-20261113"
     },

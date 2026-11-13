@@ -49,9 +49,12 @@ facades, C recipe GLBs) and for any per-house model.
   The crown gate compares model with spec, so it cannot catch a wrong spec: an independent photo
   read (the D1 reader) is the check against the house.
 - A flank that differs from what the neighbours expose is closed and plain: no windows on a party wall.
-- Policy on new per-house GLBs for ordinary houses: **held pending David's confirmation** (the
-  2026-11-10 decision to prefer spec-generated recipe GLBs stands until he reverses it). No new
-  ordinary per-house installs meanwhile.
+- Policy for ordinary houses (David, 2026-11-13, reversing 2026-11-10): no new per-house models.
+  Their HouseSpecs are drawn by the ordinary renderer (route A). Per-house models continue for
+  landmarks, bespoke buildings and repeated instanced types (kit types, block faces for genuinely
+  repeated rows). Installed models stay where they pass the audit and the in-row review; no mass
+  removal; a held one falls back to route A with its spec. Route C (the completer) stays parked.
+  Houthaven unique buildings are bespoke/large-recipe work, not covered by this.
 
 ### Review
 
@@ -72,10 +75,26 @@ facades, C recipe GLBs) and for any per-house model.
    call a house with an open fail "close".
 7. Counts are a report line, never an acceptance.
 8. Acceptance frames are shot on the players' world: the default compiled cells (compile changed
-   cells locally with `world:compile --changed`), not `?world=live`, which drew generic neighbours
-   about 1.2 m off their plots on Haarlemmerdijk (cause under investigation, lane BA). `world=live`
-   is for iteration only. Every caption names the engine and the world it was shot on; a sheet shot
-   on `world=live` cannot support a publish or a What's New note.
+   cells locally with `world:compile --changed`), not `?world=live`; `world=live` is for iteration
+   only. Every caption names camera, FOV, pixel ratio, engine and world.
+9. Plot-true: every house the game draws, by any route (near chunk, baked shell, installed model,
+   held fallback), keeps its walls on its BAG plot within 0.2 m, stated projecting parts excepted.
+   Nothing moves a house to tidy a row. Held by `check:building-projection-scale` (named regression:
+   Haarlemmerdijk 29, 0363100012167795) and `test:plot-true` (drawn wall vertices against BAG rings
+   in the live scene). Background: until round 129 the generic layer was placed with MapLibre's
+   mean-radius metre while its meshes are in equatorial metres, so every generic building sat 0.112 %
+   of its distance from ORIGIN too far out (1.6 m at Haarlemmerdijk, 4.4 m at the city edge) on both
+   engines; that, not the models, made the overlaps and gaps on the rejected belt sheet. A north-south
+   curvature residual remains away from ORIGIN's latitude (calculated ~1.3 m at Zuidas).
+10. Likeness frames are first-person 72°, 1440×900 at `?dpr=2`, pitched to hold the whole front and
+   crown, with the photo cropped to the same window; if the front does not fit, step back, never
+   widen the FOV. Each row sheet and What's New pair adds one as-played frame (default engine, default
+   chase camera, dpr 2), and notes lead with it. Wide pano-FOV frames serve the tool flags only; their
+   picture supports no acceptance. `thinFade=0` is an "is it drawn" check, never the look. Panels at
+   least 700 px wide, three columns: photo | today | candidate. Before rule 10 every sheet showed about
+   a quarter of the facade pixels David plays at, with thin white parts (speklagen, cornice trim)
+   dithered out: verdicts on amount of white, band thickness or thin dressings from before 2026-11-13
+   evening need a rule-10 re-look before they are quoted.
 
 ## §1 The record: HouseSpec
 
