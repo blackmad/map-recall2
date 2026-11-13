@@ -9,6 +9,7 @@ import { bayLookOpenings, proceduralOpenings, recipeBayOpenings } from '../src/c
 import { doorSpan, windowSpans } from '../src/canalRecall/facadeOrnaments.ts';
 import { buildChunk, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
 import type { FacadeStyle } from '../src/canalRecall/genericFacades.ts';
+import { resetStructurePriorFlag } from '../src/canalRecall/houseSpec/structurePrior.ts';
 
 const STYLES: FacadeStyle[] = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'];
 const wall = (style: ExtraContext['style'], id = 'h1', over: Partial<ExtraContext> = {}): ExtraContext => ({
@@ -45,6 +46,10 @@ const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'do
 {
   const kx = 111320 * Math.cos(ORIGIN.lat * Math.PI / 180);
   const ll = (x: number, y: number) => [ORIGIN.lng + x / kx, ORIGIN.lat + y / 110540];
+  // The expected axes are the 2-bay painter's; PR1's column prior (default on since round 126) gives this
+  // 7 m fixture 3 columns, so the regression pins the prior off for this block.
+  const priorEnv = process.env.STRUCTURE_PRIOR;
+  process.env.STRUCTURE_PRIOR = '0'; resetStructurePriorFlag();
   const feature = { type: 'Feature' as const, properties: { id: 'double-door-regression', height: 14, minHeight: 0, facade: 'c19-priorBrickRed', facadeStyle: 'c19', constructionYear: 1890, shopQuiet: true }, geometry: { type: 'Polygon', coordinates: [[ll(0, 0), ll(7, 0), ll(7, 12), ll(0, 12), ll(0, 0)]] } };
   try {
     for (const look of ['photo', 'storybook', 'cartoon', 'procedural'] as const) {
@@ -61,7 +66,11 @@ const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'do
         assert.ok(!sink.tris.some(t => t.p.every(p => p[2] > c.base + 0.8 && p[2] < d.z1 - 0.1) && Math.min(...t.p.map(p => p[0])) < d.x && Math.max(...t.p.map(p => p[0])) > d.x), 'entrance trim does not add another opaque door leaf');
       }
     }
-  } finally { extraUsage.record = null; }
+  } finally {
+    extraUsage.record = null;
+    if (priorEnv === undefined) delete process.env.STRUCTURE_PRIOR; else process.env.STRUCTURE_PRIOR = priorEnv;
+    resetStructurePriorFlag();
+  }
 }
 
 for (const comp of WALL_COMPONENTS) {

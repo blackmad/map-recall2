@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
-    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/wallColour.test.ts src/canalRecall/houseSpec/wallRefit.test.ts src/canalRecall/houseSpec/holds.test.ts src/canalRecall/houseSpec/critic/critic.test.ts scripts/house-frames/pose.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts src/canalRecall/axisUnits.test.ts",
+    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/wallColour.test.ts src/canalRecall/houseSpec/wallRefit.test.ts src/canalRecall/houseSpec/holds.test.ts src/canalRecall/houseSpec/critic/critic.test.ts scripts/house-frames/pose.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts src/canalRecall/axisUnits.test.ts src/canalRecall/houseSpec/structurePrior.test.ts src/canalRecall/houseSpec/publishPlan.test.ts scripts/house-line/structure/paired.test.ts",
     "glb:views": "node --import tsx scripts/glb-raster/views.ts",
     "glb:agreement": "node --import tsx scripts/glb-raster/agreement.ts",
     "test:glb-raster": "node --import tsx --test src/canalRecall/glbRaster/glbRaster.test.ts scripts/glb-raster/help.test.ts",
@@ -629,7 +629,9 @@
     "test:browser-queue": "bash scripts/browser-queue/test.sh",
     "install:browser-queue": "bash scripts/browser-queue/install.sh",
     "house:critic": "node --import tsx scripts/house-line/critic.ts",
-    "house:kit-gaps": "node --import tsx scripts/house-line/kit-gaps.ts"
+    "house:kit-gaps": "node --import tsx scripts/house-line/kit-gaps.ts",
+    "structure:baseline": "node --import tsx scripts/house-line/structure/baseline.ts",
+    "structure:fit": "node --import tsx scripts/house-line/structure/fit.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

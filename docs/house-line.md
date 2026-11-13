@@ -967,8 +967,11 @@ house:publish: publish the staged HouseSpecs as one batch (the integrator's comm
                            house-specs), print the per-pand field diff, the touched z14 tiles and the cells they rebuild, and
                            the commands a real run would use. Nothing is published, installed or compiled.
   --batch <name>           the batch name (default batch-YYYYMMDD-HHMM); names artifacts/house-specs/{published,logs}/<name>*
-  --allow-extra <ids>      pand ids whose extract record may change although no staged spec names them (default: any such
-                           change refuses the batch, it means a source drifted since the last publish)
+  --allow-extra <ids>      OVERRIDE: pand ids whose extract record may change although nothing explains it. Every changed record
+                           no staged spec names is classified: face-drawn (a scripts/block-face/faces/*/intent.json draws the
+                           pand), same-as-main (equal to origin/main's record after sorting keys and dropping stamps), or
+                           unexplained. The first two are allowed and logged (console table, published/<batch>.json
+                           extraRecords); only unexplained refuses the batch, with the classified table printed.
   --world-out <dir>        the world:compile staging directory (default artifacts/world/staging); needs a previous
                            index.json there for --changed
   --full-bake              when the shell code changed since that compile (world:compile --shell --changed refuses), run a full
@@ -981,7 +984,7 @@ house:publish: publish the staged HouseSpecs as one batch (the integrator's comm
   --skip-suppression "<r>" do not run the suppression guard (same)
 
 Steps, in order (each timed in published/<batch>.json; logs in artifacts/house-specs/logs/<batch>-<step>.log):
-  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, extra-pand refusal
+  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, unstaged-record classification (refuses only unexplained)
   2 write      copy the specs to scripts/house-specs/specs/, build-house-specs --publish (the published extract changes here)
   3 recipe     only if a spec has route recipe: toRecipe -> houses/<id>/intent.json, facts, install.ts, build-covers,
                copy covers.json, check:covers (covers.json changes here)
@@ -1006,8 +1009,22 @@ chooses; the repo installs no cron). One batch = one commit, one HISTORY entry, 
 
 1. **merge.** The staged specs are written as plain files and `build-house-specs --extra-specs` resolves them with every other source
    into the STAGED tiles (`public/data/extracts/amsterdam/staging/house-specs`). The staged tiles are diffed against the published
-   ones, field by field, per pand. A record that changes although no staged spec names that pand refuses the batch (a source drifted
-   since the last publish); `--allow-extra <ids>` accepts named ones. A staged pand that lies in no building tile also refuses.
+   ones, field by field, per pand. Each changed record that no staged spec names is classified, and the classified table is printed:
+   `face-drawn` (a `scripts/block-face/faces/*/intent.json` names the pand, so its record follows the face compile), `same-as-main`
+   (equal to `origin/main`'s record after sorting keys and dropping stamp keys such as `stamp`/`generatedAt`; this checkout merely lags
+   main) or `unexplained`. The first two are allowed, counted on the console and written to `published/<batch>.json` under
+   `extraRecords`; only `unexplained` refuses the batch (a source drifted since the last publish). `--allow-extra <ids>` stays as the
+   override for named pands and is recorded as class `allow-extra`. Sample:
+
+   ```
+     pand  change   tile  class         first field
+     2     changed  t     face-drawn    a: 1 -> 2
+     3     changed  t     same-as-main  a: 1 -> 2
+     4     changed  t     UNEXPLAINED   a: 1 -> 9
+     5     changed  t     allow-extra   a: 1 -> 7
+   ```
+
+   The classifier is `classifyExtras` in `src/canalRecall/houseSpec/publishPlan.ts` (tested in `publishPlan.test.ts`). A staged pand that lies in no building tile also refuses.
    `--dry-run` stops here and prints the diff, the touched z14 tiles and the cells that list them. `--dry-run --compile` also
    rehearses step 4 in a scratch copy of the compile directory against the staged extract.
 2. **write.** The specs are copied to `scripts/house-specs/specs/` and `build-house-specs --publish` replaces the published
@@ -2552,6 +2569,13 @@ Acceptance for generic-path pands moves from per pand to per feature (docs/plans
 fixed benchmark is framed in the game every round, a fresh critic names the single biggest gap per pair from a closed
 vocabulary, and the ranked gap histogram is the kit-gap queue (§5). Landmarks keep gallery-size review.
 
+**Fooled-rate retired as the headline (house plan review 2026-11-13, P3).** Round 0 read 0 of 193: the critic tells
+today's render from the photo at a glance, so the rate sits on the floor and cannot show which change helped, and a
+render that fools a critic is not the same as one that is right. The flat-two-rounds stop rule went with it. The
+headline is now per-field agreement between a describer read of the photo and one of the game frame (P3a: storeys,
+bays, window group, bands, finish, …), with blind A/B preference between two renders as the secondary read (P3b).
+The critic stays for one job: its ranked gap histogram is the kit-gap queue (§5).
+
 | Piece | Where |
 |---|---|
 | Groups (contiguous blocks) | `scripts/house-line/benchmark/groups-v1.json` |
@@ -2594,8 +2618,7 @@ Masks (identical on both halves): everything under 1.5 m above the wall foot is 
 stoops and stallrisers go with it); leaf pixels of either half, dilated 3 px, are grey on both; each half's own sky is
 painted one flat colour (a union would draw the photo's skyline into the game half, and the skyline is evidence). The
 wall outline is drawn on both. The fooled-rate is the share of answered pairs where the critic named the photo as the game
-(0.5 = cannot tell them apart). Stop rule: flat (|change| < 0.03) for two rounds, restart with a fresh critic (new seed,
-new chunking) before reading more into the curve. Archive every round's photo/game pairs to the source-data repo
+(0.5 = cannot tell them apart). Archive every round's photo/game pairs to the source-data repo
 (`experiments/facade-benchmark/round-N/`): J3 could not re-run likeness because its render sources had been pruned.
 
 ### Round 0 (2026-11-12, baseline before F1)
@@ -2976,3 +2999,187 @@ game-lens photo of each cut's pinned capture (aimPose + frameFor, cached panoram
 renders onto the photo. Below the city brick floor (`CITY_BRICK_LIGHTNESS` 0.3) no brick renders darker; the fit stages the
 floor brick in the sample's hue (`floor`), which is 153 of 194 AH07 samples: the render cannot reach those photos' L.
 
+## §14 Structure prior: window columns (default on) and storeys (held) with no reading (lane PR1, 2026-11-13, flag `?structurePrior=`)
+
+| `?structurePrior=` (STRUCTURE_PRIOR in Node) | draws |
+|---|---|
+| absent, `columns` (the default since the integrator's ruling) | the prior's window columns; storeys as before |
+| `storeys`, `all`, `1` | the prior's window columns and storeys |
+| `0`, `off` | nothing from the prior: byte-identical to main before PR1 |
+
+Columns passed the gate (+26.8 points held out on the 127 unspecified pands, McNemar p < 0.001). Storeys (+6.3, p 0.115)
+did not; they wait for D1's adjudicated labels (`paired.ts`).
+
+The wall-colour move (W1: a table fitted on measured walls) applied to shape. A generic pre-1945 pand with no HouseSpec
+storeys or bays draws the grid of the read houses most like it, instead of the style's nominal pitch with a per-building
+jitter (`threeBuildingMesh.ts` `layoutScale`: bay ×0.88–1.18, storey ×0.93–1.09).
+
+| Piece | Where |
+|---|---|
+| Node layout probe (the chunk house:preview builds, `layoutProbe` on; drawn storeys, upper columns, run width and exposed height, the planner's crown) | `scripts/house-line/structure/probe.ts` |
+| Scoreboard row: drawn vs the benchmark labels, exact match with n and a 95 % Wilson interval (`--labels` takes another label file) | `scripts/house-line/structure/baseline.ts` |
+| Training readings (block faces via `fromBlockFace`, belt/pilot/hand specs, read fields only) and the benchmark labels in one shape | `scripts/house-line/structure/dataset.ts` |
+| Neighbour agreement per field (party walls ≥ 2 m), by similarity and buurt family | `scripts/house-line/structure/neighbours.ts` |
+| Fit: 5-fold CV over 300 m blocks picks k and scales; writes the table | `scripts/house-line/structure/fit.ts --write` |
+| Neighbour rules leave-one-out, agreement per street group, per-group spread | `scripts/house-line/structure/rules.ts` |
+| Crown what-if (not wired) | `scripts/house-line/structure/crown.ts` |
+| Runtime: table, guess, flag modes | `src/canalRecall/houseSpec/structurePrior.ts`, `structure-prior.json`, test `structurePrior.test.ts` |
+| Paired off/on table with McNemar's exact test, by build-year family (`--labels` re-scores on another label file) | `scripts/house-line/structure/paired.ts` |
+| Dam aerial and chase cost (triangles, resident GL MB, building vertices) for one query | `scripts/house-line/structure/dam-cost.mjs` |
+| Eyeball set's pinned captures (house:frames honours them under `--list` / `--pands`) | `scripts/house-line/benchmark/eyeball-poses.json` |
+
+### The model
+
+`structure-prior.json` holds the 1,437 read houses before 1945 that the fit kept: their location, build year, the exposed
+height and width of their street run as the mesher lays it, and their read storeys and upper window columns. Benchmark
+pands, and every training pand within 60 m of one, are held out.
+
+For a street run of a pand with a prior:
+- storeys = the most common count among the 25 nearest read houses, by distance √((Δyear/60)² + (Δheight/1 m)²) + metres apart / 2,000;
+- columns = the same over the 15 nearest, by √((Δyear/60)² + (Δwidth/0.3 m)²) + metres apart / 500;
+- a field gets no guess when no read house's height (or width) lies within 1.5 m (`SIZE_GAP_M`).
+
+The guess enters the mesher as a stated count does (storeys only with `=storeys|all`) (`priorBays` → `frontageLayoutScale`, `axisUnitPlan`, the nearest
+storey fit), so the wall's clamps still apply.
+
+The prior is set only:
+- in the photo look;
+- before 1945, on canal/c19/school layouts;
+- with no spec storeys or bays;
+- not on landmark kits, large-tier fronts, front carriers or garden sheds.
+
+It does not act:
+- on a recipe front;
+- on a two-front corner (`streetCorner`);
+- above the ground.
+
+The worker reads the flag through `withWorkerFlags`.
+
+### Off is byte-identical; the three states
+
+With `=0`, `meshBuildingFor` sets no field (`structurePrior.test.ts`). `odd-cells-hash.ts` over the 55 house-spec tiles
+(411,398 buildings, `artifacts/structure-priors/hash3-*.json`):
+
+| state | all-hash | buildings differing from off | wall / extras vertices |
+|---|---|---|---|
+| `STRUCTURE_PRIOR=0` | `ce6c2ebacf13e95e` (= main at 04843f800) | 0 | 23,835,692 / 61,079,310 |
+| default (columns) | `cfa4fe4473d5ab63` | 87,629 | 23,882,200 (+0.20 %) / 61,039,200 (−0.07 %) |
+| `=all` | `b624aab4f0db2a3f` | 115,201 | 23,883,044 / 60,984,024 |
+
+Shells are unchanged in every state. The baked world-v1 cells carry the chunks as compiled, so the default reaches a
+ride only after the world is recompiled (or under `?world=live`).
+
+### Result (held out, benchmark-v1 labels)
+
+Drawn through the mesher (`baseline.ts` in each state; `artifacts/structure-priors/score-{0,columns,all}.json`). The
+scoreboard row:
+
+| field | set | off | default (columns) | `=all` |
+|---|---|---|---|---|
+| columns | 141 generic | 35.5 % [28.0, 43.6] | **59.6 % [51.3, 67.3]** | 59.6 % |
+| columns | 127 unspecified | 32.3 % [24.8, 40.8] | **59.1 % [50.4, 67.2]** | 59.1 % |
+| storeys | 141 generic | 49.6 % [41.5, 57.8] | 49.6 % (unchanged) | 55.3 % [47.1, 63.3] |
+| storeys | 127 unspecified | 44.9 % [36.5, 53.6] | 44.9 % (unchanged) | 51.2 % [42.6, 59.7] |
+| crown | 127 unspecified | 37.5 % | 37.5 % | 37.5 % |
+
+Paired, 127 unspecified (`paired.ts`): columns 45 wrong→right, 11 right→wrong (p < 0.001; before 1800: 32 against 6);
+storeys 14 against 6 (p 0.115; 1800–1879: 3 against 0, p 0.25). Errors off → all: storeys over 36 / under 34 → over 29 /
+under 29; columns over 18 / under 68 → over 30 / under 28.
+
+### Restated on D1's adjudicated labels (`benchmark-v1-adjudicated.json`, lane D1 6f8df6d61)
+
+D1 changed 54 labels and kept 36. It left 12 fields undecidable, and those are excluded: `labels.ts` drops a field listed
+in `adjudicated.undecidable`. The same pands and the same prior table, so the result is still held out. Drawn through the
+mesher (`baseline.ts --labels`, `score-adj-*.json`):
+
+| field | set | off | default (columns) | `=all` | prior alone (`fit.ts --labels`) |
+|---|---|---|---|---|---|
+| columns | 136 generic | 39.0 % [31.2, 47.4] | **62.5 % [54.1, 70.2]** | 62.5 % | 59.6 % |
+| columns | 123 unspecified | 35.0 % [27.1, 43.7] | **61.0 % [52.1, 69.1]** (+26.0) | 61.0 % | 58.5 % |
+| storeys | 140 generic | 51.4 % [43.2, 59.6] | 51.4 % | 56.4 % [48.2, 64.4] | 57.9 % |
+| storeys | 126 unspecified | 46.8 % [38.3, 55.5] | 46.8 % | 52.4 % [43.7, 60.9] (+5.6) | 55.6 % (+8.8) |
+
+Paired storeys, off against `=all`, 126 unspecified (`paired.ts --labels`):
+
+| family | n | off | all | wrong→right | right→wrong | McNemar p |
+|---|---|---|---|---|---|---|
+| all years | 126 | 46.8 % | 52.4 % | 14 | 7 | 0.189 |
+| 1800–1879 | 29 | 37.9 % | 48.3 % | 3 | 0 | 0.250 |
+
+Columns, paired: 45 wrong→right against 13 right→wrong (p < 0.001). On D1's labels, storeys still fall short of the
++10 gate. The 1800–1879 split is unchanged: 10 under-counts, all canal-style, at a median of 2.08 m per implied upper storey.
+
+**Columns:** today's error is one constant. The drawn window pitch has a median of 2.72 m against the photos' 1.99 m (the
+style cells' bay widths, `STYLE_DIMS`), so the game under-counts columns, mostly by one.
+
+**Storeys:** the errors are balanced; no single constant explains them.
+- The c19 cell's 3.0 m storey under-reads the read 1880–1919 upper storeys (median 3.49 m over a 3.3 m ground storey).
+  That is Weteringschans 171218, drawn 5 where the house has 4.
+- The 1800–1879 under-count is not the c19 storey height. All 13 under-counted houses there are canal-style. Their
+  walls are 6–11 m to the eaves, and their labels give one storey more than those walls hold (a median of 2.06 m per
+  upper storey if the label is right). The labels count a roof storey, an attic under the cornice, or a dormer floor,
+  which the eaves height leaves out. The c19 houses of the same years go the other way: five of the eight over-counts
+  are c19 walls of 14–18 m labelled 3 storeys, 5.5–6.8 m a storey. Both point at the labels and the roof storey, not the
+  3.0 m cell. Re-read them on D1's adjudicated labels before fitting a constant.
+
+**Model selection:** the CV over the 162-setting grid picked the reported setting. Over all 162 settings, the held-out
+storeys ranged 52.8–64.6 % and columns 52.0–60.6 % (the prior alone, before the mesher's clamps).
+
+### Neighbours (integrator refinements; `neighbours.ts`, `rules.ts`, provisional: the pairs cluster by street)
+
+The neighbour rules are not wired. The ruling for when they are:
+- the twin copy (a similar party-wall neighbour, yr ±3, w ±0.3 m, h ±0.8 m, with a reading) applies to **storeys only**;
+- columns always come from the prior;
+- no floor-to-floor transfer.
+
+Leave-one-out on the read party-wall pairs:
+
+| pairs | storeys copy | storeys floor-to-floor transfer | storeys prior (row held out) | columns copy | columns prior |
+|---|---|---|---|---|---|
+| similar (yr ±3, w ±0.3, h ±0.8), 62 directed | 100 % | 100 % | 82 % | 81 % | 77 % |
+| heights differ > 0.8 m, 470 directed | 55 % | **34 %** | **62 %** | 55 % | 64 % |
+| of those, 19th-c ring (56) | 96 % | 39 % | 89 % | 57 % | 66 % |
+
+- Transferring the floor-to-floor height to an unequal neighbour loses to the prior alone, and loses to copying the count.
+- Copying from a similar neighbour beats the prior.
+
+Agreement per street group spreads widely. Storeys:
+- Kinkerstraat and Marnix: 100 %.
+- Belt Jordaan specs: 45 %.
+- Belt Nieuwmarkt specs: 30 %.
+
+### What the prior cannot say
+
+- Crown: the roof planner draws it from 3DBAG and the register. **The next prior:** a crown kNN would score 46–62 % exact
+  against 38 % today (`crown.ts`, held out, not CV-selected). Wire it through the roof planner (a crown class handed to
+  the planner as a stated crown is), not around it, behind its own `?structurePrior=` mode.
+- Window heads, bands, surrounds, window kind: neighbours agree near chance (bands 88 % against a 64 % base rate). These need
+  a description of the front (D1), not a prior.
+- Storey heights and the ground storey: the fit keeps the style's ground storey.
+- Shopfronts, door bay.
+- Masses 3DBAG gets wrong. Overtoom 0363100012079011 (1930) is one: a low gabled mass stands against a five-storey front,
+  so the run the mesher lays is not the front in the photo. That is a 3DBAG/mass case, not a prior failure.
+
+### Cost (columns on against off, desktop, `?world=live`, scratch bundles)
+
+| run | triangles drawn | building vertices resident | building geometry MB |
+|---|---|---|---|
+| ride-perf-owners chase (fixed-ride start, 12 s) | 1,686,123 → 1,691,675 (+0.33 %) | 5,389,208 → 5,417,020 (+0.52 %) | 177.5 → 178.4 |
+| ride-perf-owners aerial (~300 m up) | 3,445,094 → 3,443,371 (−0.05 %) | 5,390,203 → 5,418,015 (+0.52 %) | 177.5 → 178.4 |
+
+Over the city (odd-cells-hash), wall vertices rise 0.20 % and extras vertices fall 0.07 %.
+
+Neither the Dam poses (`dam-cost.mjs`) nor `aerialGlMaxMB` gave a comparable figure:
+- The Dam poses never settled under `world=live` in 120 s; the two runs held 26 against 16 chunks.
+- The `world=live` aerial pan reached t80 of 180 s after 87 minutes and was stopped.
+
+The real `aerialGlMaxMB` comes from a recompiled baked world (`perf-gate.mjs --aerial`). At +0.5 % of the building
+buffers, expect about +1 MB.
+
+### Eyeball poses
+
+`scripts/house-line/benchmark/eyeball-poses.json` pins one good capture per eyeball-set pand, and lists the bad captures
+as `notPanos`. The picks were made by eye from every capture earlier frames runs drew for the pand. Keizersgracht
+0363100012165023's automatic pick, from 2023 on the far quay, sits behind a tree trunk and a portable toilet. The pin is
+F1's clear 2019-01-10 capture at 5.1 m. house:frames applies the file under `--list` and `--pands`, adds the pin's
+`notPanos` to the entry's own, and skips its sight-line filter for a pinned capture. `--no-pinned-poses` ignores the file.

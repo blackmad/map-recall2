@@ -25,6 +25,7 @@ import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Poi
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
+import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -57,6 +58,9 @@ export type MeshBuilding = {
   /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period,
    *  wall, storeys (H9), and (H11) the storey fit, window look and shop paint. */
   specRecipe?: import('./houseSpec/decorate.js').SpecRecipe;
+  /** Lane PR1 (houseSpec/structurePrior.ts): a pand with no HouseSpec count takes its street runs' window columns (and,
+   *  with `?structurePrior=storeys|all`, storeys) from the read houses around it. Absent (`?structurePrior=0`) = main before PR1. */
+  structurePrior?: { year: number; lng: number; lat: number };
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -223,12 +227,31 @@ export function wallTopHeightM(p: Record<string, unknown>): number {
   return height;
 }
 
+/**
+ * Lane PR1: a street run's structure-prior grid (houseSpec/structurePrior.ts) as a HouseSpec count, for a building the
+ * decorator gave a prior (meshBuildingFor; `?structurePrior=0` off, columns by default, storeys with `=storeys|all`) and no street-appearance recipe: the guessed window
+ * columns and storeys go through the same fit as a stated count (frontageLayoutScale, axisUnitPlan; storeys by the
+ * nearest fit). Undefined without a prior, on a two-front corner, off the street or above the ground.
+ */
+function priorBays(b: MeshBuilding, streetRun: boolean, corner: boolean, base: number, exposedM: number, widthM: number): FrontageBays | undefined {
+  // Off for a corner with two street fronts (a guess fitted on one-front houses), a recipe front, a back or raised run.
+  if (!b.structurePrior || b.recipe || corner || !streetRun || base >= 0.5) return undefined;
+  const g = structureGuess({ ...b.structurePrior, exposedM, widthM });
+  // The storey count only with `?structurePrior=storeys|all` (held by default, the PR1 ruling).
+  const storeys = g?.storeys && g.storeys >= 2 && structurePriorStoreys() ? g.storeys : null;
+  if (!g || (!g.columns && !storeys)) return undefined;
+  return { ...(g.columns ? { bays: g.columns } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(storeys ? { storeys, exposedM, fit: 'nearest' as const } : {}) };
+}
 /** Which of a style's looks a building wears (shared with the roof plan so gable faces match the walls). */
 /**
  * A measuring hook (house:preview's measure.json `layout`, lane H11): when set, each laid-out wall run reports its
  * storey grid (upper storeys over the ground storey) and drawn window columns. Unset in the game: no cost.
  */
-export const layoutProbe: { sink?: (id: string, run: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }) => void } = {};
+export type LayoutProbeRun = { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number;
+  /** Lane PR1 (structure priors): the layout style, window axes per cell, whether a street-appearance recipe or a
+   *  HouseSpec / structure prior fitted the run, and the exposed height the grid was laid on. */
+  style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number };
+export const layoutProbe: { sink?: (id: string, run: LayoutProbeRun) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
 function hash01(text: string): number {
@@ -616,12 +639,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // count the clamp allows, with the stated ground height (streetFacadeRendering.ts specStoreyFit).
       const streetRun = run.some(({ e }) => doorAllowed.has(e)), fitAll = !!b.specRecipe?.storeysFit && base < 0.5;
       const specBays: FrontageBays | undefined = !b.recipe && ((streetRun && (b.specRecipe?.bays || b.specRecipe?.storeys)) || (fitAll && b.specRecipe?.storeys))
-        ? { ...(streetRun && b.specRecipe!.bays ? { bays: b.specRecipe!.bays } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(b.specRecipe!.storeys ? { storeys: b.specRecipe!.storeys, exposedM: top - parapetSpec - base, ...(b.specRecipe!.storeysFit ? { fit: 'nearest' as const, ...(b.specRecipe!.groundM ? { groundM: b.specRecipe!.groundM } : {}) } : {}) } : {}) } : undefined;
+        ? { ...(streetRun && b.specRecipe!.bays ? { bays: b.specRecipe!.bays } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(b.specRecipe!.storeys ? { storeys: b.specRecipe!.storeys, exposedM: top - parapetSpec - base, ...(b.specRecipe!.storeysFit ? { fit: 'nearest' as const, ...(b.specRecipe!.groundM ? { groundM: b.specRecipe!.groundM } : {}) } : {}) } : {}) } : priorBays(b, streetRun, streetCorner, base, top - parapetSpec - base, run.reduce((sum, r) => sum + r.e.len, 0));
       // Lane WG (houseSpec/storeyPlan.ts): the stated count against 3DBAG's eaves, with a souterrain and a roof storey; a
       // pitch outside the period range drops the count (the style's own draws) and is logged for a second read.
       let eavesBand = 0;
       // `?storeyGuard=0` / STOREY_GUARD=0 turns the whole plan off: H9/H11's fit, byte-identical to main.
-      if (storeyGuardOn() && specBays?.storeys && specBays.exposedM) {
+      if (storeyGuardOn() && b.specRecipe?.storeys && specBays?.storeys && specBays.exposedM) {
         const sr = b.specRecipe!, input = { wallM: specBays.exposedM, storeys: specBays.storeys, ...(sr.souterrain ? { souterrain: true } : {}), ...(sr.roofStorey ? { roofStorey: sr.roofStorey } : {}), ...(sr.eavesM ? { eavesM: sr.eavesM - base } : {}), ...(sr.corniceCrown ? { crown: 'cornice' as const } : {}), period: sr.period };
         const plan = storeyPlan(input);
         if (plan) {
@@ -695,7 +718,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         continue;
       }
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
-      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base });
+      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base, style: b.style, axes: b.openings?.upper?.axes.length ?? 1, recipe: !!b.recipe, fit: specBays ? (b.specRecipe?.bays || b.specRecipe?.storeys ? 'spec' : 'prior') : null, exposedM: facadeTop - base });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{

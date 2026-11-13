@@ -40,7 +40,10 @@ Input (one of)
                          notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
                          maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
-                         that the exposed-wall rule drops: Nassaukade 146, 0363100012160704)
+                         that the exposed-wall rule drops: Nassaukade 146, 0363100012160704;
+                         pano: "panoId", use that capture when it is in range)
+                         Pinned poses: a pand in scripts/house-line/benchmark/eyeball-poses.json (the eyeball set) takes
+                         its pinned pano and notPanos under --list and --pands; --no-pinned-poses ignores the file
 
 Flags
   --year <yyyy>          only panoramas of that mission year
@@ -113,7 +116,20 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-export type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number };
+export type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; pano?: string };
+
+/** The eyeball set's pinned captures (lane PR1): one good panorama per pand, and the captures judged bad. */
+export const PINNED_POSES = 'scripts/house-line/benchmark/eyeball-poses.json';
+export function withPinnedPoses(pands: Entry[], file = PINNED_POSES): Entry[] {
+  if (!fs.existsSync(file)) return pands;
+  const pins = (JSON.parse(fs.readFileSync(file, 'utf8')).pands ?? {}) as Record<string, { pano?: string; notPanos?: string[] }>;
+  return pands.map(e => {
+    const pin = pins[e.id];
+    if (!pin) return e;
+    const notPanos = [...new Set([...(e.notPanos ?? []), ...(pin.notPanos ?? [])])];
+    return { ...e, pano: e.pano ?? pin.pano, ...(notPanos.length ? { notPanos } : {}) };
+  });
+}
 export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
@@ -138,8 +154,9 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = (await pandsInBuurt(b)).map(f => ({ id: bare(f.id) })); inputName = `buurt ${b.code} ${b.name}`;
   } else if (arg(argv, 'list')) {
     const list = JSON.parse(fs.readFileSync(arg(argv, 'list')!, 'utf8'));
-    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
+    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, pano: e.pano }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
+  if ((arg(argv, 'list') || arg(argv, 'pands')) && !argv.includes('--no-pinned-poses')) pands = withPinnedPoses(pands);
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
   return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
@@ -299,10 +316,15 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
   let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
   if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
+  // A pinned capture (an entry's pano; the eyeball set's eyeball-poses.json) wins when it is in range; the sight-line
+  // filter below is skipped for it (it was picked by eye).
+  const pinned = entry.pano ? ranked.find(c => c.panoId === entry.pano) : undefined;
+  if (entry.pano) note += pinned ? `; pinned capture ${entry.pano}` : `; pinned capture ${entry.pano} not in range, picked as usual`;
+  if (pinned) ranked = [pinned];
   // --prefer-obliquity / --max-dist reach squarer, farther captures, and in a narrow street those stand on the next street
   // with houses between them and the wall (lane F4, #379: 36 of 37 Jordaan poses). With either flag, a capture whose
   // sight line to the wall (to its middle and both quarter points, 1 m up) crosses another footprint is dropped.
-  if (args.preferObliquityDeg !== undefined || maxD !== FACADE_WINDOW.maxD) {
+  if (!pinned && (args.preferObliquityDeg !== undefined || maxD !== FACADE_WINDOW.maxD)) {
     const before = ranked.length, reach = Math.max(maxD, wall.len / 2 + 1) + 5, boxes = near.filter(o => o.id !== fp.id).map(o => ({ o, x0: Math.min(...o.ring.map(q => q.x)), x1: Math.max(...o.ring.map(q => q.x)), y0: Math.min(...o.ring.map(q => q.y)), y1: Math.max(...o.ring.map(q => q.y)) }))
       // Only footprints within reach of the wall can stand on a sight line (every capture is within maxD of the wall's middle).
       .filter(b => b.x1 > wall.mid.x - reach && b.x0 < wall.mid.x + reach && b.y1 > wall.mid.y - reach && b.y0 < wall.mid.y + reach);
@@ -410,7 +432,7 @@ function codeHash(): string {
   return codeHashMemo;
 }
 // notPanos, --prefer-obliquity and --max-dist change the pick, so they key the cache too (absent = undefined, dropped by JSON: the same keys as before).
-const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash() });
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, pano: e.pano }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash() });
 /** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
 function cachedPrep(e: Entry, args: Args): Prepared | null {
   const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);

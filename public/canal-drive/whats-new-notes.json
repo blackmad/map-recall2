@@ -3,6 +3,49 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Nieuw Engeland, the domed corner of Koningsplein and Singel",
+      "text": "Nieuw Engeland is now individually modelled: its round corner, arched windows with green ironwork, slate mansard with dormers, and the tower with its open lantern, plus the neck-gabled Singel 466 next door. The round corner is built from five flat facets for now, and the dome is a little fuller than the real one.",
+      "where": [
+        4.8899,
+        52.3669
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-13-demo/nieuw-engeland-gallery-corner.jpg",
+          "alt": "Nieuw Engeland model seen from the Koningsplein corner",
+          "caption": "The model"
+        },
+        {
+          "src": "landmarks/2026-11-13-demo/nieuw-engeland-ingame-koningsplein-desktop.jpg",
+          "alt": "Nieuw Engeland in the ride from Koningsplein",
+          "caption": "In the ride, Koningsplein"
+        },
+        {
+          "src": "landmarks/2026-11-13-demo/nieuw-engeland-photo-far-ne.jpg",
+          "alt": "Street panorama of Nieuw Engeland",
+          "caption": "Photo (panorama, CC BY 4.0)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "Ordinary houses get a likelier number of window columns",
+      "text": "Houses we have no photo reading for now take their window-column count from similar measured houses nearby (same era, width and height) instead of a guess from the width alone. On the houses we have labelled by hand, the right column count went from 39 % to 62.5 %. Willemsparkweg now shows three columns, as in the photo. On Weteringschans the columns are right, but the storey count is still off; that is the next piece.",
+      "images": [
+        {
+          "src": "ui/2026-11-13-structure-priors/random-0363100012162837.jpg",
+          "alt": "Willemsparkweg: photo, before with two columns, after with three",
+          "caption": "Photo | before | after, Willemsparkweg"
+        },
+        {
+          "src": "ui/2026-11-13-structure-priors/eyeball-0363100012171218.jpg",
+          "alt": "Weteringschans: photo, before with two columns, after with three",
+          "caption": "Photo | before | after, Weteringschans"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "175 more canal-belt houses built from their photos",
       "text": "Houses in Burgwallen-Oude Zijde, the Nieuwmarkt, the western canal belt and along Haarlemmerdijk now have their own models, built from measured specs: storeys, window columns, gables, white bands and colours read from street photos. The picture shows six on Haarlemmerdijk and Haarlemmerstraat, photo on the left and game on the right. Some are close; others still miss shopfront detail or draw the wall a shade too light. 40 more houses were held back because their models failed checks, and go back for another pass.",
       "where": [

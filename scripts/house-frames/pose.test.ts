@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { aimPose, frameFor, fpsFor, gamePlayer, gridConvergenceDeg, hfovDeg, projectRd, rayFor, toPanoDirection, wallOutline, PANO_EYE_HEIGHT_M, type WallQuad } from './pose.ts';
-import { HELP, splitLists } from './frames.ts';
+import { HELP, PINNED_POSES, splitLists, withPinnedPoses } from './frames.ts';
 
 const close = (a: number, b: number, eps: number, what: string) => assert.ok(Math.abs(a - b) <= eps, `${what}: ${a} vs ${b} (+-${eps})`);
 const LOADER = { _lastCenterLng: 4.8952, _lastCenterLat: 52.3702, _lastOffsetX: 1000, _lastOffsetY: 2000 };
@@ -111,4 +111,12 @@ test('--lists splits into one argv per list, the shared flags kept and --out/--l
   assert.throws(() => splitLists(['--lists', 'a.json']), /want <list.json>:<out dir>/);
   assert.match(HELP, /--lists/);
   assert.match(HELP, /--reuse-photos/);
+});
+
+test('pinned eyeball poses: a listed pand takes its pinned capture and bad captures; others and an entry pano are kept', () => {
+  const [k, other, own] = withPinnedPoses([{ id: '0363100012165023', notPanos: ['x'] }, { id: '0363100099999999' }, { id: '0363100012171218', pano: 'mine' }], PINNED_POSES);
+  assert.equal(k.pano, 'TMX7316010203-001047_pano_0000_000803', 'Keizersgracht 165023: the clear 2019-01-10 capture at 5.1 m');
+  assert.deepEqual(k.notPanos, ['x', 'TMX7316010203-002980_pano_0000_000022']);
+  assert.deepEqual(other, { id: '0363100099999999' });
+  assert.equal(own.pano, 'mine');
 });

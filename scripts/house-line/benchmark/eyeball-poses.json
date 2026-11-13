@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "about": "One good panorama per eyeball-set pand (lane PR1; docs/house-line.md §14). house:frames uses `pano` whenever --list or --pands names the pand (the entry's own notPanos are added; --no-pinned-poses ignores this file). notPanos are the captures judged bad. Picked 2026-11-13 by eye from every capture earlier frames runs drew for the pand.",
+  "pands": {
+    "0363100012164843": { "street": "Nassaukade 506", "pano": "TMX7316010203-001041_pano_0002_005693", "notPanos": ["TMX7316010203-001041_pano_0002_005691", "TMX7316010203-001540_pano_0000_001137"], "why": "2019-01-09, 8.9 m; 005691 has sun glare, the 2020 58 m capture shows the front a few pixels wide down the road" },
+    "0363100012165023": { "street": "Keizersgracht", "pano": "TMX7316010203-001047_pano_0000_000803", "notPanos": ["TMX7316010203-002980_pano_0000_000022"], "why": "2019-01-10, 5.1 m, clear (F1's pose); the 2023 far-quay capture is behind a tree trunk and a portable toilet" },
+    "0363100012167483": { "street": "Keizersgracht", "pano": "TMX7316010203-002970_pano_0007_000593", "notPanos": [], "why": "2023-02-13 from the far quay, square; the 5.5 m near-quay capture is 33 deg oblique and clips the crown" },
+    "0363100012168136": { "street": "Brouwersgracht", "pano": "TMX7316010203-002950_pano_0000_000349", "notPanos": ["TMX7316010203-001543_pano_0000_002803"], "why": "2023-01-30 from the far quay; bicycles cover the ground floor only; the near capture is 52 deg oblique" },
+    "0363100012168578": { "street": "Berenstraat", "pano": "TMX7316010203-002976_pano_0010_000057", "notPanos": ["TMX7316010203-002361_pano_0006_000068"], "why": "2023-02-20, 37 deg, the whole front and door; the 2021 capture is 52 deg oblique" },
+    "0363100012169116": { "street": "Keizersgracht", "pano": "TMX7316010203-000227_pano_0000_002423", "notPanos": ["TMX7316010203-002045_pano_0001_002986"], "why": "2017-03-29 from the far quay, square; a thin trunk crosses the frame; the near capture is 48 deg oblique" },
+    "0363100012171023": { "street": "Keizersgracht", "pano": "TMX7316010203-001641_pano_0003_000179", "notPanos": ["TMX7316010203-002976_pano_0002_000363"], "why": "2020-02-14 from the far quay; the near capture is 55 deg oblique" },
+    "0363100012171218": { "street": "Weteringschans", "pano": "TMX7316010203-002364_pano_0004_000092", "notPanos": [], "why": "2021-12-29, 13 m, square and clear" },
+    "0363100012175318": { "street": "Singel", "pano": "TMX7316010203-002980_pano_0006_000029", "notPanos": [], "why": "2023-02-20 from the far quay; boat and cars cover the ground floor only" },
+    "0363100012175320": { "street": "Singel", "pano": "TMX7316010203-001544_pano_0000_000188", "notPanos": ["TMX7316010203-003004_pano_0010_000174"], "why": "2020-01-08, 9 m, 42 deg but clear; the 2023 far-quay capture is behind a van and a blurred plate" },
+    "0363100012175321": { "street": "Singel", "pano": "TMX7316010203-001544_pano_0001_000257", "notPanos": [], "why": "2020-01-08 from the far quay, square" },
+    "0363100012175358": { "street": "Singel", "pano": "TMX7316010203-001544_pano_0001_000255", "notPanos": [], "why": "2020-01-08 from the far quay; a car covers the ground floor only" },
+    "0363100012176312": { "street": "Herengracht", "pano": "TMX7316010203-002990_pano_0002_000032", "notPanos": ["TMX7316010203-002045_pano_0001_003072"], "why": "2023-03-06, square; the 2021 capture looks down the canal at 37 deg" },
+    "0363100012176346": { "street": "Raadhuisstraat", "pano": "TMX7316010203-001050_pano_0000_000173", "notPanos": [], "why": "2019-01-11, 15.6 m, square" },
+    "0363100012180181": { "street": "Prinsengracht", "pano": "TMX7316010203-001048_pano_0000_001516", "notPanos": [], "why": "2019-01-11 from the far quay, square" },
+    "0363100012182848": { "street": "Bloedstraat", "pano": "TMX7316010203-002992_pano_0005_000143", "notPanos": ["TMX7316010203-002031_pano_0000_000034"], "why": "2023-03-13; the 2021 capture has a sign post and bicycles over the front" },
+    "0363100012182849": { "street": "Nieuwmarkt", "pano": "TMX7316010203-001547_pano_0000_000594", "notPanos": [], "why": "2020-01-10, 10 m, square" },
+    "0363100012182857": { "street": "Nieuwmarkt", "pano": "TMX7316010203-001547_pano_0000_000600", "notPanos": [], "why": "2020-01-10, 10 m, square" }
+  }
+}
