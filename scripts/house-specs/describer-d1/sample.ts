@@ -40,16 +40,16 @@ const gitShow = (ref: string, rel: string): Buffer | null => {
 };
 const originCrops = new Set(execFileSync('/usr/bin/git', ['-C', SD, 'ls-tree', '--name-only', 'origin/main', 'pand-crops/'], { encoding: 'utf8' }).split('\n').map(s => s.split('/')[1]).filter(Boolean));
 /** The bytes of pand-crops/<id>/<file> from a local checkout, else origin/main; null when absent. */
-function cropBytes(id: string, file: string): Buffer | null {
+export function cropBytes(id: string, file: string): Buffer | null {
   for (const d of LOCAL_CROPS) { const p = path.join(d, 'pand-crops', id, file); if (fs.existsSync(p)) return fs.readFileSync(p); }
   return originCrops.has(id) ? gitShow('origin/main', `pand-crops/${id}/${file}`) : null;
 }
-const hasCrop = (id: string) => originCrops.has(id) || LOCAL_CROPS.some(d => fs.existsSync(path.join(d, 'pand-crops', id, 'front.jpg')));
+export const hasCrop = (id: string) => originCrops.has(id) || LOCAL_CROPS.some(d => fs.existsSync(path.join(d, 'pand-crops', id, 'front.jpg')));
 
 // crop choice, as describe.ts
 const MAN = path.join(ROOT, 'scripts/house-crops/manifests');
 const manifests = fs.readdirSync(MAN).filter(f => f.endsWith('.json')).map(f => ({ code: f.replace('.json', ''), m: json(path.join(MAN, f)) }));
-function chooseCrop(id: string): { file: string; tier: 'good' | 'fallback' | 'none'; year: number | null; quality: number | null; reasons: string[] } | null {
+export function chooseCrop(id: string): { file: string; tier: 'good' | 'fallback' | 'none'; year: number | null; quality: number | null; reasons: string[] } | null {
   const hit = manifests.find(x => id in x.m.pands);
   let cands: { file: string; year: number | null; panoIds: string[]; reasons: string[]; quality: number | null }[] = [];
   if (hit) {

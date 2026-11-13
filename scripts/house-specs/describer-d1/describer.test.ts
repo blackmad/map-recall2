@@ -5,6 +5,7 @@ import { compare, confusion, readingOf, tabulate, windowFamily, wilson } from '.
 import { specProblems } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { benchmarkReading, doorPosition, handSetReading, handSpecReading } from './truth.ts';
 import { columnOf, pooledTruth } from './score.ts';
+import { stageOne } from './stage.ts';
 
 const answer = (over: Partial<DescriberAnswer> = {}): DescriberAnswer => ({
   v: 1, pandId: '0363100012176272', image: { ref: 'source-data://pand-crops/0363100012176272/front.jpg', kind: 'crop', tier: 'good', year: 2023, gate: 'pass' },
@@ -168,4 +169,15 @@ test('twins v2: face verdicts, door mirror, PR1 label verdicts and similarity, n
   assert.deepEqual([s.sides, s.tp, s.fp, s.fn, s.mirrored.k, s.mirrored.n], [2, 1, 1, 0, 1, 1], 'the null side is not scored');
   const picked = spreadPick([{ g: 'x', i: 1 }, { g: 'x', i: 2 }, { g: 'y', i: 3 }, { g: 'x', i: 4 }], r2 => r2.g, 3, 2);
   assert.deepEqual(picked.map(x => x.i), [1, 3, 2]);
+});
+
+test('stageOne: vision-judge fields plus the measured wall colour; an unreadable answer stages an empty spec', () => {
+  const s = stageOne(answer(), '#7A4A3A', '2026-11-13');
+  assert.deepEqual(specProblems(s), []);
+  assert.equal(s.design.palette?.brick, '#7a4a3a');
+  assert.equal(s.provenance['palette/brick']?.source, 'streetlevel-measured');
+  assert.equal(s.provenance['fronts/0/storeys']?.source, 'vision-judge');
+  assert.equal(stageOne(answer(), 'brown', null).design.palette?.brick, undefined);
+  const empty = stageOne(answer({ readable: false }), '#7a4a3a', null);
+  assert.deepEqual(empty.provenance, {});
 });
