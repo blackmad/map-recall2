@@ -75,8 +75,8 @@ for (const id of pands) {
   const p = own.properties as Record<string, unknown>, sr = p.specRecipe as Record<string, unknown> | undefined;
   rows.push({
     pandId: id, year: p.constructionYear ?? null,
-    spec: sr ? { storeys: sr.storeys ?? null, souterrain: sr.souterrain ?? null, roofStorey: sr.roofStorey ?? null, eavesM: sr.eavesM ?? null, period: sr.period ?? null } : null,
-    plan: plan ? { wallM: +plan.input.wallM.toFixed(2), eavesM: plan.input.eavesM ?? null, pitchM: +plan.plan.pitchM.toFixed(2), souterrainM: +plan.plan.souterrainM.toFixed(2), roofRow: plan.plan.roofRow, lineFrom: plan.plan.lineFrom, range: [plan.plan.range.min, plan.plan.range.max], ok: plan.plan.ok, tallGround: plan.plan.tallGround ? +plan.plan.tallGround.groundM.toFixed(2) : null, cause: causeOf(plan.plan, plan.input) } : null,
+    spec: sr ? { storeys: sr.storeys ?? null, souterrain: sr.souterrain ?? null, roofStorey: sr.roofStorey ?? null, corniceCrown: sr.corniceCrown ?? null, eavesM: sr.eavesM ?? null, period: sr.period ?? null } : null,
+    plan: plan ? { wallM: +plan.input.wallM.toFixed(2), eavesM: plan.input.eavesM ?? null, pitchM: +plan.plan.pitchM.toFixed(2), souterrainM: +plan.plan.souterrainM.toFixed(2), roofRow: plan.plan.roofRow, lineFrom: plan.plan.lineFrom, range: [plan.plan.range.min, plan.plan.range.max], ok: plan.plan.ok, tallGround: plan.plan.tallGround ? +plan.plan.tallGround.groundM.toFixed(2) : null, capped: plan.plan.capped ?? false, lineM: +plan.plan.lineM.toFixed(2), cause: causeOf(plan.plan, plan.input) } : null,
     drawn: run ? { storeys: run.storeys + 1, columns: run.bays, groundM: +run.groundM.toFixed(2), storeyM: +run.storeyM.toFixed(2), wallM: +(run.groundM + run.storeys * run.storeyM).toFixed(2) } : null,
   });
 }
@@ -84,6 +84,7 @@ const planOf = (r: Record<string, unknown>) => r.plan as { ok?: boolean; cause?:
 const rejected = rows.filter(r => planOf(r)?.ok === false).map(r => r.pandId);
 // second reads: every reject but the mesher-height items
 const causes = Object.fromEntries(['a', 'c', 'd', 'eavesAboveDrawnWall'].map(c => [c, rows.filter(r => planOf(r)?.cause === c).map(r => r.pandId)]));
-const tallGround = rows.filter(r => planOf(r)?.tallGround).map(r => r.pandId);
-fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, secondRead: rows.filter(r => planOf(r)?.ok === false && planOf(r)?.cause !== 'eavesAboveDrawnWall').map(r => r.pandId), causes, tallGroundRescued: tallGround, rows }, null, 1) + '\n');
-console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected (a ${causes.a.length}, c ${causes.c.length}, d ${causes.d.length}, eavesAboveDrawnWall ${causes.eavesAboveDrawnWall.length}), ${tallGround.length} rescued by a tall ground -> ${out}`);
+const tallGround = rows.filter(r => planOf(r)?.tallGround && !(planOf(r) as { capped?: boolean }).capped).map(r => r.pandId);
+const capped = rows.filter(r => (planOf(r) as { capped?: boolean } | null)?.capped).map(r => r.pandId);
+fs.writeFileSync(out, JSON.stringify({ env: { HOUSE_SPECS_DIR: process.env.HOUSE_SPECS_DIR ?? null, STOREY_GUARD: storeyGuardOn() }, pands: rows.length, withPlan: rows.filter(r => r.plan).length, rejected, secondRead: rows.filter(r => planOf(r)?.ok === false && planOf(r)?.cause !== 'eavesAboveDrawnWall').map(r => r.pandId), causes, tallGroundRescued: tallGround, cornicedCapped: capped, rows }, null, 1) + '\n');
+console.log(`storey-guard: ${rows.length} pands, ${rows.filter(r => r.plan).length} with a plan, ${rejected.length} rejected (a ${causes.a.length}, c ${causes.c.length}, d ${causes.d.length}, eavesAboveDrawnWall ${causes.eavesAboveDrawnWall.length}), ${tallGround.length} rescued by a tall ground, ${capped.length} capped under a cornice/mansard -> ${out}`);

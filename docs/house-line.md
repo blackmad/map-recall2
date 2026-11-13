@@ -435,11 +435,19 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
 - **souterrain** (`fronts/0/souterrain`): 0.58 of the storey pitch (`blockBuilding/systems.ts SOUTERRAIN.factor`, the
   block-face kit's), from the street up; then `storeys` rows at one pitch up to the eaves line.
 - **roof storey** (`fronts/0/roofStorey: mansard | attic | none`, new spec field, spec-level: `drawableDesign` drops it for
-  the recipe route): above the eaves line, roof not wall. It draws one more window row only where the mesher's wall
-  reaches over the eaves line by 0.6 of a storey.
+  the recipe route): above the eaves line, roof not wall. A mansard is roof and a cornice crown (`fronts/0/gable:
+  cornice` from a front-reading source, view `corniceCrown`) has no window row above the rows: the wall over the line is a
+  plain band (the mesher's parapet band). Only a stated `attic` draws one more window row, where the wall reaches over
+  the line by 0.6 of a storey. (BK's bake-off, 2026-11-13: an implied roof row drew 168043 as 4 rows, and the prior drew
+  168042, 171192 and 168096 as 5, for 3 storeys read under a cornice or mansard.)
+- **capped**: a cornice or mansard front whose rows overfill the wall even with a tall ground draws them at the period's top
+  pitch over a tall ground, the rest a plain band, when that band is at most one period storey; more stays a reject.
 - **eaves line**: 3DBAG's eaves (bag-facts, the register gable gate's source), carried as view `eavesM` for every pand
-  with a stated count (`build-house-specs.ts`); without it the mesher's wall top, and the rows at the period pitch decide
-  whether a stated roof storey is inside the wall.
+  with a stated count (`build-house-specs.ts`), but only where it can be the front's (`frontEavesM`): bag-facts eaves is
+  `b3_h_dak_min`, the pand's lowest roof point, often a rear lean-to (168042, 171192, 185507: 6.3 m against street roof
+  planes from 14.1 to 16.9 m in LoD2.2; 168043, 168096: a flat rear roof at 10 m). It is kept when the building tile's
+  `height` (3DBAG 70p) lies at most 4.5 m over it, or, under a ridge, within 0.75 of the eaves-to-ridge rise. Without it
+  the mesher's wall top, and the rows at the period pitch decide whether a stated attic is inside the wall.
 - **drawn**: with a souterrain the ground cell is the souterrain (the door and windows at the street, `SPEC_GROUND_SCALE`
   clamps it) and every stated storey, the bel-etage included, is an upper row. No new cell or component.
 - **guard** (every stated count, souterrain or not): the fitted pitch must lie in the period's range

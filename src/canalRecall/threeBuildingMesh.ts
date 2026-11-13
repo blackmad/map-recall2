@@ -620,7 +620,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       let eavesBand = 0;
       // `?storeyGuard=0` / STOREY_GUARD=0 turns the whole plan off: H9/H11's fit, byte-identical to main.
       if (storeyGuardOn() && specBays?.storeys && specBays.exposedM) {
-        const sr = b.specRecipe!, input = { wallM: specBays.exposedM, storeys: specBays.storeys, ...(sr.souterrain ? { souterrain: true } : {}), ...(sr.roofStorey ? { roofStorey: sr.roofStorey } : {}), ...(sr.eavesM ? { eavesM: sr.eavesM - base } : {}), period: sr.period };
+        const sr = b.specRecipe!, input = { wallM: specBays.exposedM, storeys: specBays.storeys, ...(sr.souterrain ? { souterrain: true } : {}), ...(sr.roofStorey ? { roofStorey: sr.roofStorey } : {}), ...(sr.eavesM ? { eavesM: sr.eavesM - base } : {}), ...(sr.corniceCrown ? { crown: 'cornice' as const } : {}), period: sr.period };
         const plan = storeyPlan(input);
         if (plan) {
           if (storeyPlanProbe.sink) storeyPlanProbe.sink(b.id, plan, input);

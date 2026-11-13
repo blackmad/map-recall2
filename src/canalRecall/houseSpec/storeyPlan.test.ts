@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { TALL_GROUND_RATIO, ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, storeyDraw, storeyGuardEnabled, storeyPlan } from './storeyPlan.ts';
+import { TALL_GROUND_RATIO, ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, frontEavesM, storeyDraw, storeyGuardEnabled, storeyPlan } from './storeyPlan.ts';
+import { decodeDescriptor } from '../bagTiles.ts';
 import { SOUTERRAIN } from '../blockBuilding/systems.ts';
 import { specStoreyFit, SPEC_GROUND_SCALE, SPEC_SOUTERRAIN_GROUND_MIN } from '../streetFacadeRendering.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
@@ -37,19 +38,24 @@ test('171218 without the souterrain read: 3 rows under 13.4 m eaves are 4.47 m, 
   assert.equal(storeyDraw(storeyPlan({ storeys: 3, period: 'c19', wallM: 16.6 })!, 3, false), null, 'guard off: the count is drawn as before');
 });
 
-test('a roof storey inside the wall draws as one more window row', () => {
-  // eaves 12 m on a 15.5 m wall: 3.5 m of wall over the eaves line holds the mansard row
+test('only a stated attic storey draws one more window row; a mansard is roof', () => {
+  // eaves 12 m on a 15.5 m wall: 3.5 m of wall over the eaves line holds the attic row
   const plan = storeyPlan({ storeys: 3, roofStorey: 'attic', eavesM: 12, wallM: 15.5, period: 'c19' })!;
   assert.equal(plan.roofRow, true); assert.ok(plan.ok);
-  assert.deepEqual(storeyDraw(plan, 3, true), { storeys: 4 });
-  // no eaves: the period pitch decides (3 x 3.41 = 10.2 m, 1.6 m over it is less than ROOF_ROW_MIN of a storey on 11.8 m)
-  assert.equal(storeyPlan({ storeys: 3, roofStorey: 'mansard', wallM: 10.23 + ROOF_ROW_MIN * 3.41 - 0.05, period: 'c19' })!.roofRow, false);
-  const noEaves = storeyPlan({ storeys: 3, roofStorey: 'mansard', wallM: 13.5, period: 'c19' })!;
+  assert.deepEqual(storeyDraw(plan, 3, true, 15.5), { storeys: 4 });
+  // the same wall with a mansard: three rows to the eaves, the mansard face a plain band
+  const mansard = storeyPlan({ storeys: 3, roofStorey: 'mansard', eavesM: 12, wallM: 15.5, period: 'c19' })!;
+  assert.equal(mansard.roofRow, false);
+  assert.deepEqual(storeyDraw(mansard, 3, true, 15.5), { storeys: 3, bandM: 3.5 });
+  // no eaves: the period pitch decides whether the wall holds the attic (3 x 3.41 = 10.2 m)
+  assert.equal(storeyPlan({ storeys: 3, roofStorey: 'attic', wallM: 10.23 + ROOF_ROW_MIN * 3.41 - 0.05, period: 'c19' })!.roofRow, false);
+  const noEaves = storeyPlan({ storeys: 3, roofStorey: 'attic', wallM: 13.5, period: 'c19' })!;
   assert.equal(noEaves.roofRow, true); assert.ok(Math.abs(noEaves.pitchM - 13.5 / 4) < 1e-9);
+  // a mansard without eaves never adds a row
+  assert.equal(storeyPlan({ storeys: 3, roofStorey: 'mansard', wallM: 13.5, period: 'c19' })!.roofRow, false);
   // `none` and absent are the same
   assert.deepEqual(storeyPlan({ storeys: 3, roofStorey: 'none', wallM: 11, period: 'c19' }), storeyPlan({ storeys: 3, wallM: 11, period: 'c19' }));
 });
-
 test('no souterrain and no roof row: the stated count is drawn as before (null), unless the guard rejects it', () => {
   const plan = storeyPlan({ storeys: 4, wallM: 13, period: 'c19' })!;
   assert.ok(plan.ok); assert.equal(storeyDraw(plan, 4, true), null);
@@ -101,6 +107,9 @@ test('view: souterrain and roof storey only from a front-reading or register sou
   assert.equal(weak.souterrain, undefined); assert.equal(weak.roofStorey, undefined);
   const none = specView(spec({ storeys: 3, roofStorey: 'none' }, { 'fronts/0/storeys': vj, 'fronts/0/roofStorey': vj }));
   assert.equal('roofStorey' in none, false);
+  assert.equal(specView(spec({ storeys: 3, gable: 'cornice' }, { 'fronts/0/storeys': vj, 'fronts/0/gable': vj })).corniceCrown, true);
+  assert.equal(specView(spec({ storeys: 3, gable: 'cornice' }, { 'fronts/0/storeys': vj, 'fronts/0/gable': { source: 'osm', confidence: 0.9 } })).corniceCrown, undefined);
+  assert.equal(specView(spec({ gable: 'cornice' }, { 'fronts/0/gable': vj })).corniceCrown, undefined, 'only with storeys');
   const noCount = specView(spec({ souterrain: true }, { 'fronts/0/souterrain': vj }));
   assert.equal('souterrain' in noCount, false);
 });
@@ -140,15 +149,59 @@ test('the souterrain floor applies only when asked: no groundMin is the H11 clam
   assert.ok(Math.abs(specStoreyFit('c19', 13, 4, 1, { fit: 'nearest', groundM: 1.9, groundMin: SPEC_SOUTERRAIN_GROUND_MIN })!.ground * 3.6 - 1.9) < 1e-9);
 });
 
-test('a wall well over 3DBAG eaves holds a roof storey row even unread; a small gap is the plain band (AH07 0363100012168043)', () => {
-  // 3 rows, eaves 10.0 m, wall 13.92 m: 3.33 m rows and a 3.9 m roof face the mesher draws upright -> one more row
-  const plan = storeyPlan({ storeys: 3, eavesM: 10, wallM: 13.92, period: 'c19' })!;
-  assert.equal(plan.roofRow, true); assert.ok(plan.ok);
-  assert.deepEqual(storeyDraw(plan, 3, true, 13.92), { storeys: 4 });
-  // 3 rows, eaves 11.4 m, wall 12.54 m: 1.14 m over the eaves, under 0.6 storey -> rows to the eaves, a plain band
+test('a wall over 3DBAG eaves is a plain band, read or not: no window row above the rows (BK, 168043)', () => {
+  // 3 rows, eaves 11.4 m, wall 12.54 m: rows to the eaves, a plain band
   const small = storeyPlan({ storeys: 3, eavesM: 11.4, wallM: 12.54, period: 'c19' })!;
   assert.equal(small.roofRow, false);
   assert.deepEqual(storeyDraw(small, 3, true, 12.54), { storeys: 3, bandM: 1.14 });
   // eaves at the wall top: nothing changes
   assert.equal(storeyDraw(storeyPlan({ storeys: 4, eavesM: 13.1, wallM: 13.2, period: 'c19' })!, 4, true, 13.2), null);
+  // a wall well over the eaves no longer grows a row (lane WG drew 168043 as 4 rows from its annex eaves)
+  const over = storeyPlan({ storeys: 3, eavesM: 12, wallM: 14.5, period: 'c19' })!;
+  assert.equal(over.roofRow, false);
+  assert.deepEqual(storeyDraw(over, 3, true, 14.5), { storeys: 3, bandM: 2.5 });
+});
+
+// BK's bake-off (2026-11-13): Weteringschans fronts read as 3 storeys under a cornice or mansard drew 4-5 rows. The
+// published building tiles' `height` (3DBAG 70p) and bag-facts 8414/5385 rows, verbatim; 3DBAG LoD2.2 (api.3dbag.nl,
+// fetched 2026-11-13) puts each street-facing roof plane's foot at 14.1-16.9 m and a rear roof at 5.6-10.0 m.
+const BAG_ROWS: Record<string, { row: number[]; heightM: number; front: number | null }> = {
+  '0363100012168042': { row: [2, 4, 3, 63, 0, 1870, 1], heightM: 16.43, front: null }, // rear lean-to 6.1-6.5 m; street mansard 14.2-16.4
+  '0363100012171192': { row: [2, 2, 3, 63, 0, 1896, 1], heightM: 16.83, front: null }, // rear 5.8-6.6 m; flat roof 16.7-16.9
+  '0363100012185507': { row: [2, 4, 3, 63, 0, 1870, 1], heightM: 16.49, front: null }, // rear 5.6-17.0 m slope; flat 16.2-17.0
+  '0363100012168043': { row: [2, 4, 3, 100, 0, 1870, 1], heightM: 16.52, front: null }, // flat rear roof 9.9-10.0 m
+  '0363100012168096': { row: [2, 3, 3, 98, 0, 1870, 1], heightM: 16.59, front: null }, // flat rear roof 9.8-10.0 m
+  '0363100012171218': { row: [2, 5, 3, 134, 0, 1877, 1], heightM: 16.65, front: 13.4 }, // flat at 13.4 behind a mansard to 16.6
+};
+
+test('bag-facts eaves is the pand\'s lowest roof point: a rear annex is not the front\'s eaves (168042, 171192, 185507)', () => {
+  for (const [id, { row, heightM, front }] of Object.entries(BAG_ROWS)) {
+    const d = decodeDescriptor(row);
+    assert.equal(frontEavesM({ eavesM: d.eavesM, ridgeM: d.ridgeM, heightM }), front, id);
+  }
+  // under a ridge the 70th percentile sits part way up the roof: a canal gable 8 m tall keeps its eaves
+  assert.equal(frontEavesM({ eavesM: 9, ridgeM: 17, heightM: 14.6 }), 9);
+  assert.equal(frontEavesM({ eavesM: 6.3, ridgeM: 17, heightM: 16.4 }), null);
+  assert.equal(frontEavesM({ eavesM: 6.3, ridgeM: null, heightM: null }), 6.3, 'no height: kept, the plan\'s own window decides');
+  assert.equal(frontEavesM({ eavesM: null, ridgeM: null, heightM: 16 }), null);
+});
+
+test('a cornice or mansard front whose rows overfill the wall: rows at the top pitch, the rest a plain band (168042, 168096)', () => {
+  // 168042 (AH07 probe): 3 storeys read under a cornice, wall 14.17 m, no front eaves: 4.72 m rows, 4.31 m with a tall ground
+  const plain = storeyPlan({ storeys: 3, wallM: 14.17, period: 'c19' })!;
+  assert.equal(plain.ok, false, 'without the crown it stays a reject (a second read)');
+  const cornice = storeyPlan({ storeys: 3, wallM: 14.17, period: 'c19', crown: 'cornice' })!;
+  assert.ok(cornice.ok && cornice.capped);
+  const draw = storeyDraw(cornice, 3, true, 14.17) as { storeys: number; groundM: number; bandM: number };
+  assert.equal(draw.storeys, 3, 'three rows, none above the cornice');
+  assert.ok(Math.abs(draw.groundM - TALL_GROUND_RATIO * STOREY_PITCH_RANGE.c19.max) < 0.01);
+  assert.ok(Math.abs(draw.bandM - (14.17 - (2 + TALL_GROUND_RATIO) * 4.09)) < 0.01, `band ${draw.bandM}`);
+  // 168096: wall 16.59 m; 3.13 m over the capped rows is within one c19 storey (3.41)
+  assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', crown: 'cornice' })!.ok, true);
+  // a mansard read does the same
+  assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', roofStorey: 'mansard' })!.capped, true);
+  // more than one storey of wall left over is a missed storey: still rejected
+  assert.equal(storeyPlan({ storeys: 3, wallM: 17.5, period: 'c19', crown: 'cornice' })!.ok, false);
+  // an attic front is not capped: its top row is wall
+  assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', roofStorey: 'attic' })!.capped, undefined);
 });

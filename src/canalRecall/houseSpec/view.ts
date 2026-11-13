@@ -110,6 +110,8 @@ export function specView(read: HouseSpec): HouseSpecView {
     if (front?.souterrain === true && storeyPlanSource(spec, 'fronts/0/souterrain')) { v.souterrain = true; v.src.souterrain = src['fronts/0/souterrain']; }
     const roofStorey = read.design.fronts?.[0]?.roofStorey; // drawableDesign drops it for the recipe route
     if ((roofStorey === 'mansard' || roofStorey === 'attic') && storeyPlanSource(spec, 'fronts/0/roofStorey')) { v.roofStorey = roofStorey; v.src.roofStorey = src['fronts/0/roofStorey']; }
+    // A cornice crown read from the front: no window row above the read rows (BK's bake-off, 2026-11-13).
+    if (front?.gable === 'cornice' && storeyPlanSource(spec, 'fronts/0/gable')) v.corniceCrown = true;
   }
   // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
   if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {

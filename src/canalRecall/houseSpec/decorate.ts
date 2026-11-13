@@ -47,6 +47,8 @@ export interface HouseSpecView {
   roofStorey?: 'mansard' | 'attic';
   /** Lane WG: 3DBAG's eaves above the ground (m, bag-facts), for pands with `storeys` (houseSpec/storeyPlan.ts). */
   eavesM?: number;
+  /** Lane WG: the front's crown is a cornice (fronts/0/gable, from a front-reading source); only with `storeys`. */
+  corniceCrown?: true;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
   /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
@@ -81,6 +83,7 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   souterrain?: true;
   roofStorey?: 'mansard' | 'attic';
   eavesM?: number;
+  corniceCrown?: true;
   /** H11: the window look (bayLook.ts bayLookFor `spec`). */
   look?: SpecLook;
   /** H11: the shop's ground-storey paint. */
@@ -230,6 +233,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.souterrain === true) recipe.souterrain = true;
     if (view.roofStorey === 'mansard' || view.roofStorey === 'attic') recipe.roofStorey = view.roofStorey;
     if (typeof view.eavesM === 'number' && Number.isFinite(view.eavesM) && view.eavesM > 0) recipe.eavesM = view.eavesM;
+    if (view.corniceCrown === true) recipe.corniceCrown = true;
     if (specDesignOn('storeys')) {
       recipe.storeysFit = true;
       if (typeof view.groundM === 'number' && Number.isFinite(view.groundM)) recipe.groundM = view.groundM;
