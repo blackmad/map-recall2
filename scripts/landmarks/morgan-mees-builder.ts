@@ -72,6 +72,9 @@ const WING_FLOOR = 3.6;      // wing roof terrace (3DBAG 3.5-3.7)
 const WING_TOP = 4.1;        // wing parapet under its coping (3DBAG 4.3-4.4 with the coping)
 const GW_TOP = 3.95;         // garden wall under its coping
 const BAL = 5.6;             // balcony floor
+const DORMER_S: [number, number] = [4.4, 7.4];  // street dormer cheeks (chord s from the west party wall), MID -/+ 1.5
+const DORMER_TOP = 12.55;    // street dormer wall top under its coping
+const DORMER_OFF = 0.12;     // street dormer front set back behind the cornice line
 
 // ---- triangle sink -----------------------------------------------------------------------------------------------------
 class Mesh {
@@ -140,7 +143,15 @@ function pilaster(c: Ctx, S: Sec, s: number, y0: number, y1: number, w = 0.48, g
 // ---- massing -------------------------------------------------------------------------------------------------------------
 function hipRoof() {
   const e0 = WEST, e1 = 0, d0 = 0, d1 = DEPTH, te = e1 - INSET, td0 = d0 + INSET, td1 = d1 - INSET;
-  M.quad('slate', P(e0, d0, EAVE), P(e1, d0, EAVE), P(te, td0, TOP), P(e0, td0, TOP), [vS[0], 1, vS[2]]);
+  // south hip, open under the street dormer (its cheeks and coping close the hole) so the slope does not run through
+  // the dormer's lights: hole e = h0..h1 between the cheeks, d = DORMER_OFF..dh where the slope meets the dormer coping
+  const k = (TOP - EAVE) / INSET, hy = (d: number) => EAVE + d * k, wS = [vS[0], 1, vS[2]];
+  const h0 = WEST + DORMER_S[0], h1 = WEST + DORMER_S[1], dh = (DORMER_TOP - EAVE) / k, hp = (e: number, d: number) => P(e, d, hy(d));
+  M.quad('slate', hp(e0, d0), hp(h0, d0), hp(h0, td0), hp(e0, td0), wS);
+  M.quad('slate', hp(h0, d0), hp(h1, d0), hp(h1, DORMER_OFF), hp(h0, DORMER_OFF), wS);
+  M.tri('slate', hp(h1, d0), hp(e1, d0), hp(h1, -h1), wS);
+  M.quad('slate', hp(h0, dh), hp(h1, dh), hp(h1, -h1), hp(te, td0), wS);
+  M.tri('slate', hp(h0, dh), hp(te, td0), hp(h0, td0), wS);
   M.quad('slate', P(e1, d0, EAVE), P(e1, d1, EAVE), P(te, td1, TOP), P(te, td0, TOP), [vE[0], 1, vE[2]]);
   M.quad('slate', P(e1, d1, EAVE), P(e0, d1, EAVE), P(e0, td1, TOP), P(te, td1, TOP), [vU[0], 1, vU[2]]);
   flat('slate', e0, te, td0, td1, TOP);
@@ -167,7 +178,7 @@ function streetFront(c: Ctx) {
   // ground floor: door with transom (west), round-arched window with fanlight (middle), window with arched transom (east)
   K.opening(SW, 2.9, 0.6, 0.86, 2.65, {back: 'dark', frame: 'frame', depth: 0.18, edge: 0.06});
   K.opening(SW, 2.9, 3.33, 0.86, 0.75, {cols: 3, frame: 'frame', depth: 0.18, edge: 0.06});
-  surround(c, SW, 2.9, 1.66, 0.6, 4.1);
+  surround(c, SW, 2.9, 1.66, 0.85, 4.1);                                                   // jambs stand on the plinth
   K.opening(SM, MID, 1.43, 2.1, 3.02, {cols: 2, frame: 'frame', depth: 0.2, rise: 1.05, edge: 0.08});
   K.archHead(SM, MID, 1.43 + 3.02 - 1.05, 2.1, 1.05, 0.2, 0.1, 'ochre');
   slab(b, ff(c, SM), MID, 4.42, 0.3, 0.32, 0.16, 'ochre');                                  // keystone
@@ -193,12 +204,12 @@ function streetFront(c: Ctx) {
   for (const [s0, s1] of [[0.06, 2.42], [3.38, 10.48]] as const) slab(b, ff(c, SW), (s0 + s1) / 2, BASE, s1 - s0, 0.85 - BASE, 0.07, 'stone');
   for (const [S, s0, s1] of [[SW, 0.06, 2.0], [SE, 7.65, 7.95], [SE, 9.95, 10.48]] as const) band(c, S, s0, s1, 1.33, 0.1, 0.08);
   slab(b, ff(c, SW), 2.9, BASE, 1.2, 0.2 - BASE, 0.62, 'stone');
-  slab(b, ff(c, SW), 2.9, 0.2, 1.1, 0.38, 0.32, 'stone');
+  slab(b, ff(c, SW), 2.9, 0.2, 1.1, 0.33, 0.32, 'stone');                                   // top step 7 cm under the door sill
   for (const s of [5.35, 6.45]) slab(b, ff(c, SM, 0.07), s, 0.18, 0.72, 0.5, 0.05, 'sandstone');
   // storey bands
   band(c, SW, 0.06, 4.15, 5.06, 0.14, 0.08); band(c, SE, 7.65, 10.48, 5.06, 0.14, 0.08);
   band(c, SW, 0.06, 4.15, 5.62, 0.25, 0.13); band(c, SM, 4.15, 7.65, 5.15, 0.72, 0.16); band(c, SE, 7.65, 10.48, 5.62, 0.25, 0.13);
-  band(c, SW, 0.06, 4.15, 6.08, 0.1, 0.08); band(c, SE, 7.65, 10.48, 6.08, 0.1, 0.08);
+  band(c, SW, 0.06, 4.15, 6.04, 0.1, 0.08); band(c, SE, 7.65, 10.48, 6.04, 0.1, 0.08);   // tops 6 cm under the sill reveals
   // first floor: outer windows under hoods and awnings; the middle two-light window between pilasters under a pediment
   for (const [S, s] of [[SW, 2.8], [SE, 9.0]] as const) {
     K.opening(S, s, 6.2, 1.25, 2.55, {frame: 'frame', depth: 0.16, edge: 0.06});
@@ -223,7 +234,7 @@ function streetFront(c: Ctx) {
 }
 /** Brick dormer of three lights with a white pediment, standing just behind the cornice over the middle bay. */
 function streetDormer(c: Ctx) {
-  const {K, b} = c, off = -0.12, back = 2.6, s0 = MID - 1.5, s1 = MID + 1.5, top = 12.55;
+  const {K, b} = c, off = -DORMER_OFF, back = 2.6, [s0, s1] = DORMER_S, top = DORMER_TOP;
   const S = K.sec(ST, s0, s1, EAVE, top, 'brick', off);
   for (const [s, w] of [[MID - 0.95, 0.5], [MID, 0.95], [MID + 0.95, 0.5]] as const) K.opening(S, s, 11.72, w, 0.7, {frame: 'white', depth: 0.1, edge: 0.06});
   K.endCap(ST, s0, EAVE, top, 'brick', -1, -back, off);
@@ -248,7 +259,7 @@ function eastFace(c: Ctx) {
   band(c, S, 0.07, 7.4, 5.06, 0.14, 0.08);
   for (const [s, w, door] of AXES) {
     K.opening(S, s, door ? BAL + 0.04 : 6.25, w, door ? 8.6 - BAL - 0.04 : 2.35, {cols: w > 2 ? 2 : 1, frame: 'frame', depth: 0.16, edge: 0.06});
-    hood(c, S, s, w + 0.55, 8.98);
+    hood(c, S, s, Math.min(w + 0.55, 2 * (DEPTH - 0.13 - s)), 8.98);                         // the last hood stops short of the north wall
     awning(b, ff(c, S), s, 8.02, w + 0.25, 0.86, 0.72, 'bronze');
   }
   box('ochre', 0, 0.06, 0, DEPTH + 0.06, FRIEZE[0], FRIEZE[1]);
@@ -305,7 +316,7 @@ function rear(c: Ctx) {
   const {K} = c;
   const S = K.sec(ER, 0, BACK - DEPTH, WING_FLOOR - 0.05, REAR_TOP, 'brick', 0);
   K.opening(S, 2.25, 4.9, 1.3, 1.7, {cols: 2, frame: 'white', depth: 0.14, edge: 0.07});
-  slab(c.b, ff(c, S), 2.25, 4.78, 1.5, 0.12, 0.08, 'ochre');
+  slab(c.b, ff(c, S), 2.25, 4.74, 1.5, 0.12, 0.08, 'ochre');                                 // sill 4 cm under the reveal
   K.coping(S, REAR_TOP, 0.22, 0.12, 'ochre', 0, BACK - DEPTH - 0.02);
   const N = K.sec(NM, 0, -WEST, REAR_TOP - 0.05, WALL_TOP, 'brick', 0);
   K.coping(N, WALL_TOP, CORN, 0.55, 'ochre', -0.55, -WEST - 0.06);
@@ -338,7 +349,7 @@ function nassaukade(c: Ctx) {
   band(c, G, 6.07 - 1.225 - 0.85, 6.07 - 1.225 - 0.06, 2.18, 0.1, 0.06);
   band(c, G, 6.07 + 1.225 + 0.06, WING_S - 0.06, 2.18, 0.1, 0.06);
   // dark plinth, broken at the gate and the door
-  for (const [S, s0, s1] of [[G, 0, 4.8], [A, WING_S, 13.2], [A, 14.2, BACK - 0.06]] as const) slab(b, ff(c, S), (s0 + s1) / 2, BASE, s1 - s0, 0.25 - BASE, 0.05, 'concrete');
+  for (const [S, s0, s1] of [[G, 0.05, 4.8], [A, WING_S, 13.2], [A, 14.2, BACK - 0.06]] as const) slab(b, ff(c, S), (s0 + s1) / 2, BASE, s1 - s0, 0.25 - BASE, 0.05, 'concrete');
   // garden wall: back face, street end, coping
   const tw = 0.45;
   wallQuad('brick', NK - tw, 0, NK - tw, WING_S, BASE, GW_TOP, vW);
