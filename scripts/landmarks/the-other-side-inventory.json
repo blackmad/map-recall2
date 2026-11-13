@@ -1,380 +1,380 @@
 {
- "schemaVersion": 1,
- "id": "the-other-side",
- "pand": "0363100012133795",
- "brief": "scripts/landmarks/the-other-side-brief.md",
- "signature": [
-  "sw-black-cladding",
-  "o-letter-frame",
-  "sw-ribbons",
-  "o-windows"
- ],
- "walls": [
-  {
-   "tag": "w01-117",
-   "bearing": 117,
-   "lengthM": 75.5,
-   "centre": [
-    4.875385,
-    52.395378
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w02-297",
-   "bearing": 297,
-   "lengthM": 46.3,
-   "centre": [
-    4.8751435,
-    52.3955975
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w03-297",
-   "bearing": 297,
-   "lengthM": 36.4,
-   "centre": [
-    4.8746545,
-    52.3955025
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w04-27",
-   "bearing": 27,
-   "lengthM": 25.6,
-   "centre": [
-    4.8754635,
-    52.395733
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w05-207",
-   "bearing": 207,
-   "lengthM": 25.5,
-   "centre": [
-    4.87497,
-    52.395125
-   ],
-   "evidence": "photo",
-   "panoId": "2025_09_29_07_54_42_00205",
-   "capturedAt": "2025-09-29",
-   "checked": true,
-   "items": [
+  "schemaVersion": 1,
+  "id": "the-other-side",
+  "pand": "0363100012133795",
+  "brief": "scripts/landmarks/the-other-side-brief.md",
+  "signature": [
+    "sw-black-cladding",
+    "o-letter-frame",
+    "sw-ribbons",
+    "o-windows"
+  ],
+  "walls": [
     {
-     "id": "sw-black-cladding",
-     "kind": "other",
-     "where": "whole hall SW end above the plinth: black profiled steel sheet",
-     "approxSizeM": [
-      25.5,
-      3.4
-     ],
-     "plan": "modelled",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "profiledRibs (new kit) 0.4 m pitch, 0.1 m ribs, 6 cm proud, dark; black eaves trim"
+      "tag": "w01-117",
+      "bearing": 117,
+      "lengthM": 75.5,
+      "centre": [
+        4.875385,
+        52.395378
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     },
     {
-     "id": "sw-ribbons",
-     "kind": "window-shape",
-     "where": "two white ribbon windows along the top of the grey block plinth, 1.45-2.25 m",
-     "approxSizeM": [
-      9.9,
-      0.8
-     ],
-     "plan": "modelled",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "white frame, glass, mullions every ~1.25 m at t 5.4-12.2 and 15.4-25.1"
+      "tag": "w02-297",
+      "bearing": 297,
+      "lengthM": 46.3,
+      "centre": [
+        4.8751435,
+        52.3955975
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     },
     {
-     "id": "sw-door",
-     "kind": "other",
-     "where": "dark central door 2.8 x 3.0 m",
-     "approxSizeM": [
-      2.8,
-      3.0
-     ],
-     "plan": "modelled",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "dark slab with a lintel; ribs stop round it"
+      "tag": "w03-297",
+      "bearing": 297,
+      "lengthM": 36.4,
+      "centre": [
+        4.8746545,
+        52.3955025
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     },
     {
-     "id": "sw-cb-mark",
-     "kind": "sign",
-     "where": "white \"cb\" mark of ConnectBike on the door",
-     "approxSizeM": [
-      1.1,
-      0.7
-     ],
-     "plan": "simplified",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "two white rings and the b stem; not lettered further"
+      "tag": "w04-27",
+      "bearing": 27,
+      "lengthM": 25.6,
+      "centre": [
+        4.8754635,
+        52.395733
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     },
     {
-     "id": "sw-board-west",
-     "kind": "sign",
-     "where": "white tenant board (Temporary Palaces, 2025; a dark cb panel in 2021-2024) at the west end",
-     "approxSizeM": [
-      3.3,
-      2.0
-     ],
-     "plan": "simplified",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "plain white panel without the tenant lettering (a tenant board, not the building name)"
+      "tag": "w05-207",
+      "bearing": 207,
+      "lengthM": 25.5,
+      "centre": [
+        4.87497,
+        52.395125
+      ],
+      "evidence": "photo",
+      "panoId": "2025_09_29_07_54_42_00205",
+      "capturedAt": "2025-09-29",
+      "checked": true,
+      "items": [
+        {
+          "id": "sw-black-cladding",
+          "kind": "other",
+          "where": "whole hall SW end above the plinth: black profiled steel sheet",
+          "approxSizeM": [
+            25.5,
+            3.4
+          ],
+          "plan": "modelled",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "profiledRibs (new kit) 0.4 m pitch, 0.1 m ribs, 6 cm proud, dark; black eaves trim"
+        },
+        {
+          "id": "sw-ribbons",
+          "kind": "window-shape",
+          "where": "two white ribbon windows along the top of the grey block plinth, 1.45-2.25 m",
+          "approxSizeM": [
+            9.9,
+            0.8
+          ],
+          "plan": "modelled",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "white frame, glass, mullions every ~1.25 m at t 5.4-12.2 and 15.4-25.1"
+        },
+        {
+          "id": "sw-door",
+          "kind": "other",
+          "where": "dark central door 2.8 x 3.0 m",
+          "approxSizeM": [
+            2.8,
+            3.0
+          ],
+          "plan": "modelled",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "dark slab with a lintel; ribs stop round it"
+        },
+        {
+          "id": "sw-cb-mark",
+          "kind": "sign",
+          "where": "white \"cb\" mark of ConnectBike on the door",
+          "approxSizeM": [
+            1.1,
+            0.7
+          ],
+          "plan": "simplified",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "two white rings and the b stem; not lettered further"
+        },
+        {
+          "id": "sw-board-west",
+          "kind": "sign",
+          "where": "white tenant board (Temporary Palaces, 2025; a dark cb panel in 2021-2024) at the west end",
+          "approxSizeM": [
+            3.3,
+            2.0
+          ],
+          "plan": "modelled",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "white panel with TEMPORARY PALACES in purple 5x7 block capitals (nearbar-kit letters; typeface approximated)"
+        },
+        {
+          "id": "sw-board-east",
+          "kind": "sign",
+          "where": "blue VR banner at the east end",
+          "approxSizeM": [
+            3.2,
+            1.7
+          ],
+          "plan": "simplified",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "plain blue panel; the small white VIRTUAL REALITY EXPERIENCE is left off (audit:glb reads the glyph run as an overhanging opening)"
+        },
+        {
+          "id": "sw-vents",
+          "kind": "other",
+          "where": "two mushroom roof vents behind the eaves",
+          "approxSizeM": [
+            0.7,
+            0.7
+          ],
+          "plan": "modelled",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "how": "cylinder and cap, 1.5 m behind the wall line"
+        },
+        {
+          "id": "sw-lamp",
+          "kind": "lamp",
+          "where": "wall lamp over the door",
+          "approxSizeM": [
+            0.3,
+            0.3
+          ],
+          "plan": "skipped",
+          "seenIn": "2025_09_29_07_54_42_00205",
+          "skip": {
+            "reason": "too-small",
+            "note": "30 cm fitting"
+          }
+        }
+      ],
+      "note": "positions from the rectified recording_2024-10-09_07-48-40_00185 (50 px/m)"
     },
     {
-     "id": "sw-board-east",
-     "kind": "sign",
-     "where": "blue VR banner at the east end",
-     "approxSizeM": [
-      3.2,
-      1.7
-     ],
-     "plan": "simplified",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "plain blue panel without lettering"
+      "tag": "w06-207",
+      "bearing": 207,
+      "lengthM": 20.8,
+      "centre": [
+        4.874672,
+        52.3953145
+      ],
+      "evidence": "photo",
+      "panoId": "2025_09_29_07_54_42_00210",
+      "capturedAt": "2025-09-29",
+      "checked": true,
+      "items": [
+        {
+          "id": "o-letter-frame",
+          "kind": "sign",
+          "where": "open steel letter frame on the office roof, about 7.4 x 2 m, posts running down the front at t 6.8 and 14.2",
+          "approxSizeM": [
+            7.4,
+            2.0
+          ],
+          "plan": "simplified",
+          "seenIn": "2025_09_29_07_54_42_00213",
+          "how": "two posts, two rails and a vertical plus a diagonal stroke per letter cell (five cells); the outline letters cannot be read at panorama resolution, so no word is spelled"
+        },
+        {
+          "id": "o-windows",
+          "kind": "window-shape",
+          "where": "seven bays of tall white-framed windows on both floors, the end bays wider (1.8 m)",
+          "approxSizeM": [
+            1.2,
+            2.3
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002216_pano_0002_000350",
+          "how": "sashWindows white, 3 rows, 2 columns in the wide end bays; t 2.84/5.61/8.06/10.51/12.95/15.4/18.18"
+        },
+        {
+          "id": "o-umbrellas",
+          "kind": "other",
+          "where": "terrace parasols and planters in front of the office",
+          "approxSizeM": [
+            2,
+            2.5
+          ],
+          "plan": "skipped",
+          "seenIn": "2025_09_29_07_54_42_00210",
+          "skip": {
+            "reason": "temporary",
+            "note": "furniture, folded or moved by season"
+          }
+        }
+      ],
+      "note": "positions from the rectified TMX7316010203-002216_pano_0002_000350 (2021, 50 px/m)"
     },
     {
-     "id": "sw-vents",
-     "kind": "other",
-     "where": "two mushroom roof vents behind the eaves",
-     "approxSizeM": [
-      0.7,
-      0.7
-     ],
-     "plan": "modelled",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "how": "cylinder and cap, 1.5 m behind the wall line"
+      "tag": "w07-27",
+      "bearing": 27,
+      "lengthM": 20.8,
+      "centre": [
+        4.8749105,
+        52.3956075
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     },
     {
-     "id": "sw-lamp",
-     "kind": "lamp",
-     "where": "wall lamp over the door",
-     "approxSizeM": [
-      0.3,
-      0.3
-     ],
-     "plan": "skipped",
-     "seenIn": "2025_09_29_07_54_42_00205",
-     "skip": {
-      "reason": "too-small",
-      "note": "30 cm fitting"
-     }
+      "tag": "w08-117",
+      "bearing": 117,
+      "lengthM": 17.1,
+      "centre": [
+        4.8749915,
+        52.395497
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
+    },
+    {
+      "tag": "w09-297",
+      "bearing": 297,
+      "lengthM": 11.3,
+      "centre": [
+        4.8748385,
+        52.3952215
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002366_pano_0003_000138",
+      "capturedAt": "2021-12-30",
+      "checked": true,
+      "items": [
+        {
+          "id": "nw-bay-cladding",
+          "kind": "other",
+          "where": "light grey profiled sheet over a block plinth to 2.46 m",
+          "approxSizeM": [
+            11.2,
+            3.0
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002366_pano_0003_000138",
+          "how": "profiledRibs in the light grey"
+        },
+        {
+          "id": "nw-bay-doors",
+          "kind": "other",
+          "where": "glazed door (t 3.2-4.5), window (t 4.6-6.2) and a teal door (t 8.8-10)",
+          "approxSizeM": [
+            1.3,
+            2.6
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002366_pano_0003_000138",
+          "how": "dark/glass door, white-framed window, teal door slab; a ribbon window left of the doors (t 1.35-3.0)"
+        },
+        {
+          "id": "nw-bay-cb",
+          "kind": "sign",
+          "where": "small \"cb\" mark on the glazed door",
+          "approxSizeM": [
+            0.5,
+            0.3
+          ],
+          "plan": "skipped",
+          "seenIn": "TMX7316010203-002366_pano_0003_000138",
+          "skip": {
+            "reason": "too-small",
+            "note": "half-metre transfer on the glass"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "w10-206",
+      "bearing": 206,
+      "lengthM": 4.3,
+      "centre": [
+        4.8748465,
+        52.3952755
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002366_pano_0003_000132",
+      "capturedAt": "2021-12-30",
+      "checked": true,
+      "items": [],
+      "note": "4.3 m return of the office/link: plain"
+    },
+    {
+      "tag": "w11-27",
+      "bearing": 27,
+      "lengthM": 4.3,
+      "centre": [
+        4.874964,
+        52.3954195
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
     }
-   ],
-   "note": "positions from the rectified recording_2024-10-09_07-48-40_00185 (50 px/m)"
-  },
-  {
-   "tag": "w06-207",
-   "bearing": 207,
-   "lengthM": 20.8,
-   "centre": [
-    4.874672,
-    52.3953145
-   ],
-   "evidence": "photo",
-   "panoId": "2025_09_29_07_54_42_00210",
-   "capturedAt": "2025-09-29",
-   "checked": true,
-   "items": [
+  ],
+  "sources": [
     {
-     "id": "o-letter-frame",
-     "kind": "sign",
-     "where": "open steel letter frame on the office roof, about 7.4 x 2 m, posts running down the front at t 6.8 and 14.2",
-     "approxSizeM": [
-      7.4,
-      2.0
-     ],
-     "plan": "simplified",
-     "seenIn": "2025_09_29_07_54_42_00213",
-     "how": "two posts, two rails and a vertical plus a diagonal stroke per letter cell (five cells); the outline letters cannot be read at panorama resolution, so no word is spelled"
+      "name": "Gemeente Amsterdam panoramas (2021-2025)",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+      "licence": "CC BY 4.0"
     },
     {
-     "id": "o-windows",
-     "kind": "window-shape",
-     "where": "seven bays of tall white-framed windows on both floors, the end bays wider (1.8 m)",
-     "approxSizeM": [
-      1.2,
-      2.3
-     ],
-     "plan": "modelled",
-     "seenIn": "TMX7316010203-002216_pano_0002_000350",
-     "how": "sashWindows white, 3 rows, 2 columns in the wide end bays; t 2.84/5.61/8.06/10.51/12.95/15.4/18.18"
+      "name": "PDOK luchtfoto RGB Actueel_orthoHR",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+      "licence": "CC BY 4.0"
     },
     {
-     "id": "o-umbrellas",
-     "kind": "other",
-     "where": "terrace parasols and planters in front of the office",
-     "approxSizeM": [
-      2,
-      2.5
-     ],
-     "plan": "skipped",
-     "seenIn": "2025_09_29_07_54_42_00210",
-     "skip": {
-      "reason": "temporary",
-      "note": "furniture, folded or moved by season"
-     }
+      "name": "BAG pand 0363100012133795",
+      "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012133795",
+      "licence": "CC0"
+    },
+    {
+      "name": "3DBAG",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012133795",
+      "licence": "CC BY 4.0"
     }
-   ],
-   "note": "positions from the rectified TMX7316010203-002216_pano_0002_000350 (2021, 50 px/m)"
-  },
-  {
-   "tag": "w07-27",
-   "bearing": 27,
-   "lengthM": 20.8,
-   "centre": [
-    4.8749105,
-    52.3956075
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w08-117",
-   "bearing": 117,
-   "lengthM": 17.1,
-   "centre": [
-    4.8749915,
-    52.395497
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  },
-  {
-   "tag": "w09-297",
-   "bearing": 297,
-   "lengthM": 11.3,
-   "centre": [
-    4.8748385,
-    52.3952215
-   ],
-   "evidence": "photo",
-   "panoId": "TMX7316010203-002366_pano_0003_000138",
-   "capturedAt": "2021-12-30",
-   "checked": true,
-   "items": [
-    {
-     "id": "nw-bay-cladding",
-     "kind": "other",
-     "where": "light grey profiled sheet over a block plinth to 2.46 m",
-     "approxSizeM": [
-      11.2,
-      3.0
-     ],
-     "plan": "modelled",
-     "seenIn": "TMX7316010203-002366_pano_0003_000138",
-     "how": "profiledRibs in the light grey"
-    },
-    {
-     "id": "nw-bay-doors",
-     "kind": "other",
-     "where": "glazed door (t 3.2-4.5), window (t 4.6-6.2) and a teal door (t 8.8-10)",
-     "approxSizeM": [
-      1.3,
-      2.6
-     ],
-     "plan": "modelled",
-     "seenIn": "TMX7316010203-002366_pano_0003_000138",
-     "how": "dark/glass door, white-framed window, teal door slab"
-    },
-    {
-     "id": "nw-bay-cb",
-     "kind": "sign",
-     "where": "small \"cb\" mark on the glazed door",
-     "approxSizeM": [
-      0.5,
-      0.3
-     ],
-     "plan": "skipped",
-     "seenIn": "TMX7316010203-002366_pano_0003_000138",
-     "skip": {
-      "reason": "too-small",
-      "note": "half-metre transfer on the glass"
-     }
-    }
-   ]
-  },
-  {
-   "tag": "w10-206",
-   "bearing": 206,
-   "lengthM": 4.3,
-   "centre": [
-    4.8748465,
-    52.3952755
-   ],
-   "evidence": "photo",
-   "panoId": "TMX7316010203-002366_pano_0003_000132",
-   "capturedAt": "2021-12-30",
-   "checked": true,
-   "items": [],
-   "note": "4.3 m return of the office/link: plain"
-  },
-  {
-   "tag": "w11-27",
-   "bearing": 27,
-   "lengthM": 4.3,
-   "centre": [
-    4.874964,
-    52.3954195
-   ],
-   "evidence": "inferred",
-   "panoId": null,
-   "capturedAt": null,
-   "checked": true,
-   "items": [],
-   "note": "no photo (private car park, service lane or courtyard): cladding and window rhythm of the photographed walls carried round, inferred"
-  }
- ],
- "sources": [
-  {
-   "name": "Gemeente Amsterdam panoramas (2021-2025)",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
-   "licence": "CC BY 4.0"
-  },
-  {
-   "name": "PDOK luchtfoto RGB Actueel_orthoHR",
-   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
-   "licence": "CC BY 4.0"
-  },
-  {
-   "name": "BAG pand 0363100012133795",
-   "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012133795",
-   "licence": "CC0"
-  },
-  {
-   "name": "3DBAG",
-   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012133795",
-   "licence": "CC BY 4.0"
-  }
- ]
+  ]
 }

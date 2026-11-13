@@ -28,7 +28,7 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#8f9693",
+    "brick": "#8a8e88",
     "dark": "#2d3c44",
     "concrete": "#a3b0b6",
     "stone": "#9ca2a0",
@@ -38,9 +38,10 @@
     "greyBrick": "#4b5359",
     "bronze": "#4a5550",
     "frame": "#d5dbdb",
-    "slate": "#858a8c",
+    "slate": "#7a7f83",
     "sandstone": "#5b5f62",
-    "green": "#3f6f72"
+    "green": "#3f6f72",
+    "pink": "#7a2a5a"
   },
   "attribution": {
     "title": "The Other Side",

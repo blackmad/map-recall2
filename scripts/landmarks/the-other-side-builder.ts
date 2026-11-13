@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import {wallsOf, type Wall} from './worship-walls';
-import {frameOf, getSink, leanSlab, put, ringSlab, sashWindows, setSink, slab, type Frame} from './nearbar-kit';
+import {frameOf, getSink, leanSlab, letters, put, ringSlab, sashWindows, setSink, slab, type Frame} from './nearbar-kit';
 import {profiledRibs, type RibOpening} from '../../src/canalRecall/landmarks/profiledCladding';
 import source from './the-other-side-footprints.json';
 
@@ -54,7 +54,7 @@ export function buildTheOtherSide(_w: number, _d: number, b: BuildingTools & {ma
   /** Hall wall: block plinth, profiled sheet ribs in the wall colour, eaves trim. */
   const hall = (w: Wall, colour: 'dark' | 'concrete', plinth: number, openings: RibOpening[] = []) => {
     const f = frameOf(w);
-    slab(b, f, w.length / 2, 0, w.length, plinth, 0.1, 'stone');
+    slab(b, f, w.length / 2, 0, w.length, plinth, 0.1, 'brick');
     for (const r of profiledRibs({length: w.length, y0: plinth, y1: 5.45, pitch: 0.4, rib: 0.1, openings, endMargin: 0.35})) leanSlab(b, f, (r.t0 + r.t1) / 2, r.y0, r.t1 - r.t0, r.y1 - r.y0, 0.06, colour);
     slab(b, f, w.length / 2, 5.45, w.length, 0.35, 0.1, colour);
   };
@@ -88,6 +88,9 @@ export function buildTheOtherSide(_w: number, _d: number, b: BuildingTools & {ma
     // tenants' boards, plain
     slab(b, f, (tp.t0 + tp.t1) / 2, tp.y0, tp.t1 - tp.t0, tp.y1 - tp.y0, 0.12, 'white');
     slab(b, f, (vr.t0 + vr.t1) / 2, vr.y0, vr.t1 - vr.t0, vr.y1 - vr.y0, 0.12, 'blue');
+    // board lettering as photographed in 2025: purple TEMPORARY PALACES, plain capitals. The blue board's small white VIRTUAL REALITY EXPERIENCE is left off: at 0.024 m pixels audit:glb reads the glyph run as an overhanging opening.
+    letters(b, f, 'TEMPORARY', (tp.t0 + tp.t1) / 2, 4.55, 0.12, 0.05, 0.03, 'pink');
+    letters(b, f, 'PALACES', (tp.t0 + tp.t1) / 2, 3.95, 0.12, 0.05, 0.03, 'pink');
     vent(w, 11.4, 1.5, 5.62);
     vent(w, 16.2, 1.5, 5.62);
   }
@@ -99,6 +102,7 @@ export function buildTheOtherSide(_w: number, _d: number, b: BuildingTools & {ma
     slab(b, f, 3.85, 0, 1.4, 2.35, 0.14, 'dark');
     slab(b, f, 3.85, 0.05, 1.2, 2.2, 0.19, 'glass');
     ribbon(f, win.t0, win.t1, win.y0, win.y1);
+    ribbon(f, 1.35, 3.0, 0.8, 2.1);
     slab(b, f, 9.4, 0, 1.2, 2.6, 0.2, 'green');
     void glazedDoor;
     vent(w, 8.3, 1.5, 5.62);

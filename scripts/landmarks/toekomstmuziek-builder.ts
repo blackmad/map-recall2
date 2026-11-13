@@ -36,13 +36,13 @@ export function buildToekomstmuziek(_w: number, _d: number, b: BuildingTools & {
   const walls = new Map(wallsOf(source as never).map(w => [w.index, w]));
   const wall = (i: number) => walls.get(i)!;
 
-  /** Square modern window: frame, glass pane, sill-less (the brick runs to the frame). */
-  const win = (f: Frame, t: number, y: number, frame: 'gold' | 'dark', w = 1.2, h = 1.2) =>
+  /** Square modern window, 1.2 m over its frame (0.95 m pane + 2 x 0.13 m frame): sill-less, the brick runs to the frame. */
+  const win = (f: Frame, t: number, y: number, frame: 'gold' | 'dark', w = 0.95, h = 0.95) =>
     sashWindows(b, f, [t], {y, w, h, cols: 1, rows: 1, frame, glass: 'glass'});
   /** Dark plinth courses and the metal coping on a brick wall of the block. */
   const brickTrim = (w: Wall, top: number) => {
     const f = frameOf(w);
-    slab(b, f, w.length / 2, 0, w.length, 0.3, 0.06, 'greyBrick');
+    slab(b, f, w.length / 2, 0, w.length, 0.5, 0.06, 'greyBrick');
     slab(b, f, w.length / 2, top - 0.1, w.length + 0.04, 0.2, 0.08, 'concrete');
   };
   /** Profiled steel sheet: vertical ribs above a plinth, stopped at openings. */
@@ -73,7 +73,7 @@ export function buildToekomstmuziek(_w: number, _d: number, b: BuildingTools & {
   {
     const w = wall(2), f = frameOf(w);
     brickTrim(w, 6.74);
-    win(f, 1.4, 3.95, 'dark'); win(f, 3.15, 3.95, 'gold'); win(f, 4.85, 3.95, 'dark', 1.0);
+    win(f, 1.4, 3.95, 'dark'); win(f, 3.15, 3.95, 'gold'); win(f, 4.85, 3.95, 'dark', 0.8);
   }
   // ---- NW end of the block (#7), t from the hall end ----
   {
@@ -87,20 +87,20 @@ export function buildToekomstmuziek(_w: number, _d: number, b: BuildingTools & {
   // ---- Hall: brick plinth, profiled sheet, eaves trim ----
   for (const i of [3, 11, 13]) {
     const w = wall(i), f = frameOf(w);
-    slab(b, f, w.length / 2, 0, w.length, 0.6, 0.06, 'stone');
+    slab(b, f, w.length / 2, 0, w.length, 1.0, 0.06, 'white');
     slab(b, f, w.length / 2, 6.0, w.length, 0.3, 0.1, 'frame');
   }
   // SE side: the 27-C annex (another pand) stands against it from t = 7 m, so the ribs stop above its roof there.
-  cladding(wall(3), 0.6, 6.05, [{t0: 7, t1: 22.1, y0: 0, y1: 3.4}]);
+  cladding(wall(3), 1.0, 6.05, [{t0: 7, t1: 22.1, y0: 0, y1: 3.4}]);
   // NW side: orange roller door about 3 m from the NE end.
   {
     const w = wall(11), f = frameOf(w);
     slab(b, f, 3.2, 0, 3.2, 4.15, 0.16, 'dark');
     slab(b, f, 3.2, 0, 3.0, 4.0, 0.21, 'red');
     for (let y = 0.4; y < 4.0; y += 0.4) slab(b, f, 3.2, y, 3.0, 0.04, 0.27, 'red');
-    cladding(w, 0.6, 6.05, [{t0: 1.6, t1: 4.8, y0: 0, y1: 4.15}]);
+    cladding(w, 1.0, 6.05, [{t0: 1.6, t1: 4.8, y0: 0, y1: 4.15}]);
   }
-  cladding(wall(13), 0.6, 6.05);
+  cladding(wall(13), 1.0, 6.05);
 
   // ---- Hall rooflights (luchtfoto): four panels in a dark strip along the hall axis ----
   {
