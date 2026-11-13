@@ -5,7 +5,7 @@
 // and records the second load.
 //
 //   node scripts/perf/load-timeline.mjs <outDir> [--origin https://rideamsterdam.nl] [--device desktop|iphone]
-//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots]
+//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir]
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -35,6 +35,16 @@ const browser = await chromium.launch({
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1512, height: 862 }, deviceScaleFactor: 2 };
 const context = await browser.newContext(ctxOpts);
 await context.route(/ingest\.(us\.)?sentry\.io|google-analytics|googletagmanager/, r => r.fulfill({ status: 200, body: '{}' }));
+// --bundles <dir>: serve any /js/<file>.js found in <dir> instead of the deployed one (a source change's before/after);
+// the files served from it are counted in the output (workers' bundles included) to show the route took.
+const bundles = opt('bundles', '');
+const served = {};
+if (bundles) await context.route(/\/js\/([\w.-]+\.js)(\?.*)?$/, r => {
+  const name = /\/js\/([\w.-]+\.js)/.exec(r.request().url())[1], file = path.join(bundles, name);
+  if (!fs.existsSync(file)) return r.continue();
+  served[name] = (served[name] || 0) + 1;
+  return r.fulfill({ path: file, contentType: 'application/javascript' });
+});
 
 const layerOf = u => {
   const p = new URL(u).pathname + (new URL(u).hostname.includes('openfreemap') ? ' ofm' : '');
@@ -96,7 +106,9 @@ async function run(page, label) {
     samples.push({ t, shot: path.basename(shot), ...probe });
     if (has('probe-only') && i > 3) break;
   }
-  return { samples, net, reqs };
+  // The ground's own startup marks (gameGround.ts `startup`: load, store ready, workers posted and ready, first cell).
+  const groundStartup = await page.evaluate(() => { try { const og = window.canalRecallGame?.vectorMap?._ownGround; return og ? { ...og.startup } : null; } catch (e) { return String(e); } }).catch(() => null);
+  return { samples, net, reqs, groundStartup };
 }
 
 const page = await context.newPage();
@@ -117,6 +129,7 @@ async function endPair(pg, label) {
 }
 if (has('warm')) { await run(page, 'prime'); out.warm = await run(await context.newPage(), 'warm'); }
 else { out.cold = await run(page, 'cold'); if (has('pair')) out.pair = await endPair(page, 'cold'); }
+out.bundles = bundles || null; out.served = served;
 fs.writeFileSync(path.join(outDir, 'timeline.json'), JSON.stringify(out, null, 1));
 console.log('wrote', outDir);
 await browser.close();

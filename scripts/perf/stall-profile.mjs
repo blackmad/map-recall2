@@ -58,6 +58,8 @@ const cdp = await context.newCDPSession(page);
 const log = { bundles: bundles || null, warm: has('warm'), tabs, mode, engine, url, viewport: [W, H], dpr: DPR, loadAtStart: la() };
 if (mode === 'cpu') { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start'); }
 else if (!has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
+// --from-load (gc mode): trace from navigation, not from the ride's start (a cold start's stalls).
+if (mode === 'gc' && has('from-load')) await traceStart();
 const wall0 = Date.now();
 await page.goto(url, { waitUntil: 'commit' });
 await page.waitForFunction(() => { const g = window.canalRecallGame; return g && g.state === 4 && (!g.camera || !g.camera.introOverview); }, null, { timeout: 240_000, polling: 250 });
@@ -69,7 +71,8 @@ log.loadAtRideStart = la();
 if (mode === 'heap' && has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
 // --mode gc: a devtools.timeline + v8.gc trace over the ride (every minor and major GC with heap before and after), to
 // see what feeds the old generation: the creep of the after-minor-GC heap is promotion plus direct old-space allocation.
-if (mode === 'gc') await cdp.send('Tracing.start', { transferMode: 'ReturnAsStream', traceConfig: { includedCategories: ['devtools.timeline', 'v8', 'disabled-by-default-v8.gc'] } });
+const traceStart = () => cdp.send('Tracing.start', { transferMode: 'ReturnAsStream', traceConfig: { includedCategories: ['devtools.timeline', 'disabled-by-default-v8.gc', '__metadata'] } });
+if (mode === 'gc' && !has('from-load')) await traceStart();
 await page.evaluate((fin) => {
   const g = window.canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
   g._quizFreezesRide = () => false; p.handleInput = () => {};
@@ -99,10 +102,15 @@ if (mode === 'gc') {
   await cdp.send('Tracing.end'); const { stream } = await done;
   let text = ''; for (;;) { const c = await cdp.send('IO.read', { handle: stream }); text += c.base64Encoded ? Buffer.from(c.data, 'base64').toString() : c.data; if (c.eof) break; }
   const ev = JSON.parse(text).traceEvents ?? JSON.parse(text);
-  fs.writeFileSync(path.join(outDir, 'gc-trace.json'), JSON.stringify(ev.filter(e => /GC|gc/.test(e.name) || /gc/.test(e.cat))));
+  fs.writeFileSync(path.join(outDir, 'gc-trace.json'), JSON.stringify(ev.filter(e => /GC|gc/.test(e.name) || /gc/.test(e.cat) || e.ph === 'M' || (e.ph === 'X' && e.dur >= 50000))));
+  // Thread names (CrRendererMain, DedicatedWorker thread …) and each worker's script URL, to name the isolates.
+  log.threads = {}; for (const e of ev) if (e.ph === 'M' && e.name === 'thread_name') log.threads[`${e.pid}:${e.tid}`] = e.args?.name;
+  log.workerUrls = {}; for (const e of ev) { const u = e.args?.data?.url; if (u && /worker|bundle/.test(u) && e.tid != null && /Worker|Script/.test(e.name)) log.workerUrls[`${e.pid}:${e.tid}`] ??= u.split('/').pop().split('?')[0]; }
+  // Main-thread tasks of 50 ms or more, with the trace's own clock relative to navigation.
+  log.longTraceEvents = ev.filter(e => e.ph === 'X' && e.dur >= 50000 && /CrRendererMain/.test(log.threads[`${e.pid}:${e.tid}`] ?? '')).map(e => ({ ts: e.ts, ms: Math.round(e.dur / 1000), name: e.name, data: e.args?.data ? JSON.stringify(e.args.data).slice(0, 200) : undefined }));
   const gcs = ev.filter(e => (e.name === 'MinorGC' || e.name === 'MajorGC') && e.ph === 'X' && e.args?.usedHeapSizeBefore != null).sort((a, b) => a.ts - b.ts);
   const t0 = gcs[0]?.ts ?? 0;
-  log.gcs = gcs.map(e => ({ t: +((e.ts - t0) / 1e6).toFixed(2), kind: e.name === 'MajorGC' ? 'major' : 'minor', ms: +(e.dur / 1000).toFixed(1), beforeMB: +(e.args.usedHeapSizeBefore / 1048576).toFixed(1), afterMB: +(e.args.usedHeapSizeAfter / 1048576).toFixed(1), type: e.args.type ?? null }));
+  log.gcs = gcs.map(e => ({ thread: `${e.pid}:${e.tid}`, t: +((e.ts - t0) / 1e6).toFixed(2), kind: e.name === 'MajorGC' ? 'major' : 'minor', ms: +(e.dur / 1000).toFixed(1), beforeMB: +(e.args.usedHeapSizeBefore / 1048576).toFixed(1), afterMB: +(e.args.usedHeapSizeAfter / 1048576).toFixed(1), type: e.args.type ?? null }));
 }
 
 // Heap now, then after a forced GC (garbage vs live), and the same for each extra tab.
