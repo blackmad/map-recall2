@@ -318,6 +318,41 @@ export function wallLab(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: Wa
   return { L: +L.toFixed(3), C: +Math.hypot(a, bb).toFixed(3), h: +(((Math.atan2(bb, a) * 180) / Math.PI + 360) % 360).toFixed(0), hex, n: px.length };
 }
 
+/**
+ * The capture's exposure references (lane WC, #384): what the same capture shows of a known-bright surface and of the scene,
+ * so a wall sample from a dull overcast or shaded capture can be normalised before it becomes a wall colour
+ * (src/canalRecall/houseSpec/wallExposure.ts). Linear relative luminance Y (0..1) of:
+ *   white  the 95th percentile on the pand's own wall plane (a 32 x 24 grid over 5-95 % of the length, 0.3 m to 95 % of the
+ *          height; leaves dropped, bright pixels kept): white frames, stone dressings, sills, cornices;
+ *   p80    the 80th percentile on the same grid (a front without white joinery still has its lighter parts);
+ *   scene  the median of the whole cut (every 4th pixel), sky-like pixels (bluish bright, as wallLab drops) left out.
+ * Null when fewer than 40 wall points land in the frame.
+ */
+export type ExposureRef = { white: number; p80: number; scene: number; n: number };
+const lumY = (r: number, g: number, b: number) => 0.2126 * srgbLin(r) + 0.7152 * srgbLin(g) + 0.0722 * srgbLin(b);
+export function wallExposureRef(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: WallQuad): ExposureRef | null {
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), ys: number[] = [];
+  if (len < 1) return null;
+  for (let i = 0; i < 32; i++) for (let j = 0; j < 24; j++) {
+    const s = wallPoint(frame, pose, wall, len * (0.05 + 0.9 * (i + 0.5) / 32), 0.3 + (wall.heightM * 0.95 - 0.3) * (j + 0.5) / 24);
+    if (s.depth <= 0 || s.x < 0 || s.y < 0 || s.x >= img.width || s.y >= img.height) continue;
+    const o = (Math.floor(s.y) * img.width + Math.floor(s.x)) * 3, r = img.data[o], g = img.data[o + 1], b = img.data[o + 2];
+    if (isLeaf(r, g, b)) continue;
+    ys.push(lumY(r, g, b));
+  }
+  if (ys.length < 40) return null;
+  ys.sort((a, b) => a - b);
+  const q = (xs: number[], f: number) => xs[Math.min(xs.length - 1, Math.floor(xs.length * f))];
+  const sc: number[] = [];
+  for (let y = 0; y < img.height; y += 4) for (let x = 0; x < img.width; x += 4) {
+    const o = (y * img.width + x) * 3, r = img.data[o], g = img.data[o + 1], b = img.data[o + 2], y8 = 0.299 * r + 0.587 * g + 0.114 * b;
+    if (y8 > 120 && (b > r + 8 || y8 > 235)) continue;
+    sc.push(lumY(r, g, b));
+  }
+  sc.sort((a, b) => a - b);
+  return { white: +q(ys, 0.95).toFixed(4), p80: +q(ys, 0.8).toFixed(4), scene: +(sc.length ? q(sc, 0.5) : 0).toFixed(4), n: ys.length };
+}
+
 /** OKLab distance over which a target-wall pixel counts as changed between two game frames (about 2 JND). */
 export const WALL_CHANGE_DE = 0.02;
 /** Under this share of changed target-wall pixels a before/after is "the same" (render noise on an unchanged wall is 0-0.5 %). */

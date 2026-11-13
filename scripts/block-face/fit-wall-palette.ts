@@ -19,8 +19,9 @@ function hslToRgb([h, s, l]: RGB): RGB {
   const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
   return [r, g, b].map(v => Math.round((v + m) * 255)) as RGB;
 }
-export function fitWallBrick(brick: string, model: string, photo: string): {brick: string; predicted: string} {
-  const tint = hexToRgb(cityWallTint(brick)), m = hexToRgb(model), ph = hexToRgb(photo);
+/** `tint`: the brick -> tint transfer (default cityWallTint; lane WC's floor option passes one with a lower floor). */
+export function fitWallBrick(brick: string, model: string, photo: string, tintOf: (hex: string) => string = cityWallTint): {brick: string; predicted: string} {
+  const tint = hexToRgb(tintOf(brick)), m = hexToRgb(model), ph = hexToRgb(photo);
   const k = [0, 1, 2].map(i => m[i] / Math.max(1, tint[i]));
   const wantTint = [0, 1, 2].map(i => Math.min(255, ph[i] / k[i])) as RGB;
   const [h, s, l] = rgbToHsl(wantTint);
@@ -29,10 +30,10 @@ export function fitWallBrick(brick: string, model: string, photo: string): {bric
   const l0 = Math.max(0.02, Math.min(0.98, (l - 0.12) / 0.9));
   for (let dl = -0.06; dl <= 0.06; dl += 0.002) for (let ds = -0.06; ds <= 0.06; ds += 0.005) {
     const cand = rgbToHex(hslToRgb([h, Math.max(0, Math.min(1, s + ds)), Math.max(0, Math.min(1, l0 + dl))]));
-    const t = hexToRgb(cityWallTint(cand)), e = [0, 1, 2].reduce((a, i) => a + (t[i] * k[i] - ph[i]) ** 2, 0);
+    const t = hexToRgb(tintOf(cand)), e = [0, 1, 2].reduce((a, i) => a + (t[i] * k[i] - ph[i]) ** 2, 0);
     if (e < err) { err = e; best = cand; }
   }
-  const t = hexToRgb(cityWallTint(best));
+  const t = hexToRgb(tintOf(best));
   return {brick: best, predicted: rgbToHex([0, 1, 2].map(i => Math.round(t[i] * k[i])) as RGB)};
 }
 if (process.argv[1]?.endsWith('fit-wall-palette.ts')) {

@@ -19,6 +19,12 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179378.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179378.jpg",
+   "at": "2026-11-13"
   }
  },
  "schemaLimits": [
@@ -26,5 +32,15 @@
    "component": "erker",
    "what": "a white projecting bay window appears on a lower upper storey at the right edge"
   }
- ]
+ ],
+ "facts": {
+  "wallExposure": {
+   "off": "#37342f",
+   "floor": "#1d1b17",
+   "gain": "#37342f",
+   "norm": "#4d473d",
+   "normfloor": "#4d473d",
+   "g": 3
+  }
+ }
 }

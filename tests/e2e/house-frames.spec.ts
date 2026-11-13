@@ -33,14 +33,17 @@ type JobPose = {
   fps: Record<string, unknown>;
   /** image px to pick (ownWorldView.inspectBuilding) */
   picks: Array<[number, number]>;
+  /** a batch list's own query (else the job's) */
+  query?: string;
 };
 type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: JobPose[] };
 
 const JOB = process.env.HOUSE_FRAMES_JOB;
 
-async function openPage(page: Page, job: Job): Promise<void> {
+async function openPage(page: Page, job: Job, query = job.query): Promise<void> {
   // The first-person camera is the own engine's (engine/fpsCamera.ts): `engine=own` unless the job's query names an engine.
-  const q = job.query.replace(/^\?/, '');
+  // A batch list may carry its own query (house:frames --lists <list>:<out>@<query>): the pose's, else the job's.
+  const q = query.replace(/^\?/, '');
   const engine = /(^|&)engine=/.test(q) ? '' : 'engine=own&';
   await openRoute(page, { travelMode: 'car', query: `?${engine}cam=fps${q ? `&${q}` : ''}`, abortHeavyTiles: true });
   await page.evaluate(() => {
@@ -114,7 +117,7 @@ test('house frames', async ({ page }) => {
         specsOn = !!specsDir && (!specsFor || (pose.out ?? job.out).includes(specsFor));
         if (sinceOpen >= job.reopenEvery) {
           if (opened) { await page.goto('about:blank'); }
-          await openPage(page, job); opened++; sinceOpen = 0;
+          await openPage(page, job, pose.query ?? job.query); opened++; sinceOpen = 0;
         }
         const tOpen = Date.now();
         await setPose(page, pose);

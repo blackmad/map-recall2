@@ -46,6 +46,12 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012180227.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180227.jpg",
+   "at": "2026-11-13"
   }
  },
  "schemaLimits": [
@@ -61,5 +67,15 @@
    "component": "window",
    "what": "light stone blocks at the corners of every window and along the floor lines"
   }
- ]
+ ],
+ "facts": {
+  "wallExposure": {
+   "off": "#39322d",
+   "floor": "#141211",
+   "gain": "#39322d",
+   "norm": "#3e3733",
+   "normfloor": "#3e3733",
+   "g": 3
+  }
+ }
 }

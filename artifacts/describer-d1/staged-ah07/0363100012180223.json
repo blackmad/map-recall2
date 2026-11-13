@@ -46,6 +46,12 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
   }
  },
  "schemaLimits": [
@@ -57,5 +63,15 @@
    "component": "dormer",
    "what": "white dormer with side scrolls in a slate mansard"
   }
- ]
+ ],
+ "facts": {
+  "wallExposure": {
+   "off": "#594d34",
+   "floor": "#594d34",
+   "gain": "#7e6d4b",
+   "norm": "#50452f",
+   "normfloor": "#50452f",
+   "g": 0.842
+  }
+ }
 }

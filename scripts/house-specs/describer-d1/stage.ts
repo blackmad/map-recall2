@@ -23,6 +23,7 @@ import { sideOf } from './twins.ts';
 import { fitWallBrick } from '../../block-face/fit-wall-palette.ts';
 import { CITY_BRICK_LIGHTNESS, cityWallTint, hexToRgb, hslToRgb, rgbToHex } from '../../../src/canalRecall/look/palette.ts';
 import { rgbToHsl } from '../../../src/canalRecall/blockFace/wallColour.ts';
+import { EXPOSURE, exposeHex, normGain, type ExposureRefLike, type WallExposureFact } from '../../../src/canalRecall/houseSpec/wallExposure.ts';
 import { similar, similarWidthYear, type Probe } from './partyPairs.ts';
 import { loadAnswers } from './score.ts';
 
@@ -95,21 +96,39 @@ export function shipOnly(spec: HouseSpec, a: DescriberAnswer): { spec: HouseSpec
 
 /** A pinned pose renders a wall about this much lighter than cityWallTint(brick) (per channel; the reviewer's figure, D1-fix 3). */
 export const PIN_RENDER_GAIN = 1.14;
-/** The brick whose pinned render lands on the W1 photo sample: fitWallBrick(sample, PIN_RENDER_GAIN x tint(sample), sample). */
-export function wallBrickFromSample(sample: string): { brick: string; predicted: string; floor: boolean } {
-  const model = rgbToHex(hexToRgb(cityWallTint(sample)).map(v => Math.min(255, Math.round(v * PIN_RENDER_GAIN))) as [number, number, number]);
-  const fit = fitWallBrick(sample, model, sample);
+/** The brick whose pinned render lands on the W1 photo sample: fitWallBrick(sample, PIN_RENDER_GAIN x tint(sample), sample).
+ *  `floorTintL` (lane WC option a, #384): the city tint's floor for this fit, default CITY_BRICK_LIGHTNESS[0]. */
+export function wallBrickFromSample(sample: string, floorTintL: number = CITY_BRICK_LIGHTNESS[0]): { brick: string; predicted: string; floor: boolean } {
+  const tint = floorTintL === CITY_BRICK_LIGHTNESS[0] ? cityWallTint : (hex: string) => floorTint(hex, floorTintL);
+  const model = rgbToHex(hexToRgb(tint(sample)).map(v => Math.min(255, Math.round(v * PIN_RENDER_GAIN))) as [number, number, number]);
+  const fit = fitWallBrick(sample, model, sample, tint);
   // Below the city brick floor (CITY_BRICK_LIGHTNESS: tint L' = 0.12 + 0.9 L >= 0.3) every darker brick renders the same
   // tint and the grid search runs to near black; stage the lightest brick at the floor instead, in the sample's hue and
   // saturation (for a painted-black front about the sample itself). The render cannot go darker: `floor` says so.
-  const lFloor = (CITY_BRICK_LIGHTNESS[0] - 0.12) / 0.9, [, , l] = rgbToHsl(hexToRgb(fit.brick));
+  const lFloor = Math.max(0, (floorTintL - 0.12) / 0.9), [, , l] = rgbToHsl(hexToRgb(fit.brick));
   if (l >= lFloor - 0.005) return { ...fit, floor: false };
   const [h, sat] = rgbToHsl(hexToRgb(sample));
   return { brick: rgbToHex(hslToRgb([h, sat, lFloor])), predicted: fit.predicted, floor: true };
 }
+/** cityWallTint with another lightness floor (palette.ts: L' = 0.12 + 0.9 L clamped to [floor, CITY_BRICK_LIGHTNESS[1]]). */
+function floorTint(hex: string, floor: number): string {
+  const [h, s, l] = rgbToHsl(hexToRgb(hex));
+  return rgbToHex(hslToRgb([h, Math.min(0.5, Math.max(0.12, s)), Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(floor, 0.12 + l * 0.9))]));
+}
+/**
+ * The three wall-exposure options for one sample (lane WC, #384; src/canalRecall/houseSpec/wallExposure.ts), staged as
+ * `facts/wallExposure` beside the off brick: (a) floor = the fit with EXPOSURE.floorTintL; (b) gain = the sample x
+ * EXPOSURE.gainB; (c) norm = the sample x the capture's normGain (needs the capture's references, w1.ref). (b) and (c)
+ * then take the existing floor; normfloor = (c) with (a)'s floor. Null without references.
+ */
+export function wallExposureFact(sample: string, ref: ExposureRefLike | null | undefined): WallExposureFact | null {
+  if (!ref || !(ref.white > 0) || !(ref.scene > 0)) return null;
+  const g = normGain(ref);
+  return { off: wallBrickFromSample(sample).brick, floor: wallBrickFromSample(sample, EXPOSURE.floorTintL).brick, gain: wallBrickFromSample(exposeHex(sample, EXPOSURE.gainB)).brick, norm: wallBrickFromSample(exposeHex(sample, g)).brick, normfloor: wallBrickFromSample(exposeHex(sample, g), EXPOSURE.floorTintL).brick, g: +g.toFixed(3) };
+}
 
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
-export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null) {
+export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null, exposureRef: ExposureRefLike | null = null) {
   const part = toSpecPart(a, at);
   const { spec } = shipOnly(part, a);
   // per-row heads: the receipt of the answer's head reading (toSpecPart, halved when `heads` is low) on each staged slot
@@ -119,6 +138,9 @@ export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string 
   if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
     setSpecField(spec, 'palette/brick', wallBrickFromSample(wallHex.toLowerCase()).brick);
     spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
+    // lane WC (#384): the exposure options beside it, drawn only under ?wallExposure= (default off)
+    const fact = wallExposureFact(wallHex.toLowerCase(), exposureRef);
+    if (fact) { setSpecField(spec, 'facts/wallExposure', fact); spec.provenance['facts/wallExposure'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at }; }
   }
   return spec;
 }
@@ -184,9 +206,10 @@ function main() {
   const at = opt('at') ?? null;
   const guard = (opt('twin-guard') ?? 'mutual') as TwinGuard;
   if (!TWIN_GUARDS.includes(guard)) { console.error(`--twin-guard ${TWIN_GUARDS.join('|')}`); process.exit(2); }
-  const hex = new Map<string, string>(), walls = new Map<string, Wall>();
+  const hex = new Map<string, string>(), walls = new Map<string, Wall>(), refs = new Map<string, ExposureRefLike>();
   if (opt('cuts')) for (const r of JSON.parse(fs.readFileSync(opt('cuts')!, 'utf8')).rows ?? []) {
     if (r.w1?.hex) hex.set(r.pandId, r.w1.hex);
+    if (r.w1?.ref) refs.set(r.pandId, r.w1.ref);
     const w = wallOf(r); if (w) walls.set(r.pandId, w);
   }
   const probes: Record<string, Probe> = opt('probes') ? JSON.parse(fs.readFileSync(opt('probes')!, 'utf8')) : {};
@@ -204,7 +227,7 @@ function main() {
       const v = (a as any)[k];
       if (answered(v)) answerCount[k] = (answerCount[k] ?? 0) + 1; else nv++;
     }
-    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null));
+    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null, refs.get(id) ?? null));
   }
   let inheritedFronts = 0; const inheritedFields: Record<string, number> = {};
   for (const [id, a] of A) {

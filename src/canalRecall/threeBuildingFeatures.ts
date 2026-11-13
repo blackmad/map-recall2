@@ -164,7 +164,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined, poolPointOf(polygons, at));
+      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays, ...(specRecipeOf(p)!.finish ? { painted: true } : {}) } : specRecipeOf(p)?.finish ? { painted: true } : undefined, poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);

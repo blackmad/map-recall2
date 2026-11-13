@@ -250,7 +250,7 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
  * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number }, at?: readonly [number, number]) {
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; painted?: boolean }, at?: readonly [number, number]) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -263,7 +263,8 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // The measured wall pool (lane W1) and its variety draw (lane W2): a painted draw takes the painted preset's smooth cells.
   const h = hashSeed(id);
   const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolDraw(at[0], at[1], archetype, h >>> 7) : null;
-  const painted = draw?.painted ? paintedLayers(archetype) : null;
+  // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone front (spec.painted) takes the same smooth cells.
+  const painted = draw?.painted || (spec?.painted && !recipe && !vocab && !contemporary) ? paintedLayers(archetype) : null;
   const style = painted ? PAINTED_BASE_STYLE[archetype]! : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'

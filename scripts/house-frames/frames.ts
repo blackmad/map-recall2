@@ -76,7 +76,8 @@ Flags
                          server); each list's pairs, sheets and summary go to its own out dir, exactly as a separate
                          --list run would write them (the page re-opens at each list, so frames match a separate
                          run). The batch job is <first out>/batch-job.json. Other flags apply
-                         to every list; --out is ignored
+                         to every list; --out is ignored. <list.json>:<out>@<query> adds a query for that list only
+                         (joined to --query with &): one batch frames a flag's settings side by side
   --reuse-photos         take the pick, pose and photo cut from the cache when this entry was framed before with the
                          same flags and the same frames/pose/photo code (a before/after re-run renders only game
                          frames). Every run writes the cache: HOUSE_FRAMES_CACHE, default the main checkout's
@@ -607,8 +608,8 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
-const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; query?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
+const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, query: args.query, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
 async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
@@ -680,10 +681,12 @@ export function splitLists(argv: string[]): string[][] {
     if (a.startsWith('--lists=') || a.startsWith('--out=') || a.startsWith('--list=')) continue;
     shared.push(a);
   }
-  return spec.split(',').filter(Boolean).map(pair => {
+  return spec.split(',').filter(Boolean).map(entry => {
+    // `<list.json>:<out>@<query>` (lane WC): this list's own query, joined to the shared --query (one flag per list in a batch)
+    const at = entry.indexOf('@'), pair = at >= 0 ? entry.slice(0, at) : entry, listQuery = at >= 0 ? entry.slice(at + 1) : '';
     const i = pair.lastIndexOf(':');
-    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${pair}": want <list.json>:<out dir>`);
-    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared];
+    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${entry}": want <list.json>:<out dir>[@<query>]`);
+    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared, ...(listQuery ? ['--list-query', listQuery] : [])];
   });
 }
 
@@ -707,7 +710,8 @@ export async function main(argv = process.argv.slice(2)) {
 async function batch(argv: string[]) {
   const runs: Array<{ args: Args; prepared: Prepared[]; skipped: Skipped[] }> = [];
   for (const one of splitLists(argv)) {
-    const args = await parseArgs(one);
+    const args = await parseArgs(one), listQuery = arg(one, 'list-query');
+    if (listQuery) args.query = [args.query.replace(/^\?/, ''), listQuery.replace(/^\?/, '')].filter(Boolean).join('&').replace(/^/, '?');
     if (args.before) args.before = path.join(args.before, path.basename(args.out));
     console.log(`== ${args.inputName} -> ${args.out}`);
     if (args.postOnly) { const p = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')); runs.push({ args, ...p }); continue; }
