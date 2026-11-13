@@ -22,7 +22,7 @@ test('a curved crown takes the register\'s curved kind, else neck', () => {
   assert.equal(readFields(spec({ gable: 'bell' }, { 'fronts/0/gable': vj() }, { historicGable: 'step' }))!.crown, 'neck');
 });
 
-const pick = (f: Record<string, unknown>): TemplatePick => ({ pandId: '0363100012168000', street: 'X', distM: 20, sameStreet: true, pool: 3, src: 'streetlevel-measured', fields: f });
+const pick = (f: Record<string, unknown>): TemplatePick => ({ pandId: '0363100012168000', street: 'X', distM: 20, sameStreet: true, tier: 'street', pool: 3, src: 'streetlevel-measured', fields: f });
 
 test('the template fills dressings the reading left open, never structure, and never over a reading', () => {
   const t = withTemplate(readFields(spec({ bands: 'storey' }, { 'fronts/0/bands': vj() })), pick({ 'fronts/0/bands': 'speklagen', 'fronts/0/windowSurround': 'eared-keystone' }))!;

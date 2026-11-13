@@ -16,7 +16,7 @@ import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
 import { frontEavesM } from '../../src/canalRecall/houseSpec/storeyPlan.ts';
 import { readFields, withTemplate } from '../../src/canalRecall/houseSpec/routeAFields.ts';
-import { streetTemplateFor } from '../../src/canalRecall/houseSpec/streetTemplate.ts';
+import { footprintWidthM, streetTemplateFor } from '../../src/canalRecall/houseSpec/streetTemplate.ts';
 
 export const HELP = `build-house-specs: resolve every pand's HouseSpec from its sources and write the tiled extract.
 
@@ -140,6 +140,7 @@ const where = new Map<string, { tile: string; buurt?: Record<string, any> }>();
 const tileHeight = new Map<string, number>();
 /** Lane WG step 2: the footprint centroid, for the street template (routeAFields.ts withTemplate). */
 const centroidOf = new Map<string, number[]>();
+const ringOf = new Map<string, number[][]>();
 for (const tile of tileKeys) {
   const file = path.join(EXTRACT, `building-tiles/14/${tile}.geojson.gz`);
   if (!existsSync(file)) continue;
@@ -150,6 +151,7 @@ for (const tile of tileKeys) {
     const c = centroid(f.geometry);
     if (typeof f.properties?.height === 'number') tileHeight.set(digits, f.properties.height);
     centroidOf.set(digits, c);
+    ringOf.set(digits, polys(f.geometry)[0][0]);
     where.set(digits, { tile, buurt: buurten.find(b => polys(b.geometry).some(p => inside(c, p[0])))?.properties });
   }
 }
@@ -167,9 +169,35 @@ if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y 
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
 
-// Lane WG step 2: the street template rung is a hook until the completer lane's re-ranked module lands (scale and street
-// class match, no template when nothing qualifies; the reviewer, 2026-11-13). `--street-template` turns it on.
-const STREET_TEMPLATE = process.argv.includes('--street-template');
+// Lane WG step 2: the street template rung (streetTemplate.ts, the completer's re-ranked module at 913099241: same street,
+// else street class and scale, else scale, within 300 m; none when nothing qualifies). Its query needs the house's street
+// (the nearest named road to the footprint centroid, within STREET_REACH_M) and scale (the building tile's height and the
+// footprint's narrow side, scripts/house-line/route-c/scale.ts pandScale's instrument). `--no-street-template` turns it off.
+const STREET_TEMPLATE = !process.argv.includes('--no-street-template');
+const STREET_REACH_M = 40;
+const KX = 111_320 * Math.cos(52.37 * Math.PI / 180), KY = 110_540, CELL = 0.001;
+type NamedSeg = { name: string; a: number[]; b: number[] };
+const streetGrid = new Map<string, NamedSeg[]>();
+if (STREET_TEMPLATE) for (const st of JSON.parse(readFileSync(path.join(EXTRACT, 'streets-routing.json'), 'utf8')) as Array<{ name?: string; highway?: string; path?: number[][]; paths?: number[][][] }>) {
+  if (!st.name || /motorway|cycleway|footway|path|steps|service|pedestrian/.test(st.highway ?? '')) continue;
+  for (const line of st.paths ?? (st.path ? [st.path] : [])) for (let i = 0; i + 1 < line.length; i++) {
+    const a = [line[i][1], line[i][0]], b = [line[i + 1][1], line[i + 1][0]];
+    const key = `${Math.floor((a[0] + b[0]) / 2 / CELL)},${Math.floor((a[1] + b[1]) / 2 / CELL)}`;
+    (streetGrid.get(key) ?? streetGrid.set(key, []).get(key)!).push({ name: st.name, a, b });
+  }
+}
+function nearestStreet([lng, lat]: number[]): string | null {
+  let best: string | null = null, bestD = STREET_REACH_M;
+  const gx = Math.floor(lng / CELL), gy = Math.floor(lat / CELL);
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const s of streetGrid.get(`${gx + dx},${gy + dy}`) ?? []) {
+    const ax = (s.a[0] - lng) * KX, ay = (s.a[1] - lat) * KY, bx = (s.b[0] - lng) * KX, by = (s.b[1] - lat) * KY;
+    const vx = bx - ax, vy = by - ay, t = Math.max(0, Math.min(1, -(ax * vx + ay * vy) / (vx * vx + vy * vy || 1)));
+    const d = Math.hypot(ax + vx * t, ay + vy * t);
+    if (d < bestD) { bestD = d; best = s.name; }
+  }
+  return best;
+}
+const templateLog: Record<string, unknown>[] = [];
 
 // --- 4. write the staged tiles ------------------------------------------------------------------------------------
 rmSync(path.join(STAGING, '14'), { recursive: true, force: true });
@@ -192,7 +220,8 @@ for (const [pand, spec] of resolved) {
   // fronts only (a reading or a stated count).
   {
     const c = centroidOf.get(pand), year = record.v.year ?? bagYear.get(pand) ?? null;
-    const read = readFields(spec), pick = STREET_TEMPLATE && c && (read || record.v.storeys) ? streetTemplateFor({ pandId: pand, lng: c[0], lat: c[1], year }) : null;
+    const read = readFields(spec), pick = STREET_TEMPLATE && c && (read || record.v.storeys) ? streetTemplateFor({ pandId: pand, lng: c[0], lat: c[1], year, street: nearestStreet(c), heightM: tileHeight.has(pand) ? +tileHeight.get(pand)!.toFixed(1) : null, widthM: ringOf.has(pand) ? footprintWidthM(ringOf.get(pand)!) : null }) : null;
+    if (pick) templateLog.push({ pand, street: nearestStreet(c!), template: pick.pandId, templateStreet: pick.street, tier: pick.tier, distM: pick.distM, pool: pick.pool });
     const fields = withTemplate(read, pick);
     if (fields) { record.v.fields = fields; counts.fields++; if (pick && Object.values(fields.src).some(s => s?.startsWith('template:'))) counts.fieldsTemplate++; }
   }
@@ -266,6 +295,7 @@ for (const [pand, spec] of resolved) {
 report.byBuurt = Object.fromEntries(Object.entries(report.byBuurt).sort((a, b) => b[1].pands - a[1].pands));
 mkdirSync(path.dirname(REPORT), { recursive: true });
 writeFileSync(REPORT, JSON.stringify(report, null, 1) + '\n');
+writeFileSync(path.join(EXTRACT, 'staging/house-specs.templates.json'), JSON.stringify(templateLog, null, 0) + '\n'); // lane WG: per-pand template picks (gitignored staging)
 
 const fields = [...resolved.values()].reduce((n, s) => n + specFields(s).length, 0);
 console.log(`house specs: ${report.pands} pands (${fields} fields), ${report.tiled} tiled in ${report.tiles} tiles (${(bytes / 1024).toFixed(0)} kB gz), ${report.notInTiles} not in any building tile`);
