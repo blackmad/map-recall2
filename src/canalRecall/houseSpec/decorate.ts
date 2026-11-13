@@ -241,9 +241,11 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.roofStorey === 'mansard' || view.roofStorey === 'attic') recipe.roofStorey = view.roofStorey;
     if (typeof view.eavesM === 'number' && Number.isFinite(view.eavesM) && view.eavesM > 0) recipe.eavesM = view.eavesM;
     if (view.corniceCrown === true) recipe.corniceCrown = true;
-    if (view.src.storeys) recipe.storeysSrc = view.src.storeys;
     if (specDesignOn('storeys')) {
       recipe.storeysFit = true;
+      // Who stated the count (storeyPlan.ts storeyPlanDraws: only a describer count can be vetoed); with the fit held the
+      // patch is exactly H9's.
+      if (view.src.storeys) recipe.storeysSrc = view.src.storeys;
       if (typeof view.groundM === 'number' && Number.isFinite(view.groundM)) recipe.groundM = view.groundM;
     }
   }

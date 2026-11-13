@@ -140,7 +140,8 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
   if (!r?.look && !Object.keys(extra).length) return undefined;
-  return { ...r?.look, ...extra, bays: r?.bays };
+  // The spec's bay count narrows the preset pool only under H11's stated look: a route A field changes its own trait, not the pool.
+  return { ...r?.look, ...extra, ...(r?.look ? { bays: r?.bays } : {}) };
 }
 /** A HouseSpec's reads (houseSpec/decorate.ts `specRecipe`), when the decorator wrote one. */
 const specRecipeOf = (p: Record<string, unknown>): NonNullable<MeshBuilding['specRecipe']> | undefined =>
