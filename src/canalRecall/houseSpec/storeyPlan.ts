@@ -117,6 +117,13 @@ export function storeyGuardOn(): boolean {
 /** Tests and harnesses: forget the cached flag. */
 export const resetStoreyGuard = () => { guardNow = undefined; };
 
+/**
+ * The prior a rejected count falls back to (the integrator's ruling, 2026-11-13): PR1's structure prior
+ * (houseSpec/structurePrior.ts) sets `storeys` here when its storeys ship (`?structurePrior=storeys|all`); unset, a
+ * rejected run draws the style's own count (today's). The mesher calls it once per rejected ground-level street run.
+ */
+export const storeyRejectPrior: { storeys?: (building: { id: string; structurePrior?: { year: number; lng: number; lat: number } }, run: { exposedM: number; widthM: number; base: number; streetRun: boolean }) => number | null | undefined } = {};
+
 /** A rejected or fitted plan per pand, for the storey-guard report (the publish veto list and the second-read queue). */
 export const storeyPlanProbe: { sink?: (id: string, plan: StoreyPlan, input: StoreyPlanInput) => void } = {};
 

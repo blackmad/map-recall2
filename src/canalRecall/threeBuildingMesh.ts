@@ -24,7 +24,7 @@ import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOp
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
-import { storeyDraw, storeyPlan, storeyPlanProbe } from './houseSpec/storeyPlan.js';
+import { storeyDraw, storeyPlan, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -624,7 +624,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (plan) {
           if (storeyPlanProbe.sink) storeyPlanProbe.sink(b.id, plan, input);
           const draw = storeyDraw(plan, specBays.storeys, undefined, specBays.exposedM);
-          if (draw === 'reject') { delete specBays.storeys; delete specBays.exposedM; delete specBays.fit; delete specBays.groundM; }
+          if (draw === 'reject') {
+            const exposedM = specBays.exposedM;
+            delete specBays.storeys; delete specBays.exposedM; delete specBays.fit; delete specBays.groundM;
+            // The prior's count when it ships (storeyRejectPrior, PR1); unset: the style's own count.
+            const prior = storeyRejectPrior.storeys?.(b as { id: string }, { exposedM, widthM: run.reduce((sum, r) => sum + r.e.len, 0), base, streetRun });
+            if (prior && prior >= 2) Object.assign(specBays, { storeys: prior, exposedM, fit: 'nearest' as const });
+          }
           else if (draw) {
             // The wall over 3DBAG's eaves draws as the plain parapet band, so the rows stop at the eaves line (needs a plain cell).
             if (draw.bandM && b.plainLayer !== undefined && !b.bare) eavesBand = draw.bandM;
