@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Wall variety on (band 0.5), F1 S6d (2026-11-13, round 124).**
+- **W2/W3 (dd6c4b14b).** Unmeasured pands draw from the middle half (band 0.5) of the measured pool near them, not its median.
+  - **Why W2 held it.** W2's 114 pairs were chosen where the game drew pale over dark brick, so they punished any spread.
+  - **W3's benchmark-v2.** 146 pairs: seeded random, ride-weighted, pre-1945 generic pands with winter poses within 30°. Mean wall dE: pre-W1 0.132, W1 0.097, band 0.5 0.091 (CI excludes 0), band 1 0.102. The blind critic is flat between W1 and band 0.5.
+  - **The default.** `WALL_VARIETY_DEFAULT_ON = true`; `?wallVariety=0` is W1's draw. world-v1 was recompiled (1,170 files).
+  - **Frames.** Integrator frames on `?world=live` move all three pands toward the photo (Herenstraat 175043 L 0.69 → 0.41, photo 0.43).
+  - **Frames trap.** A runtime `?wallVariety=0` on the baked world gives identical pairs, because baked cells ignore runtime flags.
+  - **W3's metric check.** The 3–12 m shopfront band is not the error. Oblique poses are: 50 of W1's 114 pairs were more than 30° off square.
+- **F1 S6d (e9de782e9, flag off).**
+  - **Register wall material.** The monument register finish sets the record's wall material (plaster/stone → render, brick → brick). It covers 652 of 5,958 register pands, 11 of 193 benchmark pands.
+  - **Pale brick.** Brick contrast halves between wall L 0.55 and 0.7.
+- **measuredWallPool JSON import.** It now uses `with { type: 'json' }`; Playwright's loader refused the bare import, which broke test:look-e2e on main-in-progress.
+
 **Crossing register on, nightly driving harness fixed (2026-11-12, round 123).**
 - **G3 round 2 (a57e96a76).** The round-1 register was merged off for two reasons:
   - **Size.** It imported 6.5 MB of authored crossings JSON (2.8 MB of it piers), so own-ground-game gzip went from 91 to 546 KB.

@@ -10,6 +10,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
+import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
 import { PERIOD_WALLS, BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
@@ -136,6 +137,17 @@ const specRecipeOf = (p: Record<string, unknown>): NonNullable<MeshBuilding['spe
 /** The `?walls=measured` stamp (genericFacades.ts constructionYearEnricher), when present and well formed. */
 const periodWallOf = (p: Record<string, unknown>): string | undefined => typeof p.periodWallHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.periodWallHex) ? p.periodWallHex : undefined;
 
+/**
+ * Where the measured wall pool looks for a pand's neighbours: its outer ring's vertex mean, as the pool table's points are
+ * (scripts/house-specs/measured-wall-pool.ts), with the variety draw on (lane W2); the first vertex as lane W1 shipped
+ * with `?wallVariety=0`.
+ */
+function poolPointOf(polygons: ReturnType<typeof asPolygons>, first: readonly number[] | undefined): readonly [number, number] | undefined {
+  if (!first) return undefined;
+  const ring = polygons[0]?.[0];
+  if (!wallVarietyOn() || !ring?.length) return [first[0], first[1]];
+  return [ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length];
+}
 export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = false, sourceRoofPlan?: RoofPlan): MeshBuilding | null {
   const p = feature.properties;
   const polygons = asPolygons(feature.geometry);
@@ -151,14 +163,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined, at ? [at[0], at[1]] : undefined);
+      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined, poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
     if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
-    quietGround = bayLayer(bay.archetype, bay.style, 'ground');
+    quietGround = bay.quietGround ?? bayLayer(bay.archetype, bay.style, 'ground');
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
     if (bay.contemporary?.setback) building.setbackCrown = true;
   } else {

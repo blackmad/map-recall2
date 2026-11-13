@@ -10,7 +10,7 @@ import { ROOF_LAYER_COUNT } from '../look/paintLookAtlas.js';
 
 /** The layer table as text: one line per bay layer (archetype, style, kind, shop and masonry flags), then the roof cells. */
 export function shellLayerTable(): string {
-  const bays = BAY_ENTRIES.map(e => `${e.layer}:${e.archetype}|${e.style}|${e.kind}|${e.restrainedShop ? 1 : 0}|${e.originalMasonry ? 1 : 0}`);
+  const bays = BAY_ENTRIES.map(e => `${e.layer}:${e.archetype}|${e.style}|${e.kind}|${e.restrainedShop ? 1 : 0}|${e.originalMasonry ? 1 : 0}${e.smooth ? '|smooth' : ''}`);
   return [...bays, `bays=${BAY_LAYER_COUNT}`, `masonry=${FATIH_MASONRY_LAYER}`, `roof=${ROOF_LAYER_COUNT}`].join('\n');
 }
 
