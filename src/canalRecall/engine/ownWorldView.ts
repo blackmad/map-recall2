@@ -544,6 +544,7 @@ export class OwnWorldView implements WorldViewOracles {
       completeCity: () => this._completeCity,
       measuredColoursOnly: () => this.measuredColoursOnly,
       trees3d: flag('trees3d', '__canalRecallTrees3d', true),
+      rider: () => this.lastSubject,
       repaint: () => this.host.triggerRepaint(),
       relight: () => this.setActiveLandmark(this.activeLandmark),
       fail: (what, error) => this.fail(what, error),

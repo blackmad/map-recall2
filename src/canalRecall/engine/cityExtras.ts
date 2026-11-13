@@ -32,6 +32,8 @@ export interface CityExtrasHost {
   completeCity(): any;
   measuredColoursOnly(): boolean;
   trees3d: boolean;
+  /** The rider (lng/lat, the camera subject) or null: street furniture draws round it, not the led view centre. */
+  rider?(): [number, number] | null;
   repaint(): void;
   /** A model landed or a detailed tile set got ready: re-apply the card's landmark. */
   relight(): void;
@@ -112,7 +114,7 @@ export class CityExtras {
     const furniture = W().CanalRecallStreetFurniture;
     if (furniture?.StreetFurniture && furniture.furnitureFlag?.() !== false) {
       try {
-        this.furniture = new furniture.StreetFurniture(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame, camera: h.cameraMap.api });
+        this.furniture = new furniture.StreetFurniture(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame, camera: h.cameraMap.api, rider: h.rider ? () => h.rider!() : undefined });
         W().__canalStreetFurniture = this.furniture;
         this.furniture.load(h.extractPath());
       } catch (error) { h.fail('street furniture', error); }
