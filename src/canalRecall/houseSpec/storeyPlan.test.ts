@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { TALL_GROUND_RATIO, ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, frontEavesM, storeyDraw, storeyGuardEnabled, storeyPlan } from './storeyPlan.ts';
+import { TALL_GROUND_RATIO, ROOF_ROW_MIN, SOUTERRAIN_FACTOR, STOREY_PITCH_RANGE, frontEavesM, storeyDraw, storeyGuardEnabled, storeyPlan, storeyPlanDraws } from './storeyPlan.ts';
 import { decodeDescriptor } from '../bagTiles.ts';
 import { SOUTERRAIN } from '../blockBuilding/systems.ts';
 import { specStoreyFit, SPEC_GROUND_SCALE, SPEC_SOUTERRAIN_GROUND_MIN } from '../streetFacadeRendering.ts';
@@ -231,4 +231,31 @@ test('168043: souterrain + 3 rows under a mansard fit about 2.1 m + 3 x 3.7 m; n
   }
   // the same front with the souterrain dropped (the cut read before D1 29b2236b5) is A+fit's stretch: capped only under a crown
   assert.equal(storeyPlan({ storeys: 3, wallM: 13.92, period: 'c19' })!.ok, false);
+});
+
+// Step 1b: the guard may not veto a person's count. Reject, refit, eaves band, souterrain, tall ground and capping apply
+// only to a describer (vision-judge) read; author, reviewed and street-level counts draw as stated and the plan is advisory.
+test('only a describer read lets the storey plan change the draw', () => {
+  assert.equal(storeyPlanDraws('vision-judge'), true);
+  for (const src of ['author', 'reviewed', 'streetlevel-measured', 'monument-text', 'template:x', null, undefined]) assert.equal(storeyPlanDraws(src), false, String(src));
+});
+
+// Published pands (round 127), plan inputs as the mesher sees them (storey-guard probe, house-specs pub127).
+const PUBLISHED_PINS = [
+  { id: '0363100012182309', src: 'author', storeys: 3, eavesM: 7.4, wallM: 7.81, period: 'canal', ok: false },
+  { id: '0363100012176346', src: 'reviewed', storeys: 3, eavesM: 15.5, wallM: 15.12, period: 'c19', ok: false },
+  { id: '0363100012171023', src: 'author', storeys: 4, eavesM: 13, wallM: 13.88, period: 'canal', ok: true },
+  { id: '0363100012180181', src: 'reviewed', storeys: 4, eavesM: 12.3, wallM: 14.2, period: 'canal', ok: true },
+] as const;
+
+test('published author/reviewed pins: the verdict is advisory and the draw equals guard-off', () => {
+  for (const p of PUBLISHED_PINS) {
+    const plan = storeyPlan({ storeys: p.storeys, eavesM: p.eavesM, wallM: p.wallM, period: p.period })!;
+    assert.equal(plan.ok, p.ok, p.id);
+    assert.equal(storeyPlanDraws(p.src), false, p.id);
+    // The mesher calls storeyDraw only when storeyPlanDraws(src); an advisory plan leaves the stated count untouched.
+    const drawn = storeyPlanDraws(p.src) ? storeyDraw(plan, p.storeys, true, p.wallM) : null;
+    assert.equal(drawn, null, p.id);
+    if (!p.ok) assert.equal(storeyDraw(plan, p.storeys, true, p.wallM), 'reject', `${p.id} would be rejected as a describer read`);
+  }
 });
