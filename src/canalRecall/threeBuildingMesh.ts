@@ -225,7 +225,11 @@ export function wallTopHeightM(p: Record<string, unknown>): number {
  * A measuring hook (house:preview's measure.json `layout`, lane H11): when set, each laid-out wall run reports its
  * storey grid (upper storeys over the ground storey) and drawn window columns. Unset in the game: no cost.
  */
-export const layoutProbe: { sink?: (id: string, run: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }) => void } = {};
+export type LayoutProbeRun = { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number;
+  /** Lane PR1 (structure priors): the layout style, window axes per cell, whether a street-appearance recipe or a
+   *  HouseSpec / structure prior fitted the run, and the exposed height the grid was laid on. */
+  style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number };
+export const layoutProbe: { sink?: (id: string, run: LayoutProbeRun) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
 function hash01(text: string): number {
@@ -668,7 +672,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         continue;
       }
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
-      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base });
+      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base, style: b.style, axes: b.openings?.upper?.axes.length ?? 1, recipe: !!b.recipe, fit: specBays ? 'spec' : null, exposedM: facadeTop - base });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{
