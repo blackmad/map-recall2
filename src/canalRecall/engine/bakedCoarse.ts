@@ -23,6 +23,8 @@
  *   a lifted detail chunk stripes through the complementary dissolve, swap-zfight at s1-hoftuin). A cell installed
  *   without its CPU copy is fetched again when it comes within that radius.
  */
+import { drapeRange } from '../ownGround/placement.js';
+import type { HeightFn } from '../ownGround/surface.js';
 import { LeavingFades, popFadeFlag } from './popFade.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
@@ -179,7 +181,7 @@ export function rangeMap(ranges: readonly BakedRange[]): Map<string, { start: nu
  * 0), move its range's z by the change since the last lift. Returns the ids lifted; stops at `deadline` (checked every
  * 32 buildings). `pending` is consumed from the front. Pure over the arrays.
  */
-export function liftRanges(positions: Float32Array | Int16Array, ranges: ReadonlyMap<string, { start: number; count: number }>, pending: string[], applied: Map<string, number>, base: (id: string) => number | null | undefined, deadline = Infinity, now: () => number = () => performance.now(), unit = 1): { lifted: number; done: number; min: number; max: number } {
+export function liftRanges(positions: Float32Array | Int16Array, ranges: ReadonlyMap<string, { start: number; count: number }>, pending: string[], applied: Map<string, number>, base: (id: string) => number | null | undefined, deadline = Infinity, now: () => number = () => performance.now(), unit = 1, foot: HeightFn | null = null): { lifted: number; done: number; min: number; max: number } {
   let lifted = 0, k = 0, min = 0, max = 0;
   const waiting: string[] = [];
   for (; k < pending.length; k++) {
@@ -190,7 +192,9 @@ export function liftRanges(positions: Float32Array | Int16Array, ranges: Readonl
     const z = b ?? 0, prev = applied.get(id) ?? 0, delta = unit === 1 ? z - prev : Math.round(z / unit) - Math.round(prev / unit), range = ranges.get(id);
     applied.set(id, z);
     if (!range || !delta) continue;
-    for (let v = range.start; v < range.start + range.count; v++) positions[v * 3 + 2] += delta;
+    // Lane F4: the wall feet drape to the relief (`foot`, the own ground's local metres: a lifted cell is in absolute
+    // metres from ORIGIN); without it every vertex moves by the change, as before.
+    drapeRange(positions, range.start, range.count, prev, z, foot, unit);
     lifted++; min = Math.min(min, z); max = Math.max(max, z);
   }
   const done = k;
@@ -239,6 +243,8 @@ export interface BakedCoarseHost {
   coverageChanged(): void;
   /** A building's ground base (metres; null: no relief there; undefined: not known yet). */
   groundBase(id: string): number | null | undefined;
+  /** Lane F4: the relief the wall feet drape to (own ground local metres), or null (no drape). */
+  groundFoot?(): HeightFn | null;
   repaint(): void;
 }
 
@@ -539,7 +545,7 @@ export class BakedCoarse {
       if (budget.restart) lift.pending = [...r.ranges.keys()];
       if (!lift.pending.length) continue;
       if (this.now() > deadline) { remaining = true; continue; }
-      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, this.now, lift.unit);
+      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, this.now, lift.unit, this.host.groundFoot?.() ?? null);
       if (out.lifted) { attribute.needsUpdate = true; lifted += out.lifted; }
       if (lift.pending.length) remaining = true;
     }

@@ -794,6 +794,7 @@ export class OwnWorldView implements WorldViewOracles {
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
+        groundFoot: () => tb.bakedCoarseHost()?.groundFoot?.() ?? null,
         repaint: () => this.host.triggerRepaint(),
       }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;
@@ -844,6 +845,8 @@ export class OwnWorldView implements WorldViewOracles {
     const tb = this._threeBuildings;
     if (tb && !this.groundHooked.has(tb) && tb.setGroundBase) {
       this.groundHooked.add(tb);
+      // Lane F4: the wall feet drape to the relief (before the bases, so the first lift drapes).
+      tb.setGroundFoot?.(ground.footHeight ?? null);
       tb.setGroundBase((feature: any) => {
         const g = feature?.geometry;
         const ring = g?.type === 'Polygon' ? g.coordinates[0] : g?.type === 'MultiPolygon' ? g.coordinates[0]?.[0] : null;
