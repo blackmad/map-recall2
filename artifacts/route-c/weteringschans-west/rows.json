@@ -95,7 +95,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 177024)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 177024)"
    },
    {
     "path": "fronts/0/windows",
@@ -162,11 +162,10 @@
    }
   ],
   "ms": {
-   "facts": 4441.872584000001,
-   "complete": 174.55575000000044,
-   "compile": 1740.3350830000009,
-   "meshopt": 173.06816600000093,
-   "preview": 17387.553667
+   "facts": 2793.651416,
+   "complete": 15.898000000000138,
+   "compile": 118.38637500000004,
+   "meshopt": 10.91812499999969
   },
   "geometry": {
    "year": 1867,
@@ -362,7 +361,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 177024)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 177024)"
    },
    {
     "path": "fronts/0/windows",
@@ -429,11 +428,10 @@
    }
   ],
   "ms": {
-   "facts": 738.3122909999984,
-   "complete": 16.16283399999884,
-   "compile": 251.16120799999953,
-   "meshopt": 8.434957999999824,
-   "preview": 18253.852625
+   "facts": 1258.211792,
+   "complete": 1.5051659999999174,
+   "compile": 32.27420799999982,
+   "meshopt": 4.132583000000523
   },
   "geometry": {
    "year": 1867,
@@ -635,7 +633,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171824)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 171824)"
    },
    {
     "path": "fronts/0/windows",
@@ -711,11 +709,10 @@
    }
   ],
   "ms": {
-   "facts": 364.5540830000009,
-   "complete": 2.114459000000352,
-   "compile": 569.181958000001,
-   "meshopt": 9.598332999999911,
-   "preview": 14000.957917
+   "facts": 1262.273083,
+   "complete": 1.153874999999971,
+   "compile": 40.45650000000023,
+   "meshopt": 4.181915999999546
   },
   "geometry": {
    "year": 1867,
@@ -918,7 +915,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171824)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 171824)"
    },
    {
     "path": "fronts/0/windows",
@@ -994,11 +991,10 @@
    }
   ],
   "ms": {
-   "facts": 400.7094580000012,
-   "complete": 1.5818340000005264,
-   "compile": 223.19045899999946,
-   "meshopt": 27.9614160000001,
-   "preview": 14451.645625000005
+   "facts": 1307.6624160000001,
+   "complete": 0.8108330000004571,
+   "compile": 24.299291999999696,
+   "meshopt": 2.7573750000001382
   },
   "geometry": {
    "year": 1867,
@@ -1200,7 +1196,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175058)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 175058)"
    },
    {
     "path": "fronts/0/windows",
@@ -1267,11 +1263,10 @@
    }
   ],
   "ms": {
-   "facts": 363.5802500000009,
-   "complete": 1.455500000000029,
-   "compile": 586.0058750000007,
-   "meshopt": 5.141666000001351,
-   "preview": 6066.849625000003
+   "facts": 1436.379,
+   "complete": 0.9092909999999392,
+   "compile": 42.252416999999696,
+   "meshopt": 2.2572500000005675
   },
   "geometry": {
    "year": 1867,
@@ -1469,7 +1464,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 171983)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 171983)"
    },
    {
     "path": "fronts/0/windows",
@@ -1549,11 +1544,10 @@
    }
   ],
   "ms": {
-   "facts": 279.5217499999999,
-   "complete": 2.6736670000009326,
-   "compile": 305.74804199999926,
-   "meshopt": 13.548375000000306,
-   "preview": 5949.609000000011
+   "facts": 860.148459,
+   "complete": 0.9630419999994047,
+   "compile": 35.63624999999956,
+   "meshopt": 2.657500000001164
   },
   "geometry": {
    "year": 1867,
@@ -1758,7 +1752,7 @@
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175059)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 175059)"
    },
    {
     "path": "fronts/0/windows",
@@ -1829,11 +1823,10 @@
    }
   ],
   "ms": {
-   "facts": 362.8755000000001,
-   "complete": 1.7854999999999563,
-   "compile": 186.4390000000003,
-   "meshopt": 12.293333999999959,
-   "preview": 8060.687124999997
+   "facts": 1102.482750000001,
+   "complete": 1.0134170000001177,
+   "compile": 73.70037500000035,
+   "meshopt": 3.2203329999993002
   },
   "geometry": {
    "year": 1867,
@@ -1996,19 +1989,19 @@
     "path": "fronts/0/cornice",
     "value": "simple",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 4 values; group 175060)"
+    "ref": "family draw 1800-1879|main (n 60, 4 values; group 175060)"
    },
    {
     "path": "fronts/0/windowSurround",
     "value": "sill",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 4 values; group 175060)"
+    "ref": "family draw 1800-1879|main (n 60, 4 values; group 175060)"
    },
    {
     "path": "fronts/0/windowSills",
     "value": "none",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 1 values; group 175060)"
+    "ref": "family draw 1800-1879|main (n 60, 1 values; group 175060)"
    },
    {
     "path": "fronts/0/windows",
@@ -2054,9 +2047,9 @@
    },
    {
     "path": "palette/frame",
-    "value": "white-painted",
+    "value": "white",
     "source": "family",
-    "ref": "family draw 1800-1879|main (n 40, 2 values; group 175060)"
+    "ref": "family draw 1800-1879|main (n 60, 2 values; group 175060)"
    },
    {
     "path": "palette/door",
@@ -2077,11 +2070,10 @@
    }
   ],
   "ms": {
-   "facts": 371.5674589999999,
-   "complete": 2.1127919999998994,
-   "compile": 137.08895800000028,
-   "meshopt": 9.31445800000074,
-   "preview": 14919.791208999988
+   "facts": 748.9826659999999,
+   "complete": 1.6474170000001322,
+   "compile": 120.63841700000012,
+   "meshopt": 5.540583999998489
   },
   "geometry": {
    "year": 1870,
@@ -2141,7 +2133,7 @@
    }
   ],
   "triangles": 1100,
-  "bytes": 77000,
+  "bytes": 77004,
   "meshoptBytes": 35508,
   "intent": {
    "schemaVersion": 1,
@@ -2180,7 +2172,7 @@
    "palette": {
     "wallMaterial": "brick",
     "brick": "#4f4640",
-    "frame": "white-painted",
+    "frame": "white",
     "door": "#2a2a2a"
    }
   }

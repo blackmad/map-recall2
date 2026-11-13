@@ -21,7 +21,6 @@
    "souterrain": true,
    "cornice": "none",
    "gable": "point",
-   "windowSurround": "full-frame",
    "windows": "t-window",
    "hoist": false,
    "basement": "stoop-and-windows",
@@ -36,7 +35,7 @@
  "palette": {
   "wallMaterial": "brick",
   "brick": "#362c27",
-  "frame": "white",
+  "frame": "white-painted",
   "door": "#2a2a2a"
  }
 }

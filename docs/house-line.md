@@ -3147,6 +3147,16 @@ A front qualifies for C with two or more. On AH07, 42 of 194 staged fronts quali
 - Sheets are in map-recall2-screenshots `ui/2026-11-13-route-c-completer/` (branch `route-c-completer-20261113`).
 - No mutual twins were found: the AH07 answers carry no `sameAs`. In the bake-off re-reads, 168096 and 168042 name a side that their neighbours do not name back.
 
+**Ride frames (after gate 135, main 0fe70c5e7; 2026-11-13).** C's 16 GLBs were installed in the lane worktree only, `house:frames` ran on PW_PORT 4666 at the bake-off poses, and `public/` was reverted.
+- The ordinary catalogue is compiled into `signature-placement.bundle.js`. The C frames need a scratch build of that bundle served through `BUNDLES_DIR`, in an EMPTY directory. A stale directory served old engine bundles, and every pose failed with "no first-person camera".
+- The first C run without the bundle was byte-identical to today. `picks.drawnBy` names `ordinary-<pand>` once the bundle is in.
+- Sheets (`sheet.sh ride`, photo | today | A+fit | C, caption = template house and tier or family draw) are in map-recall2-screenshots `ui/2026-11-13-route-c-completer/ride/` (branch `route-c-completer-20261113`). Row 2 has no A+fit: WG's fit is not on main.
+- Verdict: C does not clearly beat A+fit in the ride frame, so it stays staged.
+  - C wins on crowns: the point gables of 168094, 168095 and 177024 are drawn, where today and A draw a flat top. It also wins on 171982's shopfront.
+  - C loses on height and storey rhythm: a cream souterrain band at the ground; 171218 and 169016 draw 4 rows where the photo has 5. 171218's read arched upper windows do not show.
+  - Template dressings (white surrounds) are barely visible at ride distance.
+  - 168094 and 168095 are salmon (wall colour: D1's fix).
+
 **What the describer does not read, though the kit can say it:**
 - balconies (`balconies`);
 - bay windows (`bayWindows`);

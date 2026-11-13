@@ -2,6 +2,10 @@
 # Lane C-completer: one sheet per pand, photo | today | A+fit | C, and a row contact sheet.
 #   scripts/house-line/route-c/sheet.sh frames <frames dir> <C preview dir> <out dir> <key ...>
 #       photo, today and A+fit are house:frames halves at one pose (the bake-off's frames/{today,a-fit}/<key>/pair.jpg)
+#   scripts/house-line/route-c/sheet.sh ride <today frames> <A+fit frames|-> <C frames> <rows.json> <out dir> <key ...>
+#       every panel a house:frames half at the same pose: photo and today from <today frames>, A+fit (WG storey fit) from
+#       <A+fit frames> ('-' or a missing key: a grey 'not run' panel), C from a run with the C GLBs installed locally;
+#       the caption names the template house and tier, or the family draw, from rows.json
 #   scripts/house-line/route-c/sheet.sh node <photo dir> <A preview dir> <C preview dir> <out dir> <pandId:key ...>
 #       a row with no frames run (the integration gate): photo = the D1 describe cut, today / A+fit = house:preview Node
 #       fronts (generic route, published and staged specs), C = house:preview --recipe 3/4 view
@@ -10,7 +14,29 @@ FONT=/System/Library/Fonts/Supplemental/Arial.ttf
 TMP=$(mktemp -d)
 MODE=$1; shift
 panel() { magick "$1" -resize 520x504 -background '#c8c8c8' -gravity center -extent 520x504 "$2"; }
-if [ $MODE = frames ]; then
+if [ $MODE = ride ]; then
+  TD=$1 AF=$2 CF=$3 ROWS=$4 OUT=$5; shift 5
+  mkdir -p $OUT
+  for k in "$@"; do
+    magick $TD/$k/pair.jpg -crop 723x700+0+20 +repage $TMP/p.png; panel $TMP/p.png $TMP/photo.png
+    magick $TD/$k/pair.jpg -crop 723x700+723+20 +repage $TMP/t.png; panel $TMP/t.png $TMP/today.png
+    if [ "$AF" != - ] && [ -f $AF/$k/pair.jpg ]; then magick $AF/$k/pair.jpg -crop 723x700+723+20 +repage $TMP/a.png; panel $TMP/a.png $TMP/afit.png; AL='A+fit (WG storey fit)'
+    else magick -size 520x504 xc:'#777' -font $FONT -pointsize 26 -fill white -gravity center -annotate 0 'A+fit not run\n(needs WG fit build)' $TMP/afit.png; AL='A+fit: not run'; fi
+    magick $CF/$k/pair.jpg -crop 723x700+723+20 +repage $TMP/c.png; panel $TMP/c.png $TMP/cc.png
+    CAP=$(python3 -c "
+import json,sys
+r=[x for x in json.load(open('$ROWS')) if x['pandId'].endswith('$k')][0]
+t=[f for f in r['fills'] if f['source']=='template']
+d=[f for f in r['fills'] if f['source'] in ('family','today') and f['path'].split('/')[-1] in ('windowSurround','cornice','frame')]
+if t: print('C template ' + t[0]['ref'].split(' (')[0][9:] + ' ' + t[0]['ref'].split(' (')[1].split(',')[0] + ', tier ' + t[0]['ref'].split('tier ')[1].split(',')[0])
+else: print('C no template: family draw ' + ', '.join(f['path'].split('/')[-1] + '=' + str(f['value']) for f in d))
+")
+    montage -font $FONT -pointsize 20 -label "photo $k" $TMP/photo.png -label 'today (shipped, ?world=live)' $TMP/today.png \
+      -label "$AL" $TMP/afit.png -label "$CAP" $TMP/cc.png \
+      -tile 4x1 -geometry 520x504+4+4 -background '#222' -fill white $TMP/s.png
+    magick $TMP/s.png -quality 82 $OUT/$k-ride.jpg; echo $OUT/$k-ride.jpg
+  done
+elif [ $MODE = frames ]; then
   FR=$1 C=$2 OUT=$3; shift 3
   mkdir -p $OUT
   for k in "$@"; do
