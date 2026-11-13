@@ -101,6 +101,11 @@ async function run(page, label) {
           o.zoom = +m.getZoom().toFixed(2); o.pitch = +m.getPitch().toFixed(1);
           const lay = id => { const l = m.getLayer(id); return l ? (m.getLayoutProperty(id, 'visibility') ?? 'visible') : null; };
           o.overviewRaster = lay('canal-overview-ground');
+          // Which building layers draw (the first-load states: basemap extrusions, our coloured walls/roofs, none).
+          o.layers = {}; for (const id of ['building-3d', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs', 'osm-colored-building-facades']) { const v = lay(id); if (v) o.layers[id] = v; }
+          try { o.buildingFilter = m.getLayer('building-3d') ? JSON.stringify(m.getFilter('building-3d') ?? null).slice(0, 80) : null; } catch (_) {}
+          try { const src = m.getSource('osm-building-appearance'); o.appearanceLoaded = src ? !!src.loaded?.() : null; } catch (_) {}
+          o.flags = { detailed: vm._detailedBuildingsVisible, completeCity: vm._completeCityHasBuildings, measuredOnly: vm._measuredColoursOnly, threeVisible: vm._threeBuildings?.visible ?? null, suppressed: vm._threeBuildings?.suppressedCount?.() ?? null };
           try { o.overviewOpacity = m.getPaintProperty('canal-overview-ground', 'raster-opacity'); o.overviewOpacityNow = m.style?._layers?.['canal-overview-ground']?.paint?.get?.('raster-opacity'); } catch (_) {}
         }
         const og = vm?._ownGround;
