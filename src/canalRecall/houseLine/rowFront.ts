@@ -11,6 +11,7 @@
  * `rowFrontFromRecord` is the one adapter. Flag off, or no record: the same feature object back (byte-identical).
  */
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
+import type { FrontRecord, FrontRecordTable } from './frontRecord.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
@@ -20,9 +21,12 @@ export interface RowFrontRecord {
   topM: number | null;
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
-  crown: { family: RowCrownFamily; riseM?: number; widthM?: number };
+  crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean };
   /** Storey lines above the ground (m), from measured window heights or stated storey heights. */
   rowLines?: number[];
+  /** Measured upper window rows (sill, head) and the ground storey's top, above the pand's own ground (m). */
+  rows?: Array<{ sillM: number; headM: number }>;
+  groundTopM?: number;
   storeys?: number;
   confidence: number;
   /** Low confidence: the row line from measured neighbours and a plain cornice. */
@@ -45,6 +49,69 @@ export function rowFrontOn(): boolean {
 }
 /** Tests and harnesses: forget the cached flag. */
 export const resetRowFront = () => { flagNow = undefined; };
+
+/** Lane 2 crown family -> this renderer's family; a flat parapet, an unplaced crown and no read draw a plain cornice. */
+const LANE2_FAMILY: Readonly<Record<string, RowCrownFamily>> = {
+  neck: 'neck', bell: 'bell', step: 'step', spout: 'spout', point: 'point', 'straight-cornice': 'cornice', 'flat-parapet': 'cornice',
+  'raised-dormer-hoist': 'raised-cornice-dormer', other: 'cornice',
+};
+const CONFIDENCE = { high: 0.9, medium: 0.7, low: 0.3 } as const;
+const r2 = (v: number) => Math.round(v * 100) / 100;
+/**
+ * Lane 2's datum: every height is above the face's street ground (`streetGroundNAP`); the renderer's is the pand's own
+ * 3DBAG ground. On the dijk the two differ by up to 1.9 m between neighbours. Pand height = value + street - ground.
+ */
+export function toPandDatum(r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'>, value: number): number {
+  return r2(value + r.streetGroundNAP - (r.groundNAP ?? r.streetGroundNAP));
+}
+
+/**
+ * The one adapter from lane 2's front record to this renderer's record. A record without a measured front top
+ * (`fallback: 'row-line'`) takes the row line: the median front top of its measured neighbours on the same face (two
+ * either side, in the table's street order), in the street datum, then moved to its own ground; with no measured
+ * neighbour, `interim` (lane 1's skyline read) if given; else the record keeps a null top and the house its 3DBAG wall.
+ */
+export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRecord[] = [], interim?: RowFrontRecord | null): RowFrontRecord {
+  const at = (v: number | null) => v === null ? null : toPandDatum(fr, v);
+  const sources: Record<string, string> = { record: `front-records ${fr.face} ${fr.confidence}` };
+  const family: RowCrownFamily = fr.fallback ? 'cornice' : LANE2_FAMILY[fr.crown.family ?? 'other'];
+  let eavesM = at(fr.frontTopM), topM: number | null = null;
+  if (eavesM !== null) sources.eaves = `front record ${fr.frontTopKind}`;
+  else {
+    const near = neighbours.filter(n => n.pandId !== fr.pandId && n.face === fr.face && !n.fallback && n.frontTopM !== null).map(n => n.frontTopM!).sort((a, b) => a - b);
+    if (near.length) { eavesM = at(near[Math.floor(near.length / 2)]); sources.eaves = `row line (median of ${near.length} measured neighbours, street datum)`; }
+    else if (interim?.eavesM != null) { eavesM = interim.eavesM; sources.eaves = `interim ${interim.sources.eaves ?? 'skyline'}`; }
+  }
+  const gabled = family !== 'cornice' && family !== 'raised-cornice-dormer';
+  if (gabled && eavesM !== null) topM = at(fr.crown.topM) ?? r2(eavesM + 1.5);
+  else topM = eavesM;
+  const crown: RowFrontRecord['crown'] = { family };
+  if (gabled && topM !== null && eavesM !== null) crown.riseM = r2(topM - eavesM);
+  if (gabled && fr.crown.widthM !== null) crown.widthM = fr.crown.widthM;
+  if (gabled && fr.crown.neckWidthM !== null) crown.neckWidthM = fr.crown.neckWidthM;
+  if (fr.crown.atticWindows !== null) crown.atticWindows = fr.crown.atticWindows;
+  if (fr.crown.hoist !== null) crown.hoist = fr.crown.hoist;
+  const out: RowFrontRecord = { pandId: fr.pandId, face: fr.face, topM, eavesM, crown, confidence: CONFIDENCE[fr.confidence], sources };
+  if (fr.storeys !== null && !fr.fallback) out.storeys = fr.storeys;
+  if (fr.rows.length && !fr.fallback) out.rows = fr.rows.map(r => ({ sillM: at(r.sillM)!, headM: at(r.headM)! }));
+  if (fr.groundStoreyTopM !== null && !fr.fallback) out.groundTopM = at(fr.groundStoreyTopM)!;
+  if (fr.fallback) out.fallback = 'row-line';
+  return out;
+}
+
+/** Every record of a lane 2 table through the adapter; `interim` fills only where the table has no height at all. */
+export function rowFrontsFromTable(table: Pick<FrontRecordTable, 'records'>, interim: readonly RowFrontRecord[] = []): RowFrontRecord[] {
+  const byPand = new Map(interim.map(r => [key(r.pandId), r]));
+  return table.records.map((fr, i) => {
+    const sameFace = table.records.filter((n, j) => n.face === fr.face && Math.abs(j - i) <= 2);
+    return rowFrontFromRecord(fr, sameFace, byPand.get(key(fr.pandId)));
+  });
+}
+/** A records file: lane 2's table (records carry `streetGroundNAP`) or lane 1's interim list. */
+export function rowFrontsFromFile(json: { records?: unknown[] }, interim: readonly RowFrontRecord[] = []): RowFrontRecord[] {
+  const list = (json.records ?? []) as Array<Record<string, unknown>>;
+  return list.length && typeof list[0].streetGroundNAP === 'number' ? rowFrontsFromTable(json as FrontRecordTable, interim) : list as unknown as RowFrontRecord[];
+}
 
 const records = new Map<string, RowFrontRecord>();
 const key = (id: string) => String(id).replace(/^NL\.IMBAG\.Pand\./, '').slice(-16);

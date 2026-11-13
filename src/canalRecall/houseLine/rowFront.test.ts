@@ -46,3 +46,42 @@ test('row front: Haarlemmerdijk 20 neck front keeps its gable with the saddle ea
     assert.ok(Number(p.height) > 10.2);
   } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; resetRowFront(); }
 });
+
+// Lane 2's table through the adapter. DATUM: lane 2's heights are above the face's street ground; the renderer's are
+// above the pand's own 3DBAG ground, so pand height = value + streetGroundNAP - groundNAP.
+import { rowFrontFromRecord, rowFrontsFromTable, toPandDatum } from './rowFront.ts';
+import type { FrontRecord } from './frontRecord.ts';
+const lane2 = (pandId: string, extra: Partial<FrontRecord> = {}): FrontRecord => ({
+  pandId, address: null, street: 'Haarlemmerdijk', face: 'haarlemmerdijk-117-143', side: 'odd', builtYear: 1700, bagWidthM: 5,
+  streetGroundNAP: 1.042, groundNAP: 0.84, frontTopM: null, frontTopKind: null,
+  threeDBag: { frontEavesM: null, roofMinM: null, dak50pM: null, dak70pM: null, roofMaxM: null },
+  crown: { family: null, widthM: null, neckWidthM: null, shoulderM: null, topM: null, ornamentTopM: null, dormer: null, atticWindows: null, hoist: null, note: null },
+  storeys: null, groundStoreyTopM: null, rows: [], bays: null, wall: { hex: null, word: null, ref: null }, trim: { hex: null, word: null, ref: null },
+  sources: [], confidence: 'low', fallback: 'row-line', nothingLocal: false, conflicts: [], notes: [], ...extra,
+});
+
+test('row front adapter: the street datum moves to the pand ground (Haarlemmerdijk 143, 169539: bell foot 8.7 m street = 8.9 m own)', () => {
+  assert.equal(toPandDatum({ streetGroundNAP: 1.042, groundNAP: 0.84 }, 8.7), 8.9);
+  assert.equal(toPandDatum({ streetGroundNAP: 2.258, groundNAP: 2.28 }, 10.2), 10.18);
+  assert.equal(toPandDatum({ streetGroundNAP: 2.0, groundNAP: null }, 10), 10);
+  const r = rowFrontFromRecord(lane2('0363100012169539', {
+    frontTopM: 8.7, frontTopKind: 'gable-foot', confidence: 'medium', fallback: undefined, storeys: 2, groundStoreyTopM: 4.4, rows: [{ sillM: 5.4, headM: 7 }],
+    crown: { family: 'bell', widthM: 4.5, neckWidthM: 2.3, shoulderM: 8.7, topM: 10.9, ornamentTopM: 11.6, dormer: null, atticWindows: 1, hoist: null, note: null },
+  }));
+  assert.equal(r.eavesM, 8.9); assert.equal(r.topM, 11.1); assert.equal(r.crown.family, 'bell'); assert.equal(r.crown.riseM, 2.2);
+  assert.equal(r.crown.widthM, 4.5); assert.equal(r.crown.neckWidthM, 2.3); assert.deepEqual(r.rows, [{ sillM: 5.6, headM: 7.2 }]); assert.equal(r.groundTopM, 4.6);
+});
+
+test('row front adapter: a row-line record takes its measured neighbours median in the street datum, then its own ground', () => {
+  const a = lane2('0363100012000001', { frontTopM: 10, frontTopKind: 'cornice-top', confidence: 'high', fallback: undefined, groundNAP: 1.0 });
+  const b = lane2('0363100012000002', { groundNAP: 0.5 });
+  const c = lane2('0363100012000003', { frontTopM: 12, frontTopKind: 'cornice-top', confidence: 'high', fallback: undefined, groundNAP: 1.5 });
+  const [, rb] = rowFrontsFromTable({ records: [a, b, c] });
+  assert.equal(rb.fallback, 'row-line'); assert.equal(rb.crown.family, 'cornice');
+  // median of 10 and 12 (index floor(2/2) = 12) in the street datum, + 1.042 - 0.5
+  assert.equal(rb.eavesM, 12.54); assert.equal(rb.topM, 12.54);
+  // No measured neighbour: the interim read, else null.
+  const lone = rowFrontFromRecord(b, [b], { pandId: b.pandId, eavesM: 9.5, topM: 9.5, crown: { family: 'cornice' }, confidence: 0.6, sources: { eaves: 'skyline' } });
+  assert.equal(lone.eavesM, 9.5);
+  assert.equal(rowFrontFromRecord(b, [b]).eavesM, null);
+});
