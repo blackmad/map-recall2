@@ -35,7 +35,7 @@ import source from './morgan-mees-footprints.json' with {type: 'json'};
  * is ring edge 1-2 continued to the rear block (11.6 m, measured); the Nassaukade line is ring 3-12 (e = 8.27).
  */
 /** `ochre` is the white plaster and trim (stucco slot; `white` would be judged as window trim), `copper` the black steel. */
-type C = 'brick' | 'ochre' | 'white' | 'stone' | 'concrete' | 'slate' | 'glass' | 'frame' | 'dark' | 'bronze' | 'copper' | 'blue' | 'green' | 'sandstone';
+type C = 'brick' | 'red' | 'ochre' | 'white' | 'stone' | 'concrete' | 'slate' | 'glass' | 'frame' | 'dark' | 'bronze' | 'copper' | 'blue' | 'green' | 'sandstone';
 type XZ = [number, number];
 const RING = (source as unknown as {nativeRing: XZ[]}).nativeRing;
 
@@ -67,7 +67,8 @@ const CORN = 0.45;           // cornice height
 const EAVE = WALL_TOP + CORN; // 11.4: the hips start on the cornice
 const TOP = 13.6;            // flat top of the hipped roof (3DBAG 13.4-14.3)
 const INSET = 3.2;           // hip run
-const FRIEZE: [number, number] = [10.05, WALL_TOP];
+const FRIEZE: [number, number] = [10.05, WALL_TOP];          // east face (crop face-eastMain-3: lettering centred in it)
+const FRIEZE_S: [number, number] = [9.75, WALL_TOP];        // street front: frieze and cornice are 14 % of the cornice height (street01 grid, 1.65 m of 11.4 m)
 const REAR_TOP = 7.35;       // rear block flat roof (3DBAG 7.2-7.4)
 const WING_FLOOR = 3.6;      // wing roof terrace (3DBAG 3.5-3.7)
 const WING_TOP = 4.1;        // wing parapet under its coping (3DBAG 4.3-4.4 with the coping)
@@ -224,12 +225,16 @@ function streetFront(c: Ctx) {
     slab(b, ff(c, SM), s, 8.85, 0.42, 0.27, 0.16, 'ochre');
   }
   slab(b, ff(c, SM), MID, 9.12, 3.55, 0.28, 0.14, 'ochre');                                    // entablature
-  poly(b, ff(c, SM), MID, 9.4, [[-1.85, 0], [1.85, 0], [0, 0.6]], 0.2, 'ochre');               // pediment
-  slab(b, ff(c, SM, 0.2), MID, 9.5, 0.8, 0.22, 0.04, 'ochre');                                  // tympanum relief (simplified)
+  // pediment: raking cornices stand 20 cm proud; the tympanum is recessed 8 cm behind them in the carved stone's shade
+  // (street01: the field reads grey against the white frieze), so the triangle keeps its outline in flat light
+  poly(b, ff(c, SM), MID, 9.4, [[-1.6, 0.04], [1.6, 0.04], [0, 0.5]], 0.12, 'sandstone');
+  for (const sg of [-1, 1]) poly(b, ff(c, SM), MID, 9.4, [[sg * 1.85, 0], [sg * 1.6, 0], [0, 0.5], [0, 0.6]].map(([x, y]) => [x, y] as [number, number]), 0.2, 'ochre');
+  slab(b, ff(c, SM), MID, 9.4, 3.3, 0.06, 0.2, 'ochre');                                       // horizontal cornice under the field
+  slab(b, ff(c, SM, 0.12), MID, 9.52, 0.8, 0.2, 0.04, 'ochre');                                 // tympanum relief (simplified, white on the grey field)
   // rusticated lisene at the west end (blokverband: long and short blocks)
-  for (let k = 0, y = 0.9; y < FRIEZE[0] - 0.3; k++, y += 0.34) slab(b, ff(c, SW), k % 2 ? 1.22 : 1.28, y, k % 2 ? 0.42 : 0.56, 0.28, 0.08, 'ochre');
+  for (let k = 0, y = 0.9; y < FRIEZE_S[0] - 0.3; k++, y += 0.34) slab(b, ff(c, SW), k % 2 ? 1.22 : 1.28, y, k % 2 ? 0.42 : 0.56, 0.28, 0.08, 'ochre');
   // frieze and cornice
-  box('ochre', WEST + 0.06, 0.06, -0.06, 0, FRIEZE[0], FRIEZE[1]);
+  box('ochre', WEST + 0.06, 0.06, -0.06, 0, FRIEZE_S[0], FRIEZE_S[1]);
   K.coping(SW, WALL_TOP, CORN, 0.55, 'ochre', 0.06, 10.48 + 0.55);
   streetDormer(c);
 }
@@ -266,7 +271,7 @@ function eastFace(c: Ctx) {
   box('ochre', 0, 0.06, 0, DEPTH + 0.06, FRIEZE[0], FRIEZE[1]);
   // MORGAN & MEES: 0.40 m capitals, 6.05 m long, centred 6.07 m from the street corner (crop face-eastMain-3)
   lettering(b, ff(c, S, 0.06), 'MORGAN & MEES', 6.07, 10.26, 0.40, 0.30, 0.48);
-  K.coping(S, WALL_TOP, CORN, 0.55, 'ochre', 0.85, DEPTH - 0.85);
+  K.coping(S, WALL_TOP, CORN, 0.55, 'ochre', 0.51, DEPTH - 0.51);                                // butts the street and north cornices' backs: one block at each corner, no seam
   balcony(c);
   eastDormer(c);
 }
@@ -304,9 +309,18 @@ function eastDormer(c: Ctx) {
 /** Roof windows on the east hip and the chimney at the north-east. */
 function roofParts() {
   const k = (TOP - EAVE) / INSET;
+  // corner.jpg: two roof windows on the east hip, each a raised curb with a light frame round dark glass
+  const nE = [vE[0] * k, 1, vE[2] * k], sy = (e: number, lift: number) => EAVE + (0 - e) * k + lift;
+  const sp = (e: number, d: number, lift: number) => P(e, d, sy(e, lift));
   for (const d of [3.1, 9.1]) {
-    const e0 = -1.15, e1 = -0.55, lift = 0.06;
-    M.quad('glass', P(e1, d - 0.32, EAVE + (0 - e1) * k + lift), P(e1, d + 0.32, EAVE + (0 - e1) * k + lift), P(e0, d + 0.32, EAVE + (0 - e0) * k + lift), P(e0, d - 0.32, EAVE + (0 - e0) * k + lift), [vE[0] * k, 1, vE[2] * k]);
+    const e0 = -1.2, e1 = -0.5, d0 = d - 0.36, d1 = d + 0.36, f = 0.08, top = 0.14;
+    M.quad('glass', sp(e1 - f, d0 + f, top - 0.03), sp(e1 - f, d1 - f, top - 0.03), sp(e0 + f, d1 - f, top - 0.03), sp(e0 + f, d0 + f, top - 0.03), nE);
+    for (const [a0, a1, b0, b1] of [[e0, e1, d0, d0 + f], [e0, e1, d1 - f, d1], [e0, e0 + f, d0 + f, d1 - f], [e1 - f, e1, d0 + f, d1 - f]])
+      M.quad('ochre', sp(a1, b0, top), sp(a1, b1, top), sp(a0, b1, top), sp(a0, b0, top), nE);
+    M.quad('ochre', sp(e1, d0, 0), sp(e1, d1, 0), sp(e1, d1, top), sp(e1, d0, top), vE);
+    M.quad('ochre', sp(e0, d0, 0), sp(e0, d0, top), sp(e0, d1, top), sp(e0, d1, 0), vW);
+    M.quad('ochre', sp(e0, d0, 0), sp(e1, d0, 0), sp(e1, d0, top), sp(e0, d0, top), vS);
+    M.quad('ochre', sp(e0, d1, 0), sp(e0, d1, top), sp(e1, d1, top), sp(e1, d1, 0), vU);
   }
   box('brick', -1.45, -0.9, 10.55, 11.15, EAVE - 0.5, 14.15);
   box('slate', -1.4, -0.95, 10.6, 11.1, 14.15, 14.4);
@@ -316,9 +330,13 @@ function roofParts() {
 function rear(c: Ctx) {
   const {K} = c;
   const S = K.sec(ER, 0, BACK - DEPTH, WING_FLOOR - 0.05, REAR_TOP, 'brick', 0);
-  K.opening(S, 2.25, 4.9, 1.3, 1.7, {cols: 2, frame: 'white', depth: 0.14, edge: 0.07});
-  slab(c.b, ff(c, S), 2.25, 4.74, 1.5, 0.12, 0.08, 'ochre');                                 // sill 4 cm under the reveal
-  K.coping(S, REAR_TOP, 0.22, 0.12, 'ochre', 0, BACK - DEPTH - 0.02);
+  // corner.jpg (2017) over the wing terrace: a narrow dark-framed terrace door by the school block and a white-framed
+  // window of four lights, each under a segmental rubbed-brick arch; a plain white cornice slab on top
+  K.opening(S, 0.68, WING_FLOOR + 0.05, 0.95, 2.4, {cols: 2, frame: 'frame', depth: 0.14, edge: 0.06});
+  K.opening(S, 2.48, 5.0, 1.42, 1.86, {cols: 2, rows: 2, frame: 'white', depth: 0.14, edge: 0.07});
+  slab(c.b, ff(c, S), 2.48, 4.84, 1.62, 0.12, 0.08, 'ochre');                                 // sill 4 cm under the reveal
+  for (const [s, y, w] of [[0.68, WING_FLOOR + 2.45, 0.95], [2.48, 6.86, 1.42]] as const) K.archHead(S, s, y, w + 0.1, 0.12, 0.2, 0.06, 'red');
+  K.coping(S, REAR_TOP - 0.1, 0.32, 0.3, 'ochre', 0, BACK - DEPTH - 0.02);
   const N = K.sec(NM, 0, -WEST, REAR_TOP - 0.05, WALL_TOP, 'brick', 0);
   K.coping(N, WALL_TOP, CORN, 0.55, 'ochre', -0.55, -WEST - 0.06);
 }
@@ -340,8 +358,14 @@ function nassaukade(c: Ctx) {
     slab(b, f, 6.03, GW_TOP + 0.83, 0.62, 0.1, 0.2, 'ochre', -0.05);
   }
   // wing: arched window and arched door
-  K.opening(A, 9.78, 0.65, 0.78, 2.05, {cols: 2, frame: 'frame', depth: 0.2, rise: 0.39, edge: 0.05});
-  K.opening(A, 13.7, 0.1, 0.92, 2.65, {back: 'dark', frame: 'frame', depth: 0.2, rise: 0.46, edge: 0.05});
+  K.opening(A, 9.78, 0.65, 0.78, 2.05, {cols: 2, frame: 'white', depth: 0.2, rise: 0.39, edge: 0.06});
+  K.opening(A, 13.7, 0.1, 0.92, 2.65, {back: 'dark', frame: 'white', depth: 0.2, rise: 0.46, edge: 0.06});
+  // the door's white surround: jambs and a ring round the head (corner.jpg: a white arch frames the door, 2017-2019)
+  for (const sg of [-1, 1]) slab(b, ff(c, A), 13.7 + sg * (0.46 + 0.09), 0.25, 0.14, 2.29 - 0.25, 0.05, 'ochre');
+  K.archHead(A, 13.7, 0.1 + 2.65 - 0.46, 0.96, 0.48, 0.14, 0.05, 'ochre');
+  // rubbed-brick rings (lighter, pinker than the wall: corner.jpg #a07a6b against #80-8c brick) over the arched openings
+  for (const [S, s, y, w, rise, th] of [[G, 2.35, 0.75 + 1.95 - 0.4, 0.8, 0.4, 0.22], [G, 6.07, 2.95 - 0.6, 2.45, 0.6, 0.26], [A, 9.78, 0.65 + 2.05 - 0.39, 0.78, 0.39, 0.22]] as const)
+    K.archHead(S, s, y, w + 0.04, rise + 0.02, th, 0.06, 'red');            // 2 cm clear of the reveal
   for (const [S, s, w] of [[G, 2.35, 0.8], [A, 9.78, 0.78], [A, 13.7, 0.92]] as const) {
     slab(b, ff(c, S), s, 3.0, w + 0.55, 0.24, 0.08, 'ochre');                                  // white hood
     band(c, S, s - w / 2 - 1.0, s - w / 2 - 0.06, 2.18, 0.1, 0.06);                           // impost bands

@@ -95567,7 +95567,8 @@
         "copper": "#22262a",
         "blue": "#2b2f3a",
         "green": "#4d6638",
-        "sandstone": "#b9b3a3"
+        "sandstone": "#b9b3a3",
+        "red": "#a07a6b"
       },
       "attribution": {
         "title": "Morgan & Mees, Tweede Hugo de Grootstraat 2, Amsterdam: the former bewaarschool of the Protestantsch Weduwen- en Weezenfonds (first stone 23 August 1880; Gemeentelijk monument 223038)",
@@ -95647,7 +95648,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -17.657779693603516,
+          -17.65778160095215,
           -0.30000001192092896,
           -11.102014541625977
         ],
@@ -95668,13 +95669,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 23.674166679382324,
+        "widthMetres": 23.674168586730957,
         "heightMetres": 14.699999630451202,
         "depthMetres": 22.028270721435547,
         "depthCoverage": 1.1533126032165206
       },
-      "triangles": 5627,
-      "bytes": 97576,
+      "triangles": 6159,
+      "bytes": 105508,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

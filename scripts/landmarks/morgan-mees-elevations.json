@@ -4,7 +4,12 @@
  "facades": [
   {"name": "south (street)", "bearing": 202, "photo": "artifacts/landmark-briefs/morgan-mees/w01-202.jpg",
    "rows": [3, 3, 1], "columns": 3, "symmetric": true, "gables": 1,
-   "alongM": [0, 10.6]},
+   "alongM": [0, 10.6],
+   "mixedRows": [
+    {"row": 0, "rowSizes": "mixed",
+     "evidence": "recording_2025-06-17_08-04-10_02087 (street, inventory s-door, s-arched-window, s-east-window): the entrance door under its transom, the 2.1 m round-arched window between the pilasters, a two-light window",
+     "openings": [{"kind": "door", "w": 0.8}, {"kind": "arched window", "w": 2.1}, {"kind": "window", "w": 1.1}]}
+   ]},
   {"name": "east (Nassaukade)", "bearing": 111, "photo": "artifacts/landmark-briefs/morgan-mees/w03-111.thumb.jpg",
    "rows": [null, 4, 1], "columns": 4, "symmetric": false, "gables": 1,
    "alongM": [0, 12.3],
