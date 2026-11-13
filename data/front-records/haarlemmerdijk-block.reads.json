@@ -408,6 +408,7 @@
    {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 1153-1612 (step 2 gridded crop)", "frontTop": 13.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "dormer": {"kind": "pediment", "topM": 14.5}, "note": "two fronts on one cornice line, each with a pediment dormer to about 14.5 m"}, "groundTop": 3.9, "rows": [[4.25, 6.0], [6.75, 8.5], [9.4, 10.9]], "storeys": 4, "bays": 6, "wallWord": "brown brick, white bands", "note": "two fronts (plain brick and brick with white bands) with the same rows and cornice"}
   ]},
   {"pandId": "0363100012175141", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip, 64 px/m trace crop with a 1 m grid (spans 4-6)", "groundTop": 3.4, "rows": [[4.22, 6.48], [7.1, 9.14], [9.84, 11.0]], "storeys": 4, "bays": 2, "note": "a raised attic storey with a French door under a white cornice 11.6-12.6 m"},
    {"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 72", "note": "not read at full size"},
    {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 1612-1777 (step 2 gridded crop)", "frontTop": 13.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "a pale cornice block 12.2-13.0 m with an attic window under it"}, "wallWord": "brown brick", "note": "rows not read: the upper storeys are irregular"}
   ]},
@@ -424,6 +425,7 @@
    {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 2243-2520 (step 2 gridded crop)", "frontTop": 16.4, "frontTopKind": "cornice-top", "crown": {"note": "a stitch ghost above 16.4 m hides the crown"}, "groundTop": 4.5, "rows": [[4.9, 7.1], [8.0, 10.0], [10.9, 12.75], [13.9, 15.6]], "storeys": 5, "bays": 3, "wallWord": "brown brick"}
   ]},
   {"pandId": "0363100012175204", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip, 64 px/m trace crop with a 1 m grid (spans 10-11)", "frontTop": 15.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "the brick ends at 15.0 m under a white cornice that is ghosted on the strip"}, "groundTop": 4.0, "rows": [[4.53, 6.59], [7.38, 9.44], [9.95, 11.88], [12.69, 14.22]], "storeys": 5, "bays": 3, "wallWord": "dark painted brick", "trimWord": "white frames"},
    {"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 62", "storeys": 5, "note": "five-storey painted front to about 16.5 m"}
   ]},
   {"pandId": "0363100012175206", "reads": [

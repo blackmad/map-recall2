@@ -101,7 +101,10 @@ test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 stor
   assert.ok(traced117.length >= 13, `${traced117.length} traced fronts on 117-143`);
   const traced13 = tracedFronts(table, 'haarlemmerdijk-13-45');
   assert.ok(traced13.length >= 13, `${traced13.length} traced fronts on 13-45`);
-  for (const t of [...traced, ...traced117, ...traced13]) {
+  const traced46 = tracedFronts(table, 'haarlemmer-46-96');
+  assert.ok(traced46.length >= 17, `${traced46.length} traced fronts on Haarlemmerstraat 46-96`);
+  assert.ok(traced46.some(t => t.key === '0363100012171144'), 'HS54 traced');
+  for (const t of [...traced, ...traced117, ...traced13, ...traced46]) {
     assert.equal(t.front.trace!.storeys.length, t.front.storeys, t.key);
     assert.ok(t.front.trace!.outline.length >= 3, t.key);
     assert.ok(t.openings.every(o => o.w > 0 && o.h > 0 && o.x >= -0.2 && o.x + o.w <= t.box.x1 + 0.2), t.key);
