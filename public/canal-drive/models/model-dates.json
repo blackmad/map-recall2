@@ -4001,6 +4001,11 @@
       "version": "1a3a48e54b2b3465",
       "dateSource": "asset-update"
     },
+    "morgan-mees": {
+      "updatedAt": "2026-11-13T19:21:03.084Z",
+      "version": "57ce99a5b949be68",
+      "dateSource": "asset-update"
+    },
     "motorkade-1": {
       "updatedAt": "2026-10-14T09:15:55.637Z",
       "version": "ceded78930018e4f",
@@ -4289,6 +4294,16 @@
     "nieuw-engeland": {
       "updatedAt": "2026-11-13T12:45:10.386Z",
       "version": "99f4007b7bd0d0f5",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod1": {
+      "updatedAt": "2026-11-13T18:42:16.379Z",
+      "version": "0d8a07bc30427c5e",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod2": {
+      "updatedAt": "2026-11-13T18:42:16.379Z",
+      "version": "1f76f66b23c3c729",
       "dateSource": "asset-update"
     },
     "nieuwe-kerk": {
