@@ -57,13 +57,16 @@ const page = await context.newPage();
 const cdp = await context.newCDPSession(page);
 const log = { bundles: bundles || null, warm: has('warm'), tabs, mode, engine, url, viewport: [W, H], dpr: DPR, loadAtStart: la() };
 if (mode === 'cpu') { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start'); }
-else { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: true }); }
+else if (!has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
 const wall0 = Date.now();
 await page.goto(url, { waitUntil: 'commit' });
 await page.waitForFunction(() => { const g = window.canalRecallGame; return g && g.state === 4 && (!g.camera || !g.camera.introOverview); }, null, { timeout: 240_000, polling: 250 });
 log.rideStartS = (Date.now() - wall0) / 1000;
 log.rideStartPageMs = await page.evaluate(() => Math.round(performance.now()));
 log.loadAtRideStart = la();
+// --ride-only (heap mode): sample allocations from the ride's start, not the boot. --promoted leaves out objects a
+// minor GC collects: what is left survives into the old generation and drives the major-GC sawtooth.
+if (mode === 'heap' && has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
 await page.evaluate((fin) => {
   const g = window.canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
   g._quizFreezesRide = () => false; p.handleInput = () => {};
@@ -98,7 +101,7 @@ log.extraTabsHeapMB = await Promise.all(extra.map(heapOf));
 log.rendererPids = await Promise.all([page, ...extra].map(async p => { try { const c = await context.newCDPSession(p); const r = await c.send('SystemInfo.getProcessInfo').catch(() => null); return r ? r.processInfo.filter(x => x.type === 'renderer').length : null; } catch (_) { return null; } }));
 const ls = await page.evaluate(() => window.__ls);
 log.loaf = ls.loaf; log.heap = ls.heap;
-log.end = await page.evaluate(() => { const vm = window.canalRecallGame?.vectorMap; return { tier: window.__canalPerf?.tier, workers: window.__canalPerf?.snapshot?.()?.workers ?? null, snapshot: (() => { try { return window.__canalPerf?.snapshot?.(); } catch (e) { return String(e); } })() }; });
+log.end = await page.evaluate(() => { const vm = window.canalRecallGame?.vectorMap; return { roadScratch: !!window.canalRecallGame?.track?._roadScratch, scratchHasCount: !!window.CanalRecallRoadSurface?.nearbyContacts, tier: window.__canalPerf?.tier, workers: window.__canalPerf?.snapshot?.()?.workers ?? null, snapshot: (() => { try { return window.__canalPerf?.snapshot?.(); } catch (e) { return String(e); } })() }; });
 if (mode === 'cpu') {
   const { profile } = await cdp.send('Profiler.stop');
   fs.writeFileSync(path.join(outDir, 'ride.cpuprofile'), JSON.stringify(profile));

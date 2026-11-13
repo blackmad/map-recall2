@@ -5,7 +5,7 @@
 // and records the second load.
 //
 //   node scripts/perf/load-timeline.mjs <outDir> [--origin https://rideamsterdam.nl] [--device desktop|iphone]
-//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only]
+//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots]
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -62,7 +62,9 @@ async function run(page, label) {
     try { if (!bytes) bytes = (await res.body()).length; } catch (_) { /* aborted */ }
     net.push({ t: Date.now() - t0, url: u.replace(origin, ''), status: res.status(), bytes, fromCache: res.fromServiceWorker() || (res.request().timing?.().responseStart === -1), layer: layerOf(u) });
   });
-  page.on('requestfinished', req => { /* sizes from response */ });
+  // Request times (when each fetch starts), for the load-order question: what waits on what.
+  const reqs = [];
+  page.on('request', req => { const u = req.url(); if (!u.startsWith('data:')) reqs.push({ t: Date.now() - t0, url: u.replace(origin, ''), layer: layerOf(u) }); });
   await page.goto(`${origin}${pagePath}${qs}${hash}`, { waitUntil: 'commit' });
   const samples = [];
   for (let i = 0; i * every <= secs * 1000; i++) {
@@ -90,11 +92,11 @@ async function run(page, label) {
       } catch (e) { return { err: String(e) }; }
     }).catch(e => ({ evalErr: String(e).slice(0, 100) }));
     const shot = path.join(outDir, `${label}-${String(Math.round(t / 100) * 100).padStart(6, '0')}.jpg`);
-    await page.screenshot({ path: shot, type: 'jpeg', quality: 70, scale: 'css' }).catch(() => {});
+    if (!has('no-shots')) await page.screenshot({ path: shot, type: 'jpeg', quality: 70, scale: 'css' }).catch(() => {});
     samples.push({ t, shot: path.basename(shot), ...probe });
     if (has('probe-only') && i > 3) break;
   }
-  return { samples, net };
+  return { samples, net, reqs };
 }
 
 const page = await context.newPage();
