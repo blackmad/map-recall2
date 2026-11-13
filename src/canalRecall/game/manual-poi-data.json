@@ -2882,5 +2882,24 @@
     ],
     "note": "Basisweg pavement in front of the black north front with the entrance and bike racks (recording_2025-07-01_09-03-48_04058)."
   }
+},
+{
+  "modelId": "radion",
+  "landmarkId": "n3942354213",
+  "name": "RADION",
+  "description": "RADION is a club and cultural centre in the former ACTA dental school building of 1971 on the Louwesweg. The housing corporation De Alliantie turned the building into temporary homes, studios and venues in 2012; RADION moved in in 2014.",
+  "funFact": "The slab's north gable is painted black and crossed by a giant white lattice, one storey band of it every twelve metres.",
+  "sourceUrl": "https://www.rvo.nl/transformatievoorbeelden/acta-gebouw",
+  "additionalSources": [
+    "https://www.radionamsterdam.nl/"
+  ],
+  "preferDescription": true,
+  "routeDestination": {
+    "center": [
+      52.3464,
+      4.82576
+    ],
+    "note": "In front of the RADION canopy on the north side of the slab, where the club entrance is."
+  }
 }
 ]

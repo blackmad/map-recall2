@@ -1,0 +1,703 @@
+{
+ "schemaVersion": 1,
+ "id": "radion",
+ "pand": "0363100012114496",
+ "brief": "scripts/landmarks/radion-brief.md",
+ "signature": [
+  "n-white-lattice",
+  "n-black-gable",
+  "c-radion-sign",
+  "e-ribbons",
+  "s-glass-tiles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-89",
+   "bearing": 89,
+   "lengthM": 88.8,
+   "centre": [
+    4.826571,
+    52.345946
+   ],
+   "evidence": "photo",
+   "panoId": "_20241204_0806_Track106_Sphere_00616",
+   "capturedAt": "2024-12-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-ribbons",
+     "kind": "window-shape",
+     "where": "east long front, 89 m: eleven storeys of light concrete spandrels and continuous dark window ribbons, mullions about every 2.4 m",
+     "approxSizeM": [
+      88.8,
+      36.8
+     ],
+     "plan": "modelled",
+     "how": "ribbons(): one glass band per 3.3 m storey with frame mullions and a sill, on the concrete roofPrism shell",
+     "seenIn": "_20241204_0806_Track106_Sphere_00616 (winter, through bare trees)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-269",
+   "bearing": 269,
+   "lengthM": 52,
+   "centre": [
+    4.8261905,
+    52.3461055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002466_pano_0002_001806",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-ribbons",
+     "kind": "window-shape",
+     "where": "west long front above the low wing: the same concrete spandrels and window ribbons as the east front",
+     "approxSizeM": [
+      52,
+      36.8
+     ],
+     "plan": "modelled",
+     "how": "ribbons() on the ring edge and faceWall() strips above the 4.4 and 7.4 m link roofs",
+     "seenIn": "TMX7316010203-002466_pano_0002_001806"
+    }
+   ]
+  },
+  {
+   "tag": "w03-179",
+   "bearing": 179,
+   "lengthM": 47,
+   "centre": [
+    4.8257495,
+    52.345475
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-16_09-45-14_00021",
+   "capturedAt": "2025-07-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-89",
+   "bearing": 89,
+   "lengthM": 33.1,
+   "centre": [
+    4.826101,
+    52.3460785
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-269",
+   "bearing": 269,
+   "lengthM": 27,
+   "centre": [
+    4.82588,
+    52.3461035
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-270",
+   "bearing": 270,
+   "lengthM": 25.6,
+   "centre": [
+    4.825402,
+    52.345586
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-359",
+   "bearing": 359,
+   "lengthM": 21.4,
+   "centre": [
+    4.825622,
+    52.345927
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-359",
+   "bearing": 359,
+   "lengthM": 18.8,
+   "centre": [
+    4.82635,
+    52.346435
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002467_pano_0000_001428",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-black-gable",
+     "kind": "other",
+     "where": "north gable, full 41 m height: painted black",
+     "approxSizeM": [
+      18.8,
+      41
+     ],
+     "plan": "modelled",
+     "how": "pink-slot slab tinted #3b3739",
+     "seenIn": "TMX7316010203-002467_pano_0000_001428"
+    },
+    {
+     "id": "n-white-lattice",
+     "kind": "relief",
+     "where": "north gable: white lattice of 1.5 m bands, verticals 2.7 and 13.9 m from the east corner, horizontals at 11.1, 23.3 and 35.4 m and the top edge, diagonals of slope about 1.085 through the nodes",
+     "approxSizeM": [
+      18.8,
+      41
+     ],
+     "plan": "modelled",
+     "how": "northGable(): bands unioned with polygon-clipping and extruded 0.1 m proud of the black paint",
+     "seenIn": "TMX7316010203-002467_pano_0000_001428 rectified at 50 px/m"
+    },
+    {
+     "id": "n-grille-windows",
+     "kind": "window-shape",
+     "where": "north gable 5.5-8.3 m from the east corner: a column of small dark grilled windows about every 4.2 m",
+     "approxSizeM": [
+      2.8,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "glass slots clipped clear of the lattice bands; grille bars not drawn",
+     "seenIn": "TMX7316010203-002467_pano_0000_001428"
+    },
+    {
+     "id": "n-base-graffiti",
+     "kind": "other",
+     "where": "gable foot: graffiti and tags",
+     "approxSizeM": [
+      18.8,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "changes between captures"
+     },
+     "seenIn": "TMX7316010203-002467_pano_0000_001428"
+    }
+   ]
+  },
+  {
+   "tag": "w09-179",
+   "bearing": 179,
+   "lengthM": 18.8,
+   "centre": [
+    4.82638,
+    52.3454935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002466_pano_0002_001817",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-glass-tiles",
+     "kind": "other",
+     "where": "south gable: warm grey glass tiles over the full height",
+     "approxSizeM": [
+      18.8,
+      41
+     ],
+     "plan": "simplified",
+     "how": "stone-slot slab tinted #9c907e; tile joints not drawn",
+     "seenIn": "TMX7316010203-002466_pano_0002_001817"
+    },
+    {
+     "id": "s-window-column",
+     "kind": "window-shape",
+     "where": "south gable 4.5 m from the west corner: one small window per storey",
+     "approxSizeM": [
+      0.7,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "glass slab per storey",
+     "seenIn": "TMX7316010203-002466_pano_0002_001817"
+    },
+    {
+     "id": "s-hoarding",
+     "kind": "other",
+     "where": "gable foot: white hoarding and graffiti",
+     "approxSizeM": [
+      18.8,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "site hoarding"
+     },
+     "seenIn": "TMX7316010203-002466_pano_0002_001817"
+    }
+   ]
+  },
+  {
+   "tag": "w10-269",
+   "bearing": 269,
+   "lengthM": 15.7,
+   "centre": [
+    4.8254675,
+    52.3458545
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-0",
+   "bearing": 0,
+   "lengthM": 15,
+   "centre": [
+    4.825986,
+    52.346226
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-89",
+   "bearing": 89,
+   "lengthM": 12.9,
+   "centre": [
+    4.825858,
+    52.345848
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-359",
+   "bearing": 359,
+   "lengthM": 11,
+   "centre": [
+    4.82612,
+    52.345793
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-91",
+   "bearing": 91,
+   "lengthM": 9.8,
+   "centre": [
+    4.8260395,
+    52.345836
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w15-262",
+   "bearing": 262,
+   "lengthM": 9.3,
+   "centre": [
+    4.8259835,
+    52.3458605
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-269",
+   "bearing": 269,
+   "lengthM": 9.2,
+   "centre": [
+    4.8254765,
+    52.3457435
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w17-90",
+   "bearing": 90,
+   "lengthM": 9.2,
+   "centre": [
+    4.826093,
+    52.3455205
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-16_09-45-14_00011",
+   "capturedAt": "2025-07-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-90-strip-ends",
+     "kind": "other",
+     "where": "south ends of the side strips and stair cores: beige concrete and dark brown stair-core cladding",
+     "approxSizeM": [
+      9.2,
+      36.8
+     ],
+     "plan": "simplified",
+     "how": "ochre or greyBrick full-height slab (stair cores #5c554a)",
+     "seenIn": "recording_2025-07-16_09-45-14_00011"
+    }
+   ]
+  },
+  {
+   "tag": "w18-270",
+   "bearing": 270,
+   "lengthM": 9,
+   "centre": [
+    4.825973,
+    52.3459425
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w19-179",
+   "bearing": 179,
+   "lengthM": 8,
+   "centre": [
+    4.826151,
+    52.345563
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002466_pano_0002_001814",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w19-179-strip-ends",
+     "kind": "other",
+     "where": "south ends of the side strips and stair cores: beige concrete and dark brown stair-core cladding",
+     "approxSizeM": [
+      8,
+      36.8
+     ],
+     "plan": "simplified",
+     "how": "ochre or greyBrick full-height slab (stair cores #5c554a)",
+     "seenIn": "TMX7316010203-002466_pano_0002_001814"
+    }
+   ]
+  },
+  {
+   "tag": "w20-89",
+   "bearing": 89,
+   "lengthM": 7.3,
+   "centre": [
+    4.826489,
+    52.346404
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w21-269",
+   "bearing": 269,
+   "lengthM": 7.2,
+   "centre": [
+    4.826213,
+    52.3464005
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w22-176",
+   "bearing": 176,
+   "lengthM": 6,
+   "centre": [
+    4.826062,
+    52.345928
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w23-179",
+   "bearing": 179,
+   "lengthM": 6,
+   "centre": [
+    4.825928,
+    52.3459825
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w24-359",
+   "bearing": 359,
+   "lengthM": 5.4,
+   "centre": [
+    4.8254385,
+    52.3457015
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w25-359",
+   "bearing": 359,
+   "lengthM": 5.3,
+   "centre": [
+    4.825899,
+    52.3457905
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w26-0",
+   "bearing": 0,
+   "lengthM": 5.2,
+   "centre": [
+    4.825818,
+    52.345906
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w27-269",
+   "bearing": 269,
+   "lengthM": 5.1,
+   "centre": [
+    4.826154,
+    52.345846
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w28-179",
+   "bearing": 179,
+   "lengthM": 4.9,
+   "centre": [
+    4.826247,
+    52.3455425
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-16_09-45-14_00014",
+   "capturedAt": "2025-07-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w28-179-strip-ends",
+     "kind": "other",
+     "where": "south ends of the side strips and stair cores: beige concrete and dark brown stair-core cladding",
+     "approxSizeM": [
+      4.9,
+      36.8
+     ],
+     "plan": "simplified",
+     "how": "ochre or greyBrick full-height slab (stair cores #5c554a)",
+     "seenIn": "recording_2025-07-16_09-45-14_00014"
+    }
+   ]
+  },
+  {
+   "tag": "w29-359",
+   "bearing": 359,
+   "lengthM": 4.9,
+   "centre": [
+    4.826522,
+    52.3463445
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w30-179",
+   "bearing": 179,
+   "lengthM": 4.8,
+   "centre": [
+    4.8265485,
+    52.3455465
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241021_0921_Track73_Sphere_00092",
+   "capturedAt": "2024-10-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w30-179-strip-ends",
+     "kind": "other",
+     "where": "south ends of the side strips and stair cores: beige concrete and dark brown stair-core cladding",
+     "approxSizeM": [
+      4.8,
+      36.8
+     ],
+     "plan": "simplified",
+     "how": "ochre or greyBrick full-height slab (stair cores #5c554a)",
+     "seenIn": "b_20241021_0921_Track73_Sphere_00092"
+    }
+   ]
+  },
+  {
+   "tag": "c01-359",
+   "bearing": 359,
+   "lengthM": 18.1,
+   "centre": [
+    4.8257,
+    52.34637
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-16_11-08-20_01196",
+   "capturedAt": "2025-07-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-radion-sign",
+     "kind": "lettering",
+     "where": "canopy pand 0363100012188556, north fascia 2.4-6.9 m from the east end: outlined RADION capitals 0.68 m tall with chevrons, in a white outline frame",
+     "approxSizeM": [
+      4.5,
+      0.84
+     ],
+     "plan": "simplified",
+     "how": "radionSign(): GL pixel capitals (solid, not outlined), three chevron polys and a four-slab frame",
+     "seenIn": "recording_2025-07-16_11-08-20_01196 rectified at 50 px/m"
+    },
+    {
+     "id": "c-radion-sign-east",
+     "kind": "lettering",
+     "where": "canopy east part, north fascia: a second RADION sign with chevrons",
+     "approxSizeM": [
+      4.5,
+      0.84
+     ],
+     "plan": "simplified",
+     "how": "radionSign() mirrored chevrons; position inferred from the thumbnail",
+     "seenIn": "recording_2025-07-16_11-08-20_01191"
+    },
+    {
+     "id": "c-fascia",
+     "kind": "canopy",
+     "where": "canopy: concrete fascia 1.45 m deep, panel joints every 2.6 m, roof at 5.1 m",
+     "approxSizeM": [
+      26,
+      1.45
+     ],
+     "plan": "modelled",
+     "how": "openTopPrism ring plus soffit and frame-coloured joints",
+     "seenIn": "recording_2025-07-16_11-08-20_01196"
+    },
+    {
+     "id": "c-teal-columns",
+     "kind": "colonnade",
+     "where": "canopy: round teal columns about 0.3 m wide, about 5.25 m apart",
+     "approxSizeM": [
+      0.34,
+      3.65
+     ],
+     "plan": "modelled",
+     "how": "8-sided cylinders 0.45 m inside the fascia line",
+     "seenIn": "recording_2025-07-16_11-08-20_01196"
+    },
+    {
+     "id": "c-back-wall",
+     "kind": "other",
+     "where": "behind the columns: a dark graffiti-covered wall with a blue band lower down",
+     "approxSizeM": [
+      18,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "dark prism inset 1.2 m with a blue band; graffiti not drawn",
+     "seenIn": "recording_2025-07-16_11-08-20_01196"
+    },
+    {
+     "id": "c-totem",
+     "kind": "sign",
+     "where": "freestanding 01 RADION ACTA totem near the west entrance",
+     "approxSizeM": [
+      1,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "free-standing street furniture off the building footprint"
+     },
+     "seenIn": "recording_2025-07-16_11-08-20_01196"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "notes": "Most walls of the low west wing stand behind trees in every capture; they are drawn with one inferred window ribbon per 3.5 m storey and a white fascia course. The extract bag-tiles ring for 0363100012114496 still carries an obsolete wing (x -32.5..-17.1, z -35..-2) that the current BAG lacks; the model follows the current BAG and 3DBAG."
+}
