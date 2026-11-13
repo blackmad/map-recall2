@@ -58,6 +58,7 @@ const cdp = await context.newCDPSession(page);
 const log = { bundles: bundles || null, warm: has('warm'), tabs, mode, engine, url, viewport: [W, H], dpr: DPR, loadAtStart: la() };
 if (mode === 'cpu') { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start'); }
 else if (!has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
+const traceStart = () => cdp.send('Tracing.start', { transferMode: 'ReturnAsStream', traceConfig: { includedCategories: ['devtools.timeline', 'disabled-by-default-v8.gc', '__metadata'] } });
 // --from-load (gc mode): trace from navigation, not from the ride's start (a cold start's stalls).
 if (mode === 'gc' && has('from-load')) await traceStart();
 const wall0 = Date.now();
@@ -71,7 +72,6 @@ log.loadAtRideStart = la();
 if (mode === 'heap' && has('ride-only')) { await cdp.send('HeapProfiler.enable'); await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: !has('promoted') }); }
 // --mode gc: a devtools.timeline + v8.gc trace over the ride (every minor and major GC with heap before and after), to
 // see what feeds the old generation: the creep of the after-minor-GC heap is promotion plus direct old-space allocation.
-const traceStart = () => cdp.send('Tracing.start', { transferMode: 'ReturnAsStream', traceConfig: { includedCategories: ['devtools.timeline', 'disabled-by-default-v8.gc', '__metadata'] } });
 if (mode === 'gc' && !has('from-load')) await traceStart();
 await page.evaluate((fin) => {
   const g = window.canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
