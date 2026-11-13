@@ -46,3 +46,17 @@ test('flag: default on, ?specFields=0 / SPEC_FIELDS=0 off', () => {
   assert.equal(specFieldsEnabled('?specFields=0', null), false);
   assert.equal(specFieldsEnabled(null, '0'), false);
 });
+
+test('a stated surround (read or template) is the block faces\' eared surround, not a thin frame', async () => {
+  const { EARED_SURROUND } = await import('../facadeOrnaments.ts');
+  const { DRESS } = await import('../blockBuilding/dressings.ts');
+  assert.deepEqual({ ...EARED_SURROUND }, { ...DRESS.surround }, 'the generic surround is the block-face weight');
+  const read = readFields(spec({ windowSurround: 'full-frame' }, { 'fronts/0/windowSurround': vj() }))!;
+  assert.equal(read.surround, true); assert.equal(read.src.surround, 'vision-judge');
+  assert.deepEqual(fieldsDraw(read), { force: ['eared-surrounds'] });
+  assert.equal(readFields(spec({ windowSurround: 'stone-lintel' }, { 'fronts/0/windowSurround': vj() })), null, 'a head-only kind is no surround');
+  assert.equal(readFields(spec({ windowSurround: 'full-frame' }, { 'fronts/0/windowSurround': vj(0.4) })), null, 'under the bar');
+  const t = withTemplate(null, pick({ 'fronts/0/windowSurround': 'eared-keystone' }))!;
+  assert.equal(t.surround, true); assert.equal(t.src.surround, 'template:0363100012168000');
+  assert.deepEqual(fieldsDraw({ surround: true, head: 'segmental', src: {} }), { force: [], arch: true }, 'a segmental head is not square-headed');
+});

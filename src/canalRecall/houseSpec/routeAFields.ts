@@ -15,6 +15,9 @@
  *   head    flat | segmental, whole front only (per-row heads are HELD): a window-preset pick (bayLook `arch`).
  *   crown   cornice (0.98) | step (1.0, n 4) | curved (neck or bell, 0.89): the roof planner's own forms (GABLE_TO_ROOF).
  *           A curved reading takes the register's curved kind where the register names one, else `neck`.
+ *   surround a stone window surround (full-frame, eared-keystone, block-dressings), read or from the template: the block
+ *           faces' eared surround (facadeOrnaments.ts `eared-surrounds`, DRESS.surround weight), never a thin frame: the
+ *           reviewer's ruling after the route-C ride sheet (thin stone-lintel frames vanish at ride distance).
  *   pale    from the street template only (the reader's surrounds miss the bar at 0.59; the street agrees on 84 %): an
  *           eared or stone surround on the template picks the pale-accent preset.
  * Structure (rows, bays, souterrain, roof storey) never comes from here: storeyPlan.ts owns it.
@@ -33,6 +36,9 @@ export const DRAWN_BANDS = ['storey', 'lintel', 'both', 'speklagen'] as const;
 export type DrawnBand = typeof DRAWN_BANDS[number];
 export const CURVED_CROWNS: ReadonlySet<string> = new Set(['neck', 'raised-neck', 'bell']);
 /** Window surrounds whose white reads as the pale-accent preset (view.ts PALE_SURROUNDS plus the eared surround). */
+/** Surrounds that frame the whole window (jambs and head): drawn as the eared surround. Head-only kinds (stone-lintel,
+ *  keystone, jack-blocks, dentil-lintel) stay the pale preset. */
+export const SURROUND_YES: ReadonlySet<string> = new Set(['full-frame', 'eared-keystone', 'block-dressings']);
 export const PALE_TEMPLATE_SURROUNDS: ReadonlySet<string> = new Set(['stone-lintel', 'full-frame', 'keystone', 'eared-keystone', 'eared']);
 
 /** The route-A fields a front carries in the spec view (`v.fields`). Absent keys keep today's pick. */
@@ -41,8 +47,9 @@ export interface RouteAFields {
   head?: 'flat' | 'segmental';
   crown?: 'cornice' | 'step' | 'neck' | 'raised-neck' | 'bell';
   pale?: boolean;
+  surround?: true;
   /** Where each came from: a reading's source, or `template:<pandId>`. */
-  src: Partial<Record<'bands' | 'head' | 'crown' | 'pale', string>>;
+  src: Partial<Record<'bands' | 'head' | 'crown' | 'pale' | 'surround', string>>;
 }
 
 const passing = (spec: HouseSpec, path: string): string | null => {
@@ -67,7 +74,9 @@ export function readFields(spec: HouseSpec): RouteAFields | null {
     out.crown = register && CURVED_CROWNS.has(register) ? register as RouteAFields['crown'] : 'neck';
     out.src.crown = register && CURVED_CROWNS.has(register) ? `${gableSrc}+monument-text` : gableSrc;
   }
-  return out.bands || out.head || out.crown ? out : null;
+  const surround = f.windowSurround as string | undefined, surroundSrc = surround ? passing(spec, 'fronts/0/windowSurround') : null;
+  if (surroundSrc && SURROUND_YES.has(surround!)) { out.surround = true; out.src.surround = surroundSrc; }
+  return out.bands || out.head || out.crown || out.surround ? out : null;
 }
 
 /** The street template's rung: dressings the reading left open (bands, the pale surround); never structure. */
@@ -79,7 +88,8 @@ export function withTemplate(fields: RouteAFields | null, pick: TemplatePick | n
   if (out.bands === undefined && bands && (DRAWN_BANDS as readonly string[]).includes(bands)) { out.bands = bands as DrawnBand; out.src.bands = tag; }
   const surround = pick.fields['fronts/0/windowSurround'] as string | undefined;
   if (out.pale === undefined && surround) { out.pale = PALE_TEMPLATE_SURROUNDS.has(surround); out.src.pale = tag; }
-  return out.bands || out.head || out.crown || out.pale !== undefined ? out : null;
+  if (!out.surround && !out.src.surround && surround && SURROUND_YES.has(surround)) { out.surround = true; out.src.surround = tag; }
+  return out.bands || out.head || out.crown || out.surround || out.pale !== undefined ? out : null;
 }
 
 /** Band heights (m): a stone band course is wider than a speklaag (two brick courses of stone). */
@@ -88,11 +98,13 @@ export const BAND_M = { stone: 0.16, speklagen: 0.1 } as const;
 /** What the mesher draws for the fields: forced wall components (facadeExtras registerForce ids), the band height, the
  *  window-preset traits. */
 export function fieldsDraw(fields: RouteAFields | undefined | null): { force: string[]; bandM?: number; arch?: boolean; pale?: boolean } {
+  // (a surround forces `eared-surrounds`; a segmental head wins, the eared surround is square-headed)
   if (!fields) return { force: [] };
   const force: string[] = [];
   let bandM: number | undefined;
   if (fields.bands === 'storey' || fields.bands === 'both' || fields.bands === 'speklagen') force.push('floor-cornices');
   if (fields.bands === 'lintel' || fields.bands === 'both') force.push('string-courses');
+  if (fields.surround && fields.head !== 'segmental') force.push('eared-surrounds');
   if (fields.bands) bandM = fields.bands === 'speklagen' ? BAND_M.speklagen : BAND_M.stone;
   return { force, ...(bandM ? { bandM } : {}), ...(fields.head ? { arch: fields.head === 'segmental' } : {}), ...(fields.pale !== undefined ? { pale: fields.pale } : {}) };
 }

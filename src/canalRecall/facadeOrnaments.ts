@@ -79,6 +79,9 @@ function storeysThatFit(c: ExtraContext, s: ExtraSink, perWindow: number, max: n
   return Math.max(1, Math.min(max, c.layout.storeys, Math.floor(s.room() / per)));
 }
 
+/** The block faces' eared surround (blockBuilding/dressings.ts DRESS.surround; pinned equal in routeAFields.test.ts). */
+export const EARED_SURROUND = { t: 0.13, out: 0.05, ear: 0.12, earH: 0.14, earOut: 0.07 } as const;
+
 // --- Components ------------------------------------------------------------------------
 const CANAL: readonly FacadeStyle[] = ['canal', 'c19'];
 
@@ -315,6 +318,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'white-window-frames', styles: CANAL, p: { canal: 0.3, c19: 0.35 }, wide: true, build: (c, s) => {
     // Painted frames standing proud of the brick: jambs and head round every window.
     if (openingsOf(c).ribbon || c.recipe?.windowHead === 'segmental') return;
+    // A stated eared surround (routeAFields.ts) is the frame; a thin frame inside it would only thicken its edge.
+    if (c.registerForce?.includes('eared-surrounds')) return;
     const groundCost = windowSpans(c, -1).length * 12;
     const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
     for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {
@@ -323,6 +328,22 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), w.x - w.hw + 0.01, out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, w.x + w.hw - 0.01, Math.min(c.f.len, w.x + w.hw + frame), out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), Math.min(c.f.len, w.x + w.hw + frame), out, w.z1 - 0.02, Math.min(c.top, w.z1 + 0.05), colour);
+    }
+  } },
+  { id: 'eared-surrounds', styles: CANAL, p: 0, wide: true, group: 'window-head', build: (c, s) => {
+    // Lane WG step 2 (houseSpec/routeAFields.ts `surround`): a stated stone surround at the block faces' weight
+    // (blockBuilding/dressings.ts DRESS.surround, the eared surround of the Nassaukade benchmark): 13 cm jambs, a head
+    // that runs past them with ears. Forced only (p 0): never a dice pick, so a wall without the field is unchanged.
+    const o = openingsOf(c); if (o.ribbon || o.upper.arch || c.recipe?.windowHead === 'segmental') return;
+    const S = EARED_SURROUND, colour = c.recipe?.frameHex ?? WHITE, n = storeysThatFit(c, s, 20, 5);
+    for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
+      const l = w.x - w.hw, r = w.x + w.hw, head = Math.min(c.top, w.z1 + S.t);
+      if (l - S.t - S.ear < 0 || r + S.t + S.ear > c.f.len || head <= w.z1) continue;
+      s.strip(c.f, l - S.t, l + 0.01, S.out, w.z0, w.z1 + 0.02, colour);
+      s.strip(c.f, r - 0.01, r + S.t, S.out, w.z0, w.z1 + 0.02, colour);
+      s.strip(c.f, l - S.t - S.ear, r + S.t + S.ear, S.out + 0.01, w.z1, head, colour);
+      s.strip(c.f, l - S.t - S.ear, l - S.t + 0.02, S.earOut, w.z1 - S.earH, w.z1 + 0.02, colour);
+      s.strip(c.f, r + S.t - 0.02, r + S.t + S.ear, S.earOut, w.z1 - S.earH, w.z1 + 0.02, colour);
     }
   } },
   { id: 'school-window-bars', styles: ['school'], p: 0.4, wide: true, build: (c, s, r) => {
