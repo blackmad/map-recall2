@@ -466,6 +466,32 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
 - **provenance**: souterrain and roof storey reach the view only from `monument-text`, `vision-judge` or stronger at
   confidence >= 0.5, and only with a stated count. Absent, the fit is H9/H11's, byte-identical.
 
+### Spec fields on route A (lane WG step 2, 2026-11-13)
+
+`houseSpec/routeAFields.ts`. The bake-off made route A the consumer for every described house. It draws the classes that
+passed D1's precision bar (v4.2) with presets and existing quads only, and adds no new components:
+- **bands** (`storey`, `lintel`, `both`, `speklagen`): forced through the existing band-line components. `floor-cornices` draws
+  a band at every floor line (storey, both, speklagen) and `string-courses` draws the sill ledge (lintel, both), each at the
+  stated height (`BAND_M`: 0.16 m for stone, 0.10 m for speklagen; `ExtraContext.bandM`). They dress first, inside the wall's
+  unchanged extras budget, so the per-house triangle count barely moves.
+- **head**: a whole-front `flat` or `segmental` reading is the bay preset's `arch` trait. Per-row heads are held.
+- **crown**: `cornice`, `step` and curved readings become the view's gable for the roof planner (`withHouseSpecCrown`, through
+  GABLE_TO_ROOF). A curved reading takes the register's curved kind where the register names one, else `neck`.
+- **sources**: photo sources only (`vision-judge`, `streetlevel-measured`, `reviewed`, `author`) at confidence >= 0.5, the
+  level at which D1 writes a class that is over its bar.
+- **street template** (`streetTemplate.ts`, from the route-C completer): a hook. `build-house-specs.ts --street-template`
+  fills the dressings a reading left open (bands, the pale surround) at build time, so the 414 kB table never ships to the
+  browser; only the filled fields ride in the view. It is off until the completer lane lands its re-ranked module (scale and
+  street-class match, no template when nothing qualifies).
+- **flag**: `?specFields=0` / `SPEC_FIELDS=0` draws none of it, byte-identical (forwarded to the worker).
+- **kit gaps**: brick `courses`, `painted` (stucco) bands, per-row heads, school-period bands (the band-line components are
+  canal/c19 only), and a mansard face as roof (it is drawn as a plain band).
+
+A runtime flag reaches the worker only through the `withWorkerFlags` list in `engine/workerPool.ts`, and that list is also
+bundled into `own-ground-game.bundle.js`. A scratch build of the three-buildings bundles alone leaves the game's old list in
+place, so the flag never reaches the worker and before/after pairs come out identical (eyeball 175318, 2026-11-13).
+Rebuild all the 3D bundles (`node scripts/build-3d-bundles.mjs --outdir=<dir>`) for frames.
+
 ### Which specs a world carries
 
 `world:compile` writes the stamp into world-v1 `index.json` (`houseSpec/extractStamp.ts`, via
