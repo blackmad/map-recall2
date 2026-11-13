@@ -16,6 +16,7 @@
 // card, which the player asked for, holds the slot longer first.
 
 import type { WorldPoint } from './worldTypes';
+import { frontageAlong, type FrontageLandmark } from './landmarkFrontage';
 import type { NoticeHold } from './landmarkNotice';
 import { nearestRouteIndex } from './routeSelection';
 import {
@@ -110,12 +111,31 @@ export function approachAlong(path: readonly WorldPoint[], point: WorldPoint): n
   return best && best.distance <= DRIVE_BY_RADIUS ? best.along : null;
 }
 
+/**
+ * Where along `path` the rider stands on the building's own frontage (within
+ * FRONTAGE_M of its outline), or null: a card for a building seen only as
+ * spires over the next street is not a card for what is on screen (user
+ * 2026-11-13, the Krijtberg from the Herengracht). A landmark with no outline
+ * (a point-only house, or any in transit worlds) keeps the street-point radius.
+ */
+export function landmarkApproachAlong(path: readonly WorldPoint[], landmark: WorldPoint & FrontageLandmark, pxPerMetre: number): number | null {
+  if (!landmark.footprint?.length) return approachAlong(path, landmark);
+  const start = path[0], lead = path[1];
+  const own = Number.isFinite(landmark.ownX) ? { x: landmark.ownX!, y: landmark.ownY! } : landmark;
+  const leadLength = Math.hypot(lead.x - start.x, lead.y - start.y) || 1;
+  const forward = ((own.x - start.x) * (lead.x - start.x) + (own.y - start.y) * (lead.y - start.y)) / leadLength;
+  if (forward < -DRIVE_BY_PASSED_BEHIND) return null;
+  return frontageAlong(path, landmark, pxPerMetre);
+}
+
 /** The landmark the rider will reach first, among those the path ahead passes. */
-export function pickDriveBy<T extends WorldPoint>(candidates: readonly T[], path: readonly WorldPoint[]): T | null {
+export function pickDriveBy<T extends WorldPoint>(
+  candidates: readonly T[], path: readonly WorldPoint[], alongOf: (candidate: T) => number | null = c => approachAlong(path, c),
+): T | null {
   let chosen: T | null = null;
   let soonest = Infinity;
   for (const candidate of candidates) {
-    const along = approachAlong(path, candidate);
+    const along = alongOf(candidate);
     if (along !== null && along < soonest) { chosen = candidate; soonest = along; }
   }
   return chosen;
