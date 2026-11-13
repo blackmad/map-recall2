@@ -508,7 +508,7 @@ function captionLines(r: any): string[] {
   const flags = Object.entries(r.flags ?? {}).filter(([, v]) => v).map(([k, v]) => v === true ? k : `${k}: ${v}`);
   return [
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
-    `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  ${r.query || '(default world)'}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
+    `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  ${worldCaption(r.query, r.world)}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
     (flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags') + (r.colour && r.colour.ref === 'no ref' ? '  |  wall colour: no ref (no neighbour strip reads)' : ''),
     `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'} (${r.colour?.ref ?? '?'})  |  skyline game ${r.skyline?.offset?.game?.medianM ?? (r.skyline?.offset?.game?.clipped ? 'clipped' : '?')} photo ${r.skyline?.offset?.photo?.medianM ?? (r.skyline?.offset?.photo?.clipped ? 'clipped' : '?')} crown ${r.wall.heightM} m`,
   ];
@@ -599,7 +599,7 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
       }
     }
   }
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms };
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, ...(g.world ? { world: g.world } : {}), flags, advisory, settle: g.settle, ms: g.ms };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
   if (compare && !compare.error) fs.writeFileSync(path.join(dir, 'triple.jpg'), await tripleImage(dir, path.join(args.before!, prep.key), r));
@@ -669,6 +669,14 @@ async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Pr
   console.log(JSON.stringify({ ...summary, skipped: skipped.length }, null, 1));
   const same = (summary as any).compare?.same as string[] | undefined;
   if (same?.length) console.warn(`WARNING: ${same.length} of ${(summary as any).compare.pairs} before/after pairs are the same on the target wall (${same.join(', ')}): the compared flag did not reach their pixels. Check the world (baked cells ignore runtime flags), the mesh worker's flags (engine/workerPool.ts withWorkerFlags) and the pand's guard before reading these pairs as a result.`);
+}
+
+/** Review rule 8: every caption names the engine and the world (`?world=live` is iteration only; the compiled world-v1
+ *  cells are what players get, published or a staged compile served per list by HOUSE_FRAMES_WORLDS). */
+export function worldCaption(query: string, world?: { dir?: string } | null): string {
+  const q = (query || '').replace(/^\?/, ''), engine = /(^|&)engine=(\w+)/.exec(q)?.[2] ?? 'own';
+  const w = /(^|&)world=live\b/.test(q) ? 'world=live (iteration)' : world?.dir && world.dir !== 'published' ? `world-v1 staged ${path.basename(world.dir)}` : 'world-v1 published';
+  return `engine ${engine}, ${w}${q ? `  |  ?${q}` : ''}`;
 }
 
 /** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */

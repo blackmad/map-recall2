@@ -36,6 +36,9 @@ export const EXPOSURE = {
   gainB: 1.69,
   /** (a) the city brick tint floor for photo-measured walls (CITY_BRICK_LIGHTNESS[0] is 0.3). */
   floorTintL: 0.16,
+  /** (a) the decoration floor for photo-measured walls (wallColour.ts SPEC_WALL_LIFT.minL is 0.34 OKLab; a brick floored at
+   *  staging lands at 0.32, so lowering only the staging floor changes no pixel). */
+  displayMinL: 0.2,
 };
 
 /** The capture's references (analyse.ts ExposureRef), linear Y. */

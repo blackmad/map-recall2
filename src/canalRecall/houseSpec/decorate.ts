@@ -18,7 +18,7 @@ import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
 import { brickLiftOn } from '../look/brickLift.js';
-import { exposedWall, smoothFinishOf, STONE_HEX, wallExposureMode, wallFinishOn } from './wallExposure.js';
+import { EXPOSURE, exposedWall, smoothFinishOf, STONE_HEX, wallExposureMode, wallFinishOn } from './wallExposure.js';
 import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
@@ -182,7 +182,10 @@ export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
-  const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  // Lane WC (#384): option (a) lowers the decoration floor too (SPEC_WALL_LIFT.minL 0.34 parks every darker reading on one
+  // tone), only for a staged photo-measured wall (one carrying wallExposure) under ?wallExposure=floor|normfloor.
+  const mode = view.wallExposure ? wallExposureMode() : 'off';
+  const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel, ...(mode === 'floor' || mode === 'normfloor' ? { minL: EXPOSURE.displayMinL } : {}) });
   const held = paleWarmHeld(drawn, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light', readingL: hexToOklab(reading)[0] });
   return held ? null : drawn;
 }

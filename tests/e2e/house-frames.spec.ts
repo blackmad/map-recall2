@@ -18,7 +18,7 @@
  */
 import { test, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { basename, join, resolve } from 'node:path';
 import { openRoute, settleWorld } from './helpers';
 
 type JobPose = {
@@ -101,6 +101,17 @@ test('house frames', async ({ page }) => {
     specsServed++;
     return route.fulfill({ path: file, contentType: 'application/octet-stream' });
   });
+  // HOUSE_FRAMES_WORLDS='<out dir name>=<world dir>;...' (lane WC, review rule 8): each list frames its own compiled world-v1
+  // (WORLD_DIR per list: the files a staged compile has, the published ones otherwise), so one batch shoots several
+  // compiled settings on the players' world. A list whose out dir's name is not listed gets the published world.
+  const worlds = (process.env.HOUSE_FRAMES_WORLDS ?? '').split(';').filter(Boolean).map(e => { const i = e.indexOf('='); return [e.slice(0, i), resolve(e.slice(i + 1))] as const; });
+  let worldDir = '', worldServed = 0;
+  if (worlds.length) await page.context().route(/\/data\/extracts\/amsterdam\/world-v1\/([\w/.-]+?)(\?.*)?$/, route => {
+    const file = worldDir && join(worldDir, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]);
+    if (!file || !existsSync(file)) return route.continue();
+    worldServed++;
+    return route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' });
+  });
   let opened = 0, sinceOpen = Infinity, lastOut = '';
   const timings: Array<Record<string, number | string>> = [];
   const t0 = Date.now();
@@ -115,6 +126,7 @@ test('house frames', async ({ page }) => {
       try {
         const ts = Date.now();
         specsOn = !!specsDir && (!specsFor || (pose.out ?? job.out).includes(specsFor));
+        worldDir = worlds.find(([name]) => basename(pose.out ?? job.out) === name)?.[1] ?? '';
         if (sinceOpen >= job.reopenEvery) {
           if (opened) { await page.goto('about:blank'); }
           await openPage(page, job, pose.query ?? job.query); opened++; sinceOpen = 0;
@@ -156,7 +168,7 @@ test('house frames', async ({ page }) => {
             specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, specRecipe: p.specRecipe ?? null, specShop: p.specShop ?? null, heldBrick: !!p.specRecipe?.heldBrick,
             facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
         }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
-        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
+        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), ...(worlds.length ? { world: { dir: worldDir || 'published', served: worldServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });
         sinceOpen++;
         break;

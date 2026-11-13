@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { EXPOSURE, exposeHex, exposedWall, isWallExposureFact, normGain, resetWallExposureMode, resetWallFinish, smoothFinishOf, wallExposureMode, wallExposureModeOf, wallFinishEnabled, wallFinishOn, STONE_HEX } from './wallExposure.ts';
 import { houseSpecPatch, withWallExposure, type HouseSpecView } from './decorate.ts';
 import { specView } from './view.ts';
+import { hexToOklab } from './wallColour.ts';
 import { emptySpec, setSpecField, specProblems } from './spec.ts';
 
 const fact = { off: '#3c302a', floor: '#2a201c', gain: '#5a4234', norm: '#6b4a38', normfloor: '#5e4030' };
@@ -75,4 +76,18 @@ test('decorate: ?wallExposure=norm draws the norm brick; ?wallFinish=1 marks ren
     assert.equal(smoothFinishOf('painted-brick', false), 'painted');
     assert.equal(smoothFinishOf('brick', false), null);
   } finally { delete process.env.WALL_EXPOSURE; delete process.env.WALL_FINISH; resetWallExposureMode(); resetWallFinish(); }
+});
+
+test('decorate: ?wallExposure=floor lowers the decoration floor only for a staged photo-measured wall', () => {
+  const dark = { off: '#3c302a', floor: '#0d0b09', gain: '#3c302a', norm: '#3c302a', normfloor: '#1a1512' };
+  const view: HouseSpecView = { wallHex: dark.off, wallMaterial: 'brick', wallExposure: dark, src: { wallHex: 'streetlevel-measured' } };
+  const wallOf = () => String((houseSpecPatch(view, p).specRecipe as { wallHex?: string } | undefined)?.wallHex);
+  const plainWallOf = (hex: string) => String((houseSpecPatch({ wallHex: hex, wallMaterial: 'brick', src: { wallHex: 'streetlevel-measured' } }, p).specRecipe as { wallHex?: string } | undefined)?.wallHex);
+  const off = wallOf();
+  process.env.WALL_EXPOSURE = 'floor'; resetWallExposureMode();
+  try {
+    assert.notEqual(wallOf(), off, 'the floor brick draws darker than the 0.34 decoration floor');
+    for (const h of ['#0d0b09', '#1a1512']) assert.ok(Math.abs(hexToOklab(plainWallOf(h))[0] - 0.34) < 0.005, 'a wall without staged options keeps the 0.34 floor');
+    assert.ok(hexToOklab(wallOf())[0] < 0.3);
+  } finally { delete process.env.WALL_EXPOSURE; resetWallExposureMode(); }
 });
