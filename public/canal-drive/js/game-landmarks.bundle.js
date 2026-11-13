@@ -14,6 +14,62 @@
     return queryFlag(search2, "freeRideQuiz", FREE_RIDE_LANDMARK_QUIZ_DEFAULT);
   }
 
+  // src/canalRecall/game/landmarkFrontage.ts
+  var FRONTAGE_M = 15;
+  var PATH_STEP_M = 1.5;
+  function segmentDistance(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y, len2 = dx * dx + dy * dy;
+    const t2 = len2 ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / len2)) : 0;
+    return Math.hypot(a.x + dx * t2 - p.x, a.y + dy * t2 - p.y);
+  }
+  function insideRing(p, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > p.y !== b.y > p.y && p.x < (b.x - a.x) * (p.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function distanceToFootprint(point, footprint) {
+    if (!footprint?.length) return Infinity;
+    let best = Infinity;
+    for (const ring of footprint) {
+      if (ring.length < 2) continue;
+      const closed = ring.length > 3 && ring[0].x === ring[ring.length - 1].x && ring[0].y === ring[ring.length - 1].y;
+      if (closed && insideRing(point, ring)) return 0;
+      for (let i = 0; i < ring.length - 1; i++) best = Math.min(best, segmentDistance(point, ring[i], ring[i + 1]));
+    }
+    return best;
+  }
+  function facesStreet(point, landmark, pxPerMetre) {
+    return !landmark.footprint?.length || distanceToFootprint(point, landmark.footprint) <= FRONTAGE_M * pxPerMetre;
+  }
+  function frontageAlong(path, landmark, pxPerMetre) {
+    const limit = FRONTAGE_M * pxPerMetre, step = PATH_STEP_M * pxPerMetre;
+    let travelled = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+      const a = path[i], b = path[i + 1];
+      const length = Math.hypot(b.x - a.x, b.y - a.y);
+      const n = Math.max(1, Math.ceil(length / step));
+      for (let k = 0; k <= n; k++) {
+        const t2 = k / n;
+        if (distanceToFootprint({ x: a.x + (b.x - a.x) * t2, y: a.y + (b.y - a.y) * t2 }, landmark.footprint) <= limit) return travelled + length * t2;
+      }
+      travelled += length;
+    }
+    return null;
+  }
+  function footprintFromGeoJson(features, toWorld) {
+    const rings = [];
+    for (const feature of features || []) {
+      const g = feature.geometry;
+      if (!g) continue;
+      const line = g.type === "Polygon" ? g.coordinates[0] : g.type === "LineString" ? g.coordinates : null;
+      if (line && line.length > 1) rings.push(line.map(toWorld));
+    }
+    return rings;
+  }
+
   // src/canalRecall/game/landmarkQuestion.ts
   var LANDMARK_QUESTION_RADIUS_M = 35;
   var LANDMARK_QUESTION_OWN_RADIUS_M = 80;
@@ -44,10 +100,14 @@
     return Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY) ? { x: landmark.ownX, y: landmark.ownY } : landmark;
   }
   function besideLandmark(rider, landmark, pxPerMetre) {
-    if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
     const own = ownPoint(landmark);
     const distance = Math.hypot(own.x - rider.x, own.y - rider.y);
-    if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+    if (landmark.footprint?.length) {
+      if (!facesStreet(rider, landmark, pxPerMetre)) return false;
+    } else {
+      if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
+      if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+    }
     return distance < pxPerMetre || offHeading(rider, own) <= LANDMARK_BESIDE_HALF_CONE;
   }
   function landmarkChoices(answer, pool, options) {
@@ -6866,11 +6926,20 @@ ${register}` : detail,
     }
     return best && best.distance <= DRIVE_BY_RADIUS ? best.along : null;
   }
-  function pickDriveBy(candidates, path) {
+  function landmarkApproachAlong(path, landmark, pxPerMetre) {
+    if (!landmark.footprint?.length) return approachAlong(path, landmark);
+    const start = path[0], lead = path[1];
+    const own = Number.isFinite(landmark.ownX) ? { x: landmark.ownX, y: landmark.ownY } : landmark;
+    const leadLength = Math.hypot(lead.x - start.x, lead.y - start.y) || 1;
+    const forward = ((own.x - start.x) * (lead.x - start.x) + (own.y - start.y) * (lead.y - start.y)) / leadLength;
+    if (forward < -DRIVE_BY_PASSED_BEHIND) return null;
+    return frontageAlong(path, landmark, pxPerMetre);
+  }
+  function pickDriveBy(candidates, path, alongOf = (c) => approachAlong(path, c)) {
     let chosen = null;
     let soonest = Infinity;
     for (const candidate of candidates) {
-      const along = approachAlong(path, candidate);
+      const along = alongOf(candidate);
       if (along !== null && along < soonest) {
         chosen = candidate;
         soonest = along;
@@ -7930,6 +7999,8 @@ ${register}` : detail,
             const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
             landmark.ownX = own.x;
             landmark.ownY = own.y;
+            const outline = footprintFromGeoJson(landmark.geojson?.features, ([lng, lat]) => toWorld([lat, lng]));
+            if (outline.length) landmark.footprint = outline;
           }
         }
         const landmarks = this.landmarks;
@@ -8044,7 +8115,10 @@ ${register}` : detail,
       const ahead = pathAhead(player, routePath);
       const reach = ahead.reduce((sum, point, i) => i ? sum + Math.hypot(point.x - ahead[i - 1].x, point.y - ahead[i - 1].y) : 0, 0) + DRIVE_BY_RADIUS;
       for (const landmark of this.landmarks) {
-        const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
+        const distance = Math.min(
+          Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y),
+          landmark.ownX === void 0 ? Infinity : Math.hypot(landmark.ownX - this.player.x, landmark.ownY - this.player.y)
+        );
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
         if (!isWorthACard(landmark)) continue;
@@ -8064,7 +8138,7 @@ ${register}` : detail,
         this._landmarkNoticeState.elapsed
       )) return;
       const approached = this._landmarkApproach?.landmark.id;
-      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead);
+      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead, (landmark) => landmarkApproachAlong(ahead, landmark, PIXELS_PER_METER));
       if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);

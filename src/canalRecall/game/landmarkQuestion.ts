@@ -10,6 +10,7 @@
 
 import type { WorldPoint } from './worldTypes';
 import { freeRideLandmarkQuizEnabled } from '../featureFlags';
+import { facesStreet, type FrontageLandmark } from './landmarkFrontage';
 
 /** Metres: how close the rider must be to the landmark's street point (its
  *  snap onto the network, `x`/`y`) to be asked about it. "Which building is
@@ -45,6 +46,8 @@ export interface QuestionLandmark extends WorldPoint {
   /** The building's own point, before the snap of `x`/`y` onto the network. */
   ownX?: number;
   ownY?: number;
+  /** The building's outline in world px (landmarkFrontage.ts). */
+  footprint?: FrontageLandmark['footprint'];
   /** The buurt the landmark stands in, when known. */
   hood?: string | null;
 }
@@ -85,13 +88,20 @@ export function ownPoint(landmark: WorldPoint & { ownX?: number; ownY?: number }
  *  alongside, not behind. Only then can "this" be told apart on screen. */
 export function besideLandmark(
   rider: QuestionRider,
-  landmark: WorldPoint & { ownX?: number; ownY?: number },
+  landmark: WorldPoint & FrontageLandmark,
   pxPerMetre: number,
 ): boolean {
-  if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
   const own = ownPoint(landmark);
   const distance = Math.hypot(own.x - rider.x, own.y - rider.y);
-  if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+  if (landmark.footprint?.length) {
+    // The building's own front is on the rider's street: within FRONTAGE_M of its outline. The
+    // street point may be the next street over (the Krijtberg snaps to the Herengracht, 26 m
+    // from its outline), and a big building's point is far from its front.
+    if (!facesStreet(rider, landmark, pxPerMetre)) return false;
+  } else {
+    if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
+    if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+  }
   return distance < pxPerMetre || offHeading(rider, own) <= LANDMARK_BESIDE_HALF_CONE;
 }
 
