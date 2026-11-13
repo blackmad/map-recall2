@@ -2812,3 +2812,54 @@ Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were
 tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
 reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
 photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).
+
+## §14 Structure prior: storeys and window columns with no reading (lane PR1, 2026-11-13, flag `?structurePrior=1`, default off)
+
+The wall-colour move (W1: a table fitted on measured walls) applied to shape. A generic pre-1945 pand with no HouseSpec
+storeys or bays draws the grid of the read houses most like it, instead of the style's nominal pitch with a per-building
+jitter (`threeBuildingMesh.ts` `layoutScale`: bay ×0.88–1.18, storey ×0.93–1.09).
+
+| Piece | Where |
+|---|---|
+| Node layout probe (the chunk house:preview builds, `layoutProbe` on; drawn storeys, upper columns, run width and exposed height, the planner's crown) | `scripts/house-line/structure/probe.ts` |
+| Scoreboard row: drawn vs the benchmark labels, exact match with n and a 95 % Wilson interval (`--labels` takes another label file) | `scripts/house-line/structure/baseline.ts` |
+| Training readings (block faces via `fromBlockFace`, belt/pilot/hand specs, read fields only) and the benchmark labels in one shape | `scripts/house-line/structure/dataset.ts` |
+| Neighbour agreement per field (party walls ≥ 2 m), by similarity and buurt family | `scripts/house-line/structure/neighbours.ts` |
+| Fit: 5-fold CV over 300 m blocks picks k and scales; writes the table | `scripts/house-line/structure/fit.ts --write` |
+| Neighbour rules leave-one-out, agreement per street group, per-group spread | `scripts/house-line/structure/rules.ts` |
+| Crown what-if (not wired) | `scripts/house-line/structure/crown.ts` |
+| Runtime: table, guess, flag | `src/canalRecall/houseSpec/structurePrior.ts`, `structure-prior.json`, test `structurePrior.test.ts` |
+
+### The model
+
+`structure-prior.json` holds the 1,437 read houses before 1945 that the fit kept: their location, build year, the exposed
+height and width of their street run as the mesher lays it, and their read storeys and upper window columns. Benchmark
+pands, and every training pand within 60 m of one, are held out.
+
+For a street run of a pand with a prior:
+- storeys = the most common count among the 25 nearest read houses, by distance √((Δyear/60)² + (Δheight/1 m)²) + metres apart / 2,000;
+- columns = the same over the 15 nearest, by √((Δyear/60)² + (Δwidth/0.3 m)²) + metres apart / 500;
+- a field gets no guess when no read house's height (or width) lies within 1.5 m (`SIZE_GAP_M`).
+
+The guess enters the mesher as a stated count does (`priorBays` → `frontageLayoutScale`, `axisUnitPlan`, the nearest
+storey fit), so the wall's clamps still apply.
+
+The prior is set only:
+- in the photo look;
+- before 1945, on canal/c19/school layouts;
+- with no spec storeys or bays;
+- not on landmark kits, large-tier fronts, front carriers or garden sheds.
+
+It does not act:
+- on a recipe front;
+- on a two-front corner (`streetCorner`);
+- above the ground.
+
+The worker reads the flag through `withWorkerFlags`.
+
+### Off is byte-identical
+
+With the flag off, `meshBuildingFor` sets no field. `structurePrior.test.ts` builds the chunk bytes with the flag unset
+and with `=0`. `odd-cells-hash.ts` over the 55 house-spec tiles (411,398 buildings): the all-hash off on this branch is `ce6c2ebacf13e95e`, the same as main at 04843f800.
+
+With the flag on over the same tiles, 115,489 buildings differ: walls +0.19 % vertices, extras −0.16 %, shell unchanged.
