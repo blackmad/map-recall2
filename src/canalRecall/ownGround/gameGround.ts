@@ -39,7 +39,7 @@ import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
-import { BuildRetries, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
+import { BuildRetries, groundEarlyWorkersFlag, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
@@ -65,7 +65,7 @@ import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
-import { groundShareFlag, groundShareMB } from './groundShare.js';
+import { groundShareFlag, groundShareMainFlag, groundShareMB, shareClient, type SharePort } from './groundShare.js';
 import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
@@ -553,22 +553,60 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) });
+    const storeOptions = { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) };
     this.ready = false;
-    if (!/\/amsterdam\/?$/.test(root)) return;
+    if (!/\/amsterdam\/?$/.test(root)) { this.store = new GroundStore(httpFetchBytes(root), storeOptions); return; }
+    // The workers start with the ground (groundEarlyWorkersFlag, lane LS): their own init runs alongside the page's
+    // store init and waits for the rail manifest the page hands them below. `?groundEarlyWorkers=0`: after it.
+    const early = groundEarlyWorkersFlag();
+    const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
+    const share = count > 1 && groundShareFlag();
+    // With early workers the page's store asks the share host too (groundShareMainFlag): one fetch per file in all.
+    const mainShare = early && share && groundShareMainFlag();
+    const channels = share && early ? this.startShareHost(root, count + (mainShare ? 1 : 0)) : [];
+    const mainPort = mainShare ? channels.pop()?.port1 ?? null : null;
+    this.store = new GroundStore(mainPort ? sharedBytes(mainPort) : httpFetchBytes(root), storeOptions);
+    const gen = this.gen;
+    if (early) this.startWorkers(root, true, count, channels);
     await this.store.init();
+    if (gen !== this.gen) return;
     this.startup.storeReadyAt ??= performance.now();
+    if (early && this.manifestFollows) { const keys = [...this.store.railCells]; for (const worker of this.workers) worker.postMessage({ type: 'rail-manifest', keys }); }
+    else if (!early) this.startWorkers(root, false, count, share ? this.startShareHost(root, count) : []);
+    if (!this.unregister) {
+      this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
+        visible: (zoom: number) => this.beforeRender(zoom),
+        onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
+        onContextRestored: () => this.contextRestored(),
+      }), { order: GROUND_ORDER });
+    }
+    this.ready = true;
+    this.residencyAt = null;
+    if (this.centre) this.updateResidency();
+  }
+
+  /** Lane LS: true while the workers' init waits for the page's rail manifest (a 'rail-manifest' message). */
+  private manifestFollows = false;
+
+  private startShareHost(root: string, clients: number): MessageChannel[] {
     try {
-      const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
-      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
-      const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
-      if (channels.length) {
-        this.shareHost = new Worker(this.opts.workerUrl);
-        this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
-        const ports = channels.map(c => c.port2);
-        this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
-      }
+      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per client to one more instance of the bundle.
+      const channels = Array.from({ length: clients }, () => new MessageChannel());
+      this.shareHost = new Worker(this.opts.workerUrl);
+      this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
+      const ports = channels.map(c => c.port2);
+      this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
+      return channels;
+    } catch (error) {
+      this.stats.errors.push(`share host unavailable: ${String(error)}`);
+      return [];
+    }
+  }
+
+  private startWorkers(root: string, early: boolean, count: number, channels: MessageChannel[]): void {
+    this.manifestFollows = early && this.railRetryOn && !!this.opts.rails;
+    try {
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? (early ? { railManifestFollows: true } : { railManifest: [...this.store.railCells] }) : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         const wi = i;
@@ -588,16 +626,6 @@ export class OwnGround {
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
-    if (!this.unregister) {
-      this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
-        visible: (zoom: number) => this.beforeRender(zoom),
-        onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
-        onContextRestored: () => this.contextRestored(),
-      }), { order: GROUND_ORDER });
-    }
-    this.ready = true;
-    this.residencyAt = null;
-    if (this.centre) this.updateResidency();
   }
 
   /**
@@ -1707,4 +1735,10 @@ export class OwnGround {
       rail: { manifest: this.store.railCells.size, workerManifest: this.workerRailCells, discards: { ...this.discards }, retrying: this.retries.size, loadErrors: this.store.loadErrors.slice(-5) },
     };
   }
+}
+
+/** The page store's fetch through the share host (lane LS): the same gunzipped bytes as httpFetchBytes. */
+function sharedBytes(port: MessagePort): (path: string) => Promise<Uint8Array> {
+  const get = shareClient(port as unknown as SharePort);
+  return async path => (await get(path)).bytes;
 }

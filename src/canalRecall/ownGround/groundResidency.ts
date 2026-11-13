@@ -38,6 +38,16 @@ export function railRetryFlag(query = search()): boolean {
   return !/[?&]railRetry=0\b/.test(query);
 }
 
+/**
+ * Ground workers start with the ground, not after the page's store has loaded (lane LS 2026-11-13): their bundle, their
+ * own extract fetches and their store init run alongside the page's store init, and the page hands them its rail
+ * manifest once it has it (#232 keeps one source of truth). Measured cold 2026-11-13: the workers were created 4 s after
+ * the ground bundle, then fetched bridges.json again before asking for any cell. `?groundEarlyWorkers=0`: the old order.
+ */
+export function groundEarlyWorkersFlag(query = search()): boolean {
+  return !/[?&]groundEarlyWorkers=0\b/.test(query);
+}
+
 /** `?groundRequeue=0`: a discarded install or a failed build waits for the next 60 m move (the build before #232). */
 export function groundRequeueFlag(query = search()): boolean {
   return !/[?&]groundRequeue=0\b/.test(query);

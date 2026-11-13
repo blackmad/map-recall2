@@ -35,6 +35,16 @@ export function groundShareFlag(search?: string): boolean {
   return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShare') === '1';
 }
 
+/**
+ * With early workers (groundResidency.ts groundEarlyWorkersFlag) the page's own store is one more share client, so
+ * bridges.json, houseboats.json and the manifests are fetched once in all, not once by the page and once by the host
+ * (lane LS 2026-11-13). `?groundShareMain=0`: the page fetches its own.
+ */
+export function groundShareMainFlag(search?: string): boolean {
+  const g = globalThis as { location?: { search?: string } };
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShareMain') !== '0';
+}
+
 /** The share host's cache in MB (`?groundShareMB=N`, 0–512), else SHARE_CACHE_MB. */
 export function groundShareMB(search?: string): number {
   const g = globalThis as { location?: { search?: string } };

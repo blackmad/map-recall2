@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { BuildRetries, groundCentre, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
+import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
 import { GroundStore } from './groundStore.ts';
 
 const RAIL = 'public/data/extracts/amsterdam/rail-v1';
@@ -99,4 +99,40 @@ test('a cell outside the rail manifest is absent without a fetch', async () => {
   assert.deepEqual(await store.railCell('40_40'), []);
   assert.equal(store.railOutcomes.get('40_40'), 'absent');
   assert.equal(calls(), 0);
+});
+
+test('?groundEarlyWorkers=0 keeps the old order (workers after the page store)', () => {
+  assert.equal(groundEarlyWorkersFlag(''), true);
+  assert.equal(groundEarlyWorkersFlag('?groundEarlyWorkers=0'), false);
+});
+
+// Early workers (lane LS 2026-11-13): a worker's init starts before the page has the rail manifest and takes it from a
+// later message. The store waits for it and never fetches rail-v1/cells.json itself; a null hand-off fetches it.
+async function initWith(manifest: PromiseLike<readonly string[] | null>) {
+  const fetched: string[] = [];
+  const store = new GroundStore(async path => {
+    fetched.push(path);
+    const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+    return path.endsWith('.gz') ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+  }, { railManifest: manifest, prepareOnly: true });
+  await store.init();
+  return { store, railFetches: fetched.filter(p => p.endsWith('cells.json') && p.includes('rail')) };
+}
+
+test('a rail manifest handed after init starts is the one the store uses, with no fetch of its own', async () => {
+  const keys = ['-2_-4', '0_0'];
+  let hand!: (k: string[]) => void;
+  const later = new Promise<string[]>(resolve => { hand = resolve; });
+  const pending = initWith(later);
+  await new Promise(r => setTimeout(r, 20));
+  hand(keys);
+  const { store, railFetches } = await pending;
+  assert.deepEqual([...store.railCells].sort(), [...keys].sort());
+  assert.deepEqual(railFetches, []);
+});
+
+test('a null hand-off: the store fetches the rail manifest itself', async () => {
+  const { store, railFetches } = await initWith(Promise.resolve(null));
+  assert.equal(railFetches.length, 1);
+  assert.ok(store.railCells.size > 0);
 });
