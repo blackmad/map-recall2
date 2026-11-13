@@ -52,6 +52,8 @@ export interface DuplicateRemoval {
 export const SAME_BUILDING_KM = 0.08;
 /** A part (tower, wing) further than this from its whole is its own place. */
 export const PART_OF_KM = 0.3;
+/** A Wikidata part-of (P361) folds only within this: Micropia at Artis, not a faculty across the street. */
+export const PART_OF_SAME_SITE_KM = 0.12;
 
 function kmApart(a: DedupeFeature, b: DedupeFeature): number {
   const p = (a.routeCenter ?? a.center) as readonly number[] | undefined;
@@ -82,7 +84,7 @@ export function articleKey(feature: Pick<DedupeFeature, 'wikipedia' | 'wikipedia
   return keys;
 }
 
-const STOP_WORDS = new Set(['the', 'de', 'het', 'a', 'van', 'of', 'amsterdam', 'museum', 'house', 'huis', 's', 'op', 'in', 'en', 'and']);
+const STOP_WORDS = new Set(['the', 'de', 'het', 'a', 'van', 'of', 'amsterdam', 'weesp', 'noord', 'zuid', 'oost', 'west', 'museum', 'house', 'huis', 's', 'op', 'in', 'en', 'and']);
 const PART_WORDS = /\b(toren|tower|spire|bell tower|klokkentoren)\b|toren$/;
 
 /** Where-it-is suffixes ("Het Lieverdje (Spui)") name the square, not the thing. */
@@ -130,7 +132,9 @@ function stem(name: string): string {
 
 /** Whether `part` names a tower of the building `whole` names (Westertoren / Westerkerk). */
 export function isComplexPart(part: DedupeFeature, whole: DedupeFeature): boolean {
-  if (part.wikidata && whole.wikidata && part.wikidataPartOf?.includes(whole.wikidata)) return kmApart(part, whole) <= PART_OF_KM;
+  // P361 also says "faculty of the university" and "academy of the arts
+  // school" a street away; only a part standing at the whole is one place.
+  if (part.wikidata && whole.wikidata && part.wikidataPartOf?.includes(whole.wikidata)) return kmApart(part, whole) <= PART_OF_SAME_SITE_KM;
   if (!PART_WORDS.test(normaliseAnswer(part.name)) || PART_WORDS.test(normaliseAnswer(whole.name))) return false;
   const s = stem(part.name);
   return !!s && s === stem(whole.name) && kmApart(part, whole) <= PART_OF_KM;
