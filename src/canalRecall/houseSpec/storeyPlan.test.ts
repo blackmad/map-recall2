@@ -205,3 +205,24 @@ test('a cornice or mansard front whose rows overfill the wall: rows at the top p
   // an attic front is not capped: its top row is wall
   assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', roofStorey: 'attic' })!.capped, undefined);
 });
+// Weteringschans 0363100012168043 (1870, c19), the reviewer's second pin (2026-11-13): a souterrain (cellar grilles at the
+// pavement), three rows and a mansard dormer. bag-facts eaves 10.0 m is a flat rear roof (frontEavesM drops it), so the
+// line is the mesher's 13.92 m wall: about 2.1 m + 3 x 3.7 m, the mansard roof, not a fourth wall row.
+const W168043 = { storeys: 3, souterrain: true, roofStorey: 'mansard' as const, period: 'c19' };
+
+test('168043: souterrain + 3 rows under a mansard fit about 2.1 m + 3 x 3.7 m; no fourth wall row', () => {
+  assert.equal(frontEavesM({ eavesM: 10, ridgeM: null, heightM: 16.52 }), null, 'the 10 m rear roof is not the front eaves');
+  for (const wallM of [13.9, 13.92]) {
+    const plan = storeyPlan({ ...W168043, wallM })!;
+    assert.ok(plan.ok); assert.equal(plan.roofRow, false, 'a mansard is roof');
+    assert.ok(Math.abs(plan.pitchM / 3.7 - 1) <= 0.15, `row ${plan.pitchM.toFixed(2)} m within 15 % of 3.7`);
+    assert.ok(Math.abs(plan.souterrainM - 2.1) <= 0.3, `souterrain ${plan.souterrainM.toFixed(2)} m about 2.1`);
+    const draw = storeyDraw(plan, 3, true, wallM) as { storeys: number; groundM: number; souterrain?: true; bandM?: number };
+    assert.deepEqual({ storeys: draw.storeys, souterrain: draw.souterrain, band: draw.bandM }, { storeys: 4, souterrain: true, band: undefined }, 'souterrain cell + 3 window rows');
+    const fit = specStoreyFit('c19', wallM, draw.storeys, 1, { fit: 'nearest', groundM: draw.groundM, groundMin: SPEC_SOUTERRAIN_GROUND_MIN })!;
+    const groundM = STYLE_DIMS.c19.ground * fit.ground, storeyM = STYLE_DIMS.c19.storey * fit.storey;
+    assert.ok(Math.abs((wallM - groundM) / storeyM - 3) < 1e-6, 'layoutWall rounds to three upper rows');
+  }
+  // the same front with the souterrain dropped (the cut read before D1 29b2236b5) is A+fit's stretch: capped only under a crown
+  assert.equal(storeyPlan({ storeys: 3, wallM: 13.92, period: 'c19' })!.ok, false);
+});
