@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-09T22:30:36.897Z",
+ "generatedAt": "2026-11-13T05:30:22.896Z",
  "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
  "items": [
   {
@@ -23,7 +23,7 @@
      "already drawn by a placed model or catalogue entry"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -46,7 +46,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -69,7 +69,7 @@
      "built 1665 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -92,7 +92,7 @@
      "built 1899 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -114,7 +114,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -195,7 +195,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 0.7,
@@ -228,7 +228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -256,7 +256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -356,7 +356,7 @@
      "3 judgeable street walls: w02 punched, w04 curtain, w05 ribbon"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -384,7 +384,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -509,7 +509,7 @@
      "w05 (Albardakade, 16 m): foliage 28 % > 25 %; washed out 39 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -616,7 +616,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -714,7 +714,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -736,7 +736,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -764,7 +764,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -869,7 +869,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -978,7 +978,7 @@
      "w04 (Johan Greivestraat, 12 m): washed out 46 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1099,7 +1099,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1200,7 +1200,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1228,7 +1228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1256,7 +1256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1382,7 +1382,7 @@
      "w12 (Osdorpplein, 11 m): washed out 50 % > 30 %; crop 2017 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1410,7 +1410,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1438,7 +1438,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1460,7 +1460,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1488,7 +1488,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1521,7 +1521,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1543,7 +1543,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1571,7 +1571,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1595,7 +1595,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1675,7 +1675,7 @@
      "w03 (Derde Oosterparkstraat, 22 m): obliquity 53 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1699,7 +1699,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1721,7 +1721,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1743,7 +1743,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1869,7 +1869,7 @@
      "w08 (Bijdorpstraat, 17 m): washed out 58 % > 30 %; obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1916,7 +1916,7 @@
      "w11 (Kramatweg, 9 m): washed out 33 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -1957,7 +1957,7 @@
      "w12 (Plantage Lepellaan, 9 m): crop 2021 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2088,7 +2088,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2207,7 +2207,7 @@
      "w09 (Zeeburgerdijk, 19 m): foliage 25 % > 25 %; obliquity 49 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2335,7 +2335,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2367,7 +2367,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2401,7 +2401,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2435,7 +2435,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2470,7 +2470,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2502,7 +2502,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2538,7 +2538,7 @@
      "3 judgeable street walls: w01 columns, w02 punched, w03 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -2630,7 +2630,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2662,7 +2662,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2700,7 +2700,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2736,7 +2736,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2768,7 +2768,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2788,22 +2788,24 @@
    ],
    "status": "crops",
    "house": "pand-247112",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:07:19.473Z",
    "notes": [
-    "2026-10-23T21:07 crops: 6 usable walls in 13 s"
+    "2026-10-23T21:07 crops: 6 usable walls in 13 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:07:32.209Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Gustav Mahlerlaan, 60 m): foliage 38 % > 25 %; washed out 46 % > 30 %",
-     "w03 (Clara Schumannstraat, 45 m): washed out 60 % > 30 %",
-     "w04 (Parnassusweg, 45 m): washed out 82 % > 30 %"
+     "height 47.5 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
+     "w03 (Clara Schumannstraat, 45 m) reads columns with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower",
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -2839,7 +2841,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2871,7 +2873,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2905,7 +2907,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2942,7 +2944,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -2976,7 +2978,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3051,7 +3053,7 @@
      "built 1899 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3086,7 +3088,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3106,20 +3108,20 @@
    ],
    "status": "crops",
    "house": "pand-128727",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:10:40.691Z",
    "notes": [
-    "2026-10-23T21:10 crops: 6 usable walls in 12 s"
+    "2026-10-23T21:10 crops: 6 usable walls in 12 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:10:52.724Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Papaverweg, 39 m): foliage 27 % > 25 %"
+     "3 judgeable street walls: w02 punched, w03 punched, w04 columns"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3204,7 +3206,7 @@
      "built 1872 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3224,10 +3226,11 @@
    ],
    "status": "crops",
    "house": "pand-151539",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:11:08.685Z",
    "notes": [
-    "2026-10-23T21:11 crops: 13 usable walls in 7 s"
+    "2026-10-23T21:11 crops: 13 usable walls in 7 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:11:15.196Z",
    "triage": {
@@ -3236,7 +3239,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3256,10 +3259,11 @@
    ],
    "status": "crops",
    "house": "pand-571499",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:11:15.197Z",
    "notes": [
-    "2026-10-23T21:11 crops: 5 usable walls in 16 s"
+    "2026-10-23T21:11 crops: 5 usable walls in 16 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:11:30.889Z",
    "triage": {
@@ -3271,7 +3275,7 @@
      "w04 (Meester Treublaan, 53 m): crop 2021 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3305,7 +3309,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3339,7 +3343,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.6,
@@ -3383,7 +3387,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3419,7 +3423,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3453,7 +3457,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3482,13 +3486,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Prinses Irenestraat, 68 m) reads columns with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w01 (Prinses Irenestraat, 68 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "wall family unresolved but a measured tint on w01 (paint): the kit draws it (walls[].wallFamily)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3517,13 +3521,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w01 (Poeldijkstraat, 62 m) storey 6 has a 9.4 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "w01 (Poeldijkstraat, 62 m) storey 6 has a 13.5 m ribbon over punched windows on storey 5: bands (balconies, ribbons, a shopfront strip)",
      "w08 (Rijswijkstraat, 17 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3543,21 +3547,20 @@
    ],
    "status": "crops",
    "house": "pand-153698",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:16:31.346Z",
    "notes": [
-    "2026-10-23T21:17 crops: 18 usable walls in 49 s"
+    "2026-10-23T21:17 crops: 18 usable walls in 49 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:17:20.167Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Majoie Hajarystraat, 62 m): washed out 53 % > 30 %",
-     "w11 (Parnassusweg, 10 m): washed out 85 % > 30 %"
+     "7 judgeable street walls: w02 punched, w03 punched, w04 punched, w07 punched, w10 punched, w11 columns, w12 columns"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3589,7 +3592,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3609,23 +3612,23 @@
    ],
    "status": "crops",
    "house": "pand-246191",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:19:36.228Z",
    "notes": [
-    "2026-10-23T21:19 crops: 13 usable walls in 16 s"
+    "2026-10-23T21:19 crops: 13 usable walls in 16 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:19:52.526Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)",
-     "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Haarlemmerweg, 73 m): no crop",
+     "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w03 (Haarlemmerweg, 47 m): no crop",
      "w07 (Haarlemmerweg, 28 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3738,7 +3741,7 @@
      "built 1890 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3777,7 +3780,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -3867,21 +3870,23 @@
    ],
    "status": "crops",
    "house": "pand-240368",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:21:14.277Z",
    "notes": [
-    "2026-10-23T21:21 crops: 5 usable walls in 16 s"
+    "2026-10-23T21:21 crops: 5 usable walls in 16 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:21:30.343Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)",
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Jan van Galenstraat, 56 m): foliage 31 % > 25 %"
+     "w03 (Jan van Galenstraat, 56 m) storey 5 has a 16.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
+     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -3901,10 +3906,11 @@
    ],
    "status": "crops",
    "house": "pand-088496",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:21:30.344Z",
    "notes": [
-    "2026-10-23T21:22 crops: 13 usable walls in 32 s"
+    "2026-10-23T21:22 crops: 13 usable walls in 32 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:22:02.747Z",
    "triage": {
@@ -3915,7 +3921,7 @@
      "w03 (Plesostraat, 38 m): washed out 31 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3944,14 +3950,13 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w02 (Groningenstraat, 141 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w03 (De Boelelaan, 70 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "w04 (De Boelelaan, 70 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -3987,7 +3992,7 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4007,20 +4012,20 @@
    ],
    "status": "crops",
    "house": "pand-240382",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:23:55.311Z",
    "notes": [
-    "2026-10-23T21:24 crops: 10 usable walls in 30 s"
+    "2026-10-23T21:24 crops: 10 usable walls in 30 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:24:25.449Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Laan van Spartaan, 16 m): foliage 59 % > 25 %"
+     "5 judgeable street walls: w01 punched, w02 punched, w03 columns, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4057,7 +4062,7 @@
      "4 judgeable street walls: w02 punched, w08 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -4149,7 +4154,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4184,7 +4189,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4204,24 +4209,22 @@
    ],
    "status": "crops",
    "house": "pand-250187",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:26:09.541Z",
    "notes": [
-    "2026-10-23T21:26 crops: 10 usable walls in 22 s"
+    "2026-10-23T21:26 crops: 10 usable walls in 22 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:26:31.666Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "1 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Revaleiland, 55 m): washed out 31 % > 30 %",
+     "4 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w02 (Revaleiland, 32 m): washed out 38 % > 30 %",
-     "w06 (Revaleiland, 19 m): washed out 55 % > 30 %",
-     "w07 (Revaleiland, 13 m): washed out 54 % > 30 %; crop 2017 predates the 2019 building",
      "w08 (Revaleiland, 12 m): washed out 58 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4241,10 +4244,11 @@
    ],
    "status": "crops",
    "house": "pand-064800",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:26:31.666Z",
    "notes": [
-    "2026-10-23T21:26 crops: 12 usable walls in 24 s"
+    "2026-10-23T21:26 crops: 12 usable walls in 24 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:26:55.768Z",
    "triage": {
@@ -4255,11 +4259,11 @@
      "w03 (Schoenerstraat, 33 m): foliage 34 % > 25 %",
      "w04 (Schoenerstraat, 33 m): foliage 28 % > 25 %; washed out 37 % > 30 %",
      "w07 (Schoenerstraat, 26 m): washed out 70 % > 30 %",
-     "w08 (Barkpad, 20 m): foliage 40 % > 25 %; obliquity 51 deg > 45",
+     "w08 (Barkpad, 20 m): foliage 79 % > 25 %",
      "w10 (Schoenerstraat, 18 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4279,20 +4283,22 @@
    ],
    "status": "crops",
    "house": "pand-252166",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:26:55.769Z",
    "notes": [
-    "2026-10-23T21:26 crops: 1 usable walls in 3 s"
+    "2026-10-23T21:26 crops: 1 usable walls in 3 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:26:59.240Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Jan van Galenstraat, 14 m): foliage 30 % > 25 %"
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Jan van Galenstraat, 14 m)100 % of 14 m of street wall (w01): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -4312,21 +4318,20 @@
    ],
    "status": "crops",
    "house": "pand-249707",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:26:59.241Z",
    "notes": [
-    "2026-10-23T21:27 crops: 13 usable walls in 36 s"
+    "2026-10-23T21:27 crops: 13 usable walls in 36 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:27:35.044Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w05 (Wiborgeiland, 16 m): washed out 64 % > 30 %; crop 2017 predates the 2020 building",
-     "w08 (Stettineiland, 12 m): washed out 33 % > 30 %; obliquity 47 deg > 45; crop 2020 predates the 2020 building"
+     "8 judgeable street walls: w02 punched, w03 punched, w04 punched, w05 punched, w06 punched, w07 punched, w08 punched, w09 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4346,22 +4351,22 @@
    ],
    "status": "crops",
    "house": "pand-085366",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:28:21.960Z",
    "notes": [
-    "2026-10-23T21:28 crops: 16 usable walls in 27 s"
+    "2026-10-23T21:28 crops: 16 usable walls in 27 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:28:48.748Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w05 (paint): the kit draws it (walls[].wallFamily)",
-     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Burgemeester Röellstraat, 39 m): washed out 35 % > 30 %",
-     "w10 (Burgemeester Hogguerstraat, 21 m): foliage 47 % > 25 %"
+     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w04 (Burgemeester Röellstraat, 39 m): washed out 53 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4381,22 +4386,22 @@
    ],
    "status": "crops",
    "house": "pand-184746",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:28:48.748Z",
    "notes": [
-    "2026-10-23T21:29 crops: 17 usable walls in 31 s"
+    "2026-10-23T21:29 crops: 17 usable walls in 31 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:29:20.236Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w05 (paint): the kit draws it (walls[].wallFamily)",
-     "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Winthontstraat, 79 m): obliquity 46 deg > 45",
-     "w04 (Westerdoksdijk, 49 m): no crop"
+     "7 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Winthontstraat, 79 m): obliquity 46 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4416,20 +4421,20 @@
    ],
    "status": "crops",
    "house": "pand-142901",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:29:20.236Z",
    "notes": [
-    "2026-10-23T21:29 crops: 9 usable walls in 19 s"
+    "2026-10-23T21:29 crops: 9 usable walls in 19 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:29:39.490Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Fred. Roeskestraat, 38 m): obliquity 46 deg > 45"
+     "5 judgeable street walls: w02 punched, w03 punched, w04 punched, w05 punched, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4463,7 +4468,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4483,24 +4488,21 @@
    ],
    "status": "crops",
    "house": "pand-254400",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:30:21.353Z",
    "notes": [
-    "2026-10-23T21:31 crops: 16 usable walls in 48 s"
+    "2026-10-23T21:31 crops: 16 usable walls in 48 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:31:09.467Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Ottho Heldringstraat, 30 m): washed out 32 % > 30 %; crop 2024 predates the 2024 building",
-     "w05 (Ottho Heldringstraat, 30 m): foliage 28 % > 25 %",
-     "w07 (Ottho Heldringstraat, 14 m): washed out 44 % > 30 %; crop 2022 predates the 2024 building",
-     "w08 (Ottho Heldringstraat, 13 m): washed out 40 % > 30 %; crop 2016 predates the 2024 building",
-     "w10 (Ottho Heldringstraat, 9 m): washed out 77 % > 30 %; crop 2022 predates the 2024 building"
+     "wall family unresolved but a measured tint on w07 (paint): the kit draws it (walls[].wallFamily)",
+     "5 judgeable street walls: w04 punched, w05 punched, w07 punched, w08 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4538,7 +4540,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -4664,7 +4666,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4684,10 +4686,11 @@
    ],
    "status": "crops",
    "house": "pand-093150",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:32:18.165Z",
    "notes": [
-    "2026-10-23T21:32 crops: 7 usable walls in 22 s"
+    "2026-10-23T21:32 crops: 7 usable walls in 22 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:32:40.096Z",
    "triage": {
@@ -4698,7 +4701,7 @@
      "w04 (Stellingweg, 10 m): crop 2018 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4718,24 +4721,23 @@
    ],
    "status": "crops",
    "house": "pand-253656",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:32:40.097Z",
    "notes": [
-    "2026-10-23T21:33 crops: 7 usable walls in 21 s"
+    "2026-10-23T21:33 crops: 7 usable walls in 21 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:33:01.471Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Rozenoordpad, 97 m): washed out 72 % > 30 %; crop 2022 predates the 2023 building",
-     "w02 (Gelrestraat, 73 m): washed out 40 % > 30 %",
-     "w03 (De Groene Zoom, 32 m): crop 2023 predates the 2023 building",
-     "w04 (Rozenoordpad, 32 m): washed out 84 % > 30 %; crop 2017 predates the 2023 building",
-     "w05 (Gelrestraat, 25 m): washed out 95 % > 30 %; crop 2020 predates the 2023 building"
+     "w01 (Rozenoordpad, 97 m) reads curtain without floor bands",
+     "w03 (De Groene Zoom, 32 m) reads curtain without floor bands"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "curtain"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -4755,20 +4757,20 @@
    ],
    "status": "crops",
    "house": "pand-105724",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:33:01.471Z",
    "notes": [
-    "2026-10-23T21:33 crops: 8 usable walls in 22 s"
+    "2026-10-23T21:33 crops: 8 usable walls in 22 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:33:23.205Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Elckerlijcstraat, 88 m): washed out 34 % > 30 %"
+     "4 judgeable street walls: w01 punched, w02 punched, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4788,21 +4790,20 @@
    ],
    "status": "crops",
    "house": "pand-237537",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:33:23.206Z",
    "notes": [
-    "2026-10-23T21:33 crops: 11 usable walls in 29 s"
+    "2026-10-23T21:33 crops: 11 usable walls in 29 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:33:52.182Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Rijswijkstraat, 32 m): washed out 61 % > 30 %; obliquity 53 deg > 45",
-     "w06 (Rijswijkstraat, 24 m): washed out 52 % > 30 %"
+     "3 judgeable street walls: w01 punched, w03 punched, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4822,20 +4823,20 @@
    ],
    "status": "crops",
    "house": "pand-133123",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:33:52.183Z",
    "notes": [
-    "2026-10-23T21:34 crops: 12 usable walls in 30 s"
+    "2026-10-23T21:34 crops: 12 usable walls in 30 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:34:22.514Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w07 (Nieuwe Purmerweg, 19 m): foliage 49 % > 25 %"
+     "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4869,7 +4870,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4889,10 +4890,11 @@
    ],
    "status": "crops",
    "house": "pand-254687",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:35:27.399Z",
    "notes": [
-    "2026-10-23T21:35 crops: 9 usable walls in 29 s"
+    "2026-10-23T21:35 crops: 9 usable walls in 29 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:35:56.817Z",
    "triage": {
@@ -4905,7 +4907,7 @@
      "w05 (Grasweg, 20 m): crop 2024 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4939,7 +4941,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4973,7 +4975,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -4993,21 +4995,21 @@
    ],
    "status": "crops",
    "house": "pand-093716",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:37:16.749Z",
    "notes": [
-    "2026-10-23T21:37 crops: 16 usable walls in 28 s"
+    "2026-10-23T21:37 crops: 16 usable walls in 28 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:37:44.345Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
      "wall family unresolved but a measured tint on w08 (paint): the kit draws it (walls[].wallFamily)",
-     "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w11 (Kimpoweg, 15 m): obliquity 50 deg > 45"
+     "6 judgeable street walls: w03 punched, w04 punched, w05 punched, w07 punched, w08 punched, w11 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5027,22 +5029,21 @@
    ],
    "status": "crops",
    "house": "pand-076543",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:37:44.346Z",
    "notes": [
-    "2026-10-23T21:38 crops: 16 usable walls in 32 s"
+    "2026-10-23T21:38 crops: 16 usable walls in 32 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:38:16.684Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "3 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Jacob Obrechtplein, 26 m): obliquity 54 deg > 45",
-     "w05 (Bartholomeus Ruloffsstraat, 22 m): washed out 56 % > 30 %",
+     "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w07 (Bartholomeus Ruloffsstraat, 22 m): washed out 54 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5074,7 +5075,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5109,7 +5110,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5141,7 +5142,7 @@
      "rijksmonument: ornament carries the likeness"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5161,10 +5162,11 @@
    ],
    "status": "crops",
    "house": "pand-150568",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:39:28.418Z",
    "notes": [
-    "2026-10-23T21:39 crops: 15 usable walls in 24 s"
+    "2026-10-23T21:39 crops: 15 usable walls in 24 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:39:52.684Z",
    "triage": {
@@ -5172,10 +5174,10 @@
     "reasons": [
      "w10 (Distelkade, 14 m) reads punched with a ribbon on storey 2: the kit draws windows under it (bands, balconies, a shopfront strip); short wall: noted, not a gap",
      "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Distelkade, 42 m): foliage 49 % > 25 %"
+     "w04 (Distelkade, 42 m): foliage 58 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5214,7 +5216,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5325,24 +5327,22 @@
    ],
    "status": "crops",
    "house": "pand-249726",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:40:06.145Z",
    "notes": [
-    "2026-10-23T21:40 crops: 11 usable walls in 28 s"
+    "2026-10-23T21:40 crops: 11 usable walls in 28 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:40:34.564Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Buikslotermeerplein, 45 m): washed out 34 % > 30 %",
-     "w03 (Buikslotermeerplein, 22 m): washed out 91 % > 30 %; crop 2017 predates the 2020 building",
-     "w04 (Buikslotermeerplein, 16 m): crop 2020 predates the 2020 building",
-     "w05 (Buikslotermeerplein, 16 m): washed out 90 % > 30 %; crop 2018 predates the 2020 building",
-     "w06 (Buikslotermeerplein, 9 m): washed out 35 % > 30 %"
+     "w05 (Buikslotermeerplein, 16 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -5364,19 +5364,19 @@
    "house": "ledenberch-38-243844",
    "notes": [
     "authored recipe houses/ledenberch-38-243844 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T21:40 crops: 6 usable walls in 13 s"
+    "2026-10-23T21:40 crops: 6 usable walls in 13 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:40:34.564Z",
    "updatedAt": "2026-10-23T21:40:47.374Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Gillis van Ledenberchstraat, 48 m): washed out 39 % > 30 %"
+     "2 judgeable street walls: w02 punched, w03 columns"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5410,7 +5410,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5430,23 +5430,22 @@
    ],
    "status": "crops",
    "house": "pand-253954",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:41:04.479Z",
    "notes": [
-    "2026-10-23T21:41 crops: 10 usable walls in 17 s"
+    "2026-10-23T21:41 crops: 10 usable walls in 17 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:41:21.087Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Heathrowstraat, 17 m): no crop",
-     "w05 (Heathrowstraat, 16 m): washed out 72 % > 30 %; crop 2019 predates the 2024 building",
-     "w06 (Heathrowstraat, 14 m): crop 2018 predates the 2024 building",
-     "w07 (Heathrowstraat, 10 m): washed out 99 % > 30 %; crop 2019 predates the 2024 building"
+     "height 55.9 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -5480,7 +5479,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5518,7 +5517,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5632,10 +5631,11 @@
    ],
    "status": "crops",
    "house": "pand-119117",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:42:01.655Z",
    "notes": [
-    "2026-10-23T21:42 crops: 2 usable walls in 8 s"
+    "2026-10-23T21:42 crops: 2 usable walls in 8 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:42:09.547Z",
    "triage": {
@@ -5644,7 +5644,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5664,20 +5664,21 @@
    ],
    "status": "crops",
    "house": "pand-067917",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:42:09.547Z",
    "notes": [
-    "2026-10-23T21:42 crops: 8 usable walls in 23 s"
+    "2026-10-23T21:42 crops: 8 usable walls in 23 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:42:32.179Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w06 (Transformatorweg, 18 m): washed out 46 % > 30 %"
+     "front class unmeasured on some judgeable walls (no measurement)",
+     "5 judgeable street walls: w02 ?, w03 ?, w04 columns, w05 punched, w06 columns"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5697,10 +5698,11 @@
    ],
    "status": "crops",
    "house": "pand-061212",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:42:32.180Z",
    "notes": [
-    "2026-10-23T21:42 crops: 8 usable walls in 21 s"
+    "2026-10-23T21:42 crops: 8 usable walls in 21 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:42:53.044Z",
    "triage": {
@@ -5709,7 +5711,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5744,7 +5746,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5780,7 +5782,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5816,7 +5818,7 @@
      "3 judgeable street walls: w02 ribbon, w03 ribbon, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5913,20 +5915,20 @@
    ],
    "status": "crops",
    "house": "pand-216927",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:44:51.634Z",
    "notes": [
-    "2026-10-23T21:44 crops: 6 usable walls in 3 s"
+    "2026-10-23T21:44 crops: 6 usable walls in 3 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:44:54.792Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Skûtsjespad, 40 m): foliage 27 % > 25 %"
+     "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5958,7 +5960,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -5978,23 +5980,22 @@
    ],
    "status": "crops",
    "house": "pand-252015",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:45:14.744Z",
    "notes": [
-    "2026-10-23T21:45 crops: 8 usable walls in 20 s"
+    "2026-10-23T21:45 crops: 8 usable walls in 20 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:45:34.852Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Delflandlaan, 51 m): no crop",
-     "w04 (Rijnlandlaan, 34 m): foliage 32 % > 25 %; washed out 56 % > 30 %; crop 2016 predates the 2020 building",
-     "w05 (Rijnlandlaan, 16 m): washed out 86 % > 30 %; crop 2018 predates the 2020 building",
-     "w06 (Delflandlaan, 14 m): no crop"
+     "w05 (Rijnlandlaan, 16 m) reads curtain without floor bands"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "curtain"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -6014,20 +6015,20 @@
    ],
    "status": "crops",
    "house": "pand-095578",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:45:34.854Z",
    "notes": [
-    "2026-10-23T21:46 crops: 9 usable walls in 25 s"
+    "2026-10-23T21:46 crops: 9 usable walls in 25 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:46:00.009Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Burgemeester Hogguerstraat, 24 m): obliquity 51 deg > 45"
+     "3 judgeable street walls: w02 ribbon, w03 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6047,21 +6048,21 @@
    ],
    "status": "crops",
    "house": "pand-061961",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:46:00.010Z",
    "notes": [
-    "2026-10-23T21:46 crops: 16 usable walls in 30 s"
+    "2026-10-23T21:46 crops: 16 usable walls in 30 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:46:30.100Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w07 (Borneokade, 21 m): washed out 36 % > 30 %",
-     "w08 (Borneokade, 20 m): washed out 43 % > 30 %"
+     "6 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w07 (Borneokade, 21 m): washed out 36 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6096,7 +6097,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6130,7 +6131,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6164,7 +6165,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6198,7 +6199,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6218,10 +6219,11 @@
    ],
    "status": "crops",
    "house": "pand-154521",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:48:05.733Z",
    "notes": [
-    "2026-10-23T21:48 crops: 16 usable walls in 29 s"
+    "2026-10-23T21:48 crops: 16 usable walls in 29 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:48:34.274Z",
    "triage": {
@@ -6230,7 +6232,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6250,22 +6252,22 @@
    ],
    "status": "crops",
    "house": "pand-244546",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:48:34.275Z",
    "notes": [
-    "2026-10-23T21:48 crops: 8 usable walls in 23 s"
+    "2026-10-23T21:48 crops: 8 usable walls in 23 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:48:57.018Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "2 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Peter Schatstraat, 54 m): washed out 79 % > 30 %",
-     "w02 (George Gershwinlaan, 45 m): washed out 69 % > 30 %",
-     "w05 (Leonard Bernsteinstraat, 15 m): washed out 64 % > 30 %"
+     "w01 (Peter Schatstraat, 54 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -6297,7 +6299,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6317,22 +6319,22 @@
    ],
    "status": "crops",
    "house": "pand-104501",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:49:38.841Z",
    "notes": [
-    "2026-10-23T21:50 crops: 14 usable walls in 23 s"
+    "2026-10-23T21:50 crops: 14 usable walls in 23 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:50:02.238Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Sibogastraat, 29 m): foliage 32 % > 25 %",
-     "w06 (Celebesstraat, 25 m): washed out 46 % > 30 %",
-     "w09 (Sibogastraat, 23 m): foliage 29 % > 25 %"
+     "w06 (Celebesstraat, 25 m) storey 2 has a 8.3 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -6366,7 +6368,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6395,12 +6397,12 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
+     "w07 (Cornelis Lelyplein, 20 m) storey 8 has a 12.9 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)"
     ],
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6436,7 +6438,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6456,10 +6458,11 @@
    ],
    "status": "crops",
    "house": "pand-245338",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:51:28.244Z",
    "notes": [
-    "2026-10-23T21:51 crops: 7 usable walls in 17 s"
+    "2026-10-23T21:51 crops: 7 usable walls in 17 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:51:45.660Z",
    "triage": {
@@ -6468,7 +6471,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6506,7 +6509,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -6576,21 +6579,21 @@
    ],
    "status": "crops",
    "house": "pand-250607",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:51:51.111Z",
    "notes": [
-    "2026-10-23T21:52 crops: 7 usable walls in 16 s"
+    "2026-10-23T21:52 crops: 7 usable walls in 16 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:52:06.811Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (George Gershwinlaan, 44 m): washed out 74 % > 30 %; obliquity 48 deg > 45",
-     "w05 (Rosy Wertheimstraat, 14 m): washed out 83 % > 30 %"
+     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (George Gershwinlaan, 44 m): washed out 62 % > 30 %; camera 6.3 m < 8 m from a 44 m wall"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6624,7 +6627,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6658,7 +6661,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6678,22 +6681,23 @@
    ],
    "status": "crops",
    "house": "pand-249646",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:53:46.787Z",
    "notes": [
-    "2026-10-23T21:54 crops: 8 usable walls in 22 s"
+    "2026-10-23T21:54 crops: 8 usable walls in 22 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:54:08.766Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Molukkenstraat, 110 m): foliage 38 % > 25 %; crop 2019 predates the 2020 building",
-     "w03 (Madurastraat, 35 m): camera 7.9 m < 8 m from a 35 m wall; crop 2019 predates the 2020 building",
-     "w04 (Billitonstraat, 35 m): crop 2016 predates the 2020 building"
+     "w02 (Molukkenstraat, 110 m) storey 3 has a 35.5 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
+     "w04 (Billitonstraat, 35 m) storey 1 has a 9.8 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -6733,7 +6737,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -6842,10 +6846,11 @@
    ],
    "status": "crops",
    "house": "pand-243737",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:54:17.554Z",
    "notes": [
-    "2026-10-23T21:54 crops: 2 usable walls in 6 s"
+    "2026-10-23T21:54 crops: 2 usable walls in 6 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:54:23.397Z",
    "triage": {
@@ -6854,7 +6859,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6890,7 +6895,7 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6910,22 +6915,22 @@
    ],
    "status": "crops",
    "house": "pand-240148",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:54:52.628Z",
    "notes": [
-    "2026-10-23T21:55 crops: 11 usable walls in 22 s"
+    "2026-10-23T21:55 crops: 11 usable walls in 22 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:55:14.889Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "2 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (De Boelelaan, 34 m): washed out 43 % > 30 %",
-     "w02 (Gustav Mahlerlaan, 30 m): obliquity 53 deg > 45",
-     "w07 (Gustav Mahlerlaan, 9 m): washed out 96 % > 30 %"
+     "w02 (Gustav Mahlerlaan, 30 m) reads punched with a ribbon on storey 2, 5, 6: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -6945,20 +6950,20 @@
    ],
    "status": "crops",
    "house": "pand-121704",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:55:14.889Z",
    "notes": [
-    "2026-10-23T21:55 crops: 7 usable walls in 17 s"
+    "2026-10-23T21:55 crops: 7 usable walls in 17 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:55:31.568Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Hobbemakade, 18 m): foliage 46 % > 25 %"
+     "5 judgeable street walls: w01 punched, w02 ribbon, w03 punched, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -6978,20 +6983,20 @@
    ],
    "status": "crops",
    "house": "pand-243287",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:55:31.569Z",
    "notes": [
-    "2026-10-23T21:55 crops: 13 usable walls in 23 s"
+    "2026-10-23T21:55 crops: 13 usable walls in 23 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:55:54.513Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w05 (De Boelelaan, 21 m): obliquity 54 deg > 45; crop 2017 predates the 2021 building"
+     "5 judgeable street walls: w03 punched, w05 columns, w06 punched, w07 punched, w08 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7011,22 +7016,23 @@
    ],
    "status": "crops",
    "house": "pand-144991",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:55:54.514Z",
    "notes": [
-    "2026-10-23T21:56 crops: 17 usable walls in 31 s"
+    "2026-10-23T21:56 crops: 17 usable walls in 31 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:56:25.647Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "wall family unresolved but a measured tint on w05 (paint): the kit draws it (walls[].wallFamily)",
-     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Krelis Louwenstraat, 39 m): foliage 55 % > 25 %",
-     "w11 (Krelis Louwenstraat, 20 m): foliage 38 % > 25 %"
+     "w04 (Krelis Louwenstraat, 39 m) reads curtain without floor bands",
+     "wall family unresolved but a measured tint on w05 (paint): the kit draws it (walls[].wallFamily)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "curtain"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -7062,7 +7068,7 @@
      "2 judgeable street walls: w01 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -7127,9 +7133,10 @@
    "status": "crops",
    "house": "haarlemmerweg-518",
    "notes": [
-    "authored recipe houses/haarlemmerweg-518 exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/haarlemmerweg-518 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:56:45.845Z",
    "updatedAt": "2026-10-23T21:56:45.847Z",
    "triage": {
@@ -7139,10 +7146,10 @@
      "cE-89-00115 (Haarlemmerweg, 24 m): foliage 54 % > 25 %; obliquity 50 deg > 45",
      "cS-179-00122 (Haarlemmerweg, 33 m): foliage 48 % > 25 %; washed out 46 % > 30 %",
      "cW-269-00140 (Haarlemmerweg, 24 m): foliage 45 % > 25 %; obliquity 48 deg > 45",
-     "w01 (Haarlemmerweg, 16 m): obliquity 49 deg > 45; crop 2022 predates the 2023 building"
+     "w01 (Haarlemmerweg, 16 m): foliage 37 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7162,22 +7169,22 @@
    ],
    "status": "crops",
    "house": "pand-127804",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:56:45.847Z",
    "notes": [
-    "2026-10-23T21:57 crops: 17 usable walls in 25 s"
+    "2026-10-23T21:57 crops: 17 usable walls in 25 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:57:11.105Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Spaarndammerdijk, 49 m): foliage 26 % > 25 %",
-     "w07 (Spaarndammerdijk, 24 m): washed out 48 % > 30 %; obliquity 50 deg > 45",
+     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Spaarndammerdijk, 49 m): foliage 46 % > 25 %",
      "w08 (Spaarndammerdijk, 23 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7211,7 +7218,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7231,20 +7238,21 @@
    ],
    "status": "crops",
    "house": "pand-245324",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:57:35.734Z",
    "notes": [
-    "2026-10-23T21:57 crops: 4 usable walls in 11 s"
+    "2026-10-23T21:57 crops: 4 usable walls in 11 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T21:57:46.475Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Fred. Roeskestraat, 28 m): washed out 45 % > 30 %"
+     "w02 (Fred. Roeskestraat, 28 m): crop 2017 predates the 2017 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7264,22 +7272,21 @@
    ],
    "status": "crops",
    "house": "pand-151987",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:57:46.476Z",
    "notes": [
-    "2026-10-23T21:58 crops: 8 usable walls in 18 s"
+    "2026-10-23T21:58 crops: 8 usable walls in 18 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T21:58:04.755Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Burgemeester Rendorpstraat, 13 m): no crop",
-     "w04 (Burgemeester Hogguerstraat, 12 m): foliage 28 % > 25 %",
-     "w05 (Noordzijde, 12 m): foliage 76 % > 25 %"
+     "w04 (12 m, short) reads curtain: noted, not a gap",
+     "4 judgeable street walls: w02 punched, w03 punched, w04 curtain, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7315,7 +7322,7 @@
      "2 judgeable street walls: w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -7419,21 +7426,22 @@
    ],
    "status": "crops",
    "house": "pand-253541",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T21:58:20.046Z",
    "notes": [
-    "2026-10-23T21:58 crops: 5 usable walls in 14 s"
+    "2026-10-23T21:58 crops: 5 usable walls in 14 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T21:58:34.022Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Zaventemweg, 35 m): washed out 52 % > 30 %",
-     "w03 (Zaventemweg, 27 m): washed out 42 % > 30 %; crop 2021 predates the 2021 building"
+     "height 50.5 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -7467,7 +7475,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7499,7 +7507,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7536,7 +7544,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7572,7 +7580,7 @@
      "6 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 3.65,
@@ -7680,21 +7688,21 @@
    ],
    "status": "crops",
    "house": "pand-253661",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:01:49.227Z",
    "notes": [
-    "2026-10-23T22:01 crops: 7 usable walls in 11 s"
+    "2026-10-23T22:01 crops: 7 usable walls in 11 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:01:59.944Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Distelweg, 34 m): crop 2021 predates the 2022 building",
-     "w05 (Distelweg, 10 m): crop 2022 predates the 2022 building"
+     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w04 (Distelweg, 34 m): crop 2021 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7728,7 +7736,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7766,7 +7774,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7799,7 +7807,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7834,7 +7842,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -7872,7 +7880,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -7963,21 +7971,20 @@
    ],
    "status": "crops",
    "house": "pand-238346",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:04:17.777Z",
    "notes": [
-    "2026-10-23T22:04 crops: 13 usable walls in 18 s"
+    "2026-10-23T22:04 crops: 13 usable walls in 18 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:04:36.267Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w09 (Piri Reisplein, 15 m): washed out 48 % > 30 %",
-     "w10 (Piri Reisplein, 14 m): no crop"
+     "5 judgeable street walls: w01 punched, w07 punched, w08 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8013,7 +8020,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8049,7 +8056,7 @@
      "2 judgeable street walls: w01 punched, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8164,7 +8171,7 @@
      "5 judgeable street walls: w01 ?, w02 punched, w03 punched, w04 punched, w07 blank"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8292,7 +8299,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8329,7 +8336,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8365,7 +8372,7 @@
      "blank-front",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8404,7 +8411,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -8520,7 +8527,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8540,10 +8547,11 @@
    ],
    "status": "crops",
    "house": "pand-082192",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:08:04.836Z",
    "notes": [
-    "2026-10-23T22:08 crops: 3 usable walls in 5 s"
+    "2026-10-23T22:08 crops: 3 usable walls in 5 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:08:10.130Z",
    "triage": {
@@ -8552,7 +8560,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8590,7 +8598,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -8713,7 +8721,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8749,7 +8757,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8785,7 +8793,7 @@
      "5 judgeable street walls: w02 columns, w04 columns, w05 punched, w07 punched, w08 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8867,7 +8875,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8901,7 +8909,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8935,7 +8943,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -8955,10 +8963,11 @@
    ],
    "status": "crops",
    "house": "pand-078713",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:11:21.781Z",
    "notes": [
-    "2026-10-23T22:11 crops: 13 usable walls in 34 s"
+    "2026-10-23T22:11 crops: 13 usable walls in 34 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:11:55.291Z",
    "triage": {
@@ -8968,7 +8977,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9002,7 +9011,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9022,22 +9031,22 @@
    ],
    "status": "crops",
    "house": "pand-080601",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:12:22.228Z",
    "notes": [
-    "2026-10-23T22:12 crops: 3 usable walls in 10 s"
+    "2026-10-23T22:12 crops: 3 usable walls in 10 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:12:32.270Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Kramatweg, 22 m): washed out 35 % > 30 %",
-     "w02 (Insulindeweg, 13 m): foliage 70 % > 25 %",
-     "w03 (Insulindeweg, 9 m): foliage 54 % > 25 %"
+     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w02 (Insulindeweg, 13 m): foliage 56 % > 25 %",
+     "w03 (Insulindeweg, 9 m): foliage 50 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9057,22 +9066,23 @@
    ],
    "status": "crops",
    "house": "pand-131508",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:12:32.271Z",
    "notes": [
-    "2026-10-23T22:12 crops: 12 usable walls in 23 s"
+    "2026-10-23T22:12 crops: 12 usable walls in 23 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:12:55.361Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w02 (paint), w09 (paint): the kit draws it (walls[].wallFamily)",
-     "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w06 (Spyridon Louisweg, 23 m): washed out 70 % > 30 %",
-     "w07 (Spyridon Louisweg, 19 m): foliage 26 % > 25 %; washed out 62 % > 30 %"
+     "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w05 (Jesse Owenshof, 23 m): obliquity 51 deg > 45",
+     "w08 (Jesse Owenshof, 19 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9092,21 +9102,20 @@
    ],
    "status": "crops",
    "house": "pand-064727",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:12:55.362Z",
    "notes": [
-    "2026-10-23T22:13 crops: 12 usable walls in 12 s"
+    "2026-10-23T22:13 crops: 12 usable walls in 12 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:13:07.536Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Statenjachtstraat, 25 m): foliage 75 % > 25 %",
-     "w08 (Statenjachtstraat, 12 m): foliage 46 % > 25 %"
+     "2 judgeable street walls: w02 punched, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9149,7 +9158,7 @@
      "4 judgeable street walls: w02 punched, w04 punched, w06 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "opus",
    "turns": 4.98,
@@ -9253,21 +9262,21 @@
    ],
    "status": "crops",
    "house": "pand-122004",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:13:21.054Z",
    "notes": [
-    "2026-10-23T22:13 crops: 17 usable walls in 32 s"
+    "2026-10-23T22:13 crops: 17 usable walls in 32 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:13:53.355Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
      "wall family unresolved but a measured tint on w01 (paint): the kit draws it (walls[].wallFamily)",
-     "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w05 (Wagenaarstraat, 24 m): foliage 33 % > 25 %"
+     "6 judgeable street walls: w01 punched, w02 punched, w05 punched, w06 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9374,7 +9383,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9408,7 +9417,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9442,7 +9451,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9462,20 +9471,22 @@
    ],
    "status": "crops",
    "house": "pand-165818",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:14:23.899Z",
    "notes": [
-    "2026-10-23T22:14 crops: 11 usable walls in 13 s"
+    "2026-10-23T22:14 crops: 11 usable walls in 13 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:14:36.936Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Geschutswerf, 15 m): foliage 39 % > 25 %"
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w04 (Geschutswerf, 15 m)100 % of 15 m of street wall (w04): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -9509,7 +9520,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9548,7 +9559,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9568,22 +9579,21 @@
    ],
    "status": "crops",
    "house": "pand-071645",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:15:47.421Z",
    "notes": [
-    "2026-10-23T22:16 crops: 15 usable walls in 25 s"
+    "2026-10-23T22:16 crops: 15 usable walls in 25 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:16:12.221Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Jachthavenweg, 90 m): washed out 86 % > 30 %",
-     "w03 (Skûtsjespad, 33 m): washed out 31 % > 30 %; obliquity 54 deg > 45",
-     "w07 (Skûtsjespad, 16 m): foliage 45 % > 25 %; obliquity 49 deg > 45"
+     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (Jachthavenweg, 90 m): washed out 86 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9601,23 +9611,102 @@
     4.8398635,
     52.360992
    ],
-   "status": "crops",
+   "status": "held",
    "house": "pand-240481",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:16:12.222Z",
+   "owner": "lane-factory-a-20261113",
+   "claimedAt": "2026-11-13T06:06:58.327Z",
    "notes": [
-    "2026-10-23T22:16 crops: 8 usable walls in 20 s"
+    "2026-10-23T22:16 crops: 8 usable walls in 20 s",
+    "2026-11-13T06:07 facts: fronts on Theodoor van Hoytemastraat, Suze Robertsonstraat, Louise Marie Loeberplantsoen",
+    "2026-11-13T06:07 draft: 8 groups (4 on a street), 98 panels blank",
+    "2026-11-13T06:08 measured groups 0,1,4,5 in 56 s",
+    "2026-11-13T06:09 compiled: 17028 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g3:NO EVIDENCE g4:FAIL g5:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-240481/contact-walls-2.png |   artifacts/building-recipes/pand-240481/contact-walls-4.png |   artifacts/building-recipes/pand-)",
+    "2026-11-13 review (opus): hold - staggered slab balconies + irregular windows; triangle-budget 17028"
    ],
-   "updatedAt": "2026-10-23T22:16:32.160Z",
+   "updatedAt": "2026-11-13T06:09:04.172Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "buildable",
     "reasons": [
-     "w02 (Suze Robertsonstraat, 68 m) reads blank"
+     "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w05 punched"
     ],
-    "gaps": [
-     "blank-front"
+    "gaps": [],
+    "date": "2026-11-13"
+   },
+   "model": "opus",
+   "turns": 5,
+   "ms": {
+    "facts": 12682,
+    "draft": 23,
+    "measure": 56016,
+    "compile": 57107
+   },
+   "report": {
+    "triangles": 17028,
+    "bytes": 1263032,
+    "gatesFailing": [
+     "triangle-budget"
     ],
-    "date": "2026-11-06"
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.31",
+       "glazing storey band off by 0.19 mean 0.37 vs photo 0.19"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.33 mean 0.29 vs photo 0.00"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 0 % < 40 %"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape none vs photo wide"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.18",
+       "wall family unresolved (#060d05 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-11-13T06:09"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-240481/contact-walls-0.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-1.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-2.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-4.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-5.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-6.png",
+    "artifacts/building-recipes/pand-240481/contact-walls-7.png",
+    "artifacts/building-recipes/pand-240481/contact-aerial.png"
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "2010s brick housing block: cantilevered white slab balconies staggered across walls[0]/[5], irregular window placement, pale plinth; draft is a uniform 31-35 bay punched grid in yellow brick (photo grey-brown, dL +0.31), no balconies, a dark-green panel run on walls[5]. Kit gap: staggered cantilevered slab balconies + irregular window placement. Gate: triangle-budget 17028 > 12000.",
+    "gap": "slab-balconies-staggered",
+    "sheet": "artifacts/strips/factory-a-20261113",
+    "date": "2026-11-13",
+    "model": "opus",
+    "lane": "lane-factory-a-20261113",
+    "round": 1
    }
   },
   {
@@ -9649,7 +9738,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9681,7 +9770,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9717,7 +9806,7 @@
      "3 judgeable street walls: w01 punched, w03 ribbon, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -9826,7 +9915,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9846,23 +9935,22 @@
    ],
    "status": "crops",
    "house": "pand-114770",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:18:04.770Z",
    "notes": [
-    "2026-10-23T22:18 crops: 15 usable walls in 39 s"
+    "2026-10-23T22:18 crops: 15 usable walls in 39 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:18:43.420Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Staalmeesterslaan, 65 m): foliage 32 % > 25 %; washed out 51 % > 30 %",
-     "w04 (Staalmeesterslaan, 36 m): foliage 32 % > 25 %; washed out 49 % > 30 %",
-     "w08 (Staalmeesterslaan, 26 m): foliage 41 % > 25 %",
-     "w10 (Staalmeesterslaan, 26 m): obliquity 50 deg > 45"
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Staalmeesterslaan, 65 m), 60 % of 108 m of street wall (w01): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -9896,7 +9984,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9916,20 +10004,20 @@
    ],
    "status": "crops",
    "house": "pand-105061",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:18:44.405Z",
    "notes": [
-    "2026-10-23T22:18 crops: 3 usable walls in 6 s"
+    "2026-10-23T22:18 crops: 3 usable walls in 6 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:18:50.254Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (no street, 14 m): no crop"
+     "2 judgeable street walls: w01 punched, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -9958,7 +10046,7 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w03 (Maria Antonia Walpurgislaan, 33 m) reads columns with a ribbon on storey 2: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w03 (Maria Antonia Walpurgislaan, 33 m) storey 2 has a 16.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
      "w04 (Antonio Vivaldistraat, 32 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (Maria Antonia Walpurgislaan, 33 m), 42 % of 79 m of street wall (w03): painted or clad"
     ],
@@ -9966,7 +10054,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10000,7 +10088,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10037,7 +10125,7 @@
      "3 judgeable street walls: w02 punched, w03 curtain, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10138,21 +10226,26 @@
    ],
    "status": "crops",
    "house": "pand-252819",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:20:54.969Z",
    "notes": [
-    "2026-10-23T22:21 crops: 3 usable walls in 8 s"
+    "2026-10-23T22:21 crops: 3 usable walls in 8 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:21:03.263Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Jan Kiststraat, 28 m): crop 2023 predates the 2024 building",
-     "w02 (Oostenburgermiddenstraat, 21 m): washed out 100 % > 30 %; crop 2020 predates the 2024 building"
+     "height 48.4 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
+     "w02 (Oostenburgermiddenstraat, 21 m) storey 6 has a 9.9 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Jan Kiststraat, 28 m), 58 % of 49 m of street wall (w01): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower",
+     "band",
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -10172,22 +10265,22 @@
    ],
    "status": "crops",
    "house": "pand-132433",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:21:03.264Z",
    "notes": [
-    "2026-10-23T22:21 crops: 5 usable walls in 14 s"
+    "2026-10-23T22:21 crops: 5 usable walls in 14 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:21:17.755Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "wall family unresolved but a measured tint on w04 (metal): the kit draws it (walls[].wallFamily)",
-     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Alma Tademastraat, 68 m): washed out 34 % > 30 %",
-     "w02 (Jan Voermanstraat, 68 m): foliage 29 % > 25 %"
+     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w01 (Alma Tademastraat, 68 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10223,7 +10316,7 @@
      "2 judgeable street walls: w01 columns, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -10317,7 +10410,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10351,7 +10444,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10433,7 +10526,7 @@
      "built 1840 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10471,7 +10564,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10505,7 +10598,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10541,7 +10634,7 @@
      "4 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10649,21 +10742,21 @@
    ],
    "status": "crops",
    "house": "pand-141929",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:23:50.119Z",
    "notes": [
-    "2026-10-23T22:24 crops: 20 usable walls in 40 s"
+    "2026-10-23T22:24 crops: 20 usable walls in 40 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:24:30.339Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
      "wall family unresolved but a measured tint on w03 (paint): the kit draws it (walls[].wallFamily)",
-     "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Schakelstraat, 34 m): foliage 29 % > 25 %; washed out 43 % > 30 %"
+     "6 judgeable street walls: w02 punched, w03 punched, w04 punched, w05 punched, w06 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -10704,7 +10797,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10842,7 +10935,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "opus",
    "turns": 4.98,
@@ -10947,7 +11040,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11052,7 +11145,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11087,7 +11180,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11121,7 +11214,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11155,7 +11248,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11189,7 +11282,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11223,7 +11316,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11243,20 +11336,20 @@
    ],
    "status": "crops",
    "house": "pand-195030",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:27:19.050Z",
    "notes": [
-    "2026-10-23T22:27 crops: 16 usable walls in 26 s"
+    "2026-10-23T22:27 crops: 16 usable walls in 26 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:27:44.765Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w07 (Dr. Jan van Breemenstraat, 17 m): foliage 26 % > 25 %"
+     "3 judgeable street walls: w01 punched, w07 punched, w12 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11292,7 +11385,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11312,23 +11405,24 @@
    ],
    "status": "crops",
    "house": "pand-093565",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:28:22.044Z",
    "notes": [
-    "2026-10-23T22:28 crops: 6 usable walls in 11 s"
+    "2026-10-23T22:28 crops: 6 usable walls in 11 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:28:32.866Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
      "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (no street, 27 m): no crop",
+     "w01 (no street, 27 m): foliage 33 % > 25 %",
      "w02 (no street, 27 m): crop 2021 predates the 2024 building",
      "w03 (no street, 9 m): no crop",
      "w04 (no street, 8 m): obliquity 53 deg > 45; crop 2022 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11358,13 +11452,13 @@
     "verdict": "kit-gap",
     "reasons": [
      "height 44.5 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Valckenierstraat, 17 m)100 % of 17 m of street wall (w01): painted or clad"
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Pancrasstraat, 17 m)100 % of 17 m of street wall (w01): painted or clad"
     ],
     "gaps": [
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11384,26 +11478,24 @@
    ],
    "status": "crops",
    "house": "pand-072045",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:28:34.802Z",
    "notes": [
-    "2026-10-23T22:28 crops: 7 usable walls in 8 s"
+    "2026-10-23T22:28 crops: 7 usable walls in 8 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:28:43.255Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Radioweg, 101 m): foliage 59 % > 25 %",
-     "w02 (Kruislaan, 56 m): foliage 27 % > 25 %",
+     "3 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w03 (Radioweg, 52 m): no crop",
      "w04 (Radioweg, 34 m): no crop",
      "w05 (Radioweg, 26 m): no crop",
-     "w06 (Radioweg, 20 m): no crop",
-     "w07 (Radioweg, 13 m): obliquity 52 deg > 45"
+     "w06 (Radioweg, 20 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11423,22 +11515,22 @@
    ],
    "status": "crops",
    "house": "pand-571849",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:28:43.256Z",
    "notes": [
-    "2026-10-23T22:29 crops: 10 usable walls in 25 s"
+    "2026-10-23T22:29 crops: 10 usable walls in 25 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:29:08.744Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w01 (Jan Tooropstraat, 91 m): crop 2022 predates the 2024 building",
-     "w03 (Piet Mondriaanstraat, 45 m): crop 2022 predates the 2024 building",
      "w06 (Johan Greivestraat, 19 m): foliage 28 % > 25 %; crop 2016 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11472,7 +11564,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11506,7 +11598,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11542,7 +11634,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11580,7 +11672,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -11662,26 +11754,25 @@
    ],
    "status": "crops",
    "house": "pand-077602",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:30:52.399Z",
    "notes": [
-    "2026-10-23T22:30 crops: 12 usable walls in 6 s"
+    "2026-10-23T22:30 crops: 12 usable walls in 6 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:30:57.947Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Nachtwachtlaan, 18 m): no crop",
-     "w05 (Nachtwachtlaan, 18 m): foliage 63 % > 25 %",
-     "w07 (Nachtwachtlaan, 16 m): no crop",
-     "w08 (Nachtwachtlaan, 15 m): no crop",
-     "w09 (Nachtwachtlaan, 15 m): no crop",
-     "w11 (Nachtwachtlaan, 10 m): no crop",
-     "w12 (Nachtwachtlaan, 10 m): no crop"
+     "height 50.7 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
+     "w05 (Nachtwachtlaan, 18 m) storey 1 has a 9.3 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
+     "w08 (Nachtwachtlaan, 15 m) reads punched with a ribbon on storey 1, 2: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower",
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -11719,7 +11810,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -11842,14 +11933,12 @@
    "triage": {
     "verdict": "kit-gap",
     "reasons": [
-     "w09 (Jan Tooropstraat, 21 m) storey 2 has a 8.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
      "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (Jan Tooropstraat, 35 m), 42 % of 82 m of street wall (w03): painted or clad"
     ],
     "gaps": [
-     "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11883,7 +11972,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -11920,7 +12009,7 @@
      "4 judgeable street walls: w02 punched, w03 punched, w05 punched, w06 curtain"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12025,20 +12114,22 @@
    ],
    "status": "crops",
    "house": "pand-105094",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:32:28.876Z",
    "notes": [
-    "2026-10-23T22:32 crops: 10 usable walls in 20 s"
+    "2026-10-23T22:32 crops: 10 usable walls in 20 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:32:49.153Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w08 (La Guardiaweg, 16 m): washed out 62 % > 30 %"
+     "w08 (La Guardiaweg, 16 m) reads punched with a ribbon on storey 2: the kit draws windows under it (bands, balconies, a shopfront strip)"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -12076,7 +12167,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12110,7 +12201,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12144,7 +12235,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12266,7 +12357,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12302,7 +12393,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12334,7 +12425,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12368,7 +12459,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12388,22 +12479,22 @@
    ],
    "status": "crops",
    "house": "pand-254404",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:35:38.428Z",
    "notes": [
-    "2026-10-23T22:35 crops: 9 usable walls in 8 s"
+    "2026-10-23T22:35 crops: 9 usable walls in 8 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:35:46.732Z",
    "triage": {
     "verdict": "no-evidence",
     "reasons": [
-     "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
      "w05 (Koivistokade, 15 m): crop 2018 predates the 2021 building",
-     "w06 (Koivistokade, 12 m): obliquity 48 deg > 45",
      "w07 (Koivistokade, 10 m): washed out 45 % > 30 %; crop 2021 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12440,7 +12531,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12474,7 +12565,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12512,7 +12603,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 0.4,
@@ -12561,7 +12652,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12650,21 +12741,21 @@
    ],
    "status": "crops",
    "house": "pand-243124",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:37:08.048Z",
    "notes": [
-    "2026-10-23T22:37 crops: 8 usable walls in 18 s"
+    "2026-10-23T22:37 crops: 8 usable walls in 18 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:37:25.888Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w02 (Koningin Wilhelminaplein, 16 m): foliage 54 % > 25 %",
-     "w05 (Koningin Wilhelminaplein, 11 m): washed out 63 % > 30 %"
+     "front class unmeasured on some judgeable walls (no measurement)",
+     "4 judgeable street walls: w02 punched, w03 punched, w04 ?, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12698,7 +12789,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12718,10 +12809,11 @@
    ],
    "status": "crops",
    "house": "pand-241720",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:37:26.641Z",
    "notes": [
-    "2026-10-23T22:37 crops: 3 usable walls in 8 s"
+    "2026-10-23T22:37 crops: 3 usable walls in 8 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:37:34.881Z",
    "triage": {
@@ -12730,7 +12822,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12764,7 +12856,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12801,7 +12893,7 @@
      "3 judgeable street walls: w02 ?, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -12900,7 +12992,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -12938,7 +13030,7 @@
      "3 judgeable street walls: w03 punched, w04 ?, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.8,
@@ -13042,7 +13134,7 @@
      "2 judgeable street walls: w04 punched, w05 ?"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13142,23 +13234,25 @@
    ],
    "status": "crops",
    "house": "pand-251218",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:38:30.058Z",
    "notes": [
-    "2026-10-23T22:38 crops: 5 usable walls in 14 s"
+    "2026-10-23T22:38 crops: 5 usable walls in 14 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:38:43.836Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Ariana Nozemanstraat, 93 m): foliage 28 % > 25 %; crop 2020 predates the 2022 building",
-     "w02 (Reinier Engelmanstraat, 93 m): crop 2022 predates the 2022 building",
-     "w03 (Jan Puntstraat, 29 m): crop 2022 predates the 2022 building",
-     "w04 (Reinier Engelmanstraat, 29 m): crop 2022 predates the 2022 building"
+     "w02 (Reinier Engelmanstraat, 93 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "w03 (Jan Puntstraat, 29 m) reads punched with a ribbon on storey 1, 2, 3: the kit draws windows under it (bands, balconies, a shopfront strip)",
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w02 (Reinier Engelmanstraat, 93 m), 76 % of 122 m of street wall (w02): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "band",
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   },
   {
@@ -13192,7 +13286,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13228,7 +13322,7 @@
      "2 judgeable street walls: w01 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13357,7 +13451,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13377,10 +13471,11 @@
    ],
    "status": "crops",
    "house": "pand-254300",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:39:35.287Z",
    "notes": [
-    "2026-10-23T22:39 crops: 5 usable walls in 6 s"
+    "2026-10-23T22:39 crops: 5 usable walls in 6 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:39:41.463Z",
    "triage": {
@@ -13390,7 +13485,7 @@
      "w03 (Postjesweg, 19 m): foliage 47 % > 25 %; washed out 33 % > 30 %; crop 2019 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13427,7 +13522,7 @@
      "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13518,10 +13613,11 @@
    ],
    "status": "crops",
    "house": "pand-239262",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:40:01.662Z",
    "notes": [
-    "2026-10-23T22:40 crops: 2 usable walls in 4 s"
+    "2026-10-23T22:40 crops: 2 usable walls in 4 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> no-evidence"
    ],
    "updatedAt": "2026-10-23T22:40:06.161Z",
    "triage": {
@@ -13531,7 +13627,7 @@
      "w01 (Gerrie Knetemannlaan, 10 m): washed out 53 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13566,7 +13662,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13586,21 +13682,20 @@
    ],
    "status": "crops",
    "house": "pand-079952",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:40:16.055Z",
    "notes": [
-    "2026-10-23T22:40 crops: 9 usable walls in 19 s"
+    "2026-10-23T22:40 crops: 9 usable walls in 19 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
    ],
    "updatedAt": "2026-10-23T22:40:34.757Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "buildable",
     "reasons": [
-     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Turbinestraat, 18 m): washed out 41 % > 30 %",
-     "w04 (Turbinestraat, 16 m): foliage 33 % > 25 %"
+     "4 judgeable street walls: w02 punched, w03 columns, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-11-06"
+    "date": "2026-11-13"
    }
   },
   {
@@ -13620,20 +13715,24 @@
    ],
    "status": "crops",
    "house": "pand-196327",
-   "owner": "crops-20261023",
+   "owner": "lane-recrop-20261113",
    "claimedAt": "2026-10-23T22:40:34.757Z",
    "notes": [
-    "2026-10-23T22:40 crops: 1 usable walls in 3 s"
+    "2026-10-23T22:40 crops: 1 usable walls in 3 s",
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> kit-gap"
    ],
    "updatedAt": "2026-10-23T22:40:37.747Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "kit-gap",
     "reasons": [
-     "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (no street, 12 m): obliquity 51 deg > 45"
+     "height 43.7 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
+     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (no street, 12 m)100 % of 12 m of street wall (w01): painted or clad"
     ],
-    "gaps": [],
-    "date": "2026-11-06"
+    "gaps": [
+     "tower",
+     "painted-or-clad"
+    ],
+    "date": "2026-11-13"
    }
   }
  ]

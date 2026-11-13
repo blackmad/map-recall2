@@ -189,3 +189,20 @@ Oud-Zuid 187, Centrum-West 140, Centrum-Oost 124, Oud-Oost 106, Westerpark 84. H
 
 What would need saying: a plan chamfer between two fronts (width 0.3-6 m, angle from the footprint), its own ground (door or shop corner
 entrance) and window axes, balconies and corbelled-out upper storeys on it, and the cornice and roof turning with it. Not built here.
+
+## Landmark factory 2026-11-13 (lane-factory-a): one new buildable row, held
+
+Re-triage (`triage.ts --limit=0`, 312 candidates, 934 crops): buildable 22, kit-gap 116, no-evidence 91, not-in-tiles 45, covered 29, bespoke 9.
+21 of the 22 buildable rows were already reviewed (20 held, 1 no-evidence), as on 2026-11-06. The one new row, 0363100012240481
+(Theodoor van Hoytemastraat / Suze Robertsonstraat, a 2010s brick housing block, kit-gap -> buildable on today's crops), compiled at 17,028
+triangles (triangle-budget FAIL, 12k) with likeness FAIL on all four judged street groups, and was held at review:
+
+| Gap | Pand | What the photo shows that the kit cannot say |
+|---|---|---|
+| Staggered cantilevered slab balconies | 240481 walls[0], walls[5] | white concrete slab balconies that alternate position storey by storey, not stacked in bays; `balconyBands.spans` draws continuous bands only |
+| Irregular window placement on one wall | 240481 walls[0] | openings of two widths placed off a regular bay grid (photo 14 openings per storey vs the draft's 31 uniform bays) |
+
+The 188 other rows at `crops` stay blocked by triage (count, sum of `rideVisibility.score`): no-evidence 81 (8.06 M), band 33 (6.52 M),
+not-in-tiles 19 (4.23 M), band+painted-or-clad 13 (2.03 M), painted-or-clad 20 (1.32 M), curtain 5-9, tower 7, blank-front 5, bespoke 1.
+The band class remains the gap that blocks the most ride visibility; the next factory run needs a kit lane on storey-1 ribbons and balcony
+bands, or second panorama captures for the no-evidence rows, before it has anything to compile.

@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-theodoor-van-hoytemastraat",
+  "panoId": "TMX7316010203-002083_pano_0000_004311",
+  "timestamp": "2021-04-09T08:43:25.726810Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/09/TMX7316010203-002083/pano_0000_004311/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117715.44077573897,
+   485984.12370086805
+  ],
+  "headingDeg": 6.994241923994423,
+  "fovDeg": 110,
+  "pitchDeg": 31.548139907383174,
+  "distanceM": 9.931455106030297,
+  "image": "artifacts/building-recipes/pand-240481/photo-wall-theodoor-van-hoytemastraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-suze-robertsonstraat",
+  "panoId": "_20241128_0827_Track112_Sphere_00026",
+  "timestamp": "2024-11-28T12:09:54Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241128_0827_Track112_Sphere_00026/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117682.31202862528,
+   486028.2162803046
+  ],
+  "headingDeg": 93.3615849039366,
+  "fovDeg": 110,
+  "pitchDeg": 33.01633782749516,
+  "distanceM": 9.37172167119655,
+  "image": "artifacts/building-recipes/pand-240481/photo-wall-suze-robertsonstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-louise-marie-loeberplantsoen",
+  "panoId": "_20241128_0827_Track112_Sphere_00026",
+  "timestamp": "2024-11-28T12:09:54Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241128_0827_Track112_Sphere_00026/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117682.31202862528,
+   486028.2162803046
+  ],
+  "headingDeg": 93.3615849039366,
+  "fovDeg": 110,
+  "pitchDeg": 33.016337921851374,
+  "distanceM": 9.37172167119655,
+  "image": "artifacts/building-recipes/pand-240481/photo-wall-louise-marie-loeberplantsoen.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

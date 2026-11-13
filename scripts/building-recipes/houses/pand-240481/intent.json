@@ -1,0 +1,193 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-240481",
+ "pandId": "0363100012240481",
+ "address": "BAG pand 0363100012240481",
+ "sources": [
+  {
+   "id": "pano-2016-10-10-w03-179",
+   "kind": "street-panorama",
+   "capturedAt": "2016-10-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000154_pano_0000_006246/",
+   "image": "source-data://pand-reference-walls/0363100012240481/w03-179.jpg",
+   "sha256": "1d1ca1ef5bb43f3bc58d75f829720dafcb8ce380f417f8de65ece4b3162f10b8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-28-w02-269",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/_20241128_0827_Track112_Sphere_00026/",
+   "image": "source-data://pand-reference-walls/0363100012240481/w02-269.jpg",
+   "sha256": "adcea67e2824e728dd3947374d74435deffc94defc79fa38da48eabff10bf2e7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-01-08-w01-89L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000535_pano_0000_005878/",
+   "image": "source-data://pand-reference-walls/0363100012240481/w01-89L.jpg",
+   "sha256": "a62f87a8edf161376ea65d8add4bd411670c331a4f8fec2297a8c39854a0a617",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-07-04-w04-359",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000825_pano_0000_003841/",
+   "image": "source-data://pand-reference-walls/0363100012240481/w04-359.jpg",
+   "sha256": "836ec0c0f407ca6e91bf981e25eb4518753fecd148c59c2dcb53e29237074ae1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-05-10-w01-89",
+   "kind": "street-panorama",
+   "capturedAt": "2017-05-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000293_pano_0000_002341/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-28-w03-179L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/_20241128_0827_Track112_Sphere_00012/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-28-w05-270",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241028_1408_Track02_Sphere_00247/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-01-08-w05-270L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000535_pano_0000_005778/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    204
+   ],
+   "street": "Theodoor van Hoytemastraat",
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "palette": {
+    "brick": "#b49d84"
+   },
+   "wallSplit": {
+    "at": 0.742,
+    "brick": "#58524b"
+   },
+   "baysPerStorey": 31
+  },
+  {
+   "wallSurfaces": [
+    19
+   ],
+   "street": "Suze Robertsonstraat",
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#544833"
+   },
+   "wallSplit": {
+    "at": 0.762,
+    "brick": "#6e5c37"
+   },
+   "baysPerStorey": 16
+  },
+  {
+   "wallSurfaces": [
+    285
+   ],
+   "street": "Suze Robertsonstraat",
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    37,
+    218,
+    220
+   ],
+   "street": "Suze Robertsonstraat",
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    118,
+    276
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#6a615d"
+   },
+   "windowShape": {
+    "w": 0.15,
+    "h": 0.08,
+    "sill": 0.3
+   },
+   "baysPerStorey": 28
+  },
+  {
+   "wallSurfaces": [
+    213
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#060d05"
+   },
+   "wallSplit": {
+    "at": 0.193,
+    "brick": "#3b3538"
+   },
+   "windowShape": {
+    "w": 0.579,
+    "h": 0.78,
+    "sill": 0.2
+   },
+   "baysPerStorey": 35
+  },
+  {
+   "wallSurfaces": [
+    53
+   ],
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    184,
+    222
+   ],
+   "system": "blank"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#534d46",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 257 (22.7 m, over 8 groups); 14 (19.6 m, over 8 groups); 228 (10.8 m, over 8 groups); 22 (18.6 m, over 8 groups); 1 (9.1 m, over 8 groups); 19 (13.3 m, over 8 groups); 99 (8.8 m, over 8 groups); 12 (9.2 m, over 8 groups); 2 (6.6 m, unnamed panel under 8 m); 119 (9.2 m, over 8 groups); 88 (24.5 m, over 8 groups); 81 (8.8 m, over 8 groups); 129 (6.5 m, unnamed panel under 8 m); 158 (8.4 m, over 8 groups); 75 (5.8 m, unnamed panel under 8 m); 40 (7.8 m, unnamed panel under 8 m); 89 (7.6 m, unnamed panel under 8 m); 35 (4.4 m, unnamed panel under 8 m); 138 (7.2 m, unnamed panel under 8 m); 32 (7 m, unnamed panel under 8 m); 253 (6.8 m, unnamed panel under 8 m); 10 (17.5 m, over 8 groups); 254 (17.1 m, over 8 groups); 52 (6 m, unnamed panel under 8 m); 27 (5.3 m, unnamed panel under 8 m); 50 (6.7 m, unnamed panel under 8 m); 106 (4.2 m, unnamed panel under 8 m); 178 (2.8 m, unnamed panel under 8 m); 18 (10.3 m, over 8 groups); 42 (65.8 m, under 3 m tall); 143 (3 m, unnamed panel under 8 m); 7 (2.9 m, unnamed panel under 8 m); 31 (2.6 m, unnamed panel under 8 m); 85 (2.5 m, unnamed panel under 8 m); 165 (6.8 m, unnamed panel under 8 m); 130 (2.2 m, unnamed panel under 8 m); 124 (2.2 m, unnamed panel under 8 m); 93 (2.2 m, unnamed panel under 8 m); 218 (5.8 m, unnamed panel under 8 m); 256 (10.8 m, under 3 m tall); 74 (10.5 m, under 3 m tall); 59 (5.2 m, unnamed panel under 8 m); 153 (2.3 m, unnamed panel under 8 m); 137 (2.3 m, unnamed panel under 8 m); 61 (2.3 m, unnamed panel under 8 m); 117 (2.2 m, unnamed panel under 8 m); 13 (2.1 m, unnamed panel under 8 m); 82 (3.9 m, unnamed panel under 8 m); 144 (2.1 m, unnamed panel under 8 m); 125 (2 m, unnamed panel under 8 m); 210 (2 m, unnamed panel under 8 m); 73 (3.7 m, unnamed panel under 8 m); 168 (10.7 m, under 3 m tall); 258 (10.4 m, under 3 m tall); 64 (3.5 m, under 3 m tall); 166 (2.9 m, unnamed panel under 8 m); 246 (2.7 m, unnamed panel under 8 m); 190 (2.5 m, under 3 m tall); 62 (3.2 m, under 3 m tall); 84 (2.1 m, unnamed panel under 8 m); 131 (4.2 m, under 3 m tall); 170 (10.9 m, under 3 m tall); 173 (10.6 m, under 3 m tall); 150 (9.9 m, under 3 m tall); 37 (5.1 m, under 3 m tall); 38 (6.9 m, under 3 m tall); 197 (6.6 m, under 3 m tall); 111 (6.1 m, under 3 m tall); 152 (6.1 m, under 3 m tall); 26 (6.2 m, under 3 m tall); 72 (5.8 m, under 3 m tall); 121 (6 m, under 3 m tall); 237 (5.8 m, under 3 m tall); 141 (5.7 m, under 3 m tall); 172 (5.7 m, under 3 m tall); 113 (3.2 m, under 3 m tall); 193 (4.7 m, under 3 m tall); 53 (4.6 m, under 3 m tall); 98 (4.5 m, under 3 m tall); 196 (4.5 m, under 3 m tall); 194 (4.2 m, under 3 m tall); 149 (2.7 m, under 3 m tall); 92 (3.3 m, under 3 m tall); 9 (2.1 m, under 3 m tall); 177 (2.7 m, under 3 m tall); 69 (2.8 m, under 3 m tall); 57 (2.7 m, under 3 m tall); 222 (2.6 m, under 3 m tall); 86 (2.3 m, under 3 m tall); 147 (2.1 m, under 3 m tall); 223 (2.1 m, under 3 m tall); 175 (2.4 m, under 3 m tall); 105 (2.3 m, under 3 m tall); 146 (2.1 m, under 3 m tall); 156 (2.1 m, under 3 m tall); 208 (2.1 m, under 3 m tall); 45 (2.1 m, under 3 m tall); 58 (2.2 m, under 3 m tall).",
+  "Measured 2026-11-13 (measure.ts, evidence in measured.json): groups 0, 1, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4b372a not used (not darker than the wall #534d46 by 10 L*, or tinted): kit glass kept; walls[0] wall split #b49d84 | #58524b at 74 % (dE 32.7); walls[0] bays 31 from the likeness grid (padded measurement 30); walls[1] wall split #544833 | #6e5c37 at 76 % (dE 17.1); walls[4] glass #685446 not used (not darker than the wall #6a615d by 10 L*, or tinted): kit glass kept; walls[5] glass #251716 not used (not darker than the wall #060d05 by 10 L*, or tinted): kit glass kept; walls[5] wall split #060d05 | #3b3538 at 19 % (dE 21.2); walls[5] bays 35 from the likeness grid (padded measurement 36); walls[5] wall family unresolved: cell spread 0.3508, texture 0.105 not flat (<= 0.12, <= 0.035) and no rib period (best 1.46 m r 0.256); unphotographed walls take #534d46 (brick), the area-weighted median of groups 0, 1, 4, 5.",
+  "Triangle budget: 18882 > 12000; unphotographed groups 2, 6, 7 drawn blank (draftBudgetCap); still 5028 over from the photographed groups."
+ ],
+ "measured": {
+  "date": "2026-11-13",
+  "groups": [
+   0,
+   1,
+   4,
+   5
+  ],
+  "otherWalls": true
+ }
+}
