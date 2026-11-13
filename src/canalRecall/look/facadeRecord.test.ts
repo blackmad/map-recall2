@@ -284,3 +284,9 @@ test('P2 archedStoreys: the top full storey listed sets archTop; other storeys o
   assert.equal(facadeRecordFor({ ...base, spec: { d: { fronts: [{ storeys: 4, archedStoreys: [1] }] } } }).archTop, 0);
   assert.equal(facadeRecordFor({ ...base, spec: { d: { fronts: [{ storeys: 4 }] } } }).archTop, 0);
 });
+
+test('P5 generic shop sign: an unstated shop ground takes the look accent for its fascia; a stated one keeps its own', () => {
+  const base = { id: 'x', style: 'c19' as const, wallHex: '#3c3732', accentHex: '#8a2a3c', heightM: 14, minHeightM: 0, shop: true };
+  assert.deepEqual(facadeRecordFor(base).fascia, [0x8a, 0x2a, 0x3c]);
+  assert.deepEqual(facadeRecordFor({ ...base, spec: { d: { fronts: [{ shopfront: { fascia: true, fasciaColour: '#112233' } }] } } }).fascia, [0x11, 0x22, 0x33]);
+});

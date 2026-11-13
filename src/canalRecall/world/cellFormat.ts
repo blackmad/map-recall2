@@ -44,7 +44,7 @@
  * indices, tags and leftover bytes all throw.
  */
 
-import { SHEL_RECORD_LEVEL, decodeShel, decodeShel3, decodeShl1, encodeShel, encodeShel3, encodeShl1, shelLevel, type FarPrism, type RecordShellMesh, type ShellMesh } from './shellMesh.js';
+import { SHEL_RECORD_LEVEL, decodeRatt, decodeShel, decodeShel3, encodeRatt, decodeShl1, encodeShel, encodeShel3, encodeShl1, shelLevel, type FarPrism, type RecordShellMesh, type ShellMesh } from './shellMesh.js';
 import { decodeCrow, decodeFrec, encodeCrow, encodeFrec, type CrownEntry, type FacadeRecordSet } from './facadeStreams.js';
 
 export const WORLD_FORMAT_VERSION = 6;
@@ -78,11 +78,12 @@ export const MAX_BUILDINGS = 200_000;
 const MAX_COUNT = 10_000_000;
 const MAX_VARINT_BYTES = 8; // 2^56 > Number.MAX_SAFE_INTEGER
 // FREC and CROW (F1, #380): the facade records and crown instances of a record shell file (world/facadeStreams.ts).
-export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE', 'SHEL', 'SHL1', 'FREC', 'CROW'] as const;
+// RATT (P5): a record shell's roof vertices in the default look (shellMesh.ts encodeRatt), after CROW.
+export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE', 'SHEL', 'SHL1', 'FREC', 'CROW', 'RATT'] as const;
 export type StreamTag = typeof STREAM_TAGS[number];
 /** The building streams (every version), and the optional shell streams v6 may append, in this order. */
 export const BUILDING_TAGS: readonly StreamTag[] = STREAM_TAGS.slice(0, 7);
-export const SHELL_TAGS: readonly StreamTag[] = ['SHEL', 'SHL1', 'FREC', 'CROW'];
+export const SHELL_TAGS: readonly StreamTag[] = ['SHEL', 'SHL1', 'FREC', 'CROW', 'RATT'];
 
 export type Geometry = { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 export type Props = Record<string, unknown>;
@@ -883,6 +884,7 @@ function shellPayloads(c: { shel?: ShellMesh; far?: FarPrism[]; rshel?: RecordSh
   if (c.far) out.push(['SHL1', encodeShl1(c.far)]);
   if (c.records) out.push(['FREC', encodeFrec(c.records)]);
   if (c.crowns) out.push(['CROW', encodeCrow(c.crowns)]);
+  if (c.rshel?.look) out.push(['RATT', encodeRatt(c.rshel)]);
   return out;
 }
 function container(i: number, j: number, version: number, flags: number, payloads: [StreamTag, Uint8Array][], globals?: GlobalStrings): Omit<EncodedCell, 'strings'> {
@@ -925,6 +927,7 @@ export function decodeShellCell(bytes: Uint8Array, what = 'world shell'): ShellC
     if (tag === 'SHEL') { if (shelLevel(sub.buf) === SHEL_RECORD_LEVEL) out.rshel = decodeShel3(sub); else out.shel = decodeShel(sub); }
     else if (tag === 'SHL1') out.far = decodeShl1(sub);
     else if (tag === 'FREC') out.records = decodeFrec(sub);
+    else if (tag === 'RATT') { const m = out.rshel ?? sub.fail('RATT without a level 3 SHEL'); m.look = decodeRatt(sub, m); }
     else out.crowns = decodeCrow(sub);
   }
   return out;

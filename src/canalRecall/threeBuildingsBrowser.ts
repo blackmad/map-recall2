@@ -61,7 +61,7 @@ import { shellLayerHash } from './world/shellLayers.js';
 import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { FacadeRecordTexture } from './look/facadeRecordTexture.js';
-import { shaderFacadesEnabled } from './look/facadeShader.js';
+import { shaderFacadesMode } from './look/facadeShader.js';
 import { finishHintEnabled, FINISH_HINT_FILE } from './look/finishHint.js';
 import type { FacadeRecordSet } from './world/facadeStreams.js';
 import { boundingSphereOf } from './geometryBounds.js';
@@ -1181,10 +1181,10 @@ export class ThreeBuildings {
    */
   private facadeRecords: FacadeRecordTexture | null = null;
   private recordSerial = 0;
-  /** Detail (`walls`) chunks are built in record mode: `?shaderFacades=1` and the lit city-look chunk material. */
+  /** Detail (`walls`) chunks are built in record mode: `?shaderFacades=1` (all tiers, not `far`) and the lit chunk material. */
   private recordChunks(): boolean {
     const v = this.material?.userData?.cityVariant;
-    return !!v?.lit && v.kind === 'chunk' && shaderFacadesEnabled(this.detail === 'touch');
+    return !!v?.lit && v.kind === 'chunk' && shaderFacadesMode(this.detail === 'touch') === 'all';
   }
   private recordShared: { source: any; material: any } | null = null;
   private recordMaterialFor(key: string, records: FacadeRecordSet, wallUnit: number): any | null {

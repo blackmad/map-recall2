@@ -205,7 +205,7 @@ export type BakedCellData = { key: string; positions: Float32Array | Int16Array;
  * A record shell cell (F1 #380, `?shaderFacades=1`; world/worldCells.ts RecordShellCellData): the level 3 mesh (wall
  * metres, record index and wall kind per vertex) and the cell's records, drawn by the record material.
  */
-export type BakedRecordCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; records: FacadeRecordSet };
+export type BakedRecordCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; records: FacadeRecordSet; /** P5: the roofs' default-look attributes (RATT); the roofs then draw with the shared chunk material. */ look?: { uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; thin: Uint8Array } };
 const isRecordCell = (d: BakedCellData | BakedRecordCellData): d is BakedRecordCellData => 'walls' in d;
 
 /** One drawn cell as the facade layer sees it (ThreeBuildings applyHidden / paintShells read `mesh` and `ranges`). */
@@ -245,7 +245,8 @@ export interface BakedCoarseHost {
 /** GPU bytes of one resident cell by attribute (lane R4-I #253, the measure-first table). */
 export type BakedAttrBytes = { vertices: number; position: number; uv: number; layer: number; tint: number; accent: number; thin: number; hidden: number; swapSlot: number; index: number; float32: boolean; index32: boolean };
 
-type Resident = BakedEntry & { /** F1: the cell's own record material (drawn once its fade ends); absent: the host's chunk material. */ own?: any; triangles: number; bytes: number; gzBytes: number; attrs: BakedAttrBytes; fade?: { start: number; clone: any; source: any }; drawn: boolean;
+type Resident = BakedEntry & { /** F1: the cell's own record material (drawn once its fade ends); absent: the host's chunk material. */ own?: any;
+  /** P5: a record cell's roofs on the shared chunk material (a child of `mesh`), with its own fade clone while fading in. */ roof?: { mesh: any; fade?: any }; triangles: number; bytes: number; gzBytes: number; attrs: BakedAttrBytes; fade?: { start: number; clone: any; source: any }; drawn: boolean;
   /** Street-level lift: the CPU positions kept while buildings wait for their base. */
   lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number> }; lifted: boolean; liftable: boolean };
 
@@ -470,9 +471,26 @@ export class BakedCoarse {
     }
     g.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     if (this.host.swapSlots()) g.setAttribute('swapSlot', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
-    g.setIndex(release(new THREE.BufferAttribute(data.indices, 1)));
+    // P5 (#380): a record cell with its roofs' default look draws roof and lid triangles as the legacy shell does, on a
+    // child mesh with the shared chunk material; it shares position, hidden and swapSlot with the record mesh, so lifts
+    // and hides reach both. The record mesh keeps the walls.
+    const split = record?.look ? splitRoofTriangles(data.indices, record.wallKinds) : null;
+    let roofGeometry: any = null;
+    if (split && record?.look) {
+      const L = record.look;
+      roofGeometry = new THREE.BufferGeometry();
+      for (const name of ['position', 'hidden', 'swapSlot']) { const a = g.getAttribute(name); if (a) roofGeometry.setAttribute(name, a); }
+      roofGeometry.setAttribute('uv', release(new THREE.BufferAttribute(L.uvs, 2)));
+      roofGeometry.setAttribute('layer', release(new THREE.BufferAttribute(L.layers, 1, false)));
+      roofGeometry.setAttribute('tint', release(new THREE.BufferAttribute(L.tints, 4, true)));
+      roofGeometry.setAttribute('accent', release(new THREE.BufferAttribute(L.accents, 4, true)));
+      roofGeometry.setAttribute('thin', release(new THREE.BufferAttribute(L.thin, 2, false)));
+      roofGeometry.setIndex(release(new THREE.BufferAttribute(split.roof, 1)));
+    }
+    g.setIndex(release(new THREE.BufferAttribute(split ? split.walls : data.indices, 1)));
     g.computeBoundingSphere();
     if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5 / unit; // lifts are a few metres either way
+    if (roofGeometry && g.boundingSphere) roofGeometry.boundingSphere = g.boundingSphere.clone();
     const old = this.residents.get(data.key);
     const clone = relift && old ? null : this.host.fadeMaterial(0, own ?? undefined);
     if (clone) this.fadeIns++;
@@ -484,14 +502,24 @@ export class BakedCoarse {
     mesh.frustumCulled = true;
     mesh.userData.coarse = true;
     mesh.userData.bakedCoarse = data.key;
+    let roof: { mesh: any; fade?: any } | undefined;
+    if (roofGeometry) {
+      const fade = clone ? this.host.fadeMaterial(0) : null;
+      const rm = new THREE.Mesh(roofGeometry, fade ?? shared);
+      rm.name = `baked-coarse/${data.key}/roofs`; rm.castShadow = false; rm.frustumCulled = true;
+      rm.userData.coarse = true; rm.userData.bakedCoarse = data.key; rm.userData.bakedRoofs = true;
+      mesh.add(rm);
+      roof = { mesh: rm, ...(fade ? { fade } : {}) };
+    }
     const ranges = rangeMap(data.ranges);
     // A record cell counts its wall/rec/wallKind bytes under uv/layer/tint (the R4-I table's columns).
+    const L = roof ? record!.look! : null;
     const attrs: BakedAttrBytes = record
-      ? { vertices: n, position: positions.byteLength, uv: record.walls.byteLength, layer: record.recs.byteLength, tint: record.wallKinds.byteLength, accent: 0, thin: 0,
+      ? { vertices: n, position: positions.byteLength, uv: record.walls.byteLength + (L ? L.uvs.byteLength : 0), layer: record.recs.byteLength + (L ? L.layers.byteLength : 0), tint: record.wallKinds.byteLength + (L ? L.tints.byteLength : 0), accent: L ? L.accents.byteLength : 0, thin: L ? L.thin.byteLength : 0,
         hidden: n, swapSlot: g.getAttribute('swapSlot') ? n : 0, index: data.indices.byteLength, float32: positions instanceof Float32Array, index32: data.indices instanceof Uint32Array }
       : { vertices: n, position: positions.byteLength, uv: (data as BakedCellData).uvs.byteLength, layer: (data as BakedCellData).layers.byteLength, tint: (data as BakedCellData).tints.byteLength, accent: (data as BakedCellData).accents.byteLength,
       thin: g.getAttribute('thin') ? (data as BakedCellData).thin!.byteLength : 0, hidden: n, swapSlot: g.getAttribute('swapSlot') ? n : 0, index: data.indices.byteLength, float32: positions instanceof Float32Array, index32: data.indices instanceof Uint32Array };
-    const r: Resident = { key: data.key, mesh, ranges, ...(own ? { own } : {}), triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone, attrs,
+    const r: Resident = { key: data.key, mesh, ranges, ...(own ? { own } : {}), ...(roof ? { roof } : {}), triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone, attrs,
       bytes: attrs.position + attrs.uv + attrs.layer + attrs.tint + attrs.accent + attrs.thin + attrs.hidden + attrs.swapSlot + attrs.index,
       // A cell widened from the decimetre grid is drawn and lifted now, and fetched again exact (reliftNear).
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
@@ -571,9 +599,13 @@ export class BakedCoarse {
       const material = r.own ?? shared;
       if (r.fade) {
         const t = (now - r.fade.start) / BAKED_FADE_MS;
-        if (t < 1 && material && r.fade.source === material) { r.fade.clone.uniforms.cityFade.value = t * (material.uniforms?.cityFade?.value ?? 1); repaint = true; }
-        else { if (material) r.mesh.material = material; r.fade.clone.dispose?.(); delete r.fade; r.drawn = true; repaint = true; }
+        if (t < 1 && material && r.fade.source === material) {
+          r.fade.clone.uniforms.cityFade.value = t * (material.uniforms?.cityFade?.value ?? 1);
+          if (r.roof?.fade) r.roof.fade.uniforms.cityFade.value = t * (shared?.uniforms?.cityFade?.value ?? 1);
+          repaint = true;
+        } else { if (material) r.mesh.material = material; r.fade.clone.dispose?.(); delete r.fade; r.drawn = true; repaint = true; }
       } else if (material && r.mesh.material !== material) r.mesh.material = material;
+      if (r.roof && !r.fade) { if (r.roof.fade) { r.roof.fade.dispose?.(); delete r.roof.fade; } if (shared && r.roof.mesh.material !== shared) r.roof.mesh.material = shared; }
     }
     if (this.leaving?.step(now, shared?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     if (repaint) this.host.repaint();
@@ -587,9 +619,9 @@ export class BakedCoarse {
     if (!r) return;
     this.residents.delete(key);
     this.host.detach(r);
-    const release = () => { r.mesh.parent?.remove(r.mesh); r.mesh.geometry.dispose(); };
+    const release = () => { r.mesh.parent?.remove(r.mesh); r.mesh.geometry.dispose(); r.roof?.mesh.geometry.dispose(); };
     const from = r.fade ? r.fade.clone.uniforms.cityFade.value : 1;
-    r.fade?.clone.dispose?.();
+    r.fade?.clone.dispose?.(); r.roof?.fade?.dispose?.();
     // F1: a record cell leaves at once (its rows go back to the texture now; a leaving dissolve would read them reused).
     if (r.own) { if (!reinstall) this.host.freeRecords?.(key); release(); r.own.dispose?.(); return; }
     // Not a re-install of the same cell (install drops the old mesh after adding the new one: no overlap wanted).
@@ -623,4 +655,23 @@ export class BakedCoarse {
   }
 
   dispose(): void { this.clear(); }
+}
+
+/**
+ * P5 (#380): a record cell's index split into wall triangles (the record material) and roof/lid triangles (wallKind 7,
+ * either mirroring: the shared chunk material), each in its original order. Null when the cell has no roof triangle.
+ */
+export function splitRoofTriangles(indices: Uint16Array | Uint32Array, wallKinds: Uint8Array): { walls: Uint16Array | Uint32Array; roof: Uint16Array | Uint32Array } | null {
+  let roofN = 0;
+  for (let t = 0; t < indices.length; t += 3) if ((wallKinds[indices[t]] & 7) === 7) roofN += 3;
+  if (!roofN) return null;
+  const Ctor = indices instanceof Uint32Array ? Uint32Array : Uint16Array;
+  const walls = new Ctor(indices.length - roofN), roof = new Ctor(roofN);
+  let w = 0, r = 0;
+  for (let t = 0; t < indices.length; t += 3) {
+    const out = (wallKinds[indices[t]] & 7) === 7 ? roof : walls, at = out === roof ? r : w;
+    out[at] = indices[t]; out[at + 1] = indices[t + 1]; out[at + 2] = indices[t + 2];
+    if (out === roof) r += 3; else w += 3;
+  }
+  return { walls, roof };
 }

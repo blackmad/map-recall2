@@ -3,7 +3,7 @@
 // Run: node --import tsx --test src/canalRecall/engine/bakedCoarse.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { BAKED_FADE_MS, BAKED_RELEASE_M, BakedCoarse, bakedBytesEnabled, bakedReleaseM, releasedCells, bakedCellOrigin, bakedCoarseBudget, bakedCoarseEnabled, cellDistanceM, liftRanges, planBakedCells, rangeMap, type BakedCellData, type BakedCoarseHost, type BakedEntry } from './bakedCoarse.js';
+import { BAKED_FADE_MS, BAKED_RELEASE_M, BakedCoarse, bakedBytesEnabled, bakedReleaseM, releasedCells, bakedCellOrigin, bakedCoarseBudget, bakedCoarseEnabled, cellDistanceM, liftRanges, splitRoofTriangles, planBakedCells, rangeMap, type BakedCellData, type BakedCoarseHost, type BakedEntry } from './bakedCoarse.js';
 import { bakedCellArrays } from '../world/bakedCellArrays.js';
 import { NO_BID, shellOrigin, type ShellMesh } from '../world/shellMesh.js';
 import { cellBounds } from '../world/cellGrid.js';
@@ -414,4 +414,14 @@ test('BakedCoarse release (lane R4-K): a released cell the plan only keeps stays
   assert.ok(baked.holdsFar('2_0') && h.fetched.filter(f => f === '2_0').length === 1, '2_0 (1,500 m) stays released: hysteresis to 1,200 m');
   baked.frame(NOW + BAKED_FADE_MS + 1);
   assert.ok(baked.drawn('1_0') && !baked.holdsFar('1_0'));
+});
+
+test('P5 splitRoofTriangles: roof/lid triangles (kind 7, mirrored too) to the roof index, the rest to walls, order kept', () => {
+  const kinds = Uint8Array.from([0, 0, 0, 7, 7, 7, 15, 15, 15, 6, 6, 6]);
+  const idx = Uint16Array.from([0, 1, 2, 3, 4, 5, 9, 10, 11, 6, 7, 8]);
+  const s = splitRoofTriangles(idx, kinds)!;
+  assert.deepEqual([...s.walls], [0, 1, 2, 9, 10, 11]);
+  assert.deepEqual([...s.roof], [3, 4, 5, 6, 7, 8]);
+  assert.ok(s.walls instanceof Uint16Array);
+  assert.equal(splitRoofTriangles(Uint32Array.from([0, 1, 2]), kinds), null, 'no roof: no split');
 });

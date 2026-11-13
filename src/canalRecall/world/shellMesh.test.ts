@@ -209,7 +209,7 @@ test('shell bake: a cell takes its own ranges of a group chunk (allotment by its
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { decodeShel3, encodeShel3, recordShellFromChunk, WALL_KINDS, WALL_UV_UNIT_M, SHEL_RECORD_LEVEL } from './shellMesh.js';
+import { decodeShel3, encodeShel3, isRoofKind, recordShellFromChunk, WALL_KINDS, WALL_UV_UNIT_M, SHEL_RECORD_LEVEL } from './shellMesh.js';
 import { decodeShellCell, encodeShellCell } from './cellFormat.js';
 import { CROWN_BYTES, decodeCrow, decodeFrec, encodeCrow, encodeFrec, quantiseCrown, type CrownEntry } from './facadeStreams.js';
 import { bakedRecordArrays } from './bakedCellArrays.js';
@@ -286,4 +286,26 @@ test('the published legacy shells re-encode byte for byte (F1 adds streams, chan
     assert.ok(cell.shel && !cell.rshel && !cell.records);
     assert.ok(Buffer.from(encodeShellCell(cell).bytes).equals(raw), f);
   }
+});
+
+test('P5 RATT: a record shell carries its roof vertices in the default look; walls stay zero; the file round-trips', () => {
+  const c = recordChunk(), n = c.recs.length;
+  const look = { uvs: Float32Array.from({ length: n * 2 }, (_, k) => k * 0.37 - 1.3), layers: Uint8Array.from({ length: n }, (_, k) => 10 + k), tints: Uint8Array.from({ length: n * 4 }, (_, k) => (k * 7) & 255),
+    accents: Uint8Array.from({ length: n * 4 }, (_, k) => 255 - k), thin: Uint8Array.from({ length: n * 2 }, (_, k) => k) };
+  const m = recordShellFromChunk({ ...c, look }, [1000, 2000], id => ({ a: 0, b: 1 } as Record<string, number>)[id] ?? -1);
+  assert.ok(m.look);
+  const roof = [...m.wallKinds].map((k, i) => [k, i] as const).filter(([k]) => isRoofKind(k)).map(([, i]) => i);
+  assert.equal(roof.length, 3);
+  for (let k = 0; k < m.wallKinds.length; k++) if (!isRoofKind(m.wallKinds[k])) assert.equal(m.look!.layers[k] + m.look!.tints[k * 4] + m.look!.uvs[k * 2], 0, 'a wall vertex carries no look');
+  for (const k of roof) assert.ok(m.look!.layers[k] >= 10, 'a roof vertex carries its layer');
+  const set = { version: FACADE_RECORD_VERSION, count: 2, bytes: new Uint8Array(128) };
+  const back = decodeShellCell(encodeShellCell({ i: 0, j: 2, rshel: m, records: set }).bytes, 'ratt');
+  assert.deepEqual(back.rshel, m);
+  // An older record shell (no look) still writes no RATT and decodes without one.
+  const plain = recordShellFromChunk(c, [1000, 2000], id => ({ a: 0, b: 1 } as Record<string, number>)[id] ?? -1);
+  assert.equal(decodeShellCell(encodeShellCell({ i: 0, j: 2, rshel: plain, records: set }).bytes, 'p').rshel!.look, undefined);
+  // The baked arrays regroup the look with the vertices.
+  const g = bakedRecordArrays(m, ['a', 'b'], true);
+  assert.ok(g.look && g.look.layers.length === g.recs.length);
+  for (let v = 0; v < g.recs.length; v++) assert.equal(isRoofKind(g.wallKinds[v]), g.look!.layers[v] >= 10);
 });

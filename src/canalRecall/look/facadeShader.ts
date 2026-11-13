@@ -20,19 +20,30 @@ import { GLASS_STOPS } from './windowSdf.ts';
 import { BRICK_CELL_MEAN } from './palette.ts';
 
 export const SHADER_FACADES_PARAM = 'shaderFacades';
-export const SHADER_FACADES_DESKTOP_DEFAULT = false;
-export const SHADER_FACADES_TOUCH_DEFAULT = false;
+/**
+ * Where the record path draws: `off`; `far`, the baked coarse/far tier only (the near detail and runtime chunks keep the
+ * default look; P5, #380); `all`, every tier. The device defaults are the switch the integrator flips.
+ */
+export type ShaderFacadesMode = 'off' | 'far' | 'all';
+export const SHADER_FACADES_DESKTOP_DEFAULT: ShaderFacadesMode = 'off';
+export const SHADER_FACADES_TOUCH_DEFAULT: ShaderFacadesMode = 'off';
 
-/** The record path is drawn: `?shaderFacades=1|0` wins, then `window.__canalRecallShaderFacades`, then the device default. */
-export function shaderFacadesEnabled(touch = false, search?: string | null, global?: Record<string, unknown> | null): boolean {
+/**
+ * `?shaderFacades=0|1|far` wins (1 = all), then `window.__canalRecallShaderFacades` (a boolean, or 'far'), then the
+ * device default.
+ */
+export function shaderFacadesMode(touch = false, search?: string | null, global?: Record<string, unknown> | null): ShaderFacadesMode {
   const g = global ?? (globalThis as Record<string, unknown>);
   const s = search ?? ((g.location as { search?: string } | undefined)?.search ?? '');
-  const q = new RegExp(`[?&]${SHADER_FACADES_PARAM}=([01])\\b`).exec(s)?.[1];
-  if (q) return q === '1';
+  const q = new RegExp(`[?&]${SHADER_FACADES_PARAM}=(0|1|far)(?![\\w-])`).exec(s)?.[1];
+  if (q) return q === '1' ? 'all' : q === 'far' ? 'far' : 'off';
   const w = g.__canalRecallShaderFacades;
-  if (typeof w === 'boolean') return w;
+  if (typeof w === 'boolean') return w ? 'all' : 'off';
+  if (w === 'far') return 'far';
   return touch ? SHADER_FACADES_TOUCH_DEFAULT : SHADER_FACADES_DESKTOP_DEFAULT;
 }
+/** The record path draws in some tier (the baked far tier at least). */
+export const shaderFacadesEnabled = (touch = false, search?: string | null, global?: Record<string, unknown> | null): boolean => shaderFacadesMode(touch, search, global) !== 'off';
 
 const f1 = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
 const hexV3 = (hex: string) => `vec3(${[1, 3, 5].map(i => (parseInt(hex.slice(i, i + 2), 16) / 255).toFixed(5)).join(', ')})`;

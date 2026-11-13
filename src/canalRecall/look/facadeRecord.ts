@@ -453,7 +453,8 @@ export function facadeRecordFor(input: FacadeRecordInput): FacadeRecord {
   r.fasciaOn = shopfront ? (shopfront.fascia ? 1 : 0) : kind === 'shop' ? 1 : 0;
   const paint = hexRgb(shopfront?.colour) ?? hexRgb(input.groundHex) ?? r.wall;
   r.shopPaint = paint;
-  r.fascia = hexRgb(shopfront?.fasciaColour) ?? paint;
+  // P5: an unstated generic shop's sign board in the look's accent, as the atlas fascia paints it (bayTextures.ts fascia).
+  r.fascia = hexRgb(shopfront?.fasciaColour) ?? (!shopfront && kind === 'shop' ? hexRgb(input.accentHex) : undefined) ?? paint;
   r.displayWindows = num(shopfront?.displayWindows) ?? r.baysGround;
   r.fasciaHeightDm = FACADE_DEFAULTS.fasciaDm;
   r.stallriserDm = STALLRISER_DM[riser] ?? FACADE_DEFAULTS.stallriserDm;

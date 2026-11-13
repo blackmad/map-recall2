@@ -22,7 +22,7 @@ import { isMotorOnlyHighway, motorOnlyNames } from '../../src/canalRecall/routin
 import { wallTopHeightM } from '../../src/canalRecall/threeBuildingMesh.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceProfile } from '../../src/canalRecall/streetAppearance.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
-import { chunkMetres, farPrisms, quantisePrisms, recordShellFromChunk, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHL1_SIMPLIFY_M, type FarPrism, type RecordShellChunk, type RecordShellMesh, type ShellChunk, type ShellMesh } from '../../src/canalRecall/world/shellMesh.js';
+import { chunkMetres, farPrisms, quantisePrisms, recordShellFromChunk, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHL1_SIMPLIFY_M, type FarPrism, type RecordRoofLook, type RecordShellChunk, type RecordShellMesh, type ShellChunk, type ShellMesh } from '../../src/canalRecall/world/shellMesh.js';
 import { FACADE_RECORD_BYTES, FACADE_RECORD_VERSION, packFacadeRecordFor, type FacadeRecordInput, type FacadeSpecInput } from '../../src/canalRecall/look/facadeRecord.js';
 import type { FinishHint } from '../../src/canalRecall/look/finishHint.js';
 import type { FacadeRecordSet } from '../../src/canalRecall/world/facadeStreams.js';
@@ -215,7 +215,9 @@ export type RecordPart = RecordShellChunk & { inputs: FacadeRecordInput[] };
 export function bakeGroupRecordChunk(source: readonly Feature[], context: readonly Feature[], root: string, specFor?: (id: string) => FacadeSpecInput | undefined, finishHintFor?: (id: string) => FinishHint | undefined): RecordPart {
   const c = buildFeatureChunk(source as Feature[], SHELL_LOOK, 'coarse', shellStreets(root, source), shellProfiles(root), context as Feature[], [], new Map(), { shellRoofs: true, facadeRecord: true, ...(specFor ? { specFor } : {}), ...(finishHintFor ? { finishHintFor } : {}) });
   if (!c.record) throw Error('record bake: the mesher returned no record arrays');
-  return { positions: c.positions, indices: c.indices, ranges: c.ranges, walls: c.record.walls, recs: c.record.recs, wallKinds: c.record.wallKinds, inputs: c.record.inputs };
+  // P5: the default-look arrays ride along, so the record shell's roofs draw as the legacy shell's (RATT).
+  return { positions: c.positions, indices: c.indices, ranges: c.ranges, walls: c.record.walls, recs: c.record.recs, wallKinds: c.record.wallKinds, inputs: c.record.inputs,
+    look: { uvs: c.uvs, layers: c.layers, tints: c.tints, accents: c.accents, thin: c.thin ?? new Uint8Array(c.layers.length * 2) } };
 }
 
 /** The ranges of a record chunk whose building `keep` accepts, re-indexed; `recs` follow their range's new index. */
@@ -234,30 +236,39 @@ export function subsetRecordChunk(chunk: RecordPart, keep: (id: string) => boole
     if (a >= 0 && b >= 0 && c >= 0) idx.push(a, b, c);
   }
   const positions = new Float32Array(count * 3), walls = new Float32Array(count * 3), recs = new Uint16Array(count), wallKinds = new Uint8Array(count);
+  const src = chunk.look, look = src ? emptyLook(count) : undefined;
   for (let v = 0; v < n; v++) {
     const k = map[v]; if (k < 0) continue;
     positions.set(chunk.positions.subarray(v * 3, v * 3 + 3), k * 3); walls.set(chunk.walls.subarray(v * 3, v * 3 + 3), k * 3);
     recs[k] = recMap[chunk.recs[v]]; wallKinds[k] = chunk.wallKinds[v];
+    if (src && look) copyLook(src, v, look, k);
   }
-  return { positions, walls, recs, wallKinds, indices: Uint32Array.from(idx), ranges, inputs };
+  return { positions, walls, recs, wallKinds, indices: Uint32Array.from(idx), ranges, inputs, ...(look ? { look } : {}) };
 }
 
 export function mergeRecordChunks(parts: readonly RecordPart[]): RecordPart {
   if (parts.length === 1) return parts[0];
   const vn = parts.reduce((s, p) => s + p.recs.length, 0), tn = parts.reduce((s, p) => s + p.indices.length, 0);
   const positions = new Float32Array(vn * 3), walls = new Float32Array(vn * 3), recs = new Uint16Array(vn), wallKinds = new Uint8Array(vn), indices = new Uint32Array(tn);
+  const look = parts.every(p => p.look) ? emptyLook(vn) : undefined;
   const ranges: { id: string; start: number; count: number }[] = [], inputs: FacadeRecordInput[] = [];
   let v = 0, t = 0;
   for (const p of parts) {
     const m = p.recs.length, r0 = ranges.length;
     positions.set(p.positions, v * 3); walls.set(p.walls, v * 3); wallKinds.set(p.wallKinds, v);
+    if (look) { look.uvs.set(p.look!.uvs, v * 2); look.layers.set(p.look!.layers, v); look.tints.set(p.look!.tints, v * 4); look.accents.set(p.look!.accents, v * 4); look.thin.set(p.look!.thin, v * 2); }
     for (let k = 0; k < m; k++) recs[v + k] = p.recs[k] + r0;
     for (let k = 0; k < p.indices.length; k++) indices[t + k] = p.indices[k] + v;
     for (const r of p.ranges) ranges.push({ id: r.id, start: r.start + v, count: r.count });
     inputs.push(...p.inputs);
     v += m; t += p.indices.length;
   }
-  return { positions, walls, recs, wallKinds, indices, ranges, inputs };
+  return { positions, walls, recs, wallKinds, indices, ranges, inputs, ...(look ? { look } : {}) };
+}
+const emptyLook = (n: number): RecordRoofLook => ({ uvs: new Float32Array(n * 2), layers: new Uint8Array(n), tints: new Uint8Array(n * 4), accents: new Uint8Array(n * 4), thin: new Uint8Array(n * 2) });
+function copyLook(a: RecordRoofLook, i: number, b: RecordRoofLook, k: number): void {
+  b.uvs[k * 2] = a.uvs[i * 2]; b.uvs[k * 2 + 1] = a.uvs[i * 2 + 1]; b.layers[k] = a.layers[i];
+  b.tints.set(a.tints.subarray(i * 4, i * 4 + 4), k * 4); b.accents.set(a.accents.subarray(i * 4, i * 4 + 4), k * 4); b.thin.set(a.thin.subarray(i * 2, i * 2 + 2), k * 2);
 }
 
 /**
