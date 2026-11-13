@@ -1,5 +1,5 @@
 {
-  "toolchain": "1dd07a42d63a5ae36c7fb1b1d5f09ff2cdf2053a276409e4efa553fb4b6ae462",
+  "toolchain": "2c5b4b06c70b7c6764d203f45b5942705e8587a90725dc8d246f081a07029751",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -79,6 +79,7 @@
     "cinecenter": "a2869a2575e18f8e33ef3a7c538c3dccb68e79cc7193b84a154caffffcc92a4e",
     "citroen-zuid": "c7797e06b6a737d3f4cbede7b7b5ce6d70a00098d401266b3a65c349d02cc79f",
     "club-panama": "657f6d27826994be6c85fb51c2fe6f9d125d96344956851946368f6cf0154986",
+    "club-raum": "813294cb29f56038d1ae854a2c93d1bc80d7e23a61b97adc5dc0a856c62f7d9f",
     "collectie-six": "86b9bc615c0e070e9ba908d60466ec37dcfa57e86d17f18a5d961d688a49bdc0",
     "compagnietheater": "667404f838a5097b0a3002f4f662f94ade003dd3e4bc4bf0cd244962cd36f92f",
     "concertgebouw": "b9452c17950d55a5f7661b47258218b64ddbc4ab4b6a8a31c76f79cced9628c1",
@@ -356,6 +357,7 @@
     "roeterseiland-rec-a": "e6b9cf5843c4f6195ab2f552f81514f07801763bf1612f1f00fa39b89f388d0f",
     "ronde-lutherse-kerk": "0a558eeca25b390707d3a4582e018d6b9ecb07eea5157b71fe72d8168393fdc6",
     "royal-theater-carre": "7330e4efc07af31e0867708ae176aced62504b9db00df6bb0bffd084fe79736b",
+    "sameplace": "5e3705a3765bc6078167154bf058b1e02e28e08c9d485392bc3bd47b5ac7797f",
     "sarphati-plaza": "765ef023b024e6211f8558fd0ec729a8009aacb53a217e0e7eb19fdac0db2241",
     "sarphatimonument": "a2882e73dcc8821227d2cdc68968de4db5fee10b56dd359bfedae04937444da1",
     "scheepvaarthuis": "c1d4c7eeaca615590006a04a822751bd84bc15d9cbc3e557ca75d12b9d5d8665",
