@@ -1049,28 +1049,22 @@
   }
  },
  "de-hallen": {
-  "sourceHash": "00dccd677959bdce",
+  "sourceHash": "7c392a9ac9c771d5",
   "buildVersion": 2,
-  "bytes": 36728,
-  "triangles": 1661,
+  "bytes": 35356,
+  "triangles": 1565,
   "lod2": {
-   "sourceHash": "00dccd677959bdce",
+   "sourceHash": "7c392a9ac9c771d5",
    "buildVersion": 6,
-   "bytes": 8328,
-   "triangles": 280
+   "bytes": 9044,
+   "triangles": 328
   }
  },
  "huis-bartolotti": {
   "sourceHash": "22e4977c97d55677",
   "buildVersion": 2,
   "bytes": 28200,
-  "triangles": 1112,
-  "lod2": {
-   "sourceHash": "22e4977c97d55677",
-   "buildVersion": 6,
-   "bytes": 5552,
-   "triangles": 167
-  }
+  "triangles": 1112
  },
  "hart-museum": {
   "sourceHash": "e5b49b2b94517146",

@@ -5395,10 +5395,16 @@
       "bytes": 123316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "00dccd677959bdce",
+        "sourceHash": "7c392a9ac9c771d5",
         "buildVersion": 2,
-        "bytes": 36728,
-        "triangles": 1661
+        "bytes": 35356,
+        "triangles": 1565
+      },
+      "lod2": {
+        "sourceHash": "7c392a9ac9c771d5",
+        "buildVersion": 6,
+        "bytes": 9044,
+        "triangles": 328
       }
     },
     "huis-bartolotti": {

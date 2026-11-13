@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "De Hallen's windows sit on its wall again",
+      "text": "De Hallen's windows and gable ends now sit on the stepped brick front on the Bellamyplein side instead of hanging up to 6 m in front of it. A new check measures every window and door in every landmark model against its wall whenever a landmark is rebuilt, so floating windows can't slip in unnoticed.",
+      "where": [
+        4.8701,
+        52.3667
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Ordinary houses are back on their plots",
       "text": "Since early October every ordinary house was drawn a little too far from the city centre: about 1.5 m in the canal belt and up to about 4 m at the edge of the city, on both the map view and the street-level view. Two parts of the game used slightly different sizes for the Earth. Next to the houses that have their own models (which were placed correctly) this showed as houses overlapping their neighbours and gaps between them: the overlaps and gaps on this morning's Haarlemmerdijk picture. The wrong gables and the poor likeness on that picture were faults in the models themselves; five of its six houses are now held or waiting for review. Measured on 19,719 houses in the centre, the worst error drops from 4.4 m to 1.6 m, and 95 % of houses are now within half a metre. A smaller error remains far north and south of the centre: calculated at about 1.3 m at Zuidas and more in Zuidoost, still to be measured and fixed.",
       "where": [
