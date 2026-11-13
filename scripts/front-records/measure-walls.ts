@@ -16,13 +16,12 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
 import {hexToOklab} from '../../src/canalRecall/houseSpec/wallColour.ts';
+import {STRIP_SHIFT_M} from './strip-shift.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const argv = process.argv.slice(2);
 const opt = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
 const STRIPS = opt('strips') ?? '/Users/blackmad/Code/map-recall2-source-data/block-face-strips/haarlemmerbuurt-20261110/strips';
-/** Measured registration of each strip against its BAG splits (metres, + = the photo front stands right of its span). */
-export const STRIP_SHIFT_M: Record<string, number> = {'haarlemmerdijk-117-143': -1.2, 'haarlemmerdijk-2-58': 0.6, 'haarlemmerdijk-13-45': -0.9};
 const TARGET = 0.23, GMIN = 0.8, GMAX = 3; // lane WC EXPOSURE.target / gainMin / gainMax
 const lin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
 const unlin = (c: number) => 255 * (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
