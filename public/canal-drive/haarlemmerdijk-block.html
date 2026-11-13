@@ -34,6 +34,7 @@
   .num.off { border-color: var(--bad); }
   .num.off b { color: var(--bad); }
   .num.ok b { color: var(--good); }
+  .tflags { color: var(--muted); font-size: 11px; margin-bottom: 6px; }
   .problems { color: var(--warn); font-size: 12px; margin-bottom: 6px; }
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .grid.two { grid-template-columns: 1fr 1fr 1fr; }
@@ -104,6 +105,7 @@
       html.push(`<div class="row house${off ? ' is-off' : ''}"><h3>${esc(r.pandId)} <span class="note">${esc(r.street)}${r.note ? ' · ' + esc(r.note) : ''}</span></h3>
         <div class="nums">${ft}${st}${cr}${ground}</div>
         ${r.problems ? `<div class="problems">${r.problems.map(esc).join(' · ')}</div>` : ''}
+        ${r.flags ? `<div class="tflags">tool flags (pano-lens pair, advisory): ${r.flags.map(esc).join(' · ')}</div>` : ''}
         <div class="grid">${fig(r.photo, 'photo', 'no usable photo')}${fig(r.morning, 'this morning', 'not shot')}${fig(r.now, 'now', 'not shot yet')}</div></div>`);
     }
   }

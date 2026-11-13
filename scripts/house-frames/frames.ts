@@ -39,7 +39,8 @@ Input (one of)
   --list <file.json>     ["id", ...] or [{"pandId": "id", "bearing": 90, "at": [lng, lat], "key": "name"}, ...]
                          (bearing: prefer the wall facing it; at: the wall nearest this point, facing within 40 deg
                          of bearing; key: the output folder, for several walls of one pand;
-                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
+                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding;
+                         "MISSION_*" skips a whole mission, e.g. one whose positions are metres off);
                          maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
                          that the exposed-wall rule drops: Nassaukade 146, 0363100012160704;
@@ -342,7 +343,8 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
   const maxD = entry.maxDistM ?? args.maxDistM ?? FACADE_WINDOW.maxD;
   let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
-  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
+  // A notPanos entry ending in '*' is a prefix: 'TMX7316010203-001900_*' drops a whole mission (one placed metres off).
+  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.some(n => n.endsWith('*') ? c.panoId.startsWith(n.slice(0, -1)) : n === c.panoId));
   // A pinned capture (an entry's pano; the eyeball set's eyeball-poses.json) wins when it is in range; the sight-line
   // filter below is skipped for it (it was picked by eye).
   const pinned = entry.pano ? ranked.find(c => c.panoId === entry.pano) : undefined;

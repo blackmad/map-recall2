@@ -1,5 +1,8 @@
 {
  "title": "Haarlemmerdijk block",
+ "notPanos": [
+  "TMX7316010203-001900_*"
+ ],
  "groups": [
   {
    "face": "haarlemmerdijk-2-58",

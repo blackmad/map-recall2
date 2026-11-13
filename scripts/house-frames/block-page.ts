@@ -50,7 +50,15 @@ export const GROUND_CHANGED_MAX = 0.03;
 const PW_PORT = process.env.PW_PORT ?? '4675';
 
 export type RowGroup = { face: string; street: string; pands: string[] };
-export type Rows = { title: string; groups: RowGroup[] };
+/** notPanos: captures (or 'MISSION_*' prefixes) no pick may use, for every pand: see BAD_MISSIONS. */
+export type Rows = { title: string; notPanos?: string[]; groups: RowGroup[] };
+/**
+ * Missions whose panorama positions are metres off on this block (measured 2026-11-13): TMX7316010203-001900
+ * (2020-08-31) puts its captures ~9.4 m from the even-side fronts where the image shows ~5.7 m: the BAG outline
+ * that fits the game frame covers a third of the house it lands on in the photo, on all 18 even-side picks, while
+ * the 2020-01-10, 2021 and 2025 captures fit.
+ */
+export const BAD_MISSIONS = ['TMX7316010203-001900_*'];
 export type Pair = { game: number | string | null; photo: number | string | null; source: string };
 export type Numbers = { frontTopM?: Pair; storeys?: Pair; crown?: Pair };
 export type Frame = { src: string; caption: string };
@@ -60,6 +68,8 @@ export type ManifestRow = {
   photo?: Frame; morning?: Frame; now?: Frame;
   ground?: { changedPct: number; meanDelta: number; controlled: boolean };
   numbers?: Numbers; problems?: string[];
+  /** house:frames advisory flags from the pano-lens pair (flags only, not for acceptance). */
+  flags?: string[];
 };
 export type Manifest = {
   title: string; base: string; generatedAt: string;
@@ -88,7 +98,7 @@ export function rowsFromFaces(faces: string[], facesDir = 'scripts/block-face/fa
     const pands = strip?.spans.map(s => s.pandId) ?? disc!.members;
     return { face, street: disc?.street ?? '', pands: [...new Set(pands)] };
   });
-  return { title: 'Haarlemmerdijk block', groups };
+  return { title: 'Haarlemmerdijk block', notPanos: BAD_MISSIONS, groups };
 }
 
 // ---- shoot ----------------------------------------------------------------------------------------------------------
@@ -96,21 +106,22 @@ export function shoot(rows: Rows, run: string, before?: string): number {
   const root = path.join(FRAMES_ROOT, run), lists: string[] = [];
   for (const g of rows.groups) {
     const list = path.join(root, 'lists', `${g.face}.json`);
-    writeJson(list, g.pands);
+    writeJson(list, rows.notPanos?.length ? g.pands.map(pandId => ({ pandId, notPanos: rows.notPanos })) : g.pands);
     lists.push(`${list}:${path.join(root, g.face)}`);
   }
   const argv = ['--import', 'tsx', 'scripts/house-frames/frames.ts', '--lists', lists.join(','), '--rule10', '--reuse-photos',
     '--prefer-obliquity', '30', '--season', 'winter', '--label', run, ...(before ? ['--before', path.join(FRAMES_ROOT, before)] : [])];
   console.log(`block-page shoot: node ${argv.join(' ')}  (PW_PORT ${PW_PORT})`);
-  const t0 = Date.now();
+  const t0 = Date.now(), build = buildOf();
   const r = spawnSync('node', argv, { stdio: 'inherit', env: { ...process.env, PW_PORT } });
   const secs = Math.round((Date.now() - t0) / 1000);
-  writeJson(path.join(root, 'run.json'), { run, before: before ?? null, secs, build: buildOf(), shotAt: new Date().toISOString(), status: r.status });
+  writeJson(path.join(root, 'run.json'), { run, before: before ?? null, secs, build, shotAt: new Date().toISOString(), status: r.status });
   console.log(`block-page shoot: ${run} took ${secs} s (status ${r.status})`);
   return r.status ?? 1;
 }
+/** The build the dev server served: the last commit touching public/ (this page's own files excluded), plus dirt. */
 function buildOf(): string {
-  const sha = git(['rev-parse', '--short=9', 'HEAD']).stdout.trim();
+  const sha = git(['log', '-1', '--format=%h', '--abbrev=9', '--', 'public', ':!public/canal-drive/haarlemmerdijk-block.*']).stdout.trim();
   const dirty = git(['status', '--porcelain', '--', 'public']).stdout.trim() ? '+dirty public/' : '';
   return `${sha}${dirty}`;
 }
@@ -220,10 +231,12 @@ export async function publish(rows: Rows, run: string, column: 'morning' | 'now'
       const n: Numbers = { ...(nums.get(row.pandId) ?? {}) };
       if (!n.frontTopM && pose?.skyline) {
         const s = pose.skyline;
-        const gm = s.game?.medianM ?? s.gameMedianM ?? null, pm = s.photo?.medianM ?? s.photoMedianM ?? null;
+        const gm = s.offset?.game?.medianM ?? null, pm = s.offset?.photo?.medianM ?? null;
         if (gm != null || pm != null) n.frontTopM = { game: gm, photo: pm, source: `frames skyline (${run}, pano lens)` };
       }
       row.numbers = n;
+      row.flags = Object.entries(pose?.flags ?? {}).filter(([, v]) => v).map(([k, v]) => `${k}: ${v === true ? 'yes' : v}`);
+      if (!row.flags.length) delete row.flags;
       if (!row.problems.length) delete row.problems;
     }
   }
