@@ -104,6 +104,10 @@ test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 stor
   const traced46 = tracedFronts(table, 'haarlemmer-46-96');
   assert.ok(traced46.length >= 17, `${traced46.length} traced fronts on Haarlemmerstraat 46-96`);
   assert.ok(traced46.some(t => t.key === '0363100012171144'), 'HS54 traced');
+  // HS74A carries two fronts (plain brick | buff brick with white bands) split at 5.8 m, each traced with 3 bays.
+  const hs74a = traced46.filter(t => t.key.startsWith('0363100012175142#'));
+  assert.deepEqual(hs74a.map(t => [t.box.x0, t.box.x1]), [[0, 5.8], [5.8, 11.47]], 'HS74A split');
+  for (const t of hs74a) assert.ok(t.front.trace!.storeys.slice(1).every(s => s.length === 3), t.key);
   for (const t of [...traced, ...traced117, ...traced13, ...traced46]) {
     assert.equal(t.front.trace!.storeys.length, t.front.storeys, t.key);
     assert.ok(t.front.trace!.outline.length >= 3, t.key);
