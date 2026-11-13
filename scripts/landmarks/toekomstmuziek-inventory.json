@@ -1,0 +1,324 @@
+{
+ "schemaVersion": 1,
+ "id": "toekomstmuziek",
+ "pand": "0363100012110275",
+ "brief": "scripts/landmarks/toekomstmuziek-brief.md",
+ "signature": [
+  "f-sign",
+  "f-yellow-windows",
+  "f-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-148",
+   "bearing": 148,
+   "lengthM": 22.3,
+   "centre": [
+    4.875761,
+    52.396622
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_002217",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-cladding-se",
+     "kind": "other",
+     "where": "hall SE side: light grey profiled steel sheet over a brick plinth, the 27-C annex (another pand) against it from about 7 m",
+     "approxSizeM": [
+      22,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002217",
+     "how": "profiledRibs (new kit, 0.4 m pitch, 0.1 m ribs, 6 cm proud) above a 0.6 m stone plinth; ribs stop above the annex roof"
+    },
+    {
+     "id": "h-downpipe",
+     "kind": "other",
+     "where": "downpipe at the block corner",
+     "approxSizeM": [
+      0.1,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002026_pano_0000_002217",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipe"
+     }
+    }
+   ],
+   "note": "the 2019 crop the brief picked shows the old Danzigerhout unit before the 27-C annex; the 2021 and 2025 views (2025_10_02_11_11_01_00042) show the hall side"
+  },
+  {
+   "tag": "w02-328",
+   "bearing": 328,
+   "lengthM": 22.1,
+   "centre": [
+    4.8756435,
+    52.3967365
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_002225",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-roller-door",
+     "kind": "other",
+     "where": "hall NW side, about 3 m from the NE end: orange roller door",
+     "approxSizeM": [
+      3.0,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002225",
+     "how": "orange slab with horizontal slats in a dark frame; position from a bearing intersection on the oblique view, about 1 m"
+    },
+    {
+     "id": "h-cladding-nw",
+     "kind": "other",
+     "where": "profiled steel sheet over a plinth",
+     "approxSizeM": [
+      21.7,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002225",
+     "how": "profiledRibs, stopped at the roller door"
+    }
+   ],
+   "note": "oblique from 37 m behind a fence; the brief found no panorama within 35 m"
+  },
+  {
+   "tag": "w03-238",
+   "bearing": 238,
+   "lengthM": 15,
+   "centre": [
+    4.8754805,
+    52.396609
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_02_11_11_01_00035",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-sign",
+     "kind": "sign",
+     "where": "canopy box over the entrance, centre of the front",
+     "approxSizeM": [
+      3.9,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_02_11_11_01_00035",
+     "how": "white box canopy 3.9 x 0.5 x 0.6 m, yellow centre panel 2.1 m, TOEKOMSTMUZIEK in black 5x7 block capitals (nearbar-kit letters; typeface approximated: a plain sans capital)"
+    },
+    {
+     "id": "f-yellow-windows",
+     "kind": "window-shape",
+     "where": "first floor: six square windows in three pairs, the outer two black-framed, the inner four yellow-framed",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002221",
+     "how": "sashWindows lean 1x1 panes, frame gold/dark per window, sills omitted (brick runs to the frame), measured t 1.2/3.05/7.36/9.25/11.95/13.8 m, sill 3.95 m"
+    },
+    {
+     "id": "f-entrance",
+     "kind": "canopy",
+     "where": "glazed entrance with a yellow door frame under the box canopy",
+     "approxSizeM": [
+      3.1,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_02_11_11_01_00035",
+     "how": "dark frame, glass side lights, yellow door frame proud of the glazing"
+    },
+    {
+     "id": "f-ground-windows",
+     "kind": "window-shape",
+     "where": "ground floor NW end: two black-framed windows under the first pair",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002221",
+     "how": "sashWindows lean, dark frame"
+    },
+    {
+     "id": "f-plinth",
+     "kind": "other",
+     "where": "dark grey plinth courses along the foot of the block",
+     "approxSizeM": [
+      14.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002221",
+     "how": "greyBrick slab 0.3 m"
+    },
+    {
+     "id": "f-coping",
+     "kind": "other",
+     "where": "light metal coping along the parapet",
+     "approxSizeM": [
+      14.9,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002221",
+     "how": "frame slab at the roof edge"
+    },
+    {
+     "id": "f-posters",
+     "kind": "lettering",
+     "where": "event posters inside two first-floor windows (EVERY THURSDAY..., LIVE MUSIC / KARAOKE)",
+     "approxSizeM": [
+      1.1,
+      1.1
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_10_02_11_11_01_00035",
+     "skip": {
+      "reason": "temporary",
+      "note": "paper posters behind the glass, changed per programme"
+     }
+    },
+    {
+     "id": "f-camera",
+     "kind": "lamp",
+     "where": "CCTV camera at the SE corner, 3.3 m up",
+     "approxSizeM": [
+      0.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_10_02_11_11_01_00035",
+     "skip": {
+      "reason": "too-small",
+      "note": "20 cm camera"
+     }
+    },
+    {
+     "id": "f-letterbox",
+     "kind": "other",
+     "where": "letterbox and house-number plate beside the door",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002026_pano_0000_002221",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.5 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-58",
+   "bearing": 58,
+   "lengthM": 15,
+   "centre": [
+    4.8758395,
+    52.396733
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no photo: plain cladding inferred from the other hall sides"
+  },
+  {
+   "tag": "w05-328",
+   "bearing": 328,
+   "lengthM": 6,
+   "centre": [
+    4.8754585,
+    52.3966805
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_002225",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-windows",
+     "kind": "window-shape",
+     "where": "block NW end: two first-floor windows (yellow, black) and one ground-floor window",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002225",
+     "how": "sashWindows lean; positions read off an oblique view, about 0.4 m"
+    }
+   ]
+  },
+  {
+   "tag": "w06-148",
+   "bearing": 148,
+   "lengthM": 5.8,
+   "centre": [
+    4.875576,
+    52.396566
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_002217",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-windows",
+     "kind": "window-shape",
+     "where": "first floor of the block SE end: three windows, black, yellow, black",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_002217",
+     "how": "sashWindows lean at t 1.4/3.15/4.85 from the front corner"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (2021-02-24, 2025-10-02)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto RGB Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012110275",
+   "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012110275",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012110275",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Toekomstmuziek",
+   "url": "https://www.toekomstmuziek.com/",
+   "licence": "fact source only"
+  }
+ ]
+}

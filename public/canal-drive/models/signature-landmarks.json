@@ -95518,6 +95518,153 @@
         "bytes": 19536,
         "triangles": 895
       }
+    },
+    "toekomstmuziek": {
+      "id": "toekomstmuziek",
+      "name": "Toekomstmuziek",
+      "landmarkId": "n2738399729",
+      "modelUrl": "./models/toekomstmuziek.glb",
+      "suppressOsmIds": [
+        "w268508568",
+        "w848772807",
+        "NL.IMBAG.Pand.0363100012110275"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.875657494531835,
+          52.39666847068915
+        ],
+        "headingDegrees": 57.53067230641844,
+        "lengthMetres": 27.97,
+        "widthMetres": 16.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.87559522,
+          52.39664919
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#a6a89e",
+        "greyBrick": "#686c67",
+        "stone": "#93938d",
+        "gold": "#c9a63c",
+        "dark": "#2b2f33",
+        "glass": "#46545c",
+        "white": "#e4e7e5",
+        "concrete": "#a9adaa",
+        "frame": "#c3c8c6",
+        "slate": "#5d6266",
+        "red": "#c8642e"
+      },
+      "attribution": {
+        "title": "Toekomstmuziek",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.toekomstmuziek.com/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; windows, entrance, canopy sign, profiled hall cladding, roller door and rooflights measured from the 2021 and 2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8754212799639625,
+              52.396664493620676
+            ],
+            [
+              4.875418661880207,
+              52.39666346670148
+            ],
+            [
+              4.875426461655075,
+              52.39665599569265
+            ],
+            [
+              4.875496734732463,
+              52.39658860412363
+            ],
+            [
+              4.875537219626503,
+              52.396549781488666
+            ],
+            [
+              4.875608831530388,
+              52.39657767398391
+            ],
+            [
+              4.875620672506787,
+              52.39656631077769
+            ],
+            [
+              4.8757078604720485,
+              52.39660039109121
+            ],
+            [
+              4.875895897975358,
+              52.39667388626217
+            ],
+            [
+              4.875829459790218,
+              52.39673748384734
+            ],
+            [
+              4.8757772517313365,
+              52.39678765233642
+            ],
+            [
+              4.875504687385291,
+              52.396681157609265
+            ],
+            [
+              4.875493125594142,
+              52.396692513022224
+            ],
+            [
+              4.8754212799639625,
+              52.396664493620676
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -12.025383949279785,
+          -4.7683716530855236e-8,
+          -15.324654579162598
+        ],
+        "max": [
+          20.56668472290039,
+          6.840000152587891,
+          11.104408264160156
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87559522,
+          52.39664919
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 57.53067230641841,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.592068672180176,
+        "heightMetres": 6.840000200271607,
+        "depthMetres": 26.429062843322754,
+        "depthCoverage": 1.6017613844438032
+      },
+      "triangles": 3687,
+      "bytes": 65180,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
