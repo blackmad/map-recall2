@@ -445,8 +445,16 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
 - **guard** (every stated count, souterrain or not): the fitted pitch must lie in the period's range
   (`STOREY_PITCH_RANGE`, PR1's 1,432 read houses, 5th to 95th percentile, capped at 4.5 m: canal 2.50-4.26, c19 2.65-4.09,
   school 2.32-4.50, other 2.6-4.5). Outside it the count is dropped: the run draws the style's own count (the prior) and
-  `storeyPlanProbe` lists the pand for a second read and the publish veto list (`scripts/house-specs/storey-guard.ts`).
-  `?storeyGuard=0` / `STOREY_GUARD=0` draws the count as before.
+  `storeyPlanProbe` lists the pand for a second read and the publish veto list (`scripts/house-specs/storey-guard.ts`,
+  which splits rejects into (a) roof in the wall, no roof storey read; (c) eaves outside the window; (d) count plausibly
+  wrong). Before rejecting a too-tall pitch the fit retries with a tall ground row, 1.29 upper pitches (the p25 of the
+  ground / upper ratio over 180 hand fronts with storeyHeights; median 1.48), and draws that ground when it passes.
+  A rejected count is meant to take PR1's prior (`storeyRejectPrior`, set once its storeys ship); until then the style's
+  own. `?storeyGuard=0` / `STOREY_GUARD=0` draws the count as before (forwarded to the building worker).
+- **souterrain cell**: drawn at its fitted height down to 0.5 of the style's ground (`SPEC_SOUTERRAIN_GROUND_MIN`;
+  `SPEC_GROUND_SCALE.min` drew 171218's 2.17 m souterrain at 2.52 m). The 0.58 ratio against the five hand fronts that
+  state a souterrain height (souterrain / mean storey 0.62, 0.62, 0.63, 0.67, 0.85; canal belt only, no family split
+  possible) is kept: the measured median 0.63 is 0.2 m more on a 3.7 m pitch, and 171218's photo reads about 0.54.
 - **provenance**: souterrain and roof storey reach the view only from `monument-text`, `vision-judge` or stronger at
   confidence >= 0.5, and only with a stated count. Absent, the fit is H9/H11's, byte-identical.
 
