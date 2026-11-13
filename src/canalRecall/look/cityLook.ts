@@ -37,6 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
+import { modelWallFloorOn, modelWallTint } from './modelWallFloor.ts';
 import { installThinFade } from './thinFade.ts';
 import { optOutFog } from './depthFade.ts';
 import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, isMeasuredTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
@@ -293,7 +294,9 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * with the legacy recipe look) with the review corrections above. Flag off
  * never calls this.
  */
-export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, brickLift = false): string {
+export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, brickLift = false, modelWall = false): string {
+  // A model's unmeasured brick under `?modelWallFloor=1` (look/modelWallFloor.ts): no lighter than the generic path draws the same hex.
+  if (modelWall && (slot === 'brick' || slot === 'accent') && !isMeasuredTint(slot, source) && modelWallFloorOn()) return modelWallTint(cityLookTint(slot, hex, source, look, white, brickLift), hex);
   // Sunny look: a measured wall is first brought from its crop's white point to a sunlit white (look/sunny.ts);
   // painted stone and glass keep their own rules.
   if (isMeasuredTint(slot, source)) return cityTint(slot, sceneSlotHex(slot, hex, source, look, white), source);
@@ -322,8 +325,8 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
  * the chunks they stand beside (building-look.spec "share one brick", #76). Re-levelling the city look against the
  * sunny frame must lift chunks and slots together.
  */
-export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null, brickLift = false): [number, number, number, number] {
-  const tint = cityLookTint(slot, hex, source, look, white, brickLift);
+export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null, brickLift = false, modelWall = false): [number, number, number, number] {
+  const tint = cityLookTint(slot, hex, source, look, white, brickLift, modelWall);
   // Since the re-level (2026-10-30) the city look's chunks take the sunny wall exposure (litFacadeWallGain), so an
   // unrecorded GLB's brick takes it too, as in the default look (#73): `photoMatchedWallTint` with no exposure record.
   const [r, g, b] = hexToRgb(photoMatchedWallTint(slot, tint, exposure ?? null, source, look));
@@ -902,7 +905,7 @@ export function slotForMaterial(material: any, infer: boolean): { slot: Material
 /** Write `layer` (slot ordinal) and `tint` on a geometry; false when it already carries different ones. */
 export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot, hex: string, hints: SlotVariantHints = {}): boolean {
   const n = geometry.getAttribute('position')?.count ?? 0;
-  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex, hints.source, undefined, hints.whitePoint, hints.exposure);
+  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex, hints.source, undefined, hints.whitePoint, hints.exposure, false, true);
   const prior = geometry.getAttribute('layer'), priorTint = geometry.getAttribute('tint');
   if (prior && priorTint) {
     const same = prior.getX(0) === layer && Math.round(priorTint.getX(0) * 255) === tint[0] && Math.round(priorTint.getY(0) * 255) === tint[1] && Math.round(priorTint.getZ(0) * 255) === tint[2];

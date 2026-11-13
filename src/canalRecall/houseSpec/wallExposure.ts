@@ -105,4 +105,6 @@ export function smoothFinishOf(material: string | undefined, stone: boolean | un
   return material === 'stucco' || material === 'painted-brick' ? 'painted' : null;
 }
 /** City stone (palette.ts CITY_STONE): the tone a stone front takes when no reading says otherwise. */
+/** A stone front read darker than this OKLab L draws STONE_HEX (`?wallFinish=1`). */
+export const STONE_MIN_L = 0.55;
 export const STONE_HEX = '#cfc8b8';

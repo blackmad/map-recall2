@@ -73,6 +73,11 @@ test('decorate: ?wallExposure=norm draws the norm brick; ?wallFinish=1 marks ren
     assert.equal((stone.specRecipe as { finish?: string; wallHex?: string }).finish, 'stone');
     assert.equal((stone.specRecipe as { wallHex?: string }).wallHex, STONE_HEX);
     assert.equal(stone.registerFinish, 'light');
+    // 171970: a stone front read dark (#3f3e3c, shade or a misread) draws the city stone; a pale stone reading keeps its colour.
+    const darkStone = houseSpecPatch({ wallHex: '#3f3e3c', wallMaterial: 'stucco', wallStone: true, src: { wallHex: 'streetlevel-measured' } }, p);
+    assert.equal((darkStone.specRecipe as { wallHex?: string }).wallHex, STONE_HEX);
+    const paleStone = houseSpecPatch({ wallHex: '#d8d0bc', wallMaterial: 'stucco', wallStone: true, src: { wallHex: 'streetlevel-measured' } }, p);
+    assert.notEqual((paleStone.specRecipe as { wallHex?: string }).wallHex, STONE_HEX);
     assert.equal(smoothFinishOf('painted-brick', false), 'painted');
     assert.equal(smoothFinishOf('brick', false), null);
   } finally { delete process.env.WALL_EXPOSURE; delete process.env.WALL_FINISH; resetWallExposureMode(); resetWallFinish(); }

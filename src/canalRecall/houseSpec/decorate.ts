@@ -18,7 +18,7 @@ import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
 import { brickLiftOn } from '../look/brickLift.js';
-import { EXPOSURE, exposedWall, smoothFinishOf, STONE_HEX, wallExposureMode, wallFinishOn } from './wallExposure.js';
+import { EXPOSURE, exposedWall, smoothFinishOf, STONE_HEX, STONE_MIN_L, wallExposureMode, wallFinishOn } from './wallExposure.js';
 import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
@@ -242,7 +242,9 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   if (smoothFinish) {
     recipe.finish = smoothFinish;
     if (recipe.heldBrick) delete recipe.heldBrick;
-    if (smoothFinish === 'stone' && !recipe.wallHex) recipe.wallHex = STONE_HEX;
+    // Natural stone is pale: a reading below STONE_MIN_L is shade, soot or a misread neighbour (171970 read #3f3e3c, a white
+    // sandstone front in the photo), so it takes the city stone too.
+    if (smoothFinish === 'stone' && (!recipe.wallHex || hexToOklab(recipe.wallHex)[0] < STONE_MIN_L)) recipe.wallHex = STONE_HEX;
   }
   // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
   if (view.storeys && view.storeys >= 2) {

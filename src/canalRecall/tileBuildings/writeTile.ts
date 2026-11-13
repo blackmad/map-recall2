@@ -242,7 +242,7 @@ export async function convertGlbUnit(source: Uint8Array, extras: Record<string, 
     if (why) { passthrough.push({material: m?.getName() ?? '', why, triangles: tri}); continue; }
     const {slot, tint, inferred: inf, source} = gltfSlot(m!);
     if (inf) inferred++;
-    const n = pos.getCount(), layer = slotLayerOf(slot, {source}), bytes = slotTintBytes(slot, tint, source);
+    const n = pos.getCount(), layer = slotLayerOf(slot, {source}), bytes = slotTintBytes(slot, tint, source, undefined, undefined, undefined, false, true);
     if (!prim.getAttribute('NORMAL')) addFlatNormals(doc, prim);
     for (const sem of prim.listSemantics()) if (!['POSITION', 'NORMAL', 'TEXCOORD_0'].includes(sem)) prim.setAttribute(sem, null);
     prim.setAttribute('_LAYER', doc.createAccessor().setType('SCALAR').setArray(new Uint8Array(n).fill(layer)).setBuffer(buffer));

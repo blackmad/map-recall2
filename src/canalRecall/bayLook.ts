@@ -264,8 +264,12 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const h = hashSeed(id);
   const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolDraw(at[0], at[1], archetype, h >>> 7) : null;
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone front (spec.painted) takes the same smooth cells.
-  const painted = draw?.painted || (spec?.painted && !recipe && !vocab && !contemporary) ? paintedLayers(archetype) : null;
-  const style = painted ? PAINTED_BASE_STYLE[archetype]! : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
+  const ownStyle = () => contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
+  // The smooth cells exist for one plain style only (PAINTED_BASE_STYLE): a spec'd front whose own style carries white
+  // accents or arched heads keeps its brick cells rather than lose the accents (kit gap: no smooth cells with accents).
+  const specSmooth = spec?.painted && !recipe && !vocab && !contemporary && !((s: BayVariant | undefined) => s?.paleAccents || s?.lintel === 'arch')(BAY_STYLES[archetype][ownStyle()] as BayVariant | undefined);
+  const painted = draw?.painted || specSmooth ? paintedLayers(archetype) : null;
+  const style = painted ? PAINTED_BASE_STYLE[archetype]! : ownStyle();
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
