@@ -363,8 +363,11 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
     return clipMemo.get(c)!;
   };
   // --square: the lowest obliquity first, a clipped crown second (lane BA: 165073 took a 41 deg unclipped capture over a 14 deg one).
-  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || (args.square ? a.c.obliquityDeg - b.c.obliquityDeg || clipKey(a.c) - clipKey(b.c) : clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c)) || a.i - b.i);
-  return { wall, quad, note, ranked, order, seasonKey, clipKey, oblKey };
+  // --square: a capture inside the limit that holds the crown (often the far bank) first, then the lowest obliquity;
+  // the engine cannot pitch above the horizon, so a near square capture of a tall front clips its crown.
+  const squareKey = (c: PanoPick) => c.obliquityDeg <= (lim ?? SQUARE_MAX_DEG) && !clipKey(c) ? 0 : 1;
+  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || (args.square ? squareKey(a.c) - squareKey(b.c) || a.c.obliquityDeg - b.c.obliquityDeg : clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c)) || a.i - b.i);
+  return { wall, quad, note, ranked, order, seasonKey, clipKey, oblKey, squareKey };
 }
 
 /** The F4 pick (pose.ts aimPose on the chosen capture): rankCandidates, then the 2000 px glare/washed/foliage pre-pass. */
@@ -373,7 +376,7 @@ export async function pickPose(entry: Entry, fp: Footprint | undefined, args: Ar
   const pandId = entry.id, key = entry.key ?? entry.id;
   const cand = ranked0 ?? await rankCandidates(entry, fp, args);
   if ('skip' in cand) return cand;
-  const { wall, quad, ranked, order, seasonKey, clipKey, oblKey } = cand, lim = args.preferObliquityDeg;
+  const { wall, quad, ranked, order, seasonKey, clipKey, oblKey, squareKey } = cand, lim = args.preferObliquityDeg;
   const why: string[] = [cand.note];
   const pool: { c: PanoPick; i: number; q: PanoQuality; reject?: string }[] = [];
   const judge = () => {
@@ -388,7 +391,7 @@ export async function pickPose(entry: Entry, fp: Footprint | undefined, args: Ar
   }
   judge();
   const rejected = pool.filter(p => p.reject), live = pool.filter(p => !p.reject).length ? pool.filter(p => !p.reject) : [...pool].sort((a, b) => (a.q.glare ?? 0) - (b.q.glare ?? 0));
-  live.sort((a, b) => (args.square ? seasonKey(a.c) - seasonKey(b.c) || a.c.obliquityDeg - b.c.obliquityDeg : lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
+  live.sort((a, b) => (args.square ? seasonKey(a.c) - seasonKey(b.c) || squareKey(a.c) - squareKey(b.c) || a.c.obliquityDeg - b.c.obliquityDeg : lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const chosen = live[0], pick = chosen.c, foliage: number | null = chosen.q.leaf;
   if (args.square && pick.obliquityDeg > (lim ?? SQUARE_MAX_DEG)) { why.push(`no square exists: the lowest obliquity in range is ${pick.obliquityDeg.toFixed(0)} deg (> ${lim ?? SQUARE_MAX_DEG})`); console.warn(`${key}: no square exists (lowest obliquity ${pick.obliquityDeg.toFixed(0)} deg)`); }
   why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'}, glare ${chosen.q.glare == null ? '?' : (chosen.q.glare * 100).toFixed(0) + '%'} (pre-pass over ${pool.length}${rejected.length ? `; rejected ${rejected.map(p => `${p.c.timestamp.slice(0, 10)} ${p.reject}`).join(', ')}` : ''}${chosen.reject ? '; every candidate rejected, least glare kept' : ''})`);
