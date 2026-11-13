@@ -1,0 +1,296 @@
+{
+ "note": "Hand reads behind data/front-records/haarlemmerdijk-block.json. Heights are metres above the block-face strip's ground (strip.json groundNAP; the builder moves them to the pand's ground). Each pand lists its reads strongest first: the builder keeps the first stated value per field and records any later read more than 0.5 m (or a different family/bays/storeys) away as a conflict. 'lane2-strip-read' = this lane's read of a 1 m gridded crop of the block-face strip (Gemeente Amsterdam panorama, CC BY 4.0; image staging/block-face/<face>/strip.jpg in the belt-haarlemmer-20261110 worktree, crop at 1.1-2x with brightness x1.6, 2026-11-13). 'reviewer-strip-read' = the belt-haarlemmer lane's 1 m grid reads of the same strips (2026-11-10), transcribed from the cited file. No Gemini or Jev reads are used.",
+ "refs": {
+  "crowns": "scripts/block-face/buurten/haarlemmerbuurt-west-review-crowns.json",
+  "eaves": "scripts/block-face/buurten/haarlemmerbuurt-west-review-eaves.json",
+  "holds": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json",
+  "types": "scripts/block-face/buurten/haarlemmerbuurt-west-review-types.json"
+ },
+ "pands": [
+  {"pandId": "0363100012177585", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 0-383", "frontTop": 12.9, "frontTopKind": "gable-foot", "crown": {"family": "neck", "note": "a 9.6 m double front with two neck gables; gable windows 13.0-14.0 m; the neck tops stand above the 17 m crop and were not read"}, "groundTop": 5.0, "rows": [[6.4, 8.8], [9.6, 11.65]], "storeys": 3, "wallWord": "dark brown brick", "trimWord": "white frames, cream scrolls", "note": "two fronts on one pand; bays not counted"}
+  ]},
+  {"pandId": "0363100012177584", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 383-606", "frontTop": 12.1, "frontTopKind": "gable-foot", "crown": {"family": "neck", "note": "white scroll shoulders from 12.1 m; the neck top stands above the 17 m crop and was not read"}, "groundTop": 5.0, "rows": [[6.4, 8.5], [9.5, 11.3]], "storeys": 3, "bays": 3, "wallWord": "brown brick", "trimWord": "white scrolls and frames"}
+  ]},
+  {"pandId": "0363100012177590", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 606-838", "frontTop": 13.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "note": "flat crenellated parapet"}, "wallWord": "brown brick", "trimWord": "white balcony rails", "note": "modern ribbon windows with balconies; rows not read"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 52", "crown": {"family": "flat-parapet", "note": "flat crenellated parapet over modern ribbon windows"}}
+  ]},
+  {"pandId": "0363100012176280", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 50", "frontTop": 12.4, "frontTopKind": "gable-foot", "crown": {"family": "neck"}, "groundTop": 5.5, "rows": [[6.6, 8.6], [9.6, 11.4]], "storeys": 3, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 838-1064", "frontTop": 12.8, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 15.75, "note": "neck with white scrolls at the foot"}, "groundTop": 5.5, "rows": [[6.9, 9.2], [10.1, 12.0]], "storeys": 3, "wallWord": "dark brown brick", "trimWord": "white scrolls and frames"}
+  ]},
+  {"pandId": "0363100012176278", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 48", "storeys": 4, "note": "4-storey front with a modern shop and painted bands, not read at full size"},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 1064-1288", "note": "a cornice band with round medallions; the top reaches the 17 m crop edge and was not read"}
+  ]},
+  {"pandId": "0363100012176279", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 1288-1518", "note": "scaffolded and wrapped on the 2022-12-15 strip: not readable"}
+  ]},
+  {"pandId": "0363100012177674", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 44", "note": "scaffolded and wrapped on the 2022-12-15 strip"}
+  ]},
+  {"pandId": "0363100012167821", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 28", "crown": {"family": "other", "note": "tall 15 m front with a stepped attic"}, "note": "15 m is a description, not a gridded read"}
+  ]},
+  {"pandId": "0363100012167820", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 26", "note": "front cut by the strip seam; crown unreadable"}
+  ]},
+  {"pandId": "0363100012167819", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3128-3437", "frontTop": 12.4, "frontTopKind": "cornice-top", "crown": {"family": "other", "topM": 14.9, "note": "7.7 m double front: the left part an ornate white raised attic with a dormer over a cornice at about 12.4 m, the right part a cornice with a small dormer to about 14.2 m"}, "wallWord": "brown brick, stucco ground storey", "trimWord": "white cornice and attic", "note": "two fronts on one pand; rows not read"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 22", "crown": {"family": "other", "note": "a raised neck gable and ornate top; not checked at full size"}}
+  ]},
+  {"pandId": "0363100012167818", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 20", "frontTop": 10.2, "frontTopKind": "gable-foot", "crown": {"family": "neck", "neckWidthM": 1.55, "topM": 12.9, "atticWindows": 1, "note": "neck 10.2-12.9 m with scrolls"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3437-3588 (the front stands about 0.6 m right of its BAG split)", "frontTop": 10.2, "frontTopKind": "gable-foot", "crown": {"family": "neck", "neckWidthM": 1.6, "topM": 12.2, "ornamentTopM": 13.3, "atticWindows": 1, "note": "sandstone scrolls at the shoulders, attic light 10.7-11.6 m, carved crest over the cap"}, "groundTop": 5.1, "rows": [[5.6, 7.5], [8.15, 9.7]], "storeys": 3, "bays": 2, "wallWord": "dark red-brown brick", "trimWord": "cream sandstone scrolls, white frames", "note": "the second upper row has three narrower windows (bays 2, 2, 3 from the ground, as the hand spec says)"}
+  ]},
+  {"pandId": "0363100012167817", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 18", "frontTop": 11.4, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 12.3, "dormer": {"kind": "crowned", "topM": 12.3}, "note": "brick to 10.0 m, a cream attic frieze and cornice 10.0-11.4 m, a small crowned piece over the middle"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3588-3743", "frontTop": 10.9, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.9, "ornamentTopM": 12.7, "dormer": {"kind": "crowned", "topM": 12.7}, "note": "cream cornice band 10.0-10.9 m, then a full-width dark brick attic 10.9-11.9 m with a small crowned piece over the middle"}, "groundTop": 4.9, "rows": [[5.6, 7.55], [8.1, 9.85]], "storeys": 3, "bays": 2, "wallWord": "dark grey-brown brick", "trimWord": "cream band, white frames"}
+  ]},
+  {"pandId": "0363100012167816", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 16", "frontTop": 11.6, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "flat cornice"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3743-3899", "frontTop": 11.7, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "a plain dark brick cornice 11.2-11.7 m with a small dentil: not white (the types pin calls it a flat white cornice)"}, "groundTop": 4.9, "rows": [[5.95, 7.8], [8.8, 10.65]], "storeys": 3, "bays": 2, "wallWord": "dark red-brown brick", "trimWord": "dark brick cornice, white frames"}
+  ]},
+  {"pandId": "0363100012176104", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 14", "frontTop": 14.8, "frontTopKind": "parapet-top", "crown": {"family": "other", "note": "two storeys of projecting timber erkers over the shop and a flat top"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3899-4060", "frontTop": 14.6, "frontTopKind": "parapet-top", "crown": {"family": "other", "note": "timber erkers 5.0-10.8 m; a brick raised attic with a loggia 12.0-12.9 m and a sloped-shoulder top"}, "wallWord": "brown brick", "trimWord": "white erkers"}
+  ]},
+  {"pandId": "0363100012176103", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4060-4232", "frontTop": 11.2, "frontTopKind": "cornice-top", "crown": {"family": "other", "topM": 13.05, "note": "ornate raised attic piece over a two-storey oriel (5.2-9.6 m)"}, "wallWord": "red brick", "trimWord": "white oriel and attic"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 12", "crown": {"family": "other", "note": "ornate front with an oriel and a raised attic"}}
+  ]},
+  {"pandId": "0363100012176102", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 10", "frontTop": 10.7, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "flat cornice"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4232-4399", "frontTop": 10.45, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "plaster frieze 9.3-10.3 m under the cornice"}, "groundTop": 4.2, "rows": [[4.7, 6.4], [7.1, 8.8]], "storeys": 3, "bays": 2, "wallWord": "painted plaster, pale grey", "trimWord": "white"}
+  ]},
+  {"pandId": "0363100012176101", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + holds: Haarlemmerdijk 8", "frontTop": 12.0, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 14.5}, "rows": [[10.1, 11.6]], "note": "four window rows, the top one 10.1-11.6 m under the gable (only the top row was given)"},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4399-4574", "frontTop": 12.0, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 14.5, "atticWindows": 1}, "groundTop": 4.2, "rows": [[4.8, 6.5], [7.5, 9.2], [10.1, 11.5]], "storeys": 4, "bays": 2, "wallWord": "grey painted plaster", "trimWord": "white"}
+  ], "rowsFrom": 1},
+  {"pandId": "0363100012176172", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 6", "frontTop": 11.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 12.2, "dormer": {"kind": "crowned", "topM": 12.2}, "note": "a deep cream cornice band 10.0-11.0 m with a small crowned piece over the middle, no roof face over it"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4574-4743", "frontTop": 11.2, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 12.4, "dormer": {"kind": "crowned", "topM": 12.4}}, "groundTop": 4.2, "rows": [[4.75, 6.5], [7.3, 9.2]], "storeys": 3, "bays": 2, "wallWord": "dark brick", "trimWord": "cream cornice band, white frames"}
+  ]},
+  {"pandId": "0363100012176174", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 4", "frontTop": 9.8, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 12.0, "note": "low bell gable, shoulders 10.0 m"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4743-4916", "frontTop": 9.8, "frontTopKind": "gable-foot", "crown": {"family": "bell", "neckWidthM": 1.35, "topM": 11.6, "ornamentTopM": 11.9, "atticWindows": 1, "note": "bell sweeps from the full width to a 1.35 m cap; gable window 9.8-10.6 m"}, "groundTop": 4.0, "rows": [[4.75, 6.55], [7.4, 8.7]], "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white frames and cap"}
+  ]},
+  {"pandId": "0363100012176175", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 2", "crown": {"family": "other", "topM": 13.4, "note": "corner pand, three axes under an ornate raised gable"}, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4917-5114", "crown": {"family": "other", "topM": 13.4}, "note": "ornate raised top to about 13.4 m; the wall top under it was not read"}
+  ]},
+  {"pandId": "0363100012176652", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 0-182 (fronts stand about 1.2 m left of their BAG splits on this strip)", "frontTop": 10.3, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}, "groundTop": 4.0, "rows": [[4.9, 6.0], [7.2, 8.6]], "storeys": 3, "wallWord": "brown brick", "trimWord": "white frames"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 117", "frontTop": 10.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}}
+  ]},
+  {"pandId": "0363100012165102", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 119A", "frontTop": 6.6, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 9.5}, "storeys": 2},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 182-369", "frontTop": 6.5, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 9.4, "atticWindows": 1, "note": "twin of 121A: sandstone claw pieces at the shoulders, gable window 6.3-7.4 m"}, "groundTop": 4.0, "rows": [[4.05, 5.75]], "storeys": 2, "bays": 2, "wallWord": "brown brick", "trimWord": "white cap and frames, cream claw pieces"}
+  ]},
+  {"pandId": "0363100012165074", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 369-520", "frontTop": 6.5, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 9.3, "atticWindows": 1, "note": "twin of 119A"}, "groundTop": 4.0, "rows": [[4.05, 5.75]], "storeys": 2, "bays": 2, "wallWord": "brown brick", "trimWord": "white cap and frames, cream claw pieces"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 121A", "crown": {"family": "bell"}, "storeys": 2}
+  ]},
+  {"pandId": "0363100012165073", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 520-740, two crops (2x and 1.6x) read the same lines", "frontTop": 10.35, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.8, "ornamentTopM": 12.6, "dormer": {"kind": "box", "topM": 11.8}, "note": "white entablature 9.25-10.35 m over painted brick; a small box (chimney) dormer 10.8-11.8 m with a hood, a weathervane to 12.6 m"}, "groundTop": 3.9, "rows": [[4.4, 6.1], [6.95, 8.7]], "storeys": 3, "bays": 2, "wallWord": "dark grey painted brick", "trimWord": "white cornice and frames", "note": "two wide two-light windows per storey; the visible front is about 4.8 m of the 5.5 m BAG frontage"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 123", "crown": {"family": "straight-cornice", "dormer": {"kind": "box", "topM": null}, "note": "cornice house with a chimney dormer"}}
+  ]},
+  {"pandId": "0363100012171347", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 739-940", "frontTop": 14.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "ornamentTopM": 16.6, "dormer": {"kind": "spire", "topM": 16.6}, "note": "bracketed crenellated cornice 12.9-14.3 m and a spire dormer"}, "groundTop": 4.0, "rows": [[4.9, 6.8], [7.8, 9.7], [10.6, 12.5]], "storeys": 4, "bays": 3, "wallWord": "dark brick with chequered bands", "trimWord": "white frames and cornice"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 125", "crown": {"family": "straight-cornice", "ornamentTopM": 16.5, "dormer": {"kind": "spire", "topM": 16.5}, "note": "eclectic tower front with a crenellated cornice and a spire dormer"}}
+  ]},
+  {"pandId": "0363100012171346", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 940-1114", "frontTop": 10.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "note": "ornamented frieze 8.6-10.0 m; a set-back roof structure with a raking brace to 11.6 m"}, "groundTop": 3.8, "rows": [[4.25, 5.9], [6.4, 8.1]], "storeys": 3, "wallWord": "dark brick", "trimWord": "white ribbon frames", "note": "ribbon windows shared with 129"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 127", "crown": {"family": "flat-parapet", "note": "horizontal balcony bands and a flat roof"}}
+  ]},
+  {"pandId": "0363100012173469", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1115-1249", "frontTop": 10.0, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}, "groundTop": 3.8, "rows": [[4.25, 5.9], [6.4, 8.1]], "storeys": 3, "bays": 1, "wallWord": "beige band", "trimWord": "white", "note": "one ribbon window per storey, a row of small lights 8.85-9.4 m"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 129", "bays": 1, "note": "a beige band front with one ribbon window per storey"}
+  ]},
+  {"pandId": "0363100012173479", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 131", "frontTop": 9.9, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.5, "dormer": {"kind": "pediment", "topM": 11.5}, "note": "white cornice 9.3-9.9 m"}, "rows": [[4.8, 6.3], [6.6, 8.4]], "storeys": 3, "bays": 2},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1249-1463", "frontTop": 10.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 10.4, "ornamentTopM": 11.4, "dormer": {"kind": "crowned", "topM": 10.4}, "note": "white entablature 8.75-10.0 m with small attic lights, an arched crowned dormer front"}, "groundTop": 3.9, "rows": [[4.3, 6.0], [6.5, 8.05]], "storeys": 3, "bays": 2, "wallWord": "dark brick", "trimWord": "white"}
+  ]},
+  {"pandId": "0363100012173480", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1463-1640", "frontTop": 9.0, "frontTopKind": "gable-foot", "crown": {"family": "bell", "widthM": 4.7, "neckWidthM": 1.3, "topM": 10.4, "ornamentTopM": 11.2, "atticWindows": 1, "note": "brick concave sweeps from the full width up to a 1.3 m top with a carved crest; no separate claw pieces, so it reads as a bell"}, "groundTop": 4.0, "rows": [[4.6, 6.0], [6.9, 8.25]], "storeys": 3, "bays": 2, "wallWord": "red-brown brick", "trimWord": "white frames"},
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 133A", "frontTop": 9.2, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 11.6, "atticWindows": 1}, "rows": [[5.0, 6.6], [6.9, 8.2]], "storeys": 3, "bays": 2}
+  ]},
+  {"pandId": "0363100012173482", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1640-1887", "frontTop": 13.8, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white cornice band about 12.0-13.8 m"}, "groundTop": 4.1, "bays": 3, "wallWord": "dark brick", "trimWord": "white", "note": "upper rows not separated reliably at this scale"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 135A", "frontTop": 13.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "storeys": 5}
+  ]},
+  {"pandId": "0363100012173481", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 1887-2117", "frontTop": 13.3, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 16.6, "ornamentTopM": 17.6, "atticWindows": 2, "note": "straight-sided point gable with a gilded finial; attic window pair 13.8-14.8 m"}, "groundTop": 5.2, "rows": [[5.5, 7.5], [8.0, 9.7], [10.4, 12.2]], "storeys": 4, "bays": 3, "wallWord": "dark painted brick", "trimWord": "white frames"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 137", "crown": {"family": "point", "note": "tall point gable"}}
+  ]},
+  {"pandId": "0363100012173484", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2117-2344", "frontTop": 13.2, "frontTopKind": "cornice-top", "crown": {"family": "flat-parapet", "note": "modern (BAG 1997) flat front with a white cornice board"}, "bays": 3, "wallWord": "grey-brown brick", "trimWord": "white"}
+  ]},
+  {"pandId": "0363100012173483", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2343-2574", "frontTop": 10.7, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.6, "ornamentTopM": 12.3, "dormer": {"kind": "lantern", "topM": 11.6}, "note": "cornice band 9.6-10.7 m"}, "groundTop": 3.9, "rows": [[4.15, 6.0], [6.75, 8.8]], "storeys": 3, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames, dark cornice"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 141", "crown": {"family": "straight-cornice", "dormer": {"kind": "lantern", "topM": null}, "note": "cornice house with a lantern dormer"}}
+  ]},
+  {"pandId": "0363100012169539", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-117-143 strip px 2575-2807", "frontTop": 8.7, "frontTopKind": "gable-foot", "crown": {"family": "bell", "widthM": 4.5, "neckWidthM": 2.3, "topM": 10.9, "ornamentTopM": 11.6, "atticWindows": 1, "note": "wide bell gable with white blocks at the shoulders and a storey-high gable window 8.7-10.3 m; a white crenel band 7.0-7.4 m over the first-floor windows"}, "groundTop": 4.4, "rows": [[5.4, 7.0]], "storeys": 2, "bays": 3, "wallWord": "red-brown brick", "trimWord": "white bands and blocks, white frames", "note": "an iron balcony 4.8-5.5 m in front of the middle window"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 143", "crown": {"family": "bell", "note": "two storeys under a wide bell gable with a storey-high gable window and white bands"}, "storeys": 2}
+  ]},
+  {"pandId": "0363100012172757", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 186", "frontTop": 15.2, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "heavy cornice"}, "storeys": 5},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 0-155 (2024-12-11)", "frontTop": 15.1, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "heavy white cornice 13.55-15.1 m"}, "groundTop": 4.3, "rows": [[4.4, 5.4], [5.8, 8.2], [8.75, 10.75], [11.55, 12.9]], "storeys": 5, "bays": 2, "wallWord": "brown brick", "trimWord": "white cornice and entresol", "note": "the first row is a white entresol over the shop"}
+  ]},
+  {"pandId": "0363100012172756", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 155-321 (2024-12-11)", "frontTop": 14.4, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 15.2, "dormer": {"kind": "pediment", "topM": 15.2}, "note": "white cornice 13.3-14.4 m"}, "groundTop": 4.6, "rows": [[5.0, 6.7], [7.9, 9.6], [10.6, 12.4]], "storeys": 4, "bays": 2, "wallWord": "red-brown brick", "trimWord": "white cornice and frames"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 184", "crown": {"family": "straight-cornice"}, "storeys": 4}
+  ]},
+  {"pandId": "0363100012172755", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 321-493 (2024-12-11)", "frontTop": 12.1, "frontTopKind": "gable-foot", "crown": {"family": "neck", "widthM": 3.0, "neckWidthM": 1.6, "topM": 14.2, "ornamentTopM": 15.1, "atticWindows": 1, "note": "neck with scroll pieces at the shoulders; attic light 12.6-13.4 m"}, "groundTop": 3.4, "rows": [[4.4, 6.7], [7.2, 9.5], [10.1, 11.55]], "storeys": 4, "bays": 2, "wallWord": "brown brick", "trimWord": "white frames, cream scrolls"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 182", "crown": {"family": "neck", "note": "neck gable over three upper rows"}, "storeys": 4}
+  ]},
+  {"pandId": "0363100012172754", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 493-658 (2024-12-11)", "crown": {"family": "point", "topM": 20.0, "note": "a tall glazed front under a point gable whose shoulders differ side to side (about 16-17.5 m)"}, "note": "shoulders not read to 0.5 m"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 180", "crown": {"family": "point", "topM": 20.0}}
+  ]},
+  {"pandId": "0363100012172847", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 658-828 (2024-12-11)", "frontTop": 13.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 13.6, "dormer": {"kind": "set-back", "topM": 13.6}}, "bays": 2, "wallWord": "red-brown brick", "trimWord": "white erker, iron balcony", "note": "a two-storey erker 4.3-7.1 m with a balcony over it"}
+  ]},
+  {"pandId": "0363100012173014", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 176", "storeys": 5, "note": "wide five-storey front with round attic lights"}]},
+  {"pandId": "0363100012172848", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 174", "note": "not read at full size"}]},
+  {"pandId": "0363100012172845", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 172", "crown": {"family": "step", "note": "ornate stepped front with white bands"}}]},
+  {"pandId": "0363100012172660", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 164", "note": "post-war wide block (28.5 m frontage)"}]},
+  {"pandId": "0363100012172946", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 158", "crown": {"family": "straight-cornice", "dormer": {"kind": "box", "topM": null}, "note": "cornice house with a dormer"}}]},
+  {"pandId": "0363100012172945", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 156", "crown": {"family": "straight-cornice", "topM": 12.4, "note": "cornice under a tall attic box to 12.4 m"}}]},
+  {"pandId": "0363100012171354", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 152", "note": "8.1 m pand of two fronts: a cornice house and a Jugendstil gable"}]},
+  {"pandId": "0363100012171351", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 148A", "note": "painted front with iron balconies"}]},
+  {"pandId": "0363100012169538", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 146", "note": "ornate stucco ornament on every storey"}]},
+  {"pandId": "0363100012171358", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 144", "frontTop": 11.2, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 14.5, "atticWindows": 1, "note": "a broad neck gable with a large attic window 11.4-13.1 m"}, "groundTop": 4.9, "rows": [[5.9, 7.75], [8.75, 10.75]], "storeys": 3, "bays": 2},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 3636-3810 (2024-12-11, washed out at 0.85x)", "crown": {"family": "neck", "topM": 14.5}, "note": "a glance at a washed-out crop: the neck top agrees, nothing else read"}
+  ]},
+  {"pandId": "0363100012171357", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 142", "frontTop": 12.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 15.0, "dormer": {"kind": "lantern", "topM": 15.0}, "note": "white cornice and a tall lantern dormer"}, "groundTop": 4.0, "rows": [[4.1, 6.0], [6.9, 8.75], [9.6, 11.5]], "storeys": 4, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 3810-3976 (2024-12-11, washed out at 0.85x)", "crown": {"family": "straight-cornice", "topM": 15.0, "dormer": {"kind": "lantern", "topM": 15.0}}, "note": "a glance: the lantern dormer top agrees, nothing else read"}
+  ]},
+  {"pandId": "0363100012176636", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 140", "note": "Jugendstil copper bay windows"}]},
+  {"pandId": "0363100012171359", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 138", "note": "ornate stucco bands and frieze"}]},
+  {"pandId": "0363100012176637", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 136", "note": "ornate front"}]},
+  {"pandId": "0363100012176633", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 132A", "note": "8.7 m pand of two fronts: a modern bay and a cornice house"}]},
+  {"pandId": "0363100012176571", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-126-188 strip px 4856-4994 (2024-12-11, washed out at 0.85x)", "frontTop": 9.8, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "bays": 2, "wallWord": "dark painted brick", "trimWord": "white frames", "note": "coarse read (0.85x crop); rows not read"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 130C", "crown": {"family": "straight-cornice", "note": "dark painted cornice house"}}
+  ], "cap": "medium"},
+  {"pandId": "0363100012176572", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 128", "crown": {"family": "other", "note": "yellow-brick Jugendstil tower front"}}]},
+  {"pandId": "0363100012176573", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 126A", "crown": {"family": "straight-cornice", "note": "cornice house"}}]},
+  {"pandId": "0363100012167796", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 13", "note": "scaffolded and wrapped (2024-12-11)"}]},
+  {"pandId": "0363100012177504", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 21", "frontTop": 12.4, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white dentil cornice 11.6-12.4 m"}, "groundTop": 3.7, "rows": [[4.0, 6.0], [6.75, 8.6], [9.4, 10.75]], "storeys": 4, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 686-919", "frontTop": 12.45, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 14.5, "dormer": {"kind": "lantern", "topM": 13.6}, "note": "a lantern dormer with a finial to about 14.5 m"}, "groundTop": 4.05, "rows": [[4.2, 6.1], [6.85, 8.7], [9.3, 10.4]], "storeys": 4, "bays": 3, "wallWord": "dark brick", "trimWord": "white cornice and frames"}
+  ]},
+  {"pandId": "0363100012177501", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 23E", "frontTop": 9.9, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 11.9, "atticWindows": 1}, "rows": [[4.75, 6.9], [7.4, 9.0]], "storeys": 3, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 920-1140", "frontTop": 9.6, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 11.55}, "wallWord": "brown brick", "trimWord": "white frames"}
+  ]},
+  {"pandId": "0363100012177502", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 25B", "frontTop": 6.3, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 8.4}, "storeys": 2},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1140-1295", "crown": {"family": "bell", "topM": 8.6}}
+  ]},
+  {"pandId": "0363100012177503", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1296-1448", "frontTop": 10.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 12.1, "ornamentTopM": 12.7, "dormer": {"kind": "lantern", "topM": 12.1}, "note": "white band with attic lights 9.05-10.3 m"}, "groundTop": 4.0, "rows": [[4.1, 6.1], [6.85, 8.7]], "storeys": 3, "bays": 2, "wallWord": "dark brick", "trimWord": "white band and frames"},
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 27", "crown": {"family": "straight-cornice", "dormer": {"kind": "lantern", "topM": null}}}
+  ]},
+  {"pandId": "0363100012167795", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 29", "frontTop": 8.2, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "dormer": {"kind": "set-back", "topM": null}, "note": "balustrade 7.3-8.2 m and a set-back dormer"}},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1447-1600", "frontTop": 7.9, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "topM": 8.8, "dormer": {"kind": "set-back", "topM": 8.8}}, "rows": [[4.1, 5.8]], "storeys": 2, "wallWord": "brick, white balustrade", "trimWord": "white"}
+  ]},
+  {"pandId": "0363100012167794", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 31", "frontTop": 10.0, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 12.6}, "rows": [[5.1, 6.9], [7.9, 9.4]], "storeys": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1600-1766", "frontTop": 10.2, "frontTopKind": "gable-foot", "crown": {"family": "point", "topM": 11.75}, "groundTop": 4.7, "rows": [[5.2, 7.0], [7.7, 9.05]], "storeys": 3, "bays": 3, "wallWord": "brown brick", "trimWord": "white frames"}
+  ]},
+  {"pandId": "0363100012253819", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 33", "frontTop": 13.1, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "a tall white frieze and cornice 11.7-13.1 m with sky directly over it"}, "rows": [[4.6, 6.6], [7.3, 8.9], [9.6, 11.0]], "storeys": 4, "bays": 3},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-13-45 strip px 1767-1932 (the front leans on this strip)", "frontTop": 12.2, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "wallWord": "dark painted brick", "trimWord": "white frieze and frames"}
+  ]},
+  {"pandId": "0363100012167805", "reads": [
+   {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 35A", "frontTop": 11.25, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 11.8, "dormer": {"kind": "crowned", "topM": 11.8}, "note": "a deep white cornice 10.0-11.25 m with a small crowned piece"}, "rows": [[4.5, 6.5], [7.0, 9.0]], "storeys": 3, "bays": 2, "wallWord": "red brick", "trimWord": "white cornice"}
+  ]},
+  {"pandId": "0363100012253818", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 37", "note": "modern balconied front to about 15 m"}]},
+  {"pandId": "0363100012167804", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 39", "crown": {"family": "other", "note": "white Jugendstil front with a tower dormer"}}]},
+  {"pandId": "0363100012177663", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 41", "crown": {"family": "straight-cornice", "dormer": {"kind": "pediment", "topM": null}, "note": "dark cornice house with a pediment dormer"}}]},
+  {"pandId": "0363100012176277", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 43", "crown": {"family": "other", "note": "orange-glazed Jugendstil front to about 15 m"}}]},
+  {"pandId": "0363100012177659", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 45", "crown": {"family": "bell", "note": "ornate bell gable"}}]},
+  {"pandId": "0363100012177675", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 70", "frontTop": 10.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "flat cornice"}, "rows": [[4.9, 6.3], [7.8, 9.3]], "storeys": 3, "note": "front in deep shadow on the 2022-12-15 strip"}
+  ]},
+  {"pandId": "0363100012177671", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves: Haarlemmerdijk 68", "frontTop": 10.0, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 12.4, "note": "scrolls"}, "groundTop": 4.3, "rows": [[4.8, 6.3], [7.2, 9.05]], "storeys": 3}
+  ]},
+  {"pandId": "0363100012177670", "reads": [
+   {"by": "reviewer-strip-read", "ref": "crowns + eaves + holds: Haarlemmerdijk 66", "frontTop": 13.3, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "note": "white bracketed cornice"}, "storeys": 4, "bays": 2, "note": "two tall two-light windows per storey (photo 4 columns)"}
+  ]},
+  {"pandId": "0363100012176569", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 120A", "note": "post-1990 infill (BAG 2000)"}]},
+  {"pandId": "0363100012176570", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 118A", "note": "strip seam, not read"}]},
+  {"pandId": "0363100012176577", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 116B", "note": "post-1990 infill"}]},
+  {"pandId": "0363100012176696", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 110A", "note": "post-1990 infill, 13.7 m wide"}]},
+  {"pandId": "0363100012176698", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 108A", "note": "2 m sliver beside the strip seam"}]},
+  {"pandId": "0363100012176655", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 104A", "note": "post-1990 infill"}]},
+  {"pandId": "0363100012176568", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 98", "bays": 6, "note": "11.4 m wide six-axis front"}]},
+  {"pandId": "0363100012176580", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 96", "note": "ornate front with iron balconies on every storey"}]},
+  {"pandId": "0363100012176697", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 94", "note": "ornate balconied front, about 16 m"}]},
+  {"pandId": "0363100012167793", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 90A", "note": "post-1990 infill"}]},
+  {"pandId": "0363100012167812", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 80", "crown": {"family": "flat-parapet", "note": "modern flat-roofed front with ribbon glazing"}}]},
+  {"pandId": "0363100012167807", "reads": [{"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 74", "note": "wide early-20th-c. front with large windows"}]},
+  {"pandId": "0363100012175207", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 2991-3219 (2024-11-21)", "frontTop": 12.3, "frontTopKind": "parapet-top", "crown": {"family": "other", "note": "a raised attic stands over the parapet but is washed out on the strip"}, "groundTop": 4.4, "rows": [[4.65, 6.75], [7.6, 9.4], [10.15, 11.5]], "storeys": 4, "bays": 3, "wallWord": "red-brown brick", "trimWord": "white frames"},
+   {"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 58", "frontTop": 12.3, "frontTopKind": "parapet-top", "crown": {"family": "other", "topM": 15.1, "note": "raised attic frieze 12.3-15.1 m"}}
+  ]},
+  {"pandId": "0363100012175208", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 3219-3443 (2024-11-21)", "note": "scaffolded and netted"}]},
+  {"pandId": "0363100012171144", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 3442-3634 (2024-11-21)", "frontTop": 12.85, "frontTopKind": "gable-foot", "crown": {"family": "neck", "widthM": 3.2, "neckWidthM": 2.2, "topM": 14.5, "ornamentTopM": 15.8, "atticWindows": 1, "hoist": true, "note": "neck with curved shoulders, a white hoist door 12.95-14.3 m in the neck, a carved crest over the cap"}, "groundTop": 4.3, "rows": [[4.65, 6.8], [7.75, 9.7], [10.55, 12.3]], "storeys": 4, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames and hoist door, cream crest"},
+   {"by": "reviewer-strip-read", "ref": "eaves pin (haarlemmer-46-96-r1 intent measuredEaves): Haarlemmerstraat 54", "frontTop": 13.0, "frontTopKind": "gable-foot"}
+  ]},
+  {"pandId": "0363100012171145", "reads": [
+   {"by": "reviewer-strip-read", "ref": "eaves pin (haarlemmer-46-96-r1 intent measuredEaves): Haarlemmerstraat 52", "frontTop": 14.5, "frontTopKind": "gable-foot"},
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 3634-3818 (2024-11-21)", "frontTop": 14.0, "frontTopKind": "gable-foot", "crown": {"family": "neck", "note": "a narrow neck over the shoulders; its top is washed out against the sky (to about 17.9 m) and was not read"}, "groundTop": 4.6, "rows": [[5.65, 7.65], [8.5, 10.55], [11.4, 13.05]], "storeys": 4, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames"}
+  ]},
+  {"pandId": "0363100012171148", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 3818-4002 (2024-11-21)", "frontTop": 9.95, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "rows": [[4.3, 5.85], [7.2, 8.85]], "storeys": 3, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames"}
+  ]},
+  {"pandId": "0363100012171141", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmer-46-96 strip px 4002-4186 (2024-11-21)", "frontTop": 8.6, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 10.55, "atticWindows": 1, "note": "neck with a pointed crest; gable window 8.3-9.0 m"}, "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white frames"}
+  ], "cap": "medium"},
+  {"pandId": "0363100012168428", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 86", "storeys": 3, "crown": {"family": "other", "note": "a tower-like dormer"}}]},
+  {"pandId": "0363100012168427", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 84", "crown": {"family": "neck"}}]},
+  {"pandId": "0363100012167538", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 82", "note": "arched heads and iron balconies on four rows"}]},
+  {"pandId": "0363100012175144", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 80", "note": "scaffolded and netted (2024-11-21)"}]},
+  {"pandId": "0363100012175143", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 78B", "note": "grey stucco front with balconies"}]},
+  {"pandId": "0363100012175142", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 74A", "note": "an 11.5 m pand of two fronts"}]},
+  {"pandId": "0363100012175141", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 72", "note": "not read at full size"}]},
+  {"pandId": "0363100012175140", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 68", "bays": 5, "note": "7.5 m painted front of five axes with two dormers"}]},
+  {"pandId": "0363100012175139", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 66B", "crown": {"family": "neck"}}]},
+  {"pandId": "0363100012175205", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 64", "storeys": 5, "crown": {"family": "other", "note": "an ornate top"}}]},
+  {"pandId": "0363100012175204", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 62", "storeys": 5, "note": "five-storey painted front to about 16.5 m"}]},
+  {"pandId": "0363100012175206", "reads": [{"by": "reviewer-strip-read", "ref": "haarlemmer-46-96/auto-place.json reason: Haarlemmerstraat 60", "note": "yellow brick with arched heads and tile panels"}]},
+  {"pandId": "0363100012167808", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 0-330 (2024-12-11, 0.75x)", "crown": {"family": "other", "note": "8.3 m modern red-brick front with a dark mansard attic to about 16.3 m"}, "storeys": 4, "bays": 3, "wallWord": "red brick", "trimWord": "white frames", "note": "the wall top under the mansard was not read"}]},
+  {"pandId": "0363100012167787", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 330-482 (2024-12-11, 0.75x)", "frontTop": 11.3, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}, "rows": [[5.2, 7.0], [7.7, 9.2]], "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white frames"}]},
+  {"pandId": "0363100012167786", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 482-697 (2024-12-11, 0.75x)", "frontTop": 12.3, "frontTopKind": "cornice-top", "crown": {"family": "other", "topM": 14.7, "note": "white ornate front with a raised ornamented attic 12.3-14.7 m"}, "rows": [[5.7, 8.0], [9.3, 11.5]], "storeys": 3, "bays": 3, "wallWord": "white render", "trimWord": "brown ornament bands"}]},
+  {"pandId": "0363100012176515", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 697-1833 (2024-12-11, 0.75x)", "note": "a 28.4 m pand of several fronts over one shop (Etos): dark painted fronts with cornices at about 11.9-12.5 m and dormers, a white front with a red tile mansard to about 17.6 m and a brick point gable to about 15.5 m; the fronts need splitting before they can be recorded"}]},
+  {"pandId": "0363100012167785", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 1833-2160 (2024-12-11, 0.75x)", "frontTop": 14.8, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}, "storeys": 5, "bays": 5, "wallWord": "red-brown brick", "trimWord": "white frames", "note": "four upper rows; rows not read at this scale"}]},
+  {"pandId": "0363100012167792", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-67-91 strip px 2160-2344 (2024-12-11, 0.75x)", "frontTop": 12.0, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "rows": [[5.7, 7.0], [8.7, 9.7]], "storeys": 3, "bays": 2, "wallWord": "dark painted brick", "trimWord": "white cornice and frames"}], "cap": "medium"},
+  {"pandId": "0363100012165105", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 0-123 (2024-12-11, 0.75x)", "note": "only part of the front is on the strip; not read"}]},
+  {"pandId": "0363100012176699", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 269-506 (2024-12-11, 0.75x)", "frontTop": 13.8, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "note": "something pale stands over the parapet and is washed out"}, "storeys": 5, "bays": 3, "wallWord": "dark brown brick", "trimWord": "white frames"}], "cap": "medium"},
+  {"pandId": "0363100012165106", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 506-1423 (2024-12-11, 0.75x)", "note": "a 22.9 m pand of several fronts: a glazed front to about 16 m, a brick front with twin point gables to about 15.8 m and an oriel, a red-brick balconied front to about 14 m and a glazed stair tower; the fronts need splitting"}]},
+  {"pandId": "0363100012176579", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 1424-1779 (2024-12-11, 0.75x)", "note": "two fronts: a dark flat-topped front to about 11.8 m with a dormer to 13.3 m and a front under a white cornice at about 12.8 m"}]},
+  {"pandId": "0363100012176578", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 1778-1947 (2024-12-11, 0.75x)", "frontTop": 10.1, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "rows": [[4.2, 5.8], [6.5, 8.0]], "storeys": 3, "bays": 3, "wallWord": "brown brick", "trimWord": "white cornice and frames"}], "cap": "medium"},
+  {"pandId": "0363100012176702", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-93-113 strip px 1947-2111 (2024-12-11, 0.75x)", "frontTop": 9.8, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice", "topM": 10.9, "dormer": {"kind": "box", "topM": 10.9}}, "rows": [[4.3, 5.5], [6.3, 7.8]], "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white cornice and frames"}], "cap": "medium"},
+  {"pandId": "0363100012171352", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 0-226 (2024-12-11, 0.7x)", "frontTop": 12.1, "frontTopKind": "gable-foot", "crown": {"family": "neck", "neckWidthM": 3.9, "topM": 15.7, "atticWindows": 1, "note": "a wide raised neck with an ornate cap; neck light 12.4-13.2 m"}, "groundTop": 4.0, "rows": [[4.25, 6.2], [6.9, 8.9], [9.8, 11.2]], "storeys": 4, "bays": 3, "wallWord": "brown brick", "trimWord": "white frames and cap"}]},
+  {"pandId": "0363100012173015", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 226-669 (2024-12-11, 0.7x)", "frontTop": 10.9, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet", "topM": 12.7, "dormer": {"kind": "box", "topM": 12.7}, "note": "11 m modern grey front with two glazed roof boxes"}, "storeys": 3, "wallWord": "dark grey brick", "trimWord": "black frames"}], "cap": "medium"},
+  {"pandId": "0363100012172950", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 669-841 (2024-12-11, 0.7x)", "frontTop": 10.85, "frontTopKind": "cornice-top", "crown": {"family": "straight-cornice"}, "rows": [[4.4, 6.4], [7.3, 8.4]], "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white cornice and frames"}], "cap": "medium"},
+  {"pandId": "0363100012172951", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 841-1001 (2024-12-11, 0.7x)", "frontTop": 9.4, "frontTopKind": "gable-foot", "crown": {"family": "bell", "topM": 11.4, "atticWindows": 1, "note": "concave sweeps to a pointed hood; bell or neck at this scale"}, "rows": [[4.4, 6.2], [7.3, 8.5]], "storeys": 3, "bays": 2, "wallWord": "brown brick", "trimWord": "white frames"}], "cap": "medium"},
+  {"pandId": "0363100012171348", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 1001-1373 (2024-12-11, 0.7x)", "note": "a 9.3 m pand of two fronts: a white render front to about 13.0 m (cinema) and a brick front to about 11.4 m"}]},
+  {"pandId": "0363100012172832", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 1373-1594 (2024-12-11, 0.7x)", "frontTop": 4.25, "frontTopKind": "parapet-top", "crown": {"family": "flat-parapet"}, "storeys": 1, "note": "a one-storey front (a gap in the street wall above 4.3 m)"}], "cap": "medium"},
+  {"pandId": "0363100012172834", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 1594-1756 (2024-12-11, 0.7x)", "crown": {"family": "other", "topM": 16.4, "note": "yellow-brick Jugendstil front with iron balconies and an ornate top"}, "wallWord": "yellow brick"}]},
+  {"pandId": "0363100012172949", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 1756-1909 (2024-12-11, 0.7x)", "frontTop": 15.0, "frontTopKind": "gable-foot", "crown": {"family": "point", "note": "point gable with an attic light; the apex stands above the 18 m crop"}, "storeys": 5, "bays": 2, "wallWord": "red-brown brick", "trimWord": "white frames"}], "cap": "medium"},
+  {"pandId": "0363100012172948", "reads": [{"by": "lane2-strip-read", "ref": "haarlemmerdijk-149-175 strip px 1908-2300 (2024-12-11, 0.7x)", "note": "a 9.8 m pand of two flat-topped brick fronts to about 16.0-16.4 m"}]}
+ ]
+}
