@@ -3,6 +3,47 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Cleaner parks, building sites and slip roads",
+      "text": "Parks now draw their lawns and shrubs once instead of twice, so the shimmering triangles in the Rembrandtpark are gone. Building sites such as Wiborgeiland in the Houthavens are drawn as muted earth instead of a flat yellow slab, and the A10 slip roads at Lelylaan and big paved squares are dark asphalt again instead of pale paving.",
+      "where": [
+        4.8517,
+        52.3655
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-ground-rembrandtpark-before.jpg",
+          "alt": "Rembrandtpark from above with flickering triangle patches",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-rembrandtpark-after.jpg",
+          "alt": "Rembrandtpark from above with clean lawns",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-wiborgeiland-before.jpg",
+          "alt": "Wiborgeiland building site drawn as a yellow slab",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-wiborgeiland-after.jpg",
+          "alt": "Wiborgeiland building site drawn as earth",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-lelylaan-before.jpg",
+          "alt": "Lelylaan slip roads drawn as pale paving",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-lelylaan-after.jpg",
+          "alt": "Lelylaan slip roads drawn as asphalt",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "De Hallen's windows sit on its wall again",
       "text": "De Hallen's windows and gable ends now sit on the stepped brick front on the Bellamyplein side instead of hanging up to 6 m in front of it. A new check measures every window and door in every landmark model against its wall whenever a landmark is rebuilt, so floating windows can't slip in unnoticed.",
       "where": [

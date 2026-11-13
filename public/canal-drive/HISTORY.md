@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+**Ground look: open ground clipped to the parks, sand as earth, big asphalt squares as asphalt (2026-11-13, lane R2-D, cherry-picked).**
+- **Why.** Feedback ab50459f "shimmery triangles" in the Rembrandtpark; yellow slabs at Houthavens/Wiborgeiland building sites; pale paving on the A10 slip roads at Lelylaan.
+- **Parks.** open-ground-v1 was clipped against the roads but not parks-v1: 0.83 km² of meadow on park lawn and 1.2 km² of shrub on park shrub at the same lift and offset rank, so the depth buffer picked per triangle. `clip-open-ground.ts` now subtracts the parks too (G1's earlier "null" overlap intersected all neighbours at once, which reads ~0). open-ground-v2 published (291 cells, 8 MB gz); `?openGroundClip=0` reads v1. Pins in `r2GroundRegressions.ts` / `check-ground-spots.ts`; frames in `tests/e2e/r2-ground-frames.spec.ts`.
+- **Sand.** BGT zand that the CIR aerial does not show green is grey-beige on the 2025 photo (building sites, rough ground), so it draws in the `bare` earth layer instead of play sand. Only 2.8 % lies under footprints, so no reclassification.
+- **Asphalt squares.** BGT gesloten verharding of 800 m² or more filed as `square`/asphalt (the Lelylaan slip roads, 275 ha city-wide) draws asphalt; smaller squares, islands and berms keep pavement grey.
+- **Not changed.** Haparandadam is a pontoon in the data; no land added.
+
 **Landmark GLB openings gate; De Hallen fixed (2026-11-13, lane R2-C 0aa21b0bc, cherry-picked).**
 - **Why.** User: "windows look weird / off building, do we have a rule/check for floating windows?" (De Hallen), plus "floating windows" at the Haparandaweg (Houthavens). `geometryAudit.ts` already measured openings, but only as baselined warnings, never wired into check:canal or the landmark build; and a rule dropped any assembly > 0.6 m from every surface as free-standing glazing, so De Hallen's windows 6 m out were never reported.
 - **Gate.** `check-glb-openings.ts`: per model `float` (> 10 cm clear of every surface), `poke` (sunk behind or past the wall), `outside` (past the silhouette or through the roof). Shrink-only allow-list `opening-wall-allowlist.json`; models without an entry must be 0. Runs inside `build-manual-landmarks.ts` on every model it builds; `test:glb-openings` (fixture: pre-fix De Hallen) is in check:canal:rest. The full sweep (`check:glb-openings`, 463 models, 18 min cold, ~1 s cached) is not in CI yet: wants a 4-shard matrix with a `.cache/glb-openings` cache.
