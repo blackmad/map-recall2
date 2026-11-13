@@ -311,6 +311,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const force = draw.force.filter(id => !building.registerForce?.includes(id));
     if (force.length) building.registerForce = [...(building.registerForce ?? []), ...force];
     if (draw.bandM && draw.force.length) building.specBandM = draw.bandM;
+    if (draw.force.length) building.specFieldsForce = draw.force;
   }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.

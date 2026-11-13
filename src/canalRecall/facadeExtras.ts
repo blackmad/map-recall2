@@ -325,6 +325,10 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
     ? Math.min(DEFINING_BUILDING_CEILING, Math.max(original, definingCount * EXTRA_BUDGET.wall)) : original;
   for (const { c, state } of ordered) if (definingWall(c)) dressWall(c, sink, state, 'defining');
   sink.budget = Math.max(sink.tris.length, baseline);
+  // A HouseSpec's stated parts (route A fields, houseSpec/routeAFields.ts) dress on every wall before any wall's dice trim
+  // spends the building budget: Weteringschans 171192's stated bands never reached its 6.3 m front after two short street
+  // walls had spent it (lane WG step 3). Absent `statedFirst`, nothing changes.
+  for (const { c, state } of ordered) if (c.statedFirst?.length) dressWall(c, sink, state, 'stated');
   for (const { c, state } of ordered) dressWall(c, sink, state, 'optional');
   sink.budget = original;
   for (const { c, state } of ordered) extraUsage.record?.(c, state.used, state.spent);
@@ -351,13 +355,13 @@ export function registerFirst<T extends { id: string }>(components: readonly T[]
   return [...head, ...rest.filter(comp => stated.has(comp.id)), ...rest.filter(comp => !stated.has(comp.id))];
 }
 
-function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'optional'): void {
+function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
-  if(phase!=='optional'&&street&&c.recipe?.shopCanopy){
+  if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy){
     const before=sink.tris.length;
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
@@ -367,14 +371,14 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     sink.budget=outer;if(street)streetDressed.add(sink);state.spent+=sink.tris.length-beforeWall;return;
   }
   const raisedEntry = street && !!(c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront;
-  if (raisedEntry && phase !== 'optional') {
+  if (raisedEntry && phase !== 'optional' && phase !== 'stated') {
     const before = sink.tris.length;
     if(c.recipe?.groundAssembly === 'tall-side-entry') canalSideEntrance(c,sink);
     else if (c.recipe?.entranceAssembly === 'raised-plain') raisedPlainEntrance(c, sink);
     else raisedPilasterEntrance(c, sink);
     if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly ?? c.recipe!.groundAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
   }
-  if (phase !== 'defining' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
+  if (phase !== 'defining' && phase !== 'stated' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
     const before = sink.tris.length; paleMasonryAccents(c, sink);
     if (sink.tris.length > before) used.push('pale-masonry-accents');
   }
@@ -389,6 +393,8 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;
     if (definingComponent && c.assemblyOwner === false) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
+    // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
+    if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
     // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
     const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;
