@@ -1,0 +1,375 @@
+{
+ "note": "Door sides from the red door pair of each pand span (centroid of red in the ground band); the pairs alternate left/right along every row.",
+ "reviewed": "2026-11-10 round 3 (lane, pand by pand off the strips: the rows alternate dentil pair / plain / gable)",
+ "pins": [
+  {
+   "face": "hendrik-134-154",
+   "types": [
+    "fh-1887-dentil-pediment"
+   ],
+   "pands": [
+    "0363100012157111",
+    "0363100012164721",
+    "0363100012165508",
+    "0363100012160880"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "hendrik-134-154",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161572",
+    "0363100012158151",
+    "0363100012167163",
+    "0363100012152966",
+    "0363100012164007"
+   ],
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
+  },
+  {
+   "face": "hendrik-134-154",
+   "types": [
+    "fh-1887-arched-gable"
+   ],
+   "pands": [
+    "0363100012156720",
+    "0363100012158916",
+    "0363100012152931"
+   ],
+   "reason": "pointed brick gable over round-arched heads"
+  },
+  {
+   "face": "houweningen-1-31",
+   "types": [
+    "fh-1887-dentil-pediment"
+   ],
+   "pands": [
+    "0363100012159613",
+    "0363100012154093",
+    "0363100012160230",
+    "0363100012165392",
+    "0363100012158949",
+    "0363100012167046",
+    "0363100012157692",
+    "0363100012165332",
+    "0363100012162863"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "houweningen-1-31",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012157843",
+    "0363100012157672",
+    "0363100012156727",
+    "0363100012166596",
+    "0363100012156794",
+    "0363100012165776"
+   ],
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
+  },
+  {
+   "face": "houweningen-1-31",
+   "types": [
+    "fh-1887-arched-gable"
+   ],
+   "pands": [
+    "0363100012158307",
+    "0363100012159954"
+   ],
+   "reason": "pointed brick gable over round-arched heads"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "types": [
+    "fh-1887-dentil-pediment"
+   ],
+   "pands": [
+    "0363100012156059",
+    "0363100012153678",
+    "0363100012163303",
+    "0363100012163395",
+    "0363100012166918",
+    "0363100012153758",
+    "0363100012156927",
+    "0363100012153810"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161489",
+    "0363100012155831",
+    "0363100012152999",
+    "0363100012157676",
+    "0363100012153212",
+    "0363100012164833",
+    "0363100012162778",
+    "0363100012160664"
+   ],
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "types": [
+    "fh-1887-arched-gable"
+   ],
+   "pands": [
+    "0363100012156678",
+    "0363100012155474",
+    "0363100012156249"
+   ],
+   "reason": "pointed brick gable over round-arched heads"
+  },
+  {
+   "face": "houweningen-2-38",
+   "types": [
+    "fh-1887-dentil-pediment"
+   ],
+   "pands": [
+    "0363100012158366",
+    "0363100012162380",
+    "0363100012159933",
+    "0363100012167020",
+    "0363100012167267",
+    "0363100012165393",
+    "0363100012163222",
+    "0363100012162506"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "houweningen-2-38",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161605",
+    "0363100012153807",
+    "0363100012163315",
+    "0363100012156096",
+    "0363100012163814",
+    "0363100012159135",
+    "0363100012158704",
+    "0363100012163630"
+   ],
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
+  },
+  {
+   "face": "houweningen-2-38",
+   "types": [
+    "fh-1887-arched-gable"
+   ],
+   "pands": [
+    "0363100012156521",
+    "0363100012159242",
+    "0363100012153786"
+   ],
+   "reason": "pointed brick gable over round-arched heads"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012153807",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012154093",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012156096",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012157843",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012158151",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012158307",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012158704",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012158916",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012158949",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012159933",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012159954",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012161572",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012161605",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012162380",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012162863",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012163222",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012163814",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012164007",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012164721",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012165393",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012165508",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012166596",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012167046",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833)"
+  },
+  {
+   "pandId": "0363100012156678",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012156059",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012152999",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012163395",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012155474",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012166918",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012164833",
+   "type": "fh-1887-plain-anchor-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012153810",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  },
+  {
+   "pandId": "0363100012156249",
+   "type": "fh-1887-arched-gable",
+   "mirror": true,
+   "reason": "red door pair right of centre (red centroid of the ground band, 2024-09-11 strip)"
+  }
+ ]
+}

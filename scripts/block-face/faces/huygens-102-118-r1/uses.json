@@ -1,0 +1,41 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:50:21.611Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160719",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 266,
+     "bagId": "0363010000544404"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163854",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001011566"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

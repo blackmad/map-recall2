@@ -1,0 +1,136 @@
+{
+ "street": "Van Reigersbergenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:59:36.318Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161489",
+   "addresses": [
+    "Van Reigersbergenstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 39",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001036273"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156678",
+   "addresses": [
+    "Van Reigersbergenstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000845794"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925568691,
+     "lngLat": [
+      4.8713361,
+      52.3748186
+     ],
+     "tags": {
+      "amenity": "charging_station"
+     },
+     "fetchedAt": "2026-11-09T23:59:36.318Z",
+     "match": "frontage",
+     "distanceM": 3.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155831",
+   "addresses": [
+    "Van Reigersbergenstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000845799"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156059",
+   "addresses": [
+    "Van Reigersbergenstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000845803"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153678",
+   "addresses": [
+    "Van Reigersbergenstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000845807"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152999",
+   "addresses": [
+    "Van Reigersbergenstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000845811"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163303",
+   "addresses": [
+    "Van Reigersbergenstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Reigersbergenstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000845815"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -8,7 +8,7 @@
   "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
   "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
  },
- "surveyedAt": "2026-11-09",
+ "surveyedAt": "2026-11-10",
  "outlineRD": [
   [
    120187.657,
@@ -1399,7 +1399,12 @@
     47,
     87
    ],
-   "lengthM": 125
+   "lengthM": 125,
+   "dropped": [
+    "0363100012152845",
+    "0363100012167187",
+    "0363100012158952"
+   ]
   },
   {
    "id": "oldenbarneveldt-87-101",

@@ -1,0 +1,26 @@
+{
+ "note": "Pands held after reading the strip sheets / compile.",
+ "reviewed": "2026-11-10 round 3: gable audit holds lifted to re-test with crownRise 1.15 (they were held on an attic window outside a 2x-too-tall rake)",
+ "holds": [
+  {
+   "pandId": "0363100012166918",
+   "address": "Van Reigersbergenstraat 23",
+   "reason": "the run does not compile: 'Roof partition must preserve surveyed footprint and courtyard area' (a BAG micro-jog in this pand's front leaves roof slivers over the 0.001 m2 tolerance; TODO 'Recipe roof partition vs BAG micro-jogs'). Held until the partition snaps jogs under 5 cm."
+  },
+  {
+   "pandId": "0363100012160230",
+   "address": "Van Houweningenstraat 5",
+   "reason": "run houweningen-1-31-r1 (160230 + 157843) fails the GLB audit: opening-outside 1 part 0.144 m2, the white cornice frame of 160230 (x -4.7..0, 13.0-13.8 m, 0.41 m proud) past its wall silhouette at the run end beside the held double-width 154093; held until the cornice end is trimmed at a run end"
+  },
+  {
+   "pandId": "0363100012157843",
+   "address": "Van Houweningenstraat 7",
+   "reason": "run houweningen-1-31-r1 (160230 + 157843) fails the GLB audit: opening-outside 1 part 0.144 m2, the white cornice frame of 160230 (x -4.7..0, 13.0-13.8 m, 0.41 m proud) past its wall silhouette at the run end beside the held double-width 154093; held until the cornice end is trimmed at a run end"
+  },
+  {
+   "pandId": "0363100012163395",
+   "address": "Van Reigersbergenstraat 15",
+   "reason": "no evidence: the 2022-10-07 strip is ghosted over this span (two captures overlaid, every window doubled); the 2024-09-11 and 2025-06-18 strips failed the cast gate in round 2"
+  }
+ ]
+}

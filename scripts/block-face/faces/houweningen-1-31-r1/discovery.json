@@ -1,0 +1,725 @@
+{
+ "street": "Van Houweningenstraat",
+ "seed": "0363100012159613",
+ "members": [
+  "0363100012165332",
+  "0363100012162863",
+  "0363100012156794",
+  "0363100012159954",
+  "0363100012165776"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of houweningen-1-31: 166596 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012117381 31.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062431",
+   "reason": "frontage 43.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012068296",
+   "reason": "frontage 81.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012078697",
+   "reason": "frontage 75.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012085345",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012092749",
+   "reason": "frontage 30.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012107080",
+   "reason": "frontage 49.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012107450",
+   "reason": "frontage 56.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012113175",
+   "reason": "frontage 68.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012119725",
+   "reason": "frontage 70.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012123270",
+   "reason": "frontage 84.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012132504",
+   "reason": "frontage 64.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012136487",
+   "reason": "frontage 68.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012137990",
+   "reason": "frontage 137.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012143493",
+   "reason": "frontage 83.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012148379",
+   "reason": "frontage 59.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012148808",
+   "reason": "frontage 36.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152326",
+   "reason": "frontage 69.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152438",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152672",
+   "reason": "frontage 90.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152689",
+   "reason": "frontage 34.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152856",
+   "reason": "frontage 50.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152931",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158949"
+  },
+  {
+   "pandId": "0363100012152966",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012167046"
+  },
+  {
+   "pandId": "0363100012152985",
+   "reason": "frontage 55.3 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012152999",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012165393"
+  },
+  {
+   "pandId": "0363100012153126",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153166",
+   "reason": "frontage 125.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153212",
+   "reason": "frontage 30.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153560",
+   "reason": "frontage 39.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153678",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163222"
+  },
+  {
+   "pandId": "0363100012153689",
+   "reason": "frontage 117.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153758",
+   "reason": "frontage 30.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153800",
+   "reason": "frontage 47.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153810",
+   "reason": "frontage 31.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153814",
+   "reason": "frontage 68.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012154220",
+   "reason": "frontage 52.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012154311",
+   "reason": "frontage 86.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012155441",
+   "reason": "frontage 69.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012155444",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012155474",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012156096"
+  },
+  {
+   "pandId": "0363100012155730",
+   "reason": "frontage 48.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012155831",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158704"
+  },
+  {
+   "pandId": "0363100012156059",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163222"
+  },
+  {
+   "pandId": "0363100012156164",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012156219",
+   "reason": "frontage 124.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012156249",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012156521"
+  },
+  {
+   "pandId": "0363100012156403",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012156678",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158704"
+  },
+  {
+   "pandId": "0363100012156720",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012157220"
+  },
+  {
+   "pandId": "0363100012156927",
+   "reason": "frontage 30.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012157111",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012162863"
+  },
+  {
+   "pandId": "0363100012157220",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012159105"
+  },
+  {
+   "pandId": "0363100012157364",
+   "reason": "frontage 107.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012157409",
+   "reason": "frontage 101.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012157665",
+   "reason": "frontage 124.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012157676",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163814"
+  },
+  {
+   "pandId": "0363100012158116",
+   "reason": "frontage 72.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012158151",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012156794"
+  },
+  {
+   "pandId": "0363100012158481",
+   "reason": "frontage 125.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012158608",
+   "reason": "frontage 124.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012158868",
+   "reason": "frontage 113.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012158916",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012157692"
+  },
+  {
+   "pandId": "0363100012158975",
+   "reason": "frontage 124.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012159018",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012159068",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012159105",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012165776"
+  },
+  {
+   "pandId": "0363100012159130",
+   "reason": "frontage 60.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012159205",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163198"
+  },
+  {
+   "pandId": "0363100012159274",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012159821",
+   "reason": "frontage 97.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012160432",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163630"
+  },
+  {
+   "pandId": "0363100012160467",
+   "reason": "frontage 68.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012160587",
+   "reason": "frontage 124.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012160664",
+   "reason": "frontage 34.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012160769",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158652"
+  },
+  {
+   "pandId": "0363100012160880",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158307"
+  },
+  {
+   "pandId": "0363100012160905",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012160910",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012158652"
+  },
+  {
+   "pandId": "0363100012161097",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161105",
+   "reason": "frontage 125.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161412",
+   "reason": "frontage 79.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161489",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012160432"
+  },
+  {
+   "pandId": "0363100012161539",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161572",
+   "reason": "frontage 30.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161580",
+   "reason": "frontage 100.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161764",
+   "reason": "frontage 40.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012161909",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162014",
+   "reason": "frontage 102.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162344",
+   "reason": "frontage 68.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162599",
+   "reason": "frontage 83.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162737",
+   "reason": "frontage 125.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162764",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162778",
+   "reason": "frontage 31.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012162901",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012163008",
+   "reason": "frontage 96.3 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012163129",
+   "reason": "frontage 86.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012163198",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012235889"
+  },
+  {
+   "pandId": "0363100012163303",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012165393"
+  },
+  {
+   "pandId": "0363100012163395",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012163814"
+  },
+  {
+   "pandId": "0363100012163779",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012163846",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012164007",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012157672"
+  },
+  {
+   "pandId": "0363100012164255",
+   "reason": "frontage 56.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012164325",
+   "reason": "frontage 55.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012164721",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012165332"
+  },
+  {
+   "pandId": "0363100012164804",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012117381"
+  },
+  {
+   "pandId": "0363100012164833",
+   "reason": "frontage 30.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012165226",
+   "reason": "frontage 113.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012165508",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012156727"
+  },
+  {
+   "pandId": "0363100012165578",
+   "reason": "frontage 91.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012165585",
+   "reason": "frontage 124.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012165736",
+   "reason": "frontage 82.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166050",
+   "reason": "frontage 51.0 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166285",
+   "reason": "frontage 109.7 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166294",
+   "reason": "frontage 105.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166317",
+   "reason": "frontage 81.3 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166479",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166795",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012161539"
+  },
+  {
+   "pandId": "0363100012166805",
+   "reason": "frontage 77.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012166918",
+   "reason": "frontage 30.3 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012167086",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012167104",
+   "reason": "frontage 30.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012167163",
+   "reason": "sightline to Van Houweningenstraat crosses 0363100012166596"
+  },
+  {
+   "pandId": "0363100012167168",
+   "reason": "frontage 53.4 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012188293",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012192764",
+   "reason": "frontage 103.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012193554",
+   "reason": "frontage 64.1 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012196725",
+   "reason": "frontage 86.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012197980",
+   "reason": "frontage 108.9 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012203091",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012205854",
+   "reason": "frontage 95.6 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012211913",
+   "reason": "frontage 77.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012216784",
+   "reason": "frontage 58.2 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012222758",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012226481",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012235889",
+   "reason": "no frontage on Van Houweningenstraat: No footprint edge faces Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012236281",
+   "reason": "frontage 83.5 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012236745",
+   "reason": "frontage 80.8 m from Van Houweningenstraat"
+  },
+  {
+   "pandId": "0363100012153786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153807",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156521",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158366",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158652",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158704",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159135",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159242",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161928",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162380",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162506",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163630",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167267",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012165332",
+   "alongM": 63.27,
+   "widthM": 4.7,
+   "eavesM": 13.82,
+   "roofMaxM": 16.9,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162863",
+   "alongM": 67.97,
+   "widthM": 4.7,
+   "eavesM": 13.81,
+   "roofMaxM": 17.34,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156794",
+   "alongM": 72.68,
+   "widthM": 4.7,
+   "eavesM": 13.76,
+   "roofMaxM": 17.28,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159954",
+   "alongM": 77.37,
+   "widthM": 4.7,
+   "eavesM": 13.95,
+   "roofMaxM": 17.03,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165776",
+   "alongM": 82.37,
+   "widthM": 5.3,
+   "eavesM": 13.64,
+   "roofMaxM": 17.43,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "houweningen-1-31"
+}

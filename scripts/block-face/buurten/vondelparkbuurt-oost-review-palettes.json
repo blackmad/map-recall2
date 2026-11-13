@@ -1,0 +1,13 @@
+{
+ "note": "Palette pins read off the huygens-102-118 strip (2024-12-11).",
+ "pins": [
+  {
+   "pandId": "0363100012160719",
+   "type": "huygens-1873-balcony-pediment-mansard",
+   "palette": {
+    "door": "#a3302a"
+   },
+   "reason": "Eerste Constantijn Huygensstraat 116: red-painted door and fanlight frame (the others are black-green)"
+  }
+ ]
+}

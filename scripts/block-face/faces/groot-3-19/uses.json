@@ -1,0 +1,265 @@
+{
+ "street": "Tweede Hugo de Grootstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:09:34.556Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157598",
+   "addresses": [
+    "Tweede Hugo de Grootstraat 3",
+    "Tweede Hugo de Grootstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 3-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000550725"
+    },
+    {
+     "address": "Tweede Hugo de Grootstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000550728"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809663314,
+     "lngLat": [
+      4.8746473,
+      52.3740833
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3-H",
+      "addr:postcode": "1052LA",
+      "addr:street": "Tweede Hugo de Grootstraat",
+      "amenity": "fast_food",
+      "cuisine": "sushi",
+      "delivery": "Mo-Su 17:15-22:45",
+      "name": "Sushi One",
+      "opening_hours": "Mo-Su 17:15-22:45",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.sushione-amsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2809664217,
+     "lngLat": [
+      4.8745743,
+      52.3741006
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-H",
+      "addr:postcode": "1052LA",
+      "addr:street": "Tweede Hugo de Grootstraat",
+      "name": "The Salon Brauw",
+      "phone": "+31 6 24668694",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://brauwamsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160703",
+   "addresses": [
+    "Tweede Hugo de Grootstraat 7",
+    "Tweede Hugo de Grootstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000550731"
+    },
+    {
+     "address": "Tweede Hugo de Grootstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000550735"
+    },
+    {
+     "address": "Tweede Hugo de Grootstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012075161"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809665172,
+     "lngLat": [
+      4.8745147,
+      52.3741187
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1052LA",
+      "addr:street": "Tweede Hugo de Grootstraat",
+      "name": "Prijatelji",
+      "opening_hours": "Mo-Sa 12:00-19:00; Su 12:00-17:00",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.prijatelji.nl"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2809667105,
+     "lngLat": [
+      4.87442,
+      52.3741461
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9-H",
+      "addr:postcode": "1052LA",
+      "addr:street": "Tweede Hugo de Grootstraat",
+      "cuisine": "italian",
+      "email": "hello@salvobakehouse.com",
+      "name": "Salvo Italian Bakehouse",
+      "opening_hours": "We-Sa 09:00-16:00; Su 09:30-16:00; PH closed",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.salvobakehouse.com"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158278",
+   "addresses": [
+    "Tweede Hugo de Grootstraat 11",
+    "Tweede Hugo de Grootstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000550741"
+    },
+    {
+     "address": "Tweede Hugo de Grootstraat 13-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000550747"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809660812,
+     "lngLat": [
+      4.8742942,
+      52.3741803
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-H",
+      "addr:postcode": "1052LA",
+      "addr:street": "Tweede Hugo de Grootstraat",
+      "amenity": "restaurant",
+      "cuisine": "persian",
+      "email": "info@aardigepers.nl",
+      "name": "De Aardige Pers",
+      "opening_hours": "Mo,We-Su 16:00-22:30",
+      "phone": "+31 20 400 3107",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.aardigepers.nl"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157321",
+   "addresses": [
+    "Tweede Hugo de Grootstraat 15",
+    "Tweede Hugo de Grootstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 15-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000550753"
+    },
+    {
+     "address": "Tweede Hugo de Grootstraat 17-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000550758"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165159",
+   "addresses": [
+    "Tweede Hugo de Grootstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 19-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000550764"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13739959766,
+     "lngLat": [
+      4.874065,
+      52.3742415
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Cafe de Oude Schaeper"
+     },
+     "fetchedAt": "2026-11-10T07:09:34.556Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

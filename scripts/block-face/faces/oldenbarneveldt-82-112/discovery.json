@@ -1,0 +1,1864 @@
+{
+ "street": "Van Oldenbarneveldtstraat",
+ "seed": "0363100012164852",
+ "members": [
+  "0363100012153162",
+  "0363100012160629",
+  "0363100012156229",
+  "0363100012158481",
+  "0363100012162737",
+  "0363100012161105",
+  "0363100012153166",
+  "0363100012156219",
+  "0363100012165585",
+  "0363100012158975",
+  "0363100012158608",
+  "0363100012157665",
+  "0363100012160587",
+  "0363100012161554",
+  "0363100012161142",
+  "0363100012157303",
+  "0363100012062978",
+  "0363100012155505",
+  "0363100012164852"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012152390 26.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012100326",
+   "reason": "frontage 93.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012127485",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012128263",
+   "reason": "frontage 110.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012129181",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012130131",
+   "reason": "frontage 157.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012144845",
+   "reason": "frontage 168.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012062099",
+   "reason": "frontage 143.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012062431",
+   "reason": "frontage 144.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012064071",
+   "reason": "frontage 101.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012064170",
+   "reason": "frontage 143.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012068296",
+   "reason": "frontage 103.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012073234",
+   "reason": "frontage 142.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012074508",
+   "reason": "frontage 102.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012075765",
+   "reason": "frontage 138.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012078697",
+   "reason": "frontage 103.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012085345",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012091500",
+   "reason": "frontage 120.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012092749",
+   "reason": "frontage 145.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012093249",
+   "reason": "frontage 101.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012094649",
+   "reason": "frontage 148.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012095986",
+   "reason": "frontage 143.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012101375",
+   "reason": "frontage 31.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012107080",
+   "reason": "frontage 144.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012107450",
+   "reason": "frontage 144.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012110900",
+   "reason": "frontage 103.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012113175",
+   "reason": "frontage 64.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012114021",
+   "reason": "frontage 143.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012116763",
+   "reason": "frontage 102.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012117381",
+   "reason": "frontage 130.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012118303",
+   "reason": "frontage 143.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012119725",
+   "reason": "frontage 103.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012120593",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012120863",
+   "reason": "frontage 102.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012121169",
+   "reason": "frontage 48.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012123270",
+   "reason": "frontage 45.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012132504",
+   "reason": "frontage 104.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012134249",
+   "reason": "frontage 103.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012135155",
+   "reason": "frontage 102.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012136487",
+   "reason": "frontage 34.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012136928",
+   "reason": "frontage 102.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012143493",
+   "reason": "frontage 216.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012144196",
+   "reason": "frontage 102.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012145003",
+   "reason": "frontage 142.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012146183",
+   "reason": "frontage 101.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012147161",
+   "reason": "frontage 144.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012148808",
+   "reason": "frontage 144.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012150234",
+   "reason": "frontage 61.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152665",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152883",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012154403",
+   "reason": "frontage 84.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012150539",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012157820"
+  },
+  {
+   "pandId": "0363100012153524",
+   "reason": "frontage 41.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155424",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012109528"
+  },
+  {
+   "pandId": "0363100012152326",
+   "reason": "frontage 67.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152373",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152378",
+   "reason": "frontage 168.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152438",
+   "reason": "frontage 169.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152451",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161994"
+  },
+  {
+   "pandId": "0363100012152672",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152689",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152728",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152789",
+   "reason": "frontage 168.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152824",
+   "reason": "frontage 189.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152856",
+   "reason": "frontage 104.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152931",
+   "reason": "frontage 107.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152966",
+   "reason": "frontage 108.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152985",
+   "reason": "frontage 104.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012152999",
+   "reason": "frontage 174.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153126",
+   "reason": "frontage 44.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153212",
+   "reason": "frontage 176.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153416",
+   "reason": "frontage 45.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153560",
+   "reason": "frontage 182.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153637",
+   "reason": "frontage 167.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153678",
+   "reason": "frontage 174.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153689",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012160629"
+  },
+  {
+   "pandId": "0363100012153758",
+   "reason": "frontage 177.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153786",
+   "reason": "frontage 152.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153800",
+   "reason": "frontage 190.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153807",
+   "reason": "frontage 157.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012153814",
+   "reason": "frontage 63.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012154093",
+   "reason": "frontage 129.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012154220",
+   "reason": "frontage 189.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012154311",
+   "reason": "frontage 57.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012154357",
+   "reason": "frontage 56.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155441",
+   "reason": "frontage 75.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155444",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155474",
+   "reason": "frontage 176.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156131",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156194",
+   "reason": "frontage 79.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157099",
+   "reason": "frontage 75.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156009",
+   "reason": "frontage 43.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156290",
+   "reason": "frontage 62.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156534",
+   "reason": "frontage 54.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156560",
+   "reason": "frontage 42.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156801",
+   "reason": "frontage 35.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156829",
+   "reason": "frontage 41.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155649",
+   "reason": "frontage 168.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155669",
+   "reason": "frontage 187.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155718",
+   "reason": "frontage 53.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155730",
+   "reason": "frontage 190.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155772",
+   "reason": "frontage 170.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155828",
+   "reason": "frontage 188.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012155831",
+   "reason": "frontage 173.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156059",
+   "reason": "frontage 173.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156074",
+   "reason": "frontage 188.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156096",
+   "reason": "frontage 155.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156097",
+   "reason": "frontage 188.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156164",
+   "reason": "frontage 169.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156403",
+   "reason": "frontage 189.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156465",
+   "reason": "frontage 61.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156521",
+   "reason": "frontage 157.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156678",
+   "reason": "frontage 173.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156720",
+   "reason": "frontage 109.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156725",
+   "reason": "frontage 167.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156727",
+   "reason": "frontage 129.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156794",
+   "reason": "frontage 131.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012156927",
+   "reason": "frontage 178.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157021",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157111",
+   "reason": "frontage 108.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157219",
+   "reason": "frontage 189.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157220",
+   "reason": "frontage 118.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157231",
+   "reason": "frontage 56.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157270",
+   "reason": "frontage 188.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157321",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012165159"
+  },
+  {
+   "pandId": "0363100012157364",
+   "reason": "frontage 31.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157409",
+   "reason": "frontage 42.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157976",
+   "reason": "frontage 57.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158911",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157739",
+   "reason": "frontage 45.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157820",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012162155"
+  },
+  {
+   "pandId": "0363100012157831",
+   "reason": "frontage 39.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158210",
+   "reason": "frontage 42.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158369",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012109528"
+  },
+  {
+   "pandId": "0363100012158661",
+   "reason": "frontage 67.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158706",
+   "reason": "frontage 45.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158813",
+   "reason": "frontage 45.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159346",
+   "reason": "frontage 45.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157598",
+   "reason": "frontage 44.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157672",
+   "reason": "frontage 128.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157676",
+   "reason": "frontage 175.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157692",
+   "reason": "frontage 130.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157716",
+   "reason": "frontage 188.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157839",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012157843",
+   "reason": "frontage 128.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158116",
+   "reason": "frontage 70.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158151",
+   "reason": "frontage 108.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158278",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012157321"
+  },
+  {
+   "pandId": "0363100012158307",
+   "reason": "frontage 129.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158366",
+   "reason": "frontage 156.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158643",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158652",
+   "reason": "frontage 160.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158704",
+   "reason": "frontage 152.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158760",
+   "reason": "frontage 41.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158868",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012155505"
+  },
+  {
+   "pandId": "0363100012158916",
+   "reason": "frontage 108.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012158949",
+   "reason": "frontage 128.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159018",
+   "reason": "frontage 189.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159068",
+   "reason": "frontage 169.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159105",
+   "reason": "frontage 126.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159130",
+   "reason": "frontage 104.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159135",
+   "reason": "frontage 153.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159205",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159242",
+   "reason": "frontage 154.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159274",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160087",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160222",
+   "reason": "frontage 39.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160823",
+   "reason": "frontage 39.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161528",
+   "reason": "frontage 45.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161795",
+   "reason": "frontage 40.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161881",
+   "reason": "frontage 41.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159387",
+   "reason": "frontage 167.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159587",
+   "reason": "frontage 56.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159613",
+   "reason": "frontage 107.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159821",
+   "reason": "frontage 41.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159853",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012164852"
+  },
+  {
+   "pandId": "0363100012159933",
+   "reason": "frontage 155.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012159954",
+   "reason": "frontage 132.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160230",
+   "reason": "frontage 127.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160432",
+   "reason": "frontage 163.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160467",
+   "reason": "frontage 68.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160524",
+   "reason": "frontage 187.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160703",
+   "reason": "frontage 34.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160880",
+   "reason": "frontage 107.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160905",
+   "reason": "frontage 169.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012160910",
+   "reason": "frontage 164.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161097",
+   "reason": "frontage 60.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161234",
+   "reason": "frontage 56.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161412",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161489",
+   "reason": "frontage 172.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161539",
+   "reason": "frontage 149.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161572",
+   "reason": "frontage 109.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161580",
+   "reason": "frontage 39.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161605",
+   "reason": "frontage 157.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161764",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161909",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012161928",
+   "reason": "frontage 138.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162014",
+   "reason": "frontage 36.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162154",
+   "reason": "frontage 168.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162272",
+   "reason": "frontage 88.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162291",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163330",
+   "reason": "frontage 51.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164290",
+   "reason": "frontage 85.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164363",
+   "reason": "frontage 104.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164484",
+   "reason": "frontage 70.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162387",
+   "reason": "frontage 64.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162957",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012109528"
+  },
+  {
+   "pandId": "0363100012163839",
+   "reason": "frontage 71.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163896",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012162155"
+  },
+  {
+   "pandId": "0363100012164278",
+   "reason": "frontage 45.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164577",
+   "reason": "frontage 45.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162195",
+   "reason": "frontage 168.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162314",
+   "reason": "frontage 37.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162344",
+   "reason": "frontage 62.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162380",
+   "reason": "frontage 156.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162506",
+   "reason": "frontage 153.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162599",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162764",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162863",
+   "reason": "frontage 131.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012162901",
+   "reason": "frontage 169.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163008",
+   "reason": "frontage 46.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163129",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163170",
+   "reason": "frontage 59.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163198",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163222",
+   "reason": "frontage 153.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163303",
+   "reason": "frontage 174.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163315",
+   "reason": "frontage 156.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163395",
+   "reason": "frontage 175.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163427",
+   "reason": "frontage 56.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163516",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163630",
+   "reason": "frontage 152.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163779",
+   "reason": "frontage 60.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163783",
+   "reason": "frontage 168.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163814",
+   "reason": "frontage 154.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012163846",
+   "reason": "frontage 46.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164007",
+   "reason": "frontage 107.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164073",
+   "reason": "frontage 189.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164255",
+   "reason": "frontage 169.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164325",
+   "reason": "frontage 189.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164533",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164721",
+   "reason": "frontage 108.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164747",
+   "reason": "frontage 168.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164804",
+   "reason": "frontage 110.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012164829",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165213",
+   "reason": "frontage 98.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166471",
+   "reason": "frontage 74.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166570",
+   "reason": "frontage 72.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165924",
+   "reason": "frontage 42.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166052",
+   "reason": "frontage 34.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166096",
+   "reason": "frontage 54.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166728",
+   "reason": "frontage 46.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166908",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012157820"
+  },
+  {
+   "pandId": "0363100012167082",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012109528"
+  },
+  {
+   "pandId": "0363100012164833",
+   "reason": "frontage 178.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165179",
+   "reason": "frontage 188.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165226",
+   "reason": "frontage 30.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165258",
+   "reason": "frontage 52.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165319",
+   "reason": "frontage 33.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165332",
+   "reason": "frontage 130.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165392",
+   "reason": "frontage 128.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165393",
+   "reason": "frontage 154.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165508",
+   "reason": "frontage 108.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165521",
+   "reason": "frontage 167.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165578",
+   "reason": "frontage 52.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165678",
+   "reason": "frontage 144.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165736",
+   "reason": "frontage 61.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165776",
+   "reason": "frontage 134.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012165875",
+   "reason": "frontage 167.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166050",
+   "reason": "frontage 189.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166065",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012152390"
+  },
+  {
+   "pandId": "0363100012166285",
+   "reason": "frontage 34.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166294",
+   "reason": "frontage 38.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166317",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166368",
+   "reason": "frontage 56.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166413",
+   "reason": "frontage 187.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166479",
+   "reason": "frontage 60.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166575",
+   "reason": "frontage 56.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166596",
+   "reason": "frontage 130.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166649",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166795",
+   "reason": "frontage 149.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166805",
+   "reason": "frontage 65.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166822",
+   "reason": "frontage 188.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012166918",
+   "reason": "frontage 177.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167020",
+   "reason": "frontage 155.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167046",
+   "reason": "frontage 129.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167086",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012168432",
+   "reason": "frontage 156.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012168434",
+   "reason": "frontage 191.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012168436",
+   "reason": "frontage 160.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169391",
+   "reason": "frontage 155.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169775",
+   "reason": "frontage 195.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169776",
+   "reason": "frontage 194.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169777",
+   "reason": "frontage 192.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169784",
+   "reason": "frontage 188.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169786",
+   "reason": "frontage 190.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169787",
+   "reason": "frontage 189.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169788",
+   "reason": "frontage 157.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169789",
+   "reason": "frontage 156.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169790",
+   "reason": "frontage 155.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169791",
+   "reason": "frontage 159.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169792",
+   "reason": "frontage 158.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169793",
+   "reason": "frontage 157.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012170815",
+   "reason": "frontage 196.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169781",
+   "reason": "frontage 147.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169783",
+   "reason": "frontage 179.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169794",
+   "reason": "frontage 150.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169804",
+   "reason": "frontage 125.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169805",
+   "reason": "frontage 125.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169806",
+   "reason": "frontage 125.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169807",
+   "reason": "frontage 125.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012169808",
+   "reason": "frontage 125.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012170723",
+   "reason": "frontage 136.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167104",
+   "reason": "frontage 170.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167163",
+   "reason": "frontage 108.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167168",
+   "reason": "frontage 169.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167222",
+   "reason": "frontage 189.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167241",
+   "reason": "frontage 167.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012167267",
+   "reason": "frontage 154.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012183577",
+   "reason": "frontage 128.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012188293",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012191104",
+   "reason": "frontage 33.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012191105",
+   "reason": "frontage 39.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012191494",
+   "reason": "frontage 51.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012192764",
+   "reason": "frontage 36.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012193554",
+   "reason": "frontage 128.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012196725",
+   "reason": "frontage 58.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012197980",
+   "reason": "frontage 32.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012198997",
+   "reason": "frontage 119.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012202533",
+   "reason": "frontage 127.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012203091",
+   "reason": "frontage 36.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012205580",
+   "reason": "frontage 180.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012205854",
+   "reason": "frontage 46.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012208025",
+   "reason": "frontage 121.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012209442",
+   "reason": "frontage 38.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012211913",
+   "reason": "frontage 66.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012237050",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012237064"
+  },
+  {
+   "pandId": "0363100012212539",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012218992",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012160375"
+  },
+  {
+   "pandId": "0363100012228505",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161421"
+  },
+  {
+   "pandId": "0363100012229337",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012156959"
+  },
+  {
+   "pandId": "0363100012233926",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012157090"
+  },
+  {
+   "pandId": "0363100012236088",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236197",
+   "reason": "frontage 38.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236308",
+   "reason": "frontage 59.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236341",
+   "reason": "frontage 42.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236456",
+   "reason": "frontage 42.9 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236529",
+   "reason": "frontage 43.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236645",
+   "reason": "frontage 43.5 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236962",
+   "reason": "frontage 43.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012237224",
+   "reason": "frontage 43.4 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012253927",
+   "reason": "frontage 183.0 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012214601",
+   "reason": "frontage 121.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012215329",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161334"
+  },
+  {
+   "pandId": "0363100012215330",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161334"
+  },
+  {
+   "pandId": "0363100012215509",
+   "reason": "frontage 50.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012216784",
+   "reason": "frontage 129.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012222617",
+   "reason": "frontage 127.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012222758",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012222788",
+   "reason": "frontage 127.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012223378",
+   "reason": "frontage 180.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012224346",
+   "reason": "frontage 44.1 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012224347",
+   "reason": "frontage 49.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012226481",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012231007",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161334"
+  },
+  {
+   "pandId": "0363100012231008",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012161334"
+  },
+  {
+   "pandId": "0363100012231275",
+   "reason": "frontage 121.2 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012233544",
+   "reason": "frontage 215.3 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012235889",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012235917",
+   "reason": "frontage 130.6 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236281",
+   "reason": "frontage 221.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236600",
+   "reason": "sightline to Van Oldenbarneveldtstraat crosses 0363100012152541"
+  },
+  {
+   "pandId": "0363100012236753",
+   "reason": "frontage 214.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012236791",
+   "reason": "no frontage on Van Oldenbarneveldtstraat: No footprint edge faces Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012237116",
+   "reason": "frontage 215.8 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012237389",
+   "reason": "frontage 42.7 m from Van Oldenbarneveldtstraat"
+  },
+  {
+   "pandId": "0363100012109528",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152541",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152888",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153513",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153528",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156959",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157090",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156679",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158963",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159666",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160196",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160375",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161213",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162155",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161421",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162047",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163322",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164225",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164742",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165159",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166466",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166531",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166929",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167187",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237064",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012153162",
+   "alongM": -84.73,
+   "widthM": 6.04,
+   "eavesM": 14.2,
+   "roofMaxM": 17.36,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012160629",
+   "alongM": -78.69,
+   "widthM": 6.05,
+   "eavesM": 14.19,
+   "roofMaxM": 17.41,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156229",
+   "alongM": -73.4,
+   "widthM": 4.52,
+   "eavesM": 16.55,
+   "roofMaxM": 16.57,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158481",
+   "alongM": -68.89,
+   "widthM": 4.5,
+   "eavesM": 14.39,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162737",
+   "alongM": -64.4,
+   "widthM": 4.5,
+   "eavesM": 14.29,
+   "roofMaxM": 17.11,
+   "storeys3dbag": 0,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161105",
+   "alongM": -59.89,
+   "widthM": 4.51,
+   "eavesM": 15.77,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153166",
+   "alongM": -55.39,
+   "widthM": 4.5,
+   "eavesM": 13.57,
+   "roofMaxM": 16.54,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156219",
+   "alongM": -51.02,
+   "widthM": 4.24,
+   "eavesM": 15.54,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165585",
+   "alongM": -46.79,
+   "widthM": 4.23,
+   "eavesM": 16.09,
+   "roofMaxM": 16.16,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158975",
+   "alongM": -42.56,
+   "widthM": 4.23,
+   "eavesM": 15.61,
+   "roofMaxM": 16.33,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158608",
+   "alongM": -38.33,
+   "widthM": 4.23,
+   "eavesM": 13.78,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157665",
+   "alongM": -34.1,
+   "widthM": 4.23,
+   "eavesM": 15.68,
+   "roofMaxM": 16.38,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160587",
+   "alongM": -29.87,
+   "widthM": 4.23,
+   "eavesM": 14.22,
+   "roofMaxM": 16.58,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161554",
+   "alongM": -25.64,
+   "widthM": 4.22,
+   "eavesM": 15.46,
+   "roofMaxM": 16.42,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161142",
+   "alongM": -21.42,
+   "widthM": 4.21,
+   "eavesM": 15.87,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157303",
+   "alongM": -16.58,
+   "widthM": 5.47,
+   "eavesM": 13.39,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012062978",
+   "alongM": -11.17,
+   "widthM": 5.35,
+   "eavesM": 13.45,
+   "roofMaxM": 15.69,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155505",
+   "alongM": -5.66,
+   "widthM": 5.66,
+   "eavesM": 13.53,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164852",
+   "alongM": 0,
+   "widthM": 5.66,
+   "eavesM": 13.66,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  }
+ ]
+}

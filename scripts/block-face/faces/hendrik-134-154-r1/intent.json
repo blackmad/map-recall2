@@ -1,0 +1,136 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hendrik-134-154-r1",
+ "street": "Frederik Hendrikstraat",
+ "sources": [
+  {
+   "id": "strip-2022-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "image": "staging/block-face/hendrik-134-154-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/hendrik-134-154/auto-place.json"
+ },
+ "types": [
+  "fh-1887-dentil-pediment",
+  "fh-1887-plain-anchor-pediment"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012158151",
+   "slug": "hendrik-158151",
+   "address": "Frederik Hendrikstraat 152",
+   "type": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#766257",
+     "evidence": "strip 2022-04-29 span 388-576: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 388-576"
+   }
+  },
+  {
+   "pandId": "0363100012157111",
+   "slug": "hendrik-157111",
+   "address": "Frederik Hendrikstraat 150",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#716053",
+     "evidence": "strip 2022-04-29 span 576-764: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 576-764"
+   }
+  },
+  {
+   "pandId": "0363100012164721",
+   "slug": "hendrik-164721",
+   "address": "Frederik Hendrikstraat 148",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#786258",
+     "evidence": "strip 2022-04-29 span 764-952: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 764-952"
+   }
+  },
+  {
+   "pandId": "0363100012167163",
+   "slug": "hendrik-167163",
+   "address": "Frederik Hendrikstraat 146",
+   "type": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#776358",
+     "evidence": "strip 2022-04-29 span 952-1140: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 952-1140"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

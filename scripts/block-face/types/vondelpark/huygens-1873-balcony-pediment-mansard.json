@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "huygens-1873-balcony-pediment-mansard",
+ "district": "vondelpark",
+ "description": "Eerste Constantijn Huygensstraat 108-116 (1873-74): orange-red brick, three axes on 6.4-7.0 m, a raised ground storey over souterrain lights with a stoop to a tall door with a fanlight on an outer axis, tall two-light segmental-headed windows in white frames, a white stone balcony with balusters on two consoles over the centre ground window, a white bracketed entablature (consoles over every pier), a slate mansard with one white pediment dormer on the centre axis.",
+ "fit": {
+  "widthM": [
+   6.2,
+   7.2
+  ],
+  "storeys": [
+   2,
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1872,
+   1875
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   10.4,
+   11.4
+  ],
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "huygens-102-118 strip 2024-12-11 (40 px/m; Eerste Constantijn Huygensstraat 116, 114, 110, 108): cornice top 10.6 m, frieze foot 9.5 m, consoles to 9.0 m; 3DBAG eaves 10.78-10.96 m, roofMax 13.5-13.6 m",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 2,
+  "bays": 3,
+  "cornice": "bracketed",
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental"
+  },
+  "storeyHeights": [
+   5.1,
+   3.6
+  ],
+  "windowHeights": [
+   0.52,
+   0.69
+  ],
+  "headLines": [
+   0.86,
+   0.78
+  ],
+  "windowShare": 0.62,
+  "entablature": {
+   "rise": 1.3,
+   "cap": 0.4,
+   "frieze": "trim",
+   "architrave": 0.1
+  },
+  "balconies": {
+   "storeys": [
+    1
+   ],
+   "bays": [
+    1
+   ],
+   "style": "timber-bracketed",
+   "rail": "turned"
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.3
+   },
+   "note": "huygens-102-118 strip 2024-12-11 (40 px/m; Eerste Constantijn Huygensstraat 116, 114, 110, 108): one white pediment dormer, 10.7-12.3 m, the slate mansard to 11.4 m"
+  }
+ },
+ "palettes": {
+  "orange-red": {
+   "brick": "#8f5743",
+   "frame": "white-painted",
+   "door": "#22281f",
+   "stone": "#e6e3d8",
+   "cornice": "#e6e3d8",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "form": "attic",
+  "pitchDeg": 70,
+  "evidence": "huygens-102-118 strip 2024-12-11 (40 px/m; Eerste Constantijn Huygensstraat 116, 114, 110, 108): black slate mansard 10.6-11.4 m behind the cornice, the dormer to 12.3 m; rise 0.25 storeys (0.8 m): the round-1 attic drew 2.5 m of slate",
+  "rise": 0.25
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "windowsPerStorey": "souterrain: 2 lights | ground: door + 2 | 1: 3",
+  "symmetry": "symmetric above the ground; the door on an outer axis alternates",
+  "groundFloor": "stoop to a tall door with a fanlight; two tall windows",
+  "roofline": "white bracketed entablature, slate mansard, one pediment dormer",
+  "photoRows": [
+   2,
+   3
+  ],
+  "photoGroundRows": 1,
+  "citation": "huygens-102-118 strip 2024-12-11 (40 px/m; Eerste Constantijn Huygensstraat 116, 114, 110, 108)",
+  "signage": "none",
+  "identicalBays": "upper storey equal axes; balcony on the centre axis"
+ },
+ "evidence": [
+  {
+   "face": "huygens-102-118",
+   "pands": [
+    "160719",
+    "163854",
+    "158719",
+    "158176"
+   ],
+   "citation": "read off the 2024-12-11 strip by eye (round 5 census note) and measured on it"
+  }
+ ],
+ "schemaLimits": [
+  "round iron anchor plates (dark discs) on the piers, not the cross anchors of wallAnchors",
+  "the balcony is a solid stone balustrade on stone consoles, drawn as turned balusters on brackets",
+  "the door fanlight under a segmental head with the souterrain door under the stoop"
+ ],
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "note": "door on the left axis (116, 110); mirrored for a door on the right (114, 108)"
+  }
+ }
+}

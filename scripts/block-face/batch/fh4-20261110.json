@@ -1,0 +1,194 @@
+{
+ "name": "fh4-20261110",
+ "buurt": "frederik-hendrikbuurt-zuidoost",
+ "library": "frederik-hendrikbuurt",
+ "generatedAt": "2026-11-10T09:06:27.052Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 3,
+  "runs": 7,
+  "installed": 4,
+  "installedPands": 9,
+  "failed": 3,
+  "byReason": {
+   "glb-audit": 2,
+   "likeness": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "hendrik-134-154",
+   "street": "Frederik Hendrikstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.182,
+   "nccMedian": 0.219,
+   "stripOverDrawn": 1.045,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4752,
+   "sheet": "staging/block-face/hendrik-134-154-r1/review/strip-sheet.png",
+   "stripDate": "2022-04-29",
+   "run": "hendrik-134-154-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 17
+  },
+  {
+   "face": "hendrik-134-154",
+   "street": "Frederik Hendrikstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.206,
+   "nccMedian": 0.225,
+   "stripOverDrawn": 0.95,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4848,
+   "sheet": "staging/block-face/hendrik-134-154-r2/review/strip-sheet.png",
+   "stripDate": "2022-04-29",
+   "run": "hendrik-134-154-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 16.6
+  },
+  {
+   "face": "houweningen-2-38",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.169,
+   "nccMedian": 0.39,
+   "stripOverDrawn": 0.86,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 37421,
+   "sheet": "staging/block-face/houweningen-2-38-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-2-38-r1",
+   "pands": 16,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 60.2
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.256,
+   "nccMedian": 0.302,
+   "stripOverDrawn": 1.151,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 4661,
+   "sheet": "staging/block-face/houweningen-1-31-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-1-31-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 4.9
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.243,
+   "nccMedian": 0.347,
+   "stripOverDrawn": 0.942,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4914,
+   "sheet": "staging/block-face/houweningen-1-31-r2/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-1-31-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.6
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.278,
+   "nccMedian": 0.309,
+   "stripOverDrawn": 0.989,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 7311,
+   "sheet": "staging/block-face/houweningen-1-31-r3/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-1-31-r3",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.6
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.139,
+   "nccMedian": 0.201,
+   "stripOverDrawn": 1.008,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 6957,
+   "sheet": "staging/block-face/houweningen-1-31-r4/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-1-31-r4",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "likeness: 1 pand(s) under NCC 0.15 (159954 0.139)"
+   ],
+   "seconds": 45.3
+  }
+ ]
+}

@@ -1,0 +1,352 @@
+{
+ "street": "Van Houweningenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:01:20.103Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161605",
+   "addresses": [
+    "Van Houweningenstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000841069"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156521",
+   "addresses": [
+    "Van Houweningenstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841065"
+    },
+    {
+     "address": "Derde Hugo de Grootstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000555396"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153807",
+   "addresses": [
+    "Van Houweningenstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000841061"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158366",
+   "addresses": [
+    "Van Houweningenstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841057"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162380",
+   "addresses": [
+    "Van Houweningenstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000841045"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163315",
+   "addresses": [
+    "Van Houweningenstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841037"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159933",
+   "addresses": [
+    "Van Houweningenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000841029"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167020",
+   "addresses": [
+    "Van Houweningenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841021"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156096",
+   "addresses": [
+    "Van Houweningenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000841013"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159242",
+   "addresses": [
+    "Van Houweningenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841005"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163814",
+   "addresses": [
+    "Van Houweningenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000840997"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167267",
+   "addresses": [
+    "Van Houweningenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840989"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165393",
+   "addresses": [
+    "Van Houweningenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000840981"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159135",
+   "addresses": [
+    "Van Houweningenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840973"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163222",
+   "addresses": [
+    "Van Houweningenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000840965"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162506",
+   "addresses": [
+    "Van Houweningenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840957"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158704",
+   "addresses": [
+    "Van Houweningenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000840949"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153786",
+   "addresses": [
+    "Van Houweningenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840941"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163630",
+   "addresses": [
+    "Van Houweningenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Hugo de Grootstraat 35",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000550808"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12985256054,
+     "lngLat": [
+      4.8719063,
+      52.3747377
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam"
+     },
+     "fetchedAt": "2026-11-10T08:01:20.103Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    },
+    {
+     "type": "node",
+     "id": 12985256055,
+     "lngLat": [
+      4.8718969,
+      52.3747213
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam"
+     },
+     "fetchedAt": "2026-11-10T08:01:20.103Z",
+     "match": "frontage",
+     "distanceM": 5
+    }
+   ]
+  }
+ ]
+}

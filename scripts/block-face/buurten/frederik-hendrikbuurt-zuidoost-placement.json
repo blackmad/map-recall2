@@ -1,0 +1,193 @@
+{
+ "buurt": "frederik-hendrikbuurt-zuidoost",
+ "library": "frederik-hendrikbuurt",
+ "generatedAt": "2026-11-12T12:30:31.343Z",
+ "seconds": 210.36,
+ "totals": {
+  "faces": 4,
+  "pands": 67,
+  "placed": 40
+ },
+ "faces": [
+  {
+   "face": "hendrik-134-154",
+   "street": "Frederik Hendrikstraat",
+   "pands": 12,
+   "placed": 8,
+   "held": 4,
+   "runs": [
+    {
+     "face": "hendrik-134-154-r1",
+     "pands": [
+      "0363100012158151",
+      "0363100012157111",
+      "0363100012164721",
+      "0363100012167163"
+     ],
+     "passed": true,
+     "triangles": 7539
+    },
+    {
+     "face": "hendrik-134-154-r2",
+     "pands": [
+      "0363100012152966",
+      "0363100012165508",
+      "0363100012160880",
+      "0363100012164007"
+     ],
+     "passed": true,
+     "triangles": 7550
+    }
+   ],
+   "seconds": 42.17,
+   "byType": {
+    "fh-1887-plain-anchor-pediment": 4,
+    "fh-1887-dentil-pediment": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 4,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "pands": 17,
+   "placed": 5,
+   "held": 12,
+   "runs": [
+    {
+     "face": "houweningen-1-31-r1",
+     "pands": [
+      "0363100012165332",
+      "0363100012162863",
+      "0363100012156794",
+      "0363100012159954",
+      "0363100012165776"
+     ],
+     "passed": true,
+     "triangles": 9776
+    }
+   ],
+   "seconds": 41.35,
+   "byType": {
+    "fh-1887-dentil-pediment": 2,
+    "fh-1887-plain-anchor-pediment": 2,
+    "fh-1887-arched-gable": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 4,
+    "run": 2,
+    "review": 2
+   }
+  },
+  {
+   "face": "houweningen-2-38",
+   "street": "Van Houweningenstraat",
+   "pands": 19,
+   "placed": 16,
+   "held": 3,
+   "runs": [
+    {
+     "face": "houweningen-2-38-r1",
+     "pands": [
+      "0363100012161605",
+      "0363100012156521",
+      "0363100012153807",
+      "0363100012158366",
+      "0363100012162380",
+      "0363100012163315",
+      "0363100012159933",
+      "0363100012167020",
+      "0363100012156096",
+      "0363100012159242",
+      "0363100012163814",
+      "0363100012167267",
+      "0363100012165393",
+      "0363100012159135",
+      "0363100012163222",
+      "0363100012162506"
+     ],
+     "passed": true,
+     "triangles": 31925
+    }
+   ],
+   "seconds": 53.83,
+   "byType": {
+    "fh-1887-plain-anchor-pediment": 6,
+    "fh-1887-arched-gable": 2,
+    "fh-1887-dentil-pediment": 8
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "street": "Van Reigersbergenstraat",
+   "pands": 19,
+   "placed": 11,
+   "held": 8,
+   "runs": [
+    {
+     "face": "reigersbergen-1-37-r1",
+     "pands": [
+      "0363100012161489",
+      "0363100012156678",
+      "0363100012155831",
+      "0363100012156059",
+      "0363100012153678",
+      "0363100012152999",
+      "0363100012163303"
+     ],
+     "passed": true,
+     "triangles": 13566
+    },
+    {
+     "face": "reigersbergen-1-37-r2",
+     "pands": [
+      "0363100012155474",
+      "0363100012153212"
+     ],
+     "passed": true,
+     "triangles": 3585
+    },
+    {
+     "face": "reigersbergen-1-37-r3",
+     "pands": [
+      "0363100012153758",
+      "0363100012164833"
+     ],
+     "passed": true,
+     "triangles": 3828
+    }
+   ],
+   "seconds": 72.99,
+   "byType": {
+    "fh-1887-plain-anchor-pediment": 5,
+    "fh-1887-arched-gable": 2,
+    "fh-1887-dentil-pediment": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 5,
+    "run": 1,
+    "review": 2
+   }
+  }
+ ]
+}

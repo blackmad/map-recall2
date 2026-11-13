@@ -19,7 +19,7 @@ import {fitIntent} from '../buildingRecipe/fit.ts';
 import {topology, type Tri} from '../buildingRecipe/gates.ts';
 import {canalhouseGroupToGlb} from '../../../scripts/canalhouse-recipes/export-glb.ts';
 import {decodeTriangles, slotFor} from '../../../scripts/building-recipes/compile.ts';
-import {withFrontRoof} from '../blockFace/houseFrontRoof.ts';
+import {withFrontRoof} from '../buildingRecipe/houseFrontRoof.ts';
 import {emptySpec, type HouseSpec} from './spec.ts';
 import {resolveSpecs} from './resolve.ts';
 import {toRecipe} from './toRecipe.ts';

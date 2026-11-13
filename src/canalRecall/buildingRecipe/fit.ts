@@ -42,6 +42,8 @@ const TOWER_LIGHT_TRIM_M = 0.06;
  *  material about 6 cm proud); the facing's piers start this far in from the tower's edges so they never lie over it. */
 const TOWER_EDGE_TRIM_M = 0.1;
 
+/** `windowSurround: 'jack-blocks'`: Van Houweningenstraat 19 at 40 px/m (2021-02-22): five blocks per head, about 0.17 m wide with as much brick between, 0.5 m and 0.32 m tall, 0.12 m past each jamb (read on the review sheet beside the model). */
+export const JACK_BLOCKS = {count: 5, widthM: 0.17, tallM: 0.5, shortM: 0.32, pastM: 0.12, depthM: 0.045} as const;
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
   'black-tile': {steep: '#2f2e2f', low: '#3d3b3b', flat: '#666462'},
@@ -371,12 +373,16 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         const slots: [string, number, number][] = f.doorPairs
           ? (() => { const dw = round(clamp((winW - gap) / 2, 0.7, 1.4)); return [[name, centre - gap / 2 - dw, dw], [`${name}-2`, centre + gap / 2, dw]] as [string, number, number][]; })()
           : [[name, clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05), doorWidth]];
-        return slots.flatMap(([id, left, dw]) => {
-          const made = f.doorReveal ? doorRevealOpenings(f.doorReveal, round(left), y, dw, doorH, transomH)
+        // `pairTransom`: no transom per door; one light spans the pair (below).
+        const own = f.pairTransom && f.doorPairs ? 0 : transomH;
+        const shared: CanalhouseOpening[] = own === 0 && transomH > 0.2 && f.pairTransom && f.doorPairs
+          ? [{id: `${name}-transom`, kind: 'window' as const, leftM: round(slots[0][1]), bottomM: y + doorH + 0.06, widthM: round(slots[1][1] + slots[1][2] - slots[0][1]), heightM: transomH, trimWidthM: 0.06, verticalBars: [.5], frameSurface: 'trim' as const, barSurface: 'trim' as const}] : [];
+        return [...slots.flatMap(([id, left, dw]) => {
+          const made = f.doorReveal ? doorRevealOpenings(f.doorReveal, round(left), y, dw, doorH, own)
             : [{id: 'door', kind: 'door' as const, leftM: round(left), bottomM: y, widthM: dw, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door' as const, frameSurface: 'trim' as const, barSurface: 'trim' as const},
-              ...(transomH > 0.2 ? [{id: 'door-transom', kind: 'window' as const, leftM: round(left), bottomM: y + doorH + 0.06, widthM: dw, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim' as const, barSurface: 'trim' as const}] : [])];
+              ...(own > 0.2 ? [{id: 'door-transom', kind: 'window' as const, leftM: round(left), bottomM: y + doorH + 0.06, widthM: dw, heightM: own, trimWidthM: 0.06, frameSurface: 'trim' as const, barSurface: 'trim' as const}] : [])];
           return made.map(o => ({...o, id: o.id.replace(/^door/, id)}));
-        });
+        }), ...shared];
       };
       if (s === 0 && !rd && !f.groundFront && f.extraDoorBays?.includes(b)) { openings.push(...pairedDoors(`door-b${b}`)); continue; }
       if (s === 0 && f.doorBay === b && !rd) {
@@ -441,6 +447,14 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         const head = s > 0 || f.archedStoreys?.includes(s) ? headFor(s, lw) : {}, lh = round(h * LADDER.heightK), ls = round(h * LADDER.sillK);
         const lefts = pair ? [centre - LADDER.pierM / 2 - lw, centre + LADDER.pierM / 2] : [centre - lw / 2];
         lefts.forEach((left, k) => openings.push({id: `s${s}-b${b}${pair ? 'ab'[k] : ''}`, kind: 'window', leftM: round(left), bottomM: round(y + Math.min(ls, h - 0.12 - lh)), widthM: lw, heightM: lh, trimWidthM: 0.06, horizontalBars: ladderBars(lh), ...head, frameSurface: 'trim', barSurface: 'trim'}));
+        continue;
+      }
+      // `wideGround`: the ground windows over axes from..to are one wide casement.
+      if (s === 0 && f.wideGround && b >= f.wideGround.from && b <= f.wideGround.to) {
+        if (b === f.wideGround.from) {
+          const lights = f.wideGround.to - f.wideGround.from + 1, left = centre - winW / 2, right = plan.centre(f.wideGround.to) + plan.w(f.wideGround.to) / 2;
+          openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: round(left), bottomM: y + Math.min(sill, h - 0.12 - winH), widthM: round(right - left), heightM: winH, trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), verticalBars: Array.from({length: lights - 1}, (_, k) => round((k + 1) / lights, 4)), frameSurface: 'trim', barSurface: 'trim'});
+        }
         continue;
       }
       const axisHead = axisHeadFor(f, s, plan.axis(b));
@@ -1291,6 +1305,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (front.windowSurround === 'eared-keystone') { dressings.push(...earedHead(o, oy, width)); continue; }
         if (front.windowSurround === 'sill') {
           dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
+        } else if (front.windowSurround === 'jack-blocks') {
+          // A flat arch of white blocks on the head, tall and short alternating, brick between (Frederik Hendrikbuurt 1885-90).
+          const {count, widthM, tallM, shortM, pastM, depthM} = JACK_BLOCKS, span = o.widthM + 2 * pastM, x0 = o.leftM - pastM, step = (span - widthM) / (count - 1);
+          for (let k = 0; k < count; k++) dressings.push({id: `jack-${k}-${oy}`, kind: 'slab', leftM: round(x0 + step * k), bottomM: round(top + 0.02), widthM, heightM: k % 2 ? shortM : tallM, depthM, surface: 'stone'});
+          dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
         } else if (front.windowSurround === 'keystone') {
           const kw = clamp(o.widthM * 0.2, 0.15, 0.26);
           dressings.push({id: `key-${oy}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: round(kw), heightM: 0.22, depthM: 0.06, surface: 'stone'});
@@ -1298,6 +1317,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
           const lw = o.widthM + 2 * ox + 0.12;
           dressings.push({id: `lintel-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.06), bottomM: round(top - 0.04), widthM: round(lw), heightM: 0.14, depthM: 0.05, surface: 'stone'});
           dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
+          // `dentil-lintel`: a row of stone teeth standing on the lintel, brick between (Frederik Hendrikbuurt 1885-90).
+          if (front.windowSurround === 'dentil-lintel') {
+            const tw = 0.1, tp = 0.2, count = Math.max(2, Math.round((lw - tw) / tp) + 1), x0 = o.leftM - ox - 0.06, step = (lw - tw) / (count - 1);
+            for (let k = 0; k < count; k++) dressings.push({id: `dentil-${k}-${oy}`, kind: 'slab', leftM: round(x0 + step * k), bottomM: round(top + 0.1), widthM: tw, heightM: 0.12, depthM: 0.045, surface: 'stone'});
+          }
           if (front.windowSurround === 'full-frame') for (const [side, x] of [['l', o.leftM - ox - 0.06], ['r', o.leftM + o.widthM + ox - 0.02]] as const)
             dressings.push({id: `jamb-${side}-${oy}`, kind: 'slab', leftM: round(x), bottomM: round(o.bottomM - 0.01), widthM: 0.08, heightM: round(o.heightM + 0.02), depthM: 0.045, surface: 'stone'});
         }

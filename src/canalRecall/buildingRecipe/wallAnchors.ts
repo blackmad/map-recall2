@@ -9,7 +9,8 @@
  * centred `over` metres over the storey's highest window head, 4.2 cm proud (the jamb blocks' depth: 3 cm sits in the
  * audit's z-fight band), in the door colour (black iron). Measured on the 2022-03-21 strip of Albert Cuypstraat 144-162
  * at 40 px/m: heads 0.3-0.4 m tall, 0.3-0.4 m over the window heads (6.7-6.8 m over 6.4 m), on every pier and 0.25-0.35 m
- * in from each party wall.
+ * in from each party wall. `colour` (Frederik Hendrikbuurt 1887, red doors beside black anchors): the iron's own colour
+ * when the door colour is not black; absent = the door colour, byte-identical.
  */
 import * as T from 'three';
 import type {CanalHouseRecipe} from '../canalhouseRecipes.ts';
@@ -55,7 +56,8 @@ export function wallAnchorCentres(openings: {id: string; kind: string; leftM: nu
 
 export function wallAnchorProblems(f: FrontIntent, at: string): string[] {
   const v = f.wallAnchors as Record<string, unknown> | undefined, p: string[] = [];
-  if (!v || typeof v !== 'object' || Array.isArray(v) || Object.keys(v).some(k => !['storeys', 'size', 'over'].includes(k))) return [`${at}.wallAnchors: {storeys?, size?, over?}`];
+  if (!v || typeof v !== 'object' || Array.isArray(v) || Object.keys(v).some(k => !['storeys', 'size', 'over', 'colour'].includes(k))) return [`${at}.wallAnchors: {storeys?, size?, over?, colour?}`];
+  if (v.colour !== undefined && !(typeof v.colour === 'string' && /^#[0-9a-f]{6}$/i.test(v.colour))) p.push(`${at}.wallAnchors.colour: #rrggbb`);
   const num = (k: string, lo: number, hi: number) => { if (v[k] !== undefined && !(typeof v[k] === 'number' && (v[k] as number) >= lo && (v[k] as number) <= hi)) p.push(`${at}.wallAnchors.${k}: ${lo}..${hi} m`); };
   num('size', WALL_ANCHORS.minSize, WALL_ANCHORS.maxSize);
   num('over', WALL_ANCHORS.minOver, WALL_ANCHORS.maxOver);
@@ -80,7 +82,7 @@ export function addWallAnchors(group: T.Group, intent: CanalHouseIntent, recipe:
     }
     if (!values.length) continue;
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
-    const m = new T.Mesh(g, new T.MeshStandardMaterial({color: palette.door, roughness: 1}));
+    const m = new T.Mesh(g, new T.MeshStandardMaterial({color: wa.colour ?? palette.door, roughness: 1}));
     m.name = `wall-anchors/${front.id}`; m.userData = {component: 'wall-anchors', surface: 'door', pandId: intent.pandId};
     facade.add(m);
   }

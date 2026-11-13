@@ -1,0 +1,233 @@
+{
+ "street": "Rombout Hogerbeetsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:08:29.878Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073234",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 111-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000796253"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145003",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 113-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000796261"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064170",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 115-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000796269"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062099",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 117-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000796277"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095986",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 119-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000796285"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118303",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 121-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000796293"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147161",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 123-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000796301"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107450",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 125-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000796309"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107080",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000796317"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8367778970,
+     "lngLat": [
+      4.8721722,
+      52.375345
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "name": "Rombout"
+     },
+     "fetchedAt": "2026-11-10T07:08:29.878Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012062431",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000796325"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148808",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000796333"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092749",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 133-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000796341"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166795",
+   "addresses": [
+    "Rombout Hogerbeetsstraat 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rombout Hogerbeetsstraat 135-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001008222"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

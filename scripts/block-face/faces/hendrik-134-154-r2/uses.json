@@ -1,0 +1,73 @@
+{
+ "street": "Frederik Hendrikstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:42:45.846Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152966",
+   "addresses": [
+    "Frederik Hendrikstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 142-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639784"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165508",
+   "addresses": [
+    "Frederik Hendrikstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 140-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639775"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160880",
+   "addresses": [
+    "Frederik Hendrikstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 138-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639766"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164007",
+   "addresses": [
+    "Frederik Hendrikstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 136-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639757"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

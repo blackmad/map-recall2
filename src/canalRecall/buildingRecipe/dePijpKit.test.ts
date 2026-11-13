@@ -66,6 +66,13 @@ test('wall anchors: one per pier and end pier over each upper storey; validation
   assert.ok(m[0].geometry.getAttribute('position').count / 60 >= 9);
   const without = await compileBuilding(house('pijp-1892-plain-anchor', CUYP[1], CUYP[2], fr => { delete fr.wallAnchors; }), f);
   assert.equal(meshes(without.group, /^wall-anchors/).length, 0);
+
+  // colour (Frederik Hendrikbuurt 1887: black anchors beside red doors): the iron's own hex; absent = the door colour
+  assert.throws(bad(h, {wallAnchors: {colour: '#12'}}), /wallAnchors.colour/);
+  const black = await compileBuilding(house('pijp-1892-plain-anchor', CUYP[1], CUYP[2], fr => { fr.wallAnchors = {...fr.wallAnchors, colour: '#1c1c1c'}; }), f);
+  const [bm] = meshes(black.group, /^wall-anchors\//);
+  assert.equal((bm.material as T.MeshStandardMaterial).color.getHexString(), '1c1c1c');
+  assert.notEqual((m[0].material as T.MeshStandardMaterial).color.getHexString(), '1c1c1c');
 });
 
 // Ferdinand Bolstraat 40 (pijp-1876-hood-frieze): buff hoods (#d9c49c) over red-brown brick.

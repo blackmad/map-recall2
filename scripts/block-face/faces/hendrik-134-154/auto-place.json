@@ -1,0 +1,1013 @@
+{
+ "face": "hendrik-134-154",
+ "street": "Frederik Hendrikstraat",
+ "library": "frederik-hendrikbuurt",
+ "stripDate": "2022-04-29",
+ "seconds": 42.17,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hendrik-134-154-r1",
+   "pands": [
+    "0363100012158151",
+    "0363100012157111",
+    "0363100012164721",
+    "0363100012167163"
+   ],
+   "passed": true,
+   "triangles": 7539
+  },
+  {
+   "face": "hendrik-134-154-r2",
+   "pands": [
+    "0363100012152966",
+    "0363100012165508",
+    "0363100012160880",
+    "0363100012164007"
+   ],
+   "passed": true,
+   "triangles": 7550
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012161572",
+   "address": "Frederik Hendrikstraat 154A",
+   "builtYear": 1887,
+   "widthM": 5,
+   "eavesM": 13.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a645a",
+    "wallRaw": "#64564f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 785,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.118,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.3,
+       "widthM": 1.23,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.104 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18)",
+   "likeness": {
+    "pandId": "0363100012161572",
+    "ncc": 0.104,
+    "nccRaw": 0.104,
+    "shiftM": [
+     -0.1,
+     -0.15
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#7b655c",
+     "model": "#91776b",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.461
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156720",
+   "address": "Frederik Hendrikstraat 154",
+   "builtYear": 1887,
+   "widthM": 4.69,
+   "eavesM": 13.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786054",
+    "wallRaw": "#63534b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 785,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.096,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.141 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25)",
+   "likeness": {
+    "pandId": "0363100012156720",
+    "ncc": 0.141,
+    "nccRaw": 0.141,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#7e6760",
+     "model": "#907365",
+     "dL": 0.045
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.331
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158151",
+   "address": "Frederik Hendrikstraat 152",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766257",
+    "wallRaw": "#63534b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 785,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-plain-anchor-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#766257",
+     "evidence": "strip 2022-04-29 span 388-576: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012158151",
+    "ncc": 0.175,
+    "nccRaw": 0.175,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.40 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#725f55",
+     "model": "#8d7568",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.313
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157111",
+   "address": "Frederik Hendrikstraat 150",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716053",
+    "wallRaw": "#61584c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 785,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.48 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.48,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#716053",
+     "evidence": "strip 2022-04-29 span 576-764: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157111",
+    "ncc": 0.162,
+    "nccRaw": 0.162,
+    "shiftM": [
+     0.4,
+     0
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#735f57",
+     "model": "#897465",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.377
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164721",
+   "address": "Frederik Hendrikstraat 148",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786258",
+    "wallRaw": "#62554e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 785,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.138,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.14 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.14,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#786258",
+     "evidence": "strip 2022-04-29 span 764-952: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012164721",
+    "ncc": 0.158,
+    "nccRaw": 0.158,
+    "shiftM": [
+     -0.1,
+     0.1
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.38 vs photo 0.60"
+    ],
+    "wall": {
+     "photo": "#766257",
+     "model": "#8f7569",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.6,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.38
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167163",
+   "address": "Frederik Hendrikstraat 146",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776358",
+    "wallRaw": "#65564d",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 192,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.83,
+      "topWidthM": 1,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-plain-anchor-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#776358",
+     "evidence": "strip 2022-04-29 span 952-1140: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167163",
+    "ncc": 0.197,
+    "nccRaw": 0.197,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#725f55",
+     "model": "#8e7669",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.447
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158916",
+   "address": "Frederik Hendrikstraat 144",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79665a",
+    "wallRaw": "#64544c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 196,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 2.13,
+      "topWidthM": 0.8,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.123 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24)",
+   "likeness": {
+    "pandId": "0363100012158916",
+    "ncc": 0.123,
+    "nccRaw": 0.123,
+    "shiftM": [
+     -0.05,
+     0.25
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24"
+    ],
+    "wall": {
+     "photo": "#7f6962",
+     "model": "#90796b",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.335
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152966",
+   "address": "Frederik Hendrikstraat 142",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756457",
+    "wallRaw": "#64564b",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 210,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 4.05,
+      "topWidthM": 0.33,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "fh-1887-plain-anchor-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#756457",
+     "evidence": "strip 2022-04-29 span 1328-1516: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012152966",
+    "ncc": 0.187,
+    "nccRaw": 0.187,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.40 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#736254",
+     "model": "#8c7868",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.343
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165508",
+   "address": "Frederik Hendrikstraat 140",
+   "builtYear": 1887,
+   "widthM": 4.68,
+   "eavesM": 13.56,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78655c",
+    "wallRaw": "#655850",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 1.22,
+      "topWidthM": 1.1,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#78655c",
+     "evidence": "strip 2022-04-29 span 1517-1704: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012165508",
+    "ncc": 0.15,
+    "nccRaw": 0.15,
+    "shiftM": [
+     -0.1,
+     0.15
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.60 mean 0.40 vs photo 0.72"
+    ],
+    "wall": {
+     "photo": "#756359",
+     "model": "#8f786d",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.72,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.459
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160880",
+   "address": "Frederik Hendrikstraat 138",
+   "builtYear": 1887,
+   "widthM": 4.68,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d53",
+    "wallRaw": "#62564d",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 1.38,
+      "topWidthM": 0.95,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6f5d53",
+     "evidence": "strip 2022-04-29 span 1704-1891: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012160880",
+    "ncc": 0.214,
+    "nccRaw": 0.214,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.22"
+    ],
+    "wall": {
+     "photo": "#6e5d53",
+     "model": "#877165",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.346
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164007",
+   "address": "Frederik Hendrikstraat 136",
+   "builtYear": 1887,
+   "widthM": 4.71,
+   "eavesM": 13.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766258",
+    "wallRaw": "#60534a",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 1.75,
+      "topWidthM": 0.68,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.118,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "fh-1887-plain-anchor-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#766258",
+     "evidence": "strip 2022-04-29 span 1891-2079: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012164007",
+    "ncc": 0.229,
+    "nccRaw": 0.229,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#746057",
+     "model": "#8d7569",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.529
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152931",
+   "address": "Frederik Hendrikstraat 134",
+   "builtYear": 1887,
+   "widthM": 4.74,
+   "eavesM": 13.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#615649",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.27,
+      "topWidthM": 0.8,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.118 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23)",
+   "likeness": {
+    "pandId": "0363100012152931",
+    "ncc": 0.118,
+    "nccRaw": 0.118,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.59,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23"
+    ],
+    "wall": {
+     "photo": "#816d64",
+     "model": "#956955",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.253
+   },
+   "challengers": {}
+  }
+ ]
+}

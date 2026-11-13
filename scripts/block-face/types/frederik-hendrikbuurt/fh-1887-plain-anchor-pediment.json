@@ -1,0 +1,185 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "fh-1887-plain-anchor-pediment",
+ "district": "frederik-hendrikbuurt",
+ "description": "Frederik Hendrikbuurt 1885-1890 four-storey front, the plain sister of fh-1887-dentil-pediment: the rows alternate a dentil pair, a plain pand, a gable pand (Houweningenstraat, Van Reigersbergenstraat, Frederik Hendrikstraat 134-154). Red-brown brick, 3 axes on ~4.7 m, tall two-light windows with white frames under flat brick heads (no stone dressing, no white bands), dark iron wall anchors on the piers, white cornice with consoles, one white pediment dormer, ground storey with a pair of red doors beside a wide window.",
+ "fit": {
+  "widthM": [
+   4.3,
+   5.4
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1885,
+   1890
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.5,
+   14.6
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "houweningen-1-31, houweningen-2-38, reigersbergen-1-37, hendrik-134-154 strips (2021-2022); 3DBAG eaves 13.5-14.0 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "heavy",
+  "windows": "t-window",
+  "storeyHeights": [
+   3.34,
+   2.95,
+   2.95,
+   2.9
+  ],
+  "windowHeights": [
+   0.62,
+   0.66,
+   0.66,
+   0.64
+  ],
+  "windowSurround": "none",
+  "wallAnchors": {
+   "over": 0.35,
+   "colour": "#1e1e1e"
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ],
+   "dormerBody": "timber",
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.25,
+    "setback": 0.15
+   },
+   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand; dormerBody timber (painted white, as the clercq types): with stone the dormer glass had no host wall (houweningen-2-38-r1 opening-outside, 4 dormers, 4.4 m2)"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7a5646",
+   "frame": "#e8e6dc",
+   "door": "#a52a22",
+   "stone": "#e6e2d4",
+   "cornice": "#e0dccd"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "strips 2021-03/2022-04: over the cornice only the dormers and gables stand against the sky; dark slate band behind (hendrik-134-154)"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "windowsPerStorey": "ground: pair of doors + wide window | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "paired red doors, wide window",
+  "roofline": "white cornice, centre pediment dormer, occasional pointed gable",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "citation": "strips houweningen-1-31 2021-02-22 (pands 7, 13, 17, 23, 29, 31A), houweningen-2-38 2021-02-22, hendrik-134-154 2022-04-29 (152, 144, 140, 136)",
+  "signage": "none above the ground; per-door numbers",
+  "identicalBays": "upper storeys: equal axes, no balconies"
+ },
+ "evidence": [
+  {
+   "face": "houweningen-1-31",
+   "pands": [
+    "157843",
+    "157672",
+    "156727",
+    "166596",
+    "156794",
+    "165776"
+   ],
+   "citation": "read off the 2021-02-22 strip: flat brick heads, anchors, no white bands"
+  },
+  {
+   "face": "hendrik-134-154",
+   "pands": [
+    "161572",
+    "158151",
+    "167163",
+    "152966",
+    "164007"
+   ],
+   "citation": "read off the 2022-04-29 strip"
+  },
+  {
+   "face": "houweningen-2-38",
+   "pands": [
+    "161605",
+    "153807",
+    "163315",
+    "156096",
+    "163814",
+    "159135",
+    "158704",
+    "163630"
+   ],
+   "citation": "read off the 2021-02-22 strip"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "pands": [
+    "161489",
+    "155831",
+    "152999",
+    "157676",
+    "153212",
+    "164833",
+    "162778",
+    "160664"
+   ],
+   "citation": "read off the 2022-10-07 strip"
+  }
+ ],
+ "schemaLimits": [
+  "brick roundels"
+ ],
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "doorPairs": true,
+   "pairTransom": true,
+   "wideGround": {
+    "from": 1,
+    "to": 2
+   },
+   "note": "a pair of red doors under one transom on the left axis beside a wide two-light casement; mirrored when the strip reads it on the right"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "buurt": "vondelparkbuurt-oost",
+ "library": "vondelpark",
+ "generatedAt": "2026-11-12T12:34:42.877Z",
+ "seconds": 13.99,
+ "totals": {
+  "faces": 1,
+  "pands": 7,
+  "placed": 2
+ },
+ "faces": [
+  {
+   "face": "huygens-102-118",
+   "street": "Eerste Constantijn Huygensstraat",
+   "pands": 7,
+   "placed": 2,
+   "held": 5,
+   "runs": [
+    {
+     "face": "huygens-102-118-r1",
+     "pands": [
+      "0363100012160719",
+      "0363100012163854"
+     ],
+     "passed": true,
+     "triangles": 2651
+    }
+   ],
+   "seconds": 13.98,
+   "byType": {
+    "huygens-1873-balcony-pediment-mansard": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 3
+   }
+  }
+ ]
+}
