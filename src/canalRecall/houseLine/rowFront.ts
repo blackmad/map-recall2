@@ -23,7 +23,9 @@ export interface RowFrontRecord {
   topM: number | null;
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
-  crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean };
+  crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
+    /** A raised centre piece on a cornice front (lane 2's dormer or raised attic): its top (pand datum), kind and width. */
+    piece?: { topM: number; kind: string; widthM?: number } };
   /** Storey lines above the ground (m), from measured window heights or stated storey heights. */
   rowLines?: number[];
   /** Measured upper window rows (sill, head) and the ground storey's top, above the pand's own ground (m). */
@@ -99,6 +101,13 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
   if (gabled && topM !== null && eavesM !== null) crown.riseM = r2(topM - eavesM);
   if (gabled && fr.crown.widthM !== null) crown.widthM = fr.crown.widthM;
   if (gabled && fr.crown.neckWidthM !== null) crown.neckWidthM = fr.crown.neckWidthM;
+  // A cornice front's raised centre: a crowned, lantern, pediment or box dormer (or a raised attic) standing on the
+  // cornice, 0.4 to 4 m over it. Not a set-back dormer (behind the cornice) nor a mansard face.
+  const pieceTop = fr.crown.dormer?.topM ?? fr.crown.topM;
+  if (!gabled && !fr.fallback && fr.frontTopM !== null && pieceTop !== null && pieceTop - fr.frontTopM >= 0.4 && pieceTop - fr.frontTopM <= 4
+    && fr.crown.dormer?.kind !== 'set-back' && !/mansard/i.test(fr.crown.note ?? '')) {
+    crown.piece = { topM: at(pieceTop)!, kind: fr.crown.dormer?.kind ?? 'raised', ...(fr.crown.widthM ?? fr.crown.neckWidthM ? { widthM: (fr.crown.widthM ?? fr.crown.neckWidthM)! } : {}) };
+  }
   if (fr.crown.atticWindows !== null) crown.atticWindows = fr.crown.atticWindows;
   if (fr.crown.hoist !== null) crown.hoist = fr.crown.hoist;
   const out: RowFrontRecord = { pandId: fr.pandId, face: fr.face, topM, eavesM, crown, confidence: CONFIDENCE[fr.confidence], sources };
@@ -186,6 +195,24 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const { monumentGable, roofShapeTag: _tag, ...rest } = p;
   const held = typeof monumentGable === 'string' ? { historicGable: monumentGable } : {};
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
+  const piece = !rec.fallback && (family === 'cornice' || family === 'raised-cornice-dormer') ? rec.crown.piece : undefined;
+  if (piece && rec.topM !== null && rec.eavesM >= MIN_PLANNED_M + 0.5) {
+    // Step c, cornice with a raised centre (HD22, HD12, HD6): a gable plate that is a full-width cornice band with the
+    // piece standing on it, a low saddle hidden behind the band. The wall stops a band under the measured top.
+    const band = 0.5, eaves = +(rec.eavesM - band).toFixed(2);
+    const crown: RowCrown = { shape: 'raised', riseM: +(piece.topM - eaves).toFixed(2), bandM: band,
+      cap: piece.kind === 'pediment' ? 'pediment' : piece.kind === 'box' ? 'flat' : 'segmental' };
+    if (piece.widthM) crown.neckW = piece.widthM;
+    if (rec.crown.atticWindows !== undefined) crown.attic = rec.crown.atticWindows;
+    if (rec.crown.hoist) crown.hoist = true;
+    const ptrial = (h: number) => roofPlanForFeature({ ...feature, properties: { ...rest, height: h, monumentGable: 'cornice', roofPlanned: true } } as never);
+    const probe = ptrial(eaves + 3), W = probe?.pieces?.[0]?.rect.wid;
+    if (probe && W) {
+      const R = rowCrownRoofRise(crown, W), h = +(eaves + R).toFixed(3);
+      if (ptrial(h)?.kind === 'gable') return { ...feature, properties: { ...rest, ...held, height: h, monumentGable: 'cornice', roofPlanned: true, roofShape: 'gable', roofEavesHeightM: eaves,
+        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...levels(sr, rec, eaves, true) } };
+    }
+  }
   if (!gable || rec.eavesM < MIN_PLANNED_M) {
     // A cornice (or a fallback) front: the wall to the measured top, a flat lid there, nothing over it from the street.
     const top = rec.topM ?? rec.eavesM;

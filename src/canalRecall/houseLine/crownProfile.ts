@@ -11,13 +11,15 @@
  *   neck  - claw shoulders (white scroll pieces, klauwstukken) from the foot to an upright neck, a white pediment cap;
  *   bell  - S-curved shoulders sweeping in to the cap width, closed by an arch, white blocks at the shoulders;
  *   point - a plain triangle on the saddle itself, white verge;
- *   step  - treads up to a flat top of the neck width, a white coping on each.
+ *   step  - treads up to a flat top of the neck width, a white coping on each;
+ *   raised - a straight cornice front with a raised centre piece (a crowned, lantern, pediment or box dormer standing on
+ *            the cornice, HD22, HD12, HD6): a full-width cornice band, the piece with a window or hoist door and a cap.
  * Each gets white edge trim and, when the record reads one, an attic light or a hoist door in the crown.
  */
 import type { RoofSink, V2, V3 } from '../roofSink.js';
 
-export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step';
-export const ROW_CROWN_SHAPES: readonly RowCrownShape[] = ['neck', 'bell', 'point', 'step'];
+export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised';
+export const ROW_CROWN_SHAPES: readonly RowCrownShape[] = ['neck', 'bell', 'point', 'step', 'raised'];
 export interface RowCrown {
   shape: RowCrownShape;
   /** Crown top above its foot (the wall's eaves), metres. */
@@ -29,6 +31,10 @@ export interface RowCrown {
   /** Attic lights read in the crown (0 = none, absent = unread: one light where it fits). */
   attic?: number;
   hoist?: boolean;
+  /** Raised centre: the cornice band's height over the wall's eaves (the band covers the low saddle behind it). */
+  bandM?: number;
+  /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). */
+  cap?: 'pediment' | 'segmental' | 'flat';
 }
 export function isRowCrown(v: unknown): v is RowCrown {
   const c = v as RowCrown | null;
@@ -42,10 +48,10 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
-  const defaultNeck = c.shape === 'bell' ? foot * 0.9 : c.shape === 'step' ? foot * 0.55 : foot * 0.65;
+  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.9 : c.shape === 'step' ? foot * 0.55 : foot * 0.65;
   const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
   // Neck: a pediment cap as tall as a third of the neck width, at most 0.6 m; the upright neck under it.
-  const cap = c.shape === 'neck' ? clamp(neck * 0.6, 0.3, Math.min(0.6, T * 0.3)) : 0;
+  const cap = c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : c.shape === 'neck' ? clamp(neck * 0.6, 0.3, Math.min(0.6, T * 0.3)) : 0;
   const steps = c.shape === 'step' ? clamp(Math.round(T / 0.85), 2, 5) : 0;
   return { half, T, foot, neck, cap, steps };
 }
@@ -54,6 +60,7 @@ export function crownDims(c: RowCrown, W: number) {
 export function rowCrownRoofRise(c: RowCrown, W: number): number {
   const d = crownDims(c, W);
   if (c.shape === 'point') return r3(d.T);
+  if (c.shape === 'raised') return r3(Math.max(0.2, (c.bandM ?? 0.5) - 0.06));
   if (c.shape === 'neck') return r3(Math.max(0.8, d.T - d.cap - 0.15));
   if (c.shape === 'bell') return r3(Math.max(0.8, d.T - 0.3));
   // Step: the highest ridge whose slope passes under every tread's inner corner (0.1 m clear).
@@ -73,7 +80,14 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   // Outside a narrower crown's foot: the roof's cheek, the plate just covering the slope.
   const y0 = foot < half - 0.01 ? slope(-foot) + 0.04 : 0;
   if (foot < half - 0.01) add(-foot, y0);
-  if (c.shape === 'point') {
+  if (c.shape === 'raised') {
+    const b = c.bandM ?? 0.5, tN = T - d.cap;
+    left.push([-half, b]); left.push([-neck, b]); left.push([-neck, tN]);
+    if (c.cap === 'flat') left.push([0, tN + d.cap]);
+    else if (c.cap === 'segmental') for (let i = 1; i <= 6; i++) { const a = Math.PI - (i / 6) * (Math.PI / 2); left.push([neck * Math.cos(a), tN + d.cap * Math.sin(a)]); }
+    else left.push([0, T]);
+    if (c.cap === 'flat') { left[left.length - 1] = [-neck, T]; left.push([0, T]); }
+  } else if (c.shape === 'point') {
     left.push([0, T]);
   } else if (c.shape === 'neck') {
     const tN = T - d.cap, sh = clamp(Math.max(slope(-neck) + 0.12, y0 + (tN - y0) * 0.42), y0 + 0.3, tN - 0.5);
@@ -159,20 +173,30 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
     if (capRim.length >= 3) fan(s, f, e, [0, tN], capRim, trimHex);
     rect(s, f, e, -neck, neck, tN - 0.12, tN, trimHex, PROUD_HI);
   }
+  if (c.shape === 'raised') {
+    const b = c.bandM ?? 0.5, tN = T - d.cap;
+    // The cornice: a white band over the whole front's top, the cap of the piece filled white.
+    rect(s, f, e, -d.half, d.half, Math.max(0, b - 0.3), b, trimHex, PROUD_HI);
+    const capRim = prof.filter(([x, y]) => y >= tN - 1e-6 && Math.abs(x) <= neck + 1e-6);
+    if (capRim.length >= 3) fan(s, f, e, [0, tN], capRim, trimHex);
+    else rect(s, f, e, -neck, neck, tN, T, trimHex, PROUD_HI);
+  }
   if (c.shape === 'bell') for (const side of [-1, 1]) rect(s, f, e, side < 0 ? -foot : foot - 0.4, side < 0 ? -foot + 0.4 : foot, y0, y0 + 0.32, trimHex, PROUD_HI);
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
-  const capTop = c.shape === 'neck' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : T - 0.25;
-  const z0 = Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
+  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : T - 0.25;
+  const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;
   const sp = spanAt(prof, z1), inner = sp ? Math.min(-sp[0], sp[1]) - 0.2 : 0;
-  const hw = Math.min(c.hoist ? 0.5 : 0.42, inner, (c.shape === 'neck' || c.shape === 'step' ? neck : foot) - 0.25);
+  const hw = Math.min(c.hoist ? 0.5 : 0.42, inner, (c.shape === 'neck' || c.shape === 'step' || c.shape === 'raised' ? neck : foot) - 0.22);
   if (hw < 0.22) return;
   const fr = 0.08;
   rect(s, f, e, -hw - fr, hw + fr, z0 - fr, z1 + fr, trimHex);
   rect(s, f, e, -hw, hw, z0, z1, GLASS, PROUD_HI);
+  // A white sill a little wider than the frame.
+  rect(s, f, e, -hw - fr - 0.06, hw + fr + 0.06, z0 - fr - 0.07, z0 - fr, trimHex, PROUD_HI);
   if (c.hoist) rect(s, f, e, -0.025, 0.025, z0, z1, trimHex, PROUD_HI + 0.004);
   else rect(s, f, e, -hw, hw, (z0 + z1) / 2 - 0.025, (z0 + z1) / 2 + 0.025, trimHex, PROUD_HI + 0.004);
 }

@@ -700,7 +700,7 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
 
   const ov = 0.3, drop = ov * (R / (W / 2));
   const surfV = (v: number) => R * (1 - Math.abs(v) / (W / 2));
-  const cornice = plan.kind === 'gable' && plan.gable === 'cornice';
+  const cornice = plan.kind === 'gable' && plan.gable === 'cornice' && !plan.rowCrown;
   if (plan.kind === 'halfHipped' || cornice) {
     const zc = cornice ? corniceHeight(R) : R * 0.55, vc = (W / 2) * (1 - zc / R);
     halfHipSlopes(s, L, W, R, zc, ov);
