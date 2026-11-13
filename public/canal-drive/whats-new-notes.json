@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Landmark cards wait for the street the building faces",
+      "text": "The building card and the \"Which building is this?\" question now open only when you are on the street the building actually fronts. The Krijtberg no longer pops up from the Herengracht with only its spires showing; it opens from the Singel, in front of its entrance.",
+      "where": [
+        4.888,
+        52.3677
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "\"Which building is this?\" waits until you are beside it",
       "text": "The building question used to open as far as 150 m away, sometimes about a building round the corner you could not see. Now it opens only when you are right beside the building (about 35 m from its frontage), including when you turn a corner and find it alongside you. \"On the left\" or \"on the right\" now points at the building itself."
     },
