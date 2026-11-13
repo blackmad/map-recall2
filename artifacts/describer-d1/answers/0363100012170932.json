@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "pandId": "0363100012170932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white-painted shopfront with lettering and diamond-patterned lower panels"
+  }
+ ],
+ "notes": "Only two upper storeys visible; top cut off and ground behind a fence."
+}

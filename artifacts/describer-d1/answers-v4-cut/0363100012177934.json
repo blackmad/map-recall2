@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012177934",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012177934.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis windows are wider than the narrow side windows on every upper storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a neck gable with a curved cap, small scroll pieces at the shoulders and a hoist beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "red lettering mounted across the first storey and café umbrellas over the ground storey"
+  }
+ ],
+ "notes": "Seen obliquely; umbrellas and a Christmas light frame cover the ground storey and top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

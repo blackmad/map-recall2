@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012173350",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173350/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "storeyParts",
+  "windows"
+ ],
+ "gaps": [],
+ "notes": "Dark, soft crop crossed by bare branches; the neck top is faint.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

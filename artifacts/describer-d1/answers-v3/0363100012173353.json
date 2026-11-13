@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012173353",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173353/years/2019.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2019,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "storeyWindows": {
+  "2": "sash-6-over-6"
+ },
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "heads",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved scroll claw pieces at both shoulders and a scrolled top on the bell gable"
+  },
+  {
+   "component": "relief",
+   "what": "a carved crest over the centre door on the pui beam"
+  },
+  {
+   "component": "window",
+   "what": "the centre window of the top storey is a dark two-light casement unlike the white sashes beside it"
+  }
+ ]
+}

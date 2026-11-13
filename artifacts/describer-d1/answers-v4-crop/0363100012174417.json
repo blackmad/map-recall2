@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2017,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "doorBay",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a white ground storey with small-paned windows and a door under a transom with circle tracery"
+  }
+ ],
+ "notes": "A houseboat blocks the lower ground storey; strong sun glare on one window; top cut off.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

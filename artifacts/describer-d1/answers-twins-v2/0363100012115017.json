@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012115017",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012115017.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "notes": "Target has a small roof setback at the left; otherwise same windows and shopfront band."
+}

@@ -1,0 +1,38 @@
+{
+ "v": 1,
+ "pandId": "0363100012182364",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182364/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2021,
+  "gate": "fail"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "ground",
+  "wallFamily"
+ ],
+ "gaps": [],
+ "notes": "Very low resolution, narrow crop with the top cut off; boundaries with neighbours unclear."
+}

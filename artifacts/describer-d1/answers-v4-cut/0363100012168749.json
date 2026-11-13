@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012168749",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168749.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white scrolled claw pieces at the neck shoulders, a carved crowning piece and a small bell-shaped ornament in the neck"
+  },
+  {
+   "component": "relief",
+   "what": "a painted gable stone (gevelsteen) over the centre ground-storey window"
+  }
+ ],
+ "notes": "A tree crosses the right axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

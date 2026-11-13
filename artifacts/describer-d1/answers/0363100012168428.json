@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012168428",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012168428/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "crown",
+  "doorBay",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "hoist beam projecting from the gable top"
+  }
+ ],
+ "notes": "Very oblique narrow view; front seen at a steep angle."
+}

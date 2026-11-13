@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012182400",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182400/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "crown",
+  "wallFamily",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "Top cut at the white cornice; ground storey behind a fence and quay wall."
+}

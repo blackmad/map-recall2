@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012178393",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178393/front.jpg",
+  "kind": "crop",
+  "tier": "none",
+  "year": 2024,
+  "gate": "fail"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "wallFamily",
+  "sills"
+ ],
+ "gaps": [],
+ "notes": "Steep oblique view with the top cut off; the image centre falls on the party wall between the souvenir shop front and its right neighbour, so the souvenir front was described."
+}

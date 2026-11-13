@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012177902",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177902/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  3,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "arched",
+  "2": "arched"
+ },
+ "heads": [
+  "flat",
+  "round",
+  "round",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "columns",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stucco pilaster strips with horizontal bands between the bays, forming a white grid against red brick"
+  },
+  {
+   "component": "dormer",
+   "what": "two flat-topped dormers with white surrounds in a slate mansard, at the outer bays"
+  }
+ ],
+ "notes": "Rich neo-Renaissance front with white bands striping the brick piers.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012182404",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002974_pano_0005_000189.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "columns",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental brick arches with light stone springers over the upper windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a slate mansard with three dormers, the centre one double"
+  },
+  {
+   "component": "shopfront",
+   "what": "a pale pilastered ground-storey frame with doors at both ends round two wide windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

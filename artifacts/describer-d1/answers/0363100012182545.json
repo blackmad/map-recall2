@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012182545",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182545/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "whiteFrames",
+  "wallFamily",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental brick arches with a light keystone and small dark iron anchors between the windows"
+  },
+  {
+   "component": "window",
+   "what": "cream outer frames with dark red sashes and toplight bars"
+  },
+  {
+   "component": "shopfront",
+   "what": "stone-pilastered shop storey with an arched upper light over the display window"
+  }
+ ],
+ "notes": "Cornice cut off at the top; an ornate stucco crown is partly visible."
+}

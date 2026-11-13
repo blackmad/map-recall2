@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012182852",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182852/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "crown",
+  "storeys"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white stone blocks at the head corners and centre of each upper window"
+  }
+ ],
+ "notes": "The image centre falls on the party wall between a neck-gabled house (left) and a gabled house with white trim (right); described the right one. Awnings hide the ground storey."
+}

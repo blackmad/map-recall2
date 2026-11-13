@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012171854",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171854/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": null,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "restaurant shopfront with a dark fascia sign and a separate black house door at the right"
+  }
+ ],
+ "notes": "Wall is a dark grey brick; a blurred figure hides part of the ground storey."
+}

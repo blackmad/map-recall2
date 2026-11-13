@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012174564",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002044_pano_0000_001526.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small iron balcony at the middle window"
+  },
+  {
+   "component": "window",
+   "what": "segmental arch heads filled with decorative brick tympana"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a broad round-topped gable with a white framed window"
+  }
+ ],
+ "notes": "A passing tram hides the ground storey and the lower storeys; only the two top storeys and the crown are visible.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

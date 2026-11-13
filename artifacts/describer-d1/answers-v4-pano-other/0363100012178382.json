@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012178382",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002930_pano_0002_000002.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts",
+  "bays",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved crest on top of the neck and claw pieces at the shoulders."
+  }
+ ],
+ "notes": "Dark, low-resolution view behind bare trees; the outline also takes in part of the white neighbour.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

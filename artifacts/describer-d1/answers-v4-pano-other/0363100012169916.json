@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012169916",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002967_pano_0003_000130.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "windowSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "light stone quoin blocks at both edges"
+  },
+  {
+   "component": "relief",
+   "what": "small light ornaments above the upper windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

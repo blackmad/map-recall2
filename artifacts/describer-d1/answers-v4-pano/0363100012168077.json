@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012168077",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002950_pano_0002_000381.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "heads",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a single small attic light in the pale band under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a double street door with a transom light on the right of the ground storey"
+  }
+ ],
+ "notes": "Bicycles and a poster kiosk hide the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

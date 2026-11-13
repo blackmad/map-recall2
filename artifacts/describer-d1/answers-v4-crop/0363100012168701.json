@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012168701",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168701/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "basement",
+  "columns",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a hoist beam and red-framed window above the front"
+  },
+  {
+   "component": "window",
+   "what": "red-painted window frames and doors"
+  }
+ ],
+ "notes": "A tree trunk and branches cover the left axis; the top line is unclear.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

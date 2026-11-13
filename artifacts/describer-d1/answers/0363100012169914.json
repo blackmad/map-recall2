@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012169914",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "buff rusticated quoin blocks running up both corners of the front"
+  },
+  {
+   "component": "relief",
+   "what": "frieze under the cornice with recessed buff panels and dentils"
+  },
+  {
+   "component": "dormer",
+   "what": "large dormer in an orange pantile roof slope behind the cornice"
+  },
+  {
+   "component": "window",
+   "what": "white keystones over every upper window and small wall anchors between them"
+  }
+ ]
+}

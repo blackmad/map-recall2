@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012171696",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-002954_pano_0002_000050.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  4,
+  1,
+  1
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "bays",
+  "columns",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide white window group of several casements under small-paned top lights"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is painted white with a row of small-paned top lights, unlike the dark wall above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a tall plain dark point gable with a small vent near the apex"
+  }
+ ],
+ "notes": "The dark wall may be painted timber or rendered rather than brick; low resolution.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

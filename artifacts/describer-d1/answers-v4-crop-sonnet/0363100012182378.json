@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182378",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182378/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyParts"
+ ],
+ "storeyWindows": {
+  "3": "sash-6-over-6"
+ },
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a flat overhanging eaves canopy at the top hides the crown"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

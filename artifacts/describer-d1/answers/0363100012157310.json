@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012157310",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012157310/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "columns",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a large brick dormer gable with a round-arched paired window and white pediment rising behind the cornice"
+  },
+  {
+   "component": "window",
+   "what": "round relieving arches with brick tympana over the top-storey windows"
+  }
+ ],
+ "notes": "Narrow, low-resolution image."
+}

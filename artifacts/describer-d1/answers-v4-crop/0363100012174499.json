@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012174499",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174499/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "windows",
+  "cornice",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white cornice over a tall frieze of consoles and pierced panels with circle ornaments, like a balustrade"
+  },
+  {
+   "component": "door",
+   "what": "a green door under a transom with star-shaped tracery, up a stoop with an iron rail"
+  }
+ ],
+ "notes": "Dark-green window joinery inside white outer frames.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

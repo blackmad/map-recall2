@@ -1,0 +1,1040 @@
+{
+ "v": 1,
+ "pr1": "/Users/blackmad/Code/map-recall2-worktrees/structure-priors-20261113",
+ "k": 15,
+ "yearScale": 30,
+ "distScale": 1000,
+ "holdoutM": 60,
+ "train": 1458,
+ "pands": {
+  "0363100012116526": {
+   "route": "installed",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012159694": {
+   "route": "installed",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012160273": {
+   "route": "installed",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "round",
+   "knnSurrounds": true
+  },
+  "0363100012164843": {
+   "route": "installed",
+   "todayCrown": "step",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012165000": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012167885": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012167952": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168006": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168077": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168155": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168157": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168159": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168442": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168606": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168613": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168657": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168692": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168693": {
+   "route": "generic",
+   "todayCrown": "step",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168694": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168698": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012168701": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168703": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168705": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168709": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168749": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012168758": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012168796": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012169267": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012169902": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012169914": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012170043": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012170085": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012170087": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012170088": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012170093": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012170932": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012170933": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171324": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171643": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171644": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012171645": {
+   "route": "generic",
+   "todayCrown": "pitched-eaves",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171696": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171702": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171705": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171710": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171858": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012171915": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012171919": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172000": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172012": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172576": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012172582": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012172583": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172610": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172618": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172620": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012172779": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172862": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172863": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172882": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172884": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012172885": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012172888": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012173044": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012173058": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012173341": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012173342": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012173346": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012173348": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012173349": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012173350": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012173352": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012173424": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012173566": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "flat",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174168": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174180": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174184": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174187": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174253": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174415": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174416": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174417": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174422": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174499": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174641": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174646": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174653": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012174704": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174775": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174776": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174778": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174779": {
+   "route": "generic",
+   "todayCrown": "pitched-eaves",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174780": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174781": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174828": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012174833": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012174965": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012174967": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012174970": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174971": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012174977": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012174978": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "step",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012177902": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012177909": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012177932": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012177933": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012177934": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012177939": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012178198": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012178199": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012178305": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012178392": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012181808": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012181817": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182248": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100012182296": {
+   "route": "generic",
+   "todayCrown": "mansard",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182299": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182303": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182304": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182309": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182375": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182378": {
+   "route": "generic",
+   "todayCrown": "pitched-eaves",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182379": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182399": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182400": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182401": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182473": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012182543": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182545": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182549": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182580": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012182708": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182712": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "neck",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182847": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182848": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182849": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182850": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182851": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182852": {
+   "route": "generic",
+   "todayCrown": "neck",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182853": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182854": {
+   "route": "generic",
+   "todayCrown": "cornice",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012182855": {
+   "route": "generic",
+   "todayCrown": "point",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182856": {
+   "route": "generic",
+   "todayCrown": "bell",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012182857": {
+   "route": "generic",
+   "todayCrown": "step",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": true
+  },
+  "0363100012182858": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": "cornice",
+   "knnHead": "flat",
+   "knnSurrounds": false
+  },
+  "0363100012571534": {
+   "route": "generic",
+   "todayCrown": "flat",
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  },
+  "0363100100093912": {
+   "route": null,
+   "todayCrown": null,
+   "knnCrown": null,
+   "knnHead": null,
+   "knnSurrounds": null
+  }
+ }
+}

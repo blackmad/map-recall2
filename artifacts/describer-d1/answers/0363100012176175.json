@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012176175",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176175/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "windows",
+  "crown",
+  "finish",
+  "ground",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved scroll ornament at the top"
+  }
+ ],
+ "notes": "Distant oblique view across a street corner; the image centre is pavement and a blurred person. Described the dark front in the upper middle, unsure it is the intended house."
+}

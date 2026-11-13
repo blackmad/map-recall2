@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012170088",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012170088.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "scrolled claw pieces along the neck sides, a curved cap on top and a lantern-like hoist ornament in the neck"
+  },
+  {
+   "component": "window",
+   "what": "first-storey top lights in coloured leaded glass with a diagonal pattern"
+  }
+ ],
+ "notes": "A rental truck and a tree hide the ground storey and part of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

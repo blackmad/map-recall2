@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012176488",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176488/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "basement",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "sandstone claw pieces and a crowning ornament on the neck"
+  },
+  {
+   "component": "door",
+   "what": "door under a round-arched white fanlight"
+  }
+ ]
+}

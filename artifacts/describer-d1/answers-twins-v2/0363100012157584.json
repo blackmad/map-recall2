@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012157584",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012157584.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2",
+ "readable": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "notes": "Left panel appears to span two of the same 2-axis houses."
+}

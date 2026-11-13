@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012169914",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012169914.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white carved masks or shields over every upper window head and a yellow stone quoin strip down the left edge"
+  },
+  {
+   "component": "relief",
+   "what": "a frieze under the cornice with recessed yellow panels"
+  },
+  {
+   "component": "dormer",
+   "what": "a hoist dormer with a hoist beam in a red-tiled roof behind the cornice"
+  }
+ ],
+ "notes": "A car hides the bottom of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

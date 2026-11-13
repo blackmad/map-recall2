@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012160273",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012160273/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "full-width iron balcony over the ground storey, a cantilevered balcony and an iron balcony on the centre axis above"
+  },
+  {
+   "component": "window",
+   "what": "top storey windows under round brick arches with dark tympana"
+  },
+  {
+   "component": "dormer",
+   "what": "wide triple dormer in a large slate roof face"
+  }
+ ]
+}

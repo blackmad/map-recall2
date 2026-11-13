@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012171919",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012171919.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "doorBay",
+  "ground",
+  "sills",
+  "heads"
+ ],
+ "gaps": [],
+ "notes": "A tree trunk and dense branches hide the right half and the top of the front; very dark image.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

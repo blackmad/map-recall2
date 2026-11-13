@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012116526",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012116526/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windowSurround",
+  "bays",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "three round white stone ring ornaments with four blocks, one per storey, beside the left window axis"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall dormer with a projecting hood and hoist beam above the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront with a projecting moulded cornice canopy and small-paned upper lights"
+  }
+ ],
+ "notes": "One wall with a continuous bracketed cornice split by a drainpipe into two fronts, each with its own dormer; described the left one, which holds the image centre."
+}

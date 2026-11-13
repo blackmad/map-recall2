@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012168705",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012168705.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "cornice",
+  "crown",
+  "windows",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide garage door in the souterrain under the bel-etage window, beside the stoop"
+  },
+  {
+   "component": "window",
+   "what": "the top storey has one wide two-light window in the middle instead of two axes"
+  }
+ ],
+ "notes": "A car roof crosses the bottom of the image.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

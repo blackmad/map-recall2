@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012170043",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "finish",
+  "windowSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground storey lattice-glazed windows and door with diamond-patterned glazing"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

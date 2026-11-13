@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012172878",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172878/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bays",
+  "windows",
+  "crown",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "stone vase or ball finials on the gable steps and at the apex"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront with a white awning wrapping the corner"
+  }
+ ],
+ "notes": "Unsure: a corner building seen at an angle through a wet lens; the image centre falls on its corner, and the gable shape (stepped vs neck) is hard to read."
+}

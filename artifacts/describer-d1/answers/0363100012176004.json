@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012176004",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012176004/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "sash",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "white",
+ "finish": "stucco",
+ "whiteFrames": false,
+ "low": [
+  "storeys",
+  "windows",
+  "basement",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a central dormer with a small pointed pediment rises over the cornice"
+  }
+ ],
+ "notes": "Street level row of three low openings read as a souterrain under a tall ground storey."
+}

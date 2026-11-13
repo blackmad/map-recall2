@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012173346",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012173346.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "small-over-one",
+ "storeyWindows": {
+  "3": "casement-gridded-toplight"
+ },
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "heads",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white bell-shaped dormer gable with a pair of windows stands above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "segmental brick relieving arches over the lower windows, with small iron anchors between the axes"
+  }
+ ],
+ "notes": "A houseboat and a site toilet hide most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

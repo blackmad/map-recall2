@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012170932",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170932/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white glazed shopfront with lettering across the whole ground storey"
+  }
+ ],
+ "notes": "The top is cut off and a fence hides the foot of the ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

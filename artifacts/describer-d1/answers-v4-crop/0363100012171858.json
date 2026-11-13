@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012171858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 1,
+ "windows": "cross-transom",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "finish",
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "pilasters, segmental and triangular hood pediments and carved panels frame the paired windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a café front with a small-paned top light band"
+  }
+ ],
+ "notes": "The top is cut off; the narrow front is one stone-mullioned window axis.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

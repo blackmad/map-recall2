@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012172667",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172667/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "green-painted café front with a red awning band, a toplight row and a green house door at the right"
+  },
+  {
+   "component": "relief",
+   "what": "white-painted iron wall anchors between the windows on the black wall"
+  }
+ ],
+ "notes": "Steep oblique, top cut off; a van hides the right end of the ground storey."
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174967",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174967.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "bands",
+  "crown",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper window sits under a decorated round tympanum arch with a brick-and-stone infill"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a neo-Renaissance stepped gable with ball finials on the steps and a tall pinnacled top piece"
+  },
+  {
+   "component": "door",
+   "what": "the ground door has a round-arched top light in a light-painted ground-storey surround"
+  }
+ ],
+ "notes": "Dim light and tree branches across the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

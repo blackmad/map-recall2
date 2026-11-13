@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182849",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182849/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 3,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "white dormer with a curved pediment and a hoist beam above the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "white attic with console pieces and a dated plaque under the dormer"
+  },
+  {
+   "component": "shopfront",
+   "what": "coffeeshop front with a dark fascia and pilasters; an orange parasol covers the ground storey"
+  }
+ ]
+}

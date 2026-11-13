@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012174780",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts/0363100012174780.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "souterrain": true,
+ "low": [
+  "doorBay",
+  "windows",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the street door is in the third of four axes, off centre, with a tall top light and sidelight under one frame"
+  }
+ ],
+ "notes": "Parked cars hide the souterrain and stoop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

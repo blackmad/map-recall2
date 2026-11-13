@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012182543",
+ "image": {
+  "ref": "artifacts/describer-d1/pano/TMX7316010203-001055_pano_0000_001140.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 pano",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "storeyParts",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "carved sandstone claw pieces and scrolls along the neck sides, a moulded neck cap."
+  },
+  {
+   "component": "roof",
+   "what": "a timber hoist beam projecting from the top of the neck."
+  },
+  {
+   "component": "window",
+   "what": "a row of three small-paned windows across the gable base, stepped up toward the centre."
+  },
+  {
+   "component": "shopfront",
+   "what": "a sand-painted timber pilaster frame with a cornice over the ground storey, a tall shop window, shop door and a separate house door."
+  }
+ ],
+ "notes": "Steep upward view; the three-window row sits in the gable base between the claw pieces, so it is read as the gable attic.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

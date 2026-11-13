@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012155310",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012155310/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall dormer with a pointed pediment and hoist beam on the centre axis behind the cornice"
+  },
+  {
+   "component": "window",
+   "what": "small iron wall anchors between the windows on each storey"
+  }
+ ],
+ "notes": "Narrow image, scooters in front of the shop."
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174499",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174499/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v3",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "storeyWindows": {
+  "3": "sash"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "white attic balustrade with pierced panels and pedestals above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "fanlight with a star-pattern tracery over the door"
+  },
+  {
+   "component": "roof",
+   "what": "hoist beam on top of the attic"
+  }
+ ]
+}

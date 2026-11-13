@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012182708",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182708/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet v4 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "heads",
+  "storeyParts"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative relief panels and medallions on the ground-storey pilasters"
+  },
+  {
+   "component": "shutters",
+   "what": "pale painted window shutters along the sides of the upper windows"
+  }
+ ],
+ "notes": "Right-hand edge cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

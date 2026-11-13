@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012179726",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012179726/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "wallFamily",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "deep red awning over the shop with souvenir racks on the pavement"
+  }
+ ],
+ "notes": "Very oblique corner view, top cut off and ground hidden by an awning; only part of two upper storeys visible."
+}
