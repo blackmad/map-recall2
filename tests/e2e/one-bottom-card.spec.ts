@@ -77,7 +77,7 @@ test('one bottom card at every frame: landmark answer, its card, then the postca
     g._prompt.style.display = 'none';
     g.quizPromptName = '';
     g.quizPromptKind = 'route';
-    Object.assign(g.player, { x: landmark.x - 110 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+    Object.assign(g.player, { x: landmark.x - 20 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
     g._updateLandmarks(1 / 60);
     return { kind: g.quizPromptKind, asked: g.quizPromptName };
   });

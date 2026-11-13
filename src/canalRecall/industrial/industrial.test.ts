@@ -48,6 +48,29 @@ test('classify: what keeps the grammar', () => {
   assert.equal(classifyIndustrial({ ...base, osmBuilding: 'industrial', areaM2: 65, heightM: 4, industrialLand: true }).kind, 'shed', 'a small hut on an estate');
 });
 
+test('classify: feedback 2026-11-13, the grey slabs that are not industrial (pinned OSM/BAG pands)', () => {
+  // Sloterhof flat 0363100012080615 (Berghoef, 1959, 25 m, 917 m2): BAG lists one 88 m2 industry unit among 64 dwellings.
+  const sloterhof = { ...base, id: 'NL.IMBAG.Pand.0363100012080615', heightM: 25.15, areaM2: 917, year: 1959, industrialLand: true, vbos: 65, woonVbos: 64, uses: { industriefunctie: 88, woonfunctie: 4195 } };
+  assert.equal(classifyIndustrial(sloterhof).kind, null, 'dwellings');
+  assert.equal(classifyIndustrial({ ...sloterhof, uses: { industriefunctie: 88 }, woonVbos: undefined, vbos: 1 }).kind, null, 'even if the register hid the dwellings: tall and monument/tower proportions');
+  assert.equal(classifyIndustrial({ ...sloterhof, woonVbos: 0, uses: { industriefunctie: 88 }, monument: true }).kind, null, 'monument register');
+  // Kostverlorenvaart block 0363100012075898 (2006, 16.9 m, 1446 m2): 27 dwellings above industry and meeting rooms.
+  assert.equal(classifyIndustrial({ ...base, id: 'NL.IMBAG.Pand.0363100012075898', heightM: 16.85, areaM2: 1446, year: 2006, industrialLand: true, vbos: 38, woonVbos: 27, uses: { woonfunctie: 2680, industriefunctie: 1240, 'overige gebruiksfunctie': 948, bijeenkomstfunctie: 179 } }).kind, null);
+  // Piet Kranenbergpad 0363100012077120 (2005, 12.8 m on 75 m2): BAG industry only, a small curved studio block.
+  assert.equal(classifyIndustrial({ ...base, id: 'NL.IMBAG.Pand.0363100012077120', heightM: 12.75, areaM2: 75, year: 2005, industrialLand: true, vbos: 2, woonVbos: 0, uses: { industriefunctie: 268 } }).kind, null);
+  // What stays: a low wide registered hall, and a tall mapped hall up to the cap.
+  assert.equal(classifyIndustrial({ ...base, heightM: 9, areaM2: 800, industrialLand: true, uses: { industriefunctie: 800 } }).kind, 'shed');
+  assert.equal(classifyIndustrial({ ...base, heightM: 18, areaM2: 3000, osmBuilding: 'industrial', industrialLand: true }).kind, 'shed');
+  assert.equal(classifyIndustrial({ ...base, heightM: 18, areaM2: 3000, industrialLand: true, uses: { industriefunctie: 3000 } }).kind, null, 'taller than 15 m with only the register');
+});
+
+test('published table: the 2026-11-13 feedback pands are not in it', async () => {
+  const { readFileSync } = await import('node:fs');
+  const table = JSON.parse(readFileSync(new URL('../../../public/data/extracts/amsterdam/industrial-buildings.json', import.meta.url), 'utf8')) as IndustrialTable;
+  for (const pand of ['0363100012080615', '0363100012075898', '0363100012077120']) assert.equal(table.ids[`NL.IMBAG.Pand.${pand}`], undefined, pand);
+  assert.ok(Object.keys(table.ids).length > 5000, 'still a real table');
+});
+
 test('table and enricher: stamps only named ids; a missing table changes nothing', async () => {
   const table: IndustrialTable = { version: 1, source: 't', ids: { a: 'tank', b: 'shed' } };
   assert.ok(isIndustrialTable(table));
@@ -101,6 +124,17 @@ test('mesh: no stamp, or the flag off, is byte-identical to before', () => {
     g.__canalRecallIndustrialKit = false;
     assert.ok(same(buildFeatureChunk([hall({ industrial: 'shed' })], 'storybook', 'walls', streets), plain), 'flag off ignores the stamp');
     assert.ok(same(buildFeatureChunk([hall()], 'storybook', 'walls', streets), plain), 'no stamp, flag on or off');
+  } finally { delete g.__canalRecallIndustrialKit; }
+});
+
+test('mesh: a stamped building keeps its vertex range, so click picking (prismPick) still finds it (feedback 2026-11-13 "why can\'t I click on this building?")', () => {
+  try {
+    g.__canalRecallIndustrialKit = true;
+    for (const kind of ['shed', 'works', 'tank', 'silo', 'office'] as const) {
+      const chunk = buildFeatureChunk([hall({ industrial: kind })], 'storybook', 'walls', streets);
+      const r = chunk.ranges.find(x => x.id === 'NL.IMBAG.Pand.0363100012202272');
+      assert.ok(r && r.count > 0, `${kind} has a vertex range`);
+    }
   } finally { delete g.__canalRecallIndustrialKit; }
 });
 

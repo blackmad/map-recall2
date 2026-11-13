@@ -74,6 +74,8 @@ export interface Landmark extends LandmarkNotice {
    *  pins stand here (lane S5, #333); route targets keep the snapped `x`/`y`. */
   ownX?: number;
   ownY?: number;
+  /** The building's outline in world px (closed rings; open lines for non-buildings), for the frontage test (landmarkFrontage.ts). Absent for a point-only landmark. */
+  footprint?: WorldPoint[][];
   lngLat: LngLat;
   detail: string;
   longDetail: string;

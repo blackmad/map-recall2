@@ -41,7 +41,7 @@ async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean; kee
       game.quizPromptSubject = 'water';
       game._prompt.style.display = 'flex';
     }
-    Object.assign(game.player, { x: landmark.x - 110 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+    Object.assign(game.player, { x: landmark.x - 20 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
     game._updateLandmarks(1 / 60);
     const prompt = document.getElementById('canal-card');
     const choices = [...document.querySelectorAll('#canal-choices button')].map(b => (b as HTMLElement).dataset.name);
@@ -272,7 +272,7 @@ test('the asked landmark and every choice are buildings; a memorial is never ask
     game._questionBudget = { asks: [] }; game._landmarkAsked = new Set(); game._seenLandmarks = new Set();
     game._landmarkReviewsCache = undefined; game._clearLandmarkNotice();
     game._landmarkIsModelled = () => true;
-    Object.assign(game.player, { x: m.x - 110 * 3, y: m.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+    Object.assign(game.player, { x: m.x - 20 * 3, y: m.y, angle: 0, speed: 0, vx: 0, vy: 0 });
     game._updateLandmarks(1 / 60);
     return { kind: game.quizPromptKind, asked: game.quizPromptName };
   });

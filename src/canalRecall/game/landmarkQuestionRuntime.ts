@@ -10,16 +10,17 @@
 // panel are closed by the open prompt, and Free Ride markers skip it here.
 
 import {
+  besideLandmark,
   bumpSessionCounter,
   FILLER_MAX_M,
   inViewCone,
   landmarkWithheldNames,
   landmarkChoices,
-  LANDMARK_QUESTION_RADIUS_M,
   landmarkQuestionsEnabled,
   mayAskLandmark,
   questionContext,
   noteSighting,
+  ownPoint,
   readSightings,
   SAME_COMPLEX_M,
   saveSightings,
@@ -151,7 +152,8 @@ export class GameLandmarkQuestionRuntime {
    *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
    *    own fade before the question can open. Kept, with hysteresis, while the
    *    rider still approaches it; released (the labels fade back) when not.
-   * 2. The question. Within 150 m and the cone, the slot free and the budget
+   * 2. The question. Right beside the building (besideLandmark: 35 m from
+   *    its street point, 80 m from the building, not behind), the slot free and the budget
    *    with a slot: the question opens with the dealt choices. True when one
    *    opened (the drive-by pick then stands down this frame).
    */
@@ -168,7 +170,7 @@ export class GameLandmarkQuestionRuntime {
       utilityOpen: gate.utilityOpen,
     })) return false;
     const chosen = approach.landmark;
-    if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
+    if (!besideLandmark(player, chosen, PIXELS_PER_METER)) return false;
 
     const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
       maxAsksPerMinute: this._askBudgetPerMinute(),
@@ -191,7 +193,9 @@ export class GameLandmarkQuestionRuntime {
     this.landmarkApproachWithheld = [];
     // The card names the buurt and the side, never the building.
     const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
-    const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+    // Measured to the building, not its street point, which can sit ahead on the road.
+    const own = ownPoint(chosen);
+    const off = Math.atan2(own.y - player.y, own.x - player.x) - heading;
     const bearing = Math.atan2(Math.sin(off), Math.cos(off));
     // World y points down the screen, so a positive bearing is to the right.
     const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t('ride.landmarkQuestion.ahead')
@@ -225,7 +229,8 @@ export class GameLandmarkQuestionRuntime {
     const held = this._landmarkApproach;
     if (held) {
       const live = this.landmarks.find(landmark => landmark.id === held.landmark.id);
-      if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+      // Kept alongside too: the cone loses a building as the rider draws level with it.
+      if (live && !this._seenLandmarks.has(live.id) && (approachKept(player, live, bandPx) || besideLandmark(player, live, PIXELS_PER_METER))) return held;
       this._releaseLandmarkApproach();
     }
     const asked = (this._landmarkAsked ||= new Set());
@@ -248,7 +253,8 @@ export class GameLandmarkQuestionRuntime {
       // The destination card names the destination; a landmark sharing its
       // name would be answered by the HUD.
       if (landmark.name === this.routeTo?.name) return false;
-      if (!inViewCone(player, landmark, bandPx)) return false;
+      // In view ahead, or already alongside after a turn.
+      if (!inViewCone(player, landmark, bandPx) && !besideLandmark(player, landmark, PIXELS_PER_METER)) return false;
       // The map named it moments ago, or a card did: asking now tests the
       // last few seconds, not the city (#281).
       // The map labels it in the interface's language (#307): either spelling counts.

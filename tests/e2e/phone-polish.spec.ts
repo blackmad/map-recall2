@@ -278,7 +278,7 @@ for (const size of [{ width: 390, height: 664 }, { width: 390, height: 844 }, { 
             const landmark = g.landmarks.find((l: any) => l.name === 'Westerkerk');
             g.routePath = null; g.routeTo = { id: 'lm-elsewhere', name: 'Elsewhere' };
             g.quizPromptName = ''; g.quizPromptKind = 'route';
-            Object.assign(g.player, { x: landmark.x - 110 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+            Object.assign(g.player, { x: landmark.x - 20 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
             g._updateLandmarks(1 / 60);
           }
         }, kind);

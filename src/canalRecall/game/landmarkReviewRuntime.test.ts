@@ -37,13 +37,13 @@ const { MANUAL_LANDMARKS } = await import('../landmarks/manualModels.ts');
 
 const modelledId = (MANUAL_LANDMARKS as unknown as ReadonlyArray<{ landmarkId?: string }>).find(spec => spec.landmarkId)!.landmarkId!;
 
-/** The asked landmark 100 m ahead; three card-worthy neighbours behind the rider for distractors. */
+/** The asked landmark 20 m ahead (the question opens only beside it); three card-worthy neighbours behind the rider for distractors. */
 function landmarks() {
   const at = (id: string, name: string, xM: number, yM: number) => ({
     id, name, type: 'landmark', x: xM * PPM, y: yM * PPM, detail: `${name} is a building.`, imageUrl: '', wikipediaUrl: '',
   });
   return [
-    at(modelledId, 'Asked Hall', 100, 0),
+    at(modelledId, 'Asked Hall', 20, 0),
     at('d1', 'Distractor One', -300, 0),
     at('d2', 'Distractor Two', -300, 200),
     at('d3', 'Distractor Three', -300, -200),

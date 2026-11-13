@@ -82,6 +82,12 @@ for (const line of fs.readFileSync(path.join(CACHE, 'ind.geojsonseq'), 'utf8').s
 
 // ---------------------------------------------------------------- BAG uses, landmarks, buurten
 const bag = JSON.parse(fs.readFileSync(process.argv.find(a => a.startsWith('--bag='))?.slice(6) ?? path.join(CACHE, 'bag-uses.json'), 'utf8')) as { pands: Record<string, { vbos: number; area: Record<string, number> }> };
+// Full-use register (woonfunctie included) for the pands the first pass tagged: scripts/industrial/fetch-bag-housing.ts.
+// fetch-bag-uses.ts drops plain woonfunctie VBOs, so without this file a flat reads as pure industry (feedback 2026-11-13).
+const housingPath = process.argv.find(a => a.startsWith('--housing='))?.slice(10) ?? path.join(CACHE, 'bag-housing.json');
+const housing = fs.existsSync(housingPath) ? (JSON.parse(fs.readFileSync(housingPath, 'utf8')) as { pands: Record<string, { vbos: number; woonVbos: number; area: Record<string, number> }> }).pands : {};
+// Rijksmonument / gemeentelijk monument pands the register parser knows (monument-facts.json): never reclassified.
+const monumentIds = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(EXTRACT, 'monument-facts.json'), 'utf8')).buildings ?? {}));
 const landmarkIds = new Set<string>();
 for (const list of Object.values<string[]>(JSON.parse(fs.readFileSync(path.join(EXTRACT, 'landmark-buildings.json'), 'utf8')).buildings ?? {})) for (const id of list) landmarkIds.add(String(id));
 for (const id of Object.keys(JSON.parse(fs.readFileSync(path.join(EXTRACT, 'kit-pands.json'), 'utf8')).ids ?? {})) landmarkIds.add(id);
@@ -93,7 +99,7 @@ const STADSDELEN: Record<string, string> = { A: 'Centrum', B: 'Westpoort', E: 'W
 const tilesDir = path.join(EXTRACT, 'building-tiles/14');
 const tiles = fs.readdirSync(tilesDir).flatMap(x => fs.readdirSync(path.join(tilesDir, x)).map(y => `${x}/${y.replace('.geojson.gz', '')}`));
 const pandOf = (id: string) => /NL\.IMBAG\.Pand\.(\d{16})/.exec(id)?.[1];
-type Row = { id: string; tile: string; kind: IndustrialKind | null; why: string; stadsdeel: string; areaM2: number; heightM: number; at: [number, number]; year: number | null; osm?: string };
+type Row = { land?: boolean; woonVbos?: number; vbos?: number; housingKnown?: boolean; id: string; tile: string; kind: IndustrialKind | null; why: string; stadsdeel: string; areaM2: number; heightM: number; at: [number, number]; year: number | null; osm?: string };
 const rows: Row[] = [];
 const factsCache = new Map<string, Record<string, number[]>>();
 const factsFor = (tile: string) => {
@@ -126,11 +132,12 @@ for (const tile of tiles) {
     const facts2: IndustrialFacts = {
       id, heightM: Number(f.properties.height) || 0, minHeightM: Number(f.properties.minHeight) || 0, areaM2, roundness: shape.roundness, vertices: shape.vertices, year,
       osmBuilding: osm?.building ?? typeName, manMade: osm?.man_made ?? mm, industrialLand: landuse.at(at).length > 0,
-      uses: pand ? bag.pands[pand]?.area : undefined, vbos: pand ? bag.pands[pand]?.vbos : undefined, landmark: landmarkIds.has(id) || (pand ? landmarkIds.has(`NL.IMBAG.Pand.${pand}`) : false),
+      uses: pand ? (housing[pand]?.area ?? bag.pands[pand]?.area) : undefined, vbos: pand ? (housing[pand]?.vbos ?? bag.pands[pand]?.vbos) : undefined,
+      woonVbos: pand ? housing[pand]?.woonVbos : undefined, monument: monumentIds.has(id), housingKnown: pand ? !!housing[pand] : false, landmark: landmarkIds.has(id) || (pand ? landmarkIds.has(`NL.IMBAG.Pand.${pand}`) : false),
     };
     const v = classifyIndustrial(facts2);
     const code = buurten.at(at)[0] ?? '';
-    rows.push({ id, tile, kind: v.kind, why: v.why, stadsdeel: STADSDELEN[code[0]] ?? (code ? code[0] : 'outside'), areaM2: Math.round(areaM2), heightM: facts2.heightM, at: [+at[0].toFixed(6), +at[1].toFixed(6)], year, osm: [facts2.osmBuilding && `building=${facts2.osmBuilding}`, facts2.manMade && `man_made=${facts2.manMade}`].filter(Boolean).join(' ') || undefined });
+    rows.push({ land: facts2.industrialLand, woonVbos: facts2.woonVbos, vbos: facts2.vbos, housingKnown: facts2.housingKnown, id, tile, kind: v.kind, why: v.why, stadsdeel: STADSDELEN[code[0]] ?? (code ? code[0] : 'outside'), areaM2: Math.round(areaM2), heightM: facts2.heightM, at: [+at[0].toFixed(6), +at[1].toFixed(6)], year, osm: [facts2.osmBuilding && `building=${facts2.osmBuilding}`, facts2.manMade && `man_made=${facts2.manMade}`].filter(Boolean).join(' ') || undefined });
   }
 }
 
@@ -181,5 +188,6 @@ for (const r of rows) if (!r.kind && r.stadsdeel === 'Westpoort' && r.areaM2 >= 
 const summary = { westpoortLargeMisses: misses, buildings: rows.length, osm: osmCounts, byKind, areaM2: area, byStadsdeel, why, drawnToday: drawn, samples: Object.fromEntries(kinds.map(k => [k, rows.filter(r => r.kind === k).sort((a, b) => b.areaM2 - a.areaM2).slice(0, 12)])) };
 fs.writeFileSync(path.join(STAGE, 'summary.json'), JSON.stringify(summary, null, 1));
 fs.writeFileSync(path.join(STAGE, 'rows.json'), JSON.stringify(rows.filter(r => r.kind)));
+fs.writeFileSync(path.join(STAGE, 'rows-all.json'), JSON.stringify(rows));
 console.log(JSON.stringify({ buildings: rows.length, byKind, areaM2: area, byStadsdeel, drawnToday: drawn }, null, 1));
 if (args.has('--publish')) { fs.copyFileSync(path.join(STAGE, INDUSTRIAL_FILE), path.join(EXTRACT, INDUSTRIAL_FILE)); console.log(`published ${INDUSTRIAL_FILE}`); }

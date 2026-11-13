@@ -1,6 +1,7 @@
 import { SIGNATURE_MODELS } from '../landmarks/signatureModels';
 import facts from './manual-poi-data.json';
 import nativeKitPois from './native-kit-pois.json';
+import manualWikidata from './manual-poi-wikidata.json';
 import type { LandmarkFeature } from './extracts';
 
 type SupplementalFact = Omit<typeof facts[number], 'destinations'> & {
@@ -78,7 +79,31 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
       for (const alias of ids.slice(1)) if(!destinations.includes(alias))merged.delete(alias);
     }
   }
+  // Modelled entries the extract does not link to Wikidata take the QID of the
+  // like-named item standing at the same spot (grow-amsterdam-landmarks.ts),
+  // with its fame, so they rank and deduplicate like their extract twins.
+  const wikidataById = manualWikidata as Record<string, ManualWikidata>;
+  for (const [id, feature] of merged) {
+    const extra = wikidataById[id];
+    if (!extra || feature.wikidata) continue;
+    merged.set(id, {
+      ...feature,
+      wikidata: extra.wikidata,
+      wikidataSitelinks: feature.wikidataSitelinks ?? extra.wikidataSitelinks,
+      wikipediaPageviews60d: feature.wikipediaPageviews60d ?? extra.wikipediaPageviews60d,
+      heritage: feature.heritage ?? extra.heritage,
+      wikidataInstanceOf: feature.wikidataInstanceOf ?? extra.wikidataInstanceOf,
+    });
+  }
   return [...merged.values()];
+}
+
+interface ManualWikidata {
+  wikidata: string;
+  wikidataSitelinks?: number;
+  wikipediaPageviews60d?: number;
+  heritage?: string[];
+  wikidataInstanceOf?: string[];
 }
 
 export function manualPoiModelIds(): readonly string[] {

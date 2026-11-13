@@ -177,6 +177,11 @@ node --import tsx scripts/apply-wikimedia-image-overrides.ts "$build_dir"
 node --import tsx scripts/build-bridge-crossings.ts "--directory=$build_dir" --publish
 node --import tsx scripts/build-bridge-railways.ts "--directory=$build_dir" --publish
 node --import tsx scripts/build-bridge-distractors.ts "--directory=$build_dir" --publish
+if [[ "$city_id" == "amsterdam" ]]; then
+  # Notable places OSM does not link to Wikidata, against the notability floor.
+  node --import tsx scripts/grow-amsterdam-landmarks.ts "$work_dir/features.geojson" "$work_dir/boundaries.geojson" \
+    "--directory=$build_dir" --publish
+fi
 
 node --import tsx scripts/check-city-extract.ts "$build_dir" "$city_id"
 

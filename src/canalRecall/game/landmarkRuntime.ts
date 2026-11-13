@@ -63,6 +63,8 @@ import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
 import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
+import { footprintFromGeoJson } from './landmarkFrontage';
+import { landmarkApproachAlong } from './driveByTrigger';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import { language, t as tr } from '../../i18n/index.ts';
 import { localisedPlaces, placeName } from './landmarkNamesNl.ts';
@@ -573,6 +575,8 @@ export class GameLandmarkRuntime {
           const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
           landmark.ownX = own.x;
           landmark.ownY = own.y;
+          const outline = footprintFromGeoJson(landmark.geojson?.features, ([lng, lat]) => toWorld([lat, lng]));
+          if (outline.length) landmark.footprint = outline;
         }
       }
       const landmarks = this.landmarks;
@@ -716,7 +720,9 @@ export class GameLandmarkRuntime {
     const reach = ahead.reduce((sum, point, i) => i ? sum + Math.hypot(point.x - ahead[i - 1].x, point.y - ahead[i - 1].y) : 0, 0)
       + DRIVE_BY_RADIUS;
     for (const landmark of this.landmarks) {
-      const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
+      // The street point can be the next street over (the Krijtberg snaps to the Herengracht); the building counts too.
+      const distance = Math.min(Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y),
+        landmark.ownX === undefined ? Infinity : Math.hypot(landmark.ownX - this.player.x, landmark.ownY! - this.player.y));
       if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
       if (this._seenLandmarks.has(landmark.id)) continue;
       // A card with nothing but a name interrupts the driving corridor to teach
@@ -741,7 +747,7 @@ export class GameLandmarkRuntime {
     // they reach the landmark rather than as they pass it.
     // The landmark being approached for a question is not named by a card first (#281).
     const approached = this._landmarkApproach?.landmark.id;
-    const nearest = pickDriveBy(approached ? candidates.filter(landmark => landmark.id !== approached) : candidates, ahead);
+    const nearest = pickDriveBy(approached ? candidates.filter(landmark => landmark.id !== approached) : candidates, ahead, landmark => landmarkApproachAlong(ahead, landmark, PIXELS_PER_METER));
     if (nearest && nearest.id !== this._landmarkNotice?.id) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
