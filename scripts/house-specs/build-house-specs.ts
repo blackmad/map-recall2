@@ -167,6 +167,10 @@ if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y 
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
 
+// Lane WG step 2: the street template rung is a hook until the completer lane's re-ranked module lands (scale and street
+// class match, no template when nothing qualifies; the reviewer, 2026-11-13). `--street-template` turns it on.
+const STREET_TEMPLATE = process.argv.includes('--street-template');
+
 // --- 4. write the staged tiles ------------------------------------------------------------------------------------
 rmSync(path.join(STAGING, '14'), { recursive: true, force: true });
 const byTile = new Map<string, HouseSpecTile>();
@@ -188,7 +192,7 @@ for (const [pand, spec] of resolved) {
   // fronts only (a reading or a stated count).
   {
     const c = centroidOf.get(pand), year = record.v.year ?? bagYear.get(pand) ?? null;
-    const read = readFields(spec), pick = c && (read || record.v.storeys) ? streetTemplateFor({ pandId: pand, lng: c[0], lat: c[1], year }) : null;
+    const read = readFields(spec), pick = STREET_TEMPLATE && c && (read || record.v.storeys) ? streetTemplateFor({ pandId: pand, lng: c[0], lat: c[1], year }) : null;
     const fields = withTemplate(read, pick);
     if (fields) { record.v.fields = fields; counts.fields++; if (pick && Object.values(fields.src).some(s => s?.startsWith('template:'))) counts.fieldsTemplate++; }
   }
