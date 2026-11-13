@@ -62,6 +62,7 @@ import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { FacadeRecordTexture } from './look/facadeRecordTexture.js';
 import { shaderFacadesEnabled } from './look/facadeShader.js';
+import { finishHintEnabled, FINISH_HINT_FILE } from './look/finishHint.js';
 import type { FacadeRecordSet } from './world/facadeStreams.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
@@ -305,6 +306,11 @@ type RecordChunk = Chunk & { record?: { walls: Float32Array; recs: Uint16Array; 
 function houseSpecsBase(): string {
   const extract = (globalThis as { __canalRecallExtractPath?: string }).__canalRecallExtractPath ?? '../data/extracts/amsterdam';
   try { return new URL(`${extract.replace(/\/$/, '')}/house-specs`, location.href).href; } catch { return `${extract}/house-specs`; }
+}
+/** `?finishHint=1`: the Jev render-hint file the worker reads (look/finishHint.ts), beside house-specs. */
+function finishHintUrl(): string {
+  const extract = (globalThis as { __canalRecallExtractPath?: string }).__canalRecallExtractPath ?? '../data/extracts/amsterdam';
+  try { return new URL(`${extract.replace(/\/$/, '')}/${FINISH_HINT_FILE}`, location.href).href; } catch { return `${extract}/${FINISH_HINT_FILE}`; }
 }
 /** A record material of one mesh: the shared record program, its own record texture binding, `recBase` row and `wallUnit`. */
 function facadeRecordClone(source: any, texture: any, row: number, wallUnit: number): any {
@@ -1727,7 +1733,7 @@ export class ThreeBuildings {
       this.busy.set(w, key);
       const mode = this.modeFor(key), special = key === KIT_KEY || key.startsWith(BOAT_PREFIX);
       pool.post(w, { key, gen, ...options, features: source, mode, ...(SHELL_ROOFS ? { shellRoofs: true } : {}),
-        ...(mode === 'walls' && !special && this.recordChunks() ? { facadeRecord: { specBase: houseSpecsBase() } } : {}),
+        ...(mode === 'walls' && !special && this.recordChunks() ? { facadeRecord: { specBase: houseSpecsBase(), ...(finishHintEnabled() ? { hintUrl: finishHintUrl() } : {}) } } : {}),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
         layers: this.kitLayers(), tiles: this.facadeTiles, tileMin: FACADE_TILE_MIN_TRIANGLES });

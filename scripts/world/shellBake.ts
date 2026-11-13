@@ -24,6 +24,7 @@ import { validateStreetAppearanceCatalog, type StreetAppearanceProfile } from '.
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { chunkMetres, farPrisms, quantisePrisms, recordShellFromChunk, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHL1_SIMPLIFY_M, type FarPrism, type RecordShellChunk, type RecordShellMesh, type ShellChunk, type ShellMesh } from '../../src/canalRecall/world/shellMesh.js';
 import { FACADE_RECORD_BYTES, FACADE_RECORD_VERSION, packFacadeRecordFor, type FacadeRecordInput, type FacadeSpecInput } from '../../src/canalRecall/look/facadeRecord.js';
+import type { FinishHint } from '../../src/canalRecall/look/finishHint.js';
 import type { FacadeRecordSet } from '../../src/canalRecall/world/facadeStreams.js';
 
 export const SHELL_LOOK: BuildingLook = 'photo';
@@ -211,8 +212,8 @@ export function loadHouseSpecTable(extract: string, dir: string): Map<string, Fa
 /** A record-mode chunk's share for one cell: geometry plus one record input per range (`inputs[k]` for `ranges[k]`). */
 export type RecordPart = RecordShellChunk & { inputs: FacadeRecordInput[] };
 
-export function bakeGroupRecordChunk(source: readonly Feature[], context: readonly Feature[], root: string, specFor?: (id: string) => FacadeSpecInput | undefined): RecordPart {
-  const c = buildFeatureChunk(source as Feature[], SHELL_LOOK, 'coarse', shellStreets(root, source), shellProfiles(root), context as Feature[], [], new Map(), { shellRoofs: true, facadeRecord: true, ...(specFor ? { specFor } : {}) });
+export function bakeGroupRecordChunk(source: readonly Feature[], context: readonly Feature[], root: string, specFor?: (id: string) => FacadeSpecInput | undefined, finishHintFor?: (id: string) => FinishHint | undefined): RecordPart {
+  const c = buildFeatureChunk(source as Feature[], SHELL_LOOK, 'coarse', shellStreets(root, source), shellProfiles(root), context as Feature[], [], new Map(), { shellRoofs: true, facadeRecord: true, ...(specFor ? { specFor } : {}), ...(finishHintFor ? { finishHintFor } : {}) });
   if (!c.record) throw Error('record bake: the mesher returned no record arrays');
   return { positions: c.positions, indices: c.indices, ranges: c.ranges, walls: c.record.walls, recs: c.record.recs, wallKinds: c.record.wallKinds, inputs: c.record.inputs };
 }
