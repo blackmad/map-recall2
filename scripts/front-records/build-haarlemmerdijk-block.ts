@@ -11,7 +11,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import {frontTableProblems, type WallColour, type WallFinish, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source} from '../../src/canalRecall/houseLine/frontRecord.ts';
+import {frontTableProblems, type WallColour, type WallFinish, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source, type SubFront} from '../../src/canalRecall/houseLine/frontRecord.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const FACES = path.join(ROOT, 'scripts/block-face/faces');
@@ -29,7 +29,9 @@ interface ReadCrown {family?: CrownFamily; widthM?: number; neckWidthM?: number;
   dormer?: {kind: NonNullable<FrontRecord['crown']['dormer']>['kind']; topM: number | null}; atticWindows?: number; hoist?: boolean; note?: string}
 interface Read {by: 'lane2-strip-read' | 'reviewer-strip-read'; ref: string; frontTop?: number; frontTopKind?: FrontTopKind; crown?: ReadCrown;
   storeys?: number; groundTop?: number; rows?: [number, number][]; bays?: number; wallWord?: string; trimWord?: string; note?: string}
-interface PandReads {pandId: string; reads: Read[]; cap?: Confidence}
+/** One front of a multi-front pand: a single read over metres `from`-`to` of the pand's span (see SubFront). */
+interface FrontRead extends Read {from: number; to: number; addresses?: string[]; cap?: Confidence}
+interface PandReads {pandId: string; reads: Read[]; cap?: Confidence; fronts?: FrontRead[]}
 
 const GABLE_FAMILY: Record<string, CrownFamily> = {cornice: 'straight-cornice', neck: 'neck', 'raised-neck': 'neck', bell: 'bell', 'bell-low': 'bell',
   point: 'point', step: 'step', spout: 'spout', 'pitched-eaves': 'other', flat: 'flat-parapet'};
@@ -147,6 +149,10 @@ function build(): FrontRecordTable {
         confidence, nothingLocal: rs.length === 0, conflicts, notes,
       };
       if (confidence === 'low' || frontTopM === null) rec.fallback = 'row-line';
+      if (pr?.fronts?.length) {
+        rec.fronts = pr.fronts.map((fr, i) => subFront(fr, walls.get(`${pandId}#${i}`), refOf(fr)));
+        notes.push(`${rec.fronts.length} street fronts on this pand: draw rec.fronts, not the pand as one front`);
+      }
       records.push(rec);
     }
   }
@@ -165,6 +171,33 @@ function build(): FrontRecordTable {
     ],
     records,
   };
+}
+
+/** A sub-front from its single read: medium with a front top, low without (or when the read caps it). */
+function subFront(fr: FrontRead, m: WallMeasure | undefined, ref: string): SubFront {
+  const sources: Source[] = [];
+  const src = (field: string, v: unknown) => { if (v !== undefined && v !== null) sources.push({field, ref, kind: fr.by}); };
+  const v = <T>(x: T | undefined) => x === undefined ? null : x;
+  src('frontTopM', fr.frontTop); src('crown.family', fr.crown?.family); src('rows', fr.rows?.length ? 1 : null);
+  const frontTopM = v(fr.frontTop) === null ? null : r2(fr.frontTop!);
+  const wordR = fr.wallWord ? {word: fr.wallWord, ref} : null;
+  const wall = wallOf(m, wordR, [fr], null, '');
+  if (wall.hex) sources.push({field: 'wall.hex', ref: wall.ref!, kind: wall.source === 'reviewed' ? 'lane2-strip-read' : 'strip-measure'});
+  let confidence: Confidence = frontTopM === null ? 'low' : 'medium';
+  if (fr.cap === 'low') confidence = 'low';
+  const c = fr.crown ?? {};
+  const f: SubFront = {
+    from: fr.from, to: fr.to, addresses: fr.addresses ?? [],
+    frontTopM, frontTopKind: frontTopM === null ? null : fr.frontTopKind ?? null,
+    crown: {family: c.family ?? null, widthM: c.widthM ?? null, neckWidthM: c.neckWidthM ?? null, shoulderM: fr.frontTopKind === 'gable-foot' ? frontTopM : null,
+      topM: c.topM ?? null, ornamentTopM: c.ornamentTopM ?? null, dormer: c.dormer ? {kind: c.dormer.kind, topM: c.dormer.topM} : null,
+      atticWindows: c.atticWindows ?? null, hoist: c.hoist ?? null, note: c.note ?? null},
+    storeys: v(fr.storeys), groundStoreyTopM: v(fr.groundTop), rows: (fr.rows ?? []).map(([sl, hd]) => ({sillM: sl, headM: hd})), bays: v(fr.bays),
+    wall, trim: {hex: null, word: fr.trimWord ?? null, ref: fr.trimWord ? ref : null}, sources, confidence, conflicts: [],
+    notes: fr.note ? [`lane2: ${fr.note}`] : [],
+  };
+  if (confidence === 'low' || frontTopM === null) f.fallback = 'row-line';
+  return f;
 }
 
 interface WallMeasure {pandId: string; rawHex: string | null; hex: string | null; gain: number | null; L: number | null; finishGuess: 'brick' | 'plaster' | null; sample: string | null; note: string | null}

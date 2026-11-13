@@ -112,7 +112,163 @@
    "conflicts": [],
    "notes": [
     "lane2: two fronts on one pand; bays not counted",
-    "3DBAG front eaves 9.18 m stands -3.72 m off the measured front top 12.9 m"
+    "3DBAG front eaves 9.18 m stands -3.72 m off the measured front top 12.9 m",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
+   ],
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.05,
+     "addresses": [
+      "Haarlemmerdijk 58A",
+      "Haarlemmerdijk 58B"
+     ],
+     "frontTopM": 13.1,
+     "frontTopKind": "gable-foot",
+     "crown": {
+      "family": "neck",
+      "widthM": null,
+      "neckWidthM": 1.85,
+      "shoulderM": 13.1,
+      "topM": 16.6,
+      "ornamentTopM": 18.25,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "white scroll shoulders at 13.1 m; gable window 12.5-13.9 m in the neck"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 5.6,
+     "rows": [
+      {
+       "sillM": 6.25,
+       "headM": 8.75
+      },
+      {
+       "sillM": 9.5,
+       "headM": 11.6
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#695948",
+      "rawHex": "#4a3e32",
+      "gain": 2.052,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a3e32, gain 2.052)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white frames and scrolls",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.05 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.05 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.05 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.05 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a3e32, gain 2.052)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 4.05,
+     "to": 9.57,
+     "addresses": [
+      "Haarlemmerdijk 56"
+     ],
+     "frontTopM": 12.6,
+     "frontTopKind": "gable-foot",
+     "crown": {
+      "family": "neck",
+      "widthM": null,
+      "neckWidthM": 2.75,
+      "shoulderM": 12.6,
+      "topM": 15.6,
+      "ornamentTopM": 16.4,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "white scroll shoulders from 12.6 m; gable window 12.15-13.5 m in the neck"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 5.6,
+     "rows": [
+      {
+       "sillM": 6.35,
+       "headM": 8.65
+      },
+      {
+       "sillM": 9.6,
+       "headM": 11.5
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#605148",
+      "rawHex": "#4b3f38",
+      "gain": 1.655,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b3f38, gain 1.655)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white frames and scrolls",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.05-9.57 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.05-9.57 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.05-9.57 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.05-9.57 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b3f38, gain 1.655)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the front's right edge stands about 9.0 m on the photo; the span runs on to 9.57 m"
+     ]
+    }
    ]
   },
   {
@@ -868,8 +1024,262 @@
    "confidence": "low",
    "nothingLocal": true,
    "conflicts": [],
-   "notes": [],
-   "fallback": "row-line"
+   "notes": [
+    "3 street fronts on this pand: draw rec.fronts, not the pand as one front"
+   ],
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4,
+     "addresses": [
+      "Haarlemmerdijk 36"
+     ],
+     "frontTopM": 13.7,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a balcony rail at 13.7 m in front of a sloped roof storey to about 17 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 4.3,
+     "rows": [
+      {
+       "sillM": 5.4,
+       "headM": 7
+      },
+      {
+       "sillM": 8.4,
+       "headM": 10.2
+      },
+      {
+       "sillM": 11.5,
+       "headM": 13.3
+      }
+     ],
+     "bays": null,
+     "wall": {
+      "hex": "#96948e",
+      "rawHex": "#797873",
+      "gain": 1.588,
+      "word": "grey",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797873, gain 1.588)",
+      "finish": "plaster",
+      "finishFrom": "lightness",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-4.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797873, gain 1.588)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the left wing of one post-war composition (BAG 32-36)"
+     ]
+    },
+    {
+     "from": 4,
+     "to": 11.7,
+     "addresses": [
+      "Haarlemmerdijk 34A",
+      "Haarlemmerdijk 34B",
+      "Haarlemmerdijk 34C",
+      "Haarlemmerdijk 34D",
+      "Haarlemmerdijk 34E",
+      "Haarlemmerdijk 34F",
+      "Haarlemmerdijk 34G",
+      "Haarlemmerdijk 34H"
+     ],
+     "frontTopM": 15.2,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 5.3,
+     "rows": [
+      {
+       "sillM": 6.6,
+       "headM": 8.2
+      },
+      {
+       "sillM": 9,
+       "headM": 10.6
+      },
+      {
+       "sillM": 11.8,
+       "headM": 13.4
+      }
+     ],
+     "bays": null,
+     "wall": {
+      "hex": "#45444a",
+      "rawHex": "#39383d",
+      "gain": 1.473,
+      "word": "grey",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #39383d, gain 1.473)",
+      "finish": "brick",
+      "finishFrom": "lightness",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.0-11.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.0-11.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 4.0-11.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #39383d, gain 1.473)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the projecting centre, cantilevered over a passage; balconies in the middle"
+     ]
+    },
+    {
+     "from": 11.7,
+     "to": 15.2,
+     "addresses": [
+      "Haarlemmerdijk 32"
+     ],
+     "frontTopM": 14.1,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a balcony rail at 14.1 m in front of a sloped roof storey"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 4.3,
+     "rows": [
+      {
+       "sillM": 5.3,
+       "headM": 6.9
+      },
+      {
+       "sillM": 8.3,
+       "headM": 9.9
+      },
+      {
+       "sillM": 11,
+       "headM": 12.6
+      }
+     ],
+     "bays": null,
+     "wall": {
+      "hex": "#63666c",
+      "rawHex": "#54575c",
+      "gain": 1.402,
+      "word": "grey",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54575c, gain 1.402)",
+      "finish": "brick",
+      "finishFrom": "lightness",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 11.7-15.2 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 11.7-15.2 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 11.7-15.2 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54575c, gain 1.402)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the right wing"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012167821",
@@ -1125,7 +1535,167 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: two fronts on one pand; rows not read"
+    "lane2: two fronts on one pand; rows not read",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
+   ],
+   "fronts": [
+    {
+     "from": 0,
+     "to": 3.95,
+     "addresses": [
+      "Haarlemmerdijk 24"
+     ],
+     "frontTopM": 12.3,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "other",
+      "widthM": 3.6,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.25,
+      "ornamentTopM": 15,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "an ornate white stucco raised top over the full width from the cornice at 12.3 m to 14.25 m, central crest to 15.0 m"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 6.6,
+     "rows": [
+      {
+       "sillM": 6.7,
+       "headM": 9
+      },
+      {
+       "sillM": 9.7,
+       "headM": 11.7
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#474548",
+      "rawHex": "#363437",
+      "gain": 1.709,
+      "word": "dark brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #363437, gain 1.709)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white frames, grey render ground-storey surround",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-3.95 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-3.95 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-3.95 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 0-3.95 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #363437, gain 1.709)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the grey render surround holds the shop and an entresol bay window 4.3-5.8 m; party wall with 22 at 3.95 m"
+     ]
+    },
+    {
+     "from": 3.95,
+     "to": 7.72,
+     "addresses": [
+      "Haarlemmerdijk 22"
+     ],
+     "frontTopM": 13.25,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": {
+       "kind": "crowned",
+       "topM": 14.4
+      },
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a white cornice with a frieze band 11.4-12.5 m and a white crowned dormer to 14.4 m"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 5.1,
+     "rows": [
+      {
+       "sillM": 5.45,
+       "headM": 7.9
+      },
+      {
+       "sillM": 8.7,
+       "headM": 10.6
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#4c413e",
+      "rawHex": "#3f3533",
+      "gain": 1.471,
+      "word": "red-brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3f3533, gain 1.471)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white arched shopfront, white cornice",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 3.95-7.72 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 3.95-7.72 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 3.95-7.72 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip, pand span metres 3.95-7.72 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3f3533, gain 1.471)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the last 0.55 m (7.15-7.72) is a recessed pier against 20"
+     ]
+    }
    ]
   },
   {
@@ -1568,16 +2138,29 @@
     "hoist": null,
     "note": "two storeys of projecting timber erkers over the shop and a flat top; timber erkers 5.0-10.8 m; a brick raised attic with a loggia 12.0-12.9 m and a sloped-shoulder top"
    },
-   "storeys": null,
-   "groundStoreyTopM": null,
-   "rows": [],
-   "bays": null,
+   "storeys": 4,
+   "groundStoreyTopM": 5.1,
+   "rows": [
+    {
+     "sillM": 6.2,
+     "headM": 7.95
+    },
+    {
+     "sillM": 9.2,
+     "headM": 10.95
+    },
+    {
+     "sillM": 11.5,
+     "headM": 13.55
+    }
+   ],
+   "bays": 1,
    "wall": {
-    "hex": "#676969",
-    "rawHex": "#4c4e4e",
+    "hex": "#766863",
+    "rawHex": "#584d49",
     "gain": 1.861,
-    "word": "brown brick",
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4e4e, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "word": "dark red-brown brick",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #584d49, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "brick",
     "finishFrom": "read",
     "source": "reviewed",
@@ -1585,7 +2168,7 @@
    },
    "trim": {
     "hex": null,
-    "word": "white erkers",
+    "word": "grey-green timber oriel 0.6-3.5 m across, 5.1-11.0 m",
     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3899-4060"
    },
    "sources": [
@@ -1600,8 +2183,28 @@
      "kind": "reviewer-strip-read"
     },
     {
+     "field": "groundStoreyTopM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3899-4060",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "bays",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3899-4060",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "storeys",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3899-4060",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "rows",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 3899-4060",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4e4e, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #584d49, gain 1.861; auto-place raw #464643 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "lane2-strip-read"
     },
     {
@@ -1614,6 +2217,7 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
+    "lane2: the oriel fills the middle of the front: the wall shows only in the piers either side and above it",
     "3DBAG front eaves 13.03 m stands -1.77 m off the measured front top 14.8 m"
    ]
   },
@@ -1866,7 +2470,7 @@
     "hex": "#756a5d",
     "rawHex": "#645a4f",
     "gain": 1.408,
-    "word": "grey painted plaster",
+    "word": "beige stucco",
     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #645a4f, gain 1.408; auto-place raw #645e53 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "plaster",
     "finishFrom": "read",
@@ -1966,6 +2570,7 @@
    ],
    "notes": [
     "reviewer: four window rows, the top one 10.1-11.6 m under the gable (only the top row was given)",
+    "lane2: the front stands in shade on the 2022-12-15 strip; the sunlit piers read beige",
     "3DBAG front eaves 9.36 m stands -2.64 m off the measured front top 12 m"
    ]
   },
@@ -2303,8 +2908,8 @@
    "datum": "street",
    "streetGroundNAP": 2.258,
    "groundNAP": 2.26,
-   "frontTopM": null,
-   "frontTopKind": null,
+   "frontTopM": 9.5,
+   "frontTopKind": "cornice-top",
    "threeDBag": {
     "frontEavesM": 7.1,
     "roofMinM": 6.38,
@@ -2314,30 +2919,39 @@
    },
    "crown": {
     "family": "other",
-    "widthM": null,
+    "widthM": 2.6,
     "neckWidthM": null,
     "shoulderM": null,
     "topM": 13.4,
-    "ornamentTopM": null,
+    "ornamentTopM": 13.45,
     "dormer": null,
     "atticWindows": null,
     "hoist": null,
-    "note": "corner pand, three axes under an ornate raised gable"
+    "note": "corner pand, three axes under an ornate raised gable; a broad raised gable 2.6 m wide with scroll shoulders from the cornice at 9.5 m, body to 13.0 m, crest to 13.45 m; it stands right of centre on the corner"
    },
-   "storeys": null,
-   "groundStoreyTopM": null,
-   "rows": [],
+   "storeys": 3,
+   "groundStoreyTopM": 4.1,
+   "rows": [
+    {
+     "sillM": 4.65,
+     "headM": 6.6
+    },
+    {
+     "sillM": 7.5,
+     "headM": 8.85
+    }
+   ],
    "bays": 3,
    "wall": {
-    "hex": "#4e4a49",
-    "rawHex": "#3a3736",
-    "gain": 1.788,
-    "word": null,
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3736, gain 1.788; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
-    "finish": "brick",
-    "finishFrom": "lightness",
-    "source": "strip-measured",
-    "confidence": "medium"
+    "hex": "#575150",
+    "rawHex": "#373332",
+    "gain": 2.483,
+    "word": "dark painted brick",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373332, gain 2.483; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "finish": "painted-brick",
+    "finishFrom": "read",
+    "source": "reviewed",
+    "confidence": "high"
    },
    "trim": {
     "hex": null,
@@ -2345,6 +2959,11 @@
     "ref": null
    },
    "sources": [
+    {
+     "field": "frontTopM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
     {
      "field": "crown.family",
      "ref": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: Haarlemmerdijk 2",
@@ -2356,14 +2975,39 @@
      "kind": "reviewer-strip-read"
     },
     {
+     "field": "crown.ornamentTopM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "crown.widthM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "groundStoreyTopM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "bays",
      "ref": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: Haarlemmerdijk 2",
      "kind": "reviewer-strip-read"
     },
     {
+     "field": "storeys",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "rows",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 4917-5114 (100 px/m crop)",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3736, gain 1.788; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
-     "kind": "strip-measure"
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #373332, gain 2.483; auto-place raw #383432 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "kind": "lane2-strip-read"
     },
     {
      "field": "threeDBag",
@@ -2371,13 +3015,12 @@
      "kind": "3dbag"
     }
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: ornate raised top to about 13.4 m; the wall top under it was not read"
-   ],
-   "fallback": "row-line"
+    "3DBAG front eaves 7.1 m stands -2.4 m off the measured front top 9.5 m"
+   ]
   },
   {
    "pandId": "0363100012167796",
@@ -4554,9 +5197,261 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: post-1990 infill, 13.7 m wide"
+    "reviewer: post-1990 infill, 13.7 m wide",
+    "3 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 5.6,
+     "addresses": [
+      "Haarlemmerdijk 114"
+     ],
+     "frontTopM": 12.65,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.4,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a clad top storey from the brick top at 12.65 m to 14.4 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3.6,
+     "rows": [
+      {
+       "sillM": 4.65,
+       "headM": 6.25
+      },
+      {
+       "sillM": 7.5,
+       "headM": 9.15
+      },
+      {
+       "sillM": 10.5,
+       "headM": 12
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#524d4c",
+      "rawHex": "#464241",
+      "gain": 1.366,
+      "word": "dark brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #464241, gain 1.366)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-5.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-5.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-5.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #464241, gain 1.366)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 5.6,
+     "to": 10.6,
+     "addresses": [
+      "Haarlemmerdijk 112A",
+      "Haarlemmerdijk 112B",
+      "Haarlemmerdijk 112C",
+      "Haarlemmerdijk 112D"
+     ],
+     "frontTopM": 16.15,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 5,
+     "groundStoreyTopM": null,
+     "rows": [
+      {
+       "sillM": 4.15,
+       "headM": 6.15
+      },
+      {
+       "sillM": 6.75,
+       "headM": 8.9
+      },
+      {
+       "sillM": 9.65,
+       "headM": 11.8
+      },
+      {
+       "sillM": 12.8,
+       "headM": 14.5
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#634a41",
+      "rawHex": "#5d463d",
+      "gain": 1.128,
+      "word": "red-brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5d463d, gain 1.128)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "glass balconies",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 5.6-10.6 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 5.6-10.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 5.6-10.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 5.6-10.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5d463d, gain 1.128)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 10.6,
+     "to": 13.75,
+     "addresses": [
+      "Haarlemmerdijk 110A",
+      "Haarlemmerdijk 110B",
+      "Haarlemmerdijk 110C",
+      "Haarlemmerdijk 110D"
+     ],
+     "frontTopM": 13,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.9,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a white set-back top storey to 14.9 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3.6,
+     "rows": [
+      {
+       "sillM": 4,
+       "headM": 6.1
+      },
+      {
+       "sillM": 7.4,
+       "headM": 9
+      },
+      {
+       "sillM": 10.3,
+       "headM": 11.8
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#5e5851",
+      "rawHex": "#56504a",
+      "gain": 1.209,
+      "word": "dark grey brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #56504a, gain 1.209)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 10.6-13.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 10.6-13.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 10.6-13.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #56504a, gain 1.209)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the front runs about 1 m past the span on the photo"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012176698",
@@ -4693,9 +5588,175 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: post-1990 infill"
+    "reviewer: post-1990 infill",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 6.15,
+     "addresses": [
+      "Haarlemmerdijk 106"
+     ],
+     "frontTopM": 12.2,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.25,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a grey mansard from 12.2 m to 14.25 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3,
+     "rows": [
+      {
+       "sillM": 4.5,
+       "headM": 6.15
+      },
+      {
+       "sillM": 7.4,
+       "headM": 9.15
+      },
+      {
+       "sillM": 10.45,
+       "headM": 12
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#514d4c",
+      "rawHex": "#474342",
+      "gain": 1.315,
+      "word": "dark grey brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #474342, gain 1.315)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-6.15 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-6.15 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-6.15 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #474342, gain 1.315)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 6.15,
+     "to": 10.03,
+     "addresses": [
+      "Haarlemmerdijk 104A",
+      "Haarlemmerdijk 104B",
+      "Haarlemmerdijk 104C",
+      "Haarlemmerdijk 104D"
+     ],
+     "frontTopM": 12.8,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.8,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a white set-back top storey to 14.8 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3.2,
+     "rows": [
+      {
+       "sillM": 3.7,
+       "headM": 5.9
+      },
+      {
+       "sillM": 7.2,
+       "headM": 8.85
+      },
+      {
+       "sillM": 10.1,
+       "headM": 11.65
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#724f46",
+      "rawHex": "#6f4d44",
+      "gain": 1.061,
+      "word": "red brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f4d44, gain 1.061)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 6.15-10.03 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 6.15-10.03 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 6.15-10.03 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6f4d44, gain 1.061)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the first storey is a white glazed box 3.7-5.9 m"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012176568",
@@ -5076,9 +6137,177 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: post-1990 infill"
+    "reviewer: post-1990 infill",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.9,
+     "addresses": [
+      "Haarlemmerdijk 92"
+     ],
+     "frontTopM": 13.4,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a pale cornice over a pale render top storey 10.0-13.4 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3,
+     "rows": [
+      {
+       "sillM": 3.5,
+       "headM": 6
+      },
+      {
+       "sillM": 6.35,
+       "headM": 8.75
+      },
+      {
+       "sillM": 10,
+       "headM": 11.5
+      }
+     ],
+     "bays": 1,
+     "wall": {
+      "hex": "#4a4646",
+      "rawHex": "#4c4848",
+      "gain": 0.957,
+      "word": "dark grey brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4848, gain 0.957)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "pale render top storey",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-4.9 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-4.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-4.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 0-4.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4848, gain 0.957)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: one French-window axis with balconies below a four-light top row"
+     ]
+    },
+    {
+     "from": 4.9,
+     "to": 8.75,
+     "addresses": [
+      "Haarlemmerdijk 90A",
+      "Haarlemmerdijk 90B",
+      "Haarlemmerdijk 90C",
+      "Haarlemmerdijk 90D"
+     ],
+     "frontTopM": 12.5,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 14.4,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a white set-back top storey to 14.4 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3,
+     "rows": [
+      {
+       "sillM": 3.6,
+       "headM": 5.75
+      },
+      {
+       "sillM": 7.1,
+       "headM": 8.75
+      },
+      {
+       "sillM": 9.85,
+       "headM": 11.4
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#755143",
+      "rawHex": "#724f41",
+      "gain": 1.053,
+      "word": "red brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #724f41, gain 1.053)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 4.9-8.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 4.9-8.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-66-120 strip, pand span metres 4.9-8.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #724f41, gain 1.053)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the first storey is a white glazed box"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012167812",
@@ -5995,9 +7224,387 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: a 28.4 m pand of several fronts over one shop (Etos): dark painted fronts with cornices at about 11.9-12.5 m and dormers, a white front with a red tile mansard to about 17.6 m and a brick point gable to about 15.5 m; the fronts need splitting before they can be recorded"
+    "lane2: a 28.4 m pand of several fronts over one shop (Etos): dark painted fronts with cornices at about 11.9-12.5 m and dormers, a white front with a red tile mansard to about 17.6 m and a brick point gable to about 15.5 m; the fronts need splitting before they can be recorded",
+    "5 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.5,
+     "addresses": [
+      "Haarlemmerdijk 77"
+     ],
+     "frontTopM": 11.3,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.7,
+     "rows": [
+      {
+       "sillM": 5.85,
+       "headM": 8.25
+      },
+      {
+       "sillM": 8.9,
+       "headM": 10.55
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#595c59",
+      "rawHex": "#636663",
+      "gain": 0.8,
+      "word": "dark painted brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #636663, gain 0.8)",
+      "finish": "painted-brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 0-4.5 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 0-4.5 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 0-4.5 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #636663, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 4.5,
+     "to": 10.8,
+     "addresses": [
+      "Haarlemmerdijk 79",
+      "Haarlemmerdijk 79A",
+      "Haarlemmerdijk 79B"
+     ],
+     "frontTopM": 11.2,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": {
+       "kind": "crowned",
+       "topM": 13.3
+      },
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.7,
+     "rows": [
+      {
+       "sillM": 5.85,
+       "headM": 8.25
+      },
+      {
+       "sillM": 8.9,
+       "headM": 10.55
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#636c6b",
+      "rawHex": "#6e7877",
+      "gain": 0.8,
+      "word": "dark painted brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6e7877, gain 0.8)",
+      "finish": "painted-brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 4.5-10.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 4.5-10.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 4.5-10.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #6e7877, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 10.8,
+     "to": 16.9,
+     "addresses": [
+      "Haarlemmerdijk 81"
+     ],
+     "frontTopM": 11.3,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": {
+       "kind": "crowned",
+       "topM": 14.2
+      },
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.7,
+     "rows": [
+      {
+       "sillM": 5.85,
+       "headM": 8.25
+      },
+      {
+       "sillM": 8.9,
+       "headM": 10.55
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#595d55",
+      "rawHex": "#63675f",
+      "gain": 0.8,
+      "word": "dark painted brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #63675f, gain 0.8)",
+      "finish": "painted-brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 10.8-16.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 10.8-16.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 10.8-16.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #63675f, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 16.9,
+     "to": 23.4,
+     "addresses": [
+      "Haarlemmerdijk 83"
+     ],
+     "frontTopM": 11.9,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": 17.5,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a red tile mansard with a dormer from the cornice to about 17.5 m"
+     },
+     "storeys": null,
+     "groundStoreyTopM": null,
+     "rows": [],
+     "bays": null,
+     "wall": {
+      "hex": "#cccab8",
+      "rawHex": "#e1dfcb",
+      "gain": 0.8,
+      "word": "white render",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #e1dfcb, gain 0.8)",
+      "finish": "plaster",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 16.9-23.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 16.9-23.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #e1dfcb, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: rows not read: washed-out strip"
+     ]
+    },
+    {
+     "from": 23.4,
+     "to": 28.4,
+     "addresses": [
+      "Haarlemmerdijk 85"
+     ],
+     "frontTopM": 12.05,
+     "frontTopKind": "gable-foot",
+     "crown": {
+      "family": "point",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": 12.05,
+      "topM": 15.55,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 4,
+     "groundStoreyTopM": null,
+     "rows": [
+      {
+       "sillM": 5.1,
+       "headM": 6.6
+      },
+      {
+       "sillM": 7.65,
+       "headM": 9.2
+      },
+      {
+       "sillM": 10.1,
+       "headM": 11.3
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#786855",
+      "rawHex": "#85735f",
+      "gain": 0.8,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #85735f, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 23.4-28.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 23.4-28.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-67-91 strip, pand span metres 23.4-28.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #85735f, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012167785",
@@ -6426,9 +8033,292 @@
    "conflicts": [],
    "notes": [
     "lane2: a 22.9 m pand of several fronts: a glazed front to about 16 m, a brick front with twin point gables to about 15.8 m and an oriel, a red-brick balconied front to about 14 m and a glazed stair tower; the fronts need splitting",
-    "the pand's 3DBAG ground (0.57 m NAP) stands -0.87 m off the street ground (1.443 m NAP): heights here are above the street"
+    "the pand's 3DBAG ground (0.57 m NAP) stands -0.87 m off the street ground (1.443 m NAP): heights here are above the street",
+    "4 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 5.4,
+     "addresses": [
+      "Haarlemmerdijk 97"
+     ],
+     "frontTopM": null,
+     "frontTopKind": null,
+     "crown": {
+      "family": null,
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": null,
+     "groundStoreyTopM": null,
+     "rows": [],
+     "bays": null,
+     "wall": {
+      "hex": "#5c5646",
+      "rawHex": "#66604e",
+      "gain": 0.8,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #66604e, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #66604e, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "low",
+     "conflicts": [],
+     "notes": [
+      "lane2: a glazed upper front ghosted above 13 m on the strip: top not read"
+     ],
+     "fallback": "row-line"
+    },
+    {
+     "from": 5.4,
+     "to": 15.4,
+     "addresses": [
+      "Haarlemmerdijk 99A",
+      "Haarlemmerdijk 99B",
+      "Haarlemmerdijk 99C",
+      "Haarlemmerdijk 99D",
+      "Haarlemmerdijk 99E"
+     ],
+     "frontTopM": 13.3,
+     "frontTopKind": "gable-foot",
+     "crown": {
+      "family": "point",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": 13.3,
+      "topM": 15.9,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "two point gables with attic windows 12.8-13.8 m, linked by a cornice at 13.3 m"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4,
+     "rows": [
+      {
+       "sillM": 5.2,
+       "headM": 7.55
+      },
+      {
+       "sillM": 9,
+       "headM": 11.2
+      }
+     ],
+     "bays": 4,
+     "wall": {
+      "hex": "#63584c",
+      "rawHex": "#695e51",
+      "gain": 0.876,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #695e51, gain 0.876)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 5.4-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 5.4-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 5.4-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #695e51, gain 0.876)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: a central oriel 4.6-9.3 m"
+     ]
+    },
+    {
+     "from": 15.4,
+     "to": 20,
+     "addresses": [
+      "Haarlemmerdijk 101"
+     ],
+     "frontTopM": 12.45,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3.4,
+     "rows": [
+      {
+       "sillM": 3.95,
+       "headM": 6.2
+      },
+      {
+       "sillM": 6.9,
+       "headM": 9.1
+      },
+      {
+       "sillM": 9.85,
+       "headM": 11.75
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#705949",
+      "rawHex": "#7c6352",
+      "gain": 0.8,
+      "word": "red brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7c6352, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "balconies",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 15.4-20.0 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 15.4-20.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 15.4-20.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 15.4-20.0 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #7c6352, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 20,
+     "to": 22.93,
+     "addresses": [
+      "Haarlemmerdijk 105A",
+      "Haarlemmerdijk 105B",
+      "Haarlemmerdijk 105C",
+      "Haarlemmerdijk 105D"
+     ],
+     "frontTopM": 15.9,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": null,
+     "groundStoreyTopM": null,
+     "rows": [],
+     "bays": null,
+     "wall": {
+      "hex": "#88867f",
+      "rawHex": "#97948d",
+      "gain": 0.8,
+      "word": null,
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #97948d, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "lightness",
+      "source": "strip-measured",
+      "confidence": "medium"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 20.0-22.93 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 20.0-22.93 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #97948d, gain 0.8)",
+       "kind": "strip-measure"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: a glazed stair tower: no wall colour"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012176579",
@@ -6493,9 +8383,168 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: two fronts: a dark flat-topped front to about 11.8 m with a dormer to 13.3 m and a front under a white cornice at about 12.8 m"
+    "lane2: two fronts: a dark flat-topped front to about 11.8 m with a dormer to 13.3 m and a front under a white cornice at about 12.8 m",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.75,
+     "addresses": [
+      "Haarlemmerdijk 109"
+     ],
+     "frontTopM": 11.8,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": {
+       "kind": "box",
+       "topM": 12.85
+      },
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 3.6,
+     "rows": [
+      {
+       "sillM": 4.15,
+       "headM": 6.25
+      },
+      {
+       "sillM": 7.3,
+       "headM": 9.4
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#252922",
+      "rawHex": "#272b24",
+      "gain": 0.911,
+      "word": "black painted brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #272b24, gain 0.911)",
+      "finish": "painted-brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 0-4.75 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 0-4.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 0-4.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 0-4.75 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #272b24, gain 0.911)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 4.75,
+     "to": 8.88,
+     "addresses": [
+      "Haarlemmerdijk 107A",
+      "Haarlemmerdijk 107B",
+      "Haarlemmerdijk 107C",
+      "Haarlemmerdijk 107D"
+     ],
+     "frontTopM": 12.8,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a tall white cornice 10.2-12.8 m"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.6,
+     "rows": [
+      {
+       "sillM": 5.25,
+       "headM": 7.55
+      },
+      {
+       "sillM": 8.15,
+       "headM": 9.65
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#323026",
+      "rawHex": "#38362b",
+      "gain": 0.8,
+      "word": "black painted brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #38362b, gain 0.8)",
+      "finish": "painted-brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 4.75-8.88 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 4.75-8.88 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 4.75-8.88 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-93-113 strip, pand span metres 4.75-8.88 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #38362b, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012176578",
@@ -9781,9 +11830,170 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: post-war wide block (28.5 m frontage)"
+    "reviewer: post-war wide block (28.5 m frontage)",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 15.4,
+     "addresses": [
+      "Haarlemmerdijk 166A",
+      "Haarlemmerdijk 166B",
+      "Haarlemmerdijk 166C",
+      "Haarlemmerdijk 166D",
+      "Haarlemmerdijk 166E",
+      "Haarlemmerdijk 168"
+     ],
+     "frontTopM": 8.2,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 2,
+     "groundStoreyTopM": 4.4,
+     "rows": [
+      {
+       "sillM": 5.75,
+       "headM": 7.3
+      }
+     ],
+     "bays": null,
+     "wall": {
+      "hex": "#aba897",
+      "rawHex": "#bdbaa7",
+      "gain": 0.8,
+      "word": "white render",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #bdbaa7, gain 0.8)",
+      "finish": "plaster",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-15.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #bdbaa7, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: a post-war wing with a through passage at about 10-15 m; a taller brick volume stands behind it"
+     ]
+    },
+    {
+     "from": 15.4,
+     "to": 28.52,
+     "addresses": [
+      "Haarlemmerdijk 164",
+      "Haarlemmerdijk 164A",
+      "Haarlemmerdijk 164B",
+      "Haarlemmerdijk 164C",
+      "Haarlemmerdijk 164D",
+      "Haarlemmerdijk 164E"
+     ],
+     "frontTopM": 11.45,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a balustrade in three panels"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 3.7,
+     "rows": [
+      {
+       "sillM": 4.05,
+       "headM": 6.85
+      },
+      {
+       "sillM": 7.9,
+       "headM": 9.45
+      }
+     ],
+     "bays": 6,
+     "wall": {
+      "hex": "#4c3c31",
+      "rawHex": "#554337",
+      "gain": 0.8,
+      "word": "red-brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #554337, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 15.4-28.52 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 15.4-28.52 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 15.4-28.52 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #554337, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012172946",
@@ -10079,9 +12289,162 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: 8.1 m pand of two fronts: a cornice house and a Jugendstil gable"
+    "reviewer: 8.1 m pand of two fronts: a cornice house and a Jugendstil gable",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.3,
+     "addresses": [
+      "Haarlemmerdijk 154"
+     ],
+     "frontTopM": 10.8,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": 11.2,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.2,
+     "rows": [
+      {
+       "sillM": 4.5,
+       "headM": 6.75
+      },
+      {
+       "sillM": 7.7,
+       "headM": 9.35
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#514838",
+      "rawHex": "#5a503f",
+      "gain": 0.8,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5a503f, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.3 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5a503f, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 4.3,
+     "to": 8.12,
+     "addresses": [
+      "Haarlemmerdijk 152"
+     ],
+     "frontTopM": 9.3,
+     "frontTopKind": "gable-foot",
+     "crown": {
+      "family": "other",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": 9.3,
+      "topM": 11.85,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a Jugendstil gable: shoulders at 9.3 m, round arched top to 11.85 m; arched windows 8.1-9.9 m stand in it"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.2,
+     "rows": [
+      {
+       "sillM": 4.5,
+       "headM": 6.9
+      },
+      {
+       "sillM": 8.1,
+       "headM": 9.9
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#8b7251",
+      "rawHex": "#9a7e5a",
+      "gain": 0.8,
+      "word": "yellow brick, white bands",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9a7e5a, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.3-8.12 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.3-8.12 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.3-8.12 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #9a7e5a, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012171351",
@@ -10151,9 +12514,169 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: painted front with iron balconies"
+    "reviewer: painted front with iron balconies",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.7,
+     "addresses": [
+      "Haarlemmerdijk 150"
+     ],
+     "frontTopM": 12.2,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a set-back storey behind to about 13.25 m"
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 3.5,
+     "rows": [
+      {
+       "sillM": 4.6,
+       "headM": 6
+      },
+      {
+       "sillM": 7.15,
+       "headM": 8.5
+      },
+      {
+       "sillM": 9.85,
+       "headM": 11.15
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#916755",
+      "rawHex": "#a1725f",
+      "gain": 0.8,
+      "word": "red brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a1725f, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.7 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #a1725f, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 4.7,
+     "to": 7.6,
+     "addresses": [
+      "Haarlemmerdijk 148A",
+      "Haarlemmerdijk 148B",
+      "Haarlemmerdijk 148C",
+      "Haarlemmerdijk 148D"
+     ],
+     "frontTopM": 12.9,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 6,
+     "rows": [
+      {
+       "sillM": 6.5,
+       "headM": 8.5
+      },
+      {
+       "sillM": 9.2,
+       "headM": 11.25
+      }
+     ],
+     "bays": 1,
+     "wall": {
+      "hex": "#585752",
+      "rawHex": "#62615b",
+      "gain": 0.8,
+      "word": "dark grey brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #62615b, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, glass balconies",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.7-7.6 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.7-7.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.7-7.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.7-7.6 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #62615b, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012169538",
@@ -10898,9 +13421,165 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "reviewer: 8.7 m pand of two fronts: a modern bay and a cornice house"
+    "reviewer: 8.7 m pand of two fronts: a modern bay and a cornice house",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 4.4,
+     "addresses": [
+      "Haarlemmerdijk 134"
+     ],
+     "frontTopM": 10.5,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4,
+     "rows": [
+      {
+       "sillM": 4.5,
+       "headM": 6.25
+      },
+      {
+       "sillM": 7.25,
+       "headM": 9
+      }
+     ],
+     "bays": 1,
+     "wall": {
+      "hex": "#dcd3bf",
+      "rawHex": "#f3e9d3",
+      "gain": 0.8,
+      "word": "white render",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #f3e9d3, gain 0.8)",
+      "finish": "plaster",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 0-4.4 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #f3e9d3, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: a modern glazed bay on each storey"
+     ]
+    },
+    {
+     "from": 4.4,
+     "to": 8.68,
+     "addresses": [
+      "Haarlemmerdijk 132A",
+      "Haarlemmerdijk 132B"
+     ],
+     "frontTopM": 11.5,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 4.4,
+     "rows": [
+      {
+       "sillM": 4.85,
+       "headM": 7
+      },
+      {
+       "sillM": 7.5,
+       "headM": 9.15
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#a6a9a3",
+      "rawHex": "#b7bbb4",
+      "gain": 0.8,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b7bbb4, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "cream cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.4-8.68 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.4-8.68 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.4-8.68 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-126-188 strip, pand span metres 4.4-8.68 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #b7bbb4, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012176571",
@@ -11732,9 +14411,166 @@
    "conflicts": [],
    "notes": [
     "lane2: a 9.3 m pand of two fronts: a white render front to about 13.0 m (cinema) and a brick front to about 11.4 m",
-    "the pand's 3DBAG ground (0.97 m NAP) stands -0.78 m off the street ground (1.749 m NAP): heights here are above the street"
+    "the pand's 3DBAG ground (0.97 m NAP) stands -0.78 m off the street ground (1.749 m NAP): heights here are above the street",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 3.9,
+     "addresses": [],
+     "frontTopM": 13.1,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 4,
+     "groundStoreyTopM": 4.5,
+     "rows": [
+      {
+       "sillM": 4.75,
+       "headM": 5.75
+      },
+      {
+       "sillM": 7.35,
+       "headM": 8.65
+      },
+      {
+       "sillM": 9.6,
+       "headM": 10.9
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#835e4c",
+      "rawHex": "#916955",
+      "gain": 0.8,
+      "word": "white render",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #916955, gain 0.8)",
+      "finish": "plaster",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-3.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-3.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-3.9 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #916955, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: the cinema front: a marquee over the entrance and a large name sign across the first storey"
+     ]
+    },
+    {
+     "from": 3.9,
+     "to": 9.3,
+     "addresses": [],
+     "frontTopM": 11.15,
+     "frontTopKind": "parapet-top",
+     "crown": {
+      "family": "flat-parapet",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": "a crenellated brick parapet"
+     },
+     "storeys": 3,
+     "groundStoreyTopM": 3.7,
+     "rows": [
+      {
+       "sillM": 4.5,
+       "headM": 6.4
+      },
+      {
+       "sillM": 7.25,
+       "headM": 9.15
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#534939",
+      "rawHex": "#5c5240",
+      "gain": 0.8,
+      "word": "brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5240, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": null,
+      "ref": null
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 3.9-9.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 3.9-9.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 3.9-9.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c5240, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": [
+      "lane2: BAG gives the pand one address (161) for both fronts"
+     ]
+    }
+   ]
   },
   {
    "pandId": "0363100012172832",
@@ -12088,9 +14924,181 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: a 9.8 m pand of two flat-topped brick fronts to about 16.0-16.4 m"
+    "lane2: a 9.8 m pand of two flat-topped brick fronts to about 16.0-16.4 m",
+    "2 street fronts on this pand: draw rec.fronts, not the pand as one front"
    ],
-   "fallback": "row-line"
+   "fallback": "row-line",
+   "fronts": [
+    {
+     "from": 0,
+     "to": 5.3,
+     "addresses": [
+      "Haarlemmerdijk 173"
+     ],
+     "frontTopM": 16.3,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 5,
+     "groundStoreyTopM": 4,
+     "rows": [
+      {
+       "sillM": 4.65,
+       "headM": 6.6
+      },
+      {
+       "sillM": 7.4,
+       "headM": 9.35
+      },
+      {
+       "sillM": 10.15,
+       "headM": 12.1
+      },
+      {
+       "sillM": 12.7,
+       "headM": 14.6
+      }
+     ],
+     "bays": 3,
+     "wall": {
+      "hex": "#533f31",
+      "rawHex": "#5c4637",
+      "gain": 0.8,
+      "word": "red-brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4637, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-5.3 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-5.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-5.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 0-5.3 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #5c4637, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    },
+    {
+     "from": 5.3,
+     "to": 9.8,
+     "addresses": [
+      "Haarlemmerdijk 175A",
+      "Haarlemmerdijk 175B",
+      "Haarlemmerdijk 175C",
+      "Haarlemmerdijk 175D"
+     ],
+     "frontTopM": 15.7,
+     "frontTopKind": "cornice-top",
+     "crown": {
+      "family": "straight-cornice",
+      "widthM": null,
+      "neckWidthM": null,
+      "shoulderM": null,
+      "topM": null,
+      "ornamentTopM": null,
+      "dormer": null,
+      "atticWindows": null,
+      "hoist": null,
+      "note": null
+     },
+     "storeys": 5,
+     "groundStoreyTopM": 4,
+     "rows": [
+      {
+       "sillM": 4.75,
+       "headM": 6.6
+      },
+      {
+       "sillM": 7.5,
+       "headM": 9.35
+      },
+      {
+       "sillM": 10.25,
+       "headM": 12.1
+      },
+      {
+       "sillM": 13.1,
+       "headM": 14.5
+      }
+     ],
+     "bays": 2,
+     "wall": {
+      "hex": "#444237",
+      "rawHex": "#4c4a3e",
+      "gain": 0.8,
+      "word": "dark brown brick",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4a3e, gain 0.8)",
+      "finish": "brick",
+      "finishFrom": "read",
+      "source": "reviewed",
+      "confidence": "high"
+     },
+     "trim": {
+      "hex": null,
+      "word": "white cornice, white frames",
+      "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 5.3-9.8 (front split, gridded crop)"
+     },
+     "sources": [
+      {
+       "field": "frontTopM",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 5.3-9.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "crown.family",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 5.3-9.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "rows",
+       "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-149-175 strip, pand span metres 5.3-9.8 (front split, gridded crop)",
+       "kind": "lane2-strip-read"
+      },
+      {
+       "field": "wall.hex",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4c4a3e, gain 0.8)",
+       "kind": "lane2-strip-read"
+      }
+     ],
+     "confidence": "medium",
+     "conflicts": [],
+     "notes": []
+    }
+   ]
   },
   {
    "pandId": "0363100012168428",

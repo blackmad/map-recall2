@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import type {FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
+import type {FrontFields, FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
 import {hexToOklab} from '../../src/canalRecall/houseSpec/wallColour.ts';
 import {STRIP_SHIFT_M} from './strip-shift.ts';
 
@@ -46,9 +46,15 @@ for (const face of faces) {
   const scene = q(all, 0.5);
   const shift = Math.round((STRIP_SHIFT_M[face] ?? 0) * ppm);
   const rowOf = (m: number) => Math.round(H - m * ppm);
+  // Each record, and each sub-front of a multi-front pand as `<pandId>#<i>` over its own metres of the span.
+  const targets: {key: string; rec: FrontFields; span: {px: [number, number]} | undefined}[] = [];
   for (const rec of table.records.filter(r => r.face === face)) {
     const span = strip.spans.find((s: {pandId: string}) => s.pandId === rec.pandId);
-    const base: WallMeasure = {pandId: rec.pandId, face, rawHex: null, hex: null, gain: null, white: null, scene: r3(scene), sample: null, pixels: 0, L: null, chroma: null, finishGuess: null, note: null};
+    targets.push({key: rec.pandId, rec, span});
+    rec.fronts?.forEach((f, i) => targets.push({key: `${rec.pandId}#${i}`, rec: f, span: span && {px: [Math.round(span.px[0] + f.from * ppm), Math.round(span.px[0] + f.to * ppm)]}}));
+  }
+  for (const {key, rec, span} of targets) {
+    const base: WallMeasure = {pandId: key, face, rawHex: null, hex: null, gain: null, white: null, scene: r3(scene), sample: null, pixels: 0, L: null, chroma: null, finishGuess: null, note: null};
     if (!span) { out.push({...base, note: 'no span on the strip'}); continue; }
     const [a, b] = span.px, w = b - a;
     const x0 = Math.max(0, Math.round(a + shift + 0.2 * w)), x1 = Math.min(W, Math.round(b + shift - 0.2 * w));
@@ -76,7 +82,7 @@ for (const face of faces) {
     if (opt('sheet')) {
       const top = Math.max(0, rowOf(Math.min((rec.crown.topM ?? rec.frontTopM ?? 14) + 1, strip.heightM))), cx0 = Math.max(0, a + shift), cw = Math.min(W - cx0, w);
       const tile = await sharp(img).extract({left: cx0, top, width: cw, height: H - top}).resize(160, 300, {fit: 'contain', background: '#222'}).png().toBuffer();
-      sheetTiles.push({img: tile, label: `${(rec.address ?? '').replace('Haarlemmerdijk ', 'HD').replace('Haarlemmerstraat ', 'HS')}`, sw: h});
+      sheetTiles.push({img: tile, label: `${('address' in rec ? (rec as {address: string | null}).address ?? '' : key.slice(-8)).replace('Haarlemmerdijk ', 'HD').replace('Haarlemmerstraat ', 'HS')}`, sw: h});
     }
   }
 }

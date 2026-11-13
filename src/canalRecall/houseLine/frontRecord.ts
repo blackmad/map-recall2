@@ -151,6 +151,28 @@ export interface FrontRecord {
   nothingLocal: boolean;
   conflicts: Conflict[];
   notes: string[];
+  /**
+   * Present when one BAG pand carries several street fronts (separate houses on one plot, a corner wing, a cinema next to a
+   * house). Left to right along the strip; the record's own numbers are then the pand as a whole (usually low with
+   * fallback) and a renderer draws each sub-front instead.
+   */
+  fronts?: SubFront[];
+}
+
+/** The measured fields of one street front, shared by a record and its sub-fronts. */
+export type FrontFields = Pick<FrontRecord, 'frontTopM' | 'frontTopKind' | 'crown' | 'storeys' | 'groundStoreyTopM' | 'rows' | 'bays' | 'wall'
+  | 'trim' | 'sources' | 'confidence' | 'fallback' | 'conflicts' | 'notes'>;
+
+/**
+ * One front of a multi-front pand. `from`/`to` are metres along the pand's street edge in the strip's frame: 0 = the left
+ * end of the pand's span on the block-face strip (strip.json spans[].px[0]), increasing left to right as the strip runs,
+ * with the face's photo registration taken out, so the split sits where the party wall stands relative to the BAG span.
+ */
+export interface SubFront extends FrontFields {
+  from: number;
+  to: number;
+  /** The BAG verblijfsobject house number(s) this front carries, where the numbering makes it clear; evidence, not proof. */
+  addresses: string[];
 }
 
 export interface FrontRecordTable {
@@ -214,6 +236,17 @@ export function frontRecordProblems(r: FrontRecord): string[] {
   if (r.nothingLocal && (r.frontTopM !== null || r.rows.length || r.confidence !== 'low')) p.push(`${at}: nothingLocal with measured values`);
   if (r.frontTopM !== null && !r.sources.some(s => s.field === 'frontTopM')) p.push(`${at}: frontTopM has no source`);
   if (r.crown.family !== null && !r.sources.some(s => s.field === 'crown.family')) p.push(`${at}: crown.family has no source`);
+  if (r.fronts) {
+    if (r.fronts.length < 2) p.push(`${at}: fronts needs two or more sub-fronts`);
+    r.fronts.forEach((f, i) => {
+      const fa = `${at}#${i}`;
+      if (i === 0 && Math.abs(f.from) > 0.01) p.push(`${fa}: the first sub-front must start at 0`);
+      if (i > 0 && Math.abs(f.from - r.fronts![i - 1].to) > 0.01) p.push(`${fa}: from ${f.from} does not meet the previous to ${r.fronts![i - 1].to}`);
+      if (!(f.to - f.from >= 1.5)) p.push(`${fa}: narrower than 1.5 m (${f.from}-${f.to})`);
+      if (r.bagWidthM !== null && f.to > r.bagWidthM + 1.5) p.push(`${fa}: to ${f.to} runs past the pand width ${r.bagWidthM}`);
+      p.push(...frontRecordProblems({...r, fallback: undefined, ...f, nothingLocal: false, fronts: undefined}).map(x => x.replace(at, fa)));
+    });
+  }
   return p;
 }
 
