@@ -138,6 +138,24 @@ const MIN_PLANNED_M = 6.5;
 type Feature = { type?: string; properties: Record<string, unknown>; geometry: unknown };
 
 /**
+ * Step d, levels: a measured record's storey count is drawn exactly (`storeysFit`), its ground storey at the measured
+ * shop or fascia top, and its rows up to the wall top: the cornice's, or a gable's foot, so the roof storey is the gable's
+ * light and never a full row (`roofStorey` dropped). A type preset's count (haarlemmer-shop-cornice-*) gives way, and so
+ * does the structure prior (it only runs without a stated count). A row-line record keeps today's count.
+ */
+export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, eavesM: number, corniceCrown: boolean): { specRecipe?: Record<string, unknown> } {
+  const measured = !rec.fallback && rec.storeys !== undefined && rec.storeys >= 1;
+  if (!sr && !measured) return {};
+  const out: Record<string, unknown> = { ...(sr ?? {}), eavesM, ...(corniceCrown ? { corniceCrown: true } : {}) };
+  if (measured) {
+    out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
+    delete out.roofStorey; delete out.souterrain;
+    if (rec.groundTopM !== undefined && rec.groundTopM > 2.4 && rec.groundTopM < eavesM - 2) out.groundM = rec.groundTopM; else delete out.groundM;
+  }
+  return { specRecipe: out };
+}
+
+/**
  * Decorator step after withHouseSpecCrown, before decorateRoof (galleryPipeline.ts). Applies steps a and b to a pand
  * with a record when the flag is on; otherwise returns the same object.
  */
@@ -155,7 +173,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // A cornice (or a fallback) front: the wall to the measured top, a flat lid there, nothing over it from the street.
     const top = rec.topM ?? rec.eavesM;
     return { ...feature, properties: { ...rest, ...held, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowFront: family,
-      ...(sr ? { specRecipe: { ...sr, eavesM: top, corniceCrown: true } } : {}) } };
+      ...levels(sr, rec, top, true) } };
   }
   const trial = (h: number) => roofPlanForFeature({ ...feature, properties: { ...rest, height: h, monumentGable: gable, roofPlanned: true } } as never);
   // Step c: a crown the record sizes (neck, bell, point, step) is drawn from its own measured profile, the saddle
@@ -172,7 +190,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
       const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);
       const plan = trial(h);
       if (plan?.kind === 'gable') return { ...feature, properties: { ...rest, ...held, height: h, monumentGable: gable, roofPlanned: true, roofShape: 'gable', roofEavesHeightM: rec.eavesM,
-        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...(sr ? { specRecipe: { ...sr, eavesM: rec.eavesM } } : {}) } };
+        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...levels(sr, rec, rec.eavesM, false) } };
     }
   }
   // A gabled front: the planner's saddle behind the record's gable, its eaves on the measured foot.
@@ -181,5 +199,5 @@ export function withRowFront<T extends Feature>(feature: T): T {
   for (let i = 0; i < 3 && plan; i++) { const next = rec.eavesM + plan.riseM; if (Math.abs(next - height) < 0.01) break; height = next; plan = trial(height); }
   if (!plan || !(GABLE_SHAPES as readonly string[]).includes(gable)) return feature;
   return { ...feature, properties: { ...rest, ...held, height, monumentGable: gable, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: height - plan.riseM, rowFront: family,
-    ...(sr ? { specRecipe: { ...sr, eavesM: rec.eavesM } } : {}) } };
+    ...levels(sr, rec, rec.eavesM, false) } };
 }
