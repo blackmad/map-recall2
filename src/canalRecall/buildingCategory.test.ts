@@ -9,6 +9,7 @@ import {SIGNATURE_MODELS} from './landmarks/signatureModels.ts';
 import {MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS} from './landmarks/manualModels.ts';
 import {ORDINARY_BUILDINGS, ORDINARY_CATEGORY_BUILDINGS, SHADOWED_BY_LANDMARK, STREET_SURVEY_HOUSES} from './landmarks/ordinaryModels.ts';
 import {GAME_BUILDING_MODELS} from './landmarks/browser.ts';
+import {ORDINARY_HOLDS, validateHolds} from './landmarks/ordinaryHolds.ts';
 import {chunkSpecFor} from './landmarks/ordinaryChunks.ts';
 import {triCapOf} from './streetFurniture/models.ts';
 import {mergeManualPoiFeatures, manualPoiModelIds} from './game/manualPoiCatalog.ts';
@@ -51,7 +52,8 @@ test('the landmark list holds only landmarks: no Bilderdijkstraat houses, chunks
 test('ordinary and street-survey models are still drawn by the game', () => {
   const drawn = new Set(GAME_BUILDING_MODELS.map(m => m.id));
   // An install a bespoke landmark already draws (SHADOWED_BY_LANDMARK) is the one exception: see modelOverlap.test.ts.
-  for (const m of catalogue.models) assert.equal(drawn.has(m.id), !SHADOWED_BY_LANDMARK[m.id], m.id);
+  // A held install (ordinaryHolds.ts) is the other: kept in the catalogue, not drawn.
+  for (const m of catalogue.models) assert.equal(drawn.has(m.id), !SHADOWED_BY_LANDMARK[m.id] && !ORDINARY_HOLDS[m.id], m.id);
   for (const m of MANUAL_ORDINARY_BUILDINGS) assert.ok(drawn.has(m.id), m.id);
   assert.ok(MANUAL_ORDINARY_BUILDINGS.some(m => m.id === 'haparandaweg-902-950'));
   for (const m of MANUAL_ORDINARY_BUILDINGS) assert.ok(MANUAL_LANDMARKS.includes(m));
@@ -96,4 +98,20 @@ test('street furniture is its own category: drawn and catalogued, never a landma
   for (const m of SIGNATURE_MODELS) assert.ok(!ids.has(m.id), m.id);
   for (const id of manualPoiModelIds()) assert.ok(!ids.has(id), id);
   for (const f of mergeManualPoiFeatures([])) assert.ok(!ids.has(String((f as {modelId?: string}).modelId)), f.id);
+});
+
+test('held installs: catalogued, reasoned, not drawn, and their pands no longer hidden by covers.json', () => {
+  const ids = new Set(catalogue.models.map((m: {id: string}) => m.id));
+  const covers = JSON.parse(fs.readFileSync('public/canal-drive/models/covers.json', 'utf8')).models as Record<string, unknown>;
+  const drawn = new Set(GAME_BUILDING_MODELS.map(m => m.id));
+  for (const [id, hold] of Object.entries(ORDINARY_HOLDS)) {
+    assert.ok(ids.has(id), `${id} is held but not catalogued: drop the hold`);
+    assert.ok(hold.reason.length > 0, id);
+    assert.ok(!drawn.has(id), `${id} is held but drawn`);
+    // A held install left in covers.json still hides its pand: nothing draws there. Rebuild covers (hold-installs prints the commands).
+    assert.ok(!covers[id], `${id} is held but covers.json still hides its pands: run build-covers and copy covers.json`);
+  }
+  assert.throws(() => validateHolds({held: {'ordinary-1': {reason: 'x', heldAt: '2026-11-13'}}}));
+  assert.throws(() => validateHolds({held: {'ordinary-0363100012165073': {reason: '', heldAt: '2026-11-13'}}}));
+  assert.doesNotThrow(() => validateHolds({held: {'ordinary-0363100012165073': {reason: 'r', heldAt: '2026-11-13'}}}));
 });

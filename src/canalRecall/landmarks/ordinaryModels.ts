@@ -3,6 +3,7 @@
 import catalogue from '../../../public/canal-drive/ordinary-buildings-data/catalogue.json';
 import type { SignatureModelSpec } from './signaturePlacement';
 import { ordinaryEntryCategory } from '../buildingCategory';
+import { isHeldOrdinary } from './ordinaryHolds';
 
 export type Entry = {
   id: string; buildingId: string; name: string; anchor: [number, number];
@@ -75,8 +76,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // the dairy, the 1909 lettered range and the Merkelbach & Karsten ribbons).
   'ordinary-0363100012236799': 'da-costakade-146',
 };
-/** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
-export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);
+/** Every catalogue model (both categories) that no landmark shadows and no hold (ordinaryHolds.ts, held.json) keeps out: what the game draws. */
+export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id] && !isHeldOrdinary(m.id)).map(ordinarySpecFor);
 /** One-off large non-landmark buildings (the ordinary-buildings gallery). */
 export const ORDINARY_CATEGORY_BUILDINGS: readonly SignatureModelSpec[] = ORDINARY_BUILDINGS.filter(m => m.buildingCategory === 'ordinary');
 /** Per-house recipe models (street surveys); a block-face chunk may supersede them in game. */

@@ -251,12 +251,17 @@ export function openingsNote(game: HalfMeasure, photo: HalfMeasure, missing: boo
 }
 
 // ---- flags -----------------------------------------------------------------------------------------------------------
-export type Flags = { missing: boolean; otherBuilding: string | null; roofOffset: string | null; wallColour: string | null };
+export type Flags = { missing: boolean; otherBuilding: string | null; neighbourCovers: string | null; roofOffset: string | null; wallColour: string | null };
+
+/** Share of wall samples another pand must take to raise neighbourCovers (167795 drawn 1.2 m over 167794 took 12/35). */
+export const NEIGHBOUR_COVERS_MIN = 0.1;
 
 /**
  * Advisory flags. Opening counts fire no flag (`openingsNote`) until they are checked against hand counts. missing: half or more of the
  * wall samples hit sky or ground in the game. otherBuilding: half or more hit another building or model (a cover that
- * does not draw this wall, a neighbour drawn over it). roof offset: the game's median skyline over the wall (`skyline`,
+ * does not draw this wall, a neighbour drawn over it). neighbourCovers: one other pand takes >= NEIGHBOUR_COVERS_MIN of
+ * the wall samples (a neighbour drawn off its plot over part of this front; 167795 over 167794, 12/35), named with its
+ * share, when otherBuilding has not fired. roof offset: the game's median skyline over the wall (`skyline`,
  * on the wall plane, >= 3 columns) sits more than ROOF_OFFSET_M from the projected crown line (tile height) while the
  * photo's sits within it (the photo confirms the crown); or a model's picked surface stands >= 1.2 m over the crown line
  * on 2 of 7 columns (generic picks are prisms: no roofs).
@@ -267,10 +272,12 @@ export type Flags = { missing: boolean; otherBuilding: string | null; roofOffset
  * caption), and only when the picks say the wall is this pand's.
  */
 export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure, roof: { crownM: number; game: number | null; photo: number | null; above: number }, colour?: RelColour): Flags {
-  const f: Flags = { missing: false, otherBuilding: null, roofOffset: null, wallColour: null };
+  const f: Flags = { missing: false, otherBuilding: null, neighbourCovers: null, roofOffset: null, wallColour: null };
   if (picks.wall.n >= 6) {
     if (picks.wall.none / picks.wall.n >= 0.5) f.missing = true;
     if (picks.wall.other / picks.wall.n >= 0.5) f.otherBuilding = Object.entries(picks.wall.others).sort((a, b) => b[1] - a[1])[0]?.[0] ?? '?';
+    const top = Object.entries(picks.wall.others).sort((a, b) => b[1] - a[1])[0];
+    if (!f.otherBuilding && top && top[1] / picks.wall.n >= NEIGHBOUR_COVERS_MIN) f.neighbourCovers = `${top[0]} ${top[1]}/${picks.wall.n}`;
   }
   if (roof.game != null && roof.photo != null && Math.abs(roof.game - roof.crownM) > ROOF_OFFSET_M && Math.abs(roof.photo - roof.crownM) <= ROOF_OFFSET_M)
     f.roofOffset = `game skyline ${roof.game} m vs crown ${roof.crownM} m (photo ${roof.photo} m)`;
