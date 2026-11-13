@@ -3066,15 +3066,37 @@ quality tier on top of A (reviewer ruling 2026-11-13). C never installs or publi
 |---|---|
 | Completer (pure): part + geometry (+ answer hints, twin) → `CanalHouseIntent`, fills with sources, drops, limits | `src/canalRecall/houseSpec/complete.ts`, test `complete.test.ts` |
 | Build-year families, raised crowns | `src/canalRecall/houseSpec/families.ts` |
-| Family defaults: the mode (or median, or medoid colour) per family over the 1,584 published photo-sourced specs, with n and share | `family-defaults.json`, written by `scripts/house-line/route-c/family-defaults.ts --write` |
+| Street templates (shared with route A): the dressings of the nearest reviewed house of the same band within 150 m | `src/canalRecall/houseSpec/streetTemplate.ts` + `street-templates.json` (1,574 rows), written by `scripts/house-line/route-c/street-templates.ts --write`; test `streetTemplate.test.ts` |
+| Template coverage over AH07 and the ride-ranked top 5,000 pre-1945 fronts | `scripts/house-line/route-c/template-coverage.ts` → `artifacts/route-c/template-coverage.json` |
+| Family defaults: the mode (or median, or medoid colour) per build-year band, measured only from that band's photo-sourced specs, with n and share per field and `bandHouses` | `family-defaults.json` (v2), written by `scripts/house-line/route-c/family-defaults.ts --write` |
 | Row runner: 3DBAG facts, complete, compile, gate drop loop, twin mesh sharing, meshopt bytes, `--preview` Node 3/4 renders | `scripts/house-line/route-c/complete.ts --row <list.json> --out artifacts/route-c/<label>` |
 | Sheets: photo, today, A or A+fit, C | `scripts/house-line/route-c/sheet.sh` |
 
-**Fill ladder.** The part's stated fields are kept. An unstated field is filled from, in order:
+**Fill ladder** (the same order for route A and route C). The part's stated fields are kept. An unstated field is filled from, in order:
 1. A twin: both reads name each other (`sameAs`), PR1 `similar` holds and the walls touch. Only the twin's stated fields are copied, and the door is mirrored.
 2. The reading, when geometry corroborates it. D1 stages only crown classes with precision >= 0.8. A raised-gable answer (point, neck, bell and so on) is used when 3DBAG shows >= 2 m of crown over the eaves. 168094's point gable comes from this rung; the prototype's fixed cornice lost it.
-3. PR1's structure prior, for storeys and window columns.
-4. The family default. A raised family gable needs all three of: no level crown read (cornice, flat, mansard, pitched-eaves), >= 2 m of crown, and a peaked 3DBAG top profile. Without this rule, 171218's mansard drew a step gable.
+3. The street template (`streetTemplate.ts`). The template is the nearest reviewed house (hand spec or block face) of the same build-year band within 150 m: one on the same street first, else one on any street in reach (the adjoining blocks).
+   - It fills DRESSINGS only: surround and its storeys, sills, hoods (lintels), band kind and its parameters, cornice, and the frame, band, stone and cornice colours.
+   - Structure (storeys, bays, crown, souterrain, basement, roof storey, roof) never comes from a template; `STRUCTURE_FIELDS` and a test guard this.
+   - A band the reader read as `none` stays `none`. Band parameters are copied only together with the template's own band kind.
+   - Variety guard: the pick is the in-reach pool, sorted by pand id, at an FNV-1a hash of the query's pand id. One house is not stamped down a street.
+   - The ref names the template: `template:<pand id> (street, distance, same street or adjoining block, pick 1 of n, source)`.
+4. PR1's structure prior, for storeys and window columns.
+5. The family default. A raised family gable needs all three of: no level crown read (cornice, flat, mansard, pitched-eaves), >= 2 m of crown, and a peaked 3DBAG top profile. Without this rule, 171218's mansard drew a step gable.
+
+**Family defaults are per band** (round 2). Each band's value is measured only from houses of that band; school blocks before 1920 are excluded. An absent dressing counts as `none`, so a plain band says plain. All years stand in only for a field the intent requires (gable, cornice and so on) and the band has too few observations; an optional dressing never falls back.
+
+| Band | Houses | Surround (mode, share) | Bands (mode, share) | Raised gable (mode, n) |
+|---|---|---|---|---|
+| before 1800 | 148 | none 0.38 | none 0.95 | neck (57) |
+| 1800–1879 | 138 | sill 0.72 | none 0.85 | step (28) |
+| 1880–1919 | 661 | none 0.48 | none 0.70 | neck (111) |
+| 1920–1944 | 496 | none 0.79 | none 0.90 | bell (5: too few, all years stand in) |
+| after 1944 | 53 | none 0.89 | none 0.94 | neck (4: too few, all years stand in) |
+
+Sills read `none` in every band (0.99–1.0), so the family never adds sills; only a template or the reading does.
+
+The 1880–1919 pool is not belt-biased: 660 of its houses are `c19-terrace` after the school blocks leave. Its plain mode is real. Removing the 88 school blocks changed its raised gable from point to neck. 1880–1919 speklagen spacing is 14 courses (n 15).
 
 Each fill lands in `rows.json` as `{path, value, source, ref}`. Two cases have no rung of their own:
 - Parameters a stated word needs come from the family. Speklagen spacing is the measured median of 14 courses; the prototype's fixed 7 overdid the stripes.
@@ -3122,3 +3144,14 @@ A front qualifies for C with two or more. On AH07, 42 of 194 staged fronts quali
 - door surrounds.
 
 These reach the spec only as `gaps` text, so C cannot draw them. A describer field for each is the cheapest next lift.
+
+**Template coverage (round 2, `template-coverage.json`).** A front has a template when a reviewed house of its band lies within 150 m.
+- AH07 (190 described fronts): 137 have one (72 %); the median front has 7 in reach. By band: 1880–1919 86 %, 1800–1879 71 %, 1920–1944 0 of 7, after 1944 0 of 8.
+- The ride-ranked top 5,000 pre-1945 fronts of the Centrum and first-ring gebieden (population 42,389, 300 routes, seed 7): 1,909 have one (38 %).
+  - By band: before 1800 49 %, 1800–1879 40 %, 1880–1919 41 %, 1920–1944 17 %.
+  - By gebied: Centrum-West 48 %, De Pijp 49 %, Oud-West 46 %, Westerpark 37 %, Centrum-Oost 29 %, Oud-Oost 24 %, Oud-Zuid 19 % (its 263 interwar fronts have none).
+- The 8 Weteringschans fronts: none has a same-street template. All draw from the adjoining blocks: 6 different houses picked from pools of 7–8 (Nicolaas Witsenstraat 177760, 177761, 177762; Den Texstraat 179509, 179511, 179377), at 75–146 m.
+- Row 2 (Weteringschans west, 1867): no template within 150 m. The nearest of its band is Frans Halsstraat at 279 m, so the family fills.
+- Den Texstraat control: every front has a same-street template (pools of 8–9, 12–53 m), with 6 distinct picks for 8 fronts.
+
+Re-run with the template and band defaults: 24 of 24 compile, no holds; the one drop is still 168094's courses. Weteringschans gets 4–5 template fills per front.

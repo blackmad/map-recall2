@@ -20,8 +20,9 @@
    },
    "bands": "both",
    "souterrain": true,
-   "gable": "cornice",
+   "windowSurround": "keystone",
    "cornice": "simple",
+   "gable": "cornice",
    "windows": "t-window",
    "hoist": false,
    "basement": "stoop-and-windows",
@@ -37,6 +38,8 @@
   "wallMaterial": "brick",
   "brick": "#534b47",
   "frame": "white-painted",
+  "stone": "#e4e1d6",
+  "cornice": "#e4e1d6",
   "door": "#2a2a2a"
  }
 }

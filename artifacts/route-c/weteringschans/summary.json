@@ -4,23 +4,24 @@
  "houses": 8,
  "compiled": 8,
  "noHoldShare": 1,
- "eligible": 5,
+ "eligible": 3,
  "minutesPerHouse": {
-  "machine": 0,
+  "machine": 0.01,
   "withPreview": 0.1
  },
  "triangles": {
-  "mean": 1149,
-  "max": 1680
+  "mean": 1239,
+  "max": 1776
  },
  "meshoptKB": {
-  "mean": 37.8,
-  "total": 302.6
+  "mean": 40.5,
+  "total": 324.2
  },
  "fillsBySource": {
   "stated": 53,
   "reading+geometry": 2,
-  "family": 68,
+  "template": 38,
+  "family": 54,
   "derived": 16
  },
  "drops": [

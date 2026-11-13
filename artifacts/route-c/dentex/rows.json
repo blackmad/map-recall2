@@ -48,34 +48,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179430 (Den Texstraat, 36.8 m, same street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -93,19 +117,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -124,11 +142,11 @@
    }
   ],
   "ms": {
-   "facts": 2092.704917,
-   "complete": 5.282583000000159,
-   "compile": 103.51908400000002,
-   "meshopt": 14.72991699999966,
-   "preview": 6123.691957999999
+   "facts": 1466.5436250000002,
+   "complete": 6.485290999999961,
+   "compile": 106.59470799999963,
+   "meshopt": 13.274916999999732,
+   "preview": 4857.273417
   },
   "geometry": {
    "year": 1885,
@@ -186,9 +204,9 @@
     "advisory": true
    }
   ],
-  "triangles": 952,
-  "bytes": 67724,
-  "meshoptBytes": 33492,
+  "triangles": 1084,
+  "bytes": 77316,
+  "meshoptBytes": 37616,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -210,6 +228,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -226,6 +245,8 @@
     "wallMaterial": "brick",
     "brick": "#413834",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -279,34 +300,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 19 m, same street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -324,19 +369,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -351,11 +390,11 @@
    }
   ],
   "ms": {
-   "facts": 659.750333,
-   "complete": 0.6055419999997866,
-   "compile": 31.708750000000236,
-   "meshopt": 5.148707999999715,
-   "preview": 5531.725125000001
+   "facts": 254.393959,
+   "complete": 1.0103340000000571,
+   "compile": 31.63754199999994,
+   "meshopt": 4.060874999999669,
+   "preview": 5487.939833
   },
   "geometry": {
    "year": 1881,
@@ -409,9 +448,9 @@
     "advisory": true
    }
   ],
-  "triangles": 663,
-  "bytes": 48896,
-  "meshoptBytes": 26208,
+  "triangles": 747,
+  "bytes": 55124,
+  "meshoptBytes": 29256,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -433,6 +472,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -449,6 +489,8 @@
     "wallMaterial": "brick",
     "brick": "#3f3632",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -502,34 +544,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179435 (Den Texstraat, 19.1 m, same street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -547,19 +613,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -578,11 +638,11 @@
    }
   ],
   "ms": {
-   "facts": 604.1418750000003,
-   "complete": 0.5322909999995318,
-   "compile": 47.51337500000045,
-   "meshopt": 5.005333000000064,
-   "preview": 5932.987292000002
+   "facts": 166.22812499999964,
+   "complete": 1.0444170000000668,
+   "compile": 52.955375000000004,
+   "meshopt": 4.410750000000007,
+   "preview": 4874.941708
   },
   "geometry": {
    "year": 1882,
@@ -640,9 +700,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1041,
-  "bytes": 74892,
-  "meshoptBytes": 36200,
+  "triangles": 1173,
+  "bytes": 84480,
+  "meshoptBytes": 40336,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -664,6 +724,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -680,6 +741,8 @@
     "wallMaterial": "brick",
     "brick": "#372f2b",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -733,34 +796,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179379 (Den Texstraat, 47.1 m, same street, pick 1 of 9, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -778,19 +865,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -801,11 +882,11 @@
    }
   ],
   "ms": {
-   "facts": 658.5804999999991,
-   "complete": 0.5893340000002354,
-   "compile": 24.52404200000001,
-   "meshopt": 3.5056249999997817,
-   "preview": 5622.583707999998
+   "facts": 156.73466599999983,
+   "complete": 0.8263329999999769,
+   "compile": 21.849040999999943,
+   "meshopt": 3.160584000000199,
+   "preview": 4996.367084000001
   },
   "geometry": {
    "year": 1880,
@@ -859,9 +940,9 @@
     "advisory": true
    }
   ],
-  "triangles": 660,
-  "bytes": 48332,
-  "meshoptBytes": 25972,
+  "triangles": 744,
+  "bytes": 54564,
+  "meshoptBytes": 29016,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -883,6 +964,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -899,6 +981,8 @@
     "wallMaterial": "painted-brick",
     "brick": "#292625",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -944,34 +1028,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 53.3 m, same street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -989,19 +1097,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -1020,11 +1122,11 @@
    }
   ],
   "ms": {
-   "facts": 738.6278750000001,
-   "complete": 0.5262500000008004,
-   "compile": 27.669667000000118,
-   "meshopt": 3.163292000000183,
-   "preview": 5109.701584000002
+   "facts": 235.58233399999972,
+   "complete": 0.9002089999999043,
+   "compile": 23.7173329999996,
+   "meshopt": 3.0811670000002778,
+   "preview": 4736.620499999997
   },
   "geometry": {
    "year": 1883,
@@ -1082,9 +1184,9 @@
     "advisory": true
    }
   ],
-  "triangles": 753,
-  "bytes": 54456,
-  "meshoptBytes": 28016,
+  "triangles": 849,
+  "bytes": 61524,
+  "meshoptBytes": 31212,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1103,6 +1205,7 @@
      "storeys": 3,
      "bays": 3,
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -1119,6 +1222,8 @@
     "wallMaterial": "brick",
     "brick": "#35312d",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -1164,34 +1269,58 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 42.1 m, same street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -1209,19 +1338,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -1240,11 +1363,11 @@
    }
   ],
   "ms": {
-   "facts": 1162.649125,
-   "complete": 0.4050829999996495,
-   "compile": 17.962790999999925,
-   "meshopt": 2.369416000000456,
-   "preview": 4657.472249999999
+   "facts": 232.2534999999998,
+   "complete": 0.7461669999997866,
+   "compile": 16.29408400000011,
+   "meshopt": 2.279417000000194,
+   "preview": 4982.675124999998
   },
   "geometry": {
    "year": 1881,
@@ -1302,9 +1425,9 @@
     "advisory": true
    }
   ],
-  "triangles": 541,
-  "bytes": 41144,
-  "meshoptBytes": 23684,
+  "triangles": 601,
+  "bytes": 45692,
+  "meshoptBytes": 26156,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1323,6 +1446,7 @@
      "storeys": 3,
      "bays": 2,
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -1339,6 +1463,8 @@
     "wallMaterial": "brick",
     "brick": "#342e2b",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -1378,40 +1504,64 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179430.jpg"
    },
    {
-    "path": "fronts/0/gable",
-    "value": "cornice",
-    "source": "family",
-    "ref": "family 1880-1919 (n 598, share 0.965); 3DBAG crown 0.0 m, level profile"
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179436 (Den Texstraat, 11.6 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "ref": "family 1880-1919 (n 549, share 0.962); 3DBAG crown 0.0 m, level profile"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -1429,19 +1579,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -1456,11 +1600,11 @@
    }
   ],
   "ms": {
-   "facts": 877.3115419999995,
-   "complete": 0.44737499999973807,
-   "compile": 16.021624999999403,
-   "meshopt": 2.7784999999994398,
-   "preview": 4483.185458
+   "facts": 135.96054200000026,
+   "complete": 0.7415829999999914,
+   "compile": 14.820166999999856,
+   "meshopt": 2.474916000000121,
+   "preview": 4969.907459000002
   },
   "geometry": {
    "year": 1883,
@@ -1514,9 +1658,9 @@
     "advisory": true
    }
   ],
-  "triangles": 525,
-  "bytes": 39872,
-  "meshoptBytes": 23244,
+  "triangles": 585,
+  "bytes": 44420,
+  "meshoptBytes": 25700,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1534,8 +1678,9 @@
     {
      "storeys": 3,
      "bays": 2,
-     "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
+     "gable": "cornice",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1551,6 +1696,8 @@
     "wallMaterial": "brick",
     "brick": "#322d2b",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -1590,40 +1737,64 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179429.jpg"
    },
    {
-    "path": "fronts/0/gable",
-    "value": "cornice",
-    "source": "family",
-    "ref": "family 1880-1919 (n 598, share 0.965); 3DBAG crown 0.0 m, level profile"
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179378 (Den Texstraat, 40.2 m, same street, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "ref": "family 1880-1919 (n 549, share 0.962); 3DBAG crown 0.0 m, level profile"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
     "value": "none",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.976)"
+    "ref": "family 1880-1919 (n 659, share 0.973)"
    },
    {
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -1641,19 +1812,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -1664,11 +1829,11 @@
    }
   ],
   "ms": {
-   "facts": 686.3017910000008,
-   "complete": 0.35679200000049605,
-   "compile": 14.766374999999243,
-   "meshopt": 2.3272909999996045,
-   "preview": 5134.227292000003
+   "facts": 154.5629160000003,
+   "complete": 0.6921250000000327,
+   "compile": 13.733332999999675,
+   "meshopt": 2.4750840000001517,
+   "preview": 4097.439792000005
   },
   "geometry": {
    "year": 1883,
@@ -1722,9 +1887,9 @@
     "advisory": true
    }
   ],
-  "triangles": 522,
-  "bytes": 39716,
-  "meshoptBytes": 23192,
+  "triangles": 582,
+  "bytes": 44264,
+  "meshoptBytes": 25652,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1742,8 +1907,9 @@
     {
      "storeys": 3,
      "bays": 2,
-     "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
+     "gable": "cornice",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1759,6 +1925,8 @@
     "wallMaterial": "brick",
     "brick": "#342e2a",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }

@@ -19,6 +19,7 @@
     "kind": "flat"
    },
    "gable": "cornice",
+   "windowSurround": "keystone",
    "cornice": "simple",
    "windows": "t-window",
    "hoist": false,
@@ -39,6 +40,8 @@
   "wallMaterial": "brick",
   "brick": "#463f39",
   "frame": "white-painted",
+  "stone": "#e4e1d6",
+  "cornice": "#e4e1d6",
   "door": "#2a2a2a"
  }
 }

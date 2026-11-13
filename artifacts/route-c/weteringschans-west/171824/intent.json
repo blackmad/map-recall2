@@ -21,6 +21,7 @@
    "bands": "storey",
    "gable": "cornice",
    "cornice": "simple",
+   "windowSurround": "sill",
    "windows": "t-window",
    "hoist": false,
    "basement": "none",

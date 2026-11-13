@@ -1,5 +1,34 @@
 {
- "v": 1,
+ "v": 2,
+ "bandHouses": {
+  "1920-1944": 496,
+  "1800-1879": 138,
+  "1880-1919": 661,
+  "after-1944": 53,
+  "before-1800": 148
+ },
+ "bandArchetypes": {
+  "1920-1944": {
+   "school-block": 496
+  },
+  "1800-1879": {
+   "c19-terrace": 98,
+   "canal-house": 39,
+   "outbuilding": 1
+  },
+  "1880-1919": {
+   "c19-terrace": 660,
+   "outbuilding": 1
+  },
+  "after-1944": {
+   "modern-block": 53
+  },
+  "before-1800": {
+   "canal-house": 141,
+   "c19-house": 6,
+   "outbuilding": 1
+  }
+ },
  "generated": "scripts/house-line/route-c/family-defaults.ts",
  "from": "public/data/extracts/amsterdam/house-specs/14 (photo sources) x bag-facts years",
  "houses": 1584,
@@ -32,6 +61,11 @@
  ],
  "table": {
   "all": {
+   "bands": {
+    "value": "none",
+    "n": 1577,
+    "share": 0.822
+   },
    "basement": {
     "value": "none",
     "n": 1574,
@@ -122,6 +156,16 @@
     "n": 20,
     "share": null
    },
+   "windowSills": {
+    "value": "none",
+    "n": 1577,
+    "share": 0.996
+   },
+   "windowSurround": {
+    "value": "none",
+    "n": 1577,
+    "share": 0.573
+   },
    "windows": {
     "value": "t-window",
     "n": 1574,
@@ -129,6 +173,11 @@
    }
   },
   "before-1800": {
+   "bands": {
+    "value": "none",
+    "n": 145,
+    "share": 0.945
+   },
    "basement": {
     "value": "none",
     "n": 143,
@@ -214,6 +263,16 @@
     "n": 4,
     "share": null
    },
+   "windowSills": {
+    "value": "none",
+    "n": 145,
+    "share": 1
+   },
+   "windowSurround": {
+    "value": "none",
+    "n": 145,
+    "share": 0.379
+   },
    "windows": {
     "value": "sash",
     "n": 143,
@@ -221,6 +280,11 @@
    }
   },
   "1800-1879": {
+   "bands": {
+    "value": "none",
+    "n": 136,
+    "share": 0.846
+   },
    "basement": {
     "value": "none",
     "n": 136,
@@ -306,6 +370,16 @@
     "n": 1,
     "share": null
    },
+   "windowSills": {
+    "value": "none",
+    "n": 136,
+    "share": 1
+   },
+   "windowSurround": {
+    "value": "sill",
+    "n": 136,
+    "share": 0.721
+   },
    "windows": {
     "value": "t-window",
     "n": 136,
@@ -313,20 +387,25 @@
    }
   },
   "1880-1919": {
+   "bands": {
+    "value": "none",
+    "n": 660,
+    "share": 0.703
+   },
    "basement": {
     "value": "none",
-    "n": 747,
-    "share": 0.976
+    "n": 659,
+    "share": 0.973
    },
    "brick": {
-    "value": "#6a5345",
-    "n": 732,
+    "value": "#614b42",
+    "n": 644,
     "share": null
    },
    "cornice": {
     "value": "simple",
-    "n": 747,
-    "share": 0.533
+    "n": 659,
+    "share": 0.563
    },
    "coursesBand": {
     "value": "#a0703f",
@@ -335,53 +414,53 @@
    },
    "door": {
     "value": "#2a2a2a",
-    "n": 435,
+    "n": 352,
     "share": null
    },
    "doorSide": {
     "value": "left",
-    "n": 452,
-    "share": 0.597
+    "n": 369,
+    "share": 0.621
    },
    "frame": {
     "value": "white-painted",
-    "n": 747,
-    "share": 0.351
+    "n": 659,
+    "share": 0.382
    },
    "gable": {
     "value": "cornice",
-    "n": 748,
-    "share": 0.771
+    "n": 660,
+    "share": 0.8
    },
    "hoist": {
     "value": false,
-    "n": 747,
-    "share": 0.949
+    "n": 659,
+    "share": 0.942
    },
    "levelGable": {
     "value": "cornice",
-    "n": 598,
-    "share": 0.965
+    "n": 549,
+    "share": 0.962
    },
    "raisedGable": {
-    "value": "point",
-    "n": 150,
-    "share": 0.367
+    "value": "neck",
+    "n": 111,
+    "share": 0.423
    },
    "roofMaterial": {
     "value": "slate",
-    "n": 746,
-    "share": 0.609
+    "n": 658,
+    "share": 0.685
    },
    "shopColour": {
     "value": "#433833",
-    "n": 215,
+    "n": 212,
     "share": null
    },
    "shopFascia": {
     "value": true,
-    "n": 338,
-    "share": 0.74
+    "n": 335,
+    "share": 0.737
    },
    "souterrainBasement": {
     "value": "stoop-and-windows",
@@ -403,13 +482,28 @@
     "n": 15,
     "share": null
    },
+   "windowSills": {
+    "value": "none",
+    "n": 660,
+    "share": 0.991
+   },
+   "windowSurround": {
+    "value": "none",
+    "n": 660,
+    "share": 0.477
+   },
    "windows": {
     "value": "t-window",
-    "n": 747,
-    "share": 0.647
+    "n": 659,
+    "share": 0.725
    }
   },
   "1920-1944": {
+   "bands": {
+    "value": "none",
+    "n": 495,
+    "share": 0.901
+   },
    "basement": {
     "value": "none",
     "n": 495,
@@ -475,6 +569,16 @@
     "n": 134,
     "share": 0.761
    },
+   "windowSills": {
+    "value": "none",
+    "n": 495,
+    "share": 1
+   },
+   "windowSurround": {
+    "value": "none",
+    "n": 495,
+    "share": 0.786
+   },
    "windows": {
     "value": "casement-toplight",
     "n": 495,
@@ -482,6 +586,11 @@
    }
   },
   "after-1944": {
+   "bands": {
+    "value": "none",
+    "n": 53,
+    "share": 0.943
+   },
    "basement": {
     "value": "none",
     "n": 53,
@@ -546,6 +655,16 @@
     "value": true,
     "n": 40,
     "share": 0.725
+   },
+   "windowSills": {
+    "value": "none",
+    "n": 53,
+    "share": 1
+   },
+   "windowSurround": {
+    "value": "none",
+    "n": 53,
+    "share": 0.887
    },
    "windows": {
     "value": "two-light",

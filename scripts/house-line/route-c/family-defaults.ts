@@ -41,6 +41,8 @@ const push = (fam: string, field: string, v: unknown) => {
 };
 
 let houses = 0;
+const ARCHETYPES = ['unknown', 'canal-house', 'c19-terrace', 'c19-house', 'school-block', 'modern-block', 'modern-house', 'tower', 'large-flat', 'outbuilding'];
+const bandHouses: Record<string, number> = {}, bandArchetypes: Record<string, Record<string, number>> = {};
 for (const x of fs.readdirSync(path.join(EXTRACT, 'house-specs/14'))) {
   for (const yf of fs.readdirSync(path.join(EXTRACT, 'house-specs/14', x))) {
     const tile = `${x}/${yf.replace('.json.gz', '')}`;
@@ -49,15 +51,26 @@ for (const x of fs.readdirSync(path.join(EXTRACT, 'house-specs/14'))) {
       const s: Record<string, string> = b.s ?? {}, d = b.d ?? {}, f0 = d.fronts?.[0] ?? {};
       const photo = (p: string) => PHOTO.has(s[p]);
       if (!photo('fronts/0/gable') && !photo('fronts/0/storeys')) continue;
-      const year = bagOf(tile)[id.replace('NL.IMBAG.Pand.', '')]?.[5] || null;
-      const fams = ['all', familyOf(year)];
+      const bagRow = bagOf(tile)[id.replace('NL.IMBAG.Pand.', '')], year = bagRow?.[5] || null, archetype = ARCHETYPES[bagRow?.[0] ?? 0];
+      const band = familyOf(year);
+      // A band is measured from the houses of that band only, and before 1920 from its domestic fronts only: the school-block
+      // archetype (88 of the 1880-1919 pool) is not what an 1880s street front is.
+      const domestic = !(year && year < 1920 && archetype === 'school-block');
+      const fams = domestic ? ['all', band] : ['all'];
       houses++;
+      if (domestic) { bandHouses[band] = (bandHouses[band] ?? 0) + 1; bandArchetypes[band] ??= {}; bandArchetypes[band][archetype] = (bandArchetypes[band][archetype] ?? 0) + 1; }
       for (const fam of fams) {
         if (photo('fronts/0/gable')) {
           push(fam, 'gable', f0.gable);
           if (RAISED_GABLES.includes(f0.gable)) push(fam, 'raisedGable', f0.gable); else push(fam, 'levelGable', f0.gable);
         }
         for (const k of ['cornice', 'windows', 'hoist', 'basement']) if (photo(`fronts/0/${k}`)) push(fam, k, f0[k]);
+        // Dressings of a complete photo front: an absent value is a reading of `none` (plain).
+        if (photo('fronts/0/gable')) {
+          push(fam, 'windowSurround', f0.windowSurround ?? 'none');
+          push(fam, 'bands', f0.bands ?? 'none');
+          push(fam, 'windowSills', f0.windowSills ?? 'none');
+        }
         if (photo('fronts/0/doorBay') && Number.isInteger(f0.doorBay) && (Number.isInteger(f0.bays) || Array.isArray(f0.bays))) {
           const bays = Array.isArray(f0.bays) ? f0.bays[0] : f0.bays;
           push(fam, 'doorSide', bays <= 1 ? 'only' : f0.doorBay === 0 ? 'left' : f0.doorBay === bays - 1 ? 'right' : 'inner');
@@ -114,7 +127,7 @@ for (const fam of ['all', ...FAMILIES.map(f => f.id)]) {
     table[fam][field] = NUMERIC.has(field) ? median(vs as number[]) : HEX.has(field) ? medoidHex(vs as string[]) : mode(vs);
   }
 }
-const out = { v: 1, generated: 'scripts/house-line/route-c/family-defaults.ts', from: `${EXTRACT}/house-specs/14 (photo sources) x bag-facts years`, houses, families: FAMILIES.map(f => ({ id: f.id, from: f.from, to: f.to })), table };
+const out = { v: 2, bandHouses, bandArchetypes, generated: 'scripts/house-line/route-c/family-defaults.ts', from: `${EXTRACT}/house-specs/14 (photo sources) x bag-facts years`, houses, families: FAMILIES.map(f => ({ id: f.id, from: f.from, to: f.to })), table };
 if (process.argv.includes('--write')) {
   fs.writeFileSync('src/canalRecall/houseSpec/family-defaults.json', JSON.stringify(out, null, 1) + '\n');
   console.log(`wrote src/canalRecall/houseSpec/family-defaults.json (${houses} houses)`);

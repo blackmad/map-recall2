@@ -7,10 +7,9 @@
   "hold": null,
   "family": "1800-1879",
   "cOnly": [
-   "bands",
    "souterrain"
   ],
-  "eligible": true,
+  "eligible": false,
   "fills": [
    {
     "path": "fronts/0/storeys",
@@ -61,6 +60,30 @@
     "ref": "describer crown point (not staged: class precision < 0.8) + 3DBAG crown 4.5 m over the eaves"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 142.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 142.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 142.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 142.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -103,12 +126,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -144,11 +161,11 @@
    }
   ],
   "ms": {
-   "facts": 1363.512917,
-   "complete": 5.481499999999869,
-   "compile": 115.1005419999999,
-   "meshopt": 17.954499999999825,
-   "preview": 7737.9985830000005
+   "facts": 2738.853709,
+   "complete": 7.12854199999947,
+   "compile": 148.44829200000004,
+   "meshopt": 20.398041999999805,
+   "preview": 6916.088750000001
   },
   "geometry": {
    "year": 1870,
@@ -202,9 +219,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1126,
-  "bytes": 81328,
-  "meshoptBytes": 37988,
+  "triangles": 1210,
+  "bytes": 87208,
+  "meshoptBytes": 40024,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -225,6 +242,7 @@
      "souterrain": true,
      "cornice": "none",
      "gable": "point",
+     "windowSurround": "keystone",
      "windows": "t-window",
      "hoist": false,
      "basement": "stoop-and-windows",
@@ -240,6 +258,8 @@
     "wallMaterial": "brick",
     "brick": "#ba9070",
     "frame": "white-painted",
+    "stone": "#e4e1d6",
+    "cornice": "#e4e1d6",
     "door": "#2a2a2a"
    }
   }
@@ -308,6 +328,30 @@
     "ref": "describer crown point (not staged: class precision < 0.8) + 3DBAG crown 4.0 m over the eaves"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 130.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 130.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 130.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 130.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -350,12 +394,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -374,11 +412,11 @@
    }
   ],
   "ms": {
-   "facts": 67.14087500000005,
-   "complete": 0.7386249999999563,
-   "compile": 93.4247919999998,
-   "meshopt": 8.37912499999993,
-   "preview": 5364.12175
+   "facts": 319.8007910000006,
+   "complete": 1.809624999999869,
+   "compile": 176.59979199999998,
+   "meshopt": 13.905791999999565,
+   "preview": 5124.980833000001
   },
   "geometry": {
    "year": 1870,
@@ -432,9 +470,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1466,
-  "bytes": 98884,
-  "meshoptBytes": 43728,
+  "triangles": 1550,
+  "bytes": 104760,
+  "meshoptBytes": 45724,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -458,6 +496,7 @@
      "souterrain": true,
      "cornice": "none",
      "gable": "point",
+     "windowSurround": "keystone",
      "windows": "t-window",
      "hoist": false,
      "basement": "stoop-and-windows",
@@ -473,6 +512,8 @@
     "wallMaterial": "brick",
     "brick": "#362c27",
     "frame": "white-painted",
+    "stone": "#e4e1d6",
+    "cornice": "#e4e1d6",
     "door": "#2a2a2a"
    }
   }
@@ -526,10 +567,34 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179511 (Den Texstraat, 76.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "source": "template",
+    "ref": "template:0363100012179511 (Den Texstraat, 76.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179511 (Den Texstraat, 76.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179511 (Den Texstraat, 76.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179511 (Den Texstraat, 76.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
@@ -574,12 +639,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -602,11 +661,11 @@
    }
   ],
   "ms": {
-   "facts": 60.741459000000305,
-   "complete": 0.6669160000001284,
-   "compile": 43.76820799999996,
-   "meshopt": 4.88149999999996,
-   "preview": 5414.564333
+   "facts": 537.9842079999999,
+   "complete": 1.6132499999994252,
+   "compile": 45.17900000000009,
+   "meshopt": 7.674917000000278,
+   "preview": 5428.518833000002
   },
   "geometry": {
    "year": 1870,
@@ -664,9 +723,9 @@
     "advisory": true
    }
   ],
-  "triangles": 841,
-  "bytes": 62032,
-  "meshoptBytes": 30648,
+  "triangles": 937,
+  "bytes": 69100,
+  "meshoptBytes": 33912,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -688,6 +747,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -704,6 +764,8 @@
     "wallMaterial": "brick",
     "brick": "#41352f",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -715,9 +777,7 @@
   "ok": true,
   "hold": null,
   "family": "1800-1879",
-  "cOnly": [
-   "bands"
-  ],
+  "cOnly": [],
   "eligible": false,
   "fills": [
    {
@@ -765,10 +825,34 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179509 (Den Texstraat, 75.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "source": "template",
+    "ref": "template:0363100012179509 (Den Texstraat, 75.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179509 (Den Texstraat, 75.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179509 (Den Texstraat, 75.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179509 (Den Texstraat, 75.4 m, adjoining block, pick 1 of 7, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
@@ -813,12 +897,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -837,11 +915,11 @@
    }
   ],
   "ms": {
-   "facts": 61.97370799999999,
-   "complete": 1.2274579999998423,
-   "compile": 56.15345900000011,
-   "meshopt": 4.677208000000064,
-   "preview": 5305.229292
+   "facts": 582.5091249999996,
+   "complete": 4.917457999999897,
+   "compile": 40.77891699999964,
+   "meshopt": 4.8110420000002705,
+   "preview": 4827.212416000002
   },
   "geometry": {
    "year": 1870,
@@ -899,9 +977,9 @@
     "advisory": true
    }
   ],
-  "triangles": 845,
-  "bytes": 61924,
-  "meshoptBytes": 30624,
+  "triangles": 941,
+  "bytes": 68996,
+  "meshoptBytes": 33896,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -924,6 +1002,7 @@
      },
      "bands": "storey",
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -940,6 +1019,8 @@
     "wallMaterial": "brick",
     "brick": "#3b302b",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }
@@ -995,10 +1076,34 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 122.8 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 122.8 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 122.8 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 122.8 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177760 (Nicolaas Witsenstraat, 122.8 m, adjoining block, pick 1 of 7, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
@@ -1043,12 +1148,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -1080,11 +1179,11 @@
    }
   ],
   "ms": {
-   "facts": 43.97162500000013,
-   "complete": 0.8876249999998436,
-   "compile": 47.7191670000002,
-   "meshopt": 5.035584000000199,
-   "preview": 5202.174207999997
+   "facts": 526.9671250000001,
+   "complete": 1.3320829999993293,
+   "compile": 33.342791000000034,
+   "meshopt": 4.082124999999905,
+   "preview": 4286.361749999996
   },
   "geometry": {
    "year": 1870,
@@ -1142,9 +1241,9 @@
     "advisory": true
    }
   ],
-  "triangles": 789,
-  "bytes": 59972,
-  "meshoptBytes": 32792,
+  "triangles": 861,
+  "bytes": 62312,
+  "meshoptBytes": 34700,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1166,6 +1265,7 @@
       "kind": "flat"
      },
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -1186,6 +1286,8 @@
     "wallMaterial": "brick",
     "brick": "#463f39",
     "frame": "white-painted",
+    "stone": "#e4e1d6",
+    "cornice": "#e4e1d6",
     "door": "#2a2a2a"
    }
   }
@@ -1248,16 +1350,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
    },
    {
-    "path": "fronts/0/gable",
-    "value": "cornice",
-    "source": "family",
-    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012177761 (Nicolaas Witsenstraat, 113.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012177761 (Nicolaas Witsenstraat, 113.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012177761 (Nicolaas Witsenstraat, 113.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177761 (Nicolaas Witsenstraat, 113.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177761 (Nicolaas Witsenstraat, 113.6 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
    },
    {
     "path": "fronts/0/windows",
@@ -1302,12 +1428,6 @@
     "ref": "family 1800-1879 (n 136, share 0.662)"
    },
    {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
-   },
-   {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
@@ -1338,11 +1458,11 @@
    }
   ],
   "ms": {
-   "facts": 39.123291999999765,
-   "complete": 0.55862500000012,
-   "compile": 38.655541000000085,
-   "meshopt": 4.256583000000319,
-   "preview": 5223.114249999999
+   "facts": 518.3460000000005,
+   "complete": 1.223917000000256,
+   "compile": 36.51066600000013,
+   "meshopt": 4.6104999999997744,
+   "preview": 4254.737457999996
   },
   "geometry": {
    "year": 1870,
@@ -1396,9 +1516,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1199,
-  "bytes": 84940,
-  "meshoptBytes": 40384,
+  "triangles": 1295,
+  "bytes": 92004,
+  "meshoptBytes": 43624,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1421,8 +1541,9 @@
      },
      "bands": "both",
      "souterrain": true,
-     "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
+     "gable": "cornice",
      "windows": "t-window",
      "hoist": false,
      "basement": "stoop-and-windows",
@@ -1438,6 +1559,8 @@
     "wallMaterial": "brick",
     "brick": "#534b47",
     "frame": "white-painted",
+    "stone": "#e4e1d6",
+    "cornice": "#e4e1d6",
     "door": "#2a2a2a"
    }
   }
@@ -1492,16 +1615,40 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
    },
    {
-    "path": "fronts/0/gable",
-    "value": "cornice",
-    "source": "family",
-    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 104.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
    },
    {
     "path": "fronts/0/cornice",
     "value": "simple",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 104.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 104.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 104.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#e4e1d6",
+    "source": "template",
+    "ref": "template:0363100012177762 (Nicolaas Witsenstraat, 104.9 m, adjoining block, pick 1 of 7, streetlevel-measured)"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
     "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.824)"
+    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
    },
    {
     "path": "fronts/0/windows",
@@ -1544,12 +1691,6 @@
     "value": "slate",
     "source": "family",
     "ref": "family 1800-1879 (n 136, share 0.662)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1800-1879 (n 136, share 0.735)"
    },
    {
     "path": "palette/door",
@@ -1601,11 +1742,11 @@
    }
   ],
   "ms": {
-   "facts": 36.19783400000006,
-   "complete": 0.6739169999996193,
-   "compile": 47.260041999999885,
-   "meshopt": 5.268749999999727,
-   "preview": 5361.012125000001
+   "facts": 494.4629169999989,
+   "complete": 1.1040420000008453,
+   "compile": 47.433250000000044,
+   "meshopt": 6.975833000000421,
+   "preview": 4553.168291999995
   },
   "geometry": {
    "year": 1877,
@@ -1663,9 +1804,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1680,
-  "bytes": 118768,
-  "meshoptBytes": 52528,
+  "triangles": 1776,
+  "bytes": 125820,
+  "meshoptBytes": 55780,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1685,8 +1826,9 @@
      "bays": 3,
      "bands": "speklagen",
      "souterrain": true,
-     "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
+     "gable": "cornice",
      "windows": "t-window",
      "hoist": false,
      "basement": "stoop-and-windows",
@@ -1706,6 +1848,8 @@
     "wallMaterial": "brick",
     "brick": "#3e3a35",
     "frame": "white-painted",
+    "stone": "#e4e1d6",
+    "cornice": "#e4e1d6",
     "door": "#2a2a2a",
     "band": "#c9a86a"
    }
@@ -1719,10 +1863,9 @@
   "hold": null,
   "family": "1880-1919",
   "cOnly": [
-   "bands",
-   "souterrain"
+   "bands"
   ],
-  "eligible": true,
+  "eligible": false,
   "fills": [
    {
     "path": "fronts/0/storeys",
@@ -1767,22 +1910,46 @@
     "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "keystone",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 146.2 m, adjoining block, pick 1 of 8, streetlevel-measured)"
+   },
+   {
     "path": "fronts/0/cornice",
     "value": "simple",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.533)"
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 146.2 m, adjoining block, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 146.2 m, adjoining block, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/stone",
+    "value": "#f0efe6",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 146.2 m, adjoining block, pick 1 of 8, streetlevel-measured)"
+   },
+   {
+    "path": "palette/cornice",
+    "value": "#9e9a84",
+    "source": "template",
+    "ref": "template:0363100012179377 (Den Texstraat, 146.2 m, adjoining block, pick 1 of 8, streetlevel-measured)"
    },
    {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.647)"
+    "ref": "family 1880-1919 (n 659, share 0.725)"
    },
    {
     "path": "fronts/0/hoist",
     "value": false,
     "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.949)"
+    "ref": "family 1880-1919 (n 659, share 0.942)"
    },
    {
     "path": "fronts/0/basement",
@@ -1794,7 +1961,7 @@
     "path": "fronts/0/doorBay",
     "value": 0,
     "source": "family",
-    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+    "ref": "door left: family 1880-1919 (n 369, share 0.621)"
    },
    {
     "path": "fronts/0/id",
@@ -1812,19 +1979,13 @@
     "path": "roof/material",
     "value": "slate",
     "source": "family",
-    "ref": "family 1880-1919 (n 746, share 0.609)"
-   },
-   {
-    "path": "palette/frame",
-    "value": "white-painted",
-    "source": "family",
-    "ref": "family 1880-1919 (n 747, share 0.351)"
+    "ref": "family 1880-1919 (n 658, share 0.685)"
    },
    {
     "path": "palette/door",
     "value": "#2a2a2a",
     "source": "family",
-    "ref": "family 1880-1919 (n 435)"
+    "ref": "family 1880-1919 (n 352)"
    }
   ],
   "drops": [],
@@ -1851,11 +2012,11 @@
    }
   ],
   "ms": {
-   "facts": 32.053583000000344,
-   "complete": 0.3866659999998774,
-   "compile": 44.28937500000029,
-   "meshopt": 34.468667000000096,
-   "preview": 5365.370708000002
+   "facts": 596.7992080000004,
+   "complete": 0.8894579999996495,
+   "compile": 42.8337500000016,
+   "meshopt": 4.588875000001281,
+   "preview": 4796.006834
   },
   "geometry": {
    "year": 1896,
@@ -1909,9 +2070,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1243,
-  "bytes": 88120,
-  "meshoptBytes": 41216,
+  "triangles": 1339,
+  "bytes": 95188,
+  "meshoptBytes": 44292,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1932,6 +2093,7 @@
      "bands": "both",
      "souterrain": true,
      "gable": "cornice",
+     "windowSurround": "keystone",
      "cornice": "simple",
      "windows": "t-window",
      "hoist": false,
@@ -1948,6 +2110,8 @@
     "wallMaterial": "brick",
     "brick": "#50453f",
     "frame": "white-painted",
+    "stone": "#f0efe6",
+    "cornice": "#9e9a84",
     "door": "#2a2a2a"
    }
   }

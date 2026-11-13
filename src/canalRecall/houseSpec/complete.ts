@@ -143,9 +143,12 @@ export function completeSpec(input: CompleteInput): Completion {
     o[k] = value;
     fills.push({ path, value, source, ref });
   };
-  const fam = (field: string): { value: unknown; ref: string } | null => {
+  // A band's default is measured from that band's houses. All years stand in only for a field the intent requires and the
+  // band has too few observations of (a dressing never: it stays the intent default).
+  const fam = (field: string, required = true): { value: unknown; ref: string } | null => {
     const own = families.table[family]?.[field];
     if (own && own.n >= FAMILY_MIN_N) return { value: own.value, ref: `family ${family} (n ${own.n}${own.share !== null ? `, share ${own.share}` : ''})` };
+    if (!required) return null;
     const all = families.table.all?.[field];
     return all ? { value: all.value, ref: `family all years (n ${all.n}${all.share !== null ? `, share ${all.share}` : ''}; ${family} n ${own?.n ?? 0})` } : null;
   };
@@ -216,6 +219,12 @@ export function completeSpec(input: CompleteInput): Completion {
   }
   if (crown === 'mansard') limits.push({ component: 'roof', what: 'mansard crown read (class precision 0.33, not staged): drawn as the cornice crown over the 3DBAG roof' });
   fillFamily('fronts/0/cornice', 'cornice');
+  // Dressings the band's measured mode states (a `none` mode is the plain intent default: no fill).
+  for (const [path, field] of [['fronts/0/windowSurround', 'windowSurround'], ['fronts/0/windowSills', 'windowSills']] as const) {
+    if (has(path)) continue;
+    const v = fam(field, false);
+    if (v && v.value !== 'none') set(path, v.value, 'family', v.ref);
+  }
   fillFamily('fronts/0/windows', 'windows');
   fillFamily('fronts/0/hoist', 'hoist');
   if (!has('fronts/0/basement')) {

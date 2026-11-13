@@ -6,21 +6,21 @@
  "noHoldShare": 1,
  "eligible": 4,
  "minutesPerHouse": {
-  "machine": 0.04,
-  "withPreview": 0.24
+  "machine": 0.01,
+  "withPreview": 0.09
  },
  "triangles": {
-  "mean": 1277,
-  "max": 1680
+  "mean": 1379,
+  "max": 1788
  },
  "meshoptKB": {
-  "mean": 39.5,
-  "total": 316.2
+  "mean": 41.8,
+  "total": 334.7
  },
  "fillsBySource": {
   "stated": 53,
   "reading+geometry": 1,
-  "family": 66,
+  "family": 74,
   "derived": 16
  },
  "drops": [],

@@ -62,6 +62,12 @@
     "ref": "describer crown point (not staged: class precision < 0.8) + 3DBAG crown 3.5 m over the eaves"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -132,11 +138,11 @@
    }
   ],
   "ms": {
-   "facts": 11121.265,
-   "complete": 8.923250000001644,
-   "compile": 929.7415409999994,
-   "meshopt": 123.1840830000001,
-   "preview": 15089.972999999998
+   "facts": 2287.9553750000005,
+   "complete": 5.051500000000033,
+   "compile": 110.781833,
+   "meshopt": 11.77587500000027,
+   "preview": 4244.105334
   },
   "geometry": {
    "year": 1867,
@@ -190,9 +196,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1549,
-  "bytes": 109028,
-  "meshoptBytes": 48904,
+  "triangles": 1681,
+  "bytes": 118268,
+  "meshoptBytes": 51896,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -216,6 +222,7 @@
      "souterrain": true,
      "cornice": "none",
      "gable": "point",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "stoop-and-windows",
@@ -296,6 +303,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -366,11 +379,11 @@
    }
   ],
   "ms": {
-   "facts": 807.9825420000016,
-   "complete": 1.4362919999985024,
-   "compile": 275.69654199999786,
-   "meshopt": 11.705000000001746,
-   "preview": 6303.551040999999
+   "facts": 621.6088749999999,
+   "complete": 0.9217079999998532,
+   "compile": 30.867041999999856,
+   "meshopt": 4.263249999999971,
+   "preview": 4203.8935409999995
   },
   "geometry": {
    "year": 1867,
@@ -428,9 +441,9 @@
     "advisory": true
    }
   ],
-  "triangles": 775,
-  "bytes": 57156,
-  "meshoptBytes": 29300,
+  "triangles": 859,
+  "bytes": 63036,
+  "meshoptBytes": 31184,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -454,6 +467,7 @@
      "bands": "storey",
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -537,6 +551,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -616,11 +636,11 @@
    }
   ],
   "ms": {
-   "facts": 496.21279100000174,
-   "complete": 1.714624999996886,
-   "compile": 262.18062499999724,
-   "meshopt": 28.450541999998677,
-   "preview": 7857.636790999997
+   "facts": 690.5422079999998,
+   "complete": 0.8548330000003261,
+   "compile": 49.50854199999958,
+   "meshopt": 3.50787500000024,
+   "preview": 4212.605
   },
   "geometry": {
    "year": 1867,
@@ -674,9 +694,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1257,
-  "bytes": 85952,
-  "meshoptBytes": 39888,
+  "triangles": 1329,
+  "bytes": 90992,
+  "meshoptBytes": 41528,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -700,6 +720,7 @@
      "bands": "storey",
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -788,6 +809,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -867,11 +894,11 @@
    }
   ],
   "ms": {
-   "facts": 736.1069580000003,
-   "complete": 1.1021660000005795,
-   "compile": 264.49008299999696,
-   "meshopt": 42.5639590000028,
-   "preview": 9279.07125
+   "facts": 625.7362920000005,
+   "complete": 0.6210829999999987,
+   "compile": 34.942833000000064,
+   "meshopt": 2.996165999999903,
+   "preview": 4380.532124999998
   },
   "geometry": {
    "year": 1867,
@@ -925,9 +952,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1229,
-  "bytes": 83120,
-  "meshoptBytes": 39104,
+  "triangles": 1301,
+  "bytes": 88160,
+  "meshoptBytes": 40756,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -951,6 +978,7 @@
      "bands": "storey",
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1038,6 +1066,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -1108,11 +1142,11 @@
    }
   ],
   "ms": {
-   "facts": 687.4193750000013,
-   "complete": 1.7694579999988491,
-   "compile": 265.3470840000009,
-   "meshopt": 18.90874999999869,
-   "preview": 6164.380874999995
+   "facts": 630.4854999999998,
+   "complete": 0.6036250000006476,
+   "compile": 29.38299999999981,
+   "meshopt": 2.7344160000002375,
+   "preview": 4777.267792000002
   },
   "geometry": {
    "year": 1867,
@@ -1166,9 +1200,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1162,
-  "bytes": 79596,
-  "meshoptBytes": 37984,
+  "triangles": 1246,
+  "bytes": 85476,
+  "meshoptBytes": 39836,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1192,6 +1226,7 @@
      "bands": "storey",
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1267,6 +1302,12 @@
     "value": "simple",
     "source": "family",
     "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
    },
    {
     "path": "fronts/0/windows",
@@ -1352,11 +1393,11 @@
    }
   ],
   "ms": {
-   "facts": 445.3104170000006,
-   "complete": 0.9355839999989257,
-   "compile": 609.8191250000018,
-   "meshopt": 45.68804199999795,
-   "preview": 12809.360541999995
+   "facts": 437.1836250000006,
+   "complete": 0.5952499999993961,
+   "compile": 36.81566599999951,
+   "meshopt": 2.947541999999885,
+   "preview": 4944.630708000001
   },
   "geometry": {
    "year": 1867,
@@ -1414,9 +1455,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1680,
-  "bytes": 113608,
-  "meshoptBytes": 50320,
+  "triangles": 1788,
+  "bytes": 121172,
+  "meshoptBytes": 52904,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1439,6 +1480,7 @@
      },
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1519,6 +1561,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -1593,11 +1641,11 @@
    }
   ],
   "ms": {
-   "facts": 473.6330830000006,
-   "complete": 1.1910419999985606,
-   "compile": 436.3764579999988,
-   "meshopt": 20.61083299999882,
-   "preview": 28018.559624999994
+   "facts": 541.7615409999999,
+   "complete": 0.5684579999997368,
+   "compile": 28.92462499999965,
+   "meshopt": 3.021791000000121,
+   "preview": 4150.0974170000045
   },
   "geometry": {
    "year": 1867,
@@ -1655,9 +1703,9 @@
     "advisory": true
    }
   ],
-  "triangles": 1598,
-  "bytes": 105440,
-  "meshoptBytes": 45968,
+  "triangles": 1730,
+  "bytes": 114684,
+  "meshoptBytes": 49116,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1680,6 +1728,7 @@
      },
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",
@@ -1754,6 +1803,12 @@
     "ref": "family 1800-1879 (n 136, share 0.824)"
    },
    {
+    "path": "fronts/0/windowSurround",
+    "value": "sill",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.721)"
+   },
+   {
     "path": "fronts/0/windows",
     "value": "t-window",
     "source": "family",
@@ -1820,11 +1875,11 @@
    }
   ],
   "ms": {
-   "facts": 482.46008399999846,
-   "complete": 4.695749999998952,
-   "compile": 319.6173340000023,
-   "meshopt": 5.94758400000137,
-   "preview": 10023.072124999992
+   "facts": 318.98504199999934,
+   "complete": 0.47566699999970297,
+   "compile": 20.068041999999878,
+   "meshopt": 2.0987089999998716,
+   "preview": 4805.973417000001
   },
   "geometry": {
    "year": 1870,
@@ -1878,9 +1933,9 @@
     "advisory": true
    }
   ],
-  "triangles": 968,
-  "bytes": 67756,
-  "meshoptBytes": 32300,
+  "triangles": 1100,
+  "bytes": 77000,
+  "meshoptBytes": 35508,
   "intent": {
    "schemaVersion": 1,
    "kind": "canal-house",
@@ -1903,6 +1958,7 @@
      },
      "gable": "cornice",
      "cornice": "simple",
+     "windowSurround": "sill",
      "windows": "t-window",
      "hoist": false,
      "basement": "none",

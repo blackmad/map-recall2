@@ -21,6 +21,7 @@
    "souterrain": true,
    "cornice": "none",
    "gable": "point",
+   "windowSurround": "sill",
    "windows": "t-window",
    "hoist": false,
    "basement": "stoop-and-windows",

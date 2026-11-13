@@ -18,6 +18,7 @@
    "souterrain": true,
    "cornice": "none",
    "gable": "point",
+   "windowSurround": "keystone",
    "windows": "t-window",
    "hoist": false,
    "basement": "stoop-and-windows",
@@ -33,6 +34,8 @@
   "wallMaterial": "brick",
   "brick": "#ba9070",
   "frame": "white-painted",
+  "stone": "#e4e1d6",
+  "cornice": "#e4e1d6",
   "door": "#2a2a2a"
  }
 }
