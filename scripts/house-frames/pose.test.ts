@@ -61,7 +61,7 @@ test('grid convergence: the panorama is indexed on the RD grid, about -0.4 deg i
 });
 
 test('--help text names every input and the review section', () => {
-  for (const flag of ['--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
+  for (const flag of ['--square', '--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
   assert.match(HELP, /§7/);
 });
 

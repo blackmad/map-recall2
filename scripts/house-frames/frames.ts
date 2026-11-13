@@ -51,6 +51,8 @@ Flags
   --prefer-obliquity <deg>  after the season, captures whose pose fits the whole wall (not clipped), then those that see
                          the wall within <deg> of square, squarest first (the belt rule: winter, then under 30 deg; 45 deg
                          and more only as a second view); default off
+  --square              the square slot: the lowest-obliquity capture in range, clipped crown or not; prints "no square
+                         exists" (caption and console) when it is over 30 deg (or --prefer-obliquity)
   --max-dist <m>         panoramas up to <m> from the wall (default 35); 60 reaches across a canal, with --prefer-obliquity
                          a capture that fits the whole wall wins over a nearer clipped one
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
@@ -130,7 +132,9 @@ export function withPinnedPoses(pands: Entry[], file = PINNED_POSES): Entry[] {
     return { ...e, pano: e.pano ?? pin.pano, ...(notPanos.length ? { notPanos } : {}) };
   });
 }
-export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
+/** --square: a frame over this obliquity is not square (the belt rule's 30 deg). */
+export const SQUARE_MAX_DEG = 30;
+export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; square?: boolean; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -159,7 +163,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
   if ((arg(argv, 'list') || arg(argv, 'pands')) && !argv.includes('--no-pinned-poses')) pands = withPinnedPoses(pands);
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), ...(argv.includes('--square') ? { square: true, preferObliquityDeg: Number(arg(argv, 'prefer-obliquity') ?? SQUARE_MAX_DEG) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -358,7 +362,8 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
     if (!clipMemo.has(c)) { const pub = Number(c.record.geometry.coordinates[2]); clipMemo.set(c, aimPose({ lngLat: [c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]], cameraNap: pub > 0 ? pub - 43.5 : null }, quad).clipped.length ? 1 : 0); }
     return clipMemo.get(c)!;
   };
-  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
+  // --square: the lowest obliquity first, a clipped crown second (lane BA: 165073 took a 41 deg unclipped capture over a 14 deg one).
+  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || (args.square ? a.c.obliquityDeg - b.c.obliquityDeg || clipKey(a.c) - clipKey(b.c) : clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c)) || a.i - b.i);
   return { wall, quad, note, ranked, order, seasonKey, clipKey, oblKey };
 }
 
@@ -383,8 +388,9 @@ export async function pickPose(entry: Entry, fp: Footprint | undefined, args: Ar
   }
   judge();
   const rejected = pool.filter(p => p.reject), live = pool.filter(p => !p.reject).length ? pool.filter(p => !p.reject) : [...pool].sort((a, b) => (a.q.glare ?? 0) - (b.q.glare ?? 0));
-  live.sort((a, b) => (lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
+  live.sort((a, b) => (args.square ? seasonKey(a.c) - seasonKey(b.c) || a.c.obliquityDeg - b.c.obliquityDeg : lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const chosen = live[0], pick = chosen.c, foliage: number | null = chosen.q.leaf;
+  if (args.square && pick.obliquityDeg > (lim ?? SQUARE_MAX_DEG)) { why.push(`no square exists: the lowest obliquity in range is ${pick.obliquityDeg.toFixed(0)} deg (> ${lim ?? SQUARE_MAX_DEG})`); console.warn(`${key}: no square exists (lowest obliquity ${pick.obliquityDeg.toFixed(0)} deg)`); }
   why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'}, glare ${chosen.q.glare == null ? '?' : (chosen.q.glare * 100).toFixed(0) + '%'} (pre-pass over ${pool.length}${rejected.length ? `; rejected ${rejected.map(p => `${p.c.timestamp.slice(0, 10)} ${p.reject}`).join(', ')}` : ''}${chosen.reject ? '; every candidate rejected, least glare kept' : ''})`);
   const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
   const published = Number(pick.record.geometry.coordinates[2]);
@@ -508,7 +514,7 @@ function captionLines(r: any): string[] {
   return [
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
     `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  engine ${(r.engineWorld ?? engineWorld(r.query ?? '')).engine}, world ${(r.engineWorld ?? engineWorld(r.query ?? '')).world}${r.query ? `  |  ${r.query}` : ''}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
-    (flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags') + (r.colour && r.colour.ref === 'no ref' ? '  |  wall colour: no ref (no neighbour strip reads)' : ''),
+    (flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags') + ((r.why ?? []).find((w: string) => w.startsWith('no square exists')) ? `  |  ${(r.why as string[]).find(w => w.startsWith('no square exists'))!.toUpperCase()}` : '') + (r.colour && r.colour.ref === 'no ref' ? '  |  wall colour: no ref (no neighbour strip reads)' : ''),
     `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'} (${r.colour?.ref ?? '?'})  |  skyline game ${r.skyline?.offset?.game?.medianM ?? (r.skyline?.offset?.game?.clipped ? 'clipped' : '?')} photo ${r.skyline?.offset?.photo?.medianM ?? (r.skyline?.offset?.photo?.clipped ? 'clipped' : '?')} crown ${r.wall.heightM} m`,
   ];
 }
