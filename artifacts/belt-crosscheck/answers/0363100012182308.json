@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012182308",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012182308.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "ground",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the second upper storey has one wide window of three lights across the front instead of two separate windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small round window or plaque near the top of the bell gable"
+  }
+ ],
+ "notes": "Ground storey partly hidden behind a fence and a van.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174698",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012174698.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "sameAs",
+  "doorSurround",
+  "cornice",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "wide gallery shopfront in a timber frame with a cornice, door at the right"
+  }
+ ],
+ "notes": "A young tree covers the right upper axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

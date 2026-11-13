@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171705",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012171705.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "windows",
+  "crown",
+  "cornice",
+  "sills",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "The outline straddles a two-bay cornice front (left, larger share) and a mansard-roofed front (right); described the two-bay front. Dusk noise, trees and parked cars hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

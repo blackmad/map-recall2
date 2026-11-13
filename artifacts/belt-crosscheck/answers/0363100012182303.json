@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012182303",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012182303.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "balconies",
+  "columns",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first upper storey is a white timber frame of three wide windows under a white band, with low guard bars"
+  },
+  {
+   "component": "shopfront",
+   "what": "cafe ground storey with a red scalloped awning across the full width over glazed doors"
+  },
+  {
+   "component": "roof",
+   "what": "hoist beam projecting above the white frieze cornice"
+  }
+ ],
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

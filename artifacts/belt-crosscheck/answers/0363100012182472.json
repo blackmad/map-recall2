@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012182472",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012182472.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "dormers",
+  "heads",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each window has a single small white block centred above a flat head, with dark iron anchors between the bays"
+  },
+  {
+   "component": "roof",
+   "what": "a red-tiled pitched roof rises behind the cornice to a point, with one dormer"
+  }
+ ],
+ "notes": "Ground storey behind a site fence.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

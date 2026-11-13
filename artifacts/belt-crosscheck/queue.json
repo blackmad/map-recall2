@@ -1,0 +1,540 @@
+{
+ "batch": "belt-20261113",
+ "reader": "D1 describer prompt v4.3, read by Claude opus (BX) from the panorama cuts",
+ "stats": {
+  "specs": 178,
+  "withCut": 175,
+  "answered": 175,
+  "readable": 164,
+  "noCut": [
+   "0363100012171851",
+   "0363100012171854",
+   "0363100012182776"
+  ],
+  "crown": {
+   "compared": 153,
+   "agree": 129,
+   "disagree": 24,
+   "queued": 13,
+   "unreliableReader": 11,
+   "notVisible": 11
+  },
+  "rows": {
+   "compared": 154,
+   "exact": 102,
+   "off1": 51,
+   "off2plus": 1,
+   "notVisible": 10
+  },
+  "bays": {
+   "compared": 157,
+   "agree": 126,
+   "disagree": 31,
+   "notVisible": 4
+  },
+  "crownConfusion": {
+   "spec point / reader cornice": 1,
+   "spec cornice / reader flat": 7,
+   "spec neck / reader cornice": 3,
+   "spec cornice / reader bell": 1,
+   "spec flat / reader cornice": 2,
+   "spec cornice / reader pitched-eaves": 1,
+   "spec cornice / reader point": 2,
+   "spec cornice / reader spout": 1,
+   "spec cornice / reader neck": 3,
+   "spec bell / reader step": 1,
+   "spec bell / reader pitched-eaves": 1,
+   "spec bell / reader cornice": 1
+  },
+  "rowsDiffHist": {
+   "0": 102,
+   "-1": 31,
+   "-2": 1,
+   "+1": 20
+  }
+ },
+ "queue": [
+  {
+   "pand": "0363100012159242",
+   "address": "Van Houweningenstraat 20",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012159242.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "point",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice frieze; roof dormers"
+  },
+  {
+   "pand": "0363100012159954",
+   "address": "Van Houweningenstraat 31",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012159954.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal"
+  },
+  {
+   "pand": "0363100012165073",
+   "address": "Haarlemmerdijk 123",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012165073.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal"
+  },
+  {
+   "pand": "0363100012167689",
+   "address": "Keizersgracht 112",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012167689.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3]"
+  },
+  {
+   "pand": "0363100012169006",
+   "address": "Herengracht 112",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012169006.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "neck",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice bracketed; roof dormers"
+  },
+  {
+   "pand": "0363100012169338",
+   "address": "Kloveniersburgwal 97",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012169338.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012169444",
+   "address": "Keizersgracht 254A",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012169444.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "cornice",
+   "reader": "bell",
+   "confidence": "low",
+   "note": "reader cornice none; roof none"
+  },
+  {
+   "pand": "0363100012170938",
+   "address": "Geldersekade 90",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012170938.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 6,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3]"
+  },
+  {
+   "pand": "0363100012171161",
+   "address": "Kloveniersburgwal 113",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012171161.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "rows",
+   "spec": 5,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "souterrain true, roof dormers"
+  },
+  {
+   "pand": "0363100012171324",
+   "address": "Geldersekade 94",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012171324.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3,3,3]"
+  },
+  {
+   "pand": "0363100012171451",
+   "address": "Kloveniersburgwal 53",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012171451.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "flat",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice heavy; roof none"
+  },
+  {
+   "pand": "0363100012171696",
+   "address": "Geldersekade 85",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012171696.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 1,
+   "confidence": "low",
+   "note": "reader columns [3,1,1]"
+  },
+  {
+   "pand": "0363100012171697",
+   "address": "Geldersekade 93",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012171697.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 5,
+   "reader": 4,
+   "confidence": "normal",
+   "note": "reader columns [3,4,4,4]"
+  },
+  {
+   "pand": "0363100012172000",
+   "address": "Zeedijk 119",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012172000.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "cornice",
+   "reader": "spout",
+   "confidence": "low",
+   "note": "reader cornice none; roof not-visible"
+  },
+  {
+   "pand": "0363100012172000",
+   "address": "Zeedijk 119",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012172000.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012173480",
+   "address": "Haarlemmerdijk 133A",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012173480.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal"
+  },
+  {
+   "pand": "0363100012173483",
+   "address": "Haarlemmerdijk 141",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012173483.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012173566",
+   "address": "Prinsengracht 130",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012173566.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 4,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [2,3,3]"
+  },
+  {
+   "pand": "0363100012176280",
+   "address": "Haarlemmerdijk 50",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012176280.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [2,3,3]"
+  },
+  {
+   "pand": "0363100012176494",
+   "address": "Keizersgracht 132",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012176494.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 4,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3]"
+  },
+  {
+   "pand": "0363100012177362",
+   "address": "Herengracht 247",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012177362.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3]"
+  },
+  {
+   "pand": "0363100012177515",
+   "address": "Herengracht 245A",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012177515.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 1,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012177857",
+   "address": "Kloveniersburgwal 109",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012177857.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "flat",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice frieze; roof dormers"
+  },
+  {
+   "pand": "0363100012177939",
+   "address": "Zeedijk 137",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012177939.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 4,
+   "reader": 3,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012177978",
+   "address": "Oudezijds Achterburgwal 40",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012177978.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "cornice",
+   "reader": "neck",
+   "confidence": "normal",
+   "note": "reader cornice none; roof gable-attic"
+  },
+  {
+   "pand": "0363100012178293",
+   "address": "Oudezijds Achterburgwal 72",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012178293.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "neck",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice simple; roof dormers"
+  },
+  {
+   "pand": "0363100012178304",
+   "address": "Kloveniersburgwal 49",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012178304.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "neck",
+   "reader": "cornice",
+   "confidence": "normal",
+   "note": "reader cornice attic-frieze; roof none"
+  },
+  {
+   "pand": "0363100012178393",
+   "address": "Kloveniersburgwal 38",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012178393.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "low",
+   "note": "reader columns [3,3,2,2]"
+  },
+  {
+   "pand": "0363100012181817",
+   "address": "Nieuwmarkt 7",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012181817.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 4,
+   "confidence": "low",
+   "note": "reader columns [2,4,3,3,3]"
+  },
+  {
+   "pand": "0363100012182302",
+   "address": "Nieuwmarkt 13",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182302.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 4,
+   "confidence": "normal",
+   "note": "reader columns [4,4,3,3]"
+  },
+  {
+   "pand": "0363100012182308",
+   "address": "Geldersekade 114",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182308.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal",
+   "note": "reader columns [3,2,1]"
+  },
+  {
+   "pand": "0363100012182372",
+   "address": "Geldersekade 66",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182372.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3]"
+  },
+  {
+   "pand": "0363100012182378",
+   "address": "Zeedijk 66",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182378.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal"
+  },
+  {
+   "pand": "0363100012182379",
+   "address": "Geldersekade 78",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182379.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "cornice",
+   "reader": "neck",
+   "confidence": "normal",
+   "note": "reader cornice none; roof gable-attic"
+  },
+  {
+   "pand": "0363100012182545",
+   "address": "Zeedijk 28",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182545.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 2,
+   "reader": 3,
+   "confidence": "normal",
+   "note": "reader columns [3,3,3,3,3]"
+  },
+  {
+   "pand": "0363100012182582",
+   "address": "Kloveniersburgwal 18",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182582.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal",
+   "note": "reader columns [3,2,2]"
+  },
+  {
+   "pand": "0363100012182707",
+   "address": "Zeedijk 40",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182707.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 6,
+   "reader": 3,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012182711",
+   "address": "Zeedijk 54",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182711.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "bell",
+   "reader": "step",
+   "confidence": "low",
+   "note": "reader cornice none; roof gable-attic"
+  },
+  {
+   "pand": "0363100012182711",
+   "address": "Zeedijk 54",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182711.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal"
+  },
+  {
+   "pand": "0363100012182712",
+   "address": "Zeedijk 52",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182712.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "cornice",
+   "reader": "neck",
+   "confidence": "low",
+   "note": "reader cornice none; roof gable-attic"
+  },
+  {
+   "pand": "0363100012182712",
+   "address": "Zeedijk 52",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182712.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal",
+   "note": "reader columns [2,2,2,2]"
+  },
+  {
+   "pand": "0363100012182857",
+   "address": "Nieuwmarkt 20-22",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182857.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 5,
+   "reader": 3,
+   "confidence": "low"
+  },
+  {
+   "pand": "0363100012182858",
+   "address": "Nieuwmarkt 18",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182858.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "crown",
+   "spec": "bell",
+   "reader": "cornice",
+   "confidence": "low",
+   "note": "reader cornice simple; roof none"
+  },
+  {
+   "pand": "0363100012182858",
+   "address": "Nieuwmarkt 18",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012182858.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "normal",
+   "note": "reader columns [3,2,2,2]"
+  },
+  {
+   "pand": "0363100012571675",
+   "address": "Kloveniersburgwal 33",
+   "crop": "artifacts/belt-crosscheck/cuts/0363100012571675.jpg",
+   "readerModel": "BX opus v4.3",
+   "field": "bays",
+   "spec": 3,
+   "reader": 2,
+   "confidence": "low"
+  }
+ ]
+}

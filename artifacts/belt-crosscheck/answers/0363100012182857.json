@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012182857.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "stoop",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "heads",
+  "basement",
+  "storeyParts.full",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "twin stepped gables with white stone step copings over one wide shared front"
+  },
+  {
+   "component": "shopfront",
+   "what": "bank front with small-paned top lights and a round-arched door"
+  }
+ ],
+ "notes": "The outline covers one wide front under two stepped gables; read as multi and described the left half.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

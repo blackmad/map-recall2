@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012159954",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012159954.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "doorBay",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small light stone blocks set in the brick above the window heads"
+  }
+ ],
+ "notes": "Outline covers a narrow pointed-gable front plus the first bay of the cornice front to its right; described the gable front. Ground partly hidden by bikes and a tree.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012170938",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012170938.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "cornice",
+  "basement",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-arched stone doorcase with a fanlight, the ground storey holding an entresol row of small windows over the door"
+  }
+ ],
+ "notes": "The outline spans the centre front and halves of both neighbours under one shared white cornice; described the centre three-bay front. Tree and parked cars hide the ground storey partly.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

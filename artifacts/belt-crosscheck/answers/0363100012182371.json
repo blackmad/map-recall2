@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012182371",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012182371.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "crown",
+  "cornice",
+  "dormers",
+  "ground",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "A lamp post, a large sign and a tree cover much of the front; the top storey and roof are hard to separate.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

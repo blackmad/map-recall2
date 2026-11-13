@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012171704",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012171704.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "crown",
+  "bays",
+  "storeyParts.full",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the neck ends in a round-arched white cap, with a white balustrade on the shoulders either side"
+  },
+  {
+   "component": "window",
+   "what": "upper storeys alternate a wide centre window between narrow side windows"
+  }
+ ],
+ "notes": "The outline straddles a neck-gabled front (left, larger share) and a cornice front with a pointed dormer (right); described the neck-gabled front. Dusk image is very noisy.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

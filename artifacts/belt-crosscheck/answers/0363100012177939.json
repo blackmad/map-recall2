@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012177939",
+ "image": {
+  "ref": "artifacts/belt-crosscheck/cuts/0363100012177939.jpg",
+  "kind": "crop",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "BX opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windows",
+  "crown",
+  "cornice",
+  "extent",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "cream pilastered shopfront frame with large display windows and a fascia across the ground storey"
+  }
+ ],
+ "notes": "No outline visible in the cut and a steep upward view; the middle brick wall may be two fronts, so the reading is of the brick front above the Latei shop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
