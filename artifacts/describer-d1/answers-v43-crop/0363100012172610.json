@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172610",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172610/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces with volutes at the neck foot, white edge pilasters and a curved segmental pediment cap on the neck, with a hoist beam"
+  },
+  {
+   "component": "window",
+   "what": "the attic window in the neck has a white side shutter or hatch beside it"
+  },
+  {
+   "component": "shopfront",
+   "what": "white timber ground frontage with a cornice board, two doors with transoms at the left and a large small-paned window at the right"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

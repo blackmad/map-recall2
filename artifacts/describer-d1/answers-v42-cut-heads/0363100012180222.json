@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012180222",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180222.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "doorBay",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "band of blind round brick arches with white blocks under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "wide glazed dormer with a hoist beam above the cornice"
+  },
+  {
+   "component": "window",
+   "what": "first-storey windows under segmental arches with a filled tympanum"
+  }
+ ],
+ "notes": "Oblique, dark view; parked cars hide the plinth and the ground openings are hard to separate into door and windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,9 +1,9 @@
-### answers-v4-crop vs answers-v42-crop on the same 147 pands (pooled adjudicated truth)
+### answers-v4-crop vs answers-v42-crop on the same 147 pands (pooled adjudicated truth; author-convention storeys: exclude)
 
 | field | answers-v4-crop | answers-v42-crop | change | answers-v4-crop right, answers-v42-crop wrong | reverse |
 |---|---|---|---|---|---|
-| storeys | 0.819 (95/116) [0.739-0.878] | 0.816 (93/114) [0.735-0.876] | -0.003 | 5 | 4 |
-| storeys±1 | 1 (116/116) [0.968-1] | 1 (114/114) [0.967-1] | +0.000 | 0 | 0 |
+| storeys | 0.853 (81/95) [0.768-0.91] | 0.83 (78/94) [0.741-0.892] | -0.023 | 5 | 3 |
+| storeys±1 | 1 (95/95) [0.961-1] | 1 (94/94) [0.961-1] | +0.000 | 0 | 0 |
 | bays | 0.915 (118/129) [0.854-0.952] | 0.902 (120/133) [0.84-0.942] | -0.013 | 3 | 2 |
 | bays±1 | 0.992 (128/129) [0.957-0.999] | 0.985 (131/133) [0.947-0.996] | -0.007 | 1 | 0 |
 | bands | 0.921 (93/101) [0.851-0.959] | 0.929 (92/99) [0.861-0.965] | +0.008 | 2 | 3 |
@@ -18,30 +18,24 @@
 | head segmental | 1 (5/5) [0.566-1] | 0.75 (6/8) [0.409-0.929] | -0.250 | 0 | 0 |
 | cornice none | 0.867 (26/30) [0.703-0.947] | 0.9 (27/30) [0.744-0.965] | +0.033 | 0 | 0 |
 
-#### answers-v4-crop: house-ground (dwelling) rows exact 0.741 (40/54) [0.611-0.839]
+#### answers-v4-crop: house-ground (dwelling) rows exact 0.8 (28/35) [0.641-0.9]
 
 | miss | pands |
 |---|---|
-| under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic | 2 |
-| under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible | 2 |
-| under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof gable-attic | 2 |
-| under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof none | 2 |
 | over 1 | counted the truth attic in the crown | truth benchmark | read souterrain false / truth false | read roof gable-attic | 1 |
+| under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic | 1 |
 | over 1 | other over | truth hand-spec | read souterrain true / truth false | read roof not-visible | 1 |
 | under 1 | other under | truth hand-set | read souterrain false / truth false | read roof not-visible | 1 |
-| under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof dormers | 1 |
 | over 1 | other over | truth hand-spec | read souterrain false / truth false | read roof gable-attic | 1 |
 | under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof mansard | 1 |
+| under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible | 1 |
 
-#### answers-v42-crop: house-ground (dwelling) rows exact 0.784 (40/51) [0.654-0.875]
+#### answers-v42-crop: house-ground (dwelling) rows exact 0.824 (28/34) [0.665-0.917]
 
 | miss | pands |
 |---|---|
-| under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic | 2 |
-| under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof gable-attic | 2 |
 | under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible | 2 |
+| under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic | 1 |
 | over 1 | other over | truth hand-spec | read souterrain true / truth false | read roof not-visible | 1 |
 | under 1 | read a roof storey the truth counts | truth hand-spec | read souterrain false / truth false | read roof mansard | 1 |
-| under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof dormers | 1 |
-| under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof none | 1 |
 | under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof mansard | 1 |

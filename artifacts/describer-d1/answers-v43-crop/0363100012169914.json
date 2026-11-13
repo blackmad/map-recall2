@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012169914",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "cornice",
+  "ground",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white sculpted mask or shield ornaments sit above every upper window, detached from the frame"
+  },
+  {
+   "component": "relief",
+   "what": "a frieze of yellow ornamental panels runs under the cornice"
+  },
+  {
+   "component": "window",
+   "what": "yellow block quoins run up the left corner of the front"
+  },
+  {
+   "component": "roof",
+   "what": "a red pantile roof face rises behind the cornice with a single white box dormer"
+  }
+ ],
+ "notes": "A tree branch crosses the roof; a parked car covers the ground storey bottom.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

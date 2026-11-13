@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "set": 40,
+ "pands": 37,
+ "misaligned": 3,
+ "per": {
+  "round": {
+   "rowsRead": 4,
+   "precision": 1,
+   "precisionCI": [
+    0.51,
+    1
+   ],
+   "rowsTruth": 4,
+   "recall": 1,
+   "recallCI": [
+    0.51,
+    1
+   ]
+  },
+  "segmental": {
+   "rowsRead": 49,
+   "precision": 0.959,
+   "precisionCI": [
+    0.863,
+    0.989
+   ],
+   "rowsTruth": 60,
+   "recall": 0.783,
+   "recallCI": [
+    0.664,
+    0.869
+   ]
+  },
+  "flat": {
+   "rowsRead": 33,
+   "precision": 0.636,
+   "precisionCI": [
+    0.466,
+    0.778
+   ],
+   "rowsTruth": 23,
+   "recall": 0.913,
+   "recallCI": [
+    0.732,
+    0.976
+   ]
+  }
+ },
+ "confusion": {
+  "flat->segmental": 12,
+  "segmental->segmental": 47,
+  "flat->flat": 21,
+  "round->round": 4,
+  "mixed->segmental": 1,
+  "segmental->flat": 2
+ }
+}

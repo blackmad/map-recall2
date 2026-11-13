@@ -1,39 +1,40 @@
 {
  "v": 1,
+ "authorConvention": "exclude",
  "report": {
   "answers-v4-crop": {
-   "pairs": 118,
+   "pairs": 97,
    "rowIssues": [],
    "groups": {
     "all": {
      "before": {
-      "n": 118,
-      "exact": 0.822,
+      "n": 97,
+      "exact": 0.856,
       "exactCI": [
-       0.743,
-       0.881
+       0.772,
+       0.912
       ],
       "within1": 1,
       "within1CI": [
-       0.968,
+       0.962,
        1
       ],
-      "under": 15,
+      "under": 8,
       "over": 6
      },
      "after": {
-      "n": 118,
-      "exact": 0.822,
+      "n": 97,
+      "exact": 0.856,
       "exactCI": [
-       0.743,
-       0.881
+       0.772,
+       0.912
       ],
       "within1": 1,
       "within1CI": [
-       0.968,
+       0.962,
        1
       ],
-      "under": 15,
+      "under": 8,
       "over": 6
      }
     },
@@ -71,30 +72,30 @@
     },
     "ground shop": {
      "before": {
-      "n": 57,
-      "exact": 0.93,
+      "n": 55,
+      "exact": 0.927,
       "exactCI": [
-       0.833,
-       0.972
+       0.827,
+       0.971
       ],
       "within1": 1,
       "within1CI": [
-       0.937,
+       0.935,
        1
       ],
       "under": 4,
       "over": 0
      },
      "after": {
-      "n": 57,
-      "exact": 0.93,
+      "n": 55,
+      "exact": 0.927,
       "exactCI": [
-       0.833,
-       0.972
+       0.827,
+       0.971
       ],
       "within1": 1,
       "within1CI": [
-       0.937,
+       0.935,
        1
       ],
       "under": 4,
@@ -135,33 +136,33 @@
     },
     "ground dwelling": {
      "before": {
-      "n": 54,
-      "exact": 0.741,
+      "n": 35,
+      "exact": 0.8,
       "exactCI": [
-       0.611,
-       0.839
+       0.641,
+       0.9
       ],
       "within1": 1,
       "within1CI": [
-       0.934,
+       0.901,
        1
       ],
-      "under": 11,
+      "under": 4,
       "over": 3
      },
      "after": {
-      "n": 54,
-      "exact": 0.741,
+      "n": 35,
+      "exact": 0.8,
       "exactCI": [
-       0.611,
-       0.839
+       0.641,
+       0.9
       ],
       "within1": 1,
       "within1CI": [
-       0.934,
+       0.901,
        1
       ],
-      "under": 11,
+      "under": 4,
       "over": 3
      }
     },
@@ -232,38 +233,38 @@
    }
   },
   "answers-v42-crop": {
-   "pairs": 114,
+   "pairs": 94,
    "rowIssues": [],
    "groups": {
     "all": {
      "before": {
-      "n": 114,
-      "exact": 0.816,
+      "n": 94,
+      "exact": 0.83,
       "exactCI": [
-       0.735,
-       0.876
+       0.741,
+       0.892
       ],
       "within1": 1,
       "within1CI": [
-       0.967,
+       0.961,
        1
       ],
-      "under": 15,
+      "under": 10,
       "over": 6
      },
      "after": {
-      "n": 114,
-      "exact": 0.816,
+      "n": 94,
+      "exact": 0.83,
       "exactCI": [
-       0.735,
-       0.876
+       0.741,
+       0.892
       ],
       "within1": 1,
       "within1CI": [
-       0.967,
+       0.961,
        1
       ],
-      "under": 15,
+      "under": 10,
       "over": 6
      }
     },
@@ -301,30 +302,30 @@
     },
     "ground shop": {
      "before": {
-      "n": 53,
-      "exact": 0.887,
+      "n": 50,
+      "exact": 0.88,
       "exactCI": [
-       0.774,
-       0.947
+       0.762,
+       0.944
       ],
       "within1": 1,
       "within1CI": [
-       0.932,
+       0.929,
        1
       ],
       "under": 4,
       "over": 2
      },
      "after": {
-      "n": 53,
-      "exact": 0.887,
+      "n": 50,
+      "exact": 0.88,
       "exactCI": [
-       0.774,
-       0.947
+       0.762,
+       0.944
       ],
       "within1": 1,
       "within1CI": [
-       0.932,
+       0.929,
        1
       ],
       "under": 4,
@@ -365,33 +366,33 @@
     },
     "ground dwelling": {
      "before": {
-      "n": 51,
-      "exact": 0.784,
+      "n": 34,
+      "exact": 0.824,
       "exactCI": [
-       0.654,
-       0.875
+       0.665,
+       0.917
       ],
       "within1": 1,
       "within1CI": [
-       0.93,
+       0.898,
        1
       ],
-      "under": 10,
+      "under": 5,
       "over": 1
      },
      "after": {
-      "n": 51,
-      "exact": 0.784,
+      "n": 34,
+      "exact": 0.824,
       "exactCI": [
-       0.654,
-       0.875
+       0.665,
+       0.917
       ],
       "within1": 1,
       "within1CI": [
-       0.93,
+       0.898,
        1
       ],
-      "under": 10,
+      "under": 5,
       "over": 1
      }
     },
@@ -462,38 +463,38 @@
    }
   },
   "answers-v4-cut": {
-   "pairs": 116,
+   "pairs": 90,
    "rowIssues": [],
    "groups": {
     "all": {
      "before": {
-      "n": 116,
-      "exact": 0.776,
+      "n": 90,
+      "exact": 0.789,
       "exactCI": [
-       0.692,
-       0.842
+       0.694,
+       0.86
       ],
       "within1": 1,
       "within1CI": [
-       0.968,
+       0.959,
        1
       ],
-      "under": 19,
+      "under": 12,
       "over": 7
      },
      "after": {
-      "n": 116,
-      "exact": 0.776,
+      "n": 90,
+      "exact": 0.789,
       "exactCI": [
-       0.692,
-       0.842
+       0.694,
+       0.86
       ],
       "within1": 1,
       "within1CI": [
-       0.968,
+       0.959,
        1
       ],
-      "under": 19,
+      "under": 12,
       "over": 7
      }
     },
@@ -531,30 +532,30 @@
     },
     "ground shop": {
      "before": {
-      "n": 47,
-      "exact": 0.745,
+      "n": 46,
+      "exact": 0.739,
       "exactCI": [
-       0.605,
-       0.847
+       0.597,
+       0.844
       ],
       "within1": 1,
       "within1CI": [
-       0.924,
+       0.923,
        1
       ],
       "under": 8,
       "over": 4
      },
      "after": {
-      "n": 47,
-      "exact": 0.745,
+      "n": 46,
+      "exact": 0.739,
       "exactCI": [
-       0.605,
-       0.847
+       0.597,
+       0.844
       ],
       "within1": 1,
       "within1CI": [
-       0.924,
+       0.923,
        1
       ],
       "under": 8,
@@ -595,33 +596,33 @@
     },
     "ground dwelling": {
      "before": {
-      "n": 62,
-      "exact": 0.79,
+      "n": 39,
+      "exact": 0.846,
       "exactCI": [
-       0.674,
-       0.873
+       0.703,
+       0.928
       ],
       "within1": 1,
       "within1CI": [
-       0.942,
+       0.91,
        1
       ],
-      "under": 11,
+      "under": 4,
       "over": 2
      },
      "after": {
-      "n": 62,
-      "exact": 0.79,
+      "n": 39,
+      "exact": 0.846,
       "exactCI": [
-       0.674,
-       0.873
+       0.703,
+       0.928
       ],
       "within1": 1,
       "within1CI": [
-       0.942,
+       0.91,
        1
       ],
-      "under": 11,
+      "under": 4,
       "over": 2
      }
     },
@@ -659,30 +660,30 @@
     },
     "ground not-visible": {
      "before": {
-      "n": 6,
+      "n": 4,
       "exact": 1,
       "exactCI": [
-       0.61,
+       0.51,
        1
       ],
       "within1": 1,
       "within1CI": [
-       0.61,
+       0.51,
        1
       ],
       "under": 0,
       "over": 0
      },
      "after": {
-      "n": 6,
+      "n": 4,
       "exact": 1,
       "exactCI": [
-       0.61,
+       0.51,
        1
       ],
       "within1": 1,
       "within1CI": [
-       0.61,
+       0.51,
        1
       ],
       "under": 0,

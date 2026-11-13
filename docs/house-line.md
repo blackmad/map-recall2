@@ -2948,3 +2948,31 @@ no figure. Prompt v4.2 on the 147 gate-pass crops (opus) against v4 on the same 
 0.915; bands, finish, cornice none, crown cornice/step up). House-ground rows (0.74 on v4 crop, 0.78 on v4.2): of the 14 v4
 misses 4 are a souterrain the author spec counts as the ground storey, 3 a gable attic or attic in the crown, 7 other; on cut
 reads the souterrain confusion is 7 of 13. AH07 re-staged into `staged-ah07` with `--twin-guard mutual`.
+
+**D1-fix 3: rulings on D1-fix 2, head truth, v4.3, W1 wall colour (2026-11-13).** (1) Per-row segmental is held: a front
+whose rows differ stages `fronts/0/rowHeads` (the head of every row, ground first, with the head receipt) for no route
+(`HELD_FOR_ALL_ROUTES`; spec.ts drops it in `drawableDesign` and reports it as ignored); whole-front flat and segmental ship
+as before; round rows stay `archedStoreys`, route C only. (2) Head truth (`head-truth.ts`): 173 AH07 cuts built 1850-1914,
+shuffled into two pools; a fresh opus labeller, blind to the D1 reads, labelled rows on the cut until 40 fronts with a round
+or segmental upper row (`artifacts/describer-d1/head-truth/set.json`, labels in `labels/`, contact sheets from
+`head-truth.ts sheet`). Blind opus v4.2 reads of those 40 cuts (`answers-v42-cut-heads`) score per row: segmental 0.959
+(47/49) [0.863-0.989], recall 0.78; round 4/4 [0.51-1]; flat 0.636 (21/33) [0.466-0.778] (12 labelled-segmental rows read
+flat). The set is enriched for curved rows, so segmental precision is not a city figure. (3) Prompt v4.2 became the default
+(`DESCRIBER_PROMPTS` / `DESCRIBER_PROMPT` in describer.ts; write-answer.ts stamps `prompt`), then v4.3 (below). (4) Author
+specs that count a bel-etage row with no souterrain (`truth.ts authorConvention`, 78 of 310) are left out of the storey
+truth by default (`--author-convention keep` restores them): house-ground rows exact v4 crop 0.8 (28/35) [0.641-0.9], v4.2
+0.824 (28/34) [0.665-0.917] (`rows-convention.md`).
+Prompt v4.3 (`prompt-v4.3.md`) adds `balconies` (rows), `dormers` ({count, plain|gabled|none}; a part-front gable is
+gabled), `bayWindow` (rows) and `doorSurround`; they stage as `fronts/0/readBalconies|readDormers|readBayWindow|
+readDoorSurround` with a vision-judge receipt, held for every route (`SPEC_HELD_READS`). On the 147 crops v4.3 drops no
+shipped field beyond v4.2's interval (`versions-v42-v43.md`), so it is the tranche prompt. `extras.ts` scores the four
+against the author specs (`extras-v43.md`; 117 of 147 have one, 20-27 pairs per question): dormers yes 0.923 (12/13)
+[0.667-0.986], count exact 11/12; dormer kind 0.58 (fails); balconies yes 2/2, bay window yes 1/1 (no figure);
+door surround yes 0/2 (fails); the `no` classes are the absent default. All stay held; the dormer count is the one
+candidate for a route.
+Wall colour: the reader gives the finish, the pixels the colour. `describe-cut.ts w1` takes lane W1's `wallLab` on the
+game-lens photo of each cut's pinned capture (aimPose + frameFor, cached panoramas) into cuts.json `w1`; stage.ts stages
+`wallBrickFromSample(w1.hex)`: fitWallBrick with the pinned render at `PIN_RENDER_GAIN` 1.14 x cityWallTint, so the brick
+renders onto the photo. Below the city brick floor (`CITY_BRICK_LIGHTNESS` 0.3) no brick renders darker; the fit stages the
+floor brick in the sample's hue (`floor`), which is 153 of 194 AH07 samples: the render cannot reach those photos' L.
+

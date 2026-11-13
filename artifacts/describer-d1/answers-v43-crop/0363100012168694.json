@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012168694",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012168694/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "storeyParts.roof",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a full-width glazed roof storey set back behind the cornice, with a low hipped roof and a small central pediment"
+  },
+  {
+   "component": "window",
+   "what": "white plastered frieze with small consoles under the cornice"
+  }
+ ],
+ "notes": "A parked van hides the ground storey; three upper rows of two windows are visible above it. Grainy image.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

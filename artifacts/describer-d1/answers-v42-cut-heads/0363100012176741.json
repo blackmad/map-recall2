@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012176741",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012176741.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "souterrain": false,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "heads",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "upper windows are one large undivided pane under a fixed top light, not a casement pair"
+  },
+  {
+   "component": "relief",
+   "what": "decorative segmental brick hood arches with a raised moulded course over each window and a patterned brick frieze under the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a green-and-gold tiled shopfront with a large round-arched display window and a lettered fascia"
+  },
+  {
+   "component": "dormer",
+   "what": "one white pedimented dormer behind the cornice"
+  }
+ ],
+ "notes": "The outline is the right half of a four-axis wall that reads as two identical two-axis fronts; a glass metro entrance hides the right edge of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

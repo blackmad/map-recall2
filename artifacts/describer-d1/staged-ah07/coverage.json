@@ -31,9 +31,10 @@
   "fronts/*/bays": 0.951,
   "fronts/*/cornice": 0.108,
   "fronts/*/gable": 0.449,
+  "fronts/*/rowHeads": 0.265,
   "fronts/*/souterrain": 0.849,
   "fronts/*/storeys": 0.914,
-  "fronts/*/windowHead": 0.843,
+  "fronts/*/windowHead": 0.676,
   "palette/brick": 1,
   "palette/wallMaterial": 0.984
  },

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012172000",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172000/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2016,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "cornice",
+  "sameAs",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber shopfront with a fascia cornice, a row of transom lights over a large window and a glazed door at the right"
+  },
+  {
+   "component": "relief",
+   "what": "the white frieze under the cornice is divided into recessed panels"
+  }
+ ],
+ "notes": "The maroon wall reads as painted brick; iron wall anchors between the windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

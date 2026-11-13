@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012178186",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012178186.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "sameAs",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small dark iron wall anchors (ornamental) beside the upper windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "black-painted shopfront with a pair of panelled doors at the left and a large glazed window"
+  }
+ ],
+ "notes": "Upper heads are flat frames under shallow brick arches of radiating headers; left neighbour is a similar 3-bay front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

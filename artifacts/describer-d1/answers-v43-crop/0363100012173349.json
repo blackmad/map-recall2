@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012173349",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173349/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "windowSurround",
+  "bands",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white balustrade-like band runs across the gable foot, with a small finial on the gable top"
+  },
+  {
+   "component": "window",
+   "what": "each upper storey has a different head: white console blocks, segmental brick arches, white corner blocks"
+  }
+ ],
+ "notes": "A parked van hides the ground storey and its door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

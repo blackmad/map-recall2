@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012182304",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182304/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "dormers",
+  "storeyParts.souterrain",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall dormer with white side cheeks rises over the cornice; its top is out of frame"
+  },
+  {
+   "component": "relief",
+   "what": "the white frieze under the cornice is divided into three recessed panels"
+  }
+ ],
+ "notes": "The ground storey's lower part and door are hidden behind a canal fence and quay wall; a pole crosses the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

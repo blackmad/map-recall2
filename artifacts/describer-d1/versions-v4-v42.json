@@ -2,50 +2,51 @@
  "v": 1,
  "a": "answers-v4-crop",
  "b": "answers-v42-crop",
+ "authorConvention": "exclude",
  "pands": 147,
  "fields": {
   "storeys": {
    "a": {
     "label": "storeys",
-    "k": 95,
-    "n": 116,
-    "acc": 0.819,
+    "k": 81,
+    "n": 95,
+    "acc": 0.853,
     "ci": [
-     0.739,
-     0.878
+     0.768,
+     0.91
     ]
    },
    "b": {
     "label": "storeys",
-    "k": 93,
-    "n": 114,
-    "acc": 0.816,
+    "k": 78,
+    "n": 94,
+    "acc": 0.83,
     "ci": [
-     0.735,
-     0.876
+     0.741,
+     0.892
     ]
    },
    "aRightBWrong": 5,
-   "bRightAWrong": 4
+   "bRightAWrong": 3
   },
   "storeys±1": {
    "a": {
     "label": "storeys±1",
-    "k": 116,
-    "n": 116,
+    "k": 95,
+    "n": 95,
     "acc": 1,
     "ci": [
-     0.968,
+     0.961,
      1
     ]
    },
    "b": {
     "label": "storeys±1",
-    "k": 114,
-    "n": 114,
+    "k": 94,
+    "n": 94,
     "acc": 1,
     "ci": [
-     0.967,
+     0.961,
      1
     ]
    },
@@ -367,37 +368,25 @@
  },
  "ground": {
   "answers-v4-crop": {
-   "n": 54,
-   "ok": 40,
+   "n": 35,
+   "ok": 28,
    "exact": {
     "label": "dwelling rows exact",
-    "k": 40,
-    "n": 54,
-    "acc": 0.741,
+    "k": 28,
+    "n": 35,
+    "acc": 0.8,
     "ci": [
-     0.611,
-     0.839
+     0.641,
+     0.9
     ]
    },
    "misses": [
     [
-     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
-     2
-    ],
-    [
-     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible",
-     2
-    ],
-    [
-     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof gable-attic",
-     2
-    ],
-    [
-     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof none",
-     2
-    ],
-    [
      "over 1 | counted the truth attic in the crown | truth benchmark | read souterrain false / truth false | read roof gable-attic",
+     1
+    ],
+    [
+     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
      1
     ],
     [
@@ -409,44 +398,40 @@
      1
     ],
     [
-     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof dormers",
-     1
-    ],
-    [
      "over 1 | other over | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
      1
     ],
     [
      "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof mansard",
      1
+    ],
+    [
+     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible",
+     1
     ]
    ]
   },
   "answers-v42-crop": {
-   "n": 51,
-   "ok": 40,
+   "n": 34,
+   "ok": 28,
    "exact": {
     "label": "dwelling rows exact",
-    "k": 40,
-    "n": 51,
-    "acc": 0.784,
+    "k": 28,
+    "n": 34,
+    "acc": 0.824,
     "ci": [
-     0.654,
-     0.875
+     0.665,
+     0.917
     ]
    },
    "misses": [
     [
-     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
-     2
-    ],
-    [
-     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof gable-attic",
-     2
-    ],
-    [
      "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible",
      2
+    ],
+    [
+     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
+     1
     ],
     [
      "over 1 | other over | truth hand-spec | read souterrain true / truth false | read roof not-visible",
@@ -454,14 +439,6 @@
     ],
     [
      "under 1 | read a roof storey the truth counts | truth hand-spec | read souterrain false / truth false | read roof mansard",
-     1
-    ],
-    [
-     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof dormers",
-     1
-    ],
-    [
-     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof none",
      1
     ],
     [
