@@ -1,0 +1,74 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171198",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#747770"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential"
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a black iron balcony across the front at the second-storey floor and a white balustraded balcony at the first-storey floor"
+  },
+  {
+   "component": "window",
+   "what": "each storey has one wide window of a centre pair with narrow side lights under a row of top lights"
+  },
+  {
+   "component": "roof",
+   "what": "a dark roof face with one white-framed dormer behind the cornice"
+  }
+ ]
+}

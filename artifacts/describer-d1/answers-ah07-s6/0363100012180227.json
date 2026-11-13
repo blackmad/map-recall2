@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012180227",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180227.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4 cut AH07",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "storeyParts",
+  "bands",
+  "windowSurround",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a sculpted relief panel in the attic between two small windows over the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balcony at the middle window of the second upper row"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks at the corners of every window and along the floor lines"
+  }
+ ],
+ "notes": "A hedge hides the ground storey, so the storey count cannot be checked; trees cross the top.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}
