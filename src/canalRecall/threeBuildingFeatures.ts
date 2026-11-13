@@ -142,12 +142,15 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
-function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number } | undefined {
+function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
   // Lane 1 step e (rowFront flag, houseLine/rowFront.ts): a front record's house takes no block surrounds (the pale
   // presets' alternating masonry blocks) unless a record states them; it states none yet.
-  if (typeof p.rowFront === 'string') return { ...r?.look, ...extra, pale: false, ...(r?.look ? { bays: r?.bays } : {}) };
+  if (typeof p.rowFront === 'string') {
+    const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
+    return { ...r?.look, ...extra, pale: false, ...(r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+  }
   if (!r?.look && !Object.keys(extra).length) return undefined;
   // The spec's bay count narrows the preset pool only under H11's stated look: a route A field changes its own trait, not the pool.
   return { ...r?.look, ...extra, ...(r?.look ? { bays: r?.bays } : {}) };

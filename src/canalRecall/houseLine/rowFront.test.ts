@@ -99,3 +99,13 @@ test('row front step e: plain extras, a dark plain shopfront, the plain preset; 
   assert.equal(rf.accentHex, ROW_FRONT_SHOP_HEX); assert.equal(rf.signature, undefined);
   for (const id of ['flower-boxes', 'iron-balconies', 'juliet-balcony', 'cornice-vases', 'corner-pilasters', 'door-canopy']) assert.ok(!rf.onlyExtras!.includes(id), id);
 });
+
+// Step d: the measured windows' height share and the nearest dressed preset (HD20 167818: rows 5.58-7.48 and 8.13-9.68).
+import { windowShare } from './rowFront.ts';
+import { BAY_STYLES, rowFrontStyle } from '../bayLook.ts';
+test('row front step d: HD20 window share and preset', () => {
+  const h = windowShare({ pandId: 'x', topM: 12.88, eavesM: 10.18, crown: { family: 'neck' }, confidence: 0.9, sources: {}, rows: [{ sillM: 5.58, headM: 7.48 }, { sillM: 8.13, headM: 9.68 }], groundTopM: 5.08 }, 10.18)!;
+  assert.ok(h > 0.6 && h < 0.8, `share ${h}`);
+  const i = rowFrontStyle('canal', h, false, 2)!, v = BAY_STYLES.canal[i];
+  assert.ok(v.openingOccupancy! >= 0.55 && !v.paleAccents && 2 % v.windows === 0, JSON.stringify(v));
+});

@@ -12,7 +12,7 @@
  */
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
 import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
-import { hexToOklab, paleWarmHeld, specWallDisplay } from '../houseSpec/wallColour.js';
+import { hexToOklab, paleWarmHeld } from '../houseSpec/wallColour.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -31,6 +31,8 @@ export interface RowFrontRecord {
   /** Measured upper window rows (sill, head) and the ground storey's top, above the pand's own ground (m). */
   rows?: Array<{ sillM: number; headM: number }>;
   groundTopM?: number;
+  /** Window axes on the first upper storey (lane 2 `bays`). */
+  bays?: number;
   /** Lane 2's wall colour (exposure taken out), its source and finish; absent = no hex (blocked or unread). */
   wall?: { hex: string; source: 'reviewed' | 'strip-measured'; finish?: string };
   storeys?: number;
@@ -113,6 +115,7 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
   const out: RowFrontRecord = { pandId: fr.pandId, face: fr.face, topM, eavesM, crown, confidence: CONFIDENCE[fr.confidence], sources };
   if (fr.storeys !== null && !fr.fallback) out.storeys = fr.storeys;
   if (fr.rows.length && !fr.fallback) out.rows = fr.rows.map(r => ({ sillM: at(r.sillM)!, headM: at(r.headM)! }));
+  if (fr.bays !== null && !fr.fallback) out.bays = fr.bays;
   if (fr.groundStoreyTopM !== null && !fr.fallback) out.groundTopM = at(fr.groundStoreyTopM)!;
   if (fr.wall?.hex && fr.wall.source) out.wall = { hex: fr.wall.hex, source: fr.wall.source, ...(fr.wall.finish ? { finish: fr.wall.finish } : {}) };
   if (fr.fallback) out.fallback = 'row-line';
@@ -149,17 +152,28 @@ const MIN_PLANNED_M = 6.5;
 type Feature = { type?: string; properties: Record<string, unknown>; geometry: unknown };
 
 /**
- * The record's wall in the spec wall's display (the same lift as a HouseSpec wall). A `reviewed` wall (a strip
+ * The record's wall as measured (exposure-corrected, no display lift). A `reviewed` wall (a strip
  * measurement a read checked against the photo) skips the pale-warm guard, as `reviewedWallSource` does; a
  * `strip-measured` one goes through it and is held (null: today's wall) when it trips. Plaster and stucco are renders.
  */
 export function recordWall(rec: RowFrontRecord): string | null {
   const w = rec.wall;
   if (!w || !/^#[0-9a-f]{6}$/i.test(w.hex)) return null;
-  const drawn = specWallDisplay(w.hex.toLowerCase(), { fromPixel: true });
+  // Lane 2's hex already has the capture's exposure taken out (lane WC option c): no second lift (the spec display's
+  // lift drew 167816 at L 0.40 for a 0.36 reading and 176101 at 0.62 for 0.53).
+  const drawn = w.hex.toLowerCase();
   if (w.source === 'reviewed') return drawn;
   const render = w.finish === 'plaster';
   return paleWarmHeld(drawn, { render, readingL: hexToOklab(w.hex)[0] }) ? null : drawn;
+}
+
+/** The measured windows' height as a share of their storey (sill-to-sill pitch; the top row's storey runs to the wall top). */
+export function windowShare(rec: RowFrontRecord, eavesM: number): number | null {
+  const rows = rec.rows ?? [];
+  if (!rows.length) return null;
+  const shares = rows.map((r, i) => { const next = rows[i + 1]?.sillM ?? Math.min(eavesM, r.headM + (r.sillM - (rows[i - 1]?.headM ?? rec.groundTopM ?? r.sillM - 0.6))); return (r.headM - r.sillM) / Math.max(0.5, next - r.sillM); });
+  const v = shares.reduce((a, b) => a + b, 0) / shares.length;
+  return Number.isFinite(v) && v > 0.3 && v < 0.95 ? Math.round(v * 100) / 100 : null;
 }
 
 /**
@@ -176,6 +190,9 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
+    if (rec.bays) out.bays = rec.bays;
+    const h = windowShare(rec, eavesM);
+    if (h !== null) out.windowH = h;
     if (rec.groundTopM !== undefined && rec.groundTopM > 2.4 && rec.groundTopM < eavesM - 2) out.groundM = rec.groundTopM; else delete out.groundM;
   }
   return { specRecipe: out };
