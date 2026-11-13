@@ -352,3 +352,17 @@ export function wallChange(before: Rgb8, after: Rgb8, frame: CameraFrame, pose: 
   const pct = +(100 * changed / n).toFixed(1);
   return { pct, meanDE: +(sum / n).toFixed(4), n, same: pct < WALL_SAME_PCT };
 }
+
+/**
+ * Which engine and world a frames run draws. Players get MapLibre over compiled world-v1 cells; house:frames always adds
+ * engine=own&cam=fps for the camera. `?world=live` is the dev fallback (runtime meshing of building-tiles), not what
+ * players see, so a sheet shot on it says so (lane BA, 2026-11-13: the 167794 sheet was read as the players' world).
+ */
+export type EngineWorld = { engine: string; world: string; live: boolean };
+export function engineWorld(query: string, worldDir?: string): EngineWorld {
+  const q = new URLSearchParams(query.replace(/^\?/, ''));
+  const live = q.get('world') === 'live';
+  const world = live ? 'live (dev fallback, not the players\' world)' : q.get('world') ? `world=${q.get('world')}` : worldDir ? `world-v1 staged (WORLD_DIR=${worldDir})` : 'world-v1 (players\' default)';
+  return { engine: `${q.get('engine') ?? 'own'} (${q.get('cam') ?? 'fps'} camera; players get MapLibre)`, world, live };
+}
+export const WORLD_LIVE_WARNING = 'WARNING: --query has world=live: frames are drawn by the dev fallback (runtime meshing), not the compiled world-v1 cells players get. Shoot the default world too before ruling on a house.';

@@ -15,8 +15,8 @@
 // groundStore.ts so the ground bundles do not pull in the building modules.
 
 import { GAME_ORIGIN as ORIGIN } from './groundStore.js';
-import { buildingProjectionScale } from '../buildingProjectionScale.js';
-import { mercatorOfLngLat, mercatorUnitsPerMetre, type Mat4 } from '../rendererShared/frameMath.js';
+import { buildingMercatorFromLocal } from '../buildingProjectionScale.js';
+import type { Mat4 } from '../rendererShared/frameMath.js';
 import type { FrameParticipant } from '../rendererShared/sharedFrame.js';
 
 /** Below the facades (0): the ground is drawn first so coplanar ties go to what stands on it. */
@@ -24,9 +24,7 @@ export const GROUND_ORDER = -10;
 
 /** Column-major local (toLocal metres, z up) → Web Mercator, identical to the facade layer's transform. */
 export function groundMercatorFromLocal(): number[] {
-  const [mx, my, mz] = mercatorOfLngLat(ORIGIN.lng, ORIGIN.lat, 0);
-  const [sx, sy, sz] = buildingProjectionScale(mercatorUnitsPerMetre(my));
-  return [sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, mx, my, mz, 1];
+  return buildingMercatorFromLocal(ORIGIN);
 }
 
 /**

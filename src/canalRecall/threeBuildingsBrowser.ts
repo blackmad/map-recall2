@@ -50,7 +50,7 @@ import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
-import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { buildingMercatorFromLocal } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
@@ -83,6 +83,8 @@ import { isAerialView } from './rendererShared/aerialView.js';
 function pageFlag(name: string): string | null {
   try { return typeof URLSearchParams === 'function' ? new URLSearchParams(globalThis.location?.search ?? '').get(name) : null; } catch { return null; }
 }
+/** `?keepVerts=1`: chunk vertex arrays stay on the CPU after upload (tests/e2e/plot-true.spec.ts reads them). */
+const KEEP_VERTS = pageFlag('keepVerts') === '1';
 import { createWindowTableTexture, layerWindowRects, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
@@ -1845,7 +1847,7 @@ export class ThreeBuildings {
     const range = this.liftRange(lift.applied);
     growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
     // Settled: let the CPU copy go after the next upload.
-    if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+    if (!lift.pending.size && !KEEP_VERTS) attribute.onUpload(function (this: any) { this.array = null; });
   }
 
   private readonly baseSlicer = new BaseRefreshSlicer<string>();
@@ -1992,7 +1994,8 @@ export class ThreeBuildings {
     // The GPU holds the copy that draws; the CPU array is freed once uploaded
     // (the `hidden` flags stay: they are rewritten when the answer changes).
     // A lost context rebuilds from `source`, see onAdd.
-    const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
+    // `?keepVerts=1` (plot-true spec, lane BA): keep the CPU copy so a check can read the drawn vertices.
+    const release = (attribute: any) => { if (!KEEP_VERTS) attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
     // Own ground: lift each building onto its relief before upload. Houseboats
     // follow the water level instead (mesh.position.z below).
     let lift: GroundLift | undefined = staged;
@@ -2336,9 +2339,9 @@ export class ThreeBuildings {
       this.scheduleStage();
       this.map.triggerRepaint();
     });
-    const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
-    const scale = c.meterInMercatorCoordinateUnits();
-    this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+    // The equatorial metre, not the map's (MapLibre's mean-radius metre drew every generic building 0.112 % of its
+    // distance from ORIGIN too far out: buildingProjectionScale.ts). Identical to the own ground's transform.
+    this.transform = new THREE.Matrix4().fromArray(buildingMercatorFromLocal(ORIGIN));
   }
 
   /** The canvas pixel ratio MapLibre renders at (the facade tier's rates are per CSS pixel). */
