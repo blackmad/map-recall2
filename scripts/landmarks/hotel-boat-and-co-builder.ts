@@ -172,13 +172,14 @@ function mansard() {
     const i = MANSARD.indexOf(a), {f, len} = edgeFrame(MANSARD, i);
     lancetDormer(m, f, {t: len / 2, width: 4.4, y0: EAVE + 0.05, ySpring: 16.0, yApex: 18.7, front: 0.46, depth: 2.6, frame: 0.3}, cols, 2);
     const L = raisedLettering({text, heightM: 0.85, maxWidthM: 6.0, depthM: 0.06});
-    const g = twoSidedLetters(L.geometry), t = len / 2, o = -MANS - 0.6;
-    g.translate(0, TOP + 0.35 + L.heightM / 2, 0);
+    const gap = 0.04, g = twoSidedLetters(L.geometry, gap), t = len / 2, o = -MANS - 0.6, y0 = TOP + 0.35;
+    g.translate(0, y0 + L.heightM / 2, 0);
     g.rotateY(Math.atan2(f.n[0], f.n[1]));
     g.translate(f.origin[0] + f.tangent[0] * t + f.n[0] * o, 0, f.origin[1] + f.tangent[1] * t + f.n[1] * o);
     b.add(g, 'green');
-    m.box(f, t - 3.1, t + 3.1, TOP, TOP + 0.3, o - 0.15, o - 0.02, 'greyBrick');
-    for (const s of [-1, 1]) m.box(f, t + s * 2.9 - 0.04, t + s * 2.9 + 0.04, TOP, TOP + 1.3, o - 0.12, o - 0.04, 'greyBrick');
+    // the sign board between the two faces of lettering, on a low base bar
+    m.box(f, t - L.widthM / 2 - 0.2, t + L.widthM / 2 + 0.2, y0 - 0.08, y0 + L.heightM + 0.08, o - gap, o + gap, 'greyBrick');
+    m.box(f, t - 3.1, t + 3.1, TOP, y0 - 0.08, o - 0.1, o + 0.1, 'greyBrick');
     m.box(f, t + 2.2 - 0.05, t + 2.2 + 0.05, TOP, TOP + 6.0, o - 2.0, o - 1.9, 'white');            // flagpole
   }
   // spine front on the courtyard: nine pointed dormers (2021 water-side panorama)

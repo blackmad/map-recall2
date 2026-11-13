@@ -93,7 +93,7 @@ function longFace(edge: 0 | 2) {
     for (let k = 0; k < 14; k++) g.push({t0: k * pitch + 0.15, t1: (k + 1) * pitch - 0.05, y0: GROUND_ROW[0] - 0.2, y1: GROUND_ROW[1], depth: 0.08, back: 'glass', reveal: 'frame'});
     holed(m, back, len, HULL_TOP, GROUND_TOP, 'greyBrick', g);
     m.quad(f, {pts: [[0, GROUND_TOP, 0], [0, GROUND_TOP, -WALKWAY], [len, GROUND_TOP, -WALKWAY], [len, GROUND_TOP, 0]]}, 'stone');
-    for (const t of [0, len]) m.quad(f, {pts: t === 0 ? [[0, HULL_TOP, -WALKWAY], [0, HULL_TOP, 0], [0, GROUND_TOP, 0], [0, GROUND_TOP, -WALKWAY]].reverse() : [[len, HULL_TOP, 0], [len, HULL_TOP, -WALKWAY], [len, GROUND_TOP, -WALKWAY], [len, GROUND_TOP, 0]].reverse()}, 'greyBrick');
+    // the walkway is open at both ends (w04-50, the deck rail runs on round the NE corner): the end walls' ground storeys stop short of it
   }
   // ends of the siding band (0.3 m strip between hull edge and body): handled by the hull deck
   return {f, len};
@@ -115,8 +115,8 @@ function ends() {
     const small: Cut[] = [{t0: 1.8, t1: 2.8, y0: 10.2, y1: 10.75, depth: 0.1, back: 'glass', reveal: 'frame'}, {t0: 4.7, t1: 5.1, y0: 6.0, y1: 6.5, depth: 0.1, back: 'glass', reveal: 'frame'},
       {t0: 15.5, t1: 16.4, y0: 9.4, y1: 10.8, depth: 0.1, back: 'glass', reveal: 'frame'}, {t0: 15.5, t1: 16.4, y0: 6.0, y1: 7.4, depth: 0.1, back: 'glass', reveal: 'frame'}];
     holed(m, f, len, GROUND_TOP, EAVE, 'stone', small);
-    const g: Cut[] = [{t0: 0.4, t1: tw0 - 0.3, y0: 2.3, y1: 3.75, depth: 0.1, back: 'glass', reveal: 'frame'}, {t0: tw1 + 0.6, t1: len - 0.4, y0: 2.3, y1: 3.75, depth: 0.1, back: 'glass', reveal: 'frame'}];
-    holed(m, f, len, HULL_TOP, GROUND_TOP, 'greyBrick', g);
+    const g: Cut[] = [{t0: 0.4, t1: tw0 - 0.3, y0: 2.3, y1: 3.75, depth: 0.1, back: 'glass', reveal: 'frame'}, {t0: tw1 + 0.6, t1: len - WALKWAY - 0.3, y0: 2.3, y1: 3.75, depth: 0.1, back: 'glass', reveal: 'frame'}];
+    holed(m, f, len - WALKWAY, HULL_TOP, GROUND_TOP, 'greyBrick', g);            // stops at the SE walkway
     // white tower, 0.6 m proud, glazed strip on its right part
     const TO = 0.6, gl0 = 10.7 - SIDE_IN, gl1 = 12.7 - SIDE_IN;
     m.box(f, tw0, gl0, HULL_TOP, EAVE, 0, TO, 'pink', ['back']);
@@ -149,7 +149,8 @@ function ends() {
     const small: Cut[] = [];
     for (const t of [2.2, len - 3.4]) for (const y of [6.2, 9.8]) small.push({t0: t, t1: t + 1.0, y0: y, y1: y + 0.55, depth: 0.1, back: 'glass', reveal: 'frame'});
     holed(m, f, len, GROUND_TOP, EAVE, 'stone', small);
-    holed(m, f, len, HULL_TOP, GROUND_TOP, 'greyBrick', [{t0: tw1 + 0.6, t1: tw1 + 2.4, y0: 2.2, y1: 3.6, depth: 0.1, back: 'glass', reveal: 'frame'}]);
+    // ground storey from the SE walkway (t 0..WALKWAY here: this end's t runs from the SE corner) to the NW corner
+    holed(m, edgeFrame(body, 1, WALKWAY).f, len - WALKWAY, HULL_TOP, GROUND_TOP, 'greyBrick', [{t0: tw1 + 0.6 - WALKWAY, t1: tw1 + 2.4 - WALKWAY, y0: 2.2, y1: 3.6, depth: 0.1, back: 'glass', reveal: 'frame'}]);
     const TO = 1.5, top = EAVE + 0.7;
     const tcuts: Cut[] = [];
     for (const y of [2.6, 6.0, 9.4]) tcuts.push({t0: 1.6, t1: 2.3, y0: y, y1: y + 1.1, depth: 0.12, back: 'glass', reveal: 'frame'});
