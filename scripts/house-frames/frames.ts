@@ -635,7 +635,7 @@ async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Pr
   const summary = {
     input: args.inputName, label: args.label, query: args.query, pands: args.pands.length, prepared: prepared.length, skipped, framed: ok.length,
     alignment: { photoEdges: photoEdges.length, medianPct: +quantile(photoEdges, 0.5).toFixed(2), p90Pct: +quantile(photoEdges, 0.9).toFixed(2), over3: ok.flatMap(r => r.edges.photo.filter((e: EdgeRead) => e.found && e.side !== 'crown' && Math.abs(e.offsetPct) > 3).map((e: EdgeRead) => `${r.pandId} ${e.side} ${e.offsetPct}%`)), gameEdges: gameEdges.length, gameMedianPct: +quantile(gameEdges, 0.5).toFixed(2) },
-    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour', 'sameAsBefore'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
+    flags: Object.fromEntries(['missing', 'otherBuilding', 'neighbourCovers', 'roofOffset', 'wallColour', 'sameAsBefore'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
     advisory: { possibleBlankWall: ok.filter(r => r.advisory?.openings).map(r => r.pandId) },
     colourScores: ok.map(r => [r.pandId, r.colour?.score ?? null]),
     ...(args.before ? { compare: { before: args.before, pairs: ok.filter(r => r.compare && !r.compare.error).length, same: ok.filter(r => r.compare?.same).map(r => r.key), changedPct: ok.map(r => [r.key, r.compare?.pct ?? null]) } } : {}),

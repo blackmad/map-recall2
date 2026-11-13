@@ -120,3 +120,17 @@ test('pinned eyeball poses: a listed pand takes its pinned capture and bad captu
   assert.deepEqual(other, { id: '0363100099999999' });
   assert.equal(own.pano, 'mine');
 });
+
+test('pinned 167794 (belt-20261113 sheet): neighbour 167795 drawn 1.2 m over the front takes 12/35 wall samples: neighbourCovers fires, otherBuilding does not', async () => {
+  const { flagsFor } = await import('./analyse.ts');
+  const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 }, roof = { crownM: 12, game: null, photo: null, above: 0 };
+  const read = (other: number, others: Record<string, number>) => ({ wall: { n: 35, target: 35 - other, other, none: 0, others }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' }) as any;
+  const f = flagsFor(read(12, { '0363100012167795': 12 }), m, m, roof);
+  assert.equal(f.otherBuilding, null);
+  assert.equal(f.neighbourCovers, '0363100012167795 12/35');
+  // Under 10 % stays quiet (a sample or two at a party wall); otherBuilding at >= 50 % supersedes it.
+  assert.equal(flagsFor(read(3, { a: 3 }), m, m, roof).neighbourCovers, null);
+  const most = flagsFor(read(20, { b: 20 }), m, m, roof);
+  assert.equal(most.otherBuilding, 'b');
+  assert.equal(most.neighbourCovers, null);
+});
