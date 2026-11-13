@@ -40,12 +40,16 @@ export function parapetCrossings(line: readonly ParapetPoint[], traffic: (x: num
 /**
  * `pL`/`pR` (waterOutside `plein`): the edge reads as water-side (`oL`/`oR`) but RAIL_WATER_PROBE_M outside it the road
  * survey draws a surface (a street, path or plein over a culverted canal: the Muntplein over the Singel, where the water
- * mask runs on under the plein); the railing breaks there as on a crossing street.
+ * mask runs on under the plein); the railing breaks there as on a crossing street. The survey must still be there
+ * RAIL_PLEIN_DEEP_M out: a bridge's own footway outside a railing drawn at the cycle path's edge (OSM 942202252, 3 m
+ * wide over open water) is no plein.
  */
 export interface RunRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; water: boolean; wL: boolean; wR: boolean; oL?: boolean; oR?: boolean; pL?: boolean; pR?: boolean }
 
 /** Water this far outside a deck edge makes it a water-side edge (the water polygon stops at the bridge faces). */
 export const RAIL_WATER_PROBE_M = 1.0;
+/** A surveyed surface outside a water-side edge is a plein (no railing) only when it runs on this far out, metres. */
+export const RAIL_PLEIN_DEEP_M = 6;
 /**
  * The `oL`/`oR` flags of a row, before cleanWater fills the water spans across the deck: water at each edge or
  * RAIL_WATER_PROBE_M outside it (n points to L).
@@ -54,7 +58,8 @@ export function waterOutside(L: Vec2, R: Vec2, n: Vec2, overWater: (x: number, y
   const d = RAIL_WATER_PROBE_M, lx = L[0] + n[0] * d, ly = L[1] + n[1] * d, rx = R[0] - n[0] * d, ry = R[1] - n[1] * d;
   const out = { oL: overWater(L[0], L[1]) || overWater(lx, ly), oR: overWater(R[0], R[1]) || overWater(rx, ry) };
   if (!plein) return out;
-  const pL = out.oL && plein(lx, ly), pR = out.oR && plein(rx, ry);
+  const e = RAIL_PLEIN_DEEP_M;
+  const pL = out.oL && plein(lx, ly) && plein(L[0] + n[0] * e, L[1] + n[1] * e), pR = out.oR && plein(rx, ry) && plein(R[0] - n[0] * e, R[1] - n[1] * e);
   return pL || pR ? { ...out, ...(pL ? { pL } : {}), ...(pR ? { pR } : {}) } : out;
 }
 

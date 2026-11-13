@@ -95,6 +95,9 @@ test('waterOutside plein / railRuns: no railing where the survey draws a surface
   const left = railRuns(rows, 0, 30, 1);
   assert.ok(left.length === 2 && left[0][1] < 12 && left[1][0] > 18, `the left railing breaks over the plein: ${JSON.stringify(left)}`);
   assert.deepEqual(railRuns(rows, 0, 30, -1), [[0, 30]], 'the right railing is unchanged');
+  // A strip outside the edge narrower than RAIL_PLEIN_DEEP_M (a bridge's own footway over open water, OSM 942202252): no plein.
+  const footway = (x: number, y: number) => y > 0 && y < 4 + 3 && x >= 12 && x <= 18;
+  assert.ok(deck(4, 4, () => true).every(r => !waterOutside(r.L, r.R, r.n, () => true, footway).pL), 'a 3 m footway is no plein');
   // No plein test: byte-identical rows.
   const plain = deck(4, 4, () => true).map(r => ({ ...r, ...waterOutside(r.L, r.R, r.n, () => true) }));
   assert.ok(plain.every(r => !('pL' in r) && !('pR' in r)));
