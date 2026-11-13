@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "pandId": "0363100012172622",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172622/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "tall white-framed ground storey with an entresol row of large windows over the shop"
+  },
+  {
+   "component": "balcony",
+   "what": "French-balcony rails across the upper windows"
+  }
+ ],
+ "notes": "Oblique, top cut off; a blurred passer-by in front of the shop."
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "storeys",
+  "bands",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two white oval cartouches flanking the single top-storey window"
+  },
+  {
+   "component": "window",
+   "what": "a hoist-loft opening with white open shutters above the top storey"
+  },
+  {
+   "component": "door",
+   "what": "ground storey with two side street doors and a wide central double glazed door"
+  }
+ ],
+ "notes": "Top of the front is cut off, so the crown cannot be read; the shuttered loft opening may sit in a gable."
+}

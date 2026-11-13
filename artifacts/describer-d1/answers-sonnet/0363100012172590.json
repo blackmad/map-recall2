@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "pandId": "0363100012172590",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012172590/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": 2,
+ "windows": "casement-small-panes",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "bays",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "restaurant shopfront under a dark awning"
+  }
+ ],
+ "notes": "Oblique view from street, top cut off, van in front; heads not countable."
+}

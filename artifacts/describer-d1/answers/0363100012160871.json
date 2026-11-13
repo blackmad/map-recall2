@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012160871",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012160871/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "multi",
+ "storeys": 4,
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "bays",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall brick dormer gable with a round-arched paired window over each two-bay front"
+  },
+  {
+   "component": "window",
+   "what": "round relieving arches with brick tympana over the top-storey windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "white rendered ground storey with pilasters running across both fronts"
+  }
+ ],
+ "notes": "Image centre falls on the party line between two matching two-bay fronts, each with its own dormer gable; described one of them."
+}

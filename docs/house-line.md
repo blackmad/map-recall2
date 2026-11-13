@@ -2812,3 +2812,13 @@ Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were
 tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
 reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
 photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.

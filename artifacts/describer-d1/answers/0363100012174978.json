@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012174978",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174978/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "heads",
+  "wallFamily"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small pointed dormer with a finial behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "white stucco ground storey with a door under twin round-arched lights"
+  }
+ ],
+ "notes": "Tree and plants hide the ground storey."
+}

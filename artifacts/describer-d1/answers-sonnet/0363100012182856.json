@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012182856",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182856/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 sonnet",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "deep plaster cornice with brackets and decorated frieze panels"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron balustrades in front of each window"
+  }
+ ],
+ "notes": "Ground storey hidden by a terrace awning."
+}

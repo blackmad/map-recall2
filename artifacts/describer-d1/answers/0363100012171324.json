@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012171324",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171324/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": "not-visible",
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "brown",
+ "finish": "brick",
+ "whiteFrames": false,
+ "low": [
+  "wallFamily",
+  "ground",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "brick pilasters between the window axes and recessed brick panels between storeys"
+  },
+  {
+   "component": "door",
+   "what": "a deep recessed porch with a black door reached by steps with iron railings"
+  }
+ ],
+ "notes": "Wide front cropped at both sides and at the top; storeys and axes cannot be counted."
+}

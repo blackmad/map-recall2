@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182712",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182712/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2019,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "wallFamily": "dark",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "low iron railings across the lower part of each upper window (French balconies)"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront with a gridded transom band and two dark doors at the right"
+  }
+ ],
+ "notes": "Wall reads very dark grey brick, possibly painted."
+}

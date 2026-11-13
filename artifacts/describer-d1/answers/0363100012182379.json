@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "pandId": "0363100012182379",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182379/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a door with an oval-patterned fanlight at the right of the ground storey"
+  }
+ ],
+ "notes": "Top cut off just above the top storey (ornaments at the corners suggest a gable); a van hides the ground storey."
+}

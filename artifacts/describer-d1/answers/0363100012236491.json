@@ -1,0 +1,46 @@
+{
+ "v": 1,
+ "pandId": "0363100012236491",
+ "image": {
+  "ref": "source-data://experiments/facade-benchmark/round-0/frames/0363100012236491/photo.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus",
+ "readable": true,
+ "extent": "single",
+ "storeys": 4,
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "wallFamily": "red-brown",
+ "finish": "brick",
+ "whiteFrames": true,
+ "low": [
+  "windows",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall dormer with a small pointed pediment and hoist beam rising behind the cornice on each house"
+  }
+ ],
+ "notes": "Long uniform row of identical three-bay fronts under one continuous cornice; house boundaries in the middle are hard to place."
+}
