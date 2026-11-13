@@ -59,7 +59,16 @@ const stopGpu = async () => { if (gpuBrowser) { const b = gpuBrowser; gpuBrowser
 const context = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: DPR });
 await context.route(/ingest\.(us\.)?sentry\.io|google-analytics|googletagmanager/, r => r.fulfill({ status: 200, body: '{}' }));
 // --engine-bundle <file>: serve this engine.bundle.js instead of the deployed one (a source change on the live site).
-if (opt('engine-bundle', '')) await context.route(/\/canal-drive\/js\/engine\.bundle\.js(\?.*)?$/, r => r.fulfill({ path: opt('engine-bundle', ''), contentType: 'application/javascript' }));
+if (opt('engine-bundle', '')) await context.route(/\/js\/engine\.bundle\.js(\?.*)?$/, r => r.fulfill({ path: opt('engine-bundle', ''), contentType: 'application/javascript' }));
+// --slow-boot-probe <ms>: the first tier probe's 1x1 readPixels each wait this long (8 calls: one probe), as a
+// probe that read slow on a busy machine; later probes run untouched (the re-probe path, renderGovernor.ts retier).
+if (opt('slow-boot-probe', '')) await context.addInitScript(ms => {
+  let left = 8; const orig = WebGL2RenderingContext.prototype.readPixels;
+  WebGL2RenderingContext.prototype.readPixels = function (x, y, w, h, ...rest) {
+    if (left > 0 && w === 1 && h === 1) { left--; const t = performance.now(); while (performance.now() - t < ms) { /* busy */ } }
+    return orig.call(this, x, y, w, h, ...rest);
+  };
+}, Number(opt('slow-boot-probe', '0')));
 const page = await context.newPage();
 const tierLines = [];
 page.on('console', m => { const t = m.text(); if (/quality tier|tier re-probe|retier/i.test(t)) tierLines.push(t); });
