@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuw-engeland",
+ "pand": "0363100012165080",
+ "brief": "scripts/landmarks/nieuw-engeland-brief.md",
+ "signature": [
+  "t-dome-lantern",
+  "t-round-corner",
+  "o-arched-second-floor",
+  "o-ironwork-transoms",
+  "o-mansard-dormers",
+  "e-oriels",
+  "t-corner-portal"
+ ],
+ "walls": [
+  {
+   "tag": "w01-153",
+   "bearing": 153,
+   "lengthM": 25.7,
+   "centre": [4.889118, 52.36716],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001543_pano_0000_003133",
+   "capturedAt": "2020-01-08",
+   "checked": true,
+   "note": "Koningsplein front, rectified whole (nieuw-engeland-crops.ts face-koningsplein-1, 40 px/m) plus the brief's w01-153 crop of the 1914 part and aimed views kp-se (2025-06-16) and x-...002361_pano_0007_000204 (2021-12-29). West to east: the 1914 extension of five axes between two raised end pavilions (0-11.6 m), a narrow 1914 bay with a two-storey oriel (11.6-15.8 m), then three 2.77 m bays of the 1899 building to the round corner.",
+   "items": [
+    {"id": "o-arched-second-floor", "kind": "window-shape", "where": "1899 bays, second floor: three round-arched windows with a cream archivolt and a low iron rail across the sill", "approxSizeM": [2.3, 3.4], "plan": "modelled", "how": "cut openings with round heads (rise = half width), proud archivolt ring (archHead), green rail bar at the sill", "seenIn": "TMX7316010203-001543_pano_0000_003133"},
+    {"id": "o-ironwork-transoms", "kind": "balcony-ironwork", "where": "1899 bays, ground and first floor: sage-green iron window frames with a grid transom and whiplash arcs over the shop windows", "approxSizeM": [2.4, 1.2], "plan": "simplified", "how": "green frames with grid bars in the transom band of every ground and first-floor opening; the whiplash curve as a green round-headed bar inside the ground-floor transom", "seenIn": "recording_2025-06-16_06-42-40_00639"},
+    {"id": "o-pier-ornaments", "kind": "relief", "where": "1899 piers between first and second floor and beside the arches: white art-nouveau cartouches", "approxSizeM": [0.45, 1.1], "plan": "simplified", "how": "cream proud tablets with a smaller proud drop under them on each pier", "seenIn": "TMX7316010203-002361_pano_0007_000204"},
+    {"id": "o-sign-band", "kind": "lettering", "where": "frieze over the ground floor, 4.6-5.6 m", "approxSizeM": [25, 0.9], "plan": "skipped", "skip": {"reason": "temporary", "note": "tenant lettering (Victoria's Secret, Uniqlo) changes with the shop; the cream frieze band itself is modelled"}, "seenIn": "TMX7316010203-002936_pano_0001_000001"},
+    {"id": "o-mansard-dormers", "kind": "window-shape", "where": "1899 part over the main cornice: slate mansard with round-headed dormers, one per bay", "approxSizeM": [1.1, 2.0], "plan": "modelled", "how": "mansard swept along both fronts as an extruded section; dormer boxes with cream surrounds, round-headed glass and lead caps", "seenIn": "TMX7316010203-001543_pano_0000_003133"},
+    {"id": "e-relief-panels", "kind": "relief", "where": "1914 part, spandrels between the second/third and third/fourth floors: carved square panels under every window", "approxSizeM": [0.9, 0.5], "plan": "simplified", "how": "proud stone tablet with a recessed centre boss under each window", "seenIn": "TMX7316010203-001543_pano_0000_003133"},
+    {"id": "e-oriels", "kind": "window-shape", "where": "narrow 1914 bay at 11.6-15.8 m: three-sided oriel over two storeys on a console", "approxSizeM": [3.0, 5.4], "plan": "modelled", "how": "three-sided stone oriel with glass on each face, console below and a slate cap", "seenIn": "TMX7316010203-001543_pano_0000_003133"},
+    {"id": "e-pavilions", "kind": "other", "where": "1914 part: the two end axes rise as square pavilions over the parapet with a small attic window", "approxSizeM": [2.0, 2.0], "plan": "modelled", "how": "front raised to 23.1 m over the end axes with an attic window; the middle parapet stays at 21.9 m with a dormer behind", "seenIn": "TMX7316010203-001543_pano_0000_003133"},
+    {"id": "e-mezzanine-rails", "kind": "balcony-ironwork", "where": "1914 mezzanine (5.9-8.6 m): low iron rails in each window", "approxSizeM": [1.3, 0.4], "plan": "simplified", "how": "green rail bar inside the lower reveal", "seenIn": "b_20250109_1300_Track05_Sphere_00318"},
+    {"id": "e-shopfront", "kind": "canopy", "where": "1914 ground floor: dark green framed shop windows between grey stone piers", "approxSizeM": [11, 4.4], "plan": "simplified", "how": "two wide glazed openings and a door with green frames, hardstone plinth", "seenIn": "TMX7316010203-002361_pano_0007_000193"}
+   ]
+  },
+  {
+   "tag": "c01-102",
+   "bearing": 102,
+   "lengthM": 4.0,
+   "centre": [4.889294, 52.36723],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002936_pano_0001_000001",
+   "capturedAt": "2023-01-16",
+   "checked": true,
+   "note": "The round corner (BAG radius 2.3 m) with its flank bays, and the tower over the main cornice; aimed views far-ne (b_20250109_1300_Track05_Sphere_00332, 2025-01-09, whole tower), x-...002936 (2023-01-16, portal), w02-50 thumb (2023-02-27).",
+   "items": [
+    {"id": "t-round-corner", "kind": "tower", "where": "corner of Koningsplein and Singel: the curved front of three storeys with three curved windows per storey", "approxSizeM": [4.0, 18.9], "plan": "modelled", "how": "five flat facets on the BAG arc (window, pier, portal, pier, window) so each window stands in its own wall plane; bands and cornice turn with the facets", "seenIn": "TMX7316010203-002984_pano_0014_000039"},
+    {"id": "t-corner-portal", "kind": "other", "where": "ground floor of the round corner: the deep round-arched corner entrance with a heavy stone surround", "approxSizeM": [2.4, 4.4], "plan": "simplified", "how": "round-headed opening in the middle corner facet with a proud cream archivolt over a green-framed glazed door", "seenIn": "TMX7316010203-002936_pano_0001_000001"},
+    {"id": "t-dome-lantern", "kind": "dome", "where": "over the corner: drum with arched windows, slate dome with lucarnes, open lantern with cast-iron balustrade, cupola and finial", "approxSizeM": [6.0, 10.0], "plan": "modelled", "how": "octagonal drum with recessed round-headed windows (blind on the two faces the mansards abut) and a cornice ring, lathe dome, four lucarnes, open bronze lantern posts with a ring balustrade, cupola and finial", "seenIn": "b_20250109_1300_Track05_Sphere_00332"},
+    {"id": "t-street-sign", "kind": "sign", "where": "Koningsplein street name plate on the corner", "approxSizeM": [0.6, 0.2], "plan": "skipped", "skip": {"reason": "too-small", "note": "enamel street plate"}, "seenIn": "TMX7316010203-002361_pano_0007_000204"}
+   ]
+  },
+  {
+   "tag": "w02-51",
+   "bearing": 51,
+   "lengthM": 28.7,
+   "centre": [4.889164, 52.367345],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002947_pano_0001_000151",
+   "capturedAt": "2023-01-30",
+   "checked": true,
+   "note": "Singel front, rectified whole (face-singel-0/1, 40 px/m). From the corner: tower flank bay (0.6-3.3 m), the wide 1899 bay (3.8-10.3 m) with one great segmental arch over three lights, the narrow 1899 bay (10.9-13.6 m) carrying a raised pavilion to 24.5 m, the 1914 middle bay (14.1-18.6 m), the 1914 oriel bay (19.8-23.8 m), and Singel 466 (24.7-28.7 m), the early-18th-century neck-gabled house (Rijksmonument 5409) that BAG counts inside this pand.",
+   "items": [
+    {"id": "s-great-arch", "kind": "window-shape", "where": "wide 1899 bay, second floor: one segmental-arched window of three lights across 6 m", "approxSizeM": [6.0, 3.4], "plan": "modelled", "how": "cut opening with a segmental head and two mullions, proud archivolt", "seenIn": "TMX7316010203-002947_pano_0001_000151"},
+    {"id": "s-pavilion", "kind": "other", "where": "narrow 1899 bay: raised square pavilion to 24.5 m with a window per storey", "approxSizeM": [2.8, 5.6], "plan": "modelled", "how": "front raised over the bay with its own coping, windows at 3rd-5th storey", "seenIn": "TMX7316010203-002947_pano_0001_000151"},
+    {"id": "s-oriel", "kind": "window-shape", "where": "1914 bay at 19.8-23.8 m: three-sided oriel over the first and second floors", "approxSizeM": [3.4, 8.7], "plan": "modelled", "how": "three-sided stone oriel with glass faces, console and cap", "seenIn": "TMX7316010203-002947_pano_0001_000151"},
+    {"id": "s-466-neck-gable", "kind": "window-shape", "where": "Singel 466: dark brick front with white-framed sash windows and a neck gable with white scrolls and a cornice cap", "approxSizeM": [4.0, 16.0], "plan": "modelled", "how": "brick front with white sash frames, neck gable outline as an extruded polygon, cream scroll pieces and cap", "seenIn": "TMX7316010203-002947_pano_0001_000151"},
+    {"id": "s-466-shopfront", "kind": "sign", "where": "Singel 466 ground floor shop window with a white fascia", "approxSizeM": [3.6, 3.4], "plan": "simplified", "how": "glazed shop opening with a white fascia band; tenant lettering not drawn", "seenIn": "TMX7316010203-002947_pano_0001_000151"}
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"},
+  {"name": "Nieuw Engeland (Amsterdam), nl.wikipedia", "url": "https://nl.wikipedia.org/wiki/Nieuw_Engeland_(Amsterdam)", "licence": "CC BY-SA 4.0"},
+  {"name": "Lijst van rijksmonumenten aan het Singel (Amsterdam, Zuid): Singel 466 (5409), Singel 468 / Koningsplein 2-6 (518360)", "url": "https://nl.wikipedia.org/wiki/Lijst_van_rijksmonumenten_aan_het_Singel_(Amsterdam,_Zuid)", "licence": "CC BY-SA 4.0"}
+ ]
+}
