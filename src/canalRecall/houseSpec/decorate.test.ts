@@ -209,12 +209,12 @@ test('H11 houseSpecPatch: storeys and their fit live, look and shop held by defa
   const env = process.env.HOUSE_SPEC_DESIGN;
   try {
     delete process.env.HOUSE_SPEC_DESIGN;
-    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, storeysFit: true, storeysSrc: 'author', groundM: 4.5, period: 'canal' } }, 'default: the unified storey path, no look or shop');
+    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, storeysFit: true, groundM: 4.5, storeysSrc: 'author', period: 'canal' } }, 'default: the unified storey path, no look or shop');
     process.env.HOUSE_SPEC_DESIGN = '0';
-    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, period: 'canal' } }, 'all held: exactly H9 (the storey count, exact fit)');
+    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, storeysSrc: 'author', period: 'canal' } }, 'all held: exactly H9 (the storey count, exact fit)');
     process.env.HOUSE_SPEC_DESIGN = '1';
     const p = houseSpecPatch(view, { constructionYear: 1700 });
-    assert.deepEqual(p.specRecipe, { storeys: 3, storeysFit: true, storeysSrc: 'author', groundM: 4.5, look: { pale: false }, shopHex: '#21171a', period: 'canal' });
+    assert.deepEqual(p.specRecipe, { storeys: 3, storeysFit: true, groundM: 4.5, storeysSrc: 'author', look: { pale: false }, shopHex: '#21171a', period: 'canal' });
     assert.equal(p.specShop, true);
     assert.deepEqual(houseSpecPatch({ shop: false, src: { shop: 'author' } }, {}), { specShop: false }, 'a quiet front: no recipe, the flag only');
     // No H11 key: the patch is the one before H11.

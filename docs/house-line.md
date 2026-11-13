@@ -23,6 +23,60 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
 | §9 Facade benchmark and blind critic (`house:critic`) | F4 | landed (round 0 = baseline) |
 
+## §0 House construction and review rules (2026-11-13, after the belt-20261113 rejection)
+
+The user rejected the 175-house belt batch (round 125) from its What's New sheet: houses that
+looked shifted into their neighbours, new gaps, a lost dormer, a bad gable, a house too small.
+The batch had been accepted on counts and front-strip previews. These rules replace the old
+reviewer checklist for every ordinary-house route (A generic mesher with specs, B shader
+facades, C recipe GLBs) and for any per-house model.
+
+### Construction
+
+- The mesh plan is the pand's BAG polygon: not its bounding box, not the front width extruded.
+- Party walls lie on the shared edges.
+- Nothing crosses the front line except a stated stoop, awning, bay or hoist beam, and nothing
+  reaches the carriageway.
+- Hard gates are computed on the shipped mesh, per house (`scripts/building-recipes/install-audit.ts`,
+  `src/canalRecall/buildingRecipe/installAudit.ts`): area outside the pand polygon; intrusion into a
+  neighbouring pand over 0.2 m; uncovered street frontage over 0.2 m; front protrusion beyond the
+  stated parts. A failing house is held (`hold-installs.ts`, `ordinary-buildings-data/held.json`)
+  and falls back to route A with its measured spec.
+- `footprintIoU` on catalogue entries was never a mesh measure: it was the mesh-sharing IoU
+  (this footprint against the footprint of the house whose mesh it reuses). It is now
+  `shareFootprintIoU`. Do not cite it as placement evidence.
+- A crown read in the photo must survive into the model; a dropped crown is a hold, not a log line.
+  The crown gate compares model with spec, so it cannot catch a wrong spec: an independent photo
+  read (the D1 reader) is the check against the house.
+- A flank that differs from what the neighbours expose is closed and plain: no windows on a party wall.
+- Policy on new per-house GLBs for ordinary houses: **held pending David's confirmation** (the
+  2026-11-10 decision to prefer spec-generated recipe GLBs stands until he reverses it). No new
+  ordinary per-house installs meanwhile.
+
+### Review
+
+1. Nothing is reviewed outside the game. A verdict needs in-game frames of the house in its row:
+   one square view (under 30°, whole front and crown in frame, nothing in front) and one oblique
+   from each side with the party walls in view. A frame that is clipped, blocked, or flagged
+   `otherBuilding` / `neighbourCovers` counts as not reviewed, and not reviewed means not published.
+2. Read in this order, one written line each: (a) plan and position; (b) gaps and flanks;
+   (c) outline against the sky; (d) rows and bays; (e) colour and dressings. A fail at (a), (b)
+   or (c) ends the review.
+3. Every tool flag blocks the pand until it is fixed or waived in writing with a reason. Game edge
+   error over 3 % is a flag.
+4. The model must beat the fallback: the sheet is photo | route A with the same spec | the model.
+5. The reviewer is a fresh agent that did not build the model and does not see the lane report.
+   The integrator reads the row sheets before any publish.
+6. One street row per publish, about 20 houses at most. Re-run the same frames on the published
+   world before writing the note. The note's picture is the square view, and its text may not
+   call a house with an open fail "close".
+7. Counts are a report line, never an acceptance.
+8. Acceptance frames are shot on the players' world: the default compiled cells (compile changed
+   cells locally with `world:compile --changed`), not `?world=live`, which drew generic neighbours
+   about 1.2 m off their plots on Haarlemmerdijk (cause under investigation, lane BA). `world=live`
+   is for iteration only. Every caption names the engine and the world it was shot on; a sheet shot
+   on `world=live` cannot support a publish or a What's New note.
+
 ## §1 The record: HouseSpec
 
 ### Why
@@ -1124,6 +1178,47 @@ the compile and the verify as above. The first real batch is the integrator's an
 3. Copy the compiled world: `for d in cells shells far; do rsync -a --delete artifacts/world/staging/$d/ public/data/extracts/amsterdam/world-v1/$d/; done; cp artifacts/world/staging/{index.json,tiles.json,strings.bin} public/data/extracts/amsterdam/world-v1/`; then `npm run world:verify` (globalFresh true, 0 stale, 0 staleCovers, 0 differing) and `npm run test:world-format`.
 4. Recipe batches: rebuild covers-dependent bundles and stamps, `npm run test:canal-game-structure`, re-publish landmark cards if an extract regenerated.
 5. Commit specs, the published extract, world-v1 (and houses, GLBs, catalogue, covers, goldens for a recipe batch); push the archive worktree; paste the HISTORY and What's New drafts.
+
+### Install audit and holds (lane BA, 2026-11-13)
+
+The belt batch `belt-20261113` (175 recipe GLBs) passed every compile gate and was rejected in the street. No compile gate
+looks at the shipped mesh on its plot: `footprint-vs-bag` (`buildingRecipe/gates.ts`) compares the recipe's *declared* plan
+with BAG, and the catalogue's `recipe.footprintIoU` was the **mesh-sharing** IoU (this house's BAG footprint against that of
+the house whose mesh it reuses; a constant 1 for a house that is its own master, so 165073, a 9-corner L, read `1`). It is
+now written as `shareFootprintIoU` / `shareFrontZoneIoU` (`install.ts`; `catalogue-recipe-fields.ts` renames the old keys
+and repairs the scopes that a `--street` default of `Bilderdijkstraat` wrote on every belt house).
+
+**Audit** (`node --import tsx scripts/building-recipes/install-audit.ts [--ids=...] [--out=] [--md=] [--fails=] [--overlays=<dir>]`, ~3 s
+for 175; module `buildingRecipe/installAudit.ts`, tests beside it). Decoded GLB, placed by the catalogue (anchor, north
+offset, mirror) into RD, against BAG polygons (house facts for the pand, `bag-tiles/14` for neighbours). Hard gates:
+
+| Gate | Measures | Fails |
+|---|---|---|
+| outside | plan area more than 0.2 m outside the pand polygon, forward parts a stated part explains left out | > 0.5 m2 |
+| intrusion | deepest plan point inside a neighbouring pand, measured past the pand's own outline (BAG neighbours overlap a pand by up to 0.4 m: measured against the neighbour's edge, 148 of 175 "failed") | > 0.2 m |
+| frontage | each street front's length not covered laterally by the upper-storey wall band (exact, from the triangles) | > 0.2 m |
+| protrusion | deepest point in front of a street front that no stated part explains: stoop, awning, shopfront, hoist, cornice, eaves, bay, balcony (height band + depth from the intent); trim slots (frame, stone, glass, door) get 0.17 m on top | > 0.2 m |
+| crown | spec `fronts[0].gable` -> intent gable -> the front wall's drawn silhouette (roof slots left out; a level held over 0.6 m, so chimneys and finials are not crowns): flat vs raised, stepped vs not; a stated crest, crown cap or dormer lets a flat front rise to its stated height | any change |
+
+Placement error against the facts' own front frame and `meshIoU` (mesh plan vs the polygon) are printed, not gated.
+`--overlays` writes a top-down PNG per pand (mesh plan cells grey inside / red outside / orange in a neighbour, the pand
+blue, neighbours black, fronts green, frontage gaps magenta).
+
+Measured on `belt-20261113` (175): placement exact for all (anchor 0 m, rotation 0 deg); 24 fail a hard gate: protrusion 16,
+outside 6, intrusion 6, crown 5 (`scripts/building-recipes/holds/belt-20261113-gates.json` names gate and metres per pand).
+The 1.1 m "in front of the footprint" of 167818 and 171144 is the stated hoist beam: of 58 houses with anything over 0.5 m
+forward, 39 are hoists, 9 awnings, 5 cornices, 2 stoops, 1 a bay; 9 are unstated. The six of the rejected sheet pass every
+plan gate: what the user saw is not the mesh on its plot (in-game diagnosis follows).
+
+**Hold** (`landmarks/ordinaryHolds.ts`, data `public/canal-drive/ordinary-buildings-data/held.json`): a held install keeps
+its catalogue entry and GLB, `ORDINARY_BUILDINGS` leaves it out, so the game does not draw it and `build-covers` no longer
+hides its pand; the pand draws through the generic mesher with its published spec. Its own file so a re-install (which
+rewrites the catalogue entry) cannot drop a hold. `scripts/building-recipes/hold-installs.ts` writes it (`--from=<list>`,
+`--hold=... --reason=`, `--release=`, `--list`, `--from-audit=` to turn an audit into a list) and prints the commands that
+make it real: build-covers + copy, `check:covers`, `world:compile --changed --shell` + copy + `world:verify`,
+`build:canal-signature-landmarks` (the only bundle embedding the catalogue), `test:building-taxonomy` (fails while
+covers.json still hides a held install), `test:canal-game-structure`, `check:content-stats`. Rehearsed on the 30 holds:
+covers.json lost exactly the 30 held entries and nothing else.
 
 
 ## §4 Describe at scale
@@ -3201,3 +3296,30 @@ as `notPanos`. The picks were made by eye from every capture earlier frames runs
 0363100012165023's automatic pick, from 2023 on the far quay, sits behind a tree trunk and a portable toilet. The pin is
 F1's clear 2019-01-10 capture at 5.1 m. house:frames applies the file under `--list` and `--pands`, adds the pin's
 `notPanos` to the entry's own, and skips its sight-line filter for a pinned capture. `--no-pinned-poses` ignores the file.
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.
+
+**Step 1c and the step-2 pilot (2026-11-13).** Image modes scored on the same 146 gate-pass pands against the adjudicated labels
+(`scripts/house-line/benchmark/benchmark-v1-adjudicated.json`): the square crop, a describe cut (`describe-cut.ts`: an
+unrectified perspective cut from the panorama cache, wall outlined, neighbours and crown in frame) and a per-panorama read
+(3-5 numbered fronts in one image). No mode lifts storeys or crown to 0.9 (`artifacts/describer-d1/scores-same147-compare.md`),
+so step 2 reads the gate-pass crop where one exists and the describe cut otherwise; the crown is read from the cut when the
+crop says not-visible. A zoomed window as a second image did not lift window family or pane layout over 0.8 (parked).
+What ships (`stage.ts STAGED`, integrator ruling): storeys (as rows below the crown, plus the souterrain flag), bays, bands,
+shop/ground, basement (crop only), finish and the cut's sampled wall hex; for crown, head and cornice only the answered classes
+with precision >= 0.8 (`per-class.md`: crown cornice 0.95 and step 0.88, head flat 0.80 and segmental 0.83, cornice none
+0.88). Everything else stays with the twin, then the prior. A hidden front copies storeys, crown and bands from a twin only
+when its `sameAs` names that side and PR1's `similar` holds (`twin-guard.ts`: precision 0.94, recall 0.52). Every storey miss
+is off by one, mostly the roof-storey, gable-attic and entresol conventions (`storey-misses.md`). Sonnet on the same crops is
+within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) and painted finish, so opus reads.
+Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
+194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
+`artifacts/describer-d1/staged-ah07/` (never published).

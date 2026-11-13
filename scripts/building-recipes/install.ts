@@ -1,7 +1,8 @@
 /**
  * Install compiled recipe houses into the ordinary-buildings catalogue.
  *
- *   node --import tsx scripts/building-recipes/install.ts --house=<id>,<id>... [--street="Bilderdijkstraat"] [--tolerance=0.5] [--dry]
+ *   node --import tsx scripts/building-recipes/install.ts --house=<id>,<id>... [--street="<name>"] [--tolerance=0.5] [--dry]
+ *   (--street overrides the street named in the scope; default: each house's own front street)
  *
  * Runs compile + shared-mesh grouping for the given houses, copies each unique
  * mesh (frontage-frame GLB) to public/canal-drive/models/ordinary-buildings/,
@@ -40,7 +41,9 @@ async function bounds(file: string) {
   return {min: min.map(x => +x.toFixed(3)), max: max.map(x => +x.toFixed(3))};
 }
 
-const now = new Date().toISOString(), street = arg('street') ?? 'Bilderdijkstraat';
+// The street a house stands on: --street when given, else the house's own front. (The fallback used to be a fixed
+// 'Bilderdijkstraat', which every belt house of 2026-11-13 carried in its scope; lane BA.)
+const now = new Date().toISOString(), streetOf = (intent: {fronts?: {street?: string}[]; address?: string}) => arg('street') ?? intent.fronts?.[0]?.street ?? intent.address?.replace(/\s+\d.*$/, '') ?? 'Amsterdam';
 const catalogue = JSON.parse(await fs.readFile(CATALOGUE, 'utf8'));
 const meshInfo = new Map<string, {url: string; hash: string; bytes: number; triangles: number; bounds: Awaited<ReturnType<typeof bounds>>}>();
 if (!process.argv.includes('--dry')) await fs.mkdir(MODELS, {recursive: true});
@@ -61,9 +64,12 @@ const entries = summary.instances.map(inst => {
     anchor: inst.anchor, footprint: {type: 'Polygon', coordinates: ring}, nativeHeight: +r.facts.heights.roofMaxM.toFixed(2), height: +height.toFixed(2),
     modelUrl: mesh.url, suppress: [`NL.IMBAG.Pand.${inst.pandId}`],
     instance: {anchor: inst.anchor, northOffsetDegrees: inst.northOffsetDegrees, mirror: inst.mirror},
-    source: 'building-recipes', recipe: {id: inst.id, mesh: inst.masterId, shared: inst.shared, intentSources: intent.sources.map(s => s.image ?? s.id), footprintIoU: inst.footprintIoU, frontZoneIoU: inst.frontZoneIoU, maxDimDeltaM: inst.maxDimDeltaM, gates: r.report.gates.map(g => `${g.id}:${g.pass ? 'pass' : 'FAIL'}`)},
-    scope: `Recipe-pipeline house on ${street}: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.`,
-    limitations: ['Facade proportions are rule-fitted, not rectified from the photograph.', 'Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured.', ...(inst.shared ? [`Shares a mesh with ${inst.masterId}${inst.mirror ? ' (mirrored)' : ''}; footprint IoU ${inst.footprintIoU}, front-zone IoU ${inst.frontZoneIoU}.`] : [])],
+        // shareFootprintIoU / shareFrontZoneIoU: this house's BAG footprint against the footprint of the house whose mesh it
+    // reuses (1 for its own master), NOT the mesh against BAG. They were written as footprintIoU / frontZoneIoU and read
+    // as a mesh check (lane BA, 2026-11-13); the mesh is measured by install-audit.ts.
+    source: 'building-recipes', recipe: {id: inst.id, mesh: inst.masterId, shared: inst.shared, intentSources: intent.sources.map(s => s.image ?? s.id), shareFootprintIoU: inst.footprintIoU, shareFrontZoneIoU: inst.frontZoneIoU, maxDimDeltaM: inst.maxDimDeltaM, gates: r.report.gates.map(g => `${g.id}:${g.pass ? 'pass' : 'FAIL'}`)},
+    scope: `Recipe-pipeline house on ${streetOf(intent)}: ${inst.id.startsWith('spec-') ? 'design from its published house spec' : 'facade classified from the rectified municipal panorama crop'}, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.`,
+    limitations: ['Facade proportions are rule-fitted, not rectified from the photograph.', (intent as {roof?: {source?: string; form?: string}}).roof?.source === 'front' || (intent as {roof?: {form?: string}}).roof?.form ? 'Roof generated from the front (roof.source front / roof.form); 3DBAG gives the footprint and an upper bound.' : 'Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured.', ...(inst.shared ? [`Shares a mesh with ${inst.masterId}${inst.mirror ? ' (mirrored)' : ''}; share footprint IoU ${inst.footprintIoU}, front-zone IoU ${inst.frontZoneIoU}.`] : [])],
     reviewState: 'recipe-draft-gates-pass', sourceUrls: ['https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.' + inst.pandId, 'https://data.amsterdam.nl/'], updatedAt: now,
   };
 });

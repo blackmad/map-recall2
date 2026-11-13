@@ -1,0 +1,8 @@
+{
+ "ordinary-0363100012165073": {"reason": "Haarlemmerdijk 123: user rejected the belt-20261113 What's New sheet (ui/2026-11-13-belt-batch/contact-haarlemmer.jpg, panel 1): misses the gable; plan gates pass, cause open (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"},
+ "ordinary-0363100012169539": {"reason": "Haarlemmerdijk 143: user rejected the belt-20261113 sheet (panel 2): the gable looks bad and a new gap shows; plan gates pass, cause open (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"},
+ "ordinary-0363100012167794": {"reason": "Haarlemmerdijk 31: user rejected the belt-20261113 sheet (panel 3): gap; plan gates pass, cause open (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"},
+ "ordinary-0363100012167816": {"reason": "Haarlemmerdijk 16: user rejected the belt-20261113 sheet (panel 4): too small, gap; plan gates pass, cause open (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"},
+ "ordinary-0363100012167818": {"reason": "Haarlemmerdijk 20: user rejected the belt-20261113 sheet (panel 5): offset from its footprint into the neighbours (sheet-wide remark); plan gates pass, the 1.1 m forward part is the stated hoist beam, cause open (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"},
+ "ordinary-0363100012171144": {"reason": "Haarlemmerstraat 54: user rejected the belt-20261113 sheet (panel 6): cannot be seen in the frame; plan gates pass, the 1.1 m forward part is the stated hoist beam, re-frame pending (lane BA part 2)", "gates": ["review"], "batch": "belt-20261113"}
+}

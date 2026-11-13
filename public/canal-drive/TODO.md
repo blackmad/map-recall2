@@ -15,6 +15,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Belt batch rejection (P0, user 2026-11-13) — rules in `docs/START-HERE-buildings.md` §3a / `docs/house-line.md` §0
+
+- **Placement in the frame.** On Haarlemmerdijk the generic neighbour 167795 is drawn ~1.2 m along the street from its plot in `?engine=own&world=live` frames (the belt sheet); Node mesher, building-tiles and baked shells all put it on the plot. Lane BA (lane/belt-audit-20261113) is framing the six sheet spots on the players' world (default cells), the pre-round-125 commit, and live-scene vertices; then a ~30-house sizing on whichever path is at fault. Rule 8: no acceptance frames on `world=live`.
+- **The five sheet houses** (165073, 169539, 167794, 167816, 167818) are live, pending the players'-world frames; hold or release on that result. 171144 re-frame.
+- **Install-audit fails, held in round 128 (24), fix by cause in the generator (step C):** straight mesh front across a kinked BAG front (16 protrusion), outside polygon >0.5 m² (6, incl. 181808 box over a rounded corner), neighbour intrusion >0.2 m (6), crown changed or dropped (5). `house:publish` must run install-audit and refuse/hold failures (not wired).
+- **Photo cross-check (lane BX, b16b16116):** 41 houses queued (13 crown, 1 rows, 31 bays); square in-game frames for the 13 crown + 1 rows first. 165073: the missing piece is the raised dormer with hoist beam, not a crown class.
+- **Per-house GLB policy for ordinary houses:** no new installs, pending David's confirmation (2026-11-10 decision still stands until he reverses it).
+- **Route A at volume** paused until the placement shift is explained; D1 may read.
+
 ## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
 
 - **Wall colour:** W1 merged (round 122; mean dE 0.151 → 0.097, critic wall gaps 87 → 36). Open:
@@ -31,7 +40,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
   - **P3 acceptance:** fooled-rate retired (house-line.md §10). P3a headline = per-field agreement of blind descriptions of photo vs game; P3b = blind photo+A+B preference gates near-tier default flips with the eyeball set (12 easy houses, Nassaukade 506, Weteringschans 171218, Keizersgracht 165023).
   - **F1 far tier (P5):** aerial on beats off by eye, far GPU about a third; far-only flag, roof tiles kept, tier-seam / near-black / budget checks before a desktop flip. Record is full: v2 is a design note only.
   - **Next:** P4 drill on Weteringschans 171218 (compile ms, triangles, meshopt bytes, gate/drop per house); C per-feature degrade instead of whole-house holds; E publish-without-per-house-read pending David's veto; scoreboard on #68.
-  - **WG storey fit** (lane/generic-wiring-20261113 @ d23484748, not merged): souterrain / tall-ground / roof-storey row fit with a guard; on AH07 no upper storey over 4.5 m (was 43 runs), 18/155 rejects (13 second reads, 5 eavesAboveDrawnWall → mesher height vs 3DBAG). Frames running. Merge needs: three-buildings rebuild, `house:specs` for `eavesM`, the `withWorkerFlags` conflict with PR1, goldens.
+  - **WG storey fit:** step 1 + 1b merged (round 127): souterrain / tall-ground / capped fit with a guard, drawn ONLY for describer (vision-judge) storeys; author/reviewed/block-face counts are advisory (pixel-identical). Step 2 (bands, heads, crowns, thick eared surrounds via streetTemplate) running; acceptance on row sheets.
+  - **Roofline after WG step 2 (ruling 2026-11-13):** (1) crown classes that passed (cornice, step, curved); (2) cornice-front wall top from frontEavesM or the 3DBAG max, not b3_h_dak_min (a rear volume), reviewed fronts untouched, pinned 171854 (eaves 7.0, max 14.8, front about 13 m) and 175318; (3) dormers on a roofStorey once their figure grows. Sized: drawn low by more than a storey is 4/193 benchmark poses and 1/155 AH07; low by part of a storey (crown shape) is 30/193.
+  - **Route C (completer):** held after the ride frames (crowns and the shopfront win; height, storey count, arches and uniformity lose). Code on lane/route-c-completer-20261113, unmerged. Template seeds: Weteringschans + the top 10 main-street segments with the 1,000-front tranche.
+  - **Wall colour (#384, needs-david):** 153/194 AH07 samples sit below the brick floor; lane WC is measuring (a) floor, (b) gain and (c) exposure-normalised samples, plus finish as a distinct material, all flag-gated.
+  - **D1 tranche:** 1,000 fronts first (belt + AH07), prompt v4.3 frozen, published through E, row frames on #68 before the other 4,000.
   - **D1 rear-facade cuts:** 171198, 185507, 185997, 171217 (Weteringschans) were cut from the garden side; the cutter takes the longest wall on the nearest road and needs a street-side bearing. Hold those staged specs.
   - **Stopped:** landmark factory lanes for post-war blocks, band-fronts follow-ups, F3 pixel detectors, plaster-hint crawl.
 - **J4 (#382):** blocked on ANTHROPIC_API_KEY (needs-david #383).

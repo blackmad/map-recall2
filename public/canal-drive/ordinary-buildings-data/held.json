@@ -1,0 +1,206 @@
+{
+  "_doc": "Installed ordinary GLBs held out of the game (src/canalRecall/landmarks/ordinaryHolds.ts). The catalogue entry and its GLB stay; the game neither draws the model nor hides the pand, so the pand draws through the generic mesher with its published house spec. Written by scripts/building-recipes/hold-installs.ts; after a change rebuild covers.json, the touched world cells and the signature-placement bundle (the script prints the commands). Release = remove the id.",
+  "held": {
+    "ordinary-0363100012167709": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 106: install audit 2026-11-13 failed outside 0.56 m2; protrusion 1.41 m (5f5850_brick,6a6664_roofTile)",
+      "gates": [
+        "outside",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012167714": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 96B: install audit 2026-11-13 failed intrusion 0.28 m (0363100012167713)",
+      "gates": [
+        "intrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012169006": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 112: install audit 2026-11-13 failed protrusion 0.44 m (55524d_brick,e6e2d8_frame,2a3a42_glass,ebe8df_stone_measured)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012169008": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 116C: install audit 2026-11-13 failed intrusion 0.27 m (0363100012177280)",
+      "gates": [
+        "intrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012171451": {
+      "heldAt": "2026-11-13",
+      "reason": "Kloveniersburgwal 53: install audit 2026-11-13 failed intrusion 0.31 m (0363100012178226)",
+      "gates": [
+        "intrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012172755": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 182: install audit 2026-11-13 failed protrusion 0.58 m (e6e2d8_frame,2a3a42_glass,3e362a_door,e8e4d8_stone_measured)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012172756": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 184: install audit 2026-11-13 failed protrusion 0.55 m (634739_brick,e6e2d8_frame,2a3a42_glass,a7a69b_door,e8e4d8_stone_measured)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012173483": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 141: install audit 2026-11-13 failed crown: cornice front drawn with a 1.41 m crown",
+      "gates": [
+        "crown"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012173566": {
+      "heldAt": "2026-11-13",
+      "reason": "Prinsengracht 130: install audit 2026-11-13 failed outside 0.56 m2; protrusion 1.37 m (8d6250_brick,6a6664_roofTile)",
+      "gates": [
+        "outside",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012176280": {
+      "heldAt": "2026-11-13",
+      "reason": "Haarlemmerdijk 50: install audit 2026-11-13 failed outside 0.69 m2; protrusion 0.59 m (5f5c57_brick,e6e2d8_frame,2a3a42_glass,55524f_door,e8e4d8_stone_measured)",
+      "gates": [
+        "outside",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177362": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 247: install audit 2026-11-13 failed protrusion 1.13 m (534b42_brick,6a6664_roofTile)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177430": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 233: install audit 2026-11-13 failed intrusion 0.21 m (0363100012177364); protrusion 1.16 m (3e3936_stucco,6a6664_roofTile)",
+      "gates": [
+        "intrusion",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177514": {
+      "heldAt": "2026-11-13",
+      "reason": "Herengracht 229: install audit 2026-11-13 failed protrusion 0.23 m (3a3638_brick)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177535": {
+      "heldAt": "2026-11-13",
+      "reason": "Keizersgracht 92: install audit 2026-11-13 failed protrusion 0.39 m (8e8073_brick,e6e2d8_frame,ebe8df_stone_measured)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177543": {
+      "heldAt": "2026-11-13",
+      "reason": "Keizersgracht 94: install audit 2026-11-13 failed outside 1.43 m2; protrusion 0.4 m (ebe8df_frame)",
+      "gates": [
+        "outside",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177857": {
+      "heldAt": "2026-11-13",
+      "reason": "Kloveniersburgwal 109: install audit 2026-11-13 failed crown: flat front drawn with a 1.47 m crown",
+      "gates": [
+        "crown"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012177984": {
+      "heldAt": "2026-11-13",
+      "reason": "Oudezijds Achterburgwal 44: install audit 2026-11-13 failed crown: cornice front drawn with a 2.38 m crown",
+      "gates": [
+        "crown"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012178218": {
+      "heldAt": "2026-11-13",
+      "reason": "Kloveniersburgwal 75: install audit 2026-11-13 failed outside 0.52 m2; protrusion 0.44 m (7a4536_brick,ece9e0_frame,2a2624_door,2a3a42_glass,e9e6dd_stone)",
+      "gates": [
+        "outside",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012178293": {
+      "heldAt": "2026-11-13",
+      "reason": "Oudezijds Achterburgwal 72: install audit 2026-11-13 failed crown: neck crown dropped: drawn rise 0.55 m",
+      "gates": [
+        "crown"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012178304": {
+      "heldAt": "2026-11-13",
+      "reason": "Kloveniersburgwal 49: install audit 2026-11-13 failed crown: neck crown dropped: drawn rise 0.99 m",
+      "gates": [
+        "crown"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012179005": {
+      "heldAt": "2026-11-13",
+      "reason": "Oudezijds Achterburgwal 74: install audit 2026-11-13 failed protrusion 4.13 m (6a4a3a_brick)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012181808": {
+      "heldAt": "2026-11-13",
+      "reason": "Nieuwmarkt 17-23: install audit 2026-11-13 failed outside 5.5 m2; intrusion 0.22 m (0363100012182301); protrusion 1.28 m (4f3a30_brick,ece9e0_frame,2a2a2a_door,a4532c_door)",
+      "gates": [
+        "outside",
+        "intrusion",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012182303": {
+      "heldAt": "2026-11-13",
+      "reason": "Nieuwmarkt 9: install audit 2026-11-13 failed intrusion 0.25 m (0363100012182302); protrusion 0.21 m (645a56_brick)",
+      "gates": [
+        "intrusion",
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    },
+    "ordinary-0363100012182543": {
+      "heldAt": "2026-11-13",
+      "reason": "Zeedijk 31: install audit 2026-11-13 failed protrusion 0.21 m (3e3a3a_brick)",
+      "gates": [
+        "protrusion"
+      ],
+      "batch": "belt-20261113"
+    }
+  }
+}

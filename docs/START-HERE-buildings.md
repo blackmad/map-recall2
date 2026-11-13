@@ -263,6 +263,60 @@ colour. Source details:
 
 ---
 
+## 3a. House construction and review rules (2026-11-13, after the belt-20261113 rejection)
+
+The user rejected the 175-house belt batch (round 125) from its What's New sheet: houses that
+looked shifted into their neighbours, new gaps, a lost dormer, a bad gable, a house too small.
+The batch had been accepted on counts and front-strip previews. These rules replace the old
+reviewer checklist for every ordinary-house route (A generic mesher with specs, B shader
+facades, C recipe GLBs) and for any per-house model.
+
+### Construction
+
+- The mesh plan is the pand's BAG polygon: not its bounding box, not the front width extruded.
+- Party walls lie on the shared edges.
+- Nothing crosses the front line except a stated stoop, awning, bay or hoist beam, and nothing
+  reaches the carriageway.
+- Hard gates are computed on the shipped mesh, per house (`scripts/building-recipes/install-audit.ts`,
+  `src/canalRecall/buildingRecipe/installAudit.ts`): area outside the pand polygon; intrusion into a
+  neighbouring pand over 0.2 m; uncovered street frontage over 0.2 m; front protrusion beyond the
+  stated parts. A failing house is held (`hold-installs.ts`, `ordinary-buildings-data/held.json`)
+  and falls back to route A with its measured spec.
+- `footprintIoU` on catalogue entries was never a mesh measure: it was the mesh-sharing IoU
+  (this footprint against the footprint of the house whose mesh it reuses). It is now
+  `shareFootprintIoU`. Do not cite it as placement evidence.
+- A crown read in the photo must survive into the model; a dropped crown is a hold, not a log line.
+  The crown gate compares model with spec, so it cannot catch a wrong spec: an independent photo
+  read (the D1 reader) is the check against the house.
+- A flank that differs from what the neighbours expose is closed and plain: no windows on a party wall.
+- Policy on new per-house GLBs for ordinary houses: **held pending David's confirmation** (the
+  2026-11-10 decision to prefer spec-generated recipe GLBs stands until he reverses it). No new
+  ordinary per-house installs meanwhile.
+
+### Review
+
+1. Nothing is reviewed outside the game. A verdict needs in-game frames of the house in its row:
+   one square view (under 30°, whole front and crown in frame, nothing in front) and one oblique
+   from each side with the party walls in view. A frame that is clipped, blocked, or flagged
+   `otherBuilding` / `neighbourCovers` counts as not reviewed, and not reviewed means not published.
+2. Read in this order, one written line each: (a) plan and position; (b) gaps and flanks;
+   (c) outline against the sky; (d) rows and bays; (e) colour and dressings. A fail at (a), (b)
+   or (c) ends the review.
+3. Every tool flag blocks the pand until it is fixed or waived in writing with a reason. Game edge
+   error over 3 % is a flag.
+4. The model must beat the fallback: the sheet is photo | route A with the same spec | the model.
+5. The reviewer is a fresh agent that did not build the model and does not see the lane report.
+   The integrator reads the row sheets before any publish.
+6. One street row per publish, about 20 houses at most. Re-run the same frames on the published
+   world before writing the note. The note's picture is the square view, and its text may not
+   call a house with an open fail "close".
+7. Counts are a report line, never an acceptance.
+8. Acceptance frames are shot on the players' world: the default compiled cells (compile changed
+   cells locally with `world:compile --changed`), not `?world=live`, which drew generic neighbours
+   about 1.2 m off their plots on Haarlemmerdijk (cause under investigation, lane BA). `world=live`
+   is for iteration only. Every caption names the engine and the world it was shot on; a sheet shot
+   on `world=live` cannot support a publish or a What's New note.
+
 ## 4. Landmark integration rules
 
 A modelled landmark is part of three game surfaces, and is not complete until

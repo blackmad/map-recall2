@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Belt batch audited, 24 models held, house rules rewritten (2026-11-13, round 128).**
+- **Why.** The user rejected the 175-house belt batch from its What's New sheet (offsets, gaps, a lost dormer, a bad gable). It had been accepted on counts and front strips; nobody read plan, position, gaps or crowns in the street.
+- **Install audit** (`buildingRecipe/installAudit.ts`, `install-audit.ts`): hard gates on the shipped mesh against BAG and neighbours. 24 of 175 fail and are held through the new `ordinary-buildings-data/held.json` (`ordinaryHolds.ts`; reversible, survives re-install, covers follow). The six sheet houses pass every gate on paper.
+- **`footprintIoU` was never a mesh measure** (mesh-sharing IoU, 1 for every master); renamed `shareFootprintIoU`. The Bilderdijkstraat scope text was an install.ts `--street` default.
+- **The visible overlaps** trace to a generic neighbour drawn ~1.2 m off its plot in the `world=live` frames the sheet used, not to the models; players get compiled cells. Hence review rule 8. The five sheet houses wait on players'-world frames.
+- **Rules** (construction + review 1–8) replace the reviewer checklist; `neighbourCovers` flag in house:frames.
+
+**Storey fit with a guard, reviewed counts protected, routes judged on rows (2026-11-13, round 127).**
+- **WG storey plan** (`houseSpec/storeyPlan.ts`): a stated count fits against 3DBAG's front eaves (`frontEavesM` drops a rear lean-to's eaves) with a souterrain, a tall ground, or capping under a cornice/mansard; a pitch outside the period range rejects the count. On AH07's staged describer specs no upper storey draws over 4.5 m (43 runs did).
+- **Why only describer counts.** On the published specs the guard overrode hand-reviewed counts (182309 3 → 2, 176346 3 → 5); three of the four were right against the photo, the line was too low (a wall/3DBAG height fault). The guard now vetoes only vision-judge counts; others are advisory and pixel-identical.
+- **Route bake-off and route C** (lanes BK, C-completer): the recipe route gets structure right but loses in the ride frame (squat, uniform rows, thin dressings vanish), so A stays the consumer for every described house. Lesson kept as a rule: judge any scaled route on a full row at the photo pose; what reads first is wall colour/finish, then roofline, then white, then rows/bays.
+
 **Window columns from measured neighbours, Nieuw Engeland, publish classifier (2026-11-13, round 126).**
 - **PR1 structure prior (columns on).** A generic pand with no read column count takes it from an exact kNN over measured pands (same build-year family, run width, exposed height). On the adjudicated labels, right columns 39.0 % → 62.5 % (held-out). Cost: building vertices +0.52 % at the aerial pose. Storeys stay held: the prior's storey errors run in the direction that stretches storeys, and WG's storey fit has to land first.
 - **Nieuw Engeland** (pand 0363100012165080), bespoke landmark: the round corner is five flat facets because the audit needs host-size walls for openings; cream ornament is `ochre` because the audit treats `white` and `dark` as opening materials.
