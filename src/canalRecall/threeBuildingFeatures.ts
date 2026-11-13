@@ -184,8 +184,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
   const specRecipe = specRecipeOf(p);
   if (specRecipe) building.specRecipe = specRecipe;
-  // Lane PR1 (`?structurePrior=1`): a pre-war photo-look pand with no stated storeys or bays guesses its street runs' grid
-  // from the read houses around it (houseSpec/structurePrior.ts; the mesher applies it per run). Off: nothing set.
+  // Lane PR1: a pre-war photo-look pand with no stated storeys or bays guesses its street runs' grid from the read houses
+  // around it (houseSpec/structurePrior.ts; the mesher applies it per run). `?structurePrior=0`: nothing set.
   if (structurePriorOn() && cellSetOf(look) !== 'procedural' && !specRecipe?.storeys && !specRecipe?.bays && !p.kitWall && !p.largeTier && !p.frontCarrier && !p.gardenShed) {
     const year = Number(p.constructionYear), at = polygons[0]?.[0];
     if (p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year) && year < STRUCTURE_PRIOR_TABLE.maxYear && at?.length && (building.style === 'canal' || building.style === 'c19' || building.style === 'school')) {

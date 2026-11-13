@@ -1,8 +1,8 @@
 // Structure prior (houseSpec/structurePrior.ts, lane PR1): a generic pre-war pand with no stated count guesses its street
-// run's storeys and window columns from the read houses around it; off (the default) nothing changes.
+// run's window columns (by default) and storeys (`=storeys|all`) from the read houses around it; `=0` nothing changes.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { STRUCTURE_PRIOR_TABLE, resetStructurePriorFlag, structureGuess, structurePriorEnabled, structurePriorOn, type PriorRow, type StructurePriorTable } from './structurePrior.ts';
+import { STRUCTURE_PRIOR_TABLE, resetStructurePriorFlag, structureGuess, structurePriorMode, structurePriorOn, structurePriorStoreys, type PriorRow, type StructurePriorTable } from './structurePrior.ts';
 import { meshBuildingFor, buildFeatureChunk } from '../threeBuildingFeatures.ts';
 import { layoutProbe, type LayoutProbeRun } from '../threeBuildingMesh.ts';
 
@@ -13,13 +13,18 @@ const withFlag = <T>(v: string | undefined, f: () => T): T => {
   try { return f(); } finally { if (prev === undefined) delete process.env.STRUCTURE_PRIOR; else process.env.STRUCTURE_PRIOR = prev; resetStructurePriorFlag(); }
 };
 
-test('the flag: off by default; ?structurePrior=1 or STRUCTURE_PRIOR=1 turns it on; the query wins', () => {
-  assert.equal(structurePriorEnabled(null, null), false);
-  assert.equal(structurePriorEnabled('?world=live&structurePrior=1', null), true);
-  assert.equal(structurePriorEnabled(null, '1'), true);
-  assert.equal(structurePriorEnabled('?structurePrior=0', '1'), false);
-  assert.equal(withFlag(undefined, structurePriorOn), false);
-  assert.equal(withFlag('1', structurePriorOn), true);
+test('the flag: columns by default; =storeys|all|1 adds storeys; =0 turns it off; the query wins', () => {
+  assert.equal(structurePriorMode(null, null), 'columns');
+  assert.equal(structurePriorMode('?world=live&structurePrior=storeys', null), 'all');
+  assert.equal(structurePriorMode(null, 'all'), 'all');
+  assert.equal(structurePriorMode(null, '1'), 'all');
+  assert.equal(structurePriorMode(null, '0'), 'off');
+  assert.equal(structurePriorMode('?structurePrior=0', 'all'), 'off');
+  assert.equal(structurePriorMode('?structurePrior=columns', '0'), 'columns');
+  assert.equal(withFlag(undefined, structurePriorOn), true);
+  assert.equal(withFlag(undefined, structurePriorStoreys), false);
+  assert.equal(withFlag('0', structurePriorOn), false);
+  assert.equal(withFlag('all', structurePriorStoreys), true);
 });
 
 const P = { k: 3, yearScale: 25, sizeScale: 0.5, distanceScale: 0 };
@@ -45,25 +50,28 @@ const kx = 111_320 * Math.cos(52.36 * Math.PI / 180), ky = 110_540;
 const box = (w: number, d: number) => [[4.8955, 52.3595], [4.8955 + w / kx, 52.3595], [4.8955 + w / kx, 52.3595 + d / ky], [4.8955, 52.3595 + d / ky], [4.8955, 52.3595]];
 const house = () => ({ type: 'Feature', properties: { id: 'NL.IMBAG.Pand.0363100099999999', height: 16.65, minHeight: 0, constructionYear: 1877, facade: 'c19-prior', facadeStyle: 'c19', sideColour: '#5a4436' }, geometry: { type: 'Polygon', coordinates: [box(6.5, 12)] } });
 
-test('off: meshBuildingFor sets no prior and the chunk is the same bytes; on: the prior reaches the street run', () => {
-  const off = withFlag(undefined, () => meshBuildingFor(house() as never, 'photo'));
+test('off: meshBuildingFor sets no prior; default: columns only; all: columns and storeys', () => {
+  const off = withFlag('0', () => meshBuildingFor(house() as never, 'photo'));
   assert.equal(off?.structurePrior, undefined);
-  const on = withFlag('1', () => meshBuildingFor(house() as never, 'photo'));
+  const on = withFlag(undefined, () => meshBuildingFor(house() as never, 'photo'));
   assert.ok(on?.structurePrior && on.structurePrior.year === 1877);
-  const chunk = (flag: string | undefined) => withFlag(flag, () => buildFeatureChunk([house()] as never, 'photo', 'walls'));
-  const a = chunk(undefined), b = chunk('0');
-  assert.deepEqual(Array.from(a.positions), Array.from(b.positions));
-  assert.deepEqual(Array.from(a.layers), Array.from(b.layers));
+  const probe = (flag: string | undefined) => {
+    const runs: LayoutProbeRun[] = [];
+    layoutProbe.sink = (_id, r) => runs.push(r);
+    try { withFlag(flag, () => buildFeatureChunk([house()] as never, 'photo', 'walls')); } finally { layoutProbe.sink = undefined; }
+    return runs;
+  };
+  assert.ok(!probe('0').some(r => r.fit === 'prior'), 'off: no run drew the prior');
   // With no street grid every wall is a door wall; the longest ground-level run carries the prior's fit.
-  const runs: LayoutProbeRun[] = [];
-  layoutProbe.sink = (_id, r) => runs.push(r);
-  try { chunk('1'); } finally { layoutProbe.sink = undefined; }
-  assert.ok(runs.some(r => r.fit === 'prior'), 'a run drew the prior');
+  const cols = probe(undefined).filter(r => r.fit === 'prior'), all = probe('all').filter(r => r.fit === 'prior');
+  assert.ok(cols.length && all.length, 'a run drew the prior');
+  assert.deepEqual(cols.map(r => r.bays), all.map(r => r.bays), 'the same columns either way');
+  assert.notDeepEqual(cols.map(r => r.storeys), all.map(r => r.storeys), 'storeys only with =all');
 });
 
 test('a stated count outranks the prior', () => {
   const spec = { ...house(), properties: { ...house().properties, specRecipe: { storeys: 6 } } };
-  assert.equal(withFlag('1', () => meshBuildingFor(spec as never, 'photo'))?.structurePrior, undefined);
+  assert.equal(withFlag('all', () => meshBuildingFor(spec as never, 'photo'))?.structurePrior, undefined);
 });
 
 test('the indexed search finds what a full scan finds (published table, 400 random queries)', () => {

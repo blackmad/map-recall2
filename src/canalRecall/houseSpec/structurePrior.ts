@@ -13,8 +13,10 @@
  * The mesher then draws the guess through the HouseSpec fit (streetFacadeRendering.ts specStoreyFit nearest,
  * specCellCount, axisUnitPlan), so a guess the wall cannot hold within the clamps draws the nearest it can.
  *
- * Flag: `?structurePrior=1` in the page (forwarded to the building worker), STRUCTURE_PRIOR=1 in Node; default off.
- * Off, meshBuildingFor sets no prior and the mesher draws exactly as before (structurePrior.test.ts).
+ * Flag (forwarded to the building worker; STRUCTURE_PRIOR in Node): `?structurePrior=0` off, `columns` (the default, integrator
+ * ruling on PR1: columns +26.8 points held out) the window columns only, `storeys` / `all` columns and storeys (storeys
+ * +6.3 points, held until D1's adjudicated labels). Off, meshBuildingFor sets no prior and the mesher draws exactly as
+ * main did before PR1 (structurePrior.test.ts, odd-cells-hash).
  */
 import TABLE from './structure-prior.json' with { type: 'json' };
 
@@ -27,18 +29,30 @@ const table = TABLE as unknown as StructurePriorTable;
 /** Metres per degree at Amsterdam (the pool's and the mesher's local frame). */
 const KX = 111_320 * Math.cos(52.37 * Math.PI / 180), KY = 110_540;
 
-let cached: boolean | undefined;
-/** `?structurePrior=1|0` in the page first, then STRUCTURE_PRIOR=1|0 in Node. Default off. */
-export function structurePriorEnabled(search: string | null, env: string | null | undefined): boolean {
+/** What the prior draws: nothing, the window columns (the default since the integrator's PR1 ruling), or columns and storeys. */
+export type StructurePriorMode = 'off' | 'columns' | 'all';
+let cached: StructurePriorMode | undefined;
+/**
+ * `?structurePrior=` in the page first, then STRUCTURE_PRIOR in Node: `0` off; `columns` (or absent) the window columns;
+ * `storeys`, `all` or `1` the columns and the storey count. Anything else keeps the default.
+ */
+export function structurePriorMode(search: string | null, env: string | null | undefined): StructurePriorMode {
   const q = search ? /[?&]structurePrior=([^&]*)/.exec(search)?.[1] : undefined;
   const v = q ?? env ?? undefined;
-  return v === '1';
+  if (v === '0' || v === 'off') return 'off';
+  if (v === 'storeys' || v === 'all' || v === '1') return 'all';
+  return 'columns';
 }
-export function structurePriorOn(): boolean {
+/** The mode this page or process runs (cached). */
+export function structurePriorModeNow(): StructurePriorMode {
   if (cached !== undefined) return cached;
   const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
-  return (cached = structurePriorEnabled(g.location?.search ?? null, g.process?.env?.STRUCTURE_PRIOR ?? null));
+  return (cached = structurePriorMode(g.location?.search ?? null, g.process?.env?.STRUCTURE_PRIOR ?? null));
 }
+/** Whether the prior reaches the mesher at all (`?structurePrior=0` turns it off). */
+export const structurePriorOn = (): boolean => structurePriorModeNow() !== 'off';
+/** Whether the prior's storey count is drawn (`?structurePrior=storeys|all`; held by default). */
+export const structurePriorStoreys = (): boolean => structurePriorModeNow() === 'all';
 /** Tests only: forget the cached flag. */
 export const resetStructurePriorFlag = () => { cached = undefined; };
 

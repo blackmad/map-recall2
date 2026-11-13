@@ -6,7 +6,7 @@
  *
  * --labels: a benchmark file with the v1 label shape (default benchmark-v1.json; e.g. D1's benchmark-v1-adjudicated.json).
  *
- * Env flags apply as in the world compile (e.g. STRUCTURE_PRIOR=1 for the prior). Rows: every readable labelled pand the
+ * Env flags apply as in the world compile (STRUCTURE_PRIOR=0 off, unset columns only, =all columns and storeys). Rows: every readable labelled pand the
  * generic path draws with a ground-level street run ("generic"), and the subset with no HouseSpec storeys or bays and no
  * street-appearance recipe ("unspecified": the pands a structure prior is for). Installed models are excluded (their GLB
  * draws the front).

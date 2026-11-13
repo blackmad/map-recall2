@@ -35,10 +35,10 @@ while (picked.length < n && seen.size < all.length) {
   const id = all[Math.floor(rand() * all.length)];
   if (seen.has(id)) continue;
   seen.add(id);
-  delete process.env.STRUCTURE_PRIOR; resetStructurePriorFlag();
+  process.env.STRUCTURE_PRIOR = '0'; resetStructurePriorFlag();
   const off = await probe.probe(id).catch(() => null);
   if (!off || off.route !== 'generic' || !off.drawn || off.drawn.recipe || off.year === null || off.year >= 1945 || off.spec?.storeys || off.spec?.bays) continue;
-  process.env.STRUCTURE_PRIOR = '1'; resetStructurePriorFlag();
+  process.env.STRUCTURE_PRIOR = 'all'; resetStructurePriorFlag();
   const on = await probe.probe(id);
   delete process.env.STRUCTURE_PRIOR; resetStructurePriorFlag();
   picked.push({ id, off: { year: off.year, ...grid(off) }, on: grid(on) });
