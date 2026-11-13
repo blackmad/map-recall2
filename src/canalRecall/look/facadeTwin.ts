@@ -7,7 +7,7 @@
 import { FACADE_WINDOW_PITCH_M, type FacadeRecord } from './facadeRecord.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { GLASS_STOPS } from './windowSdf.js';
-import { FACADE_PANES, FR_BAR, FR_CORNICE_M, FR_REVEAL_SHADE, FACADE_WALL_MEAN, FR_BRICK, FR_COURSE, FR_COURSING, FR_JOINT, FR_MORTAR, FR_PATTERN_MEAN, FR_TONE, FR_MOTTLE, FR_MOTTLE_U, FR_MOTTLE_V, FR_PALE_K, FR_PALE_L } from './facadeShader.js';
+import { FACADE_PANES, FR_BAR, FR_CORNICE_M, FR_REVEAL_SHADE, FACADE_WALL_MEAN, FR_BRICK, FR_COURSE, FR_COURSING, FR_JOINT, FR_MORTAR, FR_PATTERN_MEAN, FR_TONE, FR_MOTTLE, FR_MOTTLE_FADE, FR_MOTTLE_U, FR_MOTTLE_V } from './facadeShader.js';
 
 const clamp = (x: number, a: number, b: number) => Math.min(b, Math.max(a, x));
 const hexRgb = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255) as [number, number, number];
@@ -43,7 +43,7 @@ export function frBrick(w: readonly [number, number], fw: readonly [number, numb
   let amp = material < 0.5 ? FR_COURSING[0] : material > 1.5 && material < 2.5 ? FR_COURSING[2] : 0;
   if (amp <= 0) return 1;
   const prow = Math.floor(w[1] / FR_MOTTLE_V), pcol = Math.floor((w[0] + mod(prow, 2) * 0.5 * FR_MOTTLE_U) / FR_MOTTLE_U);
-  const brickPatch = 1 + amp * contrast * FR_MOTTLE * (frHash(prow * 7 + 3, pcol * 3 + 11) - 0.5) * (1 - smooth(0.3 * FR_MOTTLE_V, 0.5 * FR_MOTTLE_V, Math.max(fw[0], fw[1])));
+  const brickPatch = 1 + amp * contrast * FR_MOTTLE * (frHash(prow * 7 + 3, pcol * 3 + 11) - 0.5) * (1 - smooth(FR_MOTTLE_FADE[0] * FR_MOTTLE_V, FR_MOTTLE_FADE[1] * FR_MOTTLE_V, Math.max(fw[0], fw[1])));
   amp *= contrast * (1 - smooth(0.25 * FR_COURSE, 0.6 * FR_COURSE, Math.max(fw[0], fw[1])));
   if (amp <= 0) return brickPatch;
   const row = Math.floor(w[1] / FR_COURSE), yy = w[1] - row * FR_COURSE;
@@ -116,8 +116,7 @@ export function facadePixel(r: FacadeRecord, wall: readonly [number, number, num
   const f: [number, number] = [Math.max(fw[0], 1e-4), Math.max(fw[1], 1e-4)];
   const kind = kindIn - 8 * (kindIn >= 7.5 ? 1 : 0), front = kind < 0.5;
   if (kind > 6.5) return { rgb: rgb(r.roof), m: [0, 0] };
-  const wl = rgb(r.wall).map(c => Math.pow(c, 2.2)), paleK = 1 + (FR_PALE_K - 1) * smooth(FR_PALE_L[0], FR_PALE_L[1], Math.cbrt(0.2126 * wl[0] + 0.7152 * wl[1] + 0.0722 * wl[2]));
-  const tone = FACADE_WALL_MEAN * frBrick(w, f, r.wallMaterial, knobs[0] * paleK);
+  const tone = FACADE_WALL_MEAN * frBrick(w, f, r.wallMaterial, knobs[0]);
   let wallC = rgb(r.wall).map(x => x * tone) as [number, number, number];
   const spek = frSpek(r, w[1], f), bandC = rgb(r.band);
   wallC = mix3(wallC, bandC, spek);

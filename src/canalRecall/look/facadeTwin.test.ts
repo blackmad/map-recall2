@@ -55,7 +55,7 @@ test('a wider pixel footprint blends the frame edge (no aliasing step)', () => {
 
 test('S6 coursing: mean 1 over the wall near, flat far; painted brick fainter; stucco smooth', () => {
   const mean = (material: number, fw: number) => { let s = 0, n = 0; for (let y = 0; y < 30; y += 0.0071) for (let x = 0; x < 30; x += 0.0731) { s += frBrick([x, y], [fw, fw], material); n++; } return s / n; };
-  // Brick patches (S6c) are 0.22 x 0.125 m at FR_MOTTLE: a 30 m square holds about 33k of them, so the mean is 1 within 0.01.
+  // Brick patches (S6c) are 0.22 x 0.125 m at FR_MOTTLE: a 30 m square holds about 33k of them, so the mean is 1 within 0.02.
   assert.ok(Math.abs(mean(0, 0.004) - 1) < 0.02, `brick mean ${mean(0, 0.004)}`);
   assert.equal(frBrick([0.3, 0.3], [0.5, 0.5], 0), 1, 'far: the mean');
   const spread = (material: number) => { let lo = 9, hi = 0; for (let y = 0; y < 0.5; y += 0.003) { const b = frBrick([0.1, y], [0.004, 0.004], material); lo = Math.min(lo, b); hi = Math.max(hi, b); } return hi - lo; };
@@ -91,7 +91,7 @@ test('S6b: window kinds draw their glazing, a shop ground storey, the eaves corn
   assert.ok(differs(rec({ bands: 0 }), rec({ bands: 1, bandSillCm: 16, band: [226, 217, 194] })), 'storey string course');
 });
 
-test('S6c brick patches: the wall keeps a brick texture at the benchmark distance (photo medians 0.066 / 0.131 / 0.147)', () => {
+test('S7a brick patches: the twin carries FR_MOTTLE 0.9 (frames read 0.6-0.85 of it; photo medians 0.071 / 0.123 / 0.147)', () => {
   // brick-texture.ts's measure on the twin: detail (0.25 m running mean removed) std over the mean, pixel-centre samples down columns.
   const texture = (ppm: number) => {
     const step = 1 / ppm, half = Math.max(1, Math.round(0.125 / step));
@@ -103,19 +103,22 @@ test('S6c brick patches: the wall keeps a brick texture at the benchmark distanc
     }
     return Math.sqrt(s2 / n - (s / n) ** 2) / (m / n);
   };
-  assert.ok(texture(20) > 0.04 && texture(20) < 0.09, `20 px/m: ${texture(20)}`);
-  assert.ok(texture(27) > 0.09 && texture(27) < 0.14, `27 px/m (the median pose; the coursing alone gives 0): ${texture(27)}`);
-  assert.ok(texture(50) > 0.12 && texture(50) < 0.17, `50 px/m: ${texture(50)}`);
+  assert.ok(texture(20) > 0.07 && texture(20) < 0.13, `20 px/m: ${texture(20)}`);
+  assert.ok(texture(27) > 0.14 && texture(27) < 0.2, `27 px/m: ${texture(27)}`);
+  assert.ok(texture(50) > 0.17 && texture(50) < 0.23, `50 px/m: ${texture(50)}`);
 });
 
-test('S6d pale walls: brick contrast falls to FR_PALE_K on a white wall, unchanged on mid brick', () => {
-  const spread = (wall: [number, number, number]) => {
+
+test('S7a: the record wall pattern does not depend on the wall colour (W1 pool walls lose no brick in the record)', () => {
+  // 172590 drew #4c1f0f before W1 and #925441 from the measured pool; the record differs only in `wall`. The pattern the
+  // record multiplies onto the wall must be the same at both: a darker frame's larger detail is the render's, not the record's.
+  const tex = (wall: [number, number, number]) => {
     const r = rec({ windowShare: 0, baysUpper: 1, baysGround: 1, storeys: 1, wallHcm: 2000, wall });
-    let lo = 9, hi = 0;
-    for (let y = 3; y < 5; y += 0.013) { const c = px(r, 1.1, y, 3, 30, 0.03).rgb; const l = (c[0] + c[1] + c[2]) / 3 / ((wall[0] + wall[1] + wall[2]) / 765); lo = Math.min(lo, l); hi = Math.max(hi, l); }
-    return hi - lo;
+    let s = 0, s2 = 0, n = 0;
+    for (let y = 3; y < 9; y += 0.02) for (let x = 0.3; x < 5; x += 0.037) { const c = px(r, x, y, 3, 30, 0.02).rgb, l = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; s += l; s2 += l * l; n++; }
+    return Math.sqrt(s2 / n - (s / n) ** 2) / (s / n);
   };
-  const mid = spread([120, 70, 50]), white = spread([235, 232, 222]);
-  assert.ok(mid > 0.1, `mid brick keeps its patches: ${mid}`);
-  assert.ok(white < mid * 0.6 && white > 0, `white brick is calmer: ${white} vs ${mid}`);
+  const dark = tex([76, 31, 15]), pool = tex([146, 84, 65]);
+  assert.ok(dark > 0.08, `dark wall pattern ${dark}`);
+  assert.ok(Math.abs(dark - pool) < 0.01, `dark ${dark} vs pool ${pool}`);
 });

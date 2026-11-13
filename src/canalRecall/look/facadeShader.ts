@@ -76,14 +76,20 @@ export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
  * 0.10 at 30 px/m and 0.13 at 50. The twin with FR_MOTTLE 0.6 gives 0.066 / 0.112 / 0.116 / 0.146 / 0.161 at
  * 20 / 27 / 35 / 50 / 70 px/m.
  */
-export const FR_MOTTLE = 0.6, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
+export const FR_MOTTLE = 0.9, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
 /**
- * Pale walls carry less brick texture (S6d). In round 2's photos (pairs at 25+ px/m) the detail measure was 0.140 at wall
- * OKLab L under 0.45, 0.132 at 0.45-0.6 and 0.066 at 0.6-0.75 (n = 3; none paler). White and cream brick is mostly painted,
- * with joints filled. The coursing and patch contrast therefore fall to FR_PALE_K between L FR_PALE_L[0] and [1]. The
- * OKLab L is approximated as the cube root of the wall's luminance.
+ * The patch fade, in patch rows per pixel. S7a (#380) raised FR_MOTTLE from 0.6 to 0.9 after round 3 measured the GPU
+ * frames against the photos at W1's wall colours. The texture by px/m was:
+ *  - photos 0.071 / 0.123 / 0.147 / 0.157 (under 25 / 25-40 / 40-60 / over 60 px/m);
+ *  - round 3 0.040 / 0.075 / 0.108 / 0.129.
+ * Round 2 read 0.094 / 0.119 / 0.146 / 0.153, but only because the period walls it drew were near-black (#4c1f0f). In
+ * every render path, the atlas included, the frame's detail over its mean is two to three times larger on such a wall
+ * (172590 with the flag off: 0.44 at #4c1f0f, 0.17 at #925441). The S6c calibration had banked on that dark-wall detail,
+ * and W1's measured walls took it away. It was not a W1 code path: the record differs only in `wall`.
+ * The frames read about 0.6-0.85 of the twin's number (more at higher px/m). The twin at 0.9 gives 0.098 / 0.169 / 0.172 /
+ * 0.195 / 0.209 at 20 / 27 / 35 / 50 / 70 px/m. A wider fade overshot the photos under 25 px/m in the twin.
  */
-export const FR_PALE_L = [0.55, 0.7] as const, FR_PALE_K = 0.5;
+export const FR_MOTTLE_FADE = [0.3, 0.5] as const;
 
 /**
  * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the
@@ -132,7 +138,7 @@ float frBrick(vec2 w, vec2 fw, float material, float contrast) {
   if (amp <= 0.0) return 1.0;
   float prow = floor(w.y / ${f1(FR_MOTTLE_V)}), pcol = floor((w.x + mod(prow, 2.0) * ${f1(0.5 * FR_MOTTLE_U)}) / ${f1(FR_MOTTLE_U)});
   float brickPatch = 1.0 + amp * contrast * ${f1(FR_MOTTLE)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
-    * (1.0 - smoothstep(${f1(0.3 * FR_MOTTLE_V)}, ${f1(0.5 * FR_MOTTLE_V)}, max(fw.x, fw.y)));
+    * (1.0 - smoothstep(${f1(FR_MOTTLE_FADE[0] * FR_MOTTLE_V)}, ${f1(FR_MOTTLE_FADE[1] * FR_MOTTLE_V)}, max(fw.x, fw.y)));
   amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
   if (amp <= 0.0) return brickPatch;
   float row = floor(w.y / ${f1(FR_COURSE)}), yy = w.y - row * ${f1(FR_COURSE)};
@@ -254,9 +260,7 @@ vec3 facadeRecordColour(out vec2 m) {
   m = vec2(1.0, 0.0);
   if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
   // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
-  vec3 wl = pow(fr_wall(), vec3(2.2));
-  float paleK = mix(1.0, ${f1(FR_PALE_K)}, smoothstep(${f1(FR_PALE_L[0])}, ${f1(FR_PALE_L[1])}, pow(dot(wl, vec3(0.2126, 0.7152, 0.0722)), 1.0 / 3.0)));
-  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x * paleK);
+  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x);
   float spek = frSpek(w.y, fw);
   vec3 bandC = fr_band();
   wallC = mix(wallC, bandC, spek); m.r = 1.0 - spek;
