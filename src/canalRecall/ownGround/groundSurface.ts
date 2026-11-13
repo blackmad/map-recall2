@@ -29,9 +29,16 @@ export const OPEN_GROUND_COVERS: readonly OpenGroundCover[] = ['meadow', 'shrub'
  * The ground layer each cover draws in (groundCell.ts). Meadow is the courtyard green (`garden`, groundLook.ts
  * gardenTone): the orthophoto's sunlit open grass measures luma 125 (scripts/own-ground/measure-open-ground-tones.ts,
  * dehazed, 107,688 texels at the lane's spots), the garden tone's luma; the park lawn (luma 140, mowing stripes) stays for
- * parks and green verges. Shrubs and sand share the parks' layers; bare earth is the lane's own `bare` layer.
+ * parks and green verges. Shrubs share the parks' layer; bare earth is the lane's own `bare` layer.
+ *
+ * `sand` (BGT zand the CIR aerial does not show green) draws in the `bare` layer too (lane R2-D 2026-11-13, feedback
+ * 762c6e04 "wtf is this slab of yellow", b1e259b9 "weird land"): it drew in the parks' play-sand layer, (212,194,150), a
+ * saturated yellow no orthophoto shows; the 2025 photo's sunlit sand-cover medians are grey-beige (205,197,185 at the
+ * Spaarndammerdijk lot, 205,194,180 at the Wiborgeiland strip, 211,205,190 pooled over seven lots across the city: blue /
+ * red 0.9, the play sand's 0.7), and those lots are building sites and rough ground, not beaches. Parks-v1 sand (OSM
+ * playgrounds and beaches) keeps the play sand.
  */
-export const OPEN_GROUND_LAYER: Readonly<Record<OpenGroundCover, 'garden' | 'shrub' | 'bare' | 'sand'>> = { meadow: 'garden', shrub: 'shrub', bare: 'bare', sand: 'sand' };
+export const OPEN_GROUND_LAYER: Readonly<Record<OpenGroundCover, 'garden' | 'shrub' | 'bare' | 'sand'>> = { meadow: 'garden', shrub: 'shrub', bare: 'bare', sand: 'bare' };
 /** Lift over the relief per cover, metres: as the parks' surfaces (parks.ts PARK_LIFT lawn / shrub / sand), bare between. */
 export const OPEN_GROUND_LIFT: Readonly<Record<OpenGroundCover, number>> = { meadow: 0.018, shrub: 0.021, bare: 0.02, sand: 0.022 };
 

@@ -481,6 +481,21 @@ export function surfaceLayer(cls: RoadClass, mesh: RoadMesh): RoadLayer {
   // grey beside the road and the pavement); a fietsstraat section stays red, gravel stays gravel.
   return mesh === 'paving' ? 'asphalt' : mesh;
 }
+/**
+ * A big asphalt `square` is a carriageway the survey filed as terrain (lane R2-D 2026-11-13, feedback a5806a8e "ground
+ * still looks really bad", the Lelylaan / A10 interchange): Rijkswaterstaat's L0002 `onbegroeidterreindeel` polygons of
+ * `gesloten verharding` with no function cover whole slip roads, lanes with arrows on the 2025 photo, and roads-v1 files
+ * them as `square` (ancillaryClass), which drew in the one pale pavement material: dark asphalt slip roads read as pale
+ * footways between the grass strips. A square of asphalt of at least this area draws as asphalt (275 ha of `square/asphalt`
+ * city-wide, 199 ha of it in the 496 polygons over 1,000 m²; asphalt squares under 800 m² stay pavement-level grey, as
+ * the one-material-per-level rule of 2026-10-29 has it). The kerb and the lift are the square's own.
+ */
+export const ASPHALT_SQUARE_MIN_M2 = 800;
+export function ringAreaM2(ring: readonly (readonly [number, number])[]): number {
+  let a = 0;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) a += ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
+  return Math.abs(a) / 2;
+}
 /** The classes drawn at the sidewalk top (ROAD_LIFT SIDEWALK_TOP): one material, `paving`, unless green. */
 export const PAVEMENT_LEVEL: ReadonlySet<RoadClass> = new Set<RoadClass>(['foot', 'pedestrian', 'driveway', ...ANCILLARY_CLASSES]);
 
@@ -709,7 +724,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       }
     }
     const cls = index.drawClass(k);
-    const layer = get(surfaceLayer(cls, index.mesh(k)));
+    const layer = get(cls === 'square' && index.mesh(k) === 'asphalt' && ringAreaM2(index.ringsOf(k)[0]) >= ASPHALT_SQUARE_MIN_M2 ? 'asphalt' : surfaceLayer(cls, index.mesh(k)));
     // redDedupe: the red fietspad's float bounded (RED_CYCLE_TOL).
     const redPlane = redOwn && cls === 'cycle' && index.mesh(k) === 'cycle';
     const lift = ROAD_LIFT[cls];
