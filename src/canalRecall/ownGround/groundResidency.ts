@@ -48,6 +48,11 @@ export function groundEarlyWorkersFlag(query = search()): boolean {
   return !/[?&]groundEarlyWorkers=0\b/.test(query);
 }
 
+/** `?groundParallelInit=0`: the ground store asks its init manifests one after another (groundStore.ts load, lane LS). */
+export function groundParallelInitFlag(query = search()): boolean {
+  return !/[?&]groundParallelInit=0\b/.test(query);
+}
+
 /** `?groundRequeue=0`: a discarded install or a failed build waits for the next 60 m move (the build before #232). */
 export function groundRequeueFlag(query = search()): boolean {
   return !/[?&]groundRequeue=0\b/.test(query);

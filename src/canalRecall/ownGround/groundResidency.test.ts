@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
+import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundParallelInitFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
 import { GroundStore } from './groundStore.ts';
 
 const RAIL = 'public/data/extracts/amsterdam/rail-v1';
@@ -135,4 +135,34 @@ test('a null hand-off: the store fetches the rail manifest itself', async () => 
   const { store, railFetches } = await initWith(Promise.resolve(null));
   assert.equal(railFetches.length, 1);
   assert.ok(store.railCells.size > 0);
+});
+
+// Parallel init (lane LS 2026-11-14): every init manifest is asked at once and read in the old order; the store is the
+// same as the serial one, and all of them are asked before the first group has answered.
+test('?groundParallelInit: the manifests are asked at once and the store is the same as the serial one', async () => {
+  const run = async (parallelInit: boolean) => {
+    const asked: string[] = [];
+    let firstAnswered = -1;
+    const store = new GroundStore(async path => {
+      asked.push(path);
+      await new Promise(r => setTimeout(r, 5));
+      if (firstAnswered < 0) firstAnswered = asked.length;
+      const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+      return path.endsWith('.gz') ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+    }, { parks: true, roads: true, rails: true, parallelInit });
+    await store.init();
+    const s = store as unknown as Record<string, Set<string> | Map<string, unknown>>;
+    const shape = ['parkCells', 'roadCells', 'markCells', 'courtyardCells', 'openGroundCells', 'railCells', 'osmCells', 'boatsByCell'].map(k => [k, [...(s[k] as Set<string>).keys()].sort().join(',')]);
+    return { shape, firstAnswered, asked };
+  };
+  const serial = await run(false), parallel = await run(true);
+  assert.deepEqual(parallel.shape, serial.shape);
+  assert.deepEqual([...parallel.asked].sort(), [...serial.asked].sort(), 'the same files');
+  assert.ok(parallel.firstAnswered >= 12, `parallel: ${parallel.firstAnswered} asked before the first answer`);
+  assert.ok(serial.firstAnswered <= 5, `serial: ${serial.firstAnswered} asked before the first answer`);
+});
+
+test('?groundParallelInit=0 is the serial order', () => {
+  assert.equal(groundParallelInitFlag(''), true);
+  assert.equal(groundParallelInitFlag('?groundParallelInit=0'), false);
 });

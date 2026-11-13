@@ -39,7 +39,7 @@ import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
-import { BuildRetries, groundEarlyWorkersFlag, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
+import { BuildRetries, groundEarlyWorkersFlag, groundParallelInitFlag, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
@@ -553,7 +553,7 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    const storeOptions = { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) };
+    const storeOptions = { ...(groundParallelInitFlag() ? {} : { parallelInit: false }), parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) };
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) { this.store = new GroundStore(httpFetchBytes(root), storeOptions); return; }
     // The workers start with the ground (groundEarlyWorkersFlag, lane LS): their own init runs alongside the page's
@@ -606,7 +606,7 @@ export class OwnGround {
   private startWorkers(root: string, early: boolean, count: number, channels: MessageChannel[]): void {
     this.manifestFollows = early && this.railRetryOn && !!this.opts.rails;
     try {
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? (early ? { railManifestFollows: true } : { railManifest: [...this.store.railCells] }) : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, ...(groundParallelInitFlag() ? {} : { parallelInit: false }), planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? (early ? { railManifestFollows: true } : { railManifest: [...this.store.railCells] }) : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         const wi = i;
