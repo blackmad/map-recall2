@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-schielandplein",
+  "panoId": "TMX7316010203-002835_pano_0003_000007",
+  "timestamp": "2022-12-07T11:02:48.710720Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/07/TMX7316010203-002835/pano_0003_000007/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117642.72012285533,
+   485600.82846884715
+  ],
+  "headingDeg": 163.53514651604667,
+  "fovDeg": 35.51224196150001,
+  "pitchDeg": 8.199828025411056,
+  "distanceM": 15.614250294758154,
+  "image": "artifacts/building-recipes/pand-141601/photo-wall-schielandplein.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-schipluidenlaan",
+  "panoId": "TMX7316010203-002020_pano_0000_003431",
+  "timestamp": "2021-02-19T12:11:28.724640Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/02/19/TMX7316010203-002020/pano_0000_003431/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117701.07628292874,
+   485521.94869713415
+  ],
+  "headingDeg": 357.71943076511957,
+  "fovDeg": 63.21146088684701,
+  "pitchDeg": 7.764295305903492,
+  "distanceM": 16.501873214399616,
+  "image": "artifacts/building-recipes/pand-141601/photo-wall-schipluidenlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-delflandlaan",
+  "panoId": "TMX7316010203-002086_pano_0000_002135",
+  "timestamp": "2021-04-12T11:16:06.860760Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/12/TMX7316010203-002086/pano_0000_002135/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117765.52282516539,
+   485619.3602725205
+  ],
+  "headingDeg": 237.7516789288565,
+  "fovDeg": 31.228859729107082,
+  "pitchDeg": 11.7027876138754,
+  "distanceM": 28.341573257776965,
+  "image": "artifacts/building-recipes/pand-141601/photo-wall-delflandlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

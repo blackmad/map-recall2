@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-mary-van-der-sluisstraat",
+  "panoId": "recording_2024-09-19_07-10-09_03450",
+  "timestamp": "2024-09-19T08:04:59Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-09-19_07-10-09_03450/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   126090.29240520179,
+   487355.40230506845
+  ],
+  "headingDeg": 88.75148041854993,
+  "fovDeg": 64.13434274753594,
+  "pitchDeg": 11.548330767246455,
+  "distanceM": 39.1685187804516,
+  "image": "artifacts/building-recipes/pand-247342/photo-wall-mary-van-der-sluisstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-nida-senffstraat",
+  "panoId": "TMX7316010203-002420_pano_0001_000010",
+  "timestamp": "2022-01-17T10:07:43.540370Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/17/TMX7316010203-002420/pano_0001_000010/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   126241.65365959247,
+   487276.969501294
+  ],
+  "headingDeg": 309.93670647157836,
+  "fovDeg": 110,
+  "pitchDeg": 46.470403194331475,
+  "distanceM": 10.8985855206416,
+  "image": "artifacts/building-recipes/pand-247342/photo-wall-nida-senffstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-eef-kamerbeekstraat",
+  "panoId": "TMX7316010203-001619_pano_0000_000154",
+  "timestamp": "2020-02-03T11:44:18.433860Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/02/03/TMX7316010203-001619/pano_0000_000154/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   126190.91919403979,
+   487371.90266235167
+  ],
+  "headingDeg": 218.66193312405744,
+  "fovDeg": 80.27534358134874,
+  "pitchDeg": 35.05551144838609,
+  "distanceM": 11.352323533351278,
+  "image": "artifacts/building-recipes/pand-247342/photo-wall-eef-kamerbeekstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-145366",
+ "pandId": "0363100012145366",
+ "address": "BAG pand 0363100012145366",
+ "sources": [
+  {
+   "id": "pano-2024-08-29-w05-336",
+   "kind": "street-panorama",
+   "capturedAt": "2024-08-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-08-29_07-07-12_03629/",
+   "image": "source-data://pand-reference-walls/0363100012145366/w05-336.jpg",
+   "sha256": "91d8b317566fad2da70e8f98a8a1cb2bafeb811aab33fdf21dcb93ee73f9f385",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-08-29-w02-66",
+   "kind": "street-panorama",
+   "capturedAt": "2024-08-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-08-29_08-32-17_04532/",
+   "image": "source-data://pand-reference-walls/0363100012145366/w02-66.jpg",
+   "sha256": "e639c11596b079b9f6d5622241b3542b8232bee7c7c5f00b58f989a5079840b6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-08-29-w03-66",
+   "kind": "street-panorama",
+   "capturedAt": "2024-08-29",
+   "image": "source-data://pand-reference-walls/0363100012145366/w03-66.jpg",
+   "sha256": "234a21e67bb4972a30c064c1ef5b00cfce1eac8c0c72e0cda553aa722114bb5d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-26-w01-246",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001724_pano_0000_000235/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-08-29-w04-156",
+   "kind": "street-panorama",
+   "capturedAt": "2024-08-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-08-29_08-04-21_00537/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    4,
+    17
+   ],
+   "street": "Spanderswoudstraat",
+   "system": "blank",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "street": "Spanderswoudstraat",
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    3
+   ],
+   "street": "Hilversumstraat",
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "street": "IJdoornlaan",
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#839da4",
+    "glass": "#373a43"
+   },
+   "wallSplit": {
+    "at": 0.658,
+    "brick": "#5a6a6c"
+   },
+   "plinth": {
+    "lights": 2,
+    "sill": 0.04,
+    "h": 0.84
+   }
+  },
+  {
+   "wallSurfaces": [
+    19,
+    20
+   ],
+   "system": "ribbon-windows",
+   "palette": {
+    "brick": "#45473f"
+   },
+   "baysPerStorey": 38
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#383d3b"
+   },
+   "baysPerStorey": 35
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#45473f",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 13 (5.7 m, unnamed panel under 8 m); 9 (4.1 m, unnamed panel under 8 m); 11 (3.9 m, unnamed panel under 8 m); 12 (3.8 m, unnamed panel under 8 m); 7 (3.8 m, unnamed panel under 8 m); 5 (3.3 m, unnamed panel under 8 m); 3 (2.7 m, unnamed panel under 8 m).",
+  "Measured 2026-11-13 (measure.ts, evidence in measured.json): groups 3, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[3] wall split #839da4 | #5a6a6c at 66 % (dE 21.8); walls[3] glazed plinth: ground band 84 % over upper storeys 19/14 %; walls[4] glass #434443 not used (not darker than the wall #45473f by 10 L*, or tinted): kit glass kept; walls[4] system brick-bay-grid -> ribbon-windows (ribbon front: ribbons on storeys 1,2 of 2 judged (19 m, 40.1 m)); walls[4] wall family unresolved: cell spread 0.134, texture 0.063 not flat (<= 0.12, <= 0.035) and no rib period (best 1.8 m r 0.094); walls[5] glass #323937 not used (not darker than the wall #383d3b by 10 L*, or tinted): kit glass kept; walls[5] wall family unresolved: cell spread 0.1465, texture 0.049 not flat (<= 0.12, <= 0.035) and no rib period (best 0.74 m r 0.161); unphotographed walls take #45473f (brick), the area-weighted median of groups 3, 4, 5.",
+  "Triangle budget: 15248 > 12000; unphotographed groups 1, 2, 0 drawn blank (draftBudgetCap)."
+ ],
+ "measured": {
+  "date": "2026-11-13",
+  "groups": [
+   3,
+   4,
+   5
+  ],
+  "otherWalls": true
+ }
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-spanderswoudstraat",
+  "panoId": "recording_2024-08-29_08-04-21_00503",
+  "timestamp": "2024-08-29T08:11:33Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-08-29_08-04-21_00503/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125757.22414461744,
+   489285.26396661927
+  ],
+  "headingDeg": 61.92854638904453,
+  "fovDeg": 110,
+  "pitchDeg": 12.57077555372212,
+  "distanceM": 19.871086637596736,
+  "image": "artifacts/building-recipes/pand-145366/photo-wall-spanderswoudstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-ijdoornlaan",
+  "panoId": "recording_2024-12-23_09-14-39_18299",
+  "timestamp": "2024-12-23T12:57:59Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-23_09-14-39_18299/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125719.83414904244,
+   489446.048637073
+  ],
+  "headingDeg": 174.3827918201912,
+  "fovDeg": 45.91306411204765,
+  "pitchDeg": 14.561723210811437,
+  "distanceM": 17.040715787461775,
+  "image": "artifacts/building-recipes/pand-145366/photo-wall-ijdoornlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hilversumstraat",
+  "panoId": "recording_2024-08-29_08-04-21_00537",
+  "timestamp": "2024-08-29T08:12:34Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-08-29_08-04-21_00537/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125819.50087485954,
+   489208.5500972846
+  ],
+  "headingDeg": 334.30289904247536,
+  "fovDeg": 65.01094761530092,
+  "pitchDeg": 21.35944555821636,
+  "distanceM": 11.341321144549092,
+  "image": "artifacts/building-recipes/pand-145366/photo-wall-hilversumstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-186002",
+ "pandId": "0363100012186002",
+ "address": "BAG pand 0363100012186002",
+ "sources": [
+  {
+   "id": "pano-2019-01-24-w02-275L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001074_pano_0000_000574/",
+   "image": "source-data://pand-reference-walls/0363100012186002/w02-275L.jpg",
+   "sha256": "4cd593895cc6b930e867264dd279410a99843c8129ddaff13295812ddf6e6542",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-17-w01-75",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_09-10-34_01970/",
+   "image": "source-data://pand-reference-walls/0363100012186002/w01-75.jpg",
+   "sha256": "5902a3bd4a95c541ab7d24e417653b5debe0cbc7653bcf15878c5493db95943a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-11-w01-75L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002037_pano_0000_002818/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-17-w01-75h70",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_09-10-34_01970/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-11-w01-75h70L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002037_pano_0000_002818/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-02-w02-275",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_000743/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-02-w02-275h70",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_000743/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-24-w02-275h70L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001074_pano_0000_000574/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "street": "Westerdok",
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "palette": {
+    "brick": "#504e4f"
+   },
+   "baysPerStorey": 24
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "street": "Westerdoksdijk",
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#7b5f59"
+   },
+   "wallSplit": {
+    "at": 0.791,
+    "brick": "#506c81"
+   },
+   "windowShape": {
+    "w": 0.717,
+    "h": 0.8,
+    "sill": 0.18
+   },
+   "baysPerStorey": 18,
+   "dressings": {
+    "bands": {
+     "at": [
+      "head"
+     ],
+     "storeys": [
+      5,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "wallSurfaces": [
+    17
+   ],
+   "street": "Westerdoksdijk",
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#715752"
+   },
+   "windowShape": {
+    "w": 0.98,
+    "h": 0.707,
+    "sill": 0.25
+   },
+   "baysPerStorey": 6
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#504e4f",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 2 (5 m, street panel under 5 m); 30 (4 m, under 3 m tall); 25 (3.8 m, under 3 m tall); 21 (2.7 m, under 3 m tall); 17 (2.9 m, under 3 m tall); 40 (2.1 m, under 3 m tall); 11 (25.3 m, party wall); 12 (3.7 m, under 3 m tall); 8 (3.5 m, under 3 m tall); 44 (3.4 m, under 3 m tall); 38 (2.8 m, under 3 m tall); 34 (5.7 m, under 3 m tall); 32 (5.8 m, under 3 m tall); 26 (2.5 m, under 3 m tall); 3 (2.3 m, under 3 m tall); 39 (2.2 m, under 3 m tall); 33 (3.3 m, under 3 m tall); 36 (2.9 m, under 3 m tall); 41 (2.3 m, under 3 m tall).",
+  "Measured 2026-11-13 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #60433c not used (not darker than the wall #504e4f by 10 L*, or tinted): kit glass kept; walls[0] wall family unresolved: cell spread 0.1833, texture 0.049 not flat (<= 0.12, <= 0.035) and no rib period (best 1.02 m r 0.189); walls[1] glass #505d67 not used (not darker than the wall #7b5c56 by 10 L*, or tinted): kit glass kept; walls[1] wall split #7b5f59 | #506c81 at 79 % (dE 26); walls[1] light bands: head on storeys 5,6 (head@22.02-22.12 m 62 %, head@25.02-25.12 m 69 %); walls[2] glass #515b64 not used (not darker than the wall #715752 by 10 L*, or tinted): kit glass kept; unphotographed walls take #504e4f (brick), the area-weighted median of groups 0, 1, 2.",
+  "Triangle budget: 17320 > 12000; unphotographed groups none drawn blank (draftBudgetCap); still 5320 over from the photographed groups."
+ ],
+ "measured": {
+  "date": "2026-11-13",
+  "groups": [
+   0,
+   1,
+   2
+  ],
+  "otherWalls": true
+ }
+}

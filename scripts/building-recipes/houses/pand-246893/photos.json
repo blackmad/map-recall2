@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-schipluidenlaan",
+  "panoId": "TMX7316010203-001031_pano_0009_000915",
+  "timestamp": "2019-01-02T10:08:24.360080Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/02/TMX7316010203-001031/pano_0009_000915/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117419.4700867415,
+   485553.8461098643
+  ],
+  "headingDeg": 10.334601699372058,
+  "fovDeg": 72.46411609419269,
+  "pitchDeg": 35.35210342627624,
+  "distanceM": 19.36759297020405,
+  "image": "artifacts/building-recipes/pand-246893/photo-wall-schipluidenlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-cornelis-lelyplein",
+  "panoId": "TMX7316010203-001031_pano_0009_000888",
+  "timestamp": "2019-01-02T10:07:54.885450Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/02/TMX7316010203-001031/pano_0009_000888/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117376.2863824548,
+   485649.4002356973
+  ],
+  "headingDeg": 82.80938121410384,
+  "fovDeg": 110,
+  "pitchDeg": 58.46228249100098,
+  "distanceM": 8.442579164046048,
+  "image": "artifacts/building-recipes/pand-246893/photo-wall-cornelis-lelyplein.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-willem-frogerstraat",
+  "panoId": "TMX7316010203-001060_pano_0007_000100",
+  "timestamp": "2019-01-17T10:34:29.050680Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/17/TMX7316010203-001060/pano_0007_000100/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117474.82831521111,
+   485613.12018493627
+  ],
+  "headingDeg": 274.965150187384,
+  "fovDeg": 105.01095489536036,
+  "pitchDeg": 38.90571891978056,
+  "distanceM": 35.821170731255506,
+  "image": "artifacts/building-recipes/pand-246893/photo-wall-willem-frogerstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

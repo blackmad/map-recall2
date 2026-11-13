@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-strawinskypad",
+  "panoId": "TMX7316010203-001034_pano_0007_000710",
+  "timestamp": "2019-01-03T10:32:32.713860Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/03/TMX7316010203-001034/pano_0007_000710/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119769.75874641688,
+   483774.2686375461
+  ],
+  "headingDeg": 355.9721658294694,
+  "fovDeg": 65.38307513316111,
+  "pitchDeg": 11.821706001370906,
+  "distanceM": 32.456027381034616,
+  "image": "artifacts/building-recipes/pand-084650/photo-wall-strawinskypad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-prinses-irenestraat",
+  "panoId": "TMX7316010203-002918_pano_0013_000021",
+  "timestamp": "2023-01-05T11:45:46.021630Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/05/TMX7316010203-002918/pano_0013_000021/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119782.46451187778,
+   483864.7659434732
+  ],
+  "headingDeg": 182.51778442363627,
+  "fovDeg": 61.560383360692754,
+  "pitchDeg": 19.42642132533861,
+  "distanceM": 19.247023893023005,
+  "image": "artifacts/building-recipes/pand-084650/photo-wall-prinses-irenestraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-willem-pijperstraat",
+  "panoId": "TMX7316010203-001479_pano_0006_000603",
+  "timestamp": "2019-12-03T08:50:53.388010Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/03/TMX7316010203-001479/pano_0006_000603/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119732.48373817746,
+   483866.32807927474
+  ],
+  "headingDeg": 178.53940432557158,
+  "fovDeg": 65.47581354682434,
+  "pitchDeg": 14.963260381908043,
+  "distanceM": 25.393329786643164,
+  "image": "artifacts/building-recipes/pand-084650/photo-wall-willem-pijperstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

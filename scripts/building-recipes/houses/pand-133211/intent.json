@@ -1,0 +1,114 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-133211",
+ "pandId": "0363100012133211",
+ "address": "BAG pand 0363100012133211",
+ "sources": [
+  {
+   "id": "pano-2021-12-23-w03-213",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002335_pano_0003_001085/",
+   "image": "source-data://pand-reference-walls/0363100012133211/w03-213.jpg",
+   "sha256": "8a8e71adee561ca0e8bf89df8ef7b09cd7cabbd9f8cb562c241054ee233bbf44",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    11,
+    12,
+    34
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    5,
+    6,
+    38
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    14,
+    20,
+    46
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#40332d"
+   },
+   "baysPerStorey": 16
+  },
+  {
+   "wallSurfaces": [
+    15,
+    17,
+    36
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    16,
+    31,
+    63,
+    69
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    10,
+    18,
+    23,
+    25,
+    32,
+    37,
+    39,
+    48,
+    59,
+    61
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    19,
+    53,
+    57
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#40332d",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 6 (43 m, party wall); 23 (16.8 m, over 8 groups); 24 (18.5 m, over 8 groups); 16 (6.7 m, unnamed panel under 8 m); 10 (12.8 m, under 3 m tall); 42 (6.7 m, unnamed panel under 8 m); 15 (4.5 m, under 3 m tall); 35 (4.7 m, under 3 m tall); 43 (5.5 m, under 3 m tall); 37 (6.3 m, under 3 m tall); 28 (6.3 m, under 3 m tall); 33 (5.6 m, under 3 m tall); 20 (5.3 m, under 3 m tall); 17 (5.1 m, under 3 m tall); 27 (5.3 m, under 3 m tall); 21 (5.4 m, under 3 m tall); 38 (5.2 m, under 3 m tall); 31 (5.2 m, under 3 m tall); 34 (2.4 m, under 3 m tall); 18 (4.8 m, under 3 m tall); 36 (2 m, under 3 m tall).",
+  "Measured 2026-11-13 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #2f2c27 not used (not darker than the wall #40332d by 10 L*, or tinted): kit glass kept; walls[2] bays 16 from the likeness grid (padded measurement 18); unphotographed walls take #40332d (brick), the area-weighted median of groups 2."
+ ],
+ "measured": {
+  "date": "2026-11-13",
+  "groups": [
+   2
+  ],
+  "otherWalls": true
+ }
+}

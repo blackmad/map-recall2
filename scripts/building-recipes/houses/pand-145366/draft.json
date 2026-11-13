@@ -1,0 +1,90 @@
+{
+ "date": "2026-11-13",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 0,
+   "bearing": 246,
+   "widthM": 170.9,
+   "heightM": 12.4,
+   "street": "Spanderswoudstraat"
+  },
+  {
+   "group": 1,
+   "panel": 4,
+   "bearing": 246,
+   "widthM": 59.1,
+   "heightM": 12.3,
+   "street": "Spanderswoudstraat"
+  },
+  {
+   "group": 2,
+   "panel": 2,
+   "bearing": 156,
+   "widthM": 11.5,
+   "heightM": 12.4,
+   "street": "Hilversumstraat"
+  },
+  {
+   "group": 3,
+   "panel": 6,
+   "bearing": 336,
+   "widthM": 11.4,
+   "heightM": 12.4,
+   "street": "IJdoornlaan"
+  },
+  {
+   "group": 4,
+   "panel": 16,
+   "bearing": 66,
+   "widthM": 170.9,
+   "heightM": 12.4,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 1,
+   "bearing": 66,
+   "widthM": 59.1,
+   "heightM": 12.4,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 13,
+   "widthM": 5.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 4.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 11,
+   "widthM": 3.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 12,
+   "widthM": 3.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 7,
+   "widthM": 3.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 5,
+   "widthM": 3.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 3,
+   "widthM": 2.7,
+   "reason": "unnamed panel under 8 m"
+  }
+ ]
+}

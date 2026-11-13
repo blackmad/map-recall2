@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-tugelaweg",
+  "panoId": "TMX7316010203-001604_pano_0000_000412",
+  "timestamp": "2020-01-29T13:17:10.751160Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/01/29/TMX7316010203-001604/pano_0000_000412/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123399.68546731168,
+   485504.4296253701
+  ],
+  "headingDeg": 156.16067245068052,
+  "fovDeg": 110,
+  "pitchDeg": 43.413112262926425,
+  "distanceM": 6.014519361653226,
+  "image": "artifacts/building-recipes/pand-241221/photo-wall-tugelaweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hertzogstraat",
+  "panoId": "TMX7316010203-001920_pano_0007_000234",
+  "timestamp": "2020-09-10T09:06:03.269700Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/09/10/TMX7316010203-001920/pano_0007_000234/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123454.15839575164,
+   485493.3227283257
+  ],
+  "headingDeg": 247.62087816184174,
+  "fovDeg": 110,
+  "pitchDeg": 19.157460422726217,
+  "distanceM": 16.959314371553567,
+  "image": "artifacts/building-recipes/pand-241221/photo-wall-hertzogstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-retiefstraat",
+  "panoId": "TMX7316010203-002417_pano_0005_000036",
+  "timestamp": "2022-01-12T11:29:32.090240Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/12/TMX7316010203-002417/pano_0005_000036/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123425.24400559164,
+   485446.4702350675
+  ],
+  "headingDeg": 342.73324946941835,
+  "fovDeg": 110,
+  "pitchDeg": 38.77898291622511,
+  "distanceM": 7.323040884479093,
+  "image": "artifacts/building-recipes/pand-241221/photo-wall-retiefstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

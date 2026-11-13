@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-111255",
+ "pandId": "0363100012111255",
+ "address": "BAG pand 0363100012111255",
+ "sources": [
+  {
+   "id": "pano-2019-01-17-w01-252L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001060_pano_0000_000586/",
+   "image": "source-data://pand-reference-walls/0363100012111255/w01-252L.jpg",
+   "sha256": "13f5c8d972f0461f54048a9cde064bbbcc8f3a0a27545ea1b2e51a1d912c4136",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-17-w03-72L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001060_pano_0000_000284/",
+   "image": "source-data://pand-reference-walls/0363100012111255/w03-72L.jpg",
+   "sha256": "c185f54f7561e8b71e86be3bae5a2a25389480b8cd9ddc939f47da913162d1c8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-25-w01-252",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_07_44_15_00936/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-03-w03-72",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002556_pano_0000_000385/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-17-w04-342",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_01538/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-10-w04-342L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001503_pano_0002_000014/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-14-w05-72",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000792_pano_0003_000302/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-26-w05-72L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002065_pano_0000_000606/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-29-w06-72",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002066_pano_0000_000226/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-17-w07-351",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_01533/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-08-w07-351L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000474_pano_0000_000539/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-07-12-w08-246",
+   "kind": "street-panorama",
+   "capturedAt": "2021-07-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002228_pano_0006_000413/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-10-w08-246L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001503_pano_0002_000007/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    123
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "palette": {
+    "brick": "#433b32"
+   },
+   "windowShape": {
+    "w": 0.933,
+    "h": 0.435,
+    "sill": 0.4
+   },
+   "baysPerStorey": 8
+  },
+  {
+   "wallSurfaces": [
+    19,
+    75
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    67,
+    120,
+    122
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    226
+   ],
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    170
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#5b5146",
+    "glass": "#292521"
+   },
+   "windowShape": {
+    "w": 0.562,
+    "h": 0.683,
+    "sill": 0
+   },
+   "baysPerStorey": 10
+  },
+  {
+   "wallSurfaces": [
+    8,
+    9,
+    135
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#413933"
+   },
+   "baysPerStorey": 9
+  },
+  {
+   "wallSurfaces": [
+    38
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    54
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#433b32",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 214 (78.3 m, over 8 groups); 177 (30.1 m, over 8 groups); 123 (17 m, over 8 groups); 10 (17.2 m, over 8 groups); 4 (16.5 m, over 8 groups); 150 (14 m, over 8 groups); 51 (11.4 m, over 8 groups); 35 (17.7 m, over 8 groups); 70 (9.8 m, over 8 groups); 171 (12.4 m, over 8 groups); 45 (10.1 m, over 8 groups); 64 (11.1 m, over 8 groups); 208 (9.1 m, over 8 groups); 48 (11 m, over 8 groups); 12 (7.7 m, unnamed panel under 8 m); 32 (6.6 m, unnamed panel under 8 m); 38 (7.5 m, unnamed panel under 8 m); 119 (7.3 m, unnamed panel under 8 m); 142 (8.2 m, over 8 groups); 25 (6.5 m, unnamed panel under 8 m); 0 (7.7 m, unnamed panel under 8 m); 29 (5.5 m, unnamed panel under 8 m); 6 (4 m, unnamed panel under 8 m); 100 (11.4 m, over 8 groups); 41 (4.3 m, unnamed panel under 8 m); 36 (3.8 m, unnamed panel under 8 m); 99 (16.6 m, over 8 groups); 81 (5.3 m, unnamed panel under 8 m); 215 (29.8 m, over 8 groups); 127 (4.8 m, unnamed panel under 8 m); 134 (5 m, unnamed panel under 8 m); 146 (5 m, unnamed panel under 8 m); 62 (12.5 m, over 8 groups); 59 (4.5 m, unnamed panel under 8 m); 31 (3.4 m, unnamed panel under 8 m); 115 (3.6 m, unnamed panel under 8 m); 155 (4.9 m, unnamed panel under 8 m); 30 (2.7 m, unnamed panel under 8 m); 39 (2 m, unnamed panel under 8 m); 17 (2.8 m, unnamed panel under 8 m); 33 (2.8 m, unnamed panel under 8 m); 106 (2.9 m, unnamed panel under 8 m); 23 (2.4 m, unnamed panel under 8 m); 149 (2.4 m, unnamed panel under 8 m); 28 (2.1 m, unnamed panel under 8 m); 107 (6.1 m, unnamed panel under 8 m); 200 (2.2 m, unnamed panel under 8 m); 192 (10.6 m, under 3 m tall); 103 (9.5 m, over 8 groups); 167 (4.3 m, unnamed panel under 8 m); 83 (2.8 m, unnamed panel under 8 m); 46 (4.9 m, unnamed panel under 8 m); 96 (5.2 m, under 3 m tall); 156 (5 m, under 3 m tall); 40 (4.7 m, under 3 m tall); 65 (4.1 m, unnamed panel under 8 m); 206 (4.2 m, under 3 m tall); 93 (4.1 m, under 3 m tall); 52 (3.6 m, under 3 m tall); 129 (3.5 m, under 3 m tall); 157 (2.8 m, under 3 m tall); 98 (3.9 m, under 3 m tall); 60 (7.3 m, under 3 m tall); 178 (2.2 m, under 3 m tall); 131 (2.3 m, under 3 m tall); 132 (2.2 m, under 3 m tall); 168 (2.2 m, under 3 m tall); 91 (2.4 m, under 3 m tall); 207 (2.5 m, under 3 m tall); 205 (2.7 m, under 3 m tall); 88 (2.1 m, under 3 m tall); 185 (2.2 m, under 3 m tall); 68 (2.5 m, under 3 m tall).",
+  "Measured 2026-11-13 (measure.ts, evidence in measured.json): groups 0, 4, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #2e2b26 not used (not darker than the wall #433b32 by 10 L*, or tinted): kit glass kept; walls[5] glass #3c3f3b not used (not darker than the wall #413933 by 10 L*, or tinted): kit glass kept; unphotographed walls take #433b32 (brick), the area-weighted median of groups 0, 4, 5.",
+  "Triangle budget: 12226 > 12000; unphotographed groups 3 drawn blank (draftBudgetCap)."
+ ],
+ "measured": {
+  "date": "2026-11-13",
+  "groups": [
+   0,
+   4,
+   5
+  ],
+  "otherWalls": true
+ }
+}

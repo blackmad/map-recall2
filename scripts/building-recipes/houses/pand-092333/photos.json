@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-james-wattstraat",
+  "panoId": "TMX7316010203-001620_pano_0001_000254",
+  "timestamp": "2020-02-04T10:28:54.791670Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/02/04/TMX7316010203-001620/pano_0001_000254/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123236.2036541531,
+   484710.51022198144
+  ],
+  "headingDeg": 136.5725609276936,
+  "fovDeg": 100.19053809235399,
+  "pitchDeg": 51.886494775078226,
+  "distanceM": 18.181484435502398,
+  "image": "artifacts/building-recipes/pand-092333/photo-wall-james-wattstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-eerste-ringdijkstraat",
+  "panoId": "TMX7316010203-001620_pano_0001_000267",
+  "timestamp": "2020-02-04T10:29:05.191490Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/02/04/TMX7316010203-001620/pano_0001_000267/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123190.62669578282,
+   484666.0232754615
+  ],
+  "headingDeg": 142.76734640196298,
+  "fovDeg": 84.68874781155736,
+  "pitchDeg": 40.27618581947961,
+  "distanceM": 13.706327608847035,
+  "image": "artifacts/building-recipes/pand-092333/photo-wall-eerste-ringdijkstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-gooiseweg",
+  "panoId": "TMX7316010203-001680_pano_0000_000055",
+  "timestamp": "2020-04-29T09:41:17.391850Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/29/TMX7316010203-001680/pano_0000_000055/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123221.73776660515,
+   484625.0926113375
+  ],
+  "headingDeg": 322.94373752863964,
+  "fovDeg": 65.8356883184419,
+  "pitchDeg": 34.61170514399912,
+  "distanceM": 33.59699861986414,
+  "image": "artifacts/building-recipes/pand-092333/photo-wall-gooiseweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,1582 @@
+{
+ "id": "pand-247342",
+ "pandId": "0363100012247342",
+ "date": "2026-11-13",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 30,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.23",
+    "glazing storey band off by 0.19 mean 0.28 vs photo 0.45",
+    "columns 17 vs photo 10"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w01-131.jpg",
+    "sha256": "21c85104b9b436fd3d052fce35316d9dcd64494c23ec3ebd0cd29f8ed09fd8c2",
+    "panoId": "TMX7316010203-002420_pano_0001_000010",
+    "capturedAt": "2022-01-17",
+    "obliquityDeg": 0.3,
+    "cameraDistM": 10.9
+   },
+   "pieces": [
+    {
+     "tag": "w01-131",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w01-131.jpg",
+     "sha256": "21c85104b9b436fd3d052fce35316d9dcd64494c23ec3ebd0cd29f8ed09fd8c2",
+     "capturedAt": "2022-01-17",
+     "u0": 0.3,
+     "u1": 53.5
+    }
+   ],
+   "coverage": 0.994,
+   "placement": {
+    "offsetM": 0.002,
+    "angleDeg": 0.033,
+    "overlap": 0.994,
+    "along": [
+     -0.333,
+     53.198
+    ],
+    "shift": {
+     "uM": 0.4,
+     "vM": 0.5
+    },
+    "box": {
+     "u0": -37.646,
+     "u1": 15.885,
+     "v0": 0,
+     "v1": 19.38
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.4,
+     "vM": 0.5
+    },
+    "iou": 0.216,
+    "wall": {
+     "photo": "#6b5d53",
+     "photoRaw": "#534a42",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.227,
+     "dHue": 11.8,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#524e4b",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.454,
+      0.469,
+      0.425,
+      0.465,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      0.288,
+      0.281,
+      0.288,
+      0.281,
+      null,
+      null
+     ],
+     "photoMean": 0.453,
+     "modelMean": 0.28,
+     "maxDiff": 0.188,
+     "meanDiff": 0.173,
+     "pass": false
+    },
+    "columns": {
+     "photo": 10,
+     "model": 17,
+     "windows": {
+      "photo": 10,
+      "model": 17
+     },
+     "pass": false
+    },
+    "photoGrid": {
+     "pitchM": 5.327,
+     "window": {
+      "w": 0.75,
+      "h": 0.95,
+      "sill": 0.05,
+      "aspect": 0.91,
+      "shape": "square"
+     }
+    },
+    "shape": {
+     "photo": "square",
+     "model": "square",
+     "pass": true
+    },
+    "openings": {
+     "photo": {
+      "count": 14,
+      "mix": {
+       "tall": 0.52,
+       "square": 0.38,
+       "wide": 0.1
+      },
+      "widthP50": 1.7,
+      "widthP90": 4,
+      "measured": 50
+     },
+     "model": {
+      "count": 17,
+      "mix": {
+       "tall": 1,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": 1.5,
+      "widthP90": 1.5,
+      "measured": 68
+     },
+     "countPass": false,
+     "mixTv": 0.48,
+     "mixPass": false,
+     "widthPass": false,
+     "rowMismatch": [],
+     "reasons": [
+      "openings per storey 17 vs photo 14",
+      "opening shapes tall/square/wide 100/0/0 vs photo 52/38/10 %",
+      "opening widths p50/p90 1.5/1.5 m vs photo 1.7/4 m"
+     ],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "columns",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.56,
+     "model": 0.35
+    },
+    "evidence": {
+     "usable": 0.945,
+     "foliage": 0.017,
+     "washedOut": 0.053,
+     "obliquityDeg": 0.3,
+     "cameraDistM": 10.9,
+     "widthM": 53.53,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#6b5d53",
+    "wallRaw": "#534a42",
+    "glass": "#524e4b",
+    "trim": "#908c89",
+    "glazing": 0.452,
+    "storeyGlazing": [
+     null,
+     0.435,
+     0.487,
+     0.408,
+     0.483,
+     null,
+     null
+    ],
+    "ground": 0.581,
+    "bays": 10,
+    "pitchM": 5.315,
+    "storeyM": 3.6,
+    "window": {
+     "w": 0.75,
+     "h": 1,
+     "sill": 0,
+     "aspect": 0.96,
+     "shape": "square"
+    },
+    "frontClass": "columns",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      167,
+      171,
+      170
+     ],
+     "gain": 1.271,
+     "wb": [
+      1.016,
+      0.99,
+      0.995
+     ]
+    },
+    "usable": 0.93,
+    "foliage": 0.017,
+    "washedOut": 0.053,
+    "lightBands": [],
+    "split": {
+     "at": 0.794,
+     "left": "#62554b",
+     "right": "#817469",
+     "dE": 15.4
+    },
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.832,
+      "hex": "#62564d"
+     },
+     {
+      "from": 0.832,
+      "to": 1,
+      "hex": "#877a6f"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "ribbons": []
+    },
+    "lightRuns": [
+     {
+      "storey": 3,
+      "from": 0.159,
+      "to": 0.229
+     },
+     {
+      "storey": 4,
+      "from": 0.528,
+      "to": 0.574
+     },
+     {
+      "storey": 4,
+      "from": 0.794,
+      "to": 0.869
+     },
+     {
+      "storey": 5,
+      "from": 0.005,
+      "to": 0.659
+     },
+     {
+      "storey": 5,
+      "from": 0.719,
+      "to": 0.799
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [
+     "glazed-columns: full-height glazing in bays across storey lines, drawn as brick-bay-grid (glazed-columns needs the column bays by hand)",
+     "window-shape-range: measured 0.75x1 outside the windowShape range"
+    ],
+    "evidence": []
+   }
+  },
+  {
+   "group": 1,
+   "panel": 48,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.16",
+    "glazing storey band off by 0.17",
+    "storey 2: widest opening 1.6 m vs photo 8.5 m (a ribbon against windows)",
+    "storey 3: widest opening 1.6 m vs photo 12.9 m (a ribbon against windows)"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w03-271.jpg",
+    "sha256": "799f631404628a500cbb32cda9996024f35994a42d3aa77e328ddca15e4c18b7",
+    "panoId": "TMX7316010203-001196_pano_0000_005864",
+    "capturedAt": "2019-05-21",
+    "obliquityDeg": 21,
+    "cameraDistM": 8.2
+   },
+   "pieces": [
+    {
+     "tag": "w03-271",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w03-271.jpg",
+     "sha256": "799f631404628a500cbb32cda9996024f35994a42d3aa77e328ddca15e4c18b7",
+     "capturedAt": "2019-05-21",
+     "u0": 0,
+     "u1": 45.7
+    }
+   ],
+   "coverage": 0.993,
+   "placement": {
+    "offsetM": 0.186,
+    "angleDeg": 0.058,
+    "overlap": 0.994,
+    "along": [
+     0.33,
+     46.342
+    ],
+    "shift": {
+     "uM": 0.2,
+     "vM": 0
+    },
+    "box": {
+     "u0": 0,
+     "u1": 46.012,
+     "v0": 0,
+     "v1": 19.507
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.2,
+     "vM": 0
+    },
+    "iou": 0.206,
+    "wall": {
+     "photo": "#817361",
+     "photoRaw": "#6a6051",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.157,
+     "dHue": 3,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#6d6f6b",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.165,
+      0.209,
+      0.223,
+      0.146,
+      null
+     ],
+     "model": [
+      null,
+      0.278,
+      0.278,
+      0.278,
+      0.316,
+      null
+     ],
+     "photoMean": 0.19,
+     "modelMean": 0.274,
+     "maxDiff": 0.17,
+     "meanDiff": 0.084,
+     "pass": false
+    },
+    "columns": {
+     "photo": null,
+     "model": 14,
+     "windows": {
+      "photo": null,
+      "model": 14
+     },
+     "pass": null
+    },
+    "photoGrid": {
+     "pitchM": null,
+     "window": null
+    },
+    "shape": {
+     "photo": null,
+     "model": "square",
+     "pass": null
+    },
+    "openings": {
+     "photo": {
+      "count": 7,
+      "mix": {
+       "tall": 0.333,
+       "square": 0.296,
+       "wide": 0.37
+      },
+      "widthP50": 1.7,
+      "widthP90": 5.2,
+      "measured": 27
+     },
+     "model": {
+      "count": 14,
+      "mix": {
+       "tall": 0.411,
+       "square": 0.589,
+       "wide": 0
+      },
+      "widthP50": 1.6,
+      "widthP90": 1.6,
+      "measured": 56
+     },
+     "countPass": false,
+     "mixTv": 0.37,
+     "mixPass": false,
+     "widthPass": false,
+     "rowMismatch": [
+      {
+       "storey": 2,
+       "photoMaxM": 8.5,
+       "modelMaxM": 1.6
+      },
+      {
+       "storey": 3,
+       "photoMaxM": 12.9,
+       "modelMaxM": 1.6
+      }
+     ],
+     "reasons": [
+      "storey 2: widest opening 1.6 m vs photo 8.5 m (a ribbon against windows)",
+      "storey 3: widest opening 1.6 m vs photo 12.9 m (a ribbon against windows)",
+      "openings per storey 14 vs photo 7",
+      "opening shapes tall/square/wide 41/59/0 vs photo 33/30/37 %",
+      "opening widths p50/p90 1.6/1.6 m vs photo 1.7/5.2 m"
+     ],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.535,
+     "model": 0.307
+    },
+    "evidence": {
+     "usable": 0.953,
+     "foliage": 0.093,
+     "washedOut": 0.052,
+     "obliquityDeg": 21,
+     "cameraDistM": 8.2,
+     "widthM": 46.01,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#817361",
+    "wallRaw": "#6a6051",
+    "glass": "#6d6f6b",
+    "trim": "#a2a19d",
+    "glazing": 0.189,
+    "storeyGlazing": [
+     null,
+     0.165,
+     0.208,
+     0.222,
+     0.145,
+     null
+    ],
+    "ground": 0.534,
+    "bays": null,
+    "pitchM": null,
+    "storeyM": 4.25,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      177,
+      180,
+      179
+     ],
+     "gain": 1.203,
+     "wb": [
+      1.008,
+      0.995,
+      0.997
+     ]
+    },
+    "usable": 0.91,
+    "foliage": 0.093,
+    "washedOut": 0.052,
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.141,
+      "hex": "#625143"
+     },
+     {
+      "from": 0.141,
+      "to": 0.25,
+      "hex": "#877a68"
+     },
+     {
+      "from": 0.25,
+      "to": 0.38,
+      "hex": "#5e4a3d"
+     },
+     {
+      "from": 0.38,
+      "to": 0.467,
+      "hex": "#827464"
+     },
+     {
+      "from": 0.467,
+      "to": 0.641,
+      "hex": "#5e4742"
+     },
+     {
+      "from": 0.641,
+      "to": 0.772,
+      "hex": "#7f7060"
+     },
+     {
+      "from": 0.772,
+      "to": 1,
+      "hex": "#533f30"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "ribbons": [
+      {
+       "storey": 2,
+       "ribbonM": 8.5,
+       "against": 1
+      },
+      {
+       "storey": 3,
+       "ribbonM": 12.9,
+       "against": 4
+      }
+     ]
+    },
+    "lightRuns": []
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 2,
+   "panel": 46,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.22",
+    "glazing storey band off by 0.44 mean 0.26 vs photo 0.74"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w06-41.jpg",
+    "sha256": "111fdc932bce2d23fc8506f28508952ce1c1824daeb4ef22dba0ec7d7fce9234",
+    "panoId": "recording_2025-09-25_09-41-59_00230",
+    "capturedAt": "2025-09-25",
+    "obliquityDeg": 0,
+    "cameraDistM": 13.3
+   },
+   "pieces": [
+    {
+     "tag": "w06-41",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w06-41.jpg",
+     "sha256": "111fdc932bce2d23fc8506f28508952ce1c1824daeb4ef22dba0ec7d7fce9234",
+     "capturedAt": "2025-09-25",
+     "u0": 0,
+     "u1": 16.1,
+     "streetShiftM": 1.053
+    }
+   ],
+   "coverage": 0.999,
+   "placement": {
+    "offsetM": 0.329,
+    "angleDeg": 0.004,
+    "overlap": 0.998,
+    "along": [
+     -0.032,
+     16.086
+    ],
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "box": {
+     "u0": -1.567,
+     "u1": 14.551,
+     "v0": 0,
+     "v1": 5.804
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "iou": 0.243,
+    "wall": {
+     "photo": "#4f6371",
+     "photoRaw": "#587485",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.224,
+     "dHue": -167.9,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#2b3133",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.724,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      0.28,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "photoMean": 0.74,
+     "modelMean": 0.261,
+     "maxDiff": 0.444,
+     "meanDiff": 0.479,
+     "pass": false
+    },
+    "columns": {
+     "photo": 7,
+     "model": 5,
+     "windows": {
+      "photo": 7,
+      "model": 5
+     },
+     "pass": null
+    },
+    "photoGrid": {
+     "pitchM": 2.3,
+     "window": {
+      "w": 0.6,
+      "h": 0.75,
+      "sill": 0,
+      "aspect": 1.54,
+      "shape": "tall"
+     }
+    },
+    "shape": {
+     "photo": "tall",
+     "model": "square",
+     "pass": null
+    },
+    "classes": {
+     "photo": "curtain",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.928,
+     "model": 0.306
+    },
+    "evidence": {
+     "usable": 0.784,
+     "foliage": 0.131,
+     "washedOut": 0.061,
+     "obliquityDeg": 0,
+     "cameraDistM": 13.3,
+     "widthM": 16.12,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#4f6371",
+    "wallRaw": "#587485",
+    "glass": "#2b3133",
+    "trim": "#677376",
+    "glazing": 0.676,
+    "storeyGlazing": [
+     null,
+     0.646,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ground": 0.944,
+    "bays": 15,
+    "pitchM": 1.076,
+    "storeyM": null,
+    "window": {
+     "w": 0.55,
+     "h": 0.6,
+     "sill": 0,
+     "aspect": 2.87,
+     "shape": "tall"
+    },
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      240,
+      254,
+      253
+     ],
+     "gain": 0.864,
+     "wb": [
+      1.037,
+      0.98,
+      0.985
+     ]
+    },
+    "usable": 0.673,
+    "foliage": 0.131,
+    "washedOut": 0.061,
+    "lightBands": [],
+    "split": {
+     "at": 0.279,
+     "left": "#3d5464",
+     "right": "#4f626f",
+     "dE": 15.3
+    },
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.217,
+      "hex": "#2d3940"
+     },
+     {
+      "from": 0.217,
+      "to": 1,
+      "hex": "#4c5f6e"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1
+     ],
+     "ribbons": []
+    },
+    "lightRuns": [
+     {
+      "storey": 2,
+      "from": 0.233,
+      "to": 0.807
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 3,
+   "panel": 2,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.31",
+    "glazing storey band off by 0.29 mean 0.28 vs photo 0.49",
+    "columns 5 vs photo 7"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w08-42L.jpg",
+    "sha256": "261c6d80eb8215459a4dcbc0e34e1b1ea69dd5e04eaa1128e1a072b465a1ddb8",
+    "panoId": "TMX7316010203-001619_pano_0000_000154",
+    "capturedAt": "2020-02-03",
+    "obliquityDeg": 2.8,
+    "cameraDistM": 11.1
+   },
+   "pieces": [
+    {
+     "tag": "w08-42L",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w08-42L.jpg",
+     "sha256": "261c6d80eb8215459a4dcbc0e34e1b1ea69dd5e04eaa1128e1a072b465a1ddb8",
+     "capturedAt": "2020-02-03",
+     "u0": 0,
+     "u1": 15.388,
+     "streetShiftM": 0.999
+    }
+   ],
+   "coverage": 1,
+   "placement": {
+    "offsetM": 0.291,
+    "angleDeg": 0.22,
+    "overlap": 0.999,
+    "along": [
+     -0.017,
+     15.371
+    ],
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 15.388,
+     "v0": 0,
+     "v1": 19.431
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "iou": 0.229,
+    "wall": {
+     "photo": "#524942",
+     "photoRaw": "#59514d",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.31,
+     "dHue": 10.5,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#46453f",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.419,
+      0.586,
+      0.529,
+      0.442,
+      null
+     ],
+     "model": [
+      null,
+      0.301,
+      0.293,
+      0.28,
+      0.318,
+      null
+     ],
+     "photoMean": 0.49,
+     "modelMean": 0.283,
+     "maxDiff": 0.293,
+     "meanDiff": 0.207,
+     "pass": false
+    },
+    "columns": {
+     "photo": 7,
+     "model": 5,
+     "windows": {
+      "photo": 7,
+      "model": 5
+     },
+     "pass": false
+    },
+    "photoGrid": {
+     "pitchM": 2.189,
+     "window": {
+      "w": 0.55,
+      "h": 0.5,
+      "sill": 0,
+      "aspect": 1.57,
+      "shape": "tall"
+     }
+    },
+    "shape": {
+     "photo": "tall",
+     "model": "tall",
+     "pass": true
+    },
+    "openings": {
+     "photo": {
+      "count": 3,
+      "mix": {
+       "tall": 0.545,
+       "square": 0.273,
+       "wide": 0.182
+      },
+      "widthP50": 1.4,
+      "widthP90": 4.4,
+      "measured": 11
+     },
+     "model": {
+      "count": 5,
+      "mix": {
+       "tall": 1,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": 1.5,
+      "widthP90": 1.5,
+      "measured": 20
+     },
+     "countPass": false,
+     "mixTv": 0.455,
+     "mixPass": false,
+     "widthPass": false,
+     "rowMismatch": [],
+     "reasons": [
+      "openings per storey 5 vs photo 3",
+      "opening shapes tall/square/wide 100/0/0 vs photo 55/27/18 %",
+      "opening widths p50/p90 1.5/1.5 m vs photo 1.4/4.4 m"
+     ],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.342,
+     "model": 0.329
+    },
+    "evidence": {
+     "usable": 0.959,
+     "foliage": 0.007,
+     "washedOut": 0.064,
+     "obliquityDeg": 2.8,
+     "cameraDistM": 11.1,
+     "widthM": 15.39,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#524942",
+    "wallRaw": "#59514d",
+    "glass": "#46453f",
+    "trim": "#71726d",
+    "glazing": 0.486,
+    "storeyGlazing": [
+     null,
+     0.432,
+     0.587,
+     0.496,
+     0.413,
+     null
+    ],
+    "ground": 0.404,
+    "bays": 7,
+    "pitchM": 2.101,
+    "storeyM": 3.46,
+    "window": {
+     "w": 0.4,
+     "h": 1,
+     "sill": 0,
+     "aspect": 4.51,
+     "shape": "tall"
+    },
+    "frontClass": "columns",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      235,
+      238,
+      251
+     ],
+     "gain": 0.891,
+     "wb": [
+      1.026,
+      1.015,
+      0.961
+     ]
+    },
+    "usable": 0.899,
+    "foliage": 0.007,
+    "washedOut": 0.064,
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#534b43"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "ribbons": []
+    },
+    "lightRuns": [
+     {
+      "storey": 4,
+      "from": 0.195,
+      "to": 0.52
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [
+     "glazed-columns: full-height glazing in bays across storey lines, drawn as brick-bay-grid (glazed-columns needs the column bays by hand)",
+     "window-shape-range: measured 0.4x1 outside the windowShape range"
+    ],
+    "evidence": []
+   }
+  },
+  {
+   "group": 4,
+   "panel": 0,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.30",
+    "glazing storey band off by 0.23",
+    "storey 4: widest opening 1.6 m vs photo 9.0 m (a ribbon against windows)"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w02-13.jpg",
+    "sha256": "3175d13ec5d3b9a4f58302e10f0da378353ffb0273c52774b4ec41183dbc2976",
+    "panoId": "TMX7316010203-000244_pano_0000_001276",
+    "capturedAt": "2017-04-05",
+    "obliquityDeg": 1.1,
+    "cameraDistM": 10.5
+   },
+   "pieces": [
+    {
+     "tag": "w02-13",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w02-13.jpg",
+     "sha256": "3175d13ec5d3b9a4f58302e10f0da378353ffb0273c52774b4ec41183dbc2976",
+     "capturedAt": "2017-04-05",
+     "u0": 0,
+     "u1": 49.266
+    }
+   ],
+   "coverage": 1,
+   "placement": {
+    "offsetM": 0.275,
+    "angleDeg": 0.025,
+    "overlap": 1,
+    "along": [
+     0.144,
+     49.41
+    ],
+    "shift": {
+     "uM": -0.3,
+     "vM": -0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 49.266,
+     "v0": 0,
+     "v1": 19.407
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": -0.3,
+     "vM": -0.5
+    },
+    "iou": 0.167,
+    "wall": {
+     "photo": "#554e46",
+     "photoRaw": "#4d4740",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.296,
+     "dHue": 4.8,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#46494d",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.308,
+      0.097,
+      0.061,
+      0.213,
+      null
+     ],
+     "model": [
+      null,
+      0.29,
+      0.298,
+      0.29,
+      0.328,
+      null
+     ],
+     "photoMean": 0.197,
+     "modelMean": 0.287,
+     "maxDiff": 0.229,
+     "meanDiff": 0.09,
+     "pass": false
+    },
+    "columns": {
+     "photo": 15,
+     "model": 15,
+     "windows": {
+      "photo": 15,
+      "model": 15
+     },
+     "pass": true
+    },
+    "photoGrid": {
+     "pitchM": 3.335,
+     "window": null
+    },
+    "shape": {
+     "photo": null,
+     "model": "square",
+     "pass": null
+    },
+    "openings": {
+     "photo": {
+      "count": 4,
+      "mix": {
+       "tall": 0.375,
+       "square": 0.125,
+       "wide": 0.5
+      },
+      "widthP50": 1.6,
+      "widthP90": 4.6,
+      "measured": 16
+     },
+     "model": {
+      "count": 15,
+      "mix": {
+       "tall": 1,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": 1.6,
+      "widthP90": 1.6,
+      "measured": 60
+     },
+     "countPass": false,
+     "mixTv": 0.625,
+     "mixPass": false,
+     "widthPass": false,
+     "rowMismatch": [
+      {
+       "storey": 4,
+       "photoMaxM": 9,
+       "modelMaxM": 1.6
+      }
+     ],
+     "reasons": [
+      "storey 4: widest opening 1.6 m vs photo 9.0 m (a ribbon against windows)",
+      "openings per storey 15 vs photo 4",
+      "opening shapes tall/square/wide 100/0/0 vs photo 38/13/50 %",
+      "opening widths p50/p90 1.6/1.6 m vs photo 1.6/4.6 m"
+     ],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.334,
+     "model": 0.307
+    },
+    "evidence": {
+     "usable": 0.949,
+     "foliage": 0.037,
+     "washedOut": 0.025,
+     "obliquityDeg": 1.1,
+     "cameraDistM": 10.5,
+     "widthM": 49.27,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#554e46",
+    "wallRaw": "#4d4740",
+    "glass": "#46494d",
+    "trim": "#706f71",
+    "glazing": 0.207,
+    "storeyGlazing": [
+     null,
+     0.31,
+     0.106,
+     0.058,
+     0.25,
+     null
+    ],
+    "ground": 0.364,
+    "bays": 15,
+    "pitchM": 3.304,
+    "storeyM": null,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      194,
+      197,
+      196
+     ],
+     "gain": 1.099,
+     "wb": [
+      1.009,
+      0.993,
+      0.998
+     ]
+    },
+    "usable": 0.904,
+    "foliage": 0.037,
+    "washedOut": 0.025,
+    "lightBands": [],
+    "split": {
+     "at": 0.213,
+     "left": "#6c625c",
+     "right": "#433e38",
+     "dE": 15.2
+    },
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.213,
+      "hex": "#6c625c"
+     },
+     {
+      "from": 0.213,
+      "to": 1,
+      "hex": "#433e38"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "ribbons": [
+      {
+       "storey": 2,
+       "ribbonM": 9.1,
+       "against": null
+      },
+      {
+       "storey": 4,
+       "ribbonM": 8.9,
+       "against": null
+      }
+     ]
+    },
+    "lightRuns": [
+     {
+      "storey": 3,
+      "from": 0,
+      "to": 0.051
+     },
+     {
+      "storey": 4,
+      "from": 0,
+      "to": 0.122
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 5,
+   "panel": 19,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 19"
+    ]
+   }
+  },
+  {
+   "group": 6,
+   "panel": 53,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.28",
+    "glazing storey band off by 0.27 mean 0.29 vs photo 0.41",
+    "window shape square vs photo wide",
+    "columns 10 vs photo 6"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012247342/w04-41L.jpg",
+    "sha256": "ad04582b0e4bdf99dfcf7b596e3d9fe51e509a1740aed4436d114fee9221df55",
+    "panoId": "TMX7316010203-001010_pano_0008_000644",
+    "capturedAt": "2018-12-12",
+    "obliquityDeg": 0.6,
+    "cameraDistM": 9.7
+   },
+   "pieces": [
+    {
+     "tag": "w04-41L",
+     "ref": "source-data://pand-reference-walls/0363100012247342/w04-41L.jpg",
+     "sha256": "ad04582b0e4bdf99dfcf7b596e3d9fe51e509a1740aed4436d114fee9221df55",
+     "capturedAt": "2018-12-12",
+     "u0": 0,
+     "u1": 32.7
+    }
+   ],
+   "coverage": 0.999,
+   "placement": {
+    "offsetM": 0.271,
+    "angleDeg": 0.024,
+    "overlap": 1,
+    "along": [
+     -0.01,
+     32.723
+    ],
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 32.733,
+     "v0": 0,
+     "v1": 25.367
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.5,
+     "vM": -0.5
+    },
+    "iou": 0.195,
+    "wall": {
+     "photo": "#5a5249",
+     "photoRaw": "#5a5249",
+     "model": "#b8a07a",
+     "modelToday": "#b8a07a",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-yellow",
+     "dL": 0.28,
+     "dHue": 5,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#565553",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.576,
+      0.403,
+      0.372,
+      0.406,
+      0.267,
+      0.345,
+      null
+     ],
+     "model": [
+      null,
+      0.302,
+      0.28,
+      0.302,
+      0.28,
+      0.302,
+      0.32,
+      null
+     ],
+     "photoMean": 0.41,
+     "modelMean": 0.287,
+     "maxDiff": 0.274,
+     "meanDiff": 0.123,
+     "pass": false
+    },
+    "columns": {
+     "photo": 6,
+     "model": 10,
+     "windows": {
+      "photo": 6,
+      "model": 10
+     },
+     "pass": false
+    },
+    "photoGrid": {
+     "pitchM": 5.164,
+     "window": {
+      "w": 0.8,
+      "h": 0.7,
+      "sill": 0,
+      "aspect": 0.6,
+      "shape": "wide"
+     }
+    },
+    "shape": {
+     "photo": "wide",
+     "model": "square",
+     "pass": false
+    },
+    "openings": {
+     "photo": {
+      "count": 9,
+      "mix": {
+       "tall": 0.652,
+       "square": 0.217,
+       "wide": 0.13
+      },
+      "widthP50": 1.7,
+      "widthP90": 4.1,
+      "measured": 46
+     },
+     "model": {
+      "count": 10,
+      "mix": {
+       "tall": 0.417,
+       "square": 0.583,
+       "wide": 0
+      },
+      "widthP50": 1.6,
+      "widthP90": 1.6,
+      "measured": 60
+     },
+     "countPass": true,
+     "mixTv": 0.365,
+     "mixPass": false,
+     "widthPass": false,
+     "rowMismatch": [],
+     "reasons": [
+      "opening shapes tall/square/wide 42/58/0 vs photo 65/22/13 %",
+      "opening widths p50/p90 1.6/1.6 m vs photo 1.7/4.1 m"
+     ],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.78,
+     "model": 0.32
+    },
+    "evidence": {
+     "usable": 0.951,
+     "foliage": 0.018,
+     "washedOut": 0.061,
+     "obliquityDeg": 0.6,
+     "cameraDistM": 9.7,
+     "widthM": 32.73,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#5a5249",
+    "wallRaw": "#5a5249",
+    "glass": "#565553",
+    "trim": "#7d766e",
+    "glazing": 0.403,
+    "storeyGlazing": [
+     null,
+     0.525,
+     0.401,
+     0.372,
+     0.381,
+     0.31,
+     0.316,
+     null
+    ],
+    "ground": 0.763,
+    "bays": null,
+    "pitchM": null,
+    "storeyM": null,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": null,
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    "usable": 0.904,
+    "foliage": 0.018,
+    "washedOut": 0.061,
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 0.229,
+      "hex": "#5f564e"
+     },
+     {
+      "from": 0.229,
+      "to": 0.443,
+      "hex": "#80766a"
+     },
+     {
+      "from": 0.443,
+      "to": 1,
+      "hex": "#5e564f"
+     }
+    ],
+    "rowBands": {
+     "judged": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "ribbons": []
+    },
+    "lightRuns": [
+     {
+      "storey": 1,
+      "from": 0.061,
+      "to": 0.168
+     },
+     {
+      "storey": 6,
+      "from": 0.359,
+      "to": 0.466
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 7,
+   "panel": 20,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 20"
+    ]
+   }
+  }
+ ]
+}

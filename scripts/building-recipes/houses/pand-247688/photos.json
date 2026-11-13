@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-nieuwe-purmerweg",
+  "panoId": "TMX7316010203-001508_pano_0005_000249",
+  "timestamp": "2019-12-11T10:03:28.678820Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/11/TMX7316010203-001508/pano_0005_000249/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123953.26420789975,
+   489848.23713967303
+  ],
+  "headingDeg": 212.21062648523932,
+  "fovDeg": 110,
+  "pitchDeg": 16.548976266069953,
+  "distanceM": 19.72875750143964,
+  "image": "artifacts/building-recipes/pand-247688/photo-wall-nieuwe-purmerweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

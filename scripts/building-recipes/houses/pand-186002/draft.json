@@ -1,0 +1,126 @@
+{
+ "date": "2026-11-13",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 13,
+   "bearing": 275,
+   "widthM": 69.7,
+   "heightM": 38.2,
+   "street": "Westerdok"
+  },
+  {
+   "group": 1,
+   "panel": 0,
+   "bearing": 75,
+   "widthM": 51.2,
+   "heightM": 38.2,
+   "street": "Westerdoksdijk"
+  },
+  {
+   "group": 2,
+   "panel": 16,
+   "bearing": 75,
+   "widthM": 17.8,
+   "heightM": 38.2,
+   "street": "Westerdoksdijk"
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 2,
+   "widthM": 5,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 30,
+   "widthM": 4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 25,
+   "widthM": 3.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 21,
+   "widthM": 2.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 17,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 40,
+   "widthM": 2.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 11,
+   "widthM": 25.3,
+   "reason": "party wall"
+  },
+  {
+   "panel": 12,
+   "widthM": 3.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 8,
+   "widthM": 3.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 44,
+   "widthM": 3.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 38,
+   "widthM": 2.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 34,
+   "widthM": 5.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 32,
+   "widthM": 5.8,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 26,
+   "widthM": 2.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 3,
+   "widthM": 2.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 39,
+   "widthM": 2.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 33,
+   "widthM": 3.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 36,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 41,
+   "widthM": 2.3,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

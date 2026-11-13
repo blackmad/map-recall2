@@ -1,0 +1,315 @@
+{
+ "id": "pand-133211",
+ "pandId": "0363100012133211",
+ "date": "2026-11-13",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 9,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 9"
+    ]
+   }
+  },
+  {
+   "group": 1,
+   "panel": 4,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 4"
+    ]
+   }
+  },
+  {
+   "group": 2,
+   "panel": 11,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall dL +0.25",
+    "glazing  mean 0.19 vs photo 0.49"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012133211/w03-213.jpg",
+    "sha256": "8a8e71adee561ca0e8bf89df8ef7b09cd7cabbd9f8cb562c241054ee233bbf44",
+    "panoId": "TMX7316010203-002335_pano_0003_001085",
+    "capturedAt": "2021-12-23",
+    "obliquityDeg": 0.9,
+    "cameraDistM": 12.1
+   },
+   "pieces": [
+    {
+     "tag": "w03-213",
+     "ref": "source-data://pand-reference-walls/0363100012133211/w03-213.jpg",
+     "sha256": "8a8e71adee561ca0e8bf89df8ef7b09cd7cabbd9f8cb562c241054ee233bbf44",
+     "capturedAt": "2021-12-23",
+     "u0": 0,
+     "u1": 42.063
+    }
+   ],
+   "coverage": 1,
+   "placement": {
+    "offsetM": 0.299,
+    "angleDeg": 0.039,
+    "overlap": 1,
+    "along": [
+     0.002,
+     42.065
+    ],
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 42.063,
+     "v0": 0,
+     "v1": 3.734
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "iou": 0.308,
+    "wall": {
+     "photo": "#40332d",
+     "photoRaw": "#382e28",
+     "model": "#aa5a44",
+     "modelToday": "#aa5a44",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-red",
+     "dL": 0.253,
+     "dHue": -6,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#2f2c27",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      null,
+      null
+     ],
+     "photoMean": 0.487,
+     "modelMean": 0.194,
+     "maxDiff": null,
+     "meanDiff": 0.293,
+     "pass": false
+    },
+    "columns": {
+     "photo": 16,
+     "model": 13,
+     "windows": {
+      "photo": 16,
+      "model": 13
+     },
+     "pass": true
+    },
+    "photoGrid": {
+     "pitchM": 2.556,
+     "window": null
+    },
+    "shape": {
+     "photo": null,
+     "model": null,
+     "pass": null
+    },
+    "openings": {
+     "photo": {
+      "count": null,
+      "mix": {
+       "tall": 0,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": null,
+      "widthP90": null,
+      "measured": 0
+     },
+     "model": {
+      "count": null,
+      "mix": {
+       "tall": 0,
+       "square": 0,
+       "wide": 0
+      },
+      "widthP50": null,
+      "widthP90": null,
+      "measured": 0
+     },
+     "countPass": null,
+     "mixTv": null,
+     "mixPass": null,
+     "widthPass": null,
+     "rowMismatch": [],
+     "reasons": [],
+     "sequenceMatch": false
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": 0.209,
+     "model": 0.304
+    },
+    "evidence": {
+     "usable": 0.572,
+     "foliage": 0.035,
+     "washedOut": 0.022,
+     "obliquityDeg": 0.9,
+     "cameraDistM": 12.1,
+     "widthM": 42.06,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#40332d",
+    "wallRaw": "#382e28",
+    "glass": "#2f2c27",
+    "trim": "#545756",
+    "glazing": 0.343,
+    "storeyGlazing": [
+     null,
+     null,
+     null
+    ],
+    "ground": 0.244,
+    "bays": 18,
+    "pitchM": 2.392,
+    "storeyM": null,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      190,
+      196,
+      194
+     ],
+     "gain": 1.111,
+     "wb": [
+      1.019,
+      0.986,
+      0.996
+     ]
+    },
+    "usable": 0.667,
+    "foliage": 0.035,
+    "washedOut": 0.022,
+    "lightBands": [],
+    "split": null,
+    "rowJoints": [
+     {
+      "from": 0,
+      "to": 1,
+      "hex": "#3c312c"
+     }
+    ],
+    "rowBands": {
+     "judged": [],
+     "ribbons": []
+    },
+    "lightRuns": [
+     {
+      "storey": 1,
+      "from": 0.018,
+      "to": 0.089
+     },
+     {
+      "storey": 1,
+      "from": 0.357,
+      "to": 0.434
+     },
+     {
+      "storey": 1,
+      "from": 0.481,
+      "to": 0.606
+     }
+    ]
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": []
+   }
+  },
+  {
+   "group": 3,
+   "panel": 12,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 12"
+    ]
+   }
+  },
+  {
+   "group": 4,
+   "panel": 13,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 13"
+    ]
+   }
+  },
+  {
+   "group": 5,
+   "panel": 8,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 8"
+    ]
+   }
+  },
+  {
+   "group": 6,
+   "panel": 7,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 7"
+    ]
+   }
+  },
+  {
+   "group": 7,
+   "panel": 14,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 14"
+    ]
+   }
+  }
+ ]
+}

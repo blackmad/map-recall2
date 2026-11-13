@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-papaverweg",
+  "panoId": "TMX7316010203-001513_pano_0003_001150",
+  "timestamp": "2019-12-12T11:14:00.330840Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/12/TMX7316010203-001513/pano_0003_001150/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122403.3084599022,
+   489883.3633959881
+  ],
+  "headingDeg": 33.13567779415473,
+  "fovDeg": 110,
+  "pitchDeg": 26.745650978348184,
+  "distanceM": 7.308348634664643,
+  "image": "artifacts/building-recipes/pand-086968/photo-wall-papaverweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-vlierweg",
+  "panoId": "TMX7316060226-000493_pano_0001_000485",
+  "timestamp": "2019-11-15T10:17:28.725680Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/15/TMX7316060226-000493/pano_0001_000485/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122478.1620255159,
+   489979.52562427847
+  ],
+  "headingDeg": 214.60313798145307,
+  "fovDeg": 69.69174967254942,
+  "pitchDeg": 4.136541890937123,
+  "distanceM": 35.361059423558025,
+  "image": "artifacts/building-recipes/pand-086968/photo-wall-vlierweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-struisgrasstraat",
+  "panoId": "TMX7316010203-001999_pano_0000_000736",
+  "timestamp": "2021-02-11T12:42:01.436330Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/02/11/TMX7316010203-001999/pano_0000_000736/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122423.021155927,
+   489868.2785321146
+  ],
+  "headingDeg": 32.74139501502174,
+  "fovDeg": 59.292903123663564,
+  "pitchDeg": 8.364113753232905,
+  "distanceM": 17.359251411516745,
+  "image": "artifacts/building-recipes/pand-086968/photo-wall-struisgrasstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
