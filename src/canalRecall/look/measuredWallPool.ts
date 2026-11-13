@@ -21,7 +21,7 @@
  * The table (`measured-wall-pool.json`) is written by scripts/house-specs/measured-wall-pool.ts --publish.
  * Pure, no DOM: the flag is read from the page's (or worker's) query, or WALL_POOL in Node, once.
  */
-import TABLE from './measured-wall-pool.json';
+import TABLE from './measured-wall-pool.json' with { type: 'json' };
 import { hexToOklab } from '../houseSpec/wallColour.js';
 
 export const POOL_ARCHETYPES = ['canal', 'c19', 'school'] as const;

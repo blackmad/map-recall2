@@ -5,7 +5,7 @@ import { MeasuredWallPool, POOL, PERIOD_LIST_MIN_N, lightnessDeciles, measuredPe
 import { hexToOklab } from '../houseSpec/wallColour.ts';
 import { bayLookFor } from '../bayLook.ts';
 import { buurtProfileAt } from '../buurtProfiles/data.ts';
-import TABLE from './measured-wall-pool.json';
+import TABLE from './measured-wall-pool.json' with { type: 'json' };
 
 const withFlag = <T>(v: string | undefined, f: () => T): T => {
   const prev = process.env.WALL_POOL;
