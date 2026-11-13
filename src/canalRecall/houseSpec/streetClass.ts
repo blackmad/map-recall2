@@ -1,8 +1,8 @@
 /**
  * Street class for the street-template ranking (streetTemplate.ts) and the family-default cells (complete.ts): `main` or
- * `side`, from the OSM highway classes of the street's named ways (street-classes.json, written by
- * scripts/house-line/route-c/street-classes.ts; the rule is in that script). A street the table does not know is `side`.
- * Known gap: a tram street mapped `residential` (Vijzelstraat, Leidsestraat) reads as side.
+ * `side`. Main when the OSM highway class says so, when tram track runs along it, or when it ranks high for rides (mean ride
+ * passes >= 5); street-classes.json, written by scripts/house-line/route-c/street-classes.ts, keeps the reason per street
+ * (`why`). A street the table does not know is `side`.
  */
 import TABLE from './street-classes.json' with { type: 'json' };
 

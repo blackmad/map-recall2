@@ -4,6 +4,8 @@
 // the variety guard spreads a pool over a street.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { streetClassOf } from './streetClass.ts';
+import CLASSES from './street-classes.json' with { type: 'json' };
 import { streetTemplateFor, templatesInReach, scaleMatch, footprintWidthM, DRESSING_FIELDS, STRUCTURE_FIELDS, STREET_TEMPLATE_TABLE, TEMPLATE_BANDS, SCALE_HEIGHT_M, pandHash, type TemplateTable, type TemplateRow } from './streetTemplate.ts';
 
 const at = (dxM: number, dyM = 0): [number, number] => [4.89 + dxM / (111_320 * Math.cos(52.37 * Math.PI / 180)), 52.36 + dyM / 110_540];
@@ -84,4 +86,15 @@ test('variety guard: the pick follows a hash of the pand id, so a street gets bo
 test('footprint width: the narrow side of the minimum rectangle', () => {
   const [x0, y0] = at(0), [x1] = at(6.5), [, y1] = at(0, 15);
   assert.ok(Math.abs(footprintWidthM([[x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, y0]])! - 6.5) < 0.05);
+});
+
+test('street class: tram streets and high-ride streets are main whatever their highway tag (Vijzelstraat, Leidsestraat pinned)', () => {
+  assert.equal(streetClassOf('Vijzelstraat'), 'main');
+  assert.equal(streetClassOf('Leidsestraat'), 'main');
+  const why = (CLASSES as unknown as { why: Record<string, string[]> }).why;
+  assert.ok(why.Vijzelstraat.includes('ride'), 'Vijzelstraat: ride rank (no tram track in OSM or GVB)');
+  assert.ok(why.Leidsestraat.includes('tram'), 'Leidsestraat: tram track');
+  assert.equal(streetClassOf('Weteringschans'), 'main');
+  for (const side of ['Den Texstraat', 'Nicolaas Witsenstraat', 'Prinsengracht', 'Kerkstraat']) assert.equal(streetClassOf(side), 'side', side);
+  assert.equal(streetClassOf(null), null);
 });

@@ -77,293 +77,107 @@
   },
   "1800-1879|main": {
    "windowSurround": {
-    "n": 40,
+    "n": 60,
     "dist": [
      [
       "sill",
-      19
+      33
      ],
      [
       "stone-lintel",
       16
      ],
      [
-      "full-frame",
-      3
+      "none",
+      8
      ],
      [
-      "none",
-      2
+      "full-frame",
+      3
      ]
     ]
    },
    "windowSills": {
-    "n": 40,
+    "n": 60,
     "dist": [
      [
       "none",
-      40
+      60
      ]
     ]
    },
    "cornice": {
-    "n": 40,
+    "n": 60,
     "dist": [
      [
       "simple",
-      30
+      43
      ],
      [
       "frieze",
-      5
+      7
      ],
      [
       "none",
-      3
+      7
      ],
      [
       "bracketed",
-      2
+      3
      ]
     ]
    },
    "frame": {
-    "n": 40,
+    "n": 60,
     "dist": [
      [
-      "white-painted",
-      21
+      "white",
+      33
      ],
      [
-      "white",
-      19
+      "white-painted",
+      27
      ]
     ]
    }
   },
   "1800-1879|main|h13-17": {
    "windowSurround": {
-    "n": 30,
+    "n": 44,
     "dist": [
+     [
+      "sill",
+      20
+     ],
      [
       "stone-lintel",
       16
      ],
      [
-      "sill",
-      11
-     ],
-     [
-      "none",
-      2
-     ],
-     [
-      "full-frame",
-      1
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 30,
-    "dist": [
-     [
-      "none",
-      30
-     ]
-    ]
-   },
-   "cornice": {
-    "n": 30,
-    "dist": [
-     [
-      "simple",
-      26
-     ],
-     [
-      "bracketed",
-      2
-     ],
-     [
-      "frieze",
-      1
-     ],
-     [
-      "none",
-      1
-     ]
-    ]
-   },
-   "frame": {
-    "n": 30,
-    "dist": [
-     [
-      "white",
-      17
-     ],
-     [
-      "white-painted",
-      13
-     ]
-    ]
-   }
-  },
-  "1800-1879|main|h<13": {
-   "windowSurround": {
-    "n": 10,
-    "dist": [
-     [
-      "sill",
-      8
-     ],
-     [
-      "full-frame",
-      2
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 10,
-    "dist": [
-     [
-      "none",
-      10
-     ]
-    ]
-   },
-   "cornice": {
-    "n": 10,
-    "dist": [
-     [
-      "frieze",
-      4
-     ],
-     [
-      "simple",
-      4
-     ],
-     [
-      "none",
-      2
-     ]
-    ]
-   },
-   "frame": {
-    "n": 10,
-    "dist": [
-     [
-      "white-painted",
-      8
-     ],
-     [
-      "white",
-      2
-     ]
-    ]
-   }
-  },
-  "1800-1879|side": {
-   "windowSurround": {
-    "n": 96,
-    "dist": [
-     [
-      "sill",
-      79
-     ],
-     [
-      "none",
-      9
-     ],
-     [
-      "keystone",
-      7
-     ],
-     [
-      "full-frame",
-      1
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 96,
-    "dist": [
-     [
-      "none",
-      96
-     ]
-    ]
-   },
-   "cornice": {
-    "n": 96,
-    "dist": [
-     [
-      "simple",
-      82
-     ],
-     [
-      "none",
-      8
-     ],
-     [
-      "frieze",
-      3
-     ],
-     [
-      "bracketed",
-      2
-     ],
-     [
-      "heavy",
-      1
-     ]
-    ]
-   },
-   "frame": {
-    "n": 96,
-    "dist": [
-     [
-      "white-painted",
-      79
-     ],
-     [
-      "white",
-      17
-     ]
-    ]
-   }
-  },
-  "1800-1879|side|h13-17": {
-   "windowSurround": {
-    "n": 72,
-    "dist": [
-     [
-      "sill",
-      61
-     ],
-     [
       "none",
       7
      ],
      [
-      "keystone",
-      4
+      "full-frame",
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 72,
+    "n": 44,
     "dist": [
      [
       "none",
-      72
+      44
      ]
     ]
    },
    "cornice": {
-    "n": 72,
+    "n": 44,
     "dist": [
      [
       "simple",
-      65
+      35
      ],
      [
       "none",
@@ -371,71 +185,59 @@
      ],
      [
       "bracketed",
-      1
+      2
      ],
      [
       "frieze",
-      1
+      2
      ]
     ]
    },
    "frame": {
-    "n": 72,
+    "n": 44,
     "dist": [
      [
-      "white-painted",
-      60
+      "white",
+      27
      ],
      [
-      "white",
-      12
+      "white-painted",
+      17
      ]
     ]
    }
   },
-  "1800-1879|side|h17+": {
+  "1800-1879|main|h17+": {
    "windowSurround": {
-    "n": 9,
+    "n": 1,
     "dist": [
      [
       "sill",
-      6
-     ],
-     [
-      "keystone",
-      3
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 9,
+    "n": 1,
     "dist": [
      [
       "none",
-      9
+      1
      ]
     ]
    },
    "cornice": {
-    "n": 9,
+    "n": 1,
     "dist": [
      [
       "simple",
-      8
-     ],
-     [
-      "frieze",
       1
      ]
     ]
    },
    "frame": {
-    "n": 9,
+    "n": 1,
     "dist": [
-     [
-      "white-painted",
-      8
-     ],
      [
       "white",
       1
@@ -443,7 +245,7 @@
     ]
    }
   },
-  "1800-1879|side|h<13": {
+  "1800-1879|main|h<13": {
    "windowSurround": {
     "n": 15,
     "dist": [
@@ -452,11 +254,11 @@
       12
      ],
      [
-      "none",
+      "full-frame",
       2
      ],
      [
-      "full-frame",
+      "none",
       1
      ]
     ]
@@ -475,11 +277,77 @@
     "dist": [
      [
       "simple",
-      9
+      7
+     ],
+     [
+      "frieze",
+      5
+     ],
+     [
+      "none",
+      2
+     ],
+     [
+      "bracketed",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 15,
+    "dist": [
+     [
+      "white-painted",
+      10
+     ],
+     [
+      "white",
+      5
+     ]
+    ]
+   }
+  },
+  "1800-1879|side": {
+   "windowSurround": {
+    "n": 76,
+    "dist": [
+     [
+      "sill",
+      65
+     ],
+     [
+      "keystone",
+      7
      ],
      [
       "none",
       3
+     ],
+     [
+      "full-frame",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 76,
+    "dist": [
+     [
+      "none",
+      76
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 76,
+    "dist": [
+     [
+      "simple",
+      69
+     ],
+     [
+      "none",
+      4
      ],
      [
       "bracketed",
@@ -496,15 +364,177 @@
     ]
    },
    "frame": {
-    "n": 15,
+    "n": 76,
     "dist": [
      [
       "white-painted",
-      11
+      73
      ],
      [
       "white",
+      3
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h13-17": {
+   "windowSurround": {
+    "n": 58,
+    "dist": [
+     [
+      "sill",
+      52
+     ],
+     [
+      "keystone",
       4
+     ],
+     [
+      "none",
+      2
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 58,
+    "dist": [
+     [
+      "none",
+      58
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 58,
+    "dist": [
+     [
+      "simple",
+      56
+     ],
+     [
+      "bracketed",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 58,
+    "dist": [
+     [
+      "white-painted",
+      56
+     ],
+     [
+      "white",
+      2
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h17+": {
+   "windowSurround": {
+    "n": 8,
+    "dist": [
+     [
+      "sill",
+      5
+     ],
+     [
+      "keystone",
+      3
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 8,
+    "dist": [
+     [
+      "none",
+      8
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 8,
+    "dist": [
+     [
+      "simple",
+      7
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 8,
+    "dist": [
+     [
+      "white-painted",
+      8
+     ]
+    ]
+   }
+  },
+  "1800-1879|side|h<13": {
+   "windowSurround": {
+    "n": 10,
+    "dist": [
+     [
+      "sill",
+      8
+     ],
+     [
+      "full-frame",
+      1
+     ],
+     [
+      "none",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 10,
+    "dist": [
+     [
+      "none",
+      10
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 10,
+    "dist": [
+     [
+      "simple",
+      6
+     ],
+     [
+      "none",
+      3
+     ],
+     [
+      "heavy",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 10,
+    "dist": [
+     [
+      "white-painted",
+      9
+     ],
+     [
+      "white",
+      1
      ]
     ]
    }
@@ -637,30 +667,30 @@
   },
   "1880-1919|main": {
    "windowSurround": {
-    "n": 312,
+    "n": 338,
     "dist": [
      [
       "none",
-      209
+      216
      ],
      [
       "keystone",
-      51
+      53
      ],
      [
       "sill",
-      30
+      45
      ],
      [
       "stone-lintel",
-      8
-     ],
-     [
-      "eared-keystone",
-      5
+      9
      ],
      [
       "full-frame",
+      6
+     ],
+     [
+      "eared-keystone",
       5
      ],
      [
@@ -670,11 +700,11 @@
     ]
    },
    "windowSills": {
-    "n": 312,
+    "n": 338,
     "dist": [
      [
       "none",
-      306
+      332
      ],
      [
       "consoles",
@@ -683,47 +713,47 @@
     ]
    },
    "cornice": {
-    "n": 312,
+    "n": 338,
     "dist": [
      [
       "simple",
-      125
+      143
      ],
      [
       "heavy",
-      91
+      92
      ],
      [
       "bracketed",
-      64
+      65
      ],
      [
       "frieze",
-      20
+      21
      ],
      [
       "none",
-      12
+      17
      ]
     ]
    },
    "frame": {
-    "n": 312,
+    "n": 338,
     "dist": [
      [
       "white",
-      77
+      90
      ],
      [
       "#b8b6a4",
       71
      ],
      [
-      "#a6aa9a",
-      31
+      "white-painted",
+      44
      ],
      [
-      "white-painted",
+      "#a6aa9a",
       31
      ],
      [
@@ -763,19 +793,19 @@
   },
   "1880-1919|main|h13-17": {
    "windowSurround": {
-    "n": 227,
+    "n": 249,
     "dist": [
      [
       "none",
-      170
-     ],
-     [
-      "keystone",
-      24
+      177
      ],
      [
       "sill",
-      23
+      35
+     ],
+     [
+      "keystone",
+      26
      ],
      [
       "stone-lintel",
@@ -784,28 +814,32 @@
      [
       "jack-blocks",
       4
+     ],
+     [
+      "full-frame",
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 227,
+    "n": 249,
     "dist": [
      [
       "none",
-      227
+      249
      ]
     ]
    },
    "cornice": {
-    "n": 227,
+    "n": 249,
     "dist": [
      [
       "simple",
-      95
+      111
      ],
      [
       "heavy",
-      61
+      62
      ],
      [
       "bracketed",
@@ -813,24 +847,28 @@
      ],
      [
       "frieze",
-      17
+      18
      ],
      [
       "none",
-      8
+      12
      ]
     ]
    },
    "frame": {
-    "n": 227,
+    "n": 249,
     "dist": [
+     [
+      "white",
+      57
+     ],
      [
       "#b8b6a4",
       53
      ],
      [
-      "white",
-      46
+      "white-painted",
+      28
      ],
      [
       "#a6aa9a",
@@ -839,10 +877,6 @@
      [
       "#a7a89d",
       25
-     ],
-     [
-      "white-painted",
-      17
      ],
      [
       "#d8d3c6",
@@ -877,7 +911,7 @@
   },
   "1880-1919|main|h17+": {
    "windowSurround": {
-    "n": 81,
+    "n": 83,
     "dist": [
      [
       "none",
@@ -892,25 +926,25 @@
       5
      ],
      [
+      "sill",
+      5
+     ],
+     [
       "full-frame",
       4
      ],
      [
-      "sill",
-      4
-     ],
-     [
       "stone-lintel",
-      2
+      3
      ]
     ]
    },
    "windowSills": {
-    "n": 81,
+    "n": 83,
     "dist": [
      [
       "none",
-      75
+      77
      ],
      [
       "consoles",
@@ -919,7 +953,7 @@
     ]
    },
    "cornice": {
-    "n": 81,
+    "n": 83,
     "dist": [
      [
       "heavy",
@@ -927,7 +961,7 @@
      ],
      [
       "simple",
-      28
+      29
      ],
      [
       "bracketed",
@@ -935,7 +969,7 @@
      ],
      [
       "none",
-      3
+      4
      ],
      [
       "frieze",
@@ -944,11 +978,11 @@
     ]
    },
    "frame": {
-    "n": 81,
+    "n": 83,
     "dist": [
      [
       "white",
-      30
+      31
      ],
      [
       "#b8b6a4",
@@ -956,7 +990,7 @@
      ],
      [
       "white-painted",
-      11
+      12
      ],
      [
       "#a6aa9a",
@@ -999,11 +1033,11 @@
   },
   "1880-1919|main|h<13": {
    "windowSurround": {
-    "n": 4,
+    "n": 6,
     "dist": [
      [
       "sill",
-      3
+      5
      ],
      [
       "full-frame",
@@ -1012,20 +1046,24 @@
     ]
    },
    "windowSills": {
-    "n": 4,
+    "n": 6,
     "dist": [
      [
       "none",
-      4
+      6
      ]
     ]
    },
    "cornice": {
-    "n": 4,
+    "n": 6,
     "dist": [
      [
       "simple",
-      2
+      3
+     ],
+     [
+      "bracketed",
+      1
      ],
      [
       "frieze",
@@ -1038,38 +1076,38 @@
     ]
    },
    "frame": {
-    "n": 4,
+    "n": 6,
     "dist": [
      [
       "white-painted",
-      3
+      4
      ],
      [
       "white",
-      1
+      2
      ]
     ]
    }
   },
   "1880-1919|side": {
    "windowSurround": {
-    "n": 347,
+    "n": 321,
     "dist": [
      [
       "sill",
-      155
+      140
      ],
      [
       "none",
-      105
+      98
      ],
      [
       "keystone",
-      35
+      33
      ],
      [
       "stone-lintel",
-      29
+      28
      ],
      [
       "jack-blocks",
@@ -1077,50 +1115,46 @@
      ],
      [
       "full-frame",
-      9
+      8
      ]
     ]
    },
    "windowSills": {
-    "n": 347,
+    "n": 321,
     "dist": [
      [
       "none",
-      347
+      321
      ]
     ]
    },
    "cornice": {
-    "n": 347,
+    "n": 321,
     "dist": [
      [
       "simple",
-      246
+      228
      ],
      [
       "heavy",
-      51
+      50
      ],
      [
       "none",
-      43
+      38
      ],
      [
       "bracketed",
-      6
-     ],
-     [
-      "frieze",
-      1
+      5
      ]
     ]
    },
    "frame": {
-    "n": 347,
+    "n": 321,
     "dist": [
      [
       "white-painted",
-      221
+      208
      ],
      [
       "#e4e6e2",
@@ -1129,10 +1163,6 @@
      [
       "#e8e6dc",
       32
-     ],
-     [
-      "white",
-      20
      ],
      [
       "#dfdad0",
@@ -1144,6 +1174,10 @@
      ],
      [
       "#dedbd3",
+      7
+     ],
+     [
+      "white",
       7
      ],
      [
@@ -1163,19 +1197,19 @@
   },
   "1880-1919|side|h13-17": {
    "windowSurround": {
-    "n": 297,
+    "n": 275,
     "dist": [
      [
       "sill",
-      126
+      114
      ],
      [
       "none",
-      95
+      88
      ],
      [
       "keystone",
-      30
+      28
      ],
      [
       "stone-lintel",
@@ -1187,50 +1221,46 @@
      ],
      [
       "full-frame",
-      6
+      5
      ]
     ]
    },
    "windowSills": {
-    "n": 297,
+    "n": 275,
     "dist": [
      [
       "none",
-      297
+      275
      ]
     ]
    },
    "cornice": {
-    "n": 297,
+    "n": 275,
     "dist": [
      [
       "simple",
-      203
+      187
      ],
      [
       "heavy",
-      47
+      46
      ],
      [
       "none",
-      41
+      37
      ],
      [
       "bracketed",
       5
-     ],
-     [
-      "frieze",
-      1
      ]
     ]
    },
    "frame": {
-    "n": 297,
+    "n": 275,
     "dist": [
      [
       "white-painted",
-      183
+      172
      ],
      [
       "#e4e6e2",
@@ -1245,10 +1275,6 @@
       16
      ],
      [
-      "white",
-      14
-     ],
-     [
       "#dedbd3",
       7
      ],
@@ -1259,17 +1285,21 @@
      [
       "#e9e6dc",
       6
+     ],
+     [
+      "white",
+      3
      ]
     ]
    }
   },
   "1880-1919|side|h17+": {
    "windowSurround": {
-    "n": 30,
+    "n": 28,
     "dist": [
      [
       "sill",
-      17
+      16
      ],
      [
       "keystone",
@@ -1280,47 +1310,43 @@
       3
      ],
      [
-      "stone-lintel",
-      3
+      "full-frame",
+      2
      ],
      [
-      "full-frame",
+      "stone-lintel",
       2
      ]
     ]
    },
    "windowSills": {
-    "n": 30,
+    "n": 28,
     "dist": [
      [
       "none",
-      30
+      28
      ]
     ]
    },
    "cornice": {
-    "n": 30,
+    "n": 28,
     "dist": [
      [
       "simple",
-      25
+      24
      ],
      [
       "heavy",
       4
-     ],
-     [
-      "none",
-      1
      ]
     ]
    },
    "frame": {
-    "n": 30,
+    "n": 28,
     "dist": [
      [
       "white-painted",
-      26
+      25
      ],
      [
       "#e4e6e2",
@@ -1328,18 +1354,18 @@
      ],
      [
       "white",
-      2
+      1
      ]
     ]
    }
   },
   "1880-1919|side|h<13": {
    "windowSurround": {
-    "n": 20,
+    "n": 18,
     "dist": [
      [
       "sill",
-      12
+      10
      ],
      [
       "none",
@@ -1352,24 +1378,20 @@
     ]
    },
    "windowSills": {
-    "n": 20,
+    "n": 18,
     "dist": [
      [
       "none",
-      20
+      18
      ]
     ]
    },
    "cornice": {
-    "n": 20,
+    "n": 18,
     "dist": [
      [
       "simple",
-      18
-     ],
-     [
-      "bracketed",
-      1
+      17
      ],
      [
       "none",
@@ -1378,15 +1400,15 @@
     ]
    },
    "frame": {
-    "n": 20,
+    "n": 18,
     "dist": [
      [
       "white-painted",
-      12
+      11
      ],
      [
       "white",
-      4
+      3
      ],
      [
       "#e9e6dc",
@@ -1507,15 +1529,15 @@
   },
   "1920-1944|main": {
    "windowSurround": {
-    "n": 187,
+    "n": 196,
     "dist": [
      [
       "none",
-      163
+      164
      ],
      [
       "sill",
-      17
+      25
      ],
      [
       "full-frame",
@@ -1524,20 +1546,20 @@
     ]
    },
    "windowSills": {
-    "n": 187,
+    "n": 196,
     "dist": [
      [
       "none",
-      187
+      196
      ]
     ]
    },
    "cornice": {
-    "n": 187,
+    "n": 196,
     "dist": [
      [
       "none",
-      164
+      173
      ],
      [
       "simple",
@@ -1554,7 +1576,7 @@
     ]
    },
    "frame": {
-    "n": 187,
+    "n": 196,
     "dist": [
      [
       "#acab93",
@@ -1602,14 +1624,14 @@
      ],
      [
       "#f0f0ec",
-      5
+      6
      ]
     ]
    }
   },
   "1920-1944|main|h13-17": {
    "windowSurround": {
-    "n": 141,
+    "n": 149,
     "dist": [
      [
       "none",
@@ -1617,7 +1639,7 @@
      ],
      [
       "sill",
-      16
+      24
      ],
      [
       "full-frame",
@@ -1626,20 +1648,20 @@
     ]
    },
    "windowSills": {
-    "n": 141,
+    "n": 149,
     "dist": [
      [
       "none",
-      141
+      149
      ]
     ]
    },
    "cornice": {
-    "n": 141,
+    "n": 149,
     "dist": [
      [
       "none",
-      123
+      131
      ],
      [
       "simple",
@@ -1652,7 +1674,7 @@
     ]
    },
    "frame": {
-    "n": 141,
+    "n": 149,
     "dist": [
      [
       "#acab93",
@@ -1691,15 +1713,15 @@
       6
      ],
      [
+      "#e8e4d6",
+      5
+     ],
+     [
       "white",
       5
      ],
      [
       "#b4b3a2",
-      4
-     ],
-     [
-      "#f0f0ec",
       4
      ]
     ]
@@ -1785,11 +1807,11 @@
   },
   "1920-1944|main|h<13": {
    "windowSurround": {
-    "n": 11,
+    "n": 12,
     "dist": [
      [
       "none",
-      9
+      10
      ],
      [
       "full-frame",
@@ -1802,20 +1824,20 @@
     ]
    },
    "windowSills": {
-    "n": 11,
+    "n": 12,
     "dist": [
      [
       "none",
-      11
+      12
      ]
     ]
    },
    "cornice": {
-    "n": 11,
+    "n": 12,
     "dist": [
      [
       "none",
-      9
+      10
      ],
      [
       "heavy",
@@ -1828,7 +1850,7 @@
     ]
    },
    "frame": {
-    "n": 11,
+    "n": 12,
     "dist": [
      [
       "white-painted",
@@ -1836,7 +1858,7 @@
      ],
      [
       "#f0f0ec",
-      1
+      2
      ],
      [
       "white",
@@ -1847,33 +1869,33 @@
   },
   "1920-1944|side": {
    "windowSurround": {
-    "n": 308,
+    "n": 299,
     "dist": [
      [
       "none",
-      226
+      225
      ],
      [
       "sill",
-      82
+      74
      ]
     ]
    },
    "windowSills": {
-    "n": 308,
+    "n": 299,
     "dist": [
      [
       "none",
-      308
+      299
      ]
     ]
    },
    "cornice": {
-    "n": 308,
+    "n": 299,
     "dist": [
      [
       "none",
-      276
+      267
      ],
      [
       "simple",
@@ -1886,7 +1908,7 @@
     ]
    },
    "frame": {
-    "n": 308,
+    "n": 299,
     "dist": [
      [
       "#efeee8",
@@ -1921,16 +1943,16 @@
       16
      ],
      [
-      "#e8e4d6",
-      13
+      "#ebe8df",
+      11
      ],
      [
       "#e8e2d0",
-      11
+      8
      ],
      [
-      "#ebe8df",
-      11
+      "#e8e4d6",
+      8
      ],
      [
       "#eeeee8",
@@ -1941,7 +1963,7 @@
   },
   "1920-1944|side|h13-17": {
    "windowSurround": {
-    "n": 122,
+    "n": 114,
     "dist": [
      [
       "none",
@@ -1949,25 +1971,25 @@
      ],
      [
       "sill",
-      40
+      32
      ]
     ]
    },
    "windowSills": {
-    "n": 122,
+    "n": 114,
     "dist": [
      [
       "none",
-      122
+      114
      ]
     ]
    },
    "cornice": {
-    "n": 122,
+    "n": 114,
     "dist": [
      [
       "none",
-      115
+      107
      ],
      [
       "simple",
@@ -1980,7 +2002,7 @@
     ]
    },
    "frame": {
-    "n": 122,
+    "n": 114,
     "dist": [
      [
       "#eeeeea",
@@ -1995,14 +2017,6 @@
       16
      ],
      [
-      "#e8e4d6",
-      13
-     ],
-     [
-      "#e8e2d0",
-      11
-     ],
-     [
       "#e8e6de",
       11
      ],
@@ -2013,6 +2027,14 @@
      [
       "white-painted",
       10
+     ],
+     [
+      "#e8e2d0",
+      8
+     ],
+     [
+      "#e8e4d6",
+      8
      ],
      [
       "#eeeee8",
@@ -2035,11 +2057,11 @@
   },
   "1920-1944|side|h<13": {
    "windowSurround": {
-    "n": 186,
+    "n": 185,
     "dist": [
      [
       "none",
-      144
+      143
      ],
      [
       "sill",
@@ -2048,20 +2070,20 @@
     ]
    },
    "windowSills": {
-    "n": 186,
+    "n": 185,
     "dist": [
      [
       "none",
-      186
+      185
      ]
     ]
    },
    "cornice": {
-    "n": 186,
+    "n": 185,
     "dist": [
      [
       "none",
-      161
+      160
      ],
      [
       "simple",
@@ -2070,7 +2092,7 @@
     ]
    },
    "frame": {
-    "n": 186,
+    "n": 185,
     "dist": [
      [
       "#efeee8",
@@ -2091,10 +2113,6 @@
      [
       "white-painted",
       17
-     ],
-     [
-      "#f0f0ec",
-      1
      ]
     ]
    }
@@ -2183,15 +2201,89 @@
   },
   "after-1944|main": {
    "windowSurround": {
-    "n": 38,
+    "n": 48,
     "dist": [
      [
       "none",
-      35
+      45
      ],
      [
       "full-frame",
       2
+     ],
+     [
+      "sill",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 48,
+    "dist": [
+     [
+      "none",
+      48
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 48,
+    "dist": [
+     [
+      "simple",
+      37
+     ],
+     [
+      "none",
+      9
+     ],
+     [
+      "heavy",
+      2
+     ]
+    ]
+   },
+   "frame": {
+    "n": 48,
+    "dist": [
+     [
+      "#a5aea1",
+      35
+     ],
+     [
+      "white",
+      5
+     ],
+     [
+      "#f0f0ec",
+      4
+     ],
+     [
+      "#e6e0d0",
+      2
+     ],
+     [
+      "grey",
+      1
+     ],
+     [
+      "white-painted",
+      1
+     ]
+    ]
+   }
+  },
+  "after-1944|main|h13-17": {
+   "windowSurround": {
+    "n": 38,
+    "dist": [
+     [
+      "none",
+      36
+     ],
+     [
+      "full-frame",
+      1
      ],
      [
       "sill",
@@ -2213,11 +2305,11 @@
     "dist": [
      [
       "simple",
-      36
+      34
      ],
      [
       "none",
-      2
+      4
      ]
     ]
    },
@@ -2226,69 +2318,11 @@
     "dist": [
      [
       "#a5aea1",
-      35
-     ],
-     [
-      "white",
-      2
-     ],
-     [
-      "white-painted",
-      1
-     ]
-    ]
-   }
-  },
-  "after-1944|main|h13-17": {
-   "windowSurround": {
-    "n": 35,
-    "dist": [
-     [
-      "none",
-      33
-     ],
-     [
-      "full-frame",
-      1
-     ],
-     [
-      "sill",
-      1
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 35,
-    "dist": [
-     [
-      "none",
-      35
-     ]
-    ]
-   },
-   "cornice": {
-    "n": 35,
-    "dist": [
-     [
-      "simple",
-      33
-     ],
-     [
-      "none",
-      2
-     ]
-    ]
-   },
-   "frame": {
-    "n": 35,
-    "dist": [
-     [
-      "#a5aea1",
       33
      ],
      [
       "white",
-      1
+      4
      ],
      [
       "white-painted",
@@ -2299,26 +2333,30 @@
   },
   "after-1944|main|h17+": {
    "windowSurround": {
-    "n": 1,
+    "n": 2,
     "dist": [
      [
       "none",
-      1
+      2
      ]
     ]
    },
    "windowSills": {
-    "n": 1,
+    "n": 2,
     "dist": [
      [
       "none",
-      1
+      2
      ]
     ]
    },
    "cornice": {
-    "n": 1,
+    "n": 2,
     "dist": [
+     [
+      "none",
+      1
+     ],
      [
       "simple",
       1
@@ -2326,10 +2364,14 @@
     ]
    },
    "frame": {
-    "n": 1,
+    "n": 2,
     "dist": [
      [
       "#a5aea1",
+      1
+     ],
+     [
+      "grey",
       1
      ]
     ]
@@ -2337,30 +2379,38 @@
   },
   "after-1944|main|h<13": {
    "windowSurround": {
-    "n": 2,
+    "n": 8,
     "dist": [
      [
-      "full-frame",
-      1
+      "none",
+      7
      ],
      [
-      "none",
+      "full-frame",
       1
      ]
     ]
    },
    "windowSills": {
-    "n": 2,
+    "n": 8,
     "dist": [
      [
       "none",
-      2
+      8
      ]
     ]
    },
    "cornice": {
-    "n": 2,
+    "n": 8,
     "dist": [
+     [
+      "none",
+      4
+     ],
+     [
+      "heavy",
+      2
+     ],
      [
       "simple",
       2
@@ -2368,8 +2418,16 @@
     ]
    },
    "frame": {
-    "n": 2,
+    "n": 8,
     "dist": [
+     [
+      "#f0f0ec",
+      4
+     ],
+     [
+      "#e6e0d0",
+      2
+     ],
      [
       "#a5aea1",
       1
@@ -2383,62 +2441,46 @@
   },
   "after-1944|side": {
    "windowSurround": {
-    "n": 15,
+    "n": 5,
     "dist": [
-     [
-      "none",
-      12
-     ],
      [
       "full-frame",
       3
+     ],
+     [
+      "none",
+      2
      ]
     ]
    },
    "windowSills": {
-    "n": 15,
+    "n": 5,
     "dist": [
      [
       "none",
-      15
+      5
      ]
     ]
    },
    "cornice": {
-    "n": 15,
+    "n": 5,
     "dist": [
      [
-      "none",
-      9
-     ],
-     [
       "simple",
-      4
+      3
      ],
      [
-      "heavy",
+      "none",
       2
      ]
     ]
    },
    "frame": {
-    "n": 15,
+    "n": 5,
     "dist": [
-     [
-      "#f0f0ec",
-      4
-     ],
-     [
-      "white",
-      3
-     ],
      [
       "white-painted",
       3
-     ],
-     [
-      "#e6e0d0",
-      2
      ],
      [
       "#e8e6de",
@@ -2447,57 +2489,49 @@
      [
       "cream-painted",
       1
-     ],
-     [
-      "grey",
-      1
      ]
     ]
    }
   },
   "after-1944|side|h13-17": {
    "windowSurround": {
-    "n": 7,
+    "n": 4,
     "dist": [
-     [
-      "none",
-      4
-     ],
      [
       "full-frame",
       3
+     ],
+     [
+      "none",
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 7,
+    "n": 4,
     "dist": [
      [
       "none",
-      7
+      4
      ]
     ]
    },
    "cornice": {
-    "n": 7,
+    "n": 4,
     "dist": [
      [
       "simple",
-      4
+      3
      ],
      [
       "none",
-      3
+      1
      ]
     ]
    },
    "frame": {
-    "n": 7,
+    "n": 4,
     "dist": [
-     [
-      "white",
-      3
-     ],
      [
       "white-painted",
       3
@@ -2509,87 +2543,37 @@
     ]
    }
   },
-  "after-1944|side|h17+": {
-   "windowSurround": {
-    "n": 1,
-    "dist": [
-     [
-      "none",
-      1
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 1,
-    "dist": [
-     [
-      "none",
-      1
-     ]
-    ]
-   },
-   "cornice": {
-    "n": 1,
-    "dist": [
-     [
-      "none",
-      1
-     ]
-    ]
-   },
-   "frame": {
-    "n": 1,
-    "dist": [
-     [
-      "grey",
-      1
-     ]
-    ]
-   }
-  },
   "after-1944|side|h<13": {
    "windowSurround": {
-    "n": 7,
+    "n": 1,
     "dist": [
      [
       "none",
-      7
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 7,
+    "n": 1,
     "dist": [
      [
       "none",
-      7
+      1
      ]
     ]
    },
    "cornice": {
-    "n": 7,
+    "n": 1,
     "dist": [
      [
       "none",
-      5
-     ],
-     [
-      "heavy",
-      2
+      1
      ]
     ]
    },
    "frame": {
-    "n": 7,
+    "n": 1,
     "dist": [
-     [
-      "#f0f0ec",
-      4
-     ],
-     [
-      "#e6e0d0",
-      2
-     ],
      [
       "cream-painted",
       1
@@ -2713,70 +2697,78 @@
   },
   "before-1800|main": {
    "windowSurround": {
-    "n": 30,
+    "n": 63,
     "dist": [
      [
-      "full-frame",
-      11
-     ],
-     [
       "none",
-      9
+      23
      ],
      [
       "sill",
-      8
+      22
+     ],
+     [
+      "full-frame",
+      15
      ],
      [
       "keystone",
       2
+     ],
+     [
+      "stone-lintel",
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 30,
+    "n": 63,
     "dist": [
      [
       "none",
-      30
+      63
      ]
     ]
    },
    "cornice": {
-    "n": 30,
+    "n": 63,
     "dist": [
      [
       "none",
-      15
+      27
      ],
      [
       "simple",
-      10
-     ],
-     [
-      "bracketed",
-      3
+      23
      ],
      [
       "frieze",
-      1
+      6
+     ],
+     [
+      "bracketed",
+      4
      ],
      [
       "heavy",
-      1
+      3
      ]
     ]
    },
    "frame": {
-    "n": 30,
+    "n": 63,
     "dist": [
      [
       "white",
-      21
+      50
      ],
      [
       "white-painted",
-      7
+      10
+     ],
+     [
+      "#e4dcc4",
+      1
      ],
      [
       "black-painted",
@@ -2791,19 +2783,19 @@
   },
   "before-1800|main|h13-17": {
    "windowSurround": {
-    "n": 17,
+    "n": 36,
     "dist": [
      [
-      "full-frame",
-      7
-     ],
-     [
       "none",
-      6
+      16
      ],
      [
       "sill",
-      3
+      11
+     ],
+     [
+      "full-frame",
+      8
      ],
      [
       "keystone",
@@ -2812,23 +2804,27 @@
     ]
    },
    "windowSills": {
-    "n": 17,
+    "n": 36,
     "dist": [
      [
       "none",
-      17
+      36
      ]
     ]
    },
    "cornice": {
-    "n": 17,
+    "n": 36,
     "dist": [
      [
       "none",
-      7
+      15
      ],
      [
       "simple",
+      11
+     ],
+     [
+      "frieze",
       5
      ],
      [
@@ -2836,25 +2832,25 @@
       3
      ],
      [
-      "frieze",
-      1
-     ],
-     [
       "heavy",
-      1
+      2
      ]
     ]
    },
    "frame": {
-    "n": 17,
+    "n": 36,
     "dist": [
      [
       "white",
-      14
+      31
      ],
      [
       "white-painted",
-      2
+      3
+     ],
+     [
+      "#e4dcc4",
+      1
      ],
      [
       "black-painted",
@@ -2865,92 +2861,120 @@
   },
   "before-1800|main|h17+": {
    "windowSurround": {
-    "n": 1,
+    "n": 3,
     "dist": [
+     [
+      "full-frame",
+      1
+     ],
      [
       "keystone",
       1
-     ]
-    ]
-   },
-   "windowSills": {
-    "n": 1,
-    "dist": [
+     ],
      [
       "none",
       1
      ]
     ]
    },
-   "cornice": {
-    "n": 1,
+   "windowSills": {
+    "n": 3,
     "dist": [
-     [
-      "simple",
-      1
-     ]
-    ]
-   },
-   "frame": {
-    "n": 1,
-    "dist": [
-     [
-      "white",
-      1
-     ]
-    ]
-   }
-  },
-  "before-1800|main|h<13": {
-   "windowSurround": {
-    "n": 12,
-    "dist": [
-     [
-      "sill",
-      5
-     ],
-     [
-      "full-frame",
-      4
-     ],
      [
       "none",
       3
      ]
     ]
    },
-   "windowSills": {
-    "n": 12,
-    "dist": [
-     [
-      "none",
-      12
-     ]
-    ]
-   },
    "cornice": {
-    "n": 12,
+    "n": 3,
     "dist": [
      [
+      "heavy",
+      1
+     ],
+     [
       "none",
-      8
+      1
      ],
      [
       "simple",
-      4
+      1
      ]
     ]
    },
    "frame": {
-    "n": 12,
+    "n": 3,
     "dist": [
      [
       "white",
+      3
+     ]
+    ]
+   }
+  },
+  "before-1800|main|h<13": {
+   "windowSurround": {
+    "n": 24,
+    "dist": [
+     [
+      "sill",
+      11
+     ],
+     [
+      "full-frame",
       6
      ],
      [
+      "none",
+      6
+     ],
+     [
+      "stone-lintel",
+      1
+     ]
+    ]
+   },
+   "windowSills": {
+    "n": 24,
+    "dist": [
+     [
+      "none",
+      24
+     ]
+    ]
+   },
+   "cornice": {
+    "n": 24,
+    "dist": [
+     [
+      "none",
+      11
+     ],
+     [
+      "simple",
+      11
+     ],
+     [
+      "bracketed",
+      1
+     ],
+     [
+      "frieze",
+      1
+     ]
+    ]
+   },
+   "frame": {
+    "n": 24,
+    "dist": [
+     [
+      "white",
+      16
+     ],
+     [
       "white-painted",
-      5
+      7
      ],
      [
       "cream-painted",
@@ -2961,70 +2985,66 @@
   },
   "before-1800|side": {
    "windowSurround": {
-    "n": 113,
+    "n": 80,
     "dist": [
      [
       "none",
-      44
+      30
      ],
      [
       "sill",
-      42
+      28
      ],
      [
       "full-frame",
-      26
-     ],
-     [
-      "stone-lintel",
-      1
+      22
      ]
     ]
    },
    "windowSills": {
-    "n": 113,
+    "n": 80,
     "dist": [
      [
       "none",
-      113
+      80
      ]
     ]
    },
    "cornice": {
-    "n": 113,
+    "n": 80,
     "dist": [
      [
       "none",
-      39
+      27
      ],
      [
       "simple",
-      35
+      22
      ],
      [
       "frieze",
-      17
+      12
      ],
      [
       "heavy",
-      13
+      11
      ],
      [
       "bracketed",
-      9
+      8
      ]
     ]
    },
    "frame": {
-    "n": 113,
+    "n": 80,
     "dist": [
      [
-      "white",
-      61
+      "white-painted",
+      37
      ],
      [
-      "white-painted",
-      40
+      "white",
+      32
      ],
      [
       "cream-painted",
@@ -3048,10 +3068,6 @@
      ],
      [
       "#a8281e",
-      1
-     ],
-     [
-      "#e4dcc4",
       1
      ],
      [
@@ -3067,66 +3083,66 @@
   },
   "before-1800|side|h13-17": {
    "windowSurround": {
-    "n": 69,
+    "n": 50,
     "dist": [
      [
       "none",
-      30
+      20
      ],
      [
       "sill",
-      25
+      17
      ],
      [
       "full-frame",
-      14
+      13
      ]
     ]
    },
    "windowSills": {
-    "n": 69,
+    "n": 50,
     "dist": [
      [
       "none",
-      69
+      50
      ]
     ]
    },
    "cornice": {
-    "n": 69,
+    "n": 50,
     "dist": [
      [
-      "none",
-      23
-     ],
-     [
       "simple",
-      22
+      16
      ],
      [
-      "frieze",
-      10
+      "none",
+      15
      ],
      [
       "heavy",
-      8
+      7
      ],
      [
       "bracketed",
+      6
+     ],
+     [
+      "frieze",
       6
      ]
     ]
    },
    "frame": {
-    "n": 69,
+    "n": 50,
     "dist": [
      [
-      "white",
-      32
+      "white-painted",
+      24
      ],
      [
-      "white-painted",
-      25
+      "white",
+      15
      ],
      [
       "cream-painted",
@@ -3153,10 +3169,6 @@
       1
      ],
      [
-      "#e4dcc4",
-      1
-     ],
-     [
       "#e6e2d8",
       1
      ],
@@ -3169,7 +3181,7 @@
   },
   "before-1800|side|h17+": {
    "windowSurround": {
-    "n": 15,
+    "n": 13,
     "dist": [
      [
       "sill",
@@ -3177,25 +3189,25 @@
      ],
      [
       "full-frame",
-      6
+      5
      ],
      [
       "none",
-      2
+      1
      ]
     ]
    },
    "windowSills": {
-    "n": 15,
+    "n": 13,
     "dist": [
      [
       "none",
-      15
+      13
      ]
     ]
    },
    "cornice": {
-    "n": 15,
+    "n": 13,
     "dist": [
      [
       "frieze",
@@ -3203,11 +3215,11 @@
      ],
      [
       "heavy",
-      4
+      3
      ],
      [
       "none",
-      4
+      3
      ],
      [
       "simple",
@@ -3216,7 +3228,7 @@
     ]
    },
    "frame": {
-    "n": 15,
+    "n": 13,
     "dist": [
      [
       "white-painted",
@@ -3224,60 +3236,56 @@
      ],
      [
       "white",
-      5
+      3
      ]
     ]
    }
   },
   "before-1800|side|h<13": {
    "windowSurround": {
-    "n": 29,
+    "n": 17,
     "dist": [
      [
       "none",
-      12
-     ],
-     [
-      "sill",
-      10
+      9
      ],
      [
       "full-frame",
-      6
+      4
      ],
      [
-      "stone-lintel",
-      1
+      "sill",
+      4
      ]
     ]
    },
    "windowSills": {
-    "n": 29,
+    "n": 17,
     "dist": [
      [
       "none",
-      29
+      17
      ]
     ]
    },
    "cornice": {
-    "n": 29,
+    "n": 17,
     "dist": [
      [
       "none",
-      12
+      9
      ],
      [
       "simple",
-      10
+      3
      ],
      [
       "bracketed",
-      3
+      2
      ],
      [
       "frieze",
-      3
+      2
      ],
      [
       "heavy",
@@ -3286,15 +3294,15 @@
     ]
    },
    "frame": {
-    "n": 29,
+    "n": 17,
     "dist": [
      [
       "white",
-      24
+      14
      ],
      [
       "white-painted",
-      5
+      3
      ]
     ]
    }

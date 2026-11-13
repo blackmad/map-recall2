@@ -3077,7 +3077,7 @@ quality tier on top of A (reviewer ruling 2026-11-13). C never installs or publi
 2. The reading, when geometry corroborates it. D1 stages only crown classes with precision >= 0.8. A raised-gable answer (point, neck, bell and so on) is used when 3DBAG shows >= 2 m of crown over the eaves. 168094's point gable comes from this rung; the prototype's fixed cornice lost it.
 3. The street template (`streetTemplate.ts`, round 3 ranking). A template must match the house, not only be near it. Within 300 m and the same build-year band, the tiers are:
    1. `street`: the same street;
-   2. `class+scale`: the same street class (`streetClass.ts`: OSM main or side, from the routing extract) and a similar scale;
+   2. `class+scale`: the same street class and a similar scale. `streetClass.ts`: a street is main when its OSM highway class says so, when tram track runs along it (OSM railway=tram or a GVB tram shape along 60 m and 30 % of it), or when its mean ride passes are >= 5 (300 routes, seed 7; about the top 2 % of named streets of 100 m or more). Vijzelstraat is main by ride rank (18 passes; neither OSM nor GVB has track along it); Leidsestraat by tram. 1,733 of 5,454 named streets are main;
    3. `scale`: a similar scale on another class (an adjoining side street). Scale outranks class.
    - Similar scale means the building tile's 3DBAG height within 2 m and the footprint's narrow side within 1 m. Both sides use the same instrument. bag-facts eaves were rejected: they disagree with the recipe facts' front eaves by 4–10 m on 4 of the 8 Weteringschans fronts.
    - When no tier has a candidate there is no template. The ladder never falls through to a poor one.
@@ -3158,10 +3158,10 @@ A front qualifies for C with two or more. On AH07, 42 of 194 staged fronts quali
 These reach the spec only as `gaps` text, so C cannot draw them. A describer field for each is the cheapest next lift.
 
 **Template coverage (round 3 ranking, `template-coverage.json`).** Each front's street is the nearest named street way to its centroid (an approximation for corner and deep pands).
-- AH07 (190 fronts): 130 have a qualifying template (68 %): 59 street, 25 class+scale, 46 scale. Side streets 88 %, main streets 49 %. Interwar and post-war: none, by rule.
-- The ride-ranked top 5,000 pre-1945 Centrum/first-ring fronts: 1,708 (34 %). 1880–1919 41 %, before 1800 47 %, 1800–1879 37 %, 1920–1944 0 % by rule. Main streets 33 %, side streets 36 %.
-- By gebied: Centrum-West 45 %, De Pijp 44 %, Oud-West 38 %, Westerpark 40 %, Centrum-Oost 26 %, Oud-Oost 19 %, Oud-Zuid 14 %.
-- 178 main-street segments (street x gebied) have fronts with no template, 1,198 fronts in all, in `mainStreetsWithoutTemplate`, ranked by fronts served: Sarphatistraat (99), Rokin (60), Overtoom (46), Plantage Middenlaan (44), Weteringschans (36), Marnixstraat (30), Singel (29), Admiraal De Ruijterweg (28), Prins Hendrikkade (28), Stadhouderskade in De Pijp (25). This is the input for a seed lane.
+- AH07 (190 fronts): 130 have a qualifying template (68 %): 59 street, 24 class+scale, 47 scale. Side streets 90 %, main streets 48 %. Interwar and post-war: none, by rule.
+- The ride-ranked top 5,000 pre-1945 Centrum/first-ring fronts: 1,708 (34 %). 1880–1919 41 %, before 1800 47 %, 1800–1879 37 %, 1920–1944 0 % by rule. Main streets 33 % (3,234 fronts), side streets 36 % (1,754).
+- By gebied: Centrum-West 45 %, De Pijp 44 %, Westerpark 40 %, Oud-West 38 %, Centrum-Oost 26 %, Oud-Oost 19 %, Oud-Zuid 14 %.
+- 208 main-street segments (street x gebied) have fronts with no template, 1,474 fronts in all, in `mainStreetsWithoutTemplate`, ranked by fronts served: Sarphatistraat (99), Rokin (60), Overtoom (46), Plantage Middenlaan (44), Weteringschans (36), Marnixstraat (30), Singel (29), Admiraal De Ruijterweg (28), Prins Hendrikkade (28), Reguliersdwarsstraat (26), Stadhouderskade in De Pijp (25). This is the input for a seed lane.
 - The 8 Weteringschans fronts (scale on the tile instrument): 168094 and 168095 (20.6–20.9 m) have none. The other six (16.4–17.0 m) qualify on scale with Nicolaas Witsenstraat houses of 17.5–17.9 m (and, at the 2.0 m edge, one 14.5 m Den Texstraat house). The low Den Texstraat houses (14.1–14.3 m) never qualify. The expectation that all eight get none does not hold on measured heights.
 - Row 2 (Weteringschans west): seven fronts take a Frans Halsstraat template on scale at 250–280 m; 175060 (5.4 m wide) has none.
 - Den Texstraat: every front takes a same-street template.
