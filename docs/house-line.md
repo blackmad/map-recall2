@@ -470,9 +470,11 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
 
 `houseSpec/routeAFields.ts`. The bake-off made route A the consumer for every described house. It draws the classes that
 passed D1's precision bar (v4.2) with presets and existing quads, plus one forced-only component (the eared surround):
-- **bands** (`storey`, `lintel`, `both`, `speklagen`): forced through the existing band-line components. `floor-cornices` draws
-  a band at every floor line (storey, both, speklagen) and `string-courses` draws the sill ledge (lintel, both), each at the
-  stated height (`BAND_M`: 0.16 m for stone, 0.10 m for speklagen; `ExtraContext.bandM`). They dress first, inside the wall's
+- **bands** (`storey`, `lintel`, `both`, `speklagen`): forced through the band-line components. `floor-cornices` draws a band
+  at every floor line (storey, both) and `string-courses` draws the sill ledge (lintel, both), at `BAND_M.stone` (0.16 m;
+  `ExtraContext.bandM`). `speklagen` forces the `speklagen` component: 14 cm stone courses (at most 3, every 30 cm) full width
+  across the plain wall between one row's heads and the next row's sills. A single 10 cm floor band read as nothing at row
+  distance (Weteringschans 171218, step 3). They dress first, inside the wall's
   unchanged extras budget, so the per-house triangle count barely moves.
 - **head**: a whole-front `flat` or `segmental` reading is the bay preset's `arch` trait. Per-row heads are held.
 - **surround** (`full-frame`, `eared-keystone`, `block-dressings`, read at the bar or from the street template): forces
@@ -483,6 +485,11 @@ passed D1's precision bar (v4.2) with presets and existing quads, plus one force
   GABLE_TO_ROOF). A curved reading takes the register's curved kind where the register names one, else `neck`.
 - **sources**: photo sources only (`vision-judge`, `streetlevel-measured`, `reviewed`, `author`) at confidence >= 0.5, the
   level at which D1 writes a class that is over its bar.
+- **street template fill is HELD** (reviewer, step 3): `?specTemplateFill=1` / `SPEC_TEMPLATE_FILL=1`, default off. Off, a
+  front draws only its own readings (`ownFields` drops `template:` sources at draw time), byte-identical to an extract built
+  with `--no-street-template`. A scale-tier template from another street gave Herengracht 176312 eared surrounds its photo
+  lacks, and its `pale` trait swapped Weteringschans 171192's bay preset to a restrained arched pale-accent preset (c19 style
+  3) that reads as a plain dark front. It returns when a same-street seed exists.
 - **street template** (`streetTemplate.ts`, from the route-C completer): a hook. `build-house-specs.ts --street-template`
   fills the dressings a reading left open (bands, the surround, the pale preset) at build time, so the 414 kB table never
   ships to the browser; only the filled fields ride in the view. On by default (`--no-street-template`); the build writes
