@@ -1,7 +1,7 @@
 // The facade record (F1 S1, #380): byte layout pinned, every field round-trips, provenance classes on three real pands.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { genericBayWindow,
+import { genericBayWindow, FACADE_SURROUNDS, FACADE_DOOR_STYLES,
   BAYS_FIT, DOOR_BAY_AUTO, DOOR_BAY_NONE, FACADE_BANDS, FACADE_FIELDS, FACADE_GROUND_KINDS, FACADE_RECORD_BYTES, FACADE_RECORD_VERSION,
   FACADE_WALL_MATERIALS, emptyFacadeRecord, facadeField, facadeLayoutMetres, facadeRecordFor, facadeRecordsFor, facadeWallRGB,
   packFacadeRecord, packFacadeRecordFor, srcClass, unpackFacadeRecord, type FacadeRecord,
@@ -26,8 +26,8 @@ test('the layout fits 64 bytes and no two fields share a bit', () => {
   }
   // Byte 63 is F2's reserve; every other reserved bit is listed here so a new field has to be placed on purpose.
   assert.equal(used[63], 0);
-  // Reserved: byte 3 bit 7, byte 15 bit 7, byte 38 bit 7, byte 59 bits 3-7.
-  assert.deepEqual([...used.slice(0, 63)].map((v, i) => [i, v]).filter(([, v]) => v !== 0xff), [[3, 0x7f], [15, 0x7f], [38, 0x7f], [59, 0x07]]);
+  // Reserved: byte 3 bit 7, byte 15 bit 7, byte 38 bit 7, byte 59 bit 7.
+  assert.deepEqual([...used.slice(0, 63)].map((v, i) => [i, v]).filter(([, v]) => v !== 0xff), [[3, 0x7f], [15, 0x7f], [38, 0x7f], [59, 0x7f]]);
 });
 
 test('byte offsets are pinned (the GLSL unpack and the design doc §1.2 read these)', () => {
@@ -205,14 +205,15 @@ test('multi-front pands get one record per front; packing is deterministic', () 
 test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, sash bars, frame, opening size); stated fields win', () => {
   // bayLook.ts c19 preset 82: a stone arch over a rect transom window, pale jamb blocks; bayVariantOpenings: 2 x 0.275 of the bay, 0.70 tall.
   const bay = genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'arch', sash: 'transom', paleAccents: true }, { axes: [0.25, 0.75], width: 0.275, sill: 0.147, head: 0.847 });
-  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 't-window', dark: false, band: { hex: '#e6dbc3', cm: 10 }, share: 0.55, height: 0.7 });
+  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'block-jambs-arch', sills: true, kind: 't-window', dark: false, band: { hex: '#e6dbc3', cm: 10 }, sillBand: true, ring: true, door: 1, plinth: true, share: 0.55, height: 0.7 });
   assert.equal(genericBayWindow({ archetype: 'modern', shape: 'rect', lintel: 'none', sash: 'plain', frameTone: 'dark' }).surround, 'none');
   assert.equal(genericBayWindow({ archetype: 'canal', shape: 'segmental', lintel: 'none', sash: 'paired-transom' }).head, 'segmental');
   const generic = { storeys: 3, groundM: 3.5, storeyM: 3.1, windows: 3, doorWindow: 2, variant: 1, bay };
   const base = { id: 'bay-prior', style: 'c19' as const, wallHex: '#8a6145', heightM: 14, minHeightM: 0, frontLengthM: 6, generic };
   const r = facadeRecordFor(base);
   assert.equal(WINDOW_HEADS[r.windowHead], 'flat');
-  assert.equal(WINDOW_SURROUNDS[r.surround], 'full-frame');
+  assert.equal(FACADE_SURROUNDS[r.surround], 'block-jambs-arch');
+  assert.equal(ARCH_RING_STYLES[r.archRing], 'solid', 'the atlas stone arch over the flat head (realism pass 2)');
   assert.equal(WINDOWS[r.windowKind], 't-window');
   assert.equal(r.windowShare, Math.round(0.55 * 255));
   assert.equal(FACADE_BANDS[r.bands], 'storey', 'the c19 bay look paints a floor-line string course (realism pass)');
@@ -255,4 +256,24 @@ test("Realism pass: the bay look's floor-line string course reaches the record",
   assert.equal(FACADE_BANDS[quiet.bands], 'none');
   const modern = facadeRecordFor({ ...base, style: 'modern', generic: generic(genericBayWindow({ archetype: 'modern', shape: 'rect' })) });
   assert.equal(FACADE_BANDS[modern.bands], 'none');
+});
+
+test('Realism pass 2: the bay atlas door, plinth, sill band, jamb blocks, arch and six-over-six reach the record', () => {
+  const generic = (bay: ReturnType<typeof genericBayWindow>) => ({ storeys: 4, groundM: 3.7, storeyM: 2.66, windows: 6, doorWindow: 2, variant: 1, bay });
+  const base = { id: 'x', style: 'c19' as const, wallHex: '#3c3732', accentHex: '#2c3e50', heightM: 14, minHeightM: 0 };
+  const plain = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect' })) });
+  assert.equal(WINDOWS[plain.windowKind], 'sash-6-over-6', 'an unstated sash is the atlas muntins');
+  assert.equal(FACADE_DOOR_STYLES[plain.doorStyle], 'fanlight'); assert.deepEqual(plain.door, [44, 62, 80], 'the leaf takes the accent paint');
+  assert.equal(plain.plinthBand, 1); assert.equal(plain.sillBand, 1);
+  assert.equal(ARCH_RING_STYLES[plain.archRing], 'none'); assert.equal(FACADE_SURROUNDS[plain.surround], 'stone-lintel');
+  const quiet = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect', trimDensity: 'restrained', sash: 'transom' })) });
+  assert.equal(FACADE_DOOR_STYLES[quiet.doorStyle], 'quiet'); assert.equal(quiet.sillBand, 0); assert.equal(WINDOWS[quiet.windowKind], 't-window', 'a stated sash keeps its kind');
+  const blocks = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'flat', paleAccents: true })) });
+  assert.equal(FACADE_SURROUNDS[blocks.surround], 'block-jambs');
+  const arched = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'canal', shape: 'arch' })) });
+  assert.equal(WINDOW_HEADS[arched.windowHead], 'round'); assert.equal(ARCH_RING_STYLES[arched.archRing], 'solid');
+  const shop = facadeRecordFor({ ...base, shop: true, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect' })) });
+  assert.equal(shop.doorStyle, 0); assert.equal(shop.plinthBand, 0);
+  const stated = facadeRecordFor({ ...base, generic: generic(genericBayWindow({ archetype: 'c19', shape: 'rect' })), spec: { d: { fronts: [{ windows: 't-window' }] } } });
+  assert.equal(WINDOWS[stated.windowKind], 't-window', 'a measured T-window wins');
 });

@@ -106,6 +106,21 @@ export const FACADE_PANES: readonly (readonly [number, number, number, number, n
   [2, 1, 2, 1, 0.25], [2, 1, 4, 2, 0.3], [3, 1, 3, 1, 0.25], [2, 1, 2, 1, 0.25], [2, 1, 6, 2, 0.3], [2, 1, 0, 0, 0], [2, 4, 0, 0, 0], [3, 1, 1, 1, 0.25],
 ];
 /** Glazing bar width (m), the reveal's shadow share of its depth, the eaves cornice band height (m) by CORNICES index. */
+/**
+ * Realism pass 2 (#380): the bay atlas's own pieces, in metres or as shares of the record's bay and storey (bayTextures.ts,
+ * a 520 px atlas bay holding two record bays, a 310 px upper and a 340 px ground storey, about 115 px a metre).
+ *  - FR_ARCH: windowAt's stone arch over the head: a half ellipse 12 px wider each side and 30 px high (0.10 m, 0.26 m);
+ *    over a round or segmental head a ring FR_ARCH[2] wide.
+ *  - FR_JAMB: paleAccents' jamb blocks: 18 px square every 42 px from 8 px under the head (0.16, 0.37, 0.07 m).
+ *  - FR_DOOR: doorAt, by bay and storey share: width, height, bottom, surround side, surround top, fanlight radius and
+ *    centre under the door top, step height and overhang; FR_DOOR_QUIET quietDoorAt's width, height, surround, top light.
+ *  - FR_PLINTH: the dark plinth (24 px of the ground storey) and its paint; FR_SILL_BAND c19's band 4-11 px under a window.
+ */
+export const FR_ARCH = [0.1, 0.26, 0.12] as const, FR_JAMB = [0.16, 0.37, 0.07] as const;
+export const FR_DOOR = { w: 0.454, h: 0.665, bottom: 0.0706, side: 0.054, top: 0.118, fanR: 0.146, fanY: 0.153, fanBottom: 0.194, step: 0.047, stepOver: 0.1 } as const;
+export const FR_DOOR_QUIET = { w: 0.377, h: 0.629, side: 0.019, top: 0.0147, lightTop: 0.026, lightH: 0.106, inset: 0.031 } as const;
+export const FR_DOOR_STONE = ['#d9d4c7', '#c9c7be'] as const, FR_DOOR_FAN = '#1d2a33', FR_DOOR_STEP = '#bdb8ab';
+export const FR_PLINTH = [0.0706, 0.78] as const, FR_PLINTH_RGB = '#282422', FR_SILL_BAND = [0.0129, 0.0355] as const;
 export const FR_BAR = 0.04, FR_REVEAL_SHADE = 0.45, FR_CORNICE_M = [0, 0.25, 0.4, 0.55, 0.5] as const;
 const vec4s = (rows: readonly (readonly number[])[]) => rows.map(r => `vec4(${r.map(f1).join(', ')})`).join(', ');
 
@@ -180,9 +195,59 @@ float frBandLines(float sv, float sh, float y0, float y1, float storey, vec2 fw)
 float frSurround(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float head, float rise) {
   float s = fr_surround(), c = 0.0;
   if (s > 0.5 && s < 1.5) c = max(c, frCover(p.x, x0 - 0.08, x1 + 0.08, fw.x) * frCover(p.y, y1, y1 + 0.16, fw.y));
-  if ((s > 1.5 && s < 2.5) || s > 4.5) c = max(c, frOpening(p, fw, x0 - 0.09, x1 + 0.09, y0 - 0.09, y1 + 0.09, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise));
+  if ((s > 1.5 && s < 2.5) || (s > 4.5 && s < 5.5)) c = max(c, frOpening(p, fw, x0 - 0.09, x1 + 0.09, y0 - 0.09, y1 + 0.09, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise));
   if (fr_sills() > 0.5 || (s > 3.5 && s < 4.5)) c = max(c, frCover(p.x, x0 - 0.06, x1 + 0.06, fw.x) * frCover(p.y, y0 - 0.08, y0, fw.y));
-  if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || s > 4.5) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
+  if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || (s > 4.5 && s < 5.5)) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
+  // 6, 7: the atlas's pale jamb blocks (FR_JAMB), 6 with its flat lintel; under far pixels they average to their share.
+  if (s > 5.5) {
+    if (s < 6.5) c = max(c, frCover(p.x, x0 - 0.08, x1 + 0.08, fw.x) * frCover(p.y, y1, y1 + 0.16, fw.y));
+    float side = max(frCover(p.x, x0 - ${f1(FR_JAMB[0])}, x0, fw.x), frCover(p.x, x1, x1 + ${f1(FR_JAMB[0])}, fw.x));
+    float dy = y1 - ${f1(FR_JAMB[2])} - p.y, r = dy - floor(dy / ${f1(FR_JAMB[1])}) * ${f1(FR_JAMB[1])};
+    float blk = mix(1.0 - frCover(r, ${f1(FR_JAMB[0])}, ${f1(FR_JAMB[1])}, fw.y), ${f1(FR_JAMB[0] / FR_JAMB[1])}, smoothstep(0.5 * ${f1(FR_JAMB[1])}, ${f1(FR_JAMB[1])}, fw.y));
+    c = max(c, side * blk * frCover(p.y, y0, y1 - ${f1(FR_JAMB[2])}, fw.y));
+  }
+  return c;
+}
+// The stone arch over a head (archRing set: ARCH_RING_STYLES 2 is none): on a flat head the atlas's half ellipse, on a round
+// or segmental head a ring round the arch.
+float frArchStone(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float head, float rise) {
+  float ring = fr_archRing();
+  if (ring > 1.5 && ring < 2.5) return 0.0;
+  if (head < 0.5) {
+    float a = 0.5 * (x1 - x0) + ${f1(FR_ARCH[0])}, b = min(${f1(FR_ARCH[1])}, 0.6 * a);
+    vec2 q = vec2((p.x - 0.5 * (x0 + x1)) / a, (p.y - y1) / b);
+    float d = (1.0 - length(q)) * min(a, b);
+    return clamp(0.5 + d / max(fw.x, fw.y), 0.0, 1.0) * frCover(p.y, y1, y1 + b, fw.y);
+  }
+  float t = ${f1(FR_ARCH[2])}, spring = y1 - (head > 1.5 ? 0.5 * (x1 - x0) : rise);
+  return max(0.0, frOpening(p, fw, x0 - t, x1 + t, y0, y1 + t, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise)) * frCover(p.y, spring, y1 + t, fw.y);
+}
+// The atlas's door on its record bay (FR_DOOR / FR_DOOR_QUIET): stone surround, leaf, fanlight or top light, step. Returns
+// the colour; o is the covered share (the reveal mask).
+vec3 frAtlasDoor(vec2 p, vec2 fw, float bw, float sh, vec3 wallC, vec3 frame, out float o) {
+  bool quiet = fr_doorStyle() > 1.5;
+  float dw = min(bw * (quiet ? ${f1(FR_DOOR_QUIET.w)} : ${f1(FR_DOOR.w)}), 1.4), x0 = 0.5 * (bw - dw), y0 = sh * ${f1(FR_DOOR.bottom)};
+  float dh = sh * (quiet ? ${f1(FR_DOOR_QUIET.h)} : ${f1(FR_DOOR.h)}), top = y0 + dh;
+  float sd = bw * (quiet ? ${f1(FR_DOOR_QUIET.side)} : ${f1(FR_DOOR.side)}), st = sh * (quiet ? ${f1(FR_DOOR_QUIET.top)} : ${f1(FR_DOOR.top)});
+  float stone = frCover(p.x, x0 - sd, x0 + dw + sd, fw.x) * frCover(p.y, y0, top + st, fw.y);
+  float leaf = frCover(p.x, x0, x0 + dw, fw.x) * frCover(p.y, y0, top, fw.y);
+  vec3 c = mix(wallC, quiet ? ${hexV3(FR_DOOR_STONE[1])} : ${hexV3(FR_DOOR_STONE[0])}, stone);
+  c = mix(c, fr_door(), leaf);
+  float glass;
+  if (quiet) {
+    float i = bw * ${f1(FR_DOOR_QUIET.inset)};
+    glass = frCover(p.x, x0 + i, x0 + dw - i, fw.x) * frCover(p.y, top - sh * ${f1(FR_DOOR_QUIET.lightTop + FR_DOOR_QUIET.lightH)}, top - sh * ${f1(FR_DOOR_QUIET.lightTop)}, fw.y);
+    c = mix(c, frGlass(0.3), glass);
+  } else {
+    float r = bw * ${f1(FR_DOOR.fanR)}, cy = top - sh * ${f1(FR_DOOR.fanY)}, fb = top - sh * ${f1(FR_DOOR.fanBottom)}, xc = x0 + 0.5 * dw;
+    float disc = clamp(0.5 + (r - length(p - vec2(xc, cy))) / max(fw.x, fw.y), 0.0, 1.0) * frCover(p.y, cy, top, fw.y);
+    glass = max(disc, frCover(p.x, xc - r, xc + r, fw.x) * frCover(p.y, fb, cy, fw.y));
+    c = mix(c, ${hexV3(FR_DOOR_FAN)}, glass);
+    float stp = frCover(p.x, x0 - bw * ${f1(FR_DOOR.stepOver)}, x0 + dw + bw * ${f1(FR_DOOR.stepOver)}, fw.x) * frCover(p.y, y0, y0 + sh * ${f1(FR_DOOR.step)}, fw.y);
+    c = mix(c, ${hexV3(FR_DOOR_STEP)}, stp);
+    stone = max(stone, stp);
+  }
+  o = max(stone, leaf);
   return c;
 }
 // The eaves cornice band: CORNICES height under the wall top, a shadow line under it.
@@ -294,6 +359,8 @@ vec3 facadeRecordColour(out vec2 m) {
   // The door: a front's ground storey, in doorBay (254: the bay nearest the centre; 255 none).
   float doorBay = fr_doorBay(), door = doorBay > 253.5 && doorBay < 254.5 ? floor((bays - 1.0) * 0.5) : doorBay;
   vec2 p = vec2(bx, sv);
+  // The atlas's dark plinth under a residential ground storey (FR_PLINTH, bayTextures.ts drawBay).
+  if (front && storey < 0.5 && fr_plinthBand() > 0.5) wallC = mix(wallC, ${hexV3(FR_PLINTH_RGB)}, ${f1(FR_PLINTH[1])} * frCover(sv, 0.0, sh * ${f1(FR_PLINTH[0])}, fw.y));
   // A shop ground storey (groundKind shop / pui-glazed): stallriser, display glass and fascia across the front (S6b
   // generic; F2 replaces this with the measured pui).
   float gk = fr_groundKind();
@@ -309,6 +376,11 @@ vec3 facadeRecordColour(out vec2 m) {
   }
   float share = fr_windowShare() / 255.0, winH = fr_windowHeightQ() / 255.0;
   vec3 frame = fr_frame();
+  if (front && storey < 0.5 && abs(bay - door) < 0.5 && doorBay < 254.5 && fr_doorStyle() > 0.5) {
+    float o; vec3 c = frAtlasDoor(p, fw, bw, sh, wallC, frame, o);
+    m = vec2(m.r * (1.0 - o), 0.0);
+    return c;
+  }
   if (front && storey < 0.5 && abs(bay - door) < 0.5 && doorBay < 254.5) {
     float dw = min(1.2, bw * 0.7), x0 = 0.5 * (bw - dw), dh = min(sh * 0.85, 2.6);
     float o = frOpening(p, fw, x0, x0 + dw, 0.0, dh, 0.0, 0.0), leaf = frOpening(p, fw, x0 + 0.06, x0 + dw - 0.06, 0.0, dh - 0.06, 0.0, 0.0);
@@ -324,7 +396,8 @@ vec3 facadeRecordColour(out vec2 m) {
   float hd = head > 2.5 ? 0.0 : head;
   // Storey bands at the sill / head lines, then the window's own stone: lintel, frame, sill, keystone.
   float bnd = frBandLines(sv, sh, y0, y1, storey, fw);
-  float acc = max(bnd, frSurround(p, fw, x0, x0 + ww, y0, y1, hd, rise));
+  if (fr_sillBand() > 0.5 && storey > 0.5) bnd = max(bnd, frCover(sv, y0 - sh * ${f1(FR_SILL_BAND[1])}, y0 - sh * ${f1(FR_SILL_BAND[0])}, fw.y));
+  float acc = max(bnd, max(frSurround(p, fw, x0, x0 + ww, y0, y1, hd, rise), frArchStone(p, fw, x0, x0 + ww, y0, y1, hd, rise)));
   wallC = mix(wallC, bnd > 0.0 ? bandC : accentC, acc); m.r *= 1.0 - acc;
   float outer = frOpening(p, fw, x0, x0 + ww, y0, y1, hd, rise);
   if (outer <= 0.0) return wallC;
