@@ -40,6 +40,12 @@ export interface RowFrontRecord {
   confidence: number;
   /** Low confidence: the row line from measured neighbours and a plain cornice. */
   fallback?: 'row-line';
+  /** Lane 2's traced upper-storey openings (step d): a0/a1 fractions of the front left to right as seen from the street,
+   *  sill/head above the pand's ground. Crown openings (attic lights over the front's top) are left to the crown. */
+  windows?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
+  /** The traced shop band's top (pand datum) and the photo's fascia colour (muted by lane 2). */
+  shopTopM?: number;
+  fasciaHex?: string;
   /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
@@ -121,6 +127,14 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
   if (fr.bays !== null && !fr.fallback) out.bays = fr.bays;
   if (fr.groundStoreyTopM !== null && !fr.fallback) out.groundTopM = at(fr.groundStoreyTopM)!;
   if (fr.wall?.hex && fr.wall.source) out.wall = { hex: fr.wall.hex, source: fr.wall.source, ...(fr.wall.finish ? { finish: fr.wall.finish } : {}) };
+  const t = fr.trace, span = fr.bagWidthM;
+  if (t && t.confidence !== 'low' && span && span > 1) {
+    const top = fr.frontTopM ?? Infinity;
+    const wins = t.storeys.slice(1).flat().filter(o => o.kind !== 'attic' && o.kind !== 'door' && o.kind !== 'shop' && o.y + o.h <= top + 0.05 && o.w > 0.1 && o.h > 0.1);
+    if (wins.length) out.windows = wins.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!, kind: o.kind }));
+    if (t.shopBandTopM !== null) out.shopTopM = at(t.shopBandTopM)!;
+    if (t.fascia?.hex) out.fasciaHex = t.fascia.hex;
+  }
   if (fr.fallback) out.fallback = 'row-line';
   // A fallback keeps lane 1's skyline read: a gable standing over the row line still draws (skylineGable).
   if (fr.fallback && interim?.skyline) out.skyline = interim.skyline;
@@ -146,6 +160,24 @@ const key = (id: string) => String(id).replace(/^NL\.IMBAG\.Pand\./, '').slice(-
 /** Install the block's records (Node: scripts/world/pipeline.ts from ROW_FRONT_RECORDS; tests directly). */
 export function setRowFrontRecords(list: readonly RowFrontRecord[]): void { records.clear(); for (const r of list) records.set(key(r.pandId), r); }
 export function rowFrontFor(id: unknown): RowFrontRecord | null { return typeof id === 'string' || typeof id === 'number' ? records.get(key(String(id))) ?? null : null; }
+
+/** The browser's records, under the site root (scripts/house-line/row-front/publish-browser.ts writes them). */
+export const ROW_FRONT_BROWSER_PATH = 'data/front-records/row-front.json';
+
+/**
+ * Browser wiring (`?rowFront=1`): fetch the published records once and install them before the block's tiles are
+ * decorated. The decorator (withRowFront) runs on the main thread and writes everything the chunk worker's mesher reads
+ * into the feature's properties, so the worker needs no records. Resolves false with the flag off or on a failed read.
+ */
+let loading: Promise<boolean> | null = null;
+export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined = (globalThis as { fetch?: typeof fetch }).fetch): Promise<boolean> {
+  if (!rowFrontOn() || !fetchFn) return Promise.resolve(false);
+  return loading ??= fetchFn(`${base}${ROW_FRONT_BROWSER_PATH}`).then(r => r.ok ? r.json() : null).then(json => {
+    if (!json) return false;
+    setRowFrontRecords(rowFrontsFromFile(json));
+    return records.size > 0;
+  }).catch(() => false);
+}
 
 /** Crown family -> the roof planner's gable profile. */
 export const FAMILY_GABLE: Readonly<Record<RowCrownFamily, GableShape | null>> = {
@@ -195,6 +227,8 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   if (!sr && !measured && !wallHex) return {};
   const out: Record<string, unknown> = { ...(sr ?? {}), eavesM, ...(corniceCrown ? { corniceCrown: true } : {}) };
   if (wallHex) { out.wallHex = wallHex; delete out.heldBrick; }
+  // The photo's fascia colour per front, muted by lane 2's trace (drawn as is: threeBuildingFeatures).
+  if (rec.fasciaHex) out.fasciaHex = rec.fasciaHex;
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
@@ -203,8 +237,12 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
     if (h !== null) out.windowH = h;
     // Step d (option c): the boxes the mesher places cells on. Interim: each measured row x the bay count, centred in
     // its bay at ROW_FRONT_WINDOW_SHARE of it (fractions of the front); lane 2's traced boxes replace these.
-    if (rec.rows?.length && rec.bays) out.windowBoxes = interimBoxes(rec.rows, rec.bays, 1, ROW_FRONT_WINDOW_SHARE);
-    if (rec.groundTopM !== undefined && rec.groundTopM > 2.4 && rec.groundTopM < eavesM - 2) out.groundM = rec.groundTopM; else delete out.groundM;
+    if (rec.windows?.length) out.windowBoxes = rec.windows;
+    else if (rec.rows?.length && rec.bays) out.windowBoxes = interimBoxes(rec.rows, rec.bays, 1, ROW_FRONT_WINDOW_SHARE);
+    // The ground storey stops under the lowest placed window's sill (its frame and sill fit in between).
+    const lowSill = Math.min(...((out.windowBoxes as Array<{ sillM: number }> | undefined) ?? []).map(b => b.sillM));
+    const groundTop = rec.groundTopM !== undefined ? Math.min(rec.groundTopM, lowSill - 0.3) : undefined;
+    if (groundTop !== undefined && groundTop > 2.4 && groundTop < eavesM - 2) out.groundM = r2(groundTop); else delete out.groundM;
   }
   return { specRecipe: out };
 }

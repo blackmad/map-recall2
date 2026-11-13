@@ -144,3 +144,22 @@ test('row front levels: window boxes per bay on each measured row', () => {
   assert.ok(Math.abs((boxes[0].a0 + boxes[0].a1) / 2 - 0.25) < 1e-9 && Math.abs(boxes[0].a1 - boxes[0].a0 - 0.32) < 1e-9);
   assert.equal(boxes[2].sillM, 8.13);
 });
+
+// Step d proper: lane 2's traced openings become the mesher's boxes (HD20 167818: 2 + 3 upper windows; the attic light
+// over the gable foot stays with the crown), in the pand datum, with the fascia colour; and boxes too close for their
+// frames share the gap instead of falling back to the grid.
+import { readFileSync } from 'node:fs';
+import { placeOnBoxes } from './boxPlacement.ts';
+test('row front traces: HD20 traced windows to boxes, attic left to the crown, fascia carried', () => {
+  const table = JSON.parse(readFileSync(new URL('../../../data/front-records/haarlemmerdijk-block.json', import.meta.url), 'utf8'));
+  const recs = rowFrontsFromTable(table);
+  const r = recs.find(x => x.pandId.endsWith('167818'))!;
+  assert.equal(r.windows!.length, 5);
+  assert.ok(r.windows!.every(w => w.kind !== 'attic' && w.a0 >= 0 && w.a1 <= 1 && w.a1 > w.a0));
+  const fr = table.records.find((x: FrontRecord) => x.pandId.endsWith('167818'));
+  assert.equal(r.windows![0].sillM, toPandDatum(fr, 5.6));
+  assert.match(r.fasciaHex!, /^#[0-9a-f]{6}$/);
+  const unit = { aspect: 0.7, margin: { l: 0.15, r: 0.15, t: 0.1, b: 0.2 }, uv: { u0: 0.1, u1: 0.4, v0: 0.2, v1: 0.8 } };
+  const p = placeOnBoxes([{ a0: 0.45, a1: 1.45, sillM: 4, headM: 5.45 }, { a0: 1.55, a1: 2.5, sillM: 4, headM: 5.45 }], unit, { lengthM: 3.77, z0: 3.5, z1: 8 })!;
+  assert.ok(p && Math.abs(p.windows[0].a1 - 1.5) < 1e-9 && Math.abs(p.windows[1].a0 - 1.5) < 1e-9);
+});

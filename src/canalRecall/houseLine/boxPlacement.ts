@@ -51,19 +51,31 @@ export function nearestUnit(boxes: readonly WindowBox[], units: readonly Pick<Wi
 export function placeOnBoxes(boxes: readonly WindowBox[], unit: WindowUnit, region: { lengthM: number; z0: number; z1: number }, cap = STRETCH_CAP): Placement | null {
   const { lengthM: L, z0, z1 } = region;
   if (!boxes.length || !(L > 0) || !(z1 > z0)) return null;
-  const windows: PlacedWindow[] = [];
   for (const box of boxes) {
-    const w = box.a1 - box.a0, h = box.headM - box.sillM;
-    if (!(w > 0.1) || !(h > 0.1)) return null;
+    if (!(box.a1 - box.a0 > 0.1) || !(box.headM - box.sillM > 0.1)) return null;
     const stretch = stretchOf(box, unit);
     if (!(stretch <= cap && stretch >= 1 / cap)) return null;
-    const a0 = Math.max(0, box.a0 - unit.margin.l * w), a1 = Math.min(L, box.a1 + unit.margin.r * w);
-    const zb = Math.max(z0, box.sillM - unit.margin.b * h), zt = Math.min(z1, box.headM + unit.margin.t * h);
     if (box.a0 < -1e-6 || box.a1 > L + 1e-6 || box.sillM < z0 - 1e-6 || box.headM > z1 + 1e-6) return null;
-    // A margin clipped by the region crops the unit's uv by the same share.
+  }
+  // Each unit's margins (frame, sill) stop halfway to a neighbouring box: side by side in a row, or stacked in a column.
+  const lim = boxes.map(b => ({ a0: 0, a1: L, zb: z0, zt: z1, b }));
+  for (let i = 0; i < boxes.length; i++) for (let j = 0; j < boxes.length; j++) {
+    if (i === j) continue;
+    const p = boxes[i], q = boxes[j];
+    const xOver = Math.min(p.a1, q.a1) - Math.max(p.a0, q.a0) > 1e-6, zOver = Math.min(p.headM, q.headM) - Math.max(p.sillM, q.sillM) > 1e-6;
+    if (xOver && zOver) return null;
+    if (zOver) { if (q.a0 >= p.a1) lim[i].a1 = Math.min(lim[i].a1, (p.a1 + q.a0) / 2); else lim[i].a0 = Math.max(lim[i].a0, (q.a1 + p.a0) / 2); }
+    else if (xOver) { if (q.sillM >= p.headM) lim[i].zt = Math.min(lim[i].zt, (p.headM + q.sillM) / 2); else lim[i].zb = Math.max(lim[i].zb, (q.headM + p.sillM) / 2); }
+  }
+  const windows: PlacedWindow[] = [];
+  for (const { a0: la0, a1: la1, zb: lzb, zt: lzt, b: box } of lim) {
+    const w = box.a1 - box.a0, h = box.headM - box.sillM;
+    const a0 = Math.max(la0, box.a0 - unit.margin.l * w), a1 = Math.min(la1, box.a1 + unit.margin.r * w);
+    const zb = Math.max(lzb, box.sillM - unit.margin.b * h), zt = Math.min(lzt, box.headM + unit.margin.t * h);
+    // A margin cut short crops the unit's uv by the same share.
     const fu = (a: number) => unit.uv.u0 + (unit.uv.u1 - unit.uv.u0) * (a - (box.a0 - unit.margin.l * w)) / (w * (1 + unit.margin.l + unit.margin.r));
     const fv = (z: number) => unit.uv.v0 + (unit.uv.v1 - unit.uv.v0) * (z - (box.sillM - unit.margin.b * h)) / (h * (1 + unit.margin.b + unit.margin.t));
-    windows.push({ a0, a1, z0: zb, z1: zt, u0: fu(a0), u1: fu(a1), v0: fv(zb), v1: fv(zt), stretch, box });
+    windows.push({ a0, a1, z0: zb, z1: zt, u0: fu(a0), u1: fu(a1), v0: fv(zb), v1: fv(zt), stretch: stretchOf(box, unit), box });
   }
   // Rows: windows whose framed z ranges overlap share a band.
   const sorted = [...windows].sort((p, q) => p.z0 - q.z0);

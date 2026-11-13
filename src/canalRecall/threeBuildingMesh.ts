@@ -440,6 +440,9 @@ const COS_RUN = Math.cos(RUN_TURN_DEG * Math.PI / 180);
  * and turn by less than RUN_TURN_DEG, laid out as one facade. A hidden (party) wall or a
  * real corner ends a run.
  */
+/** Whether a wall's edge runs left to right as seen from the street in front of it (x east, y north, outward normal). */
+function seenLeftToRight(e: Edge): boolean { return (e.x1 - e.x0) * -e.ny + (e.y1 - e.y0) * e.nx >= 0; }
+
 export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) => boolean): Array<Array<{ e: Edge }>> {
   const runs: Array<Array<{ e: Edge }>> = [];
   for (const ring of rings) {
@@ -762,7 +765,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Lane 1 step d (rowFront flag, houseLine/boxCells.ts): a record's measured window boxes on the street run. Each box
       // takes a crop of the upper cell sized so the cell's window lands on it, the rest is plain wall; null keeps the grid.
       const placed = !shell && mode === 'walls' && streetRun && b.specRecipe?.windowBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
-        ? boxPlacementFor(b.specRecipe.windowBoxes, b.layers.upper, layout.lengthM, base, groundTop, facadeTop) : null;
+        ? boxPlacementFor(seenLeftToRight(first) ? b.specRecipe.windowBoxes : b.specRecipe.windowBoxes.map(w => ({ ...w, a0: 1 - w.a1, a1: 1 - w.a0 })), b.layers.upper, layout.lengthM, base, groundTop, facadeTop) : null;
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.

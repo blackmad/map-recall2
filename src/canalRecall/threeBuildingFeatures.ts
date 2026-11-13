@@ -329,10 +329,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Lane 1 step e (rowFront flag): subtract before adding. A front record's house draws only the plain extras
   // (ROW_FRONT_EXTRAS) and what a register or spec states; its shopfront takes the photo's colour muted, never a guessed brand colour.
   if (typeof p.rowFront === 'string') {
-    if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS, ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    // Window boxes (step d): the placed cell crops carry their own frame and sill; the grid's sill and frame extras would
+    // cross the glass of a window that is not on the grid.
+    const boxed = !!specRecipeOf(p)?.windowBoxes?.length;
+    if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
     if (building.shopfront || building.shop) {
       // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.
-      const hex = rowFrontShopHex(specRecipeOf(p)?.shopHex ?? (p.houseSpec as { shopHex?: unknown } | undefined)?.shopHex);
+      const traced = (specRecipeOf(p) as { fasciaHex?: unknown } | undefined)?.fasciaHex;
+      const hex = typeof traced === 'string' && /^#[0-9a-f]{6}$/i.test(traced) ? traced : rowFrontShopHex(specRecipeOf(p)?.shopHex ?? (p.houseSpec as { shopHex?: unknown } | undefined)?.shopHex);
       building.accentHex = hex; building.signature = undefined; building.chain = undefined; if (building.layers) building.groundHex = hex;
     }
   }
