@@ -1,0 +1,33 @@
+{
+ "v": 1,
+ "row": "artifacts/route-c/list-wws8.json",
+ "houses": 8,
+ "compiled": 8,
+ "noHoldShare": 1,
+ "eligible": 4,
+ "minutesPerHouse": {
+  "machine": 0.04,
+  "withPreview": 0.24
+ },
+ "triangles": {
+  "mean": 1277,
+  "max": 1680
+ },
+ "meshoptKB": {
+  "mean": 39.5,
+  "total": 316.2
+ },
+ "fillsBySource": {
+  "stated": 53,
+  "reading+geometry": 1,
+  "family": 66,
+  "derived": 16
+ },
+ "drops": [],
+ "holds": [],
+ "shared": {
+  "uniqueMeshes": 8,
+  "groups": [],
+  "rejected": 0
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "rc-0363100012171218",
+ "pandId": "0363100012171218",
+ "address": "0363100012171218",
+ "sources": [
+  {
+   "id": "artifacts-describer-d1-cuts-ah07-0363100012171218-jpg",
+   "kind": "street-panorama",
+   "capturedAt": "2026-11-13"
+  }
+ ],
+ "fronts": [
+  {
+   "storeys": 3,
+   "bays": 3,
+   "bands": "speklagen",
+   "souterrain": true,
+   "gable": "cornice",
+   "cornice": "simple",
+   "windows": "t-window",
+   "hoist": false,
+   "basement": "stoop-and-windows",
+   "doorBay": 0,
+   "id": "front0",
+   "street": "Weteringschans",
+   "speklagen": {
+    "spacing": 14,
+    "courses": 2
+   }
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "wallMaterial": "brick",
+  "brick": "#3e3a35",
+  "frame": "white-painted",
+  "door": "#2a2a2a",
+  "band": "#c9a86a"
+ }
+}

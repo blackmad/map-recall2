@@ -1,0 +1,32 @@
+{
+ "v": 1,
+ "row": "artifacts/route-c/list-dentex8.json",
+ "houses": 8,
+ "compiled": 8,
+ "noHoldShare": 1,
+ "eligible": 0,
+ "minutesPerHouse": {
+  "machine": 0.02,
+  "withPreview": 0.11
+ },
+ "triangles": {
+  "mean": 707,
+  "max": 1041
+ },
+ "meshoptKB": {
+  "mean": 26.9,
+  "total": 214.9
+ },
+ "fillsBySource": {
+  "stated": 42,
+  "family": 66,
+  "derived": 16
+ },
+ "drops": [],
+ "holds": [],
+ "shared": {
+  "uniqueMeshes": 8,
+  "groups": [],
+  "rejected": 0
+ }
+}

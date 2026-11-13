@@ -1,0 +1,1766 @@
+[
+ {
+  "key": "179440",
+  "pandId": "0363100012179440",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#413834",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179440.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "window",
+    "what": "white blocks at the head corners and a keystone over each upper window"
+   },
+   {
+    "component": "balcony",
+    "what": "wrought-iron balconets on the right axis of storeys 2 and 3"
+   },
+   {
+    "component": "window",
+    "what": "ground-storey windows have a small-paned top light over large panes"
+   }
+  ],
+  "ms": {
+   "facts": 2092.704917,
+   "complete": 5.282583000000159,
+   "compile": 103.51908400000002,
+   "meshopt": 14.72991699999966,
+   "preview": 6123.691957999999
+  },
+  "geometry": {
+   "year": 1885,
+   "lng": 4.893351634390535,
+   "lat": 52.35906061525849,
+   "eavesM": 14.56165844167268,
+   "widthM": 6.000088416011133,
+   "crownRiseM": 0.04,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 952,
+  "bytes": 67724,
+  "meshoptBytes": 33492,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179440",
+   "pandId": "0363100012179440",
+   "address": "0363100012179440",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179440-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#413834",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179439",
+  "pandId": "0363100012179439",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#3f3632",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179439.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "window",
+    "what": "white stone blocks at both head corners and a central keystone on each window head"
+   },
+   {
+    "component": "balcony",
+    "what": "small wrought-iron balconets on the right-hand axis"
+   }
+  ],
+  "ms": {
+   "facts": 659.750333,
+   "complete": 0.6055419999997866,
+   "compile": 31.708750000000236,
+   "meshopt": 5.148707999999715,
+   "preview": 5531.725125000001
+  },
+  "geometry": {
+   "year": 1881,
+   "lng": 4.893435047216279,
+   "lat": 52.35904894211205,
+   "eavesM": 14.223970540649079,
+   "widthM": 5.999975083281499,
+   "crownRiseM": 0,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 663,
+  "bytes": 48896,
+  "meshoptBytes": 26208,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179439",
+   "pandId": "0363100012179439",
+   "address": "0363100012179439",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179439-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 2,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#3f3632",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179438",
+  "pandId": "0363100012179438",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#372f2b",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179438.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "an iron balcony on two stone consoles across the centre of the first upper storey"
+   },
+   {
+    "component": "balcony",
+    "what": "an iron balconette in front of the centre window of the second upper storey"
+   },
+   {
+    "component": "door",
+    "what": "a double-leaf street door with a transom light at the left of the ground storey"
+   }
+  ],
+  "ms": {
+   "facts": 604.1418750000003,
+   "complete": 0.5322909999995318,
+   "compile": 47.51337500000045,
+   "meshopt": 5.005333000000064,
+   "preview": 5932.987292000002
+  },
+  "geometry": {
+   "year": 1882,
+   "lng": 4.893523375732879,
+   "lat": 52.35906274266752,
+   "eavesM": 14.273794515132769,
+   "widthM": 6.105009418504348,
+   "crownRiseM": 1.76,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 1041,
+  "bytes": 74892,
+  "meshoptBytes": 36200,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179438",
+   "pandId": "0363100012179438",
+   "address": "0363100012179438",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179438-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#372f2b",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179437",
+  "pandId": "0363100012179437",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "painted-brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#292625",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179437.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "shopfront",
+    "what": "a green fabric awning over the ground-storey windows"
+   }
+  ],
+  "ms": {
+   "facts": 658.5804999999991,
+   "complete": 0.5893340000002354,
+   "compile": 24.52404200000001,
+   "meshopt": 3.5056249999997817,
+   "preview": 5622.583707999998
+  },
+  "geometry": {
+   "year": 1880,
+   "lng": 4.893613224319605,
+   "lat": 52.35905723935006,
+   "eavesM": 14.181161484680091,
+   "widthM": 6.23853676754669,
+   "crownRiseM": 0,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 660,
+  "bytes": 48332,
+  "meshoptBytes": 25972,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179437",
+   "pandId": "0363100012179437",
+   "address": "0363100012179437",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179437-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 2,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "painted-brick",
+    "brick": "#292625",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179436",
+  "pandId": "0363100012179436",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#35312d",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179436.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "erker",
+    "what": "a white projecting bay window on consoles on the first upper storey at the left"
+   },
+   {
+    "component": "shutters",
+    "what": "striped fabric awnings over the top-storey windows"
+   },
+   {
+    "component": "balcony",
+    "what": "a low iron balconette in front of the right first-storey window"
+   }
+  ],
+  "ms": {
+   "facts": 738.6278750000001,
+   "complete": 0.5262500000008004,
+   "compile": 27.669667000000118,
+   "meshopt": 3.163292000000183,
+   "preview": 5109.701584000002
+  },
+  "geometry": {
+   "year": 1883,
+   "lng": 4.893704139886691,
+   "lat": 52.359049072553624,
+   "eavesM": 11.163075022984664,
+   "widthM": 6.102165189507442,
+   "crownRiseM": 3,
+   "crownPeaked": true
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": false,
+    "advisory": true
+   }
+  ],
+  "triangles": 753,
+  "bytes": 54456,
+  "meshoptBytes": 28016,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179436",
+   "pandId": "0363100012179436",
+   "address": "0363100012179436",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179436-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#35312d",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179435",
+  "pandId": "0363100012179435",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#342e2b",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179435.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "a low iron balconette in front of the left first-storey window"
+   },
+   {
+    "component": "shutters",
+    "what": "striped fabric awnings over the top-storey windows"
+   },
+   {
+    "component": "window",
+    "what": "a segmental arch with a dotted tympanum over the first-storey windows"
+   }
+  ],
+  "ms": {
+   "facts": 1162.649125,
+   "complete": 0.4050829999996495,
+   "compile": 17.962790999999925,
+   "meshopt": 2.369416000000456,
+   "preview": 4657.472249999999
+  },
+  "geometry": {
+   "year": 1881,
+   "lng": 4.893793350305912,
+   "lat": 52.359043967891246,
+   "eavesM": 14.154188015167078,
+   "widthM": 6.103160246960837,
+   "crownRiseM": 0.05,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 541,
+  "bytes": 41144,
+  "meshoptBytes": 23684,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179435",
+   "pandId": "0363100012179435",
+   "address": "0363100012179435",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179435-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 2,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#342e2b",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179430",
+  "pandId": "0363100012179430",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179430.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179430.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179430.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#322d2b",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179430.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "family",
+    "ref": "family 1880-1919 (n 598, share 0.965); 3DBAG crown 0.0 m, level profile"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "window",
+    "what": "a segmental brick arch with a dotted tympanum over a first-storey window"
+   },
+   {
+    "component": "shutters",
+    "what": "a fabric awning or blind hangs over the top-storey window"
+   }
+  ],
+  "ms": {
+   "facts": 877.3115419999995,
+   "complete": 0.44737499999973807,
+   "compile": 16.021624999999403,
+   "meshopt": 2.7784999999994398,
+   "preview": 4483.185458
+  },
+  "geometry": {
+   "year": 1883,
+   "lng": 4.893882534643519,
+   "lat": 52.35903856645779,
+   "eavesM": 14.364178871808253,
+   "widthM": 6.099578755948734,
+   "crownRiseM": 0,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 525,
+  "bytes": 39872,
+  "meshoptBytes": 23244,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179430",
+   "pandId": "0363100012179430",
+   "address": "0363100012179430",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179430-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 2,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#322d2b",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "179429",
+  "pandId": "0363100012179429",
+  "street": "Den Texstraat",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179429.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179429.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012179429.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#342e2a",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012179429.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "family",
+    "ref": "family 1880-1919 (n 598, share 0.965); 3DBAG crown 0.0 m, level profile"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.976)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Den Texstraat",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "relief",
+    "what": "white stone blocks set in chains up the window reveals and piers"
+   }
+  ],
+  "ms": {
+   "facts": 686.3017910000008,
+   "complete": 0.35679200000049605,
+   "compile": 14.766374999999243,
+   "meshopt": 2.3272909999996045,
+   "preview": 5134.227292000003
+  },
+  "geometry": {
+   "year": 1883,
+   "lng": 4.893971868562121,
+   "lat": 52.359033793223766,
+   "eavesM": 14.293888897602018,
+   "widthM": 6.094704750851951,
+   "crownRiseM": 0.01,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 522,
+  "bytes": 39716,
+  "meshoptBytes": 23192,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012179429",
+   "pandId": "0363100012179429",
+   "address": "0363100012179429",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012179429-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 2,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Den Texstraat"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#342e2a",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ }
+]

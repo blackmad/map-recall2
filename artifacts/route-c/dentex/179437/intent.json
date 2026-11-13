@@ -1,0 +1,40 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "rc-0363100012179437",
+ "pandId": "0363100012179437",
+ "address": "0363100012179437",
+ "sources": [
+  {
+   "id": "artifacts-describer-d1-cuts-ah07-0363100012179437-jpg",
+   "kind": "street-panorama",
+   "capturedAt": "2026-11-13"
+  }
+ ],
+ "fronts": [
+  {
+   "storeys": 4,
+   "bays": 2,
+   "windowHead": {
+    "kind": "flat"
+   },
+   "gable": "cornice",
+   "cornice": "simple",
+   "windows": "t-window",
+   "hoist": false,
+   "basement": "none",
+   "doorBay": 0,
+   "id": "front0",
+   "street": "Den Texstraat"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "wallMaterial": "painted-brick",
+  "brick": "#292625",
+  "frame": "white-painted",
+  "door": "#2a2a2a"
+ }
+}

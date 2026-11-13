@@ -3056,3 +3056,69 @@ within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) a
 Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
 194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
 `artifacts/describer-d1/staged-ah07/` (never published).
+
+## §15 Route C: the spec-to-intent completer (lane C-completer, 2026-11-13; staged only)
+
+Route A (the generic path) draws every described house. Route C compiles a described house as a recipe model, as a capped
+quality tier on top of A (reviewer ruling 2026-11-13). C never installs or publishes anything.
+
+| Piece | Where |
+|---|---|
+| Completer (pure): part + geometry (+ answer hints, twin) → `CanalHouseIntent`, fills with sources, drops, limits | `src/canalRecall/houseSpec/complete.ts`, test `complete.test.ts` |
+| Build-year families, raised crowns | `src/canalRecall/houseSpec/families.ts` |
+| Family defaults: the mode (or median, or medoid colour) per family over the 1,584 published photo-sourced specs, with n and share | `family-defaults.json`, written by `scripts/house-line/route-c/family-defaults.ts --write` |
+| Row runner: 3DBAG facts, complete, compile, gate drop loop, twin mesh sharing, meshopt bytes, `--preview` Node 3/4 renders | `scripts/house-line/route-c/complete.ts --row <list.json> --out artifacts/route-c/<label>` |
+| Sheets: photo, today, A or A+fit, C | `scripts/house-line/route-c/sheet.sh` |
+
+**Fill ladder.** The part's stated fields are kept. An unstated field is filled from, in order:
+1. A twin: both reads name each other (`sameAs`), PR1 `similar` holds and the walls touch. Only the twin's stated fields are copied, and the door is mirrored.
+2. The reading, when geometry corroborates it. D1 stages only crown classes with precision >= 0.8. A raised-gable answer (point, neck, bell and so on) is used when 3DBAG shows >= 2 m of crown over the eaves. 168094's point gable comes from this rung; the prototype's fixed cornice lost it.
+3. PR1's structure prior, for storeys and window columns.
+4. The family default. A raised family gable needs all three of: no level crown read (cornice, flat, mansard, pitched-eaves), >= 2 m of crown, and a peaked 3DBAG top profile. Without this rule, 171218's mansard drew a step gable.
+
+Each fill lands in `rows.json` as `{path, value, source, ref}`. Two cases have no rung of their own:
+- Parameters a stated word needs come from the family. Speklagen spacing is the measured median of 14 courses; the prototype's fixed 7 overdid the stripes.
+- `facts.pui` shop becomes a `shopfront`. A warehouse ground becomes a schema limit.
+
+**Gates.** A gate clamps or drops one part and logs it as `drops`; the rest compiles.
+
+Before compile:
+- Storey pitch must lie in 2.3–5.2 m (a souterrain counts as 0.6 of a storey).
+- Bay pitch must lie in 1.1–4.8 m.
+- A raised gable needs >= 1 m of crown in 3DBAG, else it becomes a cornice.
+- A whole-wall band pattern (speklagen, courses) read at confidence < 0.5 is dropped.
+- A `validateIntent` problem drops the optional part it names, or refills a required part from the family.
+
+After compile, a failing hard gate drops its own part first, then the next in order: shopfront, bands, windowHead, souterrain, gable, one storey. A house holds only when nothing is left to drop.
+
+**Eligibility (the scope cap).** `cOnlyFields` counts the fields A ignores that the part states at confidence >= 0.5:
+- arched storeys (segmental or round heads);
+- bands;
+- a souterrain;
+- a shop;
+- a bay window;
+- a balcony.
+
+A front qualifies for C with two or more. On AH07, 42 of 194 staged fronts qualify (22 %): 32 of 97 on Weteringschans, 3 of 54 on Den Texstraat.
+
+**Measured (2026-11-13, three rows of 8, Node only; no frames run during the integration gate).**
+- Results:
+  - 24 of 24 compiled, so no house holds.
+  - One drop: 168094's low-confidence courses.
+  - Eligible fronts average 1,338 triangles and 41.6 kB meshopt (51.3 kB max); all 24 average 1,044 triangles and 34.7 kB.
+- Time, machine only:
+  - 0.02–0.04 min per house to fetch 3DBAG, complete, compile and measure.
+  - 0.10–0.24 min per house with the Node 3/4 render.
+  - D1's read and the eyeball judgement are not part of these figures.
+- Sheets are in map-recall2-screenshots `ui/2026-11-13-route-c-completer/` (branch `route-c-completer-20261113`).
+- No mutual twins were found: the AH07 answers carry no `sameAs`. In the bake-off re-reads, 168096 and 168042 name a side that their neighbours do not name back.
+
+**What the describer does not read, though the kit can say it:**
+- balconies (`balconies`);
+- bay windows (`bayWindows`);
+- dormers;
+- a gable over part of the front (`crownBays`);
+- basement bars;
+- door surrounds.
+
+These reach the spec only as `gaps` text, so C cannot draw them. A describer field for each is the cheapest next lift.

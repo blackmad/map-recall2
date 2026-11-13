@@ -1,0 +1,1955 @@
+[
+ {
+  "key": "168094",
+  "pandId": "0363100012168094",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "bands",
+   "souterrain"
+  ],
+  "eligible": true,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "fronts/0/bands",
+    "value": "courses",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "fronts/0/souterrain",
+    "value": true,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "none",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#ba9070",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168094.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "point",
+    "source": "reading+geometry",
+    "ref": "describer crown point (not staged: class precision < 0.8) + 3DBAG crown 4.5 m over the eaves"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "stoop-and-windows",
+    "source": "family",
+    "ref": "family all years (n 25, share 0.76; 1800-1879 n 2)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   },
+   {
+    "path": "palette/band",
+    "value": "#a0703f",
+    "source": "family",
+    "ref": "family all years (n 9; 1800-1879 n 0)"
+   }
+  ],
+  "drops": [
+   {
+    "path": "fronts/0/bands",
+    "value": "courses",
+    "gate": "pattern-confidence",
+    "why": "a whole-wall courses pattern read at confidence 0.35 (< 0.5: the reader marked bands low)"
+   }
+  ],
+  "limits": [
+   {
+    "component": "window",
+    "what": "the wide left axis has triple windows of three equal lights under top lights"
+   },
+   {
+    "component": "balcony",
+    "what": "two small iron balconies on stone consoles on the narrow right axis at the first and second storeys"
+   },
+   {
+    "component": "gable ornament",
+    "what": "the pointed gable covers only the wide left axis; the narrow right axis ends at a flat parapet, and wrought-iron wall anchors run along the floor lines"
+   }
+  ],
+  "ms": {
+   "facts": 1363.512917,
+   "complete": 5.481499999999869,
+   "compile": 115.1005419999999,
+   "meshopt": 17.954499999999825,
+   "preview": 7737.9985830000005
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.894931281573422,
+   "lat": 52.35956145917777,
+   "eavesM": 16.67156024653807,
+   "widthM": 6.790814752302315,
+   "crownRiseM": 4.47,
+   "crownPeaked": true
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 1126,
+  "bytes": 81328,
+  "meshoptBytes": 37988,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012168094",
+   "pandId": "0363100012168094",
+   "address": "0363100012168094",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012168094-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 2,
+     "souterrain": true,
+     "cornice": "none",
+     "gable": "point",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "stoop-and-windows",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#ba9070",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "168095",
+  "pandId": "0363100012168095",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "arched storeys",
+   "souterrain"
+  ],
+  "eligible": true,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 4,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 2,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "segmental"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "fronts/0/souterrain",
+    "value": true,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "none",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#362c27",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168095.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "point",
+    "source": "reading+geometry",
+    "ref": "describer crown point (not staged: class precision < 0.8) + 3DBAG crown 4.0 m over the eaves"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "stoop-and-windows",
+    "source": "family",
+    "ref": "family all years (n 25, share 0.76; 1800-1879 n 2)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "two iron balconies on stone consoles spanning both axes at the first and second storeys"
+   },
+   {
+    "component": "gable ornament",
+    "what": "a narrow pointed gable with a hoist beam at its top"
+   }
+  ],
+  "ms": {
+   "facts": 67.14087500000005,
+   "complete": 0.7386249999999563,
+   "compile": 93.4247919999998,
+   "meshopt": 8.37912499999993,
+   "preview": 5364.12175
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.895021149094453,
+   "lat": 52.35955636381,
+   "eavesM": 16.798172748302825,
+   "widthM": 6.883204195720255,
+   "crownRiseM": 4.04,
+   "crownPeaked": true
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 1466,
+  "bytes": 98884,
+  "meshoptBytes": 43728,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012168095",
+   "pandId": "0363100012168095",
+   "address": "0363100012168095",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012168095-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 4,
+     "bays": 2,
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "souterrain": true,
+     "cornice": "none",
+     "gable": "point",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "stoop-and-windows",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#362c27",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "168043",
+  "pandId": "0363100012168043",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#41352f",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168043.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.971)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "door",
+    "what": "a carved varnished timber double door with a fanlight over it"
+   },
+   {
+    "component": "dormer",
+    "what": "one white dormer with a small railing on the centre axis, in a slate roof face behind the cornice"
+   },
+   {
+    "component": "shutters",
+    "what": "the basement windows have iron grilles in a grey stone plinth"
+   }
+  ],
+  "ms": {
+   "facts": 60.741459000000305,
+   "complete": 0.6669160000001284,
+   "compile": 43.76820799999996,
+   "meshopt": 4.88149999999996,
+   "preview": 5414.564333
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.895127614567152,
+   "lat": 52.359567679310494,
+   "eavesM": 13.91326450799318,
+   "widthM": 6.373717439604403,
+   "crownRiseM": 2.63,
+   "crownPeaked": true
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 841,
+  "bytes": 62032,
+  "meshoptBytes": 30648,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012168043",
+   "pandId": "0363100012168043",
+   "address": "0363100012168043",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012168043-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#41352f",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "168096",
+  "pandId": "0363100012168096",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "bands"
+  ],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "fronts/0/bands",
+    "value": "storey",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#3b302b",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168096.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.971)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "window",
+    "what": "a crown of small white blocks stepped over each first-storey window head"
+   },
+   {
+    "component": "relief",
+    "what": "a row of small white panels in a frieze under the cornice"
+   }
+  ],
+  "ms": {
+   "facts": 61.97370799999999,
+   "complete": 1.2274579999998423,
+   "compile": 56.15345900000011,
+   "meshopt": 4.677208000000064,
+   "preview": 5305.229292
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.895218302075946,
+   "lat": 52.359562275626786,
+   "eavesM": 13.878384106375906,
+   "widthM": 6.320877945353536,
+   "crownRiseM": 2.69,
+   "crownPeaked": true
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": false,
+    "advisory": true
+   }
+  ],
+  "triangles": 845,
+  "bytes": 61924,
+  "meshoptBytes": 30624,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012168096",
+   "pandId": "0363100012168096",
+   "address": "0363100012168096",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012168096-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "bands": "storey",
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#3b302b",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "168042",
+  "pandId": "0363100012168042",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "shop"
+  ],
+  "eligible": false,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#463f39",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "none",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.971)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   },
+   {
+    "path": "fronts/0/shopfront",
+    "value": {
+     "colour": "#726258",
+     "fascia": true
+    },
+    "source": "family",
+    "ref": "facts/pui shop (vision-judge:artifacts/describer-d1/cuts-ah07/0363100012168042.jpg); colour family 1800-1879 (n 41); fascia family 1800-1879 (n 42, share 0.81)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "shopfront",
+    "what": "a modern black-framed shopfront with a patterned glass fascia panel over a large curtained window and a narrow door"
+   },
+   {
+    "component": "relief",
+    "what": "a frieze of small white panels under the cornice, one per window axis"
+   },
+   {
+    "component": "window",
+    "what": "a crown of small white blocks stepped over each first-storey window head"
+   }
+  ],
+  "ms": {
+   "facts": 43.97162500000013,
+   "complete": 0.8876249999998436,
+   "compile": 47.7191670000002,
+   "meshopt": 5.035584000000199,
+   "preview": 5202.174207999997
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.895307013952646,
+   "lat": 52.35954991165437,
+   "eavesM": 13.846353489768543,
+   "widthM": 6.340582307638485,
+   "crownRiseM": 0.05,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": false,
+    "advisory": true
+   }
+  ],
+  "triangles": 789,
+  "bytes": 59972,
+  "meshoptBytes": 32792,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012168042",
+   "pandId": "0363100012168042",
+   "address": "0363100012168042",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012168042-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "none",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans",
+     "shopfront": {
+      "colour": "#726258",
+      "fascia": true
+     }
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#463f39",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "169016",
+  "pandId": "0363100012169016",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "bands",
+   "souterrain"
+  ],
+  "eligible": true,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "fronts/0/windowHead",
+    "value": {
+     "kind": "flat"
+    },
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "fronts/0/bands",
+    "value": "both",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "fronts/0/souterrain",
+    "value": true,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#534b47",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012169016.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "family",
+    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "stoop-and-windows",
+    "source": "family",
+    "ref": "family all years (n 25, share 0.76; 1800-1879 n 2)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "door",
+    "what": "the street door at the top of a stoop has a white stone surround with a pointed pediment over a small window"
+   },
+   {
+    "component": "balcony",
+    "what": "a white stone balustrade balcony on the centre axis of the first storey"
+   },
+   {
+    "component": "window",
+    "what": "a crown of small white blocks stepped over each first-storey window head"
+   },
+   {
+    "component": "dormer",
+    "what": "one pedimented dormer with a hoist beam over the centre of a slate mansard"
+   },
+   {
+    "component": "roof",
+    "what": "mansard crown read (class precision 0.33, not staged): drawn as the cornice crown over the 3DBAG roof"
+   }
+  ],
+  "ms": {
+   "facts": 39.123291999999765,
+   "complete": 0.55862500000012,
+   "compile": 38.655541000000085,
+   "meshopt": 4.256583000000319,
+   "preview": 5223.114249999999
+  },
+  "geometry": {
+   "year": 1870,
+   "lng": 4.895400367270235,
+   "lat": 52.359543495804765,
+   "eavesM": 13.651689243682878,
+   "widthM": 6.5007634167112425,
+   "crownRiseM": 0.13,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": false,
+    "advisory": true
+   }
+  ],
+  "triangles": 1199,
+  "bytes": 84940,
+  "meshoptBytes": 40384,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012169016",
+   "pandId": "0363100012169016",
+   "address": "0363100012169016",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012169016-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat"
+     },
+     "bands": "both",
+     "souterrain": true,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "stoop-and-windows",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#534b47",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ },
+ {
+  "key": "171218",
+  "pandId": "0363100012171218",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1800-1879",
+  "cOnly": [
+   "bands",
+   "souterrain"
+  ],
+  "eligible": true,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "fronts/0/bands",
+    "value": "speklagen",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "fronts/0/souterrain",
+    "value": true,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#3e3a35",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171218.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "family",
+    "ref": "family 1800-1879 (n 108, share 1); crown read mansard (a level crown)"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.824)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.926)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "stoop-and-windows",
+    "source": "family",
+    "ref": "family all years (n 25, share 0.76; 1800-1879 n 2)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1800-1879 (n 106, share 0.575)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.662)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1800-1879 (n 136, share 0.735)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1800-1879 (n 118)"
+   },
+   {
+    "path": "fronts/0/speklagen",
+    "value": {
+     "spacing": 14,
+     "courses": 2
+    },
+    "source": "family",
+    "ref": "spacing family all years (n 20; 1800-1879 n 1); courses family all years (n 20, share 0.75; 1800-1879 n 1)"
+   },
+   {
+    "path": "palette/band",
+    "value": "#c9a86a",
+    "source": "family",
+    "ref": "family all years (n 8; 1800-1879 n 1)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "door",
+    "what": "a white stone aedicule with small arched lights and a crest stands over the street door at the top of the stoop"
+   },
+   {
+    "component": "balcony",
+    "what": "a small stone balustraded balcony with urns on consoles in front of the centre first-storey window"
+   },
+   {
+    "component": "window",
+    "what": "the top storey's round-arched windows sit under raised white arch rings with keystones; the first storey has corniced stone lintels"
+   },
+   {
+    "component": "dormer",
+    "what": "one ornate stone dormer with scrolls and a pointed pediment in the slate mansard"
+   },
+   {
+    "component": "basement",
+    "what": "the souterrain is faced in rough stone with two barred arched windows"
+   },
+   {
+    "component": "roof",
+    "what": "mansard crown read (class precision 0.33, not staged): drawn as the cornice crown over the 3DBAG roof"
+   }
+  ],
+  "ms": {
+   "facts": 36.19783400000006,
+   "complete": 0.6739169999996193,
+   "compile": 47.260041999999885,
+   "meshopt": 5.268749999999727,
+   "preview": 5361.012125000001
+  },
+  "geometry": {
+   "year": 1877,
+   "lng": 4.895495535613062,
+   "lat": 52.35953866027344,
+   "eavesM": 13.849822035841052,
+   "widthM": 6.489097934225658,
+   "crownRiseM": 2.78,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "roof-cleanup",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 1680,
+  "bytes": 118768,
+  "meshoptBytes": 52528,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012171218",
+   "pandId": "0363100012171218",
+   "address": "0363100012171218",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012171218-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "bands": "speklagen",
+     "souterrain": true,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "stoop-and-windows",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans",
+     "speklagen": {
+      "spacing": 14,
+      "courses": 2
+     }
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#3e3a35",
+    "frame": "white-painted",
+    "door": "#2a2a2a",
+    "band": "#c9a86a"
+   }
+  }
+ },
+ {
+  "key": "171192",
+  "pandId": "0363100012171192",
+  "street": "Weteringschans",
+  "ok": true,
+  "hold": null,
+  "family": "1880-1919",
+  "cOnly": [
+   "bands",
+   "souterrain"
+  ],
+  "eligible": true,
+  "fills": [
+   {
+    "path": "fronts/0/storeys",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "fronts/0/bays",
+    "value": 3,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "fronts/0/bands",
+    "value": "both",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "fronts/0/souterrain",
+    "value": true,
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "fronts/0/gable",
+    "value": "cornice",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "palette/wallMaterial",
+    "value": "brick",
+    "source": "stated",
+    "ref": "vision-judge:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "palette/brick",
+    "value": "#50453f",
+    "source": "stated",
+    "ref": "streetlevel-measured:artifacts/describer-d1/cuts-ah07/0363100012171192.jpg"
+   },
+   {
+    "path": "fronts/0/cornice",
+    "value": "simple",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.533)"
+   },
+   {
+    "path": "fronts/0/windows",
+    "value": "t-window",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.647)"
+   },
+   {
+    "path": "fronts/0/hoist",
+    "value": false,
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.949)"
+   },
+   {
+    "path": "fronts/0/basement",
+    "value": "stoop-and-windows",
+    "source": "family",
+    "ref": "family 1880-1919 (n 14, share 1)"
+   },
+   {
+    "path": "fronts/0/doorBay",
+    "value": 0,
+    "source": "family",
+    "ref": "door left: family 1880-1919 (n 452, share 0.597)"
+   },
+   {
+    "path": "fronts/0/id",
+    "value": "front0",
+    "source": "derived",
+    "ref": "intent identity"
+   },
+   {
+    "path": "fronts/0/street",
+    "value": "Weteringschans",
+    "source": "derived",
+    "ref": "the street the front faces (row list)"
+   },
+   {
+    "path": "roof/material",
+    "value": "slate",
+    "source": "family",
+    "ref": "family 1880-1919 (n 746, share 0.609)"
+   },
+   {
+    "path": "palette/frame",
+    "value": "white-painted",
+    "source": "family",
+    "ref": "family 1880-1919 (n 747, share 0.351)"
+   },
+   {
+    "path": "palette/door",
+    "value": "#2a2a2a",
+    "source": "family",
+    "ref": "family 1880-1919 (n 435)"
+   }
+  ],
+  "drops": [],
+  "limits": [
+   {
+    "component": "window",
+    "what": "segmental pediment hoods with a shell in the tympanum over each first-storey window"
+   },
+   {
+    "component": "window",
+    "what": "the second-storey windows are pairs of narrow round-headed lights with white diamond keystones"
+   },
+   {
+    "component": "balcony",
+    "what": "a small iron balcony on stone consoles on the centre first-storey axis"
+   },
+   {
+    "component": "dormer",
+    "what": "a central white stone attic aedicule with a round-arched window, pilasters and a finial, flanked by small dormers"
+   },
+   {
+    "component": "relief",
+    "what": "a band of white diamond-patterned stone panels under the ground-storey windows"
+   }
+  ],
+  "ms": {
+   "facts": 32.053583000000344,
+   "complete": 0.3866659999998774,
+   "compile": 44.28937500000029,
+   "meshopt": 34.468667000000096,
+   "preview": 5365.370708000002
+  },
+  "geometry": {
+   "year": 1896,
+   "lng": 4.895956704541958,
+   "lat": 52.35953346408705,
+   "eavesM": 16.866251968828742,
+   "widthM": 6.2874414510162255,
+   "crownRiseM": 0.07,
+   "crownPeaked": false
+  },
+  "gates": [
+   {
+    "id": "triangle-budget",
+    "pass": true
+   },
+   {
+    "id": "finite",
+    "pass": true
+   },
+   {
+    "id": "non-metallic",
+    "pass": true
+   },
+   {
+    "id": "footprint-vs-bag",
+    "pass": true
+   },
+   {
+    "id": "ridge-vs-3dbag",
+    "pass": true
+   },
+   {
+    "id": "eaves-vs-3dbag/front0",
+    "pass": true
+   },
+   {
+    "id": "storey-height/front0",
+    "pass": true
+   },
+   {
+    "id": "no-floating-parts",
+    "pass": true
+   },
+   {
+    "id": "open-edges",
+    "pass": true
+   },
+   {
+    "id": "openings-within-walls",
+    "pass": true,
+    "advisory": true
+   }
+  ],
+  "triangles": 1243,
+  "bytes": 88120,
+  "meshoptBytes": 41216,
+  "intent": {
+   "schemaVersion": 1,
+   "kind": "canal-house",
+   "id": "rc-0363100012171192",
+   "pandId": "0363100012171192",
+   "address": "0363100012171192",
+   "sources": [
+    {
+     "id": "artifacts-describer-d1-cuts-ah07-0363100012171192-jpg",
+     "kind": "street-panorama",
+     "capturedAt": "2026-11-13"
+    }
+   ],
+   "fronts": [
+    {
+     "storeys": 3,
+     "bays": 3,
+     "bands": "both",
+     "souterrain": true,
+     "gable": "cornice",
+     "cornice": "simple",
+     "windows": "t-window",
+     "hoist": false,
+     "basement": "stoop-and-windows",
+     "doorBay": 0,
+     "id": "front0",
+     "street": "Weteringschans"
+    }
+   ],
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "wallMaterial": "brick",
+    "brick": "#50453f",
+    "frame": "white-painted",
+    "door": "#2a2a2a"
+   }
+  }
+ }
+]

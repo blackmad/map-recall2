@@ -1,0 +1,557 @@
+{
+ "v": 1,
+ "generated": "scripts/house-line/route-c/family-defaults.ts",
+ "from": "public/data/extracts/amsterdam/house-specs/14 (photo sources) x bag-facts years",
+ "houses": 1584,
+ "families": [
+  {
+   "id": "before-1800",
+   "from": null,
+   "to": 1800
+  },
+  {
+   "id": "1800-1879",
+   "from": 1800,
+   "to": 1880
+  },
+  {
+   "id": "1880-1919",
+   "from": 1880,
+   "to": 1920
+  },
+  {
+   "id": "1920-1944",
+   "from": 1920,
+   "to": 1945
+  },
+  {
+   "id": "after-1944",
+   "from": 1945,
+   "to": null
+  }
+ ],
+ "table": {
+  "all": {
+   "basement": {
+    "value": "none",
+    "n": 1574,
+    "share": 0.977
+   },
+   "brick": {
+    "value": "#5f4d42",
+    "n": 1558,
+    "share": null
+   },
+   "cornice": {
+    "value": "simple",
+    "n": 1574,
+    "share": 0.409
+   },
+   "coursesBand": {
+    "value": "#a0703f",
+    "n": 9,
+    "share": null
+   },
+   "door": {
+    "value": "#2a2a2a",
+    "n": 1111,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 1056,
+    "share": 0.542
+   },
+   "frame": {
+    "value": "white-painted",
+    "n": 1574,
+    "share": 0.285
+   },
+   "gable": {
+    "value": "cornice",
+    "n": 1577,
+    "share": 0.576
+   },
+   "hoist": {
+    "value": false,
+    "n": 1574,
+    "share": 0.941
+   },
+   "levelGable": {
+    "value": "cornice",
+    "n": 1333,
+    "share": 0.682
+   },
+   "raisedGable": {
+    "value": "neck",
+    "n": 244,
+    "share": 0.365
+   },
+   "roofMaterial": {
+    "value": "slate",
+    "n": 1571,
+    "share": 0.352
+   },
+   "shopColour": {
+    "value": "#423d38",
+    "n": 392,
+    "share": null
+   },
+   "shopFascia": {
+    "value": true,
+    "n": 627,
+    "share": 0.611
+   },
+   "souterrainBasement": {
+    "value": "stoop-and-windows",
+    "n": 25,
+    "share": 0.76
+   },
+   "speklagenBand": {
+    "value": "#c9a86a",
+    "n": 8,
+    "share": null
+   },
+   "speklagenCourses": {
+    "value": 2,
+    "n": 20,
+    "share": 0.75
+   },
+   "speklagenSpacing": {
+    "value": 14,
+    "n": 20,
+    "share": null
+   },
+   "windows": {
+    "value": "t-window",
+    "n": 1574,
+    "share": 0.374
+   }
+  },
+  "before-1800": {
+   "basement": {
+    "value": "none",
+    "n": 143,
+    "share": 0.902
+   },
+   "brick": {
+    "value": "#5a4a40",
+    "n": 143,
+    "share": null
+   },
+   "cornice": {
+    "value": "none",
+    "n": 143,
+    "share": 0.378
+   },
+   "door": {
+    "value": "#26302a",
+    "n": 134,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 120,
+    "share": 0.6
+   },
+   "frame": {
+    "value": "white",
+    "n": 143,
+    "share": 0.573
+   },
+   "gable": {
+    "value": "cornice",
+    "n": 145,
+    "share": 0.593
+   },
+   "hoist": {
+    "value": false,
+    "n": 143,
+    "share": 0.748
+   },
+   "levelGable": {
+    "value": "cornice",
+    "n": 88,
+    "share": 0.977
+   },
+   "raisedGable": {
+    "value": "neck",
+    "n": 57,
+    "share": 0.544
+   },
+   "roofMaterial": {
+    "value": "black-tile",
+    "n": 141,
+    "share": 0.56
+   },
+   "shopColour": {
+    "value": "#d9d3c4",
+    "n": 66,
+    "share": null
+   },
+   "shopFascia": {
+    "value": true,
+    "n": 73,
+    "share": 0.521
+   },
+   "souterrainBasement": {
+    "value": "stoop-and-windows",
+    "n": 9,
+    "share": 0.444
+   },
+   "speklagenBand": {
+    "value": "#ece8de",
+    "n": 2,
+    "share": null
+   },
+   "speklagenCourses": {
+    "value": 2,
+    "n": 4,
+    "share": 1
+   },
+   "speklagenSpacing": {
+    "value": 12,
+    "n": 4,
+    "share": null
+   },
+   "windows": {
+    "value": "sash",
+    "n": 143,
+    "share": 0.517
+   }
+  },
+  "1800-1879": {
+   "basement": {
+    "value": "none",
+    "n": 136,
+    "share": 0.971
+   },
+   "brick": {
+    "value": "#5c4b43",
+    "n": 136,
+    "share": null
+   },
+   "cornice": {
+    "value": "simple",
+    "n": 136,
+    "share": 0.824
+   },
+   "door": {
+    "value": "#2a2a2a",
+    "n": 118,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 106,
+    "share": 0.575
+   },
+   "frame": {
+    "value": "white-painted",
+    "n": 136,
+    "share": 0.735
+   },
+   "gable": {
+    "value": "cornice",
+    "n": 136,
+    "share": 0.794
+   },
+   "hoist": {
+    "value": false,
+    "n": 136,
+    "share": 0.926
+   },
+   "levelGable": {
+    "value": "cornice",
+    "n": 108,
+    "share": 1
+   },
+   "raisedGable": {
+    "value": "step",
+    "n": 28,
+    "share": 0.571
+   },
+   "roofMaterial": {
+    "value": "slate",
+    "n": 136,
+    "share": 0.662
+   },
+   "shopColour": {
+    "value": "#726258",
+    "n": 41,
+    "share": null
+   },
+   "shopFascia": {
+    "value": true,
+    "n": 42,
+    "share": 0.81
+   },
+   "souterrainBasement": {
+    "value": "stoop-and-windows",
+    "n": 2,
+    "share": 0.5
+   },
+   "speklagenBand": {
+    "value": "#c9a86a",
+    "n": 1,
+    "share": null
+   },
+   "speklagenCourses": {
+    "value": 1,
+    "n": 1,
+    "share": 1
+   },
+   "speklagenSpacing": {
+    "value": 8,
+    "n": 1,
+    "share": null
+   },
+   "windows": {
+    "value": "t-window",
+    "n": 136,
+    "share": 0.647
+   }
+  },
+  "1880-1919": {
+   "basement": {
+    "value": "none",
+    "n": 747,
+    "share": 0.976
+   },
+   "brick": {
+    "value": "#6a5345",
+    "n": 732,
+    "share": null
+   },
+   "cornice": {
+    "value": "simple",
+    "n": 747,
+    "share": 0.533
+   },
+   "coursesBand": {
+    "value": "#a0703f",
+    "n": 9,
+    "share": null
+   },
+   "door": {
+    "value": "#2a2a2a",
+    "n": 435,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 452,
+    "share": 0.597
+   },
+   "frame": {
+    "value": "white-painted",
+    "n": 747,
+    "share": 0.351
+   },
+   "gable": {
+    "value": "cornice",
+    "n": 748,
+    "share": 0.771
+   },
+   "hoist": {
+    "value": false,
+    "n": 747,
+    "share": 0.949
+   },
+   "levelGable": {
+    "value": "cornice",
+    "n": 598,
+    "share": 0.965
+   },
+   "raisedGable": {
+    "value": "point",
+    "n": 150,
+    "share": 0.367
+   },
+   "roofMaterial": {
+    "value": "slate",
+    "n": 746,
+    "share": 0.609
+   },
+   "shopColour": {
+    "value": "#433833",
+    "n": 215,
+    "share": null
+   },
+   "shopFascia": {
+    "value": true,
+    "n": 338,
+    "share": 0.74
+   },
+   "souterrainBasement": {
+    "value": "stoop-and-windows",
+    "n": 14,
+    "share": 1
+   },
+   "speklagenBand": {
+    "value": "#c9a86a",
+    "n": 5,
+    "share": null
+   },
+   "speklagenCourses": {
+    "value": 2,
+    "n": 15,
+    "share": 0.733
+   },
+   "speklagenSpacing": {
+    "value": 14,
+    "n": 15,
+    "share": null
+   },
+   "windows": {
+    "value": "t-window",
+    "n": 747,
+    "share": 0.647
+   }
+  },
+  "1920-1944": {
+   "basement": {
+    "value": "none",
+    "n": 495,
+    "share": 1
+   },
+   "brick": {
+    "value": "#5a4c3b",
+    "n": 496,
+    "share": null
+   },
+   "cornice": {
+    "value": "none",
+    "n": 495,
+    "share": 0.889
+   },
+   "door": {
+    "value": "#5a3a2a",
+    "n": 373,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 363,
+    "share": 0.441
+   },
+   "frame": {
+    "value": "#efeee8",
+    "n": 495,
+    "share": 0.208
+   },
+   "gable": {
+    "value": "flat",
+    "n": 495,
+    "share": 0.733
+   },
+   "hoist": {
+    "value": false,
+    "n": 495,
+    "share": 0.986
+   },
+   "levelGable": {
+    "value": "flat",
+    "n": 490,
+    "share": 0.741
+   },
+   "raisedGable": {
+    "value": "bell",
+    "n": 5,
+    "share": 0.8
+   },
+   "roofMaterial": {
+    "value": "bitumen",
+    "n": 495,
+    "share": 0.661
+   },
+   "shopColour": {
+    "value": "#473c37",
+    "n": 32,
+    "share": null
+   },
+   "shopFascia": {
+    "value": false,
+    "n": 134,
+    "share": 0.761
+   },
+   "windows": {
+    "value": "casement-toplight",
+    "n": 495,
+    "share": 0.705
+   }
+  },
+  "after-1944": {
+   "basement": {
+    "value": "none",
+    "n": 53,
+    "share": 1
+   },
+   "brick": {
+    "value": "#4e4336",
+    "n": 51,
+    "share": null
+   },
+   "cornice": {
+    "value": "simple",
+    "n": 53,
+    "share": 0.755
+   },
+   "door": {
+    "value": "#2f3433",
+    "n": 51,
+    "share": null
+   },
+   "doorSide": {
+    "value": "left",
+    "n": 15,
+    "share": 0.6
+   },
+   "frame": {
+    "value": "#a5aea1",
+    "n": 53,
+    "share": 0.66
+   },
+   "gable": {
+    "value": "flat",
+    "n": 53,
+    "share": 0.717
+   },
+   "hoist": {
+    "value": false,
+    "n": 53,
+    "share": 0.962
+   },
+   "levelGable": {
+    "value": "flat",
+    "n": 49,
+    "share": 0.776
+   },
+   "raisedGable": {
+    "value": "neck",
+    "n": 4,
+    "share": 0.5
+   },
+   "roofMaterial": {
+    "value": "bitumen",
+    "n": 53,
+    "share": 0.717
+   },
+   "shopColour": {
+    "value": "#2f3433",
+    "n": 38,
+    "share": null
+   },
+   "shopFascia": {
+    "value": true,
+    "n": 40,
+    "share": 0.725
+   },
+   "windows": {
+    "value": "two-light",
+    "n": 53,
+    "share": 0.566
+   }
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "row": "artifacts/route-bakeoff/list-row8.json",
+ "houses": 8,
+ "compiled": 8,
+ "noHoldShare": 1,
+ "eligible": 5,
+ "minutesPerHouse": {
+  "machine": 0,
+  "withPreview": 0.1
+ },
+ "triangles": {
+  "mean": 1149,
+  "max": 1680
+ },
+ "meshoptKB": {
+  "mean": 37.8,
+  "total": 302.6
+ },
+ "fillsBySource": {
+  "stated": 53,
+  "reading+geometry": 2,
+  "family": 68,
+  "derived": 16
+ },
+ "drops": [
+  {
+   "key": "168094",
+   "path": "fronts/0/bands",
+   "value": "courses",
+   "gate": "pattern-confidence",
+   "why": "a whole-wall courses pattern read at confidence 0.35 (< 0.5: the reader marked bands low)"
+  }
+ ],
+ "holds": [],
+ "shared": {
+  "uniqueMeshes": 8,
+  "groups": [],
+  "rejected": 0
+ }
+}
