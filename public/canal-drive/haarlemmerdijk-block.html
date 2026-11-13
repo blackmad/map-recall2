@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Haarlemmerdijk block</title>
+<!--
+  The Haarlemmerdijk block comparison page (lane 3, 2026-11-13). Images only, no engine.
+  Manifest: haarlemmerdijk-block.json next to this page (or ?manifest=<url>); image base: the manifest's `base`
+  (raw.githubusercontent.com/blackmad/map-recall2-screenshots/<branch>/), or ?base=<url> to read local files.
+  Regenerate: node --import tsx scripts/house-frames/block-page.ts all --column now --before <morning run> --push
+-->
+<style>
+  :root { --bg: #16181b; --panel: #1f2226; --line: #30343a; --text: #e8e6e1; --muted: #9a9890; --bad: #ff8a6b; --good: #8fd19e; --warn: #f2c96b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 2; background: rgba(22,24,27,.96); border-bottom: 1px solid var(--line); padding: 10px 16px; }
+  h1 { font-size: 17px; margin: 0 0 4px; font-weight: 600; }
+  .meta { color: var(--muted); font-size: 12px; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .cols b { color: var(--text); font-weight: 600; }
+  .tools { margin-top: 6px; font-size: 12px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+  .tools label { cursor: pointer; }
+  main { padding: 0 16px 48px; }
+  h2 { font-size: 15px; margin: 28px 0 8px; font-weight: 600; }
+  h2 small { color: var(--muted); font-weight: 400; }
+  .row { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; margin: 10px 0; padding: 8px; }
+  .row h3 { font-size: 13px; margin: 0 0 4px; font-weight: 600; display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+  .row h3 .note { color: var(--muted); font-weight: 400; font-size: 12px; }
+  .nums { display: flex; gap: 6px; flex-wrap: wrap; margin: 2px 0 6px; font-size: 12px; }
+  .num { border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; color: var(--muted); }
+  .num b { color: var(--text); font-weight: 600; }
+  .num.off { border-color: var(--bad); }
+  .num.off b { color: var(--bad); }
+  .num.ok b { color: var(--good); }
+  .problems { color: var(--warn); font-size: 12px; margin-bottom: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .grid.two { grid-template-columns: 1fr 1fr 1fr; }
+  figure { margin: 0; min-width: 0; }
+  figure a { display: block; aspect-ratio: 16 / 10; background: #0d0e10; border-radius: 3px; overflow: hidden; }
+  figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  figure .empty { display: flex; height: 100%; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; padding: 8px; text-align: center; }
+  figcaption { font-size: 11px; color: var(--muted); margin-top: 3px; overflow-wrap: anywhere; }
+  .flag { color: var(--bad); }
+  .hidden { display: none; }
+  @media (max-width: 760px) {
+    .cols { display: none; }
+    .grid, .grid.two { grid-template-columns: 1fr; }
+    figcaption::before { content: attr(data-col) ": "; color: var(--text); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Haarlemmerdijk block</h1>
+  <div class="meta" id="meta">loading manifest…</div>
+  <div class="cols"><div><b>photo</b> (panorama cut to the game window)</div><div id="col-morning"><b>this morning</b></div><div id="col-now"><b>now</b></div></div>
+  <div class="tools">
+    <label><input type="checkbox" id="only-off"> only rows with a number off or a problem</label>
+    <label><input type="checkbox" id="hide-played"> hide as-played frames</label>
+  </div>
+</header>
+<main id="main"></main>
+<script>
+(async () => {
+  const qs = new URLSearchParams(location.search);
+  const manifestUrl = qs.get('manifest') || 'haarlemmerdijk-block.json';
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let m;
+  try { m = await (await fetch(manifestUrl, { cache: 'no-store' })).json(); }
+  catch (e) { document.getElementById('meta').textContent = `could not read ${manifestUrl}: ${e}`; return; }
+  const base = qs.get('base') || m.base || '';
+  const url = src => /^https?:/.test(src) ? src : base + src;
+  document.getElementById('title').textContent = m.title;
+  const colLine = c => c ? `${esc(c.run)} · build ${esc(c.build)} · ${esc(c.shotAt?.slice(0, 16).replace('T', ' '))}` : 'not shot yet';
+  document.getElementById('col-morning').innerHTML = `<b>this morning</b> ${colLine(m.columns.morning)}`;
+  document.getElementById('col-now').innerHTML = `<b>now</b> ${colLine(m.columns.now)}`;
+  const nRows = m.groups.reduce((s, g) => s + g.rows.length, 0);
+  document.getElementById('meta').textContent = `${nRows} fronts in ${m.groups.length} faces · ${m.noPhoto.length} without a usable photo · manifest ${m.generatedAt?.slice(0, 16).replace('T', ' ')} · regenerate: ${m.regenerate}`;
+
+  const fig = (f, col, empty) => f
+    ? `<figure><a href="${esc(url(f.src))}" target="_blank" rel="noopener"><img loading="lazy" src="${esc(url(f.src))}" alt="${esc(col)}"></a><figcaption data-col="${esc(col)}">${esc(f.caption)}</figcaption></figure>`
+    : `<figure><a><span class="empty">${esc(empty)}</span></a><figcaption data-col="${esc(col)}"></figcaption></figure>`;
+  const num = (label, p, unit, off) => {
+    if (!p) return `<span class="num">${label}: no number yet</span>`;
+    const g = p.game ?? '?', ph = p.photo ?? '?';
+    const bad = p.game != null && p.photo != null && off(p.game, p.photo);
+    const ok = p.game != null && p.photo != null && !bad;
+    return `<span class="num ${bad ? 'off' : ok ? 'ok' : ''}" title="source: ${esc(p.source)}">${label}: <b>${esc(g)}${unit}</b> game vs <b>${esc(ph)}${unit}</b> photo</span>`;
+  };
+  const html = [];
+  for (const g of m.groups) {
+    html.push(`<h2>${esc(g.street)} <small>face ${esc(g.face)} · ${g.rows.length} fronts</small></h2>`);
+    const ap = g.asPlayed || {};
+    if (ap.morning || ap.now) html.push(`<div class="row played"><h3>as played <span class="note">default engine, chase camera, the rider before the row riding along it</span></h3><div class="grid two">${fig(null, 'photo', 'no photo for the chase view')}${fig(ap.morning, 'this morning', 'not shot')}${fig(ap.now, 'now', 'not shot yet')}</div></div>`);
+    for (const r of g.rows) {
+      const n = r.numbers || {};
+      const ft = num('front top', n.frontTopM, ' m', (a, b) => Math.abs(a - b) > 0.5);
+      const st = num('storeys', n.storeys, '', (a, b) => a !== b);
+      const cr = num('crown', n.crown, '', (a, b) => String(a).toLowerCase() !== String(b).toLowerCase());
+      const ground = r.ground ? `<span class="num ${r.ground.controlled ? '' : 'off'}">ground band changed <b>${r.ground.changedPct}%</b>${r.ground.controlled ? '' : ' (not controlled)'}</span>` : '';
+      const off = /class="num off/.test(ft + st + cr + ground) || (r.problems && r.problems.length);
+      html.push(`<div class="row house${off ? ' is-off' : ''}"><h3>${esc(r.pandId)} <span class="note">${esc(r.street)}${r.note ? ' · ' + esc(r.note) : ''}</span></h3>
+        <div class="nums">${ft}${st}${cr}${ground}</div>
+        ${r.problems ? `<div class="problems">${r.problems.map(esc).join(' · ')}</div>` : ''}
+        <div class="grid">${fig(r.photo, 'photo', 'no usable photo')}${fig(r.morning, 'this morning', 'not shot')}${fig(r.now, 'now', 'not shot yet')}</div></div>`);
+    }
+  }
+  document.getElementById('main').innerHTML = html.join('\n');
+  const apply = () => {
+    const only = document.getElementById('only-off').checked, hide = document.getElementById('hide-played').checked;
+    for (const el of document.querySelectorAll('.row.house')) el.classList.toggle('hidden', only && !el.classList.contains('is-off'));
+    for (const el of document.querySelectorAll('.row.played')) el.classList.toggle('hidden', hide);
+  };
+  document.getElementById('only-off').onchange = apply;
+  document.getElementById('hide-played').onchange = apply;
+})();
+</script>
+</body>
+</html>
