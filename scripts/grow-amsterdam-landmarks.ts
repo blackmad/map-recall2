@@ -349,6 +349,12 @@ for (const candidate of fresh) {
     prominenceScore, encyclopediaScore: encyclopediaScore || undefined,
     ...(lines.length ? { path: lines[0], ...(lines.length > 1 ? { paths: lines } : {}) } : {}),
   });
+  // One feature per id and per QID (a Wikidata item can come back with
+  // several coordinates; an English label can hash onto an existing name).
+  if (existingIds.has(out.id) || added.some(f => f.id === out.id || f.wikidata === out.wikidata)) {
+    rejected.push({ name: feature.name, reason: 'duplicate id or QID', score });
+    continue;
+  }
   added.push(out);
 }
 
@@ -368,8 +374,11 @@ for (const feature of added) {
 }
 
 // Fame for the backfilled modelled entries, keyed on their landmark id.
-const manualWikidata: Record<string, Record<string, unknown>> = {};
-for (const [id, entry] of Object.entries(backfill).sort(([a], [b]) => a.localeCompare(b))) {
+// Reviewed entries from earlier runs stay (mergeManualPoiFeatures already
+// applied them, so this run finds no QID gap for them).
+const manualFilePath = path.resolve('src/canalRecall/game/manual-poi-wikidata.json');
+const manualWikidata: Record<string, Record<string, unknown>> = JSON.parse(await readFile(manualFilePath, 'utf8').catch(() => '{}'));
+for (const [id, entry] of Object.entries(backfill)) {
   const entity = entities.get(entry.wikidata);
   const page = entity?.enwiki ? pages.get(`en:${entity.enwiki}`) : undefined;
   manualWikidata[id] = {
@@ -406,10 +415,21 @@ const report = [
 ];
 process.stdout.write(`${report.join('\n')}\n`);
 await writeFile(path.join(directory, 'landmarks.grow.staging.json'), json);
-const manualFile = path.resolve('src/canalRecall/game/manual-poi-wikidata.json');
-await writeFile(publish ? manualFile : manualFile.replace(/\.json$/, '.staging.json'), `${JSON.stringify(manualWikidata, null, 2)}\n`);
+const manualFile = manualFilePath;
+const sortedManual = Object.fromEntries(Object.entries(manualWikidata).sort(([a], [b]) => a.localeCompare(b)));
+await writeFile(publish ? manualFile : manualFile.replace(/\.json$/, '.staging.json'), `${JSON.stringify(sortedManual, null, 2)}\n`);
 await writeFile(path.resolve('artifacts/landmarks-grow-report.txt'), `${report.join('\n')}\n`).catch(() => {});
 if (publish) {
   await writeFile(path.join(directory, 'landmarks.json'), json);
+  // check-city-extract.ts holds the manifest's partition counts to the files.
+  const manifestPath = path.join(directory, 'manifest.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  if (manifest.partitions?.landmarks) {
+    Object.assign(manifest.partitions.landmarks, {
+      count: pool.length, bytes: Buffer.byteLength(json),
+      linkedCount: pool.filter(f => f.wikidata || f.wikipedia).length,
+    });
+    await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  }
   process.stdout.write('published landmarks.json\n');
 } else process.stdout.write('dry run: staging written to landmarks.grow.staging.json; pass --publish after review\n');
