@@ -95530,12 +95530,12 @@
       "spatialSuppression": false,
       "footprint": {
         "centre": [
-          4.87481791,
-          52.37436754
+          4.87473159,
+          52.37436591
         ],
-        "headingDegrees": 0,
-        "lengthMetres": 25.4,
-        "widthMetres": 20.8
+        "headingDegrees": 21.63,
+        "lengthMetres": 16.9,
+        "widthMetres": 19.1
       },
       "surveyed": {
         "anchor": [
@@ -95664,17 +95664,17 @@
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 0,
+        "facadeBearingDegrees": 21.629999999999995,
         "scale": 1
       },
       "extent": {
         "widthMetres": 23.674166679382324,
         "heightMetres": 14.699999630451202,
         "depthMetres": 22.028270721435547,
-        "depthCoverage": 1.0590514769920936
+        "depthCoverage": 1.1533126032165206
       },
-      "triangles": 5675,
-      "bytes": 98104,
+      "triangles": 5627,
+      "bytes": 97576,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

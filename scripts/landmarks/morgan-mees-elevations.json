@@ -1,0 +1,12 @@
+{
+ "id": "morgan-mees",
+ "countedBy": "blind counter (haiku), photos and counting rules only, 2026-11-13: street from the rectified panorama w01-202 (2024, second view 2025); east from the aimed view w03-111.thumb (2025), re-counted after a first count from the 3.9 m slice w04-110 that does not frame the face",
+ "facades": [
+  {"name": "south (street)", "bearing": 202, "photo": "artifacts/landmark-briefs/morgan-mees/w01-202.jpg",
+   "rows": [3, 3, 1], "columns": 3, "symmetric": true, "gables": 1,
+   "alongM": [0, 10.6]},
+  {"name": "east (Nassaukade)", "bearing": 111, "photo": "artifacts/landmark-briefs/morgan-mees/w03-111.thumb.jpg",
+   "rows": [null, 4, 1], "columns": 4, "symmetric": false, "gables": 1,
+   "alongM": [0, 12.3]}
+ ]
+}

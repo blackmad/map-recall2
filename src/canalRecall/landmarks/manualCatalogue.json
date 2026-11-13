@@ -75390,12 +75390,12 @@
   "spatialSuppression": false,
   "footprint": {
    "centre": [
-    4.87481791,
-    52.37436754
+    4.87473159,
+    52.37436591
    ],
-   "headingDegrees": 0,
-   "lengthMetres": 25.4,
-   "widthMetres": 20.8
+   "headingDegrees": 21.63,
+   "lengthMetres": 16.9,
+   "widthMetres": 19.1
   },
   "surveyed": {
    "anchor": [

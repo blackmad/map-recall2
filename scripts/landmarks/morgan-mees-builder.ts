@@ -6,9 +6,10 @@ import source from './morgan-mees-footprints.json' with {type: 'json'};
 
 /**
  * Morgan & Mees, Tweede Hugo de Grootstraat 2 at the Nassaukade (BAG pand 0363100012236197, bouwjaar 1883; Gemeentelijk
- * monument 223038, "Tweede Hugo de Grootstraat 2-18"). Built as the bewaarschool (infant school) and board rooms of the
- * Protestantsch Weduwen- en Weezenfonds, first stone laid 23 August 1880 (register text); a children's day nursery
- * ("Prinses Irene") until about 1985, now the Morgan & Mees hotel and restaurant. Architect unknown (register).
+ * monument 223038, "Tweede Hugo de Grootstraat 2-18"). Built for the Protestantsch Weduwen- en Weezenfonds as widows'
+ * housing combined at no. 2 with a bewaarschool (infant school), first stone laid 23 August 1880 (register text); a
+ * kindergarten and day nursery ("Prinses Irene") until about 1985 (register). The MORGAN & MEES name is read from the
+ * panoramas. Architect unknown (register).
  *
  * Read from rectified Gemeente Amsterdam panoramas (CC BY 4.0, morgan-mees-crops.ts at 60 px/m, panorama ids in
  * morgan-mees-inventory.json) and Wikimedia Commons photos (Alf van Beem 2017, public domain; Ceescamel 2019,
@@ -232,11 +233,11 @@ function streetFront(c: Ctx) {
   K.coping(SW, WALL_TOP, CORN, 0.55, 'ochre', 0.06, 10.48 + 0.55);
   streetDormer(c);
 }
-/** Brick dormer of three lights with a white pediment, standing just behind the cornice over the middle bay. */
+/** Brick dormer, one window of three lights on thin posts, with a white pediment, just behind the cornice over the middle bay. */
 function streetDormer(c: Ctx) {
   const {K, b} = c, off = -DORMER_OFF, back = 2.6, [s0, s1] = DORMER_S, top = DORMER_TOP;
   const S = K.sec(ST, s0, s1, EAVE, top, 'brick', off);
-  for (const [s, w] of [[MID - 0.95, 0.5], [MID, 0.95], [MID + 0.95, 0.5]] as const) K.opening(S, s, 11.72, w, 0.7, {frame: 'white', depth: 0.1, edge: 0.06});
+  K.opening(S, MID, 11.72, 2.3, 0.7, {cols: 3, frame: 'white', depth: 0.1, edge: 0.06, barW: 0.1});   // three lights on thin posts (crop w01-202)
   K.endCap(ST, s0, EAVE, top, 'brick', -1, -back, off);
   K.endCap(ST, s1, EAVE, top, 'brick', 1, -back, off);
   K.coping(S, top, 0.12, 0.1, 'ochre', s0 - 0.08, s1 + 0.08, back - 0.35);
