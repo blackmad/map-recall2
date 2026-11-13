@@ -16,7 +16,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {FrontFields, FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
 import {hexToOklab, oklabToHex} from '../../src/canalRecall/houseSpec/wallColour.ts';
-import {STRIP_SHIFT_M} from './strip-shift.ts';
+import {STRIP_SHIFT_M, STRIP_SPAN_SHIFT_M, shiftFor} from './strip-shift.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const argv = process.argv.slice(2);
@@ -44,7 +44,6 @@ for (const face of faces) {
   const Y = (x: number, y: number) => { const i = (y * W + x) * 3; return 0.2126 * lin(data[i]) + 0.7152 * lin(data[i + 1]) + 0.0722 * lin(data[i + 2]); };
   const all: number[] = []; for (let y = 0; y < H; y += 4) for (let x = 0; x < W; x += 4) all.push(Y(x, y));
   const scene = q(all, 0.5);
-  const shift = Math.round((STRIP_SHIFT_M[face] ?? 0) * ppm);
   const rowOf = (m: number) => Math.round(H - m * ppm);
   // Each record, and each sub-front of a multi-front pand as `<pandId>#<i>` over its own metres of the span.
   const targets: {key: string; rec: FrontFields; span: {px: [number, number]} | undefined; pandX0: number}[] = [];
@@ -56,6 +55,7 @@ for (const face of faces) {
   for (const {key, rec, span, pandX0} of targets) {
     const base: WallMeasure = {pandId: key, face, rawHex: null, hex: null, gain: null, white: null, scene: r3(scene), sample: null, pixels: 0, L: null, chroma: null, finishGuess: null, note: null};
     if (!span) { out.push({...base, note: 'no span on the strip'}); continue; }
+    const shift = Math.round(shiftFor(face, key.split('#')[0]) * ppm);
     const [a, b] = span.px, w = b - a;
     const x0 = Math.max(0, Math.round(a + shift + 0.2 * w)), x1 = Math.min(W, Math.round(b + shift - 0.2 * w));
     const bands: [number, number][] = [];
@@ -113,7 +113,7 @@ for (const face of faces) {
 fs.writeFileSync(path.join(ROOT, 'data/front-records/haarlemmerdijk-walls.json'), JSON.stringify({
   method: 'lane WC option (c) per-capture normalisation on the block-face strip: spandrel median (glass and dressings dropped) x clamp(0.23 / sqrt(white95 x sceneMedian), 0.8, 3) in linear light',
   strips: 'staging/block-face/<face>/strip.jpg (Gemeente Amsterdam panorama, CC BY 4.0), archived in map-recall2-source-data block-face-strips/haarlemmerbuurt-20261110/strips/<face>-strip.jpg',
-  stripShiftM: STRIP_SHIFT_M, walls: out}, null, 1) + '\n');
+  stripShiftM: STRIP_SHIFT_M, stripSpanShiftM: STRIP_SPAN_SHIFT_M, walls: out}, null, 1) + '\n');
 console.log(`${out.filter(w => w.hex).length}/${out.length} walls measured`);
 if (opt('sheet')) {
   const cols = 16, tw = 170, th = 360, rows = Math.ceil(sheetTiles.length / cols);

@@ -20,7 +20,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import type {FrontFields, FrontRecordTable} from '../../src/canalRecall/houseLine/frontRecord.ts';
-import {STRIP_SHIFT_M} from './strip-shift.ts';
+import {STRIP_SHIFT_M, shiftFor} from './strip-shift.ts';
 import {outlineOf} from '../../src/canalRecall/houseLine/frontOutline.ts';
 
 type Span = {pandId: string; px: [number, number]};
@@ -39,7 +39,6 @@ const from = arg('from'), to = arg('to');
 if (from) spans = spans.slice(spans.findIndex(s => bare(s.pandId).endsWith(from)));
 if (to) spans = spans.slice(0, spans.findIndex(s => bare(s.pandId).endsWith(to)) + 1);
 const left = Math.min(...spans.map(s => s.px[0])), right = Math.max(...spans.map(s => s.px[1])), W = right - left;
-const shift = Math.round((STRIP_SHIFT_M[face] ?? 0) * ppm);
 const recOf = (id: string) => table.records.find(r => r.face === face && r.pandId === id);
 const Y = (m: number) => H - m * ppm;
 
@@ -60,6 +59,7 @@ const tagOf = (a: string | null | undefined) => (a ?? '').replace('Haarlemmerdij
 for (const s of spans) {
   const id = bare(s.pandId), x0 = s.px[0] - left, x1 = s.px[1] - left, w = Math.max(1, x1 - x0);
   const rec = recOf(id);
+  const shift = Math.round(shiftFor(face, id) * ppm);
   // The fronts to draw: each sub-front of a split pand over its own metres, else the record itself.
   const parts = rec?.fronts?.length
     ? rec.fronts.map(f => ({f, a: x0 + f.from * ppm, b: Math.min(x1, x0 + f.to * ppm), tag: f.addresses.length ? tagOf(f.addresses[0]) : `${tagOf(rec.address)}*`}))

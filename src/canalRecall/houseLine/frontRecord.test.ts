@@ -116,6 +116,31 @@ test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 stor
   assert.ok(p.some(x => x.includes('trace')), p.join('; '));
 });
 
+test('the 2-58 registration drift: spans 0-3 are registered at 0 and traced in x from the 2022-06-22 capture; no misplaced mission', async () => {
+  const {STRIP_SPAN_SHIFT_M, shiftFor} = await import('../../../scripts/front-records/strip-shift.ts');
+  // Lane 3 (2026-11-13): mission TMX7316010203-001900 (2020-08-31) is misplaced (recorded 9.4 m from the even-side fronts,
+  // taken from about 5.7 m). No strip behind these records may use it.
+  for (const face of new Set(table.records.map(r => r.face))) {
+    const strip = JSON.parse(readFileSync(path.join(ROOT, 'scripts/block-face/faces', face, 'strip.json'), 'utf8'));
+    for (const sp of strip.spans) for (const p of sp.panoramas) assert.ok(!p.panoId.startsWith('TMX7316010203-001900'), `${face} ${sp.pandId} uses ${p.panoId}`);
+  }
+  // The 2022-12-15 strip (mission 002859) ghosts HD58/56, 54, 52 and 50 and stands them at 0, not the face's +0.6 m; the
+  // 2022-06-22 capture (mission 002620, its strip geometry kept as evidence) puts them on their BAG spans at 0.
+  const recapture = JSON.parse(readFileSync(path.join(ROOT, 'data/front-records/evidence/haarlemmerdijk-2-58-20220622.strip.json'), 'utf8'));
+  assert.equal(recapture.date, '2022-06-22');
+  assert.ok(recapture.spans.every((sp: {panoramas: {panoId: string}[]}) => sp.panoramas.every(p => /^TMX7316010203-00(2619|2620)_/.test(p.panoId))));
+  const drift = ['0363100012177585', '0363100012177584', '0363100012177590', '0363100012176280'];
+  for (const id of drift) assert.equal(shiftFor('haarlemmerdijk-2-58', id), 0, id);
+  assert.equal(shiftFor('haarlemmerdijk-2-58', '0363100012167819'), 0.6);
+  assert.equal(Object.keys(STRIP_SPAN_SHIFT_M['haarlemmerdijk-2-58']).length, drift.length);
+  const keys = ['0363100012177585#0', '0363100012177585#1', '0363100012177584', '0363100012177590', '0363100012176280'];
+  for (const t of tracedFronts(table, 'haarlemmerdijk-2-58').filter(t => keys.includes(t.key))) assert.match(t.front.trace!.source.ref ?? '', /2022-06-22/, t.key);
+  // HD58/HD56 split where the re-capture shows it; HD54/52/50 have three single windows per storey, not ghosted doubles.
+  const hd56 = rec('0363100012177585');
+  assert.equal(hd56.fronts![0].to, 4.7);
+  for (const id of ['0363100012177584', '0363100012177590', '0363100012176280']) assert.equal(rec(id).trace!.storeys[1].length, 3, id);
+});
+
 test('window IoU: identical boxes score 1, disjoint 0, half-shifted 1/3; the row aggregate is sum of intersections over sum of unions', () => {
   const box = {x0: 0, x1: 4, y0: 0, y1: 4}, a = [{x: 1, w: 1, y: 1, h: 2}];
   assert.equal(frontIoU(a, a, box).iou, 1);
