@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
-import {frontRecordProblems, frontTableProblems, type FrontRecord, type FrontRecordTable} from './frontRecord.ts';
+import {frontRecordProblems, frontTableProblems, heightAbovePandGround, heightAboveStreet, type FrontRecord, type FrontRecordTable} from './frontRecord.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
 const table: FrontRecordTable = JSON.parse(readFileSync(path.join(ROOT, 'data/front-records/haarlemmerdijk-block.json'), 'utf8'));
@@ -53,4 +53,22 @@ test('the validator rejects what the renderer cannot use', () => {
   assert.ok(bad(r => { r.crown.family = 'gothic' as never; }).some(p => p.includes('crown.family')));
   assert.ok(bad(r => { r.frontTopKind = null; }).some(p => p.includes('both be set')));
   assert.ok(bad(r => { r.sources = r.sources.filter(s => s.field !== 'frontTopM'); }).some(p => p.includes('no source')));
+});
+
+test('datum: heights are above the street; the helper moves them to the pand ground and back', () => {
+  for (const r of table.records) assert.equal(r.datum, 'street');
+  const h131 = rec('0363100012173479'); // pand ground 1.57 m NAP on a 1.04 m street
+  assert.equal(heightAbovePandGround(h131, h131.frontTopM!), 9.37);
+  assert.equal(heightAboveStreet(h131, heightAbovePandGround(h131, 9.9)), 9.9);
+});
+
+test('walls: measured on the strip, reviewed where a read agrees (reviewer pins 2026-11-13)', () => {
+  const h10 = rec('0363100012176102'), h8 = rec('0363100012176101'), h16 = rec('0363100012167816');
+  assert.equal(h10.wall.finish, 'plaster'); assert.equal(h10.wall.source, 'reviewed');
+  assert.ok(h10.wall.hex && parseInt(h10.wall.hex.slice(1, 3), 16) > 0x90, 'Haarlemmerdijk 10 reads pale (cream stucco)');
+  assert.equal(h8.wall.finish, 'plaster');
+  assert.equal(h16.wall.finish, 'brick');
+  const [r, g, b] = [1, 3, 5].map(i => parseInt(h16.wall.hex!.slice(i, i + 2), 16));
+  assert.ok(r > g && r > b && r < 0x70, 'Haarlemmerdijk 16 is dark red brick');
+  assert.ok(table.records.filter(x => x.wall.hex).length >= 100);
 });

@@ -57,11 +57,33 @@ export interface Crown {
 export interface Row { sillM: number; headM: number }
 
 export interface Colour {
-  /** Hex colour measured on the strip (raw median), or null when only a word is known. */
+  /** Hex colour, or null when only a word is known. */
   hex: string | null;
   /** The word a read used (dark grey-brown brick, cream, white). */
   word: string | null;
   ref: string | null;
+}
+
+export const WALL_FINISHES = ['brick', 'painted-brick', 'plaster', 'stone'] as const;
+export type WallFinish = typeof WALL_FINISHES[number];
+/**
+ * Where a wall colour comes from. `reviewed` is the HouseSpec source label the pale-warm guard skips
+ * (`reviewedWallSource`, lane WC, lane/wall-exposure-20261113): a strip measurement a Claude read checked against the
+ * photo (the read's word and the measured lightness agree). `strip-measured`: the measurement alone.
+ */
+export type WallSource = 'reviewed' | 'strip-measured';
+
+/** The wall: colour measured on the strip with the capture's exposure taken out (lane WC option (c)), and its finish. */
+export interface WallColour extends Colour {
+  /** Spandrel median before the exposure gain. */
+  rawHex: string | null;
+  /** The exposure gain applied in linear light (target 0.23 / sqrt(white95 x scene median), clamped 0.8..3). */
+  gain: number | null;
+  finish: WallFinish | null;
+  /** Where the finish comes from: a read's word, or the lightness rule (OKLab L >= 0.66 and chroma < 0.06 = plaster). */
+  finishFrom: 'read' | 'lightness' | null;
+  source: WallSource | null;
+  confidence: Confidence;
 }
 
 export interface ThreeDBag {
@@ -100,6 +122,9 @@ export interface FrontRecord {
   /** BAG frontage width on the street, metres. */
   bagWidthM: number | null;
   /** Street ground of the block face, NAP metres (strip.json groundNAP): the datum of every `*M` height. */
+  /** Always 'street': every `*M` height in this record is above `streetGroundNAP`. Use `heightAbovePandGround` for the
+   * pand's own ground (HouseSpec eavesHeight, facts.measuredEavesM). */
+  datum: 'street';
   streetGroundNAP: number;
   /** The pand's own 3DBAG ground (b3_h_maaiveld), NAP metres. */
   groundNAP: number | null;
@@ -116,7 +141,7 @@ export interface FrontRecord {
   rows: Row[];
   /** Window axes on the first upper storey (per-storey differences go in `notes`). */
   bays: number | null;
-  wall: Colour;
+  wall: WallColour;
   trim: Colour;
   sources: Source[];
   confidence: Confidence;
@@ -137,6 +162,15 @@ export interface FrontRecordTable {
   /** How the strip heights were checked against 3DBAG flat roofs, and other table-wide notes. */
   notes: string[];
   records: FrontRecord[];
+}
+
+/** A record height (street datum) on the pand's own 3DBAG ground: what HouseSpec `eavesHeight` and the recipe facts use. */
+export function heightAbovePandGround(r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'>, streetM: number): number {
+  return Math.round((streetM + r.streetGroundNAP - (r.groundNAP ?? r.streetGroundNAP)) * 100) / 100;
+}
+/** The inverse: a height above the pand's own ground moved to the street datum. */
+export function heightAboveStreet(r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'>, pandM: number): number {
+  return Math.round((pandM - r.streetGroundNAP + (r.groundNAP ?? r.streetGroundNAP)) * 100) / 100;
 }
 
 const HEX = /^#[0-9a-f]{6}$/i;
@@ -170,6 +204,9 @@ export function frontRecordProblems(r: FrontRecord): string[] {
   if (r.storeys !== null && r.rows.length && r.rows.length !== r.storeys - 1) p.push(`${at}: ${r.rows.length} rows for ${r.storeys} storeys (rows count upper storeys)`);
   if (r.bays !== null && (!Number.isInteger(r.bays) || r.bays < 1 || r.bays > 8)) p.push(`${at}: bays ${r.bays}`);
   for (const k of ['wall', 'trim'] as const) if (r[k].hex !== null && !HEX.test(r[k].hex!)) p.push(`${at}: ${k}.hex ${r[k].hex}`);
+  if (r.datum !== 'street') p.push(`${at}: datum must be 'street'`);
+  if (r.wall.finish !== null && !WALL_FINISHES.includes(r.wall.finish)) p.push(`${at}: wall.finish ${r.wall.finish}`);
+  if (r.wall.source === 'reviewed' && (r.wall.hex === null || r.wall.confidence === 'low')) p.push(`${at}: a reviewed wall needs a hex and medium or high confidence`);
   if (!['high', 'medium', 'low'].includes(r.confidence)) p.push(`${at}: confidence ${r.confidence}`);
   const wantsFallback = r.confidence === 'low' || r.frontTopM === null;
   if (wantsFallback && r.fallback !== 'row-line') p.push(`${at}: low confidence or no front top needs fallback: 'row-line'`);
