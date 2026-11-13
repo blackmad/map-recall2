@@ -52,11 +52,14 @@ function fieldAccessors(): string {
 const PITCH_GLSL = `float frPitch(float style) { ${FACADE_STYLES.map((s, i) => `if (style < ${f1(i + 0.5)}) return ${f1(FACADE_WINDOW_PITCH_M[s])};`).join(' ')} return 2.0; }`;
 
 /**
- * The wall's mean against its colour. Integrator ruling (#380, 2026-11-12, the user's correctness-first rule): the record
- * wall is the measured colour itself (1.0 x wallHex), not the atlas brick cell's mean (BRICK_CELL_MEAN, 0.88), even where
- * the city then reads lighter than the atlas path; the atlas parity is a reported number (facadeTwin.test.ts), not a gate.
+ * The wall's mean against its colour, before the lit path's wall gain. Integrator ruling (#380, 2026-11-12, the user's
+ * correctness-first rule): the record wall lands at the measured colour itself (1.0 x wallHex). The lit tail
+ * (cityLook.ts, softRaster.ts) multiplies every wall-masked colour by `litWallGain` = 1 / BRICK_CELL_MEAN, which is there
+ * to lift the atlas brick cell's mean back to its tint; the record wall shares that tail, so it stores BRICK_CELL_MEAN x
+ * wallHex and lands at 1.0 x wallHex like the atlas. Before P5 (2026-11-13) this was 1, which drew every record wall
+ * 1 / 0.88 = 1.13x its measured colour: mid-distance frames read 0.03-0.09 OKLab L lighter than the default and the photo.
  */
-export const FACADE_WALL_MEAN = 1;
+export const FACADE_WALL_MEAN = BRICK_CELL_MEAN;
 /** The atlas wall's mean against its colour, for the parity report. */
 export const ATLAS_WALL_MEAN = BRICK_CELL_MEAN;
 /** Brick coursing (S6): a Dutch waalformaat course (50 mm brick + 12.5 mm joint) and a 220 mm stretcher. */
