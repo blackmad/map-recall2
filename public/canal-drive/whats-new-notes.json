@@ -46,8 +46,8 @@
     },
     {
       "date": "2026-11-13",
-      "title": "175 more canal-belt houses built from their photos",
-      "text": "Houses in Burgwallen-Oude Zijde, the Nieuwmarkt, the western canal belt and along Haarlemmerdijk now have their own models, built from measured specs: storeys, window columns, gables, white bands and colours read from street photos. The picture shows six on Haarlemmerdijk and Haarlemmerstraat, photo on the left and game on the right. Some are close; others still miss shopfront detail or draw the wall a shade too light. 40 more houses were held back because their models failed checks, and go back for another pass.",
+      "title": "175 canal-belt house models: faults found, 24 held",
+      "text": "Correction to this morning's note. The 175 canal-belt houses modelled from their photos (Burgwallen-Oude Zijde, the Nieuwmarkt, the western canal belt, Haarlemmerdijk) were accepted on counts, not checked in the street, and the picture below shows faults that check should have caught: houses that look shifted into their neighbours, gaps, one gable drawn badly, one house too small, and one missing the raised dormer it has in the photo. A check of every model against its building outline found 24 that fail: walls standing forward of the street line, pushing into a neighbouring house, or with the wrong gable. Those 24 are held, and the ordinary generator draws them again from their measured specs. The overlaps on Haarlemmerdijk turn out to involve a neighbouring house drawn off its plot in the view this picture was taken from; whether players see the same is being checked now, and the five houses in the picture are held or released on that result.",
       "where": [
         4.8905,
         52.3815
@@ -56,7 +56,7 @@
         {
           "src": "ui/2026-11-13-belt-batch/contact-haarlemmer.jpg",
           "alt": "Six Haarlemmerdijk houses, panorama photo beside the game frame",
-          "caption": "Photo | game, Haarlemmerdijk"
+          "caption": "Photo | game, Haarlemmerdijk. The faults described above are visible here."
         }
       ]
     },

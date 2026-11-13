@@ -15,6 +15,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Belt batch rejection (P0, user 2026-11-13) — rules in `docs/START-HERE-buildings.md` §3a / `docs/house-line.md` §0
+
+- **Placement in the frame.** On Haarlemmerdijk the generic neighbour 167795 is drawn ~1.2 m along the street from its plot in `?engine=own&world=live` frames (the belt sheet); Node mesher, building-tiles and baked shells all put it on the plot. Lane BA (lane/belt-audit-20261113) is framing the six sheet spots on the players' world (default cells), the pre-round-125 commit, and live-scene vertices; then a ~30-house sizing on whichever path is at fault. Rule 8: no acceptance frames on `world=live`.
+- **The five sheet houses** (165073, 169539, 167794, 167816, 167818) are live, pending the players'-world frames; hold or release on that result. 171144 re-frame.
+- **Install-audit fails, held in round 128 (24), fix by cause in the generator (step C):** straight mesh front across a kinked BAG front (16 protrusion), outside polygon >0.5 m² (6, incl. 181808 box over a rounded corner), neighbour intrusion >0.2 m (6), crown changed or dropped (5). `house:publish` must run install-audit and refuse/hold failures (not wired).
+- **Photo cross-check (lane BX, b16b16116):** 41 houses queued (13 crown, 1 rows, 31 bays); square in-game frames for the 13 crown + 1 rows first. 165073: the missing piece is the raised dormer with hoist beam, not a crown class.
+- **Per-house GLB policy for ordinary houses:** no new installs, pending David's confirmation (2026-11-10 decision still stands until he reverses it).
+- **Route A at volume** paused until the placement shift is explained; D1 may read.
+
 ## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
 
 - **Wall colour:** W1 merged (round 122; mean dE 0.151 → 0.097, critic wall gaps 87 → 36). Open:
