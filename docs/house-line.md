@@ -2490,6 +2490,13 @@ Acceptance for generic-path pands moves from per pand to per feature (docs/plans
 fixed benchmark is framed in the game every round, a fresh critic names the single biggest gap per pair from a closed
 vocabulary, and the ranked gap histogram is the kit-gap queue (§5). Landmarks keep gallery-size review.
 
+**Fooled-rate retired as the headline (house plan review 2026-11-13, P3).** Round 0 read 0 of 193: the critic tells
+today's render from the photo at a glance, so the rate sits on the floor and cannot show which change helped, and a
+render that fools a critic is not the same as one that is right. The flat-two-rounds stop rule went with it. The
+headline is now per-field agreement between a describer read of the photo and one of the game frame (P3a: storeys,
+bays, window group, bands, finish, …), with blind A/B preference between two renders as the secondary read (P3b).
+The critic stays for one job: its ranked gap histogram is the kit-gap queue (§5).
+
 | Piece | Where |
 |---|---|
 | Groups (contiguous blocks) | `scripts/house-line/benchmark/groups-v1.json` |
@@ -2532,8 +2539,7 @@ Masks (identical on both halves): everything under 1.5 m above the wall foot is 
 stoops and stallrisers go with it); leaf pixels of either half, dilated 3 px, are grey on both; each half's own sky is
 painted one flat colour (a union would draw the photo's skyline into the game half, and the skyline is evidence). The
 wall outline is drawn on both. The fooled-rate is the share of answered pairs where the critic named the photo as the game
-(0.5 = cannot tell them apart). Stop rule: flat (|change| < 0.03) for two rounds, restart with a fresh critic (new seed,
-new chunking) before reading more into the curve. Archive every round's photo/game pairs to the source-data repo
+(0.5 = cannot tell them apart). Archive every round's photo/game pairs to the source-data repo
 (`experiments/facade-benchmark/round-N/`): J3 could not re-run likeness because its render sources had been pruned.
 
 ### Round 0 (2026-11-12, baseline before F1)

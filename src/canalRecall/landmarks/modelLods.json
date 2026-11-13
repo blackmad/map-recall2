@@ -5705,5 +5705,17 @@
    "bytes": 18212,
    "triangles": 689
   }
+ },
+ "nieuw-engeland": {
+  "sourceHash": "99f4007b7bd0d0f5",
+  "buildVersion": 2,
+  "bytes": 69980,
+  "triangles": 3538,
+  "lod2": {
+   "sourceHash": "99f4007b7bd0d0f5",
+   "buildVersion": 6,
+   "bytes": 19536,
+   "triangles": 895
+  }
  }
 }

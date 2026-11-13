@@ -95161,6 +95161,363 @@
         "bytes": 18212,
         "triangles": 689
       }
+    },
+    "nieuw-engeland": {
+      "id": "nieuw-engeland",
+      "name": "Nieuw Engeland, Koningsplein / Singel",
+      "modelUrl": "./models/nieuw-engeland.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165080"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88911433,
+          52.36727719
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 49.9,
+        "widthMetres": 37.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.88911433,
+          52.36727719
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012165080 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 1.412 m NAP (scripts/landmarks/nieuw-engeland-footprints.json, written by nieuw-engeland-prepare.ts). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0), the 1899 roofs cut back to the main cornice along both fronts under a swept mansard; fronts, round corner and tower measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0, nieuw-engeland-crops.ts, 40 px/m): TMX7316010203-001543_pano_0000_003133 (2020-01-08, Koningsplein), TMX7316010203-002947_pano_0001_000151 (2023-01-30, Singel), b_20250109_1300_Track05_Sphere_00332 (2025-01-09, tower); per wall in scripts/landmarks/nieuw-engeland-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 29.4,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.15
+      },
+      "bagYear": 1899,
+      "materialOverrides": {
+        "stone": "#cbc2a6",
+        "ochre": "#e7e1d2",
+        "green": "#8a9c84",
+        "glass": "#3f4c54",
+        "slate": "#4a4f57",
+        "concrete": "#7b807d",
+        "brick": "#34302c",
+        "frame": "#ece8de",
+        "dark": "#2c2d2c",
+        "bronze": "#33362f"
+      },
+      "attribution": {
+        "title": "Nieuw Engeland, Koningsplein 2-6 / Singel 466-468, Amsterdam (A. Jacot and W. Oldewelt, 1899; extended 1914 by A. Jacot and A. Zinsmeister; Rijksmonument 518360), with Singel 466 (Rijksmonument 5409)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuw_Engeland_(Amsterdam)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the sandstone corner store with its round corner, arched entrance and domed tower with open lantern, green iron shop windows and fretwork, round-arched second floor, slate mansard with dormers, the 1914 extensions with oriels and raised pavilions, and the neck-gabled Singel 466; measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.88857078,
+              52.36718275
+            ],
+            [
+              4.88865268,
+              52.36714787
+            ],
+            [
+              4.88876427,
+              52.36723402
+            ],
+            [
+              4.88875377,
+              52.36724083
+            ],
+            [
+              4.88883638,
+              52.36726641
+            ],
+            [
+              4.88888745,
+              52.36720458
+            ],
+            [
+              4.88887434,
+              52.36720051
+            ],
+            [
+              4.88895253,
+              52.36710586
+            ],
+            [
+              4.8891583,
+              52.3671719
+            ],
+            [
+              4.88915693,
+              52.36717349
+            ],
+            [
+              4.88919288,
+              52.36718502
+            ],
+            [
+              4.88919425,
+              52.36718344
+            ],
+            [
+              4.88920089,
+              52.36718557
+            ],
+            [
+              4.8891995,
+              52.36718716
+            ],
+            [
+              4.88923546,
+              52.36719868
+            ],
+            [
+              4.88923683,
+              52.3671971
+            ],
+            [
+              4.88924346,
+              52.36719923
+            ],
+            [
+              4.88924209,
+              52.36720082
+            ],
+            [
+              4.88927808,
+              52.36721236
+            ],
+            [
+              4.88927944,
+              52.36721078
+            ],
+            [
+              4.88928694,
+              52.36721318
+            ],
+            [
+              4.88928795,
+              52.36721462
+            ],
+            [
+              4.88928728,
+              52.36721523
+            ],
+            [
+              4.88929515,
+              52.36721942
+            ],
+            [
+              4.88930035,
+              52.36722497
+            ],
+            [
+              4.8893023,
+              52.36723124
+            ],
+            [
+              4.88930079,
+              52.36723757
+            ],
+            [
+              4.889296,
+              52.36724324
+            ],
+            [
+              4.88929688,
+              52.36724369
+            ],
+            [
+              4.88929686,
+              52.36724521
+            ],
+            [
+              4.88929138,
+              52.36724915
+            ],
+            [
+              4.88928919,
+              52.36724797
+            ],
+            [
+              4.88926299,
+              52.36726683
+            ],
+            [
+              4.88926518,
+              52.367268
+            ],
+            [
+              4.88926044,
+              52.36727149
+            ],
+            [
+              4.88925811,
+              52.36727031
+            ],
+            [
+              4.88919638,
+              52.36731481
+            ],
+            [
+              4.88919857,
+              52.36731599
+            ],
+            [
+              4.88919383,
+              52.36731956
+            ],
+            [
+              4.8891915,
+              52.36731838
+            ],
+            [
+              4.88916573,
+              52.3673376
+            ],
+            [
+              4.88916792,
+              52.36733878
+            ],
+            [
+              4.88916319,
+              52.36734226
+            ],
+            [
+              4.889161,
+              52.36734117
+            ],
+            [
+              4.88911895,
+              52.36737236
+            ],
+            [
+              4.88912114,
+              52.36737354
+            ],
+            [
+              4.88911579,
+              52.36737712
+            ],
+            [
+              4.88911507,
+              52.36737801
+            ],
+            [
+              4.88911003,
+              52.36738176
+            ],
+            [
+              4.88910784,
+              52.36738068
+            ],
+            [
+              4.88907097,
+              52.36740802
+            ],
+            [
+              4.88907273,
+              52.36740884
+            ],
+            [
+              4.88906769,
+              52.36741259
+            ],
+            [
+              4.88906888,
+              52.36741314
+            ],
+            [
+              4.88906565,
+              52.36741559
+            ],
+            [
+              4.88906366,
+              52.36741478
+            ],
+            [
+              4.88903082,
+              52.36744156
+            ],
+            [
+              4.88903285,
+              52.36744248
+            ],
+            [
+              4.88902964,
+              52.36744492
+            ],
+            [
+              4.88870026,
+              52.36727555
+            ],
+            [
+              4.8886373,
+              52.36723193
+            ],
+            [
+              4.88863316,
+              52.36723381
+            ],
+            [
+              4.88857078,
+              52.36718275
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.09199905395508,
+          -0.30000001192092896,
+          -19.028329849243164
+        ],
+        "max": [
+          13.781389236450195,
+          29.350000381469727,
+          19.449195861816406
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88911433,
+          52.36727719
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 50.87338829040527,
+        "heightMetres": 29.650000393390656,
+        "depthMetres": 38.47752571105957,
+        "depthCoverage": 1.0206240241660363
+      },
+      "triangles": 13651,
+      "bytes": 202780,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "99f4007b7bd0d0f5",
+        "buildVersion": 2,
+        "bytes": 69980,
+        "triangles": 3538
+      },
+      "lod2": {
+        "sourceHash": "99f4007b7bd0d0f5",
+        "buildVersion": 6,
+        "bytes": 19536,
+        "triangles": 895
+      }
     }
   }
 }

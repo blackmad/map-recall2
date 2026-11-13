@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**Window columns from measured neighbours, Nieuw Engeland, publish classifier (2026-11-13, round 126).**
+- **PR1 structure prior (columns on).** A generic pand with no read column count takes it from an exact kNN over measured pands (same build-year family, run width, exposed height). On the adjudicated labels, right columns 39.0 % → 62.5 % (held-out). Cost: building vertices +0.52 % at the aerial pose. Storeys stay held: the prior's storey errors run in the direction that stretches storeys, and WG's storey fit has to land first.
+- **Nieuw Engeland** (pand 0363100012165080), bespoke landmark: the round corner is five flat facets because the audit needs host-size walls for openings; cream ornament is `ochre` because the audit treats `white` and `dark` as opening materials.
+- **P6 publish classifier.** `house:publish` sorts unstaged changed records into face-drawn, same-as-main and unexplained; only unexplained refuses.
+- **Fooled-rate retired** as the facade headline (house-line.md §10): it sat at 0 of 193 and could not rank changes.
+
 **Belt batch published, house plan revised, Scan Hunt (2026-11-13, round 125).**
 - **Belt batch `belt-20261113`.** 178 specs from the canal-belt lanes (Burgwallen-Oude Zijde 73, Nieuwmarkt 43, Grachtengordel-West 40, Haarlemmer 19, Frederik Hendrik 3): 175 recipe GLBs installed, 0 blank street walls, 9 world cells changed. Held: 31 recipe houses failing gates, 7 blank-wall pands, 171703, 152966. The publish check failed only on stale content-stats; the integrator regenerated it and wrote the batch record by hand, and the full check:canal ran at commit.
 - **Why the house plan changed.** A Fable review measured ~30 lane-hours of facade work: only wall colour (W1) was visible to a rider; F1 had polished brick while bays, storeys and heads were wrong; fooled-rate stayed 0 and could never rise. Plan P1–P8 plus A–F (TODO) moves effort to describing houses (D1) and structure priors (PR1). Landmark factory lane C was stopped under P7.
