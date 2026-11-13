@@ -11,13 +11,16 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import {frontTableProblems, type WallColour, type WallFinish, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source, type SubFront} from '../../src/canalRecall/houseLine/frontRecord.ts';
+import {outlineOf} from '../../src/canalRecall/houseLine/frontOutline.ts';
+import {hexToOklab} from '../../src/canalRecall/houseSpec/wallColour.ts';
+import {frontTableProblems, type WallColour, type WallFinish, type Colour, type Conflict, type Confidence, type CrownFamily, type FrontRecord, type FrontRecordTable, type FrontTopKind, type Row, type Source, type SubFront, type FrontFields, type FrontTrace, type Opening, type Band} from '../../src/canalRecall/houseLine/frontRecord.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const FACES = path.join(ROOT, 'scripts/block-face/faces');
 const READS = 'data/front-records/haarlemmerdijk-block.reads.json';
 const OUT = 'data/front-records/haarlemmerdijk-block.json';
 const WALLS = 'data/front-records/haarlemmerdijk-walls.json'; // scripts/front-records/measure-walls.ts
+const TRACES = 'data/front-records/haarlemmerdijk-traces.json'; // hand traces of the openings, bands and shop band
 const FACE_IDS = ['haarlemmerdijk-2-58', 'haarlemmerdijk-13-45', 'haarlemmerdijk-66-120', 'haarlemmerdijk-67-91', 'haarlemmerdijk-93-113',
   'haarlemmerdijk-117-143', 'haarlemmerdijk-126-188', 'haarlemmerdijk-149-175', 'haarlemmer-46-96'];
 const TOL = 0.5; // metres: two height reads within this agree
@@ -39,6 +42,7 @@ const GABLE_FAMILY: Record<string, CrownFamily> = {cornice: 'straight-cornice', 
 function build(): FrontRecordTable {
   const walls = new Map<string, WallMeasure>(exists(WALLS) ? (json(WALLS).walls as WallMeasure[]).map(w => [w.pandId, w]) : []);
   const readsFile = json(READS) as {refs: Record<string, string>; pands: PandReads[]};
+  const traces: Record<string, TraceIn> = exists(TRACES) ? json(TRACES).fronts : {};
   const reads = new Map(readsFile.pands.map(p => [p.pandId, p]));
   const refOf = (r: Read) => r.by === 'lane2-strip-read' ? `lane2 strip read 2026-11-13: ${r.ref}` : `${expandRef(r.ref, readsFile.refs)}`;
   const records: FrontRecord[] = [];
@@ -153,6 +157,9 @@ function build(): FrontRecordTable {
         rec.fronts = pr.fronts.map((fr, i) => subFront(fr, walls.get(`${pandId}#${i}`), refOf(fr)));
         notes.push(`${rec.fronts.length} street fronts on this pand: draw rec.fronts, not the pand as one front`);
       }
+      const tr = (key: string, f: FrontFields, x0: number, x1: number) => { const t = traceOf(traces[key], key, f, x0, x1, walls.get(key)?.fasciaHex ?? null); if (t) f.trace = t; };
+      tr(pandId, rec, 0, rec.bagWidthM ?? 0);
+      rec.fronts?.forEach((f, i) => tr(`${pandId}#${i}`, f, f.from, f.to));
       records.push(rec);
     }
   }
@@ -171,6 +178,23 @@ function build(): FrontRecordTable {
     ],
     records,
   };
+}
+
+type OpeningIn = Partial<Opening> & {xs?: [number, number][]};
+interface TraceIn {ref: string; confidence: Confidence; shopBandTopM?: number | null; fasciaWord?: string | null; corniceM?: number | null;
+  bands?: [Band['kind'], number, number, string | null][]; surroundColour?: string | null; outline?: [number, number][]; notes?: string[]; storeys: OpeningIn[][]}
+/** Expand one traced front: group shorthands into openings, defaults filled, the outline from the record when not traced. */
+function traceOf(t: TraceIn | undefined, key: string, f: FrontFields, x0: number, x1: number, fasciaHex: string | null): FrontTrace | null {
+  if (!t) return null;
+  const one = (o: Partial<Opening>, x: number, w: number): Opening => ({x: r2(x), w: r2(w), y: r2(o.y!), h: r2(o.h!), kind: o.kind ?? 'other', head: o.head ?? 'flat',
+    panes: o.panes ?? null, frame: o.frame ?? 'white', surround: o.surround ?? null, shutters: o.shutters ?? null});
+  const storeys = t.storeys.map(row => row.flatMap(o => o.xs ? o.xs.map(([x, w]) => one(o, x, w)) : [one(o, o.x!, o.w!)]).sort((a, b) => a.x - b.x));
+  const outline = t.outline ?? outlineOf(f, x0, x1);
+  if (!outline) throw Error(`${key}: traced, but no front top for an outline`);
+  return {storeys, shopBandTopM: t.shopBandTopM ?? null, fascia: t.fasciaWord || fasciaHex ? {hex: fasciaHex, word: t.fasciaWord ?? null} : null,
+    corniceM: t.corniceM ?? null, bands: (t.bands ?? []).map(([kind, bottomM, topM, colour]) => ({kind, bottomM, topM, colour})),
+    surroundColour: t.surroundColour ?? null, outline, source: {field: 'trace', ref: `lane2 trace 2026-11-13: ${t.ref} (${TRACES})`, kind: 'lane2-strip-read'},
+    confidence: t.confidence, notes: t.notes ?? []};
 }
 
 /** A sub-front from its single read: medium with a front top, low without (or when the read caps it). */
@@ -200,7 +224,7 @@ function subFront(fr: FrontRead, m: WallMeasure | undefined, ref: string): SubFr
   return f;
 }
 
-interface WallMeasure {pandId: string; rawHex: string | null; hex: string | null; gain: number | null; L: number | null; finishGuess: 'brick' | 'plaster' | null; sample: string | null; note: string | null}
+interface WallMeasure {pandId: string; fasciaHex?: string | null; rawHex: string | null; hex: string | null; gain: number | null; L: number | null; finishGuess: 'brick' | 'plaster' | null; sample: string | null; note: string | null}
 const PALE = /white|cream|beige|pale|light|yellow|render|plaster|stucco|buff/i, DARK = /dark|black/i;
 /** The finish a read's word names, if any. */
 function finishWord(w: string): WallFinish | null {
@@ -213,21 +237,30 @@ function finishWord(w: string): WallFinish | null {
 /**
  * The wall of one record. Measured hex from measure-walls.ts; `reviewed` when a Claude strip read named the wall and its
  * lightness agrees with the measurement (pale word: L >= 0.5; dark word: L < 0.55; otherwise any), then high confidence.
- * No word: strip-measured, medium. A disagreeing word, a scaffolded or multi-front pand, or no measurement: low.
+ * A white or grey word also needs a near-neutral sample (Oklab chroma < 0.05) and a brown or red word L < 0.6: a high wall
+ * whose word says one colour and whose sample says another is a sign or awning in the sample, not a reviewed wall.
+ * No word: strip-measured, medium. A disagreeing word, a scaffolded or multi-front pand, or no measurement: low; except
+ * that a traced front's sample (the wall between its traced openings, measure-walls.ts) stands inside that front, so a
+ * seam or several-fronts note no longer blocks it, capped at medium.
  */
 function wallOf(m: WallMeasure | undefined, word: {word: string; ref: string} | null, rs: Read[], oldRaw: string | null, apRef: string): WallColour {
   const blocked = rs.some(r => /scaffold|wrapped|netted|several fronts|two fronts|pand of|seam/i.test(r.note ?? ''));
   const w = word?.word ?? null;
   const fw = w ? finishWord(w) : null;
   const base: WallColour = {hex: null, rawHex: null, gain: null, word: w, ref: word?.ref ?? null, finish: fw, finishFrom: fw ? 'read' : null, source: null, confidence: 'low'};
-  if (!m?.hex || blocked) return {...base, ref: blocked ? `${base.ref ?? 'reads'}: not measured (scaffolded, seam or several fronts)` : base.ref};
+  const traced = m?.sample === 'traced-wall';
+  if (!m?.hex || (blocked && !traced)) return {...base, ref: blocked ? `${base.ref ?? 'reads'}: not measured (scaffolded, seam or several fronts)` : base.ref};
   const L = m.L ?? 0;
+  const [, a, b] = hexToOklab(m.hex), C = Math.hypot(a, b);
   const head = w?.split(',')[0] ?? null; // the wall itself; later clauses name trims
-  const agrees = head === null ? null : PALE.test(head) ? L >= 0.5 : DARK.test(head) ? L < 0.55 : true;
+  const agrees = head === null ? null
+    : (/white|grey|gray/i.test(head) && C >= 0.05) || (/brown|red/i.test(head) && !PALE.test(head) && L >= 0.6) ? false
+    : PALE.test(head) ? L >= 0.5 : DARK.test(head) ? L < 0.55 : true;
+  const capped = blocked && agrees === true;
   const finish = fw ?? m.finishGuess;
   const ref = `${WALLS} (lane WC exposure (c) on the strip, raw ${m.rawHex}, gain ${m.gain}${oldRaw ? `; auto-place raw ${oldRaw} in ${apRef}` : ''})`;
   return {hex: m.hex, rawHex: m.rawHex, gain: m.gain, word: w, ref, finish, finishFrom: fw ? 'read' : finish ? 'lightness' : null,
-    source: agrees === true ? 'reviewed' : 'strip-measured', confidence: agrees === true ? 'high' : agrees === null ? 'medium' : 'low'};
+    source: agrees === true ? 'reviewed' : 'strip-measured', confidence: agrees === true && !capped ? 'high' : agrees === null || capped ? 'medium' : 'low'};
 }
 
 function expandRef(ref: string, refs: Record<string, string>) {

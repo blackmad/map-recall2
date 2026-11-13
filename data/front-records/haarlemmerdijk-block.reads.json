@@ -40,6 +40,7 @@
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 2669-2842 (step 2 gridded crop)", "frontTop": 15.9, "frontTopKind": "cornice-top", "crown": {"family": "other", "ornamentTopM": 18.6, "note": "the top is distorted on the strip; ornament to about 18.6 m"}, "rows": [[6.0, 8.65], [9.9, 12.15], [13.3, 14.9]], "storeys": 4, "wallWord": "brown brick"}
   ]},
   {"pandId": "0363100012167820", "reads": [
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 2977-3119 (80 px/m crop)", "frontTop": 11.3, "frontTopKind": "gable-foot", "crown": {"family": "neck", "topM": 12.6, "neckWidthM": 1.9, "note": "a brick neck with two gable windows 11.5-12.6 m between white scroll shoulders at 11.9-12.4 m; a chimney stands on the neck to about 14.0 m"}, "groundTop": 5.45, "rows": [[6.25, 8.45], [9.4, 10.95]], "storeys": 3, "bays": 4, "wallWord": "brown brick"},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 26", "note": "front cut by the strip seam; crown unreadable"}
   ]},
   {"pandId": "0363100012167819", "reads": [
@@ -66,7 +67,7 @@
    {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 3899-4060", "frontTop": 14.6, "frontTopKind": "parapet-top", "crown": {"family": "other", "note": "timber erkers 5.0-10.8 m; a brick raised attic with a loggia 12.0-12.9 m and a sloped-shoulder top"}, "groundTop": 5.1, "rows": [[6.2, 7.95], [9.2, 10.95], [11.5, 13.55]], "storeys": 4, "bays": 1, "wallWord": "dark red-brown brick", "trimWord": "grey-green timber oriel 0.6-3.5 m across, 5.1-11.0 m", "note": "the oriel fills the middle of the front: the wall shows only in the piers either side and above it"}
   ]},
   {"pandId": "0363100012176103", "reads": [
-   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4060-4232", "frontTop": 11.2, "frontTopKind": "cornice-top", "crown": {"family": "other", "topM": 13.05, "note": "ornate raised attic piece over a two-storey oriel (5.2-9.6 m)"}, "wallWord": "red brick", "trimWord": "white oriel and attic"},
+   {"by": "lane2-strip-read", "ref": "haarlemmerdijk-2-58 strip px 4060-4232", "frontTop": 11.2, "frontTopKind": "cornice-top", "crown": {"family": "other", "topM": 13.05, "note": "ornate raised attic piece over a two-storey oriel (5.2-9.6 m)"}, "wallWord": "red brick", "trimWord": "white oriel and attic", "groundTop": 4.4, "rows": [[5.2, 7.6], [8.0, 9.75]], "storeys": 3, "bays": 3},
    {"by": "reviewer-strip-read", "ref": "holds: Haarlemmerdijk 12", "crown": {"family": "other", "note": "ornate front with an oriel and a raised attic"}}
   ]},
   {"pandId": "0363100012176102", "reads": [

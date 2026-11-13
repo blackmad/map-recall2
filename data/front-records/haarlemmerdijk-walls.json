@@ -20,7 +20,8 @@
    "L": 0.449,
    "chroma": 0.027,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177585#0",
@@ -35,7 +36,8 @@
    "L": 0.475,
    "chroma": 0.034,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177585#1",
@@ -50,7 +52,8 @@
    "L": 0.447,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177584",
@@ -65,7 +68,8 @@
    "L": 0.488,
    "chroma": 0.037,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177590",
@@ -80,7 +84,8 @@
    "L": 0.405,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176280",
@@ -95,7 +100,8 @@
    "L": 0.423,
    "chroma": 0.009,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176278",
@@ -110,7 +116,8 @@
    "L": 0.51,
    "chroma": 0.003,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176279",
@@ -125,7 +132,8 @@
    "L": 0.537,
    "chroma": 0.004,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177674",
@@ -140,7 +148,8 @@
    "L": 0.509,
    "chroma": 0.009,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177657",
@@ -155,7 +164,8 @@
    "L": 0.495,
    "chroma": 0.016,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167801",
@@ -170,7 +180,8 @@
    "L": 0.498,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167801#0",
@@ -185,7 +196,8 @@
    "L": 0.666,
    "chroma": 0.009,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167801#1",
@@ -200,7 +212,8 @@
    "L": 0.39,
    "chroma": 0.01,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167801#2",
@@ -215,37 +228,40 @@
    "L": 0.51,
    "chroma": 0.01,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167821",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#55473e",
-   "hex": "#6d5c51",
+   "rawHex": "#655548",
+   "hex": "#816d5d",
    "gain": 1.687,
    "white": 0.198,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 6296,
-   "L": 0.488,
-   "chroma": 0.028,
+   "sample": "traced-wall",
+   "pixels": 26030,
+   "L": 0.549,
+   "chroma": 0.035,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#564f47"
   },
   {
    "pandId": "0363100012167820",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#494a4d",
-   "hex": "#5e5f63",
-   "gain": 1.682,
-   "white": 0.199,
+   "rawHex": "#433834",
+   "hex": "#584a45",
+   "gain": 1.75,
+   "white": 0.184,
    "scene": 0.094,
-   "sample": "band-5-9.5",
-   "pixels": 10075,
-   "L": 0.486,
-   "chroma": 0.006,
+   "sample": "traced-wall",
+   "pixels": 4232,
+   "L": 0.422,
+   "chroma": 0.021,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#303034"
   },
   {
    "pandId": "0363100012167819",
@@ -260,37 +276,40 @@
    "L": 0.472,
    "chroma": 0.004,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167819#0",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#363437",
-   "hex": "#474548",
+   "rawHex": "#514f4d",
+   "hex": "#696664",
    "gain": 1.709,
    "white": 0.193,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 989,
-   "L": 0.393,
-   "chroma": 0.006,
+   "sample": "traced-wall",
+   "pixels": 6418,
+   "L": 0.512,
+   "chroma": 0.005,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#2f2525"
   },
   {
    "pandId": "0363100012167819#1",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#3f3533",
-   "hex": "#4c413e",
+   "rawHex": "#423937",
+   "hex": "#504543",
    "gain": 1.471,
    "white": 0.26,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 1196,
-   "L": 0.386,
-   "chroma": 0.016,
+   "sample": "traced-wall",
+   "pixels": 6443,
+   "L": 0.401,
+   "chroma": 0.015,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#4b4a48"
   },
   {
    "pandId": "0363100012167818",
@@ -300,147 +319,157 @@
    "gain": 1.877,
    "white": 0.16,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 859,
+   "sample": "traced-wall",
+   "pixels": 3247,
    "L": 0.398,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#444040"
   },
   {
    "pandId": "0363100012167817",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#3a3330",
-   "hex": "#544b46",
+   "rawHex": "#493f3a",
+   "hex": "#695b54",
    "gain": 2.099,
    "white": 0.128,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 611,
-   "L": 0.42,
-   "chroma": 0.015,
+   "sample": "traced-wall",
+   "pixels": 6817,
+   "L": 0.483,
+   "chroma": 0.021,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#706f6d"
   },
   {
    "pandId": "0363100012167816",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#342725",
-   "hex": "#4a3936",
+   "rawHex": "#322523",
+   "hex": "#473633",
    "gain": 1.989,
    "white": 0.142,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 1728,
-   "L": 0.362,
+   "sample": "traced-wall",
+   "pixels": 6852,
+   "L": 0.351,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#19171b"
   },
   {
    "pandId": "0363100012176104",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#584d49",
-   "hex": "#766863",
+   "rawHex": "#4f4541",
+   "hex": "#6a5e58",
    "gain": 1.861,
    "white": 0.162,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 5100,
-   "L": 0.529,
-   "chroma": 0.02,
+   "sample": "traced-wall",
+   "pixels": 16960,
+   "L": 0.492,
+   "chroma": 0.018,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#2e2928"
   },
   {
    "pandId": "0363100012176103",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#535149",
-   "hex": "#6c6a5f",
+   "rawHex": "#4e3d34",
+   "hex": "#665045",
    "gain": 1.735,
    "white": 0.187,
    "scene": 0.094,
-   "sample": "band-5-9.5",
-   "pixels": 12179,
-   "L": 0.523,
-   "chroma": 0.017,
+   "sample": "traced-wall",
+   "pixels": 11335,
+   "L": 0.451,
+   "chroma": 0.034,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#44403b"
   },
   {
    "pandId": "0363100012176102",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#8a7e68",
-   "hex": "#a3957c",
+   "rawHex": "#887b64",
+   "hex": "#a19277",
    "gain": 1.45,
    "white": 0.268,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 1065,
-   "L": 0.675,
-   "chroma": 0.039,
+   "sample": "traced-wall",
+   "pixels": 6182,
+   "L": 0.666,
+   "chroma": 0.042,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": "#686767"
   },
   {
    "pandId": "0363100012176101",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#645a4f",
-   "hex": "#756a5d",
+   "rawHex": "#685e52",
+   "hex": "#7a6f61",
    "gain": 1.408,
    "white": 0.284,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 3561,
-   "L": 0.531,
-   "chroma": 0.024,
+   "sample": "traced-wall",
+   "pixels": 11605,
+   "L": 0.548,
+   "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#67665e"
   },
   {
    "pandId": "0363100012176172",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#373029",
-   "hex": "#473e36",
+   "rawHex": "#403730",
+   "hex": "#52473e",
    "gain": 1.652,
    "white": 0.206,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 1324,
-   "L": 0.371,
-   "chroma": 0.018,
+   "sample": "traced-wall",
+   "pixels": 5360,
+   "L": 0.406,
+   "chroma": 0.021,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#464342"
   },
   {
    "pandId": "0363100012176174",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#524439",
-   "hex": "#6d5b4d",
+   "rawHex": "#4e4034",
+   "hex": "#685646",
    "gain": 1.805,
    "white": 0.173,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 3216,
-   "L": 0.485,
-   "chroma": 0.032,
+   "sample": "traced-wall",
+   "pixels": 5543,
+   "L": 0.467,
+   "chroma": 0.034,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#535250"
   },
   {
    "pandId": "0363100012176175",
    "face": "haarlemmerdijk-2-58",
-   "rawHex": "#373332",
-   "hex": "#575150",
+   "rawHex": "#393634",
+   "hex": "#5a5552",
    "gain": 2.483,
    "white": 0.091,
    "scene": 0.094,
-   "sample": "spandrels",
-   "pixels": 1867,
-   "L": 0.44,
+   "sample": "traced-wall",
+   "pixels": 3615,
+   "L": 0.453,
    "chroma": 0.008,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": "#444243"
   },
   {
    "pandId": "0363100012167796",
@@ -455,7 +484,8 @@
    "L": 0.453,
    "chroma": 0,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177504",
@@ -470,7 +500,8 @@
    "L": 0.454,
    "chroma": 0.019,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177501",
@@ -485,7 +516,8 @@
    "L": 0.432,
    "chroma": 0.016,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177502",
@@ -500,7 +532,8 @@
    "L": 0.444,
    "chroma": 0.01,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177503",
@@ -515,7 +548,8 @@
    "L": 0.383,
    "chroma": 0.002,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167795",
@@ -530,7 +564,8 @@
    "L": 0.439,
    "chroma": 0.015,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167794",
@@ -545,7 +580,8 @@
    "L": 0.441,
    "chroma": 0.017,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012253819",
@@ -560,7 +596,8 @@
    "L": 0.406,
    "chroma": 0.004,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167805",
@@ -575,7 +612,8 @@
    "L": 0.381,
    "chroma": 0.024,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012253818",
@@ -590,7 +628,8 @@
    "L": 0.503,
    "chroma": 0.006,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167804",
@@ -605,7 +644,8 @@
    "L": 0.464,
    "chroma": 0.012,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177663",
@@ -620,7 +660,8 @@
    "L": 0.361,
    "chroma": 0.003,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176277",
@@ -635,7 +676,8 @@
    "L": 0.485,
    "chroma": 0.015,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177659",
@@ -650,7 +692,8 @@
    "L": 0.387,
    "chroma": 0.005,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176569",
@@ -665,7 +708,8 @@
    "L": 0.437,
    "chroma": 0.022,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176570",
@@ -680,7 +724,8 @@
    "L": 0.408,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176577",
@@ -695,7 +740,8 @@
    "L": 0.44,
    "chroma": 0.015,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176696",
@@ -710,7 +756,8 @@
    "L": 0.436,
    "chroma": 0.02,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176696#0",
@@ -725,7 +772,8 @@
    "L": 0.425,
    "chroma": 0.007,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176696#1",
@@ -740,7 +788,8 @@
    "L": 0.433,
    "chroma": 0.037,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176696#2",
@@ -755,7 +804,8 @@
    "L": 0.464,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176698",
@@ -770,7 +820,8 @@
    "L": 0.376,
    "chroma": 0.017,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176655",
@@ -785,7 +836,8 @@
    "L": 0.43,
    "chroma": 0.01,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176655#0",
@@ -800,7 +852,8 @@
    "L": 0.424,
    "chroma": 0.006,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176655#1",
@@ -815,7 +868,8 @@
    "L": 0.463,
    "chroma": 0.05,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176568",
@@ -830,7 +884,8 @@
    "L": 0.437,
    "chroma": 0.038,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176580",
@@ -845,7 +900,8 @@
    "L": 0.405,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176697",
@@ -860,7 +916,8 @@
    "L": 0.438,
    "chroma": 0.012,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167793",
@@ -875,7 +932,8 @@
    "L": 0.421,
    "chroma": 0.019,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167793#0",
@@ -890,7 +948,8 @@
    "L": 0.398,
    "chroma": 0.005,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167793#1",
@@ -905,7 +964,8 @@
    "L": 0.47,
    "chroma": 0.054,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167812",
@@ -920,7 +980,8 @@
    "L": 0.617,
    "chroma": 0.037,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167807",
@@ -935,7 +996,8 @@
    "L": 0.432,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177675",
@@ -950,7 +1012,8 @@
    "L": 0.373,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177671",
@@ -965,7 +1028,8 @@
    "L": 0.439,
    "chroma": 0.028,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012177670",
@@ -980,7 +1044,8 @@
    "L": 0.41,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167808",
@@ -995,7 +1060,8 @@
    "L": 0.423,
    "chroma": 0.05,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167787",
@@ -1010,7 +1076,8 @@
    "L": 0.487,
    "chroma": 0.031,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167786",
@@ -1025,7 +1092,8 @@
    "L": 0.618,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515",
@@ -1040,7 +1108,8 @@
    "L": 0.653,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515#0",
@@ -1055,7 +1124,8 @@
    "L": 0.471,
    "chroma": 0.006,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515#1",
@@ -1070,7 +1140,8 @@
    "L": 0.523,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515#2",
@@ -1085,7 +1156,8 @@
    "L": 0.472,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515#3",
@@ -1100,7 +1172,8 @@
    "L": 0.836,
    "chroma": 0.025,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176515#4",
@@ -1115,7 +1188,8 @@
    "L": 0.527,
    "chroma": 0.035,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167785",
@@ -1130,7 +1204,8 @@
    "L": 0.666,
    "chroma": 0.022,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167792",
@@ -1145,7 +1220,8 @@
    "L": 0.748,
    "chroma": 0.013,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165105",
@@ -1160,7 +1236,8 @@
    "L": 0.525,
    "chroma": 0.015,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176699",
@@ -1175,7 +1252,8 @@
    "L": 0.5,
    "chroma": 0.022,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165106",
@@ -1190,7 +1268,8 @@
    "L": 0.42,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165106#0",
@@ -1205,7 +1284,8 @@
    "L": 0.454,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165106#1",
@@ -1220,7 +1300,8 @@
    "L": 0.467,
    "chroma": 0.024,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165106#2",
@@ -1235,7 +1316,8 @@
    "L": 0.483,
    "chroma": 0.039,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165106#3",
@@ -1250,7 +1332,8 @@
    "L": 0.62,
    "chroma": 0.011,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176579",
@@ -1265,7 +1348,8 @@
    "L": 0.357,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176579#0",
@@ -1280,7 +1364,8 @@
    "L": 0.274,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176579#1",
@@ -1295,7 +1380,8 @@
    "L": 0.308,
    "chroma": 0.017,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176578",
@@ -1310,7 +1396,8 @@
    "L": 0.369,
    "chroma": 0.029,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176702",
@@ -1325,7 +1412,8 @@
    "L": 0.328,
    "chroma": 0.027,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176652",
@@ -1340,7 +1428,8 @@
    "L": 0.429,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165102",
@@ -1355,7 +1444,8 @@
    "L": 0.356,
    "chroma": 0.019,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165074",
@@ -1370,7 +1460,8 @@
    "L": 0.366,
    "chroma": 0.012,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012165073",
@@ -1385,7 +1476,8 @@
    "L": 0.383,
    "chroma": 0.007,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171347",
@@ -1400,7 +1492,8 @@
    "L": 0.283,
    "chroma": 0.009,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171346",
@@ -1415,7 +1508,8 @@
    "L": 0.47,
    "chroma": 0.022,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173469",
@@ -1430,7 +1524,8 @@
    "L": 0.583,
    "chroma": 0.036,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173479",
@@ -1445,7 +1540,8 @@
    "L": 0.431,
    "chroma": 0.008,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173480",
@@ -1460,7 +1556,8 @@
    "L": 0.38,
    "chroma": 0.017,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173482",
@@ -1475,7 +1572,8 @@
    "L": 0.453,
    "chroma": 0.003,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173481",
@@ -1490,7 +1588,8 @@
    "L": 0.375,
    "chroma": 0.012,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173484",
@@ -1505,7 +1604,8 @@
    "L": 0.403,
    "chroma": 0.001,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173483",
@@ -1520,7 +1620,8 @@
    "L": 0.328,
    "chroma": 0.005,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012169539",
@@ -1535,7 +1636,8 @@
    "L": 0.389,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172757",
@@ -1550,7 +1652,8 @@
    "L": 0.409,
    "chroma": 0.027,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172756",
@@ -1565,7 +1668,8 @@
    "L": 0.417,
    "chroma": 0.039,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172755",
@@ -1580,7 +1684,8 @@
    "L": 0.385,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172754",
@@ -1595,7 +1700,8 @@
    "L": 0.512,
    "chroma": 0.017,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172847",
@@ -1610,7 +1716,8 @@
    "L": 0.597,
    "chroma": 0.013,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173014",
@@ -1625,7 +1732,8 @@
    "L": 0.485,
    "chroma": 0.038,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172848",
@@ -1640,7 +1748,8 @@
    "L": 0.414,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172845",
@@ -1655,7 +1764,8 @@
    "L": 0.498,
    "chroma": 0.033,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172660",
@@ -1670,7 +1780,8 @@
    "L": 0.661,
    "chroma": 0.022,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172660#0",
@@ -1685,7 +1796,8 @@
    "L": 0.729,
    "chroma": 0.024,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172660#1",
@@ -1700,7 +1812,8 @@
    "L": 0.37,
    "chroma": 0.029,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172946",
@@ -1715,7 +1828,8 @@
    "L": 0.338,
    "chroma": 0.028,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172945",
@@ -1730,7 +1844,8 @@
    "L": 0.377,
    "chroma": 0.022,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171354",
@@ -1745,7 +1860,8 @@
    "L": 0.567,
    "chroma": 0.036,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171354#0",
@@ -1760,7 +1876,8 @@
    "L": 0.406,
    "chroma": 0.028,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171354#1",
@@ -1775,7 +1892,8 @@
    "L": 0.568,
    "chroma": 0.057,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171351",
@@ -1790,7 +1908,8 @@
    "L": 0.537,
    "chroma": 0.049,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171351#0",
@@ -1805,7 +1924,8 @@
    "L": 0.553,
    "chroma": 0.061,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171351#1",
@@ -1820,7 +1940,8 @@
    "L": 0.456,
    "chroma": 0.008,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012169538",
@@ -1835,7 +1956,8 @@
    "L": 0.461,
    "chroma": 0.041,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171358",
@@ -1850,7 +1972,8 @@
    "L": 0.51,
    "chroma": 0.03,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171357",
@@ -1865,7 +1988,8 @@
    "L": 0.575,
    "chroma": 0.043,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176636",
@@ -1880,7 +2004,8 @@
    "L": 0.681,
    "chroma": 0.047,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171359",
@@ -1895,7 +2020,8 @@
    "L": 0.734,
    "chroma": 0.031,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176637",
@@ -1910,7 +2036,8 @@
    "L": 0.577,
    "chroma": 0.048,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176633",
@@ -1925,7 +2052,8 @@
    "L": 0.759,
    "chroma": 0.007,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176633#0",
@@ -1940,7 +2068,8 @@
    "L": 0.869,
    "chroma": 0.029,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176633#1",
@@ -1955,7 +2084,8 @@
    "L": 0.731,
    "chroma": 0.009,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176571",
@@ -1970,7 +2100,8 @@
    "L": 0.728,
    "chroma": 0.005,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176572",
@@ -1985,7 +2116,8 @@
    "L": 0.629,
    "chroma": 0.037,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012176573",
@@ -2000,7 +2132,8 @@
    "L": 0.696,
    "chroma": 0.009,
    "finishGuess": "plaster",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171352",
@@ -2015,7 +2148,8 @@
    "L": 0.394,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012173015",
@@ -2030,7 +2164,8 @@
    "L": 0.415,
    "chroma": 0.008,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172950",
@@ -2045,7 +2180,8 @@
    "L": 0.383,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172951",
@@ -2060,7 +2196,8 @@
    "L": 0.437,
    "chroma": 0.025,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171348",
@@ -2075,7 +2212,8 @@
    "L": 0.47,
    "chroma": 0.031,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171348#0",
@@ -2090,7 +2228,8 @@
    "L": 0.516,
    "chroma": 0.056,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171348#1",
@@ -2105,7 +2244,8 @@
    "L": 0.411,
    "chroma": 0.029,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172832",
@@ -2135,7 +2275,8 @@
    "L": 0.24,
    "chroma": 0.02,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172949",
@@ -2150,7 +2291,8 @@
    "L": 0.415,
    "chroma": 0.035,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172948",
@@ -2165,7 +2307,8 @@
    "L": 0.422,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172948#0",
@@ -2180,7 +2323,8 @@
    "L": 0.385,
    "chroma": 0.036,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012172948#1",
@@ -2195,7 +2339,8 @@
    "L": 0.378,
    "chroma": 0.018,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012168428",
@@ -2210,7 +2355,8 @@
    "L": 0.466,
    "chroma": 0.032,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012168427",
@@ -2225,7 +2371,8 @@
    "L": 0.342,
    "chroma": 0.02,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012167538",
@@ -2240,7 +2387,8 @@
    "L": 0.584,
    "chroma": 0.059,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175144",
@@ -2255,7 +2403,8 @@
    "L": 0.425,
    "chroma": 0.059,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175143",
@@ -2270,7 +2419,8 @@
    "L": 0.52,
    "chroma": 0.035,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175142",
@@ -2285,7 +2435,8 @@
    "L": 0.537,
    "chroma": 0.041,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175141",
@@ -2300,7 +2451,8 @@
    "L": 0.554,
    "chroma": 0.023,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175140",
@@ -2315,7 +2467,8 @@
    "L": 0.533,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175139",
@@ -2330,7 +2483,8 @@
    "L": 0.428,
    "chroma": 0.029,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175205",
@@ -2345,7 +2499,8 @@
    "L": 0.571,
    "chroma": 0.033,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175204",
@@ -2360,7 +2515,8 @@
    "L": 0.646,
    "chroma": 0.024,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175206",
@@ -2375,7 +2531,8 @@
    "L": 0.564,
    "chroma": 0.042,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175207",
@@ -2390,7 +2547,8 @@
    "L": 0.527,
    "chroma": 0.043,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012175208",
@@ -2405,7 +2563,8 @@
    "L": 0.651,
    "chroma": 0.014,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171144",
@@ -2420,7 +2579,8 @@
    "L": 0.45,
    "chroma": 0.024,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171145",
@@ -2435,7 +2595,8 @@
    "L": 0.517,
    "chroma": 0.032,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171148",
@@ -2450,7 +2611,8 @@
    "L": 0.384,
    "chroma": 0.027,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171141",
@@ -2465,7 +2627,8 @@
    "L": 0.441,
    "chroma": 0.026,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   },
   {
    "pandId": "0363100012171140",
@@ -2480,7 +2643,8 @@
    "L": 0.419,
    "chroma": 0.034,
    "finishGuess": "brick",
-   "note": null
+   "note": null,
+   "fasciaHex": null
   }
  ]
 }
