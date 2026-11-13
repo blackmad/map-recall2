@@ -888,8 +888,11 @@ house:publish: publish the staged HouseSpecs as one batch (the integrator's comm
                            house-specs), print the per-pand field diff, the touched z14 tiles and the cells they rebuild, and
                            the commands a real run would use. Nothing is published, installed or compiled.
   --batch <name>           the batch name (default batch-YYYYMMDD-HHMM); names artifacts/house-specs/{published,logs}/<name>*
-  --allow-extra <ids>      pand ids whose extract record may change although no staged spec names them (default: any such
-                           change refuses the batch, it means a source drifted since the last publish)
+  --allow-extra <ids>      OVERRIDE: pand ids whose extract record may change although nothing explains it. Every changed record
+                           no staged spec names is classified: face-drawn (a scripts/block-face/faces/*/intent.json draws the
+                           pand), same-as-main (equal to origin/main's record after sorting keys and dropping stamps), or
+                           unexplained. The first two are allowed and logged (console table, published/<batch>.json
+                           extraRecords); only unexplained refuses the batch, with the classified table printed.
   --world-out <dir>        the world:compile staging directory (default artifacts/world/staging); needs a previous
                            index.json there for --changed
   --full-bake              when the shell code changed since that compile (world:compile --shell --changed refuses), run a full
@@ -902,7 +905,7 @@ house:publish: publish the staged HouseSpecs as one batch (the integrator's comm
   --skip-suppression "<r>" do not run the suppression guard (same)
 
 Steps, in order (each timed in published/<batch>.json; logs in artifacts/house-specs/logs/<batch>-<step>.log):
-  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, extra-pand refusal
+  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, unstaged-record classification (refuses only unexplained)
   2 write      copy the specs to scripts/house-specs/specs/, build-house-specs --publish (the published extract changes here)
   3 recipe     only if a spec has route recipe: toRecipe -> houses/<id>/intent.json, facts, install.ts, build-covers,
                copy covers.json, check:covers (covers.json changes here)
@@ -927,8 +930,22 @@ chooses; the repo installs no cron). One batch = one commit, one HISTORY entry, 
 
 1. **merge.** The staged specs are written as plain files and `build-house-specs --extra-specs` resolves them with every other source
    into the STAGED tiles (`public/data/extracts/amsterdam/staging/house-specs`). The staged tiles are diffed against the published
-   ones, field by field, per pand. A record that changes although no staged spec names that pand refuses the batch (a source drifted
-   since the last publish); `--allow-extra <ids>` accepts named ones. A staged pand that lies in no building tile also refuses.
+   ones, field by field, per pand. Each changed record that no staged spec names is classified, and the classified table is printed:
+   `face-drawn` (a `scripts/block-face/faces/*/intent.json` names the pand, so its record follows the face compile), `same-as-main`
+   (equal to `origin/main`'s record after sorting keys and dropping stamp keys such as `stamp`/`generatedAt`; this checkout merely lags
+   main) or `unexplained`. The first two are allowed, counted on the console and written to `published/<batch>.json` under
+   `extraRecords`; only `unexplained` refuses the batch (a source drifted since the last publish). `--allow-extra <ids>` stays as the
+   override for named pands and is recorded as class `allow-extra`. Sample:
+
+   ```
+     pand  change   tile  class         first field
+     2     changed  t     face-drawn    a: 1 -> 2
+     3     changed  t     same-as-main  a: 1 -> 2
+     4     changed  t     UNEXPLAINED   a: 1 -> 9
+     5     changed  t     allow-extra   a: 1 -> 7
+   ```
+
+   The classifier is `classifyExtras` in `src/canalRecall/houseSpec/publishPlan.ts` (tested in `publishPlan.test.ts`). A staged pand that lies in no building tile also refuses.
    `--dry-run` stops here and prints the diff, the touched z14 tiles and the cells that list them. `--dry-run --compile` also
    rehearses step 4 in a scratch copy of the compile directory against the staged extract.
 2. **write.** The specs are copied to `scripts/house-specs/specs/` and `build-house-specs --publish` replaces the published

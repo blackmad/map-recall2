@@ -7,7 +7,7 @@ import { cpSync, existsSync, mkdirSync, openSync, closeSync, readdirSync, readFi
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
-import { allowIdsFor, BATCH_BUDGET_MS, blockFaceFactsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, diffTiles, extraPands, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
+import { allowIdsFor, BATCH_BUDGET_MS, blockFaceFactsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, classifyExtras, diffTiles, formatExtraTable, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type ClassifiedExtra, type PandDiff, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
 import { describeStaged, parseStaged, type StagedSpec } from '../../src/canalRecall/houseSpec/staged.ts';
 import { pandIdsIn } from '../../src/canalRecall/houseSpec/allow.ts';
 import { changedCoversTiles } from '../../src/canalRecall/world/tileCovers.ts';
@@ -24,8 +24,11 @@ export const HELP = `house:publish: publish the staged HouseSpecs as one batch (
                            house-specs), print the per-pand field diff, the touched z14 tiles and the cells they rebuild, and
                            the commands a real run would use. Nothing is published, installed or compiled.
   --batch <name>           the batch name (default batch-YYYYMMDD-HHMM); names artifacts/house-specs/{published,logs}/<name>*
-  --allow-extra <ids>      pand ids whose extract record may change although no staged spec names them (default: any such
-                           change refuses the batch, it means a source drifted since the last publish)
+  --allow-extra <ids>      OVERRIDE: pand ids whose extract record may change although nothing explains it. Every changed record
+                           no staged spec names is classified: face-drawn (a scripts/block-face/faces/*/intent.json draws the
+                           pand), same-as-main (equal to origin/main's record after sorting keys and dropping stamps), or
+                           unexplained. The first two are allowed and logged (console table, published/<batch>.json
+                           extraRecords); only unexplained refuses the batch, with the classified table printed.
   --world-out <dir>        the world:compile staging directory (default artifacts/world/staging); needs a previous
                            index.json there for --changed
   --full-bake              when the shell code changed since that compile (world:compile --shell --changed refuses), run a full
@@ -38,7 +41,7 @@ export const HELP = `house:publish: publish the staged HouseSpecs as one batch (
   --skip-suppression "<r>" do not run the suppression guard (same)
 
 Steps, in order (each timed in published/<batch>.json; logs in artifacts/house-specs/logs/<batch>-<step>.log):
-  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, extra-pand refusal
+  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, unstaged-record classification (refuses only unexplained)
   2 write      copy the specs to scripts/house-specs/specs/, build-house-specs --publish (the published extract changes here)
   3 recipe     only if a spec has route recipe: toRecipe -> houses/<id>/intent.json, facts, install.ts, build-covers,
                copy covers.json, check:covers (covers.json changes here)
@@ -112,6 +115,25 @@ function readTiles(dir: string): Map<string, TileFile> {
   const out = new Map<string, TileFile>();
   if (!existsSync(dir)) return out;
   for (const x of readdirSync(dir)) for (const f of readdirSync(path.join(dir, x)).filter(f => f.endsWith('.json.gz'))) out.set(`${x}/${f.replace(/\.json\.gz$/, '')}`, JSON.parse(gunzipSync(readFileSync(path.join(dir, x, f))).toString('utf8')));
+  return out;
+}
+
+/** Pand ids drawn by a block-face intent (scripts/block-face/faces/<face>/intent.json). */
+function faceDrawnPands(): Set<string> {
+  const dir = path.join(ROOT, 'scripts/block-face/faces'), out = new Set<string>();
+  if (existsSync(dir)) for (const d of readdirSync(dir)) { const f = path.join(dir, d, 'intent.json'); if (existsSync(f)) for (const id of pandIdsIn([readFileSync(f, 'utf8')])) out.add(id); }
+  return out;
+}
+
+/** main's tile file for `tile` ("x/y") from git (origin/main, else main); null when git cannot say. Read-only. */
+function mainTile(tile: string, cache: Map<string, TileFile | null>): TileFile | null {
+  if (cache.has(tile)) return cache.get(tile)!;
+  let out: TileFile | null = null;
+  for (const ref of ['origin/main', 'main']) {
+    const r = spawnSync('/usr/bin/git', ['-C', ROOT, 'show', `${ref}:${rel(SPEC_TILES)}/${tile}.json.gz`], { maxBuffer: 256 * 1024 * 1024 });
+    if (r.status === 0) { try { out = JSON.parse(gunzipSync(r.stdout).toString('utf8')); break; } catch { /* try the next ref */ } }
+  }
+  cache.set(tile, out);
   return out;
 }
 
@@ -196,10 +218,18 @@ async function main(args: string[]): Promise<number> {
     const now = readTiles(SPEC_TILES_STAGED), before = readTiles(SPEC_TILES);
     const diff = diffTiles(before, now);
     const batchPands = new Set(staged.map(s => s.pandId));
-    const extra = extraPands(diff.pands, batchPands, allowExtra);
+    const nowTiles = now, mainCache = new Map<string, TileFile | null>();
+    const classes = classifyExtras(diff.pands, batchPands, allowExtra, {
+      faceDrawn: faceDrawnPands(),
+      merged: (feature, tile) => nowTiles.get(tile)?.buildings[feature],
+      main: (feature, tile) => { const t = mainTile(tile, mainCache); return t ? t.buildings[feature] : undefined; },
+    });
+    const extra = classes.blocking.map(c => c.diff);
     const missing = staged.filter(s => ![...now.values()].some(t => t.buildings[`NL.IMBAG.Pand.${s.pandId}`])).map(s => s.pandId);
     const noop = staged.filter(s => !diff.pands.some(d => d.pand === s.pandId)).map(s => s.pandId);
-    return { value: { staged, diff, extra, missing, noop, batchPands }, note: `${staged.length} specs, ${diff.pands.length} pand records change in ${diff.touchedTiles.length} tiles` };
+    const accepted = classes.classified.filter(c => c.cls !== 'unexplained');
+    if (accepted.length || classes.allowed.length) console.log(`extra records accepted: ${accepted.filter(c => c.cls === 'face-drawn').length} face-drawn, ${accepted.filter(c => c.cls === 'same-as-main').length} same-as-main, ${classes.allowed.length} by --allow-extra`);
+    return { value: { staged, diff, extra, missing, noop, batchPands, classes }, note: `${staged.length} specs, ${diff.pands.length} pand records change in ${diff.touchedTiles.length} tiles${classes.classified.length ? `; ${classes.classified.length} unstaged (${accepted.length} explained, ${classes.blocking.length} unexplained)` : ''}` };
   });
 
   // The table the integrator reads (and the dry run's whole output).
@@ -218,7 +248,8 @@ async function main(args: string[]): Promise<number> {
   console.log(`\nTouched z14 tiles (${merged.diff.touchedTiles.length}): ${merged.diff.touchedTiles.join(' ')}`);
   console.log(index ? `Cells that list them (${touchedCells.length}): ${touchedCells.join(' ')}` : `(no ${rel(worldOut)}/index.json yet: run world:compile --shell once; --changed needs it)`);
   if (merged.missing.length) throw Error(`staged pands that are in no building tile (the extract would drop them): ${merged.missing.join(', ')}`);
-  if (merged.extra.length) throw Error(`${merged.extra.length} pand records change that no staged spec names (a source drifted since the last publish): ${merged.extra.map(e => e.pand).slice(0, 20).join(', ')}${merged.extra.length > 20 ? ' ...' : ''}\n  review the diff above; pass --allow-extra <ids> to accept them`);
+  if (merged.classes.classified.length || merged.classes.allowed.length) console.log(`\nUnstaged record changes, classified:\n${formatExtraTable(merged.classes.classified, merged.classes.allowed)}`);
+  if (merged.extra.length) throw Error(`${merged.extra.length} pand records change that no staged spec names and nothing explains (not face-drawn, not equal to main): ${merged.extra.map(e => e.pand).slice(0, 20).join(', ')}${merged.extra.length > 20 ? ' ...' : ''}\n  review the table above; pass --allow-extra <ids> to override`);
   if (merged.noop.length) console.log(`note: ${merged.noop.length} staged specs change nothing in the extract: ${merged.noop.join(', ')}`);
   const recipePands = merged.staged.filter(s => merged.diff.pands.some(d => d.pand === s.pandId) && existsSync(path.join(batchDir, 'intents', `${s.pandId}.json`))).map(s => s.pandId);
 
@@ -348,6 +379,7 @@ async function main(args: string[]): Promise<number> {
   const record = {
     batch, at: new Date().toISOString(), wallMs, budgetMs: BATCH_BUDGET_MS, underBudget: wallMs < BATCH_BUDGET_MS,
     specs: merged.staged.map(s => ({ pand: s.pandId, route: s.spec.route ?? 'generic', by: s.by, stagedAt: s.stagedAt, note: s.note, receipt: s.receipt.kind === 'preview' ? { verdict: s.receipt.verdict, measure: s.receipt.measurePath, compare: s.receipt.comparePath } : { none: s.receipt.reason } })),
+    extraRecords: [...merged.classes.classified.map((c: ClassifiedExtra) => ({ pand: c.diff.pand, change: c.diff.change, tile: c.diff.tile, class: c.cls, why: c.why })), ...merged.classes.allowed.map((d: PandDiff) => ({ pand: d.pand, change: d.change, tile: d.tile, class: 'allow-extra', why: '--allow-extra override' }))],
     pandRecords: merged.diff.pands.map(d => ({ pand: d.pand, change: d.change, tile: d.tile, fields: d.fields.length })),
     touchedTiles: merged.diff.touchedTiles, touchedCells: touchedCells, cellFilesChanged: cellsChanged,
     covers: delta, installed, held, goldenAllow: allowIds,
