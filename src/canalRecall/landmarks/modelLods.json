@@ -1064,7 +1064,13 @@
   "sourceHash": "22e4977c97d55677",
   "buildVersion": 2,
   "bytes": 28200,
-  "triangles": 1112
+  "triangles": 1112,
+  "lod2": {
+   "sourceHash": "22e4977c97d55677",
+   "buildVersion": 6,
+   "bytes": 5552,
+   "triangles": 167
+  }
  },
  "hart-museum": {
   "sourceHash": "e5b49b2b94517146",
@@ -5710,6 +5716,30 @@
    "buildVersion": 6,
    "bytes": 19536,
    "triangles": 895
+  }
+ },
+ "de-bonte-zwaan": {
+  "sourceHash": "b15629288e6eedf3",
+  "buildVersion": 2,
+  "bytes": 38120,
+  "triangles": 1701,
+  "lod2": {
+   "sourceHash": "b15629288e6eedf3",
+   "buildVersion": 6,
+   "bytes": 6112,
+   "triangles": 154
+  }
+ },
+ "hotel-boat-and-co": {
+  "sourceHash": "60d217b900023fb2",
+  "buildVersion": 2,
+  "bytes": 98428,
+  "triangles": 6161,
+  "lod2": {
+   "sourceHash": "60d217b900023fb2",
+   "buildVersion": 6,
+   "bytes": 23668,
+   "triangles": 1438
   }
  }
 }

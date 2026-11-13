@@ -1,5 +1,5 @@
 {
-  "toolchain": "96495bf1cfd980eba02e9a14fabdbff304780f62b4ea9d7d08c884530a3dada4",
+  "toolchain": "fdf016c21d42cad925a81109e082a038ee240bbe5748bd387ece2b9781831b38",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -94,7 +94,7 @@
     "de-beurs-van-berlage": "ddd48ea7871004f5e919c7711754d59171355a32be3dec0c0f7782cee9663871",
     "de-bijenkorf": "f1d153954f09151d4504d346be1413b5a02ef638ae378c63ed46a7e69a01c522",
     "de-bloem": "02d944809c1749a6a4010ceee13538f26ce486c170ac04a4ebab655cc7eed36c",
-    "de-bonte-zwaan": "98c968d2ade2518b21851321327b558ec07ccb118d59eeb92a5cd7e768423808",
+    "de-bonte-zwaan": "9da9ac4038e9e17df3b4aee38cb2aa0924386c623e48e48187fcc841cdc45438",
     "de-burcht": "7d8f8c87ce4da297351bad872c633beec13d4bf9f1f3c078637eea71f467de42",
     "de-dokwerker": "4326324b7940fc8a598b998035455abfaea2ea0af31eea5a284bc9e774502468",
     "de-dolphijn": "6b18095e907352a4130d6b01a8ac21334338bb6dfcdbbd5d86761b44c092cf96",
@@ -189,7 +189,7 @@
     "homomonument": "c59e5b24b1b2e49685dacb6b5dd90c1456097d4177acaf03c56f349b42837215",
     "hoofdbureau-elandsgracht": "81c14afce93310260217892ec35a9ad077c1932d7250ae442212fa252ee037ec",
     "hortus-greenhouses": "7adc2c4e4a09c4d065104712d82925419cee2d78e9aa9bb09d39a152abf9e1c1",
-    "hotel-boat-and-co": "074b57cecc5bf901a611940a69474e4801a394f09029fc03ba3af84b340c0d5d",
+    "hotel-boat-and-co": "db53936ddc3e9a9ec7818c82d360b6d3bedffb291ea3bd17327cdd1d24c1eacb",
     "hotel-de-l-europe": "208721a139c6e1e5142952dca6ea99ed31cf9797725a4e6391f780e986ec8c8d",
     "hotel-jakarta": "ed474eb0c6cefca1f96c68f61da2cd5e647a0bc8f201453020a708dd580c76bc",
     "hotel-okura": "b574a873b85de9ec93b6ee44055997f7955e1990612b8eaa2e12849abaa8d261",

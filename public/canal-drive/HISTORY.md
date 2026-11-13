@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Houthavens landmarks: De Bonte Zwaan and Hotel Boat&Co; pointedDormer kit component (2026-11-13, lane H-HV, cherry-picked from lane/houthavens-landmarks-20261113).**
+- **Why.** User: "houthavens landmark modeling at some point soon", plus feedback notes 7517fef7 (Haparandadam) and 428505e5 (the Wiborgeiland brown block).
+- **De Bonte Zwaan** (BAG 0363100012240915, 1966; a floating KNSM office built at NDSM). 6.8k triangles from the 2016–2021 panoramas, the PDOK orthophoto and 3DBAG: hull with portholes, ribbon windows, SE walkway, white SW tower with emblem and lettering, black NE tower, two trussed gangways.
+- **Hotel Boat&Co / The July** (BAG 0363100012250188, 2019, Kollhoff & Pols). 17.9k triangles: stone plinth, brick body, zinc mansard with lancet dormers (four close-set on each SW arm end), lettered corner pavilions, bronze-mullioned atrium, IJ-side terrace.
+- **Integrator review.** The 4-side renders showed mirrored sign backs and visible back faces (the walkway end caps); both were fixed in d07557905 before the merge.
+- **Kit.** `src/canalRecall/landmarks/pointedDormer.ts` (in test:landmark-kits) and `scripts/landmarks/houthavens-kit.ts`. The kit still cannot say: bowed brick ends with rounded roofs, bell or curved pavilion roofs, a curved glass atrium, arched door heads, flags, and hulls below the waterline (the below-ground check fails them). A dormer on the wall line has its glass judged against the wall below by the audit, so the plain dormers sit 0.35 m back and read about 0.7 m short.
+- **Integration.** Signature bundle, lods and covers rebuilt. The lod2 budget was raised from 6 to 6.5 MB, because the set reached 6.01 MB at 463 models.
+- **Not started.** OBA Spaarndammerbuurt, Blok 0 plots 8/9, Pont 13, and De Rede with the held Haparandaweg row.
+
 **Ground look: open ground clipped to the parks, sand as earth, big asphalt squares as asphalt (2026-11-13, lane R2-D, cherry-picked).**
 - **Why.** Feedback ab50459f "shimmery triangles" in the Rembrandtpark; yellow slabs at Houthavens/Wiborgeiland building sites; pale paving on the A10 slip roads at Lelylaan.
 - **Parks.** open-ground-v1 was clipped against the roads but not parks-v1: 0.83 km² of meadow on park lawn and 1.2 km² of shrub on park shrub at the same lift and offset rank, so the depth buffer picked per triangle. `clip-open-ground.ts` now subtracts the parks too (G1's earlier "null" overlap intersected all neighbours at once, which reads ~0). open-ground-v2 published (291 cells, 8 MB gz); `?openGroundClip=0` reads v1. Pins in `r2GroundRegressions.ts` / `check-ground-spots.ts`; frames in `tests/e2e/r2-ground-frames.spec.ts`.
