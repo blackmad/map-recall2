@@ -11,6 +11,7 @@ import {
   advanceLiveRoute,
   capWeightShares,
   HOME_MAX_SHARE,
+  A_LIST_MAX_SHARE,
   mergeManualPoiFeatures,
   pickReviewRoute,
   readRecentDestinations,
@@ -50,6 +51,8 @@ import {
   type RoutePoi,
 } from '../src/canalRecall/game/routeSelection';
 import type { WorldPoint } from '../src/canalRecall/game/worldTypes';
+import { isAList } from '../src/canalRecall/game/poiNotability';
+import { buildRouteDestinationPool } from '../src/canalRecall/game/routeDestinationPool';
 
 const checks: string[] = [];
 function check(name: string, run: () => void): void {
@@ -342,19 +345,10 @@ checks.push('GPS start needs a secure context');
 const AMS = CANAL_CITIES.amsterdam;
 const AMS_FEATURES = mergeManualPoiFeatures(
   JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json', 'utf8')), 'amsterdam') as any[];
-const AMS_POIS: RoutePoi[] = AMS.curatedPois.map(poi => ({ ...poi }));
-{
-  const seen = new Set(AMS_POIS.map(poi => poi.name.toLowerCase()));
-  for (const feature of AMS_FEATURES) {
-    const centre = feature.routeCenter || feature.center;
-    if (!centre || !feature.name || !isTeachableRouteDestination(feature)) continue;
-    if (seen.has(feature.name.toLowerCase())) continue;
-    const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1] };
-    if (!feature.manualPoi && kmBetween(poi, AMS.center) > 4) continue;
-    seen.add(feature.name.toLowerCase());
-    AMS_POIS.push(poi);
-  }
-}
+// The pool the game builds (routeDestinationPool.ts): deduplicated, in range,
+// with the notability fields the pickers weigh.
+const AMS_POIS: RoutePoi[] = buildRouteDestinationPool(AMS_FEATURES, AMS.curatedPois.map(poi => ({ ...poi })),
+  { center: AMS.center, cityId: 'amsterdam' }).pois;
 const DA_COSTAKADE = { lat: 52.3728, lng: 4.8737 };
 
 check('recentDestinationFactor: last ride never, older ones climb back', () => {
@@ -440,8 +434,13 @@ check('regression: no landmark takes more than ~2x the share cap of independent 
     const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, [])!;
     tally.set(pick.poi.id, (tally.get(pick.poi.id) ?? 0) + 1);
   }
-  const top = Math.max(...tally.values()) / picks;
-  assert.ok(top < HOME_MAX_SHARE + 0.02, `top share ${top}`);
+  // A-list places are held to the looser A_LIST_MAX_SHARE (2026-11-13: the
+  // flat cap flattened the Rijksmuseum to the share of a neighbourhood church).
+  for (const [id, count] of tally) {
+    const poi = AMS_POIS.find(entry => entry.id === id)!;
+    const cap = isAList(poi) ? A_LIST_MAX_SHARE : HOME_MAX_SHARE;
+    assert.ok(count / picks < cap + 0.02, `${poi.name} share ${count / picks}`);
+  }
 });
 
 check('review rides from home skip recently ridden destinations', () => {

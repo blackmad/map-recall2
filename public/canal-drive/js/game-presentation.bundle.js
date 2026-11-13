@@ -4288,20 +4288,21 @@
     { name: "Westergasfabriek", wikidata: ["Q4848627"] },
     { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
     { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
-    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774", "Q1350009"] },
     { name: "Amstel Hotel", wikidata: ["Q1780741"] },
-    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Stopera", aliases: ["Muziektheater", "Dutch National Opera & Ballet", "Opera & Ballet", "Nationale Opera & Ballet"], wikidata: ["Q1587736", "Q1138851", "Q1325514"] },
     { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
     { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
     { name: "Zuiderkerk", wikidata: ["Q228629"] },
     { name: "Noorderkerk", wikidata: ["Q613854"] },
     { name: "Vondelpark", wikidata: ["Q2279698"] },
     { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
-    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Leidseplein", wikidata: ["Q501445", "Q1409805"] },
     { name: "Rembrandtplein", wikidata: ["Q613678"] },
-    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Museumplein", wikidata: ["Q2172631", "Q639321"] },
     { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
-    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum", "Bible Museum"], wikidata: ["Q2111026", "Q2919762"] },
+    { name: "Wereldmuseum Amsterdam", aliases: ["Tropenmuseum", "Wereldmuseum"], wikidata: ["Q1131589"] },
     { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
     { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
     { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
@@ -4399,6 +4400,33 @@
     const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
     return Math.hypot(latKm, lngKm);
   }
+  var FAMOUS_TIER_SCORE = 8;
+  var TAIL_FLOOR = 0.02;
+  var FAMOUS_ENOUGH = 8;
+  function tailFloorFor(candidates) {
+    let famous = 0;
+    for (const poi of candidates) if (notabilityScore(poi) >= FAMOUS_TIER_SCORE) famous += 1;
+    return Math.max(TAIL_FLOOR, 1 - famous / FAMOUS_ENOUGH);
+  }
+  var TAIL_AREA_KM = 2;
+  var TAIL_OPEN_KNOWN = 40;
+  var TAIL_MASTERED_MIN = 0.45;
+  function tailOpenness(origin, samples) {
+    if (!origin || !samples.length) return 0;
+    let known = 0;
+    for (const sample of samples) {
+      if (sample.mastery >= TAIL_MASTERED_MIN && kmBetween(sample, origin) <= TAIL_AREA_KM) known += 1;
+    }
+    return Math.min(1, known / TAIL_OPEN_KNOWN);
+  }
+  function fameTierFactor(poi, openness = 0, floor = TAIL_FLOOR, score = notabilityScore(poi)) {
+    if (score >= FAMOUS_TIER_SCORE) return 1;
+    return floor + (1 - floor) * Math.max(0, Math.min(1, openness));
+  }
+  function destinationWeight(poi, openness = 0, floor = TAIL_FLOOR) {
+    const score = notabilityScore(poi);
+    return notabilityWeight(score) * fameTierFactor(poi, openness, floor, score);
+  }
   var randomUnit = () => Math.random();
   function pickWeighted(entries, chooseUnit) {
     const positive = entries.filter((entry) => entry.weight > 0);
@@ -4411,14 +4439,16 @@
     }
     return positive[positive.length - 1]?.item ?? null;
   }
-  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null) {
+  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null, samples = []) {
     const candidates = pois.filter((poi) => poi.id !== from.id && poi.id !== alsoExcludeId);
     if (candidates.length === 0) return null;
     const inRange = candidates.filter((poi) => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
     const pool = inRange.length > 0 ? inRange : candidates;
+    const openness = tailOpenness(from, samples);
+    const floor = tailFloorFor(pool);
     const scored = pool.map((poi) => ({
       item: poi,
-      weight: notabilityWeight(notabilityScore(poi))
+      weight: destinationWeight(poi, openness, floor)
     }));
     const pick2 = pickWeighted(scored, chooseUnit);
     if (!pick2 || kmBetween(pick2, from) >= SURPRISE_MIN_PAIR_KM) return pick2;
@@ -7669,6 +7699,10 @@
     }
   }
 
+  // src/canalRecall/game/destinationDedupe.ts
+  var A_LIST_GROUP = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) for (const name of [entry.name, ...entry.aliases ?? []]) A_LIST_GROUP.set(normaliseAnswer(name), entry.name);
+
   // src/canalRecall/game/rideDistance.ts
   function formatRideDistance(km, options = {}) {
     const safe = Number.isFinite(km) && km > 0 ? km : 0;
@@ -7992,10 +8026,12 @@
       const km = kmBetween(poi, from);
       return km >= minKm && km <= maxKm;
     });
-    if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null);
+    if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null, samples);
+    const openness = tailOpenness(from, samples);
+    const floor = tailFloorFor(band);
     const weighted = band.map((poi) => ({
       poi,
-      weight: notabilityWeight(notabilityScore(poi)) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples)))
+      weight: destinationWeight(poi, openness, floor) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples)))
     })).filter((entry) => entry.weight > 0);
     const total = weighted.reduce((sum, entry) => sum + entry.weight, 0);
     if (total <= 0) return band[0] ?? null;
