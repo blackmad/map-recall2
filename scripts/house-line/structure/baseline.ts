@@ -2,7 +2,9 @@
  * Lane PR1 step 1: the programme scoreboard's structure row. What the generic path draws today (storeys, window columns
  * per upper storey, crown) against the facade benchmark's hand labels, exact match with n and a 95 % Wilson interval.
  *
- *   node --import tsx scripts/house-line/structure/baseline.ts [--json out.json] [--probe-cache file.json]
+ *   node --import tsx scripts/house-line/structure/baseline.ts [--labels benchmark.json] [--json out.json] [--probe-cache file.json]
+ *
+ * --labels: a benchmark file with the v1 label shape (default benchmark-v1.json; e.g. D1's benchmark-v1-adjudicated.json).
  *
  * Env flags apply as in the world compile (e.g. STRUCTURE_PRIOR=1 for the prior). Rows: every readable labelled pand the
  * generic path draws with a ground-level street run ("generic"), and the subset with no HouseSpec storeys or bays and no
@@ -12,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { StructureProbe, crownFamily, type ProbeRecord } from './probe.ts';
-import { benchmarkTruths, fmt, score, type Score } from './labels.ts';
+import { BENCHMARK, benchmarkTruths, fmt, score, type Score } from './labels.ts';
 import { REPO_ROOT } from '../../house-preview/nodeDom.ts';
 
 const args = process.argv.slice(2);
@@ -45,7 +47,8 @@ export function scoreRows(truths: ReturnType<typeof benchmarkTruths>, probes: Ma
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const truths = benchmarkTruths(REPO_ROOT);
+  const labels = opt('--labels');
+  const truths = benchmarkTruths(REPO_ROOT, labels);
   const probes = await probeAll(truths.map(t => t.pandId), opt('--probe-cache'));
   const unspec = (r: ProbeRecord) => !r.spec?.storeys && !r.spec?.bays && !r.drawn?.recipe;
   const table: Table = {
@@ -55,7 +58,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     'unspecified, one front': scoreRows(truths, probes, r => unspec(r) && truths.find(t => t.pandId === r.pandId)!.oneFront),
   };
   const routes = { labelled: truths.length, generic: [...probes.values()].filter(r => r.route === 'generic' && r.drawn).length, installed: [...probes.values()].filter(r => r.route === 'installed').length, noStreetRun: [...probes.values()].filter(r => r.route === 'generic' && !r.drawn).length, notDrawn: [...probes.values()].filter(r => r.route === 'not-drawn').length };
-  console.log(`benchmark-v1 readable labels ${routes.labelled}; generic with a street run ${routes.generic}, installed ${routes.installed}, generic without a street run ${routes.noStreetRun}, not drawn ${routes.notDrawn}`);
+  console.log(`labels ${labels ?? BENCHMARK}: readable ${routes.labelled}; generic with a street run ${routes.generic}, installed ${routes.installed}, generic without a street run ${routes.noStreetRun}, not drawn ${routes.notDrawn}`);
   console.log(`env STRUCTURE_PRIOR=${process.env.STRUCTURE_PRIOR ?? ''} HOUSE_SPECS=${process.env.HOUSE_SPECS ?? ''}`);
   for (const [name, s] of Object.entries(table)) {
     console.log(`\n${name}`);

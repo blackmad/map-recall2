@@ -22,8 +22,9 @@ export function upperColumns(columns: readonly number[] | undefined): number | n
   return best;
 }
 
-export function benchmarkTruths(root: string, file = BENCHMARK): StructureTruth[] {
-  const d = JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+export function benchmarkTruths(root: string, file: string = BENCHMARK): StructureTruth[] {
+  file ||= BENCHMARK;
+  const d = JSON.parse(fs.readFileSync(path.resolve(root, file), "utf8"));
   return (d.pands as any[]).filter(p => p.readable && p.labels).map(p => {
     const l = p.labels;
     const crown = typeof l.crown === 'string' && l.crown !== 'unknown' && l.crown !== 'other' ? l.crown : null;
