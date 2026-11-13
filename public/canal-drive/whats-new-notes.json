@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Scan Hunt: find art to LiDAR-scan for the ride",
+      "text": "A small field page at https://rideamsterdam.nl/scan.html lists the public art nearest to you that the ride would like a phone LiDAR scan of: 1,285 pieces that are not in the game yet, and 38 hand-made statue models that a scan would improve. It shows the distance and a direction arrow, and gives points, levels and badges for each piece you mark as scanned (kept on your phone only). It also explains the scanning method: Scaniverse, Mesh mode, export GLB, name the file with the card's code and drop it in the iCloud Drive folder \"Ride scans\".",
+      "where": [
+        4.8926,
+        52.3731
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Rows of houses vary like the real street",
       "text": "Unmeasured houses used to take one middle colour from their measured neighbours, so whole rows came out the same grey-brown. Each house now draws its own colour from the middle half of what was measured nearby, so a row gets the dark, red and brown mix of the real street. On 146 photo comparisons along the most-ridden streets, picked at random, the wall colour error dropped a little further (0.097 to 0.091). Pale painted fronts are still drawn too dark; they need a photo of each house.",
       "where": [
