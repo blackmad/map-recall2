@@ -37,6 +37,14 @@ export interface RowFrontRecord {
 }
 
 export const ROW_FRONT_DEFAULT = false;
+/**
+ * Step e, subtract before adding: the only wall extras a front record's house draws unless a register or spec states
+ * more. Gone: flower boxes, iron and Juliet balconies, corner pilasters and pale masonry quoins, cornice vases (the roof
+ * finials), door canopies, 3D shutters, shop canopies, stucco hoods, floor cornices; the Haarlemmerdijk strips show none.
+ */
+export const ROW_FRONT_EXTRAS: readonly string[] = ['window-sills', 'white-window-frames', 'door-surround', 'wall-anchors', 'plinth', 'downpipe'];
+/** A record house's shopfront paint (sign, fascia, awning accent): the photo's shopfronts are dark and muted. */
+export const ROW_FRONT_SHOP_HEX = '#2e2b29';
 export function rowFrontEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]rowFront=([01])\b/.exec(search)?.[1] : undefined;
   const v = q ?? (env === '0' || env === '1' ? env : undefined);
@@ -164,7 +172,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
       const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);
       const plan = trial(h);
       if (plan?.kind === 'gable') return { ...feature, properties: { ...rest, ...held, height: h, monumentGable: gable, roofPlanned: true, roofShape: 'gable', roofEavesHeightM: rec.eavesM,
-        rowFront: family, rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...(sr ? { specRecipe: { ...sr, eavesM: rec.eavesM } } : {}) } };
+        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...(sr ? { specRecipe: { ...sr, eavesM: rec.eavesM } } : {}) } };
     }
   }
   // A gabled front: the planner's saddle behind the record's gable, its eaves on the measured foot.

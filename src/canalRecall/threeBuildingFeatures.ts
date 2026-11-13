@@ -11,6 +11,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
+import { ROW_FRONT_EXTRAS, ROW_FRONT_SHOP_HEX } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
@@ -49,7 +50,12 @@ export type { BuildingLook };
  * The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. Undefined
  * draws NO shop: the old random third (hashShop, bayLook's hash draw) put shops on warehouses (shopGate.ts, 2026-11-10).
  */
-const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
+const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined => {
+  const kind = shopfrontKindOf(p);
+  // Lane 1 step e (rowFront flag): a front record's shop is the plain shop window, no awning, terrace or produce.
+  return typeof p.rowFront === 'string' && kind && kind !== 'quiet' ? 'shopWindow' : kind;
+};
+const shopfrontKindOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
   // A HouseSpec's stated ground storey (houseSpec/decorate.ts `specShop`, lane H11) outranks the OSM-based extract: a quiet
   // front drops the extract's shop, a shop keeps the extract's kind or draws the plain shop window. Absent = as before.
   p.specShop === false ? 'quiet' : typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.specShop === true ? SPEC_SHOP_KIND : p.shopQuiet ? 'quiet' : undefined;
@@ -139,6 +145,9 @@ const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (spec
 function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
+  // Lane 1 step e (rowFront flag, houseLine/rowFront.ts): a front record's house takes no block surrounds (the pale
+  // presets' alternating masonry blocks) unless a record states them; it states none yet.
+  if (typeof p.rowFront === 'string') return { ...r?.look, ...extra, pale: false, ...(r?.look ? { bays: r?.bays } : {}) };
   if (!r?.look && !Object.keys(extra).length) return undefined;
   // The spec's bay count narrows the preset pool only under H11's stated look: a route A field changes its own trait, not the pool.
   return { ...r?.look, ...extra, ...(r?.look ? { bays: r?.bays } : {}) };
@@ -313,6 +322,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (force.length) building.registerForce = [...(building.registerForce ?? []), ...force];
     if (draw.bandM && draw.force.length) building.specBandM = draw.bandM;
     if (draw.force.length) building.specFieldsForce = draw.force;
+  }
+  // Lane 1 step e (rowFront flag): subtract before adding. A front record's house draws only the plain extras
+  // (ROW_FRONT_EXTRAS) and what a register or spec states; its shopfront is a plain dark band, not a guessed brand colour.
+  if (typeof p.rowFront === 'string') {
+    if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS, ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    if (building.shopfront || building.shop) { building.accentHex = ROW_FRONT_SHOP_HEX; building.signature = undefined; building.chain = undefined; if (building.layers) building.groundHex = ROW_FRONT_SHOP_HEX; }
   }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.

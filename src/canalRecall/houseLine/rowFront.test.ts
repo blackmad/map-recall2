@@ -85,3 +85,17 @@ test('row front adapter: a row-line record takes its measured neighbours median 
   assert.equal(lone.eavesM, 9.5);
   assert.equal(rowFrontFromRecord(b, [b]).eavesM, null);
 });
+
+// Step e (subtract before adding): a front record's house draws only the plain extras, a dark plain shop window, no
+// block surrounds; without `rowFront` the same feature builds as before. Regression: Haarlemmerdijk 16 (167816).
+import { meshBuildingFor } from '../threeBuildingFeatures.ts';
+import { ROW_FRONT_EXTRAS, ROW_FRONT_SHOP_HEX } from './rowFront.ts';
+test('row front step e: plain extras, a dark plain shopfront, the plain preset; untouched without rowFront', () => {
+  const base = { ...feature('0363100012167816', 11.84), properties: { ...feature('0363100012167816', 11.84).properties, shopKind: 'shopCafe', shopColour: '#c0392b', shopSignature: [0.2, 0.8] } };
+  const plain = meshBuildingFor(base as never, 'photo')!;
+  const rf = meshBuildingFor({ ...base, properties: { ...base.properties, rowFront: 'cornice' } } as never, 'photo')!;
+  assert.equal(plain.onlyExtras, undefined); assert.equal(plain.accentHex, '#c0392b'); assert.ok(plain.signature);
+  assert.deepEqual(rf.onlyExtras, [...ROW_FRONT_EXTRAS]);
+  assert.equal(rf.accentHex, ROW_FRONT_SHOP_HEX); assert.equal(rf.signature, undefined);
+  for (const id of ['flower-boxes', 'iron-balconies', 'juliet-balcony', 'cornice-vases', 'corner-pilasters', 'door-canopy']) assert.ok(!rf.onlyExtras!.includes(id), id);
+});

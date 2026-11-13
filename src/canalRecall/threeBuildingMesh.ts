@@ -77,6 +77,8 @@ export type MeshBuilding = {
   specBandM?: number;
   /** Route A's field-forced wall parts (houseSpec/routeAFields.ts): every wall dresses them before its dice trim. */
   specFieldsForce?: readonly string[];
+  /** Lane 1 step e: the only wall extras this building may draw (houseLine/rowFront.ts); absent, all. */
+  onlyExtras?: readonly string[];
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
@@ -779,7 +781,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -851,7 +853,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         // `flatRoof` (lane R5-E, `?flatRoofSurface`): the measured set and the roof box are in the walls chunk, seen from the air.
         if (b.measuredRoof && outer.length) { if (!b.flatRoof) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink); }
         else if (b.flatRoof?.box) { /* the generic box is drawn with the walls */ }
-        else if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
+        // Lane 1 step e: a front record's house (onlyExtras) draws no guessed roof furniture over its measured top line.
+        else if (!b.onlyExtras && rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
       extraTris = extraSink.tris.length;
       sign.push(...extraSink.tris);

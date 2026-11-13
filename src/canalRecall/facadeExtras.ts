@@ -361,7 +361,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
-  if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy){
+  if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
@@ -378,7 +378,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     else raisedPilasterEntrance(c, sink);
     if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly ?? c.recipe!.groundAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
   }
-  if (phase !== 'defining' && phase !== 'stated' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
+  if (phase !== 'defining' && phase !== 'stated' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && (!c.onlyExtras || c.onlyExtras.includes('pale-masonry-accents')) && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
     const before = sink.tris.length; paleMasonryAccents(c, sink);
     if (sink.tris.length > before) used.push('pale-masonry-accents');
   }
@@ -392,6 +392,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (c.recipe?.balconyPolicy === 'assembly-only' && !definingComponent && (comp.group === 'balcony' || ['glass-balconies','balcony-slabs','gallery-walkway','brick-balcony','juliet-balcony'].includes(comp.id))) continue;
     if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;
     if (definingComponent && c.assemblyOwner === false) continue;
+    if (c.onlyExtras && !c.onlyExtras.includes(comp.id)) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
     // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
     if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
