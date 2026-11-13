@@ -71,4 +71,34 @@ const sheet = await sharp({ create: { width: W, height: head + 2 * H + foot + 8,
 ]).jpeg({ quality: 82 }).toBuffer();
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, sheet);
+// --iou: lane 2's window correspondence on this sheet (scripts/front-records/window-iou.ts, all storeys and upper
+// storeys), printed under each front; --cost <json> (scripts/house-line/row-front/front-cost.ts --json): triangles,
+// KiB and build ms under each pand. Both go in a band under the labels; the row aggregates in the header line.
+const iou = argv.includes('--iou'), costFile = arg('cost');
+if (iou || costFile) {
+  const score = (extra: string[]) => {
+    const j = path.join(work, `iou${extra.join('')}.json`);
+    const r = spawnSync('node', ['--import', 'tsx', 'scripts/front-records/window-iou.ts', '--face', face, '--render', out, '--sheet', ...(from ? ['--from', from] : []), ...(to ? ['--to', to] : []), '--json', j, ...extra], { encoding: 'utf8' });
+    if (r.status !== 0) { console.error(`window-iou failed\n${(r.stderr || r.stdout).slice(-400)}`); return null; }
+    return JSON.parse(fs.readFileSync(j, 'utf8')) as { aggregate: number; fronts: { key: string; iou: number }[] };
+  };
+  const all = iou ? score([]) : null, upper = iou ? score(['--no-ground']) : null;
+  const cost = costFile ? JSON.parse(fs.readFileSync(costFile, 'utf8')) as Record<string, { triangles: number; bytes: number; ms: number }> : {};
+  const lines: string[] = [];
+  for (const sp of spans) {
+    const id = bare(sp.pandId), x = sp.px[0] - left + 4;
+    const fr = (all?.fronts ?? []).filter(f => f.key.split('#')[0] === id);
+    const t = fr.map(f => `${f.iou.toFixed(2)}/${(upper?.fronts.find(u => u.key === f.key)?.iou ?? NaN).toFixed(2)}`).join(' ');
+    if (t) lines.push(`<text x="${x}" y="15" font-size="13" fill="#9fe39f" font-family="Helvetica">IoU ${t}</text>`);
+    const c = cost[id];
+    if (c) lines.push(`<text x="${x}" y="32" font-size="12" fill="#c8c8ff" font-family="Helvetica">${c.triangles} tri · ${(c.bytes / 1024).toFixed(1)} KiB · ${c.ms} ms</text>`);
+  }
+  const band = 60, base = await sharp(out).metadata();
+  const agg = all && upper ? `window IoU all ${all.aggregate.toFixed(3)} · upper ${upper.aggregate.toFixed(3)} (${all.fronts.length} traced fronts; per front: all/upper)` : '';
+  const ext = await sharp(out).extend({ bottom: band, background: '#111' }).composite([
+    { input: svg(band, lines.join('') + (agg ? `<text x="6" y="52" font-size="15" fill="#9fe39f" font-family="Helvetica">${agg}</text>` : '')), left: 0, top: base.height! },
+  ]).jpeg({ quality: 82 }).toBuffer();
+  fs.writeFileSync(out, ext);
+  if (agg) console.log(agg);
+}
 console.log(out);

@@ -163,3 +163,16 @@ test('row front traces: HD20 traced windows to boxes, attic left to the crown, f
   const p = placeOnBoxes([{ a0: 0.45, a1: 1.45, sillM: 4, headM: 5.45 }, { a0: 1.55, a1: 2.5, sillM: 4, headM: 5.45 }], unit, { lengthM: 3.77, z0: 3.5, z1: 8 })!;
   assert.ok(p && Math.abs(p.windows[0].a1 - 1.5) < 1e-9 && Math.abs(p.windows[1].a0 - 1.5) < 1e-9);
 });
+
+// Sub-fronts, named regression HD22/24 (167819: one BAG pand, two houses 3.95 + 3.77 m): one record for the mesh with the
+// taller front's top, both fronts' traced windows, and each front's span and wall colour for the tint and party break.
+test('row front sub-fronts: HD22/24 merged for the mesh, spans and colours per front', () => {
+  const table = JSON.parse(readFileSync(new URL('../../../data/front-records/haarlemmerdijk-block.json', import.meta.url), 'utf8'));
+  const fr = table.records.find((x: FrontRecord) => x.pandId.endsWith('167819'));
+  const r = rowFrontsFromTable(table).find(x => x.pandId.endsWith('167819'))!;
+  assert.equal(r.fallback, undefined);
+  assert.equal(r.eavesM, toPandDatum(fr, Math.max(...fr.fronts.map((f: { frontTopM: number }) => f.frontTopM))));
+  assert.equal(r.subFronts!.length, 2);
+  assert.ok(Math.abs(r.subFronts![0].a1 - 3.95 / fr.bagWidthM) < 0.002 && r.subFronts![0].wallHex !== r.subFronts![1].wallHex);
+  assert.ok(r.windows!.some(w => w.a1 <= r.subFronts![0].a1) && r.windows!.some(w => w.a0 >= r.subFronts![1].a0));
+});

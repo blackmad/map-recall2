@@ -440,6 +440,31 @@ const COS_RUN = Math.cos(RUN_TURN_DEG * Math.PI / 180);
  * and turn by less than RUN_TURN_DEG, laid out as one facade. A hidden (party) wall or a
  * real corner ends a run.
  */
+/** Sub-fronts: the party-wall break's width (m) and its shade of the pand's wall tint. */
+const PARTY_BREAK_M = 0.16, PARTY_BREAK_SHADE = 0.62;
+/** A record's sub-fronts (fractions left to right as seen) as spans of the run in metres, each with its wall tint. */
+function subFrontSpans(subs: ReadonlyArray<{ a0: number; a1: number; wallHex?: string }>, ltr: boolean, len: number, jitter: number, wall: [number, number, number]) {
+  return subs.map(f => {
+    const [r, g, bl] = f.wallHex && /^#[0-9a-f]{6}$/i.test(f.wallHex) ? parseHex(f.wallHex) : wall;
+    return { a0: (ltr ? f.a0 : 1 - f.a1) * len, a1: (ltr ? f.a1 : 1 - f.a0) * len, rgb: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter)] as [number, number, number] };
+  }).sort((p, q) => p.a0 - q.a0);
+}
+/** [a0, a1] cut at each inner sub-front boundary, the PARTY_BREAK_M around it flagged as the break. */
+function splitAtBreaks(a0: number, a1: number, subs: ReadonlyArray<{ a0: number; a1: number }> | null): Array<[number, number, boolean]> {
+  if (!subs || subs.length < 2) return [[a0, a1, false]];
+  const cuts: Array<[number, number]> = subs.slice(1).map(f => [f.a0 - PARTY_BREAK_M / 2, f.a0 + PARTY_BREAK_M / 2]);
+  const out: Array<[number, number, boolean]> = [];
+  let a = a0;
+  for (const [c0, c1] of cuts) {
+    if (c1 <= a || c0 >= a1) continue;
+    if (c0 > a) out.push([a, c0, false]);
+    out.push([Math.max(a, c0), Math.min(a1, c1), true]);
+    a = Math.min(a1, c1);
+  }
+  if (a < a1) out.push([a, a1, false]);
+  return out;
+}
+
 /** Whether a wall's edge runs left to right as seen from the street in front of it (x east, y north, outward normal). */
 function seenLeftToRight(e: Edge): boolean { return (e.x1 - e.x0) * -e.ny + (e.y1 - e.y0) * e.nx >= 0; }
 
@@ -766,6 +791,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // takes a crop of the upper cell sized so the cell's window lands on it, the rest is plain wall; null keeps the grid.
       const placed = !shell && mode === 'walls' && streetRun && b.specRecipe?.windowBoxes?.length && b.layers && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace
         ? boxPlacementFor(seenLeftToRight(first) ? b.specRecipe.windowBoxes : b.specRecipe.windowBoxes.map(w => ({ ...w, a0: 1 - w.a1, a1: 1 - w.a0 })), b.layers.upper, layout.lengthM, base, groundTop, facadeTop) : null;
+      // Sub-fronts (lane 1, rowFront): each front's span on the run (metres, the run's direction) with its own wall tint;
+      // a party-wall break, PARTY_BREAK_M wide and darker, where two fronts meet. Placed fronts only.
+      const subFronts = placed && b.specRecipe?.subFronts?.length ? subFrontSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, jitter, parseHex(b.wallHex)) : null;
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.
@@ -816,14 +844,16 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         }
         if (placed) {
           const clip = (a0: number, a1: number) => [Math.max(s, a0), Math.min(s + e.len, a1)] as const;
+          const tintAt = (a: number): [number, number, number, number] => { const f = subFronts?.find(f => a >= f.a0 - 1e-6 && a <= f.a1 + 1e-6); return f ? [f.rgb[0], f.rgb[1], f.rgb[2], tint[3]] : tint; };
           for (const w of placed.windows) {
             const [a0, a1] = clip(w.a0, w.a1); if (a1 - a0 < 1e-4) continue;
             const u = (a: number) => w.u0 + (w.u1 - w.u0) * (a - w.a0) / (w.a1 - w.a0);
-            quads.push({ kind: 'upper', e, u0: u(a0), u1: u(a1), v0: w.v0, v1: w.v1, layer: b.layers!.upper, accent, z0: w.z0, z1: w.z1, tint, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
+            quads.push({ kind: 'upper', e, u0: u(a0), u1: u(a1), v0: w.v0, v1: w.v1, layer: b.layers!.upper, accent, z0: w.z0, z1: w.z1, tint: tintAt((a0 + a1) / 2), along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
-          for (const w of placed.walls) {
-            const [a0, a1] = clip(w.a0, w.a1); if (a1 - a0 < 1e-4) continue;
-            quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
+          for (const w of placed.walls) for (const [p0, p1, party] of splitAtBreaks(w.a0, w.a1, subFronts)) {
+            const [a0, a1] = clip(p0, p1); if (a1 - a0 < 1e-4) continue;
+            const t = party ? [tint[0] * PARTY_BREAK_SHADE, tint[1] * PARTY_BREAK_SHADE, tint[2] * PARTY_BREAK_SHADE, tint[3]] as [number, number, number, number] : tintAt((a0 + a1) / 2);
+            quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint: t, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
         } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });

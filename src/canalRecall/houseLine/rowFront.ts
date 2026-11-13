@@ -46,6 +46,8 @@ export interface RowFrontRecord {
   /** The traced shop band's top (pand datum) and the photo's fascia colour (muted by lane 2). */
   shopTopM?: number;
   fasciaHex?: string;
+  /** Sub-fronts of one pand (left to right as seen, fractions of the span) and their wall colours. */
+  subFronts?: Array<{ a0: number; a1: number; wallHex?: string }>;
   /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
@@ -94,7 +96,30 @@ export const toPandDatum = (r: Pick<FrontRecord, 'streetGroundNAP' | 'groundNAP'
  * either side, in the table's street order), in the street datum, then moved to its own ground; with no measured
  * neighbour, `interim` (lane 1's skyline read) if given; else the record keeps a null top and the house its 3DBAG wall.
  */
-export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRecord[] = [], interim?: RowFrontRecord | null): RowFrontRecord {
+/**
+ * A pand with sub-fronts (lane 2 `fronts`, HD22/24 167819): one record for the mesh, which draws one pand. The wall
+ * top, storeys and crown are the tallest front's (the mesher's run has one top), the ground the lowest; the traced
+ * openings of every sub-front go into one trace (x is already along the pand's span); each sub-front keeps its span and
+ * wall colour (`subFronts`), which the mesher tints and parts with a party-wall break.
+ */
+export function mergeSubFronts(fr: FrontRecord): FrontRecord {
+  const fs = (fr.fronts ?? []).filter(f => f.to > f.from);
+  if (fs.length < 2) return fr;
+  const measured = fs.filter(f => !f.fallback && f.frontTopM !== null);
+  if (!measured.length) return fr;
+  const tallest = measured.reduce((a, b) => b.frontTopM! > a.frontTopM! ? b : a), widest = measured.reduce((a, b) => b.to - b.from > a.to - a.from ? b : a);
+  const traced = fs.filter(f => f.trace && f.trace.confidence !== 'low');
+  const trace = traced.length ? { ...widest.trace ?? traced[0].trace!, storeys: Array.from({ length: Math.max(...traced.map(f => f.trace!.storeys.length)) }, (_, i) => traced.flatMap(f => f.trace!.storeys[i] ?? [])),
+    shopBandTopM: Math.min(...traced.map(f => f.trace!.shopBandTopM ?? Infinity)) === Infinity ? null : Math.min(...traced.map(f => f.trace!.shopBandTopM ?? Infinity)),
+    confidence: traced.some(f => f.trace!.confidence === 'medium') ? 'medium' as const : 'high' as const } : undefined;
+  const grounds = measured.map(f => f.groundStoreyTopM).filter((v): v is number => v !== null);
+  return { ...fr, frontTopM: tallest.frontTopM, frontTopKind: tallest.frontTopKind, crown: tallest.crown, storeys: Math.max(...measured.map(f => f.storeys ?? 0)) || null,
+    groundStoreyTopM: grounds.length ? Math.min(...grounds) : null, rows: widest.rows, bays: measured.reduce((n, f) => n + (f.bays ?? 0), 0) || null, wall: widest.wall,
+    confidence: tallest.confidence, fallback: undefined, ...(trace ? { trace } : {}) } as FrontRecord;
+}
+
+export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly FrontRecord[] = [], interim?: RowFrontRecord | null): RowFrontRecord {
+  const fr = mergeSubFronts(whole);
   const at = (v: number | null) => v === null ? null : toPandDatum(fr, v);
   const sources: Record<string, string> = { record: `front-records ${fr.face} ${fr.confidence}` };
   const family: RowCrownFamily = fr.fallback ? 'cornice' : LANE2_FAMILY[fr.crown.family ?? 'other'];
@@ -135,6 +160,7 @@ export function rowFrontFromRecord(fr: FrontRecord, neighbours: readonly FrontRe
     if (t.shopBandTopM !== null) out.shopTopM = at(t.shopBandTopM)!;
     if (t.fascia?.hex) out.fasciaHex = t.fascia.hex;
   }
+  if (fr !== whole && span) out.subFronts = whole.fronts!.map(f => ({ a0: Math.round(f.from / span * 1000) / 1000, a1: Math.round(Math.min(span, f.to) / span * 1000) / 1000, ...(f.wall?.hex ? { wallHex: f.wall.hex } : {}) }));
   if (fr.fallback) out.fallback = 'row-line';
   // A fallback keeps lane 1's skyline read: a gable standing over the row line still draws (skylineGable).
   if (fr.fallback && interim?.skyline) out.skyline = interim.skyline;
@@ -229,6 +255,7 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   if (wallHex) { out.wallHex = wallHex; delete out.heldBrick; }
   // The photo's fascia colour per front, muted by lane 2's trace (drawn as is: threeBuildingFeatures).
   if (rec.fasciaHex) out.fasciaHex = rec.fasciaHex;
+  if (rec.subFronts) out.subFronts = rec.subFronts;
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
