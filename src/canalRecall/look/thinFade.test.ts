@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { THIN_CLASS, THIN_OWNER_CLASSES, installThinFade, patchThinShaders, projectionFocal11, thinCm, thinFadeCoverage, thinFocalPx } from './thinFade.ts';
+import { THIN_CLASS, THIN_OWNER_CLASSES, installThinFade, passHeightPx, patchThinShaders, projectionFocal11, thinCm, thinFadeCoverage, thinFocalPx, thinFocalUniform } from './thinFade.ts';
 import { createCityLookMaterial, createCityUniforms } from './cityLook.ts';
 import { createLitFacadeMaterial } from '../rendererShared/litFacadeMaterial.ts';
 import { buildFeatureChunk, ORIGIN } from '../threeBuildingFeatures.ts';
@@ -103,8 +103,60 @@ test('shared frame: the view lives in the projection; the focal length does not 
     m.onBeforeRender(renderer, null, frame);
     assert.ok(Math.abs(s.uniforms.thinFocalPx.value - 1971) < 1, `heading ${heading}, pitch ${pitchDeg}: ${s.uniforms.thinFocalPx.value.toFixed(0)} px/m`);
   }
+  // MapLibre's clip matrix carries a homogeneous factor and the chase camera an off-centre principal point (its
+  // padding): neither changes the focal (lane TF: the default chase read 7292 px/m for 1350 before).
+  for (const lambda of [1, 5.4, 1e-3]) {
+    const off = persp.projectionMatrix.clone();
+    off.elements[9] = 0.35; // principal point 0.35 of the half-height off centre (P12 in three's column-major layout)
+    const frame = new THREE.Matrix4().copy(off).multiply(new THREE.Matrix4().makeRotationX(0.7).multiply(new THREE.Matrix4().makeRotationZ(1.1)));
+    frame.multiplyScalar(lambda);
+    assert.ok(Math.abs(projectionFocal11(frame.elements) / persp.projectionMatrix.elements[5] - 1) < 1e-9, `lambda ${lambda}`);
+  }
+  // Orthographic: the row's length, as before.
+  const ortho = new THREE.OrthographicCamera(-9, 9, 9, -9, 0.1, 100);
+  assert.ok(Math.abs(projectionFocal11(ortho.projectionMatrix.elements) - 2 / 18) < 1e-12);
   // A stoop step (20 cm) at 9 m is ~44 px across in that window: solid, at any heading.
   assert.equal(thinFadeCoverage(0.2 * thinFocalPx(projectionFocal11(persp.projectionMatrix.elements), 1314) / 9), 1);
+});
+
+/**
+ * A renderer the way engine/frameHost.ts drives three: built on a fresh canvas (three caches its 300 x 150 as
+ * `_width/_height`), then the host writes canvas.width/height itself and calls setViewport, never setSize. three's
+ * getDrawingBufferSize keeps answering 300 x 150; getCurrentViewport answers what clip space maps onto.
+ */
+function hostRenderer(w: number, h: number, target?: { width: number; height: number }) {
+  const v = target ? [0, 0, target.width, target.height] : [0, 0, w, h];
+  return {
+    getDrawingBufferSize: (out: any) => out.set(300, 150).floor(),
+    getCurrentViewport: (out: any) => out.copy({ x: v[0], y: v[1], z: v[2], w: v[3] }),
+  };
+}
+
+test('focal (lane TF): the pass viewport, not three\'s cached drawing-buffer size (house:frames read 48.9 for 293)', () => {
+  const m = createLitFacadeMaterial(THREE, {});
+  compiled(m);
+  const focal = thinFocalUniform();
+  // WG's house:frames pose: a 1440 x 900 frame at dpr 1, a 114 deg pano lens: 293 px per metre at 1 m. Before the fix
+  // the uniform read 0.651 x 150 / 2 = 48.9 (the canvas default height), so a 14 cm speklaag fell under 1 px at 20 m.
+  const pano = new THREE.PerspectiveCamera(113.86, 1440 / 900, 1, 1000);
+  m.onBeforeRender(hostRenderer(1440, 900), null, pano);
+  assert.ok(Math.abs(focal.value / (pano.projectionMatrix.elements[5] * 450) - 1) < 0.01, `pano: ${focal.value.toFixed(1)} px/m`);
+  assert.ok(Math.abs(focal.value - 293) < 2, `pano: ${focal.value.toFixed(1)} px/m`);
+  // First-person 72 deg and the MapLibre chase 36.87 deg at dpr 1 and 2 (1440 x 900 css).
+  for (const [fov, dpr, want] of [[72, 1, 619], [72, 2, 1239], [36.86989764584402, 1, 1350], [36.86989764584402, 2, 2700]] as const) {
+    const cam = new THREE.PerspectiveCamera(fov, 1.6, 1, 1000);
+    m.onBeforeRender(hostRenderer(1440 * dpr, 900 * dpr), null, cam);
+    assert.ok(Math.abs(focal.value / want - 1) < 0.01, `${fov} deg at dpr ${dpr}: ${focal.value.toFixed(0)} want ${want}`);
+  }
+  // A 14 cm speklaag at 20 m in the 72 deg first-person frame at dpr 1: 4.3 px, solid (before: 0.43 px, gone).
+  const fps = new THREE.PerspectiveCamera(72, 1.6, 1, 1000);
+  m.onBeforeRender(hostRenderer(1440, 900), null, fps);
+  assert.equal(thinFadeCoverage(0.14 * focal.value / 20), 1);
+  // A pass into a half-size target (swapProbe) uses the target's height.
+  m.onBeforeRender(hostRenderer(1440, 900, { width: 720, height: 450 }), null, fps);
+  assert.ok(Math.abs(focal.value - 619 / 2) < 4, `target: ${focal.value.toFixed(0)}`);
+  // A renderer without getCurrentViewport (tests, older three) falls back to the drawing buffer size.
+  assert.equal(passHeightPx({ getDrawingBufferSize: (v: any) => v.set(2896, 1314).floor() }), 1314);
 });
 
 test('patchThinShaders: a missing anchor leaves the material alone', () => {

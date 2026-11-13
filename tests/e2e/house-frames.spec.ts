@@ -16,7 +16,7 @@
  * The camera is set from outside: the spec replaces the view's `solveFps` on the live instance (the first-person solve,
  * engine/fpsCamera.ts) with one that returns the job's pose. Nothing in src/ changes and no global is added to the game.
  */
-import { test, type Page } from '@playwright/test';
+import { test, type Browser, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { openRoute, settleWorld } from './helpers';
@@ -33,8 +33,12 @@ type JobPose = {
   fps: Record<string, unknown>;
   /** image px to pick (ownWorldView.inspectBuilding) */
   picks: Array<[number, number]>;
+  /** rule 10 (--likeness): first person 72 deg in a `width` x `height` css viewport, the top `windowH` rows kept */
+  likeness?: { fps: Record<string, unknown>; width: number; height: number; windowH: number; lngLat: [number, number]; headingDeg: number };
 };
-type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: JobPose[] };
+/** rule 10 (scripts/house-frames/rule10Frames.ts Rule10Job): absent on an old run, which then runs exactly as before. */
+type Rule10Job = { dpr: number; likenessQuery: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }> };
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: JobPose[]; rule10?: Rule10Job };
 
 const JOB = process.env.HOUSE_FRAMES_JOB;
 
@@ -59,7 +63,7 @@ async function openPage(page: Page, job: Job): Promise<void> {
   await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
 }
 
-async function setPose(page: Page, pose: JobPose): Promise<void> {
+async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' | 'fps'>): Promise<void> {
   await page.evaluate(({ lngLat, headingDeg, fps }) => {
     const w = window as any, g = w.canalRecallGame, l = g.osmLoader;
     const mLng = 111320 * Math.cos(l._lastCenterLat * Math.PI / 180), ppm = 3;
@@ -72,7 +76,62 @@ async function setPose(page: Page, pose: JobPose): Promise<void> {
   }, pose);
 }
 
-test('house frames', async ({ page }) => {
+/**
+ * Rule 10 (lane TF): likeness frames (first person 72 deg at the job's pixel ratio, trees hidden when asked, the window
+ * the top `windowH` rows of a taller viewport) and one as-played frame per list (the default engine and chase camera).
+ * Each in its own browser context, so the pixel ratio is the device's, as on the user's Mac.
+ */
+async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: import('@playwright/test').BrowserContext) => Promise<void>): Promise<void> {
+  const r10 = job.rule10!, size = { width: job.width, height: job.height };
+  const likeness = job.poses.filter(p => p.likeness);
+  if (likeness.length) {
+    const ctx = await browser.newContext({ viewport: size, deviceScaleFactor: r10.dpr });
+    await routeContext(ctx);
+    const page = await ctx.newPage();
+    try {
+      await openPage(page, { ...job, query: [job.query.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
+      for (const pose of likeness) {
+        const l = pose.likeness!, dir = join(pose.out ?? job.out, pose.key);
+        try {
+          await page.setViewportSize({ width: l.width, height: l.height });
+          const at = { lngLat: l.lngLat, headingDeg: l.headingDeg, fps: l.fps };
+          await setPose(page, at); await page.waitForTimeout(job.settleMs); await setPose(page, at);
+          const settle = await settleWorld(page, `${pose.key} likeness`, 60_000);
+          await setPose(page, at);
+          writeFileSync(join(dir, 'likeness.png'), await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: l.width, height: l.windowH } }));
+          const drawn = await page.evaluate(() => { const c = document.querySelector('#vector-map canvas') as HTMLCanvasElement | null; return { dpr: devicePixelRatio, buffer: c ? [c.width, c.height] : null, css: c ? [c.clientWidth, c.clientHeight] : null, search: location.search }; });
+          writeFileSync(join(dir, 'likeness.json'), JSON.stringify({ key: pose.key, ...drawn, dpr: drawn.buffer && drawn.css ? +(drawn.buffer[1] / drawn.css[1]).toFixed(3) : drawn.dpr, viewport: [l.width, l.height], windowH: l.windowH, settle }, null, 1));
+        } catch (e) { console.warn(`house-frames: likeness ${pose.key} failed: ${(e as Error).message.slice(0, 300)}`); }
+      }
+    } finally { await ctx.close(); }
+  }
+  for (const a of r10.asPlayed) {
+    const ctx = await browser.newContext({ viewport: size, deviceScaleFactor: r10.dpr });
+    await routeContext(ctx);
+    const page = await ctx.newPage();
+    try {
+      // The default engine and camera: the job's query only (no engine=own, no cam=fps unless the query asks).
+      // 'relative' steering keeps the rider's heading: 'street' mode turns a parked rider onto the nearest street.
+      await openRoute(page, { travelMode: 'car', query: job.query ? `?${job.query.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
+      await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
+      await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
+      const at = { lngLat: a.lngLat, headingDeg: a.headingDeg, fps: {} };
+      await setPose(page, at); await page.waitForTimeout(job.settleMs); await setPose(page, at);
+      const own = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.engine === 'own');
+      const settle = own ? await settleWorld(page, 'as-played', 60_000) : null;
+      // MapLibre has no worldSettled(): the chase camera eases in and its tiles stream for a few seconds.
+      if (!own) await page.waitForTimeout(8000);
+      await setPose(page, at); await page.waitForTimeout(800);
+      mkdirSync(a.out, { recursive: true });
+      writeFileSync(join(a.out, 'as-played.png'), await page.screenshot({ type: 'png' }));
+      const drawn = await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap, c = (vm.map?.getCanvas?.() ?? document.querySelector('#vector-map canvas')) as HTMLCanvasElement | null; return { engine: vm.engine ?? 'maplibre', buffer: c ? [c.width, c.height] : null, css: c ? [c.clientWidth, c.clientHeight] : null, search: location.search }; });
+      writeFileSync(join(a.out, 'as-played.json'), JSON.stringify({ ...a, ...drawn, dpr: drawn.buffer && drawn.css ? +(drawn.buffer[1] / drawn.css[1]).toFixed(3) : null, settle }, null, 1));
+    } catch (e) { console.warn(`house-frames: as-played ${a.out} failed: ${(e as Error).message.slice(0, 300)}`); }
+    finally { await ctx.close(); }
+  }
+}
+
+test('house frames', async ({ page, browser }) => {
   test.skip(!JOB, 'run through npm run house:frames');
   const job: Job = JSON.parse(readFileSync(JOB!, 'utf8'));
   test.setTimeout(240_000 + job.poses.length * 90_000);
@@ -164,6 +223,16 @@ test('house frames', async ({ page }) => {
       }
     }
   }
+  if (job.rule10) await rule10Frames(browser, job, async ctx => {
+    if (bundles) await ctx.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+      const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+    });
+    if (specsDir) await ctx.route(/\/data\/extracts\/amsterdam\/house-specs\/14\/\d+\/\d+\.json\.gz(\?.*)?$/, route => {
+      const file = join(specsDir, /\/house-specs\/(14\/\d+\/\d+\.json\.gz)/.exec(route.request().url())![1]);
+      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/octet-stream' }) : route.continue();
+    });
+  });
   const wallMs = Date.now() - t0, outs = [...new Set(job.poses.map(p => p.out ?? job.out))];
   if (outs.length === 1) writeFileSync(join(outs[0], 'browser-timings.json'), JSON.stringify({ poses: job.poses.length, wallMs, opened, timings }, null, 1));
   else for (const out of outs) {
