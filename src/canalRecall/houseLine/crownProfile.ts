@@ -17,6 +17,8 @@
  * Each gets white edge trim and, when the record reads one, an attic light or a hoist door in the crown.
  */
 import type { RoofSink, V2, V3 } from '../roofSink.js';
+import { canalhouseCrownProfile, capRiseOf, crownProfile, type CanalhousePoint } from '../crownOutline.js';
+import type { FrontIntent } from '../buildingRecipe/intent.js';
 
 export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised';
 export const ROW_CROWN_SHAPES: readonly RowCrownShape[] = ['neck', 'bell', 'point', 'step', 'raised'];
@@ -48,10 +50,11 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
-  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.9 : c.shape === 'step' ? foot * 0.55 : foot * 0.65;
+  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
   const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
-  // Neck: a pediment cap as tall as a third of the neck width, at most 0.6 m; the upright neck under it.
-  const cap = c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : c.shape === 'neck' ? clamp(neck * 0.6, 0.3, Math.min(0.6, T * 0.3)) : 0;
+  // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
+  const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape } as unknown as FrontIntent, T, 2 * foot) : 0;
+  const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
   const steps = c.shape === 'step' ? clamp(Math.round(T / 0.85), 2, 5) : 0;
   return { half, T, foot, neck, cap, steps };
 }
@@ -70,48 +73,39 @@ export function rowCrownRoofRise(c: RowCrown, W: number): number {
   return r3(Math.max(0.8, R));
 }
 
-/** A crown plate's outline above the eaves, x across (-W/2..W/2, never going back), y up; at or above the saddle `R`. */
+/** A crown plate's outline above the eaves, x across (-W/2..W/2, never going back), y up; at or above the saddle `R`.
+ *  The outline itself is the kit's (crownOutline.ts, one definition for the kit and this renderer): its neck, bell,
+ *  point and step at the kit's stock shoulders and caps, and its cornice-with-cap for the raised centre. Here it is only
+ *  placed on the foot, centred, and kept over the saddle behind it. */
+/** The kit's outlines want a positive eaves height: they are drawn this far up and moved back down. */
+const KIT_Z = 10;
+
 export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   const d = crownDims(c, W), { half, T, foot, neck } = d;
   const slope = (x: number) => R * (1 - Math.abs(x) / half);
-  const left: V2[] = [];
-  const add = (x: number, y: number) => left.push([x, Math.max(y, slope(x) + 0.04)]);
-  left.push([-half, 0]);
   // Outside a narrower crown's foot: the roof's cheek, the plate just covering the slope.
   const y0 = foot < half - 0.01 ? slope(-foot) + 0.04 : 0;
-  if (foot < half - 0.01) add(-foot, y0);
+  let kit: CanalhousePoint[] | null, x0: number;
   if (c.shape === 'raised') {
-    const b = c.bandM ?? 0.5, tN = T - d.cap;
-    left.push([-half, b]); left.push([-neck, b]); left.push([-neck, tN]);
-    if (c.cap === 'flat') left.push([0, tN + d.cap]);
-    else if (c.cap === 'segmental') for (let i = 1; i <= 6; i++) { const a = Math.PI - (i / 6) * (Math.PI / 2); left.push([neck * Math.cos(a), tN + d.cap * Math.sin(a)]); }
-    else left.push([0, T]);
-    if (c.cap === 'flat') { left[left.length - 1] = [-neck, T]; left.push([0, T]); }
-  } else if (c.shape === 'point') {
-    left.push([0, T]);
-  } else if (c.shape === 'neck') {
-    const tN = T - d.cap, sh = clamp(Math.max(slope(-neck) + 0.12, y0 + (tN - y0) * 0.42), y0 + 0.3, tN - 0.5);
-    // Claw: a quarter ellipse bulging outward from the foot to the neck.
-    for (let i = 1; i <= 6; i++) { const t = (i / 6) * Math.PI / 2; add(-neck - (foot - neck) * Math.cos(t), y0 + (sh - y0) * Math.sin(t)); }
-    add(-neck, tN); left.push([0, T]);
-  } else if (c.shape === 'bell') {
-    const sh = clamp(T - Math.min(neck * 0.9, T * 0.4), y0 + 0.4, T - 0.2);
-    for (let i = 1; i <= 8; i++) { const t = i / 8; add(-foot + (foot - neck) * t, y0 + (sh - y0) * (3 * t * t - 2 * t * t * t)); }
-    for (let i = 1; i <= 6; i++) { const a = Math.PI - (i / 6) * (Math.PI / 2); add(neck * Math.cos(a), sh + (T - sh) * Math.sin(a)); }
+    const b = c.bandM ?? 0.5, flat = c.cap === 'flat';
+    kit = [[0, -KIT_Z], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, -KIT_Z]];
+    x0 = -half;
   } else {
-    const n = d.steps, w = (foot - neck) / (n - 1);
-    let x = -foot;
-    for (let j = 1; j <= n; j++) {
-      const h = y0 + ((T - y0) * j) / n;
-      left.push([x, Math.max(h, slope(x) + 0.04)]);
-      x = j === n ? 0 : x + w;
-      left.push([x, Math.max(h, slope(x) + 0.04)]);
-    }
+    kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
+    x0 = -foot;
   }
-  const apexAtZero = left[left.length - 1][0] === 0;
-  const right = (apexAtZero ? left.slice(0, -1) : left).slice().reverse().map(([x, y]) => [-x, y] as V2);
-  const all = [...left, ...right];
-  return all.filter((p, i) => i === 0 || p[0] !== all[i - 1][0] || p[1] !== all[i - 1][1]);
+  if (!kit) return [[-half, 0], [half, 0]];
+  const out: V2[] = [];
+  const push = (x: number, y: number) => {
+    const p: V2 = [x, Math.abs(x) < half - 1e-6 ? Math.max(y, slope(x) + 0.04) : y];
+    const q = out[out.length - 1];
+    if (!q || Math.abs(q[0] - p[0]) > 1e-9 || Math.abs(q[1] - p[1]) > 1e-9) out.push(p);
+  };
+  if (c.shape !== 'raised') { push(-half, 0); if (foot < half - 0.01) push(-foot, y0); }
+  // Never back: a point left of the last one moves onto it (the kit's outlines are single-valued already).
+  for (const [x, y] of kit) push(Math.max(out.length ? out[out.length - 1][0] : -Infinity, x + x0), y - KIT_Z);
+  if (c.shape !== 'raised') { if (foot < half - 0.01) push(foot, y0); push(half, 0); }
+  return out;
 }
 
 const PROUD = 0.014, PROUD_HI = 0.026;

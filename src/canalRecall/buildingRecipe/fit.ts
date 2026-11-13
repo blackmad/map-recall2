@@ -16,7 +16,7 @@ import {stairLightOpenings} from './stairLight.ts';
 import {frontLoggiaOpening, isLoggia} from './frontLoggia.ts';
 import {doorRevealOpenings} from './doorReveal.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
-import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
+import {neckShare, capRiseOf, crownProfile} from '../crownOutline.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
@@ -725,72 +725,7 @@ export function fitGableLights(profile: CanalhousePoint[], lights: GableLight[],
   return fits(one) ? one : [];
 }
 
-/** Neck share of a neck/bell crown's width: measured (`crownNeckWidth`) or the stock 0.5 neck / 0.46 bell. */
-const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'bell' ? 0.46 : 0.5);
-/** Cap rise of a neck/bell crown `width` wide: measured (`crownCapRatio` of the neck, within 0.4 of the rise) or the stock share of the rise. */
-// A flat cap (`crownCap: "flat"`, Van Breestraat 119-127 bell gables, Museumkwartier #159) has no rise: the neck ends in a
-// level coping. Before, a neck/bell crown with a flat cap threw in canalhouseCrownProfile (a flat cap with a rise), so no
-// installed recipe carries one and every other crown is byte-identical.
-const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCap === 'flat' ? 0 : f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
-
-/**
- * A `shouldered` gable `width` wide (FrontIntent.shouldered): plumb sides `shoulder` over the eaves, then straight rakes
- * to the top (a point, or a flat top `flatTop` wide). Its top is eaves + shoulder + rise.
- */
-export function shoulderedProfile(width: number, eaves: number, s: NonNullable<FrontIntent['shouldered']>): CanalhousePoint[] {
-  const sy = eaves + s.shoulder, top = sy + s.rise, tw = Math.min(s.flatTop ?? 0, width * 0.8), mid = width / 2;
-  return [[0, eaves], [0, sy], ...(tw > 0.01 ? [[mid - tw / 2, top], [mid + tw / 2, top]] as CanalhousePoint[] : [[mid, top]] as CanalhousePoint[]), [width, sy], [width, eaves]];
-}
-
-/**
- * One half of a symmetric crown outline (`FrontIntent.crownHalf`): `full` is the crown drawn over twice the half's span;
- * the left half keeps x <= centre, the right half x >= centre shifted to start at 0. The cut is interpolated on the
- * segment that crosses the centre (the apex itself on a pointed crown).
- */
-export function halfCrown(full: CanalhousePoint[], half: 'left' | 'right'): CanalhousePoint[] {
-  const c = (full[0][0] + full.at(-1)![0]) / 2, out: CanalhousePoint[] = [];
-  const keep = (x: number) => half === 'left' ? x <= c + 1e-9 : x >= c - 1e-9;
-  for (let i = 0; i < full.length; i++) {
-    const p = full[i];
-    if (i > 0) {
-      const q = full[i - 1];
-      if ((q[0] - c) * (p[0] - c) < -1e-12) out.push([c, q[1] + (p[1] - q[1]) * (c - q[0]) / (p[0] - q[0])]);
-    }
-    if (keep(p[0])) out.push(p);
-  }
-  const dedup = out.filter((p, i) => i === 0 || Math.abs(p[0] - out[i - 1][0]) > 1e-9 || Math.abs(p[1] - out[i - 1][1]) > 1e-9);
-  return half === 'left' ? dedup : dedup.map(([x, y]) => [round(x - c, 4), y] as CanalhousePoint);
-}
-
-/** `fill`: the crown stands on a part of the front (`crownAt`/`crownBays`) and fills that part; wide cornice caps by default. */
-function crownProfile(f: FrontIntent, width: number, eaves: number, top: number, fill = false): CanalhousePoint[] | null {
-  // A half crown (`crownHalf`): the crown drawn twice as wide, cut on its centre line (the party wall).
-  if (f.crownHalf) { const full = crownProfile({...f, crownHalf: undefined}, width * 2, eaves, top, fill); return full && halfCrown(full, f.crownHalf); }
-  const rise = top - eaves;
-  if (f.gable === 'flat' || rise < 0.3) return null;
-  switch (f.gable) {
-    case 'shouldered': return f.shouldered ? shoulderedProfile(width, eaves, f.shouldered) : null;
-    case 'point': return canalhouseCrownProfile('punt', width, eaves, top, 0, eaves, 0);
-    case 'spout': return canalhouseCrownProfile('tuit', width, eaves, top, width * 0.34, top - Math.min(0.7, rise * 0.15), 0);
-    case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, f.crownSteps ?? clamp(Math.round(rise / 1.4), 2, 5));
-    // Flanks: `crownShoulder` (measured off the strip, gableFromStrip `flankCurvature`), default concave. The kit drew
-    // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
-    // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
-    // `crownNeckWidth` / `crownCapRiseM`: measured on the photo; absent, the stock shares (byte-identical).
-    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? (f.gable === 'neck' ? 0.45 : 0.25)), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
-    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? 0.55), 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
-    case 'cornice': {
-      if (f.crownCap && f.crownCap !== 'flat') {
-        // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
-        const spanK = {narrow: [0.3, 0.3], medium: [0.62, 0.56], wide: [0.94, 0.86]}[f.crownCapSpan ?? (fill ? 'wide' : 'narrow')];
-        const capRise = f.crownCapRise === 'low' ? 0.38 : f.crownCapSpan === 'wide' ? 0.8 : 0.7;
-        return canalhouseCrownProfile('lijst', width, eaves, top, width * spanK[0], eaves, 0, {cap: f.crownCap, capRiseM: Math.min(capRise, rise), crestWidthM: width * spanK[1]});
-      }
-      return null;
-    }
-  }
-  return null;
-}
+export {shoulderedProfile, halfCrown} from '../crownOutline.ts';
 
 export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport; facts: BuildingFacts} {
   if (intent.pandId !== surveyFacts.pandId) throw Error('Intent and facts describe different Pand');
