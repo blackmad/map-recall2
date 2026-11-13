@@ -151,11 +151,11 @@
      ],
      "bays": 2,
      "wall": {
-      "hex": "#695948",
-      "rawHex": "#4a3e32",
+      "hex": "#665647",
+      "rawHex": "#483c31",
       "gain": 2.052,
       "word": "brown brick",
-      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a3e32, gain 2.052)",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483c31, gain 2.052)",
       "finish": "brick",
       "finishFrom": "read",
       "source": "reviewed",
@@ -184,13 +184,165 @@
       },
       {
        "field": "wall.hex",
-       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4a3e32, gain 2.052)",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483c31, gain 2.052)",
        "kind": "lane2-strip-read"
       }
      ],
      "confidence": "medium",
      "conflicts": [],
-     "notes": []
+     "notes": [],
+     "trace": {
+      "storeys": [
+       [
+        {
+         "x": 0.2,
+         "w": 0.95,
+         "y": 0.1,
+         "h": 3.8,
+         "kind": "door",
+         "head": "flat",
+         "panes": null,
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 1.6,
+         "w": 2.25,
+         "y": 1.3,
+         "h": 2.9,
+         "kind": "shop",
+         "head": "flat",
+         "panes": "1",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 0.55,
+         "w": 1.3,
+         "y": 6.3,
+         "h": 2.55,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "6 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 2.35,
+         "w": 1.35,
+         "y": 6.3,
+         "h": 2.55,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "6 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 0.35,
+         "w": 1.3,
+         "y": 12.55,
+         "h": 1.45,
+         "kind": "attic",
+         "head": "flat",
+         "panes": "4 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 0.4,
+         "w": 1.35,
+         "y": 9.55,
+         "h": 2.15,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "6 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 2.2,
+         "w": 1.4,
+         "y": 9.55,
+         "h": 2.15,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "6 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        }
+       ]
+      ],
+      "shopBandTopM": 5.65,
+      "fascia": {
+       "hex": "#4b4843",
+       "word": "dark brown, consoles"
+      },
+      "corniceM": null,
+      "bands": [
+       {
+        "kind": "fascia",
+        "bottomM": 5,
+        "topM": 5.65,
+        "colour": "dark brown"
+       }
+      ],
+      "surroundColour": "white",
+      "outline": [
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        13.1
+       ],
+       [
+        1.1,
+        13.1
+       ],
+       [
+        1.1,
+        16.6
+       ],
+       [
+        2.95,
+        16.6
+       ],
+       [
+        2.95,
+        13.1
+       ],
+       [
+        4.05,
+        13.1
+       ],
+       [
+        4.05,
+        0
+       ]
+      ],
+      "source": {
+       "field": "trace",
+       "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 0, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+       "kind": "lane2-strip-read"
+      },
+      "confidence": "medium",
+      "notes": [
+       "neck gable; the shop is behind a striped awning (4.3-5.0 m), its head is hidden"
+      ]
+     }
     },
     {
      "from": 4.05,
@@ -226,11 +378,11 @@
      ],
      "bays": 3,
      "wall": {
-      "hex": "#605148",
-      "rawHex": "#4b3f38",
+      "hex": "#5c4f43",
+      "rawHex": "#483d34",
       "gain": 1.655,
       "word": "brown brick",
-      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b3f38, gain 1.655)",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483d34, gain 1.655)",
       "finish": "brick",
       "finishFrom": "read",
       "source": "reviewed",
@@ -259,7 +411,7 @@
       },
       {
        "field": "wall.hex",
-       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4b3f38, gain 1.655)",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #483d34, gain 1.655)",
        "kind": "lane2-strip-read"
       }
      ],
@@ -267,7 +419,196 @@
      "conflicts": [],
      "notes": [
       "lane2: the front's right edge stands about 9.0 m on the photo; the span runs on to 9.57 m"
-     ]
+     ],
+     "trace": {
+      "storeys": [
+       [
+        {
+         "x": 4.55,
+         "w": 0.9,
+         "y": 0.1,
+         "h": 3.9,
+         "kind": "door",
+         "head": "flat",
+         "panes": null,
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 5.8,
+         "w": 1.05,
+         "y": 0.1,
+         "h": 3.9,
+         "kind": "door",
+         "head": "flat",
+         "panes": null,
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 7.2,
+         "w": 1.75,
+         "y": 0.4,
+         "h": 3.8,
+         "kind": "shop",
+         "head": "flat",
+         "panes": "1",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 4.75,
+         "w": 1.4,
+         "y": 6.3,
+         "h": 2.4,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.6,
+         "w": 1.4,
+         "y": 6.3,
+         "h": 2.4,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 8.45,
+         "w": 0.95,
+         "y": 6.3,
+         "h": 2.4,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 4.7,
+         "w": 1.45,
+         "y": 9.5,
+         "h": 2.05,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.55,
+         "w": 1.45,
+         "y": 12.2,
+         "h": 1.25,
+         "kind": "attic",
+         "head": "flat",
+         "panes": "4 lights",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.6,
+         "w": 1.4,
+         "y": 9.5,
+         "h": 2.05,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 8.45,
+         "w": 0.95,
+         "y": 9.5,
+         "h": 2.05,
+         "kind": "single-sash",
+         "head": "segmental",
+         "panes": "2/2",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        }
+       ]
+      ],
+      "shopBandTopM": 5.65,
+      "fascia": {
+       "hex": "#5c5b55",
+       "word": "beige"
+      },
+      "corniceM": null,
+      "bands": [
+       {
+        "kind": "fascia",
+        "bottomM": 5,
+        "topM": 5.65,
+        "colour": "beige"
+       }
+      ],
+      "surroundColour": "white",
+      "outline": [
+       [
+        4.05,
+        0
+       ],
+       [
+        4.05,
+        12.6
+       ],
+       [
+        5.44,
+        12.6
+       ],
+       [
+        5.44,
+        15.6
+       ],
+       [
+        8.19,
+        15.6
+       ],
+       [
+        8.19,
+        12.6
+       ],
+       [
+        9.57,
+        12.6
+       ],
+       [
+        9.57,
+        0
+       ]
+      ],
+      "source": {
+       "field": "trace",
+       "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 0, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+       "kind": "lane2-strip-read"
+      },
+      "confidence": "medium",
+      "notes": [
+       "neck gable; the strip seam is at 8.95 m, the right bay is cut there",
+       "two doors and a shop window behind the awning"
+      ]
+     }
     }
    ]
   },
@@ -317,11 +658,11 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#705b4b",
-    "rawHex": "#574639",
+    "hex": "#6c5848",
+    "rawHex": "#544437",
     "gain": 1.708,
     "word": "brown brick",
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #574639, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #544437, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "brick",
     "finishFrom": "read",
     "source": "reviewed",
@@ -365,7 +706,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #574639, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #544437, gain 1.708; auto-place raw #4c4849 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "lane2-strip-read"
     },
     {
@@ -379,7 +720,162 @@
    "conflicts": [],
    "notes": [
     "3DBAG front eaves 8.75 m stands -3.35 m off the measured front top 12.1 m"
-   ]
+   ],
+   "trace": {
+    "storeys": [
+     [
+      {
+       "x": 0.3,
+       "w": 4,
+       "y": 1,
+       "h": 3.9,
+       "kind": "shop",
+       "head": "flat",
+       "panes": "1",
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.35,
+       "w": 0.85,
+       "y": 0.1,
+       "h": 3.7,
+       "kind": "door",
+       "head": "flat",
+       "panes": null,
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.05,
+       "w": 2.1,
+       "y": 6.4,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.2,
+       "w": 2.05,
+       "y": 6.4,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.3,
+       "w": 1.25,
+       "y": 6.4,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.05,
+       "w": 2.1,
+       "y": 9.45,
+       "h": 1.85,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.2,
+       "w": 2.05,
+       "y": 9.45,
+       "h": 1.85,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.3,
+       "w": 1.25,
+       "y": 9.45,
+       "h": 1.85,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ]
+    ],
+    "shopBandTopM": 5.75,
+    "fascia": {
+     "hex": "#80807c",
+     "word": "pale beige"
+    },
+    "corniceM": 12.3,
+    "bands": [
+     {
+      "kind": "fascia",
+      "bottomM": 5,
+      "topM": 5.75,
+      "colour": "pale beige"
+     },
+     {
+      "kind": "cornice",
+      "bottomM": 12,
+      "topM": 12.3,
+      "colour": "white"
+     }
+    ],
+    "surroundColour": "white",
+    "outline": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      12.1
+     ],
+     [
+      5.58,
+      12.1
+     ],
+     [
+      5.58,
+      0
+     ]
+    ],
+    "source": {
+     "field": "trace",
+     "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 1, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+     "kind": "lane2-strip-read"
+    },
+    "confidence": "medium",
+    "notes": [
+     "x from the left party wall: after the span-0 seam the photo stands 0.6 m left of the face registration here (spans 1-3)",
+     "wide windows with white mullions, an ornate white raised top over the cornice"
+    ]
+   }
   },
   {
    "pandId": "0363100012177590",
@@ -413,16 +909,25 @@
     "hoist": null,
     "note": "flat crenellated parapet; flat crenellated parapet over modern ribbon windows"
    },
-   "storeys": null,
-   "groundStoreyTopM": null,
-   "rows": [],
-   "bays": null,
+   "storeys": 3,
+   "groundStoreyTopM": 5,
+   "rows": [
+    {
+     "sillM": 6.1,
+     "headM": 8.4
+    },
+    {
+     "sillM": 9.55,
+     "headM": 11.8
+    }
+   ],
+   "bays": 1,
    "wall": {
-    "hex": "#4f4745",
-    "rawHex": "#393331",
+    "hex": "#514745",
+    "rawHex": "#3a3331",
     "gain": 1.921,
     "word": "brown brick",
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #393331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "brick",
     "finishFrom": "read",
     "source": "reviewed",
@@ -445,8 +950,28 @@
      "kind": "lane2-strip-read"
     },
     {
+     "field": "groundStoreyTopM",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 606-838",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "bays",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 606-838",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "storeys",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 606-838",
+     "kind": "lane2-strip-read"
+    },
+    {
+     "field": "rows",
+     "ref": "lane2 strip read 2026-11-13: haarlemmerdijk-2-58 strip px 606-838",
+     "kind": "lane2-strip-read"
+    },
+    {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #393331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3331, gain 1.921; auto-place raw #3f3734 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "lane2-strip-read"
     },
     {
@@ -459,9 +984,122 @@
    "nothingLocal": false,
    "conflicts": [],
    "notes": [
-    "lane2: modern ribbon windows with balconies; rows not read",
+    "lane2: modern ribbon windows with French balconies, a narrow stair window at the left; rows read from the 80 px/m trace crop",
     "3DBAG front eaves 10.79 m stands -2.21 m off the measured front top 13 m"
-   ]
+   ],
+   "trace": {
+    "storeys": [
+     [
+      {
+       "x": 1,
+       "w": 4.7,
+       "y": 0.3,
+       "h": 3.9,
+       "kind": "shop",
+       "head": "flat",
+       "panes": "1",
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.6,
+       "w": 0.25,
+       "y": 6.4,
+       "h": 2.15,
+       "kind": "single-sash",
+       "head": "flat",
+       "panes": "1",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.3,
+       "w": 4.4,
+       "y": 6.1,
+       "h": 2.3,
+       "kind": "french-door",
+       "head": "flat",
+       "panes": "5 lights, transom, French balcony",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.6,
+       "w": 0.25,
+       "y": 9.7,
+       "h": 1.75,
+       "kind": "single-sash",
+       "head": "flat",
+       "panes": "1",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.3,
+       "w": 4.4,
+       "y": 9.55,
+       "h": 2.25,
+       "kind": "other",
+       "head": "flat",
+       "panes": "5 lights, transom",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ]
+    ],
+    "shopBandTopM": 5,
+    "fascia": {
+     "hex": "#4d3131",
+     "word": "dark red"
+    },
+    "corniceM": null,
+    "bands": [
+     {
+      "kind": "fascia",
+      "bottomM": 4.55,
+      "topM": 5,
+      "colour": "dark red"
+     }
+    ],
+    "surroundColour": null,
+    "outline": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      5.81,
+      13
+     ],
+     [
+      5.81,
+      0
+     ]
+    ],
+    "source": {
+     "field": "trace",
+     "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 2, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+     "kind": "lane2-strip-read"
+    },
+    "confidence": "medium",
+    "notes": [
+     "x from the left party wall (see span 1)",
+     "post-war front: a narrow stair window at the left, a five-light window band with a French balcony per storey"
+    ]
+   }
   },
   {
    "pandId": "0363100012176280",
@@ -509,11 +1147,11 @@
    ],
    "bays": 3,
    "wall": {
-    "hex": "#534c4c",
-    "rawHex": "#3a3535",
+    "hex": "#534a48",
+    "rawHex": "#3a3332",
     "gain": 2.052,
     "word": "dark brown brick",
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3535, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3332, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "brick",
     "finishFrom": "read",
     "source": "reviewed",
@@ -562,7 +1200,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3535, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #3a3332, gain 2.052; auto-place raw #444242 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "lane2-strip-read"
     },
     {
@@ -661,7 +1299,226 @@
    ],
    "notes": [
     "3DBAG front eaves 9.83 m stands -2.57 m off the measured front top 12.4 m"
-   ]
+   ],
+   "trace": {
+    "storeys": [
+     [
+      {
+       "x": 0.05,
+       "w": 0.8,
+       "y": 3.95,
+       "h": 1.4,
+       "kind": "shop",
+       "head": "flat",
+       "panes": "transom",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 0.15,
+       "w": 0.45,
+       "y": 0.1,
+       "h": 3.4,
+       "kind": "door",
+       "head": "flat",
+       "panes": null,
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.15,
+       "w": 0.45,
+       "y": 0.1,
+       "h": 3.4,
+       "kind": "door",
+       "head": "flat",
+       "panes": null,
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.15,
+       "w": 4.45,
+       "y": 3.95,
+       "h": 1.4,
+       "kind": "shop",
+       "head": "flat",
+       "panes": "transom, 6 lights",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.6,
+       "w": 4,
+       "y": 1.1,
+       "h": 2.4,
+       "kind": "shop",
+       "head": "flat",
+       "panes": "1",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.2,
+       "w": 2.25,
+       "y": 6.9,
+       "h": 2.2,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.45,
+       "w": 2,
+       "y": 6.9,
+       "h": 2.2,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.45,
+       "w": 1.15,
+       "y": 6.9,
+       "h": 2.2,
+       "kind": "single-sash",
+       "head": "flat",
+       "panes": "transom+1",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.2,
+       "w": 2.25,
+       "y": 9.9,
+       "h": 2.05,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.45,
+       "w": 2,
+       "y": 9.9,
+       "h": 2.05,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.7,
+       "w": 1.75,
+       "y": 12.4,
+       "h": 1.4,
+       "kind": "attic",
+       "head": "flat",
+       "panes": "3 lights",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.45,
+       "w": 1.15,
+       "y": 9.9,
+       "h": 2.05,
+       "kind": "single-sash",
+       "head": "flat",
+       "panes": "transom+1",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ]
+    ],
+    "shopBandTopM": 6.2,
+    "fascia": {
+     "hex": "#827e7b",
+     "word": "pale grey"
+    },
+    "corniceM": 12.45,
+    "bands": [
+     {
+      "kind": "fascia",
+      "bottomM": 5.4,
+      "topM": 6.2,
+      "colour": "pale grey"
+     },
+     {
+      "kind": "cornice",
+      "bottomM": 12,
+      "topM": 12.45,
+      "colour": null
+     }
+    ],
+    "surroundColour": "white",
+    "outline": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      12.4
+     ],
+     [
+      1.69,
+      12.4
+     ],
+     [
+      1.69,
+      15.75
+     ],
+     [
+      3.95,
+      15.75
+     ],
+     [
+      3.95,
+      12.4
+     ],
+     [
+      5.64,
+      12.4
+     ],
+     [
+      5.64,
+      0
+     ]
+    ],
+    "source": {
+     "field": "trace",
+     "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 3, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+     "kind": "lane2-strip-read"
+    },
+    "confidence": "medium",
+    "notes": [
+     "x from the left party wall (see span 1); the photo front is 6.3 m wide against BAG 5.65 m, the brick pier at the right carries the gable scroll",
+     "a tall shop with a transom row 3.95-5.35 m; the rows sit 0.3 m above the record's read"
+    ]
+   }
   },
   {
    "pandId": "0363100012176278",
@@ -700,11 +1557,11 @@
    "rows": [],
    "bays": null,
    "wall": {
-    "hex": "#666664",
-    "rawHex": "#494947",
+    "hex": "#605859",
+    "rawHex": "#443e3f",
     "gain": 2.01,
     "word": "brown brick",
-    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #494947, gain 2.01; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+    "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443e3f, gain 2.01; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
     "finish": "brick",
     "finishFrom": "read",
     "source": "reviewed",
@@ -733,7 +1590,7 @@
     },
     {
      "field": "wall.hex",
-     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #494947, gain 2.01; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
+     "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #443e3f, gain 2.01; auto-place raw #494543 in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json)",
      "kind": "lane2-strip-read"
     },
     {
@@ -751,7 +1608,206 @@
     "lane2: rows not counted: wide windows at 6.5-9.65 and 10.65-12.65 m over a 5.6 m shop",
     "3DBAG front eaves 12.86 m stands -3.69 m off the measured front top 16.55 m",
     "the pand's 3DBAG ground (1.47 m NAP) stands -0.79 m off the street ground (2.258 m NAP): heights here are above the street"
-   ]
+   ],
+   "trace": {
+    "storeys": [
+     [
+      {
+       "x": 0.65,
+       "w": 0.65,
+       "y": 0.9,
+       "h": 2.4,
+       "kind": "door",
+       "head": "flat",
+       "panes": null,
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 1.3,
+       "w": 3.35,
+       "y": 0.8,
+       "h": 4.6,
+       "kind": "shop",
+       "head": "segmental",
+       "panes": "bowed, 6 lights",
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.7,
+       "w": 0.65,
+       "y": 0.9,
+       "h": 2.4,
+       "kind": "door",
+       "head": "flat",
+       "panes": null,
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.65,
+       "w": 0.55,
+       "y": 3.9,
+       "h": 1,
+       "kind": "other",
+       "head": "flat",
+       "panes": "1",
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.75,
+       "w": 0.55,
+       "y": 3.9,
+       "h": 1,
+       "kind": "other",
+       "head": "flat",
+       "panes": "1",
+       "frame": "dark",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.3,
+       "w": 1.75,
+       "y": 6.75,
+       "h": 2.95,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.25,
+       "w": 1.7,
+       "y": 6.75,
+       "h": 2.95,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.1,
+       "w": 1.35,
+       "y": 6.75,
+       "h": 2.95,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ],
+     [
+      {
+       "x": 0.3,
+       "w": 1.75,
+       "y": 10.8,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 2.25,
+       "w": 1.7,
+       "y": 10.8,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      },
+      {
+       "x": 4.1,
+       "w": 1.35,
+       "y": 10.8,
+       "h": 2.15,
+       "kind": "two-light",
+       "head": "flat",
+       "panes": "transom+2",
+       "frame": "white",
+       "surround": null,
+       "shutters": null
+      }
+     ]
+    ],
+    "shopBandTopM": 6.35,
+    "fascia": {
+     "hex": "#484c4e",
+     "word": "grey-green"
+    },
+    "corniceM": 16,
+    "bands": [
+     {
+      "kind": "fascia",
+      "bottomM": 5.6,
+      "topM": 6.35,
+      "colour": "grey-green"
+     },
+     {
+      "kind": "frieze",
+      "bottomM": 13.85,
+      "topM": 14.55,
+      "colour": "white"
+     },
+     {
+      "kind": "cornice",
+      "bottomM": 14.6,
+      "topM": 16,
+      "colour": "brown"
+     }
+    ],
+    "surroundColour": "white",
+    "outline": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      16.55
+     ],
+     [
+      5.6,
+      16.55
+     ],
+     [
+      5.6,
+      0
+     ]
+    ],
+    "source": {
+     "field": "trace",
+     "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 4, crop 80 px/m (data/front-records/haarlemmerdijk-traces.json)",
+     "kind": "lane2-strip-read"
+    },
+    "confidence": "medium",
+    "notes": [
+     "a bowed shopfront under a segmental head 0.8-5.4 m between two doors, mezzanine windows over the doors (the reviewer's fourth storey)",
+     "a frieze of roundels and a deep bracketed cornice over two Chicago-style window storeys"
+    ]
+   }
   },
   {
    "pandId": "0363100012176279",
@@ -1067,12 +2123,12 @@
      ],
      "bays": null,
      "wall": {
-      "hex": "#96948e",
-      "rawHex": "#797873",
+      "hex": "#93928c",
+      "rawHex": "#777671",
       "gain": 1.588,
       "word": "grey",
-      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797873, gain 1.588)",
-      "finish": "plaster",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #777671, gain 1.588)",
+      "finish": "brick",
       "finishFrom": "lightness",
       "source": "reviewed",
       "confidence": "high"
@@ -1100,7 +2156,7 @@
       },
       {
        "field": "wall.hex",
-       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #797873, gain 1.588)",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #777671, gain 1.588)",
        "kind": "lane2-strip-read"
       }
      ],
@@ -1108,7 +2164,102 @@
      "conflicts": [],
      "notes": [
       "lane2: the left wing of one post-war composition (BAG 32-36)"
-     ]
+     ],
+     "trace": {
+      "storeys": [
+       [
+        {
+         "x": 0.1,
+         "w": 3.8,
+         "y": 1,
+         "h": 2.8,
+         "kind": "shop",
+         "head": "flat",
+         "panes": "grille",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 0.75,
+         "w": 2.75,
+         "y": 5.4,
+         "h": 1.6,
+         "kind": "other",
+         "head": "flat",
+         "panes": "loggia",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 0.5,
+         "w": 3,
+         "y": 8.4,
+         "h": 1.9,
+         "kind": "other",
+         "head": "flat",
+         "panes": "4 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 0.45,
+         "w": 3,
+         "y": 11.5,
+         "h": 1.8,
+         "kind": "other",
+         "head": "flat",
+         "panes": "4 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ]
+      ],
+      "shopBandTopM": 4.9,
+      "fascia": {
+       "hex": "#646468",
+       "word": "grey concrete"
+      },
+      "corniceM": null,
+      "bands": [],
+      "surroundColour": null,
+      "outline": [
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        13.7
+       ],
+       [
+        4,
+        13.7
+       ],
+       [
+        4,
+        0
+       ]
+      ],
+      "source": {
+       "field": "trace",
+       "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 8, crop 60 px/m (data/front-records/haarlemmerdijk-traces.json)",
+       "kind": "lane2-strip-read"
+      },
+      "confidence": "medium",
+      "notes": [
+       "1960s block (HD32-36); the left wing has loggias and wide steel windows, a set-back penthouse above 13.7 m"
+      ]
+     }
     },
     {
      "from": 4,
@@ -1155,11 +2306,11 @@
      ],
      "bays": null,
      "wall": {
-      "hex": "#45444a",
-      "rawHex": "#39383d",
+      "hex": "#5d6066",
+      "rawHex": "#4d5055",
       "gain": 1.473,
       "word": "grey",
-      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #39383d, gain 1.473)",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4d5055, gain 1.473)",
       "finish": "brick",
       "finishFrom": "lightness",
       "source": "reviewed",
@@ -1188,7 +2339,7 @@
       },
       {
        "field": "wall.hex",
-       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #39383d, gain 1.473)",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #4d5055, gain 1.473)",
        "kind": "lane2-strip-read"
       }
      ],
@@ -1196,7 +2347,186 @@
      "conflicts": [],
      "notes": [
       "lane2: the projecting centre, cantilevered over a passage; balconies in the middle"
-     ]
+     ],
+     "trace": {
+      "storeys": [
+       [
+        {
+         "x": 4.25,
+         "w": 3.35,
+         "y": 0.9,
+         "h": 3.95,
+         "kind": "other",
+         "head": "flat",
+         "panes": "passage",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 7.65,
+         "w": 3.75,
+         "y": 1,
+         "h": 3.8,
+         "kind": "shop",
+         "head": "flat",
+         "panes": "3 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 4.1,
+         "w": 2.3,
+         "y": 6.7,
+         "h": 1.55,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.45,
+         "w": 2.6,
+         "y": 6.65,
+         "h": 1.5,
+         "kind": "french-door",
+         "head": "flat",
+         "panes": "balcony",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 9.1,
+         "w": 2.15,
+         "y": 6.67,
+         "h": 1.6,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 4.15,
+         "w": 2.25,
+         "y": 9.5,
+         "h": 1.5,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.45,
+         "w": 2.6,
+         "y": 9,
+         "h": 1.6,
+         "kind": "french-door",
+         "head": "flat",
+         "panes": "balcony",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 9.15,
+         "w": 2.1,
+         "y": 9.25,
+         "h": 1.65,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 4.15,
+         "w": 2.25,
+         "y": 12.25,
+         "h": 1.65,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 6.45,
+         "w": 2.6,
+         "y": 12,
+         "h": 1.5,
+         "kind": "french-door",
+         "head": "flat",
+         "panes": "balcony",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        },
+        {
+         "x": 9.1,
+         "w": 2.15,
+         "y": 12,
+         "h": 1.65,
+         "kind": "other",
+         "head": "flat",
+         "panes": "2 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ]
+      ],
+      "shopBandTopM": 4.85,
+      "fascia": {
+       "hex": "#2a2a29",
+       "word": "grey concrete"
+      },
+      "corniceM": null,
+      "bands": [],
+      "surroundColour": null,
+      "outline": [
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        15.2
+       ],
+       [
+        11.7,
+        15.2
+       ],
+       [
+        11.7,
+        0
+       ]
+      ],
+      "source": {
+       "field": "trace",
+       "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 8, crop 60 px/m (data/front-records/haarlemmerdijk-traces.json)",
+       "kind": "lane2-strip-read"
+      },
+      "confidence": "medium",
+      "notes": [
+       "a through-passage at the left of the ground storey, recessed balconies in the middle of each storey"
+      ]
+     }
     },
     {
      "from": 11.7,
@@ -1236,11 +2566,11 @@
      ],
      "bays": null,
      "wall": {
-      "hex": "#63666c",
-      "rawHex": "#54575c",
+      "hex": "#63656b",
+      "rawHex": "#54565b",
       "gain": 1.402,
       "word": "grey",
-      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54575c, gain 1.402)",
+      "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54565b, gain 1.402)",
       "finish": "brick",
       "finishFrom": "lightness",
       "source": "reviewed",
@@ -1269,7 +2599,7 @@
       },
       {
        "field": "wall.hex",
-       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54575c, gain 1.402)",
+       "ref": "data/front-records/haarlemmerdijk-walls.json (lane WC exposure (c) on the strip, raw #54565b, gain 1.402)",
        "kind": "lane2-strip-read"
       }
      ],
@@ -1277,7 +2607,102 @@
      "conflicts": [],
      "notes": [
       "lane2: the right wing"
-     ]
+     ],
+     "trace": {
+      "storeys": [
+       [
+        {
+         "x": 11.9,
+         "w": 2.7,
+         "y": 1.1,
+         "h": 2.8,
+         "kind": "shop",
+         "head": "flat",
+         "panes": "1",
+         "frame": "white",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 12.1,
+         "w": 2.4,
+         "y": 5.3,
+         "h": 1.7,
+         "kind": "other",
+         "head": "flat",
+         "panes": "loggia",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 12.1,
+         "w": 2.4,
+         "y": 8.2,
+         "h": 1.7,
+         "kind": "other",
+         "head": "flat",
+         "panes": "loggia",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ],
+       [
+        {
+         "x": 12.15,
+         "w": 2.35,
+         "y": 11,
+         "h": 1.65,
+         "kind": "other",
+         "head": "flat",
+         "panes": "4 lights",
+         "frame": "dark",
+         "surround": null,
+         "shutters": null
+        }
+       ]
+      ],
+      "shopBandTopM": 4.95,
+      "fascia": {
+       "hex": "#585a5d",
+       "word": "grey concrete"
+      },
+      "corniceM": null,
+      "bands": [],
+      "surroundColour": null,
+      "outline": [
+       [
+        11.7,
+        0
+       ],
+       [
+        11.7,
+        14.1
+       ],
+       [
+        15.2,
+        14.1
+       ],
+       [
+        15.2,
+        0
+       ]
+      ],
+      "source": {
+       "field": "trace",
+       "ref": "lane2 trace 2026-11-13: haarlemmerdijk-2-58 span 8, crop 60 px/m (data/front-records/haarlemmerdijk-traces.json)",
+       "kind": "lane2-strip-read"
+      },
+      "confidence": "medium",
+      "notes": [
+       "the right wing: two loggia storeys and a window storey under a set-back penthouse"
+      ]
+     }
     }
    ]
   },
