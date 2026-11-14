@@ -35,3 +35,25 @@ export async function routeFreshSignatureBundle(target: Page | BrowserContext): 
 export async function gameListsModel(page: Page, id: string): Promise<boolean> {
   return page.evaluate(i => !!(window as any).CanalRecallSignatureLandmarks?.GAME_BUILDING_MODELS?.some((m: {id: string}) => m.id === i), id);
 }
+
+/**
+ * The camera is held by stubbing `vectorMap.sync`, which on the own engine also stops the city, ground, far and baked tiers
+ * streaming at the new camera: frames shot after a fixed 5 s wait showed the landmark alone on an empty lot (Morgan & Mees,
+ * 2026-11-14: 4 of 5 IN GAME frames had no neighbours). Drive the tiers with `settleTick()` and wait for `worldSettled()`
+ * twice in a row, as tests/e2e/helpers.ts settleWorld does; MapLibre (no settleTick) keeps the fixed wait.
+ */
+export async function settleHeldWorld(page: Page, timeoutMs = 60000): Promise<void> {
+  const own = await page.evaluate(() => typeof (window as any).canalRecallGame?.vectorMap?.settleTick === 'function');
+  if (!own) { await page.waitForTimeout(5000); return; }
+  let previous = '', stable = 0;
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    for (let k = 0; k < 5; k++) { await page.evaluate(() => (window as any).canalRecallGame.vectorMap.settleTick()); await page.waitForTimeout(100); }
+    const now = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.worldSettled?.() ?? {settled: true});
+    const key = JSON.stringify(now);
+    stable = now.settled && key === previous ? stable + 1 : 0;
+    previous = key;
+    if (stable >= 2) return;
+  }
+  console.log(`in-game shot: world not settled after ${timeoutMs / 1000} s: ${previous}`);
+}

@@ -11,13 +11,15 @@
      "openings": [{"kind": "door", "w": 0.8}, {"kind": "arched window", "w": 2.1}, {"kind": "window", "w": 1.1}]}
    ]},
   {"name": "east (Nassaukade)", "bearing": 111, "photo": "artifacts/landmark-briefs/morgan-mees/w03-111.thumb.jpg",
-   "rows": [null, 4, 1], "columns": 4, "symmetric": false, "gables": 1,
+   "rows": [null, 4, 3], "columns": 4, "symmetric": false, "gables": 1,
    "alongM": [0, 12.3],
    "mixedRows": [
     {"row": 0, "rowSizes": "mixed", "evidence": "recording_2024-09-11_08-03-34_00126 (Nassaukade, inventory n-gw-window, n-gate, n-wing-window)",
      "openings": [{"kind": "arched window", "w": 0.8}, {"kind": "gateway", "w": 2.45}, {"kind": "arched window", "w": 0.78}]},
     {"row": 1, "rowSizes": "mixed", "evidence": "recording_2025-06-18_07-44-47_01471 and w03-111 recording_2025-06-17_11-17-15_01485 (inventory e-windows: French doors on the outer axes, a window and a two-light window between)",
-     "openings": [{"kind": "balcony door", "w": 1.1}, {"kind": "window", "w": 1.1}, {"kind": "window", "w": 2.2}, {"kind": "balcony door", "w": 1.2}]}
+     "openings": [{"kind": "balcony door", "w": 1.1}, {"kind": "window", "w": 1.1}, {"kind": "window", "w": 2.2}, {"kind": "balcony door", "w": 1.2}]},
+    {"row": 2, "rowSizes": "mixed", "evidence": "recording_2025-06-18_07-44-47_01471 (east hip, inventory e-dormer, e-skylights): the white-cheeked dormer of two lights between two roof windows; with the hip raised to 14.0 m (2026-11-14) the roof windows read on the facade",
+     "openings": [{"kind": "roof window", "w": 0.7}, {"kind": "dormer window", "w": 1.1}, {"kind": "roof window", "w": 0.7}]}
    ]}
  ]
 }

@@ -97250,14 +97250,15 @@
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
-      "heightMetres": 14.4,
+      "heightMetres": 14.7,
       "galleryView": {
         "theta": 2.2,
         "phi": 1.2
       },
       "bagYear": 1883,
       "materialOverrides": {
-        "brick": "#84614f",
+        "brick": "#7b685f",
+        "greyBrick": "#8c796f",
         "ochre": "#e6e3db",
         "white": "#e6e3db",
         "stone": "#77746f",
@@ -97357,7 +97358,7 @@
         ],
         "max": [
           6.016386985778809,
-          14.399999618530273,
+          14.699999809265137,
           10.92625617980957
         ]
       },
@@ -97373,24 +97374,18 @@
       },
       "extent": {
         "widthMetres": 23.674168586730957,
-        "heightMetres": 14.699999630451202,
+        "heightMetres": 14.999999821186066,
         "depthMetres": 22.028270721435547,
         "depthCoverage": 1.1533126032165206
       },
       "triangles": 6159,
-      "bytes": 105508,
+      "bytes": 106724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "8b9c6b1d8b75254f",
         "buildVersion": 2,
         "bytes": 42688,
         "triangles": 1357
-      },
-      "lod2": {
-        "sourceHash": "8b9c6b1d8b75254f",
-        "buildVersion": 6,
-        "bytes": 8296,
-        "triangles": 176
       }
     },
     "club-raum": {

@@ -76846,14 +76846,15 @@
   },
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
-  "heightMetres": 14.4,
+  "heightMetres": 14.7,
   "galleryView": {
    "theta": 2.2,
    "phi": 1.2
   },
   "bagYear": 1883,
   "materialOverrides": {
-   "brick": "#84614f",
+   "brick": "#7b685f",
+   "greyBrick": "#8c796f",
    "ochre": "#e6e3db",
    "white": "#e6e3db",
    "stone": "#77746f",
