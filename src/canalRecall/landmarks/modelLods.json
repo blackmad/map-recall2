@@ -5802,6 +5802,26 @@
    "triangles": 176
   }
  },
+ "club-raum": {
+  "lod2": {
+   "sourceHash": "18c2bb08ff4a7e23",
+   "buildVersion": 6,
+   "bytes": 7104,
+   "triangles": 129
+  }
+ },
+ "sameplace": {
+  "sourceHash": "7fcac0d803116120",
+  "buildVersion": 2,
+  "bytes": 70056,
+  "triangles": 3710,
+  "lod2": {
+   "sourceHash": "7fcac0d803116120",
+   "buildVersion": 6,
+   "bytes": 7980,
+   "triangles": 212
+  }
+ },
  "blok0-ij4you": {
   "sourceHash": "21f09645ab843ca1",
   "buildVersion": 2,

@@ -34,6 +34,32 @@
     },
     {
       "date": "2026-11-14",
+      "title": "Sameplace and Club RAUM",
+      "text": "Two more nightlife spots are modelled from photos: Sameplace, the 1889 corner building on the Nassaukade with its white bands, keystoned window heads and slate mansard, and Club RAUM, a plain 1969 industrial unit on the Humberweg with its brick chimney, loading doors and roller door.",
+      "where": [
+        4.87475,
+        52.37408
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-clubs-b-fix/sameplace-likeness-hugo-dpr2.jpg",
+          "alt": "Sameplace corner building from Tweede Hugo de Grootstraat, first-person view in the ride",
+          "caption": "Sameplace, from Tweede Hugo de Grootstraat"
+        },
+        {
+          "src": "landmarks/2026-11-14-clubs-b-fix/sameplace-likeness-hugo-photo.jpg",
+          "alt": "Street photo of Sameplace from the same spot",
+          "caption": "The photo from the same spot"
+        },
+        {
+          "src": "landmarks/2026-11-14-clubs-b-fix/club-raum-likeness-basisweg-dpr2.jpg",
+          "alt": "Club RAUM on the Basisweg, first-person view in the ride",
+          "caption": "Club RAUM, Basisweg"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Five more places for music, clubbing and an old bank",
       "text": "Five more places are now modelled from photos instead of drawn as plain blocks: the clubs Lofi (in a former bus garage at Sloterdijk) and RADION, the music venues The Other Side and Toekomstmuziek by the IJ, and Morgan & Mees, the former bank on the Nassaukade.",
       "where": [
