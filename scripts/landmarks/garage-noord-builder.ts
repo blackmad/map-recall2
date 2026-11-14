@@ -21,7 +21,7 @@ import source from './garage-noord-footprints.json' with {type: 'json'};
  *  - in front, the restaurant's glasshouse on the yard: a Venlo block of four ridges (eaves 3.0, ridges 3.9 m) against the
  *    wall over s -3.8..9.7, and a lower five-ridge glazed room (eaves 2.9, ridges 3.2 m) out to 12.5 m over s -3.8..11.9,
  *    mint-green frame, red characters on its front glass;
- *  - two rust "sunburst" lamp masts in front of it, a wheel of drooping spokes with a lamp on every tip.
+ *  - two rust "sunburst" lamp masts in the front room, a wheel of spokes rising to a lamp on every tip, stayed from the pole top.
  * Native frame of garage-noord-footprints.json: x east, z south, y up from the 3DBAG ground (0.98 m NAP).
  */
 type Shell = {nativeRing: XZ[]};
@@ -94,9 +94,13 @@ export function buildGarageNoord(_w: number, _d: number, b: BuildingTools & {mar
   b.mark?.('glasshouse');
 
   // ---- sunburst lamp masts -----------------------------------------------------------------------------------------------
-  for (const [s, o, ph] of [[1.3, 13.6, 0], [9.4, 13.9, 0.17]] as const) {
+  // Measured on the 2022 capture TMX7316010203-002572_pano_0000_001788 at the rule-10 pose (eye 2.44 m, focal from the
+  // 5.48 m teal front at 22.2 m): mast feet 7-10 m out from the wall, s 1.3 and ~8.0; hubs ~4.5 m; pole tops ~7.7 m; the
+  // spokes rise to their lamp heads, held by stays from the pole top (an upturned umbrella). They stand inside the 2024
+  // glazed front room and rise through its roof.
+  for (const [s, o, ph] of [[1.3, 8.5, 0], [8.0, 9.5, 0.17]] as const) {
     const [x, z] = P2(s, o);
-    spokeLamp(b, x, z, {pole: 6.6, r: 3.0, n: 18, droop: 0.3, hub: 4.4, c: 'bronze', lamp: 'dark', phase: ph, poleR: 0.13});
+    spokeLamp(b, x, z, {pole: 7.7, r: 3.0, n: 18, droop: -0.9, hub: 4.5, c: 'bronze', lamp: 'dark', phase: ph, poleR: 0.13, stays: true});
   }
   b.mark?.('lamps');
 

@@ -1,0 +1,25 @@
+{
+  "modelId": "garage-noord",
+  "landmarkId": "n5891849386",
+  "name": "Garage Noord",
+  "center": [
+    52.38557089,
+    4.92570872
+  ],
+  "address": "Gedempt Hamerkanaal 40, Amsterdam",
+  "sourceUrl": "https://www.amsterdamnow.com/en/?p=82915",
+  "description": "Garage Noord is a small club with a restaurant on the Gedempt Hamerkanaal in Amsterdam-Noord, next to the Skatecafé. Daan Alvering and Rachella Groon opened it in 2017 in a former depot building. It has room for about 150 people. A second hall, bar40, is programmed by a different guest collective each time. The restaurant is open Thursday to Saturday for people who want to eat first and dance afterwards.",
+  "funFact": "Resident Advisor reported the opening in August 2017: a 150-capacity club, with the music programmed by Daan Alvering (Al Dee).",
+  "sourceLinks": [
+    {
+      "title": "Amsterdam Now: Garage Noord",
+      "url": "https://www.amsterdamnow.com/en/?p=82915"
+    },
+    {
+      "title": "Resident Advisor news, 22 August 2017",
+      "url": "https://ra.co/news.aspx?id=39803"
+    }
+  ],
+  "genuineOsmIdentity": "n5891849386",
+  "identityNote": "BAG pand 0363100012079768. Sources disagree on the building's former use (Amsterdam Now calls it a former car garage in its intro and a former GVB depot in its text), so the card says only 'a former depot building'."
+}

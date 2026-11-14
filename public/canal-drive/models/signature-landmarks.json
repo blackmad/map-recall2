@@ -101839,7 +101839,8 @@
         "red": "#a8402f",
         "bronze": "#4a3a2e",
         "pink": "#35322f",
-        "ochre": "#ecebe6"
+        "ochre": "#ecebe6",
+        "copper": "#2c3b22"
       },
       "attribution": {
         "title": "Skatecafe",
@@ -101847,7 +101848,7 @@
         "sourceUrl": "https://www.openstreetmap.org/node/9789622796",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated tag pieces, not copied; no pixels or meshes imported."
+        "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated flat tag panels and scribbles at the photographed positions and colours, not copied; no pixels or meshes imported."
       },
       "buildingFootprint": {
         "type": "Polygon",
@@ -101905,7 +101906,7 @@
       "bounds": {
         "min": [
           -15.738512992858887,
-          -9.536743306171047e-8,
+          -0.2494715303182602,
           -19.422977447509766
         ],
         "max": [
@@ -101926,24 +101927,18 @@
       },
       "extent": {
         "widthMetres": 40.79697799682617,
-        "heightMetres": 9.899999713897706,
+        "heightMetres": 10.149471148848534,
         "depthMetres": 29.66222095489502,
         "depthCoverage": 2.3825077072204834
       },
-      "triangles": 5136,
-      "bytes": 92008,
+      "triangles": 8152,
+      "bytes": 157492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "150915a12dfc6d63",
         "buildVersion": 2,
         "bytes": 53828,
         "triangles": 1723
-      },
-      "lod2": {
-        "sourceHash": "150915a12dfc6d63",
-        "buildVersion": 6,
-        "bytes": 7156,
-        "triangles": 106
       }
     },
     "garage-noord": {
@@ -102053,7 +102048,7 @@
           -8.670825004577637
         ],
         "max": [
-          20.73566436767578,
+          18.081270217895508,
           8.619999885559082,
           16.386442184448242
         ]
@@ -102069,25 +102064,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 30.26416301727295,
+        "widthMetres": 27.609768867492676,
         "heightMetres": 8.619999933242799,
         "depthMetres": 25.05726718902588,
         "depthCoverage": 2.5673429496952744
       },
-      "triangles": 5445,
-      "bytes": 85872,
+      "triangles": 5877,
+      "bytes": 91540,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "764d3cde0a54edd8",
         "buildVersion": 2,
         "bytes": 55088,
         "triangles": 2769
-      },
-      "lod2": {
-        "sourceHash": "764d3cde0a54edd8",
-        "buildVersion": 6,
-        "bytes": 5820,
-        "triangles": 106
       }
     }
   }
