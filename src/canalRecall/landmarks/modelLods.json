@@ -6125,5 +6125,53 @@
    "bytes": 16992,
    "triangles": 1037
   }
+ },
+ "roode-bioscoop": {
+  "sourceHash": "cf7510b56637c7c8",
+  "buildVersion": 2,
+  "bytes": 35760,
+  "triangles": 1399,
+  "lod2": {
+   "sourceHash": "cf7510b56637c7c8",
+   "buildVersion": 6,
+   "bytes": 8336,
+   "triangles": 233
+  }
+ },
+ "cristofori": {
+  "sourceHash": "cb3733a0c3c11244",
+  "buildVersion": 2,
+  "bytes": 27308,
+  "triangles": 1081,
+  "lod2": {
+   "sourceHash": "cb3733a0c3c11244",
+   "buildVersion": 6,
+   "bytes": 5808,
+   "triangles": 146
+  }
+ },
+ "zaal-100": {
+  "sourceHash": "902e363b33b3bfa9",
+  "buildVersion": 2,
+  "bytes": 48584,
+  "triangles": 2211,
+  "lod2": {
+   "sourceHash": "902e363b33b3bfa9",
+   "buildVersion": 6,
+   "bytes": 10112,
+   "triangles": 319
+  }
+ },
+ "afas-live": {
+  "sourceHash": "26e3479ae1557d11",
+  "buildVersion": 2,
+  "bytes": 57196,
+  "triangles": 3054,
+  "lod2": {
+   "sourceHash": "26e3479ae1557d11",
+   "buildVersion": 6,
+   "bytes": 10940,
+   "triangles": 343
+  }
  }
 }

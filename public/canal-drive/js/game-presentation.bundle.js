@@ -7934,6 +7934,67 @@
         4.91313921
       ],
       preferDescription: true
+    },
+    {
+      modelId: "roode-bioscoop",
+      landmarkId: "roode-bioscoop",
+      name: "De Roode Bioscoop",
+      description: "De Roode Bioscoop is a small music theatre on the Haarlemmerplein. The building opened as a cinema in 1913 under the names Ons Genoegen and Westerbioscoop, run by the anarchist Gerhard Rijnders, a follower of Ferdinand Domela Nieuwenhuis. Locals called it the Red Cinema because of the socialist-anarchist propaganda films it showed. Since the late 1970s it has been a stage again, with performances almost every day: music theatre, poetry, jazz, world music and classical.",
+      funFact: "The propaganda did not pay: the cinema closed after a few years, and the building then housed a lamp factory, a dance school, a bicycle repairer and a greengrocer before the Flint brothers gave it its name officially.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/De_Roode_Bioscoop",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Bioscopen_in_Amsterdam"
+      ],
+      center: [
+        52.38398249,
+        4.88411698
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "cristofori",
+      landmarkId: "cristofori",
+      name: "Cristofori",
+      description: "Prinsengracht 581-583 began as two warehouses under spout gables. In the first decade of the 20th century the architect A.M.A. Gulden rebuilt them for the Adler cycle wholesaler, later also a car dealer: the roofs were flattened and the lower three storeys were given a front of natural stone, wood and glass. The piano dealer Christofori later built a showroom and a small concert hall, Salon Christofori, into the building, and its name still stands in large letters on the front.",
+      funFact: "The building is not a monument itself, although it stands between two municipal monuments, numbers 579 and 587; between its house numbers there is a small artistic emblem.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Prinsengracht_581-583",
+      center: [
+        52.36803505,
+        4.88323061
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "zaal-100",
+      landmarkId: "zaal-100",
+      name: "Zaal 100",
+      description: "Zaal 100 calls itself a stage for unheard sound: amateur theatre, unusual concerts, dance, poetry, exhibitions and small meetings that find no room elsewhere. Private parties and party-political or religious meetings are not booked. Its weekly fixtures include a singer-songwriter night on Mondays, the Impro Jazzcaf\xE9 on Tuesdays and a jazz workshop on Thursdays, and it runs a monthly gallery and a cheap vegetarian restaurant three evenings a week.",
+      funFact: "Listening to the Thursday jazz workshop is free; joining in costs five euros, the same as the Tuesday Impro Jazzcaf\xE9.",
+      sourceUrl: "https://zaal100.nl/over-zaal-100/",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012158161/"
+      ],
+      center: [
+        52.38310779,
+        4.87810876
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "afas-live",
+      landmarkId: "extract_landmarks_1248010277",
+      name: "AFAS Live",
+      description: "AFAS Live is a concert and events hall on the Johan Cruijff Boulevard, near the Johan Cruijff ArenA and Amsterdam Bijlmer ArenA station. It opened on 15 March 2001 as the Heineken Music Hall and has been called AFAS Live since 2017. Shows play in the main hall, the Black Box, which covers 3,000 m2 and holds up to 6,000 people; a smaller room, the Talent Stage, takes 700 for pre- and after-shows.",
+      funFact: "Until 2017 the hall was sponsored by the beer brand Heineken, whose name it carried for its first sixteen years.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/AFAS_Live",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012123240/"
+      ],
+      center: [
+        52.31200318,
+        4.94429213
+      ],
+      preferDescription: true
     }
   ];
 

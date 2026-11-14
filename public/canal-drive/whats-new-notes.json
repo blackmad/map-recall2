@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "De Roode Bioscoop, Zaal 100, Cristofori and AFAS Live",
+      "text": "Four more venues have their own models. De Roode Bioscoop on the Haarlemmerplein has its ochre front, red window frames and neck gable. Zaal 100 in the De Wittenstraat has its arched window triplets and gable. Cristofori is in its two rebuilt warehouses on the Prinsengracht. AFAS Live, the former Heineken Music Hall, has its silver ribbed front, the round poster discs and the glass block on the Johan Cruijff Boulevard. Each has a card.",
+      "where": [
+        4.8829,
+        52.3826
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-venues-r5/rule10-sheet-1.jpg",
+          "alt": "De Roode Bioscoop, Zaal 100 and Cristofori: photo, before and after",
+          "caption": "Photo | before | after"
+        },
+        {
+          "src": "landmarks/2026-11-14-venues-r5/rule10-sheet-2.jpg",
+          "alt": "AFAS Live: photo, before and after",
+          "caption": "AFAS Live: photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "No more empty blocks while you drag the map",
       "text": "Dragging the map used to leave whole neighbourhoods as bare ground for seconds: each 1.5 km tile of the city was rebuilt from scratch every time a new piece of it arrived. The city now builds one 1 km cell at a time, so blocks appear as you pan and the near ground fills in about three times faster. Desktop for now; ?coarseSplit=0 brings back the old way.",
       "where": [
