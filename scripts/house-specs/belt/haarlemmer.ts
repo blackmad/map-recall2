@@ -105,12 +105,12 @@ export const HELP = `belt/haarlemmer.ts: write the Haarlemmerbuurt belt lane's n
 Base = fromBlockFace of the lane's own faces (haarlemmerdijk-2-58-r1/-r2, haarlemmer-46-96-r1, haarlemmerdijk-117-143-r1);
 AMEND = author corrections cited to docs/reports/haarlemmer-strip-verdict-20261110.md; fronts/0/eavesHeight = the reviewer
 eaves pins (buurten/haarlemmerbuurt-{west,oost}-review-eaves.json). Writes scripts/house-specs/specs/<pandId>.json with
-route derived (withRoute). Then: recipe-dir.ts <pand...> -> house:preview <pand> --recipe --photo -> house:stage <pand>.`;
+route recipe (the belt lane opts in; withRoute still needs toRecipe to succeed). Then: recipe-dir.ts <pand...> -> house:preview <pand> --recipe --photo -> house:stage <pand>.`;
 
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 if (import.meta.url === `file://${process.argv[1]}`) {
   for (const id of Object.keys(FACES)) {
-    const spec = withRoute(build(id));
+    const spec = withRoute({ ...build(id), route: 'recipe' });
     const problems = specProblems(spec);
     if (problems.length) { console.error(id, problems); process.exitCode = 1; }
     writeFileSync(`scripts/house-specs/specs/${id}.json`, JSON.stringify(spec, null, 1) + '\n');

@@ -170,7 +170,7 @@ export interface HouseSpec {
    *  The shape of BlockFaceIntent.schemaLimits since a1's belt lanes (2026-11-10); legacy `"component: what"` strings are
    *  read through `toSpecLimit`. */
   schemaLimits?: SpecLimit[];
-  /** Derived (toRecipe.ts `withRoute`): `recipe` when the spec is a complete, valid canal-house intent, else `generic`. */
+  /** Opt-in (toRecipe.ts `withRoute`): `recipe` only when asked for and the spec is a complete, valid canal-house intent, else `generic`. */
   route?: 'generic' | 'recipe';
 }
 

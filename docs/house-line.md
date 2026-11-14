@@ -154,8 +154,14 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
   (`STOREYS_DEFINITION`, `handSet.ts`). The ground storey counts once however tall; an entresol inside it, gable, crown and
   roof windows, dormers and a set-back roof storey do not count; a bel-etage over a souterrain is storey 1. Heights stay BAG's
   (eaves, ridge); the storey count of the front is not derived from them (§4c).
-- **`route`**: `recipe` when `toRecipe(spec)` returns a `CanalHouseIntent` that `validateIntent` accepts (complete
-  fronts, roof and palette, and at least one dated receipt that maps to an intent source kind), else `generic`.
+- **`route`**: the recipe route is **opt-in** (2026-11-14). `recipe` only when the pand asks for it (the spec says
+  `route: 'recipe'`, as the belt/bespoke lanes write, or an installed `houses/<id>/intent.json` or a block face already
+  draws the pand: `build-house-specs.ts` `recipeOptIn`) **and** `toRecipe(spec)` returns a `CanalHouseIntent` that
+  `validateIntent` accepts (complete fronts, roof and palette, and at least one dated receipt that maps to an intent
+  source kind). Everything else is `generic`, even a complete, valid spec. Why: a complete describer spec used to become
+  `recipe` by derivation, so `house:publish` wanted one GLB per house (72 for the 293-spec d1-streets-1 batch) against the
+  2026-11-13 rule that ordinary houses get no per-house GLB and draw through the generic mesher (route A). The runtime
+  never reads `route`; the published extract was byte-identical before and after the change (1,560 recipe records kept).
 
 ### Trust order
 
@@ -995,6 +1001,13 @@ branch carries specs only. The `[suppress]` step failed on its self-check, not o
 0363100012116526 to be blank and main now draws it.
 
 ## §3 Stage and publish
+
+**The recipe route is opt-in (2026-11-14).** `house:publish` step 3 runs only for staged specs whose `route` is `recipe`
+(the spec asked, see §1 `route`); a D1 describer batch has none, so step 3 is skipped and `--dry-run` prints
+`Recipe-route specs in this batch: 0`. Step 3 also never rewrites an existing house: only `houses/spec-<pand>` directories are
+created or refreshed; a recipe spec for a pand that another installed house already draws (cw-heren-179665, bilder-079721,
+...) is listed as protected and its `intent.json` is left alone (`publishPlan.ts` `recipeInstallPlan`). Edits to those
+houses belong to the lane that owns them.
 
 Lanes stage, the integrator publishes once per batch. Nothing a lane does under `house:stage` touches `public/`.
 
