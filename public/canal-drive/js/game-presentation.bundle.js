@@ -7841,6 +7841,51 @@
         "https://api.data.amsterdam.nl/v1/bag/panden/0363100012164965/"
       ],
       preferDescription: true
+    },
+    {
+      modelId: "skatecafe",
+      landmarkId: "skatecafe",
+      name: "Skatecaf\xE9",
+      description: "SkateCaf\xE9 Karin & Yvonne sits in an old industrial hall on the Gedempt Hamerkanaal in Amsterdam-Noord. A concrete mini-ramp was built in the heart of the main hall, and the tables, bar and DJ booth stand around it, so skaters ride while people eat and drink. The ramp is the first thing you notice when you walk in. The kitchen cooks seasonal food.",
+      funFact: "The ramp was built by Colin Vlaar, a former welder and ramp builder at Nine Yards.",
+      sourceUrl: "https://www.amsterdamnow.com/en/restaurants/skatecafe-restaurant-seasonal-cuisine-nature-wine",
+      additionalSources: [
+        "https://www.iamsterdam.com/uit/agenda/eten-en-drinken/restaurants/het-skatecafe"
+      ],
+      center: [
+        52.38539981,
+        4.92552013
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "garage-noord",
+      landmarkId: "garage-noord",
+      name: "Garage Noord",
+      description: "Garage Noord is a small club with a restaurant on the Gedempt Hamerkanaal in Amsterdam-Noord, next to the Skatecaf\xE9. Daan Alvering and Rachella Groon opened it in 2017 in a former depot building. It has room for about 150 people. A second hall, bar40, is programmed by a different guest collective each time. The restaurant is open Thursday to Saturday for people who want to eat first and dance afterwards.",
+      funFact: "Resident Advisor reported the opening in August 2017: a 150-capacity club, with the music programmed by Daan Alvering (Al Dee).",
+      sourceUrl: "https://www.amsterdamnow.com/en/?p=82915",
+      additionalSources: [
+        "https://ra.co/news.aspx?id=39803"
+      ],
+      center: [
+        52.38557089,
+        4.92570872
+      ],
+      preferDescription: true,
+      destinations: [
+        {
+          landmarkId: "n12979333989",
+          name: "Sichuan Territory",
+          description: "Sichuan Territory's Amsterdam-Noord branch opened in 2024 in the greenhouse at the front of Garage Noord. The restaurant is known for Sichuan cooking, and the Noord menu has many stir-fried dishes and a selection of regional barbecue dishes. The first Sichuan Territory branch is in the city centre, near the Red Light District.",
+          sourceUrl: "https://www.yourlittleblackbook.me/en/sichuan-territory-amsterdam-noord/",
+          center: [
+            52.3855,
+            4.92586
+          ],
+          preferDescription: true
+        }
+      ]
     }
   ];
 
