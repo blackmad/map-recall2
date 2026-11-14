@@ -199,3 +199,18 @@ test('hosting regressions: Kinkerstraat bike shops on their street fronts, the B
     assert.deepEqual(hit && { pand: hit.id, front: hit.front }, want[c.node], c.what);
   }
 });
+
+test('tobacco: sigarenwinkels from shop=tobacco, unbranded newsagents and tobacco kiosks; placards and a narrow door', () => {
+  assert.equal(templateForTags({ shop: 'tobacco', name: 'Sigarenmagazijn Bom' }), 'tobacco');
+  assert.equal(templateForTags({ shop: 'newsagent', name: 'Primera', brand: 'Primera' }), 'tobacco');
+  assert.equal(templateForTags({ shop: 'newsagent', name: 'Cigo Mark\'s' }), 'tobacco');
+  assert.equal(templateForTags({ shop: 'kiosk', name: 'Royal Tobacco' }), 'tobacco');
+  assert.equal(templateForTags({ shop: 'newsagent', name: 'Relay' }), null);
+  assert.equal(templateForTags({ shop: 'newsagent', name: 'Bestseller' }), 'bestseller');
+  assert.equal(templateForTags({ shop: 'kiosk', name: 'Ramon\'s Coffee Kiosk' }), null);
+  const tris = retailFrontTris({ template: 'tobacco', seed: 't' }, wall, 0, 6, 0, 3.4);
+  const cards = new Set(tris.filter(t => t.lit && Math.abs(outOf(t.p[0])) < 0.05 && t.p[0][2] < 2.5).map(t => t.hex));
+  assert.ok(cards.size >= 6, `cluttered placards (${cards.size} colours)`);
+  const handle = tris.find(t => t.hex === '#b8b0a0')!;
+  assert.ok(handle.p.every(p => p[0] <= 0.8 + 1e-6 || p[0] >= 6 - 0.8 - 1e-6), 'a door 0.8 m wide');
+});

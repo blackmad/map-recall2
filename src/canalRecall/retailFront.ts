@@ -32,8 +32,9 @@ export function glassTone(hex: string, pull = GLASS_PULL): string {
   const grey = (c[0] + c[1] + c[2]) / 3;
   return '#' + c.map((v, i) => Math.round((v * 0.75 + grey * 0.25) * (1 - pull) + GLASS_DARK[i] * pull)).map(v => v.toString(16).padStart(2, '0')).join('');
 }
-/** Content that is its own light (lit windows, neon, FEBO's heated doors) keeps its colours. */
-const OWN_LIGHT = new Set(['redGlow', 'neon', 'automatiek']);
+/** Content that is its own light (lit windows, neon, FEBO's heated doors) or stuck on the glass (a sigarenwinkel's
+ *  placards) keeps its colours. */
+const OWN_LIGHT = new Set(['redGlow', 'neon', 'automatiek', 'placards']);
 
 /** Stable 0..1 hash of a string (FNV-1a). */
 function hash01(s: string): number {
@@ -211,6 +212,19 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       }
       break;
     }
+    case 'placards': {
+      // A sigarenwinkel's cluttered window: cigarette-carton stacks low, lottery and tobacco placards as coloured cards
+      // at every height, a blue-and-yellow lottery card or two (plain, no brand artwork).
+      b.panel(a0, a1, o, z0, z1, '#3a332c');
+      const CARDS = ['#d9302f', '#1a3a8f', '#ffd200', '#f4efe2', '#2f7d32', '#e8572d', '#7a1f6e', '#1d1d1b', '#c9a227'];
+      for (let a = a0 + 0.04, k = 0; a < a1 - 0.08; a += 0.09, k++) b.panel(a, a + 0.07, o + 0.004, z0 + 0.02, z0 + 0.18 + 0.12 * r(`c${k}`), CARDS[Math.floor(r(`cc${k}`) * CARDS.length)], true);
+      for (let k = 0; k < Math.max(4, Math.round(w * 3.5)); k++) {
+        const cw = 0.16 + 0.22 * r(`w${k}`), ch = 0.12 + 0.22 * r(`h${k}`), ca = a0 + (w - cw) * r(`x${k}`), cz = z0 + 0.3 + (h - 0.3 - ch) * r(`z${k}`);
+        b.panel(ca, ca + cw, o + 0.006 + 0.001 * (k % 5), cz, cz + ch, CARDS[Math.floor(r(`p${k}`) * CARDS.length)], true);
+      }
+      for (let k = 0; k < Math.max(1, Math.floor(w / 1.6)); k++) { const ca = a0 + 0.15 + k * 1.6; if (ca + 0.5 > a1) break; b.panel(ca, ca + 0.5, o + 0.013, z1 - 0.42, z1 - 0.08, '#1a3a8f', true); b.panel(ca + 0.05, ca + 0.45, o + 0.016, z1 - 0.3, z1 - 0.2, '#ffd200', true); }
+      break;
+    }
     case 'stickers': {
       b.panel(a0, a1, o, z0, z1, '#e9ece9', lit);
       for (let a = a0 + 0.1, k = 0; a < a1 - 0.3; a += 0.3, k++) b.panel(a, a + 0.24, o + 0.005, z1 - h * 0.45, z1 - h * 0.15, ['#ffdd00', '#1d1d1b', '#d9302f', '#2f6fb0'][k % 4], lit);
@@ -297,7 +311,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + 0.005, 0.06, look.letters, look.lit);
   // The door: the traced one set back in its recess, else one flush door at an end (none on window rows).
   const windows = look.content === 'redGlow';
-  const flushW = windows ? 0 : Math.min(FRONT.doorM, (s1 - s0) * 0.25), doorAtStart = hash01(`${input.seed}:door`) < 0.5;
+  const flushW = windows ? 0 : Math.min(look.doorM ?? FRONT.doorM, (s1 - s0) * 0.25), doorAtStart = hash01(`${input.seed}:door`) < 0.5;
   const door = input.door && !windows ? { a0: Math.max(s0, input.door.a0), a1: Math.min(s1, input.door.a1), depthM: input.door.depthM }
     : flushW ? { a0: doorAtStart ? s0 : s1 - flushW, a1: doorAtStart ? s0 + flushW : s1, depthM: 0 } : null;
   // The surround (a brown cafe's timber) under the fascia, either side of the door.

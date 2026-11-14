@@ -51,7 +51,7 @@ export const RETAIL_TEMPLATES = [
   'ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer',
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
   'doner', 'toko', 'butcher', 'greengrocer', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
-  'souvenir', 'books', 'phone', 'gelato', 'exchange',
+  'souvenir', 'books', 'tobacco', 'phone', 'gelato', 'exchange',
 ] as const;
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
 export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer'];
@@ -114,6 +114,10 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
   if (has(cuisine, /^pancakes?$/)) return 'pancake';
   if (shop === 'gift' || shop === 'souvenir') return 'souvenir';
   if (shop === 'books' || shop === 'newsagent' && /boek|book|athenaeum/.test(name)) return 'books';
+  // A sigarenwinkel (David, round 2): shop=tobacco; a newsagent that is not a station chain, bookshop or Bestseller
+  // (Primera, Cigo and the independents sell tobacco and lottery); a kiosk named for tobacco or lottery.
+  if (shop === 'tobacco' || shop === 'newsagent' && !/relay|whsmith|athenaeum|boek|book|bestseller|ako\b/.test(name)
+    || shop === 'kiosk' && /tabak|tobac|sigar|primera|cigo|vivant|lotto/.test(name)) return 'tobacco';
   if (shop === 'mobile_phone') return 'phone';
   if (amenity === 'ice_cream' || shop === 'ice_cream') return 'gelato';
   if (amenity === 'bureau_de_change') return 'exchange';
@@ -122,7 +126,7 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
 
 /** Window content the front builder draws behind (or in front of) the glass. */
 export type Content = 'shelves' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'produce' | 'bread' | 'automatiek' | 'deli' | 'bowls'
-  | 'books' | 'magazines' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains' | 'jars';
+  | 'books' | 'magazines' | 'placards' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains' | 'jars';
 /** What a template draws. Colours are house colours or measured street colours; chains with a sourced logo also draw it
  *  from the logo layer (retailLogos.ts). */
 export type TemplateLook = {
@@ -140,6 +144,8 @@ export type TemplateLook = {
   tube?: string;
   /** A hanging blade sign in this colour (brown cafes, pancake houses). */
   blade?: string;
+  /** The door's width (m) when narrower than FRONT.doorM (a sigarenwinkel's narrow door). */
+  doorM?: number;
   /** Window frame and door colour (round 2); absent: a dark grey-brown. */
   frame?: string;
   /** The whole front under the fascia in this colour (a brown cafe's dark timber), over the cell's painted surround. */
@@ -177,6 +183,7 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   pancake: { fascia: '#7a1f12', letters: '#f3e7c9', word: 'name', content: 'curtains', lit: true, blade: '#c9a227' },
   souvenir: { fascia: '#c4161c', letters: '#ffffff', word: 'SOUVENIRS', content: 'souvenirs', lit: true, pavement: 'racks' },
   books: { fascia: '#1f2a24', letters: '#d9b765', word: 'name', content: 'books', lit: true, pavement: 'boards' },
+  tobacco: { fascia: '#6e1216', letters: '#ffd200', word: 'TABAK LOTTO', content: 'placards', lit: true, blade: '#1a3a8f', doorM: 0.8, frame: '#2a2420' },
   phone: { fascia: '#1d1d1b', letters: '#ffdd00', word: 'PHONE', content: 'stickers', lit: true },
   gelato: { fascia: '#f6b6c8', letters: '#5a2340', word: 'GELATO', content: 'counter', lit: true },
   exchange: { fascia: '#0a3d91', letters: '#ffffff', word: 'EXCHANGE', content: 'stickers', lit: true },
