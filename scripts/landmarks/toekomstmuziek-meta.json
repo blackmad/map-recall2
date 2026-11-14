@@ -1,0 +1,30 @@
+{
+  "name": "Toekomstmuziek",
+  "landmarkId": "n2738399729",
+  "sourceUrl": "https://www.toekomstmuziek.com/",
+  "suppressOsmIds": [
+    "w268508568",
+    "w848772807",
+    "NL.IMBAG.Pand.0363100012110275"
+  ],
+  "pandId": "0363100012110275",
+  "anchor": [
+    4.87559522,
+    52.39664919
+  ],
+  "materialOverrides": {
+    "brick": "#a2a6a4",
+    "greyBrick": "#5a5e5b",
+    "stone": "#93938d",
+    "gold": "#c9a63c",
+    "dark": "#2b2f33",
+    "glass": "#46545c",
+    "white": "#dde3e6",
+    "concrete": "#a9adaa",
+    "frame": "#c3c8c6",
+    "slate": "#5d6266",
+    "red": "#c8642e"
+  },
+  "surveySource": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; windows, entrance, canopy sign, profiled hall cladding, roller door and rooflights measured from the 2021 and 2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+}
