@@ -1,0 +1,259 @@
+{
+ "schemaVersion": 1,
+ "id": "afas-live",
+ "pand": "0363100012123240",
+ "brief": "scripts/landmarks/afas-live-brief.md",
+ "signature": [
+  "a1-panel",
+  "a1-lettering",
+  "a1-discs",
+  "a1-glassblock",
+  "a0-blackbox"
+ ],
+ "walls": [
+  {
+   "tag": "w01-241",
+   "bearing": 241,
+   "lengthM": 131.5,
+   "centre": [
+    4.9439275,
+    52.3120325
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001614_pano_0000_000333",
+   "capturedAt": "2020-01-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "a0-blackbox",
+     "kind": "other",
+     "where": "the dark grey windowless black box hall along the whole west side",
+     "approxSizeM": [
+      131.0,
+      16.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001614_pano_0000_000333",
+     "how": "3DBAG LoD2.2 shell walls facing west-south-west coloured dark grey"
+    },
+    {
+     "id": "a0-ribs",
+     "kind": "other",
+     "where": "fine vertical ribs of the black box cladding",
+     "approxSizeM": [
+      0.1,
+      16.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001614_pano_0000_000333",
+     "skip": {
+      "reason": "too-small",
+      "note": "ribs at ~0.3 m pitch on curved walls that leave the footprint chords; read as a flat dark wall beyond 20 m"
+     }
+    }
+   ],
+   "note": "the west side is the curved dark-grey black box clad in fine vertical ribs, blank; its 3DBAG walls bow away from the footprint chords"
+  },
+  {
+   "tag": "w02-151",
+   "bearing": 151,
+   "lengthM": 62.4,
+   "centre": [
+    4.9447985,
+    52.311654
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001251_pano_0000_000929",
+   "capturedAt": "2019-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "a2-ribs",
+     "kind": "other",
+     "where": "silver vertical-ribbed metal cladding over a grey block plinth",
+     "approxSizeM": [
+      62.0,
+      8.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001251_pano_0000_000929",
+     "how": "profiledRibs (profiledCladding.ts) cut round the windows and loading doors over a silver face and a grey plinth section"
+    },
+    {
+     "id": "a2-windows",
+     "kind": "window-shape",
+     "where": "a long row of small dark windows high up and a second row on the west part",
+     "approxSizeM": [
+      0.75,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001251_pano_0000_000929",
+     "how": "cut openings with dark frames and a transom"
+    },
+    {
+     "id": "a2-doors",
+     "kind": "other",
+     "where": "two large grey loading doors (LOADING DOCK), a blue side door and a louvre",
+     "approxSizeM": [
+      12.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001251_pano_0000_000929",
+     "how": "cut openings with grey, blue and dark louvred backs"
+    },
+    {
+     "id": "a2-signs",
+     "kind": "sign",
+     "where": "stencilled LOADING DOCK, LOCAL CREW and parking notices on the doors and plinth",
+     "approxSizeM": [
+      2.0,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001251_pano_0000_000929",
+     "skip": {
+      "reason": "too-small",
+      "note": "small stencilled notices under 1 m tall, unreadable at riding distance"
+     }
+    }
+   ],
+   "note": "whole-face crop face-s-0 at 12 px/m"
+  },
+  {
+   "tag": "w03-7",
+   "bearing": 7,
+   "lengthM": 50.5,
+   "centre": [
+    4.943824,
+    52.3125215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002866_pano_0001_000072",
+   "capturedAt": "2022-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "a1-panel",
+     "kind": "other",
+     "where": "the 77 m silver panel of horizontal ribs over the glazed ground floor",
+     "approxSizeM": [
+      66.0,
+      16.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "how": "silver face section with horizontal rib slabs every 0.85 m and a coping"
+    },
+    {
+     "id": "a1-lettering",
+     "kind": "lettering",
+     "where": "giant dotted AFAS live lettering across the whole panel, formed by perforation dots",
+     "approxSizeM": [
+      62.0,
+      13.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "how": "pixel-font glyphs drawn as a field of small grey square dots, 3 x 4 per glyph cell; the real lower-case live script is set in capitals"
+    },
+    {
+     "id": "a1-discs",
+     "kind": "other",
+     "where": "three round poster discs low in the middle of the panel",
+     "approxSizeM": [
+      4.4,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "how": "three proud discs, one dark blue-black and two red-brown (the posters change)"
+    },
+    {
+     "id": "a1-glassblock",
+     "kind": "other",
+     "where": "full-height glass curtain block at the west end of the boulevard front",
+     "approxSizeM": [
+      10.7,
+      20.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "how": "cut glazed bays in a dark grid over the full height"
+    },
+    {
+     "id": "a1-ground",
+     "kind": "window-shape",
+     "where": "glazed ground floor with entrance doors under a dark canopy edge",
+     "approxSizeM": [
+      66.0,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "how": "six cut glazed bays with dark mullions and a dark canopy slab"
+    },
+    {
+     "id": "a1-posters",
+     "kind": "sign",
+     "where": "printed poster images inside the discs",
+     "approxSizeM": [
+      4.0,
+      4.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002866_pano_0001_000072",
+     "skip": {
+      "reason": "temporary",
+      "note": "the posters change with the programme"
+     }
+    }
+   ],
+   "note": "whole-face crop face-n-0 at 12 px/m across the 77 m boulevard front"
+  },
+  {
+   "tag": "w04-7",
+   "bearing": 7,
+   "lengthM": 26.6,
+   "centre": [
+    4.944386,
+    52.312481
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000110_pano_0000_005252",
+   "capturedAt": "2016-07-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "a1-hmh",
+     "kind": "lettering",
+     "where": "green Heineken Music Hall letters, red stars and a giant headphone sculpture",
+     "approxSizeM": [
+      40.0,
+      3.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000110_pano_0000_005252",
+     "skip": {
+      "reason": "gone",
+      "note": "removed when the hall was renamed AFAS Live in 2017 (nl.wikipedia.org/wiki/AFAS_Live); absent in the 2022 capture"
+     }
+    }
+   ],
+   "note": "2016 capture still shows the Heineken Music Hall branding (renamed AFAS Live in 2017); the 2022 crop is the current front"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "AFAS Live (Wikipedia, nl)",
+   "url": "https://nl.wikipedia.org/wiki/AFAS_Live",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

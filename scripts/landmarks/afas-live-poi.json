@@ -1,0 +1,24 @@
+{
+  "modelId": "afas-live",
+  "landmarkId": "extract_landmarks_1248010277",
+  "name": "AFAS Live",
+  "center": [
+    52.31200318,
+    4.94429213
+  ],
+  "address": "Johan Cruijff Boulevard 590, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/AFAS_Live",
+  "description": "AFAS Live is a concert and events hall on the Johan Cruijff Boulevard, near the Johan Cruijff ArenA and Amsterdam Bijlmer ArenA station. It opened on 15 March 2001 as the Heineken Music Hall and has been called AFAS Live since 2017. Shows play in the main hall, the Black Box, which covers 3,000 m2 and holds up to 6,000 people; a smaller room, the Talent Stage, takes 700 for pre- and after-shows.",
+  "funFact": "Until 2017 the hall was sponsored by the beer brand Heineken, whose name it carried for its first sixteen years.",
+  "sourceLinks": [
+    {
+      "title": "AFAS Live (Wikipedia, nl)",
+      "url": "https://nl.wikipedia.org/wiki/AFAS_Live"
+    },
+    {
+      "title": "BAG pand 0363100012123240 (Gemeente Amsterdam, year of construction 2001)",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012123240/"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012123240, labelled Johan Cruijff Boulevard 590 in venue-prepare.ts; the hall's front with the AFAS live lettering is the pand's north wall in panorama TMX7316010203-002866_pano_0001_000072. The extract landmark extract_landmarks_1248010277 (AFAS Live, Wikidata Q619832) maps to this pand in landmark-buildings.json."
+}
