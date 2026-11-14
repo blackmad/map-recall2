@@ -1,0 +1,6177 @@
+{
+ "herengracht-even": [
+  {
+   "key": "herengracht-8",
+   "pands": [
+    {
+     "pandId": "0363100012168202",
+     "number": 2,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179834",
+     "number": 6,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179833",
+     "number": 8,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179763",
+     "number": 10,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179765",
+     "number": 12,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179761",
+     "number": 16,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-22",
+   "pands": [
+    {
+     "pandId": "0363100012179760",
+     "number": 18,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179753",
+     "number": 20,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179752",
+     "number": 22,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179838",
+     "number": 24,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179836",
+     "number": 26,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179837",
+     "number": 28,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-36",
+   "pands": [
+    {
+     "pandId": "0363100012168138",
+     "number": 30,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168069",
+     "number": 32,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179684",
+     "number": 36,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179671",
+     "number": 38,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179668",
+     "number": 40,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179670",
+     "number": 42,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-46",
+   "pands": [
+    {
+     "pandId": "0363100012179669",
+     "number": 44,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169270",
+     "number": 46,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179667",
+     "number": 46,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167494",
+     "number": 56,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167495",
+     "number": 58,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167492",
+     "number": 60,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-68",
+   "pands": [
+    {
+     "pandId": "0363100012167493",
+     "number": 62,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168545",
+     "number": 64,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175698",
+     "number": 68,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175618",
+     "number": 70,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175617",
+     "number": 72,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175616",
+     "number": 74,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-82",
+   "pands": [
+    {
+     "pandId": "0363100012175784",
+     "number": 76,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012175783",
+     "number": 80,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175703",
+     "number": 82,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012175702",
+     "number": 84,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169010",
+     "number": 88,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175701",
+     "number": 90,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-102",
+   "pands": [
+    {
+     "pandId": "0363100012167713",
+     "number": 98,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167710",
+     "number": 100,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167712",
+     "number": 102,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167711",
+     "number": 104,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169007",
+     "number": 108,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012177280",
+     "number": 118,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-132",
+   "pands": [
+    {
+     "pandId": "0363100012177278",
+     "number": 120,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177006",
+     "number": 130,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177007",
+     "number": 132,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176938",
+     "number": 134,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177211",
+     "number": 136,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177210",
+     "number": 140,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-144",
+   "pands": [
+    {
+     "pandId": "0363100012570910",
+     "number": 140,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177020",
+     "number": 142,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177019",
+     "number": 144,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177018",
+     "number": 146,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177010",
+     "number": 148,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177017",
+     "number": 148,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-156",
+   "pands": [
+    {
+     "pandId": "0363100012176314",
+     "number": 150,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176313",
+     "number": 154,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167659",
+     "number": 156,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167645",
+     "number": 158,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167646",
+     "number": 162,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176358",
+     "number": 164,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-184",
+   "pands": [
+    {
+     "pandId": "0363100012176357",
+     "number": 166,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176353",
+     "number": 174,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177484",
+     "number": 184,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012164993",
+     "number": 196,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177550",
+     "number": 198,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177218",
+     "number": 218,
+     "staged": false,
+     "held": [
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-226",
+   "pands": [
+    {
+     "pandId": "0363100012177480",
+     "number": 222,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177479",
+     "number": 224,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177478",
+     "number": 226,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177477",
+     "number": 228,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177217",
+     "number": 230,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177483",
+     "number": 232,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-238",
+   "pands": [
+    {
+     "pandId": "0363100012177225",
+     "number": 234,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177481",
+     "number": 236,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177223",
+     "number": 238,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177222",
+     "number": 240,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012164991",
+     "number": 242,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176852",
+     "number": 244,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-252",
+   "pands": [
+    {
+     "pandId": "0363100012176851",
+     "number": 248,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176864",
+     "number": 250,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176863",
+     "number": 252,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177151",
+     "number": 254,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176861",
+     "number": 256,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176862",
+     "number": 268,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-274",
+   "pands": [
+    {
+     "pandId": "0363100012164989",
+     "number": 270,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176337",
+     "number": 272,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176674",
+     "number": 274,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176736",
+     "number": 276,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176846",
+     "number": 280,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176734",
+     "number": 282,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-294",
+   "pands": [
+    {
+     "pandId": "0363100012176731",
+     "number": 286,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176723",
+     "number": 292,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176722",
+     "number": 294,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176724",
+     "number": 296,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176728",
+     "number": 298,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012169024",
+     "number": 300,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-306",
+   "pands": [
+    {
+     "pandId": "0363100012176661",
+     "number": 302,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176660",
+     "number": 304,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176663",
+     "number": 306,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176664",
+     "number": 308,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012185772",
+     "number": 310,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176672",
+     "number": 312,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-318",
+   "pands": [
+    {
+     "pandId": "0363100012176666",
+     "number": 314,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176667",
+     "number": 316,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176668",
+     "number": 318,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176673",
+     "number": 320,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176670",
+     "number": 326,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176669",
+     "number": 328,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-340",
+   "pands": [
+    {
+     "pandId": "0363100012176671",
+     "number": 332,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012169197",
+     "number": 338,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176601",
+     "number": 340,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176593",
+     "number": 342,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169196",
+     "number": 344,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176592",
+     "number": 348,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-354",
+   "pands": [
+    {
+     "pandId": "0363100012176591",
+     "number": 350,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176588",
+     "number": 352,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176587",
+     "number": 354,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176586",
+     "number": 356,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176585",
+     "number": 358,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176540",
+     "number": 360,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-384",
+   "pands": [
+    {
+     "pandId": "0363100012176533",
+     "number": 372,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176532",
+     "number": 378,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176531",
+     "number": 384,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176536",
+     "number": 388,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176535",
+     "number": 390,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176528",
+     "number": 392,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-402",
+   "pands": [
+    {
+     "pandId": "0363100012169509",
+     "number": 394,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012176526",
+     "number": 396,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176471",
+     "number": 402,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176472",
+     "number": 404,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176524",
+     "number": 406,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169708",
+     "number": 412,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-418",
+   "pands": [
+    {
+     "pandId": "0363100012171597",
+     "number": 414,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171669",
+     "number": 416,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171665",
+     "number": 418,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171668",
+     "number": 420,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177598",
+     "number": 422,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171667",
+     "number": 424,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-458",
+   "pands": [
+    {
+     "pandId": "0363100012177446",
+     "number": 430,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012171670",
+     "number": 444,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176236",
+     "number": 458,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176238",
+     "number": 460,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176171",
+     "number": 462,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165048",
+     "number": 464,
+     "staged": false,
+     "held": [
+      "cutter flag",
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-472",
+   "pands": [
+    {
+     "pandId": "0363100012176760",
+     "number": 468,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176761",
+     "number": 470,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176762",
+     "number": 472,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167902",
+     "number": 474,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167959",
+     "number": 478,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167958",
+     "number": 480,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-506",
+   "pands": [
+    {
+     "pandId": "0363100012167974",
+     "number": 498,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179334",
+     "number": 504,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179335",
+     "number": 506,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179336",
+     "number": 508,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179337",
+     "number": 510,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179333",
+     "number": 512,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-522",
+   "pands": [
+    {
+     "pandId": "0363100012179332",
+     "number": 514,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168044",
+     "number": 520,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180310",
+     "number": 522,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180311",
+     "number": 524,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180307",
+     "number": 528,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012180299",
+     "number": 532,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-538",
+   "pands": [
+    {
+     "pandId": "0363100012178769",
+     "number": 534,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012178768",
+     "number": 536,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178767",
+     "number": 538,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178972",
+     "number": 558,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171094",
+     "number": 560,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012171096",
+     "number": 562,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-572",
+   "pands": [
+    {
+     "pandId": "0363100012169211",
+     "number": 564,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171345",
+     "number": 566,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171410",
+     "number": 572,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182427",
+     "number": 586,
+     "staged": false,
+     "held": [
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012182431",
+     "number": 590,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182429",
+     "number": 594,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182430",
+     "number": 596,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012571333",
+     "number": 598,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    }
+   ]
+  }
+ ],
+ "herengracht-odd": [
+  {
+   "key": "herengracht-5",
+   "pands": [
+    {
+     "pandId": "0363100012175395",
+     "number": 1,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175393",
+     "number": 3,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175377",
+     "number": 5,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175411",
+     "number": 7,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175410",
+     "number": 13,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012175397",
+     "number": 21,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-27",
+   "pands": [
+    {
+     "pandId": "0363100012175408",
+     "number": 23,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175402",
+     "number": 25,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175404",
+     "number": 27,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175403",
+     "number": 31,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175409",
+     "number": 33,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012175407",
+     "number": 35,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-41",
+   "pands": [
+    {
+     "pandId": "0363100012168213",
+     "number": 37,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168210",
+     "number": 39,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175291",
+     "number": 41,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168212",
+     "number": 43,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012168211",
+     "number": 47,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168131",
+     "number": 49,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-55",
+   "pands": [
+    {
+     "pandId": "0363100012168129",
+     "number": 51,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168130",
+     "number": 53,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169271",
+     "number": 55,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179673",
+     "number": 57,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179748",
+     "number": 59,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179672",
+     "number": 61,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-67",
+   "pands": [
+    {
+     "pandId": "0363100012179683",
+     "number": 63,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179751",
+     "number": 65,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179750",
+     "number": 67,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179675",
+     "number": 69,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012179682",
+     "number": 71,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179681",
+     "number": 73,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-79",
+   "pands": [
+    {
+     "pandId": "0363100012179680",
+     "number": 75,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179749",
+     "number": 77,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168064",
+     "number": 79,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012179665",
+     "number": 81,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179664",
+     "number": 83,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179601",
+     "number": 85,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-91",
+   "pands": [
+    {
+     "pandId": "0363100012179594",
+     "number": 87,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180438",
+     "number": 89,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180437",
+     "number": 91,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179049",
+     "number": 93,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179050",
+     "number": 97,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179048",
+     "number": 101,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-111",
+   "pands": [
+    {
+     "pandId": "0363100012179051",
+     "number": 103,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168543",
+     "number": 109,
+     "staged": false,
+     "held": [
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176272",
+     "number": 111,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176273",
+     "number": 113,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169011",
+     "number": 115,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176275",
+     "number": 119,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-127",
+   "pands": [
+    {
+     "pandId": "0363100012175038",
+     "number": 121,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175039",
+     "number": 125,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175037",
+     "number": 127,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167686",
+     "number": 129,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167682",
+     "number": 131,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012176003",
+     "number": 133,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-155",
+   "pands": [
+    {
+     "pandId": "0363100012176094",
+     "number": 135,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176005",
+     "number": 147,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167683",
+     "number": 155,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167681",
+     "number": 157,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167680",
+     "number": 159,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167679",
+     "number": 161,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-167",
+   "pands": [
+    {
+     "pandId": "0363100012167668",
+     "number": 163,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167660",
+     "number": 165,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176939",
+     "number": 167,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167669",
+     "number": 169,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012176316",
+     "number": 169,
+     "staged": false,
+     "held": [
+      "cutter flag",
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176317",
+     "number": 171,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-177",
+   "pands": [
+    {
+     "pandId": "0363100012176937",
+     "number": 173,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176826",
+     "number": 175,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176825",
+     "number": 177,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167636",
+     "number": 201,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012167634",
+     "number": 203,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176310",
+     "number": 209,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-219",
+   "pands": [
+    {
+     "pandId": "0363100012177523",
+     "number": 211,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177524",
+     "number": 215,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167629",
+     "number": 219,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167628",
+     "number": 221,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177511",
+     "number": 223,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177186",
+     "number": 227,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-253",
+   "pands": [
+    {
+     "pandId": "0363100012177364",
+     "number": 235,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177191",
+     "number": 237,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177243",
+     "number": 253,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012177176",
+     "number": 255,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177168",
+     "number": 263,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177180",
+     "number": 267,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-279",
+   "pands": [
+    {
+     "pandId": "0363100012177175",
+     "number": 269,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177174",
+     "number": 275,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012176327",
+     "number": 279,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176326",
+     "number": 281,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176325",
+     "number": 283,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176335",
+     "number": 285,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-291",
+   "pands": [
+    {
+     "pandId": "0363100012176334",
+     "number": 287,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176332",
+     "number": 289,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176324",
+     "number": 291,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012170874",
+     "number": 303,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171895",
+     "number": 309,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172046",
+     "number": 313,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-325",
+   "pands": [
+    {
+     "pandId": "0363100012172045",
+     "number": 315,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172044",
+     "number": 319,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171900",
+     "number": 325,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171899",
+     "number": 327,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171898",
+     "number": 329,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171897",
+     "number": 331,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-341",
+   "pands": [
+    {
+     "pandId": "0363100012171896",
+     "number": 333,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171894",
+     "number": 335,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172047",
+     "number": 341,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176602",
+     "number": 355,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171892",
+     "number": 357,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171891",
+     "number": 359,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-365",
+   "pands": [
+    {
+     "pandId": "0363100012176590",
+     "number": 361,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169709",
+     "number": 363,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176589",
+     "number": 365,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176598",
+     "number": 367,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176597",
+     "number": 369,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012171736",
+     "number": 373,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-389",
+   "pands": [
+    {
+     "pandId": "0363100012171735",
+     "number": 375,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171734",
+     "number": 377,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171810",
+     "number": 389,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171733",
+     "number": 391,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171679",
+     "number": 397,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176530",
+     "number": 399,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-405",
+   "pands": [
+    {
+     "pandId": "0363100012176539",
+     "number": 401,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176538",
+     "number": 403,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012176529",
+     "number": 405,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171676",
+     "number": 407,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171747",
+     "number": 409,
+     "staged": false,
+     "held": [
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012171744",
+     "number": 411,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-417",
+   "pands": [
+    {
+     "pandId": "0363100012177608",
+     "number": 413,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171743",
+     "number": 415,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171746",
+     "number": 417,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171737",
+     "number": 419,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171738",
+     "number": 421,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171742",
+     "number": 423,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-429",
+   "pands": [
+    {
+     "pandId": "0363100012177601",
+     "number": 425,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177599",
+     "number": 427,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177600",
+     "number": 429,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177602",
+     "number": 433,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165081",
+     "number": 435,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171673",
+     "number": 445,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "herengracht-453",
+   "pands": [
+    {
+     "pandId": "0363100012171674",
+     "number": 449,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171675",
+     "number": 451,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171671",
+     "number": 453,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171672",
+     "number": 455,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    },
+    {
+     "pandId": "0363100012165083",
+     "number": 457,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167962",
+     "number": 473,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-481",
+   "pands": [
+    {
+     "pandId": "0363100012168394",
+     "number": 477,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168393",
+     "number": 479,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168345",
+     "number": 481,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168335",
+     "number": 485,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168336",
+     "number": 487,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168337",
+     "number": 489,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-495",
+   "pands": [
+    {
+     "pandId": "0363100012185923",
+     "number": 491,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168338",
+     "number": 493,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168339",
+     "number": 495,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168481",
+     "number": 499,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175169",
+     "number": 501,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175170",
+     "number": 503,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-529",
+   "pands": [
+    {
+     "pandId": "0363100012175171",
+     "number": 505,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165078",
+     "number": 519,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012185847",
+     "number": 529,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169154",
+     "number": 539,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012179628",
+     "number": 545,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179629",
+     "number": 551,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-559",
+   "pands": [
+    {
+     "pandId": "0363100012179630",
+     "number": 553,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179631",
+     "number": 555,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179105",
+     "number": 559,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180313",
+     "number": 561,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178859",
+     "number": 563,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178857",
+     "number": 565,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-571",
+   "pands": [
+    {
+     "pandId": "0363100012178860",
+     "number": 567,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178861",
+     "number": 569,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178853",
+     "number": 571,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178847",
+     "number": 575,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178848",
+     "number": 579,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178941",
+     "number": 581,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-587",
+   "pands": [
+    {
+     "pandId": "0363100012178775",
+     "number": 583,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178776",
+     "number": 585,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169212",
+     "number": 587,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182432",
+     "number": 607,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171565",
+     "number": 609,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171568",
+     "number": 611,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "herengracht-617",
+   "pands": [
+    {
+     "pandId": "0363100012171566",
+     "number": 613,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171567",
+     "number": 615,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171564",
+     "number": 617,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171576",
+     "number": 619,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171570",
+     "number": 621,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171569",
+     "number": 623,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171574",
+     "number": 625,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171575",
+     "number": 627,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    }
+   ]
+  }
+ ],
+ "keizersgracht-even": [
+  {
+   "key": "keizersgracht-4",
+   "pands": [
+    {
+     "pandId": "0363100012176119",
+     "number": 2,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176120",
+     "number": 2,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176028",
+     "number": 4,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176027",
+     "number": 6,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176026",
+     "number": 10,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176025",
+     "number": 12,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-24",
+   "pands": [
+    {
+     "pandId": "0363100012167745",
+     "number": 16,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167741",
+     "number": 20,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167734",
+     "number": 24,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167742",
+     "number": 26,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167735",
+     "number": 40,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012177326",
+     "number": 48,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-56",
+   "pands": [
+    {
+     "pandId": "0363100012177328",
+     "number": 50,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167737",
+     "number": 52,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167727",
+     "number": 56,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167724",
+     "number": 58,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167725",
+     "number": 58,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177541",
+     "number": 62,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-72",
+   "pands": [
+    {
+     "pandId": "0363100012177245",
+     "number": 66,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012177252",
+     "number": 70,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177539",
+     "number": 72,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177540",
+     "number": 76,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177248",
+     "number": 78,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177538",
+     "number": 84,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-90",
+   "pands": [
+    {
+     "pandId": "0363100012177537",
+     "number": 86,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177251",
+     "number": 88,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177250",
+     "number": 90,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012167707",
+     "number": 96,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012167691",
+     "number": 106,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167690",
+     "number": 110,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-136",
+   "pands": [
+    {
+     "pandId": "0363100012176493",
+     "number": 122,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165027",
+     "number": 134,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165026",
+     "number": 136,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165023",
+     "number": 138,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176480",
+     "number": 142,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176487",
+     "number": 144,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-154",
+   "pands": [
+    {
+     "pandId": "0363100012176479",
+     "number": 146,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176478",
+     "number": 150,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176484",
+     "number": 154,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176483",
+     "number": 156,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176482",
+     "number": 158,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165025",
+     "number": 160,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-164",
+   "pands": [
+    {
+     "pandId": "0363100012165024",
+     "number": 162,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172918",
+     "number": 162,
+     "staged": false,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169074",
+     "number": 164,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169251",
+     "number": 166,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169073",
+     "number": 168,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169072",
+     "number": 170,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-184",
+   "pands": [
+    {
+     "pandId": "0363100012169069",
+     "number": 172,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012172425",
+     "number": 174,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172428",
+     "number": 184,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172362",
+     "number": 186,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172427",
+     "number": 188,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172365",
+     "number": 190,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-196",
+   "pands": [
+    {
+     "pandId": "0363100012172364",
+     "number": 192,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172363",
+     "number": 194,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172359",
+     "number": 196,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172353",
+     "number": 202,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172354",
+     "number": 204,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169580",
+     "number": 206,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-214",
+   "pands": [
+    {
+     "pandId": "0363100012172355",
+     "number": 208,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169359",
+     "number": 210,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169361",
+     "number": 214,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169360",
+     "number": 216,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169366",
+     "number": 218,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169117",
+     "number": 240,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-246",
+   "pands": [
+    {
+     "pandId": "0363100012169118",
+     "number": 242,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169108",
+     "number": 244,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169380",
+     "number": 246,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169114",
+     "number": 250,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169112",
+     "number": 260,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169110",
+     "number": 262,
+     "staged": false,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-274",
+   "pands": [
+    {
+     "pandId": "0363100012169381",
+     "number": 264,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169382",
+     "number": 268,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012185916",
+     "number": 274,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169113",
+     "number": 276,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169389",
+     "number": 278,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169388",
+     "number": 280,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-286",
+   "pands": [
+    {
+     "pandId": "0363100012169377",
+     "number": 282,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169379",
+     "number": 284,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169378",
+     "number": 286,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169376",
+     "number": 288,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169250",
+     "number": 290,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169206",
+     "number": 292,
+     "staged": false,
+     "held": [
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-306",
+   "pands": [
+    {
+     "pandId": "0363100012169205",
+     "number": 296,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169018",
+     "number": 302,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168579",
+     "number": 306,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168582",
+     "number": 308,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168581",
+     "number": 310,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168580",
+     "number": 312,
+     "staged": false,
+     "held": [
+      "cutter flag",
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-322",
+   "pands": [
+    {
+     "pandId": "0363100012169676",
+     "number": 318,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169675",
+     "number": 320,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169674",
+     "number": 322,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174400",
+     "number": 328,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174399",
+     "number": 330,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174126",
+     "number": 370,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-376",
+   "pands": [
+    {
+     "pandId": "0363100012174330",
+     "number": 372,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174329",
+     "number": 374,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174328",
+     "number": 376,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174125",
+     "number": 378,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174331",
+     "number": 380,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174123",
+     "number": 384,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-398",
+   "pands": [
+    {
+     "pandId": "0363100012174947",
+     "number": 394,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174949",
+     "number": 396,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174950",
+     "number": 398,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174951",
+     "number": 400,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012174856",
+     "number": 402,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012174855",
+     "number": 404,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-410",
+   "pands": [
+    {
+     "pandId": "0363100012173544",
+     "number": 406,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012173543",
+     "number": 408,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012173545",
+     "number": 410,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174956",
+     "number": 412,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174955",
+     "number": 414,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169439",
+     "number": 416,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-434",
+   "pands": [
+    {
+     "pandId": "0363100012174774",
+     "number": 426,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174770",
+     "number": 428,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012174773",
+     "number": 434,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174843",
+     "number": 436,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174842",
+     "number": 442,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169438",
+     "number": 444,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-454",
+   "pands": [
+    {
+     "pandId": "0363100012174759",
+     "number": 448,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174758",
+     "number": 450,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174760",
+     "number": 454,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012174680",
+     "number": 456,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012174679",
+     "number": 458,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169057",
+     "number": 460,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-466",
+   "pands": [
+    {
+     "pandId": "0363100012169100",
+     "number": 462,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172218",
+     "number": 464,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012172217",
+     "number": 466,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012172216",
+     "number": 470,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172211",
+     "number": 472,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172209",
+     "number": 476,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-482",
+   "pands": [
+    {
+     "pandId": "0363100012172208",
+     "number": 478,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172207",
+     "number": 480,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172160",
+     "number": 482,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172156",
+     "number": 484,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172155",
+     "number": 486,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172153",
+     "number": 488,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-494",
+   "pands": [
+    {
+     "pandId": "0363100012172154",
+     "number": 490,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012248229",
+     "number": 492,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172151",
+     "number": 494,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172152",
+     "number": 498,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169240",
+     "number": 500,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169295",
+     "number": 502,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-508",
+   "pands": [
+    {
+     "pandId": "0363100012249716",
+     "number": 504,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176403",
+     "number": 506,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169249",
+     "number": 508,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176402",
+     "number": 508,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176389",
+     "number": 514,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176345",
+     "number": 516,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-522",
+   "pands": [
+    {
+     "pandId": "0363100012176344",
+     "number": 518,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176343",
+     "number": 520,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176342",
+     "number": 522,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177641",
+     "number": 526,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176393",
+     "number": 528,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176392",
+     "number": 530,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-538",
+   "pands": [
+    {
+     "pandId": "0363100012177649",
+     "number": 532,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177650",
+     "number": 536,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177651",
+     "number": 538,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171365",
+     "number": 540,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171366",
+     "number": 542,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171367",
+     "number": 544,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-550",
+   "pands": [
+    {
+     "pandId": "0363100012171525",
+     "number": 546,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171526",
+     "number": 548,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171444",
+     "number": 550,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171439",
+     "number": 554,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171438",
+     "number": 556,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171437",
+     "number": 558,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-568",
+   "pands": [
+    {
+     "pandId": "0363100012177437",
+     "number": 560,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012177273",
+     "number": 564,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177271",
+     "number": 568,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177270",
+     "number": 570,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177269",
+     "number": 572,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177434",
+     "number": 574,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-580",
+   "pands": [
+    {
+     "pandId": "0363100012177435",
+     "number": 576,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177436",
+     "number": 578,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100100092426",
+     "number": 580,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171435",
+     "number": 582,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171436",
+     "number": 584,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171440",
+     "number": 586,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-596",
+   "pands": [
+    {
+     "pandId": "0363100012171583",
+     "number": 590,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171584",
+     "number": 592,
+     "staged": false,
+     "held": [
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012165045",
+     "number": 596,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165044",
+     "number": 598,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165043",
+     "number": 600,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167895",
+     "number": 602,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-608",
+   "pands": [
+    {
+     "pandId": "0363100012176068",
+     "number": 604,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176067",
+     "number": 606,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176066",
+     "number": 608,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167896",
+     "number": 610,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167899",
+     "number": 612,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175654",
+     "number": 614,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-620",
+   "pands": [
+    {
+     "pandId": "0363100012175655",
+     "number": 616,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175645",
+     "number": 618,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176745",
+     "number": 620,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176746",
+     "number": 624,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176747",
+     "number": 626,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176748",
+     "number": 628,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-634",
+   "pands": [
+    {
+     "pandId": "0363100012176749",
+     "number": 630,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176751",
+     "number": 632,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176750",
+     "number": 634,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012571490",
+     "number": 634,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175659",
+     "number": 638,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175658",
+     "number": 640,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-648",
+   "pands": [
+    {
+     "pandId": "0363100012165049",
+     "number": 642,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012165075",
+     "number": 646,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165076",
+     "number": 648,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180258",
+     "number": 660,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175159",
+     "number": 662,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168451",
+     "number": 670,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-682",
+   "pands": [
+    {
+     "pandId": "0363100012179307",
+     "number": 678,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179304",
+     "number": 680,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179305",
+     "number": 682,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179306",
+     "number": 684,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167485",
+     "number": 686,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167482",
+     "number": 690,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-696",
+   "pands": [
+    {
+     "pandId": "0363100012167484",
+     "number": 692,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167486",
+     "number": 694,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167489",
+     "number": 696,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167490",
+     "number": 698,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012167491",
+     "number": 702,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167488",
+     "number": 704,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-712",
+   "pands": [
+    {
+     "pandId": "0363100012169157",
+     "number": 706,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169155",
+     "number": 708,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171042",
+     "number": 712,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171024",
+     "number": 714,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012171050",
+     "number": 716,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012171051",
+     "number": 718,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-724",
+   "pands": [
+    {
+     "pandId": "0363100012171045",
+     "number": 720,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171046",
+     "number": 722,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171044",
+     "number": 724,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171052",
+     "number": 726,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171053",
+     "number": 728,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171056",
+     "number": 730,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-740",
+   "pands": [
+    {
+     "pandId": "0363100012171054",
+     "number": 736,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171055",
+     "number": 738,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178684",
+     "number": 740,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178673",
+     "number": 742,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178674",
+     "number": 744,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171057",
+     "number": 746,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-752",
+   "pands": [
+    {
+     "pandId": "0363100012171058",
+     "number": 748,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178868",
+     "number": 750,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178869",
+     "number": 752,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178870",
+     "number": 754,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178871",
+     "number": 756,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178872",
+     "number": 758,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-764",
+   "pands": [
+    {
+     "pandId": "0363100012178873",
+     "number": 760,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178801",
+     "number": 762,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178864",
+     "number": 764,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178799",
+     "number": 766,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178800",
+     "number": 766,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178798",
+     "number": 768,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-774",
+   "pands": [
+    {
+     "pandId": "0363100012178788",
+     "number": 770,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178789",
+     "number": 772,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178790",
+     "number": 774,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169210",
+     "number": 776,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169209",
+     "number": 778,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169279",
+     "number": 780,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-786",
+   "pands": [
+    {
+     "pandId": "0363100012178132",
+     "number": 782,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178131",
+     "number": 784,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178133",
+     "number": 786,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178134",
+     "number": 788,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178125",
+     "number": 790,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178127",
+     "number": 792,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-798",
+   "pands": [
+    {
+     "pandId": "0363100012178126",
+     "number": 794,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178129",
+     "number": 796,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178128",
+     "number": 798,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178120",
+     "number": 800,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178088",
+     "number": 804,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178087",
+     "number": 808,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-814",
+   "pands": [
+    {
+     "pandId": "0363100012171416",
+     "number": 810,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182626",
+     "number": 812,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182627",
+     "number": 814,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171417",
+     "number": 816,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171418",
+     "number": 818,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171419",
+     "number": 820,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-826",
+   "pands": [
+    {
+     "pandId": "0363100012171415",
+     "number": 822,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171420",
+     "number": 824,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182812",
+     "number": 826,
+     "staged": true,
+     "held": []
+    }
+   ]
+  }
+ ],
+ "keizersgracht-odd": [
+  {
+   "key": "keizersgracht-5",
+   "pands": [
+    {
+     "pandId": "0363100012168204",
+     "number": 1,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012168206",
+     "number": 3,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168205",
+     "number": 5,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012168067",
+     "number": 7,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168066",
+     "number": 9,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012168133",
+     "number": 11,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-21",
+   "pands": [
+    {
+     "pandId": "0363100012168132",
+     "number": 15,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176021",
+     "number": 19,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176020",
+     "number": 21,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175954",
+     "number": 23,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175947",
+     "number": 27,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175949",
+     "number": 29,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-35",
+   "pands": [
+    {
+     "pandId": "0363100012175948",
+     "number": 31,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176023",
+     "number": 33,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176022",
+     "number": 35,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175951",
+     "number": 37,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175950",
+     "number": 39,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175953",
+     "number": 41,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-71",
+   "pands": [
+    {
+     "pandId": "0363100012175952",
+     "number": 43,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169217",
+     "number": 63,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012175859",
+     "number": 71,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175862",
+     "number": 75,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175861",
+     "number": 77,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012175788",
+     "number": 79,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-87",
+   "pands": [
+    {
+     "pandId": "0363100012175789",
+     "number": 81,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167718",
+     "number": 83,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167717",
+     "number": 87,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167716",
+     "number": 89,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167705",
+     "number": 91,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167706",
+     "number": 93,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-97",
+   "pands": [
+    {
+     "pandId": "0363100012167704",
+     "number": 95,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177534",
+     "number": 95,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177282",
+     "number": 97,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177281",
+     "number": 99,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177532",
+     "number": 101,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177290",
+     "number": 107,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-113",
+   "pands": [
+    {
+     "pandId": "0363100012177289",
+     "number": 109,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177288",
+     "number": 111,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177469",
+     "number": 113,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167700",
+     "number": 117,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167694",
+     "number": 119,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012165029",
+     "number": 125,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-135",
+   "pands": [
+    {
+     "pandId": "0363100012165028",
+     "number": 129,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012167670",
+     "number": 133,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167654",
+     "number": 135,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167655",
+     "number": 137,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167653",
+     "number": 141,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167652",
+     "number": 143,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-149",
+   "pands": [
+    {
+     "pandId": "0363100012167651",
+     "number": 145,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167648",
+     "number": 147,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167647",
+     "number": 149,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176422",
+     "number": 151,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012176415",
+     "number": 155,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176429",
+     "number": 157,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-167",
+   "pands": [
+    {
+     "pandId": "0363100012176423",
+     "number": 159,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176427",
+     "number": 163,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169070",
+     "number": 167,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169068",
+     "number": 169,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169067",
+     "number": 171,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169066",
+     "number": 173,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-183",
+   "pands": [
+    {
+     "pandId": "0363100012165019",
+     "number": 179,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169575",
+     "number": 181,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169574",
+     "number": 183,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172357",
+     "number": 185,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169305",
+     "number": 203,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169306",
+     "number": 207,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-215",
+   "pands": [
+    {
+     "pandId": "0363100012172352",
+     "number": 211,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169514",
+     "number": 213,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169513",
+     "number": 215,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169303",
+     "number": 217,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172244",
+     "number": 221,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172241",
+     "number": 223,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-229",
+   "pands": [
+    {
+     "pandId": "0363100012172240",
+     "number": 225,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172310",
+     "number": 227,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012172296",
+     "number": 229,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172293",
+     "number": 231,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172295",
+     "number": 231,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172239",
+     "number": 233,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-241",
+   "pands": [
+    {
+     "pandId": "0363100012172301",
+     "number": 235,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172294",
+     "number": 239,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169111",
+     "number": 241,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172235",
+     "number": 243,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172233",
+     "number": 247,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172231",
+     "number": 251,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-257",
+   "pands": [
+    {
+     "pandId": "0363100012172230",
+     "number": 253,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172236",
+     "number": 255,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172237",
+     "number": 257,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172229",
+     "number": 259,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172183",
+     "number": 261,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172182",
+     "number": 263,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-315",
+   "pands": [
+    {
+     "pandId": "0363100012172238",
+     "number": 265,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172232",
+     "number": 267,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172167",
+     "number": 315,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172166",
+     "number": 317,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172173",
+     "number": 319,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172172",
+     "number": 321,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-327",
+   "pands": [
+    {
+     "pandId": "0363100012172171",
+     "number": 323,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172164",
+     "number": 325,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172165",
+     "number": 327,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172176",
+     "number": 331,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169193",
+     "number": 333,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169194",
+     "number": 335,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-341",
+   "pands": [
+    {
+     "pandId": "0363100012172411",
+     "number": 337,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172403",
+     "number": 339,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172347",
+     "number": 341,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172401",
+     "number": 345,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012172402",
+     "number": 345,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172409",
+     "number": 351,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-357",
+   "pands": [
+    {
+     "pandId": "0363100012172408",
+     "number": 353,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172407",
+     "number": 355,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172406",
+     "number": 357,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012172345",
+     "number": 383,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172344",
+     "number": 385,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012185771",
+     "number": 389,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-395",
+   "pands": [
+    {
+     "pandId": "0363100012172336",
+     "number": 391,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172290",
+     "number": 393,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012185769",
+     "number": 395,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172342",
+     "number": 397,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169442",
+     "number": 403,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172277",
+     "number": 405,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-411",
+   "pands": [
+    {
+     "pandId": "0363100012172280",
+     "number": 407,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172281",
+     "number": 409,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172282",
+     "number": 411,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172270",
+     "number": 413,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172271",
+     "number": 415,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172272",
+     "number": 417,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-425",
+   "pands": [
+    {
+     "pandId": "0363100012172289",
+     "number": 419,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172276",
+     "number": 421,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012172225",
+     "number": 425,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169437",
+     "number": 431,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169298",
+     "number": 433,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169299",
+     "number": 435,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-441",
+   "pands": [
+    {
+     "pandId": "0363100012169294",
+     "number": 437,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012169293",
+     "number": 439,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176405",
+     "number": 441,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176404",
+     "number": 443,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176408",
+     "number": 445,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176407",
+     "number": 447,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-453",
+   "pands": [
+    {
+     "pandId": "0363100012176409",
+     "number": 449,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176454",
+     "number": 451,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176455",
+     "number": 453,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176395",
+     "number": 455,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176394",
+     "number": 461,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "cutter flag",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012176400",
+     "number": 463,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-471",
+   "pands": [
+    {
+     "pandId": "0363100012176401",
+     "number": 465,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171596",
+     "number": 467,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171660",
+     "number": 471,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171663",
+     "number": 475,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171662",
+     "number": 481,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177438",
+     "number": 493,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-501",
+   "pands": [
+    {
+     "pandId": "0363100012177442",
+     "number": 497,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177441",
+     "number": 499,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177445",
+     "number": 501,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171441",
+     "number": 503,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171442",
+     "number": 505,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171587",
+     "number": 515,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-525",
+   "pands": [
+    {
+     "pandId": "0363100012171589",
+     "number": 519,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171585",
+     "number": 523,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171586",
+     "number": 525,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176166",
+     "number": 527,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176167",
+     "number": 529,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176168",
+     "number": 531,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-539",
+   "pands": [
+    {
+     "pandId": "0363100012176164",
+     "number": 535,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176163",
+     "number": 537,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176162",
+     "number": 539,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012167898",
+     "number": 557,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167900",
+     "number": 559,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176756",
+     "number": 561,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-583",
+   "pands": [
+    {
+     "pandId": "0363100012176757",
+     "number": 565,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012176758",
+     "number": 579,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167901",
+     "number": 583,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167905",
+     "number": 607,
+     "staged": false,
+     "held": [
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012167982",
+     "number": 615,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012179303",
+     "number": 631,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-637",
+   "pands": [
+    {
+     "pandId": "0363100012167976",
+     "number": 633,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167980",
+     "number": 635,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167984",
+     "number": 637,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012167985",
+     "number": 639,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180136",
+     "number": 641,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012180137",
+     "number": 647,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-653",
+   "pands": [
+    {
+     "pandId": "0363100012180135",
+     "number": 649,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180047",
+     "number": 651,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180046",
+     "number": 653,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180132",
+     "number": 655,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180133",
+     "number": 657,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012180049",
+     "number": 659,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-667",
+   "pands": [
+    {
+     "pandId": "0363100012180128",
+     "number": 661,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178665",
+     "number": 665,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178666",
+     "number": 667,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178670",
+     "number": 671,
+     "staged": false,
+     "held": [
+      "rear-or-side wall"
+     ]
+    },
+    {
+     "pandId": "0363100012178668",
+     "number": 673,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178675",
+     "number": 675,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-695",
+   "pands": [
+    {
+     "pandId": "0363100012178676",
+     "number": 677,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171060",
+     "number": 693,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171084",
+     "number": 695,
+     "staged": false,
+     "held": [
+      "outline off the front",
+      "two fronts (extent multi)"
+     ]
+    },
+    {
+     "pandId": "0363100012171093",
+     "number": 699,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171087",
+     "number": 703,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171091",
+     "number": 705,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-717",
+   "pands": [
+    {
+     "pandId": "0363100012171092",
+     "number": 707,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178976",
+     "number": 711,
+     "staged": false,
+     "held": [
+      "rear-or-side wall",
+      "outline off the front"
+     ]
+    },
+    {
+     "pandId": "0363100012177680",
+     "number": 717,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012571503",
+     "number": 719,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012177681",
+     "number": 721,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178879",
+     "number": 723,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-729",
+   "pands": [
+    {
+     "pandId": "0363100012171412",
+     "number": 725,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171413",
+     "number": 727,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182233",
+     "number": 729,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182234",
+     "number": 731,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182235",
+     "number": 733,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182232",
+     "number": 737,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-743",
+   "pands": [
+    {
+     "pandId": "0363100012182224",
+     "number": 739,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182225",
+     "number": 741,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178164",
+     "number": 743,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182426",
+     "number": 747,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178141",
+     "number": 749,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012178162",
+     "number": 751,
+     "staged": true,
+     "held": []
+    }
+   ]
+  },
+  {
+   "key": "keizersgracht-757",
+   "pands": [
+    {
+     "pandId": "0363100012182424",
+     "number": 753,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182425",
+     "number": 755,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171411",
+     "number": 757,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012171508",
+     "number": 759,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182816",
+     "number": 761,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182817",
+     "number": 763,
+     "staged": true,
+     "held": []
+    },
+    {
+     "pandId": "0363100012182814",
+     "number": 765,
+     "staged": true,
+     "held": []
+    }
+   ]
+  }
+ ]
+}
