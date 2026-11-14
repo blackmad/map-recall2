@@ -3,7 +3,7 @@
  "kind": "large",
  "id": "buitenzagerij-45-100112",
  "pandId": "0363100012100112",
- "address": "Buitenzagerij 45, Amsterdam (Jordaan, former Zagerij site): 1984 comb of six rows of two-storey terraced houses (194 homes) in buff brick under a spine block",
+ "address": "Buitenzagerij 45, Amsterdam-Noord (by Het Dok on the IJ): 1984 housing of 194 homes, six two-storey terraced rows behind a three-storey gallery-access spine raised on blue steel columns",
  "sources": [
   {
    "id": "pano-2016-08-16-w04-259",
@@ -12,6 +12,13 @@
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0008_005745/",
    "image": "source-data://pand-reference-walls/0363100012100112/w04-259.jpg",
    "sha256": "21f22e493497aaea67e5eb7eb3320543af043f445ff3026948332ec03c9b8347",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-11-w15-339",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002572_pano_0000_000974/",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -72,6 +79,50 @@
     "system",
     "baysPerStorey"
    ]
+  },
+  {
+   "wallSurfaces": [
+    7,
+    36,
+    39,
+    42,
+    45,
+    47,
+    50,
+    51,
+    58,
+    75,
+    136,
+    176,
+    185
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "glazed",
+   "windows": "plain",
+   "deepBars": false,
+   "sills": false,
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#c4c5c0"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2
+    ],
+    "kind": "solid",
+    "deep": 0.42,
+    "colour": "#e4e4de",
+    "railColour": "#5a6068"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "wallFamily",
+    "balconyBands"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -87,12 +138,13 @@
   "stone": "#d8d0c0"
  },
  "notes": [
-  "Buitenzagerij 45 (BAG: built 1984; 194 dwellings; 5,964 m2 footprint, 11.6 m): the Buitenzagerij housing, a spine along the Jordaan side with six parallel rows of two-storey terraced houses reaching to the Singelgracht. Photographed: the west faces of the rows (w04-259, panorama 2016-08-16: a buff brick ground floor with a white front door with a round window and a window per house, a white-panelled first floor with a long window ribbon, a glazed band under a flat overhanging roof) and the east faces (w01-79, 2018-07-24, and w05-79, 2021-06-17: the same rows seen from the east garden side).",
+  "Buitenzagerij 45 (BAG: built 1984; 194 dwellings; 5,964 m2 footprint, 11.6 m), Amsterdam-Noord by Het Dok on the IJ (corrected 2026-11-14, lane blank-walls: the first draft placed it in the Jordaan by the Singelgracht, which it is not): six parallel rows of two-storey terraced houses running south toward the IJ from a three-storey spine along Het Dok. Photographed: the west faces of the rows (w04-259, panorama 2016-08-16: a buff brick ground floor with a white front door with a round window and a window per house, a white-panelled first floor with a long window ribbon, a glazed band under a flat overhanging roof) and the east faces (w01-79, 2018-07-24, and w05-79, 2021-06-17: the same rows seen from the east garden side).",
   "Modelled: the long west-facing walls (panels 20, 10, 65, 75, 47) and east-facing walls (panels 17, 67, 69, 73, 101) as two 2-storey groups of two-light windows over buff brick with white frames, about 5.4 m bays (one per house); panel 86 (the long east wall, 8.5 m) is left to the shell. Roofs and the spine walls are the 3DBAG LoD2.2 shell.",
   "Simplified: doors are plain windows in the ground row (the kit's entrance needs a 1.6 m opening per panel, not one per house), the round door windows and the glazed top band are not drawn, the white upper panels are the same buff brick colour. Not modelled: the north spine wall and the end stair walls (no panorama within 35 m).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #646a6f not used (not darker than the wall #736352 by 10 L*, or tinted): kit glass kept.",
   "roof.flatHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
-  "roof.pitchedHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
+  "roof.pitchedHex #878b90: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 189/189/189, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "Lane blank-walls-20261114 (feedback 21dc1e32 \"why this wall so washed out?\": the spine's north wall along Het Dok drew as one windowless plane in the buff house brick). The 2022-05-11 panorama w15-339 (and w13/w17/w22-339) shows that wall: an open undercroft of blue steel columns and a blue beam with glazed entrance halls, two storeys of access galleries (white slab edges, grey bar railings) in front of light grey panel walls with a door and window per flat, a glazed canopy on top. walls[2] = the spine's north panels (surfaces 7, 36, 39, 42, 45, 47, 50, 51, 58, 75, 136, 176, 185; 42 is an 8.6 m stretch of the same front): 3 storeys, a glazed ground, 4 windows per 22 m panel (the flats' door-and-window pairs at the kit's 12k-triangle budget), gallery bands with solid parapets standing for the bar railings (the triangle budget) on storeys 1-2, the wall painted #c4c5c0 (the crop reads #8d8e89 in the gallery's shade; lifted to the slab-lit panel grey). The other unphotographed walls take the window grid (otherWalls.ts)."
  ],
  "closedBands": true,
  "measured": {
