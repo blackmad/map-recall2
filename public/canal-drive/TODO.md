@@ -1975,6 +1975,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
+  - **Pontsteiger (rebuilt 2026-11-14):** kit still lacks the pavilions' curved canopies, real loggia depth, glazed-brick texture, patterned soffit cladding; `grid()` hides panes by box bounds only (not roofs/prisms/rotated boxes).
+  - **Two models on one pand (pinned open in `modelOverlap.test.ts`):** `joodse-invalide` vs `ordinary-0363100012253824`; `roeterseiland-rec-a` vs `ordinary-0363100012253754`. Ride each, then `SHADOWED_BY_LANDMARK` or hold.
+  - **Roof glazing follow-ups (2026-11-14):** the baked world shells still carry the old set-back crowns until the next `world:compile` (integrator, outside a gate). Grasweg 116-124 GLB draws its terraces as blank boxes with no roof gardens (landmark-builder lane). `test:world-format` (not in check:canal) fails on main: `worldStreamer.test.ts` styled mismatch on pand 0363100012072136 in tile 8414/5384, pre-existing before the roof-glazing merge.
+  - **Blank-walls holds (39 in `held-installs.json`, 2026-11-14):** the kit cannot yet say a storey-aware/sparse/ribbon grid, single tall-room halls, car-park decks, roller doors, or metal/glass vs brick for the grid (it paints any brick/stucco/stone slot). Fix intents (`otherWalls` real system; `blankWalls` citing crops) or add those components, then re-install. Ride-check Buitenzagerij's row end walls (now gridded).
   - **Houthavens (round 2 done 2026-11-14):** OBA brick tone waits on needs-david #385; the OBA gallery camera faces its blank wall.
 - **Building articles, remainder (2026-10-31).** Shipped: article cards on
   1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,

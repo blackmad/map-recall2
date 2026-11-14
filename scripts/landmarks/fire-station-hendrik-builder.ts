@@ -159,6 +159,11 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
   const w6=ringFrame(ring2,6);
   frameStorey(w6.f,w6.len,6,2);
   for(let t=.5;t<w6.len;t+=1){const y=top(w6.f,t);if(y>5)slab(b,w6.f,t,y-.35,1.02,.35,.12,'white');}
+  // Curved west wall south of it (ring edges 8-13, six 1.8 m facets, 10.7 m facing ~283-290 deg), blank until lane
+  // blank-walls-20261114 (feedback 9aa8d03b "no windows, reallly?"). TMX7316010203-001967_pano_0000_001082 (2021-01-18,
+  // square-on across the Singelgracht, crop w07-287): three bays of paired white-framed windows on each of the three
+  // upper storeys (sills ~5.1 / 8.3 / 11.5 m, ~0.6 x 1.6 m). One window per facet, each pair straddling a facet joint.
+  for(let i=8;i<=13;i++){const e=ringFrame(ring2,i),t=e.len*((i-8)%2===0?.72:.28);for(const y of [5.1,8.3,11.5])if(y+2<Math.min(top(e.f,Math.max(.05,t-.45)),top(e.f,Math.min(e.len-.05,t+.45))))lights(e.f,t,y,.6,1.6,1);}
   setSink(sink0);
  }
 }

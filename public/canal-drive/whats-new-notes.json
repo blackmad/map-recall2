@@ -3,6 +3,95 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Pontsteiger rebuilt",
+      "text": "The Houthavens gate no longer shows chequered window patches where its tower and skybridge met: two window grids were drawn on the same wall, and landmark windows now share one grid per wall. The Pontsteiger itself is remodelled from photos, with a light glazed-brick skin, windows that shift storey by storey, the skybridge's glazed band with its white zig-zag truss, a tower that runs from the ground to the roof, and the low block raised on white columns.",
+      "where": [
+        4.8882,
+        52.3939
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-pontsteiger-rebuilt-orbit.jpg",
+          "alt": "Pontsteiger before (uniform grid with chequered patches) and after (photo-based remodel)",
+          "caption": "Before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-pontsteiger-rebuilt-photo.jpg",
+          "alt": "The new model beside a photo of the Pontsteiger",
+          "caption": "Model | photo (Wikimedia Commons)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Windows on walls we had no photo of",
+      "text": "Large modelled buildings used to draw any wall without a photo as one blank plane. Those walls now show a window grid unless a photo shows the wall really is blind; 60 buildings were checked one by one and updated, and halls, car parks and metal-clad sheds wait for a better fit. The Kromhout yard's west halls on the Gedempt Hamerkanaal are blue-grey metal with their real window row, the Buitenzagerij gallery block on Het Dok shows its galleries (and its card now says Amsterdam-Noord, not the Jordaan), and the Kazerne Hendrik's curved wall has its paired windows.",
+      "where": [
+        4.9196,
+        52.3833
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-blank-walls-21dc1e32.jpg",
+          "alt": "Buitenzagerij 45 before (blank ochre wall) and after (gallery block with windows)",
+          "caption": "Buitenzagerij 45, before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-blank-walls-174d2455.jpg",
+          "alt": "Kromhout halls before (blank brick) and after (metal with windows)",
+          "caption": "Kromhout, Gedempt Hamerkanaal, before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-blank-walls-9aa8d03b.jpg",
+          "alt": "Kazerne Hendrik before and after: paired windows on the curved wall",
+          "caption": "Kazerne Hendrik, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "No more glass hats on new-build roofs",
+      "text": "Many blocks built since 2005 wore a bright blue glass top storey, added at random. Aerial photos show those roofs carry solar panels and plant, not glass, so 852 roofs are back to their real flat tops; only buildings known to have a set-back top floor keep one. On Grasweg in Noord, a glass band that floated over the two modelled towers and roofed their courtyard is gone too. From far away the pre-built city may still show a few until its next rebuild.",
+      "where": [
+        4.8994,
+        52.3937
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-roof-glazing-grasweg-pair.jpg",
+          "alt": "Grasweg towers, before (glass band across the roofs) and after",
+          "caption": "Grasweg, before (top) | after (bottom)"
+        },
+        {
+          "src": "whats-new/2026-11-14-roof-glazing-ortho-sample.jpg",
+          "alt": "Aerial photo sample of twelve roofs that had a glass crown: solar panels and plant, no glazing",
+          "caption": "The evidence: 12 sampled roofs from the air"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "One pane per window on landmarks",
+      "text": "Landmarks modelled without texture coordinates (the Pontsteiger, the Rijksmuseum's glass roofs and about 400 others) now show each window as one pane of glass. Before, each window showed as a stack of small repeated panes, which looked like generic windows overlapping the model.",
+      "where": [
+        4.8882,
+        52.3939
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-landmark-glass-before-after-0.95-crop.jpg",
+          "alt": "Pontsteiger skybridge, before (stacked panes) and after (one pane per window)",
+          "caption": "Pontsteiger, before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-landmark-glass-ba-rijks-default-0.jpg",
+          "alt": "Rijksmuseum glass roof, before and after",
+          "caption": "Rijksmuseum, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "No more white stripes up brick houses",
       "text": "Older brick houses no longer get bright white bars up their corners. The game used to add a pale corner pilaster to about a third of 19th-century and canal-house fronts at random, so 1,500 houses in the centre had white stripes the real ones don't have. Those piers are now drawn in the house's own brick. They stay pale only where the monument register or a house description says so.",
       "where": [

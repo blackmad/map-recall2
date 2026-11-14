@@ -136,3 +136,19 @@ test('load: meshopt + quantised GLB, vertex colours and a MASK material come bac
   const c = px(img, 4, 4);
   assert.ok(c[0] > 100 && c[1] < 10 && c[2] < 10, `vertex colour drawn: ${c}`);
 });
+
+test('windowGrid: the baked tile is the shader grid (a window per 3.0 m bay and 3.2 m storey, untinted)', async () => {
+  const { GRID_TILE_M, paintsWindowGrid, windowGridTexture } = await import('./windowGrid.ts');
+  assert.equal(paintsWindowGrid({ materialSlot: 'brick', windowGrid: true }), true);
+  assert.equal(paintsWindowGrid({ materialSlot: 'brick' }), false);
+  assert.equal(paintsWindowGrid({ materialSlot: 'glass', windowGrid: true }), false, 'glass never takes the grid');
+  const tint: [number, number, number] = [0.5, 0.4, 0.3], t = windowGridTexture([0.8, 0.8, 0.8], tint);
+  const out = new Float64Array(4), at = (mx: number, my: number) => { sampleTexture(t, mx / GRID_TILE_M, my / GRID_TILE_M, 0, out); return [0, 1, 2].map(c => out[c] * tint[c]); };
+  // wall between windows: cell mean x tint
+  at(0.2, 0.2).forEach((v, c) => assert.ok(Math.abs(v - 0.8 * tint[c]) < 1e-3));
+  // glass at the centre of the second bay, third storey: dark and untinted (blue-grey, b > r)
+  const g = at(4.5, 2 * 3.2 + 1.76);
+  assert.ok(g[2] > g[0] && g[0] < 0.4, `glass ${g}`);
+  // seamless: the tile edge is the same cell phase as the origin
+  assert.deepEqual(at(GRID_TILE_M + 4.5, 1.76).map(v => +v.toFixed(3)), at(4.5, 1.76).map(v => +v.toFixed(3)));
+});

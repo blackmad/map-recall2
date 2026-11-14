@@ -14,7 +14,8 @@
  */
 import {ROOF_COLOURS} from './fit.ts';
 import type {BuildingFacts} from './facts.ts';
-import {OTHER_WINDOW_GRID, swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
+import {resolveOtherWalls} from './otherWalls.ts';
+import {swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
 import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/panels.ts';
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
@@ -632,9 +633,10 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   // `window-grid`: blank geometry; the unlisted walls take their own slot (WINDOW_GRID_WALL_SLOT, same colour as `wall`)
   // whose material the exporter marks `windowGrid`, and the city look paints windows on it in the shader.
-  const windowGrid = intent.otherWalls === OTHER_WINDOW_GRID;
+  // Default and uncited `blank` (otherWalls.ts, lane blank-walls-20261114): the window grid; blank only on a photo.
+  const otherResolved = resolveOtherWalls(intent), windowGrid = otherResolved.windowGrid;
   if (windowGrid) palette[WINDOW_GRID_WALL_SLOT] = palette.wall;
-  const otherName: LargeSystemName = windowGrid || !intent.otherWalls ? 'blank' : intent.otherWalls as LargeSystemName, otherTop = Math.max(0, ...panels.map(p => p.vMax));
+  const otherName: LargeSystemName = otherResolved.system, otherTop = Math.max(0, ...panels.map(p => p.vMax));
   const otherLines = storeyLines(otherTop, true, undefined, civicM, year !== null && year < 1945 ? 1.15 : 1, otherTop);
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
   // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the

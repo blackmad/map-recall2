@@ -1,9 +1,31 @@
 # Canal Recall — what is built
 
+## One window grid per wall (2026-11-14)
+
+The Pontsteiger's chequer (feedback a4013653) was `cultural-builders.ts` `grid()` laying a window grid on every face of every box; coplanar leg/skybridge faces got two grids out of phase. `landmarks/wallGrid.ts` `planWallGrids` merges coplanar faces (0.5 m) into one wall with one phase and drops panes at least half covered by another box; byte-identical for lone faces (only melkweg changed, 15 buried panes). The Pontsteiger got its own photo-based builder (`pontsteiger-builder.ts`) with new kit parts `staggeredOpenings.ts` and `warrenTruss.ts`. Massing (leg widths, ~51 m soffit vs OSM min_height 58) is a judgement call between photos and OSM.
+
+
+## Unlisted walls take the window grid (2026-11-14)
+
+Feedback 21dc1e32 / 174d2455 / 9aa8d03b ("no windows, really?"): large recipes drew every wall not in `intent.walls` blank when `otherWalls` was `blank`, so walls nobody had a photo of became flat planes (Buitenzagerij 45's gallery spine, Kromhout's west halls); Kazerne Hendrik's builder had no openings on its curved west wall. `buildingRecipe/otherWalls.ts` now gives unlisted walls the shader grid unless the intent cites a photo in `blankWalls`; party panels never take it. Of 99 re-fitted installs, a Node before/after sheet with panorama crops (`_pruned-sheets/blank-walls/review/`) passed 60; 31 holds (metal/glass halls, car parks, tall single-room halls, photo-blind gables) and 8 needs-photo sit in `held-installs.json`. Pinned in `feedbackBlankWalls.test.ts`. Buitenzagerij's card said Jordaan; it now says Amsterdam-Noord.
+
+
+## Set-back crowns need evidence (2026-11-14)
+
+Feedback 09e7bce0 / 6070a7e5: the blue glazed top storey on generic flat roofs was `contemporaryFamily.ts` drawing a set-back crown for 35 % of 2005+ housing pands ≥ 14 m by hash (852 pands); a 12-roof PDOK sample showed solar fields and plant, never an inset glass storey. Crowns now need the `setback` tag (`scripts/newbuild/front-tags.json` → `contemporary-walls.json`), seeded with Houthavenkade 26 and Revaleiland 437: 852 → 2. The crown was also its own `<pand>:setback` mesh range, so landmark suppression, ghosting and picking missed it and Grasweg 116-124's crown floated over `grasweg-116.glb`; `MeshBuilding.rangeOwner` folds it into its pand's range. Pinned by `check:roof-glazing` (in check:canal:rest).
+
+
+## Box-UV landmark glass (2026-11-14)
+
+Feedback a4013653/10ada6d9 read the Pontsteiger as generic windows drawn over the model. Nothing underlays it (generic layer, baked HIDE and covers all suppress its five OSM outlines). Cause: `cityLook.ts` box-UV path tiled the glass pane cell every metre on GLBs without UVs (409 of 766 drawn GLBs), so each window drew 2–3 stacked panes. Box-path pane layers now take one flat mid-pane sample (`BOX_PANE_UV`). Pinned in `cityLook.test.ts`; `modelOverlap.test.ts` (`coverCollisions`) pins model-on-model pairs and now runs in check:canal:rest via test:building-taxonomy. The Pontsteiger GLB itself still lays two window grids on coplanar faces (TODO).
+
+
+
 **White corner bars: rolled pilasters take the wall tone (2026-11-14, lane white-bars, 8775981fe; David's Haarlemmerdijk shot)**
 - **Cause.** `facadeOrnaments.ts` `corner-pilasters` is a random wall extra (30 % of c19, 22 % of canal-house fronts), always WHITE/STONE, 0.42 m wide, first floor to cornice. 1,515 drawn in the centre box, none from register or spec; 1,496 on walls darker than L 0.6, where they read as white bars. The bars in David's frame were on Haarlemmerdijk 29 (167795, generic), not 31 (167794, its own model).
 - **Fix.** `look/pilasterTone.ts`: an unevidenced pilaster is the wall × 0.9 (the stepped parapet's rule); pale only when the register (`registerForce`), a HouseSpec (`statedFirst`) or a street recipe (`paleAccents`) states it. Same geometry and triangles. `?pilasterTone=0` / `PILASTER_TONE=0`; worker flag. `check:pilaster-tone` in check:canal:rest pins 167795, 157005, 165159 and 167794-is-a-model (2 tiles: 9,358 without pilasters byte-identical, 631 recoloured).
 - **Left.** The rolled `kroonlijst` (pale slanted top bar) stays; thin-fade dither on it is TF's thinFocalPx item. 29's wall is drawn dark brick 11 m but the panorama shows pale render with a balustrade at about 8.3 m (house-line).
+
 ## Stale destinations after reload (2026-11-14)
 
 User notes on 2cd2fb7 still headed for Meerpadkerk after the fame-tier fix. Cause: the open run's saved leg (`canalRecall.openRun.v1`.nextLeg), dealt before the fix, was relaunched on every reload with `explicitDestination` and never vetted; `loadRun` also credited a whole closed-tab pause, so the run never expired. `chainedRun.ts` `judgeResumedLeg`/`resumeLeg` now keep a saved leg only if the pool would still deal it (tier factor ≥ 0.5), the rider picked it (`RunLeg.userPicked`), or it is a review/home stop; pause credit is capped at 3 h. Home rides keep `TAIL_FLOOR` for places under score 4 even when the famous tier is scarce (El Tawheed was 3.3 % from Kinkerbuurt), and stand-in swaps count sub-famous places as twice as far. Pinned in `destinationPool.test.ts` (Wiborgeiland and Kinkerbuurt starts, resumed legs).

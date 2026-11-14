@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { sunlitMeasuredWall } from './sunny.ts';
 import * as THREE from 'three';
 import { MATERIAL_SLOTS, CITY_ROOF, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
-import { cityProgramKey, createCityLookMaterial, createCityUniforms, BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { BOX_PANE_UV, cityProgramKey, createCityLookMaterial, createCityUniforms, BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { photoMatchedWallTint } from './chunkWallExposure.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
@@ -95,6 +95,35 @@ test('lit variants of a kind share one program: same key, defines and shader sou
   }
   assert.notEqual(cityProgramKey({ lit: true, kind: 'slot' }), cityProgramKey({ lit: true, kind: 'chunk' }));
   assert.notEqual(cityProgramKey({ lit: false, kind: 'slot', uv: 'box' }), cityProgramKey({ lit: false, kind: 'slot', uv: 'uv' }), 'unlit keeps its defines');
+});
+
+// Named regression: the Pontsteiger (Houthavens, landmark `pontsteiger`, feedback a4013653 / 10ada6d9 on 2cd2fb7, "overlapping
+// windows", "rendered with generic windows"). Its GLB has no UVs, so its glass is box-projected, and the glass cell (one
+// pane, 0..1 on authored UVs) repeated every metre: each 2.2 x 1.9 m window drew two or three stacked stock panes.
+test('box-projected glass takes one flat mid-pane sample, never the pane cell repeated per metre (Pontsteiger)', async () => {
+  const fs = await import('node:fs');
+  const b = fs.readFileSync('public/canal-drive/models/pontsteiger.glb');
+  const gltf = JSON.parse(b.subarray(20, 20 + b.readUInt32LE(12)).toString('utf8'));
+  const glass = gltf.meshes.flatMap((m: any) => m.primitives).filter((p: any) => gltf.materials[p.material].name === 'glass');
+  assert.ok(glass.length && glass.every((p: any) => p.attributes.TEXCOORD_0 === undefined), 'the pin: Pontsteiger glass has no authored UVs (box path)');
+  assert.equal(inferMaterialSlot('glass', '#527787').slot, 'glass');
+  const uniforms = createCityUniforms(THREE);
+  for (const lit of [true, false]) {
+    const m = createCityLookMaterial(THREE, { lit, kind: 'slot', uv: 'box' }, uniforms);
+    const lib = THREE.ShaderLib.lambert;
+    const shader = { vertexShader: lib.vertexShader, fragmentShader: lib.fragmentShader, uniforms: THREE.UniformsUtils.clone(lib.uniforms) };
+    m.onBeforeCompile(shader, null);
+    const vs: string = m.isShaderMaterial ? m.vertexShader : shader.vertexShader;
+    assert.match(vs, /#define BOX_PANE_UV vec2\(0\.50, 0\.59\)/, `${lit ? 'lit' : 'unlit'}: the mid-pane constant is defined`);
+    const projected = vs.match(/vFacUv = [^;]*cityUv \* vSlot\.x;/g) ?? [];
+    assert.ok(projected.length >= 1, `${lit ? 'lit' : 'unlit'}: a box branch exists`);
+    for (const line of projected) assert.match(line, /vSlot\.y > 0\.5 \? BOX_PANE_UV : cityUv \* vSlot\.x/, `${lit ? 'lit' : 'unlit'}: every box branch keeps clamped (pane) layers off the metre tiling`);
+  }
+  // Mid-pane, clear of the streak (slotCells.ts paintGlassCanvas: a 64 x 128 canvas, streak from x 10..34 at the top to
+  // -20..4 at y 70; texture v runs up, so canvas y = (1 - v) * 128).
+  const [u, v] = BOX_PANE_UV, x = u * 64, y = (1 - v) * 128;
+  assert.ok(y < 70 ? x > 34 - 30 * y / 70 : true, 'the sample is right of the streak');
+  assert.ok(Math.abs(y - 64) < 16, 'the sample sits mid-pane (near the gradient mean)');
 });
 
 test('dress: a legacy landmark mesh (no UVs, untagged "brick") takes the brick slot, box UVs and attributes', () => {

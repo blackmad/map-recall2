@@ -1606,11 +1606,17 @@ export interface LargeBuildingIntent {
   sources: IntentSource[];
   walls: LargeWallIntent[];
   /**
-   * System for wall surfaces no group lists (default `blank`). `window-grid`: blank geometry (no added triangles) whose
+   * System for wall surfaces no group lists (default and `blank`: the window grid unless `blankWalls` cites a photo). `window-grid`: blank geometry (no added triangles) whose
    * wall material carries `windowGrid`, so the city look paints a window grid on it in the shader (rear and courtyard
    * walls no photo shows: lane newbuild-kit-20261110, feedback 75242f30 "why no windows").
    */
   otherWalls?: LargeSystemName | typeof OTHER_WINDOW_GRID;
+  /**
+   * The photo that shows the unlisted walls really blank (`source`: an id in `sources`). Without it an unlisted wall
+   * left `blank` (or with no `otherWalls`) takes the shader window grid (otherWalls.ts `resolveOtherWalls`, lane
+   * blank-walls-20261114): blank was the absence of a panorama, not evidence of a windowless wall.
+   */
+  blankWalls?: {source: string; note?: string};
   /**
    * A crown block that overhangs the shell on the named bearings (Salt, Haarlemmerweg 940: the top six storeys
    * cantilever over the canal corner above a recessed glazed base). The crown keeps the dominant front's bay pattern

@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {type Aabb,type GridBox,type Pane,boxAabb,planWallGrids} from '../../src/canalRecall/landmarks/wallGrid';
 type Colour='brick'|'stone'|'slate'|'white'|'gold'|'glass'|'dark'|'frame'|'red'|'blue'|'pink'|'bronze'|'copper'|'green'|'ochre'|'concrete'|'greyBrick'|'canopyGlass';
 export interface BuildingTools {
  add(g:T.BufferGeometry,c:Colour,x?:number,y?:number,z?:number,angle?:number):void;
@@ -10,12 +11,27 @@ export interface BuildingTools {
  clock(x:number,y:number,z:number,wind?:boolean):void;
  sign(text:string,x:number,y:number,z:number,pixel:number,c?:Colour,maxWidth?:number,angle?:number):void;
 }
-/** Each model is authored against its measured footprint, not stretched after export. */
+/**
+ * Each model is authored against its measured footprint, not stretched after export.
+ * Two passes (wallGrid.ts, feedback a4013653): a dry run records every box and every grid() box, then the real build
+ * glazes each grid face knowing the others, so overlapping and coplanar boxes get one window grid, not a chequer.
+ */
 export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTools){
+ const grids:GridBox[]=[],others:Aabb[]=[];let inGrid=false;
+ const noop=()=>{};
+ const dry:BuildingTools={add:noop,prism:noop,gableRoof:noop,hip:noop,window:noop,clock:noop,sign:noop,
+  box(x,y,z,w,h,d,_c,angle){if(!inGrid)others.push(boxAabb(x,y,z,w,h,d,angle??0));}};
+ buildCulturalPass(id,w,d,dry,{record(g){grids.push(g);},panes:()=>[]},()=>inGrid=true,()=>inGrid=false);
+ const plan=planWallGrids(grids,others);let next=0;
+ buildCulturalPass(id,w,d,b,{record:noop,panes:()=>plan[next++]},noop,noop);
+}
+interface GridPlan {record(g:GridBox):void;panes():Pane[]}
+function buildCulturalPass(id:string,w:number,d:number,b:BuildingTools,plan:GridPlan,gridOpen:()=>void,gridClose:()=>void){
  const {add,box,prism,gableRoof,hip,window,clock,sign}=b;
  function grid(x:number,y:number,z:number,width:number,height:number,depth:number,c:Colour='stone',step=4){
-  box(x,y,z,width,height,depth,c);box(x,y+height,z,width+.4,.3,depth+.4,'slate');
-  for(let v=y+1.2;v<y+height-1.3;v+=3.4){for(let u=-width/2+1.5;u<width/2-1;u+=step)for(let s of [-1,1])box(x+u,v,z+s*(depth/2+.05),step*.6,1.9,.12,'glass');for(let u=-depth/2+1.5;u<depth/2-1;u+=step)for(let s of [-1,1])box(x+s*(width/2+.05),v,z+u,.12,1.9,step*.6,'glass');}
+  gridOpen();box(x,y,z,width,height,depth,c);box(x,y+height,z,width+.4,.3,depth+.4,'slate');gridClose();
+  plan.record({x,y,z,width,height,depth,step});
+  for(const p of plan.panes())box(p.x,p.y,p.z,p.w,p.h,p.d,'glass');
  }
  function rail(x:number,y:number,z:number,width:number,depth:number){for(let s of [-1,1]){box(x,y,z+s*depth/2,width,.1,.12,'frame');box(x+s*width/2,y,z,.12,.1,depth,'frame');}for(let u=-width/2;u<=width/2;u+=3)for(let s of [-1,1])box(x+u,y-1,z+s*depth/2,.12,1,.12,'frame');}
  function ellipse(x:number,y:number,z:number,rx:number,rz:number,height:number,c:Colour){let g=new T.CylinderGeometry(1,1,height,24);g.scale(rx,1,rz);add(g,c,x,y+height/2,z);}
@@ -117,12 +133,6 @@ export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTool
   box(0,top+1.6,0,side+10,.5,side+10,'white');box(0,67.6,0,side+8,7.2,side+8,'glass');
   for(let u=-(side+8)/2;u<=(side+8)/2+.01;u+=(side+8)/10)for(const s of [-1,1]){box(u,67.6,s*((side+8)/2+.05),.14,7.2,.1,'frame');box(s*((side+8)/2+.05),67.6,u,.1,7.2,.14,'frame');}
   box(0,74.8,0,side+11,1.2,side+11,'white');rail(0,77,0,side+10,side+10);box(-side*.24,76,-side*.25,6,3,6,'white');for(let z of [-side/2-3,side/2+3])box(0,76,z,9,3,.22,'red');box(0,78.7,side/2+3,9,.25,.25,'red');box(-side*.24,79,-side*.25,1,9,1,'white');for(let y of [80,82.5,85]){box(-side*.24,y,-side*.25+.55,1.5,.2,.15,'dark',.65);box(-side*.24,y,-side*.25+.62,1.5,.2,.15,'dark',-.65);}
- }else if(id==='pontsteiger'){
-  // Raised low U, two slim tower legs and eight storeys in the skybridge.
-  let leg=w*.19,span=w*.96,rear=-d*.29;
-  for(let x of [-span/2+leg/2,span/2-leg/2]){grid(x,7,0,leg,21,d*.95,'stone',3.7);grid(x,28,rear,leg,61,d*.31,'stone',3.7);for(let z=-d*.4;z<=d*.4;z+=d*.2)box(x,0,z,1.6,7,1.6,'stone');}
-  grid(0,7,d*.38,span,21,d*.18,'stone',3.7);grid(0,61,rear,span,28,d*.31,'stone',3.7);rail(0,89.4,rear,span,d*.31);
-  for(let x of [-w*.2,w*.2])box(x,0,d*.28,12,3.8,8,'glass');
  }else if(id==='rem-eiland'){
   let width=w*.95,depth=d*.93;
   for(let x of [-width*.4,width*.4])for(let z of [-depth*.4,depth*.4]){box(x,0,z,.8,12,.8,'red');}

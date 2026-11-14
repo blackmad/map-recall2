@@ -18,7 +18,7 @@
  * turns it off. On, it applies to housing built from
  * CONTEMPORARY_FROM_YEAR, in every textured look: the nearest area's measured walls, the area's window shape (the
  * existing wide brick presets or the new tall French-balcony preset, `BAY_STYLES.modern[9]`), and a set-back top
- * storey (contemporarySetback) on blocks of five storeys and more. Off, nothing changes: the tall preset is not even
+ * storey on a block of five storeys and more that its evidence tags (`setback`). Off, nothing changes: the tall preset is not even
  * in the texture array (bayLook.ts), so the layer table and the baked shells stay byte-identical.
  */
 import WALLS from './contemporary-walls.json';
@@ -50,13 +50,15 @@ export const AREA_WINDOWS: Readonly<Record<string, { tall: number; paleFrames: n
 const POOLED_WINDOWS = { tall: 0.4, paleFrames: 0.5 };
 
 type AreaWalls = { centre: [number, number]; walls: string[] };
-const SET = WALLS as unknown as { areas: Record<string, AreaWalls>; pands?: Record<string, string>; bands?: string[]; tall?: string[] };
+const SET = WALLS as unknown as { areas: Record<string, AreaWalls>; pands?: Record<string, string>; bands?: string[]; tall?: string[]; setback?: string[] };
 const AREAS = SET.areas;
 /** This lane's own panorama samples per pand (`pands`), and the pands whose fronts show balcony bands (`bands`, scripts/newbuild/front-tags.json). */
 const SAMPLED: Readonly<Record<string, string>> = SET.pands ?? {};
 const BANDS: ReadonlySet<string> = new Set(SET.bands ?? []);
 /** Pands the panorama shows with tall French windows (`tall`, scripts/newbuild/front-tags.json). */
 const TALL: ReadonlySet<string> = new Set(SET.tall ?? []);
+/** Pands a photo or a modeller's description shows with a set-back top storey (`setback`, scripts/newbuild/front-tags.json). */
+const SETBACK: ReadonlySet<string> = new Set(SET.setback ?? []);
 const shortId = (id: string) => id.startsWith('NL.IMBAG.Pand.') ? id.slice(14) : id;
 
 /**
@@ -86,9 +88,16 @@ export type ContemporaryLook = { area: string | null; style: ContemporaryStyle; 
 
 /** Bay style index per contemporary style (BAY_STYLES.modern: 0 brick pale frames, 1 brick dark frames, 3 smooth dark). */
 const STYLE_INDEX: Record<ContemporaryStyle, number> = { brick: 0, brickDark: 1, smoothDark: 3, tall: TALL_PRESET_INDEX, band: BAND_PRESET_INDEX };
-/** Storeys from which a block may step its top storey back, and the share that does. */
+/**
+ * Height from which a block may step its top storey back. Only a pand tagged `setback` does (feedback 09e7bce0,
+ * 2026-11-14, "this generic roof window style is weird"): until then a 35 % hash draw of every 2005+ housing block of
+ * 14 m and more drew a glazed crown on a hash draw, 852 pands city-wide. A PDOK orthophoto sample of them (lane
+ * roof-glazing-20261114, 12 roofs across the 3DBAG roof-spread bins) showed solar fields and plant run to the
+ * parapet, no inset storey; set-back storeys are a per-building fact, not an area share.
+ */
 export const SETBACK_MIN_HEIGHT_M = 14;
-export const SETBACK_SHARE = 0.35;
+/** Whether a pand carries the evidence tag for a set-back top storey. */
+export const setbackTagged = (id: string): boolean => SETBACK.has(shortId(id));
 
 /**
  * The contemporary look of a dated housing pand, or null (flag off, before CONTEMPORARY_FROM_YEAR, not housing).
@@ -107,7 +116,7 @@ export function contemporaryLookFor(f: { id: string; year: number | null; height
   const style: ContemporaryStyle = BANDS.has(shortId(f.id)) ? 'band' : TALL.has(shortId(f.id)) ? 'tall' : painted ? 'smoothDark'
     : unitDraw(f.id, 'contemporary-tall') < windows.tall ? 'tall'
       : unitDraw(f.id, 'contemporary-frames') < windows.paleFrames ? 'brick' : 'brickDark';
-  const setback = f.heightM >= SETBACK_MIN_HEIGHT_M && unitDraw(f.id, 'contemporary-setback') < SETBACK_SHARE;
+  const setback = f.heightM >= SETBACK_MIN_HEIGHT_M && SETBACK.has(shortId(f.id));
   return { area, style, styleIndex: STYLE_INDEX[style], wall, painted, setback, wallSource: own ? 'own' : areaWalls ? 'area' : 'pooled' };
 }
 

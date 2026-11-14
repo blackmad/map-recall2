@@ -21,7 +21,8 @@ test('window-grid validates; an unknown otherWalls does not', () => {
 });
 
 test('window-grid adds no triangle and moves the unlisted walls to their own windowGrid slot (Houthavenkade 26)', () => {
-  const blank = compileLargeBuilding(validateLargeIntent({...intent, otherWalls: 'blank'}), facts);
+  // blank only on a cited photo since lane blank-walls-20261114 (otherWalls.ts)
+  const blank = compileLargeBuilding(validateLargeIntent({...intent, otherWalls: 'blank', blankWalls: {source: intent.sources[0].id}}), facts);
   const grid = compileLargeBuilding(validateLargeIntent({...intent, otherWalls: 'window-grid'}), facts);
   assert.equal(triangles(grid.group), triangles(blank.group));
   assert.ok(triangles(grid.group) <= grid.budgetTriangles, `${triangles(grid.group)} > ${grid.budgetTriangles}`);

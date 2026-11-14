@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import { labToRgb, rgbToLab } from '../../src/canalRecall/look/brickTone.ts';
 
 const LIFT_L = 12;
-const TAGS = JSON.parse(fs.readFileSync('scripts/newbuild/front-tags.json', 'utf8')) as { bands: Record<string, string>; tall: Record<string, string> };
+const TAGS = JSON.parse(fs.readFileSync('scripts/newbuild/front-tags.json', 'utf8')) as { bands: Record<string, string>; tall: Record<string, string>; setback?: Record<string, string> };
 const file = process.argv[2] ?? 'staging/newbuild/pano-samples.json';
 const samples = JSON.parse(fs.readFileSync(file, 'utf8')).samples as { area: string; pand: string; wall: number[] }[];
 const hex = (c: readonly number[]) => c.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
@@ -27,6 +27,6 @@ for (const s of samples) {
   (areas[s.area] ??= { centre: centres[s.area], walls: [] }).walls.push(code);
   pands[s.pand] = code;
 }
-const out = { schemaVersion: 1, licence: 'Gemeente Amsterdam panorama, CC BY 4.0', source: 'scripts/newbuild/sample-panos.ts (2005+ BAG pands, 2019+ panoramas)', liftL: LIFT_L, areas, pands, bands: Object.keys(TAGS.bands).sort(), tall: Object.keys(TAGS.tall).sort() };
+const out = { schemaVersion: 1, licence: 'Gemeente Amsterdam panorama, CC BY 4.0', source: 'scripts/newbuild/sample-panos.ts (2005+ BAG pands, 2019+ panoramas)', liftL: LIFT_L, areas, pands, bands: Object.keys(TAGS.bands).sort(), tall: Object.keys(TAGS.tall).sort(), setback: Object.keys(TAGS.setback ?? {}).sort() };
 fs.writeFileSync('src/canalRecall/contemporary-walls.json', `${JSON.stringify(out, null, 1)}\n`);
 for (const [k, v] of Object.entries(areas)) console.log(k, v.walls.length, v.walls.filter(w => w[0] === 'p').length, 'painted');
