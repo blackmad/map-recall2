@@ -142,6 +142,12 @@ export type MeshBuilding = {
   gardenRoom?: { tris: readonly FlatTri[] };
   /** The contemporary family steps this building's top storey back (contemporaryFamily.ts; threeBuildingFeatures.ts withSetbackCrown). */
   setbackCrown?: boolean;
+  /**
+   * The pand this part belongs to when it is drawn as a building of its own (a set-back crown, `<id>:setback`): its
+   * vertices join the owner's range, so hiding, ghosting, highlighting, picking and the ground lift that address the
+   * pand id reach the part too (feedback 09e7bce0: a landmark's suppressed pand left its glass crown floating).
+   */
+  rangeOwner?: string;
   /** The industrial kit (industrial/industrialKit.ts): bare cladding walls at its own cell width, plus its bands, doors and tank parts. */
   industrial?: IndustrialMeshSpec;
 };
@@ -1161,7 +1167,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   let v = 0, q = 0, ti = quadTotal * 6;
   for (const { b, quads, roof, lid, sign, extraTris, recInput } of quadsByBuilding) {
     if (!quads.length && !roof.length && !lid && !sign.length) continue;
-    const start = v, recIndex = ranges.length;
+    const start = v, recIndex = recInputs.length;
     if (recordMode) recInputs.push(recInput!);
     // Crown-field u is measured from the building's first footprint vertex (wall metres stay inside Int16 x 0.02 m).
     const anchor = recordMode && b.polygons[0]?.[0]?.[0] ? [(b.polygons[0][0][0][0] - origin.lng) * kxLocal, (b.polygons[0][0][0][1] - origin.lat) * M_PER_DEG_LAT] : [0, 0];
@@ -1250,7 +1256,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         indices[ti++] = v; v++;
       }
     }
-    ranges.push({ id: b.id, start, count: v - start });
+    // A part drawn right after its owner (withSetbackCrown) extends the owner's range; anywhere else it keeps its own.
+    const last = ranges[ranges.length - 1];
+    if (b.rangeOwner && last?.id === b.rangeOwner && last.start + last.count === start) last.count += v - start;
+    else ranges.push({ id: b.id, start, count: v - start });
   }
   addKind('frontage', signTotal - extrasTotal - gardenTotal);
   addKind('garden-room', gardenTotal);

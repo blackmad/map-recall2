@@ -371,7 +371,7 @@ export function withSetbackCrown(b: MeshBuilding, look: BuildingLook): MeshBuild
   const cladding = lookHex(SETBACK_CLADDING_HEX, look);
   const body: MeshBuilding = { ...b, heightM: bodyTop, setbackCrown: false, measuredRoof: undefined, flatRoof: b.flatRoof ? { ...b.flatRoof, box: false } : undefined };
   const crown: MeshBuilding = {
-    ...b, id: `${b.id}:setback`, polygons: [[inset]], minHeightM: bodyTop, heightM: top, setbackCrown: false,
+    ...b, id: `${b.id}:setback`, rangeOwner: b.id, polygons: [[inset]], minHeightM: bodyTop, heightM: top, setbackCrown: false,
     wallHex: cladding, accentHex: cladding, groundHex: undefined, layers: { upper: bayLayer('modern', 7, 'upper'), ground: bayLayer('modern', 7, 'upper'), door: bayLayer('modern', 7, 'upper') },
     shop: false, shopfront: false, signature: undefined, chain: undefined, extras: false, streetAppearance: undefined, gardenRoom: undefined,
     flatRoof: b.flatRoof ? { ...b.flatRoof, lip: false } : undefined, period: undefined,
