@@ -273,7 +273,7 @@ const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
  *  the photo's windows reading white-framed and pale (curtains, nets, sky) where the dark panes read as holes. */
 const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
 /** A single stated shopfront (row-shopfront): frame and fascia in the stated colour, a door, one wide curtained pane. */
-const ROW_SHOP = { glass: '#7c7d7b', panel: '#55595b', doorHex: '#2f3234', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
+const ROW_SHOP = { glass: '#2f3a40', sheen: '#3b4950', panel: '#3c464b', doorHex: '#262c30', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
@@ -445,7 +445,14 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const dw = Math.min(S.door, (g1 - g0) * 0.3), d0 = sf.doorEnd === 'end' ? g1 - dw : sf.doorEnd === 'centre' ? (L - dw) / 2 : g0, d1 = d0 + dw;
     const w0 = sf.doorEnd === 'start' ? d1 + S.post : g0, w1 = sf.doorEnd === 'end' ? d0 - S.post : g1;
     s.wallQuad(c.f, [[d0, z0 + 0.05], [d1, z0 + 0.05], [d1, tz], [d0, tz]], S.out + 0.01, S.doorHex);
-    if (sf.doorEnd !== 'centre') s.wallQuad(c.f, [[w0, gz0], [w1, gz0], [w1, tz], [w0, tz]], S.out + 0.01, S.glass);
+    if (sf.doorEnd !== 'centre') {
+      // The pane is glass (blind review 7: a grey pane read as a shutter): dark glass, a lighter band of sky at the top and
+      // one diagonal sheen across it.
+      s.wallQuad(c.f, [[w0, gz0], [w1, gz0], [w1, tz], [w0, tz]], S.out + 0.01, S.glass);
+      const ww = w1 - w0, hh = tz - gz0;
+      s.wallQuad(c.f, [[w0, tz - hh * 0.1], [w1, tz - hh * 0.1], [w1, tz], [w0, tz]], S.out + 0.012, S.sheen);
+      s.wallQuad(c.f, [[w0 + ww * 0.46, gz0], [w0 + ww * 0.53, gz0], [w0 + ww * 0.71, tz - hh * 0.16], [w0 + ww * 0.64, tz - hh * 0.16]], S.out + 0.014, S.sheen);
+    }
     s.wallQuad(c.f, [[g0, tz + 0.08], [g1, tz + 0.08], [g1, gz1], [g0, gz1]], S.out + 0.01, S.panel);
   } },
   { id: 'row-stoop', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'stoop', build: (c, s) => {
