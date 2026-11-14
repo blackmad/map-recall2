@@ -89,7 +89,7 @@ export type MeshBuilding = {
   /** House rows (lane R): the series this building draws (its extras' dice are the series'), and the series' stated
    *  wall dressing (heads per front span, cornice): the extras' `row-heads` and `row-cornice` draw it on the street run. */
   rowSeries?: string;
-  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[] };
+  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' } };
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
@@ -539,7 +539,9 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
   const boxes = boxed ? b.specRecipe?.windowBoxes ?? [] : [], heads = b.rowDress?.heads ?? [];
   // No boxes on this run (the record has none, or the run is not the traced front): the grid's windows, the heads by
   // the edge's place on the run (headsAt in facadeOrnaments).
-  if (!boxes.length) return { ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
+  // The stoop's door side as seen from the street, on this wall's own x (seenLeftToRight: left is the start).
+  const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}) };
+  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {
     const mid = (w.a0 + w.a1) / 2, storey = sills.indexOf(Math.round(w.sillM * 10) / 10) + 1;
@@ -548,7 +550,7 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
     if (x1 <= 0.05 || x0 >= edgeM - 0.05) return [];
     return [{ x0, x1, z0: base + w.sillM, z1: base + w.headM, storey, ...(head ? { shape: head.shape, dressing: head.dressing } : {}) }];
   });
-  return { ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), windows };
+  return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), windows };
 }
 
 export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) => boolean): Array<Array<{ e: Edge }>> {
@@ -860,6 +862,14 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // House rows: a row front's shop ground is one shopfront across the front, never a door assembly in it
       // (Kinkerstraat 92-94: a portico door was drawn in the butcher's window). The upstairs door is read, not drawn.
       if (b.shopfront && b.rowSeries) layout.doorBays.length = 0;
+      // A stoop front's street door is at the bel-etage over the stoop (facadeOrnaments row-stoop), not in the souterrain.
+      if (b.rowSeries && b.rowDress?.stoop) layout.doorBays.length = 0;
+      // A row front's street door where the record reads it (ground.doorSide / doorIndex of groundBays, as seen).
+      else if (b.rowSeries && b.rowDress?.door && !b.shopfront && layout.doorBays.length) {
+        const d = b.rowDress.door, seen = d.index !== undefined && d.bays ? (d.index + 0.5) / d.bays : d.side === 'left' ? 0.001 : d.side === 'right' ? 0.999 : 0.5;
+        const f = seenLeftToRight(first) ? seen : 1 - seen;
+        layout.doorBays = [Math.max(0, Math.min(layout.bays - 1, Math.floor(f * layout.bays)))];
+      }
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)

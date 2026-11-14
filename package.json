@@ -119,7 +119,7 @@
     "house:describe": "node --import tsx scripts/house-specs/describe.ts",
     "house:row-sheet": "node --import tsx scripts/house-specs/rows/row-sheet.ts",
     "house:row-hash": "node --import tsx scripts/house-line/row-front/row-hash.ts",
-    "check:rows": "node --import tsx --test src/canalRecall/houseSpec/rowChecks.test.ts src/canalRecall/houseSpec/rowReview.test.ts src/canalRecall/houseLine/rowSeries.test.ts && node --import tsx scripts/house-specs/rows/check-rows.ts",
+    "check:rows": "node --import tsx --test src/canalRecall/houseSpec/rowChecks.test.ts src/canalRecall/houseSpec/rowReview.test.ts src/canalRecall/houseLine/rowSeries.test.ts src/canalRecall/houseLine/headGrammar.test.ts && node --import tsx scripts/house-specs/rows/check-rows.ts",
     "test:srs": "tsx scripts/check-spaced-repetition.ts",
     "test:road-graph": "tsx scripts/check-road-graph.ts",
     "test:route-mastery": "tsx scripts/check-route-mastery.ts",
@@ -648,7 +648,8 @@
     "test:markets": "node --import tsx --test src/canalRecall/markets/markets.test.ts",
     "test:terraces": "node --import tsx --test src/canalRecall/terraces/terraces.test.ts",
     "terraces:fetch": "tsx scripts/terraces/fetch.ts",
-    "terraces:build": "tsx scripts/terraces/build.ts"
+    "terraces:build": "tsx scripts/terraces/build.ts",
+    "house:head-sheet": "node --import tsx scripts/house-line/row-front/head-sheet.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

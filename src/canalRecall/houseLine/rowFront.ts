@@ -95,7 +95,19 @@ export interface RowSeriesDraw {
   souterrain?: boolean;
   /** The series' one window look (threeBuildingFeatures bayLookFor): window axes per house front, the series' year and
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
-  look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean };
+  look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean; /** The record's glazing as the painter's sash. */ sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
+  /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
+  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false };
+  /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
+  souterrainFactor?: number;
+  /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */
+  door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number };
+  /** The ground storey's use: a shop ground draws the shop window (specShop), a dwelling ground none. */
+  shop?: boolean;
+  /** The ground (shopfront) colour as the record states it (`ground.colour`), drawn as stated. */
+  groundHex?: string;
+  /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
+  balcony?: { storeys: number[]; axis: 'centre' | 'all' };
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -274,8 +286,9 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 }
 
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[] } {
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(series.extras?.length ? { extras: series.extras } : {}) };
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony'] } {
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : [])];
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -429,6 +442,12 @@ export function rowFrontStepsOn(search?: string): boolean {
  *  Kinkerstraat photos; blind review 2026-11-14 read 3.0 m and 3DBAG's per-pand rise as too tall and saw-toothed). One
  *  rise per series: 3DBAG's per-pand roof is not read (98 stood above its neighbours on it). */
 export const MANSARD_RISE = { period: 2.2 } as const;
+/** A row series' ground storey over its upper pitch (a shop or raised ground floor: Kinkerstraat ~3.8 m under ~3.45 m). */
+export const ROW_GROUND_FACTOR = 1.1;
+/** The ground storey height every member of a series draws: from the series line and its storey count only. */
+export function rowGroundM(topM: number, storeys: number): number {
+  return +(ROW_GROUND_FACTOR * topM / (storeys - 1 + ROW_GROUND_FACTOR)).toFixed(2);
+}
 export function mansardRise(stated: number | undefined): number {
   return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }
@@ -461,9 +480,17 @@ export function withRowFront<T extends Feature>(feature: T): T {
     const sr2 = lv.specRecipe;
     if (sr2 && rec.series.souterrain) {
       sr2.souterrain = true;
-      if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(SOUTERRAIN_FACTOR * top / (rec.storeys + SOUTERRAIN_FACTOR)).toFixed(2) });
+      const k = rec.series.souterrainFactor ?? SOUTERRAIN_FACTOR;
+      if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(k * top / (rec.storeys + k)).toFixed(2) });
+    } else if (sr2 && !sr2.windowBoxes && rec.storeys && rec.storeys >= 2) {
+      // Series members draw identical storey lines: the ground storey is ROW_GROUND_FACTOR of the upper pitch, from the
+      // series line and count alone (the mesher's own fit scaled it with each front's width: Kinkerstraat 102 3.59 m,
+      // 104 3.78 m, so 102's first-storey windows sat lower).
+      sr2.groundM = rowGroundM(top, rec.storeys);
     }
-    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
+    // A stated ground colour is the shopfront's paint, drawn as stated (threeBuildingFeatures takes fasciaHex as is).
+    if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
+    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
       rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });

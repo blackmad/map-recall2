@@ -17,10 +17,70 @@ import { headsList } from '../houseSpec/row/solve.ts';
 import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
-const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows']);
+const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
+/** A raised ground over low basement windows with no stoop read (Weteringschans 168096, `basement: 'windows'`): the
+ *  basement row is this share of the upper pitch (lower than a souterrain's SOUTERRAIN_FACTOR). */
+export const BASEMENT_WINDOWS_FACTOR = 0.35;
 
+/** A stated stoop (ground basement `stoop` / `stoop-and-windows`) and the street door's side; none stated: none drawn. */
+function stoopOf(fronts: readonly RowFront[]): { stoop: NonNullable<RowSeriesDraw['stoop']> } | null {
+  const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows' || x.ground.basement === 'windows');
+  if (!f) return null;
+  const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
+  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false).
+  return side ? { stoop: { side, ...(f.ground.basement === 'windows' ? { steps: false as const } : {}) } } : null;
+}
+/** The street door as read on the pand's first front with one (left/right/centre; index of the ground openings). */
+function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw['door']> } {
+  const f = fronts.find(x => x.ground.doorSide === 'left' || x.ground.doorSide === 'right' || x.ground.doorSide === 'centre');
+  if (!f) return {};
+  const g = f.ground, side = g.doorSide as 'left' | 'right' | 'centre';
+  const offset = fronts.length > 1 ? span(f) : null;
+  // A pand of several fronts: the door's place as a fraction of the pand (the mesher reads index/bays of the pand front).
+  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000 } };
+  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}) } };
+}
+/** The ground use as read: a shop ground draws the shop window, a dwelling ground none; other uses leave the extract's. */
+function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {
+  const uses = fronts.map(f => f.ground.use);
+  if (uses.some(u => u === 'shop' || u === 'cafe' || u === 'restaurant')) return { shop: true };
+  if (uses.every(u => u === 'dwelling' || u === 'door-only')) return { shop: false };
+  return {};
+}
+/** Named ground colours a reading may state, as drawn. */
+export const GROUND_COLOURS: Readonly<Record<string, string>> = { white: '#efece4', light: '#e3ddcf', timber: '#6b4a2f', cream: '#e4d9bf', black: '#1f1d1b', dark: '#2c2824', grey: '#6b6b68', red: '#9b2a24', green: '#3f6b4c', blue: '#2f4a6b', brown: '#4a3426' };
+/** The ground colour the record states (`ground.colour`, a hex or a name in GROUND_COLOURS); `shopPaint` is not read:
+ *  the integrator routes reviewed colours through `ground.colour` (Kinkerstraat 106-108's shopPaint said white, the
+ *  photo shows a dark front). */
+function groundColourOf(fronts: readonly RowFront[]): { groundHex?: string } {
+  for (const f of fronts) {
+    const raw = (f.ground as { colour?: unknown }).colour, c = raw && typeof raw === 'object' ? (raw as { value?: unknown }).value : raw;
+    if (typeof c !== 'string') continue;
+    const hex = /^#[0-9a-f]{6}$/i.test(c) ? c.toLowerCase() : GROUND_COLOURS[c.toLowerCase()];
+    if (hex) return { groundHex: hex };
+  }
+  return {};
+}
+/** The stated balcony (RowDesign.balcony: storeys over D's ground, 1 = first above it), on the renderer's rows. */
+function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: NonNullable<RowSeriesDraw['balcony']> } {
+  const b = designs.find(d => d.balcony?.value)?.balcony?.value;
+  return b ? { balcony: { storeys: b.storeys.map(k => k + shift), axis: b.axis } } : {};
+}
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
+/**
+ * A row's mansard rise measured on its photo (m over the cornice), until the record states one (RowRoofStorey has no
+ * rise yet). Weteringschans 2026-11-14: the steep slate band shows 25 px (169016) and 34 px (171218) over the cornice
+ * at ~30 px/m (wall 450 px for 14.7 m, 433 px for 14.32 m), 0.8-1.1 m seen, then the flat top: drawn 1.3 m. The
+ * period rise (rowFront.ts MANSARD_RISE, 2.2 m) stays for rows without one (Kinkerstraat passed on it).
+ */
+export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: string }>> = {
+  'weteringschans-168096-171218': { riseM: 1.3, ref: 'photo sheet 2026-11-14: 0.8-1.1 m steep band seen over the cornice' },
+};
+/** The record's window kind as the painter's glazing: a T-window, a tall upper sash and a casement under a toplight all
+ *  paint large panes under a transom light (Weteringschans review 5: six-over-six grids read wrong); a casement is one
+ *  pane; a plain `sash` keeps the preset's own. */
+export const ROW_SASH: Readonly<Record<string, 'plain' | 'transom'>> = { 't-window': 'transom', 'tall-upper': 'transom', 'casement-toplight': 'transom', casement: 'plain' };
 /** One pand's series draw from its fronts (street order) and their designs. */
 export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = ''): RowSeriesDraw {
   const d0 = designs[0];
@@ -47,12 +107,18 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   return {
     id: fronts[0].seriesId,
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
-    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers } : { kind: 'none', riseM: 0, dormers: [] },
+    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
+    ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) && fronts.every(f => f.ground.basement === 'windows' || !SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrainFactor: BASEMENT_WINDOWS_FACTOR } : {}),
+    ...(stoopOf(fronts) ?? {}),
+    ...doorOf(fronts),
+    ...shopOf(fronts),
+    ...groundColourOf(fronts),
+    ...balconyOf(designs, shift),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
-    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
+    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
 }
 
@@ -107,9 +173,11 @@ export function mansardJoins(row: RowRecord, pandId: string): { left?: true; rig
   };
   const near = (a: number | null, b: number | null) => a !== null && b !== null && Math.abs(a - b) <= ROW_LINE_STEP_M + 1e-9;
   const m = row.members[i], left = row.members[i - 1], right = row.members[i + 1];
+  // A row end (no member beyond it) has no evidence of a hip: the mansard runs on to a plain end, closed by a plate
+  // (Kinkerstraat 110's left end, review 4: no photo, so no hip).
   const out = {
-    ...(left && near(edge(m, 'first'), edge(left, 'last')) ? { left: true as const } : {}),
-    ...(right && near(edge(m, 'last'), edge(right, 'first')) ? { right: true as const } : {}),
+    ...(!left || near(edge(m, 'first'), edge(left, 'last')) ? { left: true as const } : {}),
+    ...(!right || near(edge(m, 'last'), edge(right, 'first')) ? { right: true as const } : {}),
   };
   return out.left || out.right ? out : null;
 }

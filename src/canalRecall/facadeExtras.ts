@@ -282,7 +282,7 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
  */
 /** `stoopWall`: what a spec stoop's street wall (K-stoep #360) may spend past `wall`, still inside `building`: a double
  *  flight is 15 tread/landing boxes (120 triangles) before its iron, 188 with plain rails, 212 with bars. */
-export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60, rowWall: 900 } as const;
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60, rowWall: 1600 } as const;
 
 /** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
 // The budget runs out in this order, so the parts that read from down the street come first:

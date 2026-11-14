@@ -241,6 +241,19 @@ export function nearestStyle(archetype: Archetype, traits: { pale: boolean | nul
  * and a window count that divides the measured bays. Until lane 2's traced boxes, the atlas has no free layers for a
  * sized-to-measure cell, so this is the nearest drawn window.
  */
+/** The preset nearest `from` (frame tone, heads, accents, opening height) that paints `sash`; `from` when none does. */
+export function sashStyle(archetype: Archetype, from: number, sash: NonNullable<BayVariant['sash']>, bays?: number): number {
+  const styles = BAY_STYLES[archetype], base = styles[from] as BayVariant;
+  if ((base.sash ?? 'six-over-six') === sash) return from;
+  const plain = styles.flatMap((v, i) => (v.sash ?? 'six-over-six') === sash && !v.facadeAssembly && !v.entranceAssembly && !v.openingGroup && !v.groundAssembly
+    && (!v.family || v.family === 'masonry') ? [i] : []);
+  // Presets whose window count divides the stated bays first; a row's exact bays split cells into axis units anyway
+  // (streetFacadeRendering.ts axisUnitPlan), so any plain preset that paints the glazing will do.
+  const fitting = bays ? plain.filter(i => bays % (styles[i].windows || 1) === 0) : plain, pool = fitting.length ? fitting : plain;
+  if (!pool.length) return from;
+  const score = (i: number) => { const v = styles[i] as BayVariant; return ((v.frameTone ?? 'pale') === (base.frameTone ?? 'pale') ? 0 : 4) + ((v.lintel ?? 'flat') === (base.lintel ?? 'flat') ? 0 : 2) + (!!v.paleAccents === !!base.paleAccents ? 0 : 2) + ((v.windows || 1) === (base.windows || 1) ? 0 : 1) + Math.abs((v.openingHeight ?? 0.7) - (base.openingHeight ?? 0.7)) * 5; };
+  return pool.reduce((best, i) => score(i) < score(best) ? i : best, pool[0]);
+}
 export function rowFrontStyle(archetype: Archetype, windowH: number, dark: boolean, bays?: number): number | null {
   const styles = BAY_STYLES[archetype];
   const pool = styles.flatMap((v, i) => v.openingOccupancy !== undefined && v.openingHeight !== undefined && !v.paleAccents && !v.facadeAssembly && !v.entranceAssembly && !v.openingGroup && !v.groundAssembly
@@ -296,7 +309,7 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
  * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean }, at?: readonly [number, number]) {
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' }, at?: readonly [number, number]) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -324,7 +337,10 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const specSmooth = spec?.painted && !recipe && !vocab && !contemporary && !((s: BayVariant | undefined) => s?.paleAccents || s?.lintel === 'arch')(BAY_STYLES[archetype][ownStyle()] as BayVariant | undefined);
   const painted = draw?.painted || specSmooth ? paintedLayers(archetype) : null;
   const measuredStyle = spec?.windowH !== undefined && !recipe && !vocab && !contemporary ? rowFrontStyle(archetype, spec.windowH, !!spec.dark, spec.bays) : null;
-  const style = measuredStyle !== null ? measuredStyle : painted ? PAINTED_BASE_STYLE[archetype]! : ownStyle();
+  const picked = measuredStyle !== null ? measuredStyle : painted ? PAINTED_BASE_STYLE[archetype]! : ownStyle();
+  // House rows (lane R): a stated glazing (the row record's window kind, houseLine/rowSeries.ts) picks the nearest preset
+  // that paints it (Weteringschans: the 1880s T-window, large panes under a transom light, not six-over-six).
+  const style = spec?.sash && !recipe && !vocab && !contemporary && !painted ? sashStyle(archetype, picked, spec.sash, spec.bays) : picked;
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
