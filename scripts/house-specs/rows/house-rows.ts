@@ -36,8 +36,8 @@ const rel = (f: string) => path.relative(REPO, f).startsWith('..') ? f : path.re
 
 export interface Loaded { input: RowInput; answers: Record<string, DescriberAnswer | null>; faceSpecs: Record<string, HouseSpec> }
 
-export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0, 10)): Loaded {
-  const raw = RAW.rows[def.id] ?? {};
+export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0, 10), street?: string): Loaded {
+  const raw = { ...(RAW.rows[def.id] ?? {}), ...(street ? { street } : {}) };
   const inputs: string[] = [];
   const answers: Record<string, DescriberAnswer | null> = {};
   const faceSpecs: Record<string, HouseSpec> = {};
