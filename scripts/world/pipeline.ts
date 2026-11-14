@@ -24,7 +24,7 @@ import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
-import { rowFrontOn, rowFrontsFromFile, setRowFrontRecords } from '../../src/canalRecall/houseLine/rowFront.js';
+import { rowFrontOn, rowFrontsFromFile, setRowFrontRecords, ROW_FRONT_BROWSER_PATH } from '../../src/canalRecall/houseLine/rowFront.js';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.js';
 import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
@@ -102,6 +102,11 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
       const json = readJson(path.resolve(f));
       return json.row && Array.isArray(json.row.series) ? rowFrontsWithSeries(json.row) : rowFrontsFromFile(json, interim);
     }));
+  } else if (rowFrontOn()) {
+    // House rows (on by default since the round-1 install): the world bakes the published records the browser reads
+    // (signed-off rows only), so the default world-v1 cells draw them as the live tiles do. ROW_FRONT=0 compiles without.
+    const file = path.join(ROOT, 'public', ROW_FRONT_BROWSER_PATH);
+    if (fs.existsSync(file)) setRowFrontRecords(rowFrontsFromFile(readJson(file)));
   }
   const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));

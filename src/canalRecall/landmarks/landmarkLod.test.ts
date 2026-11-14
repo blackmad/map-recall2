@@ -110,16 +110,26 @@ test('street chunk lod2 (lane R4-C): current only for this GLB hash and build ve
   assert.equal(chunkSpecFor(row).chunkLod2, undefined);
   assert.deepEqual(chunkSpecFor({ ...row, lod2: record }).chunkLod2, record);
   assert.equal(chunkSpecFor({ ...row, lod2: { ...record, sourceHash: 'stale' } }).chunkLod2, undefined);
-  // House rows: a chunk's ROW_FRONT variant (the walls a row record draws left out) loads only with the flag on.
+  // House rows: a chunk's ROW_FRONT variant (the walls a row record draws left out) loads only with the flag on (the
+  // default since the round-1 install) AND a loaded row-front record stating that wall (`wallOnly.chunk`).
+  const { chunkSpecWith, rowWallChunks, applyStreetChunks } = await import('./ordinaryChunks');
   const variant = { ...row, lod2: record, rowFront: { modelUrl: './x-row.glb', sha256: 'ffff' + sha256.slice(4), bytes: 1, triangles: 1 } };
+  const walls = rowWallChunks({ records: [{ pandId: '1' }, { pandId: '2', wallOnly: { chunk: 'chunk-x', edge: [[0, 0], [1, 0]] } }] });
+  assert.deepEqual([...walls], ['chunk-x']);
+  assert.deepEqual([...rowWallChunks(null)], []);
   const env = process.env.ROW_FRONT;
   try {
     delete process.env.ROW_FRONT;
-    assert.equal(JSON.stringify(chunkSpecFor(variant)), JSON.stringify(chunkSpecFor({ ...row, lod2: record })), 'flag off: the variant changes nothing');
-    process.env.ROW_FRONT = '1';
-    assert.equal(chunkSpecFor(variant).modelUrl, './x-row.glb');
-    assert.equal(chunkSpecFor(variant).chunkLod2, undefined, 'the original GLB\'s lod2 is not the variant\'s');
-    assert.equal(chunkSpecFor({ ...row, lod2: record }).modelUrl, './x.glb', 'no variant: the chunk as installed');
+    assert.equal(chunkSpecWith(variant, walls).modelUrl, './x-row.glb', 'default on, a record states the wall: the variant');
+    assert.equal(chunkSpecWith(variant, walls).chunkLod2, undefined, 'the original GLB\'s lod2 is not the variant\'s');
+    assert.equal(JSON.stringify(chunkSpecWith(variant, new Set())), JSON.stringify(chunkSpecFor({ ...row, lod2: record })), 'no record states the wall: the chunk whole, never a hole');
+    assert.equal(JSON.stringify(chunkSpecFor(variant)), JSON.stringify(chunkSpecFor({ ...row, lod2: record })), 'chunkSpecFor knows no records');
+    const manifest = { version: 1 as const, chunks: [variant] };
+    assert.equal(applyStreetChunks([], manifest as never, new Set(), walls).chunks[0].modelUrl, './x-row.glb');
+    assert.equal(applyStreetChunks([], manifest as never).chunks[0].modelUrl, './x.glb');
+    process.env.ROW_FRONT = '0';
+    assert.equal(JSON.stringify(chunkSpecWith(variant, walls)), JSON.stringify(chunkSpecFor({ ...row, lod2: record })), 'ROW_FRONT=0: the chunk as installed');
+    assert.equal(chunkSpecWith({ ...row, lod2: record }, walls).modelUrl, './x.glb', 'no variant: the chunk as installed');
   } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; }
 });
 

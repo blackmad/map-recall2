@@ -3,7 +3,8 @@
 // chunks (every typed array, in order), its triangles and bytes. Members are totalled per row (the cost report); the
 // rest are the sample that must hash the same with and without the row records, and against main.
 //
-//   node --import tsx scripts/house-line/row-front/row-hash.ts --rows a.json,b.json [--sample 40] --json out.json
+//   ROW_FRONT=0 node --import tsx scripts/house-line/row-front/row-hash.ts --rows a.json,b.json [--sample 40] --json out.json
+//     (the flag-off world: rows draw by default since the round-1 install, so a flag-off hash sets ROW_FRONT=0)
 //   ROW_FRONT=1 ROW_FRONT_RECORDS=a.json node --import tsx ... (the same, records installed)
 //   node --import tsx scripts/house-line/row-front/row-hash.ts --compare a.json b.json   (sample ids that differ)
 import '../../world/useBrowserMath.ts';

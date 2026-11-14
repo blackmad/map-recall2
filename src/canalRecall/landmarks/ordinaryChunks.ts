@@ -51,10 +51,21 @@ export const heldStreetChunks = (search: string): ReadonlySet<string> =>
 export const withoutStreetSurveys = (models: readonly SignatureModelSpec[]): SignatureModelSpec[] =>
   models.filter(m => m.buildingCategory !== 'street-survey');
 
-export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
-  // House rows: with the flag on, a chunk that has a variant without the row-drawn walls loads it (its lod2 is the
-  // original's, so it is dropped: the sha no longer matches).
-  const model = c.rowFront && rowFrontFlagNow() ? c.rowFront : null;
+export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec { return chunkSpecWith(c, NO_WALL_CHUNKS); }
+const NO_WALL_CHUNKS: ReadonlySet<string> = new Set();
+/** The chunks whose walls a loaded row-front record draws (`wallOnly.chunk`, houseLine/rowFront.ts): a records file
+ *  (`{records: [...]}`) or nothing. */
+export function rowWallChunks(json: unknown): Set<string> {
+  const records = (json as { records?: unknown } | null)?.records;
+  return new Set(Array.isArray(records) ? records.map(r => (r as { wallOnly?: { chunk?: unknown } } | null)?.wallOnly?.chunk).filter((c): c is string => typeof c === 'string') : []);
+}
+/**
+ * House rows: with the flag on, a chunk loads its variant without the row-drawn walls only when a loaded row-front
+ * record states that wall (`wallChunks`); a records file without it keeps the chunk whole, never a hole at the corner.
+ * The variant's lod2 is the original's, so it is dropped (the sha no longer matches).
+ */
+export function chunkSpecWith(c: ChunkManifestEntry, wallChunks: ReadonlySet<string>): SignatureModelSpec {
+  const model = c.rowFront && wallChunks.has(c.id) && rowFrontFlagNow() ? c.rowFront : null;
   const length = c.bounds.max[0] - c.bounds.min[0], width = c.bounds.max[2] - c.bounds.min[2];
   return {
     id: c.id, assetKind: 'ordinary-building', buildingCategory: 'street-survey', name: c.name, landmarkId: '',
@@ -79,9 +90,9 @@ export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
  * applies (it replaces whichever are), because suppression is by pand id.
  */
 /** A held chunk is not drawn and neither are the per-house models it replaced: its pands draw as their neighbours. */
-export function applyStreetChunks(models: readonly SignatureModelSpec[], manifest: ChunkManifest | null | undefined, held: ReadonlySet<string> = new Set()): {models: SignatureModelSpec[]; replaced: Set<string>; chunks: SignatureModelSpec[]} {
+export function applyStreetChunks(models: readonly SignatureModelSpec[], manifest: ChunkManifest | null | undefined, held: ReadonlySet<string> = new Set(), wallChunks: ReadonlySet<string> = NO_WALL_CHUNKS): {models: SignatureModelSpec[]; replaced: Set<string>; chunks: SignatureModelSpec[]} {
   if (!manifest || manifest.version !== 1 || !Array.isArray(manifest.chunks)) return {models: [...models], replaced: new Set(), chunks: []};
   const replaced = new Set<string>(manifest.chunks.flatMap(c => c.replaces));
-  const chunks = manifest.chunks.filter(c => !held.has(c.id)).map(chunkSpecFor);
+  const chunks = manifest.chunks.filter(c => !held.has(c.id)).map(c => chunkSpecWith(c, wallChunks));
   return {models: [...models.filter(m => !replaced.has(m.id)), ...chunks], replaced, chunks};
 }
