@@ -499,7 +499,9 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       // The frieze sits on the top storey's head dressing, never over it (Kinkerstraat 104: the block course runs right
       // under the frieze); with no room left above the heads the frieze goes and the consoles stand on the course.
       const z0 = Math.max(t - C.h, rowHeadsTop(c) + 0.04, Math.max(-Infinity, ...rowWindowsOf(c).map(w => w.z1)) + 0.12), frieze = Math.min(C.frieze, t - 0.4 - z0);
-      if (frieze > 0.12) s.strip(c.f, 0, c.f.len, 0.03, z0, z0 + frieze, CREAM);
+      // A bracketed cornice's frieze is the wall's brick between white consoles (Weteringschans 169016 and 171218; blind
+      // review: a cream frieze block read too white at rule 10). The heavy cornice keeps its cream frieze.
+      if (frieze > 0.12 && kind !== 'bracketed') s.strip(c.f, 0, c.f.len, 0.03, z0, z0 + frieze, CREAM);
       const n = Math.max(2, Math.round(c.f.len / C.pitch));
       // Consoles keep at least CONSOLE_MIN under the corona: on a front whose top heads reach the cornice
       // (Weteringschans 169016) they stand between the heads rather than vanish.
