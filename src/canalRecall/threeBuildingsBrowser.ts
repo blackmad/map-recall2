@@ -1384,6 +1384,40 @@ export class ThreeBuildings {
   }
 
   /**
+   * The z14 tiles (`x/y`, the coarse key) among `tiles` whose buildings this layer draws now: the tile's coarse shell,
+   * a near chunk inside it, or, under the baked coarse tier, a drawn world cell its buildings sit in. MapLibre's
+   * own copy of the city stands in for the rest while the city fills in (vector-map.js wallsPerArea, lane LS).
+   */
+  drawnTiles(tiles: Iterable<string>): string[] {
+    if (!this.visible || !this.ready) return [];
+    const out: string[] = [], gate = this.bakedGate;
+    for (const tile of tiles) {
+      if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh || this.nearDrawnIn(tile)) { out.push(tile); continue; }
+      if (!gate || !this.bakedEntries.size) continue;
+      const cells = this.tileCells().get(tile);
+      // Any drawn cell counts: a MapLibre stand-in over a building the facades already draw z-fights and hides it,
+      // which reads worse than a moment's gap at a cell seam.
+      if (cells?.size && [...cells].some(c => gate.drawn(c))) out.push(tile);
+    }
+    return out;
+  }
+  private tileCellsOf: { features: readonly Feature[]; cells: Map<string, Set<string>> } | null = null;
+  /** The world cells of each z14 tile's resident buildings (memoised per resident feature list). */
+  private tileCells(): Map<string, Set<string>> {
+    if (this.tileCellsOf?.features === this.lastFeatures) return this.tileCellsOf.cells;
+    const cells = new Map<string, Set<string>>();
+    for (const feature of this.lastFeatures) {
+      const g = this.groupOf(feature);
+      if (g.tile === null || g.cell === null) continue;
+      let set = cells.get(g.tile);
+      if (!set) cells.set(g.tile, set = new Set());
+      set.add(g.cell);
+    }
+    this.tileCellsOf = { features: this.lastFeatures, cells };
+    return cells;
+  }
+
+  /**
    * The far tier's host (engine/farShells.ts, lane R2-B #229): the facade scene (chunk metres), the chunk material
    * and a fading clone of it (one program), the drawn look, and whether a resident coarse shell is installed and done
    * dissolving in for a z14 tile (then the far tier hides that tile's prisms). Null until the layer is set up.
