@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180128",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 2,
+    "bays": 5,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": true,
+    "gable": "cornice",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 2,
+     "kind": "gabled"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6d5442"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#403934",
+   "estimate": "#67574c",
+   "drawn": "#876d5a",
+   "brick": "#6d5442",
+   "captures": [
+    {
+     "hex": "#403934",
+     "captured": "2019-12-20T08:52:50.721300Z",
+     "panoId": "TMX7316010203-001530_pano_0002_000016",
+     "pinned": true,
+     "out": "#635851",
+     "gain": 2.412,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.469,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": 0.003,
+     "nbL": 0.348,
+     "dark": false
+    }
+   }
+  }
+ }
+}

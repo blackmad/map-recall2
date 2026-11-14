@@ -1,0 +1,163 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172244",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 4,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "gable": "cornice",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "stucco",
+   "brick": "#85847a"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#6e706e",
+   "estimate": "#6f736f",
+   "drawn": "#9d9b91",
+   "brick": "#85847a",
+   "captures": [
+    {
+     "hex": "#6e706e",
+     "captured": "2023-02-06T11:02:07.697590Z",
+     "panoId": "TMX7316010203-002961_pano_0007_000025",
+     "pinned": true,
+     "out": "#707270",
+     "gain": 1.034,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.55,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": 0.157,
+     "nbL": 0.384,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a balustraded parapet with a central carved cartouche stands over the cornice, flanked by two capped chimneys"
+  }
+ ]
+}

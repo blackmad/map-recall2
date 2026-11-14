@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177539",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "gable": "neck",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#433731"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177539.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#413c3a",
+   "estimate": "#413c3a",
+   "drawn": "#4b3f39",
+   "brick": "#433731",
+   "captures": [
+    {
+     "hex": "#413c3a",
+     "captured": "2020-01-08T10:55:33.146940Z",
+     "panoId": "TMX7316010203-001543_pano_0000_002688",
+     "pinned": true,
+     "out": "#413c3a",
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": true,
+    "by": [
+     "describer"
+    ],
+    "describer": "dark neck-gable",
+    "captures": {
+     "n": 1,
+     "maxL": 0.425,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": -0.028,
+     "nbL": 0.389,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the neck gable stands on a white attic band with small windows and a central tablet, with low balustrade pieces on either side"
+  }
+ ]
+}

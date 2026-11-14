@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176334",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "gable": "neck",
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#45463b"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176334.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#3b3b38",
+   "estimate": "#434a44",
+   "drawn": "#535549",
+   "brick": "#45463b",
+   "captures": [
+    {
+     "hex": "#3b3b38",
+     "captured": "2023-03-27T11:04:40.587450Z",
+     "panoId": "TMX7316010203-003014_pano_0003_000043",
+     "pinned": true,
+     "out": "#41413e",
+     "gain": 1.205,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3d5359",
+     "captured": "2025-06-16T05:26:19Z",
+     "panoId": "recording_2025-06-16_04-42-37_01675",
+     "out": "#3b5056",
+     "gain": 0.93,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#484946",
+     "captured": "2023-03-06T10:43:48.843550Z",
+     "panoId": "TMX7316010203-002990_pano_0002_000084",
+     "out": "#636460",
+     "gain": 1.924,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3a403d",
+     "captured": "2022-04-22T09:53:38.453500Z",
+     "panoId": "TMX7316010203-002538_pano_0000_000132",
+     "out": "#3f4542",
+     "gain": 1.165,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.501,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.016,
+     "nbL": 0.378,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a neck gable with a curved top, white claw pieces and a sculpted finial"
+  },
+  {
+   "component": "window",
+   "what": "the middle windows of the top two storeys have a white panel under them"
+  }
+ ]
+}

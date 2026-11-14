@@ -1,0 +1,212 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179671",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "storey",
+    "souterrain": false,
+    "gable": "step",
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "rowHeads": [
+     "flat",
+     "relieving",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#765c40"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#4b3c21",
+   "estimate": "#7d6c59",
+   "drawn": "#93785b",
+   "brick": "#765c40",
+   "captures": [
+    {
+     "hex": "#4b3c21",
+     "captured": "2019-01-10T11:39:43.173660Z",
+     "panoId": "TMX7316010203-001047_pano_0000_000602",
+     "pinned": true,
+     "out": "#715c35",
+     "gain": 2.353,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5a4d43",
+     "captured": "2022-04-25T10:49:08.789150Z",
+     "panoId": "TMX7316010203-002542_pano_0009_000003",
+     "out": "#5c4f45",
+     "gain": 1.049,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#927e65",
+     "captured": "2016-08-17T08:04:32.862100Z",
+     "panoId": "TMX7316060226-000030_pano_0005_000274",
+     "out": "#907c63",
+     "gain": 0.963,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#b4a9a2",
+     "captured": "2025-06-16T03:57:36Z",
+     "panoId": "recording_2025-06-16_03-46-32_00849",
+     "out": "#b5aaa3",
+     "gain": 1.009,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.745,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.057,
+     "nbL": 0.447,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "decorated arch fields in red and white brick over the first-floor windows, with light blocks in the brickwork"
+  },
+  {
+   "component": "gable ornament",
+   "what": "step gable with a stone finial at the shoulder"
+  }
+ ]
+}

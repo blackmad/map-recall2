@@ -1,0 +1,203 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177524",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 4,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "both",
+    "souterrain": true,
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#745e42"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177524.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#a58560",
+   "estimate": "#6d5f4d",
+   "drawn": "#927a5e",
+   "brick": "#745e42",
+   "captures": [
+    {
+     "hex": "#a58560",
+     "captured": "2019-01-14T12:53:57.500650Z",
+     "panoId": "TMX7316010203-001053_pano_0000_003235",
+     "pinned": true,
+     "out": "#8c7151",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#655a53",
+     "captured": "2021-03-17T11:57:12.508470Z",
+     "panoId": "TMX7316010203-002045_pano_0001_001077",
+     "out": "#6e625a",
+     "gain": 1.187,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3f3729",
+     "captured": "2024-12-03T09:03:57Z",
+     "panoId": "b_20241203_0939_Track01_Sphere_00354",
+     "out": "#584e3b",
+     "gain": 1.977,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#626064",
+     "captured": "2019-05-13T07:35:45.216210Z",
+     "panoId": "TMX7316010203-001178_pano_0001_000249",
+     "out": "#5f5d61",
+     "gain": 0.934,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.567,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.017,
+     "nbL": 0.468,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "the wide middle windows of storeys 1 and 2 have a curved transom bar under the gridded top light"
+  },
+  {
+   "component": "relief",
+   "what": "light stone mullion strips and continuous light bands at sill and head lines"
+  }
+ ]
+}

@@ -1,0 +1,175 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168545",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "neck",
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#775b3e"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "white carved cartouches flank the top-storey window, another carved cartouche sits in the neck, carved claw pieces at the neck foot and a curved carved cap"
+  },
+  {
+   "component": "window",
+   "what": "iron wall anchors beside every window"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#7a6453",
+   "estimate": "#97836e",
+   "drawn": "#957759",
+   "brick": "#775b3e",
+   "captures": [
+    {
+     "hex": "#7a6453",
+     "captured": "2022-12-15T12:54:51.097200Z",
+     "panoId": "TMX7316010203-002865_pano_0025_000006",
+     "pinned": true,
+     "out": "#ac8e76",
+     "gain": 2.111,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#9f8061",
+     "captured": "2019-01-14T12:51:44.336840Z",
+     "panoId": "TMX7316010203-001053_pano_0000_003125",
+     "out": "#917558",
+     "gain": 0.822,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#bbaa8d",
+     "captured": "2022-09-05T08:16:19.272710Z",
+     "panoId": "TMX7316010203-002794_pano_0001_000008",
+     "out": "#9f9178",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#453b34",
+     "captured": "2020-01-08T11:20:56.900460Z",
+     "panoId": "TMX7316010203-001543_pano_0000_003771",
+     "out": "#6e5f54",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.668,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.066,
+     "nbL": 0.496,
+     "dark": false
+    }
+   }
+  }
+ }
+}

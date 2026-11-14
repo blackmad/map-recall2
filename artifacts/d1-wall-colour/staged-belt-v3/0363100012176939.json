@@ -1,0 +1,208 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176939",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "cornice": "none",
+    "readBalconies": [
+     3
+    ],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [
+     1,
+     2
+    ],
+    "readDoorSurround": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "stucco",
+   "brick": "#cecbbc"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#82837d",
+   "estimate": "#92958d",
+   "drawn": "#d9d5c6",
+   "brick": "#cecbbc",
+   "captures": [
+    {
+     "hex": "#82837d",
+     "captured": "2023-03-27T10:30:12.340070Z",
+     "panoId": "TMX7316010203-003013_pano_0013_000227",
+     "pinned": true,
+     "out": "#a1a29b",
+     "gain": 1.598,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#9d9f9c",
+     "captured": "2021-03-17T11:56:16.753960Z",
+     "panoId": "TMX7316010203-002045_pano_0001_001033",
+     "out": "#858785",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6f6b62",
+     "captured": "2023-01-30T09:33:55.729060Z",
+     "panoId": "TMX7316010203-002950_pano_0000_000583",
+     "out": "#aca699",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6e7170",
+     "captured": "2023-02-27T10:05:05.962480Z",
+     "panoId": "TMX7316010203-002984_pano_0013_000007",
+     "out": "#6f7271",
+     "gain": 1.026,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.726,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.154,
+     "nbL": 0.412,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a full-width two-storey white bay window over storeys 1 and 2, with a solid-guard balcony on its roof in front of storey 3"
+  },
+  {
+   "component": "roof",
+   "what": "a tall plain rendered parapet rises above the top storey"
+  }
+ ]
+}
