@@ -104676,7 +104676,7 @@
       },
       "bagYear": 1892,
       "materialOverrides": {
-        "brick": "#c49a7c",
+        "brick": "#9a634d",
         "stone": "#d6c49c",
         "white": "#ebe7dc",
         "ochre": "#d9b45a",
@@ -104688,7 +104688,7 @@
         "slate": "#4b4f57"
       },
       "attribution": {
-        "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a former school building of 1892",
+        "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
         "author": "Map Recall",
         "sourceUrl": "https://zaal100.nl/over-zaal-100/",
         "licence": "CC BY 4.0",
@@ -104851,7 +104851,7 @@
       "bagYear": 2001,
       "materialOverrides": {
         "concrete": "#c3c7ca",
-        "greyBrick": "#8d9194",
+        "greyBrick": "#a3a8ac",
         "dark": "#2d3034",
         "red": "#7d4c40",
         "blue": "#3d5a78",
