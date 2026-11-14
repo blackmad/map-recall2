@@ -13,7 +13,9 @@ import {
   kmBetween,
   localFamiliarity,
   destinationWeight,
+  fameTierFactor,
   pickDestinationNear,
+  ROUTE_POI_MAX_PAIR_KM,
   tailFloorFor,
   tailOpenness,
   randomUnit,
@@ -28,6 +30,8 @@ export const RUN_STORAGE_KEY = 'canalRecall.openRun.v1';
 export const LAST_RUN_STORAGE_KEY = 'canalRecall.lastRun.v1';
 /** Ten minutes with no riding and no arrival ends the run. */
 export const RUN_IDLE_MS = 10 * 60 * 1000;
+/** A reload credits at most this much of a pause the page was closed in (loadRun). */
+export const RUN_RELOAD_PAUSE_MAX_MS = 3 * 60 * 60 * 1000;
 export const CHAIN_STEP = 0.05;
 export const CHAIN_CAP = 0.25;
 export const NEXT_STOP_MIN_KM = 1;
@@ -61,6 +65,8 @@ export interface RunStop {
 export interface RunLeg {
   from: { id: string; name: string; lat: number; lng: number };
   to: { id: string; name: string; lat: number; lng: number };
+  /** The rider chose this destination in route setup; a reload keeps it whatever the pool says. */
+  userPicked?: boolean;
 }
 
 export interface OpenRun {
@@ -219,15 +225,69 @@ export function withNextLeg(run: OpenRun, leg: RunLeg | null): OpenRun {
 export type LegEnd = { id: string; name: string; lat?: number; lng?: number; sharedEndpoint?: boolean } | null | undefined;
 
 /** The leg a reload can launch again: both ends real places with coordinates (not a share link's points). */
-export function rideLeg(from: LegEnd, to: LegEnd): RunLeg | null {
+export function rideLeg(from: LegEnd, to: LegEnd, userPicked = false): RunLeg | null {
   const end = (p: LegEnd) => (p && p.id && !p.sharedEndpoint && Number.isFinite(p.lat) && Number.isFinite(p.lng)
     ? { id: p.id, name: p.name, lat: p.lat as number, lng: p.lng as number } : null);
   const a = end(from), b = end(to);
-  return a && b && a.id !== b.id ? { from: a, to: b } : null;
+  if (!a || !b || a.id === b.id) return null;
+  return userPicked ? { from: a, to: b, userPicked: true } : { from: a, to: b };
 }
 
 export function sameLeg(a: RunLeg | null, b: RunLeg | null): boolean {
-  return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id;
+  return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id && !!a.userPicked === !!b.userPicked;
+}
+
+/**
+ * Below this fame-tier factor a resumed destination is one today's pickers
+ * would not deal from the leg's start (surprisePick.fameTierFactor: 1 for the
+ * famous tier, TAIL_FLOOR for the tail of a new rider in a well-stocked area).
+ */
+export const RESUME_MIN_TIER_FACTOR = 0.5;
+
+export type ResumeVerdict = 'kept' | 'user-picked' | 'not-a-pool-place' | 'left-the-pool' | 'below-the-tier';
+
+/**
+ * Whether a dealt leg read back from localStorage is still one the pool would
+ * deal. A run leg is resumed on every reload until the rider arrives, so one
+ * dealt before the fame tiers (2026-11-13) kept sending the rider to
+ * Meerpadkerk, a small Noord church, for a day of rides (2026-11-14 report).
+ * A destination the rider chose stands; review stops, home and other points
+ * that are not pool places stand; a pool place below the tier from the leg's
+ * start, or one gone from the pool, does not.
+ */
+export function judgeResumedLeg(
+  leg: RunLeg,
+  pois: readonly RoutePoi[],
+  samples: readonly MasterySample[] = [],
+): ResumeVerdict {
+  if (leg.userPicked) return 'user-picked';
+  const poi = pois.find(candidate => candidate.id === leg.to.id);
+  if (!poi) return leg.to.id.startsWith('lm-') ? 'left-the-pool' : 'not-a-pool-place';
+  const inRange = pois.filter(candidate => candidate.id !== leg.from.id && kmBetween(candidate, leg.from) <= ROUTE_POI_MAX_PAIR_KM);
+  const factor = fameTierFactor(poi, tailOpenness(leg.from, samples), tailFloorFor(inRange));
+  return factor >= RESUME_MIN_TIER_FACTOR ? 'kept' : 'below-the-tier';
+}
+
+/**
+ * The leg a reload rides: the stored one when it stands (judgeResumedLeg),
+ * else a fresh next stop from the same start (pickNextStop, so the run goes
+ * on), else null.
+ */
+export function resumeLeg(
+  leg: RunLeg | null | undefined,
+  pois: readonly RoutePoi[],
+  options: { samples?: readonly MasterySample[]; excludeIds?: readonly string[]; chooseUnit?: ChooseUnit } = {},
+): { leg: RunLeg | null; verdict: ResumeVerdict | null } {
+  if (!leg) return { leg: null, verdict: null };
+  const verdict = judgeResumedLeg(leg, pois, options.samples);
+  if (verdict === 'kept' || verdict === 'user-picked' || verdict === 'not-a-pool-place') return { leg, verdict };
+  const to = pickNextStop(pois, leg.from, {
+    samples: options.samples, excludeIds: [...(options.excludeIds ?? []), leg.to.id], chooseUnit: options.chooseUnit,
+  });
+  return {
+    leg: to ? { from: leg.from, to: { id: to.id, name: to.name, lat: to.lat, lng: to.lng } } : null,
+    verdict,
+  };
 }
 
 export type RunGameState = 'menu' | 'racing' | 'finished' | 'paused' | 'other';
@@ -320,8 +380,10 @@ export function loadRun(storage: RunStorage | null, now: number): { run: OpenRun
   try { raw = storage.getItem(RUN_STORAGE_KEY); } catch { return { run: null, ended: null }; }
   const run = parseRun(raw);
   if (!run || run.stopCount <= 0) return { run: null, ended: null };
-  // A reload ends any pause; the paused span up to now is not idle time.
-  const live = resumeRun(run, now);
+  // A reload ends any pause; the paused span up to now is not idle time, up
+  // to RUN_RELOAD_PAUSE_MAX_MS: a tab closed on the pause screen in the
+  // evening must not hand the next morning's ride last night's dealt leg.
+  const live = resumeRun(run, run.pausedAt != null ? Math.min(now, run.pausedAt + RUN_RELOAD_PAUSE_MAX_MS) : now);
   if (!isIdle(live, now)) return { run: live, ended: null };
   endRun(storage, live);
   return { run: null, ended: live };

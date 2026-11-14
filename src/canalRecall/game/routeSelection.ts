@@ -20,13 +20,17 @@ import {
   pickWeighted,
   randomIndex,
   randomUnit,
+  standInStretch,
   type ChooseIndex,
   type ChooseUnit,
   type RoutePoi,
 } from './surprisePick';
 export {
+  BARE_TAIL_SCORE,
   FAMOUS_ENOUGH,
   FAMOUS_TIER_SCORE,
+  TAIL_STAND_IN_STRETCH,
+  standInStretch,
   TAIL_FLOOR,
   tailFloorFor,
   destinationWeight,
@@ -633,7 +637,9 @@ export interface SnappedPoi {
  * The nearest POI to `target` that actually snaps onto the mapped network.
  *
  * Ranked by distance and tried in order, capped at `RETARGET_ATTEMPTS` because
- * each attempt is a snap search over every loaded segment.
+ * each attempt is a snap search over every loaded segment. A place below the
+ * famous tier counts as TAIL_STAND_IN_STRETCH times as far, so a swap does not
+ * hand a new rider the neighbourhood church the pickers held back.
  */
 export function nearestSnappableDestination(
   pois: readonly RoutePoi[],
@@ -644,7 +650,7 @@ export function nearestSnappableDestination(
 ): SnappedPoi | null {
   const ranked = pois
     .filter(poi => poi.id !== excludeId && Number.isFinite(poi.lat))
-    .map(poi => ({ poi, km: kmBetween(poi, target) }))
+    .map(poi => ({ poi, km: kmBetween(poi, target) * standInStretch(poi) }))
     .sort((a, b) => a.km - b.km);
   for (const entry of ranked.slice(0, attempts)) {
     const point = snap(entry.poi);
@@ -719,7 +725,8 @@ export function rankRetargetCandidates(
     const point = snap(poi);
     if (!point) continue;
     if (Math.hypot(point.x - start.x, point.y - start.y) < minStartFinishDistance) continue;
-    ranked.push({ poi, point, gap: Math.hypot(point.x - originalFinish.x, point.y - originalFinish.y) });
+    // Below the famous tier a stand-in counts as further (TAIL_STAND_IN_STRETCH).
+    ranked.push({ poi, point, gap: Math.hypot(point.x - originalFinish.x, point.y - originalFinish.y) * standInStretch(poi) });
   }
   ranked.sort((a, b) => a.gap - b.gap);
   return ranked.map(({ poi, point }) => ({ poi, point }));

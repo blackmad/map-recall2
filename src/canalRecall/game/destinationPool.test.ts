@@ -11,10 +11,11 @@ import { mergeManualPoiFeatures } from './manualPoiCatalog';
 import { buildRouteDestinationPool } from './routeDestinationPool';
 import { dedupeDestinations, isComplexPart, namesAlike, type DedupeFeature } from './destinationDedupe';
 import { admitLandmarkCandidate } from './landmarkSelection';
-import { pickNextStop } from './chainedRun';
+import { addStop, judgeResumedLeg, loadRun, pauseRun, pickNextStop, resumeLeg, saveRun, withNextLeg, type RunLeg } from './chainedRun';
 import {
-  FAMOUS_TIER_SCORE, capWeightShares, fameTierFactor, kmBetween, pickDestinationNear, pickHomeDestination,
-  pickReviewRoute, pickSurpriseStart, tailOpenness, type RoutePoi,
+  FAMOUS_TIER_SCORE, TAIL_STAND_IN_STRETCH, capWeightShares, fameTierFactor, kmBetween, nearestSnappableDestination,
+  pickDestinationNear, pickHomeDestination, pickReviewRoute, pickSurpriseStart, rankRetargetCandidates, tailOpenness,
+  type RoutePoi,
 } from './routeSelection';
 import { notabilityScore } from './poiNotability';
 
@@ -138,4 +139,90 @@ test('a new rider at Vijzelstraat is sent to famous places, not neighbourhood on
   // The Westerkerk is 1.2 km from Vijzelstraat: outside a new rider's 1 km home ring, common otherwise.
   assert.ok(surprise('Westerkerk') > 0.015, `surprise: Westerkerk ${surprise('Westerkerk')}`);
   assert.ok(next('Westerkerk') > 0.015, `next stop: Westerkerk ${next('Westerkerk')}`);
+});
+
+// --- 2026-11-14: Houthavens and Kinkerbuurt starts, and the resumed leg -----
+// The user's rides on 2cd2fb7 still headed for Meerpadkerk from a Kinkerbuurt
+// start (6.3 km to go) and at Wiborgeiland (4.7 km to go). Fresh draws from
+// both starts were already fame-gated; the destination came back from the
+// open run's stored leg (chainedRun nextLeg), dealt on bc4ad8a before the
+// tiers and resumed on every reload. Home rides from the Kinkerbuurt sent a
+// new rider to El Tawheed, 230 m away, 3 % of the time: two famous places in
+// the 1 km ring raised the tail floor for every neighbourhood place.
+const STARTS = {
+  Wiborgeiland: { id: 'start', name: 'Wiborgeiland', lat: 52.392, lng: 4.879 },
+  Kinkerbuurt: { id: 'start', name: 'Kinkerbuurt', lat: 52.366, lng: 4.866 },
+};
+const streetsExtract = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets.json', 'utf8')) as Array<{ name: string; center: [number, number] }>;
+const byName = (name: string) => pool.find(poi => poi.name === name)!;
+
+function assertTail(label: string, rate: (name: string) => number) {
+  assert.ok(rate('El Tawheed') < 0.01, `${label}: El Tawheed ${rate('El Tawheed')}`);
+  assert.ok(rate('Meerpadkerk') < 0.01, `${label}: Meerpadkerk ${rate('Meerpadkerk')}`);
+}
+
+for (const [where, start] of Object.entries(STARTS)) {
+  test(`a new rider at ${where} is sent to famous places on every path`, () => {
+    const surprise = odds(unit => pickDestinationNear(pool, start, unit), 4000);
+    const home = odds(unit => pickHomeDestination(pool, start, [], unit)?.poi, 4000);
+    const next = odds(unit => pickNextStop(pool, start, { chooseUnit: unit }), 4000);
+    const due = streetsExtract.filter(street => kmBetween({ lat: street.center[0], lng: street.center[1] }, start) <= 2.5).slice(0, 40);
+    const review = odds((_, index) => pickReviewRoute({ pois: pool, due, from: { ...start }, chooseIndex: index })?.to, 200);
+    for (const [label, rate] of Object.entries({ surprise, home, next, review })) assertTail(`${where} ${label}`, rate);
+  });
+}
+
+test('a stored run leg the pool would not deal is replaced on reload; a chosen one stands', () => {
+  const kinker = STARTS.Kinkerbuurt;
+  const point = (poi: RoutePoi) => ({ id: poi.id, name: poi.name, lat: poi.lat, lng: poi.lng });
+  for (const name of ['Meerpadkerk', 'El Tawheed']) {
+    const stale: RunLeg = { from: kinker, to: point(byName(name)) };
+    assert.equal(judgeResumedLeg(stale, pool), 'below-the-tier', name);
+    const resumed = odds(unit => resumeLeg(stale, pool, { chooseUnit: unit }).leg?.to as RoutePoi | undefined, 3000);
+    assertTail(`resume from ${name}`, resumed);
+    // The rider's own choice in route setup is kept.
+    const chosen = { ...stale, userPicked: true };
+    assert.equal(resumeLeg(chosen, pool).leg, chosen);
+  }
+  const westerkerk: RunLeg = { from: kinker, to: point(byName('Westerkerk')) };
+  assert.equal(resumeLeg(westerkerk, pool).leg, westerkerk);
+  // A review stop is not a pool place; a landmark gone from the pool is replaced.
+  const reviewStop: RunLeg = { from: kinker, to: { id: 'review-stop:Kinkerstraat', name: '', lat: 52.366, lng: 4.87 } };
+  assert.equal(resumeLeg(reviewStop, pool).leg, reviewStop);
+  const gone: RunLeg = { from: kinker, to: { id: 'lm-extract_landmarks_gone', name: 'Gone', lat: 52.37, lng: 4.88 } };
+  assert.equal(judgeResumedLeg(gone, pool), 'left-the-pool');
+  assert.notEqual(resumeLeg(gone, pool).leg?.to.id, gone.to.id);
+  // The run's past stops are not dealt again.
+  const stops = pool.filter(poi => kmBetween(poi, kinker) >= 1 && kmBetween(poi, kinker) <= 3).map(poi => poi.id);
+  const excluded = resumeLeg({ from: kinker, to: point(byName('Meerpadkerk')) }, pool, { excludeIds: stops.slice(0, -1) }).leg;
+  assert.ok(!excluded || !stops.slice(0, -1).includes(excluded.to.id));
+});
+
+test('the reported run: dealt to Meerpadkerk, paused at night, reloaded next morning', () => {
+  const store = new Map<string, string>();
+  const storage = { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => { store.set(k, v); }, removeItem: (k: string) => { store.delete(k); } };
+  const evening = Date.parse('2026-11-13T20:53:00Z');
+  const leg: RunLeg = { from: STARTS.Kinkerbuurt, to: { id: byName('Meerpadkerk').id, name: 'Meerpadkerk', lat: byName('Meerpadkerk').lat, lng: byName('Meerpadkerk').lng } };
+  const run = pauseRun(withNextLeg(addStop(null, { id: 'x', name: 'Westerkerk', fromName: 'Start', points: 10, bestStreak: 0, names: [] }, evening).run, leg), evening + 60_000);
+  saveRun(storage, run);
+  // Within the reload pause credit the run is open and its leg is judged; overnight it is closed.
+  const soon = loadRun(storage, evening + 60 * 60_000).run;
+  assert.ok(soon?.nextLeg);
+  assert.notEqual(resumeLeg(soon.nextLeg, pool).leg?.to.name, 'Meerpadkerk');
+  assert.equal(loadRun(storage, Date.parse('2026-11-14T06:16:00Z')).run, null);
+});
+
+test('a stand-in for a destination that did not snap prefers a famous place unless the tail one is under half as far', () => {
+  const famous: RoutePoi = { id: 'f', name: 'Rijksmuseum', lat: 52.36, lng: 4.885 };
+  const church: RoutePoi = { id: 't', name: 'Buurtkerk', lat: 52.36, lng: 4.885, sitelinks: 1 };
+  const target = { lat: 52.36, lng: 4.88 };
+  const near = (km: number) => 4.88 + km / (111.32 * Math.cos(52.36 * Math.PI / 180));
+  const at = (poi: RoutePoi, km: number) => ({ ...poi, lng: near(km) });
+  const snapAll = () => ({ x: 0, y: 0 });
+  assert.equal(nearestSnappableDestination([at(famous, 0.5), at(church, 0.3)], target, snapAll)?.poi.id, 'f');
+  assert.equal(nearestSnappableDestination([at(famous, 0.5), at(church, 0.2)], target, snapAll)?.poi.id, 't');
+  const world = (poi: RoutePoi) => ({ x: (poi.lng - 4.88) * 1e5, y: 0 });
+  const ranked = rankRetargetCandidates([at(famous, 0.5), at(church, 0.3)], { x: -1e6, y: 0 }, { x: 0, y: 0 }, world, 1);
+  assert.deepEqual(ranked.map(entry => entry.poi.id), ['f', 't']);
+  assert.equal(TAIL_STAND_IN_STRETCH, 2);
 });
