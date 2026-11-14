@@ -27,7 +27,7 @@ import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type Bgt
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParksCell } from './parks';
 import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segmentsOf, vegetatedShare, BED_SHARE, COURTYARD_SURFACES, LAWN_SHARE, RAYS, SegmentIndex, type CourtyardsCell, type Segment as CourtyardSegment } from './courtyards';
-import { bandedInPolygon, buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
+import { bandedInPolygon, buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, splitAtRings, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, wayDeckGroups, wayDeckProfile, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
@@ -1616,7 +1616,10 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   const r = openUnderFootbridges(geo, [deck(1.2)], [0, -5, 40, 15], -1.77);
   assert.deepEqual(r.opened, ['B']);
   assert.equal(r.geo.polygons.length, 3, 'one opening polygon added');
-  assert.equal(r.geo.shores.length, 1, 'the two walls across the canal dropped, the bank kept');
+  // The two walls across the canal dropped where the opening covers them (0.5 m stubs stay at the bank, beside the
+  // land the opening's last station leaves), the bank kept whole.
+  assert.ok(r.geo.shores.every(l => l.every(p => p[1] >= 9.5 || p[1] === 0)), 'no wall across the canal inside the opening');
+  assert.ok(r.geo.shores.some(l => l[0][0] === 0 && l[l.length - 1][0] === 19 && l.every(p => p[1] === 0)), 'the bank kept whole');
   const mask = buildWaterMask(r.geo, 0, -5, 40, 15, 0.5, 4);
   for (const y of [1, 5, 9]) assert.ok(maskDistance(mask, 20, y) < 0, `water under the deck at y ${y}`);
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
@@ -1647,6 +1650,29 @@ test('water opens under an OSM road bridge whose water stops at it (Kinkerbrug, 
   // A street at ground level crossing under the bridge (a viaduct between two ponds): not opened there.
   const under = openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77, { ...opts, under: (x, y, ux, uy) => Math.abs(y - 10) < 1.5 && Math.abs(ux) < 0.9 && Math.abs(uy) > 0.1 });
   assert.ok(!under.geo.polygons.slice(2).some(q => pointInRing(q[0], 30, 10)), 'the station over the street below stays land');
+});
+
+test('a shore segment crossing a bridge opening loses only the part inside (Bilderdijkgracht end quay at De Clercqstraat, feedback 7be6c55a)', () => {
+  // The Postjesweg layout: a canal cut by a 20 m land band at x 20..40, a 15 m road along y at x = 30; the bank along
+  // y = 0 is one 60 m segment whose midpoint lies on the opening (x 19.25..40.5, y 0..19.5).
+  const west: Vec2[] = [[0, 0], [20, 0], [20, 20], [0, 20]], east: Vec2[] = [[40, 0], [60, 0], [60, 20], [40, 20]];
+  const geo = { polygons: [[west], [east]], shores: [[[20, 20], [20, 0]], [[40, 0], [40, 20]], [[0, 0], [60, 0]], [[0, 20], [60, 20]]] as Vec2[][] };
+  const way = { id: 1, name: 'x', points: [[30, 0], [30, 20]] as Vec2[], halfWidth: 7.5 };
+  const rect = [0, -10, 60, 30] as [number, number, number, number], opts = { maxWidth: Infinity, reach: WAY_OPENING_REACH_M };
+  const len = (lines: Vec2[][]) => lines.reduce((a, l) => a + l.reduce((b, p, i) => (i ? b + Math.hypot(p[0] - l[i - 1][0], p[1] - l[i - 1][1]) : 0), 0), 0);
+  const before = openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77, { ...opts, splitShores: false });
+  assert.ok(!before.geo.shores.some(l => l.some(p => p[1] === 0)), 'the before: the whole 60 m bank at y 0 went with the opening');
+  const r = openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77, opts);
+  const ring = r.geo.polygons[2][0], xs = ring.map(p => p[0]), x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const bank = r.geo.shores.filter(l => l.every(p => p[1] === 0));
+  assert.ok(Math.abs(len(bank) - 60) < 1e-6, `the bank at y 0 kept, along the opening's edge too (land beyond it): ${len(bank).toFixed(2)} m`);
+  assert.ok(len(r.geo.shores) > len(before.geo.shores));
+  for (const l of r.geo.shores) for (let i = 1; i < l.length; i++) {
+    const mx = (l[i][0] + l[i - 1][0]) / 2, my = (l[i][1] + l[i - 1][1]) / 2;
+    assert.ok(!(mx > x0 + 1e-6 && mx < x1 - 1e-6 && my > 1e-6 && my < 19.5 - 1e-6), `no wall inside the opening (${mx}, ${my})`);
+  }
+  // Byte-identical where no shore crosses an opening edge.
+  assert.deepEqual(splitAtRings([0, -5], [60, -5], [ring]), [[[0, -5], [60, -5]]]);
 });
 
 test('groundCrossing: a ground street across the bridge axis counts, its approach along the axis and a bridge way do not', () => {

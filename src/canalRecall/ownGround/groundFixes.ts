@@ -34,6 +34,8 @@ export const GROUND_FIXES = [
   'holeStreets',
   /** Lane f1b-jagged 2026-11-14: holeStreets leaves the deck's own road alone where the survey draws it at ground level over the hole (bridgeGaps.ts holeCarry), Ringweg-Noord. */
   'holeCarried',
+  /** Lane quay-corner 2026-11-14: a shore segment crossing a bridge opening is cut at its edges, only the part inside dropped (water.ts splitAtRings), the Bilderdijkgracht at De Clercqstraat. */
+  'openingShores',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

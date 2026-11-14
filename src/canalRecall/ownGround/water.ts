@@ -233,7 +233,47 @@ export interface OpeningDeck { id: string; x: ArrayLike<number>; y: ArrayLike<nu
  * axis along (ux, uy) (a street or a track at ground level: a viaduct between two ponds is not a bridge over cut
  * water), so that station is not opened.
  */
-export interface OpeningOptions { maxWidth?: number; reach?: number; under?: (x: number, y: number, ux: number, uy: number) => boolean }
+export interface OpeningOptions {
+  maxWidth?: number; reach?: number; under?: (x: number, y: number, ux: number, uy: number) => boolean;
+  /** Shore segments cut at the openings' edges before the pieces inside are dropped (splitAtRings); default on, off: the before. */
+  splitShores?: boolean;
+}
+
+/** Within a millimetre of one of the ring's edges. */
+function onRingEdge(ring: readonly Vec2[], x: number, y: number, tol = 1e-3): boolean {
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [ax, ay] = ring[j], [bx, by] = ring[i], dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy;
+    const t = l2 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+    if (Math.hypot(ax + dx * t - x, ay + dy * t - y) < tol) return true;
+  }
+  return false;
+}
+
+/**
+ * Segment a→b as its pieces between the points where it crosses the rings' edges (a, b themselves at the ends). A
+ * segment that crosses no ring edge is returned as it is. Lane quay-corner 2026-11-14 (feedback 7be6c55a): the
+ * Bilderdijkgracht's 23 m end quay at the De Clercqstraat bridge went whole under the bridge way's opening because
+ * its midpoint fell inside, and the land's per-pixel cut showed the clear colour along a quay with no wall or coping.
+ */
+export function splitAtRings(a: Vec2, b: Vec2, rings: readonly (readonly Vec2[])[]): [Vec2, Vec2][] {
+  const dx = b[0] - a[0], dy = b[1] - a[1], ts: number[] = [];
+  const sx0 = Math.min(a[0], b[0]), sx1 = Math.max(a[0], b[0]), sy0 = Math.min(a[1], b[1]), sy1 = Math.max(a[1], b[1]);
+  for (const ring of rings) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const c = ring[j], d = ring[i];
+    if (Math.max(c[0], d[0]) < sx0 || Math.min(c[0], d[0]) > sx1 || Math.max(c[1], d[1]) < sy0 || Math.min(c[1], d[1]) > sy1) continue;
+    const ex = d[0] - c[0], ey = d[1] - c[1], den = dx * ey - dy * ex;
+    if (Math.abs(den) < 1e-12) continue;
+    const t = ((c[0] - a[0]) * ey - (c[1] - a[1]) * ex) / den, u = ((c[0] - a[0]) * dy - (c[1] - a[1]) * dx) / den;
+    if (t > 1e-6 && t < 1 - 1e-6 && u >= 0 && u <= 1) ts.push(t);
+  }
+  if (!ts.length) return [[a, b]];
+  ts.sort((p, q) => p - q);
+  const at = (t: number): Vec2 => [a[0] + dx * t, a[1] + dy * t], out: [Vec2, Vec2][] = [];
+  let prev = a, pt = 0;
+  for (const t of ts) { if (t - pt < 1e-6) continue; const p = at(t); out.push([prev, p]); prev = p; pt = t; }
+  out.push([prev, b]);
+  return out;
+}
 
 /** Footbridges only: a deck at most this wide (median over the span) may get water opened under it. */
 export const OPENING_MAX_WIDTH_M = 6;
@@ -389,16 +429,23 @@ export function openUnderFootbridges(geo: WaterGeometry, decks: readonly Opening
     sides.set(d.id, [median(best.map(r => r.l)), median(best.map(r => r.r))]);
   }
   if (!added.length) return { geo, opened, sides };
-  // Shores: drop the pieces whose midpoint lies in an opening (the walls that crossed the canal).
+  // Shores: drop the pieces that lie in an opening (the walls that crossed the canal). With `splitShores` a shore
+  // segment is cut where it crosses an opening's edge first (splitAtRings), so only the part inside goes: a long
+  // segment no longer goes whole when its midpoint is inside, nor stays whole across the opening when it is not.
+  const split = opts.splitShores !== false;
   const shores: Vec2[][] = [], shoreLevels: number[] = [];
   geo.shores.forEach((line, k) => {
     let cur: Vec2[] = [];
     const flush = () => { if (cur.length >= 2) { shores.push(cur); shoreLevels.push(geo.shoreLevels?.[k] ?? fallbackZ); } cur = []; };
     for (let i = 0; i + 1 < line.length; i++) {
-      const a = line[i], b = line[i + 1], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
-      if (added.some(r => inPolygon([r], mx, my))) { flush(); continue; }
-      if (!cur.length) cur.push(a);
-      cur.push(b);
+      const a = line[i], b = line[i + 1];
+      for (const [p, q] of split ? splitAtRings(a, b, added) : [[a, b] as [Vec2, Vec2]]) {
+        const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2;
+        // A piece along an opening's edge is the opened water's own shore (land beyond it): it stays.
+        if (added.some(r => inPolygon([r], mx, my)) && !(split && added.some(r => onRingEdge(r, mx, my)))) { flush(); continue; }
+        if (!cur.length) cur.push(p);
+        cur.push(q);
+      }
     }
     flush();
   });
