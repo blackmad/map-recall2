@@ -212,3 +212,7 @@ test('series members draw identical storey lines: one ground height and count fr
   assert.ok(Number(lines[0][0]) > 3);
   for (const l of lines) assert.deepEqual(l, lines[0]);
 });
+
+test('the record\'s window kind sets the series glazing: T-windows and toplit casements paint large panes under a transom', () => {
+  for (const r of [...W, ...K]) assert.equal(r.series!.look!.sash, 'transom', r.pandId);
+});

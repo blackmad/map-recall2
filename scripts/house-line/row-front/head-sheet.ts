@@ -20,15 +20,16 @@ const KINDS = [
   { dressing: 'jack-blocks', shape: undefined, label: 'jack-blocks (Weteringschans 168042, 169016)', photo: sheets('weteringschans-168096-171218'), crop: { left: 290, top: 440, width: 210, height: 80 } },
   { dressing: 'keystone', shape: undefined, label: 'keystone (Kinkerstraat 98, 96)', photo: sheets('kinkerstraat-86-110'), crop: { left: 1160, top: 380, width: 180, height: 70 } },
   { dressing: 'segmental-tympanum', shape: 'segmental', label: 'segmental-tympanum (Kinkerstraat 90, 92)', photo: sheets('kinkerstraat-86-110'), crop: { left: 1940, top: 370, width: 150, height: 70 } },
+  { dressing: 'block-surround', shape: undefined, label: 'block-surround (Kinkerstraat 100)', photo: sheets('kinkerstraat-86-110'), crop: { left: 955, top: 370, width: 175, height: 120 } },
   { dressing: 'arch-ring', shape: 'round', label: 'arch-ring (Weteringschans 171218 top)', photo: sheets('weteringschans-168096-171218'), crop: { left: 820, top: 370, width: 190, height: 80 } },
 ] as const;
 
 function headSvg(dressing: string, shape: string | undefined): string {
-  const g = headGrammarOf(dressing, shape)!, wx0 = 1.2, wx1 = 2.3, z = 1.0;
+  const g = headGrammarOf(dressing, shape)!, wx0 = 1.2, wx1 = 2.3, z = 1.0, sill = 0.1;
   const X = (x: number) => (x * PPM).toFixed(1), Y = (zz: number) => (H - zz * PPM).toFixed(1);
-  const polys = headPieces(g, wx0, wx1, z).sort((a, b) => a.out - b.out)
+  const polys = headPieces(g, wx0, wx1, z, sill).sort((a, b) => a.out - b.out)
     .map(p => `<polygon points="${p.pts.map(([x, zz]) => `${X(x)},${Y(zz)}`).join(' ')}" fill="${TONE[p.tone]}" stroke="#00000033" stroke-width="0.6"/>`).join('');
-  const win = `<rect x="${X(wx0)}" y="${Y(z)}" width="${(wx1 - wx0) * PPM}" height="${0.9 * PPM}" fill="${TONE.glass}" stroke="#f2efe6" stroke-width="5"/>`;
+  const win = `<rect x="${X(wx0)}" y="${Y(z)}" width="${(wx1 - wx0) * PPM}" height="${(z - sill) * PPM}" fill="${TONE.glass}" stroke="#f2efe6" stroke-width="5"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="${WALL}"/>${win}${polys}</svg>`;
 }
 
