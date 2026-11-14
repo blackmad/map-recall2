@@ -102923,6 +102923,393 @@
       "triangles": 1539,
       "bytes": 29132,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "meervaart": {
+      "id": "meervaart",
+      "name": "De Meervaart, Meer en Vaart 300",
+      "landmarkId": "extract_landmarks_1306682228",
+      "modelUrl": "./models/meervaart.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012085435"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.80717674,
+          52.35879553
+        ],
+        "headingDegrees": 72.22,
+        "lengthMetres": 55,
+        "widthMetres": 97.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8070535,
+          52.35887271
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012085435 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/meervaart-footprints.json, written by venue-prepare.ts). The base faces, the panelled box and the fly tower's lettering are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m; the landmark-brief picks TMX7316010203-000050_pano_0000_005924, recording_2025-07-02_08-42-20_03878, TMX7316010203-002022_pano_0000_000601, TMX7316010203-002529_pano_0000_000357 and TMX7316010203-002505_pano_0003_001515); halls, fly tower and roofs keep the 3DBAG LoD2.2 shell (CC BY 4.0), recoloured by height. Per wall in scripts/landmarks/meervaart-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 23.4,
+      "galleryView": {
+        "theta": 0.5,
+        "phi": 1.12
+      },
+      "bagYear": 1999,
+      "materialOverrides": {
+        "brick": "#3f3c3a",
+        "concrete": "#aeb2b6",
+        "stone": "#b9b6ae",
+        "white": "#e6e6e2",
+        "glass": "#374756",
+        "frame": "#2f3439",
+        "dark": "#4a4e52",
+        "slate": "#4c4d4f",
+        "greyBrick": "#7f8488",
+        "sandstone": "#c9b48a",
+        "red": "#d9622b"
+      },
+      "attribution": {
+        "title": "De Meervaart, Meer en Vaart 300, Amsterdam (1999)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012085435",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 massing (CC BY 4.0): the dark-brick base with its window rows and shopfronts, aluminium-clad halls, the brick fly tower with its aluminium crown and white 'meervaart' lettering, the north hall's 'meervaart:' sign and the panelled box with its big window. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.80746142,
+              52.35892681
+            ],
+            [
+              4.80742705,
+              52.35899052
+            ],
+            [
+              4.8074685,
+              52.3589989
+            ],
+            [
+              4.80747384,
+              52.35899998
+            ],
+            [
+              4.80747323,
+              52.35900039
+            ],
+            [
+              4.80746666,
+              52.3590044
+            ],
+            [
+              4.80745971,
+              52.35900815
+            ],
+            [
+              4.80745239,
+              52.35901163
+            ],
+            [
+              4.80744473,
+              52.35901483
+            ],
+            [
+              4.80743676,
+              52.35901773
+            ],
+            [
+              4.80742843,
+              52.35902036
+            ],
+            [
+              4.80741984,
+              52.35902266
+            ],
+            [
+              4.80741104,
+              52.35902464
+            ],
+            [
+              4.80740205,
+              52.35902627
+            ],
+            [
+              4.80739292,
+              52.35902756
+            ],
+            [
+              4.80739218,
+              52.35902761
+            ],
+            [
+              4.80739224,
+              52.35902788
+            ],
+            [
+              4.80736773,
+              52.35907856
+            ],
+            [
+              4.8074423,
+              52.35909351
+            ],
+            [
+              4.80737419,
+              52.35921993
+            ],
+            [
+              4.80730743,
+              52.35920621
+            ],
+            [
+              4.80727376,
+              52.35927637
+            ],
+            [
+              4.80722148,
+              52.35926572
+            ],
+            [
+              4.8069352,
+              52.35920785
+            ],
+            [
+              4.80669167,
+              52.35915861
+            ],
+            [
+              4.80659937,
+              52.35914017
+            ],
+            [
+              4.80661506,
+              52.35911192
+            ],
+            [
+              4.80663668,
+              52.35907168
+            ],
+            [
+              4.80663626,
+              52.3590716
+            ],
+            [
+              4.80663031,
+              52.3590586
+            ],
+            [
+              4.80662775,
+              52.35904519
+            ],
+            [
+              4.80662863,
+              52.3590317
+            ],
+            [
+              4.80663295,
+              52.35901846
+            ],
+            [
+              4.80664057,
+              52.35900579
+            ],
+            [
+              4.80665132,
+              52.358994
+            ],
+            [
+              4.80666495,
+              52.35898339
+            ],
+            [
+              4.80668103,
+              52.35897425
+            ],
+            [
+              4.80669924,
+              52.35896673
+            ],
+            [
+              4.80671914,
+              52.35896105
+            ],
+            [
+              4.80674022,
+              52.35895733
+            ],
+            [
+              4.806762,
+              52.35895564
+            ],
+            [
+              4.80678394,
+              52.35895606
+            ],
+            [
+              4.80680552,
+              52.35895855
+            ],
+            [
+              4.80680584,
+              52.35895811
+            ],
+            [
+              4.80688491,
+              52.35881125
+            ],
+            [
+              4.80680394,
+              52.35879495
+            ],
+            [
+              4.80679807,
+              52.35879034
+            ],
+            [
+              4.80679391,
+              52.35878507
+            ],
+            [
+              4.80679167,
+              52.35877938
+            ],
+            [
+              4.80679142,
+              52.35877353
+            ],
+            [
+              4.8067932,
+              52.35876778
+            ],
+            [
+              4.80679693,
+              52.35876239
+            ],
+            [
+              4.80680242,
+              52.3587576
+            ],
+            [
+              4.80680943,
+              52.35875363
+            ],
+            [
+              4.80681767,
+              52.35875065
+            ],
+            [
+              4.80682674,
+              52.35874881
+            ],
+            [
+              4.80682838,
+              52.35874912
+            ],
+            [
+              4.80685145,
+              52.35870574
+            ],
+            [
+              4.80680754,
+              52.35869687
+            ],
+            [
+              4.80680845,
+              52.35869515
+            ],
+            [
+              4.80700838,
+              52.3583243
+            ],
+            [
+              4.80708078,
+              52.35833898
+            ],
+            [
+              4.80709882,
+              52.35834241
+            ],
+            [
+              4.80710564,
+              52.35832897
+            ],
+            [
+              4.80710424,
+              52.3583287
+            ],
+            [
+              4.80710631,
+              52.35832513
+            ],
+            [
+              4.8071095,
+              52.35832578
+            ],
+            [
+              4.80762733,
+              52.35843024
+            ],
+            [
+              4.80762953,
+              52.35842643
+            ],
+            [
+              4.80772686,
+              52.35844623
+            ],
+            [
+              4.80763813,
+              52.35860979
+            ],
+            [
+              4.80763305,
+              52.3586087
+            ],
+            [
+              4.80746142,
+              52.35892681
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -30.69700050354004,
+          -0.30000001192092896,
+          -44.79199981689453
+        ],
+        "max": [
+          45.4900016784668,
+          23.357999801635742,
+          61.00600051879883
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8070535,
+          52.35887271
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 72.22000000000003,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 105.79800033569336,
+        "heightMetres": 23.65799981355667,
+        "depthMetres": 76.18700218200684,
+        "depthCoverage": 0.7822074145996595
+      },
+      "triangles": 3899,
+      "bytes": 63184,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

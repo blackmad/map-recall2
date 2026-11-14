@@ -1,0 +1,428 @@
+{
+ "schemaVersion": 1,
+ "id": "meervaart",
+ "pand": "0363100012085435",
+ "brief": "scripts/landmarks/meervaart-brief.md",
+ "signature": [
+  "mv-tower-lettering",
+  "mv-fly-tower",
+  "mv-alu-halls",
+  "mv-dark-base"
+ ],
+ "walls": [
+  {
+   "tag": "w01-342",
+   "bearing": 342,
+   "lengthM": 48.3,
+   "centre": [
+    4.806939,
+    52.35921
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000050_pano_0000_005924",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-hall-lettering",
+     "kind": "lettering",
+     "where": "north hall's aluminium above the base, near its east end: 'meervaart:' in raised grey lowercase with an orange two-square colon",
+     "approxSizeM": [
+      6.5,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "venue-kit lettering (greyBrick slot) on the 3DBAG hall wall, colon as two orange slabs",
+     "seenIn": "TMX7316010203-000050_pano_0000_005924"
+    },
+    {
+     "id": "mv-n-windows",
+     "kind": "window-shape",
+     "where": "north base: five cream/red-framed two-light windows at 4.8-6.5 m, library glazing (red 'bibliotheek' panels) at the ground, a foyer shopfront further west",
+     "approxSizeM": [
+      1.3,
+      1.7
+     ],
+     "plan": "simplified",
+     "how": "framed openings in a drawn brick section (21 -> 25); the red bibliotheek panels inside the glazing left out, frames one cream colour. The tall canopy and round concrete column in front of the west part stand outside this pand's 7.7 m wall (3DBAG) and are not drawn",
+     "seenIn": "TMX7316010203-000050_pano_0000_005924"
+    }
+   ]
+  },
+  {
+   "tag": "w02-72",
+   "bearing": 72,
+   "lengthM": 44.8,
+   "centre": [
+    4.807533,
+    52.358802
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-02_08-42-20_03878",
+   "capturedAt": "2025-07-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-dark-base",
+     "kind": "other",
+     "where": "every face: dark grey-brown brick base 7.7-8.6 m high round the whole block",
+     "approxSizeM": [
+      180,
+      8
+     ],
+     "plan": "modelled",
+     "how": "drawn K.sec brick sections on the four photographed fronts, 3DBAG walls below 8.8 m in the brick slot elsewhere",
+     "seenIn": "recording_2025-07-02_08-42-20_03878"
+    },
+    {
+     "id": "mv-e-windows",
+     "kind": "window-shape",
+     "where": "east base: ten white-framed windows 1.85 m wide at 4.5-6.2 m, low slot windows at ~2.2 m, two grey service doors",
+     "approxSizeM": [
+      1.85,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "framed openings from face-east crop positions",
+     "seenIn": "recording_2025-07-02_08-42-20_03878"
+    }
+   ]
+  },
+  {
+   "tag": "w03-252",
+   "bearing": 252,
+   "lengthM": 43.7,
+   "centre": [
+    4.8069105,
+    52.3585125
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002022_pano_0000_000601",
+   "capturedAt": "2021-02-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-w-shopfronts",
+     "kind": "window-shape",
+     "where": "west base on Meer en Vaart: twelve narrow upper windows at a 3.56 m pitch over six three-light shopfronts",
+     "approxSizeM": [
+      6.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "framed openings from face-west crop positions",
+     "seenIn": "TMX7316010203-002022_pano_0000_000601"
+    },
+    {
+     "id": "mv-w-shop-signs",
+     "kind": "sign",
+     "where": "small tenant signs and posters in the shopfronts",
+     "approxSizeM": [
+      1.0,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "tenant stickers and posters under 1 m"
+     },
+     "seenIn": "TMX7316010203-002022_pano_0000_000601"
+    }
+   ]
+  },
+  {
+   "tag": "w04-162",
+   "bearing": 162,
+   "lengthM": 37.4,
+   "centre": [
+    4.8073695,
+    52.3583795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002529_pano_0000_000357",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-fly-tower",
+     "kind": "tower",
+     "where": "the fly tower behind the blind south base: dark brick to ~19.3 m under a ribbed aluminium crown band to 22-23 m",
+     "approxSizeM": [
+      21,
+      23
+     ],
+     "plan": "modelled",
+     "how": "3DBAG tower massing split at 19.3 m into brick and aluminium (height scaled from the crop, the tower stands ~6 m behind the base plane)",
+     "seenIn": "TMX7316010203-002529_pano_0000_000357"
+    },
+    {
+     "id": "mv-tower-lettering",
+     "kind": "lettering",
+     "where": "white bold lowercase 'meervaart' across the fly tower's south front, x-height ~1.4 m, baseline ~15.7 m",
+     "approxSizeM": [
+      14.3,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "pathLettering (new kit component) along the faceted tower front, each glyph square to its facet",
+     "seenIn": "TMX7316010203-002529_pano_0000_000357"
+    },
+    {
+     "id": "mv-s-door",
+     "kind": "window-shape",
+     "where": "tall narrow white-framed glazed door, 6.3 m, in the blind south base",
+     "approxSizeM": [
+      1.7,
+      6.3
+     ],
+     "plan": "modelled",
+     "how": "framed opening with three transoms",
+     "seenIn": "TMX7316010203-002529_pano_0000_000357"
+    },
+    {
+     "id": "mv-s-downpipes",
+     "kind": "other",
+     "where": "three black downpipes down the south base",
+     "approxSizeM": [
+      0.14,
+      8.3
+     ],
+     "plan": "modelled",
+     "how": "thin frame-slot slabs",
+     "seenIn": "TMX7316010203-002529_pano_0000_000357"
+    },
+    {
+     "id": "mv-s-panels",
+     "kind": "other",
+     "where": "faint recessed square panel joints in the south brick",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "joint lines a few mm deep, invisible at ride distance"
+     },
+     "seenIn": "TMX7316010203-002529_pano_0000_000357"
+    }
+   ]
+  },
+  {
+   "tag": "w05-72",
+   "bearing": 72,
+   "lengthM": 19.2,
+   "centre": [
+    4.8076855,
+    52.35853
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002505_pano_0003_001530",
+   "capturedAt": "2022-04-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-alu-halls",
+     "kind": "other",
+     "where": "the hall volumes above the base clad in horizontal aluminium, sloped/curved aluminium roofs seen over the east and west bases",
+     "approxSizeM": [
+      60,
+      8
+     ],
+     "plan": "modelled",
+     "how": "3DBAG walls above the base and roofs above 9 m in the aluminium (concrete) slot",
+     "seenIn": "TMX7316010203-002505_pano_0003_001530"
+    },
+    {
+     "id": "mv-alu-windows",
+     "kind": "window-shape",
+     "where": "three small dark windows in the aluminium hall wall above the east base",
+     "approxSizeM": [
+      0.6,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 m windows set back on the hall, behind the base parapet from the street"
+     },
+     "seenIn": "TMX7316010203-002505_pano_0003_001530"
+    }
+   ]
+  },
+  {
+   "tag": "w06-252",
+   "bearing": 252,
+   "lengthM": 17.3,
+   "centre": [
+    4.806848,
+    52.358887
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000283_pano_0000_002024",
+   "capturedAt": "2017-05-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-72",
+   "bearing": 72,
+   "lengthM": 14.9,
+   "centre": [
+    4.807411,
+    52.3591585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002505_pano_0003_001515",
+   "capturedAt": "2022-04-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "mv-box-window",
+     "kind": "window-shape",
+     "where": "pale-panelled box at the north-east corner: one big dark-framed window 11 x 6.2 m over a fully glazed ground floor",
+     "approxSizeM": [
+      11,
+      6.2
+     ],
+     "plan": "modelled",
+     "how": "drawn stone-slot section with two framed openings (4 and 6 lights)",
+     "seenIn": "TMX7316010203-002505_pano_0003_001515"
+    }
+   ]
+  },
+  {
+   "tag": "w08-74",
+   "bearing": 74,
+   "lengthM": 8.1,
+   "centre": [
+    4.807293,
+    52.359243
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-02_08-42-20_03868",
+   "capturedAt": "2025-07-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-252",
+   "bearing": 252,
+   "lengthM": 8,
+   "centre": [
+    4.8066205,
+    52.359108
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002529_pano_0000_000627",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-162",
+   "bearing": 162,
+   "lengthM": 7,
+   "centre": [
+    4.807681,
+    52.358438
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002529_pano_0000_000352",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-163",
+   "bearing": 163,
+   "lengthM": 6.5,
+   "centre": [
+    4.8070565,
+    52.358335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001885_pano_0000_002390",
+   "capturedAt": "2020-08-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-74",
+   "bearing": 74,
+   "lengthM": 5.9,
+   "centre": [
+    4.8073825,
+    52.3590555
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000051_pano_0000_001992",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-343",
+   "bearing": 343,
+   "lengthM": 5.8,
+   "centre": [
+    4.8068475,
+    52.358805
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000050_pano_0000_005951",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-164",
+   "bearing": 164,
+   "lengthM": 5.3,
+   "centre": [
+    4.8074075,
+    52.359088
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001885_pano_0000_002364",
+   "capturedAt": "2020-08-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w15-252",
+   "bearing": 252,
+   "lengthM": 5,
+   "centre": [
+    4.8068425,
+    52.3587295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001885_pano_0000_002404",
+   "capturedAt": "2020-08-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-342",
+   "bearing": 342,
+   "lengthM": 4.8,
+   "centre": [
+    4.8073435,
+    52.359215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000050_pano_0000_005673",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

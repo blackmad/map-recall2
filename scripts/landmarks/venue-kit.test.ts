@@ -157,3 +157,20 @@ test('strutBetween spans its two points', async () => {
   assert.equal(M.tris.get('stone')!.length / 9, 4);
   assert.equal(M.tris.get('slate')!.length / 9, 10);
 });
+
+test('pathLettering follows a bent path and matches lettering width on a straight one', async () => {
+  const {pathLettering} = await import('./venue-kit');
+  setSink(0);
+  const {b: b1} = collector();
+  const w0 = lettering(b1, F, 'meervaart', 0, 0, 0.1, 0.02, 'white');
+  const {b, got} = collector();
+  const w1 = pathLettering(b, [[0, 0], [10, 0]], 'meervaart', 5, 1, 0.1, 0.02, 'white');
+  assert.ok(Math.abs(w1 - w0) < 1e-9, 'same set width');
+  const bb = boxOf(got.map(g => g.g));
+  assert.ok(Math.abs((bb.min.x + bb.max.x) / 2 - 5) < 0.06 && Math.abs(bb.min.y - 1) < 1e-6);
+  // a right-angle bend at x = 5: glyphs past the corner turn to the second leg
+  const {b: b3, got: g3} = collector();
+  pathLettering(b3, [[0, 0], [5, 0], [5, 5]], 'meervaart', 5, 0, 0.2, 0.02, 'white');
+  const box3 = boxOf(g3.map(g => g.g));
+  assert.ok(box3.max.z > 1 && box3.min.x < 4, 'text runs along both legs');
+});

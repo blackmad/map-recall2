@@ -4,7 +4,7 @@ import {geomOf} from './cut-face';
 import {slab, poly, put, type Frame} from './nearbar-kit';
 import type {Surface} from './worship-shell';
 import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
-import {bandQuads, ledgeQuads, type BandQuad} from '../../src/canalRecall/landmarks/pathBand';
+import {bandQuads, frameAtArc, ledgeQuads, type BandQuad} from '../../src/canalRecall/landmarks/pathBand';
 
 /**
  * Shared parts of the centre-venues lane (2026-11-14: Arti et Amicitiae, Industrieele Groote Club, Splendor, De Uitkijk,
@@ -24,7 +24,9 @@ import {bandQuads, ledgeQuads, type BandQuad} from '../../src/canalRecall/landma
  *  - `cutFrontWalls`: the 3DBAG walls on a street front cut into chord ranges, each kept only above the top of the
  *    storeys the builder draws there (Splendor's six fronts of different heights on one chord).
  *  - `pathSkin`, `pathLedge` (venues round 3): a wall skin or a ledge along a plan polyline (src/canalRecall/landmarks/
- *    pathBand.ts), for fronts that run round a curve (Theater Bellevue's corner drum, Q-Factory, the Muziekgebouw).
+ *    pathBand.ts), for fronts that run round a curve (Theater Bellevue's corner drum, Q-Factory, the Muziekgebouw);
+ *  - `pathLettering` (venues round 3): glyph runs set along a plan polyline, each glyph square to the facet it sits on
+ *    (De Meervaart's name across the faceted, bowed fly-tower front).
  *
  * Frames follow nearbar-kit: t along the wall to the viewer's right, y up, out of the wall along n. Every solid's back
  * face sits at `out` (sunk by nearbar-kit's SINK when the builder sets one); fronts stand >= 5 cm proud.
@@ -240,4 +242,23 @@ export function strutBetween(b: BuildingTools, p: [number, number, number], q: [
   const g = new T.BoxGeometry(w, L, w).applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), d.normalize()));
   g.translate((p[0] + q[0]) / 2, (p[1] + q[1]) / 2, (p[2] + q[2]) / 2);
   b.add(g, c);
+}
+
+/**
+ * Mixed-case lettering along an open plan polyline (pathBand frames), centred on arc length `s`, baseline at y, `out`
+ * metres proud of the path. Each glyph sits square to the segment under its centre, so text follows a faceted or bowed
+ * front instead of floating off it as one flat run. Returns the set width.
+ */
+export function pathLettering(b: BuildingTools, path: XZ[], text: string, s: number, y: number, px: number, d: number, c: Col, out = 0, track = 0) {
+  const glyphs = [...text].map(ch => glyphRuns(ch, px, MIXED_CASE_GLYPHS));
+  let width = 0;
+  for (const g of glyphs) width += g.width;
+  width += (px + track) * Math.max(0, glyphs.length - 1);
+  let u = s - width / 2;
+  for (const g of glyphs) {
+    const fr = frameAtArc(path, u + g.width / 2, out), f: Frame = {origin: fr.origin, tangent: fr.tangent, n: fr.n};
+    for (const r of g.runs) slab(b, f, (r.t0 + r.t1) / 2 - g.width / 2, y + r.y0, r.t1 - r.t0, r.y1 - r.y0, d, c);
+    u += g.width + px + track;
+  }
+  return width;
 }
