@@ -50,7 +50,7 @@ export const PUI = {
 export const RETAIL_TEMPLATES = [
   'ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer',
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
-  'doner', 'toko', 'butcher', 'greengrocer', 'turkishBakery', 'frites', 'cheese', 'waffle', 'pancake',
+  'doner', 'toko', 'butcher', 'greengrocer', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
   'souvenir', 'books', 'phone', 'gelato', 'exchange',
 ] as const;
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
@@ -107,6 +107,10 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
   if (amenity && FOOD.has(amenity) && has(cuisine, /^(friture|fries|chips)$/)) return 'frites';
   if (shop === 'cheese') return 'cheese';
   if (/waffle|wafel|nutella/.test(name)) return 'waffle';
+  // A Dutch bakker or banketbakker (Bakkerij Bart, Vlaamsch Broodhuys, Le Fournil, Hartering, Hartog: name lettering).
+  if (shop === 'bakery' || shop === 'pastry') return 'bakery';
+  // A notenbar: shop=nuts, a 'noten' name, or a confectionery (Jamin and the like).
+  if (shop === 'nuts' || /noten/.test(name) || shop === 'confectionery') return 'nuts';
   if (has(cuisine, /^pancakes?$/)) return 'pancake';
   if (shop === 'gift' || shop === 'souvenir') return 'souvenir';
   if (shop === 'books' || shop === 'newsagent' && /boek|book|athenaeum/.test(name)) return 'books';
@@ -118,7 +122,7 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
 
 /** Window content the front builder draws behind (or in front of) the glass. */
 export type Content = 'shelves' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'produce' | 'bread' | 'automatiek' | 'deli' | 'bowls'
-  | 'books' | 'magazines' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains';
+  | 'books' | 'magazines' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains' | 'jars';
 /** What a template draws. Colours are house colours or measured street colours; lettering only (no logo artwork yet). */
 export type TemplateLook = {
   fascia: string; letters: string;
@@ -160,6 +164,8 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   butcher: { fascia: '#b3121b', letters: '#ffffff', word: 'SLAGERIJ', content: 'meat', lit: true },
   greengrocer: { fascia: '#2f6b2a', letters: '#ffffff', word: 'name', content: 'produce', lit: false, awning: '#2f6b2a', pavement: 'crates' },
   turkishBakery: { fascia: '#f2b01e', letters: '#7a1f12', word: 'name', content: 'bread', lit: true },
+  bakery: { fascia: '#f3e7c9', letters: '#6b3a1e', word: 'name', content: 'bread', lit: true },
+  nuts: { fascia: '#f2b01e', letters: '#1d1d1b', word: 'name', content: 'jars', lit: true },
   frites: { fascia: '#f7c600', letters: '#c4161c', word: 'FRITES', content: 'counter', lit: true },
   cheese: { fascia: '#f2c230', letters: '#3b2a12', word: 'KAAS', content: 'cheese', lit: true },
   waffle: { fascia: '#ff6fa8', letters: '#ffffff', word: 'name', content: 'waffles', lit: true },
