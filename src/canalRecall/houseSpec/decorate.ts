@@ -19,6 +19,7 @@ import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
 import { brickLiftOn } from '../look/brickLift.js';
+import { ruledSpecWall } from '../look/wallRule.js';
 import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
@@ -204,7 +205,7 @@ export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
-  const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  const drawn = ruledSpecWall(src, () => specWallDisplay(src.hex, { fromPixel: src.fromPixel }));
   // A hand-reviewed wall (source `author` / `reviewed`) skips the guard: the guard was written for noisy measurements, and a
   // reviewed colour outranks it (peer ruling 2026-11-13: 178293's reviewed #9a5a40, photo L 0.58, drew period brick at 0.38).
   if (reviewedWallSource(view.src?.wallHex)) return drawn;

@@ -97,7 +97,18 @@ test('multi-front pands: Haarlemmerdijk 22/24 is two fronts (David, four-way str
 test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 storeys, every trace has an outline', () => {
   const traced = tracedFronts(table, 'haarlemmerdijk-2-58');
   assert.ok(traced.length >= 14, `${traced.length} traced fronts`);
-  for (const t of traced) {
+  const traced117 = tracedFronts(table, 'haarlemmerdijk-117-143');
+  assert.ok(traced117.length >= 13, `${traced117.length} traced fronts on 117-143`);
+  const traced13 = tracedFronts(table, 'haarlemmerdijk-13-45');
+  assert.ok(traced13.length >= 13, `${traced13.length} traced fronts on 13-45`);
+  const traced46 = tracedFronts(table, 'haarlemmer-46-96');
+  assert.ok(traced46.length >= 17, `${traced46.length} traced fronts on Haarlemmerstraat 46-96`);
+  assert.ok(traced46.some(t => t.key === '0363100012171144'), 'HS54 traced');
+  // HS74A carries two fronts (plain brick | buff brick with white bands) split at 5.8 m, each traced with 3 bays.
+  const hs74a = traced46.filter(t => t.key.startsWith('0363100012175142#'));
+  assert.deepEqual(hs74a.map(t => [t.box.x0, t.box.x1]), [[0, 5.8], [5.8, 11.47]], 'HS74A split');
+  for (const t of hs74a) assert.ok(t.front.trace!.storeys.slice(1).every(s => s.length === 3), t.key);
+  for (const t of [...traced, ...traced117, ...traced13, ...traced46]) {
     assert.equal(t.front.trace!.storeys.length, t.front.storeys, t.key);
     assert.ok(t.front.trace!.outline.length >= 3, t.key);
     assert.ok(t.openings.every(o => o.w > 0 && o.h > 0 && o.x >= -0.2 && o.x + o.w <= t.box.x1 + 0.2), t.key);
@@ -110,6 +121,31 @@ test('the 2-58 traces: one opening row per storey, HD14 has its oriel and 4 stor
   const bad = structuredClone(hd14); bad.trace!.storeys.pop(); bad.trace!.storeys[0][0].w = -1;
   const p = frontRecordProblems(bad);
   assert.ok(p.some(x => x.includes('trace')), p.join('; '));
+});
+
+test('the 2-58 registration drift: spans 0-3 are registered at 0 and traced in x from the 2022-06-22 capture; no misplaced mission', async () => {
+  const {STRIP_SPAN_SHIFT_M, shiftFor} = await import('../../../scripts/front-records/strip-shift.ts');
+  // Lane 3 (2026-11-13): mission TMX7316010203-001900 (2020-08-31) is misplaced (recorded 9.4 m from the even-side fronts,
+  // taken from about 5.7 m). No strip behind these records may use it.
+  for (const face of new Set(table.records.map(r => r.face))) {
+    const strip = JSON.parse(readFileSync(path.join(ROOT, 'scripts/block-face/faces', face, 'strip.json'), 'utf8'));
+    for (const sp of strip.spans) for (const p of sp.panoramas) assert.ok(!p.panoId.startsWith('TMX7316010203-001900'), `${face} ${sp.pandId} uses ${p.panoId}`);
+  }
+  // The 2022-12-15 strip (mission 002859) ghosts HD58/56, 54, 52 and 50 and stands them at 0, not the face's +0.6 m; the
+  // 2022-06-22 capture (mission 002620, its strip geometry kept as evidence) puts them on their BAG spans at 0.
+  const recapture = JSON.parse(readFileSync(path.join(ROOT, 'data/front-records/evidence/haarlemmerdijk-2-58-20220622.strip.json'), 'utf8'));
+  assert.equal(recapture.date, '2022-06-22');
+  assert.ok(recapture.spans.every((sp: {panoramas: {panoId: string}[]}) => sp.panoramas.every(p => /^TMX7316010203-00(2619|2620)_/.test(p.panoId))));
+  const drift = ['0363100012177585', '0363100012177584', '0363100012177590', '0363100012176280'];
+  for (const id of drift) assert.equal(shiftFor('haarlemmerdijk-2-58', id), 0, id);
+  assert.equal(shiftFor('haarlemmerdijk-2-58', '0363100012167819'), 0.6);
+  assert.equal(Object.keys(STRIP_SPAN_SHIFT_M['haarlemmerdijk-2-58']).length, drift.length);
+  const keys = ['0363100012177585#0', '0363100012177585#1', '0363100012177584', '0363100012177590', '0363100012176280'];
+  for (const t of tracedFronts(table, 'haarlemmerdijk-2-58').filter(t => keys.includes(t.key))) assert.match(t.front.trace!.source.ref ?? '', /2022-06-22/, t.key);
+  // HD58/HD56 split where the re-capture shows it; HD54/52/50 have three single windows per storey, not ghosted doubles.
+  const hd56 = rec('0363100012177585');
+  assert.equal(hd56.fronts![0].to, 4.7);
+  for (const id of ['0363100012177584', '0363100012177590', '0363100012176280']) assert.equal(rec(id).trace!.storeys[1].length, 3, id);
 });
 
 test('window IoU: identical boxes score 1, disjoint 0, half-shifted 1/3; the row aggregate is sum of intersections over sum of unions', () => {

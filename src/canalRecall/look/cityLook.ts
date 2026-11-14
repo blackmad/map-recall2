@@ -47,6 +47,7 @@ import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsUniform, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
+import { ruledSlotSource } from './wallRule.ts';
 import { brickLiftV2Tint } from './brickLift.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 import { accentGlsl, packMask } from './maskPacking.ts';
@@ -890,7 +891,8 @@ export function slotForMaterial(material: any, infer: boolean): { slot: Material
   const ud = material?.userData ?? {};
   if (isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
     // Inferred extras written into a GLB only take part under the flag (they are, here).
-    const measured = ud.tintSource === 'measured';
+    // The wall rule (wallRule.ts, `?wallRule=1`) reads a record or measured wall tint as measured.
+    const measured = ruledSlotSource(ud.materialSlot, ud.tint, ud.tintSource === 'measured' ? 'measured' : undefined) === 'measured';
     return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(measured ? { source: 'measured' as const } : {}), ...(measured && typeof ud.tintWhitePoint === 'string' ? { white: ud.tintWhitePoint } : {}), ...(ud.windowGrid === true ? { windowGrid: true as const } : {}) };
   }
   if (!infer || slotIneligible(material) || !material.color) return null;

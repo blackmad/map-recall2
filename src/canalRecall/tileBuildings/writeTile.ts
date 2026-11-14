@@ -23,6 +23,7 @@ import {clearNodeTransform, dequantize, flatten, join, prune, quantize, reorder,
 import {MeshoptEncoder, MeshoptDecoder} from 'meshoptimizer';
 import {slotLayerOf, slotTintBytes} from '../look/cityLook.ts';
 import {brickLiftOn} from '../look/brickLift.ts';
+import {ruledSlotSource} from '../look/wallRule.ts';
 import {inferMaterialSlot, isMaterialSlot, linearToSrgbHex} from '../look/materialSlotInference.ts';
 import type {MaterialSlot} from '../look/palette.ts';
 import {metreBoxUvs} from '../../../scripts/canalhouse-recipes/export-glb.ts';
@@ -213,7 +214,7 @@ export function gltfSlotIneligible(m: Material | null, prim: Primitive): string 
 /** Slot + tint of a glTF material: authored extras, else inferred from its name and colour (cityLook `slotForMaterial`). */
 export function gltfSlot(m: Material): {slot: MaterialSlot; tint: string; inferred: boolean; source?: 'measured'} {
   const ex = (m.getExtras() ?? {}) as any;
-  if (isMaterialSlot(ex.materialSlot) && typeof ex.tint === 'string') return {slot: ex.materialSlot, tint: ex.tint, inferred: false, ...(ex.tintSource === 'measured' ? {source: 'measured' as const} : {})};
+  if (isMaterialSlot(ex.materialSlot) && typeof ex.tint === 'string') return {slot: ex.materialSlot, tint: ex.tint, inferred: false, ...(ruledSlotSource(ex.materialSlot, ex.tint, ex.tintSource === 'measured' ? 'measured' : undefined) === 'measured' ? {source: 'measured' as const} : {})};
   const [r, g, b] = m.getBaseColorFactor(), tint = linearToSrgbHex(r, g, b), inf = inferMaterialSlot(m.getName(), tint);
   return {slot: inf.slot, tint: inf.tint, inferred: true};
 }
