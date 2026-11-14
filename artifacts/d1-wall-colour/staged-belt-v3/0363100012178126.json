@@ -1,0 +1,139 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178126",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "neck",
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6b5540"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "the top row has a centre window flanked by two white oval oculi in moulded frames"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the bell gable has a white flat cap, white edge mouldings and a white crest ornament over the gable window"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#5d544c",
+   "estimate": "#65584b",
+   "drawn": "#856e59",
+   "brick": "#6b5540",
+   "captures": [
+    {
+     "hex": "#5d544c",
+     "captured": "2023-01-11T12:47:46.093730Z",
+     "panoId": "TMX7316010203-002926_pano_0007_000032",
+     "pinned": true,
+     "out": "#625950",
+     "gain": 1.123,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.47,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": -0.067,
+     "nbL": 0.518,
+     "dark": false
+    }
+   }
+  }
+ }
+}

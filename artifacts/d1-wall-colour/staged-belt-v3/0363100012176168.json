@@ -1,0 +1,118 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176168",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "stucco",
+   "brick": "#8c7862"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176168.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#534e47",
+   "estimate": "#786d5e",
+   "drawn": "#a6917a",
+   "brick": "#8c7862",
+   "captures": [
+    {
+     "hex": "#534e47",
+     "captured": "2019-11-11T11:54:52.540390Z",
+     "panoId": "TMX7316060226-000478_pano_0002_001208",
+     "pinned": true,
+     "out": "#756e64",
+     "gain": 2.039,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.542,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": 0.01,
+     "nbL": 0.415,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "classical shopfront with pilasters, a moulded fascia and segmental-arched heads over each opening"
+  }
+ ]
+}

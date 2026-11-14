@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176401",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "step",
+    "cornice": "none",
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#4f2d2a"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#2e1e1f",
+   "estimate": "#4c3334",
+   "drawn": "#563330",
+   "brick": "#4f2d2a",
+   "captures": [
+    {
+     "hex": "#2e1e1f",
+     "captured": "2020-01-08T10:37:44.490140Z",
+     "panoId": "TMX7316010203-001543_pano_0000_001750",
+     "pinned": true,
+     "out": "#4b3435",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.352,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": -0.075,
+     "nbL": 0.334,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "white stone festoon panels between the windows and white copings on the gable steps"
+  }
+ ]
+}

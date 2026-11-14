@@ -1,0 +1,105 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177602",
+ "design": {
+  "fronts": [
+   {
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "readBalconies": [],
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#775b3e"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177602.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#927e65",
+   "estimate": "#8f7d68",
+   "drawn": "#947759",
+   "brick": "#775b3e",
+   "captures": [
+    {
+     "hex": "#927e65",
+     "captured": "2023-01-30T11:26:36.911640Z",
+     "panoId": "TMX7316010203-002951_pano_0016_000181",
+     "pinned": true,
+     "out": "#917d64",
+     "gain": 0.985,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.601,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": 0.016,
+     "nbL": 0.59,
+     "dark": false
+    }
+   }
+  }
+ }
+}

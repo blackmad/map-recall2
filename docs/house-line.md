@@ -3437,3 +3437,17 @@ Lane tools are in `scripts/house-specs/wall-sample/`:
 - `restage.ts` re-applies v2 to a staged dir.
 - `row-lab.ts` measures the rows.
 - `sheets.ts` builds the sheets.
+
+### §15 round 2: dark-finish veto, chroma ceiling, belt-wide captures (2026-11-14)
+
+Round 2 makes three changes; the measurements behind each are in `calibrate.ts round2`.
+
+- **Dark-finish veto** (`src/canalRecall/houseSpec/darkFinish.ts`; the receipt is `facts/wallSample.darkFinish`). A front the D1 reader calls dark or black is not lifted: the gain is capped at 1, chroma gets no gain and L never rises above the pinned sample. The trigger is a dark word in the D1 reader's own notes about the front it describes, on a brick or painted-brick finish. Two other sources were measured against the 198 rule-10 photo pands and made |dL| worse, so they are kept as receipts but do not vote:
+  - captures that all agree the front is dark (0.092 → 0.108);
+  - a front darker than its neighbours in the same cut (0.121 → 0.130). Whole rows are dark together.
+
+  The describer source helped a little (0.116 → 0.108, n 19). On the belt, 50 fronts are vetoed; on AH07, 5.
+- **Chroma ceiling.** Gained chroma is now C = 0.04 · tanh(1.8 · C / 0.04). This brings the odd row of Weteringschans from 0.045 to 0.031, against a photo value of 0.036.
+- **No hue correction.** On average, the estimates are 8° redder than the photos. Sunlit captures read yellower (the sun's cast). Weteringschans odd is the opposite case: its photo is pink at hue 42 and the estimate is 61. Taking the hue from the dimmer captures did not help (−11° overall).
+- **Exposure from white or mix** (`gainFrom`). Measured and left off: it moved every page the wrong way.
+- **Belt-wide captures.** `captures.ts` now covers all 851 belt pands, with the full `refs` and the same-cut neighbours (`nb`). 314 have 4 captures; 526 outside the pages are pinned-only, because the panorama host was slow.

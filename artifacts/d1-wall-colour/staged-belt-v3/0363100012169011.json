@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012169011",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 2,
+    "bays": 4,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "speklagen",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 3,
+     "kind": "gabled"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#675946"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#5a5553",
+   "estimate": "#625b50",
+   "drawn": "#827360",
+   "brick": "#675946",
+   "captures": [
+    {
+     "hex": "#5a5553",
+     "captured": "2023-02-27T10:02:53.248670Z",
+     "panoId": "TMX7316010203-002984_pano_0012_000117",
+     "pinned": true,
+     "out": "#605b59",
+     "gain": 1.151,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4f4842",
+     "captured": "2023-01-30T09:27:59.307180Z",
+     "panoId": "TMX7316010203-002950_pano_0000_000243",
+     "out": "#665d55",
+     "gain": 1.687,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b6658",
+     "captured": "2020-04-22T07:37:36.436920Z",
+     "panoId": "TMX7316010203-001666_pano_0000_003539",
+     "out": "#5f5b4e",
+     "gain": 0.782,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#484743",
+     "captured": "2022-04-22T10:38:19.295590Z",
+     "panoId": "TMX7316010203-002538_pano_0000_002453",
+     "out": "#5c5b56",
+     "gain": 1.657,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 4,
+     "maxL": 0.484,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 4,
+     "rel": 0.031,
+     "nbL": 0.409,
+     "dark": false
+    }
+   }
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "small stone crest-shaped ornaments stand over the ground-storey window heads"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the right door axis rises as a narrow stepped gable piece above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched street door in a stone frame in the right axis"
+  }
+ ]
+}
