@@ -1,5 +1,5 @@
 {
-  "toolchain": "7a42f1805a4b966c4b821e4c1882ba67ccaa3ae94481b9065fe0e1ee4f7b48d2",
+  "toolchain": "f76013b69792ea81b657392c338e3bb754599bc551b6aaa7555f0e96b6085575",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -32,6 +32,7 @@
     "artis-entrance": "af6e420f6d7518657b0da30dfd8c538f8cffd75104cb8aee126c9a0fc529aa6f",
     "artis-library": "1feef17e0b58ef35d5e3508e90d93fa8971a8c20fd6bda69c83b37309c93e96a",
     "artis-planetarium": "4ed75a4b5c31e5197d9b252a7c26dd05e362e24b52ab9071ed85293241db5a94",
+    "asscher-diamantslijperij": "a05381b1025cafea87444102ccebafe402a079b6b5c681d2c1477982e6506325",
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "atlanta-stadhouderskade": "c64cc840ea6687b82c178d7266aab3ac7944aa1174420298afd7fa8c10682bc2",
@@ -412,6 +413,7 @@
     "tobacco-theater": "a0f418a5a1d612fdecc8da4a7c127487fc66077ec9bfe09a29260d346008766b",
     "toekomstmuziek": "af177dc62e0535a19c0ad27fbe3b5eca42737fb23365cd49eaad795962feba09",
     "tolhuis-paviljoen": "fa4974e5ad5c2168ae0da586e2b5da595c0821ec0734a5bb71abfb94e92fd179",
+    "tolstraat-160-tempel": "6e6d17879907e4bc6ad5baeee926d011b17c69028c79478c4873787b34e2d5aa",
     "torture-museum": "68d30814de0ce5a8f9b0d0e382eac20a06cc13dbc0f8df1ce2bfda0b33f2d237",
     "tramremise-lekstraat": "e4f856b8c42737c6729e46b7483dad483594d755b75911bb3f48ae599c7ba438",
     "treehouse-ndsm": "e1882b2125ac45ee359855809a1a3511134f889524baee2700c9fa26b896e370",
