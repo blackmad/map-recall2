@@ -207,5 +207,5 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-ruysch-307-393-r1': {white: [163, 164, 165], stripOverDrawn: 0.961},
   'face-nassau-145-152': {white: [186, 181, 148], stripOverDrawn: 1.258},
   'face-clercq-236681': {white: [180, 179, 172], stripOverDrawn: 1.155},
-  'face-bilder-233580-162444': {white: [162, 173, 162], stripOverDrawn: 0.914},
+  'face-bilder-233580-162444': {white: [162, 173, 162], stripOverDrawn: 0.899},
 };
