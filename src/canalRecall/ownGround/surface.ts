@@ -25,6 +25,14 @@ export type HeightFn = (x: number, y: number) => number;
 
 /** Lateral blend from a deck edge back to the ground, metres. */
 export const DECK_BLEND_M = 0.75;
+/**
+ * Beside a way deck's bank-climb ranges (DeckProfile.banks, wayDecks.ts BANK_CLIMB_MAX_M, lane crossing-grade
+ * 2026-11-14) the surface falls from the deck's edge to the relief as an embankment's side: over (deck top - relief) /
+ * BANK_SIDE_GRADE (1:2, the smoothstep's steepest 1:1.33), at least DECK_BLEND_M, at most BANK_SIDE_MAX_M. The relief
+ * there is the elevation model's interpolation under the abutment, metres under the real bank; over the 0.75 m blend the
+ * deck stood on a wall with the ground beside it open.
+ */
+export const BANK_SIDE_GRADE = 0.5, BANK_SIDE_MAX_M = 8;
 /** holeCarry's lateral column spacing and the carried stretch's padding along the deck, metres (bridgeGaps.ts holeCarry). */
 export const HOLE_CARRY_COL_M = 1, HOLE_CARRY_PAD_M = 1;
 /** Longitudinal ease from the relief onto the deck at each deck end, metres. */
@@ -110,6 +118,13 @@ export function clampDeckGrade(s: Float64Array, h: Float64Array, deck: readonly 
 }
 
 const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
+
+/** How far beside a deck's footprint it can reach the surface: its lateral blend, wider beside a bank climb. */
+const deckPad = (p: DeckProfile): number => (p.banks ? BANK_SIDE_MAX_M : DECK_BLEND_M);
+/** Is station `s` inside one of the deck's bank-climb ranges (DeckProfile.banks)? */
+const inBank = (p: DeckProfile, s: number): boolean => !!p.banks && p.banks.some(([a, b]) => s >= a && s <= b);
+/** The lateral blend at station `s`, `rise` metres of deck over the relief (BANK_SIDE_GRADE beside a bank climb). */
+const blendAt = (p: DeckProfile, s: number, rise: number): number => (p.banks && inBank(p, s) ? Math.min(BANK_SIDE_MAX_M, Math.max(DECK_BLEND_M, rise / BANK_SIDE_GRADE)) : DECK_BLEND_M);
 
 export class GroundSurface {
   readonly decks: DeckSurface[] = [];
@@ -240,7 +255,7 @@ export class GroundSurface {
     }
     const deck: DeckSurface = { profile, z, ends, span, ease };
     this.decks.push(deck);
-    const [x0, y0, x1, y1] = profile.bbox, pad = DECK_BLEND_M;
+    const [x0, y0, x1, y1] = profile.bbox, pad = deckPad(profile);
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
       for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
         const k = bucketKey(bx, by);
@@ -256,7 +271,7 @@ export class GroundSurface {
   widenDeck(deck: DeckSurface, edges: { left: Float64Array; right: Float64Array }, bbox: [number, number, number, number]): void {
     deck.profile.edges = edges;
     deck.profile.bbox = bbox;
-    const [x0, y0, x1, y1] = bbox, pad = DECK_BLEND_M;
+    const [x0, y0, x1, y1] = bbox, pad = deckPad(deck.profile);
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
       for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
         const k = bucketKey(bx, by), list = this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!;
@@ -384,17 +399,17 @@ export class GroundSurface {
     let z = g;
     for (const deck of list) {
       const [x0, y0, x1, y1] = deck.profile.bbox;
-      if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
+      const p = deck.profile, pad = deckPad(p);
+      if (x < x0 - pad || x > x1 + pad || y < y0 - pad || y > y1 + pad) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.d === Infinity) continue;
       if (skipUnder && GroundSurface.inUnderStreets(deck, at.s, x, y)) continue;
-      const w = 1 - smoothstep((at.d - at.halfWidth) / DECK_BLEND_M);
-      if (w <= 0) continue;
       // The ease toward each deck end uses this point's own relief, so the deck
       // corners meet sloping ground as exactly as the centreline does.
-      const p = deck.profile;
       const e = GroundSurface.easeWeight(at.s, deck.span, deck.ease);
       const top = e >= 1 ? at.z : g + e * (GroundSurface.deckZ(p, deck.ends, at.s) - g);
+      const w = 1 - smoothstep((at.d - at.halfWidth) / (p.banks ? blendAt(p, at.s, top - g) : DECK_BLEND_M));
+      if (w <= 0) continue;
       // Never pull the surface below the relief: a deck only adds height.
       z = Math.max(z, g + w * (top - g));
     }
@@ -417,12 +432,14 @@ export class GroundSurface {
     let best = 0;
     for (const deck of list) {
       if (family !== undefined && deck.profile.family !== family) continue;
-      const [x0, y0, x1, y1] = deck.profile.bbox;
-      if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
+      const [x0, y0, x1, y1] = deck.profile.bbox, p = deck.profile, pad = deckPad(p);
+      if (x < x0 - pad || x > x1 + pad || y < y0 - pad || y > y1 + pad) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.s < deck.span[0] - 1 || at.s > deck.span[1] + 1) continue;
       if (skipUnder && GroundSurface.inUnderStreets(deck, at.s, x, y)) continue;
-      best = Math.max(best, 1 - smoothstep((at.lateral - at.halfWidth) / DECK_BLEND_M));
+      // Beside a bank climb the weight falls over the embankment's side (blendAt), as the surface does.
+      const blend = p.banks && inBank(p, at.s) ? blendAt(p, at.s, at.z - this.ground(x, y)) : DECK_BLEND_M;
+      best = Math.max(best, 1 - smoothstep((at.lateral - at.halfWidth) / blend));
     }
     return best;
   }

@@ -26,7 +26,9 @@ const cached = (store: GroundStore) => {
 };
 // The before also keeps the railing stubs the plein rule took off (groundCell `plein`, lane fb-bridges 2026-11-13): over
 // BRU0007 they stood across the carriageway, and the pins' before measured part of its gap through them.
-const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false, pleinRails: false });
+// And without the bank climb (wayDecks.ts BANK_CLIMB_MAX_M, lane crossing-grade 2026-11-14): holding the grade to the
+// bank tops closes most of the Kraaienplein and Langbroekdreef gaps on its own, so the before is without both.
+const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false, pleinRails: false, bankClimb: false });
 await on.init(); await dryOn.init(); await off.init();
 const cellOn = cached(on), cellDry = cached(dryOn), cellOff = cached(off);
 let failed = 0;
