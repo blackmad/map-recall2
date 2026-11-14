@@ -107,7 +107,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (!('skip' in c)) {
       const day = (t: string) => String(t).slice(0, 10), seen = new Set([day(r.captured)]);
       for (const p of c.ranked) {
-        if (caps.length >= maxPer) break;
+        if (caps.length >= Math.max(maxPer, old?.captures.length ?? 0)) break; // a redone row keeps as many captures as it had
         if (p.obliquityDeg > 35 || p.distM > maxDist || seen.has(day(p.timestamp))) continue;
         const s = await sampleAt(p.record, r.wall);
         if (!s) continue;

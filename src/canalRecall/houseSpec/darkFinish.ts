@@ -13,11 +13,15 @@
  *  - neighbours in the same cut (one exposure), the front reads darker than the street wall either side of it
  *               (captures.ts `nb`): the median over captures of L(front) - median L(neighbours) under `nbRel`, with the
  *               neighbours themselves reading normal (median L over `nbMinL`), in at least `nbMinN` captures.
- * Calibration (calibrate.ts round2, 198 rule-10 photo pands of the D1 belt pages and Weteringschans; v2 estimate L against
- * the photo's W1 L for the flagged pands, lifted -> vetoed): describer n 19, |dL| 0.116 -> 0.108; neighbours n 6,
- * 0.068 -> 0.059; captures (capMaxL 0.44) n 14, 0.092 -> 0.108, i.e. worse: a pand all of whose captures read dark after
- * the gain is mostly a dark capture set, not a dark wall, so `captures` is kept as a receipt and does not vote
- * (`captureVotes`). The Jev finish judge is not used. Pure: no DOM, no fs.
+ * Calibration (calibrate.ts round2, 198 rule-10 photo pands of the D1 belt pages and Weteringschans, all 851 belt pands with
+ * same-cut neighbours; v2 estimate L against the photo's W1 L for the flagged pands, lifted -> vetoed):
+ *   describer   n 19  |dL| 0.116 -> 0.108  (votes)
+ *   neighbours  n 17  |dL| 0.121 -> 0.130  (nbRel -0.07; at -0.04 n 37, 0.117 -> 0.138): worse. Whole rows are dark together
+ *               (Keizersgracht 5-97, Herengracht 156), so a front darker than its neighbours is mostly shade, a doorway or
+ *               a tree; a receipt, no vote (`neighbourVotes`).
+ *   captures    n 14  |dL| 0.092 -> 0.108  (capMaxL 0.44): worse; captures that all read dark after the gain are mostly a
+ *               dark capture set, not a dark wall; a receipt, no vote (`captureVotes`).
+ * The Jev finish judge is not used. Pure: no DOM, no fs.
  */
 export const DARK_FINISH = {
   /** captures: every exposure-corrected capture under this OKLab L */
@@ -31,6 +35,8 @@ export const DARK_FINISH = {
   minVotes: 1,
   /** whether capture agreement counts as a source (it made |dL| worse on the photos: see the header) */
   captureVotes: false,
+  /** whether a front darker than its neighbours in the same cut counts as a source (worse on the photos: see the header) */
+  neighbourVotes: false,
 };
 export type DarkFinishParams = typeof DARK_FINISH;
 
@@ -97,6 +103,6 @@ export function darkFinish(ev: { describer: string | null; captures: CaptureDark
   const by: DarkFinishFact['by'] = [];
   if (ev.describer) by.push('describer');
   if (ev.captures?.dark && P.captureVotes) by.push('captures');
-  if (ev.neighbours?.dark) by.push('neighbours');
+  if (ev.neighbours?.dark && P.neighbourVotes) by.push('neighbours');
   return { dark: by.length >= P.minVotes, by, ...ev };
 }
