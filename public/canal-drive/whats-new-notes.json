@@ -2,6 +2,22 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-14",
+      "title": "Sharp streets while the city loads",
+      "text": "For the first half minute or so of a ride, the ground under the streets was a blurry smear: a coarse overview picture (one pixel per 3 m) stretched over the sharp street map while the detailed ground loaded. That overview now fades out once you are down at street level, so the crisp map with its quays, tram tracks and crossings shows right away.",
+      "where": [
+        4.90115,
+        52.37665
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-street-fade-before-after.jpg",
+          "alt": "Amsterdam Centraal and the Sint Nicolaas basilica at ride start: left, the blurry overview smeared over the ground; right, the same view with crisp streets, quays and rails",
+          "caption": "Geldersekade at the ride start, 15 s after loading, same pose: before | after."
+        }
+      ]
+    },
+    {
       "date": "2026-11-13",
       "title": "Flats are no longer drawn as grey industrial sheds",
       "text": "Some blocks of flats and listed buildings were drawn as blank grey or cream industrial sheds, because the list of building uses we read had dropped every dwelling. Any building with homes in it, a listed monument, a tower, or a small or tall unmapped building now keeps its ordinary look. About 700 buildings changed, 11 of them in the centre. Some of them still get too many window columns; that is a separate fix.",
