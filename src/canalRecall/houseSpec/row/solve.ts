@@ -31,6 +31,10 @@ export const ROW_EXTRAS_DEFAULT: readonly string[] = ['window-sills', 'white-win
 /** A storey standing behind the cornice when the only height is 3DBAG's (which reads the mansard): its height (m). */
 export const ROOF_STOREY_M = 3.0;
 const HELD_READ = /scaffold|netting|steiger/i;
+/** A reader's `bands` -> the wall extras that draw them (lane R's names): read and drawn, not dropped. */
+export const BAND_EXTRAS: Readonly<Record<string, string[]>> = {
+  storey: ['floor-cornices'], lintel: ['string-courses'], both: ['floor-cornices', 'string-courses'], courses: ['string-courses'], speklagen: ['speklagen'],
+};
 
 // --- inputs -------------------------------------------------------------------------------------------------------------
 
@@ -65,6 +69,9 @@ export interface MemberInput {
   groundOffsetM?: number | null;
   /** 3DBAG height of the wall (m above the pand's ground), when no face measures the cornice. */
   height3dbag?: number | null;
+  /** 3DBAG eaves of the pand (m above its ground, the game's decorated feature: threeBuildingMesh.ts wallTopHeightM), when no
+   *  face measures the cornice: the wall top under a roof storey, so no roof-storey allowance is taken off it. */
+  eaves3dbag?: number | null;
   /** Face statements per front (length 2 for a two-module pand). */
   face?: FaceFront[];
   read?: DescriberAnswer | null;
@@ -146,7 +153,7 @@ export function readHeads(a: DescriberAnswer): RowHeads | undefined {
 }
 export interface ReadValues { [k: string]: unknown }
 /** The class and metre values one reading states, in the row vocabulary (undefined = not stated). */
-export function readValues(a: DescriberAnswer, year: number | null): Partial<Record<RowDesignKey, unknown>> & { dormers?: ReturnType<typeof readDormers>; roofKind?: RowRoofStoreyKind } {
+export function readValues(a: DescriberAnswer, year: number | null): Partial<Record<RowDesignKey, unknown>> & { dormers?: ReturnType<typeof readDormers>; roofKind?: RowRoofStoreyKind; bands?: string[] } {
   const out: ReturnType<typeof readValues> = {};
   if (a.crown && a.crown !== NV) out.crown = CROWN_OF[a.crown];
   if (a.cornice && a.cornice !== NV) out.cornice = a.cornice;
@@ -165,6 +172,7 @@ export function readValues(a: DescriberAnswer, year: number | null): Partial<Rec
   else if (roof === 'attic') out.roofKind = 'attic';
   else if (roof === 'none') out.roofKind = 'none';
   const d = readDormers(a); if (d) out.dormers = d;
+  if (a.bands && BAND_EXTRAS[a.bands]) out.bands = BAND_EXTRAS[a.bands];
   return out;
 }
 
@@ -278,6 +286,7 @@ export function solveRow(input: RowInput): RowRecord {
   for (const e of evs) {
     const s = series.find(x => x.id === e.front.seriesId)!;
     for (const [k, v] of Object.entries(e.read ?? {})) {
+      if (k === 'bands') continue;
       const key = k === 'roofKind' || k === 'dormers' ? 'roofStorey' : k as RowDesignKey;
       const drawn = s.design[key]?.value;
       if (drawn === undefined) continue;
@@ -289,6 +298,12 @@ export function solveRow(input: RowInput): RowRecord {
       overruled.push({ front: e.front.id, field: k, read, drawn: drawnCmp, by: s.design[key].source,
         why: same ? `compatible class (${classKey(cf, read)} ~ ${classKey(cf, drawnCmp)}): the series' word is drawn` : `series ${s.id} (${s.design[key].ref})` });
     }
+    // Per-house reads drawn on the front: its own bands (as extras) and a hoist in its dormer.
+    const ownBands = (e.read?.bands ?? []).filter(b => !s.design.extras.value.includes(b));
+    if (ownBands.length) e.front.overrides.extras = { value: [...s.design.extras.value, ...ownBands], source: 'single-read', ref: `${e.member.pandId} reading: bands ${e.member.read?.bands}` };
+    const rsv = s.design.roofStorey.value;
+    if (e.read?.dormers?.hoist && !rsv.hoist && rsv.dormersPerFront > 0)
+      e.front.overrides.roofStorey = { value: { ...rsv, hoist: true }, source: 'single-read', ref: `${e.member.pandId} reading: ${e.read.dormers.from}` };
     if (e.face) {
       // A face statement for this house that differs from the series (a head variant inside a type) is drawn on the front.
       const fh = e.face.heads;
@@ -322,7 +337,7 @@ function notDrawnOfRead(a: DescriberAnswer): Array<Omit<ReadNotDrawn, 'front'>> 
   const out: Array<Omit<ReadNotDrawn, 'front'>> = [];
   if (Array.isArray(a.balconies) && a.balconies.length) out.push({ field: 'balconies', value: a.balconies, reason: 'not on the row allow-list: a balcony needs a reviewed statement (ROW_FRONT_EXTRAS)' });
   if (Array.isArray(a.bayWindow) && a.bayWindow.length) out.push({ field: 'bayWindow', value: a.bayWindow, reason: 'not on the row allow-list (the oriel dice drew the Kinkerstraat centre strip)' });
-  if (a.bands && a.bands !== NV && a.bands !== 'none') out.push({ field: 'bands', value: a.bands, reason: 'the row design has no band field; the head dressing carries the white course' });
+  if (a.bands && a.bands !== NV && a.bands !== 'none' && !BAND_EXTRAS[a.bands]) out.push({ field: 'bands', value: a.bands, reason: 'the row design has no band field; the head dressing carries the white course' });
   if (a.cornice === 'frieze' || a.cornice === 'attic-frieze') out.push({ field: 'cornice', value: a.cornice, reason: 'drawn as the series cornice; the frieze panels are not drawn' });
   if (a.doorSurround === true) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
   for (const g of a.gaps ?? []) out.push({ field: `gap:${g.component}`, value: g.what, reason: 'kit gap (the kit cannot say it)' });
@@ -386,7 +401,8 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   const readDorm = ev.map(e => e.read?.dormers ? { ...e.read.dormers, count: e.read.dormers.count / e.frontsOfPand } : undefined).filter((d): d is NonNullable<typeof d> => !!d);
   const dormersF = classField('dormers', F('dormers'), readDorm.map(d => d.count), faceRef, readRef, flags, ids, 0, 'period default: no dormers');
   const dkF = classField('dormerKind', F('dormerKind'), readDorm.map(d => d.kind).filter((k): k is RowDormerKind => !!k), faceRef, readRef, flags, ids, undefined);
-  const hoist = readDorm.some(d => d.hoist);
+  // A hoist is per house: the series draws one only when every dormer reading in it names one (fronts below carry their own).
+  const hoist = readDorm.length > 0 && readDorm.every(d => d.hoist);
   const roofKind: RowRoofStoreyKind = kindF!.value === 'none' && (dormersF!.value ?? 0) > 0 ? 'mansard' : kindF!.value;
   const material = F('roofMaterial')[0] ?? 'slate';
   const rs: RowRoofStorey = { kind: roofKind, ...(roofKind === 'mansard' ? { material } : {}), dormersPerFront: dormersF!.value ?? 0, ...(dkF && (dormersF!.value ?? 0) > 0 ? { dormerKind: dkF.value } : {}), ...(hoist ? { hoist: true } : {}) };
@@ -399,6 +415,10 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   else if (rowMeasured.length) {
     out.corniceTopM = field(r2(median(rowMeasured)), 'face-intent', `${faceRef}: the row line (median of the row's measured cornice tops; this series has none)`, { samples: rowMeasured });
     flags.push({ kind: 'no-reading', field: 'corniceTopM', fronts: ids, detail: 'no measured cornice in the series: the row line is drawn' });
+  } else if (ev.some(e => e.member.eaves3dbag)) {
+    const h = ev.map(e => e.member.eaves3dbag).filter((v): v is number => !!v);
+    out.corniceTopM = field(r2(median(h)), h.length >= 2 ? 'series-consensus' : 'single-read', '3DBAG eaves median (the decorated feature\'s wall top); no measured cornice', { samples: h });
+    flags.push({ kind: 'no-reading', field: 'corniceTopM', fronts: ids, detail: `no measured cornice line: ${out.corniceTopM.ref}` });
   } else {
     const h = ev.map(e => e.member.height3dbag).filter((v): v is number => !!v);
     if (h.length) {
@@ -407,7 +427,10 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
       flags.push({ kind: 'no-reading', field: 'corniceTopM', fronts: ids, detail: `no measured cornice line: ${out.corniceTopM.ref}` });
     } else out.corniceTopM = field(null, 'period-default', 'no measurement: the renderer takes the lid at the storeys');
   }
-  out.extras = field([...ROW_EXTRAS_DEFAULT], 'period-default', 'rowFront.ts ROW_FRONT_EXTRAS');
+  const bandReads = ev.filter(e => e.read).map(e => e.read!.bands ?? []);
+  const shared = bandReads.length >= 2 ? bandReads[0].filter(b => bandReads.every(r => r.includes(b))) : [];
+  out.extras = shared.length ? field([...ROW_EXTRAS_DEFAULT, ...shared], 'series-consensus', `rowFront.ts ROW_FRONT_EXTRAS + bands read on every front (${readRef})`)
+    : field([...ROW_EXTRAS_DEFAULT], 'period-default', 'rowFront.ts ROW_FRONT_EXTRAS');
   if (!out.storeys) out.storeys = field(4, 'period-default', 'period default');
   if (!out.bays) out.bays = field(3, 'period-default', 'period default');
   if (!out.heads) out.heads = field(PERIOD.heads!, 'period-default', 'period default');

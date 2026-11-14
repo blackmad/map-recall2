@@ -69,7 +69,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const cut = cuts?.rows.find(r => r.pandId === pid);
     return {
       pandId: pid, label: sp?.label ?? `${def.title.split(' ')[0]} (pand ${md.label})`, numbers: sp?.numbers ?? [], built: sp?.buildYear ?? null,
-      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM,
+      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
       height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null),
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
     };
