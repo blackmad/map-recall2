@@ -522,7 +522,8 @@ function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
   }
   p.fill('ink', frame);
   if (p.cartoon && (kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe')) ctx.fillRect(x0, y0 + Math.round(gh * 0.22), gw, 6);
-  if (kind === 'shopCafe') { p.fill('ink', p.cartoon ? '#ece6da' : '#9c8f7c'); ctx.fillRect(x0, y0 + Math.round(gh * 0.62), gw, Math.round(gh * 0.38)); }
+  // Round 3c (lane retail-look): the café's half-curtain in a dark linen; the pale #9c8f7c read as a beige board in every frame.
+  if (kind === 'shopCafe') { p.fill('ink', p.cartoon ? '#ece6da' : '#5e564c'); ctx.fillRect(x0, y0 + Math.round(gh * 0.62), gw, Math.round(gh * 0.38)); }
   if (bar) {
     // Small panes: muntins over the whole glass, a transom bar, and an inner shadow so the glass reads set back.
     p.fill('ink', frame);

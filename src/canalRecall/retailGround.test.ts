@@ -2,10 +2,9 @@
 // byte-identity when off. `node --import tsx --test src/canalRecall/retailGround.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
-import { FRONT, MIN_LETTER_M, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
-import { wordRuns } from './blockLetters.js';
-import { LOGOS, LOGO_GRID, logoFor, retailLogoLayer } from './retailLogos.js';
+import { DARK_PUI_PAINTS, RETAIL_TEMPLATES, TEMPLATE_LOOKS, evidencelessPuiPaint, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
+import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
+import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
 import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
 import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
@@ -75,26 +74,37 @@ test('sign words fold to the block alphabet', () => {
   assert.equal(signText('BAKKERIJ BASAK'), 'BASAK');
 });
 
-test('round 3b lettering: no glyph run wider than its fascia, strokes legible at 72 deg from 12 m, else a plain board', () => {
-  // A 6.5 cm stroke is 3.4 css px at the acceptance lens; 5-6 cm strokes broke into dotted glyphs.
-  assert.ok(strokePx(MIN_LETTER_M) >= 3, `${strokePx(MIN_LETTER_M)} px`);
-  const names = ['VERHAGEN', 'POUW', 'KOEKEMANNETJE', 'CUCKOO S NEST', 'VAN DER LINDE', 'A', 'J J WESSELMAN', '420'];
-  for (const name of names) for (let avail = 0.2; avail <= 14; avail += 0.15) for (const maxCell of [0.065, 0.075, 0.1]) {
-    const fit = fitWord(name, avail, maxCell);
-    if (!fit) { assert.ok(wordRuns(name.split(' ')[0]).width * MIN_LETTER_M > avail - 1e-6, `${name} @${avail}: a board though the first word fits`); continue; }
-    const { runs, width } = wordRuns(fit.text);
+test('round 3c lettering: one textured bold-sans quad per letter, never wider than its fascia, legible at 72 deg from 12 m, else a plain board', () => {
+  // The stem of the smallest letter (0.35 m quad) is 5 cm: 2.6 css px at the acceptance lens, a filtered texture stroke.
+  assert.ok(strokePx(MIN_LETTER_H * LETTER_STEM) >= 2.5, `${strokePx(MIN_LETTER_H * LETTER_STEM)} px`);
+  const names = ['VERHAGEN', 'POUW', 'KOEKEMANNETJE', 'CUCKOO S NEST', 'VAN DER LINDE', 'A', 'J J WESSELMAN', '420', 'TASHI DELEG'];
+  for (const name of names) for (let avail = 0.2; avail <= 14; avail += 0.15) {
+    const fit = fitWord(name, avail, MAX_LETTER_H);
+    if (!fit) { assert.ok(glyphLayout(name.split(' ')[0]).width * MIN_LETTER_H > avail - 1e-6, `${name} @${avail}: a board though the first word fits`); continue; }
     assert.ok(name.startsWith(fit.text), `${name}: ${fit.text} is a leading run of whole words`);
-    assert.ok(fit.cell >= MIN_LETTER_M - 1e-9 && fit.cell <= maxCell + 1e-9, `${name} @${avail}: cell ${fit.cell}`);
-    assert.ok(width * fit.cell <= avail + 1e-9, `${name} @${avail}: ${width * fit.cell} m of letters on ${avail} m`);
-    for (const r of runs) assert.ok(r.c1 <= width && r.c0 >= 0);
+    assert.ok(fit.heightM >= MIN_LETTER_H - 1e-9 && fit.heightM <= MAX_LETTER_H + 1e-9, `${name} @${avail}: ${fit.heightM} m letters`);
+    assert.ok(fit.widthM <= avail + 1e-9, `${name} @${avail}: ${fit.widthM} m of letters on ${avail} m`);
   }
-  // Every template front: the lettering sits inside its fascia on walls from a door's width to a long shop.
+  // Every glyph quad's uv lies in the lettering cell, and letters advance left to right.
+  const cell = glyphCellBox(), { quads } = glyphLayout('TASHI DELEG 420');
+  assert.equal(quads.length, 13);
+  for (const [i, q] of quads.entries()) {
+    assert.ok(q.rect[0] >= cell.x - 1e-9 && q.rect[2] <= cell.x + cell.w + 1e-9 && q.rect[1] >= 1 - (cell.y + cell.h) - 1e-9 && q.rect[3] <= 1 - cell.y + 1e-9, q.ch);
+    if (i) assert.ok(q.a0 >= quads[i - 1].a1 - 1e-9);
+  }
+  // Every template front: letters (layer 99) only with the layer, inside the fascia, letter colour over board colour.
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
   for (const t of RETAIL_TEMPLATES) for (const L of [2.2, 3.4, 5, 9]) {
-    const plain = retailFrontTris({ template: t, seed: 'x' }, e, 0.3, 0.3 + L, 0, 3.6).length;
-    const named = retailFrontTris({ template: t, seed: 'x', word: 'KOEKEMANNETJE' }, e, 0.3, 0.3 + L, 0, 3.6);
-    for (const tri of named.slice(plain)) for (const [x] of tri.p) assert.ok(x >= 0.3 - 1e-6 && x <= 0.3 + L + 1e-6, `${t} on ${L} m: a letter at ${x}`);
+    const look = TEMPLATE_LOOKS[t];
+    const named = retailFrontTris({ template: t, seed: 'x', word: 'KOEKEMANNETJE', letters: 99 }, e, 0.3, 0.3 + L, 0, 3.6).filter(tri => tri.layer === 99);
+    assert.equal(retailFrontTris({ template: t, seed: 'x', word: 'KOEKEMANNETJE' }, e, 0.3, 0.3 + L, 0, 3.6).filter(tri => tri.layer === 99).length, 0);
+    for (const tri of named) {
+      assert.equal(tri.hex, look.letters); assert.equal(tri.accentHex, look.fascia);
+      for (const [x] of tri.p) assert.ok(x >= 0.5 - 1e-6 && x <= 0.1 + L + 1e-6, `${t} on ${L} m: a letter at ${x}`);
+    }
   }
+  // TASHI DELEG (Utrechtsestraat, the round 3b dotted board): on its 4.6 m board it letters whole.
+  assert.equal(fitWord('TASHI DELEG', 4.6 - 0.4 - 0.28, MAX_LETTER_H)?.text, 'TASHI DELEG');
 });
 
 test('every template builds a front on its wall, within the plot line rules', () => {
@@ -178,7 +188,7 @@ test('round 3 doors: one door per front, always in a recess at an end inside the
   assert.ok(Math.abs(span.a0 - FRONT.postM) < 1e-9 || Math.abs(span.a1 - (6 - FRONT.postM)) < 1e-9, 'at an end, inside the post');
   const back = untraced.filter(t => t.p.some(p => outOf(p) < -0.01));
   assert.ok(back.length >= 10 && back.every(t => t.p.every(p => p[0] >= span.a0 - 1e-6 && p[0] <= span.a1 + 1e-6)), 'the recess only inside the door span');
-  assert.ok(untraced.some(t => t.hex === '#b8b0a0'), 'a door handle');
+  assert.ok(untraced.some(t => t.hex === glassTone('#4a4642', 0.6)), 'a glazed door leaf');
   assert.equal(retailDoor({ template: 'redLight', seed: 'x' }, 0, 6), null, 'window rows have no door');
   const recessed = retailFrontTris({ template: 'doner', seed: 'x', door: { a0: 2.5, a1: 3.5, depthM: 0.5 } }, wall, 0, 6, 0, 3.4);
   const inside = recessed.filter(t => t.p.some(p => outOf(p) < -0.01));
@@ -251,8 +261,8 @@ test('tobacco: sigarenwinkels from shop=tobacco, unbranded newsagents and tobacc
   const tris = retailFrontTris({ template: 'tobacco', seed: 't' }, wall, 0, 6, 0, 3.4);
   const cards = new Set(tris.filter(t => t.lit && Math.abs(outOf(t.p[0])) < 0.05 && t.p[0][2] < 2.5).map(t => t.hex));
   assert.ok(cards.size >= 6, `cluttered placards (${cards.size} colours)`);
-  const handle = tris.find(t => t.hex === '#b8b0a0')!;
-  assert.ok(handle.p.every(p => p[0] <= 0.8 + 1e-6 || p[0] >= 6 - 0.8 - 1e-6), 'a door 0.8 m wide');
+  const leaf = tris.find(t => t.hex === glassTone('#4a4642', 0.6))!;
+  assert.ok(leaf.p.every(p => p[0] <= FRONT.postM + 0.8 + 1e-6 || p[0] >= 6 - FRONT.postM - 0.8 - 1e-6), 'a door 0.8 m wide');
 });
 
 // Lane retail-look-20261114 (David: shop ground floors "look very cheap and out of place"): the fronts on the retail-look
@@ -310,4 +320,20 @@ test('round 3b hosting: HEMA Ferdinand Bolstraat 93A spans the steps of its stre
   // A plain rectangle's wall stays itself.
   const box = ringEdges([[0, 0], [10, 0], [10, 8], [0, 8], [0, 0]]), r = steppedRun(box[0], box);
   assert.equal(r.len, 10); assert.equal(r.parts.length, 1);
+});
+
+test('round 3c cost: panes are one interior quad of the shop cell; every template front within 140 tris on 6 m but the props', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 }, rect = [0.08, 0.155, 0.92, 0.56] as const;
+  for (const t of RETAIL_TEMPLATES) {
+    const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
+    const props = ['bike', 'greengrocer', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
+    if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
+    if (!props) assert.ok(tris.some(tri => tri.layer === 7) && !tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the shop cell's interior, not flat goods`);
+  }
+});
+
+test('round 3c paint: a guessed pale pui goes dark; dark and mid paints stay', () => {
+  assert.ok((DARK_PUI_PAINTS as readonly string[]).includes(evidencelessPuiPaint('#ece6e0', 'NL.IMBAG.Pand.1')));
+  for (const hex of ['#7a4a38', '#2a2a2c', '#3a3c3c', '#8a8a86', '#3a4f7a']) assert.equal(evidencelessPuiPaint(hex, 'x'), hex);
+  assert.equal(evidencelessPuiPaint('#ece6e0', 'a'), evidencelessPuiPaint('#ece6e0', 'a'));
 });

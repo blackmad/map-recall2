@@ -2,11 +2,11 @@
 // or the business's lettering, window content just proud of the glass, and what stands on the pavement, built on the
 // street wall nearest the POI. Flat-colour triangles in the sign layer (threeBuildingMesh SignTri), so no texture
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
-import { wordRuns } from './blockLetters.js';
+import { glyphLayout } from './retailLogos.js';
 import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
 export type V3 = [number, number, number];
-export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number };
+export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number; accentHex?: string };
 /** The wall: origin, unit direction along it, outward normal (x along, y out, z up). */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number };
 
@@ -88,6 +88,18 @@ class Builder {
     this.face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1], hex, lit);
     if (bottom) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1], hex, lit);
   }
+  /** Round 3c: a horizontal member drawn as the faces a rider sees: its front and its top (a sill, under the eye) or its
+   *  bottom (a transom bar, bead or cap, over it), with its ends only when asked. */
+  slab(a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, seen: 'top' | 'bottom', ends = false, lit?: boolean): void {
+    const P = this.P.bind(this), N = this.N.bind(this);
+    this.face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0), hex, lit);
+    const z = seen === 'top' ? z1 : z0;
+    this.face([P(a0, o0, z), P(a1, o0, z), P(a1, o1, z), P(a0, o1, z)], [0, 0, seen === 'top' ? 1 : -1], hex, lit);
+    if (ends) {
+      this.face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0), hex, lit);
+      this.face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0), hex, lit);
+    }
+  }
   /** A slim upright (mullion, post): its front and both ends, no top (nothing sees it under the fascia). */
   fin(a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string): void {
     const P = this.P.bind(this), N = this.N.bind(this);
@@ -101,40 +113,46 @@ class Builder {
     this.face([this.P(a0, 0.02, z0), this.P(a1, 0.02, z0), this.P(a1, out, z1), this.P(a0, out, z1)], [n[0] / l, n[1] / l, n[2] / l], hex);
     this.panel(a0, a1, out, z1 - 0.18, z1, hex);
   }
-  /** The block-letter word centred on [a0, a1] at height zMid, cells of at most `maxCell` m; the shortest form that fits
-   *  at legible size (fitWord), else nothing: a plain board. */
-  word(text: string, a0: number, a1: number, zMid: number, o: number, maxCell: number, hex: string, lit: boolean): void {
-    const fit = fitWord(text, a1 - a0, maxCell);
+  /** The word centred on [a0, a1] at height zMid, letters at most `maxH` m tall, from the logo layer's lettering cell
+   *  (retailLogos.ts glyphLayout); the shortest form that fits at legible size (fitWord), else nothing: a plain board. */
+  word(text: string, a0: number, a1: number, zMid: number, o: number, maxH: number, hex: string, board: string, lit: boolean, layer: number | undefined): void {
+    if (layer === undefined) return;
+    const fit = fitWord(text, a1 - a0, maxH);
     if (!fit) return;
-    const { runs, width } = wordRuns(fit.text), cell = fit.cell;
-    const w0 = (a0 + a1) / 2 - (width * cell) / 2;
-    for (const r of runs) this.panel(w0 + r.c0 * cell, w0 + r.c1 * cell, o, zMid + (3.5 - r.row - 1) * cell, zMid + (3.5 - r.row) * cell, hex, lit);
+    const { quads, width } = glyphLayout(fit.text), h = fit.heightM, w0 = (a0 + a1) / 2 - (width * h) / 2;
+    for (const q of quads) {
+      const first = this.out.length;
+      this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer, q.rect);
+      for (const t of this.out.slice(first)) { t.hex = hex; t.accentHex = board; if (!lit) delete t.lit; }
+    }
   }
 }
 
 /**
- * Round 3b (lane retail-look-20261114): the smallest letter cell a fascia draws. One block letter's stroke is one cell;
- * at the first-person lens (72 deg over 900 css px: a focal of 619 px) from 12 m a 6.5 cm stroke is 3.4 css px. The
- * Utrechtsestraat frames broke 5-6 cm strokes into dotted glyphs (thin quads alias without MSAA), so letters are drawn
- * a little larger than a real fascia's and a name that cannot reach this size is not lettered at all.
+ * Round 3c (lane retail-look-20261114): fascia letters are one textured quad each from a bold sans in the logo layer
+ * (retailLogos.ts GLYPH_*), replacing the 5 x 7 block letters whose strips broke into dot matrices at ride distance.
+ * A letter quad's height: the caps are 0.725 of it and a stem 0.142 of it. At the smallest, 0.35 m, a stem is 5 cm,
+ * 2.6 css px at the first-person lens (72 deg, 900 px) from 12 m. A name that cannot reach it is not lettered at all.
  */
-export const MIN_LETTER_M = 0.065;
-/** The largest cell: seven rows fill 0.53 m of the 0.6 m board. */
-export const MAX_LETTER_M = 0.075;
+export const MIN_LETTER_H = 0.35;
+/** The tallest letter quad: caps 0.36 m on the 0.6 m board. */
+export const MAX_LETTER_H = 0.5;
+/** A stem's width as a share of the letter quad's height (Helvetica Neue Bold at the atlas's size). */
+export const LETTER_STEM = 0.142;
 /** CSS px of a `m`-metre stroke at the first-person lens from `distM` (the acceptance pose: 72 deg, 900 px, 12 m). */
 export const strokePx = (m: number, distM = 12, vfovDeg = 72, heightPx = 900) => m * (heightPx / 2 / Math.tan(vfovDeg * Math.PI / 360)) / distM;
 
 /**
- * The lettering a fascia `availM` wide draws: the whole text if it fits at a cell of at least MIN_LETTER_M, else the
- * longest leading run of whole words that does, else null (a plain board: broken letters read worse than none).
+ * The lettering a fascia `availM` wide draws: the whole text if it fits at a letter height of at least MIN_LETTER_H,
+ * else the longest leading run of whole words that does, else null (a plain board: broken letters read worse than none).
  */
-export function fitWord(text: string, availM: number, maxCell: number): { text: string; cell: number } | null {
+export function fitWord(text: string, availM: number, maxH: number): { text: string; heightM: number; widthM: number } | null {
   const words = text.trim().split(/\s+/).filter(Boolean);
   for (let k = words.length; k >= 1; k--) {
-    const t = words.slice(0, k).join(' '), { runs, width } = wordRuns(t);
-    if (!runs.length) continue;
-    const cell = Math.min(maxCell, availM / Math.max(1, width));
-    if (cell >= MIN_LETTER_M - 1e-9) return { text: t, cell };
+    const t = words.slice(0, k).join(' '), { quads, width } = glyphLayout(t);
+    if (!quads.length || width <= 0) continue;
+    const heightM = Math.min(maxH, availM / width);
+    if (heightM >= MIN_LETTER_H - 1e-9) return { text: t, heightM, widthM: width * heightM };
   }
   return null;
 }
@@ -299,8 +317,9 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
   if (!look.pavement) return;
   if (look.pavement === 'crates') {
     for (let a = a0 + 0.3, k = 0; a < a1 - 0.6; a += 0.62, k++) {
-      b.box(a, a + 0.52, 0.15, 0.75, base, base + 0.62, '#7a5a3a');
-      b.box(a + 0.02, a + 0.5, 0.17, 0.73, base + 0.62, base + 0.7, PRODUCT[Math.floor(hash01(`${seed}:cr${k}`) * PRODUCT.length)]);
+      // Round 3c (cost): front and top of each crate and of the produce in it.
+      b.slab(a, a + 0.52, 0.15, 0.75, base, base + 0.62, '#7a5a3a', 'top');
+      b.slab(a + 0.02, a + 0.5, 0.17, 0.73, base + 0.62, base + 0.7, PRODUCT[Math.floor(hash01(`${seed}:cr${k}`) * PRODUCT.length)], 'top');
     }
   } else if (look.pavement === 'racks' || look.pavement === 'boards') {
     for (const a of [a0 + 0.4, a1 - 1.0]) if (a + 0.6 <= a1 && a >= a0) {
@@ -311,8 +330,10 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
     // A row of bikes parked nose-in to the wall (side-on to the street): wheel discs as thin boxes, a top tube.
     for (let a = a0 + 0.3, k = 0; a < a1 - 0.3; a += 0.55, k++) {
       const hex = ['#1c1c1c', '#2a3a48', '#7a1f2b', '#2f5d3a'][k % 4];
-      b.box(a, a + 0.05, 0.25, 0.9, base + 0.55, base + 0.6, hex);
-      for (const o of [0.35, 0.8]) b.box(a - 0.01, a + 0.06, o - 0.3, o + 0.3, base, base + 0.62, '#2a2a2a');
+      // Round 3c (cost): the wheels as their two discs (faces along the street), the top tube as its top.
+      const P = b.P.bind(b), N = b.N.bind(b);
+      b.face([P(a, 0.25, base + 0.6), P(a + 0.05, 0.25, base + 0.6), P(a + 0.05, 0.9, base + 0.6), P(a, 0.9, base + 0.6)], [0, 0, 1], hex);
+      for (const o of [0.35, 0.8]) for (const [x, n] of [[a - 0.01, -1], [a + 0.06, 1]] as const) b.face([P(x, o - 0.3, base), P(x, o + 0.3, base), P(x, o + 0.3, base + 0.62), P(x, o - 0.3, base + 0.62)], N(n, 0, 0), '#2a2a2a');
     }
   }
 }
@@ -324,6 +345,11 @@ export type RetailFrontInput = {
   door?: { a0: number; a1: number; depthM: number };
   /** The chain's logo: the logo layer and its rect there (retailLogos.ts). */
   logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number };
+  /** Round 3c: the logo layer, whose lettering cell letters the name; absent: no lettering (a plain board). */
+  letters?: number;
+  /** Round 3c: the building's shop cell and its glass's uv rect: each pane's interior is one quad of it. Absent: the
+   *  flat-colour goods. */
+  interior?: { layer: number; rect: readonly [number, number, number, number] };
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -351,13 +377,12 @@ export function retailDoor(input: Pick<RetailFrontInput, 'template' | 'door' | '
   return atStart ? { a0: s0 + FRONT.postM, a1: s0 + FRONT.postM + w, depthM: FRONT.recessM } : { a0: s1 - FRONT.postM - w, a1: s1 - FRONT.postM, depthM: FRONT.recessM };
 }
 
-/** A shop door: a slim frame round a tall glass leaf over a kick plate, and a bar handle; at `o` from the wall. */
+/** A shop door: a slim frame round a tall glass leaf over a kick plate; at `o` from the wall. */
 function doorUnit(b: Builder, d0: number, d1: number, o: number, base: number, head: number, frame: string): void {
   const f = 0.06;
   b.panel(d0, d1, o, base, head, frame);
   b.panel(d0 + f, d1 - f, o + 0.01, base + 0.28, head - f, glassTone('#4a4642', 0.6));
-  b.panel(d0 + f, d1 - f, o + 0.014, base + 0.28 + (head - base) * 0.55, head - f, '#5c6468');
-  b.panel(d1 - f - 0.12, d1 - f - 0.09, o + 0.012, base + 0.85, base + 1.35, '#b8b0a0');
+  // Round 3c (cost): the leaf's reflection and the handle are gone; in the recess's shadow they read as nothing.
 }
 
 /** A hex a step darker (k < 1) or lighter (k > 1), kept in gamut. */
@@ -400,14 +425,16 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const frame = look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
   const timber = look.surround ?? frame, riser = look.surround ?? shadeHex(frame, 1.12);
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
-  b.box(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, look.lit, true);
-  b.box(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, look.cap ?? shadeHex(look.fascia, 0.72), false, true);
-  b.box(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, false, true);
+  // Round 3c (cost): each member draws the faces a rider sees (Builder.slab): the board and cap their front, underside
+  // and the board's ends, the cap and bead their front and underside.
+  b.slab(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, 'bottom', true, look.lit);
+  b.slab(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, look.cap ?? shadeHex(look.fascia, 0.72), 'bottom');
+  b.slab(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, 'bottom');
   const word = look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
   if (input.logo) {
     const hM = FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
     b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
-  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_M, look.letters, look.lit);
+  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_H, look.letters, look.fascia, look.lit, input.letters);
   const windows = look.content === 'redGlow';
   // End posts: the pui's frame against the neighbours, in the timber or the frame colour.
   if (!windows) { b.fin(s0, s0 + FRONT.postM, 0, FRONT.frameOutM, base, puiTop, timber); b.fin(s1 - FRONT.postM, s1, 0, FRONT.frameOutM, base, puiTop, timber); }
@@ -423,8 +450,8 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     b.face([b.P(d0, -d, base + 0.02), b.P(d1, -d, base + 0.02), b.P(d1, 0, base + 0.02), b.P(d0, 0, base + 0.02)], [0, 0, 1], '#4a4540');
     doorUnit(b, d0, d1, -d, base + 0.02, head, frame);
     // Frame round the opening on the glass line, and the transom light over it.
-    b.fin(d0 - FRONT.mullionM, d0, 0, FRONT.frameOutM - 0.02, base, puiTop, frame);
-    b.fin(d1, d1 + FRONT.mullionM, 0, FRONT.frameOutM - 0.02, base, puiTop, frame);
+    b.panel(d0 - FRONT.mullionM, d0, FRONT.frameOutM - 0.02, base, puiTop, frame);
+    b.panel(d1, d1 + FRONT.mullionM, FRONT.frameOutM - 0.02, base, puiTop, frame);
   }
   // The glass either side of the door: riser, sill, glass to the transom bar, mullions, the transom lights above.
   const zr = base + FRONT.riserM;
@@ -432,23 +459,32 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     : door ? [[s0 + FRONT.postM, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, s1 - FRONT.postM]] : [[s0 + FRONT.postM, s1 - FRONT.postM]];
   const lightHex = glassTone('#7f8b93', 0.5);
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
-  if (door && puiTop - head > 0.25) b.box(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame);
+  if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
   for (const [c0, c1] of segs) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
     if (windows) { content(b, look, c0, c1, zr, puiTop - FRONT.headGapM, input.seed); continue; }
     const panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
-    // Stall riser: a sunk panel per pane in the riser colour, a sill over it.
+    // Stall riser in the riser colour, a sill over it (round 3c: one riser panel; the per-pane sunk panels were 2 tris a
+    // pane nobody reads at ride distance).
     b.panel(c0, c1, 0.015, base, zr, riser);
-    for (let k = 0; k < panes; k++) b.panel(c0 + k * pw + 0.07, c0 + (k + 1) * pw - 0.07, 0.025, base + 0.09, zr - 0.1, shadeHex(riser, 0.85));
-    b.box(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame);
-    glass(b, look, c0, c1, zr, head, input.seed);
+    b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
+    if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
+      // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
+      // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
+      for (let k = 0; k < panes; k++) {
+        const first = b.out.length;
+        b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
+        for (const t of b.out.slice(first)) delete t.lit;
+      }
+    } else glass(b, look, c0, c1, zr, head, input.seed);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
     if (hasLights) {
-      b.box(c0, c1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame);
+      b.slab(c0, c1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
       b.panel(c0, c1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
     }
-    for (let k = 1; k < panes; k++) { const a = c0 + k * pw; b.fin(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, 0, FRONT.frameOutM - 0.03, zr, puiTop, frame); }
+    // Mullions: their fronts only (round 3c: the 6 cm ends were 4 tris each).
+    for (let k = 1; k < panes; k++) { const a = c0 + k * pw; b.panel(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, FRONT.frameOutM - 0.03, zr, puiTop, frame); }
     // Transom lights carry their own glazing bars (two per pane) on cafés and small-paned fronts.
     if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
