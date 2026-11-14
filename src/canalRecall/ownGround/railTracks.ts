@@ -28,7 +28,7 @@
 
 import earcut from 'earcut';
 import { emptyMesh, vertex, vertexNormals, type MeshArrays } from './drape.js';
-import { levelAt, RAIL_GRADE, type WayLevel } from './railProfile.js';
+import { ABUTMENT_M, levelAt, RAIL_GRADE, type WayLevel } from './railProfile.js';
 import { inSpan, type RailSpan } from './railSpans.js';
 import { railBridgeMesh, type RailBridgeStats, type RailDeckStation, type UnderKind } from './railBridge.js';
 import type { HeightFn, Vec2 } from './surface.js';
@@ -230,8 +230,10 @@ export interface RailBuildInput {
   inCell: (x: number, y: number) => boolean;
   /** The riding surface (land grid, decks). */
   height: HeightFn;
-  /** Does this piece of track cross a street at grade (a level crossing): flat bed, rails only, at both its ends. */
-  atGrade?: (a: Vec2, b: Vec2) => boolean;
+  /** Is this point a bridge way's end (a deck meets the track there)? A flat end there keeps the bed's lift. */
+  bridgeEnd?: (p: Vec2) => boolean;
+  /** Does this piece of track cross a street at grade (a level crossing): flat bed, rails only, at both its ends. `za`, `zb`: the bed's floor (the profile's level) at its ends, so a street far under it is not a crossing (UNDER_STREET_M). */
+  atGrade?: AtGradeTest;
   /** Far build (LOD 1): coarser pieces, no rails. */
   far?: boolean;
   /** Draw the rails (default true; off far away on touch devices). */
@@ -335,7 +337,36 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const decked = (i: number) => bridge || (!!onSpan && onSpan[i]);
     const z = level ? along.map(s => levelAt(level, s)) : way.bridge ? ground.map((g, i) => Math.max(g, ground[0] + (ground[n - 1] - ground[0]) * (total > 0 ? along[i] / total : 0))) : ground;
     const flat = pts.map(() => false);
-    if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && (own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
+    // A flat station's floor: the relief under it, or near a deck's end the street's level where that stands higher
+    // (lane R2-A: the Cornelis Lelylaan tram in its median, the carriageway beside it on the embankment at +3.8 and the fill under the viaduct's end at +0.2 under the track; the bed fell 1.5 m onto the fill).
+    const flatZ = ground.slice();
+    // Only near a deck's end: elsewhere the street's sampled level is no better than the relief (the Radarweg trench's
+    // yard crossings took a level 1.4 m over their bed and lifted the track under the road bridge).
+    const streetLevel = (i: number, g: boolean | number, deck: boolean) => { if (deck && typeof g === 'number' && g > ground[i]) flatZ[i] = Math.max(flatZ[i], g); };
+    // Within ABUTMENT_M of a deck's end the relief and the streets beside it are AHN's fill under the deck (lane R2-A,
+    // the Cornelis Lelylaan carriageway's own fill at +2.5 beside the tram's +3.7): a street under
+    // the bed's level there is not crossed at grade (more than DECK_END_FLAT_M: a crossing at a deck's end is level with
+    // the deck); the profile's level (held to the deck, railProfile.ts abutments) stands, and a crossing there takes the
+    // street's level wherever it stands over the relief under the track.
+    const deckAt = [0, n - 1].filter(i => !way.bridge && !!input.bridgeEnd?.(pts[i])).map(i => along[i]);
+    const nearDeck = (i: number) => deckAt.some(s => Math.min(Math.abs(along[i] - s), Math.abs(along[i + 1] - s)) <= ABUTMENT_M);
+    const grade = (i: number): boolean | number => {
+      // The floor levels go to the test (a street far under them passes under) only on an island levelled with the
+      // decks and near a deck's end: elsewhere a profile lifted 2.5 m over a street at grade is the profile's error
+      // (the Sloterdijk trench's service roads, the Kranenbergpad siding), and the street wins.
+      const guard = !!level?.island || nearDeck(i);
+      const g = input.atGrade!(pts[i], pts[i + 1], guard ? z[i] : undefined, guard ? z[i + 1] : undefined);
+      return g !== false && typeof g === 'number' && nearDeck(i) && Math.min(z[i], z[i + 1]) - g > DECK_END_FLAT_M ? false : g;
+    };
+    if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) {
+      if (onSpan && onSpan[i] && onSpan[i + 1]) continue;
+      if (!(own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1]))) continue;
+      const g = grade(i);
+      if (g === false) continue;
+      flat[i] = flat[i + 1] = true;
+      const deck = nearDeck(i);
+      streetLevel(i, g, deck); streetLevel(i + 1, g, deck);
+    }
     if (onSpan) for (let i = 0; i < n; i++) if (onSpan[i]) flat[i] = false;
     // Crossing ramps (lane rails-uncover 2026-11-10): a level crossing pulls the bed onto the street (`flat`); the pieces
     // either side come down to it at the track's grade (RAIL_GRADE) instead of in one 6 m piece, which drew a V up to
@@ -344,13 +375,13 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     // still keeps the bed over the land along it.
     if (!way.bridge && input.atGrade && input.ramps !== false && !input.legacy) {
       const src: number[] = [];
-      for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && input.atGrade(pts[i], pts[i + 1])) src.push(i, i + 1);
+      for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && grade(i) !== false) src.push(i, i + 1);
       if (src.length) {
         const g = RAIL_GRADE[way.kind];
         for (let i = 0; i < n; i++) {
           if (flat[i] || (onSpan && onSpan[i])) continue;
           let cap = Infinity;
-          for (const j of src) { const d = Math.abs(along[i] - along[j]); if (d <= CROSSING_RAMP_MAX_M) cap = Math.min(cap, ground[j] + g * d); }
+          for (const j of src) { const d = Math.abs(along[i] - along[j]); if (d <= CROSSING_RAMP_MAX_M) cap = Math.min(cap, flatZ[j] + g * d); }
           if (cap < z[i]) z[i] = Math.max(ground[i], cap);
         }
       }
@@ -359,7 +390,7 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     // both its stations raised by the piece's worst deficit; each toe over the highest land along its edge.
     const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
     const raise = new Float64Array(n), toeL = new Float64Array(n - 1).fill(-Infinity), toeR = new Float64Array(n - 1).fill(-Infinity);
-    const zb = (i: number) => (flat[i] ? ground[i] : z[i]);
+    const zb = (i: number) => (flat[i] ? flatZ[i] : z[i]);
     if (input.floor !== false && !input.legacy) for (let i = 0; i + 1 < n; i++) {
       if ((!needed(i) && !needed(i + 1)) || input.measured?.(pts[i][0], pts[i][1]) || input.measured?.(pts[i + 1][0], pts[i + 1][1])) continue;
       const [ax, ay] = pts[i], [bx, by] = pts[i + 1], len = along[i + 1] - along[i], nx = -(by - ay) / (len || 1), ny = (bx - ax) / (len || 1);
@@ -380,10 +411,13 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     // top at each station (centre and both edges); rail-v1 (`legacy`) on the centreline's relief alone.
     const ridge = (i: number) => (way.bridge || flat[i] ? z[i] : Math.max(z[i], ...[S.topHalf, -S.topHalf].map(o => { const [nx, ny, k] = normals[i]; return input.height(pts[i][0] + nx * o * k, pts[i][1] + ny * o * k); })));
     const base = (i: number) => (input.legacy ? zb(i) : input.floor === false ? ridge(i) : zb(i) + raise[i]);
-    const top = (i: number) => base(i) + (flat[i] ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
+    // A flat end meeting a bridge's deck keeps the bed's full lift (lane R2-A): the deck's bed stands topLift over its
+    // floor, and the two beds meet at one top instead of a 0.27 m lip.
+    const deckEnd = (i: number) => !way.bridge && (i === 0 || i === n - 1) && !!input.bridgeEnd?.(pts[i]);
+    const top = (i: number) => base(i) + (flat[i] && !deckEnd(i) ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
     // On a slab: a bridge, or a track lifted clear of the land across its bed (an approach over the fill's dip).
     const across = (i: number) => { const [nx, ny, k] = normals[i]; return Math.max(ground[i], input.height(pts[i][0] + nx * S.topHalf * k, pts[i][1] + ny * S.topHalf * k), input.height(pts[i][0] - nx * S.topHalf * k, pts[i][1] - ny * S.topHalf * k)); };
-    const slabbed = (i: number) => decked(i) || (!flat[i] && z[i] - across(i) > RAISED_M);
+    const slabbed = (i: number) => decked(i) || (zb(i) - across(i) > RAISED_M);
     const at = (i: number, off: number): Vec2 => { const [nx, ny, k] = normals[i]; return [pts[i][0] + nx * off * k, pts[i][1] + ny * off * k]; };
     // Yard beds: the top runs on to the midpoint where a neighbouring track lies within RAIL_MERGE.maxM (not at a level crossing).
     const reach = (i: number, side: 1 | -1): number | null => {
@@ -515,8 +549,31 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
   return { ballast, track, slab, structure, stats };
 }
 
-/** A segment-crossing grid for the level-crossing test: does a piece of track cross any of these street segments? */
-export function crossingTest(segments: readonly [Vec2, Vec2][], cellM = 32): (a: Vec2, b: Vec2) => boolean {
+/**
+ * A level-crossing test for a piece of track a→b (its floor za, zb when known): false, or the crossing. With a street
+ * height (`streetZ`) it is the street's level there (the highest street the piece meets), else true.
+ */
+export type AtGradeTest = (a: Vec2, b: Vec2, za?: number, zb?: number) => boolean | number;
+/** Within ABUTMENT_M of a deck's end, a street more than this under the bed's level is not crossed at grade (metres). */
+export const DECK_END_FLAT_M = 0.2;
+
+/**
+ * A street this far (metres) or more under the bed's floor passes under the track (a bridge or a viaduct over it), not
+ * across it at grade (lane R2-A 2026-11-13, player note bc28e25e "rails don't connect to bridges"): at the Cornelis
+ * Lelylaan tram viaduct over the Ringweg-West the last 6 m piece of each ground approach came within the motorway's
+ * strip, was taken for a level crossing and pulled onto the motorway's relief 4.6 m under its level, a 1.5 m step
+ * at the deck's end. A level crossing's street lies at the bed's floor give or take the profile's lift over a fill
+ * (the Kranenbergpad siding 1.5 m, the Frans de Wollantstraat tram 1.9 m: both crossings, check-rail-street pins);
+ * nothing passes under a deck with less than 2.5 m between floor and street.
+ */
+export const UNDER_STREET_M = 2.5;
+const passesUnder = (floor: number, street: number) => floor - street >= UNDER_STREET_M;
+
+/**
+ * A segment-crossing grid for the level-crossing test: does a piece of track cross any of these street segments? With
+ * `streetZ` and the piece's floor levels, a street UNDER_STREET_M or more under the floor is not crossed at grade.
+ */
+export function crossingTest(segments: readonly [Vec2, Vec2][], cellM = 32, streetZ?: HeightFn): AtGradeTest {
   const grid = new Map<string, [Vec2, Vec2][]>();
   const cells = (a: Vec2, b: Vec2, f: (k: string) => void) => {
     const gx0 = Math.floor(Math.min(a[0], b[0]) / cellM), gx1 = Math.floor(Math.max(a[0], b[0]) / cellM);
@@ -526,13 +583,16 @@ export function crossingTest(segments: readonly [Vec2, Vec2][], cellM = 32): (a:
   };
   for (const s of segments) cells(s[0], s[1], k => { (grid.get(k) ?? grid.set(k, []).get(k)!).push(s); });
   const cross = (o: Vec2, a: Vec2, b: Vec2) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
-  return (a, b) => {
-    let hit = false;
+  return (a, b, za, zb) => {
+    let hit: boolean | number = false;
     cells(a, b, k => {
-      if (hit) return;
       for (const [c, d] of grid.get(k) ?? []) {
         const d1 = cross(c, d, a), d2 = cross(c, d, b), d3 = cross(a, b, c), d4 = cross(a, b, d);
-        if (((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0))) { hit = true; return; }
+        if (!(((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0)))) continue;
+        if (!streetZ) { hit = true; return; }
+        const t = d1 / (d1 - d2), sz = streetZ(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t);
+        if (za !== undefined && zb !== undefined && passesUnder(za + (zb - za) * t, sz)) continue;
+        hit = hit === false ? sz : Math.max(hit as number, sz);
       }
     });
     return hit;
@@ -562,7 +622,7 @@ export function segmentDistance(a: Vec2, b: Vec2, c: Vec2, d: Vec2): number {
  * strip's half width plus `reachM` (the bed's top half width by default) of a street's centreline: the bed lies flat
  * on the surface there, as at a level crossing.
  */
-export function onStreetTest(strips: readonly StreetStrip[], reachM: number = RAIL_SECTION.topHalf, cellM = 32): (a: Vec2, b: Vec2) => boolean {
+export function onStreetTest(strips: readonly StreetStrip[], reachM: number = RAIL_SECTION.topHalf, cellM = 32, streetZ?: HeightFn): AtGradeTest {
   const grid = new Map<string, StreetStrip[]>();
   const cells = (a: Vec2, b: Vec2, pad: number, f: (k: string) => void) => {
     const gx0 = Math.floor((Math.min(a[0], b[0]) - pad) / cellM), gx1 = Math.floor((Math.max(a[0], b[0]) + pad) / cellM);
@@ -571,11 +631,19 @@ export function onStreetTest(strips: readonly StreetStrip[], reachM: number = RA
     for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) f(`${gx}:${gy}`);
   };
   for (const s of strips) cells(s[0], s[1], s[2] + reachM, k => { (grid.get(k) ?? grid.set(k, []).get(k)!).push(s); });
-  return (a, b) => {
-    let hit = false;
+  return (a, b, za, zb) => {
+    let hit: boolean | number = false;
     cells(a, b, 0, k => {
-      if (hit) return;
-      for (const [c, d, half] of grid.get(k) ?? []) if (segmentDistance(a, b, c, d) <= half + reachM) { hit = true; return; }
+      if (hit === true) return;
+      for (const [c, d, half] of grid.get(k) ?? []) {
+        if (segmentDistance(a, b, c, d) > half + reachM) continue;
+        if (!streetZ) { hit = true; return; }
+        // The street's centre nearest the piece's middle, against the piece's lower floor.
+        const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = d[0] - c[0], dy = d[1] - c[1], l2 = dx * dx + dy * dy || 1e-12, t = Math.max(0, Math.min(1, ((mx - c[0]) * dx + (my - c[1]) * dy) / l2));
+        const sz = streetZ(c[0] + dx * t, c[1] + dy * t);
+        if (za !== undefined && zb !== undefined && passesUnder(Math.min(za, zb), sz)) continue;
+        hit = hit === false ? sz : Math.max(hit as number, sz);
+      }
     });
     return hit;
   };

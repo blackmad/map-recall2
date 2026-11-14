@@ -176,6 +176,12 @@ export interface CellInput {
   railLegacy?: boolean;
   /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest; default on, false: the centreline-crossing test only, for measuring). */
   railOnStreet?: boolean;
+  /** A street UNDER_STREET_M or more under the bed's level passes under it, not across at grade (railTracks.ts, lane R2-A); default on, false: the before (for measuring). */
+  railUnderStreets?: boolean;
+  /** Short runs off the bridges between bridges levelled with them (railProfile.ts ISLAND_M, lane R2-A); default on, false: the before (for measuring). */
+  railIslands?: boolean;
+  /** Approaches held level up to their deck's end (railProfile.ts ABUTMENT_M, lane R2-A); default on, false: the before (for measuring). */
+  railAbutments?: boolean;
   /** Deck spans where a street passes under a track off the bridges (railSpans.ts; default on, false: the build before lane rails-classb, for measuring). */
   /** Level crossings ramp the bed at the track's grade (railTracks.ts `ramps`, lane rails-uncover); default on, false: the before. */
   railRamps?: boolean;
@@ -600,7 +606,10 @@ export function buildCell(input: CellInput): BuiltCell {
   if (input.rails?.length) {
     const atGrade: [Vec2, Vec2][] = [], strips: StreetStrip[] = [];
     for (const w of ways) if (AT_GRADE_HIGHWAYS.has(w.tags.highway) && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')) { const half = streetHalfWidth(w.section.bands); for (let i = 0; i + 1 < w.points.length; i++) { atGrade.push([w.points[i], w.points[i + 1]]); strips.push([w.points[i], w.points[i + 1], half]); } }
-    const crossing = crossingTest(atGrade), onStreet = input.railOnStreet === false ? null : onStreetTest(strips);
+    // Lane R2-A: a street far under the bed's level passes under it (railTracks.ts UNDER_STREET_M), on its own relief.
+    // The street's own surface: the relief, or its tunnel cut's floor (never a deck over it: bridge ways are not streets here).
+    const streetZ = input.railUnderStreets === false ? undefined : (x: number, y: number) => { if (cuts.length) { const f = surface.cutFloor(x, y); if (f === f) return f; } return landZ(x, y); };
+    const crossing = crossingTest(atGrade, 32, streetZ), onStreet = input.railOnStreet === false ? null : onStreetTest(strips, undefined, 32, streetZ);
     // Levels (railProfile.ts): the relief's envelope at the track's grade, bridge decks between their approaches.
     // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
     const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
@@ -616,7 +625,7 @@ export function buildCell(input: CellInput): BuiltCell {
       if (cuts.length) { const f = surface.cutFloor(x, y); if (f === f) return f; }
       return landZ(x, y);
     };
-    const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], railLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured, (x, y) => surface.deckWeight(x, y) > 0.5 && railLand(x, y) === onLand(x, y), input.railPlatforms);
+    const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], railLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured, (x, y) => surface.deckWeight(x, y) > 0.5 && railLand(x, y) === onLand(x, y), input.railPlatforms, { ...(input.railIslands === false ? { islands: false } : {}), ...(input.railAbutments === false ? { abutments: false } : {}) });
     // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
     const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
     const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
@@ -634,7 +643,8 @@ export function buildCell(input: CellInput): BuiltCell {
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));
     const spanUnder = spans.size && under ? underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge && !promoted.has(railWayKey(w))).map(w => w.points)) : undefined;
-    const r = railMeshes({ ways: input.rails, inCell, height: railLand, ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}), ...(input.railRamps === false ? { ramps: false } : {}) });
+    const deckEnds = input.railUnderStreets === false ? null : new Set((input.railsAround ?? input.rails).filter(w => w.bridge).flatMap(w => [w.points[0], w.points[w.points.length - 1]]).map(p => `${Math.round(p[0] * 10)},${Math.round(p[1] * 10)}`));
+    const r = railMeshes({ ways: input.rails, inCell, height: railLand, ...(deckEnds?.size ? { bridgeEnd: (p: Vec2) => deckEnds.has(`${Math.round(p[0] * 10)},${Math.round(p[1] * 10)}`) } : {}), ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2, za?: number, zb?: number) => { const c = crossing(a, b, za, zb), o = onStreet(a, b, za, zb); return c === false ? o : o === false ? c : typeof c === 'number' && typeof o === 'number' ? Math.max(c, o) : true; } : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}), ...(input.railRamps === false ? { ramps: false } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
     if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, railLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
