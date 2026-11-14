@@ -53,10 +53,10 @@ test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left 
   assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing, h.storeys ?? null]), [[0, 0.5, 'keystone', null], [0.5, 1, 'segmental-tympanum', [1, 2]], [0.5, 1, 'keystone', [3]]]);
 });
 
-test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dormers', () => {
+test('Kinkerstraat 86–88 (233580) continues the row roof: slate mansard, one pedimented hoist dormer (lane D, rule-10 pano)', () => {
   const s = rec(K, '0363100012233580').series!;
-  assert.equal(s.roofStorey?.kind, 'none');
-  assert.equal(s.roofStorey!.dormers.length, 0);
+  assert.equal(s.roofStorey?.kind, 'mansard');
+  assert.deepEqual(s.roofStorey!.dormers, [{ a: 0.5, kind: 'pediment', hoist: true }]);
 });
 
 test('Weteringschans 169016: souterrain, mansard, one pediment dormer with a hoist; 168096 a cornice front over basement windows, no roof storey', () => {
@@ -98,11 +98,11 @@ test('a series member draws a mansard roof plan at its cornice line, never the h
   assert.equal(plan.pieces?.length, 1);
 });
 
-test('the flat-lid series member (86–88) gets a flat roof at its top', () => {
+test('the corner member (86–88) takes the row mansard at its top, not a flat lid (lane D, rule-10 pano)', () => {
   const r = rec(K, '0363100012233580');
   const p = withFlag(K, () => withRowFront(feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }))).properties;
-  assert.equal(p.roofShape, 'flat');
-  assert.equal(p.height, r.eavesM);
+  assert.equal(p.roofShape, 'mansardHip');
+  assert.equal((p.rowRoof as { dormers: unknown[] }).dormers.length, 1);
 });
 
 test('the souterrain series draws one more storey with a souterrain ground cell (Weteringschans 171218)', () => {
@@ -125,7 +125,7 @@ test('the Kinkerstraat mansards join across party walls at one line; the row end
   for (const id of ['0363100012236027', '0363100012159635', '0363100012152925', '0363100012160809', '0363100012158180', '0363100012156028', '0363100012236213'])
     assert.deepEqual(j(id), { left: true, right: true }, id);
   assert.deepEqual(j('0363100012155794'), { left: true, right: true }, '90 runs on into 86-88 at the same line (3DBAG 16.84 / 16.62 m)');
-  assert.equal(rec(K, '0363100012233580').series!.roofStorey!.joins, undefined);
+  assert.deepEqual(j('0363100012233580'), { left: true, right: true }, '86-88 continues the row mansard to the corner (rule-10 pano)');
 });
 
 test('one window look per series: bays per front, the series year and line, whatever the pand', () => {
