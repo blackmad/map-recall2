@@ -3,7 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {getSink, poly, setSink, slab, type Frame} from './nearbar-kit';
 import {frameAt, makeFrontKit, type Chord, type Sec} from './street-front-kit';
 import {TriSink, type XZ} from './venue-kit';
-import {graffitiLayout, ivyMass, sawtoothHall, scallopedRake, tagBand, tagScribble, type Decal} from './hall-kit';
+import {graffitiLayout, wallIvy, sawtoothHall, scallopedRake, tagBand, tagScribble, type Decal} from './hall-kit';
 import source from './skatecafe-footprints.json' with {type: 'json'};
 
 /**
@@ -88,9 +88,14 @@ export function buildSkatecafe(_w: number, _d: number, b: BuildingTools & {mark?
 
   // ---- link under ivy -------------------------------------------------------------------------------------------------
   K.sec(FR, 22, CH0, 0, LINK_TOP, 'brick', 0);
-  // the ivy mass over the link and the last bay's corner, climbing above the roofs: lumps with a darker underside
-  const ivy: [number, number][] = [[-2.0, 0], [2.4, 0], [2.4, 2.6], [2.25, 5.4], [1.6, 7.1], [0.8, 7.0], [0.1, 8.1], [-0.6, 8.9], [-1.3, 8.6], [-1.6, 7.6], [-2.0, 7.2], [-2.3, 5.0], [-2.2, 2.0]];
-  ivyMass(b, F, 22.0, 0, ivy, {c: 'green', under: 'copper', bumps: 28, seed: 22, r: [0.3, 0.7]});
+  // the ivy, measured on the 2024-10-22 rectified capture (50 px/m, s calibrated on the bay-6 window): it climbs the front
+  // wall of the last saw-tooth bay from s 20.8 to the gable apex (9.3 m) and follows the right rake down, then covers the
+  // link up to the chalet corner (s 24.5; the strands on the chalet itself are left out) with a ragged top at 7.1-7.6 m; its lower-left edge steps in diagonally,
+  // leaving the tagged brick below s 22 bare. Dense, few gaps. Leaf sheet 10 cm proud, clumps to 22 cm.
+  const ivy: [number, number][] = [[22.6, 0], [24.5, 0], [24.5, 3.4], [24.45, 5.2], [24.5, 6.6], [24.4, 7.35], [23.8, 7.6], [23.0, 7.25], [22.3, 7.8], [22.0, 8.25],
+    [21.06, 9.35], [20.8, 9.1], [20.75, 6.5], [20.8, 4.0], [21.3, 3.2], [21.9, 2.3], [22.3, 1.0]];
+  const gaps: [number, number][][] = [[[21.4, 4.5], [21.75, 4.5], [21.75, 4.75], [21.4, 4.75]], [[22.8, 1.2], [23.05, 1.2], [23.05, 1.6], [22.8, 1.6]], [[23.9, 2.0], [24.1, 2.0], [24.1, 2.35], [23.9, 2.35]]];
+  wallIvy(b, F, ivy, gaps, {base: 'copper', leaf: 'green', clumps: 90, seed: 22});
   b.mark?.('link');
 
   // ---- the chalet front ----------------------------------------------------------------------------------------------
