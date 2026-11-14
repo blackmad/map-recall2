@@ -37,7 +37,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
     const n = Math.max(0, Math.round(rs.dormersPerFront));
-    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind === 'ornate-pinnacle' ? 'pediment' /* lane D: until R's ornate-pinnacle kit part lands */ : rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
   });
   // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
   heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));

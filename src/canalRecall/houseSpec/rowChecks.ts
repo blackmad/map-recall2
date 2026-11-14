@@ -11,7 +11,7 @@
 import { ROW_FRONT_EXTRAS } from '../houseLine/rowFront.ts';
 
 /** Fields that may differ inside one series: what is true of one house only (rule 1). Everything else is the series'. */
-export const PER_HOUSE_FIELDS = ['groundUse', 'doorSide', 'doorIndex', 'paint', 'shopfront', 'basement', 'extent', 'number', 'pandId'] as const;
+export const PER_HOUSE_FIELDS = ['groundUse', 'doorSide', 'doorIndex', 'paint', 'shopfront', 'basement', 'extent', 'number', 'pandId', 'dormerVariant'] as const;
 /** Largest cornice step (m) between neighbours of one series. */
 export const MAX_CORNICE_STEP_M = 0.2;
 /** What became of a read field: drawn as stated, settled by series consensus, or printed as read, not drawn. */
@@ -125,7 +125,7 @@ export const NAMED_REGRESSIONS: Regression[] = [
       return ms.length === 2 ? { status: 'pass', message: 'two fronts' } : { status: 'fail', message: `${ms.length} front(s), expected 2` }; } },
   { id: 'kinker-100-104-identical', what: '159635, 152925 and 160809 (Kinkerstraat 104, 102, 100) resolve to one design and one roof', pands: ['0363100012159635', '0363100012152925', '0363100012160809'],
     check: rows => { const ms = ['0363100012159635', '0363100012152925', '0363100012160809'].flatMap(p => find(rows, p)); if (ms.length < 3) return { status: 'no-records', message: `${ms.length} of 3 pands in the records` };
-      const d = new Set(ms.map(m => JSON.stringify([m.design, m.corniceM, m.roof.kind, m.roof.dormers ?? 0, m.roof.dormerKind ?? null, m.roof.gable ?? null])));
+      const d = new Set(ms.map(m => JSON.stringify([Object.fromEntries(Object.entries(m.design).filter(([k]) => !(PER_HOUSE_FIELDS as readonly string[]).includes(k))), m.corniceM, m.roof.kind, m.roof.dormers ?? 0, m.roof.dormerKind ?? null, m.roof.gable ?? null])));
       const sameSeries = new Set(ms.map(m => m.series)).size === 1;
       return d.size === 1 && sameSeries ? { status: 'pass', message: 'identical' } : { status: 'fail', message: `${d.size} distinct designs across ${new Set(ms.map(m => m.series)).size} series` }; } },
   { id: 'kinker-92-94-scaffold', what: '236213 (Kinkerstraat 92-94) was read through scaffold netting: nothing is staged from that read', pands: ['0363100012236213'],
