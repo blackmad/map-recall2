@@ -86,10 +86,14 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   /** Lane 1 step d (rowFront flag): measured window boxes on the street front. a0/a1 are fractions of the front's
    *  length, sill/head metres above the pand's ground (houseLine/boxPlacement.ts). */
   windowBoxes?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
+  /** Rowfront: the width the traced fractions are of (m); a street run of another length keeps its grid. */
+  frontSpanM?: number;
+  /** Rowfront: the traced ground-storey openings (fractions of the front, m above the pand's ground). */
+  groundBoxes?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind: 'door' | 'shop' | 'window' }>;
   /** Lane 1 (rowFront flag): the photo's fascia colour from lane 2's trace, already muted. */
   fasciaHex?: string;
   /** Lane 1 (rowFront flag): one pand's sub-fronts, fractions of the front left to right as seen, with wall colours. */
-  subFronts?: Array<{ a0: number; a1: number; wallHex?: string }>;
+  subFronts?: Array<import('../houseLine/rowFront.js').SubFrontRecord & { step?: import('../houseLine/rowFront.js').StepCrown | null }>;
   /** Lane WG (houseSpec/storeyPlan.ts): a souterrain under the stated storeys, a roof storey above the eaves, 3DBAG's eaves. */
   souterrain?: true;
   roofStorey?: 'mansard' | 'attic';

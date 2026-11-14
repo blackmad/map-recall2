@@ -25,6 +25,10 @@ export interface RowFrontRecord {
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
   crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
+    /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
+    lights?: Array<[number, number, number, number]>;
+    /** A chimney stack on the crown: its top (pand datum) and width. */
+    chimney?: { topM: number; widthM: number };
     /** A raised centre piece on a cornice front (lane 2's dormer or raised attic): its top (pand datum), kind and width. */
     piece?: { topM: number; kind: string; widthM?: number } };
   /** Storey lines above the ground (m), from measured window heights or stated storey heights. */
@@ -43,16 +47,24 @@ export interface RowFrontRecord {
   /** Lane 2's traced upper-storey openings (step d): a0/a1 fractions of the front left to right as seen from the street,
    *  sill/head above the pand's ground. Crown openings (attic lights over the front's top) are left to the crown. */
   windows?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind?: string }>;
+  /** Lane 2's traced ground-storey openings (doors, shop windows, ground windows): a0/a1 fractions of the front as
+   *  `windows`, sill/head above the pand's ground. */
+  ground?: Array<{ a0: number; a1: number; sillM: number; headM: number; kind: 'door' | 'shop' | 'window' }>;
+  /** The front's width the trace's fractions are of (lane 2 `bagWidthM`, m). */
+  spanM?: number;
   /** The traced shop band's top (pand datum) and the photo's fascia colour (muted by lane 2). */
   shopTopM?: number;
   fasciaHex?: string;
   /** Sub-fronts of one pand (left to right as seen, fractions of the span) and their wall colours. */
-  subFronts?: Array<{ a0: number; a1: number; wallHex?: string }>;
+  subFronts?: SubFrontRecord[];
   /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
   sources: Record<string, string>;
 }
+
+/** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
+export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
 
 export const ROW_FRONT_DEFAULT = false;
 /**
@@ -82,6 +94,8 @@ const LANE2_FAMILY: Readonly<Record<string, RowCrownFamily>> = {
   neck: 'neck', bell: 'bell', step: 'step', spout: 'spout', point: 'point', 'straight-cornice': 'cornice', 'flat-parapet': 'cornice',
   'raised-dormer-hoist': 'raised-cornice-dormer', other: 'cornice',
 };
+/** Interim: lane 2 writes a crown's chimney in its note ("a chimney stands on the neck to about 14.0 m"). */
+const CHIMNEY_NOTE = /chimney[^.;]*?(?:to|at) (?:about )?(\d+(?:\.\d+)?) m/i;
 const CONFIDENCE = { high: 0.9, medium: 0.7, low: 0.3 } as const;
 const r2 = (v: number) => Math.round(v * 100) / 100;
 /**
@@ -146,6 +160,15 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
   }
   if (fr.crown.atticWindows !== null) crown.atticWindows = fr.crown.atticWindows;
   if (fr.crown.hoist !== null) crown.hoist = fr.crown.hoist;
+  // The crown's own openings and stack (gabled crowns): the trace's attic lights above the gable foot, and a chimney
+  // standing on the crown (lane 2's note until the record carries a field: CHIMNEY_NOTE).
+  const tr = fr.trace, sp = fr.bagWidthM;
+  if (gabled && eavesM !== null && tr && tr.confidence !== 'low' && sp && sp > 1) {
+    const lights = tr.storeys.flat().filter(o => o.kind === 'attic' && at(o.y)! >= eavesM - 0.3 && o.w > 0.1 && o.h > 0.1);
+    if (lights.length) crown.lights = lights.map(o => [r2(o.x - sp / 2), r2(o.x + o.w - sp / 2), r2(at(o.y)! - eavesM), r2(at(o.y + o.h)! - eavesM)]);
+  }
+  const chim = gabled && eavesM !== null ? CHIMNEY_NOTE.exec(fr.crown.note ?? '') : null;
+  if (chim && topM !== null && at(+chim[1])! > topM + 0.3) { crown.chimney = { topM: at(+chim[1])!, widthM: 0.6 }; sources.chimney = 'lane 2 crown note'; }
   const out: RowFrontRecord = { pandId: fr.pandId, face: fr.face, topM, eavesM, crown, confidence: CONFIDENCE[fr.confidence], sources };
   if (fr.storeys !== null && !fr.fallback) out.storeys = fr.storeys;
   if (fr.rows.length && !fr.fallback) out.rows = fr.rows.map(r => ({ sillM: at(r.sillM)!, headM: at(r.headM)! }));
@@ -156,11 +179,21 @@ export function rowFrontFromRecord(whole: FrontRecord, neighbours: readonly Fron
   if (t && t.confidence !== 'low' && span && span > 1) {
     const top = fr.frontTopM ?? Infinity;
     const wins = t.storeys.slice(1).flat().filter(o => o.kind !== 'attic' && o.kind !== 'door' && o.kind !== 'shop' && o.y + o.h <= top + 0.05 && o.w > 0.1 && o.h > 0.1);
+    out.spanM = span;
     if (wins.length) out.windows = wins.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!, kind: o.kind }));
+    const doors = (t.storeys[0] ?? []).filter(o => o.w > 0.1 && o.h > 0.1 && o.x < span && o.x + o.w > 0);
+    if (doors.length) out.ground = doors.map(o => ({ a0: r2(Math.max(0, o.x) / span * 1000) / 1000, a1: r2(Math.min(span, o.x + o.w) / span * 1000) / 1000, sillM: at(o.y)!, headM: at(o.y + o.h)!,
+      kind: o.kind === 'door' ? 'door' as const : o.kind === 'shop' ? 'shop' as const : 'window' as const }));
     if (t.shopBandTopM !== null) out.shopTopM = at(t.shopBandTopM)!;
     if (t.fascia?.hex) out.fasciaHex = t.fascia.hex;
   }
-  if (fr !== whole && span) out.subFronts = whole.fronts!.map(f => ({ a0: Math.round(f.from / span * 1000) / 1000, a1: Math.round(Math.min(span, f.to) / span * 1000) / 1000, ...(f.wall?.hex ? { wallHex: f.wall.hex } : {}) }));
+  // Each sub-front through this adapter on its own (its width, the pand's datum): its own top and crown for the stepped
+  // wall top (stepCrown, the mesher's stepped run).
+  if (fr !== whole && span) out.subFronts = whole.fronts!.map(f => {
+    const own = rowFrontFromRecord({ ...whole, ...f, fronts: undefined, bagWidthM: f.to - f.from, trace: undefined } as FrontRecord);
+    return { a0: Math.round(f.from / span * 1000) / 1000, a1: Math.round(Math.min(span, f.to) / span * 1000) / 1000, ...(f.wall?.hex ? { wallHex: f.wall.hex } : {}),
+      eavesM: own.eavesM, topM: own.topM, crown: own.crown, ...(own.fallback ? { fallback: own.fallback } : {}) };
+  });
   if (fr.fallback) out.fallback = 'row-line';
   // A fallback keeps lane 1's skyline read: a gable standing over the row line still draws (skylineGable).
   if (fr.fallback && interim?.skyline) out.skyline = interim.skyline;
@@ -245,6 +278,12 @@ export function windowShare(rec: RowFrontRecord, eavesM: number): number | null 
  * light and never a full row (`roofStorey` dropped). A type preset's count (haarlemmer-shop-cornice-*) gives way, and so
  * does the structure prior (it only runs without a stated count). A row-line record keeps today's count.
  */
+/** How far a street run's length may differ from the traced span (m, or this share of it) for the run to take the
+ *  traced boxes: a longer run is a corner or a front the strip only partly covers (167821), not this front. */
+export const ROW_FRONT_SPAN_TOLERANCE = { m: 0.5, share: 0.12 } as const;
+export const runTakesTrace = (runM: number, spanM: number | undefined): boolean =>
+  !spanM || Math.abs(runM - spanM) <= Math.max(ROW_FRONT_SPAN_TOLERANCE.m, ROW_FRONT_SPAN_TOLERANCE.share * spanM);
+
 /** Interim window width as a share of the bay (coordinator: about 60-70 %). */
 export const ROW_FRONT_WINDOW_SHARE = 0.64;
 
@@ -256,6 +295,9 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   // The photo's fascia colour per front, muted by lane 2's trace (drawn as is: threeBuildingFeatures).
   if (rec.fasciaHex) out.fasciaHex = rec.fasciaHex;
   if (rec.subFronts) out.subFronts = rec.subFronts;
+  // The traced ground openings (doors and shop windows) the mesher cuts the ground storey at.
+  if (rec.ground?.length) out.groundBoxes = rec.ground;
+  if (rec.spanM && (rec.ground?.length || rec.windows?.length)) out.frontSpanM = rec.spanM;
   if (measured) {
     out.storeys = rec.storeys; out.storeysFit = true; out.storeysSrc = 'front-record';
     delete out.roofStorey; delete out.souterrain;
@@ -303,6 +345,43 @@ export function skylineGable(rec: RowFrontRecord): RowFrontRecord | null {
   return { ...rec, eavesM: foot, topM: peak, crown: { family: 'neck' }, crownFromSkyline: true };
 }
 
+/** A sub-front's own wall top and crown on a stepped run (the mesher draws the crown on its span, `widthM` wide). */
+export interface StepCrown { wallTopM: number; crown?: RowCrown; gable?: GableShape; riseM?: number }
+/**
+ * What one sub-front stands to and wears: a cornice with a raised piece (the wall a band under the measured top, the
+ * piece on it), a measured gable crown (neck, bell, point, step: the wall to its foot), else a plain top. The same
+ * shapes withRowFront gives a whole pand, sized to the sub-front's width.
+ */
+export function stepCrown(f: SubFrontRecord, widthM: number): StepCrown | null {
+  if (f.eavesM == null || !(f.eavesM > 2) || f.fallback || !f.crown) return null;
+  const family = f.crown.family, piece = (family === 'cornice' || family === 'raised-cornice-dormer') ? f.crown.piece : undefined;
+  if (piece && f.eavesM >= MIN_PLANNED_M + 0.5) {
+    const band = 0.5, wallTopM = +(f.eavesM - band).toFixed(2);
+    const crown: RowCrown = { shape: 'raised', riseM: +(piece.topM - wallTopM).toFixed(2), bandM: band, cap: piece.kind === 'pediment' ? 'pediment' : piece.kind === 'box' ? 'flat' : 'segmental' };
+    if (piece.widthM) crown.neckW = Math.min(piece.widthM, widthM - 0.1);
+    return { wallTopM, crown, gable: 'cornice', riseM: rowCrownRoofRise(crown, widthM) };
+  }
+  const shape = (family === 'point' ? 'point' : family) as RowCrownShape, gable = FAMILY_GABLE[family];
+  if (gable && (ROW_CROWN_SHAPES as readonly string[]).includes(shape) && f.topM != null && f.topM - f.eavesM > 0.5) {
+    const crown: RowCrown = { shape, riseM: +(f.topM - f.eavesM).toFixed(2) };
+    if (f.crown.widthM) crown.footW = Math.min(f.crown.widthM, widthM);
+    if (f.crown.neckWidthM) crown.neckW = f.crown.neckWidthM;
+    if (f.crown.atticWindows !== undefined) crown.attic = f.crown.atticWindows;
+    if (f.crown.chimney) crown.chimney = { topM: +(f.crown.chimney.topM - f.eavesM).toFixed(2), widthM: f.crown.chimney.widthM };
+    return { wallTopM: f.eavesM, crown, gable, riseM: rowCrownRoofRise(crown, widthM) };
+  }
+  return { wallTopM: f.topM ?? f.eavesM };
+}
+
+/** `ROW_FRONT_STEPS=0` / `?rowFrontSteps=0`: a pand with sub-fronts keeps one top and one crown (the tallest front's). */
+export function rowFrontStepsOn(search?: string): boolean {
+  try {
+    if (search === undefined && typeof process !== 'undefined' && process.env?.ROW_FRONT_STEPS === '0') return false;
+    const q = search ?? (typeof location !== 'undefined' ? location.search : '');
+    return new URLSearchParams(q).get('rowFrontSteps') !== '0';
+  } catch { return true; }
+}
+
 /**
  * Decorator step after withHouseSpecCrown, before decorateRoof (galleryPipeline.ts). Applies steps a and b to a pand
  * with a record when the flag is on; otherwise returns the same object.
@@ -318,6 +397,16 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const { monumentGable, roofShapeTag: _tag, ...rest } = p;
   const held = typeof monumentGable === 'string' ? { historicGable: monumentGable } : {};
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
+  // Sub-fronts with their own tops (HD22/24): a flat lid at the tallest wall top; the mesher steps each front's wall
+  // down to its own top and stands its crown on it (stepCrown, threeBuildingMesh stepped run).
+  const span = rec.spanM;
+  const steps = rowFrontStepsOn() && span && rec.subFronts && rec.subFronts.length > 1 ? rec.subFronts.map(f => ({ ...f, step: stepCrown(f, (f.a1 - f.a0) * span) })) : null;
+  if (steps && steps.every(f => f.step)) {
+    const top = Math.max(...steps.map(f => f.step!.wallTopM));
+    const out = levels(sr, rec, top, true);
+    if (out.specRecipe) out.specRecipe.subFronts = steps;
+    return { ...feature, properties: { ...rest, ...held, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowFront: family, rowFrontSteps: true, ...out } };
+  }
   const piece = !rec.fallback && (family === 'cornice' || family === 'raised-cornice-dormer') ? rec.crown.piece : undefined;
   if (piece && rec.topM !== null && rec.eavesM >= MIN_PLANNED_M + 0.5) {
     // Step c, cornice with a raised centre (HD22, HD12, HD6): a gable plate that is a full-width cornice band with the
@@ -352,6 +441,8 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (rec.crown.neckWidthM) crown.neckW = rec.crown.neckWidthM;
     if (rec.crown.atticWindows !== undefined) crown.attic = rec.crown.atticWindows;
     if (rec.crown.hoist) crown.hoist = true;
+    if (rec.crown.lights) crown.lights = rec.crown.lights;
+    if (rec.crown.chimney) crown.chimney = { topM: +(rec.crown.chimney.topM - rec.eavesM).toFixed(2), widthM: rec.crown.chimney.widthM };
     const probe = trial(rec.eavesM + 3), W = probe?.pieces?.[0]?.rect.wid;
     if (probe && W) {
       const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);

@@ -19,9 +19,11 @@ export interface WindowUnit {
   aspect: number;
   margin: { l: number; r: number; t: number; b: number };
   uv: { u0: number; u1: number; v0: number; v1: number };
+  /** The caller's tag for where the unit's texture lives (today: the atlas layer of the cell it is cropped from). */
+  layer?: number;
 }
 
-export interface PlacedWindow { a0: number; a1: number; z0: number; z1: number; u0: number; u1: number; v0: number; v1: number; stretch: number; box: WindowBox }
+export interface PlacedWindow { a0: number; a1: number; z0: number; z1: number; u0: number; u1: number; v0: number; v1: number; stretch: number; box: WindowBox; unit: WindowUnit }
 export interface WallPiece { a0: number; a1: number; z0: number; z1: number }
 export interface Placement { windows: PlacedWindow[]; walls: WallPiece[] }
 
@@ -45,14 +47,18 @@ export function nearestUnit(boxes: readonly WindowBox[], units: readonly Pick<Wi
 }
 
 /**
- * Place `unit` on every box inside the region [0, lengthM] x [z0, z1]. Returns null (the caller keeps its grid) when a
+ * Place a unit (one for all, or one per box) on every box inside the region [0, lengthM] x [z0, z1]. Returns null (the caller keeps its grid) when a
  * box is degenerate, outside the region, stretched past the cap, or overlaps another box's frame.
  */
-export function placeOnBoxes(boxes: readonly WindowBox[], unit: WindowUnit, region: { lengthM: number; z0: number; z1: number }, cap = STRETCH_CAP): Placement | null {
+export function placeOnBoxes(boxes: readonly WindowBox[], units: WindowUnit | ((box: WindowBox) => WindowUnit | null), region: { lengthM: number; z0: number; z1: number }, cap = STRETCH_CAP): Placement | null {
   const { lengthM: L, z0, z1 } = region;
   if (!boxes.length || !(L > 0) || !(z1 > z0)) return null;
+  const unitOf = new Map<WindowBox, WindowUnit>();
   for (const box of boxes) {
     if (!(box.a1 - box.a0 > 0.1) || !(box.headM - box.sillM > 0.1)) return null;
+    const unit = typeof units === 'function' ? units(box) : units;
+    if (!unit) return null;
+    unitOf.set(box, unit);
     const stretch = stretchOf(box, unit);
     if (!(stretch <= cap && stretch >= 1 / cap)) return null;
     if (box.a0 < -1e-6 || box.a1 > L + 1e-6 || box.sillM < z0 - 1e-6 || box.headM > z1 + 1e-6) return null;
@@ -69,13 +75,13 @@ export function placeOnBoxes(boxes: readonly WindowBox[], unit: WindowUnit, regi
   }
   const windows: PlacedWindow[] = [];
   for (const { a0: la0, a1: la1, zb: lzb, zt: lzt, b: box } of lim) {
-    const w = box.a1 - box.a0, h = box.headM - box.sillM;
+    const unit = unitOf.get(box)!, w = box.a1 - box.a0, h = box.headM - box.sillM;
     const a0 = Math.max(la0, box.a0 - unit.margin.l * w), a1 = Math.min(la1, box.a1 + unit.margin.r * w);
     const zb = Math.max(lzb, box.sillM - unit.margin.b * h), zt = Math.min(lzt, box.headM + unit.margin.t * h);
     // A margin cut short crops the unit's uv by the same share.
     const fu = (a: number) => unit.uv.u0 + (unit.uv.u1 - unit.uv.u0) * (a - (box.a0 - unit.margin.l * w)) / (w * (1 + unit.margin.l + unit.margin.r));
     const fv = (z: number) => unit.uv.v0 + (unit.uv.v1 - unit.uv.v0) * (z - (box.sillM - unit.margin.b * h)) / (h * (1 + unit.margin.b + unit.margin.t));
-    windows.push({ a0, a1, z0: zb, z1: zt, u0: fu(a0), u1: fu(a1), v0: fv(zb), v1: fv(zt), stretch: stretchOf(box, unit), box });
+    windows.push({ a0, a1, z0: zb, z1: zt, u0: fu(a0), u1: fu(a1), v0: fv(zb), v1: fv(zt), stretch: stretchOf(box, unit), box, unit });
   }
   // Rows: windows whose framed z ranges overlap share a band.
   const sorted = [...windows].sort((p, q) => p.z0 - q.z0);
@@ -114,4 +120,48 @@ export function interimBoxes(rows: readonly { sillM: number; headM: number }[], 
   if (!(bays >= 1) || !(lengthM > 0)) return [];
   const bay = lengthM / bays;
   return rows.flatMap(r => Array.from({ length: bays }, (_, i) => ({ a0: (i + 0.5) * bay - share * bay / 2, a1: (i + 0.5) * bay + share * bay / 2, sillM: r.sillM + base, headM: r.headM + base })));
+}
+
+/** A ground-storey opening along the run (m): a door, a shop window or a plain ground window. */
+export type GroundKind = 'door' | 'shop' | 'window';
+export interface GroundSpan { a0: number; a1: number; kind: GroundKind | 'wall'; sillM?: number; headM?: number }
+
+/**
+ * The ground storey of a run cut at its traced openings: every opening is one span (overlapping neighbours meet at the
+ * middle of their overlap), the rest is plain wall. Spans cover [0, lengthM] left to right without gaps; openings
+ * narrower than `minM` after clipping are dropped into the wall.
+ */
+export function groundSpans(openings: readonly { a0: number; a1: number; kind: GroundKind; sillM?: number; headM?: number }[], lengthM: number, minM = 0.1): GroundSpan[] {
+  if (!(lengthM > 0)) return [];
+  const sorted = openings.map(o => ({ ...o, a0: Math.max(0, o.a0), a1: Math.min(lengthM, o.a1) })).filter(o => o.a1 > o.a0).sort((p, q) => p.a0 - q.a0);
+  for (let i = 1; i < sorted.length; i++) {
+    const p = sorted[i - 1], q = sorted[i];
+    if (q.a0 < p.a1) { const m = (Math.max(p.a0, q.a0) + Math.min(p.a1, q.a1)) / 2; p.a1 = Math.min(p.a1, m); q.a0 = Math.max(q.a0, m); }
+  }
+  const out: GroundSpan[] = [];
+  let a = 0;
+  for (const o of sorted) {
+    if (o.a1 - o.a0 < minM) continue;
+    if (o.a0 > a + 1e-6) out.push({ a0: a, a1: o.a0, kind: 'wall' });
+    out.push({ ...o, a0: Math.max(a, o.a0) });
+    a = o.a1;
+  }
+  if (a < lengthM - 1e-6) out.push({ a0: a, a1: lengthM, kind: 'wall' });
+  return out;
+}
+
+/**
+ * One cell's opening (its rect in the cell's uv, v up) put on a box: the cell runs vertically so the opening's bottom
+ * and top land on the box's sill and head, cut to the region [z0, z1]; `walls` are the region's rest above and below.
+ */
+export function cellOnBox(rect: { v0: number; v1: number }, box: { sillM: number; headM: number }, z0: number, z1: number): { z0: number; z1: number; v0: number; v1: number; walls: Array<[number, number]> } | null {
+  const k = (rect.v1 - rect.v0) / (box.headM - box.sillM);
+  if (!(k > 0) || !(z1 > z0)) return null;
+  const v = (z: number) => rect.v0 + (z - box.sillM) * k, zAt = (vv: number) => box.sillM + (vv - rect.v0) / k;
+  const q0 = Math.max(z0, zAt(0)), q1 = Math.min(z1, zAt(1));
+  if (!(q1 - q0 > 0.05)) return null;
+  const walls: Array<[number, number]> = [];
+  if (q0 > z0 + 1e-3) walls.push([z0, q0]);
+  if (q1 < z1 - 1e-3) walls.push([q1, z1]);
+  return { z0: q0, z1: q1, v0: v(q0), v1: v(q1), walls };
 }
