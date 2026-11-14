@@ -46,8 +46,10 @@ test('named regressions: no records, pass and fail', () => {
   const bad = row([
     mem('0363100012236027'),
     mem('0363100012159635'), mem('0363100012152925', { corniceM: 16.9 }), mem('0363100012160809'),
-    mem('0363100012236213'),
+    mem('0363100012236213', { scaffold: true }),
     mem('0363100012169016', { roof: { kind: 'pitched', source: 'hash', gable: 'step' } }),
   ]);
   assert.deepEqual(runRegressions([bad]).map(r => r.status), ['fail', 'fail', 'fail', 'fail']);
+  // a re-read from another capture year (not held) may draw
+  assert.equal(runRegressions([row([mem('0363100012236213')])]).find(r => r.id === 'kinker-92-94-scaffold')!.status, 'pass');
 });

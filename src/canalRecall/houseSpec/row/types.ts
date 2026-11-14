@@ -188,6 +188,8 @@ export interface RowFront {
   /** Not staged (scaffold or netting over the upper storeys): the reason. The front still belongs to its series and
    *  draws the series design; nothing from its own reading is used. */
   readHeld?: string;
+  /** The pand's read describes another of its fronts only (a multi-front capture, `MemberInput.readFront`): nothing of it is drawn here. */
+  readElsewhere?: string;
 }
 
 /** One pand of the row, street order. */
@@ -215,7 +217,7 @@ export interface RowSeries {
 
 /** A row-level flag: something the solve would not settle silently. */
 export interface RowFlag {
-  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read' | 'reviewed';
+  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read' | 'reviewed' | 'reread';
   field?: RowDesignKey | string;
   fronts: string[];
   detail: string;

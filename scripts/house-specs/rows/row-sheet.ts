@@ -18,7 +18,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
-import { loadRowDefs, cutPath, REPO, type RowDef } from './rowDefs.ts';
+import { loadRowDefs, loadRereads, cutPath, REPO, type RowDef } from './rowDefs.ts';
 
 const argv = process.argv.slice(2);
 const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
@@ -128,15 +128,24 @@ async function main() {
     await sharp({ create: { width: W, height: band + H, channels: 3, background: '#111' } })
       .composite([{ input: labelBand(band, numLabels), left: 0, top: 0 }, { input: img, left: 0, top: band }]).jpeg({ quality: 88 }).toFile(path.join(out, 'blind', `${name}.jpg`));
   }
-  const rowsBlocks: Array<[string, Buffer]> = [['photo: the captures the D1 reader saw, cropped to the front outline, scaled to the front width', photoStrip], [drawnLabel, drawnStrip], ['today: this morning\'s drawing (installed extracts, no row flags)', todayStrip]];
+  // A re-read front (its first read held: scaffold, netting) shows the re-read's capture, labelled on the tile and in the title,
+  // so the sheet never passes it off as the capture the first read saw.
+  const rereads = loadRereads();
+  const rr = def.members.map((m, i) => ({ m, i, r: rereads[m.pandId] })).filter(x => x.r);
+  const rrNote = rr.length ? `; RE-READ: ${rr.map(x => `${x.m.label} from the ${x.r.captured} capture (first read ${x.r.firstRead.captured ?? '?'}, held: ${x.r.firstRead.held})`).join('; ')}` : '';
+  const rowsBlocks: Array<[string, Buffer]> = [[`photo: the captures the D1 reader saw, cropped to the front outline, scaled to the front width${rrNote}`, photoStrip], [drawnLabel, drawnStrip], ['today: this morning\'s drawing (installed extracts, no row flags)', todayStrip]];
   const total = head + band + rowsBlocks.length * (H + band + 4);
   const layers: sharp.OverlayOptions[] = [
     { input: Buffer.from(`<svg width="${W}" height="${head}" xmlns="http://www.w3.org/2000/svg"><text x="6" y="21" font-size="17" fill="#eee" font-family="Helvetica">${esc(def.title)} · ${ppm} px/m · left to right as seen from the street</text></svg>`), left: 0, top: 0 },
     { input: labelBand(band, numLabels), left: 0, top: head },
   ];
   rowsBlocks.forEach(([t, img], i) => { const top = head + band + i * (H + band + 4); layers.push({ input: blindHead(t), left: 0, top }, { input: img, left: 0, top: top + band }); });
+  for (const { i, r } of rr) {
+    const t = `re-read ${r.captured} (not the ${r.firstRead.captured ?? 'first'} read)`, w = Math.min(widths[i], 8 + t.length * 7);
+    layers.push({ input: Buffer.from(`<svg width="${w}" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="20" fill="#f2c500"/><text x="4" y="14" font-size="12" font-weight="bold" fill="#000" font-family="Helvetica">${esc(t)}</text></svg>`), left: xs[i], top: head + band + band });
+  }
   await sharp({ create: { width: W, height: total, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));
-  fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: cutPath(def, m.pandId), drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
+  fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: cutPath(def, m.pandId), ...(rereads[m.pandId] ? { reread: rereads[m.pandId] } : {}), drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
   console.log(`${id}: ${def.members.length} fronts, ${missing.length} missing cuts, sheet ${path.join(out, 'sheet.jpg')}, blind pair ${path.join(out, 'blind')}`);
 }
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) await main();
