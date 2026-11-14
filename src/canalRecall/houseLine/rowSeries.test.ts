@@ -299,3 +299,41 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   // Flag off: untouched.
   assert.equal(withRowFront(f), f);
 });
+
+test('published rows draw by default; ?rowFront=0 turns them off; a staged row stays off; nothing published = off', async () => {
+  const { PUBLISHED_ROWS } = await import('./publishedRows.ts');
+  const { rowFrontMode, rowDraws, chunkVariantOn } = await import('./rowFrontFlag.ts');
+  const pub = { rows: ['kinkerstraat-86-110'], chunks: ['chunk-face-bilder-233580-162444'] }, none = { rows: [], chunks: [] };
+  assert.equal(rowFrontMode('', null, none), 'off', 'nothing published: the flag-off world');
+  assert.equal(rowFrontMode('', null, pub), 'published');
+  assert.equal(rowFrontMode('?rowFront=0', null, pub), 'off');
+  assert.equal(rowFrontMode(null, '0', pub), 'off');
+  assert.equal(rowFrontMode('?rowFront=1', null, none), 'all');
+  assert.equal(rowFrontMode(null, '1', none), 'all');
+  assert.ok(rowDraws('kinkerstraat-86-110', 'published', pub));
+  assert.ok(!rowDraws('weteringschans-168096-171218', 'published', pub), 'staged, not published');
+  assert.ok(!rowDraws(null, 'published', pub), 'a record of no row (lane 1/2 front records)');
+  assert.ok(rowDraws('weteringschans-168096-171218', 'all', pub));
+  assert.ok(chunkVariantOn('chunk-face-bilder-233580-162444', 'published', pub));
+  assert.ok(!chunkVariantOn('chunk-face-bilder-233580-162444', 'off', pub));
+  assert.ok(!chunkVariantOn('chunk-other', 'published', pub));
+  assert.deepEqual([...PUBLISHED_ROWS.rows], [], 'nothing is published in code until the publish writes it');
+  // The decorator with Kinkerstraat published and no URL flag: a Kinkerstraat member draws its series, a Weteringschans
+  // member is returned untouched.
+  const rows = PUBLISHED_ROWS.rows as string[], env = process.env.ROW_FRONT;
+  rows.push('kinkerstraat-86-110');
+  try {
+    delete process.env.ROW_FRONT; resetRowFront(); setRowFrontRecords([...K, ...W]);
+    const k = withRowFront(feature('0363100012152925', 17.1, { roofShape: 'gable', roofPlanned: true, specRecipe: { storeys: 4 } }));
+    assert.equal(k.properties.rowSeries, rec(K, '0363100012152925').series!.id);
+    const wf = feature('0363100012168096', 14, { roofShape: 'gable', roofPlanned: true });
+    assert.equal(withRowFront(wf), wf, 'Weteringschans is staged: untouched');
+    process.env.ROW_FRONT = '0'; resetRowFront();
+    const kf = feature('0363100012152925', 17.1, { roofShape: 'gable', roofPlanned: true });
+    assert.equal(withRowFront(kf), kf, 'ROW_FRONT=0: every row off');
+  } finally {
+    rows.length = 0;
+    if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env;
+    resetRowFront(); setRowFrontRecords([]);
+  }
+});

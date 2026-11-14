@@ -123,8 +123,8 @@ export interface RowSeriesDraw {
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
 export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
 
-export { ROW_FRONT_DEFAULT, rowFrontEnabled } from './rowFrontFlag.js';
-import { rowFrontEnabled } from './rowFrontFlag.js';
+export { ROW_FRONT_DEFAULT, rowFrontEnabled, rowFrontMode } from './rowFrontFlag.js';
+import { rowDraws, rowFrontMode, rowOfSeries, type RowFrontMode } from './rowFrontFlag.js';
 /**
  * Step e, subtract before adding: the only wall extras a front record's house draws unless a register or spec states
  * more. Gone: flower boxes, iron and Juliet balconies, corner pilasters and pale masonry quoins, cornice vases (the roof
@@ -133,14 +133,17 @@ import { rowFrontEnabled } from './rowFrontFlag.js';
 export const ROW_FRONT_EXTRAS: readonly string[] = ['window-sills', 'white-window-frames', 'door-surround', 'wall-anchors', 'plinth', 'downpipe'];
 /** A record house's shopfront paint (sign, fascia, awning accent): the photo's shopfronts are dark and muted. */
 export const ROW_FRONT_SHOP_HEX = '#2e2b29';
-let flagNow: boolean | undefined;
-export function rowFrontOn(): boolean {
-  if (flagNow !== undefined) return flagNow;
+let modeNow: RowFrontMode | undefined;
+/** The rows mode (houseLine/rowFrontFlag.ts): `all`, `published` (publishedRows.ts) or `off`. */
+export function rowFrontModeOn(): RowFrontMode {
+  if (modeNow !== undefined) return modeNow;
   const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
-  return (flagNow = rowFrontEnabled(g.location?.search ?? null, g.process?.env?.ROW_FRONT ?? null));
+  return (modeNow = rowFrontMode(g.location?.search ?? null, g.process?.env?.ROW_FRONT ?? null));
 }
+/** Any row draws: `?rowFront=1`, or a published row without `?rowFront=0`. */
+export function rowFrontOn(): boolean { return rowFrontModeOn() !== 'off'; }
 /** Tests and harnesses: forget the cached flag. */
-export const resetRowFront = () => { flagNow = undefined; };
+export const resetRowFront = () => { modeNow = undefined; };
 
 /** Lane 2 crown family -> this renderer's family; a flat parapet, an unplaced crown and no read draw a plain cornice. */
 const LANE2_FAMILY: Readonly<Record<string, RowCrownFamily>> = {
@@ -498,8 +501,11 @@ export function rowWallSlab(edge: RowWallOnly['edge'], geometry: unknown): { typ
  * with a record when the flag is on; otherwise returns the same object.
  */
 export function withRowFront<T extends Feature>(feature: T): T {
-  if (!rowFrontOn()) return feature;
+  const mode = rowFrontModeOn();
+  if (mode === 'off') return feature;
   const found = rowFrontFor(feature.properties.id);
+  // Published mode: only a published row's records draw (a staged row, and a record of no row, stay as they were).
+  if (found && mode === 'published' && !rowDraws(rowOfSeries(found.series?.id), mode)) return feature;
   const rec = found && skylineGable(found) || found;
   if (!rec || rec.eavesM === null || !(rec.eavesM > 2)) return feature;
   const p = feature.properties;

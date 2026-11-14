@@ -14,7 +14,7 @@ import type {ChunkManifest, ChunkManifestEntry} from '../streetChunks/manifest.t
 import type {SignatureModelSpec} from './signaturePlacement';
 import {chunkWallExposure} from '../look/chunkWallExposure.ts';
 import {chunkLod2IsCurrent} from './landmarkLod.ts';
-import {rowFrontFlagNow} from '../houseLine/rowFrontFlag.ts';
+import {chunkVariantOn} from '../houseLine/rowFrontFlag.ts';
 
 export {pandIndexForFace} from '../streetChunks/extras.ts';
 
@@ -54,7 +54,7 @@ export const withoutStreetSurveys = (models: readonly SignatureModelSpec[]): Sig
 export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
   // House rows: with the flag on, a chunk that has a variant without the row-drawn walls loads it (its lod2 is the
   // original's, so it is dropped: the sha no longer matches).
-  const model = c.rowFront && rowFrontFlagNow() ? c.rowFront : null;
+  const model = c.rowFront && chunkVariantOn(c.id) ? c.rowFront : null;
   const length = c.bounds.max[0] - c.bounds.min[0], width = c.bounds.max[2] - c.bounds.min[2];
   return {
     id: c.id, assetKind: 'ordinary-building', buildingCategory: 'street-survey', name: c.name, landmarkId: '',
