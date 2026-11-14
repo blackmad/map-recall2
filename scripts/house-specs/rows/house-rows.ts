@@ -17,7 +17,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
+import { loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
 import { validateBlockFace, type BlockFaceIntent } from '../../../src/canalRecall/blockFace/intent.ts';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { specFromFace } from '../../../src/canalRecall/houseSpec/fromFace.ts';
@@ -53,10 +53,13 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
   const cuts = readJson(path.join(def.cutsDir, 'cuts.json')) as { rows: Array<{ pandId: string; wall: { heightM: number } }> } | null;
   if (cuts) inputs.push(rel(path.join(def.cutsDir, 'cuts.json')));
   inputs.push(`${rel(def.answersDir)}/<pandId>.json`);
+  const rereads = loadRereads();
   const members: MemberInput[] = def.members.map(md => {
     const pid = md.pandId;
     const sp = survey?.pands.find(p => p.pandId === pid);
-    const answer = readJson(path.join(def.answersDir, `${pid}.json`)) as DescriberAnswer | null;
+    const rr = rereads[pid];
+    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : readJson(path.join(def.answersDir, `${pid}.json`))) as DescriberAnswer | null;
+    if (rr) inputs.push(rr.answer);
     answers[pid] = answer;
     let fronts: ReturnType<typeof faceFronts> | undefined;
     if (face) {
@@ -72,13 +75,39 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
       widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
       height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null),
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
+      ...(rr ? { reread: { panoId: rr.panoId, captured: rr.captured, ref: rr.cut, firstRead: rr.firstRead } } : {}),
+      ...(rr?.describes && fronts && fronts.length > 1 ? { readFront: rr.describes === 'left' ? 0 : fronts.length - 1 } : {}),
     };
   });
   const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';
   const reviewedFile = path.join(REPO, 'scripts/house-specs/rows/reviewed.json');
   const reviewed = (readJson(reviewedFile) as Record<string, RowInput['reviewed']> | null)?.[def.id];
   if (reviewed?.length) inputs.push(rel(reviewedFile));
-  return { input: { id: def.id, ...(reviewed?.length ? { reviewed } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
+  const limitsFile = path.join(REPO, 'scripts/house-specs/rows/limits.json');
+  const limits = (readJson(limitsFile) as Record<string, RowInput['limits']> | null)?.[def.id];
+  if (limits?.length) inputs.push(rel(limitsFile));
+  return { input: { id: def.id, ...(reviewed?.length ? { reviewed } : {}), ...(limits?.length ? { limits } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
+}
+
+/**
+ * Members of the row that an installed face chunk of ANOTHER street owns, with no front on this row's street in that
+ * face: the chunk replaces the pand whole and draws this street's wall blank (Kinkerstraat 86-88, owned by
+ * face-bilder-233580-162444, was a blank red slab right of 90 in the rule-10 frame, round 7). Empty = none.
+ */
+export function blankCornerFronts(street: string, pandIds: readonly string[]): Array<{ pandId: string; chunk: string; face: string }> {
+  const manifest = readJson(path.join(REPO, 'public/canal-drive/ordinary-buildings-data/chunks.json')) as { chunks: Array<{ id: string; suppress?: string[] }> } | null;
+  const out: Array<{ pandId: string; chunk: string; face: string }> = [];
+  for (const pid of pandIds) {
+    const c = manifest?.chunks.find(x => (x.suppress ?? []).some(s => s.endsWith(pid)) && x.id.startsWith('chunk-face-'));
+    if (!c) continue;
+    const face = c.id.replace(/^chunk-face-/, '').replace(/-(r\d+|t)$/, '');
+    const intent = readJson(path.join(REPO, 'scripts/block-face/faces', face, 'intent.json')) as { street?: string; houses: Array<{ pandId: string; design?: { fronts?: Array<{ street?: string }> } }> } | null;
+    if (!intent) continue;
+    const h = intent.houses.find(x => x.pandId.endsWith(pid));
+    const streets = (h?.design?.fronts ?? []).map(f => f.street ?? intent.street);
+    if (!streets.includes(street)) out.push({ pandId: pid, chunk: c.id, face });
+  }
+  return out;
 }
 
 export function stageRow(def: RowDef, outDir: string, write: boolean): { row: RowRecord; specs: Record<string, HouseSpec>; problems: string[]; report: string } {
@@ -124,6 +153,8 @@ function main(argv: string[]): number {
     const r = stageRow(def, out, !argv.includes('--check'));
     console.log(r.report);
     if (r.problems.length) bad++;
+    for (const g of blankCornerFronts(r.row.street, r.row.members.map(m => m.pandId)))
+      console.log(`WARN ${id}: ${g.pandId} is owned by ${g.chunk}, whose face (${g.face}) has no ${r.row.street} front: that wall draws blank`);
   }
   return bad ? 1 : 0;
 }

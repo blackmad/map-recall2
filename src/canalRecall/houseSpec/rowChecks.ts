@@ -129,9 +129,9 @@ export const NAMED_REGRESSIONS: Regression[] = [
       const d = new Set(ms.map(m => JSON.stringify([Object.fromEntries(Object.entries(m.design).filter(([k]) => !(PER_HOUSE_FIELDS as readonly string[]).includes(k))), m.corniceM, m.roof.kind, m.roof.dormers ?? 0, m.roof.dormerKind ?? null, m.roof.gable ?? null])));
       const sameSeries = new Set(ms.map(m => m.series)).size === 1;
       return d.size === 1 && sameSeries ? { status: 'pass', message: 'identical' } : { status: 'fail', message: `${d.size} distinct designs across ${new Set(ms.map(m => m.series)).size} series` }; } },
-  { id: 'kinker-92-94-scaffold', what: '236213 (Kinkerstraat 92-94) was read through scaffold netting: nothing is staged from that read', pands: ['0363100012236213'],
+  { id: 'kinker-92-94-scaffold', what: '236213 (Kinkerstraat 92-94) was first read through scaffold netting: nothing is staged from a held read (a re-read from another capture year may draw)', pands: ['0363100012236213'],
     check: rows => { const ms = find(rows, '0363100012236213'); if (!ms.length) return { status: 'no-records', message: 'pand not in any record' };
-      const bad = ms.filter(m => m.staged && Object.values(m.fields).some(f => f.fate === 'drawn'));
+      const bad = ms.filter(m => m.staged && m.scaffold && Object.values(m.fields).some(f => f.fate === 'drawn'));
       return bad.length ? { status: 'fail', message: 'a field read through scaffold is drawn' } : { status: 'pass', message: 'nothing drawn from the scaffold read' }; } },
   { id: 'wetering-169016-mansard', what: '0363100012169016 (Weteringschans) has a slate mansard with a dormer and no pointed gable', pands: ['0363100012169016'],
     check: rows => { const ms = find(rows, '0363100012169016'); if (!ms.length) return { status: 'no-records', message: 'pand not in any record' };

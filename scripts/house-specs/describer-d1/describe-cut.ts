@@ -34,7 +34,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { CACHE_DIR, findPands, http, lngLatToRd, loadRoads, neighbourhood, normId, pointInRing, type Footprint } from '../../pand-reference/core.ts';
 import { exposedWalls } from '../../pand-reference/select.ts';
-import { pickPose, rankCandidates, type Args, type Candidates, type Entry, type Skipped } from '../../house-frames/frames.ts';
+import { pickPose, rankCandidates, withPinnedPoses, type Args, type Candidates, type Entry, type Skipped } from '../../house-frames/frames.ts';
 import { aimPose, bearingTo, frameFor, gridConvergenceDeg, rdToLocal, PANO_EYE_HEIGHT_M, type FramePose, type Rd, type WallQuad } from '../../house-frames/pose.ts';
 import { cutPerspective, loadEquirect, type Rgb8 } from '../../house-frames/photo.ts';
 import { wallLab, wallExposureRef } from '../../house-frames/analyse.ts';
@@ -202,7 +202,7 @@ export function greedyCover(options: Map<string, string[]>, preferred: Set<strin
 
 // ---- IO helpers ---------------------------------------------------------------------------------------------------
 
-const F4_ARGS: Args = { pands: [], season: 'winter', preferObliquityDeg: 30, maxDistM: 60, query: '', label: 'run', out: '', panoSize: 'medium', max: Infinity, reopenEvery: 40, prepOnly: true, postOnly: false, reusePhotos: false, inputName: 'describer-d1' };
+export const F4_ARGS: Args = { pands: [], season: 'winter', preferObliquityDeg: 30, maxDistM: 60, query: '', label: 'run', out: '', panoSize: 'medium', max: Infinity, reopenEvery: 40, prepOnly: true, postOnly: false, reusePhotos: false, inputName: 'describer-d1' };
 const WINTER = new Set([11, 12, 1, 2, 3]);
 const cacheFile = (url: string) => path.join(CACHE_DIR, crypto.createHash('sha1').update(url).digest('hex') + '.jpg');
 const SIZE_DEFAULTS = { small: 0.7e6, medium: 2.6e6, full: 9e6 };
@@ -229,6 +229,12 @@ const recordNap = (rec: any) => { const p = Number(rec.geometry.coordinates[2]);
 /** Estimate the new bytes of a pick run (the pre-pass reads up to 3 smalls, 8 at worst, then one `kind`); throws over budget. */
 /** rankCandidates results kept from the estimate for the pick (the ranking at 60 m is the slow half of a pick). */
 const ranks = new Map<string, Candidates | Skipped>();
+/**
+ * --pins <file>: pinned captures per pand, `{pands: {<pandId>: {pano?, notPanos?}}}` (eyeball-poses.json's shape). The
+ * row pipeline's re-read queue (house:rows, a netted or scaffolded read) writes one: the alternative capture year to cut.
+ */
+let PINS_FILE: string | undefined;
+const entryOf = (id: string): Entry => PINS_FILE ? withPinnedPoses([{ id }], PINS_FILE)[0] : { id };
 async function budget(ids: string[], fps: Map<string, Footprint>, kind: 'medium' | 'full', maxGb: number, records?: Map<string, any>): Promise<void> {
   const missing: Record<string, number> = { small: 0, medium: 0, full: 0 }, worst = { small: 0 }, sizes: Record<string, number[]> = {};
   const seen = new Set<string>();
@@ -239,7 +245,7 @@ async function budget(ids: string[], fps: Map<string, Footprint>, kind: 'medium'
   };
   for (const id of ids) {
     if (records?.has(id)) { look(records.get(id), kind); continue; }
-    const c = await rankCandidates({ id }, fps.get(normId(id)), F4_ARGS);
+    const c = await rankCandidates(entryOf(id), fps.get(normId(id)), F4_ARGS);
     ranks.set(id, c);
     if ('skip' in c) continue;
     c.order.slice(0, 3).forEach(o => look(o.c.record, 'small'));
@@ -275,7 +281,7 @@ async function modeCut(ids: string[], out: string, maxGb: number, estimateOnly: 
   for (const id of todo) {
     done.skipped = done.skipped.filter(s => s.pandId !== id);
     try {
-      const p = await pickPose({ id } as Entry, fps.get(normId(id)), F4_ARGS, ranks.get(id));
+      const p = await pickPose(entryOf(id), fps.get(normId(id)), F4_ARGS, ranks.get(id));
       if ('skip' in p) { done.skipped.push({ pandId: id, skip: p.skip }); console.log(`${id}: skipped (${p.skip})`); continue; }
       const rec = p.pick.record, ll = recordLL(rec), camRd = lngLatToRd(ll);
       const toLocal = (q: Rd) => rdToLocal(q, ll);
@@ -357,7 +363,7 @@ async function picksFor(ids: string[], cutsFile: string | undefined, maxGb: numb
   for (const id of ids) {
     const r = rows.get(id);
     if (r) { targets.push({ pandId: id, panoId: r.panoId, wall: r.wall, record: { pano_id: r.panoId, timestamp: r.captured, geometry: { coordinates: [r.pose.lngLat[0], r.pose.lngLat[1], r.pose.cameraNap == null ? 0 : r.pose.cameraNap + 43.5] }, _links: { equirectangular_medium: { href: r.panoHref }, ...(r.fullHref ? { equirectangular_full: { href: r.fullHref } } : {}) } } }); continue; }
-    const p = await pickPose({ id } as Entry, fps.get(normId(id)), F4_ARGS, ranks.get(id));
+    const p = await pickPose(entryOf(id), fps.get(normId(id)), F4_ARGS, ranks.get(id));
     if ('skip' in p) { skipped.push({ pandId: id, skip: p.skip }); continue; }
     targets.push({ pandId: id, panoId: p.pick.panoId, wall: p.quad, record: p.pick.record });
   }
@@ -379,7 +385,7 @@ async function modePano(ids: string[], out: string, cutsFile: string | undefined
   for (const t of targets) {
     recs.set(t.panoId, t.record);
     const set = new Set([t.panoId]);
-    const c = await rankCandidates({ id: t.pandId }, fpsAll.get(normId(t.pandId)), F4_ARGS);
+    const c = await rankCandidates(entryOf(t.pandId), fpsAll.get(normId(t.pandId)), F4_ARGS);
     if (!('skip' in c)) for (const o of c.ranked) if (coverOk(o) && c.clipKey(o) === 0) { set.add(o.panoId); if (!recs.has(o.panoId)) recs.set(o.panoId, o.record); }
     options.set(t.pandId, set);
   }
@@ -508,8 +514,9 @@ async function modeWindow(ids: string[], answers: string, out: string, cutsFile:
 export async function main(argv = process.argv.slice(2)) {
   const mode = argv[0], idsFile = argOf(argv, 'ids'), out = argOf(argv, 'out');
   const maxGb = Number(argOf(argv, 'max-new-gb') ?? 2), estimateOnly = argv.includes('--estimate-only');
-  if (!mode || !idsFile || !out || !['cut', 'pano', 'window', 'w1'].includes(mode)) { console.log('describe-cut.ts cut|pano|window|w1 --ids <file> --out <dir> [--answers <dir>] [--cuts <cuts.json>] [--ground-ratio 1.25] [--max-new-gb 2] [--estimate-only] [--max n]'); process.exit(2); }
+  if (!mode || !idsFile || !out || !['cut', 'pano', 'window', 'w1'].includes(mode)) { console.log('describe-cut.ts cut|pano|window|w1 --ids <file> --out <dir> [--answers <dir>] [--cuts <cuts.json>] [--ground-ratio 1.25] [--max-new-gb 2] [--estimate-only] [--max n] [--pins <pins.json>]'); process.exit(2); }
   const ids = readIds(idsFile).slice(0, Number(argOf(argv, 'max') ?? Infinity));
+  PINS_FILE = argOf(argv, 'pins');
   console.log(`${mode}: ${ids.length} pands; panorama cache ${CACHE_DIR}`);
   try {
     if (mode === 'cut') await modeCut(ids, path.resolve(out), maxGb, estimateOnly);

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012236213",
+ "image": {
+  "ref": "artifacts/house-rows/reread/cuts/0363100012236213.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": 2023,
+  "gate": null,
+  "panoId": "TMX7316010203-002921_pano_0015_000068",
+  "captured": "2023-01-10T10:49:04.063380Z"
+ },
+ "reader": "D1 opus v4.3 cut reread-2023",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {},
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "cornice",
+  "sameAs",
+  "windowSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the segmental-headed windows on rows 1 and 2 sit under round brick hood arches with a filled tympanum and light springer blocks"
+  },
+  {
+   "component": "shopfront",
+   "what": "one continuous modern shopfront with a plain light fascia band runs under both fronts in the outline"
+  },
+  {
+   "component": "dormer",
+   "what": "the dormer is a pointed hoist-beam dormer with a projecting beam"
+  }
+ ],
+ "notes": "The outline holds two fronts of equal width sharing one shopfront: a left one with flat heads and white block dressings, and a right one with arched heads on rows 1 and 2; the right one is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

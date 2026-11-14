@@ -1,0 +1,89 @@
+{
+  "note": "What the kit cannot say, per row front (house:rows copies them into RowRecord.schemaLimits and each pand's HouseSpec schemaLimits). Known differences from the photo that do not block a round.",
+  "kinkerstraat-86-110": [
+    {
+      "fronts": [
+        "0363100012160809"
+      ],
+      "component": "dormer",
+      "what": "the top dormer is brick with a white frame and a small capped pediment; the kit dormer is all white (drawn as a white stepped dormer)",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012236027#m0",
+        "0363100012236027#m1"
+      ],
+      "component": "roof",
+      "what": "small attic windows in the roof storey between the two hoist dormers",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012236213#m0",
+        "0363100012236213#m1"
+      ],
+      "component": "shopfront",
+      "what": "one continuous shopfront runs under both fronts (92 and 94); the record states one unit per front",
+      "ref": "2023 re-read (rereads/0363100012236213.json)"
+    },
+    {
+      "fronts": [
+        "0363100012236213#m0"
+      ],
+      "component": "window",
+      "what": "the 2023 re-read sees flat heads with white block dressings on 94 where the face says keystones; not stated (the re-read describes 92 only)",
+      "ref": "2023 re-read notes"
+    }
+  ],
+  "weteringschans-168096-171218": [
+    {
+      "fronts": [
+        "0363100012169016"
+      ],
+      "component": "dormer",
+      "what": "a wide white dormer with a tall double casement and a finial; the kit dormer is narrow with a four-pane window",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012169016"
+      ],
+      "component": "roof",
+      "what": "a small roof light in the mansard left of the dormer",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012169016"
+      ],
+      "component": "window",
+      "what": "the top-storey windows are shorter than drawn: the record has no per-storey window height (the row line and three equal storeys fix it)",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012171218"
+      ],
+      "component": "dormer",
+      "what": "an ornate stone dormer with scrolls, stepped sides and a double window (D1 gap: scrolls and a pointed pediment); drawn as the series pediment dormer",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012171218"
+      ],
+      "component": "window",
+      "what": "the middle storey's heads are heavy white pediments (D1 read: 'corniced stone lintels'); the record says flat heads with a stone lintel: the head vocabulary has no pediment dressing",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    },
+    {
+      "fronts": [
+        "0363100012171218"
+      ],
+      "component": "basement",
+      "what": "the souterrain windows are round-arched (D1 gap: 'two barred arched windows'); the record states basement windows and rustication, not their arch",
+      "ref": "integrator, blind review 6 (2026-11-14)"
+    }
+  ]
+}

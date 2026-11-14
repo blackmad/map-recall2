@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -49,35 +49,36 @@ test('Kinkerstraat 104, 102, 100 (159635, 152925, 160809) resolve to one design'
   assert.equal(new Set(fronts.map(f => f.seriesId)).size, 1);
   // one design but for 100's own dormer (an ornate wall dormer with a pediment and finial: D1 gap + face "larger pediment dormer")
   // and its reviewed block surrounds (integrator, sheet photo, 2026-11-14)
-  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
+  // and the reviewed flat-topped hoist dormers on 102/104 (blind review 6): the roof storey's dormer is a member variant
+  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: design(K, '0363100012160809').roofStorey }); };
   assert.equal(new Set(ids.map(noDormerKind)).size, 1);
   assert.equal(design(K, '0363100012160809').roofStorey.value.dormerKind, 'ornate-pinnacle');
-  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'pediment');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'plain');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.hoist, true);
   // one wall tone, one roof, one cornice line (street datum) for the three; the hash path drew one red and two tan
   const bricks = ids.map(id => K.specs[id].design.palette?.brick);
   assert.equal(new Set(bricks).size, 1);
   const d = design(K, ids[0]);
   assert.equal(d.corniceTopM.value, 14.18);
-  assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' });
+  assert.deepEqual(K.row.series.find(x => x.id === fronts[0].seriesId)!.design.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' }, 'the series roof; 102/104 carry reviewed hoist dormers');
   assert.deepEqual(d.heads.value, { shape: 'flat', dressing: 'block-course' }, 's1 heads on every upper storey (no storeys list)');
   assert.equal(d.wall.value.family, 'red-brown-brick');
 });
 
-test('Kinkerstraat 92–94 (236213): nothing staged from the scaffold read', () => {
+test('Kinkerstraat 92–94 (236213): the netted 2019 read is replaced by the 2023 re-read, which draws the right front only', () => {
   const fronts = K.row.fronts.filter(f => f.pandId === '0363100012236213');
   assert.equal(fronts.length, 2);
-  for (const f of fronts) assert.match(f.readHeld ?? '', /scaffold/);
-  assert.ok(K.row.flags.some(f => f.kind === 'scaffold'));
-  const spec = K.specs['0363100012236213'];
-  const reading = K.answers['0363100012236213']!.image.ref;
-  for (const [p, prov] of Object.entries(spec.provenance)) {
-    assert.ok(!prov.ref.includes(reading), `${p} cites the scaffold cut`);
-    assert.ok(!prov.ref.includes('0363100012236213') || !/D1 answers/.test(prov.ref), `${p} cites the scaffold reading`);
-  }
-  assert.ok(!K.row.overruled.some(o => o.front.startsWith('0363100012236213')), 'no reading of it is weighed');
-  // its two modules keep the face's head variants (keystone left, segmental tympanum right) and the row's lines
-  assert.deepEqual(fronts.map(f => (design(K, f.id).heads.value as { dressing: string }).dressing), ['keystone', 'segmental-tympanum']);
-  assert.notEqual(spec.design.palette?.brick, '#243142', 'the netting colour is not the wall');
+  for (const f of fronts) assert.equal(f.readHeld, undefined);
+  assert.ok(!K.row.flags.some(f => f.kind === 'scaffold' && f.fronts.some(x => x.startsWith('0363100012236213'))));
+  const rr = K.row.flags.find(f => f.kind === 'reread')!;
+  assert.match(rr.detail, /2023-01-10 capture TMX7316010203-002921_pano_0015_000068/);
+  assert.match(rr.detail, /2019-12-09/);
+  assert.equal(K.answers['0363100012236213']!.image.ref, 'artifacts/house-rows/reread/cuts/0363100012236213.jpg');
+  // the re-read describes the right front (92); the left one (94) keeps the face and its series
+  assert.match(fronts[0].readElsewhere ?? '', /front 2 of 2/);
+  assert.equal(fronts[1].readElsewhere, undefined);
+  assert.deepEqual(fronts.map(f => headsList(design(K, f.id).heads.value).map(h => h.dressing)), [['keystone'], ['segmental-tympanum', 'keystone']]);
+  assert.notEqual(K.specs['0363100012236213'].design.palette?.brick, '#243142', 'the netting colour is not the wall');
 });
 
 test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hoist, no pointed gable', () => {
@@ -156,16 +157,16 @@ test('Weteringschans review 3: doors left, 168042 a shop, block crowns on the fi
   }
 });
 
-test('Kinkerstraat 90 and 92: reviewed heads on every upper storey, the face disagreement flagged', () => {
+test('Kinkerstraat 90 and 92: tympana on storeys 1-2, flat heads with a keystone on storey 3 (face + D1; the review override reverted)', () => {
   for (const id of ['0363100012155794', '0363100012236213#m1']) {
     const h = design(K, id).heads;
-    assert.equal(h.source, 'reviewed');
-    assert.deepEqual(h.value, { shape: 'segmental', dressing: 'segmental-tympanum' });
+    assert.equal(h.source, 'face-intent');
+    assert.deepEqual(h.value, [{ shape: 'segmental', dressing: 'segmental-tympanum', storeys: [1, 2] }, { shape: 'flat', dressing: 'keystone', storeys: [3] }]);
+    assert.match(h.ref, /flat heads on storey 3/);
   }
   assert.equal((design(K, '0363100012236213#m0').heads.value as { dressing: string }).dressing, 'keystone');
-  assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.fronts.includes('0363100012155794')));
+  assert.ok(!K.row.flags.some(f => f.kind === 'reviewed' && f.field === 'heads' && f.fronts.includes('0363100012155794')));
 });
-
 
 test('Weteringschans review 4: 169016 adds speklagen (reviewed) and keeps its floor cornices, its own series; 168096 ground stated', () => {
   const ex = design(W, '0363100012169016').extras;
@@ -209,4 +210,20 @@ test('Kinkerstraat 100: reviewed block surrounds as a front override in s1; the 
   const row2 = structuredClone(K.row);
   row2.fronts.find(x => x.id === '0363100012160809')!.overrides.heads!.source = 'single-read';
   assert.ok(checkOneDesign(toRowCheck(row2, {}, new Set())).length > 0);
+});
+
+test('Kinkerstraat 86-88 (233580) corner: the Bilderdijkstraat face that owns it states its Kinkerstraat front (no blank slab right of 90)', async () => {
+  const { blankCornerFronts } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
+  assert.deepEqual(blankCornerFronts('Kinkerstraat', K.row.members.map(m => m.pandId)), []);
+  // the check bites: the same pand on a street its owning face does not state
+  assert.deepEqual(blankCornerFronts('Overtoom', ['0363100012233580']).map(g => g.face), ['bilder-233580-162444']);
+});
+
+test('Weteringschans 168042: one dark shopfront (a narrow door and one large window), drawn as one unit', () => {
+  const g = W.row.fronts.find(x => x.id === '0363100012168042')!.ground;
+  assert.equal(g.shopUnits?.value, 1);
+  assert.equal(g.colour?.value, 'dark');
+  const sf = (W.specs['0363100012168042'].design.fronts![0] as Record<string, any>).shopfront;
+  assert.deepEqual([sf.displayWindows, sf.glazing, sf.entrance], [1, 'single', 'left']);
+  assert.equal(oneShopfront({ gaps: [{ component: 'shopfront', what: 'two shops side by side under one fascia' }] } as never), null);
 });

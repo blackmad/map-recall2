@@ -38,19 +38,19 @@ test('every front record carries its series draw and the judged wall tone, one t
   for (const [s, t] of tones) assert.equal(t.size, 1, `${s}: one wall tone`);
 });
 
-test('Kinkerstraat 106–108 (236027) draws one pediment dormer per front, centred in each half', () => {
+test('Kinkerstraat 106–108 (236027) draws one flat-topped hoist dormer per front, centred in each half (blind review 6)', () => {
   const s = rec(K, '0363100012236027').series!;
   assert.equal(s.roofStorey?.kind, 'mansard');
-  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'pediment'], [0.75, 'pediment']]);
+  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'plain'], [0.75, 'plain']]);
   assert.equal(s.roofStorey!.riseM, undefined, 'the record states no rise: 3DBAG or the period default decides');
 });
 
 test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left front, tympana on the right', () => {
   const s = rec(K, '0363100012236213').series!;
-  const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0);
-  assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing]), [[0, 0.5, 'keystone'], [0.5, 1, 'segmental-tympanum']]);
-  // every upper storey (reviewed 2026-11-14 on the r3 sheet: the face and D1 said storeys 1-2)
-  assert.equal(hs[1].storeys, undefined);
+  const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0 || (p.storeys?.[0] ?? 0) - (q.storeys?.[0] ?? 0));
+  // the right front: tympana on storeys 1-2, flat heads with a keystone on storey 3 (the face and D1; the round-6 review
+  // reverted the "every storey" override)
+  assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing, h.storeys ?? null]), [[0, 0.5, 'keystone', null], [0.5, 1, 'segmental-tympanum', [1, 2]], [0.5, 1, 'keystone', [3]]]);
 });
 
 test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dormers', () => {
