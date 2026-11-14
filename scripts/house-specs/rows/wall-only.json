@@ -1,0 +1,12 @@
+{
+  "about": "Row members an installed face chunk of another street owns whole: the row draws only this street's wall on edgeRD (left to right as seen from the street), and the chunk's rowFront variant (scripts/block-face/row-wall-variant.ts) leaves that wall out. Lane D 2026-11-14.",
+  "rows": {
+    "kinkerstraat-86-110": {
+      "0363100012233580": {
+        "chunk": "chunk-face-bilder-233580-162444",
+        "edgeRD": [[119895.972625, 486719.2055], [119902.969625, 486722.4215]],
+        "ref": "BAG footprint 0363100012233580, Kinkerstraat edge from 90's party wall to the chamfer (7.70 m); rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10): 90's design over the whole edge, 5 axes"
+      }
+    }
+  }
+}

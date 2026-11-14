@@ -1,0 +1,21 @@
+{
+  "note": "Re-reads (lane D, 2026-11-14): a front whose first D1 read was held (scaffold, netting) is re-cut from another capture year (describe-cut.ts cut --pins) and read once with the D1 prompt. house:rows uses the re-read in place of the held read; row-sheet shows the re-read capture, labelled. queue.json (reread-queue.ts) lists the fronts still waiting.",
+  "pands": {
+    "0363100012236213": {
+      "answer": "scripts/house-specs/rows/rereads/0363100012236213.json",
+      "cut": "artifacts/house-rows/reread/cuts/0363100012236213.jpg",
+      "panoId": "TMX7316010203-002921_pano_0015_000068",
+      "captured": "2023-01-10",
+      "obliquityDeg": 2.9,
+      "distM": 15.09,
+      "why": "integrator 2026-11-14: the ring sheet's rule-10 pick, un-netted",
+      "firstRead": {
+        "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236213.jpg",
+        "panoId": "TMX7316010203-001500_pano_0000_000267",
+        "captured": "2019-12-09",
+        "held": "scaffold and blue netting over the whole upper front"
+      },
+      "describes": "right"
+    }
+  }
+}

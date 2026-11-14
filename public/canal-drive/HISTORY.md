@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+
+## 2026-11-14 — Rows round 1 blocking narrowed; corner chunk becomes a row wall
+
+The fresh zoom reviewers failed both rows on ornament: voussoir splay, friezes, dormer richness. The review session ruled that only what reads from the photo pose blocks (same houses, roof line from the rule-10 pair, colour family, amount of white, nothing invented). Ornament goes on the sheet as known differences, counted by how many fronts share each. It also ruled that the photo strip is perspective, so roof height is judged on the rule-10 pair only.
+
+The worst thing in frame was a blank slab at Kinkerstraat 86–88. It was not a row fault: the Bilderdijkstraat face chunk replaced pand 233580 whole and modelled only its Bilderdijkstraat front. The fix that holds for every chunk-owned corner is a contract:
+- the row record marks the member `wallOnly` with its street edge;
+- the face compile bakes a `rowFront` chunk variant with that wall cut (`rowWallCut.ts`; empty primitives removed, or meshopt asserts);
+- with `ROW_FRONT` on, the row draws a 0.4 m wall slab in the series' dress (never a shed).
+
+110's invented pyramid came from `rowRoofBox` picking the nearer side street as the front; the record's `frontM` now decides. A pale corner volume was first misread as the building across the street. It is 233580's own chamfer bay, now pale render through `paintedStoreys` on a split front.
+
 ## House rows round 1 code and retail look round 1, merged flag-off (2026-11-14)
 
 **House rows.** Lanes D, R and P (#386–#388) built the row path the Fable review asked for.

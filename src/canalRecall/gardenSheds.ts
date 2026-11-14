@@ -108,6 +108,8 @@ export function isGardenShed(feature: ShedFeature, streets: SegmentGrid | null, 
   if (!streets) return false;
   const p = feature.properties;
   if (p.allotmentHouse || p.kitWall || p.kitRoof || p.frontCarrier || p.largeTier || p.monumentGable || p.shopSignature || p.shopChain) return false;
+  // House rows: a chunk-owned pand's street wall slab (houseLine/rowFront.ts rowWallSlab) is a house front, never a shed.
+  if (p.rowWallOnly) return false;
   if (Number(p.minHeight) > 0.5) return false;
   const ring = outerRing(feature.geometry);
   if (!ring) return false;

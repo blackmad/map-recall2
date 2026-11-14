@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "The Corner Inn corner has a front",
+      "text": "At Kinkerstraat and Bilderdijkstraat, the corner building beside Kinkerstraat 90 showed a tall blank brick wall to Kinkerstraat. That side was never modelled. It now has its brick front with five windows a storey, the slate roof storey with a hoist dormer, the Corner Inn shop on the ground floor, and its pale corner bay.",
+      "where": [
+        4.8718,
+        52.3672
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-kinker-corner-before.jpg",
+          "alt": "Kinkerstraat at Bilderdijkstraat before: a tall blank orange wall right of number 90",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-14-kinker-corner-after.jpg",
+          "alt": "After: a brick front with windows, a slate roof storey and the Corner Inn shopfront",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Roads stay level across the water",
       "text": "Where a road or cycle path crosses water on a raised bank, as at the Lelylaan over the Slotervaart or the Gaasperdammerweg, it now runs level from bank to bank. Before, it dropped into the hollow beside the water and climbed out again. Crossings with a dip of more than 1 m: 10 → 4.",
       "where": [

@@ -2,20 +2,6 @@
   "kinkerstraat-86-110": [
     {
       "fronts": [
-        "0363100012155794",
-        "0363100012236213#m1"
-      ],
-      "field": "heads",
-      "value": {
-        "shape": "segmental",
-        "dressing": "segmental-tympanum"
-      },
-      "ref": "integrator, r3 sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (Kinkerstraat 90; 92 is the same series)",
-      "at": "2026-11-14",
-      "note": "arched heads with white keystones on all three upper storeys, the top storey included; the face citation and D1 read said storeys 1-2"
-    },
-    {
-      "fronts": [
         "0363100012236027#m0",
         "0363100012236027#m1"
       ],
@@ -68,6 +54,35 @@
       "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
       "at": "2026-11-14",
       "note": "100: white block surrounds frame each whole window, jambs and head, on every upper storey; a front override, 100 stays in s1"
+    },
+    {
+      "fronts": [
+        "0363100012236027#m0",
+        "0363100012236027#m1",
+        "0363100012159635",
+        "0363100012152925"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "plain",
+        "hoist": true
+      },
+      "ref": "integrator, blind review 6 (sheet photo)",
+      "at": "2026-11-14",
+      "note": "102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting"
+    },
+    {
+      "fronts": [
+        "0363100012233580"
+      ],
+      "field": "bays",
+      "value": 5,
+      "ref": "lane D, rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10), kinker-roundi-rule10-triple row 2",
+      "at": "2026-11-14",
+      "note": "86-88: 90's design (s3) over the whole 7.69 m Kinkerstraat edge, 5 axes; the series' 3 bays are per 4.2 m front"
     }
   ],
   "weteringschans-168096-171218": [

@@ -10,9 +10,11 @@ const { loadRowDefs } = await import('../../../scripts/house-specs/rows/rowDefs.
 const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.ts');
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
-const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE } = await import('./rowFront.ts');
-const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles } = await import('../roofMesh.ts');
+const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB } = await import('./rowFront.ts');
+const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
+const { isGardenShed } = await import('../gardenSheds.ts');
+const { SegmentGrid } = await import('../streetFronts.ts');
 
 const defs = loadRowDefs();
 const recs = (id: string) => rowFrontsWithSeries(solveRow(loadRow(defs[id], '2026-11-14').input));
@@ -38,25 +40,27 @@ test('every front record carries its series draw and the judged wall tone, one t
   for (const [s, t] of tones) assert.equal(t.size, 1, `${s}: one wall tone`);
 });
 
-test('Kinkerstraat 106–108 (236027) draws one pediment dormer per front, centred in each half', () => {
+test('Kinkerstraat 106–108 (236027) draws one flat-topped hoist dormer per front, centred in each half (blind review 6)', () => {
   const s = rec(K, '0363100012236027').series!;
   assert.equal(s.roofStorey?.kind, 'mansard');
-  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'pediment'], [0.75, 'pediment']]);
+  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'plain'], [0.75, 'plain']]);
   assert.equal(s.roofStorey!.riseM, undefined, 'the record states no rise: 3DBAG or the period default decides');
 });
 
 test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left front, tympana on the right', () => {
   const s = rec(K, '0363100012236213').series!;
-  const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0);
-  assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing]), [[0, 0.5, 'keystone'], [0.5, 1, 'segmental-tympanum']]);
-  // every upper storey (reviewed 2026-11-14 on the r3 sheet: the face and D1 said storeys 1-2)
-  assert.equal(hs[1].storeys, undefined);
+  const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0 || (p.storeys?.[0] ?? 0) - (q.storeys?.[0] ?? 0));
+  // the right front: tympana on storeys 1-2, flat heads with a keystone on storey 3 (the face and D1; the round-6 review
+  // reverted the "every storey" override)
+  assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing, h.storeys ?? null]), [[0, 0.5, 'keystone', null], [0.5, 1, 'segmental-tympanum', [1, 2]], [0.5, 1, 'keystone', [3]]]);
 });
 
-test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dormers', () => {
-  const s = rec(K, '0363100012233580').series!;
-  assert.equal(s.roofStorey?.kind, 'none');
-  assert.equal(s.roofStorey!.dormers.length, 0);
+test('Kinkerstraat 86–88 (233580) is a member of 90\'s series: same heads, roof storey and window look (lane D, rule-10 pano)', () => {
+  const s = rec(K, '0363100012233580').series!, s90 = rec(K, '0363100012155794').series!;
+  assert.equal(s.id, s90.id);
+  assert.deepEqual(s.heads, s90.heads);
+  assert.equal(s.roofStorey?.kind, 'mansard');
+  assert.deepEqual(s.roofStorey!.dormers, [{ a: 0.5, kind: 'pediment' }]);
 });
 
 test('Weteringschans 169016: souterrain, mansard, one pediment dormer with a hoist; 168096 a cornice front over basement windows, no roof storey', () => {
@@ -74,6 +78,10 @@ test('the series draws no extras beyond ROW_FRONT_EXTRAS unless the series state
   // Weteringschans: only the bands each house's reading states (lane D, integrator 2026-11-14: read and drawn, not dropped)
   // plus the kit parts its gaps name (balcony, porch, rusticated souterrain; lane R round 2)
   const wx = Object.fromEntries(W.map(r => [r.pandId.slice(-6), r.series!.extras ? [...r.series!.extras].sort() : undefined]));
+  // 168042 states one shop unit, black-framed: the single shopfront, its door left as read (not a split by width).
+  const shop = rowDressOf(rec(W, '0363100012168042').series!);
+  assert.ok(shop.extras?.includes('row-shopfront'));
+  assert.deepEqual(shop.shopFront, { frameHex: '#2c2824', side: 'left' });
   assert.deepEqual(wx, { 168096: ['floor-cornices'], 168042: undefined, 169016: ['floor-cornices', 'row-balcony', 'row-porch', 'speklagen', 'string-courses'], 171218: ['row-balcony', 'row-porch', 'row-rustication', 'speklagen'] });
   const none = seriesDraw([{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 5, seriesId: 's', ground: { use: 'dwelling' }, overrides: {}, topM: 12 }],
     [{ ...solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design, extras: { value: ['window-sills', 'speklagen'], source: 'face-intent', ref: 't' } }]);
@@ -94,11 +102,11 @@ test('a series member draws a mansard roof plan at its cornice line, never the h
   assert.equal(plan.pieces?.length, 1);
 });
 
-test('the flat-lid series member (86–88) gets a flat roof at its top', () => {
+test('the corner member (86–88) is wall-only: no roof of its own, the chunk keeps the mansard (lane D wall-only.json)', () => {
   const r = rec(K, '0363100012233580');
   const p = withFlag(K, () => withRowFront(feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }))).properties;
   assert.equal(p.roofShape, 'flat');
-  assert.equal(p.height, r.eavesM);
+  assert.equal(p.rowRoof, undefined);
 });
 
 test('the souterrain series draws one more storey with a souterrain ground cell (Weteringschans 171218)', () => {
@@ -121,13 +129,15 @@ test('the Kinkerstraat mansards join across party walls at one line; the row end
   for (const id of ['0363100012236027', '0363100012159635', '0363100012152925', '0363100012160809', '0363100012158180', '0363100012156028', '0363100012236213'])
     assert.deepEqual(j(id), { left: true, right: true }, id);
   assert.deepEqual(j('0363100012155794'), { left: true, right: true }, '90 runs on into 86-88 at the same line (3DBAG 16.84 / 16.62 m)');
-  assert.equal(rec(K, '0363100012233580').series!.roofStorey!.joins, undefined);
+  assert.deepEqual(j('0363100012233580'), { left: true, right: true }, '86-88 continues the row mansard to the corner (rule-10 pano)');
 });
 
 test('one window look per series: bays per front, the series year and line, whatever the pand', () => {
   const looks = new Map<string, Set<string>>();
-  for (const r of K) (looks.get(r.series!.id) ?? looks.set(r.series!.id, new Set()).get(r.series!.id)!).add(JSON.stringify(r.series!.look));
+  // 86-88 (233580) states its own bay count (reviewed: 5 axes on the 7.7 m corner front, lane D); the rest of its look is 90's.
+  for (const r of K) (looks.get(r.series!.id) ?? looks.set(r.series!.id, new Set()).get(r.series!.id)!).add(JSON.stringify({ ...r.series!.look, bays: r.pandId === '0363100012233580' ? 3 : r.series!.look!.bays }));
   for (const [sid, l] of looks) assert.equal(l.size, 1, `${sid}: one look`);
+  assert.equal(rec(K, '0363100012233580').series!.look!.bays, 5, '86-88: the reviewed 5 axes');
   assert.equal(rec(K, '0363100012236027').series!.look!.bays, 3, 'a two-front pand still picks the 3-bay preset');
 });
 
@@ -215,4 +225,77 @@ test('series members draw identical storey lines: one ground height and count fr
 
 test('the record\'s window kind sets the series glazing: T-windows and toplit casements paint large panes under a transom', () => {
   for (const r of [...W, ...K]) assert.equal(r.series!.look!.sash, 'transom', r.pandId);
+});
+
+test('a row type states its window width: kinker-1890-plain-brick windows take 75 % of their axis pitch', () => {
+  for (const r of K) assert.equal(r.series!.windowShare, 0.75, r.pandId);
+  for (const r of W) assert.equal(r.series!.windowShare, undefined, r.pandId);
+});
+
+test('Kinkerstraat 110 (corner end): its slate mansard faces Kinkerstraat, not the nearer side street (no pyramid)', () => {
+  const r = rec(K, '0363100012165799');
+  const out = withFlag(K, () => withRowFront({ ...feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }), geometry: { type: 'Polygon', coordinates: ring(5.2, 13) } }));
+  const p = out.properties;
+  assert.equal(p.roofShape, 'mansardHip');
+  assert.equal((p.rowRoof as { frontM?: number }).frontM, 5.2, 'the member\'s front width reaches the roof');
+  const plan = roofPlanForFeature(out as never)!;
+  assert.equal(plan.kind, 'mansardHip');
+  assert.equal(plan.material, 'slate');
+  assert.equal(plan.pieces?.[0].plan.rowFrontM, 5.2);
+  // 110's outline: a 5.2 m front on Kinkerstraat (y = 0, 8.0 m from the street), 13 m deep, its long side wall 6.9 m
+  // from the cross street (the measured distances, tile 14/8413/5384). The nearest street wall is the side one.
+  const lat0 = 52.381, kx = 111_320 * Math.cos(lat0 * Math.PI / 180), origin = { lng: 4.888, lat: lat0 };
+  const outer = ((out as { geometry: { coordinates: number[][][] } }).geometry.coordinates[0]);
+  const facing = (w: { nx: number; ny: number }) => w.ny < -0.9 ? 8.0 : w.nx > 0.9 ? 6.9 : Infinity;
+  const h0 = Number(p.roofEavesHeightM), rise = Number(p.height) - h0;
+  const deck = (pl: typeof plan) => {
+    const top = roofTrianglesForOutline(outer, origin, pl, h0, { bayM: 2, storeyM: 3, cellM: 1 }, kx, facing).filter(t => t.part === 'plate' || t.part === undefined)
+      .flatMap(t => t.p).filter(q => Math.abs(q[2] - (h0 + rise)) < 0.05);
+    const ys = top.map(q => q[1]), xs = top.map(q => q[0]);
+    return { along: Math.max(...ys) - Math.min(...ys), across: Math.max(...xs) - Math.min(...xs) };
+  };
+  const d = deck(plan);
+  assert.ok(d.along > 8 && d.across < 5.3, `the mansard deck runs back from the front (${d.along.toFixed(1)} m deep, ${d.across.toFixed(1)} m wide)`);
+  // Without the stated front the side wall wins: the box turns, its hips land on the front and party walls (in game, on
+  // 110's kinked outline, a pyramid).
+  const blind = { ...plan, pieces: plan.pieces!.map(pc => ({ ...pc, plan: { ...pc.plan, rowFrontM: undefined } })) };
+  const old = deck(blind);
+  assert.ok(old.across < d.across - 1, `no front width: the box faced the side street, its hips across the 5.2 m front (${old.along.toFixed(1)} x ${old.across.toFixed(1)})`);
+});
+
+test('a chunk-owned corner (86-88): the row draws its stated street wall as a slab under its own id, the chunk keeps the rest', () => {
+  // Lane D states the chunk and the Kinkerstraat edge on the member; rowFrontsWithSeries carries it to the record.
+  const solved = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input);
+  const lng = 4.888, lat = 52.381, kx = 111_320 * Math.cos(lat * Math.PI / 180);
+  const edge: [[number, number], [number, number]] = [[lng, lat], [lng + 7.69 / kx, lat]];
+  const member = solved.members.find(m => m.pandId === '0363100012233580')!;
+  const withWall = { ...solved, members: solved.members.map(m => m === member ? { ...m, wallOnly: { chunk: 'chunk-face-bilder-233580-162444', edge } } : m) };
+  const KW = rowFrontsWithSeries(withWall);
+  const r = rec(KW, '0363100012233580');
+  assert.deepEqual(r.wallOnly, { chunk: 'chunk-face-bilder-233580-162444', edge });
+  // The staged row states it (scripts/house-specs/rows/wall-only.json, lane D): the BAG Kinkerstraat edge, left to right.
+  assert.equal(rec(K, '0363100012233580').wallOnly?.chunk, 'chunk-face-bilder-233580-162444');
+  assert.equal(rec(K, '0363100012155794').wallOnly, undefined, 'no stated wall: the record as before');
+  // The pand's footprint behind the edge (y > 0): 7.69 m along Kinkerstraat, 10 m deep.
+  const ll = (x: number, y: number) => [lng + x / kx, lat + y / 110_540];
+  const f = { ...feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }), geometry: { type: 'Polygon', coordinates: [[ll(0, 0), ll(7.69, 0), ll(7.69, 10), ll(0, 10), ll(0, 0)]] } };
+  const out = withFlag(KW, () => withRowFront(f)) as typeof f;
+  const p = out.properties;
+  assert.equal(p.id, `NL.IMBAG.Pand.${r.pandId}${ROW_WALL_SUFFIX}`, 'its own mesh id: the chunk\'s suppression of the pand does not hide it');
+  assert.equal(p.rowRoof, undefined, 'no row roof: the chunk\'s mansard stands over it');
+  assert.equal(p.roofShape, 'flat');
+  assert.equal(p.height, r.eavesM, 'the wall stands to the series line');
+  assert.equal(p.rowSeries, r.series!.id);
+  assert.ok(p.rowDress, 'the series dress');
+  const ring = (out.geometry as { coordinates: number[][][] }).coordinates[0].map(([x, y]) => [(x - lng) * kx, (y - lat) * 110_540]);
+  assert.equal(ring.length, 5);
+  assert.ok(Math.abs(ring[0][0]) < 1e-6 && Math.abs(ring[0][1]) < 1e-6 && Math.abs(ring[1][0] - 7.69) < 1e-6 && Math.abs(ring[1][1]) < 1e-6, 'its face on the stated edge');
+  for (const q of ring.slice(2, 4)) assert.ok(Math.abs(q[1] - ROW_WALL_SLAB.depthM) < 1e-6, 'its back inside the footprint');
+  assert.ok(ring[2][0] < 7.69 && ring[3][0] > 0, 'its ends slant inward, never in the plane of the chunk\'s side wall');
+  // A 0.4 m slab is shed-sized: it must never fall to the garden-shed rule (bare walls; the game drew 86-88 blank).
+  const far = new SegmentGrid(Float32Array.from([1e5, 1e5, 1e5 + 1, 1e5]));
+  assert.equal(isGardenShed(out as never, far, { lng, lat }), false);
+  assert.equal(isGardenShed({ ...out, properties: { ...p, rowWallOnly: undefined } } as never, far, { lng, lat }), true, 'without the mark it would be a shed');
+  // Flag off: untouched.
+  assert.equal(withRowFront(f), f);
 });

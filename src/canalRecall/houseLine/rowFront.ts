@@ -20,6 +20,10 @@ import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape }
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
   pandId: string;
+  /** A chunk-owned pand whose street wall the row draws (lane D's member `wallOnly`, Kinkerstraat 86-88): the chunk's
+   *  ROW_FRONT variant leaves that face out and keeps the rest; the row draws a thin wall slab on `edge` (lng/lat, left
+   *  to right as seen from the street) in its series' dress, under the chunk's roof. */
+  wallOnly?: RowWallOnly;
   face?: string;
   /** The front's highest line above its ground (m): a cornice top, or a gable's apex. */
   topM: number | null;
@@ -86,7 +90,9 @@ export interface RowSeriesDraw {
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
   roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
     /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
-    joins?: { left?: boolean; right?: boolean } };
+    joins?: { left?: boolean; right?: boolean };
+    /** The member's street front width (lane D `members[].widthM`, m): which outline wall the roof faces on a corner. */
+    frontM?: number };
   heads?: RowHeadsDraw[];
   /** Wall components the series states beyond the heads and cornice (bands: `floor-cornices`, `string-courses`,
    *  `speklagen`); each must be a facade component id. */
@@ -106,14 +112,19 @@ export interface RowSeriesDraw {
   shop?: boolean;
   /** The ground (shopfront) colour as the record states it (`ground.colour`), drawn as stated. */
   groundHex?: string;
+  /** Stated shop units (`ground.shopUnits`); 1 = one opening, not split by width (row-shopfront). */
+  shopUnits?: number;
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
+  /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
+  windowShare?: number;
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
 export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
 
-export const ROW_FRONT_DEFAULT = false;
+export { ROW_FRONT_DEFAULT, rowFrontEnabled } from './rowFrontFlag.js';
+import { rowFrontEnabled } from './rowFrontFlag.js';
 /**
  * Step e, subtract before adding: the only wall extras a front record's house draws unless a register or spec states
  * more. Gone: flower boxes, iron and Juliet balconies, corner pilasters and pale masonry quoins, cornice vases (the roof
@@ -122,11 +133,6 @@ export const ROW_FRONT_DEFAULT = false;
 export const ROW_FRONT_EXTRAS: readonly string[] = ['window-sills', 'white-window-frames', 'door-surround', 'wall-anchors', 'plinth', 'downpipe'];
 /** A record house's shopfront paint (sign, fascia, awning accent): the photo's shopfronts are dark and muted. */
 export const ROW_FRONT_SHOP_HEX = '#2e2b29';
-export function rowFrontEnabled(search?: string | null, env?: string | null): boolean {
-  const q = search ? /[?&]rowFront=([01])\b/.exec(search)?.[1] : undefined;
-  const v = q ?? (env === '0' || env === '1' ? env : undefined);
-  return v === undefined ? ROW_FRONT_DEFAULT : v === '1';
-}
 let flagNow: boolean | undefined;
 export function rowFrontOn(): boolean {
   if (flagNow !== undefined) return flagNow;
@@ -286,9 +292,12 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 }
 
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony'] } {
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}) };
+/** A single shopfront's frame when the record states no ground colour. */
+export const ROW_SHOP_FRAME = '#e6e1d6';
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+  const single = series.shop === true && series.shopUnits === 1;
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(single ? ['row-shopfront'] : [])];
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -452,6 +461,38 @@ export function mansardRise(stated: number | undefined): number {
   return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }
 
+export interface RowWallOnly { chunk: string; edge: [[number, number], [number, number]] }
+/** The mesh id suffix of a row-drawn wall slab (a chunk-owned pand's street wall). */
+export const ROW_WALL_SUFFIX = '#row-wall';
+/** A row wall slab's depth behind its street face, and how far its back corners are pulled in along the face (m): its ends
+ *  slant into the building, never in the plane of the chunk's side wall at a corner. */
+export const ROW_WALL_SLAB = { depthM: 0.4, taperM: 0.15 } as const;
+
+export function rowWallOnlyOf(v: unknown): RowWallOnly | null {
+  const w = v as { chunk?: unknown; edge?: unknown } | null;
+  const pt = (q: unknown) => Array.isArray(q) && q.length === 2 && q.every(n => typeof n === 'number' && Number.isFinite(n));
+  return w && typeof w.chunk === 'string' && Array.isArray(w.edge) && w.edge.length === 2 && w.edge.every(pt) ? { chunk: w.chunk, edge: [[...w.edge[0]], [...w.edge[1]]] as RowWallOnly['edge'] } : null;
+}
+
+/** The slab polygon on a stated street edge: its face on the edge, ROW_WALL_SLAB deep towards the footprint's middle. */
+export function rowWallSlab(edge: RowWallOnly['edge'], geometry: unknown): { type: 'Polygon'; coordinates: number[][][] } | null {
+  const g = geometry as { type?: string; coordinates?: any } | null;
+  const ring: number[][] | undefined = g?.type === 'Polygon' ? g.coordinates?.[0] : g?.type === 'MultiPolygon' ? g.coordinates?.[0]?.[0] : undefined;
+  if (!ring || ring.length < 4) return null;
+  const [[lng0, lat0], [lng1, lat1]] = edge, kx = 111_320 * Math.cos(lat0 * Math.PI / 180), ky = 110_540;
+  const ex = (lng1 - lng0) * kx, ey = (lat1 - lat0) * ky, len = Math.hypot(ex, ey);
+  if (!(len > 1)) return null;
+  const ux = ex / len, uy = ey / len;
+  const pts = ring.slice(0, -1), mx = pts.reduce((t, q) => t + (q[0] - lng0) * kx, 0) / pts.length, my = pts.reduce((t, q) => t + (q[1] - lat0) * ky, 0) / pts.length;
+  // Inward: the edge normal on the footprint's side.
+  let nx = -uy, ny = ux;
+  if (nx * mx + ny * my < 0) { nx = -nx; ny = -ny; }
+  const { depthM: d, taperM: t } = ROW_WALL_SLAB;
+  const at = (x: number, y: number) => [lng0 + x / kx, lat0 + y / ky];
+  const a = at(0, 0), b = at(ex, ey), c = at(ex - ux * t + nx * d, ey - uy * t + ny * d), e = at(ux * t + nx * d, uy * t + ny * d);
+  return { type: 'Polygon', coordinates: [[a, b, c, e, a]] };
+}
+
 /**
  * Decorator step after withHouseSpecCrown, before decorateRoof (galleryPipeline.ts). Applies steps a and b to a pand
  * with a record when the flag is on; otherwise returns the same object.
@@ -492,8 +533,16 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}) } });
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
+    const slab = rec.wallOnly ? rowWallSlab(rec.wallOnly.edge, feature.geometry) : null;
+    if (slab) {
+      // The chunk keeps the roof and every other wall: the row draws the stated wall only, under its own mesh id so the
+      // chunk's suppression of the pand does not hide it.
+      delete props.rowRoof; delete props.roofDormer;
+      Object.assign(props, { id: `${String(p.id)}${ROW_WALL_SUFFIX}`, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowWallOnly: rec.wallOnly!.chunk });
+      return { ...feature, properties: props, geometry: slab };
+    }
     return { ...feature, properties: props };
   }
   // Sub-fronts with their own tops (HD22/24): a flat lid at the tallest wall top; the mesher steps each front's wall

@@ -465,6 +465,9 @@ function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
   const frame = bar ? '#2a1a10' : p.cartoon ? '#fffaf0' : '#2e2b28';
   // A brown bar's whole ground storey is dark timber (untinted ink): the cream surround is what read wrong.
   if (bar && !p.cartoon) { p.fill('ink', '#2e1c12'); ctx.fillRect(0, fB, w, h - fB); p.shade(() => { ctx.fillStyle = 'rgba(255,220,170,0.06)'; for (let x = 6; x < w; x += 23) ctx.fillRect(x, fB, 2, h - fB); }); }
+  // Round 3b tone: the pui's paint a step down (the measured shop paints read pale against the photos' ground storey,
+  // mean L 0.43 drawn against 0.37 photographed): a muting shade over the painted ground, under everything drawn after.
+  if (!p.cartoon && !bar) p.shade(() => { ctx.fillStyle = 'rgba(20,18,16,0.16)'; ctx.fillRect(0, fB, w, h - fB); });
   // The fascia band across the bay, in the accent (the business's colour), with a thin shadow line under it.
   p.fill('accent', '#ffffff'); ctx.fillRect(0, fT, w, fB - fT);
   p.fill('ink', 'rgba(0,0,0,0.35)'); ctx.fillRect(0, fB, w, 4);
@@ -505,7 +508,7 @@ function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
     // Round 3: the street in the glass. The upper third reflects the sky and the far side (pale grey-blue fading down
     // into the interior) and a soft diagonal streak crosses the pane: shop glass by day, not a dark painted board.
     const sky = ctx.createLinearGradient(0, y0, 0, y0 + gh * 0.42);
-    sky.addColorStop(0, 'rgba(176,190,200,0.62)'); sky.addColorStop(0.55, 'rgba(150,164,174,0.30)'); sky.addColorStop(1, 'rgba(150,164,174,0)');
+    sky.addColorStop(0, 'rgba(160,174,184,0.42)'); sky.addColorStop(0.55, 'rgba(140,154,164,0.20)'); sky.addColorStop(1, 'rgba(150,164,174,0)');
     ctx.fillStyle = sky; ctx.fillRect(x0, y0, gw, gh * 0.42);
     ctx.fillStyle = 'rgba(214,222,228,0.10)'; ctx.beginPath(); ctx.moveTo(x0 + gw * 0.55, y0); ctx.lineTo(x0 + gw * 0.72, y0); ctx.lineTo(x0 + gw * 0.42, y1); ctx.lineTo(x0 + gw * 0.25, y1); ctx.closePath(); ctx.fill();
   });
@@ -519,7 +522,8 @@ function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
   }
   p.fill('ink', frame);
   if (p.cartoon && (kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe')) ctx.fillRect(x0, y0 + Math.round(gh * 0.22), gw, 6);
-  if (kind === 'shopCafe') { p.fill('ink', p.cartoon ? '#ece6da' : '#9c8f7c'); ctx.fillRect(x0, y0 + Math.round(gh * 0.62), gw, Math.round(gh * 0.38)); }
+  // Round 3c (lane retail-look): the café's half-curtain in a dark linen; the pale #9c8f7c read as a beige board in every frame.
+  if (kind === 'shopCafe') { p.fill('ink', p.cartoon ? '#ece6da' : '#5e564c'); ctx.fillRect(x0, y0 + Math.round(gh * 0.62), gw, Math.round(gh * 0.38)); }
   if (bar) {
     // Small panes: muntins over the whole glass, a transom bar, and an inner shadow so the glass reads set back.
     p.fill('ink', frame);

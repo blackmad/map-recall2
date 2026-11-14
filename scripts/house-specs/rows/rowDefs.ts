@@ -27,5 +27,17 @@ export function loadRowDefs(): Record<string, RowDef> {
   return out;
 }
 
-/** The reader's cut for a pand: the canonical D1 dir first, then the regenerated local copy. */
-export const cutPath = (def: RowDef, pandId: string): string | null => [def.cutsDir, def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null;
+/** A re-read (scripts/house-specs/rows/rereads.json): a held first read re-cut from another capture year and read again. */
+export interface Reread {
+  answer: string; cut: string; panoId: string; captured: string; obliquityDeg?: number; distM?: number; why?: string;
+  /** `left` / `right`: the read of a multi-front capture describes that module only. */
+  describes?: 'left' | 'right';
+  firstRead: { ref: string; panoId?: string; captured?: string; held: string };
+}
+export function loadRereads(): Record<string, Reread> {
+  const f = path.join(HERE, 'rereads.json');
+  return fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, 'utf8')).pands ?? {}) : {};
+}
+/** The reader's cut for a pand: a re-read's capture first (the sheet shows what the read saw), then the canonical D1 dir,
+ *  then the regenerated local copy. */
+export const cutPath = (def: RowDef, pandId: string): string | null => [loadRereads()[pandId] ? path.dirname(path.join(REPO, loadRereads()[pandId].cut)) : undefined, def.cutsDir, def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null;

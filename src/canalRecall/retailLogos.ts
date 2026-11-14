@@ -42,3 +42,56 @@ export function logoFor(template: RetailTemplate): { rect: [number, number, numb
   const b = logoBox(i);
   return { rect: [b.x, 1 - (b.y + b.h), b.x + b.w, 1 - b.y], aspect: LOGOS[i].aspect };
 }
+
+/**
+ * Round 3c (lane retail-look-20261114): fascia lettering from the logo layer's spare cell (index 7, bottom right): a
+ * bold sans (Helvetica Neue Bold, drawn by scripts/retail-ground/build-logo-atlas.ts) in a 9 x 4 grid, A-Z then 0-9,
+ * white on black. paintLookAtlas paints the cell white with the glyph's coverage in the mask's tint channel (the
+ * letters' colour) and the rest in the accent channel (the board's colour), so one atlas letters every template. A
+ * letter is one textured quad. The 5 x 7 block letters this replaces were built from strips that broke into dots at
+ * ride distance. Texture filtering and mips keep a solid stroke at any distance.
+ */
+export const GLYPH_CELL = 7;
+export const GLYPH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+export const GLYPH_GRID = { cols: 9, rows: 4 } as const;
+/** Font size as a share of a glyph cell's height, and the baseline's place in it (the builder's text layout). */
+export const GLYPH_FONT = { size: 26 / 32, baseline: 0.5 + (26 / 32) * 0.36 } as const;
+/** Each glyph's ink, [x0, x1] as fractions of its cell's width (measured by the builder, which checks them). */
+export const GLYPH_INK: Readonly<Record<string, readonly [number, number]>> = {
+  '0': [0.263, 0.732], '1': [0.311, 0.605], '2': [0.263, 0.732], '3': [0.259, 0.737], '4': [0.259, 0.741], '5': [0.263, 0.737],
+  '6': [0.263, 0.732], '7': [0.281, 0.719], '8': [0.259, 0.741], '9': [0.263, 0.732], A: [0.18, 0.82], B: [0.241, 0.789],
+  C: [0.193, 0.803], D: [0.224, 0.803], E: [0.263, 0.763], F: [0.289, 0.75], G: [0.189, 0.794], H: [0.224, 0.776],
+  I: [0.425, 0.57], J: [0.259, 0.689], K: [0.232, 0.833], L: [0.289, 0.754], M: [0.149, 0.851], N: [0.224, 0.776],
+  O: [0.18, 0.82], P: [0.259, 0.776], Q: [0.18, 0.82], R: [0.232, 0.794], S: [0.224, 0.776], T: [0.232, 0.768],
+  U: [0.219, 0.776], V: [0.206, 0.794], W: [0.07, 0.925], X: [0.189, 0.807], Y: [0.189, 0.811], Z: [0.224, 0.776],
+};
+/** A letter quad's rows of its cell (v from the cell's top): the caps run 0.21-0.79, Q's tail to 0.85. */
+export const GLYPH_V = [0.1, 0.9] as const;
+/** Side bearing each side of the ink, as a share of the quad's height, and a space's advance. */
+export const GLYPH_SIDE = 0.07, GLYPH_SPACE = 0.32;
+/** The glyph cell's box in the atlas image (x, y from the top-left, fractions). */
+export function glyphCellBox(): { x: number; y: number; w: number; h: number } {
+  const { cols, rows } = LOGO_GRID;
+  return { x: (GLYPH_CELL % cols) / cols, y: Math.floor(GLYPH_CELL / cols) / rows, w: 1 / cols, h: 1 / rows };
+}
+export type GlyphQuad = { ch: string; a0: number; a1: number; rect: [number, number, number, number] };
+/**
+ * The word laid out in units of the letter quad's height: one quad per letter with its uv rect (v up, as logoFor), and
+ * the word's width. Characters outside A-Z 0-9 advance as a space.
+ */
+export function glyphLayout(word: string): { quads: GlyphQuad[]; width: number } {
+  const box = glyphCellBox(), gw = box.w / GLYPH_GRID.cols, gh = box.h / GLYPH_GRID.rows, quads: GlyphQuad[] = [];
+  const cellAspect = gw / gh;
+  let x = 0;
+  for (const ch of [...word.toUpperCase()]) {
+    const i = GLYPH_CHARS.indexOf(ch), ink = GLYPH_INK[ch];
+    if (i < 0 || !ink) { x += GLYPH_SPACE; continue; }
+    const cx = box.x + (i % GLYPH_GRID.cols) * gw, cy = box.y + Math.floor(i / GLYPH_GRID.cols) * gh;
+    const side = GLYPH_SIDE * (GLYPH_V[1] - GLYPH_V[0]) / cellAspect;
+    const f0 = Math.max(0, ink[0] - side), f1 = Math.min(1, ink[1] + side), w = (f1 - f0) * cellAspect / (GLYPH_V[1] - GLYPH_V[0]);
+    const y0 = cy + GLYPH_V[0] * gh, y1 = cy + GLYPH_V[1] * gh;
+    quads.push({ ch, a0: x, a1: x + w, rect: [cx + f0 * gw, 1 - y1, cx + f1 * gw, 1 - y0] });
+    x += w;
+  }
+  return { quads, width: x };
+}

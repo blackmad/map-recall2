@@ -68,3 +68,45 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
   if (deep) return { id: deep.c.id, front: deep.front < Infinity ? 'street' : 'nearest', inside: true, distanceM: Math.min(deep.front, deep.any) };
   return null;
 }
+
+/** Round 3b (lane retail-look-20261114): a stepped street wall reads as one shopfront. */
+export const STEP = { offsetM: 0.9, jogM: 1.5, cos: 0.97 } as const;
+export type RunEdge = { x0: number; y0: number; x1: number; y1: number; len: number; nx: number; ny: number };
+export type SteppedRun<E extends RunEdge> = {
+  /** The run as one wall frame: origin, unit direction and outward normal, length (m). */
+  x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number;
+  /** The parallel edges taken, each with its span on the run [t0, t1] and its set-back from the run's line (m, >= 0). */
+  parts: Array<{ e: E; t0: number; t1: number; backM: number }>;
+};
+/**
+ * The run of `best` along a stepped wall: BAG traces a shop block's street wall as short parallel pieces stepped by a few
+ * decimetres (HEMA Ferdinand Bolstraat 93A, pand 0363100012233666: 4.3 m and 4.5 m pieces between 0.4-1.4 m jogs), and
+ * a front on the one nearest piece drew a 4 m HEMA on what reads as the neighbour. Walks the ring from `best` both ways
+ * by shared endpoints through jogs of at most STEP.jogM to edges parallel to it (cos > STEP.cos) within STEP.offsetM of
+ * its line; the run's line is the outermost piece's. `best` alone when nothing joins it.
+ */
+export function steppedRun<E extends RunEdge>(best: E, ring: readonly E[]): SteppedRun<E> {
+  const ux = (best.x1 - best.x0) / best.len, uy = (best.y1 - best.y0) / best.len;
+  const key = (x: number, y: number) => `${Math.round(x * 100)},${Math.round(y * 100)}`;
+  const from = new Map<string, E>(), to = new Map<string, E>();
+  for (const e of ring) { from.set(key(e.x0, e.y0), e); to.set(key(e.x1, e.y1), e); }
+  const off = (e: E) => (e.x0 - best.x0) * best.nx + (e.y0 - best.y0) * best.ny;
+  const parallel = (e: E) => ((e.x1 - e.x0) * ux + (e.y1 - e.y0) * uy) / e.len > STEP.cos && Math.abs(off(e)) <= STEP.offsetM;
+  const taken: E[] = [best];
+  for (const dir of [1, -1] as const) {
+    let at: E = best, jog = 0;
+    for (let guard = 0; guard < ring.length; guard++) {
+      const next = dir > 0 ? from.get(key(at.x1, at.y1)) : to.get(key(at.x0, at.y0));
+      if (!next || next === best || taken.includes(next)) break;
+      if (parallel(next)) { taken.push(next); jog = 0; } else if (next.len <= STEP.jogM && (jog += next.len) <= STEP.jogM) { /* a jog */ } else break;
+      at = next;
+    }
+  }
+  const t = (x: number, y: number) => (x - best.x0) * ux + (y - best.y0) * uy;
+  let t0 = 0, t1 = best.len, out = 0;
+  for (const e of taken) { t0 = Math.min(t0, t(e.x0, e.y0)); t1 = Math.max(t1, t(e.x1, e.y1)); out = Math.max(out, off(e)); }
+  return {
+    x0: best.x0 + ux * t0 + best.nx * out, y0: best.y0 + uy * t0 + best.ny * out, ux, uy, nx: best.nx, ny: best.ny, len: t1 - t0,
+    parts: taken.map(e => ({ e, t0: t(e.x0, e.y0) - t0, t1: t(e.x1, e.y1) - t0, backM: out - off(e) })).sort((p, q) => p.t0 - q.t0),
+  };
+}

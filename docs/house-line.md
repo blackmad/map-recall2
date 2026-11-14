@@ -3494,8 +3494,8 @@ review); D owns records and the solve, R the renderer.
   22 one-design, 3 hash roofs, 44 silent drops; Weteringschans 169016 fails the mansard pin).
 - **Blind review.** `scripts/house-specs/rows/blind-review.md` and `blind-review-prompt.md`: a fresh opus agent sees only the
   two blind strips and answers `block | house | PASS/FAIL | reason` in visible order; `parse-review.ts` (typed:
-  `houseSpec/rowReview.ts`) gives pass, blocked (a fail in same-houses, roof-line or colour-family, or an overall FAIL),
-  pass-with-fails or invalid. The builder never reviews.
+  `houseSpec/rowReview.ts`) gives pass, blocked (a fail in same-houses, roof-line, colour-family or white-amount, or an overall FAIL),
+  pass-with-fails or invalid. The builder never reviews. `white-amount` (bands, heads, surrounds against the photo) was added after round 5, when speklagen drawn far too heavy and 90's top-storey heads passed. The reviewer also gets `blind/zoom/<label>.jpg`, per-front photo | drawing pairs at 3x the strip scale. A front whose shown capture is not the first read (`--reread-cuts <dir>`, or a different capture date in cuts.json) is labelled "re-read: <date>" or "shown capture ≠ first read" on the sheet and in the manifest.
 - **Weteringschans wall-colour sheet** (`ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg`): it drew `staged-ah07` ("D1
   staged") and `staged-ah07-v3` = staged-ah07 restaged with `WALL_SAMPLE=2` (the last panel); the lane's `round2.sh` shows it. Order left
   to right is 168096, 168042, 169016, 171218.
@@ -3514,6 +3514,20 @@ review); D owns records and the solve, R the renderer.
   Reviewed statements (`scripts/house-specs/rows/reviewed.json`, keyed by row and front id) replace a field, or with `add: true`
   merge a list into it (Weteringschans 169016 speklagen, review 4); field `ground.colour` sets a front's pui colour; a reviewed per-front `heads` (Kinkerstraat 100 `block-surround`) is P's per-house `headVariant` (Kinkerstraat
   92–94, 98, 100, 106–108, over the face's wrong shopPaint). All are flagged `reviewed`.
+- **Re-reads.** A read held for scaffold or netting queues a re-read from another capture year, not just a hold:
+  `npm run house:reread-queue -- --faces kinker- --pick` lists the held fronts and the best capture of another year (F4 rule),
+  writing pins for `describe-cut.ts cut --pins`; one opus read with the D1 prompt (`write-answer.ts --out`) and an entry in
+  `scripts/house-specs/rows/rereads.json` (answer in `rows/rereads/`, `describes` for a multi-front capture) make house:rows use it
+  (flag `reread`) and row-sheet show that capture with a yellow "re-read" tag. First: Kinkerstraat 92–94 from the 2023-01-10
+  capture (the 2019 read was netted); queue on the 28 Kinkerstraat faces: `rows/reread-queue-kinker.json`.
+- **Corner fronts.** A row member owned by an installed face chunk of another street draws this street's wall blank
+  (the chunk replaces the pand whole). house:rows warns (`blankCornerFronts`); the fix is a front on this street in that face
+  (Kinkerstraat 86–88 in face bilder-233580-162444, round 7), then the integrator recompiles that face chunk.
+- **Known differences** the kit cannot say live in `scripts/house-specs/rows/limits.json` (per front, `{component, what}`);
+  house:rows copies them into `RowRecord.schemaLimits` and the pand's HouseSpec `schemaLimits`. `ground.shopUnits` 1 (a read
+  describing one shopfront) emits one shopfront with `displayWindows`, not a split by width (Weteringschans 168042).
+- **Storey-limited face heads** (90: tympana on storeys 1–2) take the other upper storeys from the series' reads when their
+  shapes agree; the dressing is the reads' surround by vote, a multi-front read at half weight.
 - **Solve** (`houseSpec/row/solve.ts`). Fronts: face modules, or a read with twice the row's bays on a 1.6x-wide two-number pand
   (flag `extent-mismatch`). A read mentioning scaffold or netting is held whole (`readHeld`, flag `scaffold`); the front takes its
   series and the face. Series: one face-stated design (type, head dressing, dormers, crown), else one read signature (crown,

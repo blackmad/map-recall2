@@ -32,6 +32,8 @@ export interface ChunkManifestEntry {
   height: number;
   suppress: string[];
   replaces: string[];
+  /** House rows (ROW_FRONT=1): the chunk baked without the street walls the row draws (a row record's `wallOnly`). */
+  rowFront?: {modelUrl: string; sha256: string; bytes: number; triangles: number};
   footprint: {type: 'MultiPolygon'; coordinates: number[][][][]};
   pands: Pick<PandMeta, 'recipeId' | 'pandId' | 'buildingId' | 'address' | 'frontage' | 'bounds' | 'triangles' | 'ranges'>[];
   /**

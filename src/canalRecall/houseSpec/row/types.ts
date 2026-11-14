@@ -133,6 +133,11 @@ export interface RowGround {
    * read. Outranks `shopPaint` (the face intent's paint, which the Kinkerstraat review found wrong on 92–94, 100, 106–108).
    */
   colour?: RowField<RowGroundColour>;
+  /**
+   * Separate shop units across the ground. 1 when the reading describes one shopfront (`a ... shopfront` with its
+   * door and window, Weteringschans 168042): drawn as one unit, not split by width. Absent: the renderer's own split.
+   */
+  shopUnits?: RowField<number>;
 }
 
 /** The design of a series (and, as `Partial`, a front's overrides). Every field is solved with a source. */
@@ -188,6 +193,8 @@ export interface RowFront {
   /** Not staged (scaffold or netting over the upper storeys): the reason. The front still belongs to its series and
    *  draws the series design; nothing from its own reading is used. */
   readHeld?: string;
+  /** The pand's read describes another of its fronts only (a multi-front capture, `MemberInput.readFront`): nothing of it is drawn here. */
+  readElsewhere?: string;
 }
 
 /** One pand of the row, street order. */
@@ -200,6 +207,18 @@ export interface RowMember {
   widthM: number | null;
   /** Front ids, left to right as seen from the street. */
   fronts: string[];
+  /** A pand an installed face chunk of another street owns whole (its roof, its other street): the row draws only its wall
+   *  on this street, on `edge`, and the chunk's `rowFront` variant leaves that wall out (scripts/house-specs/rows/wall-only.json). */
+  wallOnly?: RowWallOnly;
+}
+
+/** The row's wall of a chunk-owned pand: the chunk (chunks.json id) and the BAG edge on this street, [lng, lat], left to right as seen. */
+export interface RowWallOnly {
+  chunk: string;
+  edge: [[number, number], [number, number]];
+  /** The edge in RD New metres, as measured (the BAG footprint), left to right. */
+  edgeRD?: [[number, number], [number, number]];
+  ref?: string;
 }
 
 export interface RowSeries {
@@ -215,7 +234,7 @@ export interface RowSeries {
 
 /** A row-level flag: something the solve would not settle silently. */
 export interface RowFlag {
-  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read' | 'reviewed';
+  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read' | 'reviewed' | 'reread';
   field?: RowDesignKey | string;
   fronts: string[];
   detail: string;
@@ -238,6 +257,9 @@ export interface Overruled {
   why: string;
 }
 
+/** What the kit cannot say about a front (scripts/house-specs/rows/limits.json): a known difference from the photo. */
+export interface RowLimit { front: string; component: string; what: string; ref: string }
+
 export interface RowRecord {
   v: typeof ROW_RECORD_VERSION;
   /** "kinker-86-110" (face id) or "<street>-<first>-<last>". */
@@ -256,6 +278,8 @@ export interface RowRecord {
   /** Inputs used: file paths. */
   inputs: string[];
   solvedAt: string;
+  /** Known differences the kit cannot say, per front. */
+  schemaLimits?: RowLimit[];
 }
 
 /** The design a front draws: its series design with its overrides on top. */
