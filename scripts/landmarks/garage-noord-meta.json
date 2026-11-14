@@ -1,0 +1,53 @@
+{
+  "name": "Garage Noord",
+  "landmarkId": "garage-noord",
+  "sourceUrl": "https://www.openstreetmap.org/node/5891849386",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012079768"
+  ],
+  "ringLngLat": [
+    [
+      4.92564537,
+      52.38564859
+    ],
+    [
+      4.92556855,
+      52.38557451
+    ],
+    [
+      4.92572264,
+      52.38551491
+    ],
+    [
+      4.92573941,
+      52.38553108
+    ],
+    [
+      4.9257771,
+      52.38556744
+    ],
+    [
+      4.92579928,
+      52.38558882
+    ]
+  ],
+  "anchor": [
+    4.92570872,
+    52.38557089
+  ],
+  "materialOverrides": {
+    "brick": "#8f665a",
+    "slate": "#4a4e52",
+    "glass": "#6f8a92",
+    "dark": "#2f2d2b",
+    "blue": "#3b8a9a",
+    "green": "#86b596",
+    "red": "#b03a2e",
+    "gold": "#d9b84c",
+    "ochre": "#ece6d6",
+    "bronze": "#6e4a36",
+    "concrete": "#a9a7a2"
+  },
+  "surveySource": "BAG 0363100012079768 ring (PDOK BAG WFS, CC0) in native east/south metres from its vertex average above the 3DBAG ground 0.98 m NAP (scripts/landmarks/garage-noord-footprints.json, noord-hamerkanaal-prepare.ts); roof pieces and levels from 3DBAG LoD2.2 (CC BY 4.0); the false gable, emblem, glasshouse and lamp masts from rectified Gemeente Amsterdam panoramas (CC BY 4.0) of 2016-2025 and the glasshouse plan from the PDOK HR orthophoto (CC BY 4.0).",
+  "modifications": "Original texture-free geometry on the BAG footprint: brick shed with the 3DBAG pitched roof, the teal corrugated false gable with the Sichuan Territory emblem (lettering drawn with the kit's pixel glyphs, the Chinese characters as generated stroke tiles, not copied), the mint-framed Venlo glasshouse and its lower glazed front room, and the two rust sunburst lamp masts, laid out from the municipal panoramas and orthophoto; colours measured on them; no pixels or meshes imported."
+}

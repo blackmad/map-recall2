@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "id": "garage-noord",
+ "pand": "0363100012079768",
+ "brief": "scripts/landmarks/garage-noord-brief.md",
+ "signature": [
+  "teal-false-gable",
+  "sichuan-emblem",
+  "glasshouse",
+  "sunburst-lamps"
+ ],
+ "walls": [
+  {
+   "tag": "w01-33",
+   "bearing": 33,
+   "lengthM": 12.4,
+   "centre": [
+    4.925725,
+    52.385621
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0008_004261",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-flue",
+     "kind": "other",
+     "where": "thin grey flue pipe up the north-east wall near its front end, rising above the wall top",
+     "approxSizeM": [
+      0.18,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0008_004261",
+     "how": "grey cylinder on the north-east wall"
+    }
+   ],
+   "note": "North-east side, 2016 capture at 48 deg: plain brick, the flue pipe, a security fence at its foot (fence not part of the building)."
+  },
+  {
+   "tag": "w02-123",
+   "bearing": 123,
+   "lengthM": 9.8,
+   "centre": [
+    4.9257635,
+    52.385554
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002572_pano_0000_001788",
+   "capturedAt": "2022-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "teal-false-gable",
+     "kind": "other",
+     "where": "s 1.76-7.24 over the brick front: teal corrugated metal false gable, ~1 m deep, sides 7.2 m, apex ~8.5 m, white rake trim",
+     "approxSizeM": [
+      5.5,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "how": "teal box with a gable outline, vertical ribs every 0.5 m, cream rake trim"
+    },
+    {
+     "id": "sichuan-emblem",
+     "kind": "sign",
+     "where": "centre of the teal gable at ~6.6 m: cream oval with a dark dragon on top, red hexagon shields left and right with white characters, red SICHUAN / TERRITORY lettering",
+     "approxSizeM": [
+      2.7,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "how": "cream oval plate and red hexagon plates; lettering in the kit pixel glyphs; dragon as a dark blob; the hexagon characters as stroke tiles (no CJK glyphs)"
+    },
+    {
+     "id": "glasshouse",
+     "kind": "canopy",
+     "where": "the restaurant glasshouse on the yard: four-ridge Venlo block against the wall (s -3.8..9.7, 6.5 m deep, ridges 3.9 m) and a lower five-ridge glazed front room out to 12.5 m (s -3.8..11.9)",
+     "approxSizeM": [
+      15.7,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-04_07-46-10_00631 + PDOK HR orthophoto",
+     "how": "hall-kit venloGlasshouse twice, mint frame posts, rails and ridge bars, mint fascia over the front glass"
+    },
+    {
+     "id": "glass-characters",
+     "kind": "lettering",
+     "where": "red Chinese characters and a red round logo behind the glasshouse front glass at ~1.9-2.5 m",
+     "approxSizeM": [
+      10,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "how": "red stroke-tile decals in three groups and a red disc decal (no CJK glyphs)"
+    },
+    {
+     "id": "sunburst-lamps",
+     "kind": "lamp",
+     "where": "two rust lamp masts in front of the glasshouse (~6.6 m), each a wheel of ~18 drooping spokes at ~4.4 m with a bulb on every tip",
+     "approxSizeM": [
+      6,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "how": "hall-kit spokeLamp x2, rust poles and spokes, dark lamp heads"
+    },
+    {
+     "id": "teal-downpipe",
+     "kind": "other",
+     "where": "teal downpipe on the brick front right of the false gable",
+     "approxSizeM": [
+      0.12,
+      6.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "how": "teal slab"
+    },
+    {
+     "id": "yard-posts",
+     "kind": "other",
+     "where": "red-painted timber posts and a terrace on the yard",
+     "approxSizeM": [
+      0.15,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-04_07-46-10_00631",
+     "skip": {
+      "reason": "temporary",
+      "note": "yard furniture changes; not part of the building"
+     }
+    }
+   ],
+   "note": "Front (SE). 2022 and 2025 captures plus the 2024-10-22 recording: the teal false gable with the Sichuan Territory emblem over the brick parapet, the restaurant glasshouse on the yard in front, the two sunburst lamp masts."
+  },
+  {
+   "tag": "w03-303",
+   "bearing": 303,
+   "lengthM": 9.8,
+   "centre": [
+    4.9256095,
+    52.385614
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0008_004267",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [],
+   "note": "North-west back, 2016 capture: hidden behind trees and a boat yard; nothing visible."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

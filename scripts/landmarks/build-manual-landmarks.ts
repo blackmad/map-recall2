@@ -7,6 +7,7 @@ import {buildDeNieuweLiefde} from './de-nieuwe-liefde-builder';
 import {buildRijksakademie} from './rijksakademie-builder';
 import {buildWerfKromhout} from './werf-kromhout-builder';
 import {buildSkatecafe} from './skatecafe-builder';
+import {buildGarageNoord} from './garage-noord-builder';
 import {buildConservatoriumVanAmsterdam} from './conservatorium-van-amsterdam-builder';
 import {buildToekomstmuziek} from './toekomstmuziek-builder';
 import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
@@ -687,6 +688,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);
     else if(id==='werf-kromhout')buildWerfKromhout(w,d,helpers);
     else if(id==='skatecafe')buildSkatecafe(w,d,helpers,(g,hex)=>addDecal(g,hex,false));
+    else if(id==='garage-noord')buildGarageNoord(w,d,helpers,(g,hex)=>addDecal(g,hex,false));
     else if(id==='conservatorium-van-amsterdam')buildConservatoriumVanAmsterdam(w,d,helpers);
     else if(id==='toekomstmuziek')buildToekomstmuziek(w,d,helpers);
     else if(id==='waag')buildWaag(w,d,helpers);
