@@ -53,11 +53,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "orange-brick",
+     "brick": "#8e5641",
      "frame": "white",
      "door": "white",
      "stone": "cream",
-     "cornice": "white"
+     "cornice": "white",
+     "wallTint": "measured",
+     "whitePoint": "#afb19a"
     }
    },
    "groundFloor": {
@@ -141,11 +143,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#5e3a2e",
+     "brick": "#784a3b",
      "frame": "white",
      "door": "black",
      "stone": "cream",
-     "cornice": "white"
+     "cornice": "white",
+     "wallTint": "measured",
+     "whitePoint": "#afb19a"
     }
    },
    "groundFloor": {
@@ -228,11 +232,13 @@
      "material": "red-tile"
     },
     "palette": {
-     "brick": "#5a3b30",
+     "brick": "#5f3e33",
      "frame": "white",
      "door": "black",
      "stone": "cream-painted",
-     "cornice": "white"
+     "cornice": "white",
+     "wallTint": "measured",
+     "whitePoint": "#afb19a"
     }
    },
    "groundFloor": {
@@ -333,11 +339,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6a3038",
+     "brick": "#5c2a30",
      "frame": "white",
      "door": "black",
      "stone": "cream-painted",
-     "cornice": "white"
+     "cornice": "white",
+     "wallTint": "measured",
+     "whitePoint": "#afb19a"
     }
    },
    "groundFloor": {

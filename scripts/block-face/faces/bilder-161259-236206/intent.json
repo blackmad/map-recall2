@@ -74,10 +74,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "red-brown",
+     "brick": "#67443a",
      "frame": "white",
      "door": "dark-brown",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {
@@ -166,11 +168,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6e3a2d",
+     "brick": "#623f36",
      "frame": "white",
      "door": "dark-brown",
      "stone": "cream",
-     "band": "#5a2e24"
+     "band": "#5a2e24",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {
@@ -265,10 +269,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6b3a2c",
+     "brick": "#694236",
      "frame": "white",
      "door": "dark-brown",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {
@@ -358,10 +364,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#5a3a30",
+     "brick": "#4b3730",
      "frame": "white",
      "door": "natural-wood",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {
@@ -449,10 +457,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6b3a2c",
+     "brick": "#644137",
      "frame": "white",
      "door": "black",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {
@@ -566,10 +576,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6b3a2c",
+     "brick": "#533831",
      "frame": "white",
      "door": "black",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#a1a99d"
     }
    },
    "groundFloor": {

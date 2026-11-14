@@ -152,11 +152,13 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#5a3a30",
+     "brick": "#43332e",
      "frame": "white",
      "door": "black",
      "stone": "cream",
-     "band": "#b8935a"
+     "band": "#b8935a",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -249,10 +251,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#8a3d2c",
+     "brick": "#54342d",
      "frame": "white",
      "door": "white",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -342,10 +346,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#5a3a30",
+     "brick": "#41302b",
      "frame": "white",
      "door": "white",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -454,10 +460,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#4e3027",
+     "brick": "#59453f",
      "frame": "white",
      "door": "dark-brown",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -561,10 +569,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#9a6a3a",
+     "brick": "#473727",
      "frame": "white",
      "door": "white",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -728,11 +738,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#4e3027",
+     "brick": "#4c3a34",
      "frame": "white",
      "door": "dark-brown",
      "stone": "cream",
-     "band": "#8c6a4a"
+     "band": "#8c6a4a",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {
@@ -834,10 +846,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#b08a52",
+     "brick": "#4d402d",
      "frame": "white",
      "door": "dark-green",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#dddfdf"
     }
    },
    "groundFloor": {

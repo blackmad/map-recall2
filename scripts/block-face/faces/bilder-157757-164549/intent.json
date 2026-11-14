@@ -60,10 +60,12 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#9a4a30",
+     "brick": "#7d4330",
      "frame": "white",
      "door": "white",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#b0b49d"
     }
    },
    "groundFloor": {
@@ -165,10 +167,12 @@
      "material": "red-tile"
     },
     "palette": {
-     "brick": "#5a4038",
+     "brick": "#64473e",
      "frame": "white",
      "door": "white",
-     "stone": "cream"
+     "stone": "cream",
+     "wallTint": "measured",
+     "whitePoint": "#b0b49d"
     }
    },
    "groundFloor": {

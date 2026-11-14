@@ -23,7 +23,7 @@
  "x0M": -32.99,
  "x1M": 26.22,
  "date": "2023-01-12",
- "coverage": 0.86,
+ "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012236022",
@@ -203,28 +203,28 @@
     1658,
     2132
    ],
-   "date": "2024-11-29",
-   "fallbackDate": true,
+   "date": "2023-01-12",
+   "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track03_Sphere_00103",
-     "timestamp": "2024-11-29T08:15:36Z",
-     "distanceM": 19.5,
-     "obliquityDeg": 0.3,
+     "panoId": "TMX7316010203-002928_pano_0018_000019",
+     "timestamp": "2023-01-12T09:23:04.688240Z",
+     "distanceM": 19,
+     "obliquityDeg": 3.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00114",
-     "timestamp": "2024-11-29T09:57:47Z",
-     "distanceM": 10.2,
-     "obliquityDeg": 6.9,
+     "panoId": "TMX7316010203-002928_pano_0018_000018",
+     "timestamp": "2023-01-12T09:23:04.233270Z",
+     "distanceM": 19.3,
+     "obliquityDeg": 11.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track03_Sphere_00102",
-     "timestamp": "2024-11-29T08:15:36Z",
-     "distanceM": 20.1,
-     "obliquityDeg": 14,
+     "panoId": "TMX7316010203-002928_pano_0018_000020",
+     "timestamp": "2023-01-12T09:23:05.148240Z",
+     "distanceM": 19.9,
+     "obliquityDeg": 17.2,
      "missingFraction": 0
     }
    ]

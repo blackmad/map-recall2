@@ -81,11 +81,13 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#6b3a2c",
+     "brick": "#442d27",
      "frame": "white",
      "door": "white",
      "stone": "cream",
-     "band": "#e4dcc4"
+     "band": "#e4dcc4",
+     "wallTint": "measured",
+     "whitePoint": "#b4b4b2"
     }
    },
    "groundFloor": {
@@ -166,11 +168,13 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#6b3a2c",
+     "brick": "#4a322c",
      "frame": "white",
      "door": "dark-brown",
      "stone": "cream",
-     "band": "#e4dcc4"
+     "band": "#e4dcc4",
+     "wallTint": "measured",
+     "whitePoint": "#b4b4b2"
     }
    },
    "groundFloor": {
