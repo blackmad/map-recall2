@@ -14,7 +14,9 @@
 // integrator's step.
 //
 //   node --import tsx scripts/house-specs/describer-d1/stage.ts --answers <dir> [--cuts <cuts.json>] [--probes <probe-cache.json>]
-//     --out <dir> [--at 2026-11-13] [--twin-guard mutual|pr1]
+//     --out <dir> [--at 2026-11-13] [--twin-guard mutual|pr1] [--captures <wall-sample captures.json>]
+// WALL_SAMPLE=2 stages the wall sample v2 brick (src/canalRecall/houseSpec/wallSample.ts) with its receipt `facts/wallSample`,
+// from --captures where the pand has them, else from the pinned sample and its `w1.ref`; unset, the staging is as before.
 import fs from 'node:fs';
 import path from 'node:path';
 import { toSpecPart, UNKNOWN, upperHead, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
@@ -25,6 +27,7 @@ import { CITY_BRICK_LIGHTNESS, cityWallTint, hexToRgb, hslToRgb, rgbToHex } from
 import { rgbToHsl } from '../../../src/canalRecall/blockFace/wallColour.ts';
 import { EXPOSURE, exposeHex, normGain, type ExposureRefLike, type WallExposureFact } from '../../../src/canalRecall/houseSpec/wallExposure.ts';
 import { similar, similarWidthYear, type Probe } from './partyPairs.ts';
+import { wallSampleMode, wallSampleV2, type CaptureSample } from '../../../src/canalRecall/houseSpec/wallSample.ts';
 import { loadAnswers } from './score.ts';
 
 /** Answer keys whose share of values (not `not-visible`) the pilot reports. */
@@ -128,14 +131,33 @@ export function wallExposureFact(sample: string, ref: ExposureRefLike | null | u
 }
 
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
-export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null, exposureRef: ExposureRefLike | null = null) {
+/**
+ * Wall sample v2 (`WALL_SAMPLE=2`, lane d1-wall-colour; src/canalRecall/houseSpec/wallSample.ts): the brick and its receipt from
+ * the pand's captures (wall-sample/captures.ts), or from the pinned sample alone with its WC exposure reference (`w1.ref`; a grey
+ * scene of that luminance). Null without a sample.
+ */
+export function wallSampleFor(wallHex: string, exposureRef: ExposureRefLike | null, samples: readonly CaptureSample[] | null | undefined) {
+  const own: CaptureSample[] = samples?.length ? [...samples]
+    : [{ hex: wallHex, pinned: true, refs: exposureRef && exposureRef.scene > 0 ? { white: [exposureRef.white, exposureRef.white, exposureRef.white], scene: [exposureRef.scene, exposureRef.scene, exposureRef.scene], n: 0 } : null }];
+  return wallSampleV2(own);
+}
+
+export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null, exposureRef: ExposureRefLike | null = null, samples: readonly CaptureSample[] | null = null) {
   const part = toSpecPart(a, at);
   const { spec } = shipOnly(part, a);
   // per-row heads: the receipt of the answer's head reading (toSpecPart, halved when `heads` is low) on each staged slot
   const prov = provenanceOf(part, 'fronts/0/windowHead');
   if (prov) for (const [k, v] of Object.entries(rowHeads(a.heads, a.storeys))) { setSpecField(spec, `fronts/0/${k}`, v); spec.provenance[`fronts/0/${k}`] = { ...prov }; }
   if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
-  if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
+  if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex) && wallSampleMode() === 2) {
+    const fact = wallSampleFor(wallHex.toLowerCase(), exposureRef, samples);
+    if (fact) {
+      setSpecField(spec, 'palette/brick', fact.brick);
+      spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
+      setSpecField(spec, 'facts/wallSample', fact);
+      spec.provenance['facts/wallSample'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
+    }
+  } else if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
     setSpecField(spec, 'palette/brick', wallBrickFromSample(wallHex.toLowerCase()).brick);
     spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
     // lane WC (#384): the exposure options beside it, drawn only under ?wallExposure= (default off)
@@ -212,6 +234,11 @@ function main() {
     if (r.w1?.ref) refs.set(r.pandId, r.w1.ref);
     const w = wallOf(r); if (w) walls.set(r.pandId, w);
   }
+  // wall sample v2 (WALL_SAMPLE=2): the pand's captures (wall-sample/captures.ts --out), else the pinned sample alone
+  const captures = new Map<string, CaptureSample[]>();
+  if (opt('captures')) for (const r of JSON.parse(fs.readFileSync(opt('captures')!, 'utf8')).rows ?? []) {
+    captures.set(r.pandId, (r.captures ?? []).map((c: any) => ({ hex: c.w1.hex, refs: c.refs ?? null, pinned: !!c.pinned, captured: c.captured, panoId: c.panoId })));
+  }
   const probes: Record<string, Probe> = opt('probes') ? JSON.parse(fs.readFileSync(opt('probes')!, 'utf8')) : {};
   const A = loadAnswers(dir);
   fs.mkdirSync(out, { recursive: true });
@@ -227,7 +254,7 @@ function main() {
       const v = (a as any)[k];
       if (answered(v)) answerCount[k] = (answerCount[k] ?? 0) + 1; else nv++;
     }
-    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null, refs.get(id) ?? null));
+    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null, refs.get(id) ?? null, captures.get(id) ?? null));
   }
   let inheritedFronts = 0; const inheritedFields: Record<string, number> = {};
   for (const [id, a] of A) {
