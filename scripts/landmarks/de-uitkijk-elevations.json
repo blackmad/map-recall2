@@ -1,0 +1,16 @@
+{
+  "id": "de-uitkijk",
+  "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 50 px/m over the 5.58 m canal front): TMX7316010203-003011_pano_0001_000174 (2023), b_20250120_0926_Track24_Sphere_00008 (2025) and TMX7316010203-001974_pano_0000_001049 (2021)",
+  "facades": [
+    {
+      "name": "canal front (Prinsengracht)",
+      "bearing": 49,
+      "photo": "artifacts/landmark-briefs/de-uitkijk/face-canal-3.jpg",
+      "rows": [1, 2, 3, 1],
+      "columns": 3,
+      "symmetric": true,
+      "gables": 1,
+      "alongM": [0.27, 5.85]
+    }
+  ]
+}

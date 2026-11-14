@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "id": "de-uitkijk",
+ "pand": "0363100012169642",
+ "brief": "scripts/landmarks/de-uitkijk-brief.md",
+ "signature": [
+  "u-canopy",
+  "u-gable",
+  "u-poster",
+  "u-door"
+ ],
+ "walls": [
+  {
+   "tag": "w01-49",
+   "bearing": 49,
+   "lengthM": 5.6,
+   "centre": [
+    4.8844115,
+    52.364771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003011_pano_0001_000174",
+   "capturedAt": "2023-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "u-canopy",
+     "kind": "canopy",
+     "where": "white letter-board canopy across the front at 2.25-3.05 m reading FILMTHEATER DE UITKIJK over two rows of film titles",
+     "approxSizeM": [
+      5.3,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "cream box 0.55 m proud, black 5x7 pixel lettering (nearbar GL) on its face, title rows as word-length runs"
+    },
+    {
+     "id": "u-poster",
+     "kind": "other",
+     "where": "large framed film poster centred on the second storey (3.3-6.05 m)",
+     "approxSizeM": [
+      2.8,
+      2.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "black frame slab with a blue-grey poster panel; the poster changes, so no image"
+    },
+    {
+     "id": "u-door",
+     "kind": "other",
+     "where": "red double doors under a round fanlight in a cream frame, centred",
+     "approxSizeM": [
+      1.7,
+      2.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "cut opening with round head, cream frame, red back, fanlight transom bar"
+    },
+    {
+     "id": "u-windows",
+     "kind": "window-shape",
+     "where": "three tall round-headed windows with small-paned upper lights on the first floor, two small round-headed windows flanking the poster",
+     "approxSizeM": [
+      1.12,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "cut openings with rise, cream frames, transom bars, sills"
+    },
+    {
+     "id": "u-gable",
+     "kind": "other",
+     "where": "pointed gable from the 10 m cornice: vertical shoulders to 11.05 m, rakes to the 14.3 m apex, pinnacle on top",
+     "approxSizeM": [
+      5.6,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "drawn gable polygon 35 cm thick with rake copings, shoulder caps and a pinnacle; pitched roof behind it in place of the 3DBAG flat"
+    },
+    {
+     "id": "u-gable-window",
+     "kind": "window-shape",
+     "where": "two-light window in the gable",
+     "approxSizeM": [
+      0.85,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "glass with cream border and mullion, stone sill"
+    },
+    {
+     "id": "u-anchors",
+     "kind": "relief",
+     "where": "two cream anchor plates on the gable foot either side",
+     "approxSizeM": [
+      0.45,
+      0.14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "small proud slabs"
+    },
+    {
+     "id": "u-cases",
+     "kind": "other",
+     "where": "poster cases either side of the door on the ground floor",
+     "approxSizeM": [
+      0.9,
+      1.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "black frames with poster panels"
+    },
+    {
+     "id": "u-cornice",
+     "kind": "other",
+     "where": "moulded cornice and entablature at the gable foot (10 m) and a string course at 6.15 m",
+     "approxSizeM": [
+      5.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "how": "proud stone slabs in the wall colour"
+    },
+    {
+     "id": "u-lamp",
+     "kind": "lamp",
+     "where": "street lantern on the quay in front",
+     "approxSizeM": [
+      0.4,
+      4.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-003011_pano_0001_000174",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street lantern on the quay, not part of the building; street furniture is its own layer"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Filmtheater de Uitkijk (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Filmtheater_de_Uitkijk",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}
