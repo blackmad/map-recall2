@@ -25,6 +25,8 @@ export type HeightFn = (x: number, y: number) => number;
 
 /** Lateral blend from a deck edge back to the ground, metres. */
 export const DECK_BLEND_M = 0.75;
+/** holeCarry's lateral column spacing and the carried stretch's padding along the deck, metres (bridgeGaps.ts holeCarry). */
+export const HOLE_CARRY_COL_M = 1, HOLE_CARRY_PAD_M = 1;
 /** Longitudinal ease from the relief onto the deck at each deck end, metres. */
 export const DECK_EASE_M = 2.5;
 /**
@@ -355,6 +357,24 @@ export class GroundSurface {
     return !!u && u.some(([a, b]) => s >= a && s <= b);
   }
 
+  /**
+   * inUnder, less the deck's own road carried on from its end (DeckProfile.underCarry, bridgeGaps.ts holeCarry, lane
+   * f1b-jagged 2026-11-14): (x, y) at station `s` in the nearest lateral column's carried stretch is not under.
+   */
+  static inUnderStreets(deck: DeckSurface, s: number, x: number, y: number): boolean {
+    if (!GroundSurface.inUnder(deck, s)) return false;
+    const c = deck.profile.underCarry;
+    if (!c) return true;
+    const p = deck.profile, n = p.s.length;
+    let lo = 0, hi = n - 1;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (p.s[mid] < s) lo = mid + 1; else hi = mid; }
+    const a = Math.max(0, lo - 1), b = Math.min(n - 1, lo + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+    // Signed lateral (left positive, as holeCarry's columns).
+    const t = (dx * (y - p.y[lo]) - dy * (x - p.x[lo])) / l, m = (c.cols.length - 1) >> 1;
+    const k = Math.max(0, Math.min(c.cols.length - 1, Math.round(t / HOLE_CARRY_COL_M) + m));
+    return !(s <= c.lo[k] + HOLE_CARRY_PAD_M || s >= c.hi[k] - HOLE_CARRY_PAD_M);
+  }
+
   private lifted(x: number, y: number, skipUnder: boolean): number {
     const g = this.ground(x, y);
     const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
@@ -367,7 +387,7 @@ export class GroundSurface {
       if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.d === Infinity) continue;
-      if (skipUnder && GroundSurface.inUnder(deck, at.s)) continue;
+      if (skipUnder && GroundSurface.inUnderStreets(deck, at.s, x, y)) continue;
       const w = 1 - smoothstep((at.d - at.halfWidth) / DECK_BLEND_M);
       if (w <= 0) continue;
       // The ease toward each deck end uses this point's own relief, so the deck
@@ -401,7 +421,7 @@ export class GroundSurface {
       if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.s < deck.span[0] - 1 || at.s > deck.span[1] + 1) continue;
-      if (skipUnder && GroundSurface.inUnder(deck, at.s)) continue;
+      if (skipUnder && GroundSurface.inUnderStreets(deck, at.s, x, y)) continue;
       best = Math.max(best, 1 - smoothstep((at.lateral - at.halfWidth) / DECK_BLEND_M));
     }
     return best;
