@@ -2663,3 +2663,26 @@ test('streets under a way deck\'s hole range drape on the relief (lane F1b, Lely
   assert.equal(surface.streetHeight(30, 0), surface.height(30, 0), 'over the water: as before');
   assert.equal(surface.streetDeckWeight(15, 0), 0);
 });
+
+test('way decks run on to the bank tops (bankClimb, Lelylaan 7382983, user 2026-11-14 "I don\'t dip down"): no dive down an interpolated embankment', () => {
+  // The canal x 20..30; the bridge way 0..60; the relief climbs from the west bank's edge (-1.8 at x 20) at 10-30 % to
+  // 3.3 at x 0 (an embankment the ground filter dropped); east of the water the underpass hole at -2.5 to x 45, then the
+  // bank climbs to 2 (the hole climb's side).
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[0, 0], [60, 0]];
+  const relief = (x: number) => (x >= 30 ? (x < 45 ? -2.5 : Math.min(2, -2.5 + 0.9 * (x - 45))) : x >= 20 ? -2.6 : Math.min(3.3, -1.8 + 0.17 * (20 - x) + 0.004 * (20 - x) ** 2));
+  const bank = { hole: true, bank: true } as const;
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief, false, bank)!;
+  const start = p.x[0] + p.deck[0];
+  assert.ok(start < 2, `the deck starts at x ${start.toFixed(1)} (the bank top near 0)`);
+  const before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief)!;
+  assert.ok(Math.abs(before.x[0] + before.deck[0] - 19) < 0.6, `without bankClimb the deck starts one metre onto the slope (x ${(before.x[0] + before.deck[0]).toFixed(1)})`);
+  // A quay wall (a metre's step at the water, flat beyond) moves the abutment by at most a station or two.
+  const quay = (x: number) => (x > 20 && x < 30 ? -1 : x > 19.5 && x <= 20 ? 0 : 1);
+  const q = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, quay, false, bank)!, qb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, quay)!;
+  assert.ok(Math.abs((q.x[0] + q.deck[0]) - (qb.x[0] + qb.deck[0])) <= 1.01, 'a quay wall keeps its abutment');
+  // An approach ramping up to a humped bridge (the relief falls away from the water): unchanged.
+  const ramp = (x: number) => (x > 20 && x < 30 ? -1 : x <= 20 ? 1 + 0.05 * (x - 20) : 1 - 0.05 * (x - 30));
+  const r = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, ramp, false, bank)!, rb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, ramp)!;
+  assert.deepEqual(r.deck, rb.deck, 'a ramp toward the bridge keeps its deck');
+});

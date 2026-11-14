@@ -2,12 +2,13 @@
 // --bridge-feedback) and check-ground-spots, which runs in check:canal:rest so these pins gate integration.
 //
 //   node --import tsx scripts/own-ground/check-ground-cells.ts --bridge-feedback
-import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
+import { GroundStore, toLocal, waterTest } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { kitTrace, parapetTrace } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { crossingDips } from './crossing-dip.ts';
 
 type Read = (path: string) => Promise<Uint8Array>;
 type Check = (ok: boolean, what: string) => void;
@@ -77,6 +78,7 @@ export async function bridgeFeedbackRegressions(readExtract: Read, check: Check)
   await lelylaanRegressions(readExtract, check);
   await f1bRegressions(readExtract, check);
   await holeJunctionRegressions(readExtract, check);
+  await bankDipRegressions(readExtract, check);
 }
 
 /**
@@ -116,7 +118,8 @@ export async function lelylaanRegressions(readExtract: Read, check: Check): Prom
     const on = await notch({});
     check(on !== null && on <= reg.maxDipM, `${reg.id} (${reg.label}): deck notch ${on?.toFixed(2)} m (<= ${reg.maxDipM})`);
     if (reg.pinMinM === undefined) continue;
-    const off = await notch({ holeClimb: false });
+    // bankClimb (lane f1b-jagged) also runs the deck up that climb: off too, for the hole climb's own before.
+    const off = await notch({ holeClimb: false, bankClimb: false });
     check(off !== null && off >= reg.pinMinM, `${reg.id}: without the hole climb ${off?.toFixed(2)} m (>= ${reg.pinMinM}, the pin is live)`);
   }
 }
@@ -200,9 +203,9 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
     }
     return n;
   };
-  const h = await high({}), hBefore = await high({ holeStreets: false });
+  const h = await high({}), hBefore = await high({ holeStreets: false, bankClimb: false });
   check(h <= LELYLAAN_STREETS.maxHigh, `Lelylaan streets under the Ringweg-West hole ranges (07ec0473): ${h} vertices more than ${LELYLAAN_STREETS.highM} m over the relief (<= ${LELYLAAN_STREETS.maxHigh})`);
-  check(hBefore >= LELYLAAN_STREETS.pinMin, `Lelylaan: without holeStreets ${hBefore} vertices (>= ${LELYLAAN_STREETS.pinMin}, the pin is live)`);
+  check(hBefore >= LELYLAAN_STREETS.pinMin, `Lelylaan: without holeStreets (and bankClimb, which moves the deck ends) ${hBefore} vertices (>= ${LELYLAAN_STREETS.pinMin}, the pin is live)`);
 }
 
 /**
@@ -277,4 +280,35 @@ export async function holeJunctionRegressions(readExtract: Read, check: Check): 
     }
   }
 }
-
+/**
+ * Crossing dips (lane f1b-jagged 2026-11-14; the user on the Lelylaan: "these roads should probably figure out 'I don't
+ * dip down'"): the Ringweg-West and its slip over the Slotervaart came down the embankment's interpolated slope into the
+ * crossing and up again on the deck (wayDecks.ts BANK_CLIMB_MAX_M). Across the water the riding surface lies at most
+ * `maxDipM` under the straight line between the bank tops (crossing-dip.ts) with the trial on; the default (off) has the dip.
+ */
+export const BANK_DIPS: readonly { way: number; label: string; at: [number, number]; maxDipM: number; pinMinM: number }[] = [
+  { way: 7382983, label: 'Ringweg-West slip over the Slotervaart, Lelylaan (user 2026-11-14)', at: [4.84294, 52.35607], maxDipM: 0.3, pinMinM: 2.5 },
+];
+// Not pinned: the Ringweg-West main deck beside it (OSM 7382981, 2.47 m) is a bundle (wayDecks.ts groupWayDecks), whose
+// ends keep their place until a bank climb can follow the median's edges.
+async function wayDip(readExtract: Read, opts: Record<string, boolean>, reg: (typeof BANK_DIPS)[number]): Promise<number | null> {
+  const st = new GroundStore(readExtract, { roads: true, ...opts });
+  await st.init();
+  const [x, y] = toLocal(reg.at[0], reg.at[1]), key = st.cellAt(x, y);
+  const around = GroundStore.neighbours(key);
+  for (const k of around) await st.prepareCell(k);
+  let way = null;
+  for (const k of around) way ??= (await st.osmCell(k))?.ways.find(w => w.id === reg.way) ?? null;
+  if (!way) return null;
+  const wet = waterTest((await Promise.all(around.map(k => st.waterCell(k)))).flatMap(w => w?.polygons ?? []));
+  const dips = crossingDips(st, way.g.map(([lng, lat]) => toLocal(lng, lat)), wet);
+  return dips.length ? Math.max(...dips.map(d => d.dip)) : null;
+}
+export async function bankDipRegressions(readExtract: Read, check: Check): Promise<void> {
+  for (const reg of BANK_DIPS) {
+    // bankClimb is a trial (groundFixes.ts GROUND_TRIALS, default off): the pin holds the trial's fix, the default its before.
+    const d = await wayDip(readExtract, { bankClimb: true }, reg), was = await wayDip(readExtract, {}, reg);
+    check(d !== null && d <= reg.maxDipM, `OSM ${reg.way} (${reg.label}): with the bankClimb trial the crossing dips ${d?.toFixed(2) ?? 'n/a'} m under the bank tops' line (<= ${reg.maxDipM})`);
+    check(was !== null && was >= reg.pinMinM, `OSM ${reg.way}: by default (bankClimb off) ${was?.toFixed(2) ?? 'n/a'} m (>= ${reg.pinMinM}, the pin is live)`);
+  }
+}

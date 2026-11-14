@@ -41,6 +41,20 @@ export const HOLE_M = 0.6, HOLE_MAX_M = 30, HOLE_MIN_M = 3;
  * climbs faster than HOLE_CLIMB_GRADE, at most HOLE_MAX_M past the hole. `climb: false` is the before.
  */
 export const HOLE_CLIMB_GRADE = 0.15;
+/**
+ * The bank's climb at either end (lane f1b-jagged 2026-11-14; user "these roads should probably figure out 'I don't dip
+ * down'", the Ringweg-West slip OSM 7382983 over the Slotervaart at the Lelylaan): the elevation model is interpolated
+ * under a bridge's abutments, so past the water the relief often climbs back to the road's level over an embankment's
+ * worth of metres. The deck stopped one ABUTMENT_M onto that slope and its straight line ran from there, so the street
+ * came down the embankment into the crossing (7382983: from +3.3 m to -1.8 m over 15 m, then up again on the deck). From
+ * each abutment (past a hole, its bank) the deck runs on while the relief still climbs away from the water faster than
+ * BANK_CLIMB_GRADE (4 %; 7382983's slope starts at 9 %), at most BANK_CLIMB_MAX_M: the crossing holds the grade between the
+ * two bank tops. A climb shorter than HOLE_MIN_M (a quay wall's step) is ignored; an approach ramping up to a humped
+ * bridge falls away from the water and is left alone. `bank: false` (`?bankClimb=0`) is the before.
+ */
+export const BANK_CLIMB_MAX_M = 30, BANK_CLIMB_GRADE = 0.04;
+/** Hole and bank climbs (wayDeckProfile): `true`/`false` the hole climb alone (the build before bankClimb). */
+export type WayDeckClimb = boolean | { hole: boolean; bank: boolean };
 
 /** Highway kinds that get a deck (not steps, not a platform or proposed way). */
 export const wayDeckHighway = (h: string | undefined): boolean => !!h && !/^(steps|platform|proposed|construction|corridor|elevator)$/.test(h);
@@ -52,7 +66,8 @@ export const wayDeckHighway = (h: string | undefined): boolean => !!h && !/^(ste
 /** Audits only: why a bridge way got no deck (probe-way-decks --why). */
 export const wayDeckWhy: { fn: ((id: string, reason: string) => void) | null } = { fn: null };
 
-export function wayDeckProfile(id: string, name: string, points: readonly Vec2[], halfWidth: number, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, openEnds = false, climb = true): DeckProfile | null {
+export function wayDeckProfile(id: string, name: string, points: readonly Vec2[], halfWidth: number, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, openEnds = false, climbs: WayDeckClimb = true): DeckProfile | null {
+  const climb = typeof climbs === 'boolean' ? climbs : climbs.hole, bankClimb = typeof climbs === 'object' && climbs.bank;
   const no = (reason: string): null => { wayDeckWhy.fn?.(id, reason); return null; };
   if (points.length < 2) return no('fewer than 2 points');
   // A coarse pass first (every 2 m): most bridge ways in a cell cross no water the extract leaves undecked.
@@ -90,7 +105,7 @@ export function wayDeckProfile(id: string, name: string, points: readonly Vec2[]
   for (let k = first; k <= last; k++) if (claimed(all[k][0], all[k][1])) return no(`claimed at station ${k - first} of ${last - first}`);
   // A hole in the relief past either end of the water (HOLE_M): the deck runs on to the bank beyond it.
   const reach = Math.round((ABUTMENT_M + APPROACH_M) / WAY_DECK_STEP_M), maxK = Math.round(HOLE_MAX_M / WAY_DECK_STEP_M);
-  let lo = first, hi = last;
+  let lo = first, hi = last, bank0 = Infinity, bank1 = -Infinity;
   if (ground) {
     const step = (from: Vec2, back: Vec2, k: number): Vec2 => { const l = Math.hypot(from[0] - back[0], from[1] - back[1]) || 1; return [from[0] + (from[0] - back[0]) / l * k * WAY_DECK_STEP_M, from[1] + (from[1] - back[1]) / l * k * WAY_DECK_STEP_M]; };
     // Station k of the line, extended straight past either end.
@@ -120,9 +135,31 @@ export function wayDeckProfile(id: string, name: string, points: readonly Vec2[]
       all = line; first -= k0; last -= k0;
       lo = e0 !== null ? e0 - k0 - Math.round(ABUTMENT_M / WAY_DECK_STEP_M) : first; hi = e1 !== null ? e1 - k0 + Math.round(ABUTMENT_M / WAY_DECK_STEP_M) : last;
     }
+    if (bankClimb) {
+      // BANK_CLIMB_MAX_M: on from each abutment while the relief climbs away from the water.
+      const maxC = Math.round(BANK_CLIMB_MAX_M / WAY_DECK_STEP_M);
+      const out = (from: number, dir: 1 | -1): number => {
+        let j = 0;
+        while (j < maxC && ground(...at(from + dir * (j + 1))) - ground(...at(from + dir * j)) > BANK_CLIMB_GRADE * WAY_DECK_STEP_M && !claimed(...at(from + dir * (j + 1)))) j++;
+        return from + dir * j;
+      };
+      // From the first dry station past the water (or the bank past a hole).
+      const f0 = lo < first ? lo : first - 1, f1 = hi > last ? hi : last + 1, minC = Math.round(HOLE_MIN_M / WAY_DECK_STEP_M);
+      // A climb shorter than HOLE_MIN_M (a quay wall's step) leaves the abutment where it is.
+      let c0 = out(f0, -1), c1 = out(f1, 1);
+      if (f0 - c0 < minC) c0 = f0;
+      if (c1 - f1 < minC) c1 = f1;
+      if (c0 < f0 || c1 > f1) {
+        const k0 = Math.min(0, c0 - reach), k1 = Math.max(all.length - 1, c1 + reach), line: Vec2[] = [];
+        for (let k = k0; k <= k1; k++) line.push(at(k));
+        all = line; first -= k0; last -= k0; lo -= k0; hi -= k0;
+        if (c0 < f0) bank0 = c0 - k0;
+        if (c1 > f1) bank1 = c1 - k0;
+      }
+    }
   }
   // Approaches: APPROACH_M past the abutments (or the underpass) on each side.
-  const k0 = Math.max(0, Math.min(first, lo) - reach), k1 = Math.min(all.length - 1, Math.max(last, hi) + reach);
+  const k0 = Math.max(0, Math.min(first, lo, bank0) - reach), k1 = Math.min(all.length - 1, Math.max(last, hi, bank1) + reach);
   const runs: [number, number][] = [...(lo < first ? [[lo, first] as [number, number]] : []), ...(hi > last ? [[last, hi] as [number, number]] : [])];
   all = all.slice(k0, k1 + 1);
   const n = all.length, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n);
@@ -132,9 +169,11 @@ export function wayDeckProfile(id: string, name: string, points: readonly Vec2[]
     bx0 = Math.min(bx0, x[i] - halfWidth); by0 = Math.min(by0, y[i] - halfWidth); bx1 = Math.max(bx1, x[i] + halfWidth); by1 = Math.max(by1, y[i] + halfWidth);
   }
   const w0 = s[first - k0], w1 = s[last - k0], u0 = lo < first ? s[lo - k0] : Infinity, u1 = hi > last ? s[hi - k0] : -Infinity;
+  // bankClimb: the deck reaches the bank tops (an ABUTMENT_M past them, as at the water).
+  const b0 = bank0 !== Infinity ? s[Math.max(0, bank0 - k0 - Math.round(ABUTMENT_M / WAY_DECK_STEP_M))] : Infinity, b1 = bank1 !== -Infinity ? s[Math.min(n - 1, bank1 - k0 + Math.round(ABUTMENT_M / WAY_DECK_STEP_M))] : -Infinity;
   return {
     id, name, family: 'way-deck', x, y, s, h, halfWidth: hw, water: [w0, w1],
-    deck: [Math.max(0, Math.min(w0 - ABUTMENT_M, u0)), Math.min(s[n - 1], Math.max(w1 + ABUTMENT_M, u1))], bbox: [bx0, by0, bx1, by1],
+    deck: [Math.max(0, Math.min(w0 - ABUTMENT_M, u0, b0)), Math.min(s[n - 1], Math.max(w1 + ABUTMENT_M, u1, b1))], bbox: [bx0, by0, bx1, by1],
     ...(runs.length ? { under: runs.map(([a, b]): [number, number] => [s[a - k0], s[b - k0]]) } : {}),
   };
 }
@@ -190,12 +229,12 @@ export function offsetLine(points: readonly Vec2[], d: number): Vec2[] {
  * carriageway and its cycle paths, and water between them). Returns the profiles and every way id they cover.
  */
 export const WAY_DECK_GROUP_M = 25;
-export function wayDeckGroups(ways: readonly WayDeckInput[], wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb = true): { profiles: DeckProfile[]; covered: number[] } {
+export function wayDeckGroups(ways: readonly WayDeckInput[], wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb: WayDeckClimb = true): { profiles: DeckProfile[]; covered: number[] } {
   return groupWayDecks(ways.map(w => wayDeckCrossing(w, wet, claimed, ground, climb)), wet, ground, climb);
 }
 
 /** One way's deck profile for wayDeckGroups (null: it crosses no water, or a measured deck carries it). */
-export function wayDeckCrossing(w: WayDeckInput, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb = true): { w: WayDeckInput; p: DeckProfile | null } {
+export function wayDeckCrossing(w: WayDeckInput, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb: WayDeckClimb = true): { w: WayDeckInput; p: DeckProfile | null } {
   return { w, p: wayDeckProfile(`OSM${w.id}`, w.name, w.points, w.halfWidth, wet, claimed, ground, false, climb) };
 }
 
@@ -203,7 +242,7 @@ export function wayDeckCrossing(w: WayDeckInput, wet: (x: number, y: number) => 
  * wayDeckGroups from the ways' profiles (wayDeckCrossing, in the ways' order): the page makes them one task each
  * (groundStore placeWayDecks, #129) and groups them here.
  */
-export function groupWayDecks(crossings: readonly { w: WayDeckInput; p: DeckProfile | null }[], wet: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb = true): { profiles: DeckProfile[]; covered: number[] } {
+export function groupWayDecks(crossings: readonly { w: WayDeckInput; p: DeckProfile | null }[], wet: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, climb: WayDeckClimb = true): { profiles: DeckProfile[]; covered: number[] } {
   const crossing = crossings.filter(c => !!c.p) as { w: WayDeckInput; p: DeckProfile }[];
   const mid = (p: DeckProfile): Vec2 => { const s = (p.water![0] + p.water![1]) / 2; const i = Math.max(0, p.s.findIndex(v => v >= s)); return [p.x[i], p.y[i]]; };
   const dir = (p: DeckProfile): Vec2 => { const n = p.x.length - 1, l = Math.hypot(p.x[n] - p.x[0], p.y[n] - p.y[0]) || 1; return [(p.x[n] - p.x[0]) / l, (p.y[n] - p.y[0]) / l]; };
@@ -213,18 +252,21 @@ export function groupWayDecks(crossings: readonly { w: WayDeckInput; p: DeckProf
   for (const main of order) {
     if (used.has(main.w.id)) continue;
     const m = mid(main.p), u = dir(main.p), nrm: Vec2 = [-u[1], u[0]];
-    let left = main.w.halfWidth, right = main.w.halfWidth;
+    let left = main.w.halfWidth, right = main.w.halfWidth, joined = 0;
     for (const o of order) {
       if (used.has(o.w.id) || o === main) continue;
       const c = mid(o.p), v = dir(o.p);
       if (Math.hypot(c[0] - m[0], c[1] - m[1]) > WAY_DECK_GROUP_M || Math.abs(u[0] * v[0] + u[1] * v[1]) < 0.8) continue;
       const lat = (c[0] - m[0]) * nrm[0] + (c[1] - m[1]) * nrm[1];
       left = Math.max(left, lat + o.w.halfWidth); right = Math.max(right, -lat + o.w.halfWidth);
-      used.add(o.w.id); covered.push(o.w.id);
+      used.add(o.w.id); covered.push(o.w.id); joined++;
     }
     used.add(main.w.id); covered.push(main.w.id);
     const shift = (left - right) / 2, half = (left + right) / 2;
-    const p = shift === 0 && half === main.w.halfWidth ? main.p : wayDeckProfile(`OSM${main.w.id}`, main.w.name, offsetLine(main.w.points, shift), half, wet, () => false, ground, false, climb) ?? main.p;
+    // A bundle (a dual carriageway and its paths, one deck) keeps its ends: past the water its halves part over the
+    // median, which the bank climb's full-width deck would cover (BANK_CLIMB_MAX_M; the Ringweg-Noord parapet pin).
+    const bankless = joined > 0 && typeof climb === 'object' && climb.bank ? { ...climb, bank: false } : null;
+    const p = shift === 0 && half === main.w.halfWidth && !bankless ? main.p : wayDeckProfile(`OSM${main.w.id}`, main.w.name, offsetLine(main.w.points, shift), half, wet, () => false, ground, false, bankless ?? climb) ?? main.p;
     profiles.push(p);
   }
   return { profiles, covered };

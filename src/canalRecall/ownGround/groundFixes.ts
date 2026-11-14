@@ -35,10 +35,18 @@ export const GROUND_FIXES = [
   /** Lane f1b-jagged 2026-11-14: holeStreets leaves the deck's own road alone where the survey draws it at ground level over the hole (bridgeGaps.ts holeCarry), Ringweg-Noord. */
   'holeCarried',
 ] as const;
-export type GroundFix = (typeof GROUND_FIXES)[number];
+/**
+ * Trials: fixes measured but not yet shipped, default off; `?<name>=1|true|on` (or the window override set true) turns one
+ * on, through the same plumbing to the worker.
+ */
+export const GROUND_TRIALS = [
+  /** Lane f1b-jagged 2026-11-14: way decks run on to the top of each bank's climb away from the water, so a crossing holds the grade between the bank tops (wayDecks.ts BANK_CLIMB_MAX_M), the Lelylaan slip. Off: the extended deck opens a hole in the carriageway beside the slip (frames in _pruned-sheets/f1b-jagged). */
+  'bankClimb',
+] as const;
+export type GroundFix = (typeof GROUND_FIXES)[number] | (typeof GROUND_TRIALS)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;
 
-/** The fixes switched off by the page (`?name=0|false|off`, or the window override): only the off ones are listed. */
+/** The fixes switched off by the page (`?name=0|false|off`, or the window override) and the trials switched on (`?name=1`). */
 export function groundFixFlags(search = (globalThis as { location?: { search?: string } }).location?.search ?? ''): GroundFixFlags {
   const g = globalThis as { __canalRecallGroundFixes?: GroundFixFlags };
   const out: GroundFixFlags = {};
@@ -47,12 +55,17 @@ export function groundFixFlags(search = (globalThis as { location?: { search?: s
     if (typeof forced === 'boolean') { if (!forced) out[f] = false; continue; }
     if (new RegExp(`[?&]${f}=(0|false|off)\\b`).test(search)) out[f] = false;
   }
+  for (const f of GROUND_TRIALS) {
+    const forced = g.__canalRecallGroundFixes?.[f];
+    if (forced === true || (forced === undefined && new RegExp(`[?&]${f}=(1|true|on)\\b`).test(search))) out[f] = true;
+  }
   return out;
 }
 
-/** The store options for a flag set (only the off fixes: the store's defaults are on). */
+/** The store options for a flag set (the off fixes, the store's defaults being on, and the trials turned on). */
 export function groundFixOptions(flags: GroundFixFlags | undefined): GroundFixFlags {
   const out: GroundFixFlags = {};
   for (const f of GROUND_FIXES) if (flags?.[f] === false) out[f] = false;
+  for (const f of GROUND_TRIALS) if (flags?.[f] === true) out[f] = true;
   return out;
 }
