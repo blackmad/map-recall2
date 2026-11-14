@@ -1,0 +1,106 @@
+{
+  "id": "splendor",
+  "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 50 px/m over the 48.7 m street chord): TMX7316010203-002031_pano_0001_000413 (2021) and TMX7316010203-001665_pano_0000_000369 (2020)",
+  "facades": [
+    {
+      "name": "street front (bath wing)",
+      "bearing": 146,
+      "photo": "artifacts/landmark-briefs/splendor/face-front-1.jpg",
+      "rows": [
+        8
+      ],
+      "columns": 8,
+      "symmetric": false,
+      "gables": 0,
+      "alongM": [
+        12.38,
+        24.85
+      ]
+    },
+    {
+      "name": "street front (east house)",
+      "bearing": 146,
+      "photo": "artifacts/landmark-briefs/splendor/face-front-1.jpg",
+      "rows": [
+        1,
+        5,
+        3,
+        3
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "gables": 0,
+      "alongM": [
+        40.98,
+        52.93
+      ],
+      "mixedRows": [
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002031_pano_0001_000413: ground floor beside the house door (row 0, its head lower than the windows): two paired windows (1.2 m) and three single lights (0.9 m)",
+          "openings": [
+            {
+              "kind": "pair",
+              "w": 1.2
+            },
+            {
+              "kind": "pair",
+              "w": 1.2
+            },
+            {
+              "kind": "single",
+              "w": 0.9
+            },
+            {
+              "kind": "single",
+              "w": 0.9
+            },
+            {
+              "kind": "single",
+              "w": 0.9
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002031_pano_0001_000413: two paired windows either side of the oval cartouche and a three-light window at the east end",
+          "openings": [
+            {
+              "kind": "pair",
+              "w": 1.2
+            },
+            {
+              "kind": "pair",
+              "w": 1.1
+            },
+            {
+              "kind": "triple",
+              "w": 2.4
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002031_pano_0001_000413: three dormers in the pantile roof, the east one wider (glazed widths)",
+          "openings": [
+            {
+              "kind": "dormer",
+              "w": 1.1
+            },
+            {
+              "kind": "dormer",
+              "w": 1.1
+            },
+            {
+              "kind": "dormer",
+              "w": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

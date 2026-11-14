@@ -4,7 +4,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {arcLettering, clipRingByLine, clipRingByY, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
+import {arcLettering, clipRingByLine, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
 
 /** BuildingTools that only collects geometries per colour. */
 const collector = () => {
@@ -116,4 +116,15 @@ test('arcLettering centres the text on the arc top and keeps every run on the ra
   assert.ok(Math.abs((bb.min.x + bb.max.x) / 2 - ct) < 0.05, 'centred on the arc');
   assert.ok(bb.max.y <= cy + r + 7 * px + 0.02 && bb.max.y > cy + r, 'top letters sit on the radius');
   assert.ok(bb.min.y > cy + r * Math.cos(span / 2) - 0.1, 'ends follow the arc down');
+});
+
+test('cutFrontWalls keeps each range of a front wall only above its drawn top', () => {
+  // a 10 m front along +x (outward normal +z), 8 m tall; a back wall 5 m in stays untouched
+  const front = {type: 'WallSurface', rings: [[[0, 0, 0], [10, 0, 0], [10, 8, 0], [0, 8, 0]]]} as const;
+  const back = {type: 'WallSurface', rings: [[[0, 0, -5], [10, 0, -5], [10, 8, -5], [0, 8, -5]]]} as const;
+  const out = cutFrontWalls([front, back] as never, [[0, 0], [10, 0]], {a: [0, 0], b: [10, 0]}, [[-1, 4, 6], [4, 11, 9]]);
+  assert.equal(out.length, 2, 'the second range is above the wall top, so only the first range and the back wall remain');
+  const kept = out.find(s => s.rings[0].every(p => p[2] === 0))!;
+  assert.ok(kept.rings[0].every(p => p[1] >= 6 - 1e-9 && p[0] <= 4 + 1e-9));
+  assert.ok(out.includes(back as never));
 });

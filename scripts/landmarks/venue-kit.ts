@@ -19,7 +19,9 @@ import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
  *  - `verticalLettering`: glyph runs turned 90 degrees (text reading bottom to top) on a banner or a vertical sign;
  *  - `clipRingByY`: the same cut by a horizontal plane, so a builder can keep a 3DBAG wall's gable or tower top and draw
  *    the storeys below it with cut openings (Industrieele Groote Club);
- *  - `arcLettering`: glyph runs set on an arc over an arched doorway (DE INDUSTRIEELE GROOTE CLUB over its entrance).
+ *  - `arcLettering`: glyph runs set on an arc over an arched doorway (DE INDUSTRIEELE GROOTE CLUB over its entrance);
+ *  - `cutFrontWalls`: the 3DBAG walls on a street front cut into chord ranges, each kept only above the top of the
+ *    storeys the builder draws there (Splendor's six fronts of different heights on one chord).
  *
  * Frames follow nearbar-kit: t along the wall to the viewer's right, y up, out of the wall along n. Every solid's back
  * face sits at `out` (sunk by nearbar-kit's SINK when the builder sets one); fronts stand >= 5 cm proud.
@@ -173,4 +175,28 @@ export function arcLettering(b: BuildingTools, f: Frame, text: string, ct: numbe
     put(b, f, g, ct + rr * Math.cos(th), 0, out - 0.02, c);
   }
   return width / r;   // the arc angle the text spans (radians)
+}
+
+/**
+ * 3DBAG walls lying on a street front (every vertex within `tol` of the `path` polyline) cut per chord range: each
+ * range [s0, s1, top] keeps the wall only above `top` (the builder draws the storeys below). Ranges are measured along
+ * the chord a -> b; a wall part outside every range is dropped. Walls off the path come back unchanged.
+ */
+export function cutFrontWalls(surfaces: Surface[], path: XZ[], chord: {a: XZ; b: XZ}, ranges: Array<[number, number, number]>, tol = 0.7): Surface[] {
+  const L = Math.hypot(chord.b[0] - chord.a[0], chord.b[1] - chord.a[1]);
+  const t: XZ = [(chord.b[0] - chord.a[0]) / L, (chord.b[1] - chord.a[1]) / L], n: XZ = [-t[1], t[0]];
+  const at = (s: number, o = 0): XZ => [chord.a[0] + t[0] * s + n[0] * o, chord.a[1] + t[1] * s + n[1] * o];
+  const keep = (a: XZ, b: XZ, inside: XZ): 1 | -1 => ((b[0] - a[0]) * (inside[1] - a[1]) - (b[1] - a[1]) * (inside[0] - a[0]) >= 0 ? 1 : -1);
+  const onPath = (s: Surface) => s.type === 'WallSurface' && s.rings[0].every(p => path.some((q, i) => i + 1 < path.length && segDist([p[0], p[2]], q, path[i + 1]).d <= tol));
+  const out: Surface[] = [];
+  for (const s of surfaces) {
+    if (!onPath(s)) { out.push(s); continue; }
+    for (const [s0, s1, top] of ranges) {
+      let r = clipRingByLine(s.rings[0], at(s0), at(s0, 1), keep(at(s0), at(s0, 1), at(s0 + 1)));
+      if (r.length) r = clipRingByLine(r, at(s1), at(s1, 1), keep(at(s1), at(s1, 1), at(s1 - 1)));
+      if (r.length) r = clipRingByY(r, top, 1);
+      if (r.length) out.push({...s, rings: [r]});
+    }
+  }
+  return out;
 }
