@@ -101956,10 +101956,16 @@
       "bytes": 174736,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7bb9c2f39b1d92cb",
+        "sourceHash": "364b001ec96ba141",
         "buildVersion": 2,
-        "bytes": 90264,
-        "triangles": 3207
+        "bytes": 76428,
+        "triangles": 2474
+      },
+      "lod2": {
+        "sourceHash": "364b001ec96ba141",
+        "buildVersion": 6,
+        "bytes": 10340,
+        "triangles": 181
       }
     },
     "garage-noord": {

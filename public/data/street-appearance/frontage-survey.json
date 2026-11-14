@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "3861d1d196a2c9315000bd7003c48ff356d9fbd77abf62e4652d53ff483af5b3"
+      "sha256": "d7db7308e0976ebdc97139d524721eabefd0ac272486b6454d67a32e125bd755"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -86,7 +86,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingsBrowser.ts",
-      "sha256": "fb76f1ceece07428c9f5b25d9e1a2c175a08bd5a651e181d079e13d6aac784ca"
+      "sha256": "385738c69d862337a021fb04d21b3277bd97d3c6a3b21f8674473d240bb3912c"
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
