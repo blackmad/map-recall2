@@ -45,6 +45,47 @@ export const DECK_MAX_GRADE = 0.12;
 const BUCKET_M = 25;
 const bucketKey = (bx: number, by: number) => (bx + 1_048_576) * 2_097_152 + (by + 1_048_576);
 
+/**
+ * GroundSurface.locate's segment index for long profiles (lane rail-street-speed 2026-11-14: a 4,660-station viaduct
+ * deck, OSM 130106320, took 4 M locates of 4,660 segments each in one Sloterdijk cell build, 90 % of it). Segments in
+ * blocks of LOCATE_BLOCK consecutive ones, each block's point bbox; locate scans only the blocks whose bbox can hold a
+ * segment as near as the nearest block's best, in index order with the same arithmetic, so it returns exactly what the
+ * full scan returns (the first segment at the minimum distance). Keyed on the profile's `x` array; a profile whose
+ * stations move in place (wayDecks.ts setDeckSides) must call forgetLocateIndex.
+ */
+const LOCATE_BLOCK = 32, LOCATE_GROUP = 16, LOCATE_INDEX_MIN_STATIONS = 4 * LOCATE_BLOCK;
+interface LocateIndex { y: Float64Array; n: number; /** Block boxes x0, y0, x1, y1. */ boxes: Float64Array; /** Boxes of LOCATE_GROUP consecutive blocks. */ groups: Float64Array }
+const locateIndexes = new WeakMap<Float64Array, LocateIndex>();
+export function forgetLocateIndex(p: DeckProfile): void { locateIndexes.delete(p.x); }
+function locateIndex(p: DeckProfile): LocateIndex {
+  const n = p.x.length, hit = locateIndexes.get(p.x);
+  if (hit && hit.y === p.y && hit.n === n) return hit;
+  const nb = Math.ceil((n - 1) / LOCATE_BLOCK), boxes = new Float64Array(nb * 4), groups = new Float64Array(Math.ceil(nb / LOCATE_GROUP) * 4).fill(NaN);
+  for (let b = 0; b < nb; b++) {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    // A NaN station makes the box NaN: never skipped (NaN > bound is false).
+    for (let i = b * LOCATE_BLOCK, end = Math.min((b + 1) * LOCATE_BLOCK, n - 1); i <= end; i++) {
+      const x = p.x[i], y = p.y[i];
+      if (x !== x || y !== y) { x0 = y0 = x1 = y1 = NaN; break; }
+      x0 = x0 < x ? x0 : x; y0 = y0 < y ? y0 : y; x1 = x1 > x ? x1 : x; y1 = y1 > y ? y1 : y;
+    }
+    boxes[4 * b] = x0; boxes[4 * b + 1] = y0; boxes[4 * b + 2] = x1; boxes[4 * b + 3] = y1;
+    const g = 4 * Math.floor(b / LOCATE_GROUP);
+    if (b % LOCATE_GROUP === 0) { groups[g] = x0; groups[g + 1] = y0; groups[g + 2] = x1; groups[g + 3] = y1; }
+    else if (groups[g] === groups[g] && x0 === x0) { groups[g] = Math.min(groups[g], x0); groups[g + 1] = Math.min(groups[g + 1], y0); groups[g + 2] = Math.max(groups[g + 2], x1); groups[g + 3] = Math.max(groups[g + 3], y1); }
+    else groups[g] = groups[g + 1] = groups[g + 2] = groups[g + 3] = NaN;
+  }
+  const index = { y: p.y, n, boxes, groups };
+  locateIndexes.set(p.x, index);
+  return index;
+}
+/** Squared distance from (x, y) to box b (a lower bound of every segment's in it); NaN for a NaN box. */
+function boxDist2(boxes: Float64Array, b: number, x: number, y: number): number {
+  const x0 = boxes[4 * b], y0 = boxes[4 * b + 1], x1 = boxes[4 * b + 2], y1 = boxes[4 * b + 3];
+  const dx = x < x0 ? x0 - x : x > x1 ? x - x1 : 0, dy = y < y0 ? y0 - y : y > y1 ? y - y1 : 0;
+  return x0 !== x0 ? NaN : dx * dx + dy * dy;
+}
+
 export interface DeckSurface {
   profile: DeckProfile;
   /** Scene z of the deck top per station (on the centreline, ease included). */
@@ -248,11 +289,41 @@ export class GroundSurface {
   static locate(deck: DeckSurface, x: number, y: number): { d: number; z: number; halfWidth: number; s: number; lateral: number } {
     const p = deck.profile, n = p.x.length;
     let best = Infinity, bi = 0, bt = 0;
-    for (let i = 0; i + 1 < n; i++) {
-      const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
-      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
-      const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
-      if (d2 < best) { best = d2; bi = i; bt = t; }
+    if (n < LOCATE_INDEX_MIN_STATIONS) {
+      for (let i = 0; i + 1 < n; i++) {
+        const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+        const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+        const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+        if (d2 < best) { best = d2; bi = i; bt = t; }
+      }
+    } else {
+      // The nearest box's block gives an upper bound; every block whose box lies within it (plus rounding slack) is
+      // scanned in index order exactly as the full loop would, the others hold no segment at the minimum.
+      const { boxes, groups } = locateIndex(p), nb = boxes.length >> 2, ng = groups.length >> 2;
+      let firstGroup = 0, firstD2 = Infinity, first = 0, bound = Infinity;
+      for (let g = 0; g < ng; g++) { const d2 = boxDist2(groups, g, x, y); if (d2 < firstD2) { firstD2 = d2; firstGroup = g; } }
+      firstD2 = Infinity;
+      first = firstGroup * LOCATE_GROUP;
+      for (let b = first, end = Math.min(first + LOCATE_GROUP, nb); b < end; b++) { const d2 = boxDist2(boxes, b, x, y); if (d2 < firstD2) { firstD2 = d2; first = b; } }
+      for (let i = first * LOCATE_BLOCK, end = Math.min((first + 1) * LOCATE_BLOCK, n - 1); i < end; i++) {
+        const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+        const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+        const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+        if (d2 < bound) bound = d2;
+      }
+      bound += bound * 1e-9 + 1e-9;
+      for (let g = 0; g < ng; g++) {
+        if (boxDist2(groups, g, x, y) > bound) continue;
+        for (let b = g * LOCATE_GROUP, bEnd = Math.min(b + LOCATE_GROUP, nb); b < bEnd; b++) {
+          if (boxDist2(boxes, b, x, y) > bound) continue;
+          for (let i = b * LOCATE_BLOCK, end = Math.min((b + 1) * LOCATE_BLOCK, n - 1); i < end; i++) {
+            const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+            const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+            const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+            if (d2 < best) { best = d2; bi = i; bt = t; }
+          }
+        }
+      }
     }
     const lerp = (arr: Float64Array) => arr[bi] + (arr[Math.min(n - 1, bi + 1)] - arr[bi]) * bt;
     const s = lerp(p.s);
