@@ -7,6 +7,7 @@
 //   (public/data/extracts/amsterdam/look-atlas-v1/; its --check paints in a browser and compares bytes with the
 //   published file): opt-in, `?lookAtlas=extract`.
 import type { Look } from '../bayTextures.js';
+import { realLookOn } from './realLook.js';
 import type { LookAtlasArrays } from './paintLookAtlas.js';
 
 export const LOOK_ATLAS_DIR = 'look-atlas-v1';
@@ -100,6 +101,8 @@ export function lookAtlasStamp(bundleSrc: string, search?: string): string | nul
     const url = new URL(bundleSrc);
     const asked = new URLSearchParams(search ?? (globalThis as { location?: { search?: string } }).location?.search ?? '').get('lookAtlas');
     if (asked === 'paint' || asked === 'extract') return null;
+    // realLook trim paints different cells: never read or store them under the deploy stamp the flag-off painter uses.
+    if (realLookOn('trim')) return null;
     if (asked !== 'cache' && /^(localhost|127\.0\.0\.1|\[::1\]|0\.0\.0\.0)$/.test(url.hostname)) return null;
     return url.searchParams.get('v');
   } catch { return null; }

@@ -8,6 +8,7 @@
  */
 import { hashSeed } from './wallBays.js';
 import { LOOK_VARIANTS, OUTLINE_INK, PALETTES, periodForYear, type Period, type TexturedLook } from './look/palette.js';
+import { realLookOn } from './look/realLook.js';
 
 export const PX_PER_M = 100;
 export const BAY_PX = 520;
@@ -166,7 +167,16 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   else ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
   const restrained = v.trimDensity === 'restrained';
   const stone = cartoon ? p.stone : '#cfc8b8';
-  if (v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern') {
+  // realLook trim (look/realLook.ts, default off): on the photo cells, a front without white accents gets a lintel and sill
+  // in its own wall colour (the wall channel, drawn a little lighter than the brick's mean, with soldier-course joints).
+  const brickTrim = p.look === 'photo' && !v.paleAccents && !v.openingGroup && realLookOn('trim');
+  if (v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern' && brickTrim) {
+    p.fill('wall', '#f2f2f2');
+    if (v.lintel === 'arch' || (v.lintel === undefined && shape === 'arch')) { ctx.beginPath(); ctx.ellipse(x + w / 2, y + 2, w / 2 + (restrained ? 5 : 12), restrained ? 12 : 30, 0, Math.PI, 0); ctx.fill(); }
+    else { ctx.fillRect(x - (restrained ? 4 : 12), y - (restrained ? 12 : 32), w + (restrained ? 8 : 24), restrained ? 8 : 26);
+      p.shade(() => { ctx.strokeStyle = 'rgba(60,44,36,0.45)'; ctx.lineWidth = 2; for (let bx = x - 10; bx < x + w + 12; bx += 10) { ctx.beginPath(); ctx.moveTo(bx, y - (restrained ? 12 : 32)); ctx.lineTo(bx, y - (restrained ? 4 : 6)); ctx.stroke(); } }); }
+    p.fill('wall', '#e6e6e6'); ctx.fillRect(x - (restrained ? 4 : 10), y + h + 2, w + (restrained ? 8 : 20), restrained ? 5 : 12);
+  } else if (v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern') {
     p.fill('ink', stone);
     if (v.lintel === 'arch' || (v.lintel === undefined && shape === 'arch')) { ctx.beginPath(); ctx.ellipse(x + w / 2, y + 2, w / 2 + (restrained ? 5 : 12), restrained ? 12 : 30, 0, Math.PI, 0); ctx.fill(); if (cartoon) outline(); }
     else { p.rr(x - (restrained ? 4 : 12), y - (restrained ? 12 : 32), w + (restrained ? 8 : 24), restrained ? 8 : 26, cartoon ? 4 : 1); ctx.fill(); outline();

@@ -50,7 +50,7 @@ Input (one of)
 
 Flags
   --year <yyyy>          only panoramas of that mission year
-  --season winter|any    winter: Nov-Mar captures first (bare trees); default any
+  --season winter|summer|any  winter: Nov-Mar captures first (bare trees); summer: Jun-Sep first (leaf-on crowns); default any
   --prefer-obliquity <deg>  after the season, captures whose pose fits the whole wall (not clipped), then those that see
                          the wall within <deg> of square, squarest first (the belt rule: winter, then under 30 deg; 45 deg
                          and more only as a second view); default off
@@ -161,7 +161,7 @@ export function withPinnedPoses(pands: Entry[], file = PINNED_POSES): Entry[] {
 }
 /** --square: a frame over this obliquity is not square (the belt rule's 30 deg). */
 export const SQUARE_MAX_DEG = 30;
-export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; square?: boolean; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string; rule10?: Rule10 };
+export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'summer' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; square?: boolean; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string; rule10?: Rule10 };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -188,7 +188,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, pano: e.pano }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   if ((arg(argv, 'list') || arg(argv, 'pands')) && !argv.includes('--no-pinned-poses')) pands = withPinnedPoses(pands);
-  const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
+  const season = arg(argv, 'season') === 'winter' ? 'winter' : arg(argv, 'season') === 'summer' ? 'summer' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
   return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), ...(argv.includes('--square') ? { square: true, preferObliquityDeg: Number(arg(argv, 'prefer-obliquity') ?? SQUARE_MAX_DEG) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName, ...(parseRule10(argv) ? { rule10: parseRule10(argv)! } : {}) };
 }
@@ -277,6 +277,8 @@ function wallChord(fp: Footprint, chord: [[number, number], [number, number]], b
 }
 
 const WINTER = new Set([11, 12, 1, 2, 3]);
+/** `--season summer` (leaf-on: tree crowns against the photo, realLook round 2): June to September captures first. */
+const SUMMER = new Set([6, 7, 8, 9]);
 const monthOf = (ts: string) => Number(String(ts).slice(5, 7));
 
 /** Pose pick: a panorama is rejected when this share of its frame 0-GLARE_BAND_DEG below the horizon is blown out (sun glare, flare). */
@@ -381,7 +383,7 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
   if (!ranked.length) return { pandId, key, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
   // then lowest foliage on the wall, then rank.
-  const seasonKey = (c: PanoPick) => args.season === 'winter' && !WINTER.has(monthOf(c.timestamp)) ? 1 : 0;
+  const seasonKey = (c: PanoPick) => args.season === 'winter' ? (WINTER.has(monthOf(c.timestamp)) ? 0 : 1) : args.season === 'summer' ? (SUMMER.has(monthOf(c.timestamp)) ? 0 : 1) : 0;
   // --prefer-obliquity: inside a season, the captures within the limit first, squarest first (absent = rank order).
   const lim = args.preferObliquityDeg, oblKey = (c: PanoPick) => lim === undefined ? 0 : c.obliquityDeg <= lim ? c.obliquityDeg : 1000 + c.obliquityDeg;
   // ... and with it, captures whose pose fits the whole wall (no 'clipped top'/'sides') before the squarest: the squarest

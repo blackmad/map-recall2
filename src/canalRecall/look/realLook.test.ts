@@ -22,7 +22,7 @@ const IDS = Array.from({ length: 40 }, (_, i) => `NL.IMBAG.Pand.03631000121${Str
 test('the flag: off by default; 1/all every lever; a list a subset; 0 none', () => {
   assert.deepEqual([...realLookLevers(undefined)], [...REAL_LOOK_DEFAULT]);
   assert.equal(REAL_LOOK_DEFAULT.length, 0);
-  assert.deepEqual([...realLookLevers('1')].sort(), ['doors', 'trees', 'walls']);
+  assert.deepEqual([...realLookLevers('1')].sort(), ['doors', 'trees', 'trim', 'walls']);
   assert.deepEqual([...realLookLevers('walls,trees')].sort(), ['trees', 'walls']);
   assert.deepEqual([...realLookLevers('0')], []);
   assert.deepEqual([...realLookLevers('bogus')], []);

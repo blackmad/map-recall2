@@ -14,12 +14,17 @@
  *  - `doors`: the photo look's door/accent swatches are drawn in the measured shares of the 1,574 door colours the
  *    published HouseSpecs carry (REAL_DOOR_SWATCHES).
  *  - `trees`: crowns lose the display boost (+8° hue, +10 % saturation over the photo-sampled species priors), take a seeded
- *    ±6 % lightness and ±4° hue per tree, and are smooth-shaded (same triangles).
+ *    ±6 % lightness and ±4° hue per tree, and draw as irregular street-tree lobes (trees/crownGeometry.ts, same
+ *    triangles) on the measured silhouettes (`?treeShape=1`'s crown base and width).
+ *  - `trim`: the photo cells' window lintels and sills are drawn in the wall's own colour (a brick soldier course and a
+ *    brick sill) except on the presets that carry white accents, so a pale stone head and sill appear only on the fronts
+ *    whose white-accent trait is drawn (buurt profile paleAccentShare, a spec's stated pale, the preset hash), not on
+ *    every masonry front (benchmark-v1 labels: white surrounds/bands/keystones on 19 % of canal and 40 % of c19 fronts).
  *
  * `?realLook=1` (or `all`) turns every lever on; `?realLook=walls,doors` a subset; `0` or absent: off, byte-identical.
  * REAL_LOOK in Node and the building worker's forwarded query read the same way (workerPool.ts withWorkerFlags).
  */
-export const REAL_LOOK_LEVERS = ['walls', 'doors', 'trees'] as const;
+export const REAL_LOOK_LEVERS = ['walls', 'doors', 'trees', 'trim'] as const;
 export type RealLookLever = (typeof REAL_LOOK_LEVERS)[number];
 /** The levers on when nothing is asked: none (the integrator flips these after the row sheets). */
 export const REAL_LOOK_DEFAULT: readonly RealLookLever[] = [];

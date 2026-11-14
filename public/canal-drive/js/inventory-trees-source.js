@@ -1,13 +1,15 @@
 import {treeTypology,setTreeShaper} from '../da-costa-block/tree-typology.js';
 // `?treeShape=1` (lane T-shape #371): measured crown silhouettes with per-tree jitter; off, the typology is unchanged.
 import {treeShaper} from '../../../src/canalRecall/trees/treeShape.ts';
-setTreeShaper(treeShaper);
+// realLook trees also turns on the measured silhouettes (crown base per height class, measured width): a tall clear trunk.
+setTreeShaper({...treeShaper,active:()=>treeShaper.active()||realLookOn('trees')});
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
 import {calmFoliage,treeCalmFlag} from '../../../src/canalRecall/look/calmTones.ts';
 // `?realLook=trees` (look/realLook.ts, default off): crowns in the sampled species colour with a per-tree spread, smooth-shaded.
 import {realLookOn,realFoliageHex} from '../../../src/canalRecall/look/realLook.ts';
+import {crownLobe} from '../../../src/canalRecall/trees/crownGeometry.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
@@ -31,9 +33,8 @@ function crownBounds(camera) {
   return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
 }
 
-// realLook trees: a crown's normals point out from its centre, so the 20/80-triangle icosahedron shades as a soft round
-// crown instead of flat facets (same triangles, same draws).
-function sphereNormals(geometry){const p=geometry.attributes.position,n=geometry.attributes.normal;for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i),l=Math.hypot(x,y,z)||1;n.setXYZ(i,x/l,y/l,z/l);}n.needsUpdate=true;return geometry;}
+// realLook trees: an irregular street-tree crown lobe (bulges, notches, a flatter underside), smooth-shaded.
+function crownGeometryOf(detail,variant){const m=crownLobe(detail,variant),g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(m.positions,3));g.setAttribute('normal',new THREE.BufferAttribute(m.normals,3));g.computeBoundingSphere();return g;}
 // One 20-triangle shrub; its upper faces take the instance (bed) bloom colour,
 // the rest a foliage green, so a rose bush costs no extra flower geometry.
 function roseBushGeometry() {
@@ -310,12 +311,14 @@ export class InventoryTrees {
   // One instanced draw for group `key` of `count` instances; `fill(mesh)` writes its matrices and colours.
   addMesh(key,count,fill) {
     const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
-    const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
+    const real=realLookOn('trees'),detail=this.camera.zoom()>=18?1:0;
+    // realLook trees: one lumpy crown lobe per tone group (trees/crownGeometry.ts), same triangles as the icosahedron.
+    const geometryKey=wood?'wood':cone?'cone':rose?key:real?`crown-${detail}-${key.split('-').pop()}`:detail?'faceted-detail':'faceted';
     if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
       wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
         :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
         :rose?roseBushGeometry()
-        :realLookOn('trees')?sphereNormals(new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0)):new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
+        :real?crownGeometryOf(detail,Number(key.split('-').pop())||0):new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
     const materialKey=wood?'wood':rose?'rose':'foliage';
     if(!this.materials.has(materialKey)){const mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:!(materialKey==='foliage'&&realLookOn('trees'))});this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
     const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),count);
