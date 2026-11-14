@@ -3,6 +3,38 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Flats are no longer drawn as grey industrial sheds",
+      "text": "Some blocks of flats and listed buildings were drawn as blank grey or cream industrial sheds, because the list of building uses we read had dropped every dwelling. Any building with homes in it, a listed monument, a tower, or a small or tall unmapped building now keeps its ordinary look. About 700 buildings changed, 11 of them in the centre. Some of them still get too many window columns; that is a separate fix.",
+      "where": [
+        4.80576,
+        52.37676
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-industrial-veto-before-after.jpg",
+          "alt": "Slotermeer flat block on Nicolaas Ruychaverstraat: before, a blank cream industrial shed with grey doors; after, a windowed brick-toned housing block",
+          "caption": "Nicolaas Ruychaverstraat, Slotermeer, same pose: before | after. Flats with dwellings are no longer drawn as industrial sheds."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "Roof ridges run the way the real roofs do",
+      "text": "Pitched and gabled roofs used to guess their ridge from the building's longest side, which put gable ends facing the street on many rows that really have long roofs along it (Jan Hanzenstraat, Bilderdijkkade). Roofs now turn to the ridge measured by 3DBAG wherever it has one: wrongly turned roofs drop from about 68 % to 16 % of the 27,000 roofs we can check. Bilderdijkkade's 1895 houses have no measured slope at all, so they are unchanged for now.",
+      "where": [
+        4.8655,
+        52.3685
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-ridge-axes-before-after.jpg",
+          "alt": "Aerial view over Jan Hanzenstraat: before, row roofs with gable ends facing the viewer; after, roofs with the ridge turned along the street",
+          "caption": "Jan Hanzenstraat from above, same pose: before | after. Look at the back row: the sawtooth of gable ends becomes continuous roofs."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Ordinary houses are back on their plots",
       "text": "Since early October every ordinary house was drawn a little too far from the city centre: about 1.5 m in the canal belt and up to about 4 m at the edge of the city, on both the map view and the street-level view. Two parts of the game used slightly different sizes for the Earth. Next to the houses that have their own models (which were placed correctly) this showed as houses overlapping their neighbours and gaps between them: the overlaps and gaps on this morning's Haarlemmerdijk picture. The wrong gables and the poor likeness on that picture were faults in the models themselves; five of its six houses are now held or waiting for review. Measured on 19,719 houses in the centre, the worst error drops from 4.4 m to 1.6 m, and 95 % of houses are now within half a metre. A smaller error remains far north and south of the centre: calculated at about 1.3 m at Zuidas and more in Zuidoost, still to be measured and fixed.",
       "where": [
