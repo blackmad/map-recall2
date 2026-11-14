@@ -68,6 +68,12 @@ export interface DeckProfile {
   caps?: { left: Float64Array; right: Float64Array };
   /** Way decks only (ownGround/wayDecks.ts HOLE_M): station ranges past the water over a hole in the relief (an underpass, its ramps). */
   under?: [number, number][];
+  /**
+   * Per lateral column the stations of a hole range the survey draws at ground level running on from the deck end: the
+   * deck's own carriageway and verges, which keep the deck's lift under holeStreets (ownGround/bridgeGaps.ts holeCarry,
+   * lane f1b-jagged 2026-11-14). Stations <= lo and >= hi of the nearest column are carried.
+   */
+  underCarry?: { cols: Float64Array; lo: Float64Array; hi: Float64Array };
 }
 
 /** An outline this much wider than the road deck on a side widens the deck there (DeckProfile.sides), at most OUTLINE_REACH_MAX_M. */

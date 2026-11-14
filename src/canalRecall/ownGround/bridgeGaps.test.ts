@@ -212,3 +212,40 @@ test('survey caps smoothed (lane F1b): a pier bay and a short capped run go, a n
   assert.equal(t.right[24], 4.5, 'capped');
   for (let i = 9; i < 24; i++) assert.ok(t.right[i] - t.right[i + 1] <= 0.5 * 0.5 + 1e-9, `no step steeper than the taper at ${i}`);
 });
+
+import { holeCarry } from './bridgeGaps.js';
+test('holeCarry: the deck\'s own road at ground level running on from the deck end keeps the lift; a path crossing under does not (Ringweg-Noord 7376770, Lelylaan)', () => {
+  // A straight deck along +x, stations every 0.5 m, 10 m half-width; the hole range [6, 34] from the deck start.
+  const n = 81, x = Float64Array.from({ length: n }, (_, i) => i * 0.5), y = new Float64Array(n), s = Float64Array.from(x), halfWidth = new Float64Array(n).fill(10);
+  const p = { x, y, s, halfWidth, deck: [6, 40] as [number, number], water: [34, 39] as [number, number], under: [[6, 34]] as [number, number][] };
+  // The road line deck-level from the deck end (Lelylaan 7382981): nothing carried.
+  assert.equal(holeCarry(p, (px, py) => Math.abs(py) > 8 && px < 20), undefined);
+  // The road line ground-level to x 10, a verge at y -9 to x 16 (7376770's far verge), a path crossing under at x 20-22.
+  const ground = (px: number, py: number) => (px <= 10) || (py <= -8.5 && px <= 16) || (px >= 20 && px <= 22);
+  const c = holeCarry(p, ground)!;
+  const col = (t: number) => c.cols.findIndex(v => v === t);
+  assert.equal(c.lo[col(0)], 10);
+  assert.equal(c.lo[col(5)], 10);
+  assert.equal(c.lo[col(-9)], 16);
+  assert.equal(c.lo[col(-10)], 16);
+  // The crossing path is not connected to the deck end: no column reaches it.
+  assert.ok([...c.lo].every(v => v < 20));
+  assert.ok([...c.hi].every(v => v === Infinity));
+  assert.equal(holeCarry({ ...p, under: undefined }, () => true), undefined);
+});
+
+test('holeCarry crossers: a street the survey draws continuous with the approach but crossing under the deck stops the carry short of it (Provincialeweg 7040533, Weesperstraat)', () => {
+  const n = 81, x = Float64Array.from({ length: n }, (_, i) => i * 0.5), y = new Float64Array(n), s = Float64Array.from(x), halfWidth = new Float64Array(n).fill(10);
+  const p = { x, y, s, halfWidth, deck: [6, 40] as [number, number], water: [34, 39] as [number, number], under: [[6, 34]] as [number, number][] };
+  // Ground-level survey over the whole range (the approach and a quay street under the deck at x 18, one sheet).
+  const all = () => true;
+  assert.ok([...holeCarry(p, all)!.lo].every(v => v === 34));
+  // The quay street's OSM line crosses the road line at x 18: the carry stops HOLE_CARRY_CROSS_M (5 m) short of it.
+  const quay: [number, number][] = [[18, -20], [18, 20]];
+  const c = holeCarry(p, all, [quay])!;
+  assert.ok([...c.lo].every(v => v === 13), `lo ${[...new Set(c.lo)]}`);
+  // A line along the road (the approach's own way) is not a crosser.
+  assert.ok([...holeCarry(p, all, [[[0, 0.5], [40, 0.5]]])!.lo].every(v => v === 34));
+  // A crosser at the land end leaves nothing carried.
+  assert.equal(holeCarry(p, all, [[[8, -20], [8, 20]]]), undefined);
+});

@@ -1993,6 +1993,8 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Torensluis water slit: not `WET_CLEAR_M` (same rings from 2.0 down to 1.5 m); find the real cause.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
+  - **Deck ends after holeCarried (2026-11-14):** 10 decks still sink road within 12 m of the end (Gaasperdammerweg 409282361, Lelylaan 7382981, Dwergplanetenbaan, OSM1483479264, Huntumdreef, Wageningendreef 13650130, 7382638, Coentunnel 7377715 pale slab, 7376770 phone close-up paving strips); `probe-hole-junctions.ts`.
+  - **Crossings dip over water (user 2026-11-14, "I don't dip down"):** 28 of 697 crossings sag > 0.3 m (10 > 1 m), e.g. Ringweg-West slip 7382983 over the Slotervaart (3.19 m), Gaasperdammerweg 499557561, Haarlemmer Houttuinen 7376117. Trial `?bankClimb=1` (branch lane/f1b-jagged-20261114 5a0309e77, not merged) flattens the slip but opens a hole in the carriageway beside it; needs the extension carried through the hole ranges or capped at the road edges. `probe-crossing-dips.ts`.
   - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
   - **Pontsteiger (rebuilt 2026-11-14):** kit still lacks the pavilions' curved canopies, real loggia depth, glazed-brick texture, patterned soffit cladding; `grid()` hides panes by box bounds only (not roofs/prisms/rotated boxes).
   - **Two models on one pand (pinned open in `modelOverlap.test.ts`):** `joodse-invalide` vs `ordinary-0363100012253824`; `roeterseiland-rec-a` vs `ordinary-0363100012253754`. Ride each, then `SHADOWED_BY_LANDMARK` or hold.
