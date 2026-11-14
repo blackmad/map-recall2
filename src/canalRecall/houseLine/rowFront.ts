@@ -14,6 +14,7 @@ import { interimBoxes } from './boxPlacement.js';
 import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.js';
 import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
 import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js';
+import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -39,7 +40,7 @@ export interface RowFrontRecord {
   /** Window axes on the first upper storey (lane 2 `bays`). */
   bays?: number;
   /** Lane 2's wall colour (exposure taken out), its source and finish; absent = no hex (blocked or unread). */
-  wall?: { hex: string; source: 'reviewed' | 'strip-measured'; finish?: string };
+  wall?: { hex: string; source: 'reviewed' | 'strip-measured' | 'judged'; finish?: string };
   storeys?: number;
   confidence: number;
   /** Low confidence: the row line from measured neighbours and a plain cornice. */
@@ -61,7 +62,7 @@ export interface RowFrontRecord {
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
   /** House rows (lane R, docs/handoffs/house-rows-plan-20261114.md): the front is a member of a described series and draws
-   *  its series' one design (houseLine/rowSeries.ts). Absent: the record draws as before, byte for byte. */
+   *  its series' one design (houseLine/rowSeries.ts joins lane D's row record). Absent: the record draws as before, byte for byte. */
   series?: RowSeriesDraw;
   sources: Record<string, string>;
 }
@@ -83,7 +84,7 @@ export interface RowSeriesDraw {
   /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
-  roofStorey?: { kind: 'mansard' | 'none'; riseM: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[] };
+  roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[] };
   heads?: RowHeadsDraw[];
   /** Wall components the series states beyond the heads and cornice (bands: `floor-cornices`, `string-courses`,
    *  `speklagen`); each must be a facade component id. */
@@ -292,7 +293,8 @@ export function recordWall(rec: RowFrontRecord): string | null {
   // Lane 2's hex already has the capture's exposure taken out (lane WC option c): no second lift (the spec display's
   // lift drew 167816 at L 0.40 for a 0.36 reading and 176101 at 0.62 for 0.53).
   const drawn = w.hex.toLowerCase();
-  if (w.source === 'reviewed') return drawn;
+  // `judged` (house rows): the series' family tone (houseSpec/judgedColour.ts), never a reading, so no pale-warm hold.
+  if (w.source === 'reviewed' || w.source === 'judged') return drawn;
   const render = w.finish === 'plaster';
   return paleWarmHeld(drawn, { render, readingL: hexToOklab(w.hex)[0] }) ? null : drawn;
 }
@@ -416,6 +418,15 @@ export function rowFrontStepsOn(search?: string): boolean {
   } catch { return true; }
 }
 
+/** House rows: a mansard's rise over the wall top. A stated rise wins; else 3DBAG's roof over the series line (2.2-3.6 m,
+ *  the mansard storey a 3DBAG plate can hold); else the period default 3.0 m (a 3DBAG roof below the line reads nothing). */
+export const MANSARD_RISE = { min: 2.2, max: 3.6, period: 3.0 } as const;
+export function mansardRise(stated: number | undefined, bagHeight: unknown, top: number): number {
+  if (typeof stated === 'number' && Number.isFinite(stated)) return stated;
+  const over = typeof bagHeight === 'number' && Number.isFinite(bagHeight) ? bagHeight - top : NaN;
+  return over >= MANSARD_RISE.min ? Math.min(MANSARD_RISE.max, +over.toFixed(2)) : MANSARD_RISE.period;
+}
+
 /**
  * Decorator step after withHouseSpecCrown, before decorateRoof (galleryPipeline.ts). Applies steps a and b to a pand
  * with a record when the flag is on; otherwise returns the same object.
@@ -434,10 +445,18 @@ export function withRowFront<T extends Feature>(feature: T): T {
   // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
   if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
-    const top = rec.eavesM, rs = rec.series.roofStorey, mansard = rs?.kind === 'mansard' && rs.riseM > 0.5 ? rs : null;
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(rs.riseM, p.height, top) : 0;
+    const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
-    if (lv.specRecipe && rec.series.souterrain) lv.specRecipe.souterrain = true;
+    // A front record's count is drawn as stated (storeyPlanDraws: advisory), so the series draws the plan's souterrain
+    // itself, as storeyDraw would: every stated storey one row over a souterrain ground cell of SOUTERRAIN_FACTOR the
+    // pitch (Weteringschans 169016, 171218). Measured rows (windowBoxes) already place the storeys and win.
+    const sr2 = lv.specRecipe;
+    if (sr2 && rec.series.souterrain) {
+      sr2.souterrain = true;
+      if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(SOUTERRAIN_FACTOR * top / (rec.storeys + SOUTERRAIN_FACTOR)).toFixed(2) });
+    }
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
       rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id } });

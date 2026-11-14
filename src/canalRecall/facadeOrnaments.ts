@@ -221,6 +221,20 @@ export function rowWindowsOf(c: ExtraContext): RowWindow[] {
   return out;
 }
 
+const CONSOLE_MIN = 0.32;
+/** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
+function rowHeadsTop(c: ExtraContext): number {
+  let top = -Infinity;
+  for (const w of rowWindowsOf(c)) {
+    const d = w.dressing;
+    const rise = d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
+      : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
+      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : -Infinity;
+    top = Math.max(top, w.z1 + rise);
+  }
+  return top;
+}
+
 /** One storey's dotted head course: blocks over each window (alternating tall and short) and one on each pier. */
 function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
   const B = ROW_DRESS.block, z = Math.max(...row.map(w => w.z1)), white = c.accentHex && c.accentHex !== '#ffffff' ? WHITE : WHITE;
@@ -269,9 +283,15 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     if (!kind || c.roofKind === 'gable') return;
     const simple = kind === 'simple';
     if (!simple) {
-      s.strip(c.f, 0, c.f.len, 0.03, t - C.h, t - C.h + C.frieze, CREAM);
+      // The frieze sits on the top storey's head dressing, never over it (Kinkerstraat 104: the block course runs right
+      // under the frieze); with no room left above the heads the frieze goes and the consoles stand on the course.
+      const z0 = Math.max(t - C.h, rowHeadsTop(c) + 0.04), frieze = Math.min(C.frieze, t - 0.4 - z0);
+      if (frieze > 0.12) s.strip(c.f, 0, c.f.len, 0.03, z0, z0 + frieze, CREAM);
       const n = Math.max(2, Math.round(c.f.len / C.pitch));
-      for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.box(c.f, Math.max(0, x - C.console / 2), Math.min(c.f.len, x + C.console / 2), 0.03, 0.3, t - C.h + 0.1, t - 0.4, WHITE); }
+      // Consoles keep at least CONSOLE_MIN under the corona: on a front whose top heads reach the cornice
+      // (Weteringschans 169016) they stand between the heads rather than vanish.
+      const c0 = Math.min(z0 + 0.1, t - 0.4 - CONSOLE_MIN);
+      for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.box(c.f, Math.max(0, x - C.console / 2), Math.min(c.f.len, x + C.console / 2), 0.03, 0.3, c0, t - 0.4, WHITE); }
     }
     s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.4, t - 0.2, WHITE, true);
     s.box(c.f, 0, c.f.len, 0, simple ? 0.3 : C.out, t - 0.2, t, WHITE, true);
