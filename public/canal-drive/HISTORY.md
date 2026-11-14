@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Houthavens round 2: Blok 0, De Rede, OBA Spaarndammerbuurt, Pont 13; barRailing kit component (2026-11-14, lane H-HV2, cherry-picked from lane/houthavens-landmarks-2-20261114).**
+- **Blok 0 plots 8/9 (IJ4you).** Pand 0363100012242823, 2015, Marcel Lok. 5.9k triangles. Supersedes the held block-kit draft `haparandaweg-650-706`.
+- **De Rede.** Pand 0363100012243292, Haparandaweg 708-744. 3.6k triangles. Supersedes the never-reviewed draft `haparandaweg-708-744`.
+- **OBA Spaarndammerbuurt.** Pand 0363100012127052, 1981, landmarkId extract_landmarks_2090706815. 7.6k triangles. Brick #6a625d sits between the panoramas' #4f4b48 (2019, backlit) and #878177 (2022); the user's call is open as needs-david #385. The integrator review sent it back once: the solid black balcony bands became white slabs with see-through bars, and the rear walls got white-framed windows.
+- **Pont 13.** BAG ligplaats 0363020012061235. Hand-built at 1.9k triangles. Its "PONT 13 ETEN & DRINKEN" lettering comes from a 2021 panorama; the venue now trades as "Ferry". The gangway is left out because it fails the far-outside gate.
+- **Kit.**
+  - `src/canalRecall/landmarks/barRailing.ts` (in test:landmark-kits): bar railings on any plan polyline, plus `roundedFrontPath`.
+  - `scripts/landmarks/houthavens-shell.ts`: its `sill()` joins kit frames sitting 4.5 cm out to the wall for the openings audit.
+- **What the kit still cannot say.** Lowercase lettering (the "oba" logo and "de Rede" render in capitals); a saw-tooth parapet; barrel-roof skylights; truss gangways; arched glass pavilions; clean stepped massing over a noisy LoD2.2 shell.
+- **Integration.** lod2 set 6.04 MB of 6.5. Covers, signature bundle, frontage survey, content stats and buurt pages rebuilt. The OBA gallery camera faces its blank party wall, so the cover should use the SW front.
+
 **Round 131 (2026-11-14): load lane LS, lane 2 wall rule, fuzzy ground fade on.**
 - **Fuzzy roads** (David: "why are the roads still fuzzy when I have sharp buildings — very important"). The overview raster (z15, 2.9 m a texel) was overzoomed at chase zoom over the crisp basemap until the own-ground cells landed. `overviewStreetFade` (fade z16–16.5) now defaults on; `?overviewStreetFade=0` is the before.
 - **LS load lane** (lane/load-strategy-20261113 at e9dbed240):

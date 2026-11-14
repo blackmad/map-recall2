@@ -3,6 +3,37 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Four more Houthavens buildings",
+      "text": "The Houthavens and Spaarndammerbuurt get four new buildings. The brick-and-limestone Blok 0 block stands at the end of the Haparandaweg. De Rede has olive glass boxes, black shutters and twin-gabled quay houses. The OBA Spaarndammerbuurt library has its red 'oba' letters and stacks of rounded balconies. Pont 13, the 1927 IJ ferry, is moored as a restaurant at the Haparandadam.",
+      "where": [
+        4.879,
+        52.3905
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-houthavens-oba.jpg",
+          "alt": "OBA Spaarndammerbuurt with rounded white balconies and red letters",
+          "caption": "OBA Spaarndammerbuurt"
+        },
+        {
+          "src": "whats-new/2026-11-14-houthavens-pont-13.jpg",
+          "alt": "Pont 13, a navy and white ferry",
+          "caption": "Pont 13"
+        },
+        {
+          "src": "whats-new/2026-11-14-houthavens-de-rede.jpg",
+          "alt": "De Rede with its twin-gabled quay houses",
+          "caption": "De Rede"
+        },
+        {
+          "src": "whats-new/2026-11-14-houthavens-blok0.jpg",
+          "alt": "Blok 0 on the Haparandaweg",
+          "caption": "Blok 0"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Sharp streets while the city loads",
       "text": "For the first half minute or so of a ride, the ground under the streets was a blurry smear: a coarse overview picture (one pixel per 3 m) stretched over the sharp street map while the detailed ground loaded. That overview now fades out once you are down at street level, so the crisp map with its quays, tram tracks and crossings shows right away.",
       "where": [

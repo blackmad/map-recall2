@@ -1975,7 +1975,7 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
-  - **Houthavens landmarks not started:** OBA Spaarndammerbuurt, Blok 0, Pont 13, De Rede.
+  - **Houthavens (round 2 done 2026-11-14):** OBA brick tone waits on needs-david #385; the OBA gallery camera faces its blank wall.
 - **Building articles, remainder (2026-10-31).** Shipped: article cards on
   1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
   7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints
