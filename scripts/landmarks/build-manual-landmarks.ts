@@ -440,6 +440,7 @@ import {buildBrandBijCa} from './brand-bij-ca-builder';
 import {buildRaadhuisstraatGalerij} from './raadhuisstraat-galerij-builder';
 import {buildNieuwEngeland} from './nieuw-engeland-builder';
 import {buildMorganMees} from './morgan-mees-builder';
+import {buildArtiEtAmicitiae} from './arti-et-amicitiae-builder';
 import {buildSameplace} from './sameplace-builder';
 import {buildClubRaum} from './club-raum-builder';
 import {buildDoubletreeCentraal} from './doubletree-centraal-builder';
@@ -1073,6 +1074,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='raadhuisstraat-galerij')buildRaadhuisstraatGalerij(w,d,helpers);
     else if(id==='nieuw-engeland')buildNieuwEngeland(w,d,helpers);
     else if(id==='morgan-mees')buildMorganMees(w,d,helpers);
+    else if(id==='arti-et-amicitiae')buildArtiEtAmicitiae(w,d,helpers);
     else if(id==='sameplace')buildSameplace(w,d,helpers);
     else if(id==='club-raum')buildClubRaum(w,d,helpers);
     else if(id==='doubletree-centraal')buildDoubletreeCentraal(w,d,helpers);

@@ -98618,6 +98618,411 @@
         "bytes": 4476,
         "triangles": 50
       }
+    },
+    "arti-et-amicitiae": {
+      "id": "arti-et-amicitiae",
+      "name": "Arti et Amicitiae, Rokin 112",
+      "landmarkId": "arti-et-amicitiae",
+      "modelUrl": "./models/arti-et-amicitiae.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165109"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89148272,
+          52.36885533
+        ],
+        "headingDegrees": 344.19,
+        "lengthMetres": 28.1,
+        "widthMetres": 47.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.89151687,
+          52.36889327
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012165109 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.60 m NAP (scripts/landmarks/arti-et-amicitiae-footprints.json, written by venue-prepare.ts). The pand is the whole block from the Rokin to the Kalverstraat/Spui corner: the Rokin block, its Spui end and the hall's Spui wall are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-002857_pano_0002_000077 and recording_2025-06-16_06-42-40_01729 for the Rokin, TMX7316060226-000019_pano_0000_003548 and TMX7316010203-001050_pano_0001_000027 for the Spui); the hall roof and the houses at the Kalverstraat corner keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/arti-et-amicitiae-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 17.4,
+      "galleryView": {
+        "theta": 1.05,
+        "phi": 1.15
+      },
+      "bagYear": 1894,
+      "materialOverrides": {
+        "concrete": "#e6e1d3",
+        "white": "#f0ede5",
+        "stone": "#b8b2a4",
+        "sandstone": "#cfc8b6",
+        "slate": "#4b4f56",
+        "glass": "#3a4547",
+        "frame": "#2b302f",
+        "dark": "#5f6260",
+        "copper": "#6f8f7d",
+        "blue": "#2d4f8c",
+        "red": "#a8342c",
+        "gold": "#cfa646",
+        "brick": "#7a4b3c"
+      },
+      "attribution": {
+        "title": "Arti et Amicitiae, Rokin 112 at the Spui, Amsterdam: the artists' society's building (society founded 1839; white neo-classical front over two merged buildings)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Arti_et_Amicitiae",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the hall roof and the Kalverstraat-corner houses (CC BY 4.0): the cream Rokin front with its rusticated ground floor, wreath medallions, pedimented and hooded first-floor windows, four bronze figures on consoles, oculus frieze, modillion cornice and the middle pediment with the society's arms; the blind rusticated Spui end with its attic panels and pedimented gable; the hall's Spui wall with shop windows. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8917799,
+              52.36898684
+            ],
+            [
+              4.89169035,
+              52.36898016
+            ],
+            [
+              4.89169066,
+              52.36897863
+            ],
+            [
+              4.89164934,
+              52.36897553
+            ],
+            [
+              4.89164903,
+              52.36897706
+            ],
+            [
+              4.89164247,
+              52.36897658
+            ],
+            [
+              4.89164278,
+              52.36897505
+            ],
+            [
+              4.8916013,
+              52.36897195
+            ],
+            [
+              4.89160099,
+              52.36897347
+            ],
+            [
+              4.89159443,
+              52.36897299
+            ],
+            [
+              4.89159475,
+              52.36897146
+            ],
+            [
+              4.89155327,
+              52.36896836
+            ],
+            [
+              4.89155297,
+              52.36896988
+            ],
+            [
+              4.89154643,
+              52.3689694
+            ],
+            [
+              4.89154673,
+              52.36896787
+            ],
+            [
+              4.89150538,
+              52.36896478
+            ],
+            [
+              4.89150509,
+              52.3689663
+            ],
+            [
+              4.89149611,
+              52.36896563
+            ],
+            [
+              4.89149602,
+              52.36896607
+            ],
+            [
+              4.89138984,
+              52.36895942
+            ],
+            [
+              4.89138919,
+              52.36896139
+            ],
+            [
+              4.89122687,
+              52.3689412
+            ],
+            [
+              4.8912389,
+              52.36891712
+            ],
+            [
+              4.89110657,
+              52.36889449
+            ],
+            [
+              4.89110233,
+              52.36889368
+            ],
+            [
+              4.89110364,
+              52.36889109
+            ],
+            [
+              4.89110576,
+              52.3688915
+            ],
+            [
+              4.89111824,
+              52.36886693
+            ],
+            [
+              4.89111626,
+              52.36886656
+            ],
+            [
+              4.89111956,
+              52.36886007
+            ],
+            [
+              4.89112169,
+              52.36886047
+            ],
+            [
+              4.89113346,
+              52.36883729
+            ],
+            [
+              4.8911312,
+              52.36883686
+            ],
+            [
+              4.89113283,
+              52.36883366
+            ],
+            [
+              4.89113578,
+              52.36883423
+            ],
+            [
+              4.89114135,
+              52.36882337
+            ],
+            [
+              4.89113839,
+              52.3688228
+            ],
+            [
+              4.89114008,
+              52.36881952
+            ],
+            [
+              4.89114219,
+              52.36881993
+            ],
+            [
+              4.89115427,
+              52.3687964
+            ],
+            [
+              4.89115201,
+              52.36879596
+            ],
+            [
+              4.89115395,
+              52.36879218
+            ],
+            [
+              4.89115607,
+              52.36879258
+            ],
+            [
+              4.89142051,
+              52.36884203
+            ],
+            [
+              4.89143778,
+              52.36880745
+            ],
+            [
+              4.89142319,
+              52.36880472
+            ],
+            [
+              4.8914411,
+              52.36876885
+            ],
+            [
+              4.89142043,
+              52.36876466
+            ],
+            [
+              4.89144442,
+              52.36871663
+            ],
+            [
+              4.8914631,
+              52.36872048
+            ],
+            [
+              4.89158505,
+              52.36874565
+            ],
+            [
+              4.89186682,
+              52.36880377
+            ],
+            [
+              4.89185094,
+              52.36883724
+            ],
+            [
+              4.89184785,
+              52.3688367
+            ],
+            [
+              4.89184108,
+              52.36885098
+            ],
+            [
+              4.89184416,
+              52.36885152
+            ],
+            [
+              4.89183247,
+              52.36887612
+            ],
+            [
+              4.8918356,
+              52.36887668
+            ],
+            [
+              4.89183289,
+              52.36888239
+            ],
+            [
+              4.89182977,
+              52.36888184
+            ],
+            [
+              4.89182711,
+              52.36888746
+            ],
+            [
+              4.89182006,
+              52.36888621
+            ],
+            [
+              4.89181248,
+              52.36890217
+            ],
+            [
+              4.89181953,
+              52.36890342
+            ],
+            [
+              4.89181702,
+              52.36890869
+            ],
+            [
+              4.89182014,
+              52.36890925
+            ],
+            [
+              4.89181742,
+              52.36891497
+            ],
+            [
+              4.89181429,
+              52.36891442
+            ],
+            [
+              4.89180261,
+              52.36893903
+            ],
+            [
+              4.89179953,
+              52.36893849
+            ],
+            [
+              4.89179275,
+              52.36895278
+            ],
+            [
+              4.89179584,
+              52.36895332
+            ],
+            [
+              4.89178419,
+              52.36897785
+            ],
+            [
+              4.8917873,
+              52.36897839
+            ],
+            [
+              4.89178459,
+              52.36898409
+            ],
+            [
+              4.89178148,
+              52.36898354
+            ],
+            [
+              4.8917799,
+              52.36898684
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -28.233999252319336,
+          -0.30000001192092896,
+          -10.903940200805664
+        ],
+        "max": [
+          24.403705596923828,
+          17.399999618530273,
+          19.631000518798828
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89151687,
+          52.36889327
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 344.19000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 52.637704849243164,
+        "heightMetres": 17.699999630451202,
+        "depthMetres": 30.534940719604492,
+        "depthCoverage": 0.6441970615950315
+      },
+      "triangles": 12271,
+      "bytes": 161612,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
