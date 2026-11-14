@@ -30,6 +30,8 @@ const look = opt('look', 'storybook');
 const shotsDir = opt('shots', '');
 const latencyMs = Number(opt('latency', '0')), mbps = Number(opt('mbps', '0'));
 const skipRef = opt('ref', '');
+// --trace <file>: a Chrome performance trace of the last leg and 3 s after it.
+const traceOut = opt('trace', '');
 const origin = process.env.ORIGIN || `http://127.0.0.1:${process.env.PORT || 4453}`;
 const gamePath = process.env.GAME_PATH || (process.env.ORIGIN ? '/ride' : '/canal-drive/');
 const POSE = { lngLat: [4.864062, 52.367576], angle: -0.39889684834280237, zoom: 0.65, tilt: 15 };
@@ -72,6 +74,7 @@ async function open() {
   const page = await context.newPage();
   page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
   await page.addInitScript(INIT);
+  if (argv.includes('--diag')) await page.addInitScript(() => { window.__pfDiag = true; });
   if (latencyMs || mbps) {
     const cdp = await context.newCDPSession(page);
     const bps = mbps > 0 ? mbps * 1e6 / 8 : -1;
@@ -114,7 +117,7 @@ else {
     const city = canalRecallGame.vectorMap._completeCity;
     const first = f => { let c = f.geometry?.coordinates; while (Array.isArray(c?.[0])) c = c[0]; return c; };
     window.__ref = new Map();
-    window.__collect = () => { for (const f of city?.cache?.collection?.().features ?? []) { const id = f.properties?.id ?? f.id; if (id == null || window.__ref.has(id)) continue; const p = first(f); if (p) window.__ref.set(id, [+p[0].toFixed(6), +p[1].toFixed(6)]); } };
+    window.__collect = () => { for (const f of city?.cache?.collection?.().features ?? []) { const id = f.properties?.id ?? f.id; if (id == null || window.__ref.has(id)) continue; const p = first(f); if (p) window.__ref.set(id, [+p[0].toFixed(6), +p[1].toFixed(6), String(id)]); } };
     window.__collectTimer = setInterval(window.__collect, 400);
   });
   for (let i = 0; i < legs.length - 1; i++) await page.evaluate(([to, s]) => window.__dragTo(to, s), [legs[i], refSpeed]);
@@ -151,10 +154,10 @@ await page.evaluate(([ref, everyMs]) => {
   const g = canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, baked = vm._bakedCoarse, city = vm._completeCity;
   const cam = vm.cameraMap.camera, canvas = vm.cameraMap.getCanvas();
   const T0 = performance.now(), now = () => Math.round(performance.now() - T0);
-  const R = window.__pf = { samples: [], events: [] };
+  const R = window.__pf = { samples: [], events: [], diag: {} };
   const tileAt = (lng, lat, z) => { const n = 2 ** z, rad = lat * Math.PI / 180; return `${Math.floor(((lng + 180) / 360) * n)}/${Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n)}`; };
   const cellOf = tb.groupOf?.bind(tb);
-  const pts = ref.map(([lng, lat]) => ({ lng, lat, near: `near:${tileAt(lng, lat, tb.detailZoom)}`, coarse: `coarse:${tileAt(lng, lat, 14)}`, cell: cellOf ? cellOf({ properties: { id: 'probe' }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-6, lat], [lng, lat + 1e-6], [lng, lat]]] } }).cell : null }));
+  const pts = ref.map(([lng, lat, id]) => ({ lng, lat, id, near: `near:${tileAt(lng, lat, tb.detailZoom)}`, coarse: `coarse:${tileAt(lng, lat, 14)}`, cell: cellOf ? cellOf({ properties: { id: 'probe' }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-6, lat], [lng, lat + 1e-6], [lng, lat]]] } }).cell : null }));
   const ev = (kind, key, phase, extra = {}) => R.events.push({ t: now(), kind, key, phase, ...extra });
   if (tb) {
     const push = tb.pending.push.bind(tb.pending);
@@ -176,15 +179,26 @@ await page.evaluate(([ref, everyMs]) => {
   }
   const sample = () => {
     const w = canvas.clientWidth, h = canvas.clientHeight, memo = new Map();
+    // Drawn = the building's id is in an installed chunk (or a drawn baked cell): the same test for one shell per
+    // tile and one per cell (a tile-level test counted a tile's non-resident buildings as drawn).
+    const ids = new Set();
+    for (const entry of tb.chunks.values()) if (entry.mesh) for (const id of entry.ranges.keys()) ids.add(id);
+    for (const entry of tb.bakedEntries?.values?.() ?? []) for (const id of entry.ranges?.keys?.() ?? []) ids.add(id);
     let on = 0, drawn = 0, nb = 0, db = 0;
     for (const p of pts) {
       const s = cam.project([p.lng, p.lat]);
       if (!(s.depth > 0) || s.x < 0 || s.x > w || s.y < 0 || s.y > h) continue;
       const sig = p.near + p.coarse + p.cell;
-      let d = memo.get(sig);
+      let d = p.id !== undefined ? ids.has(p.id) : memo.get(sig);
       // tierAt reads the near chunk, else the coarse shell (split per world cell under ?coarseSplit); then the baked cell.
       if (d === undefined) { d = tb.tierAt(p.lng, p.lat).owner !== 'none' || (!!p.cell && !!baked?.drawn?.(p.cell)); memo.set(sig, d); }
       on++; if (d) drawn++;
+      if (!d && window.__pfDiag && R.samples.length % 10 === 0) {
+        const tile = p.coarse.slice(7), key = tb.coarseSplit && p.cell ? `coarse:${tile}~${p.cell}` : p.coarse;
+        const st = tb.chunks.has(key) ? (tb.chunks.get(key).mesh ? 'mesh' : 'empty') : tb.inflight.has(key) ? 'inflight' : tb.pending.has(key) ? 'pending' : tb.staged.some(j => j.key === key) ? 'staged' : tb.sourceGroups.has(key) ? 'grouped' : 'nogroup';
+        const dg = R.diag[R.samples.length] ??= { t: now(), by: {}, ex: {} };
+        dg.by[st] = (dg.by[st] ?? 0) + 1; if (!dg.ex[st]) dg.ex[st] = [key, p.lng, p.lat];
+      }
       if (s.y > h * 0.4) { nb++; if (d) db++; }
     }
     const c = vm.cameraMap.getCenter();
@@ -193,6 +207,7 @@ await page.evaluate(([ref, everyMs]) => {
   R.timer = setInterval(sample, everyMs);
 }, [ref, everyMs]);
 netT0 = await page.evaluate(() => Date.now());
+if (traceOut) await browser.startTracing(page, { path: traceOut, screenshots: false, categories: ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'v8.execute', 'blink.user_timing', 'loading', 'disabled-by-default-v8.cpu_profiler'] });
 if (shotsDir) fs.mkdirSync(shotsDir, { recursive: true });
 const shots = shotsDir ? (async () => {
   const t0 = Date.now();
@@ -202,6 +217,7 @@ const shots = shotsDir ? (async () => {
   }
 })() : null;
 await page.evaluate(([to, s]) => window.__dragTo(to, s), [legs.at(-1), speed]);
+if (traceOut) { await page.waitForTimeout(3000); await browser.stopTracing(); }
 const legEndMs = await page.evaluate(() => window.__pf.samples.at(-1)?.[0] ?? 0);
 // Hold until the screen is full and the world settled (or --hold s).
 await page.evaluate(async holdS => {
@@ -214,11 +230,13 @@ await page.evaluate(async holdS => {
   clearInterval(window.__pf.timer);
 }, holdS);
 if (shots) await shots;
-const R = await page.evaluate(() => ({ samples: window.__pf.samples, events: window.__pf.events }));
+const R = await page.evaluate(() => ({ samples: window.__pf.samples, events: window.__pf.events, diag: window.__pf.diag }));
 // Parked at the end: the coarse chunk count and the frame's draw calls / triangles (the split's cost).
 const parked = await page.evaluate(async () => {
   const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings, r = vm.host?.renderer ?? vm._ownHost?.renderer;
   await new Promise(res => setTimeout(res, 1000));
+  const gl = window.__canalPerf?.gl;
+  if (gl) { gl.markWarm(); await new Promise(res => setTimeout(res, 3000)); const r = gl.report(); return { coarseChunks: [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length, draws: r.frames.draws, triangles: r.frames.triangles, residentMB: r.resident?.totalMB ?? null, byOwner: r.byOwner.slice(0, 6) }; }
   const calls = [], tris = [];
   for (let i = 0; i < 20; i++) { await new Promise(res => requestAnimationFrame(res)); if (r?.info?.render) { calls.push(r.info.render.calls); tris.push(r.info.render.triangles); } }
   const med = a => a.length ? [...a].sort((x, y) => x - y)[a.length >> 1] : null;
@@ -250,7 +268,7 @@ const report = {
     tileLoads: [...tiles.values()].filter(t => t.requested != null).length, tileMed: med([...tiles.values()].filter(t => t.resident != null && t.requested != null).map(t => t.resident - t.requested)),
     requests: net.length,
   },
-  samples: S, events: ev, net, errors,
+  samples: S, diag: R.diag, events: ev, net, errors,
 };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(report, null, 1));
