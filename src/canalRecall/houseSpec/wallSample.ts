@@ -25,6 +25,7 @@
  */
 import { hexToOklab, oklabToHex, PALE_WARM, specWallDisplay } from './wallColour.ts';
 import { hexToRgb, rgbToHex } from '../look/palette.ts';
+import type { DarkFinishFact } from './darkFinish.ts';
 
 type Vec3 = [number, number, number];
 /** A capture's references on the game-lens cut (scripts/house-specs/wall-sample/captures.ts sampleRefs), linear RGB 0..1:
@@ -36,6 +37,11 @@ export type CaptureSample = { hex: string; captured?: string; panoId?: string; r
 export const WALL_SAMPLE = {
   /** Linear Y the capture's scene median is brought to (calibration: transfer.ts). */
   sceneTarget: 0.085,
+  /** Round 2: what the exposure gain reads. `scene` the cut's scene median (round 1); `white` the wall's own bright parts
+   *  (refs.white: frames, sills, dressings), to `whiteTarget`; `mix` the geometric mean of the two. A cut is mostly the
+   *  facade, so on a dark row the scene median is the dark walls themselves and `scene` lifts them. */
+  gainFrom: 'scene' as 'scene' | 'white' | 'mix',
+  whiteTarget: 0.5,
   /** Exposure gain exponent: g = (sceneTarget / Y(scene))^gainPow (1 = full normalisation). */
   gainPow: 1,
   /** Exposure gain clamp (linear). */
@@ -49,6 +55,13 @@ export const WALL_SAMPLE = {
   /** OKLab chroma gain on the estimate: what an exposure gain cannot return of an overcast capture's chroma (calibration:
    *  calibrate.ts exposure, against the rule-10 photos). */
   chromaGain: 1.8,
+  /** Round 2: soft ceiling on the gained chroma, C = chromaMax x tanh(chromaGain x C / chromaMax) (0 = none). The rule-10
+   *  photos' chroma barely follows the estimate's (calibrate.ts round2): a 1.8x gain on an already chromatic sample
+   *  overshot (Weteringschans 171971-171983 drew C 0.074 against the photo's 0.035). */
+  chromaMax: 0.04,
+  /** Round 2: the hue (a, b direction) from all captures, or from the dimmer half by scene Y (sunlit captures read
+   *  yellower: the sun's warm cast, not the wall). */
+  hueFrom: 'all' as 'all' | 'dim',
   /** Cap on the OKLab L change against the pinned raw sample. */
   maxDL: 0.22,
   /** The render transfer, drawn wall (decorate's specRecipe.wallHex) -> rule-10 pixel (W1 wallLab), measured on the belt frames. */
@@ -96,7 +109,10 @@ export function correctCapture(s: CaptureSample, P: WallSampleParams = WALL_SAMP
   const hex = s.hex.toLowerCase(), base = { hex, ...(s.captured ? { captured: s.captured } : {}), ...(s.panoId ? { panoId: s.panoId } : {}), ...(s.pinned ? { pinned: true } : {}) };
   const sc = s.refs?.scene;
   if (!sc || !(lumY(sc) > 1e-4)) return { ...base, out: hex, gain: 1, wb: [1, 1, 1] };
-  const Y = lumY(sc), gain = clamp((P.sceneTarget / Y) ** P.gainPow, P.gainMin, P.gainMax);
+  const Y = lumY(sc), wY = s.refs?.white ? lumY(s.refs.white) : 0;
+  const gScene = P.sceneTarget / Y, gWhite = wY > 1e-3 ? P.whiteTarget / wY : gScene;
+  const g0 = P.gainFrom === 'white' ? gWhite : P.gainFrom === 'mix' ? Math.sqrt(gScene * gWhite) : gScene;
+  const gain = clamp(g0 ** P.gainPow, P.gainMin, P.gainMax);
   const ref = P.wbFrom === 'white' ? s.refs!.white : sc, Yr = lumY(ref);
   const wb = P.wbFrom === 'none' || !(Yr > 1e-4) ? [1, 1, 1] : ref.map(c => clamp(Yr / Math.max(1e-4, c), 1 / P.wbMax, P.wbMax) ** P.wbShare);
   const n = lumY(wb), wbN = wb.map(w => w / n) as Vec3;
@@ -106,15 +122,30 @@ export function correctCapture(s: CaptureSample, P: WallSampleParams = WALL_SAMP
 
 // ---- 2. across captures -------------------------------------------------------------------------------------------------
 export type WallEstimate = { hex: string; raw: string; captures: CaptureReceipt[]; capped: boolean };
-/** The wall in a standard capture: the per-axis OKLab median of the corrected captures; L kept within maxDL of the raw pinned sample. */
-export function estimateWall(samples: readonly CaptureSample[], P: WallSampleParams = WALL_SAMPLE): WallEstimate | null {
+/** The wall in a standard capture: the per-axis OKLab median of the corrected captures; L kept within maxDL of the raw pinned
+ *  sample. `dark` (the dark-finish veto, darkFinish.ts): no capture is lifted (gain at most 1) and no chroma gain. */
+export function estimateWall(samples: readonly CaptureSample[], P: WallSampleParams = WALL_SAMPLE, dark = false): WallEstimate | null {
   if (!samples.length) return null;
   const raw = (samples.find(s => s.pinned) ?? samples[0]).hex.toLowerCase();
-  const captures = samples.map(s => correctCapture(s, P)), labs = captures.map(c => hexToOklab(c.out));
+  const Q = dark ? { ...P, gainMax: Math.min(1, P.gainMax), gainMin: Math.min(1, P.gainMin) } : P;
+  const captures = samples.map(s => correctCapture(s, Q)), labs = captures.map(c => hexToOklab(c.out));
   let L = median(labs.map(l => l[0]));
-  const a = median(labs.map(l => l[1])) * P.chromaGain, b = median(labs.map(l => l[2])) * P.chromaGain, L0 = hexToOklab(raw)[0];
-  const capped = Math.abs(L - L0) > P.maxDL;
+  let a = median(labs.map(l => l[1])), b = median(labs.map(l => l[2]));
+  if (Q.hueFrom === 'dim' && samples.length >= 2 && !dark) {
+    // direction from the dimmer half (by scene Y), length from all captures
+    const ys = samples.map(s => (s.refs?.scene ? lumY(s.refs.scene) : NaN)), my = median(ys.filter(Number.isFinite));
+    const dim = labs.filter((_, i) => !(ys[i] > my));
+    if (dim.length && Number.isFinite(my)) {
+      const da = median(dim.map(l => l[1])), db = median(dim.map(l => l[2])), c = Math.hypot(a, b), cd = Math.hypot(da, db);
+      if (cd > 1e-4) { a = (da / cd) * c; b = (db / cd) * c; }
+    }
+  }
+  const g = dark ? 1 : P.chromaGain, C0 = Math.hypot(a, b);
+  const C1 = P.chromaMax > 0 ? P.chromaMax * Math.tanh((g * C0) / P.chromaMax) : g * C0;
+  if (C0 > 1e-6) { a *= C1 / C0; b *= C1 / C0; }
+  const L0 = hexToOklab(raw)[0], capped = Math.abs(L - L0) > P.maxDL;
   if (capped) L = L0 + Math.sign(L - L0) * P.maxDL;
+  if (dark) L = Math.min(L, L0); // a dark front stays at its own sample, never above it
   return { hex: oklabToHex([L, a, b]), raw, captures, capped };
 }
 
@@ -144,13 +175,15 @@ export type WallSampleFact = {
   /** per capture: sample, corrected, exposure gain, white balance */
   captures: CaptureReceipt[];
   capped: boolean;
+  /** round 2: the dark-finish veto and its evidence (darkFinish.ts), when it was evaluated */
+  darkFinish?: DarkFinishFact;
 };
 /** v2 end to end: captures -> estimate -> drawn -> brick, with the receipt. Null without a sample. */
-export function wallSampleV2(samples: readonly CaptureSample[], P: WallSampleParams = WALL_SAMPLE): WallSampleFact | null {
-  const est = estimateWall(samples, P);
+export function wallSampleV2(samples: readonly CaptureSample[], P: WallSampleParams = WALL_SAMPLE, darkFinish: DarkFinishFact | null = null): WallSampleFact | null {
+  const est = estimateWall(samples, P, !!darkFinish?.dark);
   if (!est) return null;
   const drawn = drawnForPixel(est.hex, P), brick = brickForDrawn(drawn);
-  return { v: 2, raw: est.raw, estimate: est.hex, drawn, brick, captures: est.captures, capped: est.capped };
+  return { v: 2, raw: est.raw, estimate: est.hex, drawn, brick, captures: est.captures, capped: est.capped, ...(darkFinish ? { darkFinish } : {}) };
 }
 const HEX = /^#[0-9a-f]{6}$/i;
 export const isWallSampleFact = (v: unknown): v is WallSampleFact => {

@@ -6,9 +6,12 @@
  *   ref    WC's exposure references (white / p80 / scene linear Y);
  *   refs   wallSample.ts SampleRefs: linear RGB of the wall's bright parts (the 90-97 % Y band of the wall grid: white
  *          frames, sills, stone dressings) and of the scene median (sky-like pixels left out).
+ *   nb     round 2: W1 wallLab of the street wall just left and right of the front in the SAME cut (`neighbourQuads`), so
+ *          the front's lightness can be compared with its neighbours' under one exposure (darkFinish.ts).
+ * Rows already in --out are kept; with --redo-nb a kept row without `nb` is sampled again (panoramas come from the cache).
  *
  *   node --import tsx scripts/house-specs/wall-sample/captures.ts --cuts <cuts.json> --out <file> [--ids <file>]
- *        [--max-per 4] [--max-dist 40] [--max-new-gb 1.5]
+ *        [--max-per 4] [--max-dist 40] [--max-new-gb 1.5] [--redo-nb]
  */
 import fs from 'node:fs';
 import { findPands, http, normId } from '../../pand-reference/core.ts';
@@ -22,6 +25,16 @@ import type { SampleRefs } from '../../../src/canalRecall/houseSpec/wallSample.t
 
 const lin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
 const lumY = (r: number, g: number, b: number) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+/** The street wall either side of a front, on the front's line: a strip `gapM` past each end, as wide as the front
+ *  (clamped to 3-8 m), same height. */
+export function neighbourQuads(wall: WallQuad, gapM = 0.4): { left: WallQuad; right: WallQuad } | null {
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y);
+  if (len < 1) return null;
+  const ux = (wall.b.x - wall.a.x) / len, uy = (wall.b.y - wall.a.y) / len, w = Math.max(3, Math.min(8, len));
+  const at = (d: number) => ({ x: wall.a.x + ux * d, y: wall.a.y + uy * d });
+  return { left: { a: at(-gapM - w), b: at(-gapM), heightM: wall.heightM }, right: { a: at(len + gapM), b: at(len + gapM + w), heightM: wall.heightM } };
+}
 
 /** wallSample.ts references on one cut (see the header). Null with fewer than 40 wall points in frame. */
 export function sampleRefs(img: Rgb8, frame: ReturnType<typeof frameFor>, pose: FramePose, wall: WallQuad): SampleRefs | null {
@@ -76,10 +89,14 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (!img) return null;
     const cut = cutPerspective(img, frame, gridConvergenceDeg(ll)), lab = wallLab(cut, frame, pose, wall);
     if (!lab) return null;
-    return { w1: { hex: lab.hex, L: lab.L, C: lab.C, h: lab.h }, ref: wallExposureRef(cut, frame, pose, wall), refs: sampleRefs(cut, frame, pose, wall) };
+    const q = neighbourQuads(wall), side = (w: WallQuad | undefined) => { const l = w ? wallLab(cut, frame, pose, w) : null; return l ? { hex: l.hex, L: l.L, C: l.C } : null; };
+    return { w1: { hex: lab.hex, L: lab.L, C: lab.C, h: lab.h }, ref: wallExposureRef(cut, frame, pose, wall), refs: sampleRefs(cut, frame, pose, wall), nb: { left: side(q?.left), right: side(q?.right) } };
   };
+  const redoNb = argv.includes('--redo-nb');
+  const save = () => { const done = new Set(result.map(x => x.pandId)); fs.writeFileSync(out, JSON.stringify({ rows: [...result, ...[...prev.values()].filter(x => !done.has(x.pandId))] })); };
   for (const r of rows) {
-    if (prev.has(r.pandId)) { result.push(prev.get(r.pandId)); continue; }
+    const old = prev.get(r.pandId);
+    if (old && (!redoNb || !old.captures.length || old.captures.every((c: any) => c.nb))) { result.push(old); continue; }
     if (http.bytes / 1e9 > maxGb) { console.log(`stopping: ${maxGb} GB fetched`); break; }
     const caps: any[] = [];
     const ll = r.pose.lngLat as [number, number];
@@ -100,8 +117,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     }
     extra += Math.max(0, caps.length - 1);
     result.push({ pandId: r.pandId, captures: caps });
-    if (result.length % 20 === 0) { fs.writeFileSync(out, JSON.stringify({ rows: result })); console.log(`${result.length}/${rows.length} pands, ${(http.bytes / 1e9).toFixed(2)} GB fetched`); }
+    if (result.length % 20 === 0) { save(); console.log(`${result.length}/${rows.length} pands, ${(http.bytes / 1e9).toFixed(2)} GB fetched`); }
   }
-  fs.writeFileSync(out, JSON.stringify({ rows: result }));
+  save();
   console.log(`captures: ${result.length} pands, ${result.filter(x => x.captures.length > 1).length} with a second capture, ${extra} extra captures; ${(http.bytes / 1e9).toFixed(3)} GB fetched -> ${out}`);
 }

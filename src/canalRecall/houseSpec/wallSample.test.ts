@@ -97,13 +97,17 @@ const row = (name: string) => FIX.rows.find(r => r.row === name)!;
 test('regression: Weteringschans 168096-171218 (even, orange-red brick) leaves the floor and gains chroma', () => {
   const s = rowStats(row('weteringschans-168096-171218'));
   assert.ok(s.L > s.rawL + 0.08 && s.L < s.photoL, `L ${s.L.toFixed(3)} between raw ${s.rawL.toFixed(3)} + 0.08 and photo ${s.photoL}`);
-  assert.ok(s.C >= 0.6 * s.photoC && s.C <= 1.6 * s.photoC, `C ${s.C.toFixed(3)} vs photo ${s.photoC}`);
-  assert.ok(s.C > 2 * s.rawC, `C ${s.C.toFixed(3)} more than twice raw ${s.rawC.toFixed(3)}`);
+  // round 2: the chroma ceiling (chromaMax) holds the estimate under the photo; the Weteringschans frames render chroma above
+  // the drawn wall (drawn C 0.086 -> pixel 0.103 on the odd row, the belt frames render it at ~0.7x), so the estimate is
+  // held from 0.5x the photo up, not 0.6x
+  assert.ok(s.C >= 0.5 * s.photoC && s.C <= 1.6 * s.photoC, `C ${s.C.toFixed(3)} vs photo ${s.photoC}`);
+  assert.ok(s.C > 1.8 * s.rawC, `C ${s.C.toFixed(3)} at least 1.8x raw ${s.rawC.toFixed(3)} (2x before the round-2 ceiling)`);
 });
 test('regression: Weteringschans 171971-171983 (odd) leaves the floor and gains chroma', () => {
   const s = rowStats(row('weteringschans-171971-171983'));
   assert.ok(s.L > s.rawL + 0.05 && s.L < s.photoL, `L ${s.L.toFixed(3)} vs raw ${s.rawL.toFixed(3)}, photo ${s.photoL}`);
-  assert.ok(s.C >= 0.6 * s.photoC && s.C <= 1.6 * s.photoC, `C ${s.C.toFixed(3)} vs photo ${s.photoC}`);
+  // round 2: no chroma overshoot (round 1 estimated 0.045 against the photo's 0.036 and drew pixel C 0.074 against 0.035)
+  assert.ok(s.C >= 0.6 * s.photoC && s.C <= 1.1 * s.photoC, `C ${s.C.toFixed(3)} vs photo ${s.photoC}`);
 });
 for (const name of ['herengracht-even-2', 'keizersgracht-even-2', 'keizersgracht-even-3']) {
   test(`regression: D1 belt page ${name}: estimate within capture noise of the rule-10 photos, or closer than raw`, () => {
@@ -118,3 +122,25 @@ for (const name of ['herengracht-even-2', 'keizersgracht-even-2', 'keizersgracht
 test('regression table (printed)', () => {
   for (const r of FIX.rows) { const s = rowStats(r); console.log(`${r.row.padEnd(30)} n ${r.pands.length}  photo L ${s.photoL.toFixed(3)} C ${s.photoC.toFixed(3)} | raw L ${s.rawL.toFixed(3)} C ${s.rawC.toFixed(3)} | v2 est L ${s.L.toFixed(3)} C ${s.C.toFixed(3)} | v2 pixel L ${s.pixL.toFixed(3)} C ${s.pixC.toFixed(3)}`); }
 });
+
+// ---- round 2: the dark-finish veto on named dark fronts -----------------------------------------------------------------
+// Herengracht 156 (black-painted four-bay 0363100012167645, dark-painted three-bay 0363100012167646), Herengracht 226
+// (0363100012177478), Keizersgracht 21 (0363100012175949), 35 (0363100012176022) and 87 (0363100012175789): the D1 reader
+// calls each described front dark or black. Round 1 lifted them (estimate 0.44-0.50 against photos 0.20-0.41). Vetoed, the
+// estimate stays at or under the pinned sample and lands closer to the photo than the lifted one, or within 0.08 of it
+// (Keizersgracht 21 0363100012175949: photo 0.41, lifted 0.436, vetoed 0.354; the veto overshoots by about one capture sd there).
+import { describerDarkPhrase, darkFinish } from './darkFinish.ts';
+type DarkFix = { row: string; pandId: string; photo: { L: number; C: number }; answer: { readable: boolean; finish: string; pale: boolean | null; notes: string }; captures: Array<{ hex: string; pinned: boolean; refs: { scene: [number, number, number] } | null }> };
+for (const d of (FIX as unknown as { dark: DarkFix[] }).dark) {
+  test(`regression (round 2): dark front ${d.row} ${d.pandId} is vetoed and not lifted`, () => {
+    const phrase = describerDarkPhrase(d.answer);
+    assert.ok(phrase, `the reader's note names the front dark: ${d.answer.notes.slice(0, 90)}`);
+    const S: CaptureSample[] = d.captures.map(c => ({ hex: c.hex, pinned: c.pinned, refs: c.refs ? { white: [0, 0, 0], scene: c.refs.scene, n: 0 } : null }));
+    const lifted = wallSampleV2(S)!, kept = wallSampleV2(S, WALL_SAMPLE, darkFinish({ describer: phrase, captures: null, neighbours: null }))!;
+    const L = (h: string) => labOf(h).L;
+    assert.ok(L(kept.estimate) <= L(kept.raw) + 0.005, `estimate ${L(kept.estimate)} at or under the pinned sample ${L(kept.raw)}`);
+    const dk = Math.abs(L(kept.estimate) - d.photo.L);
+    assert.ok(dk < Math.abs(L(lifted.estimate) - d.photo.L) || dk <= 0.08, `vetoed ${L(kept.estimate)} closer to the photo ${d.photo.L} than lifted ${L(lifted.estimate)}`);
+    assert.deepEqual(kept.darkFinish?.by, ['describer']);
+  });
+}

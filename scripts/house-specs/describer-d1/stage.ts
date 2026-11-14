@@ -27,7 +27,9 @@ import { CITY_BRICK_LIGHTNESS, cityWallTint, hexToRgb, hslToRgb, rgbToHex } from
 import { rgbToHsl } from '../../../src/canalRecall/blockFace/wallColour.ts';
 import { EXPOSURE, exposeHex, normGain, type ExposureRefLike, type WallExposureFact } from '../../../src/canalRecall/houseSpec/wallExposure.ts';
 import { similar, similarWidthYear, type Probe } from './partyPairs.ts';
-import { wallSampleMode, wallSampleV2, type CaptureSample } from '../../../src/canalRecall/houseSpec/wallSample.ts';
+import { WALL_SAMPLE, wallSampleMode, wallSampleV2, type CaptureSample } from '../../../src/canalRecall/houseSpec/wallSample.ts';
+import type { DarkFinishFact } from '../../../src/canalRecall/houseSpec/darkFinish.ts';
+import { darkEvidence } from '../wall-sample/evidence.ts';
 import { loadAnswers } from './score.ts';
 
 /** Answer keys whose share of values (not `not-visible`) the pilot reports. */
@@ -136,13 +138,13 @@ export function wallExposureFact(sample: string, ref: ExposureRefLike | null | u
  * the pand's captures (wall-sample/captures.ts), or from the pinned sample alone with its WC exposure reference (`w1.ref`; a grey
  * scene of that luminance). Null without a sample.
  */
-export function wallSampleFor(wallHex: string, exposureRef: ExposureRefLike | null, samples: readonly CaptureSample[] | null | undefined) {
+export function wallSampleFor(wallHex: string, exposureRef: ExposureRefLike | null, samples: readonly CaptureSample[] | null | undefined, dark: DarkFinishFact | null = null) {
   const own: CaptureSample[] = samples?.length ? [...samples]
     : [{ hex: wallHex, pinned: true, refs: exposureRef && exposureRef.scene > 0 ? { white: [exposureRef.white, exposureRef.white, exposureRef.white], scene: [exposureRef.scene, exposureRef.scene, exposureRef.scene], n: 0 } : null }];
-  return wallSampleV2(own);
+  return wallSampleV2(own, WALL_SAMPLE, dark);
 }
 
-export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null, exposureRef: ExposureRefLike | null = null, samples: readonly CaptureSample[] | null = null) {
+export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null, exposureRef: ExposureRefLike | null = null, samples: readonly CaptureSample[] | null = null, dark: DarkFinishFact | null = null) {
   const part = toSpecPart(a, at);
   const { spec } = shipOnly(part, a);
   // per-row heads: the receipt of the answer's head reading (toSpecPart, halved when `heads` is low) on each staged slot
@@ -150,7 +152,7 @@ export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string 
   if (prov) for (const [k, v] of Object.entries(rowHeads(a.heads, a.storeys))) { setSpecField(spec, `fronts/0/${k}`, v); spec.provenance[`fronts/0/${k}`] = { ...prov }; }
   if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
   if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex) && wallSampleMode() === 2) {
-    const fact = wallSampleFor(wallHex.toLowerCase(), exposureRef, samples);
+    const fact = wallSampleFor(wallHex.toLowerCase(), exposureRef, samples, dark);
     if (fact) {
       setSpecField(spec, 'palette/brick', fact.brick);
       spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
@@ -235,8 +237,9 @@ function main() {
     const w = wallOf(r); if (w) walls.set(r.pandId, w);
   }
   // wall sample v2 (WALL_SAMPLE=2): the pand's captures (wall-sample/captures.ts --out), else the pinned sample alone
-  const captures = new Map<string, CaptureSample[]>();
+  const captures = new Map<string, CaptureSample[]>(), capRows = new Map<string, any>();
   if (opt('captures')) for (const r of JSON.parse(fs.readFileSync(opt('captures')!, 'utf8')).rows ?? []) {
+    capRows.set(r.pandId, r);
     captures.set(r.pandId, (r.captures ?? []).map((c: any) => ({ hex: c.w1.hex, refs: c.refs ?? null, pinned: !!c.pinned, captured: c.captured, panoId: c.panoId })));
   }
   const probes: Record<string, Probe> = opt('probes') ? JSON.parse(fs.readFileSync(opt('probes')!, 'utf8')) : {};
@@ -254,7 +257,8 @@ function main() {
       const v = (a as any)[k];
       if (answered(v)) answerCount[k] = (answerCount[k] ?? 0) + 1; else nv++;
     }
-    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null, refs.get(id) ?? null, captures.get(id) ?? null));
+    staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null, refs.get(id) ?? null, captures.get(id) ?? null,
+      wallSampleMode() === 2 ? darkEvidence(capRows.get(id) ?? { captures: [] }, a) : null));
   }
   let inheritedFronts = 0; const inheritedFields: Record<string, number> = {};
   for (const [id, a] of A) {

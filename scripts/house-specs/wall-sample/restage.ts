@@ -6,12 +6,15 @@
  * is applied to the v2 brick. Stage only: writes <out>/<pandId>.json and <out>/restage.json; never publishes.
  *
  *   node --import tsx scripts/house-specs/wall-sample/restage.ts --staged <dir> --answers <dir> --cuts <cuts.json>
- *        [--captures <file>[,<file>]] [--ids <file>] --out <dir>
+ *        [--captures <file>[,<file>]] [--ids <file>] --out <dir> [--no-dark-veto]
+ * Round 2: the dark-finish veto (src/canalRecall/houseSpec/darkFinish.ts, evidence.ts) keeps a front whose own evidence says
+ * it is dark at its sample's lightness; the receipt sits in facts/wallSample.darkFinish.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadAnswers } from '../describer-d1/score.ts';
 import { wallSampleFor } from '../describer-d1/stage.ts';
+import { darkEvidence } from './evidence.ts';
 import { setSpecField, specProblems, type HouseSpec } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { labOf, type CaptureSample } from '../../../src/canalRecall/houseSpec/wallSample.ts';
 import { hexToRgb } from '../../../src/canalRecall/look/palette.ts';
@@ -26,13 +29,16 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (!stagedDir || !out || !opt('answers') || !opt('cuts')) { console.error('restage.ts --staged <dir> --answers <dir> --cuts <cuts.json> [--captures f[,f]] [--ids f] --out <dir>'); process.exit(2); }
   const A = loadAnswers(opt('answers')!);
   const cuts = new Map<string, any>(JSON.parse(fs.readFileSync(opt('cuts')!, 'utf8')).rows.map((r: any) => [r.pandId, r]));
-  const caps = new Map<string, CaptureSample[]>();
+  const caps = new Map<string, CaptureSample[]>(), capRows = new Map<string, any>();
   for (const f of (opt('captures') ?? '').split(',').filter(Boolean)) for (const r of JSON.parse(fs.readFileSync(f, 'utf8')).rows) {
     caps.set(r.pandId, r.captures.map((c: any) => ({ hex: c.w1.hex, refs: c.refs ?? null, pinned: !!c.pinned, captured: c.captured, panoId: c.panoId })));
+    capRows.set(r.pandId, r);
   }
+  // round 2: the dark-finish veto (darkFinish.ts) unless --no-dark-veto
+  const veto = !argv.includes('--no-dark-veto');
   const ids = opt('ids') ? new Set(fs.readFileSync(opt('ids')!, 'utf8').split(/\s+/).filter(Boolean)) : null;
   fs.mkdirSync(out, { recursive: true });
-  const report: any = { v: 1, specs: 0, restaged: 0, fromCaptures: 0, fromPinned: 0, paleGuarded: 0, noSample: 0, problems: {}, walls: {} };
+  const report: any = { v: 2, specs: 0, restaged: 0, fromCaptures: 0, fromPinned: 0, paleGuarded: 0, noSample: 0, darkVetoed: 0, darkBy: {}, problems: {}, walls: {} };
   for (const f of fs.readdirSync(stagedDir).filter(f => /^\d{16}\.json$/.test(f))) {
     const id = f.slice(0, 16);
     if (ids && !ids.has(id)) continue;
@@ -47,7 +53,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (!a?.readable || !w1?.hex) { report.noSample++; if (before) { setSpecField(spec, 'palette/brick', before); } }
     else {
       const own = caps.get(id);
-      const fact = wallSampleFor(w1.hex.toLowerCase(), w1.ref ?? null, own ?? null)!;
+      const dark = veto ? darkEvidence(capRows.get(id) ?? { captures: [] }, a) : null;
+      const fact = wallSampleFor(w1.hex.toLowerCase(), w1.ref ?? null, own ?? null, dark)!;
+      if (dark?.dark) { report.darkVetoed++; for (const b of dark.by) report.darkBy[b] = (report.darkBy[b] ?? 0) + 1; }
       const pale = a.pale === true && rgbToHsl(hexToRgb(fact.brick))[2] < PALE_MIN_BRICK_L;
       if (pale) report.paleGuarded++;
       else {
@@ -56,7 +64,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         setSpecField(spec, 'facts/wallSample', fact); spec.provenance['facts/wallSample'] = { ...prov };
         report.restaged++; own?.length ? report.fromCaptures++ : report.fromPinned++;
       }
-      report.walls[id] = { before, raw: labOf(fact.raw), estimate: labOf(fact.estimate), drawn: labOf(fact.drawn), brick: fact.brick, captures: fact.captures.length, pale };
+      report.walls[id] = { before, raw: labOf(fact.raw), estimate: labOf(fact.estimate), drawn: labOf(fact.drawn), brick: fact.brick, captures: fact.captures.length, pale, ...(dark?.dark ? { dark: dark.by } : {}) };
     }
     if (spec.design.palette && !Object.keys(spec.design.palette).length) delete spec.design.palette;
     const pr = specProblems(spec);
