@@ -133,12 +133,6 @@ function buildCulturalPass(id:string,w:number,d:number,b:BuildingTools,plan:Grid
   box(0,top+1.6,0,side+10,.5,side+10,'white');box(0,67.6,0,side+8,7.2,side+8,'glass');
   for(let u=-(side+8)/2;u<=(side+8)/2+.01;u+=(side+8)/10)for(const s of [-1,1]){box(u,67.6,s*((side+8)/2+.05),.14,7.2,.1,'frame');box(s*((side+8)/2+.05),67.6,u,.1,7.2,.14,'frame');}
   box(0,74.8,0,side+11,1.2,side+11,'white');rail(0,77,0,side+10,side+10);box(-side*.24,76,-side*.25,6,3,6,'white');for(let z of [-side/2-3,side/2+3])box(0,76,z,9,3,.22,'red');box(0,78.7,side/2+3,9,.25,.25,'red');box(-side*.24,79,-side*.25,1,9,1,'white');for(let y of [80,82.5,85]){box(-side*.24,y,-side*.25+.55,1.5,.2,.15,'dark',.65);box(-side*.24,y,-side*.25+.62,1.5,.2,.15,'dark',-.65);}
- }else if(id==='pontsteiger'){
-  // Raised low U, two slim tower legs and eight storeys in the skybridge.
-  let leg=w*.19,span=w*.96,rear=-d*.29;
-  for(let x of [-span/2+leg/2,span/2-leg/2]){grid(x,7,0,leg,21,d*.95,'stone',3.7);grid(x,28,rear,leg,61,d*.31,'stone',3.7);for(let z=-d*.4;z<=d*.4;z+=d*.2)box(x,0,z,1.6,7,1.6,'stone');}
-  grid(0,7,d*.38,span,21,d*.18,'stone',3.7);grid(0,61,rear,span,28,d*.31,'stone',3.7);rail(0,89.4,rear,span,d*.31);
-  for(let x of [-w*.2,w*.2])box(x,0,d*.28,12,3.8,8,'glass');
  }else if(id==='rem-eiland'){
   let width=w*.95,depth=d*.93;
   for(let x of [-width*.4,width*.4])for(let z of [-depth*.4,depth*.4]){box(x,0,z,.8,12,.8,'red');}

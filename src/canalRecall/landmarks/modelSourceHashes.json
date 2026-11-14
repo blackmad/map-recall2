@@ -1,5 +1,5 @@
 {
-  "toolchain": "806dba61928926bc640cdda6500d4cc0e20f3e94fc1a70f766b69b16db24582d",
+  "toolchain": "e78022b75735283fb4ac010161a1e3f809c6a3c75205b552ddf4de208405e1df",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -347,7 +347,7 @@
     "politie-oost-watergraafsmeer": "ed4636f39aa28fd8e79c685094431b3aa6c9c614ebbd263fe399de8a0c336eb5",
     "politiebureau-postjesweg": "6acc8abcb291cd0563dea3c28b0737e6404ba389e2a41d2d94c035a869dc8616",
     "pont-13": "1ffc7ba91d20131e89a095f18504b254f7d5b37987646b3b47accb830c71e935",
-    "pontsteiger": "c6f587f6771e0088b1b3bd73b6fc96cdb497ca43cc417059ecb0e7564f67ea35",
+    "pontsteiger": "83c7cc80c1fbc2b0cfa50050a9056ca26e95942a85c483b72b090293a485563e",
     "portuguese-synagogue": "94a6baa2bbf657c3b562b4e515a0eafb0e15865ad12e8df722c22f1bf2bc3ab0",
     "posthoornkerk": "9d25e1ebf3bf5b94d272cc3e756b171dfff52de3de8cd6cd8170516c6a2b1ba2",
     "pulitzer-amsterdam": "4eaa92879fa6784435dfd8d869316eb6e7bfd7f9261e9b2ca7068ca87f1f04f4",

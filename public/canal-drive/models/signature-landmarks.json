@@ -2581,34 +2581,34 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -43.04597854614258,
-          0,
-          -41.6083984375
+          -43.37097930908203,
+          -4.7683716530855236e-8,
+          -39.338130950927734
         ],
         "max": [
-          43.04597854614258,
-          89.5,
-          41.6083984375
+          43.09598159790039,
+          88.85399627685547,
+          41.22251892089844
         ]
       },
       "placement": {
         "anchor": [
-          4.886195205886302,
-          52.393236963385505
+          4.886177718796409,
+          52.39322790632504
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 139.67770384126857,
         "facadeBearingDegrees": 229.67770384126857,
-        "scale": 1.0368269220728081
+        "scale": 1.032330244418364
       },
       "extent": {
-        "widthMetres": 86.09195709228516,
-        "heightMetres": 89.5,
-        "depthMetres": 83.216796875,
-        "depthCoverage": 0.9545884803021156
+        "widthMetres": 86.46696090698242,
+        "heightMetres": 88.85399632453918,
+        "depthMetres": 80.56064987182617,
+        "depthCoverage": 0.9241195434235748
       },
-      "triangles": 19992,
-      "bytes": 249516,
+      "triangles": 27592,
+      "bytes": 333196,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "1f9f41629833d4c5",
