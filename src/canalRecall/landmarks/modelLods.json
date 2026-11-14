@@ -5791,14 +5791,14 @@
   }
  },
  "morgan-mees": {
-  "sourceHash": "8b9c6b1d8b75254f",
+  "sourceHash": "67fd98a5064e4938",
   "buildVersion": 2,
-  "bytes": 42688,
-  "triangles": 1357,
+  "bytes": 43796,
+  "triangles": 1359,
   "lod2": {
-   "sourceHash": "8b9c6b1d8b75254f",
+   "sourceHash": "67fd98a5064e4938",
    "buildVersion": 6,
-   "bytes": 8296,
+   "bytes": 8668,
    "triangles": 176
   }
  },
@@ -5864,6 +5864,78 @@
    "buildVersion": 6,
    "bytes": 4476,
    "triangles": 50
+  }
+ },
+ "asscher-diamantslijperij": {
+  "sourceHash": "1bc0ef84380d9fef",
+  "buildVersion": 2,
+  "bytes": 72476,
+  "triangles": 3674,
+  "lod2": {
+   "sourceHash": "1bc0ef84380d9fef",
+   "buildVersion": 6,
+   "bytes": 11024,
+   "triangles": 480
+  }
+ },
+ "tolstraat-160-tempel": {
+  "sourceHash": "13a743aa6bcb4a0e",
+  "buildVersion": 2,
+  "bytes": 21784,
+  "triangles": 836,
+  "lod2": {
+   "sourceHash": "13a743aa6bcb4a0e",
+   "buildVersion": 6,
+   "bytes": 8004,
+   "triangles": 232
+  }
+ },
+ "de-nieuwe-liefde": {
+  "sourceHash": "797f58ee9ecc28bd",
+  "buildVersion": 2,
+  "bytes": 27804,
+  "triangles": 1024,
+  "lod2": {
+   "sourceHash": "797f58ee9ecc28bd",
+   "buildVersion": 6,
+   "bytes": 6268,
+   "triangles": 187
+  }
+ },
+ "rijksakademie": {
+  "sourceHash": "b8a59ba2871d4c35",
+  "buildVersion": 2,
+  "bytes": 69904,
+  "triangles": 3656,
+  "lod2": {
+   "sourceHash": "b8a59ba2871d4c35",
+   "buildVersion": 6,
+   "bytes": 12540,
+   "triangles": 450
+  }
+ },
+ "werf-kromhout": {
+  "sourceHash": "32eb74d74b094e34",
+  "buildVersion": 2,
+  "bytes": 30016,
+  "triangles": 1454,
+  "lod2": {
+   "sourceHash": "32eb74d74b094e34",
+   "buildVersion": 6,
+   "bytes": 5068,
+   "triangles": 87
+  }
+ },
+ "conservatorium-van-amsterdam": {
+  "sourceHash": "74377f473d4e3490",
+  "buildVersion": 2,
+  "bytes": 18316,
+  "triangles": 576,
+  "lod2": {
+   "sourceHash": "74377f473d4e3490",
+   "buildVersion": 6,
+   "bytes": 4448,
+   "triangles": 75
   }
  }
 }

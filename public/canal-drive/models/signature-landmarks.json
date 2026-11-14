@@ -97382,10 +97382,16 @@
       "bytes": 106724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "8b9c6b1d8b75254f",
+        "sourceHash": "67fd98a5064e4938",
         "buildVersion": 2,
-        "bytes": 42688,
-        "triangles": 1357
+        "bytes": 43796,
+        "triangles": 1359
+      },
+      "lod2": {
+        "sourceHash": "67fd98a5064e4938",
+        "buildVersion": 6,
+        "bytes": 8668,
+        "triangles": 176
       }
     },
     "club-raum": {
