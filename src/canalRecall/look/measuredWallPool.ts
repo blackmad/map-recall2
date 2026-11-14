@@ -157,8 +157,8 @@ export class MeasuredWallPool {
     return central[(seed >>> 0) % central.length].hex;
   }
   /** The variety draw (POOL_DRAW) for an unmeasured pand at (lng, lat), or null (too few measured neighbours). */
-  drawFor(lng: number, lat: number, archetype: string, seed: number, radiusM: number = POOL.radiusM): PoolDraw | null {
-    const all = this.near(lng, lat, radiusM), arch = POOL_ARCHETYPES.indexOf(archetype as PoolArchetype);
+  drawFor(lng: number, lat: number, archetype: string, seed: number, radiusM: number = POOL.radiusM, paintedOnly = false): PoolDraw | null {
+    const near = this.near(lng, lat, radiusM), all = paintedOnly ? near.filter(p => p.painted) : near, arch = POOL_ARCHETYPES.indexOf(archetype as PoolArchetype);
     if (arch < 0) return null;
     const same = all.filter(p => p.arch === arch);
     const cands = (same.length >= POOL.minN ? same : all).slice(0, POOL_DRAW.k);
@@ -199,9 +199,12 @@ export function measuredPoolDraw(lng: number, lat: number, archetype: string, se
  * instead of a buurt profile swatch. `?wallPool=0` turns it off with the pool.
  */
 export const REAL_LOOK_WALL_RADIUS_M = 3000;
-export function measuredPoolDrawWide(lng: number, lat: number, archetype: string, seed: number, radiusM = REAL_LOOK_WALL_RADIUS_M): PoolDraw | null {
+export function measuredPoolDrawWide(lng: number, lat: number, archetype: string, seed: number, radiusM = REAL_LOOK_WALL_RADIUS_M, paintedOnly = false): PoolDraw | null {
   if (!wallPoolOn() || !(POOL_ARCHETYPES as readonly string[]).includes(archetype)) return null;
   shared ??= new MeasuredWallPool(TABLE as unknown as Table);
+  // A pale or painted front (realLook round 2) draws only among the measured painted walls (78 of 1,051), which are sparse:
+  // their search reaches twice as far.
+  if (paintedOnly) return shared.drawFor(lng, lat, archetype, seed, radiusM, true) ?? shared.drawFor(lng, lat, archetype, seed, radiusM * 2, true);
   // Search the nearer ring first (most of the ride area has a measured wall within 1.2 km): a third of the cost.
   return (radiusM > 1200 ? shared.drawFor(lng, lat, archetype, seed, 1200) : null) ?? shared.drawFor(lng, lat, archetype, seed, radiusM);
 }

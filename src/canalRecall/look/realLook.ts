@@ -84,3 +84,23 @@ export function realFoliageHex(prior: string, id: unknown): string {
     return [x * cos + s3 * (z - y) * sin, y * cos + s3 * (x - z) * sin, z * cos + s3 * (y - x) * sin].map(c => (c + m) * k); };
   return toHex(rot([r, g, b]));
 }
+
+const srgbLin = (v: number) => { const c = v / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+/** OKLab [L, a, b] of a #rrggbb colour. */
+export function oklabOf(hex: string): [number, number, number] {
+  const [R, G, B] = hexRgb(hex).map(srgbLin);
+  const l = Math.cbrt(0.4122214708 * R + 0.5363325363 * G + 0.0514459929 * B), m = Math.cbrt(0.2119034982 * R + 0.6806995451 * G + 0.1073969566 * B), s = Math.cbrt(0.0883024619 * R + 0.2817188376 * G + 0.6299787005 * B);
+  return [0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s, 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s];
+}
+/**
+ * Pale-front evidence thresholds (realLook round 2). A measured wall at OKLab L > PALE_FRONT.L is pale (the pool's
+ * painted mark sits at 0.62, and no brick reading passes 0.58); a near-neutral one (chroma < PALE_FRONT.greyC) at
+ * L > PALE_FRONT.greyL is a grey render or a white front read under overcast (Dapperstraat's KFC corner, a white
+ * painted front, measures L 0.57 C 0.006 in its winter panorama and its buurt profile draws #79797a, L 0.58 C 0.001).
+ */
+export const PALE_FRONT = { L: 0.6, greyL: 0.55, greyC: 0.01 } as const;
+/** Whether a measured swatch says the front is pale or painted (see PALE_FRONT). */
+export function isPaleFrontHex(hex: string): boolean {
+  const [L, a, b] = oklabOf(hex), C = Math.hypot(a, b);
+  return L > PALE_FRONT.L || (L > PALE_FRONT.greyL && C < PALE_FRONT.greyC);
+}

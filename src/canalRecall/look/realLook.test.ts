@@ -100,3 +100,35 @@ test('trees: the sampled prior with a bounded per-tree spread, deterministic', (
   }
   assert.ok(TREE_SPREAD.light <= 0.1);
 });
+
+// Round 2, named regression: Dapperstraat 52 (KFC corner), NL.IMBAG.Pand.0363100012142699, a white painted 1881 corner. With
+// the walls lever (449b6ff75) it drew brown brick (#8e7166) from its measured neighbours; its buurt profile (ME01) draws a
+// neutral grey #79797a, which is the front's only evidence of paint, so it must draw a measured painted wall instead.
+import { isPaleFrontHex, PALE_FRONT } from './realLook.ts';
+const KFC = { id: 'NL.IMBAG.Pand.0363100012142699', at: [4.927639166666666, 52.36292449999999] as const, year: 1881, height: 14.44 };
+test('pale fronts: Dapperstraat 52 (KFC corner, 0363100012142699) stays pale and painted under the walls lever', () => {
+  const profile = buurtProfileAt(KFC.at[0], KFC.at[1]);
+  const off = withReal('0', () => bayLookFor(KFC.id, KFC.year, KFC.height, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, KFC.at));
+  const on = withReal('walls', () => bayLookFor(KFC.id, KFC.year, KFC.height, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, KFC.at));
+  assert.ok(isPaleFrontHex(off.wallHex), `today's profile swatch ${off.wallHex} is the pale evidence`);
+  assert.ok(hexToOklab(on.wallHex)[0] >= hexToOklab(off.wallHex)[0], `${on.wallHex} no darker than ${off.wallHex}`);
+  assert.equal((on as { painted?: boolean }).painted, true, 'smooth painted cells');
+  const painted = new Set(((TABLE as any).points as [number, number, string, number, number?][]).filter(p => p[4] === 1).map(p => p[2]));
+  assert.ok(painted.has(on.wallHex), 'a measured painted wall');
+});
+
+test('pale fronts: register light finish and spec painted finish keep a front out of the brick draw', () => {
+  const at = OUTSIDE[1], profile = buurtProfileAt(at[0], at[1]);
+  const painted = new Set(((TABLE as any).points as [number, number, string, number, number?][]).filter(p => p[4] === 1).map(p => p[2]));
+  for (const id of IDS.slice(0, 10)) {
+    const reg = withReal('walls', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, at, true));
+    assert.ok(painted.has(reg.wallHex), `${id} register light -> painted wall ${reg.wallHex}`);
+    const spec = withReal('walls', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, profile, undefined, { painted: true }, at));
+    assert.ok(painted.has(spec.wallHex), `${id} spec painted -> painted wall ${spec.wallHex}`);
+    // Off, the evidence argument changes nothing.
+    assert.deepEqual(withReal('0', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, at, true)),
+      withReal('0', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, at)));
+  }
+  assert.ok(isPaleFrontHex('#e8e2d6') && isPaleFrontHex('#79797a') && !isPaleFrontHex('#6d5743') && !isPaleFrontHex('#8e7166'));
+  assert.equal(PALE_FRONT.L, 0.6);
+});

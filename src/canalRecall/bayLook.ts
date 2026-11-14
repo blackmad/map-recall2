@@ -8,7 +8,7 @@ import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, typ
 import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
 import { brickLiftOn, brickLiftV2ProfileWall, periodWallList } from './look/brickLift.js';
 import { measuredPoolDraw, measuredPoolDrawWide } from './look/measuredWallPool.js';
-import { realDoorSwatch, realLookOn } from './look/realLook.js';
+import { isPaleFrontHex, realDoorSwatch, realLookOn } from './look/realLook.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
@@ -296,7 +296,11 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
  * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean }, at?: readonly [number, number]) {
+/**
+ * `paleEvidence`: the pand's own evidence of a light finish (the monument register's `registerFinish: 'light'`), for the
+ * realLook walls lever only: such a front never takes a brick wall from its measured neighbours. Absent = as before.
+ */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean }, at?: readonly [number, number], paleEvidence?: boolean) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -316,7 +320,10 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // The measured wall pool (lane W1) and its variety draw (lane W2): a painted draw takes the painted preset's smooth cells.
   const h = hashSeed(id);
   // realLook walls (look/realLook.ts, default off): beyond the pool's 600 m, the same draw over the nearest measured walls out to 3 km.
-  const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? (measuredPoolDraw(at[0], at[1], archetype, h >>> 7) ?? (realLookOn('walls') ? measuredPoolDrawWide(at[0], at[1], archetype, h >>> 7) : null)) : null;
+  // A front with pale or painted evidence (a spec'd finish, the register's light finish, a pale or neutral measured buurt
+  // swatch) draws only among the measured painted walls (round 2: the white Dapperstraat KFC corner drew brown brick).
+  const paleFront = () => !!spec?.painted || !!paleEvidence || (!!traits?.wall && isPaleFrontHex(traits.wall));
+  const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? (measuredPoolDraw(at[0], at[1], archetype, h >>> 7) ?? (realLookOn('walls') ? measuredPoolDrawWide(at[0], at[1], archetype, h >>> 7, undefined, paleFront()) : null)) : null;
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone front (spec.painted) takes the same smooth cells.
   const ownStyle = () => contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : keepLadder ? ladderStyle : ladder ? nearestStyle(archetype, traits!, ladderStyle, spec!.bays) : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // The smooth cells exist for one plain style only (PAINTED_BASE_STYLE): a spec'd front whose own style carries white
