@@ -1,0 +1,39 @@
+{
+ "id": "zaal-100",
+ "name": "Zaal 100, De Wittenstraat 100",
+ "landmarkId": "zaal-100",
+ "headingFrom": [
+  17,
+  18
+ ],
+ "heightMetres": 19.0,
+ "galleryView": {
+  "theta": 2.4,
+  "phi": 1.15
+ },
+ "partyWallBearings": [
+  45,
+  225
+ ],
+ "surveyedSource": "Vertex average of the BAG 0363100012158161 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/zaal-100-footprints.json, written by venue-prepare.ts). The De Wittenstraat front is drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 30 px/m: TMX7316010203-002554_pano_0000_006569, recording_2024-09-11_11-32-11_00854); roofs and the side and back walls keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/zaal-100-inventory.json.",
+ "materialOverrides": {
+  "brick": "#c49a7c",
+  "stone": "#d6c49c",
+  "white": "#ebe7dc",
+  "ochre": "#d9b45a",
+  "concrete": "#efece4",
+  "blue": "#3d5a78",
+  "dark": "#26292c",
+  "glass": "#3f4c55",
+  "frame": "#e6e3da",
+  "slate": "#4b4f57"
+ },
+ "attribution": {
+  "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
+  "author": "Map Recall",
+  "sourceUrl": "https://zaal100.nl/over-zaal-100/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for roofs, side and back walls (CC BY 4.0): the 38 m salmon-buff brick front in five bays between lesenes with segment-headed window triplets, light stone courses and arch rings, the cornice with white consoles, four hooded dormers, the crested middle gable, and the venue's black 1 0 0 windows, sign band and vertical sign. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

@@ -62,6 +62,15 @@ export const VENUES: Record<string, Venue> = {
     address: 'Nieuwe Achtergracht 170, Amsterdam (CREA)', sources: [wiki('Stichting_CREA', 'Stichting CREA')]},
   'engelenbak': {pand: '0363100012179536', label: 'Nes 71 (Theater De Engelenbak 1975-2013, the former Salon des Variétés)',
     address: 'Nes 71, Amsterdam (Theater De Engelenbak)', sources: [wiki('Theater_De_Engelenbak', 'Theater De Engelenbak')]},
+  // venues round 5 (lane venues-r5-20261114)
+  'zaal-100': {pand: '0363100012158161', label: 'De Wittenstraat 100 (Zaal 100)',
+    address: 'De Wittenstraat 100, Amsterdam (Zaal 100)', sources: []},
+  'roode-bioscoop': {pand: '0363100012169536', label: 'Haarlemmerplein 7 (De Roode Bioscoop)',
+    address: 'Haarlemmerplein 7, Amsterdam (De Roode Bioscoop)', sources: []},
+  'afas-live': {pand: '0363100012123240', label: 'Johan Cruijff Boulevard 590 (AFAS Live, the former Heineken Music Hall, 2001)',
+    address: 'Johan Cruijff Boulevard 590, Amsterdam (AFAS Live)', sources: [wiki('AFAS_Live', 'AFAS Live')]},
+  'cristofori': {pand: '0363100012253896', label: 'Prinsengracht 581-583 (Cristofori, piano house and concert hall)',
+    address: 'Prinsengracht 581-583, Amsterdam (Cristofori)', sources: []},
 };
 const id = process.argv.find(a => a.startsWith('--id='))?.slice(5) ?? '';
 const V = VENUES[id];

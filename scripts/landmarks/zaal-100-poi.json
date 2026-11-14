@@ -1,0 +1,24 @@
+{
+  "modelId": "zaal-100",
+  "landmarkId": "zaal-100",
+  "name": "Zaal 100",
+  "center": [
+    52.38310779,
+    4.87810876
+  ],
+  "address": "De Wittenstraat 100, Amsterdam",
+  "sourceUrl": "https://zaal100.nl/over-zaal-100/",
+  "description": "Zaal 100 calls itself a stage for unheard sound: amateur theatre, unusual concerts, dance, poetry, exhibitions and small meetings that find no room elsewhere. Private parties and party-political or religious meetings are not booked. Its weekly fixtures include a singer-songwriter night on Mondays, the Impro Jazzcafé on Tuesdays and a jazz workshop on Thursdays, and it runs a monthly gallery and a cheap vegetarian restaurant three evenings a week.",
+  "funFact": "Listening to the Thursday jazz workshop is free; joining in costs five euros, the same as the Tuesday Impro Jazzcafé.",
+  "sourceLinks": [
+    {
+      "title": "Over Zaal 100 (venue website)",
+      "url": "https://zaal100.nl/over-zaal-100/"
+    },
+    {
+      "title": "BAG pand 0363100012158161 (Gemeente Amsterdam, year of construction 1892)",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012158161/"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012158161; the venue's address De Wittenstraat 100 lies in it (PDOK BAG, OSM node 4716327833 Zaal 100). No extract landmark exists, so landmarkId is the model id."
+}

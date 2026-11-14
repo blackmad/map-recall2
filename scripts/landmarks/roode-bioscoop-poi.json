@@ -1,0 +1,24 @@
+{
+  "modelId": "roode-bioscoop",
+  "landmarkId": "roode-bioscoop",
+  "name": "De Roode Bioscoop",
+  "center": [
+    52.38398249,
+    4.88411698
+  ],
+  "address": "Haarlemmerplein 7, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/De_Roode_Bioscoop",
+  "description": "De Roode Bioscoop is a small music theatre on the Haarlemmerplein. The building opened as a cinema in 1913 under the names Ons Genoegen and Westerbioscoop, run by the anarchist Gerhard Rijnders, a follower of Ferdinand Domela Nieuwenhuis. Locals called it the Red Cinema because of the socialist-anarchist propaganda films it showed. Since the late 1970s it has been a stage again, with performances almost every day: music theatre, poetry, jazz, world music and classical.",
+  "funFact": "The propaganda did not pay: the cinema closed after a few years, and the building then housed a lamp factory, a dance school, a bicycle repairer and a greengrocer before the Flint brothers gave it its name officially.",
+  "sourceLinks": [
+    {
+      "title": "De Roode Bioscoop, Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/De_Roode_Bioscoop"
+    },
+    {
+      "title": "Bioscopen in Amsterdam (cinema list: Ons Genoegen, Wester Bioscoop, De Roode Bioscoop, Haarlemmerplein 7, 1913-1918), Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Bioscopen_in_Amsterdam"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012169536 (BAG year 2006 for the whole pand: the plein house, the hall and the side-street block). No extract landmark exists, so landmarkId is the model id."
+}
