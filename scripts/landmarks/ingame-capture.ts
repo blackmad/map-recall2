@@ -3,6 +3,8 @@
  *
  *   node --import tsx scripts/landmarks/ingame-capture.ts --id=de-roos --port=4484 --views=vondelpark:337,pc-hooftstraat:157
  *   ... --views=user:125:4.8796:52.3573[:zoom[:pitch]]   (a view may name its own look-at point, zoom and pitch)
+ *   ... --query='buildings3d=storybook'   (appended to the game URL: a Building look, a flag A/B)
+ *   ... --underlay   (also a shot of each view with the model hidden: what else draws on its footprint)
  *
  * Each view looks at the model's anchor along the given bearing (degrees clockwise from north; the camera stands on the
  * opposite side) at `--zoom` (18.7) and `--pitch` (68). Writes artifacts/review/<id>/ingame-<view>-<desktop|phone>.png.
@@ -27,11 +29,13 @@ const anchor = spec?.surveyed?.anchor ?? spec?.footprint?.centre;
 if (!anchor) throw new Error(`${id}: no anchor in manualCatalogue.json`);
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const out = path.resolve(ROOT, arg('out') ?? `artifacts/review/${id}`);
+const query = arg('query') ?? '';
+const underlay = process.argv.includes('--underlay');
 fs.mkdirSync(out, {recursive: true});
 
 async function ride(page: Page) {
   await routeFreshSignatureBundle(page);
-  await page.goto(`http://127.0.0.1:${port}/canal-drive/`);
+  await page.goto(`http://127.0.0.1:${port}/canal-drive/${query ? `?${query.replace(/^\?/, '')}` : ''}`);
   await page.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?._signatureLandmarks, null, {timeout: 90000});
   if (!await gameListsModel(page, id)) throw new Error(`${id} is not in GAME_BUILDING_MODELS`);
   const poi = await page.evaluate(() => (window as any).canalRecallGame.routePois[0]?.id);
@@ -61,6 +65,15 @@ try {
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
       await page.screenshot({path: file});
       console.log(file);
+      if (underlay) {
+        // The model hidden, its suppression kept: whatever still draws on the footprint is a second building.
+        await page.evaluate(i => { const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks; for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = false; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, false); } (window as any).canalRecallGame.vectorMap.map?.triggerRepaint?.(); }, id);
+        await page.waitForTimeout(1500);
+        const under = path.join(out, `ingame-${v.name}-${size}-underlay.png`);
+        await page.screenshot({path: under});
+        console.log(under);
+        await page.evaluate(i => { const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks; for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = true; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, true); } }, id);
+      }
     }
     await page.close();
   }
