@@ -2287,12 +2287,12 @@
       "dateSource": "asset-update"
     },
     "garage-noord.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.149Z",
+      "updatedAt": "2026-11-14T13:20:57.605Z",
       "version": "5521de0e8fde44c7",
       "dateSource": "asset-update"
     },
     "garage-noord.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.150Z",
+      "updatedAt": "2026-11-14T13:20:58.143Z",
       "version": "924b8e9d1b88711b",
       "dateSource": "asset-update"
     },
@@ -4097,12 +4097,12 @@
       "dateSource": "asset-update"
     },
     "meervaart.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.150Z",
+      "updatedAt": "2026-11-14T13:20:57.667Z",
       "version": "9c7b681f332433e3",
       "dateSource": "asset-update"
     },
     "meervaart.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.151Z",
+      "updatedAt": "2026-11-14T13:20:58.663Z",
       "version": "e8f5ef728a7815c0",
       "dateSource": "asset-update"
     },
@@ -4397,12 +4397,12 @@
       "dateSource": "asset-update"
     },
     "muziekgebouw-bimhuis.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.153Z",
+      "updatedAt": "2026-11-14T13:20:57.486Z",
       "version": "2b5b5fd587909824",
       "dateSource": "asset-update"
     },
     "muziekgebouw-bimhuis.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.153Z",
+      "updatedAt": "2026-11-14T13:20:57.829Z",
       "version": "2ec2e66801884e33",
       "dateSource": "asset-update"
     },
@@ -5277,12 +5277,12 @@
       "dateSource": "asset-update"
     },
     "q-factory.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.154Z",
+      "updatedAt": "2026-11-14T13:20:57.641Z",
       "version": "596472cc537cd04f",
       "dateSource": "asset-update"
     },
     "q-factory.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.155Z",
+      "updatedAt": "2026-11-14T13:20:58.481Z",
       "version": "45ad7e7d458a5be4",
       "dateSource": "asset-update"
     },
@@ -5777,12 +5777,12 @@
       "dateSource": "asset-update"
     },
     "skatecafe.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.163Z",
+      "updatedAt": "2026-11-14T13:20:57.588Z",
       "version": "d72a76bb0634f70a",
       "dateSource": "asset-update"
     },
     "skatecafe.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.164Z",
+      "updatedAt": "2026-11-14T13:20:58.012Z",
       "version": "366810ea483b33d5",
       "dateSource": "asset-update"
     },
@@ -6117,12 +6117,12 @@
       "dateSource": "asset-update"
     },
     "theater-bellevue.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.165Z",
+      "updatedAt": "2026-11-14T13:20:57.621Z",
       "version": "79b5684d25228a24",
       "dateSource": "asset-update"
     },
     "theater-bellevue.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.166Z",
+      "updatedAt": "2026-11-14T13:20:58.286Z",
       "version": "f929c296f923e44f",
       "dateSource": "asset-update"
     },
@@ -6782,12 +6782,12 @@
       "dateSource": "asset-update"
     },
     "westergas-bazenwoning-west.lod1": {
-      "updatedAt": "2026-11-14T14:16:29.166Z",
+      "updatedAt": "2026-11-14T13:20:57.653Z",
       "version": "933ae76891964b49",
       "dateSource": "asset-update"
     },
     "westergas-bazenwoning-west.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.167Z",
+      "updatedAt": "2026-11-14T13:20:58.564Z",
       "version": "e89ffba3b4e198fc",
       "dateSource": "asset-update"
     },
@@ -6797,7 +6797,7 @@
       "dateSource": "asset-update"
     },
     "westergas-gosschalklaan-12.lod2": {
-      "updatedAt": "2026-11-14T14:16:29.167Z",
+      "updatedAt": "2026-11-14T13:20:58.585Z",
       "version": "2ac6d200b6471e0b",
       "dateSource": "asset-update"
     },
@@ -7114,6 +7114,21 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
+      "dateSource": "asset-update"
+    },
+    "crea": {
+      "updatedAt": "2026-11-14T15:06:08.421Z",
+      "version": "aafa3c0e296e9ed0",
+      "dateSource": "asset-update"
+    },
+    "perdu": {
+      "updatedAt": "2026-11-14T15:06:08.333Z",
+      "version": "ed171ce8059179f7",
+      "dateSource": "asset-update"
+    },
+    "universiteitstheater": {
+      "updatedAt": "2026-11-14T14:27:32.122Z",
+      "version": "9f4352a89f243458",
       "dateSource": "asset-update"
     }
   }

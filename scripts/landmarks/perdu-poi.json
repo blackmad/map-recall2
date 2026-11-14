@@ -1,0 +1,24 @@
+{
+  "modelId": "perdu",
+  "landmarkId": "perdu",
+  "name": "Perdu",
+  "center": [
+    52.3688787,
+    4.8961414
+  ],
+  "address": "Kloveniersburgwal 86, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Perdu",
+  "description": "Perdu is a theatre, publisher and bookshop for experimental literature, poetry and performance. It started in 1984 as a small bookshop in De Pijp called De verloren tijd, took the name Perdu (French for 'lost') after moving to the Kerkstraat, and has been on the Kloveniersburgwal since 1995. Its hall is in the former kitchen building and nurses' house of the old Binnengasthuis hospital, built in 1908-09 in a style inspired by Berlage.",
+  "funFact": "Because the hospital kitchen only needed the ground floor, the builders added two floors with fourteen single rooms for nurses so the canal front would not sit much lower than its neighbours; ANNO 1908 is set in a tile frieze over the door.",
+  "sourceLinks": [
+    {
+      "title": "Perdu, Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Perdu"
+    },
+    {
+      "title": "Rijksmonument 518309, Kloveniersburgwal 86-88 (Rijksdienst voor het Cultureel Erfgoed)",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518309"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012169332; rijksmonument 518309 (part of complex 518301, Binnengasthuis). No extract landmark exists, so landmarkId is the model id."
+}

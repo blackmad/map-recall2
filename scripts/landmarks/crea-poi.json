@@ -1,0 +1,24 @@
+{
+  "modelId": "crea",
+  "landmarkId": "crea",
+  "name": "CREA",
+  "center": [
+    52.36320334,
+    4.91313921
+  ],
+  "address": "Nieuwe Achtergracht 170, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Stichting_CREA",
+  "description": "CREA is the cultural student centre of the University of Amsterdam and the Amsterdam University of Applied Sciences, with courses in music, theatre, dance, visual art, video art, photography and literature, a theatre, a music hall and a busy student cafe. It moved here in January 2012 from the Binnengasthuis site, into the renovated works of the Diamantslijperij Maatschappij, whose name is still lettered over the door.",
+  "funFact": "The Diamantslijperij Maatschappij, set up by Amsterdam jewellers in 1845, opened Amsterdam's first purpose-built steam diamond-cutting works here in 1846; by 1847 the complex had 280 cutting mills, when the whole city had about 600.",
+  "sourceLinks": [
+    {
+      "title": "Stichting CREA, Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Stichting_CREA"
+    },
+    {
+      "title": "Municipal monument 200530, Nieuwe Achtergracht 168-170 (Gemeente Amsterdam)",
+      "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/5332e58d-3d90-42cb-adc1-f05d6320f2ba?_format=json"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012164972 (BAG year 1965 covers the whole university-era complex); gemeentelijk monument 200530. The white-rendered south block appears to match the register's first 1846 works (four storeys, about 9 by 26 m, back wall once on the Roeterssloot). No extract landmark exists, so landmarkId is the model id."
+}

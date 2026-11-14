@@ -1,0 +1,24 @@
+{
+  "modelId": "universiteitstheater",
+  "landmarkId": "extract_landmarks_511304045",
+  "name": "Universiteitstheater",
+  "center": [
+    52.367991,
+    4.895077
+  ],
+  "address": "Nieuwe Doelenstraat 16, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)",
+  "description": "The Universiteitstheater is the University of Amsterdam's theatre at Nieuwe Doelenstraat 16, on the same street as the university's Institute for Theatre Studies. The street forms the south-east edge of the Binnengasthuis site, where a large part of the university is housed, and the theatre counts among the university buildings of the old-centre university quarter.",
+  "funFact": "The Kloveniersdoelen, the civic guard hall where Rembrandt's Night Watch originally hung, stood on this same street, and Rembrandt himself once lived here.",
+  "sourceLinks": [
+    {
+      "title": "Nieuwe Doelenstraat (Amsterdam), Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)"
+    },
+    {
+      "title": "Universiteitskwartier (Amsterdam), Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Universiteitskwartier_(Amsterdam)"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012180412 (BAG year 1632, no monument record linked). The canal-side front carries the lettering UNIVERSITEITSTHEATER (Gemeente Amsterdam panorama TMX7316010203-000354_pano_0001_001508). No source found for the building's own history, so the card says nothing about it."
+}

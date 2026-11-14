@@ -4,7 +4,8 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {arcLettering, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
+import {arcLettering, balusterCentres, balustradeRun, festoonPanel, swagOutline, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering, wallFacingXZ} from './venue-kit';
+import {addShell} from './worship-shell';
 
 /** BuildingTools that only collects geometries per colour. */
 const collector = () => {
@@ -173,4 +174,56 @@ test('pathLettering follows a bent path and matches lettering width on a straigh
   pathLettering(b3, [[0, 0], [5, 0], [5, 5]], 'meervaart', 5, 0, 0.2, 0.02, 'white');
   const box3 = boxOf(g3.map(g => g.g));
   assert.ok(box3.max.z > 1 && box3.min.x < 4, 'text runs along both legs');
+});
+
+test('swagOutline hangs from the panel corners, deepest and thickest in the middle', () => {
+  const p = swagOutline(2, 0.3, 0.1, 10);
+  assert.equal(p.length, 22);
+  const top = p.slice(0, 11), bot = p.slice(11).reverse();
+  assert.deepEqual(top[0], [-1, -0]);
+  assert.ok(Math.abs(top[10][0] - 1) < 1e-12 && Math.abs(top[10][1]) < 1e-12);
+  assert.ok(Math.abs(top[5][1] + 0.3) < 1e-12, 'middle sags by `sag`');
+  const thick = (k: number) => top[k][1] - bot[k][1];
+  assert.ok(Math.abs(thick(5) - 0.1) < 1e-12 && thick(0) < thick(5) && thick(10) < thick(5));
+});
+
+test('festoonPanel stands its swag proud of the panel, inside the panel outline', () => {
+  setSink(0);
+  const {b, got} = collector();
+  festoonPanel(b, F, 5, 2, 2.4, 0.75, {panel: 'sandstone', swag: 'white', d: 0.06, relief: 0.05});
+  const panel = boxOf(got.filter(x => x.c === 'sandstone').map(x => x.g)), swag = boxOf(got.filter(x => x.c === 'white').map(x => x.g));
+  assert.ok(Math.abs(panel.max.z - 0.06) < 1e-5 && Math.abs(swag.min.z - 0.06) < 1e-5 && Math.abs(swag.max.z - 0.11) < 1e-5);
+  assert.ok(swag.min.x >= panel.min.x - 1e-5 && swag.max.x <= panel.max.x + 1e-5 && swag.min.y >= panel.min.y - 1e-5 && swag.max.y <= panel.max.y + 1e-5);
+});
+
+test('balustradeRun: balusters stay clear of the dies, dies rise above the rail', () => {
+  setSink(0);
+  assert.deepEqual(balusterCentres(0, 2, 0.5), [0.25, 0.75, 1.25, 1.75]);
+  const {b, got} = collector();
+  balustradeRun(b, F, 0, 10, 12, {h: 0.6, d: 0.2, pitch: 0.3, c: 'stone', dies: [5], dieW: 1, dieH: 0.85, die: 'brick', cap: 'sandstone'});
+  const balusters = got.filter(x => x.c === 'stone').map(x => { x.g.computeBoundingBox(); return x.g.boundingBox!; }).filter(bb => bb.max.x - bb.min.x < 0.2);
+  assert.ok(balusters.length > 20);
+  for (const bb of balusters) assert.ok(bb.max.x <= 4.5 + 1e-5 || bb.min.x >= 5.5 - 1e-5, 'no baluster inside a die');
+  const die = boxOf(got.filter(x => x.c === 'brick' || x.c === 'sandstone').map(x => x.g));
+  assert.ok(Math.abs(die.max.y - 12.85) < 1e-5 && die.max.y > 12.6);
+});
+
+test('wallFacingXZ points away from the block whatever the winding; addShell wallFor recolours walls only', () => {
+  // a 4 x 3 m wall in the plane z = 2 (block centre at the origin), wound both ways
+  const ring = [[-2, 0, 2], [2, 0, 2], [2, 3, 2], [-2, 3, 2]];
+  for (const r of [ring, [...ring].reverse()]) {
+    const [nx, nz] = wallFacingXZ({type: 'WallSurface', rings: [r]}, [0, 0]);
+    assert.ok(Math.abs(nx) < 1e-9 && Math.abs(nz - 1) < 1e-9);
+  }
+  assert.deepEqual(wallFacingXZ({type: 'RoofSurface', rings: [[[0, 5, 0], [1, 5, 0], [1, 5, 1]]]}, [0, 0]), [0, 0]);
+  const surfaces = [
+    {type: 'WallSurface', rings: [ring]},
+    {type: 'WallSurface', rings: [[[-2, 0, -2], [-2, 3, -2], [2, 3, -2], [2, 0, -2]]]},
+    {type: 'RoofSurface', rings: [[[-2, 3, -2], [2, 3, -2], [2, 3, 2], [-2, 3, 2]]]},
+  ];
+  const plain = collector(), coloured = collector();
+  addShell(plain.b, {surfaces, nativeRing: []}, {wall: 'brick', roof: 'slate'});
+  addShell(coloured.b, {surfaces, nativeRing: []}, {wall: 'brick', roof: 'slate', wallFor: s => (wallFacingXZ(s, [0, 0])[1] > 0.5 ? 'white' : 'brick')});
+  assert.deepEqual(plain.got.map(g => g.c), ['brick', 'brick', 'slate']);
+  assert.deepEqual(coloured.got.map(g => g.c), ['white', 'brick', 'slate']);
 });
