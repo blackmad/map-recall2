@@ -37,10 +37,12 @@ export async function gameListsModel(page: Page, id: string): Promise<boolean> {
 }
 
 /**
- * The camera is held by stubbing `vectorMap.sync`, which on the own engine also stops the city, ground, far and baked tiers
- * streaming at the new camera: frames shot after a fixed 5 s wait showed the landmark alone on an empty lot (Morgan & Mees,
- * 2026-11-14: 4 of 5 IN GAME frames had no neighbours). Drive the tiers with `settleTick()` and wait for `worldSettled()`
- * twice in a row, as tests/e2e/helpers.ts settleWorld does; MapLibre (no settleTick) keeps the fixed wait.
+ * The IN GAME shots hold the camera by stubbing `vectorMap.sync`, and sync is also what streams the city at a new camera:
+ * frames after the fixed 5 s wait showed the landmark alone on an empty lot (Morgan & Mees, 2026-11-14: 4 of 5 frames).
+ * Under `?engine=own` this drives the tiers with `settleTick()` and waits for `worldSettled()` twice in a row, as
+ * tests/e2e/helpers.ts settleWorld does. Under the default engine (MapLibre) there is no settleTick: the fixed wait stays
+ * and the neighbours still do not stream (moving the rider there did not help either), so judge surroundings on
+ * `npm run house:frames -- --rule10` frames, which teleport the rider and let the world settle.
  */
 export async function settleHeldWorld(page: Page, timeoutMs = 60000): Promise<void> {
   const own = await page.evaluate(() => typeof (window as any).canalRecallGame?.vectorMap?.settleTick === 'function');
