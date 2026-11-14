@@ -74,10 +74,14 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (!fronts.length) return rec;
     const designs = fronts.map(f => frontDesign(row, f));
     const walls = designs.map(d => d.wall.value);
+    // The world draws every pand from flat ground (no terrain under the mesher), so a row stands to its series line in
+    // the street datum: per-pand 3DBAG ground offsets stepped the drawn cornice (Kinkerstraat 104 0.2 m, 110 0.7 m low).
+    const line = designs[0].corniceTopM.value;
+    const lined = line !== null && line > 2 ? { topM: line, eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: designs[i]?.corniceTopM.value ?? line, eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
     const out: RowFrontRecord = {
-      ...rec, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id),
+      ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
-      sources: { ...rec.sources, series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
+      sources: { ...rec.sources, ...(line !== null ? { eaves: `${rec.sources.eaves}; drawn at the series line ${line} m (street datum: the world has no terrain)` } : {}), series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
     const joins = mansardJoins(row, rec.pandId);
@@ -88,17 +92,17 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
 
 /** Cornice lines within this step (m, street datum) read as one line: the mansard runs on across the party wall. */
 export const ROW_LINE_STEP_M = 0.2;
-/** The member's mansard runs on into its street-order neighbour's (left / right as seen) when both have a mansard and
- *  their cornice lines agree within ROW_LINE_STEP_M: no hip at the party wall, inside a series or across two. */
+/** The member's mansard runs on into its street-order neighbour's (left / right as seen) when their cornice lines agree
+ *  within ROW_LINE_STEP_M: no hip at the party wall, inside a series or across two, and also into a neighbour with no
+ *  stated roof storey on the same line (Kinkerstraat 90 into 86-88: 3DBAG 16.84 / 16.62 m, both cornices at ~14.2 m on
+ *  the face strip, so 86-88's top is not clearly lower). */
 export function mansardJoins(row: RowRecord, pandId: string): { left?: true; right?: true } | null {
   const i = row.members.findIndex(m => m.pandId === pandId);
   if (i < 0) return null;
   const edge = (m: RowRecord['members'][number], end: 'first' | 'last') => {
     const id = end === 'first' ? m.fronts[0] : m.fronts[m.fronts.length - 1];
     const f = row.fronts.find(x => x.id === id);
-    if (!f) return null;
-    const d = frontDesign(row, f);
-    return d.roofStorey.value.kind === 'mansard' && d.corniceTopM.value !== null ? d.corniceTopM.value : null;
+    return f ? frontDesign(row, f).corniceTopM.value : null;
   };
   const near = (a: number | null, b: number | null) => a !== null && b !== null && Math.abs(a - b) <= ROW_LINE_STEP_M + 1e-9;
   const m = row.members[i], left = row.members[i - 1], right = row.members[i + 1];

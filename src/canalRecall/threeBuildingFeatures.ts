@@ -155,6 +155,8 @@ const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (spec
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
 /** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
+/** House rows: the wall band a row cornice takes over the storeys (m), by cornice kind. */
+const ROW_CORNICE_BAND_M: Record<string, number> = { simple: 0.35, bracketed: 0.7, heavy: 0.75, frieze: 0.75, 'attic-frieze': 0.9 };
 function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean } | null {
   const v = p.rowLook as { bays?: unknown; year?: unknown; heightM?: unknown } | undefined;
   if (!v || typeof v !== 'object' || !(Number.isInteger(v.bays) && (v.bays as number) > 0)) return null;
@@ -380,6 +382,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const dress = rowDressOf(p.rowDress);
     if (building.extras && typeof p.rowSeries === 'string') {
       building.rowSeries = p.rowSeries;
+      // The series cornice's band: the storey cells stop under it so the top storey keeps its head dressing and the
+      // frieze sits above (Kinkerstraat 100-106: the block course ran under the consoles).
+      const band = ROW_CORNICE_BAND_M[String(dress?.cornice ?? 'none')] ?? 0;
+      if (band > 0) building.parapetM = band;
       const ids = [...(dress?.heads?.length ? ['row-heads'] : []), ...(dress?.cornice ? ['row-cornice'] : []), ...(dress?.extras ?? [])];
       const register = Array.isArray(p.registerForce) ? p.registerForce as string[] : [];
       if (dress) building.rowDress = dress;

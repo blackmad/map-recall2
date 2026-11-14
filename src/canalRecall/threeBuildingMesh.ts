@@ -871,6 +871,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
       if (b.shopfront && (units ? layout.bays * cellU : layout.bays) < 3) layout.doorBays.length = 0;
+      // House rows: a row front's shop ground is one shopfront across the front, never a door assembly in it
+      // (Kinkerstraat 92-94: a portico door was drawn in the butcher's window). The upstairs door is read, not drawn.
+      if (b.shopfront && b.rowSeries) layout.doorBays.length = 0;
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)

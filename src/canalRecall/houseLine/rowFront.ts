@@ -76,7 +76,7 @@ export interface RowHeadsDraw {
   storeys?: number[];
 }
 /** House rows: a dormer in the roof storey, its centre as a fraction of the pand front (left to right as seen). */
-export interface RowDormerDraw { a: number; kind: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }
+export interface RowDormerDraw { a: number; kind: 'pediment' | 'gabled' | 'plain' | 'ornate-pinnacle'; hoist?: boolean }
 /** House rows: what a series member draws beyond the front record's top, storeys and windows. */
 export interface RowSeriesDraw {
   /** The series id: it seeds the bay preset, the extras' dice and the roof tone, so every member draws alike. */
