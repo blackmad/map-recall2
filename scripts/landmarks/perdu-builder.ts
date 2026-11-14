@@ -17,7 +17,7 @@ import source from './perdu-footprints.json' with {type: 'json'};
  *
  * Light-brown brick in two wings either side of a narrower middle bay, separated by brick lesenes that run up into the
  * corbelled cornice: round-arched ground-floor windows, tall first-floor windows, a brick panel band, round-arched
- * second-floor windows under light stone arch rings, brick corbel brackets under the cornice, and a tiled roof with
+ * second-floor windows under light stone arch rings, brick corbel brackets under the cornice, and a dark tiled roof with
  * three dormers (box dormers over the wings, a pointed one over the middle). The middle bay has the entrance with the
  * white Perdu sign board, narrow side lights and a stone tablet over it. Roofs and the other walls keep the 3DBAG
  * LoD2.2 shell (CC BY 4.0); the walls to the Binnengasthuis grounds have no usable panorama and stay plain (inferred).
@@ -38,7 +38,7 @@ type Ctx = {K: FrontKit; b: BuildingTools; M: TriSink};
 
 function shell(c: Ctx) {
   const cut = cutFrontWalls(SRC.surfaces, [R[8], R[0]], F, [[-0.6, L + 0.6, 99]]);
-  addShell(c.b, {surfaces: cut, nativeRing: R}, {wall: 'brick', roof: 'red'});
+  addShell(c.b, {surfaces: cut, nativeRing: R}, {wall: 'brick', roof: 'ochre'});
 }
 
 function front(c: Ctx) {
@@ -102,8 +102,8 @@ function dormers(c: Ctx) {
     if (pointed) {
       const apex = y1 + 0.8;
       M.tri('brick', P3(s - w / 2, y1, o0), P3(s + w / 2, y1, o0), P3(s, apex, o0), out);
-      for (const sd of [-1, 1]) M.quad('red', P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o0 + 0.1), P3(s, apex + 0.05, o0 + 0.1), P3(s, apex + 0.05, o1), P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o1), [sd * f.tangent[0] * 0.7, 0.7, sd * f.tangent[1] * 0.7]);
-    } else slab(b, f, s, y1, w + 0.2, 0.12, o0 - o1 + 0.2, 'red', -(o0 - o1));
+      for (const sd of [-1, 1]) M.quad('ochre', P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o0 + 0.1), P3(s, apex + 0.05, o0 + 0.1), P3(s, apex + 0.05, o1), P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o1), [sd * f.tangent[0] * 0.7, 0.7, sd * f.tangent[1] * 0.7]);
+    } else slab(b, f, s, y1, w + 0.2, 0.12, o0 - o1 + 0.2, 'ochre', -(o0 - o1));
   }
 }
 

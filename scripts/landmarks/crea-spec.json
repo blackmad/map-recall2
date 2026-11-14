@@ -13,8 +13,8 @@
  },
  "surveyedSource": "Vertex average of the BAG 0363100012164972 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/crea-footprints.json, written by venue-prepare.ts). The Nieuwe Achtergracht front and the white south block are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 38-40 px/m: TMX7316010203-001975_pano_0000_000883, TMX7316010203-001908_pano_0000_004240); roofs and the other walls keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/crea-inventory.json.",
  "materialOverrides": {
-  "brick": "#6f4537",
-  "red": "#84493a",
+  "brick": "#5e4033",
+  "red": "#6a3f33",
   "white": "#e9e7df",
   "stone": "#c4c0b6",
   "concrete": "#b9b6ad",

@@ -103926,15 +103926,16 @@
       },
       "bagYear": 1989,
       "materialOverrides": {
-        "brick": "#bb8c64",
-        "red": "#94604a",
+        "brick": "#6e4c3a",
+        "red": "#5b3a2f",
         "white": "#ebe8df",
         "sandstone": "#d8cfb2",
         "stone": "#8e8c84",
         "glass": "#3f4c55",
         "dark": "#2e3134",
         "frame": "#e6e3da",
-        "slate": "#4f5560"
+        "slate": "#4f5560",
+        "ochre": "#554641"
       },
       "attribution": {
         "title": "Perdu, Kloveniersburgwal 86, Amsterdam: poetry theatre and bookshop in the former Binnengasthuis kitchen building",
@@ -104021,7 +104022,7 @@
         "depthCoverage": 1.558301297226393
       },
       "triangles": 6165,
-      "bytes": 95316,
+      "bytes": 96536,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "crea": {
@@ -104059,8 +104060,8 @@
       },
       "bagYear": 1965,
       "materialOverrides": {
-        "brick": "#6f4537",
-        "red": "#84493a",
+        "brick": "#5e4033",
+        "red": "#6a3f33",
         "white": "#e9e7df",
         "stone": "#c4c0b6",
         "concrete": "#b9b6ad",
@@ -104276,7 +104277,7 @@
         "depthCoverage": 1.5792264146494952
       },
       "triangles": 28434,
-      "bytes": 409684,
+      "bytes": 409688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
