@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Crossings hold their grade (2026-11-14)
+
+User on F1b: "these roads should probably figure out 'I don't dip down'" (Lelylaan slip 7382983 over the Slotervaart). `?bankClimb` (default on): where a way deck dips > 0.3 m below the line between its bank tops, the deck extends up the banks (≤ 30 m, > 4 % climb) and bundled dual carriageways climb as one deck (`wayDecks.ts`); embankment sides slope 1:2 up to 8 m (`surface.ts`); the bridge kit stays on the bridge itself (`groundCell.ts` `kitDeck`); a polygon inside one deck ignores a higher climbed deck it lies outside (`roadSurfaces.ts`). The first trial opened a hole beside the slip because the bundled main carriageway stayed low while `deckLevelHeight` lifted its asphalt to the slip. Crossings dipping > 0.3 m: 28 → 19; > 1 m: 10 → 4. Pins `BANK_DIPS` in bridge-feedback-pins; rail-joins allow-list 722 → 718.
+
+
 ## Café fronts glazed; signature awnings stop at corners (2026-11-14)
 
 This came from feedback 7be6c55a, about café Hendrix on the Bilderdijkkade / De Clercqstraat corner. Hendrix is an OSM `amenity=pub`, so it gets `shopBar`.

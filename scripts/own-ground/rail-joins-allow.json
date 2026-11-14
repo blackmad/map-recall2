@@ -94,18 +94,6 @@
    "reason": "baseline 4.92613,52.33393: road deck -0.42 m over the ballast"
   },
   {
-   "id": "crossing:road:rail:-89796,15980",
-   "reason": "baseline 4.76788,52.38446: road deck -0.37 m over the ballast"
-  },
-  {
-   "id": "crossing:road:rail:-89795,16026",
-   "reason": "baseline 4.76788,52.38450: road deck -0.34 m over the ballast"
-  },
-  {
-   "id": "crossing:road:rail:-89899,16024",
-   "reason": "baseline 4.76773,52.38450: road deck -0.33 m over the ballast"
-  },
-  {
    "id": "crossing:road:subway:16672,-37631",
    "reason": "baseline 4.92453,52.33596: road deck -0.33 m over the ballast"
   },
@@ -216,10 +204,6 @@
   {
    "id": "crossing:road:rail:-50978,40755",
    "reason": "baseline 4.82500,52.40687: road deck -0.30 m over the ballast"
-  },
-  {
-   "id": "crossing:road:rail:-89900,15979",
-   "reason": "baseline 4.76773,52.38446: road deck -0.30 m over the ballast"
   },
   {
    "id": "crossing:road:subway:46177,-44149",
