@@ -473,3 +473,25 @@ test('refreshShellBases: a cell none of whose bases is known is skipped until th
   baked.refreshShellBases({ ms: 4, restart: true });
   assert.ok(asks > stalled, 'restart re-asks');
 });
+
+test('BakedCoarse.setRank (view priority, feedback 748b1a8f): queued cells are fetched in the view\'s order, not nearest the rider', async () => {
+  const h = harness(['0_0', '1_0', '2_0', '3_0', '4_0', '5_0']);
+  const gate: (() => void)[] = [];
+  h.host.fetchShell = key => new Promise(res => { h.fetched.push(key); gate.push(() => res({ key, ...bakedCellArrays(shel(), ['a', 'b', 'c']), gzBytes: 100 })); });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
+  baked.update(centre[0], centre[1], false);
+  // The camera looks at 5_0 and 4_0 (5_0 largest on screen); the rider sits in 0_0.
+  const view: Record<string, number> = { '5_0': -2, '4_0': -1, '3_0': 10, '2_0': 20, '1_0': 30, '0_0': 40 };
+  baked.setRank(key => view[key] ?? 99);
+  baked.plan(new Set(Object.keys(view)));
+  assert.deepEqual(h.fetched, ['5_0', '4_0', '3_0', '2_0'], `BAKED_INFLIGHT (${4}) at once, in view order`);
+  gate.shift()!(); await settle(); await settle();
+  assert.deepEqual(h.fetched.slice(4), ['1_0']);
+  // Withdrawn (the camera re-centred): the plan's own order again (nearest the rider first).
+  baked.setRank(null);
+  const h2 = harness(['0_0', '1_0', '2_0', '3_0', '4_0', '5_0']);
+  const b2 = new BakedCoarse(h2.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
+  b2.update(centre[0], centre[1], false);
+  b2.plan(new Set(Object.keys(view)));
+  assert.equal(h2.fetched[0], '0_0', 'without a rank the cell nearest the rider goes first');
+});

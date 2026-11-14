@@ -39,6 +39,7 @@ import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './
 import { WorldCellClient, assembleTile, readWorldIndex, worldV1Enabled, type TilePart } from './world/worldCells.js';
 import { footprintBox, rideBox, ringCells, ringFollowEnabled, ringFootprintEnabled, ringSignature, worldRingEnabled } from './world/worldRing.js';
 import { isAerialView } from './rendererShared/aerialView.js';
+import { activeViewPriority, tileBox, viewRank } from './engine/viewPriority.js';
 import { RingPacer, arrivalPaceOption } from './engine/arrivalPace.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
@@ -183,6 +184,8 @@ export const HURRIED_STYLE_BUDGET_MS = 24;
 
 /** Half-size of a look-ahead area: enough to touch the next z14 tile (about 1.5 km) a little early. */
 const LOOK_AHEAD_HALF_M = 150;
+/** While the camera looks elsewhere, the z14 tiles this close to the rider are evicted last (view priority). */
+const RIDER_KEEP_M = 300;
 
 /**
  * Resident z14 tiles: 12 on desktop, 9 on touch (2026-10-23). At street level
@@ -586,7 +589,14 @@ export class BuildingTileStreamer {
     // The LoD1 city is the gap-free fallback beneath optional detail. At game
     // zoom the viewport itself covers every required z14 tile; a neighbour
     // ring only multiplies residency during low-pitch clearance adjustments.
-    const plan = planTilesAhead(this.preloadBounds ?? this.bounds(), this.preloadBounds ? [] : this.lookAhead, this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: this.tileBudget });
+    // View priority (engine/viewPriority.ts, the camera panned off the rider): the view's tiles load by their share of
+    // the screen, and the rider's tiles are evicted last, so RE-CENTER finds them resident.
+    const priority = this.preloadBounds ? null : activeViewPriority();
+    const riderTiles = priority && this.riderAt ? this.riderTileKeys(this.riderAt) : null;
+    const plan = planTilesAhead(this.preloadBounds ?? this.bounds(), this.preloadBounds ? [] : this.lookAhead, this.cache.heldKeys, {
+      zoom: this.zoom, margin: 0, budget: this.tileBudget,
+      ...(priority ? { rank: (t: { z: number; x: number; y: number }) => viewRank(tileBox(t.z, t.x, t.y), priority.view), keep: (key: string) => !!riderTiles?.has(key) } : {}),
+    });
     const wantedKeys = new Set(plan.wanted);
 
     let changed = false;
@@ -632,6 +642,25 @@ export class BuildingTileStreamer {
     }
     if (changed) this.scheduleFlush();
     this.pump();
+  }
+
+  /** The z14 tiles within RIDER_KEEP_M of the rider (evicted last while the camera looks elsewhere). */
+  private riderTileKeys(at: [number, number]): Set<string> {
+    return new Set(tilesCovering(boxAround(at, RIDER_KEEP_M), this.zoom, 0).map(tileKey));
+  }
+
+  /**
+   * The view moved under view priority (engine/viewPriority.ts): re-rank the tiles waiting to load and the cells waiting
+   * to be read, without re-planning. Cheap: called by the own engine at most every 150 ms while the camera moves.
+   */
+  reprioritise(): void {
+    if (this.disposed) return;
+    const priority = activeViewPriority();
+    if (priority && this.queue.length > 1) {
+      const ranks = new Map(this.queue.map(t => [t, viewRank(tileBox(t.z, t.x, t.y), priority.view)]));
+      this.queue.sort((a, b) => ranks.get(a)! - ranks.get(b)!);
+    }
+    this.world?.reprioritise(this.riderAt, this.motion.direction);
   }
 
   private pump(): void {

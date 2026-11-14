@@ -92,7 +92,16 @@ export function planTilesAhead(
   bounds: Bounds,
   ahead: readonly Bounds[],
   held: Iterable<string>,
-  options: { zoom?: number; margin?: number; budget?: number } = {}
+  options: {
+    zoom?: number; margin?: number; budget?: number;
+    /**
+     * View priority (engine/viewPriority.ts): the load order of the view's tiles, lower first, in place of the distance
+     * to the view box's centre (which in a pitched view lies far up the screen). Look-ahead tiles still follow.
+     */
+    rank?: (tile: TileId) => number;
+    /** Tiles evicted last (the rider's, while the camera looks elsewhere): the budget still holds. */
+    keep?: (key: string) => boolean;
+  } = {}
 ): TilePlan {
   const zoom = options.zoom ?? BUILDING_TILE_ZOOM;
   const margin = options.margin ?? MARGIN_TILES;
@@ -115,10 +124,13 @@ export function planTilesAhead(
   const [centreLng, centreLat] = centreOf(bounds);
   const centreTile = tilesCovering({ west: centreLng, south: centreLat, east: centreLng, north: centreLat }, zoom)[0];
 
+  const rank = options.rank;
+  const byRank = rank ? new Map(wantedTiles.map(tile => [tileKey(tile), rank(tile)])) : null;
   const load = [
     ...wantedTiles
       .filter(tile => !heldKeys.has(tileKey(tile)))
-      .sort((a, b) => tileDistance(a, centreTile) - tileDistance(b, centreTile)),
+      .sort(byRank ? (a, b) => byRank.get(tileKey(a))! - byRank.get(tileKey(b))! || tileDistance(a, centreTile) - tileDistance(b, centreTile)
+        : (a, b) => tileDistance(a, centreTile) - tileDistance(b, centreTile)),
     ...aheadTiles.filter(tile => !heldKeys.has(tileKey(tile))),
   ];
 
@@ -128,9 +140,9 @@ export function planTilesAhead(
     .filter(key => !wantedKeys.has(key))
     .map(key => {
       const [, x, y] = key.split('/').map(Number);
-      return { key, distance: tileDistance({ z: zoom, x, y }, centreTile) };
+      return { key, distance: tileDistance({ z: zoom, x, y }, centreTile), kept: !!options.keep?.(key) };
     })
-    .sort((a, b) => b.distance - a.distance);
+    .sort((a, b) => Number(a.kept) - Number(b.kept) || b.distance - a.distance);
 
   const overBudget = heldKeys.size + load.length - budget;
   const evict = overBudget > 0 ? evictable.slice(0, Math.min(overBudget, evictable.length)).map(entry => entry.key) : [];

@@ -40,8 +40,11 @@ export function cellCentre(key: string): LngLat {
  * Order cells for reading. `planned` (the cells the planned tiles need, in the plan's priority order) come first in
  * that order; within the plan and after it, `aheadRank` from `rider` along `direction` breaks ties.
  */
-export function rankCells(planned: readonly string[], rider: LngLat | null, direction: readonly [number, number] | null): Map<string, number> {
+export function rankCells(planned: readonly string[], rider: LngLat | null, direction: readonly [number, number] | null, view: ((key: string) => number) | null = null): Map<string, number> {
   const out = new Map<string, number>();
+  // View priority (engine/viewPriority.ts): the camera is looking elsewhere, so the screen ranks (on screen first, by
+  // share; off screen by distance from the view), not the plan's tile order or the rider.
+  if (view) { for (const key of planned) if (!out.has(key)) out.set(key, view(key)); return out; }
   const ahead = (key: string) => rider ? aheadRank(rider, cellCentre(key), direction) : 0;
   planned.forEach((key, i) => { if (!out.has(key)) out.set(key, i * 1e6 + Math.min(ahead(key), 1e6 - 1)); });
   return out;
@@ -69,6 +72,11 @@ export class CellQueue {
     for (const key of ranked.keys()) if (this.done.has(key)) this.done.set(key, this.seq);
     this.stats.maxQueued = Math.max(this.stats.maxQueued, this.wanted.size);
     this.pump();
+  }
+
+  /** Re-rank the queued cells (the view moved); in-flight reads are not affected. */
+  rerank(rank: (key: string) => number): void {
+    for (const key of this.wanted.keys()) this.wanted.set(key, rank(key));
   }
 
   /** A cell read elsewhere (a tile request) counts as resident. */

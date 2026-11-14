@@ -80,6 +80,25 @@ test('planTilesAhead: no areas is exactly planTiles; the tile ahead is wanted, l
   assert.ok(kept.evict.includes('14/8000/5000'));
 });
 
+test('planTilesAhead view priority (feedback 748b1a8f): `rank` orders the view tiles; `keep` tiles are evicted last, the budget still holds', () => {
+  const view = { west: 4.86, south: 52.36, east: 4.92, north: 52.40 };
+  const plain = planTilesAhead(view, [], [], { zoom: 14, margin: 0, budget: 24 });
+  assert.ok(plain.load.length >= 4);
+  // Rank: reverse of the plain order (say the screen's largest tile is the plain plan's last).
+  const order = plain.load.map(tileKey);
+  const ranked = planTilesAhead(view, [], [], { zoom: 14, margin: 0, budget: 24, rank: t => -order.indexOf(tileKey(t)) });
+  assert.deepEqual(ranked.load.map(tileKey), [...order].reverse());
+  assert.deepEqual(ranked.wanted, plain.wanted, 'the same tiles are wanted');
+  // Keep: two held tiles off the view, budget for one more; the far one would go last by distance, keep flips that.
+  const held = ['14/8000/5000', '14/8300/5300'];
+  const free = planTilesAhead(view, [], held, { zoom: 14, margin: 0, budget: order.length + 1 });
+  assert.deepEqual(free.evict, ['14/8000/5000'], 'the furthest goes first');
+  const kept = planTilesAhead(view, [], held, { zoom: 14, margin: 0, budget: order.length + 1, keep: k => k === '14/8000/5000' });
+  assert.deepEqual(kept.evict, ['14/8300/5300'], 'the kept (rider) tile stays');
+  const tight = planTilesAhead(view, [], held, { zoom: 14, margin: 0, budget: order.length, keep: k => k === '14/8000/5000' });
+  assert.deepEqual(tight.evict, ['14/8300/5300', '14/8000/5000'], 'over budget a kept tile still goes, last');
+});
+
 const fracY = (lat: number, n: number) => ((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2) * n;
 const tileTopLat = (y: number, n: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * y) / n))) * 180) / Math.PI;
 
