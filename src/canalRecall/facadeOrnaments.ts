@@ -229,7 +229,7 @@ function rowHeadsTop(c: ExtraContext): number {
     const d = w.dressing;
     const rise = d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
       : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
-      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : -Infinity;
+      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : d === 'arch-ring' || w.shape === 'round' ? (w.x1 - w.x0) / 2 + 0.22 : -Infinity;
     top = Math.max(top, w.z1 + rise);
   }
   return top;
@@ -275,7 +275,71 @@ function tympanumHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
   s.strip(c.f, m - 0.07, m + 0.07, T.out + 0.02, arc(0.5) - 0.05, arc(0.5) + T.ring + 0.04, WHITE);
 }
 
+/** A round-arched head (`arch-ring`, Weteringschans 171218 top storey): the glazing runs up into a half-round over the
+ *  window's head, under a raised white ring with a keystone. Faceted in ARCH_FACETS. */
+const ARCH_FACETS = 6, ARCH_GLASS = '#3d4955';
+function archRingHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
+  const r = (w.x1 - w.x0) / 2, m = (w.x0 + w.x1) / 2, z = w.z1, ring = 0.14;
+  if (z + r + ring + 0.04 > c.top) return;
+  const at = (t: number, rr: number) => [m - Math.cos(Math.PI * t) * rr, z + Math.sin(Math.PI * t) * rr] as [number, number];
+  for (let i = 0; i < ARCH_FACETS; i++) {
+    const t0 = i / ARCH_FACETS, t1 = (i + 1) / ARCH_FACETS;
+    s.wallQuad(c.f, [[at(t0, r)[0], z], [at(t1, r)[0], z], at(t1, r), at(t0, r)], 0.015, ARCH_GLASS);
+    s.wallQuad(c.f, [at(t0, r), at(t1, r), at(t1, r + ring), at(t0, r + ring)], 0.05, WHITE);
+  }
+  s.strip(c.f, m - 0.08, m + 0.08, 0.07, z + r - 0.04, z + r + ring + 0.08, WHITE);
+}
+
+/** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
+const RUSTIC = { course: 0.32, joint: 0.035, stone: '#b7ab95', jointHex: '#8a806f', out: 0.04 } as const;
+const BALCONY = { depth: 0.55, slab: 0.16, rail: 0.1, height: 0.95, post: 0.07, pitch: 0.16, side: 0.3 } as const;
+const PORCH = { pier: 0.22, out: 0.32, beam: 0.24, rise: 0.55 } as const;
+
 export const ROW_COMPONENTS: readonly WallComponent[] = [
+  { id: 'row-rustication', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'plinth-face', build: (c, s) => {
+    // A rusticated stone souterrain (Weteringschans 171218): stone courses with sunk joints over the ground cell,
+    // stopping at its windows and door.
+    if (!c.groundLevel) return;
+    const z0 = c.base, z1 = c.base + c.layout.groundM;
+    const holes = [...windowSpans(c, -1).map(w => [w.x - w.hw - 0.05, w.x + w.hw + 0.05, w.z0, w.z1] as const), ...(doorSpan(c) ? [(d => [d.x - d.hw - 0.05, d.x + d.hw + 0.05, d.z0, d.z1] as const)(doorSpan(c)!)] : [])];
+    for (let z = z0; z < z1 - 0.05; z += RUSTIC.course) {
+      const za = z, zb = Math.min(z1, z + RUSTIC.course - RUSTIC.joint);
+      const cut = holes.filter(h => h[2] < zb && h[3] > za).sort((a, b) => a[0] - b[0]);
+      let x = 0;
+      for (const h of [...cut, [c.f.len, c.f.len, 0, 0] as const]) {
+        if (h[0] - x > 0.1) {
+          // The sunk joint behind each course, then the stone proud of it.
+          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out * 0.4, za, Math.min(z1, za + RUSTIC.course), RUSTIC.jointHex);
+          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out, za, zb, RUSTIC.stone);
+        }
+        x = Math.max(x, h[1]);
+      }
+    }
+  } },
+  { id: 'row-balcony', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'balcony', build: (c, s) => {
+    // A stone balustrade balcony before the centre window of the first upper storey (Weteringschans 169016, 171218).
+    const ws = rowWindowsOf(c).filter(w => w.storey === 1);
+    if (!ws.length) return;
+    const mid = c.f.len / 2, w = ws.reduce((a, b) => Math.abs((b.x0 + b.x1) / 2 - mid) < Math.abs((a.x0 + a.x1) / 2 - mid) ? b : a);
+    const x0 = w.x0 - BALCONY.side, x1 = w.x1 + BALCONY.side, z = w.z0 - 0.05;
+    s.box(c.f, x0, x1, 0, BALCONY.depth, z - BALCONY.slab, z, STONE, true);
+    s.box(c.f, x0 + 0.1, x1 - 0.1, 0, 0.12, z - BALCONY.slab - 0.22, z - BALCONY.slab, STONE, true);
+    const top = z + BALCONY.height, n = Math.max(3, Math.round((x1 - x0) / BALCONY.pitch));
+    for (let i = 0; i <= n; i++) { const x = x0 + 0.04 + (x1 - x0 - 0.08) * i / n; s.box(c.f, x - BALCONY.post / 2, x + BALCONY.post / 2, BALCONY.depth - 0.1, BALCONY.depth - 0.03, z, top - BALCONY.rail, WHITE); }
+    s.box(c.f, x0, x1, BALCONY.depth - 0.13, BALCONY.depth, top - BALCONY.rail, top, WHITE);
+    for (const xe of [x0, x1 - 0.12]) s.box(c.f, xe, xe + 0.12, 0, BALCONY.depth, z, top, WHITE);
+  } },
+  { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
+    // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.
+    const d = doorSpan(c);
+    if (!d || !c.groundLevel) return;
+    const l = d.x - d.hw - PORCH.pier, r = d.x + d.hw + PORCH.pier, zt = Math.min(c.top - 0.6, d.z1 + 0.12);
+    for (const x of [l, r - PORCH.pier]) s.box(c.f, x, x + PORCH.pier, 0, PORCH.out, d.z0, zt, WHITE);
+    s.box(c.f, l - 0.06, r + 0.06, 0, PORCH.out + 0.04, zt, zt + PORCH.beam, WHITE, true);
+    const zb = zt + PORCH.beam, apex = zb + PORCH.rise;
+    s.wallQuad(c.f, [[l - 0.06, zb], [r + 0.06, zb], [d.x + 0.001, apex], [d.x, apex]], PORCH.out + 0.02, WHITE);
+    s.wallQuad(c.f, [[l + 0.12, zb + 0.06], [r - 0.12, zb + 0.06], [d.x + 0.001, apex - 0.14], [d.x, apex - 0.14]], PORCH.out + 0.035, STONE);
+  } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
     // `simple` keeps the corona and cyma alone.
@@ -285,7 +349,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     if (!simple) {
       // The frieze sits on the top storey's head dressing, never over it (Kinkerstraat 104: the block course runs right
       // under the frieze); with no room left above the heads the frieze goes and the consoles stand on the course.
-      const z0 = Math.max(t - C.h, rowHeadsTop(c) + 0.04), frieze = Math.min(C.frieze, t - 0.4 - z0);
+      const z0 = Math.max(t - C.h, rowHeadsTop(c) + 0.04, Math.max(-Infinity, ...rowWindowsOf(c).map(w => w.z1)) + 0.12), frieze = Math.min(C.frieze, t - 0.4 - z0);
       if (frieze > 0.12) s.strip(c.f, 0, c.f.len, 0.03, z0, z0 + frieze, CREAM);
       const n = Math.max(2, Math.round(c.f.len / C.pitch));
       // Consoles keep at least CONSOLE_MIN under the corona: on a front whose top heads reach the cornice
@@ -304,6 +368,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     for (const k of storeys) blockCourse(c, s, ws.filter(w => w.storey === k && w.dressing === 'block-course'));
     for (const w of ws) {
       if (w.dressing === 'keystone' || w.dressing === 'jack-blocks') keystoneHead(c, s, w);
+      else if (w.dressing === 'arch-ring' || w.shape === 'round') archRingHead(c, s, w);
       else if (w.dressing === 'segmental-tympanum' || (w.shape === 'segmental' && w.dressing !== 'none')) tympanumHead(c, s, w);
       else if (w.dressing === 'stone-lintel' || w.dressing === 'dentil-lintel') s.strip(c.f, w.x0 - 0.08, w.x1 + 0.08, 0.05, w.z1 + 0.02, Math.min(c.top, w.z1 + 0.2), WHITE);
     }

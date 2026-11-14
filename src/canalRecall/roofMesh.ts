@@ -592,6 +592,8 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
  * standing proud of the face, a bed course at the head and a raking cornice over the cap (Kinkerstraat 86-110,
  * Weteringschans 169016); gabled: the stock cap only; plain: a white head board. A hoist beam projects from the apex.
  */
+/** The hoist beam's dark timber. */
+const HOIST_HEX = '#3b2f27';
 function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z: number) => V3, n: V3, b0: number, b1: number, zb: number, zt: number, ph: number, trim: string): void {
   const f = d.pf + 0.02, o = 0.1, box = (a0: number, a1: number, c0: number, c1: number, z0: number, z1: number) => {
     // A small closed box in the dormer frame: a along the face normal (a0 nearer the roof), c across, z up.
@@ -611,7 +613,16 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
     s.quad(P(f + o, c0, z0), P(f + o, c1, z1), P(f + o, c1, z1 + 0.12), P(f + o, c0, z0 + 0.12), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, trim);
   }
   s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, trim);
-  if (d.hoist) box(d.pf - 0.2, f + 0.7, c - 0.08, c + 0.08, apex - 0.42, apex - 0.26);
+  // The hoist beam (hijsbalk): dark timber out of the pediment under its apex, a hook block hanging off its end.
+  if (d.hoist) {
+    const beam = (a0: number, a1: number, c0: number, c1: number, z0: number, z1: number) => {
+      s.quad(P(a1, c0, z0), P(a1, c1, z0), P(a1, c1, z1), P(a1, c0, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, HOIST_HEX);
+      s.quad(P(a0, c0, z1), P(a1, c0, z1), P(a1, c1, z1), P(a0, c1, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], HOIST_HEX);
+      for (const [cc, sg] of [[c0, -1], [c1, 1]] as const) s.quad(P(a0, cc, z0), P(a1, cc, z0), P(a1, cc, z1), P(a0, cc, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', d.axis === 'v' ? [sg, 0, 0] : [0, sg, 0], HOIST_HEX);
+    };
+    beam(d.pf - 0.2, f + 0.9, c - 0.11, c + 0.11, apex - 0.5, apex - 0.28);
+    beam(f + 0.72, f + 0.86, c - 0.05, c + 0.05, apex - 0.85, apex - 0.5);
+  }
   // The finial on the pediment's apex (Kinkerstraat 98-104 dormers).
   box(d.pf - 0.05, f + o, c - 0.05, c + 0.05, apex + 0.08, apex + 0.38);
 }
@@ -691,7 +702,7 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
     if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
   }
   if (!plan.dormers) return;
-  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.75); return; }
+  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.3); return; }
   // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
   const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
   const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
@@ -1321,7 +1332,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: hash01(`${rr.series}:tone2`), seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}) };
+      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
@@ -1334,6 +1345,9 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
 }
 
 /** House rows: a feature's `rowRoof` (houseLine/rowFront.ts), validated; null when absent or malformed. */
+/** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
+ *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
+export const ROW_SLATE_TONE = 0.5;
 export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']> } | null {
   if (!v || typeof v !== 'object') return null;
   const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown } };

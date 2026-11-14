@@ -11,7 +11,7 @@
  *
  * Nothing here is rolled: a field the series does not state is left out and the renderer draws no component for it.
  */
-import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
+import { frontDesign, type RowDesign, type RowFront, type RowHeads, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords } from '../houseSpec/row/emit.ts';
 import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
@@ -21,20 +21,26 @@ const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-an
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
 /** One pand's series draw from its fronts (street order) and their designs. */
-export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null): RowSeriesDraw {
+export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = ''): RowSeriesDraw {
   const d0 = designs[0];
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
   let mansard: RowDesign['roofStorey']['value'] | null = null;
+  // Over a souterrain the bel-etage (D's ground, storey 0) is the renderer's first upper row: stated storeys shift by one.
+  const shift = fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? 1 : 0;
   fronts.forEach((f, i) => {
-    const [a0, a1] = span(f), d = designs[i], h = d.heads.value;
-    if (h && h.dressing !== 'none') heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: [...h.storeys] } : {}) });
+    const [a0, a1] = span(f), d = designs[i];
+    // A front may state several dressings by storey (171218: jack-blocks below, arch rings on the top storey).
+    const hs = ([] as RowHeads[]).concat((d.heads.value as RowHeads | RowHeads[] | null) ?? []);
+    for (const h of hs) if (h && h.dressing !== 'none') heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
     const n = Math.max(0, Math.round(rs.dormersPerFront));
     for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
   });
+  // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
+  heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));
   const extras = (d0.extras.value ?? []).filter(x => !ROW_FRONT_EXTRAS.includes(x));
   const m = mansard as RowDesign['roofStorey']['value'] | null;
   return {
@@ -44,14 +50,17 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
-    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null },
+    // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
+    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
   };
 }
 
-/** The series' year: its earliest member's build year, so every member draws one period. */
+/** The look's year: the earliest build year of every member whose series states the same window kind (the look's
+ *  seed), so one window preset is one period (Kinkerstraat 90 and 86-88 picked another preset on their own years). */
 function seriesYear(row: RowRecord, seriesId: string): number | null {
-  const s = row.series.find(x => x.id === seriesId);
-  const years = row.members.filter(m => m.built && m.fronts.some(f => s?.fronts.includes(f))).map(m => m.built!);
+  const kind = row.series.find(x => x.id === seriesId)?.design.windows.value;
+  const same = new Set(row.series.filter(x => x.design.windows.value === kind).flatMap(x => x.fronts));
+  const years = row.members.filter(m => m.built && m.fronts.some(f => same.has(f))).map(m => m.built!);
   return years.length ? Math.min(...years) : null;
 }
 
@@ -66,7 +75,7 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const designs = fronts.map(f => frontDesign(row, f));
     const walls = designs.map(d => d.wall.value);
     const out: RowFrontRecord = {
-      ...rec, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId)),
+      ...rec, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
       sources: { ...rec.sources, series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };

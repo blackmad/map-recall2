@@ -11,7 +11,8 @@ const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.t
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
 const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE } = await import('./rowFront.ts');
-const { roofPlanForFeature, rowRoofOf } = await import('../roofMesh.ts');
+const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE } = await import('../roofMesh.ts');
+const { specCellCount } = await import('../streetFacadeRendering.ts');
 
 const defs = loadRowDefs();
 const recs = (id: string) => rowFrontsWithSeries(solveRow(loadRow(defs[id], '2026-11-14').input));
@@ -46,8 +47,9 @@ test('Kinkerstraat 106–108 (236027) draws one pediment dormer per front, centr
 
 test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left front, tympana on the right', () => {
   const s = rec(K, '0363100012236213').series!;
-  assert.deepEqual(s.heads!.map(h => [h.a0, h.a1, h.dressing]), [[0, 0.5, 'keystone'], [0.5, 1, 'segmental-tympanum']]);
-  assert.deepEqual(s.heads![1].storeys, [1, 2]);
+  const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0);
+  assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing]), [[0, 0.5, 'keystone'], [0.5, 1, 'segmental-tympanum']]);
+  assert.deepEqual(hs[1].storeys, [1, 2]);
 });
 
 test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dormers', () => {
@@ -103,12 +105,33 @@ test('the souterrain series draws one more storey with a souterrain ground cell 
   assert.ok(Number(sr.groundM) > 1.5 && Number(sr.groundM) < 3, `groundM ${sr.groundM}`);
 });
 
-test('mansard rise: stated wins, then 3DBAG over the line within range, else the period default', () => {
-  assert.equal(mansardRise(2.7, 20, 14), 2.7);
-  assert.equal(mansardRise(undefined, 17.1, 14.18), 2.92);
-  assert.equal(mansardRise(undefined, 30, 14), MANSARD_RISE.max);
-  assert.equal(mansardRise(undefined, 15, 14), MANSARD_RISE.period);
-  assert.equal(mansardRise(undefined, undefined, 14), MANSARD_RISE.period);
+test('mansard rise: stated wins, else one low series default (no per-pand 3DBAG rise: no saw-tooth)', () => {
+  assert.equal(mansardRise(2.7), 2.7);
+  assert.equal(mansardRise(undefined), MANSARD_RISE.period);
+  assert.equal(MANSARD_RISE.period, 2.2);
+});
+
+test('the Kinkerstraat mansards join across party walls; only the row ends and 86-88 (no mansard) keep hips', () => {
+  const j = (id: string) => rec(K, id).series!.roofStorey!.joins;
+  assert.equal(j('0363100012165799')?.left, undefined, '110 is the row end');
+  assert.equal(j('0363100012165799')?.right, true);
+  for (const id of ['0363100012236027', '0363100012159635', '0363100012152925', '0363100012160809', '0363100012158180', '0363100012156028', '0363100012236213'])
+    assert.deepEqual(j(id), { left: true, right: true }, id);
+  assert.deepEqual(j('0363100012155794'), { left: true }, '90 meets 86-88, which has no mansard');
+  assert.equal(rec(K, '0363100012233580').series!.roofStorey!.joins, undefined);
+});
+
+test('one window look per series: bays per front, the series year and line, whatever the pand', () => {
+  const looks = new Map<string, Set<string>>();
+  for (const r of K) (looks.get(r.series!.id) ?? looks.set(r.series!.id, new Set()).get(r.series!.id)!).add(JSON.stringify(r.series!.look));
+  for (const [sid, l] of looks) assert.equal(l.size, 1, `${sid}: one look`);
+  assert.equal(rec(K, '0363100012236027').series!.look!.bays, 3, 'a two-front pand still picks the 3-bay preset');
+});
+
+test('a row series front draws its stated bay count in narrow fronts (Kinkerstraat 102, 90: 3 axes in 4.2-4.3 m)', () => {
+  assert.equal(specCellCount(3, 1, 4.2, 3.3, true), 3);
+  assert.equal(specCellCount(6, 2, 8.8, 3.3, true), 3);
+  assert.ok(specCellCount(3, 1, 4.2, 3.3) < 3, 'without the row flag the column cap holds (byte-identical)');
 });
 
 test('rowRoofOf refuses anything that is not a stated row roof', () => {
@@ -120,4 +143,20 @@ test('rowRoofOf refuses anything that is not a stated row roof', () => {
 test('a pand without a record is returned untouched with the flag on (byte-identical upstream of the mesher)', () => {
   const f = feature('0363100012999999', 15, { roofShape: 'gable' });
   assert.equal(withFlag(K, () => withRowFront(f)), f);
+});
+
+test('a front may state several head dressings by storey; over a souterrain they shift one row up, storey-specific first', () => {
+  const row = solveRow(loadRow(defs['weteringschans-168096-171218'], '2026-11-14').input);
+  const f = row.fronts.find(x => x.pandId === '0363100012171218')!;
+  f.overrides = { ...f.overrides, heads: { value: [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1] }, { shape: 'round', dressing: 'arch-ring', storeys: [2] }] as never, source: 'single-read', ref: 'test' } };
+  const s = rowFrontsWithSeries(row).find(r => r.pandId === f.pandId)!.series!;
+  assert.deepEqual(s.heads!.map(h => [h.dressing, h.storeys]), [['stone-lintel', [2]], ['arch-ring', [3]]]);
+});
+
+test('every row mansard is the one dark slate, never a per-pand tone', () => {
+  const plan = (id: string) => roofPlanForFeature(withFlag(W, () => withRowFront(feature(id, 17, { specRecipe: { storeys: 3 } }))) as never)!;
+  assert.equal(plan('0363100012169016').tone, ROW_SLATE_TONE);
+  assert.equal(plan('0363100012171218').tone, ROW_SLATE_TONE);
+  assert.equal(plan('0363100012169016').rowDormers?.[0].hoist, true, '169016 carries the hoist');
+  assert.equal(plan('0363100012171218').rowDormers?.[0].hoist, undefined, '171218 has none');
 });

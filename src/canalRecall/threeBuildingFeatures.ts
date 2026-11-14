@@ -155,11 +155,11 @@ const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (spec
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
 /** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
-function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null } | null {
+function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean } | null {
   const v = p.rowLook as { bays?: unknown; year?: unknown; heightM?: unknown } | undefined;
   if (!v || typeof v !== 'object' || !(Number.isInteger(v.bays) && (v.bays as number) > 0)) return null;
   const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x) ? x : null;
-  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM) };
+  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM), ...(typeof (v as { seed?: unknown }).seed === 'string' ? { seed: (v as { seed: string }).seed } : {}), ...(typeof (v as { whiteFrames?: unknown }).whiteFrames === 'boolean' ? { whiteFrames: (v as { whiteFrames: boolean }).whiteFrames } : {}) };
 }
 function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
@@ -171,8 +171,9 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
   // House rows (lane R): a series member's window look is the series' (its preset seeded by the series id); a per-pand
   // spec look (a D1 reading of this building alone) does not move it.
   if (typeof p.rowFront === 'string' && typeof p.rowSeries === 'string') {
-    const windowH = Number((r as { windowH?: number } | undefined)?.windowH), perFront = rowLookOf(p)?.bays;
-    return { pale: false, ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+    const windowH = Number((r as { windowH?: number } | undefined)?.windowH), rl = rowLookOf(p), perFront = rl?.bays;
+    // The series' white joinery is the light-sash trait (dark: false); unstated keeps the preset's own.
+    return { pale: false, ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
   }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
@@ -217,7 +218,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // The series' look (rowLook): its year, cornice line and bays per front, and no positional pool draw.
     const rowLook = rowLookOf(p);
     const lookYear = rowLook ? rowLook.year ?? year : year;
-    const bay = bayLookFor(typeof p.rowSeries === 'string' ? p.rowSeries : id, lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
+    const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : id), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
       lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
       specLookOf(p), rowLook ? undefined : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
@@ -325,7 +326,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
       // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
       if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
-      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+      // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp.
+      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' && !plan.rowDormers ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
       if(plan.repeatedTerrace){
         // One observed material family also owns exposed returns and roof-side closures.

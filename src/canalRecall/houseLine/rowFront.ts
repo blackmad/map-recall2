@@ -95,7 +95,7 @@ export interface RowSeriesDraw {
   souterrain?: boolean;
   /** The series' one window look (threeBuildingFeatures bayLookFor): window axes per house front, the series' year and
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
-  look?: { bays: number; year?: number | null; heightM?: number | null };
+  look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean };
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
