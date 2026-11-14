@@ -12,7 +12,7 @@
 // the water mask then treat it as any measured deck.
 
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
-import type { Vec2 } from './surface.js';
+import { forgetLocateIndex, type Vec2 } from './surface.js';
 import type { OpeningDeck } from './water.js';
 
 export const WAY_DECK_STEP_M = 0.5, WAY_DECK_MIN_WATER_M = 2, ABUTMENT_M = 1, APPROACH_M = 6;
@@ -390,6 +390,7 @@ export function setDeckSides(p: DeckProfile, sides: readonly [number, number]): 
   }
   delete p.sides;
   p.bbox = [bx0, by0, bx1, by1];
+  forgetLocateIndex(p);
 }
 
 /**

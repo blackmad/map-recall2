@@ -123,3 +123,39 @@ test('narrowDryDeck: a dry way deck keeps a core half-width so the survey polygo
   narrowDryDeck(narrow);
   assert.ok(narrow.halfWidth.every(h => h === 1), 'a narrower way is left alone');
 });
+
+test('locate on a long profile (the block index) returns exactly what the full scan does', () => {
+  // The pre-index loop, verbatim: the first segment at the minimum squared distance.
+  const scan = (p: DeckSurface['profile'], x: number, y: number) => {
+    let best = Infinity, bi = 0, bt = 0;
+    for (let i = 0; i + 1 < p.x.length; i++) {
+      const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+      const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+      if (d2 < best) { best = d2; bi = i; bt = t; }
+    }
+    const n = p.x.length, lerp = (a: Float64Array) => a[bi] + (a[Math.min(n - 1, bi + 1)] - a[bi]) * bt;
+    return { s: lerp(p.s), z: lerp(p.h), lateral: Math.sqrt(best) };
+  };
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  // A 3 km viaduct that winds back on itself (equidistant segments: ties), with repeated stations (zero-length segments)
+  // and a straight run (exact ties at its vertices), plus a short profile under the index threshold.
+  for (const n of [4660, 1000, 129, 60]) {
+    const x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(4);
+    for (let i = 0; i < n; i++) {
+      const a = i * 0.004;
+      x[i] = i < 300 ? i * 0.5 - 4000 : 600 * Math.cos(a) - 3000; y[i] = i < 300 ? 3000 : 400 * Math.sin(2 * a) + 3000;
+      if (i % 53 === 1 && i > 0) { x[i] = x[i - 1]; y[i] = y[i - 1]; }
+      s[i] = i; h[i] = rnd() * 5;
+    }
+    const p = { id: 'L', name: 'long', family: 'dry-way-deck', x, y, s, h, halfWidth: hw, water: null, deck: [0, n - 1], bbox: [-5000, 2000, -2000, 4000] } as DeckSurface['profile'];
+    const d: DeckSurface = { profile: p, z: h, ends: [0, 0], span: [-1, n], ease: [2.5, 2.5] };
+    const pts: [number, number][] = [[NaN, 3000], [Infinity, 0], [-3000, 3000], [x[150], y[150] + 2], [x[150] + 0.25, 2990], [x[7], y[7]]];
+    for (let k = 0; k < 4000; k++) pts.push(k % 2 ? [-3700 + rnd() * 1400, 2500 + rnd() * 1000] : [x[k % n] + (rnd() - 0.5) * 20, y[k % n] + (rnd() - 0.5) * 20]);
+    for (const [px, py] of pts) {
+      const a = GroundSurface.locate(d, px, py), b = scan(p, px, py);
+      assert.ok(Object.is(a.s, b.s) && Object.is(a.z, b.z) && Object.is(a.lateral, b.lateral), `n ${n} at ${px},${py}: ${a.s}/${b.s} ${a.lateral}/${b.lateral}`);
+    }
+  }
+});

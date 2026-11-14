@@ -14,7 +14,7 @@
 // neither the on-street test nor the spans). The spots' poses are inferred from the HUD street names (the feedback
 // records carry no pose).
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, layersAt } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, layersAt, type BuiltCell, type CellInput } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { readExtract } from './probe-rails.ts';
 import { scanCell } from './probe-rails-class.ts';
 
@@ -67,6 +67,23 @@ export async function tearMetres(store: GroundStore, spot: RailStreetSpot): Prom
 
 /** Tear metres and the deck spans (railSpans.ts) whose street crossing lies within the spot's radius. */
 export const BED_RADIUS_M = 12;
+/**
+ * Each store's cells, loaded and built once (lane rail-street-speed 2026-11-14): the Sloterdijk spots share their cells,
+ * and a built cell does not depend on what its store prepared before it (GroundStore `deterministic`), so a rebuild
+ * for the next spot or a `ballastAt` point only repeated the work. The checks only read the built cell.
+ */
+const cellCache = new WeakMap<GroundStore, Map<string, { input: Promise<CellInput>; built?: BuiltCell }>>();
+function cachedCell(store: GroundStore, key: string): { input: Promise<CellInput>; built?: BuiltCell } {
+  let cells = cellCache.get(store);
+  if (!cells) cellCache.set(store, cells = new Map());
+  let hit = cells.get(key);
+  if (!hit) cells.set(key, hit = { input: store.cellInput(key, 0) });
+  return hit;
+}
+async function cellBuilt(store: GroundStore, key: string): Promise<{ input: CellInput; built: BuiltCell }> {
+  const hit = cachedCell(store, key), input = await hit.input;
+  return { input, built: hit.built ??= buildCell(input) };
+}
 export async function measureSpot(store: GroundStore, spot: RailStreetSpot): Promise<{ metres: number; spans: number; bedOver: number; deckOver: number; ballastMiss: number }> {
   const [x, y] = toLocal(...spot.at), keys = new Set<string>();
   for (let dx = -spot.radiusM; dx <= spot.radiusM; dx += 50) for (let dy = -spot.radiusM; dy <= spot.radiusM; dy += 50) keys.add(store.cellAt(x + dx, y + dy));
@@ -74,9 +91,9 @@ export async function measureSpot(store: GroundStore, spot: RailStreetSpot): Pro
   let metres = 0, spans = 0, bedOver = -Infinity, deckOver = 0;
   for (const k of keys) {
     if (!store.covers(k)) continue;
-    const input = await store.cellInput(k, 0);
+    const input = await cachedCell(store, k).input;
     if (!input.rails?.length) continue;
-    const built = buildCell(input);
+    const { built } = await cellBuilt(store, k);
     spans += (built.stats.rails?.spanList ?? []).filter(sp => Math.hypot(sp.at[0] - x, sp.at[1] - y) <= spot.radiusM).length;
     // Track samples every metre: the bed's top over the land (bedOverM), a road deck 3 m over the ballast (deckOverTrack).
     if (spot.bedOverM !== undefined || spot.deckOverTrack !== undefined) for (const w of input.rails) for (let i = 0; i + 1 < w.points.length; i++) {
@@ -96,7 +113,7 @@ export async function measureSpot(store: GroundStore, spot: RailStreetSpot): Pro
   }
   let ballastMiss = 0;
   for (const at of spot.ballastAt ?? []) {
-    const [px, py] = toLocal(...at), top = layersAt(buildCell(await store.cellInput(store.cellAt(px, py), 0)), px, py).top;
+    const [px, py] = toLocal(...at), top = layersAt((await cellBuilt(store, store.cellAt(px, py))).built, px, py).top;
     if (top !== 'ballast' && top !== 'track') ballastMiss++;
   }
   return { metres, spans, bedOver: +bedOver.toFixed(2), deckOver, ballastMiss };
