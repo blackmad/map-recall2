@@ -80573,5 +80573,209 @@
     ]
    ]
   }
+ },
+ {
+  "id": "skatecafe",
+  "name": "Skatecafe",
+  "landmarkId": "skatecafe",
+  "modelUrl": "./models/skatecafe.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012122913"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.9254866236280215,
+    52.38539088439136
+   ],
+   "headingDegrees": 32.32086674241026,
+   "lengthMetres": 40.5,
+   "widthMetres": 12.45
+  },
+  "surveyed": {
+   "anchor": [
+    4.92552013,
+    52.38539981
+   ],
+   "northOffsetDegrees": 0,
+   "source": "BAG 0363100012122913 ring (PDOK BAG WFS, CC0) in native east/south metres from its vertex average above the 3DBAG ground 0.88 m NAP (scripts/landmarks/skatecafe-footprints.json, noord-hamerkanaal-prepare.ts); levels from 3DBAG LoD2.2 (CC BY 4.0), the saw-tooth crown, openings and the chalet front from rectified Gemeente Amsterdam panoramas (CC BY 4.0) of 2019-2024."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+   "brick": "#9a6e5c",
+   "slate": "#4f5357",
+   "glass": "#5f7f8a",
+   "dark": "#35322f",
+   "white": "#ecebe6",
+   "blue": "#2f7fc0",
+   "gold": "#e2d88a",
+   "green": "#4f6b3a",
+   "concrete": "#c9c4b8",
+   "red": "#a8402f",
+   "bronze": "#4a3a2e",
+   "pink": "#35322f",
+   "ochre": "#ecebe6"
+  },
+  "attribution": {
+   "title": "Skatecafe",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9789622796",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated tag pieces, not copied; no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.92572264,
+      52.38551491
+     ],
+     [
+      4.92556855,
+      52.38557451
+     ],
+     [
+      4.92542298,
+      52.38543411
+     ],
+     [
+      4.92546373,
+      52.38541834
+     ],
+     [
+      4.92529048,
+      52.38525144
+     ],
+     [
+      4.92540472,
+      52.38520725
+     ],
+     [
+      4.92557494,
+      52.38537247
+     ],
+     [
+      4.9255976,
+      52.38539433
+     ],
+     [
+      4.92563553,
+      52.3854309
+     ],
+     [
+      4.92572264,
+      52.38551491
+     ]
+    ]
+   ]
+  },
+  "galleryView": {
+   "theta": 0.7,
+   "phi": 1.15
+  },
+  "bagYear": 1917
+ },
+ {
+  "id": "garage-noord",
+  "name": "Garage Noord",
+  "landmarkId": "garage-noord",
+  "modelUrl": "./models/garage-noord.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012079768"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.925684005,
+    52.38558175
+   ],
+   "headingDegrees": 122.36320703513019,
+   "lengthMetres": 12.4,
+   "widthMetres": 9.76
+  },
+  "surveyed": {
+   "anchor": [
+    4.92570872,
+    52.38557089
+   ],
+   "northOffsetDegrees": 0,
+   "source": "BAG 0363100012079768 ring (PDOK BAG WFS, CC0) in native east/south metres from its vertex average above the 3DBAG ground 0.98 m NAP (scripts/landmarks/garage-noord-footprints.json, noord-hamerkanaal-prepare.ts); roof pieces and levels from 3DBAG LoD2.2 (CC BY 4.0); the false gable, emblem, glasshouse and lamp masts from rectified Gemeente Amsterdam panoramas (CC BY 4.0) of 2016-2025 and the glasshouse plan from the PDOK HR orthophoto (CC BY 4.0)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+   "brick": "#8f665a",
+   "slate": "#4a4e52",
+   "glass": "#6f8a92",
+   "dark": "#2f2d2b",
+   "blue": "#3b8a9a",
+   "green": "#86b596",
+   "red": "#b03a2e",
+   "gold": "#d9b84c",
+   "ochre": "#ece6d6",
+   "bronze": "#6e4a36",
+   "concrete": "#a9a7a2"
+  },
+  "attribution": {
+   "title": "Garage Noord",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/5891849386",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free geometry on the BAG footprint: brick shed with the 3DBAG pitched roof, the teal corrugated false gable with the Sichuan Territory emblem (lettering drawn with the kit's pixel glyphs, the Chinese characters as generated stroke tiles, not copied), the mint-framed Venlo glasshouse and its lower glazed front room, and the two rust sunburst lamp masts, laid out from the municipal panoramas and orthophoto; colours measured on them; no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.92564537,
+      52.38564859
+     ],
+     [
+      4.92556855,
+      52.38557451
+     ],
+     [
+      4.92572264,
+      52.38551491
+     ],
+     [
+      4.92573941,
+      52.38553108
+     ],
+     [
+      4.9257771,
+      52.38556744
+     ],
+     [
+      4.92579928,
+      52.38558882
+     ]
+    ]
+   ]
+  },
+  "detachedStructures": [
+   {
+    "box": [
+     -3.6,
+     -7.1,
+     24.0,
+     22.0
+    ],
+    "evidence": "The Sichuan Territory restaurant glasshouse on the yard in front of the SE wall (Venlo block and lower glazed front room, s -3.8..11.9, out to 12.5 m) and the two sunburst lamp masts before it: Gemeente Amsterdam panoramas recording_2025-09-04_07-46-10_00631 and the 2024-10-22 recording (CC BY 4.0), plan from the PDOK HR orthophoto."
+   }
+  ],
+  "partyWallBearings": [
+   213
+  ],
+  "galleryView": {
+   "theta": 0.7,
+   "phi": 1.15
+  },
+  "bagYear": 1917
  }
 ]
