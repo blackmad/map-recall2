@@ -20,11 +20,12 @@ const W = 1440, H = 900;
 
 /** Acceptance poses: where the terraces are (target) and, optionally, the panorama to use. */
 export const TERRACE_POSES: { key: string; label: string; target: [number, number]; lookDownDeg?: number; pano?: string; minM?: number; maxM?: number }[] = [
-  { key: 'leidseplein', label: 'Leidseplein (square)', target: [4.88268, 52.36418] },
-  { key: 'rembrandtplein', label: 'Rembrandtplein (square)', target: [4.89668, 52.36622] },
+  // Targets are the placed units' weighted centre or the biggest terrace of each cluster (data/terraces/terraces-v1).
+  { key: 'leidseplein', label: 'Leidseplein (square)', target: [4.88263, 52.36457] },
+  { key: 'rembrandtplein', label: 'Rembrandtplein north side (square)', target: [4.89711, 52.36638] },
   { key: 'prinsengracht', label: 'Prinsengracht 114, canal-side café row', target: [4.88433, 52.37633] },
-  { key: 'gerard-douplein', label: 'Gerard Douplein, De Pijp', target: [4.89300, 52.35550] },
-  { key: 'brouwersgracht-corner', label: 'Café Tabac / Thijssen, Brouwersgracht corner (brown café)', target: [4.88820, 52.38030] },
+  { key: 'gerard-douplein', label: 'Gerard Douplein, De Pijp', target: [4.89306, 52.35583], minM: 8 },
+  { key: 'smalle-corner', label: "Café 't Smalle, Egelantiersgracht corner (brown café)", target: [4.88422, 52.37666], minM: 7, maxM: 20 },
 ];
 
 type Pano = { pano_id: string; timestamp: string; geometry: { coordinates: [number, number, number] }; tags?: string[]; _links: any };

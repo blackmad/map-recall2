@@ -1,17 +1,17 @@
 {
  "permits": 4317,
  "terraces": 2169,
- "units": 32966,
+ "units": 32382,
  "unitsByModel": {
-  "set-restaurant": 7447,
-  "screen": 708,
-  "parasol": 5517,
-  "set-bar": 2113,
+  "set-restaurant": 7780,
+  "screen": 669,
+  "parasol": 5563,
+  "set-bistro": 6790,
   "set-wall": 939,
-  "set-modern": 7174,
-  "set-bistro": 6060,
+  "set-modern": 7240,
   "set-brown": 2590,
-  "planter": 418
+  "planter": 460,
+  "set-bar": 351
  },
  "rejected": {
   "no terrace geometry": 1617,
@@ -39,11 +39,11 @@
   "Sociëteit": 1
  },
  "byStyle": {
-  "restaurant": 1014,
-  "bar": 115,
-  "modern": 486,
-  "bistro": 339,
-  "brown": 215
+  "restaurant": 1056,
+  "bistro": 388,
+  "modern": 494,
+  "brown": 215,
+  "bar": 16
  },
  "byDistrict": {
   "Noord": 107,
@@ -76,7 +76,7 @@
  },
  "strayPolygonsDropped": 21,
  "terracesWithoutTableUnits": 20,
- "singleUnitFallback": 264,
- "unitsOnParking": 251,
+ "singleUnitFallback": 272,
+ "unitsOnParking": 245,
  "temporaryTerraceRows": 0
 }

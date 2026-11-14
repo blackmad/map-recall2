@@ -71,13 +71,18 @@ export const TERRACE_STYLES: readonly TerraceStyle[] = ['brown', 'bistro', 'rest
 /**
  * The style from the permit's category, specification and name. Brown cafés by name as the retail-ground lane's
  * classifier reads them (retailTemplates.ts: café/eetcafé/proeflokaal/tapperij/bodega names, `amenity=pub`);
- * restaurants white cloth; bars, night venues and cocktail names high tables; lunchrooms, coffee and fast food modern.
+ * restaurant permits white cloth (whatever the name says); night venues and cocktail / wine / lounge names high
+ * tables (a plain "Bar ..." café stays a café); lunchrooms, coffee and fast food modern.
  */
 export function terraceStyle(category: string | null | undefined, spec: string | null | undefined, name: string | null | undefined): TerraceStyle {
   const c = (category ?? '').toLowerCase(), s = (spec ?? '').toLowerCase(), n = (name ?? '').toLowerCase().trim();
   if (/^(caf[eé]|eetcaf[eé]|proeflokaal|tapperij|bodega|in de|in 't|'t |de wildeman|brouwerij)(?=[\s']|$)/.test(n) || /bruin/.test(s)) return 'brown';
-  if (/nachtzaak|discotheek|nachtclub/.test(c + ' ' + s) || /\b(bar|cocktail|lounge|club|wine|wijnbar|sky)\b/.test(n)) return 'bar';
+  if (/nachtzaak|discotheek|nachtclub/.test(c + ' ' + s)) return 'bar';
+  // A restaurant permit stays a restaurant whatever its name says ("Seafood Bar", "Kitchen & Bar").
   if (/restaurant|eethuis|grill/.test(c + ' ' + s) && !/fastfood|afhaal|snack/.test(s)) return 'restaurant';
+  // A plain "Bar ..." café is a café (Bar Cadaq, Leidseplein: rattan bistro chairs on the 2022 panorama); only cocktail,
+  // wine and lounge names take the high tables.
+  if (/\b(cocktail|cocktails|lounge|wine|wijnbar|sky ?bar|rooftop)\b/.test(n)) return 'bar';
   if (/lunchroom|koffie|alcoholvrij|fastfood|snack|broodjes|ijssalon|cafetaria|coffeeshop/.test(c + ' ' + s)) return 'modern';
   if (/caf[eé]/.test(c + ' ' + s)) return 'bistro';
   return 'modern';

@@ -44,6 +44,8 @@ test('style from category, specification and name', () => {
   assert.equal(terraceStyle('Restaurant', 'Restaurant', 'Copain'), 'restaurant');
   assert.equal(terraceStyle('Nachtzaak', 'Discotheek', 'Paradiso'), 'bar');
   assert.equal(terraceStyle('Café', 'Café', 'Wine Bar Vyne'), 'bar');
+  assert.equal(terraceStyle('Café', 'Café', 'Bar Cadaq'), 'bistro');
+  assert.equal(terraceStyle('Restaurant', 'Restaurant', 'Seafood Bar Spui B.V.'), 'restaurant');
   assert.equal(terraceStyle('Café', 'Café', 'Het Paleis'), 'bistro');
   assert.equal(terraceStyle('Alcoholvrij', 'Lunchroom', 'Lunchroom X'), 'modern');
   assert.equal(terraceStyle('Fastfood', 'Snackbar', 'Snackbar Y'), 'modern');

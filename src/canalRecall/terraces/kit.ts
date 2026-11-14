@@ -8,7 +8,8 @@
  *
  * Units (priors from Amsterdam terraces, panorama-checked on the acceptance sheet; real kit sizes):
  *   set-brown       dark-stained square table 0.60 m with two bentwood chairs facing over it (brown café)
- *   set-bistro      round bistro table 0.60 m (pale marble top, black cast foot) with two rattan bistro chairs
+ *   set-bistro      round bistro table 0.60 m (teak top, black cast foot) with two rattan bistro chairs on cream
+ *                   cushions (Leidseplein 2022-04 panorama TMX7316010203-002537_pano_0001_002579)
  *   set-restaurant  square table 0.80 m under a white cloth, four dark chairs
  *   set-modern      light-oak table 0.70 m with two black metal chairs (lunchroom, coffee, fast food)
  *   set-bar         high round table 1.08 m with two high stools
@@ -33,7 +34,7 @@ export const TERRACE_COLOURS = ['#efe8d8', '#f6f5f1', '#2f4d3a', '#76232a', '#22
 /** Palette (sRGB). Brown café tones match the retail-ground lane's brown bar (frame #3a2519, dark #2b1a12). */
 export const TERRACE_TONES = {
   brownWood: '#3a2519', brownDark: '#2b1a12', brownSeat: '#5a3b26',
-  marble: '#d8d3c8', castIron: '#1d1d1d', rattan: '#a9834f', rattanDark: '#5d4128', bistroSeatBlue: '#3d5a73',
+  bistroTop: '#9a6a3f', castIron: '#1d1d1d', rattan: '#b38b57', cushion: '#e4dbc6',
   cloth: '#f2efe8', clothShade: '#dcd8cf', restChair: '#3b3b3b',
   oak: '#c19a6b', metalChair: '#262626',
   barTop: '#2d2d2d', stool: '#6e4f33',
@@ -120,9 +121,9 @@ export const TERRACE_MODELS: Readonly<Record<TerraceModelId, () => TerraceMesh>>
   },
   'set-bistro': () => {
     const b = new Builder(), T = TERRACE_TONES;
-    roundTable(b, T.marble, T.castIron);
-    chair(b, -0.55, 0, '+x', { seat: T.rattan, frame: T.rattanDark, backH: 0.88 });
-    chair(b, 0.55, 0, '-x', { seat: T.rattan, frame: T.rattanDark, backH: 0.88 });
+    roundTable(b, T.bistroTop, T.castIron);
+    chair(b, -0.55, 0, '+x', { seat: T.cushion, frame: T.rattan, backH: 0.88 });
+    chair(b, 0.55, 0, '-x', { seat: T.cushion, frame: T.rattan, backH: 0.88 });
     return b.done('set-bistro');
   },
   'set-restaurant': () => {
@@ -189,7 +190,7 @@ export const TERRACE_MODELS: Readonly<Record<TerraceModelId, () => TerraceMesh>>
 /** The far-band twins: the same footprint and colours in a few boxes. */
 export const TERRACE_LO_MODELS: Readonly<Record<TerraceModelId, () => TerraceMesh>> = {
   'set-brown': () => loSet('set-brown', TERRACE_TONES.brownWood, TERRACE_TONES.brownSeat, 0.3, 0.75, 0.55, 2),
-  'set-bistro': () => loSet('set-bistro', TERRACE_TONES.marble, TERRACE_TONES.rattan, 0.3, 0.74, 0.55, 2),
+  'set-bistro': () => loSet('set-bistro', TERRACE_TONES.bistroTop, TERRACE_TONES.rattan, 0.3, 0.74, 0.55, 2),
   'set-restaurant': () => loSet('set-restaurant', TERRACE_TONES.cloth, TERRACE_TONES.restChair, 0.4, 0.76, 0.62, 4),
   'set-modern': () => loSet('set-modern', TERRACE_TONES.oak, TERRACE_TONES.metalChair, 0.35, 0.75, 0.6, 2),
   'set-bar': () => loSet('set-bar', TERRACE_TONES.barTop, TERRACE_TONES.stool, 0.3, 1.08, 0.5, 2),
