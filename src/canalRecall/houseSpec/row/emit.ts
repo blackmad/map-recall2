@@ -88,6 +88,14 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
       put('facts/pui', f.ground.use === 'dwelling' || f.ground.use === 'door-only' ? 'residential' : f.ground.use === 'warehouse' ? 'warehouse' : 'shop', g);
       put('facts/groundKind', f.ground.use === 'dwelling' ? 'dwelling' : f.ground.use === 'door-only' ? 'door-only' : f.ground.use === 'warehouse' ? 'warehouse' : 'shop', g);
     }
+    // One shopfront as read (168042: a narrow door and one large window): one unit, its panes not split by width.
+    const su = f.ground.shopUnits;
+    if (su?.value === 1 && !(spec.design.fronts?.[i] as Record<string, unknown> | undefined)?.shopfront) {
+      const door = f.ground.doorIndex !== undefined && f.ground.groundBays ? 1 : 0;
+      put(P + 'shopfront', { fascia: true, glazing: 'single', displayWindows: Math.max(1, (f.ground.groundBays ?? 2) - door),
+        ...(f.ground.doorSide === 'left' || f.ground.doorSide === 'right' ? { entrance: f.ground.doorSide } : {}),
+        ...(f.ground.colour?.value === 'dark' ? { colour: '#1e1e1e' } : {}), evidence: `house-rows: ${su.ref}` }, su);
+    }
     const bm = f.ground.basement;
     if (!base && bm && bm !== 'none') {
       const g: RowField<unknown> = { value: bm, source: 'single-read', ref: `${f.pandId} reading: basement ${bm}` };
@@ -122,5 +130,11 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
   const notes = ((spec.design as { notes?: string[] }).notes ?? []).filter(n => !n.startsWith('house-rows'));
   if (!spec.provenance['notes'] && !spec.provenance['']) spec.provenance['notes'] = { source: 'default', confidence: 0.3, ref: `house-rows ${row.id}`, at };
   (spec.design as { notes?: string[] }).notes = [...notes, `house-rows ${row.id}: series ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`];
+  // The row's known differences for this pand's fronts (rows/limits.json), beside any the face states; one per what.
+  const mine = (row.schemaLimits ?? []).filter(l => fronts.some(f => f.id === l.front)).map(l => ({ component: l.component, what: l.what }));
+  if (mine.length) {
+    const have = spec.schemaLimits ?? [];
+    spec.schemaLimits = [...have, ...mine.filter((l, i) => mine.findIndex(x => x.what === l.what) === i && !have.some(h => (h as { what?: string }).what === l.what))];
+  }
   return spec;
 }

@@ -3520,6 +3520,12 @@ review); D owns records and the solve, R the renderer.
   `scripts/house-specs/rows/rereads.json` (answer in `rows/rereads/`, `describes` for a multi-front capture) make house:rows use it
   (flag `reread`) and row-sheet show that capture with a yellow "re-read" tag. First: Kinkerstraat 92–94 from the 2023-01-10
   capture (the 2019 read was netted); queue on the 28 Kinkerstraat faces: `rows/reread-queue-kinker.json`.
+- **Corner fronts.** A row member owned by an installed face chunk of another street draws this street's wall blank
+  (the chunk replaces the pand whole). house:rows warns (`blankCornerFronts`); the fix is a front on this street in that face
+  (Kinkerstraat 86–88 in face bilder-233580-162444, round 7), then the integrator recompiles that face chunk.
+- **Known differences** the kit cannot say live in `scripts/house-specs/rows/limits.json` (per front, `{component, what}`);
+  house:rows copies them into `RowRecord.schemaLimits` and the pand's HouseSpec `schemaLimits`. `ground.shopUnits` 1 (a read
+  describing one shopfront) emits one shopfront with `displayWindows`, not a split by width (Weteringschans 168042).
 - **Storey-limited face heads** (90: tympana on storeys 1–2) take the other upper storeys from the series' reads when their
   shapes agree; the dressing is the reads' surround by vote, a multi-front read at half weight.
 - **Solve** (`houseSpec/row/solve.ts`). Fronts: face modules, or a read with twice the row's bays on a 1.6x-wide two-number pand

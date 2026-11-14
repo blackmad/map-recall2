@@ -54,6 +54,25 @@
       "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
       "at": "2026-11-14",
       "note": "100: white block surrounds frame each whole window, jambs and head, on every upper storey; a front override, 100 stays in s1"
+    },
+    {
+      "fronts": [
+        "0363100012236027#m0",
+        "0363100012236027#m1",
+        "0363100012159635",
+        "0363100012152925"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "plain",
+        "hoist": true
+      },
+      "ref": "integrator, blind review 6 (sheet photo)",
+      "at": "2026-11-14",
+      "note": "102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting"
     }
   ],
   "weteringschans-168096-171218": [

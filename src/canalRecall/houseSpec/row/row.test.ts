@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead, headsList } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -49,16 +49,18 @@ test('Kinkerstraat 104, 102, 100 (159635, 152925, 160809) resolve to one design'
   assert.equal(new Set(fronts.map(f => f.seriesId)).size, 1);
   // one design but for 100's own dormer (an ornate wall dormer with a pediment and finial: D1 gap + face "larger pediment dormer")
   // and its reviewed block surrounds (integrator, sheet photo, 2026-11-14)
-  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
+  // and the reviewed flat-topped hoist dormers on 102/104 (blind review 6): the roof storey's dormer is a member variant
+  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: design(K, '0363100012160809').roofStorey }); };
   assert.equal(new Set(ids.map(noDormerKind)).size, 1);
   assert.equal(design(K, '0363100012160809').roofStorey.value.dormerKind, 'ornate-pinnacle');
-  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'pediment');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'plain');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.hoist, true);
   // one wall tone, one roof, one cornice line (street datum) for the three; the hash path drew one red and two tan
   const bricks = ids.map(id => K.specs[id].design.palette?.brick);
   assert.equal(new Set(bricks).size, 1);
   const d = design(K, ids[0]);
   assert.equal(d.corniceTopM.value, 14.18);
-  assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' });
+  assert.deepEqual(K.row.series.find(x => x.id === fronts[0].seriesId)!.design.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' }, 'the series roof; 102/104 carry reviewed hoist dormers');
   assert.deepEqual(d.heads.value, { shape: 'flat', dressing: 'block-course' }, 's1 heads on every upper storey (no storeys list)');
   assert.equal(d.wall.value.family, 'red-brown-brick');
 });
@@ -208,4 +210,20 @@ test('Kinkerstraat 100: reviewed block surrounds as a front override in s1; the 
   const row2 = structuredClone(K.row);
   row2.fronts.find(x => x.id === '0363100012160809')!.overrides.heads!.source = 'single-read';
   assert.ok(checkOneDesign(toRowCheck(row2, {}, new Set())).length > 0);
+});
+
+test('Kinkerstraat 86-88 (233580) corner: the Bilderdijkstraat face that owns it states its Kinkerstraat front (no blank slab right of 90)', async () => {
+  const { blankCornerFronts } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
+  assert.deepEqual(blankCornerFronts('Kinkerstraat', K.row.members.map(m => m.pandId)), []);
+  // the check bites: the same pand on a street its owning face does not state
+  assert.deepEqual(blankCornerFronts('Overtoom', ['0363100012233580']).map(g => g.face), ['bilder-233580-162444']);
+});
+
+test('Weteringschans 168042: one dark shopfront (a narrow door and one large window), drawn as one unit', () => {
+  const g = W.row.fronts.find(x => x.id === '0363100012168042')!.ground;
+  assert.equal(g.shopUnits?.value, 1);
+  assert.equal(g.colour?.value, 'dark');
+  const sf = (W.specs['0363100012168042'].design.fronts![0] as Record<string, any>).shopfront;
+  assert.deepEqual([sf.displayWindows, sf.glazing, sf.entrance], [1, 'single', 'left']);
+  assert.equal(oneShopfront({ gaps: [{ component: 'shopfront', what: 'two shops side by side under one fascia' }] } as never), null);
 });
