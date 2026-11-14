@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Shores split at bridge openings (2026-11-14)
+
+Feedback 7be6c55a pointed at the Hendrix café front (handed to the retail lane); the same frame showed the Bilderdijkgracht end quay at the De Clercqstraat bridge with no wall or coping and sky through a jagged edge. `water.ts` `openUnderFootbridges` dropped any shore segment whose midpoint fell inside a bridge opening (the 23 m end quay vs a 10 m opening) and kept whole those whose midpoint fell outside. `splitAtRings` now cuts shores at the opening edge (`openingShores`, default on): 382 joins with > 0.5 m of wrong wall before, 0 after (941 m missing, 1,115 m standing in openings). Pinned `bilderdijkgracht-declercq-quay` in check:ground-spots.
+
+
 ## Far windows survive the depth fade (2026-11-14)
 
 Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.

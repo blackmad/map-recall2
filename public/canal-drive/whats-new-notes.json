@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Quay walls run up to the bridge",
+      "text": "Where a bridge crosses a canal end, the quay often lost its whole wall and coping, leaving a ragged edge with sky showing through, or kept a wall standing across the water under the bridge. Quay walls now stop exactly where the water passes under the bridge, as at the Bilderdijkgracht by De Clercqstraat. About 380 bridge corners across the city are fixed.",
+      "where": [
+        4.8683,
+        52.3706
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-quay-bridge-join.jpg",
+          "alt": "Bilderdijkgracht quay at the De Clercqstraat bridge: before with a ragged gap, after with the wall running to the bridge",
+          "caption": "Bilderdijkgracht at De Clercqstraat, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Windows stay on in the distance",
       "text": "Blocks across the water and a few streets ahead used to fade to plain walls about 250 m out. They now keep their window grids until the windows are too small to draw cleanly; the distance haze is unchanged. Desktop only for now (phones can try it with ?farWindows=1).",
       "where": [
