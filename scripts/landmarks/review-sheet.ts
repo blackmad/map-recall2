@@ -6,6 +6,8 @@
  *   node --import tsx scripts/landmarks/review-sheet.ts --id=nassaukerk [--bag=0363100012237328] [--glb=...]
  *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game] [--inventory] [--ring=<n> for a MultiPolygon footprint]
  *        [--browser: the GLB tiles in Chromium as before lane H12; default Node, docs/house-line.md §8]
+ *        [--chords=lng,lat,lng,lat,bearing;...: extra walls given by their end points and outward bearing, for a front
+ *         whose BAG ring is stepped in edges under 3 m or a short chamfer, which the exposed-wall selector drops]
  *
  * For every exposed wall of the BAG footprint (party walls are dropped by the pand-reference selector) the nearest
  * Gemeente Amsterdam panorama (5-35 m from the wall, obliquity <= 55 deg) is aimed at the wall centre through the public
@@ -246,6 +248,15 @@ async function main() {
   const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
   const exposed = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
   let walls = exposed.slice(0, Number(arg('walls') ?? 6));
+  // --chords: walls named by their end points (a stepped side front, a 2 m chamfered corner), added after the selector's
+  for (const spec of (arg('chords') ?? '').split(';').filter(Boolean)) {
+    const [lngA, latA, lngB, latB, brg] = spec.split(',').map(Number);
+    const a = lngLatToRd([lngA, latA]), b = lngLatToRd([lngB, latB]), len = Math.hypot(b.x - a.x, b.y - a.y);
+    let nx = (b.y - a.y) / len, ny = -(b.x - a.x) / len;
+    if (Math.cos((Math.atan2(nx, ny) * 180 / Math.PI - brg) * Math.PI / 180) < 0) { nx = -nx; ny = -ny; }
+    const ccw = Math.abs(nx * (b.y - a.y) - ny * (b.x - a.x) - len) < 1e-6;
+    walls.push({a: ccw ? a : b, b: ccw ? b : a, len, nx, ny, mid: {x: (a.x + b.x) / 2, y: (a.y + b.y) / 2}, roadDistM: 0, facing: 1});
+  }
   if (inventory) for (const iw of inventory.walls.filter(w => w.evidence === 'photo' && w.items.length)) {
     const hit = exposed.find(w => matchWall([iw], bearingOf(w), rdToLngLat(w.mid) as [number, number]) && Math.abs(w.len - iw.lengthM) < 0.6);
     if (hit && !walls.includes(hit)) walls.push(hit);

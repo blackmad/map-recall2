@@ -1,0 +1,300 @@
+{
+ "schemaVersion": 1,
+ "id": "club-raum",
+ "pand": "0363100012134632",
+ "brief": "scripts/landmarks/club-raum-brief.md",
+ "signature": [
+  "o-ribbons",
+  "w-chimney",
+  "n-yellow-door",
+  "w-loading-doors",
+  "n-grey-cladding",
+  "w-side-door-mark"
+ ],
+ "walls": [
+  {
+   "tag": "w03-0",
+   "bearing": 0,
+   "lengthM": 49.1,
+   "centre": [
+    4.83123,
+    52.3913545
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_12-47-19_01064",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "note": "Basisweg front (the brief's w03-0; whole face by face-crops.ts: face-north-0 recording_2025-06-17_04-45-19_01650, face-north-1 recording_2024-09-09_12-47-19_01064, face-north-3 TMX7316060226-000506_pano_0000_007804 2020). East to west: the grey clad unit (0-23.9 m) with the yellow door, a ribbon of windows, a side door and a white roller door; then the two-storey brick office block to the Humberweg corner with two white ribbons.",
+   "items": [
+    {
+     "id": "o-ribbons",
+     "kind": "window-shape",
+     "where": "office block, both streets: two continuous ribbons of white-framed windows (0.9-2.2 m and 3.95-4.6 m) split by narrow white piers, a grey concrete ledge over each",
+     "approxSizeM": [
+      25,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "how": "cut openings in runs with white frames and mullions, white pier slabs between them, grey ledge strips (ribbon() in club-raum-builder.ts); the ground-floor ribbon is obscured glazing, a light blue-grey against the brick (face-north-1, face-west-0)"
+    },
+    {
+     "id": "n-yellow-door",
+     "kind": "sign",
+     "where": "grey unit, 1.5-4.7 m from the east end: a tall yellow door in a white surround with a black ring and a stacked-chevron tree (another tenant's mark)",
+     "approxSizeM": [
+      3.2,
+      4.45
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "how": "yellow recessed door with a 15 cm white frame; black ring, stem and three chevrons as thin solids on the door"
+    },
+    {
+     "id": "n-grey-cladding",
+     "kind": "other",
+     "where": "grey unit: light grey panel cladding with a darker grey band at 3.9-4.6 m",
+     "approxSizeM": [
+      23.9,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_04-45-19_01650",
+     "how": "concrete-tinted front with a stone-tinted band stopping at the two tall doors"
+    },
+    {
+     "id": "n-roller-door",
+     "kind": "window-shape",
+     "where": "grey unit, 19.9-23.5 m: white roller door in a white frame, full height of the cladding",
+     "approxSizeM": [
+      3.6,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_04-45-19_01650",
+     "how": "recessed white door with ten slat lines"
+    },
+    {
+     "id": "n-office-doors",
+     "kind": "window-shape",
+     "where": "office block, 25.0-28.4 m: grey double doors; 41.0-41.9 m a glazed entrance door beside a white panel",
+     "approxSizeM": [
+      3.4,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "how": "cut doors with grey and glass backs, white panel slab"
+    },
+    {
+     "id": "n-ghost-lettering",
+     "kind": "lettering",
+     "where": "office block, 5.3-6.2 m over the upper ribbon: the painted-out name of a former company ('...OOSTERMAN'), only a faint ghost",
+     "approxSizeM": [
+      9,
+      0.9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000506_pano_0000_007804",
+     "skip": {
+      "reason": "gone",
+      "note": "the letters were removed; only a faint trace on the brick is left, not legible from the street"
+     }
+    },
+    {
+     "id": "n-flag",
+     "kind": "other",
+     "where": "office block: a flag on a short pole over the upper ribbon (trans pride flag in 2024)",
+     "approxSizeM": [
+      1.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "skip": {
+      "reason": "temporary",
+      "note": "a hung flag"
+     }
+    },
+    {
+     "id": "n-graffiti",
+     "kind": "other",
+     "where": "roller door and grey unit: graffiti tags",
+     "approxSizeM": [
+      3,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "skip": {
+      "reason": "temporary",
+      "note": "tags change"
+     }
+    },
+    {
+     "id": "n-signs",
+     "kind": "sign",
+     "where": "parking signs and a driving-school car on the pavement",
+     "approxSizeM": [
+      0.5,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-09_12-47-19_01064",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w01-270",
+   "bearing": 270,
+   "lengthM": 50.0,
+   "centre": [
+    4.83087,
+    52.3911295
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_10-32-54_00235",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "note": "Humberweg front (the brief's w01-270; whole face by face-crops.ts: face-west-0 recording_2025-07-01_10-32-54_00235, face-west-1 TMX7316010203-002080_pano_0000_001160 2021). North to south: the office block (0-17 m) with both ribbons, the chimney stack and a sloped shoulder down to the hall, then the hall: vents under the coping, loading doors at 20.9-24.9 and 29.1-33.1 m in grey panel surrounds, and between them (2025) the white side door with the club's mark.",
+   "items": [
+    {
+     "id": "w-chimney",
+     "kind": "tower",
+     "where": "end of the office block, 16.6-18.5 m: brick chimney stack to about 8 m, with a sloped shoulder down to the hall parapet",
+     "approxSizeM": [
+      1.9,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002080_pano_0000_001160",
+     "how": "brick solid 6 cm proud of the wall with a stone cap, wedge shoulder"
+    },
+    {
+     "id": "w-loading-doors",
+     "kind": "window-shape",
+     "where": "hall, 20.9-24.9 and 29.1-33.1 m: grey panel surrounds 4.0 x 3.5 m around a light grey double door and a roller door",
+     "approxSizeM": [
+      4.0,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_10-32-54_00235",
+     "how": "shallow recesses with a grey back; the north door a lighter inner slab, the south roller a dark slab filling the surround (face-west-0, 2025)"
+    },
+    {
+     "id": "w-side-door-mark",
+     "kind": "sign",
+     "where": "hall, 26.6-27.7 m (2025): white steel door with a black circle quartered by a white cross",
+     "approxSizeM": [
+      1.1,
+      2.15
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-01_10-32-54_00235",
+     "how": "white recessed door with a 0.5 m black disc cut into four quadrants by a 6 cm white cross"
+    },
+    {
+     "id": "w-vents",
+     "kind": "window-shape",
+     "where": "hall, under the coping every ~4.2 m: small dark vent openings",
+     "approxSizeM": [
+      0.26,
+      0.22
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_10-32-54_00235",
+     "how": "small cut openings with a dark back"
+    },
+    {
+     "id": "w-fences",
+     "kind": "other",
+     "where": "building fences and a covered pallet stack in front of the second loading door (2025)",
+     "approxSizeM": [
+      3.5,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_10-32-54_00235",
+     "skip": {
+      "reason": "temporary",
+      "note": "site fencing"
+     }
+    },
+    {
+     "id": "w-lamp",
+     "kind": "lamp",
+     "where": "wall lamp and camera beside the side door",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_10-32-54_00235",
+     "skip": {
+      "reason": "too-small",
+      "note": "small fixtures"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "s01-180",
+   "bearing": 180,
+   "lengthM": 49.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "Yard side (party wall with Humberweg 5 for the western 20 m): no panorama reaches it; plain brick under the 3DBAG roofs.",
+   "items": []
+  },
+  {
+   "tag": "e01-90",
+   "bearing": 90,
+   "lengthM": 50.0,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "East side, about 1 m from the neighbouring hall: no panorama; plain brick.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012134632 (PDOK BAG WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012134632",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134632",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Amsterdam NOW: Club RAUM in the former bookbinder's on the corner of Humberweg and Basisweg",
+   "url": "https://www.amsterdamnow.com/en/?p=83394",
+   "licence": "quoted facts only"
+  },
+  {
+   "name": "Mixmag: SPIELRAUM opens CLUB RAUM in a '60s former industrial building near Sloterdijk",
+   "url": "https://mixmag.net/read/amsterdams-spielraum-event-series-goes-concrete-with-club-raum-news",
+   "licence": "quoted facts only"
+  },
+  {
+   "name": "OpenStreetMap node 13110299459 (Club RAUM)",
+   "url": "https://www.openstreetmap.org/node/13110299459",
+   "licence": "ODbL"
+  }
+ ]
+}

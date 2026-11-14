@@ -1,0 +1,349 @@
+{
+ "schemaVersion": 1,
+ "id": "sameplace",
+ "pand": "0363100012156534",
+ "brief": "scripts/landmarks/sameplace-brief.md",
+ "signature": [
+  "e-speklagen",
+  "e-window-heads",
+  "c-cafe-sign",
+  "e-entablature",
+  "r-mansard-dormers",
+  "g-blue-boards",
+  "c-chamfer-balconies",
+  "e-shopfront"
+ ],
+ "walls": [
+  {
+   "tag": "w01-89",
+   "bearing": 89,
+   "lengthM": 10.1,
+   "centre": [
+    4.874836,
+    52.3740225
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track22_Sphere_00430",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "note": "Nassaukade front, rectified whole by face-crops.ts (face-east-2 recording_2024-09-11_07-28-02_01946, sunlit, 40 px/m; face-east-3 TMX7316010203-001878_pano_0005_000020, 2020) plus the brief crop and its 2019 alt. Five window axes (1.28, 2.84, 4.40 | 7.26, 9.16 m from the Nassaukade 118 party wall, a downpipe and a pair of frieze consoles between the groups), three brick storeys over a timber shopfront: a café (awning, big window, door) on the left, Sameplace's door and blue boarded window on the right.",
+   "items": [
+    {
+     "id": "e-speklagen",
+     "kind": "other",
+     "where": "every storey: continuous white bands at the sill, transom and springing lines and one between storeys, across the orange-red brick",
+     "approxSizeM": [
+      10.1,
+      0.14
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "white ledge strips 5 cm proud across the piers, stopping at each window (storeys/band in sameplace-builder.ts)"
+    },
+    {
+     "id": "e-window-heads",
+     "kind": "window-shape",
+     "where": "first and second floor: segmental-arched windows with white arch rings and keystones; third floor flat white lintels with keystones; white sills; one transom per window",
+     "approxSizeM": [
+      1.08,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "square-headed cut openings under a solid white head (0.25 m lintel block, 22 cm wider than the light, with a 0.12 m segmental crown and a small keystone; the glass is flat-topped, face-east-0), sill blocks, lintel slab on the third floor, white frame and transom bar"
+    },
+    {
+     "id": "e-balconies",
+     "kind": "balcony-ironwork",
+     "where": "axis 2 (2.84 m), all three floors: French balconies with black iron bar rails",
+     "approxSizeM": [
+      1.4,
+      0.95
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "bronze floor slab and a rail of 11 bars with a top rail, 0.42 m out"
+    },
+    {
+     "id": "e-entablature",
+     "kind": "relief",
+     "where": "over the third floor, 14.1-16.15 m: white architrave, frieze with a recessed panel and a small festoon over every axis, dentil band, projecting cornice",
+     "approxSizeM": [
+      10.1,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "white face section with an architrave ledge, a proud panel and a swag-shaped poly over each axis, a dentil ledge and a 0.45 m cornice; dentils as one band"
+    },
+    {
+     "id": "e-consoles",
+     "kind": "relief",
+     "where": "frieze over the downpipe between the window groups (5.8 m): a pair of white consoles",
+     "approxSizeM": [
+      0.42,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "one white slab across the frieze height"
+    },
+    {
+     "id": "r-mansard-dormers",
+     "kind": "window-shape",
+     "where": "over the cornice: slate mansard with two white dormers (axes 2 and 5) with pilasters, a two-light window and a segmental pediment",
+     "approxSizeM": [
+      1.9,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "mansard swept along the three street faces with mitred corners; dormer boxes with pilasters, glazing and a segmental pediment (archFillOutline)"
+    },
+    {
+     "id": "e-shopfront",
+     "kind": "canopy",
+     "where": "ground floor: dark brown timber shopfront with a three-row clerestory grid over both shops, black stone plinths under the piers",
+     "approxSizeM": [
+      10.1,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "dark timber face section with cut doors, windows and grid clerestories (6x3 and 4x3 panes), stone plinth slabs"
+    },
+    {
+     "id": "e-awning",
+     "kind": "canopy",
+     "where": "left shop: black awning box with a white top edge over the café window",
+     "approxSizeM": [
+      5.3,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "bronze box with a white ledge, rolled up as in every photo"
+    },
+    {
+     "id": "g-blue-boards",
+     "kind": "sign",
+     "where": "right shop (and two bays on the side street): the windows boarded in blue with Sameplace's mark and name in orange",
+     "approxSizeM": [
+      2.4,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "how": "blue recessed board in the window opening with an orange ring-and-cross mark and SAMEPLACE capitals in the 5x7 kit letters"
+    },
+    {
+     "id": "e-cafe-lettering",
+     "kind": "lettering",
+     "where": "café window and awning ends: small script name of the café",
+     "approxSizeM": [
+      0.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "skip": {
+      "reason": "temporary",
+      "note": "the neighbouring café's name, a tenant mark"
+     }
+    },
+    {
+     "id": "e-flag",
+     "kind": "other",
+     "where": "axis 2, first floor: a hanging flag over the balcony rail",
+     "approxSizeM": [
+      1.2,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241121_0951_Track22_Sphere_00430",
+     "skip": {
+      "reason": "temporary",
+      "note": "a resident's flag"
+     }
+    },
+    {
+     "id": "e-dormer-rods",
+     "kind": "other",
+     "where": "rods over both dormers (lightning conductors or vent stacks, foreshortened in the crop)",
+     "approxSizeM": [
+      0.2,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin rods, not legible at ride distance"
+     }
+    },
+    {
+     "id": "e-downpipe",
+     "kind": "other",
+     "where": "downpipe at 5.8 m from the cornice to the shop",
+     "approxSizeM": [
+      0.1,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-11_07-28-02_01946",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipe"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "c01-55",
+   "bearing": 55,
+   "lengthM": 1.95,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_07-28-02_01942",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "note": "The cut-off corner (BAG ring vertices 2-3, 1.95 m) to the Tweede Hugo de Grootstraat: one window axis per storey with a French balcony on every floor, the café door with its signboard. Also the aimed brief view w01-89.thumb.",
+   "items": [
+    {
+     "id": "c-cafe-sign",
+     "kind": "sign",
+     "where": "over the corner door at 2.35-3.07 m: brown board with cream capitals CAFE / SAMEPLACE (script-like serif in the photo)",
+     "approxSizeM": [
+      1.8,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01942",
+     "how": "dark board slab with CAFE and SAMEPLACE in the 5x7 kit capitals, cream, 5 cm proud of the board; the typeface is a decorative serif, approximated by block capitals"
+    },
+    {
+     "id": "c-chamfer-balconies",
+     "kind": "balcony-ironwork",
+     "where": "corner axis, all three floors: French balconies with iron rails",
+     "approxSizeM": [
+      1.25,
+      0.95
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-11_07-28-02_01942",
+     "how": "the same bar rail as the Nassaukade balconies, 1.25 m wide"
+    },
+    {
+     "id": "c-door",
+     "kind": "window-shape",
+     "where": "corner door under the sign, with a 2x3 clerestory over the sign",
+     "approxSizeM": [
+      0.95,
+      2.25
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_07-28-02_01942",
+     "how": "cut door and grid opening in the timber section"
+    }
+   ]
+  },
+  {
+   "tag": "n01-21",
+   "bearing": 21,
+   "lengthM": 8.9,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_11-17-15_01488",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "note": "Tweede Hugo de Grootstraat side, face-crops.ts face-north-2 (2025-06-17) and face-north-0 (TMX7316010203-002055_pano_0000_001938, 2021-03-22). Four axes (1.65, 3.5, 5.35, 7.25 m from the corner); the two nearest the corner are painted-out (white blind) windows, with a billboard over the first-floor pair (its posters change: Aloha 2025, Ticketveiling 2021). Ground floor: three timber bays between brick piers (the BAG ring has them 0.1 m behind the pier faces), two with blue Sameplace boards, the third with a door and a window. One dormer over axis 3.",
+   "items": [
+    {
+     "id": "n-blind-windows",
+     "kind": "window-shape",
+     "where": "axes 1 and 2 (nearest the corner), all floors: windows painted out white inside their brick reveals, with the same arch rings and bands",
+     "approxSizeM": [
+      1.08,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_11-17-15_01488",
+     "how": "shallow cut openings with a white back and no frame, same heads, sills and bands as the real windows"
+    },
+    {
+     "id": "n-billboard",
+     "kind": "sign",
+     "where": "first floor over the two blind windows: a framed billboard about 3.3 x 2.7 m",
+     "approxSizeM": [
+      3.3,
+      2.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_11-17-15_01488",
+     "how": "black frame slab with a mid-tone blue-grey poster face and a deep pink strap along its foot (face-north-0); poster content changes, so no picture",
+     "note": "Poster seen: 'Gezellig met je vader naar Aloha' (2025), Ticketveiling.nl (2021)."
+    },
+    {
+     "id": "n-dormer",
+     "kind": "window-shape",
+     "where": "over axis 3: one pedimented dormer like the Nassaukade pair",
+     "approxSizeM": [
+      1.9,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_11-17-15_01488",
+     "how": "same dormer as r-mansard-dormers"
+    },
+    {
+     "id": "n-shop-bays",
+     "kind": "canopy",
+     "where": "ground floor: three timber bays with grid clerestories, blue boards, door and window, black stone plinths at the piers",
+     "approxSizeM": [
+      8.9,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_11-17-15_01488",
+     "how": "dark timber section, three 4x3 grid clerestories, two blue boards with the mark, door and window"
+    }
+   ]
+  },
+  {
+   "tag": "r01-rear",
+   "bearing": 290,
+   "lengthM": 17,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear and party walls against Tweede Hugo de Grootstraat 1 (13.9 m) and Nassaukade 118: no photograph; plain brick above the neighbours, the low rear annex under its 3DBAG roof.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012156534 (PDOK BAG WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012156534",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156534",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Sameplace (venue site: café since 1997, Nassaukade 120)",
+   "url": "https://sameplace.nl/",
+   "licence": "quoted facts only"
+  },
+  {
+   "name": "OpenStreetMap node 3602157927 (Sameplace)",
+   "url": "https://www.openstreetmap.org/node/3602157927",
+   "licence": "ODbL"
+  }
+ ]
+}
