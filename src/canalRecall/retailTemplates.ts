@@ -45,6 +45,16 @@ export const PUI = {
 } as const;
 
 /**
+ * Round 3c (lane retail-look-20261114): the uv rect (v up) of a puiAt cell's glass below its transom bar (bayTextures.ts
+ * puiAt: the bar 27 % down the glass, 12 px with its shadow at 340 px). A template pane's interior is one quad of it,
+ * in place of its flat-colour goods.
+ */
+export function puiInteriorUv(): [number, number, number, number] {
+  const glassH = 1 - PUI.riser - PUI.glassTop, below = PUI.glassTop + glassH * 0.27 + 12 / 340, x = (1 - PUI.glassShare) / 2 + 0.03;
+  return [x, PUI.riser + 0.005, 1 - x, 1 - below];
+}
+
+/**
  * The templates in priority order: a pand with several POIs takes the earliest (a chain over a type). Tiers (David,
  * 2026-11-14): chains, coffeeshops, smart/headshops, brown cafes and bike shops first; then food types; then the
  * tourist tier; gelato and exchange last.
@@ -196,12 +206,40 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   exchange: { fascia: '#0a3d91', letters: '#ffffff', word: 'EXCHANGE', content: 'stickers', lit: true },
 };
 
+export const TRADE_WORDS = /^(BAKKERIJ|BAKKER|WARME|BANKETBAKKERIJ|KEURSLAGERIJ|SLAGERIJ|SLAGER|GROENTE|FRUIT|GROENTEN|RESTAURANT|SNACKBAR|SIGARENMAGAZIJN|TABAK|KAAS|KAASHANDEL)$/;
+/** A name's words with trade words dropped when the business's own name remains; the trade alone otherwise. */
+export const ownWords = (all: string[]): string[] => { const own = all.filter(w => !TRADE_WORDS.test(w)); return own.length ? own : all; };
+/** The fascia text for a staged word: drops a trade word when the own name is also staged. A row staged before round 3b
+ *  that kept only the trade ('BAKKERIJ' for Bakkerij Verhagen, the name cut at 14 chars) needs a re-stage to recover it. */
+export const signText = (word: string): string => ownWords(word.split(/\s+/).filter(Boolean)).join(' ');
 /** The lettering for a POI's name on a fascia: the block-letter alphabet's characters only (A-Z, 0-9, space), accents
  *  folded, generic words ("Coffeeshop", "Café") dropped, at most 14 characters; '' when nothing is left. */
 export function signWord(name: string): string {
   const folded = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9 ]+/g, ' ');
-  const words = folded.split(/\s+/).filter(w => w && !/^(COFFEESHOP|COFFEE|SHOP|CAFE|EETCAFE|AMSTERDAM|BV|THE|DE|HET)$/.test(w));
+  const all = folded.split(/\s+/).filter(w => w && !/^(COFFEESHOP|COFFEE|SHOP|CAFE|EETCAFE|AMSTERDAM|BV|THE|DE|HET)$/.test(w));
+  // Round 3b: a trade word (Bakkerij Verhagen, Keurslagerij Pouw) gives way to the business's own name when there is one;
+  // a name that is only the trade keeps it.
+  const words = ownWords(all);
   let out = '';
   for (const w of words) { const next = out ? `${out} ${w}` : w; if (next.length > 14) break; out = next; }
   return out || (words[0] ?? '').slice(0, 14);
+}
+
+/**
+ * Round 3c (lane retail-look-20261114): a pui's paint without evidence. The shop grammar's drawn paints (white, cream,
+ * pale grey...) put pale frames on shops that the photos show in dark timber or anthracite, and they read as toy-like.
+ * With the flag on, a guessed paint lighter than PALE_PUI_LUMA gives way to one of the dark paints, chosen per pand. A
+ * measured paint (a HouseSpec shopHex, a row-front trace, a street recipe's groundWallHex) is applied after this and
+ * keeps whatever colour it is.
+ */
+export const PALE_PUI_LUMA = 0.45;
+export const DARK_PUI_PAINTS = ['#2b2826', '#3a2a1f', '#26302b', '#33302c'] as const;
+export function evidencelessPuiPaint(hex: string, id: string): string {
+  const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+  if (!m) return hex;
+  const lin = (v: string) => { const c = parseInt(v, 16) / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  const luma = 0.2126 * lin(m[1]) + 0.7152 * lin(m[2]) + 0.0722 * lin(m[3]);
+  if (luma <= PALE_PUI_LUMA) return hex;
+  let h = 2166136261; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619);
+  return DARK_PUI_PAINTS[(h >>> 0) % DARK_PUI_PAINTS.length];
 }

@@ -2,11 +2,11 @@
 // or the business's lettering, window content just proud of the glass, and what stands on the pavement, built on the
 // street wall nearest the POI. Flat-colour triangles in the sign layer (threeBuildingMesh SignTri), so no texture
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
-import { wordRuns } from './blockLetters.js';
-import { TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { glyphLayout } from './retailLogos.js';
+import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
 export type V3 = [number, number, number];
-export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number };
+export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number; accentHex?: string };
 /** The wall: origin, unit direction along it, outward normal (x along, y out, z up). */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number };
 
@@ -14,6 +14,9 @@ export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: nu
 export const FRONT = {
   /** Board under the ground storey's top (m), its height and how far it stands out. */
   fasciaGapM: 0.12, fasciaM: 0.6, fasciaOutM: 0.12,
+  // Round 3b: letters and logos stand 3 cm proud of the board (raised letters). At 5 mm they z-fought the board at ride
+  // distance and read as dotted glyphs (Utrechtsestraat 61 zoom).
+  letterOutM: 0.03,
   /** The window content's zone: from the stall riser to a little under the fascia. */
   riserM: 0.5, headGapM: 0.18,
   /** Window content stands this far proud of the wall (the glass plane in the texture). */
@@ -85,6 +88,18 @@ class Builder {
     this.face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1], hex, lit);
     if (bottom) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1], hex, lit);
   }
+  /** Round 3c: a horizontal member drawn as the faces a rider sees: its front and its top (a sill, under the eye) or its
+   *  bottom (a transom bar, bead or cap, over it), with its ends only when asked. */
+  slab(a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, seen: 'top' | 'bottom', ends = false, lit?: boolean): void {
+    const P = this.P.bind(this), N = this.N.bind(this);
+    this.face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0), hex, lit);
+    const z = seen === 'top' ? z1 : z0;
+    this.face([P(a0, o0, z), P(a1, o0, z), P(a1, o1, z), P(a0, o1, z)], [0, 0, seen === 'top' ? 1 : -1], hex, lit);
+    if (ends) {
+      this.face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0), hex, lit);
+      this.face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0), hex, lit);
+    }
+  }
   /** A slim upright (mullion, post): its front and both ends, no top (nothing sees it under the fascia). */
   fin(a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string): void {
     const P = this.P.bind(this), N = this.N.bind(this);
@@ -98,15 +113,48 @@ class Builder {
     this.face([this.P(a0, 0.02, z0), this.P(a1, 0.02, z0), this.P(a1, out, z1), this.P(a0, out, z1)], [n[0] / l, n[1] / l, n[2] / l], hex);
     this.panel(a0, a1, out, z1 - 0.18, z1, hex);
   }
-  /** The block-letter word centred on [a0, a1] at height zMid, cells of at most `maxCell` m. */
-  word(text: string, a0: number, a1: number, zMid: number, o: number, maxCell: number, hex: string, lit: boolean): void {
-    const { runs, width } = wordRuns(text);
-    if (!runs.length) return;
-    const cell = Math.min(maxCell, (a1 - a0) / Math.max(1, width));
-    if (cell < 0.02) return;
-    const w0 = (a0 + a1) / 2 - (width * cell) / 2;
-    for (const r of runs) this.panel(w0 + r.c0 * cell, w0 + r.c1 * cell, o, zMid + (3.5 - r.row - 1) * cell, zMid + (3.5 - r.row) * cell, hex, lit);
+  /** The word centred on [a0, a1] at height zMid, letters at most `maxH` m tall, from the logo layer's lettering cell
+   *  (retailLogos.ts glyphLayout); the shortest form that fits at legible size (fitWord), else nothing: a plain board. */
+  word(text: string, a0: number, a1: number, zMid: number, o: number, maxH: number, hex: string, board: string, lit: boolean, layer: number | undefined): void {
+    if (layer === undefined) return;
+    const fit = fitWord(text, a1 - a0, maxH);
+    if (!fit) return;
+    const { quads, width } = glyphLayout(fit.text), h = fit.heightM, w0 = (a0 + a1) / 2 - (width * h) / 2;
+    for (const q of quads) {
+      const first = this.out.length;
+      this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer, q.rect);
+      for (const t of this.out.slice(first)) { t.hex = hex; t.accentHex = board; if (!lit) delete t.lit; }
+    }
   }
+}
+
+/**
+ * Round 3c (lane retail-look-20261114): fascia letters are one textured quad each from a bold sans in the logo layer
+ * (retailLogos.ts GLYPH_*), replacing the 5 x 7 block letters whose strips broke into dot matrices at ride distance.
+ * A letter quad's height: the caps are 0.725 of it and a stem 0.142 of it. At the smallest, 0.35 m, a stem is 5 cm,
+ * 2.6 css px at the first-person lens (72 deg, 900 px) from 12 m. A name that cannot reach it is not lettered at all.
+ */
+export const MIN_LETTER_H = 0.35;
+/** The tallest letter quad: caps 0.36 m on the 0.6 m board. */
+export const MAX_LETTER_H = 0.5;
+/** A stem's width as a share of the letter quad's height (Helvetica Neue Bold at the atlas's size). */
+export const LETTER_STEM = 0.142;
+/** CSS px of a `m`-metre stroke at the first-person lens from `distM` (the acceptance pose: 72 deg, 900 px, 12 m). */
+export const strokePx = (m: number, distM = 12, vfovDeg = 72, heightPx = 900) => m * (heightPx / 2 / Math.tan(vfovDeg * Math.PI / 360)) / distM;
+
+/**
+ * The lettering a fascia `availM` wide draws: the whole text if it fits at a letter height of at least MIN_LETTER_H,
+ * else the longest leading run of whole words that does, else null (a plain board: broken letters read worse than none).
+ */
+export function fitWord(text: string, availM: number, maxH: number): { text: string; heightM: number; widthM: number } | null {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  for (let k = words.length; k >= 1; k--) {
+    const t = words.slice(0, k).join(' '), { quads, width } = glyphLayout(t);
+    if (!quads.length || width <= 0) continue;
+    const heightM = Math.min(maxH, availM / width);
+    if (heightM >= MIN_LETTER_H - 1e-9) return { text: t, heightM, widthM: width * heightM };
+  }
+  return null;
 }
 
 const PRODUCT = ['#d8452f', '#f2b92e', '#3f8f4a', '#2f6fb0', '#e8e2d2', '#c0392b', '#7cb342', '#ee7f2c'];
@@ -129,7 +177,7 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       for (let row = 0; row < rows; row++) {
         const zr0 = z0 + h * (row + 0.18) / rows, zr1 = Math.min(under, z0 + h * (row + 0.8) / rows);
         if (zr1 - zr0 < 0.05) continue;
-        if (look.content === 'shelves') b.panel(a0, a1, o + 0.004, zr0 - 0.035, zr0, '#d9d4c8', lit);
+        if (look.content === 'shelves') b.panel(a0, a1, o + 0.008, zr0 - 0.035, zr0, '#d9d4c8', lit);
         for (let a = a0 + 0.05, k = 0, st = step; a < a1 - step * 0.6; a += st, k++) {
           st = step * (look.content === 'shelves' ? 0.6 + 0.8 * r(`sw${row}:${k}`) : 1);
           const hex = look.content === 'ducks' ? (r(`d${row}:${k}`) < 0.88 ? '#ffd21f' : '#ff8a1f')
@@ -139,7 +187,7 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
             : look.content === 'souvenirs' ? ['#1f4f9c', '#ffffff', '#e8572d', '#d9302f', '#f2b92e'][Math.floor(r(`v${row}:${k}`) * 5)]
             : look.content === 'deli' ? (row === 0 ? '#c9b79a' : PRODUCT[Math.floor(r(`p${row}:${k}`) * PRODUCT.length)])
             : PRODUCT[Math.floor(r(`p${row}:${k}`) * PRODUCT.length)];
-          b.panel(a, Math.min(a1, a + st * (look.content === 'books' ? 0.85 : 0.82)), o + 0.005, zr0, look.content === 'books' ? zr1 - r(`h${row}:${k}`) * 0.06 : zr1, hex, lit);
+          b.panel(a, Math.min(a1, a + st * (look.content === 'books' ? 0.85 : 0.82)), o + 0.01, zr0, look.content === 'books' ? zr1 - r(`h${row}:${k}`) * 0.06 : zr1, hex, lit);
         }
       }
       // Cheese wheels stand in stacks; a counter runs along the deli's foot.
@@ -150,21 +198,21 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       // FEBO's wall of small heated doors: a steel grid, every cell lit warm.
       b.panel(a0, a1, o, z0, z1, '#b7b9b8');
       const cols = Math.max(2, Math.floor(w / 0.45)), rows = 4, cw = w / cols, ch = h / rows;
-      for (let c = 0; c < cols; c++) for (let row = 0; row < rows; row++) b.panel(a0 + c * cw + 0.04, a0 + (c + 1) * cw - 0.04, o + 0.005, z0 + row * ch + 0.04, z0 + (row + 1) * ch - 0.04, r(`f${c}:${row}`) < 0.85 ? '#ffd27a' : '#e8a23a', true);
+      for (let c = 0; c < cols; c++) for (let row = 0; row < rows; row++) b.panel(a0 + c * cw + 0.04, a0 + (c + 1) * cw - 0.04, o + 0.01, z0 + row * ch + 0.04, z0 + (row + 1) * ch - 0.04, r(`f${c}:${row}`) < 0.85 ? '#ffd27a' : '#e8a23a', true);
       break;
     }
     case 'barGlow': {
       // A brown cafe: dark inside, a warm glint behind the glass here and there (lamps), never a lit fill.
       b.panel(a0, a1, o, z0, z1, '#1e130c');
       const panes = Math.max(2, Math.round(w / 0.42)), pw = w / panes;
-      for (let k = 0; k < panes; k++) if (r(`g${k}`) < 0.45) { const c = a0 + pw * (k + 0.5) + (r(`gx${k}`) - 0.5) * pw * 0.3, zc = z0 + h * (0.45 + 0.25 * r(`gz${k}`)); b.panel(c - 0.06, c + 0.06, o + 0.004, zc - 0.04, zc + 0.04, '#c88a46', true); }
+      for (let k = 0; k < panes; k++) if (r(`g${k}`) < 0.45) { const c = a0 + pw * (k + 0.5) + (r(`gx${k}`) - 0.5) * pw * 0.3, zc = z0 + h * (0.45 + 0.25 * r(`gz${k}`)); b.panel(c - 0.06, c + 0.06, o + 0.008, zc - 0.04, zc + 0.04, '#c88a46', true); }
       // Round 3: no bars of its own; the pui's mullions and transom lights divide the glass (retailFrontTris).
       break;
     }
     case 'curtains': {
       // A pancake house: warm light, a checked half curtain.
       b.panel(a0, a1, o, z0, z1, '#d58a2e', true);
-      b.panel(a0, a1, o + 0.004, z0, z0 + h * 0.5, '#e8e2d2', false);
+      b.panel(a0, a1, o + 0.008, z0, z0 + h * 0.5, '#e8e2d2', false);
       for (let a = a0, k = 0; a < a1; a += 0.12, k++) if (k % 2) b.panel(a, Math.min(a1, a + 0.12), o + 0.008, z0 + h * 0.25, z0 + h * 0.5, '#b8302a');
       const panes = Math.max(2, Math.round(w / 0.4));
       for (let k = 1; k < panes; k++) { const a = a0 + (w * k) / panes; b.panel(a - 0.025, a + 0.025, o + 0.01, z0 + h * 0.5, z1, '#2b1a12'); }
@@ -176,7 +224,7 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       b.panel(a0, a1, o, z0, z1, look.content === 'bainMarie' ? '#e9d9b4' : '#f1e6cf', lit);
       const mb = Math.max(1, Math.floor(w / 0.9)), mw = w / mb;
       for (let k = 0; k < mb; k++) {
-        b.panel(a0 + k * mw + 0.05, a0 + (k + 1) * mw - 0.05, o + 0.005, z1 - h * 0.32, z1 - 0.05, look.content === 'menu' ? '#2a2a2a' : '#fff6d8', true);
+        b.panel(a0 + k * mw + 0.05, a0 + (k + 1) * mw - 0.05, o + 0.01, z1 - h * 0.32, z1 - 0.05, look.content === 'menu' ? '#2a2a2a' : '#fff6d8', true);
         for (let line = 0; line < 4; line++) b.panel(a0 + k * mw + 0.12, a0 + k * mw + mw * (0.5 + 0.4 * r(`l${k}:${line}`)), o + 0.01, z1 - h * 0.3 + line * h * 0.065, z1 - h * 0.3 + line * h * 0.065 + 0.03, look.content === 'menu' ? '#f6e27a' : '#7a1f12', true);
       }
       b.box(a0 + 0.05, a1 - 0.05, o, o + 0.1, z0, z0 + h * 0.42, look.content === 'menu' ? '#b03024' : '#b9bcbd', false);
@@ -186,14 +234,14 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
     }
     case 'meat': {
       b.panel(a0, a1, o, z0, z1, '#f4f4f2', lit);
-      for (let a = a0 + 0.1; a < a1 - 0.2; a += 0.25) b.panel(a, a + 0.18, o + 0.005, z0 + h * 0.3, z0 + h * 0.42, r(`m${a.toFixed(2)}`) < 0.5 ? '#b3262b' : '#d9707a', lit);
+      for (let a = a0 + 0.1; a < a1 - 0.2; a += 0.25) b.panel(a, a + 0.18, o + 0.01, z0 + h * 0.3, z0 + h * 0.42, r(`m${a.toFixed(2)}`) < 0.5 ? '#b3262b' : '#d9707a', lit);
       b.box(a0 + 0.05, a1 - 0.05, o, o + 0.1, z0, z0 + h * 0.3, '#e6e6e4', lit);
       break;
     }
     case 'produce': case 'bowls': {
       b.panel(a0, a1, o, z0, z1, look.content === 'bowls' ? '#f4f6ef' : '#5a5148', lit);
       for (let a = a0 + 0.1, k = 0; a < a1 - 0.3; a += 0.35, k++) {
-        b.panel(a, a + 0.28, o + 0.005, z0 + h * 0.25, z0 + h * 0.45, look.content === 'bowls' ? '#3f8f4a' : PRODUCT[Math.floor(r(`g${k}`) * PRODUCT.length)], lit);
+        b.panel(a, a + 0.28, o + 0.01, z0 + h * 0.25, z0 + h * 0.45, look.content === 'bowls' ? '#3f8f4a' : PRODUCT[Math.floor(r(`g${k}`) * PRODUCT.length)], lit);
         if (look.content === 'bowls') b.panel(a + 0.04, a + 0.24, o + 0.01, z0 + h * 0.6, z0 + h * 0.85, '#6aa84f', lit);
       }
       break;
@@ -201,21 +249,21 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
     case 'frosted': {
       // A coffeeshop: frosted or painted glass, dark inside, the green-and-white licence sticker by the door.
       b.panel(a0, a1, o, z0, z1, '#9fae9a');
-      b.panel(a0, a1, o + 0.004, z0 + h * 0.62, z1, '#24302a');
+      b.panel(a0, a1, o + 0.008, z0 + h * 0.62, z1, '#24302a');
       b.panel(a1 - 0.35, a1 - 0.17, o + 0.008, z0 + h * 0.45, z0 + h * 0.57, '#1f8a3a', true);
       b.panel(a1 - 0.33, a1 - 0.19, o + 0.012, z0 + h * 0.48, z0 + h * 0.54, '#ffffff', true);
       break;
     }
     case 'neon': {
       b.panel(a0, a1, o, z0, z1, '#1b1426');
-      for (let k = 0; k < 4; k++) { const z = z0 + h * (0.25 + 0.17 * k), x0 = a0 + w * 0.1 + r(`n${k}`) * w * 0.2; b.panel(x0, x0 + w * (0.3 + 0.3 * r(`nw${k}`)), o + 0.006, z, z + 0.045, ['#ff4fd8', '#3fe0ff', '#9dff4f', '#ffb13f'][k], true); }
-      for (let a = a0 + 0.1, k = 0; a < a1 - 0.2; a += 0.22, k++) b.panel(a, a + 0.16, o + 0.004, z0 + 0.05, z0 + h * 0.2, PRODUCT[k % PRODUCT.length]);
+      for (let k = 0; k < 4; k++) { const z = z0 + h * (0.25 + 0.17 * k), x0 = a0 + w * 0.1 + r(`n${k}`) * w * 0.2; b.panel(x0, x0 + w * (0.3 + 0.3 * r(`nw${k}`)), o + 0.014, z, z + 0.045, ['#ff4fd8', '#3fe0ff', '#9dff4f', '#ffb13f'][k], true); }
+      for (let a = a0 + 0.1, k = 0; a < a1 - 0.2; a += 0.22, k++) b.panel(a, a + 0.16, o + 0.008, z0 + 0.05, z0 + h * 0.2, PRODUCT[k % PRODUCT.length]);
       break;
     }
     case 'bikes': {
       // Racked bikes behind the glass: a darker shop, rows of frames.
       b.panel(a0, a1, o, z0, z1, '#3b3f42');
-      for (let a = a0 + 0.2, k = 0; a < a1 - 0.5; a += 0.42, k++) { const hex = ['#1c1c1c', '#2f5d8a', '#7a1f2b', '#e8e2d2'][k % 4]; b.panel(a, a + 0.06, o + 0.005, z0 + 0.05, z0 + 0.75, hex); b.panel(a - 0.15, a + 0.25, o + 0.006, z0 + 0.62, z0 + 0.67, hex); }
+      for (let a = a0 + 0.2, k = 0; a < a1 - 0.5; a += 0.42, k++) { const hex = ['#1c1c1c', '#2f5d8a', '#7a1f2b', '#e8e2d2'][k % 4]; b.panel(a, a + 0.06, o + 0.01, z0 + 0.05, z0 + 0.75, hex); b.panel(a - 0.15, a + 0.25, o + 0.014, z0 + 0.62, z0 + 0.67, hex); }
       break;
     }
     case 'redGlow': {
@@ -224,7 +272,7 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       for (let k = 0; k < doors; k++) {
         const d0 = a0 + k * dw + 0.08, d1 = a0 + (k + 1) * dw - 0.08, purple = r(`rl${k}`) < 0.3;
         b.panel(d0, d1, o, z0 - FRONT.riserM + 0.05, z1, purple ? '#8a2ad0' : '#d8102e', true);
-        b.panel(d0, d0 + (d1 - d0) * (0.25 + 0.15 * r(`c${k}`)), o + 0.004, z0 - FRONT.riserM + 0.05, z1, '#5a0a1e');
+        b.panel(d0, d0 + (d1 - d0) * (0.25 + 0.15 * r(`c${k}`)), o + 0.008, z0 - FRONT.riserM + 0.05, z1, '#5a0a1e');
         const t = 0.035, hex = look.tube ?? '#ff2a3a';
         b.panel(d0 - t, d1 + t, o + 0.008, z1, z1 + t, hex, true); b.panel(d0 - t, d0, o + 0.008, z0 - FRONT.riserM + 0.05, z1, hex, true); b.panel(d1, d1 + t, o + 0.008, z0 - FRONT.riserM + 0.05, z1, hex, true);
       }
@@ -235,30 +283,30 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       // at every height, a blue-and-yellow lottery card or two (plain, no brand artwork).
       b.panel(a0, a1, o, z0, z1, '#3a332c');
       const CARDS = ['#d9302f', '#1a3a8f', '#ffd200', '#f4efe2', '#2f7d32', '#e8572d', '#7a1f6e', '#1d1d1b', '#c9a227'];
-      for (let a = a0 + 0.04, k = 0; a < a1 - 0.08; a += 0.09, k++) b.panel(a, a + 0.07, o + 0.004, z0 + 0.02, z0 + 0.18 + 0.12 * r(`c${k}`), CARDS[Math.floor(r(`cc${k}`) * CARDS.length)], true);
+      for (let a = a0 + 0.04, k = 0; a < a1 - 0.08; a += 0.09, k++) b.panel(a, a + 0.07, o + 0.008, z0 + 0.02, z0 + 0.18 + 0.12 * r(`c${k}`), CARDS[Math.floor(r(`cc${k}`) * CARDS.length)], true);
       for (let k = 0; k < Math.max(4, Math.round(w * 3.5)); k++) {
         const cw = 0.16 + 0.22 * r(`w${k}`), ch = 0.12 + 0.22 * r(`h${k}`), ca = a0 + (w - cw) * r(`x${k}`), cz = z0 + 0.3 + (h - 0.3 - ch) * r(`z${k}`);
-        b.panel(ca, ca + cw, o + 0.006 + 0.001 * (k % 5), cz, cz + ch, CARDS[Math.floor(r(`p${k}`) * CARDS.length)], true);
+        b.panel(ca, ca + cw, o + 0.014 + 0.002 * (k % 5), cz, cz + ch, CARDS[Math.floor(r(`p${k}`) * CARDS.length)], true);
       }
       for (let k = 0; k < Math.max(1, Math.floor(w / 1.6)); k++) { const ca = a0 + 0.15 + k * 1.6; if (ca + 0.5 > a1) break; b.panel(ca, ca + 0.5, o + 0.013, z1 - 0.42, z1 - 0.08, '#1a3a8f', true); b.panel(ca + 0.05, ca + 0.45, o + 0.016, z1 - 0.3, z1 - 0.2, '#ffd200', true); }
       break;
     }
     case 'stickers': {
       b.panel(a0, a1, o, z0, z1, '#e9ece9', lit);
-      for (let a = a0 + 0.1, k = 0; a < a1 - 0.3; a += 0.3, k++) b.panel(a, a + 0.24, o + 0.005, z1 - h * 0.45, z1 - h * 0.15, ['#ffdd00', '#1d1d1b', '#d9302f', '#2f6fb0'][k % 4], lit);
-      for (let row = 0; row < 3; row++) for (let a = a0 + 0.15; a < a1 - 0.2; a += 0.22) b.panel(a, a + 0.14, o + 0.005, z0 + h * (0.1 + row * 0.12), z0 + h * (0.17 + row * 0.12), '#3a3a3a');
+      for (let a = a0 + 0.1, k = 0; a < a1 - 0.3; a += 0.3, k++) b.panel(a, a + 0.24, o + 0.01, z1 - h * 0.45, z1 - h * 0.15, ['#ffdd00', '#1d1d1b', '#d9302f', '#2f6fb0'][k % 4], lit);
+      for (let row = 0; row < 3; row++) for (let a = a0 + 0.15; a < a1 - 0.2; a += 0.22) b.panel(a, a + 0.14, o + 0.01, z0 + h * (0.1 + row * 0.12), z0 + h * (0.17 + row * 0.12), '#3a3a3a');
       break;
     }
     case 'jars': {
       // A notenbar: rows of glass bins, each a warm nut or fruit colour, on pale shelving.
       b.panel(a0, a1, o, z0, z1, '#f4efe2', lit);
       const NUTS = ['#b07a3c', '#d9a35a', '#7a4a22', '#e8c27a', '#9c2f2f', '#5f7d2a', '#c46a2a'];
-      for (let row = 0; row < 3; row++) for (let a = a0 + 0.08, k = 0; a < a1 - 0.25; a += 0.28, k++) b.panel(a, a + 0.22, o + 0.005, z0 + h * (0.12 + row * 0.3), z0 + h * (0.34 + row * 0.3), NUTS[Math.floor(r(`j${row}:${k}`) * NUTS.length)], lit);
+      for (let row = 0; row < 3; row++) for (let a = a0 + 0.08, k = 0; a < a1 - 0.25; a += 0.28, k++) b.panel(a, a + 0.22, o + 0.01, z0 + h * (0.12 + row * 0.3), z0 + h * (0.34 + row * 0.3), NUTS[Math.floor(r(`j${row}:${k}`) * NUTS.length)], lit);
       break;
     }
     case 'waffles': {
       b.panel(a0, a1, o, z0, z1, '#ffe3ef', true);
-      for (let row = 0; row < 3; row++) for (let a = a0 + 0.1; a < a1 - 0.15; a += 0.16) b.panel(a, a + 0.11, o + 0.005, z0 + h * (0.2 + row * 0.22), z0 + h * (0.34 + row * 0.22), row === 2 ? '#7a3b1a' : r(`w${row}${a.toFixed(2)}`) < 0.5 ? '#c98a3a' : '#e85a8c', true);
+      for (let row = 0; row < 3; row++) for (let a = a0 + 0.1; a < a1 - 0.15; a += 0.16) b.panel(a, a + 0.11, o + 0.01, z0 + h * (0.2 + row * 0.22), z0 + h * (0.34 + row * 0.22), row === 2 ? '#7a3b1a' : r(`w${row}${a.toFixed(2)}`) < 0.5 ? '#c98a3a' : '#e85a8c', true);
       break;
     }
   }
@@ -269,8 +317,9 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
   if (!look.pavement) return;
   if (look.pavement === 'crates') {
     for (let a = a0 + 0.3, k = 0; a < a1 - 0.6; a += 0.62, k++) {
-      b.box(a, a + 0.52, 0.15, 0.75, base, base + 0.62, '#7a5a3a');
-      b.box(a + 0.02, a + 0.5, 0.17, 0.73, base + 0.62, base + 0.7, PRODUCT[Math.floor(hash01(`${seed}:cr${k}`) * PRODUCT.length)]);
+      // Round 3c (cost): front and top of each crate and of the produce in it.
+      b.slab(a, a + 0.52, 0.15, 0.75, base, base + 0.62, '#7a5a3a', 'top');
+      b.slab(a + 0.02, a + 0.5, 0.17, 0.73, base + 0.62, base + 0.7, PRODUCT[Math.floor(hash01(`${seed}:cr${k}`) * PRODUCT.length)], 'top');
     }
   } else if (look.pavement === 'racks' || look.pavement === 'boards') {
     for (const a of [a0 + 0.4, a1 - 1.0]) if (a + 0.6 <= a1 && a >= a0) {
@@ -281,8 +330,10 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
     // A row of bikes parked nose-in to the wall (side-on to the street): wheel discs as thin boxes, a top tube.
     for (let a = a0 + 0.3, k = 0; a < a1 - 0.3; a += 0.55, k++) {
       const hex = ['#1c1c1c', '#2a3a48', '#7a1f2b', '#2f5d3a'][k % 4];
-      b.box(a, a + 0.05, 0.25, 0.9, base + 0.55, base + 0.6, hex);
-      for (const o of [0.35, 0.8]) b.box(a - 0.01, a + 0.06, o - 0.3, o + 0.3, base, base + 0.62, '#2a2a2a');
+      // Round 3c (cost): the wheels as their two discs (faces along the street), the top tube as its top.
+      const P = b.P.bind(b), N = b.N.bind(b);
+      b.face([P(a, 0.25, base + 0.6), P(a + 0.05, 0.25, base + 0.6), P(a + 0.05, 0.9, base + 0.6), P(a, 0.9, base + 0.6)], [0, 0, 1], hex);
+      for (const o of [0.35, 0.8]) for (const [x, n] of [[a - 0.01, -1], [a + 0.06, 1]] as const) b.face([P(x, o - 0.3, base), P(x, o + 0.3, base), P(x, o + 0.3, base + 0.62), P(x, o - 0.3, base + 0.62)], N(n, 0, 0), '#2a2a2a');
     }
   }
 }
@@ -294,6 +345,11 @@ export type RetailFrontInput = {
   door?: { a0: number; a1: number; depthM: number };
   /** The chain's logo: the logo layer and its rect there (retailLogos.ts). */
   logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number };
+  /** Round 3c: the logo layer, whose lettering cell letters the name; absent: no lettering (a plain board). */
+  letters?: number;
+  /** Round 3c: the building's shop cell and its glass's uv rect: each pane's interior is one quad of it. Absent: the
+   *  flat-colour goods. */
+  interior?: { layer: number; rect: readonly [number, number, number, number] };
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -321,13 +377,12 @@ export function retailDoor(input: Pick<RetailFrontInput, 'template' | 'door' | '
   return atStart ? { a0: s0 + FRONT.postM, a1: s0 + FRONT.postM + w, depthM: FRONT.recessM } : { a0: s1 - FRONT.postM - w, a1: s1 - FRONT.postM, depthM: FRONT.recessM };
 }
 
-/** A shop door: a slim frame round a tall glass leaf over a kick plate, and a bar handle; at `o` from the wall. */
+/** A shop door: a slim frame round a tall glass leaf over a kick plate; at `o` from the wall. */
 function doorUnit(b: Builder, d0: number, d1: number, o: number, base: number, head: number, frame: string): void {
   const f = 0.06;
   b.panel(d0, d1, o, base, head, frame);
-  b.panel(d0 + f, d1 - f, o + 0.005, base + 0.28, head - f, glassTone('#4a4642', 0.6));
-  b.panel(d0 + f, d1 - f, o + 0.006, base + 0.28 + (head - base) * 0.55, head - f, '#5c6468');
-  b.panel(d1 - f - 0.12, d1 - f - 0.09, o + 0.012, base + 0.85, base + 1.35, '#b8b0a0');
+  b.panel(d0 + f, d1 - f, o + 0.01, base + 0.28, head - f, glassTone('#4a4642', 0.6));
+  // Round 3c (cost): the leaf's reflection and the handle are gone; in the recess's shadow they read as nothing.
 }
 
 /** A hex a step darker (k < 1) or lighter (k > 1), kept in gamut. */
@@ -346,10 +401,11 @@ function glass(b: Builder, look: TemplateLook, a0: number, a1: number, z0: numbe
   content(b, look, a0, a1, z0, z1, seed);
   if (!OWN_LIGHT.has(look.content)) for (const t of b.out.slice(first)) t.hex = glassTone(t.hex, look.lit ? 0.62 : 0.68);
   if (look.content === 'redGlow') return;
-  const h = (z1 - z0) * FRONT.reflectShare, o = FRONT.contentOutM + 0.02;
+  const h = (z1 - z0) * FRONT.reflectShare, o = FRONT.contentOutM + 0.025;
   REFLECT.forEach((hex, k) => b.panel(a0, a1, o, z1 - h * (k + 1) / REFLECT.length, z1 - h * k / REFLECT.length, hex));
 }
-const REFLECT = ['#9eaab2', '#7c868c'] as const;
+// Round 3b tone: the photos' shop glass measures darker than round 3's sky (mean ground L 0.37 against 0.43 drawn).
+const REFLECT = ['#7d878e', '#5f676c'] as const;
 
 /**
  * The template's front on the wall `e` over [s0, s1] (metres along it), ground storey [base, base + groundM].
@@ -369,14 +425,16 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const frame = look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
   const timber = look.surround ?? frame, riser = look.surround ?? shadeHex(frame, 1.12);
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
-  b.box(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, look.lit, true);
-  b.box(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, look.cap ?? shadeHex(look.fascia, 0.72), false, true);
-  b.box(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, false, true);
-  const word = look.word === 'name' ? input.word : look.word;
+  // Round 3c (cost): each member draws the faces a rider sees (Builder.slab): the board and cap their front, underside
+  // and the board's ends, the cap and bead their front and underside.
+  b.slab(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, 'bottom', true, look.lit);
+  b.slab(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, look.cap ?? shadeHex(look.fascia, 0.72), 'bottom');
+  b.slab(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, 'bottom');
+  const word = look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
   if (input.logo) {
     const hM = FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
-    b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + 0.006, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
-  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + 0.005, 0.06, look.letters, look.lit);
+    b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
+  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_H, look.letters, look.fascia, look.lit, input.letters);
   const windows = look.content === 'redGlow';
   // End posts: the pui's frame against the neighbours, in the timber or the frame colour.
   if (!windows) { b.fin(s0, s0 + FRONT.postM, 0, FRONT.frameOutM, base, puiTop, timber); b.fin(s1 - FRONT.postM, s1, 0, FRONT.frameOutM, base, puiTop, timber); }
@@ -384,41 +442,51 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (door) {
     const d = door.depthM, { a0: d0, a1: d1 } = door;
     // The recess: reveals, soffit and a tiled step floor, the door at the back (the mesher cuts the wall over [d0, d1] x [base, head]).
-    const rev = shadeHex(timber, 1.18);
+    // Round 3b tone: the recess reads as a deep shadow in the photos, not a lit reveal.
+    const rev = shadeHex(timber, 0.6);
     b.face([b.P(d0, -d, base), b.P(d0, 0, base), b.P(d0, 0, head), b.P(d0, -d, head)], b.N(1, 0, 0), rev);
     b.face([b.P(d1, -d, base), b.P(d1, 0, base), b.P(d1, 0, head), b.P(d1, -d, head)], b.N(-1, 0, 0), rev);
     b.face([b.P(d0, -d, head), b.P(d1, -d, head), b.P(d1, 0, head), b.P(d0, 0, head)], [0, 0, -1], '#2a2622');
-    b.face([b.P(d0, -d, base + 0.02), b.P(d1, -d, base + 0.02), b.P(d1, 0, base + 0.02), b.P(d0, 0, base + 0.02)], [0, 0, 1], '#8a8178');
+    b.face([b.P(d0, -d, base + 0.02), b.P(d1, -d, base + 0.02), b.P(d1, 0, base + 0.02), b.P(d0, 0, base + 0.02)], [0, 0, 1], '#4a4540');
     doorUnit(b, d0, d1, -d, base + 0.02, head, frame);
     // Frame round the opening on the glass line, and the transom light over it.
-    b.fin(d0 - FRONT.mullionM, d0, 0, FRONT.frameOutM - 0.02, base, puiTop, frame);
-    b.fin(d1, d1 + FRONT.mullionM, 0, FRONT.frameOutM - 0.02, base, puiTop, frame);
+    b.panel(d0 - FRONT.mullionM, d0, FRONT.frameOutM - 0.02, base, puiTop, frame);
+    b.panel(d1, d1 + FRONT.mullionM, FRONT.frameOutM - 0.02, base, puiTop, frame);
   }
   // The glass either side of the door: riser, sill, glass to the transom bar, mullions, the transom lights above.
   const zr = base + FRONT.riserM;
   const segs: Array<[number, number]> = windows ? [[s0 + 0.1, s1 - 0.1]]
     : door ? [[s0 + FRONT.postM, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, s1 - FRONT.postM]] : [[s0 + FRONT.postM, s1 - FRONT.postM]];
-  const lightHex = glassTone('#7f8b93', 0.25);
+  const lightHex = glassTone('#7f8b93', 0.5);
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
-  if (door && puiTop - head > 0.25) b.box(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame);
+  if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
   for (const [c0, c1] of segs) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
     if (windows) { content(b, look, c0, c1, zr, puiTop - FRONT.headGapM, input.seed); continue; }
     const panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
-    // Stall riser: a sunk panel per pane in the riser colour, a sill over it.
+    // Stall riser in the riser colour, a sill over it (round 3c: one riser panel; the per-pane sunk panels were 2 tris a
+    // pane nobody reads at ride distance).
     b.panel(c0, c1, 0.015, base, zr, riser);
-    for (let k = 0; k < panes; k++) b.panel(c0 + k * pw + 0.07, c0 + (k + 1) * pw - 0.07, 0.025, base + 0.09, zr - 0.1, shadeHex(riser, 0.85));
-    b.box(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame);
-    glass(b, look, c0, c1, zr, head, input.seed);
+    b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
+    if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
+      // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
+      // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
+      for (let k = 0; k < panes; k++) {
+        const first = b.out.length;
+        b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
+        for (const t of b.out.slice(first)) delete t.lit;
+      }
+    } else glass(b, look, c0, c1, zr, head, input.seed);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
     if (hasLights) {
-      b.box(c0, c1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame);
+      b.slab(c0, c1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
       b.panel(c0, c1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
     }
-    for (let k = 1; k < panes; k++) { const a = c0 + k * pw; b.fin(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, 0, FRONT.frameOutM - 0.03, zr, puiTop, frame); }
+    // Mullions: their fronts only (round 3c: the 6 cm ends were 4 tris each).
+    for (let k = 1; k < panes; k++) { const a = c0 + k * pw; b.panel(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, FRONT.frameOutM - 0.03, zr, puiTop, frame); }
     // Transom lights carry their own glazing bars (two per pane) on cafés and small-paned fronts.
-    if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.04, head + FRONT.transomM, puiTop, frame); }
+    if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
   if (look.awning) b.slope(s0, s1, 1.1, bottom - 0.05, bottom - 0.55, look.awning);
   if (look.blade) {

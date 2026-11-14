@@ -8,7 +8,7 @@ import { BAY_ENTRIES, BAY_LAYER_COUNT, bayVariant } from '../bayLook.js';
 import { paintGlassBlockCell } from '../glassBlockTexture.js';
 import { SHOP_KINDS, bayTextures, releaseBayTextures, type Look } from '../bayTextures.js';
 import { retailGroundOn } from '../retailTemplates.js';
-import { LOGO_ATLAS_PATH, retailLogoLayer } from '../retailLogos.js';
+import { glyphCellBox, LOGO_ATLAS_PATH, retailLogoLayer } from '../retailLogos.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
@@ -191,8 +191,20 @@ async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: numbe
   ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, size, size);
   try { const image = new Image(); image.src = new URL(LOGO_ATLAS_PATH, document.baseURI).href; await image.decode(); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(image, 0, 0, size, size); } catch { /* white board */ }
   const pixels = ctx.getImageData(0, 0, size, size).data;
+  // Round 3c (lane retail-look): the lettering cell is white, its glyph coverage in the tint channel (the letters'
+  // colour) and the rest in the accent channel (the board's), so a letter quad takes both from its triangle.
+  const g = glyphCellBox(), gx0 = Math.round(g.x * size), gx1 = Math.round((g.x + g.w) * size), gy0 = Math.round(g.y * size), gy1 = Math.round((g.y + g.h) * size);
+  // An atlas without the lettering cell (a stale publish, or none loaded: that cell is white) letters nothing: the
+  // whole cell takes the board's colour, so a letter quad reads as plain board, never as a solid block.
+  const lettered = pixels[((gy0 + 1) * size + gx0 + 1) * 4] < 32;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-    const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
+    const iy = size - 1 - y, from = (iy * size + x) * 4, at = layer * px + y * size + x;
+    if (x >= gx0 && x < gx1 && iy >= gy0 && iy < gy1) {
+      const cover = lettered ? pixels[from] : 0;
+      colour[at * 4] = colour[at * 4 + 1] = colour[at * 4 + 2] = 255; colour[at * 4 + 3] = 255;
+      mask[at * 2] = cover; mask[at * 2 + 1] = 255 - cover;
+      continue;
+    }
     colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255;
     mask[at * 2] = 0; mask[at * 2 + 1] = 0;
   }

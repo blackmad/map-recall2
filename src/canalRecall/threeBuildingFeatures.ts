@@ -44,7 +44,7 @@ import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
-import { RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { evidencelessPuiPaint, RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -235,6 +235,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       specLookOf(p), rowLook ? undefined : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
+    // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
+    // so a pale one goes dark; a measured paint (spec shopHex, row-front trace, a street recipe's groundWallHex) wins later.
+    if (retailGroundOn() && look === 'photo' && building.groundHex) building.groundHex = evidencelessPuiPaint(building.groundHex, id);
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
     if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
@@ -290,7 +293,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
