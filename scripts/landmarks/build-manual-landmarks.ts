@@ -6,6 +6,7 @@ import {buildTolstraat160Tempel} from './tolstraat-160-tempel-builder';
 import {buildDeNieuweLiefde} from './de-nieuwe-liefde-builder';
 import {buildRijksakademie} from './rijksakademie-builder';
 import {buildWerfKromhout} from './werf-kromhout-builder';
+import {buildConservatoriumVanAmsterdam} from './conservatorium-van-amsterdam-builder';
 import {buildToekomstmuziek} from './toekomstmuziek-builder';
 import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
@@ -677,6 +678,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-nieuwe-liefde')buildDeNieuweLiefde(w,d,helpers);
     else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);
     else if(id==='werf-kromhout')buildWerfKromhout(w,d,helpers);
+    else if(id==='conservatorium-van-amsterdam')buildConservatoriumVanAmsterdam(w,d,helpers);
     else if(id==='toekomstmuziek')buildToekomstmuziek(w,d,helpers);
     else if(id==='waag')buildWaag(w,d,helpers);
     else if(id==='scheepvaartmuseum')buildScheepvaartmuseum(w,d,helpers);

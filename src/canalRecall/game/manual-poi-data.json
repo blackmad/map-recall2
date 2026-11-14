@@ -3005,5 +3005,17 @@
       "https://api.data.amsterdam.nl/v1/bag/panden/0363100012180688/"
     ],
     "preferDescription": true
+  },
+  {
+    "modelId": "conservatorium-van-amsterdam",
+    "landmarkId": "conservatorium-van-amsterdam",
+    "name": "Conservatorium van Amsterdam",
+    "description": "The city's conservatory of music, part of the Amsterdam University of the Arts, with around 1,100 music students in classical music, jazz, early music, opera and more. Its glass building on the Oosterdokskade, designed by Frits van Dongen, opened in 2008. Inside are concert halls such as the Bernard Haitinkzaal and the Sweelinckzaal, a theatre, recording studios and a large foyer, while the teaching rooms sit in the middle of the building, each ringed by a corridor on a Japanese model.",
+    "funFact": "The conservatory grew out of a chain of mergers going back to the Amsterdamsch Conservatorium of 1884; from 1984 to 2008 it was housed in the former Rijkspostspaarbank on the Van Baerlestraat, which is now the Conservatorium Hotel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Conservatorium_van_Amsterdam",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012164965/"
+    ],
+    "preferDescription": true
   }
 ]

@@ -100007,6 +100007,207 @@
       "triangles": 4655,
       "bytes": 64492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "conservatorium-van-amsterdam": {
+      "id": "conservatorium-van-amsterdam",
+      "name": "Conservatorium van Amsterdam",
+      "landmarkId": "conservatorium-van-amsterdam",
+      "modelUrl": "./models/conservatorium-van-amsterdam.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012164965"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.908880409930225,
+          52.37608656213969
+        ],
+        "headingDegrees": 175.21130327699098,
+        "lengthMetres": 77.39,
+        "widthMetres": 21.77
+      },
+      "surveyed": {
+        "anchor": [
+          4.90890937,
+          52.37582784
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012164965 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "glass": "#2f474b",
+        "dark": "#1f2629",
+        "concrete": "#a7aba9",
+        "white": "#f2f2ee",
+        "stone": "#f2f2ee",
+        "blue": "#2f6fb2",
+        "red": "#b9653b"
+      },
+      "attribution": {
+        "title": "Conservatorium van Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Conservatorium_van_Amsterdam",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the curtain-wall grid, name and discs on the south front and the orange fin screen on the west side laid out from the 2022-2025 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.908673244012497,
+              52.37642477054173
+            ],
+            [
+              4.9087630101764175,
+              52.375770622469105
+            ],
+            [
+              4.908769599323288,
+              52.37575471391042
+            ],
+            [
+              4.908772094189075,
+              52.37575486779365
+            ],
+            [
+              4.908772669324831,
+              52.37575192215376
+            ],
+            [
+              4.908796147659657,
+              52.37575362580922
+            ],
+            [
+              4.908796721533578,
+              52.37575079700416
+            ],
+            [
+              4.908828327980527,
+              52.37575320756869
+            ],
+            [
+              4.908828917409593,
+              52.37575029793705
+            ],
+            [
+              4.908860465021817,
+              52.375752717243024
+            ],
+            [
+              4.908861054448772,
+              52.37574980761122
+            ],
+            [
+              4.908892749007397,
+              52.3757522185145
+            ],
+            [
+              4.908893353601633,
+              52.37574926400536
+            ],
+            [
+              4.908924944980363,
+              52.375751710434024
+            ],
+            [
+              4.908925534499988,
+              52.37574879181459
+            ],
+            [
+              4.9089571559281495,
+              52.375751175442154
+            ],
+            [
+              4.908957730373213,
+              52.37574829271248
+            ],
+            [
+              4.908989322239365,
+              52.37575069418743
+            ],
+            [
+              4.908989941608849,
+              52.37574773074979
+            ],
+            [
+              4.909021503912977,
+              52.375750150072165
+            ],
+            [
+              4.909022107917238,
+              52.37574724948614
+            ],
+            [
+              4.909053714083443,
+              52.37574968695246
+            ],
+            [
+              4.909054480974859,
+              52.37574666119626
+            ],
+            [
+              4.909085919506075,
+              52.375749664201756
+            ],
+            [
+              4.90908143034699,
+              52.375773760058365
+            ],
+            [
+              4.908993530401298,
+              52.376433685994044
+            ],
+            [
+              4.908987628084938,
+              52.37643356329317
+            ],
+            [
+              4.908673244012497,
+              52.37642477054173
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": -0.5,
+        "phi": 1.15
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.774755477905273,
+          -9.371648843625735e-7,
+          -67.41200256347656
+        ],
+        "max": [
+          11.973999977111816,
+          44.0890007019043,
+          9.281826972961426
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90890937,
+          52.37582784
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 175.21130327699098,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 76.69382953643799,
+        "heightMetres": 44.08900163906918,
+        "depthMetres": 27.74875545501709,
+        "depthCoverage": 1.2746327723939868
+      },
+      "triangles": 3063,
+      "bytes": 48380,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

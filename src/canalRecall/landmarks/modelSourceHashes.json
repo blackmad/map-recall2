@@ -1,5 +1,5 @@
 {
-  "toolchain": "4bd7e0d81193706a4b3181b53b45729abb90b38ed6ec68b54b5847b8e82d3b89",
+  "toolchain": "7f489b8e99de9c2b60b62d01e54513d35240c318702f8ca4c2906cc8072b834f",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -86,6 +86,7 @@
     "compagnietheater": "667404f838a5097b0a3002f4f662f94ade003dd3e4bc4bf0cd244962cd36f92f",
     "concertgebouw": "b9452c17950d55a5f7661b47258218b64ddbc4ab4b6a8a31c76f79cced9628c1",
     "conservatorium": "a918e73a80c944f64970a79743bc6bbb2cf49b688fdb6a62d77d13b44b4a1b53",
+    "conservatorium-van-amsterdam": "b8095521cc48e77ff6e4e65d3d6b23536f7b094c75deef3da0c842da4e7cd8e2",
     "coymanshuis": "11ca553b4238bfdb340942ab861b83a4646d776a6b8d82854029cf0fa04d8381",
     "cromhouthuizen": "a8987c9be23e1a3de4eb36af942a949d75dd956c8914c869baba1dde11486a56",
     "d-admiraal": "3b9edf2d19154e823fe2a66ea144c8cfe6230c08ed0b1a8e6984ab159aadd6db",
