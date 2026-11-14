@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "pandId": "0363100012169298",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "The front is wrapped in scaffolding and netting, with a van over the ground storey; only three window axes show through.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

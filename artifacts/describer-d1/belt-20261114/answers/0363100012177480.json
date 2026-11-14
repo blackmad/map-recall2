@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012177480",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177480.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "basement",
+  "doorSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white timber ground-storey frame with an entablature round the door and a wide window"
+  }
+ ],
+ "notes": "Dim light; the gable is a plain curved-sided top with no visible ornament.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

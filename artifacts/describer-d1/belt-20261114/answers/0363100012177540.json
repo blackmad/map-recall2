@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012177540",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177540.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "dormers",
+  "finish",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the edge of the right neighbour, but this low three-bay front holds most of it. A green site hoarding hides the lower ground storey; one white dormer stands behind the cornice.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

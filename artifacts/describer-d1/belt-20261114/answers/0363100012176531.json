@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012176531",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176531.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "finish",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped slate roof with corner finials rises behind the cornice"
+  }
+ ],
+ "notes": "Cars hide the plinth.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

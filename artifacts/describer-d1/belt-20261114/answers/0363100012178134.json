@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012178134",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178134.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "arched"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "storeyWindows",
+  "sameAs",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has two small round-headed lights in white frames flanking a centre window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the neck has a round-arched white cap and a white ornament over the gable window"
+  }
+ ],
+ "notes": "Tree branches and cables cross the front; a houseboat hides the basement.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012176673",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176673.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6
+ ],
+ "windows": "plain",
+ "storeyWindows": {
+  "1": "arched"
+ },
+ "heads": [
+  "flat",
+  "round",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 3,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "dormers",
+  "basement",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a curved central crest with a round oculus and a finial rises over the cornice above the door axis"
+  },
+  {
+   "component": "erker",
+   "what": "the centre first-floor window is a shallow projecting oriel with an arched light, over the door with a carved inscription panel"
+  }
+ ],
+ "notes": "Wide stone-faced office front behind a tree; window groups of three left and two right of the centre axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

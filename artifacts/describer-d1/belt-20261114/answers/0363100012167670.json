@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012167670",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167670.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 4,
+ "windows": "cross-transom",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "storeyParts.full",
+  "storeyParts.roof",
+  "bays",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stone bands, blocks and small pediment pieces over the windows set in red brick, Dutch-Renaissance-revival style"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the dark neighbour's left bay, but this red-and-white front holds most of it. A tree covers the door bay and the gable top.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

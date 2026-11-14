@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012168543",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168543.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorSurround",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a stone triangular pediment with a carved relief in its field stands over the middle three axes"
+  },
+  {
+   "component": "door",
+   "what": "a double stoop with iron railings rises to the central door"
+  }
+ ],
+ "notes": "The outline also takes in a narrow stone-faced one-axis annex on the right with its own small pediment; the wide five-axis house is described. A tree trunk covers the fourth axis.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

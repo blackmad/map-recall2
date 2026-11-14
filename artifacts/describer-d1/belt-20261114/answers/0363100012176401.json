@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012176401",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176401.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white stone festoon panels between the windows and white copings on the gable steps"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline sits a little left of the step-gable front; lower storeys hidden by a kiosk and a tree, so storey count not visible.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

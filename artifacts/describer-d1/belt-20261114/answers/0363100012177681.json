@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012177681",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177681.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "basement",
+  "doorSurround",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a tall round-arched window with a fanlight in the gable over a white console sill"
+  }
+ ],
+ "notes": "Dusk and haze; plants and a railing hide the souterrain. The gable has a few small steps up to a narrow top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

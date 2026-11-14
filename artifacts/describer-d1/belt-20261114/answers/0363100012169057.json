@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012169057",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169057.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "basement",
+  "finish",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "balustrade along the foot of the mansard, with a central dormer with scrolled sides and a pediment"
+  }
+ ],
+ "notes": "A glare streak crosses the cornice line, so the cornice cannot be read; bicycles hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

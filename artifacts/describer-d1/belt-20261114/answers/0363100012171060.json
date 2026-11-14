@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012171060",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171060.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "doorBay",
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white cornice band runs under the top storey, which stands over it in the front plane up to a second plain cornice"
+  }
+ ],
+ "notes": "Cars hide the low stone-faced bottom row, read as the ground storey with the street door at its left.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

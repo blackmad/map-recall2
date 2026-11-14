@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012176668",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176668.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "bands",
+  "pale",
+  "windowSurround",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "light stone blocks alternate with brick round every opening and across the wall in a neo-renaissance pattern"
+  }
+ ],
+ "notes": "A tree trunk covers the centre bay and branches cover the ornamented top; the photo is overexposed, which makes the wall tone hard to judge.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

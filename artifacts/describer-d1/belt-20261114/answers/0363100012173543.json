@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012173543",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012173543.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto part of the next front; described the two-bay brick front with white keystones that holds most of it. A van hides the base.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

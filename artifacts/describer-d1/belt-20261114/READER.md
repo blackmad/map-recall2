@@ -18,3 +18,13 @@ For each line, in order:
 
 Rules: never guess (not-visible beats a guess); never describe a neighbour; do not edit any other file; do not run git.
 Do not look at other answers. When done, report: how many written, how many readable:false, and any pandId you could not save.
+
+Added 2026-11-14 (after wave 1): when the cyan outline does not sit on one front (shifted onto a neighbour, covering only
+part of a wider front, spanning two fronts, or on a side/rear wall rather than a street front), still describe the front the
+outline mostly covers, but START `notes` with the token `OUTLINE-OFF:` followed by what is wrong. The stager holds those.
+
+Refined 2026-11-14 (supersedes the token rule above): two tokens, at the start of `notes`.
+- `OUTLINE-SHIFT:` the outline is shifted or skewed but ONE front clearly holds most of it (the usual 1-2 m pose error):
+  describe that front. These answers are kept.
+- `OUTLINE-OFF:` no single front holds most of the outline (it straddles two or more fronts about evenly), or it sits on
+  a side/rear wall, or you cannot tell which front is meant. These answers are held.

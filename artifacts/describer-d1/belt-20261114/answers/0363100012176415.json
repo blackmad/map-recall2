@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012176415",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176415.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": "not-visible",
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "bands",
+  "dormers",
+  "sameAs",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone block quoins at the front edge and white blocks over each window head"
+  }
+ ],
+ "notes": "A large tree trunk hides the right half of the front; bays, door and dormer shape cannot be fully read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

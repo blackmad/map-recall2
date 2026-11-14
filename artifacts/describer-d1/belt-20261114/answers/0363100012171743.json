@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012171743",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171743.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "1": "arched"
+ },
+ "heads": [
+  "segmental",
+  "round",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "storeyParts.souterrain",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-storey windows are paired round-arched lights in one opening under a decorative brick arch"
+  },
+  {
+   "component": "gable ornament",
+   "what": "neo-renaissance blind brick arches with light stone blocks and iron anchors over each window, pinnacle on the stepped gable"
+  }
+ ],
+ "notes": "Ground storey is a low stone base with arched openings, mostly hidden by a van.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

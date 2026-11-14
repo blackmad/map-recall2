@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012168212",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168212.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "sameAs",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a central column of white-painted panels and small-paned windows runs up the front into the gable"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small round-topped oculus near the apex of the point gable"
+  }
+ ],
+ "notes": "The outline covers two point-gabled fronts; this describes the right, wider one. A lamp post splits the pair and a tent and fence hide the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

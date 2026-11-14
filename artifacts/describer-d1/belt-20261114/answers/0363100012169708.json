@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012169708",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169708.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "cornice",
+  "doorSurround",
+  "storeyParts.full",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "giant pilasters divide the bays over two storey pairs"
+  },
+  {
+   "component": "relief",
+   "what": "carved festoons under the top-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "central pediment with an oculus and carving over the middle three bays, vases at the cornice ends"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the middle three bays of a wider five-bay stone front; described the whole front. Trees hide the outer bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

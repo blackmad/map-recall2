@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012177248",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177248.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "finish",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber erker over the middle bay on the first and second storeys, stacked, with gridded top lights"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted left onto the brick neighbour's right bay, but this dark front with stacked erkers holds most of it. The top is cut off by the image edge, so storeys and crown are not visible; cars hide the ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012169294",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169294.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "heads",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with claw pieces and a segmental pediment cap"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the pale neighbour's edge; described the brick neck-gable front. Cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

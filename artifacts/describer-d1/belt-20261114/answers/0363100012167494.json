@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012167494",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "sameAs",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the street door stands between stone pilasters carrying an entablature across the ground storey"
+  }
+ ],
+ "notes": "Low sun and a bare tree in front of the centre bay; a skip and a site cabin hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012167707",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167707.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "crown"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: outline straddles a narrow gabled front on the left and a three-bay brick cornice front on the right about evenly; described the right one. Dense bare branches cover almost everything.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

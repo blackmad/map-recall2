@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012180310",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180310.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "dormers",
+  "doorSurround",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the ground storey is a grey stone-faced plinth with the door at pavement level"
+  }
+ ],
+ "notes": "The lowest row sits in a stone plinth at pavement level and is counted as the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012167984",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167984.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "windowSurround",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a single central dormer with white scrolled cheeks and a curved pediment top, flanked by two small roof lights"
+  }
+ ],
+ "notes": "Parked cars hide the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

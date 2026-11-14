@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012172225",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172225.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "doorSurround",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "carved openwork fanlight panels over the ground-storey door and window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "plain triangular gable with a hoist hood and a small capped chimney at the apex"
+  }
+ ],
+ "notes": "Cars hide the plinth; a tree covers the right bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

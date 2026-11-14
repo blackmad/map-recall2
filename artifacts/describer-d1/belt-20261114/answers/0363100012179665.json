@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012179665",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179665.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "storeyWindows": {
+  "0": "cross-transom"
+ },
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the centre axis holds tall closed loading doors running up through the first storey and into the gable"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the step gable is topped by a small finial figure"
+  }
+ ],
+ "notes": "A yellow building-site hoarding hides the lower ground storey and the street door.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012171415",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171415.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "columns",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a two-window neck with white scroll claw pieces at its foot and a pediment cap with a white crest"
+  }
+ ],
+ "notes": "A tree and a globe lamp stand in front of the whole front; the storey and gable lines are read through branches.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

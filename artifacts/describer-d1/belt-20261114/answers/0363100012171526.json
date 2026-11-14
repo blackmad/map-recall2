@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012171526",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171526.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "basement",
+  "storeyParts.souterrain",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the neck gable ends in a white triangular pediment with a white ornament over the top window, and white claw pieces at the shoulders"
+  }
+ ],
+ "notes": "A tree crosses the left bay; the basement is partly hidden by cars and a blurred patch.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

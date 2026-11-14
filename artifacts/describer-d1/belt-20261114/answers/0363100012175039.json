@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012175039",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175039.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-4-over-4",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "doorBay",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [],
+ "notes": "The outline covers two axes of a wider white stuccoed front; its street door with a double stoop stands just left of the outline, and a basement door sits at the right. A tree hides the far left of the wider front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

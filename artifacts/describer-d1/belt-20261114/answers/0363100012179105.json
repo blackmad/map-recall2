@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012179105",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179105.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.souterrain",
+  "storeyParts.full",
+  "windowSurround",
+  "dormers",
+  "cornice",
+  "ground",
+  "basement"
+ ],
+ "gaps": [],
+ "notes": "A tree covers the left axis and the roof; cars hide the plinth and door, so the lowest row is read as a souterrain from its stone plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

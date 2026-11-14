@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012169011",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169011.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "bands",
+  "windows",
+  "doorSurround",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small stone crest-shaped ornaments stand over the ground-storey window heads"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the right door axis rises as a narrow stepped gable piece above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched street door in a stone frame in the right axis"
+  }
+ ],
+ "notes": "Lens flares cross the right part and a hoarding hides the plinth and any basement windows.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

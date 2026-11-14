@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012167694",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167694.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "off-centre",
+ "doorIndex": 3,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "bays",
+  "basement",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a white frieze under the cornice pierced by a row of round oculus windows"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched doorway in a white stone surround reached by a stoop with railings"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers the left three bays of a wide six-bay front under one frieze and roof; the door bay is outside it. A tree crosses the outlined bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

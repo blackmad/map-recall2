@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012174956",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174956.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "doorSurround",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "stone hoods with raised centres over the ground and first-floor windows"
+  },
+  {
+   "component": "dormer",
+   "what": "white ornamental wall dormer with scrolled sides and a finial rising behind the cornice"
+  }
+ ],
+ "notes": "Overexposed, slightly blurred.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

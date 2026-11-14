@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012165076",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165076.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "flat",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "cornice",
+  "finish",
+  "ground",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the white rendered attic band carries a segmental dentilled hood over its single central window"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is white render with full-height pilasters between the three tall openings, over low arched souterrain openings"
+  }
+ ],
+ "notes": "A pink lens flare crosses the second storey and bicycles hide the souterrain and any door.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

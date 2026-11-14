@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012177006",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177006.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the central door sits in a white pilastered doorcase that runs up into a framed panel under the first-storey centre window"
+  }
+ ],
+ "notes": "A thin tree crosses the second axis and cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

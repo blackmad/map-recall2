@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "pandId": "0363100012174125",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174125.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "The top of the front is cut off by the image edge, a tree stands in front of the middle bay, and blurred boards and cars hide the ground storey; only three tall window axes over a light stone plinth can be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012176345",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176345.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "not-visible",
+  "not-visible",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "basement",
+  "finish",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "modern full-width glazing in the souterrain and the storey above it, divided by a white band"
+  }
+ ],
+ "notes": "A tree in leafless crown covers nearly the whole front; storey count read against the left neighbour's lines at low confidence.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

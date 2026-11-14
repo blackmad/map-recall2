@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012178126",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178126.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top row has a centre window flanked by two white oval oculi in moulded frames"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the bell gable has a white flat cap, white edge mouldings and a white crest ornament over the gable window"
+  }
+ ],
+ "notes": "A houseboat hides the ground storey and everything below, so the storey count and door cannot be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

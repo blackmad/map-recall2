@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012179332",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179332.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "cornice",
+  "dormers",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis is a full-height light stone frontispiece framing the door and the windows above it"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched stone doorway flanked by two lanterns"
+  }
+ ],
+ "notes": "A bright stitching streak crosses the cornice and dormers; vans hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

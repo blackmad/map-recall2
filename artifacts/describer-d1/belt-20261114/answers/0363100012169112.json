@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012169112",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169112.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "finish",
+  "basement",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a low white rococo sandstone crest with scrolls and a hoist opening spans the full width over the top storey"
+  },
+  {
+   "component": "door",
+   "what": "the doorcase has a carved white fanlight panel over the door"
+  }
+ ],
+ "notes": "The crown is a low full-width sandstone crest rather than a tall gable; parked cars hide the stoop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

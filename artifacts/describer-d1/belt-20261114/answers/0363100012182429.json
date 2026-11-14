@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182429",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182429.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "storeyParts.souterrain",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "A lens flare line crosses the top storey and the cornice, so the crown cannot be read; branches cross the upper windows. No street door is seen in the outlined front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

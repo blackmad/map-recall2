@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171050",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171050.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "finish",
+  "crown",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the two window axes sit off to the right of a wide blank wall; one small square window under the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers the right part of this dark eaves front without its blank left part and the white doorcase at the corner; described the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

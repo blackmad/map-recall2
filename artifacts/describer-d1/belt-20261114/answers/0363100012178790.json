@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012178790",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178790.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "cornice",
+  "storeyParts.full",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a round-topped dormer with a curved roof over the centre of the front, matching the one on the left twin"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in pale stone or stucco under the brick upper wall"
+  }
+ ],
+ "notes": "A tree crosses the front; the left twin shares the cornice.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

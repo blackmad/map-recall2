@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012172295",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172295.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "balconies",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red pantile roof slope shows behind the white attic frieze with three small windows"
+  }
+ ],
+ "notes": "Iron guard bars seem to cross the lower part of the upper windows; a van hides the foot of the front.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

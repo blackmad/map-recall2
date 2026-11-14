@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012169206",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169206.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "twin neck gables, each with a carved white crest and a scrolled cap, joined by a white balustraded parapet with finials between them"
+  },
+  {
+   "component": "door",
+   "what": "the right door has a white round-headed doorcase; the left door is plain"
+  }
+ ],
+ "notes": "A double-wide front with two neck gables and two street doors, outlined as one; described as a whole.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012171417",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171417.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "casement-gridded-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "bayWindow",
+  "storeyWindows",
+  "bays",
+  "doorBay",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first upper storey has one wide white-framed multi-light window across the whole front, over a sloping ledge"
+  }
+ ],
+ "notes": "A tree stands in front of the left half and hides the door.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

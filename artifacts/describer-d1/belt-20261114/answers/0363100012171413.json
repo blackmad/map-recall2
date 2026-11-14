@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012171413",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171413.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "mirrored",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck with two windows, white claw pieces at the shoulders and a curved white cap with a hoist hook"
+  },
+  {
+   "component": "door",
+   "what": "the only door seen is at souterrain level under the left bay"
+  }
+ ],
+ "notes": "Right of a pair of identical neck gables; the outline stops below the neck. Cars hide the souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

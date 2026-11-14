@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012177364",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177364.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "windows",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the top is a white-rendered gable piece with a curved pediment, an oculus and a hoist window"
+  }
+ ],
+ "notes": "The outline is shifted right and also takes a strip of the neighbouring stone building; the three-bay brick gable house whose right half it covers is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012172293",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172293.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the third bay of each upper storey is a blind window filled with a flat white panel"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is white stucco with three round-arched openings, unlike the brick above"
+  }
+ ],
+ "notes": "Corner house on a canal; the right edge of the outline runs onto the corner past the end of the cornice.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

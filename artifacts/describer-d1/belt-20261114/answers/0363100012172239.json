@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012172239",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172239.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small oval window sits beside the first-floor window on the rounded corner"
+  },
+  {
+   "component": "shopfront",
+   "what": "the shop ground storey has canvas awnings and wraps round the rounded corner"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline takes in both the rounded corner and part of the side face of this one pale corner building, seen obliquely from far away.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

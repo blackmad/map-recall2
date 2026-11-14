@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012180258",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180258.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays",
+  "bayWindow",
+  "storeyParts.full",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a rounded corner bay window with white horizontal ribbon glazing wraps the right side over several storeys"
+  },
+  {
+   "component": "window",
+   "what": "a small square window with a triangular glazing bar sits in the top storey, beside a horizontal white ribbon window"
+  }
+ ],
+ "notes": "A stone bridge post and a mooring pile stand in front of the centre and right of the front; this is an interwar brick block, not a canal house.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

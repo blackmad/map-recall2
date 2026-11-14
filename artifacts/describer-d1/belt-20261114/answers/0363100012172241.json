@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012172241",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172241.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "dormers",
+  "storeyParts.roof",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white balustrade runs along the top over the frieze and cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the left two bays of this three-bay brown brick front. A thin tree stands before the left bays; parked cars hide the pavement line.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

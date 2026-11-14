@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012174400",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174400.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "doorBay",
+  "finish",
+  "crown",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the two upper storeys have wide continuous timber window bands, the openings separated by thin posts rather than brick piers"
+  }
+ ],
+ "notes": "Dark and blurred; a van hides the foot of the ground storey. The gable is a plain triangle with a small flat cap and one attic window.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

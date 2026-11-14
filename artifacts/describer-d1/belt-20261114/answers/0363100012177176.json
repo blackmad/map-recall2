@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012177176",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177176.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "bands",
+  "sameAs",
+  "storeyParts.souterrain",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "red brick front with light stone block dressings round every window, in a long neo-renaissance range"
+  }
+ ],
+ "notes": "A tree trunk covers the middle of the outlined part of a long multi-bay building; a van hides the lower right.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

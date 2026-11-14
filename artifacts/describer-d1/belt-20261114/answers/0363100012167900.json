@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012167900",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167900.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bands",
+  "storeyParts.full",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the middle opening of the top storey is a blank white panel, likely a closed hoist door"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the neck gable ends in a segmental pediment"
+  }
+ ],
+ "notes": "Sun washes out the image; the door and basement are partly hidden by cars and blurred patches.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

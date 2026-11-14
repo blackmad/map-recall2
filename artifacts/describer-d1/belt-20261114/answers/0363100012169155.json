@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012169155",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169155.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "storeyParts.full",
+  "doorSurround",
+  "finish",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [],
+ "notes": "Bare tree branches cover the whole front and the gable top; a van hides the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

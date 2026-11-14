@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012182224",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182224.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "sameAs",
+  "mirrored",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "plain neck with one window and a hoist beam, the cap washed out"
+  }
+ ],
+ "notes": "Strongly overexposed; a tree stands before the front and a boat and railing hide the plinth. The outline also takes in a strip of the yellow neck gable to the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

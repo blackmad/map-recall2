@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012182425",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182425.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "finish",
+  "windows",
+  "dormers",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide round-arched carriage door in the middle bay between two narrow side doors"
+  },
+  {
+   "component": "roof",
+   "what": "a steep pyramidal roof rising behind the cornice with a central dormer under a hood"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the middle bay of this three-bay sand-coloured front; described the whole front. A parking sign and tree hide the right bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

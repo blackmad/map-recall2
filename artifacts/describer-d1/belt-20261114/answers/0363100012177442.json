@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012177442",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177442.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 8,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "one long hipped slate roof over the whole wide front, with oval attic windows in a white frieze under the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the left five of about eight bays of one wide front under one roof; described the whole front. A tree covers the middle bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

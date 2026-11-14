@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012177601",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177601.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "windows",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "doorcase with pilasters and a fanlight with interlaced tracery"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the middle bay of a three-bay front; described the whole front. A van hides the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

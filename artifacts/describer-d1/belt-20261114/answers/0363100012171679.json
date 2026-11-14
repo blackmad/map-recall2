@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012171679",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171679.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "dormers",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey has one wide white-framed opening over two bays and a separate door with a top light on the right"
+  }
+ ],
+ "notes": "A round-topped dormer or attic piece shows behind the cornice through tree branches; bicycles and panels hide the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

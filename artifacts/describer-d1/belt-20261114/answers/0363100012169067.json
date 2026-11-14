@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012169067",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169067.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6,
+  6
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 3,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red pantile pitched roof with chimneys at both ends, visible behind the cornice"
+  }
+ ],
+ "notes": "Wide six-bay front; parked cars hide the basement.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

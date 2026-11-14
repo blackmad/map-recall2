@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012178665",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178665.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "bands",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white pilaster strips and white horizontal bands divide the brick front into a grid around the windows"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline's right half is on a large tree trunk; the brick front with white pilaster strips at its left holds the rest. Branches cross the upper storeys.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

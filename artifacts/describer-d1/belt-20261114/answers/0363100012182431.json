@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012182431",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182431.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "cornice",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "sculpted baroque central crest with a bell-shaped top and sculpture groups at the corners over a stone attic storey with pilasters"
+  }
+ ],
+ "notes": "The top storey is stone-faced with pilasters above a moulded band and carries a sculpted crest and corner figures; counted as a full storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

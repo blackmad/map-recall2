@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171365",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171365.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "storeyParts.roof"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: the outline sits a little left, taking a strip of the left neighbour; a bare tree covers the right bay and the top.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

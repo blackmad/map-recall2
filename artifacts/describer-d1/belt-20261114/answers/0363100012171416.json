@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012171416",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171416.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a railed roof terrace on the flat roof between two chimneys"
+  },
+  {
+   "component": "door",
+   "what": "the centre door has a pale stone doorcase with a cornice and a fanlight"
+  }
+ ],
+ "notes": "Parked cars and blurred panels hide the base; a glare line crosses the sky above.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

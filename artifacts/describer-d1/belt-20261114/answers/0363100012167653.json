@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012167653",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167653.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "windowSurround",
+  "heads",
+  "bands",
+  "cornice",
+  "doorSurround",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white stone balustrade runs along the eaves either side of a central stepped gable with pediment top"
+  },
+  {
+   "component": "gable ornament",
+   "what": "Dutch Renaissance revival central gable with white stone bands and a pedimented top"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the right half of this wide Renaissance-revival front; a tree crosses it.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

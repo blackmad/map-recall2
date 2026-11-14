@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012171567",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171567.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "cornice",
+  "doorSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a wide central triangular pediment over the cornice with a coat of arms in its tympanum"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in light stone with pilasters between the openings"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the left four of five bays of a wider front with a central pediment; the whole front is described. Trees cross the left bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012167745",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167745.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "crown",
+  "finish",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved stone cap with a cartouche at the top of the neck"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers only the right bay of the dark neck-gable front and part of the lighter right neighbour; the dark front is described. Branches cross the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

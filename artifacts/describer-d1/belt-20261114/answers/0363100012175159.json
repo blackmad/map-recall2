@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012175159",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175159.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 7,
+ "columns": [
+  7,
+  7,
+  7
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 3,
+ "groundBays": 7,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "cornice",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a light stone frontispiece frames the centre bay door, reached by a double stoop with iron railings"
+  },
+  {
+   "component": "roof",
+   "what": "a round oculus dormer sits centrally in the roof with a row of flat roof lights either side"
+  }
+ ],
+ "notes": "A tree stands in front of the centre bay; a large seven-bay double house.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012171575",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171575.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "crown",
+  "balconies",
+  "dormers",
+  "storeyParts.full",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "asymmetric front: a pointed gable over the right half and a mansard roof with a dormer over the left half"
+  },
+  {
+   "component": "erker",
+   "what": "a white timber erker on brackets in the left half of the first floor with a balcony on top"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline is skewed and reaches onto the sky and roofs, but holds one asymmetric front. Dark, distant image; a tree hides the left edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012171892",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171892.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "heads",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a two-storey white timber erker over the left bay, with a small hood at its top"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the parapet rises in a small stepped centrepiece over the left bay, with white blocks studding the brick above the top windows"
+  },
+  {
+   "component": "door",
+   "what": "the street door has a round-arched stone doorcase with a pair of small round-headed lights above it"
+  }
+ ],
+ "notes": "The top storey's right window is boarded; a car hides part of the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012169018",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169018.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "basement",
+  "doorSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white neck gable with scrolled claw pieces and a small crest at the top"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers most of the white three-bay neck-gable house but also a narrower white three-storey flat-topped annex on its right, and its top stops below the house's top storey; the neck-gable house is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

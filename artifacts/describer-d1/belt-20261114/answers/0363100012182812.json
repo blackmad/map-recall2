@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012182812",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182812.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "basement",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the right bay is a wide window pair, the middle bay a small single window, on every storey"
+  },
+  {
+   "component": "roof",
+   "what": "a tiled roof slope over a white eaves board, with one dormer"
+  }
+ ],
+ "notes": "A tree crosses the right bays; the house stands at a bridge corner.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

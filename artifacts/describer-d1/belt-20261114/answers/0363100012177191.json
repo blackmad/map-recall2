@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012177191",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177191.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "bands",
+  "windowSurround",
+  "balconies",
+  "doorSurround",
+  "sameAs",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "continuous stone balustrade panels run under the windows of storeys 1 and 2"
+  },
+  {
+   "component": "roof",
+   "what": "a stone balustrade crowns the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is rusticated light stone"
+  }
+ ],
+ "notes": "Two bare trees stand in front; the right neighbour carries similar balustrade bands but has a different top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

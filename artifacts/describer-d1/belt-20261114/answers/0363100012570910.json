@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012570910",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012570910.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red-tiled pitched roof shows its triangular end above the cornice"
+  }
+ ],
+ "notes": "A tree covers the left axis and the door position; cars hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

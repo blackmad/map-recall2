@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012171576",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171576.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "rusticated brick pilaster strips at both outer edges of the front"
+  },
+  {
+   "component": "door",
+   "what": "double stoop with iron railings rising to a cream doorcase with cornice and fanlight"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

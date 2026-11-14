@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012180132",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180132.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "cornice",
+  "bands",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "dark red painted lintel boards run across the front over each upper window row"
+  }
+ ],
+ "notes": "The low stone-faced bottom row is read as the ground storey; cars hide it and any door.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

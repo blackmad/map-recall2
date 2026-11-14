@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012177289",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177289.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "round"
+ ],
+ "bands": "both",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "windowSurround",
+  "finish",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone blocks and short bands set into the dark brick at the window heads and sills"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the brick neighbour's left bay, but this narrow dark two-bay front with a slate mansard holds most of it. Cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

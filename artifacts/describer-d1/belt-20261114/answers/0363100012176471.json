@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012176471",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176471.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "stone",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "pale",
+  "finish",
+  "windowSurround",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved festoon panels between the windows of each storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the neck has carved scroll shoulders, a round cartouche, and a triangular pediment cap"
+  }
+ ],
+ "notes": "A car hides part of the basement.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012167691",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167691.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "windows",
+  "basement",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a round-headed fanlight with a gilded ornament over the street door, in a white door frame"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the edge of the bell-gable neighbour, but this narrow two-bay front holds most of it. A hanging sign and a lamp post cover the left bay; the small top gable is partly behind branches.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

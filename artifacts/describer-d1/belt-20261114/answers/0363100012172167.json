@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012172167",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172167.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "storeyParts.roof",
+  "cornice",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white timber attic band with a row of four windows across the full width, under a low pointed gable"
+  }
+ ],
+ "notes": "Cars and a railing hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

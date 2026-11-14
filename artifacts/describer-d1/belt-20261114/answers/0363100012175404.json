@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012175404",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175404.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "storeyParts.souterrain",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a cross-window with small panes beside a tall segmental-headed window on the ground storey"
+  },
+  {
+   "component": "relief",
+   "what": "small light stone blocks (anchors' plates or tablets) set in the brick above each window"
+  }
+ ],
+ "notes": "Heavy sun glare washes out the upper gable; vans hide the plinth and the door.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

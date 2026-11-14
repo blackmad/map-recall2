@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012182426",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182426.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "cornice",
+  "windows",
+  "bays",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has three windows (narrow, wide, narrow) over two axes below"
+  }
+ ],
+ "notes": "A large branch crosses the top of the front and a quay wall hides the plinth; no door seen.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

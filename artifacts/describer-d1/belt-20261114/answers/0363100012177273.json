@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012177273",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177273.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "ground",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the low street-level storey with the street door is faced in grey stone; it may be a raised basement storey under a tall bel-etage"
+  }
+ ],
+ "notes": "The street-level storey is low and stone-faced; it was counted as the ground storey because the street door is at pavement level.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

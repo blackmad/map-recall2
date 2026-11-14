@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012177222",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177222.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 1,
+ "windows": "casement-triple",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "finish",
+  "bands",
+  "bayWindow",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has one wide three-light window (narrow, wide, narrow) filling the width; the front may bow out slightly"
+  },
+  {
+   "component": "roof",
+   "what": "the parapet over the cornice rises in a shallow curve"
+  }
+ ],
+ "notes": "Dim photo; bicycles hide the ground storey. Whether the upper storeys project as a bay window cannot be judged from this straight-on view.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

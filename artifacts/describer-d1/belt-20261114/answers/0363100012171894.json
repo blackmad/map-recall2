@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012171894",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171894.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "basement",
+  "doorSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a tall white-framed glazed front with pilasters between the bays and a fan-pattern top light over the door"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline's left edge takes in a strip of the speklagen neighbour; described the wide dark front. A tree trunk and scaffolding cross the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

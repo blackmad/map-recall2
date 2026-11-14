@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012165049",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165049.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "sameAs",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the narrow neck carries an oculus with a white carved surround and white scroll claw pieces"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline straddles two fronts about evenly, the right three bays of a long cornice block and a 3-bay neck-gable front; described the neck-gable front. Cars hide the ground storey and a lens flare crosses the top.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

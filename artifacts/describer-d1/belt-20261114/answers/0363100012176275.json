@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012176275",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176275.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 4,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a white band of alternating small blocks (a dentil-like frieze) runs between the first and second storeys"
+  },
+  {
+   "component": "roof",
+   "what": "a red pantile hipped roof with one central dormer stands behind the cornice"
+  }
+ ],
+ "notes": "A shrub and tree hide the left ground-storey openings.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172276",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172276.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 1,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "finish",
+  "bayWindow",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "stacked full-width glazed bay windows on the upper storeys of a narrow pale front"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the brick neighbour's edge; described the narrow pale front with stacked bay windows. A bare tree and glare blur it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

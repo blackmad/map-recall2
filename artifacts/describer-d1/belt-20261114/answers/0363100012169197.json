@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012169197",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169197.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "sills",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a stone balustrade parapet over the cornice with a central carved cartouche crest"
+  },
+  {
+   "component": "window",
+   "what": "the ground and first-floor sashes have coloured stained panes"
+  }
+ ],
+ "notes": "Bicycles hide the plinth; the basement windows, if any, cannot be seen.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012172209",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172209.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "cornice",
+  "ground",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "A large tree trunk hides the right half of the front and a thin tree the left; only the left window axes are partly readable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012177218",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177218.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "crown",
+  "heads",
+  "sameAs",
+  "mirrored",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "each half ends in a neck gable on a white scrolled base with a curved top and a hoist window"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks at the springing and crown of the brick arches over each window, linked by white bands"
+  }
+ ],
+ "notes": "The outline holds a twin front: two gables and two street doors (left and right) in one neo-Renaissance wall; the left half is described and sameAs/mirrored refer to the right half.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

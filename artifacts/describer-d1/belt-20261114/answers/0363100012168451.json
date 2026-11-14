@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012168451",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168451.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "sills",
+  "cornice",
+  "windowSurround",
+  "storeyParts.full",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a stone balustrade runs along the top with a segmental pediment over the centre bay"
+  },
+  {
+   "component": "relief",
+   "what": "an oculus with a carved wreath surround sits over the centre bay in the top storey"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched centre door in a pilastered stone frontispiece"
+  }
+ ],
+ "notes": "Trees cross both outer bays. The balustrade over the ground storey runs across the whole front as a balcony.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

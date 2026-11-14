@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012175784",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175784.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "windows",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "The outline spans two narrow gabled fronts; the right one, clearer and less tree-hidden, is described. A building-site hoarding hides the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012178868",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178868.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "sills",
+  "basement",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck with two windows, a hoist hook, white claw pieces at the shoulders and a curved white cap"
+  }
+ ],
+ "notes": "Outline stops at the gable foot; the neck above belongs to this front. Cars and a skip hide the souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012178666",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178666.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "cornice",
+  "dormers",
+  "windowSurround",
+  "finish",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: the outline also takes in the left edge of the red-and-white right neighbour, but the narrow two-bay front holds most of it. The image is overexposed and a tree crosses the front.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

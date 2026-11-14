@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012167484",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167484.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorSurround",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the bell gable is topped by a small triangular pediment and carries a hoist-beam hook"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits left, over the neighbour's right edge, but the bell-gable front holds most of it. A tree crosses the left bay.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012168138",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168138.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "A large tree trunk covers the left half of the front and branches cover the rest; only a red-brick wall with light stone bands and a street door at the right are readable.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

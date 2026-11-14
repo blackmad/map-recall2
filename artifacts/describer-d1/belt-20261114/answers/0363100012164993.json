@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012164993",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012164993.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 8,
+ "columns": [
+  6,
+  6,
+  8
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "2": "casement-pair"
+ },
+ "heads": [
+  "round",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "finish",
+  "pale",
+  "bands",
+  "doorBay",
+  "ground",
+  "basement",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the ground storey has tall round-arched windows; storey 1 windows carry dark segmental hood moulds; the top storey alternates wide and narrow windows"
+  },
+  {
+   "component": "relief",
+   "what": "the grey wall is rusticated with incised horizontal joints"
+  }
+ ],
+ "notes": "A wide grey rusticated front; its left two bays with the street door look like the same building but lie outside the outline.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

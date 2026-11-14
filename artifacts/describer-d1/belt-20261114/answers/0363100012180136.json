@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012180136",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180136.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "flat roof lights in the tiled roof behind the cornice, not dormers"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline spans three fronts about evenly: a pale 2-bay front and two matching 3-bay brick fronts under one cornice; described the left brick front. Cars and bicycles hide the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

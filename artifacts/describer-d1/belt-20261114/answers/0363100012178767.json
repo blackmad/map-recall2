@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012178767",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178767.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "ground",
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre window of the second storey has a light dressed frame unlike the others"
+  }
+ ],
+ "notes": "A thin tree covers the centre axis; which ground opening is the door cannot be read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012177441",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "one long hipped slate roof over a wide front, with oval attic windows in a white frieze under the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers only the right three bays of one wide front under one roof. A van in the foreground hides everything below the second storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

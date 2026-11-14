@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012179751",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179751.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "basement",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a central white dormer with a small pediment stands in a dark roof face over the cornice"
+  }
+ ],
+ "notes": "A tree crosses the right bay; a van and bicycles hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

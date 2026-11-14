@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012177180",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177180.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "arched"
+ },
+ "heads": [
+  "flat",
+  "round",
+  "flat",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "both",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "doorBay",
+  "windowSurround",
+  "storeyParts.full",
+  "windows",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis has wider multi-pane windows than the narrow side axes"
+  }
+ ],
+ "notes": "Tall narrow late-19th-century front behind tree branches; the gable top is a plain point with an arched attic window.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

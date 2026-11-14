@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012176005",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176005.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "cornice",
+  "sills",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-headed street door with a fanlight at the top of a side stoop"
+  }
+ ],
+ "notes": "A large tree in front obscures the left and centre; the outline is narrower than the three-bay front.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

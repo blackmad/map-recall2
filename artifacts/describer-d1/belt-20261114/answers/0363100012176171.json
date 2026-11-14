@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012176171",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176171.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bands",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "balustrade over the centre three bays with two standing statues on the parapet"
+  },
+  {
+   "component": "relief",
+   "what": "carved sculpture groups flank the centre first-storey window; banded rusticated stone wall"
+  },
+  {
+   "component": "window",
+   "what": "small oval attic windows in pairs in the frieze over the outer bays"
+  },
+  {
+   "component": "door",
+   "what": "round-arched centre doorway with a carved fanlight"
+  }
+ ],
+ "notes": "A railing and parked vans hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

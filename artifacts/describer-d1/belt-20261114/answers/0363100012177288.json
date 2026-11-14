@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012177288",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177288.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white sandstone attic with small windows and a central round-arched crest holding a round rose window, carved ornament along the top"
+  },
+  {
+   "component": "door",
+   "what": "an ornamental carved fanlight over the street door"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the long lower neighbour's left bay, but this three-bay front holds most of it. A tree crosses the right bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

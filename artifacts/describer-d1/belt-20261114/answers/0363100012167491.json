@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012167491",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167491.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorSurround",
+  "basement",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck with a window and hoist, white carved claw pieces at the shoulders and a curved cap"
+  }
+ ],
+ "notes": "Outline stops at the gable foot; the neck above belongs to this front. Bare branches and cars at the plinth. Right of a mirrored pair of neck gables.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

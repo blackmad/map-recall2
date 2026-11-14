@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012165028",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165028.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "finish",
+  "storeyParts.full",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: outline brackets two whole fronts, a red-and-white neo-Gothic front on the left and a dark four-bay front on the right, so it is unclear which is meant; described the dark one, which takes the larger share. A tree covers its middle.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

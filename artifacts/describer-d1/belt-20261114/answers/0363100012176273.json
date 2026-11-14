@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012176273",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176273.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "souterrain": true,
+ "crown": "shouldered",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "storeyWindows": {
+  "1": "casement-sidelights-toplight",
+  "2": "casement-sidelights-toplight"
+ },
+ "low": [
+  "crown",
+  "windows",
+  "storeyParts.roof",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber two-storey oriel spans the first and second storeys over the door and the arched window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the crown is a narrower raised gable with curved scrolled shoulders, a round-arched window and a flat parapet top"
+  }
+ ],
+ "notes": "The front is asymmetric: one narrow window axis on the left and the wide oriel on the right.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

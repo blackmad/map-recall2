@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012179671",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "bands",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorated arch fields in red and white brick over the first-floor windows, with light blocks in the brickwork"
+  },
+  {
+   "component": "gable ornament",
+   "what": "step gable with a stone finial at the shoulder"
+  }
+ ],
+ "notes": "A large yellow road sign covers most of the right half and the ground storey; branches cross the gable.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

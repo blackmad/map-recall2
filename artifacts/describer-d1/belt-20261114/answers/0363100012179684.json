@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012179684",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "balconies",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a central dormer with a pointed pediment and finial rises from the white frieze in front of a slate roof"
+  }
+ ],
+ "notes": "Bicycles, a lamp post and a houseboat hide the foot of the ground storey and the door.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

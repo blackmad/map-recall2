@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012172310",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172310.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "bays",
+  "storeyParts.roof",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the narrow outline straddles the right bay of a brick neck-gable front and the left bay of the dark cornice front to its right; described is the gable front, which a bare tree hides almost entirely.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

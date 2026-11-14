@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174328",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174328.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "heads",
+  "cornice",
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one central dormer with a round-arched top and a white frame, standing behind the cornice"
+  }
+ ],
+ "notes": "A bridge railing in the foreground hides the ground storey; strong sun washes out the colours.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

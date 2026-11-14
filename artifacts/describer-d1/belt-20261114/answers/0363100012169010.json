@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012169010",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "heads",
+  "cornice",
+  "dormers",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the frieze under the cornice holds three recessed rectangular panels framed in white"
+  },
+  {
+   "component": "window",
+   "what": "heavy white stone blocks alternate with dark brick up every pier, giving a striped block-quoined front"
+  }
+ ],
+ "notes": "A delivery van and an advertising column hide the ground storey and door; the roof top is cut off.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

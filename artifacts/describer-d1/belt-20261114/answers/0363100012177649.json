@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012177649",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177649.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "doorBay",
+  "crown",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "top storey is a pale rendered band with three windows over a moulded cornice line, under a slate roof with one dormer and a roof light"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline also covers a narrow brown neighbour on the left, but the dark three-bay front holds about two thirds of it; door read in the souterrain centre.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012175402",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175402.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an arched basement doorway in a grey plinth under the tall ground-storey windows"
+  }
+ ],
+ "notes": "Strong sun glare washes out the top storey and the cornice; a van hides the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

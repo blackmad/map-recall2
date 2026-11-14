@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012169381",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169381.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "arched"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "cornice",
+  "basement",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "flat pilasters with capitals rise between the upper windows through two storeys, a giant order over a rusticated ground storey"
+  },
+  {
+   "component": "roof",
+   "what": "a hipped slate roof without dormers sits behind the cornice"
+  }
+ ],
+ "notes": "White stuccoed classical front, likely not a house; the outline is tall and catches sky above the roof.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

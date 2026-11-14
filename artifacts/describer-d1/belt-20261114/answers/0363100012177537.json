@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012177537",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177537.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "balconies",
+  "bands",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a Dutch-Renaissance-revival gable with scrolls and finials, stepped outline, with three small windows in it"
+  },
+  {
+   "component": "balcony",
+   "what": "a stone balustrade runs across the whole front under the first-storey windows"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the brick neighbour's left bay, but this ornate brick-and-stone front holds most of it. Branches cover the gable top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

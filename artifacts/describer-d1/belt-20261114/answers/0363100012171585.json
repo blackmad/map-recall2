@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012171585",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171585.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.roof",
+  "crown",
+  "bands",
+  "ground",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "three-window roof storey framed by white pilasters and a cornice, under a steep pitched roof, standing over the main cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in light stone with three plain openings"
+  }
+ ],
+ "notes": "A tree trunk stands left of the front and cars hide the base; no door visible.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012169293",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169293.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bands",
+  "cornice",
+  "dormers",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "steep slate mansard face with one ornamented dormer rising behind the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the brick neighbour's edge; described the pale stucco front with the mansard. A bare tree covers much of it.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

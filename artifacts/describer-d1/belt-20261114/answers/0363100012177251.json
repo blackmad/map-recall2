@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012177251",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177251.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "whiteFrames",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces at the neck's foot and a round-topped crowning piece with a hoist-beam ornament"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is rendered pale, unlike the painted upper wall"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers the right two bays of this neck-gable front and the left bay of the ornate neighbour; this front holds most of it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

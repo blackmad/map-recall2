@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012178127",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178127.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "balconies",
+  "doorBay",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped roof with a finial rises behind the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "iron wall anchors in rows down the pale front"
+  }
+ ],
+ "notes": "A tree crosses the right bay and boats hide the basement; no street door shows on the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

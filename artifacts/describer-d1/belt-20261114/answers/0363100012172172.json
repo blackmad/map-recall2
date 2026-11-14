@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172172",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172172.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "heads",
+  "dormers",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a plain tiled pitched roof face in view behind the cornice with one tiny central dormer or hatch"
+  },
+  {
+   "component": "door",
+   "what": "white doorcase with an ornamental fanlight over the door, reached by a stoop with an iron rail"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits a little left, taking in the scaffolded neighbour's edge; the red-brick house is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

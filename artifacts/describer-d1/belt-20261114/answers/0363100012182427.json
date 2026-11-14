@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012182427",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182427.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "cornice",
+  "doorSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a light stuccoed attic with a row of windows stands over a deep light cornice"
+  },
+  {
+   "component": "window",
+   "what": "the right axis has a wider three-light window on each storey"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline spans a three-bay brick front on the left and a wider five-bay front on the right; described the five-bay front. Vans hide the souterrain.",
+ "wallFamily": "not-visible",
+ "storeys": 3
+}

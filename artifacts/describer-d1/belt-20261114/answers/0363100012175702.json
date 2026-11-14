@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012175702",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windowSurround",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a row of small white rosettes or blocks runs across the gable foot band"
+  }
+ ],
+ "notes": "A tree trunk hides the right edge of the front and a lamp ornament crosses the gable; a car hides the plinth.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

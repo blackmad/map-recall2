@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012177608",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177608.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: outline shifted right, covering the plain three-bay brick front plus a strip of the stepped-gable neighbour; described the plain front. Ground storey hidden by a van and blurred blocks.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

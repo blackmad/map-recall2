@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171084",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171084.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.souterrain",
+  "dormers",
+  "basement"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the outline straddles two fronts about evenly, a neck-gable front on the left and a 3-bay cornice front on the right; described the cornice front. Cars hide the bottom row.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012169100",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169100.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "doorBay",
+  "dormers",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "large blank brick wall area between the window axes, with one lone window at the right end of the ground storey"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers the right part of a wide brick corner wall that may be its side elevation; the windows sit irregularly with a blank stretch. Graffiti on the wall.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

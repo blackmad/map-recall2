@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012167490",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167490.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "storeyParts.full",
+  "cornice",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the outline takes in two whole fronts, a taller 3-bay front on the left and a 3-bay cornice front with a pedimented dormer on the right; described the right one, which holds a little more. Cars hide the stone-faced ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

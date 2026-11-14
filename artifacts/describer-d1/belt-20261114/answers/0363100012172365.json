@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012172365",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172365.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "doorBay",
+  "cornice",
+  "finish",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved scrolled crest with a sculpted figure group on top of the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline reaches slightly onto the dark right neighbour; this narrow white front holds most of it. A large lamp post hides its left bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012176939",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176939.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 1,
+ "windows": "casement-sidelights-toplight",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays",
+  "ground",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a full-width two-storey white bay window over storeys 1 and 2, with a solid-guard balcony on its roof in front of storey 3"
+  },
+  {
+   "component": "roof",
+   "what": "a tall plain rendered parapet rises above the top storey"
+  }
+ ],
+ "notes": "The ground storey is boarded up behind building-site hoarding and a portable toilet.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

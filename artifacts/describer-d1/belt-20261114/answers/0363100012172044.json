@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012172044",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172044.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "heads": [
+  "not-visible",
+  "relieving"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "heads",
+  "bands",
+  "crown",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white painted bands and edge trims across a pointed brick gable with pinnacles and white arch accents over the first-floor windows"
+  }
+ ],
+ "notes": "A parking sign, a lamp and a blurred figure hide most of the ground storey and the right bay; low evening sun.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

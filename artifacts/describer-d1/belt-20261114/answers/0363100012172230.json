@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172230",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172230.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.souterrain",
+  "basement",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a door at pavement level opens into the grey stone souterrain under the two-window bel-etage"
+  }
+ ],
+ "notes": "Black-painted two-bay front; a van hides the souterrain and no upper-floor street door or stoop is visible.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

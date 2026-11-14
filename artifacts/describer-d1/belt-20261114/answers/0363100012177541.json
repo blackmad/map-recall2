@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012177541",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177541.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": "not-visible",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: outline straddles two fronts about evenly, a tall narrow brick front on the left and a lower three-bay front with a narrow raised gable on the right; described the taller left one. A tree and strong glare cover it.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012176332",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176332.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "cornice",
+  "windows",
+  "finish",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "the narrow centre axis has white edges from the first floor to the top that may be a shallow projecting bay"
+  }
+ ],
+ "notes": "A street lamp covers the centre axis from top to bottom, so the centre bay and the roof are unreadable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

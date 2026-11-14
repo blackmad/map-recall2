@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012174330",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174330.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "an orange pantiled roof face with one small dormer in view above a tall plain white frieze"
+  }
+ ],
+ "notes": "A site trailer hides most of the ground storey; the lowest row is a light stone plinth with a street-level door, read as the ground storey. The two window axes sit left of centre with a blank pier on the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

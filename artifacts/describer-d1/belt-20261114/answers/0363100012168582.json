@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012168582",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168582.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "brick neck gable with white scrolled claw pieces, a white cap and a small round window in the neck top"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits right of the brick neck-gable house, overlapping the dark cornice neighbour's left bay; the neck-gable house is described. Bicycles hide the basement.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

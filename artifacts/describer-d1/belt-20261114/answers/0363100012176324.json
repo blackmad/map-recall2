@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012176324",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176324.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "dentil-lintel",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "windowSurround",
+  "storeyParts.souterrain",
+  "doorBay",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "toothed brick lintel friezes run over each window group, the upper windows close-set as one glazed band"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a hoist beam at the apex of a plain pointed gable"
+  }
+ ],
+ "notes": "The lowest row at pavement level holds the street door at the right; read as a souterrain under a ground storey of three windows.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

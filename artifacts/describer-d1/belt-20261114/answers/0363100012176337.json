@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012176337",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176337.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "raised-neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "heads",
+  "bands",
+  "doorSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters beside the gable window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a round-topped neck with a carved cartouche, scroll pieces and a hoist beam"
+  }
+ ],
+ "notes": "The outline straddles the dark left neighbour's right bay; the brown three-bay house in the middle is described. Its top storey is red brick with white arch accents above a white band.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

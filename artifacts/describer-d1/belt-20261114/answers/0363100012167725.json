@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012167725",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167725.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a rusticated light stone plinth runs under the three tall ground-storey windows"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted left onto the neighbour's edge, but this three-bay dark front with a white frieze and pedimented dormer holds most of it. No street door visible on the ground storey; cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172244",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172244.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a balustraded parapet with a central carved cartouche stands over the cornice, flanked by two capped chimneys"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits a little right of this four-bay white stucco front and its right edge spills onto the neighbour.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012169674",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169674.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with large white carved claw pieces and an ornate white crest on top"
+  },
+  {
+   "component": "door",
+   "what": "white round-headed doorcase with a fanlight"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the right two bays of the dark neck-gable house and the edge of the right neighbour; the neck-gable house is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

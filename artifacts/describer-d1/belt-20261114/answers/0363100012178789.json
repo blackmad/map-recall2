@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012178789",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178789.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "basement",
+  "ground",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "The front shares one cornice with the bays to its right; a pale plinth storey with openings at pavement level runs under it. Bicycles hide the door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

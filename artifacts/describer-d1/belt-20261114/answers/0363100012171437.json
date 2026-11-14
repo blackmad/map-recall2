@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012171437",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171437.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "sameAs",
+  "basement",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a white stone doorcase with a patterned fanlight and an iron railing; a basement door sits below it"
+  }
+ ],
+ "notes": "A bare tree crosses the middle of the front; the left neighbour shares the dark wall and white frieze but its door is not in view.",
+ "storeys": 5,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

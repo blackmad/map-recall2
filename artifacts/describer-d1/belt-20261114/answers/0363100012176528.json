@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012176528",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176528.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "0": "cross-transom"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "finish",
+  "basement",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the neck has carved scroll claw pieces and a small triangular pediment cap with a mask"
+  }
+ ],
+ "notes": "A tree trunk hides the left bay and the door; the basement storey at canal level is partly hidden by bicycles.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012172218",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172218.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "corner shopfront in white timber rises through two storeys on the left bays, wrapping the corner"
+  },
+  {
+   "component": "window",
+   "what": "left axis has small square windows while the two right axes have tall sashes"
+  }
+ ],
+ "notes": "Corner house; the left return wall is the side street face.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

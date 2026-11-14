@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172362",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172362.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "heads",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks project at the sides of the upper windows and stud the brick arches over the ground-storey openings"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the right neighbour's left bay; this three-storey dark front holds most of it.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

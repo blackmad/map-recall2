@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012168213",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168213.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "plain"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": null,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "storeyWindows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "red shutters flank the central column of loading-door windows on every upper storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white pilastered ground storey with a central opening and a wide band of four windows directly above it"
+  }
+ ],
+ "notes": "A skip container hides the lower ground storey; the upper side windows are small square openings beside the central hoist column.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012176591",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176591.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "sameAs",
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the outline's left third lies on the pale gabled neighbour and a tree trunk; described the left end of the long pale stucco front (two bays and a door). The attic frieze lies above the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

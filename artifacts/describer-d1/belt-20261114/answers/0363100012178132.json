@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012178132",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178132.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "doorBay",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the neck has a white segmental cap, a white ornament above the gable window and white stepped claw pieces at its foot"
+  },
+  {
+   "component": "door",
+   "what": "no street door on the ground storey; a door opens in the right bay of the pale basement plinth"
+  }
+ ],
+ "notes": "The middle house of a row of identical neck-gabled houses; a houseboat and plants hide part of the basement.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

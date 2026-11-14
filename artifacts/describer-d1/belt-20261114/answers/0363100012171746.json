@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012171746",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171746.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": false,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "finish": "not-visible",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [],
+ "gaps": [],
+ "notes": "A tree trunk covers the middle of the outlined front; only one window axis at the left edge shows.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

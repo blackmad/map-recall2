@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012172357",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172357.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "heads",
+  "windowSurround",
+  "balconies",
+  "crown",
+  "doorBay",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ornate stone window surrounds with scrolled heads framing the wide left windows on every storey"
+  },
+  {
+   "component": "roof",
+   "what": "a pointed corner gable with a finial at the right end of the roof"
+  }
+ ],
+ "notes": "Tall narrow Art Nouveau corner building; festive light decorations hide the right corner bay, so whether it projects cannot be read.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

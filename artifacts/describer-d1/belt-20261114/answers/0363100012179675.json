@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012179675",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179675.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "spout",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "crown",
+  "ground",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "tall paired loading doors with a glazed transom fill most of the ground storey beside a separate house door"
+  },
+  {
+   "component": "roof",
+   "what": "a hoist beam projects from the gable top"
+  }
+ ],
+ "notes": "Steep upward wide-angle view in a narrow street; the outline is distorted and the upper storeys are foreshortened.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

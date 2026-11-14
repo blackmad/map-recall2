@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012177435",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177435.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "cornice"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: the outline sits a little right, taking the door bay of the neck-gable neighbour; a lamp post covers the left half of the front, so bays and the ground storey cannot be read.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

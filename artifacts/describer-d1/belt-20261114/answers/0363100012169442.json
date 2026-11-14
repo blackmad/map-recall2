@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012169442",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169442.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "segmental",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "finish",
+  "storeyParts.full",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "centre axis of round-arched loading doors one above the other between square side windows"
+  }
+ ],
+ "notes": "Warehouse front, a bare tree in front blurs the centre axis; small image.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

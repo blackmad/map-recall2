@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012177020",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177020.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "dormers",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a fan of separate white stone blocks stands over each upper window head, and white bands run across at mid-window height"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is rendered white with a wide window beside the door"
+  }
+ ],
+ "notes": "A street lamp crosses the left edge; cars hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

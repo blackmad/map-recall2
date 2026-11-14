@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012180437",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180437.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "stone-lintel",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sameAs",
+  "windowSurround",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stone festoons (draped swags) sit above the outer first-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces flank the neck and a round-arched cap crowns it"
+  },
+  {
+   "component": "window",
+   "what": "the centre axis of the second storey is a tall dark former hoist door"
+  }
+ ],
+ "notes": "A street lamp stands right of the front and building works hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

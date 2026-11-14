@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012169108",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "basement",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white balustrade with a carved crest and a small arched attic window stands over the middle bay, matching the twin half to the left"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers this three-bay right half of a mirrored double front and spills a little onto the neck-gable neighbour at right.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

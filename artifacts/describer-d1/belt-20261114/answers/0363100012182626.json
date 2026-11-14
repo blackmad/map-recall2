@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012182626",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182626.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "basement",
+  "storeyParts.full",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "iron wall anchors in rows on the pale front; a dentil course under the cornice"
+  }
+ ],
+ "notes": "A tree stands in front of the whole front and a post-mounted sign crosses its left side; the door cannot be seen.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

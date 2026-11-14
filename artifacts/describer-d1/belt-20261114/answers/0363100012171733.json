@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012171733",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171733.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 7,
+ "columns": [
+  6,
+  7,
+  7
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "columns",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the left three bays of the ground storey are faced in pale stucco, the right part is bare brick"
+  },
+  {
+   "component": "roof",
+   "what": "a wide hipped tiled roof with a small skylight between the two dormers"
+  }
+ ],
+ "notes": "A wide seven-bay front under one roof with two street doors on stoops; it may be two houses behind one cornice.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

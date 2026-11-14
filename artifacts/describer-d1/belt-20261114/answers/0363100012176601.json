@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012176601",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176601.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "cornice",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a curved stone attic piece with a carved cartouche rises over the centre of the cornice"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline's left third lies on the grey stone neighbour; described the dark brick front. Trees, cars and dark glass make the ground storey and door unreadable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012169196",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169196.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "cross-transom",
+ "heads": [
+  "relieving",
+  "relieving"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "heads",
+  "bands",
+  "doorBay",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a stepped Renaissance gable with white stone bands and arched tympana stands over the middle bays, the tiled roof sloping away on both sides"
+  },
+  {
+   "component": "window",
+   "what": "white semicircular brick-arch tympana over every window, with white blocks in the wall between the windows"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline covers a low wide wall of two fronts (a step-gabled Renaissance house and a plainer house with a dormer on its right) plus part of the grey stone neighbour; described the step-gabled house. Trees and scaffolding cross the front.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

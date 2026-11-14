@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012177438",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177438.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "crown",
+  "balconies",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "dark green shutters beside the two centre window axes on storeys 1 to 3"
+  },
+  {
+   "component": "roof",
+   "what": "white attic parapet with small square windows and raised piers over the centre axes"
+  }
+ ],
+ "notes": "Strong low sun, a tree and creepers blur the ground storey; centre axes have iron balconette guards.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

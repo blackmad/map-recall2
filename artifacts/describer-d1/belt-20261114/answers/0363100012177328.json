@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012177328",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177328.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone edging and a crowning ornament on the bell gable, with red-painted side pieces at its foot"
+  },
+  {
+   "component": "relief",
+   "what": "small stone tablets in the wall above the ground storey and above the second storey"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline is shifted right onto the left bay of the next house, but this bell-gable front holds most of it. A bare tree crosses the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

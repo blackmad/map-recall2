@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012179673",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179673.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a wide ground-storey window of two lights with small-paned upper lights beside the street door"
+  }
+ ],
+ "notes": "An overhead cable crosses the top storey; the neck cap is faint against the sky and a fence hides the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012182424",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012182424.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.souterrain",
+  "doorBay",
+  "doorSurround",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck with a window and hoist hook, white claw pieces at the shoulders and a curved cap"
+  },
+  {
+   "component": "door",
+   "what": "the street door is in the low lowest storey under the right bay, below a tall row of three windows"
+  }
+ ],
+ "notes": "Branches cross the gable; cars hide the plinth. The lowest storey is low and was read as a souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

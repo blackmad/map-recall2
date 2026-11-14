@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012177269",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177269.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a wide white triangular pediment with a carved tympanum stands over the middle three bays of the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a white doorcase with a cornice and a fanlight over the centre door, reached by a double stoop with railings"
+  }
+ ],
+ "notes": "Bare tree branches cross the front and a parking sign hides part of the right ground bay.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012176358",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176358.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "pale",
+  "cornice",
+  "whiteFrames",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "full-height flat pilasters divide the four axes"
+  },
+  {
+   "component": "gable ornament",
+   "what": "an attic parapet over the cornice with a central carved crest and urns on piers"
+  },
+  {
+   "component": "door",
+   "what": "the doorcase has carved scroll consoles and a crest over it reaching into storey 1"
+  }
+ ],
+ "notes": "Parked cars hide the bottom of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

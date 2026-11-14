@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012178941",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178941.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "doorSurround",
+  "windows",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "thin light block-quoin pilaster strips run up the brick between the axes"
+  },
+  {
+   "component": "relief",
+   "what": "a small statue on a bracket stands on the party wall between this door and the neighbour's"
+  },
+  {
+   "component": "roof",
+   "what": "a flat skylight in the roof beside the dormer"
+  }
+ ],
+ "notes": "Tree branches cross the whole front; a large trunk stands just right of it.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

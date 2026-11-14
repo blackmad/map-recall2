@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012174842",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174842.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "cornice",
+  "windowSurround",
+  "storeyParts.souterrain",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved hoods or cartouches over the centre window of the first and second storeys"
+  },
+  {
+   "component": "roof",
+   "what": "tall plain parapet with a central carved cartouche above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "carved openwork fanlight over the street door"
+  }
+ ],
+ "notes": "Branches and a yellow tree soften the image; warm tint.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

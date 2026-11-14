@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171568",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171568.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a balustrade with vase-topped piers along the cornice and a sculpted crest with a coat of arms further left"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers only the right two bays of a wider six-bay front with one cornice and balustrade; a tree covers the outlined bays. The street door lies outside the outline.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

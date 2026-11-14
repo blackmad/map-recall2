@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012168204",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168204.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windows",
+  "bands",
+  "dormers",
+  "doorBay",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a corner turret with a domed cap and a glazed oriel at the mansard level on the right corner"
+  },
+  {
+   "component": "shopfront",
+   "what": "the two lowest storeys are rendered and painted white below the brick upper wall"
+  }
+ ],
+ "notes": "Corner building; a traffic sign hides the left bay and the low sun washes out the top. The white base holds two rows of openings, read as two storeys.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

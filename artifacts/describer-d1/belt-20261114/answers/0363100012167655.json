@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012167655",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167655.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "doorSurround",
+  "basement",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved scrolled crest rises over the attic frieze right of centre"
+  }
+ ],
+ "notes": "A bare tree crosses the front. The dark wall continues left with a balustraded 4-bay part; read as a separate front because its top differs.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

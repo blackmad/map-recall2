@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012171345",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171345.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "doorBay",
+  "storeyParts.roof",
+  "crown",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a steep dark roof face behind the cornice holds a row of windows, one a wide triple window"
+  }
+ ],
+ "notes": "A tree trunk hides the left part of the front, so the bay count and door position are inferred from the visible right part.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

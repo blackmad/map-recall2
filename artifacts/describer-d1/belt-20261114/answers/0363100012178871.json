@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012178871",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178871.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a stone attic crest over the cornice: balustrade panels each side of a carved scrolled central pediment with vases at the corners"
+  },
+  {
+   "component": "door",
+   "what": "carved stone doorcase with an ornamented fanlight over a stoop"
+  }
+ ],
+ "notes": "A lens flare streak crosses the cornice; parked cars hide the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

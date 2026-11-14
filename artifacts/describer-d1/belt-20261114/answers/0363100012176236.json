@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012176236",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176236.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "finish",
+  "dormers",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stone centre bay and giant white pilasters at the corners, carved festoons under the first-storey windows"
+  },
+  {
+   "component": "roof",
+   "what": "balustrade with vases along the cornice and a small curved pediment in the attic over the centre bay"
+  },
+  {
+   "component": "door",
+   "what": "double stoop with iron railings up to the centre door"
+  }
+ ],
+ "notes": "Bare trees across the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

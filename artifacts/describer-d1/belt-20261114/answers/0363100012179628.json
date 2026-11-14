@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012179628",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179628.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 6,
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windows",
+  "cornice",
+  "bands",
+  "balconies",
+  "ground",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a tall round-arched stone entrance at the left spans the souterrain and ground storey, with a row of small openings above it"
+  },
+  {
+   "component": "window",
+   "what": "fabric sun awnings over most upper windows"
+  },
+  {
+   "component": "roof",
+   "what": "a red-tiled pitched roof with chimneys at both ends behind a parapet"
+  }
+ ],
+ "notes": "An early twentieth-century office front; the row of small windows under the cornice is read as an attic frieze, not a storey. A tree covers the left-centre.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

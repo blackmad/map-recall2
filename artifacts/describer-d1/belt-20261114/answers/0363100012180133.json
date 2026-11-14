@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012180133",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180133.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a white balustraded balconette in front of the window at the foot of the step gable"
+  },
+  {
+   "component": "window",
+   "what": "the centre bay is a continuous white-framed column of windows and panels running up into the gable"
+  }
+ ],
+ "notes": "A tree covers most of the front below the gable; the storey and bay counts are read through the branches.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

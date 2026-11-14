@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171895",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171895.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a red awning over a café shopfront"
+  },
+  {
+   "component": "gable ornament",
+   "what": "round white-framed ornaments flank the small top-storey windows"
+  }
+ ],
+ "notes": "Branches cover the top of the front, so the crown cannot be read; the top row has small windows and may be an attic inside a wide gable.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

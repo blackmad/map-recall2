@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012169306",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169306.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windowSurround",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "scrolled white ornamental hood moulds over the ground-storey openings"
+  }
+ ],
+ "notes": "A van roof in the foreground hides the ground storey and door; a thin tree crosses the left bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

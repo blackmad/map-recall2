@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012180049",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180049.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "basement",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white rendered wall dormer with curved cheeks stands on the cornice over the left bay"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline's left third falls on a tree trunk; the two-bay dark front to its right holds the rest. Cars hide the souterrain.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

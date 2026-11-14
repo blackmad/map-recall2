@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012174679",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174679.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "cornice",
+  "doorSurround",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "tall centre wall dormer with an ornamented top rising over the cornice, slate roof faces either side"
+  }
+ ],
+ "notes": "A bare tree covers the left half of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012167704",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167704.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays",
+  "dormers",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with scrolled sides and a curved top in the tiled roof"
+  },
+  {
+   "component": "window",
+   "what": "irregular window placement: the upper rows do not line up and one window is replaced by a small blind panel"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: one long pitched roof covers two fronts; the outline sits on the right part (irregular windows, shopfront) and that part holds most of it; the left part with tall windows is a different front. Dark and foggy.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

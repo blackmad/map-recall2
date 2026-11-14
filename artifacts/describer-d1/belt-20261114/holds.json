@@ -1,0 +1,403 @@
+{
+ "v": 1,
+ "answers": 851,
+ "unreadable": 47,
+ "outlineShiftKept": 200,
+ "held": 90,
+ "byCause": {
+  "outline off the front": 58,
+  "two fronts (extent multi)": 31,
+  "cutter flag": 27,
+  "rear-or-side wall": 45
+ },
+ "rearReasons": {
+  "0363100012175410": "wall 37.8 m from the address street, centroid 15.7 m: not the street front",
+  "0363100012175407": "wall 11.3 m from the address street, centroid 11.3 m: not the street front",
+  "0363100012179675": "wall 37.0 m from the address street, centroid 23.4 m: not the street front",
+  "0363100012168064": "wall 13.0 m from the address street, centroid 8.8 m: not the street front",
+  "0363100012175703": "wall 10.2 m from the address street, centroid 10.1 m: not the street front",
+  "0363100012167682": "wall 9.3 m from the address street, centroid 9.5 m: not the street front",
+  "0363100012176003": "wall 11.4 m from the address street, centroid 11.3 m: not the street front",
+  "0363100012167669": "wall 9.0 m from the address street, centroid 9.0 m: not the street front",
+  "0363100012167636": "wall 14.4 m from the address street, centroid 6.4 m: not the street front",
+  "0363100012177483": "wall 12.2 m from the address street, centroid 6.4 m: not the street front",
+  "0363100012177243": "wall 18.5 m from the address street, centroid 11.9 m: not the street front",
+  "0363100012177174": "wall 5.5 m from the address street, centroid 5.3 m: not the street front",
+  "0363100012176728": "wall 10.4 m from the address street, centroid 10.3 m: not the street front",
+  "0363100012176586": "wall 13.0 m from the address street, centroid 11.2 m: not the street front",
+  "0363100012176585": "wall 13.5 m from the address street, centroid 11.6 m: not the street front",
+  "0363100012176597": "wall 8.3 m from the address street, centroid 8.4 m: not the street front",
+  "0363100012169509": "wall 10.0 m from the address street, centroid 10.2 m: not the street front",
+  "0363100012176526": "wall 7.1 m from the address street, centroid 6.2 m: not the street front",
+  "0363100012176538": "wall 6.7 m from the address street, centroid 6.5 m: not the street front",
+  "0363100012177446": "wall 15.7 m from the address street, centroid 8.0 m: not the street front",
+  "0363100012171672": "wall 32.6 m from the address street, centroid 21.5 m: not the street front",
+  "0363100012178769": "wall 7.5 m from the address street, centroid 6.3 m: not the street front",
+  "0363100012171094": "wall 8.9 m from the address street, centroid 7.4 m: not the street front",
+  "0363100012571333": "wall 14.1 m from the address street, centroid 11.1 m: not the street front",
+  "0363100012171575": "wall 9.6 m from the address street, centroid 9.7 m: not the street front",
+  "0363100012168204": "wall 10.2 m from the address street, centroid 6.9 m: not the street front",
+  "0363100012168205": "wall 17.5 m from the address street, centroid 14.9 m: not the street front",
+  "0363100012167735": "wall 19.7 m from the address street, centroid 12.6 m: not the street front",
+  "0363100012177250": "wall 9.3 m from the address street, centroid 7.2 m: not the street front",
+  "0363100012176429": "wall 10.1 m from the address street, centroid 9.0 m: not the street front",
+  "0363100012169069": "wall 7.2 m from the address street, centroid 5.6 m: not the street front",
+  "0363100012172239": "wall 10.4 m from the address street, centroid 6.5 m: not the street front",
+  "0363100012172406": "wall 7.4 m from the address street, centroid 7.2 m: not the street front",
+  "0363100012174951": "wall 10.2 m from the address street, centroid 9.0 m: not the street front",
+  "0363100012174856": "wall 8.6 m from the address street, centroid 8.6 m: not the street front",
+  "0363100012174760": "wall 14.7 m from the address street, centroid 14.5 m: not the street front",
+  "0363100012176395": "wall 15.9 m from the address street, centroid 12.0 m: not the street front",
+  "0363100012176394": "wall 12.3 m from the address street, centroid 7.1 m: not the street front",
+  "0363100012172218": "wall 6.8 m from the address street, centroid 6.4 m: not the street front",
+  "0363100012176402": "wall 9.9 m from the address street, centroid 7.7 m: not the street front",
+  "0363100012176162": "wall 11.8 m from the address street, centroid 11.5 m: not the street front",
+  "0363100012178670": "wall 27.2 m from the address street, centroid 19.9 m: not the street front",
+  "0363100012178976": "wall 8.4 m from the address street, centroid 8.2 m: not the street front",
+  "0363100012171024": "wall 8.2 m from the address street, centroid 8.5 m: not the street front",
+  "0363100012171050": "wall 7.3 m from the address street, centroid 6.7 m: not the street front"
+ },
+ "pands": {
+  "0363100012165023": [
+   "outline off the front"
+  ],
+  "0363100012165028": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012165048": [
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012165049": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012167490": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012167636": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012167669": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012167682": [
+   "rear-or-side wall"
+  ],
+  "0363100012167707": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012167735": [
+   "rear-or-side wall"
+  ],
+  "0363100012167905": [
+   "outline off the front"
+  ],
+  "0363100012168064": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012168204": [
+   "rear-or-side wall"
+  ],
+  "0363100012168205": [
+   "rear-or-side wall"
+  ],
+  "0363100012168212": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012168543": [
+   "two fronts (extent multi)"
+  ],
+  "0363100012168580": [
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012169007": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012169069": [
+   "rear-or-side wall"
+  ],
+  "0363100012169154": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012169196": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012169206": [
+   "two fronts (extent multi)"
+  ],
+  "0363100012169217": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012169249": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012169509": [
+   "rear-or-side wall"
+  ],
+  "0363100012171024": [
+   "rear-or-side wall"
+  ],
+  "0363100012171050": [
+   "rear-or-side wall"
+  ],
+  "0363100012171084": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012171094": [
+   "rear-or-side wall"
+  ],
+  "0363100012171575": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012171584": [
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012171587": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012171672": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012171673": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012171747": [
+   "two fronts (extent multi)"
+  ],
+  "0363100012172047": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012172217": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012172218": [
+   "rear-or-side wall"
+  ],
+  "0363100012172239": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012172310": [
+   "outline off the front"
+  ],
+  "0363100012172401": [
+   "outline off the front"
+  ],
+  "0363100012172406": [
+   "rear-or-side wall",
+   "outline off the front"
+  ],
+  "0363100012174760": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012174770": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012174856": [
+   "rear-or-side wall"
+  ],
+  "0363100012174951": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012175407": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012175409": [
+   "outline off the front"
+  ],
+  "0363100012175410": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012175703": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012175784": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176003": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176025": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176162": [
+   "rear-or-side wall",
+   "outline off the front"
+  ],
+  "0363100012176316": [
+   "cutter flag",
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176394": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176395": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176402": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176422": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176429": [
+   "rear-or-side wall"
+  ],
+  "0363100012176526": [
+   "rear-or-side wall",
+   "outline off the front"
+  ],
+  "0363100012176533": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176538": [
+   "rear-or-side wall"
+  ],
+  "0363100012176540": [
+   "outline off the front"
+  ],
+  "0363100012176585": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176586": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176591": [
+   "outline off the front"
+  ],
+  "0363100012176597": [
+   "rear-or-side wall",
+   "outline off the front"
+  ],
+  "0363100012176671": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176728": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012176745": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012176756": [
+   "outline off the front"
+  ],
+  "0363100012176862": [
+   "outline off the front"
+  ],
+  "0363100012177174": [
+   "rear-or-side wall"
+  ],
+  "0363100012177218": [
+   "two fronts (extent multi)"
+  ],
+  "0363100012177243": [
+   "rear-or-side wall"
+  ],
+  "0363100012177245": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012177250": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012177437": [
+   "outline off the front"
+  ],
+  "0363100012177446": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012177483": [
+   "rear-or-side wall",
+   "cutter flag"
+  ],
+  "0363100012177541": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012178670": [
+   "rear-or-side wall"
+  ],
+  "0363100012178769": [
+   "rear-or-side wall"
+  ],
+  "0363100012178976": [
+   "rear-or-side wall",
+   "outline off the front"
+  ],
+  "0363100012179675": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ],
+  "0363100012180136": [
+   "outline off the front",
+   "two fronts (extent multi)"
+  ],
+  "0363100012180307": [
+   "outline off the front"
+  ],
+  "0363100012182427": [
+   "two fronts (extent multi)"
+  ],
+  "0363100012571333": [
+   "rear-or-side wall",
+   "cutter flag",
+   "outline off the front"
+  ]
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012176602",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176602.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "heads",
+  "crown",
+  "cornice",
+  "basement",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the outline spans a lower front on the left and the left two bays of the three-bay brick house; described the brick house. Scaffolding, a tree and a fence in the foreground cross the whole front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

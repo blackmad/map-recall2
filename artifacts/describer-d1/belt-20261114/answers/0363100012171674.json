@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012171674",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171674.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  6,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "columns",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the two lowest rows are a pale plastered base: a ground storey under a band of six small square windows"
+  }
+ ],
+ "notes": "Dusk light; the small-window band over the ground storey was counted as its own storey; bicycles hide the plinth.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

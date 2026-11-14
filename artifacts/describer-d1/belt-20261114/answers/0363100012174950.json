@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012174950",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174950.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "finish",
+  "crown",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide window per storey across almost the whole front: a wide centre light between narrow side lights under a top light of small panes, in an early-20th-century style"
+  }
+ ],
+ "notes": "Bicycles hide the foot of the ground storey; the wide windows may be very shallow bows rather than flush.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012180135",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180135.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "ground",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "The image is heavily overexposed and a street lamp stands in front of the right bay; the gable shape and wall tone are hard to read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

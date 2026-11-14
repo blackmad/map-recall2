@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012172153",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172153.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sameAs",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with stepped shoulders, a white oval oculus and a carved panel in the gable foot, white framing on the neck"
+  },
+  {
+   "component": "relief",
+   "what": "white festoon panels under the second-storey outer windows"
+  }
+ ],
+ "notes": "A tree branch and trunk cross the right bay; white-painted souterrain plinth with a stoop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

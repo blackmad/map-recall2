@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012169439",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169439.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "white balustrade with pierced panels above the bracketed cornice, shared with the right twin"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the edge of the twin; described the left half of the dark painted double front. Site hoarding covers the base.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012176723",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176723.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "finish",
+  "storeyParts.full",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "Plain brown three-bay front behind branches; the top is lost in branches and a van hides the base; the outline is shifted left onto the narrow dark neighbour.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

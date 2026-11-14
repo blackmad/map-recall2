@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012169157",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169157.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "basement",
+  "doorSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a low white attic over the cornice with baluster panels alternating with small attic windows"
+  }
+ ],
+ "notes": "Bare tree before the middle bays; parked cars hide the souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

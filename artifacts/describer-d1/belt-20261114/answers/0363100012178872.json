@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012178872",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178872.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a round-arched attic piece with a white moulded arch over the centre of the cornice"
+  },
+  {
+   "component": "door",
+   "what": "the street door has a round-arched head"
+  }
+ ],
+ "notes": "A large tree trunk hides the left bay; bicycles hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

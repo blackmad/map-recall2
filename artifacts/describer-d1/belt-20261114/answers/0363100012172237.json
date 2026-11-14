@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012172237",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172237.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "basement",
+  "finish",
+  "storeyParts.roof",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a red pantile roof slope shows behind the white frieze and cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the left two bays of this three-bay dark front; a street lamp stands in front of the left bay.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

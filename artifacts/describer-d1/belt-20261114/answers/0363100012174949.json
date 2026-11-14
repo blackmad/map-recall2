@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012174949",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174949.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "storeyParts.roof",
+  "bands",
+  "windowSurround",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "contrasting dark brick segmental arches with light blocks over the ground and first-floor windows of the cream front"
+  },
+  {
+   "component": "roof",
+   "what": "the crown is a steep dark slate-hung pointed gable over a small dentil band"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits right, taking in the edge of the brick neighbour; the narrow cream two-bay house is described. Branches cross the gable and bicycles hide the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

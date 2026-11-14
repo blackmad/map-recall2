@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171439",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171439.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "windows",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "storeyParts.souterrain",
+  "basement",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey and basement are faced in light grey stone with pilasters between round-headed openings"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the neck gable ends in a white triangular pediment with a white ornament"
+  }
+ ],
+ "notes": "A bare tree covers the middle of the front; the ground-storey doors cannot be read.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

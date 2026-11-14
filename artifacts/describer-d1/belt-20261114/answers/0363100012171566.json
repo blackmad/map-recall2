@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171566",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171566.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "storeyParts.souterrain",
+  "storeyParts.full",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a small ornamented hoist dormer in the middle of the tiled roof"
+  }
+ ],
+ "notes": "The lowest row of barred windows sits at pavement level and is read as a souterrain; no street door can be picked out. A lamp post stands in front of the right edge.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "pandId": "0363100012172271",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172271.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": "not-visible",
+ "windows": "not-visible",
+ "heads": [
+  "not-visible"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "not-visible",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "A bare tree covers almost the whole white front; only its pale wall and tall ground-storey windows can be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

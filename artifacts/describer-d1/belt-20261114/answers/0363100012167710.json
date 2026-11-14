@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012167710",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167710.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "finish",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the step gable has white scroll pieces at its steps and ends in a small triangular pediment"
+  },
+  {
+   "component": "window",
+   "what": "white stone blocks are set in the dark wall between the windows and over the heads, a Dutch-renaissance block pattern"
+  }
+ ],
+ "notes": "A van and cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

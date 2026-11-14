@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172047",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172047.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "finish",
+  "ground",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a lettered fascia band runs between the tall ground windows and the basement windows"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline spans two fronts, the brick bell-gable house on the left and the pale grey cornice house on the right; described the pale house, which it covers more of.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

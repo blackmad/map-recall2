@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012180128",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012180128.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "Tree branches cross the whole front and the dormer tops are hard to read; a hipped tiled roof rises behind the cornice.",
+ "storeys": 2,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

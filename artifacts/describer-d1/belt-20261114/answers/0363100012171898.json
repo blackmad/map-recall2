@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012171898",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171898.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a wide neck with an oculus and festoons under a flat cornice top, with large white claw pieces"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is rendered light grey with low windows beside the door"
+  }
+ ],
+ "notes": "The rendered ground storey is low with windows near pavement height; read as the ground storey under two tall-windowed storeys.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012169154",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169154.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "dormers",
+  "storeyParts.roof",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white attic with a balustrade and two windowed dormer bays stands over the cornice"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline spans a pale stone three-bay house with a sculpted parapet on the left and a brick five-bay house on the right; described the brick house, partly hidden by a tree trunk at its left edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

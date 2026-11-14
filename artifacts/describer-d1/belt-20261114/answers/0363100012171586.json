@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012171586",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171586.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "not-visible",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "dormers",
+  "crown",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "rows of small white corbel blocks run under the cornice and over each window row, like a dentil frieze"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline runs a little onto the right neighbour, but one front holds most of it. Strong low sun washes out the image and a tree and a truck cover most of the front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012169249",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169249.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "balconies",
+  "finish",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the third window axis is blind, dark recessed panels in place of windows"
+  }
+ ],
+ "notes": "OUTLINE-OFF: outline straddles a white six-bay front and a dark four-bay corner front about evenly; described the dark corner front. Image is fogged on the left.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012165078",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165078.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  3
+ ],
+ "dormers": {
+  "count": 5,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "finish",
+  "bands",
+  "dormers",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a white colonnade of pilasters between tall gridded windows"
+  },
+  {
+   "component": "balcony",
+   "what": "continuous iron balconette railings run along the first and top storeys"
+  }
+ ],
+ "notes": "A corner building that wraps round to the left; two trees and a lamp post cover the left axes, so the bay count is uncertain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

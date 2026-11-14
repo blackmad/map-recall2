@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012168130",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168130.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "basement",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small triangular pediment stands on the cornice over the centre of the white attic frieze"
+  }
+ ],
+ "notes": "The outline is offset to the right two bays of this three-bay dark front; a fence and machinery hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

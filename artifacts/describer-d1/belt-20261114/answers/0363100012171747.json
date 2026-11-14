@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012171747",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171747.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "finish",
+  "mirrored",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "each narrow neck carries a small triangular pediment cap with white side pieces"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline sits across the middle of one wall holding two mirrored houses with two neck gables and doors at both ends; described the left house. The photo is overexposed.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

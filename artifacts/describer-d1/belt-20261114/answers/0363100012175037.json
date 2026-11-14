@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012175037",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175037.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 7,
+ "columns": [
+  7,
+  7,
+  7
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 3,
+ "groundBays": 7,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "doorSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "faint flat pilaster strips divide the front into wider outer and narrower inner window groups"
+  },
+  {
+   "component": "door",
+   "what": "a double stoop with iron railings leads to the central door"
+  }
+ ],
+ "notes": "Strong sun glare and lens flares wash out the window glazing; a parking sign covers the right edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

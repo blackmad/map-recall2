@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012172240",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172240.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a carved white crest with a cartouche stands over the middle of the attic frieze"
+  },
+  {
+   "component": "door",
+   "what": "the doorcase has pilasters and a curved pediment with a carved panel over the fanlight"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the right two bays of this three-bay front; its door bay is just left of the outline.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

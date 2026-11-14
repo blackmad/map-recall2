@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012167985",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167985.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "cornice",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white stone balustrade runs along the top with a carved scrolled pediment and oval cartouche over the centre bay, a brick pointed gable behind it"
+  },
+  {
+   "component": "door",
+   "what": "the white stuccoed ground storey has a wide round-arched central entrance between two narrow doors with top lights"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits right of centre, missing the left bay, but this front holds most of it. Cars hide the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

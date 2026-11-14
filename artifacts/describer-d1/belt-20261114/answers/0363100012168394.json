@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012168394",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012168394.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "whiteFrames",
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof rises straight behind the attic frieze"
+  }
+ ],
+ "notes": "A vehicle roof in the foreground hides everything below the top storey; only the top window row, the white attic frieze with small windows and consoles, and the roof show.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

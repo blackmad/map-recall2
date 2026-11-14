@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012176422",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176422.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "t-window",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "bands",
+  "windowSurround",
+  "dormers",
+  "sameAs",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone block quoins at the front's edges and white blocks over the window heads"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline spans two fronts about evenly, each with its own mansard and dormer; described the left one. The right one has a white stone central strip with round-headed windows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

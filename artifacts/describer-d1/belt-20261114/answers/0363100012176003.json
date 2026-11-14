@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012176003",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176003.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "storeyParts.full",
+  "crown",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "A modern brick corner building seen obliquely at a distance down a side street; the outlined face is its side-street face, with a café front on the ground storey hidden by plants and people.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

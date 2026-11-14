@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177441",
+ "design": {
+  "fronts": [
+   {
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "cornice",
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#37322f"
+  }
+ },
+ "provenance": {
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177441.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "one long hipped slate roof over a wide front, with oval attic windows in a white frieze under the cornice"
+  }
+ ]
+}

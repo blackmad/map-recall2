@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012165019",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165019.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "mirrored",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a fanlight with ornamental glazing bars over the street door"
+  }
+ ],
+ "notes": "A bare tree crosses the front; it shares one cornice with the right neighbour, a mirrored twin with its door on the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

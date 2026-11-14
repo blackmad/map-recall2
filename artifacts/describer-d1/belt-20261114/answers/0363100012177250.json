@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012177250",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177250.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "heads",
+  "storeyParts.full",
+  "crown",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small round-headed windows in the brick wall beside the regular windows"
+  }
+ ],
+ "notes": "OUTLINE-OFF: outline straddles the stone corner of the near building and a brick wall beyond it that reads as the side elevation of a corner house (irregular windows, hipped roof), not a street front; described that brick wall.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

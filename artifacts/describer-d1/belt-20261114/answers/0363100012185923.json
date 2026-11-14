@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012185923",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012185923.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "pale",
+  "finish",
+  "cornice",
+  "basement",
+  "sills",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a balustrade with vases runs along the top of the cornice"
+  }
+ ],
+ "notes": "Dusk light and bare branches over the whole front; the wall is grey, lighter than the brick neighbour on the left.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

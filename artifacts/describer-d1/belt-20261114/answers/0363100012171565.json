@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171565",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171565.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a balustrade with vase-topped piers along the cornice, centred on a sculpted crest with a coat of arms"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers only the left four of the six bays of a wider front with one central crest and balustrade; the whole front is described.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

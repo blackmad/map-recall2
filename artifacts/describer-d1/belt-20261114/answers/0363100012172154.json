@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012172154",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172154.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyWindows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top storey has a single small centre window between two white oval oculi, with a tiny window above it just under the cornice, like a cut-down gable foot"
+  }
+ ],
+ "notes": "Top storey is unusual (oculi and one small window under a straight cornice), counted as a full storey at low confidence; a fence hides the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

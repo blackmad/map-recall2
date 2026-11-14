@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012171899",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171899.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "basement",
+  "doorSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "both outer ground-storey doors have diamond-patterned fanlights"
+  }
+ ],
+ "notes": "Scaffolding crosses the left bay and a tree the right bay; the outline is shifted left onto the taller neighbour.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

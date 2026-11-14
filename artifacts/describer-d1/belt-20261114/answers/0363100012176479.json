@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012176479",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176479.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "six-pane",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "lettering or ornament in the plain frieze under the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark fabric awnings over the three ground-storey openings"
+  },
+  {
+   "component": "roof",
+   "what": "a hipped slate roof visible behind the cornice"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the left edge of the right neighbour; this four-storey brick front holds most of it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

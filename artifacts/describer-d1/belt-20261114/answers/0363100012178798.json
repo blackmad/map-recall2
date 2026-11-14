@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012178798",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178798.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "finish",
+  "dormers"
+ ],
+ "gaps": [],
+ "notes": "A kiosk and a van hide the ground storey, so the storey count cannot be fixed; four upper rows of two windows show under a pale cornice and a pale gabled dormer. Tree branches cross the front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

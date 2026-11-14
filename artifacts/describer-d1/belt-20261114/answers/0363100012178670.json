@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012178670",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178670.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 4,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "dormers",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "gilt lettering is painted across the dark fascia above the ground-storey windows"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline is shifted right onto the neighbour's left bay, but the dark three-bay front holds most of it. Bicycles and shrubs hide the souterrain.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

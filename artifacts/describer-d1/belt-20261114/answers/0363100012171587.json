@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012171587",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171587.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "windows",
+  "dormers",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "outer axes carry grouped triple windows separated by thin piers, beside a single centre axis"
+  },
+  {
+   "component": "roof",
+   "what": "red pantile roof with a central brick part-front gable holding a round-headed window, two wide dormers and a row of small roof lights"
+  },
+  {
+   "component": "door",
+   "what": "round-arched centre entrance in a stone surround"
+  }
+ ],
+ "notes": "OUTLINE-OFF: outline straddles a brown brick front and an orange brick front about evenly; described the orange right one.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012167645",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167645.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "doorSurround",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "The outline is shifted right over the neighbour; the described front is the black-painted four-bay house with a light frieze cornice. Parked cars hide the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

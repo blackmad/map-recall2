@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012165045",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012165045.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the middle window over the door has a carved white surround with a crest on top and a carved apron, joined to the doorcase"
+  },
+  {
+   "component": "door",
+   "what": "a white carved doorcase with a fanlight and an iron stoop railing"
+  }
+ ],
+ "notes": "Privacy blurs and bicycles hide the lower ground storey and basement; sun glare washes the cornice.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

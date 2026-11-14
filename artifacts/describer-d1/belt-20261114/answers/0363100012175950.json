@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012175950",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175950.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the ground storey is split into a low row with the door at pavement level and a row of windows above it, within the height of the neighbours' ground storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white claw pieces and a tall round-arched cap on the neck"
+  }
+ ],
+ "notes": "The ground storey holds two rows of openings and is counted once; it could be read as a low storey plus an entresol.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

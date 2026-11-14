@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012178847",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178847.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "dormers",
+  "storeyParts.souterrain",
+  "basement"
+ ],
+ "gaps": [],
+ "notes": "A vehicle roof rack hides the souterrain; the main storey shows six windows and no street door. A tree covers the left axes and dormer.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

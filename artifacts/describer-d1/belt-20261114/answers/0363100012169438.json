@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012169438",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169438.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 7,
+ "columns": [
+  7,
+  7,
+  7
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 7,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windowSurround",
+  "doorBay",
+  "finish",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "alternating segmental and triangular hoods over the first-floor windows and carved panels between storeys"
+  },
+  {
+   "component": "roof",
+   "what": "parapet with a central carved crest and urns on the cornice"
+  },
+  {
+   "component": "door",
+   "what": "double stoop stair with railings to a door under a round oculus"
+  }
+ ],
+ "notes": "Wide white seven-bay mansion; two bare trees cross the outer bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

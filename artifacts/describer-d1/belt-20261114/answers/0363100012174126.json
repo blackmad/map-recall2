@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012174126",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174126.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "finish",
+  "dormers",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a roof terrace with a box structure and a tiled roof face set back above the plain white cornice band"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline sits left over a large tree trunk and takes in the edge of the right neighbour; the grey-brown brick house between them is described. The trunk hides its left bay; the lowest row is a grey stone plinth with a street-level door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

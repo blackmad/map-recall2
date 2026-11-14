@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171053",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171053.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "bands",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a tall grey stone base under the painted brick, partly hidden by a skip and site toilets"
+  }
+ ],
+ "notes": "Building-site skip and toilets cover the stone base, so whether it is a souterrain or a full ground storey is uncertain; no door seen.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

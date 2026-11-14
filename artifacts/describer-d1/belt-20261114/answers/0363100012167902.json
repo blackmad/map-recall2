@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012167902",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167902.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.souterrain",
+  "windowSurround",
+  "bands",
+  "pale",
+  "cornice",
+  "ground",
+  "basement",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "carved curved hood ornaments over the window frames"
+  },
+  {
+   "component": "roof",
+   "what": "a carved cartouche crest stands on the middle of the cornice"
+  }
+ ],
+ "notes": "A tree stands in front of the middle bay; dusk light makes the windows dark.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

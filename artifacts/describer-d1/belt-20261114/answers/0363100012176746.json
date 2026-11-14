@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012176746",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176746.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "basement",
+  "cornice",
+  "ground"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: the outline is shifted right over the neighbour's left bay, but the 2-bay cornice front holds most of it. A tree and parked cars hide the lowest storey, so the door and souterrain reading is uncertain.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

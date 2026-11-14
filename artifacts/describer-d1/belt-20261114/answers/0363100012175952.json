@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012175952",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "casement-pair",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "dormers",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "dark timber shutters beside every upper window, both bays"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline sits slightly right, onto the edge of the right neighbour, but mostly on this two-bay front. Ground storey hidden by a market awning; four upper rows visible under a white frieze cornice.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

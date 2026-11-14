@@ -1,0 +1,28 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012169298",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "brick": "#4d4b48"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+   "at": "2026-11-14"
+  }
+ }
+}

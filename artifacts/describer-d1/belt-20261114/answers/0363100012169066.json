@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012169066",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169066.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "bands",
+  "pale",
+  "doorSurround",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "flat stone pilasters between the bays run the full height, with carved spandrel panels between the storeys"
+  }
+ ],
+ "notes": "Weathered grey stone front; a thin tree stands before the door bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

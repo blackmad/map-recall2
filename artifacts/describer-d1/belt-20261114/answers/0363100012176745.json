@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012176745",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176745.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "sameAs",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: the outline spans two fronts (a 2-bay and a 3-bay, each with its own small neck gable over a shared stone-clad office plinth); described the larger right 3-bay front. Tree branches cross the whole front.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

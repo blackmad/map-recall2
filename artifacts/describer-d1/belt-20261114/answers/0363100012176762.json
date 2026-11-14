@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012176762",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176762.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "dormers",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white attic parapet with a balustrade over the middle three bays above the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "small carved festoon ornaments under the first- and second-storey windows"
+  },
+  {
+   "component": "door",
+   "what": "double stoop with iron railings to a pilastered doorcase"
+  }
+ ],
+ "notes": "Clear view; trees only at the edges.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

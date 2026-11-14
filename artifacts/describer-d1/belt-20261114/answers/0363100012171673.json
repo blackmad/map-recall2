@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012171673",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171673.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "storeyParts.full",
+  "ground",
+  "finish",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-OFF: outline spans three dark painted fronts (a cornice front on the left, a bell gable in the middle, a neck gable on the right) plus a strip of the pale neighbour; described the middle bell-gable front. Ground storey blurred out.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

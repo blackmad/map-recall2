@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012176484",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176484.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "cornice",
+  "whiteFrames",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the right neighbour's left bay; this three-bay gabled front holds most of it. A bare tree hides the gable top and the middle bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

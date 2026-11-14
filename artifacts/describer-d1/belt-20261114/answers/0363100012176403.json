@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012176403",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176403.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neck gable with a triangular pediment cap, a white scrolled frame round the neck and stepped claw shoulders"
+  },
+  {
+   "component": "shopfront",
+   "what": "white-framed shopfront with lettered upper panes over the shop windows"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline runs right onto the dark neighbour, but the brown neck-gabled shop front holds most of it; a wall in the foreground hides the base.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

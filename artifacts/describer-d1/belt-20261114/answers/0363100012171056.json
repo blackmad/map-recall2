@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012171056",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171056.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 7,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stone",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 4,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "sills",
+  "whiteFrames",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "double stoop with iron railings to the centre door"
+  },
+  {
+   "component": "window",
+   "what": "pairs of small square attic windows in the frieze over each bay"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: outline covers the middle three bays of a wide grey stone front of about seven bays; described the whole front. Bare trees across the outer bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

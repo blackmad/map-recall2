@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012167901",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167901.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "ground",
+  "doorSurround"
+ ],
+ "gaps": [],
+ "notes": "Sun washes out the image; the low street-level storey with two doors was counted as the ground storey under a tall bel-etage, and cars hide its lower part.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

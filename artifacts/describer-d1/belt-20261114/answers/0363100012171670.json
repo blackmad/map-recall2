@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012171670",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171670.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 7,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.souterrain",
+  "cornice",
+  "dormers",
+  "bays",
+  "sills",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "stone balustrade along the whole cornice with vases and a central curved crest bearing a coat of arms"
+  },
+  {
+   "component": "door",
+   "what": "stone doorcase in the middle bay rising to a balcony with a stone-framed balcony door above"
+  }
+ ],
+ "notes": "Scaffolding covers the left two bays and the ground storey on the right; a lamp post stands in front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

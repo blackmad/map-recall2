@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012174855",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012174855.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "ground",
+  "storeyWindows",
+  "bays",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "second upper storey has one wide window of three lights across the whole front"
+  }
+ ],
+ "notes": "Blurred, low-resolution image with a tree over the right half.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

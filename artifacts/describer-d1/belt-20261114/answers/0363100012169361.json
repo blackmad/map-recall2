@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012169361",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169361.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "basement",
+  "doorSurround",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is framed in light stone pilasters and a lintel beam across the whole front"
+  }
+ ],
+ "notes": "OUTLINE-SHIFT: the outline covers the right two bays of this three-bay neck-gable front and its right edge touches the neighbour. A van and a toilet cabin hide the stoop.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012176533",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176533.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "dormers",
+  "cornice",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pointed pediment dormer over the centre bay with two small attic windows beside it"
+  }
+ ],
+ "notes": "OUTLINE-OFF: the outline spans three fronts (a pale stone house, the brick house in the middle and a brick house with a mansard dormer); described the middle brick house.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012177007",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012177007.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "ground",
+  "doorSurround",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in grey stone with flat pilasters between tall windows, under a brick upper front"
+  }
+ ],
+ "notes": "A large bare tree covers the left half of the front; cars and vans hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

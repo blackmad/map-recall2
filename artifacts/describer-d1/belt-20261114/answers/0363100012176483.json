@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012176483",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176483.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "basement",
+  "whiteFrames",
+  "doorSurround",
+  "windowSurround"
+ ],
+ "gaps": [],
+ "notes": "OUTLINE-SHIFT: outline shifted right onto the right neighbour's left bay; the bell-gabled three-bay front holds most of it. Bare branches and a lamp post blur detail.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012175410",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175410.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "ground",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white timber ground-storey front with large multi-light windows and a white fascia beam, in a brick upper front"
+  },
+  {
+   "component": "window",
+   "what": "iron wall anchors between the upper windows"
+  }
+ ],
+ "notes": "Very oblique fisheye view up a narrow street; the gable top is small and distorted, and a van covers the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012169676",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169676.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "heads",
+  "ground",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one central dormer with white scrolled cheek pieces and a flat cornice top"
+  },
+  {
+   "component": "window",
+   "what": "the middle top-storey opening is taller than its neighbours, like a former hoist door"
+  }
+ ],
+ "notes": "Bicycles hide the foot of the ground storey; the ground openings are partly boarded or signed.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

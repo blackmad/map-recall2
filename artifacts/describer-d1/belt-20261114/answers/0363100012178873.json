@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012178873",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012178873.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "basement",
+  "dormers",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "The lowest level is a short pale plinth storey with a door and a window at pavement level under a tall first row of windows; it may be a raised souterrain rather than a ground storey. Bicycles hide the base.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}
