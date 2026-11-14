@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Hole decks carry their own road past the end (2026-11-14)
+
+User on F1b: "this is almost worse - before there was just a seam line, now there's jagged texture" (Ringweg-Noord OSM7376770). Bisect: `holeStreets` alone. Inside a deck's `under` hole ranges the street lift was skipped, so the deck's own carriageway drawn at ground level past the deck end draped onto terrain and sank 0.5–5 m, showing the pale deck top as a shard. `bridgeGaps.ts` `holeCarry()` measures how far the deck's own ground-level road runs on and `inUnderStreets` keeps the lift there (`holeCarried`, default on); streets that pass under still drape. Survey of 63 hole decks (points > 0.3 m below the deck within 12 m): before F1b 0, F1b 30 decks / 1,173 points, now 10 / 105. Pinned in `HOLE_JUNCTIONS` (`bridge-feedback-pins.ts`, run by check:ground-spots).
+
+
 ## One window grid per wall (2026-11-14)
 
 The Pontsteiger's chequer (feedback a4013653) was `cultural-builders.ts` `grid()` laying a window grid on every face of every box; coplanar leg/skybridge faces got two grids out of phase. `landmarks/wallGrid.ts` `planWallGrids` merges coplanar faces (0.5 m) into one wall with one phase and drops panes at least half covered by another box; byte-identical for lone faces (only melkweg changed, 15 buried panes). The Pontsteiger got its own photo-based builder (`pontsteiger-builder.ts`) with new kit parts `staggeredOpenings.ts` and `warrenTruss.ts`. Massing (leg widths, ~51 m soffit vs OSM min_height 58) is a judgement call between photos and OSM.

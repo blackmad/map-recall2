@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Clean joins where motorway bridges meet the road",
+      "text": "Yesterday's bridge fixes left a ragged pale patch where some bridge decks meet the road beyond them, on the Ringweg-Noord, the Coentunnel approach and Jan Evertsenstraat. The road now carries on at the deck's height past the end, so the join is a clean seam again; paths that pass under the bridges stay on the ground.",
+      "where": [
+        4.9,
+        52.4
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-deck-end-ringweg-noord.jpg",
+          "alt": "Ringweg-Noord bridge end: before with a jagged pale patch, after with a clean seam",
+          "caption": "Ringweg-Noord, before (top) | after (bottom)"
+        },
+        {
+          "src": "whats-new/2026-11-14-deck-end-jan-evertsen.jpg",
+          "alt": "Jan Evertsenstraat bridge: before the bridge fixes, with the pale slab, and fixed",
+          "caption": "Jan Evertsenstraat: before the bridge fixes | yesterday | now"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Pontsteiger rebuilt",
       "text": "The Houthavens gate no longer shows chequered window patches where its tower and skybridge met: two window grids were drawn on the same wall, and landmark windows now share one grid per wall. The Pontsteiger itself is remodelled from photos, with a light glazed-brick skin, windows that shift storey by storey, the skybridge's glazed band with its white zig-zag truss, a tower that runs from the ground to the roof, and the low block raised on white columns.",
       "where": [
