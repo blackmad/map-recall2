@@ -75831,6 +75831,1121 @@
   }
  },
  {
+  "id": "lofi",
+  "name": "Lofi",
+  "landmarkId": "lofi",
+  "modelUrl": "./models/lofi.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012092649",
+   "w57864627"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.82408922,
+    52.39118012
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 36.7,
+   "widthMetres": 36.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.82408922,
+    52.39118012
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012092649 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.86 m NAP (scripts/landmarks/lofi-footprints.json, bag-shell-prepare.ts); shell on the BAG ring to the 3DBAG flat roof (6.05-6.31 m). Garage doors, cladding, the black office wing with its mural and ribbon windows measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0, 50 px/m): recording_2025-07-01_09-03-48_04058 (north), TMX7316010203-002493_pano_0005_001310 (2022-03-30, east) and its 2025 alternate, TMX7316010203-000321_pano_0000_004070 (2017-05-31, north-west)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 7,
+  "bagYear": 1967,
+  "materialOverrides": {
+   "stone": "#aab8ba",
+   "red": "#b05656",
+   "dark": "#2c363f",
+   "bronze": "#272d33",
+   "glass": "#4a5258",
+   "gold": "#a89a34",
+   "pink": "#8a5a8c",
+   "blue": "#3f6f9a",
+   "ochre": "#c9a64a",
+   "slate": "#6c7072",
+   "brick": "#8a5a46",
+   "concrete": "#8a8f8c",
+   "greyBrick": "#30363e",
+   "frame": "#c9cdcd"
+  },
+  "attribution": {
+   "title": "Lofi, Basisweg 63, Amsterdam (former GVB bus garage, BAG 1967; club since 2019)",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.amsterdamnow.com/en/going-out-entertainment/lofi-club-sloterdijk/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0); facades, doors, signs and paintwork measured from Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/lofi-inventory.json. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.824401804448247,
+      52.391193631266376
+     ],
+     [
+      4.824402655628172,
+      52.391281643048195
+     ],
+     [
+      4.824042514091115,
+      52.39128161183161
+     ],
+     [
+      4.824042510818458,
+      52.39128071304419
+     ],
+     [
+      4.823892254865797,
+      52.39128069053832
+     ],
+     [
+      4.8238922434456155,
+      52.39128158925585
+     ],
+     [
+      4.823865110034968,
+      52.39128156805199
+     ],
+     [
+      4.8238651441829505,
+      52.391278880886546
+     ],
+     [
+      4.823865733162487,
+      52.39107531185901
+     ],
+     [
+      4.824044661954742,
+      52.391075533657244
+     ],
+     [
+      4.824045030660461,
+      52.39095862316305
+     ],
+     [
+      4.824399462246146,
+      52.390958078996405
+     ],
+     [
+      4.82440104154931,
+      52.3911137088491
+     ],
+     [
+      4.824401804448247,
+      52.391193631266376
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "radion",
+  "name": "RADION (former ACTA building)",
+  "landmarkId": "n3942354213",
+  "relatedLandmarkIds": [
+   "n3942353859"
+  ],
+  "modelUrl": "./models/radion.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012114496",
+   "w545327453",
+   "NL.IMBAG.Pand.0363100012188556",
+   "w276204610"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.82635655,
+    52.34591431
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 80.7,
+   "widthMetres": 106.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.82635655,
+    52.34591431
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012114496 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.55 m NAP (scripts/landmarks/radion-footprints.json, bag-shell-prepare.ts); massing one prism per 3DBAG LoD2.2 roof piece (CC BY 4.0). The black north gable with its white lattice, the tiled south gable, the banded long fronts and the low pavilion with its RADION fascia measured on Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/radion-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 43.5,
+  "bagYear": 1969,
+  "materialOverrides": {
+   "concrete": "#a39d8c",
+   "glass": "#3f4446",
+   "frame": "#6d6a62",
+   "greyBrick": "#5c554a",
+   "stone": "#9c907e",
+   "pink": "#3b3739",
+   "white": "#d6d7d3",
+   "ochre": "#cfc6ad",
+   "slate": "#6a6b68",
+   "copper": "#8d8b84",
+   "green": "#7ac0bc",
+   "blue": "#3e7a92",
+   "dark": "#4b5558"
+  },
+  "attribution": {
+   "title": "RADION in the former ACTA building (Academisch Centrum Tandheelkunde Amsterdam), Louwesweg 1, Amsterdam (1971; BAG 1969; temporary transformation 2012; RADION since 2014)",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.rvo.nl/transformatievoorbeelden/acta-gebouw",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0); facades, doors, signs and paintwork measured from Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/radion-inventory.json. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.825395699719675,
+       52.34569880810476
+      ],
+      [
+       4.8254025804286975,
+       52.345468222798296
+      ],
+      [
+       4.826091500980862,
+       52.345476856795095
+      ],
+      [
+       4.826088736168355,
+       52.34555974715389
+      ],
+      [
+       4.826207077394005,
+       52.34556109010853
+      ],
+      [
+       4.826207784432841,
+       52.34553998111812
+      ],
+      [
+       4.826280578219012,
+       52.3455408923813
+      ],
+      [
+       4.82628118706739,
+       52.34552058283932
+      ],
+      [
+       4.826238648681771,
+       52.345520111585266
+      ],
+      [
+       4.826239583357872,
+       52.3454891170936
+      ],
+      [
+       4.826515282353348,
+       52.34549222111655
+      ],
+      [
+       4.826514351388769,
+       52.345522937005555
+      ],
+      [
+       4.826510521760426,
+       52.34552288291113
+      ],
+      [
+       4.826509839303145,
+       52.3455432190686
+      ],
+      [
+       4.826572010015259,
+       52.34554397197046
+      ],
+      [
+       4.8265720478775185,
+       52.34554329806483
+      ],
+      [
+       4.826581848048066,
+       52.345543542220234
+      ],
+      [
+       4.826581206839578,
+       52.345548994777204
+      ],
+      [
+       4.826581206726076,
+       52.345549003764475
+      ],
+      [
+       4.826579834723948,
+       52.3455902422775
+      ],
+      [
+       4.826580032013762,
+       52.345595537026036
+      ],
+      [
+       4.8265796504723575,
+       52.345595535218656
+      ],
+      [
+       4.826578275970067,
+       52.345636971451086
+      ],
+      [
+       4.826578672186511,
+       52.34563697332797
+      ],
+      [
+       4.826578443115976,
+       52.345642328971344
+      ],
+      [
+       4.826578090923539,
+       52.345642327303004
+      ],
+      [
+       4.826576717553236,
+       52.34568367366242
+      ],
+      [
+       4.826577201704782,
+       52.34568368494366
+      ],
+      [
+       4.826576927701661,
+       52.3456891122765
+      ],
+      [
+       4.826576531598256,
+       52.34568910141234
+      ],
+      [
+       4.826575159813972,
+       52.34573032194969
+      ],
+      [
+       4.826575761363739,
+       52.34573033378707
+      ],
+      [
+       4.8265754417469,
+       52.34573588673298
+      ],
+      [
+       4.8265749722694995,
+       52.34573587552127
+      ],
+      [
+       4.826573600141637,
+       52.34577712301998
+      ],
+      [
+       4.8265742162532606,
+       52.34577714391412
+      ],
+      [
+       4.826573779919059,
+       52.345782642380314
+      ],
+      [
+       4.826573413164283,
+       52.34578263165516
+      ],
+      [
+       4.826572042168429,
+       52.34582378928087
+      ],
+      [
+       4.826572350338072,
+       52.345823790740695
+      ],
+      [
+       4.82657226801319,
+       52.34582914707899
+      ],
+      [
+       4.826571871795029,
+       52.345829145202075
+      ],
+      [
+       4.826570482602655,
+       52.34587058136299
+      ],
+      [
+       4.826570790772623,
+       52.34587058282279
+      ],
+      [
+       4.82657069422671,
+       52.34587590314247
+      ],
+      [
+       4.826570312682896,
+       52.34587590133507
+      ],
+      [
+       4.826568939070274,
+       52.34591726566696
+      ],
+      [
+       4.826569569858617,
+       52.34591728663067
+      ],
+      [
+       4.8265691055349365,
+       52.34592267711048
+      ],
+      [
+       4.826568753453781,
+       52.34592266645489
+      ],
+      [
+       4.826567381427211,
+       52.34596390496473
+      ],
+      [
+       4.826568158964129,
+       52.34596392662357
+      ],
+      [
+       4.826567767332681,
+       52.345969371374494
+      ],
+      [
+       4.826567195129262,
+       52.34596935967611
+      ],
+      [
+       4.8265658232131425,
+       52.34601058919832
+      ],
+      [
+       4.826566351392674,
+       52.34601060068812
+      ],
+      [
+       4.8265661498520265,
+       52.34601610026628
+      ],
+      [
+       4.826565636347241,
+       52.34601608884597
+      ],
+      [
+       4.82656426329297,
+       52.346057408240334
+      ],
+      [
+       4.826564762236923,
+       52.34605741060387
+      ],
+      [
+       4.826564621778836,
+       52.34606272172755
+      ],
+      [
+       4.826564078810351,
+       52.34606271915546
+      ],
+      [
+       4.826562704731438,
+       52.34610411943479
+      ],
+      [
+       4.8265632036759145,
+       52.346104121798334
+      ],
+      [
+       4.826563062536413,
+       52.34610948684552
+      ],
+      [
+       4.826562519567357,
+       52.346109484273434
+      ],
+      [
+       4.8265611467339875,
+       52.346150785692444
+      ],
+      [
+       4.826561748289448,
+       52.34615079752993
+      ],
+      [
+       4.826561562671,
+       52.34615619831755
+      ],
+      [
+       4.826560961115461,
+       52.34615618648011
+      ],
+      [
+       4.826559587824988,
+       52.34619752384778
+      ],
+      [
+       4.826560189381083,
+       52.34619753568522
+      ],
+      [
+       4.826559958034953,
+       52.34620307107318
+      ],
+      [
+       4.8265594005033945,
+       52.34620305944426
+      ],
+      [
+       4.826558028117941,
+       52.34624432491344
+      ],
+      [
+       4.826558703162601,
+       52.34624432811124
+      ],
+      [
+       4.826558576356396,
+       52.34624972018957
+      ],
+      [
+       4.826557857286997,
+       52.346249716783255
+      ],
+      [
+       4.826556468974974,
+       52.34629108104239
+      ],
+      [
+       4.8265572319562295,
+       52.34629109364454
+      ],
+      [
+       4.826557001857825,
+       52.34629653017249
+      ],
+      [
+       4.826556297576081,
+       52.34629651784842
+      ],
+      [
+       4.826554909260974,
+       52.34633788210713
+      ],
+      [
+       4.826555584307056,
+       52.346337885304926
+      ],
+      [
+       4.826555546684785,
+       52.34634318792765
+      ],
+      [
+       4.826545875687723,
+       52.34634316008981
+      ],
+      [
+       4.826545888741832,
+       52.34634212655487
+      ],
+      [
+       4.826483586427202,
+       52.346341247190445
+      ],
+      [
+       4.826482680707184,
+       52.346368799488786
+      ],
+      [
+       4.826487376229063,
+       52.3463688576862
+      ],
+      [
+       4.826485304091217,
+       52.34643414422257
+      ],
+      [
+       4.826209293344268,
+       52.34643085891599
+      ],
+      [
+       4.826211365887989,
+       52.34636557238499
+      ],
+      [
+       4.82621554790039,
+       52.34636561917134
+      ],
+      [
+       4.826216447402659,
+       52.346337410735735
+      ],
+      [
+       4.826191296871848,
+       52.34633711176293
+      ],
+      [
+       4.826181568312677,
+       52.34633699374443
+      ],
+      [
+       4.826180071585058,
+       52.34633697766166
+      ],
+      [
+       4.826194897053085,
+       52.34586994304253
+      ],
+      [
+       4.826196114944532,
+       52.345869957803394
+      ],
+      [
+       4.826196213397707,
+       52.34586681254038
+      ],
+      [
+       4.826177886441965,
+       52.34586658186012
+      ],
+      [
+       4.826150388671348,
+       52.34586623579964
+      ],
+      [
+       4.826151955516776,
+       52.345820063914246
+      ],
+      [
+       4.826179438697641,
+       52.345820400917525
+      ],
+      [
+       4.8261977362848345,
+       52.34582063145835
+      ],
+      [
+       4.826197834737772,
+       52.345817486195266
+      ],
+      [
+       4.8261986619326285,
+       52.345791515376035
+      ],
+      [
+       4.826036359592756,
+       52.34578956851451
+      ],
+      [
+       4.8260365472048825,
+       52.34578401494393
+      ],
+      [
+       4.825935465843304,
+       52.345783679419306
+      ],
+      [
+       4.825935435988524,
+       52.34578836192131
+      ],
+      [
+       4.8258571974789835,
+       52.34578742462242
+      ],
+      [
+       4.825853316182329,
+       52.34590402291242
+      ],
+      [
+       4.825776912158013,
+       52.34590306729888
+      ],
+      [
+       4.825776129510956,
+       52.34592665655988
+      ],
+      [
+       4.825565713791932,
+       52.34592403141529
+      ],
+      [
+       4.82552316114944,
+       52.34592349692306
+      ],
+      [
+       4.8254621346717546,
+       52.34592273991511
+      ],
+      [
+       4.825466684353505,
+       52.34578587731853
+      ],
+      [
+       4.825466780583554,
+       52.345782911801294
+      ],
+      [
+       4.82546680651762,
+       52.34578202213219
+      ],
+      [
+       4.825472529093217,
+       52.34578209423271
+      ],
+      [
+       4.825475287224801,
+       52.34569982401461
+      ],
+      [
+       4.825395699719675,
+       52.34569880810476
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.82591732658075,
+       52.34633499487137
+      ],
+      [
+       4.825790253206349,
+       52.34633349337082
+      ],
+      [
+       4.825789545625684,
+       52.346355788742954
+      ],
+      [
+       4.825524702012551,
+       52.34635263569995
+      ],
+      [
+       4.825527512046923,
+       52.34626393946016
+      ],
+      [
+       4.825785429151275,
+       52.34626701470278
+      ],
+      [
+       4.825791724110691,
+       52.34626708950286
+      ],
+      [
+       4.8257921790322795,
+       52.34626709166082
+      ],
+      [
+       4.825791389213281,
+       52.346290087691465
+      ],
+      [
+       4.825918606939601,
+       52.346291769631804
+      ],
+      [
+       4.82591732658075,
+       52.34633499487137
+      ]
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "toekomstmuziek",
+  "name": "Toekomstmuziek",
+  "landmarkId": "n2738399729",
+  "modelUrl": "./models/toekomstmuziek.glb",
+  "suppressOsmIds": [
+   "w268508568",
+   "w848772807",
+   "NL.IMBAG.Pand.0363100012110275"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.875657494531835,
+    52.39666847068915
+   ],
+   "headingDegrees": 57.53067230641844,
+   "lengthMetres": 27.97,
+   "widthMetres": 16.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.87559522,
+    52.39664919
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+   "brick": "#a2a6a4",
+   "greyBrick": "#5a5e5b",
+   "stone": "#93938d",
+   "gold": "#c9a63c",
+   "dark": "#2b2f33",
+   "glass": "#46545c",
+   "white": "#dde3e6",
+   "concrete": "#a9adaa",
+   "frame": "#c3c8c6",
+   "slate": "#5d6266",
+   "red": "#c8642e"
+  },
+  "attribution": {
+   "title": "Toekomstmuziek",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.toekomstmuziek.com/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; windows, entrance, canopy sign, profiled hall cladding, roller door and rooflights measured from the 2021 and 2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8754212799639625,
+      52.396664493620676
+     ],
+     [
+      4.875418661880207,
+      52.39666346670148
+     ],
+     [
+      4.875426461655075,
+      52.39665599569265
+     ],
+     [
+      4.875496734732463,
+      52.39658860412363
+     ],
+     [
+      4.875537219626503,
+      52.396549781488666
+     ],
+     [
+      4.875608831530388,
+      52.39657767398391
+     ],
+     [
+      4.875620672506787,
+      52.39656631077769
+     ],
+     [
+      4.8757078604720485,
+      52.39660039109121
+     ],
+     [
+      4.875895897975358,
+      52.39667388626217
+     ],
+     [
+      4.875829459790218,
+      52.39673748384734
+     ],
+     [
+      4.8757772517313365,
+      52.39678765233642
+     ],
+     [
+      4.875504687385291,
+      52.396681157609265
+     ],
+     [
+      4.875493125594142,
+      52.396692513022224
+     ],
+     [
+      4.8754212799639625,
+      52.396664493620676
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "the-other-side",
+  "name": "The Other Side",
+  "landmarkId": "n12269195215",
+  "modelUrl": "./models/the-other-side.glb",
+  "suppressOsmIds": [
+   "w57860087",
+   "NL.IMBAG.Pand.0363100012133795"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.875048529766748,
+    52.39547675702062
+   ],
+   "headingDegrees": 26.360872836735467,
+   "lengthMetres": 75.61,
+   "widthMetres": 50.65
+  },
+  "surveyed": {
+   "anchor": [
+    4.87491785,
+    52.39543795
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Current BAG 0363100012133795 footprint (OSM w57860087) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+   "brick": "#8a8e88",
+   "dark": "#2d3c44",
+   "concrete": "#a3b0b6",
+   "stone": "#9ca2a0",
+   "white": "#e6ebeb",
+   "glass": "#4a5862",
+   "blue": "#1f9cc4",
+   "greyBrick": "#4b5359",
+   "bronze": "#4a5550",
+   "frame": "#d5dbdb",
+   "slate": "#7a7f83",
+   "sandstone": "#5b5f62",
+   "green": "#3f6f72",
+   "pink": "#7a2a5a"
+  },
+  "attribution": {
+   "title": "The Other Side",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.iamsterdam.com/uit/agenda/nachtleven/clubbing/the-other-side",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; profiled hall cladding, ribbon windows, doors, office windows, rooftop letter frame and rooflights measured from the 2021-2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8749889182431545,
+      52.39540905054801
+     ],
+     [
+      4.874933526160346,
+      52.395425860622865
+     ],
+     [
+      4.87494207440275,
+      52.39543751866009
+     ],
+     [
+      4.874941937922998,
+      52.39543788656463
+     ],
+     [
+      4.87496507615182,
+      52.39546600122237
+     ],
+     [
+      4.875044410993859,
+      52.395564085282
+     ],
+     [
+      4.874770912564347,
+      52.39564721578631
+     ],
+     [
+      4.874691271221469,
+      52.395548995402365
+     ],
+     [
+      4.874691611407535,
+      52.395548799145374
+     ],
+     [
+      4.874668621365381,
+      52.39552058621104
+     ],
+     [
+      4.874532610194273,
+      52.39535351883689
+     ],
+     [
+      4.874806415250296,
+      52.39527043514693
+     ],
+     [
+      4.874815657448652,
+      52.395281790614845
+     ],
+     [
+      4.874872774291976,
+      52.39526446676998
+     ],
+     [
+      4.8747991610978385,
+      52.39517352557998
+     ],
+     [
+      4.875135433339896,
+      52.39507145974168
+     ],
+     [
+      4.875629319519498,
+      52.395679614998244
+     ],
+     [
+      4.875291847768349,
+      52.395782198338146
+     ],
+     [
+      4.8749889182431545,
+      52.39540905054801
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "morgan-mees",
+  "name": "Morgan & Mees, Tweede Hugo de Grootstraat 2",
+  "landmarkId": "morgan-mees",
+  "modelUrl": "./models/morgan-mees.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012236197"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87473159,
+    52.37436591
+   ],
+   "headingDegrees": 21.63,
+   "lengthMetres": 16.9,
+   "widthMetres": 19.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.87481791,
+    52.37436754
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012236197 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.63 m NAP (scripts/landmarks/morgan-mees-footprints.json, written by morgan-mees-prepare.ts). School block, rear block and wing on the BAG ring; the garden wall, hedge and terrace pavilion stand on the unbuilt corner plot inside the Nassaukade and street building lines. Heights from the 3DBAG LoD2.2 roofs (CC BY 4.0); fronts measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0, morgan-mees-crops.ts, 60 px/m): recording_2025-06-17_08-04-10_02087 and TMX7316010203-001041_pano_0002_005637 (street), recording_2025-06-18_07-44-47_01471 (east face), recording_2024-09-11_08-03-34_00126 (Nassaukade); per wall in scripts/landmarks/morgan-mees-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 14.4,
+  "galleryView": {
+   "theta": 2.2,
+   "phi": 1.2
+  },
+  "bagYear": 1883,
+  "materialOverrides": {
+   "brick": "#84614f",
+   "ochre": "#e6e3db",
+   "white": "#e6e3db",
+   "stone": "#77746f",
+   "concrete": "#3d3a3b",
+   "slate": "#333236",
+   "glass": "#3b444a",
+   "frame": "#262827",
+   "dark": "#1f2224",
+   "bronze": "#4c4a4c",
+   "copper": "#22262a",
+   "blue": "#2b2f3a",
+   "green": "#4d6638",
+   "sandstone": "#b9b3a3",
+   "red": "#a07a6b"
+  },
+  "attribution": {
+   "title": "Morgan & Mees, Tweede Hugo de Grootstraat 2, Amsterdam: the former bewaarschool of the Protestantsch Weduwen- en Weezenfonds (first stone 23 August 1880; Gemeentelijk monument 223038)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b7d4e1c2-b1c9-4fe2-8472-4a335c41b79d",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the two-storey brick school block with its white plastered middle bay (round-arched window between fluted pilasters, pedimented two-light window), hooded windows with awnings, rusticated lisene, white frieze and cornice, hipped roof with dormers; the MORGAN & MEES lettering, balcony and dormer of the east face; the one-storey wing and garden wall on the Nassaukade with arched openings, white hoods and the pedimented gateway; hedge and terrace pavilion. Measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87456164,
+      52.37433272
+     ],
+     [
+      4.87470476,
+      52.37429811
+     ],
+     [
+      4.87474419,
+      52.37436024
+     ],
+     [
+      4.87485742,
+      52.37433344
+     ],
+     [
+      4.87486058,
+      52.37433893
+     ],
+     [
+      4.87485985,
+      52.3743392
+     ],
+     [
+      4.87487643,
+      52.3743656
+     ],
+     [
+      4.87487761,
+      52.37436534
+     ],
+     [
+      4.87488078,
+      52.37437021
+     ],
+     [
+      4.8748796,
+      52.37437047
+     ],
+     [
+      4.87489762,
+      52.3743994
+     ],
+     [
+      4.87489983,
+      52.37439932
+     ],
+     [
+      4.87490385,
+      52.37440598
+     ],
+     [
+      4.87464659,
+      52.37446658
+     ],
+     [
+      4.87456164,
+      52.37433272
+     ]
+    ]
+   ]
+  }
+ },
+ {
   "id": "blok0-ij4you",
   "name": "Houthaven Blok 0, plots 8 and 9 (IJ4you)",
   "modelUrl": "./models/blok0-ij4you.glb",

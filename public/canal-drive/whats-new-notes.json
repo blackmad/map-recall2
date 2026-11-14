@@ -34,6 +34,32 @@
     },
     {
       "date": "2026-11-14",
+      "title": "Five more places for music, clubbing and an old bank",
+      "text": "Five more places are now modelled from photos instead of drawn as plain blocks: the clubs Lofi (in a former bus garage at Sloterdijk) and RADION, the music venues The Other Side and Toekomstmuziek by the IJ, and Morgan & Mees, the former bank on the Nassaukade.",
+      "where": [
+        4.87473,
+        52.37437
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-13-clubs-a/chase-lofi-ingame-northeast-desktop.jpg",
+          "alt": "Lofi club in a former bus garage with red folding doors, seen from the ride",
+          "caption": "Lofi, Basisweg"
+        },
+        {
+          "src": "review/landmark-venues-20261113/toekomstmuziek-chase-road-desktop.jpg",
+          "alt": "Toekomstmuziek venue seen from the road in the ride",
+          "caption": "Toekomstmuziek"
+        },
+        {
+          "src": "review/2026-11-13-landmark-morgan-mees-ingame-chase.jpg",
+          "alt": "Morgan & Mees former bank building on the Nassaukade seen from the ride",
+          "caption": "Morgan & Mees, Nassaukade"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Sharp streets while the city loads",
       "text": "For the first half minute or so of a ride, the ground under the streets was a blurry smear: a coarse overview picture (one pixel per 3 m) stretched over the sharp street map while the detailed ground loaded. That overview now fades out once you are down at street level, so the crisp map with its quays, tram tracks and crossings shows right away.",
       "where": [

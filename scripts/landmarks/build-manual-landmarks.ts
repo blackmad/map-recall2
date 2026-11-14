@@ -1,3 +1,7 @@
+import {buildRadion} from './radion-builder';
+import {buildLofi} from './lofi-builder';
+import {buildTheOtherSide} from './the-other-side-builder';
+import {buildToekomstmuziek} from './toekomstmuziek-builder';
 import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
@@ -435,6 +439,7 @@ import {buildBarlaeusGymnasium} from './barlaeus-gymnasium-builder';
 import {buildBrandBijCa} from './brand-bij-ca-builder';
 import {buildRaadhuisstraatGalerij} from './raadhuisstraat-galerij-builder';
 import {buildNieuwEngeland} from './nieuw-engeland-builder';
+import {buildMorganMees} from './morgan-mees-builder';
 import {buildDoubletreeCentraal} from './doubletree-centraal-builder';
 import {buildWesterdok748} from './westerdok-748-builder';
 import {buildDaCostakade146} from './da-costakade-146-builder';
@@ -657,7 +662,11 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='waag')buildWaag(w,d,helpers);
+    if(id==='radion')buildRadion(w,d,helpers);
+    else if(id==='lofi')buildLofi(w,d,helpers);
+    else if(id==='the-other-side')buildTheOtherSide(w,d,helpers);
+    else if(id==='toekomstmuziek')buildToekomstmuziek(w,d,helpers);
+    else if(id==='waag')buildWaag(w,d,helpers);
     else if(id==='scheepvaartmuseum')buildScheepvaartmuseum(w,d,helpers);
     else if(id==='odessa')buildOdessa(w,d,helpers);
     else if(id==='hotel-jakarta')buildHotelJakarta(w,d,helpers);
@@ -1061,6 +1070,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='brand-bij-ca')buildBrandBijCa(w,d,helpers);
     else if(id==='raadhuisstraat-galerij')buildRaadhuisstraatGalerij(w,d,helpers);
     else if(id==='nieuw-engeland')buildNieuwEngeland(w,d,helpers);
+    else if(id==='morgan-mees')buildMorganMees(w,d,helpers);
     else if(id==='doubletree-centraal')buildDoubletreeCentraal(w,d,helpers);
     else if(id==='westerdok-748')buildWesterdok748(w,d,helpers);
     else if(id==='da-costakade-146')buildDaCostakade146(w,d,helpers);

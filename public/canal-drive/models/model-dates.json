@@ -5751,6 +5751,11 @@
       "version": "02c59f8c897a9929",
       "dateSource": "asset-update"
     },
+    "the-other-side": {
+      "updatedAt": "2026-11-13T20:59:45.838Z",
+      "version": "75e436d150e93e1e",
+      "dateSource": "asset-update"
+    },
     "the-rock": {
       "updatedAt": "2026-10-20T10:00:54.504Z",
       "version": "affc853ba557e9c9",
@@ -5859,6 +5864,11 @@
     "tobacco-theater.lod2": {
       "updatedAt": "2026-11-07T14:08:58.192Z",
       "version": "3603207e0237433e",
+      "dateSource": "asset-update"
+    },
+    "toekomstmuziek": {
+      "updatedAt": "2026-11-13T20:54:35.072Z",
+      "version": "aaf4817a7e54aa76",
       "dateSource": "asset-update"
     },
     "tolhuis-paviljoen": {
@@ -6699,6 +6709,21 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
+      "dateSource": "asset-update"
+    },
+    "lofi": {
+      "updatedAt": "2026-11-13T19:11:16.069Z",
+      "version": "ff46443e3093b3e3",
+      "dateSource": "asset-update"
+    },
+    "radion": {
+      "updatedAt": "2026-11-13T19:51:36.479Z",
+      "version": "2e21c4d09cf3e7ae",
+      "dateSource": "asset-update"
+    },
+    "morgan-mees": {
+      "updatedAt": "2026-11-13T21:11:00.217Z",
+      "version": "8b9c6b1d8b75254f",
       "dateSource": "asset-update"
     }
   }

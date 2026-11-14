@@ -601,6 +601,17 @@
      ]
     },
     {
+     "label": "Morgan & Mees, Tweede Hugo de Grootstraat 2",
+     "lat": 52.37436754,
+     "lng": 4.87481791,
+     "view": "chase",
+     "at": [
+      4.875158,
+      52.374084,
+      324
+     ]
+    },
+    {
      "label": "Van Houweningenstraat 20",
      "lat": 52.37440021039639,
      "lng": 4.871590041178221,
@@ -609,17 +620,6 @@
       4.871046,
       52.374523,
       110
-     ]
-    },
-    {
-     "label": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West",
-     "lat": 52.3753951,
-     "lng": 4.8737771,
-     "view": "chase",
-     "at": [
-      4.872544,
-      52.374759,
-      50
      ]
     },
     {

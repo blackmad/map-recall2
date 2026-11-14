@@ -5742,6 +5742,66 @@
    "triangles": 1438
   }
  },
+ "lofi": {
+  "sourceHash": "ff46443e3093b3e3",
+  "buildVersion": 2,
+  "bytes": 30620,
+  "triangles": 726,
+  "lod2": {
+   "sourceHash": "ff46443e3093b3e3",
+   "buildVersion": 6,
+   "bytes": 5600,
+   "triangles": 76
+  }
+ },
+ "radion": {
+  "sourceHash": "2e21c4d09cf3e7ae",
+  "buildVersion": 2,
+  "bytes": 60944,
+  "triangles": 2738,
+  "lod2": {
+   "sourceHash": "2e21c4d09cf3e7ae",
+   "buildVersion": 6,
+   "bytes": 16384,
+   "triangles": 662
+  }
+ },
+ "toekomstmuziek": {
+  "sourceHash": "aaf4817a7e54aa76",
+  "buildVersion": 2,
+  "bytes": 26644,
+  "triangles": 796,
+  "lod2": {
+   "sourceHash": "aaf4817a7e54aa76",
+   "buildVersion": 6,
+   "bytes": 6516,
+   "triangles": 73
+  }
+ },
+ "the-other-side": {
+  "sourceHash": "75e436d150e93e1e",
+  "buildVersion": 2,
+  "bytes": 65236,
+  "triangles": 3454,
+  "lod2": {
+   "sourceHash": "75e436d150e93e1e",
+   "buildVersion": 6,
+   "bytes": 9632,
+   "triangles": 215
+  }
+ },
+ "morgan-mees": {
+  "sourceHash": "8b9c6b1d8b75254f",
+  "buildVersion": 2,
+  "bytes": 42688,
+  "triangles": 1357,
+  "lod2": {
+   "sourceHash": "8b9c6b1d8b75254f",
+   "buildVersion": 6,
+   "bytes": 8296,
+   "triangles": 176
+  }
+ },
  "blok0-ij4you": {
   "sourceHash": "21f09645ab843ca1",
   "buildVersion": 2,

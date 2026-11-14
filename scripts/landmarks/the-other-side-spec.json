@@ -1,0 +1,137 @@
+{
+  "id": "the-other-side",
+  "name": "The Other Side",
+  "landmarkId": "n12269195215",
+  "modelUrl": "./models/the-other-side.glb",
+  "suppressOsmIds": [
+    "w57860087",
+    "NL.IMBAG.Pand.0363100012133795"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.875048529766748,
+      52.39547675702062
+    ],
+    "headingDegrees": 26.360872836735467,
+    "lengthMetres": 75.61,
+    "widthMetres": 50.65
+  },
+  "surveyed": {
+    "anchor": [
+      4.87491785,
+      52.39543795
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012133795 footprint (OSM w57860087) and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a8e88",
+    "dark": "#2d3c44",
+    "concrete": "#a3b0b6",
+    "stone": "#9ca2a0",
+    "white": "#e6ebeb",
+    "glass": "#4a5862",
+    "blue": "#1f9cc4",
+    "greyBrick": "#4b5359",
+    "bronze": "#4a5550",
+    "frame": "#d5dbdb",
+    "slate": "#7a7f83",
+    "sandstone": "#5b5f62",
+    "green": "#3f6f72",
+    "pink": "#7a2a5a"
+  },
+  "attribution": {
+    "title": "The Other Side",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.iamsterdam.com/uit/agenda/nachtleven/clubbing/the-other-side",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; profiled hall cladding, ribbon windows, doors, office windows, rooftop letter frame and rooflights measured from the 2021-2025 municipal panoramas and the 2025 PDOK orthophoto, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8749889182431545,
+          52.39540905054801
+        ],
+        [
+          4.874933526160346,
+          52.395425860622865
+        ],
+        [
+          4.87494207440275,
+          52.39543751866009
+        ],
+        [
+          4.874941937922998,
+          52.39543788656463
+        ],
+        [
+          4.87496507615182,
+          52.39546600122237
+        ],
+        [
+          4.875044410993859,
+          52.395564085282
+        ],
+        [
+          4.874770912564347,
+          52.39564721578631
+        ],
+        [
+          4.874691271221469,
+          52.395548995402365
+        ],
+        [
+          4.874691611407535,
+          52.395548799145374
+        ],
+        [
+          4.874668621365381,
+          52.39552058621104
+        ],
+        [
+          4.874532610194273,
+          52.39535351883689
+        ],
+        [
+          4.874806415250296,
+          52.39527043514693
+        ],
+        [
+          4.874815657448652,
+          52.395281790614845
+        ],
+        [
+          4.874872774291976,
+          52.39526446676998
+        ],
+        [
+          4.8747991610978385,
+          52.39517352557998
+        ],
+        [
+          4.875135433339896,
+          52.39507145974168
+        ],
+        [
+          4.875629319519498,
+          52.395679614998244
+        ],
+        [
+          4.875291847768349,
+          52.395782198338146
+        ],
+        [
+          4.8749889182431545,
+          52.39540905054801
+        ]
+      ]
+    ]
+  }
+}

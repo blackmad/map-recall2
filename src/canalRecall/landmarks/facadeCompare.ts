@@ -71,10 +71,26 @@ export type FacadeInventory = {
   staggered?: boolean;
   /** Each row alternates two opening sizes (a wide window pair, then a small square: Byzantium's Stadhouderskade front): the rhythm audit judges every other opening against its own class, not the row median. */
   alternating?: boolean;
+  /** Rows the photo shows with deliberately mixed opening sizes (balcony doors beside windows, a gateway among small arched
+   *  windows: Morgan & Mees east face). Each declared row carries its evidence and the openings in order, viewer's left
+   *  to right; the rhythm audit judges each opening's width against its listed width and its height and levels against
+   *  the openings of the same listed kind, instead of the row median (see `MixedRow`, geometryAudit `analyseRhythm`). */
+  mixedRows?: MixedRow[];
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
   tolerance?: number;
   photo?: string;
   note?: string;
+};
+
+/** A row of deliberately mixed opening sizes, declared from a photo (`FacadeInventory.mixedRows`). */
+export type MixedRow = {
+  /** Row index, bottom to top, as the rhythm audit clusters the model's openings into storey rows. */
+  row: number;
+  rowSizes: 'mixed';
+  /** Where the sizes were read: the panorama/capture id or photo path (required). */
+  evidence: string;
+  /** The row's openings in order, viewer's left to right: what each one is and its measured width (m). */
+  openings: {kind: string; w: number}[];
 };
 
 export type ElevationsFile = {id: string; source?: string; countedBy?: string; facades: FacadeInventory[]};

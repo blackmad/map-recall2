@@ -411,12 +411,16 @@ check('regression: 20 consecutive home picks from Da Costakade 13 are varied (em
       mastery: rnd() < 0.6 ? 1 : 0.33,
     });
   }
+  // Seeded picks (integrator 2026-11-14): with Math.random a 20-pick run falls under 8 distinct ~0.2-0.45 % of the time
+  // (2,000-run measurement, mean 11.0 distinct), so the 50 runs here failed ~10-20 % of gates at random.
+  let pickSeed = 20261114;
+  const pickUnit = () => (pickSeed = (pickSeed * 16807) % 2147483647) / 2147483647;
   for (const [label, samples] of [['empty', []], ['practised', practised]] as const) {
     for (let trial = 0; trial < 25; trial += 1) {
       let recent: string[] = [];
       const ids: string[] = [];
       for (let i = 0; i < 20; i += 1) {
-        const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, samples, undefined, null, recent);
+        const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, samples, pickUnit, null, recent);
         assert.ok(pick, 'a destination exists');
         assert.notEqual(pick.poi.id, ids[ids.length - 1], `${label}: repeated ${pick.poi.name}`);
         ids.push(pick.poi.id);
