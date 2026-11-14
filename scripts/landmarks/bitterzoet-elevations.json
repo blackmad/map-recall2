@@ -1,0 +1,26 @@
+{
+  "id": "bitterzoet",
+  "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 50 px/m): Spuistraat front TMX7316010203-002537_pano_0001_001204 (2022) and TMX7316010203-000716_pano_0000_000933 (2018); north-east side recording_2025-06-16_03-46-32_01091 (2025) and TMX7316010203-002355_pano_0000_000050 (2021)",
+  "facades": [
+    {
+      "name": "Spuistraat front",
+      "bearing": 139,
+      "photo": "artifacts/landmark-briefs/bitterzoet/face-se-1.jpg",
+      "rows": [4, 4, 4],
+      "columns": 4,
+      "symmetric": true,
+      "gables": 0,
+      "alongM": [1.43, 13.0]
+    },
+    {
+      "name": "north-east side",
+      "bearing": 40,
+      "photo": "artifacts/landmark-briefs/bitterzoet/face-ne-1.jpg",
+      "rows": [5, 6, 6, 4],
+      "columns": 6,
+      "symmetric": false,
+      "gables": 0,
+      "alongM": [0, 24.4]
+    }
+  ]
+}

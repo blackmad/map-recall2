@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "id": "arti-et-amicitiae",
+ "pand": "0363100012165109",
+ "brief": "scripts/landmarks/arti-et-amicitiae-brief.md",
+ "signature": ["r-figures", "r-pediment-arms", "r-window-pediments", "r-cornice", "r-medallions", "r-banner", "n-gable"],
+ "walls": [
+  {
+   "tag": "rokin-074", "bearing": 74, "lengthM": 21.2, "centre": [4.89180, 52.36886], "evidence": "photo",
+   "panoId": "TMX7316010203-002857_pano_0002_000077", "capturedAt": "2022-12-14", "checked": true,
+   "note": "brief.ts missed this wall (its neighbour test read the Rokin front as covered); crops from venue-face-crops.ts, also recording_2025-06-16_06-42-40_01729 (2025, sunlit) and TMX7316010203-002930_pano_0003_000047 (2023).",
+   "items": [
+    {"id": "r-figures", "kind": "sculpture", "where": "four standing female figures (bronze, verdigris) on acanthus consoles at second-floor level: both corners and either side of the middle bay", "approxSizeM": [0.7, 2.0], "plan": "simplified", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "figure-kit standing figure 2.2 m (the photo's figures fill the second-floor height) with a long robe (skirt), one forearm raised, verdigris copper slot; console as a profile extruded along the pier (16-48 cm proud) with a stone plinth block"},
+    {"id": "r-pediment-arms", "kind": "crest", "where": "middle pediment over the cornice (4.7 m wide, 1.3 m tall): painted arms of the society, blue shield with red and gold, white scrollwork either side, acroterion block at the apex", "approxSizeM": [2.6, 1.0], "plan": "simplified", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "pediment with raking and base cornices (venue-kit pedimentSolid); shield polygon in blue with a red chief bar and a gold crest block, two white scroll rings and a white base scroll each side"},
+    {"id": "r-window-pediments", "kind": "window-shape", "where": "first floor, seven tall two-light windows with transoms in eared white architraves; triangular pediments over axes 2, 4 and 6, flat cornice hoods over 1, 3, 5 and 7", "approxSizeM": [2.2, 4.6], "plan": "modelled", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "cut openings with mullion and transom in the reveal, architrave slabs with ears, frieze slab, hood profile, pedimentSolid on alternate axes"},
+    {"id": "r-cornice", "kind": "other", "where": "main cornice over the whole front: frieze with seven round oculi on the axes, modillion course, corona and cymatium (13.3-15.3 m)", "approxSizeM": [21.2, 2.0], "plan": "modelled", "seenIn": "recording_2025-06-16_06-42-40_01729", "how": "corniceSection profile extruded along the front, 0.55 m modillion blocks, oculi as white ring plus dark disc"},
+    {"id": "r-medallions", "kind": "relief", "where": "under each first-floor window except the middle: a round wreath medallion with a ribbon on the belt cornice; under the middle window a balustrade panel", "approxSizeM": [0.6, 0.6], "plan": "simplified", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "verdigris bronze ring slab round a disc (the medallions read green in the 2025 capture) and a white ribbon slab; balustrade panel as a slab with five balusters"},
+    {"id": "r-banner", "kind": "sign", "where": "blue vertical banner reading ARTI ET AMICITIAE on a rod from the first floor at axis 2 (south side); present in the 2022 and 2025 captures", "approxSizeM": [0.55, 2.7], "plan": "modelled", "seenIn": "recording_2025-06-16_06-42-40_01729", "how": "blue slab on a rod, white 5x7 capitals reading upward (venue-kit verticalLettering, shared glyph table)", "note": "typeface unknown; approximate sans capitals"},
+    {"id": "r-ground-floor", "kind": "window-shape", "where": "ground floor of banded rustication: square-headed openings with white jambs and small cornices, shop glass and doors (roller shutters closed on the south three in 2022, open in 2023 and 2025), the entrance recessed 0.5 m in the middle bay (BAG ring)", "approxSizeM": [21.2, 4.4], "plan": "modelled", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "cut openings with transoms (0.5 m deep at the entrance), rustication joint strips 5 cm proud broken round the surrounds"},
+    {"id": "r-piers", "kind": "other", "where": "plain piers rising from the belt to the consoles at the corners and either side of the middle bay; pilaster strips between the second-floor windows", "approxSizeM": [0.66, 5.2], "plan": "modelled", "seenIn": "TMX7316010203-002857_pano_0002_000077", "how": "slabs 10 cm proud; pilaster strips 6 cm proud"},
+    {"id": "r-posts", "kind": "other", "where": "two cast-iron posts with ball finials in front of the entrance and low railings before the south openings", "approxSizeM": [0.3, 1.3], "plan": "skipped", "skip": {"reason": "too-small", "note": "street furniture under 0.35 m wide on the pavement"}, "seenIn": "TMX7316010203-002857_pano_0002_000077"},
+    {"id": "r-flags", "kind": "other", "where": "flagpole on the roof and a rainbow flag at axis 6 (2025 only)", "approxSizeM": [0.6, 2.4], "plan": "skipped", "skip": {"reason": "temporary", "note": "seasonal flags; the rainbow flag is absent in 2022/2023"}, "seenIn": "recording_2025-06-16_06-42-40_01729"}
+   ]
+  },
+  {
+   "tag": "spui-end-353", "bearing": 353, "lengthM": 6.1, "centre": [4.89174, 52.36898], "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_003548", "capturedAt": "2016-08-15", "checked": true,
+   "note": "brief wall w03-353 (6.2 m), second view TMX7316010203-001050_pano_0001_000028 (2018).",
+   "items": [
+    {"id": "n-gable", "kind": "other", "where": "pedimented gable over the full width of the Rokin block's Spui end, over a frieze with small blocks and an attic of three blind recessed panels", "approxSizeM": [6.1, 3.8], "plan": "modelled", "seenIn": "TMX7316060226-000019_pano_0000_003548", "how": "wall triangle under a pedimentSolid (raking cornices 20 cm); three panels as white frames round recessed fields; frieze blocks"},
+    {"id": "n-rustication", "kind": "other", "where": "blind rusticated wall from the ground to the second-floor belt", "approxSizeM": [6.1, 10.5], "plan": "simplified", "seenIn": "TMX7316060226-000019_pano_0000_003548", "how": "joint lines every 0.55 m as 5 cm proud strips in a darker cream (the photo's joints are recessed)"},
+    {"id": "n-door", "kind": "window-shape", "where": "doorway in the middle of the ground floor with a stone surround and cornice", "approxSizeM": [1.9, 3.8], "plan": "modelled", "seenIn": "TMX7316010203-001050_pano_0001_000028", "how": "cut opening with transom, jamb and cornice slabs"},
+    {"id": "n-lantern", "kind": "lamp", "where": "cast-iron street lantern before the doorway", "approxSizeM": [0.5, 4.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "a street lamp on the pavement, not on the building"}, "seenIn": "TMX7316060226-000019_pano_0000_003548"}
+   ]
+  },
+  {
+   "tag": "spui-hall-353", "bearing": 353, "lengthM": 13.3, "centre": [4.89162, 52.36897], "evidence": "photo",
+   "panoId": "TMX7316010203-001050_pano_0001_000027", "capturedAt": "2019-01-11", "checked": true,
+   "note": "close captures are blocked by delivery trucks (2016, 2020); the 2019 oblique view and TMX7316010203-001658_pano_0000_002674 (2020) agree.",
+   "items": [
+    {"id": "h-shopfronts", "kind": "window-shape", "where": "ground floor: four shop windows between piers (the ring's 0.17 m pilasters), a dark fascia band", "approxSizeM": [13.3, 4.8], "plan": "modelled", "seenIn": "TMX7316010203-001050_pano_0001_000027", "how": "cut openings with transoms between pier slabs, fascia slab"},
+    {"id": "h-shop-sign", "kind": "sign", "where": "G-STAR RAW lettering on the fascia", "approxSizeM": [5.0, 0.4], "plan": "skipped", "skip": {"reason": "temporary", "note": "a tenant's shop sign"}, "seenIn": "TMX7316010203-001050_pano_0001_000027"},
+    {"id": "h-parapet", "kind": "other", "where": "blind rusticated wall over the shops to a cornice at the second-floor belt height; the skylight roof behind", "approxSizeM": [13.3, 6.0], "plan": "simplified", "seenIn": "TMX7316010203-001050_pano_0001_000027", "how": "joint strips every 0.55 m, cornice profile, the 3DBAG roof behind"}
+   ]
+  },
+  {
+   "tag": "spui-west-349", "bearing": 349, "lengthM": 18.3, "centre": [4.89131, 52.36895], "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000687", "capturedAt": "2019-01-15", "checked": true,
+   "note": "brief walls w01-349 and w02-354: a modern stucco corner (H&M) and brick houses of the same BAG pand; drawn by the 3DBAG shell (brick).",
+   "items": []
+  },
+  {
+   "tag": "kalverstraat-253", "bearing": 253, "lengthM": 15.0, "centre": [4.89122, 52.36885], "evidence": "photo",
+   "panoId": "TMX7316010203-002538_pano_0000_001510", "capturedAt": "2022-04-22", "checked": true,
+   "note": "three houses of the pand on the Kalverstraat side (rijksmonumenten 2128/2129: neck gables): drawn by the 3DBAG shell.",
+   "items": [
+    {"id": "k-neck-gable", "kind": "other", "where": "brick neck gable with scrolled claw pieces and a crowning cornice on the southern house", "approxSizeM": [4.0, 4.5], "plan": "skipped", "skip": {"reason": "not-visible", "note": "on the pedestrian Kalverstraat, out of every ride; the 3DBAG shell draws the house"}, "seenIn": "TMX7316010203-002538_pano_0000_001510"}
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"},
+  {"name": "Arti et Amicitiae (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Arti_et_Amicitiae", "licence": "CC BY-SA 4.0"}
+ ]
+}
