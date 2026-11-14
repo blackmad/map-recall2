@@ -1,0 +1,60 @@
+{
+ "v": 1,
+ "pandId": "0363100012237291",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237291.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a narrow centre neck gable with an arched window between two runs of white cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on the centre axis of the upper storeys"
+  }
+ ],
+ "notes": "A tram-shelter advertising panel hides the ground storey and the lowest upper row, so the storey count is not readable.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

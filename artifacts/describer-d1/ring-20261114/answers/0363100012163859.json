@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012163859",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "mixed"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.roof",
+  "windows",
+  "cornice",
+  "balconies",
+  "dormers",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a richly carved white timber oriel over the door bay at row 1, on carved brackets"
+  },
+  {
+   "component": "window",
+   "what": "red and white striped voussoirs round every arch, and decorative tympana over the row-1 windows"
+  },
+  {
+   "component": "balcony",
+   "what": "a deep round-arched loggia with a guard over the oriel at row 2"
+  }
+ ],
+ "notes": "A tree trunk crosses the middle and a van hides the plinth; a tower-like attic with small windows stands over the cornice.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

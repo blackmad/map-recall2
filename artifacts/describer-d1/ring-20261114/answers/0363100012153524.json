@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012153524",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153524.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "windows",
+  "dormers",
+  "cornice",
+  "storeyParts.roof",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a pair of tall dark panelled street doors with arched glazed panels and transom lights, framed by white stucco pilasters on a stuccoed bel-etage, up a steep stone stoop"
+  },
+  {
+   "component": "window",
+   "what": "the third-floor window sits in a white stucco frame with carved ornament under the cornice"
+  },
+  {
+   "component": "wall",
+   "what": "dark brick upper wall with small iron wall anchors"
+  }
+ ],
+ "notes": "The outline sits slightly left of a narrow one-bay house (no. 112) between an erker house and a corner house with column balconies; read the narrow house.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

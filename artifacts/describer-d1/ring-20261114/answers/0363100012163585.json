@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012163585",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163585.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "balconies",
+  "heads",
+  "bands",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has two windows over three on the storey below"
+  },
+  {
+   "component": "relief",
+   "what": "small dark lozenge ornaments on the stucco between the storeys"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

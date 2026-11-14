@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012165348",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165348.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "low iron guard rails cross the lower panes of the upper windows"
+  },
+  {
+   "component": "roof",
+   "what": "a plain light frieze band runs under the cornice with a balustrade-like rail in front of the mansard"
+  }
+ ],
+ "notes": "Bel-etage over a souterrain with its own door and windows, stoop at the left.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

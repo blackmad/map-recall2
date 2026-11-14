@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012156893",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156893.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "pedimented dormer with a hoist beam"
+  }
+ ],
+ "notes": "Shopfront runs on under the right neighbour; door with doorbells next to the shop window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

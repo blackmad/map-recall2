@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012233461",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233461.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 11,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 4,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "heads",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small part-front neck gable stands over the round-headed axes at each end of the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a long timber shopfront with pilasters runs under the whole front"
+  }
+ ],
+ "notes": "The outline spans several fronts; described is the larger right-hand front with the long shopfront, round-headed windows at its ends and flat-headed ones between.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

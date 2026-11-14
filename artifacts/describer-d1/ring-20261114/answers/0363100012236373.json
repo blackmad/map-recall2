@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012236373",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236373.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "cornice",
+  "doorBay",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white stucco shopfront under one wide round arch spanning the ground storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a raised brick wall gable with curved shoulders over the centre axis and a modern glazed roof box set back behind it"
+  }
+ ],
+ "notes": "A tram shelter covers most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

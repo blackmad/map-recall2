@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012068433",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012068433.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "windows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the right half rises one storey higher than the eaves as a flat-topped brick block with its own window row, the left half has eaves and a dormer"
+  },
+  {
+   "component": "erker",
+   "what": "a canted bay window on the left axis rises through three upper storeys"
+  },
+  {
+   "component": "door",
+   "what": "an open stair entrance in a stone portal at the right edge"
+  }
+ ],
+ "notes": "End of a 1930s block where the roofline steps up; storeys counted on the left half (four), the right half has five.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

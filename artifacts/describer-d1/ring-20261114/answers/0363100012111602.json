@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012111602",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012111602.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "extent",
+  "bays",
+  "dormers",
+  "balconies",
+  "windows",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a brick bay window with side lights rising through rows 1 and 2 under the large point gable"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a large steep brick point gable over the right half of the front, with attic windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a frieze of small square windows above the shopfront, inside the ground storey"
+  }
+ ],
+ "notes": "1930s block; the outline takes a balcony bay, a plain bay and half of a gabled bay-window section, possibly two fronts. Ground storey hidden by blurred boards and a toilet cabin.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

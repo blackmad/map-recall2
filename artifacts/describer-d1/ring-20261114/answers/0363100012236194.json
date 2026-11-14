@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012236194",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236194.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "heads",
+  "dormers",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a flat-topped brick wall dormer over the centre bay with a round-arched window, flanked by short white cornice pieces over small frieze panels"
+  }
+ ],
+ "notes": "A tram shelter hides the ground storey; only its fascia line shows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012237383",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237383.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "dark painted hood boxes over every upper window head"
+  },
+  {
+   "component": "shopfront",
+   "what": "a black painted hotel shopfront with large lettering, beside a house window and a white house door"
+  }
+ ],
+ "notes": "A traffic light and sign hide much of the right axis.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

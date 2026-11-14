@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012165919",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165919.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "balconies",
+  "dormers",
+  "sameAs",
+  "storeyParts.full",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a pointed part-front gable with a ball finial and a three-light attic window over the centre axis"
+  }
+ ],
+ "notes": "Blurry oblique cut; a pale building in the foreground hides the left axis and a pole and traffic light stand before the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

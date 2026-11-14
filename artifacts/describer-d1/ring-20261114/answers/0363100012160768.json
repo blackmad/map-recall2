@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012160768",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160768.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "windowSurround",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "low iron guard rails across the bottom of the first-floor windows"
+  },
+  {
+   "component": "dormer",
+   "what": "flat-topped dormer with a hoist beam"
+  }
+ ],
+ "notes": "Bicycles in front of the shop; the door seen is the shop door, a separate stair door may be outside the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

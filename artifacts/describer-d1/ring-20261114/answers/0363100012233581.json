@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012233581",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233581.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "small-over-one",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "bayWindow",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a scrolled shaped gable with a stone tablet and finials over the right axis, a pierced balustrade over the left axis"
+  },
+  {
+   "component": "erker",
+   "what": "a white timber window stack with side lights and small-paned top lights rising through three storeys on the right axis"
+  }
+ ],
+ "notes": "A site trailer and a car hide the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

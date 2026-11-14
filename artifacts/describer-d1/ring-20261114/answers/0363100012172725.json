@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "pandId": "0363100012172725",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172725.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "pale",
+  "finish",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stucco pilasters and bands frame red brick panels between the windows"
+  },
+  {
+   "component": "window",
+   "what": "small pediments with carved shields over the second-floor windows"
+  },
+  {
+   "component": "balcony",
+   "what": "a bowed stone balustrade balcony on the first floor and a flat one on the second, both in the middle bay"
+  },
+  {
+   "component": "relief",
+   "what": "a rusticated stucco ground storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

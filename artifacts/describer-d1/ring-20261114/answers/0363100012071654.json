@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012071654",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012071654.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "doorSurround",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone balustrade balcony on carved consoles over the bel-etage"
+  },
+  {
+   "component": "relief",
+   "what": "an arcaded white frieze under the cornice and carved aprons under the top-floor windows"
+  }
+ ],
+ "notes": "The outline cuts off the left door bay of the white front; described the whole white front.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

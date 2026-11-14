@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012162631",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162631.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "dormers",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick corbel-table frieze of small arches runs under the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a wide dark shopfront with a long fascia spanning two houses, a row of small entresol windows above it"
+  }
+ ],
+ "notes": "A bare tree crosses the right axis; the shop door is not clear.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

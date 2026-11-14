@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012074668",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012074668.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "mixed",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  0,
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "bands",
+  "doorSurround",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber two-storey bay window on the centre axis, carrying a balconette above"
+  },
+  {
+   "component": "door",
+   "what": "the street door sits in a low white side annex at the right, not in the main wall"
+  }
+ ],
+ "notes": "White plinth storey with low barred windows read as a souterrain under the bel-etage; side of a detached villa facing the street.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

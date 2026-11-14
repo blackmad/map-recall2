@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012162379",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162379.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "doorBay",
+  "windowSurround",
+  "sills",
+  "whiteFrames",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "pilasters with carved capitals divide the bays, the whole front painted dark grey"
+  },
+  {
+   "component": "dormer",
+   "what": "two small round oculus dormers flank a tall central dormer in the mansard"
+  },
+  {
+   "component": "shopfront",
+   "what": "a low band of mezzanine windows over the shop is partly hidden by a large sign board"
+  }
+ ],
+ "notes": "Counted the mezzanine window band over the shop as a storey; a large shop sign covers its lower half.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

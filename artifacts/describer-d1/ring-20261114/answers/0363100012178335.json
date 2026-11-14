@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012178335",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012178335.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "consoles",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "sills",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone quoin strips at both edges of the front"
+  },
+  {
+   "component": "window",
+   "what": "the middle first-floor window has an ornate stone frame with a carved crest"
+  }
+ ],
+ "notes": "The outline covers only the middle bay of a three-bay corner front; a van hides the shop storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

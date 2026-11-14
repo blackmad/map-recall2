@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012236734",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236734.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.roof",
+  "crown",
+  "bayWindow",
+  "columns",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two very wide white-framed multi-light windows on the first storey"
+  },
+  {
+   "component": "roof",
+   "what": "a raised tower-like top storey over the right half with a corbelled brick cornice"
+  }
+ ],
+ "notes": "The outline takes in an orange-brick house and part of a modern office block with an open passage to its right; described the brick house.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

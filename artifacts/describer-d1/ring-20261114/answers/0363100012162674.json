@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012162674",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162674.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "bands",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white two-storey erker on the centre axis carrying a balcony at the third storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a stepped gable with a three-light attic window under a brick relieving arch"
+  }
+ ],
+ "notes": "Bicycles and the shop awning hide the ground storey doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

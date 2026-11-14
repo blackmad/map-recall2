@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012121071",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012121071.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "doorBay",
+  "windowSurround",
+  "bands",
+  "storeyParts.full",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "an old dark timber shopfront with a transom row and panelled double doors runs under both fronts in the outline"
+  }
+ ],
+ "notes": "The outline covers two fronts: the left half of a taller flat-topped five-storey front (described) and a four-storey two-axis front with balconies and a dormer on the left.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

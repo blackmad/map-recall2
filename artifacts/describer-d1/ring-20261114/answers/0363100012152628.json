@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012152628",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152628.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windowSurround",
+  "doorSurround",
+  "basement",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "wide neck gable with two arched attic windows flanked by white concave sweeps and a flat brick top"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes on cast brackets at the middle axis of each upper storey"
+  }
+ ],
+ "notes": "A tree hides the middle ground-storey bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

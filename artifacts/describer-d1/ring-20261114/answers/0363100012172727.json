@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012172727",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172727.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "consoles",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "sills",
+  "sameAs",
+  "pale"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a pair of street doors side by side under one transom in the right bay"
+  },
+  {
+   "component": "dormer",
+   "what": "a central dormer with a hoist beam stub"
+  }
+ ],
+ "notes": "Bicycles in front of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

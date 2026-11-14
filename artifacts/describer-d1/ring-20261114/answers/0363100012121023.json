@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012121023",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012121023.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "bays",
+  "windowSurround",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on the middle axis of each upper storey in front of balcony doors"
+  },
+  {
+   "component": "window",
+   "what": "the right axis is a pair of narrow windows under one stone lintel"
+  }
+ ],
+ "notes": "A cyclist hides part of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

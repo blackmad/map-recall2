@@ -1,0 +1,85 @@
+{
+ "v": 1,
+ "pandId": "0363100012157266",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157266.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "round",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bands",
+  "doorBay",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an open stair rises from the pavement inside a tall arched recess to the first-floor entrance, beside a pavement-level door"
+  },
+  {
+   "component": "relief",
+   "what": "carved shell lunettes over the ground-storey door and window"
+  },
+  {
+   "component": "balcony",
+   "what": "small balconies with ornamental iron guards on consoles in the inner bay at rows 2 to 4"
+  }
+ ],
+ "notes": "Right half of a mirrored double block; the pavement-level row with full-height doors is counted as the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

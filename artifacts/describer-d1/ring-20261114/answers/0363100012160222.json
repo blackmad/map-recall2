@@ -1,0 +1,105 @@
+{
+ "v": 1,
+ "pandId": "0363100012160222",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160222.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "windowSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "pilaster",
+   "what": "giant rusticated stucco pilasters with roundels frame this three-bay unit from the bel-etage to the cornice"
+  },
+  {
+   "component": "bands",
+   "what": "the bel-etage is striped with broad light stucco speklagen with carved consoles under the first-floor sill band"
+  },
+  {
+   "component": "window",
+   "what": "two round-arched bel-etage windows beside a round oculus over the street door"
+  },
+  {
+   "component": "door",
+   "what": "street door under a stone pedimented hood on scrolled consoles, reached by steep steps beside the souterrain"
+  },
+  {
+   "component": "balcony",
+   "what": "stone balconies with pierced balustrade fronts and iron rails in the middle bay on the first and second floors"
+  },
+  {
+   "component": "window",
+   "what": "the second-floor middle window has a full stucco frame and the third-floor middle window a segmental pediment head"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam over the middle bay"
+  },
+  {
+   "component": "rustication",
+   "what": "rusticated grey stone souterrain with tall windows"
+  },
+  {
+   "component": "relief",
+   "what": "relief ornaments in the frieze under the heavy cornice"
+  }
+ ],
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

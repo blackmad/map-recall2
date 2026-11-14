@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012159164",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159164.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "doorBay",
+  "heads",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconettes on corbelled brick bases in front of the centre-axis French doors on every upper storey"
+  },
+  {
+   "component": "roof",
+   "what": "an iron railing along the roof edge behind a corbelled brick cornice"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

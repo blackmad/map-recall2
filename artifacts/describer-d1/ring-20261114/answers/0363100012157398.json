@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012157398",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157398.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyWindows",
+  "crown",
+  "cornice",
+  "doorBay",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "faded painted lettering APOTHEEK across the wall between rows 1 and 2"
+  },
+  {
+   "component": "shopfront",
+   "what": "a grey stone-clad shopfront with a glazed double door, a small window and a separate house door under white transom panels"
+  }
+ ],
+ "notes": "A large tree and its branches cross the left of the front and the top storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

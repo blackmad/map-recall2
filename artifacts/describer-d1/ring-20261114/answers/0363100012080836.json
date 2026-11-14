@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012080836",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012080836.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "balconies on carved brick corbels in front of the wide right window group on each upper storey"
+  },
+  {
+   "component": "dormer",
+   "what": "brick wall dormer with a pointed gable rising over the right bay"
+  }
+ ],
+ "notes": "A van hides the left part of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

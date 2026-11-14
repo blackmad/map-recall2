@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012165174",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165174.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "dormers",
+  "doorBay",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the segmental brick arches over the upper windows hold decorated tympana"
+  },
+  {
+   "component": "dormer",
+   "what": "a flat-topped brick wall dormer with a round-headed window rises out of the front over the middle bay"
+  }
+ ],
+ "notes": "A tree trunk covers the right bay; its windows are partly readable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

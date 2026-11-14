@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012164952",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164952.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "basement",
+  "sameAs",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "stucco balcony with an ornamental iron panel guard across the two centre bays on the first floor"
+  },
+  {
+   "component": "window",
+   "what": "moulded stucco hoods with small crests over the upper window heads"
+  }
+ ],
+ "notes": "A parked car and blurred boards hide the plinth; trees in front of the left bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

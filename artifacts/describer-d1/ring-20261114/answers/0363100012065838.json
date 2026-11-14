@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012065838",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012065838.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  3,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "dormers",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a frieze of small square windows in a band above the shopfronts, inside the ground storey"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched street door between two shop windows"
+  }
+ ],
+ "notes": "1930s block; the outline's left edge clips the neighbouring balcony bay, not counted.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

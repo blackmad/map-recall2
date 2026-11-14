@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012161889",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161889.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "round",
+  "not-visible"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "doorBay",
+  "sameAs",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "radiating light stone voussoirs fan out over the first-floor window heads"
+  }
+ ],
+ "notes": "The upper part of the front is blurred out in the image, so the top storeys, crown and roof cannot be read; front seen at a steep angle.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

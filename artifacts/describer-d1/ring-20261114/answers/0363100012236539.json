@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012236539",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236539.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white pilasters between the windows on every storey with entablature bands, an aedicule pediment over the centre window of the second storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a narrow gable with curved shoulders and a small pediment cap standing behind a full-width cornice"
+  }
+ ],
+ "notes": "Shop ground storey flanked by two doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012093489",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012093489.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "storeyParts.roof",
+  "crown",
+  "cornice",
+  "balconies",
+  "sameAs",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a set-back roof storey with a wide window behind the cornice"
+  }
+ ],
+ "notes": "Blurry backlit cut; the outline takes a two-axis front with a cornice and set-back roof storey plus one axis of the taller front to its right. Described the left front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

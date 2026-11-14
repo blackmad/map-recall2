@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012181321",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181321.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "dormers",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "A tram hides everything below the top window row; the outline also takes in the left edge of the taller beige neighbour.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

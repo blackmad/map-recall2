@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012157746",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157746.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "heads",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a pointed part-front gable with one window over the right two axes"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark café shopfront with a long fabric awning"
+  }
+ ],
+ "notes": "A young tree stands in front of the left axis; the ground doors are blurred.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

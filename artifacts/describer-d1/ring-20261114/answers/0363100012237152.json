@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012237152",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237152.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "storeyParts.roof",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a plain light plastered band between the shop fascia and the first-floor windows"
+  },
+  {
+   "component": "roof",
+   "what": "small windows of a set-back roof storey above the parapet"
+  }
+ ],
+ "notes": "A tall tree stands in front of the middle of the front and hides the top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

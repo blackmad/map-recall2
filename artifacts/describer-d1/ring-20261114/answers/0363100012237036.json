@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012237036",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237036.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "round",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 4,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays",
+  "dormers",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a small corner turret with a spire rises at the left end of the slate mansard"
+  },
+  {
+   "component": "door",
+   "what": "a wide gateway passage through the ground storey beside the shop"
+  }
+ ],
+ "notes": "Outline covers the end of a crenellated-top row on the left and a wider mansard building on the right (described); a tree stands at the join.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

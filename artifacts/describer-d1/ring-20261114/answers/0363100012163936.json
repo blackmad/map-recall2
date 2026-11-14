@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012163936",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163936.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-triple",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "on storeys 1 to 3 a grouped three-light window (side lights flanking a balcony door) beside one single window; the top storey has four separate tall windows of undecided kind"
+  }
+ ],
+ "notes": "Shopfront with a clerestory of small panes and a separate stair door at right.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012063634",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012063634.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "cornice",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a wide three-sided bay window across the main axis of storey 1, its roof forming the storey-2 iron balcony"
+  },
+  {
+   "component": "erker",
+   "what": "a narrow white timber corner oriel on consoles at the outer axis of storey 2"
+  },
+  {
+   "component": "relief",
+   "what": "pale stucco panels with incised arcs over the storey-2 window groups"
+  }
+ ],
+ "notes": "The outline holds the left half of a symmetric front over a supermarket; the right half is its mirror image. Tree branches cross the roof.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

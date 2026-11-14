@@ -1,0 +1,87 @@
+{
+ "v": 1,
+ "pandId": "0363100012167064",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  1,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "casement-sidelights-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "columns",
+  "storeyWindows",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the shop and the storey above it are rebuilt as one white rendered block with a wide multi-light window band"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes on small corbels at the centre-axis French doors"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer rising from the front over the centre axis"
+  }
+ ],
+ "notes": "The first storey is a rendered band with one wide strip window over the shop; counted as its own storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

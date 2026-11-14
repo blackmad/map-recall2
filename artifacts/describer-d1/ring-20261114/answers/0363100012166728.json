@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "pandId": "0363100012166728",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166728.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "pale",
+  "finish",
+  "heads",
+  "windows",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "wall",
+   "what": "the ground and first storeys are faced in white stucco with rusticated pilasters and carved ornament over the first-floor windows; the second and third storeys are dark brick"
+  },
+  {
+   "component": "window",
+   "what": "the middle bay of the second and third floors is framed by a white stucco surround with pilasters, the side windows bare brick"
+  },
+  {
+   "component": "balcony",
+   "what": "a small stone balcony with balusters on consoles in front of the second-floor middle window"
+  },
+  {
+   "component": "door",
+   "what": "a pair of tall dark doors with pierced cast-iron grilles under a segmental arch"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with a curved scrolled pediment and a hoist beam over the middle bay"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

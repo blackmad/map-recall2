@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012162350",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162350.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "sameAs",
+  "dormers",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white blocked voussoirs over the arched heads and white block quoins at every jamb"
+  }
+ ],
+ "notes": "The outline straddles the three-bay front over the Huawei shop and the left part of the next front; described the Huawei front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

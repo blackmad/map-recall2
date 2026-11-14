@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "pandId": "0363100012157739",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157739.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windows",
+  "sameAs",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone balcony with turned balusters on two long carved consoles in front of the middle window of the second floor"
+  },
+  {
+   "component": "pilaster",
+   "what": "rusticated brick pilaster strips at the party walls rising to the cornice"
+  },
+  {
+   "component": "bands",
+   "what": "a single moulded band at the first-floor line only"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam over the middle bay"
+  },
+  {
+   "component": "door",
+   "what": "a pair of carved panelled street doors under a transom light, up two steps"
+  }
+ ],
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

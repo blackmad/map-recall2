@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012121808",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012121808.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "crown",
+  "cornice",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a row of small gabled dormers and two pointed wall gables break the cornice of the block"
+  },
+  {
+   "component": "balcony",
+   "what": "stacked iron balconettes in two central axes on every upper storey"
+  }
+ ],
+ "notes": "The outline spans a whole block of several fronts under one roof with one supermarket ground storey; read as a whole, the far view is too small for per-front counts.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

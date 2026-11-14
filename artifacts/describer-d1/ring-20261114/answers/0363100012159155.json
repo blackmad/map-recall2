@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012159155",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159155.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "crown",
+  "dormers",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the right bay rises as a narrow brick tower above the roof with a stepped top and an open loggia with a balustrade"
+  },
+  {
+   "component": "relief",
+   "what": "a brick corbel table of small arches runs under the roof edge instead of a moulded cornice"
+  },
+  {
+   "component": "door",
+   "what": "a double timber door and a round-arched door stand side by side in the right half of the ground storey"
+  }
+ ],
+ "notes": "A bare tree crosses the right bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

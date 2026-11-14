@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012079671",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012079671.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "sameAs",
+  "mirrored",
+  "cornice",
+  "balconies",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one long flat-roofed dormer with several lights spans the front"
+  },
+  {
+   "component": "balcony",
+   "what": "balconies on stepped brick corbels"
+  }
+ ],
+ "notes": "The outline covers two fronts of equal width: the left one (described, four storeys, two axes, balconies, long dormer) and the left half of a taller flat-topped five-storey front with a pair of street doors; a young tree stands in front of the left axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

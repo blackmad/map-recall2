@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012236522",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236522.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the entrance under a canvas awning sits in the narrow right front, up a stoop"
+  }
+ ],
+ "notes": "The outline holds two fronts: a two-bay step gable and a narrow one-bay front with its own small gable and the entrance; described the larger. A van hides the plinth and a tree crosses the left bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

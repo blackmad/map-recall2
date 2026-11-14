@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012148445",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012148445.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "heads",
+  "crown",
+  "cornice",
+  "doorBay",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an open arched stair entrance with steps rising from the pavement to a pair of round-headed doors on the first floor"
+  },
+  {
+   "component": "window",
+   "what": "narrow lattice-glazed windows beside the stair landing"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a small pointed brick gable with a window over the right two axes"
+  }
+ ],
+ "notes": "A bare tree stands in front of the middle axes; the outline's left edge cuts the stair doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

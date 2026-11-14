@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012236476",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236476.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "extent",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the segmental heads of the first and second storey have light decorated tympana under brick arches"
+  },
+  {
+   "component": "relief",
+   "what": "a corbelled brick frieze with light blocks runs under the eaves"
+  },
+  {
+   "component": "balcony",
+   "what": "the middle bay has French doors with iron balconettes on every upper storey"
+  }
+ ],
+ "notes": "The outline holds two identical three-bay fronts side by side (a dormer over each); the left one is described; the right half's dormer has a pointed top.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

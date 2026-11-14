@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012126894",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012126894.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-triple",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "bands",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "storeys 1 to 3 have a grouped three-light window around a balconette door beside one single window; the top storey has four separate windows"
+  },
+  {
+   "component": "relief",
+   "what": "brick segmental relieving arches of radiating headers over every window group"
+  }
+ ],
+ "notes": "A tram shelter roof crosses the first floor and its glass dims the shop ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

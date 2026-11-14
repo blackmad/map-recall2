@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172129",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172129.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stone sunburst ornaments over the top-floor windows"
+  },
+  {
+   "component": "balcony",
+   "what": "a wrought-iron balcony across both bays on carved stone consoles"
+  }
+ ],
+ "notes": "The outline is the central two-bay section of a large villa-like block; the street door is in the left section. Glare streak across the top storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

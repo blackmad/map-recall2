@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012181693",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181693.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 1,
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "ground",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a set-back glazed roof storey over the cornice"
+  }
+ ],
+ "notes": "Front behind a garden wall and railing with one irregular window axis per storey; it may be the back of a house facing a street, and a tree hides the left side.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

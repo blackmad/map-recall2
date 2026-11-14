@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012061490",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012061490.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a pair of street doors under a round brick arch with a fanlight beside a single door"
+  },
+  {
+   "component": "balcony",
+   "what": "balconies on stepped brick corbels in the third axis"
+  }
+ ],
+ "notes": "A car hides the lower ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

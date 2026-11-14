@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012068502",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012068502.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "mirrored",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall brick dormer in the front plane with its own cornice over the second axis"
+  }
+ ],
+ "notes": "A tram hides the ground storey and the lowest upper row; balcony rows cannot be indexed without the ground storey. Three upper rows with segmental heads are visible above the tram, the lowest cut.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

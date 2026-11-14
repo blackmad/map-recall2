@@ -1,0 +1,91 @@
+{
+ "v": 1,
+ "pandId": "0363100012236125",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236125.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "windows",
+  "sameAs",
+  "basement",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stack of shallow stone-based balconies with iron rails on carved consoles in front of the middle window on the first and second floors, an iron balconette on the third"
+  },
+  {
+   "component": "window",
+   "what": "a small carved stucco keystone ornament over every upper window"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer with a curved neck-shaped gable and a hoist beam over the middle bay"
+  },
+  {
+   "component": "relief",
+   "what": "a carved relief panel in the middle of the frieze under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a pair of dark doors under a round-arched transom light, up a short stoop"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

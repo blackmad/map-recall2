@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012085495",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012085495.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "doorSurround",
+  "ground",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a narrow pointed brick gable with a finial rises over the left bay only, holding one arched window"
+  },
+  {
+   "component": "balcony",
+   "what": "balconettes on heavy carved stone consoles in front of the centre window on each upper storey"
+  }
+ ],
+ "notes": "Delivery vans hide most of the ground storey; the left bay holds the open stair entrance with a dark opening above it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

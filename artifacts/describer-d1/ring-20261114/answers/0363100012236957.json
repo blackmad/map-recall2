@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012236957",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236957.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "storeyParts.souterrain",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a full-width iron balcony on carved white console brackets across row 1"
+  },
+  {
+   "component": "window",
+   "what": "a wide modern window in a rusticated stone souterrain base under a segmental arch"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a white rendered point gable with an attic window"
+  }
+ ],
+ "notes": "The right ground opening is a round-arched fanlight over the street door.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

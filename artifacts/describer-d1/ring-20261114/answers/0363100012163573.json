@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012163573",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163573.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "arched",
+ "heads": [
+  "mixed",
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "doorSurround",
+  "pale"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the wide arched doors of the right bay at rows 1 to 3"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is framed by a white rendered surround with two arches, one over the door with a fanlight and one over the shop window"
+  }
+ ],
+ "notes": "Narrow yellow-brick front with a steep point gable holding one arched window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

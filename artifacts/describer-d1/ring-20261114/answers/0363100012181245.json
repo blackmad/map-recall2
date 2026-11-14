@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012181245",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181245.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "bayWindow",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental arches with alternating white and brick voussoir blocks over every upper window"
+  }
+ ],
+ "notes": "A van hides the ground storey except its pale top band; the corner oriel at the right edge belongs to the corner building.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

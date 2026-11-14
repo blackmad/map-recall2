@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "pandId": "0363100012152453",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152453.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "extent",
+  "basement",
+  "dormers",
+  "sameAs",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone balcony with turned balusters on consoles spanning the two left bays of the first floor"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks alternating with the brick along jambs and segmental arches"
+  },
+  {
+   "component": "door",
+   "what": "round-arched open porch with block voussoirs at the right, the door recessed inside up steps"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer and a wider dormer with paired round-arched lights under a crest in the slate mansard"
+  },
+  {
+   "component": "rustication",
+   "what": "grey stone souterrain with low windows"
+  }
+ ],
+ "notes": "The outline straddles the right bays of a plain dark brick house and the left bays of a white-banded house; described the banded house, whose dormer and door bay the outline reaches.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

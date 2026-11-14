@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012147847",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012147847.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "windows",
+  "doorBay",
+  "balconies",
+  "dormers",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "small turquoise glazed tiles set into the brick in rows between the windows"
+  },
+  {
+   "component": "roof",
+   "what": "small gable with a hoist beam rising over the two left axes only"
+  }
+ ],
+ "notes": "Sun glare over the top; outline edge cuts a narrow stair strip with small windows on the right, door may be in that strip.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

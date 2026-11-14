@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012157481",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157481.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a shallow balcony slab on two carved stone consoles in front of the middle balcony door at row 1"
+  },
+  {
+   "component": "relief",
+   "what": "carved stone panels under the row-1 windows"
+  }
+ ],
+ "notes": "Railing and parked car in front of the souterrain; dormer has a segmental pediment.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012161946",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161946.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "cornice",
+  "windows",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stone blocks at both corners and the centre of each window head, like a split keystone-and-imposts dressing"
+  },
+  {
+   "component": "balcony",
+   "what": "a red iron balcony on consoles at the first floor and low white guards in front of the centre door-windows above"
+  }
+ ],
+ "notes": "A shrub hides the lower right corner.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

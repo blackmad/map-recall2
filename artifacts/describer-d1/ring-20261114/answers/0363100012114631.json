@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012114631",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012114631.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {},
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "bands",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "curved iron balconettes in front of the wide left window on each upper storey"
+  },
+  {
+   "component": "window",
+   "what": "wide left window is a centre door between fixed side lights under a top light"
+  }
+ ],
+ "notes": "Sun glare and a truck at the ground storey; two dark doors at the right of the shop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

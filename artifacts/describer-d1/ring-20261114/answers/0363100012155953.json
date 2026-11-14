@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012155953",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "sameAs",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a carved timber bargeboard gable over the left bay and a small gabled dormer over the right"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on consoles are stacked in the left bay"
+  }
+ ],
+ "notes": "A passing tram hides the whole ground storey; three upper storeys are visible under a bracketed cornice.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

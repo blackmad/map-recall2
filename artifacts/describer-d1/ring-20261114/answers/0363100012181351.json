@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012181351",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181351.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the door axis rises one storey higher than the paired-window part, as a raised bay with its own bracketed cornice"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched opening with a fanlight over paired timber doors"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the paired windows on the first and second floors"
+  }
+ ],
+ "notes": "Stepped front: four storeys over the paired windows, five over the door axis; a tree covers the door axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

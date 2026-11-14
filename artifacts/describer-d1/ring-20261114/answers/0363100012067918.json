@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012067918",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012067918.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "mirrored",
+  "doorBay",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "stacked balconies on stone consoles in the second axis, a balconette on the first upper storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront framed by striped light and dark stone pilasters"
+  }
+ ],
+ "notes": "Cars hide the lower ground storey; the outline's left edge cuts a neighbouring gable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
