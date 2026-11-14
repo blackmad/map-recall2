@@ -3,6 +3,42 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Roads stay level across the water",
+      "text": "Where a road or cycle path crosses water on a raised bank, as at the Lelylaan over the Slotervaart or the Gaasperdammerweg, it now runs level from bank to bank. Before, it dropped into the hollow beside the water and climbed out again. Crossings with a dip of more than 1 m: 10 → 4.",
+      "where": [
+        4.8335,
+        52.3577
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-crossing-grade-lelylaan.jpg",
+          "alt": "Lelylaan slip over the Slotervaart: before it sags into the canal; after it runs level",
+          "caption": "Lelylaan over the Slotervaart, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Café fronts are glass, not planks",
+      "text": "Bars and cafés used to have brown plank walls on the ground floor with two small beige windows, and their sign drew as a flat slab that could stick out past a corner like a bare rod. Café fronts are now glazed from a low panelled base up to the head, with warm lamps behind the glass. The sign hangs over a sloped canvas awning that stops before a chamfered or turning corner. Café Hendrix on the Bilderdijkkade was the reported case; the awning colour is still a pale default where OpenStreetMap has none.",
+      "where": [
+        4.869044,
+        52.370824
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-hendrix-shopfront.jpg",
+          "alt": "Café Hendrix corner before and after: brown planks and a pale slab, then glazed fronts under an awning"
+        },
+        {
+          "src": "whats-new/2026-11-14-cafe-heuvel-shopfront.jpg",
+          "alt": "Café Heuvel on the Spiegelgracht: panorama, before, after",
+          "caption": "Panorama | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "De Roode Bioscoop, Zaal 100, Cristofori and AFAS Live",
       "text": "Four more venues have their own models. De Roode Bioscoop on the Haarlemmerplein has its ochre front, red window frames and neck gable. Zaal 100 in the De Wittenstraat has its arched window triplets and gable. Cristofori is in its two rebuilt warehouses on the Prinsengracht. AFAS Live, the former Heineken Music Hall, has its silver ribbed front, the round poster discs and the glass block on the Johan Cruijff Boulevard. Each has a card.",
       "where": [

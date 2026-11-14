@@ -1,7 +1,7 @@
 /**
  * Row strip sheet (lane P, house rows first): one street side, consecutive, every front, three strips at one scale.
  *
- *   npm run house:row-sheet -- <row> [--ppm 40] [--out <dir>] [--drawn-env K=V,K=V] [--drawn-specs <dir>] [--drawn-label <text>] [--list]
+ *   npm run house:row-sheet -- <row> [--ppm 40] [--out <dir>] [--drawn-env K=V,K=V] [--drawn-specs <dir>] [--drawn-label <text>] [--reread-cuts <dir>] [--list]
  *
  *   photo   the captures the D1 reader actually saw (the cut in the describer's cuts dir, cropped to its cyan outline
  *           and scaled to the front's width), NOT pickLikeness's capture;
@@ -11,7 +11,8 @@
  *
  * Writes <out>/sheet.jpg (all three, labelled, with a metre grid), and the blind pair for the row review:
  * <out>/blind/photo.jpg and <out>/blind/drawn.jpg (two strips at one scale, house numbers only, no conditions named),
- * plus <out>/manifest.json. Rows are defined in scripts/house-specs/rows/rows.json. Renders are cached by condition.
+ * plus <out>/blind/zoom/<label>.jpg (per front: photo crop | drawn crop at 3x the strip scale) and <out>/manifest.json. A front whose shown
+ * capture is not the first read (--reread-cuts <dir> of jpgs + cuts.json, or a different capture date) is labelled on the sheet. Rows are defined in scripts/house-specs/rows/rows.json. Renders are cached by condition.
  * The sheet does not judge likeness; a fresh reviewer reads it (scripts/house-specs/rows/blind-review.md).
  */
 import fs from 'node:fs';
@@ -100,12 +101,22 @@ async function main() {
   for (const w of widths) { xs.push(x); x += w + GAP; }
   const W = x - GAP;
 
+  const reread = arg('reread-cuts');
+  const dateOf = (dir: string, pid: string): string | null => { try { return String(JSON.parse(fs.readFileSync(path.join(dir, 'cuts.json'), 'utf8')).rows.find((r: any) => r.pandId === pid)?.captured ?? '').slice(0, 10) || null; } catch { return null; } };
+  const shown = def.members.map(m => {
+    const rr = reread && fs.existsSync(path.join(reread, `${m.pandId}.jpg`)) ? path.join(reread, `${m.pandId}.jpg`) : null;
+    const file = rr ?? cutPath(def, m.pandId);
+    if (!file) return null;
+    const first = dateOf(def.cutsDir, m.pandId), now = dateOf(path.dirname(file), m.pandId);
+    const note = rr ? `re-read: ${now ?? 'capture date unknown'}` : first && now && first !== now ? `shown capture ≠ first read (${now} vs ${first})` : null;
+    return { file, note, capture: now, firstReadCapture: first };
+  });
   const photo: Array<{ buf: Buffer; heightPx: number } | undefined> = [];
   const missing: string[] = [];
   for (let i = 0; i < def.members.length; i++) {
-    const m = def.members[i], cut = cutPath(def, m.pandId);
-    if (!cut) { missing.push(m.pandId); photo.push(undefined); continue; }
-    photo.push(await photoTile(cut, widths[i]));
+    const sh = shown[i];
+    if (!sh) { missing.push(def.members[i].pandId); photo.push(undefined); continue; }
+    photo.push(await photoTile(sh.file, widths[i]));
   }
   const drawn = await drawnTiles(def, drawnCond, work, ppm);
   const today = drawnIsToday ? drawn : await drawnTiles(def, todayCond, work, ppm);
@@ -114,7 +125,9 @@ async function main() {
   const maxDrawnH = Math.max(...def.members.map(m => Math.max(drawn.get(m.pandId)?.heightPx ?? 0, today.get(m.pandId)?.heightPx ?? 0)));
   const H = Math.max(maxPhotoH, maxDrawnH, Math.round(19 * ppm));
   const sky = '#a0b4c8';
-  const photoStrip = await strip(photo, xs, widths, H, '#333', false, ppm, W);
+  const photoBase = await strip(photo, xs, widths, H, '#333', false, ppm, W);
+  const noteSvg = Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">${def.members.map((m, i) => shown[i]?.note ? `<rect x="${xs[i]}" y="${H - (photo[i]?.heightPx ?? 0)}" width="${widths[i]}" height="18" fill="#c4361b"/><text x="${xs[i] + 3}" y="${H - (photo[i]?.heightPx ?? 0) + 13}" font-size="11" fill="#fff" font-family="Helvetica">${esc(shown[i]!.note!)}</text>` : '').join('')}</svg>`);
+  const photoStrip = shown.some(x => x?.note) ? await sharp(photoBase).composite([{ input: noteSvg, left: 0, top: 0 }]).png().toBuffer() : photoBase;
   const drawnStrip = await strip(def.members.map(m => drawn.get(m.pandId)), xs, widths, H, sky, true, ppm, W);
   const todayStrip = await strip(def.members.map(m => today.get(m.pandId)), xs, widths, H, sky, true, ppm, W);
 
@@ -127,6 +140,21 @@ async function main() {
   for (const [name, img] of [['photo', photoStrip], ['drawn', drawnStrip]] as const) {
     await sharp({ create: { width: W, height: band + H, channels: 3, background: '#111' } })
       .composite([{ input: labelBand(band, numLabels), left: 0, top: 0 }, { input: img, left: 0, top: band }]).jpeg({ quality: 88 }).toFile(path.join(out, 'blind', `${name}.jpg`));
+  }
+  // Per-front zoom pairs for the reviewer: photo crop | drawn crop at 3x the strip scale (drawn re-rendered at 3x ppm).
+  const Z = 3;
+  const zoomDir = path.join(out, 'blind', 'zoom');
+  fs.rmSync(zoomDir, { recursive: true, force: true }); fs.mkdirSync(zoomDir, { recursive: true });
+  const drawnZ = await drawnTiles(def, { ...drawnCond, name: `${drawnCond.name}-z${Z}` }, work, ppm * Z);
+  for (let i = 0; i < def.members.length; i++) {
+    const m = def.members[i], sh = shown[i], dz = drawnZ.get(m.pandId);
+    const pz = sh ? await photoTile(sh.file, widths[i] * Z) : null;
+    const hh = Math.max(pz?.heightPx ?? 0, dz?.heightPx ?? 0, 60), w = widths[i] * Z;
+    const lay: sharp.OverlayOptions[] = [];
+    if (pz) lay.push({ input: pz.buf, left: 0, top: 24 + hh - pz.heightPx });
+    if (dz) lay.push({ input: dz.buf, left: w + 8, top: 24 + hh - dz.heightPx });
+    lay.push({ input: Buffer.from(`<svg width="${2 * w + 8}" height="24" xmlns="http://www.w3.org/2000/svg"><text x="4" y="17" font-size="15" font-weight="bold" fill="#fff" font-family="Helvetica">${esc(m.label)}</text><text x="${w + 12}" y="17" font-size="13" fill="#ccc" font-family="Helvetica">drawing</text></svg>`), left: 0, top: 0 });
+    await sharp({ create: { width: 2 * w + 8, height: 24 + hh, channels: 3, background: sh ? '#111' : '#555' } }).composite(lay).jpeg({ quality: 88 }).toFile(path.join(zoomDir, `${m.label.replace(/[^\w-]+/g, '-')}.jpg`));
   }
   // A re-read front (its first read held: scaffold, netting) shows the re-read's capture, labelled on the tile and in the title,
   // so the sheet never passes it off as the capture the first read saw.
@@ -145,7 +173,7 @@ async function main() {
     layers.push({ input: Buffer.from(`<svg width="${w}" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="20" fill="#f2c500"/><text x="4" y="14" font-size="12" font-weight="bold" fill="#000" font-family="Helvetica">${esc(t)}</text></svg>`), left: xs[i], top: head + band + band });
   }
   await sharp({ create: { width: W, height: total, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));
-  fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: cutPath(def, m.pandId), ...(rereads[m.pandId] ? { reread: rereads[m.pandId] } : {}), drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
+  fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: shown[i]?.file ?? null, captureNote: shown[i]?.note ?? null, capture: shown[i]?.capture ?? null, firstReadCapture: shown[i]?.firstReadCapture ?? null, ...(rereads[m.pandId] ? { reread: rereads[m.pandId] } : {}), drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
   console.log(`${id}: ${def.members.length} fronts, ${missing.length} missing cuts, sheet ${path.join(out, 'sheet.jpg')}, blind pair ${path.join(out, 'blind')}`);
 }
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) await main();
