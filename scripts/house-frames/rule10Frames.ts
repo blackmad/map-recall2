@@ -93,10 +93,24 @@ export function asPlayedFor(prepared: Array<{ wall: WallQuad; pose: FramePose }>
 /** The job's rule-10 fields (tests/e2e/house-frames.spec.ts reads them; absent on an old run). */
 export type Rule10Job = {
   dpr: number;
-  /** extra query for likeness pages (`trees3d=0` when trees are hidden) */
+  /** extra query for likeness pages: the pins (rule10Pins) and `trees3d=0` when trees are hidden */
   likenessQuery: string;
+  /** extra query for as-played pages: the pins (absent on an older job, which then runs on the job's query alone) */
+  asPlayedQuery?: string;
   asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }>;
 };
+
+/**
+ * The pins a rule-10 page needs so both columns of a sheet draw at `--dpr`: the pixel ratio asked (`dpr=`), the render
+ * governor off and the quality tier forced high. Without them the own engine's tier probe (mid caps the ratio at 1.5)
+ * and governor stepped likeness frames down under load, so one run's "today" drew at 2 and its candidate at 1.5
+ * (retail-ground lane, 2026-11-14; block-page.ts FRAME_QUERY already pinned them for its runs). A pin the job's query
+ * already names is left to the query.
+ */
+export function rule10Pins(query: string, dpr: number): string {
+  const q = new URLSearchParams(query.replace(/^\?/, ''));
+  return ([['dpr', String(dpr)], ['governor', '0'], ['tier', 'high']] as const).filter(([k]) => !q.has(k)).map(([k, v]) => `${k}=${v}`).join('&');
+}
 export type LikenessJobPose = { fps: Record<string, unknown>; width: number; height: number; windowH: number; lngLat: [number, number]; headingDeg: number };
 export function likenessJobPose(l: LikenessPrep): LikenessJobPose {
   return { fps: fpsFor(l.lp.pose) as unknown as Record<string, unknown>, width: l.lp.pose.width, height: l.lp.pose.height, windowH: l.lp.window.height, lngLat: l.lp.pose.lngLat, headingDeg: l.lp.pose.headingDeg };
