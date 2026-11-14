@@ -28,6 +28,16 @@ const everyMs = Number(opt('every', '200'));
 const extraQs = opt('qs', '');
 // --drag <m/s>: drag the camera there at this speed (0: jump). Fill times count from the end of the drag.
 const dragSpeed = Number(opt('drag', '0'));
+// --note: the feedback note's own camera offset from the rider (748b1a8f: camera - player = 3216, -2133 game px, i.e.
+// 1,072 m east and 711 m north at 3 px/m, 1.29 km; the earlier "3.9 km" read the px as metres). Overrides --pan/--side.
+const noteOffset = argv.includes('--note') ? [-4009.536989249451 - -7225.5288260432935, -6045.270088931345 - -3912.532768026519] : null;
+// --legs "e,n;e,n;...": a wander, metres east/north of the rider, dragged in turn at --drag m/s (default 300); the
+// fill is timed from the end of the last leg. Ends at the note's camera with --note as the last leg.
+const legsArg = opt('legs', '');
+const legs = legsArg ? legsArg.split(';').map(l => l.split(',').map(Number)).map(([e, n]) => [e * 3, -n * 3]) : null;
+if (legs && noteOffset) legs.push(noteOffset);
+// --shots <dir>: pass 2 screenshots at 0.5, 1, 2, 4, 8, 16 s after the move and at the end.
+const shotsDir = opt('shots', '');
 // --latency <ms> --mbps <n>: the network as the deployed site sees it (CDP emulation on every page; 0: local speed).
 const latencyMs = Number(opt('latency', '0')), mbps = Number(opt('mbps', '0'));
 const throttle = async p => {
@@ -38,6 +48,34 @@ const throttle = async p => {
 };
 const look = opt('look', '');
 const origin = process.env.ORIGIN || `http://127.0.0.1:${process.env.PORT || 4453}`;
+// The game's path: /canal-drive/ on the dev server, /ride on the deployed site (Firebase rewrites /ride to ride.html).
+const gamePath = process.env.GAME_PATH || (process.env.ORIGIN ? '/ride' : '/canal-drive/');
+// --trace <file>: a Chrome performance trace of pass 2's pan (from the move to fill or --trace-s seconds).
+const traceOut = opt('trace', '');
+const traceS = Number(opt('trace-s', '20'));
+// Every finished request of pass 2 after the move: url, size, timing phases and cache headers (CDN hit/miss, age).
+const netLog = [];
+let netT0 = null;
+const watchNet = p => {
+  const onDone = async (req, failed) => {
+    if (netT0 == null) return;
+    const url = req.url();
+    if (url.startsWith('data:') || url.startsWith('blob:')) return;
+    const t = req.timing();
+    let res = null; try { res = await req.response(); } catch { /* */ }
+    const h = res ? await res.allHeaders().catch(() => ({})) : {};
+    let size = null; try { size = (await req.sizes()).responseBodySize; } catch { /* */ }
+    netLog.push({ url: url.replace(origin, ''), status: res?.status() ?? null, failed: failed || null, fromCache: res ? (await res.fromServiceWorker?.()) || null : null,
+      start: Math.round(t.startTime - netT0), dns: t.domainLookupEnd >= 0 ? Math.round(t.domainLookupEnd - t.domainLookupStart) : null,
+      connect: t.connectEnd >= 0 ? Math.round(t.connectEnd - t.connectStart) : null,
+      ttfb: t.responseStart >= 0 ? Math.round(t.responseStart - Math.max(0, t.requestStart)) : null,
+      queued: t.requestStart >= 0 ? Math.round(t.requestStart) : null,
+      total: t.responseEnd >= 0 ? Math.round(t.responseEnd) : null, size,
+      cc: h['cache-control'] ?? null, xcache: h['x-cache'] ?? null, age: h['age'] ?? null, enc: h['content-encoding'] ?? null });
+  };
+  p.on('requestfinished', r => onDone(r, null));
+  p.on('requestfailed', r => onDone(r, r.failure()?.errorText ?? 'failed'));
+};
 // The note's rider pose (player x/y/angle) and camera zoom; tilt 15 (pitch 75) as in its context.world.
 // The note's x/y are in its ride's loader frame; the rider is placed by lng/lat (the note's camera centre less the
 // camera-to-player offset at 3 px/m: 4.864062, 52.367576, Kinkerbuurt by the Bilderdijkkade).
@@ -47,12 +85,12 @@ const POSE = { lngLat: [4.864062, 52.367576], angle: -0.39889684834280237, zoom:
 const useChrome = argv.includes('--chrome');
 const browser = await chromium.launch({
   headless: !argv.includes('--headed'),
-  args: ['--enable-precise-memory-info', ...(useChrome ? ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu'] : [])],
+  args: ['--enable-precise-memory-info', '--host-resolver-rules=MAP *.ingest.sentry.io 127.0.0.1, MAP *.ingest.us.sentry.io 127.0.0.1, MAP *.ingest.de.sentry.io 127.0.0.1', ...(useChrome ? ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu'] : [])],
   ...(useChrome ? { executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' } : {}),
 });
 const [vw, vh] = (process.env.VIEWPORT || '1326x761').split('x').map(Number);
 const context = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: Number(process.env.DPR || 2) });
-await context.route(/ingest\.(us\.)?sentry\.io/, route => route.fulfill({ status: 200, body: '{}' }));
+// No context.route: a routed context runs with the HTTP cache off (duplicate downloads); Sentry is resolved away above.
 const page = await context.newPage();
 const errors = [];
 page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
@@ -60,12 +98,13 @@ const MOVER = () => {
   let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
   // Detach the camera and take its anchor `panM` ahead along the view and `sideM` to its right: at once (speed 0), or
   // dragged there at `speed` m/s (a trackpad drag moves the anchor through Camera.pan; the eased camera follows).
-  window.__moveCam = (panM, sideM, speed) => new Promise(resolve => {
+  window.__moveCam = (panM, sideM, speed, offsetPx) => new Promise(resolve => {
     const g = canalRecallGame, c = g.camera, ppm = (0, eval)('PIXELS_PER_METER'), rot = c.rotation;
     const fwd = [Math.sin(rot), -Math.cos(rot)], right = [Math.cos(rot), Math.sin(rot)];
     c.pan(0.0001, 0);
-    const x0 = c.x, y0 = c.y, dx = (fwd[0] * panM + right[0] * sideM) * ppm, dy = (fwd[1] * panM + right[1] * sideM) * ppm;
-    const total = Math.hypot(panM, sideM);
+    let x0 = c.x, y0 = c.y, dx = (fwd[0] * panM + right[0] * sideM) * ppm, dy = (fwd[1] * panM + right[1] * sideM) * ppm;
+    if (offsetPx) { dx = g.player.x + offsetPx[0] - x0; dy = g.player.y + offsetPx[1] - y0; }
+    const total = Math.hypot(dx, dy) / ppm;
     if (!(speed > 0)) { c.anchorX = c.x = x0 + dx; c.anchorY = c.y = y0 + dy; resolve(); return; }
     const t0 = performance.now();
     const step = () => {
@@ -77,9 +116,13 @@ const MOVER = () => {
   });
 };
 await page.addInitScript(MOVER);
+const MOVE = async (pg, extra = '') => pg.evaluate(async ([panM, sideM, speed, off, legs]) => {
+  if (legs) { for (const l of legs) await window.__moveCam(0, 0, speed || 300, l); return; }
+  await window.__moveCam(panM, sideM, speed, off);
+}, [panM, sideM, dragSpeed, noteOffset, legs]);
 const qs = `?ride=free&engine=own${look ? `&buildings3d=${look}` : ''}${extraQs ? `&${extraQs.replace(/^\?/, '')}` : ''}`;
 await throttle(page);
-await page.goto(`${origin}/canal-drive/${qs}`);
+await page.goto(`${origin}${gamePath}${qs}`);
 await page.waitForFunction(() => window.canalRecallGame?.state === 4 && window.canalRecallGame.camera?.introOverview === 0 && window.canalRecallGame.freeRide, null, { timeout: 180_000 });
 
 // Park the rider at the note's pose, chase, and let the world settle there.
@@ -95,15 +138,17 @@ await page.evaluate(p => {
   g.camera.zoom = p.zoom; if (g.camera.targetZoom != null) g.camera.targetZoom = p.zoom;
   g.camera.resetForRide?.(g.player);
 }, POSE);
-const settle = async (label, maxS) => page.evaluate(async ([label, maxS]) => {
+const settle = async (label, maxS, minS = 0) => page.evaluate(async ([label, maxS, minS]) => {
   const t = performance.now();
+  let run = 0;
   while (performance.now() - t < maxS * 1000) {
     const s = canalRecallGame.vectorMap.worldSettled?.();
-    if (s?.settled) return { label, ms: Math.round(performance.now() - t), settled: true };
+    run = s?.settled ? run + 1 : 0;
+    if (run >= 4 && performance.now() - t >= minS * 1000) return { label, ms: Math.round(performance.now() - t), settled: true };
     await new Promise(r => setTimeout(r, 250));
   }
   return { label, ms: Math.round(performance.now() - t), settled: false, state: canalRecallGame.vectorMap.worldSettled?.() };
-}, [label, maxS]);
+}, [label, maxS, minS]);
 const riderSettle = await settle('rider', 90);
 const gpu = await page.evaluate(() => { try { const gl = canalRecallGame.vectorMap.host?.renderer?.getContext?.(); const ext = gl?.getExtension('WEBGL_debug_renderer_info'); return ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl?.getParameter(gl.RENDERER); } catch (e) { return String(e); } });
 const fps = await page.evaluate(() => new Promise(r => { let n = 0; const t = performance.now(); const f = () => { n++; if (performance.now() - t < 2000) requestAnimationFrame(f); else r(+(n / ((performance.now() - t) / 1000)).toFixed(1)); }; requestAnimationFrame(f); }));
@@ -175,10 +220,11 @@ await page.evaluate(([panM, sideM, everyMs]) => {
   }
   R.jump = { panM, sideM, rotation: g.camera.rotation };
 }, [panM, sideM, everyMs]);
-const arrivedAt = await page.evaluate(async ([panM, sideM, speed]) => { await window.__moveCam(panM, sideM, speed); return Math.round(performance.now() - window.__detached.t0); }, [panM, sideM, dragSpeed]);
+await MOVE(page);
+const arrivedAt = await page.evaluate(() => Math.round(performance.now() - window.__detached.t0));
 
 // Settle at the new view (or hold), then take the final on-screen building set.
-const detachedSettle = await settle('detached', holdS);
+const detachedSettle = await settle('detached', holdS, 4);
 await page.waitForTimeout(1500);
 const final = await page.evaluate(() => {
   const g = canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, city = vm._completeCity, cam = vm.cameraMap.camera, canvas = vm.cameraMap.getCanvas();
@@ -212,12 +258,12 @@ await context.close();
 
 // Pass 2: the same jump, sampling the share of `finalSet` drawn every `everyMs`.
 const context2 = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: Number(process.env.DPR || 2) });
-await context2.route(/ingest\.(us\.)?sentry\.io/, route => route.fulfill({ status: 200, body: '{}' }));
 const page2 = await context2.newPage();
 page2.on('pageerror', e => errors.push(String(e).slice(0, 300)));
 await page2.addInitScript(MOVER);
 await throttle(page2);
-await page2.goto(`${origin}/canal-drive/${qs}`);
+watchNet(page2);
+await page2.goto(`${origin}${gamePath}${qs}`);
 await page2.waitForFunction(() => window.canalRecallGame?.state === 4 && window.canalRecallGame.camera?.introOverview === 0 && window.canalRecallGame.freeRide, null, { timeout: 180_000 });
 await page2.evaluate(p => {
   const g = canalRecallGame;
@@ -241,7 +287,22 @@ const settle2 = async (label, maxS) => page2.evaluate(async ([label, maxS]) => {
 }, [label, maxS]);
 const riderSettle2 = await settle2('rider', 90);
 await page2.waitForTimeout(2000);
-const timeline = await page2.evaluate(async ([finalSet, panM, sideM, everyMs, holdS, speed]) => {
+// The wander's legs run before the timed pass-2 evaluate; the timed move is the last leg (or the single move).
+const lastLeg = legs ? legs.at(-1) : noteOffset;
+if (legs && legs.length > 1) await page2.evaluate(async ([legs, speed]) => { for (const l of legs.slice(0, -1)) await window.__moveCam(0, 0, speed || 300, l); }, [legs, dragSpeed]);
+netT0 = await page2.evaluate(() => Date.now()); // request timing startTime is wall-clock ms
+if (traceOut) await browser.startTracing(page2, { path: traceOut, screenshots: true, categories: ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'disabled-by-default-devtools.timeline.frame', 'v8.execute', 'blink.user_timing', 'loading', 'netlog', 'disabled-by-default-v8.cpu_profiler', 'gpu'] });
+const traceStop = traceOut ? setTimeout(() => browser.stopTracing().catch(() => {}), traceS * 1000) : null;
+if (shotsDir) fs.mkdirSync(shotsDir, { recursive: true });
+const shotTimes = [500, 1000, 2000, 4000, 8000, 16000];
+const shotTimer = shotsDir ? (async () => {
+  const t0 = Date.now();
+  for (const t of shotTimes) {
+    const wait = t - (Date.now() - t0); if (wait > 0) await new Promise(r => setTimeout(r, wait));
+    await page2.screenshot({ path: path.join(shotsDir, `t${String(t).padStart(5, '0')}.jpg`), quality: 70 }).catch(() => {});
+  }
+})() : null;
+const timeline = await page2.evaluate(async ([finalSet, panM, sideM, everyMs, holdS, speed, off]) => {
   const g = canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, baked = vm._bakedCoarse;
   // Which tier draws at a point: a near/coarse chunk (tierAt) or a drawn baked cell (its key from the facade layer's grouping).
   const cellAt = (() => { const info = tb.groupOf?.bind(tb); return (lng, lat) => info ? info({ properties: { id: 'probe' }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-6, lat], [lng, lat + 1e-6], [lng, lat]]] } }).cell : null; })();
@@ -254,7 +315,7 @@ const timeline = await page2.evaluate(async ([finalSet, panM, sideM, everyMs, ho
     if (d === undefined) { const [near, coarse, cell] = b.sig.split('|'); d = !!tb.chunks.get(near)?.mesh || !!tb.chunks.get(coarse)?.mesh || (!!cell && !!baked?.drawn?.(cell)); drawnSig.set(b.sig, d); }
     return d;
   };
-  await window.__moveCam(panM, sideM, speed);
+  await window.__moveCam(panM, sideM, speed, off);
   const T0 = performance.now(), samples = [];
   while (performance.now() - T0 < holdS * 1000) {
     await new Promise(r => setTimeout(r, everyMs));
@@ -266,7 +327,10 @@ const timeline = await page2.evaluate(async ([finalSet, panM, sideM, everyMs, ho
     if (all === pts.length && vm.worldSettled?.()?.settled) break;
   }
   return samples;
-}, [finalSet, panM, sideM, everyMs, holdS, dragSpeed]);
+}, [finalSet, panM, sideM, everyMs, holdS, legs ? (dragSpeed || 300) : dragSpeed, lastLeg]);
+if (shotTimer) { await shotTimer; await page2.screenshot({ path: path.join(shotsDir, 'end.jpg'), quality: 70 }).catch(() => {}); }
+if (traceOut) { clearTimeout(traceStop); await browser.stopTracing().catch(() => {}); }
+await page2.waitForTimeout(500);
 await context2.close();
 await browser.close();
 
@@ -299,7 +363,7 @@ const report = {
     bakedInstalls: ev.filter(e => e.kind === 'baked' && e.phase === 'installed').length,
     bakedDropped: ev.filter(e => e.kind === 'baked' && e.phase === 'dropped').length,
   },
-  chunks, timeline, events: ev, lastPlan: firstEvents.lastPlan, errors,
+  chunks, timeline, net: netLog, events: ev, lastPlan: firstEvents.lastPlan, errors,
 };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(report, null, 1));
