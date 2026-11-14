@@ -20,6 +20,7 @@ import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
 import { brickLiftOn } from '../look/brickLift.js';
 import { ruledSpecWall } from '../look/wallRule.js';
+import { EXPOSURE, exposedWall, smoothFinishOf, STONE_HEX, STONE_MIN_L, wallExposureMode, wallFinishOn } from './wallExposure.js';
 import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
@@ -64,6 +65,10 @@ export interface HouseSpecView {
   shop?: boolean;
   /** H11: the shopfront's paint (#rrggbb), with `shop`. */
   shopHex?: string;
+  /** Lane WC (#384): the staged wall-exposure options of a photo-measured wall (wallExposure.ts), `off` = wallHex. */
+  wallExposure?: { off: string; floor: string; gain: string; norm: string; normfloor: string };
+  /** Lane WC: the front is stone-faced (wallMaterial reads stucco, the generic wall has no stone). */
+  wallStone?: boolean;
   /** Winning source per key above. */
   src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop' | 'look' | 'shop' | 'souterrain' | 'roofStorey', string>>;
 }
@@ -109,6 +114,8 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   shopHex?: string;
   /** H9g: the pale-warm guard held this brick pand's wall; the period colour it keeps must be a brick one (wallColour.ts heldBrickWall). */
   heldBrick?: true;
+  /** Lane WC (`?wallFinish=1`): a render, painted or stone front draws the smooth painted cells (bayLook.ts paintedLayers). */
+  finish?: 'painted' | 'stone';
 };
 
 /** Default on; `?houseSpecs=0` in the page or HOUSE_SPECS=0 in Node turns the enricher (and so every step) off. */
@@ -209,7 +216,10 @@ export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
-  const drawn = ruledSpecWall(src, () => specWallDisplay(src.hex, { fromPixel: src.fromPixel }));
+  // Lane WC (#384): option (a) lowers the decoration floor too (SPEC_WALL_LIFT.minL 0.34 parks every darker reading on one
+  // tone), only for a staged photo-measured wall (one carrying wallExposure) under ?wallExposure=floor|normfloor.
+  const mode = view.wallExposure ? wallExposureMode() : 'off';
+  const drawn = ruledSpecWall(src, () => specWallDisplay(src.hex, { fromPixel: src.fromPixel, ...(mode === 'floor' || mode === 'normfloor' ? { minL: EXPOSURE.displayMinL } : {}) }));
   // A hand-reviewed wall (source `author` / `reviewed`) skips the guard: the guard was written for noisy measurements, and a
   // reviewed colour outranks it (peer ruling 2026-11-13: 178293's reviewed #9a5a40, photo L 0.58, drew period brick at 0.38).
   if (reviewedWallSource(view.src?.wallHex)) return drawn;
@@ -220,8 +230,19 @@ export function specWallColour(view: HouseSpecView, p: Props): string | null {
 export const specWallGuarded = (view: HouseSpecView, p: Props): boolean =>
   !!view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && specWallColour(view, p) === null;
 
+/** Lane WC (#384): under `?wallExposure=floor|gain|norm` the view's wall is that option's staged brick (wallExposure.ts);
+ *  off, or a view without staged options, is the same object. */
+export function withWallExposure(view: HouseSpecView): HouseSpecView {
+  if (!view.wallExposure) return view;
+  const mode = wallExposureMode();
+  if (mode === 'off') return view;
+  const wall = exposedWall(view.wallHex, view.wallExposure, mode);
+  return wall === view.wallHex ? view : { ...view, wallHex: wall };
+}
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
+  view = withWallExposure(view);
   const patch: Props = {};
   if (Number.isInteger(view.year)) {
     const year = view.year!, current = p.constructionYear === null || p.constructionYear === undefined ? NaN : Number(p.constructionYear);
@@ -236,7 +257,9 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     // paint, lane H9): a near-black painted front drawn in plaster cells read as render. Without a measured colour the
     // register's rule stands (painted = a light finish).
     const measuredPaint = view.wallMaterial === 'painted-brick' && !!view.wallHex && specWallsOn() && !specWallGuarded(view, p);
-    const finish = view.wallMaterial === 'brick' || measuredPaint ? 'brick' : 'light';
+    // Lane WC (`?wallFinish=1`): a smooth finish (render, painted, stone) is a light finish, measured colour or not.
+    const smooth = wallFinishOn() && smoothFinishOf(view.wallMaterial, view.wallStone) !== null;
+    const finish = view.wallMaterial === 'brick' || (measuredPaint && !smooth) ? 'brick' : 'light';
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   if (!SPEC_STOOPS_HELD && view.stoop && typeof view.stoop === 'object' && !Array.isArray(view.stoop)) patch.specStoop = view.stoop;
@@ -249,6 +272,16 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     const drawn = specWallColour(view, p);
     if (drawn) recipe.wallHex = drawn;
     else if (heldTakesBrick({ wallMaterial: view.wallMaterial, registerFinish: String(p.registerFinish ?? '') })) recipe.heldBrick = true;
+  }
+  // Lane WC (`?wallFinish=1`): render, painted and stone fronts draw smooth cells; a stone front without a drawn reading
+  // takes the city stone, and a held stone/render wall does not fall back to brick.
+  const smoothFinish = wallFinishOn() ? smoothFinishOf(view.wallMaterial, view.wallStone) : null;
+  if (smoothFinish) {
+    recipe.finish = smoothFinish;
+    if (recipe.heldBrick) delete recipe.heldBrick;
+    // Natural stone is pale: a reading below STONE_MIN_L is shade, soot or a misread neighbour (171970 read #3f3e3c, a white
+    // sandstone front in the photo), so it takes the city stone too.
+    if (smoothFinish === 'stone' && (!recipe.wallHex || hexToOklab(recipe.wallHex)[0] < STONE_MIN_L)) recipe.wallHex = STONE_HEX;
   }
   // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
   if (view.storeys && view.storeys >= 2) {
@@ -273,7 +306,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   }
   // A spec recipe only when it carries something the mesher reads; crown and period ride along.
   if (view.fields) recipe.fields = view.fields;
-  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex || recipe.fields) {
+  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex || recipe.fields || recipe.finish) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];

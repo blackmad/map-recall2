@@ -118,13 +118,14 @@ export function oklabToHex(lab: Vec3): string {
  * come half way back towards the brown tone, chroma is capped by hue (0.12 at red, 0.06 at yellow-brown: high chroma on
  * a yellowish brown reads ochre), then fitted to the sRGB gamut at the same lightness and hue. A family tone (`fromPixel: false`) is already a full-colour daylight tone: lightness only.
  */
-export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean } = {}): string {
+/** `minL` (lane WC, `?wallExposure=floor|normfloor` only): a lower lightness floor than SPEC_WALL_LIFT.minL for a staged photo-measured wall. */
+export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean; minL?: number } = {}): string {
   const [L, a, b] = hexToOklab(measuredHex), C = Math.hypot(a, b), share = liftShare(L, C);
   // Round 3: the lift ramps in over darkLift (none at OKLab L 0.36, all of it from 0.5). Still monotone (dL'/dL =
   // (1 - k) + (1 - L) k' > 0, never reorders), and it widens the gap between a dark brown reading (L 0.41) and a red one
   // (L 0.45) instead of compressing it: a dark-brown street stays darker than a red one.
   const k = SPEC_WALL_LIFT.k * share * Math.max(0, Math.min(1, (L - SPEC_WALL_LIFT.darkLift[0]) / (SPEC_WALL_LIFT.darkLift[1] - SPEC_WALL_LIFT.darkLift[0])));
-  const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
+  const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(opts.minL ?? SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
   if (opts.fromPixel === false || C < 1e-6) return oklabToHex([L2, a, b]);
   const lift = SPEC_WALL_LIFT, clamp = (v: number) => Math.max(0, Math.min(1, v));
   // A near-neutral reading stays neutral (its faint tint is camera cast: lifted, greys went blue or green).

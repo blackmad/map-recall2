@@ -81,7 +81,8 @@ Flags
                          server); each list's pairs, sheets and summary go to its own out dir, exactly as a separate
                          --list run would write them (the page re-opens at each list, so frames match a separate
                          run). The batch job is <first out>/batch-job.json. Other flags apply
-                         to every list; --out is ignored
+                         to every list; --out is ignored. <list.json>:<out>@<query> adds a query for that list only
+                         (joined to --query with &): one batch frames a flag's settings side by side
   --reuse-photos         take the pick, pose and photo cut from the cache when this entry was framed before with the
                          same flags and the same frames/pose/photo code (a before/after re-run renders only game
                          frames). Every run writes the cache: HOUSE_FRAMES_CACHE, default the main checkout's
@@ -574,7 +575,7 @@ function captionLinesBase(r: any): string[] {
   const flags = Object.entries(r.flags ?? {}).filter(([, v]) => v).map(([k, v]) => v === true ? k : `${k}: ${v}`);
   return [
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
-    `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  engine ${(r.engineWorld ?? engineWorld(r.query ?? '')).engine}, world ${(r.engineWorld ?? engineWorld(r.query ?? '')).world}${r.query ? `  |  ${r.query}` : ''}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
+    `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  engine ${(r.engineWorld ?? engineWorld(r.query ?? '')).engine}, world ${(r.engineWorld ?? engineWorld(r.query ?? '')).world}${r.world?.dir && r.world.dir !== 'published' ? ` (staged ${path.basename(r.world.dir)})` : ''}${r.query ? `  |  ${r.query}` : ''}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
     (flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags') + ((r.why ?? []).find((w: string) => w.startsWith('no square exists')) ? `  |  ${(r.why as string[]).find(w => w.startsWith('no square exists'))!.toUpperCase()}` : '') + (r.colour && r.colour.ref === 'no ref' ? '  |  wall colour: no ref (no neighbour strip reads)' : ''),
     `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'} (${r.colour?.ref ?? '?'})  |  skyline game ${r.skyline?.offset?.game?.medianM ?? (r.skyline?.offset?.game?.clipped ? 'clipped' : '?')} photo ${r.skyline?.offset?.photo?.medianM ?? (r.skyline?.offset?.photo?.clipped ? 'clipped' : '?')} crown ${r.wall.heightM} m`,
   ];
@@ -665,7 +666,7 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
       }
     }
   }
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, engineWorld: engineWorld(job.query, process.env.WORLD_DIR), route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms,
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, engineWorld: engineWorld(job.query, process.env.WORLD_DIR), route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, ...(g.world ? { world: g.world } : {}), flags, advisory, settle: g.settle, ms: g.ms,
     ...(args.rule10 ? { rule10: { use: FLAGS_ONLY, likeness: prep.likeness ?? null } } : {}) };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
@@ -675,8 +676,8 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]>; likeness?: ReturnType<typeof likenessJobPose> }>; rule10?: Rule10Job };
-export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]), ...(p.likeness ? { likeness: likenessJobPose(p.likeness) } : {}) })),
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; query?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]>; likeness?: ReturnType<typeof likenessJobPose> }>; rule10?: Rule10Job };
+export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, query: args.query, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]), ...(p.likeness ? { likeness: likenessJobPose(p.likeness) } : {}) })),
   ...(args.rule10 ? { rule10: rule10Job(args, prepared) } : {}) });
 /** Rule 10's job fields: pixel ratio, the likeness pages' extra query, and the list's as-played rider. */
 function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
@@ -770,6 +771,13 @@ async function rule10SheetsFor(args: Args, ok: any[], job: any): Promise<string[
   }
   return rows.length ? rule10Sheets(args.out, rows, `house:frames rule 10 ${args.inputName || ''} ${args.label !== 'run' ? args.label : ''}`.trim()) : [];
 }
+/** Review rule 8: every caption names the engine and the world (`?world=live` is iteration only; the compiled world-v1
+ *  cells are what players get, published or a staged compile served per list by HOUSE_FRAMES_WORLDS). */
+export function worldCaption(query: string, world?: { dir?: string } | null): string {
+  const q = (query || '').replace(/^\?/, ''), engine = /(^|&)engine=(\w+)/.exec(q)?.[2] ?? 'own';
+  const w = /(^|&)world=live\b/.test(q) ? 'world=live (iteration)' : world?.dir && world.dir !== 'published' ? `world-v1 staged ${path.basename(world.dir)}` : 'world-v1 published';
+  return `engine ${engine}, ${w}${q ? `  |  ?${q}` : ''}`;
+}
 
 /** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */
 export function splitLists(argv: string[]): string[][] {
@@ -781,10 +789,12 @@ export function splitLists(argv: string[]): string[][] {
     if (a.startsWith('--lists=') || a.startsWith('--out=') || a.startsWith('--list=')) continue;
     shared.push(a);
   }
-  return spec.split(',').filter(Boolean).map(pair => {
+  return spec.split(',').filter(Boolean).map(entry => {
+    // `<list.json>:<out>@<query>` (lane WC): this list's own query, joined to the shared --query (one flag per list in a batch)
+    const at = entry.indexOf('@'), pair = at >= 0 ? entry.slice(0, at) : entry, listQuery = at >= 0 ? entry.slice(at + 1) : '';
     const i = pair.lastIndexOf(':');
-    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${pair}": want <list.json>:<out dir>`);
-    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared];
+    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${entry}": want <list.json>:<out dir>[@<query>]`);
+    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared, ...(listQuery ? ['--list-query', listQuery] : [])];
   });
 }
 
@@ -809,7 +819,8 @@ export async function main(argv = process.argv.slice(2)) {
 async function batch(argv: string[]) {
   const runs: Array<{ args: Args; prepared: Prepared[]; skipped: Skipped[] }> = [];
   for (const one of splitLists(argv)) {
-    const args = await parseArgs(one);
+    const args = await parseArgs(one), listQuery = arg(one, 'list-query');
+    if (listQuery) args.query = [args.query.replace(/^\?/, ''), listQuery.replace(/^\?/, '')].filter(Boolean).join('&').replace(/^/, '?');
     if (args.before) args.before = path.join(args.before, path.basename(args.out));
     console.log(`== ${args.inputName} -> ${args.out}`);
     if (args.postOnly) { const p = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')); runs.push({ args, ...p }); continue; }

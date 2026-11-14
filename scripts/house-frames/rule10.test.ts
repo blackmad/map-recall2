@@ -107,7 +107,7 @@ test('an old run is unchanged: the job carries no rule-10 field without a rule-1
   const base = { out: '/o', query: '', reopenEvery: 40 } as any;
   const old = jobFor(base, [prep]);
   assert.deepEqual(Object.keys(old), ['out', 'query', 'width', 'height', 'reopenEvery', 'settleMs', 'poses']);
-  assert.deepEqual(Object.keys(old.poses[0]), ['key', 'pandId', 'out', 'lngLat', 'headingDeg', 'fps', 'picks']);
+  assert.deepEqual(Object.keys(old.poses[0]), ['key', 'pandId', 'out', 'query', 'lngLat', 'headingDeg', 'fps', 'picks']);
   const r10 = jobFor({ ...base, rule10: parseRule10(['--rule10']) }, [prep]);
   assert.equal(r10.rule10!.dpr, 2); assert.equal(r10.rule10!.likenessQuery, 'trees3d=0'); assert.equal(r10.rule10!.asPlayed.length, 1);
 });

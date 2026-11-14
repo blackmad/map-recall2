@@ -46,6 +46,12 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": "2026-11-13"
   }
  },
  "schemaLimits": [
@@ -57,5 +63,15 @@
    "component": "relief",
    "what": "a row of small white stone blocks along each floor line over the windows"
   }
- ]
+ ],
+ "facts": {
+  "wallExposure": {
+   "off": "#353531",
+   "floor": "#31302e",
+   "gain": "#484745",
+   "norm": "#444341",
+   "normfloor": "#444341",
+   "g": 1.569
+  }
+ }
 }

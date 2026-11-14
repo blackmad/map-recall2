@@ -19,6 +19,22 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168124.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168124.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "wallExposure": {
+   "off": "#443522",
+   "floor": "#0f0c08",
+   "gain": "#423424",
+   "norm": "#443522",
+   "normfloor": "#0f0c08",
+   "g": 1.418
   }
  }
 }

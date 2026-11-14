@@ -72,11 +72,25 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179814.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179814.jpg",
+   "at": "2026-11-13"
   }
  },
  "facts": {
   "pui": "shop",
-  "groundKind": "shop"
+  "groundKind": "shop",
+  "wallExposure": {
+   "off": "#493f37",
+   "floor": "#493f37",
+   "gain": "#695b50",
+   "norm": "#433932",
+   "normfloor": "#433932",
+   "g": 0.867
+  }
  },
  "schemaLimits": [
   {

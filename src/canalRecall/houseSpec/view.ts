@@ -10,6 +10,7 @@
  *   shop / shopHex      fronts/0/shopfront (or facts.pui): a shop ground storey or a quiet one, and the shop paint
  * A key no source stated, or only a type default stated, stays absent, so a view without them is the view before H11.
  */
+import { isWallExposureFact } from './wallExposure.ts';
 import { SWATCHES } from '../buildingRecipe/intent.ts';
 import type { HouseSpecView, SpecLook } from './decorate.ts';
 import { fieldSources } from './resolve.ts';
@@ -94,6 +95,11 @@ export function specView(read: HouseSpec): HouseSpecView {
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial as NonNullable<HouseSpecView['wallMaterial']>; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
+  // Lane WC (#384): the staged wall-exposure options ride with the wall they replace (drawn only under ?wallExposure=).
+  const exposure = spec.facts?.wallExposure;
+  if (wall && isWallExposureFact(exposure) && exposure.off.toLowerCase() === wall.toLowerCase()) v.wallExposure = { off: exposure.off, floor: exposure.floor, gain: exposure.gain, norm: exposure.norm, normfloor: exposure.normfloor };
+  // A stone-faced front (drawn as stucco; drawableDesign) keeps that it is stone for the smooth-finish flag (?wallFinish=1).
+  if (read.design.palette?.wallMaterial === 'stone') v.wallStone = true;
   if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
   // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
   // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
