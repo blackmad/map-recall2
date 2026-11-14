@@ -4,15 +4,21 @@
 
 Feedback 748b1a8f asked whether on-screen loads come first. They did not: with the camera detached the complete city planned from the view box, but chunk builds, world cells and baked coarse ranked from the rider, and running work was cancelled only once unwanted. `engine/viewPriority.ts` casts a 32×20 screen grid onto the ground and ranks boxes by screen share (off-screen by distance); chunk builds, world cells (`CellQueue.rerank`), complete-city tiles and baked coarse follow it while detached (`?viewPriority`, default on only while detached; `=all` for A/B). Rider z14 tiles within 300 m are evicted last. Measured (Chrome Metal, dpr 2, 150 ms / 30 Mbps, local server; `scripts/detached-load.mjs`): no fill-time change beyond noise; queues stayed 3–4 jobs and fill was set by fetch latency and 400–650 ms z14 coarse builds. About 40 % of drag build time goes to chunks off screen at pan end.
 
-
 ## Shores split at bridge openings (2026-11-14)
 
 Feedback 7be6c55a pointed at the Hendrix café front (handed to the retail lane); the same frame showed the Bilderdijkgracht end quay at the De Clercqstraat bridge with no wall or coping and sky through a jagged edge. `water.ts` `openUnderFootbridges` dropped any shore segment whose midpoint fell inside a bridge opening (the 23 m end quay vs a 10 m opening) and kept whole those whose midpoint fell outside. `splitAtRings` now cuts shores at the opening edge (`openingShores`, default on): 382 joins with > 0.5 m of wrong wall before, 0 after (941 m missing, 1,115 m standing in openings). Pinned `bilderdijkgracht-declercq-quay` in check:ground-spots.
 
-
 ## Far windows survive the depth fade (2026-11-14)
 
 Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.
+
+## rideamsterdam.nl was a day stale: Pages `_headers` and regex rules (2026-11-14)
+
+Lane LS (9b37c1c26, 01:43) added a firebase.json `regex` header (immutable hashed script names). `build-pages-site.mjs` read every header's `source`, crashed, and every Cloudflare Pages deploy failed for ~13 h while Firebase deployed fine, so rideamsterdam.nl served the night-before build. 3b4658aa5 expands a regex rule into one `_headers` block per built file it matches; deploy 43603948714 verified both sites at 3b4658a. Watch the Cloudflare step, not only the Firebase one, when a deploy run goes red.
+
+## house:publish: the recipe route is opt-in (2026-11-14)
+
+`withRoute` used to make any spec with fronts, roof and palette a `recipe`, so D1 batch 1 asked for 72 per-house GLBs and rewrote three installed houses' intent.json before it failed. Now a pand is `recipe` only when it opted in: a block-face house, an installed `houses/*/intent.json`, or a source spec that says `route: 'recipe'` (the Haarlemmer belt scripts write it). Publish writes only `houses/spec-<pand>` and protects every other installed intent; `--dry-run` prints the recipe count (0 for a D1 batch). Re-built extract byte-identical (1,560 recipe / 5,847 generic records). Lane publish-generic, b298357bf; `recipeOptIn.test.ts` in test:house-spec.
 
 ## 2026-11-14 (evening) — First D1 street publish, venues round 3, Noord round 2
 

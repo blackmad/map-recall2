@@ -9,7 +9,7 @@ import { registerFactsFromExtract } from '../../src/canalRecall/facade/registerR
 import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/canalRecall/houseSpec/adapters.ts';
 import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
-import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
+import { recipeOptIn, toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
@@ -69,6 +69,7 @@ if (args.includes('--publish')) {
 
 // --- 1. every source, as partial specs per pand ------------------------------------------------------------------
 const parts = new Map<string, HouseSpec[]>();
+const installedPands = new Set<string>(); // pands drawn by a block face or an installed recipe house: they keep the recipe route
 const add = (s: HouseSpec | null) => { if (s) { const list = parts.get(s.pandId) ?? []; list.push(s); parts.set(s.pandId, list); } };
 const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[], eavesNotFront: 0, fields: 0, fieldsTemplate: 0 };
 
@@ -94,7 +95,7 @@ for (const dir of readdirSync(FACES).sort()) {
   let face;
   try { face = validateBlockFace(json(file)); } catch (e) { counts.facesInvalid.push(`${dir}: ${(e as Error).message.split('\n')[1] ?? (e as Error).message}`); continue; }
   counts.faces++;
-  for (const h of face.houses) { add(fromBlockFace(face, h.pandId, rel(path.join(FACES, dir, 'strip.json')))); counts.faceHouses++; }
+  for (const h of face.houses) { const s = fromBlockFace(face, h.pandId, rel(path.join(FACES, dir, 'strip.json'))); add(s); if (s) installedPands.add(s.pandId); counts.faceHouses++; }
 }
 
 const HOUSES = path.join(ROOT, 'scripts/building-recipes/houses');
@@ -103,7 +104,7 @@ for (const dir of readdirSync(HOUSES).sort()) {
   if (!existsSync(file)) continue;
   const intent = json(file);
   const spec = fromRecipeIntent(intent, rel(file));
-  if (spec) { add(spec); counts.recipeIntents++; } else counts.recipeOther++;
+  if (spec) { add(spec); installedPands.add(spec.pandId); counts.recipeIntents++; } else counts.recipeOther++;
 }
 
 const handFiles = new Map<string, string>();
@@ -116,7 +117,9 @@ const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) 
 // H11 design fields), shared with house:preview --spec.
 const viewOf = (spec: HouseSpec): HouseSpecView => specView(spec);
 const resolved = new Map<string, HouseSpec>();
-for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
+// The recipe route is opt-in (toRecipe.ts withRoute): a pand drawn by an installed house or a block face, or a spec that says
+// route recipe, keeps it; every other complete spec (the describer's, the register's) is generic and gets no per-house GLB.
+for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list), recipeOptIn(list, installedPands.has(pand))));
 
 const emitDir = argValue('--emit-intents');
 if (emitDir) {

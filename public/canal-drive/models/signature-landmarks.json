@@ -101861,7 +101861,7 @@
         "bronze": "#4a3a2e",
         "pink": "#35322f",
         "ochre": "#ecebe6",
-        "copper": "#2c3b22"
+        "copper": "#3a4e2d"
       },
       "attribution": {
         "title": "Skatecafe",
@@ -101927,7 +101927,7 @@
       "bounds": {
         "min": [
           -15.738512992858887,
-          -0.2494715303182602,
+          -0.11785167455673218,
           -19.422977447509766
         ],
         "max": [
@@ -101948,24 +101948,24 @@
       },
       "extent": {
         "widthMetres": 40.79697799682617,
-        "heightMetres": 10.149471148848534,
+        "heightMetres": 10.017851293087006,
         "depthMetres": 29.66222095489502,
         "depthCoverage": 2.3825077072204834
       },
-      "triangles": 8152,
-      "bytes": 157492,
+      "triangles": 9156,
+      "bytes": 174736,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7bb9c2f39b1d92cb",
+        "sourceHash": "364b001ec96ba141",
         "buildVersion": 2,
-        "bytes": 90264,
-        "triangles": 3207
+        "bytes": 76428,
+        "triangles": 2474
       },
       "lod2": {
-        "sourceHash": "7bb9c2f39b1d92cb",
+        "sourceHash": "364b001ec96ba141",
         "buildVersion": 6,
-        "bytes": 9520,
-        "triangles": 162
+        "bytes": 10340,
+        "triangles": 181
       }
     },
     "garage-noord": {
@@ -102804,7 +102804,8 @@
         "buildVersion": 6,
         "bytes": 9316,
         "triangles": 221
-      }
+      },
+      "held": true
     },
     "q-factory": {
       "id": "q-factory",

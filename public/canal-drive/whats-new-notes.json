@@ -24,6 +24,22 @@
     },
     {
       "date": "2026-11-14",
+      "title": "Skatecafé ivy on the wall, not a green blob",
+      "text": "The ivy beside the Skatecafé's chalet front was a tall green shape standing off the wall. It now grows flat on the brick where the panorama shows it: over the last saw-tooth gable and the link to the chalet, with a ragged top edge and bare brick below.",
+      "where": [
+        4.9255,
+        52.3854
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-noord-hamerkanaal/round3/skatecafe/rule10-photo-before-after.jpg",
+          "alt": "Skatecafé front: panorama, the ivy blob before, the wall ivy after",
+          "caption": "Photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Windows stay on in the distance",
       "text": "Blocks across the water and a few streets ahead used to fade to plain walls about 250 m out. They now keep their window grids until the windows are too small to draw cleanly; the distance haze is unchanged. Desktop only for now (phones can try it with ?farWindows=1).",
       "where": [

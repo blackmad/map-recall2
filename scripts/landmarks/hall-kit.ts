@@ -16,7 +16,7 @@ import {TriSink} from './venue-kit';
  *  - `scallopedRake`: a bargeboard along a gable rake whose lower edge is a row of half-round scallops.
  *  - `spokeLamp`: a pole carrying a wheel of drooping radial spokes with a lamp on every tip.
  *  - `tagBand`, `tagScribble`: flat tag panels (irregular fill, thin outline ring, letter strokes) and bare scribbled tags.
- *  - `ivyMass`: a lumpy climbing-plant mass with a darker underside.
+ *  - `wallIvy`, `raggedOutline`: ivy hugging a wall: ragged leaf sheet with brick gaps and shallow leaf clumps.
  *  - `strokeTiles`: square signboard tiles carrying horizontal/vertical stroke marks, standing in for CJK characters
  *    (the glyph kit has Latin capitals and lower case only).
  */
@@ -266,7 +266,7 @@ export function tagScribble(decal: Decal, f: Frame, t: number, y: number, w: num
   }
 }
 
-/** Seeded bump centres (t, y, r) inside a polygon outline (local coords), for `ivyMass`. */
+/** Seeded bump centres (t, y, r) inside a polygon outline (local coords), for `wallIvy`. */
 export function ivyBumps(outline: [number, number][], count: number, seed: number, r0: number, r1: number): [number, number, number][] {
   const rnd = seeded(seed), xs = outline.map(p => p[0]), ys = outline.map(p => p[1]);
   const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)], out: [number, number, number][] = [];
@@ -278,17 +278,35 @@ export function ivyBumps(outline: [number, number][], count: number, seed: numbe
   return out;
 }
 /**
- * Climbing plant mass on a wall: a thin backing sheet in the outline, lumpy bumps (squashed icosahedra) standing out of it,
- * and the same bumps a little lower and deeper in `under` so the mass has a darker underside. Cheap: 20 triangles a bump.
+ * Ragged version of a polygon (local coords): every edge cut into pieces of about `step` m and the new points pushed in
+ * or out by up to `amp` (seeded), so a plant's edge reads as leaf clumps rather than a cut sheet. Corners are kept.
  */
-export function ivyMass(b: BuildingTools, f: Frame, t: number, y: number, outline: [number, number][], o: {c: Col; under: Col; bumps: number; seed: number; depth?: number; out?: number; r?: [number, number]}) {
-  const out = o.out ?? 0.02, depth = o.depth ?? 0.45, [r0, r1] = o.r ?? [0.45, 0.9], rnd = seeded(o.seed + 1);
-  poly(b, f, t, y, outline, 0.12, o.c, out);
-  for (const [bx, by, r] of ivyBumps(outline, o.bumps, o.seed, r0, r1)) {
-    // each lump squashed and turned its own way so the mass does not read as a pile of identical stones
-    const g = new T.IcosahedronGeometry(1, 0).rotateZ(rnd() * Math.PI).scale(r * (0.9 + rnd() * 0.5), r * (0.6 + rnd() * 0.3), depth * (0.6 + rnd() * 0.5));
-    put(b, f, g, t + bx, y + by, out + 0.1, o.c);
-    put(b, f, new T.IcosahedronGeometry(1, 0).scale(r * 0.9, r * 0.6, depth * 0.85), t + bx, y + by - r * 0.4, out + 0.06, o.under);
+export function raggedOutline(pts: [number, number][], step: number, amp: number, seed: number): [number, number][] {
+  const rnd = seeded(seed), out: [number, number][] = [];
+  for (let i = 0; i < pts.length; i++) {
+    const [x0, y0] = pts[i], [x1, y1] = pts[(i + 1) % pts.length], L = Math.hypot(x1 - x0, y1 - y0), n = Math.max(1, Math.round(L / step));
+    const nx = (y1 - y0) / (L || 1), ny = -(x1 - x0) / (L || 1);
+    out.push([x0, y0]);
+    for (let k = 1; k < n; k++) { const f = k / n, e = (rnd() - 0.5) * 2 * amp; out.push([x0 + (x1 - x0) * f + nx * e, y0 + (y1 - y0) * f + ny * e]); }
+  }
+  return out;
+}
+/**
+ * Ivy hugging a wall (Skatecafe round 3: the lumpy mass read as "a big green blob"). A ragged leaf sheet in `base` (the
+ * shadowed depth of the leaves) standing `out + 0.06` proud, with holes where brick shows, and small leaf clumps in `leaf`
+ * no more than `proud` off the wall, kept inside the outline and out of the holes. No free-standing volume. Outline and
+ * holes are in wall coordinates (t, y) of frame f.
+ */
+export function wallIvy(b: BuildingTools, f: Frame, outline: [number, number][], holes: [number, number][][], o: {base: Col; leaf: Col; clumps: number; seed: number; out?: number; proud?: number}) {
+  const out = o.out ?? 0.04, proud = o.proud ?? 0.22, ragged = raggedOutline(outline, 0.35, 0.16, o.seed);
+  const shape = new T.Shape(ragged.map(([x, y]) => new T.Vector2(x, y)));
+  for (const h of holes) shape.holes.push(new T.Path(raggedOutline(h, 0.15, 0.05, o.seed + 1).map(([x, y]) => new T.Vector2(x, y)).reverse()));
+  put(b, f, new T.ExtrudeGeometry(shape, {depth: 0.06 + 0.12, bevelEnabled: false}), 0, 0, out - 0.12, o.base);
+  const inHole = (x: number, y: number) => holes.some(h => { const xs = h.map(p => p[0]), ys = h.map(p => p[1]); return x > Math.min(...xs) - 0.3 && x < Math.max(...xs) + 0.3 && y > Math.min(...ys) - 0.3 && y < Math.max(...ys) + 0.3; });
+  const rnd = seeded(o.seed + 2), half = (proud - out) / 2;
+  for (const [x, y, r] of ivyBumps(outline, o.clumps * 2, o.seed, 0.12, 0.26).filter(([x, y]) => !inHole(x, y)).slice(0, o.clumps)) {
+    const g = new T.IcosahedronGeometry(1, 0).rotateZ(rnd() * Math.PI).scale(r * (0.9 + rnd() * 0.4), r * (0.6 + rnd() * 0.3), half);
+    put(b, f, g, x, y, out + half, o.leaf);
   }
 }
 

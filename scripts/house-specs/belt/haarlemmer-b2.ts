@@ -158,7 +158,7 @@ if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 if (import.meta.url === `file://${process.argv[1]}`) {
   for (const { pandId, face } of batch2Pands()) {
     if (!existsSync(`scripts/house-specs/belt/b2-runs/${face}/intent.json`)) { console.error(pandId, 'missing', face); process.exitCode = 1; continue; }
-    const spec = withRoute(build(pandId, face));
+    const spec = withRoute({ ...build(pandId, face), route: 'recipe' });
     if (process.argv.includes('--list')) { console.log(pandId, spec.address, face); continue; }
     const problems = specProblems(spec);
     if (problems.length) { console.error(pandId, problems); process.exitCode = 1; }

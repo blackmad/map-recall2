@@ -48,5 +48,15 @@ export function toRecipeReport(spec: HouseSpec): { intent: CanalHouseIntent | nu
 /** The canal-house intent a complete spec describes, or null when the spec is incomplete or invalid as an intent. */
 export const toRecipe = (spec: HouseSpec): CanalHouseIntent | null => toRecipeReport(spec).intent;
 
-/** The spec with its derived route (`recipe` iff toRecipe succeeds). */
-export const withRoute = (spec: HouseSpec): HouseSpec => ({ ...spec, route: toRecipe(spec) ? 'recipe' : 'generic' });
+/**
+ * The spec with its route. The recipe route is OPT-IN (project rule 2026-11-13: ordinary houses get no per-house GLB;
+ * described houses draw through the generic mesher): `recipe` only when the caller says the pand asked for it
+ * (`optIn`, default: the spec itself says `route: 'recipe'`) AND toRecipe succeeds; otherwise `generic`, even when the
+ * spec is a complete, valid intent. Belt / bespoke lanes opt in by writing `route: 'recipe'`; an installed house or a
+ * block face opts its pand in through build-house-specs (`recipeOptIn`).
+ */
+export const withRoute = (spec: HouseSpec, optIn: boolean = spec.route === 'recipe'): HouseSpec => ({ ...spec, route: optIn && toRecipe(spec) ? 'recipe' : 'generic' });
+
+/** True when any part of a pand's partial specs asked for the recipe route, or the pand is already drawn by an installed
+ *  recipe source (`installed`: a houses/<id>/intent.json or a block-face house). */
+export const recipeOptIn = (parts: readonly HouseSpec[], installed: boolean): boolean => installed || parts.some(p => p.route === 'recipe');

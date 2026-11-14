@@ -103,9 +103,11 @@ test('toRecipe round-trips a complete spec to an intent validateIntent accepts',
   assert.equal(back.pandId, intent.pandId);
   assert.equal(sources[0].kind, 'street-panorama');
   assert.equal(sources[0].capturedAt, intent.sources[0].capturedAt);
-  assert.equal(withRoute(spec).route, 'recipe');
+  assert.equal(withRoute(spec).route, 'generic', 'recipe is opt-in: a complete spec stays generic unless it asks');
+  assert.equal(withRoute({ ...spec, route: 'recipe' }).route, 'recipe');
+  assert.equal(withRoute(spec, true).route, 'recipe');
   // Incomplete: a register-only spec is the generic route.
-  assert.equal(withRoute(part({ 'fronts/0/gable': 'step' }, prov('monument-text', 0.8, null, 'rce:3856'))).route, 'generic');
+  assert.equal(withRoute(part({ 'fronts/0/gable': 'step' }, prov('monument-text', 0.8, null, 'rce:3856')), true).route, 'generic', 'opt-in cannot make an incomplete spec a recipe');
 });
 
 test('spec-level readings (stone, pitched-eaves, pointed/mixed heads): stored as read, drawn as the nearest intent value, absent = byte-identical', () => {

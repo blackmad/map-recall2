@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {blobOutline, glasshouseRidges, graffitiLayout, ivyBumps, sawtoothOutline, scallopOutline, seeded, spokeTips, strokePattern, tagOutline, tagStrokes} from './hall-kit';
+import {blobOutline, glasshouseRidges, graffitiLayout, ivyBumps, raggedOutline, sawtoothOutline, scallopOutline, seeded, spokeTips, strokePattern, tagOutline, tagStrokes} from './hall-kit';
 
 test('sawtoothOutline walks valley, apex, valley over the eaves', () => {
   const pts = sawtoothOutline({valleys: [0, 4, 8], apexes: [3, 7], eaves: 6, apex: 8});
@@ -61,4 +61,13 @@ test('ivyBumps fall inside the outline and are seeded', () => {
   assert.equal(b.length, 10);
   for (const [x, y, r] of b) { assert.ok(y >= 0 && y <= 4 && x >= y / 2 - 1e-9 && x <= 4 - y / 2 + 1e-9); assert.ok(r >= 0.4 && r <= 0.8); }
   assert.deepEqual(b, ivyBumps(tri, 10, 3, 0.4, 0.8));
+});
+
+test('raggedOutline keeps the corners, subdivides the edges and stays within amp of them', () => {
+  const sq: [number, number][] = [[0, 0], [2, 0], [2, 2], [0, 2]];
+  const r = raggedOutline(sq, 0.5, 0.1, 4);
+  assert.equal(r.length, 16);
+  for (const c of sq) assert.ok(r.some(p => p[0] === c[0] && p[1] === c[1]));
+  for (const [x, y] of r) assert.ok(x >= -0.1 - 1e-9 && x <= 2.1 + 1e-9 && y >= -0.1 - 1e-9 && y <= 2.1 + 1e-9);
+  assert.deepEqual(r, raggedOutline(sq, 0.5, 0.1, 4));
 });

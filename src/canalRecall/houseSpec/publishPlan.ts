@@ -158,6 +158,22 @@ export function withHold(held: { held?: Record<string, string>; [k: string]: unk
   return { ...held, held: { ...(held.held ?? {}), [id]: `staged spec ${date}` } };
 }
 
+/**
+ * Where a batch's recipe-route intents may be written. house:publish creates and refreshes only `spec-<pand>` houses (the
+ * directories it made itself); a pand already drawn by any other installed house (cw-heren-179665, bilder-079721, ...)
+ * keeps that house's intent.json untouched: it is protected, listed, and its edits belong to the lane that owns the house.
+ * `existing` maps pand id -> the house directory name that already carries it.
+ */
+export function recipeInstallPlan(pands: readonly string[], existing: ReadonlyMap<string, string>): { install: Array<{ pand: string; id: string }>; protectedHouses: Array<{ pand: string; id: string }> } {
+  const install: Array<{ pand: string; id: string }> = [], protectedHouses: Array<{ pand: string; id: string }> = [];
+  for (const pand of pands) {
+    const id = existing.get(pand);
+    if (id === undefined || id === `spec-${pand}`) install.push({ pand, id: `spec-${pand}` });
+    else protectedHouses.push({ pand, id });
+  }
+  return { install, protectedHouses };
+}
+
 type IntentLike = { id?: string; sources?: Array<{ id: string }>; [k: string]: unknown };
 /** The intent for a recipe-route spec that edits an installed house: the spec's complete intent (toRecipe) under the
  *  house's own id, with the house's earlier sources kept in front of the spec's new ones (deduplicated by source id). */

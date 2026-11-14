@@ -7,7 +7,7 @@ import { cpSync, existsSync, mkdirSync, openSync, closeSync, readdirSync, readFi
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
-import { allowIdsFor, BATCH_BUDGET_MS, blockFaceFactsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, classifyExtras, diffTiles, formatExtraTable, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type ClassifiedExtra, type PandDiff, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
+import { allowIdsFor, recipeInstallPlan, BATCH_BUDGET_MS, blockFaceFactsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, classifyExtras, diffTiles, formatExtraTable, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type ClassifiedExtra, type PandDiff, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
 import { describeStaged, parseStaged, type StagedSpec } from '../../src/canalRecall/houseSpec/staged.ts';
 import { pandIdsIn } from '../../src/canalRecall/houseSpec/allow.ts';
 import { changedCoversTiles } from '../../src/canalRecall/world/tileCovers.ts';
@@ -137,6 +137,13 @@ function mainTile(tile: string, cache: Map<string, TileFile | null>): TileFile |
   return out;
 }
 
+/** pand id -> the houses/<id> directory whose intent.json already carries it. */
+function installedHouses(): Map<string, string> {
+  const byPand = new Map<string, string>();
+  for (const d of readdirSync(HOUSES)) { const f = path.join(HOUSES, d, 'intent.json'); if (existsSync(f)) { const j = readJson(f); if (j.pandId && j.kind === 'canal-house') byPand.set(String(j.pandId), d); } }
+  return byPand;
+}
+
 /** The mention index the golden allow-list needs: house dirs, block faces and block-kit specs -> the pand ids in them. */
 function mentions(): Map<string, string[]> {
   const out = new Map<string, string[]>();
@@ -253,6 +260,8 @@ async function main(args: string[]): Promise<number> {
   if (merged.noop.length) console.log(`note: ${merged.noop.length} staged specs change nothing in the extract: ${merged.noop.join(', ')}`);
   const recipePands = merged.staged.filter(s => merged.diff.pands.some(d => d.pand === s.pandId) && existsSync(path.join(batchDir, 'intents', `${s.pandId}.json`))).map(s => s.pandId);
 
+  const recipePlan = recipeInstallPlan(recipePands, installedHouses());
+  if (recipePlan.protectedHouses.length) console.log(`note: ${recipePlan.protectedHouses.length} recipe-route specs name pands an installed house already draws; their intent.json is never rewritten by house:publish: ${recipePlan.protectedHouses.map(h => `${h.pand} (${h.id})`).join(', ')}`);
   const commands = [
     `npm run house:publish -- --batch ${batch}${allowExtra.size ? ` --allow-extra ${[...allowExtra].join(',')}` : ''}`,
     ...(index ? [] : ['npm run world:compile -- --shell   # once, to create the staging index']),
@@ -269,7 +278,7 @@ async function main(args: string[]): Promise<number> {
     console.log(`\nscratch output: ${rel(scratch)} (delete it when done)`);
   }
   if (dry) {
-    console.log(`\n--dry-run: nothing published. Recipe-route specs in this batch: ${recipePands.length}.\nA real run: ${commands.join('\n          ')}`);
+    console.log(`\n--dry-run: nothing published. Recipe-route specs in this batch: ${recipePands.length} (${recipePlan.protectedHouses.length} would edit an installed house and are refused; recipe is opt-in, a D1 batch expects 0).\nA real run: ${commands.join('\n          ')}`);
     return 0;
   }
 
@@ -287,11 +296,10 @@ async function main(args: string[]): Promise<number> {
   const held: string[] = [];
   const installed: string[] = [];
   await run.step('recipe', () => {
-    if (!recipePands.length) return { value: null, skipped: true, note: 'no spec has route recipe' };
-    const byPand = new Map<string, string>();
-    for (const d of readdirSync(HOUSES)) { const f = path.join(HOUSES, d, 'intent.json'); if (existsSync(f)) { const j = readJson(f); if (j.pandId && j.kind === 'canal-house') byPand.set(String(j.pandId), d); } }
+    if (!recipePlan.install.length) return { value: null, skipped: true, note: recipePands.length ? `${recipePands.length} recipe specs, all on installed houses (protected, intent.json untouched)` : 'no spec has route recipe' };
+    const byPand = installedHouses();
     const ids: string[] = [];
-    for (const pand of recipePands) {
+    for (const { pand } of recipePlan.install) {
       const generated = readJson(path.join(batchDir, 'intents', `${pand}.json`));
       const id = byPand.get(pand) ?? `spec-${pand}`, file = path.join(HOUSES, id, 'intent.json');
       mkdirSync(path.dirname(file), { recursive: true });
@@ -310,7 +318,7 @@ async function main(args: string[]): Promise<number> {
     for (const id of ids) {
       const r = run.sh('recipe', tsx('scripts/building-recipes/install.ts', `--house=${id}`));
       if (r.code === 0) { installed.push(id); continue; }
-      if (byPand.has(recipePands[ids.indexOf(id)])) {
+      if (byPand.has(recipePlan.install[ids.indexOf(id)].pand)) {
         // A reinstall that fails its gates keeps the old GLB; the hold makes that explicit for check:stale-installs.
         writeFileSync(HELD, JSON.stringify(withHold(existsSync(HELD) ? readJson(HELD) : {}, id, new Date().toISOString().slice(0, 10)), null, 1) + '\n');
         held.push(id);
