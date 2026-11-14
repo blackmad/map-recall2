@@ -1,0 +1,82 @@
+{
+ "permits": 4317,
+ "terraces": 2169,
+ "units": 32382,
+ "unitsByModel": {
+  "set-restaurant": 7780,
+  "screen": 669,
+  "parasol": 5563,
+  "set-bistro": 6790,
+  "set-wall": 939,
+  "set-modern": 7240,
+  "set-brown": 2590,
+  "planter": 460,
+  "set-bar": 351
+ },
+ "rejected": {
+  "no terrace geometry": 1617,
+  "status none": 450,
+  "expired": 67,
+  "terrace polygons implausible (far from the premises or over 150 m across)": 10,
+  "status Buiten behandeling": 3,
+  "terrace polygon under 0.5 m2": 1
+ },
+ "byCategory": {
+  "Restaurant": 1026,
+  "Café": 565,
+  "Alcoholvrij": 189,
+  "Hotel": 33,
+  "Eethuis": 43,
+  "Onbekend": 100,
+  "Fastfood": 85,
+  "Nachtzaak": 9,
+  "Additionele horeca": 55,
+  "Café met zaalverhuur": 6,
+  "Coffeeshop": 40,
+  "Culturele horeca": 2,
+  "Restaurant met zaalverhuur": 8,
+  "Zalenverhuur": 7,
+  "Sociëteit": 1
+ },
+ "byStyle": {
+  "restaurant": 1056,
+  "bistro": 388,
+  "modern": 494,
+  "brown": 215,
+  "bar": 16
+ },
+ "byDistrict": {
+  "Noord": 107,
+  "Zuid": 433,
+  "Centrum": 945,
+  "Nieuw-West": 103,
+  "West": 246,
+  "Oost": 251,
+  "Weesp": 20,
+  "Westpoort": 7,
+  "Zuidoost": 56,
+  "outside": 1
+ },
+ "centrum": 945,
+ "areaM2": {
+  "total": 127781,
+  "p10": 3.7,
+  "p50": 19.8,
+  "p90": 133,
+  "max": 5053.9,
+  "histogram": {
+   "40-80": 286,
+   "20-40": 419,
+   ">=160": 174,
+   "<5": 314,
+   "80-160": 194,
+   "10-20": 444,
+   "5-10": 338
+  }
+ },
+ "strayPolygonsDropped": 21,
+ "terracesWithoutTableUnits": 20,
+ "singleUnitFallback": 272,
+ "unitsOnParking": 245,
+ "temporaryTerraceRows": 0
+}
