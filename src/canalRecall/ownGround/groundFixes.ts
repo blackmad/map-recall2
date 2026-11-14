@@ -26,6 +26,12 @@ export const GROUND_FIXES = [
   'pleinRails',
   /** Lane fb-bridges 2026-11-13: a way deck over an end hole runs on to the top of the bank's climb (wayDecks.ts HOLE_CLIMB_GRADE), the Lelylaan. */
   'holeClimb',
+  /** Lane F1b 2026-11-14: a median gap inside a deck's half-width does not end the survey edge walk (bridgeGaps.ts surveyDeckEdges `median`), Ringweg-Noord. */
+  'medianEdges',
+  /** Lane F1b 2026-11-14: survey caps smoothed along the deck, no railing step at a pier bay or a short capped run (bridgeGaps.ts surveyDeckCaps `smooth`). */
+  'capSmooth',
+  /** Lane F1b 2026-11-14: streets under a way deck's hole ranges drape on the relief, not the deck's lift (surface.ts streetHeight), the Lelylaan cycle path. */
+  'holeStreets',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

@@ -2648,3 +2648,18 @@ test('groundReachFlag: a query without the key keeps the default; 0 and a distan
     g.location = { search: '?groundReach=x' }; assert.equal(groundReachFlag(), REACH_M);
   } finally { g.location = saved; }
 });
+
+test('streets under a way deck\'s hole range drape on the relief (lane F1b, Lelylaan 07ec0473): streetHeight', async () => {
+  const n = 41, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(4);
+  for (let i = 0; i < n; i++) { x[i] = i; s[i] = i; }
+  const profile = { id: 'OSM1', name: 'w', family: 'way-deck', x, y, s, h, halfWidth: hw, water: [25, 35] as [number, number], deck: [5, 38] as [number, number], bbox: [0, -4, 40, 4] as [number, number, number, number], under: [[5, 25]] as [number, number][] };
+  const surface = new GroundSurface(flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]), IDENTITY, 1);
+  surface.addDeck(profile as never);
+  const d = surface.decks[0];
+  for (let i = 0; i < n; i++) d.z[i] = 3;
+  assert.ok(surface.height(15, 0) > 2.5, 'the riding surface is the deck over the hole');
+  assert.equal(surface.streetHeight(15, 0), 0, 'a street under it: the relief');
+  assert.equal(surface.streetHeight(15, 4.3), 0, 'no lateral blend up to the deck edge');
+  assert.equal(surface.streetHeight(30, 0), surface.height(30, 0), 'over the water: as before');
+  assert.equal(surface.streetDeckWeight(15, 0), 0);
+});

@@ -268,7 +268,23 @@ export class GroundSurface {
   }
 
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M); a tunnel cut's floor in its strip. */
-  height = (x: number, y: number): number => {
+  height = (x: number, y: number): number => this.lifted(x, y, false);
+
+  /**
+   * The riding surface for a street passing under a way deck (lane F1b 2026-11-14, Lelylaan 07ec0473): as `height`,
+   * except that a deck lifts nothing at a point whose station lies in one of its `under` ranges (wayDecks.ts HOLE_M: the
+   * hole past the water where a street or cycle path runs beneath the deck). The survey's ground polygons there drape on
+   * the relief instead of climbing to the deck's level at its edge in torn sheets.
+   */
+  streetHeight = (x: number, y: number): number => this.lifted(x, y, true);
+
+  /** Is the deck's station `s` inside one of its hole ranges (DeckProfile.under)? */
+  static inUnder(deck: DeckSurface, s: number): boolean {
+    const u = deck.profile.under;
+    return !!u && u.some(([a, b]) => s >= a && s <= b);
+  }
+
+  private lifted(x: number, y: number, skipUnder: boolean): number {
     const g = this.ground(x, y);
     const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
     // In a tunnel cut's strip the floor, unless a deck crosses over it (a street bridged over a ramp keeps its deck).
@@ -280,6 +296,7 @@ export class GroundSurface {
       if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.d === Infinity) continue;
+      if (skipUnder && GroundSurface.inUnder(deck, at.s)) continue;
       const w = 1 - smoothstep((at.d - at.halfWidth) / DECK_BLEND_M);
       if (w <= 0) continue;
       // The ease toward each deck end uses this point's own relief, so the deck
@@ -291,14 +308,19 @@ export class GroundSurface {
       z = Math.max(z, g + w * (top - g));
     }
     return z;
-  };
+  }
 
   /**
    * 1 within a measured deck span's footprint (+1 m past each span end), fading to 0 over DECK_BLEND_M beside it (0 off
    * every deck). `family`: only the decks of that profile family (e.g. 'dry-way-deck', the viaducts over land a track
    * passes under: railTracks' land, groundCell.ts).
    */
-  deckWeight = (x: number, y: number, family?: string): number => {
+  deckWeight = (x: number, y: number, family?: string): number => this.weight(x, y, family, false);
+
+  /** deckWeight without the decks' hole ranges (streetHeight). */
+  streetDeckWeight = (x: number, y: number): number => this.weight(x, y, undefined, true);
+
+  private weight(x: number, y: number, family: string | undefined, skipUnder: boolean): number {
     const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
     if (!list) return 0;
     let best = 0;
@@ -308,10 +330,11 @@ export class GroundSurface {
       if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
       const at = GroundSurface.locate(deck, x, y);
       if (at.s < deck.span[0] - 1 || at.s > deck.span[1] + 1) continue;
+      if (skipUnder && GroundSurface.inUnder(deck, at.s)) continue;
       best = Math.max(best, 1 - smoothstep((at.lateral - at.halfWidth) / DECK_BLEND_M));
     }
     return best;
-  };
+  }
 
   /** Surface normal by central differences (scene metres). */
   normal(x: number, y: number, e = 0.5): [number, number, number] {

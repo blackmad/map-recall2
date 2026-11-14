@@ -146,3 +146,33 @@ test('survey caps: no cap where deck-level survey lies farther out within the ha
   assert.equal(caps.right[20], Infinity, 'the second bridge 5 m beyond the water gap: the right side keeps its half-width');
   assert.equal(caps.left[20], 3.5, 'nothing farther out on the left: capped');
 });
+
+test('survey edges cross a median inside the half-width (lane F1b, Ringweg-Noord OSM 7376770): median on, else the walk stops', () => {
+  // A bundled way deck on a 4 m median: its carriageways' deck polygons start 2 m either side of the line and reach 8 m.
+  const p = { ...deck([8.5, 8.5]), halfWidth: new Float64Array(41).fill(6) };
+  const onDeck = (x: number, y: number) => x >= 3 && x <= 17 && Math.abs(y) >= 2 && Math.abs(y) <= 8;
+  assert.equal(surveyDeckEdges(p, onDeck), null, 'before: the walk ends in the median, the sides keep the half-width');
+  const e = surveyDeckEdges(p, onDeck, undefined, 0, true)!;
+  assert.equal(e.left[20], 8.25, 'median: on to the outer carriageway\'s edge');
+  assert.equal(e.right[20], 8.25);
+  // A gap past the half-width still ends the walk (a second bridge beside this one is not this deck).
+  const far = (x: number, y: number) => x >= 3 && x <= 17 && (Math.abs(y) <= 5 || (y >= 8 && y <= 9));
+  assert.equal(surveyDeckEdges({ ...deck([10, 10]), halfWidth: new Float64Array(41).fill(5) }, far, undefined, 0, true)?.left[20] ?? 5, 5.25 > 5 + 0.3 ? 5.25 : 5);
+});
+
+test('survey caps smoothed (lane F1b): a pier bay and a short capped run go, a narrowing tapers (BRU0407, BRU0299, BRU0415)', () => {
+  const wide = { ...deck(), halfWidth: new Float64Array(41).fill(9) }, open = () => false;
+  // BRU0407: deck polygons to 4 m on the right, a 1.5 m bay to 5.5 m over s 9..10.5 (a lamp pier).
+  const bay = (x: number, y: number) => y <= 9 && y >= (x >= 9 && x <= 10.5 ? -5.5 : -4);
+  const raw = surveyDeckCaps(wide, bay, (x, y) => bay(x, y) || open())!, smooth = surveyDeckCaps(wide, bay, bay, true)!;
+  assert.equal(raw.right[20], 6, 'before: the bay steps the cap out');
+  assert.equal(smooth.right[20], 4.5, 'smoothed: the cap runs straight past the bay');
+  // BRU0299: a capped run of 2 m (s 9..11) in an uncapped deck: gone.
+  const shortRun = (x: number, y: number) => y <= 9 && y >= (x >= 9 && x <= 11 ? -4 : -9);
+  assert.equal(surveyDeckCaps(wide, shortRun, shortRun, true), null, 'a capped run shorter than CAP_SMOOTH_M: no caps');
+  // BRU0415: capped from s 10 on: the cap eases in at CAP_TAPER before it.
+  const narrowing = (x: number, y: number) => y <= 9 && y >= (x >= 10 ? -4 : -9);
+  const t = surveyDeckCaps(wide, narrowing, narrowing, true)!;
+  assert.equal(t.right[24], 4.5, 'capped');
+  for (let i = 9; i < 24; i++) assert.ok(t.right[i] - t.right[i + 1] <= 0.5 * 0.5 + 1e-9, `no step steeper than the taper at ${i}`);
+});
