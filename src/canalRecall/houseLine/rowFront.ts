@@ -95,7 +95,7 @@ export interface RowSeriesDraw {
   souterrain?: boolean;
   /** The series' one window look (threeBuildingFeatures bayLookFor): window axes per house front, the series' year and
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
-  look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean };
+  look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean; /** The record's glazing as the painter's sash. */ sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
   /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
   stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false };
   /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */

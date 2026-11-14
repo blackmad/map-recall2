@@ -34,7 +34,7 @@ export interface HeadPiece { pts: [[number, number], [number, number], [number, 
 /** Row scale (Kinkerstraat review 4: at 40 px/m keystones read as plain hoods and segmental heads as flat): a key at
  *  least 0.26 m wide and 0.36 m tall in full white, a segmental rise of at least 0.22 m. */
 export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, minRise: 0.22, keyUp: 0.07, keyDown: 0.04, keyW: 0.26, keyTopW: 0.32, keyH: 0.36, out: 0.04, keyOut: 0.07,
-  quoinLong: 0.3, quoinShort: 0.18, quoinH: 0.24, quoinGap: 0.04,
+  quoinLong: 0.42, quoinShort: 0.24, quoinH: 0.27, quoinGap: 0.06,
   springerW: 0.18, springerH: 0.2, lintel: 0.16, lintelOver: 0.12, jack: { end: 0.15, mid: 0.22, endW: 0.16, midW: 0.18 }, jackOut: 0.06, glassOut: 0.012, flatFan: 2.2 } as const;
 
 /**

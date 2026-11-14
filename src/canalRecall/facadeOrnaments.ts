@@ -223,6 +223,8 @@ export function rowWindowsOf(c: ExtraContext): RowWindow[] {
 }
 
 const CONSOLE_MIN = 0.32;
+/** Dentils: small white blocks at a close pitch under a corona (m). */
+const ROW_DENTILS = { w: 0.08, h: 0.12, pitch: 0.17, bed: 0.26 } as const;
 /** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
 function rowHeadRise(w: RowWindow): number {
   if (w.dressing === 'block-course') return ROW_DRESS.block.tall;
@@ -413,6 +415,16 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const C = ROW_DRESS.cornice, t = c.top, kind = c.rowDress?.cornice;
     if (!kind || c.roofKind === 'gable') return;
     const simple = kind === 'simple';
+    if (kind === 'frieze') {
+      // A modest light dentil band (Weteringschans s1, review 5: the cream bracketed frieze read too bright and deep):
+      // a narrow bed of the wall's own brick toned light, small white dentils under a slim corona.
+      const D = ROW_DENTILS, z0 = t - 0.2 - D.bed;
+      s.strip(c.f, 0, c.f.len, 0.02, z0, t - 0.2, shadeHex(c.wallHex, 1.25));
+      const n = Math.max(4, Math.round(c.f.len / D.pitch));
+      for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.box(c.f, Math.max(0, x - D.w / 2), Math.min(c.f.len, x + D.w / 2), 0.02, 0.12, t - 0.2 - D.h, t - 0.2, WHITE); }
+      s.box(c.f, 0, c.f.len, 0, 0.22, t - 0.2, t, WHITE, true);
+      return;
+    }
     if (!simple) {
       // The frieze sits on the top storey's head dressing, never over it (Kinkerstraat 104: the block course runs right
       // under the frieze); with no room left above the heads the frieze goes and the consoles stand on the course.
@@ -423,6 +435,11 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       // (Weteringschans 169016) they stand between the heads rather than vanish.
       const c0 = Math.min(z0 + 0.1, t - 0.4 - CONSOLE_MIN);
       for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.box(c.f, Math.max(0, x - C.console / 2), Math.min(c.f.len, x + C.console / 2), 0.03, 0.3, c0, t - 0.4, WHITE); }
+      if (kind === 'bracketed') {
+        // A dentil course under the corona between the consoles (Weteringschans 169016, 171218 under the mansards).
+        const D = ROW_DENTILS, m = Math.max(4, Math.round(c.f.len / D.pitch));
+        for (let i = 0; i < m; i++) { const x = (i + 0.5) * c.f.len / m; s.strip(c.f, Math.max(0, x - D.w / 2), Math.min(c.f.len, x + D.w / 2), 0.1, t - 0.4 - D.h, t - 0.4, WHITE); }
+      }
     }
     s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.4, t - 0.2, WHITE, true);
     s.box(c.f, 0, c.f.len, 0, simple ? 0.3 : C.out, t - 0.2, t, WHITE, true);

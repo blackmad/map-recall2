@@ -77,6 +77,10 @@ const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as 
 export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: string }>> = {
   'weteringschans-168096-171218': { riseM: 1.3, ref: 'photo sheet 2026-11-14: 0.8-1.1 m steep band seen over the cornice' },
 };
+/** The record's window kind as the painter's glazing: a T-window, a tall upper sash and a casement under a toplight all
+ *  paint large panes under a transom light (Weteringschans review 5: six-over-six grids read wrong); a casement is one
+ *  pane; a plain `sash` keeps the preset's own. */
+export const ROW_SASH: Readonly<Record<string, 'plain' | 'transom'>> = { 't-window': 'transom', 'tall-upper': 'transom', 'casement-toplight': 'transom', casement: 'plain' };
 /** One pand's series draw from its fronts (street order) and their designs. */
 export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = ''): RowSeriesDraw {
   const d0 = designs[0];
@@ -114,7 +118,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
-    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
+    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
 }
 

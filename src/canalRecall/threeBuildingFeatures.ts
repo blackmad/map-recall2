@@ -162,14 +162,16 @@ const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (spec
  *  template's pale surround; absent fields leave it as before. */
 /** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
 /** House rows: the wall band a row cornice takes over the storeys (m), by cornice kind. */
-const ROW_CORNICE_BAND_M: Record<string, number> = { simple: 0.35, bracketed: 0.7, heavy: 0.75, frieze: 0.75, 'attic-frieze': 0.9 };
-function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean } | null {
+const ROW_CORNICE_BAND_M: Record<string, number> = { simple: 0.35, bracketed: 0.7, heavy: 0.75, frieze: 0.45, 'attic-frieze': 0.9 };
+type RowSash = 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
+const ROW_SASHES: readonly RowSash[] = ['plain', 'transom', 'paired-transom', 'six-over-six'];
+function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean; sash?: RowSash } | null {
   const v = p.rowLook as { bays?: unknown; year?: unknown; heightM?: unknown } | undefined;
   if (!v || typeof v !== 'object' || !(Number.isInteger(v.bays) && (v.bays as number) > 0)) return null;
   const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x) ? x : null;
-  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM), ...(typeof (v as { seed?: unknown }).seed === 'string' ? { seed: (v as { seed: string }).seed } : {}), ...(typeof (v as { whiteFrames?: unknown }).whiteFrames === 'boolean' ? { whiteFrames: (v as { whiteFrames: boolean }).whiteFrames } : {}) };
+  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM), ...(typeof (v as { seed?: unknown }).seed === 'string' ? { seed: (v as { seed: string }).seed } : {}), ...(typeof (v as { whiteFrames?: unknown }).whiteFrames === 'boolean' ? { whiteFrames: (v as { whiteFrames: boolean }).whiteFrames } : {}), ...(ROW_SASHES.includes((v as { sash?: RowSash }).sash as RowSash) ? { sash: (v as { sash: RowSash }).sash } : {}) };
 }
-function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean } | undefined {
+function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: RowSash } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone finish takes the painted preset's smooth cells (bayLook).
   const painted = r?.finish ? { painted: true } : {};
@@ -183,7 +185,7 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
     // The series' white joinery is the light-sash trait (dark: false); unstated keeps the preset's own.
     // arch: false: the painted cells keep square heads; a stated segmental or round head draws its own glass under the
     // arch (houseLine/headGrammar.ts), so an unstated preset arch never appears (Weteringschans 168096/168042 top row).
-    return { pale: false, arch: false, ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+    return { pale: false, arch: false, ...(rl?.sash ? { sash: rl.sash } : {}), ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
   }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
