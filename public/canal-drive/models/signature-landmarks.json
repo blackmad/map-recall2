@@ -3252,7 +3252,7 @@
       "facingOffsetDegrees": 0,
       "heightMetres": 23,
       "materialOverrides": {
-        "ochre": "#ddd09c",
+        "ochre": "#d2be8e",
         "brick": "#a4533f",
         "greyBrick": "#6b5345",
         "sandstone": "#c3b08f",
@@ -3311,13 +3311,13 @@
       "bytes": 275180,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5d32162e58b46fa2",
+        "sourceHash": "511654e565d77498",
         "buildVersion": 2,
-        "bytes": 76704,
+        "bytes": 76700,
         "triangles": 3263
       },
       "lod2": {
-        "sourceHash": "5d32162e58b46fa2",
+        "sourceHash": "511654e565d77498",
         "buildVersion": 6,
         "bytes": 14960,
         "triangles": 363
@@ -102804,7 +102804,8 @@
         "buildVersion": 6,
         "bytes": 9316,
         "triangles": 221
-      }
+      },
+      "held": true
     },
     "q-factory": {
       "id": "q-factory",
