@@ -21,7 +21,7 @@ const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-an
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
 /** One pand's series draw from its fronts (street order) and their designs. */
-export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[]): RowSeriesDraw {
+export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null): RowSeriesDraw {
   const d0 = designs[0];
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
@@ -44,7 +44,15 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
+    look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null },
   };
+}
+
+/** The series' year: its earliest member's build year, so every member draws one period. */
+function seriesYear(row: RowRecord, seriesId: string): number | null {
+  const s = row.series.find(x => x.id === seriesId);
+  const years = row.members.filter(m => m.built && m.fronts.some(f => s?.fronts.includes(f))).map(m => m.built!);
+  return years.length ? Math.min(...years) : null;
 }
 
 /** Lane D's front records for a row, each joined to its series draw and its series' judged wall tone. */
@@ -58,11 +66,36 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const designs = fronts.map(f => frontDesign(row, f));
     const walls = designs.map(d => d.wall.value);
     const out: RowFrontRecord = {
-      ...rec, series: seriesDraw(fronts, designs),
+      ...rec, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
       sources: { ...rec.sources, series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
+    const joins = mansardJoins(row, rec.pandId);
+    if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     return out;
   });
+}
+
+/** Cornice lines within this step (m, street datum) read as one line: the mansard runs on across the party wall. */
+export const ROW_LINE_STEP_M = 0.2;
+/** The member's mansard runs on into its street-order neighbour's (left / right as seen) when both have a mansard and
+ *  their cornice lines agree within ROW_LINE_STEP_M: no hip at the party wall, inside a series or across two. */
+export function mansardJoins(row: RowRecord, pandId: string): { left?: true; right?: true } | null {
+  const i = row.members.findIndex(m => m.pandId === pandId);
+  if (i < 0) return null;
+  const edge = (m: RowRecord['members'][number], end: 'first' | 'last') => {
+    const id = end === 'first' ? m.fronts[0] : m.fronts[m.fronts.length - 1];
+    const f = row.fronts.find(x => x.id === id);
+    if (!f) return null;
+    const d = frontDesign(row, f);
+    return d.roofStorey.value.kind === 'mansard' && d.corniceTopM.value !== null ? d.corniceTopM.value : null;
+  };
+  const near = (a: number | null, b: number | null) => a !== null && b !== null && Math.abs(a - b) <= ROW_LINE_STEP_M + 1e-9;
+  const m = row.members[i], left = row.members[i - 1], right = row.members[i + 1];
+  const out = {
+    ...(left && near(edge(m, 'first'), edge(left, 'last')) ? { left: true as const } : {}),
+    ...(right && near(edge(m, 'last'), edge(right, 'first')) ? { right: true as const } : {}),
+  };
+  return out.left || out.right ? out : null;
 }

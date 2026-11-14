@@ -87,6 +87,8 @@ export type RoofPlan = {
   /** House rows (lane R, houseLine/rowFront.ts `rowRoof`): the series' dormers, on the street end only, each at its stated
    *  place across the front (`a`, 0..1 left to right as seen) and of its stated kind; no dice, no side dormers. */
   rowDormers?: ReadonlyArray<{ a: number; kind: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }>;
+  /** House rows: the mansard runs on into the neighbour's on the left / right as seen from the street (no hip there). */
+  rowJoins?: { left?: boolean; right?: boolean };
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -610,6 +612,8 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
   }
   s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, trim);
   if (d.hoist) box(d.pf - 0.2, f + 0.7, c - 0.08, c + 0.08, apex - 0.42, apex - 0.26);
+  // The finial on the pediment's apex (Kinkerstraat 98-104 dormers).
+  box(d.pf - 0.05, f + o, c - 0.05, c + 0.05, apex + 0.08, apex + 0.38);
 }
 
 /** A chimney stack: brick box on the roof at one end, a pale cap. `surf(u, v)` is the roof height there. */
@@ -658,23 +662,36 @@ function buildMansard(s: RoofSink, plan: RoofPlan, L: number, W: number, R: numb
 /** Mansard on all four sides: steep slate band to a flat top, dormers to the street ends, a white eaves cornice. */
 function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
   const k = Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
+  // House rows: a side the mansard runs on into its neighbour's (rowJoins, left/right as seen from the street end e,
+  // where right = e * v) has no hip, no eaves return and no overhang; a plate closes the profile at the party wall.
+  const e = plan.streetEnds?.[1] && !plan.streetEnds?.[0] ? 1 : -1;
+  const open = (sv: number) => !!plan.rowJoins && (sv === e ? !!plan.rowJoins.right : !!plan.rowJoins.left);
+  const kv = (sv: number) => (open(sv) ? 0 : k), ovv = (sv: number) => (open(sv) ? 0 : ov);
   const o: Vec2[] = [[-L / 2, -W / 2], [L / 2, -W / 2], [L / 2, W / 2], [-L / 2, W / 2]];
-  const inn: Vec2[] = [[-L / 2 + k, -W / 2 + k], [L / 2 - k, -W / 2 + k], [L / 2 - k, W / 2 - k], [-L / 2 + k, W / 2 - k]];
+  const inn: Vec2[] = [[-L / 2 + k, -W / 2 + kv(-1)], [L / 2 - k, -W / 2 + kv(-1)], [L / 2 - k, W / 2 - kv(1)], [-L / 2 + k, W / 2 - kv(1)]];
+  // Edge i: 0 runs along v = -W/2, 2 along v = +W/2 (the party-wall sides); 1 and 3 are the street and back ends.
+  const sideOf = (i: number) => (i === 0 ? -1 : i === 2 ? 1 : 0);
   for (let i = 0; i < 4; i++) {
+    if (sideOf(i) && open(sideOf(i))) continue;
     const j = (i + 1) % 4, mid: V3 = [(o[i][0] + o[j][0]) / 2, (o[i][1] + o[j][1]) / 2, 0];
     s.slopePoly([[o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [inn[j][0], inn[j][1], R], [inn[i][0], inn[i][1], R]], [mid[0], mid[1], 0.5]);
   }
+  for (const sv of [-1, 1]) if (open(sv)) {
+    const v = sv * W / 2, pts: Vec2[] = [[-L / 2, 0], [L / 2, 0], [L / 2 - k, R], [-L / 2 + k, R]];
+    for (let i = 1; i < 3; i++) s.tri([pts[0][0], v, pts[0][1]], [pts[i][0], v, pts[i][1]], [pts[i + 1][0], v, pts[i + 1][1]], s.wallUv(pts[0][0], pts[0][1]), s.wallUv(pts[i][0], pts[i][1]), s.wallUv(pts[i + 1][0], pts[i + 1][1]), 'plate', [0, sv, 0]);
+  }
   s.slopePoly(inn.map(([u, v]) => [u, v, R] as V3), [0, 0, 1]);
-  // The eaves cornice: a white ledge all round with its fascia.
-  const ex: Vec2[] = [[-L / 2 - ov, -W / 2 - ov], [L / 2 + ov, -W / 2 - ov], [L / 2 + ov, W / 2 + ov], [-L / 2 - ov, W / 2 + ov]];
+  // The eaves cornice: a white ledge all round with its fascia (not along a joined side).
+  const ex: Vec2[] = [[-L / 2 - ov, -W / 2 - ovv(-1)], [L / 2 + ov, -W / 2 - ovv(-1)], [L / 2 + ov, W / 2 + ovv(1)], [-L / 2 - ov, W / 2 + ovv(1)]];
   for (let i = 0; i < 4; i++) {
+    if (sideOf(i) && open(sideOf(i))) continue;
     const j = (i + 1) % 4, out: V3 = [(ex[i][0] + ex[j][0]) / 2, (ex[i][1] + ex[j][1]) / 2, 0];
     const part = plan.accents ? 'trim' : 'slope', hex = plan.accents ? trim : undefined;
     s.quad([o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [ex[j][0], ex[j][1], lip], [ex[i][0], ex[i][1], lip], [0, 0], [1, 0], [1, 0.25], [0, 0.25], part, [out[0] * 0.05, out[1] * 0.05, 1], hex);
     if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
   }
   if (!plan.dormers) return;
-  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.35); return; }
+  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.75); return; }
   // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
   const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
   const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
@@ -696,8 +713,9 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   const ds = plan.rowDormers ?? [];
   if (!ds.length) return;
   const ends = plan.streetEnds ? ([-1, 1] as const).filter((_, i) => plan.streetEnds![i]) : [-1] as const;
-  const dw = Math.max(0.8, Math.min(1.3, W / ds.length - 0.9));
-  for (const e of ends) for (const dm of ds) dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw, hd: 1.45, surf, kind: dm.kind, hoist: dm.hoist }, plan);
+  // Small and set back behind the cornice (pf), as the Kinkerstraat photos show them: at most 1.0 m wide, 1.15 m high.
+  const dw = Math.max(0.7, Math.min(1.0, W / ds.length - 1.1));
+  for (const e of ends) for (const dm of ds) dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw, hd: 1.15, surf, kind: dm.kind, hoist: dm.hoist }, plan);
 }
 
 /** Four slopes to a ridge (a pyramid on a square), optionally with softened corners. */
@@ -1303,7 +1321,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: hash01(`${rr.series}:tone2`), seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers };
+      tone: hash01(`${rr.series}:tone2`), seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
@@ -1316,13 +1334,14 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
 }
 
 /** House rows: a feature's `rowRoof` (houseLine/rowFront.ts), validated; null when absent or malformed. */
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']> } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']> } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown };
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown } };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (d.kind === 'pediment' || d.kind === 'gabled' || d.kind === 'plain'))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as 'pediment' | 'gabled' | 'plain', ...(d.hoist === true ? { hoist: true } : {}) }));
-  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers };
+  const joins = r.joins && typeof r.joins === 'object' ? { ...(r.joins.left === true ? { left: true } : {}), ...(r.joins.right === true ? { right: true } : {}) } : null;
+  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}) };
 }
 
 /**

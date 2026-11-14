@@ -154,6 +154,13 @@ function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; ext
 const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
+/** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
+function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null } | null {
+  const v = p.rowLook as { bays?: unknown; year?: unknown; heightM?: unknown } | undefined;
+  if (!v || typeof v !== 'object' || !(Number.isInteger(v.bays) && (v.bays as number) > 0)) return null;
+  const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x) ? x : null;
+  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM) };
+}
 function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone finish takes the painted preset's smooth cells (bayLook).
@@ -164,8 +171,8 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
   // House rows (lane R): a series member's window look is the series' (its preset seeded by the series id); a per-pand
   // spec look (a D1 reading of this building alone) does not move it.
   if (typeof p.rowFront === 'string' && typeof p.rowSeries === 'string') {
-    const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
-    return { pale: false, ...(r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+    const windowH = Number((r as { windowH?: number } | undefined)?.windowH), perFront = rowLookOf(p)?.bays;
+    return { pale: false, ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
   }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
@@ -207,9 +214,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     // House rows (lane R): a series member's bay preset is the series' (one preset per series, seeded by its id).
-    const bay = bayLookFor(typeof p.rowSeries === 'string' ? p.rowSeries : id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
-      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specLookOf(p), poolPointOf(polygons, at));
+    // The series' look (rowLook): its year, cornice line and bays per front, and no positional pool draw.
+    const rowLook = rowLookOf(p);
+    const lookYear = rowLook ? rowLook.year ?? year : year;
+    const bay = bayLookFor(typeof p.rowSeries === 'string' ? p.rowSeries : id, lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
+      lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
+      specLookOf(p), rowLook ? undefined : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);

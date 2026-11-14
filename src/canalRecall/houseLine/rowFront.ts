@@ -84,13 +84,18 @@ export interface RowSeriesDraw {
   /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
-  roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[] };
+  roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
+    /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
+    joins?: { left?: boolean; right?: boolean } };
   heads?: RowHeadsDraw[];
   /** Wall components the series states beyond the heads and cornice (bands: `floor-cornices`, `string-courses`,
    *  `speklagen`); each must be a facade component id. */
   extras?: string[];
   /** A souterrain under the stated storeys (houseSpec/storeyPlan.ts): the ground cell is the souterrain. */
   souterrain?: boolean;
+  /** The series' one window look (threeBuildingFeatures bayLookFor): window axes per house front, the series' year and
+   *  cornice line, so every member picks the same preset whatever its own height, year or position. */
+  look?: { bays: number; year?: number | null; heightM?: number | null };
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -420,11 +425,12 @@ export function rowFrontStepsOn(search?: string): boolean {
 
 /** House rows: a mansard's rise over the wall top. A stated rise wins; else 3DBAG's roof over the series line (2.2-3.6 m,
  *  the mansard storey a 3DBAG plate can hold); else the period default 3.0 m (a 3DBAG roof below the line reads nothing). */
-export const MANSARD_RISE = { min: 2.2, max: 3.6, period: 3.0 } as const;
-export function mansardRise(stated: number | undefined, bagHeight: unknown, top: number): number {
-  if (typeof stated === 'number' && Number.isFinite(stated)) return stated;
-  const over = typeof bagHeight === 'number' && Number.isFinite(bagHeight) ? bagHeight - top : NaN;
-  return over >= MANSARD_RISE.min ? Math.min(MANSARD_RISE.max, +over.toFixed(2)) : MANSARD_RISE.period;
+/** The row mansard's rise when the series states none: low, so the roof storey barely shows over the cornice (the
+ *  Kinkerstraat photos; blind review 2026-11-14 read 3.0 m and 3DBAG's per-pand rise as too tall and saw-toothed). One
+ *  rise per series: 3DBAG's per-pand roof is not read (98 stood above its neighbours on it). */
+export const MANSARD_RISE = { period: 2.2 } as const;
+export function mansardRise(stated: number | undefined): number {
+  return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }
 
 /**
@@ -445,7 +451,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
   // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
   if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
-    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(rs.riseM, p.height, top) : 0;
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(rs.riseM) : 0;
     const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
@@ -457,9 +463,9 @@ export function withRowFront<T extends Feature>(feature: T): T {
       sr2.souterrain = true;
       if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(SOUTERRAIN_FACTOR * top / (rec.storeys + SOUTERRAIN_FACTOR)).toFixed(2) });
     }
-    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...lv };
+    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id } });
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     return { ...feature, properties: props };
   }
