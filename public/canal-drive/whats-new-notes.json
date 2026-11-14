@@ -3,6 +3,37 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Bridges without stray gates and slabs",
+      "text": "The odd railing 'gates' across the tram tracks and cycle path on the Muntplein are gone. So are the grey slabs beside the Rijckerbrug and the Machineslootbrug, and the white line across the Aluminiumbrug. The A10 slip bridge at Lelylaan no longer dips into a slanted slab before it reaches the bank.",
+      "where": [
+        4.8936,
+        52.3671
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-bridges-munt-before.jpg",
+          "alt": "Muntplein with railing stubs across the tram tracks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-munt-after.jpg",
+          "alt": "Muntplein with the tracks and cycle path clear",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-rycker-before.jpg",
+          "alt": "A grey slab beside the Rijckerbrug",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-rycker-after.jpg",
+          "alt": "The Rijckerbrug's railing on the canal edge, no slab",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "De Bonte Zwaan and Hotel Boat&Co in the Houthavens",
       "text": "Two Houthavens buildings you asked about now have their own models. De Bonte Zwaan is the floating 1960s office on the Haparandadam, with its winged-swan emblem and its gangways. Kollhoff's Hotel Boat&Co on the Revaleiland has pointed zinc dormers and lettered corner pavilions. Both were built from street and water panoramas and replace the generic blocks that stood there.",
       "where": [

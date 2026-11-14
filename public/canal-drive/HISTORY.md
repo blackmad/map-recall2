@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**Bridge decks: plein railings, survey caps, bascule kerbs, way decks over end holes (2026-11-13, lane F1, cherry-picked from lane/fb-bridges-20261113).**
+- **Why.** Feedback #13 c7a55085 (Muntplein "gates"), #23 8b91c88c (Rijckerbrug slab), #41 c5313f12 (Machineslootbrug), #11 6b239d90 (Aluminiumbrug white line), 07ec0473 (Lelylaan slab).
+- **Fixes.** Each one has a flag that restores the old behaviour:
+  - plein-sized decks get no railing stubs inside traffic (`?pleinRails=0`); the survey must run 6 m past the edge, so OSM 942202252 keeps its railings;
+  - survey caps trim kit edges to the surveyed deck (`?surveyCaps=0`), except where a profile spans two bridges (BRU0420);
+  - bascule leaf kerbs run along the leaf edges;
+  - way decks over an end hole run on to the top of the bank (`?holeClimb=0`). At Lelylaan OSM 7382983 the notch went from 2.33 to 0.02 m.
+- **Pins.** `scripts/own-ground/bridge-feedback-pins.ts`, run from check-ground-spots, so they gate check:canal:rest: Muntplein rails, BRU0167, BRU0358, OSM7382983, and OSM7382981 (a ceiling of 0.75 m).
+- **City-wide.**
+  - Way decks: 24 of 1,310 change, none worse; notches over 0.5 m went from 74 to 57.
+  - Parapet inside traffic: 1,167 → 812 m.
+- **Regressions accepted, now on TODO.**
+  - Survey caps put a step in the railing on about 8 narrowing decks.
+  - The hole climb lengthens the parapets that already stood inside the lanes on motorway way decks (Ringweg-Noord OSM7376770, 13.8 → 56.6 m).
+- **Not fixed.**
+  - Lelylaan: the cycle path under the deck drapes up to the deck edge in torn sheets.
+  - a5806a8e: a normal 10 % approach grade, pinned as a ceiling.
+  - Rembrandtpark culvert hollow, OSM187078829.
+  - Torensluis water slit: wetGround polygons sit 1.9 m over the water, just under `WET_CLEAR_M` = 2.
+  - Doelensluis needs a panorama; De Clercqstraat was not investigated; Oost-Indische Huisbrug and Da Costakade were not reproduced.
+  - The Kinkerbrug house is a building job.
+  - The Muntplein water question is correct (Muntsluis crosses the Singel). The proposal is to ask crossing questions only when open water is visible within about 15 m.
+
 **Houthavens landmarks: De Bonte Zwaan and Hotel Boat&Co; pointedDormer kit component (2026-11-13, lane H-HV, cherry-picked from lane/houthavens-landmarks-20261113).**
 - **Why.** User: "houthavens landmark modeling at some point soon", plus feedback notes 7517fef7 (Haparandadam) and 428505e5 (the Wiborgeiland brown block).
 - **De Bonte Zwaan** (BAG 0363100012240915, 1966; a floating KNSM office built at NDSM). 6.8k triangles from the 2016–2021 panoramas, the PDOK orthophoto and 3DBAG: hull with portholes, ribbon windows, SE walkway, white SW tower with emblem and lettering, black NE tower, two trussed gangways.
