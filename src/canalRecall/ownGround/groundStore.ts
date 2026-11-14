@@ -586,11 +586,14 @@ export class GroundStore {
    * measured decks placed on it. Decks are placed once and kept (a few
    * hundred at most city-wide; their heights are fixed at placement).
    */
-  async prepareCell(key: string): Promise<void> {
+  async prepareCell(key: string, alone = false): Promise<void> {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M;
     await this.ensureRelief([x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
     await yieldToFrame();
     this.placeDecks(key);
+    // A cell built alone (cellInput `alone`) reads nothing of its neighbours and plans nothing that is kept: way decks
+    // and tunnel cuts are planned once per cell from the 3×3, so a plan made alone would stand for good.
+    if (alone) return;
     // A bridge belongs to the cell of its first station but may reach into
     // this one: place neighbours' decks too, so streets and the rider here
     // see the hump (their approach ends lie within the relief pad).
@@ -1197,10 +1200,15 @@ export class GroundStore {
    * Everything a cell build needs, loaded: its relief and decks, the water and
    * OSM of its 3×3 neighbourhood, and the deck footprints near it.
    */
-  async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full'): Promise<CellInput> {
+  /**
+   * `alone` (lane LS 2026-11-14, `?groundFirstAlone=1`): the cell from its own data only, as a stand-in drawn while its
+   * 3×3 neighbourhood loads: no neighbour's roads, water, parks, decks or rails, no way decks or tunnel cuts, so its
+   * edges and bridges are rougher. The full build of the same cell replaces it.
+   */
+  async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full', alone = false): Promise<CellInput> {
     if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas or kerbs and cannot build a cell');
-    await this.prepareCell(key);
-    const around = GroundStore.neighbours(key);
+    await this.prepareCell(key, alone);
+    const around = alone ? [key] : GroundStore.neighbours(key);
     const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround, railsAround, openGroundAround] = await Promise.all([
       this.waterCell(key),
       Promise.all(around.map(k => this.waterCell(k))),

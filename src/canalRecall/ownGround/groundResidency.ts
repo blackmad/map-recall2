@@ -48,6 +48,14 @@ export function groundEarlyWorkersFlag(query = search()): boolean {
   return !/[?&]groundEarlyWorkers=0\b/.test(query);
 }
 
+/**
+ * `?groundFirstAlone=1` (lane LS, 2026-11-14): the first LOD 0 cell is built from its own data first (GroundStore
+ * cellInput `alone`: 25 files instead of ~125) and drawn as a stand-in until its full 3×3 build replaces it.
+ */
+export function groundFirstAloneFlag(query = search()): boolean {
+  return /[?&]groundFirstAlone=1\b/.test(query);
+}
+
 /** `?groundParallelInit=0`: the ground store asks its init manifests one after another (groundStore.ts load, lane LS). */
 export function groundParallelInitFlag(query = search()): boolean {
   return !/[?&]groundParallelInit=0\b/.test(query);

@@ -8,7 +8,7 @@
 //                                                           compact: send compact meshes (compactMesh.ts, phones);
 //                                                           detail: 'touch' on a touch device, the device's far-cell level (gameGround.ts)
 //                                                           tiles, tileMin: cut each layer into tiles×tiles culled tiles here (cellTiles.ts layerTiles)
-//               { type: 'build', key, lod, gen, detail }  build one cell at 'full' or 'touch' detail (CellDetail)
+//               { type: 'build', key, lod, gen, detail, alone? }  build one cell at 'full' or 'touch' detail (CellDetail); alone: a provisional stand-in first
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
 //               { type: 'order', keys: string[] }  wanted cells, best first: queued cells build in this order and
@@ -39,7 +39,7 @@ type In =
   | { type: 'share-host'; root: string; ports: MessagePort[]; capMB?: number }
   /** The page's rail manifest for an init sent with `railManifestFollows` (gameGround.ts groundEarlyWorkersFlag); null: fetch it. */
   | { type: 'rail-manifest'; keys: string[] | null }
-  | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
+  | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail; /** Post a stand-in from the cell's own data first (groundFirstAlone). */ alone?: boolean }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
   | { type: 'order'; keys: string[] };
@@ -59,6 +59,8 @@ const evictions: Array<() => void> = [];
 let running = false;
 /** When each cell's latest build request reached the worker (lane R5-A #260: the queue wait in each cell's timing). */
 const askedAt = new Map<string, number>();
+/** Cells asked with `alone` (`?groundFirstAlone=1`): a stand-in from the cell's own data goes out before the full build. */
+const aloneFirst = new Set<string>();
 let initAt = 0;
 /** Settles an init's rail manifest when it was sent ahead of it (`railManifestFollows`). */
 let handManifest: ((keys: string[] | null) => void) | null = null;
@@ -120,6 +122,17 @@ async function pump(s: GroundStore): Promise<void> {
       const job = queue.next();
       if (!job) break;
       if (job.kind === 'cell') {
+        if (aloneFirst.delete(job.key)) {
+          // The stand-in (GroundStore.cellInput `alone`): posted `provisional`; the main thread draws it and keeps
+          // waiting for the full build below, which replaces it.
+          try {
+            const a0 = performance.now(), input = await s.cellInput(job.key, job.lod, job.detail, true), a1 = performance.now();
+            const built = buildCell(input), cell = compact ? compactCell(built) : built;
+            if (tiles > 1) cell.tiles = layerTiles(cell.layers, cellTileGrid(tiles, nearTiles, cell.lod, cell.detail), tileMin);
+            phaseEvents.length = 0;
+            ctx.postMessage({ type: 'cell', provisional: true, gen: job.gen, cell, timing: { inputMs: Math.round(a1 - a0), buildMs: Math.round(performance.now() - a1), worker: index } }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
+          } catch { /* the full build still runs */ }
+        }
         try {
           const t0 = performance.now(), queued = queue.size;
           const input = await s.cellInput(job.key, job.lod, job.detail);
@@ -186,7 +199,7 @@ ctx.onmessage = event => {
   }
   if (!store || !ready) return;
   const s = store;
-  if (msg.type === 'build') { askedAt.set(msg.key, performance.now()); queue.build(msg.key, msg.lod, msg.gen, msg.detail ?? detail); void pump(s); return; }
+  if (msg.type === 'build') { askedAt.set(msg.key, performance.now()); if (msg.alone) aloneFirst.add(msg.key); queue.build(msg.key, msg.lod, msg.gen, msg.detail ?? detail); void pump(s); return; }
   if (msg.type === 'far') { queue.requestFar(msg.key, msg.gen); void pump(s); return; }
   if (msg.type === 'order') { queue.order(msg.keys); return; }
   if (msg.type === 'evict') {

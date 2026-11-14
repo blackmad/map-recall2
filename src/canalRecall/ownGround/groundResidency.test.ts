@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundParallelInitFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
+import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundFirstAloneFlag, groundParallelInitFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
 import { GroundStore } from './groundStore.ts';
 
 const RAIL = 'public/data/extracts/amsterdam/rail-v1';
@@ -165,4 +165,33 @@ test('?groundParallelInit: the manifests are asked at once and the store is the 
 test('?groundParallelInit=0 is the serial order', () => {
   assert.equal(groundParallelInitFlag(''), true);
   assert.equal(groundParallelInitFlag('?groundParallelInit=0'), false);
+});
+
+test('?groundFirstAlone=1: a cell built alone reads its own files only, plans no way decks or cuts, and leaves the full build intact', async () => {
+  const asked: string[] = [];
+  const read = async (path: string) => {
+    asked.push(path);
+    const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+    return bytes[0] === 0x1f && bytes[1] === 0x8b ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+  };
+  const store = new GroundStore(read, { parks: true, roads: true, rails: true });
+  await store.init();
+  const { buildCell } = await import('./groundCell.ts');
+  const key = '-1_0', others = GroundStore.neighbours(key).filter(k => k !== key);
+  asked.length = 0;
+  const alone = buildCell(await store.cellInput(key, 0, 'full', true));
+  const aloneFiles = asked.length;
+  // Its own cells only, bar the water openings (waterCell reads the neighbours' OSM ways, cached per cell either way).
+  const neighbourReads = asked.filter(p => others.some(k => p.includes(`/${k}.`)) && !/osm/.test(p));
+  assert.deepEqual(neighbourReads, [], `alone read neighbours: ${neighbourReads.slice(0, 5).join(', ')}`);
+  asked.length = 0;
+  const full = buildCell(await store.cellInput(key, 0, 'full'));
+  const fresh = new GroundStore(read, { parks: true, roads: true, rails: true });
+  await fresh.init();
+  const reference = buildCell(await fresh.cellInput(key, 0, 'full'));
+  assert.ok(aloneFiles < asked.length, `alone ${aloneFiles} files, full then ${asked.length} more`);
+  assert.ok(alone.stats.triangles > 0.8 * reference.stats.triangles, 'the stand-in draws the cell');
+  assert.deepEqual(full.stats.triangles, reference.stats.triangles, 'a full build after the stand-in is the fresh store\'s');
+  assert.equal(groundFirstAloneFlag(''), false);
+  assert.equal(groundFirstAloneFlag('?groundFirstAlone=1'), true);
 });
