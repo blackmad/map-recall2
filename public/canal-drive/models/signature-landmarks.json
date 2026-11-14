@@ -101900,7 +101900,7 @@
         "max": [
           20.73566436767578,
           8.619999885559082,
-          16.386444091796875
+          16.386442184448242
         ]
       },
       "placement": {
@@ -101916,11 +101916,11 @@
       "extent": {
         "widthMetres": 30.26416301727295,
         "heightMetres": 8.619999933242799,
-        "depthMetres": 25.05726909637451,
-        "depthCoverage": 2.5673431451203395
+        "depthMetres": 25.05726718902588,
+        "depthCoverage": 2.5673429496952744
       },
-      "triangles": 5469,
-      "bytes": 86088,
+      "triangles": 5445,
+      "bytes": 85872,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

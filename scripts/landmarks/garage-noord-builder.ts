@@ -13,7 +13,7 @@ import source from './garage-noord-footprints.json' with {type: 'json'};
  * recording_2025-09-04_07-46-10_00631 and the 2024-10-22 recording (the current state), TMX7316010203-002572_pano_0000_001788
  * (2022) and the 2016 captures of the north-east and north-west walls; the glasshouse plan from the PDOK HR orthophoto.
  * From the south-east (s along the front from BAG ring vertex 2, the party corner with the Skatecafe):
- *  - a brick front to a 7.0 m parapet; over its middle (s 1.76-7.24) a teal corrugated false gable, 1 m deep, 7.2 m at the
+ *  - a brick front to a 7.0 m parapet; over its middle (s 1.76-7.24) a teal corrugated false front, 1 m deep from the ground, 7.2 m at the
  *    sides and 8.5 m at the apex, with a white rake trim and the Sichuan Territory emblem (cream oval, red hexagons with
  *    characters, red lettering, the dragon on top) at about 6.6 m;
  *  - behind it the 3DBAG pitched roof, ridge 8.0 m running back from the front at s 4.9, eaves 6.1 m on the south-west side
@@ -36,7 +36,7 @@ const shifted = (o: number): Frame => ({origin: P2(0, o), tangent: F.tangent, n:
 const W = 9.74, DEEP = 12.41, PARAPET = 7.0;
 // roof profile across the front (s, y): 3DBAG LoD2.2 pieces
 const ROOF: [number, number][] = [[0, 6.1], [4.9, 8.0], [7.29, 6.66], [W, 6.6]];
-const TEAL0 = 1.76, TEAL1 = 7.24, TEAL_FOOT = 3.8, TEAL_SIDE = 7.2, TEAL_APEX = 8.5, TEAL_D = 1.0;
+const TEAL0 = 1.76, TEAL1 = 7.24, TEAL_FOOT = 0, RIB_FOOT = 3.0, TEAL_SIDE = 7.2, TEAL_APEX = 8.5, TEAL_D = 1.0;
 const TM = (TEAL0 + TEAL1) / 2, TH = (TEAL1 - TEAL0) / 2;
 const tealTop = (t: number) => TEAL_SIDE + (TEAL_APEX - TEAL_SIDE) * (1 - Math.abs(t - TM) / TH);
 
@@ -62,7 +62,8 @@ export function buildGarageNoord(_w: number, _d: number, b: BuildingTools & {mar
 
   // ---- front: brick to the parapet, an entrance behind the glasshouse, a teal downpipe -------------------------------
   const A: Sec = K.sec(FR, 0, W, 0, PARAPET, 'brick', 0);
-  K.opening(A, 4.5, 0.05, 2.4, 2.6, {frame: 'dark', back: 'dark', depth: 0.25, edge: 0.08, cols: 2});
+  // the club entrance in the teal front (2022 capture TMX7316010203-002572_pano_0000_001788), behind the glasshouse since 2024
+  slab(b, F, TM, 0, 2.6, 2.7, 0.05, 'dark', TEAL_D);
   K.opening(A, 1.2, 0.05, 1.0, 2.3, {frame: 'dark', back: 'dark', depth: 0.15, edge: 0.06});
   slab(b, F, 8.55, 0, 0.12, PARAPET - 0.3, 0.12, 'blue', 0.2);
   K.coping(A, PARAPET, 0.1, 0.05, 'concrete', 0, TEAL0, 0.3);
@@ -73,7 +74,7 @@ export function buildGarageNoord(_w: number, _d: number, b: BuildingTools & {mar
 
   // ---- the teal corrugated false gable, white rake trim, ribs -----------------------------------------------------------
   poly(b, F, TM, TEAL_FOOT, [[-TH, 0], [TH, 0], [TH, TEAL_SIDE - TEAL_FOOT], [0, TEAL_APEX - TEAL_FOOT], [-TH, TEAL_SIDE - TEAL_FOOT]], TEAL_D, 'blue', 0);
-  for (let t = TEAL0 + 0.25; t < TEAL1 - 0.1; t += 0.5) slab(b, F, t, TEAL_FOOT, 0.08, tealTop(t) - TEAL_FOOT - 0.2, 0.09, 'blue', TEAL_D);
+  for (let t = TEAL0 + 0.25; t < TEAL1 - 0.1; t += 0.5) slab(b, F, t, RIB_FOOT, 0.08, tealTop(t) - RIB_FOOT - 0.2, 0.09, 'blue', TEAL_D);
   const trim = 0.16;
   poly(b, F, TM, TEAL_FOOT, [[-TH - 0.05, TEAL_SIDE - TEAL_FOOT + 0.1], [0, TEAL_APEX - TEAL_FOOT + 0.12], [TH + 0.05, TEAL_SIDE - TEAL_FOOT + 0.1], [TH + 0.05, TEAL_SIDE - TEAL_FOOT + 0.1 - trim], [0, TEAL_APEX - TEAL_FOOT + 0.12 - trim * 1.1], [-TH - 0.05, TEAL_SIDE - TEAL_FOOT + 0.1 - trim]], 0.2, 'ochre', TEAL_D);
   // emblem plate: the cream oval with the two hexagon shields at its sides
