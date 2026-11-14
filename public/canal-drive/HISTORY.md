@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## House rows round 1 code and retail look round 1, merged flag-off (2026-11-14)
+
+**House rows.** Lanes D, R and P (#386–#388) built the row path the Fable review asked for.
+- **Records (lane D):** `houseSpec/row/` and `npm run house:rows` solve per series and give each field its provenance (reviewed > face > consensus > read > default). Reviewed overrides live in `scripts/house-specs/rows/reviewed.json`.
+- **Renderer (lane R):** `houseLine/rowSeries.ts` and `headGrammar.ts` draw from those records.
+  - One cornice line per series, in street datum.
+  - Mansards join across party walls, and stated dormers are never culled.
+  - Window heads are a typed grammar (voussoirs, keys, springers, tympana, block surrounds), replacing the head glyphs David called "the little T".
+  - Glazing comes from the record.
+  - New typed parts: stoop, porch, balcony, rustication, and a raised ground over basement windows.
+- **Checks (lane P):** the row sheet, `check:rows` with four named regressions, and the blind-review protocol.
+- **Review:** six rounds of fresh blind reviewers took both rows from FAIL to PASS. Each round's fault list went to D (record) or R (renderer).
+- **What the D1 consensus can't settle alone:** scores against the Kinkerstraat face intents put cornice kind at 38 %, heads at 38 % and dormer kind at 49 %.
+- **Behind the flag:** everything sits behind `ROW_FRONT` (off). With the flag off, 80 of 80 sampled pands hash identical.
+
+**Retail look round 1.** This is the `?retailGround=1` path, which also stays off.
+- Template fronts got a fascia cap, slim posts, transoms, recessed doors and glass with reflection.
+- `puiAt` lost its fixed pale frame.
+- Floating door frames are gone.
+- A `house:frames --lists` bug made per-list flag comparisons byte-identical; it is fixed.
+
 ## Crossings hold their grade (2026-11-14)
 
 User on F1b: "these roads should probably figure out 'I don't dip down'" (Lelylaan slip 7382983 over the Slotervaart). `?bankClimb` (default on): where a way deck dips > 0.3 m below the line between its bank tops, the deck extends up the banks (≤ 30 m, > 4 % climb) and bundled dual carriageways climb as one deck (`wayDecks.ts`); embankment sides slope 1:2 up to 8 m (`surface.ts`); the bridge kit stays on the bridge itself (`groundCell.ts` `kitDeck`); a polygon inside one deck ignores a higher climbed deck it lies outside (`roadSurfaces.ts`). The first trial opened a hole beside the slip because the bundled main carriageway stayed low while `deckLevelHeight` lifted its asphalt to the slip. Crossings dipping > 0.3 m: 28 → 19; > 1 m: 10 → 4. Pins `BANK_DIPS` in bridge-feedback-pins; rail-joins allow-list 722 → 718.
