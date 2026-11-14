@@ -1,0 +1,201 @@
+{
+ "answers": 147,
+ "withTruth": 117,
+ "rows": [
+  {
+   "question": "balconies",
+   "pairs": 26,
+   "accuracy": 1,
+   "ci": [
+    0.871,
+    1
+   ],
+   "classes": {
+    "yes": {
+     "read": 2,
+     "precision": 1,
+     "ci": [
+      0.342,
+      1
+     ],
+     "truth": 2,
+     "recall": 1,
+     "ships": true
+    },
+    "no": {
+     "read": 24,
+     "precision": 1,
+     "ci": [
+      0.862,
+      1
+     ],
+     "truth": 24,
+     "recall": 1,
+     "ships": true
+    }
+   }
+  },
+  {
+   "question": "balcony rows",
+   "pairs": 2,
+   "accuracy": 0.5,
+   "ci": [
+    0.095,
+    0.905
+   ],
+   "classes": {}
+  },
+  {
+   "question": "dormers",
+   "pairs": 27,
+   "accuracy": 0.815,
+   "ci": [
+    0.633,
+    0.918
+   ],
+   "classes": {
+    "no": {
+     "read": 14,
+     "precision": 0.714,
+     "ci": [
+      0.454,
+      0.883
+     ],
+     "truth": 11,
+     "recall": 0.909,
+     "ships": false
+    },
+    "yes": {
+     "read": 13,
+     "precision": 0.923,
+     "ci": [
+      0.667,
+      0.986
+     ],
+     "truth": 16,
+     "recall": 0.75,
+     "ships": true
+    }
+   }
+  },
+  {
+   "question": "dormer count",
+   "pairs": 12,
+   "accuracy": 0.917,
+   "ci": [
+    0.646,
+    0.985
+   ],
+   "classes": {}
+  },
+  {
+   "question": "dormer kind",
+   "pairs": 12,
+   "accuracy": 0.583,
+   "ci": [
+    0.32,
+    0.807
+   ],
+   "classes": {
+    "plain": {
+     "read": 9,
+     "precision": 0.556,
+     "ci": [
+      0.267,
+      0.811
+     ],
+     "truth": 6,
+     "recall": 0.833,
+     "ships": false
+    },
+    "gabled": {
+     "read": 3,
+     "precision": 0.667,
+     "ci": [
+      0.208,
+      0.939
+     ],
+     "truth": 6,
+     "recall": 0.333,
+     "ships": false
+    }
+   }
+  },
+  {
+   "question": "bay window",
+   "pairs": 25,
+   "accuracy": 1,
+   "ci": [
+    0.867,
+    1
+   ],
+   "classes": {
+    "yes": {
+     "read": 1,
+     "precision": 1,
+     "ci": [
+      0.207,
+      1
+     ],
+     "truth": 1,
+     "recall": 1,
+     "ships": true
+    },
+    "no": {
+     "read": 24,
+     "precision": 1,
+     "ci": [
+      0.862,
+      1
+     ],
+     "truth": 24,
+     "recall": 1,
+     "ships": true
+    }
+   }
+  },
+  {
+   "question": "bay rows",
+   "pairs": 1,
+   "accuracy": 1,
+   "ci": [
+    0.207,
+    1
+   ],
+   "classes": {}
+  },
+  {
+   "question": "door surround",
+   "pairs": 20,
+   "accuracy": 0.85,
+   "ci": [
+    0.64,
+    0.948
+   ],
+   "classes": {
+    "yes": {
+     "read": 2,
+     "precision": 0,
+     "ci": [
+      0,
+      0.658
+     ],
+     "truth": 1,
+     "recall": 0,
+     "ships": false
+    },
+    "no": {
+     "read": 18,
+     "precision": 0.944,
+     "ci": [
+      0.742,
+      0.99
+     ],
+     "truth": 19,
+     "recall": 0.895,
+     "ships": true
+    }
+   }
+  }
+ ]
+}

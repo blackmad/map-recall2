@@ -1,0 +1,1833 @@
+{
+ "title": "Haarlemmerdijk block: photo | this morning | now",
+ "base": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/lane/block-page-20261113/",
+ "generatedAt": "2026-11-13T21:08:00.521Z",
+ "columns": {
+  "morning": {
+   "run": "morning-20261113",
+   "label": "this morning",
+   "build": "bc4ad8a25",
+   "shotAt": "2026-11-13T21:00:35.595Z",
+   "query": "?dpr=2&governor=0&tier=high",
+   "captionBase": "rule 10 frames; shoot 1528 s"
+  },
+  "now": {
+   "run": "now-control-20261113",
+   "label": "now",
+   "build": "bc4ad8a25",
+   "shotAt": "2026-11-13T21:08:00.513Z",
+   "query": "?dpr=2&governor=0&tier=high",
+   "captionBase": "rule 10 frames; shoot 364 s"
+  }
+ },
+ "groups": [
+  {
+   "face": "haarlemmerdijk-2-58",
+   "street": "Haarlemmerdijk",
+   "asPlayed": {
+    "morning": {
+     "src": "review/haarlemmerdijk-block/morning-20261113/haarlemmerdijk-2-58-as-played.jpg",
+     "caption": "chase camera 36.9° vfov | dpr 2 | engine default (maplibre) | world baked world-v1 | build bc4ad8a25 | morning-20261113"
+    },
+    "now": {
+     "src": "review/haarlemmerdijk-block/now-control-20261113/haarlemmerdijk-2-58-as-played.jpg",
+     "caption": "chase camera 36.9° vfov | dpr 2 | engine default (maplibre) | world baked world-v1 | build bc4ad8a25 | now-control-20261113"
+    }
+   },
+   "rows": [
+    {
+     "pandId": "0363100012177585",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2023-01-16, 23.9 m, obliquity 51.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177585-photo.jpg",
+      "caption": "panorama TMX7316010203-002938_pano_0011_000087, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177585-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "otherBuilding: 0363100012176282",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012177585-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012177584",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2016-11-22, 10.4 m, obliquity 54.8°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177584-photo.jpg",
+      "caption": "panorama TMX7316010203-000188_pano_0000_003121, cut to the game window (first person 72° vfov, raised 522 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177584-game.jpg",
+      "caption": "first person 72° vfov, raised 522 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 9.54,
+       "photo": 15.5,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012177590 15/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012177584-game.jpg",
+      "caption": "first person 72° vfov, raised 522 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012177590",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 6.4 m, obliquity 3.2°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177590-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000069, cut to the game window (first person 72° vfov, raised 820 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177590-game.jpg",
+      "caption": "first person 72° vfov, raised 820 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012176280 10/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012177590-game.jpg",
+      "caption": "first person 72° vfov, raised 820 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176280",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 6.4 m, obliquity 9.9°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176280-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000070, cut to the game window (first person 72° vfov, raised 824 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176280-game.jpg",
+      "caption": "first person 72° vfov, raised 824 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012176278 10/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176280-game.jpg",
+      "caption": "first person 72° vfov, raised 824 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176278",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-04-24, 10.5 m, obliquity 51.7°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176278-photo.jpg",
+      "caption": "panorama TMX7316010203-001672_pano_0000_002746, cut to the game window (first person 72° vfov, raised 716 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176278-game.jpg",
+      "caption": "first person 72° vfov, raised 716 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012176279 8/28",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176278-game.jpg",
+      "caption": "first person 72° vfov, raised 716 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176279",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no pose: house:frames skipped this pand (no usable panorama or wall)",
+      "no now frame"
+     ],
+     "numbers": {}
+    },
+    {
+     "pandId": "0363100012177674",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-04-24, 10.8 m, obliquity 48.2°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177674-photo.jpg",
+      "caption": "panorama TMX7316010203-001672_pano_0000_002745, cut to the game window (first person 72° vfov, raised 870 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177674-game.jpg",
+      "caption": "first person 72° vfov, raised 870 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012177657 8/24",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012177674-game.jpg",
+      "caption": "first person 72° vfov, raised 870 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012177657",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2016-11-22, 9.6 m, obliquity 51.7°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177657-photo.jpg",
+      "caption": "panorama TMX7316010203-000188_pano_0000_003131, cut to the game window (first person 72° vfov, raised 861 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177657-game.jpg",
+      "caption": "first person 72° vfov, raised 861 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012167801 5/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012177657-game.jpg",
+      "caption": "first person 72° vfov, raised 861 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167801",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped top+bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.1 m, obliquity 46.3°, clipped top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167801-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000078, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167801-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "wallColour: lighter than its neighbours in the game: rel game 1.5 vs photo 1.037, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167801-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167821",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped top+bottom"
+     ],
+     "note": "panorama 2016-11-22, 6 m, obliquity 1.8°, clipped top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167821-photo.jpg",
+      "caption": "panorama TMX7316010203-000188_pano_0000_003134, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167821-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012167820 3/21",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167821-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167820",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-04-24, 10.9 m, obliquity 54°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167820-photo.jpg",
+      "caption": "panorama TMX7316010203-001672_pano_0000_002752, cut to the game window (first person 72° vfov, raised 311 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167820-game.jpg",
+      "caption": "first person 72° vfov, raised 311 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.29,
+       "photo": 12.42,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012167819 10/35",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.177 vs photo 0.778, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167820-game.jpg",
+      "caption": "first person 72° vfov, raised 311 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167819",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.5 m, obliquity 49°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167819-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000083, cut to the game window (first person 72° vfov, raised 837 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167819-game.jpg",
+      "caption": "first person 72° vfov, raised 837 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: model 3/28",
+      "wallColour: darker than its neighbours in the game: rel game 0.745 vs photo 1.075, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167819-game.jpg",
+      "caption": "first person 72° vfov, raised 837 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167818",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 7.2 m, obliquity 31.3°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167818-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000082, cut to the game window (first person 72° vfov, raised 584 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167818-game.jpg",
+      "caption": "first person 72° vfov, raised 584 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": null,
+       "photo": 12.51,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "roofOffset: model drawn over the crown line on 7/7 columns",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.384 vs photo 0.829, ref right only",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167818-game.jpg",
+      "caption": "first person 72° vfov, raised 584 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167817",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-04-24, 10.8 m, obliquity 53.4°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167817-photo.jpg",
+      "caption": "panorama TMX7316010203-001672_pano_0000_002755, cut to the game window (first person 72° vfov, raised 259 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167817-game.jpg",
+      "caption": "first person 72° vfov, raised 259 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.4,
+       "photo": 11.95,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: model 5/35",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.849 vs photo 1.515, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167817-game.jpg",
+      "caption": "first person 72° vfov, raised 259 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012167816",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 8.8 m, obliquity 45.4°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167816-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000083, cut to the game window (first person 72° vfov, raised 513 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167816-game.jpg",
+      "caption": "first person 72° vfov, raised 513 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.12,
+       "photo": null,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "roofOffset: model drawn over the crown line on 7/7 columns",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.145 vs photo 0.838, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012167816-game.jpg",
+      "caption": "first person 72° vfov, raised 513 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176104",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2024-12-11, 8.7 m, obliquity 50.9°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176104-photo.jpg",
+      "caption": "panorama b_20241211_1256_Track12_Sphere_00659, cut to the game window (first person 72° vfov, raised 894 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176104-game.jpg",
+      "caption": "first person 72° vfov, raised 894 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012176103 12/28",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176104-game.jpg",
+      "caption": "first person 72° vfov, raised 894 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176103",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2016-11-22, 10.3 m, obliquity 53.6°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176103-photo.jpg",
+      "caption": "panorama TMX7316010203-000188_pano_0000_003142, cut to the game window (first person 72° vfov, raised 528 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176103-game.jpg",
+      "caption": "first person 72° vfov, raised 528 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.22,
+       "photo": 12.19,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176102 4/35",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.136 vs photo 0.887, ref both",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176103-game.jpg",
+      "caption": "first person 72° vfov, raised 528 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176102",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2024-12-11, 10.3 m, obliquity 53.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176102-photo.jpg",
+      "caption": "panorama b_20241211_1256_Track12_Sphere_00661, cut to the game window (first person 72° vfov, raised 263 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176102-game.jpg",
+      "caption": "first person 72° vfov, raised 263 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 9.26,
+       "photo": 10.64,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176101 10/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176102-game.jpg",
+      "caption": "first person 72° vfov, raised 263 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176101",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.8 m, obliquity 52.1°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176101-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000086, cut to the game window (first person 72° vfov, raised 543 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176101-game.jpg",
+      "caption": "first person 72° vfov, raised 543 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 10.07,
+       "photo": 12.25,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176172 15/35",
+      "roofOffset: game skyline 10.07 m vs crown 11.4 m (photo 12.25 m)",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176101-game.jpg",
+      "caption": "first person 72° vfov, raised 543 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176172",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2023-02-20, 22.8 m, obliquity 54.3°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176172-photo.jpg",
+      "caption": "panorama TMX7316010203-002978_pano_0001_000544, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176172-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 10.19,
+       "photo": 11.93,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: model 11/35",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176172-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176174",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2019-05-16, 68.9 m, obliquity 54.6°, far bank",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176174-photo.jpg",
+      "caption": "panorama TMX7316010203-001187_pano_0000_002116, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176174-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.37,
+       "photo": 10.09,
+       "source": "frames skyline (now-control-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "roofOffset: model drawn over the crown line on 7/7 columns",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176174-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    },
+    {
+     "pandId": "0363100012176175",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-04-22, 63.7 m, obliquity 54.5°, far bank",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176175-photo.jpg",
+      "caption": "panorama TMX7316010203-001666_pano_0000_000665, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176175-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "otherBuilding: model",
+      "sameAsBefore: target wall 0% changed vs haarlemmerdijk-2-58 (< 2%): the compared flag did not reach these pixels"
+     ],
+     "now": {
+      "src": "review/haarlemmerdijk-block/now-control-20261113/0363100012176175-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | now-control-20261113"
+     },
+     "ground": {
+      "changedPct": 0,
+      "meanDelta": 0,
+      "controlled": true
+     }
+    }
+   ]
+  },
+  {
+   "face": "haarlemmerdijk-13-45",
+   "street": "Haarlemmerdijk",
+   "asPlayed": {
+    "morning": {
+     "src": "review/haarlemmerdijk-block/morning-20261113/haarlemmerdijk-13-45-as-played.jpg",
+     "caption": "chase camera 36.9° vfov | dpr 2 | engine default (maplibre) | world baked world-v1 | build bc4ad8a25 | morning-20261113"
+    }
+   },
+   "rows": [
+    {
+     "pandId": "0363100012167796",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped sides+top+bottom"
+     ],
+     "note": "panorama 2019-01-15, 6.2 m, obliquity 8.2°, clipped sides+top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167796-photo.jpg",
+      "caption": "panorama TMX7316010203-001054_pano_0000_002553, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167796-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {}
+    },
+    {
+     "pandId": "0363100012177504",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 7.7 m, obliquity 3.4°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177504-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00677, cut to the game window (first person 72° vfov, raised 887 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177504-game.jpg",
+      "caption": "first person 72° vfov, raised 887 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012167796 8/28"
+     ]
+    },
+    {
+     "pandId": "0363100012177501",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 12.5 m, obliquity 53.1°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177501-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00680, cut to the game window (first person 72° vfov, raised 236 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177501-game.jpg",
+      "caption": "first person 72° vfov, raised 236 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 10.69,
+       "photo": 11.62,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012177504 5/35"
+     ]
+    },
+    {
+     "pandId": "0363100012177502",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-01-10, 7.5 m, obliquity 29.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177502-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000113, cut to the game window (first person 72° vfov, raised 251 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177502-game.jpg",
+      "caption": "first person 72° vfov, raised 251 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 7.54,
+       "photo": 8.65,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012177501 15/35"
+     ]
+    },
+    {
+     "pandId": "0363100012177503",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 10 m, obliquity 47.9°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177503-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000110, cut to the game window (first person 72° vfov, raised 521 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177503-game.jpg",
+      "caption": "first person 72° vfov, raised 521 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.28,
+       "photo": 12.61,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012177502 9/35"
+     ]
+    },
+    {
+     "pandId": "0363100012167795",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 10.7 m, obliquity 40.2°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167795-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00679, cut to the game window (first person 72° vfov, raised 310 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167795-game.jpg",
+      "caption": "first person 72° vfov, raised 310 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 9.55,
+       "photo": 11.15,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     }
+    },
+    {
+     "pandId": "0363100012167794",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 7.5 m, obliquity 9.9°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167794-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00681, cut to the game window (first person 72° vfov, raised 802 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167794-game.jpg",
+      "caption": "first person 72° vfov, raised 802 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012167795 12/35"
+     ]
+    },
+    {
+     "pandId": "0363100012253819",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 7.3 m, obliquity 5°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012253819-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00682, cut to the game window (first person 72° vfov, raised 861 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012253819-game.jpg",
+      "caption": "first person 72° vfov, raised 861 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {}
+    },
+    {
+     "pandId": "0363100012167805",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 10.6 m, obliquity 52.7°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167805-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000110, cut to the game window (first person 72° vfov, raised 581 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167805-game.jpg",
+      "caption": "first person 72° vfov, raised 581 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.16,
+       "photo": 12.77,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     }
+    },
+    {
+     "pandId": "0363100012253818",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 11.5 m, obliquity 48°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012253818-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00682, cut to the game window (first person 72° vfov, raised 775 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012253818-game.jpg",
+      "caption": "first person 72° vfov, raised 775 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012167805 6/21"
+     ]
+    },
+    {
+     "pandId": "0363100012167804",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2019-01-15, 9.6 m, obliquity 51.5°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167804-photo.jpg",
+      "caption": "panorama TMX7316010203-001054_pano_0000_002545, cut to the game window (first person 72° vfov, raised 852 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167804-game.jpg",
+      "caption": "first person 72° vfov, raised 852 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012253818 12/28",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.784 vs photo 1.201, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012177663",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2021-12-30, 10.3 m, obliquity 52.6°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177663-photo.jpg",
+      "caption": "panorama TMX7316010203-002365_pano_0007_000067, cut to the game window (first person 72° vfov, raised 561 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177663-game.jpg",
+      "caption": "first person 72° vfov, raised 561 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.19,
+       "photo": 12.99,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012167804 15/35"
+     ]
+    },
+    {
+     "pandId": "0363100012176277",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 9.6 m, obliquity 38.1°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176277-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00685, cut to the game window (first person 72° vfov, raised 849 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176277-game.jpg",
+      "caption": "first person 72° vfov, raised 849 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: model 9/28",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.771 vs photo 1.185, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012177659",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 12 m, obliquity 51.1°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177659-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00689, cut to the game window (first person 72° vfov, raised 264 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012177659-game.jpg",
+      "caption": "first person 72° vfov, raised 264 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.41,
+       "photo": 13.4,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176277 10/35",
+      "roofOffset: model drawn over the crown line on 4/7 columns",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.216 vs photo 0.777, ref both"
+     ]
+    }
+   ]
+  },
+  {
+   "face": "haarlemmerdijk-117-143",
+   "street": "Haarlemmerdijk",
+   "asPlayed": {
+    "morning": {
+     "src": "review/haarlemmerdijk-block/morning-20261113/haarlemmerdijk-117-143-as-played.jpg",
+     "caption": "chase camera 36.9° vfov | dpr 2 | engine default (maplibre) | world baked world-v1 | build bc4ad8a25 | morning-20261113"
+    }
+   },
+   "rows": [
+    {
+     "pandId": "0363100012176652",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2019-01-15, 18.1 m, obliquity 30.3°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176652-photo.jpg",
+      "caption": "panorama TMX7316010203-001054_pano_0000_002644, cut to the game window (first person 72° vfov, raised 100 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012176652-game.jpg",
+      "caption": "first person 72° vfov, raised 100 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.03,
+       "photo": 11.3,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176701 15/35",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.1 vs photo 0.771, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012165102",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2021-03-11, 9.9 m, obliquity 35.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165102-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000288, cut to the game window (first person 72° vfov, raised 294 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165102-game.jpg",
+      "caption": "first person 72° vfov, raised 294 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.26,
+       "photo": 8.67,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012176652 15/35",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.746 vs photo 0.833, ref left only"
+     ]
+    },
+    {
+     "pandId": "0363100012165074",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 10.1 m, obliquity 35.9°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165074-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00270, cut to the game window (first person 72° vfov, raised 289 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165074-game.jpg",
+      "caption": "first person 72° vfov, raised 289 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.62,
+       "photo": 8.53,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012165102 12/35"
+     ]
+    },
+    {
+     "pandId": "0363100012165073",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-01-10, 14.7 m, obliquity 54.8°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165073-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000060, cut to the game window (first person 72° vfov, raised 286 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012165073-game.jpg",
+      "caption": "first person 72° vfov, raised 286 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.65,
+       "photo": 12.34,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012165074 8/35"
+     ]
+    },
+    {
+     "pandId": "0363100012171347",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 14.7 m, obliquity 52.7°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171347-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000059, cut to the game window (first person 72° vfov, raised 504 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171347-game.jpg",
+      "caption": "first person 72° vfov, raised 504 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 15.78,
+       "photo": 18.56,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: model 8/35"
+     ]
+    },
+    {
+     "pandId": "0363100012171346",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-01-10, 8.7 m, obliquity 13.9°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171346-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000060, cut to the game window (first person 72° vfov, raised 279 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171346-game.jpg",
+      "caption": "first person 72° vfov, raised 279 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.48,
+       "photo": 10.27,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012171347 15/35",
+      "wallColour: inverted (darker than its neighbours in the photo, lighter in the game): rel game 1.109 vs photo 0.783, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012173469",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2021-09-15, 10.2 m, obliquity 44.9°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173469-photo.jpg",
+      "caption": "panorama TMX7316010203-002310_pano_0000_002161, cut to the game window (first person 72° vfov, raised 310 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173469-game.jpg",
+      "caption": "first person 72° vfov, raised 310 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.39,
+       "photo": 9.95,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012171346 16/35",
+      "roofOffset: game skyline 8.39 m vs crown 9.85 m (photo 9.95 m)"
+     ]
+    },
+    {
+     "pandId": "0363100012173479",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2020-01-10, 10.4 m, obliquity 35.9°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173479-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000060, cut to the game window (first person 72° vfov, raised 299 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173479-game.jpg",
+      "caption": "first person 72° vfov, raised 299 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.78,
+       "photo": 11.19,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012173469 10/35"
+     ]
+    },
+    {
+     "pandId": "0363100012173480",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2019-05-13, 11.4 m, obliquity 46.3°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173480-photo.jpg",
+      "caption": "panorama TMX7316010203-001178_pano_0001_006177, cut to the game window (first person 72° vfov, raised 299 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173480-game.jpg",
+      "caption": "first person 72° vfov, raised 299 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.68,
+       "photo": 10.65,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012173479 12/35",
+      "roofOffset: game skyline 11.68 m vs crown 10.57 m (photo 10.65 m)"
+     ]
+    },
+    {
+     "pandId": "0363100012173482",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 14.2 m, obliquity 52.1°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173482-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000059, cut to the game window (first person 72° vfov, raised 416 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173482-game.jpg",
+      "caption": "first person 72° vfov, raised 416 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 12.52,
+       "photo": 15.24,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "roofOffset: game skyline 12.52 m vs crown 14.29 m (photo 15.24 m)"
+     ]
+    },
+    {
+     "pandId": "0363100012173481",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 10.7 m, obliquity 41.5°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173481-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000057, cut to the game window (first person 72° vfov, raised 842 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173481-game.jpg",
+      "caption": "first person 72° vfov, raised 842 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012173482 6/21",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.832 vs photo 1.113, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012173484",
+     "street": "Haarlemmerdijk",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2025-07-03, 10.7 m, obliquity 36.1°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173484-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00279, cut to the game window (first person 72° vfov, raised 863 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173484-game.jpg",
+      "caption": "first person 72° vfov, raised 863 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: model 5/21"
+     ]
+    },
+    {
+     "pandId": "0363100012173483",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 13.8 m, obliquity 51.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173483-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00281, cut to the game window (first person 72° vfov, raised 307 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012173483-game.jpg",
+      "caption": "first person 72° vfov, raised 307 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.02,
+       "photo": 13.41,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012173484 15/35"
+     ]
+    },
+    {
+     "pandId": "0363100012169539",
+     "street": "Haarlemmerdijk",
+     "note": "panorama 2025-07-03, 13.2 m, obliquity 49.4°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012169539-photo.jpg",
+      "caption": "panorama recording_2025-07-03_06-23-16_00282, cut to the game window (first person 72° vfov, raised 304 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012169539-game.jpg",
+      "caption": "first person 72° vfov, raised 304 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.59,
+       "photo": 11.75,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012173483 15/35"
+     ]
+    }
+   ]
+  },
+  {
+   "face": "haarlemmer-46-96",
+   "street": "Haarlemmerstraat",
+   "asPlayed": {
+    "morning": {
+     "src": "review/haarlemmerdijk-block/morning-20261113/haarlemmer-46-96-as-played.jpg",
+     "caption": "chase camera 36.9° vfov | dpr 2 | engine default (maplibre) | world baked world-v1 | build bc4ad8a25 | morning-20261113"
+    }
+   },
+   "rows": [
+    {
+     "pandId": "0363100012168428",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.3 m, obliquity 49.8°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012168428-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000130, cut to the game window (first person 72° vfov, raised 520 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012168428-game.jpg",
+      "caption": "first person 72° vfov, raised 520 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 8.83,
+       "photo": 12.74,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012168427 15/35"
+     ]
+    },
+    {
+     "pandId": "0363100012168427",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.9 m, obliquity 52.4°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012168427-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000131, cut to the game window (first person 72° vfov, raised 581 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012168427-game.jpg",
+      "caption": "first person 72° vfov, raised 581 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.26,
+       "photo": 15.82,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012167538 15/35"
+     ]
+    },
+    {
+     "pandId": "0363100012167538",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 9.9 m, obliquity 52.9°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167538-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000198, cut to the game window (first person 72° vfov, raised 815 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012167538-game.jpg",
+      "caption": "first person 72° vfov, raised 815 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012175144 4/28"
+     ]
+    },
+    {
+     "pandId": "0363100012175144",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped top+bottom"
+     ],
+     "note": "panorama 2021-03-11, 5.4 m, obliquity 0.4°, clipped top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175144-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000392, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175144-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012175143 3/21"
+     ]
+    },
+    {
+     "pandId": "0363100012175143",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped top+bottom"
+     ],
+     "note": "panorama 2021-03-11, 5.3 m, obliquity 7.1°, clipped top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175143-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000393, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175143-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012175142 6/21",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.807 vs photo 1.167, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012175142",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped top+bottom"
+     ],
+     "note": "panorama 2019-05-13, 8.9 m, obliquity 46.8°, clipped top+bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175142-photo.jpg",
+      "caption": "panorama TMX7316010203-001178_pano_0001_006290, cut to the game window (first person 72° vfov, raised 900 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175142-game.jpg",
+      "caption": "first person 72° vfov, raised 900 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {},
+     "flags": [
+      "neighbourCovers: 0363100012175141 4/28"
+     ]
+    },
+    {
+     "pandId": "0363100012175141",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2022-12-15, 9.9 m, obliquity 52.8°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175141-photo.jpg",
+      "caption": "panorama TMX7316010203-002859_pano_0000_000138, cut to the game window (first person 72° vfov, raised 472 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175141-game.jpg",
+      "caption": "first person 72° vfov, raised 472 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 9.87,
+       "photo": 15.48,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012175140 16/35"
+     ]
+    },
+    {
+     "pandId": "0363100012175140",
+     "street": "Haarlemmerstraat",
+     "problems": [
+      "no capture holds the whole front at 72°: clipped bottom"
+     ],
+     "note": "panorama 2020-01-10, 5.7 m, obliquity 7.2°, clipped bottom",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175140-photo.jpg",
+      "caption": "panorama TMX7316010203-001549_pano_0000_000203, cut to the game window (first person 72° vfov, raised 839 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175140-game.jpg",
+      "caption": "first person 72° vfov, raised 839 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 7.76,
+       "photo": null,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012175139 4/35"
+     ]
+    },
+    {
+     "pandId": "0363100012175139",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2021-03-11, 26.9 m, obliquity 45.7°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175139-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000488, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175139-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 9.7,
+       "photo": null,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     }
+    },
+    {
+     "pandId": "0363100012175205",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2023-01-16, 27.1 m, obliquity 29.8°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175205-photo.jpg",
+      "caption": "panorama TMX7316010203-002936_pano_0005_000131, cut to the game window (first person 72° vfov, raised 25 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175205-game.jpg",
+      "caption": "first person 72° vfov, raised 25 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 18.39,
+       "photo": 19.13,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: extract_landmarks_1399359542 15/35",
+      "wallColour: lighter than its neighbours in the game: rel game 1.09 vs photo 0.765, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012175204",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2023-01-16, 34.3 m, obliquity 13.2°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175204-photo.jpg",
+      "caption": "panorama TMX7316010203-002936_pano_0005_000129, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175204-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 14.8,
+       "photo": 17.71,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012175206 5/35",
+      "wallColour: inverted (lighter than its neighbours in the photo, darker in the game): rel game 0.766 vs photo 1.106, ref both"
+     ]
+    },
+    {
+     "pandId": "0363100012175206",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2025-06-16, 15.3 m, obliquity 3.7°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175206-photo.jpg",
+      "caption": "panorama recording_2025-06-16_03-46-32_02615, cut to the game window (first person 72° vfov, raised 339 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175206-game.jpg",
+      "caption": "first person 72° vfov, raised 339 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 15.61,
+       "photo": 14.93,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012175207 4/35"
+     ]
+    },
+    {
+     "pandId": "0363100012175207",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2021-03-11, 33.8 m, obliquity 6.4°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175207-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000485, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175207-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 13.82,
+       "photo": 15.17,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "otherBuilding: 0363100012175132"
+     ]
+    },
+    {
+     "pandId": "0363100012175208",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2021-03-11, 21.5 m, obliquity 28.7°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175208-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000488, cut to the game window (first person 72° vfov, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012175208-game.jpg",
+      "caption": "first person 72° vfov | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": null,
+       "photo": 11.49,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "otherBuilding: 0363100012175132"
+     ]
+    },
+    {
+     "pandId": "0363100012171144",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2021-03-11, 21.3 m, obliquity 47°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171144-photo.jpg",
+      "caption": "panorama TMX7316010203-002037_pano_0001_000489, cut to the game window (first person 72° vfov, raised 44 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171144-game.jpg",
+      "caption": "first person 72° vfov, raised 44 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": null,
+       "photo": 16.39,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "otherBuilding: 0363100012175132"
+     ]
+    },
+    {
+     "pandId": "0363100012171145",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2021-12-29, 21.7 m, obliquity 54.5°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171145-photo.jpg",
+      "caption": "panorama TMX7316010203-002361_pano_0002_000050, cut to the game window (first person 72° vfov, raised 73 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171145-game.jpg",
+      "caption": "first person 72° vfov, raised 73 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 18.46,
+       "photo": 15.61,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "roofOffset: model drawn over the crown line on 5/7 columns"
+     ]
+    },
+    {
+     "pandId": "0363100012171148",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2023-01-16, 19.2 m, obliquity 38.6°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171148-photo.jpg",
+      "caption": "panorama TMX7316010203-002936_pano_0005_000143, cut to the game window (first person 72° vfov, raised 36 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171148-game.jpg",
+      "caption": "first person 72° vfov, raised 36 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 11.88,
+       "photo": null,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: model 5/35"
+     ]
+    },
+    {
+     "pandId": "0363100012171141",
+     "street": "Haarlemmerstraat",
+     "note": "panorama 2017-03-27, 11.3 m, obliquity 34.7°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171141-photo.jpg",
+      "caption": "panorama TMX7316010203-000225_pano_0008_000779, cut to the game window (first person 72° vfov, raised 234 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171141-game.jpg",
+      "caption": "first person 72° vfov, raised 234 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 10.07,
+       "photo": 11.78,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "neighbourCovers: 0363100012171140 5/35"
+     ]
+    },
+    {
+     "pandId": "0363100012171140",
+     "street": "Buiten Wieringerstraat",
+     "note": "panorama 2021-12-29, 19 m, obliquity 42.8°",
+     "photo": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171140-photo.jpg",
+      "caption": "panorama TMX7316010203-002361_pano_0002_000039, cut to the game window (first person 72° vfov, raised 173 px, 1440×900 css ×2)"
+     },
+     "morning": {
+      "src": "review/haarlemmerdijk-block/morning-20261113/0363100012171140-game.jpg",
+      "caption": "first person 72° vfov, raised 173 px | 1440×900 css | dpr 2 (measured) | engine own | world baked world-v1 | dpr=2&governor=0&tier=high | trees hidden | build bc4ad8a25 | morning-20261113"
+     },
+     "numbers": {
+      "frontTopM": {
+       "game": 10.86,
+       "photo": null,
+       "source": "frames skyline (morning-20261113, pano lens)"
+      }
+     },
+     "flags": [
+      "otherBuilding: 0363100012171142"
+     ]
+    }
+   ]
+  }
+ ],
+ "noPhoto": [
+  "0363100012176279"
+ ],
+ "regenerate": "node --import tsx scripts/house-frames/block-page.ts all --column now --before <morning run> --push"
+}

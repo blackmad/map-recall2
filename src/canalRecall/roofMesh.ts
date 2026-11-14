@@ -29,8 +29,11 @@ import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perime
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
 import { streetGableEnds, type StreetFacing } from './streetGableEnds.js';
-import { turnRidgeToStreet } from './streetRidge.js';
+import { turnRect, turnRidgeToAxis, turnRidgeToStreet, TURN_MAX_FRONT_M } from './streetRidge.js';
+import { gableEndWalls } from './streetGableEnds.js';
+import { axisGapDeg } from './roofs/ridgeAxis.js';
 import { zeroArea } from './roofOverhang.js';
+import { isRowCrown, rowCrownAccents, rowCrownProfile, type RowCrown } from './houseLine/crownProfile.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -49,6 +52,9 @@ export type RoofPlan = {
   /** A pre-1940 saddle (canal, c19) whose ridge turns across its street front when a long side is the front
    *  (streetRidge.ts); `gables` are the crowns of the second and later split saddles. Absent = never turned. */
   streetRidge?: { gables: GableShape[] };
+  /** The ridge direction 3DBAG measured (degrees counter-clockwise from east, 0-180, `roofs/ridgeAxis.ts`), when the pand's
+   *  roof is a clean saddle. The piece is drawn along it and the street guess (`streetRidge`) never turns it away. */
+  ridgeDeg?: number;
   /** Roof rise above the eaves, metres (for a gable plate, the roof's own rise; the plate stands higher). */
   riseM: number;
   /** Source-admitted crown geometry must fit the native total-height envelope. */
@@ -76,6 +82,8 @@ export type RoofPlan = {
   keepLid?: boolean;
   /** The roof box is larger than the footprint (a cut corner, a notch, a skewed row): cut the slopes at the walls and close them. */
   clipToOutline?: boolean;
+  /** Lane 1 (houseLine/crownProfile.ts, rowFront flag): a front record's measured crown, drawn in place of `gable`'s profile. */
+  rowCrown?: RowCrown;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -299,7 +307,7 @@ function exteriorGableEnds(rect: Rect, ring: readonly Vec2[]): [boolean, boolean
  * for the plain flat lid. Rectangles get `planRoof`; convex outlines can get a
  * perimeter roof, concave wings get inscribed pieces, and flat periods a parapet.
  */
-export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string, year?: number | null, measured?: GableShape | null): RoofPlan | null {
+export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string, year?: number | null, measured?: GableShape | null, ridgeDeg?: number | null): RoofPlan | null {
   if (minHeightM > 0.5 || heightM < 6.5) return null;
   const pts = openRing(ring);
   if (pts.length < 4) return null;
@@ -307,9 +315,12 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
   const simple = !!rect && rect.coverage >= 0.88 && rect.maxDev <= 1.0;
   const tagged = tag && TAGGED[tag] ? tag : undefined;
   if (simple) {
-    const plan = planRoof(id, style, heightM, minHeightM, rect, tagged, year, measured);
+    const planned = planRoof(id, style, heightM, minHeightM, rect, tagged, year, measured);
+    // 3DBAG's measured ridge outranks the box's long axis and the street guess (roofs/ridgeAxis.ts).
+    const along = planned ? alongMeasuredRidge(rect!, planned, heightM, measured ? null : ridgeDeg) : null;
+    const plan = along?.plan ?? planned;
     if (plan) {
-      const out: RoofPlan = { ...plan, pieces: [{ rect: rect!, plan }] };
+      const out: RoofPlan = { ...plan, pieces: [{ rect: along?.rect ?? rect!, plan }] };
       // A roof box over a cut corner or a skewed wall hangs over the street: cut it at the walls.
       // Gable ends are warped onto their own walls by the mesh, so a gable only measures its long sides.
       const endsWarped = ['pitched', 'halfHipped', 'mansard'].includes(plan.kind);
@@ -352,14 +363,16 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
           }
           return finishFlat(id, style, heightM, pts, tagged);
         }
-        const mainPlan = plan.kind === 'gable' ? { ...plan, gableEnds: exteriorGableEnds(ins.main, pts) } : plan;
-        const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan: mainPlan }];
+        const al = alongMeasuredRidge(ins.main, plan, heightM, measured ? null : ridgeDeg);
+        const mainRect = al?.rect ?? ins.main, mainBase = al?.plan ?? plan;
+        const mainPlan = mainBase.kind === 'gable' ? { ...mainBase, gableEnds: exteriorGableEnds(mainRect, pts) } : mainBase;
+        const pieces: RoofPlan['pieces'] = [{ rect: mainRect, plan: mainPlan }];
         if (ins.second) {
           const w = ins.second, wingKind: RoofKind = plan.kind === 'hipped' || plan.kind === 'school' && w.wid >= 6 ? plan.kind : 'pitched';
           const riseM = Math.min(plan.riseM, riseFor(wingKind, w.wid));
           if (heightM - riseM >= 4.5) pieces.push({ rect: w, plan: { ...plan, kind: wingKind, gable: 'plain', riseM, dormers: false, seed: `${id}:wing`, chimney: false, shutters: undefined } });
         }
-        return { ...plan, pieces, keepLid: true };
+        return { ...mainBase, pieces, keepLid: true };
       }
     }
   }
@@ -376,6 +389,28 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
     }
   }
   return finishFlat(id, style, heightM, pts, tagged);
+}
+
+/** Kinds whose ridge direction a measured 3DBAG axis may set (a hip has no single ridge to be wrong about). */
+const MEASURED_RIDGE_KINDS: ReadonlySet<RoofKind> = new Set<RoofKind>(['gable', 'pitched', 'mansard', 'halfHipped']);
+const rectAxisDeg = (r: Pick<Rect, 'ux' | 'uy'>): number => ((Math.atan2(r.uy, r.ux) * 180 / Math.PI) % 180 + 180) % 180;
+
+/**
+ * Draw a saddle along the ridge 3DBAG measured. The box's long axis is only a guess (feedback 2026-11-13, Jan
+ * Hanzenstraat and Bilderdijkkade: 13 of 18 pitched houses within 70 m ran their ridge across the street where 3DBAG
+ * has it along). Turned, the span is the old box length, so the rise follows it (the walls were lowered to the plan's
+ * rise); a turned span wider than TURN_MAX_FRONT_M or a rise that would leave the wall under 4.5 m keeps the guess.
+ * Null: no measurement, a kind with no single ridge, or the guess could not be turned (nothing changes then).
+ */
+export function alongMeasuredRidge(rect: Rect, plan: RoofPlan, heightM: number, ridgeDeg: number | null | undefined): { rect: Rect; plan: RoofPlan } | null {
+  if (ridgeDeg === null || ridgeDeg === undefined || !Number.isFinite(ridgeDeg) || !MEASURED_RIDGE_KINDS.has(plan.kind)) return null;
+  const deg = ((ridgeDeg % 180) + 180) % 180;
+  if (axisGapDeg(rectAxisDeg(rect), deg) <= 45) return { rect, plan: { ...plan, ridgeDeg: deg } };
+  const turned = turnRect(rect);
+  if (turned.wid > TURN_MAX_FRONT_M) return { rect, plan: { ...plan, ridgeDeg: deg } }; // too wide for one saddle: meshPieces splits it into bays
+  const riseM = Math.min(riseFor(plan.kind, turned.wid), heightM - 4.5);
+  if (riseM < 1.2) return null;
+  return { rect: turned, plan: { ...plan, riseM, ridgeDeg: deg } };
 }
 
 /** No pitched roof: the flat lid, or a parapet in the flat-roofed periods. */
@@ -697,7 +732,7 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
 
   const ov = 0.3, drop = ov * (R / (W / 2));
   const surfV = (v: number) => R * (1 - Math.abs(v) / (W / 2));
-  const cornice = plan.kind === 'gable' && plan.gable === 'cornice';
+  const cornice = plan.kind === 'gable' && plan.gable === 'cornice' && !plan.rowCrown;
   if (plan.kind === 'halfHipped' || cornice) {
     const zc = cornice ? corniceHeight(R) : R * 0.55, vc = (W / 2) * (1 - zc / R);
     halfHipSlopes(s, L, W, R, zc, ov);
@@ -731,6 +766,12 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     if (plan.kind === 'pitched' || !exterior || rear) {
       s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), 'plate', [e, 0, 0]);
       if (accents && exterior && !rear) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+      continue;
+    }
+    if (plan.rowCrown) {
+      const prof = rowCrownProfile(plan.rowCrown, W, R);
+      gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
+      if (accents) rowCrownAccents(s, plan.rowCrown, prof, f, e, W, R, trim);
       continue;
     }
     const prof = gableProfile(plan.gable, W, R);
@@ -1096,6 +1137,15 @@ export function roofPiecesForOutline(outer: readonly number[][], origin: { lng: 
 function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, mapRect: (r: Rect) => Rect, facing: StreetFacing | undefined): Array<{ rect: Rect; plan: RoofPlan }> {
   return pieces.flatMap(piece => {
     const rect = mapRect(piece.rect);
+    // A measured ridge is never street-turned. Where its ends meet no street but a long side does, the ridge runs along
+    // the street and the ornamental end crown (a gable front) has no street end to stand on: a plain pitched roof.
+    if (piece.plan.ridgeDeg !== undefined) {
+      const sees = (r: Rect) => !!facing && gableEndWalls(r).some(w => facing(w) < Infinity);
+      return (turnRidgeToAxis(rect, piece.plan, piece.plan.ridgeDeg) ?? [{ rect, plan: piece.plan }]).map(b => {
+        const alongStreet = b.plan.kind === 'gable' && !!facing && !sees(b.rect) && sees(turnRect(b.rect));
+        return alongStreet ? { rect: b.rect, plan: { ...b.plan, kind: 'pitched' as const, shutters: undefined, shutterHex: undefined } } : b;
+      });
+    }
     const turned = facing && pieces.length === 1 && !plan.keepLid && !plan.sourceCrownFront ? turnRidgeToStreet(rect, piece.plan, facing) : null;
     return turned ?? [{ rect, plan: piece.plan }];
   });
@@ -1131,11 +1181,18 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
   const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
   const measured = typeof p.monumentGable === 'string' && (GABLE_SHAPES as readonly string[]).includes(p.monumentGable) ? p.monumentGable as GableShape : null;
-  const plan = planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured);
+  const plan = planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured, Number.isFinite(Number(p.roofRidgeDeg)) && p.roofRidgeDeg !== null && p.roofRidgeDeg !== '' ? Number(p.roofRidgeDeg) : null);
   const g = feature.geometry as { type: string; coordinates: number[][][] | number[][][][] };
   const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
   // A perimeter deck must not cover an open courtyard.
-  return plan?.perimeterInsetM !== undefined && polygon.length > 1 ? null : plan;
+  if (plan?.perimeterInsetM !== undefined && polygon.length > 1) return null;
+  // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
+  // no chimney stub or dice dormers through it.
+  if (plan && plan.kind === 'gable' && isRowCrown(p.rowCrown) && Number(p.rowCrownRoofRiseM) > 0) {
+    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false });
+    return { ...crowned(plan), ...(plan.pieces ? { pieces: plan.pieces.map(pc => ({ rect: pc.rect, plan: crowned(pc.plan) })) } : {}) };
+  }
+  return plan;
 }
 
 /**
@@ -1150,7 +1207,7 @@ function decoratedRoofPlan(feature: GeoFeature): Pick<RoofPlan, 'kind' | 'riseM'
   const geometry = feature.geometry;
   if (!geometry || typeof geometry !== 'object') return roofPlanForFeature(feature);
   const p = feature.properties;
-  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
+  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable, p.roofRidgeDeg].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
   let byKey = decoratedPlans.get(geometry);
   if (!byKey) decoratedPlans.set(geometry, byKey = new Map());
   if (byKey.has(key)) return byKey.get(key)!;

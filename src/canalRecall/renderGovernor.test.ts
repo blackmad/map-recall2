@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { RenderGovernor, governMapRender, GAP_MS, chooseTier, TIER_FRAME_MS, TIER_SETTINGS, type TierProbe } from './renderGovernor';
+import { RenderGovernor, governMapRender, GAP_MS, chooseTier, retier, TIER_FRAME_MS, TIER_SETTINGS, type TierProbe } from './renderGovernor';
 
 const feed = (g: RenderGovernor, ms: number, frames: number) => {
   const steps = [];
@@ -172,4 +172,38 @@ test('tier choice: only a missed probe budget or a software GPU lowers it; ?tier
   assert.deepEqual(TIER_SETTINGS.low.ground, { detail: 'touch', near: 'all', ring: 'view' });
   assert.equal(TIER_SETTINGS.mid.dprCap, 1.5);
   assert.equal(TIER_SETTINGS.low.dprCap, 1);
+});
+
+// Named regression (lane LS, 2026-11-13, reviewer on "?engine=own SUPER jerky", machine load 30-48): the tier was
+// chosen once from a boot probe and the governor never left it, so a start on a busy machine held a retina screen at
+// 1x/1.5x with touch detail for the session. A start under load must end at the idle machine's tier.
+test('tier re-probe: a start under load ends at the idle machine\'s tier', () => {
+  const idle: TierProbe = { frameMs: 1.9, gpu: 'ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro)', deviceMemory: 8, hardwareConcurrency: 14, dpr: 2, coarse: false };
+  const busy = { ...idle, frameMs: TIER_FRAME_MS.low + 5 };
+  const idleTier = chooseTier(idle).tier;
+  for (const boot of [busy, { ...idle, frameMs: TIER_FRAME_MS.mid + 1 }]) {
+    const started = chooseTier(boot);
+    assert.notEqual(started.tier, idleTier);
+    const raised = retier(started, idle);
+    assert.equal(raised?.tier, idleTier);
+    assert.match(raised!.reasons.at(-1)!, /re-probe 1\.9 ms raised (low|mid)/);
+    // The governor's ceiling follows: straight to the new cap. A machine still slow there steps down from it, and that
+    // down straight after the raise is a bounce like any other: it stays down.
+    const g = new RenderGovernor({ initialPixelRatio: 1, maxPixelRatio: TIER_SETTINGS[started.tier].dprCap, settleMs: 0 });
+    assert.deepEqual(g.raiseCeiling(Math.min(2, TIER_SETTINGS[raised!.tier].dprCap)), { kind: 'pixelRatio', from: 1, to: 2, p75Ms: 0 });
+    assert.equal(g.pixelRatio, 2);
+    feed(g, 30, 180);
+    assert.ok(g.pixelRatio < 2);
+    g.frame(0);
+    const down = g.pixelRatio;
+    feed(g, 10, 90 * 8);
+    assert.equal(g.pixelRatio, down);
+  }
+  // Only upwards, and never for an asked tier, a software renderer, or a still-slow machine.
+  assert.equal(retier({ tier: 'mid', reasons: ['probe 9 ms > 8'] }, busy), null);
+  assert.equal(retier(chooseTier(idle, 'low'), idle), null);
+  assert.equal(retier({ tier: 'low', reasons: ['software renderer'] }, idle), null);
+  assert.equal(retier({ tier: 'high', reasons: [] }, idle), null);
+  // A fixed ?dpr= never moves.
+  assert.equal(new RenderGovernor({ initialPixelRatio: 1, fixedPixelRatio: true, maxPixelRatio: 1 }).raiseCeiling(2), null);
 });

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012182856",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182856/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "heads",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "low iron balconettes across every upper window"
+  },
+  {
+   "component": "window",
+   "what": "a tall white frieze with large consoles under the cornice"
+  }
+ ],
+ "notes": "A café parasol hides the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

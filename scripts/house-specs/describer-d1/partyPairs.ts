@@ -49,6 +49,13 @@ export function similar(pa: Probe, pb: Probe): boolean {
     && !!pa.drawn && !!pb.drawn && Math.abs(pa.drawn.runM - pb.drawn.runM) <= SIMILAR.widthM && Math.abs(pa.drawn.exposedM - pb.drawn.exposedM) <= SIMILAR.heightM;
 }
 
+/** Build year within 3 and drawn street-run width within 0.3 m: PR1 `similar` without the exposed-height test (D1-fix twin guard:
+ *  3DBAG exposed height splits real mirrored pairs, 168043 / 168096 at 13.9 vs 16.6 m). */
+export function similarWidthYear(pa: Probe, pb: Probe): boolean {
+  return pa.year !== null && pb.year !== null && Math.abs(pa.year - pb.year) <= SIMILAR.yearY
+    && !!pa.drawn && !!pb.drawn && Math.abs(pa.drawn.runM - pb.drawn.runM) <= SIMILAR.widthM;
+}
+
 /** Same-source comparison: 'same' when every structure field both carry agrees and the core fields are all carried;
  *  'different' when a core field differs; null otherwise (too little read to say). */
 export function labelVerdict(a: Reading, b: Reading): 'same' | 'different' | null {

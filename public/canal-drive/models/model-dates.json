@@ -1351,6 +1351,11 @@
       "version": "a86f1820eeee2afc",
       "dateSource": "asset-update"
     },
+    "de-bonte-zwaan": {
+      "updatedAt": "2026-11-13T22:25:23.781Z",
+      "version": "b15629288e6eedf3",
+      "dateSource": "asset-update"
+    },
     "de-burcht": {
       "updatedAt": "2026-11-01T20:52:40.722Z",
       "version": "1768ecdf65823a24",
@@ -1427,18 +1432,18 @@
       "dateSource": "asset-update"
     },
     "de-hallen": {
-      "updatedAt": "2026-10-20T10:12:23.660Z",
-      "version": "00dccd677959bdce",
+      "updatedAt": "2026-11-13T21:37:02.056Z",
+      "version": "7c392a9ac9c771d5",
       "dateSource": "asset-update"
     },
     "de-hallen.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.340Z",
-      "version": "2c243d0fadd8d716",
+      "updatedAt": "2026-11-13T21:39:23.924Z",
+      "version": "ac50d5a406319935",
       "dateSource": "asset-update"
     },
     "de-hallen.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.144Z",
-      "version": "85a5ac84a45fbf50",
+      "updatedAt": "2026-11-13T21:39:24.165Z",
+      "version": "4e8e94b5a73992e1",
       "dateSource": "asset-update"
     },
     "de-krakeling": {
@@ -2789,6 +2794,11 @@
     "hortus-greenhouses.lod2": {
       "updatedAt": "2026-11-07T14:08:58.158Z",
       "version": "38ed375a7fd56b8d",
+      "dateSource": "asset-update"
+    },
+    "hotel-boat-and-co": {
+      "updatedAt": "2026-11-13T22:25:23.904Z",
+      "version": "60d217b900023fb2",
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe": {
@@ -4294,6 +4304,16 @@
     "nieuw-engeland": {
       "updatedAt": "2026-11-13T12:45:10.386Z",
       "version": "99f4007b7bd0d0f5",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod1": {
+      "updatedAt": "2026-11-13T12:45:19.174Z",
+      "version": "0d8a07bc30427c5e",
+      "dateSource": "asset-update"
+    },
+    "nieuw-engeland.lod2": {
+      "updatedAt": "2026-11-13T12:45:19.806Z",
+      "version": "1f76f66b23c3c729",
       "dateSource": "asset-update"
     },
     "nieuwe-kerk": {

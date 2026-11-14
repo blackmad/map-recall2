@@ -40,6 +40,7 @@ import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { existsSync, statSync } from 'node:fs';
 import { probeSpot } from './probe-doubled-lanes.ts';
+import { bridgeFeedbackRegressions } from './bridge-feedback-pins.ts';
 import { writeVsOrtho } from './road-vs-ortho.ts';
 import { OrthoTiles } from './ortho.ts';
 import { bareLandCell } from './render-road-sources.ts';
@@ -302,6 +303,7 @@ async function main(): Promise<void> {
   if (process.argv.includes('--crossings')) { await crossingRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--relief')) { await reliefRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--rails')) { await railRegressions(); if (failed) process.exit(1); return; }
+  if (process.argv.includes('--bridge-feedback')) { await bridgeFeedbackRegressions(readExtract, check); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
@@ -482,6 +484,7 @@ async function main(): Promise<void> {
   }
   await deckTopRegressions();
   await railingRegressions();
+  await bridgeFeedbackRegressions(readExtract, check);
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();

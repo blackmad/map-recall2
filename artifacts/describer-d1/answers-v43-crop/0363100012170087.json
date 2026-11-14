@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012170087",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170087/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "1": "casement-small-panes"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "doorBay",
+  "finish",
+  "sills",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white painted timber band with two small-paned windows sits directly over the restaurant shopfront and its fascia, as its own storey"
+  }
+ ],
+ "notes": "The middle front is cut off on the left side and at the top; only the shoulder of a curved gable and one attic window are visible, so crown and bays are not read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

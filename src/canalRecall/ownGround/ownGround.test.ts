@@ -32,7 +32,7 @@ import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, 
 import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, wayDeckGroups, wayDeckProfile, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
 import { pointInRing, canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
-import { binByBase, footprintBase, liftRanges } from './placement';
+import { binByBase, drapeFoot, drapeRange, DRAPE_MIN_M, DRAPE_SINK_M, footprintBase, frontBase, FRONT_MAX_RAISE_M, liftRanges } from './placement';
 import { CAP_M, RAIL_VIADUCTS, STRIP_M, TOP_LIFT_M, capViaductFloor, floorZone, insideRing, planarRing, viaductMesh, type RailViaduct } from './railViaducts';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
@@ -539,6 +539,25 @@ test('way decks over a hole (Jan Evertsenstraat, OSM 323258135): the deck runs o
   assert.ok(!wayDeckProfile('OSM1', 'test', [[12, 0], [31, 0]], 6, wet, () => false, hole)!.under, 'the way ends at the quay');
 });
 
+test('way decks over a hole run on to the top of the bank (Lelylaan, OSM 7382983, 07ec0473): not half-way up its climb', () => {
+  // The canal x 20..30; the bridge way 12..45; the west bank 1, the underpass −1.5 to x 45, then the DTM climbs at 40 %
+  // to 3 at x 56.25 (an embankment the ground filter dropped), level beyond.
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[12, 0], [45, 0]];
+  const climb = (x: number) => (x <= 20 ? 1 : x < 45 ? -1.5 : Math.min(3, -1.5 + 0.4 * (x - 45)));
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, climb)!;
+  const end = p.x[0] + p.deck[1];
+  assert.ok(end > 56 && end < 59, `deck ends at x ${end.toFixed(1)} (the top of the climb at 56.25)`);
+  // HOLE_CLIMB_GRADE off: the first station within HOLE_M of the west bank, half-way up (x ~ 49).
+  const before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, climb, false, false)!;
+  const was = before.x[0] + before.deck[1];
+  assert.ok(was > 48 && was < 52, `without the climb rule the deck ends at x ${was.toFixed(1)}`);
+  // A bank that climbs at an approach grade (8 %) stops where it did.
+  const gentle = (x: number) => (x <= 20 ? 1 : x < 45 ? -1.5 : Math.min(3, -1.5 + 0.08 * (x - 45)));
+  const g = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle)!, gb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle, false, false)!;
+  assert.equal(g.deck[1], gb.deck[1], 'a gentle bank keeps its end');
+});
+
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
   // The footprint along +x (0–21.5 m, 6 m wide), the movable way 4.4–17.1 m, the fixed ways beyond it.
   const ring: Vec2[] = [[0, -3], [21.5, -3], [21.5, 3], [0, 3]];
@@ -959,6 +978,42 @@ test('model bases: footprint minimum, floor binning, per-building range lift', (
   const pos = new Float32Array(12);
   assert.equal(liftRanges(pos, [{ id: 'a', start: 0, count: 2 }, { id: 'b', start: 2, count: 2 }], id => (id === 'a' ? 1.5 : undefined)), 1);
   assert.deepEqual([pos[2], pos[5], pos[8]], [1.5, 1.5, 0]);
+});
+
+test('front bases (lane F4): the street wall level over the yards, capped; feet drape to the relief, re-lifts keep them', () => {
+  // A row house, street to the south (y < 0) 2.5 m over its yard to the north: the Postjesweg profile at the Kinkerbrug.
+  const street = (x: number, y: number) => (y < 0 ? 1 : y > 10 ? -1.5 : 1 - 0.25 * y);
+  const ring: Vec2[] = [[0, 0], [6, 0], [6, 10], [0, 10]];
+  const low = footprintBase(ring, street), fb = frontBase(ring, street);
+  assert.equal(low.base, -1.5);
+  assert.equal(fb.base, 1, 'the street side wins (quantile of the outside samples)');
+  assert.equal(fb.low, -1.5);
+  assert.equal(frontBase([...ring].reverse(), street).base, 1, 'either ring orientation');
+  // Flat ground: the same base as before, nothing draped.
+  const flat = () => 0.4;
+  assert.equal(frontBase(ring, flat).base, 0.4);
+  assert.equal(drapeFoot(3, 10, 0.4, flat), 0.4);
+  assert.equal(drapeFoot(3, 10, 0.4, () => 0.4 - DRAPE_MIN_M + 0.01), 0.4, 'within DRAPE_MIN_M: no drop');
+  // An embankment beside a low house: never more than FRONT_MAX_RAISE_M over the lowest relief.
+  const dike = (x: number, y: number) => (y < 0 ? 8 : 0);
+  assert.equal(frontBase(ring, dike).base, FRONT_MAX_RAISE_M);
+  // Feet: the yard wall's foot drops to the yard (less the sink), the street wall's stays at the base, the rest moves.
+  assert.ok(Math.abs(drapeFoot(3, 10, 1, street) - (-1.5 - DRAPE_SINK_M)) < 1e-9);
+  assert.equal(drapeFoot(3, 0, 1, () => 1.04), 1, 'a foot on the street stays at the base');
+  const pos = new Float32Array([3, 0, 0, 3, 10, 0, 3, 10, 4]);
+  assert.equal(drapeRange(pos, 0, 3, 0, 1, street), 1);
+  assert.deepEqual([pos[2], +pos[5].toFixed(4), pos[8]], [1, -1.6, 5]);
+  // A re-lift to 1.5 (over the street now): the roof moves, both feet stay on the relief (a drape only lowers).
+  drapeRange(pos, 0, 3, 1, 1.5, street);
+  assert.deepEqual([+pos[2].toFixed(4), +pos[5].toFixed(4), pos[8]], [0.9, -1.6, 5.5]);
+  // No foot function: a plain lift, as before.
+  const plain = new Float32Array([3, 10, 0, 3, 10, 4]);
+  drapeRange(plain, 0, 2, 0, 1, null);
+  assert.deepEqual([...plain].filter((_, i) => i % 3 === 2), [1, 5]);
+  // On an Int16 decimetre grid (a baked shell): grid steps, feet on the grid.
+  const grid = new Int16Array([30, 100, 0, 30, 100, 40]);
+  drapeRange(grid, 0, 2, 0, 1, street, 0.1);
+  assert.deepEqual([grid[2], grid[5]], [Math.round((-1.5 - DRAPE_SINK_M) / 0.1), 50]);
 });
 
 test('shared-frame adapter maps the ground frame to Mercator like the facades', () => {

@@ -111,6 +111,8 @@ class RoadNetwork {
     this.roadIndex = surfaceIndex;
     this.numCheckpoints = 10;
     this._frameCache = new Map();
+    // Per-frame road queries fill this in place (roadSurface.ts RoadQueryScratch): no array or object per query.
+    this._roadScratch = SURFACE.RoadQueryScratch ? new SURFACE.RoadQueryScratch() : null;
     this._graphCache = routingGraph;
     this._routeMastery = {};
     this._homeBias = null;
@@ -221,15 +223,20 @@ class RoadNetwork {
     }
     let minDist = Infinity;
     let nearestWidth = DEFAULT_ROAD_WIDTH;
-    const spans = SURFACE.roadsNear(this.roadIndex, x, y);
-    for (const road of spans) {
+    const scratch = this._roadScratch;
+    const spans = scratch ? scratch.spans : SURFACE.roadsNear(this.roadIndex, x, y);
+    const spanCount = scratch ? SURFACE.roadsNearInto(this.roadIndex, x, y, 1, scratch) : spans.length;
+    for (let i = 0; i < spanCount; i++) {
+      const road = spans[i];
       const d = this._pointToSegDist(x, y, road.a, road.b);
       if (d < minDist) { minDist = d; nearestWidth = road.width; }
     }
     // The inside of a corner is filleted (see `filletedExcess`), so a cut
     // corner reads as asphalt/curb rather than dragging like grass.
     if (SURFACE.filletedExcess && Number.isFinite(minDist) && minDist > nearestWidth - SURFACE.CURB_INNER_MARGIN) {
-      const excess = SURFACE.filletedExcess(SURFACE.contactsAt(spans, x, y), x, y);
+      const excess = scratch
+        ? SURFACE.filletedExcess(scratch.contacts, x, y, undefined, SURFACE.contactsInto(scratch, x, y))
+        : SURFACE.filletedExcess(SURFACE.contactsAt(spans, x, y), x, y);
       if (excess < minDist - nearestWidth) minDist = nearestWidth + excess;
     }
     let surface = SURFACE.classifySurface(minDist, nearestWidth);
@@ -259,15 +266,19 @@ class RoadNetwork {
     // A 5x5 ring rather than the 3x3 the surface check uses: this one has to
     // see the *cross* street at a junction, not only the one underfoot, so the
     // heading rule has something to choose between.
-    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
-    const best = this._preferredCorridorName && SURFACE.pickRoadContactPreferName
-      ? SURFACE.pickRoadContactPreferName(
-        contacts,
-        (segIdx) => (this.segments[segIdx] && this.segments[segIdx].name) || '',
-        this._preferredCorridorName,
-        preferredAngle,
-      )
-      : SURFACE.pickRoadContact(contacts, preferredAngle);
+    const preferName = this._preferredCorridorName && SURFACE.pickRoadContactPreferName;
+    const scratch = preferName ? null : this._roadScratch;
+    const best = scratch
+      // The pick is copied: the scratch is overwritten by the next query, and this result is cached and handed out.
+      ? SURFACE.copyContact(SURFACE.pickRoadContact(scratch.contacts, preferredAngle, SURFACE.nearbyContacts(this.roadIndex, x, y, 2, scratch)))
+      : preferName
+        ? SURFACE.pickRoadContactPreferName(
+          SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y),
+          (segIdx) => (this.segments[segIdx] && this.segments[segIdx].name) || '',
+          this._preferredCorridorName,
+          preferredAngle,
+        )
+        : SURFACE.pickRoadContact(SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y), preferredAngle);
 
     this._frameCache.set(cacheKey, best);
     return best;
@@ -293,18 +304,23 @@ class RoadNetwork {
     const cacheKey = `g:${qx},${qy}:${preferredAngle == null ? '' : Math.round(preferredAngle * 12)}`;
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
-    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
-    let best = SURFACE.pickGuardContact(contacts, preferredAngle, { x, y });
+    let best = this._guardPick(x, y, preferredAngle, 2);
     // Open squares (Dam, Leidseplein) are paving, not off-road: inside one the
     // nearest corridor is reported as underfoot. See pedestrianAreas.ts.
     if (this.plazaIndex && SURFACE.plazaGuardContact) {
-      if (!best && SURFACE.plazaAt(this.plazaIndex, x, y)) {
-        best = SURFACE.pickGuardContact(SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 4), x, y), preferredAngle, { x, y });
-      }
+      if (!best && SURFACE.plazaAt(this.plazaIndex, x, y)) best = this._guardPick(x, y, preferredAngle, 4);
       best = SURFACE.plazaGuardContact(best, this.plazaIndex, x, y);
     }
     this._frameCache.set(cacheKey, best);
     return best;
+  }
+
+  // Contacts within `ring` cells, picked for the guard. A scratch pick is copied: the result is cached and handed out.
+  _guardPick(x, y, preferredAngle, ring) {
+    const scratch = this._roadScratch;
+    if (!scratch) return SURFACE.pickGuardContact(SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, ring), x, y), preferredAngle, { x, y });
+    const count = SURFACE.nearbyContacts(this.roadIndex, x, y, ring, scratch);
+    return SURFACE.copyContact(SURFACE.pickGuardContact(scratch.contacts, preferredAngle, { x, y }, count));
   }
 
   // Name of the road the player is on. Prefer `preferredAngle` (player heading)

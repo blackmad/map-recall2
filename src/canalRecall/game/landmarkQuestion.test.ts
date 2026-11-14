@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  bumpSessionCounter, hasBeenNamed, landmarkWithheldNames, inViewCone, landmarkChoices, landmarkQuestionsEnabled, mayAskLandmark,
+  besideLandmark, bumpSessionCounter, hasBeenNamed, landmarkWithheldNames, inViewCone, landmarkChoices, landmarkQuestionsEnabled, mayAskLandmark,
   noteSighting, pickLandmarkQuestion, questionContext, readSightings, saveSightings, sightingCredit, type QuestionLandmark,
 } from './landmarkQuestion.ts';
 import { isBuildingLandmark, landmarkKind } from './landmarkKind.ts';
@@ -29,6 +29,21 @@ test('view cone: ahead within 150 m yes, behind or too far no, reversing looks b
   assert.equal(inViewCone(rider, { x: 200 * PX, y: 0 }, 150 * PX), false);
   assert.equal(inViewCone(rider, { x: 10 * PX, y: 100 * PX }, 150 * PX), false, '84° off the heading');
   assert.equal(inViewCone({ ...rider, speed: -20 }, { x: -100 * PX, y: 0 }, 150 * PX), true);
+});
+
+test('asked only right beside the building, never from down the street (2026-11-13, FOAM from Vijzelstraat)', () => {
+  // Street point and building point together, 20 m ahead: beside.
+  assert.equal(besideLandmark(rider, { x: 20 * PX, y: 0 }, PX), true);
+  // Alongside on the left, past the old 55° cone: still beside.
+  assert.equal(besideLandmark(rider, { x: 5 * PX, y: -15 * PX, ownX: 5 * PX, ownY: -30 * PX }, PX), true);
+  // 110 m ahead, where the old 150 m radius asked: not yet.
+  assert.equal(besideLandmark(rider, { x: 110 * PX, y: 0 }, PX), false);
+  // Street point snapped next to the rider, the building itself round the corner 120 m off.
+  assert.equal(besideLandmark(rider, { x: 10 * PX, y: 0, ownX: 10 * PX, ownY: 120 * PX }, PX), false);
+  // A large building whose point sits 60 m deep in its plot, its street point beside the rider.
+  assert.equal(besideLandmark(rider, { x: 0, y: 20 * PX, ownX: 0, ownY: 60 * PX }, PX), true);
+  // Already passed: behind the rider.
+  assert.equal(besideLandmark(rider, { x: -30 * PX, y: 2 * PX }, PX), false);
 });
 
 test('picks the nearest unasked landmark in view', () => {

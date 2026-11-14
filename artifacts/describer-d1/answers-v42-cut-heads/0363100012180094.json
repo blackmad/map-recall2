@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012180094",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012180094.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": "not-visible",
+ "low": [
+  "bays",
+  "storeyParts.souterrain",
+  "basement",
+  "cornice",
+  "sameAs",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "frieze under the cornice with small white blocks and roundels"
+  }
+ ],
+ "notes": "Right third hidden by a modern building's projecting glass erker and the ground by a van; left axis blurred by a lens smudge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

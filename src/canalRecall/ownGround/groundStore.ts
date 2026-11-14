@@ -86,7 +86,7 @@ import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
 import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, WAY_DECK_GROUP_M, dryWayDeckProfile, narrowDryDeck, isWayDeckFamily, crossesTrack, runOverEndHoles, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
-import { DRY_EDGE_M, edgesBox, surveyDeckEdges } from './bridgeGaps.js';
+import { DRY_EDGE_M, edgesBox, surveyDeckCaps, surveyDeckEdges } from './bridgeGaps.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -333,7 +333,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; /** `openGround`: load open-ground-v1 (groundSurface.ts); default on, off: `?openGround=0` (the lane's before). */ openGround?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Road surfaces carried across bridges without gaps (lane road-bridge-gaps 2026-11-01, issue #178); default on, off: `?bridgeGaps=0` (the A/B's before). */ bridgeGaps?: boolean; /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on, off: `?bridgeCarry=0`. */ bridgeCarry?: boolean; /** One red owner per junction mouth, red on its own plane (lane R5-C1 issue #262); default on, off: `?redDedupe=0`. */ redDedupe?: boolean; /** bridgeGaps step 3: way decks for bridge ways over land (wayDecks.ts dryWayDeckProfile); default off (integrator 2026-11-02: slivers and hairlines at the bus station, the IJtunnel trench height), `?dryWayDecks=1` turns it on. */ dryWayDecks?: boolean; /** With dryWayDecks off, the dry way decks of the bridge ways over a railway track only (wayDecks.ts crossesTrack, lane rails-uncover 2026-11-10: the Radarweg bridge over the Sloterdijk rail trench); default on, off: `?railDecks=0` (the before). */ railDecks?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** The crossing register (crossings.ts, lane G3): reviewed records replace inferred cuts, portals and rail spans in their zones; default on (G3 round 2, 2026-11-12), off: `?crossings=0`. */ crossings?: boolean; /** Ground triangles clipped at the tunnel walls (tunnels.ts clipMeshAtCuts, R5-C2); default on, off: `?portalClip=0`. */ portalClip?: boolean; /** The portal clip across a mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269); default on, off: `?portalEnds=0`. */ portalEnds?: boolean; /** A long same-side wall gap in a ramp bridged where the bank carries on (tunnels.ts bridgeBankGaps, #270); default on, off: `?rampGaps=0`. */ rampGaps?: boolean; /** Lane G1 item A: read open-ground-v2 (cut free of the road polygons) where published; default on, off: `?openGroundClip=0`. */ openGroundClip?: boolean; /** Lane G1 item B: the roads-v1 min-area gate only for compact triangles; default on, off: `?roadStrips=0`. */ roadStrips?: boolean; /** Lane G1 item D: the land grid's float bound (drape.ts floatBoundGrid); default on, off: `?floatBound=0`. */ floatBound?: boolean; /** Portal sanity (tunnels.ts PORTAL_SANITY, lane G1 #376): mouths only with a tunnel way ahead and both sides bounded, motor ramps bounded both sides, parallel tunnel ways one slot, median slot floor; default on, off: `?portalSanity=0`. */ portalSanity?: boolean; /** roads-v1 version-3 cells (junction slivers merged, roadSlivers.ts) where the manifest publishes them; default on, off: `?roadSlivers=0` reads the version-2 cells. */ roadSlivers?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail cell and manifest fetches retried, a failed cell fetch never cached as "no rails" (groundResidency.ts, #232); default on, off: `?railRetry=0`. */ railRetry?: boolean; /** Rail fetch backoff, ms (groundResidency.ts RAIL_RETRY_MS; tests pass short ones). */ railRetryMs?: readonly number[]; /** The rail manifest's cell keys as the main thread loaded them (the worker is handed them: one source of truth, #232); absent: fetch cells.json. */ railManifest?: readonly string[]; /** Rail corridors in the far ring (farRing.ts); default on, off: `?farRail=0`. */ farRails?: boolean; /** Far rail bands draped on the far land (farRing.ts FAR_RAIL_STEP_M, #232); default on, off: `?farRailDrape=0`. */ farRailDrape?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest, lane rails-class); default on, off: the centreline-crossing test only (for measuring). */ railOnStreet?: boolean; /** Deck spans where a street passes under a track off the bridges (railSpans.ts, lane rails-classb); default on, off: the build before it (for measuring). */ railSpans?: boolean; /** Level crossings ramp the bed at the track's grade (railTracks.ts `ramps`, lane rails-uncover); default on, off: the before (for measuring). */ railRamps?: boolean; /** The deck spans' headroom, metres (railSpans.ts SPAN_HEADROOM_M); measuring only. */ railSpanHeadroom?: number; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Lane R5-A #260 step 4: the water tests use the banded edge index (bandedWaterTest, exact) and the 3×3 planning a cell repeats is shared; default on, off: `?groundPlanShare=0`. */ planShare?: boolean; /** Ground determinism (#260 follow-up): a cell's mesh does not depend on which cells its store prepared before it (way decks planned per bridge component, tunnel cuts per portal cell with the lowest-keyed plan winning an overlap, decks laid on the bare relief, inputs in id order); default on, off: `?groundDeterministic=0` (first plan to reach a way wins). */ deterministic?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; /** `openGround`: load open-ground-v1 (groundSurface.ts); default on, off: `?openGround=0` (the lane's before). */ openGround?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Road surfaces carried across bridges without gaps (lane road-bridge-gaps 2026-11-01, issue #178); default on, off: `?bridgeGaps=0` (the A/B's before). */ bridgeGaps?: boolean; /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on, off: `?bridgeCarry=0`. */ bridgeCarry?: boolean; /** One red owner per junction mouth, red on its own plane (lane R5-C1 issue #262); default on, off: `?redDedupe=0`. */ redDedupe?: boolean; /** bridgeGaps step 3: way decks for bridge ways over land (wayDecks.ts dryWayDeckProfile); default off (integrator 2026-11-02: slivers and hairlines at the bus station, the IJtunnel trench height), `?dryWayDecks=1` turns it on. */ dryWayDecks?: boolean; /** With dryWayDecks off, the dry way decks of the bridge ways over a railway track only (wayDecks.ts crossesTrack, lane rails-uncover 2026-11-10: the Radarweg bridge over the Sloterdijk rail trench); default on, off: `?railDecks=0` (the before). */ railDecks?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** The crossing register (crossings.ts, lane G3): reviewed records replace inferred cuts, portals and rail spans in their zones; default on (G3 round 2, 2026-11-12), off: `?crossings=0`. */ crossings?: boolean; /** Ground triangles clipped at the tunnel walls (tunnels.ts clipMeshAtCuts, R5-C2); default on, off: `?portalClip=0`. */ portalClip?: boolean; /** The portal clip across a mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269); default on, off: `?portalEnds=0`. */ portalEnds?: boolean; /** A long same-side wall gap in a ramp bridged where the bank carries on (tunnels.ts bridgeBankGaps, #270); default on, off: `?rampGaps=0`. */ rampGaps?: boolean; /** Lane G1 item A: read open-ground-v2 (cut free of the road polygons) where published; default on, off: `?openGroundClip=0`. */ openGroundClip?: boolean; /** Lane G1 item B: the roads-v1 min-area gate only for compact triangles; default on, off: `?roadStrips=0`. */ roadStrips?: boolean; /** Lane G1 item D: the land grid's float bound (drape.ts floatBoundGrid); default on, off: `?floatBound=0`. */ floatBound?: boolean; /** Portal sanity (tunnels.ts PORTAL_SANITY, lane G1 #376): mouths only with a tunnel way ahead and both sides bounded, motor ramps bounded both sides, parallel tunnel ways one slot, median slot floor; default on, off: `?portalSanity=0`. */ portalSanity?: boolean; /** roads-v1 version-3 cells (junction slivers merged, roadSlivers.ts) where the manifest publishes them; default on, off: `?roadSlivers=0` reads the version-2 cells. */ roadSlivers?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail cell and manifest fetches retried, a failed cell fetch never cached as "no rails" (groundResidency.ts, #232); default on, off: `?railRetry=0`. */ railRetry?: boolean; /** Rail fetch backoff, ms (groundResidency.ts RAIL_RETRY_MS; tests pass short ones). */ railRetryMs?: readonly number[]; /** The rail manifest's cell keys as the main thread loaded them (the worker is handed them: one source of truth, #232); absent (or a promise that settles null): fetch cells.json. A promise lets a worker start its init before the page has the manifest (gameGround.ts groundEarlyWorkersFlag). */ railManifest?: readonly string[] | PromiseLike<readonly string[] | null>; /** Rail corridors in the far ring (farRing.ts); default on, off: `?farRail=0`. */ farRails?: boolean; /** Far rail bands draped on the far land (farRing.ts FAR_RAIL_STEP_M, #232); default on, off: `?farRailDrape=0`. */ farRailDrape?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest, lane rails-class); default on, off: the centreline-crossing test only (for measuring). */ railOnStreet?: boolean; /** A street far under the bed passes under it, not across at grade (railTracks.ts UNDER_STREET_M, lane R2-A); default on, off: the before (for measuring). */ railUnderStreets?: boolean; /** Short runs off the bridges between bridges are levelled with the decks (railProfile.ts ISLAND_M, lane R2-A); default on, off: the before (for measuring). */ railIslands?: boolean; /** Approaches held level up to their deck's end (railProfile.ts ABUTMENT_M, lane R2-A); default on, off: the before (for measuring). */ railAbutments?: boolean; /** Deck spans where a street passes under a track off the bridges (railSpans.ts, lane rails-classb); default on, off: the build before it (for measuring). */ railSpans?: boolean; /** Level crossings ramp the bed at the track's grade (railTracks.ts `ramps`, lane rails-uncover); default on, off: the before (for measuring). */ railRamps?: boolean; /** The deck spans' headroom, metres (railSpans.ts SPAN_HEADROOM_M); measuring only. */ railSpanHeadroom?: number; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** Deck bodies and tops stop where the survey's deck polygons end short of the half-width over open water (bridgeGaps.ts surveyDeckCaps, lane fb-bridges 2026-11-13); default on, off: `?surveyCaps=0` (the before). */ surveyCaps?: boolean; /** No railing beside a surveyed surface over mapped water (groundCell plein, lane fb-bridges 2026-11-13, the Muntplein); default on, off: `?pleinRails=0`. */ pleinRails?: boolean; /** A way deck over an end hole runs on to the top of the bank's climb (wayDecks.ts HOLE_CLIMB_GRADE, lane fb-bridges 2026-11-13, the Lelylaan); default on, off: `?holeClimb=0`. */ holeClimb?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Lane R5-A #260 step 4: the water tests use the banded edge index (bandedWaterTest, exact) and the 3×3 planning a cell repeats is shared; default on, off: `?groundPlanShare=0`. */ planShare?: boolean; /** Ground determinism (#260 follow-up): a cell's mesh does not depend on which cells its store prepared before it (way decks planned per bridge component, tunnel cuts per portal cell with the lowest-keyed plan winning an overlap, decks laid on the bare relief, inputs in id order); default on, off: `?groundDeterministic=0` (first plan to reach a way wins). */ deterministic?: boolean; /** Ask every init manifest at once, read in the old order (lane LS); default on, off: `?groundParallelInit=0`. */ parallelInit?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -365,6 +365,25 @@ export class GroundStore {
   private loading?: Promise<void>;
 
   private async load(): Promise<void> {
+    // The manifests after the first five were fetched one after another (eight round trips, ~2–3 s of a cold start
+    // under load, lane LS 2026-11-14). With `parallelInit` (default on; off: `?groundParallelInit=0`) every one of them
+    // is asked now, beside the first five, and read in the same order as before, so the store comes out the same.
+    const ask = <T>(on: boolean, path: string): (() => Promise<T | null>) => {
+      if (!on) return () => Promise.resolve(null);
+      const get = () => this.json<T>(path).catch(() => null);
+      if (this.options.parallelInit === false) return get;
+      const asked = get();
+      return () => asked;
+    };
+    const early = {
+      boats: ask<{ boats: { id: string; ring: [number, number][] }[] }>(this.options.moorings !== false, 'houseboats.json'),
+      parks: ask<ParksManifest>(this.options.parks !== false, `${EXTRACTS.parks}/cells.json`),
+      roads: ask<RoadsManifest>(this.options.roads === true, `${EXTRACTS.roads}/cells.json`),
+      marks: ask<RoadMarksManifest>(this.options.roads === true, `${EXTRACTS.marks}/cells.json`),
+      evidence: ask<unknown>(this.options.roads === true, `${EXTRACTS.marks}/${PHOTO_EVIDENCE_FILE}`),
+      courtyards: ask<CourtyardsManifest>(this.options.courtyards !== false, `${EXTRACTS.courtyards}/cells.json`),
+      clipped: ask<OpenGroundManifest>(!(this.options.openGround === false || this.options.prepareOnly || this.options.openGroundClip === false), `${OPEN_GROUND_CLIPPED_EXTRACT}/cells.json`),
+    };
     const [relief, elevation, bridges, manifest, levels] = await Promise.all([
       this.json<GroundIndex>(`${EXTRACTS.relief}/index.json`),
       this.json<unknown>(`${EXTRACTS.water}/index.json`).then(validateIndex),
@@ -372,16 +391,17 @@ export class GroundStore {
       this.json<OsmCellsManifest>(`${EXTRACTS.osm}/cells.json`).catch(() => null),
       this.json<WaterLevels>(`${EXTRACTS.water}/water-levels.json`).catch(() => null),
     ]);
-    const boats = this.options.moorings === false ? null : await this.json<{ boats: { id: string; ring: [number, number][] }[] }>('houseboats.json').catch(() => null);
-    const parks = this.options.parks === false ? null : await this.json<ParksManifest>(`${EXTRACTS.parks}/cells.json`).catch(() => null);
+    const boats = await early.boats();
+    const parks = await early.parks();
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
-    const roads = this.options.roads === true ? await this.json<RoadsManifest>(`${EXTRACTS.roads}/cells.json`).catch(() => null) : null;
+    const roads = await early.roads();
     this.roadCells = new Set(roads?.version === 1 ? roads.cells : []);
     // Version-3 cells (junction slivers merged, roadSlivers.ts) live beside the version-2 ones until `?roadSlivers=0` is retired.
     this.roadCellDir = roads?.version === 1 && this.options.roadSlivers !== false ? roadCellDir(roads) : 'cells';
-    const marks = this.options.roads === true ? await this.json<RoadMarksManifest>(`${EXTRACTS.marks}/cells.json`).catch(() => null) : null;
+    const marks = await early.marks();
     this.markCells = new Set(marks?.version === 1 ? marks.cells : []);
-    if (this.options.rails !== false && this.options.railManifest && this.options.railRetry !== false) this.railCells = new Set(this.options.railManifest);
+    const handed = this.options.rails !== false && this.options.railRetry !== false ? await this.options.railManifest : null;
+    if (handed) this.railCells = new Set(handed);
     else {
       const path = `${EXTRACTS.rail}/cells.json`;
       // A manifest that fails to load turned every rail off for the ride, silently (#232): retried, then logged.
@@ -390,12 +410,12 @@ export class GroundStore {
       this.railCells = new Set(rail?.version === 1 ? rail.cells : []);
     }
     // What the orthophoto backs of the tag-driven paint (photoEvidence.ts): absent → no lane ribbons, no centre dashes.
-    const evidence = this.options.roads === true ? await this.json<unknown>(`${EXTRACTS.marks}/${PHOTO_EVIDENCE_FILE}`).catch(() => null) : null;
+    const evidence = await early.evidence();
     this.evidence = decodePhotoEvidence(isPhotoEvidence(evidence) ? evidence : null);
-    const courtyards = this.options.courtyards === false ? null : await this.json<CourtyardsManifest>(`${EXTRACTS.courtyards}/cells.json`).catch(() => null);
+    const courtyards = await early.courtyards();
     this.courtyardCells = new Set(courtyards?.version === 1 ? courtyards.cells : []);
     // Lane G1 item A: the clipped extract (open-ground-v2) where it is published, unless `?openGroundClip=0`.
-    const clipped = this.options.openGround === false || this.options.prepareOnly || this.options.openGroundClip === false ? null : await this.json<OpenGroundManifest>(`${OPEN_GROUND_CLIPPED_EXTRACT}/cells.json`).catch(() => null);
+    const clipped = await early.clipped();
     if (clipped?.version === 1) this.openGroundDir = OPEN_GROUND_CLIPPED_EXTRACT;
     const openGround = this.options.openGround === false || this.options.prepareOnly ? null : clipped?.version === 1 ? clipped : await this.json<OpenGroundManifest>(`${EXTRACTS.openGround}/cells.json`).catch(() => null);
     this.openGroundCells = new Set(openGround?.version === 1 ? openGround.cells : []);
@@ -566,11 +586,14 @@ export class GroundStore {
    * measured decks placed on it. Decks are placed once and kept (a few
    * hundred at most city-wide; their heights are fixed at placement).
    */
-  async prepareCell(key: string): Promise<void> {
+  async prepareCell(key: string, alone = false): Promise<void> {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M;
     await this.ensureRelief([x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
     await yieldToFrame();
     this.placeDecks(key);
+    // A cell built alone (cellInput `alone`) reads nothing of its neighbours and plans nothing that is kept: way decks
+    // and tunnel cuts are planned once per cell from the 3×3, so a plan made alone would stand for good.
+    if (alone) return;
     // A bridge belongs to the cell of its first station but may reach into
     // this one: place neighbours' decks too, so streets and the rider here
     // see the hump (their approach ends lie within the relief pad).
@@ -759,8 +782,9 @@ export class GroundStore {
     const joined = this.options.wayDeckChains === false ? { ways, members: new Map(ways.map(w => [w.id, [w.id]])) } : joinChains(ways), chained = joined.ways, ground = this.options.wayDeckHoles === false ? undefined : this.deckGround;
     await pace();
     const crossings: ReturnType<typeof wayDeckCrossing>[] = [];
-    for (const w of chained) { crossings.push(wayDeckCrossing(w, wet, claimed, ground)); await pace(); }
-    const { profiles, covered } = groupWayDecks(crossings, wet, ground), dry = new Set<DeckProfile>();
+    const climb = this.options.holeClimb !== false;
+    for (const w of chained) { crossings.push(wayDeckCrossing(w, wet, claimed, ground, climb)); await pace(); }
+    const { profiles, covered } = groupWayDecks(crossings, wet, ground, climb), dry = new Set<DeckProfile>();
     // bridgeGaps step 3 (issue #178): bridge ways over land the survey draws as a deck with no road under it.
     // With step 3 off, only the bridge ways over a railway track (wayDecks.ts crossesTrack, lane rails-uncover): `railDecks`.
     const allDry = this.options.dryWayDecks === true, railDry = !allDry && this.options.railDecks !== false && this.options.rails !== false;
@@ -894,6 +918,8 @@ export class GroundStore {
         const index = await RoadIndex.paced([null, ...cells], [x0 - reach, y0 - reach, x1 + reach, y1 + reach], pacer(this.options.paceMs));
         const edges = surveyDeckEdges(p, (x, y) => index.onDeck(x, y), (x, y) => index.onGround(x, y) && !index.onDeck(x, y));
         if (edges) this.surface.widenDeck(deck, edges, edgesBox(p, edges));
+        // Sides the survey says stop well inside the half-width over open water: the kit and deck top stop there too.
+        if (this.options.surveyCaps !== false) { const caps = surveyDeckCaps(p, (x, y) => index.onDeck(x, y), (x, y) => index.findAll(x, y).length > 0); if (caps) p.caps = caps; }
         this.told('decks:edges', deck.profile.id, t0);
       })();
       this.edgePlans.set(deck.profile.id, plan);
@@ -1177,10 +1203,15 @@ export class GroundStore {
    * Everything a cell build needs, loaded: its relief and decks, the water and
    * OSM of its 3×3 neighbourhood, and the deck footprints near it.
    */
-  async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full'): Promise<CellInput> {
+  /**
+   * `alone` (lane LS 2026-11-14, `?groundFirstAlone=1`): the cell from its own data only, as a stand-in drawn while its
+   * 3×3 neighbourhood loads: no neighbour's roads, water, parks, decks or rails, no way decks or tunnel cuts, so its
+   * edges and bridges are rougher. The full build of the same cell replaces it.
+   */
+  async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full', alone = false): Promise<CellInput> {
     if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas or kerbs and cannot build a cell');
-    await this.prepareCell(key);
-    const around = GroundStore.neighbours(key);
+    await this.prepareCell(key, alone);
+    const around = alone ? [key] : GroundStore.neighbours(key);
     const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround, railsAround, openGroundAround] = await Promise.all([
       this.waterCell(key),
       Promise.all(around.map(k => this.waterCell(k))),
@@ -1234,7 +1265,7 @@ export class GroundStore {
     const input: CellInput = {
       key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.det ? deckOrder(this.decks(key)) : this.decks(key), deckRingsAround, wetGround,
+      decks: this.det ? deckOrder(this.decks(key)) : this.decks(key), deckRingsAround, wetGround, ...(this.options.pleinRails === false ? { pleinRails: false } : {}),
       cuts: this.det ? this.surface.cuts.filter(c => near(c.bbox)).sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : a.bbox[0] - b.bbox[0] || a.bbox[1] - b.bbox[1]) : this.surface.cuts.filter(c => near(c.bbox)),
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       // bridgeGaps: the survey's deck polygons are drawn on the flat footprints around (a polygon's point may lie in a neighbour's).
@@ -1248,7 +1279,7 @@ export class GroundStore {
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       // open-ground-v1 only where the neighbourhood has some: a cell without it builds byte-identical to before.
       ...(openGroundAround.some(o => !!o) ? { openGround: openGroundAround[around.indexOf(key)] ?? null, openGroundAround } : {}),
-      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(railPlatforms.length ? { railPlatforms } : {}), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railBridges === false ? { railBridges: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}), ...(this.options.railOnStreet === false ? { railOnStreet: false } : {}), ...(this.options.railSpans === false ? { railSpans: false } : {}), ...(this.options.railRamps === false ? { railRamps: false } : {}), ...(this.options.railSpanHeadroom !== undefined ? { railSpanHeadroom: this.options.railSpanHeadroom } : {}), ...(this.crossings ? { crossings: true } : {}) } : {}),
+      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(railPlatforms.length ? { railPlatforms } : {}), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railBridges === false ? { railBridges: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}), ...(this.options.railOnStreet === false ? { railOnStreet: false } : {}), ...(this.options.railUnderStreets === false ? { railUnderStreets: false } : {}), ...(this.options.railIslands === false ? { railIslands: false } : {}), ...(this.options.railAbutments === false ? { railAbutments: false } : {}), ...(this.options.railSpans === false ? { railSpans: false } : {}), ...(this.options.railRamps === false ? { railRamps: false } : {}), ...(this.options.railSpanHeadroom !== undefined ? { railSpanHeadroom: this.options.railSpanHeadroom } : {}), ...(this.crossings ? { crossings: true } : {}) } : {}),
       project: p => toLocal(p[0], p[1]),
     };
     this.told('assemble', key, tAssemble);

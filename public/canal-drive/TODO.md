@@ -17,12 +17,42 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ## Belt batch rejection (P0, user 2026-11-13) — rules in `docs/START-HERE-buildings.md` §3a / `docs/house-line.md` §0
 
-- **Placement in the frame.** On Haarlemmerdijk the generic neighbour 167795 is drawn ~1.2 m along the street from its plot in `?engine=own&world=live` frames (the belt sheet); Node mesher, building-tiles and baked shells all put it on the plot. Lane BA (lane/belt-audit-20261113) is framing the six sheet spots on the players' world (default cells), the pre-round-125 commit, and live-scene vertices; then a ~30-house sizing on whichever path is at fault. Rule 8: no acceptance frames on `world=live`.
-- **The five sheet houses** (165073, 169539, 167794, 167816, 167818) are live, pending the players'-world frames; hold or release on that result. 171144 re-frame.
-- **Install-audit fails, held in round 128 (24), fix by cause in the generator (step C):** straight mesh front across a kinked BAG front (16 protrusion), outside polygon >0.5 m² (6, incl. 181808 box over a rounded corner), neighbour intrusion >0.2 m (6), crown changed or dropped (5). `house:publish` must run install-audit and refuse/hold failures (not wired).
-- **Photo cross-check (lane BX, b16b16116):** 41 houses queued (13 crown, 1 rows, 31 bays); square in-game frames for the 13 crown + 1 rows first. 165073: the missing piece is the raised dormer with hoist beam, not a crown class.
-- **Per-house GLB policy for ordinary houses:** no new installs, pending David's confirmation (2026-11-10 decision still stands until he reverses it).
-- **Route A at volume** paused until the placement shift is explained; D1 may read.
+- **Placement fixed in round 129** (generic layer on the equatorial metre). Open: the north-south curvature residual away from ORIGIN's latitude (calculated ~1.3 m Zuidas, ~4 m Bijlmer, ~7 m Gein) — lane BA measures ring spots and proposes re-linearising at the rider's latitude; `test:plot-true` still fails on 1,711 of 19,719 centre houses (max 1.58 m) — classify by cause before it joins check:canal; allow-list regression for every shared-frame participant; landmarks/bespoke nudged against shifted neighbours since 2026-10-04 to re-frame.
+- **Held:** 29 belt models (24 install-audit fails + 165073, 169539, 167816, 167818, 171144). 167794 live provisionally. Held models stay held (David's GLB policy).
+- **Spec fault behind the gables:** the `haarlemmer-shop-cornice-*` type presets impose a cornice front and fill the eaves with flat rows, overriding the register's or the photo's gable (165073, 169539); fix by cause before route A volume. The held fallback draws the same wrong spec.
+- **Pale-warm wall guard overrides reviewed palettes** ("held brick", 178293 L 0.38 vs photo 0.58): proposal to skip it for hand-reviewed sources, count first.
+- **Model path lightens dark walls** (spec L 0.29–0.38 → model 0.44–0.47): lane WC.
+- **Frames harness:** rule 10 tooling (lane TF), thinFocalPx 48.9 trace (TF), ground/labels nondeterminism makes whole-frame diffs meaningless (41 % on identical scenes) — mask to building pixels.
+- **Re-shoot of David's contact-haarlemmer sheet** (photo | before | after) — lane BA.
+- **Photo cross-check (lane BX, b16b16116):** 41 queued; square frames for the 13 crown + 1 rows first.
+- **Route A at volume** waits for the plot-true check; the D1 1,000-front tranche may start (belt + AH07, curvature ≤ 0.4 m).
+- **Coverage map:** add a "described from photos" tier (needs-david with a legend mock-up when the first tranche is ready); regenerate coverage-v1 (stale since 2026-11-10).
+
+## Load and smoothness (P0, David 2026-11-13: "wtf is our load time really this slow", "SUPER jerky", "roads still fuzzy")
+
+- **Wall rule flip** (`?wallRule=1`, lane 2): flip only after a row review in game (rule 10 frames, 72°, dpr 2) on Haarlemmerdijk 2-28 and a gallery check of a sample of the 885 GLBs that change; then recompile the world (tile GLBs bake the slot).
+- **First cell still lands at ~15 s (own) / ~27 s (MapLibre):** input fetch of the 3×3 neighbourhood (~126 files, 30 MB raw) plus a broad build (~15 phases, none dominant). Options: pre-baked L0 cells for the start pose, or an alone build on an idle worker. The `?groundFirstAlone` try made all-14 slower.
+- **Data extracts unversioned:** `/data/**` max-age 3600 with no stamp, so data can lag code by up to 1 h after a deploy. Design in HISTORY round 131 (manifest + `dataUrl()` helper; hashed directories for a long cache).
+- **State 2 (ghost walls):** `?wallsPerArea=1` works but no repro yet showed the benefit; try under load or on the phone before a flip.
+- **check:rail-street takes 88 min** at load ~12 (integrator-lanes-54 runs the speed lane).
+- **CANAL-RECALL-T stall (2.25 s):** not reproduced. Next is a capture on David's machine, or one with a CPU burner (`stall-profile --mode gc --from-load`, `tier-ride --burn`).
+
+## Haarlemmerdijk block, drawn fronts (P0, plan 2026-11-13 evening; goal for 2026-11-14)
+
+The block around David's five spots (eight Haarlemmerdijk faces + Haarlemmerstraat 46-96, 128 pands) looks right at his view: strips photo | ordinary renderer | answer key (photo-skinned, never shipped), with IoU per front. David ruled: drawn fronts, not photo skins ("I think photo skinned fronts will look bad"); the ordinary renderer is the drawn route (his read: row 2 beats the kit row).
+
+- **Lane 1, ordinary renderer** (`lane/generic-wiring-20261113`, flag `?rowFront=1` / `ROW_FRONT=1`, merged round 130 at 4073e9193, records published to `public/data/front-records/row-front.json`): a+b front height + roof from the front, c crowns (one `crownOutline.ts` for kit and row renderer, 382 recipes identical), e removals, record colours + measured levels, d proper: atlas cells fitted to lane 2's traced windows, sub-fronts (HD22/24 two fronts in one pand). Window IoU 2-58: all 0.283 → 0.454, upper 0.185 → 0.467 (0.71–0.81 on five fronts). Cost +24..+72 triangles and 1.7–5.2 KiB a front, 2–5 ms build. Weak: 167821 (0.18, trace unused), 176104/176103/176175 (no boxes or oriels), HD22/24 0.32/0.40. Now: ground floors from traced door/shop boxes, stepped wall top per sub-front, the three weak fronts, then crowns (mansard + dormers, chimney stack, attic lights). Compiled world cells carry no row fronts yet (`?rowFront=1` draws from live tiles).
+- **Lane 2, front records** (`lane/front-records-20261113` at 4d0daf9c3, unmerged beyond 2-58 traces): 66 traced fronts (2-58, 117-143, 13-45, Haarlemmerstraat 46-96); walls 22 high / 84 medium / 22 low after re-measuring between openings. 2-58 drift fixed from the 2022-06-22 re-capture (x only; `strip-shift.ts`, test "the 2-58 registration drift"); no record uses the misplaced 2020-08-31 mission 001900. Untraced: HD46, HD44, HD13, HS80, HS56A (scaffold), HD40 (strip gap), HD117. HS74A is a split candidate; HD135A storeys conflict (4 vs reviewer 5). Window cluster sheet: 428 upper windows, 37 clusters to 90 %, 11 kit kinds + 57 windows with none (French doors with toplight, shutters, loggias, ribbons, oriels, balconettes). Integrator: merge, re-run `row-front/publish-browser.ts`, archive the 2022-06-22 strip (copied to `~/Code/map-recall2-archive/lane2-front-records-20261113/`) to source-data. Not done: kit/ordinary parity score.
+- **Crown gap list after d (David: "missing peak roof, an attic window, and a few other cornices"):** mansard/hipped roof storey with dormers (167819, 176104); scrolled neck with chimney stack (167820); tall ornate neck with pinnacle (176103); several attic lights in a peak (176101); cornice kinds simple/bracketed/heavy/frieze (176102, 167816); oriels (176104, 176103). One definition each, shared by kit and ordinary renderer; unbuilt ones stay on "what the kit still cannot say".
+- **Window library (David: "we need more kinds/designs of windows ... in kit or renderer or both"):** Lane 2 cluster sheet of every measured window crop in the block (count to cover 90 %); one design definition producing kit geometry and an ordinary-renderer window unit; window units separate from wall cells (wall its own layer, unit tinted by frame colour, placed on the measured box), ≥ 32 designs; per-house pick by matching the window's own crop, era default below threshold. Then door surrounds, then shopfronts, same method.
+- **Kit / ordinary parity (David: "make them look like each other, and just pick based on ... perf, speed of compilation"):** crown outlines, window designs and the wall colour/material rule each in one module both paths call; per-front parity score between kit and ordinary rows at hand-over distance (~50 m); first target colour/material (kit walls came out flat taupe from the same record colours); then triangles, bytes and compile time per front so the renderer per distance is a budget choice.
+- **Lane 3, the page:** photo | this morning | now per row at 72°, dpr 2, regenerable in ten minutes (running).
+- **P2 Window depth in the ordinary renderer (David, 2026-11-13).** Ordinary windows are flat: there is no reveal or inset anywhere in `threeBuildingMesh.ts` or `genericFacades.ts`. Depends on window units being separate from wall cells and placed on measured boxes (window library item). Three options, to be combined by distance:
+  1. Painted shadow in the unit art (dark strip under the head and down one jamb). Free at run time, static. Use beyond the near tier.
+  2. Real inset geometry near the rider: recessed glass, four reveal faces, a sill; estimated 10–14 triangles a window, about a third more per house, within about 40 m only, with a fade at the hand-over. Recommended first: it works with the existing light and shadow map without special cases.
+  3. Shader reveal (the glass drawn 10–15 cm back from the view direction). No triangles, some per-pixel cost, likely off on touch. Fallback if the near-chunk triangle budget objects to option 2.
+  Acceptance: a first-person strip and a ride frame at 72° and dpr 2 on the Haarlemmerdijk block, before and after; near-chunk triangles, GPU memory and frame time reported beside it; byte-identical when off. The triangle figures are estimates until measured.
+- **Industrial mis-tags:** fixed by the fb lane (1313c9ace, sheds+works 5,977 → 5,249); reaches players with the next world:compile (integrator folds it in).
 
 ## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
 
@@ -1935,6 +1965,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Bridge follow-ups from lane F1 (2026-11-13, HISTORY).**
+  - **Regressions it introduced:**
+    - motorway way-deck parapets inside the lanes (Ringweg-Noord OSM7376770 13.8 → 56.6 m, OSM7376548 19 → 28.5 m; `audit-bridge-railings`);
+    - railing steps where survey caps narrow a deck (BRU0407, 0831, 0415, 0664, 1696, 2114, 0299, 0388).
+  - **Still open:**
+    - Lelylaan: streets under a deck drape up to the deck edge; drape them on the ground inside the deck's under-hole ranges.
+    - Torensluis water slit (`WET_CLEAR_M` 2 against 1.9 m: measure city-wide first).
+    - Rembrandtpark culvert hollow, OSM187078829.
+    - Doelensluis (needs a panorama); De Clercqstraat seams #24.
+  - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
+  - **Houthavens landmarks not started:** OBA Spaarndammerbuurt, Blok 0, Pont 13, De Rede.
 - **Building articles, remainder (2026-10-31).** Shipped: article cards on
   1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
   7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints

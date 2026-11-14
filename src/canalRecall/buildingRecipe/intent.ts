@@ -496,7 +496,7 @@ export interface FrontIntent {
    * lays a ring of `colour` round the head (`widthCourses` brick courses deep, default 3 = about 0.17 m; `style: "blocks"`
    * = five radiating blocks with brick between) with an optional keystone block at the crown; without it the head stays
    * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
-   * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
+   * just above the head over a brick tympanum: it needs an archRing. Beside `archedStoreys` only with a `storeys` list that names none of them.
    */
   windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[];
       /** Segmental heads: the arch rise in metres (0.04..0.4) instead of 0.08 x the window width (Plantage Badlaan 13-21: a flattened basket arch, 0.15). Absent = byte-identical. */
@@ -2241,7 +2241,9 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
     }
     oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
-    if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
+    // Per-row heads (lane D1-fix): a head listed on its own storeys may sit beside round-arched storeys when no storey is in
+    // both (fit.ts headFor draws the listed head, then the arch); without a storey list the head would cover the arches.
+    if (f.archedStoreys !== undefined && (!Array.isArray(h?.storeys) || h!.storeys.some(s => f.archedStoreys!.includes(s)))) p.push(`${at}.windowHead: not together with archedStoreys unless windowHead.storeys lists other storeys`);
     if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
     if (h?.rise !== undefined && (h.kind !== 'segmental' || !(typeof h.rise === 'number' && h.rise >= 0.04 && h.rise <= 0.4))) p.push(`${at}.windowHead.rise: metres 0.04..0.4, only on a segmental head`);
     const r = h?.archRing;

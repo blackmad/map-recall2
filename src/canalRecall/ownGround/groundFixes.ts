@@ -20,6 +20,12 @@ export const GROUND_FIXES = [
   'deckCaps',
   /** F: underpass roads (BGT h < 0 kept under a tunnel cut). */
   'underpassRoads',
+  /** Lane fb-bridges 2026-11-13: deck bodies and tops stop where the survey's deck polygons end over open water (bridgeGaps.ts surveyDeckCaps). */
+  'surveyCaps',
+  /** Lane fb-bridges 2026-11-13: no railing beside a surveyed surface over mapped water, the Muntplein (groundCell plein). */
+  'pleinRails',
+  /** Lane fb-bridges 2026-11-13: a way deck over an end hole runs on to the top of the bank's climb (wayDecks.ts HOLE_CLIMB_GRADE), the Lelylaan. */
+  'holeClimb',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

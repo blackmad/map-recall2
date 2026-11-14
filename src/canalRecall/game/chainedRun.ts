@@ -12,13 +12,15 @@
 import {
   kmBetween,
   localFamiliarity,
+  destinationWeight,
   pickDestinationNear,
+  tailFloorFor,
+  tailOpenness,
   randomUnit,
   type ChooseUnit,
   type MasterySample,
   type RoutePoi,
 } from './routeSelection';
-import { notabilityScore, notabilityWeight } from './poiNotability';
 import { t } from '../../i18n/index.ts';
 import { placeName } from './landmarkNamesNl.ts';
 
@@ -369,10 +371,12 @@ export function pickNextStop(
     const km = kmBetween(poi, from);
     return km >= minKm && km <= maxKm;
   });
-  if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null);
+  if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null, samples);
+  const openness = tailOpenness(from, samples);
+  const floor = tailFloorFor(band);
   const weighted = band.map(poi => ({
     poi,
-    weight: notabilityWeight(notabilityScore(poi)) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples))),
+    weight: destinationWeight(poi, openness, floor) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples))),
   })).filter(entry => entry.weight > 0);
   const total = weighted.reduce((sum, entry) => sum + entry.weight, 0);
   if (total <= 0) return band[0] ?? null;

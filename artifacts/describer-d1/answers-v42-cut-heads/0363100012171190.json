@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012171190",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012171190.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "souterrain": false,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "low": [
+  "cornice",
+  "heads",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "ground-storey flat heads carry a fan of alternating white blocks; upper windows only a single white keystone block"
+  },
+  {
+   "component": "window",
+   "what": "window joinery painted dark red"
+  },
+  {
+   "component": "dormer",
+   "what": "a narrow dormer with a white frame and small pediment in the roof above the cornice"
+  }
+ ],
+ "notes": "Oblique view; cornice and roof partly hidden by tree branches.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

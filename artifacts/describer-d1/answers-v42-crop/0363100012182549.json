@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182549",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182549/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "columns",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the upper windows"
+  }
+ ],
+ "notes": "Cornice frieze is washed out by sun.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1049,15 +1049,15 @@
   }
  },
  "de-hallen": {
-  "sourceHash": "00dccd677959bdce",
+  "sourceHash": "7c392a9ac9c771d5",
   "buildVersion": 2,
-  "bytes": 36728,
-  "triangles": 1661,
+  "bytes": 35356,
+  "triangles": 1565,
   "lod2": {
-   "sourceHash": "00dccd677959bdce",
+   "sourceHash": "7c392a9ac9c771d5",
    "buildVersion": 6,
-   "bytes": 8328,
-   "triangles": 280
+   "bytes": 9044,
+   "triangles": 328
   }
  },
  "huis-bartolotti": {
@@ -5716,6 +5716,30 @@
    "buildVersion": 6,
    "bytes": 19536,
    "triangles": 895
+  }
+ },
+ "de-bonte-zwaan": {
+  "sourceHash": "b15629288e6eedf3",
+  "buildVersion": 2,
+  "bytes": 38120,
+  "triangles": 1701,
+  "lod2": {
+   "sourceHash": "b15629288e6eedf3",
+   "buildVersion": 6,
+   "bytes": 6112,
+   "triangles": 154
+  }
+ },
+ "hotel-boat-and-co": {
+  "sourceHash": "60d217b900023fb2",
+  "buildVersion": 2,
+  "bytes": 98428,
+  "triangles": 6161,
+  "lod2": {
+   "sourceHash": "60d217b900023fb2",
+   "buildVersion": 6,
+   "bytes": 23668,
+   "triangles": 1438
   }
  }
 }

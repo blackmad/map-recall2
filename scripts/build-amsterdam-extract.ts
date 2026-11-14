@@ -31,9 +31,14 @@ if (center.length !== 2 || !center.every(Number.isFinite)) {
 }
 const curationFile = path.resolve(`scripts/${cityId}-curation.json`);
 const maximumPerCategory = 300;
-// Landmarks carries museums, monuments, places of worship and civic venues
-// (795 available); the extra budget keeps civic classes from evicting the
-// existing tail. Streets need their own headroom: a hard 300 + wiki/length
+// Landmarks: every Wikidata/Wikipedia-linked feature is kept (`selectLandmarks`),
+// and the unlinked ones (civic venues with a class floor, plain OSM tourism
+// tags) fill the rest of a 420 budget. Measured 2026-11-13: the old flat 420
+// cut only unlinked features, which carry no article and are never ride
+// destinations, but nothing guaranteed it. Notable places OSM does not link
+// are added after enrichment by `grow-amsterdam-landmarks.ts` against a
+// notability floor (landmarkSelection.ts), not by raising this number.
+// Streets need their own headroom: a hard 300 + wiki/length
 // scoring kept Coen Tunnel and dropped Leidsestraat / Damrak — the names a
 // canal-belt or tram hop actually teaches.
 const maximumFor = (category: FeatureCategory) => (
@@ -41,6 +46,12 @@ const maximumFor = (category: FeatureCategory) => (
     : category === 'streets' ? 500
       : maximumPerCategory
 );
+function selectLandmarks<T extends { feature: StreetFeature }>(available: T[], budget: number): T[] {
+  const linked = available.filter(({ feature }) => feature.wikidata || feature.wikipedia);
+  const unlinked = available.filter(({ feature }) => !feature.wikidata && !feature.wikipedia);
+  const keep = new Set([...linked, ...unlinked.slice(0, Math.max(0, budget - linked.length))]);
+  return available.filter(entry => keep.has(entry));
+}
 
 function pointInRing([lat, lon]: [number, number], ring: Position[]): boolean {
   let inside = false;
@@ -560,7 +571,9 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
   const candidates = category === 'streets'
     ? selectConnectedStreets(available, maximumFor(category))
-    : available.slice(0, maximumFor(category));
+    : category === 'landmarks'
+      ? selectLandmarks(available, maximumFor(category))
+      : available.slice(0, maximumFor(category));
   // Water and streets are navigated; a junction dropped from either is a turn
   // the player cannot make. Bridges are gated on being crossed, so their spans
   // keep their junctions too.

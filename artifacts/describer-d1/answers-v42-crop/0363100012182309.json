@@ -1,0 +1,53 @@
+{
+ "v": 1,
+ "pandId": "0363100012182309",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182309/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "t-window",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "finish",
+  "bays",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top visible storey has one wide window of four lights in a row"
+  }
+ ],
+ "notes": "Top cut off, ground storey behind a site fence; only two upper rows visible.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -38,6 +38,29 @@ export function railRetryFlag(query = search()): boolean {
   return !/[?&]railRetry=0\b/.test(query);
 }
 
+/**
+ * Ground workers start with the ground, not after the page's store has loaded (lane LS 2026-11-13): their bundle, their
+ * own extract fetches and their store init run alongside the page's store init, and the page hands them its rail
+ * manifest once it has it (#232 keeps one source of truth). Measured cold 2026-11-13: the workers were created 4 s after
+ * the ground bundle, then fetched bridges.json again before asking for any cell. `?groundEarlyWorkers=0`: the old order.
+ */
+export function groundEarlyWorkersFlag(query = search()): boolean {
+  return !/[?&]groundEarlyWorkers=0\b/.test(query);
+}
+
+/**
+ * `?groundFirstAlone=1` (lane LS, 2026-11-14): the first LOD 0 cell is built from its own data first (GroundStore
+ * cellInput `alone`: 25 files instead of ~125) and drawn as a stand-in until its full 3×3 build replaces it.
+ */
+export function groundFirstAloneFlag(query = search()): boolean {
+  return /[?&]groundFirstAlone=1\b/.test(query);
+}
+
+/** `?groundParallelInit=0`: the ground store asks its init manifests one after another (groundStore.ts load, lane LS). */
+export function groundParallelInitFlag(query = search()): boolean {
+  return !/[?&]groundParallelInit=0\b/.test(query);
+}
+
 /** `?groundRequeue=0`: a discarded install or a failed build waits for the next 60 m move (the build before #232). */
 export function groundRequeueFlag(query = search()): boolean {
   return !/[?&]groundRequeue=0\b/.test(query);

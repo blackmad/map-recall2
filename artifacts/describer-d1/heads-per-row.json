@@ -1,0 +1,312 @@
+{
+ "v": 1,
+ "truthPands": 203,
+ "truthRound": 2,
+ "report": {
+  "answers-v4-crop": {
+   "pands": 36,
+   "per": {
+    "flat": {
+     "rowsRead": 73,
+     "pandsRead": 28,
+     "precision": 0.932,
+     "precisionCI": [
+      0.849,
+      0.97
+     ],
+     "rowsTruth": 74,
+     "pandsTruth": 28,
+     "recall": 0.919,
+     "recallCI": [
+      0.834,
+      0.962
+     ]
+    },
+    "segmental": {
+     "rowsRead": 28,
+     "pandsRead": 10,
+     "precision": 0.75,
+     "precisionCI": [
+      0.566,
+      0.873
+     ],
+     "rowsTruth": 27,
+     "pandsTruth": 10,
+     "recall": 0.778,
+     "recallCI": [
+      0.592,
+      0.894
+     ]
+    },
+    "round": {
+     "rowsRead": 1,
+     "pandsRead": 1,
+     "precision": 0,
+     "precisionCI": [
+      0,
+      0.793
+     ],
+     "rowsTruth": 1,
+     "pandsTruth": 1,
+     "recall": 0,
+     "recallCI": [
+      0,
+      0.793
+     ]
+    }
+   },
+   "confusion": {
+    "flat->segmental": 5,
+    "flat->flat": 68,
+    "segmental->flat": 6,
+    "segmental->segmental": 21,
+    "round->segmental": 1,
+    "segmental->round": 1
+   }
+  },
+  "answers-v4-cut": {
+   "pands": 28,
+   "per": {
+    "flat": {
+     "rowsRead": 67,
+     "pandsRead": 24,
+     "precision": 0.851,
+     "precisionCI": [
+      0.747,
+      0.917
+     ],
+     "rowsTruth": 60,
+     "pandsTruth": 21,
+     "recall": 0.95,
+     "recallCI": [
+      0.863,
+      0.983
+     ]
+    },
+    "segmental": {
+     "rowsRead": 15,
+     "pandsRead": 7,
+     "precision": 0.8,
+     "precisionCI": [
+      0.548,
+      0.93
+     ],
+     "rowsTruth": 21,
+     "pandsTruth": 8,
+     "recall": 0.571,
+     "recallCI": [
+      0.365,
+      0.755
+     ]
+    },
+    "round": {
+     "rowsRead": 0,
+     "pandsRead": 0,
+     "precision": null,
+     "precisionCI": [
+      0,
+      1
+     ],
+     "rowsTruth": 1,
+     "pandsTruth": 1,
+     "recall": 0,
+     "recallCI": [
+      0,
+      0.793
+     ]
+    }
+   },
+   "confusion": {
+    "flat->flat": 57,
+    "segmental->flat": 3,
+    "flat->segmental": 9,
+    "segmental->segmental": 12,
+    "flat->round": 1
+   }
+  },
+  "answers-v42-crop": {
+   "pands": 31,
+   "per": {
+    "flat": {
+     "rowsRead": 62,
+     "pandsRead": 23,
+     "precision": 0.952,
+     "precisionCI": [
+      0.867,
+      0.983
+     ],
+     "rowsTruth": 69,
+     "pandsTruth": 25,
+     "recall": 0.855,
+     "recallCI": [
+      0.753,
+      0.919
+     ]
+    },
+    "segmental": {
+     "rowsRead": 23,
+     "pandsRead": 9,
+     "precision": 0.609,
+     "precisionCI": [
+      0.408,
+      0.778
+     ],
+     "rowsTruth": 18,
+     "pandsTruth": 7,
+     "recall": 0.778,
+     "recallCI": [
+      0.548,
+      0.91
+     ]
+    },
+    "round": {
+     "rowsRead": 3,
+     "pandsRead": 3,
+     "precision": 0.333,
+     "precisionCI": [
+      0.061,
+      0.792
+     ],
+     "rowsTruth": 1,
+     "pandsTruth": 1,
+     "recall": 1,
+     "recallCI": [
+      0.207,
+      1
+     ]
+    }
+   },
+   "confusion": {
+    "flat->flat": 59,
+    "round->flat": 1,
+    "segmental->segmental": 14,
+    "round->segmental": 1,
+    "flat->segmental": 3,
+    "segmental->flat": 9,
+    "round->round": 1
+   }
+  },
+  "answers-v3": {
+   "pands": 40,
+   "per": {
+    "flat": {
+     "rowsRead": 78,
+     "pandsRead": 30,
+     "precision": 0.923,
+     "precisionCI": [
+      0.842,
+      0.964
+     ],
+     "rowsTruth": 82,
+     "pandsTruth": 31,
+     "recall": 0.878,
+     "recallCI": [
+      0.79,
+      0.932
+     ]
+    },
+    "segmental": {
+     "rowsRead": 33,
+     "pandsRead": 13,
+     "precision": 0.727,
+     "precisionCI": [
+      0.558,
+      0.849
+     ],
+     "rowsTruth": 30,
+     "pandsTruth": 11,
+     "recall": 0.8,
+     "recallCI": [
+      0.627,
+      0.905
+     ]
+    },
+    "round": {
+     "rowsRead": 2,
+     "pandsRead": 2,
+     "precision": 0.5,
+     "precisionCI": [
+      0.095,
+      0.905
+     ],
+     "rowsTruth": 1,
+     "pandsTruth": 1,
+     "recall": 1,
+     "recallCI": [
+      0.207,
+      1
+     ]
+    }
+   },
+   "confusion": {
+    "flat->flat": 72,
+    "round->flat": 1,
+    "segmental->segmental": 24,
+    "segmental->flat": 9,
+    "flat->segmental": 6,
+    "round->round": 1
+   }
+  },
+  "answers": {
+   "pands": 111,
+   "per": {
+    "flat": {
+     "rowsRead": 259,
+     "pandsRead": 99,
+     "precision": 0.958,
+     "precisionCI": [
+      0.926,
+      0.976
+     ],
+     "rowsTruth": 253,
+     "pandsTruth": 97,
+     "recall": 0.98,
+     "recallCI": [
+      0.955,
+      0.992
+     ]
+    },
+    "segmental": {
+     "rowsRead": 33,
+     "pandsRead": 13,
+     "precision": 0.848,
+     "precisionCI": [
+      0.691,
+      0.933
+     ],
+     "rowsTruth": 40,
+     "pandsTruth": 15,
+     "recall": 0.7,
+     "recallCI": [
+      0.546,
+      0.819
+     ]
+    },
+    "round": {
+     "rowsRead": 2,
+     "pandsRead": 2,
+     "precision": 0.5,
+     "precisionCI": [
+      0.095,
+      0.905
+     ],
+     "rowsTruth": 1,
+     "pandsTruth": 1,
+     "recall": 1,
+     "recallCI": [
+      0.207,
+      1
+     ]
+    }
+   },
+   "confusion": {
+    "flat->flat": 248,
+    "segmental->segmental": 28,
+    "flat->segmental": 11,
+    "round->segmental": 1,
+    "segmental->flat": 5,
+    "round->round": 1
+   }
+  }
+ }
+}

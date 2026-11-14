@@ -14,8 +14,66 @@
     return queryFlag(search2, "freeRideQuiz", FREE_RIDE_LANDMARK_QUIZ_DEFAULT);
   }
 
+  // src/canalRecall/game/landmarkFrontage.ts
+  var FRONTAGE_M = 15;
+  var PATH_STEP_M = 1.5;
+  function segmentDistance(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y, len2 = dx * dx + dy * dy;
+    const t2 = len2 ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / len2)) : 0;
+    return Math.hypot(a.x + dx * t2 - p.x, a.y + dy * t2 - p.y);
+  }
+  function insideRing(p, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > p.y !== b.y > p.y && p.x < (b.x - a.x) * (p.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function distanceToFootprint(point, footprint) {
+    if (!footprint?.length) return Infinity;
+    let best = Infinity;
+    for (const ring of footprint) {
+      if (ring.length < 2) continue;
+      const closed = ring.length > 3 && ring[0].x === ring[ring.length - 1].x && ring[0].y === ring[ring.length - 1].y;
+      if (closed && insideRing(point, ring)) return 0;
+      for (let i = 0; i < ring.length - 1; i++) best = Math.min(best, segmentDistance(point, ring[i], ring[i + 1]));
+    }
+    return best;
+  }
+  function facesStreet(point, landmark, pxPerMetre) {
+    return !landmark.footprint?.length || distanceToFootprint(point, landmark.footprint) <= FRONTAGE_M * pxPerMetre;
+  }
+  function frontageAlong(path, landmark, pxPerMetre) {
+    const limit = FRONTAGE_M * pxPerMetre, step = PATH_STEP_M * pxPerMetre;
+    let travelled = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+      const a = path[i], b = path[i + 1];
+      const length = Math.hypot(b.x - a.x, b.y - a.y);
+      const n = Math.max(1, Math.ceil(length / step));
+      for (let k = 0; k <= n; k++) {
+        const t2 = k / n;
+        if (distanceToFootprint({ x: a.x + (b.x - a.x) * t2, y: a.y + (b.y - a.y) * t2 }, landmark.footprint) <= limit) return travelled + length * t2;
+      }
+      travelled += length;
+    }
+    return null;
+  }
+  function footprintFromGeoJson(features, toWorld) {
+    const rings = [];
+    for (const feature of features || []) {
+      const g = feature.geometry;
+      if (!g) continue;
+      const line = g.type === "Polygon" ? g.coordinates[0] : g.type === "LineString" ? g.coordinates : null;
+      if (line && line.length > 1) rings.push(line.map(toWorld));
+    }
+    return rings;
+  }
+
   // src/canalRecall/game/landmarkQuestion.ts
-  var LANDMARK_QUESTION_RADIUS_M = 150;
+  var LANDMARK_QUESTION_RADIUS_M = 35;
+  var LANDMARK_QUESTION_OWN_RADIUS_M = 80;
+  var LANDMARK_BESIDE_HALF_CONE = 110 * Math.PI / 180;
   var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
   var SAME_COMPLEX_M = 40;
   var LANDMARK_CHOICE_COUNT = 4;
@@ -32,6 +90,25 @@
     let off = Math.atan2(dy, dx) - heading;
     off = Math.atan2(Math.sin(off), Math.cos(off));
     return Math.abs(off) <= halfCone;
+  }
+  function offHeading(rider, point) {
+    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    const off = Math.atan2(point.y - rider.y, point.x - rider.x) - heading;
+    return Math.abs(Math.atan2(Math.sin(off), Math.cos(off)));
+  }
+  function ownPoint(landmark) {
+    return Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY) ? { x: landmark.ownX, y: landmark.ownY } : landmark;
+  }
+  function besideLandmark(rider, landmark, pxPerMetre) {
+    const own = ownPoint(landmark);
+    const distance = Math.hypot(own.x - rider.x, own.y - rider.y);
+    if (landmark.footprint?.length) {
+      if (!facesStreet(rider, landmark, pxPerMetre)) return false;
+    } else {
+      if (Math.hypot(landmark.x - rider.x, landmark.y - rider.y) > LANDMARK_QUESTION_RADIUS_M * pxPerMetre) return false;
+      if (distance > LANDMARK_QUESTION_OWN_RADIUS_M * pxPerMetre) return false;
+    }
+    return distance < pxPerMetre || offHeading(rider, own) <= LANDMARK_BESIDE_HALF_CONE;
   }
   function landmarkChoices(answer, pool, options) {
     const count = options.count ?? LANDMARK_CHOICE_COUNT;
@@ -6492,6 +6569,727 @@ ${register}` : detail,
     }
   ];
 
+  // src/canalRecall/game/manual-poi-wikidata.json
+  var manual_poi_wikidata_default = {
+    "american-hotel": {
+      name: "American Hotel",
+      wikidata: "Q17291591",
+      wikidataName: "American Hotel / Uitbreiding American Hotel",
+      matchMetres: 10,
+      wikidataSitelinks: 1,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q41176"
+      ]
+    },
+    "amstel-hotel": {
+      name: "Amstel Hotel",
+      wikidata: "Q478198",
+      wikidataName: "InterContinental Amstel Amsterdam / Amstel Hotel",
+      matchMetres: 2,
+      wikidataSitelinks: 12,
+      wikipediaPageviews60d: 511,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/InterContinental_Amstel_Amsterdam"
+    },
+    "amsterdam-in-motion": {
+      name: "Amsterdam in Motion",
+      wikidata: "Q136291626",
+      wikidataName: "Amsterdam in Motion",
+      matchMetres: 22,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q1352349",
+        "Q464980"
+      ]
+    },
+    "de-bijenkorf": {
+      name: "De Bijenkorf",
+      wikidata: "Q7476165",
+      wikidataName: "De Bijenkorf Amsterdam / De Bijenkorf",
+      matchMetres: 58,
+      wikidataSitelinks: 2,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q216107"
+      ]
+    },
+    "de-nederlandsche-bank": {
+      name: "De Nederlandsche Bank",
+      wikidata: "Q1180205",
+      wikidataName: "De Nederlandsche Bank",
+      matchMetres: 20,
+      wikidataSitelinks: 31,
+      wikipediaPageviews60d: 2401,
+      wikidataInstanceOf: [
+        "Q66344",
+        "Q2668072"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/De_Nederlandsche_Bank"
+    },
+    extract_landmarks_1299755268: {
+      name: "Spanjemonument",
+      wikidata: "Q108370375",
+      wikidataName: "Spanjemonument",
+      matchMetres: 17,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q860861",
+        "Q575759"
+      ]
+    },
+    extract_landmarks_291097138: {
+      name: "Groot Melkhuis",
+      wikidata: "Q107626112",
+      wikidataName: "Groot Melkhuis",
+      matchMetres: 6,
+      wikidataSitelinks: 1,
+      wikidataInstanceOf: [
+        "Q41176",
+        "Q8463304",
+        "Q11875349"
+      ]
+    },
+    extract_landmarks_33057057: {
+      name: "De Gooyer",
+      wikidata: "Q2756543",
+      wikidataName: "De Gooyer",
+      matchMetres: 26,
+      wikidataSitelinks: 7,
+      wikipediaPageviews60d: 696,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q38720",
+        "Q3851468"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/De_Gooyer,_Amsterdam"
+    },
+    extract_landmarks_57862001: {
+      name: "Blauwe Theehuis",
+      wikidata: "Q2357041",
+      wikidataName: "Blauwe Theehuis",
+      matchMetres: 1,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 172,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q1072166"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Blauwe_Theehuis"
+    },
+    extract_landmarks_915035378: {
+      name: "Museum of the Canals",
+      wikidata: "Q2574390",
+      wikidataName: "Museum of the Canals,  Amsterdam / Het Grachtenhuis",
+      matchMetres: 2,
+      wikidataSitelinks: 3,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q33506"
+      ]
+    },
+    extract_landmarks_943416488: {
+      name: "Podium Moza\xEFek",
+      wikidata: "Q115134496",
+      wikidataName: "Podium Moza\xEFek",
+      matchMetres: 24,
+      wikidataSitelinks: 1,
+      wikidataInstanceOf: [
+        "Q24354"
+      ]
+    },
+    gashouder: {
+      name: "Gashouder",
+      wikidata: "Q17296587",
+      wikidataName: "Gas holder Westergas / Gashouder Westergas",
+      matchMetres: 9,
+      wikidataSitelinks: 1,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q962715",
+        "Q41176"
+      ]
+    },
+    "hilton-amsterdam": {
+      name: "Hilton Amsterdam",
+      wikidata: "Q2135814",
+      wikidataName: "Hilton Amsterdam",
+      matchMetres: 27,
+      wikidataSitelinks: 5,
+      wikipediaPageviews60d: 1141,
+      heritage: [
+        "Q916333",
+        "Q17698911"
+      ],
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Hilton_Amsterdam"
+    },
+    "hortus-botanicus": {
+      name: "Hortus Botanicus greenhouses",
+      wikidata: "Q1576733",
+      wikidataName: "Hortus Botanicus Amsterdam",
+      matchMetres: 68,
+      wikidataSitelinks: 18,
+      wikipediaPageviews60d: 732,
+      wikidataInstanceOf: [
+        "Q167346",
+        "Q33506"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Hortus_Botanicus_(Amsterdam)"
+    },
+    "hotel-de-l-europe": {
+      name: "Hotel de l'Europe",
+      wikidata: "Q2463682",
+      wikidataName: "Hotel de l'Europe",
+      matchMetres: 8,
+      wikidataSitelinks: 5,
+      wikipediaPageviews60d: 342,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam"
+    },
+    kohnstammhuis: {
+      name: "Kohnstammhuis",
+      wikidata: "Q2086285",
+      wikidataName: "Kohnstammhuis",
+      matchMetres: 23,
+      wikidataSitelinks: 3,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q1021645"
+      ]
+    },
+    "magna-plaza": {
+      name: "Magna Plaza",
+      wikidata: "Q1962448",
+      wikidataName: "Magna Plaza / Nieuwezijds Voorburgwal 182",
+      matchMetres: 4,
+      wikidataSitelinks: 9,
+      wikipediaPageviews60d: 914,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q11315",
+        "Q35054"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Magna_Plaza"
+    },
+    manual_centrale_markthal: {
+      name: "Centrale Markthal",
+      wikidata: "Q2351332",
+      wikidataName: "Centrale Markthal",
+      matchMetres: 18,
+      wikidataSitelinks: 1,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q2080521"
+      ]
+    },
+    n237912528: {
+      name: "Park Plaza Victoria Amsterdam",
+      wikidata: "Q2433903",
+      wikidataName: "Park Plaza Victoria Amsterdam / Victoria Hotel",
+      matchMetres: 10,
+      wikidataSitelinks: 6,
+      wikipediaPageviews60d: 405,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Victoria_Hotel,_Amsterdam"
+    },
+    n2811980599: {
+      name: "De School (Tilla Tec)",
+      wikidata: "Q85755964",
+      wikidataName: "De School",
+      matchMetres: 12,
+      wikidataSitelinks: 2,
+      wikipediaPageviews60d: 731,
+      wikidataInstanceOf: [
+        "Q622425"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/De_School"
+    },
+    n2817713466: {
+      name: "Hotel Okura Amsterdam",
+      wikidata: "Q2065088",
+      wikidataName: "Hotel Okura Amsterdam / Okura Hotel",
+      matchMetres: 68,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 201,
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Hotel_Okura_Amsterdam"
+    },
+    n31101329: {
+      name: "D'Admiraal",
+      wikidata: "Q3325601",
+      wikidataName: "D'Admiraal",
+      matchMetres: 4,
+      wikidataSitelinks: 4,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q38720",
+        "Q3851468"
+      ]
+    },
+    n331837646: {
+      name: "Lloyd Hotel",
+      wikidata: "Q2433228",
+      wikidataName: "Lloyd Hotel",
+      matchMetres: 4,
+      wikidataSitelinks: 5,
+      wikipediaPageviews60d: 481,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q63099748"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Lloyd_Hotel"
+    },
+    n332059860: {
+      name: "Brouwerij \u2019t IJ",
+      wikidata: "Q3496897",
+      wikidataName: "Brouwerij 't IJ",
+      matchMetres: 13,
+      wikidataSitelinks: 7,
+      wikipediaPageviews60d: 1013,
+      wikidataInstanceOf: [
+        "Q131734",
+        "Q15075508",
+        "Q4830453"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Brouwerij_%27t_IJ"
+    },
+    n418044454: {
+      name: "De Bloem",
+      wikidata: "Q1822494",
+      wikidataName: "De Bloem",
+      matchMetres: 0,
+      wikidataSitelinks: 4,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q38720",
+        "Q3851468"
+      ]
+    },
+    "olvg-west": {
+      name: "OLVG West",
+      wikidata: "Q3269552",
+      wikidataName: "OLVG West",
+      matchMetres: 45,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q16917",
+        "Q2440002"
+      ]
+    },
+    osm_artwork_250624675: {
+      name: "Theo Thijssen monument (Lindengracht)",
+      wikidata: "Q125209606",
+      wikidataName: "Theo Thijssen",
+      matchMetres: 3,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q179700"
+      ]
+    },
+    osm_artwork_4360169260: {
+      name: "3 bomen, 6 lenzen (Thom Puckey)",
+      wikidata: "Q26453081",
+      wikidataName: "Lens Trees / 3 bomen, 6 lenzen",
+      matchMetres: 9,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q860861"
+      ]
+    },
+    osm_artwork_538934266: {
+      name: "Figure decoupee (Picasso, Vondelpark)",
+      wikidata: "Q24572909",
+      wikidataName: "Figure d\xE9coup\xE9e",
+      matchMetres: 1,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 343,
+      wikidataInstanceOf: [
+        "Q860861"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Figure_d%C3%A9coup%C3%A9e"
+    },
+    osm_artwork_5653694042: {
+      name: "Teun de Jager (Vondelpark)",
+      wikidata: "Q79393154",
+      wikidataName: "Teun de Jager",
+      matchMetres: 1,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q179700"
+      ]
+    },
+    osm_building_267001389: {
+      name: "Sint Jorishof",
+      wikidata: "Q17306717",
+      wikidataName: "Korte Spinhuissteeg 3, Amsterdam / Sint Jorishof",
+      matchMetres: 14,
+      wikidataSitelinks: 1,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q41176"
+      ]
+    },
+    osm_building_268460687: {
+      name: "Amsterdam Sloterdijk Station",
+      wikidata: "Q50721",
+      wikidataName: "Amsterdam Sloterdijk / station Amsterdam Sloterdijk",
+      matchMetres: 44,
+      wikidataSitelinks: 17,
+      wikipediaPageviews60d: 843,
+      wikidataInstanceOf: [
+        "Q55488",
+        "Q55484",
+        "Q494829",
+        "Q122977328"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Amsterdam_Sloterdijk_station"
+    },
+    osm_building_276272893: {
+      name: "De Piramides",
+      wikidata: "Q2281305",
+      wikidataName: "The Pyramids / De Piramides",
+      matchMetres: 2,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q1497364"
+      ]
+    },
+    osm_building_27653949: {
+      name: "Vi\xF1oly",
+      wikidata: "Q2313543",
+      wikidataName: "Vi\xF1oly Tower / Vi\xF1oly",
+      matchMetres: 15,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q1021645"
+      ]
+    },
+    osm_building_279842059: {
+      name: "Mondriaan Tower",
+      wikidata: "Q2256587",
+      wikidataName: "Mondriaan Tower / Mondriaantoren",
+      matchMetres: 19,
+      wikidataSitelinks: 4,
+      wikipediaPageviews60d: 106,
+      wikidataInstanceOf: [
+        "Q811979"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Mondriaan_Tower"
+    },
+    osm_building_44451577: {
+      name: "Rembrandt Tower",
+      wikidata: "Q2361620",
+      wikidataName: "Rembrandt Tower / Rembrandttoren",
+      matchMetres: 1,
+      wikidataSitelinks: 12,
+      wikipediaPageviews60d: 651,
+      wikidataInstanceOf: [
+        "Q12518",
+        "Q11303"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Rembrandt_Tower"
+    },
+    osm_building_896762181: {
+      name: "Valley",
+      wikidata: "Q66041231",
+      wikidataName: "Valley",
+      matchMetres: 56,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q41176",
+        "Q1497364"
+      ]
+    },
+    osm_node_3975877474: {
+      name: "Het Lieverdje (Spui)",
+      wikidata: "Q2220399",
+      wikidataName: "Het Lieverdje",
+      matchMetres: 4,
+      wikidataSitelinks: 3,
+      wikidataInstanceOf: [
+        "Q4989906",
+        "Q179700"
+      ]
+    },
+    osm_theatre_2724220323: {
+      name: "Frascati",
+      wikidata: "Q14480507",
+      wikidataName: "Frascati / Theater Frascati",
+      matchMetres: 20,
+      wikidataSitelinks: 2,
+      heritage: [
+        "Q2650048"
+      ],
+      wikidataInstanceOf: [
+        "Q24354"
+      ]
+    },
+    "osm-node-2743587102": {
+      name: "Klimmuur Centraal",
+      wikidata: "Q116742227",
+      wikidataName: "Dijksgracht 2 / Klimmuur Centraal",
+      matchMetres: 4,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q41176",
+        "Q109882149"
+      ]
+    },
+    "osm-node-331630133": {
+      name: "Pulitzer Amsterdam",
+      wikidata: "Q4500456",
+      wikidataName: "Hotel Pulitzer",
+      matchMetres: 1,
+      wikidataSitelinks: 5,
+      wikipediaPageviews60d: 581,
+      wikidataInstanceOf: [
+        "Q27686"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Hotel_Pulitzer"
+    },
+    "osm-way-52156815": {
+      name: "The Rock",
+      wikidata: "Q18640123",
+      wikidataName: "The Rock",
+      matchMetres: 31,
+      wikidataSitelinks: 4,
+      wikipediaPageviews60d: 193,
+      wikidataInstanceOf: [
+        "Q1021645"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/The_Rock_(building)"
+    },
+    "osm-way-57856367": {
+      name: "ING House / Infinity",
+      wikidata: "Q645881",
+      wikidataName: "Infinity",
+      matchMetres: 80,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 510,
+      wikidataInstanceOf: [
+        "Q1021645"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/ING_House"
+    },
+    paradiso: {
+      name: "Paradiso",
+      wikidata: "Q1535378",
+      wikidataName: "Paradiso",
+      matchMetres: 6,
+      wikidataSitelinks: 12,
+      wikipediaPageviews60d: 2406,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q13691604",
+        "Q1060829",
+        "Q15206070",
+        "Q24354",
+        "Q16970"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Paradiso_(Amsterdam)"
+    },
+    pontsteiger: {
+      name: "Pontsteiger",
+      wikidata: "Q25998014",
+      wikidataName: "Pontsteiger building / Ponsteigergebouw",
+      matchMetres: 21,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q11303",
+        "Q13402009",
+        "Q2304397"
+      ]
+    },
+    "requested-artis-aquarium": {
+      name: "Artis Aquarium",
+      wikidata: "Q17298538",
+      wikidataName: "Artis Aquarium / Artis: aquariumgebouw",
+      matchMetres: 11,
+      wikidataSitelinks: 2,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q41176"
+      ]
+    },
+    "requested-chassekerk": {
+      name: "Chass\xE9kerk",
+      wikidata: "Q2189632",
+      wikidataName: "Onze-Lieve-Vrouw van Altijddurende Bijstandkerk / Chass\xE9kerk",
+      matchMetres: 24,
+      wikidataSitelinks: 3,
+      heritage: [
+        "Q2650048"
+      ],
+      wikidataInstanceOf: [
+        "Q96371632"
+      ]
+    },
+    "requested-coymanshuis": {
+      name: "Coymanshuis",
+      wikidata: "Q2141817",
+      wikidataName: "Coymanshuis",
+      matchMetres: 4,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 90,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q2292849"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Coymanshuis"
+    },
+    "requested-ronde-lutherse-kerk": {
+      name: "Ronde Lutherse Kerk",
+      wikidata: "Q2122749",
+      wikidataName: "Ronde Lutherse Kerk",
+      matchMetres: 1,
+      wikidataSitelinks: 10,
+      wikipediaPageviews60d: 290,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q16970"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Ronde_Lutherse_Kerk"
+    },
+    "requested-symphony": {
+      name: "Symphony",
+      wikidata: "Q2330963",
+      wikidataName: "Amsterdam Symphony",
+      matchMetres: 42,
+      wikidataSitelinks: 2,
+      wikidataInstanceOf: [
+        "Q811979"
+      ]
+    },
+    "requested-vondelkerk": {
+      name: "Vondelkerk",
+      wikidata: "Q2142834",
+      wikidataName: "Vondelkerk",
+      matchMetres: 24,
+      wikidataSitelinks: 10,
+      wikipediaPageviews60d: 1837,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q16970",
+        "Q18674739"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Vondelkerk"
+    },
+    "requested-zevenlandenhuizen": {
+      name: "Zevenlandenhuizen",
+      wikidata: "Q5014538",
+      wikidataName: "Zevenlandenhuizen",
+      matchMetres: 8,
+      wikidataSitelinks: 2,
+      heritage: [
+        "Q13423591"
+      ],
+      wikidataInstanceOf: [
+        "Q1497375"
+      ]
+    },
+    silodam: {
+      name: "Silodam",
+      wikidata: "Q125679015",
+      wikidataName: "Silodam / Woongebouw Silodam",
+      matchMetres: 58,
+      wikidataSitelinks: 3,
+      wikipediaPageviews60d: 104,
+      wikidataInstanceOf: [
+        "Q12104567"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Silodam"
+    },
+    trippenhuis: {
+      name: "Trippenhuis",
+      wikidata: "Q2252756",
+      wikidataName: "Trippenhuis",
+      matchMetres: 10,
+      wikidataSitelinks: 8,
+      wikipediaPageviews60d: 812,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q1802963",
+        "Q24699794",
+        "Q1498804"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/Trippenhuis"
+    },
+    w276340032: {
+      name: "De Otter",
+      wikidata: "Q2746079",
+      wikidataName: "De Otter",
+      matchMetres: 10,
+      wikidataSitelinks: 8,
+      wikipediaPageviews60d: 146,
+      heritage: [
+        "Q916333"
+      ],
+      wikidataInstanceOf: [
+        "Q38720",
+        "Q1416745"
+      ],
+      wikipediaUrl: "https://en.wikipedia.org/wiki/De_Otter,_Amsterdam"
+    }
+  };
+
   // src/canalRecall/game/manualPoiCatalog.ts
   var supplemental = new Map(manual_poi_data_default.map((fact) => [fact.modelId, fact]));
   var additiveHostsByPoi = /* @__PURE__ */ new Map();
@@ -6549,6 +7347,19 @@ ${register}` : detail,
       if (model.id !== "muziekgebouw-bimhuis") {
         for (const alias of ids.slice(1)) if (!destinations.includes(alias)) merged.delete(alias);
       }
+    }
+    const wikidataById = manual_poi_wikidata_default;
+    for (const [id, feature] of merged) {
+      const extra = wikidataById[id];
+      if (!extra || feature.wikidata) continue;
+      merged.set(id, {
+        ...feature,
+        wikidata: extra.wikidata,
+        wikidataSitelinks: feature.wikidataSitelinks ?? extra.wikidataSitelinks,
+        wikipediaPageviews60d: feature.wikipediaPageviews60d ?? extra.wikipediaPageviews60d,
+        heritage: feature.heritage ?? extra.heritage,
+        wikidataInstanceOf: feature.wikidataInstanceOf ?? extra.wikidataInstanceOf
+      });
     }
     return [...merged.values()];
   }
@@ -6743,20 +7554,21 @@ ${register}` : detail,
     { name: "Westergasfabriek", wikidata: ["Q4848627"] },
     { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
     { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
-    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774", "Q1350009"] },
     { name: "Amstel Hotel", wikidata: ["Q1780741"] },
-    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Stopera", aliases: ["Muziektheater", "Dutch National Opera & Ballet", "Opera & Ballet", "Nationale Opera & Ballet"], wikidata: ["Q1587736", "Q1138851", "Q1325514"] },
     { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
     { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
     { name: "Zuiderkerk", wikidata: ["Q228629"] },
     { name: "Noorderkerk", wikidata: ["Q613854"] },
     { name: "Vondelpark", wikidata: ["Q2279698"] },
     { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
-    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Leidseplein", wikidata: ["Q501445", "Q1409805"] },
     { name: "Rembrandtplein", wikidata: ["Q613678"] },
-    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Museumplein", wikidata: ["Q2172631", "Q639321"] },
     { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
-    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum", "Bible Museum"], wikidata: ["Q2111026", "Q2919762"] },
+    { name: "Wereldmuseum Amsterdam", aliases: ["Tropenmuseum", "Wereldmuseum"], wikidata: ["Q1131589"] },
     { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
     { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
     { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
@@ -6777,6 +7589,10 @@ ${register}` : detail,
     }
     for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
   }
+
+  // src/canalRecall/game/destinationDedupe.ts
+  var A_LIST_GROUP = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) for (const name of [entry.name, ...entry.aliases ?? []]) A_LIST_GROUP.set(normaliseAnswer(name), entry.name);
 
   // src/canalRecall/game/routeSelection.ts
   function nearestRouteIndex(route, player) {
@@ -6849,11 +7665,20 @@ ${register}` : detail,
     }
     return best && best.distance <= DRIVE_BY_RADIUS ? best.along : null;
   }
-  function pickDriveBy(candidates, path) {
+  function landmarkApproachAlong(path, landmark, pxPerMetre) {
+    if (!landmark.footprint?.length) return approachAlong(path, landmark);
+    const start = path[0], lead = path[1];
+    const own = Number.isFinite(landmark.ownX) ? { x: landmark.ownX, y: landmark.ownY } : landmark;
+    const leadLength = Math.hypot(lead.x - start.x, lead.y - start.y) || 1;
+    const forward = ((own.x - start.x) * (lead.x - start.x) + (own.y - start.y) * (lead.y - start.y)) / leadLength;
+    if (forward < -DRIVE_BY_PASSED_BEHIND) return null;
+    return frontageAlong(path, landmark, pxPerMetre);
+  }
+  function pickDriveBy(candidates, path, alongOf = (c) => approachAlong(path, c)) {
     let chosen = null;
     let soonest = Infinity;
     for (const candidate of candidates) {
-      const along = approachAlong(path, candidate);
+      const along = alongOf(candidate);
       if (along !== null && along < soonest) {
         chosen = candidate;
         soonest = along;
@@ -7219,7 +8044,8 @@ ${register}` : detail,
      *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
      *    own fade before the question can open. Kept, with hysteresis, while the
      *    rider still approaches it; released (the labels fade back) when not.
-     * 2. The question. Within 150 m and the cone, the slot free and the budget
+     * 2. The question. Right beside the building (besideLandmark: 35 m from
+     *    its street point, 80 m from the building, not behind), the slot free and the budget
      *    with a slot: the question opens with the dealt choices. True when one
      *    opened (the drive-by pick then stands down this frame).
      */
@@ -7239,7 +8065,7 @@ ${register}` : detail,
         utilityOpen: gate.utilityOpen
       })) return false;
       const chosen = approach.landmark;
-      if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
+      if (!besideLandmark(player, chosen, PIXELS_PER_METER)) return false;
       const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
         maxAsksPerMinute: this._askBudgetPerMinute()
       });
@@ -7253,7 +8079,8 @@ ${register}` : detail,
       this._landmarkApproach = null;
       this.landmarkApproachWithheld = [];
       const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
-      const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+      const own = ownPoint(chosen);
+      const off = Math.atan2(own.y - player.y, own.x - player.x) - heading;
       const bearing = Math.atan2(Math.sin(off), Math.cos(off));
       const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
       this._openQuizPrompt({
@@ -7284,7 +8111,7 @@ ${register}` : detail,
       const held = this._landmarkApproach;
       if (held) {
         const live = this.landmarks.find((landmark) => landmark.id === held.landmark.id);
-        if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+        if (live && !this._seenLandmarks.has(live.id) && (approachKept(player, live, bandPx) || besideLandmark(player, live, PIXELS_PER_METER))) return held;
         this._releaseLandmarkApproach();
       }
       const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
@@ -7302,7 +8129,7 @@ ${register}` : detail,
         if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
         if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
         if (landmark.name === this.routeTo?.name) return false;
-        if (!inViewCone(player, landmark, bandPx)) return false;
+        if (!inViewCone(player, landmark, bandPx) && !besideLandmark(player, landmark, PIXELS_PER_METER)) return false;
         const shown = landmarkDisplayName2(landmark.name, language());
         const reason = landmarkSkipReason(ledger, landmark.name, now) ?? (shown !== landmark.name ? landmarkSkipReason(ledger, shown, now) : null);
         if (reason) {
@@ -7911,6 +8738,8 @@ ${register}` : detail,
             const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
             landmark.ownX = own.x;
             landmark.ownY = own.y;
+            const outline = footprintFromGeoJson(landmark.geojson?.features, ([lng, lat]) => toWorld([lat, lng]));
+            if (outline.length) landmark.footprint = outline;
           }
         }
         const landmarks = this.landmarks;
@@ -8025,7 +8854,10 @@ ${register}` : detail,
       const ahead = pathAhead(player, routePath);
       const reach = ahead.reduce((sum, point, i) => i ? sum + Math.hypot(point.x - ahead[i - 1].x, point.y - ahead[i - 1].y) : 0, 0) + DRIVE_BY_RADIUS;
       for (const landmark of this.landmarks) {
-        const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
+        const distance = Math.min(
+          Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y),
+          landmark.ownX === void 0 ? Infinity : Math.hypot(landmark.ownX - this.player.x, landmark.ownY - this.player.y)
+        );
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
         if (!isWorthACard(landmark)) continue;
@@ -8045,7 +8877,7 @@ ${register}` : detail,
         this._landmarkNoticeState.elapsed
       )) return;
       const approached = this._landmarkApproach?.landmark.id;
-      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead);
+      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead, (landmark) => landmarkApproachAlong(ahead, landmark, PIXELS_PER_METER));
       if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);

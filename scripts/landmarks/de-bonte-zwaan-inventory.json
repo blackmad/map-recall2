@@ -1,0 +1,272 @@
+{
+ "schemaVersion": 1,
+ "id": "de-bonte-zwaan",
+ "pand": "0363100012240915",
+ "brief": "scripts/landmarks/de-bonte-zwaan-brief.md",
+ "signature": [
+  "sw-emblem",
+  "sw-lettering",
+  "nw-portholes",
+  "sw-tower",
+  "se-gangways"
+ ],
+ "walls": [
+  {
+   "tag": "w01-140",
+   "bearing": 140,
+   "lengthM": 46.1,
+   "centre": [
+    4.88037,
+    52.396719
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002057_pano_0000_000270",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-window-rows",
+     "kind": "window-shape",
+     "where": "two ribbon rows of 14 three-light windows with white posts, over the whole SE face",
+     "approxSizeM": [
+      42,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002057_pano_0000_000270",
+     "how": "longFace(2): holed openings per 3.03 m bay, two mullions, white post, sill"
+    },
+    {
+     "id": "se-walkway",
+     "kind": "balcony-ironwork",
+     "where": "ground-storey walkway on the hull along the SE face, white rail",
+     "approxSizeM": [
+      42,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002057_pano_0000_000270",
+     "how": "ground storey set back 1.2 m behind the upper body, two-rail white railing on the hull edge with posts every 1.5 m"
+    },
+    {
+     "id": "se-gangways",
+     "kind": "other",
+     "where": "two white trussed gangways from the dam to the SE walkway (one at the door 18.5 m from the SW end, one at the NE deck)",
+     "approxSizeM": [
+      7,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002057_pano_0000_000270",
+     "how": "gangways(): deck, side stringers, landing beam, posts, top chord and diagonals, 7 m, sloping to the quay; the second landing position is read from the orthophoto"
+    },
+    {
+     "id": "se-door",
+     "kind": "other",
+     "where": "glazed door near the middle of the ground storey (lettering \"DEK WEST\" on it)",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002057_pano_0000_000270",
+     "skip": {
+      "reason": "too-small",
+      "note": "door lettering unreadable at ride distance; the opening is part of the glazed ribbon"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-320",
+   "bearing": 320,
+   "lengthM": 46,
+   "centre": [
+    4.880182,
+    52.3968545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001972_pano_0000_000659",
+   "capturedAt": "2021-01-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-portholes",
+     "kind": "window-shape",
+     "where": "row of ~30 round portholes along the black hull, 0.95 m above the water",
+     "approxSizeM": [
+      0.33,
+      0.33
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_000659",
+     "how": "hull(): 10-sided discs every 1.45 m"
+    },
+    {
+     "id": "nw-window-rows",
+     "kind": "window-shape",
+     "where": "two ribbon rows of 14 three-light windows with white posts, plus the dark ground storey ribbon",
+     "approxSizeM": [
+      42,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_000659",
+     "how": "longFace(0)"
+    },
+    {
+     "id": "nw-terrace",
+     "kind": "balcony-ironwork",
+     "where": "recessed ground-storey terrace with rail in the NE half of the NW face",
+     "approxSizeM": [
+      11,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001972_pano_0000_000659",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1 m railing behind the hull edge; only the ground-storey glass is shown"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-230",
+   "bearing": 230,
+   "lengthM": 19.8,
+   "centre": [
+    4.880018,
+    52.396653
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001716_pano_0000_001688",
+   "capturedAt": "2020-05-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-emblem",
+     "kind": "relief",
+     "where": "winged-ship emblem: a dark bow shield between two grey wings, upper left of the white stair tower",
+     "approxSizeM": [
+      4.0,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001716_pano_0000_001688",
+     "how": "flat polygons 3-4 cm proud: a five-sided dark shield and two four-sided grey wings"
+    },
+    {
+     "id": "sw-lettering",
+     "kind": "lettering",
+     "where": "BONTE / ZWAAN in dark capitals on two lines with thin rules above and below, under the emblem",
+     "approxSizeM": [
+      1.9,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001716_pano_0000_001688",
+     "how": "raisedLettering 0.42 m capitals, two 3 cm rules; the small subtitle \"bedrijfsverzamelgebouw Haparandadam 7\" is left out (too small)"
+    },
+    {
+     "id": "sw-tower",
+     "kind": "tower",
+     "where": "white stair tower proud of the siding, 7.4 m wide, with a tall glazed strip on its right",
+     "approxSizeM": [
+      7.4,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001716_pano_0000_001688",
+     "how": "ends(): white volume 0.6 m proud, glass strip with transoms"
+    },
+    {
+     "id": "sw-mast",
+     "kind": "other",
+     "where": "thin antenna mast on the roof above the tower",
+     "approxSizeM": [
+      0.1,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001716_pano_0000_001688",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 10 cm mast"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-50",
+   "bearing": 50,
+   "lengthM": 19.7,
+   "centre": [
+    4.880534,
+    52.3969205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000175_pano_0001_000017",
+   "capturedAt": "2016-11-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-tower",
+     "kind": "tower",
+     "where": "black-clad stair tower in the middle of the NE end, rising above the eaves, small stacked windows",
+     "approxSizeM": [
+      5.8,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000175_pano_0001_000017",
+     "how": "ends(): dark volume 1.5 m proud with three windows, cap 0.7 m above the eaves"
+    },
+    {
+     "id": "ne-deck-rail",
+     "kind": "balcony-ironwork",
+     "where": "white railings on the NE landing deck",
+     "approxSizeM": [
+      6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000175_pano_0001_000017",
+     "how": "railing() either side of the tower"
+    },
+    {
+     "id": "ne-letter-b",
+     "kind": "lettering",
+     "where": "house letter B beside the ground-storey entrance",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000175_pano_0001_000017",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 40 cm letter"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "MVA letting text \"BOG Haparandadam 7\" (1966 floating building, built at NDSM for KNSM)",
+   "url": "https://mva.nl/en/huur/bedrijfsruimtes/bog-haparandadam-7",
+   "licence": "fact citation"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (gangways, roof)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

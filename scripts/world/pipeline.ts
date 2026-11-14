@@ -23,6 +23,7 @@ import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
+import { rowFrontOn, rowFrontsFromFile, setRowFrontRecords } from '../../src/canalRecall/houseLine/rowFront.js';
 import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -49,7 +50,7 @@ export function inputHash(files: string[]): string {
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
   'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts', 'src/canalRecall/industrial/industrialTable.ts', 'src/canalRecall/industrial/industrialClass.ts',
-  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/facade/registerRecipe.ts', 'src/canalRecall/facade/registerFacts.ts', 'src/canalRecall/houseSpec/decorate.ts', 'src/canalRecall/houseSpec/wallColour.ts', 'src/canalRecall/facade/evidence.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
+  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/roofs/ridgeFacts.ts', 'src/canalRecall/roofs/ridgeAxis.ts', 'src/canalRecall/facade/registerRecipe.ts', 'src/canalRecall/facade/registerFacts.ts', 'src/canalRecall/houseSpec/decorate.ts', 'src/canalRecall/houseSpec/wallColour.ts', 'src/canalRecall/facade/evidence.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 export const tileFile = (t: string) => path.join(EXTRACT, `building-tiles/14/${t}.geojson.gz`);
@@ -63,9 +64,13 @@ export function houseSpecsIndexStamp(): HouseSpecsStamp {
   if (enabled) walk(path.join(abs, '14'));
   return houseSpecsStamp(enabled, dir, files);
 }
+/** Extract directory of the ridge-axes tiles (RIDGE_AXES_DIR reads a staged one before the integrator publishes). */
+export const ridgeAxesDir = (): string => process.env.RIDGE_AXES_DIR || 'ridge-axes';
+
 /** A tile's own inputs: a change to any of them recompiles only the cells that list the tile. HouseSpecs are per tile
  *  (house line H1), so a spec edit rebuilds the cells of its tile, not the city. */
 export const tileInputs = (t: string) => [tileFile(t), path.join(EXTRACT, `building-facts/14/${t}.json.gz`), path.join(EXTRACT, `roof-facts/14/${t}.json.gz`),
+  path.join(EXTRACT, `${ridgeAxesDir()}/14/${t}.json.gz`),
   ...(houseSpecsEnabled(null, process.env.HOUSE_SPECS) ? [path.join(EXTRACT, `${houseSpecsDir()}/14/${t}.json.gz`)] : [])];
 
 /** fetch over the extract directory, for the runtime enrichers (they take a fetch). */
@@ -84,6 +89,13 @@ function publishedRegisterFacts(): RegisterFactsMap | undefined {
   return registerFactsEnabled(null, process.env.REGISTER_FACTS) && fs.existsSync(file) ? registerFactsFromExtract(readJson(file)) : undefined;
 }
 export function gameChain(options: { registerFacts?: RegisterFactsMap | null } = {}) {
+  // Lane 1 (houseLine/rowFront.ts): the block's front records, only with ROW_FRONT=1 and a records file.
+  // Lane 2's table (data/front-records/haarlemmerdijk-block.json) through the adapter; ROW_FRONT_INTERIM (lane 1's
+  // skyline records) only fills a house the table has no height for.
+  if (rowFrontOn() && process.env.ROW_FRONT_RECORDS) {
+    const interim = process.env.ROW_FRONT_INTERIM ? readJson(path.resolve(process.env.ROW_FRONT_INTERIM)).records ?? [] : [];
+    setRowFrontRecords(rowFrontsFromFile(readJson(path.resolve(process.env.ROW_FRONT_RECORDS)), interim));
+  }
   const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));
   const gables = new Map(Object.entries(gablesJson.buildings ?? {})) as any;
@@ -99,7 +111,7 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
   // HouseSpecs (houseSpec/decorate.ts): HOUSE_SPECS=0 turns them off; HOUSE_SPECS_DIR reads another extract directory
   // (the lane's verification compiles against staging/house-specs before the integrator publishes).
   const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE,
-    { fetch: fileFetch, search: '', houseSpecs: houseSpecsEnabled(null, process.env.HOUSE_SPECS), houseSpecsDir: houseSpecsDir() });
+    { fetch: fileFetch, search: '', houseSpecs: houseSpecsEnabled(null, process.env.HOUSE_SPECS), houseSpecsDir: houseSpecsDir(), ridgeAxesDir: ridgeAxesDir() });
   return { decorate, featureDecorator, enricher, fileFetch, fileBase: FILE_BASE };
 }
 

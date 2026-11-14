@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012182858",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182858/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "the gable window is closed by dark green shutters"
+  },
+  {
+   "component": "gable ornament",
+   "what": "white carved scroll claw pieces at the neck foot and a hoist beam at the top"
+  },
+  {
+   "component": "door",
+   "what": "the door to the upper floors has an ornamented fanlight in the white shopfront frame"
+  }
+ ],
+ "notes": "A road sign and a privacy blur hide the left of the shop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

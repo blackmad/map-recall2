@@ -90,7 +90,7 @@ export function stampId(event: Pick<StampEvent, 'kind' | 'id'>): string {
   return event.id.startsWith('lm-') ? event.id.slice(3) : event.id;
 }
 
-/** Same notability inputs the route picker attaches (game-route.js _attachNotability). */
+/** Same notability inputs the route picker attaches (routeDestinationPool.attachNotability). */
 function notabilityOf(feature: CollectibleFeature): PoiNotability {
   return {
     name: feature.name,

@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100100093912",
+ "image": {
+  "ref": "source-data://pand-crops/0363100100093912/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 0,
+ "columns": [
+  1
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "painted",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "warehouse",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "ground",
+  "doorBay",
+  "bands",
+  "crown",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide gate covered in graffiti fills the one-storey wall under a painted lettered sign band"
+  },
+  {
+   "component": "relief",
+   "what": "a brick pier at the left carries a wall lantern on a bracket"
+  }
+ ],
+ "notes": "A low one-storey wall with a gate between taller neighbours; it may be a yard wall rather than a house front.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

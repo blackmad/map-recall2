@@ -44,7 +44,7 @@ test('histogram bins are half-open with an open last bin', () => {
 });
 
 // ------------------------------------------------------------------ the fix (bridgeGaps)
-import { edgesBox, surveyDeckEdges, EDGE_NO_OUTLINE_M } from './bridgeGaps.js';
+import { edgesBox, surveyDeckCaps, surveyDeckEdges, EDGE_NO_OUTLINE_M } from './bridgeGaps.js';
 import { GroundSurface, type DeckSurface } from './surface.js';
 import { deckShare } from './roadSurfaces.js';
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
@@ -122,4 +122,63 @@ test('narrowDryDeck: a dry way deck keeps a core half-width so the survey polygo
   const narrow = dryWayDeckProfile({ id: 8, name: 'busway', points: [[0, 0], [60, 0]] as [number, number][], halfWidth: 1 }, () => true, () => false)!;
   narrowDryDeck(narrow);
   assert.ok(narrow.halfWidth.every(h => h === 1), 'a narrower way is left alone');
+});
+
+test('survey caps: a half-width far past the deck polygons over open water is capped there (Rijckerbrug BRU0167, 8b91c88c)', () => {
+  const p = deck(), wide = { ...p, halfWidth: new Float64Array(41).fill(9) };
+  // Deck polygons reach 3 m right of the line and 9 m left; nothing surveyed beyond on the right (water); a quay polygon
+  // beyond 3 m at the span's last metre (s 15.5..16).
+  const onDeck = (x: number, y: number) => y >= -3 && y <= 9;
+  const surveyed = (x: number, y: number) => onDeck(x, y) || (x >= 15.5 && y < -3);
+  const caps = surveyDeckCaps(wide, onDeck, surveyed)!;
+  assert.equal(caps.right[20], 3.5, 'the last deck-level point plus a step');
+  assert.equal(caps.left[20], Infinity, 'the left side reaches its half-width: no cap');
+  assert.equal(caps.right[32], 3.5, 'a span end whose outside meets the quay takes the neighbours\' cap');
+  assert.equal(caps.right[0], Infinity, 'off the span: no cap');
+  assert.equal(surveyDeckCaps(wide, (x, y) => Math.abs(y) <= 8, (x, y) => Math.abs(y) <= 8), null, 'a survey within CAP_MIN_M of the half-width: no caps');
+  assert.equal(surveyDeckCaps(wide, onDeck, () => true), null, 'surveyed beyond everywhere (no open water): no caps');
+});
+
+test('survey caps: no cap where deck-level survey lies farther out within the half-width (two bridges on one profile, BRU0420)', () => {
+  const p = { ...deck(), halfWidth: new Float64Array(41).fill(12) };
+  const onDeck = (x: number, y: number) => (y >= -3 && y <= 3) || (y <= -8 && y >= -11.5);
+  const caps = surveyDeckCaps(p, onDeck, onDeck)!;
+  assert.equal(caps.right[20], Infinity, 'the second bridge 5 m beyond the water gap: the right side keeps its half-width');
+  assert.equal(caps.left[20], 3.5, 'nothing farther out on the left: capped');
+});
+
+test('locate on a long profile (the block index) returns exactly what the full scan does', () => {
+  // The pre-index loop, verbatim: the first segment at the minimum squared distance.
+  const scan = (p: DeckSurface['profile'], x: number, y: number) => {
+    let best = Infinity, bi = 0, bt = 0;
+    for (let i = 0; i + 1 < p.x.length; i++) {
+      const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+      const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+      if (d2 < best) { best = d2; bi = i; bt = t; }
+    }
+    const n = p.x.length, lerp = (a: Float64Array) => a[bi] + (a[Math.min(n - 1, bi + 1)] - a[bi]) * bt;
+    return { s: lerp(p.s), z: lerp(p.h), lateral: Math.sqrt(best) };
+  };
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  // A 3 km viaduct that winds back on itself (equidistant segments: ties), with repeated stations (zero-length segments)
+  // and a straight run (exact ties at its vertices), plus a short profile under the index threshold.
+  for (const n of [4660, 1000, 129, 60]) {
+    const x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(4);
+    for (let i = 0; i < n; i++) {
+      const a = i * 0.004;
+      x[i] = i < 300 ? i * 0.5 - 4000 : 600 * Math.cos(a) - 3000; y[i] = i < 300 ? 3000 : 400 * Math.sin(2 * a) + 3000;
+      if (i % 53 === 1 && i > 0) { x[i] = x[i - 1]; y[i] = y[i - 1]; }
+      s[i] = i; h[i] = rnd() * 5;
+    }
+    const p = { id: 'L', name: 'long', family: 'dry-way-deck', x, y, s, h, halfWidth: hw, water: null, deck: [0, n - 1], bbox: [-5000, 2000, -2000, 4000] } as DeckSurface['profile'];
+    const d: DeckSurface = { profile: p, z: h, ends: [0, 0], span: [-1, n], ease: [2.5, 2.5] };
+    const pts: [number, number][] = [[NaN, 3000], [Infinity, 0], [-3000, 3000], [x[150], y[150] + 2], [x[150] + 0.25, 2990], [x[7], y[7]]];
+    for (let k = 0; k < 4000; k++) pts.push(k % 2 ? [-3700 + rnd() * 1400, 2500 + rnd() * 1000] : [x[k % n] + (rnd() - 0.5) * 20, y[k % n] + (rnd() - 0.5) * 20]);
+    for (const [px, py] of pts) {
+      const a = GroundSurface.locate(d, px, py), b = scan(p, px, py);
+      assert.ok(Object.is(a.s, b.s) && Object.is(a.z, b.z) && Object.is(a.lateral, b.lateral), `n ${n} at ${px},${py}: ${a.s}/${b.s} ${a.lateral}/${b.lateral}`);
+    }
+  }
 });

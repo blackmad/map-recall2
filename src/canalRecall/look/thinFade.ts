@@ -8,7 +8,8 @@
 // Every facade chunk vertex carries `thin` (threeBuildingMesh.ts buildChunk): x = the triangle's smallest
 // cross-section in cm (its shortest altitude, 1..254; 0 = not a thin element: walls, roofs, lids) and y = its owner
 // class (THIN_CLASS). The fragment shader projects the cross-section to framebuffer pixels
-// (`px = thin_m * thinFocalPx / vFacDist`, thinFocalPx = projectionMatrix[1][1] * drawing-buffer height / 2) and
+// (`px = thin_m * thinFocalPx / vFacDist`, thinFocalPx = P11 * the pass viewport height / 2, projectionFocal11 and
+// passHeightPx below; regression tests/e2e/thin-focal.spec.ts) and
 // below THIN_FADE_FROM_PX dithers the element out with the screen-door hash of the city fade (no blending, no sort);
 // between THIN_FADE_FROM_PX and THIN_FADE_TO_PX it fades in. The wall behind stays. Decals and trim (class `trim`)
 // also get a small depth bias so a 1-2 cm proud decal stops z-fighting its wall at distance.
@@ -76,7 +77,17 @@ export const thinFocalPx = (projection11: number, drawingBufferHeight: number): 
  * principal point the P12 term adds in quadrature and is small).
  */
 export function projectionFocal11(elements: ArrayLike<number>): number {
-  return Math.hypot(elements[1], elements[5], elements[9]);
+  // Row 1 (screen y) and row 3 (w) over x, y, z. A perspective row 3 is -lambda * forward: MapLibre's clip matrix
+  // carries a homogeneous factor lambda (invisible to rendering, so P * V * lambda draws the same), and the
+  // shared frame's clipFromWorld = clipFromMercator * mercatorFromWorld kept it: lane TF measured the default chase at
+  // 7292 px/m for a 36.87 deg, 900 px frame (1350), 5.4x long, so the fade almost never ran there. Dividing by |row 3|
+  // removes lambda, and taking row 1 off its forward part drops an off-centre principal point (the chase padding).
+  // An orthographic row 3 has no x, y, z: the row's length is the answer, as before.
+  const r1 = [elements[1], elements[5], elements[9]], r3 = [elements[3], elements[7], elements[11]];
+  const w = Math.hypot(r3[0], r3[1], r3[2]);
+  if (!(w > 1e-12)) return Math.hypot(r1[0], r1[1], r1[2]);
+  const along = (r1[0] * r3[0] + r1[1] * r3[1] + r1[2] * r3[2]) / w;
+  return Math.sqrt(Math.max(0, r1[0] ** 2 + r1[1] ** 2 + r1[2] ** 2 - along * along)) / w;
 }
 
 function pageParam(param: string): string | null {
@@ -136,8 +147,30 @@ gl_FragColor = vec4(thinOwnerColour(vThinClass), 1.0);
 #endif
 `;
 
-/** Shared by every patched material: updated before each draw from the camera and the drawing buffer. */
+/** Shared by every patched material: updated before each draw from the camera and the pass's viewport. */
 const FOCAL = { value: 1000 };
+/** The live value (tests and the e2e focal probe). */
+export const thinFocalUniform = (): { readonly value: number } => FOCAL;
+
+/**
+ * The height in framebuffer pixels that clip space maps onto for the draw in progress: three's current viewport (the
+ * screen viewport times the pixel ratio, or the render target's), falling back to the drawing buffer size.
+ *
+ * Not `getDrawingBufferSize`: that answers three's own `_width/_height`, which only `setSize` updates. Both hosts size
+ * the canvas themselves and set the viewport (engine/frameHost.ts `resize` writes canvas.width/height, the shared
+ * frame takes MapLibre's), so a frame host renderer built on a fresh canvas kept the canvas default 300 × 150 for
+ * life: the fade read 150 px for a 900 px frame, 6x short, and 14 cm speklagen dissolved at ~20 m in house:frames
+ * (lane TF 2026-11-13: thinFocalPx 48.9 = P11 0.651 (the 114 deg pano lens) x 150 / 2).
+ */
+export function passHeightPx(renderer: any): number {
+  if (renderer?.getCurrentViewport) {
+    const v = renderer.getCurrentViewport(VIEWPORT);
+    if (v && v.w > 0) return v.w;
+  }
+  return renderer?.getDrawingBufferSize ? renderer.getDrawingBufferSize(SIZE).y : 0;
+}
+const VIEWPORT = { x: 0, y: 0, z: 0, w: 0, copy(v: { x: number; y: number; z: number; w: number }) { this.x = v.x; this.y = v.y; this.z = v.z; this.w = v.w; return this; } };
+const SIZE = { x: 0, y: 0, set(x: number, y: number) { this.x = x; this.y = y; return this; }, floor() { this.x = Math.floor(this.x); this.y = Math.floor(this.y); return this; } };
 
 /** Patch shader strings (exported for the tests): returns null when an anchor is missing (the material is left alone). */
 export function patchThinShaders(vertex: string, fragment: string, lit: boolean): { vertex: string; fragment: string } | null {
@@ -186,10 +219,9 @@ export function installThinFade(material: any, lit: boolean, options: { fade?: b
   // The program cache key stays the factory's: three hashes `defines` into every program key, so CITY_THIN_FADE /
   // CITY_THIN_OWNER already keep a patched program apart from an unpatched one (and the registry keys stay as pinned).
   const render = material.onBeforeRender;
-  const size = { x: 0, y: 0, set(x: number, y: number) { this.x = x; this.y = y; return this; }, floor() { this.x = Math.floor(this.x); this.y = Math.floor(this.y); return this; } };
   material.onBeforeRender = function (this: any, renderer: any, scene: any, camera: any, ...rest: any[]) {
     render?.call(this, renderer, scene, camera, ...rest);
-    const h = renderer?.getDrawingBufferSize ? renderer.getDrawingBufferSize(size).y : 0;
+    const h = passHeightPx(renderer);
     const e = camera?.projectionMatrix?.elements, p11 = e ? projectionFocal11(e) : NaN;
     if (h > 0 && Number.isFinite(p11) && p11 > 0) FOCAL.value = thinFocalPx(p11, h);
   };

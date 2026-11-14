@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "pandId": "0363100012164843",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012164843/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "crown",
+  "cornice",
+  "ground",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "white timber balconettes on deep white console brackets on three upper storeys"
+  },
+  {
+   "component": "roof",
+   "what": "the left bay rises as a raised wall with an arched attic window, a hoist beam and a white capping, the right part lower with a white ornament block"
+  },
+  {
+   "component": "window",
+   "what": "top-storey windows sit under brick relieving arches with infilled tympana and white springer blocks"
+  }
+ ],
+ "notes": "Ground storey is a rusticated stone plinth with two full-height openings behind parked bikes; the door is hidden. The top is an asymmetric raised wall, not a regular gable.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012172620",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172620/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "crown",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shutters",
+   "what": "dark shutters beside the single neck-gable window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "plain white plastered side pieces at the neck foot and a small curved pediment top"
+  }
+ ],
+ "notes": "Low-resolution image; a lamp post and plants cover the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

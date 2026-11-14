@@ -587,6 +587,12 @@ export class SharedFrame {
     if (this.rig.setShadowMapSize(size ?? this.baseShadowMapSize)) { this.shadowHeld = null; this.invalidateShadows(); }
   }
 
+  /** A tier re-probe raised the quality tier (renderGovernor.ts retier): its shadow-map size is the new base. */
+  setTierShadowMapSize(size: number): void {
+    this.baseShadowMapSize = size;
+    this.setShadowMapSize(null);
+  }
+
   /** Absolute ENU metres (fixed anchor) of a Mercator point; the shadow snap frame. */
   private absOf(p: Vec3): Vec3 {
     if (!this.anchor) { this.anchor = [p[0], p[1], 0]; this.anchorUnits = mercatorUnitsPerMetre(p[1]); }

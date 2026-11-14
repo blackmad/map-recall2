@@ -1,0 +1,2861 @@
+{
+ "version": 1,
+ "kind": "row-front-interim",
+ "note": "lane 1 interim front records; replaced by lane 2 data/front-records/haarlemmerdijk-block.json",
+ "records": [
+  {
+   "pandId": "0363100012168428",
+   "face": "haarlemmer-46-96",
+   "topM": 8.88,
+   "eavesM": 8.88,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 8.88,
+    "footM": 8.8,
+    "peakM": 11.22,
+    "crownShare": 0.41,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012168427",
+   "face": "haarlemmer-46-96",
+   "topM": 14.45,
+   "eavesM": 11.32,
+   "crown": {
+    "family": "neck",
+    "riseM": 3.13
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.6,
+    "footM": 11.32,
+    "peakM": 14.45,
+    "crownShare": 0.49,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012167538",
+   "face": "haarlemmer-46-96",
+   "topM": 13.3,
+   "eavesM": 13.3,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.3,
+    "footM": 13.25,
+    "peakM": 13.38,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012175144",
+   "face": "haarlemmer-46-96",
+   "topM": 17.38,
+   "eavesM": 17.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 17.38,
+    "footM": 17.18,
+    "peakM": 18.02,
+    "crownShare": 0.2,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012175143",
+   "face": "haarlemmer-46-96",
+   "topM": 13.35,
+   "eavesM": 13.35,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.35,
+    "footM": 12.6,
+    "peakM": 13.63,
+    "crownShare": 0.04,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.04)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012175142",
+   "face": "haarlemmer-46-96",
+   "topM": 12.9,
+   "eavesM": 12.9,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.9,
+    "footM": 12.78,
+    "peakM": 14.28,
+    "crownShare": 0.41,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012175141",
+   "face": "haarlemmer-46-96",
+   "topM": 12.88,
+   "eavesM": 12.88,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.88,
+    "footM": 12.78,
+    "peakM": 12.97,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012175140",
+   "face": "haarlemmer-46-96",
+   "topM": 9.38,
+   "eavesM": 9.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 9.38,
+    "footM": 9.2,
+    "peakM": 11.07,
+    "crownShare": 0.35,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012175139",
+   "face": "haarlemmer-46-96",
+   "topM": 12,
+   "eavesM": 9.15,
+   "crown": {
+    "family": "neck",
+    "riseM": 2.85
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 9.55,
+    "footM": 9.15,
+    "peakM": 12,
+    "crownShare": 0.48,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012175205",
+   "face": "haarlemmer-46-96",
+   "topM": 18.6,
+   "eavesM": 18.6,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 18.6,
+    "footM": 10.9,
+    "peakM": 19.88,
+    "crownShare": 0.58,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012175204",
+   "face": "haarlemmer-46-96",
+   "topM": 17.73,
+   "eavesM": 17.73,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 17.73,
+    "footM": 17.68,
+    "peakM": 19.55,
+    "crownShare": 0.19,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012175206",
+   "face": "haarlemmer-46-96",
+   "topM": 13.65,
+   "eavesM": 13.65,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13.65,
+    "footM": 13.5,
+    "peakM": 18.35,
+    "crownShare": 0.48,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012175207",
+   "face": "haarlemmer-46-96",
+   "topM": 15.2,
+   "eavesM": 15.2,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 15.2,
+    "footM": 15.15,
+    "peakM": 15.68,
+    "crownShare": 0.09,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.09)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012175208",
+   "face": "haarlemmer-46-96",
+   "topM": 5.47,
+   "eavesM": 5.47,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 5.47,
+    "footM": 5.03,
+    "peakM": 12.25,
+    "crownShare": 0.58,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (99 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012171144",
+   "face": "haarlemmer-46-96",
+   "topM": 14.2,
+   "eavesM": 13,
+   "crown": {
+    "family": "neck",
+    "riseM": 1.2
+   },
+   "rowLines": [
+    4.4,
+    7.2,
+    9.9,
+    12.4
+   ],
+   "storeys": 4,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 13.5,
+    "footM": 13.35,
+    "peakM": 15.65,
+    "crownShare": 0.47,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012171144 gable neck",
+    "eaves": "hand spec spec-0363100012171144 eavesHeight",
+    "rise": "hand spec spec-0363100012171144 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012171145",
+   "face": "haarlemmer-46-96",
+   "topM": 15.7,
+   "eavesM": 14.5,
+   "crown": {
+    "family": "neck",
+    "riseM": 1.2
+   },
+   "rowLines": [
+    4.4,
+    7.2,
+    9.9,
+    12.4
+   ],
+   "storeys": 4,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 15.43,
+    "footM": 14.8,
+    "peakM": 18.68,
+    "crownShare": 0.62,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012171145 gable neck",
+    "eaves": "hand spec spec-0363100012171145 eavesHeight",
+    "rise": "hand spec spec-0363100012171145 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012171148",
+   "face": "haarlemmer-46-96",
+   "topM": 10.07,
+   "eavesM": 10.07,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.07,
+    "footM": 10.07,
+    "peakM": 10.28,
+    "crownShare": 0.01,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.01)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012171141",
+   "face": "haarlemmer-46-96",
+   "topM": 10.82,
+   "eavesM": 8.63,
+   "crown": {
+    "family": "neck",
+    "riseM": 2.19
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 8.75,
+    "footM": 8.63,
+    "peakM": 10.82,
+    "crownShare": 0.43,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012171140",
+   "face": "haarlemmer-46-96",
+   "topM": 12.5,
+   "eavesM": 12.5,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.5,
+    "footM": 12.47,
+    "peakM": 12.6,
+    "crownShare": 0.01,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176652",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 7.45,
+   "eavesM": 7.45,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 7.45,
+    "footM": 7,
+    "peakM": 11,
+    "crownShare": 0.69,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012165102",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 7.1,
+   "eavesM": 7.1,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 7.1,
+    "footM": 6.95,
+    "peakM": 11.05,
+    "crownShare": 0.63,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012165074",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 10.6,
+   "eavesM": 10.6,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.6,
+    "footM": 9.25,
+    "peakM": 11.55,
+    "crownShare": 0.24,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012165073",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 11.03,
+   "eavesM": 11.03,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4,
+    6.8,
+    9.5,
+    12.1
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.03,
+    "footM": 10.9,
+    "peakM": 14.45,
+    "crownShare": 0.62,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012165073 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012171347",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 14.4,
+   "eavesM": 14.4,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 14.4,
+    "footM": 10.1,
+    "peakM": 16.52,
+    "crownShare": 0.36,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012171346",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 10,
+   "eavesM": 10,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10,
+    "footM": 9.95,
+    "peakM": 11.43,
+    "crownShare": 0.21,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012173469",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 10.07,
+   "eavesM": 10.07,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.07,
+    "footM": 10.05,
+    "peakM": 10.15,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012173479",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 9.9,
+   "eavesM": 9.9,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 10.03,
+    "footM": 9.07,
+    "peakM": 10.4,
+    "crownShare": 0.06,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "face pin"
+   }
+  },
+  {
+   "pandId": "0363100012173480",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 10.9,
+   "eavesM": 10,
+   "crown": {
+    "family": "bell",
+    "riseM": 0.9
+   },
+   "rowLines": [
+    4.3,
+    7,
+    9.6
+   ],
+   "storeys": 3,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 9.6,
+    "footM": 9.15,
+    "peakM": 13.7,
+    "crownShare": 0.58,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012173480 gable bell",
+    "eaves": "hand spec spec-0363100012173480 eavesHeight",
+    "rise": "hand spec spec-0363100012173480 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012173482",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 13.85,
+   "eavesM": 13.85,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.85,
+    "footM": 13.6,
+    "peakM": 13.9,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012173481",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 14.7,
+   "eavesM": 13.1,
+   "crown": {
+    "family": "point",
+    "riseM": 1.6
+   },
+   "rowLines": [
+    4.4,
+    7.2,
+    9.9,
+    12.4
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.6,
+    "footM": 13.1,
+    "peakM": 17.23,
+    "crownShare": 0.62,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012173481 gable point",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "hand spec spec-0363100012173481 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012173484",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 13.25,
+   "eavesM": 13.25,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.25,
+    "footM": 10.95,
+    "peakM": 13.25,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012173483",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 10.65,
+   "eavesM": 10.65,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4.3,
+    7,
+    9.6
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.65,
+    "footM": 9.3,
+    "peakM": 11.97,
+    "crownShare": 0.26,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012173483 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012169539",
+   "face": "haarlemmerdijk-117-143",
+   "topM": 9.37,
+   "eavesM": 8.82,
+   "crown": {
+    "family": "bell",
+    "riseM": 0.55
+   },
+   "rowLines": [
+    4.3,
+    7,
+    9.6
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10,
+    "footM": 8.82,
+    "peakM": 11.9,
+    "crownShare": 0.54,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012169539 gable bell",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "hand spec spec-0363100012169539 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012172757",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 15.32,
+   "eavesM": 15.32,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 15.32,
+    "footM": 15.3,
+    "peakM": 15.4,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172756",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 14.68,
+   "eavesM": 14.68,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10.3,
+    12.9
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.68,
+    "footM": 14.43,
+    "peakM": 15.63,
+    "crownShare": 0.37,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012172756 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172755",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 13,
+   "eavesM": 12.6,
+   "crown": {
+    "family": "neck",
+    "riseM": 0.4
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.8,
+    "footM": 12.6,
+    "peakM": 14.97,
+    "crownShare": 0.49,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012172755 gable neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "hand spec spec-0363100012172755 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012172754",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 18.02,
+   "eavesM": 18.02,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 18.02,
+    "footM": 16.43,
+    "peakM": 20.13,
+    "crownShare": 0.52,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172847",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 13.18,
+   "eavesM": 13.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13.18,
+    "footM": 12.97,
+    "peakM": 14.18,
+    "crownShare": 0.26,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012173014",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 16.52,
+   "eavesM": 16.52,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 16.52,
+    "footM": 16.43,
+    "peakM": 16.65,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172848",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 11.5,
+   "eavesM": 11.5,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.5,
+    "footM": 11.47,
+    "peakM": 12.53,
+    "crownShare": 0.15,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.15)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172845",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 13.97,
+   "eavesM": 13.97,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13.97,
+    "footM": 12.88,
+    "peakM": 15.88,
+    "crownShare": 0.46,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172660",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 10.1,
+   "eavesM": 10.1,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.1,
+    "footM": 8.47,
+    "peakM": 11.72,
+    "crownShare": 0.47,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (99 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172946",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 11.2,
+   "eavesM": 11.2,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.2,
+    "footM": 11.18,
+    "peakM": 12.28,
+    "crownShare": 0.33,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172945",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 12.5,
+   "eavesM": 12.5,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.5,
+    "footM": 12.38,
+    "peakM": 12.55,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012171354",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 10.8,
+   "eavesM": 10.8,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.8,
+    "footM": 10.5,
+    "peakM": 11.82,
+    "crownShare": 0.36,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012171351",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 13,
+   "eavesM": 13,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13,
+    "footM": 12.25,
+    "peakM": 13.93,
+    "crownShare": 0.38,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012169538",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 12.18,
+   "eavesM": 12.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.18,
+    "footM": 11.97,
+    "peakM": 13.65,
+    "crownShare": 0.4,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012171358",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 14.1,
+   "eavesM": 14.1,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.1,
+    "footM": 12.63,
+    "peakM": 14.47,
+    "crownShare": 0.01,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.01)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012171357",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 12.68,
+   "eavesM": 12.68,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.68,
+    "footM": 12.57,
+    "peakM": 15.55,
+    "crownShare": 0.53,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176636",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 12.8,
+   "eavesM": 12.8,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.8,
+    "footM": 12.38,
+    "peakM": 13.5,
+    "crownShare": 0.35,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012171359",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 11.47,
+   "eavesM": 11.47,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.47,
+    "footM": 11.45,
+    "peakM": 12.32,
+    "crownShare": 0.23,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176637",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 12.88,
+   "eavesM": 12.88,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.88,
+    "footM": 12.8,
+    "peakM": 14.38,
+    "crownShare": 0.21,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176633",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 10.47,
+   "eavesM": 10.47,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.47,
+    "footM": 10.4,
+    "peakM": 11.6,
+    "crownShare": 0.51,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176571",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 11.63,
+   "eavesM": 11.63,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.63,
+    "footM": 11.63,
+    "peakM": 12.78,
+    "crownShare": 0.17,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012176571 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176572",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 14.8,
+   "eavesM": 14.8,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 14.8,
+    "footM": 14.7,
+    "peakM": 16.2,
+    "crownShare": 0.33,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176573",
+   "face": "haarlemmerdijk-126-188",
+   "topM": 11.07,
+   "eavesM": 11.07,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.07,
+    "footM": 10.65,
+    "peakM": 12.05,
+    "crownShare": 0.44,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167796",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 13.18,
+   "eavesM": 13.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.18,
+    "footM": 10.4,
+    "peakM": 15.85,
+    "crownShare": 0.61,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012177504",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 12.5,
+   "eavesM": 12.5,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.5,
+    "footM": 12.5,
+    "peakM": 13.75,
+    "crownShare": 0.23,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012177501",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 11.63,
+   "eavesM": 8.97,
+   "crown": {
+    "family": "bell",
+    "riseM": 2.66
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 9.47,
+    "footM": 8.97,
+    "peakM": 11.63,
+    "crownShare": 0.52,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register bell",
+    "eaves": "skyline foot (99 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012177502",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 8.38,
+   "eavesM": 8.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 8.38,
+    "footM": 8.22,
+    "peakM": 10.78,
+    "crownShare": 0.26,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012177503",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 10.3,
+   "eavesM": 10.3,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4,
+    6.8,
+    9.5,
+    12.1
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.3,
+    "footM": 7.97,
+    "peakM": 18.95,
+    "crownShare": 0.68,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012177503 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167795",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 8.38,
+   "eavesM": 8.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 8.38,
+    "footM": 7.75,
+    "peakM": 10.55,
+    "crownShare": 0.36,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167794",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 12.18,
+   "eavesM": 10.25,
+   "crown": {
+    "family": "point",
+    "riseM": 1.93
+   },
+   "rowLines": [
+    4,
+    6.8,
+    9.5,
+    12.1
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.9,
+    "footM": 10.25,
+    "peakM": 12.18,
+    "crownShare": 0.46,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012167794 gable point",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012253819",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 12.05,
+   "eavesM": 12.05,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4,
+    6.8,
+    9.5,
+    12.1
+   ],
+   "storeys": 4,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.05,
+    "footM": 10.25,
+    "peakM": 12.22,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012253819 gable cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167805",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 11.05,
+   "eavesM": 11.05,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.05,
+    "footM": 10.7,
+    "peakM": 13.13,
+    "crownShare": 0.59,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012253818",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 11.85,
+   "eavesM": 11.85,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.85,
+    "footM": 10.85,
+    "peakM": 14.25,
+    "crownShare": 0.69,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167804",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 10.88,
+   "eavesM": 10.88,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.88,
+    "footM": 10.72,
+    "peakM": 13.18,
+    "crownShare": 0.6,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012177663",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 11.18,
+   "eavesM": 11.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.18,
+    "footM": 11.05,
+    "peakM": 13.25,
+    "crownShare": 0.44,
+    "readShare": 0.98
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012177663 gable cornice",
+    "eaves": "skyline front top (98 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176277",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 13.43,
+   "eavesM": 13.43,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.43,
+    "footM": 9.65,
+    "peakM": 13.55,
+    "crownShare": 0.03,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.03)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012177659",
+   "face": "haarlemmerdijk-13-45",
+   "topM": 10.95,
+   "eavesM": 9.75,
+   "crown": {
+    "family": "neck",
+    "riseM": 1.2
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 9.8,
+    "footM": 9.45,
+    "peakM": 13.07,
+    "crownShare": 0.63,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012177659 gable neck",
+    "eaves": "hand spec spec-0363100012177659 eavesHeight",
+    "rise": "hand spec spec-0363100012177659 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012171352",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 16.07,
+   "eavesM": 12.35,
+   "crown": {
+    "family": "neck",
+    "riseM": 3.72
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.53,
+    "footM": 12.35,
+    "peakM": 16.07,
+    "crownShare": 0.6,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012173015",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 10.93,
+   "eavesM": 10.93,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.93,
+    "footM": 10.9,
+    "peakM": 12.68,
+    "crownShare": 0.31,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172950",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 10.7,
+   "eavesM": 10.7,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.7,
+    "footM": 10.65,
+    "peakM": 10.75,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012172951",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 9.18,
+   "eavesM": 9.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 9.18,
+    "footM": 8.93,
+    "peakM": 11.32,
+    "crownShare": 0.53,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012171348",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 11.13,
+   "eavesM": 11.13,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.13,
+    "footM": 11.07,
+    "peakM": 13.05,
+    "crownShare": 0.38,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172832",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 4.28,
+   "eavesM": 4.28,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 4.28,
+    "footM": 4.08,
+    "peakM": 5.67,
+    "crownShare": 0.26,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172834",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 14.03,
+   "eavesM": 14.03,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 14.03,
+    "footM": 13.93,
+    "peakM": 16.18,
+    "crownShare": 0.49,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172949",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 15.72,
+   "eavesM": 15.72,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 15.72,
+    "footM": 15.05,
+    "peakM": 18.32,
+    "crownShare": 0.51,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012172948",
+   "face": "haarlemmerdijk-149-175",
+   "topM": 16.15,
+   "eavesM": 16.15,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 16.15,
+    "footM": 15.82,
+    "peakM": 16.45,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012177585",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 18.23,
+   "eavesM": 13.22,
+   "crown": {
+    "family": "neck",
+    "riseM": 5.01
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.88,
+    "footM": 13.22,
+    "peakM": 18.23,
+    "crownShare": 0.64,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012177584",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 17.9,
+   "eavesM": 13.2,
+   "crown": {
+    "family": "neck",
+    "riseM": 4.7
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 15.32,
+    "footM": 13.2,
+    "peakM": 17.9,
+    "crownShare": 0.67,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (99 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012177590",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 13.1,
+   "eavesM": 13.1,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.1,
+    "footM": 13.05,
+    "peakM": 13.75,
+    "crownShare": 0.13,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.13)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176280",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 13.45,
+   "eavesM": 12.9,
+   "crown": {
+    "family": "neck",
+    "riseM": 0.55
+   },
+   "rowLines": [
+    4.3,
+    7,
+    9.6
+   ],
+   "storeys": 3,
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.35,
+    "footM": 12.9,
+    "peakM": 16,
+    "crownShare": 0.55,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012176280 gable neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "hand spec spec-0363100012176280 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012176278",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 16.63,
+   "eavesM": 16.63,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 16.63,
+    "footM": 13.45,
+    "peakM": 16.77,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176279",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 19.18,
+   "eavesM": 19.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 19.18,
+    "footM": 17.98,
+    "peakM": 19.68,
+    "crownShare": 0.01,
+    "readShare": 0.86
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (86 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012177674",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 17.82,
+   "eavesM": 17.82,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 17.82,
+    "footM": 15.95,
+    "peakM": 19.48,
+    "crownShare": 0.57,
+    "readShare": 0.8
+   },
+   "sources": {
+    "eaves": "skyline front top (80 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012177657",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 14.15,
+   "eavesM": 14.15,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.15,
+    "footM": 14.13,
+    "peakM": 14.2,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167801",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 15.1,
+   "eavesM": 15.1,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 15.1,
+    "footM": 14.97,
+    "peakM": 16.25,
+    "crownShare": 0.23,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167821",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 18.38,
+   "eavesM": 18.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 18.38,
+    "footM": 17.8,
+    "peakM": 19.4,
+    "crownShare": 0.33,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167820",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 12.43,
+   "eavesM": 12.43,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.43,
+    "footM": 12.3,
+    "peakM": 14.65,
+    "crownShare": 0.6,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167819",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 14.13,
+   "eavesM": 14.13,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 14.13,
+    "footM": 13.18,
+    "peakM": 15.1,
+    "crownShare": 0.25,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167818",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 11.4,
+   "eavesM": 10.2,
+   "crown": {
+    "family": "neck",
+    "riseM": 1.2
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 11.53,
+    "footM": 10.6,
+    "peakM": 13.38,
+    "crownShare": 0.68,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012167818 gable neck",
+    "eaves": "hand spec spec-0363100012167818 eavesHeight",
+    "rise": "hand spec spec-0363100012167818 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012167817",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 11.4,
+   "eavesM": 11.4,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 11.93,
+    "footM": 10.9,
+    "peakM": 12.63,
+    "crownShare": 0.18,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "face pin"
+   }
+  },
+  {
+   "pandId": "0363100012167816",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 11.6,
+   "eavesM": 11.6,
+   "crown": {
+    "family": "cornice"
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 11.6,
+    "footM": 11.57,
+    "peakM": 11.72,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012167816 gable cornice",
+    "eaves": "hand spec spec-0363100012167816 eavesHeight"
+   }
+  },
+  {
+   "pandId": "0363100012176104",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 14.65,
+   "eavesM": 14.65,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.65,
+    "footM": 13.35,
+    "peakM": 14.75,
+    "crownShare": 0,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (99 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176103",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 11.82,
+   "eavesM": 11.82,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.82,
+    "footM": 11.25,
+    "peakM": 13.15,
+    "crownShare": 0.4,
+    "readShare": 0.98
+   },
+   "sources": {
+    "eaves": "skyline front top (98 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176102",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 10.65,
+   "eavesM": 10.65,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.65,
+    "footM": 10.6,
+    "peakM": 12.78,
+    "crownShare": 0.38,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176101",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 12.25,
+   "eavesM": 12.25,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.25,
+    "footM": 10.68,
+    "peakM": 14.07,
+    "crownShare": 0.57,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176172",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 11,
+   "eavesM": 11,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 11.4,
+    "footM": 11.38,
+    "peakM": 12.35,
+    "crownShare": 0.3,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "face pin"
+   }
+  },
+  {
+   "pandId": "0363100012176174",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 10.65,
+   "eavesM": 9.8,
+   "crown": {
+    "family": "neck",
+    "riseM": 0.85
+   },
+   "rowLines": [
+    4.5,
+    7.4,
+    10
+   ],
+   "storeys": 3,
+   "confidence": 0.85,
+   "skyline": {
+    "frontTopM": 9.95,
+    "footM": 9.82,
+    "peakM": 11.9,
+    "crownShare": 0.35,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "hand spec spec-0363100012176174 gable neck",
+    "eaves": "hand spec spec-0363100012176174 eavesHeight",
+    "rise": "hand spec spec-0363100012176174 crownRise"
+   }
+  },
+  {
+   "pandId": "0363100012176175",
+   "face": "haarlemmerdijk-2-58",
+   "topM": 13.45,
+   "eavesM": 9.8,
+   "crown": {
+    "family": "neck",
+    "riseM": 3.65
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.05,
+    "footM": 9.8,
+    "peakM": 13.45,
+    "crownShare": 0.58,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012176569",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 13.38,
+   "eavesM": 13.38,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.38,
+    "footM": 12.63,
+    "peakM": 13.53,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176570",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 11.22,
+   "eavesM": 11.22,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.22,
+    "footM": 10.82,
+    "peakM": 13.18,
+    "crownShare": 0.62,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176577",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 14.18,
+   "eavesM": 14.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.18,
+    "footM": 10.72,
+    "peakM": 15,
+    "crownShare": 0.13,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.13)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176696",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 14.47,
+   "eavesM": 14.47,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.47,
+    "footM": 14.32,
+    "peakM": 16.18,
+    "crownShare": 0.6,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176698",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 14.82,
+   "eavesM": 10.28,
+   "crown": {
+    "family": "neck",
+    "riseM": 4.54
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.53,
+    "footM": 10.28,
+    "peakM": 14.82,
+    "crownShare": 0.7,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012176655",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 14.07,
+   "eavesM": 14.07,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.07,
+    "footM": 13.97,
+    "peakM": 14.7,
+    "crownShare": 0.17,
+    "readShare": 0.99
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.17)",
+    "eaves": "skyline front top (99 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176568",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 13.8,
+   "eavesM": 13.8,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.8,
+    "footM": 13.78,
+    "peakM": 14,
+    "crownShare": 0.07,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176580",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 13.6,
+   "eavesM": 13.6,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13.6,
+    "footM": 13.57,
+    "peakM": 15.95,
+    "crownShare": 0.42,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176697",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 16.43,
+   "eavesM": 16.43,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 16.43,
+    "footM": 15.95,
+    "peakM": 16.7,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167793",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 13.47,
+   "eavesM": 13.47,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 13.47,
+    "footM": 13.4,
+    "peakM": 14.55,
+    "crownShare": 0.47,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167812",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 10.3,
+   "eavesM": 10.3,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.3,
+    "footM": 10.25,
+    "peakM": 13.53,
+    "crownShare": 0.61,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167807",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 15.18,
+   "eavesM": 12.2,
+   "crown": {
+    "family": "neck",
+    "riseM": 2.98
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 12.47,
+    "footM": 12.2,
+    "peakM": 15.18,
+    "crownShare": 0.3,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012177675",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 11.85,
+   "eavesM": 11.85,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.85,
+    "footM": 11.75,
+    "peakM": 12.65,
+    "crownShare": 0.4,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012177671",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 10.55,
+   "eavesM": 10.55,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.55,
+    "footM": 9.88,
+    "peakM": 12.25,
+    "crownShare": 0.63,
+    "readShare": 0.99
+   },
+   "sources": {
+    "eaves": "skyline front top (99 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012177670",
+   "face": "haarlemmerdijk-66-120",
+   "topM": 12.43,
+   "eavesM": 12.43,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 12.43,
+    "footM": 9.72,
+    "peakM": 14.13,
+    "crownShare": 0.64,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012167808",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 16.18,
+   "eavesM": 16.18,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 16.18,
+    "footM": 16.1,
+    "peakM": 16.25,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167787",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 11.43,
+   "eavesM": 11.43,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.43,
+    "footM": 11.38,
+    "peakM": 11.82,
+    "crownShare": 0.07,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.07)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167786",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 14.55,
+   "eavesM": 14.55,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.55,
+    "footM": 14.2,
+    "peakM": 15.03,
+    "crownShare": 0.02,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.02)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176515",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 17.5,
+   "eavesM": 11.57,
+   "crown": {
+    "family": "neck",
+    "riseM": 5.93
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.2,
+    "footM": 11.57,
+    "peakM": 17.5,
+    "crownShare": 0.53,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register neck",
+    "eaves": "skyline foot (100 % read)",
+    "rise": "skyline peak"
+   }
+  },
+  {
+   "pandId": "0363100012167785",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 14.6,
+   "eavesM": 14.6,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 14.6,
+    "footM": 14.6,
+    "peakM": 14.68,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012167792",
+   "face": "haarlemmerdijk-67-91",
+   "topM": 11.97,
+   "eavesM": 11.97,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 11.97,
+    "footM": 11.88,
+    "peakM": 13.13,
+    "crownShare": 0.33,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012165105",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 13.82,
+   "eavesM": 13.82,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 13.82,
+    "footM": 13.8,
+    "peakM": 13.88,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176699",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 17.02,
+   "eavesM": 17.02,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 17.02,
+    "footM": 16.98,
+    "peakM": 17.05,
+    "crownShare": 0,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012165106",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 14.25,
+   "eavesM": 14.25,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 14.25,
+    "footM": 13.35,
+    "peakM": 16.82,
+    "crownShare": 0.46,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  },
+  {
+   "pandId": "0363100012176579",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 11.85,
+   "eavesM": 11.85,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 11.85,
+    "footM": 11.65,
+    "peakM": 12.9,
+    "crownShare": 0.63,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "register cornice",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176578",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 10.13,
+   "eavesM": 10.13,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.6,
+   "skyline": {
+    "frontTopM": 10.13,
+    "footM": 10.1,
+    "peakM": 10.2,
+    "crownShare": 0.01,
+    "readShare": 1
+   },
+   "sources": {
+    "crown": "skyline flat (crown share 0.01)",
+    "eaves": "skyline front top (100 % read)"
+   }
+  },
+  {
+   "pandId": "0363100012176702",
+   "face": "haarlemmerdijk-93-113",
+   "topM": 10.05,
+   "eavesM": 10.05,
+   "crown": {
+    "family": "cornice"
+   },
+   "confidence": 0.4,
+   "skyline": {
+    "frontTopM": 10.05,
+    "footM": 9.82,
+    "peakM": 11.47,
+    "crownShare": 0.44,
+    "readShare": 1
+   },
+   "sources": {
+    "eaves": "skyline front top (100 % read)"
+   },
+   "fallback": "row-line"
+  }
+ ]
+}

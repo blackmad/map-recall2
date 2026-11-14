@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174978",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174978/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "heads",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with a pointed pediment on a grey roof slope behind the cornice"
+  },
+  {
+   "component": "door",
+   "what": "white ground storey; the door bay has paired round-arched lights"
+  }
+ ],
+ "notes": "Bare branches and a shrub cross the left side; the ground storey is partly hidden.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

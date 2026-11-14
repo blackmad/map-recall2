@@ -61,7 +61,7 @@ test('grid convergence: the panorama is indexed on the RD grid, about -0.4 deg i
 });
 
 test('--help text names every input and the review section', () => {
-  for (const flag of ['--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
+  for (const flag of ['--square', '--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
   assert.match(HELP, /§7/);
 });
 
@@ -133,4 +133,17 @@ test('pinned 167794 (belt-20261113 sheet): neighbour 167795 drawn 1.2 m over the
   const most = flagsFor(read(20, { b: 20 }), m, m, roof);
   assert.equal(most.otherBuilding, 'b');
   assert.equal(most.neighbourCovers, null);
+});
+
+test('engineWorld names the engine and the world; world=live is marked as the dev fallback', async () => {
+  const { engineWorld, WORLD_LIVE_WARNING } = await import('./analyse.ts');
+  const d = engineWorld('');
+  assert.equal(d.live, false);
+  assert.match(d.world, /world-v1 \(players' default\)/);
+  assert.match(d.engine, /^own \(fps camera; players get MapLibre\)/);
+  const l = engineWorld('?world=live&houseSpecs=0');
+  assert.equal(l.live, true);
+  assert.match(l.world, /dev fallback/);
+  assert.match(engineWorld('', '/tmp/w').world, /staged \(WORLD_DIR=\/tmp\/w\)/);
+  assert.match(WORLD_LIVE_WARNING, /world=live/);
 });

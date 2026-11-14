@@ -29,6 +29,8 @@ import {
 } from './buildingTileSource.js';
 import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
+// The per-area hand-over's helpers ride on this bundle's global (vector-map.js, `?wallsPerArea=1`).
+export { PENDING_SOURCE_LAYERS, PENDING_SUFFIX, pendingDone, pendingLayer, wallsPerAreaEnabled } from './pendingWalls.js';
 import { mapHasStyle, mapRemoved } from './mapStyle.js';
 import { onViewChange, worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
@@ -110,6 +112,26 @@ async function readGzippedGeoJson(response: Response): Promise<{ features?: Buil
 }
 
 /** See `BuildingTileStreamer.setTileEnricher`. */
+/**
+ * Each resident building carries its z14 tile (`t14`, `x/y`) by the facade layer's own rule (threeBuildingsBrowser.ts
+ * tileKeyAt: the first vertex), so a MapLibre filter can tell the buildings the three.js layer already draws from
+ * those it does not (vector-map.js wallsPerArea, lane LS 2026-11-14).
+ */
+export function buildingTile14(geometry: unknown): string | null {
+  const g = geometry as { type?: string; coordinates?: unknown } | null;
+  const c = g?.type === 'Polygon' ? (g.coordinates as number[][][])?.[0]?.[0] : g?.type === 'MultiPolygon' ? (g.coordinates as number[][][][])?.[0]?.[0]?.[0] : null;
+  if (!c || !Number.isFinite(c[0]) || !Number.isFinite(c[1])) return null;
+  const n = 2 ** 14, rad = c[1] * Math.PI / 180;
+  return `${Math.floor(((c[0] + 180) / 360) * n)}/${Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n)}`;
+}
+export function stampTile(features: readonly BuildingFeature[]): void {
+  for (const f of features) {
+    if (!f.properties) continue;
+    const t = buildingTile14(f.geometry);
+    if (t) (f.properties as Record<string, unknown>).t14 = t;
+  }
+}
+
 export type TileEnricher = (tile: { z: number; x: number; y: number }, signal: AbortSignal) => Promise<((features: BuildingFeature[]) => void) | undefined | void>;
 
 /** A tile that has not arrived by now is retried rather than waited on. */
@@ -689,6 +711,8 @@ export class BuildingTileStreamer {
         for (const [raw, out] of styled) if (!this.baked.has(raw as BuildingFeature)) this.baked.set(raw as BuildingFeature, out as BuildingFeature);
         const before = this.cache.entries().get(key);
         if (before && before.length === features.length && before.every((f, i) => f === features[i])) return;
+        stampTile(features as BuildingFeature[]);
+        stampTile([...styled.values()] as BuildingFeature[]);
         this.cache.adopt(key, features as BuildingFeature[]);
         this.markTile(key, 'resident', features.length);
         this.failures.delete(key);
@@ -723,6 +747,7 @@ export class BuildingTileStreamer {
         // Side data is optional: a bad enricher must not cost the buildings.
         try { if (apply) apply(features); } catch (error) { console.warn('Building tile enrichment failed', key, error); }
       }
+      stampTile(features);
       this.cache.adopt(key, features);
       this.markTile(key, 'resident', features.length);
       this.failures.delete(key);

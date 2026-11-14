@@ -16,6 +16,12 @@ export function buildHallenHouseLandmark(id:string,_w:number,_d:number,b:Buildin
  const region=(r:T.Vector2[],x0:number,x1:number,z0:number,z1:number)=>clip(clip(clip(clip(r,'x',x0,true),'x',x1,false),'y',z0,true),'y',z1,false);
  if(id==='de-hallen'){
   const ring=rings[0][0];body(rings[0],7.2,'brick');plane(ring,()=>7.22,'slate');
+  // Outermost wall x at a given z (the surveyed outline's crossing with that z line) and the stretches of z where it is constant.
+  const frontAt=(z:number)=>{let m=Infinity;for(let i=0;i<ring.length;i++){const a=ring[i],c=ring[(i+1)%ring.length];if((a.y-z)*(c.y-z)>0||a.y===c.y)continue;m=Math.min(m,a.x+(z-a.y)/(c.y-a.y)*(c.x-a.x));}return m;};
+  const frontRuns=(lo:number,hi:number)=>{const out:{z0:number;z1:number;x:number}[]=[];let s=lo,x=frontAt(lo+.02);for(let z=lo+.1;z<hi-.05;z+=.1){const f=frontAt(z);if(Math.abs(f-x)>.08){out.push({z0:s,z1:z,x});s=z;x=f;}}out.push({z0:s,z1:hi,x});return out.filter(r=>r.z1-r.z0>.05&&Number.isFinite(r.x));};
+  // White acoustic/plant enclosures visible in the architect's aerial (drawn below); ribs under them would stand inside the box.
+  const enclosures=[[20,-10,22,15],[37,-27,18,14],[36,3,13,12]];
+  const underEnclosure=(x:number,z:number)=>enclosures.some(([cx,cz,w,d])=>Math.abs(x-cx)<w/2+1&&Math.abs(z-cz)<d/2+1);
   // Six long original depot halls; the first is a broad double-bay shed.
   const edges=[-51.1,-31.6,-22,-12.4,-2.8,6.8,16.4];
   for(let j=0;j<edges.length-1;j++){
@@ -24,12 +30,27 @@ export function buildHallenHouseLandmark(id:string,_w:number,_d:number,b:Buildin
    // Long glazed ridge lights, split into individual panes by steel cross ribs.
    for(const [z0,z1] of [[mid-1.3,mid],[mid,mid+1.3]])plane(region(ring,-100,52,z0,z1),p=>height(p)+.06,'glass');
    const roof=region(ring,-100,52,lo,hi);if(!roof.length)continue;const xmin=Math.min(...roof.map(p=>p.x));
-   box((xmin+52)/2,10.57,mid,52-xmin,.12,.1,'frame');
-   for(let x=xmin+1;x<51;x+=3)for(const dir of [-1,1]){const g=new T.BoxGeometry(.1,.07,1.43);g.rotateX(dir*Math.atan(3.35/half));add(g,'frame',x,10.15,mid+dir*.68);}
-   // Bellamyplein stepped ends are clipped from the surveyed outline.
-   const frontx=xmin+.06,cols=j===0?5:3;for(let k=0;k<cols;k++){const z=lo+(k+.5)*(hi-lo)/cols;box(frontx,1.1,z,.18,4.8,(hi-lo)/cols-1.1,'glass');for(let y=2;y<6;y+=1.1)box(frontx-.12,y,z,.08,.09,(hi-lo)/cols-1.1,'frame');box(frontx-.12,1.1,z-(hi-lo)/cols/2+.55,.08,4.8,.1,'frame');}
-   // Gable masonry closes each triangular roof end without flattening its silhouette.
-   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([frontx,7.2,lo,frontx,10.6,mid,frontx,7.2,hi],3));g.computeVertexNormals();add(g,'brick');
+   const rx=frontAt(mid)+.1;box((rx+52)/2,10.57,mid,52-rx,.12,.1,'frame');
+   // Cross ribs rest on the glazed strip (y of the strip's top at the rib's own z), not at a fixed height: on the broad double-bay hall the strip stands 0.2 m higher.
+   for(const dir of [-1,1])for(let x=frontAt(mid+dir*.68)+1;x<51;x+=3){if(underEnclosure(x,mid+dir*.68))continue;const g=new T.BoxGeometry(.1,.07,1.43);g.rotateX(dir*Math.atan(3.35/half));add(g,'frame',x,height(new T.Vector2(x,mid+dir*.68))+.06+.035,mid+dir*.68);}
+   // Bellamyplein stepped ends: the surveyed outline steps back from bay to bay and inside a bay, so every window and gable face stands on the wall at its own z (R2-C 2026-11-13: one front x for the whole bay left windows up to 6 m in front of the recessed wall).
+   const pitch=(hi-lo)/(j===0?5:3);
+   const runs=frontRuns(lo,hi);
+   // Where the wall steps back inside a bay its return face closes the gable between the two planes (both ways: it is seen from either side).
+   for(let r=0;r+1<runs.length;r++){const a=runs[r],b=runs[r+1],z=a.z1,top=Math.min(10.6,7.2+3.4*(1-Math.abs(z-mid)/half)),x0=a.x+.06,x1=b.x+.06;if(Math.abs(x1-x0)<.05||top<=7.2)continue;const q=new T.BufferGeometry();q.setAttribute('position',new T.Float32BufferAttribute([x0,7.2,z,x1,7.2,z,x1,top,z,x0,7.2,z,x1,top,z,x0,top,z,x0,7.2,z,x1,top,z,x1,7.2,z,x0,7.2,z,x0,top,z,x1,top,z],3));q.computeVertexNormals();add(q,'brick');}
+   for(const run of runs){
+    const fx=run.x+.06,len=run.z1-run.z0,n=Math.round(len/pitch);
+    // Gable masonry closes each triangular roof end on this stretch of wall without flattening its silhouette.
+    const rh=(z:number)=>Math.min(10.6,7.2+3.4*(1-Math.abs(z-mid)/half)),poly:number[][]=[[run.z0,7.2],[run.z0,rh(run.z0)]];
+    if(run.z0<mid&&mid<run.z1)poly.push([mid,10.6]);
+    poly.push([run.z1,rh(run.z1)],[run.z1,7.2]);
+    const gp:number[]=[];for(let i=1;i+1<poly.length;i++)for(const q of [poly[0],poly[i],poly[i+1]])gp.push(fx,q[1],q[0]);
+    const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(gp,3));g.computeVertexNormals();add(g,'brick');
+    if(n<1||len/n<1.9)continue;
+    const step=len/n;
+    const wx=run.x;// glass stands 9 cm proud of the brick (its own layer: 3 cm off the wall z-fought the wall after the export snap)
+    for(let k=0;k<n;k++){const z=run.z0+(k+.5)*step;box(wx,1.1,z,.18,4.8,step-1.1,'glass');for(let y=2;y<6;y+=1.1)box(wx-.12,y,z,.08,.09,step-1.1,'frame');box(wx-.12,1.1,z-step/2+.55,.08,4.8,.1,'frame');}
+   }
   }
   // The historic traverse hall runs across the site, linking both public entrances.
   const centre=60.5,half=8.8,rise=2.8,passHeight=(p:T.Vector2)=>7.25+rise*(1-Math.abs(p.x-centre)/half);
@@ -39,7 +60,7 @@ export function buildHallenHouseLandmark(id:string,_w:number,_d:number,b:Buildin
   // West-side hotel/workshop wings retain the large open courtyard cut-out.
   for(const [z0,z1] of [[16.4,33.7],[33.7,51.1]]){const mid=(z0+z1)/2,hh=(z1-z0)/2;for(const [a,c] of [[z0,mid],[mid,z1]])plane(region(ring,-100,51.7,a,c),p=>7.22+2.6*(1-Math.abs(p.y-mid)/hh),'slate');for(const [a,c] of [[mid-1,mid],[mid,mid+1]])plane(region(ring,-100,51.7,a,c),p=>7.27+2.6*(1-Math.abs(p.y-mid)/hh),'glass');}
   // White acoustic/plant enclosures visible in the architect's aerial.
-  for(const [x,z,w,d] of [[20,-10,22,15],[37,-27,18,14],[36,3,13,12]]){box(x,8,z,w,3.1,d,'white');box(x,11.1,z,w+.2,.15,d+.2,'slate');for(const dx of [-w*.25,w*.25]){const g=new T.BoxGeometry(3.4,.12,2.6);g.rotateX(-.22);add(g,'glass',x+dx,11.4,z);}}
+  for(const [x,z,w,d] of enclosures){box(x,8,z,w,3.1,d,'white');box(x,11.1,z,w+.2,.15,d+.2,'slate');for(const dx of [-w*.25,w*.25]){const g=new T.BoxGeometry(3.4,.12,2.6);g.rotateX(-.22);add(g,'glass',x+dx,11.4,z);}}
   // Tollensstraat and Ten Katestraat entrances, opposite ends of the cross passage.
   for(const [z,dir] of [[-51, -1],[50.9,1]]){const x=60.2;box(x,0,z,12.8,8.2,.35,'brick');box(x,0,z+dir*.23,5.3,4.7,.1,'dark');const a=new T.Shape();a.moveTo(-2.65,0);a.lineTo(2.65,0);a.lineTo(2.65,2.85);a.absarc(0,2.85,2.65,0,Math.PI,false);a.lineTo(-2.65,0);add(new T.ShapeGeometry(a),'glass',x,0,z+dir*.35,dir<0?Math.PI:0);for(const dx of [-3.3,3.3])box(x+dx,0,z+dir*.28,.6,5.5,.3,'stone');box(x,5.5,z+dir*.28,7,.45,.3,'stone');box(x,6.45,z+dir*.28,8,.9,.24,'stone');if(dir>0)sign('DE HALLEN',x,6.58,z+.5,.12,'dark');}
   // Courtyard-facing brick arcade.

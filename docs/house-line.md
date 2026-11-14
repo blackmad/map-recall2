@@ -49,9 +49,12 @@ facades, C recipe GLBs) and for any per-house model.
   The crown gate compares model with spec, so it cannot catch a wrong spec: an independent photo
   read (the D1 reader) is the check against the house.
 - A flank that differs from what the neighbours expose is closed and plain: no windows on a party wall.
-- Policy on new per-house GLBs for ordinary houses: **held pending David's confirmation** (the
-  2026-11-10 decision to prefer spec-generated recipe GLBs stands until he reverses it). No new
-  ordinary per-house installs meanwhile.
+- Policy for ordinary houses (David, 2026-11-13, reversing 2026-11-10): no new per-house models.
+  Their HouseSpecs are drawn by the ordinary renderer (route A). Per-house models continue for
+  landmarks, bespoke buildings and repeated instanced types (kit types, block faces for genuinely
+  repeated rows). Installed models stay where they pass the audit and the in-row review; no mass
+  removal; a held one falls back to route A with its spec. Route C (the completer) stays parked.
+  Houthaven unique buildings are bespoke/large-recipe work, not covered by this.
 
 ### Review
 
@@ -72,10 +75,26 @@ facades, C recipe GLBs) and for any per-house model.
    call a house with an open fail "close".
 7. Counts are a report line, never an acceptance.
 8. Acceptance frames are shot on the players' world: the default compiled cells (compile changed
-   cells locally with `world:compile --changed`), not `?world=live`, which drew generic neighbours
-   about 1.2 m off their plots on Haarlemmerdijk (cause under investigation, lane BA). `world=live`
-   is for iteration only. Every caption names the engine and the world it was shot on; a sheet shot
-   on `world=live` cannot support a publish or a What's New note.
+   cells locally with `world:compile --changed`), not `?world=live`; `world=live` is for iteration
+   only. Every caption names camera, FOV, pixel ratio, engine and world.
+9. Plot-true: every house the game draws, by any route (near chunk, baked shell, installed model,
+   held fallback), keeps its walls on its BAG plot within 0.2 m, stated projecting parts excepted.
+   Nothing moves a house to tidy a row. Held by `check:building-projection-scale` (named regression:
+   Haarlemmerdijk 29, 0363100012167795) and `test:plot-true` (drawn wall vertices against BAG rings
+   in the live scene). Background: until round 129 the generic layer was placed with MapLibre's
+   mean-radius metre while its meshes are in equatorial metres, so every generic building sat 0.112 %
+   of its distance from ORIGIN too far out (1.6 m at Haarlemmerdijk, 4.4 m at the city edge) on both
+   engines; that, not the models, made the overlaps and gaps on the rejected belt sheet. A north-south
+   curvature residual remains away from ORIGIN's latitude (calculated ~1.3 m at Zuidas).
+10. Likeness frames are first-person 72°, 1440×900 at `?dpr=2`, pitched to hold the whole front and
+   crown, with the photo cropped to the same window; if the front does not fit, step back, never
+   widen the FOV. Each row sheet and What's New pair adds one as-played frame (default engine, default
+   chase camera, dpr 2), and notes lead with it. Wide pano-FOV frames serve the tool flags only; their
+   picture supports no acceptance. `thinFade=0` is an "is it drawn" check, never the look. Panels at
+   least 700 px wide, three columns: photo | today | candidate. Before rule 10 every sheet showed about
+   a quarter of the facade pixels David plays at, with thin white parts (speklagen, cornice trim)
+   dithered out: verdicts on amount of white, band thickness or thin dressings from before 2026-11-13
+   evening need a rule-10 re-look before they are quoted.
 
 ## §1 The record: HouseSpec
 
@@ -519,6 +538,50 @@ slate mansard; 3DBAG eaves 13.4 m) drew 3 rows at 5.31 m, and 42 of 180 AH07 gen
   possible) is kept: the measured median 0.63 is 0.2 m more on a 3.7 m pitch, and 171218's photo reads about 0.54.
 - **provenance**: souterrain and roof storey reach the view only from `monument-text`, `vision-judge` or stronger at
   confidence >= 0.5, and only with a stated count. Absent, the fit is H9/H11's, byte-identical.
+
+### Spec fields on route A (lane WG step 2, 2026-11-13)
+
+`houseSpec/routeAFields.ts`. The bake-off made route A the consumer for every described house. It draws the classes that
+passed D1's precision bar (v4.2) with presets and existing quads, plus one forced-only component (the eared surround):
+- **bands** (`storey`, `lintel`, `both`, `speklagen`): forced through the band-line components. `floor-cornices` draws a band
+  at every floor line (storey, both) and `string-courses` draws the sill ledge (lintel, both), at `BAND_M.stone` (0.16 m;
+  `ExtraContext.bandM`). `speklagen` forces the `speklagen` component: 14 cm stone courses (at most 3, every 30 cm) full width
+  across the plain wall between one row's heads and the next row's sills. A single 10 cm floor band read as nothing at row
+  distance (Weteringschans 171218, step 3). They dress first, inside the wall's
+  unchanged extras budget, so the per-house triangle count barely moves.
+- **stated parts dress first**: field-forced parts (`MeshBuilding.specFieldsForce` -> `ExtraContext.statedFirst`) dress on every
+  wall in their own pass, after the defining assemblies and before any wall's dice trim (facadeExtras.ts
+  `buildingWallExtras`). Without it, a building with several door-allowed walls spent its budget on the short ones first and
+  the stated bands never reached the front (Weteringschans 171192, step 3).
+- **head**: a whole-front `flat` or `segmental` reading is the bay preset's `arch` trait. Per-row heads are held.
+- **surround** (`full-frame`, `eared-keystone`, `block-dressings`, read at the bar or from the street template): forces
+  `eared-surrounds` (facadeOrnaments.ts), the block faces' eared surround at `DRESS.surround` weight (13 cm jambs, a head with
+  ears), never the thin white frame, which vanishes at ride distance (reviewer, after the route-C ride sheet). It has p 0 and is
+  never a dice pick. Head-only kinds (stone-lintel, keystone) stay the pale preset. A segmental head wins over it.
+- **crown**: `cornice`, `step` and curved readings become the view's gable for the roof planner (`withHouseSpecCrown`, through
+  GABLE_TO_ROOF). A curved reading takes the register's curved kind where the register names one, else `neck`.
+- **sources**: photo sources only (`vision-judge`, `streetlevel-measured`, `reviewed`, `author`) at confidence >= 0.5, the
+  level at which D1 writes a class that is over its bar.
+- **street template fill is HELD** (reviewer, step 3): `?specTemplateFill=1` / `SPEC_TEMPLATE_FILL=1`, default off. Off, a
+  front draws only its own readings (`ownFields` drops `template:` sources at draw time), byte-identical to an extract built
+  with `--no-street-template`. A scale-tier template from another street gave Herengracht 176312 eared surrounds its photo
+  lacks, and its `pale` trait swapped Weteringschans 171192's bay preset to a restrained arched pale-accent preset (c19 style
+  3) that reads as a plain dark front. It returns when a same-street seed exists.
+- **street template** (`streetTemplate.ts`, from the route-C completer): a hook. `build-house-specs.ts --street-template`
+  fills the dressings a reading left open (bands, the surround, the pale preset) at build time, so the 414 kB table never
+  ships to the browser; only the filled fields ride in the view. On by default (`--no-street-template`); the build writes
+  which house each template came from to `staging/house-specs.templates.json`.
+- **flag**: `?specFields=0` / `SPEC_FIELDS=0` draws none of it, byte-identical (forwarded to the worker).
+- **crowns not drawn**: `point` waits for its class to have a figure.
+- **acceptance** is on the row: frame each Weteringschans row with every front in it on the route under test; a uniform fill
+  is a cost even when each house is defensible.
+- **kit gaps**: brick `courses`, `painted` (stucco) bands, per-row heads, school-period bands (the band-line components are
+  canal/c19 only), and a mansard face as roof (it is drawn as a plain band).
+
+A runtime flag reaches the worker only through the `withWorkerFlags` list in `engine/workerPool.ts`, and that list is also
+bundled into `own-ground-game.bundle.js`. A scratch build of the three-buildings bundles alone leaves the game's old list in
+place, so the flag never reaches the worker and before/after pairs come out identical (eyeball 175318, 2026-11-13).
+Rebuild all the 3D bundles (`node scripts/build-3d-bundles.mjs --outdir=<dir>`) for frames.
 
 ### Which specs a world carries
 
@@ -2422,6 +2485,59 @@ Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBui
   front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
   facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
 
+### Rule 10: accept at the detail a player sees (lane TF, 2026-11-13)
+
+The pairs above shoot at the panorama's lens (100-120 deg vertical, 900 px, dpr 1: about 290 px per metre at 1 m).
+Players see far more: the default chase camera is 36.87 deg (1,350 px/m at 900 px), first person 72 deg (619 px/m),
+and the user's Mac renders at dpr 2. The thin fade (`look/thinFade.ts`) dissolves parts under 2 px, so a 14 cm
+speklaag or a window head is gone in a pano-lens frame where a player sees it. **Accept builders on the rule-10
+frames; the wide pairs stay for the advisory flags only** (their caption says "flags only, not for acceptance" on a
+rule-10 run). Without a rule-10 flag a run writes exactly what it wrote before (job, captions, cache keys, sheets).
+
+```sh
+npm run house:frames -- --list row.json --rule10 --label today --out <today>
+BUNDLES_DIR=<scratch> npm run house:frames -- --list row.json --rule10 --label candidate --out <cand> --before <today> --reuse-photos
+```
+
+| Frame | Camera | Size | Output |
+|---|---|---|---|
+| likeness (`--likeness`) | first person, 72 deg (`FPS_FOV_DEG`, never widened), own engine | 1440 x 900 css at `--dpr` (2) | `<key>/likeness.png`, `<key>/likeness-photo.jpg`, `<key>/likeness.json` |
+| as-played (`--as-played`) | the default engine (MapLibre unless `--query` names one), default chase camera | 1440 x 900 at `--dpr` | `<out>/as-played.png`, `as-played.json` |
+| sheet | photo / today / candidate, panels 720 x 450 | 2192 px wide, 4 rows a sheet | `<out>/rule10-N.jpg` |
+
+How the likeness frame is posed (`scripts/house-frames/rule10.ts`):
+
+- **Lens held, window raised.** The game camera cannot look up (`MAX_PITCH_DEG` 85). A front too tall for 72 deg at
+  the lowest look-down is held by raising the window: the game renders a taller viewport (`1440 x (900 + 2s)`) at the
+  same focal and the top 900 rows are kept; the panorama is cut from the same tall frame. This is a shift lens: the
+  same pixel density as a pitched camera, and the front's verticals stay vertical. `s` is at most one window.
+- **Capture.** Across the water first (`--no-far-bank` off): a capture whose sight line to the wall's middle crosses a
+  `water.json` centreline (a canal house from the far bank: square, whole front, crown and row). Else the pair's own
+  capture, else step back: the nearest capture farther from the wall (up to `--likeness-max-dist`, 70 m, sight lines
+  through other footprints dropped) that holds the front and crown. Else the one that clips least (crown held, base
+  listed as clipped). The pose note says which.
+- **Trees.** `--likeness-trees hide` (default) adds `?trees3d=0` to likeness pages only: game trees stand in front of
+  fronts the winter photo shows bare. As-played frames always keep them.
+- **As-played rider.** On the line through the row's captures, `--as-played-back` (15 m) before the row's near end,
+  riding along it with the fronts on the right.
+- **Captions** name camera, FOV, pixel ratio (measured from the canvas), engine and world (`baked world-v1`, `live
+  tiles`, staged `WORLD_DIR`), plus "trees hidden".
+
+Weteringschans (WG's row of eight, `--rule10 --prep-only`): seven of eight step back 2-7 m to a 16-20 m capture and
+raise the window 290-390 px; 171218 has no capture within 70 m that holds its 16.65 m front at 72 deg (crown held, base
+clipped). No canal there, so no far-bank pick.
+
+**The thin-fade focal (fixed with rule 10).** The fade's `thinFocalPx` read 48.9 in WG's 114 deg pose where the camera
+gives 293: three's `getDrawingBufferSize` answers its own `_width/_height`, which only `setSize` updates, and
+`engine/frameHost.ts` sizes the canvas itself, so the own engine's renderer kept the fresh canvas' 300 x 150 for life
+(1/6 of the focal at 900 px, 1/12 at dpr 2). The default (MapLibre) engine read 5.4x too long instead: its clip matrix
+carries a homogeneous factor, which `projectionFocal11` took as focal. Both fixed in `look/thinFade.ts`
+(`passHeightPx`: three's current viewport; `projectionFocal11`: row 1 off its forward part over |row 3|). Regression:
+`tests/e2e/thin-focal.spec.ts` (the uniform read off the GPU during main-pass facade draws, first person and chase,
+dpr 1 and 2, within 1 %; 171218's window heads at 20 m in the 72 deg frame, thin fade on == off) and
+`thinFade.test.ts`. Frames taken before the fix (all house:frames runs to 2026-11-13) dissolved trim at 1/6 of the
+distance a player's game did.
+
 ### Quay rows: row views and the distance window (belt Burgwallen-OZ, #364)
 
 On a quay with a canal in front (Kloveniersburgwal) every panorama on the house's own side stands 5-9 m off the front:
@@ -2983,6 +3099,90 @@ Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were
 tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
 reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
 photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).
+
+## Describer D1 (house plan P1 step 1, 2026-11-13)
+
+A Claude agent reads one image of a front and writes the HouseSpec-vocabulary fields a person would name (counts, kinds, crown,
+finish, colour family; never metres). Instructions: `scripts/house-line/describer/prompt-v1.md` (v2 adds `sameAs`/`mirrored`);
+they never say whether the image is a photo crop or a game render, so the P3a photo-vs-game comparison uses them unchanged.
+Answer type and validator: `src/canalRecall/houseSpec/describer.ts` (`toSpecPart` maps an answer to a `vision-judge` partial spec).
+Scoring: `src/canalRecall/houseSpec/describerScore.ts` (pure) and `scripts/house-specs/describer-d1/score.ts` (answers vs the
+benchmark-v1 labels, hand set v1 and author hand specs, or `--b <dir>` for two answer sets). Sample, writer, twins and test:
+`scripts/house-specs/describer-d1/`. Answers and scores: `artifacts/describer-d1/`.
+
+**Step 1c and the step-2 pilot (2026-11-13).** Image modes scored on the same 146 gate-pass pands against the adjudicated labels
+(`scripts/house-line/benchmark/benchmark-v1-adjudicated.json`): the square crop, a describe cut (`describe-cut.ts`: an
+unrectified perspective cut from the panorama cache, wall outlined, neighbours and crown in frame) and a per-panorama read
+(3-5 numbered fronts in one image). No mode lifts storeys or crown to 0.9 (`artifacts/describer-d1/scores-same147-compare.md`),
+so step 2 reads the gate-pass crop where one exists and the describe cut otherwise; the crown is read from the cut when the
+crop says not-visible. A zoomed window as a second image did not lift window family or pane layout over 0.8 (parked).
+What ships (`stage.ts STAGED`, integrator ruling): storeys (as rows below the crown, plus the souterrain flag), bays, bands,
+shop/ground, basement (crop only), finish and the cut's sampled wall hex; for crown, head and cornice only the answered classes
+with precision >= 0.8 (`per-class.md`: crown cornice 0.95 and step 0.88, head flat 0.80 and segmental 0.83, cornice none
+0.88). Everything else stays with the twin, then the prior. A hidden front copies storeys, crown and bands from a twin only
+when its `sameAs` names that side and PR1's `similar` holds (`twin-guard.ts`: precision 0.94, recall 0.52). Every storey miss
+is off by one, mostly the roof-storey, gable-attic and entresol conventions (`storey-misses.md`). Sonnet on the same crops is
+within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) and painted finish, so opus reads.
+Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
+194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
+`artifacts/describer-d1/staged-ah07/` (never published).
+
+**D1-fix (2026-11-13, after the route bake-off).** Row convention: `fronts/0/storeys` is the rows below the crown with the ground
+row included whatever it holds; `facts/groundKind` (`shop`, `door-only`, `dwelling`, `warehouse`, `describer.ts groundKindOf`)
+says what that row is and `fronts/0/souterrain` is staged as read, true or false. Nothing in the prompt, the writer or the
+staging step drops a ground row: every v4 read lists `columns` per counted row (crop 87/87, cut 79/79; one AH07 read, 175477,
+skips the shop's ground count in `columns` only), shop grounds score as well as house grounds (`rows.ts`), and the
+under-counts are the roof-storey, gable-attic and souterrain conventions of the author hand specs. Weteringschans 168043 is
+three rows (door row and two upper) between cellar windows and a dormer: the staged 3 was right; the cellar row is the
+basement, which a cut does not stage. `rowProblems` refuses a new read whose `columns` rows differ from its count; prompt
+v4.2 starts the count at the ground row explicitly (not read at scale yet). A low `storeyParts.full` now halves the storeys
+receipt. Twin guard: `stage.ts twinGuard`, default `mutual` = each house's `sameAs` names the other, street-run width within
+0.3 m, build year within 3 (no 3DBAG height: it split the mirrored pair 168043 / 168096 at 13.9 vs 16.6 m); `--twin-guard pr1`
+keeps the step-1c guard. On the twin-v2 truth with every neighbour read (`twins-v2.ts neighbours`, 53 blind opus twin reads):
+mutual precision 0.96 [0.81-0.99], recall 0.76 [0.59-0.87] against pr1 0.94 [0.74-0.99] / 0.52 [0.35-0.68]
+(`twin-guard.ts`, `artifacts/describer-d1/twin-guard.json`).
+
+**D1-fix 2: per-row heads, prompt v4.2 read, AH07 re-staged with the mutual guard (2026-11-13).** `stage.ts rowHeads` stages
+the answer's `heads` per row (upper rows; only when `heads` has one entry per counted row) instead of flattening a front with
+different rows to `mixed` and dropping it: rows all flat or all segmental keep `windowHead {kind}` as before; segmental rows
+among others become `windowHead {kind: segmental, storeys}`; round rows become `archedStoreys` (171218: flat, flat, round ->
+`archedStoreys [2]`). `archedStoreys` is `ROUTE_C_ONLY`: the recipe route draws it (fit.ts, a semicircle), the generic view
+and the F1 record never read it (tested), until round has a precision figure. The intent now accepts `windowHead` beside
+`archedStoreys` when `windowHead.storeys` names none of the arched storeys (before: never together). A low `heads` halves the
+head receipts. Per-row scores (`heads.ts`, 203 truth pands, `heads-per-row.md`): flat rows precision 0.93-0.96, segmental rows
+0.61-0.85 by read set (below the whole-front 0.83), round 1 of 3 rows right on v4.2, on 2 truth pands with a round row in all:
+no figure. Prompt v4.2 on the 147 gate-pass crops (opus) against v4 on the same pands (`versions.ts`,
+`versions-v4-v42.md`): no shipped field drops beyond its interval (storeys 0.816 vs 0.819, shop 0.787 vs 0.805, bays 0.902 vs
+0.915; bands, finish, cornice none, crown cornice/step up). House-ground rows (0.74 on v4 crop, 0.78 on v4.2): of the 14 v4
+misses 4 are a souterrain the author spec counts as the ground storey, 3 a gable attic or attic in the crown, 7 other; on cut
+reads the souterrain confusion is 7 of 13. AH07 re-staged into `staged-ah07` with `--twin-guard mutual`.
+
+**D1-fix 3: rulings on D1-fix 2, head truth, v4.3, W1 wall colour (2026-11-13).** (1) Per-row segmental is held: a front
+whose rows differ stages `fronts/0/rowHeads` (the head of every row, ground first, with the head receipt) for no route
+(`HELD_FOR_ALL_ROUTES`; spec.ts drops it in `drawableDesign` and reports it as ignored); whole-front flat and segmental ship
+as before; round rows stay `archedStoreys`, route C only. (2) Head truth (`head-truth.ts`): 173 AH07 cuts built 1850-1914,
+shuffled into two pools; a fresh opus labeller, blind to the D1 reads, labelled rows on the cut until 40 fronts with a round
+or segmental upper row (`artifacts/describer-d1/head-truth/set.json`, labels in `labels/`, contact sheets from
+`head-truth.ts sheet`). Blind opus v4.2 reads of those 40 cuts (`answers-v42-cut-heads`) score per row: segmental 0.959
+(47/49) [0.863-0.989], recall 0.78; round 4/4 [0.51-1]; flat 0.636 (21/33) [0.466-0.778] (12 labelled-segmental rows read
+flat). The set is enriched for curved rows, so segmental precision is not a city figure. (3) Prompt v4.2 became the default
+(`DESCRIBER_PROMPTS` / `DESCRIBER_PROMPT` in describer.ts; write-answer.ts stamps `prompt`), then v4.3 (below). (4) Author
+specs that count a bel-etage row with no souterrain (`truth.ts authorConvention`, 78 of 310) are left out of the storey
+truth by default (`--author-convention keep` restores them): house-ground rows exact v4 crop 0.8 (28/35) [0.641-0.9], v4.2
+0.824 (28/34) [0.665-0.917] (`rows-convention.md`).
+Prompt v4.3 (`prompt-v4.3.md`) adds `balconies` (rows), `dormers` ({count, plain|gabled|none}; a part-front gable is
+gabled), `bayWindow` (rows) and `doorSurround`; they stage as `fronts/0/readBalconies|readDormers|readBayWindow|
+readDoorSurround` with a vision-judge receipt, held for every route (`SPEC_HELD_READS`). On the 147 crops v4.3 drops no
+shipped field beyond v4.2's interval (`versions-v42-v43.md`), so it is the tranche prompt. `extras.ts` scores the four
+against the author specs (`extras-v43.md`; 117 of 147 have one, 20-27 pairs per question): dormers yes 0.923 (12/13)
+[0.667-0.986], count exact 11/12; dormer kind 0.58 (fails); balconies yes 2/2, bay window yes 1/1 (no figure);
+door surround yes 0/2 (fails); the `no` classes are the absent default. All stay held; the dormer count is the one
+candidate for a route.
+Wall colour: the reader gives the finish, the pixels the colour. `describe-cut.ts w1` takes lane W1's `wallLab` on the
+game-lens photo of each cut's pinned capture (aimPose + frameFor, cached panoramas) into cuts.json `w1`; stage.ts stages
+`wallBrickFromSample(w1.hex)`: fitWallBrick with the pinned render at `PIN_RENDER_GAIN` 1.14 x cityWallTint, so the brick
+renders onto the photo. Below the city brick floor (`CITY_BRICK_LIGHTNESS` 0.3) no brick renders darker; the fit stages the
+floor brick in the sample's hue (`floor`), which is 153 of 194 AH07 samples: the render cannot reach those photos' L.
 
 ## §14 Structure prior: window columns (default on) and storeys (held) with no reading (lane PR1, 2026-11-13, flag `?structurePrior=`)
 

@@ -47,6 +47,7 @@ import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
 import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
 import {analyseMask, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {ruledSlotSource} from '../look/wallRule.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
@@ -77,7 +78,7 @@ export const PARAPET_GLASS = {proudM: 0.35, belowM: 0.1, railM: 1.3} as const;
  */
 export function gameColour(m: MaterialSoup['materials'][number] & {tintSource?: string}, measuredTints?: Set<string>): Rgb {
   const slot = m.materialSlot ?? m.slot, tint = m.tint ?? hex(m.rgb);
-  if ((m.tintSource === 'measured' || measuredTints?.has(tint.toLowerCase())) && m.tint) return hexRgb(m.tint);
+  if ((m.tintSource === 'measured' || measuredTints?.has(tint.toLowerCase()) || (slot && ruledSlotSource(slot, tint, undefined) === 'measured')) && m.tint) return hexRgb(m.tint);
   if (slot === 'glass') return GAME_GLASS;
   if (!slot) return m.rgb;
   return hexRgb(cityLookTint(slot as MaterialSlot, tint));

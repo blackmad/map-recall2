@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012182848",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182848/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "coffeeshop with a dark awning, a neon-lettered fascia and a row of four short windows between pilasters above the shop"
+  },
+  {
+   "component": "relief",
+   "what": "small carved date or name plaque above the shop cornice"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a stone cap with a carved block at the gable top"
+  }
+ ],
+ "notes": "Counted the short window row over the shop as its own storey; the awning and terrace hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -267,3 +267,69 @@ test('planCuts rampGaps: a motor ramp whose wall turns into a smeared bank for 4
   const c = on[0], mid = c.y.findIndex(y => y > 100);
   assert.ok(c.wallR[mid] === 1 && c.rimR[mid] - c.floor[mid] > 2, `walled through the bank (rim ${(c.rimR[mid] - c.floor[mid]).toFixed(2)})`);
 });
+
+// Lane LS (2026-11-13): scanSide without its per-probe closure and spread-map minimum gives the same scan. The
+// reference is the bc4ad8a body, frozen; the relief profiles are random walls, low bumps (some with a wall behind),
+// plateaus, NaN holes and neighbouring roads.
+test('scanSide equals the bc4ad8a scan on 5,000 random relief profiles', async () => {
+  const { scanSide, SCAN_M, MIN_RISE_M, WALL_REACH_M, BUMP_MAX_M, WALL_SPAN_M, WALL_SPAN_PER_M } = await import('./tunnels');
+  const STEP = 0.5;
+  const med = (v: number[]): number => { const s = v.filter(x => x === x).sort((a, b) => a - b); return s.length ? s[s.length >> 1] : NaN; };
+  type Scan = { reach: number; wall: boolean; rim: number; depth: number } | null;
+  function ref(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise = MIN_RISE_M, wallReach = WALL_REACH_M, skipBumps = true, spanScale = 1): Scan {
+    let foot = 0, skipped = false;
+    const none = (): Scan => (skipped ? ref(g, floor, half, shared, minRise, wallReach, false, spanScale) : null);
+    for (let t = STEP; t <= SCAN_M; t += STEP) {
+      const z = g(t);
+      if (z === z && z - floor <= (minRise >= MIN_RISE_M ? 0.25 : minRise * 0.5)) { foot = t; if (!shared && foot > half + wallReach) return none(); }
+      if (t > 1 && shared && shared(t) && Math.abs(z - floor) < 0.5) return skipped ? none() : { reach: t, wall: false, rim: z, depth: 0 };
+      if (!(z - floor >= minRise)) continue;
+      if (foot > half + wallReach) return none();
+      let top = t, zt = z;
+      for (let u = t + STEP; u <= Math.min(SCAN_M + 6, t + 8); u += STEP) { const zu = g(u); if (!(zu > zt + 0.04)) break; top = u; zt = zu; }
+      const depth = zt - floor;
+      if (skipBumps && depth < BUMP_MAX_M && Math.min(...[2, 3, 4, 5, 6].map(m => g(top + m))) - floor < depth * 0.8) {
+        let back = top + 2;
+        while (back < top + 6 && g(back) - floor >= depth * 0.8) back += STEP;
+        foot = back; t = foot - STEP; skipped = true; continue;
+      }
+      if (top - foot > (WALL_SPAN_M + WALL_SPAN_PER_M * depth) * spanScale) return none();
+      const mid = floor + depth / 2;
+      let at = foot;
+      for (let u = foot; u <= top; u += STEP) { if (g(u) >= mid) { const z0 = g(u - STEP); at = u - STEP + STEP * Math.max(0, Math.min(1, (mid - z0) / ((g(u) - z0) || 1))); break; } }
+      const rim = med([0, 1, 2, 3].map(k => g(top + k * STEP)));
+      return { reach: Math.max(Math.min(half, 1), at), wall: true, rim: Math.max(rim, mid), depth: Math.max(rim, mid) - floor };
+    }
+    return none();
+  }
+  let s = 11;
+  const rnd = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
+  let walls = 0, rescans = 0;
+  for (let trial = 0; trial < 5000; trial++) {
+    // Piecewise relief: up to 3 steps (a bump 0.3-0.9 m, or a wall 0.5-8 m) with ramps, noise, and maybe a NaN hole.
+    const floor = rnd() * 2;
+    const steps = Array.from({ length: Math.floor(rnd() * 4) }, () => ({ at: rnd() * 26, rise: rnd() < 0.5 ? 0.3 + rnd() * 0.6 : 0.5 + rnd() * 7.5, width: rnd() * 5, fall: rnd() < 0.4 ? 1 + rnd() * 5 : Infinity }));
+    const hole = rnd() < 0.15 ? [rnd() * 20, 0.5 + rnd() * 2] : null;
+    const g = (t: number) => {
+      if (hole && t >= hole[0] && t < hole[0] + hole[1]) return NaN;
+      let z = floor + Math.sin(t * 7.3 + trial) * 0.03;
+      for (const st of steps) {
+        const up = Math.max(0, Math.min(1, (t - st.at) / Math.max(0.01, st.width)));
+        const down = st.fall === Infinity ? 0 : Math.max(0, Math.min(1, (t - st.at - st.width - st.fall) / 1));
+        z += st.rise * (up - down);
+      }
+      return z;
+    };
+    const sharedAt = rnd() < 0.3 ? 3 + rnd() * 15 : null;
+    const shared = sharedAt == null ? null : (t: number) => t >= sharedAt;
+    const half = 1 + rnd() * 6, minRise = rnd() < 0.2 ? 0.3 : MIN_RISE_M, reach = rnd() < 0.3 ? 10 : WALL_REACH_M, skip = rnd() < 0.9, span = rnd() < 0.2 ? 1.5 : 1;
+    let calls = 0, refCalls = 0;
+    const got = scanSide(t => { calls++; return g(t); }, floor, half, shared, minRise, reach, skip, span);
+    const want = ref(t => { refCalls++; return g(t); }, floor, half, shared, minRise, reach, skip, span);
+    assert.deepStrictEqual(got, want, `trial ${trial}`);
+    assert.equal(calls, refCalls, `trial ${trial}: the relief is sampled the same number of times`);
+    if (want?.wall) walls++;
+    if (refCalls > 60) rescans++;
+  }
+  assert.ok(walls > 500, `walls found (${walls})`);
+});

@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012174417",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174417/years/2017.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2017,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "crown",
+  "cornice",
+  "finish",
+  "doorBay",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "white ground storey; the door has a top light with circle tracery"
+  }
+ ],
+ "notes": "A houseboat hides the lower ground storey, sun glare washes out several windows, and the top is cut just at the cornice.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

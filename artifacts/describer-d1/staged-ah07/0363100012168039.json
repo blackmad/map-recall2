@@ -10,18 +10,19 @@
      "kind": "segmental"
     },
     "bands": "lintel",
+    "souterrain": false,
     "gable": "cornice"
    }
   ],
   "palette": {
    "wallMaterial": "brick",
-   "brick": "#7f644d"
+   "brick": "#534131"
   }
  },
  "provenance": {
   "fronts/0/storeys": {
    "source": "vision-judge",
-   "confidence": 0.7,
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
    "at": "2026-11-13"
   },
@@ -33,13 +34,19 @@
   },
   "fronts/0/windowHead": {
    "source": "vision-judge",
-   "confidence": 0.7,
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
    "at": "2026-11-13"
   },
   "fronts/0/bands": {
    "source": "vision-judge",
    "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
    "at": "2026-11-13"
   },
@@ -61,6 +68,12 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
    "at": "2026-11-13"
   },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168039.jpg",
+   "at": "2026-11-13"
+  },
   "palette/brick": {
    "source": "streetlevel-measured",
    "confidence": 0.6,
@@ -69,7 +82,8 @@
   }
  },
  "facts": {
-  "pui": "residential"
+  "pui": "residential",
+  "groundKind": "dwelling"
  },
  "schemaLimits": [
   {

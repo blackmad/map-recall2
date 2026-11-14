@@ -24,7 +24,9 @@ const cached = (store: GroundStore) => {
   const cache = new Map<string, BuiltCell>();
   return async (k: string) => { let c = cache.get(k); if (!c) { c = buildCell(await store.cellInput(k, 0)); cache.set(k, c); } return c; };
 };
-const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false });
+// The before also keeps the railing stubs the plein rule took off (groundCell `plein`, lane fb-bridges 2026-11-13): over
+// BRU0007 they stood across the carriageway, and the pins' before measured part of its gap through them.
+const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false, pleinRails: false });
 await on.init(); await dryOn.init(); await off.init();
 const cellOn = cached(on), cellDry = cached(dryOn), cellOff = cached(off);
 let failed = 0;

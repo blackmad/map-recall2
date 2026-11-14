@@ -22,8 +22,9 @@ import {
   type LandmarkLodEntry, type LandmarkLodRecord,
 } from '../../src/canalRecall/landmarks/landmarkLod';
 
-/** The brief's budget for every lod2 together (the aerial set is fetched on top of lod1/full). */
-const LOD2_MAX_TOTAL_BYTES = 6e6;
+/** The brief's budget for every lod2 together (the aerial set is fetched on top of lod1/full). 6 MB until 2026-11-13, when the
+ *  Houthavens pair took 463 lod2s to 6.01 MB (p50 9.3 KB); raised to 6.5 MB, room for ~40 more at the median. */
+const LOD2_MAX_TOTAL_BYTES = 6.5e6;
 /** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
 const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
 /**

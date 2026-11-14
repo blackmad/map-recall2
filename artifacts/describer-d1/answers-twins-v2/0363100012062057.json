@@ -1,0 +1,14 @@
+{
+ "v": 1,
+ "pandId": "0363100012062057",
+ "image": {
+  "ref": "artifacts/describer-d1/twin-images-v2/0363100012062057.jpg",
+  "kind": "crop",
+  "gate": null
+ },
+ "reader": "D1 opus twins v2 neighbour",
+ "readable": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "notes": "Continuous series; window axes straddle the cut lines."
+}

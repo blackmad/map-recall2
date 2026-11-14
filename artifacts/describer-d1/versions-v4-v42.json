@@ -1,0 +1,451 @@
+{
+ "v": 1,
+ "a": "answers-v4-crop",
+ "b": "answers-v42-crop",
+ "authorConvention": "exclude",
+ "pands": 147,
+ "fields": {
+  "storeys": {
+   "a": {
+    "label": "storeys",
+    "k": 81,
+    "n": 95,
+    "acc": 0.853,
+    "ci": [
+     0.768,
+     0.91
+    ]
+   },
+   "b": {
+    "label": "storeys",
+    "k": 78,
+    "n": 94,
+    "acc": 0.83,
+    "ci": [
+     0.741,
+     0.892
+    ]
+   },
+   "aRightBWrong": 5,
+   "bRightAWrong": 3
+  },
+  "storeys±1": {
+   "a": {
+    "label": "storeys±1",
+    "k": 95,
+    "n": 95,
+    "acc": 1,
+    "ci": [
+     0.961,
+     1
+    ]
+   },
+   "b": {
+    "label": "storeys±1",
+    "k": 94,
+    "n": 94,
+    "acc": 1,
+    "ci": [
+     0.961,
+     1
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "bays": {
+   "a": {
+    "label": "bays",
+    "k": 118,
+    "n": 129,
+    "acc": 0.915,
+    "ci": [
+     0.854,
+     0.952
+    ]
+   },
+   "b": {
+    "label": "bays",
+    "k": 120,
+    "n": 133,
+    "acc": 0.902,
+    "ci": [
+     0.84,
+     0.942
+    ]
+   },
+   "aRightBWrong": 3,
+   "bRightAWrong": 2
+  },
+  "bays±1": {
+   "a": {
+    "label": "bays±1",
+    "k": 128,
+    "n": 129,
+    "acc": 0.992,
+    "ci": [
+     0.957,
+     0.999
+    ]
+   },
+   "b": {
+    "label": "bays±1",
+    "k": 131,
+    "n": 133,
+    "acc": 0.985,
+    "ci": [
+     0.947,
+     0.996
+    ]
+   },
+   "aRightBWrong": 1,
+   "bRightAWrong": 0
+  },
+  "bands": {
+   "a": {
+    "label": "bands",
+    "k": 93,
+    "n": 101,
+    "acc": 0.921,
+    "ci": [
+     0.851,
+     0.959
+    ]
+   },
+   "b": {
+    "label": "bands",
+    "k": 92,
+    "n": 99,
+    "acc": 0.929,
+    "ci": [
+     0.861,
+     0.965
+    ]
+   },
+   "aRightBWrong": 2,
+   "bRightAWrong": 3
+  },
+  "bandKind": {
+   "a": {
+    "label": "bandKind",
+    "k": 85,
+    "n": 98,
+    "acc": 0.867,
+    "ci": [
+     0.786,
+     0.921
+    ]
+   },
+   "b": {
+    "label": "bandKind",
+    "k": 84,
+    "n": 95,
+    "acc": 0.884,
+    "ci": [
+     0.804,
+     0.934
+    ]
+   },
+   "aRightBWrong": 2,
+   "bRightAWrong": 4
+  },
+  "shop": {
+   "a": {
+    "label": "shop",
+    "k": 99,
+    "n": 123,
+    "acc": 0.805,
+    "ci": [
+     0.726,
+     0.865
+    ]
+   },
+   "b": {
+    "label": "shop",
+    "k": 96,
+    "n": 122,
+    "acc": 0.787,
+    "ci": [
+     0.706,
+     0.85
+    ]
+   },
+   "aRightBWrong": 8,
+   "bRightAWrong": 6
+  },
+  "basement": {
+   "a": {
+    "label": "basement",
+    "k": 67,
+    "n": 80,
+    "acc": 0.838,
+    "ci": [
+     0.742,
+     0.903
+    ]
+   },
+   "b": {
+    "label": "basement",
+    "k": 57,
+    "n": 69,
+    "acc": 0.826,
+    "ci": [
+     0.72,
+     0.898
+    ]
+   },
+   "aRightBWrong": 1,
+   "bRightAWrong": 0
+  },
+  "finish": {
+   "a": {
+    "label": "finish",
+    "k": 96,
+    "n": 112,
+    "acc": 0.857,
+    "ci": [
+     0.78,
+     0.91
+    ]
+   },
+   "b": {
+    "label": "finish",
+    "k": 99,
+    "n": 113,
+    "acc": 0.876,
+    "ci": [
+     0.803,
+     0.925
+    ]
+   },
+   "aRightBWrong": 3,
+   "bRightAWrong": 4
+  },
+  "crown cornice": {
+   "a": {
+    "label": "crown cornice",
+    "k": 43,
+    "n": 45,
+    "acc": 0.956,
+    "ci": [
+     0.852,
+     0.988
+    ]
+   },
+   "b": {
+    "label": "crown cornice",
+    "k": 46,
+    "n": 47,
+    "acc": 0.979,
+    "ci": [
+     0.889,
+     0.996
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "crown step": {
+   "a": {
+    "label": "crown step",
+    "k": 4,
+    "n": 5,
+    "acc": 0.8,
+    "ci": [
+     0.376,
+     0.964
+    ]
+   },
+   "b": {
+    "label": "crown step",
+    "k": 4,
+    "n": 4,
+    "acc": 1,
+    "ci": [
+     0.51,
+     1
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "crown neck/bell (curved)": {
+   "a": {
+    "label": "crown neck/bell (curved)",
+    "k": 22,
+    "n": 24,
+    "acc": 0.917,
+    "ci": [
+     0.742,
+     0.977
+    ]
+   },
+   "b": {
+    "label": "crown neck/bell (curved)",
+    "k": 25,
+    "n": 28,
+    "acc": 0.893,
+    "ci": [
+     0.728,
+     0.963
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "head flat": {
+   "a": {
+    "label": "head flat",
+    "k": 11,
+    "n": 13,
+    "acc": 0.846,
+    "ci": [
+     0.578,
+     0.957
+    ]
+   },
+   "b": {
+    "label": "head flat",
+    "k": 10,
+    "n": 11,
+    "acc": 0.909,
+    "ci": [
+     0.623,
+     0.984
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "head segmental": {
+   "a": {
+    "label": "head segmental",
+    "k": 5,
+    "n": 5,
+    "acc": 1,
+    "ci": [
+     0.566,
+     1
+    ]
+   },
+   "b": {
+    "label": "head segmental",
+    "k": 6,
+    "n": 8,
+    "acc": 0.75,
+    "ci": [
+     0.409,
+     0.929
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  },
+  "cornice none": {
+   "a": {
+    "label": "cornice none",
+    "k": 26,
+    "n": 30,
+    "acc": 0.867,
+    "ci": [
+     0.703,
+     0.947
+    ]
+   },
+   "b": {
+    "label": "cornice none",
+    "k": 27,
+    "n": 30,
+    "acc": 0.9,
+    "ci": [
+     0.744,
+     0.965
+    ]
+   },
+   "aRightBWrong": 0,
+   "bRightAWrong": 0
+  }
+ },
+ "ground": {
+  "answers-v4-crop": {
+   "n": 35,
+   "ok": 28,
+   "exact": {
+    "label": "dwelling rows exact",
+    "k": 28,
+    "n": 35,
+    "acc": 0.8,
+    "ci": [
+     0.641,
+     0.9
+    ]
+   },
+   "misses": [
+    [
+     "over 1 | counted the truth attic in the crown | truth benchmark | read souterrain false / truth false | read roof gable-attic",
+     1
+    ],
+    [
+     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
+     1
+    ],
+    [
+     "over 1 | other over | truth hand-spec | read souterrain true / truth false | read roof not-visible",
+     1
+    ],
+    [
+     "under 1 | other under | truth hand-set | read souterrain false / truth false | read roof not-visible",
+     1
+    ],
+    [
+     "over 1 | other over | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
+     1
+    ],
+    [
+     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof mansard",
+     1
+    ],
+    [
+     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible",
+     1
+    ]
+   ]
+  },
+  "answers-v42-crop": {
+   "n": 34,
+   "ok": 28,
+   "exact": {
+    "label": "dwelling rows exact",
+    "k": 28,
+    "n": 34,
+    "acc": 0.824,
+    "ci": [
+     0.665,
+     0.917
+    ]
+   },
+   "misses": [
+    [
+     "under 1 | other under | truth hand-spec | read souterrain false / truth false | read roof not-visible",
+     2
+    ],
+    [
+     "under 1 | read a gable attic the truth counts | truth hand-spec | read souterrain false / truth false | read roof gable-attic",
+     1
+    ],
+    [
+     "over 1 | other over | truth hand-spec | read souterrain true / truth false | read roof not-visible",
+     1
+    ],
+    [
+     "under 1 | read a roof storey the truth counts | truth hand-spec | read souterrain false / truth false | read roof mansard",
+     1
+    ],
+    [
+     "under 1 | read a souterrain the truth counts as the ground storey (bel-etage confusion) | truth hand-spec | read souterrain true / truth false | read roof mansard",
+     1
+    ]
+   ]
+  }
+ }
+}

@@ -1,3 +1,5 @@
+import { drapeRange, FRONT_MAX_RAISE_M } from './ownGround/placement.js';
+import type { HeightFn } from './ownGround/surface.js';
 import { kitFadeFlag } from './engine/popFade';
 import { BuildingContextIndex } from './buildingContextIndex.js';
 import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
@@ -29,6 +31,7 @@ import { pageCoarsePointer, pageTextureParams, pageTextureTier, texturePolicyFla
 import { withMonumentGable } from './monumentGables.js';
 import { withRegisterFacts, registerFactsEnabled, registerFactsFromExtract } from './facade/registerRecipe.js';
 import { withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher } from './houseSpec/decorate.js';
+import { withRowFront, rowFrontOn, loadRowFrontRecords } from './houseLine/rowFront.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
@@ -50,7 +53,7 @@ import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
-import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { buildingMercatorFromLocal } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
@@ -83,6 +86,8 @@ import { isAerialView } from './rendererShared/aerialView.js';
 function pageFlag(name: string): string | null {
   try { return typeof URLSearchParams === 'function' ? new URLSearchParams(globalThis.location?.search ?? '').get(name) : null; } catch { return null; }
 }
+/** `?keepVerts=1`: chunk vertex arrays stay on the CPU after upload (tests/e2e/plot-true.spec.ts reads them). */
+const KEEP_VERTS = pageFlag('keepVerts') === '1';
 import { createWindowTableTexture, layerWindowRects, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
@@ -233,7 +238,7 @@ const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
 
 /** Landmarks keep their own form; kit-modelled parts and bodies pass through, the rest get a period fallback (roofMesh.ts). */
 const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 'Feature'; geometry: unknown }>(decorate: (f: T) => T, ids: ReadonlySet<string>, listed?: ReadonlySet<string>) => exceptLandmarksOf(decorate, ids, KIT_MODELLED_IDS, listed);
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher, withRowFront, rowFrontOn, loadRowFrontRecords };
 
 const KIT_KEY = '__kit';
 /** `?kitFade` under `?popFade` (lanes P2 #325, P3 #328): the kit chunk's rebuilds cross-fade like any other chunk's. Default on. */
@@ -327,7 +332,7 @@ export type FarShellHostView = { THREE: any; scene: any; material: any; look: st
  */
 export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** Covered, not drawn, release on (BakedCoarse.holdsFar, lane R4-K). */ holdsFar?(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
-export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number, source?: any): any | null; /** F1 (#380): a cell's record material (BakedCoarseHost.recordMaterial). */ recordMaterial(key: string, records: FacadeRecordSet, wallUnit: number): any | null; freeRecords(key: string): void; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
+export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number, source?: any): any | null; /** F1 (#380): a cell's record material (BakedCoarseHost.recordMaterial). */ recordMaterial(key: string, records: FacadeRecordSet, wallUnit: number): any | null; freeRecords(key: string): void; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; /** Lane F4: the relief the wall feet drape to, or null. */ groundFoot(): HeightFn | null; /** Changes when a groundBase that was undefined may become known: the feature list's identity. */ baseToken(): unknown; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
@@ -455,6 +460,10 @@ export class ThreeBuildings {
   private readonly liftBounds = new WeakMap<object, { key: string; min: number; max: number }>();
   /** Own ground (`?ownGround=1`): a building's base on the relief; undefined = not known yet, null = no relief there. */
   private groundBase: GroundBaseFn | null = null;
+  /** Lane F4: the relief a lifted building's wall feet drape to (own ground local metres = this layer's chunk frame), or null. */
+  private groundFoot: HeightFn | null = null;
+  /** Set before setGroundBase: lifts from then on drape the wall feet (placement.ts drapeRange). */
+  setGroundFoot(fn: HeightFn | null): void { this.groundFoot = fn; }
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
@@ -1163,6 +1172,9 @@ export class ThreeBuildings {
         const f = this.featureById(id);
         return f ? this.groundBase(f) : undefined;
       },
+      groundFoot: () => this.groundFoot,
+      // groundBase is undefined only for an id missing from lastFeatures (featureById), so the list is the token.
+      baseToken: () => this.lastFeatures,
       regroup: () => this.setFeatures(this.lastFeatures),
       setGate: gate => { if (gate === this.bakedGate) return; this.bakedGate = gate; this.setFeatures(this.lastFeatures); },
       setFrame: fn => { this.bakedFrame = fn; },
@@ -1377,6 +1389,40 @@ export class ThreeBuildings {
     for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
     // Baked coarse (lane R4-A #243): a drawn baked cell is the city under the rider (its tiles build no coarse chunk).
     return this.bakedEntries.size > 0;
+  }
+
+  /**
+   * The z14 tiles (`x/y`, the coarse key) among `tiles` whose buildings this layer draws now: the tile's coarse shell,
+   * a near chunk inside it, or, under the baked coarse tier, a drawn world cell its buildings sit in. MapLibre's
+   * own copy of the city stands in for the rest while the city fills in (vector-map.js wallsPerArea, lane LS).
+   */
+  drawnTiles(tiles: Iterable<string>): string[] {
+    if (!this.visible || !this.ready) return [];
+    const out: string[] = [], gate = this.bakedGate;
+    for (const tile of tiles) {
+      if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh || this.nearDrawnIn(tile)) { out.push(tile); continue; }
+      if (!gate || !this.bakedEntries.size) continue;
+      const cells = this.tileCells().get(tile);
+      // Any drawn cell counts: a MapLibre stand-in over a building the facades already draw z-fights and hides it,
+      // which reads worse than a moment's gap at a cell seam.
+      if (cells?.size && [...cells].some(c => gate.drawn(c))) out.push(tile);
+    }
+    return out;
+  }
+  private tileCellsOf: { features: readonly Feature[]; cells: Map<string, Set<string>> } | null = null;
+  /** The world cells of each z14 tile's resident buildings (memoised per resident feature list). */
+  private tileCells(): Map<string, Set<string>> {
+    if (this.tileCellsOf?.features === this.lastFeatures) return this.tileCellsOf.cells;
+    const cells = new Map<string, Set<string>>();
+    for (const feature of this.lastFeatures) {
+      const g = this.groupOf(feature);
+      if (g.tile === null || g.cell === null) continue;
+      let set = cells.get(g.tile);
+      if (!set) cells.set(g.tile, set = new Set());
+      set.add(g.cell);
+    }
+    this.tileCellsOf = { features: this.lastFeatures, cells };
+    return cells;
   }
 
   /**
@@ -1843,9 +1889,10 @@ export class ThreeBuildings {
     entry.mesh.geometry.computeBoundingSphere();
     // Tiles were measured at install: grow them by the largest lift since (a few metres; conservative, never short).
     const range = this.liftRange(lift.applied);
-    growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
+    // Lane F4: a draped wall foot reaches up to FRONT_MAX_RAISE_M below its base.
+    growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)) + (this.groundFoot ? FRONT_MAX_RAISE_M : 0));
     // Settled: let the CPU copy go after the next upload.
-    if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+    if (!lift.pending.size && !KEEP_VERTS) attribute.onUpload(function (this: any) { this.array = null; });
   }
 
   private readonly baseSlicer = new BaseRefreshSlicer<string>();
@@ -1917,7 +1964,8 @@ export class ThreeBuildings {
       lift.pending.delete(id);
       const z = base ?? 0, delta = z - (lift.applied.get(id) ?? 0), range = ranges.get(id);
       if (!range || !delta) continue;
-      for (let v = range.start; v < range.start + range.count; v++) positions[v * 3 + 2] += delta;
+      // Lane F4: wall feet drape to the relief (placement.ts drapeRange); with no foot every vertex moves by `delta`.
+      drapeRange(positions, range.start, range.count, lift.applied.get(id) ?? 0, z, this.groundFoot);
       lift.applied.set(id, z);
       n++;
     }
@@ -1992,7 +2040,8 @@ export class ThreeBuildings {
     // The GPU holds the copy that draws; the CPU array is freed once uploaded
     // (the `hidden` flags stay: they are rewritten when the answer changes).
     // A lost context rebuilds from `source`, see onAdd.
-    const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
+    // `?keepVerts=1` (plot-true spec, lane BA): keep the CPU copy so a check can read the drawn vertices.
+    const release = (attribute: any) => { if (!KEEP_VERTS) attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
     // Own ground: lift each building onto its relief before upload. Houseboats
     // follow the water level instead (mesh.position.z below).
     let lift: GroundLift | undefined = staged;
@@ -2336,9 +2385,9 @@ export class ThreeBuildings {
       this.scheduleStage();
       this.map.triggerRepaint();
     });
-    const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
-    const scale = c.meterInMercatorCoordinateUnits();
-    this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+    // The equatorial metre, not the map's (MapLibre's mean-radius metre drew every generic building 0.112 % of its
+    // distance from ORIGIN too far out: buildingProjectionScale.ts). Identical to the own ground's transform.
+    this.transform = new THREE.Matrix4().fromArray(buildingMercatorFromLocal(ORIGIN));
   }
 
   /** The canvas pixel ratio MapLibre renders at (the facade tier's rates are per CSS pixel). */

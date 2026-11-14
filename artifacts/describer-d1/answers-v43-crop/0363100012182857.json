@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012182857",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182857/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "relieving"
+ ],
+ "bands": "both",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "bands",
+  "basement",
+  "dormers",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "relieving arches of alternating white stone and brick voussoirs over the first-storey windows, and white blocks banded through the brick piers beside every window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two step gables side by side with white-capped steps, white blocks and arched relieving bands over the gable windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall white timber ground frontage across the whole wall: a row of small-paned entresol lights over doors (one round-arched) and boarded or glazed panels"
+  },
+  {
+   "component": "dormer",
+   "what": "a small window with its own white cornice cap sits in the valley between the two gables"
+  }
+ ],
+ "notes": "One wall carries two identical step gables (a double house); the left half is described. The single full upper storey runs across both halves; everything above the white band at the gable foot is in the gables.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}
