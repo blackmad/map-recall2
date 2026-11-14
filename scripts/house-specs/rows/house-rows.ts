@@ -15,6 +15,7 @@
  *                          the dir `house:row-sheet -- <row> --drawn-specs` takes
  * --check prints the report and writes nothing.
  */
+import { rdToLngLat } from '../../../src/canalRecall/rdCoordinates.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
@@ -54,6 +55,9 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
   if (cuts) inputs.push(rel(path.join(def.cutsDir, 'cuts.json')));
   inputs.push(`${rel(def.answersDir)}/<pandId>.json`);
   const rereads = loadRereads();
+  const wallOnlyFile = path.join(REPO, 'scripts/house-specs/rows/wall-only.json');
+  const wallOnly = (readJson(wallOnlyFile) as { rows?: Record<string, Record<string, { chunk: string; edgeRD: [[number, number], [number, number]]; ref: string }>> } | null)?.rows?.[def.id] ?? {};
+  if (Object.keys(wallOnly).length) inputs.push(rel(wallOnlyFile));
   const members: MemberInput[] = def.members.map(md => {
     const pid = md.pandId;
     const sp = survey?.pands.find(p => p.pandId === pid);
@@ -77,6 +81,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
       ...(rr ? { reread: { panoId: rr.panoId, captured: rr.captured, ref: rr.cut, firstRead: rr.firstRead } } : {}),
       ...(rr?.describes && fronts && fronts.length > 1 ? { readFront: rr.describes === 'left' ? 0 : fronts.length - 1 } : {}),
+      ...(wallOnly[pid] ? { wallOnly: { chunk: wallOnly[pid].chunk, edge: wallOnly[pid].edgeRD.map(([x, y]) => rdToLngLat(x, y).map(v => Math.round(v * 1e8) / 1e8)) as [[number, number], [number, number]], edgeRD: wallOnly[pid].edgeRD, ref: wallOnly[pid].ref } } : {}),
     };
   });
   const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';

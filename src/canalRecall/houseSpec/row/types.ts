@@ -207,6 +207,18 @@ export interface RowMember {
   widthM: number | null;
   /** Front ids, left to right as seen from the street. */
   fronts: string[];
+  /** A pand an installed face chunk of another street owns whole (its roof, its other street): the row draws only its wall
+   *  on this street, on `edge`, and the chunk's `rowFront` variant leaves that wall out (scripts/house-specs/rows/wall-only.json). */
+  wallOnly?: RowWallOnly;
+}
+
+/** The row's wall of a chunk-owned pand: the chunk (chunks.json id) and the BAG edge on this street, [lng, lat], left to right as seen. */
+export interface RowWallOnly {
+  chunk: string;
+  edge: [[number, number], [number, number]];
+  /** The edge in RD New metres, as measured (the BAG footprint), left to right. */
+  edgeRD?: [[number, number], [number, number]];
+  ref?: string;
 }
 
 export interface RowSeries {

@@ -53,10 +53,12 @@ test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left 
   assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing, h.storeys ?? null]), [[0, 0.5, 'keystone', null], [0.5, 1, 'segmental-tympanum', [1, 2]], [0.5, 1, 'keystone', [3]]]);
 });
 
-test('Kinkerstraat 86–88 (233580) continues the row roof: slate mansard, one pedimented hoist dormer (lane D, rule-10 pano)', () => {
-  const s = rec(K, '0363100012233580').series!;
+test('Kinkerstraat 86–88 (233580) is a member of 90\'s series: same heads, roof storey and window look (lane D, rule-10 pano)', () => {
+  const s = rec(K, '0363100012233580').series!, s90 = rec(K, '0363100012155794').series!;
+  assert.equal(s.id, s90.id);
+  assert.deepEqual(s.heads, s90.heads);
   assert.equal(s.roofStorey?.kind, 'mansard');
-  assert.deepEqual(s.roofStorey!.dormers, [{ a: 0.5, kind: 'pediment', hoist: true }]);
+  assert.deepEqual(s.roofStorey!.dormers, [{ a: 0.5, kind: 'pediment' }]);
 });
 
 test('Weteringschans 169016: souterrain, mansard, one pediment dormer with a hoist; 168096 a cornice front over basement windows, no roof storey', () => {
@@ -98,11 +100,11 @@ test('a series member draws a mansard roof plan at its cornice line, never the h
   assert.equal(plan.pieces?.length, 1);
 });
 
-test('the corner member (86–88) takes the row mansard at its top, not a flat lid (lane D, rule-10 pano)', () => {
+test('the corner member (86–88) is wall-only: no roof of its own, the chunk keeps the mansard (lane D wall-only.json)', () => {
   const r = rec(K, '0363100012233580');
   const p = withFlag(K, () => withRowFront(feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }))).properties;
-  assert.equal(p.roofShape, 'mansardHip');
-  assert.equal((p.rowRoof as { dormers: unknown[] }).dormers.length, 1);
+  assert.equal(p.roofShape, 'flat');
+  assert.equal(p.rowRoof, undefined);
 });
 
 test('the souterrain series draws one more storey with a souterrain ground cell (Weteringschans 171218)', () => {
@@ -130,8 +132,10 @@ test('the Kinkerstraat mansards join across party walls at one line; the row end
 
 test('one window look per series: bays per front, the series year and line, whatever the pand', () => {
   const looks = new Map<string, Set<string>>();
-  for (const r of K) (looks.get(r.series!.id) ?? looks.set(r.series!.id, new Set()).get(r.series!.id)!).add(JSON.stringify(r.series!.look));
+  // 86-88 (233580) states its own bay count (reviewed: 5 axes on the 7.7 m corner front, lane D); the rest of its look is 90's.
+  for (const r of K) (looks.get(r.series!.id) ?? looks.set(r.series!.id, new Set()).get(r.series!.id)!).add(JSON.stringify({ ...r.series!.look, bays: r.pandId === '0363100012233580' ? 3 : r.series!.look!.bays }));
   for (const [sid, l] of looks) assert.equal(l.size, 1, `${sid}: one look`);
+  assert.equal(rec(K, '0363100012233580').series!.look!.bays, 5, '86-88: the reviewed 5 axes');
   assert.equal(rec(K, '0363100012236027').series!.look!.bays, 3, 'a two-front pand still picks the 3-bay preset');
 });
 
@@ -267,7 +271,9 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   const KW = rowFrontsWithSeries(withWall);
   const r = rec(KW, '0363100012233580');
   assert.deepEqual(r.wallOnly, { chunk: 'chunk-face-bilder-233580-162444', edge });
-  assert.equal(rec(K, '0363100012233580').wallOnly, undefined, 'no stated wall: the record as before');
+  // The staged row states it (scripts/house-specs/rows/wall-only.json, lane D): the BAG Kinkerstraat edge, left to right.
+  assert.equal(rec(K, '0363100012233580').wallOnly?.chunk, 'chunk-face-bilder-233580-162444');
+  assert.equal(rec(K, '0363100012155794').wallOnly, undefined, 'no stated wall: the record as before');
   // The pand's footprint behind the edge (y > 0): 7.69 m along Kinkerstraat, 10 m deep.
   const ll = (x: number, y: number) => [lng + x / kx, lat + y / 110_540];
   const f = { ...feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }), geometry: { type: 'Polygon', coordinates: [[ll(0, 0), ll(7.69, 0), ll(7.69, 10), ll(0, 10), ll(0, 0)]] } };

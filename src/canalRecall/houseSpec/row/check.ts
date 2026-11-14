@@ -48,10 +48,12 @@ export function toRowCheck(row: RowRecord, answers: Readonly<Record<string, Desc
     // A reviewed per-front heads statement (Kinkerstraat 100's block surrounds) is a per-house field (`headVariant`), like
     // dormerVariant; a front's heads that differ from its series for any other reason stay in the design and fail the gate.
     const headReviewed = f.overrides.heads?.source === 'reviewed' && headStr(f.overrides.heads.value) !== headStr(sd.heads.value);
+    // A reviewed per-front bay count (Kinkerstraat 86-88: 90's design on a 7.7 m corner front, 5 axes) is `baysVariant`.
+    const baysReviewed = (f.overrides as { bays?: { source: string; value: number } }).bays?.source === 'reviewed' && d.bays.value !== sd.bays.value;
     return {
       key: f.id, pandId: f.pandId, numbers: f.numbers.map(String), series: f.seriesId,
       design: {
-        crown: d.crown.value, cornice: d.cornice.value, storeys: d.storeys.value, bays: d.bays.value, windows: d.windows.value,
+        crown: d.crown.value, cornice: d.cornice.value, storeys: d.storeys.value, bays: baysReviewed ? sd.bays.value : d.bays.value, ...(baysReviewed ? { baysVariant: d.bays.value } : {}), windows: d.windows.value,
         head: headStr(headReviewed ? sd.heads.value : d.heads.value),
         ...(headReviewed ? { headVariant: headStr(d.heads.value) } : {}),
         whiteFrames: d.whiteFrames.value, sills: d.sills.value, wallMaterial: d.wall.value.material, wallFamily: d.wall.value.family, wall: d.wall.value.hex,

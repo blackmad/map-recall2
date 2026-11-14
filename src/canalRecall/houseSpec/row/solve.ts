@@ -23,7 +23,7 @@ import {
   ROW_RECORD_VERSION, ROW_SOURCE_RANK, type ReadNotDrawn, type Overruled, type RowCorniceKind, type RowCrownKind, type RowDesign,
   type RowDesignKey, type RowDormerKind, type RowField, type RowFieldSource, type RowFlag, type RowFront, type RowGround, type RowGroundColour, type RowHeadDressing,
   type RowHeadShape, type RowHeads, type RowMember, type RowRecord, type RowRoofStorey, type RowRoofStoreyKind, type RowSeries, type RowWall,
-  type RowWallMaterial, type RowWindowKind,
+  type RowWallMaterial, type RowWallOnly, type RowWindowKind,
 } from './types.ts';
 
 /** rowFront.ts ROW_FRONT_EXTRAS (kept as a copy so this module does not pull the mesher; row.test.ts pins the two equal). */
@@ -83,6 +83,8 @@ export interface MemberInput {
   readFront?: number;
   /** The read is a re-read from another capture year, the first read having been held (scaffold, netting). */
   reread?: { panoId: string; captured: string; ref: string; firstRead: { ref: string; panoId?: string; captured?: string; held: string } };
+  /** The pand belongs to another street's face chunk: the row draws only this street's wall (RowMember.wallOnly). */
+  wallOnly?: RowWallOnly;
 }
 export interface RowInput {
   id: string;
@@ -285,7 +287,7 @@ export function solveRow(input: RowInput): RowRecord {
       flags.push({ kind: 'extent-mismatch', field: 'extent', fronts: [m.pandId], detail: `read extent single with ${m.read.bays} bays; ${why}: ${n} fronts` });
     const ids = n === 1 ? [m.pandId] : Array.from({ length: n }, (_, i) => `${m.pandId}#m${i}`);
     const nums = [...m.numbers].sort((a, b) => descending ? b - a : a - b);
-    members.push({ pandId: m.pandId, label: m.label, numbers: m.numbers, built: m.built, widthM: m.widthM, fronts: ids });
+    members.push({ pandId: m.pandId, label: m.label, numbers: m.numbers, built: m.built, widthM: m.widthM, fronts: ids, ...(m.wallOnly ? { wallOnly: m.wallOnly } : {}) });
     const readVals = m.read && !held ? readValues(m.read, m.built) : undefined;
     if (m.reread) flags.push({ kind: 'reread', fronts: ids, detail: `re-read from the ${m.reread.captured} capture ${m.reread.panoId} (${m.reread.ref}); the first read (${m.reread.firstRead.captured ?? '?'} ${m.reread.firstRead.ref}) was held: ${m.reread.firstRead.held}${m.readFront !== undefined ? `; it describes front ${m.readFront + 1} of ${n} only` : ''}` });
     if (held) {

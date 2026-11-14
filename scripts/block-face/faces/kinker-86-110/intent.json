@@ -689,7 +689,7 @@
    "address": "Kinkerstraat 86-88",
    "type": {
     "type": "kinker-1890-plain-brick",
-    "crown": "none",
+    "crown": "pediment-dormer",
     "palette": "red-brown",
     "overrides": {
      "windowHead": {
@@ -740,7 +740,7 @@
     "agreement": "osm-and-photo"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3, flat top with one low roof box",
+    "citation": "strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3, flat top with one low roof box; lane D 2026-11-14 (rule-10 pano TMX7316010203-002921, 2023-01-10): 90's design continues over the whole 7.69 m corner front, 5 axes, the row cornice, slate mansard with one pediment dormer (the 'flat top' was the low sun on the strip)",
     "photoRows": [
      3,
      3,
@@ -750,7 +750,6 @@
     "photoGables": 0,
     "schemaLimits": [
      "the strip wall median (#d7a569) is direct low sun on the brick; the type palette is kept instead of a measured wall",
-     "a low flat roof box on the roof (the plain-brick type has no box crown)",
      "cream-painted ground storey wall",
      "carved ornament in the tympana drawn as plain stone fills"
     ]
