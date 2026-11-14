@@ -502,6 +502,8 @@ export const PAVEMENT_LEVEL: ReadonlySet<RoadClass> = new Set<RoadClass>(['foot'
 export interface RoadBuildInput {
   /** The land surface the h = 0 polygons drape on (groundCell `onLand`). */
   height: HeightFn;
+  /** Ground polygons (h 0) and their kerbs drape on this when given (groundCell onStreet: no lift under a way deck's hole ranges, lane F1b); absent: `height`. */
+  streetHeight?: HeightFn;
   /** The riding surface with the decks (GroundSurface.height), for h ≥ 1 polygons; see `deckLevelHeight`. */
   deckHeight: HeightFn;
   /** 1 on a measured deck, 0 off every deck (GroundSurface.deckWeight). */
@@ -606,7 +608,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const minEdgeM = DRAPE_MIN_EDGE_M * (touch ? TOUCH_MIN_EDGE_SCALE : 1);
   // The drape carries each corner's height and asks once per corner and tested point (drapeAdaptive); a 1 cm memo
   // of the heights on top cost more in Map lookups than the land grid's own lookup (the deck surface keeps it).
-  const landHeight = input.height, deckHeight = memoHeight(input.deckHeight);
+  const landHeight = input.height, deckHeight = memoHeight(input.deckHeight), streetHeight = input.streetHeight ?? landHeight;
   /** The surface a deck polygon (or a kerb on one) drapes on, or null when nothing carries it. */
   const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1]) || !!input.onFlatDeck?.(p[0], p[1])) ? deckHeight : null);
   /** The build without the carry for a deck polygon: drawn on what, with which triangles (null: skipped). */
@@ -666,7 +668,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const { flat, tris: tris0 } = index.flatOf(k);
     if (flat.length < 6) { stats.degenerate++; skipped.add(k); continue; }
     if (!tris0.length) { stats.degenerate++; skipped.add(k); continue; }
-    let height = landHeight;
+    let height = streetHeight;
     let tris = tris0;
     let pieces: Vec2[][][] | null = null;
     if (rec.h >= 1 && carry) {
@@ -774,7 +776,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     // Both sides low: a kerb of a footway island drawn as street (parkingIslands); the street has none there.
     if (isLow(left) && isLow(right)) continue;
     const lowLeft = isLow(left) && !isLow(right), lowRight = isLow(right) && !isLow(left);
-    let height = landHeight;
+    let height = streetHeight;
     if (bridge) { const on = deckSurface([cx, cy]) ?? (carry && index.findAll(cx, cy).some(j => index.records[j].h >= 1 && decide(j).d.draw) ? deckHeight : null); if (!on) continue; height = on; }
     // Decks hump within a span (DECK_DRAPE_MAX_EDGE_M); on land, no finer than the relief was measured.
     const line = bridge ? densifyOnRelief(run, height, KERB_RELIEF_TOL_M, 1, DECK_DRAPE_MAX_EDGE_M)

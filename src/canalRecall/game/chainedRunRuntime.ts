@@ -15,6 +15,7 @@ import {
   loadRun,
   pauseRun,
   pickNextStop,
+  resumeLeg,
   resumeRun,
   runTransition,
   withNextLeg,
@@ -71,6 +72,8 @@ export interface ChainedRunHost {
   quizPoints: number;
   quizBestStreak: number;
   _rideNamedNames?: string[];
+  /** The rider chose routeTo in route setup (game-route.js `_launchPoiRoute`). */
+  _routeToUserPicked?: boolean;
   _tour?: unknown;
   _tourArrival?: unknown;
   recall: { homeMasterySamples?(cityId: string): MasterySample[] } | null;
@@ -215,7 +218,7 @@ export class GameChainedRunRuntime {
    * leg, it is written here once, while it loads or rides.
    */
   _runNoteLeg(this: ChainedRunHost & GameChainedRunRuntime, run: OpenRun): void {
-    const leg = rideLeg(this.routeFrom, this.routeTo);
+    const leg = rideLeg(this.routeFrom, this.routeTo, !!this._routeToUserPicked);
     if (!leg || sameLeg(run.nextLeg ?? null, leg)) return;
     this._run = withNextLeg(run, leg);
     saveRun(storage(), this._run);
@@ -261,6 +264,25 @@ export class GameChainedRunRuntime {
   _runResumeLeg(this: ChainedRunHost & GameChainedRunRuntime): RunLeg | null {
     if (!this._runEnabled()) return null;
     return this._openRun()?.nextLeg ?? null;
+  }
+
+  /**
+   * The resumed leg checked against today's pool (chainedRun.resumeLeg), once
+   * the landmark catalogue has loaded: a destination the pickers would no
+   * longer deal from its start is replaced by a fresh next stop and the run
+   * saved with it. A leg the rider chose stands.
+   */
+  _runVetResumeLeg(this: ChainedRunHost & GameChainedRunRuntime, leg: RunLeg): RunLeg | null {
+    const run = this._openRun();
+    const samples = this.recall?.homeMasterySamples?.(this.cityId || 'amsterdam') ?? [];
+    const excludeIds = run?.stops.map(stop => stop.id) ?? [];
+    const result = resumeLeg(leg, this.routePois, { samples, excludeIds });
+    if (result.leg !== leg && run) {
+      console.info(`Run resume: ${leg.to.name} dropped (${result.verdict})${result.leg ? `; next stop ${result.leg.to.name}` : ''}`);
+      this._run = withNextLeg(run, result.leg);
+      saveRun(storage(), this._run);
+    }
+    return result.leg;
   }
 
   /** End run: the run card replaces the arrival card. */

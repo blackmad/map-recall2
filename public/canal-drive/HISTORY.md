@@ -4,6 +4,25 @@
 - **Cause.** `facadeOrnaments.ts` `corner-pilasters` is a random wall extra (30 % of c19, 22 % of canal-house fronts), always WHITE/STONE, 0.42 m wide, first floor to cornice. 1,515 drawn in the centre box, none from register or spec; 1,496 on walls darker than L 0.6, where they read as white bars. The bars in David's frame were on Haarlemmerdijk 29 (167795, generic), not 31 (167794, its own model).
 - **Fix.** `look/pilasterTone.ts`: an unevidenced pilaster is the wall × 0.9 (the stepped parapet's rule); pale only when the register (`registerForce`), a HouseSpec (`statedFirst`) or a street recipe (`paleAccents`) states it. Same geometry and triangles. `?pilasterTone=0` / `PILASTER_TONE=0`; worker flag. `check:pilaster-tone` in check:canal:rest pins 167795, 157005, 165159 and 167794-is-a-model (2 tiles: 9,358 without pilasters byte-identical, 631 recoloured).
 - **Left.** The rolled `kroonlijst` (pale slanted top bar) stays; thin-fade dither on it is TF's thinFocalPx item. 29's wall is drawn dark brick 11 m but the panorama shows pale render with a balustrade at about 8.3 m (house-line).
+## Stale destinations after reload (2026-11-14)
+
+User notes on 2cd2fb7 still headed for Meerpadkerk after the fame-tier fix. Cause: the open run's saved leg (`canalRecall.openRun.v1`.nextLeg), dealt before the fix, was relaunched on every reload with `explicitDestination` and never vetted; `loadRun` also credited a whole closed-tab pause, so the run never expired. `chainedRun.ts` `judgeResumedLeg`/`resumeLeg` now keep a saved leg only if the pool would still deal it (tier factor ≥ 0.5), the rider picked it (`RunLeg.userPicked`), or it is a review/home stop; pause credit is capped at 3 h. Home rides keep `TAIL_FLOOR` for places under score 4 even when the famous tier is scarce (El Tawheed was 3.3 % from Kinkerbuurt), and stand-in swaps count sub-famous places as twice as far. Pinned in `destinationPool.test.ts` (Wiborgeiland and Kinkerbuurt starts, resumed legs).
+
+
+**Bridge follow-ups: median-aware deck edges, smoothed survey caps, streets under way-deck holes (2026-11-14, lane F1b, cherry-picked from lane/f1b-bridges-20261114).**
+- **Why.** Follow-ups to F1: the motorway parapets it pushed inside the lanes, the railing steps where survey caps narrow a deck, and Lelylaan 07ec0473 (torn cycle path under the deck).
+- **Median edges** (`?medianEdges=0`). The survey edge walk carries on across gaps between deck-level polygons inside the half-width, so a bundled motorway way deck on a 4 m median reaches its outer carriageway edge.
+  - OSM7376770: 56.6 → 7.0 m inside traffic. OSM7376548: 28.5 → 0.
+  - City-wide: parapet inside traffic 810 → 623 m; 24 decks better, 8 worse.
+  - BRU1883 goes 0 → 10.9 m: the walk crosses the open water slot between its two carriageways and needs a water test.
+- **Cap smoothing** (`?capSmooth=0`). Caps follow a slanted survey edge, are median-filtered over ±3 m and taper at 0.5 m per metre.
+  - BRU0407 3.0 → 0 m of turns; BRU0415 1.9 → 0.
+  - Turn metres 159.5 → 137.6.
+- **Hole streets** (`?holeStreets=0`). Inside a way deck's under-hole ranges everything below the deck drapes on the relief.
+  - Lelylaan cell: 62 → 0 lifted vertices.
+  - City-wide: 19,816 → 120 (parks 18,571 → 0).
+- **Pins and checks.** New pins in `bridge-feedback-pins.ts`. Three tram crossings now pass and left the rail-joins allow-list (725 → 722).
+- **Torensluis not fixed.** wetGround keeps the same rings at every `WET_CLEAR_M` from 2.0 to 1.5 m, so the threshold is not the cause. `probe-wet-clear.ts` sweeps it.
 
 **Houthavens round 2: Blok 0, De Rede, OBA Spaarndammerbuurt, Pont 13; barRailing kit component (2026-11-14, lane H-HV2, cherry-picked from lane/houthavens-landmarks-2-20261114).**
 - **Blok 0 plots 8/9 (IJ4you).** Pand 0363100012242823, 2015, Marcel Lok. 5.9k triangles. Supersedes the held block-kit draft `haparandaweg-650-706`.

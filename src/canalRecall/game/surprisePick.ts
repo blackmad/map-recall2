@@ -95,6 +95,15 @@ export function tailOpenness(origin: { lat: number; lng: number } | null | undef
 }
 
 /**
+ * Below this notability a place is a neighbourhood place (El Tawheed 3.8,
+ * De Hallen 3.7): a scarce famous tier does not raise its floor. A 1 km home
+ * ring in the Kinkerbuurt holds two famous places, so tailFloorFor rose to
+ * 0.75 and the home share cap pushed El Tawheed, 230 m away, to 3 % of a new
+ * rider's home rides (2026-11-14 report).
+ */
+export const BARE_TAIL_SCORE = 4;
+
+/**
  * Famous places always weigh fully. The tail opens progressively as the
  * rider masters the area: a new rider at Vijzelstraat is sent to the
  * Westerkerk; one who has learned forty names round there may be sent to a
@@ -102,7 +111,23 @@ export function tailOpenness(origin: { lat: number; lng: number } | null | undef
  */
 export function fameTierFactor(poi: RoutePoi, openness = 0, floor = TAIL_FLOOR, score = notabilityScore(poi)): number {
   if (score >= FAMOUS_TIER_SCORE) return 1;
-  return floor + (1 - floor) * Math.max(0, Math.min(1, openness));
+  // A scarce famous tier (tailFloorFor) lifts the middle of the tail, never
+  // its bottom: only the rider's own mastery opens a neighbourhood place.
+  const base = score < BARE_TAIL_SCORE ? TAIL_FLOOR : floor;
+  return base + (1 - base) * Math.max(0, Math.min(1, openness));
+}
+
+/**
+ * Stand-ins (a destination that did not snap or cannot be reached) rank by
+ * distance, with a place below the famous tier counted this many times as
+ * far: a neighbourhood church must be under half as far as a famous place to
+ * replace the destination it was not chosen as.
+ */
+export const TAIL_STAND_IN_STRETCH = 2;
+
+/** Distance multiplier for a stand-in candidate (see TAIL_STAND_IN_STRETCH). */
+export function standInStretch(poi: RoutePoi): number {
+  return notabilityScore(poi) >= FAMOUS_TIER_SCORE ? 1 : TAIL_STAND_IN_STRETCH;
 }
 
 /** Pick weight of a destination: notability, gated by the fame tier. */

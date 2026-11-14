@@ -4419,9 +4419,11 @@
     }
     return Math.min(1, known / TAIL_OPEN_KNOWN);
   }
+  var BARE_TAIL_SCORE = 4;
   function fameTierFactor(poi, openness = 0, floor = TAIL_FLOOR, score = notabilityScore(poi)) {
     if (score >= FAMOUS_TIER_SCORE) return 1;
-    return floor + (1 - floor) * Math.max(0, Math.min(1, openness));
+    const base = score < BARE_TAIL_SCORE ? TAIL_FLOOR : floor;
+    return base + (1 - base) * Math.max(0, Math.min(1, openness));
   }
   function destinationWeight(poi, openness = 0, floor = TAIL_FLOOR) {
     const score = notabilityScore(poi);
@@ -7903,6 +7905,7 @@
   var RUN_STORAGE_KEY = "canalRecall.openRun.v1";
   var LAST_RUN_STORAGE_KEY = "canalRecall.lastRun.v1";
   var RUN_IDLE_MS = 10 * 60 * 1e3;
+  var RUN_RELOAD_PAUSE_MAX_MS = 3 * 60 * 60 * 1e3;
   var CHAIN_STEP = 0.05;
   var CHAIN_CAP = 0.25;
   var NEXT_STOP_MIN_KM = 1;
@@ -8003,13 +8006,37 @@
   function withNextLeg(run, leg) {
     return { ...run, nextLeg: leg };
   }
-  function rideLeg(from, to) {
+  function rideLeg(from, to, userPicked = false) {
     const end = (p) => p && p.id && !p.sharedEndpoint && Number.isFinite(p.lat) && Number.isFinite(p.lng) ? { id: p.id, name: p.name, lat: p.lat, lng: p.lng } : null;
     const a = end(from), b = end(to);
-    return a && b && a.id !== b.id ? { from: a, to: b } : null;
+    if (!a || !b || a.id === b.id) return null;
+    return userPicked ? { from: a, to: b, userPicked: true } : { from: a, to: b };
   }
   function sameLeg(a, b) {
-    return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id;
+    return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id && !!a.userPicked === !!b.userPicked;
+  }
+  var RESUME_MIN_TIER_FACTOR = 0.5;
+  function judgeResumedLeg(leg, pois, samples = []) {
+    if (leg.userPicked) return "user-picked";
+    const poi = pois.find((candidate) => candidate.id === leg.to.id);
+    if (!poi) return leg.to.id.startsWith("lm-") ? "left-the-pool" : "not-a-pool-place";
+    const inRange = pois.filter((candidate) => candidate.id !== leg.from.id && kmBetween(candidate, leg.from) <= ROUTE_POI_MAX_PAIR_KM);
+    const factor = fameTierFactor(poi, tailOpenness(leg.from, samples), tailFloorFor(inRange));
+    return factor >= RESUME_MIN_TIER_FACTOR ? "kept" : "below-the-tier";
+  }
+  function resumeLeg(leg, pois, options = {}) {
+    if (!leg) return { leg: null, verdict: null };
+    const verdict = judgeResumedLeg(leg, pois, options.samples);
+    if (verdict === "kept" || verdict === "user-picked" || verdict === "not-a-pool-place") return { leg, verdict };
+    const to = pickNextStop(pois, leg.from, {
+      samples: options.samples,
+      excludeIds: [...options.excludeIds ?? [], leg.to.id],
+      chooseUnit: options.chooseUnit
+    });
+    return {
+      leg: to ? { from: leg.from, to: { id: to.id, name: to.name, lat: to.lat, lng: to.lng } } : null,
+      verdict
+    };
   }
   function runTransition(from, to) {
     if (from === to) return null;
@@ -8066,7 +8093,7 @@
     }
     const run = parseRun(raw);
     if (!run || run.stopCount <= 0) return { run: null, ended: null };
-    const live = resumeRun(run, now);
+    const live = resumeRun(run, run.pausedAt != null ? Math.min(now, run.pausedAt + RUN_RELOAD_PAUSE_MAX_MS) : now);
     if (!isIdle(live, now)) return { run: live, ended: null };
     endRun(storage3, live);
     return { run: null, ended: live };
@@ -8467,7 +8494,7 @@
      * leg, it is written here once, while it loads or rides.
      */
     _runNoteLeg(run) {
-      const leg = rideLeg(this.routeFrom, this.routeTo);
+      const leg = rideLeg(this.routeFrom, this.routeTo, !!this._routeToUserPicked);
       if (!leg || sameLeg(run.nextLeg ?? null, leg)) return;
       this._run = withNextLeg(run, leg);
       saveRun(storage2(), this._run);
@@ -8516,6 +8543,24 @@
     _runResumeLeg() {
       if (!this._runEnabled()) return null;
       return this._openRun()?.nextLeg ?? null;
+    }
+    /**
+     * The resumed leg checked against today's pool (chainedRun.resumeLeg), once
+     * the landmark catalogue has loaded: a destination the pickers would no
+     * longer deal from its start is replaced by a fresh next stop and the run
+     * saved with it. A leg the rider chose stands.
+     */
+    _runVetResumeLeg(leg) {
+      const run = this._openRun();
+      const samples = this.recall?.homeMasterySamples?.(this.cityId || "amsterdam") ?? [];
+      const excludeIds = run?.stops.map((stop) => stop.id) ?? [];
+      const result = resumeLeg(leg, this.routePois, { samples, excludeIds });
+      if (result.leg !== leg && run) {
+        console.info(`Run resume: ${leg.to.name} dropped (${result.verdict})${result.leg ? `; next stop ${result.leg.to.name}` : ""}`);
+        this._run = withNextLeg(run, result.leg);
+        saveRun(storage2(), this._run);
+      }
+      return result.leg;
     }
     /** End run: the run card replaces the arrival card. */
     _endRunFromCard() {
