@@ -1,7 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {geomOf} from './cut-face';
-import {slab, poly, type Frame} from './nearbar-kit';
+import {slab, poly, put, type Frame} from './nearbar-kit';
 import type {Surface} from './worship-shell';
 import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
 
@@ -16,7 +16,10 @@ import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
  *  - `profileAlong`: a moulding profile (o out of the wall, y up) extruded along a wall frame: cornices, belts, consoles;
  *  - `pedimentSolid`: a triangular pediment with raking and base cornices standing proud of its tympanum;
  *  - `modillions`: evenly spaced blocks under a cornice soffit;
- *  - `verticalLettering`: glyph runs turned 90 degrees (text reading bottom to top) on a banner or a vertical sign.
+ *  - `verticalLettering`: glyph runs turned 90 degrees (text reading bottom to top) on a banner or a vertical sign;
+ *  - `clipRingByY`: the same cut by a horizontal plane, so a builder can keep a 3DBAG wall's gable or tower top and draw
+ *    the storeys below it with cut openings (Industrieele Groote Club);
+ *  - `arcLettering`: glyph runs set on an arc over an arched doorway (DE INDUSTRIEELE GROOTE CLUB over its entrance).
  *
  * Frames follow nearbar-kit: t along the wall to the viewer's right, y up, out of the wall along n. Every solid's back
  * face sits at `out` (sunk by nearbar-kit's SINK when the builder sets one); fronts stand >= 5 cm proud.
@@ -62,6 +65,18 @@ export function clipRingByLine(ring: number[][], a: XZ, b: XZ, keep: 1 | -1): nu
     if ((sp >= 0) !== (sq >= 0)) { const t = sp / (sp - sq); out.push(p.map((v, k) => v + (q[k] - v) * t)); }
   }
   return out.length >= 3 ? out : [];
+}
+
+/** Clip a 3D ring by the horizontal plane y = h, keeping the part above (keep 1) or below (keep -1). */
+export function clipRingByY(ring: number[][], h: number, keep: 1 | -1): number[][] {
+  const out: number[][] = [];
+  for (let i = 0; i < ring.length; i++) {
+    const p = ring[i], q = ring[(i + 1) % ring.length], sp = keep * (p[1] - h), sq = keep * (q[1] - h);
+    if (sp >= 0) out.push(p);
+    if ((sp > 0 && sq < 0) || (sp < 0 && sq > 0)) { const t = sp / (sp - sq); out.push(p.map((v, k) => v + (q[k] - v) * t)); }
+  }
+  // a sliver thinner than 2 cm is dropped (it would z-fight the drawn section's top)
+  return out.length >= 3 && Math.max(...out.map(p => keep * (p[1] - h))) > 0.02 ? out : [];
 }
 
 /** Triangle sink grouped by colour, with each triangle wound to face `want` (morgan-mees-builder's Mesh). */
@@ -142,4 +157,20 @@ export function verticalLettering(b: BuildingTools, f: Frame, text: string, t: n
   // text x -> up the wall, text y (0..7px) -> to the left of t (letters' tops face -t)
   for (const r of runs) slab(b, f, t - (r.y0 + r.y1) / 2 + 3.5 * px, y0 + r.t0, r.y1 - r.y0, r.t1 - r.t0, d, c, out);
   return width;
+}
+
+/**
+ * Glyph runs set on an arc about (ct, cy) in the wall plane, radius r to the letters' baseline, the text centred at the
+ * top of the arc and reading clockwise (left to right over a doorway). Each run is a box turned to the arc's tangent;
+ * its back sits 2 cm inside the face at `out` so the letters stay attached on a curved course.
+ */
+export function arcLettering(b: BuildingTools, f: Frame, text: string, ct: number, cy: number, r: number, px: number, d: number, c: Col, out = 0) {
+  const {runs, width} = glyphRuns(text, px, MIXED_CASE_GLYPHS);
+  for (const run of runs) {
+    const u = (run.t0 + run.t1) / 2 - width / 2, v = (run.y0 + run.y1) / 2, th = Math.PI / 2 - u / r, rr = r + v;
+    const g = new T.BoxGeometry(run.t1 - run.t0, run.y1 - run.y0, d + 0.02).translate(0, 0, (d + 0.02) / 2).rotateZ(th - Math.PI / 2);
+    g.translate(0, cy + rr * Math.sin(th), 0);
+    put(b, f, g, ct + rr * Math.cos(th), 0, out - 0.02, c);
+  }
+  return width / r;   // the arc angle the text spans (radians)
 }

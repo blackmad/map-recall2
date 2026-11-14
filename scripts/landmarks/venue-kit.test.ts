@@ -4,7 +4,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {clipRingByLine, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
+import {arcLettering, clipRingByLine, clipRingByY, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
 
 /** BuildingTools that only collects geometries per colour. */
 const collector = () => {
@@ -95,4 +95,25 @@ test('TriSink winds each triangle to the wanted normal and drops degenerate ones
   assert.equal(t.length, 9);
   const u = [t[3] - t[0], t[4] - t[1], t[5] - t[2]], v = [t[6] - t[0], t[7] - t[1], t[8] - t[2]];
   assert.ok(u[0] * v[1] - u[1] * v[0] < 0);
+});
+
+test('clipRingByY keeps the gable above a section top and drops slivers', () => {
+  const gable = [[0, 0, 0], [6, 0, 0], [6, 10, 0], [3, 13, 0], [0, 10, 0]];
+  const top = clipRingByY(gable, 10, 1);
+  assert.ok(top.every(p => p[1] >= 10 - 1e-9));
+  assert.equal(top.length, 3);
+  const low = clipRingByY(gable, 10, -1);
+  assert.ok(low.every(p => p[1] <= 10 + 1e-9) && low.length === 4);
+  assert.deepEqual(clipRingByY(gable, 12.99, 1), []);
+});
+
+test('arcLettering centres the text on the arc top and keeps every run on the radius band', () => {
+  setSink(0);
+  const {b, got} = collector(), px = 0.03, r = 4, ct = 23.9, cy = 1;
+  const span = arcLettering(b, F, 'DE CLUB', ct, cy, r, px, 0.03, 'stone');
+  assert.ok(span > 0 && span < Math.PI / 2);
+  const bb = boxOf(got.map(x => x.g));
+  assert.ok(Math.abs((bb.min.x + bb.max.x) / 2 - ct) < 0.05, 'centred on the arc');
+  assert.ok(bb.max.y <= cy + r + 7 * px + 0.02 && bb.max.y > cy + r, 'top letters sit on the radius');
+  assert.ok(bb.min.y > cy + r * Math.cos(span / 2) - 0.1, 'ends follow the arc down');
 });
