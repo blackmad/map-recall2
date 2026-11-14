@@ -3494,8 +3494,8 @@ review); D owns records and the solve, R the renderer.
   22 one-design, 3 hash roofs, 44 silent drops; Weteringschans 169016 fails the mansard pin).
 - **Blind review.** `scripts/house-specs/rows/blind-review.md` and `blind-review-prompt.md`: a fresh opus agent sees only the
   two blind strips and answers `block | house | PASS/FAIL | reason` in visible order; `parse-review.ts` (typed:
-  `houseSpec/rowReview.ts`) gives pass, blocked (a fail in same-houses, roof-line or colour-family, or an overall FAIL),
-  pass-with-fails or invalid. The builder never reviews.
+  `houseSpec/rowReview.ts`) gives pass, blocked (a fail in same-houses, roof-line, colour-family or white-amount, or an overall FAIL),
+  pass-with-fails or invalid. The builder never reviews. `white-amount` (bands, heads, surrounds against the photo) was added after round 5, when speklagen drawn far too heavy and 90's top-storey heads passed. The reviewer also gets `blind/zoom/<label>.jpg`, per-front photo | drawing pairs at 3x the strip scale. A front whose shown capture is not the first read (`--reread-cuts <dir>`, or a different capture date in cuts.json) is labelled "re-read: <date>" or "shown capture ≠ first read" on the sheet and in the manifest.
 - **Weteringschans wall-colour sheet** (`ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg`): it drew `staged-ah07` ("D1
   staged") and `staged-ah07-v3` = staged-ah07 restaged with `WALL_SAMPLE=2` (the last panel); the lane's `round2.sh` shows it. Order left
   to right is 168096, 168042, 169016, 171218.
