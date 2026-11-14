@@ -677,15 +677,15 @@
   }
  },
  "pontsteiger": {
-  "sourceHash": "1f9f41629833d4c5",
+  "sourceHash": "d28fd4f170683e25",
   "buildVersion": 2,
-  "bytes": 76092,
-  "triangles": 4244,
+  "bytes": 78904,
+  "triangles": 4212,
   "lod2": {
-   "sourceHash": "1f9f41629833d4c5",
+   "sourceHash": "d28fd4f170683e25",
    "buildVersion": 6,
-   "bytes": 11768,
-   "triangles": 552
+   "bytes": 13544,
+   "triangles": 550
   }
  },
  "oba-oosterdok": {
@@ -726,7 +726,7 @@
  },
  "melkweg": {
   "lod2": {
-   "sourceHash": "c316c1a16e1e79c2",
+   "sourceHash": "7a81502c8dffc086",
    "buildVersion": 6,
    "bytes": 4252,
    "triangles": 68

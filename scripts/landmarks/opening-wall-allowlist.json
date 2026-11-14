@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13",
+ "generated": "2026-11-14",
  "note": "Allow-list for scripts/landmarks/check-glb-openings.ts (lane R2-C, 2026-11-13). Per model: float = opening assemblies more than 10 cm clear of every other surface, poke = assemblies sunk behind the wall surface or hanging past its edge, outside = opening parts past their wall's silhouette or through a roof plane. Seeded from the first full sweep of the catalogue GLBs (463 models). It may only shrink: a count above its entry fails, a count below it is stale until `check-glb-openings.ts --write` lowers it (--write never raises; only --seed adds models, and only the first recording used it). A model with no entry must be at 0. Never add or raise an entry to pass: fix the builder.",
  "models": {
   "academie-theater-dans": {
@@ -484,7 +484,6 @@
   },
   "melkweg": {
    "float": 2,
-   "poke": 9,
    "outside": 1
   },
   "mercatorplein-noordtoren": {
@@ -609,7 +608,6 @@
    "outside": 3
   },
   "oostenburgermiddenstraat-228": {
-   "poke": 13,
    "outside": 3
   },
   "oosterkerk": {
@@ -673,7 +671,7 @@
    "outside": 78
   },
   "pontsteiger": {
-   "poke": 54
+   "poke": 4
   },
   "portuguese-synagogue": {
    "poke": 1,

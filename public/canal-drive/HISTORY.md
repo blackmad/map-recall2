@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## One window grid per wall (2026-11-14)
+
+The Pontsteiger's chequer (feedback a4013653) was `cultural-builders.ts` `grid()` laying a window grid on every face of every box; coplanar leg/skybridge faces got two grids out of phase. `landmarks/wallGrid.ts` `planWallGrids` merges coplanar faces (0.5 m) into one wall with one phase and drops panes at least half covered by another box; byte-identical for lone faces (only melkweg changed, 15 buried panes). The Pontsteiger got its own photo-based builder (`pontsteiger-builder.ts`) with new kit parts `staggeredOpenings.ts` and `warrenTruss.ts`. Massing (leg widths, ~51 m soffit vs OSM min_height 58) is a judgement call between photos and OSM.
+
+
 ## Unlisted walls take the window grid (2026-11-14)
 
 Feedback 21dc1e32 / 174d2455 / 9aa8d03b ("no windows, really?"): large recipes drew every wall not in `intent.walls` blank when `otherWalls` was `blank`, so walls nobody had a photo of became flat planes (Buitenzagerij 45's gallery spine, Kromhout's west halls); Kazerne Hendrik's builder had no openings on its curved west wall. `buildingRecipe/otherWalls.ts` now gives unlisted walls the shader grid unless the intent cites a photo in `blankWalls`; party panels never take it. Of 99 re-fitted installs, a Node before/after sheet with panorama crops (`_pruned-sheets/blank-walls/review/`) passed 60; 31 holds (metal/glass halls, car parks, tall single-room halls, photo-blind gables) and 8 needs-photo sit in `held-installs.json`. Pinned in `feedbackBlankWalls.test.ts`. Buitenzagerij's card said Jordaan; it now says Amsterdam-Noord.

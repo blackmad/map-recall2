@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Pontsteiger rebuilt",
+      "text": "The Houthavens gate no longer shows chequered window patches where its tower and skybridge met: two window grids were drawn on the same wall, and landmark windows now share one grid per wall. The Pontsteiger itself is remodelled from photos, with a light glazed-brick skin, windows that shift storey by storey, the skybridge's glazed band with its white zig-zag truss, a tower that runs from the ground to the roof, and the low block raised on white columns.",
+      "where": [
+        4.8882,
+        52.3939
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-pontsteiger-rebuilt-orbit.jpg",
+          "alt": "Pontsteiger before (uniform grid with chequered patches) and after (photo-based remodel)",
+          "caption": "Before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-pontsteiger-rebuilt-photo.jpg",
+          "alt": "The new model beside a photo of the Pontsteiger",
+          "caption": "Model | photo (Wikimedia Commons)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Windows on walls we had no photo of",
       "text": "Large modelled buildings used to draw any wall without a photo as one blank plane. Those walls now show a window grid unless a photo shows the wall really is blind; 60 buildings were checked one by one and updated, and halls, car parks and metal-clad sheds wait for a better fit. The Kromhout yard's west halls on the Gedempt Hamerkanaal are blue-grey metal with their real window row, the Buitenzagerij gallery block on Het Dok shows its galleries (and its card now says Amsterdam-Noord, not the Jordaan), and the Kazerne Hendrik's curved wall has its paired windows.",
       "where": [
