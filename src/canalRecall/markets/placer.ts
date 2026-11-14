@@ -42,7 +42,7 @@ export type MarketLine = {
 export type MarketLinesFile = { version: 1; generated?: string; sources: string[]; markets: MarketLine[] };
 
 export type MarketInstance = { part: MarketPartId; lng: number; lat: number; yaw: number; colour: string | null; stall: string };
-export type PlacedStall = { id: string; market: string; side: string; s: number; goods: GoodsKind | 'van'; roof: 'plain' | 'striped' | null; colour: string };
+export type PlacedStall = { id: string; market: string; side: string; s: number; goods: GoodsKind | 'van'; roof: RoofKind | null; colour: string };
 
 /** Clearance between the roof's front edge and the kerb line (m). */
 export const ROOF_CLEAR_M = 0.3;
@@ -52,28 +52,31 @@ export const STALL_GAP_M = 0.3, PASSAGE_M = 1.6, PASSAGE_EVERY = 6;
 /** The strip must hold the whole frame behind the setback. */
 export const MIN_DEPTH_M = FRONT_SETBACK_M + STALL.depth;
 
-export type RoofSwatch = { hex: string; striped: boolean; weight: number };
+/** Canvas roof on a frame (plain or striped), or a parasol over a table stall (Ten Kate). */
+export type RoofKind = 'plain' | 'striped' | 'parasol';
+export type RoofSwatch = { hex: string; kind: RoofKind; weight: number };
+const ROOF_PART: Readonly<Record<RoofKind, MarketPartId>> = { plain: 'roof-plain', striped: 'roof-striped', parasol: 'roof-parasol' };
 export type MarketPaletteId = 'cuyp' | 'tenkate';
 /**
  * Canvas tones and goods mix per market. Cuyp (2020-01-06, 2021-04-23, 2022-03-21 captures): mostly white and off-white
  * canvas (some 85 % in the 2020 and 2022 rows), the odd red or red-and-white, blue, yellow (the "kleinvakman" stall) or
- * green-striped awning. Ten Kate
- * (2024-12-11, 2025-07-31): lime-green and dark-green canopies among white ones, produce-heavy.
+ * green-striped awning. Ten Kate (2024-12-11, 2025-07-31): mostly lime- and dark-green market parasols over
+ * produce tables, some white parasols and white canvas frames, the odd green- or red-striped awning.
  */
 export const MARKET_PALETTES: Readonly<Record<MarketPaletteId, { roofs: readonly RoofSwatch[]; goods: Readonly<Record<GoodsKind, number>>; vans: readonly string[] }>> = {
   cuyp: {
     roofs: [
-      { hex: '#efede6', striped: false, weight: 58 }, { hex: '#dcd7c9', striped: false, weight: 16 }, { hex: '#c4c7c6', striped: false, weight: 10 },
-      { hex: '#c0392f', striped: true, weight: 5 }, { hex: '#b8322a', striped: false, weight: 4 }, { hex: '#2f5e9e', striped: true, weight: 2 },
-      { hex: '#e0bf2a', striped: false, weight: 2 }, { hex: '#3d7a45', striped: true, weight: 2 }, { hex: '#3d6b9e', striped: false, weight: 1 },
+      { hex: '#efede6', kind: 'plain', weight: 58 }, { hex: '#dcd7c9', kind: 'plain', weight: 16 }, { hex: '#c4c7c6', kind: 'plain', weight: 10 },
+      { hex: '#c0392f', kind: 'striped', weight: 5 }, { hex: '#b8322a', kind: 'plain', weight: 4 }, { hex: '#2f5e9e', kind: 'striped', weight: 2 },
+      { hex: '#e0bf2a', kind: 'plain', weight: 2 }, { hex: '#3d7a45', kind: 'striped', weight: 2 }, { hex: '#3d6b9e', kind: 'plain', weight: 1 },
     ],
     goods: { produce: 28, fabric: 24, general: 26, fish: 5, cheese: 10, flowers: 7 },
     vans: ['#e8e8e4', '#e8e8e4', '#7a5636', '#b8322a'],
   },
   tenkate: {
     roofs: [
-      { hex: '#ebe8df', striped: false, weight: 42 }, { hex: '#8cb43a', striped: false, weight: 24 }, { hex: '#2f6b3a', striped: false, weight: 14 },
-      { hex: '#3f8a45', striped: true, weight: 12 }, { hex: '#c0392f', striped: true, weight: 8 },
+      { hex: '#93b83e', kind: 'parasol', weight: 34 }, { hex: '#2f6b3a', kind: 'parasol', weight: 20 }, { hex: '#ebe8df', kind: 'parasol', weight: 14 },
+      { hex: '#ebe8df', kind: 'plain', weight: 20 }, { hex: '#3f8a45', kind: 'striped', weight: 8 }, { hex: '#c0392f', kind: 'striped', weight: 4 },
     ],
     goods: { produce: 45, fish: 10, flowers: 12, fabric: 13, general: 15, cheese: 5 },
     vans: ['#e8e8e4', '#e2c22e'],
@@ -176,11 +179,11 @@ export function placeMarket(m: MarketLine): { instances: MarketInstance[]; stall
         };
         prev = pick;
         const f = frameAt(s, FRONT_SETBACK_M);
-        instances.push({ part: 'stall-frame', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: null, stall: id });
-        instances.push({ part: pick.roof.striped ? 'roof-striped' : 'roof-plain', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: pick.roof.hex, stall: id });
+        instances.push({ part: pick.roof.kind === 'parasol' ? 'stall-table' : 'stall-frame', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: null, stall: id });
+        instances.push({ part: ROOF_PART[pick.roof.kind], lng: f.lng, lat: f.lat, yaw: f.yaw, colour: pick.roof.hex, stall: id });
         const goodsTone = pick.goods === 'general' ? ['#8a7a5c', '#2f4a6e', '#8c3a34', '#5a5560', '#3d5b4a'][Math.floor(hash01(`${id}:tone`) * 5)] : null;
         instances.push({ part: goodsPart(pick.goods), lng: f.lng, lat: f.lat, yaw: f.yaw, colour: goodsTone, stall: id });
-        stalls.push({ id, market: m.id, side: side.side, s, goods: pick.goods, roof: pick.roof.striped ? 'striped' : 'plain', colour: pick.roof.hex });
+        stalls.push({ id, market: m.id, side: side.side, s, goods: pick.goods, roof: pick.roof.kind, colour: pick.roof.hex });
       }
     });
   }
@@ -189,7 +192,7 @@ export function placeMarket(m: MarketLine): { instances: MarketInstance[]; stall
 
 /** Footprint corners (lng/lat) of a stall instance, front roof edge included: for clearance checks. */
 export function stallFootprint(i: Pick<MarketInstance, 'lng' | 'lat' | 'yaw'>): LngLat[] {
-  const kx = KX(i.lat), c = Math.cos(i.yaw), s = Math.sin(i.yaw), L = STALL.length / 2;
+  const kx = KX(i.lat), c = Math.cos(i.yaw), s = Math.sin(i.yaw), L = Math.max(STALL.roofLength, STALL.parasolW) / 2;
   const local: [number, number][] = [[-L, STALL.overhang], [L, STALL.overhang], [L, -STALL.depth], [-L, -STALL.depth]];
   return local.map(([x, y]) => [i.lng + (x * c - y * s) / kx, i.lat + (x * s + y * c) / KY]);
 }

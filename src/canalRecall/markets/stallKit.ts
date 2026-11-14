@@ -20,16 +20,24 @@ export const SLOT = '#ff00ff';
 
 export const STALL = {
   length: 4.0,
+  /** The canvas is as long as the frame pitch (frame + placer.ts STALL_GAP_M): neighbouring roofs butt into one tunnel. */
+  roofLength: 4.3,
   depth: 2.2,
   post: 0.05,
   counterH: 0.9,
   counterDepth: 1.0,
   counterT: 0.06,
-  roofFrontZ: 2.35,
-  roofBackZ: 2.1,
+  roofFrontZ: 2.4,
+  roofBackZ: 2.8,
   overhang: 0.5,
-  valance: 0.15,
-  backSheetBottom: 1.0,
+  valance: 0.28,
+  backSheetBottom: 0.9,
+  /** Ten Kate parasol: a rectangular pyramid over the table, its pole at the table's back edge. */
+  parasolW: 4.1,
+  parasolD: 2.8,
+  parasolEdgeZ: 2.35,
+  parasolPeakZ: 2.95,
+  parasolValance: 0.16,
 } as const;
 
 /** Van / food truck at a row end (the 2021 Albert Cuypstraat west-end capture: a coffee trailer and a white van). */
@@ -55,16 +63,25 @@ export const MARKET_TONES = {
   white: '#ece9e1',
 } as const;
 
-/** Produce tones read from the Ten Katemarkt 2024-12-11 capture and the Cuyp 2020 shot (oranges, apples, greens, lemons, aubergines). */
-export const PRODUCE = ['#d8742a', '#b8322a', '#5f8f35', '#e1c43a', '#5a3550', '#8fb04a', '#c9562f', '#e9a33a'] as const;
-export const FABRIC = ['#2c3e66', '#8c2f3a', '#d6cfc2', '#3d6b5a', '#c9a227', '#6a4a7c', '#1f2124', '#b85c38'] as const;
-export const FLOWERS = ['#d6336c', '#f2c12e', '#e8590c', '#ae3ec9', '#f8f0e3', '#c2255c'] as const;
+/**
+ * Produce tones read from the Ten Katemarkt 2024-12-11 capture and the Cuyp 2020 shot (oranges, apples, greens, lemons,
+ * aubergines), toned down after round 1's sheets: in the photos the heaps sit in the canvas shade and read muted.
+ */
+export const PRODUCE = ['#c27a45', '#a24a3e', '#6b8a47', '#c4ad52', '#4e3d4c', '#93a85e', '#b05c40', '#b89a50', '#7d9a52', '#8c3f3a'] as const;
+export const FABRIC = ['#3a4660', '#7a4046', '#c9c2b4', '#4a6458', '#a89058', '#5e5068', '#2e2f33', '#8e6450', '#b0a89a', '#56606a'] as const;
+export const FLOWERS = ['#c4486e', '#d9b444', '#cf6a35', '#9a5aa8', '#ece6d8', '#b0405e'] as const;
+/** A tone scaled toward black (shade < 1) or white (shade > 1): the sunlit and shaded sides of one heap. */
+export function shadeOf(hex: string, k: number): string {
+  const n = parseInt(hex.slice(1), 16), c = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  const out = c.map(v => Math.round(k <= 1 ? v * k : v + (255 - v) * (k - 1)));
+  return `#${out.map(v => Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0')).join('')}`;
+}
 
 export type MarketPartId =
-  | 'stall-frame' | 'roof-plain' | 'roof-striped'
+  | 'stall-frame' | 'stall-table' | 'roof-plain' | 'roof-striped' | 'roof-parasol'
   | 'goods-produce' | 'goods-fabric' | 'goods-fish' | 'goods-general' | 'goods-cheese' | 'goods-flowers'
   | 'van';
-export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'roof-plain', 'roof-striped', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van'];
+export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'stall-table', 'roof-plain', 'roof-striped', 'roof-parasol', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van'];
 export type GoodsKind = 'produce' | 'fabric' | 'fish' | 'general' | 'cheese' | 'flowers';
 export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', 'general', 'cheese', 'flowers'];
 
@@ -73,8 +90,8 @@ export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', '
  * every stall; Albert Cuyp places ~250 stalls). A whole stall (frame + roof + goods) stays under STALL_TRI_CAP.
  */
 export const MARKET_TRI_CAPS: Readonly<Record<MarketPartId, number>> = {
-  'stall-frame': 96, 'roof-plain': 40, 'roof-striped': 120,
-  'goods-produce': 140, 'goods-fabric': 150, 'goods-fish': 120, 'goods-general': 140, 'goods-cheese': 140, 'goods-flowers': 140,
+  'stall-frame': 64, 'stall-table': 64, 'roof-plain': 40, 'roof-striped': 140, 'roof-parasol': 40,
+  'goods-produce': 140, 'goods-fabric': 160, 'goods-fish': 120, 'goods-general': 140, 'goods-cheese': 140, 'goods-flowers': 140,
   van: 160,
 };
 export const STALL_TRI_CAP = 360;
@@ -114,73 +131,105 @@ const S = STALL, L = S.length / 2;
 /** Roof height at y (front posts at y = 0, back at y = -depth), extended over the overhang. */
 export const roofZ = (y: number): number => S.roofFrontZ + (S.roofBackZ - S.roofFrontZ) * (-y / S.depth);
 
-/** Frame: four posts, two roof side rails, the front roof rail, the counter top and its cloth skirt. 74 tris. */
+/** Counter: a board on trestles at the front, the cloth skirt hiding the crates under it (frame and table stalls). */
+function counter(b: Soup): void {
+  const T = MARKET_TONES;
+  b.box(-L + 0.08, -S.counterDepth, S.counterH - S.counterT, L - 0.08, 0.02, S.counterH, T.counter, true, true);
+  b.quad([-L + 0.1, 0.03, 0.05], [L - 0.1, 0.03, 0.05], [L - 0.1, 0.03, S.counterH - S.counterT], [-L + 0.1, 0.03, S.counterH - S.counterT], T.counterCloth);
+}
+
+/** Frame: four posts up to the canvas, the front roof rail, the counter. */
 export function frameModel(): MarketMesh {
   const b = new Soup(), p = S.post / 2, T = MARKET_TONES;
   for (const x of [-L + p, L - p]) for (const y of [-p, -S.depth + p]) b.box(x - p, y - p, -0.2, x + p, y + p, roofZ(y), T.steel, false);
-  // Side rails under the canvas (front to back), and the front rail: the frame line the panoramas read under the roof.
-  for (const x of [-L + p, L - p]) b.box(x - p, -S.depth, roofZ(0) - 0.07, x + p, 0, roofZ(0) - 0.02, T.steel, false, true);
   b.box(-L, -p, roofZ(0) - 0.07, L, p, roofZ(0) - 0.02, T.steel, false, true);
-  // Counter: a board on trestles at the front, the cloth skirt hiding the crates under it.
-  b.box(-L + 0.08, -S.counterDepth, S.counterH - S.counterT, L - 0.08, 0.02, S.counterH, T.counter, true, true);
-  b.quad([-L + 0.1, 0.03, 0.05], [L - 0.1, 0.03, 0.05], [L - 0.1, 0.03, S.counterH - S.counterT], [-L + 0.1, 0.03, S.counterH - S.counterT], T.counterCloth);
+  counter(b);
   return b.done('stall-frame');
 }
 
-/** Canvas roof slab sloping down to the aisle, a valance over the front, the back sheet down to the counter. */
+/** Table stall (under a parasol, Ten Kate): the counter on four trestle legs, crates stacked behind. */
+export function tableModel(): MarketMesh {
+  const b = new Soup(), T = MARKET_TONES;
+  for (const x of [-L + 0.15, L - 0.2]) for (const y of [-0.08, -S.counterDepth + 0.05]) b.box(x, y, -0.2, x + 0.05, y + 0.04, S.counterH - S.counterT, T.steelDark, false);
+  counter(b);
+  b.box(-L + 0.3, -S.depth + 0.3, 0, -L + 1.0, -S.depth + 0.85, 0.75, T.crate);
+  return b.done('stall-table');
+}
+
+/**
+ * Canvas roof (the Cuyp, 2020-01-06 and 2022-03-21 rows): one slab as long as the frame pitch, so neighbours butt into
+ * a continuous covered tunnel, low over the aisle (2.4 m) and rising to 2.8 m at the back; a deep valance on the
+ * street side; the back sheet down to the counter; the back half of each end closed.
+ */
 function roof(stripes: number): MarketMesh {
-  const b = new Soup(), y0 = S.overhang, y1 = -S.depth - 0.05, z0 = roofZ(y0), z1 = roofZ(y1);
-  const n = Math.max(1, stripes), w = S.length / n;
+  const b = new Soup(), y0 = S.overhang, y1 = -S.depth - 0.05, z0 = roofZ(y0), z1 = roofZ(y1), R = S.roofLength / 2;
+  const n = Math.max(1, stripes), w = S.roofLength / n;
   for (let i = 0; i < n; i++) {
     // Stripes run front-to-back (the Cuyp red-and-white awnings); odd stripes white.
-    const hex = n > 1 && i % 2 === 1 ? MARKET_TONES.white : SLOT, xa = -L + i * w, xb = xa + w;
+    const hex = n > 1 && i % 2 === 1 ? MARKET_TONES.white : SLOT, xa = -R + i * w, xb = xa + w;
     b.quad2([xa, y1, z1], [xb, y1, z1], [xb, y0, z0], [xa, y0, z0], hex);
     b.quad2([xa, y0, z0], [xb, y0, z0], [xb, y0, z0 - S.valance], [xa, y0, z0 - S.valance], hex);
   }
-  b.quad2([-L, -S.depth, S.backSheetBottom], [L, -S.depth, S.backSheetBottom], [L, -S.depth, z1], [-L, -S.depth, z1], SLOT);
-  // End sheets: the back half of each end closed down to the counter.
+  b.quad2([-R, -S.depth, S.backSheetBottom], [R, -S.depth, S.backSheetBottom], [R, -S.depth, z1], [-R, -S.depth, z1], SLOT);
   for (const x of [-L, L]) b.quad2([x, -S.depth, S.backSheetBottom], [x, -S.counterDepth, S.backSheetBottom], [x, -S.counterDepth, roofZ(-S.counterDepth)], [x, -S.depth, z1], SLOT);
   return b.done(n > 1 ? 'roof-striped' : 'roof-plain');
 }
 export const roofPlainModel = (): MarketMesh => roof(1);
-/** Eight stripes across the 4 m roof (0.5 m each), as on the Cuyp's red-and-white and green-and-white awnings. */
+/** Eight stripes across the roof, as on the Cuyp's red-and-white and green-and-white awnings. */
 export const STRIPES = 8;
 export const roofStripedModel = (): MarketMesh => roof(STRIPES);
+
+/**
+ * Parasol (the Ten Katemarkt's lime- and dark-green market umbrellas, 2024-12-11): a square-cornered pyramid over the
+ * table and the trader's space, centred over the back of the counter, a short valance all round, the pole.
+ */
+export function parasolModel(): MarketMesh {
+  // The canopy's front edge reaches the roof overhang line; the pole (and the peak) stands just behind the counter.
+  const b = new Soup(), T = MARKET_TONES, hw = S.parasolW / 2, hd = S.parasolD / 2, cy = S.overhang - hd, py = -S.counterDepth - 0.1, ze = S.parasolEdgeZ, zp = S.parasolPeakZ;
+  const c: V[] = [[-hw, cy - hd, ze], [hw, cy - hd, ze], [hw, cy + hd, ze], [-hw, cy + hd, ze]], peak: V = [0, py, zp];
+  for (let i = 0; i < 4; i++) {
+    const p0 = c[i], p1 = c[(i + 1) % 4];
+    b.tri(p0, p1, peak, SLOT); b.tri(p0, peak, p1, SLOT);
+    b.quad2(p0, p1, [p1[0], p1[1], ze - S.parasolValance], [p0[0], p0[1], ze - S.parasolValance], SLOT);
+  }
+  b.box(-0.025, py - 0.025, 0, 0.025, py + 0.025, zp, T.steel, false);
+  return b.done('roof-parasol');
+}
 
 /** Goods sit on the counter top (z = counterH) between x ±(L - 0.15), y in [-counterDepth + 0.05, -0.05]. */
 const top = S.counterH, gx0 = -L + 0.2, gx1 = L - 0.2, gy0 = -S.counterDepth + 0.08, gy1 = -0.06;
 
-/** Produce: two rows of tilted crates heaped in fruit and veg tones, plus a stacked crate tower at one end. */
+/**
+ * Produce: three rows of crates stepped up toward the trader (the sloped display), each heaped in one fruit or
+ * vegetable with a sunlit front slope and a shaded back slope (two shades per crate), crates stacked behind.
+ */
 export function produceModel(): MarketMesh {
-  const b = new Soup(), cols = 5, w = (gx1 - gx0) / cols, T = MARKET_TONES;
-  for (let r = 0; r < 2; r++) for (let i = 0; i < cols; i++) {
-    const xa = gx0 + i * w + 0.03, xb = xa + w - 0.06, ya = r === 0 ? gy0 : (gy0 + gy1) / 2 + 0.02, yb = r === 0 ? (gy0 + gy1) / 2 - 0.02 : gy1;
-    const zf = top + 0.08, zb = top + (r === 0 ? 0.3 : 0.18); // back row higher: the heap leans to the aisle
-    const fruit = PRODUCE[(r * 3 + i * 5) % PRODUCE.length];
-    // Crate rim (four sides) and the heaped top as one sloped quad.
-    b.quad([xa, yb, top], [xb, yb, top], [xb, yb, zf], [xa, yb, zf], T.crate);
-    b.quad([xb, ya, top], [xb, yb, top], [xb, yb, zf], [xb, ya, zb], T.crate);
-    b.quad([xa, yb, top], [xa, ya, top], [xa, ya, zb], [xa, yb, zf], T.crate);
-    b.quad([xa, ya, zb + 0.04], [xb, ya, zb + 0.04], [xb, yb, zf + 0.04], [xa, yb, zf + 0.04], fruit);
+  const b = new Soup(), cols = 6, rows = 3, w = (gx1 - gx0) / cols, dRow = (gy1 - gy0) / rows, T = MARKET_TONES;
+  for (let r = 0; r < rows; r++) for (let i = 0; i < cols; i++) {
+    const xa = gx0 + i * w + 0.02, xb = xa + w - 0.04, yb = gy1 - r * dRow, ya = yb - dRow + 0.03, zc = top + r * 0.13;
+    const fruit = PRODUCE[(r * 7 + i * 3 + (i >> 1)) % PRODUCE.length], ym = (ya + yb) / 2, zm = zc + 0.17;
+    b.quad([xa, yb, zc - 0.02], [xb, yb, zc - 0.02], [xb, yb, zc + 0.09], [xa, yb, zc + 0.09], T.crate); // crate front
+    b.quad([xa, yb, zc + 0.09], [xb, yb, zc + 0.09], [xb, ym, zm], [xa, ym, zm], shadeOf(fruit, 1.12)); // heap, aisle side
+    b.quad([xa, ym, zm], [xb, ym, zm], [xb, ya, zc + 0.1], [xa, ya, zc + 0.1], shadeOf(fruit, 0.78)); // heap, back
   }
-  // Empty crates stacked behind the counter (every produce stall has them).
   b.box(-L + 0.3, -S.depth + 0.15, 0, -L + 0.9, -S.depth + 0.6, 0.85, T.crateGreen);
   b.box(L - 0.9, -S.depth + 0.15, 0, L - 0.3, -S.depth + 0.6, 0.55, T.crate);
   return b.done('goods-produce');
 }
 
-/** Fabric: a clothes rail across the stall with hanging garments in mixed tones, folded stacks on the counter. */
+/** Textiles: two rails of hanging garments (one over the counter's back, one behind), folded stacks on the counter. */
 export function fabricModel(): MarketMesh {
-  const b = new Soup(), T = MARKET_TONES, y = -S.counterDepth - 0.35, n = 8, w = (S.length - 0.6) / n;
-  b.box(-L + 0.25, y - 0.02, 1.85, L - 0.25, y + 0.02, 1.89, T.rack, true, true);
-  for (const x of [-L + 0.3, L - 0.3]) b.box(x - 0.02, y - 0.02, 0, x + 0.02, y + 0.02, 1.85, T.rack, false);
-  for (let i = 0; i < n; i++) {
-    const xa = -L + 0.3 + i * w + 0.02, xb = xa + w - 0.04, hex = FABRIC[(i * 3) % FABRIC.length], z0 = 0.95 + (i % 3) * 0.12;
-    b.box(xa, y - 0.18, z0, xb, y + 0.18, 1.82, hex, false, true);
+  const b = new Soup(), T = MARKET_TONES, n = 6, w = (S.length - 0.6) / n;
+  for (const [k, y, zTop] of [[0, -S.counterDepth - 0.3, 2.05], [1, -S.depth + 0.35, 2.2]] as const) {
+    b.box(-L + 0.25, y - 0.02, zTop, L - 0.25, y + 0.02, zTop + 0.04, T.rack, true, true);
+    for (let i = 0; i < n; i++) {
+      const xa = -L + 0.3 + i * w + 0.015, xb = xa + w - 0.03, hex = FABRIC[(i * 3 + k * 5) % FABRIC.length], z0 = (k ? 1.1 : 1.0) + ((i + k) % 3) * 0.14;
+      b.box(xa, y - 0.17, z0, xb, y + 0.17, zTop - 0.03, hex, false, false);
+    }
   }
-  for (let i = 0; i < 4; i++) {
-    const xa = gx0 + i * (gx1 - gx0) / 4 + 0.05, xb = xa + (gx1 - gx0) / 4 - 0.1;
-    b.box(xa, gy0 + 0.1, top, xb, gy1 - 0.1, top + 0.12 + (i % 2) * 0.08, FABRIC[(i * 5 + 1) % FABRIC.length]);
+  for (let i = 0; i < 3; i++) {
+    const xa = gx0 + i * (gx1 - gx0) / 3 + 0.05, xb = xa + (gx1 - gx0) / 3 - 0.1;
+    b.box(xa, gy0 + 0.1, top, xb, gy1 - 0.1, top + 0.14 + (i % 2) * 0.08, FABRIC[(i * 5 + 2) % FABRIC.length], true, false);
   }
   return b.done('goods-fabric');
 }
@@ -258,7 +307,7 @@ export function vanModel(): MarketMesh {
 }
 
 export const MARKET_MODELS: Readonly<Record<MarketPartId, () => MarketMesh>> = {
-  'stall-frame': frameModel, 'roof-plain': roofPlainModel, 'roof-striped': roofStripedModel,
+  'stall-frame': frameModel, 'stall-table': tableModel, 'roof-plain': roofPlainModel, 'roof-striped': roofStripedModel, 'roof-parasol': parasolModel,
   'goods-produce': produceModel, 'goods-fabric': fabricModel, 'goods-fish': fishModel, 'goods-general': generalModel,
   'goods-cheese': cheeseModel, 'goods-flowers': flowersModel, van: vanModel,
 };

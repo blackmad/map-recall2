@@ -23,20 +23,26 @@ test('every kit part stays under its triangle cap; a whole stall under STALL_TRI
     assert.ok([...m.positions].every(Number.isFinite), id);
   }
   const worstGoods = Math.max(...GOODS_KINDS.map(k => MARKET_MODELS[goodsPart(k)]().triangles));
-  const stall = MARKET_MODELS['stall-frame']().triangles + MARKET_MODELS['roof-striped']().triangles + worstGoods;
+  const stall = Math.max(MARKET_MODELS['stall-frame']().triangles, MARKET_MODELS['stall-table']().triangles)
+    + Math.max(MARKET_MODELS['roof-striped']().triangles, MARKET_MODELS['roof-parasol']().triangles) + worstGoods;
   assert.ok(stall <= STALL_TRI_CAP, `stall ${stall} > ${STALL_TRI_CAP}`);
 });
 
-test('stall parts keep inside the frame footprint: nothing past the roof overhang toward the aisle, nothing past the ends', () => {
+test('stall parts keep inside the frame footprint: nothing past the roof overhang toward the aisle, canvas only past the ends', () => {
   for (const id of MARKET_PART_IDS.filter(i => i !== 'van')) {
     const p = MARKET_MODELS[id]().positions;
+    // Canvas roofs span the whole frame pitch so neighbours butt into one tunnel; parasols overhang the table ends.
+    const half = id === 'roof-plain' || id === 'roof-striped' ? STALL.roofLength / 2 : id === 'roof-parasol' ? STALL.parasolW / 2 : STALL.length / 2;
     for (let i = 0; i < p.length; i += 3) {
-      assert.ok(Math.abs(p[i]) <= STALL.length / 2 + 1e-6, `${id} x ${p[i]}`);
+      assert.ok(Math.abs(p[i]) <= half + 1e-6, `${id} x ${p[i]}`);
       assert.ok(p[i + 1] <= STALL.overhang + 1e-6 && p[i + 1] >= -STALL.depth - 0.1 - 1e-6, `${id} y ${p[i + 1]}`);
     }
   }
-  // Headroom under the roof's lowest edge (the valance) for shoppers.
+  // Headroom under the roof's lowest edge (the valance) and under the parasol's for shoppers.
   assert.ok(roofZ(STALL.overhang) - STALL.valance >= 1.95);
+  assert.ok(STALL.parasolEdgeZ - STALL.parasolValance >= 1.95);
+  // The canvas is exactly one frame pitch long: adjacent roofs butt, they neither gap nor z-fight.
+  assert.ok(Math.abs(STALL.roofLength - (STALL.length + STALL_GAP_M)) < 1e-9);
 });
 
 test('the canvas and the van paint take the instance colour (SLOT); striped roofs alternate with white', () => {
@@ -46,6 +52,9 @@ test('the canvas and the van paint take the instance colour (SLOT); striped roof
   assert.ok(striped > 0.45 && striped < 0.7, `striped slot share ${striped}`);
   assert.ok(slotShare('van') > 0.3);
   assert.equal(slotShare('stall-frame'), 0);
+  assert.equal(slotShare('stall-table'), 0);
+  const parasol = slotShare('roof-parasol');
+  assert.ok(parasol > 0.7 && parasol < 1, `parasol slot share ${parasol}`);
 });
 
 test('stallSlots: frames STALL_GAP_M apart, a passage after every PASSAGE_EVERY, all inside the run', () => {
@@ -117,7 +126,20 @@ test('flag: off by default, ?markets=1 on, ?markets=0 always off', () => {
 const DATA = 'scripts/data/markets/market-lines.json';
 const file = JSON.parse(fs.readFileSync(DATA, 'utf8')) as MarketLinesFile;
 const placed = placeAll(file);
-const frames = (market: string) => placed.instances.filter(i => i.part === 'stall-frame' && i.stall.startsWith(`${market}/`));
+const frames = (market: string) => placed.instances.filter(i => (i.part === 'stall-frame' || i.part === 'stall-table') && i.stall.startsWith(`${market}/`));
+
+test('canopies: the Cuyp is a canvas tunnel (no parasols), Ten Kate mostly green parasols over tables', () => {
+  const of = (market: string) => placed.stalls.filter(s => s.market === market && s.goods !== 'van');
+  assert.equal(of('albert-cuyp').filter(s => s.roof === 'parasol').length, 0);
+  const kate = of('ten-kate'), parasols = kate.filter(s => s.roof === 'parasol');
+  assert.ok(parasols.length / kate.length >= 0.55, `ten kate parasol share ${parasols.length}/${kate.length}`);
+  assert.ok(parasols.filter(s => s.colour !== '#ebe8df').length / parasols.length >= 0.6, 'ten kate parasols mostly green');
+  // Every parasol stands on a table, every canvas on a frame.
+  for (const s of kate) {
+    const parts = placed.instances.filter(i => i.stall === s.id).map(i => i.part);
+    assert.ok(parts.includes(s.roof === 'parasol' ? 'stall-table' : 'stall-frame'), s.id);
+  }
+});
 
 test('measured lines: stall counts in the register\'s range (Cuyp ~260 standplaatsen; Ten Kate a pedestrian block)', () => {
   assert.deepEqual(file.markets.map(m => m.id), ['albert-cuyp', 'ten-kate']);

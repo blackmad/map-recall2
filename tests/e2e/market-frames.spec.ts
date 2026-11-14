@@ -65,6 +65,7 @@ for (const variant of ['today', 'markets'] as const) {
       const dir = join(OUT, p.key); mkdirSync(dir, { recursive: true });
       writeFileSync(join(dir, `${variant}.png`), await page.screenshot({ type: 'png' }));
       const debug = await debugOf(page);
+      const cam = await page.evaluate(() => { const c = (window as any).canalRecallGame?.camera ?? {}; return { viewMode: c.viewMode, zoom: c.zoom, pitch: c.pitch, northUp: c.northUp }; });
       const t = await page.evaluate(async () => { const ts: number[] = []; let last = performance.now(); for (let i = 0; i < 60; i++) { await new Promise(r => requestAnimationFrame(r)); const n = performance.now(); ts.push(n - last); last = n; } ts.sort((a, b) => a - b); return { p50: ts[30], p95: ts[57] }; });
       writeFileSync(join(dir, `${variant}.json`), JSON.stringify({ ...p, variant, camera: 'first person', vfovDeg: 72, dpr: 2, engine: 'own', world: 'default world-v1', debug, frameMs: t, settle }, null, 1));
       console.log(JSON.stringify({ key: p.key, variant, debug, frameMs: t }));
@@ -77,8 +78,9 @@ for (const variant of ['today', 'markets'] as const) {
     const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
     const page = await ctx.newPage();
     await serveData(page);
-    await openRoute(page, { travelMode: 'car', query: `?engine=own&markets=${variant === 'markets' ? 1 : 0}`, abortHeavyTiles: true, controlMode: 'relative' });
-    await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
+    // The game's own chase camera (round 1 left the view select on its default, a near-aerial frame).
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: `?engine=own&markets=${variant === 'markets' ? 1 : 0}`, abortHeavyTiles: true, controlMode: 'relative' });
+    await page.evaluate(() => { const g = (window as any).canalRecallGame; g.player.handleInput = () => {}; g.viewMode = 'chase'; if (g.camera) { g.camera.viewMode = 'chase'; g.camera.northUp = false; } });
     await page.addStyleTag({ content: hud });
     for (const r of MARKET_RIDES) {
       if (only && !only.includes(r.key)) continue;
@@ -89,8 +91,9 @@ for (const variant of ['today', 'markets'] as const) {
       const dir = join(OUT, r.key); mkdirSync(dir, { recursive: true });
       writeFileSync(join(dir, `${variant}.png`), await page.screenshot({ type: 'png' }));
       const debug = await debugOf(page);
+      const cam = await page.evaluate(() => { const c = (window as any).canalRecallGame?.camera ?? {}; return { viewMode: c.viewMode, zoom: c.zoom, pitch: c.pitch, northUp: c.northUp }; });
       const t = await page.evaluate(async () => { const ts: number[] = []; let last = performance.now(); for (let i = 0; i < 120; i++) { await new Promise(r => requestAnimationFrame(r)); const n = performance.now(); ts.push(n - last); last = n; } ts.sort((a, b) => a - b); return { p50: ts[60], p95: ts[114] }; });
-      writeFileSync(join(dir, `${variant}.json`), JSON.stringify({ ...r, variant, camera: 'chase (default)', dpr: 2, engine: 'own', world: 'default world-v1', debug, frameMs: t, settle }, null, 1));
+      writeFileSync(join(dir, `${variant}.json`), JSON.stringify({ ...r, variant, camera: 'chase (default)', cam, dpr: 2, engine: 'own', world: 'default world-v1', debug, frameMs: t, settle }, null, 1));
       console.log(JSON.stringify({ key: r.key, variant, debug, frameMs: t }));
     }
     await ctx.close();
