@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## D1 house tranches retired; rows first (2026-11-14)
+
+David rejected the D1 ring and belt results ("might as well be random", "where did the pointy roof come from here?", "why aren't we doing these along with neighbors?"). The Fable review (`docs/handoffs/house-rows-plan-20261114.md`) traced Kinkerstraat 86–110 and Weteringschans 168096–171218:
+- **The readings were mostly right; staging threw them away.** `stage.ts` kept only storeys, bays, flat heads and a cornice crown. Dormers were held, mansards were dropped (benchmark precision 0.33), `sameAs` never reached the spec, and the no-brick variant had no colour.
+- **Everything unstaged was filled per building by hashes:** roof kind and gable (`roofMesh.ts planRoof`), the cornice lid from the pand's own 3DBAG height, the bay preset, the wall colour and the extras dice. Three identical staged designs drew one red and two tan, with tops at 14.5–16.9 m.
+- **Kinkerstraat 106–108** (0363100012236027, two numbers) was read as one front.
+- **The row had already been described in October** (`scripts/block-face/faces/kinker-86-110/intent.json`: one type, cornice measured at 14.2 m). 310 face intents cover 1,402 pands. D1 never used them, and the row-front path (`houseLine/rowFront.ts`) was not used either.
+- **The plan's own faults:** the building as the unit, row descriptions parked, "draw, never average", and single-read precision as the staging gate.
+
+The new plan makes the row the unit. Unstated fields take the series value or a plain period default, never dice. David approves the first row of each kind. The 293 batch-1 fronts come off in the round that ships the first redone rows, and the belt pause lifts on these terms.
+
 ## Coarse shells per world cell (2026-11-14)
 
 Feedback 748b1a8f (bare blocks while panning). Reproduced on production only with a drag (`scripts/pan-fill.mjs`; a single jump filled in 0.2–2.2 s; the note's pan was 1.29 km, not 3.9). Network was not it (all CDN hits, ~20 ms). In storybook (no baked tier) the runtime coarse shell was one chunk per z14 tile; each world-cell top-up changed the tile's list, so the whole tile rebuilt (0.4–2.1 s) and the next top-up made it stale before it landed. `coarseSplit.ts` keys coarse shells `coarse:x/y~i_j` (tile ∩ world cell) so a top-up builds only the new cell (`?coarseSplit`, desktop on, touch off). Local A/B at production latency: bottom-of-screen bare-seconds during the drag 1.7–3.2 → 0.6–1.0, settle after the drag 1.6–5.8 s → 0.9–1.1 s; 0 stale builds; parked triangles 243k → 224k. Next levers: world-cell reads pinned to one worker queue behind coarse builds; own-ground workers saturated for the whole drag; `?asset=` models could be immutable.
