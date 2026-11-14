@@ -73,6 +73,13 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
     else if (h.dressing === 'jack-blocks' || h.dressing === 'dentil-lintel' || h.dressing === 'stone-lintel') put(P + 'windowSurround', h.dressing, d.heads);
     if (d.sills.value && h.dressing === 'none') put(P + 'windowSurround', 'sill', d.sills);
     // Per-house ground the read states and the face does not (a souterrain with a stoop, Weteringschans).
+    // Per-house ground the read states (no face spec): the door's opening index, the ground kind.
+    if (!base && f.ground.doorIndex !== undefined) put(P + 'doorBay', f.ground.doorIndex, { value: f.ground.doorIndex, source: 'single-read', ref: `${f.pandId} reading: doorIndex ${f.ground.doorIndex} (door ${f.ground.doorSide ?? '?'})` });
+    if (!base && i === 0 && f.ground.use !== 'other') {
+      const g: RowField<unknown> = { value: f.ground.use, source: 'single-read', ref: `${f.pandId} reading: ground ${f.ground.use}` };
+      put('facts/pui', f.ground.use === 'dwelling' || f.ground.use === 'door-only' ? 'residential' : f.ground.use === 'warehouse' ? 'warehouse' : 'shop', g);
+      put('facts/groundKind', f.ground.use === 'dwelling' ? 'dwelling' : f.ground.use === 'door-only' ? 'door-only' : f.ground.use === 'warehouse' ? 'warehouse' : 'shop', g);
+    }
     const bm = f.ground.basement;
     if (!base && bm && bm !== 'none') {
       const g: RowField<unknown> = { value: bm, source: 'single-read', ref: `${f.pandId} reading: basement ${bm}` };

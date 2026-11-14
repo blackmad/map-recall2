@@ -49,7 +49,8 @@ test('Kinkerstraat 92–94 (236213) wears its two series: keystones on the left 
   const s = rec(K, '0363100012236213').series!;
   const hs = [...s.heads!].sort((p, q) => p.a0 - q.a0);
   assert.deepEqual(hs.map(h => [h.a0, h.a1, h.dressing]), [[0, 0.5, 'keystone'], [0.5, 1, 'segmental-tympanum']]);
-  assert.deepEqual(hs[1].storeys, [1, 2]);
+  // every upper storey (reviewed 2026-11-14 on the r3 sheet: the face and D1 said storeys 1-2)
+  assert.equal(hs[1].storeys, undefined);
 });
 
 test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dormers', () => {

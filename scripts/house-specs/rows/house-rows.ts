@@ -75,7 +75,10 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     };
   });
   const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';
-  return { input: { id: def.id, street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
+  const reviewedFile = path.join(REPO, 'scripts/house-specs/rows/reviewed.json');
+  const reviewed = (readJson(reviewedFile) as Record<string, RowInput['reviewed']> | null)?.[def.id];
+  if (reviewed?.length) inputs.push(rel(reviewedFile));
+  return { input: { id: def.id, ...(reviewed?.length ? { reviewed } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
 }
 
 export function stageRow(def: RowDef, outDir: string, write: boolean): { row: RowRecord; specs: Record<string, HouseSpec>; problems: string[]; report: string } {
