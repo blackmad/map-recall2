@@ -18,6 +18,7 @@ import { R2_GROUND_PROBES, R2_GROUND_SPOTS, R2_ROAD_PROBES, R2_ZFIGHT_M2 } from 
 import { OPEN_GROUND_LAYER } from '../../src/canalRecall/ownGround/groundSurface.ts';
 import { layersAt } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { bridgeFeedbackRegressions } from './bridge-feedback-pins.ts';
+import { pointInRing } from '../../src/canalRecall/ownGround/decks.ts';
 
 const HELP = `check-ground-spots — G1 pins on the G0 named ground places (issue #376)
 
@@ -48,6 +49,9 @@ export const SPOT_SHARD_M2: Record<string, number> = {
 /** Kranenbergpad's ground under the ring and rail decks (G0: float 2,041, poke > 5 cm 93 at the best tile). */
 const KRANENBERG = { floatM2: 400, pokeSevereM2: 900 };
 const SLACK = 1.05;
+/** The Bilderdijkgracht end quay at De Clercqstraat (feedback 7be6c55a): the spot, the quay line's ends (m from the
+ *  spot, east and north), a point under the bridge west of its pillar, and the wall the quay keeps outside the opening. */
+const QUAY_CORNER = { lng: 4.8683, lat: 52.3706, end: [[-17.1, -5.0], [4.8, 3.1]], underBridge: [-5.5, -3.5], minWallM: 11, maxWallM: 14 } as const;
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -117,6 +121,22 @@ async function main(): Promise<void> {
   const fronts = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/own-ground/audit-building-fronts.ts', '--named', '--check', '--out', 'artifacts/ground-audit/fronts-named.json'], { encoding: 'utf8' });
   for (const line of (fronts.stdout ?? '').split('\n').filter(l => /^\s+(ok|FAIL) /.test(l))) console.log(line.trim().replace(/^(ok|FAIL)\s+/, (_, w) => `${w === 'ok' ? 'ok  ' : 'FAIL'} front `));
   check(fronts.status === 0, `named building fronts not buried by the street (audit-building-fronts --named)${fronts.status ? `: ${(fronts.stderr ?? '').slice(-400)}` : ''}`);
+  // Lane quay-corner (feedback 7be6c55a, 2026-11-14): the Bilderdijkgracht's end quay at the De Clercqstraat bridge is
+  // one 23 m shore segment; the bridge way's opening (wayDecks.ts WAY_OPENING_REACH_M) dropped it whole because its
+  // midpoint fell inside, so no wall or coping stood there and the land's cut showed the sky through. Split at the
+  // opening's edges (water.ts splitAtRings), the quay keeps ~12 m of wall either side of the ~10 m opening.
+  {
+    const [sx, sy] = toLocal(QUAY_CORNER.lng, QUAY_CORNER.lat), key = store.cellAt(sx, sy), geo = await store.waterCell(key);
+    const a: [number, number] = [sx + QUAY_CORNER.end[0][0], sy + QUAY_CORNER.end[0][1]], b: [number, number] = [sx + QUAY_CORNER.end[1][0], sy + QUAY_CORNER.end[1][1]];
+    const dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy;
+    const off = (x: number, y: number) => { const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / l2)); return Math.hypot(a[0] + dx * t - x, a[1] + dy * t - y); };
+    let wall = 0;
+    for (const line of geo?.shores ?? []) for (let i = 1; i < line.length; i++) if (off((line[i][0] + line[i - 1][0]) / 2, (line[i][1] + line[i - 1][1]) / 2) < 0.3) wall += Math.hypot(line[i][0] - line[i - 1][0], line[i][1] - line[i - 1][1]);
+    const wet = (geo?.polygons ?? []).some(p => pointInRing(p[0], sx + QUAY_CORNER.underBridge[0], sy + QUAY_CORNER.underBridge[1]));
+    check(wall >= QUAY_CORNER.minWallM && wall <= QUAY_CORNER.maxWallM, `bilderdijkgracht-declercq-quay: ${wall.toFixed(1)} m of end-quay wall in [${QUAY_CORNER.minWallM}, ${QUAY_CORNER.maxWallM}] (G0 0: dropped whole under the bridge opening)`);
+    check(wet, 'bilderdijkgracht-declercq-quay: water still opened under the De Clercqstraat bridge');
+    store.forgetCells(new Set(GroundStore.neighbours(key)));
+  }
   // Bridge feedback pins (2026-11-13: Muntplein rails, Rijckerbrug/Machineslootbrug slabs, Lelylaan), here so they gate check:canal.
   await bridgeFeedbackRegressions(read, check);
   console.log(failed ? `${failed} ground spot pin(s) failed` : 'ground spot pins passed');
