@@ -22,10 +22,15 @@
  *     design family, rides past one example; thumbnails from artifacts/coverage/out/look.json, made beforehand by
  *     scripts/coverage/build-look-thumbs.ts (browser; run it first when the kit changed).
  *
+ *   - described (src/canalRecall/coverage/described.ts): generic-tier pands with a published HouseSpec whose runtime view `v`
+ *     (public/data/extracts/amsterdam/house-specs/14/<x>/<y>.json.gz) states storeys, bays, crown, wall colour or ground;
+ *     `--staged <dir>[,<dir>]` adds staged specs (bare HouseSpec or house:stage records, *.json) as a separate "staged, not
+ *     live" count for a publish preview. Properties.described is omitted when there are no specs at all.
+ *
  * Writes staging artifacts/coverage/out/buurten.json(.gz) and contents.json(.gz); `--publish` also writes them and the
  * look/ thumbnails to public/data/extracts/amsterdam/coverage-v1/.
  *
- *   node --import tsx scripts/coverage/build-coverage.ts [--publish] [--refresh]
+ *   node --import tsx scripts/coverage/build-coverage.ts [--publish] [--refresh] [--staged <dir>[,<dir>]]
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -37,6 +42,9 @@ import { addFeatures, emptyIndex, resolveSuppressed } from '../../src/canalRecal
 import { fullPandId } from '../../src/canalRecall/bagTiles';
 import { KITS, kitIds } from '../../src/canalRecall/landmarkKits';
 import { lookBin, lookPublishPlan, noLook } from '../../src/canalRecall/coverage/ownLook';
+import { DESCRIBED_FIELDS, describeBuurt, sumDescribed, type BuurtDescribed, type ViewLike } from '../../src/canalRecall/coverage/described';
+import { specView } from '../../src/canalRecall/houseSpec/view';
+import { validateSpec } from '../../src/canalRecall/houseSpec/spec';
 import {
   TIERS, TIER_IDS, aggregate, emptyContent, hasContent, CONTENT_KINDS, bboxOf, buurtLocator, claim, polygonsOf, rankForGenerators, simplifyRing,
   type Buurt, type BuurtMeta, type PandRecord, type Ring, type TierId,
@@ -246,6 +254,34 @@ for (const p of pands.values()) {
 const rows = aggregate(meta, byBuurt, tierOf, { survey, types, faces });
 const unitBuurt = new Map<string, string>();
 for (const [code, list] of byBuurt) for (const p of list) unitBuurt.set(p.id, code);
+// --- described (HouseSpec) ------------------------------------------------------------
+const SPECS = path.join(ROOT, 'public/data/extracts/amsterdam/house-specs/14');
+const liveViews = new Map<string, ViewLike>();
+if (fs.existsSync(SPECS)) {
+  for (const x of fs.readdirSync(SPECS).filter(n => /^\d+$/.test(n))) {
+    for (const f of fs.readdirSync(path.join(SPECS, x)).filter(n => n.endsWith('.json.gz'))) {
+      const tile = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(SPECS, x, f))).toString('utf8')) as { buildings: Record<string, { v?: ViewLike }> };
+      for (const [id, b] of Object.entries(tile.buildings)) if (b.v) liveViews.set(id, b.v);
+    }
+  }
+}
+const stagedArg = process.argv.indexOf('--staged');
+const stagedDirs = stagedArg >= 0 ? (process.argv[stagedArg + 1] ?? '').split(',').filter(Boolean) : [];
+const stagedViews = new Map<string, ViewLike>();
+const stagedBad: string[] = [];
+for (const dir of stagedDirs) {
+  for (const f of fs.readdirSync(dir).filter(n => /^\d{16}\.json$/.test(n))) {
+    try {
+      const raw = readJson(path.join(dir, f));
+      const view = specView(validateSpec(raw.spec ?? raw)) as ViewLike;
+      stagedViews.set(`NL.IMBAG.Pand.${f.slice(0, 16)}`, view);
+    } catch (e) { stagedBad.push(`${f}: ${(e as Error).message.split('\n')[0]}`); }
+  }
+}
+const hasSpecs = liveViews.size > 0 || stagedViews.size > 0;
+const described = new Map<string, BuurtDescribed>();
+if (hasSpecs) for (const [code, list] of byBuurt) described.set(code, describeBuurt({ pands: list.map(p => p.id), tierOf, live: liveViews, ...(stagedDirs.length ? { staged: stagedViews } : {}) }));
+
 const contents = buildContents({ ROOT, pands, unitBuurt, modelUnits, kitUnits, instances, survey });
 const lookSources = readOwnLookSources(ROOT);
 const looks = buildOwnLook({ sources: lookSources, rows, tierOf, unitBuurt, pands, instances, content: contents.byBuurt });
@@ -257,7 +293,7 @@ const geometryOf = new Map(buurten.map(b => [b.code, b.polygons]));
 const TOL = 0.00004; // ~3–4 m
 const features = rows.map(r => {
   const polys = geometryOf.get(r.code)!.map(poly => poly.map(ring => simplifyRing(ring as Ring, TOL)));
-  return { type: 'Feature', properties: { ...r, content: contents.byBuurt.get(r.code) ?? emptyContent(), look: looks.get(r.code) ?? noLook() }, geometry: polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] } : { type: 'MultiPolygon', coordinates: polys } };
+  return { type: 'Feature', properties: { ...r, content: contents.byBuurt.get(r.code) ?? emptyContent(), look: looks.get(r.code) ?? noLook(), ...(hasSpecs ? { described: described.get(r.code) ?? describeBuurt({ pands: [], tierOf, live: liveViews, ...(stagedDirs.length ? { staged: stagedViews } : {}) }) } : {}) }, geometry: polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] } : { type: 'MultiPolygon', coordinates: polys } };
 });
 const totals = Object.fromEntries(TIER_IDS.map(t => [t, 0])) as Record<TierId, number>;
 for (const r of rows) for (const t of TIER_IDS) totals[t] += r.tiers[t];
@@ -275,6 +311,7 @@ const file = {
     look: 'chunks.json + scripts/block-face/faces/<face>/intent.json houses[].type, building-types/instances.json; thumbnails artifacts/coverage/out/look.json (scripts/coverage/build-look-thumbs.ts)',
   },
   lookMethod: 'own look = pands the game draws from kit made for that district: block-face chunks (house types or measured one-off houses) plus building-type design instances, counted under the tier precedence; status drawn (> 0 pands), authored (type libraries, faces or designs reach the buurt but draw nothing), none',
+  ...(hasSpecs ? { describedMethod: 'described = a generic-tier pand (no model, chunk, type or kit) whose published HouseSpec view states at least one field the generic route draws: storeys (>= 2), bays, crown (gable or cornice), wall colour, ground storey (height, shop or stoop); staged = the same for staged specs not yet published (separate count, never added to live)' } : {}),
   method: 'pand → buurt by footprint centroid; a pand two tiers claim counts under the earlier tier; repetition = share of non-minor pands (≥3.5 m, ≥20 m²) in the top 3 width(1 m)×height(3 m)×year(5 y) clusters; priority = repetition × (1 − modelled share)',
   tiers: TIERS,
   gameDefaults: 'default game since 2026-10-16: block-face street chunks, building-type instances and the BGT road surface are on; per-house recipe GLBs are retired (?streetChunks=0 brings them back)',
@@ -325,6 +362,14 @@ const lookRows = features.map(f => f.properties.look);
 const lookBytes = [...new Set(look.files)].reduce((a, f) => a + fs.statSync(path.join(STAGING, 'look', f)).size, 0);
 console.log(`own look: ${lookRows.filter(l => l.status === 'drawn').length} buurten drawn (${lookRows.reduce((a, l) => a + l.pands, 0)} pands), ${lookRows.filter(l => l.status === 'authored').length} authored only; bins ${[0, 1, 2, 3, 4, 5, 6].map(b => lookRows.filter(l => lookBin(l) === b).length).join('/')}`);
 console.log(`own-look thumbnails: ${new Set(look.files).size} files, ${(lookBytes / 1024).toFixed(0)} KB; missing ${look.missing.length}${look.missing.length ? ` (${look.missing.slice(0, 6).join(', ')}${look.missing.length > 6 ? ', …' : ''})` : ''}`);
+if (hasSpecs) {
+  const d = sumDescribed(features.map(f => (f.properties as { described?: BuurtDescribed }).described));
+  const fieldsOf = (t: typeof d.live) => DESCRIBED_FIELDS.map(f => `${f} ${t.fields[f]}`).join(', ');
+  console.log(`described (live specs ${liveViews.size}): ${d.live.pands} generic pands in ${d.buurtenLive} buurten (${pct(d.live.pands, file.totals.pands)}), ${d.live.photo} read from the front (rest register text only); fields ${fieldsOf(d.live)}`);
+  if (stagedDirs.length) console.log(`staged, not live (${stagedViews.size} specs from ${stagedDirs.join(', ')}; ${stagedBad.length} unreadable${stagedBad.length ? `: ${stagedBad.slice(0, 3).join('; ')}` : ''}): ${d.staged.pands} more pands in ${d.buurtenStaged} buurten (${pct(d.staged.pands, file.totals.pands)}), ${d.staged.photo} read from the front; fields ${fieldsOf(d.staged)}`);
+  const top = features.map(f => ({ n: f.properties.name, c: f.properties.code, d: (f.properties as { described?: BuurtDescribed }).described!, p: f.properties.pands })).sort((a, b) => (b.d.live.pands + (b.d.staged?.pands ?? 0)) - (a.d.live.pands + (a.d.staged?.pands ?? 0))).slice(0, 8);
+  for (const t of top) console.log(`  ${t.c} ${t.n}: ${t.d.live.pands} live${t.d.staged ? ` + ${t.d.staged.pands} staged` : ''} of ${t.p}`);
+}
 console.log('\ntop 25 generator to-do (≥80 pands): code name | pands | rep | modelled | priority | uncovered repetitive | decade | survey/types');
 for (const [i, r] of rankForGenerators(rows).slice(0, 25).entries()) {
   console.log(`${String(i + 1).padStart(2)}. ${r.code} ${r.name} (${r.wijk}) | ${r.pands} | ${r.repetition} | ${r.share} | ${r.priority} | ${r.repetitiveGeneric} | ${r.decade}s ${Math.round(r.decadeShare * 100)}% | ${r.survey.streets.join('+') || '-'} / ${r.types.districts.join('+') || '-'}`);

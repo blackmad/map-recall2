@@ -8,17 +8,17 @@
   --ok:#2f6b46;--ok-bg:#dcebdf;--held:#8a5a12;--held-bg:#f3e4c4;--staged:#5d5a73;--staged-bg:#e3e1ec;--bad:#9a3a2a;
   --empty:#e6e1d5;--stroke:#fffdf8;--hi:#2b2622;
   --s0:#ebe6da;--s1:#cde2fb;--s2:#9ec5f4;--s3:#6da7ec;--s4:#3987e5;--s5:#256abf;--s6:#104281;
-  --own:#c2410c;--own-ink:#4a1d06;--l0:#ebe6da;--l1:#f4e3c3;--l2:#f8c9a4;--l3:#f0a06c;--l4:#de773f;--l5:#b5531e;--l6:#7c3510}
+  --desc:#0f766e;--d0:#ebe6da;--d1:#d3ece6;--d2:#a8dcd0;--d3:#70c3b3;--d4:#3aa595;--d5:#1f7f72;--d6:#0f524a;--own:#c2410c;--own-ink:#4a1d06;--l0:#ebe6da;--l1:#f4e3c3;--l2:#f8c9a4;--l3:#f0a06c;--l4:#de773f;--l5:#b5531e;--l6:#7c3510}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e;--accent:#e09a78;--link:#8fb8e3;
   --ok:#9fd3ae;--ok-bg:#24392b;--held:#e8c17a;--held-bg:#3d311b;--staged:#c4c0dc;--staged-bg:#302e3d;--bad:#f0a593;
   --empty:#2b2824;--stroke:#1f1c18;--hi:#eee8da;
   --s0:#34302a;--s1:#0d366b;--s2:#104281;--s3:#184f95;--s4:#256abf;--s5:#3987e5;--s6:#86b6ef;
-  --own:#fb923c;--own-ink:#fde3cf;--l0:#34302a;--l1:#4a3b22;--l2:#6b3a1c;--l3:#8f4518;--l4:#c05a1c;--l5:#ea7a35;--l6:#fbb27a}}
+  --desc:#2dd4bf;--d0:#34302a;--d1:#1c3b37;--d2:#1f504a;--d3:#23675f;--d4:#2a8c80;--d5:#3fb5a6;--d6:#8ae6d8;--own:#fb923c;--own-ink:#fde3cf;--l0:#34302a;--l1:#4a3b22;--l2:#6b3a1c;--l3:#8f4518;--l4:#c05a1c;--l5:#ea7a35;--l6:#fbb27a}}
 :root[data-theme="dark"]{--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e;--accent:#e09a78;--link:#8fb8e3;
   --ok:#9fd3ae;--ok-bg:#24392b;--held:#e8c17a;--held-bg:#3d311b;--staged:#c4c0dc;--staged-bg:#302e3d;--bad:#f0a593;
   --empty:#2b2824;--stroke:#1f1c18;--hi:#eee8da;
   --s0:#34302a;--s1:#0d366b;--s2:#104281;--s3:#184f95;--s4:#256abf;--s5:#3987e5;--s6:#86b6ef;
-  --own:#fb923c;--own-ink:#fde3cf;--l0:#34302a;--l1:#4a3b22;--l2:#6b3a1c;--l3:#8f4518;--l4:#c05a1c;--l5:#ea7a35;--l6:#fbb27a}
+  --desc:#2dd4bf;--d0:#34302a;--d1:#1c3b37;--d2:#1f504a;--d3:#23675f;--d4:#2a8c80;--d5:#3fb5a6;--d6:#8ae6d8;--own:#fb923c;--own-ink:#fde3cf;--l0:#34302a;--l1:#4a3b22;--l2:#6b3a1c;--l3:#8f4518;--l4:#c05a1c;--l5:#ea7a35;--l6:#fbb27a}
 *{box-sizing:border-box}
 html{color-scheme:light dark}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
@@ -98,6 +98,11 @@ ul.plain a{margin-left:4px}
 .empty p{margin:4px 0}
 .cand{margin:4px 0;font-size:13.5px}
 .legend .sw.own{background:transparent;outline:2px solid var(--own);outline-offset:-2px}.legend .sw.own.authored{outline-style:dashed;outline-width:1.5px}
+.legend .sw.desc{background:transparent;outline:2px solid var(--desc);outline-offset:-2px}.legend .sw.desc.staged{outline-style:dashed;outline-width:1.5px}
+.legend .grp{flex-basis:100%;font-size:12px;color:var(--mut);margin-top:2px}
+.bar .check.desc input{accent-color:var(--desc)}
+.dl-desc{margin:4px 0 0;font-size:13px}.badge.desc{background:var(--d2);color:var(--ink)}.badge.desc.staged{background:var(--staged-bg);color:var(--staged)}
+.fieldchips{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}.fieldchips span{font-size:12px;border:1px solid var(--desc);border-radius:999px;padding:0 8px;font-variant-numeric:tabular-nums}
 .bar .check{font-size:13px;color:var(--ink)}.bar .check input{width:auto;flex:none;margin:0;accent-color:var(--own)}
 #own-list{margin-top:12px;border-top:1px solid var(--line);padding:8px 4px 2px}
 #own-list h2{font-size:16px;margin:0 0 4px;display:flex;gap:8px;align-items:baseline}
@@ -121,7 +126,7 @@ details.more{margin-top:8px}details.more summary{cursor:pointer;color:var(--link
 @media (max-width:560px){.row{grid-template-columns:minmax(0,1fr)}.row .cnt{text-align:left;order:-1}h1{font-size:22px}.bar input{width:100%}.bar label{width:100%}.bar label select,.bar label input{flex:1}}
 </style></head><body>
 <header class="top"><h1>Buurt coverage</h1>
-<p>Every Amsterdam buurt, coloured by what Canal Recall draws there. Click one to see what we have for it: measured house-type libraries, block faces, post-war building types, placed models and landmark kits, with links to the viewers. Buurten outlined in orange have their own look: the game draws them from kit made for that district. Not linked from the game.</p>
+<p>Every Amsterdam buurt, coloured by what Canal Recall draws there. Click one to see what we have for it: measured house-type libraries, block faces, post-war building types, placed models and landmark kits, with links to the viewers. Buurten outlined in orange have their own look: the game draws them from kit made for that district. Buurten in teal have described houses: still the generic mesher, but drawn from a HouseSpec (measured storeys, bays, crown, wall colour or ground storey). Not linked from the game.</p>
 <nav><a href="street-surveys.html">Street surveys</a><a href="street-chunks.html">Street chunks</a><a href="landmark-gallery.html">Landmark kits</a><a href="building-gallery.html">Building assets</a><a href="manual-ordinary-buildings.html">Ordinary models</a></nav>
 <div class="bar">
   <label>Buurt <input id="search" type="search" list="names" placeholder="Search a buurt by name" autocomplete="off" aria-label="Search a buurt by name"></label>
@@ -129,6 +134,8 @@ details.more{margin-top:8px}details.more summary{cursor:pointer;color:var(--link
   <label>Colour by <select id="metric" aria-label="Colour the map by"></select></label>
   <label class="check"><input id="own-mark" type="checkbox" checked> Outline own look</label>
   <label class="check"><input id="own-only" type="checkbox"> Only buurten with their own look</label>
+  <label class="check desc" id="desc-mark-l" style="display:none"><input id="desc-mark" type="checkbox" checked> Outline described houses</label>
+  <label class="check desc" id="desc-staged-l" style="display:none"><input id="desc-staged" type="checkbox"> Include staged preview (not live)</label>
 </div>
 <p id="summary" role="status">Loading…</p>
 </header>
