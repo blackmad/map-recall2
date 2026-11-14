@@ -23,6 +23,8 @@ import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wa
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
 import { wallChange, wallLab, WALL_SAME_PCT } from './analyse.ts';
 import { bare, edgeOffsets, engineWorld, flagsFor, WORLD_LIVE_WARNING, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
+import { cameraCaption, engineOf, parseRule10, worldOf, FLAGS_ONLY, type Rule10 } from './rule10.ts';
+import { asPlayedCaption, asPlayedFor, likenessCaption, likenessJobPose, pickLikeness, rule10Sheets, writeLikenessPhoto, type LikenessPrep, type Rule10Job, type SheetRow } from './rule10Frames.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
 
@@ -37,7 +39,8 @@ Input (one of)
   --list <file.json>     ["id", ...] or [{"pandId": "id", "bearing": 90, "at": [lng, lat], "key": "name"}, ...]
                          (bearing: prefer the wall facing it; at: the wall nearest this point, facing within 40 deg
                          of bearing; key: the output folder, for several walls of one pand;
-                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
+                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding;
+                         "MISSION_*" skips a whole mission, e.g. one whose positions are metres off);
                          maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
                          that the exposed-wall rule drops: Nassaukade 146, 0363100012160704;
@@ -115,6 +118,29 @@ Checks (pose.json)
                reads (the caption says which), 'no ref' when none does; the picks must say the wall is this pand's).
                --post-only re-runs every check and flag on an existing frame dir (prepared.json + the frames)
 
+Rule 10: acceptance frames at the detail a player sees (docs/house-line.md §7 "Rule 10"). Without these flags the
+run is exactly the old run. With them the wide pano-lens pairs above are still made, for the flags only, and say so.
+  --rule10               --likeness and --as-played
+  --likeness             per pand: first person at 72 deg (the game's lens, never widened), 1440 x 900 css at --dpr,
+                         pitched to hold the whole front and crown: the game cannot look up, so a front too tall for the
+                         lowest look-down is held by raising the window (a shift lens: a taller frame at the same focal,
+                         the top 900 rows kept; the photo is cut from the same frame). Capture: across the water first
+                         (a canal-side house from the far bank: the sight line crosses a water.json centreline), else the
+                         pair's own, else the nearest one farther back that holds the front, up to --likeness-max-dist.
+                         <key>/likeness-photo.jpg (the panorama cut to the window) and <key>/likeness.png (the game)
+  --as-played            per list: one frame on the default engine (unless --query names one) with the default chase
+                         camera at --dpr, the rider --as-played-back m before the row's near end riding along it, the
+                         fronts on the right: <out>/as-played.png
+  --dpr <n>              pixel ratio of likeness and as-played frames (default 2, the user's Mac)
+  --likeness-trees hide|show   likeness frames draw without trees (?trees3d=0; default hide): game trees stand in front of
+                         fronts the winter photo shows bare. As-played frames always keep them
+  --likeness-max-dist <m>  how far the likeness search reaches (default 70)
+  --as-played-back <m>   default 15
+  --no-far-bank          do not prefer a capture across the water
+  Sheets: <out>/rule10-N.jpg, three columns (photo | today | candidate), panels 720 x 450; with --before <dir> today is
+  that run's frames and candidate this run's; without, today is this run. Captions name camera, FOV, pixel ratio,
+  engine and world.
+
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
@@ -134,7 +160,7 @@ export function withPinnedPoses(pands: Entry[], file = PINNED_POSES): Entry[] {
 }
 /** --square: a frame over this obliquity is not square (the belt rule's 30 deg). */
 export const SQUARE_MAX_DEG = 30;
-export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; square?: boolean; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
+export type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; square?: boolean; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string; rule10?: Rule10 };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -163,7 +189,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
   if ((arg(argv, 'list') || arg(argv, 'pands')) && !argv.includes('--no-pinned-poses')) pands = withPinnedPoses(pands);
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), ...(argv.includes('--square') ? { square: true, preferObliquityDeg: Number(arg(argv, 'prefer-obliquity') ?? SQUARE_MAX_DEG) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), ...(argv.includes('--square') ? { square: true, preferObliquityDeg: Number(arg(argv, 'prefer-obliquity') ?? SQUARE_MAX_DEG) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName, ...(parseRule10(argv) ? { rule10: parseRule10(argv)! } : {}) };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -198,6 +224,8 @@ export function routeOf(pandId: string, lngLat: [number, number], query: string)
 type Prepared = {
   pandId: string; key: string; street: string; wall: WallQuad; wallLenM: number; pick: Omit<PanoPick, 'record'> & { url: string }; pose: FramePose; hfovDeg: number;
   samples: PickSample[]; foliage: number | null; candidates: number; route: string; why: string[];
+  /** rule 10 (--likeness): the likeness capture and pose; absent on an old run */
+  likeness?: LikenessPrep;
 };
 export type Skipped = { pandId: string; key?: string; skip: string };
 
@@ -319,7 +347,8 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
   const maxD = entry.maxDistM ?? args.maxDistM ?? FACADE_WINDOW.maxD;
   let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
-  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
+  // A notPanos entry ending in '*' is a prefix: 'TMX7316010203-001900_*' drops a whole mission (one placed metres off).
+  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.some(n => n.endsWith('*') ? c.panoId.startsWith(n.slice(0, -1)) : n === c.panoId));
   // A pinned capture (an entry's pano; the eyeball set's eyeball-poses.json) wins when it is in range; the sight-line
   // filter below is skipped for it (it was picked by eye).
   const pinned = entry.pano ? ranked.find(c => c.panoId === entry.pano) : undefined;
@@ -416,10 +445,29 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
     fs.copyFileSync(path.join(dir, 'photo.jpg'), photoFile);
   }
   const { record, ...rest } = pick;
+  const likeness = args.rule10?.likeness ? await prepareLikeness(entry, fp, args, pick, quad, dir) : undefined;
+  if (likeness) why.push(`likeness: ${likeness.note}`);
   return {
     pandId, key, street: await streetName(wall), wall: quad, wallLenM: +wall.len.toFixed(2), pick: { ...rest, url: record._links?.equirectangular_medium?.href ?? '' }, pose, hfovDeg: +hfovDeg(pose).toFixed(1),
-    samples: pickSamples(frame, pose, quad), foliage, candidates: picked.candidates, route: routeOf(pandId, ll, args.query), why,
+    samples: pickSamples(frame, pose, quad), foliage, candidates: picked.candidates, route: routeOf(pandId, ll, args.query), why, ...(likeness ? { likeness } : {}),
   };
+}
+
+/** Rule 10: the likeness capture (rule10Frames.ts pickLikeness over a wider search) and its photo window. */
+async function prepareLikeness(entry: Entry, fp: Footprint | undefined, args: Args, own: PanoPick, quad: WallQuad, dir: string): Promise<LikenessPrep | undefined> {
+  const r10 = args.rule10!;
+  const wide = await rankCandidates(entry, fp, { ...args, maxDistM: Math.max(r10.likenessMaxDistM, args.maxDistM ?? 0), preferObliquityDeg: args.preferObliquityDeg ?? 90 });
+  const chosen = pickLikeness('skip' in wide ? [] : wide.ranked, own, quad, r10);
+  if (!chosen) return undefined;
+  const { pick, prep } = chosen;
+  const url = pick.record._links?.equirectangular_full?.href ?? pick.record._links?.equirectangular_medium?.href ?? '';
+  const photo = path.join(cacheDir('photos'), `${hashOf({ likeness: url || pick.panoId, size: args.panoSize, lp: prep.lp, dpr: r10.dpr, code: codeHash() })}.jpg`);
+  if (!(args.reusePhotos && fs.existsSync(photo))) {
+    // The window is 2880 px wide at dpr 2: the full panorama, whatever --pano-size the pairs use.
+    if (!await writeLikenessPhoto(pick, prep.lp, r10.dpr, 'full', photo)) return undefined;
+  }
+  fs.copyFileSync(photo, path.join(dir, 'likeness-photo.jpg'));
+  return { ...prep, pano: { panoId: pick.panoId, timestamp: pick.timestamp, distM: +pick.distM.toFixed(1), obliquityDeg: +pick.obliquityDeg.toFixed(1), url } };
 }
 
 // ---- cache (--reuse-photos) ----------------------------------------------------------------------------------------
@@ -438,23 +486,30 @@ function codeHash(): string {
   return codeHashMemo;
 }
 // notPanos, --prefer-obliquity and --max-dist change the pick, so they key the cache too (absent = undefined, dropped by JSON: the same keys as before).
-const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, pano: e.pano }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash() });
+// rule10 (absent on an old run, so dropped by JSON) keys the likeness capture too.
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM, pano: e.pano }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash(), rule10: args.rule10?.likeness ? { dpr: args.rule10.dpr, reach: args.rule10.likenessMaxDistM, farBank: args.rule10.farBank } : undefined });
 /** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
 function cachedPrep(e: Entry, args: Args): Prepared | null {
   const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);
   if (!fs.existsSync(f)) return null;
-  const c = JSON.parse(fs.readFileSync(f, 'utf8')) as Prepared & { photo: string };
+  const c = JSON.parse(fs.readFileSync(f, 'utf8')) as Prepared & { photo: string; likenessPhoto?: string };
   if (!fs.existsSync(c.photo)) return null;
   const dir = path.join(args.out, c.key);
   fs.mkdirSync(dir, { recursive: true });
   fs.copyFileSync(c.photo, path.join(dir, 'photo.jpg'));
-  const { photo: _photo, ...prep } = c;
+  if (c.likenessPhoto) { if (!fs.existsSync(c.likenessPhoto)) return null; fs.copyFileSync(c.likenessPhoto, path.join(dir, 'likeness-photo.jpg')); }
+  const { photo: _photo, likenessPhoto: _lp, ...prep } = c as typeof c & { likenessPhoto?: string };
   return { ...prep, route: routeOf(prep.pandId, prep.pose.lngLat, args.query), why: [...prep.why.filter(w => !w.startsWith('reused')), 'reused the cached pick, pose and photo cut (--reuse-photos)'] };
 }
 function storePrep(e: Entry, args: Args, prep: Prepared) {
   const photo = path.join(cacheDir('photos'), `${hashOf({ pano: prep.pick.url || prep.pick.panoId, size: args.panoSize, pose: prep.pose, code: codeHash() })}.jpg`);
   if (!fs.existsSync(photo)) fs.copyFileSync(path.join(args.out, prep.key, 'photo.jpg'), photo);
-  fs.writeFileSync(path.join(cacheDir('prep'), `${prepKey(e, args)}.json`), JSON.stringify({ ...prep, photo }));
+  let likenessPhoto: string | undefined;
+  if (prep.likeness) {
+    likenessPhoto = path.join(cacheDir('photos'), `${hashOf({ likenessOf: prep.key, pano: prep.likeness.pano.panoId, lp: prep.likeness.lp, code: codeHash() })}.jpg`);
+    fs.copyFileSync(path.join(args.out, prep.key, 'likeness-photo.jpg'), likenessPhoto);
+  }
+  fs.writeFileSync(path.join(cacheDir('prep'), `${prepKey(e, args)}.json`), JSON.stringify({ ...prep, photo, ...(likenessPhoto ? { likenessPhoto } : {}) }));
 }
 
 /** Greedy nearest-neighbour order, so the page streams neighbouring tiles from one pose to the next. */
@@ -509,6 +564,12 @@ async function half(file: string, pose: FramePose, wall: WallQuad, size: number)
 }
 
 function captionLines(r: any): string[] {
+  const lines = captionLinesBase(r);
+  // Rule 10: the wide pano-lens pair says what it is for (never on an old run: its captions stay as they were).
+  if (r.rule10) lines.push(cameraCaption({ camera: 'first person', vfovDeg: r.pose.vfovDeg, dpr: 1, engine: engineOf(r.query ?? '', true), world: worldOf(r.query ?? ''), wide: true }));
+  return lines;
+}
+function captionLinesBase(r: any): string[] {
   const e = (list: EdgeRead[]) => list.map(x => `${x.side[0].toUpperCase()}${x.found ? (x.offsetPct >= 0 ? '+' : '') + x.offsetPct.toFixed(1) + '%' : '?'}`).join(' ') || '-';
   const flags = Object.entries(r.flags ?? {}).filter(([, v]) => v).map(([k, v]) => v === true ? k : `${k}: ${v}`);
   return [
@@ -604,7 +665,8 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
       }
     }
   }
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, engineWorld: engineWorld(job.query, process.env.WORLD_DIR), route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms };
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, engineWorld: engineWorld(job.query, process.env.WORLD_DIR), route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms,
+    ...(args.rule10 ? { rule10: { use: FLAGS_ONLY, likeness: prep.likeness ?? null } } : {}) };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
   if (compare && !compare.error) fs.writeFileSync(path.join(dir, 'triple.jpg'), await tripleImage(dir, path.join(args.before!, prep.key), r));
@@ -613,8 +675,14 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
-const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]>; likeness?: ReturnType<typeof likenessJobPose> }>; rule10?: Rule10Job };
+export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]), ...(p.likeness ? { likeness: likenessJobPose(p.likeness) } : {}) })),
+  ...(args.rule10 ? { rule10: rule10Job(args, prepared) } : {}) });
+/** Rule 10's job fields: pixel ratio, the likeness pages' extra query, and the list's as-played rider. */
+function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
+  const r10 = args.rule10!, rider = r10.asPlayed && prepared.length ? asPlayedFor(prepared, r10.asPlayedBackM) : null;
+  return { dpr: r10.dpr, likenessQuery: r10.likenessTrees === 'hide' ? 'trees3d=0' : '', asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
+}
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
 async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
@@ -660,6 +728,7 @@ async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Pr
   const gameEdges = ok.flatMap(r => r.edges.game.filter((e: EdgeRead) => e.found && e.side !== 'crown').map((e: EdgeRead) => Math.abs(e.offsetPct)));
   const timings = fs.existsSync(path.join(args.out, 'browser-timings.json')) ? JSON.parse(fs.readFileSync(path.join(args.out, 'browser-timings.json'), 'utf8')) : null;
   const sheets = await contactSheets(args.out, ok, `house:frames ${args.inputName || ''} ${args.label !== 'run' ? args.label : ''} ${args.query}`.trim());
+  if (args.rule10) sheets.push(...await rule10SheetsFor(args, ok, job));
   const summary = {
     input: args.inputName, label: args.label, query: args.query, pands: args.pands.length, prepared: prepared.length, skipped, framed: ok.length,
     alignment: { photoEdges: photoEdges.length, medianPct: +quantile(photoEdges, 0.5).toFixed(2), p90Pct: +quantile(photoEdges, 0.9).toFixed(2), over3: ok.flatMap(r => r.edges.photo.filter((e: EdgeRead) => e.found && e.side !== 'crown' && Math.abs(e.offsetPct) > 3).map((e: EdgeRead) => `${r.pandId} ${e.side} ${e.offsetPct}%`)), gameEdges: gameEdges.length, gameMedianPct: +quantile(gameEdges, 0.5).toFixed(2) },
@@ -674,6 +743,32 @@ async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Pr
   console.log(JSON.stringify({ ...summary, skipped: skipped.length }, null, 1));
   const same = (summary as any).compare?.same as string[] | undefined;
   if (same?.length) console.warn(`WARNING: ${same.length} of ${(summary as any).compare.pairs} before/after pairs are the same on the target wall (${same.join(', ')}): the compared flag did not reach their pixels. Check the world (baked cells ignore runtime flags), the mesh worker's flags (engine/workerPool.ts withWorkerFlags) and the pand's guard before reading these pairs as a result.`);
+}
+
+/** Rule 10 sheets: the as-played row (today | candidate), then one likeness row per pand (photo | today | candidate). */
+async function rule10SheetsFor(args: Args, ok: any[], job: any): Promise<string[]> {
+  const r10 = args.rule10!, before = args.before, label = args.label !== 'run' ? args.label : 'this run';
+  const dprOf = (file: string) => { try { return JSON.parse(fs.readFileSync(file, 'utf8')).dpr ?? null; } catch { return null; } };
+  const today = (f: string) => before ? path.join(before, f) : path.join(args.out, f), cand = (f: string) => before ? path.join(args.out, f) : null;
+  const beforeLabel = before ? `today (${path.basename(before)})` : `today (${label})`, candLabel = before ? `candidate (${label})` : 'candidate: pass --before <today run>';
+  const rows: SheetRow[] = [];
+  if (r10.asPlayed) {
+    const cap = (dir: string) => `${asPlayedCaption(args.query, r10.dpr, dprOf(path.join(dir, 'as-played.json')))}`;
+    rows.push({ title: `as played: the row from the rider's seat (${job.rule10?.asPlayed?.[0] ? `heading ${Math.round(job.rule10.asPlayed[0].headingDeg)}°` : 'no rider'})`,
+      captions: ['(no photo for the chase view)', `${beforeLabel}: ${cap(before ?? args.out)}`, before ? `${candLabel}: ${cap(args.out)}` : candLabel],
+      files: [null, today('as-played.png'), cand('as-played.png')] });
+  }
+  if (r10.likeness) for (const r of ok) {
+    const l: LikenessPrep | undefined = r.rule10?.likeness;
+    if (!l) continue;
+    const g = (dir: string) => likenessCaption(args.query, r10.dpr, dprOf(path.join(dir, r.key, 'likeness.json')), r10.likenessTrees === 'hide' ? 'trees3d=0' : '');
+    rows.push({ title: `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  ${l.note}`,
+      captions: [`panorama ${l.pano.timestamp.slice(0, 10)} ${l.pano.distM} m obl ${l.pano.obliquityDeg}°${l.farBank ? ' (far bank)' : ''}, cut to the window: 72° lens${l.lp.shiftPx ? `, raised ${l.lp.shiftPx} px` : ''}${l.lp.clipped.length ? `, clipped ${l.lp.clipped.join('+')}` : ''}`,
+        `${beforeLabel}: ${g(before ?? args.out)}`, before ? `${candLabel}: ${g(args.out)}` : candLabel],
+      files: [path.join(args.out, r.key, 'likeness-photo.jpg'), today(path.join(r.key, 'likeness.png')), cand(path.join(r.key, 'likeness.png'))],
+      outline: { lp: l.lp, wall: r.wall } });
+  }
+  return rows.length ? rule10Sheets(args.out, rows, `house:frames rule 10 ${args.inputName || ''} ${args.label !== 'run' ? args.label : ''}`.trim()) : [];
 }
 
 /** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */
@@ -728,7 +823,8 @@ async function batch(argv: string[]) {
     const poses = runs.flatMap(r => jobFor(r.args, r.prepared).poses);
     if (poses.length) {
       const jobFile = path.join(first.out, 'batch-job.json');
-      fs.writeFileSync(jobFile, JSON.stringify({ ...jobFor(first, []), poses }));
+      const r10 = runs.map(r => jobFor(r.args, r.prepared).rule10).filter(Boolean) as Rule10Job[];
+      fs.writeFileSync(jobFile, JSON.stringify({ ...jobFor(first, []), poses, ...(r10.length ? { rule10: { ...r10[0], asPlayed: r10.flatMap(j => j.asPlayed) } } : {}) }));
       console.log(`batch: ${poses.length} poses from ${runs.length} lists in one browser session; job ${jobFile}`);
       runBrowser(jobFile);
     }
