@@ -1,0 +1,437 @@
+{
+ "schemaVersion": 1,
+ "id": "asscher-diamantslijperij",
+ "pand": "0363100012237135",
+ "brief": "scripts/landmarks/asscher-diamantslijperij-brief.md",
+ "signature": [
+  "f-asscher-letters",
+  "f-turrets",
+  "f-1907-tablet",
+  "s-factory-windows",
+  "t-attic-arches",
+  "f-balconies",
+  "s-parapet-piers-railing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-158",
+   "bearing": 158,
+   "lengthM": 74.3,
+   "centre": [
+    4.9057335,
+    52.352997
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000782_pano_0000_002149",
+   "capturedAt": "2018-06-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-factory-windows",
+     "kind": "window-shape",
+     "where": "fourteen bays of wide four-light factory windows on all four floors, cream frames, transom high",
+     "approxSizeM": [3.5,2.6],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000113",
+     "how": "factoryWindow: paneGrid 4x2 with the upper row a third, grey stone sill and head blocks; 13 bays at 4.45 m plus the narrow bay by the tower"
+    },
+    {
+     "id": "s-lozenge-crosses",
+     "kind": "other",
+     "where": "red-brick lozenge crosses in the spandrels between the window rows, one per bay",
+     "approxSizeM": [
+      0.55,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "brickInlay.lozengeCross (new kit), red, 7 cm proud, three spandrels x 13 bays"
+    },
+    {
+     "id": "s-diaper-cornice",
+     "kind": "other",
+     "where": "red diaper band under the coping with yellow lozenges",
+     "approxSizeM": [
+      61,
+      0.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002112_pano_0001_000113",
+     "how": "red band 16.45-17.3 m with a row of yellow lozenges every 0.55 m (brickInlay.lozenge/rowCentres)"
+    },
+    {
+     "id": "s-parapet-piers-railing",
+     "kind": "balcony-ironwork",
+     "where": "brick parapet piers on every bay line with stone caps, iron railing between them",
+     "approxSizeM": [
+      61,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "piers 0.62 m with stone caps; the railing is a dark panel with a top rail laid on the 3DBAG parapet (the shell wall is solid to 18.5 m)"
+    },
+    {
+     "id": "s-downpipes",
+     "kind": "other",
+     "where": "three grey downpipes down the front",
+     "approxSizeM": [
+      0.12,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "0.12 m pipes, frame colour"
+    },
+    {
+     "id": "t-attic-arches",
+     "kind": "window-shape",
+     "where": "east tower attic: six round-headed lights in two groups of three",
+     "approxSizeM": [
+      1.15,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000113",
+     "how": "archedWindow with stone springers and keystone"
+    },
+    {
+     "id": "t-loggia",
+     "kind": "window-shape",
+     "where": "east tower third floor right: three open round arches over a stone ledge",
+     "approxSizeM": [
+      5.4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "dark arched voids with stone ledge; five narrow lights to the left"
+    },
+    {
+     "id": "t-stair-window",
+     "kind": "window-shape",
+     "where": "east tower second floor left: wide round-arched window in a stone hood",
+     "approxSizeM": [
+      4.2,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "archSlab glass + stone archBand hood + white transom and mullions"
+    },
+    {
+     "id": "t-diamantslijperij-plaque",
+     "kind": "lettering",
+     "where": "stone plaque DIAMANTSLIJPERIJ over the first-floor balcony door of the tower",
+     "approxSizeM": [
+      4.0,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000782_pano_0000_002149",
+     "how": "sandstone panel with a dark line for the text; letters ~0.2 m in a 4 m line would be 3 cm glyph pixels"
+    },
+    {
+     "id": "t-entrance",
+     "kind": "other",
+     "where": "round-arched entrance in a heavy stone surround with a stone balcony on corbels above it",
+     "approxSizeM": [
+      2.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000113",
+     "how": "bronze door archSlab, stone archBand; balcony via brickInlay.corbelBalconyProfile"
+    },
+    {
+     "id": "t-tower-parapet",
+     "kind": "tower",
+     "where": "tower crowned by a pierced parapet band under stone caps",
+     "approxSizeM": [
+      12.9,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002800_pano_0005_000013",
+     "how": "stone string course, a row of dark square holes (brickInlay.piercedHoles) and a stone cap at the 3DBAG wall tops 23.7 / 22.6 m"
+    }
+   ]
+  },
+  {
+   "tag": "w02-338",
+   "bearing": 338,
+   "lengthM": 73.3,
+   "centre": [
+    4.9054815,
+    52.353058
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (courtyard and the private north side): the factory window rhythm of the photographed front carried round, inferred"
+  },
+  {
+   "tag": "w03-248",
+   "bearing": 248,
+   "lengthM": 24.5,
+   "centre": [
+    4.9050505,
+    52.352832
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_09-37-25_00577",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-grouped-windows",
+     "kind": "window-shape",
+     "where": "windows in groups of three and two between brick piers, grey stone blocks at heads and sills, four floors",
+     "approxSizeM": [
+      1.0,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_09-37-25_00577",
+     "how": "factoryWindow 1.0 m single lights, dark brown frames, groups at the photo spacing"
+    },
+    {
+     "id": "w-north-gable-lights",
+     "kind": "window-shape",
+     "where": "three small lights high in the north gable",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_09-37-25_00577",
+     "how": "three 0.38 m lights at 19.2-20.8 m"
+    }
+   ]
+  },
+  {
+   "tag": "w04-159",
+   "bearing": 159,
+   "lengthM": 12.8,
+   "centre": [
+    4.9052055,
+    52.3527515
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_08-27-06_01061",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-asscher-letters",
+     "kind": "lettering",
+     "where": "white capitals ASSCHER across the middle three bays between the first and second floors",
+     "approxSizeM": [
+      4.4,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "letters() 5x7 glyph table, 0.107 m pixels, white; approximate font (the photo shows a plain wide sans)"
+    },
+    {
+     "id": "f-crown",
+     "kind": "crest",
+     "where": "small white crown over the letters, under the 1907 tablet",
+     "approxSizeM": [
+      0.62,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "band, three points and an orb in white"
+    },
+    {
+     "id": "f-1907-tablet",
+     "kind": "gable-stone",
+     "where": "tiled tablet with 1907 and a rosette in the middle bay of the second floor",
+     "approxSizeM": [
+      0.98,
+      1.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "sandstone panel, 1907 in dark 4 cm-pixel glyphs, red rosette block"
+    },
+    {
+     "id": "f-turrets",
+     "kind": "tower",
+     "where": "two corner turrets with pierced parapets, stone caps and corner blocks",
+     "approxSizeM": [
+      3.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "brickInlay.piercedHoles 4 holes per turret, stone caps and corner blocks on the 3DBAG wall tops"
+    },
+    {
+     "id": "f-centre-gable",
+     "kind": "other",
+     "where": "low centre gable with stone coping and a finial block between the turrets",
+     "approxSizeM": [
+      4.9,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "stone coping bars from the shoulders to the apex and a finial; the 3DBAG wall top behind is flat at 23.4 m, so the brick above the slopes stays"
+    },
+    {
+     "id": "f-balconies",
+     "kind": "balcony-ironwork",
+     "where": "two closed stone balconies on tapering corbels in the turret bays at the second floor",
+     "approxSizeM": [
+      2.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "brickInlay.corbelBalconyProfile extruded 2 m (new kit)"
+    },
+    {
+     "id": "f-arched-windows",
+     "kind": "window-shape",
+     "where": "round-headed windows in the three middle bays of the first and third floors, square ones in the turret bays; dark brown frames, grey stone dressings",
+     "approxSizeM": [
+      1.4,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "archedWindow / factoryWindow, bronze frames"
+    },
+    {
+     "id": "f-tile-panels",
+     "kind": "relief",
+     "where": "pale tile panels between the second- and third-floor windows of the middle bays, the centre one larger",
+     "approxSizeM": [
+      1.75,
+      0.68
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "stone-framed pale panels; the tile pattern is flat colour"
+    },
+    {
+     "id": "f-lozenges",
+     "kind": "other",
+     "where": "single red lozenges in the turret piers at each floor",
+     "approxSizeM": [
+      0.26,
+      0.26
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_08-27-06_01061",
+     "how": "brickInlay.lozenge"
+    }
+   ]
+  },
+  {
+   "tag": "w05-68",
+   "bearing": 68,
+   "lengthM": 11.9,
+   "centre": [
+    4.9052605,
+    52.3528225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001045_pano_0000_000425",
+   "capturedAt": "2019-01-09",
+   "checked": true,
+   "items": [],
+   "note": "the forecourt side of the west wing is hidden behind trees in every capture (2016, 2019); windows carried round from the Tolstraat front, inferred"
+  },
+  {
+   "tag": "w06-68",
+   "bearing": 68,
+   "lengthM": 9.4,
+   "centre": [
+    4.9061925,
+    52.353191
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002030_pano_0001_000020",
+   "capturedAt": "2021-02-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-tower-lights",
+     "kind": "window-shape",
+     "where": "east face of the tower: a row of four lights, two rows of three narrow lights and four small square ones low down",
+     "approxSizeM": [
+      3,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002030_pano_0001_000020",
+     "how": "factoryWindow / glass slabs at the photo heights; above 14.8 m (out of frame) the attic arches carried round, inferred"
+    }
+   ]
+  },
+  {
+   "tag": "w07-338",
+   "bearing": 338,
+   "lengthM": 7.2,
+   "centre": [
+    4.9060255,
+    52.3531985
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (courtyard and the private north side): the factory window rhythm of the photographed front carried round, inferred"
+  },
+  {
+   "tag": "w08-337",
+   "bearing": 337,
+   "lengthM": 6.6,
+   "centre": [
+    4.9061215,
+    52.3532185
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (courtyard and the private north side): the factory window rhythm of the photographed front carried round, inferred"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (2016-2025)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012237135",
+   "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012237135",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237135",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Royal Asscher Diamond Company (Wikipedia)",
+   "url": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto RGB Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
