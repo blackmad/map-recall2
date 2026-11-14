@@ -3,6 +3,55 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Twelve more venues",
+      "text": "Twelve cultural and nightlife venues are now modelled from photos instead of drawn as plain blocks. In the centre: Arti et Amicitiae on the Rokin with its figures and pediment arms, the Industrieele Groote Club on the Dam with its curved lettering, Splendor, Filmtheater De Uitkijk with its letter board and red doors, Escape on the Rembrandtplein and Bitterzoet on the Spuistraat. Just outside: the Asscher diamond works, the former theosophical temple on the Tolstraat, De Nieuwe Liefde, the Rijksakademie in the old cavalry barracks, Werf 't Kromhout and the Conservatorium.",
+      "where": [
+        4.8838,
+        52.3638
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-venues-centre/de-uitkijk/rule10-sheet.jpg",
+          "alt": "De Uitkijk on the Prinsengracht: panorama beside the game",
+          "caption": "De Uitkijk: photo | game"
+        },
+        {
+          "src": "landmarks/2026-11-14-venues-ring/asscher-rule10.jpg",
+          "alt": "Asscher diamond works: panorama, before and after",
+          "caption": "Asscher: photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Morgan & Mees closer to the photo",
+      "text": "The Morgan & Mees corner on the Nassaukade now uses the grey-brown brick measured from the panoramas on both walls, where the east wing drew orange-brown before. The hip roof is steeper with its roof windows showing, the chimney is taller and the awnings run the full width.",
+      "where": [
+        4.8745,
+        52.3777
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-morgan-mees-fix/sheet-photo-before-after.jpg",
+          "alt": "Morgan & Mees: panorama, before and after, street front and east wing",
+          "caption": "Photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Coverage map shows described houses",
+      "text": "The coverage map has a second tier: houses that are drawn generically but follow a description of their own front (storeys, bays, gable, wall colour, shop floor). Neighbourhoods with a drawn look stay orange, and described houses show in teal, with each neighbourhood's panel listing how many were read from street photos.",
+      "images": [
+        {
+          "src": "ui/2026-11-14-coverage-described/coverage-described-desktop.png",
+          "alt": "Coverage map with the teal described tier and the Felix Meritisbuurt panel",
+          "caption": "Coverage map"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Pontsteiger rebuilt",
       "text": "The Houthavens gate no longer shows chequered window patches where its tower and skybridge met: two window grids were drawn on the same wall, and landmark windows now share one grid per wall. The Pontsteiger itself is remodelled from photos, with a light glazed-brick skin, windows that shift storey by storey, the skybridge's glazed band with its white zig-zag truss, a tower that runs from the ground to the roof, and the low block raised on white columns.",
       "where": [

@@ -15,6 +15,21 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Street life behind flags (2026-11-14) — ride review before any default
+
+- **Markets** `?markets=1` (Albert Cuyp tunnel canopies, Ten Kate parasols): canvas sag/seams, fuller goods, clutter between stalls; no market days (no clock).
+- **Terraces** `?terraces=1` (2,169 permit terraces, 32k units, own engine only): squares read grid-regular; Rembrandtplein tall glass screens; parasol colours from panoramas; 't Smalle deck not in the permit polygon.
+- **Real look** `?realLook=1`: tree crown silhouette (faceted crowns are the most toy-like thing left), keep pale painted fronts (Dapperstraat KFC turned brown), white-trim mask role; confirm whether David's screenshot was the Storybook look.
+- **Retail ground floors** round 2 in progress (glass, brown café, logo atlas, POI hosting so round buildings don't wrap, recessed doors, tabak shop).
+
+## Landmark follow-ups (venues 2026-11-14)
+
+- IGC tower cap still 3DBAG pyramid (photo: narrow rounded top); Splendor pantiles/plinth colours overridden by engine materials; Bitterzoet left neighbour row missing in game; Conservatorium not in building tiles (no in-game frame); Asscher brick slightly orange; Rijksakademie south side lacks the later glass pavilion.
+- Kit gaps: lettering along arches (venue-kit `arcLettering` now exists — fold Kromhout onto it), curtain walls with pane depth, fins over 3DBAG height steps, rounded tower caps, LED/poster content.
+- Morgan & Mees: white stucco draws brighter than the photo's cream; review sheets show empty lots because the in-game column stubs `vectorMap.sync` (judge on house:frames; harness should capture with sync on or `?engine=own`); north neighbour 0363100012160823 is white/red-striped in the photo but drawn brown.
+
+---
+
 ## Belt batch rejection (P0, user 2026-11-13) — rules in `docs/START-HERE-buildings.md` §3a / `docs/house-line.md` §0
 
 - **Placement fixed in round 129** (generic layer on the equatorial metre). Open: the north-south curvature residual away from ORIGIN's latitude (calculated ~1.3 m Zuidas, ~4 m Bijlmer, ~7 m Gein) — lane BA measures ring spots and proposes re-linearising at the rider's latitude; `test:plot-true` still fails on 1,711 of 19,719 centre houses (max 1.58 m) — classify by cause before it joins check:canal; allow-list regression for every shared-frame participant; landmarks/bespoke nudged against shifted neighbours since 2026-10-04 to re-frame.
@@ -23,11 +38,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 - **Haarlemmerdijk 29 (167795):** the front record says reviewed brick #493f3a, top 8.26 m; the game draws dark brick to about 11 m, while the 2020 panorama shows pale render with a white balustrade. The white-bars fix (HISTORY 2026-11-14) unmasked it. Fix the record's colour/finish and wall top.
 - **Pale-warm wall guard overrides reviewed palettes** ("held brick", 178293 L 0.38 vs photo 0.58): proposal to skip it for hand-reviewed sources, count first.
 - **Model path lightens dark walls** (spec L 0.29–0.38 → model 0.44–0.47): lane WC merged 2026-11-14 (cd8e44934) behind `?modelWallFloor=1`, off; flip after a row review.
+- **Wall exposure options (WC sheet 2026-11-14, `ui/2026-11-14-wall-exposure/`):** keep `wallExposure` off. On Weteringschans the photo walls read L 0.70–0.74 while D1 captures read 0.37–0.39, so the dark samples are capture exposure, not dark brick; floor/normfloor go darker still (0.27–0.32). The real gap is chroma: game C ≈ 0.01 against photo 0.04–0.05 orange-red. Next: fix sample→colour (exposure-normalise against a reference capture, keep hue/chroma) before any D1 colour publishes.
+- **D1 belt tranche (761 staged, `_pruned-sheets/d1-belt-20261114/`):** 4 of 27 row pages beat today (Herengracht 2–42, Keizersgracht 1–41, 692–768, 770–826; ~140 pands, `verdicts.json`); the other 22 lose on wall colour (the same sample→colour fault). Publish those four streets per the 2026-11-14 ruling; hold the rest until the colour fix. Also: frames were on `?world=live`, 19/144 poses missing, 58 outline-offset holds.
+- **D1 ring tranche (880 staged):** row sheets pending from the lane.
 - **Frames harness:** rule 10 tooling (lane TF), thinFocalPx 48.9 trace (TF), ground/labels nondeterminism makes whole-frame diffs meaningless (41 % on identical scenes) — mask to building pixels.
 - **Re-shoot of David's contact-haarlemmer sheet** (photo | before | after) — lane BA.
 - **Photo cross-check (lane BX, b16b16116):** 41 queued; square frames for the 13 crown + 1 rows first.
 - **Route A at volume** waits for the plot-true check; the D1 1,000-front tranche may start (belt + AH07, curvature ≤ 0.4 m).
-- **Coverage map:** add a "described from photos" tier (needs-david with a legend mock-up when the first tranche is ready); regenerate coverage-v1 (stale since 2026-11-10).
 
 ## Load and smoothness (P0, David 2026-11-13: "wtf is our load time really this slow", "SUPER jerky", "roads still fuzzy")
 

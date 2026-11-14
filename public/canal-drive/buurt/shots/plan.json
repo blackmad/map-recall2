@@ -323,6 +323,17 @@
    "name": "Da Costabuurt",
    "shots": [
     {
+     "label": "De Nieuwe Liefde",
+     "lat": 52.36978525,
+     "lng": 4.87149406,
+     "view": "chase",
+     "at": [
+      4.871596,
+      52.370216,
+      188
+     ]
+    },
+    {
      "label": "Kinkerstraat 32-54 (Vomar block, 1999)",
      "lat": 52.36805388,
      "lng": 4.87415777,
@@ -342,17 +353,6 @@
       4.872402,
       52.367144,
       2
-     ]
-    },
-    {
-     "label": "Nassaukade 318 to 300 (20 houses)",
-     "lat": 52.369321384667145,
-     "lng": 4.875039457071271,
-     "view": "chase",
-     "at": [
-      4.876164,
-      52.368591,
-      317
      ]
     },
     {
@@ -484,6 +484,17 @@
      ]
     },
     {
+     "label": "Diamantslijperij Asscher",
+     "lat": 52.35305622,
+     "lng": 4.90578561,
+     "view": "chase",
+     "at": [
+      4.906853,
+      52.353794,
+      221
+     ]
+    },
+    {
      "label": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
      "lat": 52.3489523,
      "lng": 4.9003971,
@@ -492,17 +503,6 @@
       4.900471,
       52.349763,
       183
-     ]
-    },
-    {
-     "label": "Diamantbuurt centre",
-     "lat": 52.35120949444445,
-     "lng": 4.9013901722222215,
-     "view": "chase",
-     "at": [
-      4.901489,
-      52.350852,
-      350
      ]
     },
     {
@@ -1124,6 +1124,17 @@
    "name": "Kadijken",
    "shots": [
     {
+     "label": "Werf 't Kromhout",
+     "lat": 52.36797056,
+     "lng": 4.9201477,
+     "view": "chase",
+     "at": [
+      4.920701,
+      52.367459,
+      327
+     ]
+    },
+    {
      "label": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam",
      "lat": 52.3693617,
      "lng": 4.9131356,
@@ -1143,17 +1154,6 @@
       4.920318,
       52.366614,
       70
-     ]
-    },
-    {
-     "label": "Hoogte Kadijk",
-     "lat": 52.368019,
-     "lng": 4.919091,
-     "view": "chase",
-     "at": [
-      4.919536,
-      52.367864,
-      300
      ]
     },
     {

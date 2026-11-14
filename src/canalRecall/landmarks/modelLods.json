@@ -5937,5 +5937,73 @@
    "bytes": 4448,
    "triangles": 75
   }
+ },
+ "arti-et-amicitiae": {
+  "sourceHash": "fce8f3b50993c78d",
+  "buildVersion": 2,
+  "bytes": 60148,
+  "triangles": 2567,
+  "lod2": {
+   "sourceHash": "fce8f3b50993c78d",
+   "buildVersion": 6,
+   "bytes": 8972,
+   "triangles": 254
+  }
+ },
+ "industrieele-groote-club": {
+  "sourceHash": "8814ac9fd5b12e8a",
+  "buildVersion": 2,
+  "bytes": 66000,
+  "triangles": 3293,
+  "lod2": {
+   "sourceHash": "8814ac9fd5b12e8a",
+   "buildVersion": 6,
+   "bytes": 11584,
+   "triangles": 444
+  }
+ },
+ "splendor": {
+  "lod2": {
+   "sourceHash": "e11d25dd241c490e",
+   "buildVersion": 6,
+   "bytes": 8544,
+   "triangles": 215
+  }
+ },
+ "de-uitkijk": {
+  "sourceHash": "02a5d4101f178921",
+  "buildVersion": 2,
+  "bytes": 21640,
+  "triangles": 707,
+  "lod2": {
+   "sourceHash": "02a5d4101f178921",
+   "buildVersion": 6,
+   "bytes": 4536,
+   "triangles": 79
+  }
+ },
+ "escape-rembrandtplein": {
+  "sourceHash": "f52a3c4fcb1920c1",
+  "buildVersion": 2,
+  "bytes": 47472,
+  "triangles": 2406,
+  "lod2": {
+   "sourceHash": "f52a3c4fcb1920c1",
+   "buildVersion": 6,
+   "bytes": 8752,
+   "triangles": 213
+  }
+ },
+ "bitterzoet": {
+  "sourceHash": "303d1247312ca205",
+  "buildVersion": 2,
+  "bytes": 37440,
+  "triangles": 1291,
+  "lod2": {
+   "sourceHash": "303d1247312ca205",
+   "buildVersion": 6,
+   "bytes": 7236,
+   "triangles": 146
+  }
  }
 }

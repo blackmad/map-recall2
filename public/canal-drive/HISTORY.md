@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+
+## 2026-11-14 — Venues, Morgan & Mees, street life behind flags, coverage described tier
+
+- **Twelve venues** modelled from photos (lanes venues-centre and venues-ring): Arti et Amicitiae, Industrieele Groote Club, Splendor, De Uitkijk, Escape, Bitterzoet; Asscher, Tolstraat 160, De Nieuwe Liefde, Rijksakademie, Werf 't Kromhout, Conservatorium. New kit: `venue-kit.ts` (arcLettering, cutFrontWalls, lettering, profileAlong, pedimentSolid, modillions) and `brickInlay.ts` (lozenges, pierced parapets, corbelled balconies), both in `test:landmark-kits`. The Rijksakademie ordinary recipe is now shadowed by the landmark (`SHADOWED_BY_LANDMARK['ordinary-0363100012165748']`; old inventory at `artifacts/vr/rijksakademie-inventory.recipe.json`). De Uitkijk's 3DBAG flat roof was the gable's own points; replaced by a pitched roof.
+- **Morgan & Mees:** both walls are one low-chroma grey-brown brick; the "pale street wall, dark east wall" premise was exposure. A new `greyBrick` slot sits under the 0.12-saturation brick lift so the tint keeps it. The empty lots on review sheets are a harness artefact (stubbed sync), not suppression.
+- **Markets** (`?markets=1`), **terraces** (`?terraces=1`, Amsterdam horeca permits, CC-BY 4.0, extract `terraces-v1`), **realLook** (`?realLook=1`) merged off; `test:markets` and `test:terraces` in `check:canal:rest`.
+- **Coverage map** gains a teal "described" tier: generic-tier pands whose published HouseSpec view states a field the generic route draws; live 4,891 (494 from photos), staged preview 1,084.
+- **WC wall-exposure sheet:** no option moves walls toward the photo; the dark D1 samples are capture exposure and the real gap is chroma. `wallExposure` stays off.
+- **Push note:** a pre-push hook that waits long in the browser queue can drop the SSH connection silently; always confirm `origin/main` after a push.
+
 ## One window grid per wall (2026-11-14)
 
 The Pontsteiger's chequer (feedback a4013653) was `cultural-builders.ts` `grid()` laying a window grid on every face of every box; coplanar leg/skybridge faces got two grids out of phase. `landmarks/wallGrid.ts` `planWallGrids` merges coplanar faces (0.5 m) into one wall with one phase and drops panes at least half covered by another box; byte-identical for lone faces (only melkweg changed, 15 buried panes). The Pontsteiger got its own photo-based builder (`pontsteiger-builder.ts`) with new kit parts `staggeredOpenings.ts` and `warrenTruss.ts`. Massing (leg widths, ~51 m soffit vs OSM min_height 58) is a judgement call between photos and OSM.
