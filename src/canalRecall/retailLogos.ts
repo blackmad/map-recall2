@@ -7,11 +7,12 @@ import { BAY_LAYER_COUNT } from './bayLook.js';
 import { SURFACE_ROOF_LAYERS, SURFACE_SLOT_LAYERS } from './roofs/flatRoofSurface.js';
 import type { RetailTemplate } from './retailTemplates.js';
 
-/** Logos in atlas order, with each source render's width/height (provenance.json). Chains without a free Commons logo
+/** Logos in atlas order, with each source render's width/height once its transparent margin is trimmed (the atlas
+ *  builder checks them). Chains without a free Commons logo
  *  (FEBO, Stach, SLA on 2026-11-14) keep their block lettering. */
 export const LOGOS: ReadonlyArray<{ key: RetailTemplate; aspect: number }> = [
-  { key: 'ah', aspect: 960 / 1006 }, { key: 'jumbo', aspect: 960 / 364 }, { key: 'hema', aspect: 960 / 961 },
-  { key: 'etos', aspect: 960 / 766 }, { key: 'dirk', aspect: 960 / 653 }, { key: 'action', aspect: 960 / 182 },
+  { key: 'ah', aspect: 864 / 910 }, { key: 'jumbo', aspect: 960 / 364 }, { key: 'hema', aspect: 960 / 583 },
+  { key: 'etos', aspect: 960 / 766 }, { key: 'dirk', aspect: 960 / 557 }, { key: 'action', aspect: 960 / 182 },
   { key: 'bruna', aspect: 219 / 60 },
 ];
 export const LOGO_GRID = { cols: 2, rows: 4, pad: 0.025 } as const;

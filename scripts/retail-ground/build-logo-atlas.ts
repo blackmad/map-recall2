@@ -14,18 +14,25 @@ const SIZE = 512, SRC = 'data/retail-ground/logos', OUT = 'data/retail-ground/re
 const provenance = JSON.parse(fs.readFileSync(path.join(SRC, 'provenance.json'), 'utf8'));
 const layers: sharp.OverlayOptions[] = [];
 const cells: string[] = [];
-for (const [i, { key }] of LOGOS.entries()) {
+const aspects: Record<string, number> = {};
+for (const [i, { key, aspect }] of LOGOS.entries()) {
   if (!provenance.logos[key]) throw new Error(`${key}: no provenance`);
+  // The Commons renders carry transparent margins; the atlas holds the trimmed mark, so retailLogos.ts LOGOS keeps
+  // the trimmed aspect (checked here).
+  const t = await sharp(await sharp(path.join(SRC, `${key}.png`)).trim().toBuffer()).metadata();
+  aspects[key] = +(t.width! / t.height!).toFixed(3);
+  if (Math.abs(aspects[key] - aspect) > 0.01) throw new Error(`${key}: retailLogos.ts aspect ${aspect.toFixed(3)}, trimmed ${aspects[key]}`);
   const b = logoBox(i), w = Math.round(b.w * SIZE), h = Math.round(b.h * SIZE);
   const cw = SIZE / 2, ch = SIZE / 4, cx = (i % 2) * cw, cy = Math.floor(i / 2) * ch;
   // The cell in the fascia colour (mip levels bleed the board, not another logo), the logo fitted on it.
   cells.push(`<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" fill="${TEMPLATE_LOOKS[key].fascia}"/>`);
-  const logo = await sharp(path.join(SRC, `${key}.png`)).resize(w, h, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+  const logo = await sharp(await sharp(path.join(SRC, `${key}.png`)).trim().toBuffer()).resize(w, h, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
   layers.push({ input: logo, left: Math.round(b.x * SIZE), top: Math.round(b.y * SIZE) });
 }
 const board = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}"><rect width="${SIZE}" height="${SIZE}" fill="#ffffff"/>${cells.join('')}</svg>`);
 const png = await sharp(board).composite(layers).png({ compressionLevel: 9 }).toBuffer();
 fs.writeFileSync(OUT, png);
+fs.writeFileSync(OUT.replace(/\.png$/, '.json'), JSON.stringify({ size: SIZE, logos: LOGOS.map(l => ({ key: l.key, aspect: aspects[l.key], source: provenance.logos[l.key].file, licence: provenance.logos[l.key].licence })) }, null, 1));
 console.log(`${OUT}: ${LOGOS.length} logos, ${png.length} bytes, sha1 ${crypto.createHash('sha1').update(png).digest('hex')}`);
 console.log(`GPU: one layer at the tier's size: 512 px ${(512 * 512 * 5 * 4 / 3 / 1048576).toFixed(2)} MB, 256 px ${(256 * 256 * 5 * 4 / 3 / 1048576).toFixed(2)} MB (RGBA + R8 mask, with mips)`);
 if (process.argv.includes('--publish')) {

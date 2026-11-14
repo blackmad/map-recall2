@@ -18,19 +18,20 @@ export const FRONT = {
   riserM: 0.5, headGapM: 0.18,
   /** Window content stands this far proud of the wall (the glass plane in the texture). */
   contentOutM: 0.02,
-  /** At most this much of a long wall carries one template front (m). */
-  maxSpanM: 14,
+  /** At most this much of a long wall carries one template front (m): round 2's Kinkerstraat sheet showed 14 m fronts
+   *  over what the photo has as two or three shops; the Haarlemmerdijk traces' shopfronts are 4-8 m. */
+  maxSpanM: 9,
   /** Round 2 doors: one per front (48 of the 66 traced Haarlemmerdijk fronts had one, ~0.75 m leaf), its head at most
    *  this high, the frame's depth proud of the wall, and a traced door's recess when the trace gives none. */
   doorM: 1.0, doorHeadM: 2.4, frameOutM: 0.09, recessM: 0.5,
 } as const;
 
 /** Behind the glass reads dark and warm (round 2): content colours pulled toward the interior's dark. */
-const GLASS_DARK = [38, 33, 28] as const, GLASS_PULL = 0.42;
+const GLASS_DARK = [38, 33, 28] as const, GLASS_PULL = 0.55;
 export function glassTone(hex: string, pull = GLASS_PULL): string {
   const n = parseInt(hex.slice(1), 16), c = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   const grey = (c[0] + c[1] + c[2]) / 3;
-  return '#' + c.map((v, i) => Math.round((v * 0.75 + grey * 0.25) * (1 - pull) + GLASS_DARK[i] * pull)).map(v => v.toString(16).padStart(2, '0')).join('');
+  return '#' + c.map((v, i) => Math.round((v * 0.6 + grey * 0.4) * (1 - pull) + GLASS_DARK[i] * pull)).map(v => v.toString(16).padStart(2, '0')).join('');
 }
 /** Content that is its own light (lit windows, neon, FEBO's heated doors) or stuck on the glass (a sigarenwinkel's
  *  placards) keeps its colours. */

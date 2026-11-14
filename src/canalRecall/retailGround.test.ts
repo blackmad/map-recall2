@@ -164,10 +164,12 @@ test('round 2 glass tone: content behind the glass darker and warmer than painte
 
 test('logos: Commons provenance with a free licence for every atlas entry; rects in their cells; a byte layer', () => {
   const prov = JSON.parse(fs.readFileSync(new URL('../../data/retail-ground/logos/provenance.json', import.meta.url), 'utf8'));
+  const atlas = JSON.parse(fs.readFileSync(new URL('../../data/retail-ground/retail-logos.json', import.meta.url), 'utf8'));
   for (const l of LOGOS) {
     const p = prov.logos[l.key];
     assert.ok(p && /commons\.wikimedia\.org/.test(p.page) && /public domain|cc0|cc by/i.test(p.licence), `${l.key}: provenance`);
-    assert.ok(Math.abs(l.aspect - p.width / p.height) < 0.01, `${l.key}: aspect`);
+    assert.ok(l.aspect <= p.width / p.height * 1.8 && l.aspect >= p.width / p.height * 0.9, `${l.key}: aspect near the render's`);
+    assert.ok(Math.abs(l.aspect - atlas.logos.find((q: { key: string }) => q.key === l.key).aspect) < 0.01, `${l.key}: aspect as the atlas holds it`);
     const r = logoFor(l.key)!;
     assert.ok(r.rect.every(v => v >= 0 && v <= 1) && r.rect[2] > r.rect[0] && r.rect[3] > r.rect[1]);
   }
