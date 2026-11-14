@@ -4,6 +4,10 @@
 
 Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.
 
+## rideamsterdam.nl was a day stale: Pages `_headers` and regex rules (2026-11-14)
+
+Lane LS (9b37c1c26, 01:43) added a firebase.json `regex` header (immutable hashed script names). `build-pages-site.mjs` read every header's `source`, crashed, and every Cloudflare Pages deploy failed for ~13 h while Firebase deployed fine, so rideamsterdam.nl served the night-before build. 3b4658aa5 expands a regex rule into one `_headers` block per built file it matches; deploy 43603948714 verified both sites at 3b4658a. Watch the Cloudflare step, not only the Firebase one, when a deploy run goes red.
+
 ## house:publish: the recipe route is opt-in (2026-11-14)
 
 `withRoute` used to make any spec with fronts, roof and palette a `recipe`, so D1 batch 1 asked for 72 per-house GLBs and rewrote three installed houses' intent.json before it failed. Now a pand is `recipe` only when it opted in: a block-face house, an installed `houses/*/intent.json`, or a source spec that says `route: 'recipe'` (the Haarlemmer belt scripts write it). Publish writes only `houses/spec-<pand>` and protects every other installed intent; `--dry-run` prints the recipe count (0 for a D1 batch). Re-built extract byte-identical (1,560 recipe / 5,847 generic records). Lane publish-generic, b298357bf; `recipeOptIn.test.ts` in test:house-spec.
