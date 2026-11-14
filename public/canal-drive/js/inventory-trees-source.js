@@ -6,6 +6,8 @@ import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
 import {calmFoliage,treeCalmFlag} from '../../../src/canalRecall/look/calmTones.ts';
+// `?realLook=trees` (look/realLook.ts, default off): crowns in the sampled species colour with a per-tree spread, smooth-shaded.
+import {realLookOn,realFoliageHex} from '../../../src/canalRecall/look/realLook.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
@@ -29,6 +31,9 @@ function crownBounds(camera) {
   return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
 }
 
+// realLook trees: a crown's normals point out from its centre, so the 20/80-triangle icosahedron shades as a soft round
+// crown instead of flat facets (same triangles, same draws).
+function sphereNormals(geometry){const p=geometry.attributes.position,n=geometry.attributes.normal;for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i),l=Math.hypot(x,y,z)||1;n.setXYZ(i,x/l,y/l,z/l);}n.needsUpdate=true;return geometry;}
 // One 20-triangle shrub; its upper faces take the instance (bed) bloom colour,
 // the rest a foliage green, so a rose bush costs no extra flower geometry.
 function roseBushGeometry() {
@@ -183,7 +188,8 @@ export class InventoryTrees {
     const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
     const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
     const native=treeTypology({...tree,position:[x,south]});const t=variant?scopeAllotmentCrown(tree,native):native;
-    const lobeColours=t?t.lobes.map(l=>new THREE.Color().set(treeCalmFlag()?calmFoliage(foliageDisplayHex(t.foliage)):foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone])):null;
+    const crownHex=t?(realLookOn('trees')?realFoliageHex(t.foliage,tree.id??`${tree.lng},${tree.lat}`):foliageDisplayHex(t.foliage)):null;
+    const lobeColours=t?t.lobes.map(l=>new THREE.Color().set(treeCalmFlag()?calmFoliage(crownHex):crownHex).multiplyScalar([1,1.10,.86][l.tone])):null;
     return shapes[variant]={x,south,t,lobeColours,bark:t?new THREE.Color(t.bark):null};
   }
   rebuild() {
@@ -309,9 +315,9 @@ export class InventoryTrees {
       wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
         :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
         :rose?roseBushGeometry()
-        :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
+        :realLookOn('trees')?sphereNormals(new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0)):new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
     const materialKey=wood?'wood':rose?'rose':'foliage';
-    if(!this.materials.has(materialKey)){const mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true});this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
+    if(!this.materials.has(materialKey)){const mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:!(materialKey==='foliage'&&realLookOn('trees'))});this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
     const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),count);
     m.userData.wood=wood;m.userData.groupKey=key;m.userData.geometryKey=geometryKey;
     fill(m);
