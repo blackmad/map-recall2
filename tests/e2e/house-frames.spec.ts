@@ -84,7 +84,11 @@ async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' |
  * the top `windowH` rows of a taller viewport) and one as-played frame per list (the default engine and chase camera).
  * Each in its own browser context, so the pixel ratio is the device's, as on the user's Mac.
  */
-async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: import('@playwright/test').BrowserContext) => Promise<void>): Promise<void> {
+// A batch's lists may each carry their own query and compiled world (HOUSE_FRAMES_WORLDS): `useWorld(out)` points the
+// contexts' world route at that list's world, and the likeness page re-opens whenever the list's query or world changes, so
+// rule-10 frames are shot on the same settings as the list's pairs (until 2026-11-14 they all took the first list's query and
+// the published world: lane wc-sheet).
+async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: import('@playwright/test').BrowserContext) => Promise<void>, useWorld: (out: string) => string = () => ''): Promise<void> {
   const r10 = job.rule10!, size = { width: job.width, height: job.height };
   const likeness = job.poses.filter(p => p.likeness);
   if (likeness.length) {
@@ -92,10 +96,16 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: impo
     await routeContext(ctx);
     const page = await ctx.newPage();
     try {
-      await openPage(page, { ...job, query: [job.query.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
+      let opened = '';
       for (const pose of likeness) {
         const l = pose.likeness!, dir = join(pose.out ?? job.out, pose.key);
         try {
+          const q = pose.query ?? job.query, w = useWorld(pose.out ?? job.out);
+          if (opened !== `${q}|${w}`) {
+            if (opened) await page.goto('about:blank');
+            await openPage(page, { ...job, query: [q.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
+            opened = `${q}|${w}`;
+          }
           await page.setViewportSize({ width: l.width, height: l.height });
           const at = { lngLat: l.lngLat, headingDeg: l.headingDeg, fps: l.fps };
           await setPose(page, at); await page.waitForTimeout(job.settleMs); await setPose(page, at);
@@ -115,7 +125,9 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: impo
     try {
       // The default engine and camera: the job's query only (no engine=own, no cam=fps unless the query asks).
       // 'relative' steering keeps the rider's heading: 'street' mode turns a parked rider onto the nearest street.
-      await openRoute(page, { travelMode: 'car', query: job.query ? `?${job.query.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
+      useWorld(a.out);
+      const q = job.poses.find(p => (p.out ?? job.out) === a.out)?.query ?? job.query;
+      await openRoute(page, { travelMode: 'car', query: q ? `?${q.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
       await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
       await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
       const at = { lngLat: a.lngLat, headingDeg: a.headingDeg, fps: {} };
@@ -238,6 +250,7 @@ test('house frames', async ({ page, browser }) => {
       }
     }
   }
+  let r10World = '';
   if (job.rule10) await rule10Frames(browser, job, async ctx => {
     if (bundles) await ctx.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
       const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
@@ -247,7 +260,11 @@ test('house frames', async ({ page, browser }) => {
       const file = join(specsDir, /\/house-specs\/(14\/\d+\/\d+\.json\.gz)/.exec(route.request().url())![1]);
       return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/octet-stream' }) : route.continue();
     });
-  });
+    if (worlds.length) await ctx.route(/\/data\/extracts\/amsterdam\/world-v1\/([\w/.-]+?)(\?.*)?$/, route => {
+      const file = r10World && join(r10World, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]);
+      return file && existsSync(file) ? route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.continue();
+    });
+  }, out => (r10World = worlds.find(([name]) => basename(out) === name)?.[1] ?? ''));
   const wallMs = Date.now() - t0, outs = [...new Set(job.poses.map(p => p.out ?? job.out))];
   if (outs.length === 1) writeFileSync(join(outs[0], 'browser-timings.json'), JSON.stringify({ poses: job.poses.length, wallMs, opened, timings }, null, 1));
   else for (const out of outs) {
