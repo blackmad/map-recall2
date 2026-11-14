@@ -5365,7 +5365,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -69.04818725585938,
+          -69.10665130615234,
           0,
           -51.43000030517578
         ],
@@ -5386,25 +5386,25 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 138.12540435791016,
+        "widthMetres": 138.18386840820312,
         "heightMetres": 11.742252349853516,
         "depthMetres": 102.86999893188477,
         "depthCoverage": 1.0046406097335432
       },
-      "triangles": 10037,
-      "bytes": 133692,
+      "triangles": 9215,
+      "bytes": 123316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "00dccd677959bdce",
+        "sourceHash": "7c392a9ac9c771d5",
         "buildVersion": 2,
-        "bytes": 36728,
-        "triangles": 1661
+        "bytes": 35356,
+        "triangles": 1565
       },
       "lod2": {
-        "sourceHash": "00dccd677959bdce",
+        "sourceHash": "7c392a9ac9c771d5",
         "buildVersion": 6,
-        "bytes": 8328,
-        "triangles": 280
+        "bytes": 9044,
+        "triangles": 328
       }
     },
     "huis-bartolotti": {
@@ -95517,6 +95517,545 @@
         "buildVersion": 6,
         "bytes": 19536,
         "triangles": 895
+      }
+    },
+    "de-bonte-zwaan": {
+      "id": "de-bonte-zwaan",
+      "name": "De Bonte Zwaan",
+      "modelUrl": "./models/de-bonte-zwaan.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012240915"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8802732,
+          52.39678465
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 48,
+        "widthMetres": 44.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.8802732,
+          52.39678465
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012240915 outline (RD, PDOK BAG WFS, CC0); the 3DBAG LoD2.2 shell (CC BY 4.0) gives the low saddle roof, eaves 11.7 and crown 12.8 m NAP. The building floats: heights are above the water line (IJ about -0.4 m NAP), not the 3DBAG ground (-2.52 m NAP, the harbour bed). Hull, storeys, bays, portholes, towers, emblem and lettering measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) w01-140 (2021-03-24), w02-320 (2021-01-21), w03-230 (2020/2022) and w04-50 (2016); gangways from the PDOK 2025 orthophoto (scripts/landmarks/de-bonte-zwaan-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 13.1,
+      "bagYear": 1966,
+      "materialOverrides": {
+        "stone": "#c3cac6",
+        "greyBrick": "#4a4f56",
+        "dark": "#23262c",
+        "slate": "#5d6468",
+        "blue": "#a7b8b4",
+        "frame": "#4b535a",
+        "glass": "#3c4a55",
+        "concrete": "#6d6f70",
+        "pink": "#e4e7e4",
+        "bronze": "#23262c"
+      },
+      "attribution": {
+        "title": "De Bonte Zwaan, Haparandadam 7 (floating office building, 1966, built at the NDSM yard for the KNSM)",
+        "author": "Map Recall",
+        "sourceUrl": "https://mva.nl/en/huur/bedrijfsruimtes/bog-haparandadam-7",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the black pontoon hull with its row of portholes, the dark ground storey and walkway, two storeys of pale corrugated siding with fourteen bays of three-light windows, the low saddle roof with its pale fascia, the white SW stair tower with the winged-ship emblem and BONTE ZWAAN lettering, the black NE stair tower, deck railings and the two white trussed gangways to the dam; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8804369,
+              52.396986
+            ],
+            [
+              4.8799213,
+              52.3967185
+            ],
+            [
+              4.8801096,
+              52.396583
+            ],
+            [
+              4.880625,
+              52.396851
+            ],
+            [
+              4.8804369,
+              52.396986
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -24.09198570251465,
+          0,
+          -22.421052932739258
+        ],
+        "max": [
+          27.658931732177734,
+          13.100000381469727,
+          22.4489688873291
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8802732,
+          52.39678465
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 51.75091743469238,
+        "heightMetres": 13.100000381469727,
+        "depthMetres": 44.87002182006836,
+        "depthCoverage": 1.0038036201357574
+      },
+      "triangles": 6805,
+      "bytes": 102608,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "b15629288e6eedf3",
+        "buildVersion": 2,
+        "bytes": 38120,
+        "triangles": 1701
+      },
+      "lod2": {
+        "sourceHash": "b15629288e6eedf3",
+        "buildVersion": 6,
+        "bytes": 6112,
+        "triangles": 154
+      }
+    },
+    "hotel-boat-and-co": {
+      "id": "hotel-boat-and-co",
+      "name": "Hotel Boat&Co",
+      "modelUrl": "./models/hotel-boat-and-co.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012250188"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88206363,
+          52.39450143
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 64.1,
+        "widthMetres": 67.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.88206363,
+          52.39450143
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012250188 outline (RD, PDOK BAG WFS, CC0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0): mansard foot 14.2-15.2 m, flat top 18.0 m, atrium roof 14.3 m above the 0.68 m NAP ground, courtyard and atrium outlines read off the roof planes. Storeys, oriels, dormers and lettering measured on Gemeente Amsterdam panoramas (CC BY 4.0) from the water (2021-01-21) and the Revaleiland streets (2020, 2024, 2025); terrace from the PDOK 2025 orthophoto (scripts/landmarks/hotel-boat-and-co-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 18.7,
+      "bagYear": 2019,
+      "materialOverrides": {
+        "brick": "#8c4436",
+        "stone": "#8f9496",
+        "slate": "#7d8a8f",
+        "frame": "#d4d3cc",
+        "glass": "#3c4850",
+        "bronze": "#5e4a3a",
+        "concrete": "#a29a8e",
+        "green": "#2f5f57",
+        "dark": "#2a2c2e",
+        "white": "#e8e8e4",
+        "greyBrick": "#2a2c2e"
+      },
+      "attribution": {
+        "title": "Hotel Boat&Co (The July), Revaleiland 500 (Kollhoff & Pols Architecten, 2019)",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.baunetz.de/meldungen/Meldungen-Hans_Kollhoff_plant_im_Houthavens_4825603.html",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the H-shaped brick hotel with its natural-stone plinth, stone cornices, oriel bays, zinc mansard with pointed-arch dormers, the two corner pavilions on the IJ with their wide pointed dormers and the BOAT&CO and HOTEL lettering, the terrace over the courtyard's ground storey and the glazed atrium on the Revaleiland; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8824274,
+              52.3944778
+            ],
+            [
+              4.8820523,
+              52.3947483
+            ],
+            [
+              4.8820576,
+              52.394751
+            ],
+            [
+              4.8820359,
+              52.3947666
+            ],
+            [
+              4.882041,
+              52.3947693
+            ],
+            [
+              4.881993,
+              52.3948039
+            ],
+            [
+              4.8819879,
+              52.3948012
+            ],
+            [
+              4.881966,
+              52.3948169
+            ],
+            [
+              4.8819424,
+              52.3948047
+            ],
+            [
+              4.8819367,
+              52.3948088
+            ],
+            [
+              4.8819092,
+              52.3947945
+            ],
+            [
+              4.8819149,
+              52.3947904
+            ],
+            [
+              4.88188,
+              52.3947724
+            ],
+            [
+              4.8818743,
+              52.3947765
+            ],
+            [
+              4.8818468,
+              52.3947621
+            ],
+            [
+              4.8818524,
+              52.3947581
+            ],
+            [
+              4.8818177,
+              52.3947401
+            ],
+            [
+              4.8818121,
+              52.3947442
+            ],
+            [
+              4.8817844,
+              52.3947298
+            ],
+            [
+              4.88179,
+              52.3947257
+            ],
+            [
+              4.8817554,
+              52.3947078
+            ],
+            [
+              4.8817498,
+              52.3947118
+            ],
+            [
+              4.8817222,
+              52.3946975
+            ],
+            [
+              4.8817278,
+              52.3946935
+            ],
+            [
+              4.881693,
+              52.3946755
+            ],
+            [
+              4.8816874,
+              52.3946796
+            ],
+            [
+              4.8816598,
+              52.3946652
+            ],
+            [
+              4.8816654,
+              52.3946612
+            ],
+            [
+              4.8816306,
+              52.3946432
+            ],
+            [
+              4.8816249,
+              52.3946473
+            ],
+            [
+              4.8815978,
+              52.394633
+            ],
+            [
+              4.8816033,
+              52.394629
+            ],
+            [
+              4.88158,
+              52.3946169
+            ],
+            [
+              4.881632,
+              52.3945794
+            ],
+            [
+              4.8816621,
+              52.3945575
+            ],
+            [
+              4.8817143,
+              52.3945202
+            ],
+            [
+              4.8817172,
+              52.3945217
+            ],
+            [
+              4.882007,
+              52.3943126
+            ],
+            [
+              4.882004,
+              52.3943111
+            ],
+            [
+              4.8820461,
+              52.3942808
+            ],
+            [
+              4.882045,
+              52.3942802
+            ],
+            [
+              4.8820544,
+              52.3942736
+            ],
+            [
+              4.8820554,
+              52.3942741
+            ],
+            [
+              4.8820873,
+              52.3942513
+            ],
+            [
+              4.8820862,
+              52.3942507
+            ],
+            [
+              4.8820954,
+              52.394244
+            ],
+            [
+              4.8820965,
+              52.3942446
+            ],
+            [
+              4.8821386,
+              52.3942145
+            ],
+            [
+              4.8821619,
+              52.3942266
+            ],
+            [
+              4.8821674,
+              52.3942226
+            ],
+            [
+              4.8821948,
+              52.3942369
+            ],
+            [
+              4.8821894,
+              52.3942408
+            ],
+            [
+              4.8822241,
+              52.3942589
+            ],
+            [
+              4.8822297,
+              52.3942549
+            ],
+            [
+              4.882257,
+              52.3942692
+            ],
+            [
+              4.8822516,
+              52.3942731
+            ],
+            [
+              4.8822865,
+              52.3942912
+            ],
+            [
+              4.882292,
+              52.3942872
+            ],
+            [
+              4.8823197,
+              52.3943015
+            ],
+            [
+              4.8823141,
+              52.3943056
+            ],
+            [
+              4.8823488,
+              52.3943236
+            ],
+            [
+              4.8823543,
+              52.3943196
+            ],
+            [
+              4.882382,
+              52.3943339
+            ],
+            [
+              4.8823764,
+              52.3943379
+            ],
+            [
+              4.8824111,
+              52.3943559
+            ],
+            [
+              4.8824166,
+              52.3943519
+            ],
+            [
+              4.8824443,
+              52.3943662
+            ],
+            [
+              4.8824387,
+              52.3943702
+            ],
+            [
+              4.8824733,
+              52.3943882
+            ],
+            [
+              4.8824789,
+              52.3943841
+            ],
+            [
+              4.8825066,
+              52.3943984
+            ],
+            [
+              4.882501,
+              52.3944025
+            ],
+            [
+              4.8825241,
+              52.3944145
+            ],
+            [
+              4.8825025,
+              52.3944301
+            ],
+            [
+              4.8825077,
+              52.3944328
+            ],
+            [
+              4.88246,
+              52.3944675
+            ],
+            [
+              4.8824547,
+              52.3944648
+            ],
+            [
+              4.8824328,
+              52.3944806
+            ],
+            [
+              4.8824274,
+              52.3944778
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -33.06102752685547,
+          0,
+          -35.379302978515625
+        ],
+        "max": [
+          31.508466720581055,
+          24,
+          32.193145751953125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88206363,
+          52.39450143
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 67.57244873046875,
+        "heightMetres": 24,
+        "depthMetres": 64.56949424743652,
+        "depthCoverage": 0.9622875446711853
+      },
+      "triangles": 17862,
+      "bytes": 258660,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "60d217b900023fb2",
+        "buildVersion": 2,
+        "bytes": 98428,
+        "triangles": 6161
+      },
+      "lod2": {
+        "sourceHash": "60d217b900023fb2",
+        "buildVersion": 6,
+        "bytes": 23668,
+        "triangles": 1438
       }
     }
   }

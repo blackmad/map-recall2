@@ -113,6 +113,7 @@ stations, ornamented historic fronts.
 node --import tsx scripts/landmarks/landmark-brief.ts --pand=<16-digit BAG id> --id=<id>   # brief + inventory skeleton from panoramas
 node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=<id>                   # export the GLB
 npm run audit:glb -- --id=<id>                 # hard gates, inventory, z-fight
+node --import tsx scripts/landmarks/check-glb-openings.ts --id=<id>   # openings stand on their walls (allow-list may only shrink; build-manual-landmarks runs it too)
 npm run check:landmark-inventory -- --id=<id>
 npm run check:manual-landmarks
 npm run compare:facades -- --id=<id>           # openings per storey vs your elevations spec

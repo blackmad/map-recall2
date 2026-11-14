@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        part: [core, rail, rest]
+        part: [core, rail, rest, joins]
     steps:
       # The landmark-inventory gate dates each model by the commit that first added its GLB, so check:canal needs the
       # history (commits and trees only: blob:none keeps it small). A shallow clone dated every model "today".

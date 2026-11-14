@@ -1965,6 +1965,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Bridge follow-ups from lane F1 (2026-11-13, HISTORY).**
+  - **Regressions it introduced:**
+    - motorway way-deck parapets inside the lanes (Ringweg-Noord OSM7376770 13.8 → 56.6 m, OSM7376548 19 → 28.5 m; `audit-bridge-railings`);
+    - railing steps where survey caps narrow a deck (BRU0407, 0831, 0415, 0664, 1696, 2114, 0299, 0388).
+  - **Still open:**
+    - Lelylaan: streets under a deck drape up to the deck edge; drape them on the ground inside the deck's under-hole ranges.
+    - Torensluis water slit (`WET_CLEAR_M` 2 against 1.9 m: measure city-wide first).
+    - Rembrandtpark culvert hollow, OSM187078829.
+    - Doelensluis (needs a panorama); De Clercqstraat seams #24.
+  - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
+  - **Houthavens landmarks not started:** OBA Spaarndammerbuurt, Blok 0, Pont 13, De Rede.
 - **Building articles, remainder (2026-10-31).** Shipped: article cards on
   1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
   7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints

@@ -23,6 +23,16 @@
 //            +1.2 against platforms at +4.5, lane rail-look round 3), so its level comes from the measured track
 //            past the platforms' ends, never under the relief under its centreline. At a station at grade the track
 //            around is at the platform's level already and nothing moves.
+//   islands  A short run of track off the bridges with bridges at every end (no dead end, no platform, no tunnel
+//            cut, extent within ISLAND_M) is levelled with them as one deck (lane R2-A 2026-11-13, player note 3997ffb6 at
+//            the Zaanstraat): OSM tags 23 m bridge ways over the street, then 60 m of track off the bridges, then a
+//            700 m viaduct, and AHN has no ground under any of it (the street's +0.3 fill). Each piece anchored the
+//            next at the fill, so the beds stepped 3 m off the embankment at +4.7 onto a deck at street level.
+//   abutments  An approach's last ABUTMENT_M before its deck: AHN has no ground under a deck and fills the hole from
+//            the street under it, so the relief dips at the abutment (the Cornelis Lelylaan tram viaduct: +3.85 on the
+//            embankment, +1.0 at the deck's end, +0.2 three metres on). The envelope at the tram's 8 % grade followed the
+//            dip and anchored the deck 1 m low. The approach is held at the highest level within ABUTMENT_M of the end,
+//            on the path from there to the deck.
 //   approachless  A component no approach meets (a tram whose street approaches rail-v1 leaves out): on a measured road
 //            deck it rides that deck, drawn plainly without its slab (`plain`, `onDeck`); elsewhere it spans between
 //            the relief at its own dead ends (`endAnchored`). A bridge way's dead end within SNAP_M of another track
@@ -55,10 +65,14 @@ export const HARMONIC_ITERATIONS = 600, HARMONIC_OMEGA = 1.85;
 export const PLATFORM_EDGE_M = 1;
 /** The envelope lifts a track at most its grade over this many metres (12 m for a main line). */
 export const ENVELOPE_REACH_M = 400;
+/** An approach's level within this many metres of its deck's end is held at the highest level there (abutments). */
+export const ABUTMENT_M = 12;
+/** A run off the bridges between bridges is levelled as a deck when its nodes span at most this many metres (islands). */
+export const ISLAND_M = 150;
 
 /** A way's level along it: bed floor `z` (scene metres) at distances `s` from its first point. */
-export interface WayLevel { s: number[]; z: number[]; /** A bridge way the data cannot place: drawn on the relief without its slab. */ plain?: boolean }
-export interface RailProfileStats { nodes: number; /** Bridge dead ends joined to a nearby track (SNAP_M). */ snapped?: number; /** Components no track meets, spanned between the relief at their dead ends. */ endAnchored?: number; /** Of the plain ones, those riding a measured road deck. */ onDeck?: number; /** Graph points beside a platform, levelled from the track past its ends. */ platformNodes?: number; /** Largest lift of such a point off the bridges over its relief, metres. */ platformLift?: number; /** Where (game frame). */ platformLiftAt?: Vec2; components: number; anchored: number; plain: number; /** Largest lift of the bed over the relief by the envelope, metres. */ maxLift: number }
+export interface WayLevel { s: number[]; z: number[]; /** A bridge way the data cannot place: drawn on the relief without its slab. */ plain?: boolean; /** A way off the bridges levelled with them (islands): a street far under it passes under (railTracks.ts UNDER_STREET_M). */ island?: boolean }
+export interface RailProfileStats { nodes: number; /** Approaches held level up to their deck's end (ABUTMENT_M). */ abutments?: number; /** Runs off the bridges levelled with the bridges at their ends (ISLAND_M). */ islands?: number; /** Bridge dead ends joined to a nearby track (SNAP_M). */ snapped?: number; /** Components no track meets, spanned between the relief at their dead ends. */ endAnchored?: number; /** Of the plain ones, those riding a measured road deck. */ onDeck?: number; /** Graph points beside a platform, levelled from the track past its ends. */ platformNodes?: number; /** Largest lift of such a point off the bridges over its relief, metres. */ platformLift?: number; /** Where (game frame). */ platformLiftAt?: Vec2; components: number; anchored: number; plain: number; /** Largest lift of the bed over the relief by the envelope, metres. */ maxLift: number }
 
 /** A way's identity across cells (each cell decodes its own copy). */
 export const railWayKey = (w: RailWay): string => `${w.kind}${w.bridge ? 'b' : ''}${w.service ? 's' : ''}:${w.points.map(p => `${Math.round(p[0] * 10)},${Math.round(p[1] * 10)}`).join(';')}`;
@@ -97,7 +111,7 @@ class Heap {
  * Levels for `ways` (the cell's own tracks), solved on the graph of `graph` (the 3×3 neighbourhood's tracks; the
  * cell's own are added when missing). `height`: the riding surface (relief and decks).
  */
-export function railLevels(ways: readonly RailWay[], graph: readonly RailWay[], height: HeightFn, box?: readonly [number, number, number, number], measured?: (x: number, y: number) => boolean, onDeck?: (x: number, y: number) => boolean, platforms: readonly RailPlatform[] = []): { levels: Map<RailWay, WayLevel>; stats: RailProfileStats } {
+export function railLevels(ways: readonly RailWay[], graph: readonly RailWay[], height: HeightFn, box?: readonly [number, number, number, number], measured?: (x: number, y: number) => boolean, onDeck?: (x: number, y: number) => boolean, platforms: readonly RailPlatform[] = [], opts: { /** Level short runs between bridges with them (ISLAND_M); default on. */ islands?: boolean; /** Hold approaches level up to their deck's end (ABUTMENT_M); default on. */ abutments?: boolean } = {}): { levels: Map<RailWay, WayLevel>; stats: RailProfileStats } {
   const atPlatform = platformTest(stationHulls(platforms), PLATFORM_REACH_M), onPlatform = platformTest(platforms, PLATFORM_EDGE_M);
   // Only the graph inside `box` (the cell and PROFILE_PAD_M around it, where the relief is loaded whatever else is).
   const inBox = (p: Vec2) => !box || (p[0] >= box[0] && p[0] <= box[2] && p[1] >= box[1] && p[1] <= box[3]);
@@ -149,6 +163,7 @@ export function railLevels(ways: readonly RailWay[], graph: readonly RailWay[], 
     adj[i].push({ to: best, len: Math.max(bd, 0.1), bridge: false, grade: g }); adj[best].push({ to: i, len: Math.max(bd, 0.1), bridge: false, grade: g });
     snapped++;
   }
+  const islandNode = new Uint8Array(pos.length), islands = opts.islands === false ? 0 : levelIslands(pos, adj, under, onBridge, islandNode, measured);
   const N = pos.length, onGround = adj.map(es => es.some(e => !e.bridge)), z = new Float64Array(N).fill(NaN);
   // Envelope over the tracks off the bridges: z(n) = max(relief(n), z(m) − grade · len) along ground edges.
   // A point whose floor is measured (a tunnel cut's ramp, tunnels.ts) keeps it: the envelope never lifts it.
@@ -170,6 +185,7 @@ export function railLevels(ways: readonly RailWay[], graph: readonly RailWay[], 
     }
   }
   for (let i = 0; i < N; i++) if (onGround[i]) { z[i] = env[i]; maxLift = Math.max(maxLift, env[i] - h0[i]); }
+  const abutments = opts.abutments === false ? 0 : holdAbutments(adj, onGround, fixed, z);
   // Deck components: bridge ways and the track beside a platform, meeting each other. A component's level at its
   // boundary points (where a track off the decks meets it) is that track's level; inside, the deck runs between them.
   const comp = new Int32Array(N).fill(-1);
@@ -239,9 +255,71 @@ export function railLevels(ways: readonly RailWay[], graph: readonly RailWay[], 
     const wn = wayNodes.get(railWayKey(w));
     if (!wn) continue;
     const zz = wn.nodes.map((i, j) => (i < 0 ? height(wn.p[j][0], wn.p[j][1]) : Number.isNaN(z[i]) ? h0[i] : z[i]));
-    levels.set(w, { s: wn.s, z: zz, ...(w.bridge && wn.nodes.some(i => plainNodes.has(i)) ? { plain: true } : {}) });
+    levels.set(w, { s: wn.s, z: zz, ...(w.bridge && wn.nodes.some(i => plainNodes.has(i)) ? { plain: true } : {}), ...(!w.bridge && wn.nodes.some(i => i >= 0 && islandNode[i]) ? { island: true } : {}) });
   }
-  return { levels, stats: { ...liftAt(), nodes: N, snapped, components, anchored, plain, endAnchored, onDeck: onDeckComps, platformNodes: under.filter(Boolean).length, platformLift: +under.reduce((m, u, i) => (u && !onBridge[i] && !Number.isNaN(z[i]) ? Math.max(m, z[i] - h0[i]) : m), 0).toFixed(2), maxLift: +maxLift.toFixed(2) } };
+  return { levels, stats: { ...liftAt(), nodes: N, ...(islands ? { islands } : {}), ...(abutments ? { abutments } : {}), snapped, components, anchored, plain, endAnchored, onDeck: onDeckComps, platformNodes: under.filter(Boolean).length, platformLift: +under.reduce((m, u, i) => (u && !onBridge[i] && !Number.isNaN(z[i]) ? Math.max(m, z[i] - h0[i]) : m), 0).toFixed(2), maxLift: +maxLift.toFixed(2) } };
+}
+
+/**
+ * Abutments (lane R2-A): from every point where an approach meets a deck, the approach's points within ABUTMENT_M (by
+ * path) are lifted to the highest level found there, on the path from that point back to the deck. Fixed points (a
+ * dead end, a tunnel's measured floor) are neither lifted nor passed. Returns how many contacts were lifted.
+ */
+function holdAbutments(adj: readonly { to: number; len: number; bridge: boolean }[][], onGround: readonly boolean[], fixed: readonly boolean[], z: Float64Array): number {
+  let count = 0;
+  for (let a = 0; a < adj.length; a++) {
+    if (!onGround[a] || fixed[a] || !adj[a].some(e => e.bridge)) continue;
+    const dist = new Map<number, number>([[a, 0]]), prev = new Map<number, number>(), heap = new Heap();
+    heap.push(0, a);
+    let best = a;
+    while (heap.size) {
+      const [nd, i] = heap.pop(), d = -nd;
+      if (d > dist.get(i)!) continue;
+      if (z[i] > z[best]) best = i;
+      for (const e of adj[i]) {
+        if (e.bridge || fixed[e.to] || !onGround[e.to]) continue;
+        const d2 = d + e.len;
+        if (d2 <= ABUTMENT_M && d2 < (dist.get(e.to) ?? Infinity)) { dist.set(e.to, d2); prev.set(e.to, i); heap.push(-d2, e.to); }
+      }
+    }
+    if (best === a) continue;
+    const top = z[best];
+    for (let i: number | undefined = prev.get(best); i !== undefined; i = prev.get(i)) if (z[i] < top) z[i] = top;
+    count++;
+  }
+  return count;
+}
+
+/**
+ * Islands (lane R2-A): the components of the graph's edges off the bridges whose every way out is a bridge. One whose
+ * nodes span at most ISLAND_M, with no dead end (a portal, a buffer stop), no node beside a platform and none in a
+ * tunnel cut's box, becomes deck: its edges are marked bridge, so the deck component around it takes its level from the
+ * approaches beyond (never under the relief). Returns how many.
+ */
+function levelIslands(pos: readonly Vec2[], adj: { to: number; len: number; bridge: boolean; grade: number }[][], under: readonly boolean[], onBridge: readonly number[], islandNode: Uint8Array, measured?: (x: number, y: number) => boolean): number {
+  const seen = new Uint8Array(pos.length);
+  let count = 0;
+  for (let s0 = 0; s0 < pos.length; s0++) {
+    if (seen[s0] || !adj[s0].some(e => !e.bridge)) continue;
+    const members: number[] = [];
+    seen[s0] = 1;
+    for (const q = [s0]; q.length;) {
+      const i = q.pop()!; members.push(i);
+      for (const e of adj[i]) if (!e.bridge && !seen[e.to]) { seen[e.to] = 1; q.push(e.to); }
+    }
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, contacts = 0, ok = true;
+    for (const i of members) {
+      const [x, y] = pos[i];
+      x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y);
+      if (adj[i].length === 1 || under[i] || measured?.(x, y)) ok = false;
+      if (onBridge[i]) contacts++;
+    }
+    if (!ok || contacts < 2 || Math.hypot(x1 - x0, y1 - y0) > ISLAND_M) continue;
+    const set = new Set(members);
+    for (const i of members) { islandNode[i] = 1; for (const e of adj[i]) if (set.has(e.to)) e.bridge = true; }
+    count++;
+  }
+  return count;
 }
 
 /**

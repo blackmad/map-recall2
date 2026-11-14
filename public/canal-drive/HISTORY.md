@@ -14,6 +14,62 @@
   - Kit/ordinary parity score (`kit-parity.ts`; mean P 0.26–0.36 per face).
   - The wall rule `look/wallRule.ts` behind `?wallRule=1` / `WALL_RULE=1`. Measured walls skip the `cityWallTint` lift (palette.ts:593, L → 0.12 + 0.9·L, which made kit walls flat taupe). Census: 1,842 wall materials in 885 installed GLBs would draw a median 0.076 L darker. That is the "model path lightens dark walls" complaint, measured.
 
+
+**Rails meet their decks; city-wide check:rail-joins (2026-11-13, lane R2-A, cherry-picked from lane/r2-rail-joins-20261113).**
+- **Why.** Feedback bc28e25e (Lelylaan tram decks stepping down) and 3997ffb6 (Zaanstraat viaduct broken into stepped decks).
+- **Check.** `check:rail-joins` (`check-rail-joins.ts`, pure `railJoins.ts`) samples the ballast every 0.5 m over ±8 m at every bridge join and fails on a missing sample, a step over 0.15 m, or a slope over 1.5× RAIL_GRADE. Free ends must stay within 3 m of land or a deck. Road/rail crossings need 3 m of clearance. Allow-list `rail-joins-allow.json` (725 entries, may only shrink). It takes 10–16 min city-wide, so it has its own CI matrix part, `check:canal:joins`.
+- **Fixes** (GroundStore options):
+  - `railIslands`: runs of 150 m or less between bridges are levelled with the decks.
+  - `railAbutments`: within 12 m of a deck end the track holds the deck's height.
+  - `railUnderStreets`: near deck ends, a street 2.5 m or more below the bed passes under it. Applying this everywhere took the Radarweg clearance from 2.33 to 0.79 m, so it is limited to deck ends.
+- **Counts.** Failures 1,276 → 725, none new: joins 465 → 51, free ends 11 → 0, crossings 800 → 674. Pins: lelylaan-tram-decks 3 → 0; zaanstraat-rail-yard-viaduct 57 → 1 (a footway with 2.96 m of the 3 m clearance, allow-listed).
+- **Allow-listed.** Rail bridges over cycleways drawn about 0.3 m up; Ringweg-West/Zuid road decks 1.6–2.3 m over the ballast; the Radarweg yard deck about 1 m over it; metro footbridges with negative clearance; Lelylaan tram foot and cycle crossings at 0.6–0.7 m.
+
+**Bridge decks: plein railings, survey caps, bascule kerbs, way decks over end holes (2026-11-13, lane F1, cherry-picked from lane/fb-bridges-20261113).**
+- **Why.** Feedback #13 c7a55085 (Muntplein "gates"), #23 8b91c88c (Rijckerbrug slab), #41 c5313f12 (Machineslootbrug), #11 6b239d90 (Aluminiumbrug white line), 07ec0473 (Lelylaan slab).
+- **Fixes.** Each one has a flag that restores the old behaviour:
+  - plein-sized decks get no railing stubs inside traffic (`?pleinRails=0`); the survey must run 6 m past the edge, so OSM 942202252 keeps its railings;
+  - survey caps trim kit edges to the surveyed deck (`?surveyCaps=0`), except where a profile spans two bridges (BRU0420);
+  - bascule leaf kerbs run along the leaf edges;
+  - way decks over an end hole run on to the top of the bank (`?holeClimb=0`). At Lelylaan OSM 7382983 the notch went from 2.33 to 0.02 m.
+- **Pins.** `scripts/own-ground/bridge-feedback-pins.ts`, run from check-ground-spots, so they gate check:canal:rest: Muntplein rails, BRU0167, BRU0358, OSM7382983, and OSM7382981 (a ceiling of 0.75 m).
+- **City-wide.**
+  - Way decks: 24 of 1,310 change, none worse; notches over 0.5 m went from 74 to 57.
+  - Parapet inside traffic: 1,167 → 812 m.
+- **Regressions accepted, now on TODO.**
+  - Survey caps put a step in the railing on about 8 narrowing decks.
+  - The hole climb lengthens the parapets that already stood inside the lanes on motorway way decks (Ringweg-Noord OSM7376770, 13.8 → 56.6 m).
+- **Not fixed.**
+  - Lelylaan: the cycle path under the deck drapes up to the deck edge in torn sheets.
+  - a5806a8e: a normal 10 % approach grade, pinned as a ceiling.
+  - Rembrandtpark culvert hollow, OSM187078829.
+  - Torensluis water slit: wetGround polygons sit 1.9 m over the water, just under `WET_CLEAR_M` = 2.
+  - Doelensluis needs a panorama; De Clercqstraat was not investigated; Oost-Indische Huisbrug and Da Costakade were not reproduced.
+  - The Kinkerbrug house is a building job.
+  - The Muntplein water question is correct (Muntsluis crosses the Singel). The proposal is to ask crossing questions only when open water is visible within about 15 m.
+
+**Houthavens landmarks: De Bonte Zwaan and Hotel Boat&Co; pointedDormer kit component (2026-11-13, lane H-HV, cherry-picked from lane/houthavens-landmarks-20261113).**
+- **Why.** User: "houthavens landmark modeling at some point soon", plus feedback notes 7517fef7 (Haparandadam) and 428505e5 (the Wiborgeiland brown block).
+- **De Bonte Zwaan** (BAG 0363100012240915, 1966; a floating KNSM office built at NDSM). 6.8k triangles from the 2016–2021 panoramas, the PDOK orthophoto and 3DBAG: hull with portholes, ribbon windows, SE walkway, white SW tower with emblem and lettering, black NE tower, two trussed gangways.
+- **Hotel Boat&Co / The July** (BAG 0363100012250188, 2019, Kollhoff & Pols). 17.9k triangles: stone plinth, brick body, zinc mansard with lancet dormers (four close-set on each SW arm end), lettered corner pavilions, bronze-mullioned atrium, IJ-side terrace.
+- **Integrator review.** The 4-side renders showed mirrored sign backs and visible back faces (the walkway end caps); both were fixed in d07557905 before the merge.
+- **Kit.** `src/canalRecall/landmarks/pointedDormer.ts` (in test:landmark-kits) and `scripts/landmarks/houthavens-kit.ts`. The kit still cannot say: bowed brick ends with rounded roofs, bell or curved pavilion roofs, a curved glass atrium, arched door heads, flags, and hulls below the waterline (the below-ground check fails them). A dormer on the wall line has its glass judged against the wall below by the audit, so the plain dormers sit 0.35 m back and read about 0.7 m short.
+- **Integration.** Signature bundle, lods and covers rebuilt. The lod2 budget was raised from 6 to 6.5 MB, because the set reached 6.01 MB at 463 models.
+- **Not started.** OBA Spaarndammerbuurt, Blok 0 plots 8/9, Pont 13, and De Rede with the held Haparandaweg row.
+
+**Ground look: open ground clipped to the parks, sand as earth, big asphalt squares as asphalt (2026-11-13, lane R2-D, cherry-picked).**
+- **Why.** Feedback ab50459f "shimmery triangles" in the Rembrandtpark; yellow slabs at Houthavens/Wiborgeiland building sites; pale paving on the A10 slip roads at Lelylaan.
+- **Parks.** open-ground-v1 was clipped against the roads but not parks-v1: 0.83 km² of meadow on park lawn and 1.2 km² of shrub on park shrub at the same lift and offset rank, so the depth buffer picked per triangle. `clip-open-ground.ts` now subtracts the parks too (G1's earlier "null" overlap intersected all neighbours at once, which reads ~0). open-ground-v2 published (291 cells, 8 MB gz); `?openGroundClip=0` reads v1. Pins in `r2GroundRegressions.ts` / `check-ground-spots.ts`; frames in `tests/e2e/r2-ground-frames.spec.ts`.
+- **Sand.** BGT zand that the CIR aerial does not show green is grey-beige on the 2025 photo (building sites, rough ground), so it draws in the `bare` earth layer instead of play sand. Only 2.8 % lies under footprints, so no reclassification.
+- **Asphalt squares.** BGT gesloten verharding of 800 m² or more filed as `square`/asphalt (the Lelylaan slip roads, 275 ha city-wide) draws asphalt; smaller squares, islands and berms keep pavement grey.
+- **Not changed.** Haparandadam is a pontoon in the data; no land added.
+
+**Landmark GLB openings gate; De Hallen fixed (2026-11-13, lane R2-C 0aa21b0bc, cherry-picked).**
+- **Why.** User: "windows look weird / off building, do we have a rule/check for floating windows?" (De Hallen), plus "floating windows" at the Haparandaweg (Houthavens). `geometryAudit.ts` already measured openings, but only as baselined warnings, never wired into check:canal or the landmark build; and a rule dropped any assembly > 0.6 m from every surface as free-standing glazing, so De Hallen's windows 6 m out were never reported.
+- **Gate.** `check-glb-openings.ts`: per model `float` (> 10 cm clear of every surface), `poke` (sunk behind or past the wall), `outside` (past the silhouette or through the roof). Shrink-only allow-list `opening-wall-allowlist.json`; models without an entry must be 0. Runs inside `build-manual-landmarks.ts` on every model it builds; `test:glb-openings` (fixture: pre-fix De Hallen) is in check:canal:rest. The full sweep (`check:glb-openings`, 463 models, 18 min cold, ~1 s cached) is not in CI yet: wants a 4-shard matrix with a `.cache/glb-openings` cache.
+- **First sweep.** 252 of 463 models have something: float 385, poke 1,424, outside 2,677; worst float melkweg, walloon-church, occii, fire-station-pieter, social-history; poke/outside rijksmuseum, stadhuis, het-veem. 81 inline builders in build-manual-landmarks.ts hold the biggest share.
+- **De Hallen.** `hallen-house-builders.ts` put every window of a bay at the bay's most outward wall x; the surveyed front steps back up to 6 m. Windows, gables and ribs now stand on the wall at their own z, with step returns: float 42 → 0. lods rebuilt.
+- **Haparandaweg not fixed.** No floating panes in those GLBs; the notes' glass cap and shifted ribbons probably come from kit chunks or the large recipe `recipe-large-houthavenkade-26-247232`. Follow-up: `--set=kit` over the Houthavens chunks and an in-game repro.
 **Round 130 (2026-11-14): world recompile with industrial vetoes and ridge axes; fb3; lane 1 row fronts flag-off.**
 - **World recompile** (`world:compile --shell --against=none`): the F2 industrial table (sheds+works 5,977 → 5,249), F3 drainpipe/fin removal and the shell code covering facade extras (fb3, integrator-lanes-54), and the 3DBAG ridge axes. Ridge tiles published (261 z14 tiles, 1.3 MB, `ridge-axes/`), `RIDGE_AXES_DEFAULT_ON = true` (`?ridgeAxes=0` off; the compile reads them through `gameTileEnricher` with search ''). Before/after: ridges need `?world=live` (baked cells carry the compiled axes and ignore the runtime flag); the aerial pair over Jan Hanzenstraat changes 2.3 % of the frame (back-row gable sawtooth → long roofs), street-level poses showed little. Industrial pair (Nicolaas Ruychaverstraat, Slotermeer, 0363100012151862, not Sloterhof) 46.5 %.
 - **Lane 1** merged at 4073e9193 behind `?rowFront=1`: traced windows as mesher boxes, sub-fronts, one `crownOutline.ts` (382 recipes identical), row-front records published (`public/data/front-records/row-front.json`, 128 records, 19 traced). Window IoU 2-58 upper 0.185 → 0.467.

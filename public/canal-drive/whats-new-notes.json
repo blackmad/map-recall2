@@ -19,6 +19,139 @@
     },
     {
       "date": "2026-11-13",
+      "title": "Tracks meet their bridges",
+      "text": "Railway and tram tracks now run straight onto their bridges. The Cornelis Lelylaan tram decks and the railway viaduct over the Zaanstraat no longer step down onto the ground at their ends. A new city-wide check measures every place where a track meets a bridge and every road–rail crossing, so these breaks can't quietly come back.",
+      "where": [
+        4.8815,
+        52.3864
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-rails-zaan-before.jpg",
+          "alt": "Railway viaduct over the Zaanstraat broken into stepped decks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-zaan-after.jpg",
+          "alt": "One continuous viaduct over the Zaanstraat",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-lely-before.jpg",
+          "alt": "Lelylaan tram tracks stepping down off their decks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-lely-after.jpg",
+          "alt": "Lelylaan tram tracks running onto their decks",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "Bridges without stray gates and slabs",
+      "text": "The odd railing 'gates' across the tram tracks and cycle path on the Muntplein are gone. So are the grey slabs beside the Rijckerbrug and the Machineslootbrug, and the white line across the Aluminiumbrug. The A10 slip bridge at Lelylaan no longer dips into a slanted slab before it reaches the bank.",
+      "where": [
+        4.8936,
+        52.3671
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-bridges-munt-before.jpg",
+          "alt": "Muntplein with railing stubs across the tram tracks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-munt-after.jpg",
+          "alt": "Muntplein with the tracks and cycle path clear",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-rycker-before.jpg",
+          "alt": "A grey slab beside the Rijckerbrug",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-bridges-rycker-after.jpg",
+          "alt": "The Rijckerbrug's railing on the canal edge, no slab",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "De Bonte Zwaan and Hotel Boat&Co in the Houthavens",
+      "text": "Two Houthavens buildings you asked about now have their own models. De Bonte Zwaan is the floating 1960s office on the Haparandadam, with its winged-swan emblem and its gangways. Kollhoff's Hotel Boat&Co on the Revaleiland has pointed zinc dormers and lettered corner pavilions. Both were built from street and water panoramas and replace the generic blocks that stood there.",
+      "where": [
+        4.8745,
+        52.3915
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-hotel-boat-and-co.jpg",
+          "alt": "Hotel Boat&Co on the Revaleiland, red brick with a zinc mansard and two lettered corner pavilions",
+          "caption": "Hotel Boat&Co"
+        },
+        {
+          "src": "whats-new/2026-11-13-de-bonte-zwaan.jpg",
+          "alt": "De Bonte Zwaan, a long grey floating office with a white end tower",
+          "caption": "De Bonte Zwaan"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "Cleaner parks, building sites and slip roads",
+      "text": "Parks now draw their lawns and shrubs once instead of twice, so the shimmering triangles in the Rembrandtpark are gone. Building sites such as Wiborgeiland in the Houthavens are drawn as muted earth instead of a flat yellow slab, and the A10 slip roads at Lelylaan and big paved squares are dark asphalt again instead of pale paving.",
+      "where": [
+        4.8517,
+        52.3655
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-ground-rembrandtpark-before.jpg",
+          "alt": "Rembrandtpark from above with flickering triangle patches",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-rembrandtpark-after.jpg",
+          "alt": "Rembrandtpark from above with clean lawns",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-wiborgeiland-before.jpg",
+          "alt": "Wiborgeiland building site drawn as a yellow slab",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-wiborgeiland-after.jpg",
+          "alt": "Wiborgeiland building site drawn as earth",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-lelylaan-before.jpg",
+          "alt": "Lelylaan slip roads drawn as pale paving",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-ground-lelylaan-after.jpg",
+          "alt": "Lelylaan slip roads drawn as asphalt",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "title": "De Hallen's windows sit on its wall again",
+      "text": "De Hallen's windows and gable ends now sit on the stepped brick front on the Bellamyplein side instead of hanging up to 6 m in front of it. A new check measures every window and door in every landmark model against its wall whenever a landmark is rebuilt, so floating windows can't slip in unnoticed.",
+      "where": [
+        4.8701,
+        52.3667
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Flats are no longer drawn as grey industrial sheds",
       "text": "Some blocks of flats and listed buildings were drawn as blank grey or cream industrial sheds, because the list of building uses we read had dropped every dwelling. Any building with homes in it, a listed monument, a tower, or a small or tall unmapped building now keeps its ordinary look. About 700 buildings changed, 11 of them in the centre. Some of them still get too many window columns; that is a separate fix.",
       "where": [

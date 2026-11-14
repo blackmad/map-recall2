@@ -1,4 +1,11 @@
-// Open ground cut free of the road partition (lane G1 of the Ground v2 plan, item A; issue #376).
+// Open ground cut free of the road partition (lane G1 of the Ground v2 plan, item A; issue #376) and, since lane R2-D
+// (2026-11-13, feedback ab50459f "shimmery triangles" at the Rembrandtpark), free of the parks-v1 surfaces.
+//
+// Parks: open-ground-v1 is cut free of the OSM fills and the raised roads, not of parks-v1, so an open-ground meadow lay
+// coplanar under a parks lawn (the same lift and the same polygon-offset rank) and an open-ground shrub on a parks
+// shrub (the same layer, the same lift): the depth buffer picked one per triangle, a patchwork of striped and plain
+// green. Measured city-wide by scripts/own-ground/audit-open-ground-parks.ts. The parks win (they carry the mowing
+// stripes, the beds and the paths); open ground keeps what they leave open. `--no-parks` stages the roads-only extract.
 //
 // open-ground-v1 (build-open-ground.ts) is cut free of the OSM area fills and the raised (h >= 1) roads-v1 surfaces, but
 // not of the ground-level roads-v1 polygons: BGT's partition keeps terreindeel and wegdeel apart, yet each extract is
@@ -19,6 +26,7 @@ import { join } from 'node:path';
 import polygonClipping from 'polygon-clipping';
 import { decodeLine, encodeLine, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
 import { decodeRoadCell, roadCellDir, type RoadCell, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
+import type { ParksCell } from '../../src/canalRecall/ownGround/parks.ts';
 import type { OpenGroundCell, OpenGroundManifest } from '../../src/canalRecall/ownGround/groundSurface.ts';
 import type { Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 import { OPEN_GROUND_CLIPPED_EXTRACT } from '../../src/canalRecall/ownGround/groundSurface.ts';
@@ -35,6 +43,7 @@ Default staging: public/data/extracts/amsterdam/staging/${OPEN_GROUND_CLIPPED_EX
 const ROOT = 'public/data/extracts/amsterdam';
 const arg = (n: string) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
 if (process.argv.includes('--help') || process.argv.includes('-h')) { console.log(HELP); process.exit(0); }
+const WITH_PARKS = !process.argv.includes('--no-parks');
 const STAGING = arg('--staging') ?? join(ROOT, 'staging', OPEN_GROUND_CLIPPED_EXTRACT);
 const SOURCE = join(ROOT, 'open-ground-v1');
 /** Parts smaller than this (m2) are not drawn (build-open-ground.ts MIN_PART_M2). */
@@ -45,6 +54,21 @@ const MIN_OVERLAP_M2 = 0.05;
 const gz = <T>(f: string): T | null => (existsSync(f) ? (JSON.parse(gunzipSync(readFileSync(f)).toString('utf8')) as T) : null);
 const box = (r: readonly Vec2[]): [number, number, number, number] => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [x, y] of r) { if (x < a) a = x; if (y < b) b = y; if (x > c) c = x; if (y > d) d = y; } return [a, b, c, d]; };
 const closed = (r: Vec2[]): Vec2[] => (r.length && (r[0][0] !== r[r.length - 1][0] || r[0][1] !== r[r.length - 1][1]) ? [...r, r[0]] : r);
+
+/**
+ * subject minus the union of `cutters`. One call first (exact); when polygon-clipping throws on a bad ring (a self-touching
+ * parks polygon: 72 areas city-wide failed and stayed whole, so the Rembrandtpark meadow still lay under a lawn), the
+ * cutters that throw are dropped and the rest subtracted, so a single bad neighbour no longer leaves the area unclipped.
+ */
+let skippedCutters = 0;
+function subtract(subject: Vec2[][], cutters: Vec2[][][]): Vec2[][][] {
+  try { return polygonClipping.difference(subject as any, ...cutters as any) as unknown as Vec2[][][]; } catch { /* drop the bad cutters */ }
+  // A bad ring throws in any operation it takes part in: find the cutters that throw against the subject alone, drop them
+  // (one call each, cheap), then one difference with the rest. Subtracting one at a time instead fragments the subject
+  // and never finished in the dense Centrum cells.
+  const good = cutters.filter(c => { try { polygonClipping.intersection(subject as any, c as any); return true; } catch { skippedCutters++; return false; } });
+  return polygonClipping.difference(subject as any, ...good as any) as unknown as Vec2[][][];
+}
 
 function main(): void {
   if (process.argv.includes('--publish')) {
@@ -75,6 +99,15 @@ function main(): void {
       const rc = gz<RoadCell>(join(roadsDir, `${cx + i}_${cy + j}.json.gz`));
       if (rc) for (const s of decodeRoadCell(rc).surfaces) if (s.h === 0 && s.rings[0].length >= 3) roads.push({ rings: s.rings.map(r => closed(r.slice())), b: box(s.rings[0]), c: s.c });
     }
+    if (WITH_PARKS) {
+      for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) {
+        const pc = gz<ParksCell>(join(ROOT, 'parks-v1', 'cells', `${cx + i}_${cy + j}.json.gz`));
+        for (const s of pc?.surfaces ?? []) {
+          const rings = s.r.map(decodeLine).filter(r => r.length >= 3);
+          if (rings.length) roads.push({ rings: rings.map(r => closed(r.slice())), b: box(rings[0]), c: `park-${s.k}` });
+        }
+      }
+    }
     const areas: OpenGroundCell['areas'] = [];
     let clipped = 0, overlapM2 = 0;
     for (const a of cell.areas) {
@@ -88,16 +121,21 @@ function main(): void {
       let parts: Vec2[][][];
       let over = 0;
       try {
-        const inter = polygonClipping.intersection(subject as any, ...near.map(n => n.rings as any)) as unknown as Vec2[][][];
-        over = inter.reduce((s, p) => s + polygonArea(p), 0);
+        // The overlap is what the union of the neighbours takes off (lane R2-D 2026-11-13: G1 intersected the subject with
+        // all neighbours at once, which is the part common to every one of them, ~0 with two or more: its "measured null"
+        // and the MIN_OVERLAP_M2 skip both read that).
+        parts = subtract(subject, near.map(n => n.rings));
+        over = Math.max(0, polygonArea(rings) - parts.reduce((s, p) => s + polygonArea(p.map(r => r.slice(0, -1))), 0));
         if (over < MIN_OVERLAP_M2) { areas.push(a); continue; }
         // Per class, the overlap (report only).
+        // (A bad neighbour ring throws here: the report skips it, the clip itself is already done.)
         for (const n of near) {
-          const one = polygonClipping.intersection(subject as any, n.rings as any) as unknown as Vec2[][][];
-          const m2 = one.reduce((s, p) => s + polygonArea(p), 0);
-          if (m2 > 0) totals.byClass[n.c] = (totals.byClass[n.c] ?? 0) + m2;
+          try {
+            const one = polygonClipping.intersection(subject as any, n.rings as any) as unknown as Vec2[][][];
+            const m2 = one.reduce((s, p) => s + polygonArea(p), 0);
+            if (m2 > 0) totals.byClass[n.c] = (totals.byClass[n.c] ?? 0) + m2;
+          } catch { skippedCutters++; }
         }
-        parts = polygonClipping.difference(subject as any, ...near.map(n => n.rings as any)) as unknown as Vec2[][][];
       } catch { totals.failures++; areas.push(a); continue; }
       totals.beforeM2 += polygonArea(rings);
       overlapM2 += over; clipped++;
@@ -116,9 +154,9 @@ function main(): void {
     console.log(`${key.padEnd(7)} ${cell.areas.length} areas, ${clipped} clipped, overlap ${overlapM2.toFixed(0)} m2 [${rows.length}/${keys.length}, ${Math.round((Date.now() - t0) / 1000)} s]`);
   }
   const cells = (only ? [...new Set([...(existsSync(join(STAGING, 'cells.json')) ? (JSON.parse(readFileSync(join(STAGING, 'cells.json'), 'utf8')) as OpenGroundManifest).cells : []), ...rows.map(r => r.key)])] : rows.map(r => r.key)).sort();
-  const m: OpenGroundManifest = { ...manifest, cells, provenance: { ...manifest.provenance, clipped: { added: '2026-11-12', script: 'scripts/own-ground/clip-open-ground.ts', what: 'open-ground-v1 minus the roads-v1 ground polygons (h = 0) of the 3x3 neighbourhood; lane G1 item A, issue #376' } } };
+  const m: OpenGroundManifest = { ...manifest, cells, provenance: { ...manifest.provenance, clipped: { added: '2026-11-12', parks: WITH_PARKS ? '2026-11-13' : undefined, script: 'scripts/own-ground/clip-open-ground.ts', what: `open-ground-v1 minus the roads-v1 ground polygons (h = 0)${WITH_PARKS ? ' and the parks-v1 surfaces' : ''} of the 3x3 neighbourhood; lane G1 item A, issue #376${WITH_PARKS ? '; parks: lane R2-D 2026-11-13' : ''}` } } };
   writeFileSync(join(STAGING, 'cells.json'), JSON.stringify(m, null, 1) + '\n');
-  const report = { ...totals, overlapM2: Math.round(totals.overlapM2), beforeM2: Math.round(totals.beforeM2), byClass: Object.fromEntries(Object.entries(totals.byClass).map(([k, v]) => [k, Math.round(v)]).sort((a, b) => (b[1] as number) - (a[1] as number))), rows };
+  const report = { ...totals, skippedCutters, overlapM2: Math.round(totals.overlapM2), beforeM2: Math.round(totals.beforeM2), byClass: Object.fromEntries(Object.entries(totals.byClass).map(([k, v]) => [k, Math.round(v)]).sort((a, b) => (b[1] as number) - (a[1] as number))), rows };
   writeFileSync(join(STAGING, 'report.json'), JSON.stringify(report, null, 1) + '\n');
   console.log(JSON.stringify({ ...report, rows: undefined }));
 }

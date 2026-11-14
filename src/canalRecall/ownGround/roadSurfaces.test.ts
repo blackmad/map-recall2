@@ -7,7 +7,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
-import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEnds, kerbShadowTint, KERB_LINE_M, KERB_SHADOW_M, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
+import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEnds, kerbShadowTint, KERB_LINE_M, KERB_SHADOW_M, ASPHALT_SQUARE_MIN_M2, RoadIndex, ringAreaM2, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
 import { buildStreets, carriageGrid, crossCuts, discOnSurvey, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import { cycleThrough } from './cycleThrough';
@@ -362,4 +362,23 @@ test('RoadIndex.paced: the same polygons in the same order as the one-task build
       assert.deepEqual(paced.findAll(x, y), one.findAll(x, y));
     }
   }
+});
+
+test('road surfaces: a big asphalt square is a carriageway filed as terrain and draws asphalt; a small one stays pavement grey (feedback a5806a8e)', () => {
+  const rect = (x: number, y: number, w: number, h: number): Vec2[] => [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
+  assert.ok(Math.abs(ringAreaM2(rect(0, 0, 40, 30)) - 1200) < 1e-9);
+  const polys: Poly[] = [
+    { c: 'square', k: 'asphalt', ring: rect(0, 0, 40, 30) },           // 1,200 m2: the A10 slip road kind
+    { c: 'square', k: 'asphalt', ring: rect(100, 0, 10, 10) },         // 100 m2: a pavement-level asphalt patch
+    { c: 'square', k: 'paving', ring: rect(200, 0, 40, 30) },          // big, but paving: unchanged
+    { c: 'island', k: 'asphalt', ring: rect(300, 0, 40, 30) },         // big island: unchanged (raised paving, issue #52)
+  ];
+  assert.ok(ringAreaM2(polys[0].ring) >= ASPHALT_SQUARE_MIN_M2 && ringAreaM2(polys[1].ring) < ASPHALT_SQUARE_MIN_M2);
+  const cell = cellOf(polys), { layers } = buildRoadSurfaces(cell, new RoadIndex([cell]), input);
+  const inside = (m: MeshArrays | undefined, x0: number, x1: number) => centroids(m ?? emptyMesh()).filter(c => c[0] >= x0 && c[0] <= x1).length;
+  assert.ok(inside(layers.asphalt, 0, 40) > 0 && inside(layers.paving, 0, 40) === 0, 'the 1,200 m2 square draws asphalt');
+  assert.ok(inside(layers.paving, 100, 110) > 0 && inside(layers.asphalt, 100, 110) === 0, 'the 100 m2 square stays paving');
+  assert.ok(inside(layers.paving, 200, 240) > 0, 'a big paving square stays paving');
+  assert.ok(inside(layers.paving, 300, 340) > 0 && inside(layers.asphalt, 300, 340) === 0, 'a big island stays paving');
+  for (const c of centroids(layers.asphalt!).filter(c => c[0] <= 40)) assert.ok(Math.abs(c[2] - SIDEWALK_TOP) < 1e-6, 'the square keeps its own lift');
 });

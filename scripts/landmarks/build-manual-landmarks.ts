@@ -396,6 +396,8 @@ import {buildSarphatiPlaza} from './sarphati-plaza-builder';
 import {buildApolloHotel} from './apollo-hotel-builder';
 import {buildGraansiloKorthalsAltes} from './graansilo-korthals-altes-builder';
 import {buildBetonnenSiloSilodam} from './betonnen-silo-silodam-builder';
+import {buildDeBonteZwaan} from './de-bonte-zwaan-builder';
+import {buildHotelBoatAndCo} from './hotel-boat-and-co-builder';
 import {buildEffectenbeurs} from './effectenbeurs-builder';
 import {buildHetSieraad} from './het-sieraad-builder';
 import {buildKpnTeleport} from './kpn-teleport-builder';
@@ -1021,6 +1023,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='apollo-hotel')buildApolloHotel(w,d,helpers);
     else if(id==='graansilo-korthals-altes')buildGraansiloKorthalsAltes(w,d,helpers);
     else if(id==='betonnen-silo-silodam')buildBetonnenSiloSilodam(w,d,helpers);
+    else if(id==='de-bonte-zwaan')buildDeBonteZwaan(w,d,helpers);
+    else if(id==='hotel-boat-and-co')buildHotelBoatAndCo(w,d,helpers);
     else if(id==='effectenbeurs')buildEffectenbeurs(w,d,helpers);
     else if(id==='het-sieraad')buildHetSieraad(w,d,helpers);
     else if(id==='kpn-teleport')buildKpnTeleport(w,d,helpers);
@@ -1094,4 +1098,11 @@ for(const id of Object.keys(manifest.models).sort()){
 fs.writeFileSync('src/canalRecall/landmarks/modelAssetVersions.json',JSON.stringify(versions,null,2)+'\n');
 
 refreshModelDates(out);
+// Openings-on-walls gate (check-glb-openings.ts, lane R2-C 2026-11-13): every window/door/pane part of a model built in this run must stand on its wall,
+// within the allow-list that may only shrink. The GLB and manifests are already written, so a failure leaves the files for inspection and exits non-zero.
+if(built.length){
+  const {gateBuilt}=await import('./check-glb-openings');
+  const bad=await gateBuilt(built.map(id=>({id,file:path.join(out,`${id}.glb`)})));
+  if(bad)process.exitCode=1;
+}
 console.log(`build-manual-landmarks: built ${built.length}, skipped ${skipped.length}, external ${externals.length}, ${((Date.now()-startedAt)/1000).toFixed(1)} s`);

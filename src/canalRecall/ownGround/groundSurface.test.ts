@@ -6,6 +6,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { BARE_GRASS_SHARE, ERF_GRASS_SHARE, GROUND_SURFACE_CLASSES, groundSurface, needsAerial, openGroundCellProblems, OPEN_GROUND_COVERS, OPEN_GROUND_EXTRACT, OPEN_GROUND_LAYER, OPEN_GROUND_TOTAL_BUDGET_GZ, type OpenGroundCell, type OpenGroundManifest } from './groundSurface';
 import { OPEN_GROUND_SPOTS } from './openGroundRegressions';
+import { R2_GROUND_PROBES, R2_GROUND_SPOTS } from './r2GroundRegressions';
+import type { ParksCell } from './parks';
 import { decodeLine, inRings, PARK_LIFT } from './parks';
 import { GroundStore, toLocal } from './groundStore';
 import { buildCell, layersAt, GROUND_LAYERS, PARK_RANK, CUT_CHANNEL } from './groundCell';
@@ -119,4 +121,49 @@ test('regression (streamed cell): the open ground draws over the land, off it dr
     assert.equal(!!m1, !!m2, layer);
     if (m1 && m2) { assert.deepEqual(m2.positions, m1.positions, layer); assert.deepEqual(m2.indices, m1.indices, layer); }
   }
+});
+
+// Lane R2-D 2026-11-13 (feedback 762c6e04, b1e259b9, ab50459f).
+test('open ground: the sand cover draws as bare earth, not the play sand (762c6e04 "slab of yellow", b1e259b9)', () => {
+  assert.equal(OPEN_GROUND_LAYER.sand, 'bare');
+  assert.equal(OPEN_GROUND_LAYER.bare, 'bare');
+  // The parks' own sand layer stays the play sand, and is not what open ground draws any more.
+  for (const k of OPEN_GROUND_COVERS) assert.notEqual(OPEN_GROUND_LAYER[k], 'sand', k);
+  // The sand cover's polygons at the two Houthavens spots are in the published extract (the rule applies to them).
+  for (const p of R2_GROUND_PROBES) {
+    const spot = R2_GROUND_SPOTS.find(s => s.name === p.spot)!;
+    const cell = cellOf(spot.cell), [x, y] = toLocal(p.lng, p.lat);
+    const hit = (cell?.areas ?? []).find(a => inRings(a.r.map(decodeLine), x, y));
+    assert.equal(hit?.k, p.cover, `${p.spot}: ${p.what}`);
+    assert.ok(hit!.id.startsWith(p.id.split('#')[0]), `${p.spot}: ${hit?.id}`);
+  }
+});
+
+const haveClipped = existsSync(`${ROOT}/open-ground-v2/cells.json`) && existsSync(`${ROOT}/parks-v1/cells.json`);
+test('open-ground-v2: no open-ground polygon lies on a parks-v1 surface (the Rembrandtpark shimmer: coplanar meadow under lawn)', { skip: !haveClipped }, () => {
+  const manifest = JSON.parse(readFileSync(`${ROOT}/open-ground-v2/cells.json`, 'utf8')) as OpenGroundManifest;
+  assert.ok((manifest.provenance as any)?.clipped?.parks, 'the clipped extract says it was cut free of the parks');
+  const rembrandt = R2_GROUND_SPOTS.find(s => s.name === 'rembrandtpark')!;
+  const [cx, cy] = rembrandt.cell.split('_').map(Number);
+  const gz = <T>(f: string): T | null => existsSync(f) ? JSON.parse(gunzipSync(readFileSync(f)).toString()) as T : null;
+  const parks: { rings: ReturnType<typeof decodeLine>[]; k: string }[] = [];
+  for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (const s of gz<ParksCell>(`${ROOT}/parks-v1/cells/${cx + i}_${cy + j}.json.gz`)?.surfaces ?? []) parks.push({ rings: s.r.map(decodeLine), k: s.k });
+  const clipped = gz<OpenGroundCell>(`${ROOT}/open-ground-v2/cells/${rembrandt.cell}.json.gz`)!, plain = cellOf(rembrandt.cell)!;
+  const share = (cell: OpenGroundCell) => {
+    let n = 0, on = 0;
+    for (const a of cell.areas) {
+      if (a.k !== 'meadow' && a.k !== 'shrub') continue;
+      const rings = a.r.map(decodeLine), xs = rings[0].map(p => p[0]), ys = rings[0].map(p => p[1]);
+      for (let x = Math.min(...xs) + 1; x < Math.max(...xs); x += 4) for (let y = Math.min(...ys) + 1; y < Math.max(...ys); y += 4) {
+        if (!inRings(rings, x, y)) continue;
+        n++;
+        if (parks.some(p => inRings(p.rings, x, y))) on++;
+      }
+    }
+    return { n, on };
+  };
+  const before = share(plain), after = share(clipped);
+  // v1: 110,296 m² of meadow and 37,664 m² of shrub lay on a parks lawn / shrub in this one cell.
+  assert.ok(before.on / before.n > 0.4, `v1 has the overlap (${before.on}/${before.n})`);
+  assert.ok(after.on / after.n < 0.02, `v2 has none: ${after.on} of ${after.n} samples (a shared edge's rounding at most)`);
 });

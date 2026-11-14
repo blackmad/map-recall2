@@ -14,6 +14,10 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { auditCell } from '../../src/canalRecall/ownGround/groundAudit.ts';
 import { GROUND_SPOTS, GROUND_SPOT_RADIUS_M } from '../../src/canalRecall/ownGround/groundRegressions.ts';
+import { R2_GROUND_PROBES, R2_GROUND_SPOTS, R2_ROAD_PROBES, R2_ZFIGHT_M2 } from '../../src/canalRecall/ownGround/r2GroundRegressions.ts';
+import { OPEN_GROUND_LAYER } from '../../src/canalRecall/ownGround/groundSurface.ts';
+import { layersAt } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { bridgeFeedbackRegressions } from './bridge-feedback-pins.ts';
 
 const HELP = `check-ground-spots — G1 pins on the G0 named ground places (issue #376)
 
@@ -22,7 +26,8 @@ const HELP = `check-ground-spots — G1 pins on the G0 named ground places (issu
 Pins (ceilings are G1's measured values + 5 %, m2 within ${GROUND_SPOT_RADIUS_M} m of each place, 0.5 m raster):
   shard area per named place; Kranenbergpad float and > 5 cm poke; Overschiestraat one slot over its three tunnel ways;
   no closed mouth without a tunnel-tagged way within 25 m in cells 2_3 and -4_-4; the named building fronts (lane F4,
-  frontRegressions.ts) not buried by the street under the base rule. Exit 1 on a failure.`;
+  frontRegressions.ts) not buried by the street under the base rule; the bridge feedback pins of
+  bridge-feedback-pins.ts (Muntplein railings, survey caps, Lelylaan). Exit 1 on a failure.`;
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 
 const ROOT = 'public/data/extracts/amsterdam';
@@ -81,10 +86,39 @@ async function main(): Promise<void> {
     check(bad === 0, `${key}: ${bad} closed mouth(s) with no tunnel way within 25 m`);
     store.forgetCells(new Set(GroundStore.neighbours(key)));
   }
+  // Lane R2-D (feedback 762c6e04, b1e259b9, ab50459f, a5806a8e 2026-11-13): open ground no longer lies under the parks (the
+  // Rembrandtpark shimmer was coplanar garden and shrub fills under the parks' lawn and shrub), and the Houthavens
+  // building-site sand draws as bare earth, not as the park sand's yellow.
+  const r2Cells = new Map<string, typeof R2_GROUND_SPOTS[number][]>();
+  for (const s of R2_GROUND_SPOTS) { const [x, y] = toLocal(s.lng, s.lat), k = store.cellAt(x, y); (r2Cells.get(k) ?? r2Cells.set(k, []).get(k)!).push(s); }
+  for (const [key, spots] of r2Cells) {
+    const input = await store.cellInput(key, 0), cell = buildCell(input);
+    const audit = auditCell({ cell, dtm: store.surface.relief, windows: spots.map(s => { const [x, y] = toLocal(s.lng, s.lat); return { id: s.name, x, y, r: s.r }; }), noTJunctions: true });
+    for (const s of spots) {
+      const w = audit.windows[s.name], cap = R2_ZFIGHT_M2[s.name], garden = w.byLayer?.garden?.zfight ?? 0;
+      check(w.d.zfightM2 <= cap.total, `${s.name} (${s.feedback}): z-fight ${w.d.zfightM2.toFixed(0)} m2 <= ${cap.total}`);
+      check(garden <= cap.garden, `${s.name} (${s.feedback}): garden z-fight ${garden.toFixed(0)} m2 <= ${cap.garden} (open-ground meadow under a parks lawn)`);
+    }
+    for (const p of R2_GROUND_PROBES) {
+      const [x, y] = toLocal(p.lng, p.lat);
+      if (store.cellAt(x, y) !== key) continue;
+      const top = layersAt(cell, x, y).top;
+      check(OPEN_GROUND_LAYER[p.cover] === p.layer && top === p.layer, `${p.spot} (${p.what}): drawn as ${top}, expected ${p.layer}`);
+    }
+    for (const p of R2_ROAD_PROBES) {
+      const [x, y] = toLocal(p.lng, p.lat);
+      if (store.cellAt(x, y) !== key) continue;
+      const top = layersAt(cell, x, y).top;
+      check(top === p.layer, `${p.spot} (${p.what}): drawn as ${top}, expected ${p.layer} (a big asphalt square is not pale paving)`);
+    }
+    store.forgetCells(new Set(GroundStore.neighbours(key)));
+  }
   // Lane F4: the named building fronts the street must not bury (frontRegressions.ts, the Kinkerbrug approach).
   const fronts = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/own-ground/audit-building-fronts.ts', '--named', '--check', '--out', 'artifacts/ground-audit/fronts-named.json'], { encoding: 'utf8' });
   for (const line of (fronts.stdout ?? '').split('\n').filter(l => /^\s+(ok|FAIL) /.test(l))) console.log(line.trim().replace(/^(ok|FAIL)\s+/, (_, w) => `${w === 'ok' ? 'ok  ' : 'FAIL'} front `));
   check(fronts.status === 0, `named building fronts not buried by the street (audit-building-fronts --named)${fronts.status ? `: ${(fronts.stderr ?? '').slice(-400)}` : ''}`);
+  // Bridge feedback pins (2026-11-13: Muntplein rails, Rijckerbrug/Machineslootbrug slabs, Lelylaan), here so they gate check:canal.
+  await bridgeFeedbackRegressions(read, check);
   console.log(failed ? `${failed} ground spot pin(s) failed` : 'ground spot pins passed');
   if (failed) process.exitCode = 1;
 }
