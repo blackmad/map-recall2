@@ -97515,7 +97515,13 @@
       },
       "triangles": 2710,
       "bytes": 47168,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "18c2bb08ff4a7e23",
+        "buildVersion": 6,
+        "bytes": 7104,
+        "triangles": 129
+      }
     },
     "sameplace": {
       "id": "sameplace",
@@ -97690,7 +97696,19 @@
       },
       "triangles": 10616,
       "bytes": 155952,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "7fcac0d803116120",
+        "buildVersion": 2,
+        "bytes": 70056,
+        "triangles": 3710
+      },
+      "lod2": {
+        "sourceHash": "7fcac0d803116120",
+        "buildVersion": 6,
+        "bytes": 7980,
+        "triangles": 212
+      }
     }
   }
 }
