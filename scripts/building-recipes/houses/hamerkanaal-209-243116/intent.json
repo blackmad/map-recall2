@@ -13,6 +13,20 @@
    "image": "source-data://pand-reference-walls/0363100012243116/w01-169.jpg",
    "sha256": "5e27852ebf8ad2995a5bf3b5a82a388fa1f4d62b7c29370a847590f3be351e9d",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-04-w04-259",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-04_06-44-53_00485/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-04-w06-259",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-04_06-44-53_00503/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
  "walls": [
@@ -73,6 +87,99 @@
    "palette": {
     "brick": "#3d353c"
    }
+  },
+  {
+   "wallSurfaces": [
+    176
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "sills": false,
+   "openBays": [
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      7,
+      9
+     ]
+    }
+   ],
+   "wallFamily": {
+    "kind": "metal",
+    "colour": "#6c7c84",
+    "ribPitch": 0.25
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "wallFamily"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    412
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 9,
+   "ground": "blank",
+   "windows": "plain",
+   "deepBars": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.3,
+    "sill": 0.35
+   },
+   "wallFamily": {
+    "kind": "metal",
+    "colour": "#6c7c84",
+    "ribPitch": 0.25
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "wallFamily"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    12,
+    14,
+    23,
+    30,
+    67,
+    68,
+    99,
+    156,
+    157,
+    195,
+    474,
+    475,
+    478,
+    479,
+    481,
+    482
+   ],
+   "system": "blank",
+   "wallFamily": {
+    "kind": "metal",
+    "colour": "#6c7c84",
+    "ribPitch": 0.25
+   },
+   "hand": [
+    "system",
+    "wallFamily"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -93,7 +200,8 @@
   "Simplified: the white sign boards are plain lettering on the brick, the stepped brick corbelling and the shield emblem on the gable are not drawn, the HET IJ board and the timber terrace pergola in front of the wing are not drawn. Not modelled: every wall other than panels 99 and 82 (north, east and west fronts have no panorama within 35 m, so they are blank brick under the real roofs).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #394647 not used (not darker than the wall #3d3432 by 10 L*, or tinted): kit glass kept; walls[1] glass #423b3b not used (not darker than the wall #3d353c by 10 L*, or tinted): kit glass kept.",
   "roof.flatHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
-  "roof.pitchedHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
+  "roof.pitchedHex #878987: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5383: slot slate, rgb 140/140/132, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "Lane blank-walls-20261114 (feedback 174d2455 \"no windows, really?\", the west side seen across the Johan van Hasseltkanaal): two 2025-09-04 panoramas from the far quay, 44-49 m off (outside the authoring pass's 35 m), show the west walls. walls[2] and walls[3] = the low Likeminds hall (w04-259): blue-grey ribbed metal cladding (#6c7c84, sampled off the backlit crop), a few wide windows and doors at ground (walls[2], surface 176, the 4 m ground storey: wide windows in bays 0-2, 7 and 9 of 10) and a row of nine small square windows upstairs (walls[3], surface 412, the 3DBAG's upper storey set back 4 m: 9 small windows over a blank ground). walls[4] = the sawtooth hall's west wall (w06-259): the same metal, no windows but two yellow roller doors and one small window; drawn as blank metal (the roller doors are not drawn). The remaining unphotographed walls take the window grid (otherWalls.ts)."
  ],
  "measured": {
   "date": "2026-10-14",

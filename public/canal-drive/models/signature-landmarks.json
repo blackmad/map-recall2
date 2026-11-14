@@ -19187,20 +19187,20 @@
         "depthMetres": 46.15651607513428,
         "depthCoverage": 1.0034025233724844
       },
-      "triangles": 12402,
-      "bytes": 166716,
+      "triangles": 12690,
+      "bytes": 170788,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6febb35df8243ad4",
+        "sourceHash": "66f924264e0d79a6",
         "buildVersion": 2,
-        "bytes": 43600,
-        "triangles": 1960
+        "bytes": 44432,
+        "triangles": 2002
       },
       "lod2": {
-        "sourceHash": "6febb35df8243ad4",
+        "sourceHash": "66f924264e0d79a6",
         "buildVersion": 6,
-        "bytes": 8564,
-        "triangles": 247
+        "bytes": 8656,
+        "triangles": 253
       }
     },
     "fire-station-dirk": {

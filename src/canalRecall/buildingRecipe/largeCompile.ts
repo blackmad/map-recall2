@@ -23,6 +23,7 @@ import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {FLAT_ROOF_TONES} from '../look/palette.ts';
+import {isPartyPanel} from './otherWalls.ts';
 import {WINDOW_GRID_WALL_SLOT, fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
@@ -491,7 +492,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     // row split: the houses of a group's main panel, each with its own system (only when a group has `houses`)
     ...(recipe.groups.some(g => g.houses) ? {segmentsFor: (p: Panel) => { const h = groupOf(p.index)?.houses; return h?.panel === p.index ? h.segs.map(x => ({system: x.system, u0: x.u0, u1: x.u1, top: x.topM, bayOffset: x.bayOffset, bays: h.segs.reduce((a, y) => a + y.bays, 0)})) : null; }} : {}),
     // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
-    wallSlotFor: p => { const g = groupOf(p.index); return !g ? (recipe.other.windowGrid ? WINDOW_GRID_WALL_SLOT : 'wall') : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? (recipe.other.windowGrid && !isPartyPanel(p) ? WINDOW_GRID_WALL_SLOT : 'wall') : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);
       if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;
