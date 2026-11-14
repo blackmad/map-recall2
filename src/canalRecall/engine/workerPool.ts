@@ -74,7 +74,7 @@ export function withWorkerFlags(url: string, search: string = typeof location !=
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'shopGrammar', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls', 'wallPool', 'wallChroma', 'wallVariety', 'structurePrior', 'storeyGuard', 'specFields', 'specTemplateFill', 'wallExposure', 'wallFinish', 'modelWallFloor', 'pilasterTone'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'shopGrammar', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls', 'wallPool', 'wallChroma', 'wallVariety', 'structurePrior', 'storeyGuard', 'specFields', 'specTemplateFill', 'wallExposure', 'wallFinish', 'modelWallFloor', 'pilasterTone', 'realLook'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }
