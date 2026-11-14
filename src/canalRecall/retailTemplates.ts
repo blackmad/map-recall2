@@ -29,8 +29,10 @@ export function retailGroundOn(): boolean {
 
 /** Measured pui proportions as fractions of the ground cell (width = one bay, height = the ground storey). */
 export const PUI = {
-  /** Glass share of the cell's width (Haarlemmerdijk median 0.63 of the whole front; a cell is one bay of it). */
-  glassShare: 0.74,
+  /** Glass share of the cell's width (Haarlemmerdijk median 0.63 of the whole front, door and posts included; a cell is
+   *  one bay of it, and the bay's glass runs nearly post to post: round 3 raised it from 0.74, whose painted surrounds
+   *  between the panes read as a pale wall with windows in it). */
+  glassShare: 0.9,
   /** Stall riser: the glass's sill over the pavement, as a share of the storey (0.45-0.6 m of 3.3-4 m). */
   riser: 0.15,
   /** The fascia band: its top and bottom as shares of the storey from the top. */
@@ -150,6 +152,11 @@ export type TemplateLook = {
   frame?: string;
   /** The whole front under the fascia in this colour (a brown cafe's dark timber), over the cell's painted surround. */
   surround?: string;
+  /** Round 3: panes at most this wide (m) where the front is small-paned (a cafe's), with glazing bars in the transom
+   *  lights; absent: FRONT.paneMaxM, plain transom lights. */
+  paneM?: number;
+  /** Round 3: the fascia's cornice cap colour; absent: the fascia a step darker. */
+  cap?: string;
 };
 export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
@@ -167,7 +174,7 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   moneyTransfer: { fascia: '#ffdd00', letters: '#1d1d1b', word: 'MONEY TRANSFER', content: 'stickers', lit: true },
   coffeeshop: { fascia: '#1f5a2e', letters: '#e8f0d8', word: 'name', content: 'frosted', lit: false },
   smartshop: { fascia: '#2a1640', letters: '#ff4fd8', word: 'name', content: 'neon', lit: true },
-  brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12' },
+  brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12', paneM: 1.3 },
   bike: { fascia: '#22313a', letters: '#ffffff', word: 'name', content: 'bikes', lit: false, pavement: 'bikes' },
   redLight: { fascia: '#2a0a12', letters: '#2a0a12', content: 'redGlow', lit: true, tube: '#ff2a3a' },
   doner: { fascia: '#d42a1e', letters: '#ffffff', word: 'name', content: 'menu', lit: true },
@@ -180,7 +187,7 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   frites: { fascia: '#f7c600', letters: '#c4161c', word: 'FRITES', content: 'counter', lit: true },
   cheese: { fascia: '#f2c230', letters: '#3b2a12', word: 'KAAS', content: 'cheese', lit: true },
   waffle: { fascia: '#ff6fa8', letters: '#ffffff', word: 'name', content: 'waffles', lit: true },
-  pancake: { fascia: '#7a1f12', letters: '#f3e7c9', word: 'name', content: 'curtains', lit: true, blade: '#c9a227' },
+  pancake: { fascia: '#7a1f12', letters: '#f3e7c9', word: 'name', content: 'curtains', lit: true, blade: '#c9a227', paneM: 1.2 },
   souvenir: { fascia: '#c4161c', letters: '#ffffff', word: 'SOUVENIRS', content: 'souvenirs', lit: true, pavement: 'racks' },
   books: { fascia: '#1f2a24', letters: '#d9b765', word: 'name', content: 'books', lit: true, pavement: 'boards' },
   tobacco: { fascia: '#6e1216', letters: '#ffd200', word: 'TABAK LOTTO', content: 'placards', lit: true, blade: '#1a3a8f', doorM: 0.8, frame: '#2a2420' },

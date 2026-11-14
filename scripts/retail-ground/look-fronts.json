@@ -1,0 +1,130 @@
+[
+  {
+    "pandId": "0363100012092013",
+    "key": "ah-kinkerstraat-89",
+    "case": "Albert Heijn, Kinkerstraat 89 (chain)",
+    "bearing": 336,
+    "at": [
+      4.870368,
+      52.366607
+    ],
+    "frame": "game",
+    "crop": [
+      0.2,
+      0.4,
+      0.8,
+      0.65
+    ]
+  },
+  {
+    "pandId": "0363100012169187",
+    "key": "ah-westerstraat-79",
+    "case": "Albert Heijn, Westerstraat 79 (chain, Jordaan)",
+    "bearing": 71,
+    "frame": "game",
+    "crop": [
+      0.15,
+      0.3,
+      0.85,
+      0.6
+    ]
+  },
+  {
+    "pandId": "0363100012233666",
+    "key": "hema-ferdinand-bolstraat-93",
+    "case": "HEMA, Ferdinand Bolstraat 93A (chain)",
+    "bearing": 257,
+    "frame": "game",
+    "crop": [
+      0.0,
+      0.4,
+      0.7,
+      0.7
+    ]
+  },
+  {
+    "pandId": "0363100012158180",
+    "key": "kinkerstraat-98",
+    "case": "Kinkerstraat 98, plain shop (row 86-110)",
+    "crop": [
+      0.25,
+      0.72,
+      0.85,
+      1
+    ]
+  },
+  {
+    "pandId": "0363100012159635",
+    "key": "kinkerstraat-104",
+    "case": "Kinkerstraat 104, plain shop (row 86-110)",
+    "crop": [
+      0.0,
+      0.72,
+      0.7,
+      1
+    ]
+  },
+  {
+    "pandId": "0363100012176699",
+    "key": "pouw-haarlemmerdijk-95",
+    "case": "Keurslagerij Pouw, Haarlemmerdijk 95 (butcher)",
+    "bearing": 41,
+    "maxDistM": 45,
+    "frame": "game",
+    "crop": [
+      0.5,
+      0.3,
+      1,
+      0.65
+    ]
+  },
+  {
+    "pandId": "0363100012173480",
+    "key": "kookboekhandel-haarlemmerdijk-133",
+    "case": "De Kookboekhandel, Haarlemmerdijk 133 (books)",
+    "bearing": 43,
+    "crop": [
+      0.3,
+      0.62,
+      0.8,
+      0.9
+    ]
+  },
+  {
+    "pandId": "0363100012178799",
+    "key": "verhagen-utrechtsestraat-61",
+    "case": "Bakkerij Verhagen, Utrechtsestraat 61 (bakery)",
+    "bearing": 256,
+    "frame": "game",
+    "crop": [
+      0.5,
+      0.35,
+      1,
+      0.6
+    ]
+  },
+  {
+    "pandId": "0363100012152738",
+    "key": "kebab-ferdinand-bolstraat-23",
+    "case": "Kebab House, Ferdinand Bolstraat 23 (doner)",
+    "bearing": 275,
+    "crop": [
+      0.2,
+      0.55,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "pandId": "0363100012177422",
+    "key": "papeneiland-prinsengracht-2",
+    "case": "Cafe 't Papeneiland, Prinsengracht 2 (Jordaan corner, brown bar)",
+    "bearing": 119,
+    "crop": [
+      0.3,
+      0.45,
+      0.75,
+      0.62
+    ]
+  }
+]

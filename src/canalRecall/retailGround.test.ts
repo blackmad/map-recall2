@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signWord, templateForTags } from './retailTemplates.js';
-import { FRONT, glassTone, retailFrontTris } from './retailFront.js';
+import { FRONT, glassTone, retailDoor, retailFrontTris } from './retailFront.js';
 import { LOGOS, LOGO_GRID, logoFor, retailLogoLayer } from './retailLogos.js';
 import { hostOnFront, ringEdges } from './retailHosting.js';
 import fs from 'node:fs';
@@ -71,11 +71,14 @@ test('every template builds a front on its wall, within the plot line rules', ()
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
   for (const t of RETAIL_TEMPLATES) {
     const tris = retailFrontTris({ template: t, word: 'TEST', seed: 'x' }, e, 0.3, 6.3, 0, 3.6);
+    const door = retailDoor({ template: t, seed: 'x' }, 0.3, 6.3);
     assert.ok(tris.length > 10, t);
     for (const tri of tris) for (const [x, y, z] of tri.p) {
       assert.ok(x >= 0.2 && x <= 6.4, `${t}: along ${x}`);
-      // Out from the wall (y = -outward): the fascia 0.12 m, an awning or pavement goods at most 1.1 m.
-      assert.ok(-y >= -0.01 && -y <= 1.11, `${t}: out ${-y}`);
+      // Out from the wall (y = -outward): the fascia 0.12 m, an awning or pavement goods at most 1.1 m; into it only
+      // inside the door's recess.
+      const inDoor = !!door && x >= door.a0 - 1e-6 && x <= door.a1 + 1e-6;
+      assert.ok(-y >= (inDoor ? -door.depthM - 1e-6 : -0.01) && -y <= 1.11, `${t}: out ${-y}`);
       assert.ok(z >= 0 && z <= 4.6, `${t}: up ${z}`);
     }
     assert.equal(retailFrontTris({ template: t, seed: 'x' }, e, 0, 1, 0, 3.6).length, 0);
@@ -138,10 +141,15 @@ test('looks: every template has one', () => {
 const wall = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
 const outOf = (p: number[]) => p[0] * wall.nx + p[1] * wall.ny;
 
-test('round 2 doors: one flush door per front; a traced door set back in its recess', () => {
-  const flush = retailFrontTris({ template: 'doner', seed: 'x' }, wall, 0, 6, 0, 3.4);
-  assert.ok(flush.every(t => t.p.every(p => outOf(p) >= -1e-6)), 'a flush door stays on the wall');
-  assert.ok(flush.some(t => t.hex === '#b8b0a0'), 'a door handle');
+test('round 3 doors: one door per front, always in a recess at an end inside the post; a traced door where traced', () => {
+  const untraced = retailFrontTris({ template: 'doner', seed: 'x' }, wall, 0, 6, 0, 3.4);
+  const span = retailDoor({ template: 'doner', seed: 'x' }, 0, 6)!;
+  assert.ok(span && span.depthM === FRONT.recessM, 'recessed by default');
+  assert.ok(Math.abs(span.a0 - FRONT.postM) < 1e-9 || Math.abs(span.a1 - (6 - FRONT.postM)) < 1e-9, 'at an end, inside the post');
+  const back = untraced.filter(t => t.p.some(p => outOf(p) < -0.01));
+  assert.ok(back.length >= 10 && back.every(t => t.p.every(p => p[0] >= span.a0 - 1e-6 && p[0] <= span.a1 + 1e-6)), 'the recess only inside the door span');
+  assert.ok(untraced.some(t => t.hex === '#b8b0a0'), 'a door handle');
+  assert.equal(retailDoor({ template: 'redLight', seed: 'x' }, 0, 6), null, 'window rows have no door');
   const recessed = retailFrontTris({ template: 'doner', seed: 'x', door: { a0: 2.5, a1: 3.5, depthM: 0.5 } }, wall, 0, 6, 0, 3.4);
   const inside = recessed.filter(t => t.p.some(p => outOf(p) < -0.01));
   assert.ok(inside.length >= 10, 'reveals, soffit, floor and the door at the back');
@@ -150,7 +158,7 @@ test('round 2 doors: one flush door per front; a traced door set back in its rec
   assert.ok(!recessed.some(t => t.p.every(p => outOf(p) > 0.015 && outOf(p) < 0.03 && p[0] > 2.55 && p[0] < 3.45 && p[2] > FRONT.riserM && p[2] < 1.5)));
 });
 
-test('round 2 brown bar: dark timber, no lit amber fill, no cream panel', () => {
+test('brown bar: dark timber, no lit amber fill, no cream panel', () => {
   const tris = retailFrontTris({ template: 'brownBar', word: 'PIJP', seed: 'b' }, wall, 0, 8, 0, 3.4);
   assert.ok(!tris.some(t => /#d58a2e|#efe6d2/.test(t.hex)));
   const lit = tris.filter(t => t.lit).reduce((a, t) => a + Math.abs((t.p[1][0] - t.p[0][0]) * (t.p[2][2] - t.p[0][2]) - (t.p[2][0] - t.p[0][0]) * (t.p[1][2] - t.p[0][2])) / 2, 0);
@@ -215,4 +223,46 @@ test('tobacco: sigarenwinkels from shop=tobacco, unbranded newsagents and tobacc
   assert.ok(cards.size >= 6, `cluttered placards (${cards.size} colours)`);
   const handle = tris.find(t => t.hex === '#b8b0a0')!;
   assert.ok(handle.p.every(p => p[0] <= 0.8 + 1e-6 || p[0] >= 6 - 0.8 - 1e-6), 'a door 0.8 m wide');
+});
+
+// Lane retail-look-20261114 (David: shop ground floors "look very cheap and out of place"): the fronts on the retail-look
+// sheet (scripts/retail-ground/look-fronts.json) are named regressions. Each pinned shop keeps its template, and every
+// template front keeps the round-3 anatomy: a cornice cap over the fascia, end posts, a recessed door, glass that reflects
+// the street over its upper part, and a triangle budget near round 2's.
+const LOOK_PINS: Array<[string, string, string]> = [
+  ['0363100012092013', 'ah', 'Albert Heijn, Kinkerstraat 89'],
+  ['0363100012169187', 'ah', 'Albert Heijn, Westerstraat 79'],
+  ['0363100012233666', 'hema', 'HEMA, Ferdinand Bolstraat 93A'],
+  ['0363100012176699', 'butcher', 'Keurslagerij Pouw, Haarlemmerdijk 95'],
+  ['0363100012173480', 'books', 'De Kookboekhandel, Haarlemmerdijk 133'],
+  ['0363100012178799', 'bakery', 'Bakkerij Verhagen, Utrechtsestraat 61'],
+  ['0363100012152738', 'doner', 'Kebab House, Ferdinand Bolstraat 23'],
+  ['0363100012177422', 'brownBar', "Cafe 't Papeneiland, Prinsengracht 2"],
+];
+
+test('retail look: the pinned shops keep their templates; the Kinkerstraat 98/104 shops draw the plain pui', () => {
+  const extract = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, ...unknown[]]> };
+  for (const [pand, template, what] of LOOK_PINS) {
+    const row = extract.buildings[`NL.IMBAG.Pand.${pand}`];
+    assert.ok(row, `${what}: in the template extract`);
+    assert.equal(extract.templates[row[0]], template, what);
+  }
+  for (const pand of ['0363100012158180', '0363100012159635']) assert.equal(extract.buildings[`NL.IMBAG.Pand.${pand}`], undefined, `${pand}: no template`);
+});
+
+test('retail look: every template front has a cornice cap, end posts, a recessed door and a reflecting glass', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 }, out = (p: number[]) => -p[1];
+  const top = 3.6 - FRONT.fasciaGapM;
+  let total = 0;
+  for (const t of RETAIL_TEMPLATES) {
+    const tris = retailFrontTris({ template: t, word: 'WINKEL', seed: 'x' }, e, 0, 9, 0, 3.6);
+    total += tris.length;
+    assert.ok(tris.some(tri => tri.p.every(p => p[2] >= top - 1e-6) && tri.p.some(p => out(p) >= FRONT.capOutM - 1e-6)), `${t}: cornice cap`);
+    if (TEMPLATE_LOOKS[t].content === 'redGlow') continue;
+    assert.ok(tris.some(tri => tri.p.every(p => p[0] <= FRONT.postM + 1e-6) && tri.p.some(p => out(p) >= FRONT.frameOutM - 1e-6)), `${t}: end post`);
+    assert.ok(tris.some(tri => tri.p.some(p => out(p) <= -FRONT.recessM + 1e-6)), `${t}: recessed door`);
+    assert.ok(tris.some(tri => /^#9eaab2$/i.test(tri.hex)), `${t}: the street in the glass`);
+  }
+  // Round 2 drew 13,020 triangles for the 35 templates on a 9 m front; round 3 stays within 20 % of it.
+  assert.ok(total <= 13_020 * 1.2, `triangles ${total}`);
 });
