@@ -103,7 +103,13 @@ const headerSources = (source) => {
   const served = pagesDestination(source);
   return served === source ? [splat(source)] : [source, served];
 };
-const headerBlocks = (target.headers ?? []).flatMap((h) => headerSources(h.source).map((source) =>
+// Firebase also takes `regex` header rules (the immutable hashed script names); `_headers` has no
+// regex, so such a rule becomes one block per built file it matches.
+const regexSources = (h) => {
+  const re = new RegExp(h.regex);
+  return files.map((rel) => `/${rel.split(path.sep).join('/')}`).filter((p) => re.test(p));
+};
+const headerBlocks = (target.headers ?? []).flatMap((h) => (h.regex ? regexSources(h) : headerSources(h.source)).map((source) =>
   [source, ...h.headers.map(({ key, value }) => `  ${key}: ${value}`)].join('\n')));
 fs.writeFileSync(path.join(out, '_headers'), `${headerBlocks.join('\n')}\n`);
 
