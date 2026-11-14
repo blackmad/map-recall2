@@ -7685,6 +7685,85 @@
         52.3592532,
         4.8831423
       ]
+    },
+    {
+      modelId: "lofi",
+      landmarkId: "lofi",
+      name: "Lofi",
+      description: "Lofi is a club in a former GVB bus garage on the Basisweg in Sloterdijk. Founded in 2019, it keeps the hall's red folding garage doors and raw concrete interior.",
+      funFact: "The garage's glazed red folding doors, once opened for buses, still line the hall's east side.",
+      sourceUrl: "https://www.amsterdamnow.com/en/going-out-entertainment/lofi-club-sloterdijk/",
+      additionalSources: [
+        "https://lofi.amsterdam/"
+      ],
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.39131,
+          4.82425
+        ],
+        note: "Basisweg pavement in front of the black north front with the entrance and bike racks (recording_2025-07-01_09-03-48_04058)."
+      }
+    },
+    {
+      modelId: "radion",
+      landmarkId: "n3942354213",
+      name: "RADION",
+      description: "RADION is a club and cultural centre in the former ACTA dental school building of 1971 on the Louwesweg. The housing corporation De Alliantie turned the building into temporary homes, studios and venues in 2012; RADION moved in in 2014.",
+      funFact: "The slab's north gable is painted black and crossed by a giant white lattice, one storey band of it every twelve metres.",
+      sourceUrl: "https://www.rvo.nl/transformatievoorbeelden/acta-gebouw",
+      additionalSources: [
+        "https://www.radionamsterdam.nl/"
+      ],
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.3464,
+          4.82576
+        ],
+        note: "In front of the RADION canopy on the north side of the slab, where the club entrance is."
+      }
+    },
+    {
+      modelId: "toekomstmuziek",
+      landmarkId: "n2738399729",
+      name: "Toekomstmuziek",
+      description: "Toekomstmuziek is a music venue and cultural hub at Danzigerbocht 29 in the Houthavens, in a two-storey business unit of pale grey brick with a steel-clad hall behind it, built in 1994. It calls itself a second home for art, live music, street food, craft beer and wine, and also rents out rehearsal rooms; its aim is to make live music accessible to everyone and the music sector more sustainable for artists.",
+      funFact: 'The name is a Dutch word for a plan that will not come true any time soon: literally "music of the future", a calque of the German Zukunftsmusik.',
+      sourceUrl: "https://www.toekomstmuziek.com/",
+      additionalSources: [
+        "https://en.wiktionary.org/wiki/toekomstmuziek",
+        "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012110275",
+        "https://www.openstreetmap.org/node/2738399729"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "the-other-side",
+      landmarkId: "n12269195215",
+      name: "The Other Side",
+      description: "The Other Side is a club for electronic music at Rigakade 10 in the Houthavens, set up in a former bicycle workshop: the long steel-clad hall of a 1991 business unit, with a two-storey brick office at its west end. Its main room holds about a thousand dancers, and it also hosts performances and workshops as a place where music, art and community meet.",
+      funFact: "It was the first club with an L-Acoustics L-ISA immersive sound system, which lets sound move around the room; after years of applications it received a full club licence and a 24-hour permit in November 2023.",
+      sourceUrl: "https://www.iamsterdam.com/uit/agenda/nachtleven/clubbing/the-other-side",
+      additionalSources: [
+        "https://djlifemag.com/2025/04/amsterdams-the-other-side-goes-360-club-spotlight/",
+        "https://www.ticketfairy.com/events-in-amsterdam/the-other-side",
+        "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012133795",
+        "https://www.openstreetmap.org/node/12269195215"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "morgan-mees",
+      landmarkId: "morgan-mees",
+      name: "Morgan & Mees",
+      description: "This corner building on the Nassaukade was built from 1880 for the Protestantsch Weduwen- en Weezenfonds, a Protestant fund for widows and orphans: widows' housing with, at this end, a bewaarschool, an infant school. The architect is unknown, although the specification drawings survive. Its two storeys of brown brick carry careful classicist detail: a white plastered middle bay with a round-arched window between fluted pilasters, white hoods over the windows and a white frieze under the cornice.",
+      funFact: 'Two stones in the plinth name the client and the day the first stone was laid: 23 August 1880, by J.H. Cordes and M.H. van Doorn. The building stayed a nursery school until about 1985, last as the day nursery "Prinses Irene"; today MORGAN & MEES runs in capitals along the white frieze.',
+      sourceUrl: "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b7d4e1c2-b1c9-4fe2-8472-4a335c41b79d",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236197/"
+      ],
+      preferDescription: true
     }
   ];
 
