@@ -153,6 +153,23 @@ export function pedimentSolid(b: BuildingTools, f: Frame, t: number, y: number, 
   return inner;
 }
 
+/**
+ * Mixed-case glyph runs set level on a wall frame, centred on t with the baseline at y; `track` adds that many metres
+ * between letters (spaced shop lettering such as E S C A P E). Returns the set width.
+ */
+export function lettering(b: BuildingTools, f: Frame, text: string, t: number, y: number, px: number, d: number, c: Col, out = 0, track = 0) {
+  let width = 0;
+  const glyphs = [...text].map(ch => glyphRuns(ch, px, MIXED_CASE_GLYPHS));
+  for (const g of glyphs) width += g.width;
+  width += track * Math.max(0, glyphs.length - 1) + px * Math.max(0, glyphs.length - 1);
+  let u = t - width / 2;
+  for (const g of glyphs) {
+    for (const r of g.runs) slab(b, f, u + (r.t0 + r.t1) / 2, y + r.y0, r.t1 - r.t0, r.y1 - r.y0, d, c, out);
+    u += g.width + px + track;
+  }
+  return width;
+}
+
 /** Glyph runs set vertically (reading bottom to top) on a wall frame: the text's baseline runs up the wall at t. */
 export function verticalLettering(b: BuildingTools, f: Frame, text: string, t: number, y0: number, px: number, d: number, c: Col, out = 0) {
   const {runs, width} = glyphRuns(text, px, MIXED_CASE_GLYPHS);

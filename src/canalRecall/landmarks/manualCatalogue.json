@@ -78553,6 +78553,98 @@
   }
  },
  {
+  "id": "de-uitkijk",
+  "name": "Filmtheater De Uitkijk, Prinsengracht 452",
+  "landmarkId": "extract_landmarks_1153514237",
+  "modelUrl": "./models/de-uitkijk.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012169642"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88429989,
+    52.36470813
+   ],
+   "headingDegrees": 318.32,
+   "lengthMetres": 6.0,
+   "widthMetres": 20.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.88428979,
+    52.36470782
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012169642 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/de-uitkijk-footprints.json, written by venue-prepare.ts). The canal front and its gable are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-003011_pano_0001_000174, b_20250120_0926_Track24_Sphere_00008, TMX7316010203-001974_pano_0000_001049 and TMX7316010203-001900_pano_0004_000886); the auditorium behind keeps the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/de-uitkijk-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 17.2,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.15
+  },
+  "bagYear": 1902,
+  "materialOverrides": {
+   "stone": "#7b7f83",
+   "slate": "#3d4045",
+   "white": "#ece8dc",
+   "sandstone": "#f2efe6",
+   "frame": "#1d1f22",
+   "glass": "#3a4547",
+   "red": "#a3302a",
+   "blue": "#5b7d99"
+  },
+  "attribution": {
+   "title": "Filmtheater De Uitkijk, Prinsengracht 452, Amsterdam: a canal house of the 17th century, a cinema since 1913",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Filmtheater_de_Uitkijk",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the auditorium behind (CC BY 4.0): the grey stucco canal front with its red doors under a round fanlight, the white letter-board canopy reading FILMTHEATER DE UITKIJK, the framed film poster between two small round-headed windows, three round-headed first-floor windows and the pointed gable with its window, anchor plates and pinnacle. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.88443646,
+      52.36475044
+     ],
+     [
+      4.88438151,
+      52.36478769
+     ],
+     [
+      4.8842698,
+      52.36472704
+     ],
+     [
+      4.88423178,
+      52.36470639
+     ],
+     [
+      4.8841609,
+      52.36466791
+     ],
+     [
+      4.88421996,
+      52.36462746
+     ],
+     [
+      4.88432812,
+      52.36468781
+     ],
+     [
+      4.88443646,
+      52.36475044
+     ]
+    ]
+   ]
+  }
+ },
+ {
   "id": "splendor",
   "name": "Splendor, Nieuwe Uilenburgerstraat 116",
   "landmarkId": "splendor",
@@ -78588,7 +78680,7 @@
   "bagYear": 1937,
   "materialOverrides": {
    "brick": "#9b4f3a",
-   "red": "#8a3f2e",
+   "red": "#6e3326",
    "dark": "#232426",
    "white": "#e9dfb8",
    "green": "#2e5a3c",
@@ -78596,7 +78688,7 @@
    "frame": "#1f2221",
    "stone": "#c9bfa6",
    "gold": "#b9a35a",
-   "concrete": "#26272a",
+   "concrete": "#1b1c1e",
    "sandstone": "#e9dfb8"
   },
   "attribution": {
@@ -78774,6 +78866,206 @@
      [
       4.90335358,
       52.36995053
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "escape-rembrandtplein",
+  "name": "Escape, Rembrandtplein 11",
+  "landmarkId": "escape-rembrandtplein",
+  "modelUrl": "./models/escape-rembrandtplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012171128"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89630607,
+    52.36667253
+   ],
+   "headingDegrees": 85.94,
+   "lengthMetres": 37.3,
+   "widthMetres": 63.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.89632839,
+    52.36669929
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012171128 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/escape-rembrandtplein-footprints.json, written by venue-prepare.ts). The square front is drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: b_20241211_0954_Track19_Sphere_00100, TMX7316010203-001900_pano_0005_000766 and TMX7316010203-002537_pano_0000_000552); the set-back strip house, the sides, the Amstelstraat back and the roofs keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/escape-rembrandtplein-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 18.1,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.15
+  },
+  "bagYear": 1719,
+  "materialOverrides": {
+   "stone": "#e4e2da",
+   "white": "#f3f1ea",
+   "glass": "#2c343e",
+   "frame": "#1e2023",
+   "dark": "#16171a",
+   "concrete": "#2b2c2f",
+   "slate": "#1d2531",
+   "blue": "#1f4f9a",
+   "green": "#2e7a3a",
+   "red": "#b02a2a",
+   "bronze": "#18191b",
+   "canopyGlass": "#7a948c"
+  },
+  "attribution": {
+   "title": "Escape, Rembrandtplein 11, Amsterdam: the nightclub in the former Rembrandtpleintheater",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Rembrandtplein_(Amsterdam)",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the strip house, the sides, the back and the roofs (CC BY 4.0): the white box front with its LED screen in a black frame, the two ribbon windows, the sign band reading Bavaria, E S C A P E and Heineken with its star, the glass canopy, the cafe awning and the club entrance. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.89649372,
+      52.36669638
+     ],
+     [
+      4.89646572,
+      52.36669453
+     ],
+     [
+      4.89642223,
+      52.36695969
+     ],
+     [
+      4.89641416,
+      52.36695912
+     ],
+     [
+      4.89638972,
+      52.36695741
+     ],
+     [
+      4.89638102,
+      52.36695679
+     ],
+     [
+      4.89637041,
+      52.36696115
+     ],
+     [
+      4.89637024,
+      52.36696204
+     ],
+     [
+      4.89623307,
+      52.3669531
+     ],
+     [
+      4.89623325,
+      52.3669522
+     ],
+     [
+      4.89622517,
+      52.36694712
+     ],
+     [
+      4.89618335,
+      52.36694486
+     ],
+     [
+      4.89620671,
+      52.36677651
+     ],
+     [
+      4.89621827,
+      52.36669841
+     ],
+     [
+      4.89613115,
+      52.36669291
+     ],
+     [
+      4.89613955,
+      52.36664284
+     ],
+     [
+      4.89604943,
+      52.36663679
+     ],
+     [
+      4.8960361,
+      52.36663589
+     ],
+     [
+      4.89604403,
+      52.36659594
+     ],
+     [
+      4.89615126,
+      52.3666034
+     ],
+     [
+      4.89615498,
+      52.36659085
+     ],
+     [
+      4.89616934,
+      52.36651681
+     ],
+     [
+      4.89625673,
+      52.36652137
+     ],
+     [
+      4.89628437,
+      52.36638478
+     ],
+     [
+      4.89637124,
+      52.36638893
+     ],
+     [
+      4.8965504,
+      52.36639746
+     ],
+     [
+      4.8965542,
+      52.36639764
+     ],
+     [
+      4.8965185,
+      52.36656578
+     ],
+     [
+      4.89659433,
+      52.36657042
+     ],
+     [
+      4.89658793,
+      52.36660692
+     ],
+     [
+      4.896569,
+      52.36661729
+     ],
+     [
+      4.8965647,
+      52.3666472
+     ],
+     [
+      4.8965025,
+      52.36664388
+     ],
+     [
+      4.89649372,
+      52.36669638
      ]
     ]
    ]

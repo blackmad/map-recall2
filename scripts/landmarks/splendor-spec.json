@@ -14,7 +14,7 @@
  "surveyedSource": "Vertex average of the BAG 0363100012171998 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/splendor-footprints.json, written by venue-prepare.ts). The street front's storeys are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-002031_pano_0001_000413 and TMX7316010203-001665_pano_0000_000369); roofs, the boiler-house chimney and the canal and courtyard sides keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/splendor-inventory.json.",
  "materialOverrides": {
   "brick": "#9b4f3a",
-  "red": "#8a3f2e",
+  "red": "#6e3326",
   "dark": "#232426",
   "white": "#e9dfb8",
   "green": "#2e5a3c",
@@ -22,7 +22,7 @@
   "frame": "#1f2221",
   "stone": "#c9bfa6",
   "gold": "#b9a35a",
-  "concrete": "#26272a",
+  "concrete": "#1b1c1e",
   "sandstone": "#e9dfb8"
  },
  "attribution": {

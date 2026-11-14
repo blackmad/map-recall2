@@ -4,7 +4,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {arcLettering, clipRingByLine, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
+import {arcLettering, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
 
 /** BuildingTools that only collects geometries per colour. */
 const collector = () => {
@@ -127,4 +127,19 @@ test('cutFrontWalls keeps each range of a front wall only above its drawn top', 
   const kept = out.find(s => s.rings[0].every(p => p[2] === 0))!;
   assert.ok(kept.rings[0].every(p => p[1] >= 6 - 1e-9 && p[0] <= 4 + 1e-9));
   assert.ok(out.includes(back as never));
+});
+
+test('lettering centres level text on t, sits on the baseline and spreads with tracking', () => {
+  const {b, got} = collector();
+  setSink(0);
+  const px = 0.1;
+  const w0 = lettering(b, F, 'Bavaria', 3, 2, px, 0.02, 'blue');
+  const bb = boxOf(got.map(g => g.g));
+  assert.ok(Math.abs((bb.min.x + bb.max.x) / 2 - 3) < 0.05, 'centred on t');
+  assert.ok(Math.abs(bb.min.y - 2) < 1e-6, 'baseline at y');
+  assert.ok(bb.max.x - bb.min.x <= w0 + 1e-6);
+  const {b: b2} = collector();
+  const w1 = lettering(b2, F, 'Bavaria', 3, 2, px, 0.02, 'blue', 0, 0.4);
+  assert.ok(Math.abs(w1 - w0 - 6 * 0.4) < 1e-9, 'tracking adds per gap');
+  assert.throws(() => lettering(b2, F, 'Bav#', 0, 0, px, 0.02, 'blue'));
 });
