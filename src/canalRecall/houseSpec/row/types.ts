@@ -104,7 +104,8 @@ export interface RowRoofStorey {
 export interface RowWall {
   material: RowWallMaterial;
   family: JudgedFamily;
-  /** The family's representative tone (judgedColour.ts `variedTone(family, seriesId)`): one tone per series. */
+  /** The family's tone (judgedColour.ts `variedTone(family, \`${rowId}:${family}\`)`): one tone per series, shared by the
+   *  row's series of the same family. */
   hex: string;
 }
 /** A front's ground storey (per-house). */
