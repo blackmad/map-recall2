@@ -834,8 +834,8 @@
      486719.20550000004
     ],
     [
-     119902.969625,
-     486722.4215
+     119903.478625,
+     486723.8005
     ]
    ],
    "chainRD": [
@@ -846,9 +846,13 @@
     [
      119902.969625,
      486722.4215
+    ],
+    [
+     119903.478625,
+     486723.8005
     ]
    ],
-   "widthM": 7.700692501312061,
+   "widthM": 9.17063195586383,
    "outwardNormalRD": [
     0.41776878804503337,
     -0.9085533774827892
@@ -1018,12 +1022,29 @@
     {
      "alongM": 7.60678161714972,
      "heightM": 14.030644792820649
+    },
+    {
+     "alongM": 7.884434933131033,
+     "heightM": 14.630644792820648
+    },
+    {
+     "alongM": 8.251919796768975,
+     "heightM": 14.630644792820648
+    },
+    {
+     "alongM": 8.619404660406916,
+     "heightM": 14.630644792820648
+    },
+    {
+     "alongM": 8.986889524044859,
+     "heightM": 14.630644792820648
     }
    ],
    "eavesM": 14.040014265362073,
    "topM": 14.124339518162683,
    "uncertainty": [
-    "lane D 2026-11-14: the Kinkerstraat front spans the whole 7.69 m BAG edge from 90's party wall (the kinker-86-110 strip span was 5.07 m; the rule-10 pano TMX7316010203-002921 shows 5 brick axes right of 90)"
+    "lane D 2026-11-14: the Kinkerstraat front spans the whole 7.69 m BAG edge from 90's party wall (the kinker-86-110 strip span was 5.07 m; the rule-10 pano TMX7316010203-002921 shows 5 brick axes right of 90)",
+    "lane D 2026-11-14: the chain runs on over the 1.47 m chamfer (P5->P6): 233580's pale corner bay, its parapet ~0.6 m over the cornice (integrator full-size read of the rule-10 pano)"
    ]
   }
  ]

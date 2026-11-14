@@ -91,7 +91,39 @@
       },
       "doorBay": 4,
       "dormerStyle": "pediment",
-      "roofFront": "mansard"
+      "roofFront": "mansard",
+      "share": 0.8397
+     },
+     {
+      "street": "Kinkerstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "gable": "cornice",
+      "storeys": 4,
+      "tallGround": true,
+      "windows": "sash",
+      "id": "corner",
+      "share": 0.1603,
+      "bays": 1,
+      "doorBay": null,
+      "dormers": 0,
+      "hoist": false,
+      "paintedStoreys": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "colour": "#e3dccb"
+      },
+      "shopfront": {
+       "colour": "#e6d7a6",
+       "fascia": true,
+       "glazing": "transom",
+       "stallriser": "low",
+       "fasciaColour": "#2a2f6e",
+       "evidence": "rule-10 pano TMX7316010203-002921 (integrator full-size read 2026-11-14): the Corner Inn's cream ground storey runs round the chamfer"
+      }
      }
     ],
     "roof": {
@@ -145,9 +177,12 @@
      "cream-painted Kinkerstraat ground-storey wall",
      "the Kinkerstraat front's storey-3 flat heads (storeys 1-2 segmental with tympana are stated)",
      "a small roof light in the Kinkerstraat mansard beside the dormer",
-     "wall: the Kinkerstraat row's judged red-brown (#6e4238) is used on both fronts so the corner matches the row (the strip shows one brick)"
+     "wall: the Kinkerstraat row's judged red-brown (#6e4238) is used on both fronts so the corner matches the row (the strip shows one brick)",
+     "corner bay: the render's colour is a judged pale cream (no measured crop of the chamfer)",
+     "corner bay: the parapet ~0.6 m over the row cornice is not drawn (the corner front's eaves snap to the cornice group)"
     ],
-    "kinkerstraatCitation": "rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10): right of 90, 5 brick axes over the CORNER INN ground; segmental heads with tympana on storeys 1-2, flat on 3; the row's white cornice frieze; slate mansard with one pedimented hoist dormer and a roof light (lane D 2026-11-14)"
+    "kinkerstraatCitation": "rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10): right of 90, 5 brick axes over the CORNER INN ground; segmental heads with tympana on storeys 1-2, flat on 3; the row's white cornice frieze; slate mansard with one pedimented hoist dormer and a roof light (lane D 2026-11-14)",
+    "cornerCitation": "rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10), integrator full-size read 2026-11-14: the chamfer is one bay in pale render over the cream Corner Inn ground, its parapet a little over the row cornice"
    }
   },
   {

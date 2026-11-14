@@ -34,6 +34,14 @@
       "component": "window",
       "what": "the 2023 re-read sees flat heads with white block dressings on 94 where the face says keystones; not stated (the re-read describes 92 only)",
       "ref": "2023 re-read notes"
+    },
+    {
+      "fronts": [
+        "0363100012233580"
+      ],
+      "component": "corner",
+      "what": "233580's chamfered corner bay (the 1.47 m chamfer edge) is one bay in pale render over the cream Corner Inn ground, its parapet a little over the row cornice. The face chunk now draws the bay in pale render with one window per storey (staged, bilder-233580-162444 front 'corner'); the raised parapet is not drawn (the compile snaps the corner's eaves to the cornice group, 14.39 m), and the render colour is judged, not measured",
+      "ref": "integrator, full-size read of the rule-10 pano TMX7316010203-002921 (2026-11-14); David #389"
     }
   ],
   "weteringschans-168096-171218": [
