@@ -34,7 +34,7 @@ const rowDressFor = (c: ExtraContext): ExtraContext => {
     { x0: 2 * L / 3, x1: L, shape: 'segmental', dressing: 'segmental-tympanum' },
     { x0: 0, x1: L / 2, shape: 'flat', dressing: 'jack-blocks', storeys: [2] },
     { x0: L / 2, x1: L, shape: 'round', dressing: 'arch-ring', storeys: [2] },
-  ], stoop: { end: 'start' }, balcony: { storeys: [1], axis: 'centre' }, windowShare: 0.75 } } as ExtraContext;
+  ], stoop: { end: 'start' }, balcony: { storeys: [1], axis: 'centre' }, windowShare: 0.75, shopFront: { frameHex: '#2c2824', doorEnd: 'start' } } } as ExtraContext;
 };
 const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];

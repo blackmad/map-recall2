@@ -65,6 +65,8 @@ export type RowDressContext = {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
   windowShare?: number;
+  /** One stated shop opening (row-shopfront): its frame colour and the entrance's end of this wall as laid out. */
+  shopFront?: { frameHex: string; doorEnd: 'start' | 'end' | 'centre' };
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 

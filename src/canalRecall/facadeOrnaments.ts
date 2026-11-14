@@ -272,8 +272,8 @@ const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
 /** A row type's glazing (row-glazing, Kinkerstraat round 8): white frames round the widened opening and paler glass,
  *  the photo's windows reading white-framed and pale (curtains, nets, sky) where the dark panes read as holes. */
 const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
-/** A pale single shopfront (row-shopfront): frame, fascia and one wide pane (Weteringschans 168042). */
-const ROW_SHOP = { frame: '#e6e1d6', glass: '#555a5d', light: '#7d7b74', riser: 0.45, fascia: 0.55, side: 0.25, out: 0.03 } as const;
+/** A single stated shopfront (row-shopfront): frame and fascia in the stated colour, a door, one wide curtained pane. */
+const ROW_SHOP = { glass: '#7c7d7b', panel: '#55595b', doorHex: '#2f3234', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
@@ -432,19 +432,21 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     }
   } },
   { id: 'row-shopfront', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'shopfront', build: (c, s) => {
-    // A row's stated shop ground as one wide opening in a pale frame under a plain pale fascia, over the painted shop cell.
-    if (!c.rowDress || !c.groundLevel || c.f.len < 2) return;
-    const S = ROW_SHOP, z0 = c.base, z1 = Math.min(storeyZ(c, 0), c.top) - 0.05;
+    // A stated single shopfront (ground.shopUnits 1; Weteringschans 168042 "a black-framed shopfront with a patterned glass
+    // fascia panel over a large curtained window and a narrow door"): one opening across the ground in the stated frame
+    // colour, the door at the stated end, a glazed panel over the window. Covers the painted shop cell.
+    const sf = c.rowDress?.shopFront;
+    if (!sf || !c.groundLevel || c.f.len < 2) return;
+    const S = ROW_SHOP, z0 = c.base, z1 = Math.min(storeyZ(c, 0), c.top) - 0.05, L = c.f.len;
     if (z1 - z0 < 2) return;
-    s.wallQuad(c.f, [[0.05, z0], [c.f.len - 0.05, z0], [c.f.len - 0.05, z1], [0.05, z1]], S.out, S.frame);
-    const g0 = S.side, g1 = c.f.len - S.side, gz0 = z0 + S.riser, gz1 = z1 - S.fascia;
-    s.wallQuad(c.f, [[g0, gz0], [g1, gz0], [g1, gz1], [g0, gz1]], S.out + 0.01, S.glass);
-    // A light glazed panel over the pane (the photo's patterned upper light) and a pale door post near the start.
-    const tz = gz1 - Math.min(0.9, (gz1 - gz0) * 0.3);
-    s.wallQuad(c.f, [[g0, tz], [g1, tz], [g1, gz1], [g0, gz1]], S.out + 0.015, S.light);
-    s.strip(c.f, g0, g1, S.out + 0.02, tz - 0.05, tz + 0.05, S.frame);
-    if (g1 - g0 > 3) s.strip(c.f, g0 + 1.05, g0 + 1.17, S.out + 0.02, gz0 - S.riser + 0.05, tz, S.frame);
-    s.strip(c.f, 0.05, c.f.len - 0.05, S.out + 0.02, gz1 + 0.04, gz1 + 0.1, shadeHex(S.frame, 0.85));
+    s.wallQuad(c.f, [[0.05, z0], [L - 0.05, z0], [L - 0.05, z1], [0.05, z1]], S.out, sf.frameHex);
+    const g0 = S.side, g1 = L - S.side, gz0 = z0 + S.riser, gz1 = z1 - S.fascia, tz = gz1 - Math.min(0.9, (gz1 - gz0) * 0.3);
+    // The door: a narrow leaf at the stated end, from the pavement up to the panel.
+    const dw = Math.min(S.door, (g1 - g0) * 0.3), d0 = sf.doorEnd === 'end' ? g1 - dw : sf.doorEnd === 'centre' ? (L - dw) / 2 : g0, d1 = d0 + dw;
+    const w0 = sf.doorEnd === 'start' ? d1 + S.post : g0, w1 = sf.doorEnd === 'end' ? d0 - S.post : g1;
+    s.wallQuad(c.f, [[d0, z0 + 0.05], [d1, z0 + 0.05], [d1, tz], [d0, tz]], S.out + 0.01, S.doorHex);
+    if (sf.doorEnd !== 'centre') s.wallQuad(c.f, [[w0, gz0], [w1, gz0], [w1, tz], [w0, tz]], S.out + 0.01, S.glass);
+    s.wallQuad(c.f, [[g0, tz + 0.08], [g1, tz + 0.08], [g1, gz1], [g0, gz1]], S.out + 0.01, S.panel);
   } },
   { id: 'row-stoop', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'stoop', build: (c, s) => {
     // A stated stoop: the street door at the bel-etage (its window's place at the stated end), a flight of steps

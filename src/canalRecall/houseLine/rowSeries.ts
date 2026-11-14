@@ -69,14 +69,15 @@ function groundColourOf(fronts: readonly RowFront[]): { groundHex?: string } {
 export const ROW_TYPE_LOOK: Readonly<Record<string, { windowShare?: number }>> = {
   'kinker-1890-plain-brick': { windowShare: 0.75 },
 };
-/**
- * Row shopfront looks, by row (as ROW_MANSARD_RISE): `single-pale` draws a stated shop ground as one wide opening in a pale
- * frame with a plain pale fascia (Weteringschans 168042, blind review 6: the photo's one wide window in a white frame
- * read as a two-unit black shopfront with sign tiles; the split is the record's groundBays 2).
- */
-export const ROW_SHOP_LOOK: Readonly<Record<string, 'single-pale'>> = {
-  'weteringschans-168096-171218': 'single-pale',
-};
+/** The stated shop units (`ground.shopUnits`): 1 draws the shop ground as one opening (Weteringschans 168042, blind
+ *  review 6: the renderer split a single black-framed shopfront by width into two units with sign tiles). */
+function shopUnitsOf(fronts: readonly RowFront[]): { shopUnits?: number } {
+  for (const f of fronts) {
+    const raw = (f.ground as { shopUnits?: unknown }).shopUnits, n = raw && typeof raw === 'object' ? (raw as { value?: unknown }).value : raw;
+    if (typeof n === 'number' && n >= 1) return { shopUnits: Math.round(n) };
+  }
+  return {};
+}
 function windowShareOf(designs: readonly RowDesign[], types: readonly (string | undefined)[]): { windowShare?: number } {
   const stated = designs.map(d => (d as { windowShare?: { value?: unknown } }).windowShare?.value).find(v => typeof v === 'number');
   if (typeof stated === 'number') return { windowShare: stated };
@@ -131,12 +132,13 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
     roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
-    ...(extras.length || (ROW_SHOP_LOOK[rowId] && shopOf(fronts).shop) ? { extras: [...extras, ...(ROW_SHOP_LOOK[rowId] && shopOf(fronts).shop ? ['row-shopfront'] : [])] } : {}),
+    ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) && fronts.every(f => f.ground.basement === 'windows' || !SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrainFactor: BASEMENT_WINDOWS_FACTOR } : {}),
     ...(stoopOf(fronts) ?? {}),
     ...doorOf(fronts),
     ...shopOf(fronts),
+    ...(shopOf(fronts).shop ? shopUnitsOf(fronts) : {}),
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
     ...windowShareOf(designs, types),
