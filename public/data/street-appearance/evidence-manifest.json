@@ -1383,11 +1383,7 @@
   "holdoutPriorTransfer": [],
   "frontageSurvey": {
     "url": "frontage-survey.json",
-<<<<<<< HEAD
-    "sha256": "ddda91fbce36afd56adecf7e2e28b4e510dbeba58479db14c690a3d90b5ca376",
-=======
-    "sha256": "6c33bf904b66c617890e700fc37760960dd028854ef27523461548f079625253",
->>>>>>> origin/main
+    "sha256": "81e7916706dc5603a2e6cb50eba5310f5a76fc6db6c54b124ba95ffc8b45e7b5",
     "assignments": 33
   }
 }
