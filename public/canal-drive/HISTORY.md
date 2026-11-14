@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+**White corner bars: rolled pilasters take the wall tone (2026-11-14, lane white-bars, 8775981fe; David's Haarlemmerdijk shot)**
+- **Cause.** `facadeOrnaments.ts` `corner-pilasters` is a random wall extra (30 % of c19, 22 % of canal-house fronts), always WHITE/STONE, 0.42 m wide, first floor to cornice. 1,515 drawn in the centre box, none from register or spec; 1,496 on walls darker than L 0.6, where they read as white bars. The bars in David's frame were on Haarlemmerdijk 29 (167795, generic), not 31 (167794, its own model).
+- **Fix.** `look/pilasterTone.ts`: an unevidenced pilaster is the wall × 0.9 (the stepped parapet's rule); pale only when the register (`registerForce`), a HouseSpec (`statedFirst`) or a street recipe (`paleAccents`) states it. Same geometry and triangles. `?pilasterTone=0` / `PILASTER_TONE=0`; worker flag. `check:pilaster-tone` in check:canal:rest pins 167795, 157005, 165159 and 167794-is-a-model (2 tiles: 9,358 without pilasters byte-identical, 631 recoloured).
+- **Left.** The rolled `kroonlijst` (pale slanted top bar) stays; thin-fade dither on it is TF's thinFocalPx item. 29's wall is drawn dark brick 11 m but the panorama shows pale render with a balustrade at about 8.3 m (house-line).
+
 **Houthavens round 2: Blok 0, De Rede, OBA Spaarndammerbuurt, Pont 13; barRailing kit component (2026-11-14, lane H-HV2, cherry-picked from lane/houthavens-landmarks-2-20261114).**
 - **Blok 0 plots 8/9 (IJ4you).** Pand 0363100012242823, 2015, Marcel Lok. 5.9k triangles. Supersedes the held block-kit draft `haparandaweg-650-706`.
 - **De Rede.** Pand 0363100012243292, Haparandaweg 708-744. 3.6k triangles. Supersedes the never-reviewed draft `haparandaweg-708-744`.

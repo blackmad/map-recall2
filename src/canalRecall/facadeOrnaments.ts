@@ -16,6 +16,7 @@
 import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
 import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
+import { pilasterHex } from './look/pilasterTone.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -403,7 +404,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'corner-pilasters', styles: CANAL, p: { canal: 0.22, c19: 0.3 }, wide: true, street: true, build: (c, s, r) => {
     // Pilasters at both ends of the front, with a capital; on a wide patrician house, on every pier.
     if (c.layout.storeys < 1) return;
-    const hex = r < 0.6 ? WHITE : STONE, z0 = storeyZ(c, 0) - 0.15, z1 = c.top - 0.45;
+    // A dice pilaster takes the wall's own colour; a stated one stays pale (look/pilasterTone.ts, `?pilasterTone=0`).
+    const hex = pilasterHex(c, r < 0.6 ? WHITE : STONE), z0 = storeyZ(c, 0) - 0.15, z1 = c.top - 0.45;
     const xs = c.f.len >= 9 && r < 0.3 ? pierXs(c) : [0, c.f.len];
     for (const x of xs.slice(0, 6)) {
       const a0 = Math.max(0, Math.min(c.f.len - 0.42, x - 0.21)), a1 = a0 + 0.42;
