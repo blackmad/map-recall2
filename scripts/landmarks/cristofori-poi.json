@@ -1,0 +1,20 @@
+{
+  "modelId": "cristofori",
+  "landmarkId": "cristofori",
+  "name": "Cristofori",
+  "center": [
+    52.36803505,
+    4.88323061
+  ],
+  "address": "Prinsengracht 581-583, Amsterdam",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Prinsengracht_581-583",
+  "description": "Prinsengracht 581-583 began as two warehouses under spout gables. In the first decade of the 20th century the architect A.M.A. Gulden rebuilt them for the Adler cycle wholesaler, later also a car dealer: the roofs were flattened and the lower three storeys were given a front of natural stone, wood and glass. The piano dealer Christofori later built a showroom and a small concert hall, Salon Christofori, into the building, and its name still stands in large letters on the front.",
+  "funFact": "The building is not a monument itself, although it stands between two municipal monuments, numbers 579 and 587; between its house numbers there is a small artistic emblem.",
+  "sourceLinks": [
+    {
+      "title": "Prinsengracht 581-583, Dutch Wikipedia",
+      "url": "https://nl.wikipedia.org/wiki/Prinsengracht_581-583"
+    }
+  ],
+  "identityNote": "BAG pand 0363100012253896 (BAG year 1905). The front reads CRISTOFORI; the article spells the piano dealer Christofori. No extract landmark exists, so landmarkId is the model id."
+}

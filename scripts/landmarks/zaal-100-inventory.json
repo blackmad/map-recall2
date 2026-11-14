@@ -1,0 +1,243 @@
+{
+ "schemaVersion": 1,
+ "id": "zaal-100",
+ "pand": "0363100012158161",
+ "brief": "scripts/landmarks/zaal-100-brief.md",
+ "signature": [
+  "z1-triplets",
+  "z1-gable",
+  "z1-100",
+  "z1-dormers",
+  "z1-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-135",
+   "bearing": 135,
+   "lengthM": 38,
+   "centre": [
+    4.8782355,
+    52.3830495
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002554_pano_0000_006569",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "z1-triplets",
+     "kind": "window-shape",
+     "where": "every storey of each of the five bays a triplet of tall white multi-pane windows (wide between two narrow) with segmental heads under arch rings with light voussoirs",
+     "approxSizeM": [
+      2.0,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "cut segment-headed openings with white frames and pane bars, stone arch rings"
+    },
+    {
+     "id": "z1-gable",
+     "kind": "other",
+     "where": "crested gable over the cornice of the middle bay with a small round-headed window, stepped coping, a pinnacle and white crest pieces",
+     "approxSizeM": [
+      7.0,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "brick triangle solid, stepped stone coping blocks, pinnacle slab, white crest slabs, framed window panel"
+    },
+    {
+     "id": "z1-100",
+     "kind": "sign",
+     "where": "the venue: three black ground-floor windows in the south-west bay painted with large white 1 0 0, a yellow ZAAL 100 sign band and a vertical black 100 sign on the lesene",
+     "approxSizeM": [
+      6.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "dark cut openings with glyph numerals inside, ochre band with dark lettering, a dark blade sign with vertical lettering"
+    },
+    {
+     "id": "z1-dormers",
+     "kind": "other",
+     "where": "four roof dormers with flared white hoods",
+     "approxSizeM": [
+      2.4,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "three brick dormer boxes with glass panels and flared white hood solids; the fourth stands in the raised north-east roof piece the 3DBAG shell carries as a plain box"
+    },
+    {
+     "id": "z1-cornice",
+     "kind": "other",
+     "where": "light cornice along the whole front with white consoles at the tops of the lesenes",
+     "approxSizeM": [
+      38.0,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "profiled white cornice and console slabs"
+    },
+    {
+     "id": "z1-lesenes",
+     "kind": "other",
+     "where": "brick lesenes dividing the front into five bays",
+     "approxSizeM": [
+      0.5,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "brick pier slabs"
+    },
+    {
+     "id": "z1-courses",
+     "kind": "other",
+     "where": "light stone string courses at the sill levels and a band over the first floor",
+     "approxSizeM": [
+      38.0,
+      0.22
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "stone course slabs"
+    },
+    {
+     "id": "z1-entrance",
+     "kind": "window-shape",
+     "where": "round-headed entrance with a blue double door in the second bay",
+     "approxSizeM": [
+      1.9,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "how": "cut round-headed opening with a blue back, white frame and transom, stone arch ring"
+    },
+    {
+     "id": "z1-scaffold",
+     "kind": "other",
+     "where": "scaffolding on the north-east bay",
+     "approxSizeM": [
+      7.0,
+      10.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002554_pano_0000_006569",
+     "skip": {
+      "reason": "temporary",
+      "note": "building works in the 2022 capture"
+     }
+    }
+   ],
+   "note": "the brief crop (2024, 8 m) is a close detail; the whole-face crop TMX7316010203-002554_pano_0000_006569 is used"
+  },
+  {
+   "tag": "w02-45",
+   "bearing": 45,
+   "lengthM": 14.7,
+   "centre": [
+    4.8783525,
+    52.383218
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002554_pano_0000_006561",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [],
+   "note": "the oblique crop shows the neighbouring black-painted house; the end wall adjoins the neighbour (party wall)"
+  },
+  {
+   "tag": "w03-315",
+   "bearing": 315,
+   "lengthM": 8.4,
+   "centre": [
+    4.8781295,
+    52.383107
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-315",
+   "bearing": 315,
+   "lengthM": 7.9,
+   "centre": [
+    4.8779265,
+    52.3830445
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000043_pano_0000_000408",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "z1-rear-windows",
+     "kind": "window-shape",
+     "where": "large white-framed segment-headed windows in the brick rear wall",
+     "approxSizeM": [
+      1.6,
+      2.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000043_pano_0000_000408",
+     "skip": {
+      "reason": "not-visible",
+      "note": "rear wall faces the back gardens; only fragments behind ivy at 35 m, not seen from the street front riders use"
+     }
+    }
+   ],
+   "note": "rear wall seen at 35 m: brick with large white-framed windows behind ivy and a street lamp; the rear stays the plain 3DBAG shell (inferred, reported)"
+  },
+  {
+   "tag": "w05-314",
+   "bearing": 314,
+   "lengthM": 7.9,
+   "centre": [
+    4.878235,
+    52.3832385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000043_pano_0000_000414",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [],
+   "note": "rear wall seen at 35 m; plain 3DBAG shell (inferred, reported)"
+  },
+  {
+   "tag": "w06-315",
+   "bearing": 315,
+   "lengthM": 4.1,
+   "centre": [
+    4.878168,
+    52.383163
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Over Zaal 100 (venue website)",
+   "url": "https://zaal100.nl/over-zaal-100/",
+   "licence": "facts only"
+  }
+ ]
+}

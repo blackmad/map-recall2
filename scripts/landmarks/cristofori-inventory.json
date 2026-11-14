@@ -1,0 +1,169 @@
+{
+ "schemaVersion": 1,
+ "id": "cristofori",
+ "pand": "0363100012253896",
+ "brief": "scripts/landmarks/cristofori-brief.md",
+ "signature": [
+  "cr-lettering",
+  "cr-arches",
+  "cr-upper-windows",
+  "cr-stone-base"
+ ],
+ "walls": [
+  {
+   "tag": "w01-273",
+   "bearing": 273,
+   "lengthM": 11.5,
+   "centre": [
+    4.882861,
+    52.3680655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000205_pano_0000_001106",
+   "capturedAt": "2017-03-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "cr-lettering",
+     "kind": "lettering",
+     "where": "CRISTOFORI in gold capitals across the stone front between the ground-floor arches and the first-floor windows",
+     "approxSizeM": [
+      6.0,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "gold glyph-run lettering 6 cm proud of the stone"
+    },
+    {
+     "id": "cr-arches",
+     "kind": "window-shape",
+     "where": "two wide round-arched ground-floor openings with cream stone surrounds: white glazed doors, a cream signboard band and a railed fanlight in each",
+     "approxSizeM": [
+      3.75,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "cut round-arched openings with white frames and bars, cream arch rings and jambs, a band slab and a low railing inside each"
+    },
+    {
+     "id": "cr-stone-base",
+     "kind": "other",
+     "where": "grey natural-stone cladding over the ground and first floors, ending in a moulded string course",
+     "approxSizeM": [
+      11.5,
+      8.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "stone face section and a profiled string course"
+    },
+    {
+     "id": "cr-upper-windows",
+     "kind": "window-shape",
+     "where": "brick storeys in two mirrored halves: per half a wide round-arched French window between two narrow round-arched windows, white frames",
+     "approxSizeM": [
+      1.6,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "cut round-headed openings with white frames and stone sills"
+    },
+    {
+     "id": "cr-balconies",
+     "kind": "balcony-ironwork",
+     "where": "railed balconies in front of the wide arched windows on three storeys, balconettes with carved panels on the first floor",
+     "approxSizeM": [
+      1.8,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "stone slabs and balustradeRun railings; carved panels as cream slabs"
+    },
+    {
+     "id": "cr-emblem",
+     "kind": "relief",
+     "where": "small artistic emblem (vignette) on the stone pier between the two arches",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "dark disc 6 cm proud"
+    },
+    {
+     "id": "cr-parapet",
+     "kind": "other",
+     "where": "corbelled brick parapet with a dentil course and stepped blocks along the top",
+     "approxSizeM": [
+      11.5,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "how": "profiled brick course, parapet band and stepped blocks at 1.9 m pitch"
+    },
+    {
+     "id": "cr-signs",
+     "kind": "sign",
+     "where": "tenant lettering on the signboard bands (verse, FOGO DOWNTOWN)",
+     "approxSizeM": [
+      2.0,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs that change between captures (2017 verse, 2021 FOGO)"
+     }
+    },
+    {
+     "id": "cr-downpipes",
+     "kind": "other",
+     "where": "downpipes at both ends of the front",
+     "approxSizeM": [
+      0.1,
+      19.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000205_pano_0000_001106",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-94",
+   "bearing": 94,
+   "lengthM": 6,
+   "centre": [
+    4.8834445,
+    52.368019
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Prinsengracht 581-583, Wikipedia",
+   "url": "https://nl.wikipedia.org/wiki/Prinsengracht_581-583",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+{
+ "schemaVersion": 1,
+ "id": "roode-bioscoop",
+ "pand": "0363100012169536",
+ "brief": "scripts/landmarks/roode-bioscoop-brief.md",
+ "signature": [
+  "rb-lettering",
+  "rb-neck",
+  "rb-entrance",
+  "rb-balconies",
+  "rb-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-222",
+   "bearing": 222,
+   "lengthM": 10.2,
+   "centre": [
+    4.8840505,
+    52.3839115
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track48_Sphere_00035",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "rb-side-shops",
+     "kind": "window-shape",
+     "where": "white-rendered shop floor with dark doors and a shop window under a white concrete band",
+     "approxSizeM": [
+      10.1,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track48_Sphere_00035",
+     "how": "white rendered section with dark cut doors and a glazed shop window, white band slab"
+    },
+    {
+     "id": "rb-side-windows",
+     "kind": "balcony-ironwork",
+     "where": "three storeys of white-framed French windows, the lower two with low iron railings",
+     "approxSizeM": [
+      1.3,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track48_Sphere_00035",
+     "how": "cut openings with white frames, dark balustradeRun railings on floors 1-2"
+    },
+    {
+     "id": "rb-side-awning",
+     "kind": "canopy",
+     "where": "striped shop awning over the left shop",
+     "approxSizeM": [
+      3.0,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241216_0911_Track48_Sphere_00035",
+     "skip": {
+      "reason": "temporary",
+      "note": "retractable awning, rolled up in other captures"
+     }
+    }
+   ],
+   "note": "2006 housing block of the same pand on the side street; the 2021 brief crop is oblique, the 2024 square-on crop is used"
+  },
+  {
+   "tag": "w02-312",
+   "bearing": 312,
+   "lengthM": 5.7,
+   "centre": [
+    4.883946,
+    52.38411
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000188_pano_0000_002611",
+   "capturedAt": "2016-11-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "rb-lettering",
+     "kind": "lettering",
+     "where": "ROODE BIOSCOOP in light letters on the dark fascia over the ground floor, ROODE left and BIOSCOOP right of the middle bay",
+     "approxSizeM": [
+      5.5,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "glyph-run lettering on a red fascia slab"
+    },
+    {
+     "id": "rb-neck",
+     "kind": "other",
+     "where": "neck gable over the middle bay rising out of the mansard: brick shaft with a round-arched white/red window, small shoulder pieces, a crowning cornice and a segmental crown",
+     "approxSizeM": [
+      2.1,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "cut shaft face with an arched opening and stone arch ring, shoulder triangles, cornice slab and segmental crown with a stone rim"
+    },
+    {
+     "id": "rb-entrance",
+     "kind": "window-shape",
+     "where": "wide segment-arched entrance in red woodwork with a glazed fanlight, between two red side doors with transoms",
+     "approxSizeM": [
+      2.2,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "segmental cut opening with red frames and back, brick arch ring, side doors as cut openings with transom bars"
+    },
+    {
+     "id": "rb-balconies",
+     "kind": "balcony-ironwork",
+     "where": "three balconies on the middle bay: stone slabs on consoles with dark iron railings, in front of red French doors",
+     "approxSizeM": [
+      2.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "stone slab and two consoles per floor, balustradeRun railing in dark at the slab front"
+    },
+    {
+     "id": "rb-windows",
+     "kind": "window-shape",
+     "where": "white-cased windows with red sashes and a transom, two per storey either side of the French doors, stone sills",
+     "approxSizeM": [
+      1.12,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "cut openings with the new two-tone sash option (white case, red sash ring and bars), stone sill slabs"
+    },
+    {
+     "id": "rb-pinnacles",
+     "kind": "other",
+     "where": "brick corner piers rising past the cornice into small pinnacles",
+     "approxSizeM": [
+      0.3,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "pier slabs with a stone cap and a triangular stone top"
+    },
+    {
+     "id": "rb-cornice",
+     "kind": "other",
+     "where": "light cornice moulding across the front under the mansard",
+     "approxSizeM": [
+      5.2,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000188_pano_0000_002611",
+     "how": "profiled stone moulding along the front"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "De Roode Bioscoop, Wikipedia",
+   "url": "https://nl.wikipedia.org/wiki/De_Roode_Bioscoop",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

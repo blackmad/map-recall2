@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as T from 'three';
-import {archFillOutline, archRingOutline, cutHole, frameAt, makeFrontKit, type FrontFace} from './street-front-kit';
+import {archFillOutline, archRingOutline, cutHole, frameAt, makeFrontKit, sashRects, type FrontFace} from './street-front-kit';
 import type {BuildingTools} from './cultural-builders';
 
 const face = (): FrontFace => ({f: {origin: [0, 0], tangent: [1, 0], n: [0, 1]}, len: 10, y0: 0, y1: 8, c: 'brick', holes: []});
@@ -51,4 +51,30 @@ test('flush emits one face mesh with an arched opening cut and its back', () => 
   for (let i = 0; i < p.count; i++) top = Math.max(top, p.getY(i));
   assert.ok(Math.abs(top - 4.4) < 1e-6, 'back reaches the crown of the arch');
   assert.equal(k.faces.length, 0);
+});
+
+test('sashRects: the two-tone sash ring stays inside the frame ring and is empty when it cannot fit', () => {
+  const r = sashRects(5, 2, 1.2, 2.0, 0.1, 0.07, 0.06);
+  assert.equal(r.length, 4);
+  for (const [t, y, w, h] of r) {
+    assert.ok(t - w / 2 >= 5 - 0.6 + 0.07 - 1e-9 && t + w / 2 <= 5 + 0.6 - 0.07 + 1e-9, 'inside the jambs');
+    assert.ok(y >= 2 + 0.1 - 1e-9 && y + h <= 2 + 2.0 - 0.07 + 1e-9, 'between sill and head');
+  }
+  assert.deepEqual(sashRects(5, 2, 0.2, 2.0, 0.1, 0.07, 0.06), [], 'too narrow');
+});
+
+test('opening without `sash` adds exactly what it did before; with `sash` it adds the ring and colours the bars', () => {
+  const run = (o: Record<string, unknown>) => {
+    const added: string[] = [];
+    const b = {add: (_g: T.BufferGeometry, c: string) => added.push(c)} as unknown as BuildingTools;
+    const k = makeFrontKit(b);
+    const S = k.sec({a: [0, 0], b: [10, 0]}, 0, 10, 0, 8, 'brick');
+    k.opening(S, 5, 2, 1.2, 2.0, {cols: 2, bars: [1.4], frame: 'white', ...o});
+    return added;
+  };
+  const plain = run({}), two = run({sash: 'red'});
+  assert.equal(plain.filter(c => c === 'red').length, 0);
+  assert.equal(two.length, plain.length + 4, 'four sash strips');
+  assert.equal(two.filter(c => c === 'red').length, 4 + 1 + 1, 'ring, the column bar and the transom bar in the sash colour');
+  assert.equal(two.filter(c => c === 'white').length, 4, 'the frame ring stays white');
 });

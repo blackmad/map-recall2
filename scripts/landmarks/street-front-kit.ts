@@ -26,8 +26,10 @@ export type Chord = {a: P2; b: P2};
 export type FrontHole = ArchOpening & {back: Col | null};
 export type FrontFace = {f: Frame; len: number; y0: number; y1: number; c: Col; holes: FrontHole[]};
 export type Sec = {F: FrontFace; s0: number; s1: number; ch: Chord; off: number};
-/** `rise`: segmental or round head (rise = w/2) of that height inside the opening's top; frames then stop at the springing. */
-export type OpenOpts = {depth?: number; cols?: number; rows?: number; frame?: Col; back?: Col; edge?: number; bars?: number[]; rise?: number; barW?: number};
+/** `rise`: segmental or round head (rise = w/2) of that height inside the opening's top; frames then stop at the springing.
+ *  `sash` (venues round 5, De Roode Bioscoop): a two-tone window, a second ring `sashW` wide (default 6 cm) just inside the
+ *  frame ring in the sash colour, and the glazing bars in that colour too (white case, red sashes). Absent: unchanged. */
+export type OpenOpts = {depth?: number; cols?: number; rows?: number; frame?: Col; back?: Col; edge?: number; bars?: number[]; rise?: number; barW?: number; sash?: Col; sashW?: number};
 
 /** A cut opening when it lies inside the face (margin m) and clear of its other openings (bounding boxes). */
 export function cutHole(F: FrontFace, h: FrontHole, m = 0.04): boolean {
@@ -68,6 +70,17 @@ export function archFillOutline(w: number, rise: number, steps = 8): P2[] {
   return pts;
 }
 
+/** Sash ring inside a frame ring: bottom over the frame's `fb` sill strip, sides and top inside its `fw` strips, `sw` wide.
+ *  Returns the four strip rectangles (t centre, y bottom, w, h) so a test can check they stay inside the opening. */
+export function sashRects(t: number, y: number, w: number, hr: number, fb: number, fw: number, sw: number): Array<[number, number, number, number]> {
+  const iw = w - 2 * fw, y0 = y + fb, y1 = y + hr - fw;
+  if (iw <= 2 * sw || y1 - y0 <= 2 * sw) return [];
+  return [[t, y0, iw, sw], [t, y1 - sw, iw, sw], [t - iw / 2 + sw / 2, y0 + sw, sw, y1 - y0 - 2 * sw], [t + iw / 2 - sw / 2, y0 + sw, sw, y1 - y0 - 2 * sw]];
+}
+function sashRing(b: BuildingTools, f: Frame, t: number, y: number, w: number, hr: number, fb: number, fw: number, sw: number, d: number, c: Col, out: number) {
+  for (const [tc, yb, rw, rh] of sashRects(t, y, w, hr, fb, fw, sw)) ledgeStrip(b, f, tc, yb, rw, rh, d, c, out);
+}
+
 export function makeFrontKit(b: BuildingTools, OFF = 0.3) {
   const FACES: FrontFace[] = [];
   const sec = (ch: Chord, s0: number, s1: number, y0: number, y1: number, c: Col, off = OFF): Sec => {
@@ -89,9 +102,11 @@ export function makeFrontKit(b: BuildingTools, OFF = 0.3) {
     }
     const cols = o.cols ?? 1, rows = o.rows ?? 1;
     const bw = o.barW ?? 0.05;                         // glazing-bar width: 5 cm sash bars, ~10 cm for the heavy timber crosses
-    for (let k = 1; k < cols; k++) ledgeStrip(b, f, t - w / 2 + w * k / cols, y + fw, bw, hr - 2 * fw, d, frame, out);
-    for (let k = 1; k < rows; k++) ledgeStrip(b, f, t, y + hr * k / rows - bw / 2, w - 2 * fw, bw, d, frame, out);
-    for (const yb of o.bars ?? []) ledgeStrip(b, f, t, y + yb - 0.04, w - 2 * fw, 0.08, d, frame, out);
+    const bar = o.sash ?? frame;
+    if (o.sash && fw > 0) sashRing(b, f, t, y, w, hr, Math.max(fw, 0.1), fw, o.sashW ?? 0.06, d, o.sash, out);
+    for (let k = 1; k < cols; k++) ledgeStrip(b, f, t - w / 2 + w * k / cols, y + fw, bw, hr - 2 * fw, d, bar, out);
+    for (let k = 1; k < rows; k++) ledgeStrip(b, f, t, y + hr * k / rows - bw / 2, w - 2 * fw, bw, d, bar, out);
+    for (const yb of o.bars ?? []) ledgeStrip(b, f, t, y + yb - 0.04, w - 2 * fw, 0.08, d, bar, out);
   };
   /** Wall-plane frame of a section, `proud` metres out of its face. */
   const faceFrame = (S: Sec, proud = 0): Frame => frameAt(S.ch, 0, S.off + proud);
