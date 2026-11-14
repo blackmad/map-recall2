@@ -178,6 +178,8 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
+    // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
+    if (out.series?.roofStorey?.kind === 'mansard' && member.widthM && member.widthM > 1) out.series.roofStorey.frontM = member.widthM;
     return out;
   });
 }

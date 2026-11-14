@@ -86,7 +86,9 @@ export interface RowSeriesDraw {
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
   roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
     /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
-    joins?: { left?: boolean; right?: boolean } };
+    joins?: { left?: boolean; right?: boolean };
+    /** The member's street front width (lane D `members[].widthM`, m): which outline wall the roof faces on a corner. */
+    frontM?: number };
   heads?: RowHeadsDraw[];
   /** Wall components the series states beyond the heads and cornice (bands: `floor-cornices`, `string-courses`,
    *  `speklagen`); each must be a facade component id. */
@@ -499,7 +501,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}) } });
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     return { ...feature, properties: props };
   }

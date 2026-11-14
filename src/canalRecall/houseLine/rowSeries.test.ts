@@ -11,7 +11,7 @@ const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.t
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
 const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf } = await import('./rowFront.ts');
-const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles } = await import('../roofMesh.ts');
+const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 
 const defs = loadRowDefs();
@@ -224,4 +224,35 @@ test('the record\'s window kind sets the series glazing: T-windows and toplit ca
 test('a row type states its window width: kinker-1890-plain-brick windows take 75 % of their axis pitch', () => {
   for (const r of K) assert.equal(r.series!.windowShare, 0.75, r.pandId);
   for (const r of W) assert.equal(r.series!.windowShare, undefined, r.pandId);
+});
+
+test('Kinkerstraat 110 (corner end): its slate mansard faces Kinkerstraat, not the nearer side street (no pyramid)', () => {
+  const r = rec(K, '0363100012165799');
+  const out = withFlag(K, () => withRowFront({ ...feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }), geometry: { type: 'Polygon', coordinates: ring(5.2, 13) } }));
+  const p = out.properties;
+  assert.equal(p.roofShape, 'mansardHip');
+  assert.equal((p.rowRoof as { frontM?: number }).frontM, 5.2, 'the member\'s front width reaches the roof');
+  const plan = roofPlanForFeature(out as never)!;
+  assert.equal(plan.kind, 'mansardHip');
+  assert.equal(plan.material, 'slate');
+  assert.equal(plan.pieces?.[0].plan.rowFrontM, 5.2);
+  // 110's outline: a 5.2 m front on Kinkerstraat (y = 0, 8.0 m from the street), 13 m deep, its long side wall 6.9 m
+  // from the cross street (the measured distances, tile 14/8413/5384). The nearest street wall is the side one.
+  const lat0 = 52.381, kx = 111_320 * Math.cos(lat0 * Math.PI / 180), origin = { lng: 4.888, lat: lat0 };
+  const outer = ((out as { geometry: { coordinates: number[][][] } }).geometry.coordinates[0]);
+  const facing = (w: { nx: number; ny: number }) => w.ny < -0.9 ? 8.0 : w.nx > 0.9 ? 6.9 : Infinity;
+  const h0 = Number(p.roofEavesHeightM), rise = Number(p.height) - h0;
+  const deck = (pl: typeof plan) => {
+    const top = roofTrianglesForOutline(outer, origin, pl, h0, { bayM: 2, storeyM: 3, cellM: 1 }, kx, facing).filter(t => t.part === 'plate' || t.part === undefined)
+      .flatMap(t => t.p).filter(q => Math.abs(q[2] - (h0 + rise)) < 0.05);
+    const ys = top.map(q => q[1]), xs = top.map(q => q[0]);
+    return { along: Math.max(...ys) - Math.min(...ys), across: Math.max(...xs) - Math.min(...xs) };
+  };
+  const d = deck(plan);
+  assert.ok(d.along > 8 && d.across < 5.3, `the mansard deck runs back from the front (${d.along.toFixed(1)} m deep, ${d.across.toFixed(1)} m wide)`);
+  // Without the stated front the side wall wins: the box turns, its hips land on the front and party walls (in game, on
+  // 110's kinked outline, a pyramid).
+  const blind = { ...plan, pieces: plan.pieces!.map(pc => ({ ...pc, plan: { ...pc.plan, rowFrontM: undefined } })) };
+  const old = deck(blind);
+  assert.ok(old.across < d.across - 1, `no front width: the box faced the side street, its hips across the 5.2 m front (${old.along.toFixed(1)} x ${old.across.toFixed(1)})`);
 });
