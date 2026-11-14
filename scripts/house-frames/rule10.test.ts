@@ -109,5 +109,35 @@ test('an old run is unchanged: the job carries no rule-10 field without a rule-1
   assert.deepEqual(Object.keys(old), ['out', 'query', 'width', 'height', 'reopenEvery', 'settleMs', 'poses']);
   assert.deepEqual(Object.keys(old.poses[0]), ['key', 'pandId', 'out', 'query', 'lngLat', 'headingDeg', 'fps', 'picks']);
   const r10 = jobFor({ ...base, rule10: parseRule10(['--rule10']) }, [prep]);
-  assert.equal(r10.rule10!.dpr, 2); assert.equal(r10.rule10!.likenessQuery, 'trees3d=0'); assert.equal(r10.rule10!.asPlayed.length, 1);
+  assert.equal(r10.rule10!.dpr, 2); assert.equal(r10.rule10!.likenessQuery, 'dpr=2&governor=0&tier=high&trees3d=0'); assert.equal(r10.rule10!.asPlayed.length, 1);
+  assert.equal(r10.rule10!.asPlayedQuery, 'dpr=2&governor=0&tier=high');
+});
+
+test('rule-10 pages pin the pixel ratio, governor and tier, leaving a pin the query names to the query', async () => {
+  const { rule10Pins } = await import('./rule10Frames.ts');
+  const { jobFor } = await import('./frames.ts');
+  // today and the candidate both draw at --dpr: a flag-on query gets the same pins as the plain one
+  assert.equal(rule10Pins('?world=live', 2), 'dpr=2&governor=0&tier=high');
+  assert.equal(rule10Pins('?world=live&retailGround=1', 2), rule10Pins('?world=live', 2));
+  assert.equal(rule10Pins('', 1.5), 'dpr=1.5&governor=0&tier=high');
+  // block-page.ts FRAME_QUERY names all three: nothing added
+  assert.equal(rule10Pins('?dpr=2&governor=0&tier=high', 2), '');
+  assert.equal(rule10Pins('tier=mid', 2), 'dpr=2&governor=0');
+  const pose = fixedLensPose({ lngLat: out(20) }, W171218);
+  const prep = { key: 'k', pandId: 'p', pose, wall: W171218, samples: [{ x: 1, y: 2 }] } as any;
+  const job = jobFor({ out: '/o', query: '?world=live&retailGround=1', reopenEvery: 40, rule10: parseRule10(['--rule10', '--dpr', '2', '--likeness-trees', 'show']) } as any, [prep]);
+  assert.equal(job.rule10!.likenessQuery, 'dpr=2&governor=0&tier=high');
+});
+
+test('BUNDLES_DIR holding part of the mesh pool\'s bundles is warned about', async () => {
+  const { bundlesDirWarning, POOL_BUNDLES } = await import('./frames.ts');
+  assert.equal(bundlesDirWarning(undefined), null);
+  // none (a ground-only scratch build) or all: nothing to say
+  assert.equal(bundlesDirWarning('/b', n => n === 'own-ground-worker.bundle.js'), null);
+  assert.equal(bundlesDirWarning('/b', n => (POOL_BUNDLES as readonly string[]).includes(n)), null);
+  // the retail-ground lane's dir (2026-11-14): no own-ground-game, which started the pool with the committed flag list
+  const lane = new Set(['three-buildings.bundle.js', 'three-buildings-worker.bundle.js', 'engine.bundle.js']);
+  const w = bundlesDirWarning('/b', n => lane.has(n))!;
+  assert.match(w, /not own-ground-game\.bundle\.js:/); assert.match(w, /--only=own-ground-game/);
+  assert.match(bundlesDirWarning('/b', n => n === 'three-buildings.bundle.js')!, /three-buildings-worker\.bundle\.js/);
 });

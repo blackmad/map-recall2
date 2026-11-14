@@ -1253,6 +1253,11 @@ class VectorBasemap {
       const response = await fetch(this._extractFile('shopfronts.json'));
       if (!response.ok) return;
       api.setShopfronts(await response.json());
+      // Shopfront templates (lane retail-ground, `?retailGround=1`, src/canalRecall/retailTemplates.ts): only with the flag.
+      if (api.retailGroundOn && api.retailGroundOn() && api.setShopTemplates) {
+        const templates = await fetch(this._extractFile('shop-templates.json'));
+        if (templates.ok) api.setShopTemplates(await templates.json());
+      }
       this._applyFeatureDecorator();
     } catch (error) {
       console.warn('Shopfronts unavailable; ground floors keep random shops.', error);

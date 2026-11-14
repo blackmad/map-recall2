@@ -4,9 +4,10 @@ import { BLANK_INSTALLS, BLANK_INSTALL_MAX_GLASS_SHARE, bareFrontsEnabled, force
 import { ORDINARY_BUILDINGS } from './ordinaryModels';
 
 // Lane R5-D (#264): the user's three flat blocks of 2026-11-08 are blank installs that yield to the generic facade.
-const USER_SPOTS = ['ordinary-0363100012137990', 'ordinary-0363100012120309', 'ordinary-0363100012165748'];
+// The third (Rijksakademie, 0363100012165748) is a bespoke landmark since 2026-11-14 and is no longer an install.
+const USER_SPOTS = ['ordinary-0363100012137990', 'ordinary-0363100012120309'];
 
-test('the three user spots are listed, each under the measured glass threshold and in the catalogue', () => {
+test('the user spots are listed, each under the measured glass threshold and in the catalogue', () => {
   for (const id of USER_SPOTS) assert.ok(id in BLANK_INSTALLS, id);
   for (const [id, share] of Object.entries(BLANK_INSTALLS)) {
     assert.ok(share < BLANK_INSTALL_MAX_GLASS_SHARE, `${id} ${share}`);

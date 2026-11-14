@@ -7,7 +7,8 @@
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
 import { brickLiftOn, brickLiftV2ProfileWall, periodWallList } from './look/brickLift.js';
-import { measuredPoolDraw } from './look/measuredWallPool.js';
+import { measuredPoolDraw, measuredPoolDrawWide } from './look/measuredWallPool.js';
+import { realDoorSwatch, realLookOn } from './look/realLook.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
@@ -314,7 +315,8 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const traits = stated ? { wall: drawn?.wall ?? null, pale: spec!.pale ?? ladder!.pale, dark: spec!.dark ?? ladder!.dark, arch: spec!.arch ?? ladder!.arch, tall: spec!.tall ?? ladder!.tall } : drawn;
   // The measured wall pool (lane W1) and its variety draw (lane W2): a painted draw takes the painted preset's smooth cells.
   const h = hashSeed(id);
-  const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolDraw(at[0], at[1], archetype, h >>> 7) : null;
+  // realLook walls (look/realLook.ts, default off): beyond the pool's 600 m, the same draw over the nearest measured walls out to 3 km.
+  const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? (measuredPoolDraw(at[0], at[1], archetype, h >>> 7) ?? (realLookOn('walls') ? measuredPoolDrawWide(at[0], at[1], archetype, h >>> 7) : null)) : null;
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone front (spec.painted) takes the same smooth cells.
   const ownStyle = () => contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : keepLadder ? ladderStyle : ladder ? nearestStyle(archetype, traits!, ladderStyle, spec!.bays) : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // The smooth cells exist for one plain style only (PAINTED_BASE_STYLE): a spec'd front whose own style carries white
@@ -333,6 +335,9 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   if (traits?.wall) palette.wall = brickLiftOn() && look === 'photo' ? brickLiftV2ProfileWall(traits.wall) : traits.wall;
   const poolWall = draw?.hex ?? null;
   if (poolWall) palette.wall = poolWall;
+  // realLook doors (look/realLook.ts, default off): the photo look's accent (door leaf, shutters, painted frames) in the
+  // measured shares of the HouseSpec door colours; a modern vocabulary's or a recipe's own accent still wins.
+  if (look === 'photo' && !recipe && !contemporary && realLookOn('doors')) palette.accent = realDoorSwatch(h >>> 11);
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   if (periodWall && look === 'photo') palette.wall = periodWall;

@@ -5791,14 +5791,14 @@
   }
  },
  "morgan-mees": {
-  "sourceHash": "8b9c6b1d8b75254f",
+  "sourceHash": "67fd98a5064e4938",
   "buildVersion": 2,
-  "bytes": 42688,
-  "triangles": 1357,
+  "bytes": 43796,
+  "triangles": 1359,
   "lod2": {
-   "sourceHash": "8b9c6b1d8b75254f",
+   "sourceHash": "67fd98a5064e4938",
    "buildVersion": 6,
-   "bytes": 8296,
+   "bytes": 8668,
    "triangles": 176
   }
  },
@@ -5864,6 +5864,170 @@
    "buildVersion": 6,
    "bytes": 4476,
    "triangles": 50
+  }
+ },
+ "asscher-diamantslijperij": {
+  "sourceHash": "1bc0ef84380d9fef",
+  "buildVersion": 2,
+  "bytes": 72476,
+  "triangles": 3674,
+  "lod2": {
+   "sourceHash": "1bc0ef84380d9fef",
+   "buildVersion": 6,
+   "bytes": 11024,
+   "triangles": 480
+  }
+ },
+ "tolstraat-160-tempel": {
+  "sourceHash": "13a743aa6bcb4a0e",
+  "buildVersion": 2,
+  "bytes": 21784,
+  "triangles": 836,
+  "lod2": {
+   "sourceHash": "13a743aa6bcb4a0e",
+   "buildVersion": 6,
+   "bytes": 8004,
+   "triangles": 232
+  }
+ },
+ "de-nieuwe-liefde": {
+  "sourceHash": "797f58ee9ecc28bd",
+  "buildVersion": 2,
+  "bytes": 27804,
+  "triangles": 1024,
+  "lod2": {
+   "sourceHash": "797f58ee9ecc28bd",
+   "buildVersion": 6,
+   "bytes": 6268,
+   "triangles": 187
+  }
+ },
+ "rijksakademie": {
+  "sourceHash": "b8a59ba2871d4c35",
+  "buildVersion": 2,
+  "bytes": 69904,
+  "triangles": 3656,
+  "lod2": {
+   "sourceHash": "b8a59ba2871d4c35",
+   "buildVersion": 6,
+   "bytes": 12540,
+   "triangles": 450
+  }
+ },
+ "werf-kromhout": {
+  "sourceHash": "32eb74d74b094e34",
+  "buildVersion": 2,
+  "bytes": 30016,
+  "triangles": 1454,
+  "lod2": {
+   "sourceHash": "32eb74d74b094e34",
+   "buildVersion": 6,
+   "bytes": 5068,
+   "triangles": 87
+  }
+ },
+ "conservatorium-van-amsterdam": {
+  "sourceHash": "74377f473d4e3490",
+  "buildVersion": 2,
+  "bytes": 18316,
+  "triangles": 576,
+  "lod2": {
+   "sourceHash": "74377f473d4e3490",
+   "buildVersion": 6,
+   "bytes": 4448,
+   "triangles": 75
+  }
+ },
+ "arti-et-amicitiae": {
+  "sourceHash": "fce8f3b50993c78d",
+  "buildVersion": 2,
+  "bytes": 60148,
+  "triangles": 2567,
+  "lod2": {
+   "sourceHash": "fce8f3b50993c78d",
+   "buildVersion": 6,
+   "bytes": 8972,
+   "triangles": 254
+  }
+ },
+ "industrieele-groote-club": {
+  "sourceHash": "8814ac9fd5b12e8a",
+  "buildVersion": 2,
+  "bytes": 66000,
+  "triangles": 3293,
+  "lod2": {
+   "sourceHash": "8814ac9fd5b12e8a",
+   "buildVersion": 6,
+   "bytes": 11584,
+   "triangles": 444
+  }
+ },
+ "splendor": {
+  "lod2": {
+   "sourceHash": "e11d25dd241c490e",
+   "buildVersion": 6,
+   "bytes": 8544,
+   "triangles": 215
+  }
+ },
+ "de-uitkijk": {
+  "sourceHash": "02a5d4101f178921",
+  "buildVersion": 2,
+  "bytes": 21640,
+  "triangles": 707,
+  "lod2": {
+   "sourceHash": "02a5d4101f178921",
+   "buildVersion": 6,
+   "bytes": 4536,
+   "triangles": 79
+  }
+ },
+ "escape-rembrandtplein": {
+  "sourceHash": "f52a3c4fcb1920c1",
+  "buildVersion": 2,
+  "bytes": 47472,
+  "triangles": 2406,
+  "lod2": {
+   "sourceHash": "f52a3c4fcb1920c1",
+   "buildVersion": 6,
+   "bytes": 8752,
+   "triangles": 213
+  }
+ },
+ "bitterzoet": {
+  "sourceHash": "303d1247312ca205",
+  "buildVersion": 2,
+  "bytes": 37440,
+  "triangles": 1291,
+  "lod2": {
+   "sourceHash": "303d1247312ca205",
+   "buildVersion": 6,
+   "bytes": 7236,
+   "triangles": 146
+  }
+ },
+ "skatecafe": {
+  "sourceHash": "150915a12dfc6d63",
+  "buildVersion": 2,
+  "bytes": 53828,
+  "triangles": 1723,
+  "lod2": {
+   "sourceHash": "150915a12dfc6d63",
+   "buildVersion": 6,
+   "bytes": 7156,
+   "triangles": 106
+  }
+ },
+ "garage-noord": {
+  "sourceHash": "764d3cde0a54edd8",
+  "buildVersion": 2,
+  "bytes": 55088,
+  "triangles": 2769,
+  "lod2": {
+   "sourceHash": "764d3cde0a54edd8",
+   "buildVersion": 6,
+   "bytes": 5820,
+   "triangles": 106
   }
  }
 }

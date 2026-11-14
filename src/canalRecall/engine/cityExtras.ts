@@ -17,6 +17,8 @@
 //    _syncDetailedBuildingLayers); off by default as in vector-map.js.
 
 import { YardFillLayer, yardFillFlag } from './yardFillLayer';
+import { MarketLayer, marketsFlag } from './marketLayer';
+import { TerraceLayer, terraceLayerFlag } from './terraceLayer';
 
 const W = () => globalThis as any;
 
@@ -52,6 +54,10 @@ export class CityExtras {
   furniture: any = null;
   /** Container stacks and rail ballast for bare yards (yardFillLayer.ts); only under `?yardFill=1`. */
   yardFill: YardFillLayer | null = null;
+  /** Albert Cuypmarkt and Ten Katemarkt stalls (marketLayer.ts); only under `?markets=1` (MARKETS_DEFAULT). */
+  markets: MarketLayer | null = null;
+  /** Café and restaurant terraces from the horeca permits (terraceLayer.ts); only under `?terraces=1` (TERRACES=0 kills it). */
+  terraces: TerraceLayer | null = null;
   private roofFeatures: any[] = [];
   private treesVisible = false;
   private detailedVisible = false;
@@ -125,6 +131,20 @@ export class CityExtras {
         void this.yardFill.load(h.extractPath());
       } catch (error) { h.fail('yard fill', error); }
     }
+    if (marketsFlag()) {
+      try {
+        this.markets = new MarketLayer(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame, rider: h.rider ? () => h.rider!() : undefined });
+        W().__canalMarkets = this.markets;
+        void this.markets.load(h.extractPath());
+      } catch (error) { h.fail('markets', error); }
+    }
+    if (terraceLayerFlag()) {
+      try {
+        this.terraces = new TerraceLayer(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame, camera: h.cameraMap.api, rider: h.rider ? () => h.rider!() : undefined });
+        W().__canalTerraces = this.terraces;
+        void this.terraces.load(h.extractPath());
+      } catch (error) { h.fail('terraces', error); }
+    }
     this.syncEnabled();
   }
 
@@ -154,7 +174,7 @@ export class CityExtras {
 
   /** The start flight holds what the driving view loaded; landing resumes (vector-map.js sync). */
   setSuspended(suspended: boolean): void {
-    for (const s of [this.signature, this.trees, this.furniture, this.yardFill]) s?.setSuspended?.(suspended);
+    for (const s of [this.signature, this.trees, this.furniture, this.yardFill, this.markets, this.terraces]) s?.setSuspended?.(suspended);
   }
 
   /** Own ground: models and trees stand on the relief / decks (vector-map.js _syncOwnGroundConsumers). */
@@ -167,6 +187,9 @@ export class CityExtras {
       () => this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
       () => this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
       () => this.yardFill?.setGroundBase((lngLat) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
+      () => this.markets?.setGroundBase((lngLat) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
+      // Terraces only when the flag built them: off, the staging is exactly as before (four steps).
+      ...(this.terraces ? [() => this.terraces!.setGroundBase((lngLat) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat))] : []),
       () => this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM)),
     ];
     do steps[this.hookStep++](); while (!staged && this.hookStep < steps.length);
@@ -182,11 +205,14 @@ export class CityExtras {
     this.trees?.refreshGroundBases?.();
     this.furniture?.refreshGroundBases?.();
     this.yardFill?.refreshGroundBases();
+    this.markets?.refreshGroundBases();
+    this.terraces?.refreshGroundBases();
     this.landmarkRebaseDue = true;
     this.tick(now);
   }
   /** Per frame: runs a due landmark re-base once the throttle allows. */
   tick(now = performance.now()): void {
+    this.markets?.update();
     if (!this.landmarkRebaseDue || now - this.landmarkRebasedAt < LANDMARK_REBASE_MS) return;
     this.landmarkRebaseDue = false;
     this.landmarkRebasedAt = now;

@@ -522,5 +522,12 @@
    "reason": "South strip (12 m) of the separate block north of the OBA, under its own roof; it abuts the OBA north wall. Flagged on 2026-10-30 only because the OBA now also hides its podium outline w240467636, which widened the hull.",
    "evidence": "ortho artifacts/landmark-abutters/crops/oba-oosterdok__w1487606296__ortho.jpg; pano artifacts/landmark-abutters/crops/oba-oosterdok__w1487606296__pano1.jpg (OBA rear entrance beside it)"
   }
+ },
+ "arti-et-amicitiae": {
+  "NL.IMBAG.Pand.0363100012175744": {
+   "verdict": "fine",
+   "reason": "Separate BAG pand (built 1818, 5 storeys, 11.9 m) behind Arti on the Spui/Kalverstraat side, listed by the Arti lane under the model's neighbours, not its own pands; the notch is the shared party-wall shape. Drawn by the city tiles; Arti suppresses only 0363100012165109.",
+   "evidence": "BAG api.data.amsterdam.nl/v1/bag/panden/0363100012175744; scripts/landmarks/arti-et-amicitiae-footprints.json neighbours; pano recording_2025-06-30_05-16-46_01304 (2025, 4 m, heading 78)"
+  }
  }
 }
