@@ -236,7 +236,7 @@ const parked = await page.evaluate(async () => {
   const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings, r = vm.host?.renderer ?? vm._ownHost?.renderer;
   await new Promise(res => setTimeout(res, 1000));
   const gl = window.__canalPerf?.gl;
-  if (gl) { gl.markWarm(); await new Promise(res => setTimeout(res, 3000)); const r = gl.report(); return { coarseChunks: [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length, draws: r.frames.draws, triangles: r.frames.triangles, residentMB: r.resident?.totalMB ?? null, byOwner: r.byOwner.slice(0, 6) }; }
+  if (gl) { const d0 = gl.report().total; let frames = 0; const t0 = performance.now(); while (performance.now() - t0 < 3000) { await new Promise(res => requestAnimationFrame(res)); frames++; } const r = gl.report(), d1 = r.total; return { frames, drawsPerFrame: +((d1.draws - d0.draws) / frames).toFixed(1), trianglesPerFrame: Math.round((d1.triangles - d0.triangles) / frames), coarseChunks: [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length, draws: r.frames.draws, triangles: r.frames.triangles, residentMB: r.resident?.totalMB ?? null, byOwner: r.byOwner.slice(0, 6) }; }
   const calls = [], tris = [];
   for (let i = 0; i < 20; i++) { await new Promise(res => requestAnimationFrame(res)); if (r?.info?.render) { calls.push(r.info.render.calls); tris.push(r.info.render.triangles); } }
   const med = a => a.length ? [...a].sort((x, y) => x - y)[a.length >> 1] : null;
