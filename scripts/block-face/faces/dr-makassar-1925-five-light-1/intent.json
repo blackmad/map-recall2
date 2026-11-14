@@ -1,0 +1,414 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dr-makassar-1925-five-light-1",
+ "street": "Gorontalostraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-26",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "image": "staging/block-face/dr-makassar-1925-five-light-1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "draft preview of makassar-1925-five-light (never installed)"
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "makassar-1925-five-light",
+   "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Makassarpleinbuurt family 1925-1929, 5 storeys, 4.9-6.4 m wide: 22 pands on 3 block faces; median cornice 13.61 m, ? window columns, wall #83837c. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+   "fit": {
+    "widthM": [
+     5.9,
+     6.3
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "match": {
+    "years": [
+     1925,
+     1926
+    ],
+    "eavesM": [
+     12.7,
+     14.7
+    ],
+    "storeys3dbag": [
+     4,
+     5
+    ],
+    "roof": "pitched",
+    "stucco": false,
+    "note": "drafted: 22 pands, 3 faces; see draft.fields for n and spread of every number"
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "sash",
+    "storeyHeights": [
+     3.48,
+     3.05,
+     3.05,
+     2.95
+    ],
+    "windowHeights": [
+     0.61,
+     0.61,
+     0.61,
+     0.53
+    ],
+    "headLines": [
+     0.83,
+     0.83,
+     0.8,
+     0.74
+    ]
+   },
+   "crowns": {
+    "plain": {
+     "gable": "cornice",
+     "note": "placeholder: 11 of 22 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+    }
+   },
+   "palettes": {
+    "measured": {
+     "door": "black",
+     "brick": "#83837c",
+     "frame": "#a0a19d",
+     "stone": "#a0a19d",
+     "cornice": "#7b877e"
+    }
+   },
+   "roof": {
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "draft placeholder: 22 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+   },
+   "rhythm": {
+    "bays": "unread",
+    "windowsPerStorey": "ground: not read | upper storeys: ? each",
+    "symmetry": "not measured (draft)",
+    "groundFloor": "not measured (draft): the ground storey is not read",
+    "signage": "not measured (draft)",
+    "roofline": "11 of 22 pands show a skyline crown over the cornice (kind not measured)",
+    "citation": "drafted from 22 pand spans of 3 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1
+   },
+   "evidence": [
+    {
+     "face": "gorontalo-25-47",
+     "pands": [
+      "131909",
+      "062819",
+      "083492",
+      "094616",
+      "148266",
+      "123464",
+      "067440",
+      "083953",
+      "099162",
+      "124861",
+      "089355",
+      "125447"
+     ],
+     "citation": "drafted from 12 pand spans of the gorontalo-25-47 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "makassar-30-50",
+     "pands": [
+      "064858",
+      "086737",
+      "088631"
+     ],
+     "citation": "drafted from 3 pand spans of the makassar-30-50 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "nias-15-27",
+     "pands": [
+      "149087",
+      "092960",
+      "131679",
+      "066206",
+      "146333",
+      "138107",
+      "107819"
+     ],
+     "citation": "drafted from 7 pand spans of the nias-15-27 strip (draft.fields carry the medians)"
+    }
+   ],
+   "notes": [
+    "Draft, not installed. Medians over 22 pands; refused below 8 pands or 3 faces."
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012131909",
+   "slug": "dr-makassar-1925-five-light-1-131909",
+   "address": "Gorontalostraat 25",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012062819",
+   "slug": "dr-makassar-1925-five-light-1-062819",
+   "address": "Gorontalostraat 27",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012083492",
+   "slug": "dr-makassar-1925-five-light-1-083492",
+   "address": "Gorontalostraat 29",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012094616",
+   "slug": "dr-makassar-1925-five-light-1-094616",
+   "address": "Gorontalostraat 31",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012148266",
+   "slug": "dr-makassar-1925-five-light-1-148266",
+   "address": "Gorontalostraat 33",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012123464",
+   "slug": "dr-makassar-1925-five-light-1-123464",
+   "address": "Gorontalostraat 35",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012067440",
+   "slug": "dr-makassar-1925-five-light-1-067440",
+   "address": "Gorontalostraat 35C",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012083953",
+   "slug": "dr-makassar-1925-five-light-1-083953",
+   "address": "Gorontalostraat 39",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012099162",
+   "slug": "dr-makassar-1925-five-light-1-099162",
+   "address": "Gorontalostraat 41",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012124861",
+   "slug": "dr-makassar-1925-five-light-1-124861",
+   "address": "Gorontalostraat 43",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012089355",
+   "slug": "dr-makassar-1925-five-light-1-089355",
+   "address": "Gorontalostraat 43C",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  },
+  {
+   "pandId": "0363100012125447",
+   "slug": "dr-makassar-1925-five-light-1-125447",
+   "address": "Gorontalostraat 47",
+   "type": {
+    "type": "makassar-1925-five-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-26",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-light"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

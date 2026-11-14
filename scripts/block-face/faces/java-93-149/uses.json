@@ -1,0 +1,818 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:27:15.455Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083653",
+   "addresses": [
+    "Javastraat 93B",
+    "Javastraat 93C",
+    "Javastraat 93D",
+    "Javastraat 93E",
+    "Javastraat 93F",
+    "Javastraat 93G",
+    "Javastraat 93H",
+    "Javastraat 93K",
+    "Javastraat 93L",
+    "Javastraat 93M",
+    "Javastraat 93N",
+    "Javastraat 93P",
+    "Javastraat 93R",
+    "Javastraat 93S",
+    "Javastraat 93T",
+    "Javastraat 93A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 93B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000689458"
+    },
+    {
+     "address": "Javastraat 93C",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000689459"
+    },
+    {
+     "address": "Javastraat 93D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000689460"
+    },
+    {
+     "address": "Javastraat 93E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000689461"
+    },
+    {
+     "address": "Javastraat 93F",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000689462"
+    },
+    {
+     "address": "Javastraat 93G",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000689463"
+    },
+    {
+     "address": "Javastraat 93H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000689464"
+    },
+    {
+     "address": "Javastraat 93K",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000689465"
+    },
+    {
+     "address": "Javastraat 93L",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000689466"
+    },
+    {
+     "address": "Javastraat 93M",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000689467"
+    },
+    {
+     "address": "Javastraat 93N",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000689468"
+    },
+    {
+     "address": "Javastraat 93P",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000689469"
+    },
+    {
+     "address": "Javastraat 93R",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000689470"
+    },
+    {
+     "address": "Javastraat 93S",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000689471"
+    },
+    {
+     "address": "Javastraat 93T",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 531,
+     "bagId": "0363010000689472"
+    },
+    {
+     "address": "Javastraat 93A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000689457"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348138320,
+     "lngLat": [
+      4.9357069,
+      52.3639161
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "93",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-Fr 09:00-20:00; Sa 09:00-18:00; Su 10:00-18:00; PH off",
+      "operator": "AS Watson Health & Beauty Benelux",
+      "ref": "3409",
+      "shop": "chemist",
+      "source": "BAG",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-3409",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704741547,
+     "lngLat": [
+      4.9356689,
+      52.3638143
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 4.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012067472",
+   "addresses": [
+    "Javastraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000689477"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348134398,
+     "lngLat": [
+      4.9358995,
+      52.3638839
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "95",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "name": "PC Professional",
+      "phone": "+31 20 753 0326",
+      "shop": "computer",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012132949",
+   "addresses": [
+    "Javastraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 97-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000689485"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348134395,
+     "lngLat": [
+      4.9359909,
+      52.3638849
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "97",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-03",
+      "name": "Asgül Kledingreparatie & Stomerij",
+      "opening_hours": "Mo-Fr 09:00-18:15; Sa 09:00-17:30",
+      "phone": "+31 20 693 53 68",
+      "self_service": "no",
+      "shop": "tailor",
+      "website": "https://asgulraamdecoratie.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704722350,
+     "lngLat": [
+      4.9360288,
+      52.3638052
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012138717",
+   "addresses": [
+    "Javastraat 99",
+    "Javastraat 99F",
+    "Javastraat 99E",
+    "Javastraat 99H",
+    "Javastraat 99G",
+    "Javastraat 99B",
+    "Javastraat 99A",
+    "Javastraat 99D",
+    "Javastraat 99C",
+    "Javastraat 99K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 99-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000689493"
+    },
+    {
+     "address": "Javastraat 99F",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012072948"
+    },
+    {
+     "address": "Javastraat 99E",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072949"
+    },
+    {
+     "address": "Javastraat 99H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012072950"
+    },
+    {
+     "address": "Javastraat 99G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072951"
+    },
+    {
+     "address": "Javastraat 99B",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012072952"
+    },
+    {
+     "address": "Javastraat 99A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012072953"
+    },
+    {
+     "address": "Javastraat 99D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012072954"
+    },
+    {
+     "address": "Javastraat 99C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072955"
+    },
+    {
+     "address": "Javastraat 99K",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012084063"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8338843317,
+     "lngLat": [
+      4.9360762,
+      52.3638845
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "99",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "amenity": "restaurant",
+      "contact:facebook": "fucinamsterdam",
+      "contact:instagram": "lafucinamsterdam",
+      "contact:youtube": "https://www.youtube.com/channel/UCiPrMMHjm7AkaztpsEDYEeA",
+      "cuisine": "italian",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "dog": "yes",
+      "highchair": "yes",
+      "kids_area:indoor": "yes",
+      "level": "0",
+      "name": "La Fucina",
+      "opening_hours": "We, Fr-Su 12:00-22:00; Tu 17:00-22:00; Th 12:00-21:30",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 337 9897",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "website": "https://lafucina.nl/la-fucina-javastraat/",
+      "website:menu": "https://lafucina.b-cdn.net/wp-content/uploads/2021/12/menu-java-2021-English.pdf",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704722350,
+     "lngLat": [
+      4.9360288,
+      52.3638052
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120527",
+   "addresses": [
+    "Javastraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 101-H",
+     "use": "winkelfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000979759"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081977",
+   "addresses": [
+    "Javastraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 103-H",
+     "use": "winkelfunctie",
+     "areaM2": 356,
+     "bagId": "0363010000689508"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12704754403,
+     "lngLat": [
+      4.9363122,
+      52.3637927
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012133860",
+   "addresses": [
+    "Javastraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000689516"
+    },
+    {
+     "address": "Javastraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 375,
+     "bagId": "0363010012164564"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12704718289,
+     "lngLat": [
+      4.9363615,
+      52.3638151
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "no"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.1
+    },
+    {
+     "type": "node",
+     "id": 12704754403,
+     "lngLat": [
+      4.9363122,
+      52.3637927
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012098497",
+   "addresses": [
+    "Javastraat 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 107-H",
+     "use": "winkelfunctie",
+     "areaM2": 244,
+     "bagId": "0363010000689522"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126147",
+   "addresses": [
+    "Javastraat 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 109-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000689530"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348138319,
+     "lngLat": [
+      4.9365171,
+      52.3638764
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109-H",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "amenity": "restaurant",
+      "cuisine": "kebab;arab",
+      "name": "Nour",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704746136,
+     "lngLat": [
+      4.9365577,
+      52.3638136
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120784",
+   "addresses": [
+    "Javastraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 111-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012072067"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12585818046,
+     "lngLat": [
+      4.9366075,
+      52.3638825
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "111-H",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "amenity": "restaurant",
+      "check_date": "2026-03-14",
+      "check_date:opening_hours": "2026-03-14",
+      "cuisine": "turkish",
+      "name": "Ocakbaşı Çınar",
+      "opening_hours": "Tu-Su 17:00-01:00",
+      "source": "BAG",
+      "source:date": "2025-02-13",
+      "website": "https://ocakbasicinar.nl/",
+      "website:menu": "https://ocakbasicinar.nl/menu/"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704746136,
+     "lngLat": [
+      4.9365577,
+      52.3638136
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012150083",
+   "addresses": [
+    "Javastraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 113-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000689546"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103232",
+   "addresses": [
+    "Javastraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 115-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000689556"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141749",
+   "addresses": [
+    "Javastraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001000951"
+    },
+    {
+     "address": "Javastraat 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012105001"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2827515004,
+     "lngLat": [
+      4.9368689,
+      52.3638828
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117-H",
+      "addr:postcode": "1094HD",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-03",
+      "name": "Little Coconuts",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2025-02-13"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704741284,
+     "lngLat": [
+      4.9369018,
+      52.3638159
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    },
+    {
+     "type": "node",
+     "id": 12704750313,
+     "lngLat": [
+      4.9368824,
+      52.3638155
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "no"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012085970",
+   "addresses": [
+    "Javastraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 119-H",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000689569"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2827515044,
+     "lngLat": [
+      4.9369566,
+      52.3638836
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "119HS",
+      "addr:postcode": "1094HD",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-15",
+      "craft": "electronics_repair",
+      "name": "Hodo Mobile",
+      "opening_hours": "Mo-Sa 10:00-20:00; Su 12:00-20:00",
+      "shop": "repair",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://hodomobile.nl"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012110585",
+   "addresses": [
+    "Javastraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 121-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000689576"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348124345,
+     "lngLat": [
+      4.9370445,
+      52.3638857
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "121-H",
+      "addr:postcode": "1094HD",
+      "addr:street": "Javastraat",
+      "name": "Divan Patisserie",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

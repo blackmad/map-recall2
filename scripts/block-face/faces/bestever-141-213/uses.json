@@ -1,0 +1,258 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:15:04.360Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073127",
+   "addresses": [
+    "Bestevâerstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpstraat 132",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000618698"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091666",
+   "addresses": [
+    "Bestevâerstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 143-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000582812"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129595",
+   "addresses": [
+    "Bestevâerstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 145-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582820"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105791",
+   "addresses": [
+    "Bestevâerstraat 147",
+    "Bestevâerstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 149-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582836"
+    },
+    {
+     "address": "Bestevâerstraat 147-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000582828"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117468",
+   "addresses": [
+    "Bestevâerstraat 151",
+    "Bestevâerstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 151-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582844"
+    },
+    {
+     "address": "Bestevâerstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582852"
+    },
+    {
+     "address": "Bestevâerstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012103368"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104319",
+   "addresses": [
+    "Bestevâerstraat 155",
+    "Bestevâerstraat 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 155-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582860"
+    },
+    {
+     "address": "Bestevâerstraat 157-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582868"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142154",
+   "addresses": [
+    "Bestevâerstraat 159",
+    "Bestevâerstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 159-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582876"
+    },
+    {
+     "address": "Bestevâerstraat 161-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000582884"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074071",
+   "addresses": [
+    "Bestevâerstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 163-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000582892"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093008",
+   "addresses": [
+    "Bestevâerstraat 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 165-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000582900"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143073",
+   "addresses": [
+    "Bestevâerstraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 167-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000582908"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061720",
+   "addresses": [
+    "Bestevâerstraat 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 169-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000582916"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095246",
+   "addresses": [
+    "Bestevâerstraat 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 171-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000582924"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119132",
+   "addresses": [
+    "Bestevâerstraat 173",
+    "Bestevâerstraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 173-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000582932"
+    },
+    {
+     "address": "Bestevâerstraat 175-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582940"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

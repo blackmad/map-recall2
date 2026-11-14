@@ -1,0 +1,137 @@
+{
+ "street": "Pelikaanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131012",
+   "addresses": [
+    "Pelikaanstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772799"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131893",
+   "addresses": [
+    "Pelikaanstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772803"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087399",
+   "addresses": [
+    "Pelikaanstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772807"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087361",
+   "addresses": [
+    "Pelikaanstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772811"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108368",
+   "addresses": [
+    "Pelikaanstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772815"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120713",
+   "addresses": [
+    "Pelikaanstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772819"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065905",
+   "addresses": [
+    "Pelikaanstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772821"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121384",
+   "addresses": [
+    "Pelikaanstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772823"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

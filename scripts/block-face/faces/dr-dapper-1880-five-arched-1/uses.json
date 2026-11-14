@@ -1,0 +1,159 @@
+{
+ "street": "Wagenaarstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:24:07.442Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152400",
+   "addresses": [
+    "Wagenaarstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000860807"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152482",
+   "addresses": [
+    "Wagenaarstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 16-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000945369"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153696",
+   "addresses": [
+    "Wagenaarstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001015256"
+    },
+    {
+     "address": "Wagenaarstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012094853"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158275",
+   "addresses": [
+    "Wagenaarstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000860792"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155577",
+   "addresses": [
+    "Wagenaarstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010011004873"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163265",
+   "addresses": [
+    "Wagenaarstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000860782"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163837",
+   "addresses": [
+    "Wagenaarstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000860777"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160508",
+   "addresses": [
+    "Wagenaarstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000860773"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166399",
+   "addresses": [
+    "Wagenaarstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000860769"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

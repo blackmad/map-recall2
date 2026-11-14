@@ -1,0 +1,232 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dr-vogel-1920-three-dark-1",
+ "street": "Flamingostraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-22",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-22",
+   "image": "staging/block-face/dr-vogel-1920-three-dark-1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "draft preview of vogel-1920-three-dark (never installed)"
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "vogel-1920-three-dark",
+   "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Vogelbuurt-Noord family 1920-1924, 3 storeys, 6.4-8 m wide: 15 pands on 4 block faces; median cornice 7.72 m, ? window columns, wall #3d3d38. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+   "fit": {
+    "widthM": [
+     6.3,
+     6.7
+    ],
+    "storeys": [
+     3
+    ]
+   },
+   "match": {
+    "years": [
+     1921,
+     1923
+    ],
+    "eavesM": [
+     6.8,
+     7.1
+    ],
+    "storeys3dbag": [
+     3
+    ],
+    "roof": "pitched",
+    "stucco": false,
+    "note": "drafted: 15 pands, 4 faces; see draft.fields for n and spread of every number"
+   },
+   "body": {
+    "storeys": 3,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "sash"
+   },
+   "crowns": {
+    "plain": {
+     "gable": "cornice",
+     "note": "placeholder: 5 of 15 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+    }
+   },
+   "palettes": {
+    "measured": {
+     "door": "black",
+     "brick": "#3d3d38",
+     "cornice": "#3f3532",
+     "frame": "#cfcbbf"
+    }
+   },
+   "roof": {
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "draft placeholder: 15 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+   },
+   "rhythm": {
+    "bays": "unread",
+    "windowsPerStorey": "ground: not read | upper storeys: ? each",
+    "symmetry": "not measured (draft)",
+    "groundFloor": "not measured (draft): the ground storey is not read",
+    "signage": "not measured (draft)",
+    "roofline": "5 of 15 pands show a skyline crown over the cornice (kind not measured)",
+    "citation": "drafted from 15 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGroundRows": 1
+   },
+   "evidence": [
+    {
+     "face": "flamingo-14-28",
+     "pands": [
+      "070462",
+      "098790",
+      "137809",
+      "069013",
+      "141395",
+      "120930"
+     ],
+     "citation": "drafted from 6 pand spans of the flamingo-14-28 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "meeuwenplein-29-39",
+     "pands": [
+      "142951",
+      "131749",
+      "129900",
+      "138874"
+     ],
+     "citation": "drafted from 4 pand spans of the meeuwenplein-29-39 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "meeuwenplein-9-19",
+     "pands": [
+      "074442",
+      "140709",
+      "074267",
+      "148193"
+     ],
+     "citation": "drafted from 4 pand spans of the meeuwenplein-9-19 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "pelikaan-16-22",
+     "pands": [
+      "111816"
+     ],
+     "citation": "drafted from 1 pand spans of the pelikaan-16-22 strip (draft.fields carry the medians)"
+    }
+   ],
+   "notes": [
+    "Draft, not installed. Medians over 15 pands; refused below 8 pands or 3 faces."
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012137809",
+   "slug": "dr-vogel-1920-three-dark-1-137809",
+   "address": "Flamingostraat 22",
+   "type": {
+    "type": "vogel-1920-three-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-22",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of vogel-1920-three-dark"
+   }
+  },
+  {
+   "pandId": "0363100012069013",
+   "slug": "dr-vogel-1920-three-dark-1-069013",
+   "address": "Flamingostraat 20",
+   "type": {
+    "type": "vogel-1920-three-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-22",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of vogel-1920-three-dark"
+   }
+  },
+  {
+   "pandId": "0363100012141395",
+   "slug": "dr-vogel-1920-three-dark-1-141395",
+   "address": "Flamingostraat 18",
+   "type": {
+    "type": "vogel-1920-three-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-22",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of vogel-1920-three-dark"
+   }
+  },
+  {
+   "pandId": "0363100012120930",
+   "slug": "dr-vogel-1920-three-dark-1-120930",
+   "address": "Flamingostraat 16",
+   "type": {
+    "type": "vogel-1920-three-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2025-09-22",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of vogel-1920-three-dark"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

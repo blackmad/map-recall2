@@ -1,0 +1,221 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:35:54.030Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074063",
+   "addresses": [
+    "Zeeburgerdijk 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 64-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000878286"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123386",
+   "addresses": [
+    "Zeeburgerdijk 62C",
+    "Zeeburgerdijk 62A",
+    "Zeeburgerdijk 62B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 62C",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000878281"
+    },
+    {
+     "address": "Zeeburgerdijk 62A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001036881"
+    },
+    {
+     "address": "Zeeburgerdijk 62B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001036882"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093210",
+   "addresses": [
+    "Zeeburgerdijk 60A",
+    "Zeeburgerdijk 60C",
+    "Zeeburgerdijk 60B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 60A",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000878267"
+    },
+    {
+     "address": "Zeeburgerdijk 60C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000878270"
+    },
+    {
+     "address": "Zeeburgerdijk 60B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001035551"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139587",
+   "addresses": [
+    "Zeeburgerdijk 58A",
+    "Zeeburgerdijk 58B",
+    "Zeeburgerdijk 58C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 58B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001014331"
+    },
+    {
+     "address": "Zeeburgerdijk 58C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001014332"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119301",
+   "addresses": [
+    "Zeeburgerdijk 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 56-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000878252"
+    },
+    {
+     "address": "Zeeburgerdijk 56-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012608182"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236762",
+   "addresses": [
+    "Zeeburgerdijk 54B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 54B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 762,
+     "bagId": "0363010012085372"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012195630",
+   "addresses": [
+    "Zeeburgerdijk 54A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 54A",
+     "use": "industriefunctie",
+     "areaM2": 18,
+     "bagId": "0363010012085371"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108874",
+   "addresses": [
+    "Zeeburgerdijk 50",
+    "Zeeburgerdijk 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 50",
+     "use": "kantoorfunctie",
+     "areaM2": 331,
+     "bagId": "0363010000878246"
+    },
+    {
+     "address": "Zeeburgerdijk 50",
+     "use": "kantoorfunctie",
+     "areaM2": 367,
+     "bagId": "0363010012085369"
+    },
+    {
+     "address": "Zeeburgerdijk 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 420,
+     "bagId": "0363010012085370"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1556484511,
+     "lngLat": [
+      4.9334946,
+      52.3659064
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "52",
+      "addr:postcode": "1094AE",
+      "addr:street": "Zeeburgerdijk",
+      "amenity": "restaurant",
+      "email": "info@pompstation.nu",
+      "name": "Het Pompstation",
+      "opening_hours": "Tu-Sa 18:00-22:30",
+      "payment:maestro": "yes",
+      "phone": "+31 20 692 2888",
+      "toilets:wheelchair": "no",
+      "website": "https://pompstation.nu",
+      "wheelchair": "limited",
+      "wheelchair:description": "Entrance at the backdoor 1 small step"
+     },
+     "fetchedAt": "2026-11-09T23:35:54.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

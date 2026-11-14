@@ -1,0 +1,292 @@
+{
+ "street": "Van Houweningenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:47:43.736Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159613",
+   "addresses": [
+    "Van Houweningenstraat 1A",
+    "Van Houweningenstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hugo de Grootplein 17",
+     "use": "winkelfunctie",
+     "areaM2": 232,
+     "bagId": "0363010012101672"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925469362,
+     "lngLat": [
+      4.8720088,
+      52.374716
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "panoramax": "f17a6ff9-efaf-451a-881b-ed12f160a38f"
+     },
+     "fetchedAt": "2026-11-09T23:47:43.736Z",
+     "match": "frontage",
+     "distanceM": 2.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154093",
+   "addresses": [
+    "Van Houweningenstraat 3"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160230",
+   "addresses": [
+    "Van Houweningenstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840945"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157843",
+   "addresses": [
+    "Van Houweningenstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840953"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165392",
+   "addresses": [
+    "Van Houweningenstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840961"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158949",
+   "addresses": [
+    "Van Houweningenstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840969"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157672",
+   "addresses": [
+    "Van Houweningenstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840977"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158307",
+   "addresses": [
+    "Van Houweningenstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000840985"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156727",
+   "addresses": [
+    "Van Houweningenstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840993"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167046",
+   "addresses": [
+    "Van Houweningenstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841001"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157692",
+   "addresses": [
+    "Van Houweningenstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841009"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166596",
+   "addresses": [
+    "Van Houweningenstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841017"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165332",
+   "addresses": [
+    "Van Houweningenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841025"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162863",
+   "addresses": [
+    "Van Houweningenstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841033"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156794",
+   "addresses": [
+    "Van Houweningenstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841041"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159954",
+   "addresses": [
+    "Van Houweningenstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841049"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165776",
+   "addresses": [
+    "Van Houweningenstraat 31A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 31A-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000841053"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,511 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dr-timor-1910-five-1",
+ "street": "Djambistraat",
+ "sources": [
+  {
+   "id": "strip-2019-12-18",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-18",
+   "image": "staging/block-face/dr-timor-1910-five-1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "draft preview of timor-1910-five (never installed)"
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "timor-1910-five",
+   "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Timorpleinbuurt-Noord family 1910-1914, 5 storeys, 4.9-6.4 m wide: 47 pands on 4 block faces; median cornice 12.91 m, 3 window columns, wall #63554c. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+   "fit": {
+    "widthM": [
+     5.5,
+     6.2
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "match": {
+    "years": [
+     1912,
+     1913
+    ],
+    "eavesM": [
+     12.1,
+     14.5
+    ],
+    "storeys3dbag": [
+     4,
+     5
+    ],
+    "roof": "pitched",
+    "baysByWidth": [
+     {
+      "maxWidthM": 99,
+      "bays": 3
+     }
+    ],
+    "stucco": false,
+    "note": "drafted: 47 pands, 4 faces; see draft.fields for n and spread of every number"
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "sash",
+    "storeyHeights": [
+     3.42,
+     2.83,
+     3,
+     2.82
+    ],
+    "windowHeights": [
+     0.68,
+     0.68,
+     0.71,
+     0.71
+    ],
+    "headLines": [
+     0.84,
+     0.84,
+     0.85,
+     0.87
+    ]
+   },
+   "crowns": {
+    "plain": {
+     "gable": "cornice",
+     "note": "placeholder: 38 of 47 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+    }
+   },
+   "palettes": {
+    "measured": {
+     "door": "black",
+     "brick": "#63554c",
+     "frame": "#a9a89e",
+     "stone": "#a9a89e",
+     "cornice": "#6c5b52"
+    }
+   },
+   "roof": {
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "draft placeholder: 47 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+   },
+   "rhythm": {
+    "bays": "3 window axes (most frequent window-column count on the opening mask (47 of 47 pands; a miscount loses a window, so the mode, not the median))",
+    "windowsPerStorey": "ground: not read | upper storeys: 3 each",
+    "symmetry": "not measured (draft)",
+    "groundFloor": "not measured (draft): the ground storey is not read",
+    "signage": "not measured (draft)",
+    "roofline": "38 of 47 pands show a skyline crown over the cornice (kind not measured)",
+    "citation": "drafted from 47 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1
+   },
+   "evidence": [
+    {
+     "face": "java-93-149",
+     "pands": [
+      "067472",
+      "132949",
+      "138717",
+      "120527",
+      "098497",
+      "126147",
+      "120784",
+      "150083",
+      "103232",
+      "141749",
+      "085970",
+      "110585"
+     ],
+     "citation": "drafted from 12 pand spans of the java-93-149 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "djambi-1-35",
+     "pands": [
+      "113498",
+      "149516",
+      "104592",
+      "131961",
+      "100535",
+      "110582",
+      "099261",
+      "129720",
+      "077761",
+      "072833",
+      "108617",
+      "117530",
+      "095414",
+      "145454",
+      "089626"
+     ],
+     "citation": "drafted from 15 pand spans of the djambi-1-35 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "soenda-2-36",
+     "pands": [
+      "084401",
+      "113301",
+      "150368",
+      "069113",
+      "062527",
+      "081321",
+      "107809",
+      "111204",
+      "063047",
+      "136122",
+      "068591",
+      "092864",
+      "092089",
+      "066054",
+      "069682"
+     ],
+     "citation": "drafted from 15 pand spans of the soenda-2-36 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "zeeburgerdijk-50-84",
+     "pands": [
+      "074063",
+      "123386",
+      "093210",
+      "139587",
+      "119301"
+     ],
+     "citation": "drafted from 5 pand spans of the zeeburgerdijk-50-84 strip (draft.fields carry the medians)"
+    }
+   ],
+   "notes": [
+    "Draft, not installed. Medians over 47 pands; refused below 8 pands or 3 faces."
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012113498",
+   "slug": "dr-timor-1910-five-1-113498",
+   "address": "Djambistraat 3",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012149516",
+   "slug": "dr-timor-1910-five-1-149516",
+   "address": "Djambistraat 5",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012104592",
+   "slug": "dr-timor-1910-five-1-104592",
+   "address": "Djambistraat 7",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012131961",
+   "slug": "dr-timor-1910-five-1-131961",
+   "address": "Djambistraat 9",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012100535",
+   "slug": "dr-timor-1910-five-1-100535",
+   "address": "Djambistraat 11",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012110582",
+   "slug": "dr-timor-1910-five-1-110582",
+   "address": "Djambistraat 13",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012099261",
+   "slug": "dr-timor-1910-five-1-099261",
+   "address": "Djambistraat 15",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012129720",
+   "slug": "dr-timor-1910-five-1-129720",
+   "address": "Djambistraat 17",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012077761",
+   "slug": "dr-timor-1910-five-1-077761",
+   "address": "Djambistraat 19",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012072833",
+   "slug": "dr-timor-1910-five-1-072833",
+   "address": "Djambistraat 21",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012108617",
+   "slug": "dr-timor-1910-five-1-108617",
+   "address": "Djambistraat 23",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012117530",
+   "slug": "dr-timor-1910-five-1-117530",
+   "address": "Djambistraat 25",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012095414",
+   "slug": "dr-timor-1910-five-1-095414",
+   "address": "Djambistraat 27",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012145454",
+   "slug": "dr-timor-1910-five-1-145454",
+   "address": "Djambistraat 29",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  },
+  {
+   "pandId": "0363100012089626",
+   "slug": "dr-timor-1910-five-1-089626",
+   "address": "Djambistraat 31",
+   "type": {
+    "type": "timor-1910-five"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2019-12-18",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of timor-1910-five"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

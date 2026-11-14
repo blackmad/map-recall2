@@ -1,0 +1,378 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dr-dapper-1880-five-arched-1",
+ "street": "Wagenaarstraat",
+ "sources": [
+  {
+   "id": "strip-2022-01-12",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-12",
+   "image": "staging/block-face/dr-dapper-1880-five-arched-1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "draft preview of dapper-1880-five-arched (never installed)"
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "dapper-1880-five-arched",
+   "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Dapperbuurt-Noord family 1880-1884, 5 storeys, 4.9-6.4 m wide: 28 pands on 5 block faces; median cornice 14.21 m, 3 window columns, wall #6f6058. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+   "fit": {
+    "widthM": [
+     5,
+     6.2
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "match": {
+    "years": [
+     1880,
+     1882
+    ],
+    "eavesM": [
+     12.4,
+     16.9
+    ],
+    "storeys3dbag": [
+     4,
+     5
+    ],
+    "roof": "pitched",
+    "baysByWidth": [
+     {
+      "maxWidthM": 99,
+      "bays": 3
+     }
+    ],
+    "stucco": false,
+    "note": "drafted: 28 pands, 5 faces; see draft.fields for n and spread of every number"
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "sash",
+    "storeyHeights": [
+     3.4,
+     3,
+     2.95,
+     2.99
+    ],
+    "windowHeights": [
+     0.73,
+     0.73,
+     0.71,
+     0.7
+    ],
+    "headLines": [
+     0.85,
+     0.85,
+     0.86,
+     0.86
+    ]
+   },
+   "crowns": {
+    "plain": {
+     "gable": "cornice",
+     "note": "placeholder: 17 of 28 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+    }
+   },
+   "palettes": {
+    "measured": {
+     "door": "black",
+     "brick": "#6f6058",
+     "frame": "#aba69d",
+     "stone": "#aca89e",
+     "cornice": "#887f74"
+    }
+   },
+   "roof": {
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "draft placeholder: 28 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+   },
+   "rhythm": {
+    "bays": "3 window axes (window columns counted on the opening mask (25 of 28 pands))",
+    "windowsPerStorey": "ground: not read | upper storeys: 3 each",
+    "symmetry": "not measured (draft)",
+    "groundFloor": "not measured (draft): the ground storey is not read",
+    "signage": "not measured (draft)",
+    "roofline": "17 of 28 pands show a skyline crown over the cornice (kind not measured)",
+    "citation": "drafted from 28 pand spans of 5 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1
+   },
+   "evidence": [
+    {
+     "face": "wagenaar-2-250",
+     "pands": [
+      "152400",
+      "152482",
+      "153696",
+      "158275",
+      "155577",
+      "163265",
+      "163837",
+      "160508",
+      "166399"
+     ],
+     "citation": "drafted from 9 pand spans of the wagenaar-2-250 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "commelin-1-63",
+     "pands": [
+      "153383",
+      "155457"
+     ],
+     "citation": "drafted from 2 pand spans of the commelin-1-63 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "commelin-2-250",
+     "pands": [
+      "078517",
+      "094602",
+      "112407",
+      "074254",
+      "156075",
+      "163419",
+      "158379",
+      "153380"
+     ],
+     "citation": "drafted from 8 pand spans of the commelin-2-250 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "swinden-383-581",
+     "pands": [
+      "159406",
+      "158925",
+      "165201",
+      "163378",
+      "236602",
+      "161671"
+     ],
+     "citation": "drafted from 6 pand spans of the swinden-383-581 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "dapper-3-9",
+     "pands": [
+      "083647",
+      "156106",
+      "163286"
+     ],
+     "citation": "drafted from 3 pand spans of the dapper-3-9 strip (draft.fields carry the medians)"
+    }
+   ],
+   "notes": [
+    "Draft, not installed. Medians over 28 pands; refused below 8 pands or 3 faces."
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012152400",
+   "slug": "dr-dapper-1880-five-arched-1-152400",
+   "address": "Wagenaarstraat 18",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012152482",
+   "slug": "dr-dapper-1880-five-arched-1-152482",
+   "address": "Wagenaarstraat 16",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012153696",
+   "slug": "dr-dapper-1880-five-arched-1-153696",
+   "address": "Wagenaarstraat 14",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012158275",
+   "slug": "dr-dapper-1880-five-arched-1-158275",
+   "address": "Wagenaarstraat 12",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012155577",
+   "slug": "dr-dapper-1880-five-arched-1-155577",
+   "address": "Wagenaarstraat 10",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012163265",
+   "slug": "dr-dapper-1880-five-arched-1-163265",
+   "address": "Wagenaarstraat 8",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012163837",
+   "slug": "dr-dapper-1880-five-arched-1-163837",
+   "address": "Wagenaarstraat 6",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012160508",
+   "slug": "dr-dapper-1880-five-arched-1-160508",
+   "address": "Wagenaarstraat 4",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  },
+  {
+   "pandId": "0363100012166399",
+   "slug": "dr-dapper-1880-five-arched-1-166399",
+   "address": "Wagenaarstraat 2",
+   "type": {
+    "type": "dapper-1880-five-arched"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2022-01-12",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of dapper-1880-five-arched"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

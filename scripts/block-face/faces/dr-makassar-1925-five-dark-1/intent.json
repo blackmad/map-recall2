@@ -1,0 +1,401 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dr-makassar-1925-five-dark-1",
+ "street": "Molukkenstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/dr-makassar-1925-five-dark-1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "draft preview of makassar-1925-five-dark (never installed)"
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "makassar-1925-five-dark",
+   "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Makassarpleinbuurt family 1925-1929, 5 storeys, 4.9-6.4 m wide: 35 pands on 4 block faces; median cornice 14.61 m, 2 window columns, wall #534b44. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+   "fit": {
+    "widthM": [
+     6,
+     6.3
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "match": {
+    "years": [
+     1925,
+     1926
+    ],
+    "eavesM": [
+     12.4,
+     14.8
+    ],
+    "storeys3dbag": [
+     4,
+     5
+    ],
+    "roof": "pitched",
+    "baysByWidth": [
+     {
+      "maxWidthM": 99,
+      "bays": 2
+     }
+    ],
+    "stucco": false,
+    "note": "drafted: 35 pands, 4 faces; see draft.fields for n and spread of every number"
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 2,
+    "cornice": "simple",
+    "windows": "sash"
+   },
+   "crowns": {
+    "plain": {
+     "gable": "cornice",
+     "note": "placeholder: 14 of 35 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+    }
+   },
+   "palettes": {
+    "measured": {
+     "door": "black",
+     "brick": "#534b44",
+     "frame": "#a1a29f",
+     "stone": "#a1a3a0",
+     "cornice": "#4f4945"
+    }
+   },
+   "roof": {
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "draft placeholder: 35 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+   },
+   "rhythm": {
+    "bays": "2 window axes (window columns counted on the opening mask (35 of 35 pands))",
+    "windowsPerStorey": "ground: not read | upper storeys: 2 each",
+    "symmetry": "not measured (draft)",
+    "groundFloor": "not measured (draft): the ground storey is not read",
+    "signage": "not measured (draft)",
+    "roofline": "14 of 35 pands show a skyline crown over the cornice (kind not measured)",
+    "citation": "drafted from 35 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2
+    ],
+    "photoGroundRows": 1
+   },
+   "evidence": [
+    {
+     "face": "makassar-30-50",
+     "pands": [
+      "081726",
+      "075959",
+      "124922",
+      "075844",
+      "105884",
+      "102408",
+      "136282",
+      "122980"
+     ],
+     "citation": "drafted from 8 pand spans of the makassar-30-50 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "molukken-7-29",
+     "pands": [
+      "147120",
+      "106655",
+      "136784",
+      "131890",
+      "147329",
+      "082284",
+      "128311",
+      "148852",
+      "088701",
+      "094377",
+      "108941"
+     ],
+     "citation": "drafted from 11 pand spans of the molukken-7-29 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "molukken-35-67",
+     "pands": [
+      "080763",
+      "131182",
+      "111959",
+      "148990",
+      "080878",
+      "086183",
+      "149152",
+      "092896",
+      "146291"
+     ],
+     "citation": "drafted from 9 pand spans of the molukken-35-67 strip (draft.fields carry the medians)"
+    },
+    {
+     "face": "nias-1-13",
+     "pands": [
+      "073042",
+      "102866",
+      "110430",
+      "122437",
+      "131529",
+      "079465",
+      "125631"
+     ],
+     "citation": "drafted from 7 pand spans of the nias-1-13 strip (draft.fields carry the medians)"
+    }
+   ],
+   "notes": [
+    "Draft, not installed. Medians over 35 pands; refused below 8 pands or 3 faces."
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012147120",
+   "slug": "dr-makassar-1925-five-dark-1-147120",
+   "address": "Molukkenstraat 9",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012106655",
+   "slug": "dr-makassar-1925-five-dark-1-106655",
+   "address": "Molukkenstraat 11",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012136784",
+   "slug": "dr-makassar-1925-five-dark-1-136784",
+   "address": "Molukkenstraat 13",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012131890",
+   "slug": "dr-makassar-1925-five-dark-1-131890",
+   "address": "Molukkenstraat 15",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012147329",
+   "slug": "dr-makassar-1925-five-dark-1-147329",
+   "address": "Molukkenstraat 17",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012082284",
+   "slug": "dr-makassar-1925-five-dark-1-082284",
+   "address": "Molukkenstraat 19",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012128311",
+   "slug": "dr-makassar-1925-five-dark-1-128311",
+   "address": "Molukkenstraat 21",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012148852",
+   "slug": "dr-makassar-1925-five-dark-1-148852",
+   "address": "Molukkenstraat 23",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012088701",
+   "slug": "dr-makassar-1925-five-dark-1-088701",
+   "address": "Molukkenstraat 25",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012094377",
+   "slug": "dr-makassar-1925-five-dark-1-094377",
+   "address": "Molukkenstraat 27",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  },
+  {
+   "pandId": "0363100012108941",
+   "slug": "dr-makassar-1925-five-dark-1-108941",
+   "address": "Molukkenstraat 29",
+   "type": {
+    "type": "makassar-1925-five-dark"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2023-01-02",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "draft preview: the plain type ground"
+   },
+   "rhythm": {
+    "citation": "draft-preview of makassar-1925-five-dark"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

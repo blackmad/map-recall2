@@ -1,0 +1,137 @@
+{
+ "street": "Flamingostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012070462",
+   "addresses": [
+    "Flamingostraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636506"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098790",
+   "addresses": [
+    "Flamingostraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636504"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092344",
+   "addresses": [
+    "Flamingostraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000636502"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137809",
+   "addresses": [
+    "Flamingostraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636500"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069013",
+   "addresses": [
+    "Flamingostraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636496"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141395",
+   "addresses": [
+    "Flamingostraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636492"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120930",
+   "addresses": [
+    "Flamingostraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636488"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148040",
+   "addresses": [
+    "Flamingostraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636484"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}
