@@ -10,6 +10,7 @@
 import type { DescriberAnswer } from '../describer.ts';
 import type { FieldFate, RowCheckMember, RowCheckRow } from '../rowChecks.ts';
 import { frontDesign, type RowRecord } from './types.ts';
+import { ROW_EXTRAS_DEFAULT } from './solve.ts';
 
 /** The reader's fields P accounts for (check-rows.ts READ_FIELDS) and the row fields (overruled / not-drawn keys) each maps to. */
 export const READ_FIELD_MAP: Readonly<Record<string, string[]>> = {
@@ -52,6 +53,8 @@ export function toRowCheck(row: RowRecord, answers: Readonly<Record<string, Desc
       corniceM: line,
       roof: { kind: rs.kind === 'none' ? 'lid' : rs.kind, source: 'series', dormers: rs.dormersPerFront, ...(rs.dormerKind ? { dormerKind: rs.dormerKind } : {}), gable: d.crown.value === 'cornice' ? null : d.crown.value },
       extras: [...d.extras.value],
+      // Extras the reading states (bands): allowed beside ROW_FRONT_EXTRAS.
+      statedExtras: d.extras.value.filter(x => !ROW_EXTRAS_DEFAULT.includes(x)),
       fields,
       staged: staged.has(f.pandId),
       ...(f.readHeld ? { scaffold: true } : {}),

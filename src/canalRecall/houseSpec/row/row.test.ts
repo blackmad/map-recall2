@@ -79,6 +79,9 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   const d = design(W, '0363100012169016');
   assert.equal(d.crown.value, 'cornice');
   assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment', hoist: true });
+  // the hoist is 169016's own (171218's ornate dormer has none); the series draws none
+  assert.equal(design(W, '0363100012171218').roofStorey.value.hoist, undefined);
+  assert.equal(W.row.series.find(x => x.id === W.row.fronts.find(f => f.id === '0363100012169016')!.seriesId)!.design.roofStorey.value.hoist, undefined);
   const f = W.specs['0363100012169016'].design.fronts![0] as Record<string, unknown>;
   assert.equal(f.gable, 'cornice');
   assert.equal(f.roofStorey, 'mansard');
@@ -87,6 +90,16 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   // the mansard pair shares a series and a cornice line under the 3DBAG height
   assert.equal(W.row.fronts.find(x => x.id === '0363100012171218')!.seriesId, W.row.fronts.find(x => x.id === '0363100012169016')!.seriesId);
   assert.ok(d.corniceTopM.value! < 15);
+  // s1's cornice is the 3DBAG eaves (14.31 / 14.17), not the 16.5 m roof height: within 0.5 m of the mansard pair's line
+  const s1 = design(W, '0363100012168096').corniceTopM;
+  assert.equal(s1.value, 14.24);
+  assert.ok(Math.abs(s1.value! - d.corniceTopM.value!) < 0.5);
+  assert.ok(W.row.flags.some(f => f.kind === 'no-reading' && f.field === 'corniceTopM' && f.fronts.includes('0363100012168096')));
+  // bands are read and drawn as extras: 169016 floor cornices and string courses, 171218 speklagen
+  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(-2), ['floor-cornices', 'string-courses']);
+  assert.ok(design(W, '0363100012171218').extras.value.includes('speklagen'));
+  assert.ok(!design(W, '0363100012169016').extras.value.includes('speklagen'));
+  assert.ok(!W.row.readNotDrawn.some(r => r.field === 'bands'));
   assert.deepEqual(W.row.fronts.map(x => x.pandId), ['0363100012168096', '0363100012168042', '0363100012169016', '0363100012171218']);
   assert.equal(design(W, '0363100012168096').roofStorey.value.kind, 'none');
 });
