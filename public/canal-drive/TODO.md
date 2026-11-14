@@ -1974,6 +1974,8 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
+  - **Pontsteiger GLB (feedback a4013653, 2026-11-14):** the box-UV glass is fixed (HISTORY); the model itself still lays two window grids on coplanar faces (legs vs skybridge, legs vs front bar; `cultural-builders.ts` `grid()` at about :120). Fix: skip windows on faces against another box, and model the bridge's varied openings. Render: `_pruned-sheets/pontsteiger-overlap/glb-defect-coplanar-grids.png`.
+  - **Two models on one pand (pinned open in `modelOverlap.test.ts`):** `joodse-invalide` vs `ordinary-0363100012253824`; `roeterseiland-rec-a` vs `ordinary-0363100012253754`. Ride each, then `SHADOWED_BY_LANDMARK` or hold.
   - **Houthavens (round 2 done 2026-11-14):** OBA brick tone waits on needs-david #385; the OBA gallery camera faces its blank wall.
 - **Building articles, remainder (2026-10-31).** Shipped: article cards on
   1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,

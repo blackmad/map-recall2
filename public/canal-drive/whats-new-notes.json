@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "One pane per window on landmarks",
+      "text": "Landmarks modelled without texture coordinates (the Pontsteiger, the Rijksmuseum's glass roofs and about 400 others) now show each window as one pane of glass. Before, each window showed as a stack of small repeated panes, which looked like generic windows overlapping the model.",
+      "where": [
+        4.8882,
+        52.3939
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-landmark-glass-before-after-0.95-crop.jpg",
+          "alt": "Pontsteiger skybridge, before (stacked panes) and after (one pane per window)",
+          "caption": "Pontsteiger, before | after"
+        },
+        {
+          "src": "whats-new/2026-11-14-landmark-glass-ba-rijks-default-0.jpg",
+          "alt": "Rijksmuseum glass roof, before and after",
+          "caption": "Rijksmuseum, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "No more stale destinations after a reload",
       "text": "A ride left open overnight no longer brings back yesterday's destination. When you reload, a stored next stop the game would not choose today (such as Meerpadkerk) is swapped for a better-known place, unless you picked it yourself. A ride paused with the tab closed now ends after three hours. Home rides and stand-in destinations also favour well-known places over obscure ones nearby."
     },

@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Box-UV landmark glass (2026-11-14)
+
+Feedback a4013653/10ada6d9 read the Pontsteiger as generic windows drawn over the model. Nothing underlays it (generic layer, baked HIDE and covers all suppress its five OSM outlines). Cause: `cityLook.ts` box-UV path tiled the glass pane cell every metre on GLBs without UVs (409 of 766 drawn GLBs), so each window drew 2–3 stacked panes. Box-path pane layers now take one flat mid-pane sample (`BOX_PANE_UV`). Pinned in `cityLook.test.ts`; `modelOverlap.test.ts` (`coverCollisions`) pins model-on-model pairs and now runs in check:canal:rest via test:building-taxonomy. The Pontsteiger GLB itself still lays two window grids on coplanar faces (TODO).
+
+
 ## Stale destinations after reload (2026-11-14)
 
 User notes on 2cd2fb7 still headed for Meerpadkerk after the fame-tier fix. Cause: the open run's saved leg (`canalRecall.openRun.v1`.nextLeg), dealt before the fix, was relaunched on every reload with `explicitDestination` and never vetted; `loadRun` also credited a whole closed-tab pause, so the run never expired. `chainedRun.ts` `judgeResumedLeg`/`resumeLeg` now keep a saved leg only if the pool would still deal it (tier factor ≥ 0.5), the rider picked it (`RunLeg.userPicked`), or it is a review/home stop; pause credit is capped at 3 h. Home rides keep `TAIL_FLOOR` for places under score 4 even when the famous tier is scarce (El Tawheed was 3.3 % from Kinkerbuurt), and stand-in swaps count sub-famous places as twice as far. Pinned in `destinationPool.test.ts` (Wiborgeiland and Kinkerbuurt starts, resumed legs).
