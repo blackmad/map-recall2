@@ -400,6 +400,7 @@ import {buildDeBonteZwaan} from './de-bonte-zwaan-builder';
 import {buildHotelBoatAndCo} from './hotel-boat-and-co-builder';
 import {buildBlok0Ij4you} from './blok0-ij4you-builder';
 import {buildDeRede} from './de-rede-builder';
+import {buildObaSpaarndammerbuurt} from './oba-spaarndammerbuurt-builder';
 import {buildEffectenbeurs} from './effectenbeurs-builder';
 import {buildHetSieraad} from './het-sieraad-builder';
 import {buildKpnTeleport} from './kpn-teleport-builder';
@@ -1029,6 +1030,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='hotel-boat-and-co')buildHotelBoatAndCo(w,d,helpers);
     else if(id==='blok0-ij4you')buildBlok0Ij4you(w,d,helpers);
     else if(id==='de-rede')buildDeRede(w,d,helpers);
+    else if(id==='oba-spaarndammerbuurt')buildObaSpaarndammerbuurt(w,d,helpers);
     else if(id==='effectenbeurs')buildEffectenbeurs(w,d,helpers);
     else if(id==='het-sieraad')buildHetSieraad(w,d,helpers);
     else if(id==='kpn-teleport')buildKpnTeleport(w,d,helpers);

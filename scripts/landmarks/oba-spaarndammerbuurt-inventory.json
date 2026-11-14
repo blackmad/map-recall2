@@ -1,0 +1,265 @@
+{
+ "schemaVersion": 1,
+ "id": "oba-spaarndammerbuurt",
+ "pand": "0363100012127052",
+ "brief": "scripts/landmarks/oba-spaarndammerbuurt-brief.md",
+ "signature": [
+  "sw-oba-letters",
+  "sw-blade-sign",
+  "sw-balcony-stacks",
+  "sw-brick-bays",
+  "sw-shop-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-64",
+   "bearing": 64,
+   "lengthM": 23.6,
+   "centre": [
+    4.8804025,
+    52.388939
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001875_pano_0003_002698",
+   "capturedAt": "2020-08-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-rear-windows",
+     "kind": "window-shape",
+     "where": "white-framed windows in brick and a purple service door",
+     "approxSizeM": [
+      1.4,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001875_pano_0003_002698",
+     "how": "rear(): INFERRED rows of white-framed windows; the door position is not known from the crop"
+    }
+   ],
+   "note": "Rear (garden) wall of the library hall; the crop is a close-up behind a tree."
+  },
+  {
+   "tag": "w02-244",
+   "bearing": 244,
+   "lengthM": 5,
+   "centre": [
+    4.8800075,
+    52.388867
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002056_pano_0000_000186",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-brick-bays",
+     "kind": "window-shape",
+     "where": "dark grey-brown brick with two columns of white-framed two-light windows, a white panel under each, four storeys; white panels over the top windows",
+     "approxSizeM": [
+      5,
+      15.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002056_pano_0000_000186",
+     "how": "front(): skin segment, win(panelBelow) measured in crop pixels"
+    },
+    {
+     "id": "sw-oba-letters",
+     "kind": "lettering",
+     "where": "red lowercase \"oba\" letters on the brick fascia over the shop front",
+     "approxSizeM": [
+      1.6,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002056_pano_0000_000186",
+     "how": "wallLetters() 0.62 m red letters, 6 cm deep"
+    },
+    {
+     "id": "sw-blade-sign",
+     "kind": "sign",
+     "where": "projecting red blade sign with the white OBA logo field beside the entrance",
+     "approxSizeM": [
+      0.6,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002056_pano_0000_000186",
+     "how": "red slab 0.62 m out with a white field; the logo itself is not drawn (too small)"
+    },
+    {
+     "id": "sw-shop-front",
+     "kind": "window-shape",
+     "where": "library shop front: glazing in dark blue frames between concrete piers, white cornice at 2.4 m",
+     "approxSizeM": [
+      18,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002056_pano_0000_000186",
+     "how": "front(): concrete pier slabs, win(frame dark), ledgeStrip cornice"
+    }
+   ],
+   "note": "Front t 4.3-9.3: brick bay with the library's signs."
+  },
+  {
+   "tag": "w03-244",
+   "bearing": 244,
+   "lengthM": 5,
+   "centre": [
+    4.880068,
+    52.388792
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002854_pano_0018_000024",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-wide-windows",
+     "kind": "window-shape",
+     "where": "wide three-light white-framed windows with French rails on the 2nd and 3rd storey, two windows on the top storey",
+     "approxSizeM": [
+      3.1,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0018_000024",
+     "how": "front(): win(lights 3, rail)"
+    },
+    {
+     "id": "sw-skyline",
+     "kind": "other",
+     "where": "brick piers rising a little over white panels at the top: a saw-tooth parapet",
+     "approxSizeM": [
+      18,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002854_pano_0018_000024",
+     "how": "white panels over the top windows; the piers end at the 3DBAG roof line"
+    }
+   ],
+   "note": "Front t 13.6-18.6: brick bay with wide windows."
+  },
+  {
+   "tag": "w04-244",
+   "bearing": 244,
+   "lengthM": 4.3,
+   "centre": [
+    4.880096,
+    52.3887535
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002824_pano_0013_000273",
+   "capturedAt": "2022-10-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-stack",
+     "kind": "balcony-ironwork",
+     "where": "the SE balcony stack: three rounded balconies and a canopy on a white wall, a dark recessed ground storey",
+     "approxSizeM": [
+      4.3,
+      12.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002824_pano_0013_000273",
+     "how": "rightStack(): as the NW stack"
+    }
+   ],
+   "note": "Front t 18.6-22.9 (ring edge 5, 0.17 m forward): the SE balcony stack."
+  },
+  {
+   "tag": "w05-244",
+   "bearing": 244,
+   "lengthM": 4.3,
+   "centre": [
+    4.880035,
+    52.3888285
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002854_pano_0018_000025",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-central-bay",
+     "kind": "balcony-ironwork",
+     "where": "white central bay: three rounded balconies, glazed doors, narrow side lights, a white top storey with four windows",
+     "approxSizeM": [
+      4.4,
+      15.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0018_000025",
+     "how": "front(): white skin segment, roundBalcony(), win()"
+    },
+    {
+     "id": "sw-entrance",
+     "kind": "other",
+     "where": "recessed glazed library entrance under the central bay",
+     "approxSizeM": [
+      3.8,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002854_pano_0018_000025",
+     "how": "glazing on the front plane in dark blue frames; the recess depth is not modelled"
+    }
+   ],
+   "note": "Front t 9.3-13.6: the white central bay."
+  },
+  {
+   "tag": "w06-244",
+   "bearing": 244,
+   "lengthM": 4.3,
+   "centre": [
+    4.879975,
+    52.3889035
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002056_pano_0000_000185",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-balcony-stacks",
+     "kind": "balcony-ironwork",
+     "where": "stacks of three rounded white balconies with dark bar rails and a canopy slab at 12.6 m, at both ends and in the middle of the front",
+     "approxSizeM": [
+      3.2,
+      12.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002056_pano_0000_000185",
+     "how": "roundBalcony(): extruded rounded slab + 1 m dark balustrade band along its outline; glazed doors behind"
+    }
+   ],
+   "note": "Front t 0-4.3: the NW balcony stack."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 pand 0363100012127052",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127052",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG verblijfsobject Spaarndammerstraat 490 (bijeenkomstfunctie, 545 m2) in pand 0363100012127052",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 2788129544 (OBA Spaarndammerbuurt, library), Wikidata Q60290410",
+   "url": "https://www.openstreetmap.org/node/2788129544",
+   "licence": "ODbL"
+  }
+ ]
+}
