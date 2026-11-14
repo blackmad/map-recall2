@@ -102477,6 +102477,145 @@
       "triangles": 11110,
       "bytes": 133320,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "q-factory": {
+      "id": "q-factory",
+      "name": "Q-Factory, Atlantisplein 1",
+      "landmarkId": "extract_landmarks_1526914942",
+      "modelUrl": "./models/q-factory.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012158881"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.93050833,
+          52.35764908
+        ],
+        "headingDegrees": 70.81,
+        "lengthMetres": 62.5,
+        "widthMetres": 49.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.93050718,
+          52.3576049
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012158881 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/q-factory-footprints.json, written by venue-prepare.ts). The courtyard, north, east and west faces are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m: TMX7316010203-000751_pano_0000_000628, TMX7316010203-002591_pano_0000_006118, TMX7316010203-002143_pano_0000_000637, recording_2025-09-30_08-33-50_01073, and the landmark-brief crop of TMX7316010203-002906_pano_0000_000058); the roofs and rooftop plant keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/q-factory-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 20.1,
+      "galleryView": {
+        "theta": 0.4,
+        "phi": 1.1
+      },
+      "bagYear": 2009,
+      "materialOverrides": {
+        "brick": "#4f4440",
+        "white": "#cfd0cb",
+        "glass": "#3f4a4f",
+        "frame": "#9a9b98",
+        "dark": "#2c2926",
+        "slate": "#55534f",
+        "concrete": "#b0b1ad",
+        "ochre": "#e0bf2b",
+        "red": "#a3473a",
+        "pink": "#b58a8a",
+        "blue": "#3d5a7a"
+      },
+      "attribution": {
+        "title": "Q-Factory, Atlantisplein 1, Amsterdam (2009)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012158881",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 roofs (CC BY 4.0): the dark-brown cladding bands with their scatter of white window strips, the yellow Q logo, the Q-FACTORY lettering, the cafe awning, the glazed first-floor band and the Conservatorium recess with its hung canopy. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.93090295,
+              52.35780722
+            ],
+            [
+              4.93081921,
+              52.35795229
+            ],
+            [
+              4.92995447,
+              52.35776523
+            ],
+            [
+              4.92996324,
+              52.35775001
+            ],
+            [
+              4.93018821,
+              52.35736029
+            ],
+            [
+              4.9302922,
+              52.35738284
+            ],
+            [
+              4.93025479,
+              52.3574477
+            ],
+            [
+              4.93079477,
+              52.3575651
+            ],
+            [
+              4.93084073,
+              52.35748535
+            ],
+            [
+              4.93106122,
+              52.35753297
+            ],
+            [
+              4.93090295,
+              52.35780722
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.56517791748047,
+          -0.30000001192092896,
+          -38.593597412109375
+        ],
+        "max": [
+          37.76759338378906,
+          18.1200008392334,
+          27.154577255249023
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.93050718,
+          52.3576049
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 70.81,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.33277130126953,
+        "heightMetres": 18.420000851154327,
+        "depthMetres": 65.7481746673584,
+        "depthCoverage": 1.3255680376483547
+      },
+      "triangles": 13586,
+      "bytes": 191772,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

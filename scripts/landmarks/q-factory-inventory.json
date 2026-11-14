@@ -1,0 +1,310 @@
+{
+ "schemaVersion": 1,
+ "id": "q-factory",
+ "pand": "0363100012158881",
+ "brief": "scripts/landmarks/q-factory-brief.md",
+ "signature": [
+  "q-logo",
+  "q-strips",
+  "q-lettering",
+  "q-recess-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-341",
+   "bearing": 341,
+   "lengthM": 62.5,
+   "centre": [
+    4.9303895,
+    52.3578605
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002591_pano_0000_006118",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-strips",
+     "kind": "window-shape",
+     "where": "every face: dark-brown ribbed metal cladding in storey bands (joints 3.8/7.4/11.0/14.7 m, top 18 m) with an irregular scatter of white panel strips 1.15 m (one in five doubled) each holding a window in its upper part",
+     "approxSizeM": [
+      1.15,
+      3.4
+     ],
+     "plan": "modelled",
+     "how": "per-storey K.sec bands with a measured unit list per storey on the north, courtyard and east faces (seeded scatter of the same density on the wings); window opening, white strip slabs, joint ledges",
+     "seenIn": "TMX7316010203-002591_pano_0000_006118"
+    },
+    {
+     "id": "q-north-doors",
+     "kind": "other",
+     "where": "north hall wall blind to 7.4 m with five white-framed stage doors and a row of posters",
+     "approxSizeM": [
+      1.0,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "doors as framed openings, posters as coloured panels",
+     "seenIn": "TMX7316010203-002591_pano_0000_006118"
+    }
+   ]
+  },
+  {
+   "tag": "w02-71",
+   "bearing": 71,
+   "lengthM": 49.4,
+   "centre": [
+    4.930943,
+    52.3577445
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002906_pano_0000_000070",
+   "capturedAt": "2023-01-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-east-glazing",
+     "kind": "window-shape",
+     "where": "glazed ground floor at the north end (0-13 m) and a ventilation grille door at 19 m",
+     "approxSizeM": [
+      12.4,
+      3.4
+     ],
+     "plan": "modelled",
+     "how": "framed openings in the ground band",
+     "seenIn": "TMX7316010203-002906_pano_0000_000070"
+    }
+   ]
+  },
+  {
+   "tag": "w03-251",
+   "bearing": 251,
+   "lengthM": 47.8,
+   "centre": [
+    4.930074,
+    52.3575645
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-30_08-33-50_01072",
+   "capturedAt": "2025-09-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-recess-canopy",
+     "kind": "canopy",
+     "where": "Conservatorium van Amsterdam entrance: the upper floors recessed ~4.6 m from 7.4 m up between 11.5 and 30 m, a perforated metal canopy at 7.6-8.2 m hung on three ties",
+     "approxSizeM": [
+      18.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "recess back wall glazed, cladding returns, recess floor, canopy slab and three struts (venue-kit strutBetween); depth estimated from the panorama perspective",
+     "seenIn": "recording_2025-09-30_08-33-50_01072"
+    },
+    {
+     "id": "q-murals",
+     "kind": "other",
+     "where": "two painted murals either side of the glazed entrance",
+     "approxSizeM": [
+      5,
+      3.2
+     ],
+     "plan": "simplified",
+     "how": "flat coloured panels (red, pink); the painting is not modelled",
+     "seenIn": "recording_2025-09-30_08-33-50_01072"
+    },
+    {
+     "id": "q-conservatorium-letters",
+     "kind": "lettering",
+     "where": "white 'Conservatorium van Amsterdam' on the entrance glazing",
+     "approxSizeM": [
+      6,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "venue-kit lettering, white, 0.32 m",
+     "seenIn": "recording_2025-09-30_08-33-50_01072"
+    }
+   ]
+  },
+  {
+   "tag": "w04-161",
+   "bearing": 161,
+   "lengthM": 39,
+   "centre": [
+    4.930527,
+    52.3575085
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002906_pano_0000_000058",
+   "capturedAt": "2023-01-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-logo",
+     "kind": "sign",
+     "where": "yellow square Q logo 3.7 x 3.45 m over the entrance at 7.5-11 m, a dark Q with a factory silhouette in its counter",
+     "approxSizeM": [
+      3.7,
+      3.45
+     ],
+     "plan": "modelled",
+     "how": "yellow slab, dark ring and tail, sawtooth factory polygon",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    },
+    {
+     "id": "q-lettering",
+     "kind": "lettering",
+     "where": "Q-FACTORY in yellow capitals 0.8 m tall on the dark panel left of the entrance",
+     "approxSizeM": [
+      4.4,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "venue-kit lettering, ochre slot",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    },
+    {
+     "id": "q-fascia",
+     "kind": "other",
+     "where": "white fascia band 3.8-4.6 m over the entrance block with a row of pictograms",
+     "approxSizeM": [
+      26.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "concrete-slot slab with seven dark squares for the pictograms",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    },
+    {
+     "id": "q-firstfloor-glazing",
+     "kind": "window-shape",
+     "where": "glazed band 4.6-7.4 m from 8.9 to 33.2 m",
+     "approxSizeM": [
+      24.3,
+      2.75
+     ],
+     "plan": "modelled",
+     "how": "one framed opening with ten lights",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    },
+    {
+     "id": "q-awning",
+     "kind": "canopy",
+     "where": "grey cafe awning over the terrace glazing, 0-12.4 m",
+     "approxSizeM": [
+      12.4,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "nearbar-kit awning hood; the scissor arms and string lights are not modelled",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    },
+    {
+     "id": "q-entrance",
+     "kind": "other",
+     "where": "glazed double doors in a white frame with the Atlantisplein 1 sign",
+     "approxSizeM": [
+      3.8,
+      3.3
+     ],
+     "plan": "simplified",
+     "how": "white-framed opening with a transom; the house-number sign is not modelled",
+     "seenIn": "TMX7316010203-002906_pano_0000_000058"
+    }
+   ]
+  },
+  {
+   "tag": "w05-161",
+   "bearing": 161,
+   "lengthM": 16,
+   "centre": [
+    4.9309535,
+    52.357511
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001679_pano_0000_000749",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-wing-glazing",
+     "kind": "window-shape",
+     "where": "glazed ground floor on the wing ends with posters behind",
+     "approxSizeM": [
+      14,
+      3.3
+     ],
+     "plan": "modelled",
+     "how": "framed opening across the wing face",
+     "seenIn": "TMX7316010203-001679_pano_0000_000749"
+    }
+   ]
+  },
+  {
+   "tag": "w06-251",
+   "bearing": 251,
+   "lengthM": 9.4,
+   "centre": [
+    4.93082,
+    52.357527
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001679_pano_0000_000804",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-71",
+   "bearing": 71,
+   "lengthM": 7.7,
+   "centre": [
+    4.930276,
+    52.3574175
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001679_pano_0000_000803",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-161",
+   "bearing": 161,
+   "lengthM": 7.5,
+   "centre": [
+    4.930243,
+    52.3573735
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-30_08-33-50_01060",
+   "capturedAt": "2025-09-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-string-lights",
+     "kind": "lamp",
+     "where": "string lights across the courtyard and on the terrace",
+     "approxSizeM": [
+      30,
+      0.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "festoon wires and bulbs a few cm across"
+     },
+     "seenIn": "recording_2025-09-30_08-33-50_01060"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -454,6 +454,7 @@ import {buildEscapeRembrandtplein} from './escape-rembrandtplein-builder';
 import {buildBitterzoet} from './bitterzoet-builder';
 import {buildTheaterBellevue} from './theater-bellevue-builder';
 import {buildMuziekgebouwBimhuis} from './muziekgebouw-bimhuis-builder';
+import {buildQFactory} from './q-factory-builder';
 import {buildSameplace} from './sameplace-builder';
 import {buildClubRaum} from './club-raum-builder';
 import {buildDoubletreeCentraal} from './doubletree-centraal-builder';
@@ -1102,6 +1103,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='escape-rembrandtplein')buildEscapeRembrandtplein(w,d,helpers);
     else if(id==='bitterzoet')buildBitterzoet(w,d,helpers);
     else if(id==='theater-bellevue')buildTheaterBellevue(w,d,helpers);
+    else if(id==='q-factory')buildQFactory(w,d,helpers);
     else if(id==='sameplace')buildSameplace(w,d,helpers);
     else if(id==='club-raum')buildClubRaum(w,d,helpers);
     else if(id==='doubletree-centraal')buildDoubletreeCentraal(w,d,helpers);
