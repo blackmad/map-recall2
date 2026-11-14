@@ -19,6 +19,7 @@ import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFact
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
 import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
 import { registerFactsEnabled, registerFactsFromExtract, type RegisterFactsMap } from '../../src/canalRecall/facade/registerRecipe.js';
+import { stampTile } from '../../src/canalRecall/buildingTilesBrowser.js';
 import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
@@ -128,6 +129,9 @@ export async function loadTile(tile: string, chain: Chain, stats?: TileStats): P
   const [x, y] = tile.split('/').map(Number);
   const apply = await chain.enricher({ z: 14, x, y }, undefined as any);
   if (apply) apply(features as any);
+  // The streamer stamps `t14` on the adopted features before they are styled (buildingTilesBrowser.ts fetchTile); a cell
+  // built without it puts `t14` last in the runtime's styled copy, not where the default path has it (key order).
+  stampTile(features as any);
   const rows: Row[] = [];
   features.forEach((raw, ordinal) => {
     const cell = raw.geometry ? buildingCell(raw.geometry) : null;
