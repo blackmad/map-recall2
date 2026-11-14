@@ -71,7 +71,7 @@ if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;
  * `windowTable` (look/windowTable.ts texture): draw the analytic windows (look/windowSdf.ts, lane R2-A #228) over the
  * cell sample. Absent: the define, the uniform and the program key are exactly as before.
  */
-export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>, options: { windowTable?: any; lodBias?: number | null; aniso?: number | null; taps?: ReturnType<typeof cellTapsUniform> | null } = {}): any {
+export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>, options: { windowTable?: any; farWindows?: boolean; lodBias?: number | null; aniso?: number | null; taps?: ReturnType<typeof cellTapsUniform> | null } = {}): any {
   const shared: FacadeUniforms = {
     cells: uniforms?.cells ?? { value: null },
     masks: uniforms?.masks ?? { value: null },
@@ -159,8 +159,8 @@ if (cityTone < 1.0) gl_FragColor.rgb = mix(cityFlat, gl_FragColor.rgb, cityTone)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
-  material.defines = { ...(material.defines ?? {}), ...highlightDefines(), ...(options.windowTable ? { CELL_TIER_PROBE: '', CITY_WINDOW_SDF: '' } : {}), ...(lodBias ? { CELL_LOD_BIAS: '' } : {}), ...(aniso ? { CELL_TIER_ANISO: '' } : {}), ...(taps ? { CELL_TAPS: '' } : {}) };
-  const programKey = `${options.windowTable ? 'shared-frame-facade-v7-wsdf2' : 'shared-frame-facade-v7'}${lodBias ? '-lodb' : ''}${aniso ? '-aniso' : ''}${taps ? '-taps' : ''}`;
+  material.defines = { ...(material.defines ?? {}), ...highlightDefines(), ...(options.windowTable ? { CELL_TIER_PROBE: '', CITY_WINDOW_SDF: '' } : {}), ...(options.farWindows ? { FAR_WINDOWS: '' } : {}), ...(lodBias ? { CELL_LOD_BIAS: '' } : {}), ...(aniso ? { CELL_TIER_ANISO: '' } : {}), ...(taps ? { CELL_TAPS: '' } : {}) };
+  const programKey = `${options.windowTable ? 'shared-frame-facade-v7-wsdf2' : 'shared-frame-facade-v7'}${options.farWindows ? '-fwin' : ''}${lodBias ? '-lodb' : ''}${aniso ? '-aniso' : ''}${taps ? '-taps' : ''}`;
   material.customProgramCacheKey = () => programKey;
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = options.windowTable || lodBias || aniso || taps ? { ...shared, ...(options.windowTable ? { windowSdfMix, ...band } : {}), ...(lodBias ?? {}), ...(aniso ?? {}), ...(taps ?? {}) } : shared;

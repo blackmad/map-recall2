@@ -290,10 +290,22 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   cellFarTier = far;
 #endif
 #if defined( USE_FOG ) && ! defined( DEPTH_FADE_LIMIT_ONLY )
+#if defined( FAR_WINDOWS ) && ! defined( CITY_WINDOW_SDF )
+  // ?farWindows on a look with painted windows only (storybook, cartoon, ?windowSdf=0): the cell keeps its windows until
+  // the screen-footprint tier flattens them; faces with no UV footprint (far prisms, UV 0) still take the depth fade.
+  float farWinUv = max(length(dFdx(p.xy)), length(dFdy(p.xy)));
+  if (farWinUv <= 0.0) far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
+#else
   far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
+#endif
 #endif
 #ifdef CELL_TIER_PROBE
   cellFar = far;
+#if defined( FAR_WINDOWS ) && defined( CITY_WINDOW_SDF )
+  // ?farWindows (look/windowSdf.ts farWindowsEnabled): the analytic windows, which read cellFar, leave with the screen
+  // footprint tier only, not with the depth fade's detail blend; faces with no UV footprint (far prisms) keep it.
+  if (cellRho > 0.0) cellFar = cellFarTier;
+#endif
 #endif
 #ifdef CELL_TAPS
   // The footprint prefilter (lane R4-D #246): above the threshold the one sample becomes several over the pixel (skipped

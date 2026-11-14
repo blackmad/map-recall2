@@ -411,6 +411,8 @@ export type CityVariant = {
   cellDebug?: CellDebug;
   /** Facade chunks: analytic window frames, glass and muntins from the layer's window table (look/windowSdf.ts, `?windowSdf=0`). */
   windows?: boolean;
+  /** Facade chunks: windows outlast the depth fade's detail blend (FAR_WINDOWS, look/windowSdf.ts `?farWindows=0`): the analytic ones with `windows`, else the painted cell. */
+  farWindows?: boolean;
   /** Facade chunks: a mip bias on the cell sample (roofTier.ts CELL_LOD_BIAS, look/cellMips.ts `?cellLodBias=`). */
   lodBias?: boolean;
   /** Facade chunks: the anisotropy-aware facade tier (roofTier.ts CELL_TIER_ANISO, `?cellTierAniso=0`, lane R3-D #233). */
@@ -425,7 +427,7 @@ export type CityVariant = {
   records?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}`;
 /** The record variant applies to lit facade chunks only (the unlit path has no derivative shade yet). */
 export const recordsOn = (v: CityVariant): boolean => !!v.records && v.lit && v.kind === 'chunk';
 
@@ -436,6 +438,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.swap) d.CITY_SWAP = '';
   if (v.cellDebug && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CELL_DEBUG_RHO = ''; if (v.cellDebug === 'under') d.CELL_DEBUG_UNDER = ''; }
   if (v.windows && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CITY_WINDOW_SDF = ''; }
+  if (v.farWindows && v.kind === 'chunk') d.FAR_WINDOWS = '';
   if (v.lodBias && v.kind === 'chunk') d.CELL_LOD_BIAS = '';
   if (v.aniso && v.kind === 'chunk') d.CELL_TIER_ANISO = '';
   if (v.taps && v.kind === 'chunk') d.CELL_TAPS = '';
@@ -458,7 +461,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';

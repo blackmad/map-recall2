@@ -77,7 +77,7 @@ import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
 import { BaseRefreshSlicer, lngLatDistanceM, type SliceItem } from './rendererShared/baseRefreshBudget.js';
-import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
+import { cellDebugMode, farWindowsEnabled, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
 import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, layerDigitRgb, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
 import { AtlasAerialSwitch, atlasAerialEnabled, atlasAerialMeasureOnly, chunkLodEstimate, focalPxOf } from './look/atlasAerial.js';
@@ -2471,6 +2471,9 @@ export class ThreeBuildings {
   /** `?windowSdf=0` off; touch devices (detail z17) follow WINDOW_SDF_TOUCH_DEFAULT. Read once the detail zoom is known. */
   private get windowSdf(): boolean { return this.windowSdfOn ??= windowSdfEnabled(this.detailZoom === 17); }
   private windowSdfOn: boolean | undefined;
+  /** `?farWindows=0` off (look/windowSdf.ts): windows (analytic, else painted) outlast the depth fade's detail blend. Touch follows FAR_WINDOWS_TOUCH_DEFAULT. */
+  private get farWindows(): boolean { return this.farWindowsOn ??= farWindowsEnabled(this.detailZoom === 17); }
+  private farWindowsOn: boolean | undefined;
 
   /** `?cellLodBias=` as asked; unasked, WINDOW_SDF_LOD_BIAS with the band-limited windows on, else none (no define). */
   private lodBiasFor(windows: boolean): number | null {
@@ -2499,7 +2502,7 @@ export class ThreeBuildings {
       const lodBias = this.lodBiasFor(!!windowTable), aniso = this.anisoFor();
       const anisoUniform = aniso != null ? facadeTierAnisoUniform(aniso) : null;
       const taps = this.tapsFor();
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}), ...(anisoUniform ? { aniso: true } : {}), ...(taps ? { taps: true } : {}) }, createCityUniforms(THREE, {
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(this.farWindows ? { farWindows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}), ...(anisoUniform ? { aniso: true } : {}), ...(taps ? { taps: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         ...(anisoUniform ? { cellAniso: { value: anisoUniform.cellAniso }, cellAnisoRule: { value: anisoUniform.cellAnisoRule } } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
@@ -2511,7 +2514,7 @@ export class ThreeBuildings {
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable), aniso: this.anisoFor(), taps: this.tapsFor() });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), farWindows: this.farWindows, lodBias: this.lodBiasFor(!!windowTable), aniso: this.anisoFor(), taps: this.tapsFor() });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);

@@ -131,6 +131,42 @@ export const WINDOW_SDF_DESKTOP_DEFAULT = true;
 /** Touch tier default (the brief: on only if the iPhone GPU cost holds; the emulated profile is not the phone's GPU). */
 export const WINDOW_SDF_TOUCH_DEFAULT = false;
 
+/**
+ * Far windows (lane far-windows-20261114, user note 8f03bc60 "can we really not get more detail (windows) at this draw
+ * distance?", chase at z17.86 pitch 75 over the Westerdok): windows no longer leave with the depth fade's facade-detail
+ * blend (look/depthFade.ts DEPTH_FADE_DETAIL_*, 250 to 600 m from the eye at that pose), only with the screen-footprint
+ * tier (roofTier.ts cellTier, texels per device pixel, the rule that already keeps sub-4 px windows from stippling).
+ * - Looks with analytic windows (photo, procedural; `windowSdf` on): the depth fade still flattens the painted cell
+ *   (brick, trim) under them; only the box-filtered frames and glass outlast it (they also have their own size fade).
+ * - Looks with painted windows only (storybook, cartoon: drawn looks have no window table): the cell keeps its detail
+ *   until the footprint tier flattens it.
+ * The haze and desaturation of the depth fade are unchanged. No geometry, texture or uniform: one define (FAR_WINDOWS)
+ * on the facade chunk programs. Faces with degenerate UVs (the far tier's SHL1 prisms, UV 0) keep the depth-fade blend,
+ * so they never draw one texel across a whole wall.
+ *
+ * `?farWindows=1|0` (or `window.__canalRecallFarWindows = true | false`); unasked, desktop FAR_WINDOWS_DESKTOP_DEFAULT,
+ * touch FAR_WINDOWS_TOUCH_DEFAULT (unmeasured on the phone; its 128 px cells and DPR 3 flatten sooner anyway).
+ */
+export const FAR_WINDOWS_DESKTOP_DEFAULT = true;
+export const FAR_WINDOWS_TOUCH_DEFAULT = false;
+export function farWindowsEnabled(touch = false): boolean {
+  const g = globalThis as Record<string, unknown>;
+  const asked = g.__canalRecallFarWindows ?? pageParam('farWindows');
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  return touch ? FAR_WINDOWS_TOUCH_DEFAULT : FAR_WINDOWS_DESKTOP_DEFAULT;
+}
+
+/**
+ * The CPU twin of the analytic windows' weight before their size fade (`1.0 - cellFar`, roofTier.ts FACADE_TIER_GLSL):
+ * `tierFar` the screen-footprint tier's blend, `depthDetail` the depth fade's (look/depthFade.ts depthFadeDetail),
+ * `rho` the cell's texels per pixel (0 on a face with degenerate UVs).
+ */
+export function farWindowWeight(tierFar: number, depthDetail: number, rho: number, farWindows: boolean): number {
+  const far = Math.max(tierFar, depthDetail);
+  return 1 - (farWindows && rho > 0 ? tierFar : far);
+}
+
 /** The pixel footprint the edges are filtered over, in pixels (1 = a box exactly one pixel wide). Round two's shader. */
 export const WINDOW_SDF_FOOTPRINT = 1.25;
 /**
