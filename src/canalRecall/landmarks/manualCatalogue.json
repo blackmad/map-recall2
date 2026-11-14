@@ -79155,7 +79155,11 @@
   "landmarkId": "conservatorium-van-amsterdam",
   "modelUrl": "./models/conservatorium-van-amsterdam.glb",
   "suppressOsmIds": [
-   "NL.IMBAG.Pand.0363100012164965"
+   "NL.IMBAG.Pand.0363100012164965",
+   "w1487606312",
+   "w1487606314",
+   "w1487606315",
+   "w1487606316"
   ],
   "spatialSuppression": false,
   "footprint": {
