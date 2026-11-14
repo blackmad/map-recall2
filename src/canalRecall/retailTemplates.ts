@@ -196,11 +196,20 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   exchange: { fascia: '#0a3d91', letters: '#ffffff', word: 'EXCHANGE', content: 'stickers', lit: true },
 };
 
+export const TRADE_WORDS = /^(BAKKERIJ|BAKKER|WARME|BANKETBAKKERIJ|KEURSLAGERIJ|SLAGERIJ|SLAGER|GROENTE|FRUIT|GROENTEN|RESTAURANT|SNACKBAR|SIGARENMAGAZIJN|TABAK|KAAS|KAASHANDEL)$/;
+/** A name's words with trade words dropped when the business's own name remains; the trade alone otherwise. */
+export const ownWords = (all: string[]): string[] => { const own = all.filter(w => !TRADE_WORDS.test(w)); return own.length ? own : all; };
+/** The fascia text for a staged word: drops a trade word when the own name is also staged. A row staged before round 3b
+ *  that kept only the trade ('BAKKERIJ' for Bakkerij Verhagen, the name cut at 14 chars) needs a re-stage to recover it. */
+export const signText = (word: string): string => ownWords(word.split(/\s+/).filter(Boolean)).join(' ');
 /** The lettering for a POI's name on a fascia: the block-letter alphabet's characters only (A-Z, 0-9, space), accents
  *  folded, generic words ("Coffeeshop", "Café") dropped, at most 14 characters; '' when nothing is left. */
 export function signWord(name: string): string {
   const folded = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9 ]+/g, ' ');
-  const words = folded.split(/\s+/).filter(w => w && !/^(COFFEESHOP|COFFEE|SHOP|CAFE|EETCAFE|AMSTERDAM|BV|THE|DE|HET)$/.test(w));
+  const all = folded.split(/\s+/).filter(w => w && !/^(COFFEESHOP|COFFEE|SHOP|CAFE|EETCAFE|AMSTERDAM|BV|THE|DE|HET)$/.test(w));
+  // Round 3b: a trade word (Bakkerij Verhagen, Keurslagerij Pouw) gives way to the business's own name when there is one;
+  // a name that is only the trade keeps it.
+  const words = ownWords(all);
   let out = '';
   for (const w of words) { const next = out ? `${out} ${w}` : w; if (next.length > 14) break; out = next; }
   return out || (words[0] ?? '').slice(0, 14);

@@ -2,10 +2,11 @@
 // byte-identity when off. `node --import tsx --test src/canalRecall/retailGround.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signWord, templateForTags } from './retailTemplates.js';
-import { FRONT, glassTone, retailDoor, retailFrontTris } from './retailFront.js';
+import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
+import { FRONT, MIN_LETTER_M, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
+import { wordRuns } from './blockLetters.js';
 import { LOGOS, LOGO_GRID, logoFor, retailLogoLayer } from './retailLogos.js';
-import { hostOnFront, ringEdges } from './retailHosting.js';
+import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
 import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
@@ -65,6 +66,35 @@ test('sign words fold to the block alphabet', () => {
   assert.equal(signWord("Cuckoo's Nest"), 'CUCKOO S NEST');
   assert.equal(signWord('Coffeeshop 420'), '420');
   assert.ok(signWord('A very long business name indeed').length <= 14);
+  // Round 3b: the trade gives way to the own name (Utrechtsestraat 61 drew 'BAKKERIJ', cut at the pand edge).
+  assert.equal(signWord('Bakkerij Verhagen'), 'VERHAGEN');
+  assert.equal(signWord('Keurslagerij Pouw'), 'POUW');
+  assert.equal(signWord('Bakkerij'), 'BAKKERIJ');
+  assert.equal(signWord('Fiets en Meer'), 'FIETS EN MEER');
+  assert.equal(signWord('Wonder Bar One'), 'WONDER BAR ONE');
+  assert.equal(signText('BAKKERIJ BASAK'), 'BASAK');
+});
+
+test('round 3b lettering: no glyph run wider than its fascia, strokes legible at 72 deg from 12 m, else a plain board', () => {
+  // A 6.5 cm stroke is 3.4 css px at the acceptance lens; 5-6 cm strokes broke into dotted glyphs.
+  assert.ok(strokePx(MIN_LETTER_M) >= 3, `${strokePx(MIN_LETTER_M)} px`);
+  const names = ['VERHAGEN', 'POUW', 'KOEKEMANNETJE', 'CUCKOO S NEST', 'VAN DER LINDE', 'A', 'J J WESSELMAN', '420'];
+  for (const name of names) for (let avail = 0.2; avail <= 14; avail += 0.15) for (const maxCell of [0.065, 0.075, 0.1]) {
+    const fit = fitWord(name, avail, maxCell);
+    if (!fit) { assert.ok(wordRuns(name.split(' ')[0]).width * MIN_LETTER_M > avail - 1e-6, `${name} @${avail}: a board though the first word fits`); continue; }
+    const { runs, width } = wordRuns(fit.text);
+    assert.ok(name.startsWith(fit.text), `${name}: ${fit.text} is a leading run of whole words`);
+    assert.ok(fit.cell >= MIN_LETTER_M - 1e-9 && fit.cell <= maxCell + 1e-9, `${name} @${avail}: cell ${fit.cell}`);
+    assert.ok(width * fit.cell <= avail + 1e-9, `${name} @${avail}: ${width * fit.cell} m of letters on ${avail} m`);
+    for (const r of runs) assert.ok(r.c1 <= width && r.c0 >= 0);
+  }
+  // Every template front: the lettering sits inside its fascia on walls from a door's width to a long shop.
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  for (const t of RETAIL_TEMPLATES) for (const L of [2.2, 3.4, 5, 9]) {
+    const plain = retailFrontTris({ template: t, seed: 'x' }, e, 0.3, 0.3 + L, 0, 3.6).length;
+    const named = retailFrontTris({ template: t, seed: 'x', word: 'KOEKEMANNETJE' }, e, 0.3, 0.3 + L, 0, 3.6);
+    for (const tri of named.slice(plain)) for (const [x] of tri.p) assert.ok(x >= 0.3 - 1e-6 && x <= 0.3 + L + 1e-6, `${t} on ${L} m: a letter at ${x}`);
+  }
 });
 
 test('every template builds a front on its wall, within the plot line rules', () => {
@@ -261,8 +291,23 @@ test('retail look: every template front has a cornice cap, end posts, a recessed
     if (TEMPLATE_LOOKS[t].content === 'redGlow') continue;
     assert.ok(tris.some(tri => tri.p.every(p => p[0] <= FRONT.postM + 1e-6) && tri.p.some(p => out(p) >= FRONT.frameOutM - 1e-6)), `${t}: end post`);
     assert.ok(tris.some(tri => tri.p.some(p => out(p) <= -FRONT.recessM + 1e-6)), `${t}: recessed door`);
-    assert.ok(tris.some(tri => /^#9eaab2$/i.test(tri.hex)), `${t}: the street in the glass`);
+    assert.ok(tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the street in the glass`);
   }
   // Round 2 drew 13,020 triangles for the 35 templates on a 9 m front; round 3 stays within 20 % of it.
   assert.ok(total <= 13_020 * 1.2, `triangles ${total}`);
+});
+
+test('round 3b hosting: HEMA Ferdinand Bolstraat 93A spans the steps of its street wall, not one 4 m piece', () => {
+  // Pand 0363100012233666, metres east/north of the HEMA node (OSM 249327305); the street wall steps by 0.4-0.8 m jogs.
+  const ring: [number, number][] = [[30.4, 19.5], [-6.9, 10.6], [-5.8, 5.6], [-5.1, 5.7], [-4.6, 3.6], [-3.9, 3.8], [-2.9, -0.4], [-3.3, -0.6], [-3.1, -1.4],
+    [-2.7, -1.3], [-1.8, -5.7], [-3.2, -6.0], [-1.1, -15.6], [37.2, -6.8], [30.4, 19.5]];
+  const edges = ringEdges(ring), best = edges.slice().sort((p, q) => segDist(p.x0, p.y0, p.x1, p.y1, 0, 0) - segDist(q.x0, q.y0, q.x1, q.y1, 0, 0))[0];
+  assert.ok(best.len < 5, `the nearest piece is ${best.len} m`);
+  const run = steppedRun(best, edges);
+  // 11.9 m of pieces within 0.9 m of its line (the 5.1 m and 9.8 m pieces 1.3-1.6 m out stay their own walls).
+  assert.ok(run.len > 11, `run ${run.len} m`);
+  assert.ok(run.parts.length >= 4 && run.parts.every(p => p.backM >= 0 && p.backM <= 0.9 + 1e-9), JSON.stringify(run.parts.map(p => p.backM)));
+  // A plain rectangle's wall stays itself.
+  const box = ringEdges([[0, 0], [10, 0], [10, 8], [0, 8], [0, 0]]), r = steppedRun(box[0], box);
+  assert.equal(r.len, 10); assert.equal(r.parts.length, 1);
 });
