@@ -36,7 +36,7 @@
      ],
      "plan": "modelled",
      "seenIn": "recording_2024-09-09_12-47-19_01064",
-     "how": "cut openings in runs with white frames and mullions, white pier slabs between them, grey ledge strips (ribbon() in club-raum-builder.ts)"
+     "how": "cut openings in runs with white frames and mullions, white pier slabs between them, grey ledge strips (ribbon() in club-raum-builder.ts); the ground-floor ribbon is obscured glazing, a light blue-grey against the brick (face-north-1, face-west-0)"
     },
     {
      "id": "n-yellow-door",
@@ -184,7 +184,7 @@
      ],
      "plan": "modelled",
      "seenIn": "recording_2025-07-01_10-32-54_00235",
-     "how": "shallow recesses with a grey back and a lighter inner door slab"
+     "how": "shallow recesses with a grey back; the north door a lighter inner slab, the south roller a dark slab filling the surround (face-west-0, 2025)"
     },
     {
      "id": "w-side-door-mark",
@@ -196,7 +196,7 @@
      ],
      "plan": "simplified",
      "seenIn": "recording_2025-07-01_10-32-54_00235",
-     "how": "white recessed door with four black squares around a white cross gap"
+     "how": "white recessed door with a 0.5 m black disc cut into four quadrants by a 6 cm white cross"
     },
     {
      "id": "w-vents",

@@ -96097,8 +96097,8 @@
         ]
       },
       "materialOverrides": {
-        "brick": "#8a5a48",
-        "concrete": "#cfd6cc",
+        "brick": "#85604f",
+        "concrete": "#b4bcbe",
         "stone": "#a3a69a",
         "frame": "#eef0ea",
         "white": "#f0f0ea",
@@ -96106,7 +96106,9 @@
         "dark": "#737a80",
         "gold": "#c9ad55",
         "bronze": "#222426",
-        "slate": "#55585b"
+        "slate": "#55585b",
+        "copper": "#9a9c98",
+        "sandstone": "#8fa2ab"
       },
       "attribution": {
         "title": "Club RAUM, Humberweg 3 / Basisweg, Amsterdam-Westpoort (former bookbinding works, BAG bouwjaar 1969; queer club since 2024)",
@@ -96176,8 +96178,8 @@
         "depthMetres": 49.707618713378906,
         "depthCoverage": 0.9882230360512706
       },
-      "triangles": 2646,
-      "bytes": 44024,
+      "triangles": 2710,
+      "bytes": 47168,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "sameplace": {
@@ -96219,7 +96221,7 @@
         ]
       },
       "materialOverrides": {
-        "brick": "#a8785a",
+        "brick": "#9c6644",
         "white": "#f0efe4",
         "frame": "#f2f1ea",
         "glass": "#3f4c54",
@@ -96231,7 +96233,9 @@
         "bronze": "#26282a",
         "ochre": "#eeede2",
         "concrete": "#d9d6cc",
-        "pink": "#eadfc6"
+        "pink": "#eadfc6",
+        "green": "#8e99a2",
+        "copper": "#b8435a"
       },
       "attribution": {
         "title": "Sameplace, Nassaukade 120 / Tweede Hugo de Grootstraat, Amsterdam (corner block, BAG bouwjaar 1889; café Sameplace since 1997)",
@@ -96349,8 +96353,8 @@
         "depthMetres": 16.25325632095337,
         "depthCoverage": 1.0554062546073617
       },
-      "triangles": 12062,
-      "bytes": 177636,
+      "triangles": 10616,
+      "bytes": 155952,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

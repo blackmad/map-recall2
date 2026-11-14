@@ -25,7 +25,8 @@ import source from './sameplace-footprints.json' with {type: 'json'};
  * three street faces with mitred corners (roofs from the front, not 3DBAG), the flat roof behind it at the 3DBAG
  * 18.3 m, and the annex as its own prism under its 3DBAG roof.
  */
-type C = 'brick' | 'white' | 'frame' | 'glass' | 'dark' | 'slate' | 'stone' | 'blue' | 'gold' | 'bronze' | 'ochre' | 'pink' | 'concrete';
+type C = 'brick' | 'white' | 'frame' | 'glass' | 'dark' | 'slate' | 'stone' | 'blue' | 'gold' | 'bronze' | 'ochre' | 'pink' | 'concrete' | 'green' | 'copper';
+// green and copper are the billboard's poster face and its pink strap (paint), named from the unused palette slots
 // white is window trim (an opening material for the audit); the dormers are rendered stucco ('ochre', same white tint), the sign letters 'pink' (cream)
 type XZ = [number, number];
 const SRC = source as unknown as {nativeRing: XZ[]; roofs: Record<string, number[][][]>};
@@ -56,7 +57,6 @@ const LN = len(N);
 const BASE = -0.3;
 const SHOP_TOP = 4.3;
 const STOREYS = [{y0: 5.0, y1: 7.45, arch: true}, {y0: 8.25, y1: 10.6, arch: true}, {y0: 11.45, y1: 13.5, arch: false}];
-const RISE = 0.22;          // segmental heads of the first and second floor
 const WIN_W = 1.08;
 const BRICK_TOP = 14.1;     // white entablature above
 const CORNICE = [15.75, 16.15];
@@ -100,15 +100,24 @@ function balcony(c: Ctx, S: Sec, s: number, y: number, w: number) {
     slab(c.b, f, s + sg * (w / 2 - 0.015), y, 0.03, 0.9, 0.03, 'bronze', 0.06);
   }
 }
-/** One upper-storey window with its white sill, arch ring or lintel, and keystone. */
+/**
+ * One upper-storey window with its white sill and head. The first- and second-floor heads (face-east-0, 40 px/m): the
+ * glass is square-headed; over it sits a solid white lintel block, HEAD_H tall at the shoulders and 11 cm wider than
+ * the light a side (the white band between the windows runs into it), capped by a shallow segmental crown of HEAD_RISE with a small keystone at the top. Read as an arch
+ * ring over arched glass, the old head drew a round-topped window in game (review 2026-11-13); the measured outline is
+ * flat glass under a flat-arched white head. The third floor has a flat white lintel.
+ */
+const HEAD_H = 0.25, HEAD_RISE = 0.12, HEAD_OVER = 0.22;   // head is the light's width plus 11 cm a side
 function window1(c: Ctx, S: Sec, s: number, st: typeof STOREYS[number], w = WIN_W, blind = false) {
-  const {K} = c, h = st.y1 - st.y0, f = ff(c, S);
-  if (blind) K.opening(S, s, st.y0, w, h, {back: 'white', edge: 0, depth: 0.08, ...(st.arch ? {rise: RISE} : {})});
-  else K.opening(S, s, st.y0, w, h, {cols: 1, frame: 'frame', depth: 0.16, bars: [h * 0.68], edge: 0.07, ...(st.arch ? {rise: RISE} : {})});
+  const {K} = c, f = ff(c, S);
+  const top = st.arch ? st.y1 - HEAD_H - HEAD_RISE : st.y1, h = top - st.y0;
+  if (blind) K.opening(S, s, st.y0, w, h, {back: 'white', edge: 0, depth: 0.08});
+  else K.opening(S, s, st.y0, w, h, {cols: 1, frame: 'frame', depth: 0.16, bars: [h * 0.68], edge: 0.07});
   slab(c.b, f, s, st.y0 - 0.04, w + 0.16, 0.09, 0.1, 'white');   // sill top 5 cm up the reveal, clear of its brick floor
   if (st.arch) {
-    K.archHead(S, s, st.y1 - RISE, w, RISE, 0.17, 0.06, 'white');
-    if (w >= WIN_W) slab(c.b, f, s, st.y1 - 0.02, 0.2, 0.32, 0.09, 'white');   // keystone (the narrow corner lights have none)
+    const hw = w + HEAD_OVER, crown = archFillOutline(hw, HEAD_RISE, 10).map(([x, y]) => [x, y + HEAD_H] as [number, number]);
+    poly(c.b, f, s, top, [[-hw / 2, 0], [hw / 2, 0], ...crown], 0.07, 'white');   // one solid: lintel block and crown
+    if (w >= WIN_W) slab(c.b, f, s, top + HEAD_H + HEAD_RISE - 0.1, 0.16, 0.18, 0.1, 'white');   // keystone (the narrow corner lights have none)
   } else {
     slab(c.b, f, s, st.y1 + 0.02, w + 0.2, 0.18, 0.06, 'white');
     slab(c.b, f, s, st.y1 + 0.02, 0.2, 0.3, 0.09, 'white');
@@ -126,7 +135,7 @@ function storeys(c: Ctx, ch: Chord, s0: number, s1: number, axes: number[], opt:
     const h = st.y1 - st.y0, hs = [...holes, ...hide];
     band(c, S, st.y0 - 0.2, 0.14, hs);
     band(c, S, st.y0 + h * 0.68 - 0.06, 0.14, hs);
-    band(c, S, (st.arch ? st.y1 - RISE : st.y1) - 0.14, 0.14, hs);
+    band(c, S, st.arch ? st.y1 - HEAD_H - HEAD_RISE + 0.06 : st.y1 - 0.14, 0.14, hs);   // under the arched storeys the band runs into the head block
     band(c, S, st.y1 + 0.42, 0.12, []);
     for (const a of shown) if (opt.balc?.has(a)) balcony(c, S, a, st.y0, w + 0.3);
   });
@@ -284,8 +293,11 @@ export function buildSameplace(_w: number, _d: number, b: BuildingTools) {
     entablature(c, N, N0, LN, AX_N, 0);
     // the billboard over the two blind windows of the first floor (its posters change; the board stays)
     const fN = frameAt(N, 0, OFF);
+    // poster: a mid-tone face with a deep pink strap along its foot (face-north-0: a light blue-grey picture over a
+    // magenta band), never the near-white blank that read as a hole in the wall
     slab(b, fN, 2.57, 5.15, 3.3, 2.7, 0.14, 'bronze');
-    slab(b, fN, 2.57, 5.25, 3.1, 2.5, 0.24, 'concrete');
+    slab(b, fN, 2.57, 5.25, 3.1, 2.5, 0.24, 'green');
+    slab(b, fN, 2.57, 5.27, 3.06, 0.36, 0.27, 'copper');   // inset 2 cm at the foot and ends: no face shared with the poster
     // party-wall ends of the fronts
     K.endCap(E, 0.1, BASE, CORNICE[1], 'brick', -1, -0.4);   // 10 cm in: the party wall is within 2 deg of square
     K.endCap(N, LN - 0.1, BASE, CORNICE[1], 'brick', 1, -0.4);

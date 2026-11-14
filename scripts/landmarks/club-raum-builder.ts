@@ -25,7 +25,8 @@ import source from './club-raum-footprints.json' with {type: 'json'};
  * under each 3DBAG LoD2.2 roof piece (office block 6.9-7.2 m, hall 5.15-5.5 m; the small piece at the chimney becomes
  * the chimney stack), the two street fronts set OFF in front of them with parapets just over the roofs.
  */
-type C = 'brick' | 'concrete' | 'stone' | 'frame' | 'white' | 'glass' | 'dark' | 'gold' | 'bronze' | 'slate';
+type C = 'brick' | 'concrete' | 'stone' | 'frame' | 'white' | 'glass' | 'dark' | 'gold' | 'bronze' | 'slate' | 'copper' | 'sandstone';
+// copper: the aluminium coping over the brick parapets; sandstone: the obscured (frosted) ground-floor glazing of the office, a flat light panel (a glass-named slot drew it as clear reflective glass in game)
 type XZ = [number, number];
 const SRC = source as unknown as {nativeRing: XZ[]; roofs: Record<string, number[][][]>};
 const RING = SRC.nativeRing;
@@ -58,17 +59,21 @@ function clear(s0: number, s1: number, holes: [number, number][]): [number, numb
   return out;
 }
 // Long ledges are closed slabs: an open 25 m ledgeStrip is one 52 m boundary loop, which the holes gate fails.
-/** Parapet over a front: a solid strip from the face plane back into the roof, with a light metal coping. */
+/**
+ * Parapet over a front: a solid strip from the face plane back into the roof, with a metal coping. Over brick the coping
+ * is weathered aluminium, a line barely lighter than the brick (face-north-1, face-west-0: #a9bbba against the brick in
+ * overcast light); only the grey clad unit has the light trim cap (#a2c2ce over #677f8e cladding).
+ */
 function parapet(c: Ctx, S: Sec, ch: Chord, s0: number, s1: number, y0: number, top: number, col: C, copingH = 0.06) {
   c.K.along(ch, s0, s1, [[OFF, y0], [OFF, top], [-0.3, top], [-0.3, y0]], col);
-  c.K.coping(S, top, copingH, 0.04, 'frame', s0, s1, 0.3);
+  c.K.coping(S, top, copingH, 0.04, col === 'brick' ? 'copper' : 'frame', s0, s1, 0.3);
 }
 /** A ribbon of windows from s0 to s1 split into lights of about `pitch` metres by white piers. */
-function ribbon(c: Ctx, S: Sec, s0: number, s1: number, y: [number, number], pitch: number, pier = 0.3) {
+function ribbon(c: Ctx, S: Sec, s0: number, s1: number, y: [number, number], pitch: number, pier = 0.3, back?: C) {
   const n = Math.max(1, Math.round((s1 - s0 + pier) / (pitch + pier))), w = (s1 - s0 - (n - 1) * pier) / n;
   for (let k = 0; k < n; k++) {
     const a = s0 + k * (w + pier);
-    c.K.opening(S, a + w / 2, y[0], w, y[1] - y[0], {cols: Math.max(1, Math.round(w / 1.4)), frame: 'frame', depth: 0.14, edge: 0.06});
+    c.K.opening(S, a + w / 2, y[0], w, y[1] - y[0], {cols: Math.max(1, Math.round(w / 1.4)), frame: 'frame', depth: 0.14, edge: 0.06, ...(back ? {back} : {})});
     if (k + 1 < n) ledgeStrip(c.b, ff(c, S), a + w + pier / 2, y[0] - 0.02, pier, y[1] - y[0] + 0.04, 0.05, 'white');   // front and top only: no side faces beside the reveals
   }
 }
@@ -100,10 +105,10 @@ function basisweg(c: Ctx) {
   {
     const s1 = LN + OFF, S = K.sec(N, OFFICE_N0, s1, BASE, 6.8, 'brick'), f = ff(c, S);
     K.opening(S, 26.7, 0, 3.4, 2.3, {cols: 2, back: 'dark', frame: 'frame', edge: 0.06, depth: 0.1});
-    ribbon(c, S, 28.5, 40.9, LOW, 1.6);
+    ribbon(c, S, 28.5, 40.9, LOW, 1.6, 0.3, 'sandstone');   // obscured glazing, light against the brick (face-north-1)
     K.opening(S, 41.45, 0, 0.9, 2.25, {cols: 1, frame: 'frame', edge: 0.07, depth: 0.14});
     ledgeStrip(c.b, f, 42.25, LOW[0] - 0.02, 0.6, LOW[1] - LOW[0] + 0.04, 0.05, 'white');
-    ribbon(c, S, 42.6, 49.0, LOW, 1.6);
+    ribbon(c, S, 42.6, 49.0, LOW, 1.6, 0.3, 'sandstone');
     ribbon(c, S, 24.3, 49.0, UP, 2.8);
     slab(c.b, f, (OFFICE_N0 + s1) / 2, LOW[1] + 0.06, s1 - OFFICE_N0, 0.12, 0.1, 'stone');
     slab(c.b, f, (OFFICE_N0 + s1) / 2, UP[1] + 0.04, s1 - OFFICE_N0, 0.12, 0.1, 'stone');
@@ -118,7 +123,7 @@ function humberweg(c: Ctx) {
   // office block from the corner
   {
     const S = K.sec(W, -OFF, OFFICE_W1, BASE, 6.8, 'brick'), f = ff(c, S);
-    ribbon(c, S, 0.4, 16.2, LOW, 1.6);
+    ribbon(c, S, 0.4, 16.2, LOW, 1.6, 0.3, 'sandstone');   // light obscured glazing, as on the Basisweg (face-west-0)
     ribbon(c, S, 0.4, 16.2, UP, 3.8);
     slab(c.b, f, (OFFICE_W1 - OFF) / 2, LOW[1] + 0.06, OFFICE_W1 + OFF, 0.12, 0.1, 'stone');
     slab(c.b, f, (OFFICE_W1 - OFF) / 2, UP[1] + 0.04, OFFICE_W1 + OFF, 0.12, 0.1, 'stone');
@@ -132,14 +137,21 @@ function humberweg(c: Ctx) {
   // the hall
   {
     const S = K.sec(W, OFFICE_W1, LW, BASE, 5.1, 'brick'), f = ff(c, S);
-    for (const sc of [22.9, 31.1]) {
-      K.opening(S, sc, 0, 4.0, 3.5, {back: 'dark', edge: 0, depth: 0.12});
-      slab(c.b, f, sc, 0, 3.0, 2.25, 0.06, 'stone', -0.12);
-    }
-    // the white side door with its mark: a black circle quartered by a white cross
+    // two loading doors in grey panel surrounds (face-west-0, 2025): the north one a light grey panel door, the south one
+    // a dark roller shutter filling the whole surround (darker than the brick in the backlit crop)
+    K.opening(S, 22.9, 0, 4.0, 3.5, {back: 'dark', edge: 0, depth: 0.12});
+    slab(c.b, f, 22.9, 0, 3.0, 2.25, 0.06, 'stone', -0.12);
+    K.opening(S, 31.1, 0, 4.0, 3.5, {back: 'dark', edge: 0, depth: 0.12});
+    slab(c.b, f, 31.1, 0, 3.4, 3.25, 0.06, 'bronze', -0.12);
+    // the white side door with the club's mark: a black disc, 0.5 m across, quartered by a white cross (face-west-0, 2025)
     K.opening(S, 27.15, 0, 1.1, 2.15, {back: 'white', frame: 'frame', edge: 0.05, depth: 0.1});
-    const g = ff(c, S, -0.1);
-    for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) slab(c.b, g, 27.15 + dx * 0.085, 1.5 + (dy < 0 ? -0.15 : 0.02), 0.13, 0.13, 0.05, 'bronze');
+    const g = ff(c, S, -0.1), R = 0.25, gap = 0.03;
+    for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+      const q: [number, number][] = [[sx * gap, sy * gap]];
+      const a0 = Math.asin(gap / R);
+      for (let k = 0; k <= 6; k++) { const a = a0 + (Math.PI / 2 - 2 * a0) * k / 6; q.push([sx * R * Math.cos(a), sy * R * Math.sin(a)]); }
+      poly(c.b, g, 27.15, 1.45, sx * sy > 0 ? q : q.reverse(), 0.05, 'bronze');
+    }
     for (let s = 18.8; s < LW - 0.5; s += 4.18) K.opening(S, s, 4.45, 0.26, 0.22, {back: 'bronze', edge: 0, depth: 0.1});
     parapet(c, S, W, OFFICE_W1, LW, 5.1, HALL_TOP, 'brick');
     K.endCap(W, LW - 0.1, BASE, HALL_TOP, 'brick', 1, -0.5);
