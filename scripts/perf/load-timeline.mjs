@@ -5,7 +5,7 @@
 // and records the second load.
 //
 //   node scripts/perf/load-timeline.mjs <outDir> [--origin https://rideamsterdam.nl] [--device desktop|iphone]
-//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir] [--no-route] [--cache] [--spki hash]
+//     [--secs 60] [--every 1000] [--warm] [--qs 'a=1&b=2'] [--headed] [--probe-only] [--no-shots] [--bundles dir] [--no-route] [--cache] [--spki hash] [--persistent profileDir]
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,14 +27,18 @@ const START = [52.37665, 4.90115], FINISH = [52.37265, 4.90035];
 const hash = `#race=${START[0]},${START[1]},${START[0]},${START[1]},${FINISH[0]},${FINISH[1]}`;
 const qs = `?travel=car${extraQs ? `&${extraQs}` : ''}`;
 
-const browser = await chromium.launch({
+// --persistent <dir>: a profile on disk (a player's disk cache). An ephemeral context keeps its HTTP cache in memory,
+// where the first load's ~140 MB of data evicts the scripts before a --warm load asks for them again.
+const launchOpts = {
   headless: !has('headed'),
   executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   // --spki <hash>: trust deploy-proxy.mjs's self-signed certificate (an --origin https://127.0.0.1:<port> run).
   args: ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu', '--enable-precise-memory-info', ...(opt('spki', '') ? [`--ignore-certificate-errors-spki-list=${opt('spki', '')}`] : [])],
-});
+};
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1512, height: 862 }, deviceScaleFactor: 2 };
-const context = await browser.newContext(ctxOpts);
+const profile = opt('persistent', '');
+const browser = profile ? null : await chromium.launch(launchOpts);
+const context = profile ? await chromium.launchPersistentContext(profile, { ...launchOpts, ...ctxOpts }) : await browser.newContext(ctxOpts);
 // Playwright disables the HTTP cache for a context with any route (so every repeat of a file downloads again, which a
 // real browser would serve from its cache or coalesce). --no-route keeps the cache as a player has it: no Sentry stub
 // and no --bundles (the deployed build only).
@@ -150,4 +154,4 @@ else { out.cold = await run(page, 'cold'); if (has('pair')) out.pair = await end
 out.bundles = bundles || null; out.served = served;
 fs.writeFileSync(path.join(outDir, 'timeline.json'), JSON.stringify(out, null, 1));
 console.log('wrote', outDir);
-await browser.close();
+await (browser ? browser.close() : context.close());

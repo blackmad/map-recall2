@@ -88,6 +88,15 @@
           ]
         },
         {
+          "regex": "^/(js|css)/[^/]+-h[0-9a-f]{10}(\\.bundle)?\\.(m?js|css)$",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
           "source": "/manual-ordinary-buildings.html",
           "headers": [
             {
