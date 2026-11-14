@@ -1,0 +1,33 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176417",
+ "design": {
+  "palette": {
+   "brick": "#3b312b"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "house:frames TMX7316010203-002976_pano_0005_000142",
+   "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "house:frames TMX7316010203-002976_pano_0005_000142",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "wallExposure": {
+   "off": "#3b312b",
+   "floor": "#1a1613",
+   "gain": "#3b312b",
+   "norm": "#483d36",
+   "normfloor": "#483d36",
+   "g": 3
+  }
+ }
+}

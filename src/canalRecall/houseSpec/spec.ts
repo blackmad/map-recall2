@@ -19,6 +19,7 @@ import {
   type FrontIntent, type GableIntent, type IntentSource,
 } from '../buildingRecipe/intent.ts';
 import type { HouseDesign } from '../blockFace/intent.ts';
+import { isWallExposureFact } from './wallExposure.ts';
 import { SOURCE_STRENGTH, type FacadeSource } from '../facade/evidence.ts';
 
 export type { HouseDesign };
@@ -145,6 +146,9 @@ export interface SpecFacts {
   /** The wall's colour family as a reader names it (H5h hand set, docs/house-line.md §4c): the truth the wall-colour rule
    *  checks a pixel reading against (houseSpec/wallColour.ts specWallSource; lane H9). */
   wallFamily?: 'white' | 'grey' | 'buff' | 'orange' | 'red' | 'red-brown' | 'brown' | 'dark';
+  /** Lane WC (#384): the wall-exposure options of a photo-measured wall (houseSpec/wallExposure.ts): the brick each option
+   *  stages beside the off brick (`palette/brick`). Drawn only under `?wallExposure=floor|gain|norm` (default off). */
+  wallExposure?: import('./wallExposure.ts').WallExposureFact;
 }
 
 export interface HouseSpec {
@@ -292,6 +296,7 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/facadeYear' && !countOk(value, 1200, 2100)) p.push(`${path}: a year 1200..2100`);
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
+    else if (path === 'facts/wallExposure' && !isWallExposureFact(value)) p.push(`${path}: {off, floor, gain, norm} colours and a gain g`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
     else if (path === 'facts/groundKind' && !['shop', 'door-only', 'dwelling', 'warehouse'].includes(value as string)) p.push(`${path}: shop|door-only|dwelling|warehouse`);
     else if (path === 'facts/historicGable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);

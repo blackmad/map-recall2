@@ -26,6 +26,7 @@
  "specFieldCoverage": {
   "facts/groundKind": 0.854,
   "facts/pui": 0.87,
+  "facts/wallExposure": 1,
   "fronts/*/archedStoreys": 0.043,
   "fronts/*/bands": 0.497,
   "fronts/*/bays": 0.951,

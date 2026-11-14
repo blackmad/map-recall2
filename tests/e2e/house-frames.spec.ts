@@ -18,7 +18,7 @@
  */
 import { test, type Browser, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { basename, join, resolve } from 'node:path';
 import { openRoute, settleWorld } from './helpers';
 
 type JobPose = {
@@ -35,6 +35,8 @@ type JobPose = {
   picks: Array<[number, number]>;
   /** rule 10 (--likeness): first person 72 deg in a `width` x `height` css viewport, the top `windowH` rows kept */
   likeness?: { fps: Record<string, unknown>; width: number; height: number; windowH: number; lngLat: [number, number]; headingDeg: number };
+  /** a batch list's own query (else the job's) */
+  query?: string;
 };
 /** rule 10 (scripts/house-frames/rule10Frames.ts Rule10Job): absent on an old run, which then runs exactly as before. */
 type Rule10Job = { dpr: number; likenessQuery: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }> };
@@ -42,9 +44,10 @@ type Job = { out: string; query: string; width: number; height: number; reopenEv
 
 const JOB = process.env.HOUSE_FRAMES_JOB;
 
-async function openPage(page: Page, job: Job): Promise<void> {
+async function openPage(page: Page, job: Job, query = job.query): Promise<void> {
   // The first-person camera is the own engine's (engine/fpsCamera.ts): `engine=own` unless the job's query names an engine.
-  const q = job.query.replace(/^\?/, '');
+  // A batch list may carry its own query (house:frames --lists <list>:<out>@<query>): the pose's, else the job's.
+  const q = query.replace(/^\?/, '');
   const engine = /(^|&)engine=/.test(q) ? '' : 'engine=own&';
   await openRoute(page, { travelMode: 'car', query: `?${engine}cam=fps${q ? `&${q}` : ''}`, abortHeavyTiles: true });
   await page.evaluate(() => {
@@ -157,6 +160,17 @@ test('house frames', async ({ page, browser }) => {
     specsServed++;
     return route.fulfill({ path: file, contentType: 'application/octet-stream' });
   });
+  // HOUSE_FRAMES_WORLDS='<out dir name>=<world dir>;...' (lane WC, review rule 8): each list frames its own compiled world-v1
+  // (WORLD_DIR per list: the files a staged compile has, the published ones otherwise), so one batch shoots several
+  // compiled settings on the players' world. A list whose out dir's name is not listed gets the published world.
+  const worlds = (process.env.HOUSE_FRAMES_WORLDS ?? '').split(';').filter(Boolean).map(e => { const i = e.indexOf('='); return [e.slice(0, i), resolve(e.slice(i + 1))] as const; });
+  let worldDir = '', worldServed = 0;
+  if (worlds.length) await page.context().route(/\/data\/extracts\/amsterdam\/world-v1\/([\w/.-]+?)(\?.*)?$/, route => {
+    const file = worldDir && join(worldDir, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]);
+    if (!file || !existsSync(file)) return route.continue();
+    worldServed++;
+    return route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' });
+  });
   let opened = 0, sinceOpen = Infinity, lastOut = '';
   const timings: Array<Record<string, number | string>> = [];
   const t0 = Date.now();
@@ -171,9 +185,10 @@ test('house frames', async ({ page, browser }) => {
       try {
         const ts = Date.now();
         specsOn = !!specsDir && (!specsFor || (pose.out ?? job.out).includes(specsFor));
+        worldDir = worlds.find(([name]) => basename(pose.out ?? job.out) === name)?.[1] ?? '';
         if (sinceOpen >= job.reopenEvery) {
           if (opened) { await page.goto('about:blank'); }
-          await openPage(page, job); opened++; sinceOpen = 0;
+          await openPage(page, job, pose.query ?? job.query); opened++; sinceOpen = 0;
         }
         const tOpen = Date.now();
         await setPose(page, pose);
@@ -212,7 +227,7 @@ test('house frames', async ({ page, browser }) => {
             specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, specRecipe: p.specRecipe ?? null, specShop: p.specShop ?? null, heldBrick: !!p.specRecipe?.heldBrick,
             facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
         }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
-        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
+        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), ...(worlds.length ? { world: { dir: worldDir || 'published', served: worldServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });
         sinceOpen++;
         break;

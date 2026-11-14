@@ -37,7 +37,7 @@ import { exposedWalls } from '../../pand-reference/select.ts';
 import { pickPose, rankCandidates, type Args, type Candidates, type Entry, type Skipped } from '../../house-frames/frames.ts';
 import { aimPose, bearingTo, frameFor, gridConvergenceDeg, rdToLocal, PANO_EYE_HEIGHT_M, type FramePose, type Rd, type WallQuad } from '../../house-frames/pose.ts';
 import { cutPerspective, loadEquirect, type Rgb8 } from '../../house-frames/photo.ts';
-import { wallLab } from '../../house-frames/analyse.ts';
+import { wallLab, wallExposureRef } from '../../house-frames/analyse.ts';
 import type { CameraFrame } from '../../../src/canalRecall/ownMap/mapCamera.ts';
 import { project } from '../../../src/canalRecall/ownMap/mapCamera.ts';
 import crypto from 'node:crypto';
@@ -256,7 +256,7 @@ export type CutRow = {
   pandId: string; panoId: string; captured: string; distM: number; obliquityDeg: number; pose: FramePose; wall: WallQuad; wallLenM: number;
   wallHex: string | null; wallLab: { L: number; C: number; h: number; n: number } | null; panoHref: string; fullHref: string | null;
   /** `w1` mode: lane W1's wall sample on the house:frames photo of the same pinned capture (game lens, aimPose/frameFor). */
-  w1?: { hex: string; L: number; C: number; h: number; n: number } | null;
+  w1?: { hex: string; L: number; C: number; h: number; n: number; ref?: import('../../house-frames/analyse.ts').ExposureRef | null } | null;
   fallback: { notWinter: boolean; oblique: boolean; clipped: string[]; gameLensClipped: string[] }; candidates: number; file: string;
 };
 
@@ -333,8 +333,9 @@ async function modeW1(ids: string[], cutsFile: string) {
     const pose = aimPose({ lngLat: ll, cameraNap: r.pose.cameraNap ?? null }, r.wall), frame = frameFor(pose);
     const img = await loadEquirect(record, 'medium');
     if (!img) { r.w1 = null; miss++; continue; }
-    const lab = wallLab(cutPerspective(img, frame, gridConvergenceDeg(ll)), frame, pose, r.wall);
-    r.w1 = lab ? { hex: lab.hex, L: lab.L, C: lab.C, h: lab.h, n: lab.n } : null;
+    const cut = cutPerspective(img, frame, gridConvergenceDeg(ll)), lab = wallLab(cut, frame, pose, r.wall);
+    // lane WC (#384): the capture's exposure references on the same cut, for the wall-exposure options (stage.ts)
+    r.w1 = lab ? { hex: lab.hex, L: lab.L, C: lab.C, h: lab.h, n: lab.n, ref: wallExposureRef(cut, frame, pose, r.wall) } : null;
     if (!lab) miss++;
     n++;
   }

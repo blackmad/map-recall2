@@ -72,11 +72,25 @@
    "confidence": 0.6,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012176215.jpg",
    "at": "2026-11-13"
+  },
+  "facts/wallExposure": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176215.jpg",
+   "at": "2026-11-13"
   }
  },
  "facts": {
   "pui": "residential",
-  "groundKind": "dwelling"
+  "groundKind": "dwelling",
+  "wallExposure": {
+   "off": "#47433f",
+   "floor": "#47433f",
+   "gain": "#676059",
+   "norm": "#61564c",
+   "normfloor": "#61564c",
+   "g": 1.442
+  }
  },
  "schemaLimits": [
   {
