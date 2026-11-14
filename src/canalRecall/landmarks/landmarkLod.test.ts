@@ -110,6 +110,17 @@ test('street chunk lod2 (lane R4-C): current only for this GLB hash and build ve
   assert.equal(chunkSpecFor(row).chunkLod2, undefined);
   assert.deepEqual(chunkSpecFor({ ...row, lod2: record }).chunkLod2, record);
   assert.equal(chunkSpecFor({ ...row, lod2: { ...record, sourceHash: 'stale' } }).chunkLod2, undefined);
+  // House rows: a chunk's ROW_FRONT variant (the walls a row record draws left out) loads only with the flag on.
+  const variant = { ...row, lod2: record, rowFront: { modelUrl: './x-row.glb', sha256: 'ffff' + sha256.slice(4), bytes: 1, triangles: 1 } };
+  const env = process.env.ROW_FRONT;
+  try {
+    delete process.env.ROW_FRONT;
+    assert.equal(JSON.stringify(chunkSpecFor(variant)), JSON.stringify(chunkSpecFor({ ...row, lod2: record })), 'flag off: the variant changes nothing');
+    process.env.ROW_FRONT = '1';
+    assert.equal(chunkSpecFor(variant).modelUrl, './x-row.glb');
+    assert.equal(chunkSpecFor(variant).chunkLod2, undefined, 'the original GLB\'s lod2 is not the variant\'s');
+    assert.equal(chunkSpecFor({ ...row, lod2: record }).modelUrl, './x.glb', 'no variant: the chunk as installed');
+  } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; }
 });
 
 test('projectedRadiusPx (lane R4-C): perspective size halves with distance, null behind the camera', async () => {

@@ -10,7 +10,7 @@ const { loadRowDefs } = await import('../../../scripts/house-specs/rows/rowDefs.
 const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.ts');
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
-const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf } = await import('./rowFront.ts');
+const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB } = await import('./rowFront.ts');
 const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 
@@ -255,4 +255,35 @@ test('Kinkerstraat 110 (corner end): its slate mansard faces Kinkerstraat, not t
   const blind = { ...plan, pieces: plan.pieces!.map(pc => ({ ...pc, plan: { ...pc.plan, rowFrontM: undefined } })) };
   const old = deck(blind);
   assert.ok(old.across < d.across - 1, `no front width: the box faced the side street, its hips across the 5.2 m front (${old.along.toFixed(1)} x ${old.across.toFixed(1)})`);
+});
+
+test('a chunk-owned corner (86-88): the row draws its stated street wall as a slab under its own id, the chunk keeps the rest', () => {
+  // Lane D states the chunk and the Kinkerstraat edge on the member; rowFrontsWithSeries carries it to the record.
+  const solved = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input);
+  const lng = 4.888, lat = 52.381, kx = 111_320 * Math.cos(lat * Math.PI / 180);
+  const edge: [[number, number], [number, number]] = [[lng, lat], [lng + 7.69 / kx, lat]];
+  const member = solved.members.find(m => m.pandId === '0363100012233580')!;
+  const withWall = { ...solved, members: solved.members.map(m => m === member ? { ...m, wallOnly: { chunk: 'chunk-face-bilder-233580-162444', edge } } : m) };
+  const KW = rowFrontsWithSeries(withWall);
+  const r = rec(KW, '0363100012233580');
+  assert.deepEqual(r.wallOnly, { chunk: 'chunk-face-bilder-233580-162444', edge });
+  assert.equal(rec(K, '0363100012233580').wallOnly, undefined, 'no stated wall: the record as before');
+  // The pand's footprint behind the edge (y > 0): 7.69 m along Kinkerstraat, 10 m deep.
+  const ll = (x: number, y: number) => [lng + x / kx, lat + y / 110_540];
+  const f = { ...feature(r.pandId, 16, { roofShape: 'gable', roofPlanned: true }), geometry: { type: 'Polygon', coordinates: [[ll(0, 0), ll(7.69, 0), ll(7.69, 10), ll(0, 10), ll(0, 0)]] } };
+  const out = withFlag(KW, () => withRowFront(f)) as typeof f;
+  const p = out.properties;
+  assert.equal(p.id, `NL.IMBAG.Pand.${r.pandId}${ROW_WALL_SUFFIX}`, 'its own mesh id: the chunk\'s suppression of the pand does not hide it');
+  assert.equal(p.rowRoof, undefined, 'no row roof: the chunk\'s mansard stands over it');
+  assert.equal(p.roofShape, 'flat');
+  assert.equal(p.height, r.eavesM, 'the wall stands to the series line');
+  assert.equal(p.rowSeries, r.series!.id);
+  assert.ok(p.rowDress, 'the series dress');
+  const ring = (out.geometry as { coordinates: number[][][] }).coordinates[0].map(([x, y]) => [(x - lng) * kx, (y - lat) * 110_540]);
+  assert.equal(ring.length, 5);
+  assert.ok(Math.abs(ring[0][0]) < 1e-6 && Math.abs(ring[0][1]) < 1e-6 && Math.abs(ring[1][0] - 7.69) < 1e-6 && Math.abs(ring[1][1]) < 1e-6, 'its face on the stated edge');
+  for (const q of ring.slice(2, 4)) assert.ok(Math.abs(q[1] - ROW_WALL_SLAB.depthM) < 1e-6, 'its back inside the footprint');
+  assert.ok(ring[2][0] < 7.69 && ring[3][0] > 0, 'its ends slant inward, never in the plane of the chunk\'s side wall');
+  // Flag off: untouched.
+  assert.equal(withRowFront(f), f);
 });

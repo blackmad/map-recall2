@@ -14,6 +14,7 @@ import type {ChunkManifest, ChunkManifestEntry} from '../streetChunks/manifest.t
 import type {SignatureModelSpec} from './signaturePlacement';
 import {chunkWallExposure} from '../look/chunkWallExposure.ts';
 import {chunkLod2IsCurrent} from './landmarkLod.ts';
+import {rowFrontFlagNow} from '../houseLine/rowFrontFlag.ts';
 
 export {pandIndexForFace} from '../streetChunks/extras.ts';
 
@@ -51,10 +52,13 @@ export const withoutStreetSurveys = (models: readonly SignatureModelSpec[]): Sig
   models.filter(m => m.buildingCategory !== 'street-survey');
 
 export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
+  // House rows: with the flag on, a chunk that has a variant without the row-drawn walls loads it (its lod2 is the
+  // original's, so it is dropped: the sha no longer matches).
+  const model = c.rowFront && rowFrontFlagNow() ? c.rowFront : null;
   const length = c.bounds.max[0] - c.bounds.min[0], width = c.bounds.max[2] - c.bounds.min[2];
   return {
     id: c.id, assetKind: 'ordinary-building', buildingCategory: 'street-survey', name: c.name, landmarkId: '',
-    modelUrl: c.modelUrl, suppressOsmIds: [...c.suppress], spatialSuppression: false,
+    modelUrl: model?.modelUrl ?? c.modelUrl, suppressOsmIds: [...c.suppress], spatialSuppression: false,
     buildingFootprint: c.footprint, heightMetres: c.height, heightToleranceMetres: 0.5, groundAltitudeMetres: 0, facingOffsetDegrees: 0,
     // Radius is used for visibility/loading only; suppression always uses exact IDs.
     footprint: {centre: c.instance.anchor, headingDegrees: 90, lengthMetres: length, widthMetres: Math.max(width, 1)},
@@ -63,7 +67,7 @@ export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
     // Its walls were matched to the face's photo strip: the sunny look draws them at the strip colour normalised to sunlight.
     wallExposure: chunkWallExposure(c.name),
     // Its lod2 stand-in from the air (lane R4-C #245), only when built from this GLB.
-    ...(chunkLod2IsCurrent(c.lod2, c.sha256) ? {chunkLod2: {...c.lod2!}} : {}),
+    ...(chunkLod2IsCurrent(c.lod2, model?.sha256 ?? c.sha256) ? {chunkLod2: {...c.lod2!}} : {}),
     surveyed: {anchor: c.instance.anchor, northOffsetDegrees: c.instance.northOffsetDegrees, source: 'Street chunk: one mesh per block face, compiled from the houses\' intent recipes and 3DBAG LoD2.2.'},
     attribution: {title: c.name, author: 'Ride Amsterdam', sourceUrl: 'https://data.amsterdam.nl/', licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Block face compiled from per-house recipes on native surveyed footprints; party walls between neighbours omitted.'},
   };

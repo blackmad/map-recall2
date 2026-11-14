@@ -14,7 +14,7 @@
 import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
-import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { ROW_FRONT_EXTRAS, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -180,6 +180,9 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
     if (out.series?.roofStorey?.kind === 'mansard' && member.widthM && member.widthM > 1) out.series.roofStorey.frontM = member.widthM;
+    // A chunk-owned pand whose street wall the row draws (lane D states the chunk and the edge on the member).
+    const wallOnly = rowWallOnlyOf((member as { wallOnly?: unknown }).wallOnly);
+    if (wallOnly) out.wallOnly = wallOnly;
     return out;
   });
 }
