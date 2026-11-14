@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Windows stay on in the distance",
+      "text": "Blocks across the water and a few streets ahead used to fade to plain walls about 250 m out. They now keep their window grids until the windows are too small to draw cleanly; the distance haze is unchanged. Desktop only for now (phones can try it with ?farWindows=1).",
+      "where": [
+        4.8892,
+        52.3816
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-far-windows-storybook.jpg",
+          "alt": "View over the Westerdok: before, the far slabs are blank; after, they show their windows",
+          "caption": "Westerdok, before (top) | after (bottom)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Clean joins where motorway bridges meet the road",
       "text": "Yesterday's bridge fixes left a ragged pale patch where some bridge decks meet the road beyond them, on the Ringweg-Noord, the Coentunnel approach and Jan Evertsenstraat. The road now carries on at the deck's height past the end, so the join is a clean seam again; paths that pass under the bridges stay on the ground.",
       "where": [

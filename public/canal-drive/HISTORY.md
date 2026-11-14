@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Far windows survive the depth fade (2026-11-14)
+
+Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.
+
+
 ## Hole decks carry their own road past the end (2026-11-14)
 
 User on F1b: "this is almost worse - before there was just a seam line, now there's jagged texture" (Ringweg-Noord OSM7376770). Bisect: `holeStreets` alone. Inside a deck's `under` hole ranges the street lift was skipped, so the deck's own carriageway drawn at ground level past the deck end draped onto terrain and sank 0.5–5 m, showing the pale deck top as a shard. `bridgeGaps.ts` `holeCarry()` measures how far the deck's own ground-level road runs on and `inUnderStreets` keeps the lift there (`holeCarried`, default on); streets that pass under still drape. A first cut re-lifted the Weesperstraat under the Provincialeweg road and tram bridges (OSM 7040533; three tram crossings in check:rail-joins), so `holeCrossStations` stops the carried stretch 5 m short of any non-bridge OSM street or railway crossing the deck's road inside a hole range at > 30° (also the Meteorenweg under the Coentunnelcircuit). Survey of 63 hole decks (points > 0.3 m below the deck within 12 m): before F1b 0, F1b 30 decks / 1,173 points, now 10 / 105. Pinned in `HOLE_JUNCTIONS` (`bridge-feedback-pins.ts`, run by check:ground-spots).
