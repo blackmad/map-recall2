@@ -1,0 +1,352 @@
+{
+ "schemaVersion": 1,
+ "id": "lofi",
+ "pand": "0363100012092649",
+ "brief": "scripts/landmarks/lofi-brief.md",
+ "signature": [
+  "e-red-folding-doors",
+  "n-black-wing",
+  "n-mural",
+  "e-ribbed-cladding",
+  "n-ribbon-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-91",
+   "bearing": 91,
+   "lengthM": 36.1,
+   "centre": [
+    4.8244035,
+    52.391122
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002493_pano_0005_001310",
+   "capturedAt": "2022-03-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-red-folding-doors",
+     "kind": "other",
+     "where": "east front, four bays of 4.2 m between 0.3 and 21.2 m: red steel folding doors of four leaves, three glazed pane rows over a solid kick panel, heads at 4.1 m",
+     "approxSizeM": [
+      4.2,
+      4.1
+     ],
+     "plan": "modelled",
+     "how": "foldingDoor(): glass panel with proud red kick panel, head rail, one stile per leaf and two pane rails",
+     "seenIn": "TMX7316010203-002493_pano_0005_001310"
+    },
+    {
+     "id": "e-black-door-bays",
+     "kind": "other",
+     "where": "east front at 4.5-8.6 m and 21.8-25.8 m: black double doors under a black fascia panel",
+     "approxSizeM": [
+      4.1,
+      4.1
+     ],
+     "plan": "modelled",
+     "how": "blackBay(): black panel with light joints at 2.35 m and between the leaves",
+     "seenIn": "TMX7316010203-002493_pano_0005_001310"
+    },
+    {
+     "id": "e-ribbed-cladding",
+     "kind": "other",
+     "where": "east front over the doors, 4.1-6.1 m, and down to 2.5 m at the north end: silver horizontally ribbed metal cladding",
+     "approxSizeM": [
+      36.1,
+      2.0
+     ],
+     "plan": "modelled",
+     "how": "ribs(): 6 cm ribs every 0.32 m on the silver shell",
+     "seenIn": "TMX7316010203-002493_pano_0005_001310"
+    },
+    {
+     "id": "e-office-end",
+     "kind": "window-shape",
+     "where": "east front, north end 25.9-36.1 m: red panels with a row of windows over a black plinth (yellow in 2022, red and black in 2025)",
+     "approxSizeM": [
+      10.2,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "red band 1.0-2.5 m with 0.85 m window panes, black plinth; the tree-hidden north 5 m continues the pattern (inferred)",
+     "seenIn": "TMX7316010203-002493_pano_0005_001310 alt 2025"
+    },
+    {
+     "id": "e-roof-sign-frame",
+     "kind": "sign",
+     "where": "roof over the north-east corner, a steel sign frame (2017-2022)",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "absent from the 2025 captures of both fronts"
+     },
+     "seenIn": "TMX7316010203-000321_pano_0000_004070"
+    }
+   ],
+   "note": "East front, the garage hall (2022-03-30 crop and its 2025 alternate, 50 px/m, ground at 360 px). South to north: corner post, red folding door, black door bay, three red folding doors, heavy red pier, black door bay, then the office wing's end with cladding down to 2.5 m."
+  },
+  {
+   "tag": "w02-0",
+   "bearing": 0,
+   "lengthM": 24.5,
+   "centre": [
+    4.824225,
+    52.391284
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_04058",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-black-wing",
+     "kind": "other",
+     "where": "whole north wing front, 24.5 m x 6.1 m, painted black over ribbed cladding",
+     "approxSizeM": [
+      24.5,
+      6.1
+     ],
+     "plan": "modelled",
+     "how": "black slab with ribbed bands above and between the window rows",
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    },
+    {
+     "id": "n-ribbon-windows",
+     "kind": "window-shape",
+     "where": "upper floor, a continuous ribbon of 2 m windows at 3.8-4.9 m",
+     "approxSizeM": [
+      23.5,
+      1.1
+     ],
+     "plan": "modelled",
+     "how": "glass band with dark mullions every 2 m and a sill",
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    },
+    {
+     "id": "n-mural",
+     "kind": "other",
+     "where": "ground floor, east two thirds (0.2-16.2 m from the east corner), 0.1-1.9 m: a painted mural of large purple, blue and yellow creature forms on a dark ground",
+     "approxSizeM": [
+      16,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "mural(): dark panel with six flat colour polygons placed where the purple scales, blue coils and yellow head sit; no figure detail",
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    },
+    {
+     "id": "n-yellow-glazing",
+     "kind": "window-shape",
+     "where": "ground floor, west third (16.3-24.3 m): yellow glazing in two rows over a black base",
+     "approxSizeM": [
+      8,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "yellow panel with dark mullions every 2 m and a transom bar",
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    },
+    {
+     "id": "n-chimney",
+     "kind": "other",
+     "where": "roof, about 15.6 m from the east corner behind the front: a brick chimney stack",
+     "approxSizeM": [
+      0.9,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "brick box with a concrete cap",
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    },
+    {
+     "id": "n-roof-truss",
+     "kind": "other",
+     "where": "a steel lattice truss frame along the roof (2022)",
+     "approxSizeM": [
+      24,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "removed by the 2025-07 capture"
+     },
+     "seenIn": "TMX7316010203-002493 2022 alternate of w02-0"
+    },
+    {
+     "id": "n-vents",
+     "kind": "other",
+     "where": "small vent pipes along the roof edge",
+     "approxSizeM": [
+      0.2,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.3 m"
+     },
+     "seenIn": "recording_2025-07-01_09-03-48_04058"
+    }
+   ],
+   "note": "North front of the office wing, 2025-07-01 crop (50 px/m), frames read on the 2022 alternate. Black paint over two storeys; upper ribbon 3.8-4.9 m, transom strip 1.96-2.46 m."
+  },
+  {
+   "tag": "w03-181",
+   "bearing": 181,
+   "lengthM": 24.1,
+   "centre": [
+    4.824225,
+    52.3909605
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_12-47-19_01666",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-corrugated",
+     "kind": "other",
+     "where": "south wall below 4.1 m: dark blue-grey vertical corrugated cladding; silver ribbed band above",
+     "approxSizeM": [
+      24.1,
+      4.1
+     ],
+     "plan": "simplified",
+     "how": "dark slab with vertical ribs every 0.3 m, silver ribs above; the hidden middle is inferred",
+     "seenIn": "recording_2024-09-09_12-47-19_01666"
+    }
+   ],
+   "note": "South wall, 2024-09 crop: mostly behind a hedge, a shipping container and a fence; the visible end shows dark corrugated cladding under the silver band."
+  },
+  {
+   "tag": "w04-270",
+   "bearing": 270,
+   "lengthM": 23,
+   "centre": [
+    4.823868,
+    52.3911805
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama sees this wall: the 90 m all-walls search (recording_2024-09-09_12-47-19_01181/_01177/_01674) looks at the neighbouring garage and brick office in front of it. Drawn as plain silver ribbed cladding, inferred."
+  },
+  {
+   "tag": "w05-270",
+   "bearing": 270,
+   "lengthM": 13,
+   "centre": [
+    4.8240475,
+    52.3910195
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama sees this wall: the 90 m all-walls search (recording_2024-09-09_12-47-19_01181/_01177/_01674) looks at the neighbouring garage and brick office in front of it. Drawn as plain silver ribbed cladding, inferred."
+  },
+  {
+   "tag": "w06-180",
+   "bearing": 180,
+   "lengthM": 12.2,
+   "centre": [
+    4.8239575,
+    52.3910775
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama sees this wall: the 90 m all-walls search (recording_2024-09-09_12-47-19_01181/_01177/_01674) looks at the neighbouring garage and brick office in front of it. Drawn as plain silver ribbed cladding, inferred."
+  },
+  {
+   "tag": "w07-0",
+   "bearing": 0,
+   "lengthM": 10.2,
+   "centre": [
+    4.82397,
+    52.391283
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000321_pano_0000_004070",
+   "capturedAt": "2017-05-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-folding-door",
+     "kind": "other",
+     "where": "1.9-10.2 m from the east end of this wall: red folding door of eight glazed leaves, head 4.1 m, light head panel to 4.8 m",
+     "approxSizeM": [
+      8.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "how": "foldingDoor() with 8 leaves and a frame-coloured head panel",
+     "seenIn": "TMX7316010203-000321_pano_0000_004070"
+    },
+    {
+     "id": "nw-yellow-entrance",
+     "kind": "other",
+     "where": "0-1.9 m: yellow panelled entrance with a glazed door and side light, 2.6 m high",
+     "approxSizeM": [
+      1.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "yellow panel with door and side light",
+     "seenIn": "TMX7316010203-000321_pano_0000_004070"
+    },
+    {
+     "id": "nw-upper-window",
+     "kind": "window-shape",
+     "where": "above the entrance, about 3.4-4.2 m",
+     "approxSizeM": [
+      1.7,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "glass slab in the cladding",
+     "seenIn": "TMX7316010203-000321_pano_0000_004070"
+    },
+    {
+     "id": "nw-roof-sign",
+     "kind": "sign",
+     "where": "roof sign frame with the letters \"...TERS\"",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "not present in the 2025 captures of the north and east fronts"
+     },
+     "seenIn": "TMX7316010203-000321_pano_0000_004070"
+    }
+   ],
+   "note": "North front, west part (2017-05 crop, 2018 alternate; the only captures). Silver cladding, an eight-leaf red folding door under a light head panel, a yellow entrance with side light at its east end, a window above the entrance."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Lofi club Sloterdijk (amsterdamnow.com): former GVB bus garage, founded 2019",
+   "url": "https://www.amsterdamnow.com/en/going-out-entertainment/lofi-club-sloterdijk/",
+   "licence": "cited fact"
+  }
+ ]
+}

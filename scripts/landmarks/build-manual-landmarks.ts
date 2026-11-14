@@ -1,3 +1,5 @@
+import {buildRadion} from './radion-builder';
+import {buildLofi} from './lofi-builder';
 import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
@@ -653,7 +655,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='waag')buildWaag(w,d,helpers);
+    if(id==='radion')buildRadion(w,d,helpers);
+    else if(id==='lofi')buildLofi(w,d,helpers);
+    else if(id==='waag')buildWaag(w,d,helpers);
     else if(id==='scheepvaartmuseum')buildScheepvaartmuseum(w,d,helpers);
     else if(id==='odessa')buildOdessa(w,d,helpers);
     else if(id==='hotel-jakarta')buildHotelJakarta(w,d,helpers);
