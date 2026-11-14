@@ -3,19 +3,25 @@
 // (0363100012167816, cornice top 11.6 m against 3DBAG 8.7 m) and Haarlemmerdijk 20 (0363100012167818, neck foot 10.2 m).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { resetRowFront, setRowFrontRecords, withRowFront, type RowFrontRecord } from './rowFront.ts';
+import { resetRowFront, rowFrontEnabled, setRowFrontRecords, withRowFront, type RowFrontRecord } from './rowFront.ts';
 
 const ring = (w: number, d: number) => [[[0, 0], [w / 111320 / 0.61, 0], [w / 111320 / 0.61, d / 111320], [0, d / 111320], [0, 0]].map(([x, y]) => [4.888 + x, 52.381 + y])];
 const feature = (id: string, height: number, extra: Record<string, unknown> = {}) => ({ type: 'Feature', properties: <Record<string, unknown>>{ id: `NL.IMBAG.Pand.${id}`, height, minHeight: 0, facade: 'canal', facadeStyle: 'canal', constructionYear: 1700, ...extra }, geometry: { type: 'Polygon', coordinates: ring(4, 14) } });
 const rec = (pandId: string, eavesM: number, topM: number, family: RowFrontRecord['crown']['family']): RowFrontRecord => ({ pandId, eavesM, topM, crown: { family }, confidence: 0.85, sources: {} });
 
-test('row front: flag off returns the same object', () => {
+test('row front: on by default (round-1 install); ROW_FRONT=0 / ?rowFront=0 returns the same object', () => {
   const env = process.env.ROW_FRONT;
   try {
-    delete process.env.ROW_FRONT; resetRowFront();
+    process.env.ROW_FRONT = '0'; resetRowFront();
     setRowFrontRecords([rec('0363100012167816', 11.6, 11.6, 'cornice')]);
     const f = feature('0363100012167816', 10.29, { roofEavesHeightM: 8.7, roofPlanned: true, roofShape: 'gable', monumentGable: 'neck' });
     assert.equal(withRowFront(f), f);
+    delete process.env.ROW_FRONT; resetRowFront();
+    assert.notEqual(withRowFront(f), f, 'no flag: the published records draw');
+    assert.equal(rowFrontEnabled(null, null), true);
+    assert.equal(rowFrontEnabled('?rowFront=0', null), false);
+    assert.equal(rowFrontEnabled('?rowFront=0', '1'), false, 'the URL wins');
+    assert.equal(rowFrontEnabled(null, '0'), false);
   } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; resetRowFront(); }
 });
 

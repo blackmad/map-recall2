@@ -51,7 +51,8 @@ export { BUILDING_CATEGORIES, CATEGORY_LABEL, countsAsLandmark } from '../buildi
 export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS.filter(m => installDraws(m.id))];
 export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VERSIONS };
 export { SharedAssetCache } from './sharedAssetCache';
-export { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
+export { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, rowWallChunks, pandIndexForFace } from './ordinaryChunks';
+export { rowFrontFlagNow } from '../houseLine/rowFrontFlag';
 export { createRecipeLook } from '../buildingRecipe/recipeLook';
 export { lod1IsCurrent, chooseLevel, initialLevel, footprintRadiusPixels, lod1Url, lod2IsCurrent, lod2Url, chooseLandmarkLevel, initialLandmarkLevel } from './landmarkLod';
 import type { LandmarkLodEntry } from './landmarkLod';

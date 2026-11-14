@@ -12,5 +12,8 @@ test('world-v1 is the default world; ?world=live asks for the live tile path', (
 test('worldV1Enabled: ?rowFront=1 draws from the live tiles (its records decorate live tiles only); ?world=v1 still forces the cells', () => {
   assert.equal(worldV1Enabled('?rowFront=1'), false);
   assert.equal(worldV1Enabled('?rowFront=1&world=v1'), true);
-  assert.equal(worldV1Enabled('?rowFront=0'), true);
+  // The cells bake the published rows (round-1 install): `?rowFront=0` draws the live tiles without them.
+  assert.equal(worldV1Enabled('?rowFront=0'), false);
+  assert.equal(worldV1Enabled('?rowFront=0&world=v1'), true);
+  assert.equal(worldV1Enabled(''), true, 'no flag: the cells, rows baked in');
 });

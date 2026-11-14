@@ -198,7 +198,7 @@ export class SignatureLandmarks {
    * houses a chunk replaces leave the model list, and any already drawn are dropped, so nothing is drawn twice.
    */
   _loadStreetChunks() {
-    const { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    const { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, rowWallChunks, rowFrontFlagNow } = window.CanalRecallSignatureLandmarks;
     if (this.streetChunks !== true) return;
     if (streetSurveyMode?.(window.location.search) === 'retired') {
       this.models = withoutStreetSurveys(this.models);
@@ -206,11 +206,16 @@ export class SignatureLandmarks {
       return;
     }
     if (!streetChunksEnabled?.(window.location.search)) return;
-    fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
-      .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))
-      .then(manifest => {
+    // House rows (houseLine/rowFront.ts): a chunk swaps to its variant without the walls a row draws only when a loaded
+    // row-front record states that wall (`wallOnly`); no records, or the flag off (`?rowFront=0`), keep every chunk whole.
+    const walls = rowWallChunks && rowFrontFlagNow?.()
+      ? fetch(new URL('../data/front-records/row-front.json', window.location.href)).then(r => r.ok ? r.json() : null).then(rowWallChunks).catch(() => new Set())
+      : Promise.resolve(new Set());
+    Promise.all([fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`))), walls])
+      .then(([manifest, wallChunks]) => {
         if (this._removed) return;
-        const { models, replaced } = applyStreetChunks(this.models, manifest, heldStreetChunks?.(window.location.search));
+        const { models, replaced } = applyStreetChunks(this.models, manifest, heldStreetChunks?.(window.location.search), wallChunks);
         this.models = models;
         this._dropEntries(replaced);
         this._requestModels();
