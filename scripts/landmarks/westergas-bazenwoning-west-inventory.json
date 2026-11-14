@@ -1,0 +1,245 @@
+{
+ "schemaVersion": 1,
+ "id": "westergas-bazenwoning-west",
+ "pand": "0363100012161595",
+ "brief": "scripts/landmarks/westergas-bazenwoning-west-brief.md",
+ "signature": [
+  "bz-bands",
+  "bz-north-gable",
+  "bz-stepped-rakes",
+  "bz-bay",
+  "bz-segmental-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-178",
+   "bearing": 178,
+   "lengthM": 5.9,
+   "centre": [
+    4.8703555,
+    52.386494
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_05_45_16_00075",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "bz-bay",
+     "kind": "window-shape",
+     "where": "canted three-sided bay on the south end of the centre block: an arched window in each face under a projecting white cornice with a row of blocks",
+     "approxSizeM": [
+      5.1,
+      5.1
+     ],
+     "plan": "modelled",
+     "how": "walls drawn on the BAG bay faces with segmental-headed framed openings; pathLedge cornice round the three faces and block slabs under it",
+     "seenIn": "2025_09_29_05_45_16_00075"
+    },
+    {
+     "id": "bz-door",
+     "kind": "other",
+     "where": "front door in the south-west wing with an arched fanlight, up three steps",
+     "approxSizeM": [
+      0.85,
+      3.1
+     ],
+     "plan": "simplified",
+     "how": "deep framed opening with a segmental head; the steps are not modelled",
+     "seenIn": "2025_09_29_05_45_16_00075"
+    },
+    {
+     "id": "bz-wing-cornice",
+     "kind": "other",
+     "where": "white block cornice under the zinc roof edge of both south wings",
+     "approxSizeM": [
+      5.9,
+      0.2
+     ],
+     "plan": "modelled",
+     "how": "row of white block slabs every ~0.5 m",
+     "seenIn": "2025_09_29_05_45_16_00075"
+    },
+    {
+     "id": "bz-bands",
+     "kind": "other",
+     "where": "white plastered bands every ~0.9 m round the whole house (and across the gables), broken by the windows",
+     "approxSizeM": [
+      40,
+      0.12
+     ],
+     "plan": "modelled",
+     "how": "white band slabs per face, cut round each window and its key blocks",
+     "seenIn": "2025_09_29_05_45_16_00075"
+    },
+    {
+     "id": "bz-segmental-windows",
+     "kind": "window-shape",
+     "where": "tall segmental-headed windows with white frames, transoms and white key and springer blocks",
+     "approxSizeM": [
+      2.4,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "K.opening with rise, cols and bars; three white block slabs over each head",
+     "seenIn": "2025_09_29_05_45_16_00075"
+    }
+   ]
+  },
+  {
+   "tag": "w02-359",
+   "bearing": 359,
+   "lengthM": 5.8,
+   "centre": [
+    4.8703535,
+    52.3865545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_000850",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "bz-wing-windows",
+     "kind": "window-shape",
+     "where": "north wings: a two-light window and a small window under the zinc roofs",
+     "approxSizeM": [
+      1.4,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "framed openings",
+     "seenIn": "TMX7316010203-001594_pano_0000_000850"
+    }
+   ]
+  },
+  {
+   "tag": "w03-359",
+   "bearing": 359,
+   "lengthM": 5,
+   "centre": [
+    4.870431,
+    52.3865785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_000849",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "bz-north-gable",
+     "kind": "other",
+     "where": "north gable of the centre block: four-light ground window with a segmental head and white blocks, a cross window in the gable with a white surround and blocks over it, white bands across the gable",
+     "approxSizeM": [
+      5.0,
+      8.9
+     ],
+     "plan": "modelled",
+     "how": "ground storey drawn with openings; the gable window and bands set on the 3DBAG gable triangle (window proud 5-10 cm, not recessed)",
+     "seenIn": "TMX7316010203-001594_pano_0000_000849"
+    },
+    {
+     "id": "bz-stepped-rakes",
+     "kind": "other",
+     "where": "corbelled brick steps along both rakes of the north and south gables, a small pier at the apex",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "simplified",
+     "how": "brick course slabs every 0.3 m just inside each rake; the apex pier is not modelled",
+     "seenIn": "TMX7316010203-001594_pano_0000_000849"
+    }
+   ]
+  },
+  {
+   "tag": "w04-269",
+   "bearing": 269,
+   "lengthM": 4.7,
+   "centre": [
+    4.870311,
+    52.386514
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_05_45_16_00080",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-89",
+   "bearing": 89,
+   "lengthM": 4.7,
+   "centre": [
+    4.870534,
+    52.386519
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_12-37-22_00544",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "bz-side-windows",
+     "kind": "window-shape",
+     "where": "one tall window in each wing's end wall",
+     "approxSizeM": [
+      1.3,
+      2.3
+     ],
+     "plan": "simplified",
+     "how": "one framed opening centred on each end wall (the end walls are seen only obliquely through trees)",
+     "seenIn": "recording_2024-09-11_12-37-22_00544"
+    }
+   ]
+  },
+  {
+   "tag": "w06-179",
+   "bearing": 179,
+   "lengthM": 4.2,
+   "centre": [
+    4.870504,
+    52.3864975
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_05_45_16_00073",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "bz-zinc-roofs",
+     "kind": "other",
+     "where": "light-grey zinc mono-pitch roofs over both wings",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "modelled",
+     "how": "3DBAG roof pieces under 6.3 m drawn in the concrete slot (zinc grey)",
+     "seenIn": "2025_09_29_05_45_16_00073"
+    }
+   ]
+  },
+  {
+   "tag": "w07-359",
+   "bearing": 359,
+   "lengthM": 4.2,
+   "centre": [
+    4.8704995,
+    52.3865575
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_000848",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

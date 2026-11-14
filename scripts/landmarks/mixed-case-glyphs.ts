@@ -26,6 +26,12 @@ export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
   // De Nieuwe Liefde, Da Costakade 102 (venues-ring lane, 2026-11-14): the dark "De Nieuwe Liefde" lettering over the
   // entrance (recording_2025-07-31_10-53-44_00617) needs a lowercase w; GL draws m in the same three-stem style.
   w: ['00000', '00000', '10001', '10001', '10101', '10101', '01010'],
+  // Venues round 3 (2026-11-14): Theater Bellevue's canopy letters "De Smoeshaan" (TMX7316010203-001968_pano_0000_000115)
+  // need a lowercase h, Q-Factory's fascia (q-factory brief, w04-161) an uppercase Q; y for the Muziekgebouw/Bimhuis
+  // and Meervaart texts. h keeps GL's ascender rows like b and k; Q is O with a tail into the bottom-right corner.
+  h: ['10000', '10000', '10110', '11001', '10001', '10001', '10001'],
+  Q: ['01110', '10001', '10001', '10001', '10101', '10010', '01101'],
+  y: ['00000', '00000', '10001', '10001', '01111', '00001', '01110'],
 };
 
 /** GL plus the extra glyphs; GL wins where both define a character, so nothing GL already draws changes. */
