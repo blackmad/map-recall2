@@ -6089,5 +6089,41 @@
    "bytes": 8972,
    "triangles": 271
   }
+ },
+ "universiteitstheater": {
+  "sourceHash": "9f4352a89f243458",
+  "buildVersion": 2,
+  "bytes": 45224,
+  "triangles": 1895,
+  "lod2": {
+   "sourceHash": "9f4352a89f243458",
+   "buildVersion": 6,
+   "bytes": 8580,
+   "triangles": 259
+  }
+ },
+ "perdu": {
+  "sourceHash": "ed171ce8059179f7",
+  "buildVersion": 2,
+  "bytes": 32604,
+  "triangles": 1230,
+  "lod2": {
+   "sourceHash": "ed171ce8059179f7",
+   "buildVersion": 6,
+   "bytes": 6396,
+   "triangles": 190
+  }
+ },
+ "crea": {
+  "sourceHash": "aafa3c0e296e9ed0",
+  "buildVersion": 2,
+  "bytes": 82244,
+  "triangles": 4747,
+  "lod2": {
+   "sourceHash": "aafa3c0e296e9ed0",
+   "buildVersion": 6,
+   "bytes": 16992,
+   "triangles": 1037
+  }
  }
 }

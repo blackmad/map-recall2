@@ -103674,6 +103674,12 @@
         "buildVersion": 2,
         "bytes": 38716,
         "triangles": 1799
+      },
+      "lod2": {
+        "sourceHash": "f0cbc7dbfad2e69b",
+        "buildVersion": 6,
+        "bytes": 8972,
+        "triangles": 271
       }
     },
     "universiteitstheater": {
@@ -103889,7 +103895,19 @@
       },
       "triangles": 8113,
       "bytes": 124224,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "9f4352a89f243458",
+        "buildVersion": 2,
+        "bytes": 45224,
+        "triangles": 1895
+      },
+      "lod2": {
+        "sourceHash": "9f4352a89f243458",
+        "buildVersion": 6,
+        "bytes": 8580,
+        "triangles": 259
+      }
     },
     "perdu": {
       "id": "perdu",
@@ -104023,7 +104041,19 @@
       },
       "triangles": 6165,
       "bytes": 96536,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ed171ce8059179f7",
+        "buildVersion": 2,
+        "bytes": 32604,
+        "triangles": 1230
+      },
+      "lod2": {
+        "sourceHash": "ed171ce8059179f7",
+        "buildVersion": 6,
+        "bytes": 6396,
+        "triangles": 190
+      }
     },
     "crea": {
       "id": "crea",
@@ -104278,7 +104308,19 @@
       },
       "triangles": 28434,
       "bytes": 409688,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "aafa3c0e296e9ed0",
+        "buildVersion": 2,
+        "bytes": 82244,
+        "triangles": 4747
+      },
+      "lod2": {
+        "sourceHash": "aafa3c0e296e9ed0",
+        "buildVersion": 6,
+        "bytes": 16992,
+        "triangles": 1037
+      }
     }
   }
 }

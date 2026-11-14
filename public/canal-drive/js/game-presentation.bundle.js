@@ -7886,6 +7886,54 @@
           preferDescription: true
         }
       ]
+    },
+    {
+      modelId: "universiteitstheater",
+      landmarkId: "extract_landmarks_511304045",
+      name: "Universiteitstheater",
+      description: "The Universiteitstheater is the University of Amsterdam's theatre at Nieuwe Doelenstraat 16, on the same street as the university's Institute for Theatre Studies. The street forms the south-east edge of the Binnengasthuis site, where a large part of the university is housed, and the theatre counts among the university buildings of the old-centre university quarter.",
+      funFact: "The Kloveniersdoelen, the civic guard hall where Rembrandt's Night Watch originally hung, stood on this same street, and Rembrandt himself once lived here.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Universiteitskwartier_(Amsterdam)"
+      ],
+      center: [
+        52.367991,
+        4.895077
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "perdu",
+      landmarkId: "perdu",
+      name: "Perdu",
+      description: "Perdu is a theatre, publisher and bookshop for experimental literature, poetry and performance. It started in 1984 as a small bookshop in De Pijp called De verloren tijd, took the name Perdu (French for 'lost') after moving to the Kerkstraat, and has been on the Kloveniersburgwal since 1995. Its hall is in the former kitchen building and nurses' house of the old Binnengasthuis hospital, built in 1908-09 in a style inspired by Berlage.",
+      funFact: "Because the hospital kitchen only needed the ground floor, the builders added two floors with fourteen single rooms for nurses so the canal front would not sit much lower than its neighbours; ANNO 1908 is set in a tile frieze over the door.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Perdu",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/518309"
+      ],
+      center: [
+        52.3688787,
+        4.8961414
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "crea",
+      landmarkId: "crea",
+      name: "CREA",
+      description: "CREA is the cultural student centre of the University of Amsterdam and the Amsterdam University of Applied Sciences, with courses in music, theatre, dance, visual art, video art, photography and literature, a theatre, a music hall and a busy student cafe. It moved here in January 2012 from the Binnengasthuis site, into the renovated works of the Diamantslijperij Maatschappij, whose name is still lettered over the door.",
+      funFact: "The Diamantslijperij Maatschappij, set up by Amsterdam jewellers in 1845, opened Amsterdam's first purpose-built steam diamond-cutting works here in 1846; by 1847 the complex had 280 cutting mills, when the whole city had about 600.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Stichting_CREA",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/monumenten/monumenten/5332e58d-3d90-42cb-adc1-f05d6320f2ba?_format=json"
+      ],
+      center: [
+        52.36320334,
+        4.91313921
+      ],
+      preferDescription: true
     }
   ];
 

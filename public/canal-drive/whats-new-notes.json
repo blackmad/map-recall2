@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Universiteitstheater, Perdu and CREA",
+      "text": "Three more cultural venues have their own models, measured from the street panoramas. The Universiteitstheater on the Amstel has its brick front with festoon reliefs and stone trim. Perdu, the poetry venue on the Kloveniersburgwal, is in its 1908 building with the ANNO 1908 frieze. CREA, the student cultural centre on the Nieuwe Achtergracht, is in the old diamond-polishing works, with its long brick fronts, arched windows and glass roof room. Each one has a card.",
+      "where": [
+        4.8977,
+        52.3672
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-venues-r4/rule10-ut-perdu-crea-sheet.jpg",
+          "alt": "Universiteitstheater, Perdu and CREA: photo, before and after",
+          "caption": "Photo | before | after"
+        },
+        {
+          "src": "landmarks/2026-11-14-venues-r4/crea-canal-front-photo-vs-model.jpg",
+          "alt": "CREA's canal front: photo beside the model",
+          "caption": "CREA, Nieuwe Achtergracht: photo | model"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Looking around loads what you see first",
       "text": "When you drag the map away from your bike, the city now builds what fills your screen first, biggest blocks first, instead of finishing the neighbourhood around the bike; the bike's neighbourhood stays loaded, so RE-CENTER doesn't rebuild it. On a fast connection the difference is small; slow fills on the live site are still being measured."
     },
