@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Café fronts glazed; signature awnings stop at corners (2026-11-14)
+
+This came from feedback 7be6c55a, about café Hendrix on the Bilderdijkkade / De Clercqstraat corner. Hendrix is an OSM `amenity=pub`, so it gets `shopBar`.
+- **Brown planks and opaque panes:** `bayTextures.ts` sent `shopBar` to a "brown café" painter. It drew untinted timber boards from about 1.7 m down to the pavement, with two small panes under a 30 % amber fill, which read as beige blanks.
+- **New front:** `brownCafeAt` draws a dark timber front glazed from a 0.72 m panelled stall riser to the head, with four panes, a transom and lamps behind the glass. It affects up to 648 `shopBar` pands.
+- **The "rod":** this was the signature slab in `threeBuildingMesh.ts`, 0.2 m thick and 0.95 m deep, inset a fixed 0.4 m on the nearest wall of any kind. It stood proud of Hendrix's 2.1 m chamfer.
+- **New awning:** `shopSignature.ts` draws a sloped canvas awning. It picks the nearest exposed street wall the way the chain fascia does, and stops at a turning neighbour wall, while walking past jogs under 0.5 m. Of 2,684 signature pands, 304 awnings are trimmed and 8 are dropped.
+- **Named regressions:** `shopSignature.test.ts` uses Hendrix's footprint. `brownCafe.test.ts` checks there are no planks, no amber and that the glass covers more than 45 % of the storey height.
+- **Rebake:** the world was recompiled because the baked coarse shells carried the old slab.
+- **Still open:** the awning colour is still the pale fallback where OSM gives none, and `?retailGround=1` draws this café worse (see TODO).
+
 ## D1 house tranches retired; rows first (2026-11-14)
 
 David rejected the D1 ring and belt results ("might as well be random", "where did the pointy roof come from here?", "why aren't we doing these along with neighbors?"). The Fable review (`docs/handoffs/house-rows-plan-20261114.md`) traced Kinkerstraat 86–110 and Weteringschans 168096–171218:
