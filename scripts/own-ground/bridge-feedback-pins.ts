@@ -76,6 +76,7 @@ export async function bridgeFeedbackRegressions(readExtract: Read, check: Check)
   }
   await lelylaanRegressions(readExtract, check);
   await f1bRegressions(readExtract, check);
+  await holeJunctionRegressions(readExtract, check);
 }
 
 /**
@@ -139,7 +140,7 @@ const CAP_STEPS: readonly { id: string; at: [number, number]; pinMinM: number }[
 ];
 const LELYLAAN_STREETS = { at: [4.842788, 52.356045] as [number, number], ids: ['OSM7382981', 'OSM7382983'], highM: 0.5, maxHigh: 0, pinMin: 50 };
 /** A cell's parapet lines per `${id}|${side}` (the level buildKit drew), the cell's input and its road index. */
-async function parapetLines(readExtract: Read, opts: Record<string, boolean>, at: [number, number], ids: readonly string[]) {
+export async function parapetLines(readExtract: Read, opts: Record<string, boolean>, at: [number, number], ids: readonly string[]) {
   const st = new GroundStore(readExtract, { roads: true, ...opts });
   await st.init();
   const [x, y] = toLocal(at[0], at[1]), key = st.cellAt(x, y);
@@ -189,7 +190,8 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
           const vx = pos[i], vy = pos[i + 1];
           if (vx < bx0 - 3 || vx > bx1 + 3 || vy < by0 - 3 || vy > by1 + 3) continue;
           const at = GroundSurface.locate(d, vx, vy);
-          if (!GroundSurface.inUnder(d, at.s) || at.lateral > at.halfWidth + 3) continue;
+          // inUnderStreets: the deck's own road carried on from its end at ground level is not under (holeCarried).
+          if (!GroundSurface.inUnderStreets(d, at.s, vx, vy) || at.lateral > at.halfWidth + 3) continue;
           // Ground streets only: 0.3 m clear of every deck-level survey polygon (their own vertices lie on the outline).
           if ([[0, 0], [0.3, 0], [-0.3, 0], [0, 0.3], [0, -0.3]].some(([ox, oy]) => index.onDeck(vx + ox, vy + oy))) continue;
           if (pos[i + 2] - st.surface.ground(vx, vy) > LELYLAAN_STREETS.highM) n++;
@@ -202,3 +204,77 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
   check(h <= LELYLAAN_STREETS.maxHigh, `Lelylaan streets under the Ringweg-West hole ranges (07ec0473): ${h} vertices more than ${LELYLAAN_STREETS.highM} m over the relief (<= ${LELYLAAN_STREETS.maxHigh})`);
   check(hBefore >= LELYLAAN_STREETS.pinMin, `Lelylaan: without holeStreets ${hBefore} vertices (>= ${LELYLAAN_STREETS.pinMin}, the pin is live)`);
 }
+
+/**
+ * Hole-deck junctions (lane f1b-jagged 2026-11-14; the user on F1b's Ringweg-Noord frame: "this is almost worse - before
+ * there was just a seam line, now there's jagged texture"). holeStreets draped every ground-level survey polygon in a way
+ * deck's hole range on the relief, the deck's own carriageway too where the survey draws it at ground level over the
+ * hole: it sank 2-5 m and the pale deck top showed through in a ragged shard at the deck end (bridgeGaps.ts
+ * holeCarry). Within the first JUNCTION_M of a hole range from its deck-end side, inside the deck's footprint (0.5 m in
+ * from its edge), clear of every deck-level survey polygon and off a median berm, at most `maxSunk` road-surface vertices
+ * lie more than JUNCTION_SUNK_M under the riding surface (the junction is continuous with the deck); `holeCarried: false`
+ * (main before this lane) puts the shard back.
+ */
+// OSM7376770 (the user's frame) carries no pinMin: its shard is a few long triangles that this metric reads as 1 vertex
+// and 0 m2 with or without holeCarried; its liveness is the frame pair (tests/e2e/f1b-jagged-frames.spec.ts).
+export const HOLE_JUNCTIONS: readonly { id: string; label: string; at: [number, number]; maxSunk: number; pinMin?: number; maxAreaM2?: number; pinMinAreaM2?: number }[] = [
+  { id: 'OSM7376770', label: 'Ringweg-Noord over the Noordhollandsch Kanaal, east deck end (user 2026-11-14)', at: [4.89927, 52.42386], maxSunk: 1 },
+  { id: 'OSM7376548', label: 'Ringweg-Noord, the next deck east (F1b frame)', at: [4.90762, 52.42066], maxSunk: 0, pinMin: 1, maxAreaM2: 25, pinMinAreaM2: 50 },
+  { id: 'OSM7377715', label: 'Coentunnelcircuit', at: [4.87538, 52.4176], maxSunk: 2, pinMin: 10 },
+  { id: 'OSM323258135', label: 'Jan Evertsenstraat over the Ringweg-West', at: [4.84791, 52.36977], maxSunk: 0, pinMin: 100 },
+];
+export const JUNCTION_M = 12, JUNCTION_SUNK_M = 0.3;
+const JUNCTION_LAYERS = ['asphalt', 'paving', 'klinker', 'brick', 'cycle', 'square'] as const;
+/** Road-surface vertices of a built cell sunk under the riding surface at a hole deck's junction (see HOLE_JUNCTIONS). */
+export function junctionSunk(st: GroundStore, cell: ReturnType<typeof buildCell>, index: RoadIndex, d: GroundStore['surface']['decks'][number]): { n: number; maxM: number; areaM2: number } {
+  const p = d.profile, [bx0, by0, bx1, by1] = p.bbox;
+  // The first JUNCTION_M of each hole range from its deck-end side (the deck may run on past it).
+  const zones = (p.under ?? []).map(([a, b]): [number, number] => (Math.abs(a - p.deck[0]) <= Math.abs(b - p.deck[1]) ? [a, a + JUNCTION_M] : [b - JUNCTION_M, b]));
+  // In the junction zone, inside the footprint, off deck-level polygons and median berms, sunk more than JUNCTION_SUNK_M.
+  const sunkAt = (x: number, y: number, z: number, probe: boolean): number => {
+    if (x < bx0 || x > bx1 || y < by0 || y > by1) return 0;
+    const at = GroundSurface.locate(d, x, y);
+    if (!zones.some(([a, b]) => at.s >= a && at.s <= b) || at.lateral > at.halfWidth - 0.5) return 0;
+    if ((probe ? [[0, 0], [0.3, 0], [-0.3, 0], [0, 0.3], [0, -0.3]] : [[0, 0]]).some(([ox, oy]) => index.onDeck(x + ox, y + oy))) return 0;
+    // A median berm between a bundled deck's carriageways lies under the deck top (medianEdges): not the junction.
+    if (index.classAt(x, y) === 'berm') return 0;
+    const sunk = st.surface.height(x, y) - z;
+    return sunk > JUNCTION_SUNK_M ? sunk : 0;
+  };
+  let n = 0, maxM = 0, areaM2 = 0;
+  for (const layer of JUNCTION_LAYERS) {
+    const g = cell.layers[layer], pos = g?.positions, ix = g?.indices;
+    if (!pos) continue;
+    for (let i = 0; i < pos.length; i += 3) {
+      const sunk = sunkAt(pos[i], pos[i + 1], pos[i + 2], true);
+      if (sunk) { n++; maxM = Math.max(maxM, sunk); }
+    }
+    // The shard is a few long triangles: their area, sampled at the centroid, reads it where a vertex count does not.
+    if (ix) for (let t = 0; t < ix.length; t += 3) {
+      const a = ix[t] * 3, b = ix[t + 1] * 3, c = ix[t + 2] * 3;
+      if (!sunkAt((pos[a] + pos[b] + pos[c]) / 3, (pos[a + 1] + pos[b + 1] + pos[c + 1]) / 3, (pos[a + 2] + pos[b + 2] + pos[c + 2]) / 3, false)) continue;
+      areaM2 += Math.abs((pos[b] - pos[a]) * (pos[c + 1] - pos[a + 1]) - (pos[c] - pos[a]) * (pos[b + 1] - pos[a + 1])) / 2;
+    }
+  }
+  return { n, maxM, areaM2 };
+}
+/** junctionSunk at a pinned deck, in a store with `opts`; null: no such deck. */
+export async function holeJunctionSunk(readExtract: Read, opts: Record<string, boolean>, reg: (typeof HOLE_JUNCTIONS)[number]): Promise<{ n: number; maxM: number; areaM2: number } | null> {
+  const { st, cell, index } = await parapetLines(readExtract, opts, reg.at, []);
+  const d = st.surface.decks.find(q => q.profile.id === reg.id && q.profile.under);
+  return d ? junctionSunk(st, cell, index, d) : null;
+}
+export async function holeJunctionRegressions(readExtract: Read, check: Check): Promise<void> {
+  for (const reg of HOLE_JUNCTIONS) {
+    const r = await holeJunctionSunk(readExtract, {}, reg);
+    if (!r) { check(false, `${reg.id} (${reg.label}): no hole deck placed`); continue; }
+    check(r.n <= reg.maxSunk, `${reg.id} (${reg.label}): ${r.n} road vertices within ${JUNCTION_M} m of the deck end more than ${JUNCTION_SUNK_M} m under the deck (<= ${reg.maxSunk}${r.n ? `, worst ${r.maxM.toFixed(2)} m` : ''})`);
+    if (reg.maxAreaM2 !== undefined) check(r.areaM2 <= reg.maxAreaM2, `${reg.id}: ${r.areaM2.toFixed(1)} m2 of sunk road triangles at the junction (<= ${reg.maxAreaM2})`);
+    if (reg.pinMin !== undefined || reg.pinMinAreaM2 !== undefined) {
+      const was = await holeJunctionSunk(readExtract, { holeCarried: false }, reg);
+      if (reg.pinMin !== undefined) check(!!was && was.n >= reg.pinMin, `${reg.id}: without holeCarried ${was?.n ?? 'no deck'} vertices${was?.n ? ` (worst ${was.maxM.toFixed(2)} m)` : ''} (>= ${reg.pinMin}, the pin is live)`);
+      if (reg.pinMinAreaM2 !== undefined) check(!!was && was.areaM2 >= reg.pinMinAreaM2, `${reg.id}: without holeCarried ${was?.areaM2.toFixed(1)} m2 (>= ${reg.pinMinAreaM2}, the pin is live)`);
+    }
+  }
+}
+

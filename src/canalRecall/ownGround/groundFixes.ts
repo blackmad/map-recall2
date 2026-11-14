@@ -32,6 +32,8 @@ export const GROUND_FIXES = [
   'capSmooth',
   /** Lane F1b 2026-11-14: streets under a way deck's hole ranges drape on the relief, not the deck's lift (surface.ts streetHeight), the Lelylaan cycle path. */
   'holeStreets',
+  /** Lane f1b-jagged 2026-11-14: holeStreets leaves the deck's own road alone where the survey draws it at ground level over the hole (bridgeGaps.ts holeCarry), Ringweg-Noord. */
+  'holeCarried',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;
