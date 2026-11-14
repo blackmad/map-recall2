@@ -96307,7 +96307,19 @@
       },
       "triangles": 5936,
       "bytes": 96072,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "21f09645ab843ca1",
+        "buildVersion": 2,
+        "bytes": 44548,
+        "triangles": 2089
+      },
+      "lod2": {
+        "sourceHash": "21f09645ab843ca1",
+        "buildVersion": 6,
+        "bytes": 13760,
+        "triangles": 590
+      }
     },
     "de-rede": {
       "id": "de-rede",
@@ -96489,7 +96501,19 @@
       },
       "triangles": 3562,
       "bytes": 61280,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "462b2cbcbb31d51e",
+        "buildVersion": 2,
+        "bytes": 33208,
+        "triangles": 990
+      },
+      "lod2": {
+        "sourceHash": "462b2cbcbb31d51e",
+        "buildVersion": 6,
+        "bytes": 8136,
+        "triangles": 212
+      }
     },
     "oba-spaarndammerbuurt": {
       "id": "oba-spaarndammerbuurt",
@@ -96687,7 +96711,19 @@
       },
       "triangles": 7609,
       "bytes": 112504,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "3fca7f907559e184",
+        "buildVersion": 2,
+        "bytes": 29160,
+        "triangles": 1019
+      },
+      "lod2": {
+        "sourceHash": "3fca7f907559e184",
+        "buildVersion": 6,
+        "bytes": 6936,
+        "triangles": 180
+      }
     },
     "pont-13": {
       "id": "pont-13",
@@ -96923,7 +96959,13 @@
       },
       "triangles": 1880,
       "bytes": 37060,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "fbc030e48082fc64",
+        "buildVersion": 6,
+        "bytes": 4476,
+        "triangles": 50
+      }
     }
   }
 }
