@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012181745",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181745.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "arched",
+ "heads": [
+  "round",
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "dormers",
+  "sameAs",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall stone dormer aedicule with an arched window, a cornice and a flagpole over the middle bay"
+  },
+  {
+   "component": "window",
+   "what": "balustraded stone panels under every window"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

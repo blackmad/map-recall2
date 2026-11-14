@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012164915",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164915.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "central hoist dormer with a hoist beam"
+  }
+ ],
+ "notes": "A car and blurred objects cover part of the shopfront; glare streak across the top storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

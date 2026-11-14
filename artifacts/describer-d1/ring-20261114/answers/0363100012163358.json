@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012163358",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163358.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis has white stucco surrounds with round-arched heads and iron balconettes on storeys 1 and 2"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is pale stucco with a pair of street doors side by side under arched fanlights"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012235951",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235951.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "round",
+  "round",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "windowSurround",
+  "cornice",
+  "dormers",
+  "bays",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber oriel rises through three storeys on the canted corner"
+  },
+  {
+   "component": "roof",
+   "what": "a low balustrade runs along the roof edge between the dormers"
+  },
+  {
+   "component": "window",
+   "what": "round-arched window heads on the first and second floors are picked out in light arch rings joined by light impost bands"
+  }
+ ],
+ "notes": "Corner building seen at an angle; the long side is described; a tree crosses the right corner.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

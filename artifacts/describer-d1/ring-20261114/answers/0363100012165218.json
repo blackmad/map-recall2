@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012165218",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165218.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small dark iron anchor ornaments between the windows"
+  }
+ ],
+ "notes": "One cornice runs over three fronts; this middle part has two axes. A car hides the base of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

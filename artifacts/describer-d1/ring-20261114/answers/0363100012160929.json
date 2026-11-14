@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012160929",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160929.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "sameAs",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a small iron balconette at the middle window of the top storey"
+  },
+  {
+   "component": "window",
+   "what": "segmental window heads, each with a small white keystone ornament above"
+  }
+ ],
+ "notes": "A passing tram hides everything below the second visible row of windows, so the storey count and ground storey cannot be read.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

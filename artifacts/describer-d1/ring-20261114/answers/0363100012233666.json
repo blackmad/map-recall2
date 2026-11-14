@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012233666",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233666.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "balconies",
+  "bayWindow",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "wide shallow bay windows with curved ends stacked at the corner on the upper storeys"
+  },
+  {
+   "component": "window",
+   "what": "the top storey has smaller, lower windows than the storeys below"
+  }
+ ],
+ "notes": "1930s yellow-brick corner block seen at a sharp angle; the far part of the front is foreshortened and behind a tree, so the axes cannot be counted.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

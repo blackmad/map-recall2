@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172643",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172643.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 1,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "balconies",
+  "sills",
+  "doorBay",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone quoin pilasters frame the bay, with carved panels under the windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a mansard dormer with a round-arched pediment and finial"
+  }
+ ],
+ "notes": "The outline covers the one-bay left pavilion of a larger villa-like front set behind a garden fence; the street door is in the next part to the right.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

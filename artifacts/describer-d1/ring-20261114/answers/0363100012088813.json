@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012088813",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088813.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  4,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "balconies",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an open stone stair under a round brick arch rises from the pavement to the first floor"
+  },
+  {
+   "component": "window",
+   "what": "a gridded window pair in the gable attic"
+  }
+ ],
+ "notes": "A bare tree in front of the middle axis hides details of the windows and balconies.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012236830",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236830.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "dormers",
+  "cornice",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a row of small roof windows in the mansard beside the gabled dormer"
+  }
+ ],
+ "notes": "The outline spans two three-bay units of a uniform block; described one. A tram shelter hides the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

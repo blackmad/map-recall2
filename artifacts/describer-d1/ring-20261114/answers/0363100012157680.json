@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012157680",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157680.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "bands",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconettes on dark console brackets over the middle bay at rows 1 and 2"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a point gable edged in white with two round oculi beside the attic window"
+  },
+  {
+   "component": "window",
+   "what": "decorated tympanum fills in the round window heads"
+  }
+ ],
+ "notes": "The gable edges are stepped by small white blocks.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

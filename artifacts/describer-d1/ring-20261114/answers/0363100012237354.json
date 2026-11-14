@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012237354",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237354.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "windowSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the right axis sits in a pale stucco panel with a moulded frame while the two left axes are in bare brick"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark fascia and a black framed shop window with a separate street door at the right"
+  }
+ ],
+ "notes": "The outline's right edge cuts through the third axis and the dormer, so the front's width is uncertain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

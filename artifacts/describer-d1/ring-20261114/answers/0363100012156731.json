@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012156731",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156731.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "t-window",
+ "heads": [
+  "mixed",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "stoop",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "heads",
+  "windowSurround",
+  "cornice",
+  "basement",
+  "pale",
+  "dormers",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a stone-faced centre section with pilasters and balustraded balconies between brick wings framed by stone pilaster strips"
+  },
+  {
+   "component": "door",
+   "what": "a large round-arched stone entrance with steps up, two arched doors inside"
+  },
+  {
+   "component": "shopfront",
+   "what": "a row of tall narrow arched transom lights over the shop window"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented stone dormer with two arched windows on the mansard"
+  }
+ ],
+ "notes": "The outline covers part of a larger symmetrical building (stone centre, brick wings); a van hides the ground storey's lower part.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

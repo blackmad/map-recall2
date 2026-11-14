@@ -1,0 +1,122 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012161535",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "souterrain": false,
+    "readBalconies": [
+     1,
+     2,
+     3
+    ],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false,
+    "rowHeads": [
+     "flat",
+     "flat",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3a3937"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a flat-topped raised attic front with two windows stands over the middle and right bays above the cornice line, a tiled roof slope beside it"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of iron balconettes in front of French windows in the middle bay"
+  }
+ ]
+}

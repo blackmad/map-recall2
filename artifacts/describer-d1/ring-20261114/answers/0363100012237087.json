@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012237087",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237087.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "ground",
+  "doorSurround",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "grey stone-clad ground storey with a row of small transom lights over the door and windows"
+  }
+ ],
+ "notes": "The outline also takes in a narrow one-bay strip with a white door to the left; described the larger step-gabled two-bay front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

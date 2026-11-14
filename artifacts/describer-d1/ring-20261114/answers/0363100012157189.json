@@ -1,0 +1,85 @@
+{
+ "v": 1,
+ "pandId": "0363100012157189",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157189.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "basement",
+  "dormers",
+  "sameAs",
+  "whiteFrames",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone balcony with turned balusters on consoles spanning the two left bays of the first floor"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks alternating with the brick along jambs and segmental arches"
+  },
+  {
+   "component": "door",
+   "what": "round-arched doorway with block voussoirs at the right"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer and a wider dormer with paired round-arched lights in the slate mansard"
+  }
+ ],
+ "notes": "A van and a car hide the foot of the ground storey, the stoop and the souterrain.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

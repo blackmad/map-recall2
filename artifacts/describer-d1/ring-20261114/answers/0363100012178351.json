@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012178351",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012178351.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 0,
+ "columns": [
+  3
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white-framed shop storey with rows of transom lights between pilasters, under a tall blank brick wall with a metal-clad parapet"
+  }
+ ],
+ "notes": "The upper wall has no openings, so it is counted as part of a one-storey shop front.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

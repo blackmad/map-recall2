@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012089902",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012089902.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  4,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "mixed",
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "doorBay",
+  "sameAs",
+  "mirrored",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an open round-arched portal at the right with a straight stair rising inside to the upper floors"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balconettes on stone consoles in the centre bay on each upper storey"
+  }
+ ],
+ "notes": "The outline takes in the arched stair portal and the round-arched window over it at the right edge.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

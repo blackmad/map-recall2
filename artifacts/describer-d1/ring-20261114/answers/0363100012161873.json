@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012161873",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161873.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "raised-neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "cornice",
+  "doorBay",
+  "bands",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a narrow raised attic front over the middle bay with one window, flanked by tiled roof slopes"
+  },
+  {
+   "component": "shopfront",
+   "what": "an old timber shopfront with a lettered fascia and a row of stained-glass transom lights"
+  }
+ ],
+ "notes": "A street tree trunk and branches hide the right bay and much of the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

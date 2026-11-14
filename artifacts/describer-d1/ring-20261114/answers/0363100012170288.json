@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "pandId": "0363100012170288",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170288.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 5,
+ "columns": [
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "pale",
+  "finish",
+  "windowSurround",
+  "dormers",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "richly carved stone ground storey with pilasters and ornamented spandrels round the arched windows and door"
+  },
+  {
+   "component": "window",
+   "what": "upper windows in cream stucco frames with scrolled pediments and cartouches against a dark wall"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a balustraded attic over the cornice with a carved central crest piece"
+  },
+  {
+   "component": "balcony",
+   "what": "a stone balcony on the first floor and an iron balconette on the second, both on the middle axis"
+  }
+ ],
+ "notes": "A tree covers the right edge of the upper storeys.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

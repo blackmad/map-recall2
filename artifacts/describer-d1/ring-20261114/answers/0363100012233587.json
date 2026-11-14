@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012233587",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233587.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "crown",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each upper storey has two groups of a wide window between two narrow lights, the groups split by a brick pier"
+  },
+  {
+   "component": "dormer",
+   "what": "one wide dormer across the roof with two small-paned window groups"
+  }
+ ],
+ "notes": "Parked cars hide the bottom of the shopfront.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

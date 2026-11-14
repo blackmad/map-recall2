@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012078552",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012078552.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "doorBay",
+  "sameAs",
+  "mirrored",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one long flat-roofed dormer with four lights spans the front"
+  }
+ ],
+ "notes": "The outline covers two fronts: the left one (described, four storeys, two axes, balconies) and the right one, a taller front with five storeys, round-arched top windows and two arched street doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012165678",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165678.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "cornice",
+  "doorBay",
+  "finish",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "one wide paired window per storey, the ground one under a large segmental arch"
+  }
+ ],
+ "notes": "The outline also takes in the neighbour's door strip at the left; the dark wall is read as the front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

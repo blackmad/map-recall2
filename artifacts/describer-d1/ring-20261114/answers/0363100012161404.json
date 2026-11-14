@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012161404",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161404.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "pale",
+  "finish",
+  "dormers",
+  "mirrored",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each window sits in a dark painted panel between light stucco pilasters and bands, a two-tone grid front"
+  }
+ ],
+ "notes": "Dusk light; middle front of a series of the same design.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

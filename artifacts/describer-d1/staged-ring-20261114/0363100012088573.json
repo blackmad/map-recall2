@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012088573",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2,
+    "bands": "courses",
+    "cornice": "none",
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#353331"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "the right bay has wide segmental-headed windows of a door pair with side lights under a small-paned top light, with balconies"
+  }
+ ]
+}

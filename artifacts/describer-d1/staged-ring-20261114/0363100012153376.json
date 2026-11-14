@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012153376",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "storey",
+    "souterrain": false,
+    "readBalconies": [
+     1,
+     2
+    ],
+    "readDormers": {
+     "count": 2,
+     "kind": "gabled"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3b342f"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling"
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "a tall brick wall dormer with a pointed gable rising from the front plane over the right bay, with a round-arched brick niche and carved console figures over the third-floor window below it"
+  },
+  {
+   "component": "window",
+   "what": "white stone blocks at the springing and keystone of each segmental brick arch and white blocks along the jambs"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the middle window of the first and second floors"
+  },
+  {
+   "component": "relief",
+   "what": "a row of white blocks like a dentil course under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a pair of varnished panelled doors under small-paned transom lights"
+  }
+ ]
+}

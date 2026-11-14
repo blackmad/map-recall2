@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012170539",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170539.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "off-centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "heads",
+  "sills",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a curved segmental pediment over the centre bays crowns the cornice, holding one attic window"
+  },
+  {
+   "component": "balcony",
+   "what": "balustraded stone balcony across the two centre bays on the first floor, carried on consoles over the door"
+  },
+  {
+   "component": "relief",
+   "what": "ornate stucco hoods, cartouches and garlands over the window heads"
+  }
+ ],
+ "notes": "Purple-painted joinery; a small window in the frieze under the pediment is not counted as a storey.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

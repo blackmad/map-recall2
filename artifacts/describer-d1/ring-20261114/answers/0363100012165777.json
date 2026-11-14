@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012165777",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165777.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "segmental arches with a patterned brick tympanum over each window"
+  },
+  {
+   "component": "balcony",
+   "what": "the centre axis is a French door with an iron balconette on every upper storey"
+  }
+ ],
+ "notes": "A tram shelter and blurred figures hide most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

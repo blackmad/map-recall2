@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012181366",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181366.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "round",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "ground",
+  "heads",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the parapet is pierced by a row of small round-headed openings between chimney-like piers"
+  },
+  {
+   "component": "window",
+   "what": "the middle top window is one wide round-arched opening with small-paned upper lights"
+  }
+ ],
+ "notes": "The outline also takes in a strip of the modern brick office block to the right; described the dark painted Jugendstil front that fills most of it. A tree crosses the middle bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

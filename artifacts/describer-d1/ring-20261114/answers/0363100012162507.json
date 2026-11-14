@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012162507",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162507.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "doorBay",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "dormer with scrolled sides and a hoist beam"
+  }
+ ],
+ "notes": "A lamp post stands in front of the right bay; a blurred person hides part of the shopfront.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012164734",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164734.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "sameAs",
+  "windows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white headers dotted over every window and round the arched door, white rosette dots between the windows on the black wall"
+  },
+  {
+   "component": "window",
+   "what": "the lower two storeys have windows split by a white transom band into a large upper light and a short lower light"
+  }
+ ],
+ "notes": "A parked car covers the souterrain windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

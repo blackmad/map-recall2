@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012163745",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163745.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

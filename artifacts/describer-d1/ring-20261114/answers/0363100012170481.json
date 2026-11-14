@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012170481",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170481.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "cornice",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light stone pilaster strips and a frieze band frame the brick wall under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "central stone attic dormer with a curved top and a small round window"
+  }
+ ],
+ "notes": "A tram hides everything below the top window row.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

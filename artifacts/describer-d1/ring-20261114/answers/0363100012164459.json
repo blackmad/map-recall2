@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012164459",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164459.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.souterrain",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white scalloped panels under the two large ground-storey windows"
+  },
+  {
+   "component": "balcony",
+   "what": "an iron balconette on two large stone consoles in front of the storey-1 centre window"
+  }
+ ],
+ "notes": "A parked car hides the souterrain windows partly.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

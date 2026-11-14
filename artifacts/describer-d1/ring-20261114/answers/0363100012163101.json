@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012163101",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163101.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "very tall first-floor French windows with low cast-iron guards across their feet"
+  },
+  {
+   "component": "window",
+   "what": "small carved brick or stucco hood ornaments over each first and second floor window"
+  },
+  {
+   "component": "wall",
+   "what": "the ground storey is faced in grey stone with two barred windows and a carved timber door at street level"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped dormer with a hoist beam over the middle bay"
+  }
+ ],
+ "notes": "A plain dark brick front between two richly banded neighbours.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

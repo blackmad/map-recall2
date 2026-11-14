@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012237372",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237372.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bands",
+  "doorBay",
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white two-storey erker in the middle between the two gabled halves, over an arched gateway passage"
+  },
+  {
+   "component": "window",
+   "what": "white block voussoirs in the brick over each segmental head"
+  }
+ ],
+ "notes": "The outline holds a symmetric double front with two point gables and a central gateway; described the left half. Low ground storey with a shop and doors may be a half-sunk storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

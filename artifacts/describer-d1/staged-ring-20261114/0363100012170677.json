@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012170677",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "bands": "courses",
+    "gable": "cornice",
+    "readDormers": {
+     "count": 1,
+     "kind": "plain"
+    },
+    "storeys": 4
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3b362b"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "twin:0363100012180964",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "the single left axis rises one storey above the main cornice as a small tower bay with its own bracketed cornice"
+  }
+ ]
+}

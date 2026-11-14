@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012156799",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156799.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "cornice",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "white dormer with a hoist beam in the mansard"
+  }
+ ],
+ "notes": "Two street doors side by side under one toplight at the right; a lamp post crosses the left axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

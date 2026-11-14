@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012170681",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170681.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "sameAs",
+  "doorBay",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies on carved stone consoles in front of the paired windows on the first and second floors"
+  }
+ ],
+ "notes": "The outline spans a four-storey front with paired windows (described) and, at the right, part of a taller five-storey front with an arched double door; a lamp post covers the paired axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

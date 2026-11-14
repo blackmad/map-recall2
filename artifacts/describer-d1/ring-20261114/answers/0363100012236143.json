@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012236143",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236143.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-1-over-1",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "doorSurround",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved light stone panels under the windows of the ground and first storeys"
+  },
+  {
+   "component": "door",
+   "what": "a second street door into the souterrain in the grey stone plinth, beside an arched souterrain window"
+  },
+  {
+   "component": "roof",
+   "what": "a glazed set-back roof storey above the cornice"
+  }
+ ],
+ "notes": "Light stone pilaster strips and courses frame the bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012153560",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153560.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "bands",
+  "windowSurround",
+  "sameAs",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors and white springing blocks round every arch"
+  }
+ ],
+ "notes": "The outline crosses a drainpipe into the next front (with a shop and patterned arch tympana); a blurred box hides part of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

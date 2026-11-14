@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012235938",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "shouldered",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "cornice",
+  "bands",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white ornamented two-storey bay window on the centre axis with a small pediment between its storeys, carrying a balconette above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a raised brick attic gable with white pinnacle panels at both shoulders and a central window with a balconette"
+  },
+  {
+   "component": "relief",
+   "what": "white carved panels under the side windows of the first and second floors"
+  }
+ ],
+ "notes": "Butcher shopfront behind a tram shelter; the door is not readable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

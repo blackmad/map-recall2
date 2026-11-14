@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012170545",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170545.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "casement-toplight"
+ },
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "storeyWindows",
+  "doorSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small stucco shell ornaments over the window heads"
+  }
+ ],
+ "notes": "A tree crosses the left bay; bicycles hide the souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

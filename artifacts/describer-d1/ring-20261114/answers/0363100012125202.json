@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012125202",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012125202.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "storeyParts.roof",
+  "sameAs",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a raised brick roof storey with two round-arched windows over the right half, a mansard with one dormer over the left half"
+  },
+  {
+   "component": "shopfront",
+   "what": "a modern dark stone-clad shop ground storey with a large red sign"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

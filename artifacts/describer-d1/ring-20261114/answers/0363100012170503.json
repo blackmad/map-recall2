@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012170503",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170503.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 7,
+ "columns": [
+  7,
+  7,
+  7
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 3,
+ "groundBays": 7,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "dormers",
+  "heads",
+  "bands",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "moulded stucco surrounds with small ornamental crests over each window head"
+  },
+  {
+   "component": "balcony",
+   "what": "two short balconies with balustrades on the first floor, each spanning two bays"
+  }
+ ],
+ "notes": "Wide stucco front of seven bays with two street doors; a street tree hides part of the left bays.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

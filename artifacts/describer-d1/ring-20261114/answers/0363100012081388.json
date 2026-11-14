@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012081388",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012081388.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "dentil-lintel",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "doorBay",
+  "crown",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white ornamental wall dormer with curved shoulders on a hipped tiled roof"
+  },
+  {
+   "component": "door",
+   "what": "the street door sits on the canted corner beside this front"
+  }
+ ],
+ "notes": "Low corner house; the door is on the cut corner just right of the outline.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

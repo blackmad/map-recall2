@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012165859",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165859.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "doorBay",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a wide iron balcony across both bays on large stone consoles at the first floor"
+  },
+  {
+   "component": "relief",
+   "what": "white stone block quoins at the corners and alternating white blocks round every window"
+  },
+  {
+   "component": "dormer",
+   "what": "an ornate stone dormer with a pediment and finial over the cornice"
+  }
+ ],
+ "notes": "The outline also takes in one narrow plain-brick bay with a door at the right that belongs to the next building; described the larger two-bay front with white block dressings.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

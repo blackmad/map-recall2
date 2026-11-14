@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012166292",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166292.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": "not-visible",
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "brick wall dormer with a round-arched window and a small stepped gable top"
+  },
+  {
+   "component": "window",
+   "what": "decorative brick tympanum fields in the segmental arches over the windows"
+  }
+ ],
+ "notes": "A site container, a portable toilet and a lamp post hide most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

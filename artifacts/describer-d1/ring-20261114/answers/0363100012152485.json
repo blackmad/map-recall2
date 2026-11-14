@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012152485",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152485.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a two-storey timber oriel with pale panels stands on a console hood over the wide first-floor window of the right bay"
+  },
+  {
+   "component": "window",
+   "what": "the first-floor right window is a wide segmental-arched triple window"
+  }
+ ],
+ "notes": "A tree trunk crosses the left bay; the windows remain readable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

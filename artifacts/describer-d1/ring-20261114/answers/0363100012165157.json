@@ -1,0 +1,83 @@
+{
+ "v": 1,
+ "pandId": "0363100012165157",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165157.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "extent",
+  "bays",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a white stone block over the middle of each flat window head, on white bands at head and sill height"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of iron balconies on slender brackets in the left bay of the first, second and third floors"
+  },
+  {
+   "component": "door",
+   "what": "a pair of dark street doors under a round-arched transom with a white keystone"
+  }
+ ],
+ "notes": "The outline straddles the right end of a wider banded block (two bays and its arched door) and the left bays of the next house with a grey stone souterrain; described the block end, which takes the larger share.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012157625",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157625.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "sills",
+  "doorBay",
+  "storeyParts.souterrain",
+  "ground",
+  "basement",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first-storey windows carry pediment-like hood mouldings and the second-storey windows have eared stucco frames, with dark wall panels between them"
+  },
+  {
+   "component": "balcony",
+   "what": "the middle first-storey window has a stone balustrade balconette"
+  }
+ ],
+ "notes": "A traffic-light pole hides the middle bay; the ground storey is rusticated stucco over low basement windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

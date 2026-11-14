@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012101090",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012101090.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the segmental brick arches over the upper windows hold decorated light tympana"
+  },
+  {
+   "component": "balcony",
+   "what": "the middle bay has small projecting iron balconies with ornate railings on the second and third storeys"
+  }
+ ],
+ "notes": "The crown stands above the outline but is in the image: a shaped gable with a round-headed attic window, partly blurred by lens drops.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

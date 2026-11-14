@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012157803",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157803.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  2,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sameAs",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white dormer with a scrolled bell-shaped top and a finial"
+  }
+ ],
+ "notes": "One narrow house at the end of a long two-storey row under one tiled roof; a car hides the bottom of the ground storey.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

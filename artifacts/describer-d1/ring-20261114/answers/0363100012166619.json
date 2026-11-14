@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012166619",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166619.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-triple",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "bands",
+  "cornice",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "red-painted joinery; storeys below the top have a grouped three-light window around a balconette door beside one single window; the top storey has a paired window between two singles"
+  },
+  {
+   "component": "relief",
+   "what": "brick segmental relieving arches of radiating headers over every window group"
+  }
+ ],
+ "notes": "A bus shelter with an advert hides the ground storey and most of the first floor, so the storey count is not read; rows indexed assuming one shop ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012077976",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012077976.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "whiteFrames",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer rising out of the front over the centre axis, beside two flat roof windows"
+  }
+ ],
+ "notes": "A parked van hides the ground storey below the shop fascia.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

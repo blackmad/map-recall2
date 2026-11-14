@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012233488",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233488.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "one wide dormer with three windows set in the roof behind a white cornice"
+  }
+ ],
+ "notes": "Outline covers two fronts: a narrower front with a stair, oriels and a small gable on the left and a plainer three-bay front on the right (described). A van hides the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

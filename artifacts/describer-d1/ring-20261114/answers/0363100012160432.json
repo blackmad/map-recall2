@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012160432",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160432.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "heads",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors between the windows"
+  }
+ ],
+ "notes": "A bus hides the ground storey; the outline crosses a drainpipe into the next front, which has white bands.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

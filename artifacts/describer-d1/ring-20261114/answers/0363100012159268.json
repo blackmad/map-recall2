@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012159268",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159268.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "arched",
+ "heads": [
+  "flat",
+  "round",
+  "round",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "crown",
+  "windowSurround",
+  "doorBay",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the right bay rises into a narrow pointed gable with a finial and paired windows over the cornice line"
+  },
+  {
+   "component": "window",
+   "what": "wide round-arched windows with small-paned arched heads beside paired narrow arched windows"
+  }
+ ],
+ "notes": "A corner block; the right narrow gabled bay may be a separate front. A lamp post and tree cross the middle.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

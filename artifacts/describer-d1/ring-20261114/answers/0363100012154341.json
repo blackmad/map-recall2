@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012154341",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012154341.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "mirrored",
+  "dormers",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small white triangular pediments over the second-storey windows"
+  },
+  {
+   "component": "window",
+   "what": "first-storey windows under round arches with white ornamented tympana and keystones"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with round-arched windows straddling the party wall with the left neighbour"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

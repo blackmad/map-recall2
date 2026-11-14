@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012159386",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159386.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a low iron railing encloses a narrow front strip before the ground storey"
+  }
+ ],
+ "notes": "Dull light; a lamp post stands in front of the door bay.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

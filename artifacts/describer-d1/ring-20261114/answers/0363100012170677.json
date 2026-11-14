@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012170677",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170677.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "storeyParts.roof",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the single left axis rises one storey above the main cornice as a small tower bay with its own bracketed cornice"
+  }
+ ],
+ "notes": "A tram hides the ground storey and most of the first storey, so the storey count and ground are not readable.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

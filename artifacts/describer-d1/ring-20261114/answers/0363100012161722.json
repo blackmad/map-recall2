@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012161722",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161722.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "two-light",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "bands",
+  "storeyParts.full",
+  "cornice",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-floor windows carry small pediments; two central axes on the lower floors are white blind panels"
+  },
+  {
+   "component": "relief",
+   "what": "white corner pilasters and a name panel 'Magazijn De Amstel' on the crown"
+  },
+  {
+   "component": "shopfront",
+   "what": "café front with white pilasters and a small pediment over the corner entrance"
+  }
+ ],
+ "notes": "The outline spans the corner building, a narrow black-painted house and part of a red brick gable house; described the corner building. Its top row has only two central windows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

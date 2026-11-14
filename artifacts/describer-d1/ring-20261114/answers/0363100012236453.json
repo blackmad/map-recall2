@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012236453",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236453.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "cornice",
+  "dormers",
+  "sameAs",
+  "whiteFrames",
+  "storeyParts.full"
+ ],
+ "gaps": [],
+ "notes": "The outline spans a three-axis step-gabled front at the left and a six-axis cornice front (likely two three-axis houses under one cornice); described one three-axis house of the cornice front. Wide low-resolution image; a tram shelter hides the ground storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

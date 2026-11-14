@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012156233",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156233.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "crown",
+  "dormers",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber erker on the middle axis spanning the first and second floors with a balcony on its roof"
+  },
+  {
+   "component": "window",
+   "what": "white blocks at the head corners of the windows and red brick pilaster strips between dark brick"
+  }
+ ],
+ "notes": "Seen at a steep angle; a blurred figure stands in front of the shop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012155538",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155538.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windows",
+  "columns",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a cream two-storey erker on the centre axis on a corbelled base, carrying a balcony at the third storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a curved gable with a small stepped top and a finial, holding a wide arched attic window"
+  }
+ ],
+ "notes": "A tram shelter hides most of the ground storey; only a door with an arched fanlight at the left shows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

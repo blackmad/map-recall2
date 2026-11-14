@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012235894",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235894.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bands",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white timber shopfront with a tall glazed upper band over the shop fascia, doors at both ends"
+  },
+  {
+   "component": "dormer",
+   "what": "a raised brick wall dormer stands over the shared party line between the two fronts"
+  }
+ ],
+ "notes": "The outline covers two mirrored three-bay fronts (nos. 25 and 27) over one shopfront; the left one is described. The glazed band over the fascia is counted as a storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012106563",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012106563.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "bayWindow",
+  "sills",
+  "dormers",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a shallow canted bay rises through all upper storeys on the left axis and ends in a curved balcony with a pedimented dormer above the eaves"
+  }
+ ],
+ "notes": "The left axis is a full-height canted bay; the rest is two flat axes under a mansard roof.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

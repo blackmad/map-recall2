@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012164219",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164219.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white stone blocks at the springing and crown of each brick arch, a keystone plus springer blocks"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark painted shopfront with a script fascia sign and a round porthole window"
+  }
+ ],
+ "notes": "Strong sun glare on the right; the top edge is a plain parapet with a thin cap.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

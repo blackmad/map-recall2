@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012166307",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166307.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "lintel",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "columns",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "relieving arches over the upper windows have white voussoir blocks and a patterned brick tympanum"
+  },
+  {
+   "component": "shopfront",
+   "what": "a timber shopfront between pilasters with anchor-shaped console blocks under the fascia"
+  }
+ ],
+ "notes": "A bare tree in front of the middle hides the gable and the window details.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

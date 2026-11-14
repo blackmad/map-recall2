@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012152559",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152559.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "storeyParts.full",
+  "storeyParts.roof",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [],
+ "notes": "The outline holds a dark painted two-bay front and the left half of the white stucco front beside it (round windows, arched stoop entrance, a large dormer); the dark front is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

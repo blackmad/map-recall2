@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012075747",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012075747.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "crown",
+  "cornice",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with a curved neck-like gable top over the balcony axis"
+  }
+ ],
+ "notes": "A parked car hides the lower ground storey and the street door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

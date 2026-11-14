@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012163678",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163678.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "balconies",
+  "cornice",
+  "pale",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white blind window panels alternate with the real windows across the brick centre"
+  },
+  {
+   "component": "relief",
+   "what": "white stucco pilaster strips and a rounded white corner frame the brick centre; a balcony on the rounded corner"
+  }
+ ],
+ "notes": "The outline covers a corner building and part of the gabled house to its right; the corner building is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

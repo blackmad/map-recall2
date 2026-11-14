@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012159620",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159620.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "courses",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "heads",
+  "crown",
+  "doorBay",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the outer windows have segmental arched heads with light brick voussoirs while the middle window has a flat white hood"
+  },
+  {
+   "component": "roof",
+   "what": "a skylight sits in the slate roof face beside the dormer"
+  }
+ ],
+ "notes": "A van hides most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

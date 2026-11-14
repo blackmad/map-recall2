@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012149625",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012149625.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "crown",
+  "dormers",
+  "bands",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a wall dormer with a curved shaped top and two windows rising out of the front, with hoist beam stubs"
+  }
+ ],
+ "notes": "A van hides the whole ground storey; only the shop fascia shows. Corner building, steep upward view.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

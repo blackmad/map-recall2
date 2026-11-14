@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012155518",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155518.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.souterrain",
+  "windowSurround",
+  "cornice",
+  "balconies",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the souterrain is a white-rendered base with two windows at pavement level"
+  },
+  {
+   "component": "door",
+   "what": "three narrow round-headed lights stand over the street door"
+  },
+  {
+   "component": "relief",
+   "what": "a frieze of yellow ornamental panels between consoles under the cornice"
+  }
+ ],
+ "notes": "A white van covers the left edge of the stoop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

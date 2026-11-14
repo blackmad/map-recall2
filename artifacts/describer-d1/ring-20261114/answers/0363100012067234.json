@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012067234",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012067234.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windowSurround",
+  "bands",
+  "whiteFrames",
+  "doorBay",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "an open stair entrance between the shopfronts at ground level"
+  }
+ ],
+ "notes": "The outline covers two fronts: the left part of a taller flat-topped five-storey front (described) and a lower four-storey two-axis front with balconies and a dormer at the left; a banner hangs over one balcony.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

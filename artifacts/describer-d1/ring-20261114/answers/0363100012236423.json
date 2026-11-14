@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012236423",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236423.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "finish",
+  "windowSurround",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small white carved keystone ornaments over flat heads"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is rendered white over a black tiled plinth with a grilled vent"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

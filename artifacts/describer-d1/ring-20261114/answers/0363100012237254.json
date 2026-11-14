@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012237254",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237254.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "windows",
+  "cornice",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "one long iron balcony runs across storey 1 over the shopfronts"
+  },
+  {
+   "component": "window",
+   "what": "a row of small square windows directly under the eaves forms the top storey"
+  }
+ ],
+ "notes": "Outline covers a lighter brick building on the left and a wider dark brick block on the right; described the dark block.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

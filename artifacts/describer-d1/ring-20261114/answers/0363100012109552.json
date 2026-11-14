@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012109552",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012109552.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "small-over-one",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "storeyParts.full",
+  "sameAs",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a light striped band of courses runs under the eaves along the whole block"
+  }
+ ],
+ "notes": "Seen at an angle past a road sign that hides the left bays; cars hide the shop storey. Part of a long interwar block.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

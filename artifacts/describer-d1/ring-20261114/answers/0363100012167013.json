@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012167013",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167013.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  1,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "dormers",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a flat-topped brick wall dormer over the centre bay with a round-arched window, flanked by short cornice pieces over small frieze panels"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a closed dark panelled wall under a grey fascia with one door at the right"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

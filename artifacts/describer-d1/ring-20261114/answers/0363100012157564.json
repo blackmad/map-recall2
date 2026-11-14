@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012157564",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157564.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "columns",
+  "sameAs",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "one restaurant shopfront with doors at both ends runs under both fronts"
+  }
+ ],
+ "notes": "The outline covers two identical three-bay fronts behind a large tree; described the left one. The roof line is hidden by foliage.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

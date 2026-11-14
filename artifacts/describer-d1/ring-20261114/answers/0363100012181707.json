@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012181707",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181707.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "consoles",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.souterrain",
+  "sills",
+  "sameAs",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone balustraded balcony over the ground storey in front of the middle first-floor window"
+  },
+  {
+   "component": "relief",
+   "what": "stucco pilaster strips at the corners and party wall, and a stucco frieze with small consoles under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped stucco dormer with scrolls on the middle axis"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

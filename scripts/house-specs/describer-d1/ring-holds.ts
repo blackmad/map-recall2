@@ -2,6 +2,8 @@
 //   rear        the cut wall faces away from the pand's street (street-side.ts `rear`) or the reader wrote `REAR:` in notes
 //   off-row     the cut wall faces a cross street (street-side.ts `cross`): a real front, but not on the street being published
 //   unreadable  the reader answered readable: false (`WRONG-WALL:`, a tram or scaffold over the whole front)
+//   multi-front the outline covers more than one front (`extent: multi`): one front's storeys and bays would be drawn over the
+//               whole pand, and an offset outline reads a neighbour
 //   no-cut      no panorama in 5-35 m (no cut, no answer)
 //   unread      cut but no answer yet
 // Writes <out>/answers/<pandId>.json (copies of the kept answers) and <out>/holds.json {cause: [pandId]}.
@@ -10,14 +12,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export type HoldCause = 'rear' | 'off-row' | 'unreadable' | 'no-cut' | 'unread';
-export function holdCause(x: { cut: boolean; answer: { readable?: boolean; notes?: string } | null; side?: string | null }): HoldCause | null {
+export type HoldCause = 'rear' | 'off-row' | 'unreadable' | 'multi-front' | 'no-cut' | 'unread';
+export function holdCause(x: { cut: boolean; answer: { readable?: boolean; notes?: string; extent?: string } | null; side?: string | null }): HoldCause | null {
   if (!x.cut) return 'no-cut';
   if (!x.answer) return 'unread';
   const notes = String(x.answer.notes ?? '');
   if (x.side === 'rear' || /^REAR:/i.test(notes)) return 'rear';
   if (!x.answer.readable) return 'unreadable';
   if (x.side === 'cross') return 'off-row';
+  if (x.answer.extent === 'multi') return 'multi-front';
   return null;
 }
 
@@ -31,7 +34,7 @@ function main() {
   const side = JSON.parse(fs.readFileSync(sideF, 'utf8')) as Record<string, { side?: string }>;
   fs.rmSync(path.join(out, 'answers'), { recursive: true, force: true });
   fs.mkdirSync(path.join(out, 'answers'), { recursive: true });
-  const holds: Record<string, string[]> = { rear: [], 'off-row': [], 'unreadable': [], 'no-cut': [], unread: [] };
+  const holds: Record<string, string[]> = { rear: [], 'off-row': [], 'unreadable': [], 'multi-front': [], 'no-cut': [], unread: [] };
   let kept = 0;
   for (const id of ids) {
     const f = path.join(ansD, `${id}.json`), answer = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null;

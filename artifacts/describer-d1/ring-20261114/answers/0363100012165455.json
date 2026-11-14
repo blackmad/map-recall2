@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012165455",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165455.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "dormers",
+  "doorBay",
+  "crown",
+  "storeyParts.full",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first-floor openings are filled with deep horizontal brick louvre screens instead of windows"
+  },
+  {
+   "component": "dormer",
+   "what": "two small white dormers with finial-tipped peaked tops"
+  }
+ ],
+ "notes": "The outline straddles the right half of the left neighbour's stepped gable front and a plainer two-bay front with two small dormers; the plain two-bay front is described. A tree and a shop banner hide part of the ground and first floor.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

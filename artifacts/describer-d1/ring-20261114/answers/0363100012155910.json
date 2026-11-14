@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012155910",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155910.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "heads",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "timber shopfront with a clerestory of small panes over the shop window and the house door beside it"
+  }
+ ],
+ "notes": "The outline covers two mirrored three-bay fronts split by a downpipe; the left one is described (each has one dormer and stacked balconettes on its inner axis).",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

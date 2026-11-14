@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012156248",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156248.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "shouldered",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "heads",
+  "doorBay",
+  "mirrored",
+  "sameAs",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "narrow raised brick attic block with one window standing over the left part of the cornice line, the rest of the front lower"
+  }
+ ],
+ "notes": "A bare tree crosses the front and blurs the upper left.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

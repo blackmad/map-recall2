@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012157137",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157137.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "sameAs",
+  "dormers",
+  "doorBay"
+ ],
+ "gaps": [],
+ "notes": "A tree trunk covers the right edge and bare branches cross the left bay; the image is blurred.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

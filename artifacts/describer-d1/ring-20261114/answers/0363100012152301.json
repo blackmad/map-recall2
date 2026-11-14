@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012152301",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152301.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "bands",
+  "cornice",
+  "dormers",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "a decorative tile frieze band between the tall ground storey and the first floor"
+  },
+  {
+   "component": "relief",
+   "what": "white plaster pilaster strips and block quoins frame the front and each window"
+  },
+  {
+   "component": "shopfront",
+   "what": "tall ground storey with an entresol row of small windows over the shop, framed by pilasters with curved brackets"
+  }
+ ],
+ "notes": "Dusk light. The tall ground storey holds an entresol inside it and is counted once.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

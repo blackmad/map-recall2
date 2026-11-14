@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012155317",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155317.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "stoop-and-windows",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "mirrored",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white three-sided timber bay window on the first storey over the middle bay carries a balustraded balcony in front of the second-storey window"
+  },
+  {
+   "component": "relief",
+   "what": "a corbelled brick arcade frieze runs under the eaves, and grey stone pilaster strips frame the front"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012065282",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012065282.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "windowSurround",
+  "bays",
+  "dormers",
+  "cornice",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "light stone balconettes on carved consoles stacked on the centre axis"
+  },
+  {
+   "component": "window",
+   "what": "the centre axis is a group of three openings, a wide balcony door between narrow side lights"
+  },
+  {
+   "component": "roof",
+   "what": "a stone balustrade along the roof edge with a raised centre piece holding a window under a curved cap"
+  }
+ ],
+ "notes": "A tram and a van hide most of the ground storey; only a large round-arched opening shows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

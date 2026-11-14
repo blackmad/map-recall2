@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012181309",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181309.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "3": "arched"
+ },
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "round"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "doorBay",
+  "bayWindow",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the middle second-floor window has a triangular pediment"
+  },
+  {
+   "component": "relief",
+   "what": "a balustraded base and carved panels under the projecting first-floor middle window"
+  }
+ ],
+ "notes": "The top row of four small round-arched windows could be read as an attic band; counted as a low storey. A blurred block hides the door at the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

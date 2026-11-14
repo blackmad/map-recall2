@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012237154",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237154.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  1,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 1,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "grey stone-clad ground storey with a row of small transom lights over the shop window"
+  }
+ ],
+ "notes": "Outline takes in two fronts: a step-gabled two-bay front with a grey shopfront and, to its right, a two-bay cornice front with the street doors; described the step-gabled one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

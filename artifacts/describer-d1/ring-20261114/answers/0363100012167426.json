@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012167426",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167426.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "doorBay",
+  "doorSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis has a continuous white stucco surround running up all storeys, with stone balconettes on storeys 1 and 2"
+  }
+ ],
+ "notes": "Blurred boxes hide the foot of the centre ground opening, which may be a second door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

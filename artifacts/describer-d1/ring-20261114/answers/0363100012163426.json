@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012163426",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163426.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "dormers",
+  "cornice",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is one wide round-arched glazed opening with an entresol band of lights, set in a black-painted stepped surround, between two street doors"
+  },
+  {
+   "component": "dormer",
+   "what": "a wide white dormer with two windows sits between two small roof windows behind the cornice"
+  }
+ ],
+ "notes": "The ground storey matches the left neighbour but its top differs.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

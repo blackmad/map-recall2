@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012157207",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157207.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": "not-visible",
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "doorBay",
+  "bays",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "white-framed bay window on the first upper storey on stone corbels, glazing continuing up the axis behind the tree"
+  }
+ ],
+ "notes": "A large bare tree covers the upper storeys and the top; the street door may be on the corner outside the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012153783",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153783.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "heads",
+  "bands",
+  "storeyParts.roof",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick corbel-arch frieze under the parapet"
+  },
+  {
+   "component": "roof",
+   "what": "a roof terrace with a metal railing and a set-back white roof structure"
+  }
+ ],
+ "notes": "Front seen obliquely; its right part is hidden behind the near corner building, so the axes and door cannot be counted.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

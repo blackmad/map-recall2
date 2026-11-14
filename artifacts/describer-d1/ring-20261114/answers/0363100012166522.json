@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012166522",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166522.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "doorBay",
+  "sameAs",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a white rendered parapet with a raised central curved-top wall dormer and short white piers at the ends"
+  },
+  {
+   "component": "shopfront",
+   "what": "a dark painted timber shopfront with a row of small pointed-arch tracery lights over the display window, with lamps on the pilasters"
+  }
+ ],
+ "notes": "A bare tree crosses the front and a hedge hides the base of the shop.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

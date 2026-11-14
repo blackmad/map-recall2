@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012157040",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157040.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "cornice",
+  "dormers",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a glazed entresol band of windows runs over the shop window inside the tall ground storey"
+  },
+  {
+   "component": "relief",
+   "what": "rusticated stucco pilaster strips and moulded stucco panels under the storey-1 windows"
+  }
+ ],
+ "notes": "The outline is narrower than the white stucco front and sits on its centre axis; the whole 3-bay front is described. Tree branches cross the top storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012166551",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166551.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the point gable is narrower than the front, stands over the middle bays with roof slopes at the sides, and ends in a chimney-like finial"
+  },
+  {
+   "component": "balcony",
+   "what": "the middle bay has French doors with ornate iron balconettes on every upper storey"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

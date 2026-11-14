@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012158473",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158473.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "balconies",
+  "sameAs",
+  "dormers",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first-floor right axis is a tall brick louvre panel of horizontal slats instead of a window"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with a wide round-arched window under a curved top"
+  }
+ ],
+ "notes": "A car and an awning hide the shop ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

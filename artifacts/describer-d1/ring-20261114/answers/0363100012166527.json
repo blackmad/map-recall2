@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012166527",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166527.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "dormers",
+  "windowSurround",
+  "sameAs",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber erker on the middle axis spanning the first and second floors with a balcony on its roof"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks set at the window corners in the brick"
+  }
+ ],
+ "notes": "Seen at a steep angle; the cornice line is hard to read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

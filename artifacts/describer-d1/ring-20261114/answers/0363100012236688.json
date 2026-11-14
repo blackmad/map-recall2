@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012236688",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236688.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sameAs",
+  "mirrored",
+  "dormers",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "the tall dormer has an iron balconette guard in front of its window"
+  },
+  {
+   "component": "relief",
+   "what": "light pilaster strips run up both edges of the front between the shop and the cornice"
+  }
+ ],
+ "notes": "One of a row of similar three-bay brick fronts with balconette dormers.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

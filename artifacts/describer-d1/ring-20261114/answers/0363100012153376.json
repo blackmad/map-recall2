@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "pandId": "0363100012153376",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153376.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "whiteFrames",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall brick wall dormer with a pointed gable rising from the front plane over the right bay, with a round-arched brick niche and carved console figures over the third-floor window below it"
+  },
+  {
+   "component": "window",
+   "what": "white stone blocks at the springing and keystone of each segmental brick arch and white blocks along the jambs"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the middle window of the first and second floors"
+  },
+  {
+   "component": "relief",
+   "what": "a row of white blocks like a dentil course under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a pair of varnished panelled doors under small-paned transom lights"
+  }
+ ],
+ "notes": "Bicycles hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

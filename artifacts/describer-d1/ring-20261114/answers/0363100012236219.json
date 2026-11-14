@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012236219",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236219.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "pedimented dormer with a hoist beam, flanked by two small roof lights"
+  }
+ ],
+ "notes": "Ground storey is one shopfront running across two fronts and partly hidden by building-site fencing and pallets.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012159808",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159808.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick cartouche panel under the centre of the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in white stone with two tall glazed openings and the door between plain piers"
+  }
+ ],
+ "notes": "Bicycles in front of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

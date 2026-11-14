@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012162190",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162190.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 5,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white pedimented centre dormer flanked by four small dark roof windows in one row"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white timber shopfront with pilasters, a gridded transom row and a door at each end"
+  },
+  {
+   "component": "window",
+   "what": "single white blocks over each flat window head, not a full arch"
+  }
+ ],
+ "notes": "Sun glare on the right edge.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

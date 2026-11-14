@@ -1,0 +1,83 @@
+{
+ "v": 1,
+ "pandId": "0363100012161296",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161296.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "casement-triple",
+  "2": "casement-triple"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "cornice",
+  "dormers",
+  "windows",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the two outer bays rise as towers to the top line while the middle two bays step back behind a cornice into two wide dormers"
+  },
+  {
+   "component": "balcony",
+   "what": "two curved wrought-iron balconies on storey 2 and two balconettes on boxed consoles on storey 1, symmetric about a middle pipe"
+  }
+ ],
+ "notes": "Top storey is only in the front plane at the two outer bays; counted it as a full storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

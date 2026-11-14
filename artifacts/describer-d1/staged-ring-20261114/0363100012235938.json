@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012235938",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey",
+    "souterrain": false,
+    "readBalconies": [
+     3,
+     4
+    ],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [
+     1,
+     2
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#4d463d"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235938.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white ornamented two-storey bay window on the centre axis with a small pediment between its storeys, carrying a balconette above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a raised brick attic gable with white pinnacle panels at both shoulders and a central window with a balconette"
+  },
+  {
+   "component": "relief",
+   "what": "white carved panels under the side windows of the first and second floors"
+  }
+ ]
+}

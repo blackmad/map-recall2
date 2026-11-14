@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012079040",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012079040.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windowSurround",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a curved gable topped by a triangular stone pediment, with light stone blocks set in the brick above the windows"
+  }
+ ],
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

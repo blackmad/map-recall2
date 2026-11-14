@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172139",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172139.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "brick pilaster strips between the bays and a carved frieze under the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "a cast-iron balcony on consoles in the middle bay"
+  }
+ ],
+ "notes": "Roadworks fencing in front of the souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

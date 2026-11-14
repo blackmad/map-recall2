@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012236248",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236248.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "mixed",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "windowSurround",
+  "heads",
+  "storeyParts.roof",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white stucco ornaments over the windows: crosses, shell-like arch pieces and corbel heads under the top cornice"
+  },
+  {
+   "component": "roof",
+   "what": "the two outer bays rise as a full storey with one window each, flanking a mansard with two small dormers"
+  },
+  {
+   "component": "window",
+   "what": "storey 1 has the middle bays split into tall narrow lights under arched brick panels"
+  }
+ ],
+ "notes": "A van and a blurred box hide much of the café ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

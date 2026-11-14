@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012236942",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236942.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  6,
+  6,
+  6
+ ],
+ "windows": "casement-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 6,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "ground",
+  "crown",
+  "cornice",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "large school windows with many small panes and gridded top lights, ground storey tall"
+  }
+ ],
+ "notes": "The middle section of a school between two gabled wings; a tree and parked vans hide parts of the ground storey. Ground is institutional, not a dwelling.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

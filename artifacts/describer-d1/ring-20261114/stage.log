@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "twinGuard": "mutual",
+ "answers": 950,
+ "readable": 950,
+ "staged": 950,
+ "inheritedFronts": 18,
+ "inheritedFields": {
+  "fronts/0/storeys": 6,
+  "fronts/0/gable": 11,
+  "fronts/0/bands": 2
+ },
+ "notVisibleRate": 0.047,
+ "answerCoverage": {
+  "storeys": 0.946,
+  "bays": 0.975,
+  "windows": 0.978,
+  "heads": 0.969,
+  "bands": 0.973,
+  "windowSurround": 0.971,
+  "sills": 0.966,
+  "doorBay": 0.827,
+  "ground": 0.936,
+  "basement": 0.885,
+  "crown": 0.973,
+  "cornice": 0.969,
+  "finish": 0.986,
+  "pale": 0.986
+ },
+ "specFieldCoverage": {
+  "facts/groundKind": 0.918,
+  "facts/pui": 0.936,
+  "fronts/*/archedStoreys": 0.027,
+  "fronts/*/bands": 0.424,
+  "fronts/*/bays": 0.971,
+  "fronts/*/cornice": 0.157,
+  "fronts/*/gable": 0.649,
+  "fronts/*/readBalconies": 0.948,
+  "fronts/*/readBayWindow": 0.957,
+  "fronts/*/readDoorSurround": 0.777,
+  "fronts/*/readDormers": 0.964,
+  "fronts/*/rowHeads": 0.242,
+  "fronts/*/souterrain": 0.934,
+  "fronts/*/storeys": 0.953,
+  "fronts/*/windowHead": 0.719,
+  "palette/brick": 0.999,
+  "palette/wallMaterial": 0.986
+ },
+ "problems": 0
+}

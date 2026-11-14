@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012079850",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012079850.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "cornice",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes on stone consoles in the centre bay"
+  }
+ ],
+ "notes": "A tram hides the lower storeys; only the top two rows, the cornice and the dormer are visible.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

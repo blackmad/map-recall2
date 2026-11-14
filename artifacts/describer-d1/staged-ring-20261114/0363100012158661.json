@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012158661",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "bands": "storey",
+    "souterrain": true,
+    "readBalconies": [
+     2
+    ],
+    "readDormers": {
+     "count": 2,
+     "kind": "gabled"
+    },
+    "readBayWindow": [
+     1
+    ],
+    "readDoorSurround": true,
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#422f24"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158661.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white timber erker on carved stone consoles over the door bay on the first floor, with a balcony on its roof"
+  },
+  {
+   "component": "door",
+   "what": "stone doorcase with consoles and a round oculus in a scrolled frame over the door"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks alternating with the brick along the jambs and heads, the first and second floor heads as light segmental arch bands"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam and a small round oeil-de-boeuf dormer in the slate mansard"
+  },
+  {
+   "component": "window",
+   "what": "top lights glazed in small leaded panes"
+  }
+ ]
+}

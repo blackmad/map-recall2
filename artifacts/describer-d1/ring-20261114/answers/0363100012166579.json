@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012166579",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166579.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "dark green painted window joinery with small white keystone blocks over each head and iron wall anchors between the windows"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is white stucco with a pair of narrow street doors side by side at the left"
+  }
+ ],
+ "notes": "Blurred cars hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

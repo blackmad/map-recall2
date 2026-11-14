@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012157570",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157570.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "ground",
+  "sameAs",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "roof terrace with railing and a glazed box on top of the mansard"
+  }
+ ],
+ "notes": "Blurry image; the middle ground opening is partly hidden by a sign.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

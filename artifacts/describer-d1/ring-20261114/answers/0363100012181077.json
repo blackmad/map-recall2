@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012181077",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181077.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "cornice",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick corbel-arch frieze under the cornice and white stucco arch hoods over every window"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched stucco doorway with pilasters, paired with the neighbour's arched doorway"
+  },
+  {
+   "component": "balcony",
+   "what": "an iron balconette on stucco consoles in front of the middle first-floor window"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012159323",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159323.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "mirrored",
+  "dormers",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "pedimented dormer with a hoist beam between two small roof windows"
+  }
+ ],
+ "notes": "Dark painted shopfront runs across this and the left neighbour.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

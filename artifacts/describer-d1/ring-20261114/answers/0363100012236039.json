@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012236039",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236039.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "mirrored",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconettes at the middle axis of every upper storey"
+  }
+ ],
+ "notes": "The outline covers two fronts: a cornice front with a hoist dormer on the left (described) and a narrower front with a point gable on the right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

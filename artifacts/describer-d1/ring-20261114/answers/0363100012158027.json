@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012158027",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158027.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "plaster pilasters divide the upper storey into two pairs of windows"
+  },
+  {
+   "component": "dormer",
+   "what": "the central dormer has a pediment and an arched window; the side dormers are flat"
+  }
+ ],
+ "notes": "Restaurant shopfront with awning; a parked van and car cover the lower left.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012165924",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165924.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "dormers",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the ground storey is white rusticated stucco over a panelled souterrain, and the top storey has white stucco window surrounds with carved ornament under a heavy cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "an ornate stucco attic with two small windows and a curved crown rising over the cornice"
+  }
+ ],
+ "notes": "The outlined two bays may be part of a wider house whose door and balconied column stand to the left; no street door inside the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

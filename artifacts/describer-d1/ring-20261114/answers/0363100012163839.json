@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "pandId": "0363100012163839",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163839.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "dormers",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "timber shopfront with a deep fascia carrying a pierced fretwork panel"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balconies on stone brackets only in front of the middle bay of each upper storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a small pedimented hoist dormer with a projecting hoist beam over the middle bay"
+  },
+  {
+   "component": "relief",
+   "what": "white festoon relief panels in the frieze under the cornice"
+  }
+ ],
+ "notes": "The outline straddles the right bay of a black painted shop house and the left bay of the red-brick house with a stoop and erker; described the black house, which takes the larger share.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

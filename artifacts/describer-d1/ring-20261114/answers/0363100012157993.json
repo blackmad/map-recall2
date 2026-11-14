@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012157993",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157993.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "plain"
+ },
+ "heads": [
+  "not-visible",
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyWindows",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the first floor is one wide shop window across the front, glazed in three lights over the ground-floor shop"
+  }
+ ],
+ "notes": "A passing van hides most of the ground storey; the wide first-floor glazing has its own floor line and is counted as a storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

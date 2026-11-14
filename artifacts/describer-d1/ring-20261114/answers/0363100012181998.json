@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012181998",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181998.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "windowSurround",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "rusticated stucco pilaster strips at both party walls up to the frieze"
+  },
+  {
+   "component": "window",
+   "what": "a scrolled crest over the middle first-floor window"
+  },
+  {
+   "component": "roof",
+   "what": "a set-back glazed roof storey over the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "a stucco balcony with an iron panel on two consoles in front of the middle first-floor window"
+  }
+ ],
+ "notes": "A parked van hides the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

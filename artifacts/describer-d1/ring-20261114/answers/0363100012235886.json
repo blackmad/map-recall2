@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012235886",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235886.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "windowSurround",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "two dark shopfronts with a white street door between them span the ground storey"
+  }
+ ],
+ "notes": "A six-bay front symmetrical about its centre with two pedimented dormers; it may be two houses built as one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

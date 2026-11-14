@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012152344",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152344.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "two-light",
+ "storeyWindows": {
+  "1": "casement-triple"
+ },
+ "heads": [
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "stone pinnacles and finials along a pointed gable with corbelled shoulders"
+  },
+  {
+   "component": "door",
+   "what": "hotel entrance under a stone arch with a lettered fanlight"
+  }
+ ],
+ "notes": "Hotel front; the ground storey has two arched stone-dressed openings, one door and one tall window.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

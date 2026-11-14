@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012181744",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181744.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bands",
+  "windowSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small turret-like pinnacle with finial stands on the gable apex"
+  },
+  {
+   "component": "window",
+   "what": "the gable attic has a pair of round-arched windows"
+  }
+ ],
+ "notes": "A bare tree in front hides the left bay; a shrub hides part of the ground.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

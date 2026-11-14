@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012157517",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157517.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "finish",
+  "cornice",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a pitched roof with a roof light shows behind a plain parapet"
+  }
+ ],
+ "notes": "A young tree stands in front of the middle bay.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

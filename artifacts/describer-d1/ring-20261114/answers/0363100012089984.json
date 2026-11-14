@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012089984",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012089984.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 5,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "ground",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "the centre axis has a French door with a small projecting iron balcony on brackets on each upper storey"
+  },
+  {
+   "component": "dormer",
+   "what": "a pointed part-front gable with a window pair over the left bays, plus two small roof dormers"
+  },
+  {
+   "component": "window",
+   "what": "the left axis is a pair of close-set windows with a narrow pier between"
+  }
+ ],
+ "notes": "Corner building; the ground storey is painted white with three doors and a former shop window.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

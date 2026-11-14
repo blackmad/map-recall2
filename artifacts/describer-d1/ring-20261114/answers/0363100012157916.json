@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012157916",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157916.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "windowSurround",
+  "bands",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "neo-renaissance stepped gable with stone ball finials on the steps and a large urn or vase on top"
+  },
+  {
+   "component": "relief",
+   "what": "patterned brick tympana in the arches over the first- and second-floor windows and a carved cartouche between the first-floor windows"
+  },
+  {
+   "component": "window",
+   "what": "light stone blocks set in the brick at the jambs and gable edges"
+  }
+ ],
+ "notes": "A parked car hides the base of the shopfront.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

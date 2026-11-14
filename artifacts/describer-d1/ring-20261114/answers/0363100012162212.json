@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012162212",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162212.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis is set in a pale rusticated stone pilaster strip from storey 1 to the cornice, with a stone balcony on consoles at storey 1"
+  },
+  {
+   "component": "door",
+   "what": "the ground door and windows sit in round arches with moulded stone surrounds"
+  }
+ ],
+ "notes": "A delivery van hides the foot of the door.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

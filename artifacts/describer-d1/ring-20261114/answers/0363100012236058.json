@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012236058",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236058.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "low iron guard rails across the bottom of every upper window"
+  },
+  {
+   "component": "relief",
+   "what": "dark brick or iron rosettes between the window heads on every storey"
+  }
+ ],
+ "notes": "A small tree crosses the left bay.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

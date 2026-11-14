@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012156213",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156213.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "mixed",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.souterrain",
+  "basement",
+  "sameAs",
+  "mirrored",
+  "cornice",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a tall round-arched doorway in a white stucco doorcase with pilasters and a curved pediment, with the stoop steps inside the arch"
+  },
+  {
+   "component": "erker",
+   "what": "a three-sided timber bay window on the first storey stands on a stone balcony with a balustrade and carries a small balustraded balcony on top"
+  }
+ ],
+ "notes": "A lorry hides the lower right corner of the ground storey.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

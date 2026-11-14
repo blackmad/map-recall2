@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012156993",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156993.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "columns",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a narrow centre neck gable with an arched window and a small pediment cap, standing between two runs of white console cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white-framed shopfront with a large two-tier display window and a door at each side"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012236652",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236652.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "heads",
+  "bands",
+  "windowSurround",
+  "crown",
+  "sameAs",
+  "balconies",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the row has several small stepped and pointed gables with white pinnacles along one roofline"
+  }
+ ],
+ "notes": "The outline covers a whole block of about four fronts behind a supermarket shopfront; a tree hides part. The centre front with the stacked balconettes and stepped gable is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

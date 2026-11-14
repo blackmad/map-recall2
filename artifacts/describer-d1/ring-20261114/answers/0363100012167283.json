@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012167283",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167283.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "doorSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "window frames and pilaster strips are painted dark against the pale stucco"
+  },
+  {
+   "component": "relief",
+   "what": "a carved cartouche with the year 1878 over the storey-1 centre door and a scroll ornament over the storey-2 centre window"
+  },
+  {
+   "component": "door",
+   "what": "the storey-1 centre opening is a glazed double door with stained glass behind an iron balconette"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

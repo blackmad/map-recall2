@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012165334",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165334.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "round",
+  "round",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "windowSurround",
+  "bands",
+  "cornice",
+  "balconies",
+  "bayWindow",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white two-storey bay window on the second axis carrying a balconette above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a curved white-trimmed wall gable with pilasters and a crest rises over the three left axes"
+  }
+ ],
+ "notes": "A passing tram hides the ground storey, so the storey count is not read; upper rows indexed assuming one hidden ground storey.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

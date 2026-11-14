@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012067825",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012067825.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 4,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "curved part-front gables at both ends of the roofline, the left one on the corner with an oval window"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is painted dark grey up to the first floor, with several street doors and one large round-arched window"
+  }
+ ],
+ "notes": "Corner building; the balconies are on the fourth axis only.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012237273",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237273.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "dormers",
+  "sills",
+  "heads",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "one continuous supermarket shopfront with a white fascia runs under both fronts"
+  }
+ ],
+ "notes": "The outline holds two fronts over one shop: a dark painted 3-bay front (described) and a grey 3-bay front with a centre balcony axis to its right.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012159115",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159115.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "off-centre",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "windowSurround",
+  "storeyParts.full",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a corner tower at the left rising above the eaves with a round-arched loggia window and a tall pointed slate spire"
+  },
+  {
+   "component": "erker",
+   "what": "a small corbelled oriel on the first floor resting on a stone bracket"
+  },
+  {
+   "component": "door",
+   "what": "round-arched stone door frame with a stoop, a deep reveal"
+  }
+ ],
+ "notes": "Asymmetric villa; the outline takes the middle part between the tower and the right wing, so bay count is uncertain.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

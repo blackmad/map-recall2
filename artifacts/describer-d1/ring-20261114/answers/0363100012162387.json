@@ -1,0 +1,87 @@
+{
+ "v": 1,
+ "pandId": "0363100012162387",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162387.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "sameAs",
+  "doorSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved stone relief panels filling the arch over the first and second floor windows"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the middle bay on the first and second floors, a shallow balconette on the third"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront between stone pilasters with a row of small leaded transom lights and a carved timber street door with stained glass"
+  },
+  {
+   "component": "roof",
+   "what": "two small roof lights in the mansard beside the pedimented dormer"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

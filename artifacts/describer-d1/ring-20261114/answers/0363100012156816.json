@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012156816",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156816.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  3,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "dormers",
+  "bands",
+  "heads"
+ ],
+ "gaps": [],
+ "notes": "Outline holds two matching four-bay fronts split by a downpipe, each over its own shop; described the left one. Small and distant, dormers hard to count.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

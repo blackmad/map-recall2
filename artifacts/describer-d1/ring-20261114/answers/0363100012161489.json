@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012161489",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161489.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "bands",
+  "sameAs",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "decorative iron wall anchors between the windows on every storey"
+  },
+  {
+   "component": "awning",
+   "what": "a long fixed shop awning over the ground storey"
+  }
+ ],
+ "notes": "The outline crosses a party line at the drainpipe: two bays of a front with white bands and a shop awning on the left, one bay of a plain front with a blue-glazed ground storey on the right; dead climbing plant over the pipe.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

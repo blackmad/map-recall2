@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012157331",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157331.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "relieving",
+  "relieving",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "doorBay",
+  "heads",
+  "storeyParts.full",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first- and second-floor windows sit under brick arches whose tympana are filled with patterned yellow brick"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall ground storey with a row of small round-headed entresol lights between pilasters above the shop sign"
+  }
+ ],
+ "notes": "The outline is offset from the window axes; the entresol lights over the shop are read as part of one tall ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

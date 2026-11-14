@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012164259",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164259.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "window joinery is painted black"
+  }
+ ],
+ "notes": "Two street doors on the ground storey, one in the fourth axis and one at the right end.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

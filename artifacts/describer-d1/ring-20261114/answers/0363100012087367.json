@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012087367",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012087367.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "sameAs",
+  "mirrored",
+  "dormers",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with a hoist beam rises over the third axis above the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a pair of street doors under a round brick arch with a fanlight"
+  }
+ ],
+ "notes": "Window joinery is dark blue rather than white.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

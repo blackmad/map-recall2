@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012170290",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170290.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "heads",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "cream stucco window frames crowned by scrolled pediments with a central shell or cartouche on both upper storeys"
+  },
+  {
+   "component": "relief",
+   "what": "grey stone-faced ground storey with arched openings and a stone balcony on its cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped stucco dormer with scrolled sides on the middle axis"
+  }
+ ],
+ "notes": "A bare tree stands in front of the middle axis and parked cars hide the plinth.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,83 @@
+{
+ "v": 1,
+ "pandId": "0363100012157223",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157223.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stacked white loggia-like balcony column in the middle bay: a balustraded balcony on consoles at row 1 and solid white parapet balconies on posts at rows 2 and 3"
+  },
+  {
+   "component": "window",
+   "what": "white decorative blocks at each window head corner and centre, like stepped keystone ornaments"
+  },
+  {
+   "component": "door",
+   "what": "round-arched open portico entrance at the left with a stoop"
+  }
+ ],
+ "notes": "Two small roof lights in the mansard beside the gabled dormer are not counted as dormers.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

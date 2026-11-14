@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012236773",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236773.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "bays",
+  "heads",
+  "crown",
+  "windowSurround",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "small stepped gable with a finial over the right part of the front, roof slope over the left part"
+  }
+ ],
+ "notes": "Far front seen past a corner; road signs and a shrub hide the right half and the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

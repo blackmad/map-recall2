@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012237296",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237296.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "cornice",
+  "dormers",
+  "crown",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "light rusticated stone pilaster strips run up both ends of the front"
+  }
+ ],
+ "notes": "A large tree trunk stands in front of the middle of the front and its branches cross the top.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

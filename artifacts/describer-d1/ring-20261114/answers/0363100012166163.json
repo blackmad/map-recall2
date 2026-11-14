@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012166163",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166163.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "carved shell ornaments in the tympana over the first-floor windows and small carved pieces over the second-floor windows"
+  },
+  {
+   "component": "window",
+   "what": "white blocked dressings alternate with brick round every window"
+  },
+  {
+   "component": "shopfront",
+   "what": "timber shopfront with a gridded transom, a door at each side of the shop window"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

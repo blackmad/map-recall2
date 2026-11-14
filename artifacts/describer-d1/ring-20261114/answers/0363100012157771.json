@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012157771",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157771.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "bands",
+  "windowSurround",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre first-floor window alone has a full white frame over the balcony"
+  },
+  {
+   "component": "relief",
+   "what": "light brick blocks alternate in the arches and in a dotted band at each head line"
+  }
+ ],
+ "notes": "A bare tree crosses the left bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

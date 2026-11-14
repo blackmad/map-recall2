@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012236357",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236357.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "dormers",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a carved ornamental fascia over the left shopfront"
+  }
+ ],
+ "notes": "The outline covers two matching three-bay fronts; described the left one. A tree crosses the right front and a car hides the shop bases.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

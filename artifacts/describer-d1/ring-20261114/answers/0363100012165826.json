@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012165826",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165826.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "mixed",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "bands",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "storeyParts.roof",
+  "balconies",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a corner tower with a steep pointed roof rises at the right corner over the full height"
+  },
+  {
+   "component": "dormer",
+   "what": "a central wall dormer with a balcony and an ornamented raised top with a chimney-like pinnacle"
+  },
+  {
+   "component": "relief",
+   "what": "a white ornamental lattice panel under the row-1 three-light window and a white arched hood over it"
+  }
+ ],
+ "notes": "Corner villa; outlined front covers the central bay and the corner with the tower. No street door visible on this face.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

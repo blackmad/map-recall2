@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012155953",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2,
+    "bands": "courses",
+    "gable": "cornice",
+    "readBalconies": [
+     1,
+     2,
+     3
+    ],
+    "readDormers": {
+     "count": 2,
+     "kind": "gabled"
+    },
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3b3936"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155953.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "a dormer with a carved timber bargeboard gable over the left bay and a small gabled dormer over the right"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on consoles are stacked in the left bay"
+  }
+ ]
+}

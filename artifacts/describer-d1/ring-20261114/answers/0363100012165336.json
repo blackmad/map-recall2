@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012165336",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165336.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "sameAs",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a projecting timber gable with carved curved brackets and a finial over one window in the gable"
+  },
+  {
+   "component": "window",
+   "what": "panelled spandrels under the middle-bay windows of rows 1 and 2"
+  }
+ ],
+ "notes": "The right neighbour has the same gable but a projecting erker in the middle bay; bicycles hide the base.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

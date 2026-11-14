@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012181420",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181420.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "3": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.roof",
+  "crown",
+  "cornice",
+  "sameAs",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a single raised attic window in a wall rising above the neighbours' cornice line, top edge plain"
+  }
+ ],
+ "notes": "Narrow two-axis front with no street door of its own; the door is probably in a neighbouring axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

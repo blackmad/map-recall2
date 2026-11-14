@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012153827",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153827.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "crown",
+  "dormers",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "the right outer bay rises as a narrow tower-like raised gable with one window and a round-headed top and hoist beam over the cornice line"
+  },
+  {
+   "component": "window",
+   "what": "segmental window heads are picked out with a contrasting brick arch and short brick blocks at the springing"
+  }
+ ],
+ "notes": "One half of a mirrored pair; two street doors side by side at the left of the shop; a street tree crosses the left edge.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

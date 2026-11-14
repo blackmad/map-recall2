@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012160751",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160751.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "doorIndex"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "stepped gable with blind round-arched panels and small iron anchors"
+  },
+  {
+   "component": "window",
+   "what": "the door bay of the bel-etage has a round-arched window of three narrow lights over the stoop door"
+  }
+ ],
+ "notes": "A van hides the right of the souterrain and the stoop foot.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

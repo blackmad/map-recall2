@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "pandId": "0363100012236341",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236341.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "pilaster",
+   "what": "stucco pilaster strips frame the front at both party walls from the plinth to the cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of stone balconies with turned balusters on large carved consoles in front of the middle window on the first, second and third floors"
+  },
+  {
+   "component": "relief",
+   "what": "a stucco frieze with festoon relief panels and consoles under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "a twin round-topped dormer with hoist beams shared with the left neighbour"
+  }
+ ],
+ "notes": "A parked van hides the lower half of the ground storey and any souterrain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

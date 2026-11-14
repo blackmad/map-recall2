@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012153574",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153574.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "shouldered",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white two-storey timber erker on consoles stands in the centre bay"
+  },
+  {
+   "component": "relief",
+   "what": "light stone blocks are set in the segmental brick arches over every window"
+  }
+ ],
+ "notes": "The small gable over the middle may be read as a part-front gable over a bracketed eaves line.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

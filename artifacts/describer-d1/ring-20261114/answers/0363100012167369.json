@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012167369",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167369.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.souterrain",
+  "basement",
+  "mirrored",
+  "cornice",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a tall round-arched doorway in a white stucco doorcase with pilasters and a curved pediment, with the stoop steps inside the arch"
+  },
+  {
+   "component": "balcony",
+   "what": "a stone balcony on carved consoles with an iron and stone balustrade runs across the front over the bel-etage and on into the left neighbour"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

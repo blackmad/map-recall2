@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012119240",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012119240.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1
+ ],
+ "windows": "arched",
+ "storeyWindows": {},
+ "heads": [
+  "flat",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 1,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the frieze under the cornice has carved festoons between consoles and the upper window has a carved apron panel and a crested head moulding"
+  },
+  {
+   "component": "window",
+   "what": "the ground window is a tall small-paned casement in a recessed brick panel between pilaster strips"
+  },
+  {
+   "component": "roof",
+   "what": "a long glazed roof light runs along the roof slope behind the cornice"
+  }
+ ],
+ "notes": "The outline is one bay of a long public building front; the ground storey has no door and is not a house or a shop.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

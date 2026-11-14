@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012152390",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152390.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "cornice",
+  "finish",
+  "sameAs"
+ ],
+ "gaps": [],
+ "notes": "Distant corner building seen at an angle behind a young tree and vans; the top storey is painted white above the dark-painted wall.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

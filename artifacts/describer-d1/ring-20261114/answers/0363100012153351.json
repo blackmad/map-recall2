@@ -1,0 +1,64 @@
+{
+ "v": 1,
+ "pandId": "0363100012153351",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153351.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a slate roof slope in view with two gabled dormers at the ends and two small roof lights between"
+  },
+  {
+   "component": "shopfront",
+   "what": "a continuous shopfront with a yellow fascia over two display windows and side doors"
+  }
+ ],
+ "notes": "The wall shows a seam with a downpipe and a slight brick tone change at the middle, so it may be two equal pands under one roof; read as one four-bay front.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

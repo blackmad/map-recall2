@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012236454",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236454.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "dormers",
+  "bands",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white arched hood mouldings over the segmental heads on the first and second upper storeys"
+  },
+  {
+   "component": "relief",
+   "what": "a decorative white frieze with small panels runs under the cornice above the top windows"
+  }
+ ],
+ "notes": "Outline spans two fronts: a dark-brick front with white bands at left (described) and a redder brick front with dormers at right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

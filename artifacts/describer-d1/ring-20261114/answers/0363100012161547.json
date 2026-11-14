@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012161547",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161547.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "stoop",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "sameAs",
+  "dormers",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber erker with leaded top lights projects over the shop on the first floor in the centre bay"
+  },
+  {
+   "component": "door",
+   "what": "the house door is a round-arched double door up a short stoop at the left"
+  }
+ ],
+ "notes": "Thin yellow brick courses run across the dark brick front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

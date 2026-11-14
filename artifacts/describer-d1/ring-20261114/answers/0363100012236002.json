@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012236002",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236002.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "balconies",
+  "sameAs",
+  "dormers",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "dormers of different sizes, two with small pediments, in a slate mansard behind a white cornice"
+  }
+ ],
+ "notes": "A tree hides the right bays of the upper storeys; the front may be two three-bay houses sharing one bar ground floor.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012181021",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181021.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.souterrain",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "an iron-railed balcony on two carved stone consoles over the ground-floor middle window"
+  },
+  {
+   "component": "dormer",
+   "what": "a central stucco dormer with a round pediment between two small roof windows on a slate roof face"
+  }
+ ],
+ "notes": "A bare tree in front of the left axis and cars at the plinth.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

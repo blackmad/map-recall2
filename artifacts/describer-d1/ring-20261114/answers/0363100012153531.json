@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012153531",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153531.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "sameAs",
+  "dormers",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "dormer with a hoist beam between two small roof windows"
+  }
+ ],
+ "notes": "A street lamp hangs in front of the dormer.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

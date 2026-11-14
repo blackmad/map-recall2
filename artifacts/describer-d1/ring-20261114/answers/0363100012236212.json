@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012236212",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236212.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "windowSurround",
+  "doorBay",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a raised brick wall gable with white volutes and a crest over the centre axis above the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "an ornate white stone shopfront with carved corner piers and an arched name fascia"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes on consoles stacked on the centre axis of all three upper storeys"
+  }
+ ],
+ "notes": "A sign pole and a car stand in front; climbing plants hide the door at right.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012106015",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012106015.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "step",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "sameAs",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small white block (keystone-like) over the flat head of each window"
+  }
+ ],
+ "notes": "The outline spans a three-axis step-gabled front and a two-axis pointed-gabled corner front; described the step-gabled one. A bare tree and blurred figures stand in front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

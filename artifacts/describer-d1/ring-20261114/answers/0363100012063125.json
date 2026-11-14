@@ -1,0 +1,83 @@
+{
+ "v": 1,
+ "pandId": "0363100012063125",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012063125.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  2,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "mixed",
+  "mixed",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "bands",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "left group on each upper storey is a balcony door between two narrow side windows"
+  },
+  {
+   "component": "dormer",
+   "what": "wide brick wall dormer with a shallow pediment and three arched lights over the left bays"
+  },
+  {
+   "component": "window",
+   "what": "right window heads on the lower two upper storeys and the door head are segmental with a decorative brick tympanum"
+  }
+ ],
+ "notes": "Strong sun glare on the right; bays counts the narrow side lights as separate openings.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

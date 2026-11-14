@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012157600",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157600.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a wrought-iron balcony on brackets in front of the storey-1 centre window"
+  }
+ ],
+ "notes": "The souterrain is faced in grey stone with two windows; the street door stands at the top of a stoop in a round-arched opening.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

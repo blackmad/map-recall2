@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012161813",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161813.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "crown",
+  "storeyParts.full",
+  "storeyParts.souterrain",
+  "heads",
+  "ground",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the street door up a tall stoop has a stone doorcase with two round-arched top lights and a small pediment"
+  },
+  {
+   "component": "shopfront",
+   "what": "a small shop with a painted fascia sits at pavement level under the bel-etage window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the top is a short raised centre with an arched window, ball finials and a statue-like ornament on its crown"
+  }
+ ],
+ "notes": "A bare tree crosses the left and centre bays; the bel-etage is one wide window beside the door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

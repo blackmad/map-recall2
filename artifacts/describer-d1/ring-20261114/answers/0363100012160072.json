@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012160072",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160072.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "balconies",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white painted shopfront with a fascia and two street doors side by side at the right"
+  }
+ ],
+ "notes": "Parked cars hide the bottom of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

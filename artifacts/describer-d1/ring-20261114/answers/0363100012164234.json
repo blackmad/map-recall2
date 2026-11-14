@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012164234",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164234.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "not-visible",
+ "windowSurround": "not-visible",
+ "sills": "not-visible",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windows",
+  "heads",
+  "storeyParts.full",
+  "bays",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber oriel runs up storeys 1 and 2 with a balcony on its top at storey 3"
+  }
+ ],
+ "notes": "A bare tree covers almost the whole front, so bands, surrounds and window kind are hard to read.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

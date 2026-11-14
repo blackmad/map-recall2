@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012237129",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237129.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "windowSurround",
+  "cornice",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "pilasters stand between the upper windows and the second-storey windows carry curved hood mouldings"
+  },
+  {
+   "component": "dormer",
+   "what": "a paired dormer with two round-topped stucco heads stands over the middle bays"
+  }
+ ],
+ "notes": "Vans and a pole hide the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012066507",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012066507.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "brick wall dormer with a stepped top and chimney rising over the right bay"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on corbels in front of the wide right window group on the upper storeys"
+  }
+ ],
+ "notes": "A truck hides most of the white-rendered ground storey; a railing may also stand at the first floor of the right group.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

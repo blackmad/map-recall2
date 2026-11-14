@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012162284",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162284.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "extent",
+  "doorBay",
+  "heads",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the ground storey is one white rendered shop band across both fronts"
+  },
+  {
+   "component": "balcony",
+   "what": "shallow slab balconies on iron brackets under the French windows of the second axis"
+  }
+ ],
+ "notes": "The outline spans a two-axis front with its door at left and a three-axis front at right, each with one dormer; the three-axis one is described.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

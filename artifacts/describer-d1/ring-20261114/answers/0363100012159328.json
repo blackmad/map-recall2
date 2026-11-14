@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012159328",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159328.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "dormers",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the white rendered wall is rusticated with horizontal joints, and dark-painted keystone ornaments sit over the upper windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "three round-arched ground openings in a rusticated white base: a door, a roller-shuttered shop entrance and a window"
+  }
+ ],
+ "notes": "A low two-storey white front with a slate mansard and one dormer; a tree crosses its right edge.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

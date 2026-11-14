@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012160319",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160319.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a decorative brick corbel frieze of small arches under the cornice"
+  }
+ ],
+ "notes": "A passing tram hides the ground storey; three upper rows are visible. The outline is the right half of a four-bay wall of one design.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

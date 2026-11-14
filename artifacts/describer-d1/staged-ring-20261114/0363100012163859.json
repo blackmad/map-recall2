@@ -1,0 +1,132 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012163859",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "courses",
+    "gable": "cornice",
+    "readBalconies": [
+     2
+    ],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [
+     1
+    ],
+    "readDoorSurround": true,
+    "rowHeads": [
+     "round",
+     "flat",
+     "mixed"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#38302e"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163859.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling"
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a richly carved white timber oriel over the door bay at row 1, on carved brackets"
+  },
+  {
+   "component": "window",
+   "what": "red and white striped voussoirs round every arch, and decorative tympana over the row-1 windows"
+  },
+  {
+   "component": "balcony",
+   "what": "a deep round-arched loggia with a guard over the oriel at row 2"
+  }
+ ]
+}

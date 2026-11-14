@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012152637",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152637.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "t-window",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "doorBay",
+  "sameAs",
+  "mirrored",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white ornamental wall dormer with curved shoulders and a small top on a tiled roof"
+  }
+ ],
+ "notes": "End house of a pair; its street door seems to be the left one of the paired doors just right of the outline.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

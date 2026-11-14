@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012156158",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156158.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  1
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.souterrain",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has a single central window over a two-axis front below"
+  }
+ ],
+ "notes": "Rendered side face of a corner house toward the street, no door on this face; grey plinth with three low windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

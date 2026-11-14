@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012079011",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012079011.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 4,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sills",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "brick pilasters run between the four axes from the first storey to the cornice"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall plain brick band separates the dark shopfront from the first storey"
+  }
+ ],
+ "notes": "The outline sits left of the front; a tree covers the right axis.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

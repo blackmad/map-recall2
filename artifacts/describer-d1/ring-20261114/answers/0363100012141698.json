@@ -1,0 +1,85 @@
+{
+ "v": 1,
+ "pandId": "0363100012141698",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012141698.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "cornice",
+  "bays",
+  "storeyParts.roof",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "three-sided white-framed bay window on a brick base at the first floor over the left bays"
+  },
+  {
+   "component": "window",
+   "what": "left group on the upper storeys is a balcony door between two narrow side lights under one segmental arch"
+  },
+  {
+   "component": "roof",
+   "what": "a flat-topped brick wall raised over the left bays holds two attic windows; the right bay has a roof slope with a small dormer"
+  }
+ ],
+ "notes": "Shop ground storey partly stripped; ornamental iron balconies on consoles.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

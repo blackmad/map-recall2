@@ -1,0 +1,144 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012158589",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "storey",
+    "souterrain": true,
+    "gable": "step",
+    "cornice": "none",
+    "readBalconies": [
+     1
+    ],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": true,
+    "rowHeads": [
+     "round",
+     "relieving",
+     "relieving"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#3c2e2b"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158589.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling"
+ },
+ "schemaLimits": [
+  {
+   "component": "door",
+   "what": "round-arched door with a carved stone pediment over it"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconette on two white stone consoles over the middle bay"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two white shell niches beside the attic window in the step gable, with a finial on top"
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012159623",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159623.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "heads",
+  "bands",
+  "windowSurround",
+  "doorBay",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "stone balustrade balconies on the stone-faced centre bay of the first and second floors"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched stone portal with a fanlight and steps on the centre bay"
+  },
+  {
+   "component": "relief",
+   "what": "carved garland relief in the frieze under the heavy cornice; stone pilasters and quoin strips frame the brick wings"
+  },
+  {
+   "component": "dormer",
+   "what": "a large central dormer with paired round-arched windows under a pediment"
+  }
+ ],
+ "notes": "The outline takes the left wing and half the centre bay of a larger symmetrical building; glare crosses the second floor.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

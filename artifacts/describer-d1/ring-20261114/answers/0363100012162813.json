@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012162813",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162813.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-sidelights-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 1,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "bands",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "each storey has one wide window of a broad centre light between narrow side lights with gridded top lights, under a small moulded hood"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with light dressings rises over the cornice"
+  }
+ ],
+ "notes": "A narrow one-bay front with no street door of its own; shrubs and bins hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012062324",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012062324.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "balconies",
+  "mirrored",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall brick dormer with a pediment, pinnacles and a spire finial rising from the mansard"
+  },
+  {
+   "component": "relief",
+   "what": "white splayed stone blocks fan over the flat heads of storeys 2 and 3; storey 1 windows sit under round relieving arches with ornamented tympana"
+  }
+ ],
+ "notes": "A blurred box and bicycles hide part of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

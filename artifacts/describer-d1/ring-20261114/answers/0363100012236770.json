@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012236770",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236770.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 1,
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "not-visible"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "none",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "doorBay",
+  "ground",
+  "basement",
+  "whiteFrames",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a projecting first-floor loggia with carved columns and a panelled stone balustrade under a cornice"
+  },
+  {
+   "component": "relief",
+   "what": "rusticated stucco pilaster strips at the corners"
+  }
+ ],
+ "notes": "The outline covers only the right bay of a detached stucco villa seen from the side street; the top storey in this bay has no window, and lens flare crosses the roof line.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

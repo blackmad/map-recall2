@@ -1,0 +1,108 @@
+{
+ "v": 1,
+ "pandId": "0363100012161795",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161795.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "sameAs",
+  "doorSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "pilaster",
+   "what": "giant rusticated stucco pilasters with roundels frame this three-bay end unit from the bel-etage to the cornice"
+  },
+  {
+   "component": "bands",
+   "what": "the bel-etage is striped with broad light stucco speklagen with carved consoles under the first-floor sill band"
+  },
+  {
+   "component": "door",
+   "what": "round-arched open doorway with a steep stair climbing inside it, a round oculus with a keystone ornament above"
+  },
+  {
+   "component": "window",
+   "what": "two round-arched bel-etage windows with short stone balustrade panels under their sills"
+  },
+  {
+   "component": "balcony",
+   "what": "stone balconies with pierced balustrade fronts and iron rails in the middle bay on the first and second floors"
+  },
+  {
+   "component": "window",
+   "what": "the second-floor middle window has a full stucco frame and the third-floor middle window a segmental pediment head"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam over the middle bay"
+  },
+  {
+   "component": "rustication",
+   "what": "rusticated grey stone souterrain with windows"
+  },
+  {
+   "component": "relief",
+   "what": "festoon reliefs in the frieze under the heavy cornice"
+  }
+ ],
+ "notes": "End unit of a long pilastered block; parked cars hide the souterrain foot.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

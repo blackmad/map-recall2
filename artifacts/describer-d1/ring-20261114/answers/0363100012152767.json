@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012152767",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152767.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "not-visible",
+  "not-visible",
+  "not-visible"
+ ],
+ "bands": "storey",
+ "windowSurround": "not-visible",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bays",
+  "storeyParts.full",
+  "balconies",
+  "dormers",
+  "bands",
+  "sills",
+  "doorSurround",
+  "cornice"
+ ],
+ "gaps": [],
+ "notes": "Far, oblique view behind a tree with sun glare; the arched door at the right has a light stone surround.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

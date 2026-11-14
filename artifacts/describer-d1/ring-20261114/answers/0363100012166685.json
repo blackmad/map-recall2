@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012166685",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166685.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "heads",
+  "columns",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a wide wall dormer over the two centre axes ending in a stepped point with a finial"
+  },
+  {
+   "component": "shopfront",
+   "what": "a continuous shopfront with a pale fascia and dark tiled pilasters"
+  }
+ ],
+ "notes": "Corner building; the side return with balconies is not described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

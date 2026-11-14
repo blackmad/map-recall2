@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012163615",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163615.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "consoles",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "extent",
+  "ground",
+  "dormers",
+  "heads",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a supermarket canopy runs across the ground storey; this front holds only two street doors with a top light between the shop windows"
+  }
+ ],
+ "notes": "The outline is a narrow slice across a party wall (the cornice steps there), one bay of each block; glare and a cable cross the windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

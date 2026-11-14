@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012181993",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181993.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  8,
+  6,
+  6
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "attic-frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "cornice",
+  "windows",
+  "ground",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "one continuous iron-railed balcony across the whole first floor on a stone slab"
+  },
+  {
+   "component": "shopfront",
+   "what": "a pale stone-faced ground storey with a row of tall windows, a timber side door and a stone-framed entrance with steps"
+  },
+  {
+   "component": "roof",
+   "what": "a low row of small windows under the eaves line and a set-back roof storey with skylights"
+  }
+ ],
+ "notes": "Post-war infill front; the low row of small windows under the roof is read as an attic band, not a full storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012235916",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235916.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "dormers",
+  "heads",
+  "sameAs",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "upper windows in pairs with white stone blocks at the jambs and arches"
+  },
+  {
+   "component": "shopfront",
+   "what": "one long shopfront with red-framed shop doors and two pairs of plain house doors"
+  }
+ ],
+ "notes": "The outline spans a long uniform stretch of a block with no clear party wall; the bay count is the windows inside the outline.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

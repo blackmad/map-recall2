@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167064",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 3,
+    "bands": "courses",
+    "souterrain": false,
+    "gable": "cornice",
+    "readBalconies": [
+     2,
+     3,
+     4
+    ],
+    "readDormers": {
+     "count": 1,
+     "kind": "plain"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false,
+    "rowHeads": [
+     "flat",
+     "flat",
+     "segmental",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#38332e"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167064.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "the shop and the storey above it are rebuilt as one white rendered block with a wide multi-light window band"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes on small corbels at the centre-axis French doors"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer rising from the front over the centre axis"
+  }
+ ]
+}

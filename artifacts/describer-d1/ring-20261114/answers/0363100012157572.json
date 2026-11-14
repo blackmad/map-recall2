@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012157572",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157572.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "dormers",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "white wall dormer with a hoist beam over the cornice"
+  },
+  {
+   "component": "roof",
+   "what": "dentilled brick frieze under the cornice"
+  }
+ ],
+ "notes": "Two street doors side by side under one toplight at the right of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
