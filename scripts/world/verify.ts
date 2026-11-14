@@ -49,7 +49,7 @@ async function main() {
     const picked: CellBuilding[] = [];
     for (const k of index.tileCells[t] ?? []) for (const b of cell(k).buildings) if (b.tile === t) picked.push(b);
     picked.sort((a, b) => a.ordinal - b.ordinal);
-    const a = new Map(rows.map(r => [String(r.raw.properties.id), r])), b = new Map(picked.map(p => [p.id, p]));
+    const a = new Map(rows.map(r => [String(r.styled.properties.id), r])), b = new Map(picked.map(p => [p.id, p]));
     const v: TileVerdict = { tile: t, default: rows.length, world: picked.length, onlyWorld: [...b.keys()].filter(k => !a.has(k)), onlyDefault: [...a.keys()].filter(k => !b.has(k)), rawDiffer: [], styledDiffer: [], orderDiffers: false };
     for (const [id, r] of a) {
       const p = b.get(id); if (!p) continue;
@@ -58,7 +58,7 @@ async function main() {
       if ((index.debug && !sameValue(raw.properties, policyBag(r.raw.properties))) || !sameValue(raw.geometry, policyGeometry(r.raw.geometry, r.cell))) v.rawDiffer.push(id);
       if (!sameValue(styledFeature(p, raw).properties, policyBag(r.styled.properties))) v.styledDiffer.push(id);
     }
-    v.orderDiffers = rows.length === picked.length && rows.some((r, i) => String(r.raw.properties.id) !== picked[i].id);
+    v.orderDiffers = rows.length === picked.length && rows.some((r, i) => String(r.styled.properties.id) !== picked[i].id);
     verdicts.push(v);
   }
   const differing = verdicts.filter(v => v.onlyWorld.length || v.onlyDefault.length || v.rawDiffer.length || v.styledDiffer.length || v.orderDiffers);
