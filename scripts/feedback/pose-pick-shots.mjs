@@ -2,7 +2,8 @@
 // chase zoom), plus the building under the note's anchor, picked the way a tap picks it (vectorMap.inspectBuilding).
 // Lane blank-walls-20261114 (notes 21dc1e32, 174d2455, 9aa8d03b).
 //   PW_PORT=4441 node scripts/feedback/pose-pick-shots.mjs <outdir> <tag> --pose name:lng,lat,bearingDeg,zoom[,ax,ay]
-//     [--pose ...] [--qs 'x=0'] [--mobile] [--settle s] [--pick x,y]   (extra picks, viewport fractions)
+//     [--pose ...] [--qs 'x=0'] [--mobile] [--settle s] [--pick x,y]   (extra picks, viewport fractions) [--dpr 2]
+//     [--prefs '{"cameraTilt":15,"buildingLook":"storybook"}']   (merged into the saved preferences: the note's tilt and look)
 // A pose's lng,lat is the note's context.mapCenter (the chase camera's centre); bearing is degrees clockwise from north
 // (game angle = (bearing - 90)°); ax,ay the note's target.anchor (viewport fractions). Writes
 // <outdir>/<device>-<pose>-<tag>.jpg and prints the pick as JSON.
@@ -19,7 +20,7 @@ const poses = process.argv.flatMap((a, i) => (a === '--pose' ? [process.argv[i +
   return { name, at: [lng, lat], bearing, angle: (bearing - 90) * Math.PI / 180, zoom, anchor: [ax, ay], rider: Number.isFinite(rdx) ? [rdx, rdy] : null };
 });
 const extraPicks = (opt('pick', '') || '').split(';').filter(Boolean).map(s => s.split(',').map(Number));
-const ctxOpts = mobile ? { ...devices['iPhone 13'], defaultBrowserType: undefined } : { viewport: { width: 1326, height: 761 }, deviceScaleFactor: 1 };
+const ctxOpts = mobile ? { ...devices['iPhone 13'], defaultBrowserType: undefined } : { viewport: { width: 1326, height: 761 }, deviceScaleFactor: Number(opt('dpr', '1')) || 1 };
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const context = await browser.newContext(ctxOpts);
 await context.route(/ingest\.(us\.)?sentry\.io/, r => r.fulfill({ status: 200, body: '{}' }));
@@ -29,7 +30,7 @@ for (const spec of process.argv.flatMap((a, i) => (a === '--model' ? [process.ar
   const [name, file] = spec.split('=');
   await context.route(new RegExp(`/models/(?:.*/)?${name.replace(/[.]/g, '\\.')}(\\?|$)`), r => r.fulfill({ path: file, contentType: 'model/gltf-binary' }));
 }
-await context.addInitScript(() => { try { const k = 'canalRecall.preferences.v1', p = JSON.parse(localStorage.getItem(k) || '{}'); localStorage.setItem(k, JSON.stringify({ ...p, travelMode: 'car' })); } catch { /* storage off */ } });
+await context.addInitScript(extra => { try { const k = 'canalRecall.preferences.v1', p = JSON.parse(localStorage.getItem(k) || '{}'); localStorage.setItem(k, JSON.stringify({ ...p, travelMode: 'car', ...extra })); } catch { /* storage off */ } }, JSON.parse(opt('prefs', '{}')));
 await context.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 const page = await context.newPage();
 page.on('pageerror', e => console.log('pageerror', String(e).slice(0, 200)));
