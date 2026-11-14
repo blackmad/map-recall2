@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "id": "westergas-gosschalklaan-12",
+ "pand": "0363100012166024",
+ "brief": "scripts/landmarks/westergas-gosschalklaan-12-brief.md",
+ "signature": [
+  "gk-hip-roof",
+  "gk-frieze",
+  "gk-bands",
+  "gk-south-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-268",
+   "bearing": 268,
+   "lengthM": 14,
+   "centre": [
+    4.8680055,
+    52.386484
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_12-37-22_00612",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "gk-west",
+     "kind": "window-shape",
+     "where": "west side behind the neighbouring wall and the fence; one window seen through the bamboo",
+     "approxSizeM": [
+      1.2,
+      2.0
+     ],
+     "plan": "simplified",
+     "how": "one framed opening; the side is mostly hidden",
+     "seenIn": "recording_2024-09-11_12-37-22_00612"
+    }
+   ]
+  },
+  {
+   "tag": "w02-89",
+   "bearing": 89,
+   "lengthM": 14,
+   "centre": [
+    4.868108,
+    52.386486
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_000917",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "gk-terrace-doors",
+     "kind": "other",
+     "where": "east (terrace) side: a glazed door pair at the south end, a window, a single door at the north end",
+     "approxSizeM": [
+      2.2,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "framed openings",
+     "seenIn": "TMX7316010203-001594_pano_0000_000917"
+    },
+    {
+     "id": "gk-cafe-sign",
+     "kind": "lettering",
+     "where": "small cafe lettering on the east wall at ~4 m",
+     "approxSizeM": [
+      1.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "script lettering ~0.3 m tall behind trees"
+     },
+     "seenIn": "TMX7316010203-001594_pano_0000_000917"
+    },
+    {
+     "id": "gk-umbrellas",
+     "kind": "other",
+     "where": "red terrace umbrellas and string lights",
+     "approxSizeM": [
+      3,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     },
+     "seenIn": "TMX7316010203-001594_pano_0000_000917"
+    }
+   ]
+  },
+  {
+   "tag": "w03-359",
+   "bearing": 359,
+   "lengthM": 7,
+   "centre": [
+    4.8680535,
+    52.386548
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_000911",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "gk-north-window",
+     "kind": "window-shape",
+     "where": "one wide window in the north end",
+     "approxSizeM": [
+      2.8,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "three-light framed opening",
+     "seenIn": "TMX7316010203-001594_pano_0000_000911"
+    },
+    {
+     "id": "gk-duct",
+     "kind": "other",
+     "where": "a silver kitchen extract duct up the north end to above the roof, with a cooling unit",
+     "approxSizeM": [
+      0.3,
+      5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm duct, a later service fitting"
+     },
+     "seenIn": "TMX7316010203-001594_pano_0000_000911"
+    }
+   ]
+  },
+  {
+   "tag": "w04-179",
+   "bearing": 179,
+   "lengthM": 6.9,
+   "centre": [
+    4.86806,
+    52.386422
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001594_pano_0000_001061",
+   "capturedAt": "2020-01-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "gk-south-windows",
+     "kind": "window-shape",
+     "where": "two white-framed windows with transoms under one wide white lintel",
+     "approxSizeM": [
+      3.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "framed openings with a bar; one white lintel slab",
+     "seenIn": "TMX7316010203-001594_pano_0000_001061"
+    },
+    {
+     "id": "gk-bands",
+     "kind": "other",
+     "where": "white bands at 1.75 and 3.35 m round the house, broken by the openings",
+     "approxSizeM": [
+      42,
+      0.12
+     ],
+     "plan": "modelled",
+     "how": "white band slabs per face cut round the openings",
+     "seenIn": "TMX7316010203-001594_pano_0000_001061"
+    },
+    {
+     "id": "gk-frieze",
+     "kind": "other",
+     "where": "frieze of white blocks every ~0.5 m between a white band and the eaves board, on a 40 cm eaves overhang",
+     "approxSizeM": [
+      42,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "white block slabs and a pathLedge eaves board round the ring",
+     "seenIn": "TMX7316010203-001594_pano_0000_001061"
+    },
+    {
+     "id": "gk-hip-roof",
+     "kind": "other",
+     "where": "red-tiled hipped roof, ridge 8.6 m",
+     "approxSizeM": [
+      14,
+      3.2
+     ],
+     "plan": "modelled",
+     "how": "3DBAG LoD2.2 roof pieces in the red slot",
+     "seenIn": "TMX7316010203-001594_pano_0000_001061"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

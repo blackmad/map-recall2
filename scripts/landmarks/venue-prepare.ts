@@ -45,6 +45,8 @@ export const VENUES: Record<string, Venue> = {
     address: 'Atlantisplein 1, Amsterdam (Q-Factory)', sources: [wiki('Amstel_Brouwerij', 'Amstel Brouwerij')]},
   'westergas-bazenwoning-west': {pand: '0363100012161595', label: 'Gosschalklaan 8 (Westergasfabriek, western foremen\'s house, 1885)',
     address: 'Gosschalklaan 8, Amsterdam (Westergasfabriek)', sources: [wiki('Westergasfabriek'), rce(337633, 'Westergasfabriek')]},
+  'westergas-gosschalklaan-12': {pand: '0363100012166024', label: 'Gosschalklaan 12 (Westergasfabriek, house by Isaac Gosschalk, 1885)',
+    address: 'Gosschalklaan 12, Amsterdam (Westergasfabriek)', sources: [wiki('Westergasfabriek'), rce(512963, 'Gosschalklaan 12')]},
   'meervaart': {pand: '0363100012085435', label: 'Meer en Vaart 300 (Theater De Meervaart)',
     address: 'Meer en Vaart 300, Amsterdam (De Meervaart)', sources: [wiki('Meervaart')]},
 };

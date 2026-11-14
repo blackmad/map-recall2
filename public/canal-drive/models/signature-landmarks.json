@@ -102798,6 +102798,131 @@
       "triangles": 3704,
       "bytes": 62400,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "westergas-gosschalklaan-12": {
+      "id": "westergas-gosschalklaan-12",
+      "name": "Westergasfabriek, Gosschalklaan 12 (1885)",
+      "landmarkId": "westergas-gosschalklaan-12",
+      "modelUrl": "./models/westergas-gosschalklaan-12.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012166024"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86805407,
+          52.38648256
+        ],
+        "headingDegrees": 88.53,
+        "lengthMetres": 7,
+        "widthMetres": 14
+      },
+      "surveyed": {
+        "anchor": [
+          4.86805369,
+          52.38648955
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012166024 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/westergas-gosschalklaan-12-footprints.json, written by venue-prepare.ts). Walls drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-001594_pano_0000_001062, TMX7316010203-001594_pano_0000_000917, TMX7316010203-001594_pano_0000_000911, recording_2024-09-11_12-37-22_00613); the hipped roof keeps the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/westergas-gosschalklaan-12-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 8.7,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.15
+      },
+      "bagYear": 1885,
+      "materialOverrides": {
+        "brick": "#4e3a33",
+        "white": "#e2ddd0",
+        "glass": "#384044",
+        "dark": "#3a3d3f",
+        "red": "#a5553c"
+      },
+      "attribution": {
+        "title": "Westergasfabriek, Gosschalklaan 12, Amsterdam (1885, Isaac Gosschalk, Rijksmonument 512963)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Westergasfabriek",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 hipped roof (CC BY 4.0): dark brick with white bands, the white block frieze and eaves board, white-framed windows and doors. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.86810256,
+              52.38654358
+            ],
+            [
+              4.86810241,
+              52.38654653
+            ],
+            [
+              4.86799917,
+              52.38654445
+            ],
+            [
+              4.86799927,
+              52.38654261
+            ],
+            [
+              4.86800434,
+              52.38644822
+            ],
+            [
+              4.8680059,
+              52.38641858
+            ],
+            [
+              4.8681087,
+              52.38642064
+            ],
+            [
+              4.86810716,
+              52.38645174
+            ],
+            [
+              4.86810256,
+              52.38654358
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -4.072849750518799,
+          -0.30000001192092896,
+          -6.73904275894165
+        ],
+        "max": [
+          4.099112510681152,
+          8.630999565124512,
+          8.28315544128418
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86805369,
+          52.38648955
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 88.52999999999997,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 15.02219820022583,
+        "heightMetres": 8.93099957704544,
+        "depthMetres": 8.171962261199951,
+        "depthCoverage": 0.5837115900857108
+      },
+      "triangles": 1539,
+      "bytes": 29132,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

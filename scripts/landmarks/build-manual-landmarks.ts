@@ -456,6 +456,7 @@ import {buildTheaterBellevue} from './theater-bellevue-builder';
 import {buildMuziekgebouwBimhuis} from './muziekgebouw-bimhuis-builder';
 import {buildQFactory} from './q-factory-builder';
 import {buildWestergasBazenwoningWest} from './westergas-bazenwoning-west-builder';
+import {buildWestergasGosschalklaan12} from './westergas-gosschalklaan-12-builder';
 import {buildSameplace} from './sameplace-builder';
 import {buildClubRaum} from './club-raum-builder';
 import {buildDoubletreeCentraal} from './doubletree-centraal-builder';
@@ -1106,6 +1107,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='theater-bellevue')buildTheaterBellevue(w,d,helpers);
     else if(id==='q-factory')buildQFactory(w,d,helpers);
     else if(id==='westergas-bazenwoning-west')buildWestergasBazenwoningWest(w,d,helpers);
+    else if(id==='westergas-gosschalklaan-12')buildWestergasGosschalklaan12(w,d,helpers);
     else if(id==='sameplace')buildSameplace(w,d,helpers);
     else if(id==='club-raum')buildClubRaum(w,d,helpers);
     else if(id==='doubletree-centraal')buildDoubletreeCentraal(w,d,helpers);
