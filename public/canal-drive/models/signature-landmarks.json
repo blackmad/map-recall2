@@ -2364,13 +2364,7 @@
       },
       "triangles": 2256,
       "bytes": 31472,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "lod2": {
-        "sourceHash": "0b663a1c7450e894",
-        "buildVersion": 6,
-        "bytes": 5368,
-        "triangles": 124
-      }
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "stedelijk-museum": {
       "id": "stedelijk-museum",
@@ -2551,12 +2545,6 @@
         "buildVersion": 2,
         "bytes": 67572,
         "triangles": 3298
-      },
-      "lod2": {
-        "sourceHash": "f5963924108a152e",
-        "buildVersion": 6,
-        "bytes": 7640,
-        "triangles": 264
       }
     },
     "pontsteiger": {
@@ -2619,20 +2607,14 @@
         "depthMetres": 83.216796875,
         "depthCoverage": 0.9545884803021156
       },
-      "triangles": 27672,
-      "bytes": 344080,
+      "triangles": 19992,
+      "bytes": 249516,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "1f9f41629833d4c5",
         "buildVersion": 2,
         "bytes": 76092,
         "triangles": 4244
-      },
-      "lod2": {
-        "sourceHash": "1f9f41629833d4c5",
-        "buildVersion": 6,
-        "bytes": 11768,
-        "triangles": 552
       }
     },
     "oba-oosterdok": {
@@ -2803,12 +2785,6 @@
         "buildVersion": 2,
         "bytes": 20272,
         "triangles": 842
-      },
-      "lod2": {
-        "sourceHash": "00b0beaeb4309cbf",
-        "buildVersion": 6,
-        "bytes": 5804,
-        "triangles": 126
       }
     },
     "paradiso": {
@@ -2877,12 +2853,6 @@
         "buildVersion": 2,
         "bytes": 16048,
         "triangles": 572
-      },
-      "lod2": {
-        "sourceHash": "5ce89164c61afca0",
-        "buildVersion": 6,
-        "bytes": 4368,
-        "triangles": 70
       }
     },
     "melkweg": {
@@ -2944,15 +2914,9 @@
         "depthMetres": 36.01011276245117,
         "depthCoverage": 1.0118158476921648
       },
-      "triangles": 2996,
-      "bytes": 36592,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "lod2": {
-        "sourceHash": "c316c1a16e1e79c2",
-        "buildVersion": 6,
-        "bytes": 4252,
-        "triangles": 68
-      }
+      "triangles": 2816,
+      "bytes": 41836,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "silodam": {
       "id": "silodam",
