@@ -86,7 +86,7 @@ export const OVERVIEW_TILES_FADE_ZOOM = 0.5;
  * ground there until the own ground covers it. `?overviewStreetFade=1|0`; default below.
  */
 export const OVERVIEW_TILES_STREET_FADE = [16, 16.5] as const;
-export const OVERVIEW_TILES_STREET_FADE_DEFAULT = false;
+export const OVERVIEW_TILES_STREET_FADE_DEFAULT = true;
 
 /** `?overviewStreetFade=1|0` (or `window.__canalRecallOverviewStreetFade`), else the default. */
 export function overviewTilesStreetFadeEnabled(search: string = (globalThis as { location?: { search?: string } }).location?.search ?? ''): boolean {
