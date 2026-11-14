@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "No more glass hats on new-build roofs",
+      "text": "Many blocks built since 2005 wore a bright blue glass top storey, added at random. Aerial photos show those roofs carry solar panels and plant, not glass, so 852 roofs are back to their real flat tops; only buildings known to have a set-back top floor keep one. On Grasweg in Noord, a glass band that floated over the two modelled towers and roofed their courtyard is gone too. From far away the pre-built city may still show a few until its next rebuild.",
+      "where": [
+        4.8994,
+        52.3937
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-roof-glazing-grasweg-pair.jpg",
+          "alt": "Grasweg towers, before (glass band across the roofs) and after",
+          "caption": "Grasweg, before (top) | after (bottom)"
+        },
+        {
+          "src": "whats-new/2026-11-14-roof-glazing-ortho-sample.jpg",
+          "alt": "Aerial photo sample of twelve roofs that had a glass crown: solar panels and plant, no glazing",
+          "caption": "The evidence: 12 sampled roofs from the air"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "One pane per window on landmarks",
       "text": "Landmarks modelled without texture coordinates (the Pontsteiger, the Rijksmuseum's glass roofs and about 400 others) now show each window as one pane of glass. Before, each window showed as a stack of small repeated panes, which looked like generic windows overlapping the model.",
       "where": [

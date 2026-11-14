@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Set-back crowns need evidence (2026-11-14)
+
+Feedback 09e7bce0 / 6070a7e5: the blue glazed top storey on generic flat roofs was `contemporaryFamily.ts` drawing a set-back crown for 35 % of 2005+ housing pands ≥ 14 m by hash (852 pands); a 12-roof PDOK sample showed solar fields and plant, never an inset glass storey. Crowns now need the `setback` tag (`scripts/newbuild/front-tags.json` → `contemporary-walls.json`), seeded with Houthavenkade 26 and Revaleiland 437: 852 → 2. The crown was also its own `<pand>:setback` mesh range, so landmark suppression, ghosting and picking missed it and Grasweg 116-124's crown floated over `grasweg-116.glb`; `MeshBuilding.rangeOwner` folds it into its pand's range. Pinned by `check:roof-glazing` (in check:canal:rest).
+
+
 ## Box-UV landmark glass (2026-11-14)
 
 Feedback a4013653/10ada6d9 read the Pontsteiger as generic windows drawn over the model. Nothing underlays it (generic layer, baked HIDE and covers all suppress its five OSM outlines). Cause: `cityLook.ts` box-UV path tiled the glass pane cell every metre on GLBs without UVs (409 of 766 drawn GLBs), so each window drew 2–3 stacked panes. Box-path pane layers now take one flat mid-pane sample (`BOX_PANE_UV`). Pinned in `cityLook.test.ts`; `modelOverlap.test.ts` (`coverCollisions`) pins model-on-model pairs and now runs in check:canal:rest via test:building-taxonomy. The Pontsteiger GLB itself still lays two window grids on coplanar faces (TODO).

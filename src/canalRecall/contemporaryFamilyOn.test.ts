@@ -71,10 +71,15 @@ test('on: offices, pre-2005 and undated buildings keep their old picks', () => {
   }
 });
 
-test('on: a marked block draws a set-back glazed top storey over a terrace', () => {
+test('on: only a pand tagged with a set-back storey steps back (feedback 09e7bce0: no hash-drawn glass crowns)', () => {
+  assert.equal(ids.filter(i => contemporaryLookFor({ id: i, year: 2018, heightM: 20, use: 'housing', at: [4.877, 52.393] })?.setback).length, 0);
+  assert.equal(contemporaryLookFor({ id: 'NL.IMBAG.Pand.0363100012247232', year: 2018, heightM: 26, use: 'housing', at: HOUTHAVEN })?.setback, true);
+  assert.equal(contemporaryLookFor({ id: 'NL.IMBAG.Pand.0363100012247232', year: 2018, heightM: 12, use: 'housing', at: HOUTHAVEN })?.setback, false, 'under five storeys');
+});
+
+test('on: a tagged block draws a set-back glazed top storey over a terrace, in its pand\'s range', () => {
   const ring = [[4.8770, 52.3930], [4.8780, 52.3930], [4.8780, 52.3936], [4.8770, 52.3936], [4.8770, 52.3930]];
-  const id = ids.find(i => contemporaryLookFor({ id: i, year: 2018, heightM: 20, use: 'housing', at: [4.877, 52.393] })?.setback)!;
-  assert.ok(id, 'some id steps back');
+  const id = 'NL.IMBAG.Pand.0363100012247232';
   const f = { type: 'Feature' as const, properties: { id, height: 20, minHeight: 0, constructionYear: 2018, facade: 'modern|x', facadeStyle: 'modern' }, geometry: { type: 'Polygon', coordinates: [ring] } };
   const b = meshBuildingFor(f, 'storybook')!;
   assert.equal(b.setbackCrown, true);
@@ -83,7 +88,11 @@ test('on: a marked block draws a set-back glazed top storey over a terrace', () 
   assert.ok(Math.abs(body.heightM - (20 - 3.1)) < 1e-9);
   assert.equal(crown.minHeightM, body.heightM);
   assert.equal(crown.heightM, 20);
-  assert.equal(buildFeatureChunk([f], 'storybook').buildingCount, 2);
+  const chunk = buildFeatureChunk([f], 'storybook');
+  assert.equal(chunk.buildingCount, 1, 'one pand');
+  // One range for the pand, crown included: hiding the pand (a landmark's suppression) hides its crown too.
+  assert.deepEqual(chunk.ranges.map(r => r.id), [id]);
+  assert.equal(chunk.ranges[0].count, chunk.vertexCount);
 });
 
 test('on: a pand with its own measured front draws it, not the area draw (round 2, houthaven-2018 and Zeeburgereiland strips)', () => {
