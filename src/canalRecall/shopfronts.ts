@@ -89,14 +89,30 @@ export function shopKindForTags(tags: Record<string, string>): ShopKind | null {
   return 'shopWindow';
 }
 
+type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 let extract: ShopfrontExtract | null = null;
+
+/** Shopfront templates (lane retail-ground, `?retailGround=1`): pand id -> [template index, lng, lat, sign word?]. */
+export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?]> };
+let templates: ShopTemplateExtract | null = null;
+/** Install the template extract (only the flag's loader calls this); null removes it. Absent = nothing stamped. */
+export function setShopTemplates(data: ShopTemplateExtract | null): void {
+  templates = data && Array.isArray(data.templates) && data.buildings ? data : null;
+}
+/** Stamp `shopTemplate` ([name, lng, lat, word?]) on a pand the template extract lists; the same feature otherwise. */
+export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
+  if (!templates) return feature;
+  const row = templates.buildings[String(feature.properties.id ?? '')];
+  if (!row || feature.properties.shopTemplate !== undefined) return feature;
+  const name = templates.templates[row[0]];
+  return name ? { ...feature, properties: { ...feature.properties, shopTemplate: [name, row[1], row[2], ...(row[3] ? [row[3]] : [])] } } : feature;
+}
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */
 export function setShopfronts(data: ShopfrontExtract | null): void {
   extract = data && Array.isArray(data.kinds) && data.buildings ? data : null;
 }
 
-type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
 /**
  * Stamp a building's shopfront (`shopKind`) or, once the extract is in, `shopQuiet` on the rest.
@@ -104,7 +120,8 @@ type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geomet
  * holds a café or food shop, the shop window in its fascia colour.
  */
 export function decorateShopfront<T extends GeoFeature>(feature: T): T {
-  if (!extract) return feature;
+  if (!extract) return decorateShopTemplate(feature);
+  feature = decorateShopTemplate(feature);
   const p = feature.properties;
   if (p.shopKind !== undefined || p.shopQuiet !== undefined) return feature;
   const index = extract.buildings[String(p.id ?? '')];

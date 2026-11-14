@@ -7,6 +7,7 @@
  * `cartoon` (flat colour, thick outlines). Browser only.
  */
 import { hashSeed } from './wallBays.js';
+import { PUI, retailGroundOn } from './retailTemplates.js';
 import { LOOK_VARIANTS, OUTLINE_INK, PALETTES, periodForYear, type Period, type TexturedLook } from './look/palette.js';
 
 export const PX_PER_M = 100;
@@ -416,6 +417,45 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
   }
 }
 
+/**
+ * The measured shopfront (lane retail-ground, `?retailGround=1`; retailTemplates.ts PUI from Haarlemmerdijk's 66 traced
+ * fronts): a fascia band in the business's colour, one wide pane over a stall riser, a thin frame, a dark interior with
+ * a sky reflection; no painted props, awnings or lettering (templates draw those as geometry). The kinds differ only
+ * where the street does: a cafe's curtain band, a brown bar's small panes over amber, a deli's transom, frame tones.
+ */
+function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
+  const { ctx } = p;
+  const x0 = Math.round(w * (1 - PUI.glassShare) / 2), x1 = w - x0, y0 = Math.round(h * PUI.glassTop), y1 = Math.round(h * (1 - PUI.riser));
+  const fT = Math.round(h * PUI.fasciaTop), fB = Math.round(h * PUI.fasciaBottom), f = PUI.framePx;
+  const bar = kind === 'shopBar';
+  const frame = bar ? '#3a2519' : kind === 'shopWindow' || kind === 'shopBike' ? '#2b2b2a' : p.cartoon ? '#fffaf0' : '#e8e4da';
+  // The fascia band across the bay, in the accent (the business's colour), with a thin shadow line under it.
+  p.fill('accent', '#ffffff'); ctx.fillRect(0, fT, w, fB - fT);
+  p.fill('ink', 'rgba(0,0,0,0.35)'); ctx.fillRect(0, fB, w, 4);
+  // Stall riser: a panel under the glass with an inset line (the surround's paint, a shade darker).
+  p.shade(() => { ctx.fillStyle = 'rgba(0,0,0,0.18)'; ctx.fillRect(x0, y1, x1 - x0, h - y1 - 6); ctx.fillStyle = 'rgba(0,0,0,0.22)'; ctx.fillRect(x0 + 10, y1 + 10, x1 - x0 - 20, 3); });
+  // Frame, then the glass inside it.
+  p.fill('ink', frame); ctx.fillRect(x0 - f, y0 - f, x1 - x0 + 2 * f, y1 - y0 + 2 * f);
+  p.shade(() => {
+    const g = ctx.createLinearGradient(0, y0, 0, y1);
+    if (bar) { g.addColorStop(0, '#6a4a2c'); g.addColorStop(1, '#c47a2a'); }
+    else if (p.cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); }
+    else { g.addColorStop(0, '#7f939c'); g.addColorStop(0.35, '#3c474c'); g.addColorStop(1, '#23292b'); }
+    ctx.fillStyle = g; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+    if (!bar) { ctx.fillStyle = 'rgba(255,255,255,0.10)'; ctx.beginPath(); ctx.moveTo(x0 + (x1 - x0) * 0.55, y0); ctx.lineTo(x0 + (x1 - x0) * 0.72, y0); ctx.lineTo(x0 + (x1 - x0) * 0.42, y1); ctx.lineTo(x0 + (x1 - x0) * 0.25, y1); ctx.closePath(); ctx.fill(); }
+  });
+  if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); }
+  p.fill('ink', frame);
+  if (kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe') ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.22), x1 - x0, 6);
+  if (kind === 'shopCafe') { p.fill('ink', '#ece6da'); ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.62), x1 - x0, Math.round((y1 - y0) * 0.38)); }
+  if (bar) {
+    p.fill('ink', '#efe3c8'); ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.55), x1 - x0, Math.round((y1 - y0) * 0.45));
+    p.fill('ink', frame);
+    for (let k = 1; k < 5; k++) ctx.fillRect(x0 + Math.round((x1 - x0) * k / 5) - 3, y0, 6, Math.round((y1 - y0) * 0.55));
+    ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.27), x1 - x0, 5);
+  }
+}
+
 function ribbon(p: Painter, w: number, y: number, h: number): void {
   const { ctx } = p, cartoon = p.cartoon;
   p.fill('ink', cartoon ? '#fffaf0' : '#cfd3d4'); ctx.fillRect(14, y - 8, w - 28, h + 16);
@@ -502,7 +542,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     // wall only
   } else if (v.family === 'ribbon' || v.family === 'curtain') {
     if (!ground) ribbon(p, w, v.family === 'curtain' ? 8 : v.kind === 'attic' ? 120 : 70, v.family === 'curtain' ? h - 24 : v.kind === 'attic' ? 90 : 140);
-    else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    else if (isShop) { paintedGround(p, w, h); if (retailGroundOn()) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (ground) {
     if (v.groundAssembly) {
@@ -514,7 +554,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
       const g=bayWindowGeometry(v,70,240,p.look);
       for(const axis of (v.kind==='groundDoor'?[.17,.83]:[.17,.5,.83])){const ww=w*(axis===.5?.28:.145);windowAt(p,w*axis-ww/2,g.y,ww,g.height,{...v,sash:axis===.5?'paired-transom':'transom'});}
       if(v.kind==='groundDoor')quietDoorAt(p,v,h-24);
-    } else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    } else if (isShop) { paintedGround(p, w, h); if (retailGroundOn()) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else if (v.entranceAssembly === 'raised-plain') {
       const g=bayDoorWindowGeometry(v,p.look), axes=v.kind==='groundDoor'?[.20,.47]:[.20,.47,.80];
       // A quiet raised residence: paired ground glazing and its side entrance share the upper axes.
@@ -571,7 +611,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
 
 /** One tileable bay in colour plus its tint mask, drawn once per variant and cached. */
 export function bayTextures(v: BayVariant, brick: CanvasImageSource, look: Look): { colour: HTMLCanvasElement; mask: HTMLCanvasElement } {
-  const key = variantKey(v, look), hit = cache.get(key);
+  const key = variantKey(v, look) + (retailGroundOn() && (SHOP_KINDS as readonly string[]).includes(v.kind) ? '|pui' : ''), hit = cache.get(key);
   if (hit) return hit;
   const w = BAY_PX, h = v.kind === 'upper' || v.kind === 'upperTall' || v.kind === 'attic' || v.kind === 'plain' ? STOREY_PX : GROUND_PX;
   const make = (pass: Pass) => {

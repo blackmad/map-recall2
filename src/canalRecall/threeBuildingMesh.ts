@@ -40,6 +40,8 @@ import type { StreetFacing } from './streetGableEnds.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
+import type { RetailTemplate } from './retailTemplates.js';
+import { retailFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
 import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
 import { THIN_CLASS, thinCm } from './look/thinFade.js';
@@ -104,6 +106,8 @@ export type MeshBuilding = {
   signature?: { at: [number, number]; hex: string };
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
+  /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
+  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -430,6 +434,23 @@ export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candid
   }
   for (const t of out) t.lit = true;
   return out;
+}
+
+/** A template front (retailFront.ts) on the candidate wall nearest its POI, centred on the point, at most FRONT.maxSpanM. */
+function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, id: string, candidates: readonly Edge[], base: number, groundM: number, origin: Origin): SignTri[] {
+  const kx = mPerDegLng(origin.lat), px = (front.at[0] - origin.lng) * kx, py = (front.at[1] - origin.lat) * M_PER_DEG_LAT;
+  let best: Edge | null = null, bestD = Infinity;
+  for (const e of candidates) {
+    if (e.hole || e.len < 2.5) continue;
+    const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
+    const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
+    if (d < bestD) { bestD = d; best = e; }
+  }
+  if (!best) return [];
+  const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
+  const L = best.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
+  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half));
+  return retailFrontTris({ template: front.template, word: front.word, seed: id }, e, s0, s0 + 2 * half, base, groundM);
 }
 
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
@@ -966,7 +987,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [])];
     // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
-    if (walled && b.chain && b.lid) {
+    if (walled && b.retailFront && b.lid) {
+      const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
+      const street = exposed.filter(e => doorAllowed.has(e));
+      sign.push(...retailFrontOn(b.retailFront, b.id, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));
+    } else if (walled && b.chain && b.lid) {
       const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
       const street = exposed.filter(e => doorAllowed.has(e));
       sign.push(...chainFrontTris(b.chain, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));

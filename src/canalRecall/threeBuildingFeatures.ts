@@ -43,6 +43,7 @@ import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
+import { RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -241,6 +242,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // A chain supermarket: its own fascia, logo panel and brand word (shopfronts.ts SUPERMARKET_CHAINS).
   const chain = Array.isArray(p.shopChain) ? p.shopChain as [string, number, number] : null;
   if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };
+  // Lane retail-ground (`?retailGround=1`): a shopfront template stamped from the template extract (shopfronts.ts
+  // decorateShopTemplate, which only runs with the extract installed, which only the flag's loader installs).
+  const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?] : null;
+  if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}) };
+    delete building.signature;
+  }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
