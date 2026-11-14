@@ -65,7 +65,7 @@ async function openPage(page: Page, job: Job): Promise<void> {
 
 /**
  * `BUNDLES_DIR=<dir>`: every `*.bundle.js` the context asks for, the building worker's script included, from <dir> when
- * it is there (else the committed one; frames.ts warns when <dir> has three-buildings.bundle.js without its worker).
+ * it is there (else the committed one; frames.ts bundlesDirWarning names the pool bundles <dir> lacks).
  * `served` collects the names fulfilled from <dir> (game.json `bundlesDir`), so a run that drew a committed worker
  * shows it.
  */
@@ -163,8 +163,7 @@ test('house frames', async ({ page, browser }) => {
   const bundles = process.env.BUNDLES_DIR ? resolve(process.env.BUNDLES_DIR) : '';
   const served = new Set<string>(), workers = new Set<string>();
   await routeBundles(page.context(), bundles, served);
-  if (bundles) page.on('worker', w => { if (/\.js(\?|$)/.test(w.url())) workers.add(new URL(w.url()).pathname.split('/').pop()!); });
-  /*TMPVERIFY*/ page.on('console', m => { if (m.text().includes('BUNDLES_DIR_MARKER')) console.log('TMPVERIFY console', m.text()); }); page.on('worker', w => { setTimeout(() => w.evaluate('self.__bundlesDirMarker').then(v => console.log('TMPVERIFY worker', w.url().slice(0, 140), v)).catch(e => console.log('TMPVERIFY err', String(e).slice(0, 100))), 2000); });
+  if (bundles) page.on('worker', w => { if (/\.js(\?|$)/.test(w.url())) { const u = new URL(w.url()); u.searchParams.delete('v'); workers.add(u.pathname.split('/').pop()! + u.search); } });
   // HOUSE_FRAMES_SPECS_DIR=<dir> (lane D1 pixel-check): the house-specs extract tiles are served from a staged extract
   // (build-house-specs' public/data/extracts/amsterdam/staging/house-specs) instead of the published one, so a
   // `?world=live` frame draws staged specs without a publish (the live tile streamer decorates in the page). Only for

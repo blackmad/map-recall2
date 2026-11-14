@@ -129,10 +129,15 @@ test('rule-10 pages pin the pixel ratio, governor and tier, leaving a pin the qu
   assert.equal(job.rule10!.likenessQuery, 'dpr=2&governor=0&tier=high');
 });
 
-test('BUNDLES_DIR with the page bundle but not its worker is warned about', async () => {
-  const { bundlesDirWarning } = await import('./frames.ts');
+test('BUNDLES_DIR holding part of the mesh pool\'s bundles is warned about', async () => {
+  const { bundlesDirWarning, POOL_BUNDLES } = await import('./frames.ts');
   assert.equal(bundlesDirWarning(undefined), null);
-  assert.match(bundlesDirWarning('/b', n => n === 'three-buildings.bundle.js')!, /no three-buildings-worker\.bundle\.js/);
-  assert.equal(bundlesDirWarning('/b', () => true), null);
-  assert.equal(bundlesDirWarning('/b', n => n === 'engine.bundle.js'), null);
+  // none (a ground-only scratch build) or all: nothing to say
+  assert.equal(bundlesDirWarning('/b', n => n === 'own-ground-worker.bundle.js'), null);
+  assert.equal(bundlesDirWarning('/b', n => (POOL_BUNDLES as readonly string[]).includes(n)), null);
+  // the retail-ground lane's dir (2026-11-14): no own-ground-game, which started the pool with the committed flag list
+  const lane = new Set(['three-buildings.bundle.js', 'three-buildings-worker.bundle.js', 'engine.bundle.js']);
+  const w = bundlesDirWarning('/b', n => lane.has(n))!;
+  assert.match(w, /not own-ground-game\.bundle\.js:/); assert.match(w, /--only=own-ground-game/);
+  assert.match(bundlesDirWarning('/b', n => n === 'three-buildings.bundle.js')!, /three-buildings-worker\.bundle\.js/);
 });

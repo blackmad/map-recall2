@@ -790,14 +790,26 @@ export function splitLists(argv: string[]): string[][] {
 }
 
 /**
- * BUNDLES_DIR holding three-buildings.bundle.js without three-buildings-worker.bundle.js: the page meshes with the scratch
- * code and the pool workers with the committed worker (build:canal-three-buildings writes both; a lane that built or
- * copied only the first drew stale worker code). The spec routes whatever the dir holds; this says what it lacks.
+ * The bundles that start the shared mesh pool (engine/workerPool.ts sharedWorkerPool: threeBuildingsBrowser.ts,
+ * world/worldCells.ts in engine.bundle.js, ownGround/gameGround.ts) and the worker they start. Whichever layer asks
+ * first starts the pool with ITS withWorkerFlags list, so a BUNDLES_DIR holding some of them runs the pool with the
+ * committed flag list or worker: the retail-ground lane's dir had three-buildings, its worker and engine but not
+ * own-ground-game, the committed ground bundle started the pool, and `retailGround=1` never reached the workers
+ * (2026-11-14, game.json bundlesDir.workers showed the worker URL without the flag).
  */
+export const POOL_BUNDLES = ['three-buildings.bundle.js', 'engine.bundle.js', 'own-ground-game.bundle.js', 'three-buildings-worker.bundle.js'] as const;
+const POOL_BUILD: Record<string, string> = {
+  'three-buildings.bundle.js': 'build:canal-three-buildings (its first esbuild step, --outfile into the dir)',
+  'three-buildings-worker.bundle.js': 'build:canal-three-buildings (its second esbuild step, --outfile into the dir)',
+  'engine.bundle.js': 'node scripts/build-canal-engine.mjs --outdir=<dir>',
+  'own-ground-game.bundle.js': 'node scripts/build-3d-bundles.mjs --only=own-ground-game --outdir=<dir>',
+};
+/** A warning when BUNDLES_DIR holds some of POOL_BUNDLES but not all (null when it holds none or all). */
 export function bundlesDirWarning(dir: string | undefined, has: (name: string) => boolean = name => fs.existsSync(path.join(dir!, name))): string | null {
   if (!dir) return null;
-  if (has('three-buildings.bundle.js') && !has('three-buildings-worker.bundle.js')) return `WARNING: BUNDLES_DIR ${dir} has three-buildings.bundle.js but no three-buildings-worker.bundle.js: the mesh pool workers will run the committed worker. Build both (the two esbuild steps of build:canal-three-buildings, --outfile into the dir) or add ?workerPool=0.`;
-  return null;
+  const missing = POOL_BUNDLES.filter(n => !has(n));
+  if (!missing.length || missing.length === POOL_BUNDLES.length) return null;
+  return `WARNING: BUNDLES_DIR ${dir} holds some of the mesh pool's bundles but not ${missing.join(', ')}: the committed copies are served for those, and whichever layer starts the pool first sets the worker script's flags (engine/workerPool.ts withWorkerFlags), so a flag or worker change may never reach the pool. Build them into the dir (${missing.map(n => POOL_BUILD[n]).join('; ')}) or add ?workerPool=0. game.json bundlesDir lists what was served and the workers' URLs.`;
 }
 
 export async function main(argv = process.argv.slice(2)) {
