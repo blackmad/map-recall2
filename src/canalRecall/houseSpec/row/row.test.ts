@@ -14,7 +14,7 @@ const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
 const { ROW_FRONT_EXTRAS } = await import('../../houseLine/rowFront.ts');
-const { checkRow, runRegressions } = await import('../rowChecks.ts');
+const { checkRow, runRegressions, checkOneDesign } = await import('../rowChecks.ts');
 const { specProblems } = await import('../spec.ts');
 
 const defs = loadRowDefs();
@@ -48,7 +48,8 @@ test('Kinkerstraat 104, 102, 100 (159635, 152925, 160809) resolve to one design'
   const fronts = ids.map(id => K.row.fronts.find(f => f.id === id)!);
   assert.equal(new Set(fronts.map(f => f.seriesId)).size, 1);
   // one design but for 100's own dormer (an ornate wall dormer with a pediment and finial: D1 gap + face "larger pediment dormer")
-  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
+  // and its reviewed block surrounds (integrator, sheet photo, 2026-11-14)
+  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
   assert.equal(new Set(ids.map(noDormerKind)).size, 1);
   assert.equal(design(K, '0363100012160809').roofStorey.value.dormerKind, 'ornate-pinnacle');
   assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'pediment');
@@ -190,4 +191,22 @@ test('Kinkerstraat shopfront colour: read where a reading names it, reviewed ove
   assert.equal(read('a red-and-white shopfront'), 'red');
   assert.equal(read('', 'a black pui with gold lettering'), 'dark');
   assert.equal(read('a varnished timber shopfront'), 'timber');
+});
+
+test('Kinkerstraat 100: reviewed block surrounds as a front override in s1; the one-design gate takes it as headVariant', () => {
+  const f = K.row.fronts.find(x => x.id === '0363100012160809')!;
+  assert.equal(f.seriesId, K.row.fronts.find(x => x.id === '0363100012159635')!.seriesId);
+  assert.deepEqual([f.overrides.heads?.value, f.overrides.heads?.source], [{ shape: 'flat', dressing: 'block-surround' }, 'reviewed']);
+  const fr = K.specs['0363100012160809'].design.fronts![0] as Record<string, unknown>;
+  assert.equal(fr.windowSurround, 'block-dressings');
+  assert.equal(fr.bandLines, undefined, 'the face head band is replaced, not added to');
+  const c = toRowCheck(K.row, {}, new Set());
+  const m = c.members.find(x => x.key === '0363100012160809')!;
+  assert.equal(m.design.headVariant, 'flat/block-surround');
+  assert.equal(m.design.head, c.members.find(x => x.key === '0363100012159635')!.design.head);
+  assert.deepEqual(checkOneDesign(c), []);
+  // an unreviewed per-front heads difference still fails the gate
+  const row2 = structuredClone(K.row);
+  row2.fronts.find(x => x.id === '0363100012160809')!.overrides.heads!.source = 'single-read';
+  assert.ok(checkOneDesign(toRowCheck(row2, {}, new Set())).length > 0);
 });

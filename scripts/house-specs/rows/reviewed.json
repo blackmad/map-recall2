@@ -55,6 +55,19 @@
       "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
       "at": "2026-11-14",
       "note": "98: dark, agrees with the D1 read"
+    },
+    {
+      "fronts": [
+        "0363100012160809"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "flat",
+        "dressing": "block-surround"
+      },
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
+      "at": "2026-11-14",
+      "note": "100: white block surrounds frame each whole window, jambs and head, on every upper storey; a front override, 100 stays in s1"
     }
   ],
   "weteringschans-168096-171218": [

@@ -11,7 +11,8 @@
 import { ROW_FRONT_EXTRAS } from '../houseLine/rowFront.ts';
 
 /** Fields that may differ inside one series: what is true of one house only (rule 1). Everything else is the series'. */
-export const PER_HOUSE_FIELDS = ['groundUse', 'doorSide', 'doorIndex', 'paint', 'shopfront', 'basement', 'extent', 'number', 'pandId', 'dormerVariant'] as const;
+export const PER_HOUSE_FIELDS = ['groundUse', 'doorSide', 'doorIndex', 'paint', 'shopfront', 'basement', 'extent', 'number', 'pandId', 'dormerVariant', 'headVariant'] as const;
+// headVariant: a front's heads set by a reviewed statement (row/check.ts emits it only for source `reviewed`).
 /** Largest cornice step (m) between neighbours of one series. */
 export const MAX_CORNICE_STEP_M = 0.2;
 /** What became of a read field: drawn as stated, settled by series consensus, or printed as read, not drawn. */

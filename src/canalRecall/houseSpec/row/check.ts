@@ -41,12 +41,18 @@ export function toRowCheck(row: RowRecord, answers: Readonly<Record<string, Desc
     }
     const line = d.corniceTopM.value;
     // A member's own dormer kind (Kinkerstraat 100's ornate wall dormer) is a per-house field (`dormerVariant`); the series' kind stays the design.
-    const sk = row.series.find(x => x.id === f.seriesId)!.design.roofStorey.value.dormerKind;
+    const sd = row.series.find(x => x.id === f.seriesId)!.design;
+    const sk = sd.roofStorey.value.dormerKind;
+    const headStr = (v: typeof d.heads.value) => headsList(v).map(h => `${h.shape}/${h.dressing}${h.storeys ? `@${h.storeys.join(',')}` : ''}`).join('+');
+    // A reviewed per-front heads statement (Kinkerstraat 100's block surrounds) is a per-house field (`headVariant`), like
+    // dormerVariant; a front's heads that differ from its series for any other reason stay in the design and fail the gate.
+    const headReviewed = f.overrides.heads?.source === 'reviewed' && headStr(f.overrides.heads.value) !== headStr(sd.heads.value);
     return {
       key: f.id, pandId: f.pandId, numbers: f.numbers.map(String), series: f.seriesId,
       design: {
         crown: d.crown.value, cornice: d.cornice.value, storeys: d.storeys.value, bays: d.bays.value, windows: d.windows.value,
-        head: headsList(d.heads.value).map(h => `${h.shape}/${h.dressing}${h.storeys ? `@${h.storeys.join(',')}` : ''}`).join('+'),
+        head: headStr(headReviewed ? sd.heads.value : d.heads.value),
+        ...(headReviewed ? { headVariant: headStr(d.heads.value) } : {}),
         whiteFrames: d.whiteFrames.value, sills: d.sills.value, wallMaterial: d.wall.value.material, wallFamily: d.wall.value.family, wall: d.wall.value.hex,
         roofStorey: rs.kind, dormers: rs.dormersPerFront, dormerKind: sk ?? null,
         ...(rs.dormerKind !== sk ? { dormerVariant: rs.dormerKind ?? null } : {}),

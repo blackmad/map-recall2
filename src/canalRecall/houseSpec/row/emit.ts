@@ -70,6 +70,14 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
     if (h.dressing === 'segmental-tympanum') put(P + 'windowHead', { kind: 'segmental', tympanum: 'stone', ...(h.storeys ? { storeys: h.storeys } : {}) }, d.heads);
     else if (h.dressing === 'keystone') put(P + 'windowHead', { kind: h.shape === 'relieving' ? 'flat' : h.shape, archRing: { colour: 'stone', style: 'none', keystone: true } }, d.heads);
     else if (h.dressing === 'block-course') { put(P + 'bands', 'painted', d.heads); put(P + 'bandLines', ['head'], d.heads); put(P + 'bandHeights', { head: 0.3 }, d.heads); }
+    else if (h.dressing === 'block-surround') {
+      put(P + 'windowSurround', 'block-dressings', d.heads);
+      // A reviewed surround replaces the face's head band (the block course it read over the series), not adds to it.
+      const fr = (spec.design.fronts?.[i] ?? {}) as Record<string, unknown>;
+      if (d.heads.source === 'reviewed' && JSON.stringify(fr.bandLines) === '["head"]') {
+        for (const k of ['bands', 'bandLines', 'bandHeights']) { delete fr[k]; delete spec.provenance[P + k]; }
+      }
+    }
     else if (h.dressing === 'jack-blocks' || h.dressing === 'dentil-lintel' || h.dressing === 'stone-lintel') put(P + 'windowSurround', h.dressing, d.heads);
     if (d.sills.value && h.dressing === 'none') put(P + 'windowSurround', 'sill', d.sills);
     // Per-house ground the read states and the face does not (a souterrain with a stoop, Weteringschans).

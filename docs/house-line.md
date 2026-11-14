@@ -3512,7 +3512,7 @@ review); D owns records and the solve, R the renderer.
   `front.ground.colour` is the pui colour family (dark, light, green, red, white, timber), source `single-read`, only when a D1
   reading names a colour on the shopfront, pui or shutter itself (`groundColourOfRead`); it outranks the face's `shopPaint`.
   Reviewed statements (`scripts/house-specs/rows/reviewed.json`, keyed by row and front id) replace a field, or with `add: true`
-  merge a list into it (Weteringschans 169016 speklagen, review 4); field `ground.colour` sets a front's pui colour (Kinkerstraat
+  merge a list into it (Weteringschans 169016 speklagen, review 4); field `ground.colour` sets a front's pui colour; a reviewed per-front `heads` (Kinkerstraat 100 `block-surround`) is P's per-house `headVariant` (Kinkerstraat
   92–94, 98, 100, 106–108, over the face's wrong shopPaint). All are flagged `reviewed`.
 - **Solve** (`houseSpec/row/solve.ts`). Fronts: face modules, or a read with twice the row's bays on a 1.6x-wide two-number pand
   (flag `extent-mismatch`). A read mentioning scaffold or netting is held whole (`readHeld`, flag `scaffold`); the front takes its
