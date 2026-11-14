@@ -10,7 +10,7 @@ const { loadRowDefs } = await import('../../../scripts/house-specs/rows/rowDefs.
 const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.ts');
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
-const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE } = await import('./rowFront.ts');
+const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf } = await import('./rowFront.ts');
 const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 
@@ -74,6 +74,10 @@ test('the series draws no extras beyond ROW_FRONT_EXTRAS unless the series state
   // Weteringschans: only the bands each house's reading states (lane D, integrator 2026-11-14: read and drawn, not dropped)
   // plus the kit parts its gaps name (balcony, porch, rusticated souterrain; lane R round 2)
   const wx = Object.fromEntries(W.map(r => [r.pandId.slice(-6), r.series!.extras ? [...r.series!.extras].sort() : undefined]));
+  // 168042 states one shop unit, black-framed: the single shopfront, its door left as read (not a split by width).
+  const shop = rowDressOf(rec(W, '0363100012168042').series!);
+  assert.ok(shop.extras?.includes('row-shopfront'));
+  assert.deepEqual(shop.shopFront, { frameHex: '#2c2824', side: 'left' });
   assert.deepEqual(wx, { 168096: ['floor-cornices'], 168042: undefined, 169016: ['floor-cornices', 'row-balcony', 'row-porch', 'speklagen', 'string-courses'], 171218: ['row-balcony', 'row-porch', 'row-rustication', 'speklagen'] });
   const none = seriesDraw([{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 5, seriesId: 's', ground: { use: 'dwelling' }, overrides: {}, topM: 12 }],
     [{ ...solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design, extras: { value: ['window-sills', 'speklagen'], source: 'face-intent', ref: 't' } }]);
@@ -215,4 +219,9 @@ test('series members draw identical storey lines: one ground height and count fr
 
 test('the record\'s window kind sets the series glazing: T-windows and toplit casements paint large panes under a transom', () => {
   for (const r of [...W, ...K]) assert.equal(r.series!.look!.sash, 'transom', r.pandId);
+});
+
+test('a row type states its window width: kinker-1890-plain-brick windows take 75 % of their axis pitch', () => {
+  for (const r of K) assert.equal(r.series!.windowShare, 0.75, r.pandId);
+  for (const r of W) assert.equal(r.series!.windowShare, undefined, r.pandId);
 });

@@ -92,7 +92,7 @@ export type MeshBuilding = {
   /** House rows (lane R): the series this building draws (its extras' dice are the series'), and the series' stated
    *  wall dressing (heads per front span, cornice): the extras' `row-heads` and `row-cornice` draw it on the street run. */
   rowSeries?: string;
-  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' } };
+  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } };
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
@@ -555,7 +555,7 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
   // No boxes on this run (the record has none, or the run is not the traced front): the grid's windows, the heads by
   // the edge's place on the run (headsAt in facadeOrnaments).
   // The stoop's door side as seen from the street, on this wall's own x (seenLeftToRight: left is the start).
-  const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}) };
+  const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
   if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {

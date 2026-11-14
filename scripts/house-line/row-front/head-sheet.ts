@@ -13,7 +13,7 @@ const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../.
 const argv = process.argv.slice(2);
 const out = path.resolve(REPO, argv[argv.indexOf('--out') + 1] && argv.includes('--out') ? argv[argv.indexOf('--out') + 1] : 'artifacts/house-rows/head-sheet');
 const PPM = 120, W = 420, H = 300, WALL = '#6b3a2c';
-const TONE: Record<HeadTone, string> = { white: '#f2efe6', brick: '#55291f', stone: '#d9d2c3', glass: '#3d4955' };
+const TONE: Record<HeadTone, string> = { white: '#f2efe6', brick: '#55291f', stone: '#40231a', glass: '#3d4955' };
 const sheets = (row: string) => path.join(REPO, 'artifacts/house-rows/sheets', row, 'blind/photo.jpg');
 /** Each kind: the dressing D states, its window shape, and the photo crop (blind strip pixels) it was read from. */
 const KINDS = [

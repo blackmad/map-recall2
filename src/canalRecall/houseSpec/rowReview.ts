@@ -4,13 +4,13 @@
  *
  *   <block> | <house> | PASS or FAIL | <reason>
  *
- * blocks: same-houses, roof-line, colour-family (these three block the row), roof-storey-dormers, window-rhythm-dressings,
+ * blocks: same-houses, roof-line, colour-family, white-amount (these four block the row), roof-storey-dormers, window-rhythm-dressings,
  * invented (informational, reported). `<house>` is a label from the strip header or ALL. The row passes when no blocking
  * block has a FAIL and every block has at least one line; an `overall | ALL | FAIL` line also blocks; a malformed or incomplete answer is `invalid`, never a pass.
  */
-export const REVIEW_BLOCKS = ['same-houses', 'roof-line', 'colour-family', 'roof-storey-dormers', 'window-rhythm-dressings', 'invented'] as const;
+export const REVIEW_BLOCKS = ['same-houses', 'roof-line', 'colour-family', 'white-amount', 'roof-storey-dormers', 'window-rhythm-dressings', 'invented'] as const;
 export type ReviewBlock = typeof REVIEW_BLOCKS[number];
-export const BLOCKING: readonly ReviewBlock[] = ['same-houses', 'roof-line', 'colour-family'];
+export const BLOCKING: readonly ReviewBlock[] = ['same-houses', 'roof-line', 'colour-family', 'white-amount'];
 
 export interface ReviewLine { block: ReviewBlock; house: string; pass: boolean; reason: string }
 export interface ReviewResult {
