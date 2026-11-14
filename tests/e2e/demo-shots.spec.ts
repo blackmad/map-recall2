@@ -173,6 +173,10 @@ const SPOTS: Spot[] = [
   { name: 'trees-robusta-row', centre: [4.8470, 52.3428], standDeg: 120, standM: 45 },
   { name: 'trees-robusta-row-shape', centre: [4.8470, 52.3428], standDeg: 120, standM: 45, query: '?treeShape=1' },
   { name: 'trees-keizersgracht', centre: [4.8862, 52.3672], standDeg: 135, standM: 30 },
+  // Morgan & Mees (lane landmark-morgan-mees-20261113): first person on the Nassaukade at 72 deg, and the as-played chase frame
+  // from the Tweede Hugo de Grootstraat / Nassaukade corner (photos w03-111 and w01-202).
+  { name: 'morgan-mees-fp-72', centre: [4.87473159, 52.37436591], standDeg: 72, standM: 24, view: 'cockpit' },
+  { name: 'morgan-mees-chase', centre: [4.87473159, 52.37436591], standDeg: 150, standM: 32 },
   { name: 'trees-keizersgracht-shape', centre: [4.8862, 52.3672], standDeg: 135, standM: 30, query: '?treeShape=1' },
 ];
 // DEMO_DPR=2: desktop shots at device pixel ratio 2 (house line frames).

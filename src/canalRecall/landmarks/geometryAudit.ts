@@ -26,7 +26,7 @@
  * Pure geometry, no I/O: `scripts/audit-glb-quality.ts` loads GLBs, ranks models and gates against a baseline.
  */
 import {clusterWalls, type WallSegment} from './wallPlanes';
-import {measureFacade, type FacadeInventory, type MaterialSoup, type Opening} from './facadeCompare';
+import {measureFacade, type FacadeInventory, type MaterialSoup, type MixedRow, type Opening} from './facadeCompare';
 import {closestPointOnTriangle, pointTriangleDistSq, rayTriangle, type TriSoup} from './glbQuality';
 
 type V3 = [number, number, number];
@@ -51,6 +51,10 @@ export interface GeometryAuditThresholds {
   balconyMax: number;
   /** Fraction of an opening's face hidden behind the solid wall surface (not a hole) that counts as buried. */
   buriedWarn: number;
+  /** A cover part (all `paint` slot, or named awning/canopy/canvas, see `isCoverMaterial`) no taller than this (m) is an
+   *  awning, canopy or signboard hung in front of the wall: it hides an opening the way the photo does, so it never counts
+   *  as the solid wall an opening is buried behind (morgan-mees, 2026-11-13). A painted timber wall is taller and stays a wall. */
+  coverMaxHeight: number;
   /** Opening parts larger than this (bbox diagonal, m) are treated as host geometry (walls, roofs). */
   maxOpeningDiag: number;
   /** A glass/frame assembly whose outward-facing area is at least this (m2) is a glazed facade (curtain wall, glazed atrium, skewed glass tower), not a window: it IS the wall, so overhang/buried against some other wall plane do not apply. */
@@ -79,7 +83,7 @@ export interface GeometryAuditThresholds {
 }
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
-  weld: 0.001, touchTol: 0.03, floatTol: 0.03, joinTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
+  weld: 0.001, touchTol: 0.03, floatTol: 0.03, joinTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3, coverMaxHeight: 1.5,
   maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2, zWarnFraction: 0.005,
 };
 
@@ -469,6 +473,26 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
   for (const w of walls) for (const i of w.tris) wallTris.add(host[i]);
   const rasters = new Map<WallSegment, WallRaster>();
   const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host, 0.1, opts.thinStrips ?? true); rasters.set(w, r); } return r; };
+  // Cover parts (awnings, canopies, signboards) hang in front of the wall. The buried test asks for solid wall behind an opening
+  // and for something in front hiding it: cover parts are neither (a raster without them, and blockedAt skips them).
+  // Silhouettes (outside / overhang) keep them.
+  const isCoverMat = s.materials.map(m => isCoverMaterial(m));
+  const coverTri = new Uint8Array(nTri);
+  for (const tris of parts.values()) {
+    if (!tris.every(t => isCoverMat[s.triMaterial[t]])) continue;
+    const bb = bboxOf(s, tris);
+    if (bb.max[1] - bb.min[1] <= th.coverMaxHeight) for (const t of tris) coverTri[t] = 1;
+  }
+  const solidRasters = new Map<WallSegment, WallRaster>();
+  const solidRaster = (w: WallSegment) => {
+    let r = solidRasters.get(w);
+    if (!r) {
+      const kept = w.tris.filter(i => !coverTri[host[i]]);
+      r = kept.length === w.tris.length ? raster(w) : rasterWall(s, {...w, tris: kept}, host, 0.1, opts.thinStrips ?? true);
+      solidRasters.set(w, r);
+    }
+    return r;
+  };
 
   const issues: OpeningIssue[] = [];
   for (const tris of groups.values()) {
@@ -476,12 +500,13 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     // Gap to host geometry: vertex-to-triangle distance, zero when an assembly edge pierces a host triangle.
     const near = grid.near([bb.min[0] - 0.6, bb.min[1] - 0.6, bb.min[2] - 0.6], [bb.max[0] + 0.6, bb.max[1] + 0.6, bb.max[2] + 0.6]);
     const own = new Set(tris);
-    /** Distance to the first surface covering the ray within L metres (skipping `skip`), or -1. */
+    /** Distance to the first surface covering the ray within L metres (skipping `skip` and cover parts: an awning that hides a
+     *  window's head hides it on purpose, as in the photo; it does not make the frame "sunk"), or -1. */
     const blockedAt = (o: V3, d: V3, skip: Set<number>, L = 1.5): number => {
       const e: V3 = [o[0] + d[0] * L, o[1] + d[1] * L, o[2] + d[2] * L];
       let first = -1;
       for (const t of grid.near([Math.min(o[0], e[0]), Math.min(o[1], e[1]), Math.min(o[2], e[2])], [Math.max(o[0], e[0]), Math.max(o[1], e[1]), Math.max(o[2], e[2])])) {
-        if (skip.has(t)) continue;
+        if (skip.has(t) || coverTri[t]) continue;
         const [a, b, c] = triVerts(s, t);
         const r = rayTriangle(o, d, a, b, c, L);
         if (r >= 0 && (first < 0 || r < first)) first = r; // nearest cover; a second layer behind it is cleared by the next snap pass
@@ -588,7 +613,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
             if (sd > reach || sd < -0.8) continue;
             const r = raster(w);
             if (inSilhouette(r, u, p[1], 0.12)) inside = true;
-            if (sd < -0.01 && solidAt(r, u, p[1])) behind = true;
+            if (sd < -0.01 && solidAt(solidRaster(w), u, p[1])) behind = true;
           }
           // Curved walls (drums, apses) are many narrow facets: a window spanning two facets is on the wall, not past it.
           for (const w of facets) {
@@ -747,6 +772,14 @@ export function isRoofMaterial(m: {name: string; slot?: string; materialSlot?: s
 }
 /** Opening materials by slot (kit exports name their materials `<tint>_<slot>`) or by palette name (landmarks). */
 export const OPENING_SLOTS = new Set(['glass', 'frame', 'door']);
+/** Materials of parts that hang in front of a wall rather than being one (awnings, canopies, signs): the `paint` slot, or by
+ *  name on legacy models without slots. Classed by slot first, like `isOpeningMaterial`. */
+export const COVER_SLOTS = new Set(['paint']);
+export const COVER_MATERIAL = /^(awning|canopy|canvas|marquee|luifel|zonnescherm)/i;
+export function isCoverMaterial(m: {name: string; slot?: string; materialSlot?: string}): boolean {
+  const slot = m.materialSlot ?? m.slot;
+  return (slot ? COVER_SLOTS.has(slot) : false) || COVER_MATERIAL.test(m.name);
+}
 export function isOpeningMaterial(m: {name: string; slot?: string; materialSlot?: string}): boolean {
   const slot = m.materialSlot ?? m.slot;
   return (slot ? OPENING_SLOTS.has(slot) : false) || OPENING_MATERIAL.test(m.name);
@@ -1329,7 +1362,24 @@ export function dominantFacades(s: MaterialSoup, minArea = 60): FacadeInventory[
  * bel-etage door: Academie van Bouwkunst risalit) and neither its size nor its level is an error; its column alignment
  * is still checked, and every other opening is judged as usual.
  */
-export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean; alternating?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+/**
+ * `mixedRows`: rows the photo inventory declares as deliberately mixed (`rowSizes: 'mixed'`, with evidence and the openings'
+ * kinds and widths in order, Morgan & Mees east face). In a declared row each opening's width is judged against its listed
+ * width, and its height and levels against the openings of the same listed kind (a balcony door against the other doors,
+ * not against the windows); no missing-window check runs there. A declared row whose opening count differs from its list
+ * has every opening mismatched: the declaration describes a different row.
+ */
+export function checkMixedRows(rows: MixedRow[] | undefined): MixedRow[] {
+  for (const m of rows ?? []) {
+    if (m.rowSizes !== 'mixed') throw Error(`mixedRows[${m.row}]: rowSizes must be 'mixed'`);
+    if (!m.evidence?.trim()) throw Error(`mixedRows[${m.row}]: evidence (photo or capture id) is required`);
+    if (!m.openings?.length || m.openings.some(o => !o.kind || !(o.w > 0))) throw Error(`mixedRows[${m.row}]: openings need a kind and a width`);
+  }
+  return rows ?? [];
+}
+
+export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean; alternating?: boolean; mixedRows?: MixedRow[]} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+  const mixed = checkMixedRows(opts.mixedRows);
   // Rows: cluster by vertical centre (half the median opening height, ≥ 0.9 m), as facadeCompare does.
   const medH = median(openings.map(o => o.y1 - o.y0)) || 1;
   const sorted = [...openings].sort((a, b) => (a.y0 + a.y1) - (b.y0 + b.y1));
@@ -1341,15 +1391,19 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
   const mismatched: Opening[] = [], missing: {t: number; y0: number; y1: number}[] = [];
   const rowOut: RhythmFacade['rows'] = [];
   const rowCentres: number[][] = [];
-  for (const r of rows) {
+  for (const [ri, r] of rows.entries()) {
     r.sort((a, b) => a.t0 - b.t0);
+    const decl = mixed.find(m => m.row === ri);
     const mw = median(r.map(o => o.t1 - o.t0)), mh = median(r.map(o => o.y1 - o.y0)), ms = median(r.map(o => o.y0)), mt = median(r.map(o => o.y1));
     let odd = 0;
-    const axis = opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
+    const axis = !decl && opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
     // Reference size and level per opening: the whole row, or under `alternating` the openings of the same parity.
-    const cls = (i: number) => opts.alternating ? r.filter((_, j) => j % 2 === i % 2) : r;
-    const ref = r.map((_, i) => { const c = cls(i); return {w: median(c.map(o => o.t1 - o.t0)), h: median(c.map(o => o.y1 - o.y0)), s: median(c.map(o => o.y0)), t: median(c.map(o => o.y1))}; });
-    if (r.length >= 3) r.forEach((o, i) => {
+    // Under a `mixedRows` declaration, the openings of the same listed kind; the width comes from the list.
+    const cls = (i: number) => decl ? r.filter((_, j) => decl.openings[j].kind === decl.openings[i].kind) : opts.alternating ? r.filter((_, j) => j % 2 === i % 2) : r;
+    const declMatches = !decl || decl.openings.length === r.length;
+    const ref = r.map((_, i) => { if (!declMatches) return {w: 0, h: 0, s: 0, t: 0}; const c = cls(i); return {w: decl ? decl.openings[i].w : median(c.map(o => o.t1 - o.t0)), h: median(c.map(o => o.y1 - o.y0)), s: median(c.map(o => o.y0)), t: median(c.map(o => o.y1))}; });
+    if (!declMatches) r.forEach(o => { odd++; mismatched.push(o); });
+    else if (r.length >= 3 || decl) r.forEach((o, i) => {
       const {w: cw, h: ch, s: cs0, t: ct} = ref[i];
       const dw = Math.abs(o.t1 - o.t0 - cw), dh = Math.abs(o.y1 - o.y0 - ch);
       const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * cw) || (dh > 0.4 && dh > 0.25 * ch) || (!opts.staggered && (Math.abs(o.y0 - cs0) > 0.35 || Math.abs(o.y1 - ct) > 0.35)));
@@ -1358,7 +1412,7 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
     // Missing: a gap that is a whole multiple of the regular spacing, between two regular windows of the same size.
     const cs = r.map(o => (o.t0 + o.t1) / 2);
     rowCentres.push(cs);
-    if (r.length >= 3 && !opts.staggered && !opts.alternating) {
+    if (r.length >= 3 && !opts.staggered && !opts.alternating && !decl) {
       const gaps = cs.slice(1).map((c, i) => c - cs[i]);
       const sp = median(gaps);
       gaps.forEach((g, i) => {
@@ -1392,7 +1446,7 @@ export function auditRhythm(s: MaterialSoup, facades: FacadeInventory[], fromSpe
   const out: RhythmFacade[] = [];
   for (const f of facades) {
     const m = measureFacade(s, f, 0.1);
-    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric, alternating: f.alternating});
+    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric, alternating: f.alternating, mixedRows: f.mixedRows});
     out.push({name: f.name, bearing: f.bearing, fromSpec, openings: m.openings.length, ...r, specRows: f.rows});
   }
   return out;

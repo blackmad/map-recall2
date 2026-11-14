@@ -2930,5 +2930,17 @@
       "https://www.openstreetmap.org/node/12269195215"
     ],
     "preferDescription": true
+  },
+  {
+    "modelId": "morgan-mees",
+    "landmarkId": "morgan-mees",
+    "name": "Morgan & Mees",
+    "description": "This corner building on the Nassaukade was built from 1880 for the Protestantsch Weduwen- en Weezenfonds, a Protestant fund for widows and orphans: widows' housing with, at this end, a bewaarschool, an infant school. The architect is unknown, although the specification drawings survive. Its two storeys of brown brick carry careful classicist detail: a white plastered middle bay with a round-arched window between fluted pilasters, white hoods over the windows and a white frieze under the cornice.",
+    "funFact": "Two stones in the plinth name the client and the day the first stone was laid: 23 August 1880, by J.H. Cordes and M.H. van Doorn. The building stayed a nursery school until about 1985, last as the day nursery \"Prinses Irene\"; today MORGAN & MEES runs in capitals along the white frieze.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b7d4e1c2-b1c9-4fe2-8472-4a335c41b79d",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236197/"
+    ],
+    "preferDescription": true
   }
 ]

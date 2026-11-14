@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, isOpeningMaterial, isRoofMaterial, materialSlotCoverage, nonOpeningShape, onTriangleBoundary, footClearsWall, openingsWithinWalls, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, isCoverMaterial, isOpeningMaterial, isRoofMaterial, materialSlotCoverage, nonOpeningShape, onTriangleBoundary, footClearsWall, openingsWithinWalls, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -102,6 +102,31 @@ test('a window sunk inside a solid wall is buried; a freestanding railing is ign
   assert.deepEqual(auditOpenings(boxes(block, {min: [2, 0, 11], max: [2.05, 1.2, 11.05], mat: 'white'})).issues, []);
 });
 
+test('a window under a half-lowered awning is not buried; the same window under a wall slab still is (morgan-mees)', () => {
+  // Wall z = 7.8..8 with a hole x 2..3.2, y 3..5; the pane stands 10 cm back in the reveal. A 1.2 m tall box hangs over the
+  // window's top 0.8 m with its back on the wall plane (a closed awning extrusion, as nearbar-kit's awning() emits).
+  const wall = [
+    {min: [0, 0, 0] as V3, max: [12, 9, 7.8] as V3, mat: 'brick'},
+    {min: [0, 0, 7.8] as V3, max: [2, 9, 8] as V3, mat: 'brick'}, {min: [3.2, 0, 7.8] as V3, max: [12, 9, 8] as V3, mat: 'brick'},
+    {min: [2, 0, 7.8] as V3, max: [3.2, 3, 8] as V3, mat: 'brick'}, {min: [2, 5, 7.8] as V3, max: [3.2, 9, 8] as V3, mat: 'brick'},
+    {min: [2.02, 3.02, 7.85] as V3, max: [3.18, 4.98, 7.9] as V3, mat: 'glass'},
+  ];
+  const painted = (soup: MaterialSoup) => { soup.materials[MATS.indexOf('stone')] = {name: '4c4a4c_bronze', rgb: [76, 74, 76], materialSlot: 'paint'} as never; return soup; };
+  const buried = (soup: MaterialSoup) => auditOpenings(soup).issues.filter(i => i.kind === 'buried').length;
+  const hood = (mat: string, top = 5.4) => ({min: [1.9, 4.2, 8] as V3, max: [3.3, top, 8.7] as V3, mat});
+  assert.equal(buried(boxes(...wall)), 0, 'the bare window is in its hole');
+  assert.equal(buried(painted(boxes(...wall, hood('stone')))), 0, 'a paint-slot hood 1.2 m tall is a cover, not wall');
+  assert.equal(buried(boxes(...wall, hood('brick'))), 1, 'a brick slab over the same window still buries it');
+  assert.equal(buried(painted(boxes(...wall, hood('stone', 6.0)))), 1, 'a painted part taller than coverMaxHeight (a painted timber wall) is wall');
+});
+
+test('within-walls: cover parts are classed by slot, not name', () => {
+  assert.equal(isCoverMaterial({name: '4c4a4c_bronze', materialSlot: 'paint'}), true);
+  assert.equal(isCoverMaterial({name: 'awning'}), true);
+  assert.equal(isCoverMaterial({name: 'bronze'}), false);
+  assert.equal(isCoverMaterial({name: '84614f_brick', materialSlot: 'brick'}), false);
+});
+
 test('coplanarOverlap matches the block-face zFightArea measure', () => {
   const A: V3[] = [[0, 2, 0], [4, 2, 0], [0, 2, 3]], B: V3[] = [[1, 2, 0], [5, 2, 0], [1, 2, 3]];
   const o = coplanarOverlap(A, B, [0, 1, 0], 0.005)!;
@@ -133,6 +158,24 @@ test('a plate resting on a plinth: the opposite-facing tie cannot show; the near
   const report = geometryAudit(flat, {skipRhythm: true});
   assert.ok(auditZFight(flat).area > 0.3, 'two tops in one plane tie');
   assert.ok(report.findings.some(f => f.kind === 'zfight'), 'a small model warns under the 0.25 m2 absolute threshold');
+});
+
+test('rhythm: a declared mixed row (rowSizes: mixed) judges each opening against its listed size (morgan-mees east)', () => {
+  // First floor of Morgan & Mees' east face as the model draws it: balcony door, window, double window, balcony door; the
+  // doors start 0.6 m lower than the windows. Ground row of three regular windows underneath.
+  const o = (t0: number, w: number, y0: number, y1: number): Opening => ({t0, t1: t0 + w, y0, y1, area: w * (y1 - y0)});
+  const ground = [o(1.6, 1, 1.2, 3), o(5.1, 1, 1.2, 3), o(10.9, 1, 1.2, 3)];
+  const first = [o(1.6, 1.0, 6.1, 8.3), o(5.1, 1.0, 6.75, 8.3), o(7.5, 2.1, 6.75, 8.3), o(10.9, 1.1, 6.1, 8.3)];
+  const declared = {row: 1, rowSizes: 'mixed' as const, evidence: 'recording_2025-06-17_11-17-15_01485 (w03-111)',
+    openings: [{kind: 'door', w: 1.1}, {kind: 'window', w: 1.1}, {kind: 'window', w: 2.2}, {kind: 'door', w: 1.2}]};
+  assert.deepEqual(analyseRhythm([...ground, ...first], {mixedRows: [declared]}).mismatched, [], 'declared and matching: passes');
+  assert.ok(analyseRhythm([...ground, ...first]).mismatched.length >= 2, 'the same row undeclared still fails (double window, door sills)');
+  // A declaration that does not describe the row fails: wrong width order, or a different count.
+  const swapped = {...declared, openings: [{kind: 'door', w: 1.1}, {kind: 'window', w: 2.2}, {kind: 'window', w: 1.1}, {kind: 'door', w: 1.2}]};
+  assert.equal(analyseRhythm([...ground, ...first], {mixedRows: [swapped]}).mismatched.length, 2, 'listed widths out of order');
+  const short = {...declared, openings: declared.openings.slice(0, 3)};
+  assert.equal(analyseRhythm([...ground, ...first], {mixedRows: [short]}).mismatched.length, 4, 'count differs from the list');
+  assert.throws(() => analyseRhythm(first, {mixedRows: [{...declared, evidence: ' '}]}), /evidence/);
 });
 
 test('rhythm: a skipped column and an odd-sized window are flagged', () => {

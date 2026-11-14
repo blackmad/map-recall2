@@ -76817,5 +76817,132 @@
     ]
    ]
   }
+ },
+ {
+  "id": "morgan-mees",
+  "name": "Morgan & Mees, Tweede Hugo de Grootstraat 2",
+  "landmarkId": "morgan-mees",
+  "modelUrl": "./models/morgan-mees.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012236197"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87473159,
+    52.37436591
+   ],
+   "headingDegrees": 21.63,
+   "lengthMetres": 16.9,
+   "widthMetres": 19.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.87481791,
+    52.37436754
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012236197 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.63 m NAP (scripts/landmarks/morgan-mees-footprints.json, written by morgan-mees-prepare.ts). School block, rear block and wing on the BAG ring; the garden wall, hedge and terrace pavilion stand on the unbuilt corner plot inside the Nassaukade and street building lines. Heights from the 3DBAG LoD2.2 roofs (CC BY 4.0); fronts measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0, morgan-mees-crops.ts, 60 px/m): recording_2025-06-17_08-04-10_02087 and TMX7316010203-001041_pano_0002_005637 (street), recording_2025-06-18_07-44-47_01471 (east face), recording_2024-09-11_08-03-34_00126 (Nassaukade); per wall in scripts/landmarks/morgan-mees-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 14.4,
+  "galleryView": {
+   "theta": 2.2,
+   "phi": 1.2
+  },
+  "bagYear": 1883,
+  "materialOverrides": {
+   "brick": "#84614f",
+   "ochre": "#e6e3db",
+   "white": "#e6e3db",
+   "stone": "#77746f",
+   "concrete": "#3d3a3b",
+   "slate": "#333236",
+   "glass": "#3b444a",
+   "frame": "#262827",
+   "dark": "#1f2224",
+   "bronze": "#4c4a4c",
+   "copper": "#22262a",
+   "blue": "#2b2f3a",
+   "green": "#4d6638",
+   "sandstone": "#b9b3a3",
+   "red": "#a07a6b"
+  },
+  "attribution": {
+   "title": "Morgan & Mees, Tweede Hugo de Grootstraat 2, Amsterdam: the former bewaarschool of the Protestantsch Weduwen- en Weezenfonds (first stone 23 August 1880; Gemeentelijk monument 223038)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b7d4e1c2-b1c9-4fe2-8472-4a335c41b79d",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the two-storey brick school block with its white plastered middle bay (round-arched window between fluted pilasters, pedimented two-light window), hooded windows with awnings, rusticated lisene, white frieze and cornice, hipped roof with dormers; the MORGAN & MEES lettering, balcony and dormer of the east face; the one-storey wing and garden wall on the Nassaukade with arched openings, white hoods and the pedimented gateway; hedge and terrace pavilion. Measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87456164,
+      52.37433272
+     ],
+     [
+      4.87470476,
+      52.37429811
+     ],
+     [
+      4.87474419,
+      52.37436024
+     ],
+     [
+      4.87485742,
+      52.37433344
+     ],
+     [
+      4.87486058,
+      52.37433893
+     ],
+     [
+      4.87485985,
+      52.3743392
+     ],
+     [
+      4.87487643,
+      52.3743656
+     ],
+     [
+      4.87487761,
+      52.37436534
+     ],
+     [
+      4.87488078,
+      52.37437021
+     ],
+     [
+      4.8748796,
+      52.37437047
+     ],
+     [
+      4.87489762,
+      52.3743994
+     ],
+     [
+      4.87489983,
+      52.37439932
+     ],
+     [
+      4.87490385,
+      52.37440598
+     ],
+     [
+      4.87464659,
+      52.37446658
+     ],
+     [
+      4.87456164,
+      52.37433272
+     ]
+    ]
+   ]
+  }
  }
 ]

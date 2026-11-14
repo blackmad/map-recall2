@@ -1,0 +1,566 @@
+{
+ "schemaVersion": 1,
+ "id": "morgan-mees",
+ "pand": "0363100012236197",
+ "brief": "scripts/landmarks/morgan-mees-brief.md",
+ "signature": [
+  "e-lettering",
+  "n-pediment",
+  "n-gate",
+  "s-arched-window",
+  "s-pediment-window",
+  "e-roof",
+  "e-balcony"
+ ],
+ "walls": [
+  {
+   "tag": "w01-202",
+   "bearing": 202,
+   "lengthM": 10.6,
+   "centre": [
+    4.874636,
+    52.3743175
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_10-46-56_00307",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-arched-window",
+     "kind": "window-shape",
+     "where": "middle bay, ground floor: round-arched window (2.1 m) with a radial fanlight and a hub ring, white archivolt and keystone",
+     "approxSizeM": [
+      2.1,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "cut opening with a round head, two lights and a transom at the springing; fanlight hub ring and seven spokes in the reveal; white arch ring and keystone"
+    },
+    {
+     "id": "s-pilasters",
+     "kind": "relief",
+     "where": "middle bay, ground floor: two fluted pilasters with leafy capitals, pedestals and hanging garlands either side of the arched window, under an entablature",
+     "approxSizeM": [
+      0.5,
+      3.9
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Tweede_Hugo_de_Grootstraat_2.jpg (Ceescamel 2019, CC BY-SA 4.0)",
+     "how": "white pedestal, shaft with two proud flute strips, wider capital block and a garland tablet low on the shaft; white entablature slab over both"
+    },
+    {
+     "id": "s-pediment-window",
+     "kind": "window-shape",
+     "where": "middle bay, first floor: two-light window between narrow ornamented pilasters under an entablature with a triangular pediment (relief in the tympanum)",
+     "approxSizeM": [
+      3.6,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "two-light cut opening with a heavy mullion and transom; pilaster strips with capitals; entablature slab; white raking and base cornices 20 cm proud round a grey stone tympanum recessed 8 cm (contrast against the white frieze); tympanum relief as a small white tablet (simplified)"
+    },
+    {
+     "id": "s-plaster-bay",
+     "kind": "other",
+     "where": "middle bay from plinth to cornice: white plaster (gepleisterde middenpartij)",
+     "approxSizeM": [
+      3.5,
+      10.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "middle wall section in the white palette colour, brick sections either side"
+    },
+    {
+     "id": "s-door",
+     "kind": "window-shape",
+     "where": "west bay, ground floor: entrance door with a glazed transom in a white surround with a cornice; three steps",
+     "approxSizeM": [
+      1.7,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "door opening with a dark back, transom opening above, white jambs, lintel and cornice, two stone steps"
+    },
+    {
+     "id": "s-east-window",
+     "kind": "window-shape",
+     "where": "east bay, ground floor: tall window with a white surround and an arched transom bar",
+     "approxSizeM": [
+      1.85,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "two-light cut opening, transom bar and arched bar inside the reveal, white surround with cornice"
+    },
+    {
+     "id": "s-hoods",
+     "kind": "window-shape",
+     "where": "outer bays, first floor: white entablature hoods with drop ears over the windows",
+     "approxSizeM": [
+      1.9,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "hood(): lintel slab, two drop ears, cornice slab"
+    },
+    {
+     "id": "s-awnings",
+     "kind": "canopy",
+     "where": "outer bays, first floor: dark grey fabric awnings",
+     "approxSizeM": [
+      1.45,
+      0.95
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "kit awning (quarter-round hood) in the bronze palette colour"
+    },
+    {
+     "id": "s-lisene",
+     "kind": "other",
+     "where": "west end: rusticated white lisene in long-and-short blocks from the plinth to the frieze",
+     "approxSizeM": [
+      0.56,
+      9.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "alternating 0.56 / 0.42 m white blocks, 0.28 m tall"
+    },
+    {
+     "id": "s-frieze-cornice",
+     "kind": "other",
+     "where": "whole front: white frieze and projecting white cornice; white storey bands at 5.1, 5.6-5.9 and 6.1 m",
+     "approxSizeM": [
+      10.5,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "how": "frieze slab (street 9.75-10.95 m, 14 % of the cornice height with the cornice; east 10.05-10.95 m under the lettering), kit coping as cornice meeting the east cornice end to end at each corner, ledge strips for the bands"
+    },
+    {
+     "id": "s-dormer",
+     "kind": "window-shape",
+     "where": "roof over the middle bay: brick dormer with three lights in white frames under a triangular pediment",
+     "approxSizeM": [
+      3.0,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001041_pano_0002_005637",
+     "how": "dormer section with three cut openings, cheeks, white cornice, extruded pediment with white raking bands"
+    },
+    {
+     "id": "s-plinth",
+     "kind": "other",
+     "where": "hardstone plinth under the ground floor",
+     "approxSizeM": [
+      10.5,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Tweede_Hugo_de_Grootstraat_2.jpg (Ceescamel 2019, CC BY-SA 4.0)",
+     "how": "stone slab broken at the door"
+    },
+    {
+     "id": "s-gevelstenen",
+     "kind": "gable-stone",
+     "where": "two first-stone tablets in the hardstone plinth under the middle window (register 223038: Protestantsch Weduwen- en Weezenfonds, J.H. Cordes and M.H. van Doorn, 23 August 1880)",
+     "approxSizeM": [
+      0.72,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "register 223038 (CC0)",
+     "how": "two light sandstone tablets proud of the plinth; text not modelled",
+     "note": "behind parked bicycles in every panorama; position from the register text"
+    },
+    {
+     "id": "s-lanterns",
+     "kind": "lamp",
+     "where": "two wall lanterns either side of the door",
+     "approxSizeM": [
+      0.25,
+      0.45
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.25 m lanterns"
+     }
+    },
+    {
+     "id": "s-street-sign",
+     "kind": "sign",
+     "where": "blue street-name plate on the east bay",
+     "approxSizeM": [
+      0.8,
+      0.25
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_08-04-10_02087",
+     "skip": {
+      "reason": "too-small",
+      "note": "municipal street-name plate"
+     }
+    }
+   ],
+   "note": "Street front of the 1880 school block, rectified whole (morgan-mees-crops.ts face-street-0..3, 60 px/m; 2025, 2022, 2019) plus Commons photo Tweede_Hugo_de_Grootstraat_2.jpg (2019). Symmetric about a white plastered middle bay at 5.9 m; two storeys under a white frieze and cornice, dormer over the middle bay. Register 223038 describes the same front."
+  },
+  {
+   "tag": "w02-201",
+   "bearing": 201,
+   "lengthM": 8.2,
+   "centre": [
+    4.874803,
+    52.374349
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_02089",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-hedge",
+     "kind": "other",
+     "where": "garden front on the street line: clipped hedge about 2.8 m tall closing the garden",
+     "approxSizeM": [
+      8.0,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_02089",
+     "how": "green box on the street line"
+    },
+    {
+     "id": "g-pavilion",
+     "kind": "canopy",
+     "where": "garden: terrace pavilion with a dark flat roof (striped awning in 2024) over the whole garden",
+     "approxSizeM": [
+      7.8,
+      3.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_02089",
+     "how": "dark roof slab at 3.4-3.7 m, glazed front and two dark posts behind the hedge",
+     "note": "present 2022, 2024 and 2025"
+    }
+   ],
+   "note": "The wing's south wall, 7.4 m back from the street line, facing the garden. In every panorama (2022-2025) it is hidden behind the tall hedge and the dark terrace pavilion that roofs the garden; face-garden-0..3 and face-hedge-0..3 crops. The wall itself is inferred."
+  },
+  {
+   "tag": "w03-111",
+   "bearing": 111,
+   "lengthM": 7.4,
+   "centre": [
+    4.8747275,
+    52.374331
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_11-17-15_01485",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-gate",
+     "kind": "window-shape",
+     "where": "garden wall, 4.85-7.3 m from the street corner: wide segmental-arched gateway with a black iron gate (open in 2017)",
+     "approxSizeM": [
+      2.45,
+      2.95
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "cut opening with a segmental head under a rubbed-brick ring, dense dark bars and two rails"
+    },
+    {
+     "id": "n-pediment",
+     "kind": "other",
+     "where": "on the garden wall over the gateway: white segmental pediment with stepped scroll ends and a flat cap",
+     "approxSizeM": [
+      2.3,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "extruded outline (stepped ends, segmental crown) straddling the coping, cap slab"
+    },
+    {
+     "id": "n-gw-window",
+     "kind": "window-shape",
+     "where": "garden wall, 2.0-2.75 m: round-arched window with a white hood over it",
+     "approxSizeM": [
+      0.8,
+      1.95
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "cut opening with a round head; rubbed-brick ring (lighter brick, measured #a07a6b); white hood slab"
+    },
+    {
+     "id": "n-wing-window",
+     "kind": "window-shape",
+     "where": "wing, 9.4-10.2 m: round-arched window with a white hood",
+     "approxSizeM": [
+      0.78,
+      2.05
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "cut opening with a round head, white frame; rubbed-brick ring; white hood slab"
+    },
+    {
+     "id": "n-wing-door",
+     "kind": "window-shape",
+     "where": "wing, 13.25-14.15 m: round-arched door with a white hood",
+     "approxSizeM": [
+      0.92,
+      2.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "door opening with a round head, dark back and white frame; white jambs and a white ring round the head; white hood slab"
+    },
+    {
+     "id": "n-imposts",
+     "kind": "other",
+     "where": "white impost bands at 2.2 m either side of each arched opening; white cornice and frieze on the wing parapet, white coping on the garden wall; dark plinth",
+     "approxSizeM": [
+      16,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "ledge strips; frieze slab and kit coping; dark plinth slabs broken at the gate and door"
+    },
+    {
+     "id": "n-lamps",
+     "kind": "lamp",
+     "where": "small wall lamps beside each opening",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m lamps"
+     }
+    },
+    {
+     "id": "n-terrace",
+     "kind": "other",
+     "where": "wing roof: terrace behind the parapet",
+     "approxSizeM": [
+      8,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-11_08-03-34_00126",
+     "how": "parapet round the wing roof at 3.6 m"
+    }
+   ],
+   "note": "Nassaukade line, rectified whole (face-nassau-0..3, 2024/2025/2022, 16.1 m from the street corner to Nassaukade 119) and Commons corner photo (2017). Garden wall 0-7.4 m, one-storey wing 7.4-16.0 m; the school block's lettered east face stands 8.3 m behind it."
+  },
+  {
+   "tag": "w04-110",
+   "bearing": 110,
+   "lengthM": 3.9,
+   "centre": [
+    4.8748695,
+    52.3743515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002055_pano_0000_001934",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "items": [],
+   "note": "Part of the Nassaukade line (wing, 2021); items listed under w03-111, which covers the whole line."
+  },
+  {
+   "tag": "w05-111",
+   "bearing": 111,
+   "lengthM": 3.5,
+   "centre": [
+    4.874891,
+    52.3743865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002548_pano_0000_000670",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [],
+   "note": "Part of the Nassaukade line (wing, 2022); items listed under w03-111, which covers the whole line."
+  },
+  {
+   "tag": "e01-111",
+   "bearing": 111,
+   "lengthM": 11.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_07-44-47_01471",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "note": "East face of the school block over the garden and the wing, rectified whole on its own plane (face-eastMain-0..3, 2020-2025, 60 px/m) and the 2017 Commons corner photo. Ground floor over the garden is hidden by the garden wall and pavilion (two windows inferred).",
+   "items": [
+    {
+     "id": "e-lettering",
+     "kind": "lettering",
+     "where": "white frieze, 10.25-10.65 m: MORGAN & MEES in dark letter-spaced sans capitals, 6.05 m long, centred 6.07 m from the street corner",
+     "approxSizeM": [
+      6.05,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "kit 5x7 capitals at 0.30 m glyph width and 0.48 m advance; the ampersand glyph added to the kit; dark, proud of the frieze",
+     "note": "typeface approximated: geometric sans capitals (Futura-like); the logo sets the & small with a bar under it"
+    },
+    {
+     "id": "e-balcony",
+     "kind": "balcony-ironwork",
+     "where": "first floor, whole face: steel balcony with a vertical-bar railing, on diagonal struts over the garden",
+     "approxSizeM": [
+      11.5,
+      1.25
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "dark floor plate, top and bottom rails, 0.13 m bars, end returns, four struts"
+    },
+    {
+     "id": "e-hoods",
+     "kind": "window-shape",
+     "where": "first floor, four axes (1.4, 4.85, 7.85, 10.75 m): white entablature hoods with drop ears",
+     "approxSizeM": [
+      1.7,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "hood() per axis, wider over the two-light window"
+    },
+    {
+     "id": "e-awnings",
+     "kind": "canopy",
+     "where": "first floor, four axes: dark grey awnings",
+     "approxSizeM": [
+      1.4,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "kit awning per axis"
+    },
+    {
+     "id": "e-windows",
+     "kind": "window-shape",
+     "where": "first floor: French doors on the outer axes, a window and a two-light window between",
+     "approxSizeM": [
+      2.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "cut openings with dark frames"
+    },
+    {
+     "id": "e-roof",
+     "kind": "other",
+     "where": "hipped roof of dark tiles with a flat top over the school block (register: plat dak met omlopende schuine schilden)",
+     "approxSizeM": [
+      11.6,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "hips from the cornice at 11.4 m to a flat top at 13.6 m on the street, east and north sides"
+    },
+    {
+     "id": "e-dormer",
+     "kind": "window-shape",
+     "where": "east hip, centred over the lettering: white dormer with a two-light window and a flat cap; a lamp on top",
+     "approxSizeM": [
+      1.75,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "white dormer section with a cut opening, cheeks and a cap; lamp skipped (0.3 m)"
+    },
+    {
+     "id": "e-skylights",
+     "kind": "window-shape",
+     "where": "east hip: two roof windows",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "raised curb 14 cm over the slope with a light frame round dark glass"
+    },
+    {
+     "id": "e-chimney",
+     "kind": "other",
+     "where": "north-east corner of the roof: brick chimney with a dark cap",
+     "approxSizeM": [
+      0.55,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_07-44-47_01471",
+     "how": "brick box and cap"
+    },
+    {
+     "id": "e-rear",
+     "kind": "window-shape",
+     "where": "rear block north of the school block (11.6-16.0 m), over the wing: first floor with a white-framed two-light window, flat roof at 7.35 m with a white coping",
+     "approxSizeM": [
+      4.4,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Nassaukade_hoek_Tweede_Hugo_de_Grootstraat,_Morgan_&_Mees.JPG (Alf van Beem 2017, public domain)",
+     "how": "rear section over the wing terrace: a dark-framed terrace door and a white-framed four-light window with sill, each under a segmental rubbed-brick arch; white cornice slab 0.3 m proud"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeentelijk monument 223038 register text",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b7d4e1c2-b1c9-4fe2-8472-4a335c41b79d",
+   "licence": "CC0"
+  },
+  {
+   "name": "Tweede Hugo de Grootstraat (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Tweede_Hugo_de_Grootstraat",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Nassaukade hoek Tweede Hugo de Grootstraat, Morgan & Mees (Alf van Beem, 2017)",
+   "url": "https://commons.wikimedia.org/wiki/File:Nassaukade_hoek_Tweede_Hugo_de_Grootstraat,_Morgan_%26_Mees.JPG",
+   "licence": "public domain"
+  },
+  {
+   "name": "Tweede Hugo de Grootstraat 2 (Ceescamel, 2019)",
+   "url": "https://commons.wikimedia.org/wiki/File:Tweede_Hugo_de_Grootstraat_2.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
