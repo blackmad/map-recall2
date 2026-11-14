@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Stale destinations after reload (2026-11-14)
+
+User notes on 2cd2fb7 still headed for Meerpadkerk after the fame-tier fix. Cause: the open run's saved leg (`canalRecall.openRun.v1`.nextLeg), dealt before the fix, was relaunched on every reload with `explicitDestination` and never vetted; `loadRun` also credited a whole closed-tab pause, so the run never expired. `chainedRun.ts` `judgeResumedLeg`/`resumeLeg` now keep a saved leg only if the pool would still deal it (tier factor ≥ 0.5), the rider picked it (`RunLeg.userPicked`), or it is a review/home stop; pause credit is capped at 3 h. Home rides keep `TAIL_FLOOR` for places under score 4 even when the famous tier is scarce (El Tawheed was 3.3 % from Kinkerbuurt), and stand-in swaps count sub-famous places as twice as far. Pinned in `destinationPool.test.ts` (Wiborgeiland and Kinkerbuurt starts, resumed legs).
+
+
 **Bridge follow-ups: median-aware deck edges, smoothed survey caps, streets under way-deck holes (2026-11-14, lane F1b, cherry-picked from lane/f1b-bridges-20261114).**
 - **Why.** Follow-ups to F1: the motorway parapets it pushed inside the lanes, the railing steps where survey caps narrow a deck, and Lelylaan 07ec0473 (torn cycle path under the deck).
 - **Median edges** (`?medianEdges=0`). The survey edge walk carries on across gaps between deck-level polygons inside the half-width, so a bundled motorway way deck on a 4 m median reaches its outer carriageway edge.

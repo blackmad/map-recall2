@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "No more stale destinations after a reload",
+      "text": "A ride left open overnight no longer brings back yesterday's destination. When you reload, a stored next stop the game would not choose today (such as Meerpadkerk) is swapped for a better-known place, unless you picked it yourself. A ride paused with the tab closed now ends after three hours. Home rides and stand-in destinations also favour well-known places over obscure ones nearby."
+    },
+    {
+      "date": "2026-11-14",
       "title": "Bridge railings on the outer edge, paths flat under motorway bridges",
       "text": "On the A10 bridges at Ringweg-Noord the railing now stands on the outer edge of the road instead of in the middle of the hard shoulder. Where a bridge deck narrows over the water, its railing follows the edge smoothly instead of stepping in and out. At Lelylaan the cycle paths and streets that pass under the Ringweg-West bridges stay on the ground instead of tearing up to the bridge edge. Across the city, about a quarter fewer metres of railing stand in traffic.",
       "where": [
