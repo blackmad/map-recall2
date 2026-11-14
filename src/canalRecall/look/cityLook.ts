@@ -85,7 +85,7 @@ export type SlotLayer = {
   cell: SlotCell | 'white' | SlotVariantCell;
   /** Texture repeat in metres (glass: 0..1 per pane on authored UVs). */
   tileM: number;
-  /** Clamp authored UVs to one tile (glass panes); box-projected UVs repeat. */
+  /** Clamp authored UVs to one tile (glass panes); on box-projected UVs a clamped layer takes one flat sample (BOX_PANE_UV). */
   clampUv: boolean;
   /**
    * Lit variant only: gain on the cell so its mean is ~1 and the lit wall
@@ -507,8 +507,19 @@ int citySw = int(swapSlot + 0.5) - 1;
 vCityUnder = citySw >= 0 ? citySwapUnder[citySw / 4][citySw % 4] : cityUnder;
 #endif`;
 
+/**
+ * Where a pane cell (the clamped glass layers) is sampled on box-projected slot meshes: GLBs without authored UVs
+ * (409 of the 766 drawn landmark and ordinary GLBs on 2026-11-14). The glass cell is one pane, 0..1 on authored UVs
+ * (slotCells.ts `paintGlassCanvas`: sky gradient and streak); box UVs are metres, so it used to repeat every metre and a
+ * 2.2 x 1.9 m window read as a stack of small generic panes (the Pontsteiger, feedback a4013653 / 10ada6d9 on 2cd2fb7,
+ * "overlapping windows", "rendered with generic windows"). (0.5, 0.59) is mid-pane, clear of the streak, where the
+ * gradient is near the cell's mean, so a box-UV window keeps the stock glass lightness without the repeats.
+ */
+export const BOX_PANE_UV: readonly [number, number] = [0.5, 0.59];
+
 /** Shared vertex declarations (both variants). */
 const VERTEX_DECLS = /* glsl */ `
+#define BOX_PANE_UV vec2(${BOX_PANE_UV.map(v => v.toFixed(2)).join(', ')})
 attribute float layer;
 attribute vec4 tint;
 attribute vec4 accent;
@@ -560,7 +571,9 @@ vGrid = 0.0;
     vec3 cityN = abs(normal);
     vec3 cityQ = position * length(modelMatrix[0].xyz);
     vec2 cityUv = cityN.y > max(cityN.x, cityN.z) ? cityQ.xz : (cityN.x > cityN.z ? cityQ.zy : cityQ.xy);
-    vFacUv = cityUv * vSlot.x;
+    // A pane cell (glass: 0..1 per pane) has no pane to span on box-projected UVs: one flat mid-pane sample, not a
+    // gradient repeating every metre inside each modelled window (BOX_PANE_UV).
+    vFacUv = vSlot.y > 0.5 ? BOX_PANE_UV : cityUv * vSlot.x;
     vSlot.y = 0.0;
   } else {
     vFacUv = vSlot.y > 0.5 ? uv : uv * vSlot.x;
@@ -569,7 +582,9 @@ vGrid = 0.0;
     vec3 cityN = abs(normal);
     vec3 cityQ = position * length(modelMatrix[0].xyz);
     vec2 cityUv = cityN.y > max(cityN.x, cityN.z) ? cityQ.xz : (cityN.x > cityN.z ? cityQ.zy : cityQ.xy);
-    vFacUv = cityUv * vSlot.x;
+    // A pane cell (glass: 0..1 per pane) has no pane to span on box-projected UVs: one flat mid-pane sample, not a
+    // gradient repeating every metre inside each modelled window (BOX_PANE_UV).
+    vFacUv = vSlot.y > 0.5 ? BOX_PANE_UV : cityUv * vSlot.x;
     vSlot.y = 0.0;
   #else
     vFacUv = vSlot.y > 0.5 ? uv : uv * vSlot.x;

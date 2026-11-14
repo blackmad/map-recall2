@@ -40,3 +40,21 @@ export function modelCollisions(models: readonly Spec[]): ModelCollision[] {
 
 export const describeCollision = (c: ModelCollision) =>
   `${c.ids.join(' + ')}: ${[c.landmarkId && `landmark ${c.landmarkId}`, c.suppressed.length && `${c.suppressed.length} suppressed id(s) ${c.suppressed.slice(0, 4).join(', ')}${c.suppressed.length > 4 ? ', …' : ''}`].filter(Boolean).join('; ')}`;
+
+/**
+ * Pairs of drawn models that covers.json puts on one pand. Since the covers join (scripts/build-covers.ts) hides by
+ * footprint, a model hides the pands it stands on, not only its suppress list; two models can share ground while their
+ * suppress lists name different ids (BAG keeps two pand ids on one outline: an alias the suppress lists split, found
+ * 2026-11-14 by the Pontsteiger overlap survey). `covers` is covers.json's `models`.
+ */
+export function coverCollisions(drawnIds: Iterable<string>, covers: Readonly<Record<string, {p?: readonly string[]}>>): {ids: string[]; pands: string[]}[] {
+  const drawn = new Set(drawnIds), byPand = new Map<string, string[]>();
+  for (const [id, entry] of Object.entries(covers)) if (drawn.has(id)) for (const p of new Set(entry.p ?? [])) byPand.set(p, [...(byPand.get(p) ?? []), id]);
+  const pairs = new Map<string, {ids: string[]; pands: string[]}>();
+  for (const [pand, ids] of byPand) for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
+    const key = [ids[i], ids[j]].sort();
+    const hit = pairs.get(key.join('\u0000')) ?? {ids: key, pands: []};
+    hit.pands.push(pand); pairs.set(key.join('\u0000'), hit);
+  }
+  return [...pairs.values()].map(p => ({ids: p.ids, pands: p.pands.sort()})).sort((a, b) => a.ids.join().localeCompare(b.ids.join()));
+}
