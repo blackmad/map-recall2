@@ -1,0 +1,170 @@
+{
+  "id": "de-nieuwe-liefde",
+  "name": "De Nieuwe Liefde",
+  "landmarkId": "de-nieuwe-liefde",
+  "modelUrl": "./models/de-nieuwe-liefde.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012236796"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8713836639643135,
+      52.36976347895478
+    ],
+    "headingDegrees": 73.94391333121206,
+    "lengthMetres": 34.9,
+    "widthMetres": 22.07
+  },
+  "surveyed": {
+    "anchor": [
+      4.87149406,
+      52.36978525
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012236796 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "concrete": "#e9e7df",
+    "white": "#f3f1ea",
+    "stone": "#8e9aa1",
+    "slate": "#45474a",
+    "glass": "#3b4448",
+    "frame": "#3e4246",
+    "dark": "#2f3236",
+    "bronze": "#55585a"
+  },
+  "attribution": {
+    "title": "De Nieuwe Liefde",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Nieuwe_Liefde",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Da Costakade front (twin gables, segmental and round-arched windows, hoods, plinth, lettering, mansard) laid out from the 2016-2025 municipal panoramas; no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.871592509960853,
+          52.369887148901064
+        ],
+        [
+          4.8714017365588,
+          52.36985978618617
+        ],
+        [
+          4.871217603923334,
+          52.36983337783971
+        ],
+        [
+          4.871206888167481,
+          52.369831839176946
+        ],
+        [
+          4.871218247983499,
+          52.369805779336346
+        ],
+        [
+          4.871175340942849,
+          52.36979962448766
+        ],
+        [
+          4.87116398110322,
+          52.36982568432418
+        ],
+        [
+          4.8710920637949595,
+          52.3698153675115
+        ],
+        [
+          4.871181852086353,
+          52.36962488650628
+        ],
+        [
+          4.871230873067793,
+          52.369634330542674
+        ],
+        [
+          4.871667872979914,
+          52.36971849881816
+        ],
+        [
+          4.8716653090230135,
+          52.36972432967668
+        ],
+        [
+          4.871663404444572,
+          52.36972396187456
+        ],
+        [
+          4.871656619646397,
+          52.36973921146757
+        ],
+        [
+          4.871658524225438,
+          52.36973957926977
+        ],
+        [
+          4.871654454389146,
+          52.3697486391527
+        ],
+        [
+          4.871652256154769,
+          52.36974827007174
+        ],
+        [
+          4.871636743264804,
+          52.36978299401322
+        ],
+        [
+          4.871638941500775,
+          52.36978336309451
+        ],
+        [
+          4.871636076569247,
+          52.36978982178263
+        ],
+        [
+          4.871634171988238,
+          52.36978945398006
+        ],
+        [
+          4.871627386125361,
+          52.369804793443855
+        ],
+        [
+          4.871629143879288,
+          52.36980516060717
+        ],
+        [
+          4.871618291294828,
+          52.369829290334
+        ],
+        [
+          4.8716162398845135,
+          52.36982892189173
+        ],
+        [
+          4.871600712359608,
+          52.36986363677669
+        ],
+        [
+          4.871602763771393,
+          52.3698640052192
+        ],
+        [
+          4.871592509960853,
+          52.369887148901064
+        ]
+      ]
+    ]
+  },
+  "galleryView": {
+    "theta": 1.9,
+    "phi": 1.15
+  }
+}

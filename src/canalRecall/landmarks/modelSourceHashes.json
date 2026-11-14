@@ -1,5 +1,5 @@
 {
-  "toolchain": "f1f9fcfdebd3702e47fdfbc47bcc1b2e46998fe4cc4cc9324a680f6190cbaf1a",
+  "toolchain": "7f489b8e99de9c2b60b62d01e54513d35240c318702f8ca4c2906cc8072b834f",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -474,6 +474,12 @@
     "zonnehuis": "b4554915147b653805b86b65b66a744f1ef173c280ed9f588f074921458b4927",
     "zuiderbad": "99513d5a1e2e302d557886235fdd7c74e38f2a5cf2c44ae5105465a005deb9e6",
     "zuiderkerk": "25cec372a2e9a7c37861d5b54df6621c27eb8c57e976c1f54aa01fc75dea6935",
-    "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099"
+    "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099",
+    "asscher-diamantslijperij": "a05381b1025cafea87444102ccebafe402a079b6b5c681d2c1477982e6506325",
+    "conservatorium-van-amsterdam": "b8095521cc48e77ff6e4e65d3d6b23536f7b094c75deef3da0c842da4e7cd8e2",
+    "de-nieuwe-liefde": "e5e678ae6c7c4fcb6b5da1dc8f13b32f6b7756d2591676d394d31047a626fc32",
+    "rijksakademie": "d2136e8259d242fe3004d7b88b4d69d278abdccb37ae45ec85e778df930d628e",
+    "tolstraat-160-tempel": "2fd97fe43d22329e90659ace89aadffb21e3f373d7e3e0733e1d0e6736c8ea4e",
+    "werf-kromhout": "99d113d6735e0ade45f197953c24599b088777fac2b5135f039594a296bcbf99"
   }
 }

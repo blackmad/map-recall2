@@ -1,0 +1,285 @@
+{
+ "schemaVersion": 1,
+ "id": "tolstraat-160-tempel",
+ "pand": "0363100012155412",
+ "brief": "scripts/landmarks/tolstraat-160-tempel-brief.md",
+ "signature": [
+  "fan-roof",
+  "drum-upper-ribbon",
+  "drum-fascia",
+  "foyer-fascia",
+  "entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-203",
+   "bearing": 203,
+   "lengthM": 23.6,
+   "centre": [
+    4.906326,
+    52.352443
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "garden sides with no capture: plain white render, inferred"
+  },
+  {
+   "tag": "w02-112",
+   "bearing": 112,
+   "lengthM": 23.6,
+   "centre": [
+    4.9065505,
+    52.3525005
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "garden sides with no capture: plain white render, inferred"
+  },
+  {
+   "tag": "w03-67",
+   "bearing": 67,
+   "lengthM": 7.1,
+   "centre": [
+    4.9065965,
+    52.3526615
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_07862",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [],
+   "note": "same curved front as w05 (items listed there), or a neighbour seen past the corner"
+  },
+  {
+   "tag": "w04-248",
+   "bearing": 248,
+   "lengthM": 7.1,
+   "centre": [
+    4.906106,
+    52.3525355
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_07846",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [],
+   "note": "same curved front as w05 (items listed there), or a neighbour seen past the corner"
+  },
+  {
+   "tag": "w05-324",
+   "bearing": 324,
+   "lengthM": 5.6,
+   "centre": [
+    4.906236,
+    52.35262
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002112_pano_0001_000115",
+   "capturedAt": "2021-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "drum-upper-ribbon",
+     "kind": "window-shape",
+     "where": "tall ribbon of blue-framed glazing round the whole drum under the white fascia",
+     "approxSizeM": [
+      40,
+      1.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "curvedFront sweep through the 3DBAG drum chords: glass band 5.55-7.2 m, blue mullions every 1.2 m and a blue transom line"
+    },
+    {
+     "id": "drum-lower-ribbon",
+     "kind": "window-shape",
+     "where": "low ribbon just above the foyer roof",
+     "approxSizeM": [
+      40,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "glass band 3.85-4.46 m with blue mullions"
+    },
+    {
+     "id": "drum-rail",
+     "kind": "balcony-ironwork",
+     "where": "blue rail line along the drum under the upper ribbon",
+     "approxSizeM": [
+      40,
+      0.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "blue swept band 5.3-5.5 m"
+    },
+    {
+     "id": "drum-fascia",
+     "kind": "other",
+     "where": "white fascia under the roof edge",
+     "approxSizeM": [
+      40,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "white swept box 7.2-7.75 m, 0.3 m proud"
+    },
+    {
+     "id": "foyer-ribbon",
+     "kind": "window-shape",
+     "where": "dark ribbon window along the top of the foyer front with blue mullions",
+     "approxSizeM": [
+      45,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "glass band 2.87-3.48 m swept along the BAG foyer outline, mullions every 1.25 m"
+    },
+    {
+     "id": "foyer-fascia",
+     "kind": "canopy",
+     "where": "thin projecting white fascia over the foyer ribbon",
+     "approxSizeM": [
+      45,
+      0.32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "white swept box 3.48-3.8 m, 0.36 m proud"
+    },
+    {
+     "id": "entrance",
+     "kind": "other",
+     "where": "recessed entrance with blue glazed doors in the notch of the foyer front",
+     "approxSizeM": [
+      3.6,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002800_pano_0005_000009",
+     "how": "blue frame, glass and mullions swept across the notch, fascia bridging it"
+    },
+    {
+     "id": "art-lettering",
+     "kind": "lettering",
+     "where": "letters \"... CLOSER, FURTHER AWAY\" in the upper drum ribbon",
+     "approxSizeM": [
+      18,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "skip": {
+      "reason": "temporary",
+      "note": "present in 2021, gone in the 2022-09-06 captures (TMX7316010203-002800_pano_0005_000009): a temporary artwork"
+     }
+    },
+    {
+     "id": "fan-roof",
+     "kind": "dome",
+     "where": "pale green fan roof rising from the drum to the stage block at the apex, with radiating seams",
+     "approxSizeM": [
+      30,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "3DBAG fan planes in copper green; white seams every 11 deg sampled on the roof planes"
+    },
+    {
+     "id": "roof-vents",
+     "kind": "other",
+     "where": "two white vent boxes at the crown of the fan roof",
+     "approxSizeM": [
+      1.4,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002112_pano_0001_000115",
+     "how": "two white boxes 6 m from the apex"
+    }
+   ]
+  },
+  {
+   "tag": "w06-313",
+   "bearing": 313,
+   "lengthM": 5.4,
+   "centre": [
+    4.906176,
+    52.352587
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002112_pano_0001_000114",
+   "capturedAt": "2021-04-21",
+   "checked": true,
+   "items": [],
+   "note": "same curved front as w05 (items listed there), or a neighbour seen past the corner"
+  },
+  {
+   "tag": "w07-3",
+   "bearing": 3,
+   "lengthM": 4.6,
+   "centre": [
+    4.906498,
+    52.352669
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002112_pano_0001_000121",
+   "capturedAt": "2021-04-21",
+   "checked": true,
+   "items": [],
+   "note": "same curved front as w05 (items listed there), or a neighbour seen past the corner"
+  },
+  {
+   "tag": "w08-354",
+   "bearing": 354,
+   "lengthM": 4.2,
+   "centre": [
+    4.906433,
+    52.352668
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_07857",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [],
+   "note": "same curved front as w05 (items listed there), or a neighbour seen past the corner"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (2021-2025)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012155412",
+   "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012155412",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155412",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Tolstraat 160 (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Tolstraat_160",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto RGB Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

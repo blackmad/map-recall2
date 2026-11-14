@@ -1,0 +1,14 @@
+{
+  "modelId": "asscher-diamantslijperij",
+  "landmarkId": "asscher-diamantslijperij",
+  "name": "Diamantslijperij Asscher",
+  "description": "The Asscher diamond-cutting works on the Tolstraat, designed by the architect Gerrit van Arkel and finished in 1907: a long yellow-brick factory with huge windows to give the polishers light, and a castle-like front with corner turrets, the 1907 tablet and the name ASSCHER under a crown. At one time more than 500 diamond polishers worked here. Since 2017 the factory has held flats, while the tower is still the head office of Royal Asscher.",
+  "funFact": "The Cullinan, the largest diamond ever found, was cut here; the streets of the surrounding Diamantbuurt are named after gems, such as Diamantstraat, Smaragdstraat and Saffierstraat.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Koninklijke_Asscher_Diamant_Maatschappij",
+    "https://nl.wikipedia.org/wiki/Diamantbuurt_(Amsterdam)",
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012237135/"
+  ],
+  "preferDescription": true
+}

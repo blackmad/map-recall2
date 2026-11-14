@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "id": "werf-kromhout",
+ "pand": "0363100012180688",
+ "brief": "scripts/landmarks/werf-kromhout-brief.md",
+ "signature": [
+  "yellow-arches",
+  "arch-lettering",
+  "museum-board",
+  "glazing-grid",
+  "white-rakes"
+ ],
+ "walls": [
+  {
+   "tag": "w01-299",
+   "bearing": 299,
+   "lengthM": 50.2,
+   "centre": [
+    4.9199325,
+    52.368203
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0003_000046",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "open-shed",
+     "kind": "other",
+     "where": "open steel-framed shed under the long corrugated roof on the water side",
+     "approxSizeM": [
+      50,
+      7.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001983_pano_0001_000074",
+     "how": "steel posts at about 6 m and an eaves beam on the shell wall (the shed is not opened up)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-29",
+   "bearing": 29,
+   "lengthM": 38.9,
+   "centre": [
+    4.9203595,
+    52.368317
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001983_pano_0001_000103",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "yellow-arches",
+     "kind": "other",
+     "where": "a huge yellow flattened arch filling each of the two black gables on the Nieuwe Vaart",
+     "approxSizeM": [
+      18,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "how": "arch-band polygon (vertical legs, half-ellipse) in gold on each gable, centred on the 3DBAG peak"
+    },
+    {
+     "id": "arch-lettering",
+     "kind": "lettering",
+     "where": "\"'T KROMHOUT\" and \"SCHEEPSWERF\" in dark letters following the arches",
+     "approxSizeM": [
+      8,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "how": "GL glyph runs turned letter by letter along the arch mid-line"
+    },
+    {
+     "id": "museum-board",
+     "kind": "sign",
+     "where": "blue MUSEUM board under the south-east arch",
+     "approxSizeM": [
+      2.9,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "how": "blue slab with GL letters"
+    },
+    {
+     "id": "glazing-grid",
+     "kind": "window-shape",
+     "where": "glazed infill under each arch on a grid of iron bars",
+     "approxSizeM": [
+      16,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "how": "glass arch face with dark bars every 1.0 m by 1.2 m"
+    },
+    {
+     "id": "white-rakes",
+     "kind": "other",
+     "where": "white boards along the gable rakes",
+     "approxSizeM": [
+      20,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "how": "white bands inside the gable outline"
+    },
+    {
+     "id": "crane",
+     "kind": "other",
+     "where": "a lattice crane rising behind the north-west gable",
+     "approxSizeM": [
+      1,
+      12
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001983_pano_0001_000103",
+     "skip": {
+      "reason": "not-visible",
+      "note": "stands on the yard outside the pand, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-119",
+   "bearing": 119,
+   "lengthM": 25,
+   "centre": [
+    4.920522,
+    52.3681345
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "the Hoogte Kadijk houses (other pands) stand in front: no wall of the hall is seen; shell only"
+  },
+  {
+   "tag": "w04-209",
+   "bearing": 209,
+   "lengthM": 20.1,
+   "centre": [
+    4.919885,
+    52.367961
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002372_pano_0000_000035",
+   "capturedAt": "2021-12-31",
+   "checked": true,
+   "items": [],
+   "note": "the Hoogte Kadijk houses (other pands) stand in front: no wall of the hall is seen; shell only"
+  },
+  {
+   "tag": "w05-210",
+   "bearing": 210,
+   "lengthM": 14.9,
+   "centre": [
+    4.9202825,
+    52.367875
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track06_Sphere_00020",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [],
+   "note": "the Hoogte Kadijk houses (other pands) stand in front: no wall of the hall is seen; shell only"
+  },
+  {
+   "tag": "w06-211",
+   "bearing": 211,
+   "lengthM": 10.7,
+   "centre": [
+    4.920092,
+    52.3679045
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002934_pano_0006_000059",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [],
+   "note": "the Hoogte Kadijk houses (other pands) stand in front: no wall of the hall is seen; shell only"
+  },
+  {
+   "tag": "w07-31",
+   "bearing": 31,
+   "lengthM": 7.3,
+   "centre": [
+    4.92048,
+    52.3680195
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "the Hoogte Kadijk houses (other pands) stand in front: no wall of the hall is seen; shell only"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

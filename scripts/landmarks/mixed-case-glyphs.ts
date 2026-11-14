@@ -23,6 +23,9 @@ export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
   // (w04-179 panorama 2025-07-01) needs a lowercase q and u. q keeps the x-height; its stem ends on the baseline (7 rows).
   q: ['00000', '00000', '01111', '10001', '01111', '00001', '00001'],
   u: ['00000', '00000', '10001', '10001', '10001', '10011', '01101'],
+  // De Nieuwe Liefde, Da Costakade 102 (venues-ring lane, 2026-11-14): the dark "De Nieuwe Liefde" lettering over the
+  // entrance (recording_2025-07-31_10-53-44_00617) needs a lowercase w; GL draws m in the same three-stem style.
+  w: ['00000', '00000', '10001', '10001', '10101', '10101', '01010'],
 };
 
 /** GL plus the extra glyphs; GL wins where both define a character, so nothing GL already draws changes. */

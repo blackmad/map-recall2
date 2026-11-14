@@ -100064,6 +100064,1596 @@
       "triangles": 4561,
       "bytes": 78360,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "asscher-diamantslijperij": {
+      "id": "asscher-diamantslijperij",
+      "name": "Diamantslijperij Asscher",
+      "landmarkId": "asscher-diamantslijperij",
+      "modelUrl": "./models/asscher-diamantslijperij.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237135"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.905644190343622,
+          52.3529816749597
+        ],
+        "headingDegrees": 67.25120597427787,
+        "lengthMetres": 88.21,
+        "widthMetres": 24.71
+      },
+      "surveyed": {
+        "anchor": [
+          4.90578561,
+          52.35305622
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012237135 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#c99c6e",
+        "red": "#a5513a",
+        "stone": "#b8b3a6",
+        "white": "#eeeae0",
+        "glass": "#4f5d66",
+        "dark": "#3a3633",
+        "frame": "#7c7f7a",
+        "slate": "#6e7378",
+        "sandstone": "#d8d2c0",
+        "bronze": "#5b3b2e",
+        "concrete": "#b9c4b8"
+      },
+      "attribution": {
+        "title": "Diamantslijperij Asscher",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; factory windows, lozenge inlays, cornice and parapet, Tolstraat turrets, ASSCHER lettering, crown, 1907 tablet, balconies and the east tower's arched lights, loggia and entrance read from the 2018-2025 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.906235927558387,
+              52.35312020256915
+            ],
+            [
+              4.906223596353407,
+              52.35313932330558
+            ],
+            [
+              4.906235892671002,
+              52.3531423841608
+            ],
+            [
+              4.9062298310933645,
+              52.35315318076562
+            ],
+            [
+              4.906216243071754,
+              52.35315012364876
+            ],
+            [
+              4.906163677805432,
+              52.35322763598684
+            ],
+            [
+              4.906074508065272,
+              52.353204705375084
+            ],
+            [
+              4.906071376233697,
+              52.3532092674032
+            ],
+            [
+              4.905974214779189,
+              52.35318427300351
+            ],
+            [
+              4.905977346521528,
+              52.353179719965276
+            ],
+            [
+              4.90515614560146,
+              52.352975430758136
+            ],
+            [
+              4.904980642896158,
+              52.3529321050513
+            ],
+            [
+              4.905115259254861,
+              52.35272756219944
+            ],
+            [
+              4.90529077703446,
+              52.352770788906554
+            ],
+            [
+              4.905225573045971,
+              52.35286991881611
+            ],
+            [
+              4.905398922191821,
+              52.352912866897334
+            ],
+            [
+              4.906235927558387,
+              52.35312020256915
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -55.00490188598633,
+          -5.9604645663569045e-9,
+          -18.91200065612793
+        ],
+        "max": [
+          30.767194747924805,
+          26.892000198364258,
+          36.58134460449219
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90578561,
+          52.35305622
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 67.25120597427787,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 85.77209663391113,
+        "heightMetres": 26.892000204324724,
+        "depthMetres": 55.49334526062012,
+        "depthCoverage": 2.2457849154439544
+      },
+      "triangles": 24115,
+      "bytes": 330600,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "tolstraat-160-tempel": {
+      "id": "tolstraat-160-tempel",
+      "name": "Tolstraat 160 (former theosophical temple, Cinétol)",
+      "landmarkId": "tolstraat-160-tempel",
+      "modelUrl": "./models/tolstraat-160-tempel.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012155412"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.906352737962258,
+          52.352587097455
+        ],
+        "headingDegrees": 21.807595570021988,
+        "lengthMetres": 32.14,
+        "widthMetres": 31.98
+      },
+      "surveyed": {
+        "anchor": [
+          4.90633534,
+          52.35262717
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012155412 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "concrete": "#e2e0d6",
+        "white": "#f1efe8",
+        "stone": "#bdbdb6",
+        "copper": "#9ccbb0",
+        "glass": "#36424b",
+        "blue": "#34557f"
+      },
+      "attribution": {
+        "title": "Tolstraat 160 (former theosophical temple, Cinétol)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Tolstraat_160",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; foyer and drum window ribbons, fascias, entrance, fan-roof seams and vents swept along the measured curves from the 2021-2022 municipal panoramas and the PDOK orthophoto; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.906573615130441,
+              52.35268858099492
+            ],
+            [
+              4.906534007146376,
+              52.35267840782427
+            ],
+            [
+              4.906529578718551,
+              52.352665815997305
+            ],
+            [
+              4.906512613751325,
+              52.35266693348618
+            ],
+            [
+              4.906495579972462,
+              52.35266762826955
+            ],
+            [
+              4.90647852151127,
+              52.35266789153884
+            ],
+            [
+              4.906461453045407,
+              52.3526677233537
+            ],
+            [
+              4.9064444186068465,
+              52.35266712389285
+            ],
+            [
+              4.906427432873245,
+              52.352666093216
+            ],
+            [
+              4.9064133401957655,
+              52.3526649214962
+            ],
+            [
+              4.906399324312432,
+              52.352663435515794
+            ],
+            [
+              4.9063853998033276,
+              52.352661644321834
+            ],
+            [
+              4.906377838073822,
+              52.35266053507732
+            ],
+            [
+              4.906370306672668,
+              52.35265933607815
+            ],
+            [
+              4.9063628202770655,
+              52.35265804738395
+            ],
+            [
+              4.9063589969392805,
+              52.35265734878468
+            ],
+            [
+              4.906360078887416,
+              52.35265638250421
+            ],
+            [
+              4.906360999971006,
+              52.35265536164381
+            ],
+            [
+              4.906361774769839,
+              52.35265429525045
+            ],
+            [
+              4.9063621937143225,
+              52.35265355995786
+            ],
+            [
+              4.906362539370388,
+              52.352652815379784
+            ],
+            [
+              4.906362811835405,
+              52.352652052528946
+            ],
+            [
+              4.906361934906121,
+              52.35265170743266
+            ],
+            [
+              4.906361117269674,
+              52.352651308650834
+            ],
+            [
+              4.90636035873133,
+              52.35265087415809
+            ],
+            [
+              4.90635967396824,
+              52.35265040401407
+            ],
+            [
+              4.906359048303252,
+              52.35264989815921
+            ],
+            [
+              4.906358496413518,
+              52.35264935665305
+            ],
+            [
+              4.9063580182016695,
+              52.35264878848299
+            ],
+            [
+              4.906357613959811,
+              52.35264816668702
+            ],
+            [
+              4.906357297878247,
+              52.35264753626143
+            ],
+            [
+              4.906357084828866,
+              52.35264687929113
+            ],
+            [
+              4.906356959939774,
+              52.35264621369123
+            ],
+            [
+              4.906356937790749,
+              52.35264554850872
+            ],
+            [
+              4.9063570183817875,
+              52.35264488374354
+            ],
+            [
+              4.906357186938367,
+              52.35264422832342
+            ],
+            [
+              4.906338394446275,
+              52.35263926265311
+            ],
+            [
+              4.906333132202873,
+              52.35264673704847
+            ],
+            [
+              4.90630495814593,
+              52.35263928859573
+            ],
+            [
+              4.906310220393186,
+              52.35263181420164
+            ],
+            [
+              4.90629305259526,
+              52.352627268560546
+            ],
+            [
+              4.906292606924892,
+              52.352627761075404
+            ],
+            [
+              4.906292102935456,
+              52.352628217402405
+            ],
+            [
+              4.906291525852425,
+              52.35262864646922
+            ],
+            [
+              4.906290890352941,
+              52.35262904833545
+            ],
+            [
+              4.90629019663177,
+              52.35262940502652
+            ],
+            [
+              4.90628944459153,
+              52.35262972552966
+            ],
+            [
+              4.906288663586515,
+              52.35263000996416
+            ],
+            [
+              4.906287824457198,
+              52.3526302402361
+            ],
+            [
+              4.90628697113764,
+              52.35263042551168
+            ],
+            [
+              4.906286162433814,
+              52.35263055704209
+            ],
+            [
+              4.906285339637131,
+              52.352630634588806
+            ],
+            [
+              4.9062845171326,
+              52.35263068517352
+            ],
+            [
+              4.9062836805352195,
+              52.3526306817745
+            ],
+            [
+              4.906282859004519,
+              52.35263064248582
+            ],
+            [
+              4.90628203796074,
+              52.35263055826035
+            ],
+            [
+              4.906281231983646,
+              52.352630438145205
+            ],
+            [
+              4.906280441170625,
+              52.35263027315295
+            ],
+            [
+              4.906279344836402,
+              52.352631212411026
+            ],
+            [
+              4.906278409366445,
+              52.352632206249154
+            ],
+            [
+              4.9062776200836185,
+              52.352633254607596
+            ],
+            [
+              4.906277051737056,
+              52.35263423196186
+            ],
+            [
+              4.906276629772413,
+              52.35263524586175
+            ],
+            [
+              4.906276339804708,
+              52.35263626928565
+            ],
+            [
+              4.906266646154203,
+              52.35263278759721
+            ],
+            [
+              4.906243377137162,
+              52.35262374126621
+            ],
+            [
+              4.906221145658724,
+              52.352613764421825
+            ],
+            [
+              4.9062000539725465,
+              52.35260290241884
+            ],
+            [
+              4.906180933123642,
+              52.35259167093611
+            ],
+            [
+              4.90616302379653,
+              52.352579707379235
+            ],
+            [
+              4.906146398792279,
+              52.35256706597111
+            ],
+            [
+              4.9061286191753455,
+              52.35257428276786
+            ],
+            [
+              4.90608344928649,
+              52.3525626847538
+            ],
+            [
+              4.906116378727464,
+              52.35251462634448
+            ],
+            [
+              4.9061237609895425,
+              52.35250385308735
+            ],
+            [
+              4.906170035941828,
+              52.35249203353306
+            ],
+            [
+              4.906162898738891,
+              52.352481551789545
+            ],
+            [
+              4.906483290129337,
+              52.35239972581089
+            ],
+            [
+              4.906551167858491,
+              52.35250335144928
+            ],
+            [
+              4.906612533951723,
+              52.35259702814622
+            ],
+            [
+              4.906595270956946,
+              52.352601272169395
+            ],
+            [
+              4.906613926299015,
+              52.35262974916235
+            ],
+            [
+              4.906573615130441,
+              52.35268858099492
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -17.208999633789062,
+          0,
+          -6.958730220794678
+        ],
+        "max": [
+          18.982999801635742,
+          19.113000869750977,
+          25.36199951171875
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90633534,
+          52.35262717
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 21.807595570021988,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 36.191999435424805,
+        "heightMetres": 19.113000869750977,
+        "depthMetres": 32.32072973251343,
+        "depthCoverage": 1.0106544631805325
+      },
+      "triangles": 5254,
+      "bytes": 69368,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-nieuwe-liefde": {
+      "id": "de-nieuwe-liefde",
+      "name": "De Nieuwe Liefde",
+      "landmarkId": "de-nieuwe-liefde",
+      "modelUrl": "./models/de-nieuwe-liefde.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012236796"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8713836639643135,
+          52.36976347895478
+        ],
+        "headingDegrees": 73.94391333121206,
+        "lengthMetres": 34.9,
+        "widthMetres": 22.07
+      },
+      "surveyed": {
+        "anchor": [
+          4.87149406,
+          52.36978525
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012236796 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "concrete": "#e9e7df",
+        "white": "#f3f1ea",
+        "stone": "#8e9aa1",
+        "slate": "#45474a",
+        "glass": "#3b4448",
+        "frame": "#3e4246",
+        "dark": "#2f3236",
+        "bronze": "#55585a"
+      },
+      "attribution": {
+        "title": "De Nieuwe Liefde",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/De_Nieuwe_Liefde",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Da Costakade front (twin gables, segmental and round-arched windows, hoods, plinth, lettering, mansard) laid out from the 2016-2025 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.871592509960853,
+              52.369887148901064
+            ],
+            [
+              4.8714017365588,
+              52.36985978618617
+            ],
+            [
+              4.871217603923334,
+              52.36983337783971
+            ],
+            [
+              4.871206888167481,
+              52.369831839176946
+            ],
+            [
+              4.871218247983499,
+              52.369805779336346
+            ],
+            [
+              4.871175340942849,
+              52.36979962448766
+            ],
+            [
+              4.87116398110322,
+              52.36982568432418
+            ],
+            [
+              4.8710920637949595,
+              52.3698153675115
+            ],
+            [
+              4.871181852086353,
+              52.36962488650628
+            ],
+            [
+              4.871230873067793,
+              52.369634330542674
+            ],
+            [
+              4.871667872979914,
+              52.36971849881816
+            ],
+            [
+              4.8716653090230135,
+              52.36972432967668
+            ],
+            [
+              4.871663404444572,
+              52.36972396187456
+            ],
+            [
+              4.871656619646397,
+              52.36973921146757
+            ],
+            [
+              4.871658524225438,
+              52.36973957926977
+            ],
+            [
+              4.871654454389146,
+              52.3697486391527
+            ],
+            [
+              4.871652256154769,
+              52.36974827007174
+            ],
+            [
+              4.871636743264804,
+              52.36978299401322
+            ],
+            [
+              4.871638941500775,
+              52.36978336309451
+            ],
+            [
+              4.871636076569247,
+              52.36978982178263
+            ],
+            [
+              4.871634171988238,
+              52.36978945398006
+            ],
+            [
+              4.871627386125361,
+              52.369804793443855
+            ],
+            [
+              4.871629143879288,
+              52.36980516060717
+            ],
+            [
+              4.871618291294828,
+              52.369829290334
+            ],
+            [
+              4.8716162398845135,
+              52.36982892189173
+            ],
+            [
+              4.871600712359608,
+              52.36986363677669
+            ],
+            [
+              4.871602763771393,
+              52.3698640052192
+            ],
+            [
+              4.871592509960853,
+              52.369887148901064
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": 1.9,
+        "phi": 1.15
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -27.354999542236328,
+          -1.1920929132713809e-8,
+          -11.310141563415527
+        ],
+        "max": [
+          12.202471733093262,
+          18.700000762939453,
+          17.694000244140625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87149406,
+          52.36978525
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 73.94391333121206,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 39.55747127532959,
+        "heightMetres": 18.70000077486038,
+        "depthMetres": 29.004141807556152,
+        "depthCoverage": 1.3141885730655256
+      },
+      "triangles": 3468,
+      "bytes": 53508,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rijksakademie": {
+      "id": "rijksakademie",
+      "name": "Rijksakademie van beeldende kunsten (Cavaleriekazerne)",
+      "landmarkId": "rijksakademie",
+      "modelUrl": "./models/rijksakademie.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165748"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.918116115909752,
+          52.36271643229627
+        ],
+        "headingDegrees": 71.07292522716045,
+        "lengthMetres": 113.06,
+        "widthMetres": 75.22
+      },
+      "surveyed": {
+        "anchor": [
+          4.91826111,
+          52.36275879
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012165748 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#6f5247",
+        "red": "#8b5040",
+        "white": "#eeebe2",
+        "stone": "#c9c4b6",
+        "glass": "#3d474c",
+        "dark": "#2c2f30"
+      },
+      "attribution": {
+        "title": "Rijksakademie van beeldende kunsten (Cavaleriekazerne)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Sarphatistraat_470",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Sarphatistraat ranges, entrance pavilion, north-east gable and Singelgracht range laid out from the 2016-2021 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.918575110895379,
+              52.362703043585114
+            ],
+            [
+              4.918632191029093,
+              52.36270860821586
+            ],
+            [
+              4.918654239930245,
+              52.362624004268696
+            ],
+            [
+              4.918785456347578,
+              52.36263681870051
+            ],
+            [
+              4.918758664022261,
+              52.36273965794559
+            ],
+            [
+              4.918627447308625,
+              52.36272684348402
+            ],
+            [
+              4.9186285489134285,
+              52.362722623619355
+            ],
+            [
+              4.918567655627607,
+              52.36271668438445
+            ],
+            [
+              4.918558104550748,
+              52.36273415464011
+            ],
+            [
+              4.918756798992404,
+              52.362756394673426
+            ],
+            [
+              4.918799298924222,
+              52.36276075110401
+            ],
+            [
+              4.918809850269619,
+              52.36272222657754
+            ],
+            [
+              4.918955190603753,
+              52.362736399916805
+            ],
+            [
+              4.9189582264348735,
+              52.36273669953067
+            ],
+            [
+              4.9189577523701145,
+              52.362738495198066
+            ],
+            [
+              4.918936069791648,
+              52.36282182439224
+            ],
+            [
+              4.918819914609426,
+              52.36281049876313
+            ],
+            [
+              4.918814044282842,
+              52.36282142257134
+            ],
+            [
+              4.918897168652204,
+              52.362838144995806
+            ],
+            [
+              4.918897662595906,
+              52.36283724817848
+            ],
+            [
+              4.91891130134864,
+              52.36284003439185
+            ],
+            [
+              4.918910837240544,
+              52.36284088638869
+            ],
+            [
+              4.918912228952063,
+              52.36284117051265
+            ],
+            [
+              4.91890870940022,
+              52.362847753571394
+            ],
+            [
+              4.918907244380627,
+              52.362847460169704
+            ],
+            [
+              4.918720488355953,
+              52.363189225011354
+            ],
+            [
+              4.9187220411848775,
+              52.363189545725895
+            ],
+            [
+              4.918717849464922,
+              52.36319721363191
+            ],
+            [
+              4.918716311221527,
+              52.363196901962695
+            ],
+            [
+              4.918715802304782,
+              52.36319782568313
+            ],
+            [
+              4.918702324657068,
+              52.36319506704835
+            ],
+            [
+              4.918702833574061,
+              52.36319414332801
+            ],
+            [
+              4.918444136737751,
+              52.36314115237092
+            ],
+            [
+              4.918443627626085,
+              52.36314209406482
+            ],
+            [
+              4.918429681276152,
+              52.3631392346783
+            ],
+            [
+              4.918430190293126,
+              52.3631383019718
+            ],
+            [
+              4.918428666734451,
+              52.363137990357004
+            ],
+            [
+              4.918432858498742,
+              52.36313032246118
+            ],
+            [
+              4.918434382057182,
+              52.36313063407592
+            ],
+            [
+              4.918583535647222,
+              52.36285754873934
+            ],
+            [
+              4.9185000043874645,
+              52.362840438011936
+            ],
+            [
+              4.918379072035047,
+              52.3630617040071
+            ],
+            [
+              4.918380595590755,
+              52.36306201562253
+            ],
+            [
+              4.918376867944689,
+              52.36306883152194
+            ],
+            [
+              4.918364328017772,
+              52.36306625631607
+            ],
+            [
+              4.918364837130244,
+              52.36306531462248
+            ],
+            [
+              4.917885166763215,
+              52.36296724558456
+            ],
+            [
+              4.91788254708703,
+              52.362972016662496
+            ],
+            [
+              4.917871999403312,
+              52.362969862736655
+            ],
+            [
+              4.917872508525117,
+              52.3629689210452
+            ],
+            [
+              4.917806790888184,
+              52.36295547553039
+            ],
+            [
+              4.917750536786081,
+              52.36294397290011
+            ],
+            [
+              4.917684672702837,
+              52.36293049977334
+            ],
+            [
+              4.9176841488969165,
+              52.3629314414058
+            ],
+            [
+              4.917673425541165,
+              52.36292924182692
+            ],
+            [
+              4.917676030651823,
+              52.36292446170803
+            ],
+            [
+              4.917196616240111,
+              52.362826076313326
+            ],
+            [
+              4.917196107200816,
+              52.36282700901454
+            ],
+            [
+              4.9171835674111755,
+              52.36282443368364
+            ],
+            [
+              4.917187280634497,
+              52.36281760877608
+            ],
+            [
+              4.917188804173402,
+              52.36281792040688
+            ],
+            [
+              4.917443538328401,
+              52.36235185797404
+            ],
+            [
+              4.917442000218462,
+              52.36235153730089
+            ],
+            [
+              4.917445713362226,
+              52.36234471238452
+            ],
+            [
+              4.917456861535275,
+              52.362346985571996
+            ],
+            [
+              4.917456337826596,
+              52.36234791821622
+            ],
+            [
+              4.9178623418076635,
+              52.36243110095989
+            ],
+            [
+              4.917889194058012,
+              52.36243659104991
+            ],
+            [
+              4.917900713424304,
+              52.3623829531039
+            ],
+            [
+              4.917774423971525,
+              52.36237078636389
+            ],
+            [
+              4.917775725336253,
+              52.36236573144145
+            ],
+            [
+              4.9177728214719245,
+              52.362365450295776
+            ],
+            [
+              4.917784825411869,
+              52.36231875279609
+            ],
+            [
+              4.9177877292732175,
+              52.36231903394142
+            ],
+            [
+              4.917789030729974,
+              52.36231397003143
+            ],
+            [
+              4.9179939154602055,
+              52.36233370136308
+            ],
+            [
+              4.917992614026247,
+              52.36233876527532
+            ],
+            [
+              4.917995503209859,
+              52.36233904635735
+            ],
+            [
+              4.91798349948609,
+              52.36238574387854
+            ],
+            [
+              4.917980610299511,
+              52.362385462796176
+            ],
+            [
+              4.91797930895754,
+              52.36239051772088
+            ],
+            [
+              4.917927112374344,
+              52.362385493418664
+            ],
+            [
+              4.917912808692553,
+              52.36244143017242
+            ],
+            [
+              4.918062055742432,
+              52.36247200469926
+            ],
+            [
+              4.918626041056135,
+              52.362587528378874
+            ],
+            [
+              4.918626550157527,
+              52.3625865866841
+            ],
+            [
+              4.91863907537868,
+              52.36258915281682
+            ],
+            [
+              4.91863534781228,
+              52.36259596872506
+            ],
+            [
+              4.918633809685217,
+              52.36259564806748
+            ],
+            [
+              4.918575110895379,
+              52.362703043585114
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": 3.3,
+        "phi": 1.1
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -73.35199737548828,
+          0,
+          -48.64699935913086
+        ],
+        "max": [
+          47.4630012512207,
+          21.444000244140625,
+          49.284000396728516
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91826111,
+          52.36275879
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 71.07292522716045,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 120.81499862670898,
+        "heightMetres": 21.444000244140625,
+        "depthMetres": 97.93099975585938,
+        "depthCoverage": 1.3019276755631397
+      },
+      "triangles": 22527,
+      "bytes": 255284,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "werf-kromhout": {
+      "id": "werf-kromhout",
+      "name": "Werf 't Kromhout",
+      "landmarkId": "werf-kromhout",
+      "modelUrl": "./models/werf-kromhout.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180688"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.920226776068269,
+          52.36810096508284
+        ],
+        "headingDegrees": 28.654967642445655,
+        "lengthMetres": 50.31,
+        "widthMetres": 46.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.9201477,
+          52.36797056
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012180688 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "dark": "#262b31",
+        "slate": "#5f6468",
+        "gold": "#e2b31f",
+        "white": "#ecebe6",
+        "stone": "#ecebe6",
+        "glass": "#33414b",
+        "blue": "#2f4f86",
+        "greyBrick": "#3a3f44"
+      },
+      "attribution": {
+        "title": "Werf 't Kromhout",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Kromhout_(bedrijf)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Nieuwe Vaart gables (yellow arches, lettering, glazing grid, rakes) and the water-side posts laid out from the 2017-2021 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.919752895715609,
+              52.36800327457822
+            ],
+            [
+              4.919807859851828,
+              52.36798457245527
+            ],
+            [
+              4.919888699877388,
+              52.367957056639554
+            ],
+            [
+              4.919931389105457,
+              52.36794253023048
+            ],
+            [
+              4.91999652064927,
+              52.367920371929934
+            ],
+            [
+              4.920011595275961,
+              52.367915236521995
+            ],
+            [
+              4.920021811841557,
+              52.367926646277915
+            ],
+            [
+              4.920115021285559,
+              52.36789291468639
+            ],
+            [
+              4.920157838054144,
+              52.367877418027156
+            ],
+            [
+              4.920177787758429,
+              52.36789874364742
+            ],
+            [
+              4.9201846844236545,
+              52.367906122791176
+            ],
+            [
+              4.920284308105566,
+              52.36787118505185
+            ],
+            [
+              4.920284017771917,
+              52.36787086933732
+            ],
+            [
+              4.9203752204029145,
+              52.367839448454376
+            ],
+            [
+              4.920523479833135,
+              52.36800068808857
+            ],
+            [
+              4.920431466355032,
+              52.36803379557658
+            ],
+            [
+              4.920607587936311,
+              52.36823059242799
+            ],
+            [
+              4.920106672712233,
+              52.368398565784894
+            ],
+            [
+              4.919752895715609,
+              52.36800327457822
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": 0.2,
+        "phi": 1.15
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -26.928813934326172,
+          -2.3717581143500865e-7,
+          -47.638999938964844
+        ],
+        "max": [
+          31.44700050354004,
+          13.022000312805176,
+          14.689000129699707
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9201477,
+          52.36797056
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 28.654967642445627,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.32800006866455,
+        "heightMetres": 13.022000549980987,
+        "depthMetres": 58.37581443786621,
+        "depthCoverage": 1.2662866472422172
+      },
+      "triangles": 4655,
+      "bytes": 64492,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "conservatorium-van-amsterdam": {
+      "id": "conservatorium-van-amsterdam",
+      "name": "Conservatorium van Amsterdam",
+      "landmarkId": "conservatorium-van-amsterdam",
+      "modelUrl": "./models/conservatorium-van-amsterdam.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012164965"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.908880409930225,
+          52.37608656213969
+        ],
+        "headingDegrees": 175.21130327699098,
+        "lengthMetres": 77.39,
+        "widthMetres": 21.77
+      },
+      "surveyed": {
+        "anchor": [
+          4.90890937,
+          52.37582784
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012164965 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "glass": "#2f474b",
+        "dark": "#1f2629",
+        "concrete": "#a7aba9",
+        "white": "#f2f2ee",
+        "stone": "#f2f2ee",
+        "blue": "#2f6fb2",
+        "red": "#b9653b"
+      },
+      "attribution": {
+        "title": "Conservatorium van Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Conservatorium_van_Amsterdam",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the curtain-wall grid, name and discs on the south front and the orange fin screen on the west side laid out from the 2022-2025 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.908673244012497,
+              52.37642477054173
+            ],
+            [
+              4.9087630101764175,
+              52.375770622469105
+            ],
+            [
+              4.908769599323288,
+              52.37575471391042
+            ],
+            [
+              4.908772094189075,
+              52.37575486779365
+            ],
+            [
+              4.908772669324831,
+              52.37575192215376
+            ],
+            [
+              4.908796147659657,
+              52.37575362580922
+            ],
+            [
+              4.908796721533578,
+              52.37575079700416
+            ],
+            [
+              4.908828327980527,
+              52.37575320756869
+            ],
+            [
+              4.908828917409593,
+              52.37575029793705
+            ],
+            [
+              4.908860465021817,
+              52.375752717243024
+            ],
+            [
+              4.908861054448772,
+              52.37574980761122
+            ],
+            [
+              4.908892749007397,
+              52.3757522185145
+            ],
+            [
+              4.908893353601633,
+              52.37574926400536
+            ],
+            [
+              4.908924944980363,
+              52.375751710434024
+            ],
+            [
+              4.908925534499988,
+              52.37574879181459
+            ],
+            [
+              4.9089571559281495,
+              52.375751175442154
+            ],
+            [
+              4.908957730373213,
+              52.37574829271248
+            ],
+            [
+              4.908989322239365,
+              52.37575069418743
+            ],
+            [
+              4.908989941608849,
+              52.37574773074979
+            ],
+            [
+              4.909021503912977,
+              52.375750150072165
+            ],
+            [
+              4.909022107917238,
+              52.37574724948614
+            ],
+            [
+              4.909053714083443,
+              52.37574968695246
+            ],
+            [
+              4.909054480974859,
+              52.37574666119626
+            ],
+            [
+              4.909085919506075,
+              52.375749664201756
+            ],
+            [
+              4.90908143034699,
+              52.375773760058365
+            ],
+            [
+              4.908993530401298,
+              52.376433685994044
+            ],
+            [
+              4.908987628084938,
+              52.37643356329317
+            ],
+            [
+              4.908673244012497,
+              52.37642477054173
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": -0.5,
+        "phi": 1.15
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.774755477905273,
+          -9.371648843625735e-7,
+          -67.41200256347656
+        ],
+        "max": [
+          11.973999977111816,
+          44.0890007019043,
+          9.281826972961426
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90890937,
+          52.37582784
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 175.21130327699098,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 76.69382953643799,
+        "heightMetres": 44.08900163906918,
+        "depthMetres": 27.74875545501709,
+        "depthCoverage": 1.2746327723939868
+      },
+      "triangles": 3063,
+      "bytes": 48380,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

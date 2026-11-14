@@ -1,0 +1,23 @@
+{
+  "name": "Rijksakademie van beeldende kunsten (Cavaleriekazerne)",
+  "landmarkId": "rijksakademie",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Sarphatistraat_470",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012165748"
+  ],
+  "pandId": "0363100012165748",
+  "anchor": [
+    4.91826111,
+    52.36275879
+  ],
+  "materialOverrides": {
+    "brick": "#6f5247",
+    "red": "#8b5040",
+    "white": "#eeebe2",
+    "stone": "#c9c4b6",
+    "glass": "#3d474c",
+    "dark": "#2c2f30"
+  },
+  "surveySource": "Current BAG 0363100012165748 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Sarphatistraat ranges, entrance pavilion, north-east gable and Singelgracht range laid out from the 2016-2021 municipal panoramas; no pixels or meshes imported."
+}
