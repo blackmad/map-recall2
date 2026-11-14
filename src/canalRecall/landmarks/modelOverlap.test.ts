@@ -45,6 +45,16 @@ test('named regression: Brandweerkazerne Nico draws once; the IJ-tunnel police i
   assert.ok(!drawnIds.has('ordinary-0363100012165618'));
 });
 
+test('named regression: Theater Bellevue (Leidsekade 90, pand 0363100012169852) draws once, as part of delamar (2026-11-14)', () => {
+  assert.ok(drawnIds.has('delamar'));
+  assert.ok(!drawnIds.has('theater-bellevue'));
+  const delamar = drawn.find(m => m.id === 'delamar')!;
+  assert.ok(delamar.suppressOsmIds.includes('NL.IMBAG.Pand.0363100012169852'), 'delamar keeps the Bellevue pand');
+  const held = ALL_MANUAL_LANDMARKS.find(m => m.id === 'theater-bellevue') as {status?: string; heldReason?: string} | undefined;
+  assert.equal(held?.status, 'held');
+  assert.match(held?.heldReason ?? '', /^Superseded by delamar/, 'the venues-r3 model stays catalogued (GLB in git), superseded');
+});
+
 test('every SHADOWED_BY_LANDMARK pair is real: the install is catalogued, its landmark is drawn and suppresses its pand', () => {
   const catalogue = JSON.parse(fs.readFileSync('public/canal-drive/ordinary-buildings-data/catalogue.json', 'utf8')).models as {id: string; buildingId: string}[];
   for (const [ordinary, landmark] of Object.entries(SHADOWED_BY_LANDMARK)) {

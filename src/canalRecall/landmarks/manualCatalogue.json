@@ -80790,7 +80790,7 @@
   "id": "theater-bellevue",
   "name": "Theater Bellevue, Leidsekade 90",
   "status": "held",
-  "heldReason": "2026-11-14 integrator: the delamar model already draws Theater Bellevue on the same pand (0363100012169852, delamar-builder.ts); compare the two Leidsekade drums at the rule-10 pose and keep one before un-holding.",
+  "heldReason": "Superseded by delamar on the same pand (0363100012169852; delamar-builder.ts draws the Bellevue drum, cream block, Leidsekade house and fly tower). Compared 2026-11-14 at the rule-10 panorama poses (lane bellevue-delamar-20261114, screenshots landmarks/2026-11-14-bellevue-delamar/): delamar keeps the glazed yellow brick round to the oculus as the photo does, where this model turns it into a tan block with a square-framed oculus; the canal house, sign and fly tower read the same in both. The venues-r3 GLB stays in git.",
   "landmarkId": "extract_landmarks_374802612",
   "modelUrl": "./models/theater-bellevue.glb",
   "suppressOsmIds": [
