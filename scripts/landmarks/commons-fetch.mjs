@@ -2,7 +2,7 @@
 // node commons.mjs get <outDir> "<File:...>" ...        -> download 1600px thumbs + <name>.json provenance (url, licence, author)
 const [cmd, ...args] = process.argv.slice(2);
 const api = 'https://commons.wikimedia.org/w/api.php';
-const UA = {headers: {'User-Agent': 'MapRecallResearch/1.0 (whizziwig research; landmark modelling)'}};
+const UA = {headers: {'User-Agent': 'MapRecallResearch/1.0 (landmark modelling; +https://github.com/blackmad/map-recall2)'}};
 import fs from 'node:fs';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 /** JSON with patience: Commons answers 'too many requests' as text; wait and retry. */

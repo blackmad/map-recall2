@@ -19,7 +19,7 @@ if (!process.argv.includes('--offline') || !existsSync(OUT)) {
   const query = `[out:json][timeout:60];(way["landuse"="allotments"](${BBOX});relation["landuse"="allotments"](${BBOX}););out geom tags;`;
   let response!: Response;
   for (const host of ['https://overpass-api.de', 'https://overpass.kumi.systems', 'https://lz4.overpass-api.de']) {
-    response = await fetch(`${host}/api/interpreter`, { method: 'POST', headers: { 'User-Agent': 'map-recall2-research/1.0 (whizziwig@gmail.com)', 'Content-Type': 'application/x-www-form-urlencoded' }, body: `data=${encodeURIComponent(query)}` });
+    response = await fetch(`${host}/api/interpreter`, { method: 'POST', headers: { 'User-Agent': 'map-recall2-research/1.0 (+https://github.com/blackmad/map-recall2)', 'Content-Type': 'application/x-www-form-urlencoded' }, body: `data=${encodeURIComponent(query)}` });
     if (response.ok) break;
   }
   if (!response.ok) throw new Error(`Overpass ${response.status}`);

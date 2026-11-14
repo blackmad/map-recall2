@@ -68,7 +68,7 @@ async function cachedJson(url: string, file: string, delay: number): Promise<any
   if (existsSync(file)) return JSON.parse(readFileSync(file, 'utf8')).json;
   if (NO_NETWORK) throw new Error(`no-network: missing cache ${file}`);
   await sleep(delay);
-  const response = await fetch(url, { headers: { 'user-agent': 'map-recall2 identity lane (david@whizziwig.com)' } });
+  const response = await fetch(url, { headers: { 'user-agent': 'map-recall2 identity lane (+https://github.com/blackmad/map-recall2)' } });
   if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
   const json = await response.json();
   mkdirSync(path.dirname(file), { recursive: true });

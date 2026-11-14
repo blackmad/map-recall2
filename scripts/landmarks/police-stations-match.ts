@@ -4,7 +4,7 @@
  *   node --import tsx scripts/landmarks/police-stations-match.ts   (writes scripts/landmarks/police-stations.json base)
  */
 import fs from 'node:fs';
-const UA = 'map-recall2-police-lane/1.0 (whizziwig@gmail.com)';
+const UA = 'map-recall2-police-lane/1.0 (+https://github.com/blackmad/map-recall2)';
 const OUT = 'scripts/landmarks/police-stations.json';
 const q = `[out:json][timeout:60];nwr["amenity"="police"](52.27,4.72,52.44,5.05);out center tags;`;
 const MIRRORS = ['https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter'];

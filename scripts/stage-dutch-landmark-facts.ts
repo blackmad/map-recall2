@@ -10,7 +10,7 @@ const DIR = 'public/data/extracts/amsterdam';
 const CACHE = '.cache/n1/articles.json';
 const noDutch: Array<{ id: string; name: string; buurt: string; wikipedia: string; wikipediaUrl: string }> =
   JSON.parse(fs.readFileSync(process.argv.find(a => a.startsWith('--ids='))?.slice(6) ?? '.cache/n1/before.json', 'utf8')).noDutch;
-const UA = { 'user-agent': 'CanalRecall/1.0 (Dutch trivia sources; david@whizziwig.com)' };
+const UA = { 'user-agent': 'CanalRecall/1.0 (Dutch trivia sources; +https://github.com/blackmad/map-recall2)' };
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 type Article = { title: string; url: string; text: string; lede: string } | null;
 let cache: Record<string, Article> = fs.existsSync(CACHE) ? JSON.parse(fs.readFileSync(CACHE, 'utf8')) : {};

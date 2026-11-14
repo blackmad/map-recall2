@@ -5,7 +5,7 @@
  */
 import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
-export const UA = 'map-recall2-public-buildings-lane/1.0 (whizziwig@gmail.com)';
+export const UA = 'map-recall2-public-buildings-lane/1.0 (+https://github.com/blackmad/map-recall2)';
 const MIRRORS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
 export async function overpass(q: string): Promise<{elements: any[]}> {
   for (let round = 0; round < 4; round++) for (const m of MIRRORS) {
