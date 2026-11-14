@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Round 131 (2026-11-14): load lane LS, lane 2 wall rule, fuzzy ground fade on.**
+- **Fuzzy roads** (David: "why are the roads still fuzzy when I have sharp buildings — very important"). The overview raster (z15, 2.9 m a texel) was overzoomed at chase zoom over the crisp basemap until the own-ground cells landed. `overviewStreetFade` (fade z16–16.5) now defaults on; `?overviewStreetFade=0` is the before.
+- **LS load lane** (lane/load-strategy-20261113 at e9dbed240):
+  - Ride allocation −44 % (RoadQueryScratch in `contactsAt`, in-place `liftRanges` merged with F4's drape, `scanSide` without closures); physics byte-identical.
+  - Ground workers start before the page's ground data (`?groundEarlyWorkers=0`) and the ground store asks its manifests in parallel (`?groundParallelInit=0`): workers ready ~1.6 s sooner, first cell ~1 s sooner on own.
+  - Hashed /js served immutable (`stamp-canal-assets.ts --rename`, firebase.json); a warm reload sends 10 script requests instead of 74. Confirm with `curl -I` on a hashed file after the first deploy.
+  - Sentry's BrowserApiErrors wrapping off (`?sentryWrap=1` on) so long-frame attributions name the real callbacks.
+  - Flags off: `?wallsPerArea=1` (MapLibre stand-in walls per undrawn tile, state 2), `?groundFirstAlone=1` (rider's cell 3–6 s sooner but all 14 cells 3–7 s later; keep off).
+  - **Corrections.** "Duplicate downloads" were a Playwright artefact: a context with any route runs with the HTTP cache off. A real cold load is ~53–55 MB with 0 MB duplicate, so groundShare stays opt-in. Sentry CANAL-RECALL-T's 1.8 GB heap is main thread plus three ground workers. Its 2.25 s stall did not reproduce cold or warm; the likeliest cause is machine load from our lanes during David's ride.
+- **Lane 2** (lane/front-records-20261113 at 8c1a439e3):
+  - 66 traced fronts, HS74A split.
+  - Kit/ordinary parity score (`kit-parity.ts`; mean P 0.26–0.36 per face).
+  - The wall rule `look/wallRule.ts` behind `?wallRule=1` / `WALL_RULE=1`. Measured walls skip the `cityWallTint` lift (palette.ts:593, L → 0.12 + 0.9·L, which made kit walls flat taupe). Census: 1,842 wall materials in 885 installed GLBs would draw a median 0.076 L darker. That is the "model path lightens dark walls" complaint, measured.
+
 **Round 130 (2026-11-14): world recompile with industrial vetoes and ridge axes; fb3; lane 1 row fronts flag-off.**
 - **World recompile** (`world:compile --shell --against=none`): the F2 industrial table (sheds+works 5,977 → 5,249), F3 drainpipe/fin removal and the shell code covering facade extras (fb3, integrator-lanes-54), and the 3DBAG ridge axes. Ridge tiles published (261 z14 tiles, 1.3 MB, `ridge-axes/`), `RIDGE_AXES_DEFAULT_ON = true` (`?ridgeAxes=0` off; the compile reads them through `gameTileEnricher` with search ''). Before/after: ridges need `?world=live` (baked cells carry the compiled axes and ignore the runtime flag); the aerial pair over Jan Hanzenstraat changes 2.3 % of the frame (back-row gable sawtooth → long roofs), street-level poses showed little. Industrial pair (Nicolaas Ruychaverstraat, Slotermeer, 0363100012151862, not Sloterhof) 46.5 %.
 - **Lane 1** merged at 4073e9193 behind `?rowFront=1`: traced windows as mesher boxes, sub-fronts, one `crownOutline.ts` (382 recipes identical), row-front records published (`public/data/front-records/row-front.json`, 128 records, 19 traced). Window IoU 2-58 upper 0.185 → 0.467.

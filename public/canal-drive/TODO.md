@@ -28,6 +28,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 - **Route A at volume** waits for the plot-true check; the D1 1,000-front tranche may start (belt + AH07, curvature ≤ 0.4 m).
 - **Coverage map:** add a "described from photos" tier (needs-david with a legend mock-up when the first tranche is ready); regenerate coverage-v1 (stale since 2026-11-10).
 
+## Load and smoothness (P0, David 2026-11-13: "wtf is our load time really this slow", "SUPER jerky", "roads still fuzzy")
+
+- **Wall rule flip** (`?wallRule=1`, lane 2): flip only after a row review in game (rule 10 frames, 72°, dpr 2) on Haarlemmerdijk 2-28 and a gallery check of a sample of the 885 GLBs that change; then recompile the world (tile GLBs bake the slot).
+- **First cell still lands at ~15 s (own) / ~27 s (MapLibre):** input fetch of the 3×3 neighbourhood (~126 files, 30 MB raw) plus a broad build (~15 phases, none dominant). Options: pre-baked L0 cells for the start pose, or an alone build on an idle worker. The `?groundFirstAlone` try made all-14 slower.
+- **Data extracts unversioned:** `/data/**` max-age 3600 with no stamp, so data can lag code by up to 1 h after a deploy. Design in HISTORY round 131 (manifest + `dataUrl()` helper; hashed directories for a long cache).
+- **State 2 (ghost walls):** `?wallsPerArea=1` works but no repro yet showed the benefit; try under load or on the phone before a flip.
+- **check:rail-street takes 88 min** at load ~12 (integrator-lanes-54 runs the speed lane).
+- **CANAL-RECALL-T stall (2.25 s):** not reproduced. Next is a capture on David's machine, or one with a CPU burner (`stall-profile --mode gc --from-load`, `tier-ride --burn`).
+
 ## Haarlemmerdijk block, drawn fronts (P0, plan 2026-11-13 evening; goal for 2026-11-14)
 
 The block around David's five spots (eight Haarlemmerdijk faces + Haarlemmerstraat 46-96, 128 pands) looks right at his view: strips photo | ordinary renderer | answer key (photo-skinned, never shipped), with IoU per front. David ruled: drawn fronts, not photo skins ("I think photo skinned fronts will look bad"); the ordinary renderer is the drawn route (his read: row 2 beats the kit row).
