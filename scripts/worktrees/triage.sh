@@ -6,12 +6,16 @@
 #                                                   # process, and has been idle for IDLE_HOURS (default 12): stage its
 #                                                   # review sheets into _pruned-sheets/<name>/, WIP-commit any dirt onto
 #                                                   # its branch, then `git worktree remove --force`
+#                                                   # Unmerged lanes idle for ARCHIVE_DAYS (default 3; 0 turns it off)
+#                                                   # go too: the branch (with any dirt WIP-committed) is pushed to
+#                                                   # origin as lane-archive/<branch> and the remote SHA checked first
 #   scripts/worktrees/triage.sh --sweep-sheets [D]  # delete _pruned-sheets/<name> folders older than D days (default 7)
 #   scripts/worktrees/triage.sh --prune             # git worktree prune only
 #   (--remove-merged-clean and --archive-dirty are kept as aliases of --remove-merged)
 #
-# Rules: never touch a worktree that is not an ancestor of origin/main, that a process has as cwd, or that was
-# touched within IDLE_HOURS; never touch KEEP or the primary checkout; dirt (tracked changes, and untracked files
+# Rules: never touch a worktree that a process has as cwd, or that was touched within IDLE_HOURS; an unmerged one
+# only after ARCHIVE_DAYS without a touched file or a commit, and only once its branch is verified on origin as
+# lane-archive/<branch> (2026-11-14: ~30 abandoned unmerged lanes held ~45 GB and the sweep could never free them); never touch KEEP or the primary checkout; dirt (tracked changes, and untracked files
 # outside artifacts/ .cache/ staging/ scratch) is committed to the lane branch before removal, so nothing is lost
 # but the branch must exist (a dirty detached worktree is skipped). Sheets (jpg/png <= 8 MB under artifacts/ and
 # staging/) are copied out first because the demo page links them after the worktree is gone.
@@ -21,6 +25,7 @@ G=/usr/bin/git
 ROOT=${MAP_RECALL2_ROOT:-/Users/blackmad/Code/map-recall2}
 SHEETS=${MAP_RECALL2_SHEETS:-/Users/blackmad/Code/map-recall2-worktrees/_pruned-sheets}
 IDLE_HOURS=${IDLE_HOURS:-12}
+ARCHIVE_DAYS=${ARCHIVE_DAYS:-3}
 KEEP=(source-archive)
 MODE=${1:-table}
 cd "$ROOT" || exit 1
@@ -33,6 +38,12 @@ live() { lsof -d cwd -F n 2>/dev/null | grep -q -F "n$1" && return 0; ps -eo com
 idle_hours() {
   if [ -n "$(find "$1" -type f -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/artifacts/*' -not -path '*/.cache/*' -mmin -$((IDLE_HOURS * 60)) -print -quit 2>/dev/null)" ]; then echo 0; return; fi
   echo $(( ( $(date +%s) - $(stat -f %m "$1/.git") ) / 3600 ))
+}
+# True when neither a file (outside .git/node_modules/artifacts/.cache) nor a commit moved within ARCHIVE_DAYS.
+stale_unmerged() {
+  [ "$ARCHIVE_DAYS" -gt 0 ] || return 1
+  [ -z "$(find "$1" -type f -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/artifacts/*' -not -path '*/.cache/*' -mmin -$((ARCHIVE_DAYS * 1440)) -print -quit 2>/dev/null)" ] || return 1
+  [ $(( $(date +%s) - $($G -C "$1" log -1 --format=%ct) )) -ge $((ARCHIVE_DAYS * 86400)) ]
 }
 # Dirt worth keeping: tracked changes plus untracked files that are neither artifacts/caches/staging nor scratch.
 dirt() { $G -C "$1" status --porcelain | grep -vE '^\?\? (artifacts/|\.cache/|staging/|node_modules|_|\.worktree-port|scripts/_tmp)' | wc -l | tr -d ' '; }
@@ -72,7 +83,12 @@ $G worktree list --porcelain | awk '/^worktree /{w=$2} /^branch /{print w"\t"$2}
     table) printf "%s|%s|%s|%s|dirt:%s|%sh|%s|%sM\n" "${w#$ROOT/}" "$b" "$($G -C "$w" log -1 --format=%cs)" "$merged" "$d" "$idle" "$lv" "$(( $(sizek "$w") / 1024 ))" ;;
     --remove-merged)
       keep "$w" && { echo "  keep $name: KEEP list"; continue; }
-      [ "$merged" = merged ] || { echo "  keep $name ($b): not in origin/main ($merged)"; continue; }
+      archive=
+      if [ "$merged" != merged ]; then
+        stale_unmerged "$w" || { echo "  keep $name ($b): not in origin/main ($merged)"; continue; }
+        [ "$b" = DETACHED ] && { echo "  keep $name: not in origin/main ($merged) and detached, nothing to archive"; continue; }
+        archive=1
+      fi
       [ "$lv" = live ] && { echo "  keep $name ($b): a running process uses it"; continue; }
       [ "$idle" -lt "$IDLE_HOURS" ] && { echo "  keep $name ($b): touched within ${IDLE_HOURS}h"; continue; }
       wip=
@@ -82,6 +98,12 @@ $G worktree list --porcelain | awk '/^worktree /{w=$2} /^branch /{print w"\t"$2}
         if $G -C "$w" commit -q --no-verify -m "WIP preserved before worktree prune ($(date +%F))
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" 2>/dev/null; then wip=" (WIP-committed $d paths on $b)"; fi
+      fi
+      if [ -n "$archive" ]; then
+        $G -C "$w" push -q --no-verify origin "${b}:refs/heads/lane-archive/${b}" 2>/dev/null
+        [ "$($G -C "$w" ls-remote origin "refs/heads/lane-archive/${b}" | cut -f1)" = "$($G -C "$w" rev-parse HEAD)" ] \
+          || { echo "  keep $name ($b): unmerged and the lane-archive push did not verify"; continue; }
+        wip="$wip (unmerged $merged, archived as lane-archive/${b})"
       fi
       sheets=$(stage_sheets "$w" "$name"); sz=$(( $(sizek "$w") / 1024 ))
       if $G worktree remove --force "$w" 2>/tmp/triage-err.txt; then echo "removed $name ($b, ${sz} MB, $sheets sheets staged)$wip"
