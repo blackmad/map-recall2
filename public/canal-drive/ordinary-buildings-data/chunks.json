@@ -108523,7 +108523,13 @@
       }
      ]
     }
-   ]
+   ],
+   "rowFront": {
+    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-233580-162444-rowfront.glb?asset=7035111f26a109a2",
+    "sha256": "7035111f26a109a2e92f27e89c6ca83383c1a34d06891f6903826b155ac5de93",
+    "bytes": 121016,
+    "triangles": 9463
+   }
   }
  ]
 }
