@@ -1,5 +1,5 @@
 {
-  "toolchain": "bb88b129312074f1e9e1db7ccd8bdf9edebdffe7eb948232c416aa5f1509423b",
+  "toolchain": "e9272d024542cf0320329531e5e287f584aeef5856ca2fd250baf155218fbc6a",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -346,6 +346,7 @@
     "paradiso": "9e5d6b2c941dcbfc029d78e992acd0057ead75c5e49ab669ad3ecdc4b629a64c",
     "pathe-city": "bd941ab137713ab148e2c687d5b8708d6ebc54126fc08e5cc3954a4fd5749086",
     "pathe-de-munt": "cbd47153c01beed970a8c47c4719f08c27ce675d636aa6b8cdea286fe1bea839",
+    "perdu": "b3335e3a808d6d47015c8d5a77a28d3875b3ca7a30eb3278bd6e6544a1e91863",
     "petrus-en-paulus-kerk": "d9f6bb27ed99b39d79076e388eed5fee5015620029cda64ec6d0a8d502e2623d",
     "petruskerk": "4285bda63cd0f099fae9278a669f27c4834a6039359c361c32fe929a6bb7d80a",
     "pianola-museum": "51ad493ee43bd80136967b4ac26b3b8692c3341e1717690abf24cdd5a5489480",
@@ -435,6 +436,7 @@
     "tropenmuseum": "5c13c67c780444da60b08e5c184f08fa77dc5f6bb3ae4b1bb515efc420abd25a",
     "tuschinski": "4cdd99ef1c418340f9e9ebcddfb12e9aef163bca55370d4b21d3f00bd0086e65",
     "uilenburger-synagoge": "321a798ae4008e3205085b2e5900397f48db332253f49fc8b909b7e9eb0800f5",
+    "universiteitstheater": "2894a91311bd3f7bb4d019d1018934551208ccd4e6deb0180179d12f26157252",
     "valley": "559b02e2007daaef4281b4f14a5288191b930cd364c5cba2dfbcecc122eb2045",
     "van-gendt-hallen": "244209f42176ac954be864db6e5e2242ef8b922397c0718e6fd6de3d65f29697",
     "van-gogh-museum": "85e1c0f3a05c2c281a6439b6784987bc0ca7c98eb606541f0a1f22bf7f06eda2",

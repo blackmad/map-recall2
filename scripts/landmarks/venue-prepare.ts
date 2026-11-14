@@ -49,11 +49,24 @@ export const VENUES: Record<string, Venue> = {
     address: 'Gosschalklaan 12, Amsterdam (Westergasfabriek)', sources: [wiki('Westergasfabriek'), rce(512963, 'Gosschalklaan 12')]},
   'meervaart': {pand: '0363100012085435', label: 'Meer en Vaart 300 (Theater De Meervaart)',
     address: 'Meer en Vaart 300, Amsterdam (De Meervaart)', sources: [wiki('Meervaart')]},
+  // venues round 4 (lane venues-r4-20261114)
+  'bethanienklooster': {pand: '0363100012178725', label: 'Barndesteeg 6B (Bethaniënklooster, the convent\'s north wing, c. 1450)',
+    address: 'Barndesteeg 6B, Amsterdam (Bethaniënklooster)', sources: [wiki('Bethani%C3%ABnklooster', 'Bethaniënklooster')]},
+  'perdu': {pand: '0363100012169332', label: 'Kloveniersburgwal 86 (Perdu, in the former Binnengasthuis kitchen and sisters\' house)',
+    address: 'Kloveniersburgwal 86, Amsterdam (Perdu)', sources: [wiki('Perdu')]},
+  'universiteitstheater': {pand: '0363100012180412', label: 'Nieuwe Doelenstraat 16 (Universiteitstheater, University of Amsterdam)',
+    address: 'Nieuwe Doelenstraat 16, Amsterdam (Universiteitstheater)', sources: [wiki('Nieuwe_Doelenstraat_(Amsterdam)', 'Nieuwe Doelenstraat (Amsterdam)')]},
+  'sugarfactory': {pand: '0363100012168741', label: 'Lijnbaansgracht 238 (former sugar refinery; Sugarfactory 2005-2019, now Lovelee)',
+    address: 'Lijnbaansgracht 238, Amsterdam (former Sugarfactory)', sources: [wiki('Sugarfactory')]},
+  'crea': {pand: '0363100012164972', label: 'Nieuwe Achtergracht 170 (CREA, the UvA/HvA student cultural centre)',
+    address: 'Nieuwe Achtergracht 170, Amsterdam (CREA)', sources: [wiki('Stichting_CREA', 'Stichting CREA')]},
+  'engelenbak': {pand: '0363100012179536', label: 'Nes 71 (Theater De Engelenbak 1975-2013, the former Salon des Variétés)',
+    address: 'Nes 71, Amsterdam (Theater De Engelenbak)', sources: [wiki('Theater_De_Engelenbak', 'Theater De Engelenbak')]},
 };
 const id = process.argv.find(a => a.startsWith('--id='))?.slice(5) ?? '';
 const V = VENUES[id];
 if (!V) { console.error('--id=', Object.keys(VENUES).join('|')); process.exit(2); }
-const UA = {'User-Agent': 'map-recall2 landmark lane (+https://github.com/blackmad/map-recall2)'};
+const UA = {'User-Agent': 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)'};
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
 async function cached(file: string, url: string) {
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));

@@ -1,0 +1,327 @@
+{
+ "schemaVersion": 1,
+ "id": "universiteitstheater",
+ "pand": "0363100012180412",
+ "brief": "scripts/landmarks/universiteitstheater-brief.md",
+ "signature": [
+  "ut-lettering",
+  "ut-stripes",
+  "ut-balustrade",
+  "ut-festoons",
+  "ut-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-145",
+   "bearing": 145,
+   "lengthM": 26.1,
+   "centre": [
+    4.8953259,
+    52.3677431
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001508",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "ut-lettering",
+     "kind": "lettering",
+     "where": "painted words UNIVERSITEITS (left) and THEATER (right) in black hand lettering on white panels on the plinth, just above the water",
+     "approxSizeM": [
+      6.1,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "white panels with dark 7-px block capitals (venue-kit lettering) at the photo positions; the hand-drawn letter shapes are not reproduced"
+    },
+    {
+     "id": "ut-stripes",
+     "kind": "other",
+     "where": "white stone stripes across the brick ground floor (three courses), interrupted by the openings",
+     "approxSizeM": [
+      24.5,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "white slabs 6 cm proud between the openings at the measured heights"
+    },
+    {
+     "id": "ut-festoons",
+     "kind": "relief",
+     "where": "five cream relief panels with hanging garlands over the first-floor windows",
+     "approxSizeM": [
+      2.45,
+      0.75
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "venue-kit festoonPanel: cream panel with a swag band and two ribbon drops 6 cm proud"
+    },
+    {
+     "id": "ut-balustrade",
+     "kind": "other",
+     "where": "balustrade on the cornice between brick dies over the pilasters",
+     "approxSizeM": [
+      24.5,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "venue-kit balustradeRun: plinth, balusters at 21 cm, rail, brick dies with cream caps"
+    },
+    {
+     "id": "ut-cornice",
+     "kind": "other",
+     "where": "modillioned cream cornice over a brick frieze and a two-fascia architrave",
+     "approxSizeM": [
+      24.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "corniceSection profile 62 cm proud, modillion blocks at 42 cm, two architrave slabs"
+    },
+    {
+     "id": "ut-pilasters",
+     "kind": "colonnade",
+     "where": "six brick pilasters with cream bases and capitals between the first-floor windows",
+     "approxSizeM": [
+      1.2,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "brick slabs 12 cm proud, cream base and capital blocks"
+    },
+    {
+     "id": "ut-voussoirs",
+     "kind": "window-shape",
+     "where": "three white voussoir blocks over every window on both floors",
+     "approxSizeM": [
+      0.45,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "white blocks 8 cm proud"
+    },
+    {
+     "id": "ut-windows",
+     "kind": "window-shape",
+     "where": "five tall sash windows on the first floor (dark frames), four ground-floor sashes and the central water door",
+     "approxSizeM": [
+      2.1,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "cut openings with dark frames and bars, stone sills"
+    },
+    {
+     "id": "ut-plinth",
+     "kind": "other",
+     "where": "white-painted plinth with a stone course, rising from the water",
+     "approxSizeM": [
+      24.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "pale slab from the water line to the course"
+    },
+    {
+     "id": "ut-belt",
+     "kind": "other",
+     "where": "dark stone belt between the floors",
+     "approxSizeM": [
+      24.5,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "how": "grey slab 20 cm proud"
+    },
+    {
+     "id": "ut-crest-sign",
+     "kind": "sign",
+     "where": "small sign with the three Amsterdam crosses on the plinth, right",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_001508",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm plate, below a pixel at the riding distance across the Amstel"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-329",
+   "bearing": 329,
+   "lengthM": 11.6,
+   "centre": [
+    4.8951495,
+    52.3680182
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001544",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ut-entrance",
+     "kind": "other",
+     "where": "white stone doorcase with pilasters and entablature in the entrance bay, the tall window over it with a balcony rail and a crowned white surround, a top window",
+     "approxSizeM": [
+      2.9,
+      12.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "how": "white pilaster and entablature slabs, cut door (brown) and fanlight, rail slab, white jamb slabs and an arch-head ring over the tall window"
+    },
+    {
+     "id": "ut-nw-sashes",
+     "kind": "window-shape",
+     "where": "three storeys of white-framed sash windows, taller on the ground floor, in five columns plus the entrance bay",
+     "approxSizeM": [
+      1.4,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "how": "cut openings with white frames and bars, stone sills"
+    },
+    {
+     "id": "ut-nw-cornice",
+     "kind": "other",
+     "where": "white entablature band and cornice under the roof",
+     "approxSizeM": [
+      25.3,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "how": "white fascia slab and profiled cornice to the 3DBAG eaves"
+    },
+    {
+     "id": "ut-stoop",
+     "kind": "other",
+     "where": "stone stoop with an iron rail to the door in the second bay; three steps at the entrance",
+     "approxSizeM": [
+      1.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "how": "stacked stone slabs; the rail is not drawn"
+    },
+    {
+     "id": "ut-basement",
+     "kind": "window-shape",
+     "where": "grey basement with small windows under the ground floor",
+     "approxSizeM": [
+      0.9,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "how": "grey plinth face with cut white-framed openings"
+    },
+    {
+     "id": "ut-skylights",
+     "kind": "other",
+     "where": "row of skylights in the roof slope over the cornice",
+     "approxSizeM": [
+      1.2,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "skip": {
+      "reason": "not-visible",
+      "note": "flush in the roof plane, seen only from above the street"
+     }
+    },
+    {
+     "id": "ut-poster",
+     "kind": "sign",
+     "where": "theatre poster case beside the entrance",
+     "approxSizeM": [
+      0.7,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000717_pano_0000_000477",
+     "skip": {
+      "reason": "temporary",
+      "note": "poster changes with the programme"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-329",
+   "bearing": 329,
+   "lengthM": 4.3,
+   "centre": [
+    4.8949974,
+    52.367961
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000476",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "part of the Nieuwe Doelenstraat front; its items are listed on w02-329"
+  },
+  {
+   "tag": "w04-329",
+   "bearing": 329,
+   "lengthM": 4.2,
+   "centre": [
+    4.8949447,
+    52.3679403
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000477",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "part of the Nieuwe Doelenstraat front; its items are listed on w02-329"
+  },
+  {
+   "tag": "w05-329",
+   "bearing": 329,
+   "lengthM": 4.2,
+   "centre": [
+    4.8950513,
+    52.3679802
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000476",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "part of the Nieuwe Doelenstraat front; its items are listed on w02-329"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Nieuwe Doelenstraat (Amsterdam), Wikipedia",
+   "url": "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

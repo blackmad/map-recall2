@@ -262,3 +262,57 @@ export function pathLettering(b: BuildingTools, path: XZ[], text: string, s: num
   }
   return width;
 }
+
+/**
+ * Venues round 4 (lane venues-r4-20261114): the Universiteitstheater's Amstel front carries a festoon relief panel over
+ * every first-floor window and a balustrade between brick dies on its cornice; nothing in the kits drew either.
+ *
+ * `swagOutline`: a hanging garland as a closed band polygon in (t, y) about the panel centre: a catenary-like sag from
+ * the two top corners (half-width w/2 each side, `sag` metres down at the middle), `th` thick, thickest at the middle.
+ */
+export function swagOutline(w: number, sag: number, th: number, steps = 10): [number, number][] {
+  const top: [number, number][] = [], bot: [number, number][] = [];
+  for (let k = 0; k <= steps; k++) {
+    const u = -w / 2 + (w * k) / steps, q = 1 - (2 * u / w) ** 2;   // 0 at the ends, 1 in the middle
+    const y = -sag * q, t = th * (0.45 + 0.55 * q);
+    top.push([u, y]); bot.push([u, y - t]);
+  }
+  return [...top, ...bot.reverse()];
+}
+/**
+ * Festoon relief panel: a plain panel slab (w x h, `d` proud) with a swag hung from its upper corners and two ribbon
+ * drops at its ends, standing `relief` metres proud of the panel's face. Bottom of the panel at y, centred at t.
+ */
+export function festoonPanel(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, o: {panel: Col; swag: Col; d?: number; relief?: number; out?: number}) {
+  const d = o.d ?? 0.06, rel = o.relief ?? 0.05, out = o.out ?? 0;
+  slab(b, f, t, y, w, h, d, o.panel, out);
+  const sw = w * 0.82, top = y + h * 0.82;
+  poly(b, f, t, top, swagOutline(sw, h * 0.45, h * 0.28), rel, o.swag, out + d);
+  for (const sd of [-1, 1]) slab(b, f, t + sd * sw / 2, y + h * 0.18, w * 0.05, h * 0.62, rel, o.swag, out + d);
+}
+
+/** Baluster centres between t0 and t1 at about `pitch`, starting half a pitch in (both ends clear). */
+export function balusterCentres(t0: number, t1: number, pitch: number): number[] {
+  const n = Math.max(1, Math.round((t1 - t0) / pitch)), step = (t1 - t0) / n;
+  return Array.from({length: n}, (_, k) => t0 + step * (k + 0.5));
+}
+/**
+ * Balustrade run on a parapet from t0 to t1: plinth course, balusters, handrail, and solid dies over the given centres
+ * (`dies`, each `dieW` wide, `dieH` tall with a cap); balusters skip the dies. Back faces stand at `out`.
+ */
+export function balustradeRun(b: BuildingTools, f: Frame, t0: number, t1: number, y: number, o: {h: number; d: number; pitch: number; c: Col; dies?: number[]; dieW?: number; dieH?: number; die?: Col; cap?: Col; out?: number}) {
+  const out = o.out ?? 0, L = t1 - t0, dieW = o.dieW ?? 0.9, dieH = o.dieH ?? o.h + 0.25;
+  slab(b, f, (t0 + t1) / 2, y, L, 0.14, o.d + 0.06, o.c, out - 0.03);
+  slab(b, f, (t0 + t1) / 2, y + o.h - 0.12, L, 0.12, o.d + 0.04, o.c, out - 0.02);
+  const dies = [...(o.dies ?? [])].sort((p, q) => p - q);
+  const spans: [number, number][] = [];
+  let s = t0;
+  for (const c of dies) { if (c - dieW / 2 > s) spans.push([s, c - dieW / 2]); s = Math.max(s, c + dieW / 2); }
+  if (t1 > s) spans.push([s, t1]);
+  for (const [a, z] of spans) if (z - a > o.pitch * 0.6) for (const c of balusterCentres(a, z, o.pitch)) slab(b, f, c, y + 0.14, o.pitch * 0.42, o.h - 0.26, o.d * 0.6, o.c, out + o.d * 0.2);
+  for (const c of dies) {
+    // die fronts 8 cm before the plinth course and caps 3 cm before the dies: no same-facing faces closer than 2-3 cm
+    slab(b, f, c, y, dieW, dieH - 0.12, o.d + 0.16, o.die ?? o.c, out - 0.05);
+    slab(b, f, c, y + dieH - 0.12, dieW + 0.1, 0.12, o.d + 0.22, o.cap ?? o.c, out - 0.08);
+  }
+}

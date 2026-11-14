@@ -82135,5 +82135,289 @@
     ]
    ]
   }
+ },
+ {
+  "id": "universiteitstheater",
+  "name": "Universiteitstheater, Nieuwe Doelenstraat 16",
+  "landmarkId": "extract_landmarks_511304045",
+  "modelUrl": "./models/universiteitstheater.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012180412"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8952033,
+    52.36786235
+   ],
+   "headingDegrees": 238.83,
+   "lengthMetres": 27.2,
+   "widthMetres": 33.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.89512521,
+    52.3679314
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012180412 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/universiteitstheater-footprints.json, written by venue-prepare.ts). The Amstel front and the Nieuwe Doelenstraat front are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 40 px/m: TMX7316010203-000354_pano_0001_001508, TMX7316010203-001975_pano_0000_001282, TMX7316010203-000717_pano_0000_000477, TMX7316010203-000224_pano_0000_000733, TMX7315120208-000073_pano_0003_000692); roofs and the walls over the De Jaren terrace keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/universiteitstheater-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 19.6,
+  "galleryView": {
+   "theta": 2.6,
+   "phi": 1.15
+  },
+  "bagYear": 1632,
+  "materialOverrides": {
+   "brick": "#b4705a",
+   "red": "#6e4d49",
+   "white": "#ece7da",
+   "sandstone": "#d9cfb3",
+   "stone": "#8c8a82",
+   "concrete": "#d8d6cd",
+   "frame": "#38403f",
+   "glass": "#3f4c55",
+   "slate": "#4f5560",
+   "ochre": "#6e4a35",
+   "dark": "#2b2f33"
+  },
+  "attribution": {
+   "title": "Universiteitstheater, Nieuwe Doelenstraat 16, Amsterdam (University of Amsterdam)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for roofs and side walls (CC BY 4.0): the Amstel front with its white-banded ground floor, painted UNIVERSITEITS THEATER plinth, brick pilasters, festoon panels, modillioned cornice and balustrade, and the dark-brick Nieuwe Doelenstraat front with white-framed sashes, a stoop and the white entrance surround. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.89548107,
+      52.36781114
+     ],
+     [
+      4.89547861,
+      52.36781325
+     ],
+     [
+      4.89548489,
+      52.36781594
+     ],
+     [
+      4.89548037,
+      52.36781991
+     ],
+     [
+      4.89535294,
+      52.36793111
+     ],
+     [
+      4.89531607,
+      52.36791527
+     ],
+     [
+      4.89528234,
+      52.3679447
+     ],
+     [
+      4.89531921,
+      52.36796054
+     ],
+     [
+      4.89522215,
+      52.36804522
+     ],
+     [
+      4.89518586,
+      52.36803151
+     ],
+     [
+      4.89515286,
+      52.36801905
+     ],
+     [
+      4.89513507,
+      52.36801233
+     ],
+     [
+      4.89507661,
+      52.36799024
+     ],
+     [
+      4.89507731,
+      52.36798955
+     ],
+     [
+      4.89502506,
+      52.36796999
+     ],
+     [
+      4.89502438,
+      52.36797068
+     ],
+     [
+      4.89501891,
+      52.36796864
+     ],
+     [
+      4.89497504,
+      52.36795229
+     ],
+     [
+      4.89497003,
+      52.36795042
+     ],
+     [
+      4.89497071,
+      52.36794973
+     ],
+     [
+      4.89496492,
+      52.36794754
+     ],
+     [
+      4.89495684,
+      52.36794448
+     ],
+     [
+      4.89493236,
+      52.36793524
+     ],
+     [
+      4.89492797,
+      52.36793359
+     ],
+     [
+      4.89491842,
+      52.36792999
+     ],
+     [
+      4.89491758,
+      52.36793083
+     ],
+     [
+      4.89490715,
+      52.36792693
+     ],
+     [
+      4.89490593,
+      52.36792631
+     ],
+     [
+      4.8951705,
+      52.36767421
+     ],
+     [
+      4.89548107,
+      52.36781114
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "perdu",
+  "name": "Perdu, Kloveniersburgwal 86",
+  "landmarkId": "perdu",
+  "modelUrl": "./models/perdu.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012169332"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89618749,
+    52.36892022
+   ],
+   "headingDegrees": 31.83,
+   "lengthMetres": 24.6,
+   "widthMetres": 17.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.8961414,
+    52.3688787
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012169332 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/perdu-footprints.json, written by venue-prepare.ts). The Kloveniersburgwal front and its dormers are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 40 px/m: TMX7316010203-001975_pano_0000_001186, TMX7316010203-000354_pano_0001_001493, b_20250108_1041_Track19_Sphere_00047); roofs and the walls to the Binnengasthuis grounds keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/perdu-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 15.4,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.15
+  },
+  "bagYear": 1989,
+  "materialOverrides": {
+   "brick": "#bb8c64",
+   "red": "#94604a",
+   "white": "#ebe8df",
+   "sandstone": "#d8cfb2",
+   "stone": "#8e8c84",
+   "glass": "#3f4c55",
+   "dark": "#2e3134",
+   "frame": "#e6e3da",
+   "slate": "#4f5560"
+  },
+  "attribution": {
+   "title": "Perdu, Kloveniersburgwal 86, Amsterdam: poetry theatre and bookshop in the former Binnengasthuis kitchen building",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Perdu",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for roofs and back walls (CC BY 4.0): the light-brown brick canal front with round-arched windows under stone arch rings, brick lesenes and corbel brackets, a brick panel band, the white Perdu sign board over the entrance and three roof dormers. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.89638883,
+      52.36897308
+     ],
+     [
+      4.89617235,
+      52.36905528
+     ],
+     [
+      4.89599942,
+      52.36888192
+     ],
+     [
+      4.89606558,
+      52.36885686
+     ],
+     [
+      4.89608216,
+      52.36885057
+     ],
+     [
+      4.89608787,
+      52.3688562
+     ],
+     [
+      4.89614734,
+      52.36883466
+     ],
+     [
+      4.89612688,
+      52.3688135
+     ],
+     [
+      4.89620217,
+      52.36878622
+     ],
+     [
+      4.89638883,
+      52.36897308
+     ]
+    ]
+   ]
+  }
  }
 ]

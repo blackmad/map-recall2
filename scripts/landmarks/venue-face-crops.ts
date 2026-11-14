@@ -20,7 +20,7 @@ import {loadPano, rectifyWall} from '../pand-reference/rectify';
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const pand = arg('pand'), id = arg('id', `pand-${pand}`);
 if (!pand) { console.error('--pand required'); process.exit(2); }
-const UA = {'User-Agent': 'map-recall2 landmark lane (+https://github.com/blackmad/map-recall2)'};
+const UA = {'User-Agent': 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)'};
 const cache = path.join('.cache', 'bag-wfs', `${pand}.json`);
 const url = `https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&srsName=EPSG:28992&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${pand}</Literal></PropertyIsEqualTo></Filter>`)}`;
 if (!fs.existsSync(cache)) {
