@@ -26,8 +26,39 @@ function stoopOf(fronts: readonly RowFront[]): { stoop: { side: 'left' | 'right'
   const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
   return side ? { stoop: { side } } : null;
 }
+/** The street door as read on the pand's first front with one (left/right/centre; index of the ground openings). */
+function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw['door']> } {
+  const f = fronts.find(x => x.ground.doorSide === 'left' || x.ground.doorSide === 'right' || x.ground.doorSide === 'centre');
+  if (!f) return {};
+  const g = f.ground, side = g.doorSide as 'left' | 'right' | 'centre';
+  const offset = fronts.length > 1 ? span(f) : null;
+  // A pand of several fronts: the door's place as a fraction of the pand (the mesher reads index/bays of the pand front).
+  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000 } };
+  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}) } };
+}
+/** The ground use as read: a shop ground draws the shop window, a dwelling ground none; other uses leave the extract's. */
+function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {
+  const uses = fronts.map(f => f.ground.use);
+  if (uses.some(u => u === 'shop' || u === 'cafe' || u === 'restaurant')) return { shop: true };
+  if (uses.every(u => u === 'dwelling' || u === 'door-only')) return { shop: false };
+  return {};
+}
+/** The stated balcony (RowDesign.balcony: storeys over D's ground, 1 = first above it), on the renderer's rows. */
+function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: NonNullable<RowSeriesDraw['balcony']> } {
+  const b = designs.find(d => d.balcony?.value)?.balcony?.value;
+  return b ? { balcony: { storeys: b.storeys.map(k => k + shift), axis: b.axis } } : {};
+}
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
+/**
+ * A row's mansard rise measured on its photo (m over the cornice), until the record states one (RowRoofStorey has no
+ * rise yet). Weteringschans 2026-11-14: the steep slate band shows 25 px (169016) and 34 px (171218) over the cornice
+ * at ~30 px/m (wall 450 px for 14.7 m, 433 px for 14.32 m), 0.8-1.1 m seen, then the flat top: drawn 1.3 m. The
+ * period rise (rowFront.ts MANSARD_RISE, 2.2 m) stays for rows without one (Kinkerstraat passed on it).
+ */
+export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: string }>> = {
+  'weteringschans-168096-171218': { riseM: 1.3, ref: 'photo sheet 2026-11-14: 0.8-1.1 m steep band seen over the cornice' },
+};
 /** One pand's series draw from its fronts (street order) and their designs. */
 export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = ''): RowSeriesDraw {
   const d0 = designs[0];
@@ -54,11 +85,14 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   return {
     id: fronts[0].seriesId,
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
-    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers } : { kind: 'none', riseM: 0, dormers: [] },
+    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
     ...(stoopOf(fronts) ?? {}),
+    ...doorOf(fronts),
+    ...shopOf(fronts),
+    ...balconyOf(designs, shift),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
   };

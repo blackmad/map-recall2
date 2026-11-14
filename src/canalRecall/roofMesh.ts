@@ -35,7 +35,7 @@ import { axisGapDeg } from './roofs/ridgeAxis.js';
 import { zeroArea } from './roofOverhang.js';
 import { isRowCrown, rowCrownAccents, rowCrownProfile, type RowCrown } from './houseLine/crownProfile.js';
 
-/** House rows: the dormer kinds a row roof draws. `ornate-pinnacle`: a tall dormer under a brick pediment with white
+/** House rows: the dormer kinds a row roof draws. `ornate-pinnacle`: a tall light-stone dormer, stepped, with a crowned top and
  *  raking cornices and a pinnacle on its apex (Kinkerstraat 100), drawn only when stated. */
 export const ROW_DORMER_DRAW_KINDS = ['pediment', 'gabled', 'plain', 'ornate-pinnacle'] as const;
 export type RowDormerKind = (typeof ROW_DORMER_DRAW_KINDS)[number];
@@ -596,8 +596,8 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
  * standing proud of the face, a bed course at the head and a raking cornice over the cap (Kinkerstraat 86-110,
  * Weteringschans 169016); gabled: the stock cap only; plain: a white head board. A hoist beam projects from the apex.
  */
-/** The ornate dormer's brick (Kinkerstraat 100: a red-brown brick pediment and pinnacle). */
-const ORNATE_BRICK = '#7a4537';
+/** The ornate dormer's light stone (Kinkerstraat 100: a white stone front, stepped, with a crowned top). */
+const ORNATE_STONE = '#e6e0d2';
 /** The hoist beam's dark timber. */
 const HOIST_HEX = '#3b2f27';
 function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z: number) => V3, n: V3, b0: number, b1: number, zb: number, zt: number, ph: number, trim: string): void {
@@ -609,6 +609,20 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
   };
   if (d.kind === 'plain') { box(d.pf - 0.1, f + o, b0 - 0.06, b1 + 0.06, zt - 0.06, zt + 0.12); return; }
   if (d.kind !== 'pediment' && d.kind !== 'ornate-pinnacle') return;
+  if (d.kind === 'ornate-pinnacle') {
+    // Light stone pilasters beside the light, a head course, a stepped front of three narrowing courses, a crowning
+    // cap and a short finial (no spire).
+    const S = ORNATE_STONE, c = d.c, half = (b1 - b0) / 2 + 0.16;
+    box(d.pf - 0.1, f + 0.07, b0 - 0.16, b0 + 0.04, zb, zt, S);
+    box(d.pf - 0.1, f + 0.07, b1 - 0.04, b1 + 0.16, zb, zt, S);
+    box(d.pf - 0.1, f + o, b0 - 0.2, b1 + 0.2, zt - 0.02, zt + 0.12, S);
+    let z = zt + 0.12;
+    for (const [k, hh] of [[1, 0.24], [0.72, 0.22], [0.46, 0.2]] as const) { box(d.pf - 0.1, f + 0.08, c - half * k, c + half * k, z, z + hh, S); z += hh; }
+    box(d.pf - 0.1, f + o, c - half * 0.56, c + half * 0.56, z, z + 0.08, S);
+    box(d.pf - 0.06, f + 0.06, c - 0.08, c + 0.08, z + 0.08, z + 0.32, S);
+    box(d.pf - 0.06, f + 0.07, c - 0.12, c + 0.12, z + 0.32, z + 0.38, S);
+    return;
+  }
   box(d.pf - 0.1, f + 0.06, b0 - 0.1, b0 + 0.06, zb, zt);
   box(d.pf - 0.1, f + 0.06, b1 - 0.06, b1 + 0.1, zb, zt);
   box(d.pf - 0.1, f + o, b0 - 0.14, b1 + 0.14, zt - 0.02, zt + 0.1);
@@ -618,16 +632,7 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
     const z0 = c0 < c ? zt + 0.1 : apex, z1 = c0 < c ? apex : zt + 0.1;
     s.quad(P(f + o, c0, z0), P(f + o, c1, z1), P(f + o, c1, z1 + 0.12), P(f + o, c0, z0 + 0.12), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, trim);
   }
-  s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, d.kind === 'ornate-pinnacle' ? ORNATE_BRICK : trim);
-  if (d.kind === 'ornate-pinnacle') {
-    // Brick pilasters beside the light and a pinnacle (shaft, collar, point) on the apex.
-    box(d.pf - 0.1, f + 0.07, b0 - 0.16, b0 + 0.02, zb, zt, ORNATE_BRICK);
-    box(d.pf - 0.1, f + 0.07, b1 - 0.02, b1 + 0.16, zb, zt, ORNATE_BRICK);
-    box(d.pf - 0.05, f + o, c - 0.07, c + 0.07, apex + 0.08, apex + 0.62, ORNATE_BRICK);
-    box(d.pf - 0.06, f + o + 0.01, c - 0.1, c + 0.1, apex + 0.62, apex + 0.7, trim);
-    box(d.pf - 0.03, f + o - 0.01, c - 0.04, c + 0.04, apex + 0.7, apex + 0.98, trim);
-    return;
-  }
+  s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, trim);
   // The hoist beam (hijsbalk): dark timber out of the pediment under its apex, a hook block hanging off its end.
   if (d.hoist) {
     const beam = (a0: number, a1: number, c0: number, c1: number, z0: number, z1: number) => {
@@ -687,7 +692,9 @@ function buildMansard(s: RoofSink, plan: RoofPlan, L: number, W: number, R: numb
 
 /** Mansard on all four sides: steep slate band to a flat top, dormers to the street ends, a white eaves cornice. */
 function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
-  const k = Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
+  // A row's low mansard (Weteringschans: ~1.3 m) keeps its steep lower slope (about 63 degrees): the band narrows with
+  // the rise. At the period rise (2.2 m) this is the stock 1.1 m band.
+  const k = plan.rowDormers ? Math.min(1.1, W * 0.17, R * 0.5) : Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
   // House rows: a side the mansard runs on into its neighbour's (rowJoins, left/right as seen from the street end e,
   // where right = e * v) has no hip, no eaves return and no overhang; a plate closes the profile at the party wall.
   const e = plan.streetEnds?.[1] && !plan.streetEnds?.[0] ? 1 : -1;

@@ -141,13 +141,17 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 }
 
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: 'left' | 'right' | 'centre' } } | null {
+type RowSide = 'left' | 'right' | 'centre';
+const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' } } | null {
   if (!v || typeof v !== 'object') return null;
-  const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown } };
-  const side = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
+  const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
+  const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}) } : null;
+  const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
+  const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side } } : {}) };
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}) };
   return Object.keys(out).length ? out : null;
 }
 
@@ -176,7 +180,9 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
   if (typeof p.rowFront === 'string' && typeof p.rowSeries === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH), rl = rowLookOf(p), perFront = rl?.bays;
     // The series' white joinery is the light-sash trait (dark: false); unstated keeps the preset's own.
-    return { pale: false, ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+    // arch: false: the painted cells keep square heads; a stated segmental or round head draws its own glass under the
+    // arch (houseLine/headGrammar.ts), so an unstated preset arch never appears (Weteringschans 168096/168042 top row).
+    return { pale: false, arch: false, ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
   }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);

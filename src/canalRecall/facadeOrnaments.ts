@@ -17,6 +17,7 @@ import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from '.
 import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
+import { headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -224,16 +225,15 @@ export function rowWindowsOf(c: ExtraContext): RowWindow[] {
 const CONSOLE_MIN = 0.32;
 /** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
 function rowHeadRise(w: RowWindow): number {
-  const d = w.dressing;
-  return d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
-      : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
-      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : d === 'arch-ring' || w.shape === 'round' ? (w.x1 - w.x0) / 2 + 0.22 : -Infinity;
+  if (w.dressing === 'block-course') return ROW_DRESS.block.tall;
+  const g = headGrammarOf(w.dressing, w.shape);
+  return g ? headRise(g, w.x1 - w.x0) : -Infinity;
 }
 function rowHeadsTop(c: ExtraContext): number {
   let top = -Infinity;
   for (const w of rowWindowsOf(c)) {
-    const rise = rowHeadRise(w);
-    top = Math.max(top, w.z1 + rise);
+    const rise = rowHeadRise(w), z = rise > -Infinity && w.dressing !== 'block-course' ? headLine(c, w, rise) ?? w.z1 : w.z1;
+    top = Math.max(top, z + rise);
   }
   return top;
 }
@@ -257,40 +257,20 @@ function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
   }
 }
 
-/** A window's flat brick arch (a darker band over the head) with a white keystone at its centre. */
-function keystoneHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
-  const K = ROW_DRESS.keystone, mid = (w.x0 + w.x1) / 2, top = Math.min(c.top, w.z1 + K.arch);
-  s.strip(c.f, w.x0 - 0.06, w.x1 + 0.06, 0.02, w.z1, top, shadeHex(c.wallHex, 0.8));
-  s.strip(c.f, mid - K.w / 2, mid + K.w / 2, K.out, w.z1 - 0.04, Math.min(c.top, w.z1 + K.h), WHITE);
+/** A window head drawn from the head grammar (houseLine/headGrammar.ts): voussoirs, keys, springers, tympana and
+ *  jack-block crowns as flat wall pieces at the opening's scale; the glass follows a segmental or round arch. */
+const ARCH_GLASS = '#3d4955';
+/** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
+ *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
+function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
+  const room = c.top - (c.rowDress?.cornice ? 0.42 : 0.02), z = Math.min(w.z1, room - rise);
+  return z < (w.z0 + w.z1) / 2 ? null : z;
 }
-
-/** A segmental head: the stone tympanum over the window's flat head under a segmental brick ring, as three facets. */
-function tympanumHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
-  const T = ROW_DRESS.tympanum, l = w.x0 - 0.02, r = w.x1 + 0.02, m = (l + r) / 2, z = w.z1, rise = T.rise;
-  if (z + rise + T.ring > c.top) return;
-  const arc = (t: number) => z + rise * (1 - (2 * t - 1) ** 2) * 0.55 + rise * 0.45;
-  const pts = [0, 0.25, 0.5, 0.75, 1].map(t => [l + (r - l) * t, arc(t)] as [number, number]);
-  for (let i = 0; i < pts.length - 1; i++) {
-    const [x0, z0] = pts[i], [x1, z1] = pts[i + 1];
-    s.wallQuad(c.f, [[x0, z], [x1, z], [x1, z1], [x0, z0]], T.out, STONE);
-    s.wallQuad(c.f, [[x0 - (i ? 0 : 0.08), z0], [x1 + (i === pts.length - 2 ? 0.08 : 0), z1], [x1 + (i === pts.length - 2 ? 0.08 : 0), z1 + T.ring], [x0 - (i ? 0 : 0.08), z0 + T.ring]], T.out + 0.01, shadeHex(c.wallHex, 0.82));
-  }
-  s.strip(c.f, m - 0.07, m + 0.07, T.out + 0.02, arc(0.5) - 0.05, arc(0.5) + T.ring + 0.04, WHITE);
-}
-
-/** A round-arched head (`arch-ring`, Weteringschans 171218 top storey): the glazing runs up into a half-round over the
- *  window's head, under a raised white ring with a keystone. Faceted in ARCH_FACETS. */
-const ARCH_FACETS = 6, ARCH_GLASS = '#3d4955';
-function archRingHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
-  const r = (w.x1 - w.x0) / 2, m = (w.x0 + w.x1) / 2, z = w.z1, ring = 0.14;
-  if (z + r + ring + 0.04 > c.top) return;
-  const at = (t: number, rr: number) => [m - Math.cos(Math.PI * t) * rr, z + Math.sin(Math.PI * t) * rr] as [number, number];
-  for (let i = 0; i < ARCH_FACETS; i++) {
-    const t0 = i / ARCH_FACETS, t1 = (i + 1) / ARCH_FACETS;
-    s.wallQuad(c.f, [[at(t0, r)[0], z], [at(t1, r)[0], z], at(t1, r), at(t0, r)], 0.015, ARCH_GLASS);
-    s.wallQuad(c.f, [at(t0, r), at(t1, r), at(t1, r + ring), at(t0, r + ring)], 0.05, WHITE);
-  }
-  s.strip(c.f, m - 0.08, m + 0.08, 0.07, z + r - 0.04, z + r + ring + 0.08, WHITE);
+function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar): void {
+  const z = headLine(c, w, headRise(g, w.x1 - w.x0));
+  if (z === null) return;
+  const hex = { white: WHITE, brick: shadeHex(c.wallHex, 0.78), stone: STONE, glass: ARCH_GLASS } as const;
+  for (const p of headPieces(g, w.x0, w.x1, z)) s.wallQuad(c.f, p.pts, p.out, hex[p.tone]);
 }
 
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
@@ -300,7 +280,7 @@ const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', joint
  *  floor-line bands 20 cm (169016). The shared components' hairline courses stay for walls without a row record. */
 const ROW_BANDS = { spek: 0.18, spekPitch: 0.46, spekOut: 0.05, course: 0.2, courseOut: 0.08, margin: 0.06 } as const;
 /** The stoop: steps and cheek walls up to the bel-etage door over a souterrain (Weteringschans 169016, 171218). */
-const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
+const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
 /** The bel-etage street door over a stated stoop: the bel-etage window at the stated end, from the floor up. */
 export function stoopDoor(c: ExtraContext): Span | null {
   const st = c.rowDress?.stoop;
@@ -367,7 +347,9 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
           s.strip(c.f, x, xe, RUSTIC.out * 0.3, za, Math.min(z1, za + RUSTIC.course), RUSTIC.jointHex);
           let a = x;
           while (xe - a > 0.1) {
-            const next = Math.floor((a - shift) / RUSTIC.block + 1) * RUSTIC.block + shift, b = xe - next < 0.25 ? xe : Math.min(xe, next);
+            // The next joint at least a joint's width on (a joint landing exactly on `a` would never advance).
+            const next = Math.floor((a - shift) / RUSTIC.block + 1) * RUSTIC.block + shift, far = next - a < 0.1 ? next + RUSTIC.block : next;
+            const b = xe - far < 0.25 ? xe : Math.min(xe, far);
             s.strip(c.f, a, b - (b < xe ? RUSTIC.joint : 0), RUSTIC.out, za, zb, RUSTIC.stone);
             a = b;
           }
@@ -378,7 +360,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
   } },
   { id: 'row-balcony', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'balcony', build: (c, s) => {
     // A stone balustrade balcony before the centre window of the first upper storey (Weteringschans 169016, 171218).
-    const ws = rowWindowsOf(c).filter(w => w.storey === 1);
+    const storey = c.rowDress?.balcony?.storeys[0] ?? 1, ws = rowWindowsOf(c).filter(w => w.storey === storey);
     if (!ws.length) return;
     const mid = c.f.len / 2, w = ws.reduce((a, b) => Math.abs((b.x0 + b.x1) / 2 - mid) < Math.abs((a.x0 + a.x1) / 2 - mid) ? b : a);
     const x0 = w.x0 - BALCONY.side, x1 = w.x1 + BALCONY.side, z = w.z0 - 0.05;
@@ -413,8 +395,10 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
-    for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * STOOP.tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
-    const run = STOOP.landing + (n - 1) * STOOP.tread;
+    // The flight stays within the pavement (STOOP.reach out from the wall): a tall bel-etage gets steeper treads.
+    const tread = n > 1 ? Math.min(STOOP.tread, (STOOP.reach - STOOP.landing) / (n - 1)) : STOOP.tread;
+    for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
+    const run = STOOP.landing + (n - 1) * tread;
     // Cheek walls: low beside the flight, a parapet's height beside the landing.
     for (const [a0, a1] of [[x0 - STOOP.cheek, x0], [x1, x1 + STOOP.cheek]] as const) {
       s.box(c.f, a0, a1, 0, run + STOOP.side, c.base, c.base + Math.max(0.5, h * 0.5) + 0.25, STOOP.hex);
@@ -448,10 +432,9 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const storeys = [...new Set(ws.filter(w => w.dressing === 'block-course').map(w => w.storey))];
     for (const k of storeys) blockCourse(c, s, ws.filter(w => w.storey === k && w.dressing === 'block-course'));
     for (const w of ws) {
-      if (w.dressing === 'keystone' || w.dressing === 'jack-blocks') keystoneHead(c, s, w);
-      else if (w.dressing === 'arch-ring' || w.shape === 'round') archRingHead(c, s, w);
-      else if (w.dressing === 'segmental-tympanum' || (w.shape === 'segmental' && w.dressing !== 'none')) tympanumHead(c, s, w);
-      else if (w.dressing === 'stone-lintel' || w.dressing === 'dentil-lintel') s.strip(c.f, w.x0 - 0.08, w.x1 + 0.08, 0.05, w.z1 + 0.02, Math.min(c.top, w.z1 + 0.2), WHITE);
+      if (w.dressing === 'block-course') continue;
+      const g = headGrammarOf(w.dressing, w.shape);
+      if (g) grammarHead(c, s, w, g);
     }
   } },
 ];

@@ -162,3 +162,20 @@ test('every row mansard is the one dark slate, never a per-pand tone', () => {
   assert.equal(plan('0363100012169016').rowDormers?.[0].hoist, true, '169016 carries the hoist');
   assert.equal(plan('0363100012171218').rowDormers?.[0].hoist, undefined, '171218 has none');
 });
+
+test('Weteringschans round 4: the record\'s door, shop, stoop, balcony and measured mansard rise reach the series draw', () => {
+  const by = (id: string) => W.find(r => r.pandId === id)!.series!;
+  // 168042's ground reads a shop; 168096's a dwelling with its door left.
+  assert.equal(by('0363100012168042').shop, true);
+  assert.equal(by('0363100012168096').shop, false);
+  assert.equal(by('0363100012168096').door?.side, 'left');
+  assert.equal(by('0363100012168096').stoop, undefined);
+  // 169016 and 171218: a stoop to the left bel-etage door; the balcony one row over the bel-etage (D storey 1 + souterrain).
+  for (const id of ['0363100012169016', '0363100012171218']) {
+    assert.deepEqual(by(id).stoop, { side: 'left' });
+    assert.deepEqual(by(id).balcony, { storeys: [2], axis: 'centre' });
+  }
+  // The low mansard measured on the photo, for this row only; Kinkerstraat keeps the period rise.
+  assert.equal(by('0363100012169016').roofStorey?.riseM, 1.3);
+  assert.equal(K.find(r => r.series?.roofStorey?.kind === 'mansard')!.series!.roofStorey!.riseM, undefined);
+});
