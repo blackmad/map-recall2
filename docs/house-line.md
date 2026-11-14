@@ -3451,3 +3451,36 @@ Round 2 makes three changes; the measurements behind each are in `calibrate.ts r
 - **No hue correction.** On average, the estimates are 8° redder than the photos. Sunlit captures read yellower (the sun's cast). Weteringschans odd is the opposite case: its photo is pink at hue 42 and the estimate is 61. Taking the hue from the dimmer captures did not help (−11° overall).
 - **Exposure from white or mix** (`gainFrom`). Measured and left off: it moved every page the wrong way.
 - **Belt-wide captures.** `captures.ts` now covers all 851 belt pands, with the full `refs` and the same-cut neighbours (`nb`). 314 have 4 captures; 526 outside the pages are pinned-only, because the panorama host was slow.
+
+## §16 Judged wall colour for the held D1 fronts (lane d1-colour-judged, 2026-11-14)
+
+Why: the D1 shapes were fine, but the walls staged from panorama samples (§15, v1 and v2) turned pale, painted, buff and red
+fronts near-black; measurement hit a per-capture variance floor (|dL| about 0.115 whatever the rule). The user's ruling:
+"stop worrying so much about exact color matches - use your understanding of color from nearby buildings and your innate
+knowledge of bricks". The wall colour of a held front is now a judged family with a representative tone.
+
+Module: `src/canalRecall/houseSpec/judgedColour.ts` (pure, `judgedColour.test.ts`). Script: `scripts/house-specs/judged-colour/`
+(`restage.ts` stages, `frame-lists.ts` writes the page lists, `pages.ts` stacks the rule-10 sheets per page).
+
+- **Palette** (`JUDGED_PALETTE`, OKLab L/C/hue and a variation range per family): red-brown brick, mid (grey-)brown brick,
+  dark purple-brown brick, orange-red brick, buff/yellow brick, painted white, cream/ivory render, pale grey stucco/stone,
+  mid grey stone, painted black/dark green-black, sandstone. Each family's every varied tone draws through the real wall
+  chain (`decorate.ts specWallColour`): never held by the pale-warm guard, never swapped for a family tone; brick tones sit
+  at or under `FAMILY_TONE`, orange-red under the guard's L 0.6 after the lift, pale tones under hue 85 so they keep warmth.
+- **Decision** (`judgeFront`, `judgeRow` over a street side in order): (1) the reader's own words about the described front
+  (`describerDarkPhrase`, `describerColourWord`: a word about a neighbour, side wall, trim or the light is not taken; a word
+  against the reader's own pale flag is not taken off brick); (2) finish + pale flag (stucco, stone and pale paint are pale
+  families whatever the sample; painted brick not pale is dark paint, or dark brown paint when the sample is warm; brick
+  the reader calls pale is buff); (3) for brick only, the sample's L against the median of the 5 fronts either side
+  (darker by 0.07: purple-brown; lighter and red: red-brown/orange-red; much lighter and yellow: buff), never its value;
+  (4) the build year: red-brown before 1860, mid brown from 1860 (the ring's photos are grey-brown, not red), orange-red
+  easier from 1905; (5) neighbours: an unread front takes the brick family nearest it; a front made dark only by its
+  sample between pale fronts takes the row brick. Variation: a hash of the pand id moves L, C and hue inside the family.
+- **Receipt**: `facts/wallJudged` `{v: 1, source: 'judged', family, hex, by, why, words?, sample?, rel?, year?, ruling}`
+  (validated by `isWallJudgedFact`, never drawn); `palette/brick` the tone, `facts/wallFamily` the family's reader family
+  (so the wall rule checks against it), provenance `vision-judge` 0.5, ref `judged:<signal>:<cut>`. The sampled-wall
+  receipts (`facts/wallSample`, `facts/wallExposure`) are dropped with the sampled brick.
+- **Defer**: a front whose published wall comes from a stronger source than a judgement (a block face's street-level
+  measurement, an author) keeps it: `withoutSampledWall` drops only the sampled brick (46 of 1,612).
+- **Restaged** 1,612 held fronts (belt 582 from wall-colour v3, AH07 185 from v3, ring 845 from the no-brick variant);
+  staged with `--no-receipt` reasons naming the row sheet; copies in `_pruned-sheets/d1-colour-judged-20261114/staged/`.
