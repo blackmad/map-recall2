@@ -101932,7 +101932,19 @@
       },
       "triangles": 5136,
       "bytes": 92008,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "150915a12dfc6d63",
+        "buildVersion": 2,
+        "bytes": 53828,
+        "triangles": 1723
+      },
+      "lod2": {
+        "sourceHash": "150915a12dfc6d63",
+        "buildVersion": 6,
+        "bytes": 7156,
+        "triangles": 106
+      }
     },
     "garage-noord": {
       "id": "garage-noord",
@@ -102064,7 +102076,19 @@
       },
       "triangles": 5445,
       "bytes": 85872,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "764d3cde0a54edd8",
+        "buildVersion": 2,
+        "bytes": 55088,
+        "triangles": 2769
+      },
+      "lod2": {
+        "sourceHash": "764d3cde0a54edd8",
+        "buildVersion": 6,
+        "bytes": 5820,
+        "triangles": 106
+      }
     }
   }
 }

@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Garage Noord and the Skatecafé",
+      "text": "Two Buiksloterham venues on the Gedempt Hamerkanaal are now modelled from photos: Garage Noord, with its teal corrugated front, the Sichuan Territory sign and glasshouse dining room and two rust sunburst lamp masts, and the Skatecafé next door, with its row of north-light saw-tooth halls and the black chalet front with scalloped white bargeboards, blue shutters and a yellow balcony band.",
+      "where": [
+        4.9137,
+        52.3893
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-noord-hamerkanaal/skatecafe/rule10-after.jpg",
+          "alt": "Skatecafé and Garage Noord in the game from the Gedempt Hamerkanaal",
+          "caption": "Skatecafé and Garage Noord"
+        },
+        {
+          "src": "landmarks/2026-11-14-noord-hamerkanaal/garage-noord/gallery-card.png",
+          "alt": "Garage Noord model: teal front, Sichuan Territory sign, glasshouse and lamp masts",
+          "caption": "Garage Noord"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Twelve more venues",
       "text": "Twelve cultural and nightlife venues are now modelled from photos instead of drawn as plain blocks. In the centre: Arti et Amicitiae on the Rokin with its figures and pediment arms, the Industrieele Groote Club on the Dam with its curved lettering, Splendor, Filmtheater De Uitkijk with its letter board and red doors, Escape on the Rembrandtplein and Bitterzoet on the Spuistraat. Just outside: the Asscher diamond works, the former theosophical temple on the Tolstraat, De Nieuwe Liefde, the Rijksakademie in the old cavalry barracks, Werf 't Kromhout and the Conservatorium.",
       "where": [

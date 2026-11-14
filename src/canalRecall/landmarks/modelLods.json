@@ -6005,5 +6005,29 @@
    "bytes": 7236,
    "triangles": 146
   }
+ },
+ "skatecafe": {
+  "sourceHash": "150915a12dfc6d63",
+  "buildVersion": 2,
+  "bytes": 53828,
+  "triangles": 1723,
+  "lod2": {
+   "sourceHash": "150915a12dfc6d63",
+   "buildVersion": 6,
+   "bytes": 7156,
+   "triangles": 106
+  }
+ },
+ "garage-noord": {
+  "sourceHash": "764d3cde0a54edd8",
+  "buildVersion": 2,
+  "bytes": 55088,
+  "triangles": 2769,
+  "lod2": {
+   "sourceHash": "764d3cde0a54edd8",
+   "buildVersion": 6,
+   "bytes": 5820,
+   "triangles": 106
+  }
  }
 }
