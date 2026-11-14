@@ -38,6 +38,12 @@ export type ExtraContext = {
   shopfront?: boolean;
   /** Wall-extra component ids the monuments register states for this pand: their dice are set to certain (registerRecipe.ts). */
   registerForce?: readonly string[];
+  /** Route A's field-forced parts (houseSpec/routeAFields.ts fieldsDraw): dressed on every wall before the dice trim. */
+  statedFirst?: readonly string[];
+  /** Lane 1 step e (houseLine/rowFront.ts ROW_FRONT_EXTRAS): only these extras may draw (subtract before adding); absent, all. */
+  onlyExtras?: readonly string[];
+  /** Lane WG step 2 (houseSpec/routeAFields.ts): a stated band's height (m); floor-cornices and string-courses draw it. */
+  bandM?: number;
   /** The house spec's stoop (decorate.ts `specStoop`, buildingRecipe/stoop.ts): the 'stoop' component draws it typed. */
   stoop?: StoopIntent;
   /** Pavement depth in front of this wall for the stoop (wall to street centreline less half a carriageway), metres. */

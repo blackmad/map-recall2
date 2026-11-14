@@ -198,8 +198,7 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     const x = doorX(c); if (x == null) return; const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
     // A slim canopy over the door only (user 2026-10-03: "awful imposing extrusions on our canal house grammar"): 0.5 m out, not a 0.9 m black slab.
     s.box(c.f, x - 0.65, x + 0.65, 0, 0.5, z, z + 0.06, c.style === 'c19' ? '#3a3f45' : CONCRETE, true); } },
-  { id: 'downpipe', styles: ALL, p: 0.4, build: (c, s) => {
-    const x = hash01(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15; s.box(c.f, x - 0.05, x + 0.05, 0, 0.1, c.base, c.top - 0.2, '#4a4d50'); s.box(c.f, x - 0.15, x + 0.15, 0, 0.2, c.top - 0.45, c.top - 0.2, '#4a4d50'); } },
+  // No downpipe extra (removed 2026-11-13, feedback "what's with these vertical lines", user decision): a random 40 % of every wall drew a dark stripe street to eaves.
   { id: 'gutter', group: 'crown', styles: ['canal', 'c19', 'school'], p: 0.3, build: (c, s) => { s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, '#3a3d40', true); } },
   // --- Amsterdam School ------------------------------------------------------------
   { id: 'brick-balcony', styles: ['school'], p: 0.3, build: (c, s) => {
@@ -231,7 +230,9 @@ const STREET_FURNITURE: readonly WallComponent[] = [
   { id: 'glass-balconies', styles: ['modern', 'tower'], p: 0.45, street: true, group: 'balcony', build: (c, s) => {
     openBalconyStack(c, s, .85);
   } },
-  { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0.25, build: (c, s) => {
+  // Fins are never dice (p 0, feedback 2026-11-13 "what are these vertical lines", Tollensstraat: pale 0.1 m boxes every 1.5 m from the
+  // ground floor to the crown, regardless of the windows, read as dotted ladder rails beside the slab edges). Drawn only where a register states them.
+  { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0, build: (c, s) => {
     for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
   { id: 'plinth', group: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },
@@ -325,6 +326,10 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
     ? Math.min(DEFINING_BUILDING_CEILING, Math.max(original, definingCount * EXTRA_BUDGET.wall)) : original;
   for (const { c, state } of ordered) if (definingWall(c)) dressWall(c, sink, state, 'defining');
   sink.budget = Math.max(sink.tris.length, baseline);
+  // A HouseSpec's stated parts (route A fields, houseSpec/routeAFields.ts) dress on every wall before any wall's dice trim
+  // spends the building budget: Weteringschans 171192's stated bands never reached its 6.3 m front after two short street
+  // walls had spent it (lane WG step 3). Absent `statedFirst`, nothing changes.
+  for (const { c, state } of ordered) if (c.statedFirst?.length) dressWall(c, sink, state, 'stated');
   for (const { c, state } of ordered) dressWall(c, sink, state, 'optional');
   sink.budget = original;
   for (const { c, state } of ordered) extraUsage.record?.(c, state.used, state.spent);
@@ -351,13 +356,13 @@ export function registerFirst<T extends { id: string }>(components: readonly T[]
   return [...head, ...rest.filter(comp => stated.has(comp.id)), ...rest.filter(comp => !stated.has(comp.id))];
 }
 
-function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'optional'): void {
+function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
-  if(phase!=='optional'&&street&&c.recipe?.shopCanopy){
+  if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
@@ -367,14 +372,14 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     sink.budget=outer;if(street)streetDressed.add(sink);state.spent+=sink.tris.length-beforeWall;return;
   }
   const raisedEntry = street && !!(c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront;
-  if (raisedEntry && phase !== 'optional') {
+  if (raisedEntry && phase !== 'optional' && phase !== 'stated') {
     const before = sink.tris.length;
     if(c.recipe?.groundAssembly === 'tall-side-entry') canalSideEntrance(c,sink);
     else if (c.recipe?.entranceAssembly === 'raised-plain') raisedPlainEntrance(c, sink);
     else raisedPilasterEntrance(c, sink);
     if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly ?? c.recipe!.groundAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
   }
-  if (phase !== 'defining' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
+  if (phase !== 'defining' && phase !== 'stated' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && (!c.onlyExtras || c.onlyExtras.includes('pale-masonry-accents')) && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
     const before = sink.tris.length; paleMasonryAccents(c, sink);
     if (sink.tris.length > before) used.push('pale-masonry-accents');
   }
@@ -388,7 +393,10 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (c.recipe?.balconyPolicy === 'assembly-only' && !definingComponent && (comp.group === 'balcony' || ['glass-balconies','balcony-slabs','gallery-walkway','brick-balcony','juliet-balcony'].includes(comp.id))) continue;
     if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;
     if (definingComponent && c.assemblyOwner === false) continue;
+    if (c.onlyExtras && !c.onlyExtras.includes(comp.id)) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
+    // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
+    if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
     // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
     const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;

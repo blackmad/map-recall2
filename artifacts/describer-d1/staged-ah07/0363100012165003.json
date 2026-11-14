@@ -13,13 +13,13 @@
   ],
   "palette": {
    "wallMaterial": "brick",
-   "brick": "#433c36"
+   "brick": "#38332e"
   }
  },
  "provenance": {
   "fronts/0/storeys": {
    "source": "vision-judge",
-   "confidence": 0.7,
+   "confidence": 0.35,
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012165003.jpg",
    "at": "2026-11-13"
   },

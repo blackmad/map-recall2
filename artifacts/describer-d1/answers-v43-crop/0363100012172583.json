@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1
+ ],
+ "windows": "sash-4-over-4",
+ "storeyWindows": {
+  "3": "sash-6-over-6"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "windows",
+  "crown",
+  "cornice",
+  "bands",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the middle axis has wider sash-8-over-8 windows, the side axes narrower sash-4-over-4"
+  },
+  {
+   "component": "relief",
+   "what": "two white oval cartouches flank the single top-storey window above a thin string course"
+  },
+  {
+   "component": "window",
+   "what": "a hoist door with open white shutters in an attic row above the top window, under the cornice"
+  }
+ ],
+ "notes": "Top is washed out; the upper wall narrows to one central axis with ovals at the sides, read as a cornice front but it may be a wide gable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

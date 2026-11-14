@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "pandId": "0363100012174778",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012174778/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "not-visible",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "not-visible",
+ "heads": [],
+ "bands": "not-visible",
+ "windowSurround": "block-dressings",
+ "sills": "not-visible",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": "not-visible",
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windowSurround",
+  "bays"
+ ],
+ "gaps": [],
+ "notes": "Scaffolding and a tree cover the whole front; only red-and-white blocked arches over some windows and a gable with one window at the top show through.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012182375",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182375/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "doorBay",
+  "bands",
+  "cornice",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "stone balustrade parapet on top of the cornice"
+  },
+  {
+   "component": "door",
+   "what": "centre-right opening with an ornate carved fanlight, and a pair of panelled doors at the right"
+  }
+ ],
+ "notes": "A parked car and a tarpaulin-covered boat hide the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

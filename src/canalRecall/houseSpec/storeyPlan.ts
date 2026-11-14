@@ -127,15 +127,16 @@ export function storeyPlan(input: StoreyPlanInput): StoreyPlan | null {
   const lineFrom = useEaves ? 'eaves' as const : 'wall' as const;
   const inRange = (v: number) => v >= range.min && v <= range.max;
   if (!inRange(pitch) && pitch > range.max && rows >= 2) {
-    // (b) a tall ground row: the stated rows over a ground TALL_GROUND_RATIO of the upper pitch.
-    const units = rows - 1 + TALL_GROUND_RATIO + s + (roofRow ? 1 : 0);
+    // (b) a tall ground row: the stated rows over a ground TALL_GROUND_RATIO of the upper pitch. Not over a souterrain: the
+    // souterrain is the drawn ground cell and every stated storey one row (storeyDraw), so a tall bel-etage cannot be drawn.
+    const units = s ? rows + s + (roofRow ? 1 : 0) : rows - 1 + TALL_GROUND_RATIO + (roofRow ? 1 : 0);
     const upper = line / units;
-    if (inRange(upper)) return { pitchM: upper, souterrainM: s * upper, roofRow, lineFrom, lineM: line, range, ok: true, tallGround: { groundM: TALL_GROUND_RATIO * upper }, eavesIgnored };
+    if (!s && inRange(upper)) return { pitchM: upper, souterrainM: s * upper, roofRow, lineFrom, lineM: line, range, ok: true, tallGround: { groundM: TALL_GROUND_RATIO * upper }, eavesIgnored };
     // A cornice or mansard crown has no window row above the read rows: the rows at the period's top pitch over a tall
     // ground, the rest of the wall a plain band, when that band is at most one period storey (more is a missed storey).
     if (roofCrown && !roofRow && line - units * range.max <= range.median) {
       const top = units * range.max;
-      return { pitchM: range.max, souterrainM: s * range.max, roofRow, lineFrom, lineM: top, range, ok: true, tallGround: { groundM: TALL_GROUND_RATIO * range.max }, capped: true, eavesIgnored };
+      return { pitchM: range.max, souterrainM: s * range.max, roofRow, lineFrom, lineM: top, range, ok: true, ...(s ? {} : { tallGround: { groundM: TALL_GROUND_RATIO * range.max } }), capped: true, eavesIgnored };
     }
   }
   return { pitchM: pitch, souterrainM: s * pitch, roofRow, lineFrom, lineM: line, range, ok: inRange(pitch), eavesIgnored };

@@ -202,6 +202,12 @@ test('a cornice or mansard front whose rows overfill the wall: rows at the top p
   assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', roofStorey: 'mansard' })!.capped, true);
   // more than one storey of wall left over is a missed storey: still rejected
   assert.equal(storeyPlan({ storeys: 3, wallM: 17.5, period: 'c19', crown: 'cornice' })!.ok, false);
+  // over a souterrain the souterrain is the ground cell: no tall bel-etage, the rows at the top pitch (168096 read with one)
+  const sout = storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', crown: 'cornice', souterrain: true })!;
+  assert.ok(sout.capped && !sout.tallGround);
+  const sd = storeyDraw(sout, 3, true, 16.59) as { storeys: number; groundM: number; bandM: number };
+  assert.equal(sd.storeys, 4); assert.ok(Math.abs((16.59 - sd.bandM - sd.groundM) / 3 - STOREY_PITCH_RANGE.c19.max) < 0.01);
+  assert.equal(storeyPlan({ storeys: 3, wallM: 16.6, period: 'c19', souterrain: true })!.tallGround, undefined, 'no tall-ground retry over a souterrain');
   // an attic front is not capped: its top row is wall
   assert.equal(storeyPlan({ storeys: 3, wallM: 16.59, period: 'c19', roofStorey: 'attic' })!.capped, undefined);
 });

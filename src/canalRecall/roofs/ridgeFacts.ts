@@ -10,9 +10,9 @@ type Tile = { z: number; x: number; y: number };
 export const RIDGE_AXES_ZOOM = 14;
 const PAND_PREFIX = 'NL.IMBAG.Pand.';
 
-/** Off by default until the ridge-axes tiles are published and the world recompiled with them (2026-11-13):
- *  without the tiles every building tile would 404 a sidecar. Flip to `!== '0'` in the publish commit. */
-export const RIDGE_AXES_DEFAULT_ON = false;
+/** On since the ridge-axes tiles were published with the round-130 world recompile (2026-11-13); `?ridgeAxes=0` turns it off.
+ *  Without the tiles every building tile would 404 a sidecar, so keep the tiles and this default together. */
+export const RIDGE_AXES_DEFAULT_ON = true;
 export const ridgeAxesEnabled = (search: string = typeof location !== 'undefined' ? location.search : ''): boolean => {
   const value = new URLSearchParams(search).get('ridgeAxes');
   return value === null ? RIDGE_AXES_DEFAULT_ON : value !== '0';

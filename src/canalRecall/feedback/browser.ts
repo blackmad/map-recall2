@@ -1,4 +1,5 @@
 export {};
+import { worldSnapshot } from '../engine/feedbackWorldSnapshot';
 /** Shared static-page feedback. Firebase loads only when a user opens the form. */
 declare const __FEEDBACK_BUILD__: { builtAt: string; sha: string; workspaceDirty: boolean };
 type Context = Record<string, unknown>;
@@ -111,6 +112,9 @@ function gameContext(): Context {
     mapCenter: center ? { lng: center.lng, lat: center.lat } : null,
     destination: g.routeTo && g.routeTo.id !== 'home' ? { id: g.routeTo.id, name: g.routeTo.name } : null,
     landmark: g._landmarkNotice?.id || null,
+    // Streaming state, pitch/tilt and context losses (feedback faa46795: a "nothing loaded" frame could not be
+    // reproduced from the camera fields alone).
+    world: worldSnapshot(g, w),
   };
 }
 function open(options?: OpenOptions) {

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012173341",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173341/front.jpg",
+  "kind": "crop",
+  "tier": "good",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "2": "small-over-one"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "windows",
+  "storeyWindows",
+  "ground",
+  "doorSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "white timber ground-storey front with pilasters and capitals, a wide window and two doors under transom lights"
+  },
+  {
+   "component": "gable ornament",
+   "what": "bell gable with small scroll pieces at the foot and a curved cap"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

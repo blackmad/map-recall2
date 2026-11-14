@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "pandId": "0363100012171702",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012171702/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "sash-small-panes",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top-storey windows have many horizontal bars in the lower sash, like a ladder"
+  },
+  {
+   "component": "dormer",
+   "what": "a small white dormer or hoist hood above the cornice"
+  }
+ ],
+ "notes": "The ground storey is hidden by a restaurant awning.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

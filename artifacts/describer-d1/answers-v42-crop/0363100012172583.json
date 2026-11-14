@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012172583",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "not-visible",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  1,
+  1
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "not-visible",
+ "cornice": "not-visible",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "two white oval cartouches flank the single centre window of the fourth row"
+  },
+  {
+   "component": "shutters",
+   "what": "the top centre window has open white shutters, like a hoist loft door"
+  }
+ ],
+ "notes": "The top of the front is cut at a white band; the two top rows hold only one centre window each, so they may belong to a former gable rather than full storeys.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

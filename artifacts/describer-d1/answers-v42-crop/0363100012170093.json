@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "pandId": "0363100012170093",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012170093/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "pale",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "full-width shop with a dark fascia sign, a separate red street door at the left"
+  }
+ ],
+ "notes": "Postwar flat-topped front; a tree covers part of the right bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

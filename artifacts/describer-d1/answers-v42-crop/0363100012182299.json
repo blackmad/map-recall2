@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012182299",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182299/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "2": "arched",
+  "3": "small-over-one"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "round",
+  "flat",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "bands",
+  "windowSurround",
+  "crown",
+  "cornice",
+  "storeyWindows",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies with railings across the two windows of storeys 1 and 2"
+  },
+  {
+   "component": "window",
+   "what": "each storey has a different window design: gridded top lights, round-arched french windows, small-paned tops, segmental arches in the top storey"
+  },
+  {
+   "component": "relief",
+   "what": "stone pilasters with carved capitals frame the shopfront"
+  }
+ ],
+ "notes": "Upper storeys have two bays except the top storey with three; the ground storey is a supermarket front with a canopy.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

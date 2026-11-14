@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "pandId": "0363100012177933",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012177933/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2020,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a pilastered shop frame holding a glazed band of windows above the shop fascia"
+  }
+ ],
+ "notes": "A closed parasol hides the right part of the ground storey; counted the glazed band above the shop as its own storey.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

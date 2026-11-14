@@ -34,7 +34,15 @@ export type { HouseDesign };
  *   fronts/N/cornice      `attic-frieze`   a frieze with attic windows (and consoles) under the cornice -> drawn `frieze`
  *   fronts/N/roofStorey   mansard|attic|none  a storey above the eaves line (lane WG): the generic storey fit reads it
  *                         (houseSpec/storeyPlan.ts); the recipe intent has no key, so the recipe route drops it (null)
+ *   fronts/N/rowHeads     the window head of each row as read, ground first (describer per-row heads, lane D1-fix 3): held for
+ *                         every compiler (dropped, reported as ignored) until a per-row class clears the ship bar
+ *   fronts/N/readBalconies, readDormers, readBayWindow, readDoorSurround
+ *                         describer prompt v4.3 reads (rows with balconies / {count, kind plain|gabled|none} / rows with a
+ *                         bay window / a dressed doorcase): held for every compiler like rowHeads until each class is
+ *                         scored at >= 0.8 against the author specs (D1-fix 3 item A)
  */
+/** Spec-level front reads no compiler draws yet (dropped by drawableDesign, reported as ignored). */
+export const SPEC_HELD_READS = ['rowHeads', 'readBalconies', 'readDormers', 'readBayWindow', 'readDoorSurround'] as const;
 export const SPEC_WALL_MATERIALS = [...WALL_MATERIALS, 'stone'] as const;
 export const SPEC_GABLES = [...GABLES, 'pitched-eaves'] as const;
 export const SPEC_WINDOW_HEADS = [...WINDOW_HEADS, 'pointed', 'mixed'] as const;
@@ -49,6 +57,13 @@ export type SpecWindowSurround = typeof SPEC_WINDOW_SURROUNDS[number];
 export type SpecCornice = typeof SPEC_CORNICES[number];
 /** A front as a spec stores it: the intent front with the spec-level gable and window-head values. */
 export type SpecFront = Omit<DeepPartial<FrontIntent>, 'gable' | 'windowHead' | 'windowSurround' | 'cornice'> & {
+  /** The head of each row as read, ground first (held for every compiler; see the SPEC_* note above). */
+  rowHeads?: string[];
+  /** Prompt v4.3 reads, held (see SPEC_HELD_READS): rows (ground = 0) with balconies, the dormers, rows with a bay window, a doorcase. */
+  readBalconies?: number[];
+  readDormers?: { count: number; kind: 'plain' | 'gabled' | 'none' };
+  readBayWindow?: number[];
+  readDoorSurround?: boolean;
   gable?: SpecGable;
   /** Lane WG: a roof storey above the eaves line (a mansard or an attic storey), `none` when the read saw none. */
   roofStorey?: SpecRoofStorey;
@@ -72,7 +87,7 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
   const ignored: SpecIgnored[] = [];
   const fronts = (design?.fronts ?? []) as Array<Record<string, any> | undefined>;
   const stone = design?.palette?.wallMaterial === 'stone';
-  const touched = fronts.some(f => f?.gable === 'pitched-eaves' || f?.windowHead?.kind === 'pointed' || f?.windowHead?.kind === 'mixed'
+  const touched = fronts.some(f => SPEC_HELD_READS.some(k => f?.[k] !== undefined) || f?.gable === 'pitched-eaves' || f?.windowHead?.kind === 'pointed' || f?.windowHead?.kind === 'mixed'
     || f?.windowSurround === 'block-dressings' || f?.cornice === 'attic-frieze' || f?.roofStorey !== undefined);
   if (!stone && !touched) return { design, ignored };
   const out = structuredClone(design) as Record<string, any>;
@@ -84,6 +99,7 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
       ignored.push({ path: `fronts/${i}/gable`, value: 'pitched-eaves', drawnAs: 'cornice' });
       if (f.cornice === undefined) f.cornice = 'none';
     }
+    for (const k of SPEC_HELD_READS) if (f[k] !== undefined) { ignored.push({ path: `fronts/${i}/${k}`, value: f[k], drawnAs: null }); delete f[k]; }
     if (f.windowSurround === 'block-dressings') { f.windowSurround = 'jack-blocks'; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'block-dressings', drawnAs: 'jack-blocks' }); }
     if (f.roofStorey !== undefined) { ignored.push({ path: `fronts/${i}/roofStorey`, value: f.roofStorey, drawnAs: null }); delete f.roofStorey; }
     if (f.cornice === 'attic-frieze') { f.cornice = 'frieze'; ignored.push({ path: `fronts/${i}/cornice`, value: 'attic-frieze', drawnAs: 'frieze' }); }
@@ -118,6 +134,10 @@ export interface SpecFacts {
   elements?: string[];
   /** Ground floor kind as judged on a crop: a shop pui, a residential ground floor, a warehouse door. */
   pui?: 'shop' | 'residential' | 'warehouse';
+  /** What the ground row of `fronts/0/storeys` is (describer row convention, lane D1-fix): `shop`, `door-only` (the street door is
+   *  the ground storey's one opening), `dwelling`, `warehouse`. The storeys count includes that row; a souterrain and a roof storey
+   *  never do. A reading, not drawn. */
+  groundKind?: 'shop' | 'door-only' | 'dwelling' | 'warehouse';
   /** The gable the monuments register names (intent vocabulary), kept as a historic fact for cards and trivia ("this house once
    *  had a bell gable"); provenance `rce:<register number>`. It is not the drawn crown: that is `fronts/0/gable`, where a photo
    *  reading outranks the register and the register type is drawn only over a 3DBAG crown (houseSpec/decorate.ts, H5h round 4). */
@@ -259,6 +279,11 @@ export function specProblems(input: unknown): string[] {
       if (key === 'storeys' && !countOk(value, 1, 30)) p.push(`${path}: expected integer 1..30`);
       if (key === 'bays' && !(countOk(value, 1, 30) || (Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 30))))) p.push(`${path}: an integer 1..30 or one per storey`);
       if (key === 'hoist' && typeof value !== 'boolean') p.push(`${path}: boolean`);
+      if (key === 'rowHeads' && !(Array.isArray(value) && value.length && value.every(v => [...SPEC_WINDOW_HEADS, 'not-visible'].includes(v)))) p.push(`${path}: a list of ${SPEC_WINDOW_HEADS.join('|')}|not-visible, ground first`);
+      if ((key === 'readBalconies' || key === 'readBayWindow') && !(Array.isArray(value) && value.every(v => countOk(v, 0, 29)))) p.push(`${path}: a list of rows (ground = 0)`);
+      if (key === 'readDormers' && !(value && typeof value === 'object' && countOk((value as any).count, 0, 12) && ['plain', 'gabled', 'none'].includes((value as any).kind))) p.push(`${path}: {count 0..12, kind plain|gabled|none}`);
+      if (key === 'readDoorSurround' && typeof value !== 'boolean') p.push(`${path}: boolean`);
+      if (key === 'archedStoreys' && !(Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 29)))) p.push(`${path}: a list of storey indices`);
       if (key === 'share' && !(typeof value === 'number' && value > 0 && value <= 1)) p.push(`${path}: a share of the wall 0..1`);
       if (key === 'street' && !(typeof value === 'string' && value.length > 0)) p.push(`${path}: a street name`);
     } else if (path.startsWith('palette/')) {
@@ -268,6 +293,7 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
+    else if (path === 'facts/groundKind' && !['shop', 'door-only', 'dwelling', 'warehouse'].includes(value as string)) p.push(`${path}: shop|door-only|dwelling|warehouse`);
     else if (path === 'facts/historicGable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);
   }
   // Several fronts on one facade (one street, or no street stated): each states its `share` of the wall, left to right, and the

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012173044",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012173044/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2022,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.3",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "cornice",
+  "bands",
+  "doorBay",
+  "windowSurround",
+  "heads",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a white central wall dormer over the cornice with an arched two-light window, pilasters and a capping with a crest ornament"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balconettes in front of the centre windows of two upper storeys"
+  },
+  {
+   "component": "shopfront",
+   "what": "white-framed glazed storey over the ground storey separated by a white band, the ground with two dark doors at the left and a curtained window at the right"
+  }
+ ],
+ "notes": "A bare tree crosses the upper storeys and cornice; window glazing and heads of the top rows are hard to read.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

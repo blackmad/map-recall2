@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { answerProblems, toSpecPart, upperHead, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
+import { answerProblems, groundKindOf, rowProblems, toSpecPart, upperHead, type DescriberAnswer } from '../../../src/canalRecall/houseSpec/describer.ts';
 import { compare, confusion, readingOf, tabulate, windowFamily, wilson } from '../../../src/canalRecall/houseSpec/describerScore.ts';
 import { specProblems } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { benchmarkReading, doorPosition, handSetReading, handSpecReading } from './truth.ts';
 import { columnOf, pooledTruth } from './score.ts';
-import { inheritFromTwin, stageOne } from './stage.ts';
+import { inheritFromTwin, stageOne, twinGuard, wallBrickFromSample } from './stage.ts';
+import { hexToRgb } from '../../../src/canalRecall/look/palette.ts';
 
 const answer = (over: Partial<DescriberAnswer> = {}): DescriberAnswer => ({
   v: 1, pandId: '0363100012176272', image: { ref: 'source-data://pand-crops/0363100012176272/front.jpg', kind: 'crop', tier: 'good', year: 2023, gate: 'pass' },
@@ -174,7 +175,17 @@ test('twins v2: face verdicts, door mirror, PR1 label verdicts and similarity, n
 test('stageOne: vision-judge fields plus the measured wall colour; an unreadable answer stages an empty spec', () => {
   const s = stageOne(answer(), '#7A4A3A', '2026-11-13');
   assert.deepEqual(specProblems(s), []);
-  assert.equal(s.design.palette?.brick, '#7a4a3a');
+  // D1-fix 3 item B: the W1 sample goes through fitWallBrick, so the staged brick is the one whose pinned render lands on it
+  const fit = wallBrickFromSample('#7a4a3a');
+  assert.equal(s.design.palette?.brick, fit.brick);
+  assert.notEqual(fit.brick, '#7a4a3a');
+  const [pr, ph] = [hexToRgb(fit.predicted), hexToRgb('#7a4a3a')];
+  assert.ok(pr.every((v, i) => Math.abs(v - ph[i]) <= 6), `predicted ${fit.predicted} renders onto the sample`);
+  assert.equal(fit.floor, false);
+  // a painted-black front (168095's sample) is below the city brick floor: the lightest brick at the floor, not near black
+  const dark = wallBrickFromSample('#372c27');
+  assert.equal(dark.floor, true);
+  assert.ok(hexToRgb(dark.brick).every(v => v > 30 && v < 80), dark.brick);
   assert.equal(s.provenance['palette/brick']?.source, 'streetlevel-measured');
   assert.equal(s.provenance['fronts/0/storeys']?.source, 'vision-judge');
   assert.equal(stageOne(answer(), 'brown', null).design.palette?.brick, undefined);
@@ -193,22 +204,218 @@ test('enum gaps: block dressings, attic frieze, an off-centre door and bays 0 ar
   assert.ok(answerProblems(answer({ bays: -1 })).some(p => p.startsWith('bays')));
 });
 
-test('stageOne stages only the ruled fields and classes; inheritFromTwin copies hidden fields only under sameAs + similar', () => {
+test('stageOne stages only the ruled fields and classes; inheritFromTwin copies hidden fields only when the twin guard holds', () => {
   const s = stageOne(answer({ crown: 'neck', cornice: 'simple', windowSurround: 'keystone', heads: ['flat', 'round', 'round', 'round'] }), null, null);
   const f = s.design.fronts![0] as any;
   assert.equal(f.storeys, 4); assert.equal(f.bays, 3); assert.equal(f.bands, 'speklagen');
-  assert.equal(f.gable, undefined, 'neck crown is prior-only'); assert.equal(f.cornice, undefined); assert.equal(f.windowSurround, undefined);
+  assert.equal(f.gable, 'neck', 'a neck crown stages as a curved gable'); assert.equal(f.cornice, undefined); assert.equal(f.windowSurround, undefined);
   assert.equal(f.windowHead, undefined, 'round head is prior-only'); assert.equal(f.windows, undefined, 'window family is prior-only');
   assert.equal(f.basement, 'none', 'basement from a crop');
   assert.equal(stageOne(answer({ image: { ref: 'cut.jpg', kind: 'pose-photo' } }), null, null).design.fronts![0].basement, undefined, 'no basement from a cut');
   assert.equal(stageOne(answer({ crown: 'step' }), null, null).design.fronts![0].gable, 'step');
   assert.equal(stageOne(answer({ crown: 'mansard' }), null, null).design.fronts![0].gable, undefined, 'mansard (drawn as cornice) is prior-only');
+  assert.equal(stageOne(answer({ crown: 'bell' }), null, null).design.fronts![0].gable, 'neck', 'a curved gable without a register answer stages neck');
+  assert.equal(stageOne(answer({ crown: 'neck' }), null, null, 'bell').design.fronts![0].gable, 'bell', 'the register picks bell');
+  assert.equal(stageOne(answer({ crown: 'bell' }), null, null, 'cornice').design.fronts![0].gable, 'neck');
   const hidden = stageOne(answer({ storeys: 'not-visible', crown: 'not-visible', heads: [], sameAs: 'left' }), null, null);
   const twin = stageOne(answer({ pandId: '0363100012176273', crown: 'cornice' }), null, null);
-  assert.deepEqual(inheritFromTwin(structuredClone(hidden), answer({ sameAs: 'left' }), [{ side: 'left', id: 'x', spec: twin, similar: false }]), []);
-  assert.deepEqual(inheritFromTwin(structuredClone(hidden), answer({ sameAs: 'right' }), [{ side: 'left', id: 'x', spec: twin, similar: true }]), []);
+  assert.deepEqual(inheritFromTwin(structuredClone(hidden), answer({ sameAs: 'left' }), [{ side: 'left', id: 'x', spec: twin, guard: false }]), []);
+  assert.deepEqual(inheritFromTwin(structuredClone(hidden), answer({ sameAs: 'right' }), [{ side: 'left', id: 'x', spec: twin, guard: true }]), []);
   const got = structuredClone(hidden);
-  assert.deepEqual(inheritFromTwin(got, answer({ sameAs: 'left' }), [{ side: 'left', id: 'x', spec: twin, similar: true }]), ['fronts/0/storeys', 'fronts/0/gable']);
+  assert.deepEqual(inheritFromTwin(got, answer({ sameAs: 'left' }), [{ side: 'left', id: 'x', spec: twin, guard: true }]), ['fronts/0/storeys', 'fronts/0/gable']);
   assert.equal(got.provenance['fronts/0/storeys'].ref, 'twin:x');
   assert.deepEqual(specProblems(got), []);
+});
+
+test('row convention: storeys are rows below the crown with the ground row; groundKind and the souterrain flag are stated', () => {
+  assert.equal(groundKindOf(answer()), 'dwelling');
+  assert.equal(groundKindOf(answer({ ground: 'shopfront' })), 'shop');
+  assert.equal(groundKindOf(answer({ ground: 'warehouse' })), 'warehouse');
+  assert.equal(groundKindOf(answer({ groundBays: 1, doorIndex: 0 })), 'door-only');
+  assert.equal(groundKindOf(answer({ groundBays: undefined, columns: [1, 3, 3, 3], doorIndex: undefined })), 'door-only');
+  assert.equal(groundKindOf(answer({ groundBays: 1, doorIndex: null, doorBay: 'none' })), 'dwelling', 'one ground window and no door');
+  assert.equal(groundKindOf(answer({ ground: 'not-visible' })), 'not-visible');
+  // a count that leaves the ground row out of storeys while columns lists it is refused
+  assert.deepEqual(rowProblems(answer({ columns: [3, 3, 3, 3] })), []);
+  assert.equal(rowProblems(answer({ storeys: 3, columns: [3, 3, 3, 3] })).length, 1);
+  assert.deepEqual(rowProblems(answer({ storeys: 'not-visible', columns: [3, 3] })), []);
+  assert.deepEqual(answerProblems(answer({ storeys: 3, heads: ['flat', 'flat', 'flat'], columns: [3, 3] })), [], 'stored reads still load');
+  // 168043: a door-only-free dwelling ground + two upper rows under a cornice, cellar windows below, dormer above = 3 rows
+  const v4 = answer({ storeys: 3, heads: ['flat', 'flat', 'flat'], columns: [3, 3, 3], basement: 'windows', storeyParts: { full: 3, roof: 'dormers', souterrain: false } });
+  const s = stageOne(v4, null, null);
+  assert.equal(s.design.fronts![0].storeys, 3);
+  assert.equal(s.design.fronts![0].souterrain, false, 'a read no is stated');
+  assert.equal(s.facts?.groundKind, 'dwelling');
+  assert.deepEqual(specProblems(s), []);
+  const shop = stageOne(answer({ ground: 'shopfront', storeyParts: { full: 4, roof: 'none', souterrain: true }, souterrain: true }), null, null);
+  assert.equal(shop.facts?.groundKind, 'shop'); assert.equal(shop.design.fronts![0].souterrain, true); assert.equal(shop.design.fronts![0].storeys, 4);
+  assert.equal(stageOne(answer(), null, null).design.fronts![0].souterrain, undefined, 'pre-v4 answers state no souterrain no');
+  assert.equal(stageOne(answer({ storeys: 'not-visible', heads: [] }), null, null).facts?.groundKind, undefined, 'no ground row without a count');
+  assert.ok(specProblems({ ...s, facts: { groundKind: 'basement' } }).some(p => p.startsWith('facts/groundKind')));
+  // a low storeyParts.full halves the storeys receipt
+  assert.equal(toSpecPart(answer({ low: ['storeyParts.full'] })).provenance['fronts/0/storeys'].confidence, 0.35);
+  assert.equal(toSpecPart(answer({ low: ['storeyParts'] })).provenance['fronts/0/storeys'].confidence, 0.35);
+  assert.equal(toSpecPart(answer({ low: ['crown'] })).provenance['fronts/0/storeys'].confidence, 0.7);
+});
+
+test('twin guard: mutual sameAs + width + year passes the 168043 / 168096 mirrored pair that PR1 similar split on height', async () => {
+  const { similar, similarWidthYear } = await import('./partyPairs.ts');
+  const { guardSays, tally, stat } = await import('./twin-guard.ts');
+  const p = (year: number | null, runM: number, exposedM: number) => ({ pandId: 'x', year, drawn: { runM, exposedM } });
+  const a43 = p(1883, 6.2, 13.9), a96 = p(1883, 6.3, 16.6);
+  assert.equal(similar(a43, a96), false, 'PR1: exposed height 2.7 m apart');
+  assert.equal(similarWidthYear(a43, a96), true);
+  assert.equal(similarWidthYear(p(1883, 6.2, 14), p(1887, 6.2, 14)), false, 'year 4 apart');
+  assert.equal(similarWidthYear(p(1883, 6.2, 14), p(1883, 6.6, 14)), false, 'width 0.4 m apart');
+  assert.equal(similarWidthYear(p(null, 6.2, 14), p(1883, 6.2, 14)), false);
+  // 168096 sits right of 168043: 168043 names right, 168096 names left
+  const x = { side: 'right' as const, back: 'left' as const, a: { sameAs: 'right' }, b: { sameAs: 'left' }, pa: a43, pb: a96 };
+  assert.equal(twinGuard('mutual', x), true);
+  assert.equal(twinGuard('pr1', x), false, 'the old guard stays reachable');
+  assert.equal(twinGuard('mutual', { ...x, b: { sameAs: 'none' } }), false, 'one-sided sameAs');
+  assert.equal(twinGuard('mutual', { ...x, b: { sameAs: 'both' } }), true);
+  assert.equal(twinGuard('mutual', { ...x, b: null }), false, 'an unread neighbour never copies');
+  assert.equal(twinGuard('mutual', { ...x, a: { sameAs: 'left' } }), false, 'names the other side');
+  assert.equal(twinGuard('mutual', { ...x, pb: undefined }), false, 'no probe, no copy');
+  const sides = [
+    { truth: true, side: 'right' as const, a: { sameAs: 'right' }, b: { sameAs: 'left' }, pa: a43, pb: a96 },
+    { truth: false, side: 'left' as const, a: { sameAs: 'left' }, b: { sameAs: 'none' }, pa: a43, pb: a43 },
+    { truth: true, side: 'left' as const, a: { sameAs: 'none' }, b: { sameAs: 'right' }, pa: a43, pb: a43 },
+  ];
+  assert.deepEqual(sides.map(s => guardSays('plain', s)), [true, true, false]);
+  assert.deepEqual(sides.map(s => guardSays('mutual', s)), [true, false, false]);
+  assert.deepEqual(sides.map(s => guardSays('mutual-sameAs', s)), [true, false, false]);
+  const t = stat(tally(sides, 'mutual'));
+  assert.equal(t.tp, 1); assert.equal(t.fp, 0); assert.equal(t.fn, 1); assert.equal(t.precision, 1); assert.equal(t.recall, 0.5);
+});
+
+test('rows: rowStat exact / within one with Wilson intervals; unreadNeighbours lists each unread truth neighbour once', async () => {
+  const { rowStat } = await import('./rows.ts');
+  const r = rowStat([{ truth: 3, read: 3 }, { truth: 4, read: 3 }, { truth: 3, read: 5 }, { truth: 3, read: undefined }]);
+  assert.equal(r.n, 3); assert.equal(r.exact, 0.333); assert.equal(r.within1, 0.667); assert.equal(r.under, 1); assert.equal(r.over, 1);
+  const { unreadNeighbours } = await import('./twins-v2.ts');
+  const row = (pandId: string, l: string | null, lt: boolean | null, rr: string | null, rt: boolean | null) => ({ pandId, source: 'block-face' as const, mirrored: null, image: '',
+    left: l ? { id: l, twin: lt, why: '' } : null, right: rr ? { id: rr, twin: rt, why: '' } : null });
+  const m = unreadNeighbours([row('a', 'b', true, 'c', null), row('d', 'b', false, 'a', true)], new Set(['a', 'd']));
+  assert.deepEqual([...m.keys()], ['b'], 'c has no verdict, a is read');
+});
+
+test('per-row heads: held for every route except round rows (archedStoreys, route C only); uniform rows stay byte-identical', async () => {
+  const { rowHeads, ROUTE_C_ONLY, HELD_FOR_ALL_ROUTES } = await import('./stage.ts');
+  const { drawableDesign } = await import('../../../src/canalRecall/houseSpec/spec.ts');
+  assert.deepEqual(rowHeads(['flat', 'flat', 'flat'], 3), { windowHead: { kind: 'flat' } });
+  assert.deepEqual(rowHeads(['flat', 'segmental', 'not-visible'], 3), { windowHead: { kind: 'segmental' } }, 'as upperHead: unknown rows ignored');
+  assert.deepEqual(rowHeads(['flat', 'flat', 'round'], 3), { rowHeads: ['flat', 'flat', 'round'], archedStoreys: [2] });
+  assert.deepEqual(rowHeads(['flat', 'segmental', 'segmental', 'round'], 4), { rowHeads: ['flat', 'segmental', 'segmental', 'round'], archedStoreys: [3] });
+  assert.deepEqual(rowHeads(['flat', 'flat', 'segmental'], 3), { rowHeads: ['flat', 'flat', 'segmental'] }, 'per-row segmental is held, not a windowHead');
+  assert.deepEqual(rowHeads(['flat', 'relieving', 'flat'], 3), { rowHeads: ['flat', 'relieving', 'flat'] });
+  assert.deepEqual(rowHeads(['flat', 'round'], 3), {}, 'a list that is not one per row');
+  assert.deepEqual(rowHeads(['flat', 'flat', 'round'], 'not-visible'), {}, 'rows without a count cannot be placed');
+  assert.deepEqual(rowHeads([], 3), {});
+  const s171218 = stageOne(answer({ storeys: 3, heads: ['flat', 'flat', 'round'], storeyWindows: { 2: 'arched' } }), null, null);
+  const f = s171218.design.fronts![0] as any;
+  assert.deepEqual(f.archedStoreys, [2]); assert.deepEqual(f.rowHeads, ['flat', 'flat', 'round']); assert.equal(f.windowHead, undefined);
+  assert.equal(s171218.provenance['fronts/0/rowHeads'].source, 'vision-judge');
+  assert.deepEqual(specProblems(s171218), []);
+  assert.ok(ROUTE_C_ONLY.has('fronts/0/archedStoreys') && HELD_FOR_ALL_ROUTES.has('fronts/0/rowHeads'));
+  const drawn = drawableDesign(s171218.design);
+  assert.equal((drawn.design.fronts![0] as any).rowHeads, undefined, 'no compiler sees rowHeads');
+  assert.deepEqual((drawn.design.fronts![0] as any).archedStoreys, [2]);
+  assert.deepEqual(drawn.ignored, [{ path: 'fronts/0/rowHeads', value: ['flat', 'flat', 'round'], drawnAs: null }]);
+  // uniform rows: the same windowHead and receipt as the one-word head (byte-identical to the step-1c staging)
+  const flat = stageOne(answer({ heads: ['flat', 'flat', 'flat', 'flat'] }), null, null);
+  assert.deepEqual(flat.design.fronts![0].windowHead, { kind: 'flat' });
+  assert.equal((flat.design.fronts![0] as any).rowHeads, undefined);
+  assert.equal(drawableDesign(flat.design).design, flat.design, 'absent: the same object');
+  assert.equal(stageOne(answer({ heads: ['flat', 'segmental', 'segmental', 'segmental'], low: ['heads'] }), null, null).provenance['fronts/0/windowHead'].confidence, 0.35, 'a low heads read halves the head receipt');
+  assert.ok(specProblems({ ...flat, design: { fronts: [{ archedStoreys: [] }] } }).some(p => p.includes('archedStoreys')));
+  assert.ok(specProblems({ ...flat, design: { fronts: [{ rowHeads: ['arched'] }] }, provenance: { 'fronts/0': flat.provenance['fronts/0/storeys'] } }).some(p => p.includes('rowHeads')));
+});
+
+test('per-row heads reach the recipe route and nothing else: the intent accepts disjoint windowHead + archedStoreys, fit draws a semicircle there, the generic view and F1 record ignore them', async () => {
+  const fs = await import('node:fs');
+  const { validateIntent } = await import('../../../src/canalRecall/buildingRecipe/intent.ts');
+  const { fitIntent } = await import('../../../src/canalRecall/buildingRecipe/fit.ts');
+  const D = new URL('../../building-recipes/houses/bilder-080336/', import.meta.url).pathname;
+  const base = JSON.parse(fs.readFileSync(`${D}intent.json`, 'utf8')), facts = JSON.parse(fs.readFileSync(`${D}facts.json`, 'utf8'));
+  const n = base.fronts[0].storeys as number, top = n - 1;
+  const mk = (over: Record<string, unknown>) => { const i = structuredClone(base); Object.assign(i.fronts[0], over); return i; };
+  assert.doesNotThrow(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental', storeys: [1] } })));
+  assert.throws(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental' } })), /archedStoreys/);
+  assert.throws(() => validateIntent(mk({ archedStoreys: [top], windowHead: { kind: 'segmental', storeys: [top] } })), /archedStoreys/);
+  const ops = (i: any) => fitIntent(validateIntent(i), facts).recipe.elevations[0].openings!.value as any[];
+  const before = ops(base), after = ops(mk({ archedStoreys: [top] }));
+  const row = (o: any[], s: number) => o.filter(x => new RegExp(`^s${s}-`).test(x.id));
+  assert.ok(row(after, top).length && row(after, top).every(o => o.head === 'segmental' && Math.abs(o.headRiseM - o.widthM / 2) < 0.002), 'semicircle on the top row');
+  assert.deepEqual(row(after, 1), row(before, 1), 'the other rows unchanged');
+  // generic view and F1 record: identical with and without the round rows
+  const { specView } = await import('../../../src/canalRecall/houseSpec/view.ts');
+  const { facadeRecordFor } = await import('../../../src/canalRecall/look/facadeRecord.ts');
+  const plain = stageOne(answer({ storeys: 3, heads: ['flat', 'flat', 'flat'] }), '#6a4a36', null);
+  const arched = structuredClone(plain);
+  arched.design.fronts![0].archedStoreys = [2]; arched.provenance['fronts/0/archedStoreys'] = { source: 'vision-judge', confidence: 0.7, ref: 'x', at: null };
+  (arched.design.fronts![0] as any).rowHeads = ['flat', 'segmental', 'round']; arched.provenance['fronts/0/rowHeads'] = { source: 'vision-judge', confidence: 0.7, ref: 'x', at: null };
+  assert.deepEqual(specView(arched), specView(plain));
+  const rec = (spec: any) => facadeRecordFor({ id: spec.pandId, style: 'canal', wallHex: '#6a4a36', heightM: 14, eavesM: 12, spec });
+  assert.deepEqual(rec(arched), rec(plain));
+});
+
+test('D1-fix 3: v4.3 is the default prompt (v4.2 before item A); author-convention storey counts drop out of the rows truth; head-truth labels and per-row scoring', async () => {
+  const { DESCRIBER_PROMPT, describerPromptPath } = await import('../../../src/canalRecall/houseSpec/describer.ts');
+  const fs = await import('node:fs');
+  assert.equal(DESCRIBER_PROMPT, 'v4.3');
+  const root = new URL('../../../', import.meta.url).pathname;
+  assert.match(fs.readFileSync(describerPromptPath(root), 'utf8'), /^# House describer, prompt v4\.3/);
+  const { authorConvention, handSpecReading } = await import('./truth.ts');
+  const spec = (front: Record<string, unknown>, facts: Record<string, unknown> = {}) => ({ schemaVersion: 1 as const, pandId: '0363100012174775', design: { fronts: [{ storeys: 4, basement: 'none', ...front }] }, facts,
+    provenance: { 'fronts/0': { source: 'author' as const, confidence: 1, ref: 'x', at: null } } });
+  assert.equal(authorConvention(spec({ storeyHeights: [4.4, 2.5, 2.5, 2.6] }) as any), true, 'a bel-etage 1.76 x the upper storeys');
+  assert.equal(authorConvention(spec({ tallGround: true }) as any), true);
+  assert.equal(authorConvention(spec({ basement: 'stoop-and-windows' }) as any), true);
+  assert.equal(authorConvention(spec({ basement: 'stoop', souterrain: true }) as any), false, 'the souterrain is stated');
+  assert.equal(authorConvention(spec({ tallGround: true }, { pui: 'shop' }) as any), false, 'a shop ground is not a bel-etage');
+  assert.equal(authorConvention(spec({ storeyHeights: [3, 2.6, 2.5, 2.4] }) as any), false);
+  assert.equal(handSpecReading(spec({ tallGround: true }) as any).storeys, 4);
+  assert.equal(handSpecReading(spec({ tallGround: true }) as any, { authorConvention: 'exclude' }).storeys, undefined);
+  const { labelProblems, inSet, scoreHeads, shuffle } = await import('./head-truth.ts');
+  assert.deepEqual(labelProblems({ readable: true, rows: ['none', 'flat', 'round'] }), []);
+  assert.ok(labelProblems({ readable: true, rows: ['arched'] }).length);
+  assert.ok(labelProblems({ readable: false, rows: ['flat'] }).length);
+  assert.equal(inSet({ readable: true, rows: ['segmental', 'flat'] }), false, 'the ground row does not count');
+  assert.equal(inSet({ readable: true, rows: ['none', 'flat', 'round'] }), true);
+  assert.deepEqual(shuffle([1, 2, 3, 4, 5], 13), shuffle([1, 2, 3, 4, 5], 13));
+  const L = new Map([['a', { v: 1 as const, pandId: 'a', image: '', reader: 'x', readable: true, rows: ['none', 'flat', 'round'] as any }],
+    ['b', { v: 1 as const, pandId: 'b', image: '', reader: 'x', readable: true, rows: ['none', 'segmental', 'segmental'] as any }]]);
+  const A = new Map([['a', { readable: true, heads: ['flat', 'flat', 'round'] }], ['b', { readable: true, heads: ['flat', 'segmental', 'round'] }]]);
+  const r = scoreHeads(A, L);
+  assert.equal(r.pands, 2);
+  assert.deepEqual([r.per.round.rowsRead, r.per.round.precision, r.per.round.rowsTruth, r.per.round.recall], [2, 0.5, 1, 1]);
+  assert.deepEqual([r.per.segmental.rowsRead, r.per.segmental.precision, r.per.segmental.recall], [1, 1, 0.5]);
+});
+
+test('prompt v4.3 reads: validated, staged with a receipt, held for every route; extras score them against author specs', async () => {
+  const { drawableDesign } = await import('../../../src/canalRecall/houseSpec/spec.ts');
+  const { specExtras, scoreExtras } = await import('./extras.ts');
+  const v43 = answer({ balconies: [2], dormers: { count: 2, kind: 'gabled' }, bayWindow: [], doorSurround: true });
+  assert.deepEqual(answerProblems(v43), []);
+  assert.ok(answerProblems(answer({ dormers: { count: 0, kind: 'plain' } })).some(p => p.startsWith('dormers')), 'none exactly at count 0');
+  assert.ok(answerProblems(answer({ balconies: [1, 1] as number[] })).some(p => p.startsWith('balconies')));
+  const s = stageOne(v43, null, '2026-11-13');
+  assert.deepEqual(specProblems(s), []);
+  assert.deepEqual(s.design.fronts![0].readDormers, { count: 2, kind: 'gabled' });
+  assert.equal(s.provenance['fronts/0/readBalconies']?.source, 'vision-judge');
+  const drawn = drawableDesign(s.design);
+  for (const k of ['readBalconies', 'readDormers', 'readBayWindow', 'readDoorSurround']) {
+    assert.equal((drawn.design.fronts![0] as any)[k], undefined, `${k} held`);
+    assert.ok(drawn.ignored.some(i => i.path === `fronts/0/${k}`));
+  }
+  assert.equal(drawableDesign(stageOne(answer(), null, null).design).ignored.length, 0, 'absent: byte-identical');
+  const spec: any = { schemaVersion: 1, pandId: v43.pandId, design: { fronts: [{ dormers: 2, dormerStyle: 'pediment', balconies: { storeys: [2], bays: [1] } }] }, provenance: { 'fronts/0': { source: 'author' } } };
+  const t = specExtras(spec);
+  assert.deepEqual(t, { balconies: [2], dormers: { count: 2, kind: 'gabled' }, bayWindow: [], doorSurround: false });
+  const rows = scoreExtras(new Map([[v43.pandId, v43]]), new Map([[v43.pandId, t]]));
+  const by = Object.fromEntries(rows.map(r => [r.question, r]));
+  assert.equal(by['dormer kind'].accuracy, 1);
+  assert.equal(by['door surround'].accuracy, 0);
+  assert.equal((by['balconies'].classes as any).yes.precision, 1);
 });

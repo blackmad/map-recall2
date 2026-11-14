@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "pandId": "0363100012178199",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012178199/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2021,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 4,
+ "windows": "t-window",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "iron wall anchors between the upper windows"
+  }
+ ],
+ "notes": "Building-site hoarding and a site container hide the ground storey; two upper storeys under a white frieze and cornice.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012182851",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182851/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  2,
+  2,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "storeyWindows": {
+  "3": "six-pane"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": "not-visible",
+ "low": [
+  "windows",
+  "ground",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "white carved claw pieces at the neck foot"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall white timber ground storey with two tiers of small-paned windows"
+  },
+  {
+   "component": "window",
+   "what": "the two lower upper storeys have two wide windows while the top storey has three small ones"
+  }
+ ],
+ "notes": "A street decoration crosses the top of the gable.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

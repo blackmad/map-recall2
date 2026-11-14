@@ -42,7 +42,25 @@ export type WallFamily = (typeof WALL_FAMILIES)[number];
 /** palette.wallMaterial plus `stone` (stone-faced; the generic wall has no stone material). */
 export const FINISHES = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
 
+/** The describer prompts (repo paths) and the default a reader is given (integrator ruling D1-fix 3: v4.2 for the volume tranche; v4.3 since item A, no shipped field dropped beyond its interval on the 147 crops). */
+export const DESCRIBER_PROMPTS = {
+  'v4': 'scripts/house-line/describer/prompt-v4.md',
+  'v4.1': 'scripts/house-line/describer/prompt-v4.1.md',
+  'v4.2': 'scripts/house-line/describer/prompt-v4.2.md',
+  'v4.3': 'scripts/house-line/describer/prompt-v4.3.md',
+} as const;
+export type DescriberPromptVersion = keyof typeof DESCRIBER_PROMPTS;
+export const DESCRIBER_PROMPT: DescriberPromptVersion = 'v4.3';
+/** The prompt file of a version (default DESCRIBER_PROMPT) under the repo root. */
+export const describerPromptPath = (root: string, v: DescriberPromptVersion = DESCRIBER_PROMPT): string => path.join(root, DESCRIBER_PROMPTS[v]);
+
 export const SAME_AS = ['left', 'right', 'both', 'none'] as const;
+
+/** What the ground row of `storeys` is (D1-fix row convention): a shop pui, a ground storey whose one opening is the street door
+ *  (`door-only`), a house ground storey with windows (`dwelling`), loading doors (`warehouse`). Souterrain and roof storey are
+ *  separate flags (`fronts/N/souterrain`, the `storeyParts.roof` reading); none of them changes the row count. */
+export const GROUND_KINDS = ['shop', 'door-only', 'dwelling', 'warehouse'] as const;
+export type GroundKind = (typeof GROUND_KINDS)[number];
 
 /** prompt v3: a tall upper-storey window whose horizontal bar (sash meeting rail or T-window transom) is not resolvable. */
 export const TALL_UPPER = 'tall-upper' as const;
@@ -54,11 +72,16 @@ export interface DescriberAnswer {
   image: { ref: string; kind: 'crop' | 'pose-photo' | 'render'; tier?: 'good' | 'fallback' | 'none' | null; year?: number | null; gate?: 'pass' | 'fail' | null };
   /** Who read it, e.g. `D1 opus` or `D1 sonnet`. */
   reader: string;
+  /** The prompt version the reader was given (DESCRIBER_PROMPTS); stamped by write-answer.ts since D1-fix 3. */
+  prompt?: string;
   readable: boolean;
   /** `multi`: the pand's wall carries more than one house front (read the dominant/target one, say so in notes). */
   extent: 'single' | 'multi';
-  /** Full street storeys (ground once, no souterrain, no attic in the crown). */
+  /** Rows below the crown: full street storeys, the ground storey included once (a shop, a door-only ground, a bel-etage), no
+   *  souterrain, no attic in the crown. Prompt v4 writes it from `storeyParts.full` (write-answer.ts). */
   storeys: number | U;
+  /** Prompt v4: the storey parts as read (`storeys` = `full`); kept on the stored answer. */
+  storeyParts?: { full: number | U; roof: string; souterrain: boolean | U };
   /** Window axes of the upper storeys (the storey with the most); an erker is one axis, a mullioned pair one. 0: a front with
    *  no upper storey (a one-storey wall), never staged as bays. */
   bays: number | U;
@@ -91,6 +114,14 @@ export interface DescriberAnswer {
   sameAs?: (typeof SAME_AS)[number] | U;
   /** With `sameAs`: the twin is mirrored (door and asymmetric parts on the other side). */
   mirrored?: boolean | U;
+  /** Prompt v4.3 (held, scored before any route draws them): rows (ground = 0, as `heads`) with a balcony or balconette. */
+  balconies?: number[] | U;
+  /** Prompt v4.3: roof dormers and wall dormers / part-front gables over the cornice line, `gabled` when any has a gable or pediment top. */
+  dormers?: { count: number; kind: (typeof DORMER_KINDS)[number] } | U;
+  /** Prompt v4.3: rows (ground = 0) with a projecting bay window (erker, oriel). */
+  bayWindow?: number[] | U;
+  /** Prompt v4.3: the street door has a dressed doorcase (pilasters, a frame, a hood or cornice over it). */
+  doorSurround?: boolean | U;
   /** Fields read at low confidence (named by key). */
   low?: string[];
   gaps: SpecLimit[];
@@ -104,7 +135,10 @@ const countOk = (v: unknown, lo: number, hi: number) => v === UNKNOWN || (Number
 export const LOW_KEYS: ReadonlySet<string> = new Set(['extent', 'storeys', 'bays', 'columns', 'windows', 'storeyWindows', 'heads', 'bands',
   'windowSurround', 'sills', 'doorBay', 'doorIndex', 'groundBays', 'ground', 'basement', 'souterrain', 'crown', 'cornice', 'wallFamily',
   'finish', 'whiteFrames', 'sameAs', 'mirrored', 'pale', 'paneLayout', 'storeyParts', 'storeyParts.full', 'storeyParts.roof',
-  'storeyParts.souterrain']);
+  'storeyParts.souterrain', 'balconies', 'dormers', 'bayWindow', 'doorSurround']);
+/** Prompt v4.3 dormer kinds: `none` with count 0. */
+export const DORMER_KINDS = ['plain', 'gabled', 'none'] as const;
+const rowList = (v: unknown) => v === UNKNOWN || (Array.isArray(v) && v.every(r => Number.isInteger(r) && r >= 0 && r <= 30) && new Set(v).size === v.length);
 
 /** Problems with an answer (empty = valid). */
 export function answerProblems(a: any): string[] {
@@ -138,7 +172,20 @@ export function answerProblems(a: any): string[] {
   if (a.mirrored !== undefined && !(typeof a.mirrored === 'boolean' || a.mirrored === UNKNOWN)) p.push(`mirrored: boolean or ${UNKNOWN}`);
   if (a.low !== undefined && !(Array.isArray(a.low) && a.low.every((k: unknown) => typeof k === 'string' && LOW_KEYS.has(k)))) p.push(`low: answer keys only (${[...LOW_KEYS].join('|')})`);
   if (!Array.isArray(a.gaps) || a.gaps.some((g: unknown) => typeof g !== 'object' || !toSpecLimit(g))) p.push('gaps: a list of {component, what}');
+  if (a.balconies !== undefined && !rowList(a.balconies)) p.push(`balconies: a list of rows (ground = 0) or ${UNKNOWN}`);
+  if (a.bayWindow !== undefined && !rowList(a.bayWindow)) p.push(`bayWindow: a list of rows (ground = 0) or ${UNKNOWN}`);
+  if (a.dormers !== undefined && a.dormers !== UNKNOWN && !(a.dormers && typeof a.dormers === 'object' && Number.isInteger(a.dormers.count) && a.dormers.count >= 0 && a.dormers.count <= 12
+    && (DORMER_KINDS as readonly string[]).includes(a.dormers.kind) && (a.dormers.count === 0) === (a.dormers.kind === 'none'))) p.push(`dormers: {count 0..12, kind ${DORMER_KINDS.join('|')}} (none exactly when count 0) or ${UNKNOWN}`);
+  if (a.doorSurround !== undefined && !(typeof a.doorSurround === 'boolean' || a.doorSurround === UNKNOWN)) p.push(`doorSurround: boolean or ${UNKNOWN}`);
   return p;
+}
+
+/** Row-convention problems of an answer (empty = consistent): `columns` lists every row of `storeys`, the ground row first, so a
+ *  count that leaves the ground row out (or a columns list that skips a row) shows here. write-answer.ts refuses new reads with
+ *  one; stored reads still load (rows.ts counts them). */
+export function rowProblems(a: Pick<DescriberAnswer, 'columns' | 'storeys'>): string[] {
+  return Array.isArray(a.columns) && a.columns.length && Number.isInteger(a.storeys) && a.columns.length !== a.storeys
+    ? [`columns: ${a.columns.length} rows for ${a.storeys} storeys (one count per row below the crown, the ground row first)`] : [];
 }
 
 export function validateAnswer(a: unknown): DescriberAnswer {
@@ -165,6 +212,22 @@ export function upperHead(heads: readonly (Head | U)[]): Head | U {
   return new Set(up).size === 1 ? up[0] : 'mixed';
 }
 
+/** The ground row of an answer's `storeys` (GROUND_KINDS), or unknown. `door-only`: not a shop and the street door is the only
+ *  ground opening (groundBays 1 with the door at 0, else a ground column count of 1 with a door). */
+export function groundKindOf(a: Pick<DescriberAnswer, 'ground' | 'groundBays' | 'doorIndex' | 'doorBay' | 'columns' | 'readable'>): GroundKind | U {
+  if (!a.readable || a.ground === UNKNOWN) return UNKNOWN;
+  if (a.ground === 'shopfront') return 'shop';
+  if (a.ground === 'warehouse') return 'warehouse';
+  const hasDoor = a.doorBay !== 'none' && a.doorIndex !== null;
+  const groundOpenings = a.groundBays ?? a.columns?.[0];
+  return hasDoor && groundOpenings === 1 && (a.doorIndex === undefined || a.doorIndex === 0) ? 'door-only' : 'dwelling';
+}
+
+/** The answer key a spec path's `low` flag is read from: prompt v4 names the storey parts, not `storeys`. */
+const READ_KEYS: Record<string, string> = { readBalconies: 'balconies', readDormers: 'dormers', readBayWindow: 'bayWindow', readDoorSurround: 'doorSurround' };
+const lowKeys = (key: string): string[] => (key in READ_KEYS ? [READ_KEYS[key]] : key === 'storeys' ? ['storeys', 'storeyParts', 'storeyParts.full'] : key === 'souterrain' ? ['souterrain', 'storeyParts', 'storeyParts.souterrain']
+  : key === 'windowHead' || key === 'archedStoreys' ? [key, 'heads'] : [key]);
+
 /** An answer as a partial HouseSpec at source `vision-judge`. Stone, pitched-eaves and pointed/mixed heads are stored as read (spec.ts
  *  SPEC_*; compilers draw the nearest form and report it); schemaLimits holds only the reader's own gaps. */
 export function toSpecPart(a: DescriberAnswer, at: string | null = null, confidence = 0.7): HouseSpec {
@@ -173,7 +236,7 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
   const set = (p: string, v: unknown) => {
     if (v === undefined || v === UNKNOWN) return;
     setSpecField(spec, p, v);
-    spec.provenance[p] = { source: 'vision-judge', confidence: a.low?.includes(p.split('/').pop()!) ? confidence / 2 : confidence, ref: a.image.ref, at };
+    spec.provenance[p] = { source: 'vision-judge', confidence: lowKeys(p.split('/').pop()!).some(k => a.low?.includes(k)) ? confidence / 2 : confidence, ref: a.image.ref, at };
   };
   set('fronts/0/storeys', a.storeys);
   if (a.bays !== 0) set('fronts/0/bays', a.bays);
@@ -186,13 +249,21 @@ export function toSpecPart(a: DescriberAnswer, at: string | null = null, confide
   set('fronts/0/windowSurround', a.windowSurround === 'none' && a.sills === 'stone' ? 'sill' : a.windowSurround);
   if (a.doorIndex !== undefined) set('fronts/0/doorBay', a.doorIndex);
   set('fronts/0/basement', a.basement);
-  if (a.souterrain) set('fronts/0/souterrain', true);
+  // the souterrain flag as read: true, or false when the v4 storey parts answered it (a stated no, so no step adds a row below the ground)
+  if (a.souterrain || a.storeyParts?.souterrain === true) set('fronts/0/souterrain', true);
+  else if (a.storeyParts?.souterrain === false) set('fronts/0/souterrain', false);
   if (a.crown === 'mansard') { set('fronts/0/gable', 'cornice'); set('fronts/0/roofFront', 'mansard'); }
   else set('fronts/0/gable', a.crown as SpecGable | U);
   set('fronts/0/cornice', a.cornice);
   set('palette/wallMaterial', a.finish);
   set('facts/wallFamily', a.wallFamily);
   set('facts/pui', a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'residential' : a.ground);
+  if (Number.isInteger(a.storeys)) set('facts/groundKind', groundKindOf(a));
+  // prompt v4.3 reads, held for every route (spec.ts SPEC_HELD_READS) until scored
+  if (a.balconies !== undefined) set('fronts/0/readBalconies', a.balconies);
+  if (a.dormers !== undefined) set('fronts/0/readDormers', a.dormers);
+  if (a.bayWindow !== undefined) set('fronts/0/readBayWindow', a.bayWindow);
+  if (a.doorSurround !== undefined) set('fronts/0/readDoorSurround', a.doorSurround);
   const limits = [...a.gaps];
   if (limits.length) spec.schemaLimits = limits;
   return spec;

@@ -31,6 +31,7 @@ import { pageCoarsePointer, pageTextureParams, pageTextureTier, texturePolicyFla
 import { withMonumentGable } from './monumentGables.js';
 import { withRegisterFacts, registerFactsEnabled, registerFactsFromExtract } from './facade/registerRecipe.js';
 import { withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher } from './houseSpec/decorate.js';
+import { withRowFront, rowFrontOn, loadRowFrontRecords } from './houseLine/rowFront.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
@@ -237,7 +238,7 @@ const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
 
 /** Landmarks keep their own form; kit-modelled parts and bodies pass through, the rest get a period fallback (roofMesh.ts). */
 const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 'Feature'; geometry: unknown }>(decorate: (f: T) => T, ids: ReadonlySet<string>, listed?: ReadonlySet<string>) => exceptLandmarksOf(decorate, ids, KIT_MODELLED_IDS, listed);
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher, withRowFront, rowFrontOn, loadRowFrontRecords };
 
 const KIT_KEY = '__kit';
 /** `?kitFade` under `?popFade` (lanes P2 #325, P3 #328): the kit chunk's rebuilds cross-fade like any other chunk's. Default on. */

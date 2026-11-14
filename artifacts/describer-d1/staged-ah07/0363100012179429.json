@@ -5,12 +5,18 @@
   "fronts": [
    {
     "storeys": 3,
-    "bays": 2
+    "bays": 2,
+    "souterrain": false,
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "flat"
+    ]
    }
   ],
   "palette": {
    "wallMaterial": "brick",
-   "brick": "#342e2a"
+   "brick": "#38322e"
   }
  },
  "provenance": {
@@ -26,6 +32,12 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179429.jpg",
    "at": "2026-11-13"
   },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179429.jpg",
+   "at": "2026-11-13"
+  },
   "palette/wallMaterial": {
    "source": "vision-judge",
    "confidence": 0.7,
@@ -38,6 +50,18 @@
    "ref": "artifacts/describer-d1/cuts-ah07/0363100012179429.jpg",
    "at": "2026-11-13"
   },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179429.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179429.jpg",
+   "at": "2026-11-13"
+  },
   "palette/brick": {
    "source": "streetlevel-measured",
    "confidence": 0.6,
@@ -46,7 +70,8 @@
   }
  },
  "facts": {
-  "pui": "residential"
+  "pui": "residential",
+  "groundKind": "dwelling"
  },
  "schemaLimits": [
   {

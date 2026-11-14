@@ -544,6 +544,7 @@ export class OwnWorldView implements WorldViewOracles {
       completeCity: () => this._completeCity,
       measuredColoursOnly: () => this.measuredColoursOnly,
       trees3d: flag('trees3d', '__canalRecallTrees3d', true),
+      rider: () => this.lastSubject,
       repaint: () => this.host.triggerRepaint(),
       relight: () => this.setActiveLandmark(this.activeLandmark),
       fail: (what, error) => this.fail(what, error),
@@ -666,7 +667,9 @@ export class OwnWorldView implements WorldViewOracles {
     // HouseSpecs (houseSpec/decorate.ts; the tile enricher stamps `p.houseSpec`): facts after the register, crown after
     // the monument gable, as galleryPipeline.gameFeatureDecorator composes them. No-ops on a feature without a spec.
     const spec = api.withHouseSpec ?? ((f: any) => f), crown = api.withHouseSpecCrown ?? ((f: any) => f);
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(crown(named(Facades.decorateFacade(spec(registered(f)))))) : (f: any) => Facades.decorateFacade(spec(registered(f)));
+    // Lane 1 row fronts (`?rowFront=1`, houseLine/rowFront.ts): after the crown, before the roof; a no-op without records.
+    const rowFront = api.rowFrontOn?.() && api.withRowFront ? api.withRowFront : (f: any) => f;
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(rowFront(crown(named(Facades.decorateFacade(spec(registered(f))))))) : (f: any) => Facades.decorateFacade(spec(registered(f)));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }
@@ -689,6 +692,8 @@ export class OwnWorldView implements WorldViewOracles {
         this.decoration.registerFacts = new Map(Object.entries(data.buildings || {}));
         this.decorateCity();
       }),
+      // Row-front records (`?rowFront=1`): installed, then the city re-decorates (the worker reads only properties).
+      Promise.resolve(api?.loadRowFrontRecords?.(this.extractPath.replace(/data\/extracts\/.*$/, ''))).then(ok => { if (ok) this.decorateCity(); }),
       json('landmark-buildings.json').then(data => {
         if (!data) return;
         for (const list of Object.values<string[]>(data.buildings || {})) for (const id of list) this.decoration.landmarks.add(String(id));

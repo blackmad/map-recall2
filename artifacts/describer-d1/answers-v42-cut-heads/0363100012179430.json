@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012179430",
+ "image": {
+  "ref": "artifacts/describer-d1/cuts-ah07/0363100012179430.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.2 cut heads",
+ "prompt": "v4.2",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "low": [
+  "heads",
+  "sameAs",
+  "mirrored",
+  "crown",
+  "cornice",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-storey segmental arches filled with a decorative brick or tile tympanum over the window"
+  },
+  {
+   "component": "erker",
+   "what": "a white timber erker at the right edge, likely the right neighbour"
+  },
+  {
+   "component": "dormer",
+   "what": "dormer with hoist beam above the cornice"
+  }
+ ],
+ "notes": "Oblique view; ground partly blurred by privacy mask.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

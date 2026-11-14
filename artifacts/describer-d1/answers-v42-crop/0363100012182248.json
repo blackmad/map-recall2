@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012182248",
+ "image": {
+  "ref": "source-data://pand-crops/0363100012182248/front.jpg",
+  "kind": "crop",
+  "tier": "fallback",
+  "year": 2024,
+  "gate": "pass"
+ },
+ "reader": "D1 opus v4.2 crop",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash-6-over-6",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "neck",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "low": [
+  "windows",
+  "crown",
+  "finish",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "two round oculus windows with white surrounds flanking the neck foot"
+  },
+  {
+   "component": "gable ornament",
+   "what": "carved white scroll claw pieces at the neck sides"
+  },
+  {
+   "component": "door",
+   "what": "front door in a white pilastered surround with a small-paned transom light"
+  }
+ ],
+ "notes": "Neck top cut off at the image edge; souterrain shop under the stoop.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}
