@@ -60,7 +60,8 @@ import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, f
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
 import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
 import { SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
-import { buildingCell } from './world/cellGrid.js';
+import { buildingCell, cellKeyOf, cellOf } from './world/cellGrid.js';
+import { CoarseTileIndex, coarseBoxOf, coarseKey, coarseSplitEnabled } from './coarseSplit.js';
 import { shellLayerHash } from './world/shellLayers.js';
 import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
@@ -1050,8 +1051,8 @@ export class ThreeBuildings {
       if (!polygons.length) continue;
       const near = tileKeyOf(polygons, this.detailZoom);
       const detailed = this.detailTiles.has(near);
-      const key = COARSE_PREFIX + tileKeyOf(polygons);
-      const cell = gate ? buildingCell(feature.geometry as any) : null;
+      const cell = gate || this.coarseSplit ? buildingCell(feature.geometry as any) : null;
+      const key = coarseKey(tileKeyOf(polygons), cell, this.coarseSplit);
       if (gate && cell !== null && gate.covers(cell)) this.bakedSourceOf(cell).push(feature);
       else { let list = groups.get(key); if (!list) groups.set(key, list = []); list.push(feature); }
       // The cheap shell remains available until the detailed mesh actually installs.
@@ -1069,6 +1070,8 @@ export class ThreeBuildings {
     }
     this.lastFeatures = features;
     this.sourceGroups = groups;
+    this.coarseIndex.clear();
+    for (const key of groups.keys()) if (key.startsWith(COARSE_PREFIX)) this.coarseIndex.add(key);
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && (a === b || (a.length === b.length && a.every((f, i) => f === b[i])));
     for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key, true); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for(const key of this.contextGroups.keys()) if(!groups.has(key)) this.contextGroups.delete(key);
@@ -1094,6 +1097,15 @@ export class ThreeBuildings {
    * was 40-107 ms, mostly this loop. The groups, their order and their lists are the same as the uncached loop's.
    */
   private groupCacheOn: boolean | undefined;
+  /** `?coarseSplit` (coarseSplit.ts): one runtime coarse shell per z14 tile and world cell, not per tile. */
+  readonly coarseSplit = coarseSplitEnabled();
+  /** The coarse keys of each z14 tile in the current grouping (one per tile unless split). */
+  private readonly coarseIndex = new CoarseTileIndex();
+  /** Whether any coarse shell of z14 tile `tile` is installed (`settled`: and done dissolving in). */
+  private coarseMeshIn(tile: string, settled = false): boolean {
+    for (const key of this.coarseIndex.keysOf(tile)) if (this.chunks.get(key)?.mesh && !(settled && this.fading.has(key))) return true;
+    return !this.coarseSplit && !!this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh && !(settled && this.fading.has(`${COARSE_PREFIX}${tile}`));
+  }
   private readonly groupInfo = new WeakMap<Feature, FeatureGroupInfo>();
   private groupOf(feature: Feature): FeatureGroupInfo {
     const held = this.groupInfo.get(feature);
@@ -1101,7 +1113,8 @@ export class ThreeBuildings {
     const id = String(feature.properties.id ?? '');
     const polygons = asPolygons(feature.geometry);
     const tile = polygons.length ? tileKeyOf(polygons) : null, near = polygons.length ? tileKeyOf(polygons, this.detailZoom) : '';
-    const info: FeatureGroupInfo = { geometry: feature.geometry, id, kit: KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id), tile, coarse: tile === null ? null : COARSE_PREFIX + tile, near, nearKey: `near:${near}`, extrasKey: EXTRAS_PREFIX + near, cell: polygons.length ? buildingCell(feature.geometry as any) : null };
+    const cell = polygons.length ? buildingCell(feature.geometry as any) : null;
+    const info: FeatureGroupInfo = { geometry: feature.geometry, id, kit: KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id), tile, coarse: tile === null ? null : coarseKey(tile, cell, this.coarseSplit), near, nearKey: `near:${near}`, extrasKey: EXTRAS_PREFIX + near, cell };
     this.groupInfo.set(feature, info);
     return info;
   }
@@ -1388,7 +1401,7 @@ export class ThreeBuildings {
    */
   drawsResidentCity(tiles: Iterable<string>): boolean {
     if (!this.visible || !this.ready) return false;
-    for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
+    for (const tile of tiles) if (this.coarseMeshIn(tile)) return true;
     // Baked coarse (lane R4-A #243): a drawn baked cell is the city under the rider (its tiles build no coarse chunk).
     return this.bakedEntries.size > 0;
   }
@@ -1402,7 +1415,7 @@ export class ThreeBuildings {
     if (!this.visible || !this.ready) return [];
     const out: string[] = [], gate = this.bakedGate;
     for (const tile of tiles) {
-      if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh || this.nearDrawnIn(tile)) { out.push(tile); continue; }
+      if (this.coarseMeshIn(tile) || this.nearDrawnIn(tile)) { out.push(tile); continue; }
       if (!gate || !this.bakedEntries.size) continue;
       const cells = this.tileCells().get(tile);
       // Any drawn cell counts: a MapLibre stand-in over a building the facades already draw z-fights and hides it,
@@ -1449,7 +1462,9 @@ export class ThreeBuildings {
         const gate = this.bakedGate, bakedDrawn = cell !== undefined && !!gate?.drawn(cell);
         if (bakedDrawn) return true;
         if (cell !== undefined && gate?.holdsFar?.(cell)) return farPartHidden({ bakedDrawn, bakedHolds: true, coarseTile: false, nearTile: false, nearCell: this.nearDrawnIn(tile, cell) });
-        const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile);
+        // Split shells (coarseSplit.ts): the part's own cell shell, so a tile half built still shows the rest of its far prisms.
+        if (this.coarseSplit && cell !== undefined) { const key = coarseKey(tile, cell, true); return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); }
+        return this.coarseMeshIn(tile, true) || this.nearDrawnIn(tile);
       },
       nearInCell: (cell: string) => { this.nearDrawnIn(''); return this.nearCells.has(cell); },
     };
@@ -1613,15 +1628,19 @@ export class ThreeBuildings {
     if (key === KIT_KEY) return -Infinity;
     if (!at) return 0;
     let zoom = TILE_ZOOM, tile = key, extra = 0;
-    if (key.startsWith(COARSE_PREFIX)) tile = key.slice(COARSE_PREFIX.length);
+    let box: [number, number, number, number] | null = null;
+    if (key.startsWith(COARSE_PREFIX)) { box = coarseBoxOf(key); if (!box) return 0; }
     else if (key.startsWith('near:')) { zoom = this.detailZoom; tile = key.slice(5); }
     else if (key.startsWith(EXTRAS_PREFIX)) { zoom = this.detailZoom; tile = key.slice(EXTRAS_PREFIX.length); extra = 60; }
     else if (key.startsWith(BOAT_PREFIX)) { tile = key.slice(BOAT_PREFIX.length); extra = 30; }
     else return 0;
-    const [x, y] = tile.split('/').map(Number);
-    if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
-    const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
-    const west = (x / n) * 360 - 180, east = ((x + 1) / n) * 360 - 180, north = latOf(y), south = latOf(y + 1);
+    if (!box) {
+      const [x, y] = tile.split('/').map(Number);
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
+      const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
+      box = [(x / n) * 360 - 180, latOf(y + 1), ((x + 1) / n) * 360 - 180, latOf(y)];
+    }
+    const [west, south, east, north] = box;
     // A tile with no shell drawn yet is a hole in the city, detail only refines one: its coarse shell goes before
     // detail up to ~400 m nearer.
     const hole = key.startsWith(COARSE_PREFIX) && !this.chunks.has(key) ? COARSE_HOLE_BONUS_M : 0;
@@ -2622,7 +2641,8 @@ export class ThreeBuildings {
     const near = tileKeyAt(one, this.detailZoom);
     if (this.chunks.get(`near:${near}`)?.mesh) return { owner: 'facade', wanted: true };
     const wanted = this.detailTiles.has(near);
-    return { owner: this.chunks.get(COARSE_PREFIX + tileKeyAt(one, TILE_ZOOM))?.mesh ? 'coarse' : 'none', wanted };
+    const tile = tileKeyAt(one, TILE_ZOOM), [i, j] = cellOf(lng, lat);
+    return { owner: this.chunks.get(coarseKey(tile, cellKeyOf(i, j), this.coarseSplit))?.mesh ? 'coarse' : 'none', wanted };
   }
 
   /** Whether this layer draws through the shared frame. */

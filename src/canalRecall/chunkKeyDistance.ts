@@ -9,7 +9,8 @@ const ALWAYS = ['near:', 'extras:', '__kit'];
 
 export function chunkKeyDistanceM(key: string, rider: readonly [number, number] | null, zoom = 14): number {
   if (!rider || ALWAYS.some(p => key.startsWith(p))) return 0;
-  const tile = key.startsWith(COARSE_KEY_PREFIX) ? key.slice(COARSE_KEY_PREFIX.length) : key.startsWith(BOATS_KEY_PREFIX) ? key.slice(BOATS_KEY_PREFIX.length) : null;
+  // A split shell (`coarse:x/y~i_j`, coarseSplit.ts) measures to its z14 tile, as the settle hold always did.
+  const tile = key.startsWith(COARSE_KEY_PREFIX) ? key.slice(COARSE_KEY_PREFIX.length).split('~')[0] : key.startsWith(BOATS_KEY_PREFIX) ? key.slice(BOATS_KEY_PREFIX.length) : null;
   const [x, y] = (tile ?? '').split('/').map(Number);
   if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
   const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
