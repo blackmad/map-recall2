@@ -99841,6 +99841,172 @@
       "triangles": 22527,
       "bytes": 255284,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "werf-kromhout": {
+      "id": "werf-kromhout",
+      "name": "Werf 't Kromhout",
+      "landmarkId": "werf-kromhout",
+      "modelUrl": "./models/werf-kromhout.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180688"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.920226776068269,
+          52.36810096508284
+        ],
+        "headingDegrees": 28.654967642445655,
+        "lengthMetres": 50.31,
+        "widthMetres": 46.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.9201477,
+          52.36797056
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012180688 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "dark": "#262b31",
+        "slate": "#5f6468",
+        "gold": "#e2b31f",
+        "white": "#ecebe6",
+        "stone": "#ecebe6",
+        "glass": "#33414b",
+        "blue": "#2f4f86",
+        "greyBrick": "#3a3f44"
+      },
+      "attribution": {
+        "title": "Werf 't Kromhout",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Kromhout_(bedrijf)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Nieuwe Vaart gables (yellow arches, lettering, glazing grid, rakes) and the water-side posts laid out from the 2017-2021 municipal panoramas; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.919752895715609,
+              52.36800327457822
+            ],
+            [
+              4.919807859851828,
+              52.36798457245527
+            ],
+            [
+              4.919888699877388,
+              52.367957056639554
+            ],
+            [
+              4.919931389105457,
+              52.36794253023048
+            ],
+            [
+              4.91999652064927,
+              52.367920371929934
+            ],
+            [
+              4.920011595275961,
+              52.367915236521995
+            ],
+            [
+              4.920021811841557,
+              52.367926646277915
+            ],
+            [
+              4.920115021285559,
+              52.36789291468639
+            ],
+            [
+              4.920157838054144,
+              52.367877418027156
+            ],
+            [
+              4.920177787758429,
+              52.36789874364742
+            ],
+            [
+              4.9201846844236545,
+              52.367906122791176
+            ],
+            [
+              4.920284308105566,
+              52.36787118505185
+            ],
+            [
+              4.920284017771917,
+              52.36787086933732
+            ],
+            [
+              4.9203752204029145,
+              52.367839448454376
+            ],
+            [
+              4.920523479833135,
+              52.36800068808857
+            ],
+            [
+              4.920431466355032,
+              52.36803379557658
+            ],
+            [
+              4.920607587936311,
+              52.36823059242799
+            ],
+            [
+              4.920106672712233,
+              52.368398565784894
+            ],
+            [
+              4.919752895715609,
+              52.36800327457822
+            ]
+          ]
+        ]
+      },
+      "galleryView": {
+        "theta": 0.2,
+        "phi": 1.15
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -26.928813934326172,
+          -2.3717581143500865e-7,
+          -47.638999938964844
+        ],
+        "max": [
+          31.44700050354004,
+          13.022000312805176,
+          14.689000129699707
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9201477,
+          52.36797056
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 28.654967642445627,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.32800006866455,
+        "heightMetres": 13.022000549980987,
+        "depthMetres": 58.37581443786621,
+        "depthCoverage": 1.2662866472422172
+      },
+      "triangles": 4655,
+      "bytes": 64492,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
