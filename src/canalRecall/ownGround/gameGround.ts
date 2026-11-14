@@ -39,7 +39,7 @@ import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
-import { BuildRetries, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
+import { BuildRetries, groundEarlyWorkersFlag, groundFirstAloneFlag, groundParallelInitFlag, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
@@ -65,7 +65,7 @@ import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
-import { groundShareFlag, groundShareMB } from './groundShare.js';
+import { groundShareFlag, groundShareMainFlag, groundShareMB, shareClient, type SharePort } from './groundShare.js';
 import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
@@ -487,6 +487,18 @@ export class OwnGround {
   private prefetchKey: string | null = null;
   /** Quick first paint (opt-in `?groundQuick=1`) and the LOD the ring wants per cell (a quick install re-plans). */
   private readonly quickOn = groundQuickFlag();
+  /** `?groundFirstAlone=1`: the first LOD 0 cell asked is drawn from its own data first (groundResidency.ts). */
+  private readonly firstAloneOn = groundFirstAloneFlag();
+  private aloneAsks = 0;
+  /**
+   * Whether this build ask gets a stand-in: full-detail LOD 0 asks until one stand-in is drawn, at most 3 (the start
+   * hold's camera-pose asks, groundPrefetch.ts, can go stale when the ride's ring replaces them).
+   */
+  private askAlone(lod: number, detail: CellDetail | undefined): boolean {
+    if (!this.firstAloneOn || this.startup.aloneAt != null || this.aloneAsks >= 3 || lod !== 0 || (detail ?? 'full') !== 'full') return false;
+    this.aloneAsks++;
+    return true;
+  }
   private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
   private readonly reachMeshes = new Map<string, any[]>();
@@ -539,7 +551,7 @@ export class OwnGround {
    * init posted, the worker ready (and its own init ms), the first cell installed. `cells`: each install's split
    * (worker queue wait / data in / build / tiles, the main thread's request → install latency and install ms), last 200.
    */
-  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; /** The hold's first camera-pose residency (groundPrefetch.ts) and its cell. */ prefetchAt?: number; prefetchKey?: string; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
+  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; /** The hold's first camera-pose residency (groundPrefetch.ts) and its cell. */ prefetchAt?: number; prefetchKey?: string; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; /** The groundFirstAlone stand-in arrived (page ms). */ aloneAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
@@ -560,22 +572,60 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) });
+    const storeOptions = { ...(groundParallelInitFlag() ? {} : { parallelInit: false }), parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) };
     this.ready = false;
-    if (!/\/amsterdam\/?$/.test(root)) return;
+    if (!/\/amsterdam\/?$/.test(root)) { this.store = new GroundStore(httpFetchBytes(root), storeOptions); return; }
+    // The workers start with the ground (groundEarlyWorkersFlag, lane LS): their own init runs alongside the page's
+    // store init and waits for the rail manifest the page hands them below. `?groundEarlyWorkers=0`: after it.
+    const early = groundEarlyWorkersFlag();
+    const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
+    const share = count > 1 && groundShareFlag();
+    // With early workers the page's store asks the share host too (groundShareMainFlag): one fetch per file in all.
+    const mainShare = early && share && groundShareMainFlag();
+    const channels = share && early ? this.startShareHost(root, count + (mainShare ? 1 : 0)) : [];
+    const mainPort = mainShare ? channels.pop()?.port1 ?? null : null;
+    this.store = new GroundStore(mainPort ? sharedBytes(mainPort) : httpFetchBytes(root), storeOptions);
+    const gen = this.gen;
+    if (early) this.startWorkers(root, true, count, channels);
     await this.store.init();
+    if (gen !== this.gen) return;
     this.startup.storeReadyAt ??= performance.now();
+    if (early && this.manifestFollows) { const keys = [...this.store.railCells]; for (const worker of this.workers) worker.postMessage({ type: 'rail-manifest', keys }); }
+    else if (!early) this.startWorkers(root, false, count, share ? this.startShareHost(root, count) : []);
+    if (!this.unregister) {
+      this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
+        visible: (zoom: number) => this.beforeRender(zoom),
+        onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
+        onContextRestored: () => this.contextRestored(),
+      }), { order: GROUND_ORDER });
+    }
+    this.ready = true;
+    this.residencyAt = null;
+    if (this.centre) this.updateResidency();
+  }
+
+  /** Lane LS: true while the workers' init waits for the page's rail manifest (a 'rail-manifest' message). */
+  private manifestFollows = false;
+
+  private startShareHost(root: string, clients: number): MessageChannel[] {
     try {
-      const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
-      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
-      const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
-      if (channels.length) {
-        this.shareHost = new Worker(this.opts.workerUrl);
-        this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
-        const ports = channels.map(c => c.port2);
-        this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
-      }
+      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per client to one more instance of the bundle.
+      const channels = Array.from({ length: clients }, () => new MessageChannel());
+      this.shareHost = new Worker(this.opts.workerUrl);
+      this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
+      const ports = channels.map(c => c.port2);
+      this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
+      return channels;
+    } catch (error) {
+      this.stats.errors.push(`share host unavailable: ${String(error)}`);
+      return [];
+    }
+  }
+
+  private startWorkers(root: string, early: boolean, count: number, channels: MessageChannel[]): void {
+    this.manifestFollows = early && this.railRetryOn && !!this.opts.rails;
+    try {
+      const init = { type: 'init', root, ...(groundParallelInitFlag() ? {} : { parallelInit: false }), planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? (early ? { railManifestFollows: true } : { railManifest: [...this.store.railCells] }) : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         const wi = i;
@@ -595,16 +645,6 @@ export class OwnGround {
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
-    if (!this.unregister) {
-      this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
-        visible: (zoom: number) => this.beforeRender(zoom),
-        onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
-        onContextRestored: () => this.contextRestored(),
-      }), { order: GROUND_ORDER });
-    }
-    this.ready = true;
-    this.residencyAt = null;
-    if (this.centre) this.updateResidency();
   }
 
   /**
@@ -898,7 +938,7 @@ export class OwnGround {
       if (this.pullOn) { this.asks.set(w.key, { lod, detail: w.detail }); continue; }
       const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
       this.workerOf.set(w.key, wi);
-      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen });
+      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen, ...(this.askAlone(lod, w.detail) ? { alone: true } : {}) });
     }
     if (this.pullOn) { this.wantedOrder = wanted.map(w => w.key); this.dispatch(); }
     // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts). Not with pull: a
@@ -930,7 +970,7 @@ export class OwnGround {
       this.held[wi].add(key);
       this.sentTo.set(key, wi);
       this.workerOf.set(key, wi);
-      this.workers[wi].postMessage({ type: 'build', key, lod: ask.lod, detail: ask.detail, gen: this.gen });
+      this.workers[wi].postMessage({ type: 'build', key, lod: ask.lod, detail: ask.detail, gen: this.gen, ...(this.askAlone(ask.lod, ask.detail) ? { alone: true } : {}) });
     }
   }
 
@@ -1017,6 +1057,17 @@ export class OwnGround {
   }
 
   private onWorker(msg: any, wi?: number): void {
+    // A stand-in (groundFirstAlone): drawn while the cell is still pending; the full build that follows replaces it.
+    if (msg.type === 'cell' && msg.provisional) {
+      const cell = msg.cell as BuiltCell;
+      if (msg.gen === this.gen && this.pending.get(cell.key) === levelOf(cell.lod, cell.detail) && !this.resident.has(cell.key)) {
+        this.startup.aloneAt ??= Math.round(performance.now());
+        (cell as BuiltCell & { arrival?: unknown }).arrival = { at: performance.now(), provisional: true, ...(msg.timing && typeof msg.timing === 'object' ? msg.timing as object : {}) };
+        this.installQueue.push(cell);
+        this.host.repaint();
+      }
+      return;
+    }
     if (this.pullOn && (msg.type === 'cell' || (msg.type === 'error' && msg.key))) {
       this.release(msg.type === 'cell' ? msg.cell?.key : msg.key, wi);
       // After this reply is handled (installed, failed or stale): the freed slot takes the next cell.
@@ -1441,7 +1492,9 @@ export class OwnGround {
     this.syncFar();
     this.stats.installMs.push(performance.now() - t0);
     const asked = this.requestedAt.get(`${cell.key}:${levelOf(cell.lod, cell.detail)}`);
-    if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
+    // A groundFirstAlone stand-in leaves the ask open: the full build's latency is the one recorded.
+    const provisional = !!(cell as BuiltCell & { arrival?: { provisional?: boolean } }).arrival?.provisional;
+    if (asked !== undefined && !provisional) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
     const now = performance.now(), arrival = (cell as BuiltCell & { arrival?: { at: number } }).arrival;
     this.startup.firstInstallAt ??= now;
     // A quick LOD 1 stand-in for a near cell: plan again, so its LOD 0 build is asked for on the next update.
@@ -1726,4 +1779,10 @@ export class OwnGround {
       rail: { manifest: this.store.railCells.size, workerManifest: this.workerRailCells, discards: { ...this.discards }, retrying: this.retries.size, loadErrors: this.store.loadErrors.slice(-5) },
     };
   }
+}
+
+/** The page store's fetch through the share host (lane LS): the same gunzipped bytes as httpFetchBytes. */
+function sharedBytes(port: MessagePort): (path: string) => Promise<Uint8Array> {
+  const get = shareClient(port as unknown as SharePort);
+  return async path => (await get(path)).bytes;
 }

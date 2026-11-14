@@ -415,3 +415,61 @@ test('BakedCoarse release (lane R4-K): a released cell the plan only keeps stays
   baked.frame(NOW + BAKED_FADE_MS + 1);
   assert.ok(baked.drawn('1_0') && !baked.holdsFar('1_0'));
 });
+
+// Lane LS (2026-11-13): liftRanges was the third-largest source of ride garbage (`splice(0, k, ...waiting)` every frame).
+test('liftRanges compacts pending in place to what the splice gave: [waiting..., unread tail], deadline or not', () => {
+  const ref = (pending: string[], base: (id: string) => number | null | undefined, stopAt: number) => {
+    const waiting: string[] = []; let k = 0;
+    for (; k < pending.length; k++) { if ((k & 31) === 31 && k >= stopAt) break; if (base(pending[k]) === undefined) waiting.push(pending[k]); }
+    return [...waiting, ...pending.slice(k)];
+  };
+  let s = 9;
+  const rnd = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
+  for (let trial = 0; trial < 200; trial++) {
+    const n = Math.floor(rnd() * 150), pending = Array.from({ length: n }, (_, i) => `b${i}`);
+    const known = new Set(pending.filter(() => rnd() < 0.5));
+    const base = (id: string) => (known.has(id) ? 1 : undefined);
+    // Deadline: a clock that passes it after `stopAt` reads (checked every 32 ids), or never.
+    const stopAt = rnd() < 0.5 ? Infinity : 31 + 32 * Math.floor(rnd() * 4);
+    let reads = 0; const now = () => (++reads > Math.floor(stopAt / 32) ? 1 : 0);
+    const expected = ref(pending, base, stopAt);
+    const array = pending;
+    const ranges = new Map(pending.map((id, i) => [id, { start: i, count: 0 }]));
+    liftRanges(new Float32Array(3 * Math.max(1, n)), ranges, pending, new Map(), base, stopAt === Infinity ? Infinity : 0.5, now);
+    assert.equal(pending, array, 'the same array');
+    assert.deepEqual(pending, expected);
+  }
+});
+
+test('refreshShellBases: a cell none of whose bases is known is skipped until the host\'s base token or the ground changes', async () => {
+  const h = harness(['0_0']);
+  h.bases.a = undefined; h.bases.b = undefined; h.bases.c = undefined;
+  let token = {}, asks = 0;
+  const groundBase = h.host.groundBase;
+  h.host.groundBase = id => { asks++; return groundBase(id); };
+  h.host.baseToken = () => token;
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
+  baked.update(centre[0], centre[1], true);
+  baked.plan(new Set(['0_0']));
+  await settle(); await settle();
+  const pos = h.added[0].geometry.getAttribute('position'), z0 = pos.array[3 * 3 + 2];
+  assert.equal(baked.refreshBases(4), 0);
+  const first = asks;
+  const pending0 = baked.stats().liftPending;
+  assert.ok(pending0 >= 2 && first === pending0, `the first pass asks every waiting building (${first} asks, ${pending0} pending)`);
+  for (let i = 0; i < 5; i++) baked.refreshBases(4);
+  assert.equal(asks, first, 'nothing known and nothing changed: no pass');
+  assert.equal(baked.stats().liftPending, pending0);
+  // The feature list changed (a new token): the next pass asks again and lifts what is now known.
+  h.bases.a = 2; token = {};
+  assert.equal(baked.refreshBases(4), 1);
+  assert.equal(pos.array[3 * 3 + 2], z0 + 2);
+  assert.ok(asks > first);
+  // A ground restart also re-asks, even with the same token.
+  const before = asks;
+  baked.refreshBases(4); baked.refreshBases(4);
+  const stalled = asks;
+  assert.ok(stalled - before <= 2, 'stalled again after one more pass');
+  baked.refreshShellBases({ ms: 4, restart: true });
+  assert.ok(asks > stalled, 'restart re-asks');
+});

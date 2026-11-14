@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ShareHost, shareClient, groundShareFlag, groundShareMB, type SharePort, type ShareReply } from './groundShare.js';
+import { ShareHost, shareClient, groundShareFlag, groundShareMainFlag, groundShareMB, type SharePort, type ShareReply } from './groundShare.js';
 
 const enc = (s: string) => new TextEncoder().encode(s);
 const tick = () => new Promise(r => setTimeout(r, 0));
@@ -57,6 +57,8 @@ test('flags: groundShare off unless =1, groundShareMB bounded', () => {
   assert.equal(groundShareFlag(''), false);
   assert.equal(groundShareFlag('?groundShare=0'), false);
   assert.equal(groundShareFlag('?groundShare=1'), true);
+  assert.equal(groundShareMainFlag(''), true);
+  assert.equal(groundShareMainFlag('?groundShareMain=0'), false);
   assert.equal(groundShareMB(''), 64);
   assert.equal(groundShareMB('?groundShareMB=16'), 16);
   assert.equal(groundShareMB('?groundShareMB=9999'), 64);

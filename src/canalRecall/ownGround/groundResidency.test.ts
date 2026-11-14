@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { BuildRetries, groundCentre, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
+import { BuildRetries, groundCentre, groundEarlyWorkersFlag, groundFirstAloneFlag, groundParallelInitFlag, groundRequeueFlag, groundViewFlag, railRetryFlag, retrying } from './groundResidency.ts';
 import { GroundStore } from './groundStore.ts';
 
 const RAIL = 'public/data/extracts/amsterdam/rail-v1';
@@ -99,4 +99,99 @@ test('a cell outside the rail manifest is absent without a fetch', async () => {
   assert.deepEqual(await store.railCell('40_40'), []);
   assert.equal(store.railOutcomes.get('40_40'), 'absent');
   assert.equal(calls(), 0);
+});
+
+test('?groundEarlyWorkers=0 keeps the old order (workers after the page store)', () => {
+  assert.equal(groundEarlyWorkersFlag(''), true);
+  assert.equal(groundEarlyWorkersFlag('?groundEarlyWorkers=0'), false);
+});
+
+// Early workers (lane LS 2026-11-13): a worker's init starts before the page has the rail manifest and takes it from a
+// later message. The store waits for it and never fetches rail-v1/cells.json itself; a null hand-off fetches it.
+async function initWith(manifest: PromiseLike<readonly string[] | null>) {
+  const fetched: string[] = [];
+  const store = new GroundStore(async path => {
+    fetched.push(path);
+    const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+    return path.endsWith('.gz') ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+  }, { railManifest: manifest, prepareOnly: true });
+  await store.init();
+  return { store, railFetches: fetched.filter(p => p.endsWith('cells.json') && p.includes('rail')) };
+}
+
+test('a rail manifest handed after init starts is the one the store uses, with no fetch of its own', async () => {
+  const keys = ['-2_-4', '0_0'];
+  let hand!: (k: string[]) => void;
+  const later = new Promise<string[]>(resolve => { hand = resolve; });
+  const pending = initWith(later);
+  await new Promise(r => setTimeout(r, 20));
+  hand(keys);
+  const { store, railFetches } = await pending;
+  assert.deepEqual([...store.railCells].sort(), [...keys].sort());
+  assert.deepEqual(railFetches, []);
+});
+
+test('a null hand-off: the store fetches the rail manifest itself', async () => {
+  const { store, railFetches } = await initWith(Promise.resolve(null));
+  assert.equal(railFetches.length, 1);
+  assert.ok(store.railCells.size > 0);
+});
+
+// Parallel init (lane LS 2026-11-14): every init manifest is asked at once and read in the old order; the store is the
+// same as the serial one, and all of them are asked before the first group has answered.
+test('?groundParallelInit: the manifests are asked at once and the store is the same as the serial one', async () => {
+  const run = async (parallelInit: boolean) => {
+    const asked: string[] = [];
+    let firstAnswered = -1;
+    const store = new GroundStore(async path => {
+      asked.push(path);
+      await new Promise(r => setTimeout(r, 5));
+      if (firstAnswered < 0) firstAnswered = asked.length;
+      const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+      return path.endsWith('.gz') ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+    }, { parks: true, roads: true, rails: true, parallelInit });
+    await store.init();
+    const s = store as unknown as Record<string, Set<string> | Map<string, unknown>>;
+    const shape = ['parkCells', 'roadCells', 'markCells', 'courtyardCells', 'openGroundCells', 'railCells', 'osmCells', 'boatsByCell'].map(k => [k, [...(s[k] as Set<string>).keys()].sort().join(',')]);
+    return { shape, firstAnswered, asked };
+  };
+  const serial = await run(false), parallel = await run(true);
+  assert.deepEqual(parallel.shape, serial.shape);
+  assert.deepEqual([...parallel.asked].sort(), [...serial.asked].sort(), 'the same files');
+  assert.ok(parallel.firstAnswered >= 12, `parallel: ${parallel.firstAnswered} asked before the first answer`);
+  assert.ok(serial.firstAnswered <= 5, `serial: ${serial.firstAnswered} asked before the first answer`);
+});
+
+test('?groundParallelInit=0 is the serial order', () => {
+  assert.equal(groundParallelInitFlag(''), true);
+  assert.equal(groundParallelInitFlag('?groundParallelInit=0'), false);
+});
+
+test('?groundFirstAlone=1: a cell built alone reads its own files only, plans no way decks or cuts, and leaves the full build intact', async () => {
+  const asked: string[] = [];
+  const read = async (path: string) => {
+    asked.push(path);
+    const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+    return bytes[0] === 0x1f && bytes[1] === 0x8b ? new Uint8Array(gunzipSync(bytes)) : new Uint8Array(bytes);
+  };
+  const store = new GroundStore(read, { parks: true, roads: true, rails: true });
+  await store.init();
+  const { buildCell } = await import('./groundCell.ts');
+  const key = '-1_0', others = GroundStore.neighbours(key).filter(k => k !== key);
+  asked.length = 0;
+  const alone = buildCell(await store.cellInput(key, 0, 'full', true));
+  const aloneFiles = asked.length;
+  // Its own cells only, bar the water openings (waterCell reads the neighbours' OSM ways, cached per cell either way).
+  const neighbourReads = asked.filter(p => others.some(k => p.includes(`/${k}.`)) && !/osm/.test(p));
+  assert.deepEqual(neighbourReads, [], `alone read neighbours: ${neighbourReads.slice(0, 5).join(', ')}`);
+  asked.length = 0;
+  const full = buildCell(await store.cellInput(key, 0, 'full'));
+  const fresh = new GroundStore(read, { parks: true, roads: true, rails: true });
+  await fresh.init();
+  const reference = buildCell(await fresh.cellInput(key, 0, 'full'));
+  assert.ok(aloneFiles < asked.length, `alone ${aloneFiles} files, full then ${asked.length} more`);
+  assert.ok(alone.stats.triangles > 0.8 * reference.stats.triangles, 'the stand-in draws the cell');
+  assert.deepEqual(full.stats.triangles, reference.stats.triangles, 'a full build after the stand-in is the fresh store\'s');
+  assert.equal(groundFirstAloneFlag(''), false);
+  assert.equal(groundFirstAloneFlag('?groundFirstAlone=1'), true);
 });

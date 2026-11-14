@@ -31,6 +31,7 @@ var CanalRecallRoadSurface = (() => {
     NAME_MERGE_SIZE: () => NAME_MERGE_SIZE,
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
+    RoadQueryScratch: () => RoadQueryScratch,
     bgtPlazasDefault: () => bgtPlazasDefault,
     bgtPlazasEnabled: () => bgtPlazasEnabled,
     buildPlazaIndex: () => buildPlazaIndex,
@@ -39,8 +40,11 @@ var CanalRecallRoadSurface = (() => {
     classifySurface: () => classifySurface,
     connectedNamedSegments: () => connectedNamedSegments,
     contactsAt: () => contactsAt,
+    contactsInto: () => contactsInto,
+    copyContact: () => copyContact,
     filletedExcess: () => filletedExcess,
     headingDifference: () => headingDifference,
+    nearbyContacts: () => nearbyContacts,
     pickGuardContact: () => pickGuardContact,
     pickNearestRoadContactForName: () => pickNearestRoadContactForName,
     pickRoadContact: () => pickRoadContact,
@@ -49,7 +53,8 @@ var CanalRecallRoadSurface = (() => {
     plazaGuardContact: () => plazaGuardContact,
     plazaSurface: () => plazaSurface,
     roadNameAt: () => roadNameAt,
-    roadsNear: () => roadsNear
+    roadsNear: () => roadsNear,
+    roadsNearInto: () => roadsNearInto
   });
 
   // src/canalRecall/buildScheduling.ts
@@ -425,21 +430,98 @@ var CanalRecallRoadSurface = (() => {
     }
     return contacts;
   }
+  var RoadQueryScratch = class {
+    spans = [];
+    spanCount = 0;
+    contacts = [];
+    contactCount = 0;
+  };
+  function roadsNearInto(index, x, y, ring, scratch) {
+    const gx = Math.floor(x / index.cellSize);
+    const gy = Math.floor(y / index.cellSize);
+    const out = scratch.spans;
+    let n = 0;
+    for (let dx = -ring; dx <= ring; dx++) {
+      for (let dy = -ring; dy <= ring; dy++) {
+        const key = cellKey(gx + dx, gy + dy);
+        if (typeof key === "string") {
+          const list = index.stringCells.get(key);
+          if (list) for (let i = 0; i < list.length; i++) out[n++] = spanOf(index, list[i]);
+          continue;
+        }
+        const c = cellIndex(index.keys, key);
+        if (c < 0) continue;
+        for (let i = index.offsets[c], end = index.offsets[c + 1]; i < end; i++) out[n++] = spanOf(index, index.ids[i]);
+      }
+    }
+    scratch.spanCount = n;
+    return n;
+  }
+  function contactsInto(scratch, x, y) {
+    const n = scratch.spanCount, spans = scratch.spans, out = scratch.contacts;
+    for (let i = 0; i < n; i++) {
+      const span = spans[i], a = span.a, b = span.b;
+      const abx = b.x - a.x, aby = b.y - a.y, lengthSquared = abx * abx + aby * aby;
+      let hx, hy, dist;
+      if (lengthSquared === 0) {
+        hx = a.x;
+        hy = a.y;
+        dist = Math.hypot(x - a.x, y - a.y);
+      } else {
+        const t = Math.max(0, Math.min(1, ((x - a.x) * abx + (y - a.y) * aby) / lengthSquared));
+        hx = a.x + abx * t;
+        hy = a.y + aby * t;
+        dist = Math.hypot(x - hx, y - hy);
+      }
+      const rdx = b.x - a.x, rdy = b.y - a.y, length = Math.hypot(rdx, rdy) || 1;
+      let c = out[i];
+      if (!c) {
+        c = { x: 0, y: 0, dist: 0, angle: 0, width: 0, segIdx: 0, ptIdx: 0, nx: 0, ny: 0, length: 0, along: 0 };
+        out[i] = c;
+      }
+      c.x = hx;
+      c.y = hy;
+      c.dist = dist;
+      c.angle = Math.atan2(rdy, rdx);
+      c.width = span.width;
+      c.segIdx = span.segIdx;
+      c.ptIdx = span.ptIdx;
+      c.nx = -rdy / length;
+      c.ny = rdx / length;
+      c.length = length;
+      c.along = Math.hypot(hx - a.x, hy - a.y);
+    }
+    scratch.contactCount = n;
+    return n;
+  }
+  function nearbyContacts(index, x, y, ring, scratch) {
+    roadsNearInto(index, x, y, ring, scratch);
+    return contactsInto(scratch, x, y);
+  }
+  function copyContact(contact) {
+    return contact ? { ...contact } : contact;
+  }
   var ALIGNMENT_DISTANCE_SLACK = 10;
   var ALIGNMENT_WIDTH_SLACK = 12;
   function headingDifference(angle, preferred) {
     const delta = Math.abs(Math.atan2(Math.sin(angle - preferred), Math.cos(angle - preferred)));
     return Math.min(delta, Math.PI - delta);
   }
-  function pickRoadContact(contacts, preferredAngle = null) {
+  function pickRoadContact(contacts, preferredAngle = null, count = contacts.length) {
     let nearest = null;
-    for (const contact of contacts) {
+    for (let i = 0; i < count; i++) {
+      const contact = contacts[i];
       if (!nearest || contact.dist < nearest.dist) nearest = contact;
     }
     if (preferredAngle == null || !nearest) return nearest;
-    const plausible = contacts.filter((contact) => contact.dist <= nearest.dist + ALIGNMENT_DISTANCE_SLACK && contact.dist <= contact.width + ALIGNMENT_WIDTH_SLACK);
+    return alignedContact(contacts, count, nearest, preferredAngle, false) ?? nearest;
+  }
+  function alignedContact(contacts, count, nearest, preferredAngle, containingOnly) {
     let aligned = null;
-    for (const contact of plausible) {
+    for (let i = 0; i < count; i++) {
+      const contact = contacts[i];
+      if (containingOnly && !(contact.dist <= contact.width)) continue;
+      if (!(contact.dist <= nearest.dist + ALIGNMENT_DISTANCE_SLACK && contact.dist <= contact.width + ALIGNMENT_WIDTH_SLACK)) continue;
       if (!aligned) {
         aligned = contact;
         continue;
@@ -447,7 +529,7 @@ var CanalRecallRoadSurface = (() => {
       const delta = headingDifference(contact.angle, preferredAngle) - headingDifference(aligned.angle, preferredAngle);
       if (delta < 0 || delta === 0 && contact.dist < aligned.dist) aligned = contact;
     }
-    return aligned ?? nearest;
+    return aligned;
   }
   var GUARD_CROSS_ANGLE = Math.PI / 6;
   var CORNER_FILLET_RADIUS = 36;
@@ -455,22 +537,32 @@ var CanalRecallRoadSurface = (() => {
     const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
     return along <= 0.2 * contact.dist + 0.5;
   }
-  function filletedExcess(contacts, x, y, radius = CORNER_FILLET_RADIUS) {
-    return filletedEdge(contacts, x, y, radius).excess;
+  function filletedExcess(contacts, x, y, radius = CORNER_FILLET_RADIUS, count = contacts.length) {
+    filletedEdge(contacts, x, y, radius, count);
+    return EDGE.excess;
   }
-  function filletedEdge(contacts, x, y, radius) {
+  var EDGE = { excess: 0, outward: false, ox: 0, oy: 0 };
+  function inCorner(contact, x, y, radius) {
+    const excess = contact.dist - contact.width;
+    return excess > 0 && excess <= radius && perpendicularContact(contact, x, y);
+  }
+  function filletedEdge(contacts, x, y, radius, count) {
     let best = Infinity;
-    let outward = null;
-    for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
-    if (best <= 0) return { excess: best, outward };
-    const perpendicular = (contact) => perpendicularContact(contact, x, y);
-    const inCorner = contacts.filter((contact) => {
-      const excess = contact.dist - contact.width;
-      return excess > 0 && excess <= radius && perpendicular(contact);
-    });
-    for (let i = 0; i < inCorner.length; i++) {
-      for (let j = i + 1; j < inCorner.length; j++) {
-        const a = inCorner[i], b = inCorner[j];
+    EDGE.outward = false;
+    for (let i = 0; i < count; i++) {
+      const contact = contacts[i];
+      best = Math.min(best, contact.dist - contact.width);
+    }
+    if (best <= 0) {
+      EDGE.excess = best;
+      return;
+    }
+    for (let i = 0; i < count; i++) {
+      const a = contacts[i];
+      if (!inCorner(a, x, y, radius)) continue;
+      for (let j = i + 1; j < count; j++) {
+        const b = contacts[j];
+        if (!inCorner(b, x, y, radius)) continue;
         if (headingDifference(a.angle, b.angle) <= GUARD_CROSS_ANGLE) continue;
         const ea = a.dist - a.width, eb = b.dist - b.width;
         const excess = radius - Math.hypot(radius - ea, radius - eb);
@@ -479,26 +571,34 @@ var CanalRecallRoadSurface = (() => {
         const ox = (radius - ea) * (x - a.x) / (a.dist || 1) + (radius - eb) * (x - b.x) / (b.dist || 1);
         const oy = (radius - ea) * (y - a.y) / (a.dist || 1) + (radius - eb) * (y - b.y) / (b.dist || 1);
         const length = Math.hypot(ox, oy) || 1;
-        outward = { x: ox / length, y: oy / length };
+        EDGE.outward = true;
+        EDGE.ox = ox / length;
+        EDGE.oy = oy / length;
       }
     }
-    return { excess: best, outward };
+    EDGE.excess = best;
   }
-  function pickGuardContact(contacts, preferredAngle = null, point = null) {
-    const containing = contacts.filter((contact) => contact.dist <= contact.width);
-    if (containing.length) return pickRoadContact(containing, preferredAngle);
-    if (!contacts.length) return null;
-    const aligned = pickRoadContact(contacts, preferredAngle);
+  function pickGuardContact(contacts, preferredAngle = null, point = null, count = contacts.length) {
+    let nearestIn = null;
+    for (let i = 0; i < count; i++) {
+      const contact = contacts[i];
+      if (contact.dist <= contact.width && (!nearestIn || contact.dist < nearestIn.dist)) nearestIn = contact;
+    }
+    if (nearestIn) return preferredAngle == null ? nearestIn : alignedContact(contacts, count, nearestIn, preferredAngle, true) ?? nearestIn;
+    if (!count) return null;
+    const aligned = pickRoadContact(contacts, preferredAngle, count);
     let chosen = aligned;
-    for (const contact of contacts) {
+    for (let i = 0; i < count; i++) {
+      const contact = contacts[i];
       if (contact.dist - contact.width < chosen.dist - chosen.width - 0.25) chosen = contact;
     }
     if (point) {
-      const { excess, outward } = filletedEdge(contacts, point.x, point.y, CORNER_FILLET_RADIUS);
+      filletedEdge(contacts, point.x, point.y, CORNER_FILLET_RADIUS, count);
+      const excess = EDGE.excess;
       if (excess < chosen.dist - chosen.width) {
         const dist = chosen.width + Math.max(0, excess);
-        if (!outward || excess <= 0) return { ...chosen, dist };
-        return { ...chosen, dist, x: point.x - outward.x * dist, y: point.y - outward.y * dist };
+        if (!EDGE.outward || excess <= 0) return { ...chosen, dist };
+        return { ...chosen, dist, x: point.x - EDGE.ox * dist, y: point.y - EDGE.oy * dist };
       }
     }
     return chosen;

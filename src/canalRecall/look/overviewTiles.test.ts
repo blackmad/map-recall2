@@ -12,7 +12,7 @@ import { flatLayerTones, overviewLayerColours, OVERVIEW_SKIPPED, toneRgb } from 
 import { fillPolygons, layerId, layerOfId, rasterLayerIds, ROOF_ID } from '../overviewTiles/raster.ts';
 import { footprintTone } from '../overviewTransition/basemapOverview.ts';
 import { isEmptyTile, lngLatOfTile, parentTile, renderTile, tileOf, TILE_PX } from '../overviewTiles/tiles.ts';
-import { overviewTilesBeforeId, overviewTilesPlan, tilesetMismatch, OVERVIEW_TILES_DIR, type OverviewTilesManifest } from '../overviewTiles/tileset.ts';
+import { overviewTilesBeforeId, overviewTilesPlan, overviewTilesStreetFadeEnabled, tilesetMismatch, OVERVIEW_TILES_DIR, OVERVIEW_TILES_STREET_FADE, OVERVIEW_TILES_STREET_FADE_DEFAULT, type OverviewTilesManifest } from '../overviewTiles/tileset.ts';
 
 const same = (a: readonly number[] | undefined, b: readonly number[]) => assert.deepEqual([...(a ?? [])], [...b]);
 
@@ -62,6 +62,21 @@ test('tiles baked in one palette are refused under another', () => {
   assert.ok('skip' in overviewTilesPlan(null, 'http://x/root', []));
   const ok = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'bright');
   assert.ok(!('skip' in ok) && (ok.source.tiles as string[])[0] === `http://x/root/${OVERVIEW_TILES_DIR}/{z}/{x}/{y}.png`);
+});
+
+test('street fade (lane LS Part 0): off keeps the layer unbounded; on fades it out by z16.5 and stops drawing there', () => {
+  const off = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'bright', false);
+  const on = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'bright', true);
+  assert.ok(!('skip' in off) && !('skip' in on));
+  assert.equal(off.layer.maxzoom, undefined);
+  assert.deepEqual((off.layer.paint as Record<string, unknown>)['raster-opacity'], ['interpolate', ['linear'], ['zoom'], 11, 0, 11.5, 1]);
+  const [from, to] = OVERVIEW_TILES_STREET_FADE;
+  assert.equal(on.layer.maxzoom, to);
+  assert.deepEqual((on.layer.paint as Record<string, unknown>)['raster-opacity'], ['interpolate', ['linear'], ['zoom'], 11, 0, 11.5, 1, from, 1, to, 0]);
+  assert.deepEqual(on.source, off.source);
+  assert.equal(overviewTilesStreetFadeEnabled(''), OVERVIEW_TILES_STREET_FADE_DEFAULT);
+  assert.equal(overviewTilesStreetFadeEnabled('?overviewStreetFade=1'), true);
+  assert.equal(overviewTilesStreetFadeEnabled('?a=2&overviewStreetFade=0'), false);
 });
 
 test('the published tileset is baked in the default palette (re-run the generator after a palette change)', { skip: !fs.existsSync(`public/data/extracts/amsterdam/${OVERVIEW_TILES_DIR}/manifest.json`) }, () => {

@@ -26,7 +26,7 @@
 import { drapeRange } from '../ownGround/placement.js';
 import type { HeightFn } from '../ownGround/surface.js';
 import { LeavingFades, popFadeFlag } from './popFade.js';
-import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
+import { CELL_GRID, cellBounds, cellOf, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 import type { BakedRange } from '../world/bakedCellArrays.js';
 import type { FacadeRecordSet } from '../world/facadeStreams.js';
@@ -182,12 +182,13 @@ export function rangeMap(ranges: readonly BakedRange[]): Map<string, { start: nu
  * 32 buildings). `pending` is consumed from the front. Pure over the arrays.
  */
 export function liftRanges(positions: Float32Array | Int16Array, ranges: ReadonlyMap<string, { start: number; count: number }>, pending: string[], applied: Map<string, number>, base: (id: string) => number | null | undefined, deadline = Infinity, now: () => number = () => performance.now(), unit = 1, foot: HeightFn | null = null): { lifted: number; done: number; min: number; max: number } {
-  let lifted = 0, k = 0, min = 0, max = 0;
-  const waiting: string[] = [];
+  // Waiting ids (base not known yet) are compacted to the front in place: `w` is the write cursor. No array per call
+  // (it was `splice(0, k, ...waiting)`, the third-largest source of ride garbage; lane LS 2026-11-13).
+  let lifted = 0, k = 0, w = 0, min = 0, max = 0;
   for (; k < pending.length; k++) {
     if ((k & 31) === 31 && now() > deadline) break;
     const id = pending[k], b = base(id);
-    if (b === undefined) { waiting.push(id); continue; }
+    if (b === undefined) { pending[w++] = id; continue; }
     // On a grid (`unit` < 1, Int16 positions) the change is between the two bases' grid steps, so lifts never drift.
     const z = b ?? 0, prev = applied.get(id) ?? 0, delta = unit === 1 ? z - prev : Math.round(z / unit) - Math.round(prev / unit), range = ranges.get(id);
     applied.set(id, z);
@@ -198,7 +199,8 @@ export function liftRanges(positions: Float32Array | Int16Array, ranges: Readonl
     lifted++; min = Math.min(min, z); max = Math.max(max, z);
   }
   const done = k;
-  pending.splice(0, k, ...waiting);
+  // The unread tail follows the waiting ids, as before: [waiting..., pending[k..]].
+  if (w < k) { for (let j = k; j < pending.length; j++) pending[w++] = pending[j]; pending.length = w; }
   return { lifted, done, min, max };
 }
 
@@ -245,6 +247,11 @@ export interface BakedCoarseHost {
   groundBase(id: string): number | null | undefined;
   /** Lane F4: the relief the wall feet drape to (own ground local metres), or null (no drape). */
   groundFoot?(): HeightFn | null;
+  /**
+   * Changes whenever a `groundBase` that was undefined may now be known (the host's feature list). Absent or
+   * undefined: never skip a resident (lane LS 2026-11-13).
+   */
+  baseToken?(): unknown;
   repaint(): void;
 }
 
@@ -253,7 +260,9 @@ export type BakedAttrBytes = { vertices: number; position: number; uv: number; l
 
 type Resident = BakedEntry & { /** F1: the cell's own record material (drawn once its fade ends); absent: the host's chunk material. */ own?: any; triangles: number; bytes: number; gzBytes: number; attrs: BakedAttrBytes; fade?: { start: number; clone: any; source: any }; drawn: boolean;
   /** Street-level lift: the CPU positions kept while buildings wait for their base. */
-  lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number> }; lifted: boolean; liftable: boolean };
+  lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number>;
+    /** The `baseToken` at which a full pass found no pending base known: skipped until the token or the ground changes. */
+    stalled?: unknown }; lifted: boolean; liftable: boolean };
 
 export class BakedCoarse {
   private readonly residents = new Map<string, Resident>();
@@ -508,6 +517,7 @@ export class BakedCoarse {
     scene.add(mesh);
     this.fetchedBytes += data.gzBytes; this.uploads += r.bytes;
     this.residents.set(data.key, r);
+    this.residentsVersion++;
     this.host.repaint();
     if (keepPositions && !r.liftable) this.reliftNear();
   }
@@ -537,21 +547,47 @@ export class BakedCoarse {
     if (!this.enabled) { budget.done = true; return 0; }
     const deadline = this.now() + budget.ms;
     let lifted = 0, remaining = false;
-    const order = orderByDistance([...this.residents.values()].filter(r => r.lift).map(r => ({ key: r, distance: this.at ? cellDistanceM(r.key, this.at[0], this.at[1]) : 0 })));
-    for (const r of order) {
-      const lift = r.lift!;
+    const token = this.host.baseToken?.();
+    for (const r of this.liftOrder()) {
+      const lift = r.lift;
+      if (!lift) continue;
       const attribute = r.mesh.geometry.getAttribute('position');
       if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > this.liftRadius() + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
-      if (budget.restart) lift.pending = [...r.ranges.keys()];
+      if (budget.restart) {
+        // Every building again, into the same array.
+        lift.pending.length = 0;
+        for (const id of r.ranges.keys()) lift.pending.push(id);
+        lift.stalled = undefined;
+      }
       if (!lift.pending.length) continue;
+      // Nothing it waits for is known yet, and nothing that could change that has: skip the pass.
+      if (token !== undefined && lift.stalled === token) { remaining = true; continue; }
       if (this.now() > deadline) { remaining = true; continue; }
+      const before = lift.pending.length;
       const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, this.now, lift.unit, this.host.groundFoot?.() ?? null);
       if (out.lifted) { attribute.needsUpdate = true; lifted += out.lifted; }
       if (lift.pending.length) remaining = true;
+      if (token !== undefined && out.done === before && lift.pending.length === before) lift.stalled = token;
     }
     budget.done = !remaining;
     if (lifted) this.host.repaint();
     return lifted;
+  }
+
+  /** Bumped whenever a resident is installed or removed (the lift order's cache key). */
+  private residentsVersion = 0;
+  private liftOrderCache: { version: number; i: number; j: number; order: Resident[] } | null = null;
+  /**
+   * The residents with CPU positions, nearest the rider first. Re-sorted only when the rider moves to another world
+   * cell or a resident comes or goes, not every frame (lane LS 2026-11-13).
+   */
+  private liftOrder(): Resident[] {
+    const at = this.at, i = at ? cellOf(at[0], at[1])[0] : NaN, j = at ? cellOf(at[0], at[1])[1] : NaN;
+    const c = this.liftOrderCache;
+    if (c && c.version === this.residentsVersion && Object.is(c.i, i) && Object.is(c.j, j)) return c.order;
+    const order = orderByDistance([...this.residents.values()].filter(r => r.lift).map(r => ({ key: r, distance: at ? cellDistanceM(r.key, at[0], at[1]) : 0 })));
+    this.liftOrderCache = { version: this.residentsVersion, i, j, order };
+    return order;
   }
   /** `refreshShellBases` with a plain per-frame budget (tests, older call sites). */
   refreshBases(budgetMs: number): number { return this.refreshShellBases({ ms: budgetMs }); }
@@ -592,6 +628,7 @@ export class BakedCoarse {
     const r = this.residents.get(key);
     if (!r) return;
     this.residents.delete(key);
+    this.residentsVersion++;
     this.host.detach(r);
     const release = () => { r.mesh.parent?.remove(r.mesh); r.mesh.geometry.dispose(); };
     const from = r.fade ? r.fade.clone.uniforms.cityFade.value : 1;

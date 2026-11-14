@@ -156,6 +156,23 @@ export class RenderGovernor {
     return { kind: 'pixelRatio', from: this.pixelRatio, to, p75Ms };
   }
 
+  /**
+   * A tier re-probe raised the tier (retier below): the pixel ratio goes straight to the new ceiling and may step
+   * back up to it again; a bounce lock from the lower tier no longer applies. The raise is an up step, so a step
+   * down straight after it (still slow at the new ceiling) is a bounce and ends stepping up, as any other.
+   */
+  raiseCeiling(maxPixelRatio: number): Extract<GovernorStep, { kind: 'pixelRatio' }> | null {
+    if (this.o.fixedPixelRatio || !(maxPixelRatio > this.o.maxPixelRatio)) return null;
+    this.o.maxPixelRatio = maxPixelRatio;
+    this.upLocked = false;
+    this.fastRun = 0;
+    if (!(maxPixelRatio > this.pixelRatio)) return null;
+    const step = { kind: 'pixelRatio' as const, from: this.pixelRatio, to: maxPixelRatio, p75Ms: 0 };
+    this.pixelRatio = maxPixelRatio;
+    this.steps.push(step);
+    return step;
+  }
+
   /** Nothing left to give up, and no way back up. */
   get exhausted(): boolean {
     const canRise = this.o.maxPixelRatio > 0 && !this.upLocked && !this.o.fixedPixelRatio;
@@ -314,4 +331,27 @@ export function chooseTier(probe: TierProbe, asked?: string | null): { tier: Qua
   if (probe.frameMs != null && probe.frameMs > TIER_FRAME_MS.low) return { tier: 'low', reasons: [`probe ${probe.frameMs} ms > ${TIER_FRAME_MS.low}`] };
   if (probe.frameMs != null && probe.frameMs > TIER_FRAME_MS.mid) return { tier: 'mid', reasons: [`probe ${probe.frameMs} ms > ${TIER_FRAME_MS.mid}`] };
   return { tier: 'high', reasons: [] };
+}
+
+export const TIER_ORDER: readonly QualityTier[] = ['low', 'mid', 'high'];
+
+/**
+ * Riding time (ms, not loading, not flying) before the one tier re-probe: past the governor's 12 s start settle,
+ * when the city has landed and the ride's own boot work is over.
+ */
+export const TIER_RECHECK_AFTER_MS = 15_000;
+
+/**
+ * The tier a second probe allows, or null to keep the current one (lane LS, 2026-11-13). The tier is chosen once
+ * from a ~1 s probe at boot, and the governor only steps inside it, so a probe that read slow on a busy machine
+ * (other processes, or the page's own boot) used to hold a retina screen at 1x or 1.5x with touch-level detail for
+ * the whole session. A tier the first probe lowered gets one more look after the start settle; it may only go up
+ * (a slow second probe never lowers a tier: the governor already steps down from what the frame measures), and a
+ * tier that was asked for (`?tier=`) or set by a software renderer never moves.
+ */
+export function retier(current: { tier: QualityTier; reasons: readonly string[] }, probe: TierProbe): { tier: QualityTier; reasons: string[] } | null {
+  if (!current.reasons.some(r => r.startsWith('probe '))) return null;
+  const next = chooseTier(probe);
+  if (TIER_ORDER.indexOf(next.tier) <= TIER_ORDER.indexOf(current.tier)) return null;
+  return { tier: next.tier, reasons: [...next.reasons, `re-probe ${probe.frameMs} ms raised ${current.tier} (${current.reasons.join(', ')})`] };
 }

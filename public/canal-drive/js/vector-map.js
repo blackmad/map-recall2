@@ -1450,11 +1450,66 @@ class VectorBasemap {
       const off = detail || (three && id !== 'osm-colored-buildings');
       if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== (off ? 'none' : 'visible')) this.map.setLayoutProperty(id, 'visibility', off ? 'none' : 'visible');
     }
+    // `?wallsPerArea=1`: copies of those layers stand in where the facades have not drawn yet (src/canalRecall/pendingWalls.ts).
+    const pending = this._syncPendingWalls(three && !detail);
     // Picking (three.js), the covered-passage check and the highlight hull read the streamer instead.
-    if (this._completeCity?.setPublishing) this._completeCity.setPublishing(!(three && canalRecallDropsBuildingCopy()));
+    // (The stand-ins draw from the source, so it keeps publishing while they show.)
+    if (this._completeCity?.setPublishing) this._completeCity.setPublishing(!(three && canalRecallDropsBuildingCopy() && !pending));
     if (this.map.getLayer('osm-colored-buildings') && this._wallsGhosted !== three) {
       this._wallsGhosted = three;
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity', three ? 0 : BUILDING_FADE_IN);
+    }
+  }
+
+  /**
+   * The per-area hand-over (`?wallsPerArea=1`, lane LS 2026-11-14): while the three.js facades fill in, copies of
+   * MapLibre's ground-floor, wall and lid layers draw the buildings of the z14 tiles the facades do not draw yet,
+   * re-filtered every 300 ms, and go for good once every resident tile is drawn or 30 s after they showed. Off, or
+   * once done, nothing changes. Returns whether the stand-ins are showing.
+   */
+  _syncPendingWalls(on) {
+    const helpers = window.CanalRecallBuildingTiles;
+    if (!helpers || !helpers.wallsPerAreaEnabled || !helpers.wallsPerAreaEnabled()) return false;
+    const three = this._threeBuildings;
+    const want = on && !this._pendingWallsDone && !!three && typeof three.drawnTiles === 'function' && !!this.map.getSource('osm-building-appearance');
+    const ids = helpers.PENDING_SOURCE_LAYERS.map(id => id + helpers.PENDING_SUFFIX);
+    if (!want) {
+      if (this._pendingWallsTimer) { clearInterval(this._pendingWallsTimer); this._pendingWallsTimer = null; }
+      for (const id of ids) if (this.map.getLayer(id)) this.map.removeLayer(id);
+      this._pendingWallsDrawn = undefined;
+      return false;
+    }
+    if (!this.map.getLayer(ids[1])) {
+      const layers = this.map.getStyle()?.layers || [];
+      for (const id of helpers.PENDING_SOURCE_LAYERS) {
+        const spec = layers.find(l => l.id === id);
+        if (spec && !this.map.getLayer(id + helpers.PENDING_SUFFIX)) this.map.addLayer(helpers.pendingLayer(spec, [], BUILDING_FADE_IN), id);
+      }
+      this._pendingWallsShownAt ??= performance.now();
+      this._pendingWallsDrawn = '';
+    }
+    if (!this._pendingWallsTimer) this._pendingWallsTimer = setInterval(() => this._refreshPendingWalls(), 300);
+    return true;
+  }
+
+  _refreshPendingWalls() {
+    const helpers = window.CanalRecallBuildingTiles, three = this._threeBuildings;
+    if (!this.map || !helpers || !three || typeof three.drawnTiles !== 'function') return;
+    const resident = new Set();
+    for (const f of this._tileFeatures || []) { const t = f && f.properties && f.properties.t14; if (t) resident.add(t); }
+    const drawn = three.drawnTiles(resident);
+    if (helpers.pendingDone(drawn.length, resident.size, this._pendingWallsShownAt ?? null, performance.now())) {
+      this._pendingWallsDone = true;
+      this._syncMaplibreBuildingVisibility();
+      return;
+    }
+    const key = drawn.slice().sort().join(',');
+    if (key === this._pendingWallsDrawn) return;
+    this._pendingWallsDrawn = key;
+    const layers = this.map.getStyle()?.layers || [];
+    for (const id of helpers.PENDING_SOURCE_LAYERS) {
+      const spec = layers.find(l => l.id === id), copy = id + helpers.PENDING_SUFFIX;
+      if (spec && this.map.getLayer(copy)) this.map.setFilter(copy, helpers.pendingLayer(spec, drawn, BUILDING_FADE_IN).filter);
     }
   }
 
@@ -1659,6 +1714,9 @@ class VectorBasemap {
       .filter(Boolean)
       .map(layer => JSON.parse(JSON.stringify(layer)));
     for (const layer of layers) if (this.map.getLayer(layer.id)) this.map.removeLayer(layer.id);
+    // The wallsPerArea stand-ins draw from this source too (re-added from the new layers on the next sync).
+    for (const id of ['osm-colored-building-ground-floors-pending', 'osm-colored-buildings-pending', 'osm-colored-building-roofs-pending']) if (this.map.getLayer(id)) this.map.removeLayer(id);
+    this._pendingWallsDrawn = undefined;
     if (this.map.getSource('osm-building-appearance')) this.map.removeSource('osm-building-appearance');
     this.map.addSource('osm-building-appearance', {
       type: 'geojson',
@@ -2073,6 +2131,9 @@ class VectorBasemap {
     if (this._streamedCityDrawn) return true;
     // `window.__canalRecallHoldBasemap = false`: hand over at the first streamed tile, as before (A/B, scripts/pop-in.mjs).
     if (typeof window !== 'undefined' && window.__canalRecallHoldBasemap === false) { this._streamedCityDrawn = true; return true; }
+    // `?wallsPerArea=1`: the MapLibre stand-ins cover the areas the facades have not drawn, so the basemap's copy goes
+    // at the first streamed tile (both at once z-fight).
+    if (this._pendingWallsShownAt != null && !this._pendingWallsDone) { this._streamedCityDrawn = true; return true; }
     const three = this._threeBuildings;
     // Release on the first of: a shell drawn under the rider; 400 ms after the first shell anywhere (the view
     // is filling in, as it would with no hold); 8 s after the first streamed tile.

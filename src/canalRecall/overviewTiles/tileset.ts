@@ -77,8 +77,32 @@ export function overviewTilesBeforeId(layers: readonly LayerLike[]): string | un
 /** Zoom over which the tiles fade in above their minimum zoom (the basemap's recoloured ground shows below). */
 export const OVERVIEW_TILES_FADE_ZOOM = 0.5;
 
+/**
+ * Lane LS Part 0 (2026-11-13): the tiles stop at z15 (2.9 m per texel at Amsterdam's latitude) and the layer had no
+ * maximum, so at the ride's chase zoom (~18, 0.18 m per device pixel at DPR 2) MapLibre overzooms one texel to ~16
+ * device pixels and draws that smear over the crisp vector basemap until the own ground's cells install (cold load at
+ * Geldersekade: 17–30 s after the ride starts). With the street fade on, the layer fades out between these zooms and
+ * stops drawing above the second; the recoloured basemap underneath (same palette, `basemapGroundPatches`) is the
+ * ground there until the own ground covers it. `?overviewStreetFade=1|0`; default below.
+ */
+export const OVERVIEW_TILES_STREET_FADE = [16, 16.5] as const;
+export const OVERVIEW_TILES_STREET_FADE_DEFAULT = false;
+
+/** `?overviewStreetFade=1|0` (or `window.__canalRecallOverviewStreetFade`), else the default. */
+export function overviewTilesStreetFadeEnabled(search: string = (globalThis as { location?: { search?: string } }).location?.search ?? ''): boolean {
+  const g = (globalThis as { __canalRecallOverviewStreetFade?: unknown }).__canalRecallOverviewStreetFade;
+  const raw = g !== undefined ? String(g) : new URLSearchParams(search).get('overviewStreetFade');
+  if (raw === '1' || raw === 'true' || raw === 'on') return true;
+  if (raw === '0' || raw === 'false' || raw === 'off') return false;
+  return OVERVIEW_TILES_STREET_FADE_DEFAULT;
+}
+
 /** The MapLibre raster source and layer for a fitting tileset (`root`: the extract root URL, trailing slash). */
-export function overviewTilesStyle(manifest: OverviewTilesManifest, root: string): { source: Record<string, unknown>; layer: Record<string, unknown> } {
+export function overviewTilesStyle(manifest: OverviewTilesManifest, root: string, streetFade = false): { source: Record<string, unknown>; layer: Record<string, unknown> } {
+  const [fadeFrom, fadeTo] = OVERVIEW_TILES_STREET_FADE;
+  const opacity = streetFade
+    ? ['interpolate', ['linear'], ['zoom'], manifest.minzoom, 0, manifest.minzoom + OVERVIEW_TILES_FADE_ZOOM, 1, fadeFrom, 1, fadeTo, 0]
+    : ['interpolate', ['linear'], ['zoom'], manifest.minzoom, 0, manifest.minzoom + OVERVIEW_TILES_FADE_ZOOM, 1];
   return {
     source: {
       type: 'raster', tiles: [`${root}${OVERVIEW_TILES_DIR}/{z}/{x}/{y}.png`], tileSize: 256,
@@ -86,8 +110,9 @@ export function overviewTilesStyle(manifest: OverviewTilesManifest, root: string
     },
     layer: {
       id: OVERVIEW_TILES_LAYER, type: 'raster', source: OVERVIEW_TILES_SOURCE, minzoom: manifest.minzoom,
+      ...(streetFade ? { maxzoom: fadeTo } : {}),
       paint: {
-        'raster-opacity': ['interpolate', ['linear'], ['zoom'], manifest.minzoom, 0, manifest.minzoom + OVERVIEW_TILES_FADE_ZOOM, 1],
+        'raster-opacity': opacity,
         'raster-fade-duration': 0,
       },
     },
@@ -98,11 +123,11 @@ export function overviewTilesStyle(manifest: OverviewTilesManifest, root: string
  * The adapter's whole decision (vector-map.js `_ensureOverviewTiles`): the source, layer and insertion point for a
  * manifest, or why the tiles are not drawn (no manifest, a different ground look, a palette not yet re-baked).
  */
-export function overviewTilesPlan(manifest: OverviewTilesManifest | null | undefined, root: string, layers: readonly LayerLike[], look: GroundLook = GROUND_LOOK_DEFAULT):
+export function overviewTilesPlan(manifest: OverviewTilesManifest | null | undefined, root: string, layers: readonly LayerLike[], look: GroundLook = GROUND_LOOK_DEFAULT, streetFade = overviewTilesStreetFadeEnabled()):
   { source: Record<string, unknown>; layer: Record<string, unknown>; beforeId: string | undefined } | { skip: string } {
   if (!manifest || manifest.version !== 1) return { skip: 'no overview tiles manifest' };
   const bad = tilesetMismatch(manifest, look);
   if (bad.length) return { skip: `overview tiles baked for another palette (${manifest.look}; differs in ${bad.join(', ')})` };
-  const { source, layer } = overviewTilesStyle(manifest, root.endsWith('/') ? root : `${root}/`);
+  const { source, layer } = overviewTilesStyle(manifest, root.endsWith('/') ? root : `${root}/`, streetFade);
   return { source, layer, beforeId: overviewTilesBeforeId(layers) };
 }

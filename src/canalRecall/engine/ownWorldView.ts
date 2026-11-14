@@ -17,7 +17,7 @@
 // labels, landmarks, trees: steps 4–5, lane L5).
 
 import { framePhases } from './framePhases';
-import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
+import { chooseTier, retier, TIER_RECHECK_AFTER_MS, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
 import { GlCounters, GlResident, objectLabel } from './glCounters';
 import { PerfHud, type PerfSnapshot } from './perfHud';
@@ -507,6 +507,21 @@ export class OwnWorldView implements WorldViewOracles {
       maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
+    // One tier re-probe after the start settle (renderGovernor.ts retier, lane LS 2026-11-13): a boot probe that read
+    // slow on a busy machine no longer holds the session at a lower tier. Only a tier the probe lowered is looked at
+    // again, and only upwards. `?tierRecheck=0` keeps the boot choice.
+    if (tier !== 'high' && reasons.some(r => r.startsWith('probe ')) && flag('tierRecheck', '__canalRecallTierRecheck', true)) {
+      const ceilingBase = explicitDpr ? null : Math.min(dpr, cap);
+      let riddenMs = 0, last = 0;
+      const timer = W().setInterval(() => {
+        const t = performance.now(), dt = last ? t - last : 0;
+        last = t;
+        if (W().canalRecallGame?.state === 4 && !this.aerialFlying() && W().document?.visibilityState !== 'hidden') riddenMs += Math.min(dt, 2000);
+        if (riddenMs < TIER_RECHECK_AFTER_MS) return;
+        W().clearInterval(timer);
+        try { this.recheckTier(THREE, container, dpr, ceilingBase); } catch (error) { this.fail('tier re-probe', error); }
+      }, 1000);
+    }
     this._aerialPower = new AerialPower(aerialLeversFromQuery(W().location?.search ?? '', W()));
     // Perf HUD (engine/perfHud.ts, lane R1-C #225): `?perfHud=1` or "Show performance"; `__canalPerf.snapshot()` is the
     // same numbers for the ride heartbeat and the stall report (rideHeartbeat.ts).
@@ -551,6 +566,44 @@ export class OwnWorldView implements WorldViewOracles {
     });
     this.host.start();
     void this.boot();
+  }
+
+  /**
+   * The one tier re-probe (constructor; renderGovernor.ts retier). On a raise: the pixel-ratio ceiling (the governor's
+   * too) and the shadow map follow the new tier at once. What was built at the boot tier stays as built and is named
+   * in `qualityTier.settings.kept`: a `low` start has no sun shadows (the lit programs compiled without them), and
+   * facade chunks and ground cells keep the touch level they were built at.
+   */
+  private recheckTier(THREE: any, container: HTMLElement, dpr: number, ceilingBase: number | null): void {
+    const current = this.qualityTier;
+    if (!current || !this.host?.renderer) return;
+    const ratio = ceilingBase ?? this.host.getPixelRatio();
+    const probe = tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
+      { budgetMs: 300, width: Math.max(container.clientWidth, W().innerWidth || 0) * ratio, height: Math.max(container.clientHeight, W().innerHeight || 0) * ratio });
+    const next = retier(current, probe);
+    const perf = W().__canalPerf ?? {};
+    W().__canalPerf = { ...perf, tierHistory: [...(perf.tierHistory ?? []), { at: Math.round(performance.now()), frameMs: probe.frameMs, from: current.tier, to: next?.tier ?? current.tier }] };
+    console.info('[canal-recall] quality tier re-probe', current.tier, '->', next?.tier ?? current.tier, `probe ${probe.frameMs} ms @${probe.fill.width}x${probe.fill.height}`);
+    if (!next) return;
+    const was = TIER_SETTINGS[current.tier], settings = TIER_SETTINGS[next.tier];
+    if (ceilingBase != null) {
+      const to = Math.min(ceilingBase, settings.dprCap);
+      const governor = this._renderGovernor;
+      const target = governor ? governor.raiseCeiling(to)?.to ?? null : (to > this.host.getPixelRatio() ? to : null);
+      // At the start of the next frame and drawn at once, as the governor's own steps (no cleared canvas on screen).
+      if (target != null) W().requestAnimationFrame(() => { this.host.setPixelRatio(target); this.host.redraw(); });
+    }
+    const kept: string[] = [];
+    const frame = this._sharedFrame;
+    if (settings.shadows && !was.shadows) kept.push('no sun shadows (built without)');
+    else if (frame && settings.shadows) {
+      frame.setTierShadowMapSize(Math.min(coarse() ? 1024 : 2048, settings.shadowMapSize));
+      frame.shadowStandIns = settings.standIns;
+    }
+    if (was.facadeDetail && !settings.facadeDetail) kept.push(`facade detail ${was.facadeDetail} (chunks built)`);
+    if (was.ground && !settings.ground) kept.push(`ground ${was.ground.detail} (cells built)`);
+    this.qualityTier = { tier: next.tier, reasons: next.reasons, settings: { ...settings, dprCap: Number.isFinite(settings.dprCap) ? settings.dprCap : null, kept }, probe };
+    W().__canalPerf = { ...W().__canalPerf, tier: next.tier, tierReasons: next.reasons, tierSettings: this.qualityTier.settings, tierProbe: probe };
   }
 
   // ---- boot: participants ----
@@ -800,6 +853,7 @@ export class OwnWorldView implements WorldViewOracles {
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
         groundFoot: () => tb.bakedCoarseHost()?.groundFoot?.() ?? null,
+        baseToken: () => tb.bakedCoarseHost()?.baseToken(),
         repaint: () => this.host.triggerRepaint(),
       }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;
