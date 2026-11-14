@@ -684,7 +684,7 @@ export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.ou
 /** Rule 10's job fields: pixel ratio, the likeness pages' extra query, and the list's as-played rider. */
 function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
   const r10 = args.rule10!, rider = r10.asPlayed && prepared.length ? asPlayedFor(prepared, r10.asPlayedBackM) : null;
-  return { dpr: r10.dpr, likenessQuery: r10.likenessTrees === 'hide' ? 'trees3d=0' : '', asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
+  return { dpr: r10.dpr, likenessQuery: r10.likenessTrees === 'hide' ? 'trees3d=0' : '', asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg, query: args.query }] : [] };
 }
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */

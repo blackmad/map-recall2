@@ -95,7 +95,8 @@ export type Rule10Job = {
   dpr: number;
   /** extra query for likeness pages (`trees3d=0` when trees are hidden) */
   likenessQuery: string;
-  asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }>;
+  /** each rider carries its list's query (a --lists batch: the list's @query, not the first list's) */
+  asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number; query?: string }>;
 };
 export type LikenessJobPose = { fps: Record<string, unknown>; width: number; height: number; windowH: number; lngLat: [number, number]; headingDeg: number };
 export function likenessJobPose(l: LikenessPrep): LikenessJobPose {

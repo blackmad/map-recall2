@@ -39,7 +39,7 @@ type JobPose = {
   query?: string;
 };
 /** rule 10 (scripts/house-frames/rule10Frames.ts Rule10Job): absent on an old run, which then runs exactly as before. */
-type Rule10Job = { dpr: number; likenessQuery: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }> };
+type Rule10Job = { dpr: number; likenessQuery: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number; query?: string }> };
 type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: JobPose[]; rule10?: Rule10Job };
 
 const JOB = process.env.HOUSE_FRAMES_JOB;
@@ -86,13 +86,16 @@ async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' |
  */
 async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: import('@playwright/test').BrowserContext) => Promise<void>): Promise<void> {
   const r10 = job.rule10!, size = { width: job.width, height: job.height };
-  const likeness = job.poses.filter(p => p.likeness);
-  if (likeness.length) {
+  // A --lists batch: one page per list query, so each list's likeness frames run with its own @query (2026-11-14: they
+  // all ran with the first list's, and every 'after' likeness frame of a batch was a 'today' frame).
+  const byQuery = new Map<string, JobPose[]>();
+  for (const p of job.poses.filter(p => p.likeness)) { const q = p.query ?? job.query; byQuery.set(q, [...(byQuery.get(q) ?? []), p]); }
+  for (const [listQuery, likeness] of byQuery) {
     const ctx = await browser.newContext({ viewport: size, deviceScaleFactor: r10.dpr });
     await routeContext(ctx);
     const page = await ctx.newPage();
     try {
-      await openPage(page, { ...job, query: [job.query.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
+      await openPage(page, { ...job, query: [listQuery.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
       for (const pose of likeness) {
         const l = pose.likeness!, dir = join(pose.out ?? job.out, pose.key);
         try {
@@ -115,7 +118,8 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: impo
     try {
       // The default engine and camera: the job's query only (no engine=own, no cam=fps unless the query asks).
       // 'relative' steering keeps the rider's heading: 'street' mode turns a parked rider onto the nearest street.
-      await openRoute(page, { travelMode: 'car', query: job.query ? `?${job.query.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
+      const q = a.query ?? job.query;
+      await openRoute(page, { travelMode: 'car', query: q ? `?${q.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
       await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
       await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
       const at = { lngLat: a.lngLat, headingDeg: a.headingDeg, fps: {} };
