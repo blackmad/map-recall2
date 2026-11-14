@@ -108,6 +108,17 @@ export function wallBrickFromSample(sample: string): { brick: string; predicted:
   return { brick: rgbToHex(hslToRgb([h, sat, lFloor])), predicted: fit.predicted, floor: true };
 }
 
+/** HSL lightness below which a staged brick cannot be the wall of a front the reader called pale (belt tranche 2026-11-14:
+ *  69 of 761 belt fronts read pale stucco/stone fitted to a near-floor brick from winter-overcast cuts, so cream fronts
+ *  rendered dark on the row sheets). */
+export const PALE_MIN_BRICK_L = 0.45;
+/** The reader said the wall is pale against its neighbours but the sampled colour fits a dark brick: the pixels saw shade or
+ *  the wrong surface, so no colour is staged (the wall keeps today's colour; finish and the rest still stage). */
+export function paleContradicts(a: Pick<DescriberAnswer, 'pale'>, wallHex: string): boolean {
+  if ((a as { pale?: unknown }).pale !== true) return false;
+  return rgbToHsl(hexToRgb(wallBrickFromSample(wallHex.toLowerCase()).brick))[2] < PALE_MIN_BRICK_L;
+}
+
 /** The staged spec for one answer: the shipping part of toSpecPart plus the measured wall colour when the cut sampled one. */
 export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string | null, registerGable: string | null = null) {
   const part = toSpecPart(a, at);
@@ -116,7 +127,7 @@ export function stageOne(a: DescriberAnswer, wallHex: string | null, at: string 
   const prov = provenanceOf(part, 'fronts/0/windowHead');
   if (prov) for (const [k, v] of Object.entries(rowHeads(a.heads, a.storeys))) { setSpecField(spec, `fronts/0/${k}`, v); spec.provenance[`fronts/0/${k}`] = { ...prov }; }
   if (CURVED.has(String(a.crown))) setSpecField(spec, 'fronts/0/gable', curvedGable(registerGable));
-  if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex)) {
+  if (a.readable && wallHex && /^#[0-9a-f]{6}$/i.test(wallHex) && !paleContradicts(a, wallHex)) {
     setSpecField(spec, 'palette/brick', wallBrickFromSample(wallHex.toLowerCase()).brick);
     spec.provenance['palette/brick'] = { source: 'streetlevel-measured', confidence: 0.6, ref: a.image.ref, at };
   }
@@ -193,7 +204,7 @@ function main() {
   const A = loadAnswers(dir);
   fs.mkdirSync(out, { recursive: true });
   const fieldCount: Record<string, number> = {}, answerCount: Record<string, number> = {};
-  let readable = 0, stagedN = 0, nv = 0, cells = 0;
+  let readable = 0, stagedN = 0, nv = 0, cells = 0, paleGuarded = 0;
   const problems: Record<string, string[]> = {};
   const staged = new Map<string, HouseSpec>();
   for (const [id, a] of A) {
@@ -204,6 +215,7 @@ function main() {
       const v = (a as any)[k];
       if (answered(v)) answerCount[k] = (answerCount[k] ?? 0) + 1; else nv++;
     }
+    if (a.readable && hex.has(id) && paleContradicts(a, hex.get(id)!)) paleGuarded++;
     staged.set(id, stageOne(a, hex.get(id) ?? null, at, (probes[id] as { monumentGable?: string | null } | undefined)?.monumentGable ?? null));
   }
   let inheritedFronts = 0; const inheritedFields: Record<string, number> = {};
@@ -228,7 +240,7 @@ function main() {
   }
   const share = (n: number) => +(n / Math.max(1, readable)).toFixed(3);
   const report = {
-    v: 1, twinGuard: guard, answers: A.size, readable, staged: stagedN, inheritedFronts, inheritedFields, notVisibleRate: +(nv / Math.max(1, cells)).toFixed(3),
+    v: 1, twinGuard: guard, answers: A.size, readable, staged: stagedN, inheritedFronts, inheritedFields, paleGuarded, notVisibleRate: +(nv / Math.max(1, cells)).toFixed(3),
     answerCoverage: Object.fromEntries(ANSWER_FIELDS.map(k => [k, share(answerCount[k] ?? 0)])),
     specFieldCoverage: Object.fromEntries(Object.entries(fieldCount).sort().map(([k, n]) => [k, share(n)])),
     problems,

@@ -21,8 +21,7 @@
    }
   ],
   "palette": {
-   "wallMaterial": "stucco",
-   "brick": "#3c3f3e"
+   "wallMaterial": "stucco"
   }
  },
  "provenance": {
@@ -83,12 +82,6 @@
   "facts/groundKind": {
    "source": "vision-judge",
    "confidence": 0.7,
-   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175038.jpg",
-   "at": "2026-11-14"
-  },
-  "palette/brick": {
-   "source": "streetlevel-measured",
-   "confidence": 0.6,
    "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175038.jpg",
    "at": "2026-11-14"
   }

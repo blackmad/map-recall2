@@ -1,21 +1,11 @@
 {
  "schemaVersion": 1,
  "pandId": "0363100012172271",
- "design": {
-  "palette": {
-   "brick": "#3e4447"
-  }
- },
+ "design": {},
  "provenance": {
   "facts/pui": {
    "source": "vision-judge",
    "confidence": 0.7,
-   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172271.jpg",
-   "at": "2026-11-14"
-  },
-  "palette/brick": {
-   "source": "streetlevel-measured",
-   "confidence": 0.6,
    "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012172271.jpg",
    "at": "2026-11-14"
   }

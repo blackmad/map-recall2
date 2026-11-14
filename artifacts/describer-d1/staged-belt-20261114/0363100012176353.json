@@ -20,8 +20,7 @@
    }
   ],
   "palette": {
-   "wallMaterial": "stone",
-   "brick": "#5e5443"
+   "wallMaterial": "stone"
   }
  },
  "provenance": {
@@ -88,12 +87,6 @@
   "facts/groundKind": {
    "source": "vision-judge",
    "confidence": 0.7,
-   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176353.jpg",
-   "at": "2026-11-14"
-  },
-  "palette/brick": {
-   "source": "streetlevel-measured",
-   "confidence": 0.6,
    "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012176353.jpg",
    "at": "2026-11-14"
   }

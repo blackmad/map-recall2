@@ -6,6 +6,7 @@
  "staged": 761,
  "inheritedFronts": 0,
  "inheritedFields": {},
+ "paleGuarded": 87,
  "notVisibleRate": 0.074,
  "answerCoverage": {
   "storeys": 0.957,
@@ -39,7 +40,7 @@
   "fronts/*/souterrain": 0.828,
   "fronts/*/storeys": 0.957,
   "fronts/*/windowHead": 0.919,
-  "palette/brick": 1,
+  "palette/brick": 0.88,
   "palette/wallMaterial": 0.99
  },
  "problems": {}

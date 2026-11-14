@@ -5,7 +5,7 @@ import { compare, confusion, readingOf, tabulate, windowFamily, wilson } from '.
 import { specProblems } from '../../../src/canalRecall/houseSpec/spec.ts';
 import { benchmarkReading, doorPosition, handSetReading, handSpecReading } from './truth.ts';
 import { columnOf, pooledTruth } from './score.ts';
-import { inheritFromTwin, stageOne, twinGuard, wallBrickFromSample } from './stage.ts';
+import { inheritFromTwin, paleContradicts, stageOne, twinGuard, wallBrickFromSample } from './stage.ts';
 import { hexToRgb } from '../../../src/canalRecall/look/palette.ts';
 
 const answer = (over: Partial<DescriberAnswer> = {}): DescriberAnswer => ({
@@ -418,4 +418,14 @@ test('prompt v4.3 reads: validated, staged with a receipt, held for every route;
   assert.equal(by['dormer kind'].accuracy, 1);
   assert.equal(by['door surround'].accuracy, 0);
   assert.equal((by['balconies'].classes as any).yes.precision, 1);
+});
+
+test('stageOne: a front read pale stages no colour when the sample fits a dark brick (belt pale guard)', () => {
+  assert.equal(paleContradicts({ pale: true } as any, '#5a5650'), true);
+  assert.equal(stageOne(answer({ pale: true } as any), '#5a5650', null).design.palette?.brick, undefined);
+  assert.equal(stageOne(answer({ pale: true } as any), '#5a5650', null).design.palette?.wallMaterial, stageOne(answer({ pale: false } as any), '#5a5650', null).design.palette?.wallMaterial);
+  // not pale, or pale and light: unchanged
+  assert.equal(paleContradicts({ pale: false } as any, '#5a5650'), false);
+  assert.equal(paleContradicts({ pale: true } as any, '#e8e0cc'), false);
+  assert.ok(stageOne(answer({ pale: false } as any), '#5a5650', null).design.palette?.brick);
 });
