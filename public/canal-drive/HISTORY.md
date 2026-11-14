@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Rails meet their decks; city-wide check:rail-joins (2026-11-13, lane R2-A, cherry-picked from lane/r2-rail-joins-20261113).**
+- **Why.** Feedback bc28e25e (Lelylaan tram decks stepping down) and 3997ffb6 (Zaanstraat viaduct broken into stepped decks).
+- **Check.** `check:rail-joins` (`check-rail-joins.ts`, pure `railJoins.ts`) samples the ballast every 0.5 m over ±8 m at every bridge join and fails on a missing sample, a step over 0.15 m, or a slope over 1.5× RAIL_GRADE. Free ends must stay within 3 m of land or a deck. Road/rail crossings need 3 m of clearance. Allow-list `rail-joins-allow.json` (725 entries, may only shrink). It takes 10–16 min city-wide, so it has its own CI matrix part, `check:canal:joins`.
+- **Fixes** (GroundStore options):
+  - `railIslands`: runs of 150 m or less between bridges are levelled with the decks.
+  - `railAbutments`: within 12 m of a deck end the track holds the deck's height.
+  - `railUnderStreets`: near deck ends, a street 2.5 m or more below the bed passes under it. Applying this everywhere took the Radarweg clearance from 2.33 to 0.79 m, so it is limited to deck ends.
+- **Counts.** Failures 1,276 → 725, none new: joins 465 → 51, free ends 11 → 0, crossings 800 → 674. Pins: lelylaan-tram-decks 3 → 0; zaanstraat-rail-yard-viaduct 57 → 1 (a footway with 2.96 m of the 3 m clearance, allow-listed).
+- **Allow-listed.** Rail bridges over cycleways drawn about 0.3 m up; Ringweg-West/Zuid road decks 1.6–2.3 m over the ballast; the Radarweg yard deck about 1 m over it; metro footbridges with negative clearance; Lelylaan tram foot and cycle crossings at 0.6–0.7 m.
+
 **Bridge decks: plein railings, survey caps, bascule kerbs, way decks over end holes (2026-11-13, lane F1, cherry-picked from lane/fb-bridges-20261113).**
 - **Why.** Feedback #13 c7a55085 (Muntplein "gates"), #23 8b91c88c (Rijckerbrug slab), #41 c5313f12 (Machineslootbrug), #11 6b239d90 (Aluminiumbrug white line), 07ec0473 (Lelylaan slab).
 - **Fixes.** Each one has a flag that restores the old behaviour:

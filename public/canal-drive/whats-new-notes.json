@@ -3,6 +3,37 @@
   "notes": [
     {
       "date": "2026-11-13",
+      "title": "Tracks meet their bridges",
+      "text": "Railway and tram tracks now run straight onto their bridges. The Cornelis Lelylaan tram decks and the railway viaduct over the Zaanstraat no longer step down onto the ground at their ends. A new city-wide check measures every place where a track meets a bridge and every road–rail crossing, so these breaks can't quietly come back.",
+      "where": [
+        4.8815,
+        52.3864
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-rails-zaan-before.jpg",
+          "alt": "Railway viaduct over the Zaanstraat broken into stepped decks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-zaan-after.jpg",
+          "alt": "One continuous viaduct over the Zaanstraat",
+          "caption": "After"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-lely-before.jpg",
+          "alt": "Lelylaan tram tracks stepping down off their decks",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-13-rails-lely-after.jpg",
+          "alt": "Lelylaan tram tracks running onto their decks",
+          "caption": "After"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
       "title": "Bridges without stray gates and slabs",
       "text": "The odd railing 'gates' across the tram tracks and cycle path on the Muntplein are gone. So are the grey slabs beside the Rijckerbrug and the Machineslootbrug, and the white line across the Aluminiumbrug. The A10 slip bridge at Lelylaan no longer dips into a slanted slab before it reaches the bank.",
       "where": [
