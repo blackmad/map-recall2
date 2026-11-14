@@ -59,12 +59,14 @@ test('Kinkerstraat 86–88 (233580) has no mansard evidence: a flat lid, no dorm
   assert.equal(s.roofStorey!.dormers.length, 0);
 });
 
-test('Weteringschans 169016: souterrain, mansard, one pediment dormer with a hoist; 168096 a cornice front, no roof storey', () => {
+test('Weteringschans 169016: souterrain, mansard, one pediment dormer with a hoist; 168096 a cornice front over basement windows, no roof storey', () => {
   const s = rec(W, '0363100012169016').series!;
   assert.equal(s.souterrain, true);
   assert.deepEqual(s.roofStorey!.dormers, [{ a: 0.5, kind: 'pediment', hoist: true }]);
   assert.equal(rec(W, '0363100012168096').series!.roofStorey!.kind, 'none');
-  assert.equal(rec(W, '0363100012168096').series!.souterrain, undefined);
+  // A raised ground over low basement windows (basement: 'windows'): the low basement row, no stoop steps.
+  assert.equal(rec(W, '0363100012168096').series!.souterrain, true);
+  assert.equal(rec(W, '0363100012168096').series!.souterrainFactor, 0.35);
 });
 
 test('the series draws no extras beyond ROW_FRONT_EXTRAS unless the series states them (nothing rolled)', () => {
@@ -168,7 +170,10 @@ test('Weteringschans round 4: the record\'s door, shop, stoop, balcony and measu
   assert.equal(by('0363100012168042').shop, true);
   assert.equal(by('0363100012168096').shop, false);
   assert.equal(by('0363100012168096').door?.side, 'left');
-  assert.equal(by('0363100012168096').stoop, undefined);
+  // 168096: basement windows under a raised ground, no stoop read: the door at the raised ground, no steps.
+  assert.deepEqual(by('0363100012168096').stoop, { side: 'left', steps: false });
+  assert.equal(by('0363100012168096').souterrain, true);
+  assert.equal(by('0363100012168042').souterrain, undefined);
   // 169016 and 171218: a stoop to the left bel-etage door; the balcony one row over the bel-etage (D storey 1 + souterrain).
   for (const id of ['0363100012169016', '0363100012171218']) {
     assert.deepEqual(by(id).stoop, { side: 'left' });
@@ -204,6 +209,6 @@ test('series members draw identical storey lines: one ground height and count fr
     const sr = out.properties.specRecipe as { groundM?: number; storeys?: number; eavesM?: number };
     return [sr.groundM, sr.storeys, out.properties.roofEavesHeightM];
   });
-  assert.ok(lines[0][0] !== undefined && lines[0][0] > 3);
+  assert.ok(Number(lines[0][0]) > 3);
   for (const l of lines) assert.deepEqual(l, lines[0]);
 });

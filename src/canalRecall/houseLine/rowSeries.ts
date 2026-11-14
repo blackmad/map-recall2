@@ -17,14 +17,18 @@ import { headsList } from '../houseSpec/row/solve.ts';
 import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
-const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows']);
+const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
+/** A raised ground over low basement windows with no stoop read (Weteringschans 168096, `basement: 'windows'`): the
+ *  basement row is this share of the upper pitch (lower than a souterrain's SOUTERRAIN_FACTOR). */
+export const BASEMENT_WINDOWS_FACTOR = 0.35;
 
 /** A stated stoop (ground basement `stoop` / `stoop-and-windows`) and the street door's side; none stated: none drawn. */
-function stoopOf(fronts: readonly RowFront[]): { stoop: { side: 'left' | 'right' | 'centre' } } | null {
-  const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows');
+function stoopOf(fronts: readonly RowFront[]): { stoop: NonNullable<RowSeriesDraw['stoop']> } | null {
+  const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows' || x.ground.basement === 'windows');
   if (!f) return null;
   const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
-  return side ? { stoop: { side } } : null;
+  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false).
+  return side ? { stoop: { side, ...(f.ground.basement === 'windows' ? { steps: false as const } : {}) } } : null;
 }
 /** The street door as read on the pand's first front with one (left/right/centre; index of the ground openings). */
 function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw['door']> } {
@@ -44,13 +48,13 @@ function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {
   return {};
 }
 /** Named ground colours a reading may state, as drawn. */
-export const GROUND_COLOURS: Readonly<Record<string, string>> = { white: '#efece4', cream: '#e4d9bf', black: '#1f1d1b', dark: '#2c2824', grey: '#6b6b68', red: '#9b2a24', green: '#3f6b4c', blue: '#2f4a6b', brown: '#4a3426' };
+export const GROUND_COLOURS: Readonly<Record<string, string>> = { white: '#efece4', light: '#e3ddcf', timber: '#6b4a2f', cream: '#e4d9bf', black: '#1f1d1b', dark: '#2c2824', grey: '#6b6b68', red: '#9b2a24', green: '#3f6b4c', blue: '#2f4a6b', brown: '#4a3426' };
 /** The ground colour the record states (`ground.colour`, a hex or a name in GROUND_COLOURS); `shopPaint` is not read:
  *  the integrator routes reviewed colours through `ground.colour` (Kinkerstraat 106-108's shopPaint said white, the
  *  photo shows a dark front). */
 function groundColourOf(fronts: readonly RowFront[]): { groundHex?: string } {
   for (const f of fronts) {
-    const c = (f.ground as { colour?: unknown }).colour;
+    const raw = (f.ground as { colour?: unknown }).colour, c = raw && typeof raw === 'object' ? (raw as { value?: unknown }).value : raw;
     if (typeof c !== 'string') continue;
     const hex = /^#[0-9a-f]{6}$/i.test(c) ? c.toLowerCase() : GROUND_COLOURS[c.toLowerCase()];
     if (hex) return { groundHex: hex };
@@ -103,6 +107,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
+    ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) && fronts.every(f => f.ground.basement === 'windows' || !SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrainFactor: BASEMENT_WINDOWS_FACTOR } : {}),
     ...(stoopOf(fronts) ?? {}),
     ...doorOf(fronts),
     ...shopOf(fronts),

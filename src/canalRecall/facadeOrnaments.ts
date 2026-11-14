@@ -396,6 +396,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
+    if (c.rowDress?.stoop?.steps === false) return;
     // The flight stays within the pavement (STOOP.reach out from the wall): a tall bel-etage gets steeper treads.
     const tread = n > 1 ? Math.min(STOOP.tread, (STOOP.reach - STOOP.landing) / (n - 1)) : STOOP.tread;
     for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);

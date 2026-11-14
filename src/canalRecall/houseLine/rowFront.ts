@@ -97,7 +97,9 @@ export interface RowSeriesDraw {
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
   look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean };
   /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
-  stoop?: { side: 'left' | 'right' | 'centre' };
+  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false };
+  /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
+  souterrainFactor?: number;
   /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */
   door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number };
   /** The ground storey's use: a shop ground draws the shop window (specShop), a dwelling ground none. */
@@ -478,7 +480,8 @@ export function withRowFront<T extends Feature>(feature: T): T {
     const sr2 = lv.specRecipe;
     if (sr2 && rec.series.souterrain) {
       sr2.souterrain = true;
-      if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(SOUTERRAIN_FACTOR * top / (rec.storeys + SOUTERRAIN_FACTOR)).toFixed(2) });
+      const k = rec.series.souterrainFactor ?? SOUTERRAIN_FACTOR;
+      if (!sr2.windowBoxes && rec.storeys && rec.storeys >= 1) Object.assign(sr2, { storeys: rec.storeys + 1, groundM: +(k * top / (rec.storeys + k)).toFixed(2) });
     } else if (sr2 && !sr2.windowBoxes && rec.storeys && rec.storeys >= 2) {
       // Series members draw identical storey lines: the ground storey is ROW_GROUND_FACTOR of the upper pitch, from the
       // series line and count alone (the mesher's own fit scaled it with each front's width: Kinkerstraat 102 3.59 m,

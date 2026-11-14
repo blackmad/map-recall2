@@ -60,7 +60,7 @@ export type RowDressContext = {
   windows?: Array<{ x0: number; x1: number; z0: number; z1: number; storey: number } & RowHeadKind>;
   heads?: Array<{ x0: number; x1: number; storeys?: number[] } & RowHeadKind>;
   /** A stoop up to a bel-etage street door over a souterrain, the door at this end of the wall as laid out (x grows). */
-  stoop?: { end: 'start' | 'end' | 'centre' };
+  stoop?: { end: 'start' | 'end' | 'centre'; /** false: the raised door only, no steps read. */ steps?: false };
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
 };
