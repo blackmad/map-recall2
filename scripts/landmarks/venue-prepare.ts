@@ -43,6 +43,8 @@ export const VENUES: Record<string, Venue> = {
     address: "Piet Heinkade 1-3, Amsterdam (Muziekgebouw aan 't IJ and the Bimhuis)", sources: [wiki('Muziekgebouw_aan_%27t_IJ', "Muziekgebouw aan 't IJ"), wiki('Bimhuis')]},
   'q-factory': {pand: '0363100012158881', label: 'Atlantisplein 1 (Q-Factory, 2009, on the former Amstel brewery site)',
     address: 'Atlantisplein 1, Amsterdam (Q-Factory)', sources: [wiki('Amstel_Brouwerij', 'Amstel Brouwerij')]},
+  'westergas-bazenwoning-west': {pand: '0363100012161595', label: 'Gosschalklaan 8 (Westergasfabriek, western foremen\'s house, 1885)',
+    address: 'Gosschalklaan 8, Amsterdam (Westergasfabriek)', sources: [wiki('Westergasfabriek'), rce(337633, 'Westergasfabriek')]},
   'meervaart': {pand: '0363100012085435', label: 'Meer en Vaart 300 (Theater De Meervaart)',
     address: 'Meer en Vaart 300, Amsterdam (De Meervaart)', sources: [wiki('Meervaart')]},
 };
