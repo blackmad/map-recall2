@@ -40,6 +40,11 @@ interface CanalRecallGameGlobals {
 }
 
 const config: CanalRuntimeConfig = window.CANAL_RUNTIME_CONFIG ?? {};
+
+/** `?sentryWrap=1`: keep Sentry's BrowserApiErrors callback wrapping (off by default since 2026-11-14). */
+function sentryWrap(): boolean {
+  try { return new URLSearchParams(window.location.search).get('sentryWrap') === '1'; } catch { return false; }
+}
 const enabled = Boolean(config.sentryDsn);
 
 if (enabled) {
@@ -53,6 +58,14 @@ if (enabled) {
     initialScope: { tags: { app: 'canal-recall' } },
     // Third-party and dead-GPU noise; see monitoringFilters.ts (unit-tested).
     ignoreErrors: [...IGNORED_ERRORS],
+    // No BrowserApiErrors (lane LS, 2026-11-14): it wraps every setTimeout, setInterval, requestAnimationFrame,
+    // addEventListener and XHR callback in a try/catch, so Long Animation Frame attributions named
+    // monitoring.bundle.js instead of the callback that ran long (the CANAL-RECALL-T stall hunt). Uncaught errors
+    // in those callbacks still reach Sentry through GlobalHandlers (window.onerror / unhandledrejection) with the
+    // same stack; what goes is the `auto.browser.browserapierrors.*` mechanism (the callback kind) and the full
+    // Error from a cross-origin script loaded without `crossorigin` (that arrives as "Script error."). Our ride
+    // scripts are same-origin. `?sentryWrap=1` puts the wrapping back.
+    integrations: defaults => (sentryWrap() ? defaults : defaults.filter(i => i.name !== 'BrowserApiErrors')),
     // Sentry's own global handlers capture uncaught errors and unhandled
     // rejections; the route tags ride on every event from here. (The page
     // used to capture them a second time from its own listeners below, so
