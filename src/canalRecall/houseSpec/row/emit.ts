@@ -84,7 +84,7 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
     if (!base && bm && bm !== 'none') {
       const g: RowField<unknown> = { value: bm, source: 'single-read', ref: `${f.pandId} reading: basement ${bm}` };
       if ((BASEMENTS as readonly string[]).includes(bm)) put(P + 'basement', bm, g);
-      put(P + 'souterrain', true, g);
+      if (bm !== 'windows') put(P + 'souterrain', true, g);
     }
     const rs = d.roofStorey.value;
     put(P + 'roofStorey', rs.kind, d.roofStorey);

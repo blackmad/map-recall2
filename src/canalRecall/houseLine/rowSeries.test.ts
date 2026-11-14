@@ -72,7 +72,7 @@ test('the series draws no extras beyond ROW_FRONT_EXTRAS unless the series state
   // Weteringschans: only the bands each house's reading states (lane D, integrator 2026-11-14: read and drawn, not dropped)
   // plus the kit parts its gaps name (balcony, porch, rusticated souterrain; lane R round 2)
   const wx = Object.fromEntries(W.map(r => [r.pandId.slice(-6), r.series!.extras ? [...r.series!.extras].sort() : undefined]));
-  assert.deepEqual(wx, { 168096: ['floor-cornices'], 168042: undefined, 169016: ['floor-cornices', 'row-balcony', 'row-porch', 'string-courses'], 171218: ['row-balcony', 'row-porch', 'row-rustication', 'speklagen'] });
+  assert.deepEqual(wx, { 168096: ['floor-cornices'], 168042: undefined, 169016: ['floor-cornices', 'row-balcony', 'row-porch', 'speklagen', 'string-courses'], 171218: ['row-balcony', 'row-porch', 'row-rustication', 'speklagen'] });
   const none = seriesDraw([{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 5, seriesId: 's', ground: { use: 'dwelling' }, overrides: {}, topM: 12 }],
     [{ ...solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design, extras: { value: ['window-sills', 'speklagen'], source: 'face-intent', ref: 't' } }]);
   assert.deepEqual(none.extras, ['speklagen']);
