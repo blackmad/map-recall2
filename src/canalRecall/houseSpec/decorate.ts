@@ -240,6 +240,15 @@ export function withWallExposure(view: HouseSpecView): HouseSpecView {
   return wall === view.wallHex ? view : { ...view, wallHex: wall };
 }
 
+/** A render (stucco) front read from a photo darker than this OKLab L draws the light period colour (houseSpecPatch). */
+export const RENDER_MIN_L = 0.6;
+/** Ring tranche round 2 (2026-11-14): a front a photo reader states is render (`palette.wallMaterial: stucco`) draws the
+ *  smooth painted cells by default, without `?wallFinish=1`. Painted brick stays brick unless the flag is on (the paint can
+ *  be black, and the spec carries no pale reading). A spec without that read is untouched. */
+export function readRender(view: Pick<HouseSpecView, 'wallMaterial' | 'src'>): 'painted' | null {
+  return view.wallMaterial === 'stucco' && PHOTO_GABLE_SOURCES.has(view.src?.wallMaterial ?? '') ? 'painted' : null;
+}
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   view = withWallExposure(view);
@@ -275,8 +284,11 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   }
   // Lane WC (`?wallFinish=1`): render, painted and stone fronts draw smooth cells; a stone front without a drawn reading
   // takes the city stone, and a held stone/render wall does not fall back to brick.
-  const smoothFinish = wallFinishOn() ? smoothFinishOf(view.wallMaterial, view.wallStone) : null;
+  const smoothFinish = wallFinishOn() ? smoothFinishOf(view.wallMaterial, view.wallStone) : readRender(view);
   if (smoothFinish) {
+    // A photo-read render front is pale: a drawn reading darker than RENDER_MIN_L (shade, soot, a misread neighbour)
+    // keeps the light period colour instead (ring tranche round 2: Weteringschans 169553, Plantage 170505 drew as dark brick).
+    if (smoothFinish === 'painted' && view.wallMaterial === 'stucco' && recipe.wallHex && hexToOklab(recipe.wallHex)[0] < RENDER_MIN_L) delete recipe.wallHex;
     recipe.finish = smoothFinish;
     if (recipe.heldBrick) delete recipe.heldBrick;
     // Natural stone is pale: a reading below STONE_MIN_L is shade, soot or a misread neighbour (171970 read #3f3e3c, a white
@@ -369,6 +381,16 @@ export function crownInGeometry(p: Props): boolean | null {
   return typeof rise === 'number' && Number.isFinite(rise) ? rise >= CROWN_RISE_M : null;
 }
 const PITCHED_CROWNS = new Set(['gable', 'pitched']);
+/** Roof plans with a mansard (roofMesh RoofKind): a cornice front over one keeps it. */
+export const MANSARD_KINDS: ReadonlySet<string> = new Set(['mansard', 'mansardHip']);
+/** Whether a photo cornice crown leaves the roof to the planner: the view states a mansard roof storey, or the planner
+ *  (without any measured gable) plans a mansard for the footprint. */
+export function corniceKeepsMansard(view: HouseSpecView, feature: { properties: Props }, planKind: (f: { properties: Props }) => string | null = plannedKind): boolean {
+  if (view.roofStorey === 'mansard') return true;
+  const { monumentGable: _g, ...rest } = feature.properties;
+  const k = planKind({ ...feature, properties: rest });
+  return !!k && MANSARD_KINDS.has(k);
+}
 /** The roof planner's own crown kind for a feature without a register gable (roofMesh roofPlanForFeature), or null. */
 const plannedKind = (feature: { properties: Props }): string | null => {
   try { return roofPlanForFeature(feature as unknown as Parameters<typeof roofPlanForFeature>[0])?.kind ?? null; } catch { return null; }
@@ -376,9 +398,12 @@ const plannedKind = (feature: { properties: Props }): string | null => {
 
 /** Decorator step after withMonumentGable: the crown in trust order (photo, then register, then weaker spec sources),
  *  then the register gable gate. Same object back when nothing changes. */
-export function withHouseSpecCrown<T extends { properties: Props }>(feature: T, mode: RegisterGableMode = modeNow): T {
+export function withHouseSpecCrown<T extends { properties: Props }>(feature: T, mode: RegisterGableMode = modeNow, planKind: (f: { properties: Props }) => string | null = plannedKind): T {
   const p = feature.properties, view = withFieldCrown(viewOf(p));
   const photo = !!view?.gable && PHOTO_GABLE_SOURCES.has(view.src.gable ?? '') && !excluded(p);
+  // A photo cornice is the front's ledge, not the roof: over a mansard (a stated roof storey, or the planner's own mansard
+  // from 3DBAG) it leaves the roof alone (ring tranche round 2: Weteringschans 169476 and 172727 lost their slate mansards).
+  if (photo && view!.gable === 'cornice' && corniceKeepsMansard(view!, feature, planKind)) return feature;
   if (photo) {
     // An author's flat front over a register gable takes the cornice crown (lane H9, the Raadhuisstraat arcade
     // 0363100012176346), the register gable kept as historicGable. A photo reading of a flat front instead drops the

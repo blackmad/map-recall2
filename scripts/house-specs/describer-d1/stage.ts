@@ -45,7 +45,10 @@ export const STAGED: Record<string, ((v: unknown, a: DescriberAnswer) => boolean
   'fronts/0/basement': (_v, a) => a.image.kind === 'crop',
   'palette/wallMaterial': () => true,
   // the answered crown class decides (a `mansard` answer compiles to gable cornice + roofFront mansard: precision 0.33, not staged)
-  'fronts/0/gable': (_v, a) => a.crown === 'cornice' || a.crown === 'step' || CURVED.has(String(a.crown)),
+  // ring tranche round 2: a cornice under a mansard the reader saw (storeyParts.roof `mansard`) is the eaves ledge, not the
+  // crown; staging it flattened the slate roof (Weteringschans). The generic route also keeps a planned mansard
+  // (decorate.ts corniceKeepsMansard).
+  'fronts/0/gable': (_v, a) => (a.crown === 'cornice' && a.storeyParts?.roof !== 'mansard') || a.crown === 'step' || CURVED.has(String(a.crown)),
   'fronts/0/windowHead': v => ['flat', 'segmental'].includes((v as { kind?: string })?.kind ?? ''),
   'fronts/0/cornice': v => v === 'none',
   // prompt v4.3 reads, stored with their receipt and held for every route (HELD_FOR_ALL_ROUTES) until scored (extras.ts)
