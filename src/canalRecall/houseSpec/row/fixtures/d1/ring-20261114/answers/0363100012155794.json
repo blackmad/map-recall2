@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012155794",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first- and second-floor windows sit under brick arches whose tympana are filled with decorative brick or tile infill"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam stands on the roof over the middle bay"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

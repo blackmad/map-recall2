@@ -22,10 +22,24 @@ const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['reci
   'historic-balcony-stack': { family: 'masonry', period: 'c19', confidence: .8, facadeAssembly: 'stacked-iron-balcony', sash: 'paired-transom', frameHex: '#ece7db', trimDensity: 'restrained' },
 };
 // Components the dice never pick (p 0): drawn only when a register or a spec forces them (registerForce; houseSpec/routeAFields.ts), still built and checked here.
-const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen']);
+// row-cornice, row-heads: house rows (lane R), drawn only when a row series states them (rowDress); never rolled.
+const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop']);
+// A row series' stated dressing (houseLine/rowFront.ts RowSeriesDraw via the mesher's rowDress): the three head kinds
+// across the wall in thirds under a heavy cornice, so row-heads and row-cornice build every branch.
+const rowDressFor = (c: ExtraContext): ExtraContext => {
+  const L = c.f.len;
+  return { ...c, streetSide: true, seriesId: 'check:row', rowDress: { cornice: 'heavy', heads: [
+    { x0: 0, x1: L / 3, shape: 'flat', dressing: 'block-course' },
+    { x0: L / 3, x1: 2 * L / 3, shape: 'flat', dressing: 'keystone' },
+    { x0: 2 * L / 3, x1: L, shape: 'segmental', dressing: 'segmental-tympanum' },
+    { x0: 0, x1: L / 2, shape: 'flat', dressing: 'jack-blocks', storeys: [2] },
+    { x0: L / 2, x1: L, shape: 'round', dressing: 'arch-ring', storeys: [2] },
+  ], stoop: { end: 'start' }, balcony: { storeys: [1], axis: 'centre' } } } as ExtraContext;
+};
 const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];
-  return wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});
+  const c = wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});
+  return id.startsWith('row-') ? rowDressFor(c) : c;
 };
 const finite = (s: ExtraSink, what: string) => {
   for (const t of s.tris) { assert.ok(t.p.flat().every(Number.isFinite), `${what}: finite`); assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6, `${what}: unit normal`); }
@@ -100,7 +114,9 @@ for (const comp of WALL_COMPONENTS) {
     }
     if (forced) {
       const stated = { ...c, registerForce: [comp.id] };
-      assert.ok(wallExtras(stated, new ExtraSink(EXTRA_BUDGET.building)).includes(comp.id), `${comp.id}/${style}: a stated force draws it`);
+      // A row street wall's budget is raised by buildingWallExtras (EXTRA_BUDGET.rowWall); the check's sink mirrors it.
+      const budget = comp.id.startsWith('row-') ? EXTRA_BUDGET.building + 2 * EXTRA_BUDGET.rowWall : EXTRA_BUDGET.building;
+      assert.ok(wallExtras(stated, new ExtraSink(budget)).includes(comp.id), `${comp.id}/${style}: a stated force draws it`);
       assert.ok(!wallExtras(c, new ExtraSink(EXTRA_BUDGET.building)).includes(comp.id), `${comp.id}/${style}: unstated, never drawn`);
     }
     if (explicit) {
