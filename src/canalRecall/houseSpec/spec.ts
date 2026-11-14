@@ -21,6 +21,7 @@ import {
 import type { HouseDesign } from '../blockFace/intent.ts';
 import { isWallExposureFact } from './wallExposure.ts';
 import { isWallSampleFact } from './wallSample.ts';
+import { isWallJudgedFact } from './judgedColour.ts';
 import { SOURCE_STRENGTH, type FacadeSource } from '../facade/evidence.ts';
 
 export type { HouseDesign };
@@ -153,6 +154,9 @@ export interface SpecFacts {
   /** Lane d1-wall-colour: the receipt of a wall sample v2 staging (houseSpec/wallSample.ts, `WALL_SAMPLE=2`): the raw sample, each
    *  capture's exposure correction, the standard-capture estimate, the drawn wall aimed at and the staged `palette/brick`. Never drawn. */
   wallSample?: import('./wallSample.ts').WallSampleFact;
+  /** Lane d1-colour-judged (docs/house-line.md §16): the receipt of a judged wall colour (houseSpec/judgedColour.ts): the
+   *  family, the staged tone (`palette/brick`), the signal that decided it and the hints. Never drawn. */
+  wallJudged?: import('./judgedColour.ts').WallJudgedFact;
 }
 
 export interface HouseSpec {
@@ -302,6 +306,7 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/wallExposure' && !isWallExposureFact(value)) p.push(`${path}: {off, floor, gain, norm} colours and a gain g`);
     else if (path === 'facts/wallSample' && !isWallSampleFact(value)) p.push(`${path}: {v: 2, raw, estimate, drawn, brick, captures}`);
+    else if (path === 'facts/wallJudged' && !isWallJudgedFact(value)) p.push(`${path}: {v: 1, source: judged, family, hex, by, why}`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
     else if (path === 'facts/groundKind' && !['shop', 'door-only', 'dwelling', 'warehouse'].includes(value as string)) p.push(`${path}: shop|door-only|dwelling|warehouse`);
     else if (path === 'facts/historicGable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);
