@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012157230",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "souterrain": false,
+    "readDormers": {
+     "count": 1,
+     "kind": "plain"
+    }
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157230.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157230.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157230.jpg",
+   "at": "2026-11-14"
+  }
+ }
+}

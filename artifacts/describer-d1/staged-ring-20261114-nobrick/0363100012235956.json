@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012235956",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 1,
+    "bands": "courses",
+    "souterrain": false,
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 1,
+     "kind": "gabled"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": true,
+    "rowHeads": [
+     "round"
+    ],
+    "archedStoreys": [
+     0
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/archedStoreys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "a stepped-gable wall dormer rising through the eaves with a cross window on a dentil sill"
+  },
+  {
+   "component": "door",
+   "what": "a large round-arched glazed entrance with light stone block voussoirs"
+  },
+  {
+   "component": "relief",
+   "what": "a corbelled brick frieze along the eaves"
+  }
+ ]
+}

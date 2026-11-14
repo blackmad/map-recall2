@@ -1,0 +1,74 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012161941",
+ "design": {
+  "fronts": [
+   {
+    "bays": 4,
+    "gable": "cornice",
+    "readBalconies": [
+     3
+    ],
+    "readDormers": {
+     "count": 1,
+     "kind": "gabled"
+    },
+    "readBayWindow": [
+     1,
+     2
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161941.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white two-storey bay window on the third axis carrying a balconette above"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a raised brick wall gable with white pilaster panels and a crest over the three right axes, above a white balustrade band"
+  }
+ ]
+}

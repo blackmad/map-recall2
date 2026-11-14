@@ -1,0 +1,135 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012235948",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "bands": "lintel",
+    "souterrain": false,
+    "gable": "neck",
+    "cornice": "none",
+    "readBalconies": [],
+    "readDormers": {
+     "count": 0,
+     "kind": "none"
+    },
+    "readBayWindow": [],
+    "readDoorSurround": false,
+    "rowHeads": [
+     "flat",
+     "relieving",
+     "relieving"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDoorSurround": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235948.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "relieving arches over the upper windows have white voussoir blocks and a patterned brick tympanum"
+  },
+  {
+   "component": "shopfront",
+   "what": "a timber shopfront between pilasters with anchor-shaped console blocks under the fascia"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a hoist hook over the gable window under a white-edged curved gable top"
+  }
+ ]
+}
