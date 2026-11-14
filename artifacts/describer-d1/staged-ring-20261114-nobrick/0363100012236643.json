@@ -10,7 +10,6 @@
      "kind": "flat"
     },
     "souterrain": false,
-    "gable": "cornice",
     "readBalconies": [],
     "readDormers": {
      "count": 1,
@@ -44,12 +43,6 @@
    "at": "2026-11-14"
   },
   "fronts/0/souterrain": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236643.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/gable": {
    "source": "vision-judge",
    "confidence": 0.7,
    "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236643.jpg",
