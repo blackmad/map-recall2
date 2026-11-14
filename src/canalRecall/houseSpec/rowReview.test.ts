@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseReview } from './rowReview.ts';
+import { parseReview, detectMode } from './rowReview.ts';
 
 const full = (over: Record<string, string> = {}) => ['same-houses', 'roof-line', 'colour-family', 'white-amount', 'roof-storey-dormers', 'window-rhythm-dressings', 'invented']
   .map(b => over[b] ?? `${b} | ALL | PASS | fine`).join('\n');
@@ -20,3 +20,12 @@ test('malformed or incomplete answers are invalid, never a pass', () => {
 test('bulleted and quoted lines parse', () => assert.equal(parseReview(full().split('\n').map(l => `- ${l}`).join('\n')).verdict, 'pass'));
 test('an overall FAIL blocks', () => assert.equal(parseReview(full() + '\noverall | ALL | FAIL | not recognisable').verdict, 'blocked'));
 test('white-amount blocks', () => assert.equal(parseReview(full({ 'white-amount': 'white-amount | 98 | FAIL | speklagen far too heavy' })).verdict, 'blocked'));
+
+const bo = (over: Record<string, string> = {}) => ['same-houses', 'roof-line', 'colour-family', 'white-amount', 'invented'].map(b => over[b] ?? `${b} | ALL | PASS | fine`).join('\n');
+test('blocking-only mode: five blocks, any FAIL blocks, ornament not required', () => {
+  assert.equal(detectMode(bo()), 'blocking-only'); assert.equal(detectMode(full()), 'full');
+  assert.equal(parseReview(bo()).verdict, 'pass');
+  assert.equal(parseReview(bo({ invented: 'invented | 90 | FAIL | frieze invented' })).verdict, 'blocked');
+  assert.equal(parseReview(bo().replace(/invented.*/, '')).verdict, 'invalid');
+  assert.equal(parseReview(full({ invented: 'invented | 90 | FAIL | x' }), undefined, 'full').verdict, 'pass-with-fails');
+});

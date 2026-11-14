@@ -2,8 +2,9 @@
 import fs from 'node:fs';
 import { parseReview, formatReview } from '../../../src/canalRecall/houseSpec/rowReview.ts';
 const [file, ...rest] = process.argv.slice(2);
-if (!file) { console.error('usage: parse-review.ts <answer.txt> [--houses a,b,c]'); process.exit(2); }
+if (!file) { console.error('usage: parse-review.ts <answer.txt> [--houses a,b,c] [--mode full|blocking-only|auto]'); process.exit(2); }
 const hi = rest.indexOf('--houses');
-const r = parseReview(fs.readFileSync(file, 'utf8'), hi >= 0 ? rest[hi + 1].split(',') : undefined);
+const mi = rest.indexOf('--mode');
+const r = parseReview(fs.readFileSync(file, 'utf8'), hi >= 0 ? rest[hi + 1].split(',') : undefined, mi >= 0 ? rest[mi + 1] as 'full' | 'blocking-only' | 'auto' : 'auto');
 console.log(formatReview(r));
 process.exit(r.verdict === 'pass' || r.verdict === 'pass-with-fails' ? 0 : 1);

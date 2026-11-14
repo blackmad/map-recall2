@@ -17,3 +17,7 @@ A row passes only when someone who did not build it, looking at two strips and n
 - The builder never reviews. Sonnet does not review its own pairs. A reviewer that has seen earlier strips of the row is not fresh.
 - A Weteringschans label is a BAG number id (e.g. 169016), not a house number.
 - A pass here is the gate for sending the first row of a kind to David; it does not replace David's sign-off.
+
+## Blocking-only mode
+
+For rounds after the first, run the reviewer with the prompt's "Blocking-only mode" section: it also gets `blind/rule10-photo.jpg` and `blind/rule10-drawn.jpg` (written when the sheet is run with `--rule10 <dir>`). Five blocks, any FAIL blocks; ornament is read from the sheet's "Known differences" list, not judged. `parse-review.ts` detects the mode from the answer (or `--mode full|blocking-only`).

@@ -25,3 +25,13 @@ Blocks, in this order:
 If a house cannot be judged for a block (hidden by scaffolding, not read), write `PASS` with the reason `not judgeable` only if you truly cannot tell; otherwise judge it.
 
 Finish with one extra line: `overall | ALL | PASS or FAIL | <one sentence: would this row be recognised?>`.
+
+## Blocking-only mode
+
+Use this variant when the brief says "blocking-only". You get the rule-10 pair (`rule10-photo.jpg` beside `rule10-drawn.jpg`: a first-person frame of the row, photo and drawing at the same pose), the strips and the zoom pairs. Judge the roof line and the roof storey from the rule-10 pair; judge windows, bands, heads and white from the strips and zooms. Ornament (voussoir splay, friezes, tympana, dormer richness) is not judged in this mode: do not fail a house for it.
+
+Answer with the same line format, only these five blocks, in this order (omit `roof-storey-dormers` and `window-rhythm-dressings`):
+
+- `same-houses`, `roof-line`, `colour-family`, `white-amount`, `invented` (definitions as above; roof-storey and dormer faults go under `roof-line`, window, band and head faults under `white-amount` or `invented`).
+
+Any FAIL among them blocks the row. Finish with the `overall` line as before.

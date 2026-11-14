@@ -1,7 +1,7 @@
 /**
  * Row strip sheet (lane P, house rows first): one street side, consecutive, every front, three strips at one scale.
  *
- *   npm run house:row-sheet -- <row> [--ppm 40] [--out <dir>] [--drawn-env K=V,K=V] [--drawn-specs <dir>] [--drawn-label <text>] [--reread-cuts <dir>] [--list]
+ *   npm run house:row-sheet -- <row> [--ppm 40] [--out <dir>] [--drawn-env K=V,K=V] [--drawn-specs <dir>] [--drawn-label <text>] [--reread-cuts <dir>] [--rule10 <dir>] [--list]
  *
  *   photo   the captures the D1 reader actually saw (the cut in the describer's cuts dir, cropped to its cyan outline
  *           and scaled to the front's width), NOT pickLikeness's capture;
@@ -11,7 +11,8 @@
  *
  * Writes <out>/sheet.jpg (all three, labelled, with a metre grid), and the blind pair for the row review:
  * <out>/blind/photo.jpg and <out>/blind/drawn.jpg (two strips at one scale, house numbers only, no conditions named),
- * plus <out>/blind/zoom/<label>.jpg (per front: photo crop | drawn crop at 3x the strip scale) and <out>/manifest.json. A front whose shown
+ * Lead with the rule-10 triptych (--rule10 <dir> holding photo.jpg, morning.jpg, now.jpg from house:frames: photo | this morning's flag-off frame | now),
+ * end with the row's known differences (known-differences/<row>.json, ordered by sharedBy). plus <out>/blind/zoom/<label>.jpg (per front: photo crop | drawn crop at 3x the strip scale) and <out>/manifest.json. A front whose shown
  * capture is not the first read (--reread-cuts <dir> of jpgs + cuts.json, or a different capture date) is labelled on the sheet. Rows are defined in scripts/house-specs/rows/rows.json. Renders are cached by condition.
  * The sheet does not judge likeness; a fresh reviewer reads it (scripts/house-specs/rows/blind-review.md).
  */
@@ -23,6 +24,12 @@ import { loadRowDefs, cutPath, REPO, type RowDef } from './rowDefs.ts';
 
 const argv = process.argv.slice(2);
 const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
+export interface KnownDifference { front: string; what: string; sharedBy: string[] | number; kitCanSay: boolean | 'partly' | 'unknown'; question?: string }
+/** Known differences ordered by how many fronts share each (most first), stable on file order. */
+export function knownDifferences(list: KnownDifference[]): Array<KnownDifference & { count: number }> {
+  return list.map((k, i) => ({ ...k, count: Array.isArray(k.sharedBy) ? k.sharedBy.length : k.sharedBy, i })).sort((a, b) => b.count - a.count || a.i - b.i).map(({ i: _i, ...k }) => k);
+}
+const wrap = (t: string, n: number): string[] => { const out: string[] = []; let cur = ''; for (const w of t.split(' ')) { if ((cur + ' ' + w).length > n && cur) { out.push(cur); cur = w; } else cur = cur ? cur + ' ' + w : w; } if (cur) out.push(cur); return out; };
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 /** Bounding box of the cyan outline pixels the cutter draws round the front (r low, g and b high). */
@@ -156,14 +163,36 @@ async function main() {
     lay.push({ input: Buffer.from(`<svg width="${2 * w + 8}" height="24" xmlns="http://www.w3.org/2000/svg"><text x="4" y="17" font-size="15" font-weight="bold" fill="#fff" font-family="Helvetica">${esc(m.label)}</text><text x="${w + 12}" y="17" font-size="13" fill="#ccc" font-family="Helvetica">drawing</text></svg>`), left: 0, top: 0 });
     await sharp({ create: { width: 2 * w + 8, height: 24 + hh, channels: 3, background: sh ? '#111' : '#555' } }).composite(lay).jpeg({ quality: 88 }).toFile(path.join(zoomDir, `${m.label.replace(/[^\w-]+/g, '-')}.jpg`));
   }
-  const rowsBlocks: Array<[string, Buffer]> = [['photo: the captures the D1 reader saw, cropped to the front outline, scaled to the front width', photoStrip], [drawnLabel, drawnStrip], ['today: this morning\'s drawing (installed extracts, no row flags)', todayStrip]];
-  const total = head + band + rowsBlocks.length * (H + band + 4);
-  const layers: sharp.OverlayOptions[] = [
-    { input: Buffer.from(`<svg width="${W}" height="${head}" xmlns="http://www.w3.org/2000/svg"><text x="6" y="21" font-size="17" fill="#eee" font-family="Helvetica">${esc(def.title)} · ${ppm} px/m · left to right as seen from the street</text></svg>`), left: 0, top: 0 },
-    { input: labelBand(band, numLabels), left: 0, top: head },
-  ];
-  rowsBlocks.forEach(([t, img], i) => { const top = head + band + i * (H + band + 4); layers.push({ input: blindHead(t), left: 0, top }, { input: img, left: 0, top: top + band }); });
-  await sharp({ create: { width: W, height: total, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));
+  // Layout: rule-10 triptych (photo | this morning | now) first, then the strips, then the row's known differences.
+  const CW = Math.max(W, 1500), PAD = 8;
+  const colW = Math.floor((CW - 2 * PAD) / 3), colH = Math.round(colW * 0.625);
+  const r10dir = arg('rule10');
+  const r10 = ['photo', 'morning', 'now'].map(n => r10dir ? ['jpg', 'png', 'jpeg'].map(e => path.join(r10dir, `${n}.${e}`)).find(f => fs.existsSync(f)) ?? null : null);
+  const r10Cap = ['photo (rule-10 pose)', 'this morning: flag-off in-game frame, same pose', 'now: the drawing under this change'];
+  const layers: sharp.OverlayOptions[] = [];
+  let y = 0;
+  const textBlock = (lines: string[], size: number, fill: string) => Buffer.from(`<svg width="${CW}" height="${lines.length * (size + 6) + 8}" xmlns="http://www.w3.org/2000/svg">${lines.map((l, i) => `<text x="6" y="${(i + 1) * (size + 6)}" font-size="${size}" fill="${fill}" font-family="Helvetica">${esc(l)}</text>`).join('')}</svg>`);
+  const put = (input: Buffer, h: number) => { layers.push({ input, left: 0, top: y }); y += h; };
+  put(textBlock([`${def.title} · row sheet`], 17, '#eee'), 30);
+  if (r10.some(Boolean)) {
+    put(Buffer.from(`<svg width="${CW}" height="22" xmlns="http://www.w3.org/2000/svg">${r10Cap.map((c, i) => `<text x="${i * (colW + PAD) + 4}" y="16" font-size="13" fill="#ccc" font-family="Helvetica">${esc(c)}</text>`).join('')}</svg>`), 22);
+    for (let i = 0; i < 3; i++) layers.push(r10[i]
+      ? { input: await sharp(r10[i]!).resize(colW, colH, { fit: 'contain', background: '#222' }).png().toBuffer(), left: i * (colW + PAD), top: y }
+      : { input: Buffer.from(`<svg width="${colW}" height="${colH}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#333"/><text x="${colW / 2}" y="${colH / 2}" text-anchor="middle" font-size="14" fill="#aaa" font-family="Helvetica">not supplied (--rule10 &lt;dir&gt; with ${['photo', 'morning', 'now'][i]}.jpg)</text></svg>`), left: i * (colW + PAD), top: y });
+    y += colH + 10;
+    for (const [n, f] of [['photo', r10[0]], ['drawn', r10[2]]] as const) if (f) await sharp(f).jpeg({ quality: 90 }).toFile(path.join(out, 'blind', `rule10-${n}.jpg`));
+  } else put(textBlock(['rule-10 triptych (photo | this morning | now): not supplied. Pass --rule10 <dir> holding photo.jpg, morning.jpg, now.jpg from house:frames.'], 13, '#e0a030'), 28);
+  put(textBlock(['photo strip: perspective crop, foreshortened above the cornice (compare lines and rhythms, not heights); drawn strips are orthographic at the same width. ' + `${ppm} px/m, left to right as seen from the street.`], 13, '#e0a030'), 28);
+  put(labelBand(band, numLabels), band);
+  for (const [t, img] of [['photo strip (perspective crop, foreshortened above the cornice): the captures the D1 reader saw, cropped to the front outline, scaled to the front width', photoStrip], [drawnLabel, drawnStrip], ['today: this morning\'s drawing (installed extracts, no row flags)', todayStrip]] as Array<[string, Buffer]>) {
+    put(blindHead(t), band); layers.push({ input: img, left: 0, top: y }); y += H + 4;
+  }
+  // Known differences: what the drawing still cannot or does not say, ordered by how many fronts share it.
+  const kdFile = path.join(path.dirname(new URL(import.meta.url).pathname), 'known-differences', `${id}.json`);
+  const known = fs.existsSync(kdFile) ? knownDifferences(JSON.parse(fs.readFileSync(kdFile, 'utf8'))) : [];
+  const kdLines = known.length ? ['Known differences (ordered by fronts sharing it; kit = the kit can say it):', ...known.flatMap(k => wrap(`${k.count} front(s) [${k.front}] ${k.what}  (kit: ${String(k.kitCanSay)}${k.question ? `; question: ${k.question}` : ''})`, 190).map((l, i) => (i ? '      ' : ' - ') + l))] : [`Known differences: none recorded (scripts/house-specs/rows/known-differences/${id}.json)`];
+  put(textBlock(kdLines, 13, '#cfd8dc'), kdLines.length * 19 + 8);
+  await sharp({ create: { width: CW, height: y + 4, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));
   fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: shown[i]?.file ?? null, captureNote: shown[i]?.note ?? null, capture: shown[i]?.capture ?? null, firstReadCapture: shown[i]?.firstReadCapture ?? null, drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
   console.log(`${id}: ${def.members.length} fronts, ${missing.length} missing cuts, sheet ${path.join(out, 'sheet.jpg')}, blind pair ${path.join(out, 'blind')}`);
 }
