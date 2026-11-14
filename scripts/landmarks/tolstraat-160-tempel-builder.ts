@@ -60,9 +60,10 @@ export function buildTolstraat160Tempel(_w: number, _d: number, b: BuildingTools
   const [e0, e1] = [Math.min(sNotch0, sNotch1), Math.max(sNotch0, sNotch1)];
   const fEnd = foyer.project([-11.8, 5.2]) - 0.3;
   for (const [a, c] of [[0.3, e0 - 0.9], [e1 + 0.9, fEnd]]) {
-    sweep(foyer, a, c, box(-0.2, 0.07, 2.87, 3.48), 'glass');
-    mullions(foyer, a, c, 2.87, 3.48, 1.25, 0.07, 'blue');
-    sweep(foyer, a, c, box(-0.2, 0.36, 3.48, 3.8), 'white');
+    sweep(foyer, a, c, box(-0.2, 0.07, 2.8, 3.28), 'glass');
+    mullions(foyer, a, c, 2.8, 3.28, 1.25, 0.07, 'blue');
+    // the fascia stops 5 cm under the 3DBAG foyer wall top (3.56 m) so it does not stand above the wall
+    sweep(foyer, a, c, box(-0.2, 0.36, 3.28, 3.51), 'white');
     sweep(foyer, a, c, box(-0.2, 0.1, 0, 0.3), 'stone');
   }
   // entrance: blue glazed doors across the recessed notch, a white fascia bridging it
