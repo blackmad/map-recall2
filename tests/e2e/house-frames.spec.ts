@@ -106,13 +106,17 @@ async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' |
  */
 async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: BrowserContext) => Promise<void>): Promise<void> {
   const r10 = job.rule10!, size = { width: job.width, height: job.height };
-  const likeness = job.poses.filter(p => p.likeness);
-  if (likeness.length) {
+  // One page per query: a --lists batch's lists may each carry their own (`<list>:<out>@<query>`). Opening one page with
+  // the job's query drew every list's likeness frames with the first list's flags (lane retail-look-20261114: the
+  // retailGround=0 and =1 likeness frames came out byte-identical).
+  const groups = new Map<string, JobPose[]>();
+  for (const p of job.poses) if (p.likeness) { const q = p.query ?? job.query; groups.set(q, [...(groups.get(q) ?? []), p]); }
+  for (const [query, likeness] of groups) {
     const ctx = await browser.newContext({ viewport: size, deviceScaleFactor: r10.dpr });
     await routeContext(ctx);
     const page = await ctx.newPage();
     try {
-      await openPage(page, { ...job, query: [job.query.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
+      await openPage(page, { ...job, query: [query.replace(/^\?/, ''), r10.likenessQuery].filter(Boolean).join('&') });
       for (const pose of likeness) {
         const l = pose.likeness!, dir = join(pose.out ?? job.out, pose.key);
         try {
@@ -136,7 +140,9 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: Brow
       // The default engine and camera: the job's query only (no engine=own, no cam=fps unless the query asks).
       // 'relative' steering keeps the rider's heading: 'street' mode turns a parked rider onto the nearest street.
       // r10.asPlayedQuery pins the pixel ratio, governor and tier (rule10Frames.ts rule10Pins), as the likeness pages.
-      const q = [job.query.replace(/^\?/, ''), r10.asPlayedQuery ?? ''].filter(Boolean).join('&');
+      // A batch list's own query (its poses carry it), else the job's.
+      const listQuery = job.poses.find(p => p.out === a.out && p.query)?.query ?? job.query;
+      const q = [listQuery.replace(/^\?/, ''), r10.asPlayedQuery ?? ''].filter(Boolean).join('&');
       await openRoute(page, { travelMode: 'car', query: q ? `?${q}` : '', abortHeavyTiles: true, controlMode: 'relative' });
       await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
       await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
