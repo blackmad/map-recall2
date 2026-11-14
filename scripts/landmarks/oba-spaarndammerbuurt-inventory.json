@@ -34,7 +34,7 @@
      ],
      "plan": "simplified",
      "seenIn": "TMX7316010203-001875_pano_0003_002698",
-     "how": "rear(): INFERRED rows of white-framed windows; the door position is not known from the crop"
+     "how": "rear(): INFERRED rows of white-framed windows (top light over two casements) on a white sill course, on the rear and courtyard faces in the front brick; the door position is not known from the crop"
     }
    ],
    "note": "Rear (garden) wall of the library hall; the crop is a close-up behind a tree."
@@ -234,7 +234,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002056_pano_0000_000185",
-     "how": "roundBalcony(): extruded rounded slab + 1 m dark balustrade band along its outline; glazed doors behind"
+     "how": "roundBalcony(): white 0.4 m slab with rounded front corners and a see-through bar railing (src/canalRecall/landmarks/barRailing: top rail, bottom rail, bars at 13 cm, dark grey as on the 2022 panorama); glazed doors behind"
     }
    ],
    "note": "Front t 0-4.3: the NW balcony stack."

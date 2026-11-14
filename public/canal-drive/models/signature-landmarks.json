@@ -96529,7 +96529,7 @@
         "dark": "#23304a",
         "concrete": "#8c8a86",
         "pink": "#e8e6e0",
-        "copper": "#2a2c2f",
+        "copper": "#4a4d50",
         "red": "#c8102e",
         "sandstone": "#f2f2f0"
       },
@@ -96685,8 +96685,8 @@
         "depthMetres": 33.429216384887695,
         "depthCoverage": 1.000874742062506
       },
-      "triangles": 3517,
-      "bytes": 52996,
+      "triangles": 7609,
+      "bytes": 112504,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "pont-13": {
