@@ -1,0 +1,7 @@
+### House rows
+
+- Houses are drawn as members of a row, never one by one. A series (a run of one design) has one set of lines: cornice, storeys, window cell, wall family, roof. Read `docs/house-line.md` §16 and `docs/handoffs/house-rows-plan-20261114.md` first.
+- Unstated never means dice: a described row draws only what its description or type states; an unstated field takes the series value, else a plain period default (cornice lid at the row line, the row's wall family, plain tall windows). No hash roof on a described house.
+- No silent drops: a read field is drawn, settled by series consensus, or printed on the sheet as "read, not drawn" with the reason.
+- Use what exists before reading anything new: block-face intents, street surveys, type libraries, the D1 answers.
+- Likeness on the whole row is the bar, judged by someone who did not build it (`npm run house:row-sheet`, `scripts/house-specs/rows/blind-review.md`, `npm run check:rows`). "Closer than today" is retired. One row, then one street, then ten; David approves the first row of each kind.

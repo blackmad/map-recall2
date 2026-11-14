@@ -3464,3 +3464,38 @@ Round 2 makes three changes; the measurements behind each are in `calibrate.ts r
 - **No hue correction.** On average, the estimates are 8° redder than the photos. Sunlit captures read yellower (the sun's cast). Weteringschans odd is the opposite case: its photo is pink at hue 42 and the estimate is 61. Taking the hue from the dimmer captures did not help (−11° overall).
 - **Exposure from white or mix** (`gainFrom`). Measured and left off: it moved every page the wrong way.
 - **Belt-wide captures.** `captures.ts` now covers all 851 belt pands, with the full `refs` and the same-cut neighbours (`nb`). 314 have 4 captures; 526 outside the pages are pinned-only, because the panorama host was slow.
+
+## §16 Rows: records, solve, gates and the sheet (house rows first, 2026-11-14, issues #386-#388)
+
+Plan and rules: `docs/handoffs/house-rows-plan-20261114.md` (approved by David). The unit is the row, not the building: a
+house is a member of a series, a series has one design and one set of lines. This section is lane P's part (sheet, gates,
+review); D owns records and the solve, R the renderer.
+
+- **Records (lane D).** `src/canalRecall/houseSpec/row/` and `npm run house:rows` write, per street side, members in street
+  order (two-number pands split into fronts), series, the solved design per series (mode of class fields, median of metre
+  fields; precedence reviewed > face intent > series consensus > single read > period default), per-field provenance and a
+  "read, not drawn" list. A class disagreement between a face intent and the D1 consensus flags the row, never resolved silently.
+- **Sheet.** `npm run house:row-sheet -- <row>` (rows in `scripts/house-specs/rows/rows.json`: `kinkerstraat-86-110`,
+  `weteringschans-168096-171218`). Three strips at one scale, one street side, consecutive, every front: the photo strip
+  (the reader's own cut from the D1 cuts dir, cropped to its cyan outline and scaled to the front width; never
+  `pickLikeness`'s capture; houses D1 did not read show "not read by D1"), the drawn strip (Node, `house:preview`, under
+  `--drawn-env K=V` flags and `--drawn-specs <dir of <pandId>.json>` from lane D/R) and today's drawing (installed extracts, no
+  flags). With no flags the drawn strip equals today's and is labelled so. It also writes `blind/photo.jpg` and `blind/drawn.jpg`
+  for the review and `manifest.json`. Output `artifacts/house-rows/sheets/<row>/`, renders cached in `artifacts/house-rows/sheet-cache/`.
+  The ah07 cut jpgs are gone from the canonical D1 directory; `describe-cut.ts cut` regenerated them into
+  `artifacts/house-rows/cuts-ah07/` with the same panorama and pose as `cuts-ah07/cuts.json` (verified), see rows.json.
+- **Gates.** `npm run check:rows` (in `check:canal:rest`): unit tests, then `src/canalRecall/houseSpec/rowChecks.ts` over
+  `artifacts/house-rows/staging/*.row-check.json` (`{row, members: RowCheckMember[]}`, flattened from D's RowRecord in one adapter;
+  no records = gates idle, passes). Gates: a series resolves to one design apart from `PER_HOUSE_FIELDS`; cornice step inside a
+  series at most 0.2 m; no extra outside `ROW_FRONT_EXTRAS` plus stated extras; no hash roof on a member; every read field is
+  drawn, settled or reported with a reason. Named regressions: 0363100012236027 is two fronts; 159635, 152925 and 160809 are
+  identical; 236213 has nothing drawn from the scaffold read; 169016 is a mansard with a dormer and no pointed gable.
+  `check:rows -- --audit-staged <row>` runs the same gates over today's staged D1 specs and prints the defects (Kinkerstraat:
+  22 one-design, 3 hash roofs, 44 silent drops; Weteringschans 169016 fails the mansard pin).
+- **Blind review.** `scripts/house-specs/rows/blind-review.md` and `blind-review-prompt.md`: a fresh opus agent sees only the
+  two blind strips and answers `block | house | PASS/FAIL | reason` in visible order; `parse-review.ts` (typed:
+  `houseSpec/rowReview.ts`) gives pass, blocked (a fail in same-houses, roof-line or colour-family, or an overall FAIL),
+  pass-with-fails or invalid. The builder never reviews.
+- **Weteringschans wall-colour sheet** (`ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg`): it drew `staged-ah07` ("D1
+  staged") and `staged-ah07-v3` = staged-ah07 restaged with `WALL_SAMPLE=2` (the last panel); the lane's `round2.sh` shows it. Order left
+  to right is 168096, 168042, 169016, 171218.

@@ -1,0 +1,33 @@
+{
+  "d1Root": "/Users/blackmad/Code/map-recall2-worktrees/d1-tranche-ring-20261114/artifacts/describer-d1",
+  "rows": {
+    "kinkerstraat-86-110": {
+      "title": "Kinkerstraat 86-110 (even side, 1893)",
+      "face": "kinker-86-110",
+      "street": "kinkerstraat",
+      "cuts": "ring-20261114/cuts",
+      "answers": "ring-20261114/answers",
+      "staged": "staged-ring-20261114",
+      "note": "Members in strip order, left to right as seen from the street (110 first). Photo = the cut the D1 reader saw (ring tranche), cropped to its cyan outline."
+    },
+    "weteringschans-168096-171218": {
+      "title": "Weteringschans 168096-171218 (labels are BAG number ids, not house numbers)",
+      "members": [
+        { "pandId": "0363100012168096", "label": "168096", "widthM": 6.36 },
+        { "pandId": "0363100012168042", "label": "168042", "widthM": 6.3 },
+        { "pandId": "0363100012169016", "label": "169016", "widthM": 6.51 },
+        { "pandId": "0363100012171218", "label": "171218", "widthM": 6.51 }
+      ],
+      "cuts": "cuts-ah07",
+      "cutsLocal": "artifacts/house-rows/cuts-ah07",
+      "cutsLocalNote": "The ah07 cut jpgs are gone from the canonical D1 dir. Regenerated with describe-cut.ts cut (same panoId and pose as cuts-ah07/cuts.json, verified), so they are the reader's frames. Run: node --import tsx scripts/house-specs/describer-d1/describe-cut.ts cut --ids <ids> --out artifacts/house-rows/cuts-ah07",
+      "answers": "answers-ah07",
+      "staged": "staged-ah07",
+      "wallColourSheet": {
+        "sheet": "ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg (screenshots repo)",
+        "stagedSet": "staged-ah07-v3 = staged-ah07 restaged by scripts/house-specs/wall-sample/restage.ts with WALL_SAMPLE=2 (answers-ah07, cuts-ah07, captures-ah07.json); the 'D1 staged' panel is plain staged-ah07, the 'D1 staged + wall sample v2 round 2' panel is staged-ah07-v3. Source: round2.sh in the d1-wall-colour lane (artifacts/d1-wall-colour, kept under _pruned-sheets/venues-r5-20261114/). Confirmed, not inferred: round2.sh restages artifacts/describer-d1/staged-ah07 into staged-ah07-v3 and builds the extract from it.",
+        "orderNote": "Street order left to right (viewer facing north, east to the right): 168096, 168042, 169016, 171218, from the cut wall midpoints in cuts-ah07/cuts.json."
+      }
+    }
+  }
+}
