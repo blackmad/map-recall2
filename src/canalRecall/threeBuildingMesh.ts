@@ -1033,7 +1033,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if(b.surveyedEnvelope){
       roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>{const r={...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'};surveyedRoofTris.add(r);return r;}),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
     }else if (b.roof) {
-      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge) ? crownFacing(bi) : undefined);
+      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge || b.roof.plan.rowDormers) ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace&&!b.roof.lowPoly) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
     const walled = mode === 'walls', shellMode = mode === 'shell';

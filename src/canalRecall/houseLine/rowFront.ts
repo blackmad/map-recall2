@@ -85,6 +85,11 @@ export interface RowSeriesDraw {
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
   roofStorey?: { kind: 'mansard' | 'none'; riseM: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[] };
   heads?: RowHeadsDraw[];
+  /** Wall components the series states beyond the heads and cornice (bands: `floor-cornices`, `string-courses`,
+   *  `speklagen`); each must be a facade component id. */
+  extras?: string[];
+  /** A souterrain under the stated storeys (houseSpec/storeyPlan.ts): the ground cell is the souterrain. */
+  souterrain?: boolean;
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -263,8 +268,8 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 }
 
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[] } {
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}) };
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[] } {
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(series.extras?.length ? { extras: series.extras } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -430,7 +435,10 @@ export function withRowFront<T extends Feature>(feature: T): T {
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
   if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
     const top = rec.eavesM, rs = rec.series.roofStorey, mansard = rs?.kind === 'mansard' && rs.riseM > 0.5 ? rs : null;
-    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...levels(sr, rec, top, true) };
+    const lv = levels(sr, rec, top, true);
+    // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
+    if (lv.specRecipe && rec.series.souterrain) lv.specRecipe.souterrain = true;
+    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
       rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });

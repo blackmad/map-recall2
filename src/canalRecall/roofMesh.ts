@@ -1098,6 +1098,9 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
   // behind it are plain closures, never a second shaped crown in the sky.
   for (const piece of meshPieces(plan, plan.pieces, mapRect, facing)) {
     const rect=piece.rect;
+    // House rows: the row roof's box is drawn inside the walls (a box skewed to a front stood past it and the cut closed it
+    // in wall colour, a brick wedge over the cornice); the lid at the eaves closes the strip between box and walls.
+    if (piece.plan.rowDormers) { const box = rowRoofBox(mesh, facing), inside = box ? boxInside(box, mesh, true) : boxInside(piece.rect, mesh); out.push(...roofTriangles(inside, withStreetEnds(piece.plan, inside, facing), h0, dims)); continue; }
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
     const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
@@ -1204,6 +1207,51 @@ function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, map
   });
 }
 
+/**
+ * House rows: the roof box squared to the street front. The outline edge that sees a street (the nearest, at least 2 m
+ * long; else the nearest within the fallback reach) is the +u end, the box spans the outline's extent along and across
+ * it. A box fitted to the whole plan stood skewed to a front a few degrees off square, and its mansard foot ran
+ * across the cornice (a brick wedge over Kinkerstraat 104-100). No street known: null (the fitted box).
+ */
+function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined): Rect | null {
+  if (!facing) return null;
+  const pts = openRing(ring), ccw = signedArea(pts) > 0;
+  let best: { n: Vec2; d: number } | null = null;
+  for (const pass of [false, true]) {
+    for (let i = 0; i < pts.length; i++) {
+      const [x0, y0] = pts[i], [x1, y1] = pts[(i + 1) % pts.length], len = Math.hypot(x1 - x0, y1 - y0);
+      if (len < 2) continue;
+      const nx = (ccw ? y1 - y0 : y0 - y1) / len, ny = (ccw ? x0 - x1 : x1 - x0) / len;
+      const d = facing({ x0, y0, x1, y1, nx, ny, len }, pass);
+      if (d < Infinity && (!best || d < best.d)) best = { n: [nx, ny], d };
+    }
+    if (best) break;
+  }
+  if (!best) return null;
+  const [ux, uy] = best.n, along = pts.map(([x, y]) => x * ux + y * uy), across = pts.map(([x, y]) => -x * uy + y * ux);
+  const a0 = Math.min(...along), a1 = Math.max(...along), b0 = Math.min(...across), b1 = Math.max(...across);
+  const ca = (a0 + a1) / 2, cb = (b0 + b1) / 2;
+  return { cx: ca * ux - cb * uy, cy: ca * uy + cb * ux, ux, uy, len: a1 - a0, wid: b1 - b0, coverage: 1, maxDev: 0 };
+}
+
+/** House rows: the box shrunk until its corners stand inside the outline: its depth first (0.1 m steps, at most 3 m; a
+ *  skewed front), then its width, so row mansards keep the front's width and meet their neighbours'. `front`: the +u
+ *  end (the street front of rowRoofBox) stays where it is and the box shortens from the back. */
+function boxInside(rect: Rect, ring: readonly Vec2[], front = false): Rect {
+  const pts = openRing(ring);
+  const inside = (r: Rect) => {
+    const hl = r.len / 2 - 0.03, hw = r.wid / 2 - 0.03, vx = -r.uy, vy = r.ux;
+    return [[-1, -1], [1, -1], [1, 1], [-1, 1]].every(([a, b]) => pointInOutline(r.cx + a * hl * r.ux + b * hw * vx, r.cy + a * hl * r.uy + b * hw * vy, pts));
+  };
+  const sized = (dl: number, dw: number): Rect => {
+    const len = Math.max(1, rect.len - dl), shift = front ? (rect.len - len) / 2 : 0;
+    return { ...rect, len, wid: Math.max(1, rect.wid - dw), cx: rect.cx + rect.ux * shift, cy: rect.cy + rect.uy * shift };
+  };
+  for (let i = 0; i <= 30; i++) { const r = sized(0.1 * i, 0); if (inside(r)) return r; }
+  for (let j = 1; j <= 20; j++) for (let i = 0; i <= 30; i += 5) { const r = sized(0.1 * i, 0.1 * j); if (inside(r)) return r; }
+  return rect;
+}
+
 /** House rows: the box turned so that the wall nearest a street is one of its u-ends (no facing: as fitted). */
 function rowRoofFacing(rect: Rect, facing: StreetFacing | undefined): Rect {
   if (!facing) return rect;
@@ -1256,7 +1304,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
       tone: hash01(`${rr.series}:tone2`), seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers };
-    return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], clipToOutline: rect.coverage < 0.97 || rect.maxDev > 0.3 };
+    return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
   // no chimney stub or dice dormers through it.
