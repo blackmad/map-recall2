@@ -35,7 +35,7 @@ import source from './morgan-mees-footprints.json' with {type: 'json'};
  * is ring edge 1-2 continued to the rear block (11.6 m, measured); the Nassaukade line is ring 3-12 (e = 8.27).
  */
 /** `ochre` is the white plaster and trim (stucco slot; `white` would be judged as window trim), `copper` the black steel. */
-type C = 'brick' | 'red' | 'ochre' | 'white' | 'stone' | 'concrete' | 'slate' | 'glass' | 'frame' | 'dark' | 'bronze' | 'copper' | 'blue' | 'green' | 'sandstone';
+type C = 'brick' | 'greyBrick' | 'red' | 'ochre' | 'white' | 'stone' | 'concrete' | 'slate' | 'glass' | 'frame' | 'dark' | 'bronze' | 'copper' | 'blue' | 'green' | 'sandstone';
 type XZ = [number, number];
 const RING = (source as unknown as {nativeRing: XZ[]}).nativeRing;
 
@@ -65,8 +65,8 @@ const BASE = -0.3;
 const WALL_TOP = 10.95;      // frieze top under the cornice
 const CORN = 0.45;           // cornice height
 const EAVE = WALL_TOP + CORN; // 11.4: the hips start on the cornice
-const TOP = 13.6;            // flat top of the hipped roof (3DBAG 13.4-14.3)
-const INSET = 3.2;           // hip run
+const TOP = 14.0;            // flat top of the hipped roof (3DBAG pieces 13.4-14.3); raised from 13.6 so the slope shows over the cornice as in the 2025 east panorama
+const INSET = 3.2;           // hip run (39 deg with TOP 14.0)
 const FRIEZE: [number, number] = [10.05, WALL_TOP];          // east face (crop face-eastMain-3: lettering centred in it)
 const FRIEZE_S: [number, number] = [9.75, WALL_TOP];        // street front: frieze and cornice are 14 % of the cornice height (street01 grid, 1.65 m of 11.4 m)
 const REAR_TOP = 7.35;       // rear block flat roof (3DBAG 7.2-7.4)
@@ -216,7 +216,7 @@ function streetFront(c: Ctx) {
   for (const [S, s] of [[SW, 2.8], [SE, 9.0]] as const) {
     K.opening(S, s, 6.2, 1.25, 2.55, {frame: 'frame', depth: 0.16, edge: 0.06});
     hood(c, S, s, 1.9, 8.98);
-    awning(b, ff(c, S), s, 7.95, 1.45, 0.92, 0.72, 'bronze');
+    awning(b, ff(c, S), s, 7.6, 1.45, 1.3, 0.72, 'bronze');            // hangs from the hood over the top 1.15 m of the light (face-street crops: 1.3-1.4 m drop)
   }
   K.opening(SM, MID, 6.2, 2.2, 2.62, {cols: 2, frame: 'frame', depth: 0.18, bars: [1.95], edge: 0.07, barW: 0.09});
   slab(b, ff(c, SM), MID, 5.88, 2.3, 0.26, 0.06, 'ochre');                                     // panel under the sill
@@ -255,7 +255,7 @@ function streetDormer(c: Ctx) {
 const AXES: [number, number, boolean][] = [[1.4, 1.1, true], [4.85, 1.1, false], [7.85, 2.2, false], [10.75, 1.2, true]]; // s, width, door
 function eastFace(c: Ctx) {
   const {K, b} = c;
-  const S = K.sec(EM, 0, DEPTH, BASE, WALL_TOP, 'brick', 0);
+  const S = K.sec(EM, 0, DEPTH, BASE, WALL_TOP, 'greyBrick', 0);
   // ground floor over the garden (inferred: hidden behind the hedge and the pavilion), as the street's east window
   for (const s of [2.1, 5.3]) {
     K.opening(S, s, 1.43, 1.2, 2.6, {cols: 2, frame: 'frame', depth: 0.18, bars: [2.0], edge: 0.07});
@@ -266,7 +266,7 @@ function eastFace(c: Ctx) {
   for (const [s, w, door] of AXES) {
     K.opening(S, s, door ? BAL + 0.04 : 6.25, w, door ? 8.6 - BAL - 0.04 : 2.35, {cols: w > 2 ? 2 : 1, frame: 'frame', depth: 0.16, edge: 0.06});
     hood(c, S, s, Math.min(w + 0.55, 2 * (DEPTH - 0.13 - s)), 8.98);                         // the last hood stops short of the north wall
-    awning(b, ff(c, S), s, 8.02, w + 0.25, 0.86, 0.72, 'bronze');
+    awning(b, ff(c, S), s, 7.85, w + 0.25, 1.1, 0.72, 'bronze');       // face-eastMain crops: 7.8-9.1 m, under the hood
   }
   box('ochre', 0, 0.06, 0, DEPTH + 0.06, FRIEZE[0], FRIEZE[1]);
   // MORGAN & MEES: 0.40 m capitals, 6.05 m long, centred 6.07 m from the street corner (crop face-eastMain-3)
@@ -299,7 +299,8 @@ function balcony(c: Ctx) {
 }
 /** White-cheeked dormer of two lights on the east hip, centred over the lettering. */
 function eastDormer(c: Ctx) {
-  const {K} = c, off = -0.12, back = 2.6, s0 = 5.2, s1 = 6.95, top = 12.95;
+  // back: the cap ends where it meets the hip (0.35 m cap inset), so it neither floats nor runs into the slope
+  const {K} = c, off = -0.12, s0 = 5.2, s1 = 6.95, top = 12.95, back = (top - EAVE) / ((TOP - EAVE) / INSET) + 0.35;
   const S = K.sec(EM, s0, s1, EAVE, top, 'ochre', off);
   K.opening(S, 6.07, 11.75, 1.1, 1.05, {cols: 2, frame: 'frame', depth: 0.1, edge: 0.06});
   K.endCap(EM, s0, EAVE, top, 'ochre', -1, -back, off);
@@ -322,14 +323,14 @@ function roofParts() {
     M.quad('ochre', sp(e0, d0, 0), sp(e1, d0, 0), sp(e1, d0, top), sp(e0, d0, top), vS);
     M.quad('ochre', sp(e0, d1, 0), sp(e0, d1, top), sp(e1, d1, top), sp(e1, d1, 0), vU);
   }
-  box('brick', -1.45, -0.9, 10.55, 11.15, EAVE - 0.5, 14.15);
-  box('slate', -1.4, -0.95, 10.6, 11.1, 14.15, 14.4);
+  box('greyBrick', -1.45, -0.9, 10.55, 11.15, EAVE - 0.5, 14.45);          // stands ~0.7 m over the roof top (east panoramas)
+  box('slate', -1.4, -0.95, 10.6, 11.1, 14.45, 14.7);
 }
 
 // ---- rear block and north face ---------------------------------------------------------------------------------------------
 function rear(c: Ctx) {
   const {K} = c;
-  const S = K.sec(ER, 0, BACK - DEPTH, WING_FLOOR - 0.05, REAR_TOP, 'brick', 0);
+  const S = K.sec(ER, 0, BACK - DEPTH, WING_FLOOR - 0.05, REAR_TOP, 'greyBrick', 0);
   // corner.jpg (2017) over the wing terrace: a narrow dark-framed terrace door by the school block and a white-framed
   // window of four lights, each under a segmental rubbed-brick arch; a plain white cornice slab on top
   K.opening(S, 0.68, WING_FLOOR + 0.05, 0.95, 2.4, {cols: 2, frame: 'frame', depth: 0.14, edge: 0.06});
@@ -337,15 +338,15 @@ function rear(c: Ctx) {
   slab(c.b, ff(c, S), 2.48, 4.84, 1.62, 0.12, 0.08, 'ochre');                                 // sill 4 cm under the reveal
   for (const [s, y, w] of [[0.68, WING_FLOOR + 2.45, 0.95], [2.48, 6.86, 1.42]] as const) K.archHead(S, s, y, w + 0.1, 0.12, 0.2, 0.06, 'red');
   K.coping(S, REAR_TOP - 0.1, 0.32, 0.3, 'ochre', 0, BACK - DEPTH - 0.02);
-  const N = K.sec(NM, 0, -WEST, REAR_TOP - 0.05, WALL_TOP, 'brick', 0);
+  const N = K.sec(NM, 0, -WEST, REAR_TOP - 0.05, WALL_TOP, 'greyBrick', 0);
   K.coping(N, WALL_TOP, CORN, 0.55, 'ochre', -0.55, -WEST - 0.06);
 }
 
 // ---- the wing and the garden wall on the Nassaukade --------------------------------------------------------------------------
 function nassaukade(c: Ctx) {
   const {K, b} = c;
-  const G = K.sec(NQ, 0, WING_S, BASE, GW_TOP, 'brick', 0);
-  const A = K.sec(NQ, WING_S, BACK, BASE, WING_FLOOR, 'brick', 0);
+  const G = K.sec(NQ, 0, WING_S, BASE, GW_TOP, 'greyBrick', 0);
+  const A = K.sec(NQ, WING_S, BACK, BASE, WING_FLOOR, 'greyBrick', 0);
   // garden wall: arched window, the wide segmental gateway (iron gate), pediment over it
   K.opening(G, 2.35, 0.75, 0.8, 1.95, {cols: 2, frame: 'frame', depth: 0.2, rise: 0.4, edge: 0.05});
   K.opening(G, 6.07, 0.0, 2.45, 2.95, {cols: 12, frame: 'dark', depth: 0.25, rise: 0.6, bars: [1.0, 2.15], edge: 0.06, barW: 0.035});
@@ -377,16 +378,16 @@ function nassaukade(c: Ctx) {
   for (const [S, s0, s1] of [[G, 0.05, 4.8], [A, WING_S, 13.2], [A, 14.2, BACK - 0.06]] as const) slab(b, ff(c, S), (s0 + s1) / 2, BASE, s1 - s0, 0.25 - BASE, 0.05, 'concrete');
   // garden wall: back face, street end, coping
   const tw = 0.45;
-  wallQuad('brick', NK - tw, 0, NK - tw, WING_S, BASE, GW_TOP, vW);
-  K.endCap(NQ, 0, BASE, GW_TOP, 'brick', -1, -tw, 0);
+  wallQuad('greyBrick', NK - tw, 0, NK - tw, WING_S, BASE, GW_TOP, vW);
+  K.endCap(NQ, 0, BASE, GW_TOP, 'greyBrick', -1, -tw, 0);
   K.coping(G, GW_TOP, 0.25, 0.15, 'ochre', -0.15, WING_S, tw);
   // wing parapet, white frieze and coping round the terrace
-  K.along(NQ, WING_S, BACK - 0.06, [[0, WING_FLOOR], [0, WING_TOP], [-0.3, WING_TOP], [-0.3, WING_FLOOR]], 'brick');
-  slab(b, ff(c, A), (WING_S + BACK - 0.06) / 2, 3.82, BACK - WING_S - 0.06, WING_TOP - 3.82, 0.06, 'ochre');
+  K.along(NQ, WING_S, BACK - 0.06, [[0, WING_FLOOR], [0, WING_TOP], [-0.3, WING_TOP], [-0.3, WING_FLOOR]], 'greyBrick');
+  slab(b, ff(c, A), (WING_S + BACK - 0.06) / 2, 3.6, BACK - WING_S - 0.06, WING_TOP - 3.6, 0.06, 'ochre');   // white frieze 3.6-4.1 m under the coping (0.75 m of white with it, east panoramas)
   K.coping(A, WING_TOP, 0.25, 0.2, 'ochre', WING_S - 0.2, BACK - 0.06);
   // wing's south wall over the garden (hidden behind the pavilion: plain, inferred)
-  const GS = K.sec(GA, 0, NK, BASE, WING_FLOOR, 'brick', 0);
-  K.along(GA, 0, NK, [[0, WING_FLOOR], [0, WING_TOP], [-0.3, WING_TOP], [-0.3, WING_FLOOR]], 'brick');
+  const GS = K.sec(GA, 0, NK, BASE, WING_FLOOR, 'greyBrick', 0);
+  K.along(GA, 0, NK, [[0, WING_FLOOR], [0, WING_TOP], [-0.3, WING_TOP], [-0.3, WING_FLOOR]], 'greyBrick');
   K.coping(GS, WING_TOP, 0.25, 0.12, 'ochre', 0, NK - 0.85);
   K.opening(GS, 3.6, 0.1, 1.8, 2.5, {cols: 2, frame: 'frame', depth: 0.16, edge: 0.07});
 }

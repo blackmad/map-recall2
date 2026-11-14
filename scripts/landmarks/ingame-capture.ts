@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {chromium, type Page} from '@playwright/test';
 import catalogue from '../../src/canalRecall/landmarks/manualCatalogue.json' with {type: 'json'};
-import {gameListsModel, routeFreshSignatureBundle} from './fresh-signature-bundle.ts';
+import {gameListsModel, routeFreshSignatureBundle, settleHeldWorld} from './fresh-signature-bundle.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const id = arg('id') ?? 'de-roos';
@@ -57,7 +57,7 @@ try {
         if (!s.shown.has(i)) s._onMove?.();
         return s.shown.has(i);
       }, id, {timeout: 60000, polling: 1000});
-      await page.waitForTimeout(5000);
+      await settleHeldWorld(page);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
       await page.screenshot({path: file});
       console.log(file);

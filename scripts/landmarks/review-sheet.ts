@@ -35,7 +35,7 @@ import {cachedJson, findPands, lngLatToRd, neighbourhood, normId, rdToLngLat, ty
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {loadPano, wallHeight} from '../pand-reference/rectify.ts';
 import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
-import {gameListsModel, routeFreshSignatureBundle} from './fresh-signature-bundle.ts';
+import {gameListsModel, routeFreshSignatureBundle, settleHeldWorld} from './fresh-signature-bundle.ts';
 import {matchWall, type InventoryItem, type InventoryWall, type LandmarkInventory} from '../../src/canalRecall/landmarks/ornamentInventory.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -209,7 +209,7 @@ async function gameShots(walls: Wall[], dir: string): Promise<Map<Wall, string>>
       try {
         await page.evaluate(({c, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: 19.2, pitch: 70, bearing: b}), {c: rdToLngLat(w.mid), b: (bearing + 180) % 360});
         await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
-        await page.waitForTimeout(5000);
+        await settleHeldWorld(page);
         await page.screenshot({path: file});
         shots.set(w, file);
       } catch (e) { console.log(`in-game shot of wall ${bearing} failed:`, String(e).split('\n')[0]); }
