@@ -61,6 +61,20 @@ function groundColourOf(fronts: readonly RowFront[]): { groundHex?: string } {
   }
   return {};
 }
+/**
+ * Row type looks: what a type states for every series of it until the record states its own. kinker-1890-plain-brick
+ * (Fable, round-6 sheets): the photo's upper windows take ~75 % of their axis pitch frames included; the preset's ~62 %
+ * left the piers too wide (106-108, 104, 102, 90).
+ */
+export const ROW_TYPE_LOOK: Readonly<Record<string, { windowShare?: number }>> = {
+  'kinker-1890-plain-brick': { windowShare: 0.75 },
+};
+function windowShareOf(designs: readonly RowDesign[], types: readonly (string | undefined)[]): { windowShare?: number } {
+  const stated = designs.map(d => (d as { windowShare?: { value?: unknown } }).windowShare?.value).find(v => typeof v === 'number');
+  if (typeof stated === 'number') return { windowShare: stated };
+  const t = types.find(x => x && ROW_TYPE_LOOK[x]?.windowShare);
+  return t ? { windowShare: ROW_TYPE_LOOK[t].windowShare } : {};
+}
 /** The stated balcony (RowDesign.balcony: storeys over D's ground, 1 = first above it), on the renderer's rows. */
 function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: NonNullable<RowSeriesDraw['balcony']> } {
   const b = designs.find(d => d.balcony?.value)?.balcony?.value;
@@ -82,7 +96,7 @@ export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: str
  *  pane; a plain `sash` keeps the preset's own. */
 export const ROW_SASH: Readonly<Record<string, 'plain' | 'transom'>> = { 't-window': 'transom', 'tall-upper': 'transom', 'casement-toplight': 'transom', casement: 'plain' };
 /** One pand's series draw from its fronts (street order) and their designs. */
-export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = ''): RowSeriesDraw {
+export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = '', types: readonly (string | undefined)[] = []): RowSeriesDraw {
   const d0 = designs[0];
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
@@ -117,6 +131,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...shopOf(fronts),
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
+    ...windowShareOf(designs, types),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
@@ -146,7 +161,7 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const line = designs[0].corniceTopM.value;
     const lined = line !== null && line > 2 ? { topM: line, eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: designs[i]?.corniceTopM.value ?? line, eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
     const out: RowFrontRecord = {
-      ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id),
+      ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id, fronts.map(f => (row.series.find(x => x.id === f.seriesId) as { type?: string } | undefined)?.type)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
       sources: { ...rec.sources, ...(line !== null ? { eaves: `${rec.sources.eaves}; drawn at the series line ${line} m (street datum: the world has no terrain)` } : {}), series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };

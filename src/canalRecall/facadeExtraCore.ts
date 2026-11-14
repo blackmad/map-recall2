@@ -63,6 +63,8 @@ export type RowDressContext = {
   stoop?: { end: 'start' | 'end' | 'centre'; /** false: the raised door only, no steps read. */ steps?: false };
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
+  /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
+  windowShare?: number;
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 

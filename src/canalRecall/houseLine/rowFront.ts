@@ -108,6 +108,8 @@ export interface RowSeriesDraw {
   groundHex?: string;
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
+  /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
+  windowShare?: number;
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -286,9 +288,9 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 }
 
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony'] } {
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}) };
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number } {
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : [])];
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */

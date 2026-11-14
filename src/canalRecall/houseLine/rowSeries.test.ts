@@ -216,3 +216,8 @@ test('series members draw identical storey lines: one ground height and count fr
 test('the record\'s window kind sets the series glazing: T-windows and toplit casements paint large panes under a transom', () => {
   for (const r of [...W, ...K]) assert.equal(r.series!.look!.sash, 'transom', r.pandId);
 });
+
+test('a row type states its window width: kinker-1890-plain-brick windows take 75 % of their axis pitch', () => {
+  for (const r of K) assert.equal(r.series!.windowShare, 0.75, r.pandId);
+  for (const r of W) assert.equal(r.series!.windowShare, undefined, r.pandId);
+});
