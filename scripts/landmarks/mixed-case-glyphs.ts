@@ -8,7 +8,7 @@ import {GL} from './nearbar-kit';
  * `d`, `r` or `s`. Lowercase glyphs keep GL's x-height (rows 2-6) and ascender rows (0-1).
  */
 export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
-  F: ['11111', '10000', '10000', '11110', '10000', '10000', '10000'],
+  // F moved into GL with Sameplace (clubs-b, 2026-11-14); letters() throws on a missing glyph, so no GL text held an F before.
   a: ['00000', '00000', '01110', '00001', '01111', '10001', '01111'],
   d: ['00001', '00001', '01101', '10011', '10001', '10011', '01101'],
   r: ['00000', '00000', '10110', '11001', '10000', '10000', '10000'],
