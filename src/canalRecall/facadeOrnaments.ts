@@ -269,6 +269,11 @@ function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
 const ARCH_GLASS = '#3d4955';
 /** A row window's glass: the transom light catches more sky than the pane below. */
 const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
+/** A row type's glazing (row-glazing, Kinkerstraat round 8): white frames round the widened opening and paler glass,
+ *  the photo's windows reading white-framed and pale (curtains, nets, sky) where the dark panes read as holes. */
+const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
+/** A pale single shopfront (row-shopfront): frame, fascia and one wide pane (Weteringschans 168042). */
+const ROW_SHOP = { frame: '#e6e1d6', glass: '#555a5d', light: '#7d7b74', riser: 0.45, fascia: 0.55, side: 0.25, out: 0.03 } as const;
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
@@ -290,7 +295,7 @@ const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', joint
 /** Row bands: speklagen as three 10 cm courses a storey at the sill, middle and head lines (the type default until the
  *  record states a count), string-courses and floor-line bands 20 cm (169016). Walls without a row record keep the
  *  shared components' courses. */
-const ROW_BANDS = { spek: 0.1, spekLines: [0.04, 0.5, 0.96], spekOut: 0.03, course: 0.2, courseOut: 0.08, margin: 0.06 } as const;
+const ROW_BANDS = { spek: 0.1, spekLines: [0.04, 0.5, 0.96], spekOut: 0.03, course: 0.2, courseOut: 0.08, margin: 0.06, floor: 0.1, floorOut: 0.05, floorHex: '#a9a193' } as const;
 /** The stoop: steps and cheek walls up to the bel-etage door over a souterrain (Weteringschans 169016, 171218). */
 const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
 /** The bel-etage street door over a stated stoop: the bel-etage window at the stated end, from the floor up. */
@@ -343,7 +348,10 @@ function rowBands(c: ExtraContext, s: ExtraSink, kind: 'speklagen' | 'string-cou
   for (let k = 0; k < Math.min(6, l.storeys); k++) {
     const z = kind === 'floor-cornices' ? storeyZ(c, k) - 0.06 : storeyZ(c, k) + o.upper.sill * l.storeyM - ROW_BANDS.course - 0.02;
     if (z + ROW_BANDS.course > top) continue;
-    rowBand(c, s, kind === 'floor-cornices' ? [] : holes, z, z + ROW_BANDS.course, ROW_BANDS.courseOut, hex);
+    // Floor-line courses: thin dull stone (Weteringschans 168096, blind review 6: two heavy white bands where the photo
+    // has faint stone string courses). Sill courses keep their 20 cm.
+    if (kind === 'floor-cornices') rowBand(c, s, [], z, z + ROW_BANDS.floor, ROW_BANDS.floorOut, hex);
+    else rowBand(c, s, holes, z, z + ROW_BANDS.course, ROW_BANDS.courseOut, hex);
   }
   return true;
 }
@@ -410,12 +418,33 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     // casements (the T-window), so the painted cell's narrower window and its frame do not show inside it.
     if (!c.rowDress?.windowShare) return;
     for (let k = 0; k < Math.min(6, c.layout.storeys); k++) for (const w of windowSpans(c, k)) {
-      const l = w.x - w.hw, r = w.x + w.hw, zt = w.z1 - (w.z1 - w.z0) * 0.29;
-      s.wallQuad(c.f, [[l, zt], [r, zt], [r, w.z1], [l, w.z1]], 0.012, ROW_GLASS.light);
-      s.wallQuad(c.f, [[l, w.z0], [r, w.z0], [r, zt], [l, zt]], 0.012, ROW_GLASS.pane);
+      const l = w.x - w.hw, r = w.x + w.hw, zt = w.z1 - (w.z1 - w.z0) * 0.29, F = ROW_TYPE_GLASS.frame;
+      s.wallQuad(c.f, [[l, zt], [r, zt], [r, w.z1], [l, w.z1]], 0.012, ROW_TYPE_GLASS.light);
+      s.wallQuad(c.f, [[l, w.z0], [r, w.z0], [r, zt], [l, zt]], 0.012, ROW_TYPE_GLASS.pane);
+      // The frame: jambs and head round the opening (the frame share of the type's window width), the sill below.
+      const fo = F - ROW_FRAME_M;
+      s.strip(c.f, l - ROW_FRAME_M, l + fo, ROW_TYPE_GLASS.frameOut, w.z0, w.z1 + ROW_FRAME_M, WHITE);
+      s.strip(c.f, r - fo, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z0, w.z1 + ROW_FRAME_M, WHITE);
+      s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z1 - fo, w.z1 + ROW_FRAME_M, WHITE);
+      s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z0 - ROW_FRAME_M, w.z0 + fo, WHITE);
       s.strip(c.f, l, r, 0.02, zt - 0.03, zt + 0.03, WHITE);
       s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
     }
+  } },
+  { id: 'row-shopfront', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'shopfront', build: (c, s) => {
+    // A row's stated shop ground as one wide opening in a pale frame under a plain pale fascia, over the painted shop cell.
+    if (!c.rowDress || !c.groundLevel || c.f.len < 2) return;
+    const S = ROW_SHOP, z0 = c.base, z1 = Math.min(storeyZ(c, 0), c.top) - 0.05;
+    if (z1 - z0 < 2) return;
+    s.wallQuad(c.f, [[0.05, z0], [c.f.len - 0.05, z0], [c.f.len - 0.05, z1], [0.05, z1]], S.out, S.frame);
+    const g0 = S.side, g1 = c.f.len - S.side, gz0 = z0 + S.riser, gz1 = z1 - S.fascia;
+    s.wallQuad(c.f, [[g0, gz0], [g1, gz0], [g1, gz1], [g0, gz1]], S.out + 0.01, S.glass);
+    // A light glazed panel over the pane (the photo's patterned upper light) and a pale door post near the start.
+    const tz = gz1 - Math.min(0.9, (gz1 - gz0) * 0.3);
+    s.wallQuad(c.f, [[g0, tz], [g1, tz], [g1, gz1], [g0, gz1]], S.out + 0.015, S.light);
+    s.strip(c.f, g0, g1, S.out + 0.02, tz - 0.05, tz + 0.05, S.frame);
+    if (g1 - g0 > 3) s.strip(c.f, g0 + 1.05, g0 + 1.17, S.out + 0.02, gz0 - S.riser + 0.05, tz, S.frame);
+    s.strip(c.f, 0.05, c.f.len - 0.05, S.out + 0.02, gz1 + 0.04, gz1 + 0.1, shadeHex(S.frame, 0.85));
   } },
   { id: 'row-stoop', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'stoop', build: (c, s) => {
     // A stated stoop: the street door at the bel-etage (its window's place at the stated end), a flight of steps
@@ -658,7 +687,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'floor-cornices', styles: CANAL, p: { canal: 0.3, c19: 0.2 }, wide: true, build: (c, s, r) => {
     // A white band course at every floor line.
     const hex = r < 0.7 ? WHITE : STONE;
-    if (rowBands(c, s, 'floor-cornices', hex)) return;
+    if (rowBands(c, s, 'floor-cornices', ROW_BANDS.floorHex)) return;
     // A stated band (c.bandM, houseSpec/routeAFields.ts) is centred on the floor line at its height.
     for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, c.bandM ? z - c.bandM / 2 : z - 0.03, c.bandM ? z + c.bandM / 2 : z + 0.04, hex); }
   } },

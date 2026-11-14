@@ -23,7 +23,7 @@ const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['reci
 };
 // Components the dice never pick (p 0): drawn only when a register or a spec forces them (registerForce; houseSpec/routeAFields.ts), still built and checked here.
 // row-cornice, row-heads: house rows (lane R), drawn only when a row series states them (rowDress); never rolled.
-const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop', 'row-glazing']);
+const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop', 'row-glazing', 'row-shopfront']);
 // A row series' stated dressing (houseLine/rowFront.ts RowSeriesDraw via the mesher's rowDress): the three head kinds
 // across the wall in thirds under a heavy cornice, so row-heads and row-cornice build every branch.
 const rowDressFor = (c: ExtraContext): ExtraContext => {
