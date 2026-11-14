@@ -2364,7 +2364,13 @@
       },
       "triangles": 2256,
       "bytes": 31472,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "0b663a1c7450e894",
+        "buildVersion": 6,
+        "bytes": 5368,
+        "triangles": 124
+      }
     },
     "stedelijk-museum": {
       "id": "stedelijk-museum",
@@ -2545,6 +2551,12 @@
         "buildVersion": 2,
         "bytes": 67572,
         "triangles": 3298
+      },
+      "lod2": {
+        "sourceHash": "f5963924108a152e",
+        "buildVersion": 6,
+        "bytes": 7640,
+        "triangles": 264
       }
     },
     "pontsteiger": {
@@ -2611,10 +2623,16 @@
       "bytes": 333196,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1f9f41629833d4c5",
+        "sourceHash": "d28fd4f170683e25",
         "buildVersion": 2,
-        "bytes": 76092,
-        "triangles": 4244
+        "bytes": 78904,
+        "triangles": 4212
+      },
+      "lod2": {
+        "sourceHash": "d28fd4f170683e25",
+        "buildVersion": 6,
+        "bytes": 13544,
+        "triangles": 550
       }
     },
     "oba-oosterdok": {
@@ -2785,6 +2803,12 @@
         "buildVersion": 2,
         "bytes": 20272,
         "triangles": 842
+      },
+      "lod2": {
+        "sourceHash": "00b0beaeb4309cbf",
+        "buildVersion": 6,
+        "bytes": 5804,
+        "triangles": 126
       }
     },
     "paradiso": {
@@ -2853,6 +2877,12 @@
         "buildVersion": 2,
         "bytes": 16048,
         "triangles": 572
+      },
+      "lod2": {
+        "sourceHash": "5ce89164c61afca0",
+        "buildVersion": 6,
+        "bytes": 4368,
+        "triangles": 70
       }
     },
     "melkweg": {
@@ -2916,7 +2946,13 @@
       },
       "triangles": 2816,
       "bytes": 41836,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "7a81502c8dffc086",
+        "buildVersion": 6,
+        "bytes": 4252,
+        "triangles": 68
+      }
     },
     "silodam": {
       "id": "silodam",
@@ -3046,6 +3082,8 @@
       },
       "spatialSuppression": false,
       "bagYear": 1622,
+      "status": "held",
+      "heldReason": "Superseded by the bespoke huis-met-de-hoofden model on the same pand (0363100012177213, #164); the venue-kit GLB stays in git.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -55039,12 +55077,12 @@
         "greyBrick": "#4f504f"
       },
       "attribution": {
-        "title": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer) - reconstruction from photographs",
-        "author": "Map Recall; sculpture by Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010') (1991); figure reconstructed from photographs by Ceescamel",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg",
+        "title": "Johnny Jordaanplein group - original low-poly reconstruction",
+        "author": "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        "sourceUrl": "https://www.openstreetmap.org/node/1704741755",
+        "modifications": "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
         "licence": "CC BY 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Figures reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(D).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(F).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(D).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/johnny-jordaan-groep.json."
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -55124,12 +55162,12 @@
         "concrete": "#7f8283"
       },
       "attribution": {
-        "title": "Theo Thijssen monument (Lindengracht) - reconstruction from photographs",
-        "author": "Map Recall; sculpture by Hans Bayens (1960); figure reconstructed from photographs by Alf van Beem, Ceescamel",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
+        "title": "Theo Thijssen monument - original low-poly reconstruction",
+        "author": "Map Recall; after the 1960 monument by Hans Bayens",
+        "sourceUrl": "https://www.openstreetmap.org/node/250624675",
+        "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
         "licence": "CC BY 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Lindengracht, Theo Thijssen beeld foto 1.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg); \"Lindengracht, Theo Thijssen beeld foto 2.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_2.jpg); \"2023 Theo Thijssen door Bayens, Asd (3).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(3).jpg); \"2023 Theo Thijssen door Bayens, Asd (2).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(2).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/theo-thijssen-standbeeld.json."
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -55209,12 +55247,12 @@
         "greyBrick": "#4b4c4c"
       },
       "attribution": {
-        "title": "Simon Carmiggelt bust (Weteringplantsoen) - reconstruction from photographs",
-        "author": "Map Recall; sculpture by Kees Verkade (1988); figure reconstructed from photographs by Ceescamel, Rob Croes / Anefo",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg",
-        "licence": "CC BY-SA 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Simon Carmiggeltbeeld.jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6,_Bestanddeelnr_934-3460.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam_Ton_van_Duinhoven_en,_Bestanddeelnr_934-3461.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/carmiggelt-borstbeeld.json."
+        "title": "Simon Carmiggelt bust - original low-poly reconstruction",
+        "author": "Map Recall; after the 1988 bust by Kees Verkade",
+        "sourceUrl": "https://www.openstreetmap.org/node/440673918",
+        "modifications": "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
       },
       "buildingCategory": "landmark",
       "bounds": {
