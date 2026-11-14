@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "Looking around loads what you see first",
+      "text": "When you drag the map away from your bike, the city now builds what fills your screen first, biggest blocks first, instead of finishing the neighbourhood around the bike; the bike's neighbourhood stays loaded, so RE-CENTER doesn't rebuild it. On a fast connection the difference is small; slow fills on the live site are still being measured."
+    },
+    {
+      "date": "2026-11-14",
       "title": "Quay walls run up to the bridge",
       "text": "Where a bridge crosses a canal end, the quay often lost its whole wall and coping, leaving a ragged edge with sky showing through, or kept a wall standing across the water under the bridge. Quay walls now stop exactly where the water passes under the bridge, as at the Bilderdijkgracht by De Clercqstraat. About 380 bridge corners across the city are fixed.",
       "where": [

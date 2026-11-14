@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## View priority while detached (2026-11-14)
+
+Feedback 748b1a8f asked whether on-screen loads come first. They did not: with the camera detached the complete city planned from the view box, but chunk builds, world cells and baked coarse ranked from the rider, and running work was cancelled only once unwanted. `engine/viewPriority.ts` casts a 32×20 screen grid onto the ground and ranks boxes by screen share (off-screen by distance); chunk builds, world cells (`CellQueue.rerank`), complete-city tiles and baked coarse follow it while detached (`?viewPriority`, default on only while detached; `=all` for A/B). Rider z14 tiles within 300 m are evicted last. Measured (Chrome Metal, dpr 2, 150 ms / 30 Mbps, local server; `scripts/detached-load.mjs`): no fill-time change beyond noise; queues stayed 3–4 jobs and fill was set by fetch latency and 400–650 ms z14 coarse builds. About 40 % of drag build time goes to chunks off screen at pan end.
+
+
 ## Shores split at bridge openings (2026-11-14)
 
 Feedback 7be6c55a pointed at the Hendrix café front (handed to the retail lane); the same frame showed the Bilderdijkgracht end quay at the De Clercqstraat bridge with no wall or coping and sky through a jagged edge. `water.ts` `openUnderFootbridges` dropped any shore segment whose midpoint fell inside a bridge opening (the 23 m end quay vs a 10 m opening) and kept whole those whose midpoint fell outside. `splitAtRings` now cuts shores at the opening edge (`openingShores`, default on): 382 joins with > 0.5 m of wrong wall before, 0 after (941 m missing, 1,115 m standing in openings). Pinned `bilderdijkgracht-declercq-quay` in check:ground-spots.

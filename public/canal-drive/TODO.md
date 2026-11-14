@@ -55,6 +55,7 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 - **Wall rule flip** (`?wallRule=1`, lane 2): flip only after a row review in game (rule 10 frames, 72°, dpr 2) on Haarlemmerdijk 2-28 and a gallery check of a sample of the 885 GLBs that change; then recompile the world (tile GLBs bake the slot).
 - **First cell still lands at ~15 s (own) / ~27 s (MapLibre):** input fetch of the 3×3 neighbourhood (~126 files, 30 MB raw) plus a broad build (~15 phases, none dominant). Options: pre-baked L0 cells for the start pose, or an alone build on an idle worker. The `?groundFirstAlone` try made all-14 slower.
+- **Slow fills while panning (feedback 748b1a8f, 2026-11-14):** `?viewPriority` merged but not measurably faster locally. Next: run `scripts/detached-load.mjs` against production (`ORIGIN=…`, `--pan 3900`, storybook) or trace on David's Mac; split the 400–650 ms storybook z14 coarse builds per world cell (storybook has no baked tier); in-flight cell reads are not aborted (shared worker promise).
 - **Data extracts unversioned:** `/data/**` max-age 3600 with no stamp, so data can lag code by up to 1 h after a deploy. Design in HISTORY round 131 (manifest + `dataUrl()` helper; hashed directories for a long cache).
 - **State 2 (ghost walls):** `?wallsPerArea=1` works but no repro yet showed the benefit; try under load or on the phone before a flip.
 - **check:rail-street takes 88 min** at load ~12 (integrator-lanes-54 runs the speed lane).
