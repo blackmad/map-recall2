@@ -92,6 +92,22 @@
     },
     {
       "date": "2026-11-14",
+      "title": "No more white stripes up brick houses",
+      "text": "Older brick houses no longer get bright white bars up their corners. The game used to add a pale corner pilaster to about a third of 19th-century and canal-house fronts at random, so 1,500 houses in the centre had white stripes the real ones don't have. Those piers are now drawn in the house's own brick. They stay pale only where the monument register or a house description says so.",
+      "where": [
+        4.8888,
+        52.3824
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-14-white-bars/triple-167794.jpg",
+          "alt": "Haarlemmerdijk 29 and 31: photo, before with white corner bars, after with brick piers",
+          "caption": "Haarlemmerdijk 29–31: photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "No more stale destinations after a reload",
       "text": "A ride left open overnight no longer brings back yesterday's destination. When you reload, a stored next stop the game would not choose today (such as Meerpadkerk) is swapped for a better-known place, unless you picked it yourself. A ride paused with the tab closed now ends after three hours. Home rides and stand-in destinations also favour well-known places over obscure ones nearby."
     },

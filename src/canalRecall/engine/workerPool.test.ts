@@ -42,6 +42,7 @@ test('pool: worker URL next to any bundle, with the building A/B flags', () => {
   // The measured wall pool (look/measuredWallPool.ts) is read in bayLookFor, in the worker: `?wallPool=0` must reach it.
   assert.equal(withWorkerFlags('w.js', '?world=live&wallPool=0'), 'w.js?wallPool=0');
   assert.equal(withWorkerFlags('w.js', '?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1&labelCalm=1'), 'w.js?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1');
+  assert.equal(withWorkerFlags('w.js', '?world=live&pilasterTone=0'), 'w.js?pilasterTone=0');
 });
 
 test('pool: the page shares one; none without Worker', () => {
