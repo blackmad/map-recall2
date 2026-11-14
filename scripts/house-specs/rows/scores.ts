@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { REPO, type RowDef } from './rowDefs.ts';
 import { loadRow } from './house-rows.ts';
-import { solveRow, readValues, compatible, type FaceFront } from '../../../src/canalRecall/houseSpec/row/solve.ts';
+import { solveRow, readValues, compatible, headsList, type FaceFront } from '../../../src/canalRecall/houseSpec/row/solve.ts';
 import { frontDesign, type RowDesign } from '../../../src/canalRecall/houseSpec/row/types.ts';
 
 const argv = process.argv.slice(2);
@@ -27,9 +27,9 @@ type Field = 'crown' | 'cornice' | 'storeys' | 'bays' | 'windows' | 'heads' | 'w
 const FIELDS: Field[] = ['crown', 'cornice', 'storeys', 'bays', 'windows', 'heads', 'wallFamily', 'roofStorey', 'dormers', 'dormerKind'];
 const faceVal = (f: FaceFront, k: Field): unknown => k === 'wallFamily' ? f.wallFamily : k === 'dormers' ? (f.dormers ?? 0) > 0 : k === 'dormerKind' ? f.dormerKind : k === 'heads' ? f.heads?.dressing : k === 'roofStorey' ? f.roofKind : (f as Record<string, unknown>)[k];
 const rowVal = (d: RowDesign, k: Field): unknown => k === 'wallFamily' ? d.wall.value.family : k === 'dormers' ? d.roofStorey.value.dormersPerFront > 0 : k === 'dormerKind' ? d.roofStorey.value.dormerKind
-  : k === 'heads' ? d.heads.value.dressing : k === 'roofStorey' ? d.roofStorey.value.kind : (d[k as keyof RowDesign]?.value);
+  : k === 'heads' ? headsList(d.heads.value)[0]?.dressing : k === 'roofStorey' ? d.roofStorey.value.kind : (d[k as keyof RowDesign]?.value);
 const readVal = (r: ReturnType<typeof readValues>, k: Field, n: number): unknown => k === 'wallFamily' ? (r.wall as { family?: string } | undefined)?.family : k === 'dormers' ? (r.dormers ? r.dormers.count > 0 : undefined)
-  : k === 'dormerKind' ? r.dormers?.kind : k === 'heads' ? (r.heads as { dressing?: string } | undefined)?.dressing : k === 'roofStorey' ? r.roofKind : k === 'bays' && r.bays ? Math.round((r.bays as number) / n) : r[k as keyof typeof r];
+  : k === 'dormerKind' ? r.dormers?.kind : k === 'heads' ? headsList(r.heads as never)[0]?.dressing : k === 'roofStorey' ? r.roofKind : k === 'bays' && r.bays ? Math.round((r.bays as number) / n) : r[k as keyof typeof r];
 const cf = (k: Field) => k === 'heads' ? 'headsDressing' : k;
 const same = (k: Field, a: unknown, b: unknown) => k === 'heads' ? compatible('heads', { dressing: a }, { dressing: b }) : compatible(cf(k), a, b);
 

@@ -13,6 +13,7 @@ import type { RowFrontRecord } from '../../houseLine/rowFront.ts';
 import { BASEMENTS } from '../../buildingRecipe/intent.ts';
 import { emptySpec, setSpecField, type HouseSpec, type Prov, type SpecSource } from '../spec.ts';
 import { JUDGED_PALETTE, JUDGED_RULING, type WallJudgedFact } from '../judgedColour.ts';
+import { headsList } from './solve.ts';
 import { frontDesign, type RowDesign, type RowField, type RowFieldSource, type RowRecord } from './types.ts';
 
 /** Row source -> the spec receipt's source and confidence. */
@@ -61,7 +62,11 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
     put(P + 'gable', d.crown.value, d.crown);
     if (d.cornice.value !== 'none' || d.crown.value === 'cornice') put(P + 'cornice', d.cornice.value === 'none' ? 'simple' : d.cornice.value, d.cornice);
     put(P + 'windows', WINDOWS_DRAWN[d.windows.value] ?? d.windows.value, d.windows);
-    const h = d.heads.value;
+    const [h, ...more] = headsList(d.heads.value);
+    for (const x of more) {
+      // A second head group: round heads under arch rings on their storeys (windowHead), a lintel dressing (windowSurround).
+      if (x.dressing === 'arch-ring' || x.shape === 'round') put(P + 'windowHead', { kind: 'round', ...(x.storeys ? { storeys: x.storeys } : {}), ...(x.dressing === 'arch-ring' ? { archRing: { colour: 'stone', style: 'solid', keystone: true } } : {}) }, d.heads);
+    }
     if (h.dressing === 'segmental-tympanum') put(P + 'windowHead', { kind: 'segmental', tympanum: 'stone', ...(h.storeys ? { storeys: h.storeys } : {}) }, d.heads);
     else if (h.dressing === 'keystone') put(P + 'windowHead', { kind: h.shape === 'relieving' ? 'flat' : h.shape, archRing: { colour: 'stone', style: 'none', keystone: true } }, d.heads);
     else if (h.dressing === 'block-course') { put(P + 'bands', 'painted', d.heads); put(P + 'bandLines', ['head'], d.heads); put(P + 'bandHeights', { head: 0.3 }, d.heads); }

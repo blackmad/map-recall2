@@ -58,6 +58,8 @@ export interface FaceFront {
   ground?: RowGround;
   /** Sampled hexes the face carries (measuredPalette): reported, never drawn. */
   sampledHex?: string;
+  /** The face's citation for the house (what the zoomed strip shows). */
+  citation?: string;
   limits?: string[];
 }
 export interface MemberInput {
@@ -104,7 +106,7 @@ export function compatible(field: string, a: unknown, b: unknown): boolean {
 }
 function classKey(field: string, v: unknown): string {
   if (v && typeof v === 'object') {
-    if (field === 'heads') return (v as RowHeads).dressing;
+    if (field === 'heads') return headsList(v as RowHeads | RowHeads[]).map(h => h.dressing).join('+');
     if (field === 'wall' || field === 'wallFamily') return (v as RowWall).family;
     return JSON.stringify(v);
   }
@@ -121,14 +123,16 @@ const WORD_N: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, a: 1
 /** The dormers a reading states: v4.3 `dormers`, else a gap sentence ("one pedimented dormer with a hoist beam"). */
 export function readDormers(a: DescriberAnswer): { count: number; kind?: RowDormerKind; hoist?: boolean; from: string } | null {
   const d = a.dormers;
+  const ornate = (a.gaps ?? []).find(g => /dormer/i.test(g.what) && /finial|pinnacle/i.test(g.what) && /wall dormer|rising out of the front|tall|ornate/i.test(g.what));
   if (d && d !== NV && typeof d === 'object') {
+    if (ornate && d.kind !== 'none') return { count: d.count, kind: 'ornate-pinnacle', from: `dormers ${d.kind} + gap: ${ornate.what}` };
     return { count: d.kind === 'none' ? 0 : d.count, ...(d.kind !== 'none' ? { kind: d.kind as RowDormerKind } : {}), from: 'dormers' };
   }
   for (const g of a.gaps ?? []) {
     const m = /\b(one|two|three|four|an?|\d)\s+(?:[\w-]+\s+){0,3}?dormers?\b/i.exec(g.what);
     if (!m) continue;
     const count = WORD_N[m[1].toLowerCase()] ?? Number(m[1]);
-    const kind: RowDormerKind = /pediment/i.test(g.what) ? 'pediment' : /gable/i.test(g.what) ? 'gabled' : 'plain';
+    const kind: RowDormerKind = /finial|pinnacle/i.test(g.what) && /wall dormer|rising out of the front|tall|ornate/i.test(g.what) ? 'ornate-pinnacle' : /pediment/i.test(g.what) ? 'pediment' : /gable/i.test(g.what) ? 'gabled' : 'plain';
     return { count, kind, ...(/hoist/i.test(g.what) ? { hoist: true } : {}), from: `gap: ${g.what}` };
   }
   return null;
@@ -140,7 +144,7 @@ const DRESSING_OF: Record<string, RowHeadDressing> = {
 };
 /** A reading's head row: the upper storeys' head shape and dressing; relieving or segmental heads on some upper storeys
  *  read as a segmental head with a tympanum on those storeys. */
-export function readHeads(a: DescriberAnswer): RowHeads | undefined {
+export function readHeads(a: DescriberAnswer): RowHeads | RowHeads[] | undefined {
   const up = (a.heads ?? []).slice(1);
   const arched = up.map((h, i) => (h === 'relieving' || h === 'segmental') ? i + 1 : 0).filter(Boolean);
   if (arched.length && arched.length < up.filter(h => h !== NV).length) return { shape: 'segmental', dressing: 'segmental-tympanum', storeys: arched };
@@ -148,8 +152,27 @@ export function readHeads(a: DescriberAnswer): RowHeads | undefined {
   const shape = (mode(shapes.map(h => h === 'relieving' ? 'segmental' : h)) ?? 'flat') as string;
   const dressing = a.windowSurround && a.windowSurround !== NV ? DRESSING_OF[a.windowSurround] : undefined;
   if (!dressing) return undefined;
-  const roundTop = shapes.length > 1 && shapes[shapes.length - 1] === 'round' && shape !== 'round';
-  return { shape: (['flat', 'segmental', 'round', 'relieving'].includes(shape) ? shape : 'flat') as RowHeadShape, dressing, ...(roundTop ? { storeys: shapes.map((_, i) => i + 1).slice(0, -1) } : {}) };
+  const round = up.map((h, i) => h === 'round' ? i + 1 : 0).filter(Boolean), other = up.map((h, i) => h !== 'round' && h !== NV ? i + 1 : 0).filter(Boolean);
+  if (round.length && other.length) {
+    // Round heads on some storeys only (Weteringschans 171218's top storey): one entry per head kind, each with its storeys.
+    // A round head is `arch-ring` only when the reader names the ring; the other storeys keep the read surround.
+    const ring = (a.gaps ?? []).some(g => /arch[- ]ring|arched .*ring|ring[s]? .*keystone/i.test(g.what));
+    return [{ shape: 'flat', dressing, storeys: other }, { shape: 'round', dressing: ring ? 'arch-ring' : 'none', storeys: round }];
+  }
+  return { shape: (['flat', 'segmental', 'round', 'relieving'].includes(shape) ? shape : 'flat') as RowHeadShape, dressing };
+}
+/** A heads value as a list (a front may state one head kind per storey group). */
+export const headsList = (v: RowHeads | RowHeads[] | null | undefined): RowHeads[] => v == null ? [] : Array.isArray(v) ? v : [v];
+/** Wall extras a reading's kit gaps state that the row kit draws (lane R round 2): read and drawn. */
+export const GAP_EXTRAS: ReadonlyArray<{ id: string; test: RegExp }> = [
+  { id: 'row-balcony', test: /balcon/i },
+  { id: 'row-porch', test: /(?:door|entrance)[^.]*(?:aedicule|pediment|porch|surround)|(?:aedicule|porch)[^.]*(?:door|entrance)/i },
+  { id: 'row-rustication', test: /(?:rough|rusticat)[^.]*(?:souterrain|basement|plinth)|(?:souterrain|basement|plinth)[^.]*(?:rough stone|rusticat)/i },
+];
+export function gapExtras(a: DescriberAnswer): Array<{ id: string; what: string }> {
+  const out: Array<{ id: string; what: string }> = [];
+  for (const g of a.gaps ?? []) for (const x of GAP_EXTRAS) if (x.test.test(g.what) && !out.some(o => o.id === x.id)) out.push({ id: x.id, what: g.what });
+  return out;
 }
 export interface ReadValues { [k: string]: unknown }
 /** The class and metre values one reading states, in the row vocabulary (undefined = not stated). */
@@ -261,7 +284,8 @@ export function solveRow(input: RowInput): RowRecord {
     if (!e.read) return null;
     const r = e.read;
     const cornice = r.cornice === undefined ? null : (COMPAT.cornice.find(g => g.includes(String(r.cornice)))?.[0] ?? r.cornice);
-    return JSON.stringify([r.crown ?? null, cornice, r.roofKind ?? null, r.storeys ?? null, e.frontsOfPand > 1 ? Math.round((r.bays as number) / e.frontsOfPand) : r.bays ?? null]);
+    const shapes = headsList(r.heads as RowHeads | RowHeads[] | undefined).map(h => h.shape).sort().join('+') || null;
+    return JSON.stringify([r.crown ?? null, cornice, r.roofKind ?? null, r.storeys ?? null, e.frontsOfPand > 1 ? Math.round((r.bays as number) / e.frontsOfPand) : r.bays ?? null, shapes]);
   };
   // A face front that states the type but no head joins its neighbour (rule 2: unstated takes the series value).
   const keys = evs.map(e => e.face && !e.face.heads && evs.some(o => o !== e && o.face?.heads) ? null : sig(e));
@@ -278,7 +302,7 @@ export function solveRow(input: RowInput): RowRecord {
     const design = solveSeries(id, ev, input, flags, evs);
     const type = ev.find(e => e.face?.type)?.face?.type;
     const runs = runsOf(evs.map((_, i) => keys[i] === k));
-    return { id, label: `${type ?? 'read series'}${design.heads.value.dressing !== 'none' ? `, ${design.heads.value.dressing} heads` : ''}${design.roofStorey.value.dormersPerFront ? `, ${design.roofStorey.value.dormersPerFront} ${design.roofStorey.value.dormerKind ?? ''} dormer` : ''}${runs > 1 ? ` (${runs} runs)` : ''}`,
+    return { id, label: `${type ?? 'read series'}${headsList(design.heads.value).some(h => h.dressing !== 'none') ? `, ${headsList(design.heads.value).map(h => h.dressing).join(' + ')} heads` : ''}${design.roofStorey.value.dormersPerFront ? `, ${design.roofStorey.value.dormersPerFront} ${design.roofStorey.value.dormerKind ?? ''} dormer` : ''}${runs > 1 ? ` (${runs} runs)` : ''}`,
       ...(type ? { type } : {}), fronts: ev.map(e => e.front.id), design };
   });
 
@@ -292,7 +316,7 @@ export function solveRow(input: RowInput): RowRecord {
       if (drawn === undefined) continue;
       const read = k === 'roofKind' ? v : k === 'dormers' ? (v as { count: number }).count / e.frontsOfPand : k === 'bays' && e.frontsOfPand > 1 ? (v as number) / e.frontsOfPand : v;
       const drawnCmp = k === 'roofKind' ? (drawn as RowRoofStorey).kind : k === 'dormers' ? (drawn as RowRoofStorey).dormersPerFront : drawn;
-      if (k === 'wall' ? compatible('wallFamily', read, drawnCmp) && (read as RowWall).material === (drawnCmp as RowWall).material : k === 'heads' ? sameHeads(read as RowHeads, drawnCmp as RowHeads) : JSON.stringify(read) === JSON.stringify(drawnCmp)) continue;
+      if (k === 'wall' ? compatible('wallFamily', read, drawnCmp) && (read as RowWall).material === (drawnCmp as RowWall).material : k === 'heads' ? sameHeads(read as RowHeads | RowHeads[], drawnCmp as RowHeads | RowHeads[]) : JSON.stringify(read) === JSON.stringify(drawnCmp)) continue;
       const cf = k === 'roofKind' ? 'roofStorey' : k === 'dormers' ? 'dormers' : compatField(k);
       const same = typeof read !== 'number' && compatible(cf, read, drawnCmp);
       overruled.push({ front: e.front.id, field: k, read, drawn: drawnCmp, by: s.design[key].source,
@@ -300,10 +324,18 @@ export function solveRow(input: RowInput): RowRecord {
     }
     // Per-house reads drawn on the front: its own bands (as extras) and a hoist in its dormer.
     const ownBands = (e.read?.bands ?? []).filter(b => !s.design.extras.value.includes(b));
-    if (ownBands.length) e.front.overrides.extras = { value: [...s.design.extras.value, ...ownBands], source: 'single-read', ref: `${e.member.pandId} reading: bands ${e.member.read?.bands}` };
+    const ownGaps = e.read && e.member.read ? gapExtras(e.member.read).filter(x => !s.design.extras.value.includes(x.id)) : [];
+    if (ownBands.length || ownGaps.length) e.front.overrides.extras = { value: [...s.design.extras.value, ...ownBands, ...ownGaps.map(x => x.id)], source: 'single-read',
+      ref: [ownBands.length ? `${e.member.pandId} reading: bands ${e.member.read?.bands}` : '', ...ownGaps.map(x => `${x.id} from the gap "${x.what}"`)].filter(Boolean).join('; ') };
     const rsv = s.design.roofStorey.value;
     if (e.read?.dormers?.hoist && !rsv.hoist && rsv.dormersPerFront > 0)
       e.front.overrides.roofStorey = { value: { ...rsv, hoist: true }, source: 'single-read', ref: `${e.member.pandId} reading: ${e.read.dormers.from}` };
+    // An ornate wall dormer (pediment and finial) on one house of a series: a member difference, drawn on the front when two
+    // readings say it (the D1 gap, and the face's citation of a larger or ornate dormer; without a face, the reading alone).
+    const ornateFace = !e.face || /larger|ornate|tall|pinnacle|finial/i.test(e.face.citation ?? '');
+    if (e.read?.dormers?.kind === 'ornate-pinnacle' && rsv.dormerKind !== 'ornate-pinnacle' && rsv.dormersPerFront > 0 && ornateFace)
+      e.front.overrides.roofStorey = { value: { ...(e.front.overrides.roofStorey?.value ?? rsv), dormerKind: 'ornate-pinnacle' }, source: e.face ? 'face-intent' : 'single-read',
+        ref: `${e.member.pandId} reading: ${e.read.dormers.from}${e.face?.citation ? `; face: ${e.face.citation}` : ''}` };
     if (e.face) {
       // A face statement for this house that differs from the series (a head variant inside a type) is drawn on the front.
       const fh = e.face.heads;
@@ -318,7 +350,7 @@ export function solveRow(input: RowInput): RowRecord {
   return { v: ROW_RECORD_VERSION, id: input.id, street: input.street, side: input.side, ...(input.face ? { face: input.face } : {}), members, fronts, series, flags, readNotDrawn, overruled, inputs: input.inputs, solvedAt: input.solvedAt };
 }
 
-const sameHeads = (a: RowHeads, b: RowHeads) => a.dressing === b.dressing && a.shape === b.shape && JSON.stringify(a.storeys ?? null) === JSON.stringify(b.storeys ?? null);
+const sameHeads = (a: RowHeads | RowHeads[], b: RowHeads | RowHeads[]) => { const x = headsList(a), y = headsList(b); return x.length === y.length && x.every((h, i) => h.dressing === y[i].dressing && h.shape === y[i].shape && JSON.stringify(h.storeys ?? null) === JSON.stringify(y[i].storeys ?? null)); };
 const runsOf = (mask: boolean[]) => mask.reduce((n, v, i) => n + (v && !mask[i - 1] ? 1 : 0), 0);
 export function heldReason(a: DescriberAnswer): string | null {
   const text = [a.notes ?? '', ...(a.gaps ?? []).map(g => g.what)].join(' ');
@@ -340,7 +372,10 @@ function notDrawnOfRead(a: DescriberAnswer): Array<Omit<ReadNotDrawn, 'front'>> 
   if (a.bands && a.bands !== NV && a.bands !== 'none' && !BAND_EXTRAS[a.bands]) out.push({ field: 'bands', value: a.bands, reason: 'the row design has no band field; the head dressing carries the white course' });
   if (a.cornice === 'frieze' || a.cornice === 'attic-frieze') out.push({ field: 'cornice', value: a.cornice, reason: 'drawn as the series cornice; the frieze panels are not drawn' });
   if (a.doorSurround === true) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
-  for (const g of a.gaps ?? []) out.push({ field: `gap:${g.component}`, value: g.what, reason: 'kit gap (the kit cannot say it)' });
+  for (const g of a.gaps ?? []) {
+    const drawnBy = GAP_EXTRAS.find(x => x.test.test(g.what));
+    out.push({ field: `gap:${g.component}`, value: g.what, reason: drawnBy ? `drawn as ${drawnBy.id} (its ornament detail is not)` : 'kit gap (the kit cannot say it)' });
+  }
   return out;
 }
 function dedupeNotDrawn(xs: ReadNotDrawn[]): void {

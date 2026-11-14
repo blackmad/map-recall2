@@ -77,6 +77,7 @@ export function faceFronts(face: BlockFaceIntent, pandId: string, spec: HouseSpe
       ground,
       ...(i === 0 && sampled ? { sampledHex: sampled } : {}),
       ...(i === 0 && limits.length ? { limits } : {}),
+      ...((h.rhythm as { citation?: string } | undefined)?.citation ? { citation: (h.rhythm as { citation: string }).citation } : {}),
     };
     return out;
   });

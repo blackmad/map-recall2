@@ -56,7 +56,8 @@ export type RowCorniceKind = (typeof ROW_CORNICES)[number];
 export const ROW_ROOF_STOREYS = ['mansard', 'attic', 'none'] as const;
 export type RowRoofStoreyKind = (typeof ROW_ROOF_STOREYS)[number];
 /** Dormers in a roof storey: `pediment` a triangular pediment top, `gabled` a small gable, `plain` a flat or box top. */
-export const ROW_DORMER_KINDS = ['pediment', 'gabled', 'plain'] as const;
+/** `ornate-pinnacle`: a tall wall dormer rising out of the front with a pediment and a finial or pinnacle (Kinkerstraat 100). */
+export const ROW_DORMER_KINDS = ['pediment', 'gabled', 'plain', 'ornate-pinnacle'] as const;
 export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
 /**
  * The white head dressing of a window row (the thing that makes these rows recognisable):
@@ -132,7 +133,9 @@ export interface RowDesign {
   /** Window axes per house front on the upper storeys. */
   bays: RowField<number>;
   windows: RowField<RowWindowKind>;
-  heads: RowField<RowHeads>;
+  /** One head kind, or one per storey group (each entry with its `storeys`), e.g. Weteringschans 171218: stone lintels on
+   *  storey 1, round heads under arch rings on storey 2. */
+  heads: RowField<RowHeads | RowHeads[]>;
   /** White window joinery. */
   whiteFrames: RowField<boolean>;
   /** A plain stone sill under each window. */

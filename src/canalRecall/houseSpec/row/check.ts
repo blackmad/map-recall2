@@ -10,7 +10,7 @@
 import type { DescriberAnswer } from '../describer.ts';
 import type { FieldFate, RowCheckMember, RowCheckRow } from '../rowChecks.ts';
 import { frontDesign, type RowRecord } from './types.ts';
-import { ROW_EXTRAS_DEFAULT } from './solve.ts';
+import { ROW_EXTRAS_DEFAULT, headsList } from './solve.ts';
 
 /** The reader's fields P accounts for (check-rows.ts READ_FIELDS) and the row fields (overruled / not-drawn keys) each maps to. */
 export const READ_FIELD_MAP: Readonly<Record<string, string[]>> = {
@@ -40,18 +40,21 @@ export function toRowCheck(row: RowRecord, answers: Readonly<Record<string, Desc
       fields[k] = { fate, ...(reason ? { reason } : {}) };
     }
     const line = d.corniceTopM.value;
+    // A member's own dormer kind (Kinkerstraat 100's ornate wall dormer) is a per-house field (`dormerVariant`); the series' kind stays the design.
+    const sk = row.series.find(x => x.id === f.seriesId)!.design.roofStorey.value.dormerKind;
     return {
       key: f.id, pandId: f.pandId, numbers: f.numbers.map(String), series: f.seriesId,
       design: {
         crown: d.crown.value, cornice: d.cornice.value, storeys: d.storeys.value, bays: d.bays.value, windows: d.windows.value,
-        head: `${d.heads.value.shape}/${d.heads.value.dressing}${d.heads.value.storeys ? `@${d.heads.value.storeys.join(',')}` : ''}`,
+        head: headsList(d.heads.value).map(h => `${h.shape}/${h.dressing}${h.storeys ? `@${h.storeys.join(',')}` : ''}`).join('+'),
         whiteFrames: d.whiteFrames.value, sills: d.sills.value, wallMaterial: d.wall.value.material, wallFamily: d.wall.value.family, wall: d.wall.value.hex,
-        roofStorey: rs.kind, dormers: rs.dormersPerFront, dormerKind: rs.dormerKind ?? null,
+        roofStorey: rs.kind, dormers: rs.dormersPerFront, dormerKind: sk ?? null,
+        ...(rs.dormerKind !== sk ? { dormerVariant: rs.dormerKind ?? null } : {}),
         // Per-house fields (ground use, door side, shop paint, basement) are not the design: they stay on the RowRecord front
         // (`ground`). P's kinker-100-104-identical regression compares `design` whole, so they are left out here.
       },
       corniceM: line,
-      roof: { kind: rs.kind === 'none' ? 'lid' : rs.kind, source: 'series', dormers: rs.dormersPerFront, ...(rs.dormerKind ? { dormerKind: rs.dormerKind } : {}), gable: d.crown.value === 'cornice' ? null : d.crown.value },
+      roof: { kind: rs.kind === 'none' ? 'lid' : rs.kind, source: 'series', dormers: rs.dormersPerFront, ...(sk ? { dormerKind: sk } : {}), gable: d.crown.value === 'cornice' ? null : d.crown.value },
       extras: [...d.extras.value],
       // Extras the reading states (bands): allowed beside ROW_FRONT_EXTRAS.
       statedExtras: d.extras.value.filter(x => !ROW_EXTRAS_DEFAULT.includes(x)),

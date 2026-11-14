@@ -47,14 +47,18 @@ test('Kinkerstraat 104, 102, 100 (159635, 152925, 160809) resolve to one design'
   const ids = ['0363100012159635', '0363100012152925', '0363100012160809'];
   const fronts = ids.map(id => K.row.fronts.find(f => f.id === id)!);
   assert.equal(new Set(fronts.map(f => f.seriesId)).size, 1);
-  assert.equal(new Set(ids.map(id => strip(design(K, id)))).size, 1);
+  // one design but for 100's own dormer (an ornate wall dormer with a pediment and finial: D1 gap + face "larger pediment dormer")
+  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
+  assert.equal(new Set(ids.map(noDormerKind)).size, 1);
+  assert.equal(design(K, '0363100012160809').roofStorey.value.dormerKind, 'ornate-pinnacle');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'pediment');
   // one wall tone, one roof, one cornice line (street datum) for the three; the hash path drew one red and two tan
   const bricks = ids.map(id => K.specs[id].design.palette?.brick);
   assert.equal(new Set(bricks).size, 1);
   const d = design(K, ids[0]);
   assert.equal(d.corniceTopM.value, 14.18);
   assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' });
-  assert.equal(d.heads.value.dressing, 'block-course');
+  assert.deepEqual(d.heads.value, { shape: 'flat', dressing: 'block-course' }, 's1 heads on every upper storey (no storeys list)');
   assert.equal(d.wall.value.family, 'red-brown-brick');
 });
 
@@ -71,7 +75,7 @@ test('Kinkerstraat 92–94 (236213): nothing staged from the scaffold read', () 
   }
   assert.ok(!K.row.overruled.some(o => o.front.startsWith('0363100012236213')), 'no reading of it is weighed');
   // its two modules keep the face's head variants (keystone left, segmental tympanum right) and the row's lines
-  assert.deepEqual(fronts.map(f => design(K, f.id).heads.value.dressing), ['keystone', 'segmental-tympanum']);
+  assert.deepEqual(fronts.map(f => (design(K, f.id).heads.value as { dressing: string }).dressing), ['keystone', 'segmental-tympanum']);
   assert.notEqual(spec.design.palette?.brick, '#243142', 'the netting colour is not the wall');
 });
 
@@ -79,16 +83,18 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   const d = design(W, '0363100012169016');
   assert.equal(d.crown.value, 'cornice');
   assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment', hoist: true });
-  // the hoist is 169016's own (171218's ornate dormer has none); the series draws none
+  // the hoist is 169016's own: 171218's ornate dormer has none
   assert.equal(design(W, '0363100012171218').roofStorey.value.hoist, undefined);
-  assert.equal(W.row.series.find(x => x.id === W.row.fronts.find(f => f.id === '0363100012169016')!.seriesId)!.design.roofStorey.value.hoist, undefined);
   const f = W.specs['0363100012169016'].design.fronts![0] as Record<string, unknown>;
   assert.equal(f.gable, 'cornice');
   assert.equal(f.roofStorey, 'mansard');
   assert.equal(f.dormers, 1);
   assert.equal(f.dormerStyle, 'pediment');
-  // the mansard pair shares a series and a cornice line under the 3DBAG height
-  assert.equal(W.row.fronts.find(x => x.id === '0363100012171218')!.seriesId, W.row.fronts.find(x => x.id === '0363100012169016')!.seriesId);
+  // 171218 is its own series (round heads on its top storey); both mansards keep a line under the 3DBAG height
+  assert.notEqual(W.row.fronts.find(x => x.id === '0363100012171218')!.seriesId, W.row.fronts.find(x => x.id === '0363100012169016')!.seriesId);
+  assert.deepEqual(design(W, '0363100012171218').heads.value, [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1] }, { shape: 'round', dressing: 'arch-ring', storeys: [2] }]);
+  assert.deepEqual(design(W, '0363100012171218').extras.value.slice(6).sort(), ['row-balcony', 'row-porch', 'row-rustication', 'speklagen']);
+  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(6).sort(), ['floor-cornices', 'row-balcony', 'row-porch', 'string-courses']);
   assert.ok(d.corniceTopM.value! < 15);
   // s1's cornice is the 3DBAG eaves (14.31 / 14.17), not the 16.5 m roof height: within 0.5 m of the mansard pair's line
   const s1 = design(W, '0363100012168096').corniceTopM;
@@ -96,7 +102,7 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   assert.ok(Math.abs(s1.value! - d.corniceTopM.value!) < 0.5);
   assert.ok(W.row.flags.some(f => f.kind === 'no-reading' && f.field === 'corniceTopM' && f.fronts.includes('0363100012168096')));
   // bands are read and drawn as extras: 169016 floor cornices and string courses, 171218 speklagen
-  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(-2), ['floor-cornices', 'string-courses']);
+  assert.ok(['floor-cornices', 'string-courses'].every(x => design(W, '0363100012169016').extras.value.includes(x)));
   assert.ok(design(W, '0363100012171218').extras.value.includes('speklagen'));
   assert.ok(!design(W, '0363100012169016').extras.value.includes('speklagen'));
   assert.ok(!W.row.readNotDrawn.some(r => r.field === 'bands'));
