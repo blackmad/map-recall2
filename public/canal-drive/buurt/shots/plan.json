@@ -907,6 +907,17 @@
      ]
     },
     {
+     "label": "Hotel Boat&Co",
+     "lat": 52.39450143,
+     "lng": 4.88206363,
+     "view": "chase",
+     "at": [
+      4.88047,
+      52.394625,
+      97
+     ]
+    },
+    {
      "label": "Pontsteiger",
      "lat": 52.393236963385505,
      "lng": 4.886195205886302,
@@ -915,17 +926,6 @@
       4.886023,
       52.392189,
       6
-     ]
-    },
-    {
-     "label": "Haparandaweg 870-900",
-     "lat": 52.3948,
-     "lng": 4.878,
-     "view": "chase",
-     "at": [
-      4.878089,
-      52.395299,
-      186
      ]
     },
     {
@@ -2270,14 +2270,14 @@
    "name": "Revaleiland",
    "shots": [
     {
-     "label": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland)",
-     "lat": 52.3941326,
-     "lng": 4.8813726,
+     "label": "Hotel Boat&Co",
+     "lat": 52.39450143,
+     "lng": 4.88206363,
      "view": "chase",
      "at": [
-      4.881346,
-      52.393128,
-      1
+      4.88047,
+      52.394625,
+      97
      ]
     },
     {
