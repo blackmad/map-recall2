@@ -43,6 +43,7 @@ import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
 import { retailFrontTris, doorHead, FRONT as RETAIL_FRONT } from './retailFront.js';
 import { wordRuns } from './blockLetters.js';
+import { signatureQuads, signatureWall } from './shopSignature.js';
 import earcut from 'earcut';
 import { THIN_CLASS, thinCm } from './look/thinFade.js';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraContext } from './facadeExtras.js';
@@ -368,31 +369,16 @@ function boxTris(e: { x0: number; y0: number; ux: number; uy: number; nx: number
 }
 
 /**
- * A signature storefront on the wall nearest the business's point: an awning slab over the
- * ground floor across the frontage, and a blade sign sticking out from the wall above it,
- * both in the business's colour (the sign framed in dark iron), so the label on the map and
- * the building on the street match.
+ * A signature storefront (shopSignature.ts): a sloped canvas awning hung from the ground storey's head on the exposed
+ * street wall nearest the business's point, stopping short of a turning neighbour wall, and a blade sign above it, both
+ * in the business's colour, so the label on the map and the building on the street match.
  */
-function signatureTris(sig: { at: [number, number]; hex: string }, edges: readonly Edge[], base: number, origin: Origin): SignTri[] {
+function signatureTris(sig: { at: [number, number]; hex: string }, street: readonly Edge[], exposed: readonly Edge[], edges: readonly Edge[], base: number, groundM: number, origin: Origin): SignTri[] {
   const kx = mPerDegLng(origin.lat), px = (sig.at[0] - origin.lng) * kx, py = (sig.at[1] - origin.lat) * M_PER_DEG_LAT;
-  let best: Edge | null = null, bestD = Infinity;
-  for (const e of edges) {
-    if (e.hole || e.len < 2.5) continue;
-    const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
-    const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
-    if (d < bestD) { bestD = d; best = e; }
-  }
-  if (!best) return [];
-  const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
-  const out: SignTri[] = [], L = best.len, z = base;
-  // Awning: the frontage less 0.4 m each side, 0.9 m deep, a thin band at 3.0-3.2 m. A 1.2 m deep,
-  // 0.45 m thick slab read as a heavy black box on dark brands (user 2026-10-03).
-  boxTris(e, 0.4, L - 0.4, 0.05, 0.95, z + 3.0, z + 3.2, sig.hex, out, true);
-  // Blade sign near the end of the frontage closest to the point: iron bracket and a 0.9 m board.
-  const along = Math.max(0.6, Math.min(L - 0.6, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
-  const at = along < L / 2 ? 0.6 : L - 0.6;
-  boxTris(e, at - 0.04, at + 0.04, 0.05, 1.2, z + 4.3, z + 4.38, '#2a2a2a', out, true);
-  boxTris(e, at - 0.07, at + 0.07, 0.25, 1.15, z + 3.45, z + 4.3, sig.hex, out, true);
+  const wall = signatureWall(px, py, street, exposed, edges);
+  if (!wall) return [];
+  const out: SignTri[] = [];
+  for (const { q, n, hex } of signatureQuads(px, py, wall, edges, base, groundM, sig.hex)) faceTris(q, n, hex, out);
   return out;
 }
 
@@ -1014,7 +1000,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const walled = mode === 'walls', shellMode = mode === 'shell';
     const lid = (walled || shellMode) && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
-    const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [])];
+    const signExposed = walled && b.signature && b.lid ? edges.filter(e => !e.hole && !hiddenByNeighbour(e, b)) : [];
+    const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, signExposed.filter(e => doorAllowed.has(e)), signExposed, edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin) : [])];
     // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
     if (retail) sign.push(...retail.tris);
     else if (walled && b.chain && b.lid) {

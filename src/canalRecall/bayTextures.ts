@@ -342,6 +342,45 @@ function quietShopAt(p: Painter, w: number, groundY: number, kind: BayKind): voi
   }
 }
 
+/**
+ * A brown café / bar (OSM amenity bar or pub): a dark timber front under the business's fascia, glazed from a low
+ * panelled stall riser to the head in big panes with a transom bar, warm lamps behind the glass. Lane
+ * shopfront-hendrix-20261114 (feedback 7be6c55a, café Hendrix, Bilderdijkkade): the old cell was a wall of vertical
+ * timber planks from 1.7 m down with two small 1.0 x 0.6 m panes above, washed 30 % amber, which read as opaque beige
+ * panels, and a painted hanging disc in the sign colour. Amsterdam's cafés are glazed (the panorama: big panes, dark
+ * frames); this is the retail lane's measured bar (puiAt) for the flag-off look.
+ */
+export const BROWN_CAFE = { fasciaTop: 20, fasciaH: 46, glassTop: 90, riser: 72, side: 30, mullions: 3, transom: 0.26 } as const;
+function brownCafeAt(p: Painter, w: number, groundY: number): void {
+  const { ctx } = p, cartoon = p.cartoon, B = BROWN_CAFE;
+  const timber = cartoon ? '#5a3b2c' : '#2e1c12', panel = cartoon ? '#6d4a37' : '#3b261a';
+  const x0 = B.side, x1 = w - B.side, y0 = B.glassTop, y1 = groundY - B.riser, gw = x1 - x0, gh = y1 - y0;
+  // Dark timber over the whole storey (untinted: the cream surround under a bar is what read wrong).
+  p.fill('ink', timber); ctx.fillRect(0, 10, w, groundY - 10);
+  fascia(p, 14, B.fasciaTop, w - 28, B.fasciaH);
+  // Stall riser: one sunk panel under each pane.
+  const panes = B.mullions + 1, pw = gw / panes;
+  p.fill('ink', panel);
+  for (let k = 0; k < panes; k++) ctx.fillRect(x0 + k * pw + 10, y1 + 14, pw - 20, B.riser - 30);
+  // Glass: the same sky-to-dark gradient as the house windows, with warm lamps low behind it.
+  glassRect(p, x0, y0, gw, gh, 1);
+  p.shade(() => {
+    for (let k = 0; k < panes; k++) {
+      const cx = x0 + pw * (k + 0.5), cy = y0 + gh * (0.55 + 0.06 * (k % 2)), r = pw * 0.32;
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r); g.addColorStop(0, 'rgba(255,186,110,0.35)'); g.addColorStop(1, 'rgba(255,186,110,0)');
+      ctx.fillStyle = g; ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+    }
+    // A reflection streak so the pane reads as glass, not a painted panel.
+    ctx.fillStyle = 'rgba(230,236,240,0.10)'; ctx.beginPath(); ctx.moveTo(x0 + gw * 0.58, y0); ctx.lineTo(x0 + gw * 0.70, y0); ctx.lineTo(x0 + gw * 0.46, y1); ctx.lineTo(x0 + gw * 0.34, y1); ctx.closePath(); ctx.fill();
+  });
+  // Mullions and the transom bar in the timber.
+  p.fill('ink', timber);
+  for (let k = 1; k < panes; k++) ctx.fillRect(x0 + Math.round(k * pw) - 4, y0, 8, gh);
+  ctx.fillRect(x0, y0 + Math.round(gh * B.transom), gw, 6);
+  if (cartoon) { p.stroke(OUTLINE, p.lineW * 0.6); ctx.strokeRect(x0, y0, gw, gh); }
+  p.shade(() => { ctx.fillStyle = 'rgba(0,0,0,0.40)'; ctx.fillRect(x0, y0, gw, 7); ctx.fillRect(x0, y0, 6, gh); });
+}
+
 function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): void {
   const { ctx } = p, cartoon = p.cartoon;
   const frame = cartoon ? '#fffaf0' : '#e4dfd2';
@@ -404,16 +443,7 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
     p.stroke(cartoon ? '#2a9d8f' : '#2f3a40', 6);
     for (let bx = 30; bx < w - 70; bx += 70) bike(bx, groundY - 18, 0.9);
   } else {
-    // Brown café: dark wood below, small amber windows above, a hanging sign.
-    p.fill('ink', cartoon ? '#5a3b2c' : '#3d2a20'); ctx.fillRect(16, 168, w - 32, groundY - 176);
-    p.fill('ink', cartoon ? '#6d4a37' : '#4b3326'); for (let x = 30; x < w - 30; x += 70) ctx.fillRect(x, 182, 54, groundY - 200);
-    for (const cx of [w * 0.28, w * 0.66]) {
-      p.fill('wall', frame); p.rr(cx - 62, 84, 124, 78, cartoon ? 8 : 2); ctx.fill(); outline();
-      glassRect(p, cx - 52, 94, 104, 58, 4);
-      p.shade(() => { ctx.fillStyle = cartoon ? 'rgba(255,200,120,0.45)' : 'rgba(255,180,90,0.30)'; ctx.fillRect(cx - 52, 94, 104, 58); });
-    }
-    p.stroke(OUTLINE, 5); ctx.beginPath(); ctx.moveTo(w - 30, 58); ctx.lineTo(w - 96, 58); ctx.stroke();
-    p.fill('accent', '#ffffff'); ctx.beginPath(); ctx.arc(w - 84, 92, 28, 0, Math.PI * 2); ctx.fill(); outline();
+    brownCafeAt(p, w, groundY);
   }
 }
 
