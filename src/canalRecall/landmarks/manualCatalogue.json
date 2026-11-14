@@ -15025,7 +15025,7 @@
   "id": "haparandaweg-708-744",
   "category": "ordinary",
   "status": "held",
-  "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-708-744/contact.png (2026-10-09).",
+  "heldReason": "Superseded by the bespoke model de-rede on the same pand (lane H-HV2, 2026-11-14); the block-kit draft was never reviewed.",
   "name": "De Rede, Haparandaweg 708-744",
   "modelUrl": "./models/haparandaweg-708-744.glb",
   "suppressOsmIds": [
@@ -76044,6 +76044,156 @@
      [
       4.8770921,
       52.39471074
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-rede",
+  "name": "De Rede",
+  "modelUrl": "./models/de-rede.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012243292"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.877387,
+    52.39456037
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 36.2,
+   "widthMetres": 37.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.877387,
+    52.39456037
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012243292 outline (RD, PDOK BAG WFS, CC0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0, ground 0.68 m NAP): a shallow street gable to 30.8 m (shoulders 28.7) and two gabled quay houses to 17.5 m. Storeys, glazing runs, louvres, boxes, rails and gables measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0) w01-320 (2024), w02-140 (2017) and w03-230 (scripts/landmarks/de-rede-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 30.8,
+  "bagYear": 2015,
+  "category": "ordinary",
+  "materialOverrides": {
+   "white": "#e9e8e3",
+   "stone": "#d9d5ca",
+   "frame": "#f3f2ee",
+   "glass": "#4d5d66",
+   "dark": "#2b2e31",
+   "concrete": "#7d7f80",
+   "green": "#7c8457",
+   "blue": "#55666e",
+   "pink": "#e2e5e3",
+   "slate": "#2f3235",
+   "copper": "#1f2224",
+   "ochre": "#8a6a4f",
+   "bronze": "#5e4733",
+   "sandstone": "#f4f4f0"
+  },
+  "attribution": {
+   "title": "De Rede, Haparandaweg 708-744 (Houthaven Blok 0, 2015)",
+   "author": "Map Recall",
+   "sourceUrl": "https://3dbag.nl/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of the BAG outline (CC0): the white street gable with its irregular full-height glazing, black sliding louvres, four olive glazed boxes, the 'de Rede 710-744' entrance lettering and garage grille, and the two gabled quay houses with French windows, Juliet rails, timber louvres, boarded gables and white bargeboards; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87740458,
+      52.39466495
+     ],
+     [
+      4.87740182,
+      52.39466694
+     ],
+     [
+      4.87739904,
+      52.39466893
+     ],
+     [
+      4.87723647,
+      52.39478592
+     ],
+     [
+      4.87710024,
+      52.39471497
+     ],
+     [
+      4.8770921,
+      52.39471074
+     ],
+     [
+      4.87725271,
+      52.3945949
+     ],
+     [
+      4.87725706,
+      52.39459175
+     ],
+     [
+      4.87725892,
+      52.39459271
+     ],
+     [
+      4.87743994,
+      52.39446199
+     ],
+     [
+      4.8774418,
+      52.39446293
+     ],
+     [
+      4.87743357,
+      52.39446884
+     ],
+     [
+      4.87743702,
+      52.39447057
+     ],
+     [
+      4.87744938,
+      52.39447705
+     ],
+     [
+      4.87745148,
+      52.39447809
+     ],
+     [
+      4.87745225,
+      52.39447848
+     ],
+     [
+      4.87746339,
+      52.39447046
+     ],
+     [
+      4.87747946,
+      52.39447879
+     ],
+     [
+      4.87751964,
+      52.39444981
+     ],
+     [
+      4.87762596,
+      52.39450504
+     ],
+     [
+      4.87753011,
+      52.39457389
+     ],
+     [
+      4.87740458,
+      52.39466495
      ]
     ]
    ]
