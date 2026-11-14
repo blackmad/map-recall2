@@ -5,7 +5,7 @@ import test from 'node:test';
 // These pins are the round-3 chroma rule; lane W1's measured-chroma default (`?wallChroma`) is off here and tested below.
 process.env.WALL_CHROMA = '0';
 import assert from 'node:assert/strict';
-import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';
+import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD, RENDER_HEX } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specCellCount, specStoreyScale } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
@@ -350,7 +350,8 @@ test('ring tranche round 2: a photo-read render front draws smooth pale render w
   assert.equal(houseSpecPatch({ wallMaterial: 'brick', src: vj }, {}).specRecipe, undefined);
   // a dark reading on a render front keeps the light period colour; a pale one draws
   const dark = houseSpecPatch({ wallMaterial: 'stucco', wallHex: '#37352f', src: { ...vj, wallHex: 'streetlevel-measured' } }, { id: 'NL.IMBAG.Pand.0363100012170505' }).specRecipe as any;
-  assert.equal(dark.finish, 'painted'); assert.equal(dark.wallHex, undefined);
+  assert.equal(dark.finish, 'painted'); assert.equal(dark.wallHex, RENDER_HEX, 'a dark reading takes the city render');
+  assert.equal((r.specRecipe as any).wallHex, RENDER_HEX, 'no reading: the city render, not the period palette (Plantage 170505 drew L 0.39)');
   const pale = houseSpecPatch({ wallMaterial: 'stucco', wallHex: '#e9e4d8', src: { ...vj, wallHex: 'streetlevel-measured' } }, {}).specRecipe as any;
-  assert.equal(pale.finish, 'painted');
+  assert.equal(pale.finish, 'painted'); assert.notEqual(pale.wallHex, RENDER_HEX, 'a pale reading draws itself');
 });

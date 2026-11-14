@@ -240,8 +240,10 @@ export function withWallExposure(view: HouseSpecView): HouseSpecView {
   return wall === view.wallHex ? view : { ...view, wallHex: wall };
 }
 
-/** A render (stucco) front read from a photo darker than this OKLab L draws the light period colour (houseSpecPatch). */
+/** A render (stucco) front read from a photo darker than this OKLab L, or with no reading, draws RENDER_HEX (houseSpecPatch). */
 export const RENDER_MIN_L = 0.6;
+/** The city's pale render (a cream plaster, lighter than CITY_STONE): what a photo-read stucco front draws without a pale reading. */
+export const RENDER_HEX = '#e6dfcf';
 /** Ring tranche round 2 (2026-11-14): a front a photo reader states is render (`palette.wallMaterial: stucco`) draws the
  *  smooth painted cells by default, without `?wallFinish=1`. Painted brick stays brick unless the flag is on (the paint can
  *  be black, and the spec carries no pale reading). A spec without that read is untouched. */
@@ -287,8 +289,10 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const smoothFinish = wallFinishOn() ? smoothFinishOf(view.wallMaterial, view.wallStone) : readRender(view);
   if (smoothFinish) {
     // A photo-read render front is pale: a drawn reading darker than RENDER_MIN_L (shade, soot, a misread neighbour)
-    // keeps the light period colour instead (ring tranche round 2: Weteringschans 169553, Plantage 170505 drew as dark brick).
-    if (smoothFinish === 'painted' && view.wallMaterial === 'stucco' && recipe.wallHex && hexToOklab(recipe.wallHex)[0] < RENDER_MIN_L) delete recipe.wallHex;
+    // is not drawn (ring tranche round 2: Weteringschans 169553, Plantage 170505 drew as dark brick) and ...
+    // ... keeps no period colour either: the period palette under a render front can be a dark brick tone (Plantage
+    // 170505 drew L 0.39), so a photo-read render without a pale reading takes the city render tone.
+    if (readRender(view) && !wallFinishOn() && (!recipe.wallHex || hexToOklab(recipe.wallHex)[0] < RENDER_MIN_L)) recipe.wallHex = RENDER_HEX;
     recipe.finish = smoothFinish;
     if (recipe.heldBrick) delete recipe.heldBrick;
     // Natural stone is pale: a reading below STONE_MIN_L is shade, soot or a misread neighbour (171970 read #3f3e3c, a white
