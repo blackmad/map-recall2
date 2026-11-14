@@ -3,7 +3,10 @@
     "w752738610": "reviewed: 54% under the model, 12m, 43 m2; annex/neighbour only partly under the model, left drawn"
   },
   "muziekgebouw-bimhuis": {
-    "w755464127": "Moevenpick wing w755464127 is deliberately NOT in the model (see manualModels.ts comment; scripts/audit-landmark-filler.ts pins it): hiding it left a canopy under the label."
+    "w755464127": "Moevenpick wing w755464127 is deliberately NOT in the model (see manualModels.ts comment; scripts/audit-landmark-filler.ts pins it): hiding it left a canopy under the label.",
+    "w755464126": "Mövenpick hotel in the same BAG pand 0363100012118833; the model draws the concert hall, foyer and Bimhuis only, so the city layer keeps the hotel (manualModels.ts note, venues r3 2026-11-14). Inside the pand-ring footprint, not under the mesh.",
+    "w755464128": "Mövenpick hotel in the same BAG pand 0363100012118833; the model draws the concert hall, foyer and Bimhuis only, so the city layer keeps the hotel (manualModels.ts note, venues r3 2026-11-14). Inside the pand-ring footprint, not under the mesh.",
+    "w755464130": "Mövenpick hotel in the same BAG pand 0363100012118833; the model draws the concert hall, foyer and Bimhuis only, so the city layer keeps the hotel (manualModels.ts note, venues r3 2026-11-14). Inside the pand-ring footprint, not under the mesh."
   },
   "van-gogh-museum": {
     "w754324684": "reviewed: 78% under the model, 18m, 766 m2; annex/neighbour only partly under the model, left drawn",

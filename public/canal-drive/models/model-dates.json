@@ -4091,6 +4091,11 @@
       "version": "9a2896397e32abce",
       "dateSource": "asset-update"
     },
+    "meervaart": {
+      "updatedAt": "2026-11-14T12:41:25.967Z",
+      "version": "f0cbc7dbfad2e69b",
+      "dateSource": "asset-update"
+    },
     "melkweg": {
       "updatedAt": "2026-11-14T08:08:30.775Z",
       "version": "7a81502c8dffc086",
@@ -5251,6 +5256,11 @@
       "version": "ccf0c7d14707e64c",
       "dateSource": "asset-update"
     },
+    "q-factory": {
+      "updatedAt": "2026-11-14T11:48:15.029Z",
+      "version": "448fc55f523a98e4",
+      "dateSource": "asset-update"
+    },
     "raadhuisstraat-galerij": {
       "updatedAt": "2026-11-12T19:26:47.439Z",
       "version": "a15d9642bdab352f",
@@ -6076,6 +6086,11 @@
       "version": "791e6f7e6363d7ea",
       "dateSource": "asset-update"
     },
+    "theater-bellevue": {
+      "updatedAt": "2026-11-14T11:10:40.298Z",
+      "version": "549060e28be9932d",
+      "dateSource": "asset-update"
+    },
     "theo-thijssen-museum": {
       "updatedAt": "2026-10-20T10:16:06.701Z",
       "version": "aa2f8da43b96f71a",
@@ -6726,6 +6741,16 @@
       "version": "0443e3ff77e0c04c",
       "dateSource": "asset-update"
     },
+    "westergas-bazenwoning-west": {
+      "updatedAt": "2026-11-14T11:56:06.596Z",
+      "version": "2d4f9b3f4a3ce1d7",
+      "dateSource": "asset-update"
+    },
+    "westergas-gosschalklaan-12": {
+      "updatedAt": "2026-11-14T11:59:28.385Z",
+      "version": "3b79286cdbdfc928",
+      "dateSource": "asset-update"
+    },
     "westerkerk": {
       "updatedAt": "2026-10-17T16:45:23.035Z",
       "version": "29cc7723458acc71",
@@ -7039,31 +7064,6 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
-      "dateSource": "asset-update"
-    },
-    "meervaart": {
-      "updatedAt": "2026-11-14T12:41:25.967Z",
-      "version": "f0cbc7dbfad2e69b",
-      "dateSource": "asset-update"
-    },
-    "q-factory": {
-      "updatedAt": "2026-11-14T11:48:15.029Z",
-      "version": "448fc55f523a98e4",
-      "dateSource": "asset-update"
-    },
-    "theater-bellevue": {
-      "updatedAt": "2026-11-14T11:10:40.298Z",
-      "version": "549060e28be9932d",
-      "dateSource": "asset-update"
-    },
-    "westergas-bazenwoning-west": {
-      "updatedAt": "2026-11-14T11:56:06.596Z",
-      "version": "2d4f9b3f4a3ce1d7",
-      "dateSource": "asset-update"
-    },
-    "westergas-gosschalklaan-12": {
-      "updatedAt": "2026-11-14T11:59:28.385Z",
-      "version": "3b79286cdbdfc928",
       "dateSource": "asset-update"
     }
   }

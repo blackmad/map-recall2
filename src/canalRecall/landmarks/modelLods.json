@@ -613,11 +613,15 @@
   }
  },
  "muziekgebouw-bimhuis": {
+  "sourceHash": "bc5f8f06eb5a58cd",
+  "buildVersion": 2,
+  "bytes": 30332,
+  "triangles": 1205,
   "lod2": {
-   "sourceHash": "b165abe32c0d0af1",
+   "sourceHash": "bc5f8f06eb5a58cd",
    "buildVersion": 6,
-   "bytes": 5028,
-   "triangles": 72
+   "bytes": 9876,
+   "triangles": 321
   }
  },
  "olvg-west": {
@@ -6007,27 +6011,83 @@
   }
  },
  "skatecafe": {
-  "sourceHash": "150915a12dfc6d63",
+  "sourceHash": "7bb9c2f39b1d92cb",
   "buildVersion": 2,
-  "bytes": 53828,
-  "triangles": 1723,
+  "bytes": 90264,
+  "triangles": 3207,
   "lod2": {
-   "sourceHash": "150915a12dfc6d63",
+   "sourceHash": "7bb9c2f39b1d92cb",
    "buildVersion": 6,
-   "bytes": 7156,
-   "triangles": 106
+   "bytes": 9520,
+   "triangles": 162
   }
  },
  "garage-noord": {
-  "sourceHash": "764d3cde0a54edd8",
+  "sourceHash": "eee931c0c7386e94",
   "buildVersion": 2,
-  "bytes": 55088,
-  "triangles": 2769,
+  "bytes": 57708,
+  "triangles": 2901,
   "lod2": {
-   "sourceHash": "764d3cde0a54edd8",
+   "sourceHash": "eee931c0c7386e94",
    "buildVersion": 6,
-   "bytes": 5820,
-   "triangles": 106
+   "bytes": 7244,
+   "triangles": 160
+  }
+ },
+ "theater-bellevue": {
+  "sourceHash": "549060e28be9932d",
+  "buildVersion": 2,
+  "bytes": 45076,
+  "triangles": 1931,
+  "lod2": {
+   "sourceHash": "549060e28be9932d",
+   "buildVersion": 6,
+   "bytes": 9316,
+   "triangles": 221
+  }
+ },
+ "q-factory": {
+  "sourceHash": "448fc55f523a98e4",
+  "buildVersion": 2,
+  "bytes": 70940,
+  "triangles": 3797,
+  "lod2": {
+   "sourceHash": "448fc55f523a98e4",
+   "buildVersion": 6,
+   "bytes": 9708,
+   "triangles": 343
+  }
+ },
+ "westergas-bazenwoning-west": {
+  "sourceHash": "2d4f9b3f4a3ce1d7",
+  "buildVersion": 2,
+  "bytes": 21260,
+  "triangles": 767,
+  "lod2": {
+   "sourceHash": "2d4f9b3f4a3ce1d7",
+   "buildVersion": 6,
+   "bytes": 5736,
+   "triangles": 133
+  }
+ },
+ "westergas-gosschalklaan-12": {
+  "lod2": {
+   "sourceHash": "3b79286cdbdfc928",
+   "buildVersion": 6,
+   "bytes": 3756,
+   "triangles": 44
+  }
+ },
+ "meervaart": {
+  "sourceHash": "f0cbc7dbfad2e69b",
+  "buildVersion": 2,
+  "bytes": 38716,
+  "triangles": 1799,
+  "lod2": {
+   "sourceHash": "f0cbc7dbfad2e69b",
+   "buildVersion": 6,
+   "bytes": 8972,
+   "triangles": 271
   }
  }
 }

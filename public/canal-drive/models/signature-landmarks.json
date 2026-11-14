@@ -2170,7 +2170,19 @@
       "extent": null,
       "triangles": 6269,
       "bytes": 91236,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "bc5f8f06eb5a58cd",
+        "buildVersion": 2,
+        "bytes": 30332,
+        "triangles": 1205
+      },
+      "lod2": {
+        "sourceHash": "bc5f8f06eb5a58cd",
+        "buildVersion": 6,
+        "bytes": 9876,
+        "triangles": 321
+      }
     },
     "olvg-west": {
       "id": "olvg-west",
@@ -101944,16 +101956,29 @@
       "bytes": 157492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "150915a12dfc6d63",
+        "sourceHash": "7bb9c2f39b1d92cb",
         "buildVersion": 2,
-        "bytes": 53828,
-        "triangles": 1723
+        "bytes": 90264,
+        "triangles": 3207
+      },
+      "lod2": {
+        "sourceHash": "7bb9c2f39b1d92cb",
+        "buildVersion": 6,
+        "bytes": 9520,
+        "triangles": 162
       }
     },
     "garage-noord": {
       "id": "garage-noord",
       "name": "Garage Noord",
       "landmarkId": "garage-noord",
+      "relatedLandmarkIds": [
+        "n12979333989"
+      ],
+      "destinationLandmarkIds": [
+        "garage-noord",
+        "n12979333989"
+      ],
       "modelUrl": "./models/garage-noord.glb",
       "suppressOsmIds": [
         "NL.IMBAG.Pand.0363100012079768"
@@ -102082,10 +102107,16 @@
       "bytes": 91540,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "764d3cde0a54edd8",
+        "sourceHash": "eee931c0c7386e94",
         "buildVersion": 2,
-        "bytes": 55088,
-        "triangles": 2769
+        "bytes": 57708,
+        "triangles": 2901
+      },
+      "lod2": {
+        "sourceHash": "eee931c0c7386e94",
+        "buildVersion": 6,
+        "bytes": 7244,
+        "triangles": 160
       }
     },
     "theater-bellevue": {
@@ -102761,7 +102792,19 @@
       },
       "triangles": 11110,
       "bytes": 133320,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "549060e28be9932d",
+        "buildVersion": 2,
+        "bytes": 45076,
+        "triangles": 1931
+      },
+      "lod2": {
+        "sourceHash": "549060e28be9932d",
+        "buildVersion": 6,
+        "bytes": 9316,
+        "triangles": 221
+      }
     },
     "q-factory": {
       "id": "q-factory",
@@ -102900,7 +102943,19 @@
       },
       "triangles": 13586,
       "bytes": 191772,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "448fc55f523a98e4",
+        "buildVersion": 2,
+        "bytes": 70940,
+        "triangles": 3797
+      },
+      "lod2": {
+        "sourceHash": "448fc55f523a98e4",
+        "buildVersion": 6,
+        "bytes": 9708,
+        "triangles": 343
+      }
     },
     "westergas-bazenwoning-west": {
       "id": "westergas-bazenwoning-west",
@@ -103082,7 +103137,19 @@
       },
       "triangles": 3704,
       "bytes": 62400,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2d4f9b3f4a3ce1d7",
+        "buildVersion": 2,
+        "bytes": 21260,
+        "triangles": 767
+      },
+      "lod2": {
+        "sourceHash": "2d4f9b3f4a3ce1d7",
+        "buildVersion": 6,
+        "bytes": 5736,
+        "triangles": 133
+      }
     },
     "westergas-gosschalklaan-12": {
       "id": "westergas-gosschalklaan-12",
@@ -103207,7 +103274,13 @@
       },
       "triangles": 1539,
       "bytes": 29132,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "3b79286cdbdfc928",
+        "buildVersion": 6,
+        "bytes": 3756,
+        "triangles": 44
+      }
     },
     "meervaart": {
       "id": "meervaart",
@@ -103594,7 +103667,19 @@
       },
       "triangles": 3899,
       "bytes": 63184,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f0cbc7dbfad2e69b",
+        "buildVersion": 2,
+        "bytes": 38716,
+        "triangles": 1799
+      },
+      "lod2": {
+        "sourceHash": "f0cbc7dbfad2e69b",
+        "buildVersion": 6,
+        "bytes": 8972,
+        "triangles": 271
+      }
     }
   }
 }

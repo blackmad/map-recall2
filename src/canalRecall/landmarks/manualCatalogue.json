@@ -80683,6 +80683,13 @@
   "id": "garage-noord",
   "name": "Garage Noord",
   "landmarkId": "garage-noord",
+  "relatedLandmarkIds": [
+   "n12979333989"
+  ],
+  "destinationLandmarkIds": [
+   "garage-noord",
+   "n12979333989"
+  ],
   "modelUrl": "./models/garage-noord.glb",
   "suppressOsmIds": [
    "NL.IMBAG.Pand.0363100012079768"
@@ -80782,6 +80789,8 @@
  {
   "id": "theater-bellevue",
   "name": "Theater Bellevue, Leidsekade 90",
+  "status": "held",
+  "heldReason": "2026-11-14 integrator: the delamar model already draws Theater Bellevue on the same pand (0363100012169852, delamar-builder.ts); compare the two Leidsekade drums at the rule-10 pose and keep one before un-holding.",
   "landmarkId": "extract_landmarks_374802612",
   "modelUrl": "./models/theater-bellevue.glb",
   "suppressOsmIds": [
