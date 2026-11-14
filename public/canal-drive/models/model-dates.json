@@ -2287,13 +2287,13 @@
       "dateSource": "asset-update"
     },
     "garage-noord.lod1": {
-      "updatedAt": "2026-11-14T13:16:53.564Z",
-      "version": "6f257ee0c81f6de3",
+      "updatedAt": "2026-11-14T14:16:29.149Z",
+      "version": "5521de0e8fde44c7",
       "dateSource": "asset-update"
     },
     "garage-noord.lod2": {
-      "updatedAt": "2026-11-14T13:16:53.564Z",
-      "version": "6c37710304971c60",
+      "updatedAt": "2026-11-14T14:16:29.150Z",
+      "version": "924b8e9d1b88711b",
       "dateSource": "asset-update"
     },
     "gashouder": {
@@ -4096,6 +4096,16 @@
       "version": "f0cbc7dbfad2e69b",
       "dateSource": "asset-update"
     },
+    "meervaart.lod1": {
+      "updatedAt": "2026-11-14T14:16:29.150Z",
+      "version": "9c7b681f332433e3",
+      "dateSource": "asset-update"
+    },
+    "meervaart.lod2": {
+      "updatedAt": "2026-11-14T14:16:29.151Z",
+      "version": "e8f5ef728a7815c0",
+      "dateSource": "asset-update"
+    },
     "melkweg": {
       "updatedAt": "2026-11-14T08:08:30.775Z",
       "version": "7a81502c8dffc086",
@@ -4386,9 +4396,14 @@
       "version": "bc5f8f06eb5a58cd",
       "dateSource": "asset-update"
     },
+    "muziekgebouw-bimhuis.lod1": {
+      "updatedAt": "2026-11-14T14:16:29.153Z",
+      "version": "2b5b5fd587909824",
+      "dateSource": "asset-update"
+    },
     "muziekgebouw-bimhuis.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.172Z",
-      "version": "65186772907cbca9",
+      "updatedAt": "2026-11-14T14:16:29.153Z",
+      "version": "2ec2e66801884e33",
       "dateSource": "asset-update"
     },
     "naco-house": {
@@ -5261,6 +5276,16 @@
       "version": "448fc55f523a98e4",
       "dateSource": "asset-update"
     },
+    "q-factory.lod1": {
+      "updatedAt": "2026-11-14T14:16:29.154Z",
+      "version": "596472cc537cd04f",
+      "dateSource": "asset-update"
+    },
+    "q-factory.lod2": {
+      "updatedAt": "2026-11-14T14:16:29.155Z",
+      "version": "45ad7e7d458a5be4",
+      "dateSource": "asset-update"
+    },
     "raadhuisstraat-galerij": {
       "updatedAt": "2026-11-12T19:26:47.439Z",
       "version": "a15d9642bdab352f",
@@ -5747,18 +5772,18 @@
       "dateSource": "asset-update"
     },
     "skatecafe": {
-      "updatedAt": "2026-11-14T12:48:03.324Z",
-      "version": "7bb9c2f39b1d92cb",
+      "updatedAt": "2026-11-14T14:18:36.791Z",
+      "version": "364b001ec96ba141",
       "dateSource": "asset-update"
     },
     "skatecafe.lod1": {
-      "updatedAt": "2026-11-14T13:16:53.570Z",
-      "version": "ff72587bb13691d8",
+      "updatedAt": "2026-11-14T14:16:29.163Z",
+      "version": "d72a76bb0634f70a",
       "dateSource": "asset-update"
     },
     "skatecafe.lod2": {
-      "updatedAt": "2026-11-14T13:16:53.570Z",
-      "version": "e64e89b364870f01",
+      "updatedAt": "2026-11-14T14:16:29.164Z",
+      "version": "366810ea483b33d5",
       "dateSource": "asset-update"
     },
     "slavernijmonument": {
@@ -6089,6 +6114,16 @@
     "theater-bellevue": {
       "updatedAt": "2026-11-14T11:10:40.298Z",
       "version": "549060e28be9932d",
+      "dateSource": "asset-update"
+    },
+    "theater-bellevue.lod1": {
+      "updatedAt": "2026-11-14T14:16:29.165Z",
+      "version": "79b5684d25228a24",
+      "dateSource": "asset-update"
+    },
+    "theater-bellevue.lod2": {
+      "updatedAt": "2026-11-14T14:16:29.166Z",
+      "version": "f929c296f923e44f",
       "dateSource": "asset-update"
     },
     "theo-thijssen-museum": {
@@ -6746,9 +6781,24 @@
       "version": "2d4f9b3f4a3ce1d7",
       "dateSource": "asset-update"
     },
+    "westergas-bazenwoning-west.lod1": {
+      "updatedAt": "2026-11-14T14:16:29.166Z",
+      "version": "933ae76891964b49",
+      "dateSource": "asset-update"
+    },
+    "westergas-bazenwoning-west.lod2": {
+      "updatedAt": "2026-11-14T14:16:29.167Z",
+      "version": "e89ffba3b4e198fc",
+      "dateSource": "asset-update"
+    },
     "westergas-gosschalklaan-12": {
       "updatedAt": "2026-11-14T11:59:28.385Z",
       "version": "3b79286cdbdfc928",
+      "dateSource": "asset-update"
+    },
+    "westergas-gosschalklaan-12.lod2": {
+      "updatedAt": "2026-11-14T14:16:29.167Z",
+      "version": "2ac6d200b6471e0b",
       "dateSource": "asset-update"
     },
     "westerkerk": {
