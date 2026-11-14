@@ -176,10 +176,14 @@ test('Weteringschans review 4: 169016 adds speklagen (reviewed) and keeps its fl
   assert.notEqual(W.specs['0363100012168096'].design.fronts![0].souterrain, true, 'basement windows are not a souterrain');
 });
 
-test('Kinkerstraat shopfront colour: only where a reading names it (98 dark); the face paint is not a reading', () => {
+test('Kinkerstraat shopfront colour: read where a reading names it, reviewed over the face shopPaint', () => {
   const g = (id: string) => K.row.fronts.find(x => x.id === id)!.ground.colour;
-  assert.deepEqual(g('0363100012158180'), { value: 'dark', source: 'single-read', ref: 'artifacts/describer-d1/ring-20261114/cuts/0363100012158180.jpg: "dark shopfront"' });
-  for (const id of ['0363100012236027#m0', '0363100012236027#m1', '0363100012160809', '0363100012236213#m0', '0363100012159635', '0363100012156028']) assert.equal(g(id), undefined, id);
+  // reviewed (integrator, sheet photo): 106-108 dark, 92-94 white, 100 light, 98 dark (the read agrees); face shopPaint flagged
+  const want: Record<string, string> = { '0363100012236027#m0': 'dark', '0363100012236027#m1': 'dark', '0363100012236213#m0': 'white', '0363100012236213#m1': 'white', '0363100012160809': 'light', '0363100012158180': 'dark' };
+  for (const [id, v] of Object.entries(want)) assert.deepEqual([g(id)?.value, g(id)?.source], [v, 'reviewed'], id);
+  for (const id of ['0363100012236027#m0', '0363100012236213#m1', '0363100012160809']) assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.field === 'ground.colour' && f.fronts.includes(id) && /shopPaint/.test(f.detail)), id);
+  assert.ok(!K.row.flags.some(f => f.field === 'ground.colour' && f.fronts.includes('0363100012158180')), '98 agrees with its read');
+  for (const id of ['0363100012159635', '0363100012156028', '0363100012165799']) assert.equal(g(id), undefined, id);
   const read = (what: string, notes = '') => groundColourOfRead({ gaps: [{ component: 'shopfront', what }], notes } as never)?.value ?? null;
   assert.equal(read('a painted timber shopfront with a row of transom lights'), null);
   assert.equal(read('a deep dark canopy runs along the whole row over the shopfronts'), null);

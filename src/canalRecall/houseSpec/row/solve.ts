@@ -93,7 +93,8 @@ export interface RowInput {
 }
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+/** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -382,20 +383,30 @@ export function solveRow(input: RowInput): RowRecord {
   // Reviewed statements: a series whose fronts all fall in the statement takes the value; otherwise each listed front does.
   for (const st of input.reviewed ?? []) {
     const ref = `${st.ref} (${st.at})${st.note ? `: ${st.note}` : ''}`;
+    if (st.field === 'ground.colour') {
+      const inside = fronts.filter(f => st.fronts.includes(f.id));
+      for (const f of inside) {
+        const was = f.ground.colour?.value ?? (f.ground.shopPaint ? `face shopPaint ${f.ground.shopPaint}` : null);
+        f.ground = { ...f.ground, colour: { value: st.value as RowGroundColour, source: 'reviewed', ref } };
+        if (was !== st.value) flags.push({ kind: 'reviewed', field: 'ground.colour', fronts: [f.id], detail: `reviewed ${JSON.stringify(st.value)} overrides ${was ?? 'no reading'}${f.ground.shopPaint ? ': the face intent shopPaint needs correcting' : ''}` });
+      }
+      continue;
+    }
+    const field = st.field;
     const merged = (cur: unknown) => ({ value: st.add && Array.isArray(cur) ? [...cur, ...(st.value as unknown[]).filter(x => !cur.includes(x))] : st.value, source: 'reviewed' as const, ref });
     for (const s of series) {
       const fs = fronts.filter(f => f.seriesId === s.id), inside = fs.filter(f => st.fronts.includes(f.id));
       if (!inside.length) continue;
-      const was = s.design[st.field] as RowField<unknown> | undefined;
+      const was = s.design[field] as RowField<unknown> | undefined;
       const sd = s.design as unknown as Record<string, RowField<unknown>>;
-      if (inside.length === fs.length) sd[st.field] = merged(was?.value);
+      if (inside.length === fs.length) sd[field] = merged(was?.value);
       // A front's own value (a read override) is outranked too: the reviewed value goes on the front, over its own.
       for (const f of inside) {
         const fo = f.overrides as Record<string, RowField<unknown>>;
-        if (fo[st.field] || inside.length !== fs.length) fo[st.field] = merged((fo[st.field] ?? was)?.value);
+        if (fo[field] || inside.length !== fs.length) fo[field] = merged((fo[field] ?? was)?.value);
       }
       if (was && JSON.stringify(was.value) !== JSON.stringify(st.value))
-        flags.push({ kind: 'reviewed', field: st.field, fronts: inside.map(f => f.id), detail: `reviewed ${st.add ? 'adds ' : ''}${JSON.stringify(st.value)} ${st.add ? 'to' : 'overrides'} ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
+        flags.push({ kind: 'reviewed', field: field, fronts: inside.map(f => f.id), detail: `reviewed ${st.add ? 'adds ' : ''}${JSON.stringify(st.value)} ${st.add ? 'to' : 'overrides'} ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
     }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
