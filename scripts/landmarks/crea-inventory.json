@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "id": "crea",
+ "pand": "0363100012164972",
+ "brief": "scripts/landmarks/crea-brief.md",
+ "signature": [
+  "cr-entrance",
+  "cr-lettering",
+  "cr-windows",
+  "cr-glass-storey",
+  "cr-sign",
+  "cr-white-block"
+ ],
+ "walls": [
+  {
+   "tag": "w01-343",
+   "bearing": 343,
+   "lengthM": 59.6,
+   "centre": [
+    4.9129345,
+    52.3633265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000883",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "cr-windows",
+     "kind": "window-shape",
+     "where": "segmental-headed windows in 16 columns over five storeys on the east block, 13 columns over four storeys on the middle block, dark frames with a cross of bars, light concrete sills",
+     "approxSizeM": [
+      1.0,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "cut openings with segmental heads (rise 14-16 cm), dark frames and bars, concrete sill slabs"
+    },
+    {
+     "id": "cr-entrance",
+     "kind": "other",
+     "where": "light stone surround with a round-arched double doorway and fanlight, at the east end of the middle block",
+     "approxSizeM": [
+      4.6,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "stone slab surround, semicircular opening with dark-red door frames and a transom bar at the springing, concrete arch ring"
+    },
+    {
+     "id": "cr-lettering",
+     "kind": "lettering",
+     "where": "DIAMANTSLIJPERIJ in raised letters on the stone surround over the arch (also seen in TMX7316010203-001644_pano_0002_000065)",
+     "approxSizeM": [
+      4.2,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001644_pano_0002_000065",
+     "how": "mixed-case glyph runs 3.6 cm per pixel on the surround; a fainter second line under it is not legible and is not drawn"
+    },
+    {
+     "id": "cr-sign",
+     "kind": "sign",
+     "where": "vertical black CREA name board on the pier left of the entrance",
+     "approxSizeM": [
+      0.36,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001644_pano_0002_000065",
+     "how": "dark board with white vertical lettering CREA (the logo typeface is simplified to block letters)"
+    },
+    {
+     "id": "cr-glass-storey",
+     "kind": "other",
+     "where": "set-back glass storey on the middle block roof behind the white cornice, mullions about every 1.8 m",
+     "approxSizeM": [
+      23.8,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "glass quad on the 3DBAG roof line with mullion slabs and a transom"
+    },
+    {
+     "id": "cr-cornice",
+     "kind": "other",
+     "where": "white cornice band at the top of the middle block",
+     "approxSizeM": [
+      23.8,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "profiled white moulding"
+    },
+    {
+     "id": "cr-belts",
+     "kind": "other",
+     "where": "light stone string courses at each floor of the middle block, grey concrete plinth along both blocks",
+     "approxSizeM": [
+      23.8,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "concrete slabs; the string courses cover the storey seams"
+    },
+    {
+     "id": "cr-relieving-arches",
+     "kind": "relief",
+     "where": "brick relieving arches over the middle block windows and small dark wall-anchor heads between them",
+     "approxSizeM": [
+      1.3,
+      0.25
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "darker brick segmental arch rings; the wall anchors (about 15 cm) are not drawn"
+    },
+    {
+     "id": "cr-passage",
+     "kind": "other",
+     "where": "through passage in the east block ground floor showing the building behind",
+     "approxSizeM": [
+      4.1,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "deep dark opening with a shallow segmental head"
+    },
+    {
+     "id": "cr-west-bay",
+     "kind": "window-shape",
+     "where": "taller red-brick bay at the west end with light stone segmental heads",
+     "approxSizeM": [
+      6.0,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "red brick section, openings with sandstone arch rings and a ground-floor door"
+    },
+    {
+     "id": "cr-downspouts",
+     "kind": "other",
+     "where": "grey downspouts between the three parts",
+     "approxSizeM": [
+      0.14,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "concrete slabs over the section seams"
+    },
+    {
+     "id": "cr-lamps",
+     "kind": "lamp",
+     "where": "modern street lamps and a leaning pole sculpture on the quay",
+     "approxSizeM": [
+      0.6,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "skip": {
+      "reason": "not-visible",
+      "note": "stand on the quay, not on the building; street furniture belongs to the furniture layer"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-252",
+   "bearing": 252,
+   "lengthM": 26.8,
+   "centre": [
+    4.912585,
+    52.3631275
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001458",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [],
+   "note": "west end of the west wing; every crop is blocked by the mirror-glass building in front, so nothing is claimed; 3DBAG shell, plain brick (uncertain, reported)"
+  },
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 26.3,
+   "centre": [
+    4.9133005,
+    52.363137
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_004241",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "cr-white-block",
+     "kind": "window-shape",
+     "where": "white-rendered south block: 13 columns of segmental-headed windows (one narrow) over three visible storeys, eaves cornice, hipped slate roof",
+     "approxSizeM": [
+      26.2,
+      15.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_004240",
+     "how": "white section with openings, stone sills and a profiled eaves cornice; the ground-floor row is inferred from the storey rhythm (hidden by a bicycle shed and hedge)"
+    },
+    {
+     "id": "cr-roof-boxes",
+     "kind": "other",
+     "where": "two small dark dormer boxes on the front slope of the hipped roof",
+     "approxSizeM": [
+      1.0,
+      0.9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001908_pano_0000_004240",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 1 m boxes on the roof slope, under the gallery card scale"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-343",
+   "bearing": 343,
+   "lengthM": 26.2,
+   "centre": [
+    4.9132605,
+    52.3632145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001447",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [],
+   "note": "north side of the white block to the passage: brick with a glazed CREA cafe front in the crops, but the rectified scale is inconsistent (the window would be over 20 m wide), so nothing is claimed; 3DBAG shell, plain brick (uncertain, reported)"
+  },
+  {
+   "tag": "w05-163",
+   "bearing": 163,
+   "lengthM": 24.9,
+   "centre": [
+    4.9128215,
+    52.363047
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00057",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [],
+   "note": "south side of the west wing seen past a dark grey brick neighbour; 3DBAG shell, plain brick"
+  },
+  {
+   "tag": "w06-163",
+   "bearing": 163,
+   "lengthM": 23.4,
+   "centre": [
+    4.9128155,
+    52.363216
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000070_pano_0014_000219",
+   "capturedAt": "2016-06-07",
+   "checked": true,
+   "items": [],
+   "note": "brick wall, close crop with no openings in view; 3DBAG shell, plain brick"
+  },
+  {
+   "tag": "w07-343",
+   "bearing": 343,
+   "lengthM": 18.9,
+   "centre": [
+    4.912842,
+    52.3630985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001453",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [],
+   "note": "brick wall with segmental-headed windows like the canal front, close crop; 3DBAG shell, plain brick (the courtyard walls are not drawn in detail)"
+  },
+  {
+   "tag": "w08-163",
+   "bearing": 163,
+   "lengthM": 17.6,
+   "centre": [
+    4.91311,
+    52.363256
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00051",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [],
+   "note": "white-rendered wall with arched windows (south block); 3DBAG shell coloured white"
+  },
+  {
+   "tag": "w09-73",
+   "bearing": 73,
+   "lengthM": 13,
+   "centre": [
+    4.912681,
+    52.3631285
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000070_pano_0014_000219",
+   "capturedAt": "2016-06-07",
+   "checked": true,
+   "items": [],
+   "note": "brick wall with no openings in view; 3DBAG shell, plain brick"
+  },
+  {
+   "tag": "w10-73",
+   "bearing": 73,
+   "lengthM": 12.7,
+   "centre": [
+    4.9136095,
+    52.3632585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002030_pano_0000_000058",
+   "capturedAt": "2021-02-26",
+   "checked": true,
+   "items": [],
+   "note": "crop shows the bicycle court and buildings beyond; this part of the ring has no 3DBAG roof and nothing is built (bicycle court)"
+  },
+  {
+   "tag": "w11-162",
+   "bearing": 162,
+   "lengthM": 11.9,
+   "centre": [
+    4.913318,
+    52.3632915
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00048",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [],
+   "note": "white-rendered wall with an arched window (south block); 3DBAG shell coloured white"
+  },
+  {
+   "tag": "w12-73",
+   "bearing": 73,
+   "lengthM": 11.6,
+   "centre": [
+    4.913376,
+    52.363358
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001644_pano_0002_000077",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [],
+   "note": "courtyard view with brick buildings beyond; 3DBAG shell, plain brick"
+  },
+  {
+   "tag": "w13-162",
+   "bearing": 162,
+   "lengthM": 11,
+   "centre": [
+    4.913561,
+    52.3631885
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00040",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [],
+   "note": "grey profiled-metal clad neighbour in front; 3DBAG shell, plain brick (uncertain)"
+  },
+  {
+   "tag": "w14-342",
+   "bearing": 342,
+   "lengthM": 9,
+   "centre": [
+    4.913518,
+    52.3633005
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001644_pano_0002_000072",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [],
+   "note": "courtyard view; 3DBAG shell, plain brick"
+  },
+  {
+   "tag": "w15-164",
+   "bearing": 164,
+   "lengthM": 8.5,
+   "centre": [
+    4.913057,
+    52.36309
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_004242",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": [],
+   "note": "brick block and the white block beyond; 3DBAG shell"
+  },
+  {
+   "tag": "w16-344",
+   "bearing": 344,
+   "lengthM": 7,
+   "centre": [
+    4.9130285,
+    52.363122
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001644_pano_0002_000065",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [],
+   "note": "this crop shows the canal-front entrance (DIAMANTSLIJPERIJ, 170) projected onto an inner wall; the entrance items are recorded on w01-343"
+  },
+  {
+   "tag": "w17-252",
+   "bearing": 252,
+   "lengthM": 6.8,
+   "centre": [
+    4.9134705,
+    52.363259
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00051",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [],
+   "note": "west end of the white block, white render with arched windows; 3DBAG shell coloured white"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Stichting CREA, Wikipedia",
+   "url": "https://nl.wikipedia.org/wiki/Stichting_CREA",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 200530 (municipal register)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/5332e58d-3d90-42cb-adc1-f05d6320f2ba?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

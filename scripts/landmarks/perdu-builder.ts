@@ -67,6 +67,7 @@ function front(c: Ctx) {
   slab(b, f, 10.95, Y(5.35), 1.5, 0.6, 0.12, 'white');
   lettering(b, f, 'Perdu', 10.95, Y(5.35) + 0.16, 0.045, 0.025, 'dark', 0.12, 0.02);
   slab(b, f, 11.0, Y(6.5), 1.5, 0.62, 0.07, 'sandstone');
+  lettering(b, f, 'ANNO 1908', 11.0, Y(6.5) + 0.22, 0.024, 0.02, 'red', 0.07, 0.01);   // the tile frieze (rijksmonument 518309)
   // sills (light stone) under the first-floor windows, a stone plinth course
   for (const [s, w] of [...WINGS, ...MID]) slab(b, f, s, y1 - 0.17, w + 0.2, 0.12, 0.12, 'sandstone');   // the band's stone strip is the second-floor sill
   for (const [a, z] of [[0, 9.2 - 0.33], [9.2 + 0.33, 11.15 - 0.62], [11.15 + 0.62, 12.55 - 0.33], [12.55 + 0.33, L]]) slab(b, f, (a + z) / 2, 0, z - a, 0.45, 0.06, 'stone');

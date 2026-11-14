@@ -86,14 +86,14 @@
     {
      "id": "pe-tablet",
      "kind": "gable-stone",
-     "where": "stone tablet over the entrance",
+     "where": "recessed tile frieze over the entrance lettered ANNO 1908 (rijksmonument 518309 register text: \"Boven de ingang een verdiept tegelfries met daarin ANNO 1908\")",
      "approxSizeM": [
       1.5,
       0.6
      ],
-     "plan": "simplified",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-001975_pano_0000_001186",
-     "how": "plain light stone slab; its inscription is not legible in the panoramas"
+     "how": "light panel with ANNO 1908 in raised block letters"
     },
     {
      "id": "pe-entrance",
@@ -234,6 +234,11 @@
    "name": "Perdu, Wikipedia",
    "url": "https://nl.wikipedia.org/wiki/Perdu",
    "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Rijksmonument 518309, Kloveniersburgwal 86-88",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518309",
+   "licence": "CC0"
   }
  ]
 }

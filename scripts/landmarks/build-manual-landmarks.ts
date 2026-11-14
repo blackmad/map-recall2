@@ -460,6 +460,7 @@ import {buildQFactory} from './q-factory-builder';
 import {buildMeervaart} from './meervaart-builder';
 import {buildUniversiteitstheater} from './universiteitstheater-builder';
 import {buildPerdu} from './perdu-builder';
+import {buildCrea} from './crea-builder';
 import {buildWestergasBazenwoningWest} from './westergas-bazenwoning-west-builder';
 import {buildWestergasGosschalklaan12} from './westergas-gosschalklaan-12-builder';
 import {buildSameplace} from './sameplace-builder';
@@ -1116,6 +1117,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='meervaart')buildMeervaart(w,d,helpers);
     else if(id==='universiteitstheater')buildUniversiteitstheater(w,d,helpers);
     else if(id==='perdu')buildPerdu(w,d,helpers);
+    else if(id==='crea')buildCrea(w,d,helpers);
     else if(id==='westergas-bazenwoning-west')buildWestergasBazenwoningWest(w,d,helpers);
     else if(id==='westergas-gosschalklaan-12')buildWestergasGosschalklaan12(w,d,helpers);
     else if(id==='sameplace')buildSameplace(w,d,helpers);

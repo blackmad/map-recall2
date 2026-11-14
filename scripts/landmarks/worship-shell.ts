@@ -35,7 +35,7 @@ export function planarPolygon(rings: number[][][]): T.BufferGeometry | null {
 }
 
 /** Add the 3DBAG LoD2.2 walls and roofs as a closed texture-free shell. */
-export function addShell(b: BuildingTools, src: ShellSource, colours: {wall: string; roof: string; skip?: (s: Surface, i: number) => boolean; roofFor?: (s: Surface, i: number) => string}) {
+export function addShell(b: BuildingTools, src: ShellSource, colours: {wall: string; roof: string; skip?: (s: Surface, i: number) => boolean; roofFor?: (s: Surface, i: number) => string; wallFor?: (s: Surface, i: number) => string}) {
   src.surfaces.forEach((s, i) => {
     if (s.type === 'GroundSurface' || colours.skip?.(s, i)) return;
     const g = planarPolygon(s.rings);
@@ -51,6 +51,6 @@ export function addShell(b: BuildingTools, src: ShellSource, colours: {wall: str
       }
       g.computeVertexNormals();
     }
-    b.add(g, s.type === 'RoofSurface' ? (colours.roofFor?.(s, i) ?? colours.roof) as never : colours.wall as never);
+    b.add(g, s.type === 'RoofSurface' ? (colours.roofFor?.(s, i) ?? colours.roof) as never : (colours.wallFor?.(s, i) ?? colours.wall) as never);
   });
 }

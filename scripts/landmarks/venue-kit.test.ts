@@ -4,7 +4,8 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {arcLettering, balusterCentres, balustradeRun, festoonPanel, swagOutline, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering} from './venue-kit';
+import {arcLettering, balusterCentres, balustradeRun, festoonPanel, swagOutline, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering, wallFacingXZ} from './venue-kit';
+import {addShell} from './worship-shell';
 
 /** BuildingTools that only collects geometries per colour. */
 const collector = () => {
@@ -205,4 +206,24 @@ test('balustradeRun: balusters stay clear of the dies, dies rise above the rail'
   for (const bb of balusters) assert.ok(bb.max.x <= 4.5 + 1e-5 || bb.min.x >= 5.5 - 1e-5, 'no baluster inside a die');
   const die = boxOf(got.filter(x => x.c === 'brick' || x.c === 'sandstone').map(x => x.g));
   assert.ok(Math.abs(die.max.y - 12.85) < 1e-5 && die.max.y > 12.6);
+});
+
+test('wallFacingXZ points away from the block whatever the winding; addShell wallFor recolours walls only', () => {
+  // a 4 x 3 m wall in the plane z = 2 (block centre at the origin), wound both ways
+  const ring = [[-2, 0, 2], [2, 0, 2], [2, 3, 2], [-2, 3, 2]];
+  for (const r of [ring, [...ring].reverse()]) {
+    const [nx, nz] = wallFacingXZ({type: 'WallSurface', rings: [r]}, [0, 0]);
+    assert.ok(Math.abs(nx) < 1e-9 && Math.abs(nz - 1) < 1e-9);
+  }
+  assert.deepEqual(wallFacingXZ({type: 'RoofSurface', rings: [[[0, 5, 0], [1, 5, 0], [1, 5, 1]]]}, [0, 0]), [0, 0]);
+  const surfaces = [
+    {type: 'WallSurface', rings: [ring]},
+    {type: 'WallSurface', rings: [[[-2, 0, -2], [-2, 3, -2], [2, 3, -2], [2, 0, -2]]]},
+    {type: 'RoofSurface', rings: [[[-2, 3, -2], [2, 3, -2], [2, 3, 2], [-2, 3, 2]]]},
+  ];
+  const plain = collector(), coloured = collector();
+  addShell(plain.b, {surfaces, nativeRing: []}, {wall: 'brick', roof: 'slate'});
+  addShell(coloured.b, {surfaces, nativeRing: []}, {wall: 'brick', roof: 'slate', wallFor: s => (wallFacingXZ(s, [0, 0])[1] > 0.5 ? 'white' : 'brick')});
+  assert.deepEqual(plain.got.map(g => g.c), ['brick', 'brick', 'slate']);
+  assert.deepEqual(coloured.got.map(g => g.c), ['white', 'brick', 'slate']);
 });

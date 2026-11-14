@@ -3,6 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {geomOf} from './cut-face';
 import {slab, poly, put, type Frame} from './nearbar-kit';
 import type {Surface} from './worship-shell';
+import {frameAt, type Chord, type Sec} from './street-front-kit';
 import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
 import {bandQuads, frameAtArc, ledgeQuads, type BandQuad} from '../../src/canalRecall/landmarks/pathBand';
 
@@ -38,6 +39,25 @@ export type Col = Parameters<BuildingTools['add']>[1];
 export function centroidXZ(s: Surface): XZ {
   const r = s.rings[0];
   return [r.reduce((a, p) => a + p[0], 0) / r.length, r.reduce((a, p) => a + p[2], 0) / r.length];
+}
+/**
+ * Plan unit normal (x, z) of a 3DBAG wall surface, turned to point away from `ref` (a point inside the block it bounds),
+ * so it does not depend on the ring's winding after the native frame's z flip. [0, 0] for a horizontal ring. Builders use
+ * it with addShell's `wallFor` to colour a shell's walls by the way they face (a white-rendered south block, say).
+ */
+export function wallFacingXZ(s: Surface, ref: XZ): XZ {
+  const r = s.rings[0];
+  let nx = 0, nz = 0;
+  for (let i = 0; i < r.length; i++) {
+    const p = r[i], q = r[(i + 1) % r.length];
+    nx += (p[1] - q[1]) * (p[2] + q[2]);
+    nz += (p[0] - q[0]) * (p[1] + q[1]);
+  }
+  const len = Math.hypot(nx, nz);
+  if (len < 1e-9) return [0, 0];
+  nx /= len; nz /= len;
+  const [cx, cz] = centroidXZ(s);
+  return (cx - ref[0]) * nx + (cz - ref[1]) * nz < 0 ? [-nx, -nz] : [nx, nz];
 }
 /** Even-odd point in polygon (plan x, z). */
 export function insidePoly(p: XZ, ring: XZ[]): boolean {
@@ -315,4 +335,35 @@ export function balustradeRun(b: BuildingTools, f: Frame, t0: number, t1: number
     slab(b, f, c, y, dieW, dieH - 0.12, o.d + 0.16, o.die ?? o.c, out - 0.05);
     slab(b, f, c, y + dieH - 0.12, dieW + 0.1, 0.12, o.d + 0.22, o.cap ?? o.c, out - 0.08);
   }
+}
+
+/**
+ * A long front as a grid of wall sections (street-front-kit `sec`), cut at `sCuts` along the chord and `yCuts` up the
+ * wall, `gap` apart, each seam backed by a closed strip of the wall colour set back behind the face, so the seams read
+ * as solid wall while every section keeps a short open boundary (the GLB audit fails one loop over 30 m; a 26 x 15 m
+ * rendered front is one 80 m loop drawn whole). Cut between window columns and rows: an opening must sit inside one
+ * section. `at(s, y)` returns the section holding a point. Vertical backings stop short of the horizontal ones so no
+ * two backings share a plane.
+ */
+export function tiledFront(K: {sec: (ch: Chord, s0: number, s1: number, y0: number, y1: number, c: Col, off?: number) => Sec}, b: BuildingTools, ch: Chord, s0: number, s1: number, y0: number, y1: number, c: Col, sCuts: number[], yCuts: number[], gap = 0.02) {
+  const ss = [s0, ...sCuts, s1], ys = [y0, ...yCuts, y1], g = gap / 2;
+  const secs: Sec[][] = [];
+  for (let i = 0; i + 1 < ss.length; i++) {
+    secs.push([]);
+    for (let j = 0; j + 1 < ys.length; j++) secs[i].push(K.sec(ch, ss[i] + (i ? g : 0), ss[i + 1] - (i + 2 < ss.length ? g : 0), ys[j] + (j ? g : 0), ys[j + 1] - (j + 2 < ys.length ? g : 0), c, 0));
+  }
+  const f = frameAt(ch, 0, 0);
+  for (const y of yCuts) slab(b, f, (s0 + s1) / 2, y - 0.06, s1 - s0 - 0.04, 0.12, 0.08, c, -0.13);
+  for (const s of sCuts) {
+    for (let j = 0; j + 1 < ys.length; j++) {
+      const a = ys[j] + (j ? 0.065 : 0), z = ys[j + 1] - (j + 2 < ys.length ? 0.065 : 0);
+      slab(b, f, s, a, 0.12, z - a, 0.08, c, -0.12);
+    }
+  }
+  const at = (s: number, y: number) => {
+    const i = ss.findIndex((v, k) => k + 1 < ss.length && s >= v && s <= ss[k + 1]);
+    const j = ys.findIndex((v, k) => k + 1 < ys.length && y >= v && y <= ys[k + 1]);
+    return secs[Math.max(0, i)][Math.max(0, j)];
+  };
+  return {secs: secs.flat(), at};
 }
