@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -94,7 +94,7 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   assert.notEqual(W.row.fronts.find(x => x.id === '0363100012171218')!.seriesId, W.row.fronts.find(x => x.id === '0363100012169016')!.seriesId);
   assert.deepEqual(design(W, '0363100012171218').heads.value, [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1] }, { shape: 'round', dressing: 'arch-ring', storeys: [2] }]);
   assert.deepEqual(design(W, '0363100012171218').extras.value.slice(6).sort(), ['row-balcony', 'row-porch', 'row-rustication', 'speklagen']);
-  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(6).sort(), ['floor-cornices', 'row-balcony', 'row-porch', 'string-courses']);
+  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(6).sort(), ['floor-cornices', 'row-balcony', 'row-porch', 'speklagen', 'string-courses'], 'speklagen added by review 4');
   assert.ok(d.corniceTopM.value! < 15);
   // s1's cornice is the 3DBAG eaves (14.31 / 14.17), not the 16.5 m roof height: within 0.5 m of the mansard pair's line
   const s1 = design(W, '0363100012168096').corniceTopM;
@@ -104,7 +104,7 @@ test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hois
   // bands are read and drawn as extras: 169016 floor cornices and string courses, 171218 speklagen
   assert.ok(['floor-cornices', 'string-courses'].every(x => design(W, '0363100012169016').extras.value.includes(x)));
   assert.ok(design(W, '0363100012171218').extras.value.includes('speklagen'));
-  assert.ok(!design(W, '0363100012169016').extras.value.includes('speklagen'));
+  // review 4 adds speklagen to 169016 (reviewed); the read alone drew only its floor cornices and string courses
   assert.ok(!W.row.readNotDrawn.some(r => r.field === 'bands'));
   assert.deepEqual(W.row.fronts.map(x => x.pandId), ['0363100012168096', '0363100012168042', '0363100012169016', '0363100012171218']);
   assert.equal(design(W, '0363100012168096').roofStorey.value.kind, 'none');
@@ -165,3 +165,25 @@ test('Kinkerstraat 90 and 92: reviewed heads on every upper storey, the face dis
   assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.fronts.includes('0363100012155794')));
 });
 
+
+test('Weteringschans review 4: 169016 adds speklagen (reviewed) and keeps its floor cornices, its own series; 168096 ground stated', () => {
+  const ex = design(W, '0363100012169016').extras;
+  assert.equal(ex.source, 'reviewed');
+  for (const e of ['speklagen', 'floor-cornices', 'string-courses']) assert.ok(ex.value.includes(e), e);
+  const sid = (id: string) => W.row.fronts.find(x => x.id === id)!.seriesId;
+  assert.notEqual(sid('0363100012169016'), sid('0363100012171218'));
+  assert.deepEqual(W.row.fronts.find(x => x.id === '0363100012168096')!.ground, { use: 'dwelling', doorSide: 'left', doorIndex: 0, groundBays: 3, basement: 'windows' });
+  assert.notEqual(W.specs['0363100012168096'].design.fronts![0].souterrain, true, 'basement windows are not a souterrain');
+});
+
+test('Kinkerstraat shopfront colour: only where a reading names it (98 dark); the face paint is not a reading', () => {
+  const g = (id: string) => K.row.fronts.find(x => x.id === id)!.ground.colour;
+  assert.deepEqual(g('0363100012158180'), { value: 'dark', source: 'single-read', ref: 'artifacts/describer-d1/ring-20261114/cuts/0363100012158180.jpg: "dark shopfront"' });
+  for (const id of ['0363100012236027#m0', '0363100012236027#m1', '0363100012160809', '0363100012236213#m0', '0363100012159635', '0363100012156028']) assert.equal(g(id), undefined, id);
+  const read = (what: string, notes = '') => groundColourOfRead({ gaps: [{ component: 'shopfront', what }], notes } as never)?.value ?? null;
+  assert.equal(read('a painted timber shopfront with a row of transom lights'), null);
+  assert.equal(read('a deep dark canopy runs along the whole row over the shopfronts'), null);
+  assert.equal(read('a red-and-white shopfront'), 'red');
+  assert.equal(read('', 'a black pui with gold lettering'), 'dark');
+  assert.equal(read('a varnished timber shopfront'), 'timber');
+});

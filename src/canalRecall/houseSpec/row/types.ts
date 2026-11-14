@@ -110,6 +110,10 @@ export interface RowWall {
   hex: string;
 }
 /** A front's ground storey (per-house). */
+/** The shopfront (pui) colour as a family, from the D1 ground/pui reading's own words; R draws it. */
+export const ROW_GROUND_COLOURS = ['dark', 'light', 'green', 'red', 'white', 'timber'] as const;
+export type RowGroundColour = typeof ROW_GROUND_COLOURS[number];
+
 export interface RowGround {
   use: 'shop' | 'cafe' | 'restaurant' | 'dwelling' | 'door-only' | 'warehouse' | 'other';
   /** The residential street door, seen from the street. */
@@ -120,7 +124,14 @@ export interface RowGround {
   /** The shopfront paint as the face intent states it (a named colour or hex); never a sampled wall colour. */
   shopPaint?: string;
   /** Souterrain / stoop as read (Weteringschans). */
-  basement?: 'none' | 'souterrain' | 'stoop' | 'stoop-and-windows';
+  /** `windows`: basement windows under a raised ground storey (no stoop read), Weteringschans 168096. */
+  basement?: 'none' | 'souterrain' | 'stoop' | 'stoop-and-windows' | 'windows';
+  /**
+   * The shopfront colour family, source `single-read`: only when a D1 reading names a colour on the shopfront, pui or
+   * shutter itself (a canopy or sign colour does not count; `painted timber` names no colour). Omitted when nothing is
+   * read. Outranks `shopPaint` (the face intent's paint, which the Kinkerstraat review found wrong on 92–94, 100, 106–108).
+   */
+  colour?: RowField<RowGroundColour>;
 }
 
 /** The design of a series (and, as `Partial`, a front's overrides). Every field is solved with a source. */

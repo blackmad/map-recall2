@@ -21,7 +21,7 @@ import type { DescriberAnswer } from '../describer.ts';
 import { JUDGED_PALETTE, judgeFront, variedTone, type JudgedFamily } from '../judgedColour.ts';
 import {
   ROW_RECORD_VERSION, ROW_SOURCE_RANK, type ReadNotDrawn, type Overruled, type RowCorniceKind, type RowCrownKind, type RowDesign,
-  type RowDesignKey, type RowDormerKind, type RowField, type RowFieldSource, type RowFlag, type RowFront, type RowGround, type RowHeadDressing,
+  type RowDesignKey, type RowDormerKind, type RowField, type RowFieldSource, type RowFlag, type RowFront, type RowGround, type RowGroundColour, type RowHeadDressing,
   type RowHeadShape, type RowHeads, type RowMember, type RowRecord, type RowRoofStorey, type RowRoofStoreyKind, type RowSeries, type RowWall,
   type RowWallMaterial, type RowWindowKind,
 } from './types.ts';
@@ -92,7 +92,8 @@ export interface RowInput {
   reviewed?: ReviewedStatement[];
 }
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey; value: unknown; ref: string; at: string; note?: string }
+/** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -292,6 +293,9 @@ export function solveRow(input: RowInput): RowRecord {
         widthM: m.widthM === null ? null : r2(m.widthM / n), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null),
         overrides: {}, groundOffsetM: m.groundOffsetM ?? null, topM: null, ...(held ? { readHeld: held } : {}),
       };
+      // The pui colour is read from the ground storey, which a scaffold over the upper front does not hide.
+      const gc = m.read ? groundColourOfRead(m.read) : null;
+      if (gc) front.ground = { ...front.ground, colour: { value: gc.value, source: 'single-read', ref: `${m.readRef ?? m.read!.image?.ref ?? m.pandId}: "${gc.phrase}"` } };
       fronts.push(front);
       evs.push({ front, face, read: readVals, readRef: m.readRef, member: m, frontsOfPand: n });
     });
@@ -377,15 +381,21 @@ export function solveRow(input: RowInput): RowRecord {
   }
   // Reviewed statements: a series whose fronts all fall in the statement takes the value; otherwise each listed front does.
   for (const st of input.reviewed ?? []) {
-    const fl = { value: st.value, source: 'reviewed' as const, ref: `${st.ref} (${st.at})${st.note ? `: ${st.note}` : ''}` };
+    const ref = `${st.ref} (${st.at})${st.note ? `: ${st.note}` : ''}`;
+    const merged = (cur: unknown) => ({ value: st.add && Array.isArray(cur) ? [...cur, ...(st.value as unknown[]).filter(x => !cur.includes(x))] : st.value, source: 'reviewed' as const, ref });
     for (const s of series) {
       const fs = fronts.filter(f => f.seriesId === s.id), inside = fs.filter(f => st.fronts.includes(f.id));
       if (!inside.length) continue;
       const was = s.design[st.field] as RowField<unknown> | undefined;
-      if (inside.length === fs.length) (s.design as unknown as Record<string, RowField<unknown>>)[st.field] = fl;
-      else for (const f of inside) (f.overrides as Record<string, RowField<unknown>>)[st.field] = fl;
+      const sd = s.design as unknown as Record<string, RowField<unknown>>;
+      if (inside.length === fs.length) sd[st.field] = merged(was?.value);
+      // A front's own value (a read override) is outranked too: the reviewed value goes on the front, over its own.
+      for (const f of inside) {
+        const fo = f.overrides as Record<string, RowField<unknown>>;
+        if (fo[st.field] || inside.length !== fs.length) fo[st.field] = merged((fo[st.field] ?? was)?.value);
+      }
       if (was && JSON.stringify(was.value) !== JSON.stringify(st.value))
-        flags.push({ kind: 'reviewed', field: st.field, fronts: inside.map(f => f.id), detail: `reviewed ${JSON.stringify(st.value)} overrides ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
+        flags.push({ kind: 'reviewed', field: st.field, fronts: inside.map(f => f.id), detail: `reviewed ${st.add ? 'adds ' : ''}${JSON.stringify(st.value)} ${st.add ? 'to' : 'overrides'} ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
     }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
@@ -401,11 +411,36 @@ export function heldReason(a: DescriberAnswer): string | null {
   const m = HELD_READ.exec(text);
   return m ? `the reading mentions ${m[0].toLowerCase()}: "${(a.notes ?? text).slice(0, 140)}"` : null;
 }
+const GROUND_COLOUR_WORDS: Array<[RegExp, RowGroundColour]> = [
+  [/^(dark|black|charcoal|anthracite|dark[- ]grey|grey-black)$/, 'dark'],
+  [/^(light|pale|cream|light[- ]grey|beige)$/, 'light'],
+  [/^(white|white-painted)$/, 'white'],
+  [/^(green|dark[- ]green|bottle[- ]green)$/, 'green'],
+  [/^(red|dark[- ]red|maroon|oxblood|red[- ]and[- ]white)$/, 'red'],
+  [/^(timber|wooden|wood|oak|varnished)$/, 'timber'],
+];
+/**
+ * The shopfront colour a reading names: a colour word directly before shopfront / shop front / pui / shutter in a
+ * shopfront gap or the notes (`the dark shopfront`). `painted timber` says paint without a colour, so it is not read.
+ */
+export function groundColourOfRead(a: DescriberAnswer): { value: RowGroundColour; phrase: string } | null {
+  const texts = [...(Array.isArray(a.gaps) ? a.gaps.filter(g => g.component === 'shopfront' || g.component === 'ground').map(g => g.what) : []), typeof a.notes === 'string' ? a.notes : ''];
+  const re = /\b((?:painted\s+)?(?:[a-z]+[- ]and[- ])?[a-z]+(?:[- ](?:grey|green|red))?)\s+(?:painted\s+)?(shop ?fronts?|puis?|shutters?)\b/gi;
+  for (const t of texts) for (const mt of t.matchAll(re)) {
+    const word = mt[1].toLowerCase();
+    if (word.startsWith('painted ')) continue;
+    const hit = GROUND_COLOUR_WORDS.find(([w]) => w.test(word));
+    if (hit) return { value: hit[1], phrase: mt[0] };
+  }
+  return null;
+}
+
 function groundOfRead(a: DescriberAnswer | null): RowGround {
   if (!a) return { use: 'other' };
   const use: RowGround['use'] = a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'dwelling' : a.ground === 'warehouse' ? 'warehouse' : 'other';
   const doorSide = a.doorBay === 'left' || a.doorBay === 'right' || a.doorBay === 'several' || a.doorBay === 'none' ? a.doorBay : a.doorBay === 'centre' || a.doorBay === 'off-centre' ? 'centre' as const : undefined;
-  const basement = a.basement === 'stoop-and-windows' ? 'stoop-and-windows' as const : a.basement === 'none' ? 'none' as const : a.souterrain ? 'souterrain' as const : undefined;
+  const basement = a.basement === 'stoop-and-windows' ? 'stoop-and-windows' as const : a.basement === 'windows' ? 'windows' as const : a.basement === 'stoop' ? 'stoop' as const
+    : a.basement === 'none' ? 'none' as const : a.souterrain ? 'souterrain' as const : undefined;
   return { use, ...(doorSide ? { doorSide } : {}), ...(Number.isInteger(a.doorIndex) ? { doorIndex: a.doorIndex as number } : {}), ...(Number.isInteger(a.groundBays) ? { groundBays: a.groundBays } : {}), ...(basement ? { basement } : {}) };
 }
 /** Fields a reading states that the row design has no place for (programme rule 3). */

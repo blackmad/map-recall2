@@ -1,12 +1,33 @@
 {
   "kinkerstraat-86-110": [
     {
-      "fronts": ["0363100012155794", "0363100012236213#m1"],
+      "fronts": [
+        "0363100012155794",
+        "0363100012236213#m1"
+      ],
       "field": "heads",
-      "value": { "shape": "segmental", "dressing": "segmental-tympanum" },
+      "value": {
+        "shape": "segmental",
+        "dressing": "segmental-tympanum"
+      },
       "ref": "integrator, r3 sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (Kinkerstraat 90; 92 is the same series)",
       "at": "2026-11-14",
       "note": "arched heads with white keystones on all three upper storeys, the top storey included; the face citation and D1 read said storeys 1-2"
+    }
+  ],
+  "weteringschans-168096-171218": [
+    {
+      "fronts": [
+        "0363100012169016"
+      ],
+      "field": "extras",
+      "add": true,
+      "value": [
+        "speklagen"
+      ],
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/weteringschans-168096-171218/sheet.jpg (blind review 4)",
+      "at": "2026-11-14",
+      "note": "heavy white banding across the whole wall, the same speklagen as 171218; its floor cornices and string courses stay"
     }
   ]
 }
