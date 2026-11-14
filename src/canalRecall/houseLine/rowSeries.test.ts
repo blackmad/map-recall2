@@ -112,13 +112,13 @@ test('mansard rise: stated wins, else one low series default (no per-pand 3DBAG 
   assert.equal(MANSARD_RISE.period, 2.2);
 });
 
-test('the Kinkerstraat mansards join across party walls; only the row ends and 86-88 (no mansard) keep hips', () => {
+test('the Kinkerstraat mansards join across party walls at one line; only the row end (110) keeps a hip', () => {
   const j = (id: string) => rec(K, id).series!.roofStorey!.joins;
   assert.equal(j('0363100012165799')?.left, undefined, '110 is the row end');
   assert.equal(j('0363100012165799')?.right, true);
   for (const id of ['0363100012236027', '0363100012159635', '0363100012152925', '0363100012160809', '0363100012158180', '0363100012156028', '0363100012236213'])
     assert.deepEqual(j(id), { left: true, right: true }, id);
-  assert.deepEqual(j('0363100012155794'), { left: true }, '90 meets 86-88, which has no mansard');
+  assert.deepEqual(j('0363100012155794'), { left: true, right: true }, '90 runs on into 86-88 at the same line (3DBAG 16.84 / 16.62 m)');
   assert.equal(rec(K, '0363100012233580').series!.roofStorey!.joins, undefined);
 });
 

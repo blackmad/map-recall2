@@ -11,8 +11,9 @@
  *
  * Nothing here is rolled: a field the series does not state is left out and the renderer draws no component for it.
  */
-import { frontDesign, type RowDesign, type RowFront, type RowHeads, type RowRecord } from '../houseSpec/row/types.ts';
+import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords } from '../houseSpec/row/emit.ts';
+import { headsList } from '../houseSpec/row/solve.ts';
 import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
@@ -31,13 +32,13 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   fronts.forEach((f, i) => {
     const [a0, a1] = span(f), d = designs[i];
     // A front may state several dressings by storey (171218: jack-blocks below, arch rings on the top storey).
-    const hs = ([] as RowHeads[]).concat((d.heads.value as RowHeads | RowHeads[] | null) ?? []);
+    const hs = d.heads.value ? headsList(d.heads.value) : [];
     for (const h of hs) if (h && h.dressing !== 'none') heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
     const n = Math.max(0, Math.round(rs.dormersPerFront));
-    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind === 'ornate-pinnacle' ? 'pediment' /* lane D: until R's ornate-pinnacle kit part lands */ : rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
   });
   // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
   heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));
