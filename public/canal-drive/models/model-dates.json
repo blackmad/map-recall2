@@ -751,6 +751,21 @@
       "version": "aee24d124098bde7",
       "dateSource": "asset-update"
     },
+    "blok0-ij4you": {
+      "updatedAt": "2026-11-14T03:45:48.553Z",
+      "version": "21f09645ab843ca1",
+      "dateSource": "asset-update"
+    },
+    "blok0-ij4you.lod1": {
+      "updatedAt": "2026-11-14T04:50:27.481Z",
+      "version": "271b1e1df497dc3d",
+      "dateSource": "asset-update"
+    },
+    "blok0-ij4you.lod2": {
+      "updatedAt": "2026-11-14T04:50:32.582Z",
+      "version": "e71d6e8787b3109c",
+      "dateSource": "asset-update"
+    },
     "bogortuin-101": {
       "updatedAt": "2026-10-20T10:16:58.076Z",
       "version": "3520d14a631ffc10",
@@ -1126,6 +1141,11 @@
       "version": "18c2bb08ff4a7e23",
       "dateSource": "asset-update"
     },
+    "club-raum.lod2": {
+      "updatedAt": "2026-11-14T05:38:32.162Z",
+      "version": "86c1acf61ee063ec",
+      "dateSource": "asset-update"
+    },
     "collectie-six": {
       "updatedAt": "2026-10-20T10:15:09.367Z",
       "version": "4d45dee33be6afb2",
@@ -1356,6 +1376,16 @@
       "version": "b15629288e6eedf3",
       "dateSource": "asset-update"
     },
+    "de-bonte-zwaan.lod1": {
+      "updatedAt": "2026-11-14T02:52:34.639Z",
+      "version": "b02e8925678d7c36",
+      "dateSource": "asset-update"
+    },
+    "de-bonte-zwaan.lod2": {
+      "updatedAt": "2026-11-14T02:52:34.639Z",
+      "version": "a5733277c3197785",
+      "dateSource": "asset-update"
+    },
     "de-burcht": {
       "updatedAt": "2026-11-01T20:52:40.722Z",
       "version": "1768ecdf65823a24",
@@ -1524,6 +1554,21 @@
     "de-piramides.lod2": {
       "updatedAt": "2026-11-07T14:08:58.145Z",
       "version": "9cad5ea8f5588d77",
+      "dateSource": "asset-update"
+    },
+    "de-rede": {
+      "updatedAt": "2026-11-14T03:58:17.029Z",
+      "version": "462b2cbcbb31d51e",
+      "dateSource": "asset-update"
+    },
+    "de-rede.lod1": {
+      "updatedAt": "2026-11-14T04:50:27.885Z",
+      "version": "17c649b1f2428a31",
+      "dateSource": "asset-update"
+    },
+    "de-rede.lod2": {
+      "updatedAt": "2026-11-14T04:50:33.582Z",
+      "version": "1c27649d9a498aba",
       "dateSource": "asset-update"
     },
     "de-roos": {
@@ -2801,6 +2846,16 @@
       "version": "60d217b900023fb2",
       "dateSource": "asset-update"
     },
+    "hotel-boat-and-co.lod1": {
+      "updatedAt": "2026-11-14T02:52:34.642Z",
+      "version": "563d75bcea7d5d7f",
+      "dateSource": "asset-update"
+    },
+    "hotel-boat-and-co.lod2": {
+      "updatedAt": "2026-11-14T02:52:34.642Z",
+      "version": "413c9c34a4b79c19",
+      "dateSource": "asset-update"
+    },
     "hotel-de-l-europe": {
       "updatedAt": "2026-10-20T10:16:53.143Z",
       "version": "5a03c36f0be13141",
@@ -3676,6 +3731,21 @@
       "version": "05b294bf9128f832",
       "dateSource": "asset-update"
     },
+    "lofi": {
+      "updatedAt": "2026-11-13T19:11:16.069Z",
+      "version": "ff46443e3093b3e3",
+      "dateSource": "asset-update"
+    },
+    "lofi.lod1": {
+      "updatedAt": "2026-11-14T05:09:06.430Z",
+      "version": "bd3aee96d9aa895c",
+      "dateSource": "asset-update"
+    },
+    "lofi.lod2": {
+      "updatedAt": "2026-11-14T05:09:06.430Z",
+      "version": "62bee630d65a1a7e",
+      "dateSource": "asset-update"
+    },
     "loods-6": {
       "updatedAt": "2026-11-02T00:28:35.310Z",
       "version": "aac8e27524281277",
@@ -4014,6 +4084,21 @@
     "montelbaanstoren-amsterdam.lod2": {
       "updatedAt": "2026-11-07T14:08:58.171Z",
       "version": "1a3a48e54b2b3465",
+      "dateSource": "asset-update"
+    },
+    "morgan-mees": {
+      "updatedAt": "2026-11-13T21:11:00.217Z",
+      "version": "8b9c6b1d8b75254f",
+      "dateSource": "asset-update"
+    },
+    "morgan-mees.lod1": {
+      "updatedAt": "2026-11-14T05:09:06.433Z",
+      "version": "5c87a300693513fa",
+      "dateSource": "asset-update"
+    },
+    "morgan-mees.lod2": {
+      "updatedAt": "2026-11-14T05:09:06.433Z",
+      "version": "915adaffb3a1a2b9",
       "dateSource": "asset-update"
     },
     "motorkade-1": {
@@ -4404,6 +4489,21 @@
     "oba-oosterdok.lod2": {
       "updatedAt": "2026-11-07T14:08:58.174Z",
       "version": "f7c20e18a5a45851",
+      "dateSource": "asset-update"
+    },
+    "oba-spaarndammerbuurt": {
+      "updatedAt": "2026-11-14T04:40:32.362Z",
+      "version": "3fca7f907559e184",
+      "dateSource": "asset-update"
+    },
+    "oba-spaarndammerbuurt.lod1": {
+      "updatedAt": "2026-11-14T04:50:28.234Z",
+      "version": "e5a1f30e21990e6a",
+      "dateSource": "asset-update"
+    },
+    "oba-spaarndammerbuurt.lod2": {
+      "updatedAt": "2026-11-14T04:50:34.649Z",
+      "version": "b1a9a716b2669c15",
       "dateSource": "asset-update"
     },
     "obrechtkerk": {
@@ -4946,6 +5046,16 @@
       "version": "0b895f58a3007b26",
       "dateSource": "asset-update"
     },
+    "pont-13": {
+      "updatedAt": "2026-11-14T04:15:56.421Z",
+      "version": "fbc030e48082fc64",
+      "dateSource": "asset-update"
+    },
+    "pont-13.lod2": {
+      "updatedAt": "2026-11-14T04:50:34.993Z",
+      "version": "3649a8ab9243e84b",
+      "dateSource": "asset-update"
+    },
     "pontsteiger": {
       "updatedAt": "2026-10-20T10:11:45.320Z",
       "version": "1f9f41629833d4c5",
@@ -5019,6 +5129,21 @@
     "raadhuisstraat-galerij.lod2": {
       "updatedAt": "2026-11-12T19:40:11.480Z",
       "version": "579574ccef4de863",
+      "dateSource": "asset-update"
+    },
+    "radion": {
+      "updatedAt": "2026-11-13T19:51:36.479Z",
+      "version": "2e21c4d09cf3e7ae",
+      "dateSource": "asset-update"
+    },
+    "radion.lod1": {
+      "updatedAt": "2026-11-14T05:09:06.434Z",
+      "version": "18d4d9d9811e6147",
+      "dateSource": "asset-update"
+    },
+    "radion.lod2": {
+      "updatedAt": "2026-11-14T05:09:06.434Z",
+      "version": "73ccfbf94145ddb9",
       "dateSource": "asset-update"
     },
     "rai-amsterdam": {
@@ -5214,6 +5339,16 @@
     "sameplace": {
       "updatedAt": "2026-11-14T04:58:59.517Z",
       "version": "7fcac0d803116120",
+      "dateSource": "asset-update"
+    },
+    "sameplace.lod1": {
+      "updatedAt": "2026-11-14T05:38:32.169Z",
+      "version": "95418847acb2112a",
+      "dateSource": "asset-update"
+    },
+    "sameplace.lod2": {
+      "updatedAt": "2026-11-14T05:38:32.169Z",
+      "version": "860dc1667879cd47",
       "dateSource": "asset-update"
     },
     "sarphati-plaza": {
@@ -5726,6 +5861,16 @@
       "version": "75e436d150e93e1e",
       "dateSource": "asset-update"
     },
+    "the-other-side.lod1": {
+      "updatedAt": "2026-11-14T05:09:06.445Z",
+      "version": "cf8f9b8d23df76c2",
+      "dateSource": "asset-update"
+    },
+    "the-other-side.lod2": {
+      "updatedAt": "2026-11-14T05:09:06.445Z",
+      "version": "093045619fff8547",
+      "dateSource": "asset-update"
+    },
     "the-rock": {
       "updatedAt": "2026-10-20T10:00:54.504Z",
       "version": "affc853ba557e9c9",
@@ -5839,6 +5984,16 @@
     "toekomstmuziek": {
       "updatedAt": "2026-11-13T20:54:35.072Z",
       "version": "aaf4817a7e54aa76",
+      "dateSource": "asset-update"
+    },
+    "toekomstmuziek.lod1": {
+      "updatedAt": "2026-11-14T05:09:06.446Z",
+      "version": "e0aa44aa088a7a14",
+      "dateSource": "asset-update"
+    },
+    "toekomstmuziek.lod2": {
+      "updatedAt": "2026-11-14T05:09:06.446Z",
+      "version": "c15e5f55919bc8b6",
       "dateSource": "asset-update"
     },
     "tolhuis-paviljoen": {
@@ -6679,21 +6834,6 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
-      "dateSource": "asset-update"
-    },
-    "lofi": {
-      "updatedAt": "2026-11-13T19:11:16.069Z",
-      "version": "ff46443e3093b3e3",
-      "dateSource": "asset-update"
-    },
-    "radion": {
-      "updatedAt": "2026-11-13T19:51:36.479Z",
-      "version": "2e21c4d09cf3e7ae",
-      "dateSource": "asset-update"
-    },
-    "morgan-mees": {
-      "updatedAt": "2026-11-13T21:11:00.217Z",
-      "version": "8b9c6b1d8b75254f",
       "dateSource": "asset-update"
     }
   }

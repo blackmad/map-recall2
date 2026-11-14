@@ -14768,7 +14768,7 @@
   "id": "haparandaweg-650-706",
   "category": "ordinary",
   "status": "held",
-  "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-650-706/contact.png (2026-10-09).",
+  "heldReason": "Superseded by the bespoke model blok0-ij4you on the same pand (lane H-HV2, 2026-11-14); the block-kit draft was never reviewed.",
   "name": "Haparandaweg 650-706",
   "modelUrl": "./models/haparandaweg-650-706.glb",
   "suppressOsmIds": [
@@ -15025,7 +15025,7 @@
   "id": "haparandaweg-708-744",
   "category": "ordinary",
   "status": "held",
-  "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-708-744/contact.png (2026-10-09).",
+  "heldReason": "Superseded by the bespoke model de-rede on the same pand (lane H-HV2, 2026-11-14); the block-kit draft was never reviewed.",
   "name": "De Rede, Haparandaweg 708-744",
   "modelUrl": "./models/haparandaweg-708-744.glb",
   "suppressOsmIds": [
@@ -77175,6 +77175,745 @@
      [
       4.87460178,
       52.37396985
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "blok0-ij4you",
+  "name": "Houthaven Blok 0, plots 8 and 9 (IJ4you)",
+  "modelUrl": "./models/blok0-ij4you.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012242823"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87707036,
+    52.39448641
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 48.7,
+   "widthMetres": 52.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.87707036,
+    52.39448641
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012242823 outline (RD, PDOK BAG WFS, CC0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0, ground 0.78 m NAP): brick corner block to 28.8 m, limestone block to 26.5 m with a set-back top storey, garden deck on the garage at 4.2 m, quay blocks to 13.4-13.8 m. Storeys, columns, ledges, balconies and the stair measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0) w02-320 (2025), w03-320 (2021), w01-230 (2024/2020), w04-140 (2018), w05-140 (2017) and w06-140 (2021) (scripts/landmarks/blok0-ij4you-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 29.9,
+  "bagYear": 2015,
+  "category": "ordinary",
+  "materialOverrides": {
+   "brick": "#9b6a5a",
+   "stone": "#c9c3b6",
+   "frame": "#d2c6b0",
+   "glass": "#4a5a63",
+   "dark": "#2c3033",
+   "white": "#e6e4dc",
+   "concrete": "#8f8f8a",
+   "green": "#6f7d5a",
+   "gold": "#c8b68a",
+   "blue": "#a9bcbf",
+   "pink": "#e6e4dc"
+  },
+  "attribution": {
+   "title": "Houthaven Blok 0, plots 8 and 9 (IJ4you), Haparandaweg 650-706 (Marcel Lok_Architect, 2015)",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.archdaily.com/787541/houthaven-blok-0-nil-plots-8-and-9-marcel-lok-architect",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of the BAG outline (CC0): the nine-layer brick corner block with its grid of piers and floor bands, the limestone block with a cantilevered ledge at every floor, the four-layer quay blocks with first-floor balconies, the stair up to the garden deck on the garage, the courtyard balconies and the house numbers 650-678 and 680-706; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8770921,
+      52.39471074
+     ],
+     [
+      4.87708803,
+      52.39471356
+     ],
+     [
+      4.87691361,
+      52.3946229
+     ],
+     [
+      4.87691745,
+      52.39462014
+     ],
+     [
+      4.87691782,
+      52.39461985
+     ],
+     [
+      4.87691465,
+      52.3946182
+     ],
+     [
+      4.87691428,
+      52.39461848
+     ],
+     [
+      4.87690638,
+      52.39461442
+     ],
+     [
+      4.8768493,
+      52.39458479
+     ],
+     [
+      4.87684098,
+      52.39458045
+     ],
+     [
+      4.87681181,
+      52.39456556
+     ],
+     [
+      4.87680351,
+      52.39456127
+     ],
+     [
+      4.87674682,
+      52.39453168
+     ],
+     [
+      4.8767386,
+      52.3945273
+     ],
+     [
+      4.87673967,
+      52.39452659
+     ],
+     [
+      4.87673695,
+      52.39452497
+     ],
+     [
+      4.87679894,
+      52.39448007
+     ],
+     [
+      4.87683163,
+      52.39449679
+     ],
+     [
+      4.8768875,
+      52.39445705
+     ],
+     [
+      4.87685483,
+      52.39444032
+     ],
+     [
+      4.8770318,
+      52.39431274
+     ],
+     [
+      4.87712537,
+      52.39424527
+     ],
+     [
+      4.87712955,
+      52.39424745
+     ],
+     [
+      4.87719257,
+      52.3942802
+     ],
+     [
+      4.87725975,
+      52.39431513
+     ],
+     [
+      4.87725108,
+      52.39432139
+     ],
+     [
+      4.87721446,
+      52.39434778
+     ],
+     [
+      4.87727428,
+      52.39437887
+     ],
+     [
+      4.8773108,
+      52.39435243
+     ],
+     [
+      4.87731966,
+      52.39434609
+     ],
+     [
+      4.87738635,
+      52.39438069
+     ],
+     [
+      4.87745304,
+      52.3944153
+     ],
+     [
+      4.87740825,
+      52.39444758
+     ],
+     [
+      4.87743593,
+      52.39446195
+     ],
+     [
+      4.87743755,
+      52.39446076
+     ],
+     [
+      4.87743994,
+      52.39446199
+     ],
+     [
+      4.87725892,
+      52.39459271
+     ],
+     [
+      4.87725706,
+      52.39459175
+     ],
+     [
+      4.87725271,
+      52.3945949
+     ],
+     [
+      4.8770921,
+      52.39471074
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-rede",
+  "name": "De Rede",
+  "modelUrl": "./models/de-rede.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012243292"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.877387,
+    52.39456037
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 36.2,
+   "widthMetres": 37.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.877387,
+    52.39456037
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012243292 outline (RD, PDOK BAG WFS, CC0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0, ground 0.68 m NAP): a shallow street gable to 30.8 m (shoulders 28.7) and two gabled quay houses to 17.5 m. Storeys, glazing runs, louvres, boxes, rails and gables measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0) w01-320 (2024), w02-140 (2017) and w03-230 (scripts/landmarks/de-rede-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 30.8,
+  "bagYear": 2015,
+  "category": "ordinary",
+  "materialOverrides": {
+   "white": "#e9e8e3",
+   "stone": "#d9d5ca",
+   "frame": "#f3f2ee",
+   "glass": "#4d5d66",
+   "dark": "#2b2e31",
+   "concrete": "#7d7f80",
+   "green": "#7c8457",
+   "blue": "#55666e",
+   "pink": "#e2e5e3",
+   "slate": "#2f3235",
+   "copper": "#1f2224",
+   "ochre": "#8a6a4f",
+   "bronze": "#5e4733",
+   "sandstone": "#f4f4f0"
+  },
+  "attribution": {
+   "title": "De Rede, Haparandaweg 708-744 (Houthaven Blok 0, 2015)",
+   "author": "Map Recall",
+   "sourceUrl": "https://3dbag.nl/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of the BAG outline (CC0): the white street gable with its irregular full-height glazing, black sliding louvres, four olive glazed boxes, the 'de Rede 710-744' entrance lettering and garage grille, and the two gabled quay houses with French windows, Juliet rails, timber louvres, boarded gables and white bargeboards; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87740458,
+      52.39466495
+     ],
+     [
+      4.87740182,
+      52.39466694
+     ],
+     [
+      4.87739904,
+      52.39466893
+     ],
+     [
+      4.87723647,
+      52.39478592
+     ],
+     [
+      4.87710024,
+      52.39471497
+     ],
+     [
+      4.8770921,
+      52.39471074
+     ],
+     [
+      4.87725271,
+      52.3945949
+     ],
+     [
+      4.87725706,
+      52.39459175
+     ],
+     [
+      4.87725892,
+      52.39459271
+     ],
+     [
+      4.87743994,
+      52.39446199
+     ],
+     [
+      4.8774418,
+      52.39446293
+     ],
+     [
+      4.87743357,
+      52.39446884
+     ],
+     [
+      4.87743702,
+      52.39447057
+     ],
+     [
+      4.87744938,
+      52.39447705
+     ],
+     [
+      4.87745148,
+      52.39447809
+     ],
+     [
+      4.87745225,
+      52.39447848
+     ],
+     [
+      4.87746339,
+      52.39447046
+     ],
+     [
+      4.87747946,
+      52.39447879
+     ],
+     [
+      4.87751964,
+      52.39444981
+     ],
+     [
+      4.87762596,
+      52.39450504
+     ],
+     [
+      4.87753011,
+      52.39457389
+     ],
+     [
+      4.87740458,
+      52.39466495
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "oba-spaarndammerbuurt",
+  "name": "OBA Spaarndammerbuurt",
+  "landmarkId": "extract_landmarks_2090706815",
+  "modelUrl": "./models/oba-spaarndammerbuurt.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012127052"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88016683,
+    52.38886694
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 35.3,
+   "widthMetres": 33.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.88016683,
+    52.38886694
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012127052 outline (RD, PDOK BAG WFS, CC0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0, ground 0.6 m NAP): the apartment block to 15.8 m (its balcony stacks to 12.9), the library hall behind it to 4.3-4.6 m. Front bays, windows, balconies, shop front and signs measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0) of 2019 and 2022 (scripts/landmarks/oba-spaarndammerbuurt-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 16.2,
+  "bagYear": 1981,
+  "materialOverrides": {
+   "brick": "#6a625d",
+   "stone": "#e4e2dc",
+   "frame": "#eeeeea",
+   "glass": "#3f4c55",
+   "dark": "#23304a",
+   "concrete": "#8c8a86",
+   "pink": "#e8e6e0",
+   "copper": "#4a4d50",
+   "red": "#c8102e",
+   "sandstone": "#f2f2f0"
+  },
+  "attribution": {
+   "title": "OBA Spaarndammerbuurt, Spaarndammerstraat 490 (apartment block 1981)",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/2788129544",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of the BAG outline (CC0): the dark brick 1981 apartment front with its white balcony stacks of rounded balconies, white-framed windows, the library's shop front in dark blue frames, the red 'oba' letters and the projecting blade sign; read for proportion from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.88032289,
+      52.38903231
+     ],
+     [
+      4.88031772,
+      52.38903079
+     ],
+     [
+      4.88020203,
+      52.38899646
+     ],
+     [
+      4.88011979,
+      52.38897168
+     ],
+     [
+      4.88008143,
+      52.38896012
+     ],
+     [
+      4.88003795,
+      52.38894702
+     ],
+     [
+      4.87995745,
+      52.38892302
+     ],
+     [
+      4.87996064,
+      52.38891928
+     ],
+     [
+      4.87995829,
+      52.38891855
+     ],
+     [
+      4.87998616,
+      52.38888406
+     ],
+     [
+      4.8799884,
+      52.38888474
+     ],
+     [
+      4.88002087,
+      52.38884454
+     ],
+     [
+      4.88001863,
+      52.38884387
+     ],
+     [
+      4.88004663,
+      52.38880919
+     ],
+     [
+      4.88004885,
+      52.38880987
+     ],
+     [
+      4.88008139,
+      52.38876964
+     ],
+     [
+      4.88007911,
+      52.38876899
+     ],
+     [
+      4.88010732,
+      52.38873406
+     ],
+     [
+      4.88010948,
+      52.38873471
+     ],
+     [
+      4.88011226,
+      52.38873124
+     ],
+     [
+      4.88044542,
+      52.38883123
+     ],
+     [
+      4.88044478,
+      52.38883204
+     ],
+     [
+      4.8804702,
+      52.38883967
+     ],
+     [
+      4.88046987,
+      52.38884007
+     ],
+     [
+      4.88047345,
+      52.38884121
+     ],
+     [
+      4.88047662,
+      52.38884221
+     ],
+     [
+      4.88032289,
+      52.38903231
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "pont-13",
+  "name": "Pont 13",
+  "modelUrl": "./models/pont-13.glb",
+  "suppressOsmIds": [
+   "w274005173"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88299851,
+    52.39756295
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 35.1,
+   "widthMetres": 31.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.88299851,
+    52.39756295
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of BAG ligplaats 0363020012061235 (Haparandadam 50, RD, PDOK BAG WFS, CC0); no 3DBAG shell (a ship): hull 40 x 9.6 m on the ligplaats axis from the PDOK 2025 orthophoto (CC BY 4.0), heights from the 2021 water-side Gemeente Amsterdam panorama (CC BY 4.0), y = 0 at the water line (scripts/landmarks/pont-13-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 12.6,
+  "materialOverrides": {
+   "blue": "#1f2a3a",
+   "concrete": "#6f7276",
+   "pink": "#eceae4",
+   "frame": "#d9dcdc",
+   "glass": "#3d4a52",
+   "slate": "#30373d",
+   "copper": "#2a2d30",
+   "ochre": "#c9b48e",
+   "bronze": "#6b5643",
+   "sandstone": "#f4f4f0"
+  },
+  "attribution": {
+   "title": "Pont 13 (IJ ferry, 1927), Haparandadam",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/way/274005173",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry drawn by hand on the BAG ligplaats (CC0): the navy hull with its row of windows, the white bulwark with 'PONT 13 / ETEN & DRINKEN', the barrel-roofed saloon, the wheelhouse and mast, the 'ferry' board, the end tent and canopy; read for proportion from Gemeente Amsterdam panoramas and the PDOK 2025 orthophoto (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.88325515,
+      52.39763848
+     ],
+     [
+      4.88316593,
+      52.39770389
+     ],
+     [
+      4.88315176,
+      52.39770064
+     ],
+     [
+      4.88313778,
+      52.39769699
+     ],
+     [
+      4.88312408,
+      52.39769298
+     ],
+     [
+      4.88311062,
+      52.3976886
+     ],
+     [
+      4.88309753,
+      52.39768385
+     ],
+     [
+      4.88308479,
+      52.39767877
+     ],
+     [
+      4.88307245,
+      52.39767337
+     ],
+     [
+      4.88306054,
+      52.39766765
+     ],
+     [
+      4.88281901,
+      52.39754436
+     ],
+     [
+      4.88280768,
+      52.39753821
+     ],
+     [
+      4.88279678,
+      52.39753175
+     ],
+     [
+      4.88278634,
+      52.397525
+     ],
+     [
+      4.88277637,
+      52.39751796
+     ],
+     [
+      4.8827669,
+      52.39751066
+     ],
+     [
+      4.88275799,
+      52.39750312
+     ],
+     [
+      4.88274963,
+      52.39749537
+     ],
+     [
+      4.88274188,
+      52.39748742
+     ],
+     [
+      4.8828311,
+      52.39742201
+     ],
+     [
+      4.88284526,
+      52.39742526
+     ],
+     [
+      4.88285925,
+      52.3974289
+     ],
+     [
+      4.88287294,
+      52.39743291
+     ],
+     [
+      4.88288639,
+      52.3974373
+     ],
+     [
+      4.8828995,
+      52.39744204
+     ],
+     [
+      4.88291224,
+      52.39744712
+     ],
+     [
+      4.88292458,
+      52.39745253
+     ],
+     [
+      4.88293649,
+      52.39745824
+     ],
+     [
+      4.88317802,
+      52.39758154
+     ],
+     [
+      4.88318935,
+      52.39758768
+     ],
+     [
+      4.88320025,
+      52.39759414
+     ],
+     [
+      4.88321069,
+      52.3976009
+     ],
+     [
+      4.88322066,
+      52.39760794
+     ],
+     [
+      4.88323012,
+      52.39761524
+     ],
+     [
+      4.88323904,
+      52.39762277
+     ],
+     [
+      4.8832474,
+      52.39763053
+     ],
+     [
+      4.88325515,
+      52.39763848
      ]
     ]
    ]

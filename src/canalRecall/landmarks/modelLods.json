@@ -5821,5 +5821,49 @@
    "bytes": 7980,
    "triangles": 212
   }
+ },
+ "blok0-ij4you": {
+  "sourceHash": "21f09645ab843ca1",
+  "buildVersion": 2,
+  "bytes": 44548,
+  "triangles": 2089,
+  "lod2": {
+   "sourceHash": "21f09645ab843ca1",
+   "buildVersion": 6,
+   "bytes": 13760,
+   "triangles": 590
+  }
+ },
+ "de-rede": {
+  "sourceHash": "462b2cbcbb31d51e",
+  "buildVersion": 2,
+  "bytes": 33208,
+  "triangles": 990,
+  "lod2": {
+   "sourceHash": "462b2cbcbb31d51e",
+   "buildVersion": 6,
+   "bytes": 8136,
+   "triangles": 212
+  }
+ },
+ "oba-spaarndammerbuurt": {
+  "sourceHash": "3fca7f907559e184",
+  "buildVersion": 2,
+  "bytes": 29160,
+  "triangles": 1019,
+  "lod2": {
+   "sourceHash": "3fca7f907559e184",
+   "buildVersion": 6,
+   "bytes": 6936,
+   "triangles": 180
+  }
+ },
+ "pont-13": {
+  "lod2": {
+   "sourceHash": "fbc030e48082fc64",
+   "buildVersion": 6,
+   "bytes": 4476,
+   "triangles": 50
+  }
  }
 }
