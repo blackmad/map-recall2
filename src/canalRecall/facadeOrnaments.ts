@@ -223,13 +223,16 @@ export function rowWindowsOf(c: ExtraContext): RowWindow[] {
 
 const CONSOLE_MIN = 0.32;
 /** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
+function rowHeadRise(w: RowWindow): number {
+  const d = w.dressing;
+  return d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
+      : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
+      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : d === 'arch-ring' || w.shape === 'round' ? (w.x1 - w.x0) / 2 + 0.22 : -Infinity;
+}
 function rowHeadsTop(c: ExtraContext): number {
   let top = -Infinity;
   for (const w of rowWindowsOf(c)) {
-    const d = w.dressing;
-    const rise = d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
-      : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
-      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : d === 'arch-ring' || w.shape === 'round' ? (w.x1 - w.x0) / 2 + 0.22 : -Infinity;
+    const rise = rowHeadRise(w);
     top = Math.max(top, w.z1 + rise);
   }
   return top;
@@ -291,7 +294,57 @@ function archRingHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
 }
 
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
-const RUSTIC = { course: 0.32, joint: 0.035, stone: '#b7ab95', jointHex: '#8a806f', out: 0.04 } as const;
+// Grey sandstone/hardstone blocks with deep sunk joints (171218's photo: grey, not the warm cream of the dressings).
+const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', jointHex: '#4f4d48', out: 0.07 } as const;
+/** Row bands that read at street distance (40 px/m): speklagen 18 cm every ~45 cm of wall (171218), string-courses and
+ *  floor-line bands 20 cm (169016). The shared components' hairline courses stay for walls without a row record. */
+const ROW_BANDS = { spek: 0.18, spekPitch: 0.46, spekOut: 0.05, course: 0.2, courseOut: 0.08, margin: 0.06 } as const;
+/** The stoop: steps and cheek walls up to the bel-etage door over a souterrain (Weteringschans 169016, 171218). */
+const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
+/** The bel-etage street door over a stated stoop: the bel-etage window at the stated end, from the floor up. */
+export function stoopDoor(c: ExtraContext): Span | null {
+  const st = c.rowDress?.stoop;
+  if (!st || !c.groundLevel || c.layout.storeys < 1) return null;
+  const ws = windowSpans(c, 0).sort((a, b) => a.x - b.x);
+  if (!ws.length) return null;
+  const w = st.end === 'start' ? ws[0] : st.end === 'end' ? ws[ws.length - 1] : ws.reduce((a, b) => Math.abs(b.x - c.f.len / 2) < Math.abs(a.x - c.f.len / 2) ? b : a);
+  return { x: w.x, hw: Math.max(w.hw, 0.5), z0: storeyZ(c, 0), z1: w.z1 };
+}
+/** Openings (with their head dressing and a margin) a row band stops at: windows, ground windows and doors. */
+function rowBandHoles(c: ExtraContext): Array<readonly [number, number, number, number]> {
+  const m = ROW_BANDS.margin, holes: Array<readonly [number, number, number, number]> = [];
+  for (const w of rowWindowsOf(c)) holes.push([w.x0 - m, w.x1 + m, w.z0 - m - 0.05, w.z1 + Math.max(0.08, rowHeadRise(w)) + m]);
+  for (const w of windowSpans(c, -1)) holes.push([w.x - w.hw - m, w.x + w.hw + m, w.z0 - m, w.z1 + m]);
+  for (const d of [doorSpan(c), stoopDoor(c)]) if (d) holes.push([d.x - d.hw - 0.3, d.x + d.hw + 0.3, d.z0 - m, d.z1 + 1.0]);
+  return holes;
+}
+/** One band course [z0, z1] across the wall, broken at `holes`. */
+function rowBand(c: ExtraContext, s: ExtraSink, holes: ReadonlyArray<readonly [number, number, number, number]>, z0: number, z1: number, out: number, hex: string): void {
+  const cut = holes.filter(h => h[2] < z1 && h[3] > z0).sort((a, b) => a[0] - b[0]);
+  let x = 0;
+  for (const h of [...cut, [c.f.len, c.f.len, 0, 0] as const]) {
+    if (Math.min(c.f.len, h[0]) - x > 0.12) s.strip(c.f, x, Math.min(c.f.len, h[0]), out, z0, z1, hex);
+    x = Math.max(x, h[1]);
+  }
+}
+/** Row walls: the stated bands, bold. Speklagen run the whole wall between the bel-etage floor and the cornice; the
+ *  floor-line and sill courses run at every storey. Returns false for walls without a row record. */
+function rowBands(c: ExtraContext, s: ExtraSink, kind: 'speklagen' | 'string-courses' | 'floor-cornices', hex: string): boolean {
+  if (!c.rowDress) return false;
+  const holes = rowBandHoles(c), l = c.layout, o = openingsOf(c), top = c.top - (c.rowDress.cornice ? 0.95 : 0.3);
+  if (kind === 'speklagen') {
+    const z0 = storeyZ(c, 0) + 0.25, n = Math.floor((top - z0) / ROW_BANDS.spekPitch);
+    for (let i = 0; i < n; i++) { const a = z0 + i * ROW_BANDS.spekPitch; rowBand(c, s, holes, a, a + ROW_BANDS.spek, ROW_BANDS.spekOut, CREAM); }
+    return true;
+  }
+  for (let k = 0; k < Math.min(6, l.storeys); k++) {
+    const z = kind === 'floor-cornices' ? storeyZ(c, k) - 0.06 : storeyZ(c, k) + o.upper.sill * l.storeyM - ROW_BANDS.course - 0.02;
+    if (z + ROW_BANDS.course > top) continue;
+    rowBand(c, s, kind === 'floor-cornices' ? [] : holes, z, z + ROW_BANDS.course, ROW_BANDS.courseOut, hex);
+  }
+  return true;
+}
+
 const BALCONY = { depth: 0.55, slab: 0.16, rail: 0.1, height: 0.95, post: 0.07, pitch: 0.16, side: 0.3 } as const;
 const PORCH = { pier: 0.22, out: 0.32, beam: 0.24, rise: 0.55 } as const;
 
@@ -306,11 +359,18 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       const za = z, zb = Math.min(z1, z + RUSTIC.course - RUSTIC.joint);
       const cut = holes.filter(h => h[2] < zb && h[3] > za).sort((a, b) => a[0] - b[0]);
       let x = 0;
+      const course = Math.round((z - z0) / RUSTIC.course), shift = course % 2 ? RUSTIC.block / 2 : 0;
       for (const h of [...cut, [c.f.len, c.f.len, 0, 0] as const]) {
-        if (h[0] - x > 0.1) {
-          // The sunk joint behind each course, then the stone proud of it.
-          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out * 0.4, za, Math.min(z1, za + RUSTIC.course), RUSTIC.jointHex);
-          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out, za, zb, RUSTIC.stone);
+        const xe = Math.min(c.f.len, h[0]);
+        if (xe - x > 0.1) {
+          // The dark sunk joint behind the course, then stone blocks proud of it, the vertical joints staggered per course.
+          s.strip(c.f, x, xe, RUSTIC.out * 0.3, za, Math.min(z1, za + RUSTIC.course), RUSTIC.jointHex);
+          let a = x;
+          while (xe - a > 0.1) {
+            const next = Math.floor((a - shift) / RUSTIC.block + 1) * RUSTIC.block + shift, b = xe - next < 0.25 ? xe : Math.min(xe, next);
+            s.strip(c.f, a, b - (b < xe ? RUSTIC.joint : 0), RUSTIC.out, za, zb, RUSTIC.stone);
+            a = b;
+          }
         }
         x = Math.max(x, h[1]);
       }
@@ -331,7 +391,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
   } },
   { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
     // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.
-    const d = doorSpan(c);
+    const d = stoopDoor(c) ?? doorSpan(c);
     if (!d || !c.groundLevel) return;
     const l = d.x - d.hw - PORCH.pier, r = d.x + d.hw + PORCH.pier, zt = Math.min(c.top - 0.6, d.z1 + 0.12);
     for (const x of [l, r - PORCH.pier]) s.box(c.f, x, x + PORCH.pier, 0, PORCH.out, d.z0, zt, WHITE);
@@ -339,6 +399,27 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const zb = zt + PORCH.beam, apex = zb + PORCH.rise;
     s.wallQuad(c.f, [[l - 0.06, zb], [r + 0.06, zb], [d.x + 0.001, apex], [d.x, apex]], PORCH.out + 0.02, WHITE);
     s.wallQuad(c.f, [[l + 0.12, zb + 0.06], [r - 0.12, zb + 0.06], [d.x + 0.001, apex - 0.14], [d.x, apex - 0.14]], PORCH.out + 0.035, STONE);
+  } },
+  { id: 'row-stoop', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'stoop', build: (c, s) => {
+    // A stated stoop: the street door at the bel-etage (its window's place at the stated end), a flight of steps
+    // straight out to the pavement between two stone cheek walls, a landing at the door.
+    const d = stoopDoor(c);
+    if (!d) return;
+    const h = d.z0 - c.base;
+    if (h < 0.3) return;
+    const n = Math.max(2, Math.ceil(h / STOOP.rise)), rise = h / n, x0 = d.x - d.hw - 0.1, x1 = d.x + d.hw + 0.1;
+    // The door leaf and its white frame, over the bel-etage window's glass.
+    s.strip(c.f, d.x - d.hw, d.x + d.hw, 0.03, d.z0, d.z1, STOOP.door);
+    s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
+    s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
+    s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
+    for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * STOOP.tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
+    const run = STOOP.landing + (n - 1) * STOOP.tread;
+    // Cheek walls: low beside the flight, a parapet's height beside the landing.
+    for (const [a0, a1] of [[x0 - STOOP.cheek, x0], [x1, x1 + STOOP.cheek]] as const) {
+      s.box(c.f, a0, a1, 0, run + STOOP.side, c.base, c.base + Math.max(0.5, h * 0.5) + 0.25, STOOP.hex);
+      s.box(c.f, a0, a1, 0, STOOP.landing + STOOP.side, c.base, d.z0 + STOOP.rail, STOOP.hex);
+    }
   } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
@@ -543,6 +624,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'floor-cornices', styles: CANAL, p: { canal: 0.3, c19: 0.2 }, wide: true, build: (c, s, r) => {
     // A white band course at every floor line.
     const hex = r < 0.7 ? WHITE : STONE;
+    if (rowBands(c, s, 'floor-cornices', hex)) return;
     // A stated band (c.bandM, houseSpec/routeAFields.ts) is centred on the floor line at its height.
     for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k); s.strip(c.f, 0, c.f.len, 0.08, c.bandM ? z - c.bandM / 2 : z - 0.03, c.bandM ? z + c.bandM / 2 : z + 0.04, hex); }
   } },
@@ -551,6 +633,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // between one row's heads and the next row's sills (and over the ground row), full width so no strip crosses glass. One
     // floor-line band read as nothing at row distance (Weteringschans 171218). Course height and projection are the block
     // faces' stripe (blockBuilding/dressings.ts DRESS.stripe out; SPEKLAAG_M); forced only (p 0).
+    if (rowBands(c, s, 'speklagen', CREAM)) return;
     const o = openingsOf(c), l = c.layout, n = Math.min(6, l.storeys);
     const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * l.storeyM]];
     for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * l.storeyM, storeyZ(c, k + 1) + o.upper.sill * l.storeyM]);
@@ -564,6 +647,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'string-courses', styles: CANAL, p: { c19: 0.45, canal: 0.1 }, wide: true, build: (c, s) => {
     // 19th century: a thin proud stone ledge running through the sills of each storey (the bay
     // drawing paints the flat band; this only adds its drip edge).
+    if (rowBands(c, s, 'string-courses', CREAM)) return;
     const o = openingsOf(c);
     for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, c.bandM ? z - 0.04 - c.bandM : z - 0.1, z - 0.04, CREAM); }
   } },

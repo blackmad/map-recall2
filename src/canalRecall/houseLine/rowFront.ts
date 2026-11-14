@@ -96,6 +96,8 @@ export interface RowSeriesDraw {
   /** The series' one window look (threeBuildingFeatures bayLookFor): window axes per house front, the series' year and
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
   look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean };
+  /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
+  stoop?: { side: 'left' | 'right' | 'centre' };
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -274,8 +276,9 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 }
 
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[] } {
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(series.extras?.length ? { extras: series.extras } : {}) };
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop'] } {
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : [])];
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -428,7 +431,7 @@ export function rowFrontStepsOn(search?: string): boolean {
 /** The row mansard's rise when the series states none: low, so the roof storey barely shows over the cornice (the
  *  Kinkerstraat photos; blind review 2026-11-14 read 3.0 m and 3DBAG's per-pand rise as too tall and saw-toothed). One
  *  rise per series: 3DBAG's per-pand roof is not read (98 stood above its neighbours on it). */
-export const MANSARD_RISE = { period: 2.2 } as const;
+export const MANSARD_RISE = { period: 1.8 } as const;
 export function mansardRise(stated: number | undefined): number {
   return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }

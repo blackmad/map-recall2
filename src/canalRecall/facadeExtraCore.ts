@@ -59,6 +59,8 @@ export type RowDressContext = {
   cornice?: string;
   windows?: Array<{ x0: number; x1: number; z0: number; z1: number; storey: number } & RowHeadKind>;
   heads?: Array<{ x0: number; x1: number; storeys?: number[] } & RowHeadKind>;
+  /** A stoop up to a bel-etage street door over a souterrain, the door at this end of the wall as laid out (x grows). */
+  stoop?: { end: 'start' | 'end' | 'centre' };
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 

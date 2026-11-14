@@ -141,12 +141,13 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 }
 
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[] } | null {
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: 'left' | 'right' | 'centre' } } | null {
   if (!v || typeof v !== 'object') return null;
-  const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown };
+  const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown } };
+  const side = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}) };
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side } } : {}) };
   return Object.keys(out).length ? out : null;
 }
 

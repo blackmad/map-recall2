@@ -19,6 +19,13 @@ import { ROW_FRONT_EXTRAS, type RowDormerDraw, type RowFrontRecord, type RowHead
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows']);
 
+/** A stated stoop (ground basement `stoop` / `stoop-and-windows`) and the street door's side; none stated: none drawn. */
+function stoopOf(fronts: readonly RowFront[]): { stoop: { side: 'left' | 'right' | 'centre' } } | null {
+  const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows');
+  if (!f) return null;
+  const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
+  return side ? { stoop: { side } } : null;
+}
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
 /** One pand's series draw from its fronts (street order) and their designs. */
@@ -51,6 +58,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
+    ...(stoopOf(fronts) ?? {}),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
   };
