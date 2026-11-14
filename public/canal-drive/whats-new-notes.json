@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-14",
+      "title": "No more empty blocks while you drag the map",
+      "text": "Dragging the map used to leave whole neighbourhoods as bare ground for seconds: each 1.5 km tile of the city was rebuilt from scratch every time a new piece of it arrived. The city now builds one 1 km cell at a time, so blocks appear as you pan and the near ground fills in about three times faster. Desktop for now; ?coarseSplit=0 brings back the old way.",
+      "where": [
+        4.8836,
+        52.3743
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-14-coarse-split-pan.jpg",
+          "alt": "Six seconds into a drag over the Jordaan: before, bare ground; after, the blocks are drawn",
+          "caption": "6 s into the same drag, before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Theater Bellevue's drum in sandy yellow",
       "text": "Theater Bellevue's round corner on the Leidsekade is drawn by the DeLaMar model, which already had the tile base, the red poster cases and the oculus. A second Bellevue model was built today and compared with it against the panoramas; DeLaMar's was closer, so it stays and the other is retired. The drum's brick now has the sandy yellow of the photo instead of a pale cream.",
       "where": [

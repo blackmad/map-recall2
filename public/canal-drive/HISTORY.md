@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Coarse shells per world cell (2026-11-14)
+
+Feedback 748b1a8f (bare blocks while panning). Reproduced on production only with a drag (`scripts/pan-fill.mjs`; a single jump filled in 0.2–2.2 s; the note's pan was 1.29 km, not 3.9). Network was not it (all CDN hits, ~20 ms). In storybook (no baked tier) the runtime coarse shell was one chunk per z14 tile; each world-cell top-up changed the tile's list, so the whole tile rebuilt (0.4–2.1 s) and the next top-up made it stale before it landed. `coarseSplit.ts` keys coarse shells `coarse:x/y~i_j` (tile ∩ world cell) so a top-up builds only the new cell (`?coarseSplit`, desktop on, touch off). Local A/B at production latency: bottom-of-screen bare-seconds during the drag 1.7–3.2 → 0.6–1.0, settle after the drag 1.6–5.8 s → 0.9–1.1 s; 0 stale builds; parked triangles 243k → 224k. Next levers: world-cell reads pinned to one worker queue behind coarse builds; own-ground workers saturated for the whole drag; `?asset=` models could be immutable.
+
+
 ## View priority while detached (2026-11-14)
 
 Feedback 748b1a8f asked whether on-screen loads come first. They did not: with the camera detached the complete city planned from the view box, but chunk builds, world cells and baked coarse ranked from the rider, and running work was cancelled only once unwanted. `engine/viewPriority.ts` casts a 32×20 screen grid onto the ground and ranks boxes by screen share (off-screen by distance); chunk builds, world cells (`CellQueue.rerank`), complete-city tiles and baked coarse follow it while detached (`?viewPriority`, default on only while detached; `=all` for A/B). Rider z14 tiles within 300 m are evicted last. Measured (Chrome Metal, dpr 2, 150 ms / 30 Mbps, local server; `scripts/detached-load.mjs`): no fill-time change beyond noise; queues stayed 3–4 jobs and fill was set by fetch latency and 400–650 ms z14 coarse builds. About 40 % of drag build time goes to chunks off screen at pan end.
