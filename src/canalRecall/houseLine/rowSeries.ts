@@ -43,6 +43,20 @@ function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {
   if (uses.every(u => u === 'dwelling' || u === 'door-only')) return { shop: false };
   return {};
 }
+/** Named ground colours a reading may state, as drawn. */
+export const GROUND_COLOURS: Readonly<Record<string, string>> = { white: '#efece4', cream: '#e4d9bf', black: '#1f1d1b', dark: '#2c2824', grey: '#6b6b68', red: '#9b2a24', green: '#3f6b4c', blue: '#2f4a6b', brown: '#4a3426' };
+/** The ground colour the record states (`ground.colour`, a hex or a name in GROUND_COLOURS); `shopPaint` is not read:
+ *  the integrator routes reviewed colours through `ground.colour` (Kinkerstraat 106-108's shopPaint said white, the
+ *  photo shows a dark front). */
+function groundColourOf(fronts: readonly RowFront[]): { groundHex?: string } {
+  for (const f of fronts) {
+    const c = (f.ground as { colour?: unknown }).colour;
+    if (typeof c !== 'string') continue;
+    const hex = /^#[0-9a-f]{6}$/i.test(c) ? c.toLowerCase() : GROUND_COLOURS[c.toLowerCase()];
+    if (hex) return { groundHex: hex };
+  }
+  return {};
+}
 /** The stated balcony (RowDesign.balcony: storeys over D's ground, 1 = first above it), on the renderer's rows. */
 function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: NonNullable<RowSeriesDraw['balcony']> } {
   const b = designs.find(d => d.balcony?.value)?.balcony?.value;
@@ -92,6 +106,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(stoopOf(fronts) ?? {}),
     ...doorOf(fronts),
     ...shopOf(fronts),
+    ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value },
@@ -149,9 +164,11 @@ export function mansardJoins(row: RowRecord, pandId: string): { left?: true; rig
   };
   const near = (a: number | null, b: number | null) => a !== null && b !== null && Math.abs(a - b) <= ROW_LINE_STEP_M + 1e-9;
   const m = row.members[i], left = row.members[i - 1], right = row.members[i + 1];
+  // A row end (no member beyond it) has no evidence of a hip: the mansard runs on to a plain end, closed by a plate
+  // (Kinkerstraat 110's left end, review 4: no photo, so no hip).
   const out = {
-    ...(left && near(edge(m, 'first'), edge(left, 'last')) ? { left: true as const } : {}),
-    ...(right && near(edge(m, 'last'), edge(right, 'first')) ? { right: true as const } : {}),
+    ...(!left || near(edge(m, 'first'), edge(left, 'last')) ? { left: true as const } : {}),
+    ...(!right || near(edge(m, 'last'), edge(right, 'first')) ? { right: true as const } : {}),
   };
   return out.left || out.right ? out : null;
 }

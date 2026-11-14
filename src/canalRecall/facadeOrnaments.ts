@@ -259,7 +259,7 @@ function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
 
 /** A window head drawn from the head grammar (houseLine/headGrammar.ts): voussoirs, keys, springers, tympana and
  *  jack-block crowns as flat wall pieces at the opening's scale; the glass follows a segmental or round arch. */
-const ARCH_GLASS = '#3d4955';
+const ARCH_GLASS = '#3d4955', TYMPANUM_STONE = '#e9e0cc';
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
@@ -269,8 +269,9 @@ function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
 function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar): void {
   const z = headLine(c, w, headRise(g, w.x1 - w.x0));
   if (z === null) return;
-  const hex = { white: WHITE, brick: shadeHex(c.wallHex, 0.78), stone: STONE, glass: ARCH_GLASS } as const;
-  for (const p of headPieces(g, w.x0, w.x1, z)) s.wallQuad(c.f, p.pts, p.out, hex[p.tone]);
+  // The tympanum fill is a pale stone that reads against the brick at row scale (Kinkerstraat 90 read "flat heads").
+  const hex = { white: WHITE, brick: shadeHex(c.wallHex, 0.72), stone: TYMPANUM_STONE, glass: ARCH_GLASS } as const;
+  for (const p of headPieces(g, w.x0, w.x1, z, w.z0)) s.wallQuad(c.f, p.pts, p.out, hex[p.tone]);
 }
 
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */

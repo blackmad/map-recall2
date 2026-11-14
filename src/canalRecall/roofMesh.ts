@@ -552,7 +552,10 @@ function gableSlab(s: RoofSink, prof: readonly Vec2[], e: number, L: number, top
 
 type DormerSpec = { axis: 'u' | 'v'; side: number; c: number; pf: number; dw: number; hd: number; surf: (a: number) => number; band?: boolean;
   /** House rows: `pediment` a white raking pediment with a bed course over the face, `gabled` the stock cap, `plain` a flat top. */
-  kind?: RowDormerKind; hoist?: boolean };
+  kind?: RowDormerKind; hoist?: boolean;
+  /** House rows: a dormer the record states always stands. On a roof too low to take its back (Weteringschans' 1.3 m
+   *  mansard), it stands on the front slope and rises above the roof, its back closed by its own wall (a dakkapel). */
+  standing?: boolean };
 
 /**
  * One dormer standing on a roof face: window face, cheeks (white with accents)
@@ -571,11 +574,19 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
     for (let a = d.pf - 0.2; a >= 0; a -= 0.05) if (d.surf(a) >= need) { pb = a; break; }
     if (pb >= 0) break;
   }
+  let back: number | null = null;
+  if (pb < 0 && d.standing) { hd = d.hd; pb = Math.max(0, d.pf - 1.0); back = d.surf(pb); }
   if (pb < 0) return false;
   const zt = zb + hd, b0 = d.c - d.dw / 2, b1 = d.c + d.dw / 2, accents = !!plan.accents, trim = plan.trimHex ?? TRIM_WHITE;
   const rep = d.band ? Math.max(1, Math.round(d.dw / 1.5)) : 1;
   s.quad(P(d.pf, b0, zb), P(d.pf, b1, zb), P(d.pf, b1, zt), P(d.pf, b0, zt), [0, 0], [rep, 0], [rep, 1], [0, 1], 'dormerFace', n);
   for (const [b, sg] of [[b0, -1], [b1, 1]] as const) s.quad(P(d.pf, b, zb), P(pb, b, zb), P(pb, b, zt), P(d.pf, b, zt), [0, 0], [1, 0], [1, 1], [0, 1], accents ? 'trim' : 'dormerSide', tan(sg), accents ? trim : undefined);
+  if (back !== null) {
+    // The standing dormer's own back wall, from the roof it stands on up to its cap.
+    const nb: V3 = [-n[0], -n[1], 0], z0 = Math.min(back, zt);
+    s.quad(P(pb, b1, z0), P(pb, b0, z0), P(pb, b0, zt), P(pb, b1, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', nb);
+    if (!flat) s.tri(P(pb, b1, zt), P(pb, b0, zt), P(pb, d.c, zt + ph), [0, 0], [0, 0], [0, 0], 'dormerSide', nb);
+  }
   if (d.kind) rowDormerDress(s, d, P, n, b0, b1, zb, zt, ph, trim);
   if (flat) {
     s.quad(P(d.pf, b0, zt), P(d.pf, b1, zt), P(pb, b1, zt), P(pb, b0, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', [0, 0, 1]);
@@ -750,7 +761,7 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   const dw = Math.max(0.7, Math.min(1.0, W / ds.length - 1.1));
   for (const e of ends) for (const dm of ds) {
     const ornate = dm.kind === 'ornate-pinnacle';
-    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist }, plan);
+    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true }, plan);
   }
 }
 

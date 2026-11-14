@@ -11,7 +11,7 @@ const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.t
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
 const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE } = await import('./rowFront.ts');
-const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE } = await import('../roofMesh.ts');
+const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 
 const defs = loadRowDefs();
@@ -113,10 +113,9 @@ test('mansard rise: stated wins, else one low series default (no per-pand 3DBAG 
   assert.equal(MANSARD_RISE.period, 2.2);
 });
 
-test('the Kinkerstraat mansards join across party walls at one line; only the row end (110) keeps a hip', () => {
+test('the Kinkerstraat mansards join across party walls at one line; the row end (110) runs on to a plain end, no hip', () => {
   const j = (id: string) => rec(K, id).series!.roofStorey!.joins;
-  assert.equal(j('0363100012165799')?.left, undefined, '110 is the row end');
-  assert.equal(j('0363100012165799')?.right, true);
+  assert.deepEqual(j('0363100012165799'), { left: true, right: true }, '110 is the row end: no hip without evidence');
   for (const id of ['0363100012236027', '0363100012159635', '0363100012152925', '0363100012160809', '0363100012158180', '0363100012156028', '0363100012236213'])
     assert.deepEqual(j(id), { left: true, right: true }, id);
   assert.deepEqual(j('0363100012155794'), { left: true, right: true }, '90 runs on into 86-88 at the same line (3DBAG 16.84 / 16.62 m)');
@@ -178,4 +177,33 @@ test('Weteringschans round 4: the record\'s door, shop, stoop, balcony and measu
   // The low mansard measured on the photo, for this row only; Kinkerstraat keeps the period rise.
   assert.equal(by('0363100012169016').roofStorey?.riseM, 1.3);
   assert.equal(K.find(r => r.series?.roofStorey?.kind === 'mansard')!.series!.roofStorey!.riseM, undefined);
+});
+
+test('a stated dormer always draws, whatever the rise: on a low mansard it stands on the front slope and rises above it', () => {
+  // Weteringschans review 4: the 1.3 m mansard culled both dormers (169016's hoist dormer, 171218's pediment).
+  for (const id of ['0363100012169016', '0363100012171218']) {
+    const r = rec(W, id);
+    for (const riseM of [0.8, 1.3, 2.2]) {
+      const rr = { ...r, series: { ...r.series!, roofStorey: { ...r.series!.roofStorey!, riseM } } };
+      const out = withFlag([rr], () => withRowFront(feature(r.pandId, 17.1, { roofShape: 'gable', roofPlanned: true, specRecipe: { storeys: 4 } })));
+      const plan = roofPlanForFeature(out as never)!;
+      assert.ok(plan.rowDormers?.length, `${id} @${riseM}: dormers planned`);
+      const tris = plan.pieces!.flatMap(p => roofTriangles(p.rect, p.plan, Number(out.properties.roofEavesHeightM), { bayM: 2, storeyM: 3, cellM: 1 }));
+      const faces = tris.filter(t => t.part === 'dormerFace');
+      assert.ok(faces.length >= 2, `${id} @${riseM}: a dormer face drawn (${faces.length})`);
+      const top = Math.max(...tris.filter(t => t.part === 'dormerFace').flatMap(t => t.p.map(q => q[2])));
+      if (riseM < 1.5) assert.ok(top > Math.max(...tris.filter(t => t.part === 'slope').flatMap(t => t.p.map(q => q[2]))) - 0.6, `${id} @${riseM}: the dormer rises to the roof top or above`);
+    }
+  }
+});
+
+test('series members draw identical storey lines: one ground height and count from the series line, whatever the front width', () => {
+  // Kinkerstraat review 4: 102 (4.26 m front) drew its ground 3.59 m, 104 (4.83 m) 3.78 m, so 102's first storey sat low.
+  const lines = ['0363100012152925', '0363100012159635', '0363100012160809', '0363100012165799'].map(id => {
+    const out = withFlag(K, () => withRowFront(feature(id, 17.1, { roofShape: 'gable', roofPlanned: true, specRecipe: { storeys: 4 } })));
+    const sr = out.properties.specRecipe as { groundM?: number; storeys?: number; eavesM?: number };
+    return [sr.groundM, sr.storeys, out.properties.roofEavesHeightM];
+  });
+  assert.ok(lines[0][0] !== undefined && lines[0][0] > 3);
+  for (const l of lines) assert.deepEqual(l, lines[0]);
 });

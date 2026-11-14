@@ -27,18 +27,39 @@ test('jack-blocks: a flat white lintel wider than the opening, a block over each
 
 test('voussoirs: an odd count of blocks at the opening scale, alternating, the key on the axis', () => {
   const p = headPieces({ shape: 'flat', voussoirs: { alternate: 'white-brick', depth: 0.22 }, keystone: 'raised' }, 0, 1.1, 10);
-  assert.equal(p.length % 2, 1);
-  const w = 1.1 / p.length;
+  const vs = p.filter(x => x.out !== HEAD.keyOut), key = p.filter(x => x.out === HEAD.keyOut);
+  assert.equal(vs.length % 2, 1);
+  const w = 1.1 / vs.length;
   assert.ok(w >= 0.12 && w <= 0.2, `block ${w}`);
-  assert.ok(p.some(x => x.tone === 'white') && p.some(x => x.tone === 'brick'));
-  assert.equal(p[(p.length - 1) / 2].out, HEAD.keyOut);
+  assert.ok(vs.some(x => x.tone === 'white') && vs.some(x => x.tone === 'brick'));
+  assert.equal(key.length, 1);
+});
+
+test('row scale: keys at least 0.26 m wide and 0.36 m tall in white; a 1.1 m segmental arch rises at least 0.2 m', () => {
+  for (const d of ['keystone', 'segmental-tympanum']) {
+    const g = headGrammarOf(d, d === 'keystone' ? undefined : 'segmental')!, key = headPieces(g, 0, 1.1, 5).filter(x => x.out === HEAD.keyOut);
+    assert.equal(key.length, 1, d);
+    const k = key[0].pts, wide = k[1][0] - k[0][0], tall = k[2][1] - k[1][1];
+    assert.ok(wide >= 0.26 - 1e-9 && tall >= 0.36 - 1e-9 && key[0].tone === 'white', `${d} key ${wide} x ${tall}`);
+  }
+  const g = headGrammarOf('segmental-tympanum', undefined)!, fill = headPieces(g, 0, 1.1, 5).filter(x => x.tone === 'stone');
+  assert.ok(Math.max(...fill.flatMap(x => x.pts.map(q => q[1]))) - 5 >= 0.2);
+});
+
+test('block surround: alternating long and short white quoins up both jambs, only with the sill known', () => {
+  const g = headGrammarOf('block-surround', undefined)!, p = headPieces(g, 0, 1.1, 10, 8.4);
+  const quoins = p.filter(x => x.out === HEAD.out && x.tone === 'white' && x.pts[1][1] <= 10 - 1e-9 + HEAD.quoinH && x.pts[0][1] < 10);
+  assert.ok(quoins.length >= 8);
+  const widths = new Set(quoins.map(x => +(x.pts[1][0] - x.pts[0][0]).toFixed(3)));
+  assert.deepEqual([...widths].sort(), [HEAD.quoinShort, HEAD.quoinLong].sort());
+  assert.equal(headPieces(g, 0, 1.1, 10).filter(x => x.pts[0][1] < 10 - HEAD.keyDown - 1e-9).length, 0);
 });
 
 test('segmental heads rise a sixth of the span; the glass or tympanum fills under the arch', () => {
   const g = headGrammarOf('segmental-tympanum', undefined)!, L = 1.2, p = headPieces(g, 0, L, 5);
   const fill = p.filter(x => x.tone === 'stone');
   assert.ok(fill.length >= 6);
-  assert.ok(Math.abs(Math.max(...fill.flatMap(x => x.pts.map(q => q[1]))) - (5 + L / 6)) < 0.01);
+  assert.ok(Math.abs(Math.max(...fill.flatMap(x => x.pts.map(q => q[1]))) - (5 + Math.max(L / 6, HEAD.minRise))) < 0.01);
   assert.ok(headRise(g, L) > L / 6);
   const glazed = headPieces({ ...g, tympanum: false }, 0, L, 5);
   assert.ok(glazed.some(x => x.tone === 'glass') && !glazed.some(x => x.tone === 'stone'));

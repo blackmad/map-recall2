@@ -22,6 +22,8 @@ export interface HeadGrammar {
   crown?: 'jack-blocks';
   /** A plain white lintel slab (no ring). */
   lintel?: boolean;
+  /** Block quoins round the whole opening: jambs of alternating long and short white blocks (Kinkerstraat 100). */
+  surround?: 'blocks';
 }
 
 export type HeadTone = 'white' | 'brick' | 'stone' | 'glass';
@@ -29,7 +31,10 @@ export type HeadTone = 'white' | 'brick' | 'stone' | 'glass';
 export interface HeadPiece { pts: [[number, number], [number, number], [number, number], [number, number]]; tone: HeadTone; out: number }
 
 /** Sizes (m). */
-export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, keyUp: 0.07, keyDown: 0.04, keyW: 1.25, out: 0.04, keyOut: 0.07,
+/** Row scale (Kinkerstraat review 4: at 40 px/m keystones read as plain hoods and segmental heads as flat): a key at
+ *  least 0.26 m wide and 0.36 m tall in full white, a segmental rise of at least 0.22 m. */
+export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, minRise: 0.22, keyUp: 0.07, keyDown: 0.04, keyW: 0.26, keyTopW: 0.32, keyH: 0.36, out: 0.04, keyOut: 0.07,
+  quoinLong: 0.3, quoinShort: 0.18, quoinH: 0.24, quoinGap: 0.04,
   springerW: 0.18, springerH: 0.2, lintel: 0.16, lintelOver: 0.12, jack: { end: 0.15, mid: 0.22, endW: 0.16, midW: 0.18 }, jackOut: 0.06, glassOut: 0.012, flatFan: 2.2 } as const;
 
 /**
@@ -49,6 +54,8 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
     // Arch ring (Weteringschans 171218 top storey): a white half-round ring with a keystone, the glass up into the arch.
     case 'arch-ring': return { shape: 'round', voussoirs: { alternate: 'white', depth: 0.15 }, keystone: 'raised', springers: true };
     case 'stone-lintel': case 'dentil-lintel': return { shape: 'flat', lintel: true };
+    // Block surround (Kinkerstraat 100): alternating white quoins up both jambs and a keyed flat head of white blocks.
+    case 'block-surround': return { shape: arch, voussoirs: { alternate: 'white', depth: 0.2 }, keystone: 'raised', surround: 'blocks' };
     case 'voussoirs': return { shape: arch === 'flat' ? 'segmental' : arch, voussoirs: { alternate: 'white-brick', depth: 0.22 }, keystone: 'raised', springers: true };
     default:
       // A stated arched window with a dressing the grammar does not name: a white ring of its shape.
@@ -59,12 +66,13 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
 /** How far a head rises over the opening's head line (its crown, keystone or ring top). */
 export function headRise(g: HeadGrammar, span: number): number {
   const ring = g.voussoirs?.depth ?? 0;
-  const arch = g.shape === 'round' ? span / 2 : g.shape === 'segmental' ? span * HEAD.rise : 0;
-  const key = g.keystone === 'raised' || g.keystone === 'carved' ? HEAD.keyUp : 0;
+  const arch = g.shape === 'round' ? span / 2 : g.shape === 'segmental' ? segRise(span) : 0;
+  const key = g.keystone ? Math.max(HEAD.keyH - HEAD.keyDown - ring, g.keystone === 'plain' ? 0 : HEAD.keyUp) : 0;
   const crown = g.crown === 'jack-blocks' ? HEAD.jack.mid : 0, base = g.lintel && !g.voussoirs ? HEAD.lintel : arch + ring;
   return Math.max(g.lintel ? HEAD.lintel : 0, arch + ring + key, base + crown);
 }
 
+const segRise = (span: number) => Math.min(span / 2 * 0.8, Math.max(span * HEAD.rise, HEAD.minRise));
 const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>
   p === 'white' ? 'white' : p === 'brick' ? 'brick' : (Math.abs(i - (n - 1) / 2) % 2 < 0.5 ? 'white' : 'brick');
 
@@ -72,7 +80,7 @@ const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>
  * The pieces of head `g` over an opening [x0, x1] whose flat head is at z. Voussoirs fan from the arch centre (flat
  * arches from a centre HEAD.flatFan spans below), an odd count so a block sits on the axis; the axis block is the key.
  */
-export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number): HeadPiece[] {
+export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number, sill?: number): HeadPiece[] {
   const out: HeadPiece[] = [], L = x1 - x0, m = (x0 + x1) / 2;
   if (L <= 0.05) return out;
   if (g.lintel && !g.voussoirs) {
@@ -95,7 +103,7 @@ export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number): H
     at = t => { const x = x0 + L * t, dx = x - m, len = Math.hypot(dx, H); return { p: [x, z], n: [dx / len, H / len] }; };
     arcLen = L;
   } else {
-    const rise = g.shape === 'round' ? L / 2 : L * HEAD.rise, R = (L * L / 4 + rise * rise) / (2 * rise), cz = z + rise - R;
+    const rise = g.shape === 'round' ? L / 2 : segRise(L), R = (L * L / 4 + rise * rise) / (2 * rise), cz = z + rise - R;
     const half = Math.asin(Math.min(1, L / 2 / R));
     at = t => { const a = -half + 2 * half * t, n: [number, number] = [Math.sin(a), Math.cos(a)]; return { p: [m + R * n[0], cz + R * n[1]], n }; };
     arcLen = 2 * half * R;
@@ -109,14 +117,25 @@ export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number): H
   if (v) {
     let n = v.count ?? Math.max(HEAD.minBlocks, Math.round(arcLen / HEAD.block));
     if (n % 2 === 0) n++;
-    const key = g.keystone ? (n - 1) / 2 : -1;
     for (let i = 0; i < n; i++) {
-      const a = at(i / n), b = at((i + 1) / n), isKey = i === key, up = isKey && g.keystone !== 'plain' ? HEAD.keyUp : 0, down = isKey ? HEAD.keyDown : 0;
-      const d = v.depth + up;
+      const a = at(i / n), b = at((i + 1) / n), d = v.depth;
       // Flat arches keep a level extrados: the joint runs up to z + depth whatever its lean.
       const ext = (q: { p: [number, number]; n: [number, number] }, dd: number): [number, number] => g.shape === 'flat' ? [q.p[0] + q.n[0] * dd / q.n[1], q.p[1] + dd] : [q.p[0] + q.n[0] * dd, q.p[1] + q.n[1] * dd];
-      const ia: [number, number] = [a.p[0] - a.n[0] * down, a.p[1] - a.n[1] * down], ib: [number, number] = [b.p[0] - b.n[0] * down, b.p[1] - b.n[1] * down];
-      out.push({ pts: [ia, ib, ext(b, d), ext(a, d)], tone: isKey ? 'white' : tone(v.alternate, i, n), out: isKey ? HEAD.keyOut : HEAD.out + (i % 2) * 0.004 });
+      out.push({ pts: [a.p, b.p, ext(b, d), ext(a, d)], tone: tone(v.alternate, i, n), out: HEAD.out + (i % 2) * 0.004 });
+    }
+  }
+  if (g.keystone) {
+    // The key on the axis, over the crown of the arch: a white wedge at row scale, proud of the ring.
+    const apex = at(0.5).p, h = Math.max(HEAD.keyH, (v?.depth ?? 0) + HEAD.keyDown + (g.keystone === 'plain' ? 0 : HEAD.keyUp));
+    const zb = apex[1] - HEAD.keyDown, zt = zb + h;
+    out.push({ pts: [[m - HEAD.keyW / 2, zb], [m + HEAD.keyW / 2, zb], [m + HEAD.keyTopW / 2, zt], [m - HEAD.keyTopW / 2, zt]], tone: 'white', out: HEAD.keyOut });
+  }
+  if (g.surround === 'blocks' && sill !== undefined && z - sill > 0.4) {
+    // Quoins up both jambs from the sill to the springing: long and short white blocks in turn, set into the wall.
+    const step = HEAD.quoinH + HEAD.quoinGap;
+    for (const [edge, sg] of [[x0, -1], [x1, 1]] as const) for (let k = 0, zz = sill; zz + HEAD.quoinH <= z + 1e-9; k++, zz += step) {
+      const w = k % 2 ? HEAD.quoinShort : HEAD.quoinLong, xa = sg < 0 ? edge - w + 0.04 : edge - 0.04, xb = xa + w;
+      out.push({ pts: [[xa, zz], [xb, zz], [xb, zz + HEAD.quoinH], [xa, zz + HEAD.quoinH]], tone: 'white', out: HEAD.out });
     }
   }
   if (g.springers) for (const [p, s] of [[at(0), -1], [at(1), 1]] as const) {
