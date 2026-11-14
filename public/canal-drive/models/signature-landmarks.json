@@ -96688,6 +96688,242 @@
       "triangles": 3517,
       "bytes": 52996,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pont-13": {
+      "id": "pont-13",
+      "name": "Pont 13",
+      "modelUrl": "./models/pont-13.glb",
+      "suppressOsmIds": [
+        "w274005173"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88299851,
+          52.39756295
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 35.1,
+        "widthMetres": 31.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.88299851,
+          52.39756295
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of BAG ligplaats 0363020012061235 (Haparandadam 50, RD, PDOK BAG WFS, CC0); no 3DBAG shell (a ship): hull 40 x 9.6 m on the ligplaats axis from the PDOK 2025 orthophoto (CC BY 4.0), heights from the 2021 water-side Gemeente Amsterdam panorama (CC BY 4.0), y = 0 at the water line (scripts/landmarks/pont-13-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 12.6,
+      "materialOverrides": {
+        "blue": "#1f2a3a",
+        "concrete": "#6f7276",
+        "pink": "#eceae4",
+        "frame": "#d9dcdc",
+        "glass": "#3d4a52",
+        "slate": "#30373d",
+        "copper": "#2a2d30",
+        "ochre": "#c9b48e",
+        "bronze": "#6b5643",
+        "sandstone": "#f4f4f0"
+      },
+      "attribution": {
+        "title": "Pont 13 (IJ ferry, 1927), Haparandadam",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/way/274005173",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry drawn by hand on the BAG ligplaats (CC0): the navy hull with its row of windows, the white bulwark with 'PONT 13 / ETEN & DRINKEN', the barrel-roofed saloon, the wheelhouse and mast, the 'ferry' board, the end tent and canopy; read for proportion from Gemeente Amsterdam panoramas and the PDOK 2025 orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.88325515,
+              52.39763848
+            ],
+            [
+              4.88316593,
+              52.39770389
+            ],
+            [
+              4.88315176,
+              52.39770064
+            ],
+            [
+              4.88313778,
+              52.39769699
+            ],
+            [
+              4.88312408,
+              52.39769298
+            ],
+            [
+              4.88311062,
+              52.3976886
+            ],
+            [
+              4.88309753,
+              52.39768385
+            ],
+            [
+              4.88308479,
+              52.39767877
+            ],
+            [
+              4.88307245,
+              52.39767337
+            ],
+            [
+              4.88306054,
+              52.39766765
+            ],
+            [
+              4.88281901,
+              52.39754436
+            ],
+            [
+              4.88280768,
+              52.39753821
+            ],
+            [
+              4.88279678,
+              52.39753175
+            ],
+            [
+              4.88278634,
+              52.397525
+            ],
+            [
+              4.88277637,
+              52.39751796
+            ],
+            [
+              4.8827669,
+              52.39751066
+            ],
+            [
+              4.88275799,
+              52.39750312
+            ],
+            [
+              4.88274963,
+              52.39749537
+            ],
+            [
+              4.88274188,
+              52.39748742
+            ],
+            [
+              4.8828311,
+              52.39742201
+            ],
+            [
+              4.88284526,
+              52.39742526
+            ],
+            [
+              4.88285925,
+              52.3974289
+            ],
+            [
+              4.88287294,
+              52.39743291
+            ],
+            [
+              4.88288639,
+              52.3974373
+            ],
+            [
+              4.8828995,
+              52.39744204
+            ],
+            [
+              4.88291224,
+              52.39744712
+            ],
+            [
+              4.88292458,
+              52.39745253
+            ],
+            [
+              4.88293649,
+              52.39745824
+            ],
+            [
+              4.88317802,
+              52.39758154
+            ],
+            [
+              4.88318935,
+              52.39758768
+            ],
+            [
+              4.88320025,
+              52.39759414
+            ],
+            [
+              4.88321069,
+              52.3976009
+            ],
+            [
+              4.88322066,
+              52.39760794
+            ],
+            [
+              4.88323012,
+              52.39761524
+            ],
+            [
+              4.88323904,
+              52.39762277
+            ],
+            [
+              4.8832474,
+              52.39763053
+            ],
+            [
+              4.88325515,
+              52.39763848
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -17.70047378540039,
+          -2.3841858265427618e-8,
+          -15.360069274902344
+        ],
+        "max": [
+          17.445446014404297,
+          12.600000381469727,
+          15.66822624206543
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88299851,
+          52.39756295
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 35.14591979980469,
+        "heightMetres": 12.600000405311585,
+        "depthMetres": 31.028295516967773,
+        "depthCoverage": 0.9944966511848645
+      },
+      "triangles": 1880,
+      "bytes": 37060,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

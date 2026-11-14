@@ -1,0 +1,226 @@
+{
+ "schemaVersion": 1,
+ "id": "pont-13",
+ "pand": "ligplaats 0363020012061235",
+ "signature": [
+  "se-pont13-lettering",
+  "navy-hull-windows",
+  "barrel-saloon",
+  "wheelhouse-mast",
+  "nw-ferry-board"
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG ligplaats 0363020012061235 (Haparandadam 50)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap way 274005173 (building=boat, name \"Ferry\")",
+   "url": "https://www.openstreetmap.org/way/274005173",
+   "licence": "ODbL"
+  },
+  {
+   "name": "PDOK luchtfoto 2025 orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "tag": "w01-140",
+   "bearing": 140,
+   "lengthM": 40,
+   "centre": [
+    4.8830439,
+    52.3975299
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001972_pano_0000_001021",
+   "capturedAt": "2021-01-21",
+   "checked": true,
+   "note": "Water side (SE), seen from the IJ side pontoon.",
+   "items": [
+    {
+     "id": "se-pont13-lettering",
+     "kind": "lettering",
+     "where": "\"PONT 13\" and \"ETEN & DRINKEN\" in navy capitals on the white bulwark band",
+     "approxSizeM": [
+      11,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001021",
+     "how": "wallLetters() 0.8 / 0.7 m letters on the band at the measured positions (the 13 in a box is drawn as plain digits)"
+    },
+    {
+     "id": "navy-hull-windows",
+     "kind": "window-shape",
+     "where": "navy enclosed main deck with a row of wide two-light windows over a grey rubbing strake",
+     "approxSizeM": [
+      3.7,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001972_pano_0000_001021",
+     "how": "hull(): rounded-plan prisms, windows 3.66 x 0.96 at 4.8 m pitch with sills"
+    },
+    {
+     "id": "barrel-saloon",
+     "kind": "other",
+     "where": "white barrel-roofed saloon set back on the bulwark, skylight strips along it",
+     "approxSizeM": [
+      34,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001972_pano_0000_001021",
+     "how": "saloon(): extruded segmental arch; the skylight strips are not drawn"
+    },
+    {
+     "id": "wheelhouse-mast",
+     "kind": "other",
+     "where": "raised white box amidships with a dark glazed wheelhouse and overhanging roof, lattice mast with radar near the SW end, flag pole",
+     "approxSizeM": [
+      3.6,
+      2.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001972_pano_0000_001021",
+     "how": "topside(): boxes; the mast lattice is a single post with a yard"
+    },
+    {
+     "id": "se-flag-banner",
+     "kind": "sign",
+     "where": "flag with the Pont 13 logo on a pole on the pontoon",
+     "approxSizeM": [
+      1.2,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001972_pano_0000_001021",
+     "skip": {
+      "reason": "temporary",
+      "note": "a banner on the pontoon, not on the ship"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-320",
+   "bearing": 320,
+   "lengthM": 40,
+   "centre": [
+    4.8829531,
+    52.397596
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-28-34_01032",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "note": "Dam side (NW).",
+   "items": [
+    {
+     "id": "nw-ferry-board",
+     "kind": "sign",
+     "where": "white \"ferry\" board on the dam-side face of the raised box amidships (the venue name since the Pont 13 lettering)",
+     "approxSizeM": [
+      2.6,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_01032",
+     "how": "white slab with navy letters (the kit draws capitals only)"
+    },
+    {
+     "id": "nw-gangway",
+     "kind": "other",
+     "where": "white trussed gangway from the dam onto the deck",
+     "approxSizeM": [
+      6,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-09_07-28-34_01032",
+     "skip": {
+      "reason": "temporary",
+      "note": "a mooring gangway that belongs to the dam and is moved with the berth; it would reach 4.7 m outside the ship (far-outside gate)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-50",
+   "bearing": 50,
+   "lengthM": 9.6,
+   "centre": [
+    4.8832238,
+    52.3976786
+   ],
+   "evidence": "inferred",
+   "panoId": "",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "NE end, PDOK 2025 orthophoto.",
+   "items": [
+    {
+     "id": "ne-canopy",
+     "kind": "other",
+     "where": "brown canopy over the NE deck end",
+     "approxSizeM": [
+      2.2,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK 2025 orthoHR",
+     "how": "topside(): flat roof on four posts"
+    }
+   ]
+  },
+  {
+   "tag": "w04-230",
+   "bearing": 230,
+   "lengthM": 9.6,
+   "centre": [
+    4.8827732,
+    52.3974473
+   ],
+   "evidence": "inferred",
+   "panoId": "",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "SW end, PDOK 2025 orthophoto.",
+   "items": [
+    {
+     "id": "sw-tent",
+     "kind": "other",
+     "where": "beige ridge tent over the SW deck end",
+     "approxSizeM": [
+      2.6,
+      8.4
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK 2025 orthoHR",
+     "how": "topside(): extruded triangular tent"
+    },
+    {
+     "id": "end-conservatories",
+     "kind": "other",
+     "where": "glazed conservatory pavilions with arched glass roofs at the deck ends",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK 2025 orthoHR",
+     "how": "the SW tent and the NE canopy stand for the pavilions under them; their glass walls are not drawn"
+    }
+   ]
+  }
+ ]
+}
