@@ -88,7 +88,11 @@ export interface RowInput {
   members: MemberInput[];
   inputs: string[];
   solvedAt: string;
+  /** Reviewed statements (a reviewer read the photo; precedence over everything): `scripts/house-specs/rows/reviewed.json`. */
+  reviewed?: ReviewedStatement[];
 }
+/** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey; value: unknown; ref: string; at: string; note?: string }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -159,7 +163,32 @@ export function readHeads(a: DescriberAnswer): RowHeads | RowHeads[] | undefined
     const ring = (a.gaps ?? []).some(g => /arch[- ]ring|arched .*ring|ring[s]? .*keystone/i.test(g.what));
     return [{ shape: 'flat', dressing, storeys: other }, { shape: 'round', dressing: ring ? 'arch-ring' : 'none', storeys: round }];
   }
-  return { shape: (['flat', 'segmental', 'round', 'relieving'].includes(shape) ? shape : 'flat') as RowHeadShape, dressing };
+  // A gap that names the storey of the dressing ("a crown of small white blocks stepped over each first-storey window head")
+  // restricts it to that storey; the other storeys keep plain heads.
+  const on = dressingStoreys(a, dressing);
+  return { shape: (['flat', 'segmental', 'round', 'relieving'].includes(shape) ? shape : 'flat') as RowHeadShape, dressing, ...(on ? { storeys: on } : {}) };
+}
+const STOREY_WORD: Record<string, number> = { first: 1, second: 2, third: 3, fourth: 4 };
+const DRESSING_WORDS: Partial<Record<RowHeadDressing, RegExp>> = { 'jack-blocks': /blocks?/i, 'stone-lintel': /lintel/i, keystone: /keystone/i, 'dentil-lintel': /dentil|cogged/i };
+/** Storeys a gap names for a head dressing (1 = the first storey above the ground), else undefined. */
+export function dressingStoreys(a: DescriberAnswer, dressing: RowHeadDressing): number[] | undefined {
+  const w = DRESSING_WORDS[dressing];
+  if (!w) return undefined;
+  for (const g of a.gaps ?? []) {
+    if (!w.test(g.what) || !/head|lintel|over each/i.test(g.what)) continue;
+    const m = [...g.what.matchAll(/\b(first|second|third|fourth)[- ]storey/gi)].map(x => STOREY_WORD[x[1].toLowerCase()]);
+    if (m.length && !/top storey/i.test(g.what)) return [...new Set(m)];
+  }
+  return undefined;
+}
+/** The storeys a gap places a balcony on ("on the centre axis of the first storey", "in front of the centre first-storey window"). */
+export function balconyOf(a: DescriberAnswer): { storeys: number[]; axis: 'centre' | 'all'; what: string } | null {
+  for (const g of a.gaps ?? []) {
+    if (!/balcon/i.test(g.what)) continue;
+    const m = [...g.what.matchAll(/\b(first|second|third|fourth)[- ]storey/gi)].map(x => STOREY_WORD[x[1].toLowerCase()]);
+    if (m.length) return { storeys: [...new Set(m)], axis: /centre|center|middle/i.test(g.what) ? 'centre' : 'all', what: g.what };
+  }
+  return null;
 }
 /** A heads value as a list (a front may state one head kind per storey group). */
 export const headsList = (v: RowHeads | RowHeads[] | null | undefined): RowHeads[] => v == null ? [] : Array.isArray(v) ? v : [v];
@@ -213,7 +242,7 @@ function votes<T>(xs: T[]): Array<{ value: T; n: number }> {
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const r2 = (v: number) => Math.round(v * 100) / 100;
-const PERIOD: { [K in RowDesignKey]?: RowDesign[K]['value'] } = {
+const PERIOD: { [K in RowDesignKey]?: NonNullable<RowDesign[K]>['value'] } = {
   crown: 'cornice', cornice: 'simple', windows: 'tall-upper', whiteFrames: true, sills: true,
   heads: { shape: 'flat', dressing: 'none' },
 };
@@ -319,14 +348,16 @@ export function solveRow(input: RowInput): RowRecord {
       if (k === 'wall' ? compatible('wallFamily', read, drawnCmp) && (read as RowWall).material === (drawnCmp as RowWall).material : k === 'heads' ? sameHeads(read as RowHeads | RowHeads[], drawnCmp as RowHeads | RowHeads[]) : JSON.stringify(read) === JSON.stringify(drawnCmp)) continue;
       const cf = k === 'roofKind' ? 'roofStorey' : k === 'dormers' ? 'dormers' : compatField(k);
       const same = typeof read !== 'number' && compatible(cf, read, drawnCmp);
-      overruled.push({ front: e.front.id, field: k, read, drawn: drawnCmp, by: s.design[key].source,
-        why: same ? `compatible class (${classKey(cf, read)} ~ ${classKey(cf, drawnCmp)}): the series' word is drawn` : `series ${s.id} (${s.design[key].ref})` });
+      overruled.push({ front: e.front.id, field: k, read, drawn: drawnCmp, by: s.design[key]!.source,
+        why: same ? `compatible class (${classKey(cf, read)} ~ ${classKey(cf, drawnCmp)}): the series' word is drawn` : `series ${s.id} (${s.design[key]!.ref})` });
     }
     // Per-house reads drawn on the front: its own bands (as extras) and a hoist in its dormer.
     const ownBands = (e.read?.bands ?? []).filter(b => !s.design.extras.value.includes(b));
     const ownGaps = e.read && e.member.read ? gapExtras(e.member.read).filter(x => !s.design.extras.value.includes(x.id)) : [];
     if (ownBands.length || ownGaps.length) e.front.overrides.extras = { value: [...s.design.extras.value, ...ownBands, ...ownGaps.map(x => x.id)], source: 'single-read',
       ref: [ownBands.length ? `${e.member.pandId} reading: bands ${e.member.read?.bands}` : '', ...ownGaps.map(x => `${x.id} from the gap "${x.what}"`)].filter(Boolean).join('; ') };
+    const bal = e.read && e.member.read && e.front.overrides.extras?.value.includes('row-balcony') ? balconyOf(e.member.read) : null;
+    if (bal) e.front.overrides.balcony = { value: { storeys: bal.storeys, axis: bal.axis }, source: 'single-read', ref: `${e.member.pandId} gap "${bal.what}"` };
     const rsv = s.design.roofStorey.value;
     if (e.read?.dormers?.hoist && !rsv.hoist && rsv.dormersPerFront > 0)
       e.front.overrides.roofStorey = { value: { ...rsv, hoist: true }, source: 'single-read', ref: `${e.member.pandId} reading: ${e.read.dormers.from}` };
@@ -343,6 +374,19 @@ export function solveRow(input: RowInput): RowRecord {
     }
     const top = s.design.corniceTopM.value;
     e.front.topM = top === null ? null : r2(top - (e.front.groundOffsetM ?? 0));
+  }
+  // Reviewed statements: a series whose fronts all fall in the statement takes the value; otherwise each listed front does.
+  for (const st of input.reviewed ?? []) {
+    const fl = { value: st.value, source: 'reviewed' as const, ref: `${st.ref} (${st.at})${st.note ? `: ${st.note}` : ''}` };
+    for (const s of series) {
+      const fs = fronts.filter(f => f.seriesId === s.id), inside = fs.filter(f => st.fronts.includes(f.id));
+      if (!inside.length) continue;
+      const was = s.design[st.field] as RowField<unknown> | undefined;
+      if (inside.length === fs.length) (s.design as unknown as Record<string, RowField<unknown>>)[st.field] = fl;
+      else for (const f of inside) (f.overrides as Record<string, RowField<unknown>>)[st.field] = fl;
+      if (was && JSON.stringify(was.value) !== JSON.stringify(st.value))
+        flags.push({ kind: 'reviewed', field: st.field, fronts: inside.map(f => f.id), detail: `reviewed ${JSON.stringify(st.value)} overrides ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
+    }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
     flags.push({ kind: 'no-reading', field: 'groundOffsetM', fronts: fronts.filter(f => f.groundOffsetM == null).map(f => f.id), detail: 'no street ground: topM is the series line above the pand ground (offset 0 assumed)' });
@@ -362,7 +406,7 @@ function groundOfRead(a: DescriberAnswer | null): RowGround {
   const use: RowGround['use'] = a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'dwelling' : a.ground === 'warehouse' ? 'warehouse' : 'other';
   const doorSide = a.doorBay === 'left' || a.doorBay === 'right' || a.doorBay === 'several' || a.doorBay === 'none' ? a.doorBay : a.doorBay === 'centre' || a.doorBay === 'off-centre' ? 'centre' as const : undefined;
   const basement = a.basement === 'stoop-and-windows' ? 'stoop-and-windows' as const : a.basement === 'none' ? 'none' as const : a.souterrain ? 'souterrain' as const : undefined;
-  return { use, ...(doorSide ? { doorSide } : {}), ...(basement ? { basement } : {}) };
+  return { use, ...(doorSide ? { doorSide } : {}), ...(Number.isInteger(a.doorIndex) ? { doorIndex: a.doorIndex as number } : {}), ...(Number.isInteger(a.groundBays) ? { groundBays: a.groundBays } : {}), ...(basement ? { basement } : {}) };
 }
 /** Fields a reading states that the row design has no place for (programme rule 3). */
 function notDrawnOfRead(a: DescriberAnswer): Array<Omit<ReadNotDrawn, 'front'>> {

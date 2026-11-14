@@ -138,3 +138,30 @@ test('helpers: dormers from a gap sentence, held reads, class compatibility, the
   assert.ok(!compatible('heads', { dressing: 'keystone' }, { dressing: 'segmental-tympanum' }));
   assert.deepEqual([...ROW_EXTRAS_DEFAULT], [...ROW_FRONT_EXTRAS]);
 });
+
+test('Weteringschans review 3: doors left, 168042 a shop, block crowns on the first storey only, balconies on the first storey', () => {
+  for (const id of ['0363100012168096', '0363100012169016', '0363100012171218']) {
+    const f = W.row.fronts.find(x => x.id === id)!;
+    assert.equal(f.ground.doorSide, 'left', id);
+    assert.equal((W.specs[id].design.fronts![0] as Record<string, unknown>).doorBay, 0, id);
+  }
+  assert.equal(W.row.fronts.find(x => x.id === '0363100012168042')!.ground.use, 'shop');
+  assert.equal(W.specs['0363100012168042'].facts?.pui, 'shop');
+  assert.deepEqual(design(W, '0363100012168096').heads.value, { shape: 'flat', dressing: 'jack-blocks', storeys: [1] });
+  assert.equal(design(W, '0363100012168096').storeys.value, 3);
+  for (const id of ['0363100012169016', '0363100012171218']) {
+    assert.equal(design(W, id).storeys.value, 3, 'bel-etage + 2 above; the souterrain is not counted');
+    assert.deepEqual(design(W, id).balcony?.value, { storeys: [1], axis: 'centre' });
+  }
+});
+
+test('Kinkerstraat 90 and 92: reviewed heads on every upper storey, the face disagreement flagged', () => {
+  for (const id of ['0363100012155794', '0363100012236213#m1']) {
+    const h = design(K, id).heads;
+    assert.equal(h.source, 'reviewed');
+    assert.deepEqual(h.value, { shape: 'segmental', dressing: 'segmental-tympanum' });
+  }
+  assert.equal((design(K, '0363100012236213#m0').heads.value as { dressing: string }).dressing, 'keystone');
+  assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.fronts.includes('0363100012155794')));
+});
+

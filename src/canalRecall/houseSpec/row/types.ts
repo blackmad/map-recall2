@@ -114,6 +114,9 @@ export interface RowGround {
   use: 'shop' | 'cafe' | 'restaurant' | 'dwelling' | 'door-only' | 'warehouse' | 'other';
   /** The residential street door, seen from the street. */
   doorSide?: 'left' | 'right' | 'centre' | 'several' | 'none';
+  /** The street door as an index into the ground storey's openings, left to right as seen (D1 `doorIndex`), and their count. */
+  doorIndex?: number;
+  groundBays?: number;
   /** The shopfront paint as the face intent states it (a named colour or hex); never a sampled wall colour. */
   shopPaint?: string;
   /** Souterrain / stoop as read (Weteringschans). */
@@ -144,6 +147,9 @@ export interface RowDesign {
   roofStorey: RowField<RowRoofStorey>;
   /** Wall extras this series may draw: rowFront.ts ROW_FRONT_EXTRAS plus what the type or reading states. */
   extras: RowField<string[]>;
+  /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
+   *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
+  balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
 }
 export type RowDesignKey = keyof RowDesign;
 
@@ -197,7 +203,7 @@ export interface RowSeries {
 
 /** A row-level flag: something the solve would not settle silently. */
 export interface RowFlag {
-  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read';
+  kind: 'class-disagreement' | 'scaffold' | 'weak-consensus' | 'no-reading' | 'extent-mismatch' | 'off-street-read' | 'reviewed';
   field?: RowDesignKey | string;
   fronts: string[];
   detail: string;
