@@ -13,6 +13,48 @@
       "ref": "integrator, r3 sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (Kinkerstraat 90; 92 is the same series)",
       "at": "2026-11-14",
       "note": "arched heads with white keystones on all three upper storeys, the top storey included; the face citation and D1 read said storeys 1-2"
+    },
+    {
+      "fronts": [
+        "0363100012236027#m0",
+        "0363100012236027#m1"
+      ],
+      "field": "ground.colour",
+      "value": "dark",
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
+      "at": "2026-11-14",
+      "note": "106-108 shopfront is dark grey/black; the face shopPaint white is wrong"
+    },
+    {
+      "fronts": [
+        "0363100012236213#m0",
+        "0363100012236213#m1"
+      ],
+      "field": "ground.colour",
+      "value": "white",
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
+      "at": "2026-11-14",
+      "note": "92-94 butcher's front: white frames over a red interior; the face shopPaint green is wrong"
+    },
+    {
+      "fronts": [
+        "0363100012160809"
+      ],
+      "field": "ground.colour",
+      "value": "light",
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
+      "at": "2026-11-14",
+      "note": "100: a pale shutter; the face shopPaint #3a3532 (dark) is wrong"
+    },
+    {
+      "fronts": [
+        "0363100012158180"
+      ],
+      "field": "ground.colour",
+      "value": "dark",
+      "ref": "integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look)",
+      "at": "2026-11-14",
+      "note": "98: dark, agrees with the D1 read"
     }
   ],
   "weteringschans-168096-171218": [
