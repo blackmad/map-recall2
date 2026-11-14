@@ -452,6 +452,8 @@ import {buildSplendor} from './splendor-builder';
 import {buildDeUitkijk} from './de-uitkijk-builder';
 import {buildEscapeRembrandtplein} from './escape-rembrandtplein-builder';
 import {buildBitterzoet} from './bitterzoet-builder';
+import {buildTheaterBellevue} from './theater-bellevue-builder';
+import {buildMuziekgebouwBimhuis} from './muziekgebouw-bimhuis-builder';
 import {buildSameplace} from './sameplace-builder';
 import {buildClubRaum} from './club-raum-builder';
 import {buildDoubletreeCentraal} from './doubletree-centraal-builder';
@@ -673,7 +675,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   // A catalogued model with no builder here (ordinary blocks such as haparandaweg-902-950 come from their own pipeline) keeps its existing GLB.
   try{
   if(id==='centraal-station'){buildCentraalCuypers(helpers);buildCentraalComplex(helpers);}
-  else if(id==='muziekgebouw-bimhuis')music();
+  // Replaced 2026-11-14 (venues round 3): measured fronts and the cantilevered Bimhuis on the 3DBAG shell; music() is kept unused.
+  else if(id==='muziekgebouw-bimhuis')buildMuziekgebouwBimhuis(0,0,helpers);
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
@@ -1098,6 +1101,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-uitkijk')buildDeUitkijk(w,d,helpers);
     else if(id==='escape-rembrandtplein')buildEscapeRembrandtplein(w,d,helpers);
     else if(id==='bitterzoet')buildBitterzoet(w,d,helpers);
+    else if(id==='theater-bellevue')buildTheaterBellevue(w,d,helpers);
     else if(id==='sameplace')buildSameplace(w,d,helpers);
     else if(id==='club-raum')buildClubRaum(w,d,helpers);
     else if(id==='doubletree-centraal')buildDoubletreeCentraal(w,d,helpers);

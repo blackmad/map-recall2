@@ -1,0 +1,84 @@
+{
+ "id": "muziekgebouw-bimhuis",
+ "name": "Muziekgebouw aan 't IJ and the Bimhuis, Piet Heinkade 1-3",
+ "landmarkId": "extract_landmarks_1912967098",
+ "headingFrom": [
+  5,
+  6
+ ],
+ "heightMetres": 70,
+ "galleryView": {
+  "theta": 3.6,
+  "phi": 1.15
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012118833 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/muziekgebouw-bimhuis-footprints.json, written by venue-prepare.ts). The hall's IJ, west and Piet Heinkade faces and the Bimhuis box are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m: TMX7316010203-002532_pano_0000_002541, recording_2025-06-16_09-52-43_02257, TMX7316010203-001668_pano_0000_000103, TMX7316010203-001668_pano_0000_000089 and the face-west/bimS crops); the hall's roofs and the Mövenpick hotel podium and tower in the same pand keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/muziekgebouw-bimhuis-inventory.json.",
+ "materialOverrides": {
+  "brick": "#a5573e",
+  "white": "#d6d8d0",
+  "green": "#b9dccf",
+  "glass": "#51646d",
+  "frame": "#8f9a9c",
+  "dark": "#2b2b2a",
+  "slate": "#3a3b3f",
+  "concrete": "#b8b6b0",
+  "canopyGlass": "#8fa5a7"
+ },
+ "attribution": {
+  "title": "Muziekgebouw aan 't IJ and the Bimhuis, Piet Heinkade 1-3, Amsterdam (3xN, 2005)",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Muziekgebouw_aan_%27t_IJ",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the roofs and the hotel podium and tower in the same pand (CC BY 4.0): the red tile podium with its ramps and ribbon windows, the glass hall under the dark roof slab and its pale-green fascia lettered Muziekgebouw, the pale-green foyer box, and the dark Bimhuis box lettered BIMHUIS, cantilevered on two concrete columns with V struts. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": [
+  106
+ ],
+ "throughPassages": [
+  {
+   "axisBearing": 106,
+   "corridor": [
+    [
+     -72.71,
+     -11.54
+    ],
+    [
+     -79.77,
+     12.41
+    ],
+    [
+     -58.44,
+     18.63
+    ],
+    [
+     -51.49,
+     -5.36
+    ]
+   ],
+   "evidence": "Gemeente Amsterdam panoramas TMX7316010203-001668_pano_0000_000089 and the bimS crop: the Bimhuis box stands 8 m clear of the quay on two concrete columns with V struts; the walk under it to the hall's entrance is open on the west, east and south."
+  },
+  {
+   "axisBearing": 16,
+   "corridor": [
+    [
+     -72.71,
+     -11.54
+    ],
+    [
+     -79.77,
+     12.41
+    ],
+    [
+     -58.44,
+     18.63
+    ],
+    [
+     -51.49,
+     -5.36
+    ]
+   ],
+   "evidence": "Gemeente Amsterdam panoramas TMX7316010203-001668_pano_0000_000089 and the bimS crop: the Bimhuis box stands 8 m clear of the quay on two concrete columns with V struts; the walk under it to the hall's entrance is open on the west, east and south."
+  }
+ ],
+ "partyWallEvidence": "106 deg is the cut against the Movenpick hotel podium in the same pand, which the city layer draws (landmarkFiller pin)."
+}

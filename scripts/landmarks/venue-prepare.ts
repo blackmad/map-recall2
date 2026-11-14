@@ -36,6 +36,15 @@ export const VENUES: Record<string, Venue> = {
     address: 'Rembrandtplein 11, Amsterdam (Escape)', sources: [wiki('Rembrandtplein_(Amsterdam)')]},
   'bitterzoet': {pand: '0363100012171035', label: 'Spuistraat 2 (Bitterzoet)',
     address: 'Spuistraat 2, Amsterdam (Bitterzoet)', sources: [wiki('Bitterzoet_(poppodium)')]},
+  // venues round 3 (lane landmarks-venues-r3-20261114)
+  'theater-bellevue': {pand: '0363100012169852', label: 'Leidsekade 90 (Theater Bellevue)',
+    address: 'Leidsekade 90, Amsterdam (Theater Bellevue)', sources: [wiki('Theater_Bellevue')]},
+  'muziekgebouw-bimhuis': {pand: '0363100012118833', label: "Piet Heinkade 1-3 (Muziekgebouw aan 't IJ and the Bimhuis, 2005)",
+    address: "Piet Heinkade 1-3, Amsterdam (Muziekgebouw aan 't IJ and the Bimhuis)", sources: [wiki('Muziekgebouw_aan_%27t_IJ', "Muziekgebouw aan 't IJ"), wiki('Bimhuis')]},
+  'q-factory': {pand: '0363100012158881', label: 'Atlantisplein 1 (Q-Factory, 2009, on the former Amstel brewery site)',
+    address: 'Atlantisplein 1, Amsterdam (Q-Factory)', sources: [wiki('Amstel_Brouwerij', 'Amstel Brouwerij')]},
+  'meervaart': {pand: '0363100012085435', label: 'Meer en Vaart 300 (Theater De Meervaart)',
+    address: 'Meer en Vaart 300, Amsterdam (De Meervaart)', sources: [wiki('Meervaart')]},
 };
 const id = process.argv.find(a => a.startsWith('--id='))?.slice(5) ?? '';
 const V = VENUES[id];

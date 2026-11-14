@@ -1,5 +1,5 @@
 {
-  "toolchain": "7f489b8e99de9c2b60b62d01e54513d35240c318702f8ca4c2906cc8072b834f",
+  "toolchain": "5eaeecdf4cc9db26229c3be0f70dcbc32f1d9a3cd3661fd51ff159b792deff13",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -299,7 +299,7 @@
     "munttoren-amsterdam": "e3f87799927d001ebd1d98a0622a57c134a3f4a66380b6252e155badd190652e",
     "museum-amsterdam-noord": "94865bd366ba2842cd8b58deb3b8b08c0681c9fae5dbe05c0d6578e9a7d15df2",
     "museum-van-loon": "38a6be6a66b761040a6d31669c4b9d646b3ca40870d786a2bf85ff9fbbe3c457",
-    "muziekgebouw-bimhuis": "72bdd213f7ff55da3df1a929798c18ff22128379716fdefcb5fdec15ff390982",
+    "muziekgebouw-bimhuis": "af3224fd4bd9d1584fb5e66a5c01e494f1327356aa1873c960be2f56d9c72ff5",
     "naco-house": "1b55a42cd0bb57297750caf5d45b792d3de257bd7841db073b1a7682aab081e4",
     "nassaukerk": "0fc218234dac0f807199e3f6eb6dcca5d82f1433a4a4f53e2f00854f07502854",
     "national-holocaust-museum": "4ca27274ab95eff8c00b1cdddb216c4fb8aa8368c90aa4f1a677fdb530ecbf4e",
@@ -414,6 +414,7 @@
     "the-other-side": "35251c31a815438898f0b813704b294e5241132a522dbb6c5969046f174ec32e",
     "the-rock": "bfa1fd7bf6e57b3a3115f201720f3141ad95e3cc49714617c1a3e5349ff67205",
     "theater-amsterdam": "3296419943df52e2acb05c204255318a5d3d7b419c2672e26e6b49f64b2050ae",
+    "theater-bellevue": "3b6f8ea54db201c52d0b1e5527fa7a8e54a8009995522d87a04099c3dedd2d46",
     "theo-thijssen-museum": "37fd4eca5dfaa17bd591b221e3a8d6076927944d4acde9c06dec10a99405ef06",
     "theo-thijssen-standbeeld": "d1a93aae9296fa388d5261830d52fd7ee91378cd444585a0eb8fe1a2458539bb",
     "this-is-holland": "c077503b6dcdb291ccc183741ddc1ea8b15f55bb95d3c4139dc82dfc8526e957",

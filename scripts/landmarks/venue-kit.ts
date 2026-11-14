@@ -4,6 +4,7 @@ import {geomOf} from './cut-face';
 import {slab, poly, put, type Frame} from './nearbar-kit';
 import type {Surface} from './worship-shell';
 import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
+import {bandQuads, ledgeQuads, type BandQuad} from '../../src/canalRecall/landmarks/pathBand';
 
 /**
  * Shared parts of the centre-venues lane (2026-11-14: Arti et Amicitiae, Industrieele Groote Club, Splendor, De Uitkijk,
@@ -22,6 +23,8 @@ import {glyphRuns, MIXED_CASE_GLYPHS} from './mixed-case-glyphs';
  *  - `arcLettering`: glyph runs set on an arc over an arched doorway (DE INDUSTRIEELE GROOTE CLUB over its entrance);
  *  - `cutFrontWalls`: the 3DBAG walls on a street front cut into chord ranges, each kept only above the top of the
  *    storeys the builder draws there (Splendor's six fronts of different heights on one chord).
+ *  - `pathSkin`, `pathLedge` (venues round 3): a wall skin or a ledge along a plan polyline (src/canalRecall/landmarks/
+ *    pathBand.ts), for fronts that run round a curve (Theater Bellevue's corner drum, Q-Factory, the Muziekgebouw).
  *
  * Frames follow nearbar-kit: t along the wall to the viewer's right, y up, out of the wall along n. Every solid's back
  * face sits at `out` (sunk by nearbar-kit's SINK when the builder sets one); fronts stand >= 5 cm proud.
@@ -216,4 +219,25 @@ export function cutFrontWalls(surfaces: Surface[], path: XZ[], chord: {a: XZ; b:
     }
   }
   return out;
+}
+
+/** Emit pathBand quads into a TriSink, each wound to face its own normal. */
+export function emitQuads(M: TriSink, qs: BandQuad[], c: Col) {
+  for (const q of qs) M.quad(c, q.pts[0], q.pts[1], q.pts[2], q.pts[3], q.n);
+}
+/** Vertical wall skin from y0 to y1 along a plan polyline, `off` metres out of it (pathBand.bandQuads). */
+export function pathSkin(M: TriSink, path: XZ[], y0: number, y1: number, off: number, c: Col) {
+  emitQuads(M, bandQuads(path, y0, y1, off), c);
+}
+/** Ledge (front, top, soffit, end caps) along a plan polyline from `back` to `front` metres out (pathBand.ledgeQuads). */
+export function pathLedge(M: TriSink, path: XZ[], y: number, h: number, back: number, front: number, c: Col) {
+  emitQuads(M, ledgeQuads(path, y, h, back, front), c);
+}
+
+/** Square-section strut of width w between two model points (Bimhuis's V struts under its cantilevered box). */
+export function strutBetween(b: BuildingTools, p: [number, number, number], q: [number, number, number], w: number, c: Col) {
+  const d = new T.Vector3(q[0] - p[0], q[1] - p[1], q[2] - p[2]), L = d.length();
+  const g = new T.BoxGeometry(w, L, w).applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), d.normalize()));
+  g.translate((p[0] + q[0]) / 2, (p[1] + q[1]) / 2, (p[2] + q[2]) / 2);
+  b.add(g, c);
 }
