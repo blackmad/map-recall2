@@ -24,6 +24,8 @@ export type NodeRenderOptions = {
   ground?: { y: number; half: number; color: string; lambert?: boolean } | null;
   /** Every material double-sided (default: the look's rule, look.ts buildScene). */
   forceDoubleSided?: boolean;
+  /** recipe look: paint the shader window grid on `windowGrid` walls (look.ts BuildOptions.windowGrid). */
+  windowGrid?: boolean;
   /** Background hex when a view names none (default: the look's). */
   background?: string;
   /** Called per view with the raster timing. */
@@ -48,9 +50,9 @@ export async function rasteriseModels(models: NodeRenderModel[], views: NodeRend
   const look = options.look ?? 'recipe';
   const placed = await Promise.all(models.map(async m => ({ glb: await glbFile(m.file), position: m.position, rotationY: m.rotationY, scale: m.scale })));
   const ground = options.ground !== undefined ? options.ground : look === 'game' ? GAME_GROUND : look === 'gallery' ? null : SHEET_GROUND;
-  const c = look === 'recipe' ? await recipeCells() : null, fd = options.forceDoubleSided;
-  const withGround = ground ? buildScene(placed, { look, cells: c, ground, forceDoubleSided: fd }) : null;
-  const without = views.some(v => v.noGround) || !ground ? buildScene(placed, { look, cells: c, ground: null, forceDoubleSided: fd }) : null;
+  const c = look === 'recipe' ? await recipeCells() : null, fd = options.forceDoubleSided, wg = options.windowGrid;
+  const withGround = ground ? buildScene(placed, { look, cells: c, ground, forceDoubleSided: fd, windowGrid: wg }) : null;
+  const without = views.some(v => v.noGround) || !ground ? buildScene(placed, { look, cells: c, ground: null, forceDoubleSided: fd, windowGrid: wg }) : null;
   const out: RasterImage[] = [];
   for (const v of views) {
     const rig = typeof options.light === 'function' ? options.light(v) : options.light ?? (look === 'game' ? GAME_RIG : look === 'gallery' ? galleryRig() : SHEET_RIG);

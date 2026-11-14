@@ -21,6 +21,7 @@ import { INFERRED_SLOT_SOURCE } from '../look/materialSlotInference.ts';
 import { GLASS_NAME, GLASS_SKY_TINT } from '../landmarks/landmarkShading.ts';
 import { makeTexture, srgbDecode, type RasterLight, type RasterMaterial, type RasterScene, type RasterTexture, type Vec3 } from './raster.ts';
 import type { GlbScene } from './load.ts';
+import { GRID_TILE_M, paintsWindowGrid, textureMean, windowGridTexture } from './windowGrid.ts';
 
 export type GlbLook = 'recipe' | 'flat' | 'game' | 'gallery';
 
@@ -101,6 +102,11 @@ export type BuildOptions = {
   forceDoubleSided?: boolean;
   /** A lit ground plane (half extent, height, sRGB hex), drawn as two triangles. */
   ground?: { y: number; half: number; color: string; lambert?: boolean } | null;
+  /**
+   * recipe look only: paint the city look's shader window grid on `windowGrid` wall materials (windowGrid.ts), as the
+   * game draws them. Default off: the recipe page draws those walls blank.
+   */
+  windowGrid?: boolean;
 };
 
 const textureCache = new WeakMap<object, RasterTexture>();
@@ -122,7 +128,8 @@ export function buildScene(models: SceneModel[], options: BuildOptions): RasterS
       const side = doubleAll || m.doubleSided ? THREE.DoubleSide : THREE.FrontSide;
       const cell = options.look === 'recipe' && options.cells ? options.cells.cell(m.extras, !!prim.uvs, side) : null;
       let material: number;
-      if (cell) material = addMaterial(`cell|${mi}|${prim.material}`, () => ({ kind: 'cell', color: cell.tint, texture: cell.texture, uvScale: cell.uvScale, doubleSided: side === THREE.DoubleSide }));
+      if (cell && options.windowGrid && paintsWindowGrid(m.extras)) material = addMaterial(`grid|${mi}|${prim.material}`, () => ({ kind: 'cell', color: cell.tint, texture: windowGridTexture(textureMean(cell.texture), cell.tint), uvScale: 1 / GRID_TILE_M, doubleSided: side === THREE.DoubleSide }));
+      else if (cell) material = addMaterial(`cell|${mi}|${prim.material}`, () => ({ kind: 'cell', color: cell.tint, texture: cell.texture, uvScale: cell.uvScale, doubleSided: side === THREE.DoubleSide }));
       else material = addMaterial(`glb|${mi}|${prim.material}`, () => {
         let tex: RasterTexture | null = null;
         if (m.baseColorTexture) { tex = textureCache.get(m.baseColorTexture) ?? null; if (!tex) { tex = makeTexture(m.baseColorTexture.rgba, m.baseColorTexture.width, m.baseColorTexture.height, false); textureCache.set(m.baseColorTexture, tex); } }
