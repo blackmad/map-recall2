@@ -2,6 +2,23 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-15",
+      "title": "Bridges hold their level end to end",
+      "text": "Where the elevation data had smoothed a bridge into a dip, the road now holds its level from one end of the bridge to the other. Haarlemmer Houttuinen beside the railway viaduct no longer sinks to the waterline. The Amsterdamse Baan flyover crosses the polder at deck height instead of diving into it, and the Kabouterbrug on the Schinkel and Van der Madeweg ride straight across. No crossing in the city dips more than a metre any more.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-15-way-ends-amsterdamse-baan-before.jpg",
+          "alt": "Amsterdamse Baan before: the road sinks to the canal and stops short of the far bank",
+          "caption": "Before"
+        },
+        {
+          "src": "whats-new/2026-11-15-way-ends-amsterdamse-baan-after.jpg",
+          "alt": "After: the road crosses the canal level at deck height",
+          "caption": "After"
+        }
+      ]
+    },
+    {
       "date": "2026-11-14",
       "title": "The Corner Inn corner has a front",
       "text": "At Kinkerstraat and Bilderdijkstraat, the corner building beside Kinkerstraat 90 showed a tall blank brick wall to Kinkerstraat. That side was never modelled. It now has its brick front with five windows a storey, the slate roof storey with a hoist dormer, the Corner Inn shop on the ground floor, and its pale corner bay.",

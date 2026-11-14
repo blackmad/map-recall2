@@ -33,6 +33,15 @@ The worst thing in frame was a blank slab at Kinkerstraat 86–88. It was not a 
 - Floating door frames are gone.
 - A `house:frames --lists` bug made per-list flag comparisons byte-identical; it is fixed.
 
+## Bridges hold their level end to end: `wayEnds` (2026-11-15)
+
+- After `bankClimb`, four crossings still dipped more than 1 m. Under viaducts the elevation model is filtered over tens of metres into a gentle sag, and a 4 % bank climb never starts up it. Haarlemmer Houttuinen 7376117 also sat under the flat register footprint BRU0095, which lifts nothing.
+- Way decks now run on to the way's own end nodes where the relief sags more than 1 m under the line between them (`WAY_END_DIP_M`, at most 160 m past the water). That stretch is lifted whole; only OSM streets crossing under it open ±10 m hole windows. A flat-only register claim takes an `overFlat` deck that lifts the surface at the footprint's width and lets the footprint draw the bridge.
+- The rule is gated on the probe's own crossing-dip measure (`crossingDipOn`, every bundle member): the ungated cut changed 150 decks and sank road at 28 deck ends. Gated, 4 decks change. `?wayEnds=0` is the before (byte-identical).
+- Dips over 1 m: 4 → 0 (Haarlemmer Houttuinen 2.87, Amsterdamse Baan 424283770 2.51, Van der Madeweg 1251743255 1.33 → 0; Schinkelhavenstraat 38282903 1.06 → 0.36). Over 0.3 m: 19 → 16. Pinned in `BANK_DIPS` (`bridge-feedback-pins.ts`) with live before checks.
+- `probe-hole-junctions` now stops short of streets under the deck, as the pins do: its old 17 decks / 178 vertices were really 8 / 64 (Lelylaan 7382981, 7382638 and Wageningendreef were only streets under the deck). Those 8 remain; see TODO.
+- Integration note: the crossing-grade push 80663a380 carried only its notes and allow-list shrink, because the shared integrator worktree had been switched to another branch. `bankClimb` (3107a35c2) reaches main with this merge.
+
 ## Crossings hold their grade (2026-11-14)
 
 User on F1b: "these roads should probably figure out 'I don't dip down'" (Lelylaan slip 7382983 over the Slotervaart). `?bankClimb` (default on): where a way deck dips > 0.3 m below the line between its bank tops, the deck extends up the banks (≤ 30 m, > 4 % climb) and bundled dual carriageways climb as one deck (`wayDecks.ts`); embankment sides slope 1:2 up to 8 m (`surface.ts`); the bridge kit stays on the bridge itself (`groundCell.ts` `kitDeck`); a polygon inside one deck ignores a higher climbed deck it lies outside (`roadSurfaces.ts`). The first trial opened a hole beside the slip because the bundled main carriageway stayed low while `deckLevelHeight` lifted its asphalt to the slip. Crossings dipping > 0.3 m: 28 → 19; > 1 m: 10 → 4. Pins `BANK_DIPS` in bridge-feedback-pins; rail-joins allow-list 722 → 718.
