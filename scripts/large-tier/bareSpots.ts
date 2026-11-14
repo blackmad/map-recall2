@@ -7,10 +7,11 @@
  *  - vhs: the U-shaped 2001 block with two round towers at Van Hallstraat / Kattensloot (a 252-vertex ring).
  *  - pmg: the block the user called "behind Plantage Muidergracht": the Rijksakademie courtyard ranges (Sarphatistraat
  *    470) between Mauritskade and the barracks, repointed (R5-D board item) to [4.916, 52.360] from the old pose over Oosterpark; bearing 58 faces the pand (0.5 km ENE), the board's "NNE" was a slip.
- * All three are installed large-recipe GLBs with blank walls (blankInstalls.ts), not bare generic facades.
+ * vob and vhs are installed large-recipe GLBs with blank walls (blankInstalls.ts), not bare generic facades; pmg is the
+ * bespoke `rijksakademie` landmark since 2026-11-14 (it shadows the ordinary install), so it carries `landmark`.
  */
 export const BARE_SPOTS = [
   { name: 'vob', camera: [4.8738, 52.3754], zoom: 17.3, bearing: 105, pitch: 62, pands: ['0363100012137990'] },
   { name: 'vhs', camera: [4.8726, 52.3804], zoom: 17.3, bearing: 15, pitch: 62, pands: ['0363100012120309'] },
-  { name: 'pmg', camera: [4.916, 52.360], zoom: 17.3, bearing: 58, pitch: 60, pands: ['0363100012165748'] },
+  { name: 'pmg', camera: [4.916, 52.360], zoom: 17.3, bearing: 58, pitch: 60, pands: ['0363100012165748'], landmark: 'rijksakademie' },
 ] as const;
