@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Unlisted walls take the window grid (2026-11-14)
+
+Feedback 21dc1e32 / 174d2455 / 9aa8d03b ("no windows, really?"): large recipes drew every wall not in `intent.walls` blank when `otherWalls` was `blank`, so walls nobody had a photo of became flat planes (Buitenzagerij 45's gallery spine, Kromhout's west halls); Kazerne Hendrik's builder had no openings on its curved west wall. `buildingRecipe/otherWalls.ts` now gives unlisted walls the shader grid unless the intent cites a photo in `blankWalls`; party panels never take it. Of 99 re-fitted installs, a Node before/after sheet with panorama crops (`_pruned-sheets/blank-walls/review/`) passed 60; 31 holds (metal/glass halls, car parks, tall single-room halls, photo-blind gables) and 8 needs-photo sit in `held-installs.json`. Pinned in `feedbackBlankWalls.test.ts`. Buitenzagerij's card said Jordaan; it now says Amsterdam-Noord.
+
+
 ## Set-back crowns need evidence (2026-11-14)
 
 Feedback 09e7bce0 / 6070a7e5: the blue glazed top storey on generic flat roofs was `contemporaryFamily.ts` drawing a set-back crown for 35 % of 2005+ housing pands ≥ 14 m by hash (852 pands); a 12-roof PDOK sample showed solar fields and plant, never an inset glass storey. Crowns now need the `setback` tag (`scripts/newbuild/front-tags.json` → `contemporary-walls.json`), seeded with Houthavenkade 26 and Revaleiland 437: 852 → 2. The crown was also its own `<pand>:setback` mesh range, so landmark suppression, ghosting and picking missed it and Grasweg 116-124's crown floated over `grasweg-116.glb`; `MeshBuilding.rangeOwner` folds it into its pand's range. Pinned by `check:roof-glazing` (in check:canal:rest).
