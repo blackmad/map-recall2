@@ -3,7 +3,9 @@ import type {BuildingTools} from './cultural-builders';
 import {ringFrame, roofHeightAt, slab, ledgeStrip, setSink, put, type Frame} from './nearbar-kit';
 import {addShellTess, beginFacade, quad} from './big-facade';
 import type {ShellSource} from './worship-shell';
-import {columns, shellGroups, shellRows, shellWalls, sill, wallLetters} from './houthavens-shell';
+import {columns, shellGroups, shellWalls, shellWindow, sill, wallLetters} from './houthavens-shell';
+import type {RawWall} from './big-kit';
+import {barRailing, roundedFrontPath} from '../../src/canalRecall/landmarks/barRailing';
 import raw from './oba-spaarndammerbuurt-footprints.json';
 
 /**
@@ -62,29 +64,29 @@ function win(f: Frame, O: number, t0: number, t1: number, y0: number, y1: number
 }
 
 /**
- * A rounded balcony: slab with its two front corners rounded (radius r), `d` deep, top at y, and a dark balustrade band 1 m
- * high following its outline (the photo's dark bar rails read as a band at street distance).
+ * A rounded balcony as on the 2022 panorama: a white slab 0.4 m thick with its two front corners rounded (radius r), `d`
+ * deep from the plane 0.3 m behind the face, top at y, and a see-through bar railing (src/canalRecall/landmarks/barRailing:
+ * top rail, bottom rail, bars at 13 cm) along its open front edge, 6 cm in from the slab edge.
  */
 function roundBalcony(f: Frame, O: number, t0: number, t1: number, y: number, d: number, r: number, rail = true) {
-  const outline = (inset: number) => {
-    const s = new T.Shape(), a = t0 + inset, c = t1 - inset, D = d - inset, rr = Math.max(0.05, r - inset);
-    s.moveTo(a, 0);
-    s.lineTo(c, 0);
-    s.lineTo(c, D - rr);
-    s.absarc(c - rr, D - rr, rr, 0, Math.PI / 2, false);
-    s.lineTo(a + rr, D);
-    s.absarc(a + rr, D - rr, rr, Math.PI / 2, Math.PI, false);
-    s.lineTo(a, 0);
-    return s;
-  };
+  const s = new T.Shape(), rr = r;
+  s.moveTo(t0, 0);
+  s.lineTo(t1, 0);
+  s.lineTo(t1, d - rr);
+  s.absarc(t1 - rr, d - rr, rr, 0, Math.PI / 2, false);
+  s.lineTo(t0 + rr, d);
+  s.absarc(t0 + rr, d - rr, rr, Math.PI / 2, Math.PI, false);
+  s.lineTo(t0, 0);
   // shape x = t, shape y = depth; rotateX(+90 deg) sends shape y to +z (out of the wall) and the extrusion downwards
-  const slabG = new T.ExtrudeGeometry(outline(0), {depth: 0.28, bevelEnabled: false, curveSegments: 4}).rotateX(Math.PI / 2);
+  const slabG = new T.ExtrudeGeometry(s, {depth: 0.4, bevelEnabled: false, curveSegments: 4}).rotateX(Math.PI / 2);
   put(b, f, slabG, 0, y, O - 0.3, 'pink');
   if (!rail) return;
-  const ring = outline(0.02), hole = outline(0.06);
-  ring.holes.push(new T.Path(hole.getPoints(4)));
-  const railG = new T.ExtrudeGeometry(ring, {depth: 1.0, bevelEnabled: false, curveSegments: 4}).rotateX(Math.PI / 2).translate(0, 1.0, 0);
-  put(b, f, railG, 0, y, O - 0.3, 'copper');
+  const m = barRailing(roundedFrontPath(t0 + 0.06, t1 - 0.06, 0.3, d - 0.06, r - 0.06, 4), {height: 1.0});
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(m.positions, 3));
+  g.setIndex(m.indices);
+  g.computeVertexNormals();
+  put(b, f, g, 0, y, O - 0.3, 'copper');
 }
 
 /** The Spaarndammerstraat front (ring edge 3). Pixels of the rectified 2019 crop: t = px / 38.5, y = (930 - py) / 37. */
@@ -140,13 +142,27 @@ function rightStack() {
   roundBalcony(f, O, 0.12, len - 0.12, 12.6, 1.7, 0.6, false);
 }
 
-/** INFERRED rear (garden) face of the apartments and the library hall: rows of white-framed windows. */
+/**
+ * INFERRED rear (garden) and courtyard faces of the apartments and the library hall, dressed as the 2020 rear photo (w01-64)
+ * shows them: the front's brick with white frames (a top light over two casements) on a white sill course. Party walls on
+ * ring edges 0 and 8 and the street front stay as they are.
+ */
 function rear() {
+  const party = [0, 8].map(i => [R[i], R[(i + 1) % R.length]] as [V2, V2]);
+  const near = (m: V2, [a, c]: [V2, V2]) => {
+    const L = Math.hypot(c[0] - a[0], c[1] - a[1]), tx = (c[0] - a[0]) / L, tz = (c[1] - a[1]) / L;
+    return Math.abs((m[0] - a[0]) * tz - (m[1] - a[1]) * tx) < 0.6;
+  };
+  const one = (w: RawWall, t: number, y: number, ww: number, wh: number) => {
+    if (!shellWindow(b, w, t, y, ww, wh, {frame: 'frame', mullion: true, transom: wh * 0.68, ring: 0.1})) return;
+    ledgeStrip(b, w.f, t, y - 0.1 - 0.06 - 0.1, ww + 0.36, 0.1, 0.1, 'stone');                      // white sill course
+  };
   for (const w of shellWalls(src, 2.4, 2.4)) {
-    if (Math.abs(((w.bearing - 64 + 540) % 360) - 180) > 20) continue;
-    const cols = columns(w.len, 2.7, 1.0);
-    if (w.base >= 3.5) shellRows(b, w, cols, FLOORS.map(y => y + 0.9).filter(y => y >= w.base + 0.25), 1.4, 1.5, {frame: 'frame', mullion: true});
-    else if (w.top < 6) shellRows(b, w, columns(w.len, 3.6, 1.2), [1.0], 1.6, 1.8, {frame: 'frame', mullion: true});
+    if (Math.abs(((w.bearing - 244 + 540) % 360) - 180) < 30) continue;                           // the street front
+    const m: V2 = [w.f.origin[0] + w.f.tangent[0] * w.len / 2, w.f.origin[1] + w.f.tangent[1] * w.len / 2];
+    if (party.some(p => near(m, p))) continue;
+    if (w.base >= 3.5) for (const y of FLOORS.map(v => v + 0.9).filter(v => v >= w.base + 0.35)) for (const t of columns(w.len, 2.7, 1.0)) one(w, t, y, 1.4, 1.5);
+    else if (w.top < 6) for (const t of columns(w.len, 3.6, 1.2)) one(w, t, 1.0, 1.6, 1.8);
   }
 }
 
