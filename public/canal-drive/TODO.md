@@ -1965,13 +1965,12 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Bridge follow-ups from lane F1 (2026-11-13, HISTORY).**
-  - **Regressions it introduced:**
-    - motorway way-deck parapets inside the lanes (Ringweg-Noord OSM7376770 13.8 → 56.6 m, OSM7376548 19 → 28.5 m; `audit-bridge-railings`);
-    - railing steps where survey caps narrow a deck (BRU0407, 0831, 0415, 0664, 1696, 2114, 0299, 0388).
+- **Bridge follow-ups (F1 2026-11-13, F1b 2026-11-14, HISTORY).** F1b fixed the motorway parapets, the cap steps and the Lelylaan drape.
   - **Still open:**
-    - Lelylaan: streets under a deck drape up to the deck edge; drape them on the ground inside the deck's under-hole ranges.
-    - Torensluis water slit (`WET_CLEAR_M` 2 against 1.9 m: measure city-wide first).
+    - BRU1883: the median edge walk crosses the open water slot between its carriageways (+10.9 m inside traffic); needs a water test on the gap.
+    - OSM116912295 (cell 6_-5): a cycle path still lifted up to 2.5 m under a way deck.
+    - OSM7376548: jagged grey fringe at the east deck end.
+    - Torensluis water slit: not `WET_CLEAR_M` (same rings from 2.0 down to 1.5 m); find the real cause.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.

@@ -2190,10 +2190,6 @@
    "reason": "baseline 4.91903,52.38922: road deck 2.02 m over the ballast"
   },
   {
-   "id": "crossing:rail:tram:51265,-42181",
-   "reason": "baseline 4.97543,52.33184: ballast 2.02 m over the road"
-  },
-  {
    "id": "crossing:rail:subway:56486,-63492",
    "reason": "baseline 4.98311,52.31256: ballast 2.02 m over the road"
   },
@@ -2258,10 +2254,6 @@
    "reason": "baseline 4.95020,52.35360: ballast 2.12 m over the road"
   },
   {
-   "id": "crossing:rail:tram:51271,-42150",
-   "reason": "baseline 4.97543,52.33187: ballast 2.12 m over the road"
-  },
-  {
    "id": "crossing:road:tram:-37644,17853",
    "reason": "baseline 4.84461,52.38615: road deck 2.13 m over the ballast"
   },
@@ -2280,10 +2272,6 @@
   {
    "id": "crossing:rail:rail:40896,-23519",
    "reason": "baseline 4.96017,52.34872: ballast 2.14 m over the road"
-  },
-  {
-   "id": "crossing:rail:tram:51272,-42144",
-   "reason": "baseline 4.97544,52.33187: ballast 2.14 m over the road"
   },
   {
    "id": "crossing:rail:tram:-21189,-45039",
