@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-subangstraat",
+  "panoId": "TMX7316060226-000470_pano_0000_001499",
+  "timestamp": "2019-11-07T09:26:18.173230Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/07/TMX7316060226-000470/pano_0000_001499/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117595.72430170333,
+   488769.59954417765
+  ],
+  "headingDeg": 257.2673585542054,
+  "fovDeg": 110,
+  "pitchDeg": 30.440281564235075,
+  "distanceM": 9.045039511732474,
+  "image": "artifacts/building-recipes/pand-148603/photo-wall-subangstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-arlandaweg",
+  "panoId": "TMX7316010203-002382_pano_0001_000220",
+  "timestamp": "2022-01-03T11:32:45.620620Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/03/TMX7316010203-002382/pano_0001_000220/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117529.12588920807,
+   488842.59621749236
+  ],
+  "headingDeg": 182.64622879771332,
+  "fovDeg": 77.77086610110241,
+  "pitchDeg": 8.227942026885318,
+  "distanceM": 36.92309066110472,
+  "image": "artifacts/building-recipes/pand-148603/photo-wall-arlandaweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-zaventemweg",
+  "panoId": "TMX7316060226-000470_pano_0000_001505",
+  "timestamp": "2019-11-07T09:26:22.253260Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/07/TMX7316060226-000470/pano_0000_001505/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117595.31141752431,
+   488799.47223943815
+  ],
+  "headingDeg": 244.9028064501383,
+  "fovDeg": 47.09162559086212,
+  "pitchDeg": 16.084868827518648,
+  "distanceM": 15.603348800805685,
+  "image": "artifacts/building-recipes/pand-148603/photo-wall-zaventemweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,122 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 2,
+   "bearing": 130,
+   "widthM": 10.4,
+   "heightM": 17.7,
+   "street": "Europaboulevard"
+  },
+  {
+   "group": 1,
+   "panel": 29,
+   "bearing": 40,
+   "widthM": 6.4,
+   "heightM": 13.7,
+   "street": "Ringweg-Zuid"
+  },
+  {
+   "group": 2,
+   "panel": 20,
+   "bearing": 45,
+   "widthM": 15.4,
+   "heightM": 18.4,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 0,
+   "bearing": 253,
+   "widthM": 13,
+   "heightM": 18.5,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 5,
+   "bearing": 42,
+   "widthM": 9.6,
+   "heightM": 14.4,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 8,
+   "widthM": 7.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 14,
+   "widthM": 6.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 30,
+   "widthM": 6.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 28,
+   "widthM": 6.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 27,
+   "widthM": 6.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 10,
+   "widthM": 5.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 11,
+   "widthM": 4.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 16,
+   "widthM": 3.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 3.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 23,
+   "widthM": 3.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 13,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 12,
+   "widthM": 2.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 26,
+   "widthM": 12.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 21,
+   "widthM": 8.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 3,
+   "widthM": 2.5,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

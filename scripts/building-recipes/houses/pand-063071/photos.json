@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-computerweg",
+  "panoId": "TMX7316010203-001300_pano_0000_007975",
+  "timestamp": "2019-07-09T08:50:45.339020Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/07/09/TMX7316010203-001300/pano_0000_007975/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121204.46967694564,
+   491005.98013976903
+  ],
+  "headingDeg": 308.4337934842693,
+  "fovDeg": 87.56311264295225,
+  "pitchDeg": 26.503557170210772,
+  "distanceM": 8.280692161661007,
+  "image": "artifacts/building-recipes/pand-063071/photo-wall-computerweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-displaystraat",
+  "panoId": "recording_2024-10-23_07-33-22_00289",
+  "timestamp": "2024-10-23T07:38:55Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_00289/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121154.37830418198,
+   491051.3642767226
+  ],
+  "headingDeg": 120.199381861353,
+  "fovDeg": 110,
+  "pitchDeg": 24.00573006574695,
+  "distanceM": 9.278684217403288,
+  "image": "artifacts/building-recipes/pand-063071/photo-wall-displaystraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-tt-vasumweg",
+  "panoId": "TMX7316010203-001624_pano_0005_000278",
+  "timestamp": "2020-02-06T11:50:15.236360Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/02/06/TMX7316010203-001624/pano_0005_000278/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121164.2864448936,
+   491007.6845653586
+  ],
+  "headingDeg": 35.969290080819746,
+  "fovDeg": 110,
+  "pitchDeg": 13.642927649143191,
+  "distanceM": 17.029396988827656,
+  "image": "artifacts/building-recipes/pand-063071/photo-wall-tt-vasumweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

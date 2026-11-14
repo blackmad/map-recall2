@@ -1,0 +1,196 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 6,
+   "bearing": 179,
+   "widthM": 65.7,
+   "heightM": 45.6,
+   "street": "Koningin Wilhelminaplein"
+  },
+  {
+   "group": 1,
+   "panel": 5,
+   "bearing": 180,
+   "widthM": 9.6,
+   "heightM": 3.2,
+   "street": "Koningin Wilhelminaplein"
+  },
+  {
+   "group": 2,
+   "panel": 59,
+   "bearing": 176,
+   "widthM": 8.7,
+   "heightM": 3.2,
+   "street": "Koningin Wilhelminaplein"
+  },
+  {
+   "group": 3,
+   "panel": 11,
+   "bearing": 359,
+   "widthM": 20.9,
+   "heightM": 45.6,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 0,
+   "bearing": 269,
+   "widthM": 16.1,
+   "heightM": 45.6,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 32,
+   "bearing": 89,
+   "widthM": 14.6,
+   "heightM": 45.6,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 2,
+   "bearing": 360,
+   "widthM": 11.1,
+   "heightM": 45.6,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 25,
+   "bearing": 359,
+   "widthM": 10.3,
+   "heightM": 45.6,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 13,
+   "widthM": 4.2,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 64,
+   "widthM": 2.7,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 69,
+   "widthM": 2.6,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 38,
+   "widthM": 8.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 15,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 19,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 36,
+   "widthM": 4.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 71,
+   "widthM": 4.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 48,
+   "widthM": 4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 21,
+   "widthM": 3.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 45,
+   "widthM": 3.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 26,
+   "widthM": 3.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 23,
+   "widthM": 7.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 7.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 55,
+   "widthM": 8.3,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 51,
+   "widthM": 5.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 46,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 20,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 7,
+   "widthM": 3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 17,
+   "widthM": 3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 42,
+   "widthM": 2.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 31,
+   "widthM": 2.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 8,
+   "widthM": 2.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 50,
+   "widthM": 2.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 61,
+   "widthM": 2.7,
+   "reason": "unnamed panel under 8 m"
+  }
+ ]
+}

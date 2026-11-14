@@ -1,0 +1,207 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-085297",
+ "pandId": "0363100012085297",
+ "address": "BAG pand 0363100012085297",
+ "sources": [
+  {
+   "id": "pano-2021-03-24-w04-269L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002057_pano_0001_001682/",
+   "image": "source-data://pand-reference-walls/0363100012085297/w04-269L.jpg",
+   "sha256": "de1e87d8c661c3cf5fc9cd71044d9e3ef4f54b07bbef0676ee7e6fb2519ec300",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-01-w06-269",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_11-45-33_01718/",
+   "image": "source-data://pand-reference-walls/0363100012085297/w06-269.jpg",
+   "sha256": "913875ee02aac76ff0efc089d71fbfe92ec58e8dc154e101496b3f873cf11ead",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-06-w03-359",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000462_pano_0003_001367/",
+   "image": "source-data://pand-reference-walls/0363100012085297/w03-359.jpg",
+   "sha256": "cc38bf0a047f1a0435a49d4b9310d39e775e16625c2cf107583759719775a0f6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-02-18-w01-89",
+   "kind": "street-panorama",
+   "capturedAt": "2019-02-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001106_pano_0012_000207/",
+   "image": "source-data://pand-reference-walls/0363100012085297/w01-89.jpg",
+   "sha256": "a48549bbaa1e0c4ad960d554ad949fc3fe3cbb5c92059d66c01f25850bdfbd98",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-06-w05-269",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000462_pano_0003_001470/",
+   "image": "source-data://pand-reference-walls/0363100012085297/w05-269.jpg",
+   "sha256": "939b16d48ed1bfeeedb9c1b9d811c9229eeb7a2cda2873e9af6c251c5ab67544",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w04-269",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002499_pano_0003_000741/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-24-w06-269L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002057_pano_0001_001677/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    41
+   ],
+   "street": "Contactweg",
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "palette": {
+    "brick": "#4f5758",
+    "glass": "#3f3f3c"
+   },
+   "wallSplit": {
+    "at": 0.461,
+    "brick": "#7f807b"
+   },
+   "baysPerStorey": 13
+  },
+  {
+   "wallSurfaces": [
+    43
+   ],
+   "street": "Contactweg",
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#486371",
+    "glass": "#334753"
+   }
+  },
+  {
+   "wallSurfaces": [
+    3,
+    5,
+    8,
+    15,
+    20,
+    21,
+    24,
+    26,
+    27,
+    34,
+    36,
+    39,
+    47,
+    51,
+    54,
+    55
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#68737b"
+   },
+   "baysPerStorey": 39
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#423d31"
+   },
+   "wallSplit": {
+    "at": 0.771,
+    "brick": "#60513c"
+   },
+   "baysPerStorey": 35
+  },
+  {
+   "wallSurfaces": [
+    2,
+    9,
+    11,
+    12,
+    28,
+    29,
+    32,
+    35,
+    37,
+    38,
+    44,
+    64
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    10,
+    18
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    17,
+    19
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#171e26"
+   },
+   "wallSplit": {
+    "at": 0.697,
+    "brick": "#3b3d3b"
+   },
+   "baysPerStorey": 13
+  },
+  {
+   "wallSurfaces": [
+    4,
+    40,
+    62
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#68737b",
+  "frame": "#efece4",
+  "door": "#2a2a2a"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 0 (53.1 m, under 3 m tall); 31 (7.7 m, unnamed panel under 8 m); 27 (6.5 m, unnamed panel under 8 m); 9 (8.6 m, under 3 m tall); 30 (79.7 m, under 3 m tall); 13 (79.7 m, under 3 m tall); 26 (79.5 m, under 3 m tall); 4 (79.7 m, under 3 m tall); 19 (2.9 m, under 3 m tall); 8 (3.9 m, under 3 m tall); 23 (79.7 m, under 3 m tall); 25 (79.7 m, under 3 m tall); 22 (59.2 m, under 3 m tall); 28 (55.4 m, under 3 m tall); 24 (24.1 m, under 3 m tall); 20 (3.6 m, under 3 m tall); 21 (20.6 m, under 3 m tall).",
+  "Measured 2026-11-10 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] wall split #4f5758 | #7f807b at 46 % (dE 17.8); walls[0] bays 13 from the likeness grid (padded measurement 11); walls[0] wall family: paint proposed but wallSplit kept; walls[2] glass #545c60 not used (not darker than the wall #68737b by 10 L*, or tinted): kit glass kept; walls[2] bays 39 from the likeness grid (padded measurement 21); walls[3] glass #4a4430 not used (not darker than the wall #3d372c by 10 L*, or tinted): kit glass kept; walls[3] wall split #423d31 | #60513c at 77 % (dE 15.3); walls[3] bays 35 from the likeness grid (padded measurement 56); walls[6] glass #19212d not used (not darker than the wall #0d131c by 10 L*, or tinted): kit glass kept; walls[6] wall split #171e26 | #3b3d3b at 70 % (dE 15.7); walls[6] wall family unresolved: cell spread 0.4858, texture 0.123 not flat (<= 0.12, <= 0.035) and no rib period (best 1.28 m r 0.163); unphotographed walls take #68737b (brick), the area-weighted median of groups 0, 1, 2, 3, 6."
+ ],
+ "measured": {
+  "date": "2026-11-10",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   6
+  ],
+  "otherWalls": true
+ }
+}

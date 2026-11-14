@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-ringweg-zuid",
+  "panoId": "TMX7316010203-002478_pano_0000_000639",
+  "timestamp": "2022-03-24T11:30:03.445430Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/03/24/TMX7316010203-002478/pano_0000_000639/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121158.48550112867,
+   483402.0723888969
+  ],
+  "headingDeg": 218.3480383803414,
+  "fovDeg": 23.161151172770605,
+  "pitchDeg": 8.165058019156696,
+  "distanceM": 35.50291327426375,
+  "image": "artifacts/building-recipes/pand-119145/photo-wall-ringweg-zuid.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-europaboulevard",
+  "panoId": "TMX7316010203-002473_pano_0005_001007",
+  "timestamp": "2022-03-23T13:11:05.221540Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002473/pano_0005_001007/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121144.23144536527,
+   483337.657257393
+  ],
+  "headingDeg": 314.39192273139764,
+  "fovDeg": 92.65825305462444,
+  "pitchDeg": 39.92003833822125,
+  "distanceM": 8.462777334595371,
+  "image": "artifacts/building-recipes/pand-119145/photo-wall-europaboulevard.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

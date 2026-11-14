@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-von-zesenstraat",
+  "panoId": "TMX7316010203-001475_pano_0000_000839",
+  "timestamp": "2019-11-29T10:44:05.249160Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/29/TMX7316010203-001475/pano_0000_000839/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123719.05056145748,
+   486405.35721671407
+  ],
+  "headingDeg": 171.51396999574945,
+  "fovDeg": 82.29705053732629,
+  "pitchDeg": 26.314874789002797,
+  "distanceM": 8.826854233373728,
+  "image": "artifacts/building-recipes/pand-089681/photo-wall-von-zesenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-commelinstraat",
+  "panoId": "TMX7316010203-001527_pano_0000_001037",
+  "timestamp": "2019-12-19T08:19:31.381710Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/19/TMX7316010203-001527/pano_0000_001037/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123683.0809732415,
+   486329.3916637533
+  ],
+  "headingDeg": 350.6508145344959,
+  "fovDeg": 110,
+  "pitchDeg": 28.351939714834366,
+  "distanceM": 8.346201983515673,
+  "image": "artifacts/building-recipes/pand-089681/photo-wall-commelinstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-dapperstraat",
+  "panoId": "TMX7316010203-002906_pano_0002_000110",
+  "timestamp": "2023-01-02T08:40:04.605480Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002906/pano_0002_000110/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123629.81951211367,
+   486347.0194358337
+  ],
+  "headingDeg": 73.88674716739229,
+  "fovDeg": 110,
+  "pitchDeg": 21.11043523157055,
+  "distanceM": 11.685164770924395,
+  "image": "artifacts/building-recipes/pand-089681/photo-wall-dapperstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

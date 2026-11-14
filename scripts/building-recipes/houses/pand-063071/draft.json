@@ -1,0 +1,75 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 10,
+   "bearing": 128,
+   "widthM": 81.2,
+   "heightM": 8.5,
+   "street": "Computerweg"
+  },
+  {
+   "group": 1,
+   "panel": 4,
+   "bearing": 218,
+   "widthM": 50.1,
+   "heightM": 11.8,
+   "street": "tt. Vasumweg"
+  },
+  {
+   "group": 2,
+   "panel": 5,
+   "bearing": 308,
+   "widthM": 13,
+   "heightM": 11.8,
+   "street": "Displaystraat"
+  },
+  {
+   "group": 3,
+   "panel": 9,
+   "bearing": 128,
+   "widthM": 12.9,
+   "heightM": 11.8,
+   "street": "Computerweg"
+  },
+  {
+   "group": 4,
+   "panel": 3,
+   "bearing": 308,
+   "widthM": 12.1,
+   "heightM": 8.5,
+   "street": "Displaystraat"
+  },
+  {
+   "group": 5,
+   "panel": 7,
+   "bearing": 38,
+   "widthM": 49.8,
+   "heightM": 3.1,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 0,
+   "widthM": 69.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 2,
+   "widthM": 24.8,
+   "reason": "party wall"
+  },
+  {
+   "panel": 1,
+   "widthM": 24.8,
+   "reason": "party wall"
+  },
+  {
+   "panel": 8,
+   "widthM": 12.3,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-witte-de-withplein",
+  "panoId": "TMX7316010203-001041_pano_0002_002140",
+  "timestamp": "2019-01-09T09:45:01.732900Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001041/pano_0002_002140/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119029.01434214645,
+   486912.48839411867
+  ],
+  "headingDeg": 259.27771168249967,
+  "fovDeg": 59.112774133576785,
+  "pitchDeg": 9.436750356023559,
+  "distanceM": 37.726083309456016,
+  "image": "artifacts/building-recipes/pand-239704/photo-wall-witte-de-withplein.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-admiralengracht",
+  "panoId": "TMX7316010203-001953_pano_0000_000164",
+  "timestamp": "2021-01-14T10:34:56.044070Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/01/14/TMX7316010203-001953/pano_0000_000164/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118910.66261399181,
+   486898.3704593893
+  ],
+  "headingDeg": 77.17803097685896,
+  "fovDeg": 97.55324569158178,
+  "pitchDeg": 13.075671464919772,
+  "distanceM": 26.937528730495735,
+  "image": "artifacts/building-recipes/pand-239704/photo-wall-admiralengracht.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

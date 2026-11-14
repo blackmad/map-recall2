@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-nieuwe-kerkstraat",
+  "panoId": "TMX7316010203-002933_pano_0003_000042",
+  "timestamp": "2023-01-13T09:58:06.797820Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/13/TMX7316010203-002933/pano_0003_000042/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122201.56259916768,
+   486366.2148144193
+  ],
+  "headingDeg": 161.84291739813762,
+  "fovDeg": 110,
+  "pitchDeg": 45.42919067594406,
+  "distanceM": 6.201882576234762,
+  "image": "artifacts/building-recipes/pand-169731/photo-wall-nieuwe-kerkstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-weesperstraat",
+  "panoId": "TMX7316010203-002910_pano_0018_000060",
+  "timestamp": "2023-01-02T12:47:19.813610Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002910/pano_0018_000060/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122238.42230538704,
+   486352.16219782777
+  ],
+  "headingDeg": 253.54819570793885,
+  "fovDeg": 80.59091295412205,
+  "pitchDeg": 40.206195081713375,
+  "distanceM": 18.634482754487287,
+  "image": "artifacts/building-recipes/pand-169731/photo-wall-weesperstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

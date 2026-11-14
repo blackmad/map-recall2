@@ -1,0 +1,126 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 6,
+   "bearing": 195,
+   "widthM": 30,
+   "heightM": 57.6,
+   "street": "Bos en Lommerweg"
+  },
+  {
+   "group": 1,
+   "panel": 16,
+   "bearing": 105,
+   "widthM": 16.6,
+   "heightM": 35.7,
+   "street": "Leeuwendalersweg"
+  },
+  {
+   "group": 2,
+   "panel": 5,
+   "bearing": 194,
+   "widthM": 8.7,
+   "heightM": 57.5,
+   "street": "Bos en Lommerweg"
+  },
+  {
+   "group": 3,
+   "panel": 8,
+   "bearing": 105,
+   "widthM": 16.5,
+   "heightM": 12.4,
+   "street": "Leeuwendalersweg"
+  },
+  {
+   "group": 4,
+   "panel": 17,
+   "bearing": 15,
+   "widthM": 38.8,
+   "heightM": 57.5,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 7,
+   "bearing": 284,
+   "widthM": 16.7,
+   "heightM": 57.5,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 18,
+   "bearing": 103,
+   "widthM": 16.6,
+   "heightM": 20.3,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 1,
+   "bearing": 285,
+   "widthM": 16.4,
+   "heightM": 12.4,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 13,
+   "widthM": 4.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 21,
+   "widthM": 2.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 26,
+   "widthM": 16.9,
+   "reason": "party wall"
+  },
+  {
+   "panel": 2,
+   "widthM": 9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 3,
+   "widthM": 8.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 4,
+   "widthM": 3.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 19,
+   "widthM": 13.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 25,
+   "widthM": 3.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 15,
+   "widthM": 4.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 22,
+   "widthM": 2.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 14,
+   "widthM": 2.4,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

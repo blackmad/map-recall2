@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-albatrospad",
+  "panoId": "TMX7316010203-001513_pano_0002_002266",
+  "timestamp": "2019-12-12T10:10:58.070080Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/12/TMX7316010203-001513/pano_0002_002266/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123366.83847284132,
+   489021.3618814713
+  ],
+  "headingDeg": 212.81539552255452,
+  "fovDeg": 110,
+  "pitchDeg": 35.29631544813977,
+  "distanceM": 20.641299023190385,
+  "image": "artifacts/building-recipes/pand-150906/photo-wall-albatrospad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-johan-van-hasseltweg",
+  "panoId": "TMX7316060226-000495_pano_0000_003945",
+  "timestamp": "2019-11-15T12:59:27.845740Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/15/TMX7316060226-000495/pano_0000_003945/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123373.1269161813,
+   489018.7985108881
+  ],
+  "headingDeg": 208.9101315407472,
+  "fovDeg": 110,
+  "pitchDeg": 33.71787680886057,
+  "distanceM": 21.900810599173546,
+  "image": "artifacts/building-recipes/pand-150906/photo-wall-johan-van-hasseltweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-kievitstraat",
+  "panoId": "recording_2024-10-22_09-10-27_02787",
+  "timestamp": "2024-10-22T10:16:09Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-22_09-10-27_02787/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123301.51652298488,
+   489018.9896999829
+  ],
+  "headingDeg": 122.66098876014865,
+  "fovDeg": 89.00950622628359,
+  "pitchDeg": 38.6351755294067,
+  "distanceM": 18.282006758947553,
+  "image": "artifacts/building-recipes/pand-150906/photo-wall-kievitstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

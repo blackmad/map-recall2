@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-de-boelelaan",
+  "panoId": "recording_2024-12-20_09-04-31_03244",
+  "timestamp": "2024-12-20T10:21:15Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_03244/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119919.3992302723,
+   483133.6776349132
+  ],
+  "headingDeg": 179.0361864242018,
+  "fovDeg": 68.0111789196054,
+  "pitchDeg": 32.92668566947578,
+  "distanceM": 20.43702638048329,
+  "image": "artifacts/building-recipes/pand-077450/photo-wall-de-boelelaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-asingaborg",
+  "panoId": "TMX7316010203-002486_pano_0002_001022",
+  "timestamp": "2022-03-29T07:04:11.067190Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/03/29/TMX7316010203-002486/pano_0002_001022/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119786.253251051,
+   483103.51535277965
+  ],
+  "headingDeg": 88.87599505036184,
+  "fovDeg": 86.82544148426543,
+  "pitchDeg": 41.34161797379218,
+  "distanceM": 13.210790952116957,
+  "image": "artifacts/building-recipes/pand-077450/photo-wall-asingaborg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-groningenstraat",
+  "panoId": "TMX7316010203-001035_pano_0004_000122",
+  "timestamp": "2019-01-03T12:25:35.339400Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/03/TMX7316010203-001035/pano_0004_000122/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119872.0814917961,
+   483073.5567168709
+  ],
+  "headingDeg": 358.30560453717436,
+  "fovDeg": 110,
+  "pitchDeg": 6.439059780676725,
+  "distanceM": 19.93650021989741,
+  "image": "artifacts/building-recipes/pand-077450/photo-wall-groningenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

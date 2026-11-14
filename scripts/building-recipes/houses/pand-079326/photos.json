@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-papaverweg",
+  "panoId": "TMX7316060226-000493_pano_0001_000558",
+  "timestamp": "2019-11-15T10:19:45.594200Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/15/TMX7316060226-000493/pano_0001_000558/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122360.04233451639,
+   489914.008020706
+  ],
+  "headingDeg": 210.70044196486816,
+  "fovDeg": 74.28913996221719,
+  "pitchDeg": 7.001434376783736,
+  "distanceM": 18.320987660945203,
+  "image": "artifacts/building-recipes/pand-079326/photo-wall-papaverweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-struisgrasstraat",
+  "panoId": "TMX7316010203-001999_pano_0000_000724",
+  "timestamp": "2021-02-11T12:41:47.381850Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/02/11/TMX7316010203-001999/pano_0000_000724/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122391.80996034347,
+   489817.8649690444
+  ],
+  "headingDeg": 295.0862058484347,
+  "fovDeg": 110,
+  "pitchDeg": 15.68696264917223,
+  "distanceM": 8.011627448602907,
+  "image": "artifacts/building-recipes/pand-079326/photo-wall-struisgrasstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hulstweg",
+  "panoId": "TMX7316060226-000493_pano_0001_000558",
+  "timestamp": "2019-11-15T10:19:45.594200Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/15/TMX7316060226-000493/pano_0001_000558/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122360.04233451639,
+   489914.008020706
+  ],
+  "headingDeg": 210.70044196486816,
+  "fovDeg": 74.28913996221719,
+  "pitchDeg": 7.001434376783736,
+  "distanceM": 18.320987660945203,
+  "image": "artifacts/building-recipes/pand-079326/photo-wall-hulstweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-loosduinenstraat",
+  "panoId": "TMX7316010203-002087_pano_0000_001914",
+  "timestamp": "2021-04-13T08:43:36.111910Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/13/TMX7316010203-002087/pano_0000_001914/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117586.07646007184,
+   484851.7354898537
+  ],
+  "headingDeg": 86.08887963435853,
+  "fovDeg": 110,
+  "pitchDeg": 34.27438290650194,
+  "distanceM": 9.071542012813417,
+  "image": "artifacts/building-recipes/pand-237887/photo-wall-loosduinenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-kwintsheulstraat",
+  "panoId": "TMX7316010203-002087_pano_0000_001723",
+  "timestamp": "2021-04-13T08:40:19.103690Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/13/TMX7316010203-002087/pano_0000_001723/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117688.53349003251,
+   484888.7994414354
+  ],
+  "headingDeg": 267.6936084578682,
+  "fovDeg": 110,
+  "pitchDeg": 15.754642898905807,
+  "distanceM": 22.00844380749223,
+  "image": "artifacts/building-recipes/pand-237887/photo-wall-kwintsheulstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-rijswijkstraat",
+  "panoId": "TMX7316010203-002087_pano_0000_001530",
+  "timestamp": "2021-04-13T08:36:31.905550Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/13/TMX7316010203-002087/pano_0000_001530/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117629.96779445904,
+   484819.0225894605
+  ],
+  "headingDeg": 2.047287164754607,
+  "fovDeg": 110,
+  "pitchDeg": 17.05364131810986,
+  "distanceM": 20.24058043560112,
+  "image": "artifacts/building-recipes/pand-237887/photo-wall-rijswijkstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

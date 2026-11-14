@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-johan-huizingalaan",
+  "panoId": "b_20241114_1202_Track08_Sphere_00047",
+  "timestamp": "2024-11-14T11:41:53Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241114_1202_Track08_Sphere_00047/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   116844.14907875149,
+   486210.9032757718
+  ],
+  "headingDeg": 272.2413908066102,
+  "fovDeg": 73.69816657937352,
+  "pitchDeg": 12.290204086281522,
+  "distanceM": 18.178987056520526,
+  "image": "artifacts/building-recipes/pand-143384/photo-wall-johan-huizingalaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hemsterhuisstraat",
+  "panoId": "TMX7316010203-002512_pano_0000_000574",
+  "timestamp": "2022-04-13T08:55:19.781330Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/04/13/TMX7316010203-002512/pano_0000_000574/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   116815.28211040027,
+   486235.9664684864
+  ],
+  "headingDeg": 178.73727903657732,
+  "fovDeg": 87.46030924518041,
+  "pitchDeg": 18.174788131826475,
+  "distanceM": 12.247192606439153,
+  "image": "artifacts/building-recipes/pand-143384/photo-wall-hemsterhuisstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-nicolaas-japiksestraat",
+  "panoId": "b_20241204_0806_Track64_Sphere_00071",
+  "timestamp": "2024-12-04T11:25:25Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241204_0806_Track64_Sphere_00071/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   116747.72308286624,
+   486173.1792751559
+  ],
+  "headingDeg": 0.238579152700936,
+  "fovDeg": 110,
+  "pitchDeg": 18.474254806010045,
+  "distanceM": 10.78706836153747,
+  "image": "artifacts/building-recipes/pand-143384/photo-wall-nicolaas-japiksestraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

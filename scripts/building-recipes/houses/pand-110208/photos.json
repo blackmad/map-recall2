@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-terheideweg",
+  "panoId": "TMX7316010203-002492_pano_0003_001062",
+  "timestamp": "2022-03-30T09:02:56.864430Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/03/30/TMX7316010203-002492/pano_0003_001062/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117869.84649587942,
+   485456.55132438155
+  ],
+  "headingDeg": 268.1432289070022,
+  "fovDeg": 71.31047013072624,
+  "pitchDeg": 30.96959324292473,
+  "distanceM": 26.151101603876143,
+  "image": "artifacts/building-recipes/pand-110208/photo-wall-terheideweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-koningin-wilhelminaplein",
+  "panoId": "TMX7316010203-002835_pano_0002_000015",
+  "timestamp": "2022-12-07T10:59:51.797300Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/07/TMX7316010203-002835/pano_0002_000015/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117768.23998119246,
+   485465.69620033895
+  ],
+  "headingDeg": 89.76799291139992,
+  "fovDeg": 99.06171897145225,
+  "pitchDeg": 44.452511623296814,
+  "distanceM": 16.002775003969077,
+  "image": "artifacts/building-recipes/pand-110208/photo-wall-koningin-wilhelminaplein.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-elizabeth-anscombestraat",
+  "panoId": "TMX7316010203-002835_pano_0002_000015",
+  "timestamp": "2022-12-07T10:59:51.797300Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/07/TMX7316010203-002835/pano_0002_000015/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117768.23998119246,
+   485465.69620033895
+  ],
+  "headingDeg": 89.76799291139992,
+  "fovDeg": 99.06171897145225,
+  "pitchDeg": 44.452511613251936,
+  "distanceM": 16.002775003969077,
+  "image": "artifacts/building-recipes/pand-110208/photo-wall-elizabeth-anscombestraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

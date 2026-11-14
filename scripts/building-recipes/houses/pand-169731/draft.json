@@ -1,0 +1,141 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 3,
+   "bearing": 73,
+   "widthM": 20.6,
+   "heightM": 35,
+   "street": "Weesperstraat"
+  },
+  {
+   "group": 1,
+   "panel": 9,
+   "bearing": 343,
+   "widthM": 16.3,
+   "heightM": 16.1,
+   "street": "Nieuwe Kerkstraat"
+  },
+  {
+   "group": 2,
+   "panel": 5,
+   "bearing": 73,
+   "widthM": 5.5,
+   "heightM": 16.1,
+   "street": "Weesperstraat"
+  },
+  {
+   "group": 3,
+   "panel": 20,
+   "bearing": 254,
+   "widthM": 12.8,
+   "heightM": 32.6,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 34,
+   "bearing": 326,
+   "widthM": 8.8,
+   "heightM": 35,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 19,
+   "bearing": 254,
+   "widthM": 9.1,
+   "heightM": 32.2,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 40,
+   "bearing": 332,
+   "widthM": 12,
+   "heightM": 19,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 17,
+   "bearing": 330,
+   "widthM": 8.3,
+   "heightM": 16,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 18,
+   "widthM": 20.6,
+   "reason": "party wall"
+  },
+  {
+   "panel": 21,
+   "widthM": 3.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 12,
+   "widthM": 21.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 11,
+   "widthM": 4.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 7,
+   "widthM": 4.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 4,
+   "widthM": 4,
+   "reason": "party wall"
+  },
+  {
+   "panel": 16,
+   "widthM": 3.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 15,
+   "widthM": 2.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 31,
+   "widthM": 4.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 30,
+   "widthM": 4.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 26,
+   "widthM": 4.4,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 42,
+   "widthM": 2.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 24,
+   "widthM": 2.6,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 23,
+   "widthM": 2.8,
+   "reason": "unnamed panel under 8 m"
+  }
+ ]
+}

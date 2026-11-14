@@ -1,0 +1,156 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 17,
+   "bearing": 269,
+   "widthM": 53.2,
+   "heightM": 6.6,
+   "street": "Contactweg"
+  },
+  {
+   "group": 1,
+   "panel": 18,
+   "bearing": 269,
+   "widthM": 10,
+   "heightM": 5.5,
+   "street": "Contactweg"
+  },
+  {
+   "group": 2,
+   "panel": 2,
+   "bearing": 359,
+   "widthM": 74,
+   "heightM": 6.8,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 5,
+   "bearing": 89,
+   "widthM": 79.7,
+   "heightM": 5.6,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 1,
+   "bearing": 179,
+   "widthM": 45.8,
+   "heightM": 6.8,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 6,
+   "bearing": 179,
+   "widthM": 20.9,
+   "heightM": 6.7,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 10,
+   "bearing": 269,
+   "widthM": 16.6,
+   "heightM": 6.6,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 3,
+   "bearing": 179,
+   "widthM": 16.3,
+   "heightM": 6.6,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 0,
+   "widthM": 53.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 31,
+   "widthM": 7.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 27,
+   "widthM": 6.5,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 8.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 30,
+   "widthM": 79.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 13,
+   "widthM": 79.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 26,
+   "widthM": 79.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 4,
+   "widthM": 79.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 19,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 8,
+   "widthM": 3.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 23,
+   "widthM": 79.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 25,
+   "widthM": 79.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 22,
+   "widthM": 59.2,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 28,
+   "widthM": 55.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 24,
+   "widthM": 24.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 20,
+   "widthM": 3.6,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 21,
+   "widthM": 20.6,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-tugelaweg",
+  "panoId": "TMX7316010203-001527_pano_0000_002436",
+  "timestamp": "2019-12-19T08:42:55.865470Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/19/TMX7316010203-001527/pano_0000_002436/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123326.73497244334,
+   485471.64795463515
+  ],
+  "headingDeg": 148.27694452058665,
+  "fovDeg": 110,
+  "pitchDeg": 39.391844552658746,
+  "distanceM": 6.987076737133702,
+  "image": "artifacts/building-recipes/pand-241220/photo-wall-tugelaweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-retiefstraat",
+  "panoId": "TMX7316010203-002908_pano_0008_000053",
+  "timestamp": "2023-01-02T10:11:21.478310Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002908/pano_0008_000053/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123354.72170144251,
+   485413.7052232825
+  ],
+  "headingDeg": 341.3036492335252,
+  "fovDeg": 110,
+  "pitchDeg": 38.48942774889759,
+  "distanceM": 7.41321701978809,
+  "image": "artifacts/building-recipes/pand-241220/photo-wall-retiefstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-magersfonteinstraat",
+  "panoId": "TMX7316010203-001679_pano_0000_002220",
+  "timestamp": "2020-04-29T09:16:06.948630Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/29/TMX7316010203-001679/pano_0000_002220/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123307.09298119106,
+   485423.80324316345
+  ],
+  "headingDeg": 51.004328503409965,
+  "fovDeg": 110,
+  "pitchDeg": 33.77476903347458,
+  "distanceM": 8.817487265216414,
+  "image": "artifacts/building-recipes/pand-241220/photo-wall-magersfonteinstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

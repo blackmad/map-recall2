@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-contactweg",
+  "panoId": "TMX7316010203-001127_pano_0000_003693",
+  "timestamp": "2019-04-15T10:21:22.551050Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/04/15/TMX7316010203-001127/pano_0000_003693/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118828.38011775602,
+   489562.7794309106
+  ],
+  "headingDeg": 88.065350784977,
+  "fovDeg": 29.637587971744672,
+  "pitchDeg": 5.244242902865295,
+  "distanceM": 24.513605420013633,
+  "image": "artifacts/building-recipes/pand-085297/photo-wall-contactweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

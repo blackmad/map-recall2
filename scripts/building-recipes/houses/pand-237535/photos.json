@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-leeuwendalersweg",
+  "panoId": "TMX7316010203-002522_pano_0000_000148",
+  "timestamp": "2022-04-19T06:38:10.019140Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/04/19/TMX7316010203-002522/pano_0000_000148/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117674.54776863757,
+   488040.5434401844
+  ],
+  "headingDeg": 282.6458727905004,
+  "fovDeg": 103.57177655197924,
+  "pitchDeg": 51.82473217591314,
+  "distanceM": 12.66788117214566,
+  "image": "artifacts/building-recipes/pand-237535/photo-wall-leeuwendalersweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-bos-en-lommerweg",
+  "panoId": "TMX7316010203-002848_pano_0005_000003",
+  "timestamp": "2022-12-12T09:16:03.744040Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/12/TMX7316010203-002848/pano_0005_000003/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117633.1292240434,
+   488009.0470976834
+  ],
+  "headingDeg": 14.746603210270166,
+  "fovDeg": 75.29563715796995,
+  "pitchDeg": 40.029329845527585,
+  "distanceM": 32.17496239476042,
+  "image": "artifacts/building-recipes/pand-237535/photo-wall-bos-en-lommerweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
