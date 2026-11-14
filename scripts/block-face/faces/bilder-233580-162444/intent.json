@@ -54,11 +54,11 @@
       "street": "Kinkerstraat",
       "basement": "none",
       "cornice": "heavy",
-      "hoist": false,
+      "hoist": true,
       "gable": "cornice",
       "storeys": 4,
-      "bays": 3,
-      "dormers": 0,
+      "bays": 5,
+      "dormers": 1,
       "tallGround": true,
       "windows": "sash",
       "windowHead": {
@@ -89,14 +89,16 @@
        "fasciaColour": "#2a2f6e",
        "evidence": "kinker-86-110 strip.jpg pand 10 (zoom): cream-painted ground storey, small leaded transom lights, dark blue fascia \"...INN\", roller shutter; OSM node 494157345"
       },
-      "doorBay": 2
+      "doorBay": 4,
+      "dormerStyle": "pediment",
+      "roofFront": "mansard"
      }
     ],
     "roof": {
      "material": "slate"
     },
     "palette": {
-     "brick": "red-brown",
+     "brick": "#6e4238",
      "frame": "white",
      "door": "dark-brown",
      "stone": "white-painted"
@@ -140,10 +142,12 @@
      "two boarded (white-panelled) windows per storey on the left are modelled as glazed windows",
      "louvre transom band above the shopfront is not modelled",
      "dormer is off-centre right (x 0.56) but modelled centred",
-     "corner: the Kinkerstraat front is taken from kinker-86-110 (strip pand 10: 3 axes, segmental tympana on storeys 1-2, flat on storey 3); its storey-3 flat heads and the low roof box are not said",
-     "cream-painted Kinkerstraat ground-storey wall"
+     "cream-painted Kinkerstraat ground-storey wall",
+     "the Kinkerstraat front's storey-3 flat heads (storeys 1-2 segmental with tympana are stated)",
+     "a small roof light in the Kinkerstraat mansard beside the dormer",
+     "wall: the Kinkerstraat row's judged red-brown (#6e4238) is used on both fronts so the corner matches the row (the strip shows one brick)"
     ],
-    "kinkerstraatCitation": "kinker-86-110 strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3 (lane D 2026-11-14: the blank slab right of Kinkerstraat 90)"
+    "kinkerstraatCitation": "rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10): right of 90, 5 brick axes over the CORNER INN ground; segmental heads with tympana on storeys 1-2, flat on 3; the row's white cornice frieze; slate mansard with one pedimented hoist dormer and a roof light (lane D 2026-11-14)"
    }
   },
   {

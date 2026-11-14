@@ -73,6 +73,22 @@
       "ref": "integrator, blind review 6 (sheet photo)",
       "at": "2026-11-14",
       "note": "102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting"
+    },
+    {
+      "fronts": [
+        "0363100012233580"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "pediment",
+        "hoist": true
+      },
+      "ref": "lane D, rule-10 pano TMX7316010203-002921_pano_0015_000068 (2023-01-10), kinker-roundi-rule10-triple row 2",
+      "at": "2026-11-14",
+      "note": "86-88: right of 90 the brick row front continues over the CORNER INN ground with the row cornice, a slate mansard and one pedimented hoist dormer; the pale building beyond is across Bilderdijkstraat, not 233580"
     }
   ],
   "weteringschans-168096-171218": [
