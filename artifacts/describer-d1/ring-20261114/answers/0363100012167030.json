@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012167030",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167030.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "doorBay",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a black-painted restaurant front with a gridded glazed centre and a round oculus window at each side"
+  },
+  {
+   "component": "dormer",
+   "what": "two dormers with crested, pinnacled tops stand side by side over the middle bays"
+  }
+ ],
+ "notes": "Wide-angle cut; the outer bays are narrower than the two middle bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

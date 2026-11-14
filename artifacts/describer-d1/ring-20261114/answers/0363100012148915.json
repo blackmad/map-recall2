@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012148915",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012148915.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3,
+  2
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "courses",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "cornice",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a small pointed brick gable rises over the left part of the parapet above the round-arched top window"
+  },
+  {
+   "component": "window",
+   "what": "outer windows on the three middle storeys sit under round-topped brick arches with a filled tympanum"
+  }
+ ],
+ "notes": "Top storey under the parapet has two openings, one round-arched and one rectangular.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

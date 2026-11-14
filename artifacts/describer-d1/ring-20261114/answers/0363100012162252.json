@@ -1,0 +1,88 @@
+{
+ "v": 1,
+ "pandId": "0363100012162252",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162252.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "doorBay",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white blocked voussoirs round every segmental arch and white blocks down the jambs on red brick"
+  },
+  {
+   "component": "balcony",
+   "what": "low iron balconettes in front of all three windows on the first and second floors"
+  },
+  {
+   "component": "door",
+   "what": "two narrow arched street doors side by side at the left of the ground storey"
+  },
+  {
+   "component": "relief",
+   "what": "a tall white stucco frieze with carved ornament under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped dormer with a hoist beam over the middle bay"
+  }
+ ],
+ "notes": "A parked car and a shrub hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

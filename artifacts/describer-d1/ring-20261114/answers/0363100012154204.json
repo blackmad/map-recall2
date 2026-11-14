@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012154204",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012154204.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 0,
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "finish",
+  "pale"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a long one-storey pavilion of large shop windows between dark pilasters, with a row of small sign panels in a frieze under a projecting cornice"
+  }
+ ],
+ "notes": "A one-storey wide building between tall neighbours; a street tree stands in front of the right half.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012165396",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165396.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  5,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 2,
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "rusticated brick pilaster strips between the three axes on the upper storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "a central triangular pediment with an oculus over the middle axis above the cornice"
+  }
+ ],
+ "notes": "Two street doors on the ground storey, small round-headed windows at left.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

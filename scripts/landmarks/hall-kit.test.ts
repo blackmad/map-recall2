@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {blobOutline, glasshouseRidges, graffitiLayout, sawtoothOutline, scallopOutline, seeded, spokeTips, strokePattern} from './hall-kit';
+import {blobOutline, glasshouseRidges, graffitiLayout, ivyBumps, sawtoothOutline, scallopOutline, seeded, spokeTips, strokePattern, tagOutline, tagStrokes} from './hall-kit';
 
 test('sawtoothOutline walks valley, apex, valley over the eaves', () => {
   const pts = sawtoothOutline({valleys: [0, 4, 8], apexes: [3, 7], eaves: 6, apex: 8});
@@ -41,4 +41,24 @@ test('seeded, graffiti layout and stroke patterns are deterministic', () => {
   assert.deepEqual(strokePattern(3), strokePattern(3));
   for (const [x, y, w, h] of strokePattern(5)) assert.ok(x >= 0 && y >= 0 && x + w <= 1 && y + h <= 1);
   assert.equal(blobOutline(1, 0.5).length, 14);
+});
+
+test('tag panels: jagged outline inside the piece box, letter strokes inside the panel, both seeded', () => {
+  const o = tagOutline(2, 1, 5);
+  assert.equal(o.length, 18);
+  assert.deepEqual(o, tagOutline(2, 1, 5));
+  assert.notDeepEqual(o, tagOutline(2, 1, 6));
+  for (const [x, y] of o) assert.ok(Math.abs(x) <= 2 + 1e-9 && Math.abs(y) <= 1 + 1e-9);
+  const st = tagStrokes(2, 1, 4, 9);
+  assert.ok(st.length >= 8 && st.length <= 12);
+  for (const [x0, y0, x1, y1] of st) for (const [x, y] of [[x0, y0], [x1, y1]]) assert.ok(Math.abs(x) < 2 && Math.abs(y) < 1);
+  assert.deepEqual(st, tagStrokes(2, 1, 4, 9));
+});
+
+test('ivyBumps fall inside the outline and are seeded', () => {
+  const tri: [number, number][] = [[0, 0], [4, 0], [2, 4]];
+  const b = ivyBumps(tri, 10, 3, 0.4, 0.8);
+  assert.equal(b.length, 10);
+  for (const [x, y, r] of b) { assert.ok(y >= 0 && y <= 4 && x >= y / 2 - 1e-9 && x <= 4 - y / 2 + 1e-9); assert.ok(r >= 0.4 && r <= 0.8); }
+  assert.deepEqual(b, ivyBumps(tri, 10, 3, 0.4, 0.8));
 });

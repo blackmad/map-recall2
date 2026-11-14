@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012172132",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012172132.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "flat",
+  "pointed"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "crown",
+  "storeyParts.roof",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the top storey has paired narrow lights with pointed heads in each bay"
+  },
+  {
+   "component": "relief",
+   "what": "white stone roundel and block ornaments set in the striped brick"
+  }
+ ],
+ "notes": "Two-bay section of a large block beside a corner tower; an excavator and fencing hide the lower ground storey; glare streak across the second floor.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

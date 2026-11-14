@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012159942",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159942.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "sameAs",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber erker with small-paned upper lights on the centre axis of storey 2, on a scalloped base"
+  },
+  {
+   "component": "door",
+   "what": "white stucco ground storey with a pair of narrow street doors side by side at the left"
+  }
+ ],
+ "notes": "The neighbours are the same series in bare brick without the erker.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

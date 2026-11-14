@@ -143,3 +143,34 @@ test('lettering centres level text on t, sits on the baseline and spreads with t
   assert.ok(Math.abs(w1 - w0 - 6 * 0.4) < 1e-9, 'tracking adds per gap');
   assert.throws(() => lettering(b2, F, 'Bav#', 0, 0, px, 0.02, 'blue'));
 });
+
+test('strutBetween spans its two points', async () => {
+  const {strutBetween, pathSkin, pathLedge} = await import('./venue-kit');
+  const {b, got} = collector();
+  strutBetween(b, [0, 0, 0], [3, 4, 0], 0.2, 'stone');
+  const bb = boxOf(got.map(g => g.g));
+  assert.ok(Math.abs(bb.min.y + 0.08) < 0.1 && Math.abs(bb.max.y - 4.08) < 0.1, `y ${bb.min.y}..${bb.max.y}`);
+  assert.ok(bb.max.x > 2.9 && bb.min.x < 0.1);
+  const M = new TriSink();
+  pathSkin(M, [[0, 0], [4, 0], [4, 4]], 0, 3, 0, 'stone');
+  pathLedge(M, [[0, 0], [4, 0]], 3, 0.2, -0.1, 0.3, 'slate');
+  assert.equal(M.tris.get('stone')!.length / 9, 4);
+  assert.equal(M.tris.get('slate')!.length / 9, 10);
+});
+
+test('pathLettering follows a bent path and matches lettering width on a straight one', async () => {
+  const {pathLettering} = await import('./venue-kit');
+  setSink(0);
+  const {b: b1} = collector();
+  const w0 = lettering(b1, F, 'meervaart', 0, 0, 0.1, 0.02, 'white');
+  const {b, got} = collector();
+  const w1 = pathLettering(b, [[0, 0], [10, 0]], 'meervaart', 5, 1, 0.1, 0.02, 'white');
+  assert.ok(Math.abs(w1 - w0) < 1e-9, 'same set width');
+  const bb = boxOf(got.map(g => g.g));
+  assert.ok(Math.abs((bb.min.x + bb.max.x) / 2 - 5) < 0.06 && Math.abs(bb.min.y - 1) < 1e-6);
+  // a right-angle bend at x = 5: glyphs past the corner turn to the second leg
+  const {b: b3, got: g3} = collector();
+  pathLettering(b3, [[0, 0], [5, 0], [5, 5]], 'meervaart', 5, 0, 0.2, 0.02, 'white');
+  const box3 = boxOf(g3.map(g => g.g));
+  assert.ok(box3.max.z > 1 && box3.min.x < 4, 'text runs along both legs');
+});

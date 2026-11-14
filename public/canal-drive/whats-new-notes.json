@@ -19,6 +19,74 @@
     },
     {
       "date": "2026-11-14",
+      "title": "Canal and ring streets drawn from their photos",
+      "text": "293 houses now take their look from a reading of their own street photos: the number of bays, the bands between storeys, the cornice or gable at the top, and the wall colour. On the canals that covers Herengracht 2 to 90 and 1 to 85, Keizersgracht 1 to 107, 225 to 351 and 692 to 826, and the Weteringschans. In the ring it covers Kinkerstraat through the Bellamybuurt and the Da Costabuurt, and the Plantage Middenlaan. A street went live only where its row sheet, photo beside today beside the new version, looked closer to the photo; houses that looked worse were left out.",
+      "where": [
+        4.8873,
+        52.3735
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-14-d1-belt/herengracht-even-1.jpg",
+          "alt": "Herengracht 2 to 90: panorama, today, and the described houses, row by row",
+          "caption": "Herengracht even side: photo | before | after"
+        },
+        {
+          "src": "ui/2026-11-14-d1-ring/kinkerstraat-da-costabuurt/r2-rule10-1.jpg",
+          "alt": "Kinkerstraat in the Da Costabuurt: panorama, before and after",
+          "caption": "Kinkerstraat, Da Costabuurt: photo | before | after"
+        },
+        {
+          "src": "ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg",
+          "alt": "Weteringschans row with the measured wall colour",
+          "caption": "Weteringschans with the measured wall colour"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Q-Factory, De Meervaart and the Westergas houses",
+      "text": "More venues have their own models: the Q-Factory on the Atlantisplein; De Meervaart with its brick base, aluminium halls and named fly tower; and two Westergasfabriek buildings on the Gosschalklaan, the western foreman's house and number 12 from 1885. The Muziekgebouw aan 't IJ and the Bimhuis were rebuilt from the panoramas, with the red podium, the glass hall and the black Bimhuis box on its struts.",
+      "where": [
+        4.9138,
+        52.378
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-venues-r3/q-factory/rule10-photo-before-after.jpg",
+          "alt": "Q-Factory: photo, before and after",
+          "caption": "Q-Factory: photo | before | after"
+        },
+        {
+          "src": "landmarks/2026-11-14-venues-r3/meervaart/rule10-photo-before-after.jpg",
+          "alt": "De Meervaart: photo, before and after",
+          "caption": "De Meervaart: photo | before | after"
+        },
+        {
+          "src": "landmarks/2026-11-14-venues-r3/muziekgebouw-bimhuis/gallery-4-sides.jpg",
+          "alt": "Muziekgebouw and Bimhuis from four sides",
+          "caption": "Muziekgebouw aan 't IJ and the Bimhuis"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Skatecafé tags, ivy and the Garage Noord umbrellas",
+      "text": "The Skatecafé's graffiti is now flat tags painted on the brick where the panorama shows them, and its ivy reads as a leafy mass instead of a slab. The lamp masts at Garage Noord stand where the photo has them, as tall upturned umbrellas. Skatecafé, Garage Noord and Sichuan Territory in Garage Noord's glasshouse have cards now.",
+      "where": [
+        4.9255,
+        52.3854
+      ],
+      "images": [
+        {
+          "src": "landmarks/2026-11-14-noord-hamerkanaal/round2/rule10-photo-before-after.jpg",
+          "alt": "Skatecafé and Garage Noord: photo, before and after",
+          "caption": "Photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
       "title": "Clean joins where motorway bridges meet the road",
       "text": "Yesterday's bridge fixes left a ragged pale patch where some bridge decks meet the road beyond them, on the Ringweg-Noord, the Coentunnel approach and Jan Evertsenstraat. The road now carries on at the deck's height past the end, so the join is a clean seam again; paths that pass under the bridges stay on the ground.",
       "where": [

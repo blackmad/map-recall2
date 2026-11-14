@@ -1,0 +1,68 @@
+{
+ "v": 1,
+ "pandId": "0363100012214280",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012214280.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 0,
+ "columns": [
+  2
+ ],
+ "windows": "not-visible",
+ "heads": [
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "cornice",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "flat roof with a thin projecting eave slab and a chimney"
+  },
+  {
+   "component": "window",
+   "what": "a wide band window of four small-paned lights in a light frame, likely a bridge-keeper's lookout"
+  }
+ ],
+ "notes": "Small one-storey yellow-brick utility building (bridge house) beside a canal; a lamp post crosses the right part.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

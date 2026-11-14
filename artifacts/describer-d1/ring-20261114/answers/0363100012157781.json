@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012157781",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157781.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.souterrain",
+  "bands",
+  "dormers",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the centre axis has an elaborate white stucco surround with a round-arched head on storeys 1 and 2; the side windows are bare"
+  },
+  {
+   "component": "relief",
+   "what": "the frieze under the cornice carries stucco garland reliefs"
+  },
+  {
+   "component": "balcony",
+   "what": "the storey-1 balcony is a white stone balconette on two large consoles"
+  }
+ ],
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

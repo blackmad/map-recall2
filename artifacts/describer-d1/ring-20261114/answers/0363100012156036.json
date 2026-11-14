@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012156036",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156036.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "crown",
+  "storeyParts.roof",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a short curved mansard hump over this half only, carrying a round-headed dormer"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white-rendered souterrain with a fascia and a pair of doors at pavement level"
+  }
+ ],
+ "notes": "Right half of a mirrored double house; the shared street door with its stoop sits just left of the outline.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

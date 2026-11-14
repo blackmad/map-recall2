@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012149424",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012149424.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a brick stepped-gable dormer with a hoist beam"
+  },
+  {
+   "component": "shopfront",
+   "what": "a row of small-paned transom lights over the shop between pale pilasters"
+  }
+ ],
+ "notes": "Vans hide the base of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

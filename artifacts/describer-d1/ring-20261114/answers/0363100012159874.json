@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012159874",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159874.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "dormers",
+  "heads",
+  "extent"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white one-storey bay window on the middle axis of the first floor carrying a balconette"
+  },
+  {
+   "component": "shopfront",
+   "what": "a deep restaurant awning runs across the whole ground storey of both fronts"
+  }
+ ],
+ "notes": "The outline spans two three-bay fronts over one shared restaurant; the left one with the bay window is described. The right one has stacked balconettes and a gabled three-light dormer.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

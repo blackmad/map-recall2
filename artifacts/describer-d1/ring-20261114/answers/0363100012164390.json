@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012164390",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164390.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 9,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windowSurround",
+  "sameAs",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small white blocks and dark brick ornaments over each window head form a decorative lintel row"
+  },
+  {
+   "component": "shopfront",
+   "what": "one long shopfront with a clerestory band runs under the whole wide front"
+  }
+ ],
+ "notes": "The outline covers a three-bay front at the left and a wide nine-bay front; described the wide one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

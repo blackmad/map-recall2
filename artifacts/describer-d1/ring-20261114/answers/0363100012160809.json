@@ -1,0 +1,63 @@
+{
+ "v": 1,
+ "pandId": "0363100012160809",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "sameAs",
+  "dormers",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a wall dormer rising out of the front over the middle bay, with a small pediment and a finial"
+  }
+ ],
+ "notes": "A continuous canopy and a van hide the ground storey; only a shutter with graffiti shows.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

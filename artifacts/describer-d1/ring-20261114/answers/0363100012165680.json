@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012165680",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165680.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "doorBay",
+  "ground",
+  "sameAs",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the left ground bay is a round-arched doorway"
+  }
+ ],
+ "notes": "A box truck hides most of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

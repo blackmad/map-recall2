@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012161926",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161926.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 3,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "basement",
+  "doorSurround",
+  "dormers",
+  "storeyParts.souterrain"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "the street door sits under a pair of small round-arched lights with a column between them"
+  },
+  {
+   "component": "window",
+   "what": "white pilaster strips at the party walls and a row of small attic lights along the roof behind the cornice"
+  }
+ ],
+ "notes": "A van hides the souterrain and the lower ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

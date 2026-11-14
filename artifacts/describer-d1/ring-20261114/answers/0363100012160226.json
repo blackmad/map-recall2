@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012160226",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160226.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "gable-attic",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "speklagen",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "top-storey windows under round relieving arches with white rings and lattice brick infill"
+  },
+  {
+   "component": "gable ornament",
+   "what": "two round medallions flank the attic window in the bell gable, which has a white coping and a flat top"
+  }
+ ],
+ "notes": "Lower storeys hidden by a bus shelter and a tram, a tree covers the left of the second visible row; only the top two rows and the gable can be read, so per-storey heads are left empty.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

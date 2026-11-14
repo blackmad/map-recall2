@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012170481",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3,
+    "gable": "cornice",
+    "readDormers": {
+     "count": 1,
+     "kind": "plain"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170481.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170481.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170481.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170481.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "light stone pilaster strips and a frieze band frame the brick wall under the cornice"
+  },
+  {
+   "component": "dormer",
+   "what": "central stone attic dormer with a curved top and a small round window"
+  }
+ ]
+}

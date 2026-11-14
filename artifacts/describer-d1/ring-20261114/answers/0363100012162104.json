@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012162104",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162104.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "sameAs",
+  "dormers",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a tall brick wall dormer rising from the front on the middle axis, with a window and a patterned brick panel under it"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on the middle axis of every upper storey in front of balcony doors"
+  }
+ ],
+ "notes": "A shop awning and a fruit stall cover the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

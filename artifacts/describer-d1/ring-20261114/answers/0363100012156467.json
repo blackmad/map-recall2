@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012156467",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156467.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  4,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "dormers",
+  "doorBay",
+  "columns",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the right-hand axis has blind (filled) window panels on every upper storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "round-arched shop windows set in a grey stone surround on the ground storey"
+  }
+ ],
+ "notes": "Outline holds two fronts behind one shop: a narrow three-axis front at left and a five-axis front at right (described). A van hides the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

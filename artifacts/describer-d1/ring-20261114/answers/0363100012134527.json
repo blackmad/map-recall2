@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012134527",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012134527.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  4,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-triple",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "windows",
+  "windowSurround",
+  "sameAs",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a row of small square windows in the brick between the shop fascia and the first floor"
+  }
+ ],
+ "notes": "Counted the small square windows over the shop as part of the ground storey. Front is one stretch of a long 1930s block under a continuous tiled roof.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

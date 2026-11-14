@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012236534",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236534.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 2,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "pale stucco pilaster strips frame the bays full height between the brick panels"
+  },
+  {
+   "component": "window",
+   "what": "the storey-2 centre window has a pediment-like head with a moulded hood over the storey-3 axis"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is faced in grey stone blocks with a pair of red double street doors at the right"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

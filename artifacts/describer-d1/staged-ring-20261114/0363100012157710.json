@@ -1,0 +1,17 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012157710",
+ "design": {
+  "palette": {
+   "brick": "#29383d"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157710.jpg",
+   "at": "2026-11-14"
+  }
+ }
+}

@@ -15,7 +15,8 @@ import {TriSink} from './venue-kit';
  *    with frame posts, rails and ridge/gutter bars.
  *  - `scallopedRake`: a bargeboard along a gable rake whose lower edge is a row of half-round scallops.
  *  - `spokeLamp`: a pole carrying a wheel of drooping radial spokes with a lamp on every tip.
- *  - `graffitiBand`: deterministic tag pieces and throw-ups over the lower storey, as coloured decal blobs.
+ *  - `tagBand`, `tagScribble`: flat tag panels (irregular fill, thin outline ring, letter strokes) and bare scribbled tags.
+ *  - `ivyMass`: a lumpy climbing-plant mass with a darker underside.
  *  - `strokeTiles`: square signboard tiles carrying horizontal/vertical stroke marks, standing in for CJK characters
  *    (the glyph kit has Latin capitals and lower case only).
  */
@@ -161,7 +162,7 @@ export function spokeTips(n: number, r: number, h: number, droop: number, phase 
   return Array.from({length: n}, (_, k) => { const a = phase + 2 * Math.PI * k / n; return [r * Math.cos(a), h - droop, r * Math.sin(a)]; });
 }
 /** A pole at native (x, z) with a wheel of `n` drooping spokes and a small lamp head at every tip. */
-export function spokeLamp(b: BuildingTools, x: number, z: number, o: {pole: number; r: number; n: number; droop: number; hub: number; c: Col; lamp: Col; phase?: number; poleR?: number}) {
+export function spokeLamp(b: BuildingTools, x: number, z: number, o: {pole: number; r: number; n: number; droop: number; hub: number; c: Col; lamp: Col; phase?: number; poleR?: number; stays?: boolean}) {
   const pr = o.poleR ?? 0.1;
   b.add(new T.CylinderGeometry(pr * 0.8, pr, o.pole, 8).translate(0, o.pole / 2, 0), o.c, x, 0, z);
   for (const [tx, ty, tz] of spokeTips(o.n, o.r, o.hub, o.droop, o.phase ?? 0)) {
@@ -170,6 +171,13 @@ export function spokeLamp(b: BuildingTools, x: number, z: number, o: {pole: numb
     g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), d.normalize()));
     b.add(g, o.c, x, o.hub, z);
     b.add(new T.CylinderGeometry(0.07, 0.11, 0.18, 6).translate(0, -0.09, 0), o.lamp, x + tx, ty, z + tz);
+    // optional stays: a cable from the pole top to every tip (the spokes rise like an upturned umbrella, droop < 0)
+    if (o.stays) {
+      const e = new T.Vector3(tx, ty - o.pole, tz), el = e.length();
+      const sg = new T.CylinderGeometry(0.008, 0.008, el, 3).translate(0, el / 2, 0);
+      sg.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), e.normalize()));
+      b.add(sg, o.c, x, o.pole, z);
+    }
   }
 }
 
@@ -199,16 +207,88 @@ export function graffitiLayout(s0: number, s1: number, y0: number, y1: number, s
   }
   return out;
 }
-/** Paint the pieces as decals on frame f, `out` off the wall: an outline blob, then bubble letters in the fill colour 9 cm
- *  in front of it (stacked decal faces closer than 8 cm z-fight at range: audit zfight-tight/near). */
-export function graffitiBand(decal: Decal, f: Frame, pieces: GraffitiPiece[], out = 0.03) {
-  for (const p of pieces) {
-    poly({add: (g: T.BufferGeometry) => decal(g, p.outline)} as unknown as BuildingTools, f, p.t, p.y + p.ry, blobOutline(p.rx, p.ry), 0.01, 'white', out);
-    const lw = (2 * p.rx - 0.2) / p.letters;
-    for (let k = 0; k < p.letters; k++) {
-      const t = p.t - p.rx + 0.1 + lw * (k + 0.5), ry = p.ry * (0.62 + 0.25 * ((k * 7919) % 3) / 2);
-      poly({add: (g: T.BufferGeometry) => decal(g, p.fill)} as unknown as BuildingTools, f, t, p.y + p.ry, blobOutline(lw * 0.46, ry, 12, 2.6), 0.01, 'white', out + 0.09);
-    }
+/** Jagged tag-panel outline about the origin: an irregular blob whose radius wanders per vertex (seeded), flatter at the foot. */
+export function tagOutline(rx: number, ry: number, seed: number, n = 18): [number, number][] {
+  const rnd = seeded(seed), pts: [number, number][] = [];
+  for (let k = 0; k < n; k++) {
+    const a = 2 * Math.PI * k / n, j = 0.78 + rnd() * 0.22, c = Math.cos(a), s = Math.sin(a);
+    pts.push([rx * Math.sign(c) * Math.abs(c) ** 0.7 * j, ry * Math.sign(s) * Math.abs(s) ** (s < 0 ? 0.45 : 0.8) * (0.82 + rnd() * 0.18)]);
+  }
+  return pts;
+}
+/** Letter-like strokes inside a panel of half-sizes rx, ry: per letter a stem and one or two bars or diagonals, as (x0, y0, x1, y1). */
+export function tagStrokes(rx: number, ry: number, letters: number, seed: number): [number, number, number, number][] {
+  const rnd = seeded(seed), out: [number, number, number, number][] = [], w = 1.5 * rx / letters;
+  for (let k = 0; k < letters; k++) {
+    const cx = -0.75 * rx + w * (k + 0.5), lean = (rnd() - 0.5) * w * 0.5, top = ry * (0.45 + rnd() * 0.15), bot = -ry * (0.4 + rnd() * 0.15);
+    out.push([cx - w * 0.28 + lean, bot, cx - w * 0.28 - lean, top]);
+    const kind = Math.floor(rnd() * 3);
+    if (kind === 0) out.push([cx - w * 0.28, top * 0.1, cx + w * 0.3, top * (0.2 + rnd() * 0.3)]);
+    else if (kind === 1) out.push([cx - w * 0.28, top, cx + w * 0.3, bot * 0.6]);
+    else { out.push([cx - w * 0.28, top, cx + w * 0.28, top * 0.8]); out.push([cx + w * 0.28, top * 0.8, cx + w * 0.3, bot]); }
+  }
+  return out;
+}
+/** A straight stroke from (x0, y0) to (x1, y1) of width w on frame f, centred at (t, y), as one thin quad solid. */
+function strokeQuad(b: BuildingTools, f: Frame, t: number, y: number, s: [number, number, number, number], w: number, d: number, out: number) {
+  const [x0, y0, x1, y1] = s, L = Math.hypot(x1 - x0, y1 - y0) || 1, nx = -(y1 - y0) / L * w / 2, ny = (x1 - x0) / L * w / 2;
+  poly(b, f, t, y, [[x0 + nx, y0 + ny], [x1 + nx, y1 + ny], [x1 - nx, y1 - ny], [x0 - nx, y0 - ny]], d, 'white', out);
+}
+/** Ring between an outline and the same outline grown by m (a flat band, the hole exactly the inner outline). */
+function ringSolid(b: BuildingTools, f: Frame, t: number, y: number, inner: [number, number][], m: number, d: number, out: number) {
+  const grow = inner.map(([x, yy]) => { const r = Math.hypot(x, yy) || 1; return new T.Vector2(x * (1 + m / r), yy * (1 + m / r)); });
+  const shape = new T.Shape(grow), hole = new T.Path(inner.map(([x, yy]) => new T.Vector2(x, yy)).reverse());
+  shape.holes.push(hole);
+  put(b, f, new T.ExtrudeGeometry(shape, {depth: d + 0.12, bevelEnabled: false}), t, y, out - 0.12, 'white');
+}
+/**
+ * Flat tag panels hugging the wall (Skatecafe round 2: the bubble-letter blobs read as rows of teeth). Per piece one
+ * irregular fill patch and a thin outline ring around it, both one layer at `out` (they do not overlap), and letter-like
+ * strokes 9 cm in front (thin, small area: stacked faces under 8 cm z-fight, audit zfight-near).
+ */
+export function tagBand(decal: Decal, f: Frame, pieces: GraffitiPiece[], seed: number, out = 0.05, stroke = '#2c2c30', ring = 0.06) {
+  const on = (hex: string) => ({add: (g: T.BufferGeometry) => decal(g, hex)}) as unknown as BuildingTools;
+  pieces.forEach((p, i) => {
+    const pts = tagOutline(p.rx, p.ry, seed + i * 31), cy = p.y + p.ry;
+    poly(on(p.fill), f, p.t, cy, pts, 0.01, 'white', out);
+    ringSolid(on(p.outline), f, p.t, cy, pts, ring, 0.01, out);
+    for (const s of tagStrokes(p.rx, p.ry, p.letters, seed + i * 31 + 7)) strokeQuad(on(stroke), f, p.t, cy, s, Math.min(0.08, p.ry * 0.09), 0.01, out + 0.09);
+  });
+}
+/** A bare tag: a scribbled polyline of `n` points over w x h centred at (t, y + h/2), strokes of width `sw`. */
+export function tagScribble(decal: Decal, f: Frame, t: number, y: number, w: number, h: number, seed: number, hex: string, out = 0.05, n = 7, sw = 0.035) {
+  const rnd = seeded(seed), on = {add: (g: T.BufferGeometry) => decal(g, hex)} as unknown as BuildingTools;
+  let prev: [number, number] = [-w / 2, (rnd() - 0.5) * h];
+  for (let k = 1; k < n; k++) {
+    const next: [number, number] = [-w / 2 + w * k / (n - 1) + (rnd() - 0.5) * w * 0.12, (rnd() - 0.5) * h];
+    strokeQuad(on, f, t, y + h / 2, [prev[0], prev[1], next[0], next[1]], sw, 0.01, out);
+    prev = next;
+  }
+}
+
+/** Seeded bump centres (t, y, r) inside a polygon outline (local coords), for `ivyMass`. */
+export function ivyBumps(outline: [number, number][], count: number, seed: number, r0: number, r1: number): [number, number, number][] {
+  const rnd = seeded(seed), xs = outline.map(p => p[0]), ys = outline.map(p => p[1]);
+  const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)], out: [number, number, number][] = [];
+  const inside = (x: number, y: number) => { let c = false; for (let i = 0, j = outline.length - 1; i < outline.length; j = i++) { const [xi, yi] = outline[i], [xj, yj] = outline[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+  for (let tries = 0; out.length < count && tries < count * 40; tries++) {
+    const x = x0 + rnd() * (x1 - x0), y = y0 + rnd() * (y1 - y0);
+    if (inside(x, y)) out.push([x, y, r0 + rnd() * (r1 - r0)]);
+  }
+  return out;
+}
+/**
+ * Climbing plant mass on a wall: a thin backing sheet in the outline, lumpy bumps (squashed icosahedra) standing out of it,
+ * and the same bumps a little lower and deeper in `under` so the mass has a darker underside. Cheap: 20 triangles a bump.
+ */
+export function ivyMass(b: BuildingTools, f: Frame, t: number, y: number, outline: [number, number][], o: {c: Col; under: Col; bumps: number; seed: number; depth?: number; out?: number; r?: [number, number]}) {
+  const out = o.out ?? 0.02, depth = o.depth ?? 0.45, [r0, r1] = o.r ?? [0.45, 0.9], rnd = seeded(o.seed + 1);
+  poly(b, f, t, y, outline, 0.12, o.c, out);
+  for (const [bx, by, r] of ivyBumps(outline, o.bumps, o.seed, r0, r1)) {
+    // each lump squashed and turned its own way so the mass does not read as a pile of identical stones
+    const g = new T.IcosahedronGeometry(1, 0).rotateZ(rnd() * Math.PI).scale(r * (0.9 + rnd() * 0.5), r * (0.6 + rnd() * 0.3), depth * (0.6 + rnd() * 0.5));
+    put(b, f, g, t + bx, y + by, out + 0.1, o.c);
+    put(b, f, new T.IcosahedronGeometry(1, 0).scale(r * 0.9, r * 0.6, depth * 0.85), t + bx, y + by - r * 0.4, out + 0.06, o.under);
   }
 }
 

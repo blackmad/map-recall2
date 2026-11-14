@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012156585",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156585.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  1,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 1,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "doorBay",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "polychrome brickwork with yellow and dark patterned bands, yellow arch bricks over the windows and dark diamond-shaped ornaments"
+  },
+  {
+   "component": "window",
+   "what": "one wide window per storey with a fixed top light over a single large pane"
+  }
+ ],
+ "notes": "The outline holds only the left, mansard-roofed bay of a small villa; its door and point gable stand just to the right of the outline.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

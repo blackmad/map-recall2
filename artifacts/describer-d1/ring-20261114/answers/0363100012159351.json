@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012159351",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159351.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "mixed",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "dormers",
+  "bays",
+  "doorBay",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "small triangular pediments over some second-storey windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "one fast-food shopfront spans the whole ground storey of both fronts"
+  }
+ ],
+ "notes": "Outline holds two fronts over one shopfront: a wider left one with a white band and pediments, and a narrower right one with arched heads; described the left. Pole and tree cut through the middle.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

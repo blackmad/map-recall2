@@ -3,7 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {getSink, poly, setSink, slab, type Frame} from './nearbar-kit';
 import {frameAt, makeFrontKit, type Chord, type Sec} from './street-front-kit';
 import {TriSink, type XZ} from './venue-kit';
-import {graffitiBand, graffitiLayout, sawtoothHall, scallopedRake, type Decal} from './hall-kit';
+import {graffitiLayout, ivyMass, sawtoothHall, scallopedRake, tagBand, tagScribble, type Decal} from './hall-kit';
 import source from './skatecafe-footprints.json' with {type: 'json'};
 
 /**
@@ -88,9 +88,9 @@ export function buildSkatecafe(_w: number, _d: number, b: BuildingTools & {mark?
 
   // ---- link under ivy -------------------------------------------------------------------------------------------------
   K.sec(FR, 22, CH0, 0, LINK_TOP, 'brick', 0);
-  // the ivy mass: a lumpy green sheet over the link and the last bay's corner, climbing above the roofs
+  // the ivy mass over the link and the last bay's corner, climbing above the roofs: lumps with a darker underside
   const ivy: [number, number][] = [[-2.0, 0], [2.4, 0], [2.4, 2.6], [2.25, 5.4], [1.6, 7.1], [0.8, 7.0], [0.1, 8.1], [-0.6, 8.9], [-1.3, 8.6], [-1.6, 7.6], [-2.0, 7.2], [-2.3, 5.0], [-2.2, 2.0]];
-  poly(b, F, 22.0, 0, ivy, 0.3, 'green', 0.02);
+  ivyMass(b, F, 22.0, 0, ivy, {c: 'green', under: 'copper', bumps: 28, seed: 22, r: [0.3, 0.7]});
   b.mark?.('link');
 
   // ---- the chalet front ----------------------------------------------------------------------------------------------
@@ -158,15 +158,25 @@ export function buildSkatecafe(_w: number, _d: number, b: BuildingTools & {mark?
   K.flush();
   M.flush(b);
 
-  // ---- graffiti: tag pieces over the saw-tooth bays' lower storey and the big silver piece over the poster wall ----------
+  // ---- graffiti: flat tag panels and bare tags where the 2024-10-22 rectified capture (50 px/m) shows them ------------
   if (decal) {
-    const fills = ['#dcdcd8', '#d8579d', '#4fb3a8', '#e6c63a', '#8ec5e8', '#e2e2de'];
-    graffitiBand(decal, F, graffitiLayout(0.3, 5.7, 0.35, 2.9, 42, fills), 0.05);
-    graffitiBand(decal, F, graffitiLayout(10.6, 19.6, 0.35, 3.1, 7, fills), 0.05);
-    graffitiBand(decal, F, [{t: 5.3, y: 3.2, rx: 2.2, ry: 1.05, fill: '#dcdcd8', outline: '#1d1d22', letters: 5}], 0.05);
-    // the north-west side carries the same coat
+    const ink = '#262628';
+    tagBand(decal, F, [
+      {t: 5.3, y: 3.15, rx: 2.25, ry: 1.05, fill: '#cfcfca', outline: ink, letters: 5},     // the big silver piece over the poster wall
+      {t: 12.7, y: 0.9, rx: 1.1, ry: 0.95, fill: '#6f9e94', outline: ink, letters: 3},      // teal piece, fourth bay
+      {t: 11.6, y: 3.0, rx: 1.1, ry: 0.25, fill: '#5d7a5a', outline: ink, letters: 4},      // green strip tag above it
+      {t: 17.3, y: 3.4, rx: 0.55, ry: 0.35, fill: '#d8d6cf', outline: ink, letters: 3},     // small white throw-up
+      {t: 18.9, y: 2.5, rx: 1.3, ry: 0.6, fill: '#e3ddd0', outline: '#b8713a', letters: 5}, // white piece with the orange outline
+    ], 42, 0.05);
+    const tags: [number, number, number, number, string][] = [
+      [7.4, 0.9, 0.7, 0.5, ink], [7.3, 1.6, 0.6, 0.4, ink], [10.9, 1.0, 0.6, 0.45, ink], [10.95, 1.7, 0.5, 0.35, '#d9d7cf'],
+      [14.4, 0.7, 0.9, 0.5, ink], [14.6, 1.5, 0.7, 0.4, ink], [15.7, 1.6, 0.9, 0.5, ink], [16.4, 2.3, 0.8, 0.45, ink],
+      [17.6, 1.5, 0.7, 0.5, ink], [15.9, 3.0, 0.6, 0.35, '#d9d7cf'], [2.2, 2.7, 0.8, 0.35, ink], [21.0, 1.2, 0.6, 0.4, ink],
+    ];
+    tags.forEach(([t, y, w, h, hex], i) => tagScribble(decal, F, t, y, w, h, 300 + i, hex, 0.05));
+    // the north-west side carries the same coat, subdued
     const BF: Frame = (({origin, tangent, n}) => ({origin, tangent, n}))(frameAt(BK, 0, 0));
-    graffitiBand(decal, BF, graffitiLayout(0.5, 21.5, 0.35, 2.6, 19, fills), 0.05);
+    tagBand(decal, BF, graffitiLayout(0.5, 21.5, 0.35, 2.6, 19, ['#bdbcb6', '#b98a62', '#6f9a90', '#9d7a8f', '#d2cfc6']), 19, 0.05);
   }
   setSink(sink0);
 }

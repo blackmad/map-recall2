@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012158666",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158666.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "the centre axis is a French door with an iron balconette on each visible upper storey"
+  }
+ ],
+ "notes": "A passing tram hides the lower part of the front, so it is unclear whether a storey sits between the shopfront and the two visible upper rows.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

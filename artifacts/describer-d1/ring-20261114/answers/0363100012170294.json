@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012170294",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012170294.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "cream stucco window frames crowned by scrolled pediments with a central shell or cartouche on both upper storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped stucco dormer with scrolled sides on the middle axis"
+  }
+ ],
+ "notes": "A tram shelter hides the ground storey; the stone balcony on its cornice is visible.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

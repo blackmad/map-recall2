@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012094328",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012094328.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 1,
+ "columns": [
+  3,
+  1,
+  1,
+  1
+ ],
+ "windows": "casement-toplight",
+ "storeyWindows": {
+  "3": "casement-sidelights-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "sills",
+  "storeyWindows",
+  "dormers",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "two stacked canted erkers in a single wide bay, the upper one with a small timber hood"
+  },
+  {
+   "component": "roof",
+   "what": "a steep hipped slate roof face rises to a point over the eaves with a small hatch dormer"
+  }
+ ],
+ "notes": "Interwar narrow front, one wide window axis per storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

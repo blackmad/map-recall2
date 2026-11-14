@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012072136",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012072136.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 7,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "not-visible",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bays",
+  "bayWindow",
+  "pale",
+  "crown",
+  "windowSurround",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "narrow vertical slit windows with a dark lattice between the bays on storey 1"
+  },
+  {
+   "component": "roof",
+   "what": "a low roof behind a deep white overhanging eave slab that curves round the corner"
+  },
+  {
+   "component": "erker",
+   "what": "shallow projecting window boxes in concrete frames, stacked over three storeys"
+  }
+ ],
+ "notes": "Outline covers a long 1930s block of one design that continues right beyond the cut.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

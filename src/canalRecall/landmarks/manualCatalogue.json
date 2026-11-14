@@ -80615,7 +80615,8 @@
    "red": "#a8402f",
    "bronze": "#4a3a2e",
    "pink": "#35322f",
-   "ochre": "#ecebe6"
+   "ochre": "#ecebe6",
+   "copper": "#2c3b22"
   },
   "attribution": {
    "title": "Skatecafe",
@@ -80623,7 +80624,7 @@
    "sourceUrl": "https://www.openstreetmap.org/node/9789622796",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated tag pieces, not copied; no pixels or meshes imported."
+   "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated flat tag panels and scribbles at the photographed positions and colours, not copied; no pixels or meshes imported."
   },
   "buildingFootprint": {
    "type": "Polygon",
@@ -80682,6 +80683,13 @@
   "id": "garage-noord",
   "name": "Garage Noord",
   "landmarkId": "garage-noord",
+  "relatedLandmarkIds": [
+   "n12979333989"
+  ],
+  "destinationLandmarkIds": [
+   "garage-noord",
+   "n12979333989"
+  ],
   "modelUrl": "./models/garage-noord.glb",
   "suppressOsmIds": [
    "NL.IMBAG.Pand.0363100012079768"
@@ -80777,5 +80785,1355 @@
    "phi": 1.15
   },
   "bagYear": 1917
+ },
+ {
+  "id": "theater-bellevue",
+  "name": "Theater Bellevue, Leidsekade 90",
+  "status": "held",
+  "heldReason": "2026-11-14 integrator: the delamar model already draws Theater Bellevue on the same pand (0363100012169852, delamar-builder.ts); compare the two Leidsekade drums at the rule-10 pose and keep one before un-holding.",
+  "landmarkId": "extract_landmarks_374802612",
+  "modelUrl": "./models/theater-bellevue.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012169852"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88033457,
+    52.36421427
+   ],
+   "headingDegrees": 112.54,
+   "lengthMetres": 44.8,
+   "widthMetres": 31.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.88007774,
+    52.36416872
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012169852 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/theater-bellevue-footprints.json, written by venue-prepare.ts). The corner drum, the Leidsekade front, the café wing and the canal house front are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-001968_pano_0000_000114, TMX7316010203-000355_pano_0000_000073, TMX7316010203-000199_pano_0002_000287, TMX7316010203-001968_pano_0000_000115, TMX7316010203-002857_pano_0005_000164, TMX7316010203-003011_pano_0006_000027); the fly tower, the west wing and every roof keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/theater-bellevue-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 20.1,
+  "galleryView": {
+   "theta": 0.35,
+   "phi": 1.1
+  },
+  "bagYear": 1894,
+  "materialOverrides": {
+   "ochre": "#c6ad7f",
+   "dark": "#4a3a30",
+   "slate": "#55534c",
+   "frame": "#3a3128",
+   "glass": "#3b4548",
+   "bronze": "#8f7748",
+   "red": "#b8503f",
+   "white": "#e4ddc8",
+   "brick": "#8a4f3e",
+   "greyBrick": "#7a5f52",
+   "concrete": "#8d8f8c"
+  },
+  "attribution": {
+   "title": "Theater Bellevue, Leidsekade 90, Amsterdam: the yellow-brick theatre drum on the Leidsekade with its café wing and canal house",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Bellevue",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the fly tower, the west wing and the roofs (CC BY 4.0): the yellow-brick corner drum with its dark tile plinth, ribbon windows, fascia and coping running round the curve, the two-tone Theater Bellevue sign, the round window and the stage door, the cream café wing with its canopy and standing letters, and the brick canal house with white bands, a bay window and a balcony. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.88003509,
+      52.3642586
+     ],
+     [
+      4.88006418,
+      52.36425441
+     ],
+     [
+      4.88003728,
+      52.36418441
+     ],
+     [
+      4.88003709,
+      52.36418404
+     ],
+     [
+      4.88003692,
+      52.36418367
+     ],
+     [
+      4.88003675,
+      52.3641833
+     ],
+     [
+      4.88003657,
+      52.36418293
+     ],
+     [
+      4.88003642,
+      52.36418256
+     ],
+     [
+      4.88003627,
+      52.36418219
+     ],
+     [
+      4.88003613,
+      52.36418181
+     ],
+     [
+      4.88003599,
+      52.36418143
+     ],
+     [
+      4.88003586,
+      52.36418105
+     ],
+     [
+      4.88003575,
+      52.36418067
+     ],
+     [
+      4.88003562,
+      52.3641803
+     ],
+     [
+      4.88003552,
+      52.36417992
+     ],
+     [
+      4.88003542,
+      52.36417954
+     ],
+     [
+      4.88003533,
+      52.36417916
+     ],
+     [
+      4.88003524,
+      52.36417878
+     ],
+     [
+      4.88003516,
+      52.3641784
+     ],
+     [
+      4.88003509,
+      52.36417801
+     ],
+     [
+      4.88003502,
+      52.36417763
+     ],
+     [
+      4.88003497,
+      52.36417725
+     ],
+     [
+      4.88003491,
+      52.36417686
+     ],
+     [
+      4.88003487,
+      52.36417648
+     ],
+     [
+      4.88003483,
+      52.3641761
+     ],
+     [
+      4.88003481,
+      52.36417571
+     ],
+     [
+      4.88003478,
+      52.36417532
+     ],
+     [
+      4.88003476,
+      52.36417494
+     ],
+     [
+      4.88003476,
+      52.36417456
+     ],
+     [
+      4.88003475,
+      52.36417417
+     ],
+     [
+      4.88003476,
+      52.36417379
+     ],
+     [
+      4.88003477,
+      52.3641734
+     ],
+     [
+      4.88003479,
+      52.36417301
+     ],
+     [
+      4.88003483,
+      52.36417263
+     ],
+     [
+      4.88003486,
+      52.36417224
+     ],
+     [
+      4.8800349,
+      52.36417186
+     ],
+     [
+      4.88003494,
+      52.36417148
+     ],
+     [
+      4.88003501,
+      52.36417109
+     ],
+     [
+      4.88003507,
+      52.36417071
+     ],
+     [
+      4.88003513,
+      52.36417033
+     ],
+     [
+      4.88003521,
+      52.36416994
+     ],
+     [
+      4.8800353,
+      52.36416956
+     ],
+     [
+      4.8800354,
+      52.36416918
+     ],
+     [
+      4.88003549,
+      52.3641688
+     ],
+     [
+      4.8800356,
+      52.36416842
+     ],
+     [
+      4.88003572,
+      52.36416805
+     ],
+     [
+      4.88003584,
+      52.36416767
+     ],
+     [
+      4.88003596,
+      52.36416728
+     ],
+     [
+      4.8800361,
+      52.36416692
+     ],
+     [
+      4.88003623,
+      52.36416654
+     ],
+     [
+      4.88003638,
+      52.36416616
+     ],
+     [
+      4.88003654,
+      52.36416579
+     ],
+     [
+      4.8800367,
+      52.36416542
+     ],
+     [
+      4.88003687,
+      52.36416505
+     ],
+     [
+      4.88003705,
+      52.36416467
+     ],
+     [
+      4.88003723,
+      52.36416431
+     ],
+     [
+      4.88003742,
+      52.36416394
+     ],
+     [
+      4.88003762,
+      52.36416358
+     ],
+     [
+      4.88003781,
+      52.36416321
+     ],
+     [
+      4.88003802,
+      52.36416284
+     ],
+     [
+      4.88003825,
+      52.36416249
+     ],
+     [
+      4.88003847,
+      52.36416213
+     ],
+     [
+      4.8800387,
+      52.36416177
+     ],
+     [
+      4.88003893,
+      52.36416141
+     ],
+     [
+      4.88003917,
+      52.36416105
+     ],
+     [
+      4.88003943,
+      52.3641607
+     ],
+     [
+      4.88003968,
+      52.36416035
+     ],
+     [
+      4.88003995,
+      52.36416
+     ],
+     [
+      4.88004022,
+      52.36415965
+     ],
+     [
+      4.8800405,
+      52.3641593
+     ],
+     [
+      4.88004078,
+      52.36415896
+     ],
+     [
+      4.88004107,
+      52.36415862
+     ],
+     [
+      4.88004136,
+      52.36415828
+     ],
+     [
+      4.88004166,
+      52.36415794
+     ],
+     [
+      4.88004197,
+      52.3641576
+     ],
+     [
+      4.88004229,
+      52.36415727
+     ],
+     [
+      4.88004261,
+      52.36415694
+     ],
+     [
+      4.88004294,
+      52.36415661
+     ],
+     [
+      4.88004327,
+      52.36415629
+     ],
+     [
+      4.88004361,
+      52.36415597
+     ],
+     [
+      4.88004395,
+      52.36415564
+     ],
+     [
+      4.8800443,
+      52.36415532
+     ],
+     [
+      4.88004466,
+      52.364155
+     ],
+     [
+      4.88004502,
+      52.36415469
+     ],
+     [
+      4.88004539,
+      52.36415437
+     ],
+     [
+      4.88004576,
+      52.36415407
+     ],
+     [
+      4.88004614,
+      52.36415376
+     ],
+     [
+      4.88004653,
+      52.36415345
+     ],
+     [
+      4.88004691,
+      52.36415315
+     ],
+     [
+      4.88004731,
+      52.36415285
+     ],
+     [
+      4.88004771,
+      52.36415256
+     ],
+     [
+      4.88004813,
+      52.36415226
+     ],
+     [
+      4.88004854,
+      52.36415198
+     ],
+     [
+      4.88004896,
+      52.36415168
+     ],
+     [
+      4.88004938,
+      52.36415141
+     ],
+     [
+      4.88004981,
+      52.36415112
+     ],
+     [
+      4.88005024,
+      52.36415084
+     ],
+     [
+      4.88005069,
+      52.36415057
+     ],
+     [
+      4.88005113,
+      52.36415029
+     ],
+     [
+      4.88005157,
+      52.36415002
+     ],
+     [
+      4.88005203,
+      52.36414975
+     ],
+     [
+      4.88005249,
+      52.3641495
+     ],
+     [
+      4.88005296,
+      52.36414924
+     ],
+     [
+      4.88005344,
+      52.36414898
+     ],
+     [
+      4.88005391,
+      52.36414873
+     ],
+     [
+      4.88005438,
+      52.36414848
+     ],
+     [
+      4.88005487,
+      52.36414823
+     ],
+     [
+      4.88005536,
+      52.36414799
+     ],
+     [
+      4.88005584,
+      52.36414775
+     ],
+     [
+      4.88005634,
+      52.36414751
+     ],
+     [
+      4.88005685,
+      52.36414728
+     ],
+     [
+      4.88005735,
+      52.36414705
+     ],
+     [
+      4.88005786,
+      52.36414682
+     ],
+     [
+      4.88005837,
+      52.3641466
+     ],
+     [
+      4.8800589,
+      52.36414639
+     ],
+     [
+      4.88005941,
+      52.36414616
+     ],
+     [
+      4.88005994,
+      52.36414596
+     ],
+     [
+      4.88006048,
+      52.36414575
+     ],
+     [
+      4.88006101,
+      52.36414554
+     ],
+     [
+      4.88006154,
+      52.36414535
+     ],
+     [
+      4.88006208,
+      52.36414515
+     ],
+     [
+      4.88006263,
+      52.36414496
+     ],
+     [
+      4.88006317,
+      52.36414477
+     ],
+     [
+      4.88006373,
+      52.36414458
+     ],
+     [
+      4.88006428,
+      52.36414441
+     ],
+     [
+      4.88006484,
+      52.36414423
+     ],
+     [
+      4.8800654,
+      52.36414405
+     ],
+     [
+      4.88006597,
+      52.36414388
+     ],
+     [
+      4.88006653,
+      52.36414371
+     ],
+     [
+      4.88006711,
+      52.36414355
+     ],
+     [
+      4.8802647,
+      52.36409435
+     ],
+     [
+      4.88027122,
+      52.36409912
+     ],
+     [
+      4.88034428,
+      52.36408052
+     ],
+     [
+      4.88033981,
+      52.36407525
+     ],
+     [
+      4.88052076,
+      52.36401751
+     ],
+     [
+      4.88068339,
+      52.36420723
+     ],
+     [
+      4.88062373,
+      52.36424784
+     ],
+     [
+      4.88063205,
+      52.3642573
+     ],
+     [
+      4.88063383,
+      52.3642583
+     ],
+     [
+      4.88056773,
+      52.36430831
+     ],
+     [
+      4.88020991,
+      52.36436158
+     ],
+     [
+      4.88020681,
+      52.36435199
+     ],
+     [
+      4.88010314,
+      52.36436455
+     ],
+     [
+      4.88007364,
+      52.36435896
+     ],
+     [
+      4.88003509,
+      52.3642586
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "q-factory",
+  "name": "Q-Factory, Atlantisplein 1",
+  "landmarkId": "extract_landmarks_1526914942",
+  "modelUrl": "./models/q-factory.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012158881"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.93050833,
+    52.35764908
+   ],
+   "headingDegrees": 70.81,
+   "lengthMetres": 62.5,
+   "widthMetres": 49.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.93050718,
+    52.3576049
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012158881 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/q-factory-footprints.json, written by venue-prepare.ts). The courtyard, north, east and west faces are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m: TMX7316010203-000751_pano_0000_000628, TMX7316010203-002591_pano_0000_006118, TMX7316010203-002143_pano_0000_000637, recording_2025-09-30_08-33-50_01073, and the landmark-brief crop of TMX7316010203-002906_pano_0000_000058); the roofs and rooftop plant keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/q-factory-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 20.1,
+  "galleryView": {
+   "theta": 0.4,
+   "phi": 1.1
+  },
+  "bagYear": 2009,
+  "materialOverrides": {
+   "brick": "#4f4440",
+   "white": "#cfd0cb",
+   "glass": "#3f4a4f",
+   "frame": "#9a9b98",
+   "dark": "#2c2926",
+   "slate": "#55534f",
+   "concrete": "#b0b1ad",
+   "ochre": "#e0bf2b",
+   "red": "#a3473a",
+   "pink": "#b58a8a",
+   "blue": "#3d5a7a"
+  },
+  "attribution": {
+   "title": "Q-Factory, Atlantisplein 1, Amsterdam (2009)",
+   "author": "Map Recall",
+   "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012158881",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 roofs (CC BY 4.0): the dark-brown cladding bands with their scatter of white window strips, the yellow Q logo, the Q-FACTORY lettering, the cafe awning, the glazed first-floor band and the Conservatorium recess with its hung canopy. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.93090295,
+      52.35780722
+     ],
+     [
+      4.93081921,
+      52.35795229
+     ],
+     [
+      4.92995447,
+      52.35776523
+     ],
+     [
+      4.92996324,
+      52.35775001
+     ],
+     [
+      4.93018821,
+      52.35736029
+     ],
+     [
+      4.9302922,
+      52.35738284
+     ],
+     [
+      4.93025479,
+      52.3574477
+     ],
+     [
+      4.93079477,
+      52.3575651
+     ],
+     [
+      4.93084073,
+      52.35748535
+     ],
+     [
+      4.93106122,
+      52.35753297
+     ],
+     [
+      4.93090295,
+      52.35780722
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "westergas-bazenwoning-west",
+  "name": "Westergasfabriek, western foremen's house (Gosschalklaan 8)",
+  "landmarkId": "westergas-bazenwoning-west",
+  "modelUrl": "./models/westergas-bazenwoning-west.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012161595"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8704193,
+    52.3865255
+   ],
+   "headingDegrees": 268.39,
+   "lengthMetres": 15.2,
+   "widthMetres": 11.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.87042551,
+    52.38651963
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012161595 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/westergas-bazenwoning-west-footprints.json, written by venue-prepare.ts). Every face below the eaves, the gable dress and the bay are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-001594_pano_0000_000849, TMX7316010203-001594_pano_0000_000850, TMX7316010203-001594_pano_0000_000848, TMX7316010203-001594_pano_0001_000021, TMX7316010203-001594_pano_0001_000023, TMX7316010203-002554_pano_0000_007785); roofs and gable triangles keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/westergas-bazenwoning-west-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 9.0,
+  "galleryView": {
+   "theta": 3.5,
+   "phi": 1.15
+  },
+  "bagYear": 1885,
+  "materialOverrides": {
+   "brick": "#934535",
+   "white": "#e6e1d4",
+   "glass": "#3a4145",
+   "dark": "#5c6063",
+   "slate": "#4d4f52",
+   "concrete": "#b4b8b8"
+  },
+  "attribution": {
+   "title": "Westergasfabriek, western foremen's house, Gosschalklaan 8, Amsterdam (1885, Rijksmonument 337633)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Westergasfabriek",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for roofs and gable triangles (CC BY 4.0): red brick with white bands, segmental-headed windows with white blocks, the north gable's windows and corbelled rakes, the south bay and its cornice, zinc wing roofs. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87052745,
+      52.38655632
+     ],
+     [
+      4.87051394,
+      52.38655603
+     ],
+     [
+      4.8704665,
+      52.38655499
+     ],
+     [
+      4.87046492,
+      52.38657736
+     ],
+     [
+      4.87039135,
+      52.38657577
+     ],
+     [
+      4.87039296,
+      52.38655304
+     ],
+     [
+      4.87030805,
+      52.38655151
+     ],
+     [
+      4.87030911,
+      52.38653308
+     ],
+     [
+      4.87030706,
+      52.38653303
+     ],
+     [
+      4.87030883,
+      52.38650234
+     ],
+     [
+      4.87030946,
+      52.38649125
+     ],
+     [
+      4.8703962,
+      52.38649316
+     ],
+     [
+      4.87039644,
+      52.38648407
+     ],
+     [
+      4.87040173,
+      52.38648412
+     ],
+     [
+      4.87041823,
+      52.38647469
+     ],
+     [
+      4.87045082,
+      52.38647528
+     ],
+     [
+      4.87046525,
+      52.38648469
+     ],
+     [
+      4.87047085,
+      52.38648481
+     ],
+     [
+      4.87047058,
+      52.38649478
+     ],
+     [
+      4.8705327,
+      52.38649604
+     ],
+     [
+      4.87053029,
+      52.38653782
+     ],
+     [
+      4.87052854,
+      52.38653781
+     ],
+     [
+      4.87052745,
+      52.38655632
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "westergas-gosschalklaan-12",
+  "name": "Westergasfabriek, Gosschalklaan 12 (1885)",
+  "landmarkId": "westergas-gosschalklaan-12",
+  "modelUrl": "./models/westergas-gosschalklaan-12.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012166024"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.86805407,
+    52.38648256
+   ],
+   "headingDegrees": 88.53,
+   "lengthMetres": 7.0,
+   "widthMetres": 14.0
+  },
+  "surveyed": {
+   "anchor": [
+    4.86805369,
+    52.38648955
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012166024 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/westergas-gosschalklaan-12-footprints.json, written by venue-prepare.ts). Walls drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-001594_pano_0000_001062, TMX7316010203-001594_pano_0000_000917, TMX7316010203-001594_pano_0000_000911, recording_2024-09-11_12-37-22_00613); the hipped roof keeps the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/westergas-gosschalklaan-12-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 8.7,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.15
+  },
+  "bagYear": 1885,
+  "materialOverrides": {
+   "brick": "#4e3a33",
+   "white": "#e2ddd0",
+   "glass": "#384044",
+   "dark": "#3a3d3f",
+   "red": "#a5553c"
+  },
+  "attribution": {
+   "title": "Westergasfabriek, Gosschalklaan 12, Amsterdam (1885, Isaac Gosschalk, Rijksmonument 512963)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Westergasfabriek",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 hipped roof (CC BY 4.0): dark brick with white bands, the white block frieze and eaves board, white-framed windows and doors. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.86810256,
+      52.38654358
+     ],
+     [
+      4.86810241,
+      52.38654653
+     ],
+     [
+      4.86799917,
+      52.38654445
+     ],
+     [
+      4.86799927,
+      52.38654261
+     ],
+     [
+      4.86800434,
+      52.38644822
+     ],
+     [
+      4.8680059,
+      52.38641858
+     ],
+     [
+      4.8681087,
+      52.38642064
+     ],
+     [
+      4.86810716,
+      52.38645174
+     ],
+     [
+      4.86810256,
+      52.38654358
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "meervaart",
+  "name": "De Meervaart, Meer en Vaart 300",
+  "landmarkId": "extract_landmarks_1306682228",
+  "modelUrl": "./models/meervaart.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012085435"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.80717674,
+    52.35879553
+   ],
+   "headingDegrees": 72.22,
+   "lengthMetres": 55.0,
+   "widthMetres": 97.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.8070535,
+    52.35887271
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012085435 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/meervaart-footprints.json, written by venue-prepare.ts). The base faces, the panelled box and the fly tower's lettering are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m; the landmark-brief picks TMX7316010203-000050_pano_0000_005924, recording_2025-07-02_08-42-20_03878, TMX7316010203-002022_pano_0000_000601, TMX7316010203-002529_pano_0000_000357 and TMX7316010203-002505_pano_0003_001515); halls, fly tower and roofs keep the 3DBAG LoD2.2 shell (CC BY 4.0), recoloured by height. Per wall in scripts/landmarks/meervaart-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 23.4,
+  "galleryView": {
+   "theta": 0.5,
+   "phi": 1.12
+  },
+  "bagYear": 1999,
+  "materialOverrides": {
+   "brick": "#3f3c3a",
+   "concrete": "#aeb2b6",
+   "stone": "#b9b6ae",
+   "white": "#e6e6e2",
+   "glass": "#374756",
+   "frame": "#2f3439",
+   "dark": "#4a4e52",
+   "slate": "#4c4d4f",
+   "greyBrick": "#7f8488",
+   "sandstone": "#c9b48a",
+   "red": "#d9622b"
+  },
+  "attribution": {
+   "title": "De Meervaart, Meer en Vaart 300, Amsterdam (1999)",
+   "author": "Map Recall",
+   "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012085435",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 massing (CC BY 4.0): the dark-brick base with its window rows and shopfronts, aluminium-clad halls, the brick fly tower with its aluminium crown and white 'meervaart' lettering, the north hall's 'meervaart:' sign and the panelled box with its big window. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.80746142,
+      52.35892681
+     ],
+     [
+      4.80742705,
+      52.35899052
+     ],
+     [
+      4.8074685,
+      52.3589989
+     ],
+     [
+      4.80747384,
+      52.35899998
+     ],
+     [
+      4.80747323,
+      52.35900039
+     ],
+     [
+      4.80746666,
+      52.3590044
+     ],
+     [
+      4.80745971,
+      52.35900815
+     ],
+     [
+      4.80745239,
+      52.35901163
+     ],
+     [
+      4.80744473,
+      52.35901483
+     ],
+     [
+      4.80743676,
+      52.35901773
+     ],
+     [
+      4.80742843,
+      52.35902036
+     ],
+     [
+      4.80741984,
+      52.35902266
+     ],
+     [
+      4.80741104,
+      52.35902464
+     ],
+     [
+      4.80740205,
+      52.35902627
+     ],
+     [
+      4.80739292,
+      52.35902756
+     ],
+     [
+      4.80739218,
+      52.35902761
+     ],
+     [
+      4.80739224,
+      52.35902788
+     ],
+     [
+      4.80736773,
+      52.35907856
+     ],
+     [
+      4.8074423,
+      52.35909351
+     ],
+     [
+      4.80737419,
+      52.35921993
+     ],
+     [
+      4.80730743,
+      52.35920621
+     ],
+     [
+      4.80727376,
+      52.35927637
+     ],
+     [
+      4.80722148,
+      52.35926572
+     ],
+     [
+      4.8069352,
+      52.35920785
+     ],
+     [
+      4.80669167,
+      52.35915861
+     ],
+     [
+      4.80659937,
+      52.35914017
+     ],
+     [
+      4.80661506,
+      52.35911192
+     ],
+     [
+      4.80663668,
+      52.35907168
+     ],
+     [
+      4.80663626,
+      52.3590716
+     ],
+     [
+      4.80663031,
+      52.3590586
+     ],
+     [
+      4.80662775,
+      52.35904519
+     ],
+     [
+      4.80662863,
+      52.3590317
+     ],
+     [
+      4.80663295,
+      52.35901846
+     ],
+     [
+      4.80664057,
+      52.35900579
+     ],
+     [
+      4.80665132,
+      52.358994
+     ],
+     [
+      4.80666495,
+      52.35898339
+     ],
+     [
+      4.80668103,
+      52.35897425
+     ],
+     [
+      4.80669924,
+      52.35896673
+     ],
+     [
+      4.80671914,
+      52.35896105
+     ],
+     [
+      4.80674022,
+      52.35895733
+     ],
+     [
+      4.806762,
+      52.35895564
+     ],
+     [
+      4.80678394,
+      52.35895606
+     ],
+     [
+      4.80680552,
+      52.35895855
+     ],
+     [
+      4.80680584,
+      52.35895811
+     ],
+     [
+      4.80688491,
+      52.35881125
+     ],
+     [
+      4.80680394,
+      52.35879495
+     ],
+     [
+      4.80679807,
+      52.35879034
+     ],
+     [
+      4.80679391,
+      52.35878507
+     ],
+     [
+      4.80679167,
+      52.35877938
+     ],
+     [
+      4.80679142,
+      52.35877353
+     ],
+     [
+      4.8067932,
+      52.35876778
+     ],
+     [
+      4.80679693,
+      52.35876239
+     ],
+     [
+      4.80680242,
+      52.3587576
+     ],
+     [
+      4.80680943,
+      52.35875363
+     ],
+     [
+      4.80681767,
+      52.35875065
+     ],
+     [
+      4.80682674,
+      52.35874881
+     ],
+     [
+      4.80682838,
+      52.35874912
+     ],
+     [
+      4.80685145,
+      52.35870574
+     ],
+     [
+      4.80680754,
+      52.35869687
+     ],
+     [
+      4.80680845,
+      52.35869515
+     ],
+     [
+      4.80700838,
+      52.3583243
+     ],
+     [
+      4.80708078,
+      52.35833898
+     ],
+     [
+      4.80709882,
+      52.35834241
+     ],
+     [
+      4.80710564,
+      52.35832897
+     ],
+     [
+      4.80710424,
+      52.3583287
+     ],
+     [
+      4.80710631,
+      52.35832513
+     ],
+     [
+      4.8071095,
+      52.35832578
+     ],
+     [
+      4.80762733,
+      52.35843024
+     ],
+     [
+      4.80762953,
+      52.35842643
+     ],
+     [
+      4.80772686,
+      52.35844623
+     ],
+     [
+      4.80763813,
+      52.35860979
+     ],
+     [
+      4.80763305,
+      52.3586087
+     ],
+     [
+      4.80746142,
+      52.35892681
+     ]
+    ]
+   ]
+  }
  }
 ]

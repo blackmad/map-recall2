@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012158490",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158490.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "dormers",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a flat-topped brick wall dormer over the centre bay with a round-arched window, flanked by short white cornice pieces with a frieze"
+  }
+ ],
+ "notes": "Ground storey is a continuous supermarket front shared with neighbours, partly hidden by bicycles.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

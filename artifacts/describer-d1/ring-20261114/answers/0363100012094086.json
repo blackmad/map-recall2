@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012094086",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012094086.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": "not-visible",
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "balconies",
+  "dormers",
+  "bays",
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small projecting balconies on consoles stacked in one axis of the upper storeys"
+  }
+ ],
+ "notes": "A large tree trunk covers the middle of the front; balconies and columns partly hidden.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

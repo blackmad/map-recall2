@@ -5,7 +5,7 @@ import test from 'node:test';
 // These pins are the round-3 chroma rule; lane W1's measured-chroma default (`?wallChroma`) is off here and tested below.
 process.env.WALL_CHROMA = '0';
 import assert from 'node:assert/strict';
-import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';
+import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD, RENDER_HEX } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specCellCount, specStoreyScale } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
@@ -309,4 +309,49 @@ test('178293: a reviewed wall skips the pale-warm guard; the same colour measure
   assert.ok(drawn, 'the reviewed wall draws');
   assert.equal(houseSpecPatch(reviewed, p).specRecipe && (houseSpecPatch(reviewed, p).specRecipe as { heldBrick?: boolean }).heldBrick, undefined);
   assert.equal(specWallColour({ ...reviewed, src: { ...reviewed.src, wallHex: 'streetlevel-measured' } }, p), null, 'measured: the guard holds');
+});
+
+test('ring tranche round 2: a photo cornice over a mansard leaves the roof to the planner (Weteringschans 169476, 172727)', () => {
+  const wc = (id: string, view: Record<string, unknown>) => ({ type: 'Feature' as const, properties: { id: `NL.IMBAG.Pand.${id}`, houseSpec: view } as Record<string, unknown>, geometry: null as any });
+  const read = (id: string, extra: Record<string, unknown> = {}) => wc(id, { gable: 'cornice', src: { gable: 'vision-judge' }, corniceCrown: true, ...extra });
+  const mansard = () => 'mansard', hip = () => 'mansardHip', gable = () => 'gable';
+  // the planner's own mansard (3DBAG) keeps the roof: same object back
+  for (const id of ['0363100012169476', '0363100012172727']) {
+    const f = read(id);
+    assert.equal(withHouseSpecCrown(f, 'gated', mansard), f, `${id}: mansard kept`);
+    assert.equal(withHouseSpecCrown(f, 'gated', hip), f, `${id}: mansard hip kept`);
+    assert.equal(withHouseSpecCrown(f, 'gated', gable).properties.monumentGable, 'cornice', `${id}: over a pitched plan the cornice still draws`);
+  }
+  // a stated mansard roof storey keeps it whatever the planner says
+  const stated = read('0363100012169476', { roofStorey: 'mansard' });
+  assert.equal(withHouseSpecCrown(stated, 'gated', gable), stated);
+  // the planner is asked without any measured gable
+  let asked: Record<string, unknown> | null = null;
+  withHouseSpecCrown(wc('0363100012169476', { gable: 'cornice', src: { gable: 'vision-judge' } }) as any, 'gated', (f: { properties: Record<string, unknown> }) => { asked = f.properties; return null; });
+  assert.equal(asked!.monumentGable, undefined);
+  // other crowns and non-photo cornices never ask the planner (byte-identical for specs without the read)
+  let calls = 0; const count = () => { calls++; return 'mansard'; };
+  withHouseSpecCrown(wc('0363100012153818', { gable: 'bell', src: { gable: 'streetlevel-measured' } }), 'gated', count);
+  withHouseSpecCrown(wc('0363100012153818', { gable: 'cornice', src: { gable: 'monument-text' } }), 'gated', count);
+  withHouseSpecCrown(feature({ constructionYear: 1700 }), 'gated', count);
+  assert.equal(calls, 0);
+});
+
+test('ring tranche round 2: a photo-read render front draws smooth pale render without ?wallFinish (Weteringschans 169553, Plantage 170505)', () => {
+  const vj = { wallMaterial: 'vision-judge' };
+  const r = houseSpecPatch({ wallMaterial: 'stucco', bays: 3, src: { ...vj, bays: 'vision-judge' } }, { id: 'NL.IMBAG.Pand.0363100012169553' });
+  assert.equal((r.specRecipe as any).finish, 'painted');
+  assert.equal(r.registerFinish, 'light');
+  // a stucco read alone (no other field) still carries the finish
+  assert.equal((houseSpecPatch({ wallMaterial: 'stucco', src: vj }, {}).specRecipe as any).finish, 'painted');
+  // weaker sources, painted brick and brick are untouched
+  assert.equal(houseSpecPatch({ wallMaterial: 'stucco', src: { wallMaterial: 'monument-text' } }, {}).specRecipe, undefined);
+  assert.equal(houseSpecPatch({ wallMaterial: 'painted-brick', src: vj }, {}).specRecipe, undefined);
+  assert.equal(houseSpecPatch({ wallMaterial: 'brick', src: vj }, {}).specRecipe, undefined);
+  // a dark reading on a render front keeps the light period colour; a pale one draws
+  const dark = houseSpecPatch({ wallMaterial: 'stucco', wallHex: '#37352f', src: { ...vj, wallHex: 'streetlevel-measured' } }, { id: 'NL.IMBAG.Pand.0363100012170505' }).specRecipe as any;
+  assert.equal(dark.finish, 'painted'); assert.equal(dark.wallHex, RENDER_HEX, 'a dark reading takes the city render');
+  assert.equal((r.specRecipe as any).wallHex, RENDER_HEX, 'no reading: the city render, not the period palette (Plantage 170505 drew L 0.39)');
+  const pale = houseSpecPatch({ wallMaterial: 'stucco', wallHex: '#e9e4d8', src: { ...vj, wallHex: 'streetlevel-measured' } }, {}).specRecipe as any;
+  assert.equal(pale.finish, 'painted'); assert.notEqual(pale.wallHex, RENDER_HEX, 'a pale reading draws itself');
 });

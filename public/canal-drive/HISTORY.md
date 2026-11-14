@@ -4,6 +4,14 @@
 
 Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.
 
+## 2026-11-14 (evening) — First D1 street publish, venues round 3, Noord round 2
+
+- **D1 street batch 1 (293 fronts, `house:publish --batch d1-streets-1`).** The first described houses to go live, one street at a time, each street only where its row sheet (photo | today | staged) read closer to the photo (David's 2026-11-14 ruling; no per-house reads). Belt units from `_pruned-sheets/d1-belt-20261114/belt-20261114/verdicts.json` (152, worse rows dropped), the wall-colour round-2 pages Herengracht 1–85 odd and Weteringschans (36, `artifacts/d1-wall-colour/staged-*-v3`), and the ring no-brick rows Kinkerstraat Bellamy + Da Costa and Plantage Middenlaan (105). Receipts are `kind: none` citing the sheet; the batch's source map is `artifacts/house-specs/published/d1-streets-1.sources.json`.
+- **Why step 3 was skipped.** `withRoute` routes any spec with fronts, roof and palette to `recipe`, so publish wanted 72 per-house GLBs. Ordinary houses get no per-house GLBs (2026-11-13), and the sheets were judged on the generic mesher, so the batch stops at the extract; the world was recompiled with `--shell` by hand. The tracked `spec-*` recipe dirs were restored untouched.
+- **177 published records gained `v.fields`.** The extract predated the route-A fields (WG step 2); main's builder adds them. Accepted with `--allow-extra` (166 are earlier published specs).
+- **Venues r3:** Q-Factory, De Meervaart (pathLettering), Westergasfabriek Gosschalklaan 8 and 12, the Muziekgebouw/Bimhuis remodel (pathBand kit). The Mövenpick hotel ways inside the Bimhuis pand ring are allowlisted for osm-under (the hotel stays with the city layer). **Theater Bellevue held**: the delamar model already draws it on pand 169852.
+- **Noord r2:** flat tag panels and lumpy ivy on the Skatecafé, Garage Noord masts measured from the 2022 capture (`spokeLamp` stays), POI cards for Skatecafé, Garage Noord and Sichuan Territory (a second destination inside the garage-noord model, as Beest Boulders).
+- **Ring and wall-colour code merged:** ring lane runtime fixes (mansard hold, bell kept, pale render), wall sample v2 (`WALL_SAMPLE=2`, off) with the dark-finish veto; their tests join `test:house-spec`.
 
 ## Hole decks carry their own road past the end (2026-11-14)
 

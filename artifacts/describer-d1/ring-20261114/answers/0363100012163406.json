@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012163406",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163406.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "cornice",
+  "sameAs",
+  "dormers",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick corbel-table frieze of small arches runs under the cornice"
+  }
+ ],
+ "notes": "A shop awning and a car hide the ground-storey door.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

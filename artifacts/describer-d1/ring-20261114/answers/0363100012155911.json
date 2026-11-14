@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012155911",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155911.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "finish",
+  "sameAs",
+  "mirrored",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white rendered rusticated ground storey under dark brick upper storeys banded with white block courses"
+  }
+ ],
+ "notes": "A car hides the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

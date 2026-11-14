@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012153112",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153112.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": "not-visible",
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "columns",
+  "doorBay",
+  "windowSurround",
+  "cornice",
+  "sameAs",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [],
+ "notes": "Small blurred image with a bare tree across the middle of the front and cars at the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

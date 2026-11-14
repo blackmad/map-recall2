@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012127014",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012127014.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "lintel",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "balconies",
+  "dormers",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stone slab on consoles projects under the third-axis window of the second storey without a visible guard"
+  },
+  {
+   "component": "shopfront",
+   "what": "shopfront framed by striped light and dark stone pilasters"
+  }
+ ],
+ "notes": "The gable over the right axes straddles the outline edge; cars hide the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012068916",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012068916.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "dormers",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "two flat roof windows in the tiled roof beside the tall dormer"
+  },
+  {
+   "component": "shopfront",
+   "what": "a modern office shopfront at the left, a house window and a plain house door at the right"
+  }
+ ],
+ "notes": "A van and a site toilet hide the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

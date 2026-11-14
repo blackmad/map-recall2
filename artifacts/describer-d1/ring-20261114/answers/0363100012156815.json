@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012156815",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156815.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "columns",
+  "sameAs",
+  "mirrored",
+  "dormers",
+  "doorSurround",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "rows of small light stone blocks run along each window-head line, like a dotted band"
+  }
+ ],
+ "notes": "Image is small and blurred and the ground storey is partly hidden by a blurred box; the front is the end of a larger corner block.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

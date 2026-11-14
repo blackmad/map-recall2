@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012177768",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012177768.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a rusticated light stone ground storey under brick upper storeys"
+  },
+  {
+   "component": "window",
+   "what": "segmental pediment hoods over the first-floor windows"
+  },
+  {
+   "component": "roof",
+   "what": "a raised attic with its own cornice straddles this house and its twin on the left"
+  }
+ ],
+ "notes": "Construction fencing in front of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

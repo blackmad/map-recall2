@@ -1,0 +1,112 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171087",
+ "design": {
+  "fronts": [
+   {
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "readBalconies": [],
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#5b492c"
+  }
+ },
+ "provenance": {
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBalconies": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012171087.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#3a342a",
+   "estimate": "#574d3a",
+   "drawn": "#6e5b3e",
+   "brick": "#5b492c",
+   "captures": [
+    {
+     "hex": "#3a342a",
+     "captured": "2020-01-08T10:45:17.306770Z",
+     "panoId": "TMX7316010203-001543_pano_0000_002107",
+     "pinned": true,
+     "out": "#554d3f",
+     "gain": 2.172,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false,
+   "darkFinish": {
+    "dark": false,
+    "by": [],
+    "describer": null,
+    "captures": {
+     "n": 1,
+     "maxL": 0.424,
+     "dark": false
+    },
+    "neighbours": {
+     "n": 1,
+     "rel": -0.014,
+     "nbL": 0.341,
+     "dark": false
+    }
+   }
+  }
+ }
+}

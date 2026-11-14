@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012158016",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158016.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "cornice",
+  "bands",
+  "windowSurround",
+  "whiteFrames"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the first-floor windows have round relieving arches with a decorated tympanum over a flat head"
+  },
+  {
+   "component": "window",
+   "what": "the ground storey is banded in light and brick stripes with light voussoir blocks over the openings"
+  }
+ ],
+ "notes": "Window frames look dark; a blurred box and bicycles cover the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

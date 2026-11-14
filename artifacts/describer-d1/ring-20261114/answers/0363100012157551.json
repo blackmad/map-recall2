@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012157551",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157551.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "raised-neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "dormers",
+  "heads",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a flat-topped raised centre bay with one window and a hoist beam stands over the cornice, with small roof windows either side"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of iron balconettes on small consoles in front of French windows in the middle bay"
+  }
+ ],
+ "notes": "Black painted front; a parked car hides the foot of the yellow shopfront.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

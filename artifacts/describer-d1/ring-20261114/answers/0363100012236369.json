@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "pandId": "0363100012236369",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236369.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround",
+  "cornice",
+  "mirrored",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "iron wall anchors in a row between the storeys"
+  }
+ ],
+ "notes": "One front of a series under one continuous cornice and mansard; a van covers the lower right corner.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

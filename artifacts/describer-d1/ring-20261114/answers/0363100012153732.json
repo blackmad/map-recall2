@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012153732",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153732.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "cornice",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies on consoles stacked in the middle bay at each upper storey"
+  }
+ ],
+ "notes": "Part of a uniform series continuing to the left; left neighbour has a shop ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

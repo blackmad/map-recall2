@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012081099",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012081099.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "crown",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the wide left balcony axis has broad arched windows under moulded arch hoods on carved corbels"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a tall plain pointed gable with three attic windows and a hoist beam"
+  }
+ ],
+ "notes": "Outline is offset right of the gabled front; a van hides the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

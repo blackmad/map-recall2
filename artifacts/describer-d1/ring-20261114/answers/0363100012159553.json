@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012159553",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159553.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "round",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "dormers",
+  "extent",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "storey 1 has two round oculus windows wrapped in carved garland and drapery reliefs instead of tall windows"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is two tall round-arched open portals on rusticated piers with stairs rising inside"
+  },
+  {
+   "component": "relief",
+   "what": "an inscription band SINGEL HOVEN under storey 2 and a year plate under the cornice"
+  }
+ ],
+ "notes": "The outline covers the right two thirds of a white stucco gateway front and a dark 2-bay brick front to its right; the white front is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

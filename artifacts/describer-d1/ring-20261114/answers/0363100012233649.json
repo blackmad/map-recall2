@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012233649",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012233649.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  4,
+  6,
+  4,
+  4
+ ],
+ "windows": "casement-gridded-toplight",
+ "storeyWindows": {
+  "1": "casement-toplight"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "storeyParts.roof",
+  "crown",
+  "windows",
+  "bands",
+  "storeyWindows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the two outer bays rise as small towers with windows and corner pinnacles, flanking a mansard roof with two dormers"
+  },
+  {
+   "component": "window",
+   "what": "outer bays have tall round-headed windows, the middle two bays wide windows with small-paned top lights under decorated arch friezes"
+  }
+ ],
+ "notes": "Outline is drawn below the top, but the crown is visible in the photo above it. Storey 1 is a full row of six windows over the shop.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

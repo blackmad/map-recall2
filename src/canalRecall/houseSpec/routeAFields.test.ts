@@ -16,10 +16,12 @@ test('passing classes only, at D1 confidence >= 0.5', () => {
   assert.equal(readFields(spec({ windowHead: { kind: 'segmental', storeys: [1] } }, { 'fronts/0/windowHead': vj() })), null, 'per-row heads are held');
 });
 
-test('a curved crown takes the register\'s curved kind, else neck', () => {
-  assert.equal(readFields(spec({ gable: 'bell' }, { 'fronts/0/gable': vj() }))!.crown, 'neck');
+test('a curved crown takes the register\'s curved kind, else its own stated kind', () => {
+  // Kinkerstraat 153818 / 156907 (ring tranche 2026-11-14): a stated bell drew as a narrow neck block; it stays a bell
+  assert.equal(readFields(spec({ gable: 'bell' }, { 'fronts/0/gable': vj() }))!.crown, 'bell');
+  assert.equal(readFields(spec({ gable: 'neck' }, { 'fronts/0/gable': vj() }))!.crown, 'neck');
   assert.equal(readFields(spec({ gable: 'neck' }, { 'fronts/0/gable': vj() }, { historicGable: 'bell' }))!.crown, 'bell');
-  assert.equal(readFields(spec({ gable: 'bell' }, { 'fronts/0/gable': vj() }, { historicGable: 'step' }))!.crown, 'neck');
+  assert.equal(readFields(spec({ gable: 'bell' }, { 'fronts/0/gable': vj() }, { historicGable: 'step' }))!.crown, 'bell');
 });
 
 const pick = (f: Record<string, unknown>): TemplatePick => ({ pandId: '0363100012168000', street: 'X', distM: 20, sameStreet: true, tier: 'street', pool: 3, src: 'streetlevel-measured', fields: f });

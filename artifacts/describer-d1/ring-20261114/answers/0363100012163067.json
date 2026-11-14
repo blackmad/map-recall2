@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012163067",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163067.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "plain"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "sill",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "dormers",
+  "cornice",
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first storey is one wide two-pane modern window across the whole front, replacing the original bel-etage windows"
+  },
+  {
+   "component": "window",
+   "what": "the middle upper bay has a white stucco frame with a crested head, the second-storey window behind an iron balconette"
+  }
+ ],
+ "notes": "The shop sits at the level of the neighbours' half-sunk storeys, so the storey count may be a souterrain plus three.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

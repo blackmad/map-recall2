@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012166732",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166732.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "balconies",
+  "sameAs",
+  "dormers",
+  "crown",
+  "bays"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the left axis of the first floor is a tall brick louvre panel of horizontal slats"
+  },
+  {
+   "component": "window",
+   "what": "the first floor's right part is a wide window between two narrow side lights"
+  },
+  {
+   "component": "dormer",
+   "what": "a brick wall dormer with a wide round-arched window under a crenellated top with pinnacles"
+  },
+  {
+   "component": "door",
+   "what": "an open stair entrance with steps rising from the pavement at the left"
+  }
+ ],
+ "notes": "A car hides the right of the shopfront.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

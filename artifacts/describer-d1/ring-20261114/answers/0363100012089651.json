@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012089651",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012089651.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "sameAs",
+  "mirrored",
+  "doorBay",
+  "dormers",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "stacked balconies on stone consoles in the third axis, a balconette on the first upper storey"
+  },
+  {
+   "component": "roof",
+   "what": "a small skylight in the roof beside the dormer"
+  }
+ ],
+ "notes": "Ground storey partly hidden by bikes and blurred panels; right edge of the outline touches the neighbouring gabled front.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

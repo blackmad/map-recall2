@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012166362",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166362.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windowSurround",
+  "balconies",
+  "crown",
+  "cornice",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white corner oriel over three storeys topped by a small open balcony loggia"
+  },
+  {
+   "component": "relief",
+   "what": "white roundel medallions and a small white gabled niche relief on the blank brick right part"
+  },
+  {
+   "component": "dormer",
+   "what": "a stepped brick wall gable with a window rises over the left bays"
+  }
+ ],
+ "notes": "Corner shop building; traffic-light poles cross the front and blurs hide the ground-storey doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

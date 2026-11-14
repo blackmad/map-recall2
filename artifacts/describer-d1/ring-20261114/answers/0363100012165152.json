@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "pandId": "0363100012165152",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165152.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windowSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small white block sits in the flat brick head over each window, with black iron anchor ornaments between the windows"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

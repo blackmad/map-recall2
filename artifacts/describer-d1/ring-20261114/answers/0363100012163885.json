@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012163885",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163885.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "heads",
+  "sameAs",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "small iron balconies on stone consoles stacked in the middle bay at each upper storey"
+  }
+ ],
+ "notes": "A tram shelter and advert hide the shop ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

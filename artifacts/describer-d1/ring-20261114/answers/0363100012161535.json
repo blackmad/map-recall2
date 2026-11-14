@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012161535",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161535.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "raised-neck",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "storeyParts.full",
+  "heads",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a flat-topped raised attic front with two windows stands over the middle and right bays above the cornice line, a tiled roof slope beside it"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of iron balconettes in front of French windows in the middle bay"
+  }
+ ],
+ "notes": "The top two-window row is read as an attic in a raised part-front over the cornice line; a parked car hides the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

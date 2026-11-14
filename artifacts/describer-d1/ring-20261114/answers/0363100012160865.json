@@ -1,0 +1,98 @@
+{
+ "v": 1,
+ "pandId": "0363100012160865",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160865.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "heads",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "bands",
+   "what": "dense white stone bands and blocks striping the brown brick at sill, head and floor lines, with block dressings at every window"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of iron balconies with scrolled railings on stone consoles in front of the middle window on the first, second and third floors"
+  },
+  {
+   "component": "window",
+   "what": "white balustrade apron panels under the first-floor side windows"
+  },
+  {
+   "component": "relief",
+   "what": "a frieze of zigzag patterned brickwork under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched open porch with the street door recessed inside, up steps beside the souterrain"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam in a slate roof over the middle bay"
+  },
+  {
+   "component": "rustication",
+   "what": "grey stone souterrain with small barred windows"
+  }
+ ],
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

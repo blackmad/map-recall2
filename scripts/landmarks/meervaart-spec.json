@@ -1,0 +1,30 @@
+{
+ "id": "meervaart",
+ "name": "De Meervaart, Meer en Vaart 300",
+ "landmarkId": "extract_landmarks_1306682228",
+ "headingFrom": [66, 67],
+ "heightMetres": 23.4,
+ "galleryView": {"theta": 0.5, "phi": 1.12},
+ "surveyedSource": "Vertex average of the BAG 0363100012085435 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/meervaart-footprints.json, written by venue-prepare.ts). The base faces, the panelled box and the fly tower's lettering are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 25 px/m; the landmark-brief picks TMX7316010203-000050_pano_0000_005924, recording_2025-07-02_08-42-20_03878, TMX7316010203-002022_pano_0000_000601, TMX7316010203-002529_pano_0000_000357 and TMX7316010203-002505_pano_0003_001515); halls, fly tower and roofs keep the 3DBAG LoD2.2 shell (CC BY 4.0), recoloured by height. Per wall in scripts/landmarks/meervaart-inventory.json.",
+ "materialOverrides": {
+  "brick": "#3f3c3a",
+  "concrete": "#aeb2b6",
+  "stone": "#b9b6ae",
+  "white": "#e6e6e2",
+  "glass": "#374756",
+  "frame": "#2f3439",
+  "dark": "#4a4e52",
+  "slate": "#4c4d4f",
+  "greyBrick": "#7f8488",
+  "sandstone": "#c9b48a",
+  "red": "#d9622b"
+ },
+ "attribution": {
+  "title": "De Meervaart, Meer en Vaart 300, Amsterdam (1999)",
+  "author": "Map Recall",
+  "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012085435",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 massing (CC BY 4.0): the dark-brick base with its window rows and shopfronts, aluminium-clad halls, the brick fly tower with its aluminium crown and white 'meervaart' lettering, the north hall's 'meervaart:' sign and the panelled box with its big window. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012155954",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155954.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "bands",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "white blocked voussoirs over the arched heads and white block quoins at every jamb"
+  }
+ ],
+ "notes": "A van hides the lower ground storey and a bare street tree stands in front of the middle bay.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,25 @@
+{
+  "modelId": "skatecafe",
+  "landmarkId": "n9789622796",
+  "name": "Skatecafé",
+  "center": [
+    52.38539981,
+    4.92552013
+  ],
+  "address": "Gedempt Hamerkanaal 42, Amsterdam",
+  "sourceUrl": "https://www.amsterdamnow.com/en/restaurants/skatecafe-restaurant-seasonal-cuisine-nature-wine",
+  "description": "SkateCafé Karin & Yvonne sits in an old industrial hall on the Gedempt Hamerkanaal in Amsterdam-Noord. A concrete mini-ramp was built in the heart of the main hall, and the tables, bar and DJ booth stand around it, so skaters ride while people eat and drink. The ramp is the first thing you notice when you walk in. The kitchen cooks seasonal food.",
+  "funFact": "The ramp was built by Colin Vlaar, a former welder and ramp builder at Nine Yards.",
+  "sourceLinks": [
+    {
+      "title": "Amsterdam Now: Skatecafe",
+      "url": "https://www.amsterdamnow.com/en/restaurants/skatecafe-restaurant-seasonal-cuisine-nature-wine"
+    },
+    {
+      "title": "I amsterdam: Het Skatecafé",
+      "url": "https://www.iamsterdam.com/uit/agenda/eten-en-drinken/restaurants/het-skatecafe"
+    }
+  ],
+  "genuineOsmIdentity": "n9789622796",
+  "identityNote": "BAG pand 0363100012122913 (Gedempt Hamerkanaal 42). Not number 96, which is the Green Canteen front."
+}

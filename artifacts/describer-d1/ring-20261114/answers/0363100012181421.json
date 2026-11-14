@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012181421",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181421.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2,
+  1
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "crown",
+  "cornice",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the top storey is a narrower raised brick piece with one window over the left half of the front"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles in front of the left windows on the first and second floors"
+  }
+ ],
+ "notes": "Narrow front between two pipes; a parked car hides the right of the plinth.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

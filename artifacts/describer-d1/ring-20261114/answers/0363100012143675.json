@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012143675",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012143675.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.roof",
+  "basement",
+  "extent",
+  "crown",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "round-arched entrance recess with an open timber stair rising to an upper door, a second door under the stair"
+  },
+  {
+   "component": "balcony",
+   "what": "full-width steel balconies across the two right axes on every upper storey"
+  },
+  {
+   "component": "roof",
+   "what": "left axis rises one storey higher than the right part, which has a set-back roof storey"
+  }
+ ],
+ "notes": "The left axis and the two right axes may be two separate fronts with different heights.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

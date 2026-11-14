@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012109388",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012109388.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "finish",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a centre wall dormer with a small stepped top and an arched window, between two smaller roof dormers"
+  },
+  {
+   "component": "shopfront",
+   "what": "a full-width shopfront under a long white fascia with painted shutter panels"
+  }
+ ],
+ "notes": "Corner building with a near-black front; shop shutters hide the doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
