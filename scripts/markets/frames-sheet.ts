@@ -56,13 +56,13 @@ async function main(): Promise<void> {
       `${p.key}: ${p.note} | first person, vfov 72, 1440x900 DPR 2, own engine, default world-v1 | markets draws ${meta.debug?.draws} tris ${meta.debug?.triangles}`, out);
     made.push(out);
   }
-  for (const r of MARKET_RIDES) {
-    const dir = path.join(FRAMES, r.key);
+  for (const [r, close] of MARKET_RIDES.flatMap(r => [[r, false], [r, true]] as const)) {
+    const dir = path.join(FRAMES, close ? `${r.key}-close` : r.key);
     if (!fs.existsSync(path.join(dir, 'markets.png'))) continue;
     const meta = JSON.parse(fs.readFileSync(path.join(dir, 'markets.json'), 'utf8'));
     const out = path.join(dir, 'sheet.jpg');
     await sheet([await panel(path.join(dir, 'today.png'), 'today (?markets=0)'), await panel(path.join(dir, 'markets.png'), 'with the market (?markets=1)')],
-      `${r.key}: ${r.note} | as played: default chase camera, DPR 2, own engine | draws ${meta.debug?.draws} tris ${meta.debug?.triangles}`, out);
+      `${r.key}: ${r.note} | as played: chase camera, ${close ? 'closest zoom (camera.maxZoom)' : 'default zoom'}${meta.cam?.mapZoom ? ` (map z${meta.cam.mapZoom.toFixed(1)} pitch ${Math.round(meta.cam.mapPitch)})` : ''}, DPR 2, own engine | draws ${meta.debug?.draws} tris ${meta.debug?.triangles}`, out);
     made.push(out);
   }
   console.log(made.join('\n'));

@@ -144,7 +144,7 @@ export class MarketLayer {
       if (this.opts.sharedFrame) this.culls.push(new InstanceCull(THREE, mesh, { castShadow: false }));
       instances += items.length;
     }
-    this.debug.instances = instances; this.debug.stalls = this.meshes.length ? (groups.get('stall-frame')?.length ?? 0) : 0;
+    this.debug.instances = instances; this.debug.stalls = this.meshes.length ? (groups.get('stall-frame')?.length ?? 0) + (groups.get('stall-table')?.length ?? 0) : 0;
     this.debug.markets = [...ids]; this.debug.buildMs = +(performance.now() - t0).toFixed(2);
     this.cameraMap.triggerRepaint?.();
   }
