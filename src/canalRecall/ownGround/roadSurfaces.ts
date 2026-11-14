@@ -555,15 +555,21 @@ export function deckLevelHeight(surface: GroundSurface, rect: readonly [number, 
   const decks = surface.decks.filter(d => { const [x0, y0, x1, y1] = d.profile.bbox; return !(x1 < rect[0] - pad || x0 > rect[2] + pad || y1 < rect[1] - pad || y0 > rect[3] + pad); });
   const P = 15;
   return (x, y) => {
-    let z = surface.height(x, y);
+    let z = surface.height(x, y), inside = false, plain = -Infinity, banked = -Infinity;
     for (const d of decks) {
       const [x0, y0, x1, y1] = d.profile.bbox;
       if (x < x0 - P || x > x1 + P || y < y0 - P || y > y1 + P) continue;
       const at = GroundSurface.locate(d, x, y);
       if (at.d === Infinity) continue;
-      z = Math.max(z, at.z);
+      if (at.lateral <= at.halfWidth) inside = true;
+      // A way deck's bank climb (DeckProfile.banks, lane crossing-grade 2026-11-14) lifts it to the bank tops: a point
+      // inside another deck and off this one keeps its own deck's level. The Lelylaan slip (OSM 7382983) stood 0.4 m
+      // over the bundled carriageway beside it, whose deck-level asphalt floated over its deck in a saw-toothed seam;
+      // without banks (`?bankClimb=0`) the rule is the old one, so the A10 over the Diemen tram keeps its level.
+      if (d.profile.banks && at.lateral > at.halfWidth) banked = Math.max(banked, at.z);
+      else plain = Math.max(plain, at.z);
     }
-    return z;
+    return Math.max(z, inside ? plain : Math.max(plain, banked));
   };
 }
 

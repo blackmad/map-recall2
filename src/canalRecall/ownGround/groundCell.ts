@@ -296,6 +296,13 @@ export function plainSection(w: LocalWay): LocalWay {
   return { ...w, section: { ...w.section, bands, paint: [] } };
 }
 
+/** The deck the bridge kit draws: without a way deck's bank climb (DeckProfile.core), else the deck itself. */
+export function kitDeck(deck: DeckSurface): DeckSurface {
+  const core = deck.profile.core;
+  if (!core) return deck;
+  return { ...deck, profile: { ...deck.profile, deck: core }, span: [Math.max(deck.span[0], core[0]), Math.min(deck.span[1], core[1])] };
+}
+
 export function buildCell(input: CellInput): BuiltCell {
   const t0 = Date.now();
   const { key, lod, rect, surface } = input;
@@ -728,7 +735,10 @@ export function buildCell(input: CellInput): BuiltCell {
   // tracks and the cycle path; the water mask runs on under the plein, and the BGT polygons there stand at ground or deck
   // level beside them). railingRuns.ts waterOutside `plein`, railRuns breaks the run there.
   const plein: WaterTest | undefined = roadIndex && input.pleinRails !== false ? (x, y) => roadIndex.findAll(x, y).length > 0 : undefined;
-  for (const deck of input.decks) {
+  for (const placed of input.decks) {
+    // A way deck's bank climb (DeckProfile.core, wayDecks.ts BANK_CLIMB_MAX_M) is road on an embankment, not bridge: the
+    // kit (body, parapets, top) keeps to the bridge itself; the surface carries the road up the bank.
+    const deck = kitDeck(placed);
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);

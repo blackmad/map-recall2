@@ -74,6 +74,14 @@ export interface DeckProfile {
    * lane f1b-jagged 2026-11-14). Stations <= lo and >= hi of the nearest column are carried.
    */
   underCarry?: { cols: Float64Array; lo: Float64Array; hi: Float64Array };
+  /**
+   * Way decks only (ownGround/wayDecks.ts BANK_CLIMB_MAX_M, lane crossing-grade 2026-11-14): station ranges where the deck
+   * runs on over land up the bank's climb to its top. The surface beside them falls to the relief as an embankment's side
+   * (surface.ts BANK_SIDE_GRADE), not over the deck's 0.75 m lateral blend.
+   */
+  banks?: [number, number][];
+  /** With `banks`: the deck's range without the bank climb (the bridge itself), which the kit's body, top and parapets keep to (decks.ts deckReach). */
+  core?: [number, number];
 }
 
 /** An outline this much wider than the road deck on a side widens the deck there (DeckProfile.sides), at most OUTLINE_REACH_MAX_M. */

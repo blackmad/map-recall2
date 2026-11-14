@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, capLargeHoles, coarsenTile, dropSpecks, decodeTile, dilateMask, downsample, encodeTile, extendTile, findPits, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, PIT_DEFAULTS, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
-import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
+import { BANK_SIDE_GRADE, DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import type { RailWay } from './railTracks';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
@@ -41,6 +41,7 @@ import { fillPockets, POCKET_LIFT, SURVEY_GAP_MAX_R } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
 import type { DeckProfile } from '../elevation/bridgeDeck';
+import { deckLevelHeight } from './roadSurfaces';
 import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
 import { fromLocal, toLocal } from '../galleryPipeline';
@@ -1100,7 +1101,7 @@ test('regression: relief is present (Postjeskade polder side lower than the Here
 
 // ------------------------------------------------------------- streaming in the game (groundStore / groundCell)
 import { GroundStore, groundCrossing, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
-import { buildCell, layersAt, packMesh, vertexNormals } from './groundCell';
+import { buildCell, kitDeck as kitDeckOf, layersAt, packMesh, vertexNormals } from './groundCell';
 import { ORIGIN } from '../threeBuildingFeatures';
 
 test('ground frame is the facades\' frame (duplicated to keep the worker bundle small)', () => {
@@ -2688,4 +2689,79 @@ test('streets under a way deck\'s hole range drape on the relief (lane F1b, Lely
   assert.equal(surface.streetHeight(15, 4.3), 0, 'no lateral blend up to the deck edge');
   assert.equal(surface.streetHeight(30, 0), surface.height(30, 0), 'over the water: as before');
   assert.equal(surface.streetDeckWeight(15, 0), 0);
+});
+
+test('way decks run on to the bank tops (bankClimb, Lelylaan 7382983, user 2026-11-14 "I don\'t dip down"): no dive down an interpolated embankment', () => {
+  // The canal x 20..30; the bridge way 0..60; the relief climbs from the west bank's edge (-1.8 at x 20) at 10-30 % to
+  // 3.3 at x 0 (an embankment the ground filter dropped); east of the water the underpass hole at -2.5 to x 45, then the
+  // bank climbs to 2 (the hole climb's side).
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[0, 0], [60, 0]];
+  const relief = (x: number) => (x >= 30 ? (x < 45 ? -2.5 : Math.min(2, -2.5 + 0.9 * (x - 45))) : x >= 20 ? -2.6 : Math.min(3.3, -1.8 + 0.17 * (20 - x) + 0.004 * (20 - x) ** 2));
+  const bank = { hole: true, bank: true } as const;
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief, false, bank)!;
+  const start = p.x[0] + p.deck[0];
+  assert.ok(start < 2, `the deck starts at x ${start.toFixed(1)} (the bank top near 0)`);
+  const before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief)!;
+  assert.ok(Math.abs(before.x[0] + before.deck[0] - 19) < 0.6, `without bankClimb the deck starts one metre onto the slope (x ${(before.x[0] + before.deck[0]).toFixed(1)})`);
+  // A quay wall (a metre's step at the water, flat beyond) moves the abutment by at most a station or two.
+  const quay = (x: number) => (x > 20 && x < 30 ? -1 : x > 19.5 && x <= 20 ? 0 : 1);
+  const q = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, quay, false, bank)!, qb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, quay)!;
+  assert.ok(Math.abs((q.x[0] + q.deck[0]) - (qb.x[0] + qb.deck[0])) <= 1.01, 'a quay wall keeps its abutment');
+  // An approach ramping up to a humped bridge (the relief falls away from the water): unchanged.
+  const ramp = (x: number) => (x > 20 && x < 30 ? -1 : x <= 20 ? 1 + 0.05 * (x - 20) : 1 - 0.05 * (x - 30));
+  const r = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, ramp, false, bank)!, rb = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, ramp)!;
+  assert.deepEqual(r.deck, rb.deck, 'a ramp toward the bridge keeps its deck');
+});
+
+test('bank climb ranges (lane crossing-grade 2026-11-14): the deck keeps its core for the kit, a crossing that does not dip keeps its ends', () => {
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[0, 0], [60, 0]];
+  const bank = { hole: true, bank: true } as const;
+  // The Lelylaan slip's shape: an embankment the ground filter dropped either side of the canal.
+  const embank = (x: number) => (x > 20 && x < 30 ? -2.6 : Math.min(3.3, -1.8 + 0.25 * (x <= 20 ? 20 - x : x - 30)));
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, embank, false, bank)!, before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, embank)!;
+  assert.ok(p.banks && p.banks.length === 2, 'both banks climbed');
+  const off = p.x[0] - before.x[0];
+  assert.deepEqual(p.core!.map(v => +(v + off).toFixed(6)), before.deck.map(v => +v.toFixed(6)), 'the core is the deck without the climb');
+  for (const [a, b] of p.banks!) assert.ok(b > a);
+  assert.equal(kitDeckOf({ profile: p, span: [p.deck[0], p.deck[1]] } as never).profile.deck, p.core, 'the kit draws the core');
+  // A gentle bank (5 % up to 0.2 m past the quay): the crossing dips under BANK_DIP_MIN_M, so no climb, byte-identical.
+  const gentle = (x: number) => (x > 20 && x < 30 ? -1 : Math.min(0.2, 0.05 * (x <= 20 ? 20 - x : x - 30)));
+  assert.deepEqual(wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle, false, bank), wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, gentle));
+});
+
+test('beside a bank climb the surface falls as an embankment\'s side, beside the bridge over its 0.75 m blend (BANK_SIDE_GRADE)', () => {
+  const n = 61, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(4);
+  for (let i = 0; i < n; i++) { x[i] = i; s[i] = i; }
+  const profile = { id: 'OSM1', name: 'w', family: 'way-deck', x, y, s, h, halfWidth: hw, water: [25, 35] as [number, number], deck: [5, 55] as [number, number], bbox: [0, -4, 60, 4] as [number, number, number, number], banks: [[5, 25]] as [number, number][], core: [24, 55] as [number, number] };
+  const surface = new GroundSurface(flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]), IDENTITY, 1);
+  surface.addDeck(profile as never);
+  const d = surface.decks[0], g = surface.ground(15, 0);
+  for (let i = 0; i < n; i++) d.z[i] = g + 4;
+  // 4 m over the relief: a side of 4 / BANK_SIDE_GRADE = 8 m; 2 m past the edge it still stands well over the relief.
+  assert.ok(surface.height(15, 6) - g > 2, `bank side 2 m out: ${(surface.height(15, 6) - g).toFixed(2)} m up`);
+  assert.ok(surface.height(15, 4 + 4 / BANK_SIDE_GRADE + 0.1) - g < 1e-9, 'back on the relief past the side');
+  assert.ok(surface.deckWeight(15, 6) > 0.5 && surface.deckWeight(15, 13) === 0);
+  // Beside the core (station 45): the 0.75 m blend as before.
+  assert.equal(surface.height(45, 4 + DECK_BLEND_M + 0.1), surface.ground(45, 4 + DECK_BLEND_M + 0.1));
+});
+
+test('deck-level polygons inside a deck ignore a bank-climbed deck beside it (deckLevelHeight, Lelylaan slip 7382983 beside 7382981)', () => {
+  const mk = (id: string, y0: number, banks: boolean): DeckProfile => {
+    const n = 41, x = new Float64Array(n), y = new Float64Array(n).fill(y0), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(4);
+    for (let i = 0; i < n; i++) { x[i] = i; s[i] = i; }
+    return { id, name: id, family: 'way-deck', x, y, s, h, halfWidth: hw, water: [15, 25], deck: [5, 35], bbox: [0, y0 - 4, 40, y0 + 4], ...(banks ? { banks: [[0, 5], [35, 40]], core: [10, 30] } : {}) } as DeckProfile;
+  };
+  const level = (highBanks: boolean, at: [number, number]) => {
+    const surface = new GroundSurface(flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]), IDENTITY, 1);
+    surface.addDeck(mk('LOW', 0, false)); surface.addDeck(mk('HIGH', 12, highBanks));
+    const [low, high] = surface.decks, g = surface.ground(20, 5);
+    for (let i = 0; i < 41; i++) { low.z[i] = g + 0.5; high.z[i] = g + 4.5; }
+    return deckLevelHeight(surface, [0, -10, 40, 20])(...at) - g;
+  };
+  assert.ok(Math.abs(level(true, [20, 3]) - 0.5) < 1e-9, 'inside the low deck, off the banked one: the low level');
+  assert.ok(Math.abs(level(false, [20, 3]) - 4.5) < 1e-9, 'no banks: the highest within reach, as before');
+  assert.ok(Math.abs(level(true, [20, 6]) - 4.5) < 1e-9, 'off both decks: the highest within reach');
+  assert.ok(Math.abs(level(true, [20, 10]) - 4.5) < 1e-9, 'inside the banked deck: its level');
 });
