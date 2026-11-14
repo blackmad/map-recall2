@@ -30,7 +30,7 @@ import {
 export const ROW_EXTRAS_DEFAULT: readonly string[] = ['window-sills', 'white-window-frames', 'door-surround', 'wall-anchors', 'plinth', 'downpipe'];
 /** A storey standing behind the cornice when the only height is 3DBAG's (which reads the mansard): its height (m). */
 export const ROOF_STOREY_M = 3.0;
-const HELD_READ = /scaffold|netting|steiger/i;
+const HELD_READ = /scaffold|netting|steiger|blue mesh/i;
 /** A reader's `bands` -> the wall extras that draw them (lane R's names): read and drawn, not dropped. */
 export const BAND_EXTRAS: Readonly<Record<string, string[]>> = {
   storey: ['floor-cornices'], lintel: ['string-courses'], both: ['floor-cornices', 'string-courses'], courses: ['string-courses'], speklagen: ['speklagen'],
@@ -78,6 +78,11 @@ export interface MemberInput {
   face?: FaceFront[];
   read?: DescriberAnswer | null;
   readRef?: string;
+  /** A read of an `extent: multi` capture that describes one module only (the re-read of 92-94 describes the right one):
+   *  the index of that front, left to right as seen; the other fronts take their series and the face. */
+  readFront?: number;
+  /** The read is a re-read from another capture year, the first read having been held (scaffold, netting). */
+  reread?: { panoId: string; captured: string; ref: string; firstRead: { ref: string; panoId?: string; captured?: string; held: string } };
 }
 export interface RowInput {
   id: string;
@@ -281,8 +286,9 @@ export function solveRow(input: RowInput): RowRecord {
     const nums = [...m.numbers].sort((a, b) => descending ? b - a : a - b);
     members.push({ pandId: m.pandId, label: m.label, numbers: m.numbers, built: m.built, widthM: m.widthM, fronts: ids });
     const readVals = m.read && !held ? readValues(m.read, m.built) : undefined;
+    if (m.reread) flags.push({ kind: 'reread', fronts: ids, detail: `re-read from the ${m.reread.captured} capture ${m.reread.panoId} (${m.reread.ref}); the first read (${m.reread.firstRead.captured ?? '?'} ${m.reread.firstRead.ref}) was held: ${m.reread.firstRead.held}${m.readFront !== undefined ? `; it describes front ${m.readFront + 1} of ${n} only` : ''}` });
     if (held) {
-      flags.push({ kind: 'scaffold', fronts: ids, detail: `reading not used: ${held}` });
+      flags.push({ kind: 'scaffold', fronts: ids, detail: `reading not used: ${held}; queued for a re-read from another capture year (scripts/house-specs/rows/reread-queue.ts)` });
       readNotDrawn.push({ front: m.pandId, field: 'reading', value: m.readRef ?? m.read!.image?.ref, reason: `held: ${held}; the front takes its series` });
     }
     ids.forEach((id, i) => {
@@ -293,12 +299,13 @@ export function solveRow(input: RowInput): RowRecord {
         ...(n > 1 ? { sub: { index: i, of: n, a0: r2(i / n), a1: r2((i + 1) / n) } } : {}),
         widthM: m.widthM === null ? null : r2(m.widthM / n), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null),
         overrides: {}, groundOffsetM: m.groundOffsetM ?? null, topM: null, ...(held ? { readHeld: held } : {}),
+        ...(m.readFront !== undefined && m.readFront !== i ? { readElsewhere: `the read describes front ${m.readFront + 1} of ${n} only` } : {}),
       };
       // The pui colour is read from the ground storey, which a scaffold over the upper front does not hide.
       const gc = m.read ? groundColourOfRead(m.read) : null;
       if (gc) front.ground = { ...front.ground, colour: { value: gc.value, source: 'single-read', ref: `${m.readRef ?? m.read!.image?.ref ?? m.pandId}: "${gc.phrase}"` } };
       fronts.push(front);
-      evs.push({ front, face, read: readVals, readRef: m.readRef, member: m, frontsOfPand: n });
+      evs.push({ front, face, read: m.readFront === undefined || m.readFront === i ? readVals : undefined, readRef: m.readRef, member: m, frontsOfPand: n });
     });
     if (m.read && !held) for (const r of notDrawnOfRead(m.read)) readNotDrawn.push({ front: m.pandId, ...r });
     for (const f of m.face ?? []) {
@@ -379,6 +386,35 @@ export function solveRow(input: RowInput): RowRecord {
     }
     const top = s.design.corniceTopM.value;
     e.front.topM = top === null ? null : r2(top - (e.front.groundOffsetM ?? 0));
+  }
+  // A face head restricted to some storeys (Kinkerstraat 90: segmental tympana on storeys 1-2) says nothing about the others.
+  // The upper storeys it leaves out take the series' readings when they agree: the read's head shape on that storey, with a
+  // keystone when the read's surround is a keystone (90: flat heads with a white keystone on storey 3, face "flat heads on storey 3").
+  for (const s of series) {
+    const hv = s.design.heads;
+    if (hv.source !== 'face-intent' || Array.isArray(hv.value) || !hv.value.storeys?.length) continue;
+    const covered = new Set(hv.value.storeys);
+    const reads = evs.filter(e => e.front.seriesId === s.id && e.member.read && !e.front.readHeld && Array.isArray(e.member.read.heads) && e.member.read.heads.length > 1);
+    if (!reads.length) continue;
+    // The shapes must agree. The dressing is the reads' surround by vote; a read of a multi-front capture (it may mix in the
+    // other module's dressing) weighs half, so 90's single-front keystone outranks 92's multi re-read's jack-blocks.
+    const shapes = (e: Ev) => (e.member.read!.heads as string[]).slice(1).map((h, k) => covered.has(k + 1) ? null : h);
+    const first = JSON.stringify(shapes(reads[0]));
+    if (!reads.every(e => JSON.stringify(shapes(e)) === first)) continue;
+    const tally = new Map<string, number>();
+    for (const e of reads) { const w = e.member.read!.extent === 'multi' ? 0.5 : 1, d = e.member.read!.windowSurround === 'keystone' ? 'keystone' : 'none'; tally.set(d, (tally.get(d) ?? 0) + w); }
+    const dressingOf = [...tally].sort((x, y) => y[1] - x[1])[0][0] as RowHeadDressing;
+    const extra: RowHeads[] = [];
+    shapes(reads[0]).forEach((shape0, k) => {
+      if (!shape0) return;
+      const shape = shape0 as RowHeadShape, dressing = dressingOf;
+      if (shape !== 'flat' && shape !== 'segmental' && shape !== 'round') return;
+      const same = extra.find(x => x.shape === shape && x.dressing === dressing);
+      if (same) same.storeys!.push(k + 1); else extra.push({ shape, dressing, storeys: [k + 1] });
+    });
+    if (!extra.length) continue;
+    const cites = reads.map(e => e.face?.citation).filter((c): c is string => !!c).sort((x, y) => Number(/flat heads on storey/i.test(y)) - Number(/flat heads on storey/i.test(x)));
+    s.design.heads = { ...hv, value: [hv.value, ...extra], ref: `${hv.ref}; storeys ${extra.flatMap(x => x.storeys).join(',')} from ${reads.map(e => `${e.member.pandId} reading${e.member.read!.extent === 'multi' ? ' (multi, half weight)' : ''} heads ${JSON.stringify(e.member.read!.heads)} surround ${e.member.read!.windowSurround}`).join('; ')}${cites.length ? `; face: ${cites[0]}` : ''}` };
   }
   // Reviewed statements: a series whose fronts all fall in the statement takes the value; otherwise each listed front does.
   for (const st of input.reviewed ?? []) {

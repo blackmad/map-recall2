@@ -31,6 +31,7 @@ export function toRowCheck(row: RowRecord, answers: Readonly<Record<string, Desc
       const v = (a as unknown as Record<string, unknown>)[k];
       if (!isRead(v)) continue;
       if (f.readHeld) { fields[k] = { fate: 'reported', reason: `held: ${f.readHeld}` }; continue; }
+      if (f.readElsewhere) { fields[k] = { fate: 'reported', reason: f.readElsewhere }; continue; }
       const over = row.overruled.find(o => (o.front === f.id || o.front === f.pandId) && rowKeys.includes(String(o.field)));
       const nd = row.readNotDrawn.find(r => r.front === f.pandId && (rowKeys.includes(r.field) || r.field === k));
       let fate: FieldFate = 'drawn', reason: string | undefined;

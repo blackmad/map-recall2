@@ -17,7 +17,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
+import { loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
 import { validateBlockFace, type BlockFaceIntent } from '../../../src/canalRecall/blockFace/intent.ts';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { specFromFace } from '../../../src/canalRecall/houseSpec/fromFace.ts';
@@ -53,10 +53,13 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
   const cuts = readJson(path.join(def.cutsDir, 'cuts.json')) as { rows: Array<{ pandId: string; wall: { heightM: number } }> } | null;
   if (cuts) inputs.push(rel(path.join(def.cutsDir, 'cuts.json')));
   inputs.push(`${rel(def.answersDir)}/<pandId>.json`);
+  const rereads = loadRereads();
   const members: MemberInput[] = def.members.map(md => {
     const pid = md.pandId;
     const sp = survey?.pands.find(p => p.pandId === pid);
-    const answer = readJson(path.join(def.answersDir, `${pid}.json`)) as DescriberAnswer | null;
+    const rr = rereads[pid];
+    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : readJson(path.join(def.answersDir, `${pid}.json`))) as DescriberAnswer | null;
+    if (rr) inputs.push(rr.answer);
     answers[pid] = answer;
     let fronts: ReturnType<typeof faceFronts> | undefined;
     if (face) {
@@ -72,6 +75,8 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
       widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
       height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null),
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
+      ...(rr ? { reread: { panoId: rr.panoId, captured: rr.captured, ref: rr.cut, firstRead: rr.firstRead } } : {}),
+      ...(rr?.describes && fronts && fronts.length > 1 ? { readFront: rr.describes === 'left' ? 0 : fronts.length - 1 } : {}),
     };
   });
   const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';

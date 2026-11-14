@@ -3514,6 +3514,14 @@ review); D owns records and the solve, R the renderer.
   Reviewed statements (`scripts/house-specs/rows/reviewed.json`, keyed by row and front id) replace a field, or with `add: true`
   merge a list into it (Weteringschans 169016 speklagen, review 4); field `ground.colour` sets a front's pui colour; a reviewed per-front `heads` (Kinkerstraat 100 `block-surround`) is P's per-house `headVariant` (Kinkerstraat
   92–94, 98, 100, 106–108, over the face's wrong shopPaint). All are flagged `reviewed`.
+- **Re-reads.** A read held for scaffold or netting queues a re-read from another capture year, not just a hold:
+  `npm run house:reread-queue -- --faces kinker- --pick` lists the held fronts and the best capture of another year (F4 rule),
+  writing pins for `describe-cut.ts cut --pins`; one opus read with the D1 prompt (`write-answer.ts --out`) and an entry in
+  `scripts/house-specs/rows/rereads.json` (answer in `rows/rereads/`, `describes` for a multi-front capture) make house:rows use it
+  (flag `reread`) and row-sheet show that capture with a yellow "re-read" tag. First: Kinkerstraat 92–94 from the 2023-01-10
+  capture (the 2019 read was netted); queue on the 28 Kinkerstraat faces: `rows/reread-queue-kinker.json`.
+- **Storey-limited face heads** (90: tympana on storeys 1–2) take the other upper storeys from the series' reads when their
+  shapes agree; the dressing is the reads' surround by vote, a multi-front read at half weight.
 - **Solve** (`houseSpec/row/solve.ts`). Fronts: face modules, or a read with twice the row's bays on a 1.6x-wide two-number pand
   (flag `extent-mismatch`). A read mentioning scaffold or netting is held whole (`readHeld`, flag `scaffold`); the front takes its
   series and the face. Series: one face-stated design (type, head dressing, dormers, crown), else one read signature (crown,
