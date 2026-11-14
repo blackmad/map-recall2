@@ -13,6 +13,8 @@ const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
 const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB } = await import('./rowFront.ts');
 const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
+const { isGardenShed } = await import('../gardenSheds.ts');
+const { SegmentGrid } = await import('../streetFronts.ts');
 
 const defs = loadRowDefs();
 const recs = (id: string) => rowFrontsWithSeries(solveRow(loadRow(defs[id], '2026-11-14').input));
@@ -290,6 +292,10 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   assert.ok(Math.abs(ring[0][0]) < 1e-6 && Math.abs(ring[0][1]) < 1e-6 && Math.abs(ring[1][0] - 7.69) < 1e-6 && Math.abs(ring[1][1]) < 1e-6, 'its face on the stated edge');
   for (const q of ring.slice(2, 4)) assert.ok(Math.abs(q[1] - ROW_WALL_SLAB.depthM) < 1e-6, 'its back inside the footprint');
   assert.ok(ring[2][0] < 7.69 && ring[3][0] > 0, 'its ends slant inward, never in the plane of the chunk\'s side wall');
+  // A 0.4 m slab is shed-sized: it must never fall to the garden-shed rule (bare walls; the game drew 86-88 blank).
+  const far = new SegmentGrid(Float32Array.from([1e5, 1e5, 1e5 + 1, 1e5]));
+  assert.equal(isGardenShed(out as never, far, { lng, lat }), false);
+  assert.equal(isGardenShed({ ...out, properties: { ...p, rowWallOnly: undefined } } as never, far, { lng, lat }), true, 'without the mark it would be a shed');
   // Flag off: untouched.
   assert.equal(withRowFront(f), f);
 });
