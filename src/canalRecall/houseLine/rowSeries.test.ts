@@ -38,10 +38,10 @@ test('every front record carries its series draw and the judged wall tone, one t
   for (const [s, t] of tones) assert.equal(t.size, 1, `${s}: one wall tone`);
 });
 
-test('Kinkerstraat 106–108 (236027) draws one pediment dormer per front, centred in each half', () => {
+test('Kinkerstraat 106–108 (236027) draws one flat-topped hoist dormer per front, centred in each half (blind review 6)', () => {
   const s = rec(K, '0363100012236027').series!;
   assert.equal(s.roofStorey?.kind, 'mansard');
-  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'pediment'], [0.75, 'pediment']]);
+  assert.deepEqual(s.roofStorey!.dormers.map(d => [d.a, d.kind]), [[0.25, 'plain'], [0.75, 'plain']]);
   assert.equal(s.roofStorey!.riseM, undefined, 'the record states no rise: 3DBAG or the period default decides');
 });
 

@@ -95,6 +95,7 @@ export interface RowInput {
   solvedAt: string;
   /** Reviewed statements (a reviewer read the photo; precedence over everything): `scripts/house-specs/rows/reviewed.json`. */
   reviewed?: ReviewedStatement[];
+  limits?: Array<{ fronts: string[]; component: string; what: string; ref: string }>;
 }
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
@@ -304,6 +305,8 @@ export function solveRow(input: RowInput): RowRecord {
       // The pui colour is read from the ground storey, which a scaffold over the upper front does not hide.
       const gc = m.read ? groundColourOfRead(m.read) : null;
       if (gc) front.ground = { ...front.ground, colour: { value: gc.value, source: 'single-read', ref: `${m.readRef ?? m.read!.image?.ref ?? m.pandId}: "${gc.phrase}"` } };
+      const one = m.read && !held && m.read.ground === 'shopfront' ? oneShopfront(m.read) : null;
+      if (one && front.ground.use !== 'dwelling') front.ground = { ...front.ground, shopUnits: { value: 1, source: 'single-read', ref: `${m.readRef ?? m.pandId}: "${one}"` } };
       fronts.push(front);
       evs.push({ front, face, read: m.readFront === undefined || m.readFront === i ? readVals : undefined, readRef: m.readRef, member: m, frontsOfPand: n });
     });
@@ -448,7 +451,8 @@ export function solveRow(input: RowInput): RowRecord {
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
     flags.push({ kind: 'no-reading', field: 'groundOffsetM', fronts: fronts.filter(f => f.groundOffsetM == null).map(f => f.id), detail: 'no street ground: topM is the series line above the pand ground (offset 0 assumed)' });
 
-  return { v: ROW_RECORD_VERSION, id: input.id, street: input.street, side: input.side, ...(input.face ? { face: input.face } : {}), members, fronts, series, flags, readNotDrawn, overruled, inputs: input.inputs, solvedAt: input.solvedAt };
+  const schemaLimits = (input.limits ?? []).flatMap(l => l.fronts.filter(id => fronts.some(f => f.id === id)).map(front => ({ front, component: l.component, what: l.what, ref: l.ref })));
+  return { v: ROW_RECORD_VERSION, id: input.id, street: input.street, side: input.side, ...(input.face ? { face: input.face } : {}), members, fronts, series, flags, readNotDrawn, overruled, ...(schemaLimits.length ? { schemaLimits } : {}), inputs: input.inputs, solvedAt: input.solvedAt };
 }
 
 const sameHeads = (a: RowHeads | RowHeads[], b: RowHeads | RowHeads[]) => { const x = headsList(a), y = headsList(b); return x.length === y.length && x.every((h, i) => h.dressing === y[i].dressing && h.shape === y[i].shape && JSON.stringify(h.storeys ?? null) === JSON.stringify(y[i].storeys ?? null)); };
@@ -472,7 +476,7 @@ const GROUND_COLOUR_WORDS: Array<[RegExp, RowGroundColour]> = [
  */
 export function groundColourOfRead(a: DescriberAnswer): { value: RowGroundColour; phrase: string } | null {
   const texts = [...(Array.isArray(a.gaps) ? a.gaps.filter(g => g.component === 'shopfront' || g.component === 'ground').map(g => g.what) : []), typeof a.notes === 'string' ? a.notes : ''];
-  const re = /\b((?:painted\s+)?(?:[a-z]+[- ]and[- ])?[a-z]+(?:[- ](?:grey|green|red))?)\s+(?:painted\s+)?(shop ?fronts?|puis?|shutters?)\b/gi;
+  const re = /\b((?:painted\s+)?(?:[a-z]+[- ]and[- ])?[a-z]+(?:[- ](?:grey|green|red))?)(?:-(?:framed|painted))?\s+(?:painted\s+)?(shop ?fronts?|puis?|shutters?)\b/gi;
   for (const t of texts) for (const mt of t.matchAll(re)) {
     const word = mt[1].toLowerCase();
     if (word.startsWith('painted ')) continue;
@@ -480,6 +484,12 @@ export function groundColourOfRead(a: DescriberAnswer): { value: RowGroundColour
     if (hit) return { value: hit[1], phrase: mt[0] };
   }
   return null;
+}
+
+/** A reading that describes ONE shopfront (a shopfront gap starting "a" / "one", not "two" or "shops"): its sentence. */
+export function oneShopfront(a: DescriberAnswer): string | null {
+  const g = (Array.isArray(a.gaps) ? a.gaps : []).find(x => x.component === 'shopfront' && /^(a|an|one)\b[^.]*\bshop ?front\b/i.test(x.what) && !/\b(two|three|several|shops|units)\b/i.test(x.what));
+  return g?.what ?? null;
 }
 
 function groundOfRead(a: DescriberAnswer | null): RowGround {

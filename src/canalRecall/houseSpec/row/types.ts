@@ -133,6 +133,11 @@ export interface RowGround {
    * read. Outranks `shopPaint` (the face intent's paint, which the Kinkerstraat review found wrong on 92–94, 100, 106–108).
    */
   colour?: RowField<RowGroundColour>;
+  /**
+   * Separate shop units across the ground. 1 when the reading describes one shopfront (`a ... shopfront` with its
+   * door and window, Weteringschans 168042): drawn as one unit, not split by width. Absent: the renderer's own split.
+   */
+  shopUnits?: RowField<number>;
 }
 
 /** The design of a series (and, as `Partial`, a front's overrides). Every field is solved with a source. */
@@ -240,6 +245,9 @@ export interface Overruled {
   why: string;
 }
 
+/** What the kit cannot say about a front (scripts/house-specs/rows/limits.json): a known difference from the photo. */
+export interface RowLimit { front: string; component: string; what: string; ref: string }
+
 export interface RowRecord {
   v: typeof ROW_RECORD_VERSION;
   /** "kinker-86-110" (face id) or "<street>-<first>-<last>". */
@@ -258,6 +266,8 @@ export interface RowRecord {
   /** Inputs used: file paths. */
   inputs: string[];
   solvedAt: string;
+  /** Known differences the kit cannot say, per front. */
+  schemaLimits?: RowLimit[];
 }
 
 /** The design a front draws: its series design with its overrides on top. */

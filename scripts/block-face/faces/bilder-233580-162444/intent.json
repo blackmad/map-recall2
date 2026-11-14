@@ -48,6 +48,48 @@
        "evidence": "pano 2024-11-29 + OSM node 494157345"
       },
       "dormerStyle": "pediment"
+     },
+     {
+      "id": "kinkerstraat",
+      "street": "Kinkerstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 0,
+      "tallGround": true,
+      "windows": "sash",
+      "windowHead": {
+       "kind": "segmental",
+       "storeys": [
+        1,
+        2
+       ],
+       "tympanum": "stone"
+      },
+      "shopfront": {
+       "colour": "#e6d7a6",
+       "fascia": true,
+       "name": "Corner Inn",
+       "sign": {
+        "text": "Corner Inn",
+        "textColour": "white",
+        "mount": "fascia",
+        "background": "#2a2f6e"
+       },
+       "entrance": "left",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "black"
+       },
+       "glazing": "transom",
+       "stallriser": "low",
+       "fasciaColour": "#2a2f6e",
+       "evidence": "kinker-86-110 strip.jpg pand 10 (zoom): cream-painted ground storey, small leaded transom lights, dark blue fascia \"...INN\", roller shutter; OSM node 494157345"
+      },
+      "doorBay": 2
      }
     ],
     "roof": {
@@ -96,10 +138,12 @@
     "photoGables": 0,
     "schemaLimits": [
      "two boarded (white-panelled) windows per storey on the left are modelled as glazed windows",
-     "corner: the Kinkerstraat front is not modelled",
      "louvre transom band above the shopfront is not modelled",
-     "dormer is off-centre right (x 0.56) but modelled centred"
-    ]
+     "dormer is off-centre right (x 0.56) but modelled centred",
+     "corner: the Kinkerstraat front is taken from kinker-86-110 (strip pand 10: 3 axes, segmental tympana on storeys 1-2, flat on storey 3); its storey-3 flat heads and the low roof box are not said",
+     "cream-painted Kinkerstraat ground-storey wall"
+    ],
+    "kinkerstraatCitation": "kinker-86-110 strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3 (lane D 2026-11-14: the blank slab right of Kinkerstraat 90)"
    }
   },
   {
