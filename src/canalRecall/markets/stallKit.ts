@@ -10,8 +10,10 @@
  * Measurements (panoramas, Gemeente Amsterdam, CC BY 4.0; the bike hoop 0.9 m apart and the 0.95 m counter scale
  * them; read off the 2022-03-21 and 2020-01-06 Albert Cuypstraat captures and the 2024-12-11 / 2025-07-31 Ten
  * Katestraat ones): the standard Amsterdam marktkraam frame is ~4 m along the row and ~2.2 m deep; galvanised square
- * posts; a counter at ~0.9 m one metre deep at the front; a canvas roof that rises from ~2.3 m over the aisle to ~2.6 m
- * at the back, overhanging the front posts by ~0.5 m with a short valance; a canvas back sheet down to the counter.
+ * posts; a counter at ~0.9 m one metre deep at the front; a canvas roof ~2.35 m over the aisle falling to ~2.1 m
+ * at the back (from the 2.44 m panorama eye the canvas tops read lit and near the horizon, so they sit about eye height
+ * and slope away from the aisle), overhanging
+ * the front posts by ~0.5 m with a short valance; canvas back and end sheets down to the counter (the 2020-01-06 rows).
  */
 
 export const SLOT = '#ff00ff';
@@ -23,10 +25,10 @@ export const STALL = {
   counterH: 0.9,
   counterDepth: 1.0,
   counterT: 0.06,
-  roofFrontZ: 2.3,
-  roofBackZ: 2.6,
+  roofFrontZ: 2.35,
+  roofBackZ: 2.1,
   overhang: 0.5,
-  valance: 0.22,
+  valance: 0.15,
   backSheetBottom: 1.0,
 } as const;
 
@@ -71,8 +73,8 @@ export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', '
  * every stall; Albert Cuyp places ~250 stalls). A whole stall (frame + roof + goods) stays under STALL_TRI_CAP.
  */
 export const MARKET_TRI_CAPS: Readonly<Record<MarketPartId, number>> = {
-  'stall-frame': 96, 'roof-plain': 32, 'roof-striped': 112,
-  'goods-produce': 140, 'goods-fabric': 150, 'goods-fish': 120, 'goods-general': 120, 'goods-cheese': 140, 'goods-flowers': 140,
+  'stall-frame': 96, 'roof-plain': 40, 'roof-striped': 120,
+  'goods-produce': 140, 'goods-fabric': 150, 'goods-fish': 120, 'goods-general': 140, 'goods-cheese': 140, 'goods-flowers': 140,
   van: 160,
 };
 export const STALL_TRI_CAP = 360;
@@ -136,6 +138,8 @@ function roof(stripes: number): MarketMesh {
     b.quad2([xa, y0, z0], [xb, y0, z0], [xb, y0, z0 - S.valance], [xa, y0, z0 - S.valance], hex);
   }
   b.quad2([-L, -S.depth, S.backSheetBottom], [L, -S.depth, S.backSheetBottom], [L, -S.depth, z1], [-L, -S.depth, z1], SLOT);
+  // End sheets: the back half of each end closed down to the counter.
+  for (const x of [-L, L]) b.quad2([x, -S.depth, S.backSheetBottom], [x, -S.counterDepth, S.backSheetBottom], [x, -S.counterDepth, roofZ(-S.counterDepth)], [x, -S.depth, z1], SLOT);
   return b.done(n > 1 ? 'roof-striped' : 'roof-plain');
 }
 export const roofPlainModel = (): MarketMesh => roof(1);
@@ -202,8 +206,12 @@ export function generalModel(): MarketMesh {
     const xa = gx0 + i * (gx1 - gx0) / 5 + 0.04, xb = xa + (gx1 - gx0) / 5 - 0.08;
     b.box(xa, gy0 + 0.05, top, xb, gy1 - 0.05, top + 0.1 + ((i * 7) % 3) * 0.07, i % 2 ? SLOT : T.boxDark);
   }
-  // Pegboard / hanging display under the roof at the back of the counter.
-  b.quad2([-L + 0.3, -S.counterDepth - 0.1, 1.15], [L - 0.3, -S.counterDepth - 0.1, 1.15], [L - 0.3, -S.counterDepth - 0.1, 2.15], [-L + 0.3, -S.counterDepth - 0.1, 2.15], SLOT);
+  // Hung goods on a rail at the back of the counter (bags, cases): small blocks, no backing board.
+  b.box(-L + 0.3, -S.counterDepth - 0.12, 1.78, L - 0.3, -S.counterDepth - 0.08, 1.81, T.rack, true, true);
+  for (let i = 0; i < 6; i++) {
+    const xa = -L + 0.45 + i * 0.55;
+    b.box(xa, -S.counterDepth - 0.14, 1.32 + (i % 2) * 0.12, xa + 0.38, -S.counterDepth - 0.06, 1.76, i % 2 ? SLOT : FABRIC[(i * 3) % FABRIC.length], false, true);
+  }
   b.box(-L + 0.4, -S.depth + 0.2, 0, -L + 1.1, -S.depth + 0.7, 0.7, T.boxDark);
   return b.done('goods-general');
 }

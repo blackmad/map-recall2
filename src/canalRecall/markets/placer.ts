@@ -56,15 +56,16 @@ export type RoofSwatch = { hex: string; striped: boolean; weight: number };
 export type MarketPaletteId = 'cuyp' | 'tenkate';
 /**
  * Canvas tones and goods mix per market. Cuyp (2020-01-06, 2021-04-23, 2022-03-21 captures): mostly white and off-white
- * canvas, some red and red-and-white, the odd blue, yellow (the "kleinvakman" stall) or green-striped awning. Ten Kate
+ * canvas (some 85 % in the 2020 and 2022 rows), the odd red or red-and-white, blue, yellow (the "kleinvakman" stall) or
+ * green-striped awning. Ten Kate
  * (2024-12-11, 2025-07-31): lime-green and dark-green canopies among white ones, produce-heavy.
  */
 export const MARKET_PALETTES: Readonly<Record<MarketPaletteId, { roofs: readonly RoofSwatch[]; goods: Readonly<Record<GoodsKind, number>>; vans: readonly string[] }>> = {
   cuyp: {
     roofs: [
-      { hex: '#ebe8df', striped: false, weight: 42 }, { hex: '#d8d2c2', striped: false, weight: 16 }, { hex: '#b9bcbc', striped: false, weight: 8 },
-      { hex: '#c0392f', striped: true, weight: 10 }, { hex: '#b8322a', striped: false, weight: 6 }, { hex: '#2f5e9e', striped: true, weight: 5 },
-      { hex: '#e0bf2a', striped: false, weight: 5 }, { hex: '#3d7a45', striped: true, weight: 4 }, { hex: '#3d6b9e', striped: false, weight: 4 },
+      { hex: '#efede6', striped: false, weight: 58 }, { hex: '#dcd7c9', striped: false, weight: 16 }, { hex: '#c4c7c6', striped: false, weight: 10 },
+      { hex: '#c0392f', striped: true, weight: 5 }, { hex: '#b8322a', striped: false, weight: 4 }, { hex: '#2f5e9e', striped: true, weight: 2 },
+      { hex: '#e0bf2a', striped: false, weight: 2 }, { hex: '#3d7a45', striped: true, weight: 2 }, { hex: '#3d6b9e', striped: false, weight: 1 },
     ],
     goods: { produce: 28, fabric: 24, general: 26, fish: 5, cheese: 10, flowers: 7 },
     vans: ['#e8e8e4', '#e8e8e4', '#7a5636', '#b8322a'],
@@ -177,7 +178,7 @@ export function placeMarket(m: MarketLine): { instances: MarketInstance[]; stall
         const f = frameAt(s, FRONT_SETBACK_M);
         instances.push({ part: 'stall-frame', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: null, stall: id });
         instances.push({ part: pick.roof.striped ? 'roof-striped' : 'roof-plain', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: pick.roof.hex, stall: id });
-        const goodsTone = pick.goods === 'general' ? ['#c9a227', '#2f5e9e', '#b8322a', '#6a4a7c', '#3d6b5a'][Math.floor(hash01(`${id}:tone`) * 5)] : null;
+        const goodsTone = pick.goods === 'general' ? ['#8a7a5c', '#2f4a6e', '#8c3a34', '#5a5560', '#3d5b4a'][Math.floor(hash01(`${id}:tone`) * 5)] : null;
         instances.push({ part: goodsPart(pick.goods), lng: f.lng, lat: f.lat, yaw: f.yaw, colour: goodsTone, stall: id });
         stalls.push({ id, market: m.id, side: side.side, s, goods: pick.goods, roof: pick.roof.striped ? 'striped' : 'plain', colour: pick.roof.hex });
       }
