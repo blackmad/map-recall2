@@ -1,0 +1,19 @@
+{
+  "modelId": "garage-noord",
+  "landmarkId": "n12979333989",
+  "name": "Sichuan Territory",
+  "center": [
+    52.3855,
+    4.92586
+  ],
+  "sourceUrl": "https://www.yourlittleblackbook.me/en/sichuan-territory-amsterdam-noord/",
+  "description": "Sichuan Territory's Amsterdam-Noord branch opened in 2024 in the greenhouse at the front of Garage Noord. The restaurant is known for Sichuan cooking, and the Noord menu has many stir-fried dishes and a selection of regional barbecue dishes. The first Sichuan Territory branch is in the city centre, near the Red Light District.",
+  "sourceLinks": [
+    {
+      "title": "Your Little Black Book: Sichuan Territory Amsterdam-Noord (16 August 2024)",
+      "url": "https://www.yourlittleblackbook.me/en/sichuan-territory-amsterdam-noord/"
+    }
+  ],
+  "genuineOsmIdentity": "n12979333989",
+  "integrationNote": "No separate model: the restaurant is the greenhouse (and the teal emblem gable) of the garage-noord GLB. Pin the card to the greenhouse front on the yard."
+}

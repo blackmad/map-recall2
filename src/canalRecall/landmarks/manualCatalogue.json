@@ -80610,7 +80610,8 @@
    "red": "#a8402f",
    "bronze": "#4a3a2e",
    "pink": "#35322f",
-   "ochre": "#ecebe6"
+   "ochre": "#ecebe6",
+   "copper": "#2c3b22"
   },
   "attribution": {
    "title": "Skatecafe",
@@ -80618,7 +80619,7 @@
    "sourceUrl": "https://www.openstreetmap.org/node/9789622796",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated tag pieces, not copied; no pixels or meshes imported."
+   "modifications": "Original texture-free geometry on the BAG footprint: six saw-tooth bays with glazed north lights, the link under ivy, the chalet cafe front (black boards, scalloped bargeboards, half-timbered storey with blue shutters, yellow balcony band) and the brick wing, laid out from the 2019-2024 municipal panoramas; brick tones measured on them; graffiti drawn as generated flat tag panels and scribbles at the photographed positions and colours, not copied; no pixels or meshes imported."
   },
   "buildingFootprint": {
    "type": "Polygon",
