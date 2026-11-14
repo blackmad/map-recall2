@@ -45,11 +45,13 @@ export interface WetGroundInput {
   waterZ: (x: number, y: number) => number;
   /** Bounding box of the water polygons (polygons wholly outside it are skipped unsampled). */
   waterBox?: readonly [number, number, number, number] | null;
+  /** The relief's clearance over the water that makes a sample a deck; default WET_CLEAR_M (measuring only, lane F1b). */
+  clearM?: number;
 }
 
 /** Outer rings of the ground polygons (h = 0) that stand over water as a deck (see the header). */
 export function wetGroundRings(surfaces: readonly RoadSurface[], input: WetGroundInput): Vec2[][] {
-  const out: Vec2[][] = [], wb = input.waterBox;
+  const out: Vec2[][] = [], wb = input.waterBox, clear = input.clearM ?? WET_CLEAR_M;
   if (wb === null) return out;
   for (const s of surfaces) {
     if (s.h !== 0 || !s.r.length) continue;
@@ -67,7 +69,7 @@ export function wetGroundRings(surfaces: readonly RoadSurface[], input: WetGroun
         if (!deep(x, y)) continue;
         const d = WET_INSET_M;
         if (!(deep(x + d, y) && deep(x - d, y) && deep(x, y + d) && deep(x, y - d))) continue;
-        if (input.ground(x, y) - input.waterZ(x, y) >= WET_CLEAR_M) n++;
+        if (input.ground(x, y) - input.waterZ(x, y) >= clear) n++;
       }
     }
     if (n >= WET_MIN_SAMPLES) out.push(o);
@@ -88,7 +90,7 @@ export function wetGroundRings(surfaces: readonly RoadSurface[], input: WetGroun
       let n = 0;
       for (let x = Math.ceil(x0); x <= x1 && n < WET_NEAR_SAMPLES; x++) for (let y = Math.ceil(y0); y <= y1 && n < WET_NEAR_SAMPLES; y++) {
         if (!inRing(o, x, y) || rings.slice(1).some(h => inRing(h, x, y)) || !input.wet(x, y)) continue;
-        if (input.ground(x, y) - input.waterZ(x, y) >= WET_CLEAR_M && nearDeck(x, y)) n++;
+        if (input.ground(x, y) - input.waterZ(x, y) >= clear && nearDeck(x, y)) n++;
       }
       if (n < WET_NEAR_SAMPLES) continue;
       out.push(o); decks.push({ r: o, box: boxOf(o) }); rest.splice(i, 1); grew = true;

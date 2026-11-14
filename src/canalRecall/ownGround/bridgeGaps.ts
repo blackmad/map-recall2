@@ -286,7 +286,14 @@ export const DRY_EDGE_M = 20;
  * ground-level street, path or quay. `capM`: the walk reaches at least this far (a dry way deck takes the
  * survey's whole deck polygon, DRY_EDGE_M).
  */
-export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean, groundRoad?: (x: number, y: number) => boolean, capM = 0): { left: Float64Array; right: Float64Array } | null {
+/**
+ * `median` (lane F1b 2026-11-14, Ringweg-Noord OSM 7376770 / 7376548): a gap between deck-level polygons inside the
+ * half-width does not end the walk. A bundled way deck (wayDecks.ts bridgeWayBundles) lies on the median of two
+ * carriageways, each its own deck polygon across a 4 m median strip with none: the walk stopped in the median, the
+ * side kept the half-width (15.7 m) and the parapet stood 2 m inside the outer carriageway's hard shoulder, over 53 m
+ * once the hole climb ran the deck on over the bank. Off: `?medianEdges=0` (the before).
+ */
+export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean, groundRoad?: (x: number, y: number) => boolean, capM = 0, median = false): { left: Float64Array; right: Float64Array } | null {
   const n = p.s.length, raw = [new Float64Array(n), new Float64Array(n)], hwMax = Math.max(...p.halfWidth);
   let widened = false;
   for (let i = 0; i < n; i++) {
@@ -297,7 +304,7 @@ export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidt
     for (const side of [0, 1] as const) {
       const sg = side === 0 ? 1 : -1, cap = Math.max(capM, p.sides ? Math.max(hw, p.sides[side]) + EDGE_STEP_M : hwMax + EDGE_NO_OUTLINE_M);
       let last = -1;
-      for (let t = 0; t <= cap + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) {
+      for (let t = 0; t <= cap + 1e-9 && (t - Math.max(0, last) <= EDGE_GAP_M || (median && t <= hw + 1e-9)); t += EDGE_STEP_M) {
         const x = p.x[i] + nx * sg * t, y = p.y[i] + ny * sg * t;
         if (groundRoad && t > hw && groundRoad(x, y)) break;
         if (onDeckPoly(x, y)) last = t;
@@ -333,8 +340,24 @@ export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidt
  * other deck: byte-identical).
  */
 export const CAP_MIN_M = 2, CAP_OPEN_M = 2, CAP_FILL_M = 2.5;
-export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck'>, onDeckPoly: (x: number, y: number) => boolean, surveyed: (x: number, y: number) => boolean): { left: Float64Array; right: Float64Array } | null {
+/**
+ * `smooth` (lane F1b 2026-11-14; BRU0407, 0831, 0415, 0664, 1696, 2114, 0299, 0388): the caps follow the survey polygon
+ * station by station, so a lamp pier's bay in the deck polygon (BRU0407: 9.0 m, 10.5 m over 2.5 m, 9.0 m) or a capped
+ * stretch of a couple of metres at a slanted corner (BRU0299: 9.5 m against the 11 m half-width over 2 m) stepped the
+ * parapet out and back across the deck: 1.5-3 m "turns". Each side's caps take the median over CAP_SMOOTH_M either side
+ * along the deck span (an uncapped station counts as Infinity), so a bay or a capped run shorter than CAP_SMOOTH_M goes
+ * and the railing runs straight on the capped edge. On a side with caps, the stations the survey's deck polygon
+ * reaches to within CAP_MIN_M of the half-width follow its edge too (BRU0415: a polygon cut at a slant runs from 14.4 m
+ * to 12.5 m; the cap alone stepped there). Where a capped run still begins or ends mid-span (BRU0831: 3.5 to 2.0 m) the
+ * cap eases in at CAP_TAPER metres across per metre along, from the capped side (the lower envelope: never wider than
+ * a cap), so the railing bends along the narrowing instead of turning across it.
+ * Off: `?capSmooth=0` (the before).
+ */
+export const CAP_SMOOTH_M = 3, CAP_TAPER = 0.5;
+export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck'>, onDeckPoly: (x: number, y: number) => boolean, surveyed: (x: number, y: number) => boolean, smooth = false): { left: Float64Array; right: Float64Array } | null {
   const n = p.s.length, raw = [new Float64Array(n).fill(Infinity), new Float64Array(n).fill(Infinity)], short = [new Float64Array(n).fill(Infinity), new Float64Array(n).fill(Infinity)];
+  // capSmooth: the survey's edge where it lies within CAP_MIN_M inside the half-width (not capped on its own).
+  const near = [new Float64Array(n).fill(Infinity), new Float64Array(n).fill(Infinity)];
   let any = false;
   for (let i = 0; i < n; i++) {
     if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
@@ -345,7 +368,7 @@ export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth
       for (let t = 0; t <= hw + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) if (onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t)) last = t;
       // No deck polygon near the road line (an end station on the quay survey): short, any neighbour's cap holds.
       if (last < 0) { short[side][i] = 0; continue; }
-      if (hw - last <= CAP_MIN_M) continue;
+      if (hw - last <= CAP_MIN_M) { if (smooth && last + EDGE_STEP_M < hw) near[side][i] = last + EDGE_STEP_M; continue; }
       // Deck-level survey farther out within the half-width (a second carriageway's bridge across a gap of water, BRU0420):
       // the profile spans both; no cap.
       let farther = false;
@@ -368,6 +391,22 @@ export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth
     }
     raw[side] = fill;
   }
+  // capSmooth: on a side with caps the uncapped stations follow the survey's edge where it lies inside the half-width
+  // (BRU0415: a deck polygon cut at a slant, 14.4 m to 12.5 m), then the median over CAP_SMOOTH_M either side along the
+  // span, before the spread below (which would widen a bay).
+  if (smooth) for (const side of [0, 1] as const) {
+    if (raw[side].some(v => v !== Infinity)) for (let i = 0; i < n; i++) raw[side][i] = Math.min(raw[side][i], near[side][i]);
+    const src = raw[side], res = Float64Array.from(src);
+    for (let i = 0; i < n; i++) {
+      if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+      const win: number[] = [];
+      for (let j = 0; j < n; j++) if (p.s[j] >= p.deck[0] && p.s[j] <= p.deck[1] && Math.abs(p.s[j] - p.s[i]) <= CAP_SMOOTH_M + 1e-9) win.push(src[j]);
+      win.sort((a, b) => a - b);
+      res[i] = win[win.length >> 1];
+    }
+    raw[side] = res;
+  }
+  if (smooth && raw.every(r => r.every(v => v === Infinity))) return null;
   const out = [new Float64Array(n), new Float64Array(n)];
   for (const side of [0, 1] as const) for (let i = 0; i < n; i++) {
     let v = raw[side][i];
@@ -376,6 +415,16 @@ export function surveyDeckCaps(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth
       for (let j = i + 1; j < n && p.s[j] - p.s[i] <= EDGE_SPREAD_M; j++) if (p.s[j] <= p.deck[1]) v = Math.max(v, raw[side][j]);
     }
     out[side][i] = v;
+  }
+  if (!smooth) return { left: out[0], right: out[1] };
+  // The taper: each span station takes the lowest cap + CAP_TAPER × the distance along the deck to it.
+  for (const side of [0, 1] as const) {
+    const res = out[side], tapered = Float64Array.from(res);
+    for (let i = 0; i < n; i++) {
+      if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+      for (let j = 0; j < n; j++) if (res[j] !== Infinity && p.s[j] >= p.deck[0] && p.s[j] <= p.deck[1]) tapered[i] = Math.min(tapered[i], res[j] + CAP_TAPER * Math.abs(p.s[j] - p.s[i]));
+    }
+    out[side] = tapered;
   }
   return { left: out[0], right: out[1] };
 }
