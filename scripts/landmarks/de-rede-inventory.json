@@ -1,0 +1,271 @@
+{
+ "schemaVersion": 1,
+ "id": "de-rede",
+ "pand": "0363100012243292",
+ "brief": "scripts/landmarks/de-rede-brief.md",
+ "signature": [
+  "nw-glazed-boxes",
+  "nw-louvres",
+  "nw-lettering",
+  "se-twin-gables",
+  "se-louvres-rails"
+ ],
+ "walls": [
+  {
+   "tag": "w01-320",
+   "bearing": 320,
+   "lengthM": 12.9,
+   "centre": [
+    4.877167,
+    52.3947505
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-28-34_00521",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-glazing",
+     "kind": "window-shape",
+     "where": "irregular runs of white-framed full-height glazing, three bays per storey set out differently on each floor",
+     "approxSizeM": [
+      12.9,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "streetFront(): every run measured in crop pixels (49.9 px/m), frame ring, sill, glass, mullions every ~1.25 m"
+    },
+    {
+     "id": "nw-glazed-boxes",
+     "kind": "other",
+     "where": "four olive-framed glazed boxes projecting ~0.6 m on storeys 2, 3, 5 and 6, alternating sides",
+     "approxSizeM": [
+      3.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "box(): olive frame slabs 0.6 m deep, glass at the front rim, mullions, a louvre in three of them"
+    },
+    {
+     "id": "nw-louvres",
+     "kind": "other",
+     "where": "black sliding louvre shutters in front of single lights on most storeys",
+     "approxSizeM": [
+      0.7,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "louvre(): slate panel with black slats every 13 cm, nine on the front + three in boxes"
+    },
+    {
+     "id": "nw-milky-panels",
+     "kind": "window-shape",
+     "where": "milky white glazed panels with a clear strip at the top on the two top storeys and in the gable",
+     "approxSizeM": [
+      4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "glazing({panel}): pale panel + glass strip"
+    },
+    {
+     "id": "nw-lettering",
+     "kind": "lettering",
+     "where": "\"de Rede\" over \"710-744\" in white letters on the entrance transom",
+     "approxSizeM": [
+      1.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "wallLetters() 0.32/0.30 m letters on a dark panel set into the entrance glazing"
+    },
+    {
+     "id": "nw-garage",
+     "kind": "other",
+     "where": "garage entrance with a steel grille in the NE ground bay",
+     "approxSizeM": [
+      2.5,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "dark panel + black grid of bars"
+    },
+    {
+     "id": "nw-gable",
+     "kind": "other",
+     "where": "shallow gable over the front, shoulders 28.7 m, apex 30.8 m",
+     "approxSizeM": [
+      12.9,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "how": "3DBAG shell; the skin follows its roof line"
+    },
+    {
+     "id": "nw-street-sign",
+     "kind": "sign",
+     "where": "yellow-backed street sign on a pole in front of the entrance",
+     "approxSizeM": [
+      0.6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-09_07-28-34_00521",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture on a pole in front of the entrance, not part of the building"
+     }
+    }
+   ],
+   "note": "Haparandaweg street gable (ring edge 1), white, ground storey + 7 storeys + gable."
+  },
+  {
+   "tag": "w02-140",
+   "bearing": 140,
+   "lengthM": 9.5,
+   "centre": [
+    4.8775755,
+    52.3944795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000277_pano_0001_001606",
+   "capturedAt": "2017-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-twin-gables",
+     "kind": "other",
+     "where": "two narrow gabled houses side by side, white bargeboards, timber boarding behind white mullions in each gable",
+     "approxSizeM": [
+      9.5,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "how": "3DBAG gables; quayFront(): boarded gable panels, mullions every 0.8 m, white rake boards"
+    },
+    {
+     "id": "se-louvres-rails",
+     "kind": "window-shape",
+     "where": "per storey a mix of French windows with black Juliet rails, fixed lights and timber louvre shutters, set out differently on each floor and each house",
+     "approxSizeM": [
+      4.4,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "how": "quayFront(): every light measured (50.2 px/m), copper-slot black rails with balusters every 11 cm, ochre louvres with bronze slats"
+    },
+    {
+     "id": "se-doors",
+     "kind": "other",
+     "where": "white front doors with a glass top, one per house beside the party pilaster",
+     "approxSizeM": [
+      1.0,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "how": "glazing({door})"
+    },
+    {
+     "id": "se-plinth",
+     "kind": "other",
+     "where": "dark plinth under the solid piers",
+     "approxSizeM": [
+      0.7,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "how": "dark quads 0.8 m high"
+    },
+    {
+     "id": "se-bands",
+     "kind": "other",
+     "where": "light floor bands between storeys",
+     "approxSizeM": [
+      9.5,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "how": "ledgeStrip 0.16 m under each storey sill"
+    },
+    {
+     "id": "se-planters",
+     "kind": "other",
+     "where": "window boxes on the Juliet rails of the right-hand house (third storey)",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000277_pano_0001_001606",
+     "skip": {
+      "reason": "temporary",
+      "note": "occupants' window boxes on the Juliet rails; they change"
+     }
+    }
+   ],
+   "note": "Quay front (ring edge 9): two gabled houses, ground + 4 storeys + gable."
+  },
+  {
+   "tag": "w03-230",
+   "bearing": 230,
+   "lengthM": 4.2,
+   "centre": [
+    4.877502,
+    52.3944665
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_20_07_00904",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-french-window",
+     "kind": "window-shape",
+     "where": "one French window with a black Juliet rail on the top storey",
+     "approxSizeM": [
+      0.9,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_20_07_00904",
+     "how": "recessCheek(): shellWindow hosted on the 3DBAG wall + rail"
+    }
+   ],
+   "note": "SW recess cheek (ring edge 8) above the Blok 0 quay stair."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 pand 0363100012243292",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243292",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG verblijfsobjecten (Haparandaweg 708-744, Houthavenkade) in pand 0363100012243292",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap way 401424728 (name \"de Rede\")",
+   "url": "https://www.openstreetmap.org/way/401424728",
+   "licence": "ODbL"
+  }
+ ]
+}
