@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012237047",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237047.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  5,
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "sash",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 5,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "balconies",
+  "storeyParts.full",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "door",
+   "what": "a wide round-arched gateway with iron gates and a sign through the middle of the ground storey"
+  },
+  {
+   "component": "tiles",
+   "what": "small green glazed tiles set into the brick in rows round the windows"
+  }
+ ],
+ "notes": "The outline covers three fronts: a gabled front left, a wider flat-topped cornice front with a gateway in the middle (described), a gabled front right.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

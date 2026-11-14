@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012164454",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164454.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "ground",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "round-topped stucco dormer with scrolled side pieces in the mansard"
+  },
+  {
+   "component": "relief",
+   "what": "flat pilasters divide the window bays on both upper storeys"
+  }
+ ],
+ "notes": "Small, blurred distant view of a corner building; ground storey dark.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

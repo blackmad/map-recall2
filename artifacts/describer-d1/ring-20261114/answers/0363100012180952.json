@@ -1,0 +1,82 @@
+{
+ "v": 1,
+ "pandId": "0363100012180952",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012180952.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "relieving",
+  "relieving"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "heads",
+  "windowSurround",
+  "sameAs",
+  "windows",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a white plastered shopfront with a row of transom lights over the shop window and doors"
+  },
+  {
+   "component": "window",
+   "what": "segmental relieving arches over each window filled with patterned brick tympana"
+  }
+ ],
+ "notes": "The transom band over the shop is read as part of the ground storey. The middle bay is a white-framed projection on two storeys under a balcony.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

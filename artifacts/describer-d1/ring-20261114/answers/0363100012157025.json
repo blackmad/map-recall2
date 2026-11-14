@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012157025",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157025.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "columns",
+  "sameAs",
+  "dormers",
+  "groundBays"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "one hardware-store shopfront runs under both fronts in the outline"
+  }
+ ],
+ "notes": "Outline holds two two-bay fronts over one shop: the left with arched first and second storey windows under white ornamented tympana and a brick wall dormer, the right plain with flat heads; described the right one.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012157800",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012157800.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "attic-frieze",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "windowSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small dark ornament blocks sit over each window head and between the windows"
+  },
+  {
+   "component": "dormer",
+   "what": "a round-topped dormer stands over the centre"
+  }
+ ],
+ "notes": "A bare tree crosses the left bay; the attic frieze holds a row of small windows under the cornice.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

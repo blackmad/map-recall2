@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012152750",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152750.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "ground",
+  "cornice",
+  "dormers",
+  "sameAs",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first-floor windows have a moulded cornice head with a carved garland frieze and a panelled apron below the sill"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is pale rusticated stucco"
+  }
+ ],
+ "notes": "Tree branches cross the dormer and top storey; a café terrace screen hides the base of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012160030",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160030.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "shouldered",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "crown",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a restaurant shopfront occupies the souterrain under the bel-etage, beside the stoop"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the raised top has chamfered shoulders and a white-framed three-light opening with a balconette"
+  }
+ ],
+ "notes": "The outline is shifted right over the next house's door; the tall house with the raised chamfered top is described.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

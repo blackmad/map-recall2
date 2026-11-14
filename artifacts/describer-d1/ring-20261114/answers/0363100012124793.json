@@ -1,0 +1,85 @@
+{
+ "v": 1,
+ "pandId": "0363100012124793",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012124793.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "small-over-one",
+ "storeyWindows": {
+  "4": "two-light"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "crown",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white two-storey bay window on the right axis carrying a balconette above"
+  },
+  {
+   "component": "relief",
+   "what": "a brick dentil course under the top storey"
+  }
+ ],
+ "notes": "One front within a long uniform block; ground storey has two street doors flanking a shop window.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

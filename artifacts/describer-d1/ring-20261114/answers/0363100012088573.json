@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012088573",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012088573.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "small-over-one",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "sameAs",
+  "bands",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the right bay has wide segmental-headed windows of a door pair with side lights under a small-paned top light, with balconies"
+  }
+ ],
+ "notes": "A tram hides the ground and first storeys; a tram pantograph crosses the front.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

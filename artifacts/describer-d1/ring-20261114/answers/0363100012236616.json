@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012236616",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236616.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 4,
+ "columns": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "dormers",
+  "sameAs",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "upper windows in pairs with white stone blocks picking out the arches and the flat heads of the top storey"
+  },
+  {
+   "component": "shopfront",
+   "what": "a white rendered ground storey with round-cornered shop openings and a door at each end"
+  }
+ ],
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

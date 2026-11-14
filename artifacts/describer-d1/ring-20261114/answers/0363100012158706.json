@@ -1,0 +1,85 @@
+{
+ "v": 1,
+ "pandId": "0363100012158706",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158706.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-gridded-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a deep stucco frieze densely carved with consoles and festoon relief under the cornice"
+  },
+  {
+   "component": "door",
+   "what": "a pair of varnished panelled street doors under a round-arched transom light"
+  },
+  {
+   "component": "bands",
+   "what": "a single moulded band at the first-floor line only"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam over the middle bay"
+  },
+  {
+   "component": "window",
+   "what": "top lights in small leaded panes over the casements"
+  }
+ ],
+ "notes": "A bare climbing plant runs up the right bays; a blurred patch hides the right ground window foot.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

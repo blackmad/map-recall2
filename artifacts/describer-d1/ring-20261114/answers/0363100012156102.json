@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012156102",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156102.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "relieving",
+  "relieving",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "centre",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "doorBay",
+  "doorSurround",
+  "bays",
+  "cornice",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "first- and second-floor windows sit under brick arches whose tympana are filled with patterned yellow brick"
+  },
+  {
+   "component": "door",
+   "what": "a tall entrance with a pointed gothic tracery window over it rises through the stuccoed ground storey beside the street door"
+  },
+  {
+   "component": "shopfront",
+   "what": "a tall stuccoed ground storey with entresol windows over a small shop"
+  }
+ ],
+ "notes": "The outline is slightly offset from the window axes; a blurred figure and a bicycle hide the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

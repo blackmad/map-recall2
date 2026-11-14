@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012158662",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012158662.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3
+ ],
+ "windows": "sash-small-panes",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "point",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sameAs",
+  "crown",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a scrolled round cap piece at the apex of the point gable"
+  },
+  {
+   "component": "shutters",
+   "what": "a red-and-white painted shutter beside the gable attic window"
+  }
+ ],
+ "notes": "Low sun and a parking sign make the ground storey hard to read.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

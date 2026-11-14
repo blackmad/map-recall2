@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "pandId": "0363100012151070",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012151070.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "casement-triple",
+ "heads": [],
+ "bands": "none",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "windowSurround",
+  "sameAs"
+ ],
+ "gaps": [],
+ "notes": "A passing tram hides everything below the top two window rows; front is one stretch of a long 1930s block under a continuous tiled roof.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

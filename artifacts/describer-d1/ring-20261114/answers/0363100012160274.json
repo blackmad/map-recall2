@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012160274",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160274.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "storeyParts.full",
+  "storeyParts.roof",
+  "crown",
+  "bands",
+  "bays",
+  "ground",
+  "sameAs"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "row of small white corbel blocks under the band above the first upper storey"
+  }
+ ],
+ "notes": "A leafy tree covers the left half of the front; the top storey may be a raised attic over a cornice line.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

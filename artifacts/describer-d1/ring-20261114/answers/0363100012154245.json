@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "pandId": "0363100012154245",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012154245.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "heads",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the low top storey has a single central window flanked by two blind window panels"
+  },
+  {
+   "component": "dormer",
+   "what": "a small pediment rises from the cornice over the centre axis rather than a dormer"
+  }
+ ],
+ "notes": "Top storey is low (attic-like) in the brick front plane under the cornice, counted as full; a car covers the souterrain.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

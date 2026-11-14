@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012165741",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165741.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  3,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "storeyParts.roof",
+  "dormers",
+  "doorBay",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "pale stucco pilaster strips with capitals frame the brick front at the sides"
+  }
+ ],
+ "notes": "The outline also takes in one stucco-framed axis and a street door of the right neighbour; the 2-bay brick front is described.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

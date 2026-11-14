@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012236605",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236605.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": "not-visible",
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "mixed",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "none",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 4,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "windowSurround",
+  "dormers",
+  "crown",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "raised wall dormers rise out of the front plane at intervals, some with a round-arched window"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron balconettes in front of single doors on the upper two rows"
+  }
+ ],
+ "notes": "The outline spans a long corner apartment block of several house widths with a supermarket below; bays not counted because the house divisions are unclear.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012237236",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237236.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  6,
+  5,
+  5,
+  5
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "finish",
+  "dormers",
+  "columns",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a continuous glass canopy runs over the ground storey shops"
+  },
+  {
+   "component": "balcony",
+   "what": "stacked iron balconies on the side wing at the left corner, not on the street front"
+  }
+ ],
+ "notes": "A corner block; trees cross the left and right bays.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

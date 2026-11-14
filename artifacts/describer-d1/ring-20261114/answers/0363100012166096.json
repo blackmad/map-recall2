@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012166096",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166096.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "doorBay",
+  "sameAs",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a stucco frieze under the cornice with small sunk relief panels over the bays"
+  },
+  {
+   "component": "balcony",
+   "what": "shallow iron balconettes on consoles in front of the middle window of each upper floor"
+  },
+  {
+   "component": "shopfront",
+   "what": "dark timber cafe shopfront with a deep awning and a wide band of small-paned transom lights above it"
+  },
+  {
+   "component": "dormer",
+   "what": "a pedimented dormer with a hoist beam over the middle bay"
+  }
+ ],
+ "notes": "The ground storey is partly hidden by the awning, a traffic-light pole and a bicycle.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

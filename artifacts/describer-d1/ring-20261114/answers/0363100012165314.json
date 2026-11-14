@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012165314",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165314.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "balconies",
+  "dormers"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "the first storey is a painted green band with tall windows behind low iron rails, over a ground storey hidden by a tree"
+  }
+ ],
+ "notes": "A tree and signs hide the ground storey; the outline is narrow and the window axes near its right edge are uncertain.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

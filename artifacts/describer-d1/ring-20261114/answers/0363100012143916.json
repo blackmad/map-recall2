@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "pandId": "0363100012143916",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012143916.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "columns": [
+  7,
+  4,
+  6,
+  6
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "1": "plain"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "mixed",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "ground",
+  "cornice",
+  "sills",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the first floor is one wide stone-framed band of four large windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is a dark-clad band with white striped doors at both ends and two pairs of glazed doors between tall lights"
+  }
+ ],
+ "notes": "A modern yellow-brick infill; the two second-floor balconettes sit in front of round-headed doors.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

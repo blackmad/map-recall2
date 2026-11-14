@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012161004",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161004.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "gable-attic",
+  "souterrain": false
+ },
+ "bays": 5,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  2
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "crown",
+  "windows",
+  "windowSurround",
+  "dormers",
+  "bayWindow"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "two curved gables with finials stand at the two ends of the front with a lower roof and dormers between them"
+  },
+  {
+   "component": "erker",
+   "what": "a white timber oriel on the left corner of storey 2"
+  }
+ ],
+ "notes": "Outline also takes in a one-storey shop wing on the right; described the four-storey corner building.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

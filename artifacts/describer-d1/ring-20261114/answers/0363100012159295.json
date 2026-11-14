@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012159295",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159295.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "plain",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "several",
+ "doorIndex": null,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "heads",
+  "doorSurround",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "shopfront",
+   "what": "a stone-clad ground storey with pilasters framing two doors and a central shop window"
+  },
+  {
+   "component": "roof",
+   "what": "a modern glazed set-back roof storey above the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

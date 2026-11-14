@@ -1,0 +1,94 @@
+{
+ "v": 1,
+ "pandId": "0363100012156829",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156829.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": [
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.roof",
+  "heads",
+  "cornice",
+  "dormers",
+  "doorSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a white timber two-storey erker on carved consoles in the middle bay over the first and second floors"
+  },
+  {
+   "component": "balcony",
+   "what": "a third-floor loggia balcony with a pierced balustrade under a canopy carried on two turned columns, on top of the erker"
+  },
+  {
+   "component": "wall",
+   "what": "the bel-etage is faced in white stucco with carved console brackets and pilaster strips, the upper storeys in dark brick with iron wall anchors"
+  },
+  {
+   "component": "door",
+   "what": "a pair of tall carved doors with leaded glass between stucco pilasters, reached by a broad stone stoop shared with the neighbour"
+  },
+  {
+   "component": "rustication",
+   "what": "souterrain faced in grey stone panels with windows behind an iron railing"
+  }
+ ],
+ "notes": "The roof behind the cornice canopy cannot be seen clearly.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

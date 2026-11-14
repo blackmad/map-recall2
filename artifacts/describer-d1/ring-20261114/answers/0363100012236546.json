@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012236546",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236546.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "stone-lintel",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windowSurround",
+  "bands",
+  "cornice",
+  "balconies",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "white plastered pilaster strips divide the row into three-bay units"
+  }
+ ],
+ "notes": "The outline spans three identical three-bay units of one series; described one unit. A striped awning hides the first-floor row of the left units.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

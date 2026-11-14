@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012159285",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159285.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "doorSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a white stone balcony with a balustrade on large consoles across the two right bays at the first floor"
+  },
+  {
+   "component": "relief",
+   "what": "white stone block quoins and alternating white blocks round every opening, a round-arched door opening with block voussoirs"
+  },
+  {
+   "component": "dormer",
+   "what": "an ornate white dormer with a curved pediment over the cornice"
+  }
+ ],
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

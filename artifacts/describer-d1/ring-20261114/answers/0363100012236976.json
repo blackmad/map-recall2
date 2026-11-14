@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012236976",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236976.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 5,
+ "windows": "casement-toplight",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  2,
+  3,
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [
+  1
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "windows",
+  "bayWindow",
+  "balconies"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "thin concrete balcony slabs with dark solid fronts in the two middle bays of the upper rows"
+  },
+  {
+   "component": "erker",
+   "what": "a narrow tall glazed oriel appears in the middle of row 1 behind the tram shelter"
+  }
+ ],
+ "notes": "A tram shelter and tram hide the ground storey and most of row 1; end section of an interwar block.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

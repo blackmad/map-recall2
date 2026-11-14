@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012159177",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012159177.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "roof-storey",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  2,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sills",
+  "storeyParts.roof"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a glazed set-back roof storey with a continuous window band above the parapet"
+  }
+ ],
+ "notes": "Modern yellow-brick infill between older dark brick fronts; ground partly hidden by blurred people.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

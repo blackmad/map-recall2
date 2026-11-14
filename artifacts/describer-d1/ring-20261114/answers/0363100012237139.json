@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012237139",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237139.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  1,
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "balconies",
+  "windows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a brick corbel band and a diamond tablet under the plain parapet"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is one wide round-arched entrance opening into a large shop"
+  }
+ ],
+ "notes": "The outline is the central two-window axis of a larger symmetric building whose side wings carry erkers and balconies.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

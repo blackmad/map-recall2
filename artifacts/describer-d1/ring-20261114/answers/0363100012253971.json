@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012253971",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012253971.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  4,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 4,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "cornice",
+  "dormers",
+  "doorSurround",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "a small segmental pediment over the left upper window"
+  },
+  {
+   "component": "relief",
+   "what": "grey rusticated stone ground storey under a pale stucco upper storey with pilaster strips at the corners"
+  }
+ ],
+ "notes": "A street tree stands in front of the right bay and the dormer.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,61 @@
+{
+ "v": 1,
+ "pandId": "0363100012153203",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012153203.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "roof-storey",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "storeyParts.roof",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "the left wide axis rises as a raised wall bay with one window above the cornice, beside a slate mansard with a pointed dormer"
+  },
+  {
+   "component": "balcony",
+   "what": "the wide three-light left axis has an iron balcony on every upper storey"
+  }
+ ],
+ "notes": "A dark canopy and a box in front hide the ground storey and the lowest upper row; a tree stands before the left axis.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

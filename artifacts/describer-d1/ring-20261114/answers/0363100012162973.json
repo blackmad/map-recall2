@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "pandId": "0363100012162973",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162973.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "mansard",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "not-visible",
+  "segmental",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 3,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "balconies",
+  "sills",
+  "cornice",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies on stone consoles stacked in the middle bay at each upper storey"
+  }
+ ],
+ "notes": "A tram covers the ground storey and the first floor is only seen through its windows.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

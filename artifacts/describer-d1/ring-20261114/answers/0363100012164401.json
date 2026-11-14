@@ -1,0 +1,66 @@
+{
+ "v": 1,
+ "pandId": "0363100012164401",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012164401.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 2,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2
+ ],
+ "windows": "casement-pair",
+ "heads": [
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "ground",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a pointed dormer with pale slate cheeks in a steep roof face"
+  }
+ ],
+ "notes": "Low-resolution image; vans and a cyclist hide parts of the ground storey.",
+ "storeys": 2,
+ "wallFamily": "not-visible"
+}

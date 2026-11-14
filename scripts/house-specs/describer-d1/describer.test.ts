@@ -419,3 +419,10 @@ test('prompt v4.3 reads: validated, staged with a receipt, held for every route;
   assert.equal(by['door surround'].accuracy, 0);
   assert.equal((by['balconies'].classes as any).yes.precision, 1);
 });
+
+test('ring tranche round 2: a cornice under a read mansard is not staged as the crown (Weteringschans)', () => {
+  const fr = (sp: Record<string, unknown>) => stageOne(answer({ crown: 'cornice', storeyParts: { full: 3, souterrain: false, ...sp } as any }), null, null).design.fronts![0] as any;
+  assert.equal(fr({ roof: 'mansard' }).gable, undefined, 'mansard read: the cornice is the eaves ledge');
+  assert.equal(fr({ roof: 'dormers' }).gable, 'cornice', 'dormers over a cornice keep the cornice (the generic route keeps a planned mansard)');
+  assert.equal(fr({ roof: 'none' }).gable, 'cornice');
+});

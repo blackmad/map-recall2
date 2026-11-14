@@ -1,0 +1,87 @@
+{
+ "v": 1,
+ "pandId": "0363100012237337",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012237337.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 12,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "plain",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": true,
+ "finish": "stucco",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  10,
+  11
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "bays",
+  "finish",
+  "balconies",
+  "ground"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "a stack of projecting concrete balconies with metal railings on columns runs up one side; one upper level is glazed in"
+  },
+  {
+   "component": "roof",
+   "what": "modern high-rise clad in grey panels, not brick or render"
+  }
+ ],
+ "notes": "Narrow outlined strip of a modern apartment tower; storey count from window rows at small scale. Ground storey dark and recessed.",
+ "storeys": 12,
+ "wallFamily": "not-visible"
+}

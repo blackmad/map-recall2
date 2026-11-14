@@ -1,0 +1,87 @@
+{
+ "v": 1,
+ "pandId": "0363100012236308",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012236308.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 5,
+ "columns": [
+  3,
+  5,
+  5,
+  5
+ ],
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  1,
+  2
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "doorBay",
+  "dormers",
+  "doorSurround",
+  "columns"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a curved two-storey erker on the second bay from the left over the first and second floors, its roof a ledge under the third-floor window"
+  },
+  {
+   "component": "shopfront",
+   "what": "white rendered ground storey with a school gateway, a street door and an arched shop window, a row of small windows and a round window above them in an entresol band with a lettered school name"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of shallow iron balconettes on consoles in the fourth bay on every upper floor"
+  }
+ ],
+ "notes": "Darker brown brick than both red neighbours; a 1900s rebuild in a row of 1880s fronts.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

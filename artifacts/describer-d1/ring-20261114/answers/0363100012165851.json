@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "pandId": "0363100012165851",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012165851.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "small-over-one",
+ "heads": [
+  "flat",
+  "segmental",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "heads",
+  "bands",
+  "windowSurround",
+  "doorBay",
+  "windows",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "iron balconies on consoles in front of the middle bay's doors at rows 1 and 2"
+  },
+  {
+   "component": "dormer",
+   "what": "a tall pedimented central dormer with finials and a painted shield window on the mansard face"
+  }
+ ],
+ "notes": "The dark glazed shopfront is hard to read; a bin hides its left part.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

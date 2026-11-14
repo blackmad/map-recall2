@@ -14,7 +14,7 @@
  *           ledge) for lintel and both, at the stated storeys' count. Stone bands are drawn at BAND_M.stone. `courses` (brick courses) and `painted` (stucco bands) have no generic quad: kit gap.
  *   head    flat | segmental, whole front only (per-row heads are HELD): a window-preset pick (bayLook `arch`).
  *   crown   cornice (0.98) | step (1.0, n 4) | curved (neck or bell, 0.89): the roof planner's own forms (GABLE_TO_ROOF).
- *           A curved reading takes the register's curved kind where the register names one, else `neck`.
+ *           A curved reading takes the register's curved kind where the register names one, else its own stated kind.
  *   surround a stone window surround (full-frame, eared-keystone, block-dressings), read or from the template: the block
  *           faces' eared surround (facadeOrnaments.ts `eared-surrounds`, DRESS.surround weight), never a thin frame: the
  *           reviewer's ruling after the route-C ride sheet (thin stone-lintel frames vanish at ride distance).
@@ -71,7 +71,8 @@ export function readFields(spec: HouseSpec): RouteAFields | null {
   if (gableSrc && (gable === 'cornice' || gable === 'step')) { out.crown = gable; out.src.crown = gableSrc; }
   else if (gableSrc && CURVED_CROWNS.has(gable!)) {
     const register = (spec.facts as Record<string, unknown> | undefined)?.historicGable as string | undefined;
-    out.crown = register && CURVED_CROWNS.has(register) ? register as RouteAFields['crown'] : 'neck';
+    // ring tranche round 2 (2026-11-14): a stated bell stays a bell (Kinkerstraat 153818, 156907 drew a chimney-like neck)
+    out.crown = register && CURVED_CROWNS.has(register) ? register as RouteAFields['crown'] : gable as RouteAFields['crown'];
     out.src.crown = register && CURVED_CROWNS.has(register) ? `${gableSrc}+monument-text` : gableSrc;
   }
   const surround = f.windowSurround as string | undefined, surroundSrc = surround ? passing(spec, 'fronts/0/windowSurround') : null;

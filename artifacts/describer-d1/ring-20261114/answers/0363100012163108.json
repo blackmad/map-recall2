@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "pandId": "0363100012163108",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012163108.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "mixed",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "both",
+ "windowSurround": "block-dressings",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "bands",
+  "windowSurround",
+  "doorSurround",
+  "dormers",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "the bel-etage is rendered and painted red with a round-arched door, contrasting with the dark brick above"
+  },
+  {
+   "component": "balcony",
+   "what": "a cast-iron balcony on stone consoles over the bel-etage in the middle bay"
+  }
+ ],
+ "notes": "A car covers the souterrain windows.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

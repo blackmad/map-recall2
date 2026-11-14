@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "pandId": "0363100012166546",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012166546.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "casement-toplight",
+  "3": "casement-toplight"
+ },
+ "heads": [
+  "segmental",
+  "segmental",
+  "mixed",
+  "mixed"
+ ],
+ "bands": "lintel",
+ "windowSurround": "jack-blocks",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "none",
+ "crown": "cornice",
+ "cornice": "bracketed",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "gabled"
+ },
+ "bayWindow": [
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "bands",
+  "windowSurround",
+  "cornice",
+  "storeyWindows",
+  "basement",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a stepped wall gable with an arched window rises over the right-hand erker bay above the eaves"
+  },
+  {
+   "component": "erker",
+   "what": "a two-storey white timber erker spans rows 2 and 3 of the right bay, with a hood at its base"
+  }
+ ],
+ "notes": "A van hides the lower ground storey; the right bay is an erker above row 1.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

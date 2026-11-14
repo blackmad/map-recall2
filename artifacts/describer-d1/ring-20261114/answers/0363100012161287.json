@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "pandId": "0363100012161287",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012161287.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "relieving",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "none",
+ "groundBays": 2,
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "windows",
+  "windowSurround",
+  "sameAs",
+  "mirrored",
+  "cornice",
+  "bands",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "white stone balustraded balconies on console brackets stacked over the right bay at rows 1 and 2"
+  }
+ ],
+ "notes": "The arched portico doors just right of the outline seem to serve this front but sit outside it.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

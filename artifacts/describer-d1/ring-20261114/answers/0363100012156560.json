@@ -1,0 +1,83 @@
+{
+ "v": 1,
+ "pandId": "0363100012156560",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012156560.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "heads",
+  "windows",
+  "balconies",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "wall",
+   "what": "the bel-etage is faced in white stucco with a carved frieze, the upper storeys in dark brick with small iron wall anchors between the windows"
+  },
+  {
+   "component": "wall",
+   "what": "the top storey is faced in white stucco with carved relief heads over the windows under the cornice"
+  },
+  {
+   "component": "rustication",
+   "what": "souterrain faced in grey stone panels cut in an irregular crazy-paving pattern"
+  },
+  {
+   "component": "balcony",
+   "what": "a stack of balconies on slender iron columns with an octagonal corner turret rises just right of the outline and may belong to this front"
+  }
+ ],
+ "notes": "The outline covers two bays; the street door and the balcony turret stand just to its right, so the extent of this front is unclear.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

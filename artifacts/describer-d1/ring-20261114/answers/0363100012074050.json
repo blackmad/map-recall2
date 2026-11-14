@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "pandId": "0363100012074050",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012074050.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "dormers",
+  "souterrain": "not-visible"
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "bands",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "second-highest row has segmental heads with a decorative brick tympanum; top row flat with a centre balconette"
+  }
+ ],
+ "notes": "A tram hides everything below the second window row from the top.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "pandId": "0363100012181015",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012181015.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "plain"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "windowSurround",
+  "cornice",
+  "crown"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "small white stone blocks set in the brick over each window head"
+  },
+  {
+   "component": "balcony",
+   "what": "an iron-railed balcony on consoles in front of the middle first-floor window"
+  },
+  {
+   "component": "roof",
+   "what": "a steep slate roof face behind the cornice carrying a wide dormer"
+  }
+ ],
+ "notes": "A small tree covers the door axis and a parked car the basement.",
+ "storeys": 3,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "pandId": "0363100012123744",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012123744.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "mixed",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "bays",
+  "windows",
+  "storeyParts.full",
+  "doorBay",
+  "sills"
+ ],
+ "gaps": [
+  {
+   "component": "balcony",
+   "what": "continuous brick-parapet balconies with thin concrete slabs running the full width at rows 1 to 3"
+  },
+  {
+   "component": "window",
+   "what": "small square windows with diamond glazing bars beside the balcony doors"
+  }
+ ],
+ "notes": "1930s flat-roofed block; a tree crosses the left part. Round-arched street door at the left of the shop and two doors at the right.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012075470",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012075470.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "casement-toplight",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "centre",
+ "doorIndex": 1,
+ "groundBays": 3,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": true,
+ "balconies": [],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "sills",
+  "doorBay",
+  "sameAs",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "erker",
+   "what": "a canted bay window on the right axis rises through the three upper storeys"
+  },
+  {
+   "component": "door",
+   "what": "an open stair entrance in a stone portal at the left edge, shared with the neighbour"
+  }
+ ],
+ "notes": "Cars hide the lower ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012162627",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012162627.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 5,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "windows": "tall-upper",
+ "heads": [
+  "round",
+  "flat",
+  "segmental",
+  "segmental",
+  "round"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "several",
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  4
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "storeyParts.full",
+  "heads",
+  "finish",
+  "doorBay"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a small arcaded corbel band over row 1 ending in a carved stone pier ornament with a statue-like finial"
+  },
+  {
+   "component": "shopfront",
+   "what": "a café front with two wide round-arched glazed openings and narrow arched side doors, shared by both fronts"
+  },
+  {
+   "component": "window",
+   "what": "the top storey has one window with an iron balconette between small blind arched niches"
+  }
+ ],
+ "notes": "The outline holds two fronts: the taller left one (described) and a lower right one with a pedimented dormer over three window rows.",
+ "storeys": 5,
+ "wallFamily": "not-visible"
+}

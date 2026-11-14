@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "pandId": "0363100012235956",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012235956.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 1,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 0,
+ "columns": [
+  1
+ ],
+ "windows": "cross",
+ "heads": [
+  "round"
+ ],
+ "bands": "courses",
+ "windowSurround": "block-dressings",
+ "sills": "consoles",
+ "doorBay": "centre",
+ "doorIndex": 0,
+ "groundBays": 1,
+ "ground": "shopfront",
+ "basement": "none",
+ "crown": "pitched-eaves",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.full",
+  "ground",
+  "windows",
+  "bands",
+  "doorSurround"
+ ],
+ "gaps": [
+  {
+   "component": "dormer",
+   "what": "a stepped-gable wall dormer rising through the eaves with a cross window on a dentil sill"
+  },
+  {
+   "component": "door",
+   "what": "a large round-arched glazed entrance with light stone block voussoirs"
+  },
+  {
+   "component": "relief",
+   "what": "a corbelled brick frieze along the eaves"
+  }
+ ],
+ "notes": "The outlined part is the centre of a symmetric building with step-gabled wings on each side.",
+ "storeys": 1,
+ "wallFamily": "not-visible"
+}

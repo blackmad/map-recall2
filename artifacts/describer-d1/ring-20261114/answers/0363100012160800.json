@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "pandId": "0363100012160800",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160800.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": false
+ },
+ "bays": 6,
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "shopfront",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2,
+  3
+ ],
+ "dormers": {
+  "count": 2,
+  "kind": "plain"
+ },
+ "bayWindow": [
+  1,
+  2,
+  3
+ ],
+ "doorSurround": "not-visible",
+ "low": [
+  "bays",
+  "ground",
+  "balconies",
+  "bayWindow",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "tiles",
+   "what": "panels of diamond-patterned coloured brick or tile fill blind bays between the windows near the corner"
+  },
+  {
+   "component": "erker",
+   "what": "a white timber oriel rises through the upper storeys on the canted corner"
+  },
+  {
+   "component": "roof",
+   "what": "a low balustrade runs along the roof edge between the dormers"
+  }
+ ],
+ "notes": "Corner building; a tree hides the corner bays and a parked car hides the foot of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

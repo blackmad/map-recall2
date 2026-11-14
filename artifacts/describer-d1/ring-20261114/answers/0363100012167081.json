@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "pandId": "0363100012167081",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012167081.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "mansard",
+  "souterrain": false
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3
+ ],
+ "windows": "sash",
+ "heads": [
+  "segmental",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "storey",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "left",
+ "doorIndex": 0,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "windows",
+ "crown": "mansard",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [
+  1
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": false,
+ "low": [
+  "windows",
+  "bands",
+  "balconies",
+  "sameAs",
+  "heads"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "a decorative brick band of diagonal headers over the ground storey"
+  }
+ ],
+ "notes": "A skip with rubbish stands in front of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012152489",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152489.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "gable-attic",
+  "souterrain": true
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "segmental",
+  "segmental"
+ ],
+ "bands": "speklagen",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "dwelling",
+ "basement": "windows",
+ "souterrain": true,
+ "crown": "bell",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": true,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "crown",
+  "ground",
+  "mirrored",
+  "storeyParts.full"
+ ],
+ "gaps": [
+  {
+   "component": "gable ornament",
+   "what": "a round-arched gable edged with broad white timber boards meeting in a point"
+  },
+  {
+   "component": "window",
+   "what": "segmental brick arches with yellow decorative brick bands over every window"
+  }
+ ],
+ "notes": "A tram shelter covers the bel-etage and souterrain and a tree stands in front of the left bays.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

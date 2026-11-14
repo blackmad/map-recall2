@@ -8,7 +8,7 @@ import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 export type Rd = { x: number; y: number };
 /** Panorama/API cache; `PAND_REFERENCE_CACHE` points every worktree at one shared cache (the main checkout's is ~4 GB). */
 export const CACHE_DIR = path.resolve(process.env.PAND_REFERENCE_CACHE ?? '.cache/pand-reference');
-export const UA = 'MapRecall-PandReference/1.0 (+CC BY 4.0 Gemeente Amsterdam panoramas)';
+export const UA = 'MapRecall-PandReference/1.0 (+https://github.com/blackmad/map-recall2; CC BY 4.0 Gemeente Amsterdam panoramas)';
 const EXTRACT = path.resolve('public/data/extracts/amsterdam');
 
 // At most 3 requests in flight, process-wide.

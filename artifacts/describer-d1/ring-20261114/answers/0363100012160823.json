@@ -1,0 +1,102 @@
+{
+ "v": 1,
+ "pandId": "0363100012160823",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160823.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "multi",
+ "storeyParts": {
+  "full": 4,
+  "roof": "dormers",
+  "souterrain": true
+ },
+ "bays": 3,
+ "columns": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "windows": "casement-toplight",
+ "heads": [
+  "round",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "storey",
+ "windowSurround": "keystone",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 2,
+ "groundBays": 3,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [
+  1,
+  2
+ ],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "extent",
+  "bays",
+  "windowSurround",
+  "sameAs",
+  "doorBay",
+  "doorSurround",
+  "windows"
+ ],
+ "gaps": [
+  {
+   "component": "pilaster",
+   "what": "giant stucco pilasters with roundels run from the bel-etage to the cornice, dividing the long block into three-bay units"
+  },
+  {
+   "component": "bands",
+   "what": "the bel-etage is striped with broad light stucco speklagen and carries carved consoles under the first-floor sill band"
+  },
+  {
+   "component": "window",
+   "what": "bel-etage windows round-arched beside a round oculus over the arched street door"
+  },
+  {
+   "component": "balcony",
+   "what": "stone balconies with pierced balustrade fronts and iron rails on the first and second floors in the middle bay"
+  },
+  {
+   "component": "window",
+   "what": "the second-floor balcony window has a full stucco frame under a segmental pediment"
+  },
+  {
+   "component": "rustication",
+   "what": "rusticated grey stone souterrain with tall windows and steps up inside the arched doorway"
+  },
+  {
+   "component": "relief",
+   "what": "relief panels in the frieze under the heavy cornice"
+  }
+ ],
+ "notes": "The outline straddles a giant pilaster between two three-bay units of a long palace-like block; described the unit with the arched door.",
+ "storeys": 4,
+ "souterrain": true,
+ "wallFamily": "not-visible"
+}

@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "pandId": "0363100012086480",
+ "image": {
+  "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012086480.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut ring",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": "not-visible",
+  "roof": "none",
+  "souterrain": "not-visible"
+ },
+ "bays": 2,
+ "windows": "small-over-one",
+ "heads": [],
+ "bands": "courses",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "none",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "right",
+ "mirrored": true,
+ "balconies": "not-visible",
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": "not-visible",
+ "doorSurround": "not-visible",
+ "low": [
+  "bands",
+  "crown",
+  "mirrored"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "the left bay has wide segmental-headed windows of a door pair with side lights under a small-paned top light, with balconies on consoles"
+  }
+ ],
+ "notes": "A tram and a tram shelter hide the ground and first storeys.",
+ "storeys": "not-visible",
+ "wallFamily": "not-visible"
+}
