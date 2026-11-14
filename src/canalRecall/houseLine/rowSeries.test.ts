@@ -289,8 +289,11 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   assert.ok(p.rowDress, 'the series dress');
   const ring = (out.geometry as { coordinates: number[][][] }).coordinates[0].map(([x, y]) => [(x - lng) * kx, (y - lat) * 110_540]);
   assert.equal(ring.length, 5);
-  assert.ok(Math.abs(ring[0][0]) < 1e-6 && Math.abs(ring[0][1]) < 1e-6 && Math.abs(ring[1][0] - 7.69) < 1e-6 && Math.abs(ring[1][1]) < 1e-6, 'its face on the stated edge');
-  for (const q of ring.slice(2, 4)) assert.ok(Math.abs(q[1] - ROW_WALL_SLAB.depthM) < 1e-6, 'its back inside the footprint');
+  // Within the world cells' 1e-7 degree grid (about 1 cm): the compile bakes the slab as the pand's footprint.
+  const near = (a: number, b: number) => Math.abs(a - b) < 0.012;
+  assert.ok(near(ring[0][0], 0) && near(ring[0][1], 0) && near(ring[1][0], 7.69) && near(ring[1][1], 0), 'its face on the stated edge');
+  for (const q of ring.slice(2, 4)) assert.ok(near(q[1], ROW_WALL_SLAB.depthM), 'its back inside the footprint');
+  for (const [x, y] of (out.geometry as { coordinates: number[][][] }).coordinates[0]) for (const v of [x, y]) assert.equal(Math.round(v * 1e7) / 1e7, v, 'on the 1e-7 grid');
   assert.ok(ring[2][0] < 7.69 && ring[3][0] > 0, 'its ends slant inward, never in the plane of the chunk\'s side wall');
   // A 0.4 m slab is shed-sized: it must never fall to the garden-shed rule (bare walls; the game drew 86-88 blank).
   const far = new SegmentGrid(Float32Array.from([1e5, 1e5, 1e5 + 1, 1e5]));
