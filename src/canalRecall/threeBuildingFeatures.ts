@@ -12,7 +12,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
-import { ROW_FRONT_EXTRAS, rowFrontShopHex } from './houseLine/rowFront.js';
+import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
@@ -140,6 +140,15 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
   building.parapetM = system.parapetM;
 }
 
+/** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[] } | null {
+  if (!v || typeof v !== 'object') return null;
+  const d = v as { cornice?: unknown; heads?: unknown };
+  const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}) };
+  return Object.keys(out).length ? out : null;
+}
+
 /** Lane WG step 2: route A's fields (houseSpec/routeAFields.ts), unless `?specFields=0`. */
 const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
@@ -190,7 +199,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
+    // House rows (lane R): a series member's bay preset is the series' (one preset per series, seeded by its id).
+    const bay = bayLookFor(typeof p.rowSeries === 'string' ? p.rowSeries : id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
       specLookOf(p), poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
@@ -345,6 +355,18 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // cross the glass of a window that is not on the grid.
     const boxed = !!specRecipeOf(p)?.windowBoxes?.length;
     if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    // House rows (lane R): a series member's stated dressing (heads, cornice) dresses first, its dice seeded by the series.
+    const dress = rowDressOf(p.rowDress);
+    if (building.extras && typeof p.rowSeries === 'string') {
+      building.rowSeries = p.rowSeries;
+      if (dress) {
+        const ids = [...(dress.heads?.length ? ['row-heads'] : []), ...(dress.cornice ? ['row-cornice'] : [])];
+        building.rowDress = dress;
+        building.onlyExtras = [...building.onlyExtras!, ...ids];
+        building.specFieldsForce = [...(building.specFieldsForce ?? []), ...ids];
+        building.registerForce = [...(building.registerForce ?? []), ...ids];
+      }
+    }
     if (building.shopfront || building.shop) {
       // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.
       const traced = (specRecipeOf(p) as { fasciaHex?: unknown } | undefined)?.fasciaHex;

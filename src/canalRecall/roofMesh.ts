@@ -84,6 +84,9 @@ export type RoofPlan = {
   clipToOutline?: boolean;
   /** Lane 1 (houseLine/crownProfile.ts, rowFront flag): a front record's measured crown, drawn in place of `gable`'s profile. */
   rowCrown?: RowCrown;
+  /** House rows (lane R, houseLine/rowFront.ts `rowRoof`): the series' dormers, on the street end only, each at its stated
+   *  place across the front (`a`, 0..1 left to right as seen) and of its stated kind; no dice, no side dormers. */
+  rowDormers?: ReadonlyArray<{ a: number; kind: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }>;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -541,7 +544,9 @@ function gableSlab(s: RoofSink, prof: readonly Vec2[], e: number, L: number, top
   }
 }
 
-type DormerSpec = { axis: 'u' | 'v'; side: number; c: number; pf: number; dw: number; hd: number; surf: (a: number) => number; band?: boolean };
+type DormerSpec = { axis: 'u' | 'v'; side: number; c: number; pf: number; dw: number; hd: number; surf: (a: number) => number; band?: boolean;
+  /** House rows: `pediment` a white raking pediment with a bed course over the face, `gabled` the stock cap, `plain` a flat top. */
+  kind?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean };
 
 /**
  * One dormer standing on a roof face: window face, cheeks (white with accents)
@@ -552,7 +557,8 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
   const P = (a: number, b: number, z: number): V3 => (d.axis === 'v' ? [b, d.side * a, z] : [d.side * a, b, z]);
   const n: V3 = d.axis === 'v' ? [0, d.side, 0] : [d.side, 0, 0];
   const tan = (sg: number): V3 => (d.axis === 'v' ? [sg, 0, 0] : [0, sg, 0]);
-  const zf = d.surf(d.pf), zb = zf - 0.15, ph = d.band ? 0 : Math.min(0.5, d.dw * 0.4);
+  const flat = d.band || d.kind === 'plain';
+  const zf = d.surf(d.pf), zb = zf - 0.15, ph = flat ? 0 : Math.min(0.5, d.dw * 0.4);
   let hd = d.hd, pb = -1;
   for (; hd >= 0.75; hd -= 0.1) {
     const need = zb + hd + ph + 0.06;
@@ -564,7 +570,8 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
   const rep = d.band ? Math.max(1, Math.round(d.dw / 1.5)) : 1;
   s.quad(P(d.pf, b0, zb), P(d.pf, b1, zb), P(d.pf, b1, zt), P(d.pf, b0, zt), [0, 0], [rep, 0], [rep, 1], [0, 1], 'dormerFace', n);
   for (const [b, sg] of [[b0, -1], [b1, 1]] as const) s.quad(P(d.pf, b, zb), P(pb, b, zb), P(pb, b, zt), P(d.pf, b, zt), [0, 0], [1, 0], [1, 1], [0, 1], accents ? 'trim' : 'dormerSide', tan(sg), accents ? trim : undefined);
-  if (d.band) {
+  if (d.kind) rowDormerDress(s, d, P, n, b0, b1, zb, zt, ph, trim);
+  if (flat) {
     s.quad(P(d.pf, b0, zt), P(d.pf, b1, zt), P(pb, b1, zt), P(pb, b0, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', [0, 0, 1]);
     if (accents) s.quad(P(d.pf + 0.012, b0, zt - 0.14), P(d.pf + 0.012, b1, zt - 0.14), P(d.pf + 0.012, b1, zt), P(d.pf + 0.012, b0, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'decal', n, trim);
   } else {
@@ -576,6 +583,33 @@ function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
     }
   }
   return true;
+}
+
+/**
+ * House rows (lane R): the white dressing a stated dormer kind adds to the stock dormer. Pediment: pilaster cheeks
+ * standing proud of the face, a bed course at the head and a raking cornice over the cap (Kinkerstraat 86-110,
+ * Weteringschans 169016); gabled: the stock cap only; plain: a white head board. A hoist beam projects from the apex.
+ */
+function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z: number) => V3, n: V3, b0: number, b1: number, zb: number, zt: number, ph: number, trim: string): void {
+  const f = d.pf + 0.02, o = 0.1, box = (a0: number, a1: number, c0: number, c1: number, z0: number, z1: number) => {
+    // A small closed box in the dormer frame: a along the face normal (a0 nearer the roof), c across, z up.
+    s.quad(P(a1, c0, z0), P(a1, c1, z0), P(a1, c1, z1), P(a1, c0, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, trim);
+    s.quad(P(a0, c0, z1), P(a1, c0, z1), P(a1, c1, z1), P(a0, c1, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], trim);
+    for (const [c, sg] of [[c0, -1], [c1, 1]] as const) s.quad(P(a0, c, z0), P(a1, c, z0), P(a1, c, z1), P(a0, c, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', d.axis === 'v' ? [sg, 0, 0] : [0, sg, 0], trim);
+  };
+  if (d.kind === 'plain') { box(d.pf - 0.1, f + o, b0 - 0.06, b1 + 0.06, zt - 0.06, zt + 0.12); return; }
+  if (d.kind !== 'pediment') return;
+  box(d.pf - 0.1, f + 0.06, b0 - 0.1, b0 + 0.06, zb, zt);
+  box(d.pf - 0.1, f + 0.06, b1 - 0.06, b1 + 0.1, zb, zt);
+  box(d.pf - 0.1, f + o, b0 - 0.14, b1 + 0.14, zt - 0.02, zt + 0.1);
+  // The raking cornice: two thin boards along the cap's slopes, proud of the face.
+  const apex = zt + 0.1 + ph + 0.08, c = d.c;
+  for (const [c0, c1] of [[b0 - 0.14, c], [c, b1 + 0.14]] as const) {
+    const z0 = c0 < c ? zt + 0.1 : apex, z1 = c0 < c ? apex : zt + 0.1;
+    s.quad(P(f + o, c0, z0), P(f + o, c1, z1), P(f + o, c1, z1 + 0.12), P(f + o, c0, z0 + 0.12), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, trim);
+  }
+  s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, trim);
+  if (d.hoist) box(d.pf - 0.2, f + 0.7, c - 0.08, c + 0.08, apex - 0.42, apex - 0.26);
 }
 
 /** A chimney stack: brick box on the roof at one end, a pale cap. `surf(u, v)` is the roof height there. */
@@ -640,6 +674,7 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
     if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
   }
   if (!plan.dormers) return;
+  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.35); return; }
   // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
   const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
   const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
@@ -650,6 +685,19 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
     const surfV = (a: number) => (a >= W / 2 - k ? R * (W / 2 - a) / k : R);
     for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -(L / 2 - k) + ((i + 0.5) * (L - 2 * k)) / n, pf: W / 2 - k * 0.35, dw: 1.2, hd: 1.2, surf: surfV }, plan);
   }
+}
+
+/**
+ * House rows: the series' dormers on the street end(s) of a roof box (`streetEnds`; unknown: the -u end only, never both:
+ * a dice-free row draws nothing it was not told). Seen from the street at end e the front runs left to right along e*v,
+ * so a dormer at `a` stands at v = e * (a - 0.5) * W. Sized to its share of the front, at most 1.3 m wide.
+ */
+function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, surf: (a: number) => number, pf: number): void {
+  const ds = plan.rowDormers ?? [];
+  if (!ds.length) return;
+  const ends = plan.streetEnds ? ([-1, 1] as const).filter((_, i) => plan.streetEnds![i]) : [-1] as const;
+  const dw = Math.max(0.8, Math.min(1.3, W / ds.length - 0.9));
+  for (const e of ends) for (const dm of ds) dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw, hd: 1.45, surf, kind: dm.kind, hoist: dm.hoist }, plan);
 }
 
 /** Four slopes to a ridge (a pyramid on a square), optionally with softened corners. */
@@ -749,6 +797,9 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     }
     const d = vc;
     chimney(s, plan, L, W, R, (u, v) => Math.min(surfV(v), Math.abs(u) > L / 2 - d ? zc + (R - zc) * (L / 2 - Math.abs(u)) / d : R));
+    // House rows: a cornice front's stated dormers stand on the hip behind the cornice plate (they used to return
+    // before any dormer call, so a cornice reading could never carry its dormer: Weteringschans 169016).
+    if (plan.rowDormers && plan.dormers) rowDormersOnEnds(s, plan, L, W, (a: number) => a >= L / 2 - d ? zc + (R - zc) * (L / 2 - a) / d : R, L / 2 - d * 0.6);
     if (accents) for (const sv of [-1, 1]) fascia(s, [-L / 2, sv * (W / 2 + ov), -drop], [L / 2, sv * (W / 2 + ov), -drop], [0, sv, 0], trim);
     return s.out;
   }
@@ -1146,14 +1197,24 @@ function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, map
         return alongStreet ? { rect: b.rect, plan: { ...b.plan, kind: 'pitched' as const, shutters: undefined, shutterHex: undefined } } : b;
       });
     }
+    // House rows: the row roof's street wall is a u-end (its dormers stand there), whichever side of the box it is.
+    if (piece.plan.rowDormers) return [{ rect: rowRoofFacing(rect, facing), plan: piece.plan }];
     const turned = facing && pieces.length === 1 && !plan.keepLid && !plan.sourceCrownFront ? turnRidgeToStreet(rect, piece.plan, facing) : null;
     return turned ?? [{ rect, plan: piece.plan }];
   });
 }
 
+/** House rows: the box turned so that the wall nearest a street is one of its u-ends (no facing: as fitted). */
+function rowRoofFacing(rect: Rect, facing: StreetFacing | undefined): Rect {
+  if (!facing) return rect;
+  const near = (r: Rect) => Math.min(...gableEndWalls(r).map(w => facing(w)), ...gableEndWalls(r).map(w => facing(w, true) + 1e3));
+  const turned = turnRect(rect);
+  return near(turned) < near(rect) ? turned : rect;
+}
+
 /** A crowned gable piece learns which of its ends face a street; every other plan is returned as is (same object). */
 function withStreetEnds(plan: RoofPlan, rect: Rect, facing: StreetFacing | undefined): RoofPlan {
-  if (!facing || plan.kind !== 'gable' || plan.streetEnds) return plan;
+  if (!facing || (plan.kind !== 'gable' && !plan.rowDormers) || plan.streetEnds) return plan;
   const streetEnds = streetGableEnds(rect, facing);
   return streetEnds ? { ...plan, streetEnds } : plan;
 }
@@ -1186,6 +1247,17 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
   // A perimeter deck must not cover an open courtyard.
   if (plan?.perimeterInsetM !== undefined && polygon.length > 1) return null;
+  // House rows (lane R, houseLine/rowFront.ts `rowRoof`): the series' roof storey, never the dice: a slate mansard on
+  // the fitted box, cut at the walls, its dormers stated, no chimney, toned by the series.
+  const rr = rowRoofOf(p.rowRoof);
+  if (rr) {
+    const pts = openRing(ring), rect = fitRect(pts, 40);
+    if (!rect || !(height - rr.riseM >= 2)) return null;
+    const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
+    const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
+      tone: hash01(`${rr.series}:tone2`), seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers };
+    return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], clipToOutline: rect.coverage < 0.97 || rect.maxDev > 0.3 };
+  }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
   // no chimney stub or dice dormers through it.
   if (plan && plan.kind === 'gable' && isRowCrown(p.rowCrown) && Number(p.rowCrownRoofRiseM) > 0) {
@@ -1193,6 +1265,16 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     return { ...crowned(plan), ...(plan.pieces ? { pieces: plan.pieces.map(pc => ({ rect: pc.rect, plan: crowned(pc.plan) })) } : {}) };
   }
   return plan;
+}
+
+/** House rows: a feature's `rowRoof` (houseLine/rowFront.ts), validated; null when absent or malformed. */
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']> } | null {
+  if (!v || typeof v !== 'object') return null;
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown };
+  if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
+  const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (d.kind === 'pediment' || d.kind === 'gabled' || d.kind === 'plain'))
+    .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as 'pediment' | 'gabled' | 'plain', ...(d.hoist === true ? { hoist: true } : {}) }));
+  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers };
 }
 
 /**

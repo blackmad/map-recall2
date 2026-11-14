@@ -282,7 +282,7 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
  */
 /** `stoopWall`: what a spec stoop's street wall (K-stoep #360) may spend past `wall`, still inside `building`: a double
  *  flight is 15 tread/landing boxes (120 triangles) before its iron, 188 with plain rails, 212 with bars. */
-export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60 } as const;
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60, rowWall: 420 } as const;
 
 /** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
 // The budget runs out in this order, so the parts that read from down the street come first:
@@ -326,6 +326,10 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
     ? Math.min(DEFINING_BUILDING_CEILING, Math.max(original, definingCount * EXTRA_BUDGET.wall)) : original;
   for (const { c, state } of ordered) if (definingWall(c)) dressWall(c, sink, state, 'defining');
   sink.budget = Math.max(sink.tris.length, baseline);
+  // House rows (lane R): a series member's street wall carries its stated heads and cornice (EXTRA_BUDGET.rowWall);
+  // without a row dressing the building budget is unchanged.
+  const rowWalls = ordered.filter(({ c }) => c.rowDress && isStreetWall(c)).length;
+  if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall, EXTRA_BUDGET.building + 2 * EXTRA_BUDGET.rowWall));
   // A HouseSpec's stated parts (route A fields, houseSpec/routeAFields.ts) dress on every wall before any wall's dice trim
   // spends the building budget: Weteringschans 171192's stated bands never reached its 6.3 m front after two short street
   // walls had spent it (lane WG step 3). Absent `statedFirst`, nothing changes.
@@ -360,7 +364,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? (c.rowDress ? EXTRA_BUDGET.rowWall : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
@@ -407,7 +411,9 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const stated = !as && !!c.registerForce?.includes(comp.id) && (period === 'canal' || period === 'c19') ? period : null;
     const asStyle = as ?? stated;
     if (!asStyle || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
-    const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
+    // House rows: a series member rolls once per component on its series (one design per series, every wall alike).
+    const seed = c.seriesId ?? c.id;
+    const roll = comp.wide || WIDE.has(comp.id) || c.seriesId ? hash01(`${seed}:${comp.id}`) : hash01(`${seed}:${c.wallKey}:${comp.id}`);
     const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
     let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, asStyle);
     if (comp.id === 'door-surround' && c.recipe?.period === 'c19' && c.recipe.trimDensity !== 'ornate') chance *= .85;
@@ -416,7 +422,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (roll >= chance) continue;
     const before = sink.tris.length, atomic = comp.atomic ?? ATOMIC.has(comp.id);
     if (atomic) sink.begin();
-    comp.build(c, sink, hash01(`${c.id}:${comp.id}:v`));
+    comp.build(c, sink, hash01(`${seed}:${comp.id}:v`));
     if (atomic && !sink.commit()) continue;
     if (sink.tris.length > before) { used.push(comp.id); if (comp.group) groups.add(comp.group); }
   }

@@ -60,7 +60,31 @@ export interface RowFrontRecord {
   /** A fallback front whose crown is the skyline's gable (skylineGable), not a plain cornice. */
   crownFromSkyline?: true;
   skyline?: Record<string, number | null>;
+  /** House rows (lane R, docs/handoffs/house-rows-plan-20261114.md): the front is a member of a described series and draws
+   *  its series' one design (houseLine/rowSeries.ts). Absent: the record draws as before, byte for byte. */
+  series?: RowSeriesDraw;
   sources: Record<string, string>;
+}
+
+/** House rows: a head dressing over a span of the front's windows (fractions of the pand front, left to right as seen). */
+export interface RowHeadsDraw {
+  a0: number; a1: number;
+  shape: 'flat' | 'segmental' | 'round' | 'relieving';
+  dressing: 'none' | 'block-course' | 'keystone' | 'segmental-tympanum' | 'dentil-lintel' | 'jack-blocks' | 'stone-lintel' | 'arch-ring';
+  /** Upper storeys (1 = first above the ground) the dressing is on; absent = every upper storey. */
+  storeys?: number[];
+}
+/** House rows: a dormer in the roof storey, its centre as a fraction of the pand front (left to right as seen). */
+export interface RowDormerDraw { a: number; kind: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }
+/** House rows: what a series member draws beyond the front record's top, storeys and windows. */
+export interface RowSeriesDraw {
+  /** The series id: it seeds the bay preset, the extras' dice and the roof tone, so every member draws alike. */
+  id: string;
+  /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
+  cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
+  /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
+  roofStorey?: { kind: 'mansard' | 'none'; riseM: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[] };
+  heads?: RowHeadsDraw[];
 }
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
@@ -238,6 +262,11 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
   }).catch(() => false);
 }
 
+/** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[] } {
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}) };
+}
+
 /** Crown family -> the roof planner's gable profile. */
 export const FAMILY_GABLE: Readonly<Record<RowCrownFamily, GableShape | null>> = {
   cornice: null, 'raised-cornice-dormer': null, neck: 'neck', bell: 'bell', point: 'plain', step: 'step', spout: 'spout',
@@ -397,6 +426,16 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const { monumentGable, roofShapeTag: _tag, ...rest } = p;
   const held = typeof monumentGable === 'string' ? { historicGable: monumentGable } : {};
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
+  // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
+  // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
+  if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
+    const top = rec.eavesM, rs = rec.series.roofStorey, mansard = rs?.kind === 'mansard' && rs.riseM > 0.5 ? rs : null;
+    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...levels(sr, rec, top, true) };
+    if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id } });
+    else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
+    return { ...feature, properties: props };
+  }
   // Sub-fronts with their own tops (HD22/24): a flat lid at the tallest wall top; the mesher steps each front's wall
   // down to its own top and stands its crown on it (stepCrown, threeBuildingMesh stepped run).
   const span = rec.spanM;

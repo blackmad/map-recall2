@@ -48,6 +48,17 @@ export type ExtraContext = {
   stoop?: StoopIntent;
   /** Pavement depth in front of this wall for the stoop (wall to street centreline less half a carriageway), metres. */
   stoopReachM?: number;
+  /** House rows (lane R): the series this wall's building draws; the extras' dice roll on it, so members agree. */
+  seriesId?: string;
+  /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
+   *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
+  rowDress?: RowDressContext;
+};
+export type RowHeadKind = { shape?: string; dressing?: string };
+export type RowDressContext = {
+  cornice?: string;
+  windows?: Array<{ x0: number; x1: number; z0: number; z1: number; storey: number } & RowHeadKind>;
+  heads?: Array<{ x0: number; x1: number; storeys?: number[] } & RowHeadKind>;
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 
