@@ -71,6 +71,7 @@ import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
+import { activeViewPriority, viewRank } from './engine/viewPriority.js';
 import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailBlockFrozen, detailFreezeAerialEnabled, detailLingerEnabled, type DetailBlock } from './detailRing.js';
 import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnabled, routeAheadTiles, withAhead } from './engine/routeAhead.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
@@ -1621,10 +1622,14 @@ export class ThreeBuildings {
     if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
     const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
     const west = (x / n) * 360 - 180, east = ((x + 1) / n) * 360 - 180, north = latOf(y), south = latOf(y + 1);
-    const nearest: [number, number] = [Math.max(west, Math.min(east, at[0])), Math.max(south, Math.min(north, at[1]))];
     // A tile with no shell drawn yet is a hole in the city, detail only refines one: its coarse shell goes before
     // detail up to ~400 m nearer.
     const hole = key.startsWith(COARSE_PREFIX) && !this.chunks.has(key) ? COARSE_HOLE_BONUS_M : 0;
+    // View priority (engine/viewPriority.ts, the camera panned off the rider): chunks on screen first, the largest share
+    // first; off screen by distance from the view. The rider's own chunks are already built; they wait behind the view.
+    const priority = activeViewPriority();
+    if (priority) return viewRank([west, south, east, north], priority.view) + extra - hole;
+    const nearest: [number, number] = [Math.max(west, Math.min(east, at[0])), Math.max(south, Math.min(north, at[1]))];
     return aheadRank(at, nearest, this.motion.direction) + extra - hole;
   }
 

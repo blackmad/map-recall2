@@ -408,9 +408,26 @@ export class BakedCoarse {
     return [x / cells.size, y / cells.size];
   }
 
+  /**
+   * View priority (engine/viewPriority.ts): the fetch order of the queued cells, lower first (on screen by share, then
+   * by distance from the view), while the camera looks away from the rider; null: the plan's order (nearest the rider).
+   */
+  setRank(rank: ((key: string) => number) | null): void {
+    if (rank === this.rank) return;
+    this.rank = rank;
+    if (rank && this.queue.length > 1) this.sortQueue();
+  }
+  private rank: ((key: string) => number) | null = null;
+  private sortQueue(): void {
+    const rank = this.rank;
+    if (!rank) return;
+    const r = new Map(this.queue.map(k => [k, rank(k)]));
+    this.queue.sort((a, b) => r.get(a)! - r.get(b)!);
+  }
+
   private pump(want?: string[]): void {
     const waiting = (k: string) => this.ready.length > 0 && this.ready.some(r => r.data.key === k);
-    if (want) { this.lastWant = want; this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k) && !this.released.has(k) && !waiting(k)); }
+    if (want) { this.lastWant = want; this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k) && !this.released.has(k) && !waiting(k)); this.sortQueue(); }
     while (this.inflight.size < BAKED_INFLIGHT && this.queue.length) {
       const key = this.queue.shift()!;
       if (this.residents.has(key) || this.inflight.has(key) || this.released.has(key) || waiting(key)) continue;

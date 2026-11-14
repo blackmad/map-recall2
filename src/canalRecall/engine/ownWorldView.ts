@@ -29,7 +29,7 @@ import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
 import { RevealSurface, revealLightEnabled } from './revealSurface';
 import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
 import { censusGrid, startHoldEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
-import { cellKeyOf, cellOf } from '../world/cellGrid';
+import { cellBounds, cellKeyOf, cellOf, parseCellKey } from '../world/cellGrid';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
@@ -72,6 +72,7 @@ import { clearBackM, FPS_EYE_HEIGHT_M, fpsPose, fpsRequested, headBobM, stepFpsY
 import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
 import { shaderFacadesEnabled } from '../look/facadeShader';
 import type { FacadeRecordSet } from '../world/facadeStreams';
+import { activeViewPriority, publishViewPriority, viewPriorityMode, viewRank, viewSamples, wantsViewPriority, type ViewPriority } from './viewPriority';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -86,6 +87,8 @@ const LOADING_STATE = 2;
 export const COVERED_FRAME_MS = 1000;
 /** Candidates a full label placement takes from the air (labelLayer aerialCap): ~2x the most a ride frame collects. */
 const AERIAL_LABEL_CAP = { count: 1200 };
+/** View priority: the screen's ground samples are re-taken at most this often while the camera moves (ms). */
+const VIEW_PRIORITY_MS = 150;
 /** A full label placement's per-frame budget from the air, ms (lane R3-F #241; `?labelBudget=0` off, `=N` sets it). */
 export const LABEL_PLACE_BUDGET_MS = 4;
 /** From the air while the camera moves: full label placements at most this often (with the budget), ms. */
@@ -869,6 +872,9 @@ export class OwnWorldView implements WorldViewOracles {
     if (!photo) return;
     const cam = this.cameraMap.camera;
     const street = !isAerialView(cam.zoom, cam.pitch, cam.lat);
+    // View priority (viewPriority.ts): with the camera panned off the rider, the cells on screen are fetched first.
+    const priority = activeViewPriority();
+    if (priority !== this.bakedPriority) { this.bakedPriority = priority; baked.setRank(priority ? (key: string) => viewRank(cellBounds(...parseCellKey(key)), priority.view) : null); }
     baked.update(subject[0], subject[1], street);
     const eye = cam.eye();
     baked.setEye(eye.lng, eye.lat);
@@ -1466,6 +1472,7 @@ export class OwnWorldView implements WorldViewOracles {
     this.fpsLensSet = !!fps;
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: drawZoom, bearing: view.bearing, pitch, elevation, ...lens });
     lap('jumpTo and move listeners');
+    this.updateViewPriority(!!view.detached, view.introFlat);
     if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
     this.lastSubject = view.subject;
     // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
@@ -1491,6 +1498,30 @@ export class OwnWorldView implements WorldViewOracles {
     }
     lap('city follow');
     camera.projector = pitch > 0 || view.introFlat > 0 ? (x: number, y: number) => this.projectWorld(x, y, loader, canvas) : null;
+  }
+
+  /**
+   * View priority (engine/viewPriority.ts, feedback 748b1a8f): while the camera is detached from the rider, the loaders
+   * rank their work by the screen (on screen first, largest first) instead of from the rider. The view's ground samples
+   * are re-taken when the camera moves (at most every VIEW_PRIORITY_MS), and withdrawn when the camera re-centres.
+   * `?viewPriority=0` off, `=all` also while riding.
+   */
+  private readonly viewPriority = viewPriorityMode();
+  private bakedPriority: ViewPriority | null = null;
+  private viewPriorityKey = '';
+  private viewPriorityAt = -Infinity;
+  private updateViewPriority(detached: boolean, introFlat: number): void {
+    if (!wantsViewPriority(this.viewPriority, detached, introFlat)) {
+      if (this.viewPriorityKey) { this.viewPriorityKey = ''; publishViewPriority(null); this._completeCity?.reprioritise?.(); }
+      return;
+    }
+    const cam = this.cameraMap.camera, vp = this.host.viewport();
+    const key = `${cam.lng.toFixed(6)},${cam.lat.toFixed(6)},${cam.zoom.toFixed(3)},${cam.bearing.toFixed(1)},${cam.pitch.toFixed(1)},${vp.width}x${vp.height}`;
+    const now = performance.now();
+    if (key === this.viewPriorityKey || now - this.viewPriorityAt < VIEW_PRIORITY_MS) return;
+    this.viewPriorityKey = key; this.viewPriorityAt = now;
+    publishViewPriority(viewSamples((x, y) => { const p = cam.unproject(x, y); return p ? [p.lng, p.lat] : null; }, vp.width, vp.height));
+    this._completeCity?.reprioritise?.();
   }
 
   /**

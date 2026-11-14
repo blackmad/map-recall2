@@ -63,3 +63,19 @@ test('frame budget: first piece always fits; then bytes and ms bound the frame',
   assert.equal(b.take(600), true); assert.equal(b.take(300), true); assert.equal(b.take(200), false);
   b.begin(); assert.equal(b.take(1), true); now = 5; assert.equal(b.take(1), false, 'out of ms');
 });
+
+test('view priority (feedback 748b1a8f): rankCells takes the view rank over plan order and the rider; rerank re-orders the queued cells', async () => {
+  const rider: [number, number] = [4.9, 52.37];
+  // Plan order says 0_0 (the rider's cell) first; the view says 3_0 (on screen) first.
+  const view = (key: string) => ({ '3_0': -5e8, '2_0': -1e8 } as Record<string, number>)[key] ?? 1000;
+  const ranked = rankCells(['0_0', '1_0', '2_0', '3_0'], rider, [1, 0], view);
+  assert.deepEqual([...ranked].sort((a, b) => a[1] - b[1]).map(([k]) => k).slice(0, 2), ['3_0', '2_0']);
+  const started: string[] = [], release = new Map<string, () => void>();
+  const q = new CellQueue(key => new Promise<void>(res => { started.push(key); release.set(key, res); }), 1);
+  q.want(rankCells(['0_1', '1_1', '2_1'], rider, [1, 0]));
+  assert.deepEqual(started, ['0_1']);
+  // The camera panned: 2_1 is now on screen, the rider's 1_1 is not.
+  q.rerank(key => key === '2_1' ? -1 : 5);
+  release.get('0_1')!(); await tick();
+  assert.deepEqual(started, ['0_1', '2_1']);
+});

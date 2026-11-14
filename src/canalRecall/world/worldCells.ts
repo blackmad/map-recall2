@@ -16,9 +16,18 @@ import { farCellArrays, type FarCellArrays } from './shellMesh.js';
 import { bakedCellArrays, bakedRecordArrays, type BakedCellArrays, type BakedRecordArrays } from './bakedCellArrays.js';
 import { frecCurrent, type CrownEntry, type FacadeRecordSet } from './facadeStreams.js';
 import { FACADE_RECORD_VERSION } from '../look/facadeRecord.js';
-import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
+import { CellQueue, affinity, cellCentre, rankCells } from '../engine/worldStreamer.js';
+import { activeViewPriority, viewRank } from '../engine/viewPriority.js';
+import { aheadRank } from '../streamingLookAhead.js';
+import { cellBounds, parseCellKey } from './cellGrid.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
+
+/** The cell rank under view priority (engine/viewPriority.ts), or null: rank from the rider. */
+function viewCellRank(): ((key: string) => number) | null {
+  const p = activeViewPriority();
+  return p ? (key: string) => viewRank(cellBounds(...parseCellKey(key)), p.view) : null;
+}
 
 /** `shells` and a cell's `far` / `shell` (gzip bytes of far/<key>.bin, shells/<key>.bin): a `world:compile --shell` index (format-6 shell files, lane R2-B #229). */
 export type WorldIndex = { version: 1; format: number; compiler: string; tileCells: Record<string, string[]>; cells: Record<string, { gzBytes: number; buildings: number; sha256: string; far?: number; shell?: number; /** F1: the record shell's gzip bytes (`world:compile --facade-records`). */ facade?: number }>; shells?: { format: number; look: string; shel: boolean; far: boolean; records?: boolean; recordVersion?: number; /** world/shellLayers.ts shellLayerHash() of the compile (lane R4-A #243); absent: shells predate the check. */ layers?: string } };
@@ -429,7 +438,7 @@ export class WorldCellClient {
   plan(tiles: readonly string[], rider: LngLat | null, direction: readonly [number, number] | null, only: ReadonlySet<string> | null = null): void {
     const planned: string[] = [];
     for (const t of tiles) for (const c of this.index.tileCells[t] ?? []) if (!only || only.has(c)) planned.push(c);
-    const ranked = rankCells(planned, rider, direction);
+    const ranked = rankCells(planned, rider, direction, viewCellRank());
     this.queue.want(ranked);
     const evict = this.queue.evictions(this.residentBudget, rider, key => ranked.has(key));
     if (!evict.length) return;
@@ -440,6 +449,12 @@ export class WorldCellClient {
       for (const k of evict) { const w = affinity(k, pool.size); let l = byWorker.get(w); if (!l) byWorker.set(w, l = []); l.push(k); }
       for (const [w, cells] of byWorker) if (!pool.post(w, { kind: 'world-evict', cells } satisfies WorldRequest)) this.reader.evict(cells);
     } else this.reader.evict(evict);
+  }
+
+  /** The view moved under view priority: re-rank the queued cells (by the screen, or from the rider again). */
+  reprioritise(rider: LngLat | null, direction: readonly [number, number] | null): void {
+    const view = viewCellRank();
+    this.queue.rerank(view ?? (key => rider ? aheadRank(rider, cellCentre(key), direction) : 0));
   }
 
   /**
