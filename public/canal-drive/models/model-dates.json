@@ -61,6 +61,11 @@
       "version": "40e7f3c28483f61d",
       "dateSource": "asset-update"
     },
+    "afas-live": {
+      "updatedAt": "2026-11-14T16:57:48.917Z",
+      "version": "26e3479ae1557d11",
+      "dateSource": "asset-update"
+    },
     "afrikahuis": {
       "updatedAt": "2026-10-20T10:15:08.929Z",
       "version": "6290ec8a232cd883",
@@ -1279,6 +1284,26 @@
     "coymanshuis.lod2": {
       "updatedAt": "2026-11-07T14:08:58.142Z",
       "version": "54d32431595beec4",
+      "dateSource": "asset-update"
+    },
+    "crea": {
+      "updatedAt": "2026-11-14T15:06:08.421Z",
+      "version": "aafa3c0e296e9ed0",
+      "dateSource": "asset-update"
+    },
+    "crea.lod1": {
+      "updatedAt": "2026-11-14T15:15:05.051Z",
+      "version": "58098d629f115169",
+      "dateSource": "asset-update"
+    },
+    "crea.lod2": {
+      "updatedAt": "2026-11-14T15:15:07.638Z",
+      "version": "ff7d1100f6075977",
+      "dateSource": "asset-update"
+    },
+    "cristofori": {
+      "updatedAt": "2026-11-14T16:22:59.462Z",
+      "version": "cb3733a0c3c11244",
       "dateSource": "asset-update"
     },
     "cromhouthuizen": {
@@ -5051,6 +5076,21 @@
       "version": "ba5562b87eac40c2",
       "dateSource": "asset-update"
     },
+    "perdu": {
+      "updatedAt": "2026-11-14T15:06:08.333Z",
+      "version": "ed171ce8059179f7",
+      "dateSource": "asset-update"
+    },
+    "perdu.lod1": {
+      "updatedAt": "2026-11-14T15:15:04.979Z",
+      "version": "351bd29f8af619a1",
+      "dateSource": "asset-update"
+    },
+    "perdu.lod2": {
+      "updatedAt": "2026-11-14T15:15:05.728Z",
+      "version": "43470a2a6b49faac",
+      "dateSource": "asset-update"
+    },
     "petrus-en-paulus-kerk": {
       "updatedAt": "2026-10-13T19:25:19.705Z",
       "version": "e845396407e19e33",
@@ -5506,6 +5546,11 @@
       "version": "b9db514b2a65ba13",
       "dateSource": "asset-update"
     },
+    "roode-bioscoop": {
+      "updatedAt": "2026-11-14T16:19:33.103Z",
+      "version": "cf7510b56637c7c8",
+      "dateSource": "asset-update"
+    },
     "royal-theater-carre": {
       "updatedAt": "2026-10-20T10:13:04.990Z",
       "version": "691987957fc8588b",
@@ -5777,13 +5822,13 @@
       "dateSource": "asset-update"
     },
     "skatecafe.lod1": {
-      "updatedAt": "2026-11-14T13:20:57.588Z",
-      "version": "d72a76bb0634f70a",
+      "updatedAt": "2026-11-14T14:24:30.716Z",
+      "version": "7de900bfa02908c4",
       "dateSource": "asset-update"
     },
     "skatecafe.lod2": {
-      "updatedAt": "2026-11-14T13:20:58.012Z",
-      "version": "366810ea483b33d5",
+      "updatedAt": "2026-11-14T14:24:30.947Z",
+      "version": "5ae105090e727385",
       "dateSource": "asset-update"
     },
     "slavernijmonument": {
@@ -6349,6 +6394,21 @@
     "uilenburger-synagoge.lod2": {
       "updatedAt": "2026-11-07T14:08:58.195Z",
       "version": "bd0ce2b9a41608c8",
+      "dateSource": "asset-update"
+    },
+    "universiteitstheater": {
+      "updatedAt": "2026-11-14T14:27:32.122Z",
+      "version": "9f4352a89f243458",
+      "dateSource": "asset-update"
+    },
+    "universiteitstheater.lod1": {
+      "updatedAt": "2026-11-14T15:15:04.947Z",
+      "version": "a6ca652c608bbf36",
+      "dateSource": "asset-update"
+    },
+    "universiteitstheater.lod2": {
+      "updatedAt": "2026-11-14T15:15:05.545Z",
+      "version": "0e663c9a6b5039fa",
       "dateSource": "asset-update"
     },
     "valley": {
@@ -7026,6 +7086,11 @@
       "version": "f44fdd8c9dabd5fd",
       "dateSource": "asset-update"
     },
+    "zaal-100": {
+      "updatedAt": "2026-11-14T16:53:09.022Z",
+      "version": "902e363b33b3bfa9",
+      "dateSource": "asset-update"
+    },
     "zevenlandenhuizen": {
       "updatedAt": "2026-10-20T10:16:34.312Z",
       "version": "150229fdc5785de5",
@@ -7114,41 +7179,6 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
-      "dateSource": "asset-update"
-    },
-    "crea": {
-      "updatedAt": "2026-11-14T15:06:08.421Z",
-      "version": "aafa3c0e296e9ed0",
-      "dateSource": "asset-update"
-    },
-    "perdu": {
-      "updatedAt": "2026-11-14T15:06:08.333Z",
-      "version": "ed171ce8059179f7",
-      "dateSource": "asset-update"
-    },
-    "universiteitstheater": {
-      "updatedAt": "2026-11-14T14:27:32.122Z",
-      "version": "9f4352a89f243458",
-      "dateSource": "asset-update"
-    },
-    "cristofori": {
-      "updatedAt": "2026-11-14T16:22:59.462Z",
-      "version": "cb3733a0c3c11244",
-      "dateSource": "asset-update"
-    },
-    "roode-bioscoop": {
-      "updatedAt": "2026-11-14T16:19:33.103Z",
-      "version": "cf7510b56637c7c8",
-      "dateSource": "asset-update"
-    },
-    "zaal-100": {
-      "updatedAt": "2026-11-14T16:53:09.022Z",
-      "version": "902e363b33b3bfa9",
-      "dateSource": "asset-update"
-    },
-    "afas-live": {
-      "updatedAt": "2026-11-14T16:53:08.962Z",
-      "version": "29e9b924a3597785",
       "dateSource": "asset-update"
     }
   }
