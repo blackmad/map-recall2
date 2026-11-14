@@ -4,7 +4,7 @@
 import '../../../scripts/world/useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cellGlobalRef, chooseGlobalStrings, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
+import { cellGlobalRef, chooseGlobalStrings, sharedStringList, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
 import { readWorldIndex } from './worldCells.js';
 import { applyPolicy, areaM2, DEFAULT_POLICY_OPTIONS, emptyPolicyReport, HEIGHT_KEYS, policyOptionsFromArgs, policyOptionsOf, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
@@ -536,4 +536,19 @@ test('a row wall slab is baked with its own footprint and id; any other geometry
     await loadTile('8413/5384', reshaping as typeof chain, other);
     assert.equal(other.geometryChangedByDecorator, 1);
   } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; }
+});
+
+// Round j (2026-11-15): 285 restored fronts dropped 60 strings from the city's counts, the re-chosen shared table moved
+// every index, and 595 of 604 cells changed bytes with no building changed. A compile keeps the reference's table.
+test('a kept shared table leaves a cell whose buildings did not change byte-identical', async () => {
+  const all = await rows(), cells = [...cellsOf(all)].slice(0, 6).map(([key, list]) => cellFrom(key, list, false));
+  const before = encodeGlobalStrings(sharedStringList(cells.map(c => encodeCell(c).strings))).table;
+  // Two cells' buildings lose their described fields (as the restored fronts lost theirs): the city's counts move.
+  const changed = cells.map((c, k) => k > 1 ? c : { ...c, buildings: c.buildings.map(b => ({ ...b, attr: { id: b.attr.id, height: b.attr.height }, styled: undefined })) });
+  const lists = changed.map(c => encodeCell(c).strings);
+  const kept = encodeGlobalStrings(sharedStringList(lists, before)).table, fresh = encodeGlobalStrings(sharedStringList(lists)).table;
+  assert.deepEqual(kept.list, before.list, 'the reference table as it stands');
+  for (const c of cells.slice(2)) assert.deepEqual(encodeCell(c, 5, kept).bytes, encodeCell(c, 5, before).bytes, 'unchanged cell, same bytes');
+  for (const c of changed.slice(0, 2)) assert.ok(sameValue(decodeCell(encodeCell(c, 5, kept).bytes, 'kept', kept), decodeCell(encodeCell(c, 5, fresh).bytes, 'fresh', fresh)), 'a changed cell decodes the same either way');
+  assert.ok(cells.slice(2).some(c => Buffer.compare(Buffer.from(encodeCell(c, 5, fresh).bytes), Buffer.from(encodeCell(c, 5, before).bytes)) !== 0), 'a re-chosen table would have moved them');
 });

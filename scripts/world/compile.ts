@@ -7,6 +7,8 @@
  *   npm run world:compile -- --debug      # DEBUG cells: also the enriched source bags (ATTR), for diagnosis;
  *                                         # the runtime never needs them (cellFormat.ts, flags)
  *   npm run world:compile -- --against=none   # skip the reference check below (an intended decorator change)
+ *   npm run world:compile -- --fresh-strings   # re-choose the shared string table (default: keep the reference's, so
+ *                                         # unchanged cells stay byte-identical)
  *   npm run world:compile -- --no-policy  # cells exactly as the default path (no centimetre heights:
  *                                         # src/canalRecall/world/cellPolicy.ts)
  *   npm run world:compile -- --collinear  # also remove near-collinear vertices within 5 cm (held, #130)
@@ -42,7 +44,7 @@ import { roofPlanForFeature } from '../../src/canalRecall/roofMesh.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
-import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, BUILDING_FORMAT_VERSION, encodeShellCell, decodeShellCell, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
+import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, sharedStringList, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, BUILDING_FORMAT_VERSION, encodeShellCell, decodeShellCell, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
 import { bakeCellShell, bakeGroupChunk, subsetShellChunk, SHELL_LOOK, bakeCellRecordShell, bakeGroupRecordChunk, loadHouseSpecTable, subsetRecordChunk, type RecordPart } from './shellBake.js';
 import { FACADE_RECORD_VERSION } from '../../src/canalRecall/look/facadeRecord.js';
 import { FACADE_SHELL_DIR } from '../../src/canalRecall/world/worldCells.js';
@@ -68,6 +70,8 @@ const WITH_ROOF = !!flag('roof');
 const DEBUG = !!flag('debug');
 const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
 const NO_POLICY = !!flag('no-policy');
+/** Choose the shared string table afresh instead of keeping the reference's (see below). */
+const FRESH_STRINGS = !!flag('fresh-strings');
 const POLICY_OPTIONS: PolicyOptions = policyOptionsFromArgs(process.argv.slice(2));
 const SHELL = flag('shell') ? (value('shell') === 'far' ? 'far' : 'all') : null;
 /** F1 (#380): also bake record shells (SHEL level 3 + FREC) into world-v1/facade/; needs --shell. Absent, every output is unchanged. */
@@ -207,11 +211,16 @@ async function main() {
 
   // The shared string table (format 4): strings two or more cells use. A --changed run keeps the table it
   // compiled before (cells it does not rewrite were encoded against it); new strings stay in their cell.
+  // A full run keeps the reference's table too (the published world-v1), unless --fresh-strings: every cell refers to
+  // the table by index, so a table re-chosen from city-wide counts re-encodes every cell when a few buildings change
+  // their strings (round j, 2026-11-15: 285 restored fronts dropped 60 strings and changed 595 cells' bytes with no
+  // change to their buildings). Kept, a cell is byte-identical unless its own buildings change; a string the table
+  // lacks stays in its cell, and a string no cell uses any more costs only its bytes in strings.bin.
   let globals: GlobalStrings | undefined, globalsBytes: Uint8Array | undefined;
   const keepTable = !!rebuild && previous?.strings && exists(path.join(OUT, GLOBAL_STRINGS_FILE));
-  if (keepTable) globals = readGlobalStrings(OUT);
-  else ({ bytes: globalsBytes, table: globals } = encodeGlobalStrings(chooseGlobalStrings(built.map(b => encodeCell(b.cell).strings), 2)));
   const referenceGlobals = reference ? readGlobalStrings(AGAINST!) : undefined;
+  if (keepTable) globals = readGlobalStrings(OUT);
+  else ({ bytes: globalsBytes, table: globals } = encodeGlobalStrings(sharedStringList(built.map(b => encodeCell(b.cell).strings), FRESH_STRINGS ? undefined : referenceGlobals)));
 
   const decoded = new Map<string, Cell>();
   for (const { key, list, cell } of built) {

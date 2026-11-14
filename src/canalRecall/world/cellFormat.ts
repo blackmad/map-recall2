@@ -207,6 +207,13 @@ export function chooseGlobalStrings(cellLists: Iterable<readonly string[]>, minC
   for (const list of cellLists) for (const s of new Set(list)) cells.set(s, (cells.get(s) ?? 0) + 1);
   return [...cells].filter(([, n]) => n >= minCells).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)).map(([s]) => s);
 }
+/** The shared table a compile writes: the reference's (the published world-v1) as it stands when there is one, else
+ *  chosen afresh. Cells refer to the table by index, so a re-chosen table re-encodes every cell when a few buildings
+ *  change their strings; kept, a cell is byte-identical unless its own buildings change. A string the kept table lacks
+ *  stays in its cell's own STRS. */
+export function sharedStringList(cellLists: Iterable<readonly string[]>, reference?: GlobalStrings, minCells = 2): string[] {
+  return reference ? [...reference.list] : chooseGlobalStrings(cellLists, minCells);
+}
 // Created on first use, not at module load: ride bundles that only need a constant from the world modules (cityLook
 // imports WALL_UV_UNIT_M via shellMesh) are evaluated in a bare Node context by test:canal-game-structure, which has no
 // TextEncoder (integrator 2026-11-12, F1 S4a pulled this module into signature-placement).
