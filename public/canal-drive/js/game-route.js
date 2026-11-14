@@ -578,7 +578,7 @@ class GameRouteRuntime {
       const from = this.routePattern === 'home' ? this.homeBase
         : this.routePattern === 'here' ? this.gpsOrigin
           : this._pickDestinationNear(selectedDestination);
-      if (from) this._launchPoiRoute(from, selectedDestination, { explicitDestination: true });
+      if (from) this._launchPoiRoute(from, selectedDestination, { explicitDestination: true, userPicked: true });
       else this._setRouteError(routeKey('ride.error.noStartPoint'));
       return;
     }
@@ -1097,9 +1097,12 @@ class GameRouteRuntime {
     return !!(poi && (poi.id === 'home' || poi.id === 'here'));
   }
 
-  _launchPoiRoute(from, to, { explicitDestination = false } = {}) {
+  _launchPoiRoute(from, to, { explicitDestination = false, userPicked = false } = {}) {
     this.routeFrom = from;
     this.routeTo = to;
+    // A destination the rider chose in route setup: a run reload keeps it
+    // even when the pool would not deal it (chainedRun.judgeResumedLeg).
+    this._routeToUserPicked = userPicked;
     // Remember home rides so the next launch picks somewhere else. Swaps
     // made while planning (snap, review runner-up) are remembered too.
     this._rememberHomeDestination(to);
@@ -1322,6 +1325,24 @@ class GameRouteRuntime {
     } catch {}
   }
 
+  /**
+   * Ride a run's stored leg after a reload, once the destination pool has
+   * loaded and judged it (chainedRunRuntime `_runVetResumeLeg`): a leg dealt
+   * before the fame tiers kept sending every reload to Meerpadkerk
+   * (2026-11-14). A catalogue that failed to load holds only the curated
+   * places, so the leg then stands unjudged.
+   */
+  async _launchResumedRunLeg(leg) {
+    this._overlay.store.setSetupOpen(false);
+    await this._ensureRoutePoiCatalog();
+    // The rider started something else while the catalogue loaded.
+    if (this.state !== GameState.MENU) return;
+    const vetted = this._routePoiCatalogLoadedKey && typeof this._runVetResumeLeg === 'function'
+      ? this._runVetResumeLeg(leg) : leg;
+    if (!vetted) { this._overlay.store.setSetupOpen(true); return; }
+    this._launchPoiRoute(vetted.from, vetted.to, { explicitDestination: true, userPicked: !!vetted.userPicked });
+  }
+
   _checkShareLink() {
     // `?tour=<id>` (the landing page's tour links) picks the tour and starts it.
     const tourParam = new URLSearchParams(window.location.search).get('tour');
@@ -1345,8 +1366,7 @@ class GameRouteRuntime {
     const openRunLeg = landingRide && typeof this._runResumeLeg === 'function' && !window.location.hash.startsWith('#race=') ? this._runResumeLeg() : null;
     if (openRunLeg) {
       this._dropRideParam();
-      this._overlay.store.setSetupOpen(false);
-      this._launchPoiRoute(openRunLeg.from, openRunLeg.to, { explicitDestination: true });
+      this._launchResumedRunLeg(openRunLeg);
       return;
     }
     if ((landingRide === 'daily' || landingRide === 'review') && !window.location.hash.startsWith('#race=')) {
@@ -1376,7 +1396,7 @@ class GameRouteRuntime {
     const hash = window.location.hash;
     // A reload inside a run (chainedRunRuntime.ts, G1) resumes the dealt leg instead of opening route setup.
     const runLeg = !hash.startsWith('#race=') && typeof this._runResumeLeg === 'function' ? this._runResumeLeg() : null;
-    if (runLeg) { this._overlay.store.setSetupOpen(false); this._launchPoiRoute(runLeg.from, runLeg.to, { explicitDestination: true }); return; }
+    if (runLeg) { this._launchResumedRunLeg(runLeg); return; }
     if (!hash.startsWith('#race=')) return;
     const parts = hash.slice(6).split(',').map(Number);
     if (parts.length !== 6 || parts.some(n => !isFinite(n))) return;
