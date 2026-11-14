@@ -233,3 +233,19 @@ test('holeCarry: the deck\'s own road at ground level running on from the deck e
   assert.ok([...c.hi].every(v => v === Infinity));
   assert.equal(holeCarry({ ...p, under: undefined }, () => true), undefined);
 });
+
+test('holeCarry crossers: a street the survey draws continuous with the approach but crossing under the deck stops the carry short of it (Provincialeweg 7040533, Weesperstraat)', () => {
+  const n = 81, x = Float64Array.from({ length: n }, (_, i) => i * 0.5), y = new Float64Array(n), s = Float64Array.from(x), halfWidth = new Float64Array(n).fill(10);
+  const p = { x, y, s, halfWidth, deck: [6, 40] as [number, number], water: [34, 39] as [number, number], under: [[6, 34]] as [number, number][] };
+  // Ground-level survey over the whole range (the approach and a quay street under the deck at x 18, one sheet).
+  const all = () => true;
+  assert.ok([...holeCarry(p, all)!.lo].every(v => v === 34));
+  // The quay street's OSM line crosses the road line at x 18: the carry stops HOLE_CARRY_CROSS_M (5 m) short of it.
+  const quay: [number, number][] = [[18, -20], [18, 20]];
+  const c = holeCarry(p, all, [quay])!;
+  assert.ok([...c.lo].every(v => v === 13), `lo ${[...new Set(c.lo)]}`);
+  // A line along the road (the approach's own way) is not a crosser.
+  assert.ok([...holeCarry(p, all, [[[0, 0.5], [40, 0.5]]])!.lo].every(v => v === 34));
+  // A crosser at the land end leaves nothing carried.
+  assert.equal(holeCarry(p, all, [[[8, -20], [8, 20]]]), undefined);
+});
