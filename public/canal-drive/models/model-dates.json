@@ -751,6 +751,11 @@
       "version": "aee24d124098bde7",
       "dateSource": "asset-update"
     },
+    "blok0-ij4you": {
+      "updatedAt": "2026-11-14T03:45:48.553Z",
+      "version": "21f09645ab843ca1",
+      "dateSource": "asset-update"
+    },
     "bogortuin-101": {
       "updatedAt": "2026-10-20T10:16:58.076Z",
       "version": "3520d14a631ffc10",
@@ -1349,6 +1354,16 @@
     "de-bonte-zwaan": {
       "updatedAt": "2026-11-13T22:25:23.781Z",
       "version": "b15629288e6eedf3",
+      "dateSource": "asset-update"
+    },
+    "de-bonte-zwaan.lod1": {
+      "updatedAt": "2026-11-14T02:52:34.639Z",
+      "version": "b02e8925678d7c36",
+      "dateSource": "asset-update"
+    },
+    "de-bonte-zwaan.lod2": {
+      "updatedAt": "2026-11-14T02:52:34.639Z",
+      "version": "a5733277c3197785",
       "dateSource": "asset-update"
     },
     "de-burcht": {
@@ -2794,6 +2809,16 @@
     "hotel-boat-and-co": {
       "updatedAt": "2026-11-13T22:25:23.904Z",
       "version": "60d217b900023fb2",
+      "dateSource": "asset-update"
+    },
+    "hotel-boat-and-co.lod1": {
+      "updatedAt": "2026-11-14T02:52:34.642Z",
+      "version": "563d75bcea7d5d7f",
+      "dateSource": "asset-update"
+    },
+    "hotel-boat-and-co.lod2": {
+      "updatedAt": "2026-11-14T02:52:34.642Z",
+      "version": "413c9c34a4b79c19",
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe": {

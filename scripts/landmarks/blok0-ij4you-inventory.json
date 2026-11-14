@@ -1,0 +1,361 @@
+{
+ "schemaVersion": 1,
+ "id": "blok0-ij4you",
+ "pand": "0363100012242823",
+ "brief": "scripts/landmarks/blok0-ij4you-brief.md",
+ "signature": [
+  "nw-brick-grid",
+  "nw-stone-ledges",
+  "sw-steps-in-height",
+  "se-stair",
+  "court-balconies"
+ ],
+ "walls": [
+  {
+   "tag": "w01-230",
+   "bearing": 230,
+   "lengthM": 28.4,
+   "centre": [
+    4.876993,
+    52.3943445
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-48-40_00150",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-steps-in-height",
+     "kind": "other",
+     "where": "the face steps from the nine-layer block (left) down to three layers and up to the four-layer quay block (right)",
+     "approxSizeM": [
+      28.4,
+      28.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-48-40_00150",
+     "how": "3DBAG LoD2.2 shell"
+    },
+    {
+     "id": "sw-windows",
+     "kind": "window-shape",
+     "where": "one column on each block end, four columns on the middle; ground-floor doors",
+     "approxSizeM": [
+      1.45,
+      2.15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-48-40_00150",
+     "how": "swFace(): measured columns, sills at floors + 0.05, framed dark doors"
+    },
+    {
+     "id": "court-balconies",
+     "kind": "balcony-ironwork",
+     "where": "long white slab balconies with glass balustrades along the tall block's courtyard face, every floor",
+     "approxSizeM": [
+      20,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-09_07-48-40_00150",
+     "how": "otherWalls(): slabBalcony 1.6 m deep with a glass balustrade on every floor of the courtyard faces (bearing ~140, above the deck)"
+    }
+   ],
+   "note": "SW face (ring edge 8): tall block end, three-storey middle, quay block end; mixed red-brown-purple brick."
+  },
+  {
+   "tag": "w02-320",
+   "bearing": 320,
+   "lengthM": 15.8,
+   "centre": [
+    4.876829,
+    52.394575
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_54_42_00174",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-brick-grid",
+     "kind": "window-shape",
+     "where": "whole brick Haparandaweg front: five columns of two-light French windows framed by brick piers and a projecting band at every floor, dark recess over each window",
+     "approxSizeM": [
+      15.6,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00174",
+     "how": "brickFront(): 0.6 m piers and 0.32 m floor bands 0.2-0.24 m proud, windows 1.55 x 2.15 (top row 2.75) set in the grid, dark recess head, coping"
+    },
+    {
+     "id": "nw-brick-numbers",
+     "kind": "lettering",
+     "where": "\"650-678\" in light metal digits on the dark transom of the middle entrance bay",
+     "approxSizeM": [
+      1.2,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00174",
+     "how": "wallLetters() 0.32 m gold digits on a dark panel"
+    },
+    {
+     "id": "nw-brick-ground",
+     "kind": "window-shape",
+     "where": "glazed ground storey: five tall glass bays with dark frames, entrance in the middle",
+     "approxSizeM": [
+      15,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "2025_09_29_07_54_42_00174",
+     "how": "groundBay(): framed glass with two mullions per column"
+    }
+   ],
+   "note": "Brick corner block on the Haparandaweg (ring edge 3), 9 layers."
+  },
+  {
+   "tag": "w03-320",
+   "bearing": 320,
+   "lengthM": 15.6,
+   "centre": [
+    4.8770035,
+    52.3946705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002366_pano_0003_000742",
+   "capturedAt": "2021-12-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-stone-ledges",
+     "kind": "other",
+     "where": "a cantilevered limestone ledge across the whole front at every floor (seven ledges)",
+     "approxSizeM": [
+      15.6,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002366_pano_0003_000742",
+     "how": "stoneFront(): 0.24 m slabs 0.45 m proud at floors 3.8 ... 21.2"
+    },
+    {
+     "id": "nw-stone-windows",
+     "kind": "window-shape",
+     "where": "five columns of wide two-light windows with glass balustrades between the ledges",
+     "approxSizeM": [
+      1.75,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002366_pano_0003_000742",
+     "how": "stoneFront(): 1.75 x 2.0 framed windows with mullion and rail"
+    },
+    {
+     "id": "nw-stone-numbers",
+     "kind": "lettering",
+     "where": "\"680-706\" on the dark glass panel over the entrance in the middle of the ground storey",
+     "approxSizeM": [
+      1.2,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002366_pano_0003_000742",
+     "how": "wallLetters() 0.3 m digits on a dark panel"
+    }
+   ],
+   "note": "Limestone block on the Haparandaweg (ring edge 1); De Rede (708-744) stands on its left."
+  },
+  {
+   "tag": "w04-140",
+   "bearing": 140,
+   "lengthM": 12,
+   "centre": [
+    4.877195,
+    52.394282
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000802_pano_0000_001214",
+   "capturedAt": "2018-06-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-brick-balconies",
+     "kind": "balcony-ironwork",
+     "where": "two first-floor balconies, stone slab with glass balustrade, each over two columns",
+     "approxSizeM": [
+      5.5,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000802_pano_0000_001214",
+     "how": "quayFront(9): slabBalcony 1.25 m deep"
+    },
+    {
+     "id": "se-brick-windows",
+     "kind": "window-shape",
+     "where": "four columns of two-light French windows, three rows; glazed ground storey with doors",
+     "approxSizeM": [
+      1.6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000802_pano_0000_001214",
+     "how": "quayFront(): framed windows and ground bays"
+    },
+    {
+     "id": "se-street-sign",
+     "kind": "sign",
+     "where": "blue street-name plate HOUTHAVENKADE at the ground-floor corner",
+     "approxSizeM": [
+      0.6,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000802_pano_0000_001214",
+     "skip": {
+      "reason": "too-small",
+      "note": "street-name plate 0.6 m, not legible at ride distance"
+     }
+    }
+   ],
+   "note": "Brick quay block on the Houthavenkade (ring edge 9)."
+  },
+  {
+   "tag": "w05-140",
+   "bearing": 140,
+   "lengthM": 11.9,
+   "centre": [
+    4.877389,
+    52.3943825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000277_pano_0001_001605",
+   "capturedAt": "2017-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-stone-balcony",
+     "kind": "balcony-ironwork",
+     "where": "one first-floor balcony along the whole front, limestone slab and glass balustrade",
+     "approxSizeM": [
+      11.9,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001605",
+     "how": "quayFront(13): slabBalcony 1.2 m deep over the full length"
+    },
+    {
+     "id": "se-stone-windows",
+     "kind": "window-shape",
+     "where": "four columns, three rows of windows in flush limestone panels; glazed ground storey",
+     "approxSizeM": [
+      1.6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000277_pano_0001_001605",
+     "how": "quayFront()"
+    }
+   ],
+   "note": "Limestone quay block (ring edge 13)."
+  },
+  {
+   "tag": "w06-140",
+   "bearing": 140,
+   "lengthM": 5.3,
+   "centre": [
+    4.877247,
+    52.3943655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002051_pano_0000_000900",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-stair",
+     "kind": "other",
+     "where": "a broad flight of stone steps from the quay up to the collective roof garden on the garage, between the brick and the stone quay blocks",
+     "approxSizeM": [
+      5.3,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002051_pano_0000_000900",
+     "how": "stair(): stairFlight, 16 steps to the 4.2 m deck across the whole recess"
+    }
+   ],
+   "note": "The recess between the two quay blocks (ring edges 10-12)."
+  },
+  {
+   "tag": "w07-51",
+   "bearing": 51,
+   "lengthM": 4.8,
+   "centre": [
+    4.8772395,
+    52.3943335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001596_pano_0001_000136",
+   "capturedAt": "2020-01-29",
+   "checked": true,
+   "items": [],
+   "note": "Short recess cheek / block end; plain brick or limestone with windows as the neighbouring fronts; nothing notable."
+  },
+  {
+   "tag": "w08-231",
+   "bearing": 231,
+   "lengthM": 4.8,
+   "centre": [
+    4.8772995,
+    52.3943645
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000529_pano_0000_000715",
+   "capturedAt": "2017-12-28",
+   "checked": true,
+   "items": [],
+   "note": "Short recess cheek / block end; plain brick or limestone with windows as the neighbouring fronts; nothing notable."
+  },
+  {
+   "tag": "w09-51",
+   "bearing": 51,
+   "lengthM": 4.8,
+   "centre": [
+    4.8774335,
+    52.3944335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001596_pano_0001_000139",
+   "capturedAt": "2020-01-29",
+   "checked": true,
+   "items": [],
+   "note": "Short recess cheek / block end; plain brick or limestone with windows as the neighbouring fronts; nothing notable."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "ArchDaily 787541 / arch2o: Houthaven Blok 0 - Plots 8 & 9, Marcel Lok_Architect (project text: 9-layer Haparandaweg building, 4-5-layer quay part, brick grid corner block, limestone block with cantilevered edges, garage with collective roof garden)",
+   "url": "https://www.archdaily.com/787541/houthaven-blok-0-nil-plots-8-and-9-marcel-lok-architect",
+   "licence": "fact citation"
+  },
+  {
+   "name": "3DBAG LoD2.2 pand 0363100012242823",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242823",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG verblijfsobjecten (Haparandaweg 650-706, Houthavenkade) in pand 0363100012242823",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  }
+ ]
+}
