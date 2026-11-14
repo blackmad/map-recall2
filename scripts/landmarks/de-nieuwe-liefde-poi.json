@@ -1,0 +1,12 @@
+{
+  "modelId": "de-nieuwe-liefde",
+  "landmarkId": "de-nieuwe-liefde",
+  "name": "De Nieuwe Liefde",
+  "description": "Built in 1904 as a wine warehouse with tasting rooms, designed by the architect L.J. Neumeyer, and one of the first buildings in the Netherlands made of reinforced concrete (the Monier system), although its forms follow a timber truss construction. From 1932 to 1972 it was the parish house of the Catholic church De Liefde, best known for its cinema. Later the Amsterdam Theatre School and Theater De Liefde used it. Since 2011 it has been De Nieuwe Liefde, a centre for debate, poetry, reflection and theatre, and since 2019 a house for language in the widest sense.",
+  "funFact": "Queen Beatrix opened the centre on 12 February 2011 by reading Henriette Roland Holst's poem \"De zachte krachten zullen zeker winnen in 't eind\" (\"The gentle forces will surely win in the end\").",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/De_Nieuwe_Liefde",
+  "additionalSources": [
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236796/"
+  ],
+  "preferDescription": true
+}
