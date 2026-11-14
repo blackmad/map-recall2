@@ -70,7 +70,8 @@ export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
  *   arch-ring           a raised white arch ring with keystone over a round head
  *   none                plain brick heads
  */
-export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring'] as const;
+export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround'] as const;
+/** `block-surround`: white blocks framing the whole window, alternating quoins up both jambs with a keyed head (Kinkerstraat 100, reviewed). */
 export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
