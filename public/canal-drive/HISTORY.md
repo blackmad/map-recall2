@@ -12,6 +12,10 @@ Feedback 7be6c55a pointed at the Hendrix café front (handed to the retail lane)
 
 Feedback 8f03bc60 ("can we really not get more detail (windows) at this draw distance?"): coarse-chunk walls 250–600 m out lost their windows to the #161 depth fade's facade-detail blend (`roofTier.ts` → `DEPTH_FADE_DETAIL_GLSL`, `depthFade.ts`), not to the footprint tier or missing UVs; drawn looks (storybook, cartoon) also have no analytic window table. `?farWindows` (define `FAR_WINDOWS`, no geometry or textures): the fade still flattens brick and trim, windows leave only with the footprint tier; UV-less far-shell prisms keep the blend. Desktop on, touch off until measured on the iPhone. GPU ms at the pinned pose equal or ~1 ms lower; pinned in `farWindows.test.ts`.
 
+## Theater Bellevue: one drawing, delamar kept (2026-11-14)
+
+The venues-r3 `theater-bellevue` model and `delamar` both drew pand 0363100012169852. Compared at three boat poses (rule 10, photo | delamar | bellevue): delamar wins the tile base with poster cases, the 0.64 m roof edge, the oculus segment, legible lettering, the fly tower and the hall roof; bellevue had only the drum colour closer. `theater-bellevue` stays held as superseded (GLB kept), delamar's ochre moved #ddd09c -> #d2be8e (vertices identical), and `modelOverlap.test.ts` pins it. Lane bellevue-delamar, 7d3d4f051/7def83a3c.
+
 ## 2026-11-14 (late) — Venues round 4: Universiteitstheater, Perdu, CREA
 
 Three bespoke venue models from the panoramas (lane venues-r4, 15bf37f00..3702b7eae): Universiteitstheater (Nieuwe Doelenstraat 16, pand 180412, below-ground -1.77 m to the Amstel), Perdu (Kloveniersburgwal 86, rijksmonument 518309, ANNO 1908 frieze), CREA (Nieuwe Achtergracht 170, the 1846 diamond works; 28k tris). New venue-kit parts: festoon swags, balustrade runs, `tiledFront` (long fronts as tiles under the 30 m loop limit), `wallFacingXZ`, per-wall shell colour (`addShell wallFor`, byte-identical when absent). POI cards for all three, sourced per fact. Read on the rule-10 sheet: all three closer than today's generic boxes; CREA judged on the Node canal pair because no panorama holds its front.
