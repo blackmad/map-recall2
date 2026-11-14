@@ -24,7 +24,7 @@ import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.
 import { wallChange, wallLab, WALL_SAME_PCT } from './analyse.ts';
 import { bare, edgeOffsets, engineWorld, flagsFor, WORLD_LIVE_WARNING, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
 import { cameraCaption, engineOf, parseRule10, worldOf, FLAGS_ONLY, type Rule10 } from './rule10.ts';
-import { asPlayedCaption, asPlayedFor, likenessCaption, likenessJobPose, pickLikeness, rule10Sheets, writeLikenessPhoto, type LikenessPrep, type Rule10Job, type SheetRow } from './rule10Frames.ts';
+import { asPlayedCaption, asPlayedFor, likenessCaption, likenessJobPose, pickLikeness, rule10Pins, rule10Sheets, writeLikenessPhoto, type LikenessPrep, type Rule10Job, type SheetRow } from './rule10Frames.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
 
@@ -681,7 +681,8 @@ export const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.ou
 /** Rule 10's job fields: pixel ratio, the likeness pages' extra query, and the list's as-played rider. */
 function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
   const r10 = args.rule10!, rider = r10.asPlayed && prepared.length ? asPlayedFor(prepared, r10.asPlayedBackM) : null;
-  return { dpr: r10.dpr, likenessQuery: r10.likenessTrees === 'hide' ? 'trees3d=0' : '', asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
+  const pins = rule10Pins(args.query, r10.dpr);
+  return { dpr: r10.dpr, likenessQuery: [pins, r10.likenessTrees === 'hide' ? 'trees3d=0' : ''].filter(Boolean).join('&'), asPlayedQuery: pins, asPlayed: rider ? [{ out: args.out, lngLat: rider.lngLat, headingDeg: rider.headingDeg }] : [] };
 }
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
@@ -788,8 +789,21 @@ export function splitLists(argv: string[]): string[][] {
   });
 }
 
+/**
+ * BUNDLES_DIR holding three-buildings.bundle.js without three-buildings-worker.bundle.js: the page meshes with the scratch
+ * code and the pool workers with the committed worker (build:canal-three-buildings writes both; a lane that built or
+ * copied only the first drew stale worker code). The spec routes whatever the dir holds; this says what it lacks.
+ */
+export function bundlesDirWarning(dir: string | undefined, has: (name: string) => boolean = name => fs.existsSync(path.join(dir!, name))): string | null {
+  if (!dir) return null;
+  if (has('three-buildings.bundle.js') && !has('three-buildings-worker.bundle.js')) return `WARNING: BUNDLES_DIR ${dir} has three-buildings.bundle.js but no three-buildings-worker.bundle.js: the mesh pool workers will run the committed worker. Build both (the two esbuild steps of build:canal-three-buildings, --outfile into the dir) or add ?workerPool=0.`;
+  return null;
+}
+
 export async function main(argv = process.argv.slice(2)) {
   if (argv.includes('--help') || !argv.length) { console.log(HELP); return; }
+  const bundlesWarn = bundlesDirWarning(process.env.BUNDLES_DIR);
+  if (bundlesWarn) console.warn(bundlesWarn);
   if (engineWorld(arg(argv, 'query') ?? '').live) console.warn(WORLD_LIVE_WARNING);
   if (arg(argv, 'lists')) return batch(argv);
   const args = await parseArgs(argv);

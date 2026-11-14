@@ -419,40 +419,63 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
 
 /**
  * The measured shopfront (lane retail-ground, `?retailGround=1`; retailTemplates.ts PUI from Haarlemmerdijk's 66 traced
- * fronts): a fascia band in the business's colour, one wide pane over a stall riser, a thin frame, a dark interior with
- * a sky reflection; no painted props, awnings or lettering (templates draw those as geometry). The kinds differ only
- * where the street does: a cafe's curtain band, a brown bar's small panes over amber, a deli's transom, frame tones.
+ * fronts): a fascia band in the business's colour, one wide pane over a stall riser, a thin frame, and behind the glass
+ * a dark, warm, low-saturation interior with a soft band of shelf light (round 2: the photos' glass reads dark and warm,
+ * never the flat blue-grey of a sky reflection). No painted props, awnings or lettering (templates draw those as
+ * geometry). A brown bar is dark timber from the pavement up: small deep-set panes, dark inside, a warm glint only.
  */
 function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
   const { ctx } = p;
   const x0 = Math.round(w * (1 - PUI.glassShare) / 2), x1 = w - x0, y0 = Math.round(h * PUI.glassTop), y1 = Math.round(h * (1 - PUI.riser));
-  const fT = Math.round(h * PUI.fasciaTop), fB = Math.round(h * PUI.fasciaBottom), f = PUI.framePx;
+  const fT = Math.round(h * PUI.fasciaTop), fB = Math.round(h * PUI.fasciaBottom), f = PUI.framePx, gw = x1 - x0, gh = y1 - y0;
   const bar = kind === 'shopBar';
-  const frame = bar ? '#3a2519' : kind === 'shopWindow' || kind === 'shopBike' ? '#2b2b2a' : p.cartoon ? '#fffaf0' : '#e8e4da';
+  const frame = bar ? '#2a1a10' : kind === 'shopWindow' || kind === 'shopBike' ? '#2b2b2a' : p.cartoon ? '#fffaf0' : '#e8e4da';
+  // A brown bar's whole ground storey is dark timber (untinted ink): the cream surround is what read wrong.
+  if (bar && !p.cartoon) { p.fill('ink', '#2e1c12'); ctx.fillRect(0, fB, w, h - fB); p.shade(() => { ctx.fillStyle = 'rgba(255,220,170,0.06)'; for (let x = 6; x < w; x += 23) ctx.fillRect(x, fB, 2, h - fB); }); }
   // The fascia band across the bay, in the accent (the business's colour), with a thin shadow line under it.
   p.fill('accent', '#ffffff'); ctx.fillRect(0, fT, w, fB - fT);
   p.fill('ink', 'rgba(0,0,0,0.35)'); ctx.fillRect(0, fB, w, 4);
   // Stall riser: a panel under the glass with an inset line (the surround's paint, a shade darker).
-  p.shade(() => { ctx.fillStyle = 'rgba(0,0,0,0.18)'; ctx.fillRect(x0, y1, x1 - x0, h - y1 - 6); ctx.fillStyle = 'rgba(0,0,0,0.22)'; ctx.fillRect(x0 + 10, y1 + 10, x1 - x0 - 20, 3); });
+  p.shade(() => { ctx.fillStyle = 'rgba(0,0,0,0.18)'; ctx.fillRect(x0, y1, gw, h - y1 - 6); ctx.fillStyle = 'rgba(0,0,0,0.22)'; ctx.fillRect(x0 + 10, y1 + 10, gw - 20, 3); });
   // Frame, then the glass inside it.
-  p.fill('ink', frame); ctx.fillRect(x0 - f, y0 - f, x1 - x0 + 2 * f, y1 - y0 + 2 * f);
+  p.fill('ink', frame); ctx.fillRect(x0 - f, y0 - f, gw + 2 * f, gh + 2 * f);
   p.shade(() => {
+    if (p.cartoon) { const g = ctx.createLinearGradient(0, y0, 0, y1); g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); ctx.fillStyle = g; ctx.fillRect(x0, y0, gw, gh); return; }
+    // Dark warm interior, a touch lighter up top where the ceiling lights are.
     const g = ctx.createLinearGradient(0, y0, 0, y1);
-    if (bar) { g.addColorStop(0, '#6a4a2c'); g.addColorStop(1, '#c47a2a'); }
-    else if (p.cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); }
-    else { g.addColorStop(0, '#7f939c'); g.addColorStop(0.35, '#3c474c'); g.addColorStop(1, '#23292b'); }
-    ctx.fillStyle = g; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
-    if (!bar) { ctx.fillStyle = 'rgba(255,255,255,0.10)'; ctx.beginPath(); ctx.moveTo(x0 + (x1 - x0) * 0.55, y0); ctx.lineTo(x0 + (x1 - x0) * 0.72, y0); ctx.lineTo(x0 + (x1 - x0) * 0.42, y1); ctx.lineTo(x0 + (x1 - x0) * 0.25, y1); ctx.closePath(); ctx.fill(); }
+    if (bar) { g.addColorStop(0, '#2a1a12'); g.addColorStop(1, '#170e09'); }
+    else { g.addColorStop(0, '#3a332c'); g.addColorStop(0.3, '#272320'); g.addColorStop(1, '#1b1815'); }
+    ctx.fillStyle = g; ctx.fillRect(x0, y0, gw, gh);
+    if (bar) {
+      // A warm glint per pane, low and soft (lamps behind the glass), never a lit fill.
+      for (let k = 0; k < 5; k++) { const cx = x0 + gw * (k + 0.5) / 5, cy = y0 + gh * (0.3 + 0.08 * (k % 2)), r = gw / 14;
+        const rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, r); rg.addColorStop(0, 'rgba(255,176,92,0.55)'); rg.addColorStop(1, 'rgba(255,176,92,0)'); ctx.fillStyle = rg; ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r); }
+      return;
+    }
+    // The interior glow band: shelf light across the middle of the pane, soft above and below.
+    const band = ctx.createLinearGradient(0, y0 + gh * 0.22, 0, y0 + gh * 0.72);
+    const warm = kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe' || kind === 'groundShop' ? '255,196,128' : '236,214,180';
+    band.addColorStop(0, `rgba(${warm},0)`); band.addColorStop(0.45, `rgba(${warm},0.20)`); band.addColorStop(1, `rgba(${warm},0)`);
+    ctx.fillStyle = band; ctx.fillRect(x0, y0 + gh * 0.22, gw, gh * 0.5);
+    // Shelves: faint lit edges, and dim goods between them (low saturation).
+    for (const t of [0.34, 0.5, 0.66]) { ctx.fillStyle = `rgba(${warm},0.16)`; ctx.fillRect(x0 + 6, y0 + gh * t, gw - 12, 2); }
+    const GOODS = ['86,74,62', '104,88,70', '70,72,74', '112,96,78', '92,70,58'];
+    for (let r = 0; r < 2; r++) for (let x = x0 + 10, k = 0; x < x1 - 22; x += 19, k++) { ctx.fillStyle = `rgba(${GOODS[(k * 3 + r) % GOODS.length]},0.55)`; ctx.fillRect(x, y0 + gh * (0.36 + r * 0.16), 14, gh * 0.12); }
+    // Ceiling lights: a row of small warm points under the head.
+    for (let x = x0 + gw / 10; x < x1; x += gw / 5) { ctx.fillStyle = 'rgba(255,226,180,0.35)'; ctx.fillRect(x - 5, y0 + 6, 10, 3); }
+    // A muted reflection streak.
+    ctx.fillStyle = 'rgba(220,226,230,0.05)'; ctx.beginPath(); ctx.moveTo(x0 + gw * 0.55, y0); ctx.lineTo(x0 + gw * 0.72, y0); ctx.lineTo(x0 + gw * 0.42, y1); ctx.lineTo(x0 + gw * 0.25, y1); ctx.closePath(); ctx.fill();
   });
-  if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); }
+  if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x0, y0, gw, gh); }
   p.fill('ink', frame);
-  if (kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe') ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.22), x1 - x0, 6);
-  if (kind === 'shopCafe') { p.fill('ink', '#ece6da'); ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.62), x1 - x0, Math.round((y1 - y0) * 0.38)); }
+  if (kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe') ctx.fillRect(x0, y0 + Math.round(gh * 0.22), gw, 6);
+  if (kind === 'shopCafe') { p.fill('ink', p.cartoon ? '#ece6da' : '#9c8f7c'); ctx.fillRect(x0, y0 + Math.round(gh * 0.62), gw, Math.round(gh * 0.38)); }
   if (bar) {
-    p.fill('ink', '#efe3c8'); ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.55), x1 - x0, Math.round((y1 - y0) * 0.45));
+    // Small panes: muntins over the whole glass, a transom bar, and an inner shadow so the glass reads set back.
     p.fill('ink', frame);
-    for (let k = 1; k < 5; k++) ctx.fillRect(x0 + Math.round((x1 - x0) * k / 5) - 3, y0, 6, Math.round((y1 - y0) * 0.55));
-    ctx.fillRect(x0, y0 + Math.round((y1 - y0) * 0.27), x1 - x0, 5);
+    for (let k = 1; k < 5; k++) ctx.fillRect(x0 + Math.round(gw * k / 5) - 3, y0, 6, gh);
+    for (const t of [0.27, 0.62]) ctx.fillRect(x0, y0 + Math.round(gh * t), gw, 5);
+    p.shade(() => { ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(x0, y0, gw, 8); ctx.fillRect(x0, y0, 7, gh); });
   }
 }
 

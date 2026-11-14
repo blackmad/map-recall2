@@ -123,7 +123,8 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
 /** Window content the front builder draws behind (or in front of) the glass. */
 export type Content = 'shelves' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'produce' | 'bread' | 'automatiek' | 'deli' | 'bowls'
   | 'books' | 'magazines' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains' | 'jars';
-/** What a template draws. Colours are house colours or measured street colours; lettering only (no logo artwork yet). */
+/** What a template draws. Colours are house colours or measured street colours; chains with a sourced logo also draw it
+ *  from the logo layer (retailLogos.ts). */
 export type TemplateLook = {
   fascia: string; letters: string;
   /** The word on the fascia; `name` uses the POI's name (staged with the extract), else no lettering. */
@@ -139,6 +140,10 @@ export type TemplateLook = {
   tube?: string;
   /** A hanging blade sign in this colour (brown cafes, pancake houses). */
   blade?: string;
+  /** Window frame and door colour (round 2); absent: a dark grey-brown. */
+  frame?: string;
+  /** The whole front under the fascia in this colour (a brown cafe's dark timber), over the cell's painted surround. */
+  surround?: string;
 };
 export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
@@ -156,7 +161,7 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   moneyTransfer: { fascia: '#ffdd00', letters: '#1d1d1b', word: 'MONEY TRANSFER', content: 'stickers', lit: true },
   coffeeshop: { fascia: '#1f5a2e', letters: '#e8f0d8', word: 'name', content: 'frosted', lit: false },
   smartshop: { fascia: '#2a1640', letters: '#ff4fd8', word: 'name', content: 'neon', lit: true },
-  brownBar: { fascia: '#2b1a12', letters: '#e8c98a', word: 'name', content: 'barGlow', lit: true, blade: '#7a1f12' },
+  brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12' },
   bike: { fascia: '#22313a', letters: '#ffffff', word: 'name', content: 'bikes', lit: false, pavement: 'bikes' },
   redLight: { fascia: '#2a0a12', letters: '#2a0a12', content: 'redGlow', lit: true, tube: '#ff2a3a' },
   doner: { fascia: '#d42a1e', letters: '#ffffff', word: 'name', content: 'menu', lit: true },

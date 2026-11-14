@@ -3,7 +3,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signWord, templateForTags } from './retailTemplates.js';
-import { FRONT, retailFrontTris } from './retailFront.js';
+import { FRONT, glassTone, retailFrontTris } from './retailFront.js';
+import { LOGOS, LOGO_GRID, logoFor, retailLogoLayer } from './retailLogos.js';
+import { hostOnFront, ringEdges } from './retailHosting.js';
+import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
@@ -92,7 +95,8 @@ test('the template extract stamps only once installed', () => {
 
 function paintCalls(v: BayVariant): string[] {
   const calls: string[] = [];
-  const ctx = new Proxy({ createLinearGradient: () => ({ addColorStop: (...a: unknown[]) => calls.push(`stop${JSON.stringify(a)}`) }) }, {
+  const grad = () => ({ addColorStop: (...a: unknown[]) => calls.push(`stop${JSON.stringify(a)}`) });
+  const ctx = new Proxy({ createLinearGradient: grad, createRadialGradient: grad }, {
     get(target, key) { if (key in target) return target[key as keyof typeof target]; return (...a: unknown[]) => calls.push(`${String(key)}${JSON.stringify(a)}`); },
     set(_t, key, value) { calls.push(`${String(key)}=${String(value)}`); return true; },
   });
@@ -113,6 +117,8 @@ test('shop cells: the pui with the flag on (no props), unchanged with it off', (
     g.__canalRecallRetailGround = false;
     const offAgain = paintCalls({ ...v, windows: 1 });
     assert.ok(!on.some(c => c.startsWith('arc') || c.startsWith('ellipse')), `${kind}: no scallops, tables, flowers or wheels`);
+    // Round 2: dark warm glass (no blue-grey sky fill), and no cream panel or amber fill in a brown bar.
+    assert.ok(!on.some(c => /#7f939c|#3c474c|#efe3c8|#c47a2a/.test(c)), `${kind}: dark warm glass`);
     assert.notDeepEqual(on, off, kind);
     // The off painting does not depend on the flag having been on in between (cache keys differ).
     assert.deepEqual(offAgain.filter(c => !c.startsWith('width') && !c.startsWith('height')), off.filter(c => !c.startsWith('width') && !c.startsWith('height')), kind);
@@ -127,4 +133,69 @@ test('the census centre polygon holds the Dam and not Sloterdijk', () => {
 
 test('looks: every template has one', () => {
   for (const t of RETAIL_TEMPLATES) assert.ok(TEMPLATE_LOOKS[t], t);
+});
+
+const wall = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+const outOf = (p: number[]) => p[0] * wall.nx + p[1] * wall.ny;
+
+test('round 2 doors: one flush door per front; a traced door set back in its recess', () => {
+  const flush = retailFrontTris({ template: 'doner', seed: 'x' }, wall, 0, 6, 0, 3.4);
+  assert.ok(flush.every(t => t.p.every(p => outOf(p) >= -1e-6)), 'a flush door stays on the wall');
+  assert.ok(flush.some(t => t.hex === '#b8b0a0'), 'a door handle');
+  const recessed = retailFrontTris({ template: 'doner', seed: 'x', door: { a0: 2.5, a1: 3.5, depthM: 0.5 } }, wall, 0, 6, 0, 3.4);
+  const inside = recessed.filter(t => t.p.some(p => outOf(p) < -0.01));
+  assert.ok(inside.length >= 10, 'reveals, soffit, floor and the door at the back');
+  assert.ok(inside.every(t => t.p.every(p => p[0] >= 2.5 - 1e-6 && p[0] <= 3.5 + 1e-6 && outOf(p) >= -0.5 - 1e-6)), 'inside the cut only');
+  // No window content in front of the door.
+  assert.ok(!recessed.some(t => t.p.every(p => outOf(p) > 0.015 && outOf(p) < 0.03 && p[0] > 2.55 && p[0] < 3.45 && p[2] > FRONT.riserM && p[2] < 1.5)));
+});
+
+test('round 2 brown bar: dark timber, no lit amber fill, no cream panel', () => {
+  const tris = retailFrontTris({ template: 'brownBar', word: 'PIJP', seed: 'b' }, wall, 0, 8, 0, 3.4);
+  assert.ok(!tris.some(t => /#d58a2e|#efe6d2/.test(t.hex)));
+  const lit = tris.filter(t => t.lit).reduce((a, t) => a + Math.abs((t.p[1][0] - t.p[0][0]) * (t.p[2][2] - t.p[0][2]) - (t.p[2][0] - t.p[0][0]) * (t.p[1][2] - t.p[0][2])) / 2, 0);
+  assert.ok(lit < 0.5, `warm glints only (${lit.toFixed(2)} m2 lit)`);
+});
+
+test('round 2 glass tone: content behind the glass darker and warmer than painted', () => {
+  const lum = (h: string) => { const n = parseInt(h.slice(1), 16); return ((n >> 16) & 255) + ((n >> 8) & 255) + (n & 255); };
+  for (const h of ['#f1efe8', '#d8452f', '#2f6fb0']) assert.ok(lum(glassTone(h)) < lum(h), h);
+});
+
+test('logos: Commons provenance with a free licence for every atlas entry; rects in their cells; a byte layer', () => {
+  const prov = JSON.parse(fs.readFileSync(new URL('../../data/retail-ground/logos/provenance.json', import.meta.url), 'utf8'));
+  for (const l of LOGOS) {
+    const p = prov.logos[l.key];
+    assert.ok(p && /commons\.wikimedia\.org/.test(p.page) && /public domain|cc0|cc by/i.test(p.licence), `${l.key}: provenance`);
+    assert.ok(Math.abs(l.aspect - p.width / p.height) < 0.01, `${l.key}: aspect`);
+    const r = logoFor(l.key)!;
+    assert.ok(r.rect.every(v => v >= 0 && v <= 1) && r.rect[2] > r.rect[0] && r.rect[3] > r.rect[1]);
+  }
+  assert.ok(LOGOS.length <= LOGO_GRID.cols * LOGO_GRID.rows);
+  assert.equal(logoFor('doner'), null);
+  assert.equal(retailLogoLayer('procedural'), null);
+  assert.ok(retailLogoLayer('photo')! <= 255);
+  const tris = retailFrontTris({ template: 'ah', seed: 'a', logo: { layer: 200, ...logoFor('ah')! } }, wall, 0, 8, 0, 3.4);
+  const logo = tris.filter(t => t.layer === 200);
+  assert.equal(logo.length, 2);
+  assert.ok(logo.every(t => t.uv!.every(([u, v]) => u >= logoFor('ah')!.rect[0] - 1e-6 && u <= logoFor('ah')!.rect[2] + 1e-6 && v >= logoFor('ah')!.rect[1] - 1e-6 && v <= logoFor('ah')!.rect[3] + 1e-6)));
+});
+
+test('hosting regressions: Kinkerstraat bike shops on their street fronts, the BP station AH not on the car wash', () => {
+  const fx = JSON.parse(fs.readFileSync(new URL('../../data/retail-ground/hosting-regressions.json', import.meta.url), 'utf8'));
+  const want: Record<string, { pand: string; front: string }> = {
+    2809217417: { pand: '0363100012156816', front: 'street' },
+    2809219299: { pand: '0363100012061473', front: 'street' },
+    5198582619: { pand: '0363100012239989', front: 'nearest' },
+  };
+  assert.equal(fx.cases.length, 3);
+  for (const c of fx.cases) {
+    const cands = c.candidates.map((k: { id: string; ring: [number, number][] }) => ({ id: k.id, ring: k.ring }));
+    const read = (key: 'street' | 'open') => (cand: { id: string; ring: [number, number][] }, e: ReturnType<typeof ringEdges>[number]) => {
+      const k = c.candidates.find((q: { id: string }) => q.id === cand.id);
+      return k[key][ringEdges(cand.ring).findIndex(f => f.x0 === e.x0 && f.y0 === e.y0)];
+    };
+    const hit = hostOnFront(cands, 0, 0, id => c.candidates.find((q: { id: string }) => q.id === id)?.uses ?? undefined, read('street'), read('open'));
+    assert.deepEqual(hit && { pand: hit.id, front: hit.front }, want[c.node], c.what);
+  }
 });

@@ -6,7 +6,7 @@ import { wordRuns } from './blockLetters.js';
 import { TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
 export type V3 = [number, number, number];
-export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean };
+export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number };
 /** The wall: origin, unit direction along it, outward normal (x along, y out, z up). */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number };
 
@@ -20,7 +20,20 @@ export const FRONT = {
   contentOutM: 0.02,
   /** At most this much of a long wall carries one template front (m). */
   maxSpanM: 14,
+  /** Round 2 doors: one per front (48 of the 66 traced Haarlemmerdijk fronts had one, ~0.75 m leaf), its head at most
+   *  this high, the frame's depth proud of the wall, and a traced door's recess when the trace gives none. */
+  doorM: 1.0, doorHeadM: 2.4, frameOutM: 0.09, recessM: 0.5,
 } as const;
+
+/** Behind the glass reads dark and warm (round 2): content colours pulled toward the interior's dark. */
+const GLASS_DARK = [38, 33, 28] as const, GLASS_PULL = 0.42;
+export function glassTone(hex: string, pull = GLASS_PULL): string {
+  const n = parseInt(hex.slice(1), 16), c = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  const grey = (c[0] + c[1] + c[2]) / 3;
+  return '#' + c.map((v, i) => Math.round((v * 0.75 + grey * 0.25) * (1 - pull) + GLASS_DARK[i] * pull)).map(v => v.toString(16).padStart(2, '0')).join('');
+}
+/** Content that is its own light (lit windows, neon, FEBO's heated doors) keeps its colours. */
+const OWN_LIGHT = new Set(['redGlow', 'neon', 'automatiek']);
 
 /** Stable 0..1 hash of a string (FNV-1a). */
 function hash01(s: string): number {
@@ -46,6 +59,15 @@ class Builder {
   panel(a0: number, a1: number, o: number, z0: number, z1: number, hex: string, lit?: boolean): void {
     if (a1 - a0 < 1e-3 || z1 - z0 < 1e-3) return;
     this.face([this.P(a0, o, z0), this.P(a1, o, z0), this.P(a1, o, z1), this.P(a0, o, z1)], this.N(0, 1, 0), hex, lit);
+  }
+  /** A panel carrying a texture rect (u0, v0, u1, v1) of `layer` (the logo layer). */
+  textured(a0: number, a1: number, o: number, z0: number, z1: number, layer: number, r: readonly [number, number, number, number]): void {
+    const first = this.out.length;
+    this.panel(a0, a1, o, z0, z1, '#ffffff', true);
+    for (const t of this.out.slice(first)) {
+      t.layer = layer;
+      t.uv = t.p.map(q => { const a = (q[0] - this.e.x0) * this.e.ux + (q[1] - this.e.y0) * this.e.uy; return [r[0] + (r[2] - r[0]) * (a - a0) / (a1 - a0), r[1] + (r[3] - r[1]) * (q[2] - z0) / (z1 - z0)] as [number, number]; });
+    }
   }
   /** A box: front, both ends and the top (and the bottom when it floats). */
   box(a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, lit?: boolean, bottom = false): void {
@@ -111,11 +133,20 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       for (let c = 0; c < cols; c++) for (let row = 0; row < rows; row++) b.panel(a0 + c * cw + 0.04, a0 + (c + 1) * cw - 0.04, o + 0.005, z0 + row * ch + 0.04, z0 + (row + 1) * ch - 0.04, r(`f${c}:${row}`) < 0.85 ? '#ffd27a' : '#e8a23a', true);
       break;
     }
-    case 'barGlow': case 'curtains': {
-      // A brown cafe: dark timber, small panes over a warm glow, a lace (or checked) curtain across the lower half.
+    case 'barGlow': {
+      // A brown cafe (round 2): dark inside, small panes in deep timber bars, a warm glint behind a few panes only.
+      b.panel(a0, a1, o, z0, z1, '#1e130c');
+      const panes = Math.max(2, Math.round(w / 0.42)), pw = w / panes;
+      for (let k = 0; k < panes; k++) if (r(`g${k}`) < 0.45) { const c = a0 + pw * (k + 0.5) + (r(`gx${k}`) - 0.5) * pw * 0.3, zc = z0 + h * (0.45 + 0.25 * r(`gz${k}`)); b.panel(c - 0.06, c + 0.06, o + 0.004, zc - 0.04, zc + 0.04, '#c88a46', true); }
+      for (let k = 1; k < panes; k++) { const a = a0 + pw * k; b.box(a - 0.025, a + 0.025, o, o + 0.1, z0, z1, '#2a1a10'); }
+      for (const t of [0.3, 0.68]) b.box(a0, a1, o, o + 0.1, z0 + h * t, z0 + h * t + 0.05, '#2a1a10');
+      break;
+    }
+    case 'curtains': {
+      // A pancake house: warm light, a checked half curtain.
       b.panel(a0, a1, o, z0, z1, '#d58a2e', true);
-      b.panel(a0, a1, o + 0.004, z0, z0 + h * 0.5, look.content === 'curtains' ? '#e8e2d2' : '#efe6d2', false);
-      if (look.content === 'curtains') for (let a = a0, k = 0; a < a1; a += 0.12, k++) if (k % 2) b.panel(a, Math.min(a1, a + 0.12), o + 0.008, z0 + h * 0.25, z0 + h * 0.5, '#b8302a');
+      b.panel(a0, a1, o + 0.004, z0, z0 + h * 0.5, '#e8e2d2', false);
+      for (let a = a0, k = 0; a < a1; a += 0.12, k++) if (k % 2) b.panel(a, Math.min(a1, a + 0.12), o + 0.008, z0 + h * 0.25, z0 + h * 0.5, '#b8302a');
       const panes = Math.max(2, Math.round(w / 0.4));
       for (let k = 1; k < panes; k++) { const a = a0 + (w * k) / panes; b.panel(a - 0.025, a + 0.025, o + 0.01, z0 + h * 0.5, z1, '#2b1a12'); }
       b.panel(a0, a1, o + 0.01, z0 + h * 0.74, z0 + h * 0.74 + 0.05, '#2b1a12');
@@ -224,7 +255,29 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
   }
 }
 
-export type RetailFrontInput = { template: RetailTemplate; word?: string; seed: string };
+export type RetailFrontInput = {
+  template: RetailTemplate; word?: string; seed: string;
+  /** A traced door (row-front ground box) over [a0, a1] metres along the wall: drawn set back `depthM` into a hole the
+   *  mesher cuts (retailFrontCut). Absent: one flush door at an end of the front. */
+  door?: { a0: number; a1: number; depthM: number };
+  /** The chain's logo: the logo layer and its rect there (retailLogos.ts). */
+  logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number };
+};
+
+/** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
+export function doorHead(base: number, groundM: number): number {
+  const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM;
+  return Math.min(base + FRONT.doorHeadM, top - FRONT.fasciaM - 0.15);
+}
+
+/** A door: frame, a leaf with a dark glass light over a kick panel, and a handle; at `o` from the wall. */
+function doorUnit(b: Builder, d0: number, d1: number, o: number, base: number, head: number, frame: string): void {
+  const f = 0.06;
+  b.panel(d0, d1, o, base, head, frame);
+  b.panel(d0 + f, d1 - f, o + 0.005, base + 0.75, head - f, glassTone('#5a5046', 0.5));
+  b.panel(d1 - f - 0.12, d1 - f - 0.09, o + 0.012, base + 0.85, base + 1.35, '#b8b0a0');
+}
+
 /**
  * The template's front on the wall `e` over [s0, s1] (metres along it), ground storey [base, base + groundM].
  * Returns flat triangles; nothing for a span under 1.2 m.
@@ -234,14 +287,50 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
-  // Fascia board, with its lettering just proud of it.
+  const frame = look.frame ?? '#2b2724', head = doorHead(base, groundM);
+  // Fascia board, with the chain's logo or the lettering just proud of it.
   b.box(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, look.lit, true);
   const word = look.word === 'name' ? input.word : look.word;
-  if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + 0.005, 0.06, look.letters, look.lit);
-  // Window content between the stall riser and the fascia; a door gap of 1 m at one end (none on window rows).
-  const doorAtStart = hash01(`${input.seed}:door`) < 0.5, door = look.content === 'redGlow' ? 0 : Math.min(1.0, (s1 - s0) * 0.25);
-  const c0 = doorAtStart ? s0 + door + 0.1 : s0 + 0.1, c1 = doorAtStart ? s1 - 0.1 : s1 - door - 0.1;
-  content(b, look, c0, c1, base + FRONT.riserM, bottom - FRONT.headGapM, input.seed);
+  if (input.logo) {
+    const hM = FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
+    b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + 0.006, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
+  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + 0.005, 0.06, look.letters, look.lit);
+  // The door: the traced one set back in its recess, else one flush door at an end (none on window rows).
+  const windows = look.content === 'redGlow';
+  const flushW = windows ? 0 : Math.min(FRONT.doorM, (s1 - s0) * 0.25), doorAtStart = hash01(`${input.seed}:door`) < 0.5;
+  const door = input.door && !windows ? { a0: Math.max(s0, input.door.a0), a1: Math.min(s1, input.door.a1), depthM: input.door.depthM }
+    : flushW ? { a0: doorAtStart ? s0 : s1 - flushW, a1: doorAtStart ? s0 + flushW : s1, depthM: 0 } : null;
+  // The surround (a brown cafe's timber) under the fascia, either side of the door.
+  if (look.surround) for (const [a, c] of door ? [[s0, door.a0], [door.a1, s1]] : [[s0, s1]]) b.panel(a, c, 0.008, base, bottom, look.surround);
+  if (door && door.a1 - door.a0 > 0.5) {
+    const d = door.depthM, { a0: d0, a1: d1 } = door;
+    if (d > 0) {
+      // A recess: reveals, soffit and a step floor, the door at the back (the mesher cuts the wall over [d0, d1] x [base, head]).
+      const rev = look.surround ?? '#4a443e';
+      b.face([b.P(d0, -d, base), b.P(d0, 0, base), b.P(d0, 0, head), b.P(d0, -d, head)], b.N(1, 0, 0), rev);
+      b.face([b.P(d1, -d, base), b.P(d1, 0, base), b.P(d1, 0, head), b.P(d1, -d, head)], b.N(-1, 0, 0), rev);
+      b.face([b.P(d0, -d, head), b.P(d1, -d, head), b.P(d1, 0, head), b.P(d0, 0, head)], [0, 0, -1], '#2a2622');
+      b.face([b.P(d0, -d, base + 0.02), b.P(d1, -d, base + 0.02), b.P(d1, 0, base + 0.02), b.P(d0, 0, base + 0.02)], [0, 0, 1], '#7d756c');
+      doorUnit(b, d0, d1, -d, base + 0.02, head, frame);
+    } else doorUnit(b, d0 + 0.04, d1 - 0.04, 0.02, base, head, frame);
+    // A transom over the door up to the fascia: dark glass.
+    if (bottom - head > 0.2) b.panel(d0 + 0.04, d1 - 0.04, 0.02, head + 0.05, bottom - 0.05, glassTone('#4a4440', 0.55));
+  }
+  // Window content between the stall riser and the fascia, either side of the door, each in a frame proud of the glass.
+  const zc0 = base + FRONT.riserM, zc1 = bottom - FRONT.headGapM;
+  const segs: Array<[number, number]> = door ? [[s0 + 0.1, door.a0 - 0.1], [door.a1 + 0.1, s1 - 0.1]] : [[s0 + 0.1, s1 - 0.1]];
+  for (const [c0, c1] of segs) {
+    if (c1 - c0 < 0.5) continue;
+    const first = b.out.length;
+    content(b, look, c0, c1, zc0, zc1, input.seed);
+    if (!OWN_LIGHT.has(look.content)) for (const t of b.out.slice(first)) t.hex = glassTone(t.hex);
+    if (windows) continue;
+    const fo = look.surround ? 0.14 : FRONT.frameOutM;
+    b.box(c0 - 0.07, c0, 0, fo, base, bottom, frame); b.box(c1, c1 + 0.07, 0, fo, base, bottom, frame);
+    b.box(c0, c1, 0, fo + 0.03, zc0 - 0.06, zc0, frame);
+    b.box(c0, c1, 0, fo, zc1, bottom, frame);
+    b.panel(c0, c1, 0.012, base, zc0 - 0.06, look.surround ?? frame);
+  }
   if (look.awning) b.slope(s0, s1, 1.1, bottom - 0.05, bottom - 0.55, look.awning);
   if (look.blade) {
     const at = doorAtStart ? s0 + 0.3 : s1 - 0.3;

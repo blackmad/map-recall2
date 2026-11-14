@@ -16,7 +16,7 @@
  * The camera is set from outside: the spec replaces the view's `solveFps` on the live instance (the first-person solve,
  * engine/fpsCamera.ts) with one that returns the job's pose. Nothing in src/ changes and no global is added to the game.
  */
-import { test, type Browser, type Page } from '@playwright/test';
+import { test, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { openRoute, settleWorld } from './helpers';
@@ -37,7 +37,7 @@ type JobPose = {
   likeness?: { fps: Record<string, unknown>; width: number; height: number; windowH: number; lngLat: [number, number]; headingDeg: number };
 };
 /** rule 10 (scripts/house-frames/rule10Frames.ts Rule10Job): absent on an old run, which then runs exactly as before. */
-type Rule10Job = { dpr: number; likenessQuery: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }> };
+type Rule10Job = { dpr: number; likenessQuery: string; asPlayedQuery?: string; asPlayed: Array<{ out: string; lngLat: [number, number]; headingDeg: number }> };
 type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: JobPose[]; rule10?: Rule10Job };
 
 const JOB = process.env.HOUSE_FRAMES_JOB;
@@ -63,6 +63,26 @@ async function openPage(page: Page, job: Job): Promise<void> {
   await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
 }
 
+/**
+ * `BUNDLES_DIR=<dir>`: every `*.bundle.js` the context asks for, the building worker's script included, from <dir> when
+ * it is there (else the committed one; frames.ts warns when <dir> has three-buildings.bundle.js without its worker).
+ * `served` collects the names fulfilled from <dir> (game.json `bundlesDir`), so a run that drew a committed worker
+ * shows it.
+ */
+async function routeBundles(ctx: BrowserContext, bundles: string, served: Set<string>): Promise<void> {
+  if (!bundles) return;
+  await ctx.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
+  // Counted from the context's requests, not in the handler: helpers.ts useBundlesDir's page route (openRoute) answers
+  // the page's and its workers' bundle requests first, from the same dir.
+  ctx.on('request', r => {
+    const name = /\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/.exec(r.url())?.[1];
+    if (name && existsSync(join(bundles, name))) served.add(name);
+  });
+}
+
 async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' | 'fps'>): Promise<void> {
   await page.evaluate(({ lngLat, headingDeg, fps }) => {
     const w = window as any, g = w.canalRecallGame, l = g.osmLoader;
@@ -81,7 +101,7 @@ async function setPose(page: Page, pose: Pick<JobPose, 'lngLat' | 'headingDeg' |
  * the top `windowH` rows of a taller viewport) and one as-played frame per list (the default engine and chase camera).
  * Each in its own browser context, so the pixel ratio is the device's, as on the user's Mac.
  */
-async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: import('@playwright/test').BrowserContext) => Promise<void>): Promise<void> {
+async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: BrowserContext) => Promise<void>): Promise<void> {
   const r10 = job.rule10!, size = { width: job.width, height: job.height };
   const likeness = job.poses.filter(p => p.likeness);
   if (likeness.length) {
@@ -99,7 +119,7 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: impo
           const settle = await settleWorld(page, `${pose.key} likeness`, 60_000);
           await setPose(page, at);
           writeFileSync(join(dir, 'likeness.png'), await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: l.width, height: l.windowH } }));
-          const drawn = await page.evaluate(() => { const c = document.querySelector('#vector-map canvas') as HTMLCanvasElement | null; return { dpr: devicePixelRatio, buffer: c ? [c.width, c.height] : null, css: c ? [c.clientWidth, c.clientHeight] : null, search: location.search }; });
+          const drawn = await page.evaluate(() => { const c = document.querySelector('#vector-map canvas') as HTMLCanvasElement | null; return { tier: (window as any).__canalPerf?.tier ?? null, dpr: devicePixelRatio, buffer: c ? [c.width, c.height] : null, css: c ? [c.clientWidth, c.clientHeight] : null, search: location.search }; });
           writeFileSync(join(dir, 'likeness.json'), JSON.stringify({ key: pose.key, ...drawn, dpr: drawn.buffer && drawn.css ? +(drawn.buffer[1] / drawn.css[1]).toFixed(3) : drawn.dpr, viewport: [l.width, l.height], windowH: l.windowH, settle }, null, 1));
         } catch (e) { console.warn(`house-frames: likeness ${pose.key} failed: ${(e as Error).message.slice(0, 300)}`); }
       }
@@ -112,7 +132,9 @@ async function rule10Frames(browser: Browser, job: Job, routeContext: (ctx: impo
     try {
       // The default engine and camera: the job's query only (no engine=own, no cam=fps unless the query asks).
       // 'relative' steering keeps the rider's heading: 'street' mode turns a parked rider onto the nearest street.
-      await openRoute(page, { travelMode: 'car', query: job.query ? `?${job.query.replace(/^\?/, '')}` : '', abortHeavyTiles: true, controlMode: 'relative' });
+      // r10.asPlayedQuery pins the pixel ratio, governor and tier (rule10Frames.ts rule10Pins), as the likeness pages.
+      const q = [job.query.replace(/^\?/, ''), r10.asPlayedQuery ?? ''].filter(Boolean).join('&');
+      await openRoute(page, { travelMode: 'car', query: q ? `?${q}` : '', abortHeavyTiles: true, controlMode: 'relative' });
       await page.evaluate(() => { (window as any).canalRecallGame.player.handleInput = () => {}; });
       await page.addStyleTag({ content: `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }` });
       const at = { lngLat: a.lngLat, headingDeg: a.headingDeg, fps: {} };
@@ -139,10 +161,10 @@ test('house frames', async ({ page, browser }) => {
   // BUNDLES_DIR=<dir> serves *.bundle.js from a scratch build (lane W1, as scripts/perf-frozen-frames.mjs): a before/after
   // of a source change without touching the committed bundles. On the context, so the building worker's script is routed too.
   const bundles = process.env.BUNDLES_DIR ? resolve(process.env.BUNDLES_DIR) : '';
-  if (bundles) await page.context().route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
-    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
-    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
-  });
+  const served = new Set<string>(), workers = new Set<string>();
+  await routeBundles(page.context(), bundles, served);
+  if (bundles) page.on('worker', w => { if (/\.js(\?|$)/.test(w.url())) workers.add(new URL(w.url()).pathname.split('/').pop()!); });
+  /*TMPVERIFY*/ page.on('console', m => { if (m.text().includes('BUNDLES_DIR_MARKER')) console.log('TMPVERIFY console', m.text()); }); page.on('worker', w => { setTimeout(() => w.evaluate('self.__bundlesDirMarker').then(v => console.log('TMPVERIFY worker', w.url().slice(0, 140), v)).catch(e => console.log('TMPVERIFY err', String(e).slice(0, 100))), 2000); });
   // HOUSE_FRAMES_SPECS_DIR=<dir> (lane D1 pixel-check): the house-specs extract tiles are served from a staged extract
   // (build-house-specs' public/data/extracts/amsterdam/staging/house-specs) instead of the published one, so a
   // `?world=live` frame draws staged specs without a publish (the live tile streamer decorates in the page). Only for
@@ -212,7 +234,7 @@ test('house frames', async ({ page, browser }) => {
             specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, specRecipe: p.specRecipe ?? null, specShop: p.specShop ?? null, heldBrick: !!p.specRecipe?.heldBrick,
             facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
         }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
-        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
+        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), ...(bundles ? { bundlesDir: { dir: bundles, served: [...served].sort(), workers: [...workers].sort() } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });
         sinceOpen++;
         break;
@@ -224,10 +246,7 @@ test('house frames', async ({ page, browser }) => {
     }
   }
   if (job.rule10) await rule10Frames(browser, job, async ctx => {
-    if (bundles) await ctx.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
-      const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
-      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
-    });
+    await routeBundles(ctx, bundles, served);
     if (specsDir) await ctx.route(/\/data\/extracts\/amsterdam\/house-specs\/14\/\d+\/\d+\.json\.gz(\?.*)?$/, route => {
       const file = join(specsDir, /\/house-specs\/(14\/\d+\/\d+\.json\.gz)/.exec(route.request().url())![1]);
       return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/octet-stream' }) : route.continue();

@@ -1,3 +1,4 @@
+import { logoFor, retailLogoLayer } from './retailLogos.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { structurePriorOn, STRUCTURE_PRIOR_TABLE } from './houseSpec/structurePrior.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
@@ -244,9 +245,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };
   // Lane retail-ground (`?retailGround=1`): a shopfront template stamped from the template extract (shopfronts.ts
   // decorateShopTemplate, which only runs with the extract installed, which only the flag's loader installs).
-  const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?] : null;
+  const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}) };
+    const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

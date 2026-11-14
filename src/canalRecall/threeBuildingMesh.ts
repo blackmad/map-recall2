@@ -21,7 +21,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 // Positions are metres east / north / up from a caller-supplied origin.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
-import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
+import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, type WallCut, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
@@ -41,7 +41,7 @@ import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
-import { retailFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { retailFrontTris, doorHead, FRONT as RETAIL_FRONT } from './retailFront.js';
 import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
 import { THIN_CLASS, thinCm } from './look/thinFade.js';
@@ -107,7 +107,7 @@ export type MeshBuilding = {
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
   /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
-  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string };
+  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number } };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -436,8 +436,12 @@ export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candid
   return out;
 }
 
-/** A template front (retailFront.ts) on the candidate wall nearest its POI, centred on the point, at most FRONT.maxSpanM. */
-function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, id: string, candidates: readonly Edge[], base: number, groundM: number, origin: Origin): SignTri[] {
+/**
+ * A template front (retailFront.ts) on the candidate wall nearest its POI, centred on the point, at most FRONT.maxSpanM.
+ * Round 2: a traced door (lane 1's row-front ground boxes, specRecipe.groundBoxes) inside the front is drawn set back,
+ * and `cut` is the wall rectangle the mesher removes for its recess; without a trace the front gets one flush door.
+ */
+function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], base: number, groundM: number, origin: Origin): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut } } {
   const kx = mPerDegLng(origin.lat), px = (front.at[0] - origin.lng) * kx, py = (front.at[1] - origin.lat) * M_PER_DEG_LAT;
   let best: Edge | null = null, bestD = Infinity;
   for (const e of candidates) {
@@ -446,11 +450,23 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, id: stri
     const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
     if (d < bestD) { bestD = d; best = e; }
   }
-  if (!best) return [];
+  if (!best) return { tris: [] };
   const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
   const L = best.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
-  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half));
-  return retailFrontTris({ template: front.template, word: front.word, seed: id }, e, s0, s0 + 2 * half, base, groundM);
+  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  // The traced door, when the trace's front is this wall (its span within a quarter of the wall's length).
+  const span = b.specRecipe?.frontSpanM, boxes = b.specRecipe?.groundBoxes;
+  let door: { a0: number; a1: number; depthM: number } | undefined;
+  if (span && boxes?.length && Math.abs(span - L) < 0.25 * span) {
+    const ltr = seenLeftToRight(best), mid = (s0 + s1) / 2;
+    const doors = boxes.filter(o => o.kind === 'door').map(o => ({ a0: (ltr ? o.a0 : 1 - o.a1) * L, a1: (ltr ? o.a1 : 1 - o.a0) * L }))
+      .filter(o => o.a0 >= s0 - 1e-6 && o.a1 <= s1 + 1e-6 && o.a1 - o.a0 >= 0.6 && o.a1 - o.a0 <= 2.2)
+      .sort((p, q) => Math.abs((p.a0 + p.a1) / 2 - mid) - Math.abs((q.a0 + q.a1) / 2 - mid));
+    if (doors[0]) door = { ...doors[0], depthM: RETAIL_FRONT.recessM };
+  }
+  const tris = retailFrontTris({ template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}) }, e, s0, s1, base, groundM);
+  if (!door || !tris.length) return { tris };
+  return { tris, cut: { e: best, cut: { a0: door.a0 / L, a1: door.a1 / L, z0: base - 1, z1: doorHead(base, groundM), other: `${b.id}:retail-door` } } };
 }
 
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
@@ -969,8 +985,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         for(let i=1;i<breaks.length;i++){const left=breaks[i-1],right=breaks[i],zl=Math.max(q.z0,Math.min(q.z1,height(left))),zr=Math.max(q.z0,Math.min(q.z1,height(right)));if(Math.max(zl,zr)-q.z0<1e-8)continue;const u=(t:number)=>q.u0+(q.u1-q.u0)*(t-q.along0)/(q.along1-q.along0),v=(z:number)=>(q.v0??0)+(q.v1-(q.v0??0))*(z-q.z0)/(q.z1-q.z0);out.push({...q,along0:left,along1:right,u0:u(left),u1:u(right),z1Left:zl,z1Right:zr,v1Left:v(zl),v1Right:v(zr)});}
       }return out;
     };
+    // Lane retail-ground: the template front, before the wall is clipped, so a traced door's recess can cut it.
+    const retail = mode === 'walls' && b.retailFront && b.lid ? (() => {
+      const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
+      const street = exposed.filter(e => doorAllowed.has(e));
+      return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin);
+    })() : null;
+    const cutsFor = (e: Edge): readonly WallCut[] => retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
     // Clip conflicting wall rectangles while retaining their original UV grid.
-    const visibleQuads = quads.flatMap(q => subtractWallCuts(q, wallCuts.get(q.e) ?? [], (p, r) => {
+    const visibleQuads = quads.flatMap(q => subtractWallCuts(q, cutsFor(q.e), (p, r) => {
       const u = (a: number) => p.u0 + (p.u1 - p.u0) * (a - p.along0) / (p.along1 - p.along0);
       const v = (z: number) => (p.v0 ?? 0) + (p.v1 - (p.v0 ?? 0)) * (z - p.z0) / (p.z1 - p.z0);
       return { ...p, ...r, u0: u(r.along0), u1: u(r.along1), v0: v(r.z0), v1: v(r.z1) };
@@ -987,11 +1010,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [])];
     // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
-    if (walled && b.retailFront && b.lid) {
-      const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
-      const street = exposed.filter(e => doorAllowed.has(e));
-      sign.push(...retailFrontOn(b.retailFront, b.id, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));
-    } else if (walled && b.chain && b.lid) {
+    if (retail) sign.push(...retail.tris);
+    else if (walled && b.chain && b.lid) {
       const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
       const street = exposed.filter(e => doorAllowed.has(e));
       sign.push(...chainFrontTris(b.chain, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));

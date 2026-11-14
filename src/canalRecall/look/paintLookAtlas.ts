@@ -6,7 +6,9 @@ import { CELL_LAYER_COUNT, CELL_PX, cellLayer, CELL_KINDS, CELL_VARIANTS, paintC
 import { paintRoofLayers } from '../roofCells.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayVariant } from '../bayLook.js';
 import { paintGlassBlockCell } from '../glassBlockTexture.js';
-import { bayTextures, releaseBayTextures, type Look } from '../bayTextures.js';
+import { SHOP_KINDS, bayTextures, releaseBayTextures, type Look } from '../bayTextures.js';
+import { retailGroundOn } from '../retailTemplates.js';
+import { LOGO_ATLAS_PATH, retailLogoLayer } from '../retailLogos.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
@@ -28,8 +30,10 @@ export function lookAtlasLayers(look: 'procedural' | Look, slots: boolean): { la
   const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
   // The flat-roof surface (lane R5-E, roofs/flatRoofSurface.ts) after the slot layers, at a fixed ordinal with or without them.
   const surface = flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(look) : null;
-  if (surface !== null) return { layers, total: surface + 1 };
-  return { layers, total: layers + (slots ? SLOT_LAYER_COUNT : 0) };
+  const total = surface !== null ? surface + 1 : layers + (slots ? SLOT_LAYER_COUNT : 0);
+  // Lane retail-ground (`?retailGround=1`): the chain-logo layer at its fixed ordinal (retailLogos.ts) after the rest.
+  const logo = retailGroundOn() ? retailLogoLayer(look) : null;
+  return { layers, total: logo !== null ? Math.max(total, logo + 1) : total };
 }
 
 /** A look's painted arrays: `colour` RGBA and `mask` RG, `total` layers of `size`², rows bottom-up. */
@@ -42,9 +46,9 @@ export type LookAtlasArrays = { colour: Uint8Array; mask: Uint8Array; size: numb
  * not speckle) and the darkest glass is lifted so windows stop being black
  * holes. Frames, doors and stone keep their contrast, so the facade rhythm stays.
  */
-export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look, size = CELL_PX): void {
+export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look, size = CELL_PX, glassLiftOverride?: number): void {
   const px = size * size;
-  const { wallPull, glassLift, liftBrick } = LOOK_VARIANTS[look];
+  const { wallPull, liftBrick } = LOOK_VARIANTS[look], glassLift = glassLiftOverride ?? LOOK_VARIANTS[look].glassLift;
   for (let layer = 0; layer < layers; layer++) {
     // Mean wall colour of this layer (mask.r is the wall tint weight).
     let sum = [0, 0, 0], n = 0;
@@ -139,6 +143,8 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   const surfaceLayer = flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(look) : null;
   if (surfaceLayer !== null) copyCell(paintFlatRoofSurfaceCell(), surfaceLayer);
   for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
+  const logoLayer = retailGroundOn() ? retailLogoLayer(look) : null;
+  if (logoLayer !== null) await paintLogoLayer(colour, mask, logoLayer, size);
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
     const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
@@ -164,10 +170,30 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
         else { colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255; }
       }
     }
-    if (look !== 'procedural') calmBayLayers(colour.subarray(layer * px * 4, (layer + 1) * px * 4), mask.subarray(layer * px * 2, (layer + 1) * px * 2), 1, bayLook, size);
+    // Lane retail-ground (`?retailGround=1`): the measured shopfront's glass is meant dark and warm (bayTextures.ts puiAt);
+    // the grey lift would undo it, so shop cells keep their glass. Flag off: the lift as before.
+    const shopGlass = retailGroundOn() && (SHOP_KINDS as readonly string[]).includes(entry.kind) ? 0 : undefined;
+    if (look !== 'procedural') calmBayLayers(colour.subarray(layer * px * 4, (layer + 1) * px * 4), mask.subarray(layer * px * 2, (layer + 1) * px * 2), 1, bayLook, size, shopGlass);
     await yieldBudget();
   }
   // The canvases' pixels now live in `colour`/`mask`; the cache would keep them for the session.
   releaseBayTextures();
   return { colour, mask, size, layers, total };
+}
+
+/**
+ * The chain-logo layer (lane retail-ground, retailLogos.ts): the published atlas drawn to the layer, rows bottom-first,
+ * mask zero (the logo's own colours, untinted). An atlas that fails to load leaves a white layer (a plain board).
+ */
+async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: number, size: number): Promise<void> {
+  const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, size, size);
+  try { const image = new Image(); image.src = new URL(LOGO_ATLAS_PATH, document.baseURI).href; await image.decode(); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(image, 0, 0, size, size); } catch { /* white board */ }
+  const pixels = ctx.getImageData(0, 0, size, size).data;
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
+    colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255;
+    mask[at * 2] = 0; mask[at * 2 + 1] = 0;
+  }
 }
