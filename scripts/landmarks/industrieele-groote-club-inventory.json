@@ -1,0 +1,316 @@
+{
+ "schemaVersion": 1,
+ "id": "industrieele-groote-club",
+ "pand": "0363100012165129",
+ "brief": "scripts/landmarks/industrieele-groote-club-brief.md",
+ "signature": [
+  "d-tower",
+  "d-gable",
+  "d-frontispiece",
+  "d-name",
+  "d-passage"
+ ],
+ "walls": [
+  {
+   "tag": "w01-19",
+   "bearing": 19,
+   "lengthM": 34.4,
+   "centre": [
+    4.8934195,
+    52.372527
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001692",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "d-tower",
+     "kind": "other",
+     "where": "corner-less tower right of the gable (s 21.7-26.5): brick shaft with three-light stone-mullioned windows on five storeys, a corbelled set-back at 24.4 m, tall louvred lights in the top and a steep cap to 42.6 m",
+     "approxSizeM": [
+      4.8,
+      42.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "3DBAG LoD2.2 cap and top (brick) above 24.4 m; the shaft below drawn as a cut section with 3 x 5 cross windows, arched top row, stone bands, corbel course and dark slabs for the louvred lights"
+    },
+    {
+     "id": "d-gable",
+     "kind": "other",
+     "where": "club front gable (s 12.6-21.7): pointed brick gable from the 24.4 m cornice to 30.6 m over a row of white stone corbel blocks and stone consoles, a round window in the gable",
+     "approxSizeM": [
+      9.1,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "3DBAG gable plane kept above the cut at 24.4 m; corbel blocks and consoles as slabs on a 0.75 m pitch, stone coping, oculus as a stone ring over glass"
+    },
+    {
+     "id": "d-frontispiece",
+     "kind": "other",
+     "where": "stone frontispiece over the ground and first floors of the club front: two segmental shop arches under hood mouldings on carved consoles, five cross windows, a pierced tracery balustrade along the top",
+     "approxSizeM": [
+      9.1,
+      10.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "cut stone section with segmental openings (rise 0.55) and arch rings as hoods; consoles as stone blocks; cross windows with transoms; balustrade as dark panels behind stone ring tracery (two quatrefoil rings and a small ring per bay) between stone dies, a coping slab"
+    },
+    {
+     "id": "d-name",
+     "kind": "sign",
+     "where": "DE INDUSTRIEELE GROOTE CLUB carved in an arc over the club entrance arch, a crown above",
+     "approxSizeM": [
+      4.3,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "venue-kit arcLettering (new): MIXED_CASE glyph runs on a 4.0 m arc about the arch axis, 0.24 m letters dark in the stone; crown as gold slabs"
+    },
+    {
+     "id": "d-windows",
+     "kind": "window-shape",
+     "where": "brick storeys: five two-tier cross windows per floor in stone-dressed openings (sill, lintel, transom), round-headed attic lights; tower three-light groups; Dam 21 house cross windows in stone surrounds",
+     "approxSizeM": [
+      0.8,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "street-front-kit cut openings with white frames, transom bars and two-light mullions, stone sill and lintel slabs"
+    },
+    {
+     "id": "d-passage",
+     "kind": "window-shape",
+     "where": "round-arched carriage passage (3.5 m) through the stone ground floor of the passage wing",
+     "approxSizeM": [
+      3.5,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "round-headed cut opening 0.8 m deep, dark back, stone arch ring"
+    },
+    {
+     "id": "d-oriel",
+     "kind": "other",
+     "where": "Dam 21 house: three-sided stone-based oriel of four round-arched lights over the ground floor, with a balcony and balustrade on top",
+     "approxSizeM": [
+      4.9,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "a flat-fronted 0.6 m box on a stone corbel with four round-arched glass lights in stone, a balcony slab, balusters and rail (the canted sides are not drawn)"
+    },
+    {
+     "id": "d-corbel-table",
+     "kind": "other",
+     "where": "arched corbel table under the passage wing eaves (14.3 m) and the east wing cornice",
+     "approxSizeM": [
+      4.0,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "stone corbel blocks on a 0.42 m pitch carrying a brick band and a stone coping; the small arches between them are not cut"
+    },
+    {
+     "id": "d-arcade",
+     "kind": "window-shape",
+     "where": "Gassan arcade: stone ground storey with round-arched shop windows, 5.3 m terrace roof; the east wing above set back 1.6-2.7 m",
+     "approxSizeM": [
+      5.8,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "how": "cut stone section with round-headed openings and arch rings; wing windows as arched glass and stone slabs on the 3DBAG wing wall"
+    },
+    {
+     "id": "d-shop-signs",
+     "kind": "sign",
+     "where": "Ripley's Believe It or Not! letters over the Dam 21 shop arch, GASSAN letters on the arcade, Tours & Tickets and Amsterdam shop signs",
+     "approxSizeM": [
+      3.0,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs, not the building (the club name is modelled)"
+     }
+    },
+    {
+     "id": "d-flag",
+     "kind": "other",
+     "where": "club flag on a pole from the east wing",
+     "approxSizeM": [
+      1.2,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002031_pano_0001_001692",
+     "skip": {
+      "reason": "temporary",
+      "note": "flag and pole change"
+     }
+    },
+    {
+     "id": "d-lamps",
+     "kind": "lamp",
+     "where": "street lanterns on the pavement in front of the arcade",
+     "approxSizeM": [
+      0.5,
+      4.0
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_06-42-40_02285",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture, not the building"
+     }
+    }
+   ],
+   "note": "Dam front, 34.4 m from the Dam 21 party wall (ring vertex 7) to the arcade (14); crops from venue-face-crops.ts at 40.5 px/m, also recording_2025-06-16_06-42-40_02285 (2025) and TMX7316010203-001662_pano_0000_001488 (2020). Positions held to the 3DBAG walls (2021 crop offset +0.2-0.4 m)."
+  },
+  {
+   "tag": "w02-191",
+   "bearing": 191,
+   "lengthM": 15.6,
+   "centre": [
+    4.8931965,
+    52.3722875
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000872",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w03-109",
+   "bearing": 109,
+   "lengthM": 12.7,
+   "centre": [
+    4.8934265,
+    52.37241
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002357_pano_0000_000111",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w04-287",
+   "bearing": 287,
+   "lengthM": 11.1,
+   "centre": [
+    4.893495,
+    52.372404
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002357_pano_0000_000106",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w05-280",
+   "bearing": 280,
+   "lengthM": 7.2,
+   "centre": [
+    4.893106,
+    52.372523
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01345",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w06-280",
+   "bearing": 280,
+   "lengthM": 7.1,
+   "centre": [
+    4.893066,
+    52.3723795
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track24_Sphere_00199",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w07-115",
+   "bearing": 115,
+   "lengthM": 5.2,
+   "centre": [
+    4.893376,
+    52.372336
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000905",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w08-281",
+   "bearing": 281,
+   "lengthM": 5,
+   "centre": [
+    4.8930905,
+    52.372322
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_000274",
+   "capturedAt": "2021-09-15",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  },
+  {
+   "tag": "w09-198",
+   "bearing": 198,
+   "lengthM": 4.4,
+   "centre": [
+    4.893487,
+    52.372458
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001187_pano_0000_001490",
+   "capturedAt": "2019-05-16",
+   "checked": true,
+   "items": [],
+   "note": "side, courtyard and Kalverstraat-side walls of the same pand: narrow streets and courtyards with no clear distant view (the east crop is a shop window at 27 m); drawn by the 3DBAG LoD2.2 shell in brick."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "De Industrieele Groote Club (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/De_Industrieele_Groote_Club",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Werf 't Kromhout",
+  "landmarkId": "werf-kromhout",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Kromhout_(bedrijf)",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012180688"
+  ],
+  "pandId": "0363100012180688",
+  "anchor": [4.9201477,52.36797056],
+  "materialOverrides": {
+    "dark": "#262b31",
+    "slate": "#5f6468",
+    "gold": "#e2b31f",
+    "white": "#ecebe6",
+    "stone": "#ecebe6",
+    "glass": "#33414b",
+    "blue": "#2f4f86",
+    "greyBrick": "#3a3f44"
+  },
+  "surveySource": "Current BAG 0363100012180688 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Nieuwe Vaart gables (yellow arches, lettering, glazing grid, rakes) and the water-side posts laid out from the 2017-2021 municipal panoramas; no pixels or meshes imported."
+}

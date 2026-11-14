@@ -75,6 +75,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Tetterode complex, Da Costakade 146 (large recipe: one 82 x 94 m block; the bespoke model (#209) draws the 1902 factory front,
   // the dairy, the 1909 lettered range and the Merkelbach & Karsten ribbons).
   'ordinary-0363100012236799': 'da-costakade-146',
+  // Rijksakademie, Sarphatistraat 470 (large recipe: an even round-arch grid on two ranges, no pavilion pediment, plaque or
+  // gateway; the bespoke model (venues-ring lane, 2026-11-14) draws the Sarphatistraat ranges, the pavilion and the NE gable).
+  'ordinary-0363100012165748': 'rijksakademie',
 };
 /** Every catalogue model (both categories) that no landmark shadows and no hold (ordinaryHolds.ts, held.json) keeps out: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id] && !isHeldOrdinary(m.id)).map(ordinarySpecFor);

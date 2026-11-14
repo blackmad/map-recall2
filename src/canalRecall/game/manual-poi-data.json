@@ -2942,5 +2942,80 @@
       "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236197/"
     ],
     "preferDescription": true
+  },
+  {
+    "modelId": "asscher-diamantslijperij",
+    "landmarkId": "asscher-diamantslijperij",
+    "name": "Diamantslijperij Asscher",
+    "description": "The Asscher diamond-cutting works on the Tolstraat, designed by the architect Gerrit van Arkel and finished in 1907: a long yellow-brick factory with huge windows to give the polishers light, and a castle-like front with corner turrets, the 1907 tablet and the name ASSCHER under a crown. At one time more than 500 diamond polishers worked here. Since 2017 the factory has held flats, while the tower is still the head office of Royal Asscher.",
+    "funFact": "The Cullinan, the largest diamond ever found, was cut here; the streets of the surrounding Diamantbuurt are named after gems, such as Diamantstraat, Smaragdstraat and Saffierstraat.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Koninklijke_Asscher_Diamant_Maatschappij",
+      "https://nl.wikipedia.org/wiki/Diamantbuurt_(Amsterdam)",
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012237135/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "tolstraat-160-tempel",
+    "landmarkId": "tolstraat-160-tempel",
+    "name": "Tolstraat 160 (Cinétol, Tempel)",
+    "description": "A concrete hall built for the Theosophical Society in the Netherlands to a design by Brinkman and Van der Vlugt, the architects of the Van Nelle factory, in the Nieuwe Zakelijkheid style. Its plan is a quarter circle under a kind of tent roof, with a closed ground floor and an open upper storey behind a gallery that runs all the way round. Later it was the Cinétol cinema and a branch of the public library; since 2022 it has been Tempel Amsterdam, with workspaces for the cultural sector, and since 2024 it has also housed De Appel, a centre for contemporary art.",
+    "funFact": "To keep columns out of the quarter-circle meeting hall, special concrete roof trusses had to be designed. The grey concrete was later rendered over, which gives the building its bright look today.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tolstraat_160",
+    "additionalSources": [
+      "https://en.wikipedia.org/wiki/Van_Nelle_Factory",
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012155412/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "de-nieuwe-liefde",
+    "landmarkId": "de-nieuwe-liefde",
+    "name": "De Nieuwe Liefde",
+    "description": "Built in 1904 as a wine warehouse with tasting rooms, designed by the architect L.J. Neumeyer, and one of the first buildings in the Netherlands made of reinforced concrete (the Monier system), although its forms follow a timber truss construction. From 1932 to 1972 it was the parish house of the Catholic church De Liefde, best known for its cinema. Later the Amsterdam Theatre School and Theater De Liefde used it. Since 2011 it has been De Nieuwe Liefde, a centre for debate, poetry, reflection and theatre, and since 2019 a house for language in the widest sense.",
+    "funFact": "Queen Beatrix opened the centre on 12 February 2011 by reading Henriette Roland Holst's poem \"De zachte krachten zullen zeker winnen in 't eind\" (\"The gentle forces will surely win in the end\").",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Nieuwe_Liefde",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236796/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "rijksakademie",
+    "landmarkId": "rijksakademie",
+    "name": "Rijksakademie van beeldende kunsten (Cavaleriekazerne)",
+    "description": "A neoclassical cavalry barracks of 85 by 56 metres, built in 1864 to a design by the Dutch Ministry of War, with quarters for the troopers and stables for the horses; a riding hall was added ten years later. The army left in 1988, and after a large conversion the Rijksakademie van beeldende kunsten, the national academy of fine art, moved in from the Stadhouderskade. The old ranges now hold artists' studios, and in 1991-1992 Koen van Velsen added a new exhibition and library building in the courtyard and a steel-and-glass canteen on the water, linked by skybridges.",
+    "funFact": "The plaque over the gate still reads KAVALLERIE-KAZERNE, in the old spelling of cavalry; the barracks played a part in the Dutch Water Line and the Defence Line of Amsterdam.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sarphatistraat_470",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165748/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "werf-kromhout",
+    "landmarkId": "werf-kromhout",
+    "name": "Werf 't Kromhout",
+    "description": "A shipyard on the Nieuwe Vaart that grew up in the middle of the eighteenth century along the old sea dyke now called the Hoogte Kadijk. It takes its name from Doede Janszn. Kromhout, whose wife bought the site in 1757. From 1867 the Goedkoop family built iron and later steel ships here, and the yard grew into the Kromhout engine works, whose marine engines powered many fishing boats. The yard closed in 1967; a foundation bought the ground and buildings in 1975, and the halls became a national monument and the Werfmuseum 't Kromhout, with old Kromhout engines that still run and a working nineteenth-century forge.",
+    "funFact": "In 1887 part of the yard was roofed over with riveted iron trusses that came from a hall used earlier at a World Exhibition.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kromhout_(bedrijf)",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012180688/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "conservatorium-van-amsterdam",
+    "landmarkId": "conservatorium-van-amsterdam",
+    "name": "Conservatorium van Amsterdam",
+    "description": "The city's conservatory of music, part of the Amsterdam University of the Arts, with around 1,100 music students in classical music, jazz, early music, opera and more. Its glass building on the Oosterdokskade, designed by Frits van Dongen, opened in 2008. Inside are concert halls such as the Bernard Haitinkzaal and the Sweelinckzaal, a theatre, recording studios and a large foyer, while the teaching rooms sit in the middle of the building, each ringed by a corridor on a Japanese model.",
+    "funFact": "The conservatory grew out of a chain of mergers going back to the Amsterdamsch Conservatorium of 1884; from 1984 to 2008 it was housed in the former Rijkspostspaarbank on the Van Baerlestraat, which is now the Conservatorium Hotel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Conservatorium_van_Amsterdam",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012164965/"
+    ],
+    "preferDescription": true
   }
 ]

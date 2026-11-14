@@ -4,6 +4,22 @@
 
 User on F1b: "this is almost worse - before there was just a seam line, now there's jagged texture" (Ringweg-Noord OSM7376770). Bisect: `holeStreets` alone. Inside a deck's `under` hole ranges the street lift was skipped, so the deck's own carriageway drawn at ground level past the deck end draped onto terrain and sank 0.5–5 m, showing the pale deck top as a shard. `bridgeGaps.ts` `holeCarry()` measures how far the deck's own ground-level road runs on and `inUnderStreets` keeps the lift there (`holeCarried`, default on); streets that pass under still drape. A first cut re-lifted the Weesperstraat under the Provincialeweg road and tram bridges (OSM 7040533; three tram crossings in check:rail-joins), so `holeCrossStations` stops the carried stretch 5 m short of any non-bridge OSM street or railway crossing the deck's road inside a hole range at > 30° (also the Meteorenweg under the Coentunnelcircuit). Survey of 63 hole decks (points > 0.3 m below the deck within 12 m): before F1b 0, F1b 30 decks / 1,173 points, now 10 / 105. Pinned in `HOLE_JUNCTIONS` (`bridge-feedback-pins.ts`, run by check:ground-spots).
 
+## 2026-11-14 (later) — Retail ground floors merged off, Noord venues, world-format, world shells
+
+- **Retail ground floors** (`?retailGround=1`, off): templates for chains and shop kinds (AH, Jumbo, Etos, Dirk, HEMA, Action, brown café, döner, toko, slagerij, greengrocer, Turkish bakery, FEBO, tourist shops, red-light windows without figures, head/coffeeshops, bike shops, bookshops, tobacco), extract `shop-templates.json` (2,581 pands), logo atlas from Wikimedia Commons with provenance in `data/retail-ground/logos/provenance.json`. POI hosting puts a shop on the containing pand's street wall unless an open wall is >2 m nearer the node (forecourt shops), pinned in `hosting-regressions.json`.
+- **Garage Noord + Sichuan Territory, Skatecafé** (Gedempt Hamerkanaal 40 and 42; the brief's "96" was the Green Canteen). New `hall-kit.ts` (saw-tooth hall, Venlo glasshouse, scalloped rake, spoke lamp, graffiti bands, CJK stroke stand-ins).
+- **World-format (54):** `pipeline.ts loadTile` now stamps `t14` like both runtime paths; every cell recompiled with `--against=none`; `test:world-format` (58/58) joins `check:canal:rest`.
+- **World shells lesson:** `world:compile -- --no-policy` without `--shell` writes `"shells": null`; world:verify stays fresh but the baked tier turns off (caught by `baked-fabric.spec.ts`). Always compile with `--shell` and install `shells/` and `far/`.
+- **Rijksakademie** left the blank-install list: the bespoke landmark now shadows that ordinary install.
+
+## 2026-11-14 — Venues, Morgan & Mees, street life behind flags, coverage described tier
+
+- **Twelve venues** modelled from photos (lanes venues-centre and venues-ring): Arti et Amicitiae, Industrieele Groote Club, Splendor, De Uitkijk, Escape, Bitterzoet; Asscher, Tolstraat 160, De Nieuwe Liefde, Rijksakademie, Werf 't Kromhout, Conservatorium. New kit: `venue-kit.ts` (arcLettering, cutFrontWalls, lettering, profileAlong, pedimentSolid, modillions) and `brickInlay.ts` (lozenges, pierced parapets, corbelled balconies), both in `test:landmark-kits`. The Rijksakademie ordinary recipe is now shadowed by the landmark (`SHADOWED_BY_LANDMARK['ordinary-0363100012165748']`; old inventory at `artifacts/vr/rijksakademie-inventory.recipe.json`). De Uitkijk's 3DBAG flat roof was the gable's own points; replaced by a pitched roof.
+- **Morgan & Mees:** both walls are one low-chroma grey-brown brick; the "pale street wall, dark east wall" premise was exposure. A new `greyBrick` slot sits under the 0.12-saturation brick lift so the tint keeps it. The empty lots on review sheets are a harness artefact (stubbed sync), not suppression.
+- **Markets** (`?markets=1`), **terraces** (`?terraces=1`, Amsterdam horeca permits, CC-BY 4.0, extract `terraces-v1`), **realLook** (`?realLook=1`) merged off; `test:markets` and `test:terraces` in `check:canal:rest`.
+- **Coverage map** gains a teal "described" tier: generic-tier pands whose published HouseSpec view states a field the generic route draws; live 4,891 (494 from photos), staged preview 1,084.
+- **WC wall-exposure sheet:** no option moves walls toward the photo; the dark D1 samples are capture exposure and the real gap is chroma. `wallExposure` stays off.
+- **Push note:** a pre-push hook that waits long in the browser queue can drop the SSH connection silently; always confirm `origin/main` after a push.
 
 ## One window grid per wall (2026-11-14)
 

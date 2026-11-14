@@ -8,13 +8,17 @@
  * Own look: buurten the game draws from kit made for their district (house types, measured faces, Nieuw-West
  * designs) get their own colour scheme (`?colour=look`), an outline on every scheme, a list and a filter (`?own=1`),
  * and a panel section with kit renders next to photo crops, the 3D views and a ride past an example.
+ * Described: generic-tier pands drawn from a published HouseSpec (storeys, bays, crown, wall colour, ground), a teal tier
+ * beside own look's orange. `?colour=both` fills own look in orange where the kit draws and described in teal elsewhere;
+ * a teal outline toggle (`?desc=0` off) and, when the extract carries a staged preview, `?staged=1` adds the not-live set.
  * Test contract: window.coveragePage = {ready, errors, selected, select(code), ownList()}.
  */
 import { CONTENT_KINDS, TIERS, parseClusterKey, type BuurtContent, type BuurtCoverage, type TierId } from './coverage';
 import type { ContentItems, Link, LookThumb, Thumb } from './contents';
 import { LOOK_LEGEND, lookBin, noLook, rideHref, type OwnLook } from './ownLook';
+import { DESCRIBED_FIELDS, DESCRIBED_LABEL, DESCRIBED_LEGEND, describedBin, describedShown, type BuurtDescribed } from './described';
 
-type Props = BuurtCoverage & { content: BuurtContent; look: OwnLook };
+type Props = BuurtCoverage & { content: BuurtContent; look: OwnLook; described?: BuurtDescribed };
 type Feature = { properties: Props; geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: number[][][] | number[][][][] }; polys: [number, number][][][] };
 type Extract = { features: Feature[]; generatedAt: string; method: string };
 
@@ -40,6 +44,8 @@ const merc = ([lng, lat]: number[]): [number, number] => [lng, Math.log(Math.tan
 const kitTypeBespoke = (p: Props) => p.pands ? (p.tiers.bespoke + p.tiers.chunk + p.tiers.buildingType) / p.pands : 0;
 const kinds = (p: Props) => CONTENT_KINDS.filter(k => p.content[k].length).length;
 const METRICS: Record<string, { label: string; value: (p: Props) => number; bins: number[]; unit?: boolean; legend?: string[]; palette?: string }> = {
+  both: { label: 'Own look + described houses', value: p => lookBin(p.look), bins: [0, 1, 2, 3, 4, 5, 6], legend: LOOK_LEGEND, palette: 'l' },
+  described: { label: 'Described houses (HouseSpec share)', value: () => 0, bins: [0, 1, 2, 3, 4, 5, 6], legend: DESCRIBED_LEGEND, palette: 'd' },
   look: { label: 'Own look (district kit share)', value: p => lookBin(p.look), bins: [0, 1, 2, 3, 4, 5, 6], legend: LOOK_LEGEND, palette: 'l' },
   content: { label: 'What we have (kinds of kit content)', value: kinds, bins: [0, 1, 2, 3, 4, 5], legend: ['nothing', '1 kind', '2 kinds', '3 kinds', '4 kinds', '5 kinds'] },
   share: { label: 'Modelled share (all tiers, flags on)', value: p => p.share, bins: [0, 0.005, 0.02, 0.05, 0.15, 0.4] },
@@ -76,15 +82,22 @@ async function main() {
   $('summary').textContent = `${feats.length} buurten · ${withContent.length} with some kit content · ` +
     `${feats.filter(f => f.properties.content.faces.length || f.properties.content.types.length).length} with block-face work · ` +
     `${feats.filter(f => f.properties.content.designs.length).length} with building-type designs · ` +
-    `${feats.filter(f => f.properties.look.status === 'drawn').length} with their own look. Generated ${data.generatedAt.slice(0, 10)}.`;
+    `${feats.filter(f => f.properties.look.status === 'drawn').length} with their own look` + (feats.some(f => f.properties.described) ? ` · ${feats.filter(f => f.properties.described?.live.pands).length} with described houses (${fmt(feats.reduce((a, f) => a + (f.properties.described?.live.pands ?? 0), 0))} pands)` : '') + `. Generated ${data.generatedAt.slice(0, 10)}.`;
 
   // ---- controls ----
   const metric = $<HTMLSelectElement>('metric');
   for (const [k, m] of Object.entries(METRICS)) metric.append(new Option(m.label, k));
   const params = new URLSearchParams(location.search);
+  if (!feats.some(f => f.properties.described)) { delete METRICS.both; delete METRICS.described; metric.replaceChildren(); for (const [k, m] of Object.entries(METRICS)) metric.append(new Option(m.label, k)); }
   metric.value = params.get('colour') && METRICS[params.get('colour')!] ? params.get('colour')! : 'share';
   const search = $<HTMLInputElement>('search'), names = $('names');
   const ownOnly = $<HTMLInputElement>('own-only'), ownMark = $<HTMLInputElement>('own-mark');
+  const descMark = $<HTMLInputElement>('desc-mark'), descStaged = $<HTMLInputElement>('desc-staged');
+  const hasDesc = feats.some(f => f.properties.described), hasStaged = feats.some(f => f.properties.described?.staged?.pands);
+  if (hasDesc) $('desc-mark-l').style.display = '';
+  if (hasStaged) $('desc-staged-l').style.display = '';
+  descMark.checked = params.get('desc') !== '0';
+  descStaged.checked = params.get('staged') === '1' && hasStaged;
   ownOnly.checked = params.get('own') === '1';
   ownMark.checked = params.get('mark') !== '0';
   for (const f of [...feats].sort((a, b) => a.properties.name.localeCompare(b.properties.name))) names.append(h('option', { value: `${f.properties.name} (${f.properties.code})` }));
@@ -110,7 +123,13 @@ async function main() {
     for (const f of feats) {
       trace(f, v);
       const hidden = ownOnly.checked && f.properties.look.status === 'none';
-      ctx.fillStyle = f.properties.pands && !hidden ? fills[binOf(m.value(f.properties), m.bins, !!m.legend)] : empty;
+      const dShare = describedShown(f.properties.described, descStaged.checked);
+      if (metric.value === 'described') ctx.fillStyle = f.properties.pands && !hidden ? fills[describedBin(dShare)] : empty;
+      else if (metric.value === 'both') {
+        // Own look in orange where the district kit draws; elsewhere described in teal (a lighter step than the same share of own look).
+        const own = f.properties.look.status === 'drawn';
+        ctx.fillStyle = !f.properties.pands || hidden ? empty : own || !dShare ? fills[lookBin(f.properties.look)] : css(`--d${describedBin(dShare)}`);
+      } else ctx.fillStyle = f.properties.pands && !hidden ? fills[binOf(m.value(f.properties), m.bins, !!m.legend)] : empty;
       ctx.fill('evenodd');
       ctx.strokeStyle = stroke; ctx.lineWidth = 0.75; ctx.stroke();
     }
@@ -124,15 +143,33 @@ async function main() {
       }
       ctx.restore();
     }
+    // Described outline: teal, solid where live specs draw, dashed where only the staged preview would.
+    if (descMark.checked && hasDesc) {
+      ctx.save(); ctx.strokeStyle = css('--desc'); ctx.lineJoin = 'round';
+      for (const f of feats) {
+        const d = f.properties.described;
+        if (!d) continue;
+        const live = d.live.pands > 0, staged = descStaged.checked && !!d.staged?.pands;
+        if (!live && !staged) continue;
+        trace(f, v); ctx.setLineDash(live ? [] : [4, 3]); ctx.lineWidth = live ? 1.75 : 1.25; ctx.stroke();
+      }
+      ctx.restore();
+    }
     for (const [f, w] of [[hovered, 2], [selected, 3]] as const) if (f) { trace(f, v); ctx.strokeStyle = css('--hi'); ctx.lineWidth = w; ctx.stroke(); }
   }
   function legend() {
     const m = METRICS[metric.value], b = m.bins;
     const lab = (i: number) => m.legend ? m.legend[i] : i === 0 ? (m.unit ? '0' : 'none') : i === 6 ? `≥ ${m.unit ? b[5] : pct(b[5])}` : `${m.unit ? b[i - 1] : pct(b[i - 1])}–${m.unit ? b[i] : pct(b[i])}`;
     const n = m.legend ? m.legend.length : 7;
-    $('legend').replaceChildren(...Array.from({ length: n }, (_, i) => h('span', {}, h('span', { class: 'sw', style: `background:var(--${m.palette ?? 's'}${i})` }), lab(i))),
+    const swatches = (pal: string, labels: string[]) => labels.map((l, i) => h('span', {}, h('span', { class: 'sw', style: `background:var(--${pal}${i})` }), l));
+    const grouped = metric.value === 'both';
+    $('legend').replaceChildren(
+      ...(grouped ? [h('span', { class: 'grp' }, 'Own look (orange): share of pands drawn by district kit')] : []),
+      ...Array.from({ length: n }, (_, i) => h('span', {}, h('span', { class: 'sw', style: `background:var(--${m.palette ?? 's'}${i})` }), lab(i))),
+      ...(grouped ? [h('span', { class: 'grp' }, 'Described (teal): generic houses drawn from a HouseSpec, where no own look draws'), ...swatches('d', DESCRIBED_LEGEND).slice(1)] : []),
       h('span', {}, h('span', { class: 'sw', style: 'background:var(--empty);outline:1px dashed var(--mut)' }), 'no pands'),
-      ...(ownMark.checked ? [h('span', {}, h('span', { class: 'sw own' }), 'own look drawn'), h('span', {}, h('span', { class: 'sw own authored' }), 'own look authored')] : []));
+      ...(ownMark.checked ? [h('span', {}, h('span', { class: 'sw own' }), 'own look drawn'), h('span', {}, h('span', { class: 'sw own authored' }), 'own look authored')] : []),
+      ...(descMark.checked && hasDesc ? [h('span', {}, h('span', { class: 'sw desc' }), 'described (live)'), ...(descStaged.checked ? [h('span', {}, h('span', { class: 'sw desc staged' }), 'staged only, not live')] : [])] : []));
   }
   function inRing(x: number, y: number, ring: [number, number][]) { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; }
   function hit(cx: number, cy: number): Feature | null {
@@ -145,7 +182,9 @@ async function main() {
     if (!f) { tip.hidden = true; return; }
     const p = f.properties, k = kinds(p);
     const own = p.look.status === 'drawn' ? ` · own look ${pct(p.look.share)}` : p.look.status === 'authored' ? ' · own look authored' : '';
-    tip.replaceChildren(h('b', {}, p.name), h('span', {}, ` ${p.code} · ${k ? `${k} kind${k === 1 ? '' : 's'} of kit content` : 'nothing yet'}${own}`));
+    const dsc = p.described, dShare = describedShown(dsc, descStaged.checked);
+    const desc = dsc && dShare ? ` · described ${pct(dsc.live.share)}${descStaged.checked && dsc.staged?.pands ? ` (+${pct(dsc.staged.share)} staged)` : ''}` : '';
+    tip.replaceChildren(h('b', {}, p.name), h('span', {}, ` ${p.code} · ${k ? `${k} kind${k === 1 ? '' : 's'} of kit content` : 'nothing yet'}${own}${desc}`));
     tip.hidden = false;
     tip.style.left = `${Math.min(canvas.clientWidth - tip.offsetWidth - 6, cx + 12)}px`;
     tip.style.top = `${Math.max(6, cy - tip.offsetHeight - 8)}px`;
@@ -228,6 +267,8 @@ async function main() {
   const setParam = (k: string, v: string | null) => { const u = new URL(location.href); if (v === null) u.searchParams.delete(k); else u.searchParams.set(k, v); history.replaceState(null, '', u); };
   ownOnly.addEventListener('change', () => { draw(); setParam('own', ownOnly.checked ? '1' : null); });
   ownMark.addEventListener('change', () => { legend(); draw(); setParam('mark', ownMark.checked ? null : '0'); });
+  descMark.addEventListener('change', () => { legend(); draw(); setParam('desc', descMark.checked ? null : '0'); });
+  descStaged.addEventListener('change', () => { legend(); draw(); setParam('staged', descStaged.checked ? '1' : null); });
 
   // ---- buurten with their own look ----
   const ownFeats = feats.filter(f => f.properties.look.status !== 'none')
@@ -273,6 +314,22 @@ function pair(render: LookThumb | undefined, photo: LookThumb | undefined, rende
   return h('div', { class: 'pair' }, fig(render, 'Kit render', renderMissing), fig(photo, 'Photo', 'No photo crop archived'));
 }
 const rideLink = (r: OwnLook['rides'][string] | undefined) => r ? { label: 'Ride past it', href: rideHref(r) } : undefined;
+
+/** Described houses: generic-tier pands drawn from a HouseSpec, live and (separately) the staged preview. */
+function describedSection(p: Props): HTMLElement | null {
+  const d = p.described;
+  if (!d) return null;
+  const chips = (t: BuurtDescribed['live']) => h('div', { class: 'fieldchips' }, ...DESCRIBED_FIELDS.filter(f => t.fields[f]).map(f => h('span', {}, `${DESCRIBED_LABEL[f]} ${fmt(t.fields[f])}`)));
+  const live = d.live, staged = d.staged;
+  if (!live.pands && !staged?.pands) return null;
+  return h('section', { class: 'sec', id: 'sec-described' },
+    h('h3', {}, 'Described houses', live.pands ? h('span', { class: 'badge desc' }, `${pct(live.share)} live`) : null, staged?.pands ? h('span', { class: 'badge desc staged' }, `+${pct(staged.share)} staged`) : null),
+    h('p', { class: 'note' }, 'Still the generic mesher, but each house carries a HouseSpec: the fields below are drawn from it instead of the era default. Models, block-face chunks and building types are counted under their own tiers, not here.'),
+    live.pands ? h('p', { class: 'dl-desc' }, `${plural(live.pands, 'pand')} of ${fmt(p.pands)} live; ${fmt(live.photo)} read from the front, the rest register text.`) : null,
+    live.pands ? chips(live) : null,
+    staged?.pands ? h('p', { class: 'dl-desc' }, h('b', {}, 'Staged, not live: '), `${plural(staged.pands, 'more pand')} would be described by the staged sets once published.`) : null,
+    staged?.pands ? chips(staged) : null);
+}
 
 function ownLook(p: Props, items: ContentItems): HTMLElement {
   const l = p.look, look = items.look, c = p.content;
@@ -353,6 +410,8 @@ function render(p: Props, items: ContentItems): HTMLElement[] {
       h('td', { class: 'bar' }, h('i', { style: `width:${p.tiers[t.id] ? Math.max(2, 100 * p.tiers[t.id] / max) : 0}%` }))))))));
 
   out.push(ownLook(p, items));
+  const dsec = describedSection(p);
+  if (dsec) out.push(dsec);
   const facesHere = new Set(c.faces.map(([id]) => id));
   const models = c.models.filter(([id]) => { const m = items.models[id]; return !(m?.tier === 'chunk' && facesHere.has(id.replace(/^chunk-face-/, ''))); });
   const anything = CONTENT_KINDS.some(k => c[k].length) || p.survey.streets.length;

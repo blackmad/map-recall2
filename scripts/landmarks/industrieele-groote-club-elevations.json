@@ -1,0 +1,212 @@
+{
+ "id": "industrieele-groote-club",
+ "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 40.5 px/m): Dam TMX7316010203-002031_pano_0001_001692 (2021) and recording_2025-06-16_06-42-40_02285 (2025)",
+ "facades": [
+  {
+   "name": "north (Dam: club front and tower)",
+   "bearing": 19,
+   "photo": "artifacts/landmark-briefs/industrieele-groote-club/face-dam-1.jpg",
+   "rows": [
+    3,
+    8,
+    8,
+    8,
+    8,
+    8,
+    4,
+    3
+   ],
+   "columns": 8,
+   "symmetric": false,
+   "gables": 2,
+   "alongM": [
+    13.47,
+    27.35
+   ],
+   "mixedRows": [
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: five cross windows in the stone frontispiece (0.9 m), a brick pier, then the three tower lights (0.68 m); the pier is the frontispiece edge, not a missing window",
+     "openings": [
+      {
+       "kind": "club",
+       "w": 0.9
+      },
+      {
+       "kind": "club",
+       "w": 0.9
+      },
+      {
+       "kind": "club",
+       "w": 0.9
+      },
+      {
+       "kind": "club",
+       "w": 0.9
+      },
+      {
+       "kind": "club",
+       "w": 0.9
+      },
+      {
+       "kind": "tower",
+       "w": 0.68
+      },
+      {
+       "kind": "tower",
+       "w": 0.68
+      },
+      {
+       "kind": "tower",
+       "w": 0.68
+      }
+     ]
+    },
+    {
+     "row": 6,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: the round window in the gable beside the three tall louvred lights of the tower",
+     "openings": [
+      {
+       "kind": "oculus",
+       "w": 1.04
+      },
+      {
+       "kind": "louvre",
+       "w": 0.34
+      },
+      {
+       "kind": "louvre",
+       "w": 0.34
+      },
+      {
+       "kind": "louvre",
+       "w": 0.34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "north (Dam 21 house and passage wing)",
+   "bearing": 19,
+   "photo": "artifacts/landmark-briefs/industrieele-groote-club/face-dam-1.jpg",
+   "rows": [
+    3,
+    6,
+    5,
+    4
+   ],
+   "columns": 5,
+   "symmetric": false,
+   "gables": 1,
+   "alongM": [
+    0.85,
+    13.47
+   ],
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: Dam 21 arched shop window (3.9 m), the house door (1.15 m) and the carriage passage (3.5 m)",
+     "openings": [
+      {
+       "kind": "shop",
+       "w": 3.9
+      },
+      {
+       "kind": "door",
+       "w": 1.15
+      },
+      {
+       "kind": "passage",
+       "w": 3.5
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: four round-arched oriel lights, the side two-light window (1.15 m), the passage wing's two-light cross window (1.9 m)",
+     "openings": [
+      {
+       "kind": "arch",
+       "w": 0.7
+      },
+      {
+       "kind": "arch",
+       "w": 0.7
+      },
+      {
+       "kind": "arch",
+       "w": 0.7
+      },
+      {
+       "kind": "arch",
+       "w": 0.7
+      },
+      {
+       "kind": "side",
+       "w": 1.15
+      },
+      {
+       "kind": "link",
+       "w": 1.9
+      }
+     ]
+    },
+    {
+     "row": 2,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: single, double, single windows of the Dam 21 house, its side two-light window and the passage wing window",
+     "openings": [
+      {
+       "kind": "single",
+       "w": 0.75
+      },
+      {
+       "kind": "double",
+       "w": 1.25
+      },
+      {
+       "kind": "single",
+       "w": 0.75
+      },
+      {
+       "kind": "side",
+       "w": 1.15
+      },
+      {
+       "kind": "link",
+       "w": 1.9
+      }
+     ]
+    },
+    {
+     "row": 3,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002031_pano_0001_001692: the same four windows on the Dam 21 third floor",
+     "openings": [
+      {
+       "kind": "single",
+       "w": 0.75
+      },
+      {
+       "kind": "double",
+       "w": 1.25
+      },
+      {
+       "kind": "single",
+       "w": 0.75
+      },
+      {
+       "kind": "side",
+       "w": 1.15
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

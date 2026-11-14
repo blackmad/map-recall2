@@ -1,0 +1,37 @@
+{
+ "id": "bitterzoet",
+ "name": "Bitterzoet, Spuistraat 2",
+ "landmarkId": "bitterzoet",
+ "headingFrom": [
+  3,
+  4
+ ],
+ "heightMetres": 19.6,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.15
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012171035 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/bitterzoet-footprints.json, written by venue-prepare.ts). Identity: the BAG verblijfsobject 0363010000816880 (Spuistraat 2, bijeenkomstfunctie) lies in this pand. The Spuistraat front and the north-east side are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts at 50 px/m: TMX7316010203-002537_pano_0001_001204, TMX7316010203-000716_pano_0000_000933, recording_2025-06-16_03-46-32_01091 and TMX7316010203-002355_pano_0000_000050); the roofs, chimney, alley and back keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/bitterzoet-inventory.json.",
+ "materialOverrides": {
+  "pink": "#a26a5a",
+  "brick": "#7a5a52",
+  "ochre": "#e2d5b4",
+  "sandstone": "#efe7d2",
+  "red": "#c47a4e",
+  "green": "#2b3a32",
+  "glass": "#2f3a3f",
+  "white": "#eee9dc",
+  "concrete": "#3a3937",
+  "bronze": "#1e1e1f",
+  "blue": "#24508f",
+  "slate": "#6b4a3e"
+ },
+ "attribution": {
+  "title": "Bitterzoet, Spuistraat 2, Amsterdam: a 1905 corner building at the head of the Spuistraat, a music venue",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Bitterzoet_(poppodium)",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights and the 3DBAG shell for the roofs, chimney, alley and back (CC BY 4.0): the Spuistraat front's cream ground floor with the BITTERZOET canopy and logo plaque, red brick storeys banded with cream speklagen, windows under chequered relieving arches, corner pilasters, cornice and attic, and the north-east side's brick storeys, doorcase and dormers. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

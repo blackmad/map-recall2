@@ -1,0 +1,56 @@
+{
+  "id": "escape-rembrandtplein",
+  "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 50 px/m over the 18.4 m square chord): TMX7316010203-001900_pano_0005_000766 (2020), TMX7316010203-002537_pano_0000_000552 (2022) and b_20241211_0954_Track19_Sphere_00100 (2024)",
+  "facades": [
+    {
+      "name": "square front (white box)",
+      "bearing": 176,
+      "photo": "artifacts/landmark-briefs/escape-rembrandtplein/face-plein-1.jpg",
+      "rows": [
+        6,
+        6,
+        6
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "gables": 0,
+      "alongM": [
+        2.89,
+        18.63
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "b_20241211_0954_Track19_Sphere_00100 and TMX7316010203-002537_pano_0000_000552: the cafe's red awning hangs in front of the three east bays' heads, so they read 2.5 m tall beside the 3.1 m west bays",
+          "openings": [
+            {
+              "kind": "bay",
+              "w": 2.1
+            },
+            {
+              "kind": "bay",
+              "w": 2.1
+            },
+            {
+              "kind": "bay",
+              "w": 2.1
+            },
+            {
+              "kind": "bay-under-awning",
+              "w": 2.1
+            },
+            {
+              "kind": "bay-under-awning",
+              "w": 2.1
+            },
+            {
+              "kind": "bay-under-awning",
+              "w": 2.1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

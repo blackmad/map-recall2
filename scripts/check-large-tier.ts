@@ -91,6 +91,7 @@ for (const [id, o] of Object.entries(LARGE_TIER_OVERRIDES)) {
 // Lane R5-D (#264): the user's three flat blocks (2026-11-08) were blank installed GLBs; with the install yielding,
 // the pand's own generic feature must draw a faced wall (not a bare box) in every look.
 for (const spot of BARE_SPOTS) for (const pand of spot.pands) {
+  if ('landmark' in spot) continue; // drawn by a bespoke landmark now, not a yielding install
   const id = `ordinary-${pand}`;
   assert.ok(id in BLANK_INSTALLS && !installDraws(id, true) && installDraws(id, false), `${spot.name}: ${id} yields only with the flag on`);
   const f = tileFeatures(spot.camera[0], spot.camera[1]).find(x => x.properties.id === `NL.IMBAG.Pand.${pand}`);

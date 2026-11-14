@@ -39,3 +39,10 @@ test('the Quarter Plaza name has every glyph', () => {
   assert.ok(Math.abs(width - ([...text].length * 6 - 1) * px) < 1e-9);
   assert.ok(!('q' in GL) && !('u' in GL));
 });
+
+test('the De Nieuwe Liefde lettering has every glyph (w from the extra table)', () => {
+  const text = 'De Nieuwe Liefde', px = 0.06;
+  const {width} = glyphRuns(text, px);
+  assert.ok(Math.abs(width - ([...text].length * 6 - 1) * px) < 1e-9);
+  assert.ok(!('w' in GL));
+});

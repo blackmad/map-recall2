@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "id": "escape-rembrandtplein",
+ "pand": "0363100012171128",
+ "brief": "scripts/landmarks/escape-rembrandtplein-brief.md",
+ "signature": [
+  "e-screen",
+  "e-name",
+  "e-canopy",
+  "e-ribbons"
+ ],
+ "walls": [
+  {
+   "tag": "w01-85",
+   "bearing": 85,
+   "lengthM": 29.6,
+   "centre": [
+    4.8964465,
+    52.3668295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_005253",
+   "capturedAt": "2016-08-15",
+   "checked": true,
+   "items": [],
+   "note": "east side along the passage: white-rendered arched windows and a stone base seen obliquely; kept as the 3DBAG shell in the render colour (no square-on capture)."
+  },
+  {
+   "tag": "w02-176",
+   "bearing": 176,
+   "lengthM": 18.4,
+   "centre": [
+    4.896422,
+    52.3663935
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track19_Sphere_00100",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-screen",
+     "kind": "sign",
+     "where": "LED screen filling the upper box (14.6 x 7 m, 9.3-16.3 m) in a black frame, adverts change",
+     "approxSizeM": [
+      14.6,
+      7.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "black frame slab with a dark screen panel 16 cm proud; no image (content changes)"
+    },
+    {
+     "id": "e-name",
+     "kind": "lettering",
+     "where": "spaced capitals E S C A P E centred on the sign band (5.95 m)",
+     "approxSizeM": [
+      4.5,
+      0.53
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "mixed-case glyph runs (venue-kit lettering, 0.5 m tracking) in black"
+    },
+    {
+     "id": "e-bavaria",
+     "kind": "sign",
+     "where": "Bavaria brewery shield and name at the west end of the sign band",
+     "approxSizeM": [
+      3.1,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "blue shield polygon and blue mixed-case lettering"
+    },
+    {
+     "id": "e-heineken",
+     "kind": "sign",
+     "where": "Heineken name and red star at the east end of the sign band",
+     "approxSizeM": [
+      2.7,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "green mixed-case lettering, red five-point star polygon"
+    },
+    {
+     "id": "e-canopy",
+     "kind": "canopy",
+     "where": "glass canopy over the whole ground floor at 3.5 m, projecting about 2 m, dark fascia",
+     "approxSizeM": [
+      18.1,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "green-grey canopy glass slab with a dark fascia"
+    },
+    {
+     "id": "e-awning",
+     "kind": "canopy",
+     "where": "the cafe red awning across the east half of the ground floor",
+     "approxSizeM": [
+      9.4,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "curved awning (nearbar awning) in red"
+    },
+    {
+     "id": "e-club",
+     "kind": "lettering",
+     "where": "\"Club\" on the fascia of the narrow strip entrance",
+     "approxSizeM": [
+      1.2,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "white mixed-case lettering on the dark strip front"
+    },
+    {
+     "id": "e-ribbons",
+     "kind": "window-shape",
+     "where": "two ribbon windows of six lights in white frames either side of the sign band",
+     "approxSizeM": [
+      15.1,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "cut openings with six columns"
+    },
+    {
+     "id": "e-ledge",
+     "kind": "other",
+     "where": "white ledge under the screen and the white parapet band at the top",
+     "approxSizeM": [
+      15.7,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00100",
+     "how": "proud slabs in the render colour"
+    }
+   ]
+  },
+  {
+   "tag": "w03-354",
+   "bearing": 354,
+   "lengthM": 9.4,
+   "centre": [
+    4.8963045,
+    52.3669595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000047",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [],
+   "note": "Amstelstraat back: brick hall front with grouped windows and a ribbon window; kept as the 3DBAG shell (not modelled in this lane; the square front is the venue)."
+  },
+  {
+   "tag": "w04-173",
+   "bearing": 173,
+   "lengthM": 7.3,
+   "centre": [
+    4.8961005,
+    52.366602
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0003_000012",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [],
+   "note": "west return of the strip house and the neighbour behind; 3DBAG shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rembrandtplein (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Rembrandtplein_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

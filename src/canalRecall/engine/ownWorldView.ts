@@ -733,6 +733,8 @@ export class OwnWorldView implements WorldViewOracles {
     const json = async (file: string) => { try { const r = await fetch(`${this.extractPath}/${file}`); return r.ok ? await r.json() : null; } catch (_) { return null; } };
     await Promise.all([
       json('shopfronts.json').then(data => { if (data && api?.setShopfronts) { api.setShopfronts(data); this.decorateCity(); } }),
+      // Shopfront templates (lane retail-ground, `?retailGround=1`): fetched only with the flag on.
+      ...(api?.retailGroundOn?.() && api.setShopTemplates ? [json('shop-templates.json').then(data => { if (data) { api.setShopTemplates(data); this.decorateCity(); } })] : []),
       json('monument-gables.json').then(data => {
         if (!data) return;
         this.decoration.gables = new Map(Object.entries(data.buildings || {}));

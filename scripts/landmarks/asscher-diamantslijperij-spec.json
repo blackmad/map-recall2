@@ -1,0 +1,125 @@
+{
+  "id": "asscher-diamantslijperij",
+  "name": "Diamantslijperij Asscher",
+  "landmarkId": "asscher-diamantslijperij",
+  "modelUrl": "./models/asscher-diamantslijperij.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012237135"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.905644190343622,
+      52.3529816749597
+    ],
+    "headingDegrees": 67.25120597427787,
+    "lengthMetres": 88.21,
+    "widthMetres": 24.71
+  },
+  "surveyed": {
+    "anchor": [
+      4.90578561,
+      52.35305622
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012237135 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#c99c6e",
+    "red": "#a5513a",
+    "stone": "#b8b3a6",
+    "white": "#eeeae0",
+    "glass": "#4f5d66",
+    "dark": "#3a3633",
+    "frame": "#7c7f7a",
+    "slate": "#6e7378",
+    "sandstone": "#d8d2c0",
+    "bronze": "#5b3b2e",
+    "concrete": "#b9c4b8"
+  },
+  "attribution": {
+    "title": "Diamantslijperij Asscher",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; factory windows, lozenge inlays, cornice and parapet, Tolstraat turrets, ASSCHER lettering, crown, 1907 tablet, balconies and the east tower's arched lights, loggia and entrance read from the 2018-2025 municipal panoramas; no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.906235927558387,
+          52.35312020256915
+        ],
+        [
+          4.906223596353407,
+          52.35313932330558
+        ],
+        [
+          4.906235892671002,
+          52.3531423841608
+        ],
+        [
+          4.9062298310933645,
+          52.35315318076562
+        ],
+        [
+          4.906216243071754,
+          52.35315012364876
+        ],
+        [
+          4.906163677805432,
+          52.35322763598684
+        ],
+        [
+          4.906074508065272,
+          52.353204705375084
+        ],
+        [
+          4.906071376233697,
+          52.3532092674032
+        ],
+        [
+          4.905974214779189,
+          52.35318427300351
+        ],
+        [
+          4.905977346521528,
+          52.353179719965276
+        ],
+        [
+          4.90515614560146,
+          52.352975430758136
+        ],
+        [
+          4.904980642896158,
+          52.3529321050513
+        ],
+        [
+          4.905115259254861,
+          52.35272756219944
+        ],
+        [
+          4.90529077703446,
+          52.352770788906554
+        ],
+        [
+          4.905225573045971,
+          52.35286991881611
+        ],
+        [
+          4.905398922191821,
+          52.352912866897334
+        ],
+        [
+          4.906235927558387,
+          52.35312020256915
+        ]
+      ]
+    ]
+  }
+}

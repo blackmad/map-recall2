@@ -131,12 +131,12 @@ export class MeasuredWallPool {
     }
   }
   /** Measured walls within POOL.radiusM of (lng, lat), nearest first, with their distance. */
-  near(lng: number, lat: number): Array<Point & { d: number }> {
-    const x = lng * this.kx, y = lat * M_PER_DEG_LAT, cx = Math.floor(x / CELL_M), cy = Math.floor(y / CELL_M), r = Math.ceil(POOL.radiusM / CELL_M);
+  near(lng: number, lat: number, radiusM: number = POOL.radiusM): Array<Point & { d: number }> {
+    const x = lng * this.kx, y = lat * M_PER_DEG_LAT, cx = Math.floor(x / CELL_M), cy = Math.floor(y / CELL_M), r = Math.ceil(radiusM / CELL_M);
     const out: Array<Point & { d: number }> = [];
     for (let i = cx - r; i <= cx + r; i++) for (let j = cy - r; j <= cy + r; j++) for (const p of this.cells.get(`${i},${j}`) ?? []) {
       const d = Math.hypot(p.x - x, p.y - y);
-      if (d <= POOL.radiusM && d > 0.5) out.push({ ...p, d });
+      if (d <= radiusM && d > 0.5) out.push({ ...p, d });
     }
     return out.sort((a, b) => a.d - b.d || a.hex.localeCompare(b.hex));
   }
@@ -157,8 +157,8 @@ export class MeasuredWallPool {
     return central[(seed >>> 0) % central.length].hex;
   }
   /** The variety draw (POOL_DRAW) for an unmeasured pand at (lng, lat), or null (too few measured neighbours). */
-  drawFor(lng: number, lat: number, archetype: string, seed: number): PoolDraw | null {
-    const all = this.near(lng, lat), arch = POOL_ARCHETYPES.indexOf(archetype as PoolArchetype);
+  drawFor(lng: number, lat: number, archetype: string, seed: number, radiusM: number = POOL.radiusM): PoolDraw | null {
+    const all = this.near(lng, lat, radiusM), arch = POOL_ARCHETYPES.indexOf(archetype as PoolArchetype);
     if (arch < 0) return null;
     const same = all.filter(p => p.arch === arch);
     const cands = (same.length >= POOL.minN ? same : all).slice(0, POOL_DRAW.k);
@@ -191,6 +191,19 @@ export function measuredPoolDraw(lng: number, lat: number, archetype: string, se
   shared ??= new MeasuredWallPool(TABLE as unknown as Table);
   if (!wallVarietyOn()) { const hex = shared.wallFor(lng, lat, archetype, seed); return hex ? { hex, painted: false } : null; }
   return shared.drawFor(lng, lat, archetype, seed);
+}
+/**
+ * The realLook walls lever (look/realLook.ts, `?realLook=walls`): the same variety draw as measuredPoolDraw, but the nearest
+ * measured walls are searched out to `radiusM` (default REAL_LOOK_WALL_RADIUS_M), so a pand beyond the W1 pool's 600 m
+ * still draws from the measured distribution of its nearest measured neighbours (the kernel then weights them by distance)
+ * instead of a buurt profile swatch. `?wallPool=0` turns it off with the pool.
+ */
+export const REAL_LOOK_WALL_RADIUS_M = 3000;
+export function measuredPoolDrawWide(lng: number, lat: number, archetype: string, seed: number, radiusM = REAL_LOOK_WALL_RADIUS_M): PoolDraw | null {
+  if (!wallPoolOn() || !(POOL_ARCHETYPES as readonly string[]).includes(archetype)) return null;
+  shared ??= new MeasuredWallPool(TABLE as unknown as Table);
+  // Search the nearer ring first (most of the ride area has a measured wall within 1.2 km): a third of the cost.
+  return (radiusM > 1200 ? shared.drawFor(lng, lat, archetype, seed, 1200) : null) ?? shared.drawFor(lng, lat, archetype, seed, radiusM);
 }
 /** The published pool's wall for an unmeasured pand, or null (flag off, not a pre-1945 archetype, too few neighbours). */
 export function measuredPoolWall(lng: number, lat: number, archetype: string, seed: number): string | null {

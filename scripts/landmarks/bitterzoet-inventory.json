@@ -1,0 +1,242 @@
+{
+ "schemaVersion": 1,
+ "id": "bitterzoet",
+ "pand": "0363100012171035",
+ "brief": "scripts/landmarks/bitterzoet-brief.md",
+ "signature": [
+  "b-name",
+  "b-arches",
+  "b-speklagen",
+  "b-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-40",
+   "bearing": 40,
+   "lengthM": 18.1,
+   "centre": [
+    4.894068,
+    52.3774825
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01091",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-dormers",
+     "kind": "other",
+     "where": "four dormers in the roof over the main wing",
+     "approxSizeM": [
+      1.7,
+      1.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01091",
+     "how": "cream dormer boxes with glazed fronts in white borders and dark caps"
+    },
+    {
+     "id": "b-doorcase",
+     "kind": "other",
+     "where": "cream doorcase round the side door with a lintel cornice",
+     "approxSizeM": [
+      2.4,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01091",
+     "how": "cream jamb slabs and lintel"
+    },
+    {
+     "id": "b-poster",
+     "kind": "sign",
+     "where": "cinema poster case on the corner wing ground floor",
+     "approxSizeM": [
+      1.4,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01091",
+     "how": "black case with a poster panel; poster content changes"
+    }
+   ]
+  },
+  {
+   "tag": "w02-139",
+   "bearing": 139,
+   "lengthM": 11.5,
+   "centre": [
+    4.894171,
+    52.377349
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0001_001204",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-name",
+     "kind": "lettering",
+     "where": "BITTERZOET in black capitals standing on the canopy over the doors (3.6 m)",
+     "approxSizeM": [
+      2.2,
+      0.26
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "nearbar GL 5x7 runs via venue-kit lettering, black, on the canopy front"
+    },
+    {
+     "id": "b-canopy",
+     "kind": "canopy",
+     "where": "flat black canopy over both doors, 5.2 m wide, 1 m deep, at 3.4 m",
+     "approxSizeM": [
+      5.2,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "black slab"
+    },
+    {
+     "id": "b-logo",
+     "kind": "sign",
+     "where": "black square logo plaque between the doors",
+     "approxSizeM": [
+      0.42,
+      0.48
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "black slab with two cream strokes"
+    },
+    {
+     "id": "b-arches",
+     "kind": "window-shape",
+     "where": "segmental relieving arches over all eight upper windows: cream voussoir ring, chequered orange and cream tympanum",
+     "approxSizeM": [
+      1.64,
+      0.55
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "street-front-kit archHead, cream ring, orange tympanum fill (the chequer read as one tone)"
+    },
+    {
+     "id": "b-speklagen",
+     "kind": "other",
+     "where": "cream speklagen bands every 0.6 m across the red brick upper storeys, broken by the windows",
+     "approxSizeM": [
+      11.6,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "cream slabs 3 cm proud, full width between window zones, in the piers beside the windows"
+    },
+    {
+     "id": "b-cartouche",
+     "kind": "relief",
+     "where": "small carved cartouche between the middle first-floor windows",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "cream slab with a cap"
+    },
+    {
+     "id": "b-pilasters",
+     "kind": "other",
+     "where": "cream corner pilasters over both upper storeys, wrapping the corner chamfer",
+     "approxSizeM": [
+      0.5,
+      10.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "cream slabs and the chamfer face in cream"
+    },
+    {
+     "id": "b-cornice",
+     "kind": "other",
+     "where": "cream cornice and architrave at the top, a low attic block centred above",
+     "approxSizeM": [
+      11.6,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "cream slabs, coping closing the wall top, attic slab set back"
+    },
+    {
+     "id": "b-lights",
+     "kind": "lamp",
+     "where": "two floodlights over the canopy ends",
+     "approxSizeM": [
+      0.28,
+      0.18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "black boxes"
+    },
+    {
+     "id": "b-plate",
+     "kind": "sign",
+     "where": "SPUISTRAAT street name plate at the corner",
+     "approxSizeM": [
+      0.55,
+      0.16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_001204",
+     "how": "blue slab, text too small to letter"
+    }
+   ]
+  },
+  {
+   "tag": "w03-323",
+   "bearing": 323,
+   "lengthM": 10.2,
+   "centre": [
+    4.8939055,
+    52.3775065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_000845",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "north-west back on the alley: brick with industrial windows; kept as the 3DBAG shell."
+  },
+  {
+   "tag": "w04-51",
+   "bearing": 51,
+   "lengthM": 6.9,
+   "centre": [
+    4.894203,
+    52.377407
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_000927",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "corner wing of the north-east side: windows drawn on the street-front-kit section; nothing beyond the poster case (b-poster on w01-40)"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Bitterzoet (poppodium) (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Bitterzoet_(poppodium)",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

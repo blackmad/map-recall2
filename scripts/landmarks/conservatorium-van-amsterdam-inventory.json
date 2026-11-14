@@ -1,0 +1,165 @@
+{
+ "schemaVersion": 1,
+ "id": "conservatorium-van-amsterdam",
+ "pand": "0363100012164965",
+ "brief": "scripts/landmarks/conservatorium-van-amsterdam-brief.md",
+ "signature": [
+  "name-lettering",
+  "logo-discs",
+  "orange-fins",
+  "curtain-grid"
+ ],
+ "walls": [
+  {
+   "tag": "w01-86",
+   "bearing": 86,
+   "lengthM": 73.7,
+   "centre": [
+    4.9090375,
+    52.3761037
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track02_Sphere_00018",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-bands",
+     "kind": "window-shape",
+     "where": "glass and concrete panel bands on the east side",
+     "approxSizeM": [
+      73,
+      40
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_1256_Track02_Sphere_00018",
+     "how": "glass shell with storey transoms and mullions; the concrete panels are not distinguished"
+    }
+   ]
+  },
+  {
+   "tag": "w02-266",
+   "bearing": 266,
+   "lengthM": 73,
+   "centre": [
+    4.9087181,
+    52.3760977
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002856_pano_0008_000049",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "orange-fins",
+     "kind": "other",
+     "where": "a screen of orange vertical fins over the upper storeys of the west side",
+     "approxSizeM": [
+      73,
+      30
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track03_Sphere_00004",
+     "how": "fins every 0.9 m from 9 m to the measured roof line"
+    },
+    {
+     "id": "orange-posts",
+     "kind": "other",
+     "where": "orange posts in the glazed foot of the west side",
+     "approxSizeM": [
+      73,
+      8.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002856_pano_0008_000049",
+     "how": "posts every 2.4 m"
+    }
+   ]
+  },
+  {
+   "tag": "w03-358",
+   "bearing": 358,
+   "lengthM": 21.8,
+   "centre": [
+    4.9088334,
+    52.3764292
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000030_pano_0006_000371",
+   "capturedAt": "2016-08-17",
+   "checked": true,
+   "items": [],
+   "note": "the 14.7 m north block: horizontal bands seen only at 16 m behind parked vans; shell only"
+  },
+  {
+   "tag": "w04-176",
+   "bearing": 176,
+   "lengthM": 21.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_00583",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "name-lettering",
+     "kind": "lettering",
+     "where": "white two-line name \"Conservatorium / van Amsterdam\" across the upper south front",
+     "approxSizeM": [
+      13,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_00583",
+     "how": "glyphRuns mixed-case pixel letters, white, 0.13 m pixels"
+    },
+    {
+     "id": "logo-discs",
+     "kind": "sign",
+     "where": "a white disc before the name and a blue disc at the east corner",
+     "approxSizeM": [
+      2.1,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_00583",
+     "how": "two discs"
+    },
+    {
+     "id": "curtain-grid",
+     "kind": "window-shape",
+     "where": "dark green-grey curtain wall on the saw-toothed 2.2 m grid with storey transoms",
+     "approxSizeM": [
+      22,
+      36
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_00583",
+     "how": "glass shell with dark mullions every 2.2 m and storey transoms (the saw-tooth steps stay in the shell)"
+    },
+    {
+     "id": "kiosk-pavilion",
+     "kind": "other",
+     "where": "the striped glass bicycle-park pavilion with sculptures in front of the south front",
+     "approxSizeM": [
+      8,
+      9
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_09-10-34_00583",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate structure on the square, not part of this pand"
+     }
+    }
+   ],
+   "note": "south front, saw-toothed; not listed by the brief because the BAG ring splits it into 2.2 m pieces"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

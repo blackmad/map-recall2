@@ -2,16 +2,39 @@
  "schemaVersion": 1,
  "id": "rijksakademie",
  "pand": "0363100012165748",
+ "brief": "scripts/landmarks/rijksakademie-brief.md",
  "signature": [
-  "arched-windows",
-  "south-range",
-  "north-range"
+  "pediment",
+  "range-arched-pairs",
+  "kavallerie-plaque",
+  "gateway",
+  "pavilion-windows",
+  "ne-gable"
  ],
  "walls": [
+  {
+   "tag": "w01-252",
+   "bearing": 252,
+   "lengthM": 54.7,
+   "centre": [
+    4.9173163,
+    52.3625853
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
   {
    "tag": "w02-162",
    "bearing": 162,
    "lengthM": 51.2,
+   "centre": [
+    4.9182696,
+    52.3625149
+   ],
    "evidence": "photo",
    "panoId": "TMX7316010203-001984_pano_0000_000252",
    "capturedAt": "2021-01-26",
@@ -20,87 +43,595 @@
     {
      "id": "south-range",
      "kind": "window-shape",
-     "where": "one tall storey of round-headed windows, mostly paired, some painted or bricked up, over a long brick wall with a tile roof",
+     "where": "one tall storey of round-headed windows on the Singelgracht range",
      "approxSizeM": [
-      50,
-      8
-     ],
-     "plan": "simplified",
-     "how": "brick-bay-grid 2 storeys x 14 bays, round arches with brick bands; even rhythm",
-     "seenIn": "TMX7316010203-001984_pano_0000_000252"
-    },
-    {
-     "id": "arched-windows",
-     "kind": "window-shape",
-     "where": "round-headed windows with brick rowlock heads",
-     "approxSizeM": [
-      2,
-      3
+      29,
+      5
      ],
      "plan": "modelled",
-     "how": "arches.windows round, band brick",
-     "seenIn": "TMX7316010203-001984_pano_0000_000252"
-    },
-    {
-     "id": "painted-arches",
-     "kind": "other",
-     "where": "painted-white and bricked-up arch recesses between the windows",
-     "approxSizeM": [
-      2,
-      3
-     ],
-     "plan": "skipped",
-     "skip": {
-      "reason": "too-small",
-      "note": "differ from the brick by tint only, no relief"
-     },
-     "seenIn": "TMX7316010203-001984_pano_0000_000252"
+     "seenIn": "TMX7316010203-001984_pano_0000_000252",
+     "how": "eight tall arched white-framed windows and the eaves cornice"
     }
    ]
+  },
+  {
+   "tag": "w03-72",
+   "bearing": 72,
+   "lengthM": 40.1,
+   "centre": [
+    4.918814,
+    52.3630188
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002625_pano_0002_000009",
+   "capturedAt": "2022-06-24",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
   },
   {
    "tag": "w04-342",
    "bearing": 342,
    "lengthM": 34.4,
+   "centre": [
+    4.9181251,
+    52.3630167
+   ],
    "evidence": "photo",
    "panoId": "TMX7316010203-001675_pano_0000_006181",
    "capturedAt": "2020-04-24",
    "checked": true,
    "items": [
     {
-     "id": "north-range",
+     "id": "range-arched-pairs",
      "kind": "window-shape",
-     "where": "two storeys of paired round-arched windows over a brick ground, fire stair at the left",
+     "where": "seven pairs of round-headed white-framed windows on each of two storeys of the 34 m Sarphatistraat ranges",
      "approxSizeM": [
       34,
-      11
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000070_pano_0014_000115",
+     "how": "archSlab glass in white archBand frames, mullion and transom, stone sills, pairs at the measured pitch"
+    },
+    {
+     "id": "range-door",
+     "kind": "other",
+     "where": "central door with an arched fanlight in each range",
+     "approxSizeM": [
+      1.7,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000070_pano_0014_000115",
+     "how": "dark arch, white frame and fanlight"
+    },
+    {
+     "id": "wall-anchors",
+     "kind": "other",
+     "where": "iron cross anchors between the window pairs at both floor levels",
+     "approxSizeM": [
+      0.36,
+      0.36
      ],
      "plan": "simplified",
-     "how": "brick-bay-grid 2 storeys x 10 bays, round arches; pairs regularised",
-     "seenIn": "TMX7316010203-001675_pano_0000_006181"
+     "seenIn": "TMX7315120208-000070_pano_0014_000115",
+     "how": "two flat dark bars per anchor"
+    },
+    {
+     "id": "eaves-cornice",
+     "kind": "other",
+     "where": "white eaves cornice under the tiled roof",
+     "approxSizeM": [
+      34,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_006181",
+     "how": "ledgeStrip"
     },
     {
      "id": "fire-stair",
-     "kind": "balcony-ironwork",
-     "where": "steel fire stair and landing at the left end",
+     "kind": "other",
+     "where": "an external steel fire stair on the west range",
      "approxSizeM": [
-      3,
+      1,
       6
      ],
      "plan": "skipped",
+     "seenIn": "TMX7315120208-000070_pano_0014_000115",
      "skip": {
       "reason": "too-small",
-      "note": "open steel treads and rails"
-     },
-     "seenIn": "TMX7316010203-001675_pano_0000_006181"
+      "note": "open steel stair of thin members, under a pixel at riding distance behind the fence"
+     }
+    },
+    {
+     "id": "rooflights",
+     "kind": "other",
+     "where": "rooflights and small dormers in the tiled roof",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "skip": {
+      "reason": "too-small",
+      "note": "flush rooflights, not in LoD2.2 and barely visible from the street"
+     }
     }
    ]
+  },
+  {
+   "tag": "w05-342",
+   "bearing": 342,
+   "lengthM": 34.4,
+   "centre": [
+    4.9174365,
+    52.3628757
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001903_pano_0000_000043",
+   "capturedAt": "2020-09-01",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w06-252",
+   "bearing": 252,
+   "lengthM": 32,
+   "centre": [
+    4.9185091,
+    52.3629946
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w07-162",
+   "bearing": 162,
+   "lengthM": 31.1,
+   "centre": [
+    4.9176729,
+    52.3623927
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0003_000172",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w08-72",
+   "bearing": 72,
+   "lengthM": 26,
+   "centre": [
+    4.9184397,
+    52.3629515
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w09-342",
+   "bearing": 342,
+   "lengthM": 18.6,
+   "centre": [
+    4.9185736,
+    52.3631681
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000190_pano_0000_002073",
+   "capturedAt": "2016-11-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-gable",
+     "kind": "window-shape",
+     "where": "north-east gable with an oculus over three arched openings",
+     "approxSizeM": [
+      18.6,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000190_pano_0000_002073",
+     "how": "ringSlab stone oculus with glass, a large central arch and two arched windows"
+    },
+    {
+     "id": "corbel-table",
+     "kind": "relief",
+     "where": "arched brick corbel table along the gable rakes",
+     "approxSizeM": [
+      18,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000190_pano_0000_002073",
+     "skip": {
+      "reason": "too-small",
+      "note": "brick-on-brick relief a few cm deep"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-170",
+   "bearing": 170,
+   "lengthM": 16.7,
+   "centre": [
+    4.9186789,
+    52.3627479
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000248",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w11-171",
+   "bearing": 171,
+   "lengthM": 14.1,
+   "centre": [
+    4.9178916,
+    52.3623243
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0003_000173",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w12-342",
+   "bearing": 342,
+   "lengthM": 13.5,
+   "centre": [
+    4.9177787,
+    52.3629501
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_006176",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "pediment",
+     "kind": "other",
+     "where": "white pediment with raking cornices over a white entablature on the entrance pavilion",
+     "approxSizeM": [
+      13.5,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "how": "white ledge strips and raking cornice bands on the 3DBAG pediment wall"
+    },
+    {
+     "id": "pavilion-windows",
+     "kind": "window-shape",
+     "where": "three pairs of round-headed windows upstairs, two pairs beside the gateway",
+     "approxSizeM": [
+      13,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "how": "same arched pairs as the ranges"
+    },
+    {
+     "id": "kavallerie-plaque",
+     "kind": "lettering",
+     "where": "KAVALLERIE-KAZERNE plaque over the gateway",
+     "approxSizeM": [
+      3.3,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "how": "dark plaque with GL letters in white"
+    },
+    {
+     "id": "gateway",
+     "kind": "other",
+     "where": "round-arched gateway in a stone surround",
+     "approxSizeM": [
+      2.9,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "how": "dark arch and stone archBand"
+    },
+    {
+     "id": "gate-fence",
+     "kind": "other",
+     "where": "high steel gate and railings in front of the pavilion and ranges",
+     "approxSizeM": [
+      40,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001675_pano_0000_006176",
+     "skip": {
+      "reason": "not-visible",
+      "note": "stands on the street plot outside the pand; street furniture, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-72",
+   "bearing": 72,
+   "lengthM": 12.6,
+   "centre": [
+    4.9186046,
+    52.3626498
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000246",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w14-81",
+   "bearing": 81,
+   "lengthM": 11.6,
+   "centre": [
+    4.9187722,
+    52.3626887
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000246",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w15-171",
+   "bearing": 171,
+   "lengthM": 10.2,
+   "centre": [
+    4.9188842,
+    52.3627299
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000247",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w16-81",
+   "bearing": 81,
+   "lengthM": 9.6,
+   "centre": [
+    4.9189473,
+    52.3627797
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000244",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w17-261",
+   "bearing": 261,
+   "lengthM": 9.5,
+   "centre": [
+    4.9186433,
+    52.3626667
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w18-171",
+   "bearing": 171,
+   "lengthM": 9,
+   "centre": [
+    4.91872,
+    52.3626308
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000249",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w19-351",
+   "bearing": 351,
+   "lengthM": 9,
+   "centre": [
+    4.9186932,
+    52.3627337
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w20-351",
+   "bearing": 351,
+   "lengthM": 8.7,
+   "centre": [
+    4.9178377,
+    52.3623773
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w21-351",
+   "bearing": 351,
+   "lengthM": 8,
+   "centre": [
+    4.9188781,
+    52.3628166
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w22-81",
+   "bearing": 81,
+   "lengthM": 6.3,
+   "centre": [
+    4.9179201,
+    52.3624139
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000253",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w23-263",
+   "bearing": 263,
+   "lengthM": 6,
+   "centre": [
+    4.9178951,
+    52.3624102
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w24-342",
+   "bearing": 342,
+   "lengthM": 6,
+   "centre": [
+    4.9185419,
+    52.3628495
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w25-162",
+   "bearing": 162,
+   "lengthM": 6,
+   "centre": [
+    4.9188557,
+    52.3628302
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000247",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w26-261",
+   "bearing": 261,
+   "lengthM": 5.3,
+   "centre": [
+    4.917779,
+    52.3623426
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000259",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w27-81",
+   "bearing": 81,
+   "lengthM": 5.3,
+   "centre": [
+    4.9179897,
+    52.3623629
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000252",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "modern studio blocks (1991-92) or courtyard faces: brick and glass massing from the 3DBAG shell; detail not modelled"
+  },
+  {
+   "tag": "w28-261",
+   "bearing": 261,
+   "lengthM": 4.4,
+   "centre": [
+    4.9188047,
+    52.3627419
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
+  },
+  {
+   "tag": "w29-351",
+   "bearing": 351,
+   "lengthM": 4.2,
+   "centre": [
+    4.9185982,
+    52.3627201
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no capture: shell only"
   }
  ],
  "sources": [
   {
-   "name": "Gemeente Amsterdam panorama",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001984_pano_0000_000252/",
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
    "licence": "CC BY 4.0"
   }
  ]

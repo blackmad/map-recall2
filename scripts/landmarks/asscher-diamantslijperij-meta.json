@@ -1,0 +1,28 @@
+{
+  "name": "Diamantslijperij Asscher",
+  "landmarkId": "asscher-diamantslijperij",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Asscher_Diamond_Company",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012237135"
+  ],
+  "pandId": "0363100012237135",
+  "anchor": [
+    4.90578561,
+    52.35305622
+  ],
+  "materialOverrides": {
+    "brick": "#c99c6e",
+    "red": "#a5513a",
+    "stone": "#b8b3a6",
+    "white": "#eeeae0",
+    "glass": "#4f5d66",
+    "dark": "#3a3633",
+    "frame": "#7c7f7a",
+    "slate": "#6e7378",
+    "sandstone": "#d8d2c0",
+    "bronze": "#5b3b2e",
+    "concrete": "#b9c4b8"
+  },
+  "surveySource": "Current BAG 0363100012237135 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; factory windows, lozenge inlays, cornice and parapet, Tolstraat turrets, ASSCHER lettering, crown, 1907 tablet, balconies and the east tower's arched lights, loggia and entrance read from the 2018-2025 municipal panoramas; no pixels or meshes imported."
+}

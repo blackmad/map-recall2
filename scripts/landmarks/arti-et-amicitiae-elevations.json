@@ -1,0 +1,19 @@
+{
+ "id": "arti-et-amicitiae",
+ "countedBy": "lane venues-centre-20261114 from rectified panoramas (venue-face-crops.ts, 50 px/m): Rokin TMX7316010203-002857_pano_0002_000077 (2022) and recording_2025-06-16_06-42-40_01729 (2025); Spui end TMX7316060226-000019_pano_0000_003548 (2016); hall TMX7316010203-001050_pano_0001_000027 (2019)",
+ "facades": [
+  {"name": "east (Rokin)", "bearing": 74, "photo": "artifacts/landmark-briefs/arti-et-amicitiae/face-rokin-1.jpg",
+   "rows": [7, 7, 7], "columns": 7, "symmetric": true, "gables": 0,
+   "alongM": [0.40, 21.60],
+   "mixedRows": [
+    {"row": 0, "rowSizes": "mixed", "evidence": "TMX7316010203-002857_pano_0002_000077: six square-headed shop openings (1.4 m) and the recessed entrance (1.85 m) in the middle bay",
+     "openings": [{"kind": "window", "w": 1.42}, {"kind": "window", "w": 1.42}, {"kind": "window", "w": 1.42}, {"kind": "door", "w": 1.85}, {"kind": "window", "w": 1.42}, {"kind": "window", "w": 1.42}, {"kind": "window", "w": 1.42}]}
+   ]},
+  {"name": "north (Spui end of the Rokin block)", "bearing": 353, "photo": "artifacts/landmark-briefs/arti-et-amicitiae/w03-353.jpg",
+   "rows": [1], "columns": 1, "symmetric": true, "gables": 1,
+   "alongM": [2.45, 8.59]},
+  {"name": "north (hall on the Spui)", "bearing": 353, "photo": "artifacts/landmark-briefs/arti-et-amicitiae/face-spui-2.jpg",
+   "rows": [4], "columns": 4, "symmetric": false, "gables": 0,
+   "alongM": [9.55, 22.18]}
+ ]
+}

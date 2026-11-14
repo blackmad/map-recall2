@@ -1,0 +1,12 @@
+{
+  "modelId": "werf-kromhout",
+  "landmarkId": "werf-kromhout",
+  "name": "Werf 't Kromhout",
+  "description": "A shipyard on the Nieuwe Vaart that grew up in the middle of the eighteenth century along the old sea dyke now called the Hoogte Kadijk. It takes its name from Doede Janszn. Kromhout, whose wife bought the site in 1757. From 1867 the Goedkoop family built iron and later steel ships here, and the yard grew into the Kromhout engine works, whose marine engines powered many fishing boats. The yard closed in 1967; a foundation bought the ground and buildings in 1975, and the halls became a national monument and the Werfmuseum 't Kromhout, with old Kromhout engines that still run and a working nineteenth-century forge.",
+  "funFact": "In 1887 part of the yard was roofed over with riveted iron trusses that came from a hall used earlier at a World Exhibition.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Kromhout_(bedrijf)",
+  "additionalSources": [
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012180688/"
+  ],
+  "preferDescription": true
+}

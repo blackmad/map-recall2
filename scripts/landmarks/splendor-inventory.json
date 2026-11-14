@@ -1,0 +1,292 @@
+{
+ "schemaVersion": 1,
+ "id": "splendor",
+ "pand": "0363100012171998",
+ "brief": "scripts/landmarks/splendor-brief.md",
+ "signature": [
+  "s-plinth",
+  "s-gate",
+  "s-windows",
+  "s-eaves"
+ ],
+ "walls": [
+  {
+   "tag": "w01-146",
+   "bearing": 146,
+   "lengthM": 39.6,
+   "centre": [
+    4.903304,
+    52.369879
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_000413",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-plinth",
+     "kind": "other",
+     "where": "plinth of black glazed brick along the whole street front (2.3 m on the bath wing and corner house, 1.45 m on the east house), the gate block entirely in black glazed brick",
+     "approxSizeM": [
+      48.7,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "dark slabs 6 cm proud of the drawn brick fronts; the gate block as dark sections"
+    },
+    {
+     "id": "s-gate",
+     "kind": "other",
+     "where": "round-arched gate in the black gate block with an iron grille and a ring of glazed headers, a Star of David on the pantiles above",
+     "approxSizeM": [
+      2.6,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "round-headed cut opening 0.7 m deep with nine thin grille bars and a rail, a dark arch ring; the star as two gold triangles (poly) on the roof skirt"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "bath wing: eight small square two-light windows sitting on the plinth; corner house: four-light green timber bay over a white-framed door; east house: white-framed two- and three-light windows; gate block: a four-light window",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "street-front-kit cut openings with green or white frames and glazing bars; the timber bay as a green box with framed lights"
+    },
+    {
+     "id": "s-eaves",
+     "kind": "other",
+     "where": "cream eaves boards at 2.6, 3.45, 4.2, 6.45 and 7.0 m under red pantile roofs",
+     "approxSizeM": [
+      48.7,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "cream slabs 32-38 cm proud; pantile skirts (TriSink quads) from the board up to the 3DBAG eaves line where the drawn storey is lower than the 3DBAG wall"
+    },
+    {
+     "id": "s-dormers",
+     "kind": "other",
+     "where": "three dormers in the east house roof with white-framed windows",
+     "approxSizeM": [
+      1.8,
+      1.75
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "brick boxes in the roof skirt with a white frame, glass and a pantile cap; the cheeks are brick, not tile"
+    },
+    {
+     "id": "s-cartouche",
+     "kind": "relief",
+     "where": "oval stone cartouche between the east house first-floor windows",
+     "approxSizeM": [
+      0.55,
+      0.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001665_pano_0000_000369",
+     "how": "stone slab with a brick inset (the carving is not drawn)"
+    },
+    {
+     "id": "s-chimney",
+     "kind": "other",
+     "where": "boiler-house chimney behind the bath wing (17 m) and two house chimneys",
+     "approxSizeM": [
+      1.0,
+      17.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "how": "3DBAG LoD2.2 shell keeps the chimney stack"
+    },
+    {
+     "id": "s-signs",
+     "kind": "sign",
+     "where": "small venue signs and posters by the corner-house door",
+     "approxSizeM": [
+      0.6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "skip": {
+      "reason": "too-small",
+      "note": "temporary signs under 0.6 m"
+     }
+    },
+    {
+     "id": "s-lamps",
+     "kind": "lamp",
+     "where": "street lamp in front of the east house",
+     "approxSizeM": [
+      0.4,
+      4.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002031_pano_0001_000413",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture"
+     }
+    }
+   ],
+   "note": "street front Nieuwe Uilenburgerstraat, 48.7 m chord ring 14-31 (brief wall w01 plus w07/w08 on the same line); crops from venue-face-crops.ts at 50 px/m, also TMX7316010203-001665_pano_0000_000369 (2020) for the east house."
+  },
+  {
+   "tag": "w02-55",
+   "bearing": 55,
+   "lengthM": 20.4,
+   "centre": [
+    4.9035675,
+    52.370101
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000709_pano_0000_003662",
+   "capturedAt": "2018-05-07",
+   "checked": true,
+   "items": [],
+   "note": "courtyard and party walls of the same pand (no street view, or behind neighbours); drawn by the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w03-326",
+   "bearing": 326,
+   "lengthM": 20.3,
+   "centre": [
+    4.9033995,
+    52.369971
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "courtyard and party walls of the same pand (no street view, or behind neighbours); drawn by the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w04-56",
+   "bearing": 56,
+   "lengthM": 15.5,
+   "centre": [
+    4.9032125,
+    52.3699765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_000346",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "courtyard and party walls of the same pand (no street view, or behind neighbours); drawn by the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w05-237",
+   "bearing": 237,
+   "lengthM": 13.4,
+   "centre": [
+    4.9029225,
+    52.369838
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001185",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-canal-gable",
+     "kind": "other",
+     "where": "canal-side gable of the corner house with a stone plaque, a green two-storey bay and a door",
+     "approxSizeM": [
+      8.0,
+      10.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_001185",
+     "skip": {
+      "reason": "not-visible",
+      "note": "seen only obliquely from across the canal; the 3DBAG shell keeps the gable mass"
+     }
+    }
+   ],
+   "note": "canal side (Uilenburgergracht): the corner house gable with a stone plaque and green bays, seen only from across the water at 23 m; drawn by the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w06-235",
+   "bearing": 235,
+   "lengthM": 11.2,
+   "centre": [
+    4.9034745,
+    52.370064
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_000342",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "courtyard and party walls of the same pand (no street view, or behind neighbours); drawn by the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w07-146",
+   "bearing": 146,
+   "lengthM": 7.3,
+   "centre": [
+    4.9036095,
+    52.3700075
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003023_pano_0011_000011",
+   "capturedAt": "2023-04-03",
+   "checked": true,
+   "items": [],
+   "note": "part of the street front chord (ring 14-31), see w01-146."
+  },
+  {
+   "tag": "w08-147",
+   "bearing": 147,
+   "lengthM": 4.4,
+   "centre": [
+    4.9034,
+    52.370094
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001177_pano_0000_001725",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [],
+   "note": "part of the street front chord (ring 14-31), see w01-146."
+  },
+  {
+   "tag": "w09-234",
+   "bearing": 234,
+   "lengthM": 4.3,
+   "centre": [
+    4.9033545,
+    52.3700985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_000340",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "courtyard and party walls of the same pand (no street view, or behind neighbours); drawn by the 3DBAG shell in brick."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Splendor (Wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Splendor_(muziekgebouw)",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

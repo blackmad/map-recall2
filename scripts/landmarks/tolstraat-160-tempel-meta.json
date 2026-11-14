@@ -1,0 +1,23 @@
+{
+  "name": "Tolstraat 160 (former theosophical temple, Cinétol)",
+  "landmarkId": "tolstraat-160-tempel",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Tolstraat_160",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012155412"
+  ],
+  "pandId": "0363100012155412",
+  "anchor": [
+    4.90633534,
+    52.35262717
+  ],
+  "materialOverrides": {
+    "concrete": "#e2e0d6",
+    "white": "#f1efe8",
+    "stone": "#bdbdb6",
+    "copper": "#9ccbb0",
+    "glass": "#36424b",
+    "blue": "#34557f"
+  },
+  "surveySource": "Current BAG 0363100012155412 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; foyer and drum window ribbons, fascias, entrance, fan-roof seams and vents swept along the measured curves from the 2021-2022 municipal panoramas and the PDOK orthophoto; no pixels or meshes imported."
+}

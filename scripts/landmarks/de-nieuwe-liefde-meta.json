@@ -1,0 +1,25 @@
+{
+  "name": "De Nieuwe Liefde",
+  "landmarkId": "de-nieuwe-liefde",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/De_Nieuwe_Liefde",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012236796"
+  ],
+  "pandId": "0363100012236796",
+  "anchor": [
+    4.87149406,
+    52.36978525
+  ],
+  "materialOverrides": {
+    "concrete": "#e9e7df",
+    "white": "#f3f1ea",
+    "stone": "#8e9aa1",
+    "slate": "#45474a",
+    "glass": "#3b4448",
+    "frame": "#3e4246",
+    "dark": "#2f3236",
+    "bronze": "#55585a"
+  },
+  "surveySource": "Current BAG 0363100012236796 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the BAG ring vertex average.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Da Costakade front (twin gables, segmental and round-arched windows, hoods, plinth, lettering, mansard) laid out from the 2016-2025 municipal panoramas; no pixels or meshes imported."
+}
